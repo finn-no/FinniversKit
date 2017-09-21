@@ -12,7 +12,34 @@
 		25D04D841F583B1800EA317D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D821F583B1800EA317D /* Main.storyboard */; };
 		25D04D861F583B1800EA317D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D851F583B1800EA317D /* Assets.xcassets */; };
 		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
+		CB58A7531F73B7B300A5A19F /* TroikaIOS.h in Headers */ = {isa = PBXBuildFile; fileRef = CB58A7511F73B7B300A5A19F /* TroikaIOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB58A7561F73B7B300A5A19F /* TroikaIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB58A74F1F73B7B300A5A19F /* TroikaIOS.framework */; };
+		CB58A7571F73B7B300A5A19F /* TroikaIOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB58A74F1F73B7B300A5A19F /* TroikaIOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CB58A7541F73B7B300A5A19F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB58A74E1F73B7B300A5A19F;
+			remoteInfo = TroikaIOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CB58A75B1F73B7B300A5A19F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CB58A7571F73B7B300A5A19F /* TroikaIOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		25D04D7B1F583B1800EA317D /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,10 +49,21 @@
 		25D04D851F583B1800EA317D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25D04D881F583B1800EA317D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25D04D8A1F583B1800EA317D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB58A74F1F73B7B300A5A19F /* TroikaIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TroikaIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB58A7511F73B7B300A5A19F /* TroikaIOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TroikaIOS.h; sourceTree = "<group>"; };
+		CB58A7521F73B7B300A5A19F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		25D04D781F583B1800EA317D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB58A7561F73B7B300A5A19F /* TroikaIOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB58A74B1F73B7B300A5A19F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				25D04D7D1F583B1800EA317D /* Project */,
+				CB58A7501F73B7B300A5A19F /* TroikaIOS */,
 				25D04D7C1F583B1800EA317D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				25D04D7B1F583B1800EA317D /* Project.app */,
+				CB58A74F1F73B7B300A5A19F /* TroikaIOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,7 +104,27 @@
 			path = Project;
 			sourceTree = "<group>";
 		};
+		CB58A7501F73B7B300A5A19F /* TroikaIOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB58A7511F73B7B300A5A19F /* TroikaIOS.h */,
+				CB58A7521F73B7B300A5A19F /* Info.plist */,
+			);
+			path = TroikaIOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CB58A74C1F73B7B300A5A19F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB58A7531F73B7B300A5A19F /* TroikaIOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		25D04D7A1F583B1800EA317D /* Project */ = {
@@ -74,15 +134,35 @@
 				25D04D771F583B1800EA317D /* Sources */,
 				25D04D781F583B1800EA317D /* Frameworks */,
 				25D04D791F583B1800EA317D /* Resources */,
+				CB58A75B1F73B7B300A5A19F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CB58A7551F73B7B300A5A19F /* PBXTargetDependency */,
 			);
 			name = Project;
 			productName = Project;
 			productReference = 25D04D7B1F583B1800EA317D /* Project.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CB58A74E1F73B7B300A5A19F /* TroikaIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB58A75A1F73B7B300A5A19F /* Build configuration list for PBXNativeTarget "TroikaIOS" */;
+			buildPhases = (
+				CB58A74A1F73B7B300A5A19F /* Sources */,
+				CB58A74B1F73B7B300A5A19F /* Frameworks */,
+				CB58A74C1F73B7B300A5A19F /* Headers */,
+				CB58A74D1F73B7B300A5A19F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TroikaIOS;
+			productName = TroikaIOS;
+			productReference = CB58A74F1F73B7B300A5A19F /* TroikaIOS.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -96,6 +176,10 @@
 				TargetAttributes = {
 					25D04D7A1F583B1800EA317D = {
 						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					CB58A74E1F73B7B300A5A19F = {
+						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -114,6 +198,7 @@
 			projectRoot = "";
 			targets = (
 				25D04D7A1F583B1800EA317D /* Project */,
+				CB58A74E1F73B7B300A5A19F /* TroikaIOS */,
 			);
 		};
 /* End PBXProject section */
@@ -129,6 +214,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB58A74D1F73B7B300A5A19F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -141,7 +233,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB58A74A1F73B7B300A5A19F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB58A7551F73B7B300A5A19F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB58A74E1F73B7B300A5A19F /* TroikaIOS */;
+			targetProxy = CB58A7541F73B7B300A5A19F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		25D04D821F583B1800EA317D /* Main.storyboard */ = {
@@ -260,6 +367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Project;
@@ -272,11 +380,78 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		CB58A7581F73B7B300A5A19F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TroikaIOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.axldyb.TroikaIOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CB58A7591F73B7B300A5A19F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TroikaIOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.axldyb.TroikaIOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -299,6 +474,16 @@
 				25D04D8F1F583B1800EA317D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB58A75A1F73B7B300A5A19F /* Build configuration list for PBXNativeTarget "TroikaIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB58A7581F73B7B300A5A19F /* Debug */,
+				CB58A7591F73B7B300A5A19F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
