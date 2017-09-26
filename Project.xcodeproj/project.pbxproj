@@ -12,6 +12,10 @@
 		25D04D841F583B1800EA317D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D821F583B1800EA317D /* Main.storyboard */; };
 		25D04D861F583B1800EA317D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D851F583B1800EA317D /* Assets.xcassets */; };
 		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
+		455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866061F7A751300F670EF /* MarketGridCollectionView.swift */; };
+		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
+		4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */; };
+		4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */; };
 		CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664241F73F818009D3244 /* UIFont+Troika.swift */; };
 		CB3664271F73F8CE009D3244 /* GridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664261F73F8CE009D3244 /* GridPresentable.swift */; };
 		CB36642B1F73F9D1009D3244 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642A1F73F9D1009D3244 /* GridCollectionView.swift */; };
@@ -42,6 +46,10 @@
 		25D04D851F583B1800EA317D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25D04D881F583B1800EA317D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25D04D8A1F583B1800EA317D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		455866061F7A751300F670EF /* MarketGridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCollectionView.swift; sourceTree = "<group>"; };
+		455866081F7A77B100F670EF /* MarketGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
+		4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridPresentable.swift; sourceTree = "<group>"; };
+		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
 		CB2FE4D51F7A4EFB00616815 /* Project.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Project.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Troika View.xctemplate"; sourceTree = "<group>"; };
 		CB3664241F73F818009D3244 /* UIFont+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
@@ -105,10 +113,29 @@
 			path = Project;
 			sourceTree = "<group>";
 		};
+		455866041F7A678400F670EF /* Market Grid */ = {
+			isa = PBXGroup;
+			children = (
+				455866061F7A751300F670EF /* MarketGridCollectionView.swift */,
+				4558660C1F7A7B7400F670EF /* Market Grid Cell */,
+			);
+			path = "Market Grid";
+			sourceTree = "<group>";
+		};
+		4558660C1F7A7B7400F670EF /* Market Grid Cell */ = {
+			isa = PBXGroup;
+			children = (
+				455866081F7A77B100F670EF /* MarketGridCell.swift */,
+				4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */,
+			);
+			path = "Market Grid Cell";
+			sourceTree = "<group>";
+		};
 		CB3664231F73F7FE009D3244 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				CB3664241F73F818009D3244 /* UIFont+Troika.swift */,
+				4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -147,6 +174,7 @@
 		CB58A75C1F73B81000A5A19F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				455866041F7A678400F670EF /* Market Grid */,
 				CB3664281F73F9A2009D3244 /* Grid */,
 			);
 			path = Components;
