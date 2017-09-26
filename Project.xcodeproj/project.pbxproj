@@ -12,7 +12,27 @@
 		25D04D841F583B1800EA317D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D821F583B1800EA317D /* Main.storyboard */; };
 		25D04D861F583B1800EA317D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D851F583B1800EA317D /* Assets.xcassets */; };
 		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
+		CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664241F73F818009D3244 /* UIFont+Troika.swift */; };
+		CB3664271F73F8CE009D3244 /* GridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664261F73F8CE009D3244 /* GridPresentable.swift */; };
+		CB36642B1F73F9D1009D3244 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642A1F73F9D1009D3244 /* GridCollectionView.swift */; };
+		CB36642D1F73FA0B009D3244 /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642C1F73FA0B009D3244 /* GridCollectionViewLayout.swift */; };
+		CB36642F1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642E1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift */; };
+		CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3CF1581F73E5870041EF20 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB3CF15E1F73E5D30041EF20 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB58A75E1F73B86C00A5A19F /* GridCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CB58A75B1F73B7B300A5A19F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		25D04D7B1F583B1800EA317D /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,10 +42,28 @@
 		25D04D851F583B1800EA317D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25D04D881F583B1800EA317D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25D04D8A1F583B1800EA317D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB2FE4D51F7A4EFB00616815 /* Project.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Project.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Troika View.xctemplate"; sourceTree = "<group>"; };
+		CB3664241F73F818009D3244 /* UIFont+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
+		CB3664261F73F8CE009D3244 /* GridPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPresentable.swift; sourceTree = "<group>"; };
+		CB36642A1F73F9D1009D3244 /* GridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionView.swift; sourceTree = "<group>"; };
+		CB36642C1F73FA0B009D3244 /* GridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayout.swift; sourceTree = "<group>"; };
+		CB36642E1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayoutConfigurable.swift; sourceTree = "<group>"; };
+		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3CF1581F73E5870041EF20 /* Troika.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Troika.h; sourceTree = "<group>"; };
+		CB3CF1591F73E5870041EF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB58A75E1F73B86C00A5A19F /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		25D04D781F583B1800EA317D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB3CF1521F73E5870041EF20 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,7 +76,9 @@
 		25D04D721F583B1800EA317D = {
 			isa = PBXGroup;
 			children = (
+				CB2FE4D51F7A4EFB00616815 /* Project.playground */,
 				25D04D7D1F583B1800EA317D /* Project */,
+				CB3CF1571F73E5870041EF20 /* Troika */,
 				25D04D7C1F583B1800EA317D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				25D04D7B1F583B1800EA317D /* Project.app */,
+				CB3CF1561F73E5870041EF20 /* Troika.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,7 +105,82 @@
 			path = Project;
 			sourceTree = "<group>";
 		};
+		CB3664231F73F7FE009D3244 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CB3664241F73F818009D3244 /* UIFont+Troika.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CB3664281F73F9A2009D3244 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				CB3664291F73F9B6009D3244 /* Grid Collection View */,
+				CB58A75D1F73B81800A5A19F /* Grid Cell */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		CB3664291F73F9B6009D3244 /* Grid Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				CB36642A1F73F9D1009D3244 /* GridCollectionView.swift */,
+				CB36642C1F73FA0B009D3244 /* GridCollectionViewLayout.swift */,
+				CB36642E1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift */,
+			);
+			path = "Grid Collection View";
+			sourceTree = "<group>";
+		};
+		CB3CF1571F73E5870041EF20 /* Troika */ = {
+			isa = PBXGroup;
+			children = (
+				CB3664231F73F7FE009D3244 /* Extensions */,
+				CB58A7601F73B88E00A5A19F /* Templates */,
+				CB58A75C1F73B81000A5A19F /* Components */,
+				CB3CF1581F73E5870041EF20 /* Troika.h */,
+				CB3CF1591F73E5870041EF20 /* Info.plist */,
+			);
+			path = Troika;
+			sourceTree = "<group>";
+		};
+		CB58A75C1F73B81000A5A19F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CB3664281F73F9A2009D3244 /* Grid */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		CB58A75D1F73B81800A5A19F /* Grid Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CB58A75E1F73B86C00A5A19F /* GridCell.swift */,
+				CB3664261F73F8CE009D3244 /* GridPresentable.swift */,
+			);
+			path = "Grid Cell";
+			sourceTree = "<group>";
+		};
+		CB58A7601F73B88E00A5A19F /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CB3CF1531F73E5870041EF20 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		25D04D7A1F583B1800EA317D /* Project */ = {
@@ -74,6 +190,7 @@
 				25D04D771F583B1800EA317D /* Sources */,
 				25D04D781F583B1800EA317D /* Frameworks */,
 				25D04D791F583B1800EA317D /* Resources */,
+				CB58A75B1F73B7B300A5A19F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -83,6 +200,25 @@
 			productName = Project;
 			productReference = 25D04D7B1F583B1800EA317D /* Project.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CB3CF1551F73E5870041EF20 /* Troika */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB3CF15D1F73E5870041EF20 /* Build configuration list for PBXNativeTarget "Troika" */;
+			buildPhases = (
+				CB3CF1511F73E5870041EF20 /* Sources */,
+				CB3CF1521F73E5870041EF20 /* Frameworks */,
+				CB3CF1531F73E5870041EF20 /* Headers */,
+				CB3CF1541F73E5870041EF20 /* Resources */,
+				CB2FE4D71F7A533300616815 /* Update templates */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Troika;
+			productName = Troika;
+			productReference = CB3CF1561F73E5870041EF20 /* Troika.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -96,6 +232,10 @@
 				TargetAttributes = {
 					25D04D7A1F583B1800EA317D = {
 						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					CB3CF1551F73E5870041EF20 = {
+						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -114,6 +254,7 @@
 			projectRoot = "";
 			targets = (
 				25D04D7A1F583B1800EA317D /* Project */,
+				CB3CF1551F73E5870041EF20 /* Troika */,
 			);
 		};
 /* End PBXProject section */
@@ -129,7 +270,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB3CF1541F73E5870041EF20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CB2FE4D71F7A533300616815 /* Update templates */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update templates";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -R ${SRCROOT}/Troika/Templates/Troika\\ View.xctemplate ~/Library/Developer/Xcode/Templates/Troika";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		25D04D771F583B1800EA317D /* Sources */ = {
@@ -138,6 +303,19 @@
 			files = (
 				25D04D811F583B1800EA317D /* ViewController.swift in Sources */,
 				25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB3CF1511F73E5870041EF20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB36642B1F73F9D1009D3244 /* GridCollectionView.swift in Sources */,
+				CB36642F1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift in Sources */,
+				CB36642D1F73FA0B009D3244 /* GridCollectionViewLayout.swift in Sources */,
+				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
+				CB3664271F73F8CE009D3244 /* GridPresentable.swift in Sources */,
+				CB3CF15E1F73E5D30041EF20 /* GridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Project;
@@ -272,11 +451,78 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		CB3CF15B1F73E5870041EF20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Troika/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Troika;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CB3CF15C1F73E5870041EF20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Troika/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Troika;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -299,6 +545,16 @@
 				25D04D8F1F583B1800EA317D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB3CF15D1F73E5870041EF20 /* Build configuration list for PBXNativeTarget "Troika" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB3CF15B1F73E5870041EF20 /* Debug */,
+				CB3CF15C1F73E5870041EF20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
