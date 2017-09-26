@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol GridPresentable {
+public protocol PreviewPresentable {
     var image: UIImage? { get }
     var title: String { get }
     var subTitle: String { get }

@@ -1,6 +1,6 @@
 import Foundation
 
-protocol GridCollectionViewLayoutConfigurable {
+protocol PreviewGridCollectionViewLayoutConfigurable {
     var topOffset: CGFloat { get }
     var sidePadding: CGFloat { get }
     var lineSpacing: CGFloat { get }
@@ -8,7 +8,7 @@ protocol GridCollectionViewLayoutConfigurable {
     var numberOfColumns: Int { get }
 }
 
-extension GridCollectionViewLayoutConfigurable {
+extension PreviewGridCollectionViewLayoutConfigurable {
     var lineSpacing: CGFloat {
         return columnSpacing
     }
@@ -22,7 +22,7 @@ extension GridCollectionViewLayoutConfigurable {
     }
 }
 
-struct GridCollectionViewLayoutIPhoneSmall: GridCollectionViewLayoutConfigurable {
+struct PreviewGridCollectionViewLayoutIPhoneSmall: PreviewGridCollectionViewLayoutConfigurable {
     let topOffset: CGFloat = 5.0
     let sidePadding: CGFloat = 10.0
     let lineSpacing: CGFloat = 0.0
@@ -30,13 +30,13 @@ struct GridCollectionViewLayoutIPhoneSmall: GridCollectionViewLayoutConfigurable
     let numberOfColumns: Int = 2
 }
 
-struct GridCollectionViewLayoutIPhone: GridCollectionViewLayoutConfigurable {
+struct PreviewGridCollectionViewLayoutIPhone: PreviewGridCollectionViewLayoutConfigurable {
     let topOffset: CGFloat = 5.0
     let sidePadding: CGFloat = 15.0
     let numberOfColumns: Int = 2
 }
 
-struct GridCollectionViewLayoutIPad: GridCollectionViewLayoutConfigurable {
+struct PreviewGridCollectionViewLayoutIPad: PreviewGridCollectionViewLayoutConfigurable {
     let topOffset: CGFloat = 10.0
     let sidePadding: CGFloat = 25.0
     let columnSpacing: CGFloat = 5.0

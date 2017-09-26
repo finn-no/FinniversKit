@@ -1,6 +1,6 @@
 import UIKit
 
-public class GridCell: UICollectionViewCell {
+public class PreviewCell: UICollectionViewCell {
 
     // Mark: - Internal properties
 
@@ -60,13 +60,13 @@ public class GridCell: UICollectionViewCell {
 
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: GridCell.titleLabelHeight).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: PreviewCell.titleLabelHeight).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 
     // Mark: - Dependency injection
 
-    public var presentable: GridPresentable? {
+    public var presentable: PreviewPresentable? {
         didSet {
             imageView.image = presentable?.image
             titleLabel.text = presentable?.title

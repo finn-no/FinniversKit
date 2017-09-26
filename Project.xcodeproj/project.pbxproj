@@ -13,12 +13,12 @@
 		25D04D861F583B1800EA317D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D851F583B1800EA317D /* Assets.xcassets */; };
 		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
 		CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664241F73F818009D3244 /* UIFont+Troika.swift */; };
-		CB3664271F73F8CE009D3244 /* GridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664261F73F8CE009D3244 /* GridPresentable.swift */; };
-		CB36642B1F73F9D1009D3244 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642A1F73F9D1009D3244 /* GridCollectionView.swift */; };
-		CB36642D1F73FA0B009D3244 /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642C1F73FA0B009D3244 /* GridCollectionViewLayout.swift */; };
-		CB36642F1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642E1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift */; };
+		CB3664271F73F8CE009D3244 /* PreviewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */; };
+		CB36642B1F73F9D1009D3244 /* PreviewGridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642A1F73F9D1009D3244 /* PreviewGridCollectionView.swift */; };
+		CB36642D1F73FA0B009D3244 /* PreviewGridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642C1F73FA0B009D3244 /* PreviewGridCollectionViewLayout.swift */; };
+		CB36642F1F73FB78009D3244 /* PreviewGridCollectionViewLayoutConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642E1F73FB78009D3244 /* PreviewGridCollectionViewLayoutConfigurable.swift */; };
 		CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3CF1581F73E5870041EF20 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB3CF15E1F73E5D30041EF20 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB58A75E1F73B86C00A5A19F /* GridCell.swift */; };
+		CB3CF15E1F73E5D30041EF20 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,14 +45,14 @@
 		CB2FE4D51F7A4EFB00616815 /* Project.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Project.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Troika View.xctemplate"; sourceTree = "<group>"; };
 		CB3664241F73F818009D3244 /* UIFont+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
-		CB3664261F73F8CE009D3244 /* GridPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPresentable.swift; sourceTree = "<group>"; };
-		CB36642A1F73F9D1009D3244 /* GridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionView.swift; sourceTree = "<group>"; };
-		CB36642C1F73FA0B009D3244 /* GridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayout.swift; sourceTree = "<group>"; };
-		CB36642E1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayoutConfigurable.swift; sourceTree = "<group>"; };
+		CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPresentable.swift; sourceTree = "<group>"; };
+		CB36642A1F73F9D1009D3244 /* PreviewGridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridCollectionView.swift; sourceTree = "<group>"; };
+		CB36642C1F73FA0B009D3244 /* PreviewGridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridCollectionViewLayout.swift; sourceTree = "<group>"; };
+		CB36642E1F73FB78009D3244 /* PreviewGridCollectionViewLayoutConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridCollectionViewLayoutConfigurable.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3CF1581F73E5870041EF20 /* Troika.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Troika.h; sourceTree = "<group>"; };
 		CB3CF1591F73E5870041EF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB58A75E1F73B86C00A5A19F /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,23 +113,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CB3664281F73F9A2009D3244 /* Grid */ = {
+		CB3664281F73F9A2009D3244 /* Preview Grid View */ = {
 			isa = PBXGroup;
 			children = (
-				CB3664291F73F9B6009D3244 /* Grid Collection View */,
-				CB58A75D1F73B81800A5A19F /* Grid Cell */,
+				CB3664291F73F9B6009D3244 /* Preview Grid Collection View */,
+				CB58A75D1F73B81800A5A19F /* Preview Cell */,
 			);
-			path = Grid;
+			path = "Preview Grid View";
 			sourceTree = "<group>";
 		};
-		CB3664291F73F9B6009D3244 /* Grid Collection View */ = {
+		CB3664291F73F9B6009D3244 /* Preview Grid Collection View */ = {
 			isa = PBXGroup;
 			children = (
-				CB36642A1F73F9D1009D3244 /* GridCollectionView.swift */,
-				CB36642C1F73FA0B009D3244 /* GridCollectionViewLayout.swift */,
-				CB36642E1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift */,
+				CB36642A1F73F9D1009D3244 /* PreviewGridCollectionView.swift */,
+				CB36642C1F73FA0B009D3244 /* PreviewGridCollectionViewLayout.swift */,
+				CB36642E1F73FB78009D3244 /* PreviewGridCollectionViewLayoutConfigurable.swift */,
 			);
-			path = "Grid Collection View";
+			path = "Preview Grid Collection View";
 			sourceTree = "<group>";
 		};
 		CB3CF1571F73E5870041EF20 /* Troika */ = {
@@ -147,18 +147,18 @@
 		CB58A75C1F73B81000A5A19F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CB3664281F73F9A2009D3244 /* Grid */,
+				CB3664281F73F9A2009D3244 /* Preview Grid View */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		CB58A75D1F73B81800A5A19F /* Grid Cell */ = {
+		CB58A75D1F73B81800A5A19F /* Preview Cell */ = {
 			isa = PBXGroup;
 			children = (
-				CB58A75E1F73B86C00A5A19F /* GridCell.swift */,
-				CB3664261F73F8CE009D3244 /* GridPresentable.swift */,
+				CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */,
+				CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */,
 			);
-			path = "Grid Cell";
+			path = "Preview Cell";
 			sourceTree = "<group>";
 		};
 		CB58A7601F73B88E00A5A19F /* Templates */ = {
@@ -310,12 +310,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB36642B1F73F9D1009D3244 /* GridCollectionView.swift in Sources */,
-				CB36642F1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift in Sources */,
-				CB36642D1F73FA0B009D3244 /* GridCollectionViewLayout.swift in Sources */,
+				CB36642B1F73F9D1009D3244 /* PreviewGridCollectionView.swift in Sources */,
+				CB36642F1F73FB78009D3244 /* PreviewGridCollectionViewLayoutConfigurable.swift in Sources */,
+				CB36642D1F73FA0B009D3244 /* PreviewGridCollectionViewLayout.swift in Sources */,
 				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
-				CB3664271F73F8CE009D3244 /* GridPresentable.swift in Sources */,
-				CB3CF15E1F73E5D30041EF20 /* GridCell.swift in Sources */,
+				CB3664271F73F8CE009D3244 /* PreviewPresentable.swift in Sources */,
+				CB3CF15E1F73E5D30041EF20 /* PreviewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

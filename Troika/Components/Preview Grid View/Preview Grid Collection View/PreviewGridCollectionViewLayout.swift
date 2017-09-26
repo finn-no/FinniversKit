@@ -1,27 +1,27 @@
 import UIKit
 
-protocol GridCollectionViewLayoutDelegate {
+protocol PreviewGridCollectionViewLayoutDelegate {
     func relativeHeightForItem(atIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
 }
 
-class GridCollectionViewLayout: UICollectionViewLayout {
+class PreviewGridCollectionViewLayout: UICollectionViewLayout {
 
-    private let delegate: GridCollectionViewLayoutDelegate
+    private let delegate: PreviewGridCollectionViewLayoutDelegate
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
-    private var configuration: GridCollectionViewLayoutConfigurable {
+    private var configuration: PreviewGridCollectionViewLayoutConfigurable {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            return GridCollectionViewLayoutIPad()
+            return PreviewGridCollectionViewLayoutIPad()
         }
 
         if let window = collectionView?.window, window.frame.size.width < CGFloat(375.0) {
-            return GridCollectionViewLayoutIPhoneSmall()
+            return PreviewGridCollectionViewLayoutIPhoneSmall()
         }
 
-        return GridCollectionViewLayoutIPhone()
+        return PreviewGridCollectionViewLayoutIPhone()
     }
 
-    init(delegate: GridCollectionViewLayoutDelegate) {
+    init(delegate: PreviewGridCollectionViewLayoutDelegate) {
         self.delegate = delegate
         super.init()
     }

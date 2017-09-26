@@ -1,30 +1,24 @@
 import UIKit
 
-protocol GridCollectionViewDataSource: NSObjectProtocol {
-    var items: [GridPresentable] { get }
+protocol PreviewGridCollectionViewDelegate: NSObjectProtocol {
+    func didSelect(item: PreviewPresentable, in gridView: PreviewGridCollectionView)
 }
 
-protocol GridCollectionViewDelegate: NSObjectProtocol {
-    func didSelect(item: GridPresentable, in gridView: GridCollectionView)
-}
-
-class GridCollectionView: UIView {
+class PreviewGridCollectionView: UIView {
 
     // Mark: - Internal properties
 
     // Have the collection view be private so nobody messes with it.
     private let collectionView = UICollectionView()
-    private weak var dataSource: GridCollectionViewDataSource?
-    private weak var delegate: GridCollectionViewDelegate?
+    private weak var delegate: PreviewGridCollectionViewDelegate?
 
     // Mark: - External properties
 
     // Mark: - Setup
 
-    init(frame: CGRect = .zero, dataSource: GridCollectionViewDataSource, delegate: GridCollectionViewDelegate) {
+    init(frame: CGRect = .zero, delegate: PreviewGridCollectionViewDelegate) {
         super.init(frame: frame)
 
-        self.dataSource = dataSource
         self.delegate = delegate
 
         setup()
@@ -52,5 +46,9 @@ class GridCollectionView: UIView {
     }
 
     // Mark: - Dependency injection
-
+    var previewPresentables: [PreviewPresentable] = [PreviewPresentable]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
 }
