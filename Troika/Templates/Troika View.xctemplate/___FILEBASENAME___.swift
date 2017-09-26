@@ -22,8 +22,6 @@ class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
         // Perform setup
     }
 
-    // Mark: - Test
-
     // Mark: - Layout
 
     public override func layoutSubviews() {
