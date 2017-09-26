@@ -3,5 +3,6 @@
     <pages>
         <page name='Front page'/>
         <page name='Grid Cell'/>
+        <page name='Market Grid Cell'/>
     </pages>
 </playground>

@@ -339,7 +339,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB36642B1F73F9D1009D3244 /* GridCollectionView.swift in Sources */,
+				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
+				4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */,
 				CB36642F1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift in Sources */,
+				455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */,
+				4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */,
 				CB36642D1F73FA0B009D3244 /* GridCollectionViewLayout.swift in Sources */,
 				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
 				CB3664271F73F8CE009D3244 /* GridPresentable.swift in Sources */,
