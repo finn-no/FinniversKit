@@ -1,16 +1,16 @@
 import UIKit
 
-protocol PreviewGridCollectionViewLayoutDelegate {
+protocol PreviewGridLayoutDelegate {
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
     func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
 }
 
-class PreviewGridCollectionViewLayout: UICollectionViewLayout {
+class PreviewGridLayout: UICollectionViewLayout {
 
-    private let delegate: PreviewGridCollectionViewLayoutDelegate
+    private let delegate: PreviewGridLayoutDelegate
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
-    private var configuration: PreviewGridCollectionViewLayoutConfigurable {
+    private var configuration: PreviewGridLayoutConfigurable {
         guard let window = collectionView?.window else {
             fatalError("Layout unusable without window!")
         }
@@ -18,13 +18,13 @@ class PreviewGridCollectionViewLayout: UICollectionViewLayout {
         let iPhone7ScreenWidth: CGFloat = 375.0
 
         switch window.frame.size.width {
-        case let width where width > iPhone7ScreenWidth: return PreviewGridCollectionViewLayoutIPad()
-        case let width where width < iPhone7ScreenWidth: return PreviewGridCollectionViewLayoutIPhoneSmall()
-        default: return PreviewGridCollectionViewLayoutIPhone()
+        case let width where width > iPhone7ScreenWidth: return PreviewGridLayoutIPad()
+        case let width where width < iPhone7ScreenWidth: return PreviewGridLayoutIPhoneSmall()
+        default: return PreviewGridLayoutIPhone()
         }
     }
 
-    init(delegate: PreviewGridCollectionViewLayoutDelegate) {
+    init(delegate: PreviewGridLayoutDelegate) {
         self.delegate = delegate
         super.init()
     }

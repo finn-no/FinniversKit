@@ -10,14 +10,14 @@ struct PreviewDataModel: PreviewPresentable {
     let imageText: String
 }
 
-class TheDelegate: NSObject, PreviewGridCollectionViewDelegate {
-    func didSelect(item: PreviewPresentable, in gridView: PreviewGridCollectionView) {
+class TheDelegate: NSObject, PreviewGridViewDelegate {
+    func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
         // Placeholder
     }
 }
 
 let delegate = TheDelegate()
-let view = PreviewGridCollectionView(frame: .zero, delegate: delegate)
+let view = PreviewGridView(frame: .zero, delegate: delegate)
 
 view.frame = CGRect(x: 0, y: 0, width: 375, height: 768)
 

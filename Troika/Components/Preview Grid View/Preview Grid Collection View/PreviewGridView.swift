@@ -1,16 +1,16 @@
 import UIKit
 
-public protocol PreviewGridCollectionViewDelegate: NSObjectProtocol {
-    func didSelect(item: PreviewPresentable, in gridView: PreviewGridCollectionView)
+public protocol PreviewGridViewDelegate: NSObjectProtocol {
+    func didSelect(item: PreviewPresentable, in gridView: PreviewGridView)
 }
 
-public class PreviewGridCollectionView: UIView {
+public class PreviewGridView: UIView {
 
     // Mark: - Internal properties
 
     // Have the collection view be private so nobody messes with it.
-    private lazy var collectionViewLayout: PreviewGridCollectionViewLayout = {
-        return PreviewGridCollectionViewLayout(delegate: self)
+    private lazy var collectionViewLayout: PreviewGridLayout = {
+        return PreviewGridLayout(delegate: self)
     }()
 
     private lazy var collectionView: UICollectionView = {
@@ -23,13 +23,13 @@ public class PreviewGridCollectionView: UIView {
         return collectionView
     }()
 
-    private weak var delegate: PreviewGridCollectionViewDelegate?
+    private weak var delegate: PreviewGridViewDelegate?
 
     // Mark: - External properties
 
     // Mark: - Setup
 
-    public init(frame: CGRect = .zero, delegate: PreviewGridCollectionViewDelegate) {
+    public init(frame: CGRect = .zero, delegate: PreviewGridViewDelegate) {
         super.init(frame: frame)
 
         self.delegate = delegate
@@ -73,12 +73,12 @@ public class PreviewGridCollectionView: UIView {
 }
 
 // MARK: - UICollectionViewDelegate
-extension PreviewGridCollectionView: UICollectionViewDelegate {
+extension PreviewGridView: UICollectionViewDelegate {
 
 }
 
 // MARK: - UICollectionViewDataSource
-extension PreviewGridCollectionView: UICollectionViewDataSource {
+extension PreviewGridView: UICollectionViewDataSource {
 
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -98,8 +98,8 @@ extension PreviewGridCollectionView: UICollectionViewDataSource {
     }
 }
 
-// MARK: - PreviewGridCollectionViewLayoutDelegate
-extension PreviewGridCollectionView: PreviewGridCollectionViewLayoutDelegate {
+// MARK: - PreviewGridLayoutDelegate
+extension PreviewGridView: PreviewGridLayoutDelegate {
 
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
         let presentable = previewPresentables[indexPath.row]
