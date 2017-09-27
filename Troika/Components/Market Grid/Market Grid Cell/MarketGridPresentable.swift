@@ -1,7 +1,8 @@
 import Foundation
 
 public protocol MarketGridPresentable {
-    var image: UIImage? { get }
+    var iconImage: UIImage? { get }
+    var showExternalLinkIcon: Bool { get }
     var title: String { get }
 }
 
