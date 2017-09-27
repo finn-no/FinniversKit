@@ -320,7 +320,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -R ${SRCROOT}/Troika/Templates/Troika\\ View.xctemplate ~/Library/Developer/Xcode/Templates/Troika";
+			shellScript = "if [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\" ]; then\n    mkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\"\nfi\n\nif [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika\" ]; then\n    mkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika\"\nfi\n\ncp -R ./Troika/Templates/Troika\\ View.xctemplate ${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika";
 		};
 /* End PBXShellScriptBuildPhase section */
 
