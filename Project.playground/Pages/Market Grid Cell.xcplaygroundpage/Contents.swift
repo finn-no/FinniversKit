@@ -3,21 +3,25 @@ import PlaygroundSupport
 import Troika
 
 struct MarketGridDataModel: MarketGridPresentable {
-    let image: UIImage?
+    let iconImage: UIImage?
+    let showExternalLinkIcon: Bool
     let title: String
 }
 
-
 let image = #imageLiteral(resourceName: "eiendom.png")
+let title = "Eiendom"
+let shouldShowExternalLinkIcon = true
+
 let marketGridCell = MarketGridCell(frame: .zero)
-let presentable = MarketGridDataModel(image: image, title: "Eiendom")
+let presentable = MarketGridDataModel(iconImage: image, showExternalLinkIcon: shouldShowExternalLinkIcon, title: title)
 
 let multiplier = image.size.height / image.size.width
-let width: CGFloat = 100.0
+let dynamicHeight: CGFloat = (width * multiplier) + MarketGridCell.nonImageHeight
+let height: CGFloat = 60.0
+let width: CGFloat = 83.0
 
 marketGridCell.presentable = presentable
-marketGridCell.frame = CGRect(x: 0, y: 0, width: width, height: (width * multiplier) + MarketGridCell.nonImageHeight)
+marketGridCell.frame = CGRect(x: 0, y: 0, width: width, height: height)
 marketGridCell.backgroundColor = .white
 
 PlaygroundPage.current.liveView = marketGridCell
-
