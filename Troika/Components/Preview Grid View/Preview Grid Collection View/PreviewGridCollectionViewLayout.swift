@@ -1,7 +1,8 @@
 import UIKit
 
 protocol PreviewGridCollectionViewLayoutDelegate {
-    func relativeHeightForItem(atIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
+    func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
+    func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
 }
 
 class PreviewGridCollectionViewLayout: UICollectionViewLayout {
@@ -10,15 +11,17 @@ class PreviewGridCollectionViewLayout: UICollectionViewLayout {
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
     private var configuration: PreviewGridCollectionViewLayoutConfigurable {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return PreviewGridCollectionViewLayoutIPad()
+        guard let window = collectionView?.window else {
+            fatalError("Layout unusable without window!")
         }
 
-        if let window = collectionView?.window, window.frame.size.width < CGFloat(375.0) {
-            return PreviewGridCollectionViewLayoutIPhoneSmall()
-        }
+        let iPhone7ScreenWidth: CGFloat = 375.0
 
-        return PreviewGridCollectionViewLayoutIPhone()
+        switch window.frame.size.width {
+        case let width where width > iPhone7ScreenWidth: return PreviewGridCollectionViewLayoutIPad()
+        case let width where width < iPhone7ScreenWidth: return PreviewGridCollectionViewLayoutIPhoneSmall()
+        default: return PreviewGridCollectionViewLayoutIPhone()
+        }
     }
 
     init(delegate: PreviewGridCollectionViewLayoutDelegate) {
@@ -44,10 +47,6 @@ class PreviewGridCollectionViewLayout: UICollectionViewLayout {
         let columnWidth = columnsWidth / CGFloat(configuration.numberOfColumns)
 
         return columnWidth
-    }
-
-    private var itemHeight: CGFloat {
-        return itemWidth
     }
 
     private var numberOfItems: Int {
@@ -94,11 +93,11 @@ class PreviewGridCollectionViewLayout: UICollectionViewLayout {
             let topPadding = configuration.numberOfColumns > index ? offset : 0.0
             let verticalOffset = CGFloat(columns[columnIndex]) + topPadding
 
-            let indexPath = IndexPath(item: index, section: 1)
-            let itemRelativeHeight = delegate.relativeHeightForItem(atIndexPath: indexPath, inCollectionView: collectionView)
-            let itemAdditionalHeight = configuration.nonImageHeightForItems // No good.
+            let indexPath = IndexPath(item: index, section: 0)
+            let imageHeightRatio = delegate.imageHeightRatio(forItemAt: indexPath, inCollectionView: collectionView)
+            let itemNonImageHeight = delegate.itemNonImageHeight(forItemAt: indexPath, inCollectionView: collectionView)
 
-            let itemHeight = (itemRelativeHeight * itemWidth) + itemAdditionalHeight
+            let itemHeight = (imageHeightRatio * itemWidth) + itemNonImageHeight
 
             columns[columnIndex] = Int(verticalOffset + itemHeight + configuration.columnSpacing)
 

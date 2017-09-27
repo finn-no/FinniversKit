@@ -16,10 +16,6 @@ extension PreviewGridCollectionViewLayoutConfigurable {
     var columnSpacing: CGFloat {
         return 8.0
     }
-
-    var nonImageHeightForItems: CGFloat {
-        return  60.0
-    }
 }
 
 struct PreviewGridCollectionViewLayoutIPhoneSmall: PreviewGridCollectionViewLayoutConfigurable {

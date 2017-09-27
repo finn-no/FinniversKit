@@ -2,6 +2,7 @@
 <playground version='6.0' target-platform='ios'>
     <pages>
         <page name='Preview Cell'/>
+        <page name='Preview Grid'/>
         <page name='Front page'/>
     </pages>
 </playground>
