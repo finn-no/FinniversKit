@@ -66,7 +66,6 @@ public class PreviewGridView: UIView {
     // Mark: - Dependency injection
     public var previewPresentables: [PreviewPresentable] = [PreviewPresentable]() {
         didSet {
-            print(previewPresentables.count)
             collectionView.reloadData()
         }
     }
