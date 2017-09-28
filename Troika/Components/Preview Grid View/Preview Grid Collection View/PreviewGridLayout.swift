@@ -75,9 +75,15 @@ class PreviewGridLayout: UICollectionViewLayout {
         return (configuration.columnSpacing * CGFloat(columnIndex)) + (itemWidth * CGFloat(columnIndex)) + configuration.sidePadding
     }
 
-    private func prepareDiscoverSection(offset: CGFloat) -> [UICollectionViewLayoutAttributes] {
+    // MARK: - UICollectionViewLayout (Overrides)
+
+    override func prepare() {
+        super.prepare()
+
+        itemAttributes = [UICollectionViewLayoutAttributes]()
+
         guard let collectionView = collectionView else {
-            return []
+            return
         }
 
         let columnsRange = 0..<configuration.numberOfColumns
@@ -90,7 +96,7 @@ class PreviewGridLayout: UICollectionViewLayout {
             let columnIndex = indexOfLowestValue(in: columns)
 
             let xOffset = xOffsetForItemInColumn(itemWidth: itemWidth, columnIndex: columnIndex)
-            let topPadding = configuration.numberOfColumns > index ? offset : 0.0
+            let topPadding = configuration.numberOfColumns > index ? configuration.topOffset : 0.0
             let verticalOffset = CGFloat(columns[columnIndex]) + topPadding
 
             let indexPath = IndexPath(item: index, section: 0)
@@ -106,19 +112,7 @@ class PreviewGridLayout: UICollectionViewLayout {
             attributesCollection.append(attributes)
         }
 
-        return attributesCollection
-    }
-
-    // MARK: - UICollectionViewLayout (Overrides)
-
-    override func prepare() {
-        super.prepare()
-
-        itemAttributes = [UICollectionViewLayoutAttributes]()
-
-        let section = prepareDiscoverSection(offset: configuration.topOffset)
-
-        itemAttributes.append(contentsOf: section)
+        itemAttributes.append(contentsOf: attributesCollection)
     }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
