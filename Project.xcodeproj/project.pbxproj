@@ -16,7 +16,7 @@
 		CB3664271F73F8CE009D3244 /* PreviewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */; };
 		CB36642B1F73F9D1009D3244 /* PreviewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642A1F73F9D1009D3244 /* PreviewGridView.swift */; };
 		CB36642D1F73FA0B009D3244 /* PreviewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642C1F73FA0B009D3244 /* PreviewGridLayout.swift */; };
-		CB36642F1F73FB78009D3244 /* PreviewGridLayoutConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfigurable.swift */; };
+		CB36642F1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift */; };
 		CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3CF1581F73E5870041EF20 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB3CF15E1F73E5D30041EF20 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */; };
 /* End PBXBuildFile section */
@@ -48,7 +48,7 @@
 		CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPresentable.swift; sourceTree = "<group>"; };
 		CB36642A1F73F9D1009D3244 /* PreviewGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
 		CB36642C1F73FA0B009D3244 /* PreviewGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
-		CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfigurable.swift; sourceTree = "<group>"; };
+		CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3CF1581F73E5870041EF20 /* Troika.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Troika.h; sourceTree = "<group>"; };
 		CB3CF1591F73E5870041EF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 			children = (
 				CB36642A1F73F9D1009D3244 /* PreviewGridView.swift */,
 				CB36642C1F73FA0B009D3244 /* PreviewGridLayout.swift */,
-				CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfigurable.swift */,
+				CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift */,
 			);
 			path = "Preview Grid Collection View";
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB36642B1F73F9D1009D3244 /* PreviewGridView.swift in Sources */,
-				CB36642F1F73FB78009D3244 /* PreviewGridLayoutConfigurable.swift in Sources */,
+				CB36642F1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift in Sources */,
 				CB36642D1F73FA0B009D3244 /* PreviewGridLayout.swift in Sources */,
 				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
 				CB3664271F73F8CE009D3244 /* PreviewPresentable.swift in Sources */,

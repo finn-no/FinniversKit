@@ -10,18 +10,12 @@ class PreviewGridLayout: UICollectionViewLayout {
     private let delegate: PreviewGridLayoutDelegate
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
-    private var configuration: PreviewGridLayoutConfigurable {
-        guard let window = collectionView?.window else {
-            fatalError("Layout unusable without window!")
+    private var configuration: PreviewGridLayoutConfiguration {
+        guard let collectionView = collectionView else {
+            fatalError("Layout unusable without collection view!")
         }
 
-        let iPhone7ScreenWidth: CGFloat = 375.0
-
-        switch window.frame.size.width {
-        case let width where width > iPhone7ScreenWidth: return PreviewGridLayoutIPad()
-        case let width where width < iPhone7ScreenWidth: return PreviewGridLayoutIPhoneSmall()
-        default: return PreviewGridLayoutIPhone()
-        }
+        return PreviewGridLayoutConfiguration(width: collectionView.frame.size.width)
     }
 
     init(delegate: PreviewGridLayoutDelegate) {
