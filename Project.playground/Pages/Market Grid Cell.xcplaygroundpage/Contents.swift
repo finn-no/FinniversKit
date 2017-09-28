@@ -15,8 +15,6 @@ let shouldShowExternalLinkIcon = true
 let marketGridCell = MarketGridCell(frame: .zero)
 let presentable = MarketGridDataModel(iconImage: image, showExternalLinkIcon: shouldShowExternalLinkIcon, title: title)
 
-let multiplier = image.size.height / image.size.width
-let dynamicHeight: CGFloat = (width * multiplier) + MarketGridCell.nonImageHeight
 let height: CGFloat = 60.0
 let width: CGFloat = 83.0
 
