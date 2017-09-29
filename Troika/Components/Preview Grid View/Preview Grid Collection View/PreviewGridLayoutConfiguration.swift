@@ -5,13 +5,13 @@ enum PreviewGridLayoutConfiguration {
     case medium
     case large
 
-    static let mediumWidth: CGFloat = 375.0
+    static let mediumRange: Range<CGFloat> = (375.0..<415.0)
 
     init(width: CGFloat) {
         switch width {
-        case let width where width > PreviewGridLayoutConfiguration.mediumWidth: self = .large
-        case let width where width < PreviewGridLayoutConfiguration.mediumWidth: self = .small
-        default: self =  .medium
+        case let width where width > PreviewGridLayoutConfiguration.mediumRange.upperBound: self = .large
+        case let width where width < PreviewGridLayoutConfiguration.mediumRange.lowerBound: self = .small
+        default: self = .medium
         }
     }
 
