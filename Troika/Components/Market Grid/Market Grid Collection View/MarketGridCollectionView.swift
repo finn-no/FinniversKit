@@ -65,7 +65,7 @@ enum ScreenSizeCategory {
     var itemsPerRow: CGFloat {
         switch self {
         case .large:
-            return 6
+            return 5
         case .medium:
             return 4
         case .small:
@@ -86,8 +86,6 @@ enum ScreenSizeCategory {
 public class MarketGridCollectionView: UIView {
     
     // Mark: - Internal properties
-    
-    static let itemHeight = CGFloat(60)
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
