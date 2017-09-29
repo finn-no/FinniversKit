@@ -138,7 +138,6 @@ public class PreviewCell: UICollectionViewCell {
 
         imageTextLabel.topAnchor.constraint(equalTo: imageDesciptionView.topAnchor).isActive = true
         imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: PreviewCell.margin ).isActive = true
-        imageTextLabel.heightAnchor.constraint(equalToConstant: PreviewCell.titleHeight).isActive = true
         imageTextLabel.bottomAnchor.constraint(equalTo: imageDesciptionView.bottomAnchor).isActive = true
 
         imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
