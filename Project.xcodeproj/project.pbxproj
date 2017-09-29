@@ -13,12 +13,13 @@
 		25D04D861F583B1800EA317D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D851F583B1800EA317D /* Assets.xcassets */; };
 		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
 		CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664241F73F818009D3244 /* UIFont+Troika.swift */; };
-		CB3664271F73F8CE009D3244 /* GridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664261F73F8CE009D3244 /* GridPresentable.swift */; };
-		CB36642B1F73F9D1009D3244 /* GridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642A1F73F9D1009D3244 /* GridCollectionView.swift */; };
-		CB36642D1F73FA0B009D3244 /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642C1F73FA0B009D3244 /* GridCollectionViewLayout.swift */; };
-		CB36642F1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642E1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift */; };
+		CB3664271F73F8CE009D3244 /* PreviewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */; };
+		CB36642B1F73F9D1009D3244 /* PreviewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642A1F73F9D1009D3244 /* PreviewGridView.swift */; };
+		CB36642D1F73FA0B009D3244 /* PreviewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642C1F73FA0B009D3244 /* PreviewGridLayout.swift */; };
+		CB36642F1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift */; };
 		CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3CF1581F73E5870041EF20 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB3CF15E1F73E5D30041EF20 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB58A75E1F73B86C00A5A19F /* GridCell.swift */; };
+		CB3CF15E1F73E5D30041EF20 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */; };
+		CBC2E0271F7D16BB00D5CF58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,14 +46,15 @@
 		CB2FE4D51F7A4EFB00616815 /* Project.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Project.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Troika View.xctemplate"; sourceTree = "<group>"; };
 		CB3664241F73F818009D3244 /* UIFont+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
-		CB3664261F73F8CE009D3244 /* GridPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPresentable.swift; sourceTree = "<group>"; };
-		CB36642A1F73F9D1009D3244 /* GridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionView.swift; sourceTree = "<group>"; };
-		CB36642C1F73FA0B009D3244 /* GridCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayout.swift; sourceTree = "<group>"; };
-		CB36642E1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayoutConfigurable.swift; sourceTree = "<group>"; };
+		CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPresentable.swift; sourceTree = "<group>"; };
+		CB36642A1F73F9D1009D3244 /* PreviewGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
+		CB36642C1F73FA0B009D3244 /* PreviewGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
+		CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3CF1581F73E5870041EF20 /* Troika.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Troika.h; sourceTree = "<group>"; };
 		CB3CF1591F73E5870041EF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB58A75E1F73B86C00A5A19F /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,23 +115,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CB3664281F73F9A2009D3244 /* Grid */ = {
+		CB3664281F73F9A2009D3244 /* Preview Grid View */ = {
 			isa = PBXGroup;
 			children = (
-				CB3664291F73F9B6009D3244 /* Grid Collection View */,
-				CB58A75D1F73B81800A5A19F /* Grid Cell */,
+				CB3664291F73F9B6009D3244 /* Preview Grid Collection View */,
+				CB58A75D1F73B81800A5A19F /* Preview Cell */,
 			);
-			path = Grid;
+			path = "Preview Grid View";
 			sourceTree = "<group>";
 		};
-		CB3664291F73F9B6009D3244 /* Grid Collection View */ = {
+		CB3664291F73F9B6009D3244 /* Preview Grid Collection View */ = {
 			isa = PBXGroup;
 			children = (
-				CB36642A1F73F9D1009D3244 /* GridCollectionView.swift */,
-				CB36642C1F73FA0B009D3244 /* GridCollectionViewLayout.swift */,
-				CB36642E1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift */,
+				CB36642A1F73F9D1009D3244 /* PreviewGridView.swift */,
+				CB36642C1F73FA0B009D3244 /* PreviewGridLayout.swift */,
+				CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift */,
 			);
-			path = "Grid Collection View";
+			path = "Preview Grid Collection View";
 			sourceTree = "<group>";
 		};
 		CB3CF1571F73E5870041EF20 /* Troika */ = {
@@ -138,6 +140,7 @@
 				CB3664231F73F7FE009D3244 /* Extensions */,
 				CB58A7601F73B88E00A5A19F /* Templates */,
 				CB58A75C1F73B81000A5A19F /* Components */,
+				CBC2E0251F7D169E00D5CF58 /* Resources */,
 				CB3CF1581F73E5870041EF20 /* Troika.h */,
 				CB3CF1591F73E5870041EF20 /* Info.plist */,
 			);
@@ -147,18 +150,18 @@
 		CB58A75C1F73B81000A5A19F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CB3664281F73F9A2009D3244 /* Grid */,
+				CB3664281F73F9A2009D3244 /* Preview Grid View */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		CB58A75D1F73B81800A5A19F /* Grid Cell */ = {
+		CB58A75D1F73B81800A5A19F /* Preview Cell */ = {
 			isa = PBXGroup;
 			children = (
-				CB58A75E1F73B86C00A5A19F /* GridCell.swift */,
-				CB3664261F73F8CE009D3244 /* GridPresentable.swift */,
+				CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */,
+				CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */,
 			);
-			path = "Grid Cell";
+			path = "Preview Cell";
 			sourceTree = "<group>";
 		};
 		CB58A7601F73B88E00A5A19F /* Templates */ = {
@@ -167,6 +170,14 @@
 				CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */,
 			);
 			path = Templates;
+			sourceTree = "<group>";
+		};
+		CBC2E0251F7D169E00D5CF58 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,7 +238,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
 					25D04D7A1F583B1800EA317D = {
@@ -274,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBC2E0271F7D16BB00D5CF58 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,12 +322,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB36642B1F73F9D1009D3244 /* GridCollectionView.swift in Sources */,
-				CB36642F1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift in Sources */,
-				CB36642D1F73FA0B009D3244 /* GridCollectionViewLayout.swift in Sources */,
+				CB36642B1F73F9D1009D3244 /* PreviewGridView.swift in Sources */,
+				CB36642F1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift in Sources */,
+				CB36642D1F73FA0B009D3244 /* PreviewGridLayout.swift in Sources */,
 				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
-				CB3664271F73F8CE009D3244 /* GridPresentable.swift in Sources */,
-				CB3CF15E1F73E5D30041EF20 /* GridCell.swift in Sources */,
+				CB3664271F73F8CE009D3244 /* PreviewPresentable.swift in Sources */,
+				CB3CF15E1F73E5D30041EF20 /* PreviewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +363,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -359,7 +373,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -401,7 +419,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -409,7 +429,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -472,6 +496,7 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -505,6 +530,7 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
