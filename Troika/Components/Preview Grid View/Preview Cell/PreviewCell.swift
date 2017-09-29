@@ -53,7 +53,7 @@ public class PreviewCell: UICollectionViewCell {
     private lazy var imageDesciptionView: UIView = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         view.alpha = 1.0
         view.layer.cornerRadius = PreviewCell.cornerRadius
         view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
