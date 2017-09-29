@@ -1,27 +1,24 @@
 import UIKit
 
-protocol GridCollectionViewLayoutDelegate {
-    func relativeHeightForItem(atIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
+protocol PreviewGridLayoutDelegate {
+    func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
+    func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
 }
 
-class GridCollectionViewLayout: UICollectionViewLayout {
+class PreviewGridLayout: UICollectionViewLayout {
 
-    private let delegate: GridCollectionViewLayoutDelegate
+    private let delegate: PreviewGridLayoutDelegate
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
-    private var configuration: GridCollectionViewLayoutConfigurable {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return GridCollectionViewLayoutIPad()
+    private var configuration: PreviewGridLayoutConfiguration {
+        guard let collectionView = collectionView else {
+            fatalError("Layout unusable without collection view!")
         }
 
-        if let window = collectionView?.window, window.frame.size.width < CGFloat(375.0) {
-            return GridCollectionViewLayoutIPhoneSmall()
-        }
-
-        return GridCollectionViewLayoutIPhone()
+        return PreviewGridLayoutConfiguration(width: collectionView.frame.size.width)
     }
 
-    init(delegate: GridCollectionViewLayoutDelegate) {
+    init(delegate: PreviewGridLayoutDelegate) {
         self.delegate = delegate
         super.init()
     }
@@ -44,10 +41,6 @@ class GridCollectionViewLayout: UICollectionViewLayout {
         let columnWidth = columnsWidth / CGFloat(configuration.numberOfColumns)
 
         return columnWidth
-    }
-
-    private var itemHeight: CGFloat {
-        return itemWidth
     }
 
     private var numberOfItems: Int {
@@ -76,9 +69,15 @@ class GridCollectionViewLayout: UICollectionViewLayout {
         return (configuration.columnSpacing * CGFloat(columnIndex)) + (itemWidth * CGFloat(columnIndex)) + configuration.sidePadding
     }
 
-    private func prepareDiscoverSection(offset: CGFloat) -> [UICollectionViewLayoutAttributes] {
+    // MARK: - UICollectionViewLayout (Overrides)
+
+    override func prepare() {
+        super.prepare()
+
+        itemAttributes = [UICollectionViewLayoutAttributes]()
+
         guard let collectionView = collectionView else {
-            return []
+            return
         }
 
         let columnsRange = 0..<configuration.numberOfColumns
@@ -91,14 +90,14 @@ class GridCollectionViewLayout: UICollectionViewLayout {
             let columnIndex = indexOfLowestValue(in: columns)
 
             let xOffset = xOffsetForItemInColumn(itemWidth: itemWidth, columnIndex: columnIndex)
-            let topPadding = configuration.numberOfColumns > index ? offset : 0.0
+            let topPadding = configuration.numberOfColumns > index ? configuration.topOffset : 0.0
             let verticalOffset = CGFloat(columns[columnIndex]) + topPadding
 
-            let indexPath = IndexPath(item: index, section: 1)
-            let itemRelativeHeight = delegate.relativeHeightForItem(atIndexPath: indexPath, inCollectionView: collectionView)
-            let itemAdditionalHeight = configuration.nonImageHeightForItems // No good.
+            let indexPath = IndexPath(item: index, section: 0)
+            let imageHeightRatio = delegate.imageHeightRatio(forItemAt: indexPath, inCollectionView: collectionView)
+            let itemNonImageHeight = delegate.itemNonImageHeight(forItemAt: indexPath, inCollectionView: collectionView)
 
-            let itemHeight = (itemRelativeHeight * itemWidth) + itemAdditionalHeight
+            let itemHeight = (imageHeightRatio * itemWidth) + itemNonImageHeight
 
             columns[columnIndex] = Int(verticalOffset + itemHeight + configuration.columnSpacing)
 
@@ -107,19 +106,7 @@ class GridCollectionViewLayout: UICollectionViewLayout {
             attributesCollection.append(attributes)
         }
 
-        return attributesCollection
-    }
-
-    // MARK: - UICollectionViewLayout (Overrides)
-
-    override func prepare() {
-        super.prepare()
-
-        itemAttributes = [UICollectionViewLayoutAttributes]()
-
-        let section = prepareDiscoverSection(offset: configuration.topOffset)
-
-        itemAttributes.append(contentsOf: section)
+        itemAttributes.append(contentsOf: attributesCollection)
     }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
