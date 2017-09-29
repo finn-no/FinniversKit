@@ -19,6 +19,7 @@
 		CB36642F1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift */; };
 		CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3CF1581F73E5870041EF20 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB3CF15E1F73E5D30041EF20 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */; };
+		CBC2E0271F7D16BB00D5CF58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,7 @@
 		CB3CF1581F73E5870041EF20 /* Troika.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Troika.h; sourceTree = "<group>"; };
 		CB3CF1591F73E5870041EF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				CB3664231F73F7FE009D3244 /* Extensions */,
 				CB58A7601F73B88E00A5A19F /* Templates */,
 				CB58A75C1F73B81000A5A19F /* Components */,
+				CBC2E0251F7D169E00D5CF58 /* Resources */,
 				CB3CF1581F73E5870041EF20 /* Troika.h */,
 				CB3CF1591F73E5870041EF20 /* Info.plist */,
 			);
@@ -167,6 +170,14 @@
 				CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */,
 			);
 			path = Templates;
+			sourceTree = "<group>";
+		};
+		CBC2E0251F7D169E00D5CF58 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBC2E0271F7D16BB00D5CF58 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
