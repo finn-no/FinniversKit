@@ -61,16 +61,11 @@ public struct PreviewDataModelFactory {
 
     public static func create(numberOfModels: Int) -> [PreviewDataModel] {
         return (0..<numberOfModels).map { index in
-            let imageSource = random(in: imageSources)
-            let title = random(in: titles)
-            let subTitle = random(in: subTitles)
+            let imageSource = imageSources[index]
+            let title = titles[index]
+            let subTitle = subTitles[index]
             return PreviewDataModel(imageUrl: imageSource.url, imageSize: imageSource.size, iconImage: #imageLiteral(resourceName: "bil.png"), title: title, subTitle: subTitle, imageText: price)
         }
-    }
-
-    private static func random<T>(in array: [T]) -> T {
-        let rand = Int(arc4random_uniform(UInt32(array.count)))
-        return array[rand]
     }
 
     private static var titles: [String] {
@@ -115,8 +110,8 @@ public struct PreviewDataModelFactory {
     private static var imageSources: [ImageSource] {
         return [
             ImageSource(url: URL(string: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg")!, size: CGSize(width: 450, height: 354)),
-            ImageSource(url: URL(string: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg")!, size: CGSize(width: 1200, height: 660)),
-            ImageSource(url: URL(string: "http://jonvilma.com/images/house-6.jpg")!, size: CGSize(width: 800, height: 600)),
+            ImageSource(url: URL(string: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg")!, size: CGSize(width: 800, height: 600)),
+            ImageSource(url: URL(string: "http://jonvilma.com/images/house-6.jpg")!, size: CGSize(width: 992, height: 546)),
             ImageSource(url: URL(string: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg")!, size: CGSize(width: 736, height: 566)),
             ImageSource(url: URL(string: "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg")!, size: CGSize(width: 550, height: 734)),
             ImageSource(url: URL(string: "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg")!, size: CGSize(width: 1000, height: 672)),
