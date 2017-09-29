@@ -3,21 +3,23 @@ import PlaygroundSupport
 import Troika
 
 struct PreviewDataModel: PreviewPresentable {
-    let image: UIImage?
-    let iconImage: UIImage?
+    let imageUrl: URL?
+    let imageSize: CGSize
+    let iconImage: UIImage
     let title: String
     let subTitle: String
     let imageText: String
 }
 
-let image = #imageLiteral(resourceName: "car.jpg")
-let icon = #imageLiteral(resourceName: "bil.png")
 let previewCell = PreviewCell(frame: .zero)
-let presentable = PreviewDataModel(image: image, iconImage: icon, title: "Rolex Daytone i platina", subTitle: "Steinkjær", imageText: "170 000,-")
+let presentable = PreviewDataModelFactory.create(numberOfModels: 1).first!
+let dataSource = APreviewCellDataSource()
 
-let multiplier = image.size.height / image.size.width
+let multiplier = presentable.imageSize.height / presentable.imageSize.width
 let width: CGFloat = 200.0
 
+previewCell.loadingColor = .blue
+previewCell.dataSource = dataSource
 previewCell.presentable = presentable
 previewCell.frame = CGRect(x: 0, y: 0, width: width, height: (width * multiplier) + PreviewCell.nonImageHeight)
 

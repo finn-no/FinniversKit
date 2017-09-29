@@ -2,31 +2,10 @@ import UIKit
 import PlaygroundSupport
 import Troika
 
-struct PreviewDataModel: PreviewPresentable {
-    let image: UIImage?
-    let iconImage: UIImage?
-    let title: String
-    let subTitle: String
-    let imageText: String
-}
-
-class TheDelegate: NSObject, PreviewGridViewDelegate {
-    func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
-        // Placeholder
-    }
-}
-
-let delegate = TheDelegate()
-let view = PreviewGridView(frame: .zero, delegate: delegate)
+let delegateDataSource = PreviewGridDelegateDataSource()
+let view = PreviewGridView(frame: .zero, delegate: delegateDataSource, dataSource: delegateDataSource)
 
 view.frame = CGRect(x: 0, y: 0, width: 375, height: 768)
-
-var presentables =  [PreviewDataModel]()
-
-for i in 0..<5 {
-    presentables.append(PreviewDataModel(image: #imageLiteral(resourceName: "car.jpg"), iconImage: #imageLiteral(resourceName: "bil.png"), title: "Rolex Daytone i platina", subTitle: "Steinkjær", imageText: "170 000,-"))
-}
-
-view.previewPresentables = presentables
+view.previewPresentables = PreviewDataModelFactory.create(numberOfModels: 10)
 
 PlaygroundPage.current.liveView = view
