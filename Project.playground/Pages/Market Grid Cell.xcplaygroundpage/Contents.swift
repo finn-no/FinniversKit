@@ -8,8 +8,8 @@ struct MarketGridDataModel: MarketGridPresentable {
     let title: String
 }
 
-let image = #imageLiteral(resourceName: "eiendom.png")
-let title = "Eiendom"
+let image = #imageLiteral(resourceName: "moteplassen.png")
+let title = "Møteplassen"
 let shouldShowExternalLinkIcon = true
 
 let marketGridCell = MarketGridCell(frame: .zero)
