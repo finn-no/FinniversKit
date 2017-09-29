@@ -11,14 +11,15 @@ protocol MarketGridCollectionViewDelegate: NSObjectProtocol {
 enum ScreenSizeCategory {
     case small
     case medium
-    case large
+    case large(CGFloat)
     
     static let mediumRange: Range<CGFloat> = (375.0..<415.0)
+    static let portraitModeScreenWidth = CGFloat(768)
     
     init(width: CGFloat) {
         switch width {
         case let width where width > ScreenSizeCategory.mediumRange.upperBound:
-            self = .large
+            self = .large(width)
         case let width where width < ScreenSizeCategory.mediumRange.lowerBound:
             self = .small
         default:
@@ -38,7 +39,7 @@ enum ScreenSizeCategory {
     var sideMargins: CGFloat {
         switch self {
         case .large:
-            return 16
+            return 20
         default:
             return 16
         }
@@ -64,8 +65,12 @@ enum ScreenSizeCategory {
     
     var itemsPerRow: CGFloat {
         switch self {
-        case .large:
-            return 5
+        case .large(let width):
+            if width > ScreenSizeCategory.portraitModeScreenWidth {
+                return 6
+            } else {
+                return 5
+            }
         case .medium:
             return 4
         case .small:
