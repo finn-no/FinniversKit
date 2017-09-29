@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D04D7E1F583B1800EA317D /* AppDelegate.swift */; };
-		25D04D811F583B1800EA317D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D04D801F583B1800EA317D /* ViewController.swift */; };
-		25D04D841F583B1800EA317D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D821F583B1800EA317D /* Main.storyboard */; };
 		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
 		455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866061F7A751300F670EF /* MarketGridCollectionView.swift */; };
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
@@ -45,8 +43,6 @@
 /* Begin PBXFileReference section */
 		25D04D7B1F583B1800EA317D /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25D04D7E1F583B1800EA317D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		25D04D801F583B1800EA317D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		25D04D831F583B1800EA317D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25D04D881F583B1800EA317D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25D04D8A1F583B1800EA317D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		455866061F7A751300F670EF /* MarketGridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCollectionView.swift; sourceTree = "<group>"; };
@@ -114,8 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				25D04D7E1F583B1800EA317D /* AppDelegate.swift */,
-				25D04D801F583B1800EA317D /* ViewController.swift */,
-				25D04D821F583B1800EA317D /* Main.storyboard */,
 				CB3E67C81F7E62A300C40D47 /* Assets.xcassets */,
 				25D04D871F583B1800EA317D /* LaunchScreen.storyboard */,
 				25D04D8A1F583B1800EA317D /* Info.plist */,
@@ -281,7 +275,6 @@
 				CB3CF1511F73E5870041EF20 /* Sources */,
 				CB3CF1521F73E5870041EF20 /* Frameworks */,
 				CB3CF1531F73E5870041EF20 /* Headers */,
-				CB3CF1541F73E5870041EF20 /* Resources */,
 				CB2FE4D71F7A533300616815 /* Update templates */,
 			);
 			buildRules = (
@@ -339,7 +332,6 @@
 			files = (
 				25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */,
 				CB3E67C91F7E62A300C40D47 /* Assets.xcassets in Resources */,
-				25D04D841F583B1800EA317D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +359,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25D04D811F583B1800EA317D /* ViewController.swift in Sources */,
 				25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,14 +386,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		25D04D821F583B1800EA317D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				25D04D831F583B1800EA317D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		25D04D871F583B1800EA317D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
