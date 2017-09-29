@@ -53,6 +53,15 @@ enum ScreenSizeCategory {
         }
     }
     
+    var lineSpacing: CGFloat {
+        switch self {
+        case .large:
+            return 30
+        default:
+            return 16
+        }
+    }
+    
     var itemsPerRow: CGFloat {
         switch self {
         case .large:
@@ -145,7 +154,6 @@ extension MarketGridCollectionView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenWidth = ScreenSizeCategory(width: bounds.width)
         let itemSize = CGSize(width: bounds.width/screenWidth.itemsPerRow - screenWidth.sideMargins - screenWidth.interimSpacing, height: screenWidth.itemHeight)
-        
         return itemSize
     }
     
@@ -155,7 +163,8 @@ extension MarketGridCollectionView: UICollectionViewDelegateFlowLayout {
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        let screenWidth = ScreenSizeCategory(width: bounds.width)
+        return screenWidth.lineSpacing
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -171,9 +180,7 @@ extension MarketGridCollectionView: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(MarketGridCell.self, for: indexPath)
-        
         cell.presentable = marketGridPresentables[indexPath.row]
-        
         return cell
     }
 }
