@@ -21,12 +21,12 @@
 		457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */; };
 		457B35D01F7BE2670031E125 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664241F73F818009D3244 /* UIFont+Troika.swift */; };
-		CB3664271F73F8CE009D3244 /* PreviewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */; };
-		CB36642B1F73F9D1009D3244 /* PreviewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642A1F73F9D1009D3244 /* PreviewGridView.swift */; };
-		CB36642D1F73FA0B009D3244 /* PreviewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642C1F73FA0B009D3244 /* PreviewGridLayout.swift */; };
-		CB36642F1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift */; };
 		CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3CF1581F73E5870041EF20 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB3CF15E1F73E5D30041EF20 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */; };
+		CB3E67C11F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */; };
+		CB3E67C21F7E4D4000C40D47 /* PreviewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */; };
+		CB3E67C31F7E4D4000C40D47 /* PreviewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */; };
+		CB3E67C61F7E4D5D00C40D47 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C41F7E4D5D00C40D47 /* PreviewCell.swift */; };
+		CB3E67C71F7E4D5D00C40D47 /* PreviewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C51F7E4D5D00C40D47 /* PreviewPresentable.swift */; };
 		CBC2E0271F7D16BB00D5CF58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -61,14 +61,14 @@
 		CB2FE4D51F7A4EFB00616815 /* Project.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Project.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Troika View.xctemplate"; sourceTree = "<group>"; };
 		CB3664241F73F818009D3244 /* UIFont+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
-		CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPresentable.swift; sourceTree = "<group>"; };
-		CB36642A1F73F9D1009D3244 /* PreviewGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
-		CB36642C1F73FA0B009D3244 /* PreviewGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
-		CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3CF1581F73E5870041EF20 /* Troika.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Troika.h; sourceTree = "<group>"; };
 		CB3CF1591F73E5870041EF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
+		CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
+		CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
+		CB3E67C41F7E4D5D00C40D47 /* PreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		CB3E67C51F7E4D5D00C40D47 /* PreviewPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewPresentable.swift; sourceTree = "<group>"; };
 		CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,9 +188,9 @@
 		CB3664291F73F9B6009D3244 /* Preview Grid Collection View */ = {
 			isa = PBXGroup;
 			children = (
-				CB36642A1F73F9D1009D3244 /* PreviewGridView.swift */,
-				CB36642C1F73FA0B009D3244 /* PreviewGridLayout.swift */,
-				CB36642E1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift */,
+				CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */,
+				CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */,
+				CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */,
 			);
 			path = "Preview Grid Collection View";
 			sourceTree = "<group>";
@@ -221,8 +221,8 @@
 		CB58A75D1F73B81800A5A19F /* Preview Cell */ = {
 			isa = PBXGroup;
 			children = (
-				CB58A75E1F73B86C00A5A19F /* PreviewCell.swift */,
-				CB3664261F73F8CE009D3244 /* PreviewPresentable.swift */,
+				CB3E67C41F7E4D5D00C40D47 /* PreviewCell.swift */,
+				CB3E67C51F7E4D5D00C40D47 /* PreviewPresentable.swift */,
 			);
 			path = "Preview Cell";
 			sourceTree = "<group>";
@@ -385,24 +385,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB36642B1F73F9D1009D3244 /* GridCollectionView.swift in Sources */,
+				CB3E67C21F7E4D4000C40D47 /* PreviewGridLayout.swift in Sources */,
+				CB3E67C31F7E4D4000C40D47 /* PreviewGridView.swift in Sources */,
 				457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */,
 				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */,
-				CB36642F1F73FB78009D3244 /* GridCollectionViewLayoutConfigurable.swift in Sources */,
+				CB3E67C71F7E4D5D00C40D47 /* PreviewPresentable.swift in Sources */,
 				457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */,
+				CB3E67C61F7E4D5D00C40D47 /* PreviewCell.swift in Sources */,
 				455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */,
 				4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */,
-				CB36642D1F73FA0B009D3244 /* GridCollectionViewLayout.swift in Sources */,
-				CB36642B1F73F9D1009D3244 /* PreviewGridView.swift in Sources */,
-				CB36642F1F73FB78009D3244 /* PreviewGridLayoutConfiguration.swift in Sources */,
-				CB36642D1F73FA0B009D3244 /* PreviewGridLayout.swift in Sources */,
 				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
 				457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */,
-				CB3664271F73F8CE009D3244 /* GridPresentable.swift in Sources */,
-				CB3CF15E1F73E5D30041EF20 /* GridCell.swift in Sources */,
-				CB3664271F73F8CE009D3244 /* PreviewPresentable.swift in Sources */,
-				CB3CF15E1F73E5D30041EF20 /* PreviewCell.swift in Sources */,
+				CB3E67C11F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

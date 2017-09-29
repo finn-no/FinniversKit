@@ -4,7 +4,6 @@
         <page name='Preview Cell'/>
         <page name='Preview Grid'/>
         <page name='Front page'/>
-        <page name='Grid Cell'/>
         <page name='Market Grid Cell'/>
         <page name='Market Grid Collection View'/>
     </pages>
