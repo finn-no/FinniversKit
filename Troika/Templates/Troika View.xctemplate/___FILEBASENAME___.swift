@@ -22,6 +22,8 @@ class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
         // Perform setup
     }
 
+    // Mark: - Superclass Overrides
+
     // Mark: - Layout
 
     public override func layoutSubviews() {
@@ -32,5 +34,7 @@ class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
     }
 
     // Mark: - Dependency injection
+
+    // Mark: - Private
 
 }
