@@ -12,7 +12,7 @@ struct ScreenSize {
     static let iPhone5 = CGSize(width: 320, height: 568)
     static let iPhone7 = CGSize(width: 375, height: 667)
     static let iPhone7plus = CGSize(width: 414, height: 736)
-    static let iPad = CGSize(width: 703, height: 1024)
+    static let iPad = CGSize(width: 768, height: 1024)
 }
 
 let image = #imageLiteral(resourceName: "eiendom.png")
