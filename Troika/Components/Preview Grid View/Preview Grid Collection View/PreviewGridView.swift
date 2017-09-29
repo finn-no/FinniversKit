@@ -4,15 +4,19 @@ public protocol PreviewGridViewDelegate: NSObjectProtocol {
     func didSelect(item: PreviewPresentable, in gridView: PreviewGridView)
 }
 
+public protocol PreviewGridViewDataSource: NSObjectProtocol {
+    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ()))
+}
+
 public class PreviewGridView: UIView {
 
     // Mark: - Internal properties
 
-    // Have the collection view be private so nobody messes with it.
     private lazy var collectionViewLayout: PreviewGridLayout = {
         return PreviewGridLayout(delegate: self)
     }()
 
+    // Have the collection view be private so nobody messes with it.
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,15 +28,17 @@ public class PreviewGridView: UIView {
     }()
 
     private weak var delegate: PreviewGridViewDelegate?
+    private weak var dataSource: PreviewGridViewDataSource?
 
     // Mark: - External properties
 
     // Mark: - Setup
 
-    public init(frame: CGRect = .zero, delegate: PreviewGridViewDelegate) {
+    public init(frame: CGRect = .zero, delegate: PreviewGridViewDelegate, dataSource: PreviewGridViewDataSource) {
         super.init(frame: frame)
 
         self.delegate = delegate
+        self.dataSource = dataSource
 
         setup()
     }
@@ -74,6 +80,10 @@ public class PreviewGridView: UIView {
 // MARK: - UICollectionViewDelegate
 extension PreviewGridView: UICollectionViewDelegate {
 
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = previewPresentables[indexPath.row]
+        delegate?.didSelect(item: item, in: self)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -90,10 +100,24 @@ extension PreviewGridView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PreviewCell.self), for: indexPath) as! PreviewCell
 
+        // Show a pretty color while we load the image
+        let colors: [UIColor] = [.red, .blue, .yellow] // TODO: Use Troika colors
+        let color = colors[indexPath.row % 3]
+
         let presentable = previewPresentables[indexPath.row]
+        cell.loadingColor = color
+        cell.dataSource = self
         cell.presentable = presentable
 
         return cell
+    }
+}
+
+// MARK: - PreviewCellDataSource
+extension PreviewGridView: PreviewCellDataSource {
+
+    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ())) {
+        dataSource?.loadImage(for: url, completion: completion)
     }
 }
 
@@ -103,12 +127,12 @@ extension PreviewGridView: PreviewGridLayoutDelegate {
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
         let presentable = previewPresentables[indexPath.row]
 
-        guard let size = presentable.image?.size, size != .zero else {
+        guard presentable.imageSize != .zero, presentable.imageUrl != nil else {
             let defaultImageSize = CGSize(width: 104, height: 78)
             return defaultImageSize.height / defaultImageSize.width
         }
 
-        return size.height / size.width
+        return presentable.imageSize.height / presentable.imageSize.width
     }
 
     func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
