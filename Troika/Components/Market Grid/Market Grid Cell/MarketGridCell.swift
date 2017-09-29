@@ -9,8 +9,7 @@ public class MarketGridCell: UICollectionViewCell {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -59,16 +58,14 @@ public class MarketGridCell: UICollectionViewCell {
         super.layoutSubviews()
         
         iconImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        iconImageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: MarketGridCell.titleLabelMargin).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: MarketGridCell.titleLabelHeight).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        externalLinkImageView.trailingAnchor.constraint(equalTo: iconImageView.trailingAnchor).isActive = true
+        externalLinkImageView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor).isActive = true
         externalLinkImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
     }
     
