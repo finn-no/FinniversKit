@@ -4,7 +4,6 @@ public class MarketGridCell: UICollectionViewCell {
     
     // Mark: - Internal properties
     
-    private static let titleLabelHeight: CGFloat = 18.0
     private static let titleLabelMargin: CGFloat = 8.0
     
     private lazy var iconImageView: UIImageView = {
@@ -34,10 +33,6 @@ public class MarketGridCell: UICollectionViewCell {
     }()
     
     // Mark: - External properties
-    
-    public static var nonImageHeight: CGFloat {
-        return titleLabelHeight + titleLabelMargin
-    }
     
     // Mark: - Setup
     
