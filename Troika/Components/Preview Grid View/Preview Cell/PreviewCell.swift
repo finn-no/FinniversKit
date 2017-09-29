@@ -1,5 +1,9 @@
 import UIKit
 
+public protocol PreviewCellDataSource {
+    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ()))
+}
+
 public class PreviewCell: UICollectionViewCell {
 
     // Mark: - Internal properties
@@ -149,13 +153,50 @@ public class PreviewCell: UICollectionViewCell {
 
     // Mark: - Dependency injection
 
+    /// The presentable contains data used to populate the view.
     public var presentable: PreviewPresentable? {
         didSet {
-            imageView.image = presentable?.image
-            iconImageView.image = presentable?.iconImage?.withRenderingMode(.alwaysTemplate)
-            titleLabel.text = presentable?.title
-            subTitleLabel.text = presentable?.subTitle
-            imageTextLabel.text = presentable?.imageText
+            if let presentable = presentable {
+                iconImageView.image = presentable.iconImage.withRenderingMode(.alwaysTemplate)
+                titleLabel.text = presentable.title
+                subTitleLabel.text = presentable.subTitle
+                imageTextLabel.text = presentable.imageText
+
+                loadImage(presentable: presentable)
+            }
         }
+    }
+
+    /// The loading color is used to fill the image view while we load the image.
+    public var loadingColor: UIColor?
+
+    /// A data source for the loading of the image
+    public var dataSource: PreviewCellDataSource?
+
+    // Mark: - Private
+
+    private func loadImage(presentable: PreviewPresentable) {
+        guard let dataSource = dataSource, let imageUrl = presentable.imageUrl else {
+            loadingColor = .clear
+            imageView.image = defaultImage
+            return
+        }
+
+        imageView.backgroundColor = loadingColor
+
+        dataSource.loadImage(for: imageUrl) { [weak self] image in
+            self?.imageView.backgroundColor = .clear
+            
+            if let image = image {
+                self?.imageView.image = image
+            } else {
+                self?.imageView.image = self?.defaultImage
+            }
+        }
+    }
+
+    private var defaultImage: UIImage? {
+        let bundle = Bundle(for: PreviewCell.self)
+        return UIImage(named: "NoImage", in: bundle, compatibleWith: nil)
     }
 }
