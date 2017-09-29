@@ -100,6 +100,17 @@ public class PreviewCell: UICollectionViewCell {
         backgroundColor = .white
     }
 
+    // Mark: - Superclass Overrides
+
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+        iconImageView.image = nil
+        titleLabel.text = ""
+        subTitleLabel.text = ""
+        imageTextLabel.text = ""
+    }
+
     // Mark: - Layout
 
     public override func layoutSubviews() {
