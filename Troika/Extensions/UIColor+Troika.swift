@@ -24,6 +24,6 @@ public extension UIColor {
     
     // Detail colors
     static let pea = colorFromRGB(104, 226, 186)
-    static let watermelon = colorFromRGB(104, 226, 186)
+    static let watermelon = colorFromRGB(255, 88, 68)
     static let cherry = colorFromRGB(218, 36, 0)
 }
