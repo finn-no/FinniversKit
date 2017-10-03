@@ -196,7 +196,6 @@ public class PreviewCell: UICollectionViewCell {
     }
 
     private var defaultImage: UIImage? {
-        let bundle = Bundle(for: PreviewCell.self)
-        return UIImage(named: "NoImage", in: bundle, compatibleWith: nil)
+        return UIImage(frameworkImageNamed: "NoImage")
     }
 }
