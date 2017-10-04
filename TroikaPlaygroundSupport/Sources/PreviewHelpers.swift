@@ -64,7 +64,7 @@ public struct PreviewDataModelFactory {
             let imageSource = imageSources[index]
             let title = titles[index]
             let subTitle = subTitles[index]
-            let icon = UIImage(named: "bil", in: Bundle(for: APreviewCellDataSource.self), compatibleWith: nil)!
+            let icon = UIImage(named: "bil", in: .troikaPlaygroundSupport, compatibleWith: nil)!
             return PreviewDataModel(imageUrl: imageSource.url, imageSize: imageSource.size, iconImage: icon, title: title, subTitle: subTitle, imageText: price)
         }
     }

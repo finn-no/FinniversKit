@@ -32,6 +32,7 @@
 		CB400B201F83C7C100B26C1C /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */; };
 		CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B211F83C96600B26C1C /* UIImage+Troika.swift */; };
 		CB400B241F83C9D400B26C1C /* Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B231F83C9D400B26C1C /* Troika.swift */; };
+		CB6CF7381F84F880003B73D2 /* TroikaPlaygroundSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CF7371F84F880003B73D2 /* TroikaPlaygroundSupport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +84,7 @@
 		CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
 		CB400B211F83C96600B26C1C /* UIImage+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Troika.swift"; sourceTree = "<group>"; };
 		CB400B231F83C9D400B26C1C /* Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Troika.swift; path = Troika/Troika.swift; sourceTree = SOURCE_ROOT; };
+		CB6CF7371F84F880003B73D2 /* TroikaPlaygroundSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroikaPlaygroundSupport.swift; sourceTree = "<group>"; };
 		CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -241,6 +243,7 @@
 				CB400B1A1F83C25D00B26C1C /* Sources */,
 				CB400B1B1F83C26B00B26C1C /* Resources */,
 				CB400B111F83BE2400B26C1C /* TroikaPlaygroundSupport.h */,
+				CB6CF7371F84F880003B73D2 /* TroikaPlaygroundSupport.swift */,
 				CB400B121F83BE2400B26C1C /* Info.plist */,
 			);
 			path = TroikaPlaygroundSupport;
@@ -494,6 +497,7 @@
 			files = (
 				CB400B201F83C7C100B26C1C /* PlaygroundImage.swift in Sources */,
 				CB400B171F83BE2E00B26C1C /* PreviewHelpers.swift in Sources */,
+				CB6CF7381F84F880003B73D2 /* TroikaPlaygroundSupport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

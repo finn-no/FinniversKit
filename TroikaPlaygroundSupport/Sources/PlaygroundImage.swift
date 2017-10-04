@@ -16,6 +16,6 @@ public enum PlaygroundImage: String {
     case webview
 
     public var image: UIImage {
-        return UIImage(named: self.rawValue, in: Bundle(for: APreviewCellDataSource.self), compatibleWith: nil)!
+        return UIImage(named: self.rawValue, in: .troikaPlaygroundSupport, compatibleWith: nil)!
     }
 }
