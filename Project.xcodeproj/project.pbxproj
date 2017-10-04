@@ -13,11 +13,11 @@
 		453D88801F85192700FC63C7 /* FINNTypeWebStrippet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D88791F84FF6900FC63C7 /* FINNTypeWebStrippet-Light.ttf */; };
 		453D88811F85192700FC63C7 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */; };
 		453D88821F85192700FC63C7 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */; };
+		453D88831F851C0500FC63C7 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456DD3D91F83AFF60077085E /* Colors.xcassets */; };
 		455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866061F7A751300F670EF /* MarketGridCollectionView.swift */; };
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
 		4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */; };
 		4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */; };
-		456DD3DA1F83AFF60077085E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456DD3D91F83AFF60077085E /* Colors.xcassets */; };
 		457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C61F7BC4100031E125 /* Identifiable.swift */; };
 		457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */; };
 		457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */; };
@@ -460,6 +460,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				453D88831F851C0500FC63C7 /* Colors.xcassets in Resources */,
 				453D887F1F85192700FC63C7 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
 				453D88801F85192700FC63C7 /* FINNTypeWebStrippet-Light.ttf in Resources */,
 				453D88811F85192700FC63C7 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
@@ -471,7 +472,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				456DD3DA1F83AFF60077085E /* Colors.xcassets in Resources */,
 				CB400B191F83BFE300B26C1C /* Playground.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
