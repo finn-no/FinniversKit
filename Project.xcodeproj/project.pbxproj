@@ -46,6 +46,10 @@
 		25D04D7E1F583B1800EA317D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25D04D881F583B1800EA317D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25D04D8A1F583B1800EA317D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		453D88791F84FF6900FC63C7 /* FINNTypeWebStrippet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Light.ttf"; sourceTree = "<group>"; };
+		453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
+		453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
+		453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
 		455866061F7A751300F670EF /* MarketGridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCollectionView.swift; sourceTree = "<group>"; };
 		455866081F7A77B100F670EF /* MarketGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
 		4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridPresentable.swift; sourceTree = "<group>"; };
@@ -118,6 +122,17 @@
 				25D04D8A1F583B1800EA317D /* Info.plist */,
 			);
 			path = Project;
+			sourceTree = "<group>";
+		};
+		453D88741F84FC3C00FC63C7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */,
+				453D88791F84FF6900FC63C7 /* FINNTypeWebStrippet-Light.ttf */,
+				453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */,
+				453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		455866041F7A678400F670EF /* Market Grid */ = {
@@ -234,6 +249,7 @@
 		CBC2E0251F7D169E00D5CF58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				453D88741F84FC3C00FC63C7 /* Fonts */,
 				CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */,
 			);
 			path = Resources;
