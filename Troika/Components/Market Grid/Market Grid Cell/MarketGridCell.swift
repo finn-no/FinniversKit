@@ -15,7 +15,7 @@ public class MarketGridCell: UICollectionViewCell {
     
     private lazy var externalLinkImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "webview.png")
+        imageView.image = UIImage(frameworkImageNamed: "webview")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit

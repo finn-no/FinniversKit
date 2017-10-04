@@ -26,6 +26,12 @@
 		CB3E67C71F7E4D5D00C40D47 /* PreviewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C51F7E4D5D00C40D47 /* PreviewPresentable.swift */; };
 		CB3E67C91F7E62A300C40D47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3E67C81F7E62A300C40D47 /* Assets.xcassets */; };
 		CB3E67CB1F7E692900C40D47 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67CA1F7E692900C40D47 /* MarketViewController.swift */; };
+		CB400B131F83BE2400B26C1C /* TroikaPlaygroundSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = CB400B111F83BE2400B26C1C /* TroikaPlaygroundSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB400B171F83BE2E00B26C1C /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B081F83B31400B26C1C /* PreviewHelpers.swift */; };
+		CB400B191F83BFE300B26C1C /* Playground.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB400B181F83BFE300B26C1C /* Playground.xcassets */; };
+		CB400B201F83C7C100B26C1C /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */; };
+		CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B211F83C96600B26C1C /* UIImage+Troika.swift */; };
+		CB400B241F83C9D400B26C1C /* Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B231F83C9D400B26C1C /* Troika.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,7 +59,6 @@
 		457B35C61F7BC4100031E125 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
 		457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
-		CB2FE4D51F7A4EFB00616815 /* Project.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Project.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Troika View.xctemplate"; sourceTree = "<group>"; };
 		CB3664241F73F818009D3244 /* UIFont+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +71,18 @@
 		CB3E67C51F7E4D5D00C40D47 /* PreviewPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewPresentable.swift; sourceTree = "<group>"; };
 		CB3E67C81F7E62A300C40D47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB3E67CA1F7E692900C40D47 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		CB400B051F83B2D100B26C1C /* PreviewCell.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PreviewCell.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		CB400B081F83B31400B26C1C /* PreviewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
+		CB400B0F1F83BE2400B26C1C /* TroikaPlaygroundSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TroikaPlaygroundSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB400B111F83BE2400B26C1C /* TroikaPlaygroundSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TroikaPlaygroundSupport.h; sourceTree = "<group>"; };
+		CB400B121F83BE2400B26C1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB400B181F83BFE300B26C1C /* Playground.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Playground.xcassets; sourceTree = "<group>"; };
+		CB400B1C1F83C67500B26C1C /* PreviewGridView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PreviewGridView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		CB400B1D1F83C6B000B26C1C /* MarketGridCell.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MarketGridCell.playground; path = "Troika/Components/Market Grid/Market Grid Cell/MarketGridCell.playground"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		CB400B1E1F83C6C100B26C1C /* MarketGridCollectionView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MarketGridCollectionView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
+		CB400B211F83C96600B26C1C /* UIImage+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Troika.swift"; sourceTree = "<group>"; };
+		CB400B231F83C9D400B26C1C /* Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Troika.swift; path = Troika/Troika.swift; sourceTree = SOURCE_ROOT; };
 		CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,15 +102,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB400B0B1F83BE2400B26C1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		25D04D721F583B1800EA317D = {
 			isa = PBXGroup;
 			children = (
-				CB2FE4D51F7A4EFB00616815 /* Project.playground */,
 				25D04D7D1F583B1800EA317D /* Project */,
 				CB3CF1571F73E5870041EF20 /* Troika */,
+				CB400B101F83BE2400B26C1C /* TroikaPlaygroundSupport */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
 			);
@@ -104,6 +128,7 @@
 			children = (
 				25D04D7B1F583B1800EA317D /* Project.app */,
 				CB3CF1561F73E5870041EF20 /* Troika.framework */,
+				CB400B0F1F83BE2400B26C1C /* TroikaPlaygroundSupport.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +157,7 @@
 		4558660C1F7A7B7400F670EF /* Market Grid Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CB400B1D1F83C6B000B26C1C /* MarketGridCell.playground */,
 				455866081F7A77B100F670EF /* MarketGridCell.swift */,
 				4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */,
 			);
@@ -141,6 +167,7 @@
 		457B35C31F7BB0860031E125 /* Market Grid Collection View */ = {
 			isa = PBXGroup;
 			children = (
+				CB400B1E1F83C6C100B26C1C /* MarketGridCollectionView.playground */,
 				455866061F7A751300F670EF /* MarketGridCollectionView.swift */,
 			);
 			path = "Market Grid Collection View";
@@ -168,6 +195,7 @@
 				4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */,
 				457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */,
 				457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */,
+				CB400B211F83C96600B26C1C /* UIImage+Troika.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -184,6 +212,7 @@
 		CB3664291F73F9B6009D3244 /* Preview Grid Collection View */ = {
 			isa = PBXGroup;
 			children = (
+				CB400B1C1F83C67500B26C1C /* PreviewGridView.playground */,
 				CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */,
 				CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */,
 				CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */,
@@ -200,9 +229,38 @@
 				CB58A75C1F73B81000A5A19F /* Components */,
 				CBC2E0251F7D169E00D5CF58 /* Resources */,
 				CB3CF1581F73E5870041EF20 /* Troika.h */,
+				CB400B231F83C9D400B26C1C /* Troika.swift */,
 				CB3CF1591F73E5870041EF20 /* Info.plist */,
 			);
 			path = Troika;
+			sourceTree = "<group>";
+		};
+		CB400B101F83BE2400B26C1C /* TroikaPlaygroundSupport */ = {
+			isa = PBXGroup;
+			children = (
+				CB400B1A1F83C25D00B26C1C /* Sources */,
+				CB400B1B1F83C26B00B26C1C /* Resources */,
+				CB400B111F83BE2400B26C1C /* TroikaPlaygroundSupport.h */,
+				CB400B121F83BE2400B26C1C /* Info.plist */,
+			);
+			path = TroikaPlaygroundSupport;
+			sourceTree = "<group>";
+		};
+		CB400B1A1F83C25D00B26C1C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CB400B081F83B31400B26C1C /* PreviewHelpers.swift */,
+				CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		CB400B1B1F83C26B00B26C1C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CB400B181F83BFE300B26C1C /* Playground.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		CB58A75C1F73B81000A5A19F /* Components */ = {
@@ -217,6 +275,7 @@
 		CB58A75D1F73B81800A5A19F /* Preview Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CB400B051F83B2D100B26C1C /* PreviewCell.playground */,
 				CB3E67C41F7E4D5D00C40D47 /* PreviewCell.swift */,
 				CB3E67C51F7E4D5D00C40D47 /* PreviewPresentable.swift */,
 			);
@@ -247,6 +306,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB400B0C1F83BE2400B26C1C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB400B131F83BE2400B26C1C /* TroikaPlaygroundSupport.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +356,24 @@
 			productReference = CB3CF1561F73E5870041EF20 /* Troika.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		CB400B0E1F83BE2400B26C1C /* TroikaPlaygroundSupport */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB400B141F83BE2400B26C1C /* Build configuration list for PBXNativeTarget "TroikaPlaygroundSupport" */;
+			buildPhases = (
+				CB400B0A1F83BE2400B26C1C /* Sources */,
+				CB400B0B1F83BE2400B26C1C /* Frameworks */,
+				CB400B0C1F83BE2400B26C1C /* Headers */,
+				CB400B0D1F83BE2400B26C1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TroikaPlaygroundSupport;
+			productName = TroikaPlaygroundSupport;
+			productReference = CB400B0F1F83BE2400B26C1C /* TroikaPlaygroundSupport.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -305,6 +390,11 @@
 					};
 					CB3CF1551F73E5870041EF20 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					CB400B0E1F83BE2400B26C1C = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = 479AB4K3T6;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -324,6 +414,7 @@
 			targets = (
 				25D04D7A1F583B1800EA317D /* Project */,
 				CB3CF1551F73E5870041EF20 /* Troika */,
+				CB400B0E1F83BE2400B26C1C /* TroikaPlaygroundSupport */,
 			);
 		};
 /* End PBXProject section */
@@ -335,6 +426,14 @@
 			files = (
 				25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */,
 				CB3E67C91F7E62A300C40D47 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB400B0D1F83BE2400B26C1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB400B191F83BFE300B26C1C /* Playground.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +474,7 @@
 				CB3E67C31F7E4D4000C40D47 /* PreviewGridView.swift in Sources */,
 				457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */,
 				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
+				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */,
 				CB3E67C71F7E4D5D00C40D47 /* PreviewPresentable.swift in Sources */,
 				457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */,
@@ -382,8 +482,18 @@
 				455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */,
 				4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */,
 				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
+				CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */,
 				457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */,
 				CB3E67C11F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB400B0A1F83BE2400B26C1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB400B201F83C7C100B26C1C /* PlaygroundImage.swift in Sources */,
+				CB400B171F83BE2E00B26C1C /* PreviewHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +712,62 @@
 			};
 			name = Release;
 		};
+		CB400B151F83BE2400B26C1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 479AB4K3T6;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TroikaPlaygroundSupport/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.akseldybdal.TroikaPlaygroundSupport;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CB400B161F83BE2400B26C1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 479AB4K3T6;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TroikaPlaygroundSupport/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.akseldybdal.TroikaPlaygroundSupport;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -628,6 +794,15 @@
 			buildConfigurations = (
 				CB3CF15B1F73E5870041EF20 /* Debug */,
 				CB3CF15C1F73E5870041EF20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB400B141F83BE2400B26C1C /* Build configuration list for PBXNativeTarget "TroikaPlaygroundSupport" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB400B151F83BE2400B26C1C /* Debug */,
+				CB400B161F83BE2400B26C1C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
