@@ -38,7 +38,7 @@ extension UIFont {
             print("UIFont+:  Failed to register font - bundle identifier invalid.")
             return
         }
-        print(bundle)
+
         guard let pathForResourceString = bundle.path(forResource: filenameString, ofType: "ttf") else {
             print("UIFont+:  Failed to register font - path for resource not found.")
             return
