@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D04D7E1F583B1800EA317D /* AppDelegate.swift */; };
 		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
+		453D887F1F85192700FC63C7 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */; };
+		453D88801F85192700FC63C7 /* FINNTypeWebStrippet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D88791F84FF6900FC63C7 /* FINNTypeWebStrippet-Light.ttf */; };
+		453D88811F85192700FC63C7 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */; };
+		453D88821F85192700FC63C7 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */; };
 		455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866061F7A751300F670EF /* MarketGridCollectionView.swift */; };
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
 		4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */; };
@@ -368,6 +372,7 @@
 				CB3CF1521F73E5870041EF20 /* Frameworks */,
 				CB3CF1531F73E5870041EF20 /* Headers */,
 				CB2FE4D71F7A533300616815 /* Update templates */,
+				453D887E1F85191600FC63C7 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -448,6 +453,17 @@
 			files = (
 				25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */,
 				CB3E67C91F7E62A300C40D47 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		453D887E1F85191600FC63C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				453D887F1F85192700FC63C7 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
+				453D88801F85192700FC63C7 /* FINNTypeWebStrippet-Light.ttf in Resources */,
+				453D88811F85192700FC63C7 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
+				453D88821F85192700FC63C7 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
