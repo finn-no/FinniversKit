@@ -19,7 +19,7 @@ class MarketViewController: UIViewController {
     }()
 
     fileprivate lazy var marketGridView: MarketGridCollectionView = {
-        let marketGridView = MarketGridCollectionView(dataSource: self, delegate: self)
+        let marketGridView = MarketGridCollectionView(delegate: self)
         return marketGridView
     }()
 
@@ -87,14 +87,6 @@ extension MarketViewController: PreviewGridViewDataSource {
         }
 
         task.resume()
-    }
-}
-
-// MARK: - MarketGridCollectionViewDataSource
-extension MarketViewController: MarketGridCollectionViewDataSource {
-
-    var items: [MarketGridPresentable] {
-        return []
     }
 }
 
