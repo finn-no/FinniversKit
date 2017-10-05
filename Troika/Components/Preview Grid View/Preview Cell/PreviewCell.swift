@@ -32,15 +32,15 @@ public class PreviewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .white
+        imageView.tintColor = .milk
         return imageView
     }()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .t4
-        label.textColor = .black
+        label.font = .detail
+        label.textColor = .licorice
         label.backgroundColor = .clear
         return label
     }()
@@ -48,8 +48,8 @@ public class PreviewCell: UICollectionViewCell {
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .t4
-        label.textColor = .gray
+        label.font = .detail
+        label.textColor = .stone
         label.backgroundColor = .clear
         return label
     }()
@@ -68,8 +68,8 @@ public class PreviewCell: UICollectionViewCell {
     private lazy var imageTextLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .t3
-        label.textColor = .white
+        label.font = .t4
+        label.textColor = .milk
         label.backgroundColor = .clear
         return label
     }()
