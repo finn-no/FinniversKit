@@ -32,6 +32,21 @@ public class PreviewGridView: UIView {
 
     // Mark: - External properties
 
+    public var headerView: UIView? {
+        willSet {
+            headerView?.removeFromSuperview()
+        }
+        didSet {
+            guard let headerView = headerView else {
+                return // View was removed
+            }
+
+            collectionView.addSubview(headerView)
+            collectionView.contentInset.top = headerView.frame.size.height
+            headerView.frame.origin.y = -headerView.frame.size.height
+        }
+    }
+
     // Mark: - Setup
 
     public init(frame: CGRect = .zero, delegate: PreviewGridViewDelegate, dataSource: PreviewGridViewDataSource) {
