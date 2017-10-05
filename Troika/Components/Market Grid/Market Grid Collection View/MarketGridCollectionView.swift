@@ -1,14 +1,15 @@
 import UIKit
 
-protocol MarketGridCollectionViewDelegate: NSObjectProtocol {
+public protocol MarketGridCollectionViewDelegate: NSObjectProtocol {
     func didSelect(item: MarketGridPresentable, in gridView: MarketGridCollectionView)
+    func contentSizeDidChange(newSize: CGSize, in gridView: MarketGridCollectionView)
 }
 
 public class MarketGridCollectionView: UIView {
     
     // Mark: - Internal properties
     
-    private lazy var collectionView: UICollectionView = {
+    @objc private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -22,7 +23,7 @@ public class MarketGridCollectionView: UIView {
     
     // Mark: - Setup
     
-    init(frame: CGRect = .zero, delegate: MarketGridCollectionViewDelegate) {
+    public init(frame: CGRect = .zero, delegate: MarketGridCollectionViewDelegate) {
         super.init(frame: frame)
         
         self.delegate = delegate
@@ -43,6 +44,8 @@ public class MarketGridCollectionView: UIView {
     private func setup() {
         collectionView.register(MarketGridCell.self)
         addSubview(collectionView)
+
+        addObserver(self, forKeyPath: "collectionView.contentSize", options: .new, context: nil)
     }
     
     // Mark: - Test
@@ -62,6 +65,12 @@ public class MarketGridCollectionView: UIView {
     public var marketGridPresentables: [MarketGridPresentable] = [MarketGridPresentable]() {
         didSet {
             collectionView.reloadData()
+        }
+    }
+
+    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "collectionView.contentSize" {
+            delegate?.contentSizeDidChange(newSize: collectionView.contentSize, in: self)
         }
     }
 }
