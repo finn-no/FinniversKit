@@ -66,6 +66,8 @@ public class MarketGridCollectionView: UIView {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension MarketGridCollectionView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -90,6 +92,8 @@ extension MarketGridCollectionView: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension MarketGridCollectionView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return marketGridPresentables.count
@@ -99,5 +103,14 @@ extension MarketGridCollectionView: UICollectionViewDataSource {
         let cell = collectionView.dequeue(MarketGridCell.self, for: indexPath)
         cell.presentable = marketGridPresentables[indexPath.row]
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension MarketGridCollectionView: UICollectionViewDelegate {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = marketGridPresentables[indexPath.row]
+        delegate?.didSelect(item: item, in: self)
     }
 }
