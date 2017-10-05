@@ -1,9 +1,5 @@
 import UIKit
 
-protocol MarketGridCollectionViewDataSource: NSObjectProtocol {
-    var items: [MarketGridPresentable] { get }
-}
-
 protocol MarketGridCollectionViewDelegate: NSObjectProtocol {
     func didSelect(item: MarketGridPresentable, in gridView: MarketGridCollectionView)
 }
@@ -20,17 +16,15 @@ public class MarketGridCollectionView: UIView {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
-//    private weak var dataSource: MarketGridCollectionViewDataSource?
     private weak var delegate: MarketGridCollectionViewDelegate?
     
     // Mark: - External properties
     
     // Mark: - Setup
     
-    init(frame: CGRect = .zero, dataSource: MarketGridCollectionViewDataSource, delegate: MarketGridCollectionViewDelegate) {
+    init(frame: CGRect = .zero, delegate: MarketGridCollectionViewDelegate) {
         super.init(frame: frame)
         
-//        self.dataSource = dataSource
         self.delegate = delegate
         
         setup()
