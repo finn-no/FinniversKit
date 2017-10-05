@@ -3,12 +3,6 @@ import PlaygroundSupport
 import Troika
 import TroikaPlaygroundSupport
 
-struct MarketGridDataModel: MarketGridPresentable {
-    let iconImage: UIImage?
-    let showExternalLinkIcon: Bool
-    let title: String
-}
-
 TroikaPlaygroundSupport.setupPlayground()
 
 struct ScreenSize {
@@ -18,17 +12,9 @@ struct ScreenSize {
     static let iPad = CGSize(width: 768, height: 1024)
 }
 
-let images: [PlaygroundImage] = [.eiendom, .bil, .torget, .jobb, .mc, .bT, .nytte, .smajobb, .reise, .mittAnbud, .shopping, .moteplassen]
-let titles: [String] = ["Eiendom","Bil", "Torget", "Jobb", "MC", "Båt", "Nyttekjøretøy", "Småjobber", "Reise", "Oppdrag", "Shopping", "Møteplassen"]
-let shouldShowExternal: [Bool] = [false, false, false, false, false, false, false, true, true, true, true, true]
-
-var presentables = [MarketGridDataModel]()
+var presentables = Market.allMarkets
 let collectionView = MarketGridCollectionView(frame: .zero)
 let screenSize = ScreenSize.iPad
-
-for index in 0...titles.count-1 {
-    presentables.append(MarketGridDataModel(iconImage: images[index].image, showExternalLinkIcon: shouldShowExternal[index], title: titles[index]))
-}
 
 collectionView.marketGridPresentables = presentables
 collectionView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
