@@ -1,11 +1,3 @@
-//
-//  MarketViewController.swift
-//  Project
-//
-//  Created by Dybdal, Aksel on 29.09.2017.
-//  Copyright © 2017 FINN AS. All rights reserved.
-//
-
 import UIKit
 import Troika
 import TroikaPlaygroundSupport
@@ -18,8 +10,8 @@ class MarketViewController: UIViewController {
         return gridView
     }()
 
-    fileprivate lazy var marketGridView: MarketGridCollectionView = {
-        let marketGridView = MarketGridCollectionView(delegate: self)
+    fileprivate lazy var marketGridView: MarketGridView = {
+        let marketGridView = MarketGridView(delegate: self)
         return marketGridView
     }()
 
@@ -38,27 +30,10 @@ class MarketViewController: UIViewController {
         discoverGridView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 
         marketGridView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 250) // Initial size
-        marketGridView.marketGridPresentables = marketItems()
+        marketGridView.marketGridPresentables = Market.allMarkets
 
         discoverGridView.previewPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
         discoverGridView.headerView = marketGridView
-    }
-
-    private func marketItems() -> [MarketGridPresentable]  {
-        // Demo code only
-        struct MarketGridDataModel: MarketGridPresentable {
-            let iconImage: UIImage?
-            let showExternalLinkIcon: Bool
-            let title: String
-        }
-
-        let images: [PlaygroundImage] = [.eiendom, .bil, .torget, .jobb, .mc, .bT, .nytte, .smajobb, .reise, .mittAnbud, .shopping, .moteplassen]
-        let titles: [String] = ["Eiendom","Bil", "Torget", "Jobb", "MC", "Båt", "Nyttekjøretøy", "Småjobber", "Reise", "Oppdrag", "Shopping", "Møteplassen"]
-        let shouldShowExternal: [Bool] = [false, false, false, false, false, false, false, true, true, true, true, true]
-
-        return (0..<titles.count).flatMap { index in
-            return MarketGridDataModel(iconImage: images[index].image, showExternalLinkIcon: shouldShowExternal[index], title: titles[index])
-        }
     }
 }
 
@@ -92,11 +67,11 @@ extension MarketViewController: PreviewGridViewDataSource {
 
 // MARK: - MarketGridCollectionViewDelegate
 extension MarketViewController: MarketGridCollectionViewDelegate {
-    func didSelect(item: MarketGridPresentable, in gridView: MarketGridCollectionView) {
+    func didSelect(item: MarketGridPresentable, in gridView: MarketGridView) {
 
     }
 
-    func contentSizeDidChange(newSize: CGSize, in gridView: MarketGridCollectionView) {
+    func contentSizeDidChange(newSize: CGSize, in gridView: MarketGridView) {
         marketGridView.frame = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
         discoverGridView.headerView = marketGridView
     }
