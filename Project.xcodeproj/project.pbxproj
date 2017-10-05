@@ -15,6 +15,7 @@
 		453D88821F85192700FC63C7 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */; };
 		453D88831F851C0500FC63C7 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456DD3D91F83AFF60077085E /* Colors.xcassets */; };
 		453D88871F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453D88861F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift */; };
+		453D88881F862D0E00FC63C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */; };
 		455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866061F7A751300F670EF /* MarketGridCollectionView.swift */; };
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
 		4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */; };
@@ -463,6 +464,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				453D88881F862D0E00FC63C7 /* Assets.xcassets in Resources */,
 				453D88831F851C0500FC63C7 /* Colors.xcassets in Resources */,
 				453D887F1F85192700FC63C7 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
 				453D88801F85192700FC63C7 /* FINNTypeWebStrippet-Light.ttf in Resources */,
