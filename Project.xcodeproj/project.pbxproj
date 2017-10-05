@@ -42,6 +42,16 @@
 		CB6CF7381F84F880003B73D2 /* TroikaPlaygroundSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CF7371F84F880003B73D2 /* TroikaPlaygroundSupport.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CB80C4941F864D4C00C1FD0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
+			remoteInfo = Troika;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		CB58A75B1F73B7B300A5A19F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -399,6 +409,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CB80C4951F864D4C00C1FD0D /* PBXTargetDependency */,
 			);
 			name = TroikaPlaygroundSupport;
 			productName = TroikaPlaygroundSupport;
@@ -544,6 +555,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB80C4951F864D4C00C1FD0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB3CF1551F73E5870041EF20 /* Troika */;
+			targetProxy = CB80C4941F864D4C00C1FD0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		25D04D871F583B1800EA317D /* LaunchScreen.storyboard */ = {
