@@ -14,6 +14,7 @@
 		453D88811F85192700FC63C7 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */; };
 		453D88821F85192700FC63C7 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */; };
 		453D88831F851C0500FC63C7 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456DD3D91F83AFF60077085E /* Colors.xcassets */; };
+		453D88871F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453D88861F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift */; };
 		455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866061F7A751300F670EF /* MarketGridCollectionView.swift */; };
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
 		4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */; };
@@ -62,6 +63,7 @@
 		453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
 		453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
 		453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
+		453D88861F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCollectionViewConfigurable.swift; sourceTree = "<group>"; };
 		455866061F7A751300F670EF /* MarketGridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCollectionView.swift; sourceTree = "<group>"; };
 		455866081F7A77B100F670EF /* MarketGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
 		4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridPresentable.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				CB400B1E1F83C6C100B26C1C /* MarketGridCollectionView.playground */,
 				455866061F7A751300F670EF /* MarketGridCollectionView.swift */,
+				453D88861F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift */,
 			);
 			path = "Market Grid Collection View";
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */,
 				CB3E67C71F7E4D5D00C40D47 /* PreviewPresentable.swift in Sources */,
+				453D88871F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift in Sources */,
 				457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */,
 				CB3E67C61F7E4D5D00C40D47 /* PreviewCell.swift in Sources */,
 				455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */,
