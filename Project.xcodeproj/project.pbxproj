@@ -20,6 +20,7 @@
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
 		4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */; };
 		4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */; };
+		4577B72A1F865400005E7598 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577B7291F865400005E7598 /* MarketHelpers.swift */; };
 		457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C61F7BC4100031E125 /* Identifiable.swift */; };
 		457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */; };
 		457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */; };
@@ -80,6 +81,7 @@
 		4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridPresentable.swift; sourceTree = "<group>"; };
 		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
 		456DD3D91F83AFF60077085E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		4577B7291F865400005E7598 /* MarketHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
 		457B35C61F7BC4100031E125 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
 		457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			children = (
 				CB400B081F83B31400B26C1C /* PreviewHelpers.swift */,
 				CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */,
+				4577B7291F865400005E7598 /* MarketHelpers.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB400B201F83C7C100B26C1C /* PlaygroundImage.swift in Sources */,
+				4577B72A1F865400005E7598 /* MarketHelpers.swift in Sources */,
 				CB400B171F83BE2E00B26C1C /* PreviewHelpers.swift in Sources */,
 				CB6CF7381F84F880003B73D2 /* TroikaPlaygroundSupport.swift in Sources */,
 			);
