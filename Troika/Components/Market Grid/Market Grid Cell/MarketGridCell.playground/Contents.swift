@@ -9,7 +9,7 @@ struct MarketGridDataModel: MarketGridPresentable {
     let title: String
 }
 
-UIFont.registerTroikaFonts()
+TroikaPlaygroundSupport.setupPlayground()
 
 let image = PlaygroundImage.moteplassen.image
 let title = "Møteplassen"

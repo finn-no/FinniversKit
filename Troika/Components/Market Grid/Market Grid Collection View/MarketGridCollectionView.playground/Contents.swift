@@ -9,7 +9,7 @@ struct MarketGridDataModel: MarketGridPresentable {
     let title: String
 }
 
-UIFont.registerTroikaFonts()
+TroikaPlaygroundSupport.setupPlayground()
 
 struct ScreenSize {
     static let iPhone5 = CGSize(width: 320, height: 568)
