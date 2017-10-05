@@ -3,14 +3,7 @@ import PlaygroundSupport
 import Troika
 import TroikaPlaygroundSupport
 
-struct PreviewDataModel: PreviewPresentable {
-    let imageUrl: URL?
-    let imageSize: CGSize
-    let iconImage: UIImage
-    let title: String
-    let subTitle: String
-    let imageText: String
-}
+TroikaPlaygroundSupport.setupPlayground()
 
 let previewCell = PreviewCell(frame: .zero)
 let presentable = PreviewDataModelFactory.create(numberOfModels: 1).first!
