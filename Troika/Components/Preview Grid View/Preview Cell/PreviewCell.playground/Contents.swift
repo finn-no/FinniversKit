@@ -1,9 +1,9 @@
 import UIKit
 import PlaygroundSupport
 import Troika
-import TroikaPlaygroundSupport
+import TroikaDemoKit
 
-TroikaPlaygroundSupport.setupPlayground()
+TroikaDemoKit.setupPlayground()
 
 let previewCell = PreviewCell(frame: .zero)
 let presentable = PreviewDataModelFactory.create(numberOfModels: 1).first!

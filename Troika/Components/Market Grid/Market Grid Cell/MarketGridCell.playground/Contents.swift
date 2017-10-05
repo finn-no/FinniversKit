@@ -1,9 +1,9 @@
 import UIKit
 import PlaygroundSupport
 import Troika
-import TroikaPlaygroundSupport
+import TroikaDemoKit
 
-TroikaPlaygroundSupport.setupPlayground()
+TroikaDemoKit.setupPlayground()
 
 let marketGridCell = MarketGridCell(frame: .zero)
 let presentable = Market.moteplassen

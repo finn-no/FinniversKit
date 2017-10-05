@@ -1,10 +1,10 @@
 import Foundation
 
 /// Class for referencing the framework bundle
-public class TroikaPlaygroundSupport {
+public class TroikaDemoKit {
 
     static var bundle: Bundle {
-        return Bundle(for: TroikaPlaygroundSupport.self)
+        return Bundle(for: TroikaDemoKit.self)
     }
 
     public static func setupPlayground() {
@@ -14,7 +14,7 @@ public class TroikaPlaygroundSupport {
 
 public extension Bundle {
 
-    static var troikaPlaygroundSupport: Bundle {
-        return TroikaPlaygroundSupport.bundle
+    static var troikaDemoKit: Bundle {
+        return TroikaDemoKit.bundle
     }
 }

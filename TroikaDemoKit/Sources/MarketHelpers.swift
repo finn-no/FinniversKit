@@ -34,18 +34,18 @@ public enum Market: MarketGridPresentable {
     
     public var iconImage: UIImage? {
         switch self {
-        case .eiendom: return UIImage(named: "eiendom", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .bil: return UIImage(named: "bil", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .torget: return UIImage(named: "torget", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .jobb: return UIImage(named: "jobb", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .mc: return UIImage(named: "mc", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .bT: return UIImage(named: "bT", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .nytte: return UIImage(named: "nytte", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .reise: return UIImage(named: "reise", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .shopping: return UIImage(named: "shopping", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .smajobb: return UIImage(named: "smajobb", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .moteplassen: return UIImage(named: "moteplassen", in: .troikaPlaygroundSupport, compatibleWith: nil)
-        case .mittAnbud: return UIImage(named: "mittAnbud", in: .troikaPlaygroundSupport, compatibleWith: nil)
+        case .eiendom: return UIImage(named: "eiendom", in: .troikaDemoKit, compatibleWith: nil)
+        case .bil: return UIImage(named: "bil", in: .troikaDemoKit, compatibleWith: nil)
+        case .torget: return UIImage(named: "torget", in: .troikaDemoKit, compatibleWith: nil)
+        case .jobb: return UIImage(named: "jobb", in: .troikaDemoKit, compatibleWith: nil)
+        case .mc: return UIImage(named: "mc", in: .troikaDemoKit, compatibleWith: nil)
+        case .bT: return UIImage(named: "bT", in: .troikaDemoKit, compatibleWith: nil)
+        case .nytte: return UIImage(named: "nytte", in: .troikaDemoKit, compatibleWith: nil)
+        case .reise: return UIImage(named: "reise", in: .troikaDemoKit, compatibleWith: nil)
+        case .shopping: return UIImage(named: "shopping", in: .troikaDemoKit, compatibleWith: nil)
+        case .smajobb: return UIImage(named: "smajobb", in: .troikaDemoKit, compatibleWith: nil)
+        case .moteplassen: return UIImage(named: "moteplassen", in: .troikaDemoKit, compatibleWith: nil)
+        case .mittAnbud: return UIImage(named: "mittAnbud", in: .troikaDemoKit, compatibleWith: nil)
         }
     }
     

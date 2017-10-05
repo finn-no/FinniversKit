@@ -8,7 +8,7 @@
 
 import UIKit
 import Troika
-import TroikaPlaygroundSupport
+import TroikaDemoKit
 
 class MarketViewController: UIViewController {
 
