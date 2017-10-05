@@ -1,11 +1,11 @@
 import UIKit
 
 public protocol MarketGridCollectionViewDelegate: NSObjectProtocol {
-    func didSelect(item: MarketGridPresentable, in gridView: MarketGridCollectionView)
-    func contentSizeDidChange(newSize: CGSize, in gridView: MarketGridCollectionView)
+    func didSelect(item: MarketGridPresentable, in gridView: MarketGridView)
+    func contentSizeDidChange(newSize: CGSize, in gridView: MarketGridView)
 }
 
-public class MarketGridCollectionView: UIView {
+public class MarketGridView: UIView {
     
     // Mark: - Internal properties
     
@@ -77,7 +77,7 @@ public class MarketGridCollectionView: UIView {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension MarketGridCollectionView: UICollectionViewDelegateFlowLayout {
+extension MarketGridView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenWidth = ScreenSizeCategory(width: bounds.width)
@@ -103,7 +103,7 @@ extension MarketGridCollectionView: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UICollectionViewDataSource
 
-extension MarketGridCollectionView: UICollectionViewDataSource {
+extension MarketGridView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return marketGridPresentables.count
     }
@@ -117,7 +117,7 @@ extension MarketGridCollectionView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension MarketGridCollectionView: UICollectionViewDelegate {
+extension MarketGridView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = marketGridPresentables[indexPath.row]
         delegate?.didSelect(item: item, in: self)
