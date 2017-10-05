@@ -9,6 +9,8 @@ struct MarketGridDataModel: MarketGridPresentable {
     let title: String
 }
 
+UIFont.registerTroikaFonts()
+
 let image = PlaygroundImage.moteplassen.image
 let title = "Møteplassen"
 let shouldShowExternalLinkIcon = true

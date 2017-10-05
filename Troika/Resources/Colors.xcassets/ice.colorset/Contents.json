@@ -1,0 +1,20 @@
+{
+  "info" : {
+    "author" : "zeplin",
+    "version" : 1
+  },
+  "colors" : [
+    {
+      "idiom" : "universal",
+      "color" : {
+        "color-space" : "srgb",
+        "components" : {
+          "green" : "0.976",
+          "alpha" : "1.000",
+          "red" : "0.945",
+          "blue" : "1.000"
+        }
+      }
+    }
+  ]
+}
