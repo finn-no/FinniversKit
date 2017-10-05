@@ -116,8 +116,8 @@ extension PreviewGridView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PreviewCell.self), for: indexPath) as! PreviewCell
 
         // Show a pretty color while we load the image
-        let colors: [UIColor] = [.red, .blue, .yellow] // TODO: Use Troika colors
-        let color = colors[indexPath.row % 3]
+        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+        let color = colors[indexPath.row % 4]
 
         let presentable = previewPresentables[indexPath.row]
         cell.loadingColor = color

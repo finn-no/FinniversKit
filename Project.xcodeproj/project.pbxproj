@@ -14,9 +14,9 @@
 		453D88811F85192700FC63C7 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */; };
 		453D88821F85192700FC63C7 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */; };
 		453D88831F851C0500FC63C7 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456DD3D91F83AFF60077085E /* Colors.xcassets */; };
-		453D88871F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453D88861F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift */; };
+		453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */; };
 		453D88881F862D0E00FC63C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */; };
-		455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866061F7A751300F670EF /* MarketGridCollectionView.swift */; };
+		455866071F7A751300F670EF /* MarketGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866061F7A751300F670EF /* MarketGridView.swift */; };
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
 		4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */; };
 		4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */; };
@@ -75,8 +75,8 @@
 		453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
 		453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
 		453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
-		453D88861F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCollectionViewConfigurable.swift; sourceTree = "<group>"; };
-		455866061F7A751300F670EF /* MarketGridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCollectionView.swift; sourceTree = "<group>"; };
+		453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridViewConfigurable.swift; sourceTree = "<group>"; };
+		455866061F7A751300F670EF /* MarketGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridView.swift; sourceTree = "<group>"; };
 		455866081F7A77B100F670EF /* MarketGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
 		4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridPresentable.swift; sourceTree = "<group>"; };
 		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		CB400B181F83BFE300B26C1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB400B1C1F83C67500B26C1C /* PreviewGridView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PreviewGridView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB400B1D1F83C6B000B26C1C /* MarketGridCell.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MarketGridCell.playground; path = "Troika/Components/Market Grid/Market Grid Cell/MarketGridCell.playground"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		CB400B1E1F83C6C100B26C1C /* MarketGridCollectionView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MarketGridCollectionView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		CB400B1E1F83C6C100B26C1C /* MarketGridView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MarketGridView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
 		CB400B211F83C96600B26C1C /* UIImage+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Troika.swift"; sourceTree = "<group>"; };
 		CB400B231F83C9D400B26C1C /* Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Troika.swift; path = Troika/Troika.swift; sourceTree = SOURCE_ROOT; };
@@ -186,7 +186,7 @@
 		455866041F7A678400F670EF /* Market Grid */ = {
 			isa = PBXGroup;
 			children = (
-				457B35C31F7BB0860031E125 /* Market Grid Collection View */,
+				457B35C31F7BB0860031E125 /* Market Grid View */,
 				4558660C1F7A7B7400F670EF /* Market Grid Cell */,
 			);
 			path = "Market Grid";
@@ -202,14 +202,14 @@
 			path = "Market Grid Cell";
 			sourceTree = "<group>";
 		};
-		457B35C31F7BB0860031E125 /* Market Grid Collection View */ = {
+		457B35C31F7BB0860031E125 /* Market Grid View */ = {
 			isa = PBXGroup;
 			children = (
-				CB400B1E1F83C6C100B26C1C /* MarketGridCollectionView.playground */,
-				455866061F7A751300F670EF /* MarketGridCollectionView.swift */,
-				453D88861F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift */,
+				CB400B1E1F83C6C100B26C1C /* MarketGridView.playground */,
+				455866061F7A751300F670EF /* MarketGridView.swift */,
+				453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */,
 			);
-			path = "Market Grid Collection View";
+			path = "Market Grid View";
 			sourceTree = "<group>";
 		};
 		457B35C81F7BC4320031E125 /* Protocols */ = {
@@ -535,10 +535,10 @@
 				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */,
 				CB3E67C71F7E4D5D00C40D47 /* PreviewPresentable.swift in Sources */,
-				453D88871F860B7900FC63C7 /* MarketGridCollectionViewConfigurable.swift in Sources */,
+				453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */,
 				457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */,
 				CB3E67C61F7E4D5D00C40D47 /* PreviewCell.swift in Sources */,
-				455866071F7A751300F670EF /* MarketGridCollectionView.swift in Sources */,
+				455866071F7A751300F670EF /* MarketGridView.swift in Sources */,
 				4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */,
 				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
 				CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */,
