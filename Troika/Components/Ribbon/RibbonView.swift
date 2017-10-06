@@ -61,11 +61,6 @@ public class RibbonView: UIView {
 
 }
 
-public protocol RibbonPresentable {
-    var type: RibbonType { get }
-    var title: String { get }
-}
-
 public enum RibbonType {
     case ordinary
     case success
