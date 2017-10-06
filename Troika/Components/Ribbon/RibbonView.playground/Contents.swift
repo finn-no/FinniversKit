@@ -21,8 +21,8 @@ let defaultRibbonView = RibbonView()
 let disabledRibbonView = RibbonView()
 let sponsoredRibbonView = RibbonView()
 
-let interimSpacing: CGFloat = 8
-let lineSpacing: CGFloat = 10
+let interimSpacing: CGFloat = 16
+let lineSpacing: CGFloat = 8
 let margin: CGFloat = 16
 let view = UIView()
 
@@ -55,7 +55,7 @@ headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: marg
 headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: margin).isActive = true
 
 defaultRibbonView.leadingAnchor.constraint(equalTo: headerLabel.leadingAnchor).isActive = true
-defaultRibbonView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 16).isActive = true
+defaultRibbonView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: margin).isActive = true
 
 successRibbonView.leadingAnchor.constraint(equalTo: defaultRibbonView.trailingAnchor, constant: interimSpacing).isActive = true
 successRibbonView.topAnchor.constraint(equalTo: defaultRibbonView.topAnchor).isActive = true
