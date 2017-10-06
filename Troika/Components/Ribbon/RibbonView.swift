@@ -1,12 +1,14 @@
 import UIKit
 
-class RibbonView: UIView {
+public class RibbonView: UIView {
 
     // Mark: - Internal properties
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+//        label.layer.masksToBounds = true
+        label.textAlignment = .center
         label.font = .detail
         label.textColor = .licorice // TODO: Spør om det skal være ´stone´?
         return label
@@ -27,8 +29,8 @@ class RibbonView: UIView {
     }
 
     private func setup() {
+        layer.cornerRadius = 2
         addSubview(titleLabel)
-        backgroundColor = .clear
     }
 
     // Mark: - Superclass Overrides
@@ -49,7 +51,7 @@ class RibbonView: UIView {
     public var presentable: RibbonPresentable? {
         didSet {
             titleLabel.text = presentable?.title
-            titleLabel.backgroundColor = presentable?.type.color
+            backgroundColor = presentable?.type.color
         }
     }
     
