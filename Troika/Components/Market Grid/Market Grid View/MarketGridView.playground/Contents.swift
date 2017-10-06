@@ -1,9 +1,9 @@
 import UIKit
 import PlaygroundSupport
 import Troika
-import TroikaPlaygroundSupport
+import TroikaDemoKit
 
-TroikaPlaygroundSupport.setupPlayground()
+TroikaDemoKit.setupPlayground()
 
 struct ScreenSize {
     static let iPhone5 = CGSize(width: 320, height: 568)

@@ -1,9 +1,9 @@
 import UIKit
 import PlaygroundSupport
 import Troika
-import TroikaPlaygroundSupport
+import TroikaDemoKit
 
-TroikaPlaygroundSupport.setupPlayground()
+TroikaDemoKit.setupPlayground()
 
 let delegateDataSource = PreviewGridDelegateDataSource()
 let view = PreviewGridView(frame: .zero, delegate: delegateDataSource, dataSource: delegateDataSource)
