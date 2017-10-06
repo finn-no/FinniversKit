@@ -7,12 +7,14 @@ public class RibbonView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.layer.masksToBounds = true
         label.textAlignment = .center
         label.font = .detail
         label.textColor = .licorice // TODO: Spør om det skal være ´stone´?
         return label
     }()
+    
+    let horisontalMargin: CGFloat = 8
+    let verticalMargin: CGFloat = 2
     
     // Mark: - External properties
 
@@ -29,7 +31,7 @@ public class RibbonView: UIView {
     }
 
     private func setup() {
-        layer.cornerRadius = 2
+        layer.cornerRadius = 3
         addSubview(titleLabel)
     }
 
@@ -40,10 +42,10 @@ public class RibbonView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horisontalMargin).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horisontalMargin).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin).isActive = true
     }
 
     // Mark: - Dependency injection
