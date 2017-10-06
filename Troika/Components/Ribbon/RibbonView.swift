@@ -1,5 +1,25 @@
 import UIKit
 
+public enum RibbonType {
+    case ordinary
+    case success
+    case warning
+    case error
+    case disabled
+    case sponsored
+    
+    var color: UIColor {
+        switch self {
+        case .ordinary: return .ice
+        case .success: return .mint
+        case .warning: return .banana
+        case .error: return .salmon
+        case .disabled: return .sardine
+        case .sponsored: return .toothPaste
+        }
+    }
+}
+
 public class RibbonView: UIView {
 
     // Mark: - Internal properties
@@ -61,22 +81,3 @@ public class RibbonView: UIView {
 
 }
 
-public enum RibbonType {
-    case ordinary
-    case success
-    case warning
-    case error
-    case disabled
-    case sponsored
-    
-    var color: UIColor {
-        switch self {
-        case .ordinary: return .ice
-        case .success: return .mint
-        case .warning: return .banana
-        case .error: return .salmon
-        case .disabled: return .sardine
-        case .sponsored: return .toothPaste
-        }
-    }
-}

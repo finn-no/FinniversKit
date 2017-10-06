@@ -41,7 +41,3 @@ public let headerLabel: UILabel = {
     label.text = "Status ribbon"
     return label
 }()
-
-public func setupConstraints() {
-    
-}
