@@ -5,15 +5,6 @@ import TroikaDemoKit
 
 TroikaDemoKit.setupPlayground()
 
-struct ScreenSize {
-    static let iPhone5 = CGSize(width: 320, height: 568)
-    static let iPhone7 = CGSize(width: 375, height: 667)
-    static let iPhone7plus = CGSize(width: 414, height: 736)
-    static let iPad = CGSize(width: 768, height: 1024)
-}
-
-let screenSize = ScreenSize.iPhone7
-
 let successRibbonView = RibbonView()
 let errorRibbonView = RibbonView()
 let warningRibbonView = RibbonView()
@@ -27,7 +18,7 @@ let margin: CGFloat = 16
 let view = UIView()
 
 view.backgroundColor = .white
-view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
+view.frame = ScreenSize.medium
 
 successRibbonView.presentable = RibbonDataModel.success
 errorRibbonView.presentable = RibbonDataModel.error
