@@ -13,7 +13,7 @@ struct ScreenSize {
 }
 
 var presentables = Market.allMarkets
-let collectionView = MarketGridCollectionView(frame: .zero)
+let collectionView = MarketGridView(frame: .zero)
 let screenSize = ScreenSize.iPad
 
 collectionView.marketGridPresentables = presentables
