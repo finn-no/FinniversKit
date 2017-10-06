@@ -87,6 +87,7 @@
 		457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
 		457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
 		459D37F71F87620B00038582 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
+		459D37FA1F8775D700038582 /* RibbonView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RibbonView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Troika View.xctemplate"; sourceTree = "<group>"; };
 		CB3664241F73F818009D3244 /* UIFont+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,6 +233,7 @@
 		459D37F41F87613D00038582 /* Ribbon */ = {
 			isa = PBXGroup;
 			children = (
+				459D37FA1F8775D700038582 /* RibbonView.playground */,
 				459D37F71F87620B00038582 /* RibbonView.swift */,
 			);
 			path = Ribbon;
