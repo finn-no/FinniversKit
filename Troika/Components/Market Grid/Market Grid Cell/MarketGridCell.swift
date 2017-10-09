@@ -46,6 +46,8 @@ public class MarketGridCell: UICollectionViewCell {
     }
     
     private func setup() {
+        isAccessibilityElement = true
+        
         addSubview(iconImageView)
         addSubview(titleLabel)
         addSubview(externalLinkImageView)
@@ -75,6 +77,7 @@ public class MarketGridCell: UICollectionViewCell {
         didSet {
             iconImageView.image = presentable?.iconImage
             titleLabel.text = presentable?.title
+            accessibilityLabel = presentable?.accessibilityLabel
             if let presentable = presentable, presentable.showExternalLinkIcon {
                 externalLinkImageView.isHidden = false
             } else {
