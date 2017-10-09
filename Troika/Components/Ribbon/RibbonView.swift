@@ -29,7 +29,7 @@ public class RibbonView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.font = .detail
-        label.textColor = .licorice // TODO: Spør om det skal være ´stone´?
+        label.textColor = .licorice
         return label
     }()
     
