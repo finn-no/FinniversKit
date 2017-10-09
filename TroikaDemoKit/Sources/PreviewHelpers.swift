@@ -1,7 +1,7 @@
 import Foundation
 import Troika
 
-/// A model cinfirming to the PreviewPresentable protocol for showcasing PreviewCell in playground.
+/// A model confirming to the PreviewPresentable protocol for showcasing PreviewCell in playground.
 public struct PreviewDataModel: PreviewPresentable {
     public let imageUrl: URL?
     public let imageSize: CGSize
@@ -9,6 +9,13 @@ public struct PreviewDataModel: PreviewPresentable {
     public let title: String
     public let subTitle: String
     public let imageText: String
+    public var accessibilityLabel: String {
+        if imageText.isEmpty {
+            return title + ". " + subTitle
+        } else {
+            return title + ". " + subTitle  + ". Pris: kroner " + imageText
+        }
+    }
 }
 
 /// For use with PreviewGridView.
