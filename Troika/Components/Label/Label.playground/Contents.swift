@@ -6,7 +6,7 @@ import TroikaDemoKit
 TroikaDemoKit.setupPlayground()
 
 let topSpacing: CGFloat = 32
-let marging: CGFloat = 16
+let margin: CGFloat = 16
 let interimSpacing: CGFloat = 8
 
 let view = UIView()
@@ -18,6 +18,12 @@ let labelT5 = Label(style: .t5)
 let labelBody = Label(style: .body)
 let labelDetail = Label(style: .detail)
 
+let testStyle: LabelStyle = .detail
+let multilineLabel = Label(style: testStyle)
+let label1 = Label(style: testStyle)
+let label2 = Label(style: testStyle)
+let label3 = Label(style: testStyle)
+
 labelT1.translatesAutoresizingMaskIntoConstraints = false
 labelT2.translatesAutoresizingMaskIntoConstraints = false
 labelT3.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +31,12 @@ labelT4.translatesAutoresizingMaskIntoConstraints = false
 labelT5.translatesAutoresizingMaskIntoConstraints = false
 labelBody.translatesAutoresizingMaskIntoConstraints = false
 labelDetail.translatesAutoresizingMaskIntoConstraints = false
+
+multilineLabel.translatesAutoresizingMaskIntoConstraints = false
+multilineLabel.numberOfLines = 0
+label1.translatesAutoresizingMaskIntoConstraints = false
+label2.translatesAutoresizingMaskIntoConstraints = false
+label3.translatesAutoresizingMaskIntoConstraints = false
 
 view.backgroundColor = .white
 view.frame = ScreenSize.medium
@@ -37,8 +49,13 @@ view.addSubview(labelT5)
 view.addSubview(labelBody)
 view.addSubview(labelDetail)
 
+view.addSubview(multilineLabel)
+view.addSubview(label1)
+view.addSubview(label2)
+view.addSubview(label3)
+
 labelT1.topAnchor.constraint(equalTo: view.topAnchor, constant: topSpacing).isActive = true
-labelT1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: marging).isActive = true
+labelT1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin).isActive = true
 
 labelT2.topAnchor.constraint(equalTo: labelT1.bottomAnchor, constant: interimSpacing).isActive = true
 labelT2.leadingAnchor.constraint(equalTo: labelT1.leadingAnchor).isActive = true
@@ -57,6 +74,23 @@ labelBody.leadingAnchor.constraint(equalTo: labelT5.leadingAnchor).isActive = tr
 
 labelDetail.topAnchor.constraint(equalTo: labelBody.bottomAnchor, constant: interimSpacing).isActive = true
 labelDetail.leadingAnchor.constraint(equalTo: labelBody.leadingAnchor).isActive = true
+
+label1.topAnchor.constraint(equalTo: labelDetail.bottomAnchor, constant: topSpacing).isActive = true
+label1.leadingAnchor.constraint(equalTo: labelDetail.leadingAnchor).isActive = true
+
+label2.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 0).isActive = true
+label2.leadingAnchor.constraint(equalTo: label1.leadingAnchor).isActive = true
+
+label3.topAnchor.constraint(equalTo: label2.bottomAnchor, constant: 0).isActive = true
+label3.leadingAnchor.constraint(equalTo: label2.leadingAnchor).isActive = true
+
+multilineLabel.leadingAnchor.constraint(equalTo: label1.trailingAnchor, constant: interimSpacing).isActive = true
+multilineLabel.topAnchor.constraint(equalTo: label1.topAnchor).isActive = true
+
+label1.text = "Test"
+label2.text = "Test"
+label3.text = "Test"
+multilineLabel.text = "Test \nTest \nTest"
 
 labelT1.text = "Label T1"
 labelT2.text = "Label T2"
