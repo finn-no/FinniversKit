@@ -26,9 +26,6 @@ public class Label: UILabel {
 
     private func setup() {
         isAccessibilityElement = true
-        
-        textColor = style?.color
-        font = style?.font
     }
 
     // Mark: - Superclass Overrides
@@ -60,16 +57,13 @@ public class Label: UILabel {
         super.layoutSubviews()
         
         accessibilityLabel = text
+        textColor = style?.color
+        font = style?.font
     }
 
     // Mark: - Dependency injection
     
-    public var style: LabelStyle? {
-        didSet {
-            textColor = style?.color
-            font = style?.font
-        }
-    }
+    public var style: LabelStyle?
     
     // Mark: - Private
 
