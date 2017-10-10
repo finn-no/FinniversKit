@@ -7,7 +7,7 @@ TroikaDemoKit.setupPlayground()
 
 let topSpacing: CGFloat = 32
 let margin: CGFloat = 16
-let interimSpacing: CGFloat = 8
+let interimSpacing: CGFloat = 0
 
 let view = UIView()
 let labelT1 = Label(style: .t1)
@@ -84,7 +84,7 @@ label2.leadingAnchor.constraint(equalTo: label1.leadingAnchor).isActive = true
 label3.topAnchor.constraint(equalTo: label2.bottomAnchor, constant: 0).isActive = true
 label3.leadingAnchor.constraint(equalTo: label2.leadingAnchor).isActive = true
 
-multilineLabel.leadingAnchor.constraint(equalTo: label1.trailingAnchor, constant: interimSpacing).isActive = true
+multilineLabel.leadingAnchor.constraint(equalTo: label1.trailingAnchor, constant: 4).isActive = true
 multilineLabel.topAnchor.constraint(equalTo: label1.topAnchor).isActive = true
 
 label1.text = "Test"
