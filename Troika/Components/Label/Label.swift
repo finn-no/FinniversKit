@@ -33,6 +33,7 @@ public class Label: UILabel {
     
     public override func drawText(in rect: CGRect) {
         guard let style = style else {
+            super.drawText(in: rect)
             return
         }
         let insets = UIEdgeInsets(top: style.padding.top, left: style.padding.left, bottom: style.padding.bottom, right: style.padding.right)
@@ -41,9 +42,12 @@ public class Label: UILabel {
     
     public override var intrinsicContentSize: CGSize {
         get {
+            guard let style = style else {
+                return super.intrinsicContentSize
+            }
             var contentSize = super.intrinsicContentSize
-            contentSize.height += style!.padding.top + style!.padding.bottom
-            contentSize.width += style!.padding.left + style!.padding.right
+            contentSize.height += style.padding.top + style.padding.bottom
+            contentSize.width += style.padding.left + style.padding.right
             return contentSize
         }
     }
