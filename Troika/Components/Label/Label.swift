@@ -25,6 +25,8 @@ public class Label: UILabel {
     }
 
     private func setup() {
+        isAccessibilityElement = true
+        
         textColor = style?.color
         font = style?.font
     }
@@ -56,9 +58,8 @@ public class Label: UILabel {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-
-        // Add custom subviews
-        // Layout your custom views
+        
+        accessibilityLabel = text
     }
 
     // Mark: - Dependency injection
