@@ -18,7 +18,7 @@ let labelT5 = Label(style: .t5)
 let labelBody = Label(style: .body)
 let labelDetail = Label(style: .detail)
 
-let testStyle: LabelStyle = .detail
+let testStyle: Label.Style = .detail
 let multilineLabel = Label(style: testStyle)
 let label1 = Label(style: testStyle)
 let label2 = Label(style: testStyle)
