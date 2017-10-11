@@ -8,7 +8,7 @@ public class Label: UILabel {
 
     // Mark: - Setup
     
-    public init(style: LabelStyle) {
+    public init(style: Style) {
         super.init(frame: .zero)
         self.style = style
         setup()
@@ -63,7 +63,7 @@ public class Label: UILabel {
 
     // Mark: - Dependency injection
     
-    public var style: LabelStyle?
+    public var style: Style?
     
     // Mark: - Private
 

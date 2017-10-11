@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D04D7E1F583B1800EA317D /* AppDelegate.swift */; };
 		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
-		4523B77C1F8CF3C3001DFB96 /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4523B77B1F8CF3C3001DFB96 /* LabelStyle.swift */; };
+		4523B77C1F8CF3C3001DFB96 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */; };
 		453D887F1F85192700FC63C7 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */; };
 		453D88801F85192700FC63C7 /* FINNTypeWebStrippet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D88791F84FF6900FC63C7 /* FINNTypeWebStrippet-Light.ttf */; };
 		453D88811F85192700FC63C7 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */; };
@@ -77,7 +77,7 @@
 		25D04D7E1F583B1800EA317D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25D04D881F583B1800EA317D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25D04D8A1F583B1800EA317D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4523B77B1F8CF3C3001DFB96 /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
+		4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
 		453D88791F84FF6900FC63C7 /* FINNTypeWebStrippet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Light.ttf"; sourceTree = "<group>"; };
 		453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
 		453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 			children = (
 				45441D041F8CAB8800A3B007 /* Label.playground */,
 				45441D021F8CA1D300A3B007 /* Label.swift */,
-				4523B77B1F8CF3C3001DFB96 /* LabelStyle.swift */,
+				4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -578,7 +578,7 @@
 				45441D031F8CA1D300A3B007 /* Label.swift in Sources */,
 				457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */,
 				CB3E67C61F7E4D5D00C40D47 /* PreviewCell.swift in Sources */,
-				4523B77C1F8CF3C3001DFB96 /* LabelStyle.swift in Sources */,
+				4523B77C1F8CF3C3001DFB96 /* Label+Style.swift in Sources */,
 				455866071F7A751300F670EF /* MarketGridView.swift in Sources */,
 				4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */,
 				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
