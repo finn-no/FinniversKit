@@ -2,10 +2,6 @@ import UIKit
 
 public class Label: UILabel {
 
-    // Mark: - Internal properties
-    
-    // Mark: - External properties
-
     // Mark: - Setup
     
     public init(style: Style) {
@@ -31,23 +27,24 @@ public class Label: UILabel {
     // Mark: - Superclass Overrides
     
     public override func drawText(in rect: CGRect) {
-        guard let style = style else {
-            super.drawText(in: rect)
+        guard let style = style, let text = text else {
             return
         }
         let insets = UIEdgeInsets(top: style.padding.top, left: style.padding.left, bottom: style.padding.bottom, right: style.padding.right)
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
+        let string = NSString(string: text)
+        string.draw(at: UIEdgeInsetsInsetRect(rect, insets).origin, withAttributes: style.attributes)
     }
     
     public override var intrinsicContentSize: CGSize {
         get {
-            guard let style = style else {
+            guard let style = style, let text = text else {
                 return super.intrinsicContentSize
             }
-            var contentSize = super.intrinsicContentSize
-            contentSize.height += style.padding.top + style.padding.bottom
-            contentSize.width += style.padding.left + style.padding.right
-            return contentSize
+            let string = NSString(string: text)
+            var textSize = string.size(withAttributes: style.attributes)
+            textSize.height += style.padding.top + style.padding.bottom
+            textSize.width += style.padding.left + style.padding.right
+            return textSize
         }
     }
 
@@ -64,8 +61,5 @@ public class Label: UILabel {
     // Mark: - Dependency injection
     
     public var style: Style?
-    
-    // Mark: - Private
-
 }
 
