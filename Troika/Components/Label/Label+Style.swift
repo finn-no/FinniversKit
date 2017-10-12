@@ -36,15 +36,26 @@ public extension Label {
         }
         
         var padding: UIEdgeInsets {
-            switch self {
-            case .t1: return UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
-            case .t2: return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            case .t3: return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            case .t4: return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            case .t5: return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            case .body: return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            case .detail: return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            }
+            return UIEdgeInsets(top: lineSpacing, left: 0, bottom: 0, right: 0)
+        }
+        
+        var lineSpacing: CGFloat {
+            // We may need custom linespacing for each font
+            return font.pointSize * 0.5
+        }
+        
+        var paragraphStyle: NSParagraphStyle {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = lineSpacing
+            return paragraphStyle
+        }
+        
+        var attributes: [NSAttributedStringKey : Any] {
+            return [
+                NSAttributedStringKey.font: font,
+                NSAttributedStringKey.foregroundColor: color,
+                NSAttributedStringKey.paragraphStyle: paragraphStyle
+            ]
         }
     }
 }
