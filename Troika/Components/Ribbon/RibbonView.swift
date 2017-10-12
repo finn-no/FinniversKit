@@ -24,20 +24,17 @@ public class RibbonView: UIView {
 
     // Mark: - Internal properties
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    private lazy var titleLabel: Label = {
+        let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.font = .detail
-        label.textColor = .licorice
+        label.style = .detailLicorice
         return label
     }()
     
     let horisontalMargin: CGFloat = 8
     let verticalMargin: CGFloat = 2
     
-    // Mark: - External properties
-
     // Mark: - Setup
 
     public override init(frame: CGRect) {
@@ -54,8 +51,6 @@ public class RibbonView: UIView {
         layer.cornerRadius = 3
         addSubview(titleLabel)
     }
-
-    // Mark: - Superclass Overrides
 
     // Mark: - Layout
 
@@ -76,8 +71,4 @@ public class RibbonView: UIView {
             backgroundColor = presentable?.type.color
         }
     }
-    
-    // Mark: - Private
-
 }
-
