@@ -10,6 +10,7 @@ public extension Label {
         case t5
         case body
         case detail
+        case detailLicorice
         
         var color: UIColor {
             switch self {
@@ -20,6 +21,7 @@ public extension Label {
             case .t5: return .licorice
             case .body: return .licorice
             case .detail: return .stone
+            case .detailLicorice: return .licorice
             }
         }
         
@@ -31,7 +33,7 @@ public extension Label {
             case .t4: return UIFont.t4
             case .t5: return UIFont.t5
             case .body: return UIFont.body
-            case .detail: return UIFont.detail
+            case .detail, .detailLicorice: return UIFont.detail
             }
         }
         
@@ -40,8 +42,12 @@ public extension Label {
         }
         
         var lineSpacing: CGFloat {
-            // We may need custom linespacing for each font
-            return font.pointSize * 0.5
+            switch self {
+            case .t1: return font.pointSize * 0.5
+            case .t2: return font.pointSize * 0.5
+            case .t3: return font.pointSize * 0.5
+            default: return 0
+            }
         }
         
         var paragraphStyle: NSParagraphStyle {
