@@ -49,19 +49,5 @@ public extension Label {
             default: return 0
             }
         }
-        
-        var paragraphStyle: NSParagraphStyle {
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = lineSpacing
-            return paragraphStyle
-        }
-        
-        var attributes: [NSAttributedStringKey : Any] {
-            return [
-                NSAttributedStringKey.font: font,
-                NSAttributedStringKey.foregroundColor: color,
-                NSAttributedStringKey.paragraphStyle: paragraphStyle
-            ]
-        }
     }
 }

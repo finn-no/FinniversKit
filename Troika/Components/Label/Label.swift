@@ -1,7 +1,24 @@
 import UIKit
 
 public class Label: UILabel {
-
+    
+    // Mark: - Internal properties
+    
+    var labelAttributes: [NSAttributedStringKey : Any] {
+        guard let style = style else {
+            return [:]
+        }
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = style.lineSpacing
+        paragraphStyle.alignment = textAlignment
+        
+        return [
+            NSAttributedStringKey.font: style.font,
+            NSAttributedStringKey.foregroundColor: style.color,
+            NSAttributedStringKey.paragraphStyle: paragraphStyle
+        ]
+    }
+    
     // Mark: - Setup
     
     public init(style: Style) {
