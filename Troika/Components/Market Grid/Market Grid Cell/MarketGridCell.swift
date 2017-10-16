@@ -22,16 +22,13 @@ public class MarketGridCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    private lazy var titleLabel: Label = {
+        let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .detail
+        label.style = .detail
         label.textAlignment = .center
-        label.textColor = .licorice
         return label
     }()
-    
-    // Mark: - External properties
     
     // Mark: - Setup
     
