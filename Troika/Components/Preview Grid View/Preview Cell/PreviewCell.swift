@@ -36,20 +36,18 @@ public class PreviewCell: UICollectionViewCell {
         return imageView
     }()
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    private lazy var titleLabel: Label = {
+        let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .detail
-        label.textColor = .licorice
+        label.style = .detailLicorice
         label.backgroundColor = .clear
         return label
     }()
 
-    private lazy var subTitleLabel: UILabel = {
-        let label = UILabel()
+    private lazy var subTitleLabel: Label = {
+        let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .detail
-        label.textColor = .stone
+        label.style = .detail
         label.backgroundColor = .clear
         return label
     }()
@@ -65,11 +63,10 @@ public class PreviewCell: UICollectionViewCell {
         return view
     }()
 
-    private lazy var imageTextLabel: UILabel = {
-        let label = UILabel()
+    private lazy var imageTextLabel: Label = {
+        let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .t4
-        label.textColor = .milk
+        label.style = .t4milk
         label.backgroundColor = .clear
         return label
     }()
@@ -140,9 +137,10 @@ public class PreviewCell: UICollectionViewCell {
         iconImageView.widthAnchor.constraint(equalToConstant: PreviewCell.iconSize).isActive = true
         iconImageView.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor).isActive = true
 
-        imageTextLabel.topAnchor.constraint(equalTo: imageDesciptionView.topAnchor).isActive = true
+//        imageTextLabel.topAnchor.constraint(equalTo: imageDesciptionView.topAnchor).isActive = true
         imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: PreviewCell.margin ).isActive = true
-        imageTextLabel.bottomAnchor.constraint(equalTo: imageDesciptionView.bottomAnchor).isActive = true
+//        imageTextLabel.bottomAnchor.constraint(equalTo: imageDesciptionView.bottomAnchor).isActive = true
+        imageTextLabel.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor).isActive = true
 
         imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: PreviewCell.margin).isActive = true
