@@ -7,6 +7,7 @@ public extension Label {
         case t2
         case t3
         case t4
+        case t4milk
         case t5
         case body
         case detail
@@ -18,6 +19,7 @@ public extension Label {
             case .t2: return .licorice
             case .t3: return .licorice
             case .t4: return .licorice
+            case .t4milk: return .milk
             case .t5: return .licorice
             case .body: return .licorice
             case .detail: return .stone
@@ -30,7 +32,7 @@ public extension Label {
             case .t1: return UIFont.t1
             case .t2: return UIFont.t2
             case .t3: return UIFont.t3
-            case .t4: return UIFont.t4
+            case .t4, .t4milk: return UIFont.t4
             case .t5: return UIFont.t5
             case .body: return UIFont.body
             case .detail, .detailLicorice: return UIFont.detail
