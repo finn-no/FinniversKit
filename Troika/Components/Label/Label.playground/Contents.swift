@@ -23,6 +23,7 @@ let multilineLabel = Label(style: testStyle)
 let label1 = Label(style: testStyle)
 let label2 = Label(style: testStyle)
 let label3 = Label(style: testStyle)
+let labelWide = Label(style: .body)
 
 labelT1.translatesAutoresizingMaskIntoConstraints = false
 labelT2.translatesAutoresizingMaskIntoConstraints = false
@@ -37,6 +38,9 @@ multilineLabel.numberOfLines = 0
 label1.translatesAutoresizingMaskIntoConstraints = false
 label2.translatesAutoresizingMaskIntoConstraints = false
 label3.translatesAutoresizingMaskIntoConstraints = false
+labelWide.translatesAutoresizingMaskIntoConstraints = false
+labelWide.backgroundColor = .mint
+labelWide.textAlignment = .center
 
 view.backgroundColor = .white
 view.frame = ScreenSize.medium
@@ -53,6 +57,7 @@ view.addSubview(multilineLabel)
 view.addSubview(label1)
 view.addSubview(label2)
 view.addSubview(label3)
+view.addSubview(labelWide)
 
 labelT1.topAnchor.constraint(equalTo: view.topAnchor, constant: topSpacing).isActive = true
 labelT1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin).isActive = true
@@ -87,10 +92,16 @@ label3.leadingAnchor.constraint(equalTo: label2.leadingAnchor).isActive = true
 multilineLabel.leadingAnchor.constraint(equalTo: label1.trailingAnchor, constant: 4).isActive = true
 multilineLabel.topAnchor.constraint(equalTo: label1.topAnchor).isActive = true
 
+labelWide.topAnchor.constraint(equalTo: multilineLabel.bottomAnchor, constant: 16).isActive = true
+labelWide.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+labelWide.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+labelWide.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
 label1.text = "Test"
 label2.text = "Test"
 label3.text = "Test"
-multilineLabel.text = "Test \nTest \nTest"
+multilineLabel.text = "Test\nTest\nTest"
+labelWide.text = "Test center"
 
 labelT1.text = "Label T1"
 labelT2.text = "Label T2"

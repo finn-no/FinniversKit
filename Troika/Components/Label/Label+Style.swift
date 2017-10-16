@@ -6,20 +6,50 @@ public extension Label {
         case t1
         case t2
         case t3
-        case t4
-        case t5
-        case body
-        case detail
+        case t4(FlexibleColorGroup)
+        case t5(FlexibleColorGroup)
+        case body(AllColorGroup)
+        case detail(AllColorGroup)
+        
+        public enum FlexibleColorGroup {
+            case licorice
+            case milk
+            
+            var color: UIColor {
+                switch self {
+                case .licorice: return .licorice
+                case .milk: return .milk
+                }
+            }
+        }
+        
+        public enum AllColorGroup {
+            case licorice
+            case milk
+            case stone
+            case primaryBlue
+            case cherry
+            
+            var color: UIColor {
+                switch self {
+                case .licorice: return .licorice
+                case .milk: return .milk
+                case .stone: return .stone
+                case .primaryBlue: return .primaryBlue
+                case .cherry: return .cherry
+                }
+            }
+        }
         
         var color: UIColor {
             switch self {
             case .t1: return .licorice
             case .t2: return .licorice
             case .t3: return .licorice
-            case .t4: return .licorice
-            case .t5: return .licorice
-            case .body: return .licorice
-            case .detail: return .stone
+            case .t4(let colorGroup): return colorGroup.color
+            case .t5(let colorGroup): return colorGroup.color
+            case .body(let colorGroup): return colorGroup.color
+            case .detail(let colorGroup): return colorGroup.color
             }
         }
         
@@ -40,22 +70,12 @@ public extension Label {
         }
         
         var lineSpacing: CGFloat {
-            // We may need custom linespacing for each font
-            return font.pointSize * 0.5
-        }
-        
-        var paragraphStyle: NSParagraphStyle {
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = lineSpacing
-            return paragraphStyle
-        }
-        
-        var attributes: [NSAttributedStringKey : Any] {
-            return [
-                NSAttributedStringKey.font: font,
-                NSAttributedStringKey.foregroundColor: color,
-                NSAttributedStringKey.paragraphStyle: paragraphStyle
-            ]
+            switch self {
+            case .t1: return font.pointSize * 0.5
+            case .t2: return font.pointSize * 0.5
+            case .t3: return font.pointSize * 0.5
+            default: return 0
+            }
         }
     }
 }

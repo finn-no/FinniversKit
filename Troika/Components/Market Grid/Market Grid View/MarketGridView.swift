@@ -19,8 +19,6 @@ public class MarketGridView: UIView {
     }()
     private weak var delegate: MarketGridCollectionViewDelegate?
     
-    // Mark: - External properties
-    
     // Mark: - Setup
     
     public init(frame: CGRect = .zero, delegate: MarketGridCollectionViewDelegate) {
@@ -62,6 +60,7 @@ public class MarketGridView: UIView {
     }
     
     // Mark: - Dependency injection
+    
     public var marketGridPresentables: [MarketGridPresentable] = [MarketGridPresentable]() {
         didSet {
             collectionView.reloadData()

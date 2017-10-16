@@ -1,7 +1,24 @@
 import UIKit
 
 public class Label: UILabel {
-
+    
+    // Mark: - Internal properties
+    
+    var labelAttributes: [NSAttributedStringKey : Any] {
+        guard let style = style else {
+            return [:]
+        }
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = style.lineSpacing
+        paragraphStyle.alignment = textAlignment
+        
+        return [
+            NSAttributedStringKey.font: style.font,
+            NSAttributedStringKey.foregroundColor: style.color,
+            NSAttributedStringKey.paragraphStyle: paragraphStyle
+        ]
+    }
+    
     // Mark: - Setup
     
     public init(style: Style) {
@@ -30,9 +47,9 @@ public class Label: UILabel {
         guard let style = style, let text = text else {
             return
         }
-        let insets = UIEdgeInsets(top: style.padding.top, left: style.padding.left, bottom: style.padding.bottom, right: style.padding.right)
         let string = NSString(string: text)
-        string.draw(at: UIEdgeInsetsInsetRect(rect, insets).origin, withAttributes: style.attributes)
+        let textRect = CGRect(x: style.padding.left, y: style.padding.top, width: rect.width - style.padding.left - style.padding.right, height: rect.height - style.padding.top - style.padding.bottom)
+        string.draw(in: textRect, withAttributes: labelAttributes)
     }
     
     public override var intrinsicContentSize: CGSize {
@@ -40,12 +57,17 @@ public class Label: UILabel {
             guard let style = style, let text = text else {
                 return super.intrinsicContentSize
             }
-            let string = NSString(string: text)
-            var textSize = string.size(withAttributes: style.attributes)
-            textSize.height += style.padding.top + style.padding.bottom
-            textSize.width += style.padding.left + style.padding.right
+            var textSize = size(of: text)
+            textSize.height = ceil(textSize.height + style.padding.top + style.padding.bottom)
+            textSize.width = ceil(textSize.width + style.padding.left + style.padding.right)
             return textSize
         }
+    }
+    
+    func size(of text: String) -> CGSize {
+        let string = NSString(string: text)
+        let textSize = string.size(withAttributes: labelAttributes)
+        return textSize
     }
 
     // Mark: - Layout
