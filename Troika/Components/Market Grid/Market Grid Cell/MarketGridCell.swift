@@ -25,7 +25,7 @@ public class MarketGridCell: UICollectionViewCell {
     private lazy var titleLabel: Label = {
         let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.style = .detail
+        label.style = .detail(.licorice)
         label.textAlignment = .center
         return label
     }()

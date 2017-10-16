@@ -6,24 +6,50 @@ public extension Label {
         case t1
         case t2
         case t3
-        case t4
-        case t4milk
-        case t5
-        case body
-        case detail
-        case detailLicorice
+        case t4(FlexibleColorGroup)
+        case t5(FlexibleColorGroup)
+        case body(AllColorGroup)
+        case detail(AllColorGroup)
+        
+        public enum FlexibleColorGroup {
+            case licorice
+            case milk
+            
+            var color: UIColor {
+                switch self {
+                case .licorice: return .licorice
+                case .milk: return .milk
+                }
+            }
+        }
+        
+        public enum AllColorGroup {
+            case licorice
+            case milk
+            case stone
+            case primaryBlue
+            case cherry
+            
+            var color: UIColor {
+                switch self {
+                case .licorice: return .licorice
+                case .milk: return .milk
+                case .stone: return .stone
+                case .primaryBlue: return .primaryBlue
+                case .cherry: return .cherry
+                }
+            }
+        }
         
         var color: UIColor {
             switch self {
             case .t1: return .licorice
             case .t2: return .licorice
             case .t3: return .licorice
-            case .t4: return .licorice
-            case .t4milk: return .milk
-            case .t5: return .licorice
-            case .body: return .licorice
-            case .detail: return .stone
-            case .detailLicorice: return .licorice
+            case .t4(let colorGroup): return colorGroup.color
+            case .t5(let colorGroup): return colorGroup.color
+            case .body(let colorGroup): return colorGroup.color
+            case .detail(let colorGroup): return colorGroup.color
             }
         }
         
@@ -32,10 +58,10 @@ public extension Label {
             case .t1: return UIFont.t1
             case .t2: return UIFont.t2
             case .t3: return UIFont.t3
-            case .t4, .t4milk: return UIFont.t4
+            case .t4: return UIFont.t4
             case .t5: return UIFont.t5
             case .body: return UIFont.body
-            case .detail, .detailLicorice: return UIFont.detail
+            case .detail: return UIFont.detail
             }
         }
         

@@ -39,7 +39,7 @@ public class PreviewCell: UICollectionViewCell {
     private lazy var titleLabel: Label = {
         let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.style = .detailLicorice
+        label.style = .detail(.licorice)
         label.backgroundColor = .clear
         return label
     }()
@@ -47,7 +47,7 @@ public class PreviewCell: UICollectionViewCell {
     private lazy var subTitleLabel: Label = {
         let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.style = .detail
+        label.style = .detail(.licorice)
         label.backgroundColor = .clear
         return label
     }()
@@ -66,7 +66,7 @@ public class PreviewCell: UICollectionViewCell {
     private lazy var imageTextLabel: Label = {
         let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.style = .t4milk
+        label.style = .t4(.milk)
         label.backgroundColor = .clear
         return label
     }()

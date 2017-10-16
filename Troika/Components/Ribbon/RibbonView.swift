@@ -28,7 +28,7 @@ public class RibbonView: UIView {
         let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.style = .detailLicorice
+        label.style = .detail(.licorice)
         return label
     }()
     
