@@ -31,6 +31,10 @@ public enum RibbonDataModel: RibbonPresentable {
         case .sponsored: return "Sponsored"
         }
     }
+    
+    public var accessibilityLabel: String {
+        return "Merk: " + title
+    }
 }
 
 public let headerLabel: UILabel = {

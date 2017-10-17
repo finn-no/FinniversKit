@@ -90,6 +90,8 @@ public class PreviewCell: UICollectionViewCell {
     }
 
     private func setup() {
+        isAccessibilityElement = true
+        
         addSubview(imageView)
         addSubview(subTitleLabel)
         addSubview(titleLabel)
@@ -110,6 +112,7 @@ public class PreviewCell: UICollectionViewCell {
         titleLabel.text = ""
         subTitleLabel.text = ""
         imageTextLabel.text = ""
+        accessibilityLabel = ""
     }
 
     // Mark: - Layout
@@ -159,6 +162,7 @@ public class PreviewCell: UICollectionViewCell {
                 titleLabel.text = presentable.title
                 subTitleLabel.text = presentable.subTitle
                 imageTextLabel.text = presentable.imageText
+                accessibilityLabel = presentable.accessibilityLabel
 
                 loadImage(presentable: presentable)
             }

@@ -7,4 +7,11 @@ public protocol PreviewPresentable {
     var title: String { get }
     var subTitle: String { get }
     var imageText: String { get }
+    var accessibilityLabel: String { get }
+}
+
+public extension PreviewPresentable {
+    var accessibilityLabel: String {
+        return title + ". " + subTitle + ". " + imageText
+    }
 }

@@ -34,6 +34,7 @@ public class RibbonView: UIView {
     
     let horisontalMargin: CGFloat = 8
     let verticalMargin: CGFloat = 2
+    let cornerRadius: CGFloat = 3
     
     // Mark: - Setup
 
@@ -48,7 +49,9 @@ public class RibbonView: UIView {
     }
 
     private func setup() {
-        layer.cornerRadius = 3
+        layer.cornerRadius = cornerRadius
+        isAccessibilityElement = true
+        
         addSubview(titleLabel)
     }
 
@@ -68,6 +71,7 @@ public class RibbonView: UIView {
     public var presentable: RibbonPresentable? {
         didSet {
             titleLabel.text = presentable?.title
+            accessibilityLabel = presentable?.accessibilityLabel
             backgroundColor = presentable?.type.color
         }
     }

@@ -66,5 +66,13 @@ public enum Market: MarketGridPresentable {
         }
     }
     
+    public var accessibilityLabel: String {
+        if showExternalLinkIcon {
+            return title + ". Merk: Åpner ekstern link"
+        } else {
+            return title
+        }
+    }
+    
     public static var allMarkets: [Market] = [.eiendom, .bil, .torget, .jobb, .mc, .bT, .nytte, .reise, .shopping, .smajobb, .moteplassen, .mittAnbud]
 }
