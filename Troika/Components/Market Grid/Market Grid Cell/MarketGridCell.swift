@@ -54,6 +54,15 @@ public class MarketGridCell: UICollectionViewCell {
         backgroundColor = .clear
     }
     
+    // Mark: - Superclass Overrides
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        iconImageView.image = nil
+        titleLabel.text = ""
+        accessibilityLabel = ""
+    }
+    
     // Mark: - Layout
     
     public override func layoutSubviews() {
