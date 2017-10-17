@@ -68,7 +68,7 @@ public enum Market: MarketGridPresentable {
     
     public var accessibilityLabel: String {
         if showExternalLinkIcon {
-            return title + ". Note: Opens external link"
+            return title + ". Merk: Åpner ekstern link"
         } else {
             return title
         }
