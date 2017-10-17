@@ -472,6 +472,7 @@
 				TargetAttributes = {
 					25D04D7A1F583B1800EA317D = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = D34XZHQLE3;
 						ProvisioningStyle = Automatic;
 					};
 					CB3CF1551F73E5870041EF20 = {
@@ -738,10 +739,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = D34XZHQLE3;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Project;
+				PRODUCT_BUNDLE_IDENTIFIER = "no.finn.Troika-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -752,10 +754,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = D34XZHQLE3;
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Project;
+				PRODUCT_BUNDLE_IDENTIFIER = "no.finn.Troika-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
