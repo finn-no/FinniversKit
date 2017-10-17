@@ -115,6 +115,7 @@ public class PreviewCell: UICollectionViewCell {
         titleLabel.text = ""
         subTitleLabel.text = ""
         imageTextLabel.text = ""
+        accessibilityLabel = ""
     }
 
     // Mark: - Layout
