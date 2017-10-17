@@ -27,11 +27,14 @@
 		457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C61F7BC4100031E125 /* Identifiable.swift */; };
 		457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */; };
 		457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */; };
-		457B35D01F7BE2670031E125 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		459D37F81F87620B00038582 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37F71F87620B00038582 /* RibbonView.swift */; };
 		459D37FC1F8782CB00038582 /* RibbonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FB1F8782CB00038582 /* RibbonHelpers.swift */; };
 		459D37FE1F87AE5D00038582 /* RibbonViewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FD1F87AE5D00038582 /* RibbonViewPresentable.swift */; };
 		459D38001F87C1B300038582 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FF1F87C1B300038582 /* ScreenSize.swift */; };
+		45CF5A501F96198B00069240 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
+		45CF5A511F96198B00069240 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		45CF5A551F96198F00069240 /* TroikaDemoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */; };
+		45CF5A561F96198F00069240 /* TroikaDemoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664241F73F818009D3244 /* UIFont+Troika.swift */; };
 		CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3CF1581F73E5870041EF20 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB3E67C11F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */; };
@@ -51,6 +54,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		45CF5A521F96198B00069240 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
+			remoteInfo = Troika;
+		};
+		45CF5A571F96198F00069240 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB400B0E1F83BE2400B26C1C;
+			remoteInfo = TroikaDemoKit;
+		};
 		CB80C4941F864D4C00C1FD0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
@@ -61,12 +78,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CB58A75B1F73B7B300A5A19F /* Embed Frameworks */ = {
+		45CF5A541F96198B00069240 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				45CF5A561F96198F00069240 /* TroikaDemoKit.framework in Embed Frameworks */,
+				45CF5A511F96198B00069240 /* Troika.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,7 +153,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				457B35D01F7BE2670031E125 /* Troika.framework in Frameworks */,
+				45CF5A551F96198F00069240 /* TroikaDemoKit.framework in Frameworks */,
+				45CF5A501F96198B00069240 /* Troika.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,11 +431,13 @@
 				25D04D771F583B1800EA317D /* Sources */,
 				25D04D781F583B1800EA317D /* Frameworks */,
 				25D04D791F583B1800EA317D /* Resources */,
-				CB58A75B1F73B7B300A5A19F /* Embed Frameworks */,
+				45CF5A541F96198B00069240 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				45CF5A531F96198B00069240 /* PBXTargetDependency */,
+				45CF5A581F96198F00069240 /* PBXTargetDependency */,
 			);
 			name = Project;
 			productName = Project;
@@ -477,11 +499,12 @@
 					};
 					CB3CF1551F73E5870041EF20 = {
 						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = D34XZHQLE3;
 						ProvisioningStyle = Automatic;
 					};
 					CB400B0E1F83BE2400B26C1C = {
 						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = 479AB4K3T6;
+						DevelopmentTeam = D34XZHQLE3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -610,6 +633,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		45CF5A531F96198B00069240 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB3CF1551F73E5870041EF20 /* Troika */;
+			targetProxy = 45CF5A521F96198B00069240 /* PBXContainerItemProxy */;
+		};
+		45CF5A581F96198F00069240 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB400B0E1F83BE2400B26C1C /* TroikaDemoKit */;
+			targetProxy = 45CF5A571F96198F00069240 /* PBXContainerItemProxy */;
+		};
 		CB80C4951F864D4C00C1FD0D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CB3CF1551F73E5870041EF20 /* Troika */;
@@ -737,6 +770,7 @@
 		25D04D8E1F583B1800EA317D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = D34XZHQLE3;
@@ -752,6 +786,7 @@
 		25D04D8F1F583B1800EA317D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = D34XZHQLE3;
@@ -780,6 +815,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = D34XZHQLE3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -814,6 +850,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = D34XZHQLE3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -841,7 +878,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 479AB4K3T6;
+				DEVELOPMENT_TEAM = D34XZHQLE3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -869,7 +906,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 479AB4K3T6;
+				DEVELOPMENT_TEAM = D34XZHQLE3;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
