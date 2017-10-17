@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Project
-//
-//  Created by Nuñez, Elvis on 31/08/2017.
-//  Copyright © 2017 FINN AS. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
@@ -15,9 +7,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var tabBarController: UITabBarController = {
         let tabBarController = UITabBarController()
+        let navigationController = UINavigationController()
         let marketViewController = MarketViewController()
-
-        tabBarController.setViewControllers([marketViewController], animated: false)
+        
+        navigationController.addChildViewController(marketViewController)
+        tabBarController.setViewControllers([navigationController], animated: false)
 
         return tabBarController
     }()

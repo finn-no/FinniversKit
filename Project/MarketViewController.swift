@@ -14,6 +14,9 @@ class MarketViewController: UIViewController {
         let marketGridView = MarketGridView(delegate: self)
         return marketGridView
     }()
+    
+    fileprivate lazy var headerLabel = Label(style: .t4)
+    fileprivate lazy var headerView = UIView(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +34,22 @@ class MarketViewController: UIViewController {
 
         marketGridView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 250) // Initial size
         marketGridView.marketGridPresentables = Market.allMarkets
+        
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        headerView.addSubview(headerLabel)
+        headerView.addSubview(marketGridView)
+        headerLabel.text = "Anbefalinger"
+        
+        marketGridView.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
+        marketGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor).isActive = true
+        marketGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor).isActive = true
+        
+        headerLabel.topAnchor.constraint(equalTo: marketGridView.bottomAnchor).isActive = true
+        headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16).isActive = true
 
         discoverGridView.previewPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
-        discoverGridView.headerView = marketGridView
+        discoverGridView.headerView = headerView
     }
 }
 
@@ -73,6 +89,7 @@ extension MarketViewController: MarketGridCollectionViewDelegate {
 
     func contentSizeDidChange(newSize: CGSize, in gridView: MarketGridView) {
         marketGridView.frame = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        discoverGridView.headerView = marketGridView
+        headerView.frame = CGRect(x: 0, y: 0, width: newSize.width, height: (newSize.height + headerLabel.intrinsicContentSize.height))
+        discoverGridView.headerView = headerView
     }
 }
