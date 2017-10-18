@@ -83,13 +83,8 @@ extension MarketViewController: PreviewGridViewDataSource {
 
 // MARK: - MarketGridCollectionViewDelegate
 extension MarketViewController: MarketGridCollectionViewDelegate {
+
     func didSelect(item: MarketGridPresentable, in gridView: MarketGridView) {
 
-    }
-
-    func contentSizeDidChange(newSize: CGSize, in gridView: MarketGridView) {
-        marketGridView.frame = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        headerView.frame = CGRect(x: 0, y: 0, width: newSize.width, height: (newSize.height + headerLabel.intrinsicContentSize.height))
-        discoverGridView.headerView = headerView
     }
 }
