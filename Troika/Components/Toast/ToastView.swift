@@ -27,7 +27,7 @@ public enum ToastType {
 
 public class ToastView: UIView {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
     
     private let cornerRadius: CGFloat = 2
     private let imageSizeAllowedMin = CGSize(width: 18, height: 18)
@@ -81,9 +81,9 @@ public class ToastView: UIView {
     
     private weak var delegate: ToastViewDelegate?
 
-    // Mark: - External properties
+    // MARK: - External properties
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public init(frame: CGRect = .zero, delegate: ToastViewDelegate) {
         super.init(frame: frame)
@@ -112,9 +112,9 @@ public class ToastView: UIView {
         addSubview(actionButton)
     }
 
-    // Mark: - Superclass Overrides
+    // MARK: - Superclass Overrides
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -143,7 +143,7 @@ public class ToastView: UIView {
         }
     }
 
-    // Mark: - Dependency injection
+    // MARK: - Dependency injection
     
     public var presentable: ToastPresentable? {
         didSet {
@@ -156,7 +156,7 @@ public class ToastView: UIView {
         }
     }
 
-    // Mark: - Actions
+    // MARK: - Actions
     
     @objc private func buttonAction() {
         delegate?.didTap(button: actionButton, in: self)
