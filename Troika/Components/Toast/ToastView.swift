@@ -1,5 +1,9 @@
 import UIKit
 
+public protocol ToastViewDelegate: NSObjectProtocol {
+    func didTap(button: UIButton, in toastView: ToastView)
+}
+
 public enum ToastType {
     case success
     case sucesssImage
@@ -43,6 +47,7 @@ public class ToastView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.primaryBlue, for: .normal)
         button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
     
@@ -61,6 +66,14 @@ public class ToastView: UIView {
 
     // Mark: - Setup
 
+    public init(frame: CGRect = .zero, delegate: ToastViewDelegate) {
+        super.init(frame: frame)
+        
+        self.delegate = delegate
+        
+        setup()
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -126,7 +139,11 @@ public class ToastView: UIView {
         }
     }
 
-    // Mark: - Private
+    // Mark: - Actions
+    
+    @objc func buttonAction() {
+        delegate?.didTap(button: actionButton, in: self)
+    }
 
 }
 
