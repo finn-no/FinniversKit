@@ -23,7 +23,7 @@ public enum ToastDataModel: ToastPresentable {
         case .success: return "Success message with icon"
         case .successImage: return "Success message with thumbnail"
         case .error: return "Error message with icon"
-        case .button: return "Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action"
+        case .button: return "A long toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action"
         case .multiline: return "Toast with a message that spans over multiple lines"
         }
     }
@@ -31,6 +31,13 @@ public enum ToastDataModel: ToastPresentable {
     public var actionButtonTitle: String? {
         switch self {
         case .button: return "Action"
+        default: return nil
+        }
+    }
+    
+    public var imageThumbnail: UIImage? {
+        switch self {
+        case .successImage: return UIImage(named: "eiendom", in: .troikaDemoKit, compatibleWith: nil)
         default: return nil
         }
     }

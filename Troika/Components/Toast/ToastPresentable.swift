@@ -5,6 +5,7 @@ public protocol ToastPresentable {
     var messageTitle: String { get }
     var accessibilityLabel: String { get }
     var actionButtonTitle: String? { get }
+    var imageThumbnail: UIImage? { get }
 }
 
 public extension ToastPresentable {

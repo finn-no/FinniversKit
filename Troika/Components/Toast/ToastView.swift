@@ -17,11 +17,10 @@ public enum ToastType {
         }
     }
     
-    var imageIcon: UIImage {
+    var imageBackgroundColor: UIColor {
         switch self {
-        case .error: return UIImage(frameworkImageNamed: "error")!
-        case .sucesssImage: return UIImage(frameworkImageNamed: "NoImage")!
-        default: return UIImage(frameworkImageNamed: "success")!
+        case .sucesssImage: return .milk
+        default: return .clear
         }
     }
 }
@@ -59,8 +58,27 @@ public class ToastView: UIView {
         return imageView
     }()
     
+    
+    private var imageThumbnail: UIImage {
+        guard let presentable = presentable else {
+            return UIImage(frameworkImageNamed: "success")!
+        }
+        
+        switch presentable.type {
+        case .error:
+            return UIImage(frameworkImageNamed: "error")!
+        case .sucesssImage:
+            if let image = presentable.imageThumbnail {
+                return image
+            } else {
+                return UIImage(frameworkImageNamed: "NoImage")!
+            }
+        default:
+            return UIImage(frameworkImageNamed: "success")!
+        }
+    }
+    
     private weak var delegate: ToastViewDelegate?
-
 
     // Mark: - External properties
 
@@ -129,13 +147,10 @@ public class ToastView: UIView {
         didSet {
             messageTitle.text = presentable?.messageTitle
             accessibilityLabel = presentable?.accessibilityLabel
-            imageView.image = presentable?.type.imageIcon
             backgroundColor = presentable?.type.color
             actionButton.setTitle(presentable?.actionButtonTitle, for: .normal)
-            
-            if presentable?.type == .sucesssImage {
-                imageView.backgroundColor = .milk
-            }
+            imageView.backgroundColor = presentable?.type.imageBackgroundColor
+            imageView.image = imageThumbnail
         }
     }
 
@@ -143,6 +158,10 @@ public class ToastView: UIView {
     
     @objc private func buttonAction() {
         delegate?.didTap(button: actionButton, in: self)
+    }
+    
+    func show() {
+        // Animate toast in
     }
 }
 
