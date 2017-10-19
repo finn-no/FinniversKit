@@ -43,8 +43,6 @@ public class MarketGridView: UIView {
         addSubview(collectionView)
     }
     
-    // Mark: - Test
-    
     // Mark: - Layout
     
     public override func layoutSubviews() {
@@ -63,6 +61,47 @@ public class MarketGridView: UIView {
             collectionView.reloadData()
         }
     }
+
+    // Mark: - Functionality
+
+    public func calculateSize(constrainedTo width: CGFloat) -> CGSize {
+        let size = itemSize(for: width)
+        let line = lineSpacing(for: width)
+        let inst = insets(for: width)
+        let rows = numberOfRows(for: width)
+
+        let height = (size.height * CGFloat(rows)) + (line * CGFloat(rows - 1)) + inst.top + inst.bottom
+
+        return CGSize(width: width, height: height)
+    }
+
+
+    // Mark: - Private
+
+    private func numberOfRows(for viewWidth: CGFloat) -> Int {
+        return Int(ceil(Double(marketGridPresentables.count) / Double(ScreenSizeCategory(width: viewWidth).itemsPerRow)))
+    }
+
+    private func itemSize(for viewWidth: CGFloat) -> CGSize {
+        let screenWidth = ScreenSizeCategory(width: viewWidth)
+        let itemSize = CGSize(width: viewWidth/screenWidth.itemsPerRow - screenWidth.sideMargins - screenWidth.interimSpacing, height: screenWidth.itemHeight)
+        return itemSize
+    }
+
+    private func insets(for viewWidth: CGFloat) -> UIEdgeInsets {
+        let screenWidth = ScreenSizeCategory(width: viewWidth)
+        return screenWidth.edgeInsets
+    }
+
+    private func lineSpacing(for viewWidth: CGFloat) -> CGFloat {
+        let screenWidth = ScreenSizeCategory(width: viewWidth)
+        return screenWidth.lineSpacing
+    }
+
+    private func interimSpacing(for viewWidth: CGFloat) -> CGFloat {
+        let screenWidth = ScreenSizeCategory(width: viewWidth)
+        return screenWidth.interimSpacing
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -70,24 +109,19 @@ public class MarketGridView: UIView {
 extension MarketGridView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenWidth = ScreenSizeCategory(width: bounds.width)
-        let itemSize = CGSize(width: bounds.width/screenWidth.itemsPerRow - screenWidth.sideMargins - screenWidth.interimSpacing, height: screenWidth.itemHeight)
-        return itemSize
+        return itemSize(for: bounds.width)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let screenWidth = ScreenSizeCategory(width: bounds.width)
-        return screenWidth.edgeInsets
+        return insets(for: bounds.width)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        let screenWidth = ScreenSizeCategory(width: bounds.width)
-        return screenWidth.lineSpacing
+        return lineSpacing(for: bounds.width)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        let screenWidth = ScreenSizeCategory(width: bounds.width)
-        return screenWidth.interimSpacing
+        return interimSpacing(for: bounds.width)
     }
 }
 
