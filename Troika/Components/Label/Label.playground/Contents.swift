@@ -13,17 +13,17 @@ let view = UIView()
 let labelT1 = Label(style: .t1)
 let labelT2 = Label(style: .t2)
 let labelT3 = Label(style: .t3)
-let labelT4 = Label(style: .t4)
-let labelT5 = Label(style: .t5)
-let labelBody = Label(style: .body)
-let labelDetail = Label(style: .detail)
+let labelT4 = Label(style: .t4(.licorice))
+let labelT5 = Label(style: .t5(.licorice))
+let labelBody = Label(style: .body(.licorice))
+let labelDetail = Label(style: .detail(.licorice))
 
-let testStyle: Label.Style = .detail
+let testStyle: Label.Style = .body(.licorice)
 let multilineLabel = Label(style: testStyle)
 let label1 = Label(style: testStyle)
 let label2 = Label(style: testStyle)
 let label3 = Label(style: testStyle)
-let labelWide = Label(style: .body)
+let labelWide = Label(style: .body(.licorice))
 
 labelT1.translatesAutoresizingMaskIntoConstraints = false
 labelT2.translatesAutoresizingMaskIntoConstraints = false
@@ -91,8 +91,9 @@ label3.leadingAnchor.constraint(equalTo: label2.leadingAnchor).isActive = true
 
 multilineLabel.leadingAnchor.constraint(equalTo: label1.trailingAnchor, constant: 4).isActive = true
 multilineLabel.topAnchor.constraint(equalTo: label1.topAnchor).isActive = true
+multilineLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true // used to force a linebreak
 
-labelWide.topAnchor.constraint(equalTo: multilineLabel.bottomAnchor, constant: 16).isActive = true
+labelWide.topAnchor.constraint(equalTo: label3.bottomAnchor, constant: 16).isActive = true
 labelWide.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
 labelWide.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
 labelWide.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -100,7 +101,7 @@ labelWide.heightAnchor.constraint(equalToConstant: 40).isActive = true
 label1.text = "Test"
 label2.text = "Test"
 label3.text = "Test"
-multilineLabel.text = "Test\nTest\nTest"
+multilineLabel.text = "Test Test Test"
 labelWide.text = "Test center"
 
 labelT1.text = "Label T1"
