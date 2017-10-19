@@ -23,7 +23,7 @@ public enum ToastDataModel: ToastPresentable {
         case .success: return "Success message with icon"
         case .successImage: return "Success message with thumbnail"
         case .error: return "Error message with icon"
-        case .button: return "A long toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action Toast message with action"
+        case .button: return "Toast message over multiple lines with action"
         case .multiline: return "Toast with a message that spans over multiple lines"
         }
     }
