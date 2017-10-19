@@ -141,9 +141,8 @@ public class ToastView: UIView {
 
     // Mark: - Actions
     
-    @objc func buttonAction() {
+    @objc private func buttonAction() {
         delegate?.didTap(button: actionButton, in: self)
     }
-
 }
 
