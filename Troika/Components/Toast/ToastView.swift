@@ -46,6 +46,7 @@ public class ToastView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.primaryBlue, for: .normal)
         button.layer.masksToBounds = true
+        button.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: UILayoutConstraintAxis.horizontal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -131,7 +132,8 @@ public class ToastView: UIView {
         
         if let presentable = presentable, presentable.actionButtonTitle != nil {
             actionButton.isHidden = false
-            messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: CGFloat.mediumLargeSpacing).isActive = true
+            
+            messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -CGFloat.mediumLargeSpacing).isActive = true
 
             actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -CGFloat.mediumLargeSpacing).isActive = true
             actionButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
