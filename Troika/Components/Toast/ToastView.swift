@@ -30,6 +30,7 @@ public class ToastView: UIView {
     // MARK: - Internal properties
     
     private let cornerRadius: CGFloat = 2
+    private let animationDuration: Double = 1.0
     private let imageSizeAllowedMin = CGSize(width: 18, height: 18)
     private let imageSizeAllowedMax = CGSize(width: 26, height: 26)
     
@@ -162,8 +163,25 @@ public class ToastView: UIView {
         delegate?.didTap(button: actionButton, in: self)
     }
     
-    func show() {
-        // Animate toast in
+    public func animateFromBottom(view: UIView, animateOffset: CGFloat) {
+        view.addSubview(self)
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        self.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        self.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        view.layoutIfNeeded()
+        
+        UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
+        }, completion: { _ in
+            UIView.animate(withDuration: self.animationDuration, delay: 1.0, options: .curveEaseInOut, animations: {
+                self.transform = CGAffineTransform.identity
+            }, completion: { _ in
+                self.removeFromSuperview()
+            })
+        })
     }
 }
-

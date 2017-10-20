@@ -22,11 +22,15 @@ let successToast = ToastView()
 let imageToast = ToastView()
 let errorToast = ToastView()
 let buttonToast = ToastView(delegate: delegate)
+let animatedToast = ToastView()
 
 successToast.presentable = ToastDataModel.multiline
 imageToast.presentable = ToastDataModel.successImage
 errorToast.presentable = ToastDataModel.error
 buttonToast.presentable = ToastDataModel.button
+animatedToast.presentable = ToastDataModel.success
+
+animatedToast.animateFromBottom(view: view, animateOffset: 0)
 
 successToast.translatesAutoresizingMaskIntoConstraints = false
 imageToast.translatesAutoresizingMaskIntoConstraints = false

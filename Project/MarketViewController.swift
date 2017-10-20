@@ -15,12 +15,11 @@ class MarketViewController: UIViewController {
         return marketGridView
     }()
     
-    fileprivate lazy var headerLabel = Label(style: .t4)
+    fileprivate lazy var headerLabel = Label(style: .t4(.licorice))
     fileprivate lazy var headerView = UIView(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
     }
 
@@ -57,7 +56,9 @@ class MarketViewController: UIViewController {
 extension MarketViewController: PreviewGridViewDelegate {
 
     func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
-        // Handle
+        let toast = ToastView()
+        toast.presentable = ToastDataModel.success
+        toast.animateFromBottom(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0)
     }
 }
 
