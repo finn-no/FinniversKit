@@ -3,6 +3,7 @@ import UIKit
 protocol PreviewGridLayoutDelegate {
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
     func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
+    func heightForHeaderView(inCollectionView collectionView: UICollectionView) -> CGFloat?
 }
 
 class PreviewGridLayout: UICollectionViewLayout {
@@ -84,13 +85,23 @@ class PreviewGridLayout: UICollectionViewLayout {
 
         var columns = columnsRange.map { _ in 0 }
         var attributesCollection = [UICollectionViewLayoutAttributes]()
+        var yOffset = configuration.topOffset
+
+        // Add attributes for header view if we have any
+        if let height = delegate.heightForHeaderView(inCollectionView: collectionView) {
+            let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: IndexPath(item: 0, section: 0))
+            attributes.frame = CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: height)
+            attributesCollection.append(attributes)
+
+            yOffset += height
+        }
 
         for index in 0..<numberOfItems {
 
             let columnIndex = indexOfLowestValue(in: columns)
 
             let xOffset = xOffsetForItemInColumn(itemWidth: itemWidth, columnIndex: columnIndex)
-            let topPadding = configuration.numberOfColumns > index ? configuration.topOffset : 0.0
+            let topPadding = configuration.numberOfColumns > index ? yOffset : 0.0
             let verticalOffset = CGFloat(columns[columnIndex]) + topPadding
 
             let indexPath = IndexPath(item: index, section: 0)

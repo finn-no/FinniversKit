@@ -12,11 +12,12 @@ class MarketViewController: UIViewController {
 
     fileprivate lazy var marketGridView: MarketGridView = {
         let marketGridView = MarketGridView(delegate: self)
+        marketGridView.translatesAutoresizingMaskIntoConstraints = false
         return marketGridView
     }()
     
-    fileprivate lazy var headerLabel = Label(style: .t4)
-    fileprivate lazy var headerView = UIView(frame: .zero)
+    fileprivate lazy var headerLabel = Label(style: .t4(.licorice))
+    fileprivate lazy var headerView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,21 +33,25 @@ class MarketViewController: UIViewController {
         discoverGridView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         discoverGridView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 
-        marketGridView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 250) // Initial size
         marketGridView.marketGridPresentables = Market.allMarkets
-        
+
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+        headerLabel.text = "Anbefalinger"
+
         headerView.addSubview(headerLabel)
         headerView.addSubview(marketGridView)
-        headerLabel.text = "Anbefalinger"
-        
+
         marketGridView.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
         marketGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor).isActive = true
         marketGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor).isActive = true
-        
-        headerLabel.topAnchor.constraint(equalTo: marketGridView.bottomAnchor).isActive = true
+
+        headerLabel.topAnchor.constraint(equalTo: marketGridView.bottomAnchor, constant: 32).isActive = true
+        headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -16).isActive = true
         headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16).isActive = true
+        headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 16).isActive = true
+
+        let viewHeight = marketGridView.calculateSize(constrainedTo: view.frame.size.width).height + headerLabel.intrinsicContentSize.height + 16 + 32 // TODO (AD):  Hard coded spacing. Change to constants.
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: viewHeight)
 
         discoverGridView.previewPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
         discoverGridView.headerView = headerView
@@ -83,13 +88,8 @@ extension MarketViewController: PreviewGridViewDataSource {
 
 // MARK: - MarketGridCollectionViewDelegate
 extension MarketViewController: MarketGridCollectionViewDelegate {
+
     func didSelect(item: MarketGridPresentable, in gridView: MarketGridView) {
 
-    }
-
-    func contentSizeDidChange(newSize: CGSize, in gridView: MarketGridView) {
-        marketGridView.frame = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        headerView.frame = CGRect(x: 0, y: 0, width: newSize.width, height: (newSize.height + headerLabel.intrinsicContentSize.height))
-        discoverGridView.headerView = headerView
     }
 }
