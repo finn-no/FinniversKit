@@ -56,9 +56,20 @@ class MarketViewController: UIViewController {
 extension MarketViewController: PreviewGridViewDelegate {
 
     func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
-        let toast = ToastView()
-        toast.presentable = ToastDataModel.success
-        toast.animateFromBottom(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0)
+        let toast = ToastView(delegate: self)
+        toast.presentable = ToastDataModel.successButton
+        toast.presentFromBottomTimeOut(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0)
+//        toast.presentFromBottomTapToDismiss(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0)
+    }
+}
+
+extension MarketViewController: ToastViewDelegate {
+    func didTap(toastView: ToastView) {
+        print("Toast view tapped!")
+    }
+    
+    func didTapActionButton(button: UIButton, in toastView: ToastView) {
+        print("Action button tapped!")
     }
 }
 
