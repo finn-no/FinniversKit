@@ -63,7 +63,7 @@ extension MarketViewController: PreviewGridViewDelegate {
     func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
         let toast = ToastView(delegate: self)
         toast.presentable = ToastDataModel.successButton
-        toast.presentFromBottom(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0)
+        toast.presentFromBottom(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0, timeOut: 4)
     }
 }
 
