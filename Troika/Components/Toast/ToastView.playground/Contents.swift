@@ -18,10 +18,6 @@ class ToastClass: NSObject, ToastViewDelegate {
     func didTap(toastView: ToastView) {
         print("Toast view tapped")
     }
-    
-    func didSwipeDown(on toastView: ToastView) {
-        print("Swiped down")
-    }
 }
 
 let delegate = ToastClass()
@@ -31,7 +27,7 @@ let imageToast = ToastView()
 let errorToast = ToastView()
 let successButtonToast = ToastView(delegate: delegate)
 let errorButtonToast = ToastView(delegate: delegate)
-let animatedToast = ToastView()
+let animatedToast = ToastView(delegate: delegate)
 
 successToast.presentable = ToastDataModel.multiline
 imageToast.presentable = ToastDataModel.successImage
@@ -40,7 +36,7 @@ successButtonToast.presentable = ToastDataModel.successButton
 errorButtonToast.presentable = ToastDataModel.errorButton
 animatedToast.presentable = ToastDataModel.success
 
-animatedToast.presentFromBottomTimeOut(view: view, animateOffset: 0)
+animatedToast.presentFromBottom(view: view, animateOffset: 0, timeOut: 5)
 
 successToast.translatesAutoresizingMaskIntoConstraints = false
 imageToast.translatesAutoresizingMaskIntoConstraints = false
