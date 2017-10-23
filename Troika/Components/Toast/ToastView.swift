@@ -1,7 +1,23 @@
 import UIKit
 
 public protocol ToastViewDelegate: NSObjectProtocol {
-    func didTap(button: UIButton, in toastView: ToastView)
+    func didTapActionButton(button: UIButton, in toastView: ToastView)
+    func didTap(toastView: ToastView)
+    func didSwipeDown(on toastView: ToastView)
+}
+
+public extension ToastViewDelegate {
+    func didTapActionButton(button: UIButton, in toastView: ToastView) {
+        // Default nothing happens
+    }
+    
+    func didTap(toastView: ToastView) {
+        // Default nothing happens
+    }
+    
+    func didSwipeDown(on toastView: ToastView) {
+        toastView.dismissToast()
+    }
 }
 
 public enum ToastType {
@@ -31,7 +47,8 @@ public class ToastView: UIView {
     // MARK: - Internal properties
     
     private let cornerRadius: CGFloat = 2
-    private let animationDuration: Double = 1.0
+    private let animationDuration: Double = 0.3
+    private let timeBeforeDismissal: Double = 3.0
     private let imageSizeAllowedMin = CGSize(width: 18, height: 18)
     private let imageSizeAllowedMax = CGSize(width: 26, height: 26)
     
@@ -108,6 +125,10 @@ public class ToastView: UIView {
     private func setup() {
         layer.cornerRadius = cornerRadius
         isAccessibilityElement = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
+        swipeGesture.direction = .down
+        gestureRecognizers = [tapGesture, swipeGesture]
         
         addSubview(imageView)
         addSubview(messageTitle)
@@ -161,10 +182,45 @@ public class ToastView: UIView {
     // MARK: - Actions
     
     @objc private func buttonAction() {
-        delegate?.didTap(button: actionButton, in: self)
+        delegate?.didTapActionButton(button: actionButton, in: self)
     }
     
-    public func animateFromBottom(view: UIView, animateOffset: CGFloat) {
+    @objc private func tapAction() {
+        delegate?.didTap(toastView: self)
+    }
+    
+    @objc private func swipeAction() {
+        delegate?.didSwipeDown(on: self)
+    }
+    
+    public func presentFromBottomTimeOut(view: UIView, animateOffset: CGFloat) {
+        setupToastConstraint(for: view)
+        
+        UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
+        })
+        self.dismissToast(after: self.timeBeforeDismissal)
+    }
+    
+    public func presentFromBottomTapToDismiss(view: UIView, animateOffset: CGFloat) {
+        setupToastConstraint(for: view)
+        
+        UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
+        })
+    }
+    
+    public func dismissToast(after delay: Double = 0.0) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
+            UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+                self.transform = CGAffineTransform.identity
+            }) { _ in
+                self.removeFromSuperview()
+            }
+        }
+    }
+    
+    private func setupToastConstraint(for view: UIView) {
         view.addSubview(self)
         
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -174,15 +230,5 @@ public class ToastView: UIView {
         self.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         view.layoutIfNeeded()
-        
-        UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
-            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
-        }, completion: { _ in
-            UIView.animate(withDuration: self.animationDuration, delay: 1.0, options: .curveEaseInOut, animations: {
-                self.transform = CGAffineTransform.identity
-            }, completion: { _ in
-                self.removeFromSuperview()
-            })
-        })
     }
 }
