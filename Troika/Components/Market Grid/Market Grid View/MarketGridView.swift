@@ -2,7 +2,6 @@ import UIKit
 
 public protocol MarketGridCollectionViewDelegate: NSObjectProtocol {
     func didSelect(item: MarketGridPresentable, in gridView: MarketGridView)
-    func contentSizeDidChange(newSize: CGSize, in gridView: MarketGridView)
 }
 
 public class MarketGridView: UIView {
@@ -42,11 +41,7 @@ public class MarketGridView: UIView {
     private func setup() {
         collectionView.register(MarketGridCell.self)
         addSubview(collectionView)
-
-        addObserver(self, forKeyPath: "collectionView.contentSize", options: .new, context: nil)
     }
-    
-    // Mark: - Test
     
     // Mark: - Layout
     
@@ -67,10 +62,45 @@ public class MarketGridView: UIView {
         }
     }
 
-    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "collectionView.contentSize" {
-            delegate?.contentSizeDidChange(newSize: collectionView.contentSize, in: self)
-        }
+    // Mark: - Functionality
+
+    public func calculateSize(constrainedTo width: CGFloat) -> CGSize {
+        let size = itemSize(for: width)
+        let line = lineSpacing(for: width)
+        let inst = insets(for: width)
+        let rows = numberOfRows(for: width)
+
+        let height = (size.height * CGFloat(rows)) + (line * CGFloat(rows - 1)) + inst.top + inst.bottom
+
+        return CGSize(width: width, height: height)
+    }
+
+
+    // Mark: - Private
+
+    private func numberOfRows(for viewWidth: CGFloat) -> Int {
+        return Int(ceil(Double(marketGridPresentables.count) / Double(ScreenSizeCategory(width: viewWidth).itemsPerRow)))
+    }
+
+    private func itemSize(for viewWidth: CGFloat) -> CGSize {
+        let screenWidth = ScreenSizeCategory(width: viewWidth)
+        let itemSize = CGSize(width: viewWidth/screenWidth.itemsPerRow - screenWidth.sideMargins - screenWidth.interimSpacing, height: screenWidth.itemHeight)
+        return itemSize
+    }
+
+    private func insets(for viewWidth: CGFloat) -> UIEdgeInsets {
+        let screenWidth = ScreenSizeCategory(width: viewWidth)
+        return screenWidth.edgeInsets
+    }
+
+    private func lineSpacing(for viewWidth: CGFloat) -> CGFloat {
+        let screenWidth = ScreenSizeCategory(width: viewWidth)
+        return screenWidth.lineSpacing
+    }
+
+    private func interimSpacing(for viewWidth: CGFloat) -> CGFloat {
+        let screenWidth = ScreenSizeCategory(width: viewWidth)
+        return screenWidth.interimSpacing
     }
 }
 
@@ -79,24 +109,19 @@ public class MarketGridView: UIView {
 extension MarketGridView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenWidth = ScreenSizeCategory(width: bounds.width)
-        let itemSize = CGSize(width: bounds.width/screenWidth.itemsPerRow - screenWidth.sideMargins - screenWidth.interimSpacing, height: screenWidth.itemHeight)
-        return itemSize
+        return itemSize(for: bounds.width)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let screenWidth = ScreenSizeCategory(width: bounds.width)
-        return screenWidth.edgeInsets
+        return insets(for: bounds.width)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        let screenWidth = ScreenSizeCategory(width: bounds.width)
-        return screenWidth.lineSpacing
+        return lineSpacing(for: bounds.width)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        let screenWidth = ScreenSizeCategory(width: bounds.width)
-        return screenWidth.interimSpacing
+        return interimSpacing(for: bounds.width)
     }
 }
 

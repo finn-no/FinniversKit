@@ -54,6 +54,7 @@
 		CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B211F83C96600B26C1C /* UIImage+Troika.swift */; };
 		CB400B241F83C9D400B26C1C /* Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B231F83C9D400B26C1C /* Troika.swift */; };
 		CB6CF7381F84F880003B73D2 /* TroikaDemoKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CF7371F84F880003B73D2 /* TroikaDemoKit.swift */; };
+		CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		CB400B211F83C96600B26C1C /* UIImage+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Troika.swift"; sourceTree = "<group>"; };
 		CB400B231F83C9D400B26C1C /* Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Troika.swift; path = Troika/Troika.swift; sourceTree = SOURCE_ROOT; };
 		CB6CF7371F84F880003B73D2 /* TroikaDemoKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroikaDemoKit.swift; sourceTree = "<group>"; };
+		CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridHeaderView.swift; sourceTree = "<group>"; };
 		CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -329,6 +331,7 @@
 				CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */,
 				CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */,
 				CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */,
+				CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */,
 			);
 			path = "Preview Grid Collection View";
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
 				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */,
+				CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */,
 				459D37FE1F87AE5D00038582 /* RibbonViewPresentable.swift in Sources */,
 				CB3E67C71F7E4D5D00C40D47 /* PreviewPresentable.swift in Sources */,
 				453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */,

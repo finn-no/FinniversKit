@@ -36,15 +36,6 @@ public class PreviewGridView: UIView {
         willSet {
             headerView?.removeFromSuperview()
         }
-        didSet {
-            guard let headerView = headerView else {
-                return // View was removed
-            }
-
-            collectionView.addSubview(headerView)
-            collectionView.contentInset.top = headerView.frame.size.height
-            headerView.frame.origin.y = -headerView.frame.size.height
-        }
     }
 
     // Mark: - Setup
@@ -70,6 +61,7 @@ public class PreviewGridView: UIView {
 
     private func setup() {
         collectionView.register(PreviewCell.self, forCellWithReuseIdentifier: String(describing: PreviewCell.self))
+        collectionView.register(PreviewGridHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: PreviewGridHeaderView.self))
         addSubview(collectionView)
     }
 
@@ -126,6 +118,17 @@ extension PreviewGridView: UICollectionViewDataSource {
 
         return cell
     }
+
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionElementKindSectionHeader, let headerView = headerView else {
+            fatalError("Suplementary view of kind '\(kind)' not supported.")
+        }
+
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: PreviewGridHeaderView.self), for: indexPath) as! PreviewGridHeaderView
+        header.contentView = headerView
+
+        return header
+    }
 }
 
 // MARK: - PreviewCellDataSource
@@ -138,6 +141,10 @@ extension PreviewGridView: PreviewCellDataSource {
 
 // MARK: - PreviewGridLayoutDelegate
 extension PreviewGridView: PreviewGridLayoutDelegate {
+    
+    func heightForHeaderView(inCollectionView collectionView: UICollectionView) -> CGFloat? {
+        return headerView?.frame.size.height
+    }
 
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
         let presentable = previewPresentables[indexPath.row]
