@@ -8,11 +8,12 @@ public enum ToastType {
     case success
     case sucesssImage
     case error
-    case button
+    case successButton
+    case errorButton
     
     var color: UIColor {
         switch self {
-        case .error: return .salmon
+        case .error, .errorButton: return .salmon
         default: return .mint
         }
     }
@@ -67,7 +68,7 @@ public class ToastView: UIView {
         }
         
         switch presentable.type {
-        case .error:
+        case .error, .errorButton:
             return UIImage(frameworkImageNamed: "error")!
         case .sucesssImage:
             if let image = presentable.imageThumbnail {

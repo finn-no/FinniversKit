@@ -5,7 +5,8 @@ public enum ToastDataModel: ToastPresentable {
     case success
     case successImage
     case error
-    case button
+    case successButton
+    case errorButton
     case multiline
     
     public var type: ToastType {
@@ -13,7 +14,8 @@ public enum ToastDataModel: ToastPresentable {
         case .success: return ToastType.success
         case .successImage: return ToastType.sucesssImage
         case .error: return ToastType.error
-        case .button: return ToastType.button
+        case .successButton: return ToastType.successButton
+        case .errorButton: return ToastType.errorButton
         case .multiline: return ToastType.success
         }
     }
@@ -22,15 +24,17 @@ public enum ToastDataModel: ToastPresentable {
         switch self {
         case .success: return "Success message with icon"
         case .successImage: return "Success message with thumbnail"
-        case .error: return "Error message with icon"
-        case .button: return "Toast message over multiple lines with action"
+        case .error: return "Error toast with message that spans over multiple lines"
+        case .successButton: return "Toast message over multiple lines with action"
+        case .errorButton: return "Error message with action"
         case .multiline: return "Toast with a message that spans over multiple lines"
         }
     }
     
     public var actionButtonTitle: String? {
         switch self {
-        case .button: return "Action"
+        case .successButton: return "Action"
+        case .errorButton: return "Retry"
         default: return nil
         }
     }
