@@ -50,24 +50,24 @@ view.addSubview(errorToast)
 view.addSubview(successButtonToast)
 view.addSubview(errorButtonToast)
 
-successToast.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-successToast.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+successToast.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+successToast.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 successToast.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
 
-imageToast.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-imageToast.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+imageToast.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+imageToast.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 imageToast.topAnchor.constraint(equalTo: successToast.bottomAnchor, constant: 32).isActive = true
 
-errorToast.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-errorToast.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+errorToast.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+errorToast.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 errorToast.topAnchor.constraint(equalTo: imageToast.bottomAnchor, constant: 32).isActive = true
 
-successButtonToast.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-successButtonToast.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+successButtonToast.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+successButtonToast.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 successButtonToast.topAnchor.constraint(equalTo: errorToast.bottomAnchor, constant: 32).isActive = true
 
-errorButtonToast.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-errorButtonToast.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+errorButtonToast.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+errorButtonToast.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 errorButtonToast.topAnchor.constraint(equalTo: successButtonToast.bottomAnchor, constant: 32).isActive = true
 
 PlaygroundPage.current.liveView = view
