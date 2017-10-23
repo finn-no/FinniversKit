@@ -46,7 +46,6 @@ public class ToastView: UIView {
 
     // MARK: - Internal properties
     
-    private let cornerRadius: CGFloat = 2
     private let animationDuration: Double = 0.3
     private let imageSizeAllowedMin = CGSize(width: 18, height: 18)
     private let imageSizeAllowedMax = CGSize(width: 26, height: 26)
@@ -122,7 +121,6 @@ public class ToastView: UIView {
     }
 
     private func setup() {
-        layer.cornerRadius = cornerRadius
         isAccessibilityElement = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
