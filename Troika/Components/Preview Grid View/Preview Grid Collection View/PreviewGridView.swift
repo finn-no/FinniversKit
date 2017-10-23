@@ -23,7 +23,6 @@ public class PreviewGridView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
-        collectionView.isPrefetchingEnabled = false
         return collectionView
     }()
 
