@@ -48,7 +48,6 @@ public class ToastView: UIView {
     
     private let cornerRadius: CGFloat = 2
     private let animationDuration: Double = 0.3
-    private let timeBeforeDismissal: Double = 3.0
     private let imageSizeAllowedMin = CGSize(width: 18, height: 18)
     private let imageSizeAllowedMax = CGSize(width: 26, height: 26)
     
@@ -193,24 +192,19 @@ public class ToastView: UIView {
         delegate?.didSwipeDown(on: self)
     }
     
-    public func presentFromBottomTimeOut(view: UIView, animateOffset: CGFloat) {
+    public func presentFromBottom(view: UIView, animateOffset: CGFloat, timeOut: Double? = nil) {
         setupToastConstraint(for: view)
         
         UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
         })
-        self.dismissToast(after: self.timeBeforeDismissal)
-    }
-    
-    public func presentFromBottomTapToDismiss(view: UIView, animateOffset: CGFloat) {
-        setupToastConstraint(for: view)
-        
-        UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
-            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
-        })
+        if let timeOut = timeOut {
+            self.dismissToast(after: timeOut)
+        }
     }
     
     public func dismissToast(after delay: Double = 0.0) {
+        // Uses asyncAfter instead of animate delay because then it can be dismissed by swipe before the timeout if needed
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
             UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
                 self.transform = CGAffineTransform.identity
