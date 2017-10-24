@@ -58,8 +58,12 @@ public class PreviewCell: UICollectionViewCell {
         view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         view.alpha = 1.0
         view.layer.cornerRadius = PreviewCell.cornerRadius
-        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
         view.layer.masksToBounds = true
+
+        if #available(iOS 11.0, *) {
+            view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
+        }
+
         return view
     }()
 
