@@ -42,33 +42,6 @@ public class Label: UILabel {
     }
 
     // Mark: - Superclass Overrides
-    
-    public override func drawText(in rect: CGRect) {
-        guard let style = style, let text = text else {
-            return
-        }
-        let string = NSString(string: text)
-        let textRect = CGRect(x: style.padding.left, y: style.padding.top, width: rect.width - style.padding.left - style.padding.right, height: rect.height - style.padding.top - style.padding.bottom)
-        string.draw(in: textRect, withAttributes: labelAttributes)
-    }
-    
-    public override var intrinsicContentSize: CGSize {
-        get {
-            guard let style = style, let text = text else {
-                return super.intrinsicContentSize
-            }
-            var textSize = size(of: text)
-            textSize.height = ceil(textSize.height + style.padding.top + style.padding.bottom)
-            textSize.width = ceil(textSize.width + style.padding.left + style.padding.right)
-            return textSize
-        }
-    }
-    
-    func size(of text: String) -> CGSize {
-        let string = NSString(string: text)
-        let textSize = string.size(withAttributes: labelAttributes)
-        return textSize
-    }
 
     // Mark: - Layout
 

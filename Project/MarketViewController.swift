@@ -21,7 +21,6 @@ class MarketViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
     }
 
@@ -62,7 +61,19 @@ class MarketViewController: UIViewController {
 extension MarketViewController: PreviewGridViewDelegate {
 
     func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
-        // Handle
+        let toast = ToastView(delegate: self)
+        toast.presentable = ToastDataModel.successButton
+        toast.presentFromBottom(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0, timeOut: 4)
+    }
+}
+
+extension MarketViewController: ToastViewDelegate {
+    func didTap(toastView: ToastView) {
+        print("Toast view tapped!")
+    }
+    
+    func didTapActionButton(button: UIButton, in toastView: ToastView) {
+        print("Action button tapped!")
     }
 }
 
