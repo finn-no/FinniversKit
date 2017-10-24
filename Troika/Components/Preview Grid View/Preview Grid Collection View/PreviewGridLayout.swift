@@ -24,7 +24,7 @@ class PreviewGridLayout: UICollectionViewLayout {
         super.init()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -34,7 +34,7 @@ class PreviewGridLayout: UICollectionViewLayout {
         }
 
         let columnPadding = configuration.columnSpacing * CGFloat(configuration.numberOfColumns - 1)
-        let sidePadding   = configuration.sidePadding * 2
+        let sidePadding = configuration.sidePadding * 2
 
         let totalPadding = columnPadding + sidePadding
         let columnsWidth = collectionView.frame.size.width - totalPadding
@@ -81,7 +81,7 @@ class PreviewGridLayout: UICollectionViewLayout {
             return
         }
 
-        let columnsRange = 0..<configuration.numberOfColumns
+        let columnsRange = 0 ..< configuration.numberOfColumns
 
         var columns = columnsRange.map { _ in 0 }
         var attributesCollection = [UICollectionViewLayoutAttributes]()
@@ -96,7 +96,7 @@ class PreviewGridLayout: UICollectionViewLayout {
             yOffset += height
         }
 
-        for index in 0..<numberOfItems {
+        for index in 0 ..< numberOfItems {
 
             let columnIndex = indexOfLowestValue(in: columns)
 
@@ -122,7 +122,7 @@ class PreviewGridLayout: UICollectionViewLayout {
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return itemAttributes.filter { a in
-            return a.frame.intersects(rect)
+            a.frame.intersects(rect)
         }
     }
 
@@ -145,4 +145,3 @@ class PreviewGridLayout: UICollectionViewLayout {
         return size
     }
 }
-

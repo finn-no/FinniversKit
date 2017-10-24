@@ -1,7 +1,7 @@
 import Foundation
 
 public extension Label {
-    
+
     public enum Style {
         case t1
         case t2
@@ -10,11 +10,11 @@ public extension Label {
         case t5(FlexibleColorGroup)
         case body(AllColorGroup)
         case detail(AllColorGroup)
-        
+
         public enum FlexibleColorGroup {
             case licorice
             case milk
-            
+
             var color: UIColor {
                 switch self {
                 case .licorice: return .licorice
@@ -22,14 +22,14 @@ public extension Label {
                 }
             }
         }
-        
+
         public enum AllColorGroup {
             case licorice
             case milk
             case stone
             case primaryBlue
             case cherry
-            
+
             var color: UIColor {
                 switch self {
                 case .licorice: return .licorice
@@ -40,19 +40,19 @@ public extension Label {
                 }
             }
         }
-        
+
         var color: UIColor {
             switch self {
             case .t1: return .licorice
             case .t2: return .licorice
             case .t3: return .licorice
-            case .t4(let colorGroup): return colorGroup.color
-            case .t5(let colorGroup): return colorGroup.color
-            case .body(let colorGroup): return colorGroup.color
-            case .detail(let colorGroup): return colorGroup.color
+            case let .t4(colorGroup): return colorGroup.color
+            case let .t5(colorGroup): return colorGroup.color
+            case let .body(colorGroup): return colorGroup.color
+            case let .detail(colorGroup): return colorGroup.color
             }
         }
-        
+
         var font: UIFont {
             switch self {
             case .t1: return UIFont.t1
@@ -64,11 +64,11 @@ public extension Label {
             case .detail: return UIFont.detail
             }
         }
-        
+
         var padding: UIEdgeInsets {
             return UIEdgeInsets(top: lineSpacing, left: 0, bottom: 0, right: 0)
         }
-        
+
         var lineSpacing: CGFloat {
             switch self {
             case .t1: return font.pointSize * 0.5
