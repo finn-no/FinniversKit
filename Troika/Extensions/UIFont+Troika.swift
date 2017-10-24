@@ -2,23 +2,23 @@ import UIKit
 
 public extension UIFont {
 
-    public static var t1: UIFont {
+    public static var title1: UIFont {
         return UIFont(name: "FINNTypeWebStrippet-Medium", size: 36.0)!
     }
 
-    public static var t2: UIFont {
+    public static var title2: UIFont {
         return UIFont(name: "FINNTypeWebStrippet-Light", size: 28.0)!
     }
 
-    public static var t3: UIFont {
+    public static var title3: UIFont {
         return UIFont(name: "FINNTypeWebStrippet-Light", size: 22.5)!
     }
 
-    public static var t4: UIFont {
+    public static var title4: UIFont {
         return UIFont(name: "FINNTypeWebStrippet-Medium", size: 18.0)!
     }
     
-    public static var t5: UIFont {
+    public static var title5: UIFont {
         return UIFont(name: "FINNTypeWebStrippet-Medium", size: 14.0)!
     }
     
