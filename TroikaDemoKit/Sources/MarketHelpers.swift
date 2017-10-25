@@ -14,7 +14,7 @@ public enum Market: MarketGridPresentable {
     case smajobb
     case moteplassen
     case mittAnbud
-
+    
     public var title: String {
         switch self {
         case .eiendom: return "Eiendom"
@@ -31,7 +31,7 @@ public enum Market: MarketGridPresentable {
         case .mittAnbud: return "Oppdrag"
         }
     }
-
+    
     public var iconImage: UIImage? {
         switch self {
         case .eiendom: return UIImage(named: "eiendom", in: .troikaDemoKit, compatibleWith: nil)
@@ -48,7 +48,7 @@ public enum Market: MarketGridPresentable {
         case .mittAnbud: return UIImage(named: "mittAnbud", in: .troikaDemoKit, compatibleWith: nil)
         }
     }
-
+    
     public var showExternalLinkIcon: Bool {
         switch self {
         case .eiendom: return false
@@ -65,7 +65,7 @@ public enum Market: MarketGridPresentable {
         case .mittAnbud: return true
         }
     }
-
+    
     public var accessibilityLabel: String {
         if showExternalLinkIcon {
             return title + ". Merk: Åpner ekstern link"
@@ -73,6 +73,6 @@ public enum Market: MarketGridPresentable {
             return title
         }
     }
-
+    
     public static var allMarkets: [Market] = [.eiendom, .bil, .torget, .jobb, .mc, .bT, .nytte, .reise, .shopping, .smajobb, .moteplassen, .mittAnbud]
 }

@@ -11,11 +11,11 @@ view.backgroundColor = .white
 view.frame = ScreenSize.medium
 
 class ToastClass: NSObject, ToastViewDelegate {
-    func didTapActionButton(button _: UIButton, in _: ToastView) {
+    func didTapActionButton(button: UIButton, in toastView: ToastView) {
         print("Button tapped")
     }
-
-    func didTap(toastView _: ToastView) {
+    
+    func didTap(toastView: ToastView) {
         print("Toast view tapped")
     }
 }

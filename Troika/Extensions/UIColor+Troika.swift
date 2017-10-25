@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIColor {
-    @nonobjc public class var ice: UIColor {
+	@nonobjc public class var ice: UIColor {
         if #available(iOS 11.0, *) {
             return UIColor(named: "ice", in: .troika, compatibleWith: nil)!
         } else {

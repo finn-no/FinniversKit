@@ -5,7 +5,7 @@ public protocol PreviewGridViewDelegate: NSObjectProtocol {
 }
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void))
+    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ()))
 }
 
 public class PreviewGridView: UIView {
@@ -13,7 +13,7 @@ public class PreviewGridView: UIView {
     // Mark: - Internal properties
 
     private lazy var collectionViewLayout: PreviewGridLayout = {
-        PreviewGridLayout(delegate: self)
+        return PreviewGridLayout(delegate: self)
     }()
 
     // Have the collection view be private so nobody messes with it.
@@ -86,7 +86,7 @@ public class PreviewGridView: UIView {
 // MARK: - UICollectionViewDelegate
 extension PreviewGridView: UICollectionViewDelegate {
 
-    public func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = previewPresentables[indexPath.row]
         delegate?.didSelect(item: item, in: self)
     }
@@ -95,11 +95,11 @@ extension PreviewGridView: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension PreviewGridView: UICollectionViewDataSource {
 
-    public func numberOfSections(in _: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    public func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return previewPresentables.count
     }
 
@@ -133,19 +133,19 @@ extension PreviewGridView: UICollectionViewDataSource {
 // MARK: - PreviewCellDataSource
 extension PreviewGridView: PreviewCellDataSource {
 
-    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void)) {
+    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ())) {
         dataSource?.loadImage(for: url, completion: completion)
     }
 }
 
 // MARK: - PreviewGridLayoutDelegate
 extension PreviewGridView: PreviewGridLayoutDelegate {
-
-    func heightForHeaderView(inCollectionView _: UICollectionView) -> CGFloat? {
+    
+    func heightForHeaderView(inCollectionView collectionView: UICollectionView) -> CGFloat? {
         return headerView?.frame.size.height
     }
 
-    func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView _: UICollectionView) -> CGFloat {
+    func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
         let presentable = previewPresentables[indexPath.row]
 
         guard presentable.imageSize != .zero, presentable.imageUrl != nil else {
@@ -156,7 +156,7 @@ extension PreviewGridView: PreviewGridLayoutDelegate {
         return presentable.imageSize.height / presentable.imageSize.width
     }
 
-    func itemNonImageHeight(forItemAt _: IndexPath, inCollectionView _: UICollectionView) -> CGFloat {
+    func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
         return PreviewCell.nonImageHeight
     }
 }

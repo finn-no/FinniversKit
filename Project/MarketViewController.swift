@@ -15,7 +15,7 @@ class MarketViewController: UIViewController {
         marketGridView.translatesAutoresizingMaskIntoConstraints = false
         return marketGridView
     }()
-
+    
     fileprivate lazy var headerLabel = Label(style: .t4(.licorice))
     fileprivate lazy var headerView = UIView()
 
@@ -49,7 +49,7 @@ class MarketViewController: UIViewController {
         headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16).isActive = true
         headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 16).isActive = true
 
-        let viewHeight = marketGridView.calculateSize(constrainedTo: view.frame.size.width).height + headerLabel.intrinsicContentSize.height + 16 + 32 // TODO: (AD):  Hard coded spacing. Change to constants.
+        let viewHeight = marketGridView.calculateSize(constrainedTo: view.frame.size.width).height + headerLabel.intrinsicContentSize.height + 16 + 32 // TODO (AD):  Hard coded spacing. Change to constants.
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: viewHeight)
 
         discoverGridView.previewPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
@@ -60,7 +60,7 @@ class MarketViewController: UIViewController {
 // MARK: - PreviewGridViewDelegate
 extension MarketViewController: PreviewGridViewDelegate {
 
-    func didSelect(item _: PreviewPresentable, in _: PreviewGridView) {
+    func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
         let toast = ToastView(delegate: self)
         toast.presentable = ToastDataModel.successButton
         toast.presentFromBottom(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0, timeOut: 4)
@@ -68,11 +68,11 @@ extension MarketViewController: PreviewGridViewDelegate {
 }
 
 extension MarketViewController: ToastViewDelegate {
-    func didTap(toastView _: ToastView) {
+    func didTap(toastView: ToastView) {
         print("Toast view tapped!")
     }
-
-    func didTapActionButton(button _: UIButton, in _: ToastView) {
+    
+    func didTapActionButton(button: UIButton, in toastView: ToastView) {
         print("Action button tapped!")
     }
 }
@@ -80,10 +80,10 @@ extension MarketViewController: ToastViewDelegate {
 // MARK: - PreviewGridViewDataSource
 extension MarketViewController: PreviewGridViewDataSource {
 
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void)) {
+    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ())) {
 
         // Demo code only.
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {
                 if let data = data, let image = UIImage(data: data) {
                     completion(image)
@@ -100,6 +100,7 @@ extension MarketViewController: PreviewGridViewDataSource {
 // MARK: - MarketGridCollectionViewDelegate
 extension MarketViewController: MarketGridCollectionViewDelegate {
 
-    func didSelect(item _: MarketGridPresentable, in _: MarketGridView) {
+    func didSelect(item: MarketGridPresentable, in gridView: MarketGridView) {
+
     }
 }

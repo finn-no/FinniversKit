@@ -7,14 +7,14 @@ public protocol ToastViewDelegate: NSObjectProtocol {
 }
 
 public extension ToastViewDelegate {
-    func didTapActionButton(button _: UIButton, in _: ToastView) {
+    func didTapActionButton(button: UIButton, in toastView: ToastView) {
         // Default nothing happens
     }
-
-    func didTap(toastView _: ToastView) {
+    
+    func didTap(toastView: ToastView) {
         // Default nothing happens
     }
-
+    
     func didSwipeDown(on toastView: ToastView) {
         toastView.dismissToast()
     }
@@ -26,14 +26,14 @@ public enum ToastType {
     case error
     case successButton
     case errorButton
-
+    
     var color: UIColor {
         switch self {
         case .error, .errorButton: return .salmon
         default: return .mint
         }
     }
-
+    
     var imageBackgroundColor: UIColor {
         switch self {
         case .sucesssImage: return .milk
@@ -45,11 +45,11 @@ public enum ToastType {
 public class ToastView: UIView {
 
     // MARK: - Internal properties
-
+    
     private let animationDuration: Double = 0.3
     private let imageSizeAllowedMin = CGSize(width: 18, height: 18)
     private let imageSizeAllowedMax = CGSize(width: 26, height: 26)
-
+    
     private lazy var messageTitle: Label = {
         let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +57,7 @@ public class ToastView: UIView {
         label.style = .body(.licorice)
         return label
     }()
-
+    
     private lazy var actionButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +67,7 @@ public class ToastView: UIView {
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
-
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,12 +75,13 @@ public class ToastView: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
+    
+    
     private var imageThumbnail: UIImage {
         guard let presentable = presentable else {
             return UIImage(frameworkImageNamed: "success")!
         }
-
+        
         switch presentable.type {
         case .error, .errorButton:
             return UIImage(frameworkImageNamed: "error")!
@@ -94,7 +95,7 @@ public class ToastView: UIView {
             return UIImage(frameworkImageNamed: "success")!
         }
     }
-
+    
     private weak var delegate: ToastViewDelegate?
 
     // MARK: - External properties
@@ -103,12 +104,12 @@ public class ToastView: UIView {
 
     public init(frame: CGRect = .zero, delegate: ToastViewDelegate) {
         super.init(frame: frame)
-
+        
         self.delegate = delegate
-
+        
         setup()
     }
-
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -125,7 +126,7 @@ public class ToastView: UIView {
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
         swipeGesture.direction = .down
         gestureRecognizers = [tapGesture, swipeGesture]
-
+        
         addSubview(imageView)
         addSubview(messageTitle)
         addSubview(actionButton)
@@ -144,14 +145,14 @@ public class ToastView: UIView {
         imageView.heightAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.height).isActive = true
         imageView.widthAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.width).isActive = true
         imageView.heightAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.height).isActive = true
-
+        
         messageTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: CGFloat.mediumLargeSpacing).isActive = true
         messageTitle.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.mediumLargeSpacing).isActive = true
         messageTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -CGFloat.mediumLargeSpacing).isActive = true
-
+        
         if let presentable = presentable, presentable.actionButtonTitle != nil {
             actionButton.isHidden = false
-
+            
             messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -CGFloat.mediumLargeSpacing).isActive = true
 
             actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -CGFloat.mediumLargeSpacing).isActive = true
@@ -163,7 +164,7 @@ public class ToastView: UIView {
     }
 
     // MARK: - Dependency injection
-
+    
     public var presentable: ToastPresentable? {
         didSet {
             messageTitle.text = presentable?.messageTitle
@@ -176,30 +177,30 @@ public class ToastView: UIView {
     }
 
     // MARK: - Actions
-
+    
     @objc private func buttonAction() {
         delegate?.didTapActionButton(button: actionButton, in: self)
     }
-
+    
     @objc private func tapAction() {
         delegate?.didTap(toastView: self)
     }
-
+    
     @objc private func swipeAction() {
         delegate?.didSwipeDown(on: self)
     }
-
+    
     public func presentFromBottom(view: UIView, animateOffset: CGFloat, timeOut: Double? = nil) {
         setupToastConstraint(for: view)
-
-        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+        
+        UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
         })
         if let timeOut = timeOut {
-            dismissToast(after: timeOut)
+            self.dismissToast(after: timeOut)
         }
     }
-
+    
     public func dismissToast(after delay: Double = 0.0) {
         // Uses asyncAfter instead of animate delay because then it can be dismissed by swipe before the timeout if needed
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
@@ -210,16 +211,16 @@ public class ToastView: UIView {
             }
         }
     }
-
+    
     private func setupToastConstraint(for view: UIView) {
         view.addSubview(self)
-
-        translatesAutoresizingMaskIntoConstraints = false
-
-        leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        self.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        self.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
         view.layoutIfNeeded()
     }
 }

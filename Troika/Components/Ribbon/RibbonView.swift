@@ -7,7 +7,7 @@ public enum RibbonType {
     case error
     case disabled
     case sponsored
-
+    
     var color: UIColor {
         switch self {
         case .ordinary: return .ice
@@ -23,7 +23,7 @@ public enum RibbonType {
 public class RibbonView: UIView {
 
     // Mark: - Internal properties
-
+    
     private lazy var titleLabel: Label = {
         let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -31,11 +31,11 @@ public class RibbonView: UIView {
         label.style = .detail(.licorice)
         return label
     }()
-
+    
     let horisontalMargin: CGFloat = 8
     let verticalMargin: CGFloat = 2
     let cornerRadius: CGFloat = 3
-
+    
     // Mark: - Setup
 
     public override init(frame: CGRect) {
@@ -51,7 +51,7 @@ public class RibbonView: UIView {
     private func setup() {
         layer.cornerRadius = cornerRadius
         isAccessibilityElement = true
-
+        
         addSubview(titleLabel)
     }
 
@@ -67,7 +67,7 @@ public class RibbonView: UIView {
     }
 
     // Mark: - Dependency injection
-
+    
     public var presentable: RibbonPresentable? {
         didSet {
             titleLabel.text = presentable?.title
