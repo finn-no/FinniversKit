@@ -1,3 +1,7 @@
+//
+//  Copyright © 2017 FINN.no AS, Inc. All rights reserved.
+//
+
 import Foundation
 import Troika
 
@@ -13,7 +17,7 @@ public struct PreviewDataModel: PreviewPresentable {
         if imageText.isEmpty {
             return title + ". " + subTitle
         } else {
-            return title + ". " + subTitle  + ". Pris: kroner " + imageText
+            return title + ". " + subTitle + ". Pris: kroner " + imageText
         }
     }
 }
@@ -25,8 +29,8 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
         // Not in use
     }
 
-    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ())) {
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void)) {
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             DispatchQueue.main.async {
                 if let data = data, let image = UIImage(data: data) {
                     completion(image)
@@ -43,8 +47,8 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
 /// For use with PreviewCell.
 public class APreviewCellDataSource: NSObject, PreviewCellDataSource {
 
-    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ())) {
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void)) {
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             DispatchQueue.main.async {
                 if let data = data, let image = UIImage(data: data) {
                     completion(image)
@@ -67,7 +71,7 @@ public struct PreviewDataModelFactory {
     }
 
     public static func create(numberOfModels: Int) -> [PreviewDataModel] {
-        return (0..<numberOfModels).map { index in
+        return (0 ..< numberOfModels).map { index in
             let imageSource = imageSources[index]
             let title = titles[index]
             let subTitle = subTitles[index]
@@ -101,7 +105,7 @@ public struct PreviewDataModelFactory {
             "Langtvekkistan",
             "Elverum",
             "Brønnøysund",
-            "Bodø"
+            "Bodø",
         ]
     }
 

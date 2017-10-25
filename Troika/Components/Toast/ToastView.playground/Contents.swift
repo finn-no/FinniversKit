@@ -1,3 +1,7 @@
+//
+//  Copyright © 2017 FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 import PlaygroundSupport
 import Troika
@@ -14,7 +18,7 @@ class ToastClass: NSObject, ToastViewDelegate {
     func didTapActionButton(button: UIButton, in toastView: ToastView) {
         print("Button tapped")
     }
-    
+
     func didTap(toastView: ToastView) {
         print("Toast view tapped")
     }

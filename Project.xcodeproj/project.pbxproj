@@ -600,7 +600,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Others/swiftformat\" \"${SRCROOT}/Troika/\"\n";
+			shellScript = "sh \"${SRCROOT}/Others/format.sh\"";
 		};
 		1411A1B01F9FEAB0007D717A /* Run SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -614,7 +614,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Others/swiftformat\" \"${SRCROOT}/TroikaDemoKit/\"";
+			shellScript = "sh \"${SRCROOT}/Others/format.sh\"";
 		};
 		1411A1B11F9FEADA007D717A /* Run SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -628,7 +628,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Others/swiftformat\" \"${SRCROOT}/Project/\"";
+			shellScript = "sh \"${SRCROOT}/Others/format.sh\"";
 		};
 		CB2FE4D71F7A533300616815 /* Update templates */ = {
 			isa = PBXShellScriptBuildPhase;

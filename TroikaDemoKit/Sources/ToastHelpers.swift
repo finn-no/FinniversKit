@@ -1,3 +1,7 @@
+//
+//  Copyright © 2017 FINN.no AS, Inc. All rights reserved.
+//
+
 import Foundation
 import Troika
 
@@ -8,7 +12,7 @@ public enum ToastDataModel: ToastPresentable {
     case successButton
     case errorButton
     case multiline
-    
+
     public var type: ToastType {
         switch self {
         case .success: return ToastType.success
@@ -19,7 +23,7 @@ public enum ToastDataModel: ToastPresentable {
         case .multiline: return ToastType.success
         }
     }
-    
+
     public var messageTitle: String {
         switch self {
         case .success: return "Success message with icon"
@@ -30,7 +34,7 @@ public enum ToastDataModel: ToastPresentable {
         case .multiline: return "Toast with a message that spans over multiple lines"
         }
     }
-    
+
     public var actionButtonTitle: String? {
         switch self {
         case .successButton: return "Action"
@@ -38,7 +42,7 @@ public enum ToastDataModel: ToastPresentable {
         default: return nil
         }
     }
-    
+
     public var imageThumbnail: UIImage? {
         switch self {
         case .successImage: return UIImage(named: "eiendom", in: .troikaDemoKit, compatibleWith: nil)

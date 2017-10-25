@@ -1,3 +1,7 @@
+//
+//  Copyright © 2017 FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 public protocol MarketGridCollectionViewDelegate: NSObjectProtocol {
@@ -5,9 +9,9 @@ public protocol MarketGridCollectionViewDelegate: NSObjectProtocol {
 }
 
 public class MarketGridView: UIView {
-    
+
     // Mark: - Internal properties
-    
+
     @objc private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.delegate = self
@@ -16,46 +20,47 @@ public class MarketGridView: UIView {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
+
     private weak var delegate: MarketGridCollectionViewDelegate?
-    
+
     // Mark: - Setup
-    
+
     public init(frame: CGRect = .zero, delegate: MarketGridCollectionViewDelegate) {
         super.init(frame: frame)
-        
+
         self.delegate = delegate
-        
+
         setup()
     }
-    
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     private func setup() {
         collectionView.register(MarketGridCell.self)
         addSubview(collectionView)
     }
-    
+
     // Mark: - Layout
-    
+
     public override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
-    
+
     // Mark: - Dependency injection
-    
+
     public var marketGridPresentables: [MarketGridPresentable] = [MarketGridPresentable]() {
         didSet {
             collectionView.reloadData()
@@ -75,7 +80,6 @@ public class MarketGridView: UIView {
         return CGSize(width: width, height: height)
     }
 
-
     // Mark: - Private
 
     private func numberOfRows(for viewWidth: CGFloat) -> Int {
@@ -84,7 +88,7 @@ public class MarketGridView: UIView {
 
     private func itemSize(for viewWidth: CGFloat) -> CGSize {
         let screenWidth = ScreenSizeCategory(width: viewWidth)
-        let itemSize = CGSize(width: viewWidth/screenWidth.itemsPerRow - screenWidth.sideMargins - screenWidth.interimSpacing, height: screenWidth.itemHeight)
+        let itemSize = CGSize(width: viewWidth / screenWidth.itemsPerRow - screenWidth.sideMargins - screenWidth.interimSpacing, height: screenWidth.itemHeight)
         return itemSize
     }
 
@@ -107,19 +111,19 @@ public class MarketGridView: UIView {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension MarketGridView: UICollectionViewDelegateFlowLayout {
-    
+
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return itemSize(for: bounds.width)
     }
-    
+
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return insets(for: bounds.width)
     }
-    
+
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return lineSpacing(for: bounds.width)
     }
-    
+
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return interimSpacing(for: bounds.width)
     }
@@ -131,7 +135,7 @@ extension MarketGridView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return marketGridPresentables.count
     }
-    
+
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(MarketGridCell.self, for: indexPath)
         cell.presentable = marketGridPresentables[indexPath.row]

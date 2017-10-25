@@ -1,3 +1,7 @@
+//
+//  Copyright © 2017 FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 @UIApplicationMain
@@ -9,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         let navigationController = UINavigationController()
         let marketViewController = MarketViewController()
-        
+
         navigationController.addChildViewController(marketViewController)
         tabBarController.setViewControllers([navigationController], animated: false)
 

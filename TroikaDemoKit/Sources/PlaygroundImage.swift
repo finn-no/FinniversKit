@@ -1,3 +1,7 @@
+//
+//  Copyright © 2017 FINN.no AS, Inc. All rights reserved.
+//
+
 import Foundation
 
 public enum PlaygroundImage: String {
@@ -16,6 +20,6 @@ public enum PlaygroundImage: String {
     case webview
 
     public var image: UIImage {
-        return UIImage(named: self.rawValue, in: .troikaDemoKit, compatibleWith: nil)!
+        return UIImage(named: rawValue, in: .troikaDemoKit, compatibleWith: nil)!
     }
 }
