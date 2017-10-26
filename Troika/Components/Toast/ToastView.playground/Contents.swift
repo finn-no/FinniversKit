@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 FINN.no AS, Inc. All rights reserved.
+//  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
 import UIKit

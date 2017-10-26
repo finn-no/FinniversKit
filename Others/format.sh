@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-HEADER="//\n//  Copyright © {year} FINN.no AS, Inc. All rights reserved.\n//"
+HEADER="//\n//  Copyright © FINN.no AS, Inc. All rights reserved.\n//"
 
 command="${SRCROOT}/Others/swiftformat"
 
