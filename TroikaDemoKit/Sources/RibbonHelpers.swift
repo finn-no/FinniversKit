@@ -1,15 +1,19 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import Foundation
 import Troika
 
 public enum RibbonDataModel: RibbonPresentable {
-    
+
     case ordinary
     case success
     case warning
     case error
     case disabled
     case sponsored
-    
+
     public var type: RibbonType {
         switch self {
         case .ordinary: return RibbonType.ordinary
@@ -20,7 +24,7 @@ public enum RibbonDataModel: RibbonPresentable {
         case .sponsored: return RibbonType.sponsored
         }
     }
-    
+
     public var title: String {
         switch self {
         case .ordinary: return "Default"
@@ -31,7 +35,7 @@ public enum RibbonDataModel: RibbonPresentable {
         case .sponsored: return "Sponsored"
         }
     }
-    
+
     public var accessibilityLabel: String {
         return "Merk: " + title
     }

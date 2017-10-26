@@ -1,7 +1,11 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 extension UIColor {
-	@nonobjc public class var ice: UIColor {
+    @nonobjc public class var ice: UIColor {
         return UIColor(r: 241, g: 249, b: 255)!
     }
 

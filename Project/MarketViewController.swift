@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 import Troika
 import TroikaDemoKit
@@ -15,7 +19,7 @@ class MarketViewController: UIViewController {
         marketGridView.translatesAutoresizingMaskIntoConstraints = false
         return marketGridView
     }()
-    
+
     fileprivate lazy var headerLabel = Label(style: .t4(.licorice))
     fileprivate lazy var headerView = UIView()
 
@@ -49,7 +53,7 @@ class MarketViewController: UIViewController {
         headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16).isActive = true
         headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 16).isActive = true
 
-        let viewHeight = marketGridView.calculateSize(constrainedTo: view.frame.size.width).height + headerLabel.intrinsicContentSize.height + 16 + 32 // TODO (AD):  Hard coded spacing. Change to constants.
+        let viewHeight = marketGridView.calculateSize(constrainedTo: view.frame.size.width).height + headerLabel.intrinsicContentSize.height + 16 + 32 // TODO: (AD):  Hard coded spacing. Change to constants.
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: viewHeight)
 
         discoverGridView.previewPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
@@ -71,7 +75,7 @@ extension MarketViewController: ToastViewDelegate {
     func didTap(toastView: ToastView) {
         print("Toast view tapped!")
     }
-    
+
     func didTapActionButton(button: UIButton, in toastView: ToastView) {
         print("Action button tapped!")
     }
@@ -80,10 +84,10 @@ extension MarketViewController: ToastViewDelegate {
 // MARK: - PreviewGridViewDataSource
 extension MarketViewController: PreviewGridViewDataSource {
 
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ())) {
+    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void)) {
 
         // Demo code only.
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             DispatchQueue.main.async {
                 if let data = data, let image = UIImage(data: data) {
                     completion(image)
@@ -101,6 +105,5 @@ extension MarketViewController: PreviewGridViewDataSource {
 extension MarketViewController: MarketGridCollectionViewDelegate {
 
     func didSelect(item: MarketGridPresentable, in gridView: MarketGridView) {
-
     }
 }

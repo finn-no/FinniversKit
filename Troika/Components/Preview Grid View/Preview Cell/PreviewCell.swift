@@ -1,7 +1,11 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 public protocol PreviewCellDataSource {
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ()))
+    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void))
 }
 
 public class PreviewCell: UICollectionViewCell {
@@ -95,7 +99,7 @@ public class PreviewCell: UICollectionViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        
+
         addSubview(imageView)
         addSubview(subTitleLabel)
         addSubview(titleLabel)
@@ -144,9 +148,9 @@ public class PreviewCell: UICollectionViewCell {
         iconImageView.widthAnchor.constraint(equalToConstant: PreviewCell.iconSize).isActive = true
         iconImageView.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor).isActive = true
 
-//        imageTextLabel.topAnchor.constraint(equalTo: imageDesciptionView.topAnchor).isActive = true
-        imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: PreviewCell.margin ).isActive = true
-//        imageTextLabel.bottomAnchor.constraint(equalTo: imageDesciptionView.bottomAnchor).isActive = true
+        //        imageTextLabel.topAnchor.constraint(equalTo: imageDesciptionView.topAnchor).isActive = true
+        imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: PreviewCell.margin).isActive = true
+        //        imageTextLabel.bottomAnchor.constraint(equalTo: imageDesciptionView.bottomAnchor).isActive = true
         imageTextLabel.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor).isActive = true
 
         imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -192,7 +196,7 @@ public class PreviewCell: UICollectionViewCell {
 
         dataSource.loadImage(for: imageUrl) { [weak self] image in
             self?.imageView.backgroundColor = .clear
-            
+
             if let image = image {
                 self?.imageView.image = image
             } else {

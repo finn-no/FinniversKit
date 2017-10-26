@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 protocol PreviewGridLayoutDelegate {
@@ -34,7 +38,7 @@ class PreviewGridLayout: UICollectionViewLayout {
         }
 
         let columnPadding = configuration.columnSpacing * CGFloat(configuration.numberOfColumns - 1)
-        let sidePadding   = configuration.sidePadding * 2
+        let sidePadding = configuration.sidePadding * 2
 
         let totalPadding = columnPadding + sidePadding
         let columnsWidth = collectionView.frame.size.width - totalPadding
@@ -81,7 +85,7 @@ class PreviewGridLayout: UICollectionViewLayout {
             return
         }
 
-        let columnsRange = 0..<configuration.numberOfColumns
+        let columnsRange = 0 ..< configuration.numberOfColumns
 
         var columns = columnsRange.map { _ in 0 }
         var attributesCollection = [UICollectionViewLayoutAttributes]()
@@ -96,7 +100,7 @@ class PreviewGridLayout: UICollectionViewLayout {
             yOffset += height
         }
 
-        for index in 0..<numberOfItems {
+        for index in 0 ..< numberOfItems {
 
             let columnIndex = indexOfLowestValue(in: columns)
 
@@ -145,4 +149,3 @@ class PreviewGridLayout: UICollectionViewLayout {
         return size
     }
 }
-

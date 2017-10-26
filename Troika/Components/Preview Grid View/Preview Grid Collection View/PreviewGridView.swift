@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 public protocol PreviewGridViewDelegate: NSObjectProtocol {
@@ -5,7 +9,7 @@ public protocol PreviewGridViewDelegate: NSObjectProtocol {
 }
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ()))
+    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void))
 }
 
 public class PreviewGridView: UIView {
@@ -133,14 +137,14 @@ extension PreviewGridView: UICollectionViewDataSource {
 // MARK: - PreviewCellDataSource
 extension PreviewGridView: PreviewCellDataSource {
 
-    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> ())) {
+    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void)) {
         dataSource?.loadImage(for: url, completion: completion)
     }
 }
 
 // MARK: - PreviewGridLayoutDelegate
 extension PreviewGridView: PreviewGridLayoutDelegate {
-    
+
     func heightForHeaderView(inCollectionView collectionView: UICollectionView) -> CGFloat? {
         return headerView?.frame.size.height
     }

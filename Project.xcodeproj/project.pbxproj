@@ -451,6 +451,7 @@
 				25D04D781F583B1800EA317D /* Frameworks */,
 				25D04D791F583B1800EA317D /* Resources */,
 				45CF5A541F96198B00069240 /* Embed Frameworks */,
+				1411A1B11F9FEADA007D717A /* Run SwiftFormat */,
 			);
 			buildRules = (
 			);
@@ -472,6 +473,7 @@
 				CB3CF1531F73E5870041EF20 /* Headers */,
 				CB2FE4D71F7A533300616815 /* Update templates */,
 				453D887E1F85191600FC63C7 /* Resources */,
+				1411A1AF1F9FE8F6007D717A /* Run SwiftFormat */,
 			);
 			buildRules = (
 			);
@@ -490,6 +492,7 @@
 				CB400B0B1F83BE2400B26C1C /* Frameworks */,
 				CB400B0C1F83BE2400B26C1C /* Headers */,
 				CB400B0D1F83BE2400B26C1C /* Resources */,
+				1411A1B01F9FEAB0007D717A /* Run SwiftFormat */,
 			);
 			buildRules = (
 			);
@@ -581,6 +584,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1411A1AF1F9FE8F6007D717A /* Run SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftFormat";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh \"${SRCROOT}/Others/format.sh\"";
+		};
+		1411A1B01F9FEAB0007D717A /* Run SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftFormat";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh \"${SRCROOT}/Others/format.sh\"";
+		};
+		1411A1B11F9FEADA007D717A /* Run SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftFormat";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh \"${SRCROOT}/Others/format.sh\"";
+		};
 		CB2FE4D71F7A533300616815 /* Update templates */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
