@@ -44,7 +44,7 @@ public enum RibbonDataModel: RibbonPresentable {
 public let headerLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = .t1
+    label.font = .title1
     label.textColor = .black // egentlig .licorice
     label.text = "Status ribbon"
     return label

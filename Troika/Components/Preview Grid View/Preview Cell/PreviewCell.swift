@@ -74,7 +74,7 @@ public class PreviewCell: UICollectionViewCell {
     private lazy var imageTextLabel: Label = {
         let label = Label()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.style = .t4(.milk)
+        label.style = .title4(.milk)
         label.backgroundColor = .clear
         return label
     }()

@@ -20,7 +20,7 @@ class MarketViewController: UIViewController {
         return marketGridView
     }()
 
-    fileprivate lazy var headerLabel = Label(style: .t4(.licorice))
+    fileprivate lazy var headerLabel = Label(style: .title4(.licorice))
     fileprivate lazy var headerView = UIView()
 
     override func viewDidLoad() {

@@ -7,11 +7,11 @@ import Foundation
 public extension Label {
 
     public enum Style {
-        case t1
-        case t2
-        case t3
-        case t4(FlexibleColorGroup)
-        case t5(FlexibleColorGroup)
+        case title1
+        case title2
+        case title3
+        case title4(FlexibleColorGroup)
+        case title5(FlexibleColorGroup)
         case body(AllColorGroup)
         case detail(AllColorGroup)
 
@@ -47,11 +47,11 @@ public extension Label {
 
         var color: UIColor {
             switch self {
-            case .t1: return .licorice
-            case .t2: return .licorice
-            case .t3: return .licorice
-            case let .t4(colorGroup): return colorGroup.color
-            case let .t5(colorGroup): return colorGroup.color
+            case .title1: return .licorice
+            case .title2: return .licorice
+            case .title3: return .licorice
+            case let .title4(colorGroup): return colorGroup.color
+            case let .title5(colorGroup): return colorGroup.color
             case let .body(colorGroup): return colorGroup.color
             case let .detail(colorGroup): return colorGroup.color
             }
@@ -59,11 +59,11 @@ public extension Label {
 
         var font: UIFont {
             switch self {
-            case .t1: return UIFont.t1
-            case .t2: return UIFont.t2
-            case .t3: return UIFont.t3
-            case .t4: return UIFont.t4
-            case .t5: return UIFont.t5
+            case .title1: return UIFont.title1
+            case .title2: return UIFont.title2
+            case .title3: return UIFont.title3
+            case .title4: return UIFont.title4
+            case .title5: return UIFont.title5
             case .body: return UIFont.body
             case .detail: return UIFont.detail
             }
@@ -75,9 +75,9 @@ public extension Label {
 
         var lineSpacing: CGFloat {
             switch self {
-            case .t1: return font.pointSize * 0.5
-            case .t2: return font.pointSize * 0.5
-            case .t3: return font.pointSize * 0.5
+            case .title1: return font.pointSize * 0.5
+            case .title2: return font.pointSize * 0.5
+            case .title3: return font.pointSize * 0.5
             default: return 0
             }
         }
