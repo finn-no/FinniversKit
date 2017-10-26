@@ -22,7 +22,7 @@ public extension UIFont {
         return UIFont(name: "FINNTypeWebStrippet-Medium", size: 18.0)!
     }
 
-  public static var title5: UIFont {
+    public static var title5: UIFont {
         return UIFont(name: "FINNTypeWebStrippet-Medium", size: 14.0)!
     }
 

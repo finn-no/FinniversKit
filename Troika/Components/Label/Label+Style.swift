@@ -50,10 +50,10 @@ public extension Label {
             case .title1: return .licorice
             case .title2: return .licorice
             case .title3: return .licorice
-            case .title4(let colorGroup): return colorGroup.color
-            case .title5(let colorGroup): return colorGroup.color
-            case .body(let colorGroup): return colorGroup.color
-            case .detail(let colorGroup): return colorGroup.color
+            case let .title4(colorGroup): return colorGroup.color
+            case let .title5(colorGroup): return colorGroup.color
+            case let .body(colorGroup): return colorGroup.color
+            case let .detail(colorGroup): return colorGroup.color
             }
         }
 
