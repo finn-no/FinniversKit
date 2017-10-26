@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import Foundation
 
 /// Class for referencing the framework bundle

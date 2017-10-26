@@ -1,26 +1,30 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 public class Label: UILabel {
-    
+
     // Mark: - Internal properties
-    
-    var labelAttributes: [NSAttributedStringKey : Any] {
+
+    var labelAttributes: [NSAttributedStringKey: Any] {
         guard let style = style else {
             return [:]
         }
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = style.lineSpacing
         paragraphStyle.alignment = textAlignment
-        
+
         return [
             NSAttributedStringKey.font: style.font,
             NSAttributedStringKey.foregroundColor: style.color,
-            NSAttributedStringKey.paragraphStyle: paragraphStyle
+            NSAttributedStringKey.paragraphStyle: paragraphStyle,
         ]
     }
-    
+
     // Mark: - Setup
-    
+
     public init(style: Style) {
         super.init(frame: .zero)
         self.style = style
@@ -47,14 +51,13 @@ public class Label: UILabel {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         accessibilityLabel = text
         textColor = style?.color
         font = style?.font
     }
 
     // Mark: - Dependency injection
-    
+
     public var style: Style?
 }
-

@@ -1,7 +1,11 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import Foundation
 
 public extension Label {
-    
+
     public enum Style {
         case title1
         case title2
@@ -10,11 +14,11 @@ public extension Label {
         case title5(FlexibleColorGroup)
         case body(AllColorGroup)
         case detail(AllColorGroup)
-        
+
         public enum FlexibleColorGroup {
             case licorice
             case milk
-            
+
             var color: UIColor {
                 switch self {
                 case .licorice: return .licorice
@@ -22,14 +26,14 @@ public extension Label {
                 }
             }
         }
-        
+
         public enum AllColorGroup {
             case licorice
             case milk
             case stone
             case primaryBlue
             case cherry
-            
+
             var color: UIColor {
                 switch self {
                 case .licorice: return .licorice
@@ -40,7 +44,7 @@ public extension Label {
                 }
             }
         }
-        
+
         var color: UIColor {
             switch self {
             case .title1: return .licorice
@@ -52,7 +56,7 @@ public extension Label {
             case .detail(let colorGroup): return colorGroup.color
             }
         }
-        
+
         var font: UIFont {
             switch self {
             case .title1: return UIFont.title1
@@ -64,11 +68,11 @@ public extension Label {
             case .detail: return UIFont.detail
             }
         }
-        
+
         var padding: UIEdgeInsets {
             return UIEdgeInsets(top: lineSpacing, left: 0, bottom: 0, right: 0)
         }
-        
+
         var lineSpacing: CGFloat {
             switch self {
             case .title1: return font.pointSize * 0.5
