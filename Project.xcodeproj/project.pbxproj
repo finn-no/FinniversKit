@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14405C541FAFBBF000D03E04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C531FAFBBF000D03E04 /* AppDelegate.swift */; };
+		14405C5B1FAFBBF000D03E04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14405C5A1FAFBBF000D03E04 /* Assets.xcassets */; };
+		14405C641FAFBC5000D03E04 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14405C631FAFBC5000D03E04 /* Default-568h@2x.png */; };
 		25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D04D7E1F583B1800EA317D /* AppDelegate.swift */; };
 		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
 		4523B77C1F8CF3C3001DFB96 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */; };
@@ -96,6 +99,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		14405C511FAFBBF000D03E04 /* iOSPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14405C531FAFBBF000D03E04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		14405C5A1FAFBBF000D03E04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		14405C5F1FAFBBF000D03E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14405C631FAFBC5000D03E04 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		25D04D7B1F583B1800EA317D /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25D04D7E1F583B1800EA317D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25D04D881F583B1800EA317D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -156,6 +164,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		14405C4E1FAFBBF000D03E04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		25D04D781F583B1800EA317D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,12 +197,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14405C521FAFBBF000D03E04 /* iOSPlayground */ = {
+			isa = PBXGroup;
+			children = (
+				14405C531FAFBBF000D03E04 /* AppDelegate.swift */,
+				14405C5A1FAFBBF000D03E04 /* Assets.xcassets */,
+				14405C5F1FAFBBF000D03E04 /* Info.plist */,
+			);
+			path = iOSPlayground;
+			sourceTree = "<group>";
+		};
 		25D04D721F583B1800EA317D = {
 			isa = PBXGroup;
 			children = (
+				14405C631FAFBC5000D03E04 /* Default-568h@2x.png */,
 				25D04D7D1F583B1800EA317D /* Project */,
 				CB3CF1571F73E5870041EF20 /* Troika */,
 				CB400B101F83BE2400B26C1C /* TroikaDemoKit */,
+				14405C521FAFBBF000D03E04 /* iOSPlayground */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
 			);
@@ -199,6 +226,7 @@
 				25D04D7B1F583B1800EA317D /* Project.app */,
 				CB3CF1561F73E5870041EF20 /* Troika.framework */,
 				CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */,
+				14405C511FAFBBF000D03E04 /* iOSPlayground.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -443,6 +471,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		14405C501FAFBBF000D03E04 /* iOSPlayground */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14405C621FAFBBF000D03E04 /* Build configuration list for PBXNativeTarget "iOSPlayground" */;
+			buildPhases = (
+				14405C4D1FAFBBF000D03E04 /* Sources */,
+				14405C4E1FAFBBF000D03E04 /* Frameworks */,
+				14405C4F1FAFBBF000D03E04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOSPlayground;
+			productName = iOSPlayground;
+			productReference = 14405C511FAFBBF000D03E04 /* iOSPlayground.app */;
+			productType = "com.apple.product-type.application";
+		};
 		25D04D7A1F583B1800EA317D /* Project */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 25D04D8D1F583B1800EA317D /* Build configuration list for PBXNativeTarget "Project" */;
@@ -510,10 +555,14 @@
 		25D04D731F583B1800EA317D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
+					14405C501FAFBBF000D03E04 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
 					25D04D7A1F583B1800EA317D = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = D34XZHQLE3;
@@ -547,11 +596,21 @@
 				25D04D7A1F583B1800EA317D /* Project */,
 				CB3CF1551F73E5870041EF20 /* Troika */,
 				CB400B0E1F83BE2400B26C1C /* TroikaDemoKit */,
+				14405C501FAFBBF000D03E04 /* iOSPlayground */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		14405C4F1FAFBBF000D03E04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14405C5B1FAFBBF000D03E04 /* Assets.xcassets in Resources */,
+				14405C641FAFBC5000D03E04 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		25D04D791F583B1800EA317D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -643,6 +702,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		14405C4D1FAFBBF000D03E04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14405C541FAFBBF000D03E04 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		25D04D771F583B1800EA317D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -729,6 +796,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		14405C601FAFBBF000D03E04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = iOSPlayground/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.troika.iOSPlayground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14405C611FAFBBF000D03E04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = iOSPlayground/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.troika.iOSPlayground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		25D04D8B1F583B1800EA317D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -942,6 +1047,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -970,6 +1076,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -995,6 +1102,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		14405C621FAFBBF000D03E04 /* Build configuration list for PBXNativeTarget "iOSPlayground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14405C601FAFBBF000D03E04 /* Debug */,
+				14405C611FAFBBF000D03E04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		25D04D761F583B1800EA317D /* Build configuration list for PBXProject "Project" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
