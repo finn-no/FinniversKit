@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-               BuildableName = "LoginApp.app"
-               BlueprintName = "LoginApp"
+               BuildableName = "Login.app"
+               BlueprintName = "Login"
                ReferencedContainer = "container:Project.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,8 +34,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-            BuildableName = "LoginApp.app"
-            BlueprintName = "LoginApp"
+            BuildableName = "Login.app"
+            BlueprintName = "Login"
             ReferencedContainer = "container:Project.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -58,8 +58,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-            BuildableName = "LoginApp.app"
-            BlueprintName = "LoginApp"
+            BuildableName = "Login.app"
+            BlueprintName = "Login"
             ReferencedContainer = "container:Project.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -77,8 +77,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-            BuildableName = "LoginApp.app"
-            BlueprintName = "LoginApp"
+            BuildableName = "Login.app"
+            BlueprintName = "Login"
             ReferencedContainer = "container:Project.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

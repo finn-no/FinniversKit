@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14405C6F1FAFBD1800D03E04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14405C5A1FAFBBF000D03E04 /* Assets.xcassets */; };
 		14405C771FAFBD5000D03E04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C761FAFBD4F00D03E04 /* App.swift */; };
 		14405C7C1FAFC1B300D03E04 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7B1FAFC1B300D03E04 /* LoginView.swift */; };
 		14405C7D1FAFC1B300D03E04 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7B1FAFC1B300D03E04 /* LoginView.swift */; };
@@ -103,9 +102,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		14405C5A1FAFBBF000D03E04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14405C5F1FAFBBF000D03E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14405C741FAFBD1800D03E04 /* LoginApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14405C741FAFBD1800D03E04 /* Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Login.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14405C751FAFBD1800D03E04 /* iOSPlayground copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iOSPlayground copy-Info.plist"; path = "/Users/elvis/Projects/finn/troika-ios/iOSPlayground copy-Info.plist"; sourceTree = "<absolute>"; };
 		14405C761FAFBD4F00D03E04 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		14405C7B1FAFC1B300D03E04 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */,
-				14405C5A1FAFBBF000D03E04 /* Assets.xcassets */,
 				14405C5F1FAFBBF000D03E04 /* Info.plist */,
 				14405C7E1FAFC3A900D03E04 /* BaseApp.swift */,
 				14405C811FAFC49100D03E04 /* Injector.swift */,
@@ -245,7 +242,7 @@
 				25D04D7B1F583B1800EA317D /* Project.app */,
 				CB3CF1561F73E5870041EF20 /* Troika.framework */,
 				CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */,
-				14405C741FAFBD1800D03E04 /* LoginApp.app */,
+				14405C741FAFBD1800D03E04 /* Login.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -491,9 +488,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		14405C691FAFBD1800D03E04 /* LoginApp */ = {
+		14405C691FAFBD1800D03E04 /* Login */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 14405C711FAFBD1800D03E04 /* Build configuration list for PBXNativeTarget "LoginApp" */;
+			buildConfigurationList = 14405C711FAFBD1800D03E04 /* Build configuration list for PBXNativeTarget "Login" */;
 			buildPhases = (
 				14405C6A1FAFBD1800D03E04 /* Sources */,
 				14405C6D1FAFBD1800D03E04 /* Frameworks */,
@@ -503,9 +500,9 @@
 			);
 			dependencies = (
 			);
-			name = LoginApp;
+			name = Login;
 			productName = iOSPlayground;
-			productReference = 14405C741FAFBD1800D03E04 /* LoginApp.app */;
+			productReference = 14405C741FAFBD1800D03E04 /* Login.app */;
 			productType = "com.apple.product-type.application";
 		};
 		25D04D7A1F583B1800EA317D /* Project */ = {
@@ -615,7 +612,7 @@
 				25D04D7A1F583B1800EA317D /* Project */,
 				CB3CF1551F73E5870041EF20 /* Troika */,
 				CB400B0E1F83BE2400B26C1C /* TroikaDemoKit */,
-				14405C691FAFBD1800D03E04 /* LoginApp */,
+				14405C691FAFBD1800D03E04 /* Login */,
 			);
 		};
 /* End PBXProject section */
@@ -625,7 +622,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14405C6F1FAFBD1800D03E04 /* Assets.xcassets in Resources */,
 				14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -822,7 +818,6 @@
 		14405C721FAFBD1800D03E04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -843,7 +838,6 @@
 		14405C731FAFBD1800D03E04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1129,7 +1123,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		14405C711FAFBD1800D03E04 /* Build configuration list for PBXNativeTarget "LoginApp" */ = {
+		14405C711FAFBD1800D03E04 /* Build configuration list for PBXNativeTarget "Login" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				14405C721FAFBD1800D03E04 /* Debug */,
