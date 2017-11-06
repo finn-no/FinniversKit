@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol PreviewCellDataSource {
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void))
+    func loadImage(for presentable: PreviewPresentable, completion: @escaping ((UIImage?) -> Void))
 }
 
 public class PreviewCell: UICollectionViewCell {
@@ -186,7 +186,7 @@ public class PreviewCell: UICollectionViewCell {
     // Mark: - Private
 
     private func loadImage(presentable: PreviewPresentable) {
-        guard let dataSource = dataSource, let imageUrl = presentable.imageUrl else {
+        guard let dataSource = dataSource, let _ = presentable.imagePath else {
             loadingColor = .clear
             imageView.image = defaultImage
             return
@@ -194,7 +194,7 @@ public class PreviewCell: UICollectionViewCell {
 
         imageView.backgroundColor = loadingColor
 
-        dataSource.loadImage(for: imageUrl) { [weak self] image in
+        dataSource.loadImage(for: presentable) { [weak self] image in
             self?.imageView.backgroundColor = .clear
 
             if let image = image {

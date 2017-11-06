@@ -9,7 +9,7 @@ public protocol PreviewGridViewDelegate: NSObjectProtocol {
 }
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void))
+    func loadImage(for presentable: PreviewPresentable, completion: @escaping ((UIImage?) -> Void))
 }
 
 public class PreviewGridView: UIView {
@@ -137,8 +137,8 @@ extension PreviewGridView: UICollectionViewDataSource {
 // MARK: - PreviewCellDataSource
 extension PreviewGridView: PreviewCellDataSource {
 
-    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void)) {
-        dataSource?.loadImage(for: url, completion: completion)
+    public func loadImage(for presentable: PreviewPresentable, completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.loadImage(for: presentable, completion: completion)
     }
 }
 
@@ -152,7 +152,7 @@ extension PreviewGridView: PreviewGridLayoutDelegate {
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
         let presentable = previewPresentables[indexPath.row]
 
-        guard presentable.imageSize != .zero, presentable.imageUrl != nil else {
+        guard presentable.imageSize != .zero, presentable.imagePath != nil else {
             let defaultImageSize = CGSize(width: 104, height: 78)
             return defaultImageSize.height / defaultImageSize.width
         }

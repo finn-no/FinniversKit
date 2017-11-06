@@ -84,7 +84,11 @@ extension MarketViewController: ToastViewDelegate {
 // MARK: - PreviewGridViewDataSource
 extension MarketViewController: PreviewGridViewDataSource {
 
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void)) {
+    func loadImage(for presentable: PreviewPresentable, completion: @escaping ((UIImage?) -> Void)) {
+        guard let path = presentable.imagePath, let url = URL(string: path) else {
+            completion(nil)
+            return
+        }
 
         // Demo code only.
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
