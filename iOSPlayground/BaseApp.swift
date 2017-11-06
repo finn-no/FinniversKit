@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Troika
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, Viewable {
@@ -11,9 +12,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Viewable {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = ViewController<LoginView>()
+        let viewController = ViewController<View>()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
+
+        UIFont.registerTroikaFonts()
 
         return true
     }

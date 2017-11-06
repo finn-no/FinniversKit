@@ -13,3 +13,7 @@ public extension Identifiable {
         return String(describing: self)
     }
 }
+
+public protocol Injectable {
+    func setup()
+}

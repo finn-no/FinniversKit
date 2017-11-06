@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		14405C771FAFBD5000D03E04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C761FAFBD4F00D03E04 /* App.swift */; };
 		14405C7C1FAFC1B300D03E04 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7B1FAFC1B300D03E04 /* LoginView.swift */; };
-		14405C7D1FAFC1B300D03E04 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7B1FAFC1B300D03E04 /* LoginView.swift */; };
 		14405C801FAFC3A900D03E04 /* BaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7E1FAFC3A900D03E04 /* BaseApp.swift */; };
 		14405C831FAFC49100D03E04 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C811FAFC49100D03E04 /* Injector.swift */; };
 		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
 		25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D04D7E1F583B1800EA317D /* AppDelegate.swift */; };
 		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
+		44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
+		44D32C291FB07850001E86D6 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4523B77C1F8CF3C3001DFB96 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */; };
 		4537D0201F94ECE6006942E7 /* CGFloat+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537D01F1F94ECE6006942E7 /* CGFloat+Troika.swift */; };
 		453D887F1F85192700FC63C7 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */; };
@@ -63,6 +64,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
+			remoteInfo = Troika;
+		};
 		45CF5A521F96198B00069240 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
@@ -87,6 +95,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		44D32C2C1FB07850001E86D6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				44D32C291FB07850001E86D6 /* Troika.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		45CF5A541F96198B00069240 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -173,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,10 +513,12 @@
 				14405C6A1FAFBD1800D03E04 /* Sources */,
 				14405C6D1FAFBD1800D03E04 /* Frameworks */,
 				14405C6E1FAFBD1800D03E04 /* Resources */,
+				44D32C2C1FB07850001E86D6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				44D32C2B1FB07850001E86D6 /* PBXTargetDependency */,
 			);
 			name = Login;
 			productName = iOSPlayground;
@@ -721,7 +743,6 @@
 			files = (
 				14405C771FAFBD5000D03E04 /* App.swift in Sources */,
 				14405C801FAFC3A900D03E04 /* BaseApp.swift in Sources */,
-				14405C7D1FAFC1B300D03E04 /* LoginView.swift in Sources */,
 				14405C831FAFC49100D03E04 /* Injector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -784,6 +805,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		44D32C2B1FB07850001E86D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB3CF1551F73E5870041EF20 /* Troika */;
+			targetProxy = 44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */;
+		};
 		45CF5A531F96198B00069240 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CB3CF1551F73E5870041EF20 /* Troika */;
@@ -816,6 +842,7 @@
 		14405C721FAFBD1800D03E04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -836,6 +863,7 @@
 		14405C731FAFBD1800D03E04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1006,7 +1034,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = D34XZHQLE3;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1041,7 +1069,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = D34XZHQLE3;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

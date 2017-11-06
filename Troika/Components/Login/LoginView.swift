@@ -4,26 +4,25 @@
 
 import UIKit
 
-class LoginView: UIView {
+public class LoginView: UIView, Injectable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         setup()
     }
 
-    lazy var titleLabel: UILabel = {
-        let view = UILabel()
+    lazy var titleLabel: Label = {
+        let view = Label(style: .title4(.licorice))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 0
 
         return view
     }()
 
-    func setup() {
+    public func setup() {
         backgroundColor = .white
 
         titleLabel.text = "Logg inn for å sende meldinger, lagre favoritter og søk. Du får også varsler når det skjer noe nytt!"
-        titleLabel.textColor = .brown
         addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
@@ -34,5 +33,5 @@ class LoginView: UIView {
         ])
     }
 
-    required init?(coder aDecoder: NSCoder) { fatalError() }
+    public required init?(coder aDecoder: NSCoder) { fatalError() }
 }

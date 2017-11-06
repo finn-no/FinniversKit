@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Troika
 
 extension UIViewController {
     #if DEBUG
@@ -23,7 +24,7 @@ extension UIView {
                 subview.removeFromSuperview()
             }
 
-            if let view = self as? LoginView {
+            if let view = self as? Injectable {
                 view.setup()
             }
         }
