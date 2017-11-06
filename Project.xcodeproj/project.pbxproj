@@ -104,7 +104,6 @@
 /* Begin PBXFileReference section */
 		14405C5F1FAFBBF000D03E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14405C741FAFBD1800D03E04 /* Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Login.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		14405C751FAFBD1800D03E04 /* iOSPlayground copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iOSPlayground copy-Info.plist"; path = "/Users/elvis/Projects/finn/troika-ios/iOSPlayground copy-Info.plist"; sourceTree = "<absolute>"; };
 		14405C761FAFBD4F00D03E04 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		14405C7B1FAFC1B300D03E04 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		14405C7E1FAFC3A900D03E04 /* BaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApp.swift; sourceTree = "<group>"; };
@@ -232,7 +231,6 @@
 				14405C521FAFBBF000D03E04 /* iOSPlayground */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
-				14405C751FAFBD1800D03E04 /* iOSPlayground copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
