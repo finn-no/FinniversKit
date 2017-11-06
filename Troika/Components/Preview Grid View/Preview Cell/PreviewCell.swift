@@ -166,7 +166,7 @@ public class PreviewCell: UICollectionViewCell {
     public var presentable: PreviewPresentable? {
         didSet {
             if let presentable = presentable {
-                iconImageView.image = presentable.iconImage.withRenderingMode(.alwaysTemplate)
+                iconImageView.image = presentable.iconImage?.withRenderingMode(.alwaysTemplate)
                 titleLabel.text = presentable.title
                 subTitleLabel.text = presentable.subTitle
                 imageTextLabel.text = presentable.imageText

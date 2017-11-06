@@ -9,16 +9,23 @@ import Troika
 public struct PreviewDataModel: PreviewPresentable {
     public let imagePath: String?
     public let imageSize: CGSize
-    public let iconImage: UIImage
+    public var iconImage: UIImage?
     public let title: String
-    public let subTitle: String
-    public let imageText: String
+    public let subTitle: String?
+    public let imageText: String?
+
     public var accessibilityLabel: String {
-        if imageText.isEmpty {
-            return title + ". " + subTitle
-        } else {
-            return title + ". " + subTitle + ". Pris: kroner " + imageText
+        var message = title
+
+        if let subTitle = subTitle {
+            message += ". " + subTitle
         }
+
+        if let imageText = imageText {
+            message += ". Pris: kroner " + imageText
+        }
+
+        return message
     }
 }
 
