@@ -64,6 +64,14 @@ class MarketViewController: UIViewController {
 // MARK: - PreviewGridViewDelegate
 extension MarketViewController: PreviewGridViewDelegate {
 
+    func willDisplay(item: PreviewPresentable, in gridView: PreviewGridView) {
+        // Don't care
+    }
+
+    func didScroll(gridScrollView: UIScrollView) {
+        // Don't care
+    }
+
     func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
         let toast = ToastView(delegate: self)
         toast.presentable = ToastDataModel.successButton

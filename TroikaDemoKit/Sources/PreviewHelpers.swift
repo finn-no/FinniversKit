@@ -25,6 +25,14 @@ public struct PreviewDataModel: PreviewPresentable {
 /// For use with PreviewGridView.
 public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, PreviewGridViewDataSource {
 
+    public func willDisplay(item: PreviewPresentable, in gridView: PreviewGridView) {
+        // Don't care
+    }
+
+    public func didScroll(gridScrollView: UIScrollView) {
+        // Don't care
+    }
+
     public func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
         // Not in use
     }

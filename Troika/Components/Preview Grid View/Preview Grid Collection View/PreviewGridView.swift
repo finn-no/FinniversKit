@@ -6,6 +6,8 @@ import UIKit
 
 public protocol PreviewGridViewDelegate: NSObjectProtocol {
     func didSelect(item: PreviewPresentable, in gridView: PreviewGridView)
+    func willDisplay(item: PreviewPresentable, in gridView: PreviewGridView)
+    func didScroll(gridScrollView: UIScrollView)
 }
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
@@ -79,11 +81,21 @@ public class PreviewGridView: UIView {
         collectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
     }
 
+    public func invalidateLayout() {
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+
     // Mark: - Dependency injection
     public var previewPresentables: [PreviewPresentable] = [PreviewPresentable]() {
         didSet {
             collectionView.reloadData()
         }
+    }
+
+    // MARK: - Public
+
+    public func scrollToTop(animated: Bool = true) {
+        collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
     }
 }
 
@@ -93,6 +105,10 @@ extension PreviewGridView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = previewPresentables[indexPath.row]
         delegate?.didSelect(item: item, in: self)
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.didScroll(gridScrollView: scrollView)
     }
 }
 
@@ -120,6 +136,11 @@ extension PreviewGridView: UICollectionViewDataSource {
         cell.presentable = presentable
 
         return cell
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let presentable = previewPresentables[indexPath.row]
+        delegate?.willDisplay(item: presentable, in: self)
     }
 
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
