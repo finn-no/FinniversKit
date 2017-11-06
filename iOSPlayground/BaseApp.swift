@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 @UIApplicationMain
@@ -31,4 +35,3 @@ class ViewController<View: UIView>: UIViewController {
 protocol Viewable {
     associatedtype View
 }
-

@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 class LoginView: UIView {
@@ -19,14 +23,15 @@ class LoginView: UIView {
         backgroundColor = .white
 
         titleLabel.text = "Logg inn for å sende meldinger, lagre favoritter og søk. Du får også varsler når det skjer noe nytt!"
-        titleLabel.textColor = .green
+        titleLabel.textColor = .brown
         addSubview(titleLabel)
+
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            ])
+        ])
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
