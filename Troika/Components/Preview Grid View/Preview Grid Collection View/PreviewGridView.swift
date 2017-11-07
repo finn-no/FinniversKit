@@ -5,8 +5,8 @@
 import UIKit
 
 public protocol PreviewGridViewDelegate: NSObjectProtocol {
-    func didSelect(itemAtIndex index: Int, in gridView: PreviewGridView)
-    func willDisplay(itemAtIndex index: Int, in gridView: PreviewGridView)
+    func didSelect(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView)
+    func willDisplay(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView)
     func didScroll(gridScrollView: UIScrollView)
 }
 
@@ -104,7 +104,7 @@ public class PreviewGridView: UIView {
 extension PreviewGridView: UICollectionViewDelegate {
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelect(itemAtIndex: indexPath.row, in: self)
+        delegate?.didSelect(itemAtIndex: indexPath.row, inPreviewGridView: self)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -139,7 +139,7 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        delegate?.willDisplay(itemAtIndex: indexPath.row, in: self)
+        delegate?.willDisplay(itemAtIndex: indexPath.row, inPreviewGridView: self)
     }
 
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

@@ -32,7 +32,7 @@ public struct PreviewDataModel: PreviewPresentable {
 /// For use with PreviewGridView.
 public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, PreviewGridViewDataSource {
 
-    public func willDisplay(itemAtIndex index: Int, in gridView: PreviewGridView) {
+    public func willDisplay(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
         // Don't care
     }
 
@@ -40,7 +40,7 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
         // Don't care
     }
 
-    public func didSelect(itemAtIndex index: Int, in gridView: PreviewGridView) {
+    public func didSelect(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
         // Not in use
     }
 
