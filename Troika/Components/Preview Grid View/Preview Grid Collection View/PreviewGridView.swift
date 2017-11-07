@@ -12,6 +12,7 @@ public protocol PreviewGridViewDelegate: NSObjectProtocol {
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
     func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
 }
 
 public class PreviewGridView: UIView {
@@ -158,6 +159,10 @@ extension PreviewGridView: PreviewCellDataSource {
 
     public func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         dataSource?.loadImage(for: presentable, imageWidth: imageWidth, completion: completion)
+    }
+
+    public func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat) {
+        dataSource?.cancelLoadImage(for: presentable, imageWidth: imageWidth)
     }
 }
 

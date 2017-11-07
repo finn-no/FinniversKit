@@ -111,6 +111,10 @@ extension MarketViewController: PreviewGridViewDataSource {
 
         task.resume()
     }
+
+    public func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat) {
+        // No point in doing this in demo
+    }
 }
 
 // MARK: - MarketGridCollectionViewDelegate

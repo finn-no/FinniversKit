@@ -6,6 +6,7 @@ import UIKit
 
 public protocol PreviewCellDataSource {
     func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
 }
 
 public class PreviewCell: UICollectionViewCell {
@@ -121,6 +122,10 @@ public class PreviewCell: UICollectionViewCell {
         subTitleLabel.text = ""
         imageTextLabel.text = ""
         accessibilityLabel = ""
+
+        if let presentable = presentable {
+            dataSource?.cancelLoadImage(for: presentable, imageWidth: imageView.frame.size.width)
+        }
     }
 
     // Mark: - Layout

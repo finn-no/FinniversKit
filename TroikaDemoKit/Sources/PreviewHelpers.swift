@@ -62,6 +62,10 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
 
         task.resume()
     }
+
+    public func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat) {
+        // No point in doing this in demo
+    }
 }
 
 /// For use with PreviewCell.
@@ -84,6 +88,10 @@ public class APreviewCellDataSource: NSObject, PreviewCellDataSource {
         }
 
         task.resume()
+    }
+
+    public func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat) {
+        // No point in doing this in demo
     }
 }
 
