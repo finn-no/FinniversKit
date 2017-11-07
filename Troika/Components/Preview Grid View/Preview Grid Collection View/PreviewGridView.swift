@@ -5,13 +5,13 @@
 import UIKit
 
 public protocol PreviewGridViewDelegate: NSObjectProtocol {
-    func didSelect(item: PreviewPresentable, in gridView: PreviewGridView)
-    func willDisplay(item: PreviewPresentable, in gridView: PreviewGridView)
+    func didSelect(itemAtIndex index: Int, in gridView: PreviewGridView)
+    func willDisplay(itemAtIndex index: Int, in gridView: PreviewGridView)
     func didScroll(gridScrollView: UIScrollView)
 }
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
-    func loadImage(for presentable: PreviewPresentable, completion: @escaping ((UIImage?) -> Void))
+    func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
 }
 
 public class PreviewGridView: UIView {
@@ -103,8 +103,7 @@ public class PreviewGridView: UIView {
 extension PreviewGridView: UICollectionViewDelegate {
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = previewPresentables[indexPath.row]
-        delegate?.didSelect(item: item, in: self)
+        delegate?.didSelect(itemAtIndex: indexPath.row, in: self)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -139,8 +138,7 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let presentable = previewPresentables[indexPath.row]
-        delegate?.willDisplay(item: presentable, in: self)
+        delegate?.willDisplay(itemAtIndex: indexPath.row, in: self)
     }
 
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -158,8 +156,8 @@ extension PreviewGridView: UICollectionViewDataSource {
 // MARK: - PreviewCellDataSource
 extension PreviewGridView: PreviewCellDataSource {
 
-    public func loadImage(for presentable: PreviewPresentable, completion: @escaping ((UIImage?) -> Void)) {
-        dataSource?.loadImage(for: presentable, completion: completion)
+    public func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.loadImage(for: presentable, imageWidth: imageWidth, completion: completion)
     }
 }
 

@@ -64,7 +64,7 @@ class MarketViewController: UIViewController {
 // MARK: - PreviewGridViewDelegate
 extension MarketViewController: PreviewGridViewDelegate {
 
-    func willDisplay(item: PreviewPresentable, in gridView: PreviewGridView) {
+    func willDisplay(itemAtIndex index: Int, in gridView: PreviewGridView) {
         // Don't care
     }
 
@@ -72,7 +72,7 @@ extension MarketViewController: PreviewGridViewDelegate {
         // Don't care
     }
 
-    func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
+    func didSelect(itemAtIndex index: Int, in gridView: PreviewGridView) {
         let toast = ToastView(delegate: self)
         toast.presentable = ToastDataModel.successButton
         toast.presentFromBottom(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0, timeOut: 4)
@@ -92,7 +92,7 @@ extension MarketViewController: ToastViewDelegate {
 // MARK: - PreviewGridViewDataSource
 extension MarketViewController: PreviewGridViewDataSource {
 
-    func loadImage(for presentable: PreviewPresentable, completion: @escaping ((UIImage?) -> Void)) {
+    func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = presentable.imagePath, let url = URL(string: path) else {
             completion(nil)
             return

@@ -32,7 +32,7 @@ public struct PreviewDataModel: PreviewPresentable {
 /// For use with PreviewGridView.
 public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, PreviewGridViewDataSource {
 
-    public func willDisplay(item: PreviewPresentable, in gridView: PreviewGridView) {
+    public func willDisplay(itemAtIndex index: Int, in gridView: PreviewGridView) {
         // Don't care
     }
 
@@ -40,11 +40,11 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
         // Don't care
     }
 
-    public func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
+    public func didSelect(itemAtIndex index: Int, in gridView: PreviewGridView) {
         // Not in use
     }
 
-    public func loadImage(for presentable: PreviewPresentable, completion: @escaping ((UIImage?) -> Void)) {
+    public func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = presentable.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
@@ -67,7 +67,7 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
 /// For use with PreviewCell.
 public class APreviewCellDataSource: NSObject, PreviewCellDataSource {
 
-    public func loadImage(for presentable: PreviewPresentable, completion: @escaping ((UIImage?) -> Void)) {
+    public func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = presentable.imagePath, let url = URL(string: path) else {
             completion(nil)
             return

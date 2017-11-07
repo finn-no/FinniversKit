@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol PreviewCellDataSource {
-    func loadImage(for presentable: PreviewPresentable, completion: @escaping ((UIImage?) -> Void))
+    func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
 }
 
 public class PreviewCell: UICollectionViewCell {
@@ -194,7 +194,7 @@ public class PreviewCell: UICollectionViewCell {
 
         imageView.backgroundColor = loadingColor
 
-        dataSource.loadImage(for: presentable) { [weak self] image in
+        dataSource.loadImage(for: presentable, imageWidth: imageView.frame.size.width) { [weak self] image in
             self?.imageView.backgroundColor = .clear
 
             if let image = image {
