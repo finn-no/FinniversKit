@@ -7,6 +7,7 @@
     1. [Protocols](#protocols)
     2. [Extensions](#extensions)
     3. [Templates](#templates)
+    4. [Resources](#resources)
 3. [Components](#components)
    1. [Toast](#toast)
    2. [Label](#label)
@@ -17,10 +18,11 @@
    5. [Preview Grid](#preview_grid)
        1. [Preview Grid View](#preview_grid_view)
        2. [Previwe Grid Cell](#preview_grid_cell)
-4. [Resources](#resources)
+4. [Installation](#installation)
+5. [Usage](#usage)
 
 ## Introduction <a name="introduction"></a>
-Some introduction text, formatted in heading 2 style
+Some introduction text.
 
 ## Structure <a name="structure"></a>
 Explaning the structure/architecture of the project.
@@ -33,6 +35,9 @@ What goes in the ´Extensions´ folder?
 
 ### Templates <a name="templates"></a>
 The template is a guideline of the structure of the classes, written in Swift...
+
+### Resources <a name="resources"></a>
+Fonts and image assets.
 
 ## Components <a name="components"></a>
 Explain the different components
@@ -60,6 +65,13 @@ The view
 #### Preview Grid Cell <a name="preview_grid_cell"></a>
 The cell
 
-## Resources <a name="resources"></a>
-### Fonts
-### Assets
+## Installation <a name="installation"></a>
+### Carthage
+```
+github "finn-no/troika-ios" ~> 0.2
+```
+## Usage <a name="usage"></a>
+Remember to use the following command so that the custom FINN fonts are loaded from the framework bundle:
+``` Swift
+UIFont.registerTroikaFonts()
+```
