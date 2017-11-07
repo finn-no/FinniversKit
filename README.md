@@ -13,11 +13,7 @@
    2. [Label](#label)
    3. [Ribbon](#ribbon)
    4. [Market Grid](#market_grid)
-       1. [Market Grid View](#market_grid_view)
-       2. [Market Grid Cell](#market_grid_cell)
    5. [Preview Grid](#preview_grid)
-       1. [Preview Grid View](#preview_grid_view)
-       2. [Previwe Grid Cell](#preview_grid_cell)
 4. [Installation](#installation)
 5. [Usage](#usage)
 
@@ -53,16 +49,16 @@ Ribbon
 
 ### Market Grid <a name="market_grid"></a>
 Market
-#### Market Grid View <a name="market_grid_view"></a>
+#### Market Grid View
 The view
-#### Market Grid Cell <a name="market_grid_cell"></a>
+#### Market Grid Cell
 The cell
 
 ### Preview Grid <a name="preview_grid"></a>
 Preview
-#### Preview Grid View <a name="preview_grid_view"></a>
+#### Preview Grid View
 The view
-#### Preview Grid Cell <a name="preview_grid_cell"></a>
+#### Preview Grid Cell
 The cell
 
 ## Installation <a name="installation"></a>
