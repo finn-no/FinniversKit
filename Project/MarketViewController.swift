@@ -120,6 +120,6 @@ extension MarketViewController: PreviewGridViewDataSource {
 // MARK: - MarketGridCollectionViewDelegate
 extension MarketViewController: MarketGridCollectionViewDelegate {
 
-    func didSelect(item: MarketGridPresentable, in gridView: MarketGridView) {
+    func didSelect(itemAtIndex index: Int, in gridView: MarketGridView) {
     }
 }
