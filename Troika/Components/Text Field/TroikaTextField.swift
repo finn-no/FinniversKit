@@ -14,11 +14,31 @@ public class TroikaTextField: UIView {
         return label
     }()
 
+    private var passwordImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "view")
+        imageView.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        return imageView
+    }()
+
     private lazy var textField: UITextField = {
         let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.body
         textField.textColor = .licorice
+        textField.tintColor = .primaryBlue
+        textField.delegate = self
+        textField.rightView = passwordImageView
         return textField
+    }()
+
+    private var underlineHeight: CGFloat = 2
+
+    private lazy var underline: UIView = {
+        let view = UIView()
+        view.backgroundColor = .stone
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     // MARK: - External properties
@@ -39,6 +59,8 @@ public class TroikaTextField: UIView {
         isAccessibilityElement = true
 
         addSubview(typeLabel)
+        addSubview(textField)
+        addSubview(underline)
     }
 
     // MARK: - Superclass Overrides
@@ -50,6 +72,14 @@ public class TroikaTextField: UIView {
 
         typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         typeLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+
+        textField.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .mediumSpacing).isActive = true
+        textField.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+
+        underline.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        underline.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        underline.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: .mediumSpacing).isActive = true
+        underline.heightAnchor.constraint(equalToConstant: underlineHeight).isActive = true
     }
 
     // MARK: - Dependency injection
