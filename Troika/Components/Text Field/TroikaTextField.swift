@@ -9,8 +9,8 @@ public class TroikaTextField: UIView {
     // MARK: - Internal properties
 
     private lazy var typeLabel: Label = {
-        let label = Label()
-        label.style = .detail(.stone)
+        let label = Label(style: .detail(.stone))
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -37,6 +37,8 @@ public class TroikaTextField: UIView {
 
     private func setup() {
         isAccessibilityElement = true
+
+        addSubview(typeLabel)
     }
 
     // MARK: - Superclass Overrides
@@ -46,8 +48,8 @@ public class TroikaTextField: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        // Add custom subviews
-        // Layout your custom views
+        typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        typeLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
     }
 
     // MARK: - Dependency injection
