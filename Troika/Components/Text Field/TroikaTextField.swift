@@ -57,20 +57,31 @@ public class TroikaTextField: UIView {
     // MARK: - Private
 }
 
-public extension TroikaTextField {
-    enum TextFieldType {
-        case normal
-        case email
-        case password
+public enum TextFieldType {
+    case normal
+    case email
+    case password
 
-        var typeText: String {
-            switch self {
-            case .normal: return "Skriv:"
-            case .email: return "E-post:"
-            case .password: return "Passord:"
-            }
+    var typeText: String {
+        switch self {
+        case .normal: return "Skriv:"
+        case .email: return "E-post:"
+        case .password: return "Passord:"
         }
+    }
 
-        //        var
+    var placeHolder: String {
+        switch self {
+        case .normal: return "Something"
+        case .email: return "E-post"
+        case .password: return "Passord"
+        }
+    }
+
+    var isSecureMode: Bool {
+        switch self {
+        case .password: return true
+        default: return false
+        }
     }
 }
