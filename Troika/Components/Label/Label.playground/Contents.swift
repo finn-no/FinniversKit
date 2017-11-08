@@ -14,11 +14,11 @@ let margin: CGFloat = 16
 let interimSpacing: CGFloat = 0
 
 let view = UIView()
-let labelT1 = Label(style: .t1)
-let labelT2 = Label(style: .t2)
-let labelT3 = Label(style: .t3)
-let labelT4 = Label(style: .t4(.licorice))
-let labelT5 = Label(style: .t5(.licorice))
+let labelT1 = Label(style: .title1)
+let labelT2 = Label(style: .title2)
+let labelT3 = Label(style: .title3)
+let labelT4 = Label(style: .title4(.licorice))
+let labelT5 = Label(style: .title5(.licorice))
 let labelBody = Label(style: .body(.licorice))
 let labelDetail = Label(style: .detail(.licorice))
 
