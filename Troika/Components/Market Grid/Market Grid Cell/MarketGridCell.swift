@@ -8,8 +8,6 @@ public class MarketGridCell: UICollectionViewCell {
 
     // Mark: - Internal properties
 
-    private static let titleLabelMargin: CGFloat = 8.0
-
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +71,7 @@ public class MarketGridCell: UICollectionViewCell {
         iconImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 
-        titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: MarketGridCell.titleLabelMargin).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: CGFloat.mediumSpacing).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
