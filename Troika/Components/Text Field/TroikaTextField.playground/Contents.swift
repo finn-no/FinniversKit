@@ -9,24 +9,34 @@ import TroikaDemoKit
 
 TroikaDemoKit.setupPlayground()
 
+enum TroikaTextFieldType: TroikaTextFieldPresentable {
+    case normal
+    case email
+    case password
+
+    var type: TextFieldType {
+        switch self {
+        case .normal: return .normal
+        case .email: return .email
+        case .password: return .password
+        }
+    }
+}
+
 let view = UIView()
 view.backgroundColor = .white
 view.frame = ScreenSize.medium
-let imageView = UIImageView()
-imageView.image = UIImage(named: "bil")
 
-let textField = UITextField()
+let presentable = TroikaTextFieldType.email
+
+let textField = TroikaTextField()
 textField.translatesAutoresizingMaskIntoConstraints = false
-textField.backgroundColor = .ice
-textField.placeholder = "Password"
-textField.rightView?.addSubview(imageView)
-textField.borderStyle = .roundedRect
-textField.isSecureTextEntry = true
+textField.presentable = presentable
 
 view.addSubview(textField)
 
-textField.topAnchor.constraint(equalTo: view.topAnchor, constant: 8).isActive = true
-textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
-//textField.widthAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true
+textField.topAnchor.constraint(equalTo: view.topAnchor, constant: .mediumLargeSpacing).isActive = true
+textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .mediumLargeSpacing).isActive = true
+textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.mediumLargeSpacing).isActive = true
 
 PlaygroundPage.current.liveView = view
