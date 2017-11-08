@@ -84,7 +84,30 @@ public class TroikaTextField: UIView {
 
     // MARK: - Dependency injection
 
-    // MARK: - Private
+    public var presentable: TroikaTextFieldPresentable? {
+        didSet {
+            typeLabel.text = presentable?.type.typeText
+            textField.isSecureTextEntry = (presentable?.type.isSecureMode)!
+            textField.rightView?.isHidden = (presentable?.type.isSecureMode)!
+            textField.placeholder = presentable?.type.placeHolder
+        }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension TroikaTextField: UITextFieldDelegate {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        underline.backgroundColor = .secondaryBlue
+    }
+
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        underline.backgroundColor = .stone
+    }
 }
 
 public enum TextFieldType {
