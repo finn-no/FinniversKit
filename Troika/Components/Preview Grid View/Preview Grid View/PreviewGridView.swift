@@ -11,8 +11,8 @@ public protocol PreviewGridViewDelegate: NSObjectProtocol {
 }
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
-    func gridView(_ gridView: PreviewGridView, numberOfItemsInSection section: Int) -> Int
-    func gridView(_ gridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable
+    func numberOfItems(in previewGridView: PreviewGridView) -> Int
+    func previewGridView(_ previewGridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable
     func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
 }
@@ -115,7 +115,7 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.gridView(self, numberOfItemsInSection: section) ?? 0
+        return dataSource?.numberOfItems(in: self) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -128,7 +128,7 @@ extension PreviewGridView: UICollectionViewDataSource {
         cell.loadingColor = color
         cell.dataSource = self
 
-        if let presentable = dataSource?.gridView(self, presentableAtIndex: indexPath.row) {
+        if let presentable = dataSource?.previewGridView(self, presentableAtIndex: indexPath.row) {
             cell.presentable = presentable
         }
 
@@ -171,7 +171,7 @@ extension PreviewGridView: PreviewGridLayoutDelegate {
     }
 
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        guard let presentable = dataSource?.gridView(self, presentableAtIndex: indexPath.row), presentable.imageSize != .zero, presentable.imagePath != nil else {
+        guard let presentable = dataSource?.previewGridView(self, presentableAtIndex: indexPath.row), presentable.imageSize != .zero, presentable.imagePath != nil else {
             let defaultImageSize = CGSize(width: 104, height: 78)
             return defaultImageSize.height / defaultImageSize.width
         }

@@ -46,11 +46,11 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
         // Not in use
     }
 
-    public func gridView(_ gridView: PreviewGridView, numberOfItemsInSection section: Int) -> Int {
+    public func numberOfItems(in previewGridView: PreviewGridView) -> Int {
         return presentables.count
     }
 
-    public func gridView(_ gridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable {
+    public func previewGridView(_ previewGridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable {
         return presentables[index]
     }
 

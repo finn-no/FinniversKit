@@ -23,7 +23,7 @@ class MarketViewController: UIViewController {
     fileprivate lazy var headerLabel = Label(style: .title4(.licorice))
     fileprivate lazy var headerView = UIView()
 
-    fileprivate let presentables = PreviewDataModelFactory.create(numberOfModels: 9)
+    fileprivate let previewGridPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,12 +93,12 @@ extension MarketViewController: ToastViewDelegate {
 // MARK: - PreviewGridViewDataSource
 extension MarketViewController: PreviewGridViewDataSource {
 
-    func gridView(_ gridView: PreviewGridView, numberOfItemsInSection section: Int) -> Int {
-        return presentables.count
+    func numberOfItems(in previewGridView: PreviewGridView) -> Int {
+        return previewGridPresentables.count
     }
 
-    func gridView(_ gridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable {
-        return presentables[index]
+    func previewGridView(_ previewGridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable {
+        return previewGridPresentables[index]
     }
 
     func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
