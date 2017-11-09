@@ -9,20 +9,6 @@ import TroikaDemoKit
 
 TroikaDemoKit.setupPlayground()
 
-enum TroikaTextFieldType: TroikaTextFieldPresentable {
-    case normal
-    case email
-    case password
-
-    var type: TextFieldType {
-        switch self {
-        case .normal: return .normal
-        case .email: return .email
-        case .password: return .password
-        }
-    }
-}
-
 let view = UIView()
 view.backgroundColor = .white
 view.frame = ScreenSize.medium

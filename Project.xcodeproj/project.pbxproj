@@ -24,6 +24,7 @@
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
 		4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */; };
 		4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */; };
+		457586EB1FB4385C00B70DD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457586EA1FB4385C00B70DD7 /* LoginViewController.swift */; };
 		4577B72A1F865400005E7598 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577B7291F865400005E7598 /* MarketHelpers.swift */; };
 		457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C61F7BC4100031E125 /* Identifiable.swift */; };
 		457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */; };
@@ -32,6 +33,7 @@
 		459D37FC1F8782CB00038582 /* RibbonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FB1F8782CB00038582 /* RibbonHelpers.swift */; };
 		459D37FE1F87AE5D00038582 /* RibbonViewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FD1F87AE5D00038582 /* RibbonViewPresentable.swift */; };
 		459D38001F87C1B300038582 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FF1F87C1B300038582 /* ScreenSize.swift */; };
+		45C5E7A81FB4466600EF2992 /* TroikaTextFieldHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7A71FB4466600EF2992 /* TroikaTextFieldHelpers.swift */; };
 		45CF5A501F96198B00069240 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		45CF5A511F96198B00069240 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45CF5A551F96198F00069240 /* TroikaDemoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */; };
@@ -118,6 +120,7 @@
 		455866081F7A77B100F670EF /* MarketGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
 		4558660A1F7A7B4800F670EF /* MarketGridPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridPresentable.swift; sourceTree = "<group>"; };
 		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
+		457586EA1FB4385C00B70DD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4577B7291F865400005E7598 /* MarketHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
 		457B35C61F7BC4100031E125 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
@@ -127,6 +130,7 @@
 		459D37FB1F8782CB00038582 /* RibbonHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonHelpers.swift; sourceTree = "<group>"; };
 		459D37FD1F87AE5D00038582 /* RibbonViewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonViewPresentable.swift; sourceTree = "<group>"; };
 		459D37FF1F87C1B300038582 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		45C5E7A71FB4466600EF2992 /* TroikaTextFieldHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroikaTextFieldHelpers.swift; sourceTree = "<group>"; };
 		45CF5A5A1F97336B00069240 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		45CF5A5C1F97360000069240 /* ToastPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresentable.swift; sourceTree = "<group>"; };
 		45CF5A5F1F97476E00069240 /* ToastView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ToastView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -213,6 +217,7 @@
 			children = (
 				25D04D7E1F583B1800EA317D /* AppDelegate.swift */,
 				CB3E67CA1F7E692900C40D47 /* MarketViewController.swift */,
+				457586EA1FB4385C00B70DD7 /* LoginViewController.swift */,
 				CB3E67C81F7E62A300C40D47 /* Assets.xcassets */,
 				25D04D871F583B1800EA317D /* LaunchScreen.storyboard */,
 				25D04D8A1F583B1800EA317D /* Info.plist */,
@@ -383,6 +388,7 @@
 				459D37FF1F87C1B300038582 /* ScreenSize.swift */,
 				CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */,
 				4577B7291F865400005E7598 /* MarketHelpers.swift */,
+				45C5E7A71FB4466600EF2992 /* TroikaTextFieldHelpers.swift */,
 				459D37FB1F8782CB00038582 /* RibbonHelpers.swift */,
 				45CF5A601F97678400069240 /* ToastHelpers.swift */,
 			);
@@ -663,6 +669,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457586EB1FB4385C00B70DD7 /* LoginViewController.swift in Sources */,
 				CB3E67CB1F7E692900C40D47 /* MarketViewController.swift in Sources */,
 				25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */,
 			);
@@ -710,6 +717,7 @@
 				4577B72A1F865400005E7598 /* MarketHelpers.swift in Sources */,
 				CB400B171F83BE2E00B26C1C /* PreviewHelpers.swift in Sources */,
 				45CF5A611F97678400069240 /* ToastHelpers.swift in Sources */,
+				45C5E7A81FB4466600EF2992 /* TroikaTextFieldHelpers.swift in Sources */,
 				CB6CF7381F84F880003B73D2 /* TroikaDemoKit.swift in Sources */,
 				459D37FC1F8782CB00038582 /* RibbonHelpers.swift in Sources */,
 			);
