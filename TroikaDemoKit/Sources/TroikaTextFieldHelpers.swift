@@ -17,4 +17,16 @@ public enum TroikaTextFieldType: TroikaTextFieldPresentable {
         case .password: return .password
         }
     }
+
+    var typeText: String {
+        switch self {
+        case .normal: return "Skriv:"
+        case .email: return "E-post:"
+        case .password: return "Passord:"
+        }
+    }
+
+    public var accessibilityLabel: String {
+        return "Tekstfelt, " + typeText
+    }
 }
