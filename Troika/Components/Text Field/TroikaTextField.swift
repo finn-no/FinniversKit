@@ -26,9 +26,9 @@ public class TroikaTextField: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.body
         textField.textColor = .licorice
-        textField.tintColor = .primaryBlue
+        textField.tintColor = .secondaryBlue
         textField.delegate = self
-        textField.rightView = passwordImageView
+        textField.clearButtonMode = UITextFieldViewMode.whileEditing
         return textField
     }()
 
