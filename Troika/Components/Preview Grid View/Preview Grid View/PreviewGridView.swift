@@ -11,13 +11,15 @@ public protocol PreviewGridViewDelegate: NSObjectProtocol {
 }
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
+    func numberOfItems(in previewGridView: PreviewGridView) -> Int
+    func previewGridView(_ previewGridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable
     func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
 }
 
 public class PreviewGridView: UIView {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
 
     private lazy var collectionViewLayout: PreviewGridLayout = {
         return PreviewGridLayout(delegate: self)
@@ -36,7 +38,7 @@ public class PreviewGridView: UIView {
     private weak var delegate: PreviewGridViewDelegate?
     private weak var dataSource: PreviewGridViewDataSource?
 
-    // Mark: - External properties
+    // MARK: - External properties
 
     public var headerView: UIView? {
         willSet {
@@ -44,7 +46,7 @@ public class PreviewGridView: UIView {
         }
     }
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public init(frame: CGRect = .zero, delegate: PreviewGridViewDelegate, dataSource: PreviewGridViewDataSource) {
         super.init(frame: frame)
@@ -71,7 +73,7 @@ public class PreviewGridView: UIView {
         addSubview(collectionView)
     }
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -86,13 +88,6 @@ public class PreviewGridView: UIView {
 
     public func invalidateLayout() {
         collectionView.collectionViewLayout.invalidateLayout()
-    }
-
-    // Mark: - Dependency injection
-    public var previewPresentables: [PreviewPresentable] = [PreviewPresentable]() {
-        didSet {
-            collectionView.reloadData()
-        }
     }
 
     // MARK: - Public
@@ -122,7 +117,7 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return previewPresentables.count
+        return dataSource?.numberOfItems(in: self) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -132,10 +127,12 @@ extension PreviewGridView: UICollectionViewDataSource {
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
         let color = colors[indexPath.row % 4]
 
-        let presentable = previewPresentables[indexPath.row]
         cell.loadingColor = color
         cell.dataSource = self
-        cell.presentable = presentable
+
+        if let presentable = dataSource?.previewGridView(self, presentableAtIndex: indexPath.row) {
+            cell.presentable = presentable
+        }
 
         return cell
     }
@@ -176,9 +173,7 @@ extension PreviewGridView: PreviewGridLayoutDelegate {
     }
 
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        let presentable = previewPresentables[indexPath.row]
-
-        guard presentable.imageSize != .zero, presentable.imagePath != nil else {
+        guard let presentable = dataSource?.previewGridView(self, presentableAtIndex: indexPath.row), presentable.imageSize != .zero, presentable.imagePath != nil else {
             let defaultImageSize = CGSize(width: 104, height: 78)
             return defaultImageSize.height / defaultImageSize.width
         }

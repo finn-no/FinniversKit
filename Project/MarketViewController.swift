@@ -15,13 +15,16 @@ class MarketViewController: UIViewController {
     }()
 
     fileprivate lazy var marketGridView: MarketGridView = {
-        let marketGridView = MarketGridView(delegate: self)
+        let marketGridView = MarketGridView(delegate: self, dataSource: self)
         marketGridView.translatesAutoresizingMaskIntoConstraints = false
         return marketGridView
     }()
 
     fileprivate lazy var headerLabel = Label(style: .title4(.licorice))
     fileprivate lazy var headerView = UIView()
+
+    fileprivate let previewGridPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
+    fileprivate let marketGridPresentables = Market.allMarkets
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +33,6 @@ class MarketViewController: UIViewController {
 
     private func setupView() {
         view.addSubview(discoverGridView)
-
-        marketGridView.marketGridPresentables = Market.allMarkets
 
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         headerLabel.text = "Anbefalinger"
@@ -55,10 +56,9 @@ class MarketViewController: UIViewController {
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: .mediumLargeSpacing),
         ])
 
-        let headerHeight = calculatePreviewHeaderHeight()
-        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: headerHeight)
+        let height = calculatePreviewHeaderHeight()
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: height)
 
-        discoverGridView.previewPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
         discoverGridView.headerView = headerView
     }
 
@@ -89,6 +89,7 @@ extension MarketViewController: PreviewGridViewDelegate {
     }
 }
 
+// MARK: - ToastViewDelegate
 extension MarketViewController: ToastViewDelegate {
     func didTap(toastView: ToastView) {
         print("Toast view tapped!")
@@ -101,6 +102,14 @@ extension MarketViewController: ToastViewDelegate {
 
 // MARK: - PreviewGridViewDataSource
 extension MarketViewController: PreviewGridViewDataSource {
+
+    func numberOfItems(in previewGridView: PreviewGridView) -> Int {
+        return previewGridPresentables.count
+    }
+
+    func previewGridView(_ previewGridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable {
+        return previewGridPresentables[index]
+    }
 
     func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = presentable.imagePath, let url = URL(string: path) else {
@@ -127,9 +136,21 @@ extension MarketViewController: PreviewGridViewDataSource {
     }
 }
 
-// MARK: - MarketGridCollectionViewDelegate
-extension MarketViewController: MarketGridCollectionViewDelegate {
+// MARK: - MarketGridViewDelegate
+extension MarketViewController: MarketGridViewDelegate {
 
     func didSelect(itemAtIndex index: Int, inMarketGridView gridView: MarketGridView) {
+    }
+}
+
+// MARK: - MarketGridViewDataSource
+extension MarketViewController: MarketGridViewDataSource {
+
+    func numberOfItems(in marketGridView: MarketGridView) -> Int {
+        return marketGridPresentables.count
+    }
+
+    func marketGridView(_ marketGridView: MarketGridView, presentableAtIndex index: Int) -> MarketGridPresentable {
+        return marketGridPresentables[index]
     }
 }
