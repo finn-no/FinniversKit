@@ -15,7 +15,7 @@ public protocol MarketGridViewDataSource: NSObjectProtocol {
 
 public class MarketGridView: UIView {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
 
     @objc private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -29,7 +29,7 @@ public class MarketGridView: UIView {
     private weak var delegate: MarketGridViewDelegate?
     private weak var dataSource: MarketGridViewDataSource?
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public init(frame: CGRect = .zero, delegate: MarketGridViewDelegate, dataSource: MarketGridViewDataSource) {
         super.init(frame: frame)
@@ -55,7 +55,7 @@ public class MarketGridView: UIView {
         addSubview(collectionView)
     }
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -66,7 +66,7 @@ public class MarketGridView: UIView {
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
 
-    // Mark: - Functionality
+    // MARK: - Functionality
 
     public func calculateSize(constrainedTo width: CGFloat) -> CGSize {
         let size = itemSize(for: width)
@@ -79,7 +79,7 @@ public class MarketGridView: UIView {
         return CGSize(width: width, height: height)
     }
 
-    // Mark: - Private
+    // MARK: - Private
 
     private func numberOfRows(for viewWidth: CGFloat) -> Int {
         guard let presentablesCount = dataSource?.numberOfItems(in: self) else {

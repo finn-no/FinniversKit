@@ -6,7 +6,7 @@ import UIKit
 
 public class MarketGridCell: UICollectionViewCell {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
 
     private static let titleLabelMargin: CGFloat = 8.0
 
@@ -35,7 +35,7 @@ public class MarketGridCell: UICollectionViewCell {
         return label
     }()
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,7 +56,7 @@ public class MarketGridCell: UICollectionViewCell {
         backgroundColor = .clear
     }
 
-    // Mark: - Superclass Overrides
+    // MARK: - Superclass Overrides
 
     public override func prepareForReuse() {
         super.prepareForReuse()
@@ -65,7 +65,7 @@ public class MarketGridCell: UICollectionViewCell {
         accessibilityLabel = ""
     }
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -82,7 +82,7 @@ public class MarketGridCell: UICollectionViewCell {
         externalLinkImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
     }
 
-    // Mark: - Dependency injection
+    // MARK: - Dependency injection
 
     public var presentable: MarketGridPresentable? {
         didSet {

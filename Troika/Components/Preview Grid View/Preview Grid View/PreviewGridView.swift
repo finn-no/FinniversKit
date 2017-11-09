@@ -19,7 +19,7 @@ public protocol PreviewGridViewDataSource: NSObjectProtocol {
 
 public class PreviewGridView: UIView {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
 
     private lazy var collectionViewLayout: PreviewGridLayout = {
         return PreviewGridLayout(delegate: self)
@@ -38,7 +38,7 @@ public class PreviewGridView: UIView {
     private weak var delegate: PreviewGridViewDelegate?
     private weak var dataSource: PreviewGridViewDataSource?
 
-    // Mark: - External properties
+    // MARK: - External properties
 
     public var headerView: UIView? {
         willSet {
@@ -46,7 +46,7 @@ public class PreviewGridView: UIView {
         }
     }
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public init(frame: CGRect = .zero, delegate: PreviewGridViewDelegate, dataSource: PreviewGridViewDataSource) {
         super.init(frame: frame)
@@ -73,7 +73,7 @@ public class PreviewGridView: UIView {
         addSubview(collectionView)
     }
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()

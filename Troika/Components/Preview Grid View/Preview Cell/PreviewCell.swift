@@ -11,7 +11,7 @@ public protocol PreviewCellDataSource {
 
 public class PreviewCell: UICollectionViewCell {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
 
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
@@ -80,13 +80,13 @@ public class PreviewCell: UICollectionViewCell {
         return label
     }()
 
-    // Mark: - External properties
+    // MARK: - External properties
 
     public static var nonImageHeight: CGFloat {
         return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + titleBottomMargin
     }
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,7 +112,7 @@ public class PreviewCell: UICollectionViewCell {
         backgroundColor = .white
     }
 
-    // Mark: - Superclass Overrides
+    // MARK: - Superclass Overrides
 
     public override func prepareForReuse() {
         super.prepareForReuse()
@@ -128,7 +128,7 @@ public class PreviewCell: UICollectionViewCell {
         }
     }
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -165,7 +165,7 @@ public class PreviewCell: UICollectionViewCell {
         imageDesciptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
     }
 
-    // Mark: - Dependency injection
+    // MARK: - Dependency injection
 
     /// The presentable contains data used to populate the view.
     public var presentable: PreviewPresentable? {
@@ -188,7 +188,7 @@ public class PreviewCell: UICollectionViewCell {
     /// A data source for the loading of the image
     public var dataSource: PreviewCellDataSource?
 
-    // Mark: - Private
+    // MARK: - Private
 
     private func loadImage(presentable: PreviewPresentable) {
         guard let dataSource = dataSource, let _ = presentable.imagePath else {

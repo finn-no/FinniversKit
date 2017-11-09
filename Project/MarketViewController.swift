@@ -79,6 +79,7 @@ extension MarketViewController: PreviewGridViewDelegate {
     }
 }
 
+// MARK: - ToastViewDelegate
 extension MarketViewController: ToastViewDelegate {
     func didTap(toastView: ToastView) {
         print("Toast view tapped!")
