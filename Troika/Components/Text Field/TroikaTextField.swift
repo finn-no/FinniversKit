@@ -152,10 +152,6 @@ extension TroikaTextField: UITextFieldDelegate {
         }
     }
 
-    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-
     public func textFieldDidEndEditing(_ textField: UITextField) {
         UIView.animate(withDuration: animationDuration) {
             self.underline.backgroundColor = .stone
