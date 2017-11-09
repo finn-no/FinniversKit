@@ -103,7 +103,7 @@ extension MarketViewController: ToastViewDelegate {
 // MARK: - PreviewGridViewDataSource
 extension MarketViewController: PreviewGridViewDataSource {
 
-    func numberOfItems(in previewGridView: PreviewGridView) -> Int {
+    func numberOfItems(inPreviewGridView previewGridView: PreviewGridView) -> Int {
         return previewGridPresentables.count
     }
 
@@ -146,7 +146,7 @@ extension MarketViewController: MarketGridViewDelegate {
 // MARK: - MarketGridViewDataSource
 extension MarketViewController: MarketGridViewDataSource {
 
-    func numberOfItems(in marketGridView: MarketGridView) -> Int {
+    func numberOfItems(inMarketGridView marketGridView: MarketGridView) -> Int {
         return marketGridPresentables.count
     }
 

@@ -9,7 +9,7 @@ public protocol MarketGridViewDelegate: NSObjectProtocol {
 }
 
 public protocol MarketGridViewDataSource: NSObjectProtocol {
-    func numberOfItems(in marketGridView: MarketGridView) -> Int
+    func numberOfItems(inMarketGridView marketGridView: MarketGridView) -> Int
     func marketGridView(_ marketGridView: MarketGridView, presentableAtIndex index: Int) -> MarketGridPresentable
 }
 
@@ -84,7 +84,7 @@ public class MarketGridView: UIView {
     // MARK: - Private
 
     private func numberOfRows(for viewWidth: CGFloat) -> Int {
-        guard let presentablesCount = dataSource?.numberOfItems(in: self) else {
+        guard let presentablesCount = dataSource?.numberOfItems(inMarketGridView: self) else {
             return 0
         }
 
@@ -139,7 +139,7 @@ extension MarketGridView: UICollectionViewDelegateFlowLayout {
 extension MarketGridView: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(in: self) ?? 0
+        return dataSource?.numberOfItems(inMarketGridView: self) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
