@@ -46,6 +46,7 @@ public class TextField: UIView {
         textField.rightViewMode = .whileEditing
         textField.rightView = clearButton
         textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         return textField
     }()
 
