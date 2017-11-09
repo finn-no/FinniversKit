@@ -33,7 +33,7 @@ public class TroikaTextField: UIView {
     }()
 
     private let underlineHeight: CGFloat = 2
-    private let animationDuration: Double = 0.4
+    private let animationDuration: Double = 0.3
 
     private lazy var underline: UIView = {
         let view = UIView()
@@ -92,6 +92,7 @@ public class TroikaTextField: UIView {
             textField.isSecureTextEntry = (presentable?.type.isSecureMode)!
             textField.rightView?.isHidden = (presentable?.type.isSecureMode)!
             textField.placeholder = presentable?.type.placeHolder
+            textField.keyboardType = (presentable?.type.keyBoardStyle)!
         }
     }
 }
@@ -141,6 +142,13 @@ public enum TextFieldType {
         switch self {
         case .password: return true
         default: return false
+        }
+    }
+
+    var keyBoardStyle: UIKeyboardType {
+        switch self {
+        case .email: return .emailAddress
+        default: return .default
         }
     }
 }
