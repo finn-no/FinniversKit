@@ -56,6 +56,9 @@ class MarketViewController: UIViewController {
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: .mediumLargeSpacing),
         ])
 
+        let height = calculatePreviewHeaderHeight()
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: height)
+
         discoverGridView.headerView = headerView
     }
 
