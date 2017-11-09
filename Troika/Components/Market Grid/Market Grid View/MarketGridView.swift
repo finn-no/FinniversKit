@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol MarketGridCollectionViewDelegate: NSObjectProtocol {
+public protocol MarketGridViewDelegate: NSObjectProtocol {
     func didSelect(itemAtIndex index: Int, inMarketGridView gridView: MarketGridView)
 }
 
@@ -21,11 +21,11 @@ public class MarketGridView: UIView {
         return collectionView
     }()
 
-    private weak var delegate: MarketGridCollectionViewDelegate?
+    private weak var delegate: MarketGridViewDelegate?
 
     // Mark: - Setup
 
-    public init(frame: CGRect = .zero, delegate: MarketGridCollectionViewDelegate) {
+    public init(frame: CGRect = .zero, delegate: MarketGridViewDelegate) {
         super.init(frame: frame)
 
         self.delegate = delegate
