@@ -133,36 +133,36 @@ public class PreviewCell: UICollectionViewCell {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-        subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: PreviewCell.subtitleTopMargin).isActive = true
-        subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        subTitleLabel.heightAnchor.constraint(equalToConstant: PreviewCell.subtitleHeight).isActive = true
+            subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: PreviewCell.subtitleTopMargin),
+            subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            subTitleLabel.heightAnchor.constraint(equalToConstant: PreviewCell.subtitleHeight),
 
-        titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: PreviewCell.titleTopMargin).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: PreviewCell.titleHeight).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -PreviewCell.titleBottomMargin).isActive = true
+            titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: PreviewCell.titleTopMargin),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: PreviewCell.titleHeight),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -PreviewCell.titleBottomMargin),
 
-        iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: PreviewCell.margin).isActive = true
-        iconImageView.heightAnchor.constraint(equalToConstant: PreviewCell.iconSize).isActive = true
-        iconImageView.widthAnchor.constraint(equalToConstant: PreviewCell.iconSize).isActive = true
-        iconImageView.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor).isActive = true
+            iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: PreviewCell.margin),
+            iconImageView.heightAnchor.constraint(equalToConstant: PreviewCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: PreviewCell.iconSize),
+            iconImageView.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
 
-        //        imageTextLabel.topAnchor.constraint(equalTo: imageDesciptionView.topAnchor).isActive = true
-        imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: PreviewCell.margin).isActive = true
-        //        imageTextLabel.bottomAnchor.constraint(equalTo: imageDesciptionView.bottomAnchor).isActive = true
-        imageTextLabel.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor).isActive = true
+            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: PreviewCell.margin),
+            imageTextLabel.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
 
-        imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: PreviewCell.margin).isActive = true
-        imageDesciptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor).isActive = true
-        imageDesciptionView.heightAnchor.constraint(equalToConstant: PreviewCell.imageDescriptionHeight).isActive = true
-        imageDesciptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+            imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: PreviewCell.margin),
+            imageDesciptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            imageDesciptionView.heightAnchor.constraint(equalToConstant: PreviewCell.imageDescriptionHeight),
+            imageDesciptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+        ])
     }
 
     // Mark: - Dependency injection

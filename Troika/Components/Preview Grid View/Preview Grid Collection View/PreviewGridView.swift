@@ -76,10 +76,12 @@ public class PreviewGridView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            collectionView.leftAnchor.constraint(equalTo: leftAnchor),
+        ])
     }
 
     public func invalidateLayout() {
