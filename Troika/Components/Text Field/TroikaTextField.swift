@@ -34,6 +34,7 @@ public class TroikaTextField: UIView {
         textField.tintColor = .secondaryBlue
         textField.delegate = self
         textField.clearButtonMode = UITextFieldViewMode.whileEditing
+        textField.autocapitalizationType = .none
         return textField
     }()
 
