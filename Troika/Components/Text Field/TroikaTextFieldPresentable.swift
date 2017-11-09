@@ -11,6 +11,6 @@ public protocol TroikaTextFieldPresentable {
 
 public extension TroikaTextFieldPresentable {
     var accessibilityLabel: String {
-        return ""
+        return type.typeText
     }
 }
