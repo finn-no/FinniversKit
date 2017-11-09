@@ -76,6 +76,7 @@ public class TroikaTextField: UIView {
 
         textField.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .mediumSpacing).isActive = true
         textField.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        textField.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 
         underline.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         underline.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
