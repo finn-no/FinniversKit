@@ -125,6 +125,7 @@ public class TextField: UIView {
             typeLabel.text = presentable.type.typeText
             textField.isSecureTextEntry = presentable.type.isSecureMode
             showPasswordButton.isHidden = !presentable.type.isSecureMode
+            accessibilityLabel = presentable.accessibilityLabel
             textField.placeholder = presentable.type.placeHolder
             textField.keyboardType = presentable.type.keyBoardStyle
 
