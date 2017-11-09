@@ -34,30 +34,37 @@ class MarketViewController: UIViewController {
     private func setupView() {
         view.addSubview(discoverGridView)
 
-        discoverGridView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        discoverGridView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        discoverGridView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        discoverGridView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         headerLabel.text = "Anbefalinger"
 
         headerView.addSubview(headerLabel)
         headerView.addSubview(marketGridView)
 
-        marketGridView.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
-        marketGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor).isActive = true
-        marketGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            discoverGridView.topAnchor.constraint(equalTo: view.topAnchor),
+            discoverGridView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            discoverGridView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            discoverGridView.leftAnchor.constraint(equalTo: view.leftAnchor),
 
-        headerLabel.topAnchor.constraint(equalTo: marketGridView.bottomAnchor, constant: 32).isActive = true
-        headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -16).isActive = true
-        headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16).isActive = true
-        headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 16).isActive = true
+            marketGridView.topAnchor.constraint(equalTo: headerView.topAnchor),
+            marketGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            marketGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
 
-        let viewHeight = marketGridView.calculateSize(constrainedTo: view.frame.size.width).height + headerLabel.intrinsicContentSize.height + 16 + 32 // TODO: (AD):  Hard coded spacing. Change to constants.
-        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: viewHeight)
+            headerLabel.topAnchor.constraint(equalTo: marketGridView.bottomAnchor, constant: .largeSpacing),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumLargeSpacing),
+            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .mediumLargeSpacing),
+            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: .mediumLargeSpacing),
+        ])
 
         discoverGridView.headerView = headerView
+    }
+
+    private func calculatePreviewHeaderHeight() -> CGFloat {
+        let headerTopSpacing: CGFloat = .largeSpacing
+        let headerBottomSpacing: CGFloat = .mediumLargeSpacing
+        let headerHeight = headerLabel.intrinsicContentSize.height
+        let marketGridViewHeight = marketGridView.calculateSize(constrainedTo: view.frame.size.width).height
+        return headerTopSpacing + headerBottomSpacing + headerHeight + marketGridViewHeight
     }
 }
 
