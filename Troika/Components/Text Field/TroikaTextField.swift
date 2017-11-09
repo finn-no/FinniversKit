@@ -8,17 +8,21 @@ public class TroikaTextField: UIView {
 
     // MARK: - Internal properties
 
+    private let eyeImage = UIImage(frameworkImageNamed: "view")!.withRenderingMode(.alwaysTemplate)
+
     private lazy var typeLabel: Label = {
         let label = Label(style: .detail(.stone))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private var passwordImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "view")
-        imageView.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
-        return imageView
+    private lazy var showPasswordButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(eyeImage, for: .normal)
+        button.imageView?.tintColor = .stone
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
     }()
 
     private lazy var textField: UITextField = {
@@ -61,6 +65,7 @@ public class TroikaTextField: UIView {
 
         addSubview(typeLabel)
         addSubview(textField)
+        addSubview(showPasswordButton)
         addSubview(underline)
     }
 
@@ -76,7 +81,17 @@ public class TroikaTextField: UIView {
 
         textField.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .mediumSpacing).isActive = true
         textField.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        textField.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        textField.trailingAnchor.constraint(equalTo: showPasswordButton.leadingAnchor).isActive = true
+
+        showPasswordButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        showPasswordButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor).isActive = true
+        showPasswordButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
+
+        if (presentable?.type.isSecureMode)! {
+            showPasswordButton.widthAnchor.constraint(equalToConstant: 22).isActive = true
+        } else {
+            showPasswordButton.widthAnchor.constraint(equalToConstant: 0).isActive = true
+        }
 
         underline.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         underline.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
@@ -91,7 +106,7 @@ public class TroikaTextField: UIView {
         didSet {
             typeLabel.text = presentable?.type.typeText
             textField.isSecureTextEntry = (presentable?.type.isSecureMode)!
-            textField.rightView?.isHidden = (presentable?.type.isSecureMode)!
+            showPasswordButton.isHidden = !(presentable?.type.isSecureMode)!
             textField.placeholder = presentable?.type.placeHolder
             textField.keyboardType = (presentable?.type.keyBoardStyle)!
         }
