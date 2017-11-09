@@ -5,7 +5,7 @@
 import Foundation
 
 public protocol TextFieldPresentable {
-    var type: TextFieldType { get }
+    var type: TextField.InputType { get }
     var accessibilityLabel: String { get }
 }
 

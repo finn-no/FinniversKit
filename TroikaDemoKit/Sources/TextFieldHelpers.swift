@@ -9,7 +9,7 @@ public enum TextFieldDataModel: TextFieldPresentable {
     case email
     case password
 
-    public var type: TextFieldType {
+    public var type: TextField.InputType {
         switch self {
         case .email: return .email
         case .password: return .password
@@ -24,6 +24,6 @@ public enum TextFieldDataModel: TextFieldPresentable {
     }
 
     public var accessibilityLabel: String {
-        return "Tekstfelt, " + typeText
+        return "Skriv in: " + typeText
     }
 }
