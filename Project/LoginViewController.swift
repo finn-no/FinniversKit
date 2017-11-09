@@ -8,14 +8,14 @@ import TroikaDemoKit
 
 class LoginViewController: UIViewController {
 
-    fileprivate lazy var emailTextField: TroikaTextField = {
-        let textField = TroikaTextField()
+    fileprivate lazy var emailTextField: TextField = {
+        let textField = TextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
-    fileprivate lazy var passwordTextField: TroikaTextField = {
-        let textField = TroikaTextField()
+    fileprivate lazy var passwordTextField: TextField = {
+        let textField = TextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -40,8 +40,8 @@ class LoginViewController: UIViewController {
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
 
-        emailTextField.presentable = TroikaTextFieldType.email
-        passwordTextField.presentable = TroikaTextFieldType.password
+        emailTextField.presentable = TextFieldDataModel.email
+        passwordTextField.presentable = TextFieldDataModel.password
 
         view.backgroundColor = .white
 

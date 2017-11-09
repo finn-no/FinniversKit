@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class TroikaTextField: UIView {
+public class TextField: UIView {
 
     // MARK: - Internal properties
 
@@ -14,6 +14,7 @@ public class TroikaTextField: UIView {
     private lazy var typeLabel: Label = {
         let label = Label(style: .detail(.stone))
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.alpha = 0
         return label
     }()
 
@@ -114,7 +115,7 @@ public class TroikaTextField: UIView {
 
     // MARK: - Dependency injection
 
-    public var presentable: TroikaTextFieldPresentable? {
+    public var presentable: TextFieldPresentable? {
         didSet {
             typeLabel.text = presentable?.type.typeText
             textField.isSecureTextEntry = (presentable?.type.isSecureMode)!
@@ -145,7 +146,7 @@ public class TroikaTextField: UIView {
 
 // MARK: - UITextFieldDelegate
 
-extension TroikaTextField: UITextFieldDelegate {
+extension TextField: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: animationDuration) {
             self.underline.backgroundColor = .secondaryBlue

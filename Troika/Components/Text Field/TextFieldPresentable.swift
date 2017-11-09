@@ -4,12 +4,12 @@
 
 import Foundation
 
-public protocol TroikaTextFieldPresentable {
+public protocol TextFieldPresentable {
     var type: TextFieldType { get }
     var accessibilityLabel: String { get }
 }
 
-public extension TroikaTextFieldPresentable {
+public extension TextFieldPresentable {
     var accessibilityLabel: String {
         return type.typeText
     }

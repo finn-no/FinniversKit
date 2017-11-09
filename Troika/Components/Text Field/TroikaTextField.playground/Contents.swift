@@ -13,9 +13,9 @@ let view = UIView()
 view.backgroundColor = .white
 view.frame = ScreenSize.medium
 
-let presentable = TroikaTextFieldType.email
+let presentable = TextFieldDataModel.email
 
-let textField = TroikaTextField()
+let textField = TextField()
 textField.translatesAutoresizingMaskIntoConstraints = false
 textField.presentable = presentable
 
