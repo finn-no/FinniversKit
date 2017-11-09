@@ -22,6 +22,7 @@ public class TroikaTextField: UIView {
         button.setImage(eyeImage, for: .normal)
         button.imageView?.tintColor = .stone
         button.imageView?.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(showHidePassword), for: .touchUpInside)
         return button
     }()
 
@@ -109,6 +110,20 @@ public class TroikaTextField: UIView {
             showPasswordButton.isHidden = !(presentable?.type.isSecureMode)!
             textField.placeholder = presentable?.type.placeHolder
             textField.keyboardType = (presentable?.type.keyBoardStyle)!
+        }
+    }
+
+    // MARK: - Actions
+
+    @objc private func showHidePassword(sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+
+        if sender.isSelected {
+            sender.imageView?.tintColor = .secondaryBlue
+            textField.isSecureTextEntry = false
+        } else {
+            sender.imageView?.tintColor = .stone
+            textField.isSecureTextEntry = true
         }
     }
 }
