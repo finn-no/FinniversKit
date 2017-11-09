@@ -5,7 +5,8 @@
 import UIKit
 
 public protocol PreviewCellDataSource {
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void))
+    func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
 }
 
 public class PreviewCell: UICollectionViewCell {
@@ -121,6 +122,10 @@ public class PreviewCell: UICollectionViewCell {
         subTitleLabel.text = ""
         imageTextLabel.text = ""
         accessibilityLabel = ""
+
+        if let presentable = presentable {
+            dataSource?.cancelLoadImage(for: presentable, imageWidth: imageView.frame.size.width)
+        }
     }
 
     // Mark: - Layout
@@ -166,7 +171,7 @@ public class PreviewCell: UICollectionViewCell {
     public var presentable: PreviewPresentable? {
         didSet {
             if let presentable = presentable {
-                iconImageView.image = presentable.iconImage.withRenderingMode(.alwaysTemplate)
+                iconImageView.image = presentable.iconImage?.withRenderingMode(.alwaysTemplate)
                 titleLabel.text = presentable.title
                 subTitleLabel.text = presentable.subTitle
                 imageTextLabel.text = presentable.imageText
@@ -186,7 +191,7 @@ public class PreviewCell: UICollectionViewCell {
     // Mark: - Private
 
     private func loadImage(presentable: PreviewPresentable) {
-        guard let dataSource = dataSource, let imageUrl = presentable.imageUrl else {
+        guard let dataSource = dataSource, let _ = presentable.imagePath else {
             loadingColor = .clear
             imageView.image = defaultImage
             return
@@ -194,7 +199,7 @@ public class PreviewCell: UICollectionViewCell {
 
         imageView.backgroundColor = loadingColor
 
-        dataSource.loadImage(for: imageUrl) { [weak self] image in
+        dataSource.loadImage(for: presentable, imageWidth: imageView.frame.size.width) { [weak self] image in
             self?.imageView.backgroundColor = .clear
 
             if let image = image {

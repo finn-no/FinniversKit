@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol MarketGridCollectionViewDelegate: NSObjectProtocol {
-    func didSelect(item: MarketGridPresentable, in gridView: MarketGridView)
+    func didSelect(itemAtIndex index: Int, inMarketGridView gridView: MarketGridView)
 }
 
 public class MarketGridView: UIView {
@@ -147,7 +147,6 @@ extension MarketGridView: UICollectionViewDataSource {
 
 extension MarketGridView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = marketGridPresentables[indexPath.row]
-        delegate?.didSelect(item: item, in: self)
+        delegate?.didSelect(itemAtIndex: indexPath.row, inMarketGridView: self)
     }
 }

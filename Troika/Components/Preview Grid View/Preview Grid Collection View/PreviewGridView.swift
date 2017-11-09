@@ -5,11 +5,14 @@
 import UIKit
 
 public protocol PreviewGridViewDelegate: NSObjectProtocol {
-    func didSelect(item: PreviewPresentable, in gridView: PreviewGridView)
+    func didSelect(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView)
+    func willDisplay(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView)
+    func didScroll(gridScrollView: UIScrollView)
 }
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void))
+    func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
 }
 
 public class PreviewGridView: UIView {
@@ -79,11 +82,21 @@ public class PreviewGridView: UIView {
         collectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
     }
 
+    public func invalidateLayout() {
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+
     // Mark: - Dependency injection
     public var previewPresentables: [PreviewPresentable] = [PreviewPresentable]() {
         didSet {
             collectionView.reloadData()
         }
+    }
+
+    // MARK: - Public
+
+    public func scrollToTop(animated: Bool = true) {
+        collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
     }
 }
 
@@ -91,8 +104,11 @@ public class PreviewGridView: UIView {
 extension PreviewGridView: UICollectionViewDelegate {
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = previewPresentables[indexPath.row]
-        delegate?.didSelect(item: item, in: self)
+        delegate?.didSelect(itemAtIndex: indexPath.row, inPreviewGridView: self)
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.didScroll(gridScrollView: scrollView)
     }
 }
 
@@ -122,6 +138,10 @@ extension PreviewGridView: UICollectionViewDataSource {
         return cell
     }
 
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        delegate?.willDisplay(itemAtIndex: indexPath.row, inPreviewGridView: self)
+    }
+
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionElementKindSectionHeader, let headerView = headerView else {
             fatalError("Suplementary view of kind '\(kind)' not supported.")
@@ -137,8 +157,12 @@ extension PreviewGridView: UICollectionViewDataSource {
 // MARK: - PreviewCellDataSource
 extension PreviewGridView: PreviewCellDataSource {
 
-    public func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void)) {
-        dataSource?.loadImage(for: url, completion: completion)
+    public func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.loadImage(for: presentable, imageWidth: imageWidth, completion: completion)
+    }
+
+    public func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat) {
+        dataSource?.cancelLoadImage(for: presentable, imageWidth: imageWidth)
     }
 }
 
@@ -152,7 +176,7 @@ extension PreviewGridView: PreviewGridLayoutDelegate {
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
         let presentable = previewPresentables[indexPath.row]
 
-        guard presentable.imageSize != .zero, presentable.imageUrl != nil else {
+        guard presentable.imageSize != .zero, presentable.imagePath != nil else {
             let defaultImageSize = CGSize(width: 104, height: 78)
             return defaultImageSize.height / defaultImageSize.width
         }

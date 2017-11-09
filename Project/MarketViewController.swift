@@ -64,7 +64,15 @@ class MarketViewController: UIViewController {
 // MARK: - PreviewGridViewDelegate
 extension MarketViewController: PreviewGridViewDelegate {
 
-    func didSelect(item: PreviewPresentable, in gridView: PreviewGridView) {
+    func willDisplay(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
+        // Don't care
+    }
+
+    func didScroll(gridScrollView: UIScrollView) {
+        // Don't care
+    }
+
+    func didSelect(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
         let toast = ToastView(delegate: self)
         toast.presentable = ToastDataModel.successButton
         toast.presentFromBottom(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0, timeOut: 4)
@@ -84,7 +92,11 @@ extension MarketViewController: ToastViewDelegate {
 // MARK: - PreviewGridViewDataSource
 extension MarketViewController: PreviewGridViewDataSource {
 
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void)) {
+    func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        guard let path = presentable.imagePath, let url = URL(string: path) else {
+            completion(nil)
+            return
+        }
 
         // Demo code only.
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
@@ -99,11 +111,15 @@ extension MarketViewController: PreviewGridViewDataSource {
 
         task.resume()
     }
+
+    public func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat) {
+        // No point in doing this in demo
+    }
 }
 
 // MARK: - MarketGridCollectionViewDelegate
 extension MarketViewController: MarketGridCollectionViewDelegate {
 
-    func didSelect(item: MarketGridPresentable, in gridView: MarketGridView) {
+    func didSelect(itemAtIndex index: Int, inMarketGridView gridView: MarketGridView) {
     }
 }
