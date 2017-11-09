@@ -122,6 +122,10 @@ public class TextField: UIView {
             showPasswordButton.isHidden = !(presentable?.type.isSecureMode)!
             textField.placeholder = presentable?.type.placeHolder
             textField.keyboardType = (presentable?.type.keyBoardStyle)!
+
+            if (presentable?.type.isSecureMode)! {
+                textField.rightViewMode = .never
+            }
         }
     }
 
