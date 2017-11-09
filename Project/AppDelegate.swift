@@ -13,8 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         let navigationController = UINavigationController()
         let marketViewController = MarketViewController()
+        let loginViewController = LoginViewController()
 
-        navigationController.addChildViewController(marketViewController)
+        navigationController.addChildViewController(loginViewController)
         tabBarController.setViewControllers([navigationController], animated: false)
 
         return tabBarController
