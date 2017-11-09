@@ -70,6 +70,10 @@ public class MarketGridView: UIView {
 
     // MARK: - Functionality
 
+    public func reloadData() {
+        collectionView.reloadData()
+    }
+
     public func calculateSize(constrainedTo width: CGFloat) -> CGSize {
         let size = itemSize(for: width)
         let line = lineSpacing(for: width)
