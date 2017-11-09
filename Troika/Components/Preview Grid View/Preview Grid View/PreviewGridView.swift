@@ -92,6 +92,10 @@ public class PreviewGridView: UIView {
 
     // MARK: - Public
 
+    public func reloadData() {
+        collectionView.reloadData()
+    }
+
     public func scrollToTop(animated: Bool = true) {
         collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
     }
