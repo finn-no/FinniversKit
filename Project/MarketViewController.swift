@@ -15,7 +15,7 @@ class MarketViewController: UIViewController {
     }()
 
     fileprivate lazy var marketGridView: MarketGridView = {
-        let marketGridView = MarketGridView(delegate: self)
+        let marketGridView = MarketGridView(delegate: self, dataSource: self)
         marketGridView.translatesAutoresizingMaskIntoConstraints = false
         return marketGridView
     }()
@@ -24,6 +24,7 @@ class MarketViewController: UIViewController {
     fileprivate lazy var headerView = UIView()
 
     fileprivate let previewGridPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
+    fileprivate let marketGridPresentables = Market.allMarkets
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,6 @@ class MarketViewController: UIViewController {
         discoverGridView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         discoverGridView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         discoverGridView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-
-        marketGridView.marketGridPresentables = Market.allMarkets
 
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         headerLabel.text = "Anbefalinger"
@@ -130,5 +129,17 @@ extension MarketViewController: PreviewGridViewDataSource {
 extension MarketViewController: MarketGridViewDelegate {
 
     func didSelect(itemAtIndex index: Int, inMarketGridView gridView: MarketGridView) {
+    }
+}
+
+// MARK: - MarketGridViewDataSource
+extension MarketViewController: MarketGridViewDataSource {
+
+    func numberOfItems(in marketGridView: MarketGridView) -> Int {
+        return marketGridPresentables.count
+    }
+
+    func marketGridView(_ marketGridView: MarketGridView, presentableAtIndex index: Int) -> MarketGridPresentable {
+        return marketGridPresentables[index]
     }
 }
