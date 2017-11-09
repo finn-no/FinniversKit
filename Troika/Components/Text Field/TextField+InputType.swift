@@ -17,12 +17,6 @@ extension TextField {
             }
         }
 
-        var placeHolder: String {
-            var tempText = typeText
-            tempText.remove(at: typeText.index(before: typeText.endIndex))
-            return tempText
-        }
-
         var isSecureMode: Bool {
             switch self {
             case .password: return true

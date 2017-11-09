@@ -18,8 +18,8 @@ public enum TextFieldDataModel: TextFieldPresentable {
 
     var typeText: String {
         switch self {
-        case .email: return "E-post:"
-        case .password: return "Passord:"
+        case .email: return "E-post"
+        case .password: return "Passord"
         }
     }
 
