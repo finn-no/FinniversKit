@@ -117,13 +117,17 @@ public class TextField: UIView {
 
     public var presentable: TextFieldPresentable? {
         didSet {
-            typeLabel.text = presentable?.type.typeText
-            textField.isSecureTextEntry = (presentable?.type.isSecureMode)!
-            showPasswordButton.isHidden = !(presentable?.type.isSecureMode)!
-            textField.placeholder = presentable?.type.placeHolder
-            textField.keyboardType = (presentable?.type.keyBoardStyle)!
+            guard let presentable = presentable else {
+                return
+            }
 
-            if (presentable?.type.isSecureMode)! {
+            typeLabel.text = presentable.type.typeText
+            textField.isSecureTextEntry = presentable.type.isSecureMode
+            showPasswordButton.isHidden = !presentable.type.isSecureMode
+            textField.placeholder = presentable.type.placeHolder
+            textField.keyboardType = presentable.type.keyBoardStyle
+
+            if presentable.type.isSecureMode {
                 textField.rightViewMode = .never
             }
         }
