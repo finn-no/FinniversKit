@@ -23,6 +23,8 @@ class MarketViewController: UIViewController {
     fileprivate lazy var headerLabel = Label(style: .title4(.licorice))
     fileprivate lazy var headerView = UIView()
 
+    fileprivate let presentables = PreviewDataModelFactory.create(numberOfModels: 9)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -56,7 +58,6 @@ class MarketViewController: UIViewController {
         let viewHeight = marketGridView.calculateSize(constrainedTo: view.frame.size.width).height + headerLabel.intrinsicContentSize.height + 16 + 32 // TODO: (AD):  Hard coded spacing. Change to constants.
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: viewHeight)
 
-        discoverGridView.previewPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
         discoverGridView.headerView = headerView
     }
 }
@@ -91,6 +92,14 @@ extension MarketViewController: ToastViewDelegate {
 
 // MARK: - PreviewGridViewDataSource
 extension MarketViewController: PreviewGridViewDataSource {
+
+    func gridView(_ gridView: PreviewGridView, numberOfItemsInSection section: Int) -> Int {
+        return presentables.count
+    }
+
+    func gridView(_ gridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable {
+        return presentables[index]
+    }
 
     func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = presentable.imagePath, let url = URL(string: path) else {

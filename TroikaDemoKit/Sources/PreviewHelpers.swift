@@ -32,6 +32,8 @@ public struct PreviewDataModel: PreviewPresentable {
 /// For use with PreviewGridView.
 public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, PreviewGridViewDataSource {
 
+    private let presentables = PreviewDataModelFactory.create(numberOfModels: 9)
+
     public func willDisplay(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
         // Don't care
     }
@@ -42,6 +44,14 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
 
     public func didSelect(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
         // Not in use
+    }
+
+    public func gridView(_ gridView: PreviewGridView, numberOfItemsInSection section: Int) -> Int {
+        return presentables.count
+    }
+
+    public func gridView(_ gridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable {
+        return presentables[index]
     }
 
     public func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {

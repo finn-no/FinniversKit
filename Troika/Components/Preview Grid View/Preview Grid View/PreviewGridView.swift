@@ -11,6 +11,8 @@ public protocol PreviewGridViewDelegate: NSObjectProtocol {
 }
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
+    func gridView(_ gridView: PreviewGridView, numberOfItemsInSection section: Int) -> Int
+    func gridView(_ gridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable
     func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
 }
@@ -86,13 +88,6 @@ public class PreviewGridView: UIView {
         collectionView.collectionViewLayout.invalidateLayout()
     }
 
-    // Mark: - Dependency injection
-    public var previewPresentables: [PreviewPresentable] = [PreviewPresentable]() {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-
     // MARK: - Public
 
     public func scrollToTop(animated: Bool = true) {
@@ -120,7 +115,7 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return previewPresentables.count
+        return dataSource?.gridView(self, numberOfItemsInSection: section) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -130,10 +125,12 @@ extension PreviewGridView: UICollectionViewDataSource {
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
         let color = colors[indexPath.row % 4]
 
-        let presentable = previewPresentables[indexPath.row]
         cell.loadingColor = color
         cell.dataSource = self
-        cell.presentable = presentable
+
+        if let presentable = dataSource?.gridView(self, presentableAtIndex: indexPath.row) {
+            cell.presentable = presentable
+        }
 
         return cell
     }
@@ -174,9 +171,7 @@ extension PreviewGridView: PreviewGridLayoutDelegate {
     }
 
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        let presentable = previewPresentables[indexPath.row]
-
-        guard presentable.imageSize != .zero, presentable.imagePath != nil else {
+        guard let presentable = dataSource?.gridView(self, presentableAtIndex: indexPath.row), presentable.imageSize != .zero, presentable.imagePath != nil else {
             let defaultImageSize = CGSize(width: 104, height: 78)
             return defaultImageSize.height / defaultImageSize.width
         }
