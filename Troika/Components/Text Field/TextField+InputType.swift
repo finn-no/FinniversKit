@@ -18,10 +18,9 @@ extension TextField {
         }
 
         var placeHolder: String {
-            switch self {
-            case .email: return "E-post"
-            case .password: return "Passord"
-            }
+            var tempText = typeText
+            tempText.remove(at: typeText.index(before: typeText.endIndex))
+            return tempText
         }
 
         var isSecureMode: Bool {
