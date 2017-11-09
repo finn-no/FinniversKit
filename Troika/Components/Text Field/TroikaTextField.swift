@@ -9,11 +9,20 @@ public class TroikaTextField: UIView {
     // MARK: - Internal properties
 
     private let eyeImage = UIImage(frameworkImageNamed: "view")!.withRenderingMode(.alwaysTemplate)
+    private let clearTextIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
 
     private lazy var typeLabel: Label = {
         let label = Label(style: .detail(.stone))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+
+    private lazy var clearButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: clearTextIcon.size.width, height: clearTextIcon.size.height))
+        button.setImage(clearTextIcon, for: .normal)
+        button.imageView?.tintColor = .stone
+        button.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
+        return button
     }()
 
     private lazy var showPasswordButton: UIButton = {
@@ -33,7 +42,8 @@ public class TroikaTextField: UIView {
         textField.textColor = .licorice
         textField.tintColor = .secondaryBlue
         textField.delegate = self
-        textField.clearButtonMode = UITextFieldViewMode.whileEditing
+        textField.rightViewMode = .whileEditing
+        textField.rightView = clearButton
         textField.autocapitalizationType = .none
         return textField
     }()
@@ -87,10 +97,10 @@ public class TroikaTextField: UIView {
 
         showPasswordButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         showPasswordButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor).isActive = true
-        showPasswordButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        showPasswordButton.heightAnchor.constraint(equalToConstant: eyeImage.size.height).isActive = true
 
         if (presentable?.type.isSecureMode)! {
-            showPasswordButton.widthAnchor.constraint(equalToConstant: 22).isActive = true
+            showPasswordButton.widthAnchor.constraint(equalToConstant: eyeImage.size.width).isActive = true
         } else {
             showPasswordButton.widthAnchor.constraint(equalToConstant: 0).isActive = true
         }
@@ -126,6 +136,10 @@ public class TroikaTextField: UIView {
             sender.imageView?.tintColor = .stone
             textField.isSecureTextEntry = true
         }
+    }
+
+    @objc private func clearTapped() {
+        textField.text = ""
     }
 }
 
