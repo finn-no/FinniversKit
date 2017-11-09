@@ -161,13 +161,11 @@ extension TextField: UITextFieldDelegate {
 }
 
 public enum TextFieldType {
-    case normal
     case email
     case password
 
     var typeText: String {
         switch self {
-        case .normal: return "Skriv:"
         case .email: return "E-post:"
         case .password: return "Passord:"
         }
@@ -175,7 +173,6 @@ public enum TextFieldType {
 
     var placeHolder: String {
         switch self {
-        case .normal: return "Et eller annet"
         case .email: return "E-post"
         case .password: return "Passord"
         }
