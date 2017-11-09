@@ -32,7 +32,8 @@ public class TroikaTextField: UIView {
         return textField
     }()
 
-    private var underlineHeight: CGFloat = 2
+    private let underlineHeight: CGFloat = 2
+    private let animationDuration: Double = 0.4
 
     private lazy var underline: UIView = {
         let view = UIView()
@@ -80,6 +81,7 @@ public class TroikaTextField: UIView {
         underline.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         underline.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: .mediumSpacing).isActive = true
         underline.heightAnchor.constraint(equalToConstant: underlineHeight).isActive = true
+        underline.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 
     // MARK: - Dependency injection
@@ -98,7 +100,9 @@ public class TroikaTextField: UIView {
 
 extension TroikaTextField: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        underline.backgroundColor = .secondaryBlue
+        UIView.animate(withDuration: animationDuration) {
+            self.underline.backgroundColor = .secondaryBlue
+        }
     }
 
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -106,7 +110,9 @@ extension TroikaTextField: UITextFieldDelegate {
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        underline.backgroundColor = .stone
+        UIView.animate(withDuration: animationDuration) {
+            self.underline.backgroundColor = .stone
+        }
     }
 }
 
@@ -125,7 +131,7 @@ public enum TextFieldType {
 
     var placeHolder: String {
         switch self {
-        case .normal: return "Something"
+        case .normal: return "Et eller annet"
         case .email: return "E-post"
         case .password: return "Passord"
         }
