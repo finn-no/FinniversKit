@@ -45,17 +45,19 @@ class LoginViewController: UIViewController {
 
         view.backgroundColor = .white
 
-        infoText.topAnchor.constraint(equalTo: view.topAnchor, constant: .largeSpacing + 64).isActive = true
-        infoText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing).isActive = true
-        infoText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing).isActive = true
-        infoText.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        NSLayoutConstraint.activate([
+            infoText.topAnchor.constraint(equalTo: view.topAnchor, constant: .largeSpacing + 64),
+            infoText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
+            infoText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            infoText.heightAnchor.constraint(equalToConstant: 80),
 
-        emailTextField.topAnchor.constraint(equalTo: infoText.bottomAnchor, constant: .largeSpacing).isActive = true
-        emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing).isActive = true
-        emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing).isActive = true
+            emailTextField.topAnchor.constraint(equalTo: infoText.bottomAnchor, constant: .largeSpacing),
+            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
+            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
 
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .largeSpacing).isActive = true
-        passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing).isActive = true
-        passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing).isActive = true
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .largeSpacing),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing)
+        ])
     }
 }
