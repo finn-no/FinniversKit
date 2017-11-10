@@ -19,10 +19,12 @@ internal class PreviewGridHeaderView: UICollectionReusableView {
 
             contentView.translatesAutoresizingMaskIntoConstraints = false
 
-            contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-            contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+            NSLayoutConstraint.activate([
+                contentView.topAnchor.constraint(equalTo: topAnchor),
+                contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+                contentView.leftAnchor.constraint(equalTo: leftAnchor),
+            ])
         }
     }
 }

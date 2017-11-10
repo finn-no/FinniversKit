@@ -2,11 +2,11 @@ import UIKit
 
 class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
 
-    // Mark: - External properties
+    // MARK: - External properties / Dependency injection
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,21 +20,20 @@ class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
 
     private func setup() {
         // Perform setup
+        // Add child views as subviews
     }
 
-    // Mark: - Superclass Overrides
+    // MARK: - Superclass Overrides
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        // Add custom subviews
-        // Layout your custom views
+        // Perform layout
+        // Setup constraints/frames
     }
 
-    // Mark: - Dependency injection
-
-    // Mark: - Private
+    // MARK: - Private
 
 }

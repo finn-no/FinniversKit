@@ -351,13 +351,13 @@
 		CB3664281F73F9A2009D3244 /* Preview Grid View */ = {
 			isa = PBXGroup;
 			children = (
-				CB3664291F73F9B6009D3244 /* Preview Grid Collection View */,
+				CB3664291F73F9B6009D3244 /* Preview Grid View */,
 				CB58A75D1F73B81800A5A19F /* Preview Cell */,
 			);
 			path = "Preview Grid View";
 			sourceTree = "<group>";
 		};
-		CB3664291F73F9B6009D3244 /* Preview Grid Collection View */ = {
+		CB3664291F73F9B6009D3244 /* Preview Grid View */ = {
 			isa = PBXGroup;
 			children = (
 				CB400B1C1F83C67500B26C1C /* PreviewGridView.playground */,
@@ -366,7 +366,7 @@
 				CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */,
 				CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */,
 			);
-			path = "Preview Grid Collection View";
+			path = "Preview Grid View";
 			sourceTree = "<group>";
 		};
 		CB3CF1571F73E5870041EF20 /* Troika */ = {

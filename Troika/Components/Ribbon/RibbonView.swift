@@ -26,7 +26,7 @@ public enum RibbonType {
 
 public class RibbonView: UIView {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
 
     private lazy var titleLabel: Label = {
         let label = Label()
@@ -40,7 +40,7 @@ public class RibbonView: UIView {
     let verticalMargin: CGFloat = 2
     let cornerRadius: CGFloat = 3
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,18 +59,20 @@ public class RibbonView: UIView {
         addSubview(titleLabel)
     }
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horisontalMargin).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horisontalMargin).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin).isActive = true
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horisontalMargin),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horisontalMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin),
+        ])
     }
 
-    // Mark: - Dependency injection
+    // MARK: - Dependency injection
 
     public var presentable: RibbonPresentable? {
         didSet {
