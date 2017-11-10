@@ -8,13 +8,11 @@ public class MarketGridCell: UICollectionViewCell {
 
     // MARK: - Internal properties
 
-    private static let titleLabelMargin: CGFloat = 8.0
-
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: UILayoutConstraintAxis.vertical)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 

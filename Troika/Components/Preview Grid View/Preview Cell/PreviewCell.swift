@@ -82,6 +82,13 @@ public class PreviewCell: UICollectionViewCell {
 
     // MARK: - External properties
 
+    /// The loading color is used to fill the image view while we load the image.
+    public var loadingColor: UIColor?
+
+    /// A data source for the loading of the image
+    public var dataSource: PreviewCellDataSource?
+
+    /// Height in cell that is not image
     public static var nonImageHeight: CGFloat {
         return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + titleBottomMargin
     }
@@ -176,17 +183,18 @@ public class PreviewCell: UICollectionViewCell {
                 subTitleLabel.text = presentable.subTitle
                 imageTextLabel.text = presentable.imageText
                 accessibilityLabel = presentable.accessibilityLabel
-
-                loadImage(presentable: presentable)
             }
         }
     }
 
-    /// The loading color is used to fill the image view while we load the image.
-    public var loadingColor: UIColor?
+    // MARK: - Public
 
-    /// A data source for the loading of the image
-    public var dataSource: PreviewCellDataSource?
+    /// Loads the image for the `presentable` if imagePath is set
+    public func loadImage() {
+        if let presentable = presentable {
+            loadImage(presentable: presentable)
+        }
+    }
 
     // MARK: - Private
 
