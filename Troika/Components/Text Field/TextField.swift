@@ -62,8 +62,6 @@ public class TextField: UIView {
         return view
     }()
 
-    // MARK: - External properties
-
     // MARK: - Setup
 
     public override init(frame: CGRect) {
@@ -84,8 +82,6 @@ public class TextField: UIView {
         addSubview(showPasswordButton)
         addSubview(underline)
     }
-
-    // MARK: - Superclass Overrides
 
     // MARK: - Layout
 
