@@ -82,6 +82,13 @@ public class PreviewCell: UICollectionViewCell {
 
     // MARK: - External properties
 
+    /// The loading color is used to fill the image view while we load the image.
+    public var loadingColor: UIColor?
+
+    /// A data source for the loading of the image
+    public var dataSource: PreviewCellDataSource?
+
+    /// Height in cell that is not image
     public static var nonImageHeight: CGFloat {
         return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + titleBottomMargin
     }
@@ -182,11 +189,7 @@ public class PreviewCell: UICollectionViewCell {
         }
     }
 
-    /// The loading color is used to fill the image view while we load the image.
-    public var loadingColor: UIColor?
 
-    /// A data source for the loading of the image
-    public var dataSource: PreviewCellDataSource?
 
     // MARK: - Private
 
