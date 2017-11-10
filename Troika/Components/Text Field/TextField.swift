@@ -152,6 +152,7 @@ public class TextField: UIView {
 
     @objc private func clearTapped() {
         textField.text = ""
+        textFieldDidChange()
     }
 
     @objc private func textFieldDidChange() {
