@@ -207,7 +207,7 @@ public class PreviewCell: UICollectionViewCell {
 
         imageView.backgroundColor = loadingColor
 
-        dataSource.loadImage(for: presentable, imageWidth: imageView.frame.size.width) { [weak self] image in
+        dataSource.loadImage(for: presentable, imageWidth: frame.size.width) { [weak self] image in
             self?.imageView.backgroundColor = .clear
 
             if let image = image {
