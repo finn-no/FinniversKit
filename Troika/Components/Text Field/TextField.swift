@@ -15,7 +15,6 @@ public class TextField: UIView {
         let label = Label(style: .detail(.stone))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.alpha = 0
-        label.transform = transform.translatedBy(x: 0, y: label.frame.height)
         return label
     }()
 
@@ -113,6 +112,8 @@ public class TextField: UIView {
         underline.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: .mediumSpacing).isActive = true
         underline.heightAnchor.constraint(equalToConstant: underlineHeight).isActive = true
         underline.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+
+        typeLabel.transform = transform.translatedBy(x: 0, y: typeLabel.frame.height)
     }
 
     // MARK: - Dependency injection
