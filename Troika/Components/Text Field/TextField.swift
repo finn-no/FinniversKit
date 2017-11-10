@@ -77,6 +77,9 @@ public class TextField: UIView {
     private func setup() {
         isAccessibilityElement = true
 
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        addGestureRecognizer(tap)
+
         addSubview(typeLabel)
         addSubview(textField)
         addSubview(showPasswordButton)
@@ -164,6 +167,10 @@ public class TextField: UIView {
                 self.typeLabel.alpha = 0
             })
         }
+    }
+
+    @objc private func handleTap() {
+        textField.becomeFirstResponder()
     }
 }
 
