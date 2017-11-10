@@ -142,6 +142,10 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? PreviewCell {
+            cell.loadImage()
+        }
+
         delegate?.willDisplay(itemAtIndex: indexPath.row, inPreviewGridView: self)
     }
 

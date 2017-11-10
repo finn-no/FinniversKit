@@ -183,13 +183,18 @@ public class PreviewCell: UICollectionViewCell {
                 subTitleLabel.text = presentable.subTitle
                 imageTextLabel.text = presentable.imageText
                 accessibilityLabel = presentable.accessibilityLabel
-
-                loadImage(presentable: presentable)
             }
         }
     }
 
+    // MARK: - Public
 
+    /// Loads the image for the `presentable` if imagePath is set
+    public func loadImage() {
+        if let presentable = presentable {
+            loadImage(presentable: presentable)
+        }
+    }
 
     // MARK: - Private
 
