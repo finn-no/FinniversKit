@@ -6,7 +6,7 @@ import UIKit
 
 public class MarketGridCell: UICollectionViewCell {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -33,7 +33,7 @@ public class MarketGridCell: UICollectionViewCell {
         return label
     }()
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,7 +54,7 @@ public class MarketGridCell: UICollectionViewCell {
         backgroundColor = .clear
     }
 
-    // Mark: - Superclass Overrides
+    // MARK: - Superclass Overrides
 
     public override func prepareForReuse() {
         super.prepareForReuse()
@@ -63,24 +63,26 @@ public class MarketGridCell: UICollectionViewCell {
         accessibilityLabel = ""
     }
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        iconImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            iconImageView.topAnchor.constraint(equalTo: topAnchor),
+            iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-        titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: CGFloat.mediumSpacing).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+            titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: MarketGridCell.titleLabelMargin),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-        externalLinkImageView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor).isActive = true
-        externalLinkImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
+            externalLinkImageView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor),
+            externalLinkImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor),
+        ])
     }
 
-    // Mark: - Dependency injection
+    // MARK: - Dependency injection
 
     public var presentable: MarketGridPresentable? {
         didSet {

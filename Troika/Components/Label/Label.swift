@@ -6,7 +6,7 @@ import UIKit
 
 public class Label: UILabel {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
 
     var labelAttributes: [NSAttributedStringKey: Any] {
         guard let style = style else {
@@ -23,7 +23,7 @@ public class Label: UILabel {
         ]
     }
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public init(style: Style) {
         super.init(frame: .zero)
@@ -45,9 +45,9 @@ public class Label: UILabel {
         isAccessibilityElement = true
     }
 
-    // Mark: - Superclass Overrides
+    // MARK: - Superclass Overrides
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -57,7 +57,7 @@ public class Label: UILabel {
         font = style?.font
     }
 
-    // Mark: - Dependency injection
+    // MARK: - Dependency injection
 
     public var style: Style?
 }

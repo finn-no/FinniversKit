@@ -5,12 +5,13 @@
 import UIKit
 
 public protocol PreviewCellDataSource {
-    func loadImage(for url: URL, completion: @escaping ((UIImage?) -> Void))
+    func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
 }
 
 public class PreviewCell: UICollectionViewCell {
 
-    // Mark: - Internal properties
+    // MARK: - Internal properties
 
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
@@ -79,13 +80,13 @@ public class PreviewCell: UICollectionViewCell {
         return label
     }()
 
-    // Mark: - External properties
+    // MARK: - External properties
 
     public static var nonImageHeight: CGFloat {
         return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + titleBottomMargin
     }
 
-    // Mark: - Setup
+    // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -111,7 +112,7 @@ public class PreviewCell: UICollectionViewCell {
         backgroundColor = .white
     }
 
-    // Mark: - Superclass Overrides
+    // MARK: - Superclass Overrides
 
     public override func prepareForReuse() {
         super.prepareForReuse()
@@ -121,52 +122,56 @@ public class PreviewCell: UICollectionViewCell {
         subTitleLabel.text = ""
         imageTextLabel.text = ""
         accessibilityLabel = ""
+
+        if let presentable = presentable {
+            dataSource?.cancelLoadImage(for: presentable, imageWidth: imageView.frame.size.width)
+        }
     }
 
-    // Mark: - Layout
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-        subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: PreviewCell.subtitleTopMargin).isActive = true
-        subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        subTitleLabel.heightAnchor.constraint(equalToConstant: PreviewCell.subtitleHeight).isActive = true
+            subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: PreviewCell.subtitleTopMargin),
+            subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            subTitleLabel.heightAnchor.constraint(equalToConstant: PreviewCell.subtitleHeight),
 
-        titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: PreviewCell.titleTopMargin).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: PreviewCell.titleHeight).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -PreviewCell.titleBottomMargin).isActive = true
+            titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: PreviewCell.titleTopMargin),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: PreviewCell.titleHeight),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -PreviewCell.titleBottomMargin),
 
-        iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: PreviewCell.margin).isActive = true
-        iconImageView.heightAnchor.constraint(equalToConstant: PreviewCell.iconSize).isActive = true
-        iconImageView.widthAnchor.constraint(equalToConstant: PreviewCell.iconSize).isActive = true
-        iconImageView.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor).isActive = true
+            iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: PreviewCell.margin),
+            iconImageView.heightAnchor.constraint(equalToConstant: PreviewCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: PreviewCell.iconSize),
+            iconImageView.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
 
-        //        imageTextLabel.topAnchor.constraint(equalTo: imageDesciptionView.topAnchor).isActive = true
-        imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: PreviewCell.margin).isActive = true
-        //        imageTextLabel.bottomAnchor.constraint(equalTo: imageDesciptionView.bottomAnchor).isActive = true
-        imageTextLabel.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor).isActive = true
+            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: PreviewCell.margin),
+            imageTextLabel.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
 
-        imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: PreviewCell.margin).isActive = true
-        imageDesciptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor).isActive = true
-        imageDesciptionView.heightAnchor.constraint(equalToConstant: PreviewCell.imageDescriptionHeight).isActive = true
-        imageDesciptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+            imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: PreviewCell.margin),
+            imageDesciptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            imageDesciptionView.heightAnchor.constraint(equalToConstant: PreviewCell.imageDescriptionHeight),
+            imageDesciptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+        ])
     }
 
-    // Mark: - Dependency injection
+    // MARK: - Dependency injection
 
     /// The presentable contains data used to populate the view.
     public var presentable: PreviewPresentable? {
         didSet {
             if let presentable = presentable {
-                iconImageView.image = presentable.iconImage.withRenderingMode(.alwaysTemplate)
+                iconImageView.image = presentable.iconImage?.withRenderingMode(.alwaysTemplate)
                 titleLabel.text = presentable.title
                 subTitleLabel.text = presentable.subTitle
                 imageTextLabel.text = presentable.imageText
@@ -183,10 +188,10 @@ public class PreviewCell: UICollectionViewCell {
     /// A data source for the loading of the image
     public var dataSource: PreviewCellDataSource?
 
-    // Mark: - Private
+    // MARK: - Private
 
     private func loadImage(presentable: PreviewPresentable) {
-        guard let dataSource = dataSource, let imageUrl = presentable.imageUrl else {
+        guard let dataSource = dataSource, let _ = presentable.imagePath else {
             loadingColor = .clear
             imageView.image = defaultImage
             return
@@ -194,7 +199,7 @@ public class PreviewCell: UICollectionViewCell {
 
         imageView.backgroundColor = loadingColor
 
-        dataSource.loadImage(for: imageUrl) { [weak self] image in
+        dataSource.loadImage(for: presentable, imageWidth: imageView.frame.size.width) { [weak self] image in
             self?.imageView.backgroundColor = .clear
 
             if let image = image {
