@@ -20,6 +20,7 @@
 		453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */; };
 		453D88881F862D0E00FC63C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */; };
 		45422E171FB5D5BC00E7CF9E /* ButtonPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45422E161FB5D5BC00E7CF9E /* ButtonPresentable.swift */; };
+		45422E1B1FB5F3F500E7CF9E /* ButtonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45422E1A1FB5F3F500E7CF9E /* ButtonHelpers.swift */; };
 		45441D031F8CA1D300A3B007 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45441D021F8CA1D300A3B007 /* Label.swift */; };
 		455866071F7A751300F670EF /* MarketGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866061F7A751300F670EF /* MarketGridView.swift */; };
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
@@ -118,6 +119,7 @@
 		453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
 		453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridViewConfigurable.swift; sourceTree = "<group>"; };
 		45422E161FB5D5BC00E7CF9E /* ButtonPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPresentable.swift; sourceTree = "<group>"; };
+		45422E1A1FB5F3F500E7CF9E /* ButtonHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHelpers.swift; sourceTree = "<group>"; };
 		45441D021F8CA1D300A3B007 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		45441D041F8CAB8800A3B007 /* Label.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Label.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		455866061F7A751300F670EF /* MarketGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridView.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				45C5E7A71FB4466600EF2992 /* TextFieldHelpers.swift */,
 				459D37FB1F8782CB00038582 /* RibbonHelpers.swift */,
 				45CF5A601F97678400069240 /* ToastHelpers.swift */,
+				45422E1A1FB5F3F500E7CF9E /* ButtonHelpers.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				459D38001F87C1B300038582 /* ScreenSize.swift in Sources */,
+				45422E1B1FB5F3F500E7CF9E /* ButtonHelpers.swift in Sources */,
 				CB400B201F83C7C100B26C1C /* PlaygroundImage.swift in Sources */,
 				4577B72A1F865400005E7598 /* MarketHelpers.swift in Sources */,
 				CB400B171F83BE2E00B26C1C /* PreviewHelpers.swift in Sources */,
