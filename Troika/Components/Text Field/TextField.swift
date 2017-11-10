@@ -15,6 +15,7 @@ public class TextField: UIView {
         let label = Label(style: .detail(.stone))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.alpha = 0
+        label.transform = transform.translatedBy(x: 0, y: label.frame.height)
         return label
     }()
 
@@ -47,6 +48,7 @@ public class TextField: UIView {
         textField.rightView = clearButton
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
 
@@ -151,6 +153,21 @@ public class TextField: UIView {
 
     @objc private func clearTapped() {
         textField.text = ""
+    }
+
+    @objc private func textFieldDidChange() {
+
+        if let text = textField.text, !text.isEmpty {
+            UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+                self.typeLabel.transform = CGAffineTransform.identity
+                self.typeLabel.alpha = 1.0
+            })
+        } else {
+            UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+                self.typeLabel.transform = self.typeLabel.transform.translatedBy(x: 0, y: self.typeLabel.frame.height)
+                self.typeLabel.alpha = 0
+            })
+        }
     }
 }
 
