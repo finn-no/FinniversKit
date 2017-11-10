@@ -46,7 +46,7 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
         // Not in use
     }
 
-    public func numberOfItems(in previewGridView: PreviewGridView) -> Int {
+    public func numberOfItems(inPreviewGridView previewGridView: PreviewGridView) -> Int {
         return presentables.count
     }
 

@@ -72,7 +72,7 @@ public class MarketGridCell: UICollectionViewCell {
             iconImageView.topAnchor.constraint(equalTo: topAnchor),
             iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: MarketGridCell.titleLabelMargin),
+            titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),

@@ -11,7 +11,7 @@ public protocol PreviewGridViewDelegate: NSObjectProtocol {
 }
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
-    func numberOfItems(in previewGridView: PreviewGridView) -> Int
+    func numberOfItems(inPreviewGridView previewGridView: PreviewGridView) -> Int
     func previewGridView(_ previewGridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable
     func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
@@ -121,7 +121,7 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(in: self) ?? 0
+        return dataSource?.numberOfItems(inPreviewGridView: self) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
