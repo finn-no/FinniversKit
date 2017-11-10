@@ -4,7 +4,7 @@
 
 import UIKit
 
-class Button: UIButton {
+public class Button: UIButton {
 
     // MARK: - Internal properties
 
@@ -23,7 +23,7 @@ class Button: UIButton {
     }
 
     private func setup() {
-        // Perform setup
+        isAccessibilityElement = true
     }
 
     // MARK: - Superclass Overrides
@@ -33,11 +33,22 @@ class Button: UIButton {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        // Add custom subviews
-        // Layout your custom views
+        titleLabel?.font = .title4
     }
 
     // MARK: - Dependency injection
+
+    public var presentable: ButtonPresentable? {
+        didSet {
+            guard let presentable = presentable else {
+                return
+            }
+            accessibilityLabel = presentable.title
+            titleLabel?.textColor = presentable.type.textColor
+            layer.borderColor = presentable.type.borderColor.cgColor
+            backgroundColor = presentable.type.bodyColor
+        }
+    }
 
     // MARK: - Private
 
