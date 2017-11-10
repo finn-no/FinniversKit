@@ -40,4 +40,38 @@ class Button: UIButton {
     // MARK: - Dependency injection
 
     // MARK: - Private
+
+    public var typeOfButton: ButtonType?
+}
+
+public extension Button {
+
+    public enum ButtonType {
+        case normal // default
+        case flat
+        case destructive
+
+        var bodyColor: UIColor {
+            switch self {
+            case .normal: return .milk
+            case .flat: return .primaryBlue
+            case .destructive: return .cherry
+            }
+        }
+
+        var borderColor: UIColor {
+            switch self {
+            case .normal: return .secondaryBlue
+            case .flat: return .primaryBlue
+            case .destructive: return .cherry
+            }
+        }
+
+        var textColor: UIColor {
+            switch self {
+            case .normal: return .primaryBlue
+            default: return .milk
+            }
+        }
+    }
 }
