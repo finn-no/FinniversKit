@@ -32,6 +32,13 @@ class LoginViewController: UIViewController {
         return textView
     }()
 
+    fileprivate lazy var forgotPasswordLabel: Label = {
+        let label = Label(style: .detail(.primaryBlue))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Glemt passord"
+        label.textAlignment = .center
+        return label
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -41,6 +48,7 @@ class LoginViewController: UIViewController {
         view.addSubview(infoText)
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
+        view.addSubview(forgotPasswordLabel)
 
         emailTextField.presentable = TextFieldDataModel.email
         passwordTextField.presentable = TextFieldDataModel.password
@@ -60,6 +68,10 @@ class LoginViewController: UIViewController {
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .largeSpacing),
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+
+            forgotPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            forgotPasswordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
+            forgotPasswordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
         ])
     }
 }
