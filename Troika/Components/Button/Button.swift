@@ -70,6 +70,13 @@ public extension Button {
             }
         }
 
+        var borderWidth: CGFloat {
+            switch self {
+            case .normal: return 2.0
+            default: return 0.0
+            }
+        }
+
         var borderColor: UIColor {
             switch self {
             case .normal: return .secondaryBlue
