@@ -13,7 +13,7 @@ public enum ButtonDataModel: ButtonPresentable {
     public var title: String {
         switch self {
         case .normal: return "Normal"
-        case .flat: return "Søk"
+        case .flat: return "Logg inn"
         case .destructive: return "Slett"
         }
     }
