@@ -24,6 +24,8 @@ class LoginViewController: UIViewController {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .center
+        textView.isScrollEnabled = false
+        textView.isEditable = false
         textView.font = .body
         textView.textColor = .licorice
         textView.text = "Logg inn for å sende meldinger, lagre favoritter og søk. Du får også varsler når det skjer noe nytt!"
@@ -49,7 +51,7 @@ class LoginViewController: UIViewController {
             infoText.topAnchor.constraint(equalTo: view.topAnchor, constant: .largeSpacing + 64),
             infoText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
             infoText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            infoText.heightAnchor.constraint(equalToConstant: 80),
+            infoText.heightAnchor.constraint(equalToConstant: 85),
 
             emailTextField.topAnchor.constraint(equalTo: infoText.bottomAnchor, constant: .largeSpacing),
             emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
