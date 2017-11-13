@@ -8,7 +8,7 @@ public class Button: UIButton {
 
     // MARK: - Internal properties
 
-    // MARK: - External properties
+    private let cornerRadius: CGFloat = 4.0
 
     // MARK: - Setup
 
@@ -24,16 +24,15 @@ public class Button: UIButton {
 
     private func setup() {
         isAccessibilityElement = true
-    }
 
-    // MARK: - Superclass Overrides
+        titleLabel?.font = .title4
+        layer.cornerRadius = cornerRadius
+    }
 
     // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-
-        titleLabel?.font = .title4
     }
 
     // MARK: - Dependency injection
@@ -49,10 +48,6 @@ public class Button: UIButton {
             backgroundColor = presentable.type.bodyColor
         }
     }
-
-    // MARK: - Private
-
-    public var typeOfButton: ButtonType?
 }
 
 public extension Button {
