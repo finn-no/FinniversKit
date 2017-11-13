@@ -39,6 +39,14 @@ class LoginViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
+
+    fileprivate lazy var loginButton: Button = {
+        let button = Button()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -49,9 +57,11 @@ class LoginViewController: UIViewController {
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(forgotPasswordLabel)
+        view.addSubview(loginButton)
 
         emailTextField.presentable = TextFieldDataModel.email
         passwordTextField.presentable = TextFieldDataModel.password
+        loginButton.presentable = ButtonDataModel.flat
 
         view.backgroundColor = .white
 
@@ -72,6 +82,15 @@ class LoginViewController: UIViewController {
             forgotPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .mediumLargeSpacing),
             forgotPasswordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
             forgotPasswordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+
+            loginButton.topAnchor.constraint(equalTo: forgotPasswordLabel.bottomAnchor, constant: .largeSpacing),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            loginButton.heightAnchor.constraint(equalToConstant: 42),
         ])
+    }
+
+    @objc func loginTapped() {
+        print("Login tapped!")
     }
 }
