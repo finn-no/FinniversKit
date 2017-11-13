@@ -10,10 +10,11 @@ public extension Button {
         case normal // default
         case flat
         case destructive
+        case link
 
         var bodyColor: UIColor {
             switch self {
-            case .normal: return .milk
+            case .normal, .link: return .milk
             case .flat: return .primaryBlue
             case .destructive: return .cherry
             }
@@ -26,17 +27,16 @@ public extension Button {
             }
         }
 
-        var borderColor: UIColor {
+        var borderColor: UIColor? {
             switch self {
             case .normal: return .secondaryBlue
-            case .flat: return .primaryBlue
-            case .destructive: return .cherry
+            default: return nil
             }
         }
 
         var textColor: UIColor {
             switch self {
-            case .normal: return .primaryBlue
+            case .normal, .link: return .primaryBlue
             default: return .milk
             }
         }
