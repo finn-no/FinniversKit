@@ -9,6 +9,7 @@ public class Button: UIButton {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 4.0
+    private let buttonHeight: CGFloat = 42.0
 
     // MARK: - Setup
 
@@ -33,6 +34,8 @@ public class Button: UIButton {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
+
+        heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
     }
 
     // MARK: - Dependency injection
