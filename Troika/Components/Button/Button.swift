@@ -11,16 +11,20 @@ public class Button: UIButton {
     private let cornerRadius: CGFloat = 4.0
     private let buttonHeight: CGFloat = 42.0
 
+    // MARK: - External properties
+
+    public let style: Style
+
     // MARK: - Setup
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(style: Style) {
+        self.style = style
+        super.init(frame: .zero)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    public required convenience init?(coder aDecoder: NSCoder) {
+        self.init(style: .normal)
     }
 
     private func setup() {
@@ -28,6 +32,11 @@ public class Button: UIButton {
 
         titleLabel?.font = .title4
         layer.cornerRadius = cornerRadius
+
+        setTitleColor(style.textColor, for: .normal)
+        layer.borderWidth = style.borderWidth
+        layer.borderColor = style.borderColor?.cgColor
+        backgroundColor = style.bodyColor
     }
 
     // MARK: - Layout
@@ -38,20 +47,15 @@ public class Button: UIButton {
         heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
     }
 
-    // MARK: - Dependency injection
+    public override func setTitle(_ title: String?, for state: UIControlState) {
+        super.setTitle(title, for: state)
 
-    public var presentable: ButtonPresentable? {
-        didSet {
-            guard let presentable = presentable else {
-                return
-            }
-
-            accessibilityLabel = presentable.title
-            setTitle(presentable.title, for: .normal)
-            setTitleColor(presentable.type.textColor, for: .normal)
-            layer.borderWidth = presentable.type.borderWidth
-            layer.borderColor = presentable.type.borderColor?.cgColor
-            backgroundColor = presentable.type.bodyColor
+        if state == .normal {
+            accessibilityLabel = title
         }
+    }
+
+    public override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
+        super.setTitleColor(style.textColor, for: state)
     }
 }
