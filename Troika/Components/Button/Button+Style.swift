@@ -6,7 +6,7 @@ import Foundation
 
 public extension Button {
 
-    public enum ButtonType {
+    public enum Style {
         case normal // default
         case flat
         case destructive
