@@ -50,7 +50,7 @@ public class Button: UIButton {
             setTitle(presentable.title, for: .normal)
             setTitleColor(presentable.type.textColor, for: .normal)
             layer.borderWidth = presentable.type.borderWidth
-            layer.borderColor = presentable.type.borderColor.cgColor
+            layer.borderColor = presentable.type.borderColor?.cgColor
             backgroundColor = presentable.type.bodyColor
         }
     }
