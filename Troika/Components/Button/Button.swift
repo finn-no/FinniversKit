@@ -42,8 +42,11 @@ public class Button: UIButton {
             guard let presentable = presentable else {
                 return
             }
+
             accessibilityLabel = presentable.title
-            titleLabel?.textColor = presentable.type.textColor
+            setTitle(presentable.title, for: .normal)
+            setTitleColor(presentable.type.textColor, for: .normal)
+            layer.borderWidth = presentable.type.borderWidth
             layer.borderColor = presentable.type.borderColor.cgColor
             backgroundColor = presentable.type.bodyColor
         }
