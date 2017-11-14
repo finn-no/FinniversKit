@@ -32,11 +32,14 @@ public class Button: UIButton {
 
         titleLabel?.font = .title4
         layer.cornerRadius = cornerRadius
-
-        setTitleColor(style.textColor, for: .normal)
         layer.borderWidth = style.borderWidth
         layer.borderColor = style.borderColor?.cgColor
         backgroundColor = style.bodyColor
+
+        // Calling super because the method is effectively disabled for this class
+        super.setTitleColor(style.textColor, for: .normal)
+        super.setTitleColor(style.highlightedTextColor, for: .highlighted)
+        super.setTitleColor(style.disabledTextColor, for: .disabled)
     }
 
     // MARK: - Layout
@@ -47,6 +50,8 @@ public class Button: UIButton {
         heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
     }
 
+    // MARK: - Superclass Overrides
+
     public override func setTitle(_ title: String?, for state: UIControlState) {
         super.setTitle(title, for: state)
 
@@ -56,6 +61,20 @@ public class Button: UIButton {
     }
 
     public override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
-        super.setTitleColor(style.textColor, for: state)
+        assertionFailure("The title color cannot be changed outside the class")
+    }
+
+    public override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? style.highlightedBodyColor : style.bodyColor
+            layer.borderColor = isHighlighted ? style.highlightedBorderColor?.cgColor : style.borderColor?.cgColor
+        }
+    }
+
+    public override var isEnabled: Bool {
+        didSet {
+            backgroundColor = isEnabled ? style.bodyColor : style.disabledBodyColor
+            layer.borderColor = isEnabled ? style.borderColor?.cgColor : style.disabledBorderColor?.cgColor
+        }
     }
 }
