@@ -8,6 +8,18 @@ import TroikaDemoKit
 
 class LoginViewController: UIViewController {
 
+    fileprivate lazy var scrollView: UIScrollView = {
+        let view = UIScrollView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    fileprivate lazy var contentView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     fileprivate lazy var emailTextField: TextField = {
         let textField = TextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
