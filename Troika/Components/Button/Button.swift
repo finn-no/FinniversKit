@@ -9,7 +9,6 @@ public class Button: UIButton {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 4.0
-    private let buttonHeight: CGFloat = 42.0
 
     // MARK: - External properties
 
@@ -30,6 +29,8 @@ public class Button: UIButton {
     private func setup() {
         isAccessibilityElement = true
 
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: .mediumSpacing, bottom: 0, right: .mediumSpacing)
+
         titleLabel?.font = style.font
         layer.cornerRadius = cornerRadius
         layer.borderWidth = style.borderWidth
@@ -46,8 +47,6 @@ public class Button: UIButton {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-
-        heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
     }
 
     // MARK: - Superclass Overrides
