@@ -11,18 +11,17 @@ public extension Button {
         case flat
         case destructive
         case link
-        case smallLink
 
         var font: UIFont {
             switch self {
-            case .smallLink: return .detail
+            case .link: return .detail
             default: return .title4
             }
         }
 
         var bodyColor: UIColor {
             switch self {
-            case .default, .link, .smallLink: return .milk
+            case .default, .link: return .milk
             case .flat: return .primaryBlue
             case .destructive: return .cherry
             }
@@ -44,7 +43,7 @@ public extension Button {
 
         var textColor: UIColor {
             switch self {
-            case .default, .link, .smallLink: return .primaryBlue
+            case .default, .link: return .primaryBlue
             default: return .milk
             }
         }
@@ -67,14 +66,14 @@ public extension Button {
 
         var highlightedTextColor: UIColor? {
             switch self {
-            case .link, .smallLink: return UIColor(red: 0 / 255, green: 79 / 255, blue: 201 / 255, alpha: 1.0) // #004fc9
+            case .link: return UIColor(red: 0 / 255, green: 79 / 255, blue: 201 / 255, alpha: 1.0) // #004fc9
             default: return nil
             }
         }
 
         var disabledBodyColor: UIColor? {
             switch self {
-            case .default, .link, .smallLink: return nil
+            case .default, .link: return nil
             default: return .sardine
             }
         }

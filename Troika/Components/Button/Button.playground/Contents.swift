@@ -17,7 +17,6 @@ let normalButton = Button(style: .default)
 let flatButton = Button(style: .flat)
 let destructiveButton = Button(style: .destructive)
 let linkButton = Button(style: .link)
-let smallLinkButton = Button(style: .smallLink)
 
 let button1 = Button(style: .flat)
 let button2 = Button(style: .default)
@@ -26,13 +25,11 @@ let disabledNormalButton = Button(style: .default)
 let disabledFlatButton = Button(style: .flat)
 let disabledDestructiveButton = Button(style: .destructive)
 let disabledLinkButton = Button(style: .link)
-let disabledSmallLinkButton = Button(style: .smallLink)
 
 normalButton.setTitle("Normal button", for: .normal)
 flatButton.setTitle("Flat button", for: .normal)
 destructiveButton.setTitle("Destructive button", for: .normal)
 linkButton.setTitle("Link button", for: .normal)
-smallLinkButton.setTitle("Small link button", for: .normal)
 
 button1.setTitle("Left button", for: .normal)
 button2.setTitle("Right button", for: .normal)
@@ -41,19 +38,16 @@ disabledNormalButton.setTitle("Disabled normal button", for: .normal)
 disabledFlatButton.setTitle("Disabled flat button", for: .normal)
 disabledDestructiveButton.setTitle("Disabled destructive button", for: .normal)
 disabledLinkButton.setTitle("Disabled link button", for: .normal)
-disabledSmallLinkButton.setTitle("Disabled small link button", for: .normal)
 
 disabledNormalButton.isEnabled = false
 disabledFlatButton.isEnabled = false
 disabledDestructiveButton.isEnabled = false
 disabledLinkButton.isEnabled = false
-disabledSmallLinkButton.isEnabled = false
 
 normalButton.translatesAutoresizingMaskIntoConstraints = false
 flatButton.translatesAutoresizingMaskIntoConstraints = false
 destructiveButton.translatesAutoresizingMaskIntoConstraints = false
 linkButton.translatesAutoresizingMaskIntoConstraints = false
-smallLinkButton.translatesAutoresizingMaskIntoConstraints = false
 
 button1.translatesAutoresizingMaskIntoConstraints = false
 button2.translatesAutoresizingMaskIntoConstraints = false
@@ -62,13 +56,11 @@ disabledNormalButton.translatesAutoresizingMaskIntoConstraints = false
 disabledFlatButton.translatesAutoresizingMaskIntoConstraints = false
 disabledDestructiveButton.translatesAutoresizingMaskIntoConstraints = false
 disabledLinkButton.translatesAutoresizingMaskIntoConstraints = false
-disabledSmallLinkButton.translatesAutoresizingMaskIntoConstraints = false
 
 view.addSubview(normalButton)
 view.addSubview(flatButton)
 view.addSubview(destructiveButton)
 view.addSubview(linkButton)
-view.addSubview(smallLinkButton)
 
 view.addSubview(button1)
 view.addSubview(button2)
@@ -77,7 +69,6 @@ view.addSubview(disabledNormalButton)
 view.addSubview(disabledFlatButton)
 view.addSubview(disabledDestructiveButton)
 view.addSubview(disabledLinkButton)
-view.addSubview(disabledSmallLinkButton)
 
 NSLayoutConstraint.activate([
     normalButton.topAnchor.constraint(equalTo: view.topAnchor, constant: .largeSpacing),
@@ -96,11 +87,7 @@ NSLayoutConstraint.activate([
     linkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
     linkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
 
-    smallLinkButton.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .largeSpacing),
-    smallLinkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-    smallLinkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-
-    button1.topAnchor.constraint(equalTo: smallLinkButton.bottomAnchor, constant: .largeSpacing),
+    button1.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .largeSpacing),
     button1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
     button1.widthAnchor.constraint(equalToConstant: view.frame.width / 2 - .largeSpacing - .mediumSpacing),
 
@@ -123,10 +110,6 @@ NSLayoutConstraint.activate([
     disabledLinkButton.topAnchor.constraint(equalTo: disabledDestructiveButton.bottomAnchor, constant: .mediumLargeSpacing),
     disabledLinkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
     disabledLinkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-
-    disabledSmallLinkButton.topAnchor.constraint(equalTo: disabledLinkButton.bottomAnchor, constant: .mediumLargeSpacing),
-    disabledSmallLinkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-    disabledSmallLinkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
 ])
 
 PlaygroundPage.current.liveView = view
