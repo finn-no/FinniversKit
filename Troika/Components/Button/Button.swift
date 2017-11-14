@@ -24,13 +24,13 @@ public class Button: UIButton {
     }
 
     public required convenience init?(coder aDecoder: NSCoder) {
-        self.init(style: .normal)
+        self.init(style: .default)
     }
 
     private func setup() {
         isAccessibilityElement = true
 
-        titleLabel?.font = .title4
+        titleLabel?.font = style.font
         layer.cornerRadius = cornerRadius
         layer.borderWidth = style.borderWidth
         layer.borderColor = style.borderColor?.cgColor

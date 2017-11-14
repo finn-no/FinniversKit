@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
     }()
 
     fileprivate lazy var forgotPasswordButton: Button = {
-        let button = Button(style: .normal)
+        let button = Button(style: .link)
         button.setTitle("Glemt passord", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
     }()
 
     fileprivate lazy var newUserButton: Button = {
-        let button = Button(style: .normal)
+        let button = Button(style: .default)
         button.setTitle("Ny bruker", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(newUserTapped), for: .touchUpInside)
