@@ -88,14 +88,30 @@ class LoginViewController: UIViewController {
     }
 
     private func setupView() {
-        view.addSubview(infoText)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(loginButton)
-        view.addSubview(forgotPasswordButton)
-        view.addSubview(newUserButton)
-        view.addSubview(userTermsIntro)
-        view.addSubview(userTermsButton)
+        scrollView.addSubview(contentView)
+        view.addSubview(scrollView)
+
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+
+        contentView.addSubview(infoText)
+        contentView.addSubview(emailTextField)
+        contentView.addSubview(passwordTextField)
+        contentView.addSubview(loginButton)
+        contentView.addSubview(forgotPasswordButton)
+        contentView.addSubview(newUserButton)
+        contentView.addSubview(userTermsIntro)
+        contentView.addSubview(userTermsButton)
 
         emailTextField.presentable = TextFieldDataModel.email
         passwordTextField.presentable = TextFieldDataModel.password
@@ -106,37 +122,40 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
 
         NSLayoutConstraint.activate([
-            infoText.topAnchor.constraint(equalTo: view.topAnchor, constant: .largeSpacing + navigationController!.navigationBar.frame.height + UIApplication.shared.statusBarFrame.height),
-            infoText.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            infoText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            infoText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .largeSpacing),
+            infoText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            infoText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
-            emailTextField.topAnchor.constraint(equalTo: infoText.bottomAnchor, constant: .largeSpacing),
-            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            emailTextField.topAnchor.constraint(equalTo: infoText.bottomAnchor, constant: .mediumLargeSpacing),
+            emailTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .largeSpacing),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            passwordTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            passwordTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .largeSpacing),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            forgotPasswordButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .mediumSpacing),
+            forgotPasswordButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            forgotPasswordButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
-            forgotPasswordButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumSpacing),
-            forgotPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            forgotPasswordButton.widthAnchor.constraint(equalToConstant: view.frame.size.width / 2 - .largeSpacing - .smallSpacing),
+            loginButton.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: .largeSpacing),
+            loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            loginButton.heightAnchor.constraint(equalToConstant: 42),
 
-            newUserButton.topAnchor.constraint(equalTo: forgotPasswordButton.topAnchor),
-            newUserButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            newUserButton.widthAnchor.constraint(equalToConstant: view.frame.size.width / 2 - .largeSpacing - .smallSpacing),
+            newUserButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumSpacing),
+            newUserButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            newUserButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            newUserButton.heightAnchor.constraint(equalToConstant: 42),
 
-            userTermsIntro.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: .mediumLargeSpacing),
-            userTermsIntro.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            userTermsIntro.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            userTermsIntro.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: .largeSpacing),
+            userTermsIntro.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            userTermsIntro.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
-            userTermsButton.topAnchor.constraint(equalTo: userTermsIntro.bottomAnchor, constant: .mediumSpacing),
-            userTermsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            userTermsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            userTermsButton.topAnchor.constraint(equalTo: userTermsIntro.bottomAnchor, constant: .mediumLargeSpacing),
+            userTermsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            userTermsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            userTermsButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.largeSpacing),
         ])
     }
 
