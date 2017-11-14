@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
     }()
 
     fileprivate lazy var forgotPasswordButton: Button = {
-        let button = Button(style: .link)
+        let button = Button(style: .smallLink)
         button.setTitle("Glemt passord", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
