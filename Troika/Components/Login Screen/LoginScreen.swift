@@ -23,62 +23,64 @@ class LoginScreen: UIView {
     private lazy var emailTextField: TextField = {
         let textField = TextField(inputType: .email)
         textField.translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
         return textField
     }()
 
     private lazy var passwordTextField: TextField = {
         let textField = TextField(inputType: .password)
         textField.translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
         return textField
     }()
 
-    private lazy var infoText: Label = {
+    private lazy var infoLabel: Label = {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = "Logg inn for å sende meldinger, lagre favoritter og søk. Du får også varsler når det skjer noe nytt!"
         return label
     }()
 
     private lazy var loginButton: Button = {
         let button = Button(style: .flat)
-        button.setTitle("Logg inn", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
         button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var forgotPasswordButton: Button = {
         let button = Button(style: .link)
-        button.setTitle("Glemt passord", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
         button.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var newUserButton: Button = {
         let button = Button(style: .default)
-        button.setTitle("Ny bruker", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
         button.addTarget(self, action: #selector(newUserTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var userTermsButton: Button = {
         let button = Button(style: .link)
-        button.setTitle("Brukervilkår", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
         button.addTarget(self, action: #selector(userTermsTapped), for: .touchUpInside)
         return button
     }()
 
-    private lazy var userTermsIntro: Label = {
+    private lazy var userTermsIntroLabel: Label = {
         let label = Label(style: .detail(.licorice))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ved å logge inn aksepterer du burkervilkårene våre"
         return label
     }()
 
@@ -105,13 +107,13 @@ class LoginScreen: UIView {
         scrollView.addSubview(contentView)
         addSubview(scrollView)
 
-        contentView.addSubview(infoText)
+        contentView.addSubview(infoLabel)
         contentView.addSubview(emailTextField)
         contentView.addSubview(passwordTextField)
         contentView.addSubview(loginButton)
         contentView.addSubview(forgotPasswordButton)
         contentView.addSubview(newUserButton)
-        contentView.addSubview(userTermsIntro)
+        contentView.addSubview(userTermsIntroLabel)
         contentView.addSubview(userTermsButton)
     }
 
@@ -134,11 +136,11 @@ class LoginScreen: UIView {
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            infoText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .largeSpacing),
-            infoText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            infoText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            infoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .largeSpacing),
+            infoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
-            emailTextField.topAnchor.constraint(equalTo: infoText.bottomAnchor, constant: .mediumLargeSpacing),
+            emailTextField.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: .mediumLargeSpacing),
             emailTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
@@ -160,11 +162,11 @@ class LoginScreen: UIView {
             newUserButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
             newUserButton.heightAnchor.constraint(equalToConstant: buttonHeight),
 
-            userTermsIntro.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: .largeSpacing),
-            userTermsIntro.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            userTermsIntro.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            userTermsIntroLabel.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: .largeSpacing),
+            userTermsIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            userTermsIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
-            userTermsButton.topAnchor.constraint(equalTo: userTermsIntro.bottomAnchor, constant: .mediumLargeSpacing),
+            userTermsButton.topAnchor.constraint(equalTo: userTermsIntroLabel.bottomAnchor, constant: .mediumLargeSpacing),
             userTermsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             userTermsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
             userTermsButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.largeSpacing),
