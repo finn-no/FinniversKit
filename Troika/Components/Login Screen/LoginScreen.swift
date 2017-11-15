@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 class LoginScreen: UIView {
@@ -17,13 +21,13 @@ class LoginScreen: UIView {
     }()
 
     private lazy var emailTextField: TextField = {
-        let textField = TextField()
+        let textField = TextField(inputType: .email)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
     private lazy var passwordTextField: TextField = {
-        let textField = TextField()
+        let textField = TextField(inputType: .password)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -120,7 +124,7 @@ class LoginScreen: UIView {
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            ])
+        ])
 
         contentView.addSubview(infoText)
         contentView.addSubview(emailTextField)
@@ -130,9 +134,6 @@ class LoginScreen: UIView {
         contentView.addSubview(newUserButton)
         contentView.addSubview(userTermsIntro)
         contentView.addSubview(userTermsButton)
-
-//        emailTextField.presentable = TextFieldDataModel.email
-//        passwordTextField.presentable = TextFieldDataModel.password
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
@@ -172,7 +173,7 @@ class LoginScreen: UIView {
             userTermsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             userTermsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
             userTermsButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.largeSpacing),
-            ])
+        ])
     }
 
     // MARK: - Private

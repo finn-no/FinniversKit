@@ -61,16 +61,20 @@ public class TextField: UIView {
         return view
     }()
 
+    // MARK: - External properties
+
+    public let inputType: InputType
+
     // MARK: - Setup
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(inputType: InputType) {
+        self.inputType = inputType
+        super.init(frame: .zero)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    public required convenience init?(coder aDecoder: NSCoder) {
+        self.init(inputType: .email)
     }
 
     private func setup() {
@@ -78,6 +82,17 @@ public class TextField: UIView {
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
+
+        typeLabel.text = inputType.typeText
+        textField.isSecureTextEntry = inputType.isSecureMode
+        showPasswordButton.isHidden = !inputType.isSecureMode
+        accessibilityLabel = inputType.typeText
+        textField.placeholder = inputType.typeText
+        textField.keyboardType = inputType.keyBoardStyle
+
+        if inputType.isSecureMode {
+            textField.rightViewMode = .never
+        }
 
         addSubview(typeLabel)
         addSubview(textField)
@@ -101,7 +116,7 @@ public class TextField: UIView {
         showPasswordButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor).isActive = true
         showPasswordButton.heightAnchor.constraint(equalToConstant: eyeImage.size.height).isActive = true
 
-        if (presentable?.type.isSecureMode)! {
+        if inputType.isSecureMode {
             showPasswordButton.widthAnchor.constraint(equalToConstant: eyeImage.size.width).isActive = true
         } else {
             showPasswordButton.widthAnchor.constraint(equalToConstant: 0).isActive = true
@@ -114,27 +129,6 @@ public class TextField: UIView {
         underline.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
         typeLabel.transform = transform.translatedBy(x: 0, y: typeLabel.frame.height)
-    }
-
-    // MARK: - Dependency injection
-
-    public var presentable: TextFieldPresentable? {
-        didSet {
-            guard let presentable = presentable else {
-                return
-            }
-
-            typeLabel.text = presentable.type.typeText
-            textField.isSecureTextEntry = presentable.type.isSecureMode
-            showPasswordButton.isHidden = !presentable.type.isSecureMode
-            accessibilityLabel = presentable.accessibilityLabel
-            textField.placeholder = presentable.type.typeText
-            textField.keyboardType = presentable.type.keyBoardStyle
-
-            if presentable.type.isSecureMode {
-                textField.rightViewMode = .never
-            }
-        }
     }
 
     // MARK: - Actions
