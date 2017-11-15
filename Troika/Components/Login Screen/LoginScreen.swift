@@ -99,8 +99,20 @@ class LoginScreen: UIView {
     }
 
     private func setup() {
-        // Perform setup
-        // Add child views as subviews
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        addGestureRecognizer(tap)
+
+        scrollView.addSubview(contentView)
+        addSubview(scrollView)
+
+        contentView.addSubview(infoText)
+        contentView.addSubview(emailTextField)
+        contentView.addSubview(passwordTextField)
+        contentView.addSubview(loginButton)
+        contentView.addSubview(forgotPasswordButton)
+        contentView.addSubview(newUserButton)
+        contentView.addSubview(userTermsIntro)
+        contentView.addSubview(userTermsButton)
     }
 
     // MARK: - Superclass Overrides
@@ -109,9 +121,6 @@ class LoginScreen: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-
-        scrollView.addSubview(contentView)
-        addSubview(scrollView)
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -124,21 +133,7 @@ class LoginScreen: UIView {
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
 
-        contentView.addSubview(infoText)
-        contentView.addSubview(emailTextField)
-        contentView.addSubview(passwordTextField)
-        contentView.addSubview(loginButton)
-        contentView.addSubview(forgotPasswordButton)
-        contentView.addSubview(newUserButton)
-        contentView.addSubview(userTermsIntro)
-        contentView.addSubview(userTermsButton)
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        addGestureRecognizer(tap)
-
-        NSLayoutConstraint.activate([
             infoText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .largeSpacing),
             infoText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             infoText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
