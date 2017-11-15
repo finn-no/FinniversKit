@@ -78,7 +78,7 @@ class LoginViewController: UIViewController {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Ved å logge inn aksepterer du burkervilkårene våres"
+        label.text = "Ved å logge inn aksepterer du burkervilkårene våre"
         return label
     }()
 
