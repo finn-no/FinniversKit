@@ -34,7 +34,7 @@
 		459D37FE1F87AE5D00038582 /* RibbonViewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FD1F87AE5D00038582 /* RibbonViewPresentable.swift */; };
 		459D38001F87C1B300038582 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FF1F87C1B300038582 /* ScreenSize.swift */; };
 		45A7EB521FBC65D800E2C1AA /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A7EB511FBC65D800E2C1AA /* LoginScreen.swift */; };
-		45C5E7A81FB4466600EF2992 /* TextFieldHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7A71FB4466600EF2992 /* TextFieldHelpers.swift */; };
+		45A7EB541FBC716D00E2C1AA /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A7EB531FBC716D00E2C1AA /* LoginScreenModel.swift */; };
 		45C5E7AA1FB4977700EF2992 /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7A91FB4977700EF2992 /* TextField+InputType.swift */; };
 		45C5E7AD1FB5C7EB00EF2992 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7AC1FB5C7EB00EF2992 /* Button.swift */; };
 		45CF5A501F96198B00069240 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
@@ -134,7 +134,7 @@
 		459D37FD1F87AE5D00038582 /* RibbonViewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonViewPresentable.swift; sourceTree = "<group>"; };
 		459D37FF1F87C1B300038582 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		45A7EB511FBC65D800E2C1AA /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
-		45C5E7A71FB4466600EF2992 /* TextFieldHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelpers.swift; sourceTree = "<group>"; };
+		45A7EB531FBC716D00E2C1AA /* LoginScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenModel.swift; sourceTree = "<group>"; };
 		45C5E7A91FB4977700EF2992 /* TextField+InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
 		45C5E7AC1FB5C7EB00EF2992 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		45C5E7AE1FB5C8A000EF2992 /* Button.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Button.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -321,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				45A7EB511FBC65D800E2C1AA /* LoginScreen.swift */,
+				45A7EB531FBC716D00E2C1AA /* LoginScreenModel.swift */,
 			);
 			path = "Login Screen";
 			sourceTree = "<group>";
@@ -413,7 +414,6 @@
 				459D37FF1F87C1B300038582 /* ScreenSize.swift */,
 				CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */,
 				4577B7291F865400005E7598 /* MarketHelpers.swift */,
-				45C5E7A71FB4466600EF2992 /* TextFieldHelpers.swift */,
 				459D37FB1F8782CB00038582 /* RibbonHelpers.swift */,
 				45CF5A601F97678400069240 /* ToastHelpers.swift */,
 			);
@@ -713,6 +713,7 @@
 				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
 				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
 				45C5E7AD1FB5C7EB00EF2992 /* Button.swift in Sources */,
+				45A7EB541FBC716D00E2C1AA /* LoginScreenModel.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridPresentable.swift in Sources */,
 				CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */,
 				45C5E7AA1FB4977700EF2992 /* TextField+InputType.swift in Sources */,
@@ -747,7 +748,6 @@
 				4577B72A1F865400005E7598 /* MarketHelpers.swift in Sources */,
 				CB400B171F83BE2E00B26C1C /* PreviewHelpers.swift in Sources */,
 				45CF5A611F97678400069240 /* ToastHelpers.swift in Sources */,
-				45C5E7A81FB4466600EF2992 /* TextFieldHelpers.swift in Sources */,
 				CB6CF7381F84F880003B73D2 /* TroikaDemoKit.swift in Sources */,
 				459D37FC1F8782CB00038582 /* RibbonHelpers.swift in Sources */,
 			);
