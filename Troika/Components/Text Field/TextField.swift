@@ -64,6 +64,13 @@ public class TextField: UIView {
     // MARK: - External properties
 
     public let inputType: InputType
+    public var placeholderText: String = "" {
+        didSet {
+            typeLabel.text = placeholderText
+            accessibilityLabel = placeholderText
+            textField.placeholder = placeholderText
+        }
+    }
 
     // MARK: - Setup
 
@@ -83,11 +90,8 @@ public class TextField: UIView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
 
-        typeLabel.text = inputType.typeText
         textField.isSecureTextEntry = inputType.isSecureMode
         showPasswordButton.isHidden = !inputType.isSecureMode
-        accessibilityLabel = inputType.typeText
-        textField.placeholder = inputType.typeText
         textField.keyboardType = inputType.keyBoardStyle
 
         if inputType.isSecureMode {

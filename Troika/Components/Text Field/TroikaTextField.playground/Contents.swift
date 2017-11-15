@@ -15,6 +15,7 @@ view.frame = ScreenSize.medium
 
 let textField = TextField(inputType: .email)
 textField.translatesAutoresizingMaskIntoConstraints = false
+textField.placeholderText = "E-post"
 
 view.addSubview(textField)
 
