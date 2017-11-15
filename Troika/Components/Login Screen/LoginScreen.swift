@@ -88,6 +88,22 @@ class LoginScreen: UIView {
 
     // MARK: - External properties / Dependency injection
 
+    public var model: LoginScreenModel? {
+        didSet {
+            guard let model = model else {
+                return
+            }
+            infoLabel.text = model.headerText
+            emailTextField.placeholderText = model.emailPlaceholder
+            passwordTextField.placeholderText = model.passwordPlaceholder
+            forgotPasswordButton.setTitle(model.forgotPasswordButtonTitle, for: .normal)
+            loginButton.setTitle(model.loginButtonTitle, for: .normal)
+            newUserButton.setTitle(model.newUserButtonTitle, for: .normal)
+            userTermsIntroLabel.text = model.userTermsIntroText
+            userTermsButton.setTitle(model.userTermsButtonTitle, for: .normal)
+        }
+    }
+
     // MARK: - Setup
 
     public override init(frame: CGRect) {
