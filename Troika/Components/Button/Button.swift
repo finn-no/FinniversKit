@@ -62,6 +62,8 @@ public class Button: UIButton {
         if style == .link {
             attributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: style.textColor, range: textRange)
             let underlinedAttributedTitle = NSMutableAttributedString(string: title)
+            let disabledAttributedTitle = NSMutableAttributedString(string: title)
+            disabledAttributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: style.disabledTextColor ?? UIColor.milk, range: textRange)
             let underlineAttributes: [NSAttributedStringKey: Any] = [
                 NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
                 NSAttributedStringKey.foregroundColor: style.highlightedTextColor ?? style.textColor,
@@ -69,6 +71,7 @@ public class Button: UIButton {
             underlinedAttributedTitle.addAttributes(underlineAttributes, range: textRange)
             super.setAttributedTitle(attributedTitle, for: .normal)
             super.setAttributedTitle(underlinedAttributedTitle, for: .highlighted)
+            super.setAttributedTitle(disabledAttributedTitle, for: .disabled)
         }
 
         super.setTitle(title, for: state)
