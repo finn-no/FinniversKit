@@ -87,6 +87,8 @@ class LoginViewController: UIViewController {
         setupView()
     }
 
+    fileprivate let buttonHeight: CGFloat = 44
+
     private func setupView() {
         scrollView.addSubview(contentView)
         view.addSubview(scrollView)
@@ -141,12 +143,12 @@ class LoginViewController: UIViewController {
             loginButton.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: .largeSpacing),
             loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
-            loginButton.heightAnchor.constraint(equalToConstant: 42),
+            loginButton.heightAnchor.constraint(equalToConstant: buttonHeight),
 
             newUserButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumSpacing),
             newUserButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             newUserButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
-            newUserButton.heightAnchor.constraint(equalToConstant: 42),
+            newUserButton.heightAnchor.constraint(equalToConstant: buttonHeight),
 
             userTermsIntro.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: .largeSpacing),
             userTermsIntro.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
