@@ -137,6 +137,7 @@
 		45A7EB511FBC65D800E2C1AA /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		45A7EB531FBC716D00E2C1AA /* LoginScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenModel.swift; sourceTree = "<group>"; };
 		45A7EB571FBC7D5400E2C1AA /* LoginScreenHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenHelpers.swift; sourceTree = "<group>"; };
+		45A7EB591FBC845E00E2C1AA /* LoginScreen.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LoginScreen.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		45C5E7A91FB4977700EF2992 /* TextField+InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
 		45C5E7AC1FB5C7EB00EF2992 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		45C5E7AE1FB5C8A000EF2992 /* Button.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Button.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -322,6 +323,7 @@
 		45A7EB501FBC611300E2C1AA /* Login Screen */ = {
 			isa = PBXGroup;
 			children = (
+				45A7EB591FBC845E00E2C1AA /* LoginScreen.playground */,
 				45A7EB511FBC65D800E2C1AA /* LoginScreen.swift */,
 				45A7EB531FBC716D00E2C1AA /* LoginScreenModel.swift */,
 			);
