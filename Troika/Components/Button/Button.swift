@@ -52,6 +52,25 @@ public class Button: UIButton {
     // MARK: - Superclass Overrides
 
     public override func setTitle(_ title: String?, for state: UIControlState) {
+        guard let title = title else {
+            return
+        }
+
+        let textRange = NSMakeRange(0, title.count)
+        let attributedTitle = NSMutableAttributedString(string: title)
+
+        if style == .link {
+            attributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: style.textColor, range: textRange)
+            let underlinedAttributedTitle = NSMutableAttributedString(string: title)
+            let underlineAttributes: [NSAttributedStringKey: Any] = [
+                NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
+                NSAttributedStringKey.foregroundColor: style.highlightedTextColor ?? style.textColor,
+            ]
+            underlinedAttributedTitle.addAttributes(underlineAttributes, range: textRange)
+            super.setAttributedTitle(attributedTitle, for: .normal)
+            super.setAttributedTitle(underlinedAttributedTitle, for: .highlighted)
+        }
+
         super.setTitle(title, for: state)
 
         if state == .normal {
