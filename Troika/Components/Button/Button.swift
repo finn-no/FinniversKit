@@ -56,25 +56,11 @@ public class Button: UIButton {
             return
         }
 
-        let textRange = NSMakeRange(0, title.count)
-        let attributedTitle = NSMutableAttributedString(string: title)
-
         if style == .link {
-            attributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: style.textColor, range: textRange)
-            let underlinedAttributedTitle = NSMutableAttributedString(string: title)
-            let disabledAttributedTitle = NSMutableAttributedString(string: title)
-            disabledAttributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: style.disabledTextColor ?? UIColor.milk, range: textRange)
-            let underlineAttributes: [NSAttributedStringKey: Any] = [
-                NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
-                NSAttributedStringKey.foregroundColor: style.highlightedTextColor ?? style.textColor,
-            ]
-            underlinedAttributedTitle.addAttributes(underlineAttributes, range: textRange)
-            super.setAttributedTitle(attributedTitle, for: .normal)
-            super.setAttributedTitle(underlinedAttributedTitle, for: .highlighted)
-            super.setAttributedTitle(disabledAttributedTitle, for: .disabled)
+            setAsLink(title: title)
+        } else {
+            super.setTitle(title, for: state)
         }
-
-        super.setTitle(title, for: state)
 
         if state == .normal {
             accessibilityLabel = title
@@ -97,5 +83,25 @@ public class Button: UIButton {
             backgroundColor = isEnabled ? style.bodyColor : style.disabledBodyColor
             layer.borderColor = isEnabled ? style.borderColor?.cgColor : style.disabledBorderColor?.cgColor
         }
+    }
+
+    // MARK: - Private methods
+
+    private func setAsLink(title: String) {
+        let textRange = NSMakeRange(0, title.count)
+        let attributedTitle = NSMutableAttributedString(string: title)
+
+        attributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: style.textColor, range: textRange)
+        let underlinedAttributedTitle = NSMutableAttributedString(string: title)
+        let disabledAttributedTitle = NSMutableAttributedString(string: title)
+        disabledAttributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: style.disabledTextColor ?? UIColor.milk, range: textRange)
+        let underlineAttributes: [NSAttributedStringKey: Any] = [
+            NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
+            NSAttributedStringKey.foregroundColor: style.highlightedTextColor ?? style.textColor,
+        ]
+        underlinedAttributedTitle.addAttributes(underlineAttributes, range: textRange)
+        super.setAttributedTitle(attributedTitle, for: .normal)
+        super.setAttributedTitle(underlinedAttributedTitle, for: .highlighted)
+        super.setAttributedTitle(disabledAttributedTitle, for: .disabled)
     }
 }
