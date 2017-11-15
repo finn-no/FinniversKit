@@ -4,7 +4,7 @@
 
 import UIKit
 
-class LoginScreen: UIView {
+public class LoginScreen: UIView {
 
     // MARK: - Internal properties
 
@@ -23,21 +23,18 @@ class LoginScreen: UIView {
     private lazy var emailTextField: TextField = {
         let textField = TextField(inputType: .email)
         textField.translatesAutoresizingMaskIntoConstraints = false
-        isAccessibilityElement = true
         return textField
     }()
 
     private lazy var passwordTextField: TextField = {
         let textField = TextField(inputType: .password)
         textField.translatesAutoresizingMaskIntoConstraints = false
-        isAccessibilityElement = true
         return textField
     }()
 
     private lazy var infoLabel: Label = {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
-        isAccessibilityElement = true
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -46,7 +43,6 @@ class LoginScreen: UIView {
     private lazy var loginButton: Button = {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
-        isAccessibilityElement = true
         button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return button
     }()
@@ -54,7 +50,6 @@ class LoginScreen: UIView {
     private lazy var forgotPasswordButton: Button = {
         let button = Button(style: .link)
         button.translatesAutoresizingMaskIntoConstraints = false
-        isAccessibilityElement = true
         button.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
         return button
     }()
@@ -62,7 +57,6 @@ class LoginScreen: UIView {
     private lazy var newUserButton: Button = {
         let button = Button(style: .default)
         button.translatesAutoresizingMaskIntoConstraints = false
-        isAccessibilityElement = true
         button.addTarget(self, action: #selector(newUserTapped), for: .touchUpInside)
         return button
     }()
@@ -70,7 +64,6 @@ class LoginScreen: UIView {
     private lazy var userTermsButton: Button = {
         let button = Button(style: .link)
         button.translatesAutoresizingMaskIntoConstraints = false
-        isAccessibilityElement = true
         button.addTarget(self, action: #selector(userTermsTapped), for: .touchUpInside)
         return button
     }()
@@ -78,7 +71,6 @@ class LoginScreen: UIView {
     private lazy var userTermsIntroLabel: Label = {
         let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
-        isAccessibilityElement = true
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
