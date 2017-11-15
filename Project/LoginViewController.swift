@@ -171,6 +171,7 @@ class LoginViewController: UIViewController {
 
     @objc func newUserTapped() {
         print("New user tapped")
+        loginButton.isEnabled = !loginButton.isEnabled
     }
 
     @objc func userTermsTapped() {
