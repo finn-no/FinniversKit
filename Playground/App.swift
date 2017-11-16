@@ -7,6 +7,7 @@ extension AppDelegate {
     // ToastPlaygroundView
     // LabelPlaygroundView
     // RibbonPlaygroundView
+    // MarketGridPlaygroundView
 
-    typealias View = RibbonPlaygroundView
+    typealias View = MarketGridPlaygroundView
 }

@@ -17,7 +17,6 @@
 		14405C801FAFC3A900D03E04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7E1FAFC3A900D03E04 /* App.swift */; };
 		14405C831FAFC49100D03E04 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C811FAFC49100D03E04 /* Injector.swift */; };
 		144351AB1FBE2A53007B2229 /* ToastPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */; };
-		144351B31FBE2BC1007B2229 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351AC1FBE2BC1007B2229 /* MarketHelpers.swift */; };
 		144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */; };
 		144351B81FBE2BC1007B2229 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B11FBE2BC1007B2229 /* ScreenSize.swift */; };
 		144351B91FBE2BC1007B2229 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */; };
@@ -29,6 +28,8 @@
 		144351C71FBE3030007B2229 /* LabelPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C61FBE3030007B2229 /* LabelPlaygroundView.swift */; };
 		144351CB1FBE36D3007B2229 /* RibbonPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C91FBE36D3007B2229 /* RibbonPlaygroundView.swift */; };
 		144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */; };
+		144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CE1FBE3805007B2229 /* MarketHelpers.swift */; };
+		144351D11FBE3805007B2229 /* MarketGridPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CF1FBE3805007B2229 /* MarketGridPlaygroundView.swift */; };
 		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
 		44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		44D32C291FB07850001E86D6 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -95,7 +96,6 @@
 		14405C7E1FAFC3A900D03E04 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		14405C811FAFC49100D03E04 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastPlaygroundView.swift; sourceTree = "<group>"; };
-		144351AC1FBE2BC1007B2229 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
 		144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
 		144351B11FBE2BC1007B2229 /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
@@ -107,6 +107,8 @@
 		144351C61FBE3030007B2229 /* LabelPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPlaygroundView.swift; sourceTree = "<group>"; };
 		144351C91FBE36D3007B2229 /* RibbonPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonPlaygroundView.swift; sourceTree = "<group>"; };
 		144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonHelpers.swift; sourceTree = "<group>"; };
+		144351CE1FBE3805007B2229 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
+		144351CF1FBE3805007B2229 /* MarketGridPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridPlaygroundView.swift; sourceTree = "<group>"; };
 		14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
 		4537D01F1F94ECE6006942E7 /* CGFloat+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Troika.swift"; sourceTree = "<group>"; };
@@ -138,7 +140,6 @@
 		CB400B051F83B2D100B26C1C /* PreviewCell.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PreviewCell.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB400B1C1F83C67500B26C1C /* PreviewGridView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PreviewGridView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB400B1D1F83C6B000B26C1C /* MarketGridCell.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MarketGridCell.playground; path = "Troika/Components/Market Grid/Market Grid Cell/MarketGridCell.playground"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		CB400B1E1F83C6C100B26C1C /* MarketGridView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MarketGridView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CB400B211F83C96600B26C1C /* UIImage+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Troika.swift"; sourceTree = "<group>"; };
 		CB400B231F83C9D400B26C1C /* Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Troika.swift; path = Troika/Troika.swift; sourceTree = SOURCE_ROOT; };
 		CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridHeaderView.swift; sourceTree = "<group>"; };
@@ -193,7 +194,6 @@
 				14405C5F1FAFBBF000D03E04 /* Info.plist */,
 				14405C7E1FAFC3A900D03E04 /* App.swift */,
 				14405C811FAFC49100D03E04 /* Injector.swift */,
-				144351AC1FBE2BC1007B2229 /* MarketHelpers.swift */,
 				144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */,
 				144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */,
 				144351B11FBE2BC1007B2229 /* ScreenSize.swift */,
@@ -233,6 +233,15 @@
 			children = (
 				144351C91FBE36D3007B2229 /* RibbonPlaygroundView.swift */,
 				144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351CD1FBE3805007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351CE1FBE3805007B2229 /* MarketHelpers.swift */,
+				144351CF1FBE3805007B2229 /* MarketGridPlaygroundView.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -299,7 +308,7 @@
 		457B35C31F7BB0860031E125 /* Market Grid View */ = {
 			isa = PBXGroup;
 			children = (
-				CB400B1E1F83C6C100B26C1C /* MarketGridView.playground */,
+				144351CD1FBE3805007B2229 /* Playground */,
 				455866061F7A751300F670EF /* MarketGridView.swift */,
 				453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */,
 			);
@@ -574,11 +583,11 @@
 			files = (
 				144351CB1FBE36D3007B2229 /* RibbonPlaygroundView.swift in Sources */,
 				144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */,
+				144351D11FBE3805007B2229 /* MarketGridPlaygroundView.swift in Sources */,
 				14405C801FAFC3A900D03E04 /* App.swift in Sources */,
 				144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */,
 				144351B91FBE2BC1007B2229 /* PreviewHelpers.swift in Sources */,
 				144351BD1FBE2DFC007B2229 /* ToastHelpers.swift in Sources */,
-				144351B31FBE2BC1007B2229 /* MarketHelpers.swift in Sources */,
 				14405C831FAFC49100D03E04 /* Injector.swift in Sources */,
 				144351AB1FBE2A53007B2229 /* ToastPlaygroundView.swift in Sources */,
 				144351C71FBE3030007B2229 /* LabelPlaygroundView.swift in Sources */,
@@ -586,6 +595,7 @@
 				144351B81FBE2BC1007B2229 /* ScreenSize.swift in Sources */,
 				144351C11FBE2EB9007B2229 /* TextFieldHelpers.swift in Sources */,
 				144351C21FBE2EB9007B2229 /* TextFieldPlaygroundView.swift in Sources */,
+				144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
