@@ -36,6 +36,7 @@
 		45A7EB521FBC65D800E2C1AA /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A7EB511FBC65D800E2C1AA /* LoginScreen.swift */; };
 		45A7EB541FBC716D00E2C1AA /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A7EB531FBC716D00E2C1AA /* LoginScreenModel.swift */; };
 		45A7EB581FBC7D5400E2C1AA /* LoginScreenHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A7EB571FBC7D5400E2C1AA /* LoginScreenHelpers.swift */; };
+		45A7EB5B1FBDD67700E2C1AA /* ToastView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A7EB5A1FBDD67700E2C1AA /* ToastView+Style.swift */; };
 		45C5E7AA1FB4977700EF2992 /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7A91FB4977700EF2992 /* TextField+InputType.swift */; };
 		45C5E7AD1FB5C7EB00EF2992 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7AC1FB5C7EB00EF2992 /* Button.swift */; };
 		45CF5A501F96198B00069240 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
@@ -43,7 +44,6 @@
 		45CF5A551F96198F00069240 /* TroikaDemoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */; };
 		45CF5A561F96198F00069240 /* TroikaDemoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45CF5A5B1F97336B00069240 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF5A5A1F97336B00069240 /* ToastView.swift */; };
-		45CF5A5D1F97360000069240 /* ToastPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF5A5C1F97360000069240 /* ToastPresentable.swift */; };
 		45CF5A611F97678400069240 /* ToastHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF5A601F97678400069240 /* ToastHelpers.swift */; };
 		CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664241F73F818009D3244 /* UIFont+Troika.swift */; };
 		CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3CF1581F73E5870041EF20 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -138,11 +138,11 @@
 		45A7EB531FBC716D00E2C1AA /* LoginScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenModel.swift; sourceTree = "<group>"; };
 		45A7EB571FBC7D5400E2C1AA /* LoginScreenHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenHelpers.swift; sourceTree = "<group>"; };
 		45A7EB591FBC845E00E2C1AA /* LoginScreen.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LoginScreen.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		45A7EB5A1FBDD67700E2C1AA /* ToastView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToastView+Style.swift"; sourceTree = "<group>"; };
 		45C5E7A91FB4977700EF2992 /* TextField+InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
 		45C5E7AC1FB5C7EB00EF2992 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		45C5E7AE1FB5C8A000EF2992 /* Button.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Button.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		45CF5A5A1F97336B00069240 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		45CF5A5C1F97360000069240 /* ToastPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresentable.swift; sourceTree = "<group>"; };
 		45CF5A5F1F97476E00069240 /* ToastView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ToastView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		45CF5A601F97678400069240 /* ToastHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHelpers.swift; sourceTree = "<group>"; };
 		CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Troika View.xctemplate"; sourceTree = "<group>"; };
@@ -345,7 +345,7 @@
 			children = (
 				45CF5A5F1F97476E00069240 /* ToastView.playground */,
 				45CF5A5A1F97336B00069240 /* ToastView.swift */,
-				45CF5A5C1F97360000069240 /* ToastPresentable.swift */,
+				45A7EB5A1FBDD67700E2C1AA /* ToastView+Style.swift */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -712,8 +712,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB3E67C21F7E4D4000C40D47 /* PreviewGridLayout.swift in Sources */,
-				45CF5A5D1F97360000069240 /* ToastPresentable.swift in Sources */,
 				CB3E67C31F7E4D4000C40D47 /* PreviewGridView.swift in Sources */,
+				45A7EB5B1FBDD67700E2C1AA /* ToastView+Style.swift in Sources */,
 				457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */,
 				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
 				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,

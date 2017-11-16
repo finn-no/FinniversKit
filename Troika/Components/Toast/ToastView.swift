@@ -24,28 +24,6 @@ public extension ToastViewDelegate {
     }
 }
 
-public enum ToastType {
-    case success
-    case sucesssImage
-    case error
-    case successButton
-    case errorButton
-
-    var color: UIColor {
-        switch self {
-        case .error, .errorButton: return .salmon
-        default: return .mint
-        }
-    }
-
-    var imageBackgroundColor: UIColor {
-        switch self {
-        case .sucesssImage: return .milk
-        default: return .clear
-        }
-    }
-}
-
 public class ToastView: UIView {
 
     // MARK: - Internal properties
