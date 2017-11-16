@@ -13,14 +13,23 @@ let view = UIView()
 view.backgroundColor = .white
 view.frame = ScreenSize.medium
 
-let textField = TextField(inputType: .email)
-textField.translatesAutoresizingMaskIntoConstraints = false
-textField.placeholderText = "E-post"
+let emailTextField = TextField(inputType: .email)
+emailTextField.translatesAutoresizingMaskIntoConstraints = false
+emailTextField.placeholderText = "E-post"
 
-view.addSubview(textField)
+let passwordTextField = TextField(inputType: .password)
+passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+passwordTextField.placeholderText = "Passord"
 
-textField.topAnchor.constraint(equalTo: view.topAnchor, constant: .mediumLargeSpacing).isActive = true
-textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .mediumLargeSpacing).isActive = true
-textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.mediumLargeSpacing).isActive = true
+view.addSubview(emailTextField)
+view.addSubview(passwordTextField)
+
+emailTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: .mediumLargeSpacing).isActive = true
+emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .mediumLargeSpacing).isActive = true
+emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.mediumLargeSpacing).isActive = true
+
+passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .mediumLargeSpacing).isActive = true
+passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .mediumLargeSpacing).isActive = true
+passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.mediumLargeSpacing).isActive = true
 
 PlaygroundPage.current.liveView = view
