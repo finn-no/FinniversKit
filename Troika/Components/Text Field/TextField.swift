@@ -72,6 +72,9 @@ public class TextField: UIView {
         }
     }
 
+    public var text: String? {
+        return textField.text
+    }
     // MARK: - Setup
 
     public init(inputType: InputType) {
