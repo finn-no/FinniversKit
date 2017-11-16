@@ -4,12 +4,12 @@
 
 import Foundation
 
-public protocol TextFieldPresentable {
+public protocol TextFieldModel {
     var type: TextField.InputType { get }
     var accessibilityLabel: String { get }
 }
 
-public extension TextFieldPresentable {
+public extension TextFieldModel {
     var accessibilityLabel: String {
         return type.typeText
     }

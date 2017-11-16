@@ -9,10 +9,10 @@ import TroikaDemoKit
 
 TroikaDemoKit.setupPlayground()
 
-var presentables = Market.allMarkets
+var models = Market.allMarkets
 let collectionView = MarketGridView(frame: .zero)
 
-collectionView.marketGridPresentables = presentables
+collectionView.marketGridModels = models
 collectionView.frame = ScreenSize.medium
 collectionView.backgroundColor = .white
 

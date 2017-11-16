@@ -10,7 +10,7 @@ public protocol MarketGridViewDelegate: NSObjectProtocol {
 
 public protocol MarketGridViewDataSource: NSObjectProtocol {
     func numberOfItems(inMarketGridView marketGridView: MarketGridView) -> Int
-    func marketGridView(_ marketGridView: MarketGridView, presentableAtIndex index: Int) -> MarketGridPresentable
+    func marketGridView(_ marketGridView: MarketGridView, modelAtIndex index: Int) -> MarketGridModel
 }
 
 public class MarketGridView: UIView {
@@ -88,11 +88,11 @@ public class MarketGridView: UIView {
     // MARK: - Private
 
     private func numberOfRows(for viewWidth: CGFloat) -> Int {
-        guard let presentablesCount = dataSource?.numberOfItems(inMarketGridView: self) else {
+        guard let modelsCount = dataSource?.numberOfItems(inMarketGridView: self) else {
             return 0
         }
 
-        return Int(ceil(Double(presentablesCount) / Double(ScreenSizeCategory(width: viewWidth).itemsPerRow)))
+        return Int(ceil(Double(modelsCount) / Double(ScreenSizeCategory(width: viewWidth).itemsPerRow)))
     }
 
     private func itemSize(for viewWidth: CGFloat) -> CGSize {
@@ -149,8 +149,8 @@ extension MarketGridView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(MarketGridCell.self, for: indexPath)
 
-        if let presentable = dataSource?.marketGridView(self, presentableAtIndex: indexPath.row) {
-            cell.presentable = presentable
+        if let model = dataSource?.marketGridView(self, modelAtIndex: indexPath.row) {
+            cell.model = model
         }
 
         return cell

@@ -101,7 +101,7 @@ public class TextField: UIView {
         showPasswordButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor).isActive = true
         showPasswordButton.heightAnchor.constraint(equalToConstant: eyeImage.size.height).isActive = true
 
-        if (presentable?.type.isSecureMode)! {
+        if (model?.type.isSecureMode)! {
             showPasswordButton.widthAnchor.constraint(equalToConstant: eyeImage.size.width).isActive = true
         } else {
             showPasswordButton.widthAnchor.constraint(equalToConstant: 0).isActive = true
@@ -118,20 +118,20 @@ public class TextField: UIView {
 
     // MARK: - Dependency injection
 
-    public var presentable: TextFieldPresentable? {
+    public var model: TextFieldModel? {
         didSet {
-            guard let presentable = presentable else {
+            guard let model = model else {
                 return
             }
 
-            typeLabel.text = presentable.type.typeText
-            textField.isSecureTextEntry = presentable.type.isSecureMode
-            showPasswordButton.isHidden = !presentable.type.isSecureMode
-            accessibilityLabel = presentable.accessibilityLabel
-            textField.placeholder = presentable.type.typeText
-            textField.keyboardType = presentable.type.keyBoardStyle
+            typeLabel.text = model.type.typeText
+            textField.isSecureTextEntry = model.type.isSecureMode
+            showPasswordButton.isHidden = !model.type.isSecureMode
+            accessibilityLabel = model.accessibilityLabel
+            textField.placeholder = model.type.typeText
+            textField.keyboardType = model.type.keyBoardStyle
 
-            if presentable.type.isSecureMode {
+            if model.type.isSecureMode {
                 textField.rightViewMode = .never
             }
         }

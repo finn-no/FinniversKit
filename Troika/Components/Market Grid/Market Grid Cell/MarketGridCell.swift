@@ -84,12 +84,12 @@ public class MarketGridCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
-    public var presentable: MarketGridPresentable? {
+    public var model: MarketGridModel? {
         didSet {
-            iconImageView.image = presentable?.iconImage
-            titleLabel.text = presentable?.title
-            accessibilityLabel = presentable?.accessibilityLabel
-            if let presentable = presentable, presentable.showExternalLinkIcon {
+            iconImageView.image = model?.iconImage
+            titleLabel.text = model?.title
+            accessibilityLabel = model?.accessibilityLabel
+            if let model = model, model.showExternalLinkIcon {
                 externalLinkImageView.isHidden = false
             } else {
                 externalLinkImageView.isHidden = true
