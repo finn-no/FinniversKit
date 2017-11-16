@@ -204,6 +204,13 @@ public class TextField: UIView {
     @objc private func handleTap() {
         textField.becomeFirstResponder()
     }
+
+    fileprivate func isValidEmail(testStr: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -218,8 +225,14 @@ extension TextField: UITextFieldDelegate {
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.textFieldDidEndEditing(self)
-        UIView.animate(withDuration: animationDuration) {
-            self.underline.backgroundColor = .stone
+        if let text = textField.text, !isValidEmail(testStr: text), !text.isEmpty, inputType == .email {
+            UIView.animate(withDuration: animationDuration) {
+                self.underline.backgroundColor = .cherry
+            }
+        } else {
+            UIView.animate(withDuration: animationDuration) {
+                self.underline.backgroundColor = .stone
+            }
         }
     }
 
