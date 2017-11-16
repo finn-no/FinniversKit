@@ -10,6 +10,9 @@ public class TextField: UIView {
 
     private let eyeImage = UIImage(frameworkImageNamed: "view")!.withRenderingMode(.alwaysTemplate)
     private let clearTextIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
+    private let widthOfShowPasswordButton: CGFloat = 25
+    private let underlineHeight: CGFloat = 2
+    private let animationDuration: Double = 0.3
 
     private lazy var typeLabel: Label = {
         let label = Label(style: .detail(.stone))
@@ -50,9 +53,6 @@ public class TextField: UIView {
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
-
-    private let underlineHeight: CGFloat = 2
-    private let animationDuration: Double = 0.3
 
     private lazy var underline: UIView = {
         let view = UIView()
@@ -121,7 +121,7 @@ public class TextField: UIView {
         showPasswordButton.heightAnchor.constraint(equalToConstant: eyeImage.size.height).isActive = true
 
         if inputType.isSecureMode {
-            showPasswordButton.widthAnchor.constraint(equalToConstant: eyeImage.size.width).isActive = true
+            showPasswordButton.widthAnchor.constraint(equalToConstant: widthOfShowPasswordButton).isActive = true
         } else {
             showPasswordButton.widthAnchor.constraint(equalToConstant: 0).isActive = true
         }
