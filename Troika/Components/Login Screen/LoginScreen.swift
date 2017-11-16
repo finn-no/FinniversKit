@@ -123,6 +123,8 @@ public class LoginScreen: UIView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
 
+        loginButton.isEnabled = false
+
         scrollView.addSubview(contentView)
         addSubview(scrollView)
 
