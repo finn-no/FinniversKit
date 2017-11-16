@@ -9,6 +9,8 @@ extension AppDelegate {
     // RibbonPlaygroundView
     // MarketGridViewPlaygroundView
     // MarketGridCellPlaygroundView
+    // PreviewGridViewPlaygroundView
+    // PreviewCellPlaygroundView
 
-    typealias View = MarketGridCellPlaygroundView
+    typealias View = PreviewCellPlaygroundView
 }

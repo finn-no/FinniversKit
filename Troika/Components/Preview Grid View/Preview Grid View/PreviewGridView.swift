@@ -48,8 +48,8 @@ public class PreviewGridView: UIView {
 
     // MARK: - Setup
 
-    public init(frame: CGRect = .zero, delegate: PreviewGridViewDelegate, dataSource: PreviewGridViewDataSource) {
-        super.init(frame: frame)
+    public init(delegate: PreviewGridViewDelegate, dataSource: PreviewGridViewDataSource) {
+        super.init(frame: .zero)
 
         self.delegate = delegate
         self.dataSource = dataSource
