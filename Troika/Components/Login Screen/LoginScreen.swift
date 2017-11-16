@@ -9,6 +9,7 @@ public protocol LoginScreenDelegate: NSObjectProtocol {
     func loginButtonPressed(in: LoginScreen)
     func newUserButtonPressed(in: LoginScreen)
     func userTermsButtonPressed(in: LoginScreen)
+    func incompleteCredentials(in: LoginScreen)
 }
 
 public class LoginScreen: UIView {

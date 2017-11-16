@@ -37,6 +37,19 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginScreenDelegate {
+    func incompleteCredentials(in: LoginScreen) {
+        let toast = ToastView(delegate: self)
+        toast.presentable = ToastDataModel.error
+
+        guard let tabbarHeight = tabBarController?.tabBar.frame.height else {
+            return
+        }
+
+        let offsetHeight = isKeyboardVisible ? keyboardHeight : tabbarHeight
+
+        toast.presentFromBottom(view: view, animateOffset: offsetHeight, timeOut: 4)
+    }
+
     func forgotPasswordButtonPressed(in: LoginScreen) {
         print("Forgot password button pressed!")
     }
