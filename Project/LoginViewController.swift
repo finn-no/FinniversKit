@@ -90,3 +90,14 @@ extension LoginViewController: LoginScreenDelegate {
         print("User terms button pressed!")
     }
 }
+
+// MARK: - ToastViewDelegate
+extension LoginViewController: ToastViewDelegate {
+    func didTap(toastView: ToastView) {
+        print("Toast view tapped!")
+    }
+
+    func didTapActionButton(button: UIButton, in toastView: ToastView) {
+        print("Action button tapped!")
+    }
+}
