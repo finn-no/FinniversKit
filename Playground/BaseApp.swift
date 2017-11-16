@@ -27,6 +27,10 @@ class ViewController<View: UIView>: UIViewController {
 
     private var customView: View { return self.view as! View }
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
     override func loadView() {
         let view = View()
         view.translatesAutoresizingMaskIntoConstraints = false
