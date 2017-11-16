@@ -33,12 +33,12 @@ let successButtonToast = ToastView(delegate: delegate)
 let errorButtonToast = ToastView(delegate: delegate)
 let animatedToast = ToastView(delegate: delegate)
 
-successToast.presentable = ToastDataModel.multiline
-imageToast.presentable = ToastDataModel.successImage
-errorToast.presentable = ToastDataModel.error
-successButtonToast.presentable = ToastDataModel.successButton
-errorButtonToast.presentable = ToastDataModel.errorButton
-animatedToast.presentable = ToastDataModel.success
+successToast.model = ToastDataModel.multiline
+imageToast.model = ToastDataModel.successImage
+errorToast.model = ToastDataModel.error
+successButtonToast.model = ToastDataModel.successButton
+errorButtonToast.model = ToastDataModel.errorButton
+animatedToast.model = ToastDataModel.success
 
 animatedToast.presentFromBottom(view: view, animateOffset: 0, timeOut: 5)
 

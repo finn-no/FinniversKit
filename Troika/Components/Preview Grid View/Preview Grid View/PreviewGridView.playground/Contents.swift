@@ -13,6 +13,5 @@ let delegateDataSource = PreviewGridDelegateDataSource()
 let view = PreviewGridView(frame: .zero, delegate: delegateDataSource, dataSource: delegateDataSource)
 
 view.frame = ScreenSize.medium
-view.previewPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
 
 PlaygroundPage.current.liveView = view

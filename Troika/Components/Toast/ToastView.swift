@@ -81,15 +81,15 @@ public class ToastView: UIView {
     }()
 
     private var imageThumbnail: UIImage {
-        guard let presentable = presentable else {
+        guard let model = model else {
             return UIImage(frameworkImageNamed: "success")!
         }
 
-        switch presentable.type {
+        switch model.type {
         case .error, .errorButton:
             return UIImage(frameworkImageNamed: "error")!
         case .sucesssImage:
-            if let image = presentable.imageThumbnail {
+            if let image = model.imageThumbnail {
                 return image
             } else {
                 return UIImage(frameworkImageNamed: "NoImage")!
@@ -142,24 +142,27 @@ public class ToastView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.mediumLargeSpacing).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        imageView.widthAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.width).isActive = true
-        imageView.heightAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.height).isActive = true
-        imageView.widthAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.width).isActive = true
-        imageView.heightAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.height).isActive = true
+        NSLayoutConstraint.activate([
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.mediumLargeSpacing),
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageView.widthAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.width),
+            imageView.heightAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.height),
+            imageView.widthAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.width),
+            imageView.heightAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.height),
 
-        messageTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: CGFloat.mediumLargeSpacing).isActive = true
-        messageTitle.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.mediumLargeSpacing).isActive = true
-        messageTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -CGFloat.mediumLargeSpacing).isActive = true
+            messageTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: CGFloat.mediumLargeSpacing),
+            messageTitle.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.mediumLargeSpacing),
+            messageTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -CGFloat.mediumLargeSpacing),
+        ])
 
-        if let presentable = presentable, presentable.actionButtonTitle != nil {
+        if let model = model, model.actionButtonTitle != nil {
             actionButton.isHidden = false
 
-            messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -CGFloat.mediumLargeSpacing).isActive = true
-
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -CGFloat.mediumLargeSpacing).isActive = true
-            actionButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+            NSLayoutConstraint.activate([
+                messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -CGFloat.mediumLargeSpacing),
+                actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -CGFloat.mediumLargeSpacing),
+                actionButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            ])
         } else {
             actionButton.isHidden = true
             messageTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -CGFloat.mediumLargeSpacing).isActive = true
@@ -168,13 +171,13 @@ public class ToastView: UIView {
 
     // MARK: - Dependency injection
 
-    public var presentable: ToastPresentable? {
+    public var model: ToastModel? {
         didSet {
-            messageTitle.text = presentable?.messageTitle
-            accessibilityLabel = presentable?.accessibilityLabel
-            backgroundColor = presentable?.type.color
-            actionButton.setTitle(presentable?.actionButtonTitle, for: .normal)
-            imageView.backgroundColor = presentable?.type.imageBackgroundColor
+            messageTitle.text = model?.messageTitle
+            accessibilityLabel = model?.accessibilityLabel
+            backgroundColor = model?.type.color
+            actionButton.setTitle(model?.actionButtonTitle, for: .normal)
+            imageView.backgroundColor = model?.type.imageBackgroundColor
             imageView.image = imageThumbnail
         }
     }
@@ -220,9 +223,11 @@ public class ToastView: UIView {
 
         translatesAutoresizingMaskIntoConstraints = false
 
-        leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
 
         view.layoutIfNeeded()
     }

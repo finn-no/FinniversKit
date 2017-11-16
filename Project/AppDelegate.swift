@@ -11,11 +11,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var tabBarController: UITabBarController = {
         let tabBarController = UITabBarController()
-        let navigationController = UINavigationController()
         let marketViewController = MarketViewController()
+        let loginViewController = LoginViewController()
+        let marketNavigationController = UINavigationController(rootViewController: marketViewController)
+        let loginNavigationController = UINavigationController(rootViewController: loginViewController)
 
-        navigationController.addChildViewController(marketViewController)
-        tabBarController.setViewControllers([navigationController], animated: false)
+        marketNavigationController.tabBarItem = UITabBarItem(title: "Home", image: nil, tag: 0)
+        loginNavigationController.tabBarItem = UITabBarItem(title: "Login", image: nil, tag: 1)
+
+        let viewControllerList = [marketNavigationController, loginNavigationController]
+        tabBarController.viewControllers = viewControllerList
 
         return tabBarController
     }()

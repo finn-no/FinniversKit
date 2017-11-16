@@ -4,14 +4,13 @@
 
 import Foundation
 
-public protocol RibbonPresentable {
-    var type: RibbonType { get }
+public protocol TextFieldModel {
+    var type: TextField.InputType { get }
     var accessibilityLabel: String { get }
-    var title: String { get }
 }
 
-public extension RibbonPresentable {
+public extension TextFieldModel {
     var accessibilityLabel: String {
-        return title
+        return type.typeText
     }
 }

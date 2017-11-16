@@ -54,6 +54,7 @@ playground.xcworkspace
 # Carthage/Checkouts
 
 Carthage/Build
+*.framework.zip
 
 # fastlane
 #
