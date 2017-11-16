@@ -93,6 +93,7 @@ public class TextField: UIView {
         textField.isSecureTextEntry = inputType.isSecureMode
         showPasswordButton.isHidden = !inputType.isSecureMode
         textField.keyboardType = inputType.keyBoardStyle
+        textField.returnKeyType = inputType.returnKeyType
 
         if inputType.isSecureMode {
             textField.rightViewMode = .never

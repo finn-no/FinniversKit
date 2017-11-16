@@ -23,5 +23,12 @@ extension TextField {
             default: return .default
             }
         }
+
+        var returnKeyType: UIReturnKeyType {
+            switch self {
+            case .email: return .next
+            case .password: return .done
+            }
+        }
     }
 }
