@@ -219,15 +219,26 @@ public class LoginScreen: UIView {
 
 extension LoginScreen: TextFieldDelegate {
     public func textFieldShouldReturn(_ textField: TextField) -> Bool {
-        if textField == emailTextField {
-            textField.resignFirstResponder()
-            passwordTextField.becomeFirstResponder()
-            return false
-        } else if textField == passwordTextField {
-            textField.endEditing(true)
-            loginTapped()
-            return false
+        if textField == passwordTextField {
+            if loginButton.isEnabled {
+                textField.endEditing(true)
+                loginTapped()
+            } else {
+                delegate?.incompleteCredentials(in: self)
+            }
         }
         return true
+    }
+
+    public func textFieldDidChange(_ textField: TextField) {
+        guard let emailText = emailTextField.text, let passwordText = passwordTextField.text else {
+            return
+        }
+
+        if emailText.isEmpty || passwordText.isEmpty {
+            loginButton.isEnabled = false
+        } else {
+            loginButton.isEnabled = true
+        }
     }
 }
