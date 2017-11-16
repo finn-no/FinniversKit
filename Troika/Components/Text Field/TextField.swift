@@ -9,6 +9,7 @@ public protocol TextFieldDelegate: NSObjectProtocol {
     func textFieldDidEndEditing(_ textField: TextField)
     func textFieldShouldReturn(_ textField: TextField) -> Bool
     func textField(_ textField: TextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    func textFieldDidChange(_ textField: TextField)
 }
 
 public extension TextFieldDelegate {
@@ -26,6 +27,10 @@ public extension TextFieldDelegate {
 
     func textField(_ textField: TextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return true
+    }
+
+    func textFieldDidChange(_ textField: TextField) {
+        // Default empty implementation
     }
 }
 
@@ -187,6 +192,7 @@ public class TextField: UIView {
     }
 
     @objc private func textFieldDidChange() {
+        delegate?.textFieldDidChange(self)
 
         if let text = textField.text, !text.isEmpty {
             UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
