@@ -15,6 +15,9 @@ class LoginViewController: UIViewController {
         return view
     }()
 
+    fileprivate lazy var isKeyboardVisible: Bool = false
+    fileprivate lazy var keyboardHeight: CGFloat = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -24,6 +27,8 @@ class LoginViewController: UIViewController {
         view.addSubview(loginScreenView)
 
         view.backgroundColor = .milk
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
         loginScreenView.model = LoginScreenData()
 
@@ -33,6 +38,25 @@ class LoginViewController: UIViewController {
             loginScreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             loginScreenView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+    }
+
+    @objc func keyboardWillAppear(notification: NSNotification) {
+        isKeyboardVisible = true
+        if let userInfo = notification.userInfo {
+            if let keyboardFrame: NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                keyboardHeight = keyboardRectangle.height
+            }
+        }
+    }
+
+    @objc func keyboardWillDisappear() {
+        isKeyboardVisible = false
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
