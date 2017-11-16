@@ -5,7 +5,7 @@
 import Foundation
 import Troika
 
-public enum ToastDataModel: ToastPresentable {
+public enum ToastDataModel: ToastModel {
     case success
     case successImage
     case error

@@ -81,15 +81,15 @@ public class ToastView: UIView {
     }()
 
     private var imageThumbnail: UIImage {
-        guard let presentable = presentable else {
+        guard let model = model else {
             return UIImage(frameworkImageNamed: "success")!
         }
 
-        switch presentable.type {
+        switch model.type {
         case .error, .errorButton:
             return UIImage(frameworkImageNamed: "error")!
         case .sucesssImage:
-            if let image = presentable.imageThumbnail {
+            if let image = model.imageThumbnail {
                 return image
             } else {
                 return UIImage(frameworkImageNamed: "NoImage")!
@@ -155,7 +155,7 @@ public class ToastView: UIView {
             messageTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -CGFloat.mediumLargeSpacing),
         ])
 
-        if let presentable = presentable, presentable.actionButtonTitle != nil {
+        if let model = model, model.actionButtonTitle != nil {
             actionButton.isHidden = false
 
             NSLayoutConstraint.activate([
@@ -171,13 +171,13 @@ public class ToastView: UIView {
 
     // MARK: - Dependency injection
 
-    public var presentable: ToastPresentable? {
+    public var model: ToastModel? {
         didSet {
-            messageTitle.text = presentable?.messageTitle
-            accessibilityLabel = presentable?.accessibilityLabel
-            backgroundColor = presentable?.type.color
-            actionButton.setTitle(presentable?.actionButtonTitle, for: .normal)
-            imageView.backgroundColor = presentable?.type.imageBackgroundColor
+            messageTitle.text = model?.messageTitle
+            accessibilityLabel = model?.accessibilityLabel
+            backgroundColor = model?.type.color
+            actionButton.setTitle(model?.actionButtonTitle, for: .normal)
+            imageView.backgroundColor = model?.type.imageBackgroundColor
             imageView.image = imageThumbnail
         }
     }

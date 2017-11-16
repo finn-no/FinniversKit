@@ -5,7 +5,7 @@
 import Foundation
 import Troika
 
-public enum Market: MarketGridPresentable {
+public enum Market: MarketGridModel {
     case eiendom
     case bil
     case torget

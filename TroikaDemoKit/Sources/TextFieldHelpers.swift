@@ -5,7 +5,7 @@
 import Foundation
 import Troika
 
-public enum TextFieldDataModel: TextFieldPresentable {
+public enum TextFieldDataModel: TextFieldModel {
     case email
     case password
 

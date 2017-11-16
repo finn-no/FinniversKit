@@ -40,8 +40,8 @@ class LoginViewController: UIViewController {
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
 
-        emailTextField.presentable = TextFieldDataModel.email
-        passwordTextField.presentable = TextFieldDataModel.password
+        emailTextField.model = TextFieldDataModel.email
+        passwordTextField.model = TextFieldDataModel.password
 
         view.backgroundColor = .white
 

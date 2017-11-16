@@ -4,14 +4,13 @@
 
 import Foundation
 
-public protocol MarketGridPresentable {
-    var iconImage: UIImage? { get }
-    var showExternalLinkIcon: Bool { get }
-    var title: String { get }
+public protocol RibbonModel {
+    var type: RibbonType { get }
     var accessibilityLabel: String { get }
+    var title: String { get }
 }
 
-public extension MarketGridPresentable {
+public extension RibbonModel {
     var accessibilityLabel: String {
         return title
     }
