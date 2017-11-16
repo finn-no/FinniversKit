@@ -11,12 +11,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Viewable {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UIFont.registerTroikaFonts()
+
         window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = ViewController<View>()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
-
-        UIFont.registerTroikaFonts()
 
         return true
     }
@@ -37,4 +37,27 @@ class ViewController<View: UIView>: UIViewController {
 
 protocol Viewable {
     associatedtype View
+}
+
+extension AppDelegate {
+    typealias View = ToastPlaygroundView
+}
+
+/// Class for referencing the framework bundle
+public class TroikaDemoKit {
+
+    static var bundle: Bundle {
+        return Bundle(for: TroikaDemoKit.self)
+    }
+
+    public static func setupPlayground() {
+        UIFont.registerTroikaFonts()
+    }
+}
+
+public extension Bundle {
+
+    static var troikaDemoKit: Bundle {
+        return TroikaDemoKit.bundle
+    }
 }

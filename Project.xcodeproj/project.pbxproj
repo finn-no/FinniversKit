@@ -14,10 +14,17 @@
 		14256A2B1FBE204200017B4F /* TextFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A281FBE204200017B4F /* TextFieldModel.swift */; };
 		14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A291FBE204200017B4F /* TextField+InputType.swift */; };
 		14256A2D1FBE204200017B4F /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A2A1FBE204200017B4F /* TextField.swift */; };
-		14405C771FAFBD5000D03E04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C761FAFBD4F00D03E04 /* App.swift */; };
-		14405C7C1FAFC1B300D03E04 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7B1FAFC1B300D03E04 /* LoginView.swift */; };
-		14405C801FAFC3A900D03E04 /* BaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7E1FAFC3A900D03E04 /* BaseApp.swift */; };
+		14405C801FAFC3A900D03E04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7E1FAFC3A900D03E04 /* App.swift */; };
 		14405C831FAFC49100D03E04 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C811FAFC49100D03E04 /* Injector.swift */; };
+		144351AB1FBE2A53007B2229 /* ToastPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */; };
+		144351B31FBE2BC1007B2229 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351AC1FBE2BC1007B2229 /* MarketHelpers.swift */; };
+		144351B41FBE2BC1007B2229 /* TextFieldHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351AD1FBE2BC1007B2229 /* TextFieldHelpers.swift */; };
+		144351B51FBE2BC1007B2229 /* ToastHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351AE1FBE2BC1007B2229 /* ToastHelpers.swift */; };
+		144351B61FBE2BC1007B2229 /* RibbonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351AF1FBE2BC1007B2229 /* RibbonHelpers.swift */; };
+		144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */; };
+		144351B81FBE2BC1007B2229 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B11FBE2BC1007B2229 /* ScreenSize.swift */; };
+		144351B91FBE2BC1007B2229 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */; };
+		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
 		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
 		44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		44D32C291FB07850001E86D6 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -76,17 +83,23 @@
 /* Begin PBXFileReference section */
 		14256A211FBE200300017B4F /* ToastModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastModel.swift; sourceTree = "<group>"; };
 		14256A221FBE200300017B4F /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		14256A231FBE200300017B4F /* ToastView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ToastView.playground; sourceTree = "<group>"; };
 		14256A271FBE204200017B4F /* TroikaTextField.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TroikaTextField.playground; sourceTree = "<group>"; };
 		14256A281FBE204200017B4F /* TextFieldModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldModel.swift; sourceTree = "<group>"; };
 		14256A291FBE204200017B4F /* TextField+InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
 		14256A2A1FBE204200017B4F /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		14405C5F1FAFBBF000D03E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14405C741FAFBD1800D03E04 /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		14405C761FAFBD4F00D03E04 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		14405C7B1FAFC1B300D03E04 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		14405C7E1FAFC3A900D03E04 /* BaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApp.swift; sourceTree = "<group>"; };
+		14405C7E1FAFC3A900D03E04 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		14405C811FAFC49100D03E04 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
+		144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastPlaygroundView.swift; sourceTree = "<group>"; };
+		144351AC1FBE2BC1007B2229 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
+		144351AD1FBE2BC1007B2229 /* TextFieldHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldHelpers.swift; sourceTree = "<group>"; };
+		144351AE1FBE2BC1007B2229 /* ToastHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastHelpers.swift; sourceTree = "<group>"; };
+		144351AF1FBE2BC1007B2229 /* RibbonHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonHelpers.swift; sourceTree = "<group>"; };
+		144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
+		144351B11FBE2BC1007B2229 /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
+		144351BA1FBE2BF1007B2229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
 		4537D01F1F94ECE6006942E7 /* CGFloat+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Troika.swift"; sourceTree = "<group>"; };
@@ -149,9 +162,9 @@
 		14256A201FBE200300017B4F /* Toast */ = {
 			isa = PBXGroup;
 			children = (
+				144351A71FBE2A53007B2229 /* Playground */,
 				14256A211FBE200300017B4F /* ToastModel.swift */,
 				14256A221FBE200300017B4F /* ToastView.swift */,
-				14256A231FBE200300017B4F /* ToastView.playground */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -170,21 +183,28 @@
 		14405C521FAFBBF000D03E04 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
+				144351BA1FBE2BF1007B2229 /* Assets.xcassets */,
 				14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */,
 				14405C5F1FAFBBF000D03E04 /* Info.plist */,
-				14405C7E1FAFC3A900D03E04 /* BaseApp.swift */,
+				14405C7E1FAFC3A900D03E04 /* App.swift */,
 				14405C811FAFC49100D03E04 /* Injector.swift */,
+				144351AC1FBE2BC1007B2229 /* MarketHelpers.swift */,
+				144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */,
+				144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */,
+				144351AF1FBE2BC1007B2229 /* RibbonHelpers.swift */,
+				144351B11FBE2BC1007B2229 /* ScreenSize.swift */,
+				144351AD1FBE2BC1007B2229 /* TextFieldHelpers.swift */,
+				144351AE1FBE2BC1007B2229 /* ToastHelpers.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
 		};
-		14405C651FAFBCA200D03E04 /* Login */ = {
+		144351A71FBE2A53007B2229 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				14405C761FAFBD4F00D03E04 /* App.swift */,
-				14405C7B1FAFC1B300D03E04 /* LoginView.swift */,
+				144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */,
 			);
-			path = Login;
+			path = Playground;
 			sourceTree = "<group>";
 		};
 		25D04D721F583B1800EA317D = {
@@ -335,7 +355,6 @@
 			children = (
 				14256A261FBE204200017B4F /* Text Field */,
 				14256A201FBE200300017B4F /* Toast */,
-				14405C651FAFBCA200D03E04 /* Login */,
 				45441D011F8CA1BC00A3B007 /* Label */,
 				459D37F41F87613D00038582 /* Ribbon */,
 				455866041F7A678400F670EF /* Market Grid */,
@@ -468,6 +487,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */,
 				14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,9 +542,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14405C771FAFBD5000D03E04 /* App.swift in Sources */,
-				14405C801FAFC3A900D03E04 /* BaseApp.swift in Sources */,
+				144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */,
+				14405C801FAFC3A900D03E04 /* App.swift in Sources */,
+				144351B91FBE2BC1007B2229 /* PreviewHelpers.swift in Sources */,
+				144351B31FBE2BC1007B2229 /* MarketHelpers.swift in Sources */,
 				14405C831FAFC49100D03E04 /* Injector.swift in Sources */,
+				144351B61FBE2BC1007B2229 /* RibbonHelpers.swift in Sources */,
+				144351AB1FBE2A53007B2229 /* ToastPlaygroundView.swift in Sources */,
+				144351B81FBE2BC1007B2229 /* ScreenSize.swift in Sources */,
+				144351B41FBE2BC1007B2229 /* TextFieldHelpers.swift in Sources */,
+				144351B51FBE2BC1007B2229 /* ToastHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +571,6 @@
 				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */,
 				CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */,
-				14405C7C1FAFC1B300D03E04 /* LoginView.swift in Sources */,
 				453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */,
 				4537D0201F94ECE6006942E7 /* CGFloat+Troika.swift in Sources */,
 				45441D031F8CA1D300A3B007 /* Label.swift in Sources */,
