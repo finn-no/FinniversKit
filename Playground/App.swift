@@ -10,7 +10,7 @@ extension AppDelegate {
     // MarketGridViewPlayground
     // MarketGridCellPlayground
     // PreviewGridViewPlayground
-    // PreviewCellPlayground
+    // PreviewGridCellPlayground
 
-    typealias View = PreviewCellPlayground
+    typealias View = PreviewGridCellPlayground
 }

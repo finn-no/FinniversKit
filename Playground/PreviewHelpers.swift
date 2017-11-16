@@ -5,7 +5,7 @@
 import Foundation
 import Troika
 
-/// A model confirming to the PreviewModel protocol for showcasing PreviewCell in playground.
+/// A model confirming to the PreviewModel protocol for showcasing PreviewGridCell in playground.
 public struct PreviewDataModel: PreviewModel {
     public let imagePath: String?
     public let imageSize: CGSize
@@ -78,8 +78,8 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
     }
 }
 
-/// For use with PreviewCell.
-public class APreviewCellDataSource: NSObject, PreviewCellDataSource {
+/// For use with PreviewGridCell.
+public class APreviewGridCellDataSource: NSObject, PreviewGridCellDataSource {
 
     public func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {

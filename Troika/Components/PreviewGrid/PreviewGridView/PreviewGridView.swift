@@ -68,7 +68,7 @@ public class PreviewGridView: UIView {
     }
 
     private func setup() {
-        collectionView.register(PreviewCell.self, forCellWithReuseIdentifier: String(describing: PreviewCell.self))
+        collectionView.register(PreviewGridCell.self, forCellWithReuseIdentifier: String(describing: PreviewGridCell.self))
         collectionView.register(PreviewGridHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: PreviewGridHeaderView.self))
         addSubview(collectionView)
     }
@@ -125,7 +125,7 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PreviewCell.self), for: indexPath) as! PreviewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PreviewGridCell.self), for: indexPath) as! PreviewGridCell
 
         // Show a pretty color while we load the image
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
@@ -142,7 +142,7 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? PreviewCell {
+        if let cell = cell as? PreviewGridCell {
             cell.loadImage()
         }
 
@@ -161,8 +161,8 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 }
 
-// MARK: - PreviewCellDataSource
-extension PreviewGridView: PreviewCellDataSource {
+// MARK: - PreviewGridCellDataSource
+extension PreviewGridView: PreviewGridCellDataSource {
 
     public func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         dataSource?.loadImage(for: model, imageWidth: imageWidth, completion: completion)
@@ -190,6 +190,6 @@ extension PreviewGridView: PreviewGridLayoutDelegate {
     }
 
     func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        return PreviewCell.nonImageHeight
+        return PreviewGridCell.nonImageHeight
     }
 }
