@@ -12,7 +12,7 @@
    1. [Toast](#toast)
    2. [Label](#label)
    3. [Ribbon](#ribbon)
-   4. [Market Grid](#market_grid)
+   4. [MarketGrid](#market_grid)
    5. [Preview Grid](#preview_grid)
 4. [Installation](#installation)
 5. [Usage](#usage)
@@ -47,16 +47,16 @@ Label
 ### Ribbon <a name="ribbon"></a>
 Ribbon
 
-### Market Grid <a name="market_grid"></a>
+### MarketGrid <a name="market_grid"></a>
 Market
-#### Market Grid View
+#### MarketGrid View
 The view
-#### Market Grid Cell
+#### MarketGrid Cell
 The cell
 
 ### Preview Grid <a name="preview_grid"></a>
 Preview
-#### Preview Grid View
+#### PreviewGridView
 The view
 #### Preview Grid Cell
 The cell

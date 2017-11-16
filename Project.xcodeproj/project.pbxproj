@@ -133,7 +133,7 @@
 		457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
 		459D37F71F87620B00038582 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
 		459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonViewModel.swift; sourceTree = "<group>"; };
-		CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Troika View.xctemplate"; sourceTree = "<group>"; };
+		CB2FE4D81F7A5D0800616815 /* TroikaView.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TroikaView.xctemplate; sourceTree = "<group>"; };
 		CB3664241F73F818009D3244 /* UIFont+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3CF1581F73E5870041EF20 /* Troika.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Troika.h; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
-		14256A261FBE204200017B4F /* Text Field */ = {
+		14256A261FBE204200017B4F /* TextField */ = {
 			isa = PBXGroup;
 			children = (
 				144351BE1FBE2EB9007B2229 /* Playground */,
@@ -186,7 +186,7 @@
 				14256A291FBE204200017B4F /* TextField+InputType.swift */,
 				14256A2A1FBE204200017B4F /* TextField.swift */,
 			);
-			path = "Text Field";
+			path = TextField;
 			sourceTree = "<group>";
 		};
 		14405C521FAFBBF000D03E04 /* Playground */ = {
@@ -313,33 +313,33 @@
 			path = Label;
 			sourceTree = "<group>";
 		};
-		455866041F7A678400F670EF /* Market Grid */ = {
+		455866041F7A678400F670EF /* MarketGrid */ = {
 			isa = PBXGroup;
 			children = (
-				457B35C31F7BB0860031E125 /* Market Grid View */,
-				4558660C1F7A7B7400F670EF /* Market Grid Cell */,
+				457B35C31F7BB0860031E125 /* MarketGridView */,
+				4558660C1F7A7B7400F670EF /* MarketGridCell */,
 			);
-			path = "Market Grid";
+			path = MarketGrid;
 			sourceTree = "<group>";
 		};
-		4558660C1F7A7B7400F670EF /* Market Grid Cell */ = {
+		4558660C1F7A7B7400F670EF /* MarketGridCell */ = {
 			isa = PBXGroup;
 			children = (
 				144351D21FBE3A40007B2229 /* Playground */,
 				455866081F7A77B100F670EF /* MarketGridCell.swift */,
 				4558660A1F7A7B4800F670EF /* MarketGridModel.swift */,
 			);
-			path = "Market Grid Cell";
+			path = MarketGridCell;
 			sourceTree = "<group>";
 		};
-		457B35C31F7BB0860031E125 /* Market Grid View */ = {
+		457B35C31F7BB0860031E125 /* MarketGridView */ = {
 			isa = PBXGroup;
 			children = (
 				144351CD1FBE3805007B2229 /* Playground */,
 				455866061F7A751300F670EF /* MarketGridView.swift */,
 				453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */,
 			);
-			path = "Market Grid View";
+			path = MarketGridView;
 			sourceTree = "<group>";
 		};
 		457B35C81F7BC4320031E125 /* Protocols */ = {
@@ -380,16 +380,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CB3664281F73F9A2009D3244 /* Preview Grid View */ = {
+		CB3664281F73F9A2009D3244 /* PreviewGridView */ = {
 			isa = PBXGroup;
 			children = (
-				CB3664291F73F9B6009D3244 /* Preview Grid View */,
-				CB58A75D1F73B81800A5A19F /* Preview Cell */,
+				CB3664291F73F9B6009D3244 /* PreviewGridView */,
+				CB58A75D1F73B81800A5A19F /* PreviewCell */,
 			);
-			path = "Preview Grid View";
+			path = PreviewGridView;
 			sourceTree = "<group>";
 		};
-		CB3664291F73F9B6009D3244 /* Preview Grid View */ = {
+		CB3664291F73F9B6009D3244 /* PreviewGridView */ = {
 			isa = PBXGroup;
 			children = (
 				144351D51FBE3BDD007B2229 /* Playground */,
@@ -398,7 +398,7 @@
 				CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */,
 				CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */,
 			);
-			path = "Preview Grid View";
+			path = PreviewGridView;
 			sourceTree = "<group>";
 		};
 		CB3CF1571F73E5870041EF20 /* Troika */ = {
@@ -419,30 +419,30 @@
 		CB58A75C1F73B81000A5A19F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				14256A261FBE204200017B4F /* Text Field */,
+				14256A261FBE204200017B4F /* TextField */,
 				14256A201FBE200300017B4F /* Toast */,
 				45441D011F8CA1BC00A3B007 /* Label */,
 				459D37F41F87613D00038582 /* Ribbon */,
-				455866041F7A678400F670EF /* Market Grid */,
-				CB3664281F73F9A2009D3244 /* Preview Grid View */,
+				455866041F7A678400F670EF /* MarketGrid */,
+				CB3664281F73F9A2009D3244 /* PreviewGridView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		CB58A75D1F73B81800A5A19F /* Preview Cell */ = {
+		CB58A75D1F73B81800A5A19F /* PreviewCell */ = {
 			isa = PBXGroup;
 			children = (
 				144351D81FBE3D33007B2229 /* Playground */,
 				CB3E67C41F7E4D5D00C40D47 /* PreviewCell.swift */,
 				CB3E67C51F7E4D5D00C40D47 /* PreviewModel.swift */,
 			);
-			path = "Preview Cell";
+			path = PreviewCell;
 			sourceTree = "<group>";
 		};
 		CB58A7601F73B88E00A5A19F /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */,
+				CB2FE4D81F7A5D0800616815 /* TroikaView.xctemplate */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
