@@ -6,6 +6,7 @@ extension AppDelegate {
     // TextFieldPlaygroundView
     // ToastPlaygroundView
     // LabelPlaygroundView
+    // RibbonPlaygroundView
 
-    typealias View = TextFieldPlaygroundView
+    typealias View = RibbonPlaygroundView
 }
