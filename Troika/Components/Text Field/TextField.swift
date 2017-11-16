@@ -4,6 +4,31 @@
 
 import UIKit
 
+public protocol TextFieldDelegate: NSObjectProtocol {
+    func textFieldDidBeginEditing(_ textField: TextField)
+    func textFieldDidEndEditing(_ textField: TextField)
+    func textFieldShouldReturn(_ textField: TextField) -> Bool
+    func textField(_ textField: TextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+}
+
+public extension TextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: TextField) {
+        // Default empty implementation
+    }
+
+    func textFieldDidEndEditing(_ textField: TextField) {
+        // Default empty implementation
+    }
+
+    func textFieldShouldReturn(_ textField: TextField) -> Bool {
+        return true
+    }
+
+    func textField(_ textField: TextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+}
+
 public class TextField: UIView {
 
     // MARK: - Internal properties
@@ -75,6 +100,9 @@ public class TextField: UIView {
     public var text: String? {
         return textField.text
     }
+
+    public weak var delegate: TextFieldDelegate?
+
     // MARK: - Setup
 
     public init(inputType: InputType) {
@@ -182,14 +210,24 @@ public class TextField: UIView {
 
 extension TextField: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.textFieldDidBeginEditing(self)
         UIView.animate(withDuration: animationDuration) {
             self.underline.backgroundColor = .secondaryBlue
         }
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.textFieldDidEndEditing(self)
         UIView.animate(withDuration: animationDuration) {
             self.underline.backgroundColor = .stone
         }
+    }
+
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return delegate?.textFieldShouldReturn(self) ?? true
+    }
+
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return delegate?.textField(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
     }
 }

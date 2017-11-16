@@ -20,15 +20,17 @@ public class LoginScreen: UIView {
         return view
     }()
 
-    private lazy var emailTextField: TextField = {
+    fileprivate lazy var emailTextField: TextField = {
         let textField = TextField(inputType: .email)
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
 
-    private lazy var passwordTextField: TextField = {
+    fileprivate lazy var passwordTextField: TextField = {
         let textField = TextField(inputType: .password)
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
 
@@ -203,5 +205,20 @@ public class LoginScreen: UIView {
 
     @objc func handleTap() {
         endEditing(true)
+    }
+}
+
+extension LoginScreen: TextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: TextField) -> Bool {
+        if textField == emailTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+            return false
+        } else if textField == passwordTextField {
+            textField.endEditing(true)
+            loginTapped()
+            return false
+        }
+        return true
     }
 }
