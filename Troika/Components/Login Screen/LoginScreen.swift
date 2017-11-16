@@ -4,6 +4,13 @@
 
 import UIKit
 
+public protocol LoginScreenDelegate: NSObjectProtocol {
+    func forgotPasswordButtonPressed(in: LoginScreen)
+    func loginButtonPressed(in: LoginScreen)
+    func newUserButtonPressed(in: LoginScreen)
+    func userTermsButtonPressed(in: LoginScreen)
+}
+
 public class LoginScreen: UIView {
 
     // MARK: - Internal properties
@@ -98,6 +105,8 @@ public class LoginScreen: UIView {
         }
     }
 
+    public weak var delegate: LoginScreenDelegate?
+
     // MARK: - Setup
 
     public override init(frame: CGRect) {
@@ -188,19 +197,19 @@ public class LoginScreen: UIView {
     // MARK: - Actions
 
     @objc func loginTapped() {
-        print("Login tapped!")
+        delegate?.loginButtonPressed(in: self)
     }
 
     @objc func forgotPasswordTapped() {
-        print("Forgott password button tapped!")
+        delegate?.forgotPasswordButtonPressed(in: self)
     }
 
     @objc func newUserTapped() {
-        print("New user tapped")
+        delegate?.newUserButtonPressed(in: self)
     }
 
     @objc func userTermsTapped() {
-        print("User terms tapped")
+        delegate?.userTermsButtonPressed(in: self)
     }
 
     @objc func handleTap() {
