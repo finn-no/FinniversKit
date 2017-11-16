@@ -16,23 +16,23 @@
 		14256A2D1FBE204200017B4F /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A2A1FBE204200017B4F /* TextField.swift */; };
 		14405C801FAFC3A900D03E04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7E1FAFC3A900D03E04 /* App.swift */; };
 		14405C831FAFC49100D03E04 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C811FAFC49100D03E04 /* Injector.swift */; };
-		144351AB1FBE2A53007B2229 /* ToastPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */; };
+		144351AB1FBE2A53007B2229 /* ToastPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351A91FBE2A53007B2229 /* ToastPlayground.swift */; };
 		144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */; };
 		144351B81FBE2BC1007B2229 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B11FBE2BC1007B2229 /* ScreenSize.swift */; };
 		144351B91FBE2BC1007B2229 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */; };
 		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
 		144351BD1FBE2DFC007B2229 /* ToastHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351BC1FBE2DFC007B2229 /* ToastHelpers.swift */; };
 		144351C11FBE2EB9007B2229 /* TextFieldHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351BF1FBE2EB9007B2229 /* TextFieldHelpers.swift */; };
-		144351C21FBE2EB9007B2229 /* TextFieldPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C01FBE2EB9007B2229 /* TextFieldPlaygroundView.swift */; };
+		144351C21FBE2EB9007B2229 /* TextFieldPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C01FBE2EB9007B2229 /* TextFieldPlayground.swift */; };
 		144351C41FBE2FA2007B2229 /* BaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* BaseApp.swift */; };
-		144351C71FBE3030007B2229 /* LabelPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C61FBE3030007B2229 /* LabelPlaygroundView.swift */; };
-		144351CB1FBE36D3007B2229 /* RibbonPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C91FBE36D3007B2229 /* RibbonPlaygroundView.swift */; };
+		144351C71FBE3030007B2229 /* LabelPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C61FBE3030007B2229 /* LabelPlayground.swift */; };
+		144351CB1FBE36D3007B2229 /* RibbonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C91FBE36D3007B2229 /* RibbonPlayground.swift */; };
 		144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */; };
 		144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CE1FBE3805007B2229 /* MarketHelpers.swift */; };
-		144351D11FBE3805007B2229 /* MarketGridViewPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CF1FBE3805007B2229 /* MarketGridViewPlaygroundView.swift */; };
-		144351D41FBE3A40007B2229 /* MarketGridCellPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D31FBE3A40007B2229 /* MarketGridCellPlaygroundView.swift */; };
-		144351D71FBE3BDD007B2229 /* PreviewGridViewPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D61FBE3BDD007B2229 /* PreviewGridViewPlaygroundView.swift */; };
-		144351DA1FBE3D33007B2229 /* PreviewCellPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D91FBE3D33007B2229 /* PreviewCellPlaygroundView.swift */; };
+		144351D11FBE3805007B2229 /* MarketGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */; };
+		144351D41FBE3A40007B2229 /* MarketGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */; };
+		144351D71FBE3BDD007B2229 /* PreviewGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */; };
+		144351DA1FBE3D33007B2229 /* PreviewCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D91FBE3D33007B2229 /* PreviewCellPlayground.swift */; };
 		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
 		44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		44D32C291FB07850001E86D6 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -98,23 +98,23 @@
 		14405C741FAFBD1800D03E04 /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14405C7E1FAFC3A900D03E04 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		14405C811FAFC49100D03E04 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
-		144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastPlaygroundView.swift; sourceTree = "<group>"; };
+		144351A91FBE2A53007B2229 /* ToastPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastPlayground.swift; sourceTree = "<group>"; };
 		144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
 		144351B11FBE2BC1007B2229 /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
 		144351BA1FBE2BF1007B2229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		144351BC1FBE2DFC007B2229 /* ToastHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastHelpers.swift; sourceTree = "<group>"; };
 		144351BF1FBE2EB9007B2229 /* TextFieldHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldHelpers.swift; sourceTree = "<group>"; };
-		144351C01FBE2EB9007B2229 /* TextFieldPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldPlaygroundView.swift; sourceTree = "<group>"; };
+		144351C01FBE2EB9007B2229 /* TextFieldPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldPlayground.swift; sourceTree = "<group>"; };
 		144351C31FBE2FA2007B2229 /* BaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApp.swift; sourceTree = "<group>"; };
-		144351C61FBE3030007B2229 /* LabelPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPlaygroundView.swift; sourceTree = "<group>"; };
-		144351C91FBE36D3007B2229 /* RibbonPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonPlaygroundView.swift; sourceTree = "<group>"; };
+		144351C61FBE3030007B2229 /* LabelPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPlayground.swift; sourceTree = "<group>"; };
+		144351C91FBE36D3007B2229 /* RibbonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonPlayground.swift; sourceTree = "<group>"; };
 		144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonHelpers.swift; sourceTree = "<group>"; };
 		144351CE1FBE3805007B2229 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
-		144351CF1FBE3805007B2229 /* MarketGridViewPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewPlaygroundView.swift; sourceTree = "<group>"; };
-		144351D31FBE3A40007B2229 /* MarketGridCellPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellPlaygroundView.swift; sourceTree = "<group>"; };
-		144351D61FBE3BDD007B2229 /* PreviewGridViewPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewPlaygroundView.swift; sourceTree = "<group>"; };
-		144351D91FBE3D33007B2229 /* PreviewCellPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewCellPlaygroundView.swift; sourceTree = "<group>"; };
+		144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewPlayground.swift; sourceTree = "<group>"; };
+		144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellPlayground.swift; sourceTree = "<group>"; };
+		144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewPlayground.swift; sourceTree = "<group>"; };
+		144351D91FBE3D33007B2229 /* PreviewCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewCellPlayground.swift; sourceTree = "<group>"; };
 		14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
 		4537D01F1F94ECE6006942E7 /* CGFloat+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Troika.swift"; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				144351BC1FBE2DFC007B2229 /* ToastHelpers.swift */,
-				144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */,
+				144351A91FBE2A53007B2229 /* ToastPlayground.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -218,7 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				144351BF1FBE2EB9007B2229 /* TextFieldHelpers.swift */,
-				144351C01FBE2EB9007B2229 /* TextFieldPlaygroundView.swift */,
+				144351C01FBE2EB9007B2229 /* TextFieldPlayground.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 		144351C51FBE3030007B2229 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				144351C61FBE3030007B2229 /* LabelPlaygroundView.swift */,
+				144351C61FBE3030007B2229 /* LabelPlayground.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -234,7 +234,7 @@
 		144351C81FBE36D3007B2229 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				144351C91FBE36D3007B2229 /* RibbonPlaygroundView.swift */,
+				144351C91FBE36D3007B2229 /* RibbonPlayground.swift */,
 				144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */,
 			);
 			path = Playground;
@@ -244,7 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				144351CE1FBE3805007B2229 /* MarketHelpers.swift */,
-				144351CF1FBE3805007B2229 /* MarketGridViewPlaygroundView.swift */,
+				144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 		144351D21FBE3A40007B2229 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				144351D31FBE3A40007B2229 /* MarketGridCellPlaygroundView.swift */,
+				144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -260,7 +260,7 @@
 		144351D51FBE3BDD007B2229 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				144351D61FBE3BDD007B2229 /* PreviewGridViewPlaygroundView.swift */,
+				144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 		144351D81FBE3D33007B2229 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				144351D91FBE3D33007B2229 /* PreviewCellPlaygroundView.swift */,
+				144351D91FBE3D33007B2229 /* PreviewCellPlayground.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -608,23 +608,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				144351CB1FBE36D3007B2229 /* RibbonPlaygroundView.swift in Sources */,
+				144351CB1FBE36D3007B2229 /* RibbonPlayground.swift in Sources */,
 				144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */,
-				144351D11FBE3805007B2229 /* MarketGridViewPlaygroundView.swift in Sources */,
-				144351D41FBE3A40007B2229 /* MarketGridCellPlaygroundView.swift in Sources */,
+				144351D11FBE3805007B2229 /* MarketGridViewPlayground.swift in Sources */,
+				144351D41FBE3A40007B2229 /* MarketGridCellPlayground.swift in Sources */,
 				14405C801FAFC3A900D03E04 /* App.swift in Sources */,
 				144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */,
 				144351B91FBE2BC1007B2229 /* PreviewHelpers.swift in Sources */,
 				144351BD1FBE2DFC007B2229 /* ToastHelpers.swift in Sources */,
 				14405C831FAFC49100D03E04 /* Injector.swift in Sources */,
-				144351D71FBE3BDD007B2229 /* PreviewGridViewPlaygroundView.swift in Sources */,
-				144351DA1FBE3D33007B2229 /* PreviewCellPlaygroundView.swift in Sources */,
-				144351AB1FBE2A53007B2229 /* ToastPlaygroundView.swift in Sources */,
-				144351C71FBE3030007B2229 /* LabelPlaygroundView.swift in Sources */,
+				144351D71FBE3BDD007B2229 /* PreviewGridViewPlayground.swift in Sources */,
+				144351DA1FBE3D33007B2229 /* PreviewCellPlayground.swift in Sources */,
+				144351AB1FBE2A53007B2229 /* ToastPlayground.swift in Sources */,
+				144351C71FBE3030007B2229 /* LabelPlayground.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* BaseApp.swift in Sources */,
 				144351B81FBE2BC1007B2229 /* ScreenSize.swift in Sources */,
 				144351C11FBE2EB9007B2229 /* TextFieldHelpers.swift in Sources */,
-				144351C21FBE2EB9007B2229 /* TextFieldPlaygroundView.swift in Sources */,
+				144351C21FBE2EB9007B2229 /* TextFieldPlayground.swift in Sources */,
 				144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

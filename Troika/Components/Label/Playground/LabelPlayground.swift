@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class LabelPlaygroundView: UIView, Injectable {
+public class LabelPlayground: UIView, Injectable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 

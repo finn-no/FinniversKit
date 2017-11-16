@@ -3,14 +3,14 @@
 //
 
 extension AppDelegate {
-    // TextFieldPlaygroundView
-    // ToastPlaygroundView
-    // LabelPlaygroundView
-    // RibbonPlaygroundView
-    // MarketGridViewPlaygroundView
-    // MarketGridCellPlaygroundView
-    // PreviewGridViewPlaygroundView
-    // PreviewCellPlaygroundView
+    // TextFieldPlayground
+    // ToastPlayground
+    // LabelPlayground
+    // RibbonPlayground
+    // MarketGridViewPlayground
+    // MarketGridCellPlayground
+    // PreviewGridViewPlayground
+    // PreviewCellPlayground
 
-    typealias View = PreviewCellPlaygroundView
+    typealias View = PreviewCellPlayground
 }

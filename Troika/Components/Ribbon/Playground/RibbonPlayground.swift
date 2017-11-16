@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class RibbonPlaygroundView: UIView, Injectable {
+public class RibbonPlayground: UIView, Injectable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 

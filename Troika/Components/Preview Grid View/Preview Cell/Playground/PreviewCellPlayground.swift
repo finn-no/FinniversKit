@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class PreviewCellPlaygroundView: UIView, Injectable {
+public class PreviewCellPlayground: UIView, Injectable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
