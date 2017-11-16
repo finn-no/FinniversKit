@@ -29,7 +29,6 @@ public class RibbonPlayground: UIView, Injectable {
         let margin: CGFloat = 16
 
         backgroundColor = .white
-        frame = ScreenSize.medium
 
         successRibbonView.model = RibbonDataModel.success
         errorRibbonView.model = RibbonDataModel.error
