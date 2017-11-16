@@ -18,13 +18,16 @@
 		14405C831FAFC49100D03E04 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C811FAFC49100D03E04 /* Injector.swift */; };
 		144351AB1FBE2A53007B2229 /* ToastPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */; };
 		144351B31FBE2BC1007B2229 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351AC1FBE2BC1007B2229 /* MarketHelpers.swift */; };
-		144351B41FBE2BC1007B2229 /* TextFieldHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351AD1FBE2BC1007B2229 /* TextFieldHelpers.swift */; };
-		144351B51FBE2BC1007B2229 /* ToastHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351AE1FBE2BC1007B2229 /* ToastHelpers.swift */; };
 		144351B61FBE2BC1007B2229 /* RibbonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351AF1FBE2BC1007B2229 /* RibbonHelpers.swift */; };
 		144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */; };
 		144351B81FBE2BC1007B2229 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B11FBE2BC1007B2229 /* ScreenSize.swift */; };
 		144351B91FBE2BC1007B2229 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */; };
 		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
+		144351BD1FBE2DFC007B2229 /* ToastHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351BC1FBE2DFC007B2229 /* ToastHelpers.swift */; };
+		144351C11FBE2EB9007B2229 /* TextFieldHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351BF1FBE2EB9007B2229 /* TextFieldHelpers.swift */; };
+		144351C21FBE2EB9007B2229 /* TextFieldPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C01FBE2EB9007B2229 /* TextFieldPlaygroundView.swift */; };
+		144351C41FBE2FA2007B2229 /* BaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* BaseApp.swift */; };
+		144351C71FBE3030007B2229 /* LabelPlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C61FBE3030007B2229 /* LabelPlaygroundView.swift */; };
 		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
 		44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		44D32C291FB07850001E86D6 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -83,7 +86,6 @@
 /* Begin PBXFileReference section */
 		14256A211FBE200300017B4F /* ToastModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastModel.swift; sourceTree = "<group>"; };
 		14256A221FBE200300017B4F /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		14256A271FBE204200017B4F /* TroikaTextField.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TroikaTextField.playground; sourceTree = "<group>"; };
 		14256A281FBE204200017B4F /* TextFieldModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldModel.swift; sourceTree = "<group>"; };
 		14256A291FBE204200017B4F /* TextField+InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
 		14256A2A1FBE204200017B4F /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -93,13 +95,16 @@
 		14405C811FAFC49100D03E04 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastPlaygroundView.swift; sourceTree = "<group>"; };
 		144351AC1FBE2BC1007B2229 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
-		144351AD1FBE2BC1007B2229 /* TextFieldHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldHelpers.swift; sourceTree = "<group>"; };
-		144351AE1FBE2BC1007B2229 /* ToastHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastHelpers.swift; sourceTree = "<group>"; };
 		144351AF1FBE2BC1007B2229 /* RibbonHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonHelpers.swift; sourceTree = "<group>"; };
 		144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
 		144351B11FBE2BC1007B2229 /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
 		144351BA1FBE2BF1007B2229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		144351BC1FBE2DFC007B2229 /* ToastHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastHelpers.swift; sourceTree = "<group>"; };
+		144351BF1FBE2EB9007B2229 /* TextFieldHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldHelpers.swift; sourceTree = "<group>"; };
+		144351C01FBE2EB9007B2229 /* TextFieldPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldPlaygroundView.swift; sourceTree = "<group>"; };
+		144351C31FBE2FA2007B2229 /* BaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApp.swift; sourceTree = "<group>"; };
+		144351C61FBE3030007B2229 /* LabelPlaygroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPlaygroundView.swift; sourceTree = "<group>"; };
 		14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
 		4537D01F1F94ECE6006942E7 /* CGFloat+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Troika.swift"; sourceTree = "<group>"; };
@@ -109,7 +114,6 @@
 		453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
 		453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridViewConfigurable.swift; sourceTree = "<group>"; };
 		45441D021F8CA1D300A3B007 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		45441D041F8CAB8800A3B007 /* Label.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Label.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		455866061F7A751300F670EF /* MarketGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridView.swift; sourceTree = "<group>"; };
 		455866081F7A77B100F670EF /* MarketGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
 		4558660A1F7A7B4800F670EF /* MarketGridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridModel.swift; sourceTree = "<group>"; };
@@ -172,7 +176,7 @@
 		14256A261FBE204200017B4F /* Text Field */ = {
 			isa = PBXGroup;
 			children = (
-				14256A271FBE204200017B4F /* TroikaTextField.playground */,
+				144351BE1FBE2EB9007B2229 /* Playground */,
 				14256A281FBE204200017B4F /* TextFieldModel.swift */,
 				14256A291FBE204200017B4F /* TextField+InputType.swift */,
 				14256A2A1FBE204200017B4F /* TextField.swift */,
@@ -193,8 +197,7 @@
 				144351B21FBE2BC1007B2229 /* PreviewHelpers.swift */,
 				144351AF1FBE2BC1007B2229 /* RibbonHelpers.swift */,
 				144351B11FBE2BC1007B2229 /* ScreenSize.swift */,
-				144351AD1FBE2BC1007B2229 /* TextFieldHelpers.swift */,
-				144351AE1FBE2BC1007B2229 /* ToastHelpers.swift */,
+				144351C31FBE2FA2007B2229 /* BaseApp.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -202,7 +205,25 @@
 		144351A71FBE2A53007B2229 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
+				144351BC1FBE2DFC007B2229 /* ToastHelpers.swift */,
 				144351A91FBE2A53007B2229 /* ToastPlaygroundView.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351BE1FBE2EB9007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351BF1FBE2EB9007B2229 /* TextFieldHelpers.swift */,
+				144351C01FBE2EB9007B2229 /* TextFieldPlaygroundView.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351C51FBE3030007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351C61FBE3030007B2229 /* LabelPlaygroundView.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -240,7 +261,7 @@
 		45441D011F8CA1BC00A3B007 /* Label */ = {
 			isa = PBXGroup;
 			children = (
-				45441D041F8CAB8800A3B007 /* Label.playground */,
+				144351C51FBE3030007B2229 /* Playground */,
 				45441D021F8CA1D300A3B007 /* Label.swift */,
 				4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */,
 			);
@@ -545,13 +566,16 @@
 				144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */,
 				14405C801FAFC3A900D03E04 /* App.swift in Sources */,
 				144351B91FBE2BC1007B2229 /* PreviewHelpers.swift in Sources */,
+				144351BD1FBE2DFC007B2229 /* ToastHelpers.swift in Sources */,
 				144351B31FBE2BC1007B2229 /* MarketHelpers.swift in Sources */,
 				14405C831FAFC49100D03E04 /* Injector.swift in Sources */,
 				144351B61FBE2BC1007B2229 /* RibbonHelpers.swift in Sources */,
 				144351AB1FBE2A53007B2229 /* ToastPlaygroundView.swift in Sources */,
+				144351C71FBE3030007B2229 /* LabelPlaygroundView.swift in Sources */,
+				144351C41FBE2FA2007B2229 /* BaseApp.swift in Sources */,
 				144351B81FBE2BC1007B2229 /* ScreenSize.swift in Sources */,
-				144351B41FBE2BC1007B2229 /* TextFieldHelpers.swift in Sources */,
-				144351B51FBE2BC1007B2229 /* ToastHelpers.swift in Sources */,
+				144351C11FBE2EB9007B2229 /* TextFieldHelpers.swift in Sources */,
+				144351C21FBE2EB9007B2229 /* TextFieldPlaygroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

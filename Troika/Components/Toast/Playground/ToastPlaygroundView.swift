@@ -57,24 +57,26 @@ public class ToastPlaygroundView: UIView, Injectable {
         addSubview(successButtonToast)
         addSubview(errorButtonToast)
 
-        successToast.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        successToast.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        successToast.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        NSLayoutConstraint.activate([
+            successToast.leadingAnchor.constraint(equalTo: leadingAnchor),
+            successToast.trailingAnchor.constraint(equalTo: trailingAnchor),
+            successToast.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
 
-        imageToast.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        imageToast.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        imageToast.topAnchor.constraint(equalTo: successToast.bottomAnchor, constant: 32).isActive = true
+            imageToast.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageToast.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageToast.topAnchor.constraint(equalTo: successToast.bottomAnchor, constant: .largeSpacing),
 
-        errorToast.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        errorToast.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        errorToast.topAnchor.constraint(equalTo: imageToast.bottomAnchor, constant: 32).isActive = true
+            errorToast.leadingAnchor.constraint(equalTo: leadingAnchor),
+            errorToast.trailingAnchor.constraint(equalTo: trailingAnchor),
+            errorToast.topAnchor.constraint(equalTo: imageToast.bottomAnchor, constant: .largeSpacing),
 
-        successButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        successButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        successButtonToast.topAnchor.constraint(equalTo: errorToast.bottomAnchor, constant: 32).isActive = true
+            successButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor),
+            successButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor),
+            successButtonToast.topAnchor.constraint(equalTo: errorToast.bottomAnchor, constant: .largeSpacing),
 
-        errorButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        errorButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        errorButtonToast.topAnchor.constraint(equalTo: successButtonToast.bottomAnchor, constant: 32).isActive = true
+            errorButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor),
+            errorButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor),
+            errorButtonToast.topAnchor.constraint(equalTo: successButtonToast.bottomAnchor, constant: .largeSpacing),
+        ])
     }
 }

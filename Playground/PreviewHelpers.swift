@@ -118,7 +118,7 @@ public struct PreviewDataModelFactory {
             let imageSource = imageSources[index]
             let title = titles[index]
             let subTitle = subTitles[index]
-            let icon = UIImage(named: "bil", in: .troikaDemoKit, compatibleWith: nil)!
+            let icon = UIImage(named: "bil", in: .localBundle, compatibleWith: nil)!
             return PreviewDataModel(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subTitle: subTitle, imageText: price)
         }
     }
