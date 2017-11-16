@@ -18,7 +18,6 @@
 		14405C831FAFC49100D03E04 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C811FAFC49100D03E04 /* Injector.swift */; };
 		144351AB1FBE2A53007B2229 /* ToastPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351A91FBE2A53007B2229 /* ToastPlayground.swift */; };
 		144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */; };
-		144351B81FBE2BC1007B2229 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B11FBE2BC1007B2229 /* ScreenSize.swift */; };
 		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
 		144351BD1FBE2DFC007B2229 /* ToastHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351BC1FBE2DFC007B2229 /* ToastHelpers.swift */; };
 		144351C11FBE2EB9007B2229 /* TextFieldHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351BF1FBE2EB9007B2229 /* TextFieldHelpers.swift */; };
@@ -101,7 +100,6 @@
 		14405C811FAFC49100D03E04 /* Injector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		144351A91FBE2A53007B2229 /* ToastPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastPlayground.swift; sourceTree = "<group>"; };
 		144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
-		144351B11FBE2BC1007B2229 /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		144351BA1FBE2BF1007B2229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		144351BC1FBE2DFC007B2229 /* ToastHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastHelpers.swift; sourceTree = "<group>"; };
 		144351BF1FBE2EB9007B2229 /* TextFieldHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldHelpers.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 				14405C7E1FAFC3A900D03E04 /* App.swift */,
 				14405C811FAFC49100D03E04 /* Injector.swift */,
 				144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */,
-				144351B11FBE2BC1007B2229 /* ScreenSize.swift */,
 				144351C31FBE2FA2007B2229 /* BaseApp.swift */,
 				146D3C3F1FBE466D00124B76 /* ViewController.swift */,
 			);
@@ -626,7 +623,6 @@
 				144351AB1FBE2A53007B2229 /* ToastPlayground.swift in Sources */,
 				144351C71FBE3030007B2229 /* LabelPlayground.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* BaseApp.swift in Sources */,
-				144351B81FBE2BC1007B2229 /* ScreenSize.swift in Sources */,
 				144351C11FBE2EB9007B2229 /* TextFieldHelpers.swift in Sources */,
 				144351C21FBE2EB9007B2229 /* TextFieldPlayground.swift in Sources */,
 				144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */,
