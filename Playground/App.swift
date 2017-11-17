@@ -3,16 +3,22 @@
 //
 
 extension AppDelegate {
+    // ** Elements **
     // LabelPlayground
     // RibbonPlayground
     // TextFieldPlayground
     // ToastPlayground
     // ButtonPlayground
 
+    // ** Components **
     // PreviewGridViewPlayground
     // PreviewGridCellPlayground
     // MarketGridViewPlayground
     // MarketGridCellPlayground
 
-    typealias View = ButtonPlayground
+    // ** Demo **
+    // LoginView
+    // MarketView
+
+    typealias View = MarketView
 }

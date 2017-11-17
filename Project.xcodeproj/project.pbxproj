@@ -33,6 +33,8 @@
 		144351D41FBE3A40007B2229 /* MarketGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */; };
 		144351D71FBE3BDD007B2229 /* PreviewGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */; };
 		144351DA1FBE3D33007B2229 /* PreviewGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D91FBE3D33007B2229 /* PreviewGridCellPlayground.swift */; };
+		1457254A1FBEEF6A00648D73 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145725481FBEEF6A00648D73 /* LoginView.swift */; };
+		1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145725491FBEEF6A00648D73 /* MarketView.swift */; };
 		146D3C3E1FBE453700124B76 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3D1FBE453700124B76 /* PreviewHelpers.swift */; };
 		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
 		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
@@ -117,6 +119,8 @@
 		144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellPlayground.swift; sourceTree = "<group>"; };
 		144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewPlayground.swift; sourceTree = "<group>"; };
 		144351D91FBE3D33007B2229 /* PreviewGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCellPlayground.swift; sourceTree = "<group>"; };
+		145725481FBEEF6A00648D73 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		145725491FBEEF6A00648D73 /* MarketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
 		146D3C3D1FBE453700124B76 /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
 		146D3C3F1FBE466D00124B76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 		14405C521FAFBBF000D03E04 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
+				145725471FBEEF6A00648D73 /* Demo */,
 				144351BA1FBE2BF1007B2229 /* Assets.xcassets */,
 				14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */,
 				14405C5F1FAFBBF000D03E04 /* Info.plist */,
@@ -292,6 +297,15 @@
 				144351D91FBE3D33007B2229 /* PreviewGridCellPlayground.swift */,
 			);
 			path = Playground;
+			sourceTree = "<group>";
+		};
+		145725471FBEEF6A00648D73 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				145725481FBEEF6A00648D73 /* LoginView.swift */,
+				145725491FBEEF6A00648D73 /* MarketView.swift */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		25D04D721F583B1800EA317D = {
@@ -636,6 +650,7 @@
 				144351D11FBE3805007B2229 /* MarketGridViewPlayground.swift in Sources */,
 				144351D41FBE3A40007B2229 /* MarketGridCellPlayground.swift in Sources */,
 				14405C801FAFC3A900D03E04 /* App.swift in Sources */,
+				1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */,
 				144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */,
 				146D3C3E1FBE453700124B76 /* PreviewHelpers.swift in Sources */,
 				144351BD1FBE2DFC007B2229 /* ToastHelpers.swift in Sources */,
@@ -646,6 +661,7 @@
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
 				144351C11FBE2EB9007B2229 /* TextFieldHelpers.swift in Sources */,
 				144351C21FBE2EB9007B2229 /* TextFieldPlayground.swift in Sources */,
+				1457254A1FBEEF6A00648D73 /* LoginView.swift in Sources */,
 				143265B31FBEEE570093B265 /* ButtonPlayground.swift in Sources */,
 				144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */,
 			);
