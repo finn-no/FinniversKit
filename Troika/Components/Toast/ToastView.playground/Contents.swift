@@ -16,29 +16,35 @@ view.frame = ScreenSize.medium
 
 class ToastClass: NSObject, ToastViewDelegate {
     func didTapActionButton(button: UIButton, in toastView: ToastView) {
-        print("Button tapped")
+        print("Button tapped in \(toastView.style)")
     }
 
     func didTap(toastView: ToastView) {
-        print("Toast view tapped")
+        print("Toast view tapped in \(toastView.style)")
     }
 }
 
 let delegate = ToastClass()
 
-let successToast = ToastView()
-let imageToast = ToastView()
-let errorToast = ToastView()
-let successButtonToast = ToastView(delegate: delegate)
-let errorButtonToast = ToastView(delegate: delegate)
-let animatedToast = ToastView(delegate: delegate)
+let successToast = ToastView(style: .success)
+let imageToast = ToastView(style: .sucesssWithImage)
+let errorToast = ToastView(style: .error)
+let successButtonToast = ToastView(style: .successButton)
+let errorButtonToast = ToastView(style: .errorButton)
+let animatedToast = ToastView(style: .success)
 
-successToast.presentable = ToastDataModel.multiline
-imageToast.presentable = ToastDataModel.successImage
-errorToast.presentable = ToastDataModel.error
-successButtonToast.presentable = ToastDataModel.successButton
-errorButtonToast.presentable = ToastDataModel.errorButton
-animatedToast.presentable = ToastDataModel.success
+successToast.text = "Success"
+imageToast.text = "Image success"
+errorToast.text = "Error"
+successButtonToast.text = "Action success"
+successButtonToast.buttonText = "Action"
+errorButtonToast.text = "Action error"
+errorButtonToast.buttonText = "Undo"
+animatedToast.text = "Animated success"
+
+successButtonToast.delegate = delegate
+errorButtonToast.delegate = delegate
+animatedToast.delegate = delegate
 
 animatedToast.presentFromBottom(view: view, animateOffset: 0, timeOut: 5)
 
