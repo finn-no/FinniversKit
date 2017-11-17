@@ -211,11 +211,11 @@ public class TextField: UIView {
         textField.becomeFirstResponder()
     }
 
-    fileprivate func isValidEmail(testStr: String) -> Bool {
+    fileprivate func isValidEmail(_ emailAdress: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: testStr)
+        return emailTest.evaluate(with: emailAdress)
     }
 }
 
@@ -231,7 +231,7 @@ extension TextField: UITextFieldDelegate {
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.textFieldDidEndEditing(self)
-        if let text = textField.text, !isValidEmail(testStr: text), !text.isEmpty, inputType == .email {
+        if let text = textField.text, !isValidEmail(text), !text.isEmpty, inputType == .email {
             UIView.animate(withDuration: animationDuration) {
                 self.underline.backgroundColor = .cherry
             }
