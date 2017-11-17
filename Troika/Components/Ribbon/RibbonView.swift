@@ -52,7 +52,7 @@ public class RibbonView: UIView {
         setup()
     }
 
-    func setup() {
+    private func setup() {
         layer.cornerRadius = cornerRadius
         isAccessibilityElement = true
 
