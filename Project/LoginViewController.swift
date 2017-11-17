@@ -115,8 +115,8 @@ class LoginViewController: UIViewController {
         contentView.addSubview(userTermsIntro)
         contentView.addSubview(userTermsButton)
 
-        emailTextField.presentable = TextFieldDataModel.email
-        passwordTextField.presentable = TextFieldDataModel.password
+        emailTextField.model = TextFieldDataModel.email
+        passwordTextField.model = TextFieldDataModel.password
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)

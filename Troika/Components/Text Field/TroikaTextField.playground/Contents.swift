@@ -13,11 +13,11 @@ let view = UIView()
 view.backgroundColor = .white
 view.frame = ScreenSize.medium
 
-let presentable = TextFieldDataModel.email
+let model = TextFieldDataModel.email
 
 let textField = TextField()
 textField.translatesAutoresizingMaskIntoConstraints = false
-textField.presentable = presentable
+textField.model = model
 
 view.addSubview(textField)
 

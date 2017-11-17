@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol ToastPresentable {
+public protocol ToastModel {
     var type: ToastType { get }
     var messageTitle: String { get }
     var accessibilityLabel: String { get }
@@ -12,7 +12,7 @@ public protocol ToastPresentable {
     var imageThumbnail: UIImage? { get }
 }
 
-public extension ToastPresentable {
+public extension ToastModel {
     var accessibilityLabel: String {
         return messageTitle
     }

@@ -24,12 +24,12 @@ let view = UIView()
 view.backgroundColor = .white
 view.frame = ScreenSize.medium
 
-successRibbonView.presentable = RibbonDataModel.success
-errorRibbonView.presentable = RibbonDataModel.error
-warningRibbonView.presentable = RibbonDataModel.warning
-defaultRibbonView.presentable = RibbonDataModel.ordinary
-disabledRibbonView.presentable = RibbonDataModel.disabled
-sponsoredRibbonView.presentable = RibbonDataModel.sponsored
+successRibbonView.model = RibbonDataModel.success
+errorRibbonView.model = RibbonDataModel.error
+warningRibbonView.model = RibbonDataModel.warning
+defaultRibbonView.model = RibbonDataModel.ordinary
+disabledRibbonView.model = RibbonDataModel.disabled
+sponsoredRibbonView.model = RibbonDataModel.sponsored
 
 defaultRibbonView.translatesAutoresizingMaskIntoConstraints = false
 successRibbonView.translatesAutoresizingMaskIntoConstraints = false

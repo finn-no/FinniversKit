@@ -10,15 +10,15 @@ import TroikaDemoKit
 TroikaDemoKit.setupPlayground()
 
 let previewCell = PreviewCell(frame: .zero)
-let presentable = PreviewDataModelFactory.create(numberOfModels: 1).first!
+let model = PreviewDataModelFactory.create(numberOfModels: 1).first!
 let dataSource = APreviewCellDataSource()
 
-let multiplier = presentable.imageSize.height / presentable.imageSize.width
+let multiplier = model.imageSize.height / model.imageSize.width
 let width: CGFloat = 200.0
 
 previewCell.loadingColor = .blue
 previewCell.dataSource = dataSource
-previewCell.presentable = presentable
+previewCell.model = model
 previewCell.frame = CGRect(x: 0, y: 0, width: width, height: (width * multiplier) + PreviewCell.nonImageHeight)
 
 PlaygroundPage.current.liveView = previewCell

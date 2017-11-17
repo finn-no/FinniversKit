@@ -5,7 +5,7 @@
 import Foundation
 import Troika
 
-public enum RibbonDataModel: RibbonPresentable {
+public enum RibbonDataModel: RibbonModel {
 
     case ordinary
     case success
