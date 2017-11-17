@@ -52,17 +52,11 @@ public class RibbonView: UIView {
         setup()
     }
 
-    private func setup() {
+    func setup() {
         layer.cornerRadius = cornerRadius
         isAccessibilityElement = true
 
         addSubview(titleLabel)
-    }
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horisontalMargin),

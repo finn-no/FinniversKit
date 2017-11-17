@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class MarketGridCellPlayground: UIView, Injectable {
+public class MarketGridCellPlayground: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
