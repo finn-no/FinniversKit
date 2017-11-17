@@ -6,6 +6,12 @@ import UIKit
 import Troika
 
 extension NSNotification.Name {
+
+    /// Notification used with http://johnholdsworth.com/injection.html
+    /// 1.- Download the app http://johnholdsworth.com/Injection9.app.zip
+    /// 2.- Open the app, enable File Watcher and press Inject Source
+    /// 3.- After a change is done in a UIView or UIViewController instance this notification
+    /// will be called and the UI will be reloaded live.
     static let InjectionNotification = Notification.Name(rawValue: "INJECTION_BUNDLE_NOTIFICATION")
 }
 
