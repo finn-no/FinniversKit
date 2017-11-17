@@ -40,7 +40,7 @@ public class TextField: UIView {
 
     private let eyeImage = UIImage(frameworkImageNamed: "view")!.withRenderingMode(.alwaysTemplate)
     private let clearTextIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
-    private let widthOfShowPasswordButton: CGFloat = 25
+    private let rightViewSize = CGSize(width: 40, height: 40)
     private let underlineHeight: CGFloat = 2
     private let animationDuration: Double = 0.3
 
@@ -52,7 +52,7 @@ public class TextField: UIView {
     }()
 
     private lazy var clearButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: clearTextIcon.size.width, height: clearTextIcon.size.height))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: rightViewSize.width, height: rightViewSize.height))
         button.setImage(clearTextIcon, for: .normal)
         button.imageView?.tintColor = .stone
         button.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
@@ -158,7 +158,7 @@ public class TextField: UIView {
         showPasswordButton.heightAnchor.constraint(equalToConstant: eyeImage.size.height).isActive = true
 
         if inputType.isSecureMode {
-            showPasswordButton.widthAnchor.constraint(equalToConstant: widthOfShowPasswordButton).isActive = true
+            showPasswordButton.widthAnchor.constraint(equalToConstant: rightViewSize.width).isActive = true
         } else {
             showPasswordButton.widthAnchor.constraint(equalToConstant: 0).isActive = true
         }
