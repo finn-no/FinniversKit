@@ -115,7 +115,7 @@ public class ToastView: UIView {
 
         backgroundColor = style.color
         imageView.backgroundColor = style.imageBackgroundColor
-        imageView.image = style.imageThumbnail
+        imageView.image = image
 
         addSubview(imageView)
         addSubview(messageTitle)
