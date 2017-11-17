@@ -57,13 +57,18 @@ public class RibbonView: UIView {
         isAccessibilityElement = true
 
         addSubview(titleLabel)
+    }
+
+    // MARK: - Layout
+    public override func layoutSubviews() {
+        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horisontalMargin),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horisontalMargin),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin),
-        ])
+            ])
     }
 
     // MARK: - Dependency injection
