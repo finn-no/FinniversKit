@@ -7,7 +7,7 @@ import Foundation
 extension ToastView {
     public enum Style {
         case success
-        case sucesssImage
+        case sucesssWithImage
         case error
         case successButton
         case errorButton
@@ -21,7 +21,7 @@ extension ToastView {
 
         var imageBackgroundColor: UIColor {
             switch self {
-            case .sucesssImage: return .milk
+            case .sucesssWithImage: return .milk
             default: return .clear
             }
         }
