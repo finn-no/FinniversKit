@@ -64,7 +64,6 @@ extension LoginViewController: LoginScreenDelegate {
     func incompleteCredentials(in: LoginScreen) {
         let toast = ToastView(style: .error)
         toast.text = "Incomplete login credentials"
-        toast.image = nil
 
         guard let tabbarHeight = tabBarController?.tabBar.frame.height else {
             return
