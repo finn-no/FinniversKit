@@ -24,6 +24,7 @@
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
 		4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridModel.swift */; };
 		4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */; };
+		456C74FB1FB9A4BA006720A9 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C74FA1FB9A4BA006720A9 /* Button+Style.swift */; };
 		457586EB1FB4385C00B70DD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457586EA1FB4385C00B70DD7 /* LoginViewController.swift */; };
 		4577B72A1F865400005E7598 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577B7291F865400005E7598 /* MarketHelpers.swift */; };
 		457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C61F7BC4100031E125 /* Identifiable.swift */; };
@@ -35,6 +36,7 @@
 		459D38001F87C1B300038582 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FF1F87C1B300038582 /* ScreenSize.swift */; };
 		45C5E7A81FB4466600EF2992 /* TextFieldHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7A71FB4466600EF2992 /* TextFieldHelpers.swift */; };
 		45C5E7AA1FB4977700EF2992 /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7A91FB4977700EF2992 /* TextField+InputType.swift */; };
+		45C5E7AD1FB5C7EB00EF2992 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7AC1FB5C7EB00EF2992 /* Button.swift */; };
 		45CF5A501F96198B00069240 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		45CF5A511F96198B00069240 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45CF5A551F96198F00069240 /* TroikaDemoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */; };
@@ -121,6 +123,7 @@
 		455866081F7A77B100F670EF /* MarketGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
 		4558660A1F7A7B4800F670EF /* MarketGridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridModel.swift; sourceTree = "<group>"; };
 		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
+		456C74FA1FB9A4BA006720A9 /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		457586EA1FB4385C00B70DD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4577B7291F865400005E7598 /* MarketHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
 		457B35C61F7BC4100031E125 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 		459D37FF1F87C1B300038582 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		45C5E7A71FB4466600EF2992 /* TextFieldHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelpers.swift; sourceTree = "<group>"; };
 		45C5E7A91FB4977700EF2992 /* TextField+InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
+		45C5E7AC1FB5C7EB00EF2992 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		45C5E7AE1FB5C8A000EF2992 /* Button.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Button.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		45CF5A5A1F97336B00069240 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		45CF5A5C1F97360000069240 /* ToastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModel.swift; sourceTree = "<group>"; };
 		45CF5A5F1F97476E00069240 /* ToastView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ToastView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -313,6 +318,16 @@
 			path = Ribbon;
 			sourceTree = "<group>";
 		};
+		45C5E7AB1FB5C7D100EF2992 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				45C5E7AE1FB5C8A000EF2992 /* Button.playground */,
+				45C5E7AC1FB5C7EB00EF2992 /* Button.swift */,
+				456C74FA1FB9A4BA006720A9 /* Button+Style.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		45CF5A591F97334000069240 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +424,7 @@
 		CB58A75C1F73B81000A5A19F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				45C5E7AB1FB5C7D100EF2992 /* Button */,
 				45022FC61FB3045B001C34A9 /* Text Field */,
 				45CF5A591F97334000069240 /* Toast */,
 				45441D011F8CA1BC00A3B007 /* Label */,
@@ -690,6 +706,7 @@
 				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
 				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */,
+				45C5E7AD1FB5C7EB00EF2992 /* Button.swift in Sources */,
 				CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */,
 				45C5E7AA1FB4977700EF2992 /* TextField+InputType.swift in Sources */,
 				459D37FE1F87AE5D00038582 /* RibbonViewModel.swift in Sources */,
@@ -709,6 +726,7 @@
 				45CF5A5B1F97336B00069240 /* ToastView.swift in Sources */,
 				457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */,
 				CB3E67C11F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift in Sources */,
+				456C74FB1FB9A4BA006720A9 /* Button+Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
