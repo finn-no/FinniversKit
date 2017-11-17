@@ -45,7 +45,7 @@ public enum ToastDataModel: ToastModel {
 
     public var imageThumbnail: UIImage? {
         switch self {
-        case .successImage: return UIImage(named: "eiendom", in: .localBundle, compatibleWith: nil)
+        case .successImage: return UIImage(named: "eiendom", in: .playgroundBundle, compatibleWith: nil)
         default: return nil
         }
     }

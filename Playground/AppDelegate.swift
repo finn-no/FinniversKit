@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Viewable {
 
 public extension Bundle {
 
-    static var localBundle: Bundle {
+    static var playgroundBundle: Bundle {
         return Bundle(for: AppDelegate.self)
     }
 }

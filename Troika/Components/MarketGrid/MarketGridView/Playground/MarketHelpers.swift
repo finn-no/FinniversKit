@@ -38,18 +38,18 @@ public enum Market: MarketGridModel {
 
     public var iconImage: UIImage? {
         switch self {
-        case .eiendom: return UIImage(named: "eiendom", in: .localBundle, compatibleWith: nil)
-        case .bil: return UIImage(named: "bil", in: .localBundle, compatibleWith: nil)
-        case .torget: return UIImage(named: "torget", in: .localBundle, compatibleWith: nil)
-        case .jobb: return UIImage(named: "jobb", in: .localBundle, compatibleWith: nil)
-        case .mc: return UIImage(named: "mc", in: .localBundle, compatibleWith: nil)
-        case .bT: return UIImage(named: "bT", in: .localBundle, compatibleWith: nil)
-        case .nytte: return UIImage(named: "nytte", in: .localBundle, compatibleWith: nil)
-        case .reise: return UIImage(named: "reise", in: .localBundle, compatibleWith: nil)
-        case .shopping: return UIImage(named: "shopping", in: .localBundle, compatibleWith: nil)
-        case .smajobb: return UIImage(named: "smajobb", in: .localBundle, compatibleWith: nil)
-        case .moteplassen: return UIImage(named: "moteplassen", in: .localBundle, compatibleWith: nil)
-        case .mittAnbud: return UIImage(named: "mittAnbud", in: .localBundle, compatibleWith: nil)
+        case .eiendom: return UIImage(named: "eiendom", in: .playgroundBundle, compatibleWith: nil)
+        case .bil: return UIImage(named: "bil", in: .playgroundBundle, compatibleWith: nil)
+        case .torget: return UIImage(named: "torget", in: .playgroundBundle, compatibleWith: nil)
+        case .jobb: return UIImage(named: "jobb", in: .playgroundBundle, compatibleWith: nil)
+        case .mc: return UIImage(named: "mc", in: .playgroundBundle, compatibleWith: nil)
+        case .bT: return UIImage(named: "bT", in: .playgroundBundle, compatibleWith: nil)
+        case .nytte: return UIImage(named: "nytte", in: .playgroundBundle, compatibleWith: nil)
+        case .reise: return UIImage(named: "reise", in: .playgroundBundle, compatibleWith: nil)
+        case .shopping: return UIImage(named: "shopping", in: .playgroundBundle, compatibleWith: nil)
+        case .smajobb: return UIImage(named: "smajobb", in: .playgroundBundle, compatibleWith: nil)
+        case .moteplassen: return UIImage(named: "moteplassen", in: .playgroundBundle, compatibleWith: nil)
+        case .mittAnbud: return UIImage(named: "mittAnbud", in: .playgroundBundle, compatibleWith: nil)
         }
     }
 
