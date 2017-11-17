@@ -68,7 +68,7 @@ public class RibbonView: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horisontalMargin),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin),
-            ])
+        ])
     }
 
     // MARK: - Dependency injection

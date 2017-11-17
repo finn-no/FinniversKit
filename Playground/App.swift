@@ -7,11 +7,12 @@ extension AppDelegate {
     // RibbonPlayground
     // TextFieldPlayground
     // ToastPlayground
+    // ButtonPlayground
 
     // PreviewGridViewPlayground
     // PreviewGridCellPlayground
     // MarketGridViewPlayground
     // MarketGridCellPlayground
 
-    typealias View = RibbonPlayground
+    typealias View = ButtonPlayground
 }

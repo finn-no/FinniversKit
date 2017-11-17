@@ -14,6 +14,9 @@
 		14256A2B1FBE204200017B4F /* TextFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A281FBE204200017B4F /* TextFieldModel.swift */; };
 		14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A291FBE204200017B4F /* TextField+InputType.swift */; };
 		14256A2D1FBE204200017B4F /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A2A1FBE204200017B4F /* TextField.swift */; };
+		143265AF1FBEEE220093B265 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143265AC1FBEEE220093B265 /* Button+Style.swift */; };
+		143265B01FBEEE220093B265 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143265AE1FBEEE220093B265 /* Button.swift */; };
+		143265B31FBEEE570093B265 /* ButtonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143265B21FBEEE570093B265 /* ButtonPlayground.swift */; };
 		14405C801FAFC3A900D03E04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7E1FAFC3A900D03E04 /* App.swift */; };
 		144351AB1FBE2A53007B2229 /* ToastPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351A91FBE2A53007B2229 /* ToastPlayground.swift */; };
 		144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */; };
@@ -93,6 +96,9 @@
 		14256A281FBE204200017B4F /* TextFieldModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldModel.swift; sourceTree = "<group>"; };
 		14256A291FBE204200017B4F /* TextField+InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
 		14256A2A1FBE204200017B4F /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		143265AC1FBEEE220093B265 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
+		143265AE1FBEEE220093B265 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		143265B21FBEEE570093B265 /* ButtonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonPlayground.swift; sourceTree = "<group>"; };
 		14405C5F1FAFBBF000D03E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14405C741FAFBD1800D03E04 /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14405C7E1FAFC3A900D03E04 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -185,6 +191,24 @@
 				14256A2A1FBE204200017B4F /* TextField.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		143265AB1FBEEE220093B265 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				143265B11FBEEE570093B265 /* Playground */,
+				143265AC1FBEEE220093B265 /* Button+Style.swift */,
+				143265AE1FBEEE220093B265 /* Button.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		143265B11FBEEE570093B265 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				143265B21FBEEE570093B265 /* ButtonPlayground.swift */,
+			);
+			path = Playground;
 			sourceTree = "<group>";
 		};
 		14405C521FAFBBF000D03E04 /* Playground */ = {
@@ -416,6 +440,7 @@
 		CB58A75C1F73B81000A5A19F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				143265AB1FBEEE220093B265 /* Button */,
 				45441D011F8CA1BC00A3B007 /* Label */,
 				459D37F41F87613D00038582 /* Ribbon */,
 				14256A261FBE204200017B4F /* TextField */,
@@ -621,6 +646,7 @@
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
 				144351C11FBE2EB9007B2229 /* TextFieldHelpers.swift in Sources */,
 				144351C21FBE2EB9007B2229 /* TextFieldPlayground.swift in Sources */,
+				143265B31FBEEE570093B265 /* ButtonPlayground.swift in Sources */,
 				144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,14 +659,15 @@
 				14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */,
 				CB3E67C21F7E4D4000C40D47 /* PreviewGridLayout.swift in Sources */,
 				14256A2D1FBE204200017B4F /* TextField.swift in Sources */,
+				143265B01FBEEE220093B265 /* Button.swift in Sources */,
 				14256A2B1FBE204200017B4F /* TextFieldModel.swift in Sources */,
+				143265AF1FBEEE220093B265 /* Button+Style.swift in Sources */,
 				CB3E67C31F7E4D4000C40D47 /* PreviewGridView.swift in Sources */,
 				457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */,
 				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
 				14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */,
 				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */,
-				45C5E7AD1FB5C7EB00EF2992 /* Button.swift in Sources */,
 				CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */,
 				453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */,
 				4537D0201F94ECE6006942E7 /* CGFloat+Troika.swift in Sources */,
@@ -657,7 +684,6 @@
 				CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */,
 				457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */,
 				CB3E67C11F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift in Sources */,
-				456C74FB1FB9A4BA006720A9 /* Button+Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
