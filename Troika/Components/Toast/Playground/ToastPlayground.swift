@@ -24,7 +24,7 @@ public class ToastPlayground: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    public func setup() {
+    private func setup() {
 
         let delegate = ToastClass()
 

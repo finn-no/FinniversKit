@@ -37,7 +37,7 @@ public class MarketGridViewPlayground: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    public func setup() {
+    private func setup() {
 
         let collectionView = MarketGridView(delegate: data, dataSource: data)
         collectionView.translatesAutoresizingMaskIntoConstraints = false

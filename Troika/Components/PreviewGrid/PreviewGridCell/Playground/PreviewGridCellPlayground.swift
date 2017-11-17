@@ -14,7 +14,7 @@ public class PreviewGridCellPlayground: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    public func setup() {
+    private func setup() {
 
         let previewCell = PreviewGridCell(frame: .zero)
         previewCell.translatesAutoresizingMaskIntoConstraints = false

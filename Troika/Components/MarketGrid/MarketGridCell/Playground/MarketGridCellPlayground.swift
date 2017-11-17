@@ -14,7 +14,7 @@ public class MarketGridCellPlayground: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    public func setup() {
+    private func setup() {
 
         let marketGridCell = MarketGridCell(frame: .zero)
         marketGridCell.translatesAutoresizingMaskIntoConstraints = false

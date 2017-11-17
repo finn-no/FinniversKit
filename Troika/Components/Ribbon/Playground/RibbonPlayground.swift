@@ -14,7 +14,7 @@ public class RibbonPlayground: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    public func setup() {
+    private func setup() {
         backgroundColor = .green
 
         let successRibbonView = RibbonView()

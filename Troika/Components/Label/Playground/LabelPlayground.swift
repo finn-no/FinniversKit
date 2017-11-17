@@ -14,7 +14,7 @@ public class LabelPlayground: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    public func setup() {
+    private func setup() {
 
         let topSpacing: CGFloat = 32
         let margin: CGFloat = 16

@@ -14,7 +14,7 @@ public class TextFieldPlayground: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    public func setup() {
+    private func setup() {
 
         let model = TextFieldDataModel.email
 

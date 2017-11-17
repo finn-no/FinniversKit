@@ -18,7 +18,7 @@ public class PreviewGridViewPlayground: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    public func setup() {
+    private func setup() {
 
         let view = PreviewGridView(delegate: delegateDataSource, dataSource: delegateDataSource)
         view.translatesAutoresizingMaskIntoConstraints = false
