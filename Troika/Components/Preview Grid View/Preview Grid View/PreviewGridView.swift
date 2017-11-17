@@ -12,9 +12,9 @@ public protocol PreviewGridViewDelegate: NSObjectProtocol {
 
 public protocol PreviewGridViewDataSource: NSObjectProtocol {
     func numberOfItems(inPreviewGridView previewGridView: PreviewGridView) -> Int
-    func previewGridView(_ previewGridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable
-    func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-    func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
+    func previewGridView(_ previewGridView: PreviewGridView, modelAtIndex index: Int) -> PreviewModel
+    func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat)
 }
 
 public class PreviewGridView: UIView {
@@ -134,8 +134,8 @@ extension PreviewGridView: UICollectionViewDataSource {
         cell.loadingColor = color
         cell.dataSource = self
 
-        if let presentable = dataSource?.previewGridView(self, presentableAtIndex: indexPath.row) {
-            cell.presentable = presentable
+        if let model = dataSource?.previewGridView(self, modelAtIndex: indexPath.row) {
+            cell.model = model
         }
 
         return cell
@@ -164,12 +164,12 @@ extension PreviewGridView: UICollectionViewDataSource {
 // MARK: - PreviewCellDataSource
 extension PreviewGridView: PreviewCellDataSource {
 
-    public func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        dataSource?.loadImage(for: presentable, imageWidth: imageWidth, completion: completion)
+    public func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.loadImage(for: model, imageWidth: imageWidth, completion: completion)
     }
 
-    public func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat) {
-        dataSource?.cancelLoadImage(for: presentable, imageWidth: imageWidth)
+    public func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat) {
+        dataSource?.cancelLoadImage(for: model, imageWidth: imageWidth)
     }
 }
 
@@ -181,12 +181,12 @@ extension PreviewGridView: PreviewGridLayoutDelegate {
     }
 
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        guard let presentable = dataSource?.previewGridView(self, presentableAtIndex: indexPath.row), presentable.imageSize != .zero, presentable.imagePath != nil else {
+        guard let model = dataSource?.previewGridView(self, modelAtIndex: indexPath.row), model.imageSize != .zero, model.imagePath != nil else {
             let defaultImageSize = CGSize(width: 104, height: 78)
             return defaultImageSize.height / defaultImageSize.width
         }
 
-        return presentable.imageSize.height / presentable.imageSize.width
+        return model.imageSize.height / model.imageSize.width
     }
 
     func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {

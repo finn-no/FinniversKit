@@ -5,8 +5,8 @@
 import Foundation
 import Troika
 
-/// A model confirming to the PreviewPresentable protocol for showcasing PreviewCell in playground.
-public struct PreviewDataModel: PreviewPresentable {
+/// A model confirming to the PreviewModel protocol for showcasing PreviewCell in playground.
+public struct PreviewDataModel: PreviewModel {
     public let imagePath: String?
     public let imageSize: CGSize
     public var iconImage: UIImage?
@@ -32,7 +32,7 @@ public struct PreviewDataModel: PreviewPresentable {
 /// For use with PreviewGridView.
 public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, PreviewGridViewDataSource {
 
-    private let presentables = PreviewDataModelFactory.create(numberOfModels: 9)
+    private let models = PreviewDataModelFactory.create(numberOfModels: 9)
 
     public func willDisplay(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
         // Don't care
@@ -47,15 +47,15 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
     }
 
     public func numberOfItems(inPreviewGridView previewGridView: PreviewGridView) -> Int {
-        return presentables.count
+        return models.count
     }
 
-    public func previewGridView(_ previewGridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable {
-        return presentables[index]
+    public func previewGridView(_ previewGridView: PreviewGridView, modelAtIndex index: Int) -> PreviewModel {
+        return models[index]
     }
 
-    public func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let path = presentable.imagePath, let url = URL(string: path) else {
+    public func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
         }
@@ -73,7 +73,7 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
         task.resume()
     }
 
-    public func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat) {
+    public func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat) {
         // No point in doing this in demo
     }
 }
@@ -81,8 +81,8 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
 /// For use with PreviewCell.
 public class APreviewCellDataSource: NSObject, PreviewCellDataSource {
 
-    public func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let path = presentable.imagePath, let url = URL(string: path) else {
+    public func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
         }
@@ -100,7 +100,7 @@ public class APreviewCellDataSource: NSObject, PreviewCellDataSource {
         task.resume()
     }
 
-    public func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat) {
+    public func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat) {
         // No point in doing this in demo
     }
 }

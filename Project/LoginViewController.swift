@@ -23,6 +23,8 @@ class LoginViewController: UIViewController {
         setupView()
     }
 
+    fileprivate let buttonHeight: CGFloat = 44
+
     private func setupView() {
         view.addSubview(loginScreenView)
 

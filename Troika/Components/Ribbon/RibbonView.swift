@@ -74,11 +74,11 @@ public class RibbonView: UIView {
 
     // MARK: - Dependency injection
 
-    public var presentable: RibbonPresentable? {
+    public var model: RibbonModel? {
         didSet {
-            titleLabel.text = presentable?.title
-            accessibilityLabel = presentable?.accessibilityLabel
-            backgroundColor = presentable?.type.color
+            titleLabel.text = model?.title
+            accessibilityLabel = model?.accessibilityLabel
+            backgroundColor = model?.type.color
         }
     }
 }

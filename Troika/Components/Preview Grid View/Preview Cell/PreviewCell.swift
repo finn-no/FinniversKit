@@ -5,8 +5,8 @@
 import UIKit
 
 public protocol PreviewCellDataSource {
-    func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-    func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat)
+    func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat)
 }
 
 public class PreviewCell: UICollectionViewCell {
@@ -130,8 +130,8 @@ public class PreviewCell: UICollectionViewCell {
         imageTextLabel.text = ""
         accessibilityLabel = ""
 
-        if let presentable = presentable {
-            dataSource?.cancelLoadImage(for: presentable, imageWidth: imageView.frame.size.width)
+        if let model = model {
+            dataSource?.cancelLoadImage(for: model, imageWidth: imageView.frame.size.width)
         }
     }
 
@@ -174,32 +174,32 @@ public class PreviewCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
-    /// The presentable contains data used to populate the view.
-    public var presentable: PreviewPresentable? {
+    /// The model contains data used to populate the view.
+    public var model: PreviewModel? {
         didSet {
-            if let presentable = presentable {
-                iconImageView.image = presentable.iconImage?.withRenderingMode(.alwaysTemplate)
-                titleLabel.text = presentable.title
-                subTitleLabel.text = presentable.subTitle
-                imageTextLabel.text = presentable.imageText
-                accessibilityLabel = presentable.accessibilityLabel
+            if let model = model {
+                iconImageView.image = model.iconImage?.withRenderingMode(.alwaysTemplate)
+                titleLabel.text = model.title
+                subTitleLabel.text = model.subTitle
+                imageTextLabel.text = model.imageText
+                accessibilityLabel = model.accessibilityLabel
             }
         }
     }
 
     // MARK: - Public
 
-    /// Loads the image for the `presentable` if imagePath is set
+    /// Loads the image for the `model` if imagePath is set
     public func loadImage() {
-        if let presentable = presentable {
-            loadImage(presentable: presentable)
+        if let model = model {
+            loadImage(model: model)
         }
     }
 
     // MARK: - Private
 
-    private func loadImage(presentable: PreviewPresentable) {
-        guard let dataSource = dataSource, let _ = presentable.imagePath else {
+    private func loadImage(model: PreviewModel) {
+        guard let dataSource = dataSource, let _ = model.imagePath else {
             loadingColor = .clear
             imageView.image = defaultImage
             return
@@ -207,7 +207,7 @@ public class PreviewCell: UICollectionViewCell {
 
         imageView.backgroundColor = loadingColor
 
-        dataSource.loadImage(for: presentable, imageWidth: frame.size.width) { [weak self] image in
+        dataSource.loadImage(for: model, imageWidth: frame.size.width) { [weak self] image in
             self?.imageView.backgroundColor = .clear
 
             if let image = image {

@@ -23,8 +23,8 @@ class MarketViewController: UIViewController {
     fileprivate lazy var headerLabel = Label(style: .title4(.licorice))
     fileprivate lazy var headerView = UIView()
 
-    fileprivate let previewGridPresentables = PreviewDataModelFactory.create(numberOfModels: 9)
-    fileprivate let marketGridPresentables = Market.allMarkets
+    fileprivate let previewGridModels = PreviewDataModelFactory.create(numberOfModels: 9)
+    fileprivate let marketGridModels = Market.allMarkets
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,15 +105,15 @@ extension MarketViewController: ToastViewDelegate {
 extension MarketViewController: PreviewGridViewDataSource {
 
     func numberOfItems(inPreviewGridView previewGridView: PreviewGridView) -> Int {
-        return previewGridPresentables.count
+        return previewGridModels.count
     }
 
-    func previewGridView(_ previewGridView: PreviewGridView, presentableAtIndex index: Int) -> PreviewPresentable {
-        return previewGridPresentables[index]
+    func previewGridView(_ previewGridView: PreviewGridView, modelAtIndex index: Int) -> PreviewModel {
+        return previewGridModels[index]
     }
 
-    func loadImage(for presentable: PreviewPresentable, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let path = presentable.imagePath, let url = URL(string: path) else {
+    func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
         }
@@ -132,7 +132,7 @@ extension MarketViewController: PreviewGridViewDataSource {
         task.resume()
     }
 
-    public func cancelLoadImage(for presentable: PreviewPresentable, imageWidth: CGFloat) {
+    public func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat) {
         // No point in doing this in demo
     }
 }
@@ -148,10 +148,10 @@ extension MarketViewController: MarketGridViewDelegate {
 extension MarketViewController: MarketGridViewDataSource {
 
     func numberOfItems(inMarketGridView marketGridView: MarketGridView) -> Int {
-        return marketGridPresentables.count
+        return marketGridModels.count
     }
 
-    func marketGridView(_ marketGridView: MarketGridView, presentableAtIndex index: Int) -> MarketGridPresentable {
-        return marketGridPresentables[index]
+    func marketGridView(_ marketGridView: MarketGridView, modelAtIndex index: Int) -> MarketGridModel {
+        return marketGridModels[index]
     }
 }
