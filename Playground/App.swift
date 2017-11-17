@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-extension AppDelegate: Viewable {
+extension AppDelegate {
     // LabelPlayground
     // RibbonPlayground
     // TextFieldPlayground

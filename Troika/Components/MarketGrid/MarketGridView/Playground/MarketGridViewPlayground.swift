@@ -38,7 +38,6 @@ public class MarketGridViewPlayground: UIView, Injectable {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     public func setup() {
-        backgroundColor = .white
 
         let collectionView = MarketGridView(delegate: data, dataSource: data)
         collectionView.translatesAutoresizingMaskIntoConstraints = false

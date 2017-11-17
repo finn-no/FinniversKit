@@ -15,7 +15,6 @@ public class LabelPlayground: UIView, Injectable {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     public func setup() {
-        backgroundColor = .white
 
         let topSpacing: CGFloat = 32
         let margin: CGFloat = 16

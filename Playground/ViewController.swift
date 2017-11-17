@@ -21,6 +21,7 @@ class ViewController<View: UIView>: UIViewController {
     override func loadView() {
         let view = View()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
         self.view = view
     }
 }

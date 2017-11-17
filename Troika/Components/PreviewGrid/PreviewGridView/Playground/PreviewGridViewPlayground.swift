@@ -19,7 +19,6 @@ public class PreviewGridViewPlayground: UIView, Injectable {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     public func setup() {
-        backgroundColor = .white
 
         let view = PreviewGridView(delegate: delegateDataSource, dataSource: delegateDataSource)
         view.translatesAutoresizingMaskIntoConstraints = false

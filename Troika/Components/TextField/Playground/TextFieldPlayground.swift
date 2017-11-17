@@ -15,7 +15,6 @@ public class TextFieldPlayground: UIView, Injectable {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     public func setup() {
-        backgroundColor = .white
 
         let model = TextFieldDataModel.email
 

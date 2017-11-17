@@ -15,7 +15,7 @@ public class RibbonPlayground: UIView, Injectable {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     public func setup() {
-        backgroundColor = .white
+        backgroundColor = .green
 
         let successRibbonView = RibbonView()
         let errorRibbonView = RibbonView()
@@ -27,8 +27,6 @@ public class RibbonPlayground: UIView, Injectable {
         let interimSpacing: CGFloat = 16
         let lineSpacing: CGFloat = 8
         let margin: CGFloat = 16
-
-        backgroundColor = .white
 
         successRibbonView.model = RibbonDataModel.success
         errorRibbonView.model = RibbonDataModel.error

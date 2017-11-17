@@ -15,7 +15,6 @@ public class MarketGridCellPlayground: UIView, Injectable {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     public func setup() {
-        backgroundColor = .white
 
         let marketGridCell = MarketGridCell(frame: .zero)
         marketGridCell.translatesAutoresizingMaskIntoConstraints = false
