@@ -125,6 +125,7 @@
 		4558660A1F7A7B4800F670EF /* MarketGridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridModel.swift; sourceTree = "<group>"; };
 		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
 		456B552C1FC301DA00812998 /* EmptyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreen.swift; sourceTree = "<group>"; };
+		456B552E1FC30B7100812998 /* EmptyScreen.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = EmptyScreen.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		456C74FA1FB9A4BA006720A9 /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		457586EA1FB4385C00B70DD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4577B7291F865400005E7598 /* MarketHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
@@ -288,6 +289,7 @@
 		456B552B1FC301B900812998 /* Empty Screen */ = {
 			isa = PBXGroup;
 			children = (
+				456B552E1FC30B7100812998 /* EmptyScreen.playground */,
 				456B552C1FC301DA00812998 /* EmptyScreen.swift */,
 			);
 			path = "Empty Screen";
