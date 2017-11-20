@@ -33,12 +33,21 @@ class LoginViewController: UIViewController {
 
         loginScreenView.model = LoginScreenData()
 
-        NSLayoutConstraint.activate([
-            loginScreenView.topAnchor.constraint(equalTo: view.topAnchor),
-            loginScreenView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            loginScreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loginScreenView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        ])
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            NSLayoutConstraint.activate([
+                loginScreenView.topAnchor.constraint(equalTo: view.topAnchor),
+                loginScreenView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                loginScreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .veryLargeSpacing + .largeSpacing),
+                loginScreenView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.veryLargeSpacing - .largeSpacing),
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                loginScreenView.topAnchor.constraint(equalTo: view.topAnchor),
+                loginScreenView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                loginScreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                loginScreenView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            ])
+        }
     }
 
     @objc func keyboardWillAppear(notification: NSNotification) {
