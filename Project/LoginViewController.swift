@@ -17,13 +17,12 @@ class LoginViewController: UIViewController {
 
     fileprivate lazy var isKeyboardVisible: Bool = false
     fileprivate lazy var keyboardHeight: CGFloat = 0
+    fileprivate let buttonHeight: CGFloat = 44
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
-
-    fileprivate let buttonHeight: CGFloat = 44
 
     private func setupView() {
         view.addSubview(loginScreenView)
