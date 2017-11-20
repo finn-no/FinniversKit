@@ -42,9 +42,9 @@ class MarketViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             discoverGridView.topAnchor.constraint(equalTo: view.topAnchor),
-            discoverGridView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            discoverGridView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             discoverGridView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            discoverGridView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            discoverGridView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 
             marketGridView.topAnchor.constraint(equalTo: headerView.topAnchor),
             marketGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
