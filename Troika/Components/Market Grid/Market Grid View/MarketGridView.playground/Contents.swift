@@ -16,14 +16,13 @@ extension MarketData: MarketGridViewDataSource {
         return models.count
     }
 
-    func marketGridView(_ marketGridView: MarketGridView, modelAtIndex index: Int) ->  MarketGridModel {
+    func marketGridView(_ marketGridView: MarketGridView, modelAtIndex index: Int) -> MarketGridModel {
         return models[index]
     }
 }
 
 extension MarketData: MarketGridViewDelegate {
     func didSelect(itemAtIndex index: Int, inMarketGridView gridView: MarketGridView) {
-
     }
 }
 
@@ -35,4 +34,3 @@ collectionView.frame = ScreenSize.medium
 collectionView.backgroundColor = .white
 
 PlaygroundPage.current.liveView = collectionView
-
