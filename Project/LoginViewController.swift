@@ -8,8 +8,8 @@ import TroikaDemoKit
 
 class LoginViewController: UIViewController {
 
-    fileprivate lazy var loginScreenView: LoginScreen = {
-        let view = LoginScreen(frame: .zero)
+    fileprivate lazy var loginViewView: LoginView = {
+        let view = LoginView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
@@ -25,27 +25,27 @@ class LoginViewController: UIViewController {
     }
 
     private func setupView() {
-        view.addSubview(loginScreenView)
+        view.addSubview(loginViewView)
 
         view.backgroundColor = .milk
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: .UIKeyboardWillHide, object: nil)
 
-        loginScreenView.model = LoginScreenData()
+        loginViewView.model = LoginViewData()
 
         if UIDevice.current.userInterfaceIdiom == .pad {
             NSLayoutConstraint.activate([
-                loginScreenView.topAnchor.constraint(equalTo: view.topAnchor),
-                loginScreenView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                loginScreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .veryLargeSpacing + .largeSpacing),
-                loginScreenView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.veryLargeSpacing - .largeSpacing),
+                loginViewView.topAnchor.constraint(equalTo: view.topAnchor),
+                loginViewView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                loginViewView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .veryLargeSpacing + .largeSpacing),
+                loginViewView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.veryLargeSpacing - .largeSpacing),
             ])
         } else {
             NSLayoutConstraint.activate([
-                loginScreenView.topAnchor.constraint(equalTo: view.topAnchor),
-                loginScreenView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                loginScreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                loginScreenView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                loginViewView.topAnchor.constraint(equalTo: view.topAnchor),
+                loginViewView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                loginViewView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                loginViewView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             ])
         }
     }
@@ -70,8 +70,8 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: LoginScreenDelegate {
-    func incompleteCredentials(in: LoginScreen) {
+extension LoginViewController: LoginViewDelegate {
+    func incompleteCredentials(in: LoginView) {
         let toast = ToastView(style: .error)
         toast.text = "Incomplete login credentials"
         toast.delegate = self
@@ -85,19 +85,19 @@ extension LoginViewController: LoginScreenDelegate {
         toast.presentFromBottom(view: view, animateOffset: offsetHeight, timeOut: 4)
     }
 
-    func forgotPasswordButtonPressed(in: LoginScreen) {
+    func forgotPasswordButtonPressed(in: LoginView) {
         print("Forgot password button pressed!")
     }
 
-    func loginButtonPressed(in: LoginScreen) {
+    func loginButtonPressed(in: LoginView) {
         print("Login button pressed!")
     }
 
-    func newUserButtonPressed(in: LoginScreen) {
+    func newUserButtonPressed(in: LoginView) {
         print("New user button pressed!")
     }
 
-    func userTermsButtonPressed(in: LoginScreen) {
+    func userTermsButtonPressed(in: LoginView) {
         print("User terms button pressed!")
     }
 }

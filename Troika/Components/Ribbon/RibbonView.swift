@@ -60,7 +60,6 @@ public class RibbonView: UIView {
     }
 
     // MARK: - Layout
-
     public override func layoutSubviews() {
         super.layoutSubviews()
 
