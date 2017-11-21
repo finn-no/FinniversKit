@@ -25,22 +25,37 @@ public class ToastPlayground: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
+        class ToastClass: NSObject, ToastViewDelegate {
+            func didTapActionButton(button: UIButton, in toastView: ToastView) {
+                print("Button tapped in \(toastView.style)")
+            }
+
+            func didTap(toastView: ToastView) {
+                print("Toast view tapped in \(toastView.style)")
+            }
+        }
 
         let delegate = ToastClass()
 
-        let successToast = ToastView()
-        let imageToast = ToastView()
-        let errorToast = ToastView()
-        let successButtonToast = ToastView(delegate: delegate)
-        let errorButtonToast = ToastView(delegate: delegate)
-        let animatedToast = ToastView(delegate: delegate)
+        let successToast = ToastView(style: .success)
+        let imageToast = ToastView(style: .sucesssWithImage)
+        let errorToast = ToastView(style: .error)
+        let successButtonToast = ToastView(style: .successButton)
+        let errorButtonToast = ToastView(style: .errorButton)
+        let animatedToast = ToastView(style: .success)
 
-        successToast.model = ToastDataModel.multiline
-        imageToast.model = ToastDataModel.successImage
-        errorToast.model = ToastDataModel.error
-        successButtonToast.model = ToastDataModel.successButton
-        errorButtonToast.model = ToastDataModel.errorButton
-        animatedToast.model = ToastDataModel.success
+        successToast.text = "Success"
+        imageToast.text = "Image success"
+        errorToast.text = "Error"
+        successButtonToast.text = "Action success"
+        successButtonToast.buttonText = "Action"
+        errorButtonToast.text = "Action error"
+        errorButtonToast.buttonText = "Undo"
+        animatedToast.text = "Animated success"
+
+        successButtonToast.delegate = delegate
+        errorButtonToast.delegate = delegate
+        animatedToast.delegate = delegate
 
         animatedToast.presentFromBottom(view: self, animateOffset: 0, timeOut: 5)
 
@@ -59,23 +74,23 @@ public class ToastPlayground: UIView {
         NSLayoutConstraint.activate([
             successToast.leadingAnchor.constraint(equalTo: leadingAnchor),
             successToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            successToast.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            successToast.topAnchor.constraint(equalTo: topAnchor, constant: 16),
 
             imageToast.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageToast.topAnchor.constraint(equalTo: successToast.bottomAnchor, constant: .largeSpacing),
+            imageToast.topAnchor.constraint(equalTo: successToast.bottomAnchor, constant: 32),
 
             errorToast.leadingAnchor.constraint(equalTo: leadingAnchor),
             errorToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            errorToast.topAnchor.constraint(equalTo: imageToast.bottomAnchor, constant: .largeSpacing),
+            errorToast.topAnchor.constraint(equalTo: imageToast.bottomAnchor, constant: 32),
 
             successButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor),
             successButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            successButtonToast.topAnchor.constraint(equalTo: errorToast.bottomAnchor, constant: .largeSpacing),
+            successButtonToast.topAnchor.constraint(equalTo: errorToast.bottomAnchor, constant: 32),
 
             errorButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor),
             errorButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            errorButtonToast.topAnchor.constraint(equalTo: successButtonToast.bottomAnchor, constant: .largeSpacing),
+            errorButtonToast.topAnchor.constraint(equalTo: successButtonToast.bottomAnchor, constant: 32),
         ])
     }
 }

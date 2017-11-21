@@ -15,19 +15,25 @@ public class TextFieldPlayground: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
+        let emailTextField = TextField(inputType: .email)
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        emailTextField.placeholderText = "E-post"
 
-        let model = TextFieldDataModel.email
+        let passwordTextField = TextField(inputType: .password)
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.placeholderText = "Passord"
 
-        let textField = TextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.model = model
-
-        addSubview(textField)
+        addSubview(emailTextField)
+        addSubview(passwordTextField)
 
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }
