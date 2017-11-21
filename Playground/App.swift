@@ -5,22 +5,20 @@
 import Troika
 
 extension AppDelegate {
-    // ** Elements **
+    // ** Components **
+    // ButtonPlayground
     // LabelPlayground
+    // LoginView
+    // MarketGridViewPlayground
+    // MarketGridCellPlayground
+    // PreviewGridViewPlayground
+    // PreviewGridCellPlayground
     // RibbonPlayground
     // TextFieldPlayground
     // ToastPlayground
-    // ButtonPlayground
 
-    // ** Components **
-    // PreviewGridViewPlayground
-    // PreviewGridCellPlayground
-    // MarketGridViewPlayground
-    // MarketGridCellPlayground
-
-    // ** Demo **
-    // LoginView
+    // ** Others **
     // MarketView
 
-    typealias View = LoginView
+    typealias View = MarketView
 }
