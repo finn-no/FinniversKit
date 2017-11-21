@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol LoginScreenModel {
+public protocol LoginViewModel {
     var headerText: String { get }
     var emailPlaceholder: String { get }
     var passwordPlaceholder: String { get }
@@ -15,7 +15,7 @@ public protocol LoginScreenModel {
     var userTermsButtonTitle: String { get }
 }
 
-public extension LoginScreenModel {
+public extension LoginViewModel {
     var accessibilityLabel: String {
         return ""
     }

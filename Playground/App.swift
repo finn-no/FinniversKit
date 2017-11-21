@@ -2,6 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import Troika
+
 extension AppDelegate {
     // ** Elements **
     // LabelPlayground
@@ -20,5 +22,5 @@ extension AppDelegate {
     // LoginView
     // MarketView
 
-    typealias View = MarketView
+    typealias View = LoginView
 }

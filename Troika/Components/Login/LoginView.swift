@@ -4,15 +4,15 @@
 
 import UIKit
 
-public protocol LoginScreenDelegate: NSObjectProtocol {
-    func forgotPasswordButtonPressed(in: LoginScreen)
-    func loginButtonPressed(in: LoginScreen)
-    func newUserButtonPressed(in: LoginScreen)
-    func userTermsButtonPressed(in: LoginScreen)
-    func incompleteCredentials(in: LoginScreen)
+public protocol LoginViewDelegate: NSObjectProtocol {
+    func forgotPasswordButtonPressed(in: LoginView)
+    func loginButtonPressed(in: LoginView)
+    func newUserButtonPressed(in: LoginView)
+    func userTermsButtonPressed(in: LoginView)
+    func incompleteCredentials(in: LoginView)
 }
 
-public class LoginScreen: UIView {
+public class LoginView: UIView {
 
     // MARK: - Internal properties
 
@@ -90,7 +90,7 @@ public class LoginScreen: UIView {
 
     // MARK: - External properties / Dependency injection
 
-    public var model: LoginScreenModel? {
+    public var model: LoginViewModel? {
         didSet {
             guard let model = model else {
                 return
@@ -106,7 +106,7 @@ public class LoginScreen: UIView {
         }
     }
 
-    public weak var delegate: LoginScreenDelegate?
+    public weak var delegate: LoginViewDelegate?
 
     // MARK: - Setup
 
@@ -137,6 +137,8 @@ public class LoginScreen: UIView {
         contentView.addSubview(newUserButton)
         contentView.addSubview(userTermsIntroLabel)
         contentView.addSubview(userTermsButton)
+
+        model = LoginViewDefaultData()
     }
 
     // MARK: - Superclass Overrides
@@ -220,7 +222,7 @@ public class LoginScreen: UIView {
     }
 }
 
-extension LoginScreen: TextFieldDelegate {
+extension LoginView: TextFieldDelegate {
     public func textFieldShouldReturn(_ textField: TextField) -> Bool {
         if textField == passwordTextField {
             if loginButton.isEnabled {
