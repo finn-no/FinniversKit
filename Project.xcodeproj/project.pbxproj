@@ -25,6 +25,7 @@
 		4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridModel.swift */; };
 		4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */; };
 		456B552D1FC301DA00812998 /* EmptyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B552C1FC301DA00812998 /* EmptyScreen.swift */; };
+		456B55301FC418F600812998 /* EmptyScreeenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B552F1FC418F600812998 /* EmptyScreeenViewController.swift */; };
 		456C74FB1FB9A4BA006720A9 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C74FA1FB9A4BA006720A9 /* Button+Style.swift */; };
 		457586EB1FB4385C00B70DD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457586EA1FB4385C00B70DD7 /* LoginViewController.swift */; };
 		4577B72A1F865400005E7598 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577B7291F865400005E7598 /* MarketHelpers.swift */; };
@@ -126,6 +127,7 @@
 		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
 		456B552C1FC301DA00812998 /* EmptyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreen.swift; sourceTree = "<group>"; };
 		456B552E1FC30B7100812998 /* EmptyScreen.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = EmptyScreen.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		456B552F1FC418F600812998 /* EmptyScreeenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreeenViewController.swift; sourceTree = "<group>"; };
 		456C74FA1FB9A4BA006720A9 /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		457586EA1FB4385C00B70DD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4577B7291F865400005E7598 /* MarketHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				25D04D7E1F583B1800EA317D /* AppDelegate.swift */,
 				CB3E67CA1F7E692900C40D47 /* MarketViewController.swift */,
 				457586EA1FB4385C00B70DD7 /* LoginViewController.swift */,
+				456B552F1FC418F600812998 /* EmptyScreeenViewController.swift */,
 				CB3E67C81F7E62A300C40D47 /* Assets.xcassets */,
 				25D04D871F583B1800EA317D /* LaunchScreen.storyboard */,
 				25D04D8A1F583B1800EA317D /* Info.plist */,
@@ -701,6 +704,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456B55301FC418F600812998 /* EmptyScreeenViewController.swift in Sources */,
 				457586EB1FB4385C00B70DD7 /* LoginViewController.swift in Sources */,
 				CB3E67CB1F7E692900C40D47 /* MarketViewController.swift in Sources */,
 				25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */,

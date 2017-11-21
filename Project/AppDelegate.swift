@@ -13,13 +13,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         let marketViewController = MarketViewController()
         let loginViewController = LoginViewController()
+        let emptyScreenViewController = EmptyScreenViewController()
         let marketNavigationController = UINavigationController(rootViewController: marketViewController)
         let loginNavigationController = UINavigationController(rootViewController: loginViewController)
+        let emptyScreenNavigationController = UINavigationController(rootViewController: emptyScreenViewController)
 
         marketNavigationController.tabBarItem = UITabBarItem(title: "Home", image: nil, tag: 0)
         loginNavigationController.tabBarItem = UITabBarItem(title: "Login", image: nil, tag: 1)
+        emptyScreenNavigationController.tabBarItem = UITabBarItem(title: "Empty", image: nil, tag: 2)
 
-        let viewControllerList = [marketNavigationController, loginNavigationController]
+        let viewControllerList = [marketNavigationController, loginNavigationController, emptyScreenNavigationController]
         tabBarController.viewControllers = viewControllerList
 
         return tabBarController
