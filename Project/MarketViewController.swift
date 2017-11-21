@@ -42,9 +42,9 @@ class MarketViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             discoverGridView.topAnchor.constraint(equalTo: view.topAnchor),
-            discoverGridView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            discoverGridView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             discoverGridView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            discoverGridView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            discoverGridView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 
             marketGridView.topAnchor.constraint(equalTo: headerView.topAnchor),
             marketGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
@@ -83,8 +83,9 @@ extension MarketViewController: PreviewGridViewDelegate {
     }
 
     func didSelect(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
-        let toast = ToastView(delegate: self)
-        toast.model = ToastDataModel.successButton
+        let toast = ToastView(style: .success)
+        toast.text = "Add tapped"
+
         toast.presentFromBottom(view: view, animateOffset: tabBarController?.tabBar.frame.height ?? 0, timeOut: 4)
     }
 }

@@ -4,12 +4,45 @@
 
 import UIKit
 
+public protocol TextFieldDelegate: NSObjectProtocol {
+    func textFieldDidBeginEditing(_ textField: TextField)
+    func textFieldDidEndEditing(_ textField: TextField)
+    func textFieldShouldReturn(_ textField: TextField) -> Bool
+    func textField(_ textField: TextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    func textFieldDidChange(_ textField: TextField)
+}
+
+public extension TextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: TextField) {
+        // Default empty implementation
+    }
+
+    func textFieldDidEndEditing(_ textField: TextField) {
+        // Default empty implementation
+    }
+
+    func textFieldShouldReturn(_ textField: TextField) -> Bool {
+        return true
+    }
+
+    func textField(_ textField: TextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+
+    func textFieldDidChange(_ textField: TextField) {
+        // Default empty implementation
+    }
+}
+
 public class TextField: UIView {
 
     // MARK: - Internal properties
 
     private let eyeImage = UIImage(frameworkImageNamed: "view")!.withRenderingMode(.alwaysTemplate)
     private let clearTextIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
+    private let rightViewSize = CGSize(width: 40, height: 40)
+    private let underlineHeight: CGFloat = 2
+    private let animationDuration: Double = 0.3
 
     private lazy var typeLabel: Label = {
         let label = Label(style: .detail(.stone))
@@ -19,7 +52,7 @@ public class TextField: UIView {
     }()
 
     private lazy var clearButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: clearTextIcon.size.width, height: clearTextIcon.size.height))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: rightViewSize.width, height: rightViewSize.height))
         button.setImage(clearTextIcon, for: .normal)
         button.imageView?.tintColor = .stone
         button.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
@@ -51,9 +84,6 @@ public class TextField: UIView {
         return textField
     }()
 
-    private let underlineHeight: CGFloat = 2
-    private let animationDuration: Double = 0.3
-
     private lazy var underline: UIView = {
         let view = UIView()
         view.backgroundColor = .stone
@@ -61,16 +91,33 @@ public class TextField: UIView {
         return view
     }()
 
+    // MARK: - External properties
+
+    public let inputType: InputType
+    public var placeholderText: String = "" {
+        didSet {
+            typeLabel.text = placeholderText
+            accessibilityLabel = placeholderText
+            textField.placeholder = placeholderText
+        }
+    }
+
+    public var text: String? {
+        return textField.text
+    }
+
+    public weak var delegate: TextFieldDelegate?
+
     // MARK: - Setup
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(inputType: InputType) {
+        self.inputType = inputType
+        super.init(frame: .zero)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    public required convenience init?(coder aDecoder: NSCoder) {
+        self.init(inputType: .email)
     }
 
     private func setup() {
@@ -78,6 +125,15 @@ public class TextField: UIView {
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
+
+        textField.isSecureTextEntry = inputType.isSecureMode
+        showPasswordButton.isHidden = !inputType.isSecureMode
+        textField.keyboardType = inputType.keyBoardStyle
+        textField.returnKeyType = inputType.returnKeyType
+
+        if inputType.isSecureMode {
+            textField.rightViewMode = .never
+        }
 
         addSubview(typeLabel)
         addSubview(textField)
@@ -101,8 +157,8 @@ public class TextField: UIView {
         showPasswordButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor).isActive = true
         showPasswordButton.heightAnchor.constraint(equalToConstant: eyeImage.size.height).isActive = true
 
-        if (model?.type.isSecureMode)! {
-            showPasswordButton.widthAnchor.constraint(equalToConstant: eyeImage.size.width).isActive = true
+        if inputType.isSecureMode {
+            showPasswordButton.widthAnchor.constraint(equalToConstant: rightViewSize.width).isActive = true
         } else {
             showPasswordButton.widthAnchor.constraint(equalToConstant: 0).isActive = true
         }
@@ -114,27 +170,6 @@ public class TextField: UIView {
         underline.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
         typeLabel.transform = transform.translatedBy(x: 0, y: typeLabel.frame.height)
-    }
-
-    // MARK: - Dependency injection
-
-    public var model: TextFieldModel? {
-        didSet {
-            guard let model = model else {
-                return
-            }
-
-            typeLabel.text = model.type.typeText
-            textField.isSecureTextEntry = model.type.isSecureMode
-            showPasswordButton.isHidden = !model.type.isSecureMode
-            accessibilityLabel = model.accessibilityLabel
-            textField.placeholder = model.type.typeText
-            textField.keyboardType = model.type.keyBoardStyle
-
-            if model.type.isSecureMode {
-                textField.rightViewMode = .never
-            }
-        }
     }
 
     // MARK: - Actions
@@ -157,6 +192,7 @@ public class TextField: UIView {
     }
 
     @objc private func textFieldDidChange() {
+        delegate?.textFieldDidChange(self)
 
         if let text = textField.text, !text.isEmpty {
             UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
@@ -174,20 +210,43 @@ public class TextField: UIView {
     @objc private func handleTap() {
         textField.becomeFirstResponder()
     }
+
+    fileprivate func isValidEmail(_ emailAdress: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: emailAdress)
+    }
 }
 
 // MARK: - UITextFieldDelegate
 
 extension TextField: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.textFieldDidBeginEditing(self)
         UIView.animate(withDuration: animationDuration) {
             self.underline.backgroundColor = .secondaryBlue
         }
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: animationDuration) {
-            self.underline.backgroundColor = .stone
+        delegate?.textFieldDidEndEditing(self)
+        if let text = textField.text, !isValidEmail(text), !text.isEmpty, inputType == .email {
+            UIView.animate(withDuration: animationDuration) {
+                self.underline.backgroundColor = .cherry
+            }
+        } else {
+            UIView.animate(withDuration: animationDuration) {
+                self.underline.backgroundColor = .stone
+            }
         }
+    }
+
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return delegate?.textFieldShouldReturn(self) ?? true
+    }
+
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return delegate?.textField(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
     }
 }
