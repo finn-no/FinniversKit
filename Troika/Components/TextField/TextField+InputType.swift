@@ -10,13 +10,6 @@ extension TextField {
         case email
         case password
 
-        var typeText: String {
-            switch self {
-            case .email: return "E-post"
-            case .password: return "Passord"
-            }
-        }
-
         var isSecureMode: Bool {
             switch self {
             case .password: return true
@@ -28,6 +21,13 @@ extension TextField {
             switch self {
             case .email: return .emailAddress
             default: return .default
+            }
+        }
+
+        var returnKeyType: UIReturnKeyType {
+            switch self {
+            case .email: return .next
+            case .password: return .done
             }
         }
     }

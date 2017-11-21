@@ -679,6 +679,7 @@
 				14256A2B1FBE204200017B4F /* TextFieldModel.swift in Sources */,
 				143265AF1FBEEE220093B265 /* Button+Style.swift in Sources */,
 				CB3E67C31F7E4D4000C40D47 /* PreviewGridView.swift in Sources */,
+				45A7EB5B1FBDD67700E2C1AA /* ToastView+Style.swift in Sources */,
 				457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */,
 				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
 				14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */,
