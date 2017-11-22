@@ -65,14 +65,44 @@ public class EmptyScreen: UIView {
         return label
     }()
 
-    private var animator: UIDynamicAnimator?
-    private var gravity: UIGravityBehavior?
-    private var collision: UICollisionBehavior?
-    private var attach: UIAttachmentBehavior?
-    private var itemBehaviour: UIDynamicItemBehavior?
+    private lazy var animator: UIDynamicAnimator = {
+        let animator = UIDynamicAnimator(referenceView: self)
+        return animator
+    }()
 
-    private var motionManager: CMMotionManager?
-    private var motionQueue: OperationQueue?
+    private lazy var gravity: UIGravityBehavior = {
+        let gravity = UIGravityBehavior(items: allSquares)
+        gravity.gravityDirection = CGVector(dx: 0, dy: 1.0)
+        return gravity
+    }()
+
+    private lazy var collision: UICollisionBehavior = {
+        let collision = UICollisionBehavior(items: allSquares)
+        collision.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsetsMake(-10000, 0, 0, 0))
+        return collision
+    }()
+
+    private lazy var itemBehavior: UIDynamicItemBehavior = {
+        let itemBehavior = UIDynamicItemBehavior(items: allSquares)
+        itemBehavior.elasticity = 0.5
+        itemBehavior.angularResistance = 0.1
+        itemBehavior.resistance = 0.1
+        return itemBehavior
+    }()
+
+    private lazy var motionManager: CMMotionManager = {
+        let motionManager = CMMotionManager()
+        motionManager.accelerometerUpdateInterval = 0.01
+        return motionManager
+    }()
+
+    private lazy var motionQueue = OperationQueue()
+
+    private lazy var allSquares: [UIView] = {
+        return [square1, square2, square3, square4]
+    }()
+
+    private var attach: UIAttachmentBehavior?
 
     // MARK: - External properties / Dependency injection
 
@@ -109,28 +139,10 @@ public class EmptyScreen: UIView {
         addSubview(headerLabel)
         addSubview(messageLabel)
 
-        let allSquares = [square1, square2, square3, square4]
-
-        animator = UIDynamicAnimator(referenceView: self)
-
-        // Setup gravity
-        gravity = UIGravityBehavior(items: allSquares)
-        let direction = CGVector(dx: 0, dy: 1.0)
-        gravity?.gravityDirection = direction
-
-        // Setup boundries for collision
-        collision = UICollisionBehavior(items: allSquares)
-        let boundOffset = UIEdgeInsetsMake(-10000, 0, 0, 0)
-        collision?.setTranslatesReferenceBoundsIntoBoundary(with: boundOffset)
-
-        // Setup elasticity for bounce
-        itemBehaviour = UIDynamicItemBehavior(items: allSquares)
-        itemBehaviour?.elasticity = 0.6
-
         // Add behaviour to animator
-        animator?.addBehavior(gravity!)
-        animator?.addBehavior(collision!)
-        animator?.addBehavior(itemBehaviour!)
+        animator.addBehavior(gravity)
+        animator.addBehavior(collision)
+        animator.addBehavior(itemBehavior)
 
         getAccelerometerData()
     }
@@ -156,55 +168,50 @@ public class EmptyScreen: UIView {
     // MARK: - Actions
 
     @objc func panAction(sender: UIPanGestureRecognizer) {
+        guard let objectView = sender.view else {
+            print("\(sender) has no view")
+            return
+        }
+
         let location = sender.location(in: self)
-        let touchLocation = sender.location(in: sender.view)
+        let touchLocation = sender.location(in: objectView)
+        let touchOffset = UIOffsetMake(touchLocation.x - objectView.bounds.midX, touchLocation.y - objectView.bounds.midY)
 
         if sender.state == .began {
-            let touchOffset = UIOffsetMake(touchLocation.x - sender.view!.bounds.midX, touchLocation.y - sender.view!.bounds.midY)
-            attach = UIAttachmentBehavior(item: sender.view!, offsetFromCenter: touchOffset, attachedToAnchor: location)
-            animator?.addBehavior(attach!)
+            let newAttach = UIAttachmentBehavior(item: objectView, offsetFromCenter: touchOffset, attachedToAnchor: location)
+            animator.addBehavior(newAttach)
+            attach = newAttach
         } else if sender.state == .changed {
-            attach?.anchorPoint = location
+            if let attach = attach {
+                attach.anchorPoint = location
+            }
         } else if sender.state == .ended {
-            animator?.removeBehavior(attach!)
-
-            let itemBehaviour = UIDynamicItemBehavior(items: [sender.view!])
-            itemBehaviour.addLinearVelocity(sender.velocity(in: self), for: sender.view!)
-            itemBehaviour.angularResistance = 0
-
-            animator?.addBehavior(gravity!)
-            animator?.addBehavior(collision!)
-            animator?.addBehavior(itemBehaviour)
+            if let attach = attach {
+                animator.removeBehavior(attach)
+                itemBehavior.addLinearVelocity(sender.velocity(in: self), for: objectView)
+            }
         }
     }
 
+    // MARK: - Accelerometer calculations
+
     func getAccelerometerData() {
-        // Setup motion amanager
-        motionManager = CMMotionManager()
-        motionQueue = OperationQueue()
-
-        guard let motionManager = motionManager else {
-            print("No motion manager available")
-            return
-        }
-        guard let motionQueue = motionQueue else {
-            print("No motion queue available")
-            return
-        }
-
-        motionManager.accelerometerUpdateInterval = 0.01
         motionManager.startAccelerometerUpdates()
-
         motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: { motion, error in
             if error != nil {
                 NSLog(String(describing: error))
             }
 
-            let grav: CMAcceleration = motion!.gravity
+            guard let motion = motion else {
+                print("Motion is not available")
+                return
+            }
+
+            let grav: CMAcceleration = motion.gravity
             var vector = CGVector(dx: CGFloat(grav.x), dy: CGFloat(grav.y))
 
             DispatchQueue.main.async {
-                // Have to correct for orientation.
+                // Correct for orientation
                 let orientation = UIApplication.shared.statusBarOrientation
 
                 if orientation == .portrait {
@@ -217,7 +224,7 @@ public class EmptyScreen: UIView {
                     vector.dy = CGFloat(-grav.x)
                 }
 
-                self.gravity!.gravityDirection = vector
+                self.gravity.gravityDirection = vector
             }
         })
     }
