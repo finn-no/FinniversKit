@@ -3,10 +3,49 @@
 //
 
 import UIKit
+import CoreMotion
 
 public class EmptyScreen: UIView {
 
     // MARK: - Internal properties
+
+    private let cornerRadius: CGFloat = 4.0
+
+    private lazy var square1: UIView = {
+        let view = UIView(frame: CGRect(x: 70, y: 130, width: 100, height: 100))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        view.backgroundColor = .salmon
+        view.layer.cornerRadius = cornerRadius
+        return view
+    }()
+
+    private lazy var square2: UIView = {
+        let view = UIView(frame: CGRect(x: 230, y: 130, width: 90, height: 90))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        view.backgroundColor = .banana
+        view.layer.cornerRadius = cornerRadius
+        return view
+    }()
+
+    private lazy var square3: UIView = {
+        let view = UIView(frame: CGRect(x: 60, y: 45, width: 50, height: 50))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        view.backgroundColor = .mint
+        view.layer.cornerRadius = cornerRadius
+        return view
+    }()
+
+    private lazy var square4: UIView = {
+        let view = UIView(frame: CGRect(x: 260, y: 45, width: 55, height: 55))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        view.backgroundColor = .toothPaste
+        view.layer.cornerRadius = cornerRadius
+        return view
+    }()
 
     private lazy var headerLabel: Label = {
         let label = Label(style: .title1)
@@ -25,6 +64,15 @@ public class EmptyScreen: UIView {
         label.numberOfLines = 0
         return label
     }()
+
+    private var animator: UIDynamicAnimator?
+    private var gravity: UIGravityBehavior?
+    private var collision: UICollisionBehavior?
+    private var attach: UIAttachmentBehavior?
+    private var itemBehaviour: UIDynamicItemBehavior?
+
+    private var motionManager: CMMotionManager?
+    private var motionQueue: OperationQueue?
 
     // MARK: - External properties / Dependency injection
 
@@ -53,8 +101,35 @@ public class EmptyScreen: UIView {
     }
 
     private func setup() {
+        addSubview(square1)
+        addSubview(square2)
+        addSubview(square3)
+        addSubview(square4)
+
         addSubview(headerLabel)
         addSubview(messageLabel)
+
+        let allSquares = [square1, square2, square3, square4]
+
+        animator = UIDynamicAnimator(referenceView: self)
+
+        // Setup gravity
+        gravity = UIGravityBehavior(items: allSquares)
+        let direction = CGVector(dx: 0, dy: 1.0)
+        gravity?.gravityDirection = direction
+
+        // Setup boundries for collision
+        collision = UICollisionBehavior(items: allSquares)
+        collision?.translatesReferenceBoundsIntoBoundary = true
+
+        // Setup elasticity for bounce
+        itemBehaviour = UIDynamicItemBehavior(items: allSquares)
+        itemBehaviour?.elasticity = 0.6
+
+        // Add behaviour to animator
+        animator?.addBehavior(gravity!)
+        animator?.addBehavior(collision!)
+        animator?.addBehavior(itemBehaviour!)
     }
 
     // MARK: - Superclass Overrides
@@ -75,5 +150,62 @@ public class EmptyScreen: UIView {
         ])
     }
 
-    // MARK: - Private
+    // MARK: - Actions
+
+    @objc func panAction(sender: UIPanGestureRecognizer) {
+        let location = sender.location(in: self)
+        let touchLocation = sender.location(in: sender.view)
+
+        if sender.state == .began {
+            let touchOffset = UIOffsetMake(touchLocation.x - sender.view!.bounds.midX, touchLocation.y - sender.view!.bounds.midY)
+            attach = UIAttachmentBehavior(item: sender.view!, offsetFromCenter: touchOffset, attachedToAnchor: location)
+            animator?.addBehavior(attach!)
+        } else if sender.state == .changed {
+            attach?.anchorPoint = location
+        } else if sender.state == .ended {
+            animator?.removeBehavior(attach!)
+
+            let itemBehaviour = UIDynamicItemBehavior(items: [sender.view!])
+            itemBehaviour.addLinearVelocity(sender.velocity(in: self), for: sender.view!)
+            itemBehaviour.angularResistance = 0
+
+            animator?.addBehavior(gravity!)
+            animator?.addBehavior(collision!)
+            animator?.addBehavior(itemBehaviour)
+        }
+    }
+
+    func getAccelerometerData() {
+        // Setup motion amanager
+        motionManager?.startDeviceMotionUpdates(to: motionQueue!, withHandler: { motion, error in
+            if error != nil {
+                NSLog(String(describing: error))
+            }
+
+            let grav: CMAcceleration = motion!.gravity
+
+            let x = CGFloat(grav.x)
+            let y = CGFloat(grav.y)
+            var position = CGPoint(x: x, y: y)
+
+            // Have to correct for orientation.
+            let orientation = UIApplication.shared.statusBarOrientation
+
+            if orientation == .landscapeLeft {
+                let t = position.x
+                position.x = 0 - position.y
+                position.y = t
+            } else if orientation == .landscapeRight {
+                let t = position.x
+                position.x = position.y
+                position.y = 0 - t
+            } else if orientation == .portraitUpsideDown {
+                position.x *= -1
+                position.y *= -1
+            }
+
+            let vector = CGVector(dx: position.x, dy: position.y)
+            self.gravity!.gravityDirection = vector
+        })
+    }
 }
