@@ -120,7 +120,8 @@ public class EmptyScreen: UIView {
 
         // Setup boundries for collision
         collision = UICollisionBehavior(items: allSquares)
-        collision?.translatesReferenceBoundsIntoBoundary = true
+        let boundOffset = UIEdgeInsetsMake(-10000, 0, 0, 0)
+        collision?.setTranslatesReferenceBoundsIntoBoundary(with: boundOffset)
 
         // Setup elasticity for bounce
         itemBehaviour = UIDynamicItemBehavior(items: allSquares)
