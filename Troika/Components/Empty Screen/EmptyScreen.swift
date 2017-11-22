@@ -130,6 +130,8 @@ public class EmptyScreen: UIView {
         animator?.addBehavior(gravity!)
         animator?.addBehavior(collision!)
         animator?.addBehavior(itemBehaviour!)
+
+        getAccelerometerData()
     }
 
     // MARK: - Superclass Overrides
@@ -177,35 +179,45 @@ public class EmptyScreen: UIView {
 
     func getAccelerometerData() {
         // Setup motion amanager
-        motionManager?.startDeviceMotionUpdates(to: motionQueue!, withHandler: { motion, error in
+        motionManager = CMMotionManager()
+        motionQueue = OperationQueue()
+
+        guard let motionManager = motionManager else {
+            print("No motion manager available")
+            return
+        }
+        guard let motionQueue = motionQueue else {
+            print("No motion queue available")
+            return
+        }
+
+        motionManager.accelerometerUpdateInterval = 0.01
+        motionManager.startAccelerometerUpdates()
+
+        motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: { motion, error in
             if error != nil {
                 NSLog(String(describing: error))
             }
 
             let grav: CMAcceleration = motion!.gravity
+            var vector = CGVector(dx: CGFloat(grav.x), dy: CGFloat(grav.y))
 
-            let x = CGFloat(grav.x)
-            let y = CGFloat(grav.y)
-            var position = CGPoint(x: x, y: y)
+            DispatchQueue.main.async {
+                // Have to correct for orientation.
+                let orientation = UIApplication.shared.statusBarOrientation
 
-            // Have to correct for orientation.
-            let orientation = UIApplication.shared.statusBarOrientation
+                if orientation == .portrait {
+                    vector.dy *= -1
+                } else if orientation == .landscapeLeft {
+                    vector.dx = CGFloat(grav.y)
+                    vector.dy = CGFloat(grav.x)
+                } else if orientation == .landscapeRight {
+                    vector.dx = CGFloat(-grav.y)
+                    vector.dy = CGFloat(-grav.x)
+                }
 
-            if orientation == .landscapeLeft {
-                let t = position.x
-                position.x = 0 - position.y
-                position.y = t
-            } else if orientation == .landscapeRight {
-                let t = position.x
-                position.x = position.y
-                position.y = 0 - t
-            } else if orientation == .portraitUpsideDown {
-                position.x *= -1
-                position.y *= -1
+                self.gravity!.gravityDirection = vector
             }
-
-            let vector = CGVector(dx: position.x, dy: position.y)
-            self.gravity!.gravityDirection = vector
         })
     }
 }
