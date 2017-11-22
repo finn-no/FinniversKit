@@ -16,6 +16,7 @@ extension AppDelegate {
     // RibbonPlayground
     // TextFieldPlayground
     // ToastPlayground
+    // EmptyScreenPlayground
 
     // ** Others **
     // MarketView
