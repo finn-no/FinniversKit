@@ -7,10 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D04D7E1F583B1800EA317D /* AppDelegate.swift */; };
-		25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D04D871F583B1800EA317D /* LaunchScreen.storyboard */; };
-		45022FC81FB304E7001C34A9 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45022FC71FB304E7001C34A9 /* TextField.swift */; };
-		45022FCB1FB330F8001C34A9 /* TextFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45022FCA1FB330F8001C34A9 /* TextFieldModel.swift */; };
+		14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C51F7E4D5D00C40D47 /* PreviewModel.swift */; };
+		14256A1C1FBE1ECC00017B4F /* RibbonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */; };
+		14256A251FBE200300017B4F /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A221FBE200300017B4F /* ToastView.swift */; };
+		14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A291FBE204200017B4F /* TextField+InputType.swift */; };
+		14256A2D1FBE204200017B4F /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A2A1FBE204200017B4F /* TextField.swift */; };
+		143265AF1FBEEE220093B265 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143265AC1FBEEE220093B265 /* Button+Style.swift */; };
+		143265B01FBEEE220093B265 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143265AE1FBEEE220093B265 /* Button.swift */; };
+		143265B31FBEEE570093B265 /* ButtonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143265B21FBEEE570093B265 /* ButtonPlayground.swift */; };
+		14405C801FAFC3A900D03E04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7E1FAFC3A900D03E04 /* App.swift */; };
+		144351AB1FBE2A53007B2229 /* ToastPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351A91FBE2A53007B2229 /* ToastPlayground.swift */; };
+		144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */; };
+		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
+		144351C21FBE2EB9007B2229 /* TextFieldPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C01FBE2EB9007B2229 /* TextFieldPlayground.swift */; };
+		144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* AppDelegate.swift */; };
+		144351C71FBE3030007B2229 /* LabelPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C61FBE3030007B2229 /* LabelPlayground.swift */; };
+		144351CB1FBE36D3007B2229 /* RibbonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C91FBE36D3007B2229 /* RibbonPlayground.swift */; };
+		144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */; };
+		144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CE1FBE3805007B2229 /* MarketHelpers.swift */; };
+		144351D11FBE3805007B2229 /* MarketGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */; };
+		144351D41FBE3A40007B2229 /* MarketGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */; };
+		144351D71FBE3BDD007B2229 /* PreviewGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */; };
+		144351DA1FBE3D33007B2229 /* PreviewGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D91FBE3D33007B2229 /* PreviewGridCellPlayground.swift */; };
+		1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145725491FBEEF6A00648D73 /* MarketView.swift */; };
+		146D3C3E1FBE453700124B76 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3D1FBE453700124B76 /* PreviewHelpers.swift */; };
+		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
+		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
+		442F759F1FC447E500034BF6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F759D1FC447E500034BF6 /* LoginView.swift */; };
+		442F75A01FC447E500034BF6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F759E1FC447E500034BF6 /* LoginViewModel.swift */; };
+		449364F21FC44AA3002DC005 /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449364F11FC44AA3002DC005 /* LoginViewDefaultData.swift */; };
+		44CCCCF71FC4422F00940514 /* ToastView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCCCF61FC4422F00940514 /* ToastView+Style.swift */; };
+		44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
+		44D32C291FB07850001E86D6 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4523B77C1F8CF3C3001DFB96 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */; };
 		4537D0201F94ECE6006942E7 /* CGFloat+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537D01F1F94ECE6006942E7 /* CGFloat+Troika.swift */; };
 		453D887F1F85192700FC63C7 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */; };
@@ -24,63 +52,23 @@
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
 		4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridModel.swift */; };
 		4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */; };
-		456B552D1FC301DA00812998 /* EmptyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B552C1FC301DA00812998 /* EmptyScreen.swift */; };
-		456B55301FC418F600812998 /* EmptyScreeenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B552F1FC418F600812998 /* EmptyScreeenViewController.swift */; };
-		456C74FB1FB9A4BA006720A9 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C74FA1FB9A4BA006720A9 /* Button+Style.swift */; };
-		457586EB1FB4385C00B70DD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457586EA1FB4385C00B70DD7 /* LoginViewController.swift */; };
-		4577B72A1F865400005E7598 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577B7291F865400005E7598 /* MarketHelpers.swift */; };
 		457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C61F7BC4100031E125 /* Identifiable.swift */; };
 		457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */; };
 		457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */; };
 		459D37F81F87620B00038582 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37F71F87620B00038582 /* RibbonView.swift */; };
-		459D37FC1F8782CB00038582 /* RibbonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FB1F8782CB00038582 /* RibbonHelpers.swift */; };
-		459D37FE1F87AE5D00038582 /* RibbonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */; };
-		459D38001F87C1B300038582 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FF1F87C1B300038582 /* ScreenSize.swift */; };
-		45C5E7A81FB4466600EF2992 /* TextFieldHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7A71FB4466600EF2992 /* TextFieldHelpers.swift */; };
-		45C5E7AA1FB4977700EF2992 /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7A91FB4977700EF2992 /* TextField+InputType.swift */; };
-		45C5E7AD1FB5C7EB00EF2992 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5E7AC1FB5C7EB00EF2992 /* Button.swift */; };
-		45CF5A501F96198B00069240 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
-		45CF5A511F96198B00069240 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45CF5A551F96198F00069240 /* TroikaDemoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */; };
-		45CF5A561F96198F00069240 /* TroikaDemoKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45CF5A5B1F97336B00069240 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF5A5A1F97336B00069240 /* ToastView.swift */; };
-		45CF5A5D1F97360000069240 /* ToastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF5A5C1F97360000069240 /* ToastModel.swift */; };
-		45CF5A611F97678400069240 /* ToastHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF5A601F97678400069240 /* ToastHelpers.swift */; };
 		CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664241F73F818009D3244 /* UIFont+Troika.swift */; };
 		CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3CF1581F73E5870041EF20 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB3E67C11F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */; };
 		CB3E67C21F7E4D4000C40D47 /* PreviewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */; };
 		CB3E67C31F7E4D4000C40D47 /* PreviewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */; };
-		CB3E67C61F7E4D5D00C40D47 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C41F7E4D5D00C40D47 /* PreviewCell.swift */; };
-		CB3E67C71F7E4D5D00C40D47 /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C51F7E4D5D00C40D47 /* PreviewModel.swift */; };
-		CB3E67C91F7E62A300C40D47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3E67C81F7E62A300C40D47 /* Assets.xcassets */; };
-		CB3E67CB1F7E692900C40D47 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67CA1F7E692900C40D47 /* MarketViewController.swift */; };
-		CB400B131F83BE2400B26C1C /* TroikaDemoKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CB400B111F83BE2400B26C1C /* TroikaDemoKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB400B171F83BE2E00B26C1C /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B081F83B31400B26C1C /* PreviewHelpers.swift */; };
-		CB400B191F83BFE300B26C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB400B181F83BFE300B26C1C /* Assets.xcassets */; };
-		CB400B201F83C7C100B26C1C /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */; };
+		CB3E67C61F7E4D5D00C40D47 /* PreviewGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C41F7E4D5D00C40D47 /* PreviewGridCell.swift */; };
 		CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B211F83C96600B26C1C /* UIImage+Troika.swift */; };
 		CB400B241F83C9D400B26C1C /* Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B231F83C9D400B26C1C /* Troika.swift */; };
-		CB6CF7381F84F880003B73D2 /* TroikaDemoKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CF7371F84F880003B73D2 /* TroikaDemoKit.swift */; };
 		CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		45CF5A521F96198B00069240 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
-			remoteInfo = Troika;
-		};
-		45CF5A571F96198F00069240 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CB400B0E1F83BE2400B26C1C;
-			remoteInfo = TroikaDemoKit;
-		};
-		CB80C4941F864D4C00C1FD0D /* PBXContainerItemProxy */ = {
+		44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
 			proxyType = 1;
@@ -90,14 +78,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		45CF5A541F96198B00069240 /* Embed Frameworks */ = {
+		44D32C2C1FB07850001E86D6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				45CF5A561F96198F00069240 /* TroikaDemoKit.framework in Embed Frameworks */,
-				45CF5A511F96198B00069240 /* Troika.framework in Embed Frameworks */,
+				44D32C291FB07850001E86D6 /* Troika.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,13 +92,36 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		25D04D7B1F583B1800EA317D /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		25D04D7E1F583B1800EA317D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		25D04D881F583B1800EA317D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		25D04D8A1F583B1800EA317D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45022FC71FB304E7001C34A9 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		45022FC91FB30DC3001C34A9 /* TroikaTextField.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TroikaTextField.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		45022FCA1FB330F8001C34A9 /* TextFieldModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModel.swift; sourceTree = "<group>"; };
+		14256A221FBE200300017B4F /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		14256A291FBE204200017B4F /* TextField+InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
+		14256A2A1FBE204200017B4F /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		143265AC1FBEEE220093B265 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
+		143265AE1FBEEE220093B265 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		143265B21FBEEE570093B265 /* ButtonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonPlayground.swift; sourceTree = "<group>"; };
+		14405C5F1FAFBBF000D03E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14405C741FAFBD1800D03E04 /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14405C7E1FAFC3A900D03E04 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		144351A91FBE2A53007B2229 /* ToastPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastPlayground.swift; sourceTree = "<group>"; };
+		144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
+		144351BA1FBE2BF1007B2229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		144351C01FBE2EB9007B2229 /* TextFieldPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldPlayground.swift; sourceTree = "<group>"; };
+		144351C31FBE2FA2007B2229 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		144351C61FBE3030007B2229 /* LabelPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPlayground.swift; sourceTree = "<group>"; };
+		144351C91FBE36D3007B2229 /* RibbonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonPlayground.swift; sourceTree = "<group>"; };
+		144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonHelpers.swift; sourceTree = "<group>"; };
+		144351CE1FBE3805007B2229 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
+		144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewPlayground.swift; sourceTree = "<group>"; };
+		144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellPlayground.swift; sourceTree = "<group>"; };
+		144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewPlayground.swift; sourceTree = "<group>"; };
+		144351D91FBE3D33007B2229 /* PreviewGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCellPlayground.swift; sourceTree = "<group>"; };
+		145725491FBEEF6A00648D73 /* MarketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
+		146D3C3D1FBE453700124B76 /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
+		146D3C3F1FBE466D00124B76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		442F759D1FC447E500034BF6 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		442F759E1FC447E500034BF6 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		449364F11FC44AA3002DC005 /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
+		44CCCCF61FC4422F00940514 /* ToastView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastView+Style.swift"; sourceTree = "<group>"; };
 		4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
 		4537D01F1F94ECE6006942E7 /* CGFloat+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Troika.swift"; sourceTree = "<group>"; };
 		453D88791F84FF6900FC63C7 /* FINNTypeWebStrippet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Light.ttf"; sourceTree = "<group>"; };
@@ -120,34 +130,16 @@
 		453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
 		453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridViewConfigurable.swift; sourceTree = "<group>"; };
 		45441D021F8CA1D300A3B007 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		45441D041F8CAB8800A3B007 /* Label.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Label.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		455866061F7A751300F670EF /* MarketGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridView.swift; sourceTree = "<group>"; };
 		455866081F7A77B100F670EF /* MarketGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
 		4558660A1F7A7B4800F670EF /* MarketGridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridModel.swift; sourceTree = "<group>"; };
 		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
-		456B552C1FC301DA00812998 /* EmptyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreen.swift; sourceTree = "<group>"; };
-		456B552E1FC30B7100812998 /* EmptyScreen.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = EmptyScreen.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		456B552F1FC418F600812998 /* EmptyScreeenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScreeenViewController.swift; sourceTree = "<group>"; };
-		456C74FA1FB9A4BA006720A9 /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
-		457586EA1FB4385C00B70DD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4577B7291F865400005E7598 /* MarketHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
 		457B35C61F7BC4100031E125 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
 		457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
 		459D37F71F87620B00038582 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
-		459D37FA1F8775D700038582 /* RibbonView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RibbonView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		459D37FB1F8782CB00038582 /* RibbonHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonHelpers.swift; sourceTree = "<group>"; };
 		459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonViewModel.swift; sourceTree = "<group>"; };
-		459D37FF1F87C1B300038582 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
-		45C5E7A71FB4466600EF2992 /* TextFieldHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHelpers.swift; sourceTree = "<group>"; };
-		45C5E7A91FB4977700EF2992 /* TextField+InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
-		45C5E7AC1FB5C7EB00EF2992 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		45C5E7AE1FB5C8A000EF2992 /* Button.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Button.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		45CF5A5A1F97336B00069240 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		45CF5A5C1F97360000069240 /* ToastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModel.swift; sourceTree = "<group>"; };
-		45CF5A5F1F97476E00069240 /* ToastView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ToastView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		45CF5A601F97678400069240 /* ToastHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHelpers.swift; sourceTree = "<group>"; };
-		CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Troika View.xctemplate"; sourceTree = "<group>"; };
+		CB2FE4D81F7A5D0800616815 /* TroikaView.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TroikaView.xctemplate; sourceTree = "<group>"; };
 		CB3664241F73F818009D3244 /* UIFont+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3CF1581F73E5870041EF20 /* Troika.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Troika.h; sourceTree = "<group>"; };
@@ -155,34 +147,20 @@
 		CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
 		CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
 		CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
-		CB3E67C41F7E4D5D00C40D47 /* PreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		CB3E67C41F7E4D5D00C40D47 /* PreviewGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCell.swift; sourceTree = "<group>"; };
 		CB3E67C51F7E4D5D00C40D47 /* PreviewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
-		CB3E67C81F7E62A300C40D47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CB3E67CA1F7E692900C40D47 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
-		CB400B051F83B2D100B26C1C /* PreviewCell.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PreviewCell.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		CB400B081F83B31400B26C1C /* PreviewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
-		CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TroikaDemoKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB400B111F83BE2400B26C1C /* TroikaDemoKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TroikaDemoKit.h; sourceTree = "<group>"; };
-		CB400B121F83BE2400B26C1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB400B181F83BFE300B26C1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CB400B1C1F83C67500B26C1C /* PreviewGridView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PreviewGridView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		CB400B1D1F83C6B000B26C1C /* MarketGridCell.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MarketGridCell.playground; path = "Troika/Components/Market Grid/Market Grid Cell/MarketGridCell.playground"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		CB400B1E1F83C6C100B26C1C /* MarketGridView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MarketGridView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
 		CB400B211F83C96600B26C1C /* UIImage+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Troika.swift"; sourceTree = "<group>"; };
 		CB400B231F83C9D400B26C1C /* Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Troika.swift; path = Troika/Troika.swift; sourceTree = SOURCE_ROOT; };
-		CB6CF7371F84F880003B73D2 /* TroikaDemoKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroikaDemoKit.swift; sourceTree = "<group>"; };
 		CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridHeaderView.swift; sourceTree = "<group>"; };
 		CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		25D04D781F583B1800EA317D /* Frameworks */ = {
+		14405C6D1FAFBD1800D03E04 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45CF5A551F96198F00069240 /* TroikaDemoKit.framework in Frameworks */,
-				45CF5A501F96198B00069240 /* Troika.framework in Frameworks */,
+				44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,22 +171,142 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB400B0B1F83BE2400B26C1C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14256A201FBE200300017B4F /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				144351A71FBE2A53007B2229 /* Playground */,
+				14256A221FBE200300017B4F /* ToastView.swift */,
+				44CCCCF61FC4422F00940514 /* ToastView+Style.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		14256A261FBE204200017B4F /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				144351BE1FBE2EB9007B2229 /* Playground */,
+				14256A291FBE204200017B4F /* TextField+InputType.swift */,
+				14256A2A1FBE204200017B4F /* TextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		143265AB1FBEEE220093B265 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				143265B11FBEEE570093B265 /* Playground */,
+				143265AC1FBEEE220093B265 /* Button+Style.swift */,
+				143265AE1FBEEE220093B265 /* Button.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		143265B11FBEEE570093B265 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				143265B21FBEEE570093B265 /* ButtonPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		14405C521FAFBBF000D03E04 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				145725471FBEEF6A00648D73 /* Demo */,
+				144351BA1FBE2BF1007B2229 /* Assets.xcassets */,
+				14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */,
+				14405C5F1FAFBBF000D03E04 /* Info.plist */,
+				14405C7E1FAFC3A900D03E04 /* App.swift */,
+				144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */,
+				144351C31FBE2FA2007B2229 /* AppDelegate.swift */,
+				146D3C3F1FBE466D00124B76 /* ViewController.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351A71FBE2A53007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351A91FBE2A53007B2229 /* ToastPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351BE1FBE2EB9007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351C01FBE2EB9007B2229 /* TextFieldPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351C51FBE3030007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351C61FBE3030007B2229 /* LabelPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351C81FBE36D3007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351C91FBE36D3007B2229 /* RibbonPlayground.swift */,
+				144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351CD1FBE3805007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351CE1FBE3805007B2229 /* MarketHelpers.swift */,
+				144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351D21FBE3A40007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351D51FBE3BDD007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */,
+				146D3C3D1FBE453700124B76 /* PreviewHelpers.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		144351D81FBE3D33007B2229 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				144351D91FBE3D33007B2229 /* PreviewGridCellPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		145725471FBEEF6A00648D73 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				145725491FBEEF6A00648D73 /* MarketView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		25D04D721F583B1800EA317D = {
 			isa = PBXGroup;
 			children = (
-				25D04D7D1F583B1800EA317D /* Project */,
 				CB3CF1571F73E5870041EF20 /* Troika */,
-				CB400B101F83BE2400B26C1C /* TroikaDemoKit */,
+				14405C521FAFBBF000D03E04 /* Playground */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
 			);
@@ -217,36 +315,20 @@
 		25D04D7C1F583B1800EA317D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				25D04D7B1F583B1800EA317D /* Project.app */,
 				CB3CF1561F73E5870041EF20 /* Troika.framework */,
-				CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */,
+				14405C741FAFBD1800D03E04 /* Playground.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		25D04D7D1F583B1800EA317D /* Project */ = {
+		442F759B1FC447E500034BF6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				25D04D7E1F583B1800EA317D /* AppDelegate.swift */,
-				CB3E67CA1F7E692900C40D47 /* MarketViewController.swift */,
-				457586EA1FB4385C00B70DD7 /* LoginViewController.swift */,
-				456B552F1FC418F600812998 /* EmptyScreeenViewController.swift */,
-				CB3E67C81F7E62A300C40D47 /* Assets.xcassets */,
-				25D04D871F583B1800EA317D /* LaunchScreen.storyboard */,
-				25D04D8A1F583B1800EA317D /* Info.plist */,
+				442F759D1FC447E500034BF6 /* LoginView.swift */,
+				442F759E1FC447E500034BF6 /* LoginViewModel.swift */,
+				449364F11FC44AA3002DC005 /* LoginViewDefaultData.swift */,
 			);
-			path = Project;
-			sourceTree = "<group>";
-		};
-		45022FC61FB3045B001C34A9 /* Text Field */ = {
-			isa = PBXGroup;
-			children = (
-				45022FC91FB30DC3001C34A9 /* TroikaTextField.playground */,
-				45022FC71FB304E7001C34A9 /* TextField.swift */,
-				45C5E7A91FB4977700EF2992 /* TextField+InputType.swift */,
-				45022FCA1FB330F8001C34A9 /* TextFieldModel.swift */,
-			);
-			path = "Text Field";
+			path = Login;
 			sourceTree = "<group>";
 		};
 		453D88741F84FC3C00FC63C7 /* Fonts */ = {
@@ -263,49 +345,40 @@
 		45441D011F8CA1BC00A3B007 /* Label */ = {
 			isa = PBXGroup;
 			children = (
-				45441D041F8CAB8800A3B007 /* Label.playground */,
+				144351C51FBE3030007B2229 /* Playground */,
 				45441D021F8CA1D300A3B007 /* Label.swift */,
 				4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
 		};
-		455866041F7A678400F670EF /* Market Grid */ = {
+		455866041F7A678400F670EF /* MarketGrid */ = {
 			isa = PBXGroup;
 			children = (
-				457B35C31F7BB0860031E125 /* Market Grid View */,
-				4558660C1F7A7B7400F670EF /* Market Grid Cell */,
+				457B35C31F7BB0860031E125 /* MarketGridView */,
+				4558660C1F7A7B7400F670EF /* MarketGridCell */,
 			);
-			path = "Market Grid";
+			path = MarketGrid;
 			sourceTree = "<group>";
 		};
-		4558660C1F7A7B7400F670EF /* Market Grid Cell */ = {
+		4558660C1F7A7B7400F670EF /* MarketGridCell */ = {
 			isa = PBXGroup;
 			children = (
-				CB400B1D1F83C6B000B26C1C /* MarketGridCell.playground */,
+				144351D21FBE3A40007B2229 /* Playground */,
 				455866081F7A77B100F670EF /* MarketGridCell.swift */,
 				4558660A1F7A7B4800F670EF /* MarketGridModel.swift */,
 			);
-			path = "Market Grid Cell";
+			path = MarketGridCell;
 			sourceTree = "<group>";
 		};
-		456B552B1FC301B900812998 /* Empty Screen */ = {
+		457B35C31F7BB0860031E125 /* MarketGridView */ = {
 			isa = PBXGroup;
 			children = (
-				456B552E1FC30B7100812998 /* EmptyScreen.playground */,
-				456B552C1FC301DA00812998 /* EmptyScreen.swift */,
-			);
-			path = "Empty Screen";
-			sourceTree = "<group>";
-		};
-		457B35C31F7BB0860031E125 /* Market Grid View */ = {
-			isa = PBXGroup;
-			children = (
-				CB400B1E1F83C6C100B26C1C /* MarketGridView.playground */,
+				144351CD1FBE3805007B2229 /* Playground */,
 				455866061F7A751300F670EF /* MarketGridView.swift */,
 				453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */,
 			);
-			path = "Market Grid View";
+			path = MarketGridView;
 			sourceTree = "<group>";
 		};
 		457B35C81F7BC4320031E125 /* Protocols */ = {
@@ -326,31 +399,11 @@
 		459D37F41F87613D00038582 /* Ribbon */ = {
 			isa = PBXGroup;
 			children = (
-				459D37FA1F8775D700038582 /* RibbonView.playground */,
+				144351C81FBE36D3007B2229 /* Playground */,
 				459D37F71F87620B00038582 /* RibbonView.swift */,
 				459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */,
 			);
 			path = Ribbon;
-			sourceTree = "<group>";
-		};
-		45C5E7AB1FB5C7D100EF2992 /* Button */ = {
-			isa = PBXGroup;
-			children = (
-				45C5E7AE1FB5C8A000EF2992 /* Button.playground */,
-				45C5E7AC1FB5C7EB00EF2992 /* Button.swift */,
-				456C74FA1FB9A4BA006720A9 /* Button+Style.swift */,
-			);
-			path = Button;
-			sourceTree = "<group>";
-		};
-		45CF5A591F97334000069240 /* Toast */ = {
-			isa = PBXGroup;
-			children = (
-				45CF5A5F1F97476E00069240 /* ToastView.playground */,
-				45CF5A5A1F97336B00069240 /* ToastView.swift */,
-				45CF5A5C1F97360000069240 /* ToastModel.swift */,
-			);
-			path = Toast;
 			sourceTree = "<group>";
 		};
 		CB3664231F73F7FE009D3244 /* Extensions */ = {
@@ -366,25 +419,25 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CB3664281F73F9A2009D3244 /* Preview Grid View */ = {
+		CB3664281F73F9A2009D3244 /* PreviewGrid */ = {
 			isa = PBXGroup;
 			children = (
-				CB3664291F73F9B6009D3244 /* Preview Grid View */,
-				CB58A75D1F73B81800A5A19F /* Preview Cell */,
+				CB3664291F73F9B6009D3244 /* PreviewGridView */,
+				CB58A75D1F73B81800A5A19F /* PreviewGridCell */,
 			);
-			path = "Preview Grid View";
+			path = PreviewGrid;
 			sourceTree = "<group>";
 		};
-		CB3664291F73F9B6009D3244 /* Preview Grid View */ = {
+		CB3664291F73F9B6009D3244 /* PreviewGridView */ = {
 			isa = PBXGroup;
 			children = (
-				CB400B1C1F83C67500B26C1C /* PreviewGridView.playground */,
+				144351D51FBE3BDD007B2229 /* Playground */,
 				CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */,
 				CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */,
 				CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */,
 				CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */,
 			);
-			path = "Preview Grid View";
+			path = PreviewGridView;
 			sourceTree = "<group>";
 		};
 		CB3CF1571F73E5870041EF20 /* Troika */ = {
@@ -402,69 +455,35 @@
 			path = Troika;
 			sourceTree = "<group>";
 		};
-		CB400B101F83BE2400B26C1C /* TroikaDemoKit */ = {
-			isa = PBXGroup;
-			children = (
-				CB400B1A1F83C25D00B26C1C /* Sources */,
-				CB400B1B1F83C26B00B26C1C /* Resources */,
-				CB400B111F83BE2400B26C1C /* TroikaDemoKit.h */,
-				CB6CF7371F84F880003B73D2 /* TroikaDemoKit.swift */,
-				CB400B121F83BE2400B26C1C /* Info.plist */,
-			);
-			path = TroikaDemoKit;
-			sourceTree = "<group>";
-		};
-		CB400B1A1F83C25D00B26C1C /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				CB400B081F83B31400B26C1C /* PreviewHelpers.swift */,
-				459D37FF1F87C1B300038582 /* ScreenSize.swift */,
-				CB400B1F1F83C7C100B26C1C /* PlaygroundImage.swift */,
-				4577B7291F865400005E7598 /* MarketHelpers.swift */,
-				45C5E7A71FB4466600EF2992 /* TextFieldHelpers.swift */,
-				459D37FB1F8782CB00038582 /* RibbonHelpers.swift */,
-				45CF5A601F97678400069240 /* ToastHelpers.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		CB400B1B1F83C26B00B26C1C /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				CB400B181F83BFE300B26C1C /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		CB58A75C1F73B81000A5A19F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				456B552B1FC301B900812998 /* Empty Screen */,
-				45C5E7AB1FB5C7D100EF2992 /* Button */,
-				45022FC61FB3045B001C34A9 /* Text Field */,
-				45CF5A591F97334000069240 /* Toast */,
+				143265AB1FBEEE220093B265 /* Button */,
 				45441D011F8CA1BC00A3B007 /* Label */,
+				442F759B1FC447E500034BF6 /* Login */,
+				455866041F7A678400F670EF /* MarketGrid */,
+				CB3664281F73F9A2009D3244 /* PreviewGrid */,
 				459D37F41F87613D00038582 /* Ribbon */,
-				455866041F7A678400F670EF /* Market Grid */,
-				CB3664281F73F9A2009D3244 /* Preview Grid View */,
+				14256A261FBE204200017B4F /* TextField */,
+				14256A201FBE200300017B4F /* Toast */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		CB58A75D1F73B81800A5A19F /* Preview Cell */ = {
+		CB58A75D1F73B81800A5A19F /* PreviewGridCell */ = {
 			isa = PBXGroup;
 			children = (
-				CB400B051F83B2D100B26C1C /* PreviewCell.playground */,
-				CB3E67C41F7E4D5D00C40D47 /* PreviewCell.swift */,
+				144351D81FBE3D33007B2229 /* Playground */,
+				CB3E67C41F7E4D5D00C40D47 /* PreviewGridCell.swift */,
 				CB3E67C51F7E4D5D00C40D47 /* PreviewModel.swift */,
 			);
-			path = "Preview Cell";
+			path = PreviewGridCell;
 			sourceTree = "<group>";
 		};
 		CB58A7601F73B88E00A5A19F /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				CB2FE4D81F7A5D0800616815 /* Troika View.xctemplate */,
+				CB2FE4D81F7A5D0800616815 /* TroikaView.xctemplate */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -489,36 +508,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB400B0C1F83BE2400B26C1C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB400B131F83BE2400B26C1C /* TroikaDemoKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		25D04D7A1F583B1800EA317D /* Project */ = {
+		14405C691FAFBD1800D03E04 /* Playground */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 25D04D8D1F583B1800EA317D /* Build configuration list for PBXNativeTarget "Project" */;
+			buildConfigurationList = 14405C711FAFBD1800D03E04 /* Build configuration list for PBXNativeTarget "Playground" */;
 			buildPhases = (
-				25D04D771F583B1800EA317D /* Sources */,
-				25D04D781F583B1800EA317D /* Frameworks */,
-				25D04D791F583B1800EA317D /* Resources */,
-				45CF5A541F96198B00069240 /* Embed Frameworks */,
-				1411A1B11F9FEADA007D717A /* Run SwiftFormat */,
+				14405C6A1FAFBD1800D03E04 /* Sources */,
+				14405C6D1FAFBD1800D03E04 /* Frameworks */,
+				14405C6E1FAFBD1800D03E04 /* Resources */,
+				44D32C2C1FB07850001E86D6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				45CF5A531F96198B00069240 /* PBXTargetDependency */,
-				45CF5A581F96198F00069240 /* PBXTargetDependency */,
+				44D32C2B1FB07850001E86D6 /* PBXTargetDependency */,
 			);
-			name = Project;
-			productName = Project;
-			productReference = 25D04D7B1F583B1800EA317D /* Project.app */;
+			name = Playground;
+			productName = Playground;
+			productReference = 14405C741FAFBD1800D03E04 /* Playground.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CB3CF1551F73E5870041EF20 /* Troika */ = {
@@ -541,47 +550,20 @@
 			productReference = CB3CF1561F73E5870041EF20 /* Troika.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CB400B0E1F83BE2400B26C1C /* TroikaDemoKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CB400B141F83BE2400B26C1C /* Build configuration list for PBXNativeTarget "TroikaDemoKit" */;
-			buildPhases = (
-				CB400B0A1F83BE2400B26C1C /* Sources */,
-				CB400B0B1F83BE2400B26C1C /* Frameworks */,
-				CB400B0C1F83BE2400B26C1C /* Headers */,
-				CB400B0D1F83BE2400B26C1C /* Resources */,
-				1411A1B01F9FEAB0007D717A /* Run SwiftFormat */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CB80C4951F864D4C00C1FD0D /* PBXTargetDependency */,
-			);
-			name = TroikaDemoKit;
-			productName = TroikaPlaygroundSupport;
-			productReference = CB400B0F1F83BE2400B26C1C /* TroikaDemoKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		25D04D731F583B1800EA317D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
-					25D04D7A1F583B1800EA317D = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = D34XZHQLE3;
-						ProvisioningStyle = Automatic;
+					14405C691FAFBD1800D03E04 = {
+						ProvisioningStyle = Manual;
 					};
 					CB3CF1551F73E5870041EF20 = {
-						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = D34XZHQLE3;
-						ProvisioningStyle = Automatic;
-					};
-					CB400B0E1F83BE2400B26C1C = {
 						CreatedOnToolsVersion = 9.0;
 						DevelopmentTeam = D34XZHQLE3;
 						ProvisioningStyle = Automatic;
@@ -601,20 +583,19 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				25D04D7A1F583B1800EA317D /* Project */,
 				CB3CF1551F73E5870041EF20 /* Troika */,
-				CB400B0E1F83BE2400B26C1C /* TroikaDemoKit */,
+				14405C691FAFBD1800D03E04 /* Playground */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		25D04D791F583B1800EA317D /* Resources */ = {
+		14405C6E1FAFBD1800D03E04 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25D04D891F583B1800EA317D /* LaunchScreen.storyboard in Resources */,
-				CB3E67C91F7E62A300C40D47 /* Assets.xcassets in Resources */,
+				144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */,
+				14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,46 +611,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB400B0D1F83BE2400B26C1C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB400B191F83BFE300B26C1C /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		1411A1AF1F9FE8F6007D717A /* Run SwiftFormat */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftFormat";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "sh \"${SRCROOT}/Others/format.sh\"";
-		};
-		1411A1B01F9FEAB0007D717A /* Run SwiftFormat */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftFormat";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "sh \"${SRCROOT}/Others/format.sh\"";
-		};
-		1411A1B11F9FEADA007D717A /* Run SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -695,19 +640,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\" ]; then\n    mkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\"\nfi\n\nif [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika\" ]; then\n    mkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika\"\nfi\n\ncp -R ./Troika/Templates/Troika\\ View.xctemplate ${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika";
+			shellScript = "if [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\" ]; then\n    mkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\"\nfi\n\nif [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika\" ]; then\n    mkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika\"\nfi\n\ncp -R ./Troika/Templates/TroikaView.xctemplate ${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		25D04D771F583B1800EA317D /* Sources */ = {
+		14405C6A1FAFBD1800D03E04 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				456B55301FC418F600812998 /* EmptyScreeenViewController.swift in Sources */,
-				457586EB1FB4385C00B70DD7 /* LoginViewController.swift in Sources */,
-				CB3E67CB1F7E692900C40D47 /* MarketViewController.swift in Sources */,
-				25D04D7F1F583B1800EA317D /* AppDelegate.swift in Sources */,
+				144351CB1FBE36D3007B2229 /* RibbonPlayground.swift in Sources */,
+				146D3C401FBE466D00124B76 /* ViewController.swift in Sources */,
+				144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */,
+				144351D11FBE3805007B2229 /* MarketGridViewPlayground.swift in Sources */,
+				144351D41FBE3A40007B2229 /* MarketGridCellPlayground.swift in Sources */,
+				14405C801FAFC3A900D03E04 /* App.swift in Sources */,
+				1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */,
+				144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */,
+				146D3C3E1FBE453700124B76 /* PreviewHelpers.swift in Sources */,
+				144351D71FBE3BDD007B2229 /* PreviewGridViewPlayground.swift in Sources */,
+				144351DA1FBE3D33007B2229 /* PreviewGridCellPlayground.swift in Sources */,
+				144351AB1FBE2A53007B2229 /* ToastPlayground.swift in Sources */,
+				144351C71FBE3030007B2229 /* LabelPlayground.swift in Sources */,
+				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
+				144351C21FBE2EB9007B2229 /* TextFieldPlayground.swift in Sources */,
+				143265B31FBEEE570093B265 /* ButtonPlayground.swift in Sources */,
+				144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,86 +673,93 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14256A1C1FBE1ECC00017B4F /* RibbonViewModel.swift in Sources */,
+				14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */,
+				442F759F1FC447E500034BF6 /* LoginView.swift in Sources */,
+				44CCCCF71FC4422F00940514 /* ToastView+Style.swift in Sources */,
 				CB3E67C21F7E4D4000C40D47 /* PreviewGridLayout.swift in Sources */,
-				45CF5A5D1F97360000069240 /* ToastModel.swift in Sources */,
+				14256A2D1FBE204200017B4F /* TextField.swift in Sources */,
+				143265B01FBEEE220093B265 /* Button.swift in Sources */,
+				442F75A01FC447E500034BF6 /* LoginViewModel.swift in Sources */,
+				143265AF1FBEEE220093B265 /* Button+Style.swift in Sources */,
 				CB3E67C31F7E4D4000C40D47 /* PreviewGridView.swift in Sources */,
 				457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */,
-				45022FCB1FB330F8001C34A9 /* TextFieldModel.swift in Sources */,
 				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
+				14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */,
 				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */,
-				45C5E7AD1FB5C7EB00EF2992 /* Button.swift in Sources */,
 				CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */,
-				45C5E7AA1FB4977700EF2992 /* TextField+InputType.swift in Sources */,
-				459D37FE1F87AE5D00038582 /* RibbonViewModel.swift in Sources */,
-				CB3E67C71F7E4D5D00C40D47 /* PreviewModel.swift in Sources */,
 				453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */,
 				4537D0201F94ECE6006942E7 /* CGFloat+Troika.swift in Sources */,
 				45441D031F8CA1D300A3B007 /* Label.swift in Sources */,
 				457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */,
-				CB3E67C61F7E4D5D00C40D47 /* PreviewCell.swift in Sources */,
+				14256A251FBE200300017B4F /* ToastView.swift in Sources */,
+				CB3E67C61F7E4D5D00C40D47 /* PreviewGridCell.swift in Sources */,
 				4523B77C1F8CF3C3001DFB96 /* Label+Style.swift in Sources */,
+				449364F21FC44AA3002DC005 /* LoginViewDefaultData.swift in Sources */,
 				455866071F7A751300F670EF /* MarketGridView.swift in Sources */,
-				45022FC81FB304E7001C34A9 /* TextField.swift in Sources */,
 				4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */,
 				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
 				459D37F81F87620B00038582 /* RibbonView.swift in Sources */,
 				CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */,
-				456B552D1FC301DA00812998 /* EmptyScreen.swift in Sources */,
-				45CF5A5B1F97336B00069240 /* ToastView.swift in Sources */,
 				457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */,
 				CB3E67C11F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift in Sources */,
-				456C74FB1FB9A4BA006720A9 /* Button+Style.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB400B0A1F83BE2400B26C1C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				459D38001F87C1B300038582 /* ScreenSize.swift in Sources */,
-				CB400B201F83C7C100B26C1C /* PlaygroundImage.swift in Sources */,
-				4577B72A1F865400005E7598 /* MarketHelpers.swift in Sources */,
-				CB400B171F83BE2E00B26C1C /* PreviewHelpers.swift in Sources */,
-				45CF5A611F97678400069240 /* ToastHelpers.swift in Sources */,
-				45C5E7A81FB4466600EF2992 /* TextFieldHelpers.swift in Sources */,
-				CB6CF7381F84F880003B73D2 /* TroikaDemoKit.swift in Sources */,
-				459D37FC1F8782CB00038582 /* RibbonHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		45CF5A531F96198B00069240 /* PBXTargetDependency */ = {
+		44D32C2B1FB07850001E86D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CB3CF1551F73E5870041EF20 /* Troika */;
-			targetProxy = 45CF5A521F96198B00069240 /* PBXContainerItemProxy */;
-		};
-		45CF5A581F96198F00069240 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CB400B0E1F83BE2400B26C1C /* TroikaDemoKit */;
-			targetProxy = 45CF5A571F96198F00069240 /* PBXContainerItemProxy */;
-		};
-		CB80C4951F864D4C00C1FD0D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CB3CF1551F73E5870041EF20 /* Troika */;
-			targetProxy = CB80C4941F864D4C00C1FD0D /* PBXContainerItemProxy */;
+			targetProxy = 44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		25D04D871F583B1800EA317D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				25D04D881F583B1800EA317D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
+		14405C721FAFBD1800D03E04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Playground/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.troika.playground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14405C731FAFBD1800D03E04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Playground/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.troika.playground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		25D04D8B1F583B1800EA317D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -900,38 +865,6 @@
 			};
 			name = Release;
 		};
-		25D04D8E1F583B1800EA317D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = D34XZHQLE3;
-				INFOPLIST_FILE = Project/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "no.finn.Troika-demo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		25D04D8F1F583B1800EA317D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = D34XZHQLE3;
-				INFOPLIST_FILE = Project/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "no.finn.Troika-demo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
 		CB3CF15B1F73E5870041EF20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -948,7 +881,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = D34XZHQLE3;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -983,7 +916,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = D34XZHQLE3;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1002,67 +935,18 @@
 			};
 			name = Release;
 		};
-		CB400B151F83BE2400B26C1C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = D34XZHQLE3;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TroikaDemoKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.akseldybdal.TroikaDemoKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CB400B161F83BE2400B26C1C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = D34XZHQLE3;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TroikaDemoKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.akseldybdal.TroikaDemoKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		14405C711FAFBD1800D03E04 /* Build configuration list for PBXNativeTarget "Playground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14405C721FAFBD1800D03E04 /* Debug */,
+				14405C731FAFBD1800D03E04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		25D04D761F583B1800EA317D /* Build configuration list for PBXProject "Project" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1072,29 +956,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		25D04D8D1F583B1800EA317D /* Build configuration list for PBXNativeTarget "Project" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				25D04D8E1F583B1800EA317D /* Debug */,
-				25D04D8F1F583B1800EA317D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		CB3CF15D1F73E5870041EF20 /* Build configuration list for PBXNativeTarget "Troika" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB3CF15B1F73E5870041EF20 /* Debug */,
 				CB3CF15C1F73E5870041EF20 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CB400B141F83BE2400B26C1C /* Build configuration list for PBXNativeTarget "TroikaDemoKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CB400B151F83BE2400B26C1C /* Debug */,
-				CB400B161F83BE2400B26C1C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

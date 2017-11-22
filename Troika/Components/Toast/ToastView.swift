@@ -24,28 +24,6 @@ public extension ToastViewDelegate {
     }
 }
 
-public enum ToastType {
-    case success
-    case sucesssImage
-    case error
-    case successButton
-    case errorButton
-
-    var color: UIColor {
-        switch self {
-        case .error, .errorButton: return .salmon
-        default: return .mint
-        }
-    }
-
-    var imageBackgroundColor: UIColor {
-        switch self {
-        case .sucesssImage: return .milk
-        default: return .clear
-        }
-    }
-}
-
 public class ToastView: UIView {
 
     // MARK: - Internal properties
@@ -80,47 +58,52 @@ public class ToastView: UIView {
         return imageView
     }()
 
-    private var imageThumbnail: UIImage {
-        guard let model = model else {
-            return UIImage(frameworkImageNamed: "success")!
-        }
+    // MARK: - External properties / Dependency injection
 
-        switch model.type {
-        case .error, .errorButton:
-            return UIImage(frameworkImageNamed: "error")!
-        case .sucesssImage:
-            if let image = model.imageThumbnail {
-                return image
-            } else {
-                return UIImage(frameworkImageNamed: "NoImage")!
-            }
-        default:
-            return UIImage(frameworkImageNamed: "success")!
+    public let style: Style
+    public var text: String = "" {
+        didSet {
+            messageTitle.text = text
+            accessibilityLabel = text
         }
     }
 
-    private weak var delegate: ToastViewDelegate?
+    public var image: UIImage? {
+        get {
+            guard let image = imageView.image else {
+                switch style {
+                case .error, .errorButton: return UIImage(frameworkImageNamed: "error")!
+                case .sucesssWithImage: return UIImage(frameworkImageNamed: "NoImage")!
+                default: return UIImage(frameworkImageNamed: "success")!
+                }
+            }
+            return image
+        }
+        set {
+            if style == .sucesssWithImage {
+                imageView.image = newValue
+            }
+        }
+    }
 
-    // MARK: - External properties
+    public var buttonText: String = "" {
+        didSet {
+            actionButton.setTitle(buttonText, for: .normal)
+        }
+    }
+
+    public weak var delegate: ToastViewDelegate?
 
     // MARK: - Setup
 
-    public init(frame: CGRect = .zero, delegate: ToastViewDelegate) {
-        super.init(frame: frame)
-
-        self.delegate = delegate
-
+    public init(style: Style) {
+        self.style = style
+        super.init(frame: .zero)
         setup()
     }
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    public required convenience init?(coder aDecoder: NSCoder) {
+        self.init(style: .success)
     }
 
     private func setup() {
@@ -129,6 +112,10 @@ public class ToastView: UIView {
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
         swipeGesture.direction = .down
         gestureRecognizers = [tapGesture, swipeGesture]
+
+        backgroundColor = style.color
+        imageView.backgroundColor = style.imageBackgroundColor
+        imageView.image = image
 
         addSubview(imageView)
         addSubview(messageTitle)
@@ -150,35 +137,22 @@ public class ToastView: UIView {
             imageView.widthAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.width),
             imageView.heightAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.height),
 
-            messageTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: CGFloat.mediumLargeSpacing),
-            messageTitle.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.mediumLargeSpacing),
-            messageTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -CGFloat.mediumLargeSpacing),
+            messageTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
+            messageTitle.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            messageTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
         ])
 
-        if let model = model, model.actionButtonTitle != nil {
+        if buttonText != "" {
             actionButton.isHidden = false
 
             NSLayoutConstraint.activate([
-                messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -CGFloat.mediumLargeSpacing),
-                actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -CGFloat.mediumLargeSpacing),
+                messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -.mediumLargeSpacing),
+                actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
                 actionButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             ])
         } else {
             actionButton.isHidden = true
-            messageTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -CGFloat.mediumLargeSpacing).isActive = true
-        }
-    }
-
-    // MARK: - Dependency injection
-
-    public var model: ToastModel? {
-        didSet {
-            messageTitle.text = model?.messageTitle
-            accessibilityLabel = model?.accessibilityLabel
-            backgroundColor = model?.type.color
-            actionButton.setTitle(model?.actionButtonTitle, for: .normal)
-            imageView.backgroundColor = model?.type.imageBackgroundColor
-            imageView.image = imageThumbnail
+            messageTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing).isActive = true
         }
     }
 
