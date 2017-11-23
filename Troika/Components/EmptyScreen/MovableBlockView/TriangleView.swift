@@ -44,8 +44,11 @@ internal class TriangleView: UIView {
         let path = createTrianglePath(from: frame)
 
         var translation = CGAffineTransform(translationX: -bounds.size.width / 2, y: -bounds.size.height / 2)
-        let movedPath = path.copy(using: &translation)
-        let mask = UIBezierPath(cgPath: movedPath!)
+        guard let movedPath = path.copy(using: &translation) else {
+            print("Cannot translate the path")
+            return UIBezierPath(cgPath: path)
+        }
+        let mask = UIBezierPath(cgPath: movedPath)
         return mask
     }
 
