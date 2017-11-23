@@ -8,7 +8,7 @@ extension AppDelegate {
     // ** Components **
     // ButtonPlayground
     // LabelPlayground
-    // LoginView
+    // LoginViewPlayground
     // MarketGridViewPlayground
     // MarketGridCellPlayground
     // PreviewGridViewPlayground
@@ -20,5 +20,5 @@ extension AppDelegate {
     // ** Others **
     // MarketView
 
-    typealias View = MarketView
+    typealias View = LoginViewPlayground
 }
