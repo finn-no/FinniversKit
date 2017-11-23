@@ -21,15 +21,6 @@ public class EmptyScreen: UIView {
     }()
 
     private lazy var square2: UIView = {
-        let view = UIView(frame: CGRect(x: 230, y: 130, width: 90, height: 90))
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
-        view.addGestureRecognizer(pan)
-        view.backgroundColor = .banana
-        view.layer.cornerRadius = cornerRadius
-        return view
-    }()
-
-    private lazy var square3: UIView = {
         let view = UIView(frame: CGRect(x: 60, y: 45, width: 50, height: 50))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
@@ -38,12 +29,17 @@ public class EmptyScreen: UIView {
         return view
     }()
 
-    private lazy var square4: UIView = {
-        let view = UIView(frame: CGRect(x: 260, y: 45, width: 55, height: 55))
+    private lazy var triangle: TriangleView = {
+        let view = TriangleView(frame: CGRect(x: 200, y: 130, width: 90, height: 90))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
-        view.backgroundColor = .toothPaste
-        view.layer.cornerRadius = cornerRadius
+        return view
+    }()
+
+    private lazy var circle: CircleView = {
+        let view = CircleView(frame: CGRect(x: 260, y: 45, width: 75, height: 75))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
         return view
     }()
 
@@ -99,7 +95,7 @@ public class EmptyScreen: UIView {
     private lazy var motionQueue = OperationQueue()
 
     private lazy var allSquares: [UIView] = {
-        return [square1, square2, square3, square4]
+        return [square1, triangle, square2, circle]
     }()
 
     private var attach: UIAttachmentBehavior?
@@ -132,9 +128,9 @@ public class EmptyScreen: UIView {
 
     private func setup() {
         addSubview(square1)
+        addSubview(triangle)
         addSubview(square2)
-        addSubview(square3)
-        addSubview(square4)
+        addSubview(circle)
 
         addSubview(headerLabel)
         addSubview(messageLabel)
