@@ -10,36 +10,35 @@ public class EmptyScreen: UIView {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 4.0
-
-    private lazy var square1: UIView = {
-        let view = UIView(frame: CGRect(x: 70, y: 130, width: 100, height: 100))
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
-        view.addGestureRecognizer(pan)
-        view.backgroundColor = .salmon
-        view.layer.cornerRadius = cornerRadius
-        return view
-    }()
-
-    private lazy var square2: UIView = {
-        let view = UIView(frame: CGRect(x: 60, y: 45, width: 50, height: 50))
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
-        view.addGestureRecognizer(pan)
-        view.backgroundColor = .mint
-        view.layer.cornerRadius = cornerRadius
-        return view
-    }()
+    private let screenSize: CGSize = UIScreen.main.bounds.size
 
     private lazy var triangle: TriangleView = {
-        let view = TriangleView(frame: CGRect(x: 200, y: 130, width: 90, height: 90))
+        let view = TriangleView(frame: CGRect(x: 5, y: screenSize.height - 100, width: 90, height: 90))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
         return view
     }()
 
     private lazy var circle: CircleView = {
-        let view = CircleView(frame: CGRect(x: 260, y: 45, width: 75, height: 75))
+        let view = CircleView(frame: CGRect(x: triangle.frame.maxX + 5, y: screenSize.height - 85, width: 75, height: 75))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
+        return view
+    }()
+
+    private lazy var roundedSquare: RoundedRectangleView = {
+        let view = RoundedRectangleView(frame: CGRect(x: circle.frame.maxX + 5, y: screenSize.height - 60, width: 50, height: 50))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        return view
+    }()
+
+    private lazy var square: UIView = {
+        let view = UIView(frame: CGRect(x: roundedSquare.frame.maxX + 5, y: screenSize.height - 110, width: 100, height: 100))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        view.backgroundColor = .salmon
+        view.layer.cornerRadius = cornerRadius
         return view
     }()
 
@@ -95,7 +94,7 @@ public class EmptyScreen: UIView {
     private lazy var motionQueue = OperationQueue()
 
     private lazy var allSquares: [UIView] = {
-        return [square1, triangle, square2, circle]
+        return [square, triangle, roundedSquare, circle]
     }()
 
     private var attach: UIAttachmentBehavior?
@@ -127,9 +126,9 @@ public class EmptyScreen: UIView {
     }
 
     private func setup() {
-        addSubview(square1)
+        addSubview(square)
         addSubview(triangle)
-        addSubview(square2)
+        addSubview(roundedSquare)
         addSubview(circle)
 
         addSubview(headerLabel)
