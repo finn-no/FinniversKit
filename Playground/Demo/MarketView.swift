@@ -25,6 +25,7 @@ class MarketView: UIView {
     fileprivate let previewGridModels = PreviewDataModelFactory.create(numberOfModels: 9)
     fileprivate let marketGridModels = Market.allMarkets
 
+    // Makes sure preview grid layout is calculated after we know how much space we have for its collection view
     private var didSetupView = false
 
     override init(frame: CGRect) {
