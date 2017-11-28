@@ -206,8 +206,8 @@ public class EmptyScreen: UIView {
                 return
             }
 
-            let grav: CMAcceleration = motion.gravity
-            var vector = CGVector(dx: CGFloat(grav.x), dy: CGFloat(grav.y))
+            let gravity: CMAcceleration = motion.gravity
+            var vector = CGVector(dx: CGFloat(gravity.x), dy: CGFloat(gravity.y))
 
             DispatchQueue.main.async {
                 // Correct for orientation
@@ -216,11 +216,11 @@ public class EmptyScreen: UIView {
                 if orientation == .portrait {
                     vector.dy *= -1
                 } else if orientation == .landscapeLeft {
-                    vector.dx = CGFloat(grav.y)
-                    vector.dy = CGFloat(grav.x)
+                    vector.dx = CGFloat(gravity.y)
+                    vector.dy = CGFloat(gravity.x)
                 } else if orientation == .landscapeRight {
-                    vector.dx = CGFloat(-grav.y)
-                    vector.dy = CGFloat(-grav.x)
+                    vector.dx = CGFloat(-gravity.y)
+                    vector.dy = CGFloat(-gravity.x)
                 }
 
                 self.gravity.gravityDirection = vector
