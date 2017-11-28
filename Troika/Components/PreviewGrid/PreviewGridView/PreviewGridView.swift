@@ -71,12 +71,6 @@ public class PreviewGridView: UIView {
         collectionView.register(PreviewGridCell.self, forCellWithReuseIdentifier: String(describing: PreviewGridCell.self))
         collectionView.register(PreviewGridHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: PreviewGridHeaderView.self))
         addSubview(collectionView)
-    }
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: topAnchor),
