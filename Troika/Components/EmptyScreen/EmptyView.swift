@@ -5,7 +5,7 @@
 import UIKit
 import CoreMotion
 
-public class EmptyScreen: UIView {
+public class EmptyView: UIView {
 
     // MARK: - Internal properties
 

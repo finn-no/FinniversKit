@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class EmptyScreenPlayground: UIView {
+public class EmptyViewPlayground: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -15,7 +15,7 @@ public class EmptyScreenPlayground: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let emptyView = EmptyScreen()
+        let emptyView = EmptyView()
         emptyView.translatesAutoresizingMaskIntoConstraints = false
 
         emptyView.header = "Her var det stille gitt"
