@@ -53,12 +53,6 @@ public class MarketGridView: UIView {
     private func setup() {
         collectionView.register(MarketGridCell.self)
         addSubview(collectionView)
-    }
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: topAnchor),
