@@ -149,12 +149,6 @@ public class EmptyView: UIView {
         animator.addBehavior(itemBehavior)
 
         getAccelerometerData()
-    }
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: .veryLargeSpacing),
