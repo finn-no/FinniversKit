@@ -70,6 +70,13 @@ public enum Market: MarketGridModel {
         }
     }
 
+    public var badgeImage: UIImage? {
+        switch self {
+        case .shopping: return UIImage(named: "onlyNew", in: .playgroundBundle, compatibleWith: nil)
+        default: return nil
+        }
+    }
+
     public var accessibilityLabel: String {
         if showExternalLinkIcon {
             return title + ". Merk: Åpner ekstern link"

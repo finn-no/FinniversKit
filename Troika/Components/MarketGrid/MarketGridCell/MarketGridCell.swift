@@ -8,6 +8,8 @@ public class MarketGridCell: UICollectionViewCell {
 
     // MARK: - Internal properties
 
+    private let badgeImageSize = CGSize(width: 30, height: 30)
+
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,6 +24,14 @@ public class MarketGridCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
+    private lazy var badgeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .clear
         return imageView
     }()
 
@@ -51,6 +61,7 @@ public class MarketGridCell: UICollectionViewCell {
         addSubview(iconImageView)
         addSubview(titleLabel)
         addSubview(externalLinkImageView)
+        addSubview(badgeImageView)
         backgroundColor = .clear
     }
 
@@ -79,6 +90,11 @@ public class MarketGridCell: UICollectionViewCell {
 
             externalLinkImageView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor),
             externalLinkImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor),
+
+            badgeImageView.widthAnchor.constraint(equalToConstant: badgeImageSize.width),
+            badgeImageView.heightAnchor.constraint(equalToConstant: badgeImageSize.height),
+            badgeImageView.topAnchor.constraint(equalTo: iconImageView.topAnchor, constant: -.smallSpacing),
+            badgeImageView.trailingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing),
         ])
     }
 
@@ -89,10 +105,15 @@ public class MarketGridCell: UICollectionViewCell {
             iconImageView.image = model?.iconImage
             titleLabel.text = model?.title
             accessibilityLabel = model?.accessibilityLabel
-            if let model = model, model.showExternalLinkIcon {
-                externalLinkImageView.isHidden = false
-            } else {
-                externalLinkImageView.isHidden = true
+
+            guard let model = model else {
+                return
+            }
+
+            externalLinkImageView.isHidden = !model.showExternalLinkIcon
+
+            if let badgeImage = model.badgeImage {
+                badgeImageView.image = badgeImage
             }
         }
     }
