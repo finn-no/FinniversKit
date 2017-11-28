@@ -148,8 +148,6 @@ public class EmptyScreen: UIView {
         getAccelerometerData()
     }
 
-    // MARK: - Superclass Overrides
-
     // MARK: - Layout
 
     public override func layoutSubviews() {
