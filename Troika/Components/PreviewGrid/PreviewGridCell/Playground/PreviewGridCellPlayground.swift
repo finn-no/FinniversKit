@@ -27,6 +27,7 @@ public class PreviewGridCellPlayground: UIView {
         previewCell.loadingColor = .blue
         previewCell.dataSource = dataSource
         previewCell.model = model
+        previewCell.loadImage()
         addSubview(previewCell)
 
         NSLayoutConstraint.activate([

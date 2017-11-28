@@ -42,17 +42,15 @@ public class PreviewGridCell: UICollectionViewCell {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label()
+        let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.style = .detail(.licorice)
         label.backgroundColor = .clear
         return label
     }()
 
     private lazy var subTitleLabel: Label = {
-        let label = Label()
+        let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.style = .detail(.licorice)
         label.backgroundColor = .clear
         return label
     }()
@@ -73,9 +71,8 @@ public class PreviewGridCell: UICollectionViewCell {
     }()
 
     private lazy var imageTextLabel: Label = {
-        let label = Label()
+        let label = Label(style: .title4(.milk))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.style = .title4(.milk)
         label.backgroundColor = .clear
         return label
     }()
@@ -117,28 +114,6 @@ public class PreviewGridCell: UICollectionViewCell {
         imageDesciptionView.addSubview(imageTextLabel)
 
         backgroundColor = .white
-    }
-
-    // MARK: - Superclass Overrides
-
-    public override func prepareForReuse() {
-        super.prepareForReuse()
-        imageView.image = nil
-        iconImageView.image = nil
-        titleLabel.text = ""
-        subTitleLabel.text = ""
-        imageTextLabel.text = ""
-        accessibilityLabel = ""
-
-        if let model = model {
-            dataSource?.cancelLoadImage(for: model, imageWidth: imageView.frame.size.width)
-        }
-    }
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),
@@ -170,6 +145,22 @@ public class PreviewGridCell: UICollectionViewCell {
             imageDesciptionView.heightAnchor.constraint(equalToConstant: PreviewGridCell.imageDescriptionHeight),
             imageDesciptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
         ])
+    }
+
+    // MARK: - Superclass Overrides
+
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+        iconImageView.image = nil
+        titleLabel.text = ""
+        subTitleLabel.text = ""
+        imageTextLabel.text = ""
+        accessibilityLabel = ""
+
+        if let model = model {
+            dataSource?.cancelLoadImage(for: model, imageWidth: imageView.frame.size.width)
+        }
     }
 
     // MARK: - Dependency injection
