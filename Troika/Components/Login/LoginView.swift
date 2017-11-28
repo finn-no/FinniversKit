@@ -137,6 +137,8 @@ public class LoginView: UIView {
         contentView.addSubview(newUserButton)
         contentView.addSubview(userTermsIntroLabel)
         contentView.addSubview(userTermsButton)
+
+        model = LoginViewDefaultData()
     }
 
     // MARK: - Superclass Overrides
