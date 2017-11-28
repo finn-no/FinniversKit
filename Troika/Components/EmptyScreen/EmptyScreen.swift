@@ -112,12 +112,14 @@ public class EmptyScreen: UIView {
     public var header: String = "" {
         didSet {
             headerLabel.text = header
+            headerLabel.accessibilityLabel = header
         }
     }
 
     public var message: String = "" {
         didSet {
             messageLabel.text = message
+            messageLabel.accessibilityLabel = message
         }
     }
 
