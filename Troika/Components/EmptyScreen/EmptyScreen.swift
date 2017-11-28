@@ -93,7 +93,7 @@ public class EmptyScreen: UIView {
 
     private lazy var motionManager: CMMotionManager = {
         let motionManager = CMMotionManager()
-        motionManager.accelerometerUpdateInterval = 0.01
+        motionManager.accelerometerUpdateInterval = 1 / 60
         return motionManager
     }()
 
