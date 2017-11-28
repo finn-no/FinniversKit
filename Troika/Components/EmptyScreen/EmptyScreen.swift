@@ -213,14 +213,16 @@ public class EmptyScreen: UIView {
                 // Correct for orientation
                 let orientation = UIApplication.shared.statusBarOrientation
 
-                if orientation == .portrait {
+                switch orientation {
+                case .portrait:
                     vector.dy *= -1
-                } else if orientation == .landscapeLeft {
+                case .landscapeLeft:
                     vector.dx = CGFloat(gravity.y)
                     vector.dy = CGFloat(gravity.x)
-                } else if orientation == .landscapeRight {
+                case .landscapeRight:
                     vector.dx = CGFloat(-gravity.y)
                     vector.dy = CGFloat(-gravity.x)
+                default: break
                 }
 
                 self.gravity.gravityDirection = vector
