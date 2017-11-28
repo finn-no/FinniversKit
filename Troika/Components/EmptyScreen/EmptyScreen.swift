@@ -102,8 +102,6 @@ public class EmptyScreen: UIView {
         return [rectangle, triangle, roundedSquare, circle]
     }()
 
-    private var attach: UIAttachmentBehavior?
-
     // MARK: - External properties / Dependency injection
 
     public var header: String = "" {
@@ -170,7 +168,7 @@ public class EmptyScreen: UIView {
     // MARK: - Actions
 
     @objc func panAction(sender: UIPanGestureRecognizer) {
-        guard let objectView = sender.view else {
+        guard let objectView = sender.view, var attachable = objectView as? AttachableView else {
             print("\(sender) has no view")
             return
         }
@@ -182,13 +180,13 @@ public class EmptyScreen: UIView {
         if sender.state == .began {
             let newAttach = UIAttachmentBehavior(item: objectView, offsetFromCenter: touchOffset, attachedToAnchor: location)
             animator.addBehavior(newAttach)
-            attach = newAttach
+            attachable.attach = newAttach
         } else if sender.state == .changed {
-            if let attach = attach {
+            if let attach = attachable.attach {
                 attach.anchorPoint = location
             }
         } else if sender.state == .ended {
-            if let attach = attach {
+            if let attach = attachable.attach {
                 animator.removeBehavior(attach)
                 itemBehavior.addLinearVelocity(sender.velocity(in: self), for: objectView)
             }

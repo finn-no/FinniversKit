@@ -4,7 +4,10 @@
 
 import UIKit
 
-internal class RoundedRectangleView: UIView {
+internal class RoundedRectangleView: UIView, AttachableView {
+
+    var attach: UIAttachmentBehavior?
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -56,6 +59,7 @@ internal class RoundedRectangleView: UIView {
 
     private func createRoundedRectanglePath(from shapeFrame: CGRect) -> CGPath {
         let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: shapeFrame.width, height: shapeFrame.height), byRoundingCorners: .topRight, cornerRadii: CGSize(width: shapeFrame.width * 2, height: shapeFrame.height * 2))
+        path.close()
         return path.cgPath
     }
 }

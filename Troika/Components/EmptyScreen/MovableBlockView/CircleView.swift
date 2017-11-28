@@ -4,7 +4,10 @@
 
 import UIKit
 
-internal class CircleView: UIView {
+internal class CircleView: UIView, AttachableView {
+
+    var attach: UIAttachmentBehavior?
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

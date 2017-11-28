@@ -4,7 +4,10 @@
 
 import UIKit
 
-internal class TriangleView: UIView {
+internal class TriangleView: UIView, AttachableView {
+
+    var attach: UIAttachmentBehavior?
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -60,6 +63,7 @@ internal class TriangleView: UIView {
         path.addLine(to: CGPoint(x: shapeFrame.width, y: shapeFrame.height))
         path.addLine(to: CGPoint(x: 0, y: shapeFrame.height))
         path.addLine(to: CGPoint(x: 0, y: 0))
+        path.closeSubpath()
 
         return path
     }
