@@ -3,7 +3,6 @@
 //
 
 import Foundation
-import Troika
 
 public struct LoginViewDefaultData: LoginViewModel {
     public init() {
