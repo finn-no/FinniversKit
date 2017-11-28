@@ -43,12 +43,6 @@ public class Button: UIButton {
         super.setTitleColor(style.disabledTextColor, for: .disabled)
     }
 
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-
     // MARK: - Superclass Overrides
 
     public override func setTitle(_ title: String?, for state: UIControlState) {
