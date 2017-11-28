@@ -420,14 +420,14 @@
 			path = Ribbon;
 			sourceTree = "<group>";
 		};
-		45DBF7681FC5B121003B345F /* EmptyScreen */ = {
+		45DBF7681FC5B121003B345F /* EmptyView */ = {
 			isa = PBXGroup;
 			children = (
 				45DBF7741FC71149003B345F /* MovableBlockView */,
 				45DBF76B1FC5B1B4003B345F /* Playground */,
 				45DBF7691FC5B16E003B345F /* EmptyView.swift */,
 			);
-			path = EmptyScreen;
+			path = EmptyView;
 			sourceTree = "<group>";
 		};
 		45DBF76B1FC5B1B4003B345F /* Playground */ = {
@@ -502,7 +502,7 @@
 		CB58A75C1F73B81000A5A19F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				45DBF7681FC5B121003B345F /* EmptyScreen */,
+				45DBF7681FC5B121003B345F /* EmptyView */,
 				143265AB1FBEEE220093B265 /* Button */,
 				45441D011F8CA1BC00A3B007 /* Label */,
 				442F759B1FC447E500034BF6 /* Login */,
