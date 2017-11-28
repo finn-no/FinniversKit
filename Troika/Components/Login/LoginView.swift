@@ -137,14 +137,6 @@ public class LoginView: UIView {
         contentView.addSubview(newUserButton)
         contentView.addSubview(userTermsIntroLabel)
         contentView.addSubview(userTermsButton)
-    }
-
-    // MARK: - Superclass Overrides
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
