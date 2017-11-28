@@ -52,6 +52,8 @@
 		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
 		4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridModel.swift */; };
 		4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */; };
+		457A7FD81FCD508A00254E61 /* AttachableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A7FD71FCD508A00254E61 /* AttachableView.swift */; };
+		457A7FDA1FCD517700254E61 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A7FD91FCD517700254E61 /* RectangleView.swift */; };
 		457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C61F7BC4100031E125 /* Identifiable.swift */; };
 		457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */; };
 		457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */; };
@@ -139,6 +141,8 @@
 		455866081F7A77B100F670EF /* MarketGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
 		4558660A1F7A7B4800F670EF /* MarketGridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridModel.swift; sourceTree = "<group>"; };
 		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
+		457A7FD71FCD508A00254E61 /* AttachableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachableView.swift; sourceTree = "<group>"; };
+		457A7FD91FCD517700254E61 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		457B35C61F7BC4100031E125 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
 		457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
@@ -440,6 +444,8 @@
 				45DBF7771FC711AE003B345F /* CircleView.swift */,
 				45DBF7791FC711F6003B345F /* TriangleView.swift */,
 				45DBF77B1FC81C5C003B345F /* RoundedRectangleView.swift */,
+				457A7FD91FCD517700254E61 /* RectangleView.swift */,
+				457A7FD71FCD508A00254E61 /* AttachableView.swift */,
 			);
 			path = MovableBlockView;
 			sourceTree = "<group>";
@@ -714,10 +720,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457A7FDA1FCD517700254E61 /* RectangleView.swift in Sources */,
 				14256A1C1FBE1ECC00017B4F /* RibbonViewModel.swift in Sources */,
 				14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */,
 				442F759F1FC447E500034BF6 /* LoginView.swift in Sources */,
 				44CCCCF71FC4422F00940514 /* ToastView+Style.swift in Sources */,
+				457A7FD81FCD508A00254E61 /* AttachableView.swift in Sources */,
 				CB3E67C21F7E4D4000C40D47 /* PreviewGridLayout.swift in Sources */,
 				14256A2D1FBE204200017B4F /* TextField.swift in Sources */,
 				45DBF77A1FC711F6003B345F /* TriangleView.swift in Sources */,

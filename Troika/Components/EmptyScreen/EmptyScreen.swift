@@ -9,7 +9,6 @@ public class EmptyScreen: UIView {
 
     // MARK: - Internal properties
 
-    private let cornerRadius: CGFloat = 4.0
     private let screenSize: CGSize = UIScreen.main.bounds.size
     private let sizeOfTriangle = CGSize(width: 90, height: 90)
     private let sizeOfCircle = CGSize(width: 75, height: 75)
@@ -40,13 +39,11 @@ public class EmptyScreen: UIView {
         return view
     }()
 
-    private lazy var square: UIView = {
+    private lazy var rectangle: RectangleView = {
         let startingPosition = CGPoint(x: screenSize.width / 2 + sizeOfRoundedSquare.width + 1, y: screenSize.height - sizeOfSquare.height - 10)
-        let view = UIView(frame: CGRect(x: startingPosition.x, y: startingPosition.y, width: sizeOfSquare.width, height: sizeOfSquare.height))
+        let view = RectangleView(frame: CGRect(x: startingPosition.x, y: startingPosition.y, width: sizeOfSquare.width, height: sizeOfSquare.height))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
-        view.backgroundColor = .salmon
-        view.layer.cornerRadius = cornerRadius
         return view
     }()
 
@@ -102,7 +99,7 @@ public class EmptyScreen: UIView {
     private lazy var motionQueue = OperationQueue()
 
     private lazy var allSquares: [UIView] = {
-        return [square, triangle, roundedSquare, circle]
+        return [rectangle, triangle, roundedSquare, circle]
     }()
 
     private var attach: UIAttachmentBehavior?
