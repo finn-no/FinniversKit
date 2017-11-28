@@ -120,14 +120,6 @@ public class ToastView: UIView {
         addSubview(imageView)
         addSubview(messageTitle)
         addSubview(actionButton)
-    }
-
-    // MARK: - Superclass Overrides
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.mediumLargeSpacing),
@@ -142,7 +134,7 @@ public class ToastView: UIView {
             messageTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
         ])
 
-        if buttonText != "" {
+        if style == .successButton || style == .errorButton {
             actionButton.isHidden = false
 
             NSLayoutConstraint.activate([
