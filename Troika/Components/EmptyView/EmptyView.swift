@@ -85,6 +85,7 @@ public class EmptyView: UIView {
     private lazy var itemBehavior: UIDynamicItemBehavior = {
         let itemBehavior = UIDynamicItemBehavior(items: allShapes)
         itemBehavior.elasticity = 0.5
+        itemBehavior.friction = 0.3
         itemBehavior.angularResistance = 0.1
         itemBehavior.resistance = 0.1
         itemBehavior.density = 0.75
