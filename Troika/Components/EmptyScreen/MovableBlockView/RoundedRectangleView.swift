@@ -28,7 +28,6 @@ internal class RoundedRectangleView: UIView, AttachableView {
         super.draw(rect)
 
         guard let context = UIGraphicsGetCurrentContext() else {
-            print("No context available")
             return
         }
 
@@ -48,7 +47,6 @@ internal class RoundedRectangleView: UIView, AttachableView {
 
         var translation = CGAffineTransform(translationX: -frame.width / 2, y: -frame.height / 2)
         guard let movedPath = path.copy(using: &translation) else {
-            print("Cannot translate the path")
             return UIBezierPath(cgPath: path)
         }
         let mask = UIBezierPath(cgPath: movedPath)

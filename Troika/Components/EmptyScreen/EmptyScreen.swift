@@ -168,7 +168,6 @@ public class EmptyScreen: UIView {
 
     @objc func panAction(sender: UIPanGestureRecognizer) {
         guard let objectView = sender.view, var attachable = objectView as? AttachableView else {
-            print("\(sender) has no view")
             return
         }
 
@@ -198,11 +197,10 @@ public class EmptyScreen: UIView {
         motionManager.startAccelerometerUpdates()
         motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: { motion, error in
             if error != nil {
-                NSLog(String(describing: error))
+                return
             }
 
             guard let motion = motion else {
-                print("Motion is not available")
                 return
             }
 
