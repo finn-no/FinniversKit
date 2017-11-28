@@ -132,6 +132,8 @@ public class EmptyScreen: UIView {
     }
 
     private func setup() {
+        backgroundColor = .milk
+
         addSubview(rectangle)
         addSubview(triangle)
         addSubview(roundedSquare)

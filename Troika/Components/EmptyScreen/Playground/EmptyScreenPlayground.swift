@@ -16,7 +16,6 @@ public class EmptyScreenPlayground: UIView {
 
     private func setup() {
         let emptyView = EmptyScreen()
-        emptyView.backgroundColor = .milk
         emptyView.translatesAutoresizingMaskIntoConstraints = false
 
         emptyView.header = "Her var det stille gitt"
