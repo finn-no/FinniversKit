@@ -71,22 +71,23 @@ public class EmptyScreen: UIView {
     }()
 
     private lazy var gravity: UIGravityBehavior = {
-        let gravity = UIGravityBehavior(items: allSquares)
+        let gravity = UIGravityBehavior(items: allShapes)
         gravity.gravityDirection = CGVector(dx: 0, dy: 1.0)
         return gravity
     }()
 
     private lazy var collision: UICollisionBehavior = {
-        let collision = UICollisionBehavior(items: allSquares)
+        let collision = UICollisionBehavior(items: allShapes)
         collision.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsetsMake(-10000, 0, 0, 0))
         return collision
     }()
 
     private lazy var itemBehavior: UIDynamicItemBehavior = {
-        let itemBehavior = UIDynamicItemBehavior(items: allSquares)
+        let itemBehavior = UIDynamicItemBehavior(items: allShapes)
         itemBehavior.elasticity = 0.5
         itemBehavior.angularResistance = 0.1
         itemBehavior.resistance = 0.1
+        itemBehavior.density = 0.75
         return itemBehavior
     }()
 
@@ -98,7 +99,7 @@ public class EmptyScreen: UIView {
 
     private lazy var motionQueue = OperationQueue()
 
-    private lazy var allSquares: [UIView] = {
+    private lazy var allShapes: [UIView] = {
         return [rectangle, triangle, roundedSquare, circle]
     }()
 
@@ -131,7 +132,7 @@ public class EmptyScreen: UIView {
     }
 
     private func setup() {
-        addSubview(square)
+        addSubview(rectangle)
         addSubview(triangle)
         addSubview(roundedSquare)
         addSubview(circle)
