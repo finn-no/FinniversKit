@@ -29,10 +29,9 @@ public class RibbonView: UIView {
     // MARK: - Internal properties
 
     private lazy var titleLabel: Label = {
-        let label = Label()
+        let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.style = .detail(.licorice)
         return label
     }()
 
@@ -57,11 +56,6 @@ public class RibbonView: UIView {
         isAccessibilityElement = true
 
         addSubview(titleLabel)
-    }
-
-    // MARK: - Layout
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horisontalMargin),
