@@ -9,10 +9,9 @@ public class RibbonView: UIView {
     // MARK: - Internal properties
 
     private lazy var titleLabel: Label = {
-        let label = Label()
+        let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.style = .detail(.licorice)
         return label
     }()
 
@@ -20,21 +19,34 @@ public class RibbonView: UIView {
     let verticalMargin: CGFloat = 2
     let cornerRadius: CGFloat = 3
 
+    // MARK: - External properties
+
+    public var title: String = "" {
+        didSet {
+            titleLabel.text = title
+            accessibilityLabel = title
+        }
+    }
+
+    public let style: Style
+
     // MARK: - Setup
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(style: Style) {
+        self.style = style
+        super.init(frame: .zero)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    public required convenience init?(coder aDecoder: NSCoder) {
+        self.init(style: .ordinary)
     }
 
     private func setup() {
         layer.cornerRadius = cornerRadius
         isAccessibilityElement = true
+
+        backgroundColor = style.color
 
         addSubview(titleLabel)
     }
@@ -49,15 +61,5 @@ public class RibbonView: UIView {
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin),
         ])
-    }
-
-    // MARK: - Dependency injection
-
-    public var model: RibbonModel? {
-        didSet {
-            titleLabel.text = model?.title
-            accessibilityLabel = model?.accessibilityLabel
-            backgroundColor = model?.type.color
-        }
     }
 }

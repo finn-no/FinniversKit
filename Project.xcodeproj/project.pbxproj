@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C51F7E4D5D00C40D47 /* PreviewModel.swift */; };
-		14256A1C1FBE1ECC00017B4F /* RibbonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */; };
 		14256A251FBE200300017B4F /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A221FBE200300017B4F /* ToastView.swift */; };
 		14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A291FBE204200017B4F /* TextField+InputType.swift */; };
 		14256A2D1FBE204200017B4F /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A2A1FBE204200017B4F /* TextField.swift */; };
@@ -149,7 +148,6 @@
 		457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
 		457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
 		459D37F71F87620B00038582 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
-		459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonViewModel.swift; sourceTree = "<group>"; };
 		45DBF7691FC5B16E003B345F /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		45DBF76C1FC5B1D7003B345F /* EmptyViewPlayground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewPlayground.swift; sourceTree = "<group>"; };
 		45DBF7771FC711AE003B345F /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
@@ -417,7 +415,6 @@
 			children = (
 				144351C81FBE36D3007B2229 /* Playground */,
 				459D37F71F87620B00038582 /* RibbonView.swift */,
-				459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */,
 				457A7FDD1FCDB1CE00254E61 /* Ribbon+Style.swift */,
 			);
 			path = Ribbon;
@@ -724,7 +721,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				457A7FDA1FCD517700254E61 /* RectangleView.swift in Sources */,
-				14256A1C1FBE1ECC00017B4F /* RibbonViewModel.swift in Sources */,
 				14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */,
 				442F759F1FC447E500034BF6 /* LoginView.swift in Sources */,
 				44CCCCF71FC4422F00940514 /* ToastView+Style.swift in Sources */,
