@@ -39,7 +39,7 @@ public class RibbonView: UIView {
     }
 
     public required convenience init?(coder aDecoder: NSCoder) {
-        self.init(style: .ordinary)
+        self.init(style: .default)
     }
 
     private func setup() {

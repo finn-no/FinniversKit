@@ -6,6 +6,14 @@ import UIKit
 import Troika
 
 public class RibbonPlayground: UIView {
+
+    public lazy var headerLabel: Label = {
+        let label = Label(style: .title1)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Status ribbon"
+        return label
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -15,23 +23,23 @@ public class RibbonPlayground: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let successRibbonView = RibbonView()
-        let errorRibbonView = RibbonView()
-        let warningRibbonView = RibbonView()
-        let defaultRibbonView = RibbonView()
-        let disabledRibbonView = RibbonView()
-        let sponsoredRibbonView = RibbonView()
+        let successRibbonView = RibbonView(style: .success)
+        let errorRibbonView = RibbonView(style: .error)
+        let warningRibbonView = RibbonView(style: .warning)
+        let defaultRibbonView = RibbonView(style: .default)
+        let disabledRibbonView = RibbonView(style: .disabled)
+        let sponsoredRibbonView = RibbonView(style: .sponsored)
 
         let interimSpacing: CGFloat = 16
         let lineSpacing: CGFloat = 8
         let margin: CGFloat = 16
 
-        successRibbonView.model = RibbonDataModel.success
-        errorRibbonView.model = RibbonDataModel.error
-        warningRibbonView.model = RibbonDataModel.warning
-        defaultRibbonView.model = RibbonDataModel.ordinary
-        disabledRibbonView.model = RibbonDataModel.disabled
-        sponsoredRibbonView.model = RibbonDataModel.sponsored
+        successRibbonView.title = "Success"
+        errorRibbonView.title = "Error"
+        warningRibbonView.title = "Warning"
+        defaultRibbonView.title = "Default"
+        disabledRibbonView.title = "Disabled"
+        sponsoredRibbonView.title = "Sponsored"
 
         defaultRibbonView.translatesAutoresizingMaskIntoConstraints = false
         successRibbonView.translatesAutoresizingMaskIntoConstraints = false

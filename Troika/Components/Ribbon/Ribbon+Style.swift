@@ -6,7 +6,7 @@ import Foundation
 
 public extension RibbonView {
     public enum Style {
-        case ordinary
+        case `default`
         case success
         case warning
         case error
@@ -15,7 +15,7 @@ public extension RibbonView {
 
         var color: UIColor {
             switch self {
-            case .ordinary: return .ice
+            case .default: return .ice
             case .success: return .mint
             case .warning: return .banana
             case .error: return .salmon
