@@ -22,7 +22,6 @@
 		144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* AppDelegate.swift */; };
 		144351C71FBE3030007B2229 /* LabelPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C61FBE3030007B2229 /* LabelPlayground.swift */; };
 		144351CB1FBE36D3007B2229 /* RibbonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C91FBE36D3007B2229 /* RibbonPlayground.swift */; };
-		144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */; };
 		144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CE1FBE3805007B2229 /* MarketHelpers.swift */; };
 		144351D11FBE3805007B2229 /* MarketGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */; };
 		144351D41FBE3A40007B2229 /* MarketGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */; };
@@ -115,7 +114,6 @@
 		144351C31FBE2FA2007B2229 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		144351C61FBE3030007B2229 /* LabelPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPlayground.swift; sourceTree = "<group>"; };
 		144351C91FBE36D3007B2229 /* RibbonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonPlayground.swift; sourceTree = "<group>"; };
-		144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonHelpers.swift; sourceTree = "<group>"; };
 		144351CE1FBE3805007B2229 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
 		144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewPlayground.swift; sourceTree = "<group>"; };
 		144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellPlayground.swift; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				144351C91FBE36D3007B2229 /* RibbonPlayground.swift */,
-				144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -703,7 +700,6 @@
 				14405C801FAFC3A900D03E04 /* App.swift in Sources */,
 				45DBF76E1FC5B2D8003B345F /* EmptyViewPlayground.swift in Sources */,
 				1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */,
-				144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */,
 				146D3C3E1FBE453700124B76 /* PreviewHelpers.swift in Sources */,
 				144351D71FBE3BDD007B2229 /* PreviewGridViewPlayground.swift in Sources */,
 				144351DA1FBE3D33007B2229 /* PreviewGridCellPlayground.swift in Sources */,
