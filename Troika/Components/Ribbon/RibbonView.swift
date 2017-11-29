@@ -23,8 +23,7 @@ public class RibbonView: UIView {
 
     public var title: String = "" {
         didSet {
-            titleLabel.text = title
-            accessibilityLabel = title
+            update(title)
         }
     }
 
@@ -38,6 +37,14 @@ public class RibbonView: UIView {
         setup()
     }
 
+    public init(style: Style, with title: String) {
+        self.style = style
+        self.title = title
+        super.init(frame: .zero)
+        update(title)
+        setup()
+    }
+
     public required convenience init?(coder aDecoder: NSCoder) {
         self.init(style: .default)
     }
@@ -45,15 +52,9 @@ public class RibbonView: UIView {
     private func setup() {
         layer.cornerRadius = cornerRadius
         isAccessibilityElement = true
-
         backgroundColor = style.color
 
         addSubview(titleLabel)
-    }
-
-    // MARK: - Layout
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horisontalMargin),
@@ -61,5 +62,10 @@ public class RibbonView: UIView {
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin),
         ])
+    }
+
+    private func update(_ title: String) {
+        titleLabel.text = title
+        accessibilityLabel = title
     }
 }

@@ -26,9 +26,9 @@ public class RibbonPlayground: UIView {
         let successRibbonView = RibbonView(style: .success)
         let errorRibbonView = RibbonView(style: .error)
         let warningRibbonView = RibbonView(style: .warning)
-        let defaultRibbonView = RibbonView(style: .default)
-        let disabledRibbonView = RibbonView(style: .disabled)
-        let sponsoredRibbonView = RibbonView(style: .sponsored)
+        let defaultRibbonView = RibbonView(style: .default, with: "Default")
+        let disabledRibbonView = RibbonView(style: .disabled, with: "Disabled")
+        let sponsoredRibbonView = RibbonView(style: .sponsored, with: "Sponsored")
 
         let interimSpacing: CGFloat = 16
         let lineSpacing: CGFloat = 8
@@ -37,9 +37,6 @@ public class RibbonPlayground: UIView {
         successRibbonView.title = "Success"
         errorRibbonView.title = "Error"
         warningRibbonView.title = "Warning"
-        defaultRibbonView.title = "Default"
-        disabledRibbonView.title = "Disabled"
-        sponsoredRibbonView.title = "Sponsored"
 
         defaultRibbonView.translatesAutoresizingMaskIntoConstraints = false
         successRibbonView.translatesAutoresizingMaskIntoConstraints = false
