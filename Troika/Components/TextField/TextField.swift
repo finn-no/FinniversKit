@@ -139,12 +139,6 @@ public class TextField: UIView {
         addSubview(textField)
         addSubview(showPasswordButton)
         addSubview(underline)
-    }
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         typeLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true

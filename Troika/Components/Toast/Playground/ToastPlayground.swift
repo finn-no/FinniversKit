@@ -7,11 +7,11 @@ import Troika
 
 class ToastClass: NSObject, ToastViewDelegate {
     func didTapActionButton(button: UIButton, in toastView: ToastView) {
-        print("Button tapped")
+        print("Button tapped \(toastView.style)")
     }
 
     func didTap(toastView: ToastView) {
-        print("Toast view tapped")
+        print("Toast view tapped \(toastView.style)")
     }
 }
 
@@ -23,20 +23,9 @@ public class ToastPlayground: UIView {
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
+    let delegate = ToastClass()
 
     private func setup() {
-        class ToastClass: NSObject, ToastViewDelegate {
-            func didTapActionButton(button: UIButton, in toastView: ToastView) {
-                print("Button tapped in \(toastView.style)")
-            }
-
-            func didTap(toastView: ToastView) {
-                print("Toast view tapped in \(toastView.style)")
-            }
-        }
-
-        let delegate = ToastClass()
-
         let successToast = ToastView(style: .success)
         let imageToast = ToastView(style: .sucesssWithImage)
         let errorToast = ToastView(style: .error)

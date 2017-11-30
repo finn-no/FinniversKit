@@ -21,18 +21,10 @@ class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
     private func setup() {
         // Perform setup
         // Add child views as subviews
+        // Setup constraints/frames
     }
 
     // MARK: - Superclass Overrides
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-
-        // Perform layout
-        // Setup constraints/frames
-    }
 
     // MARK: - Private
 

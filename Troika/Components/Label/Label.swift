@@ -43,14 +43,6 @@ public class Label: UILabel {
 
     private func setup() {
         isAccessibilityElement = true
-    }
-
-    // MARK: - Superclass Overrides
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         accessibilityLabel = text
         textColor = style?.color

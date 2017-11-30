@@ -36,9 +36,8 @@ public class MarketGridCell: UICollectionViewCell {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label()
+        let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.style = .detail(.licorice)
         label.textAlignment = .center
         return label
     }()
@@ -63,22 +62,6 @@ public class MarketGridCell: UICollectionViewCell {
         addSubview(externalLinkImageView)
         addSubview(badgeImageView)
         backgroundColor = .clear
-    }
-
-    // MARK: - Superclass Overrides
-
-    public override func prepareForReuse() {
-        super.prepareForReuse()
-        iconImageView.image = nil
-        badgeImageView.image = nil
-        titleLabel.text = ""
-        accessibilityLabel = ""
-    }
-
-    // MARK: - Layout
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
 
         NSLayoutConstraint.activate([
             iconImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -97,6 +80,15 @@ public class MarketGridCell: UICollectionViewCell {
             badgeImageView.topAnchor.constraint(equalTo: iconImageView.topAnchor, constant: -.smallSpacing),
             badgeImageView.trailingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing),
         ])
+    }
+
+    // MARK: - Superclass Overrides
+
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        iconImageView.image = nil
+        titleLabel.text = ""
+        accessibilityLabel = ""
     }
 
     // MARK: - Dependency injection
