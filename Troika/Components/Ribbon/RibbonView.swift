@@ -4,26 +4,6 @@
 
 import UIKit
 
-public enum RibbonType {
-    case ordinary
-    case success
-    case warning
-    case error
-    case disabled
-    case sponsored
-
-    var color: UIColor {
-        switch self {
-        case .ordinary: return .ice
-        case .success: return .mint
-        case .warning: return .banana
-        case .error: return .salmon
-        case .disabled: return .sardine
-        case .sponsored: return .toothPaste
-        }
-    }
-}
-
 public class RibbonView: UIView {
 
     // MARK: - Internal properties
@@ -39,21 +19,40 @@ public class RibbonView: UIView {
     let verticalMargin: CGFloat = 2
     let cornerRadius: CGFloat = 3
 
+    // MARK: - External properties
+
+    public var title: String = "" {
+        didSet {
+            update(title)
+        }
+    }
+
+    public let style: Style
+
     // MARK: - Setup
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(style: Style) {
+        self.style = style
+        super.init(frame: .zero)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    public init(style: Style, with title: String) {
+        self.style = style
+        self.title = title
+        super.init(frame: .zero)
+        update(title)
         setup()
+    }
+
+    public required convenience init?(coder aDecoder: NSCoder) {
+        self.init(style: .default)
     }
 
     private func setup() {
         layer.cornerRadius = cornerRadius
         isAccessibilityElement = true
+        backgroundColor = style.color
 
         addSubview(titleLabel)
 
@@ -65,13 +64,8 @@ public class RibbonView: UIView {
         ])
     }
 
-    // MARK: - Dependency injection
-
-    public var model: RibbonModel? {
-        didSet {
-            titleLabel.text = model?.title
-            accessibilityLabel = model?.accessibilityLabel
-            backgroundColor = model?.type.color
-        }
+    private func update(_ title: String) {
+        titleLabel.text = title
+        accessibilityLabel = title
     }
 }
