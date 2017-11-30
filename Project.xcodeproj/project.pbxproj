@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C51F7E4D5D00C40D47 /* PreviewModel.swift */; };
-		14256A1C1FBE1ECC00017B4F /* RibbonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */; };
 		14256A251FBE200300017B4F /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A221FBE200300017B4F /* ToastView.swift */; };
 		14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A291FBE204200017B4F /* TextField+InputType.swift */; };
 		14256A2D1FBE204200017B4F /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A2A1FBE204200017B4F /* TextField.swift */; };
@@ -23,7 +22,6 @@
 		144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* AppDelegate.swift */; };
 		144351C71FBE3030007B2229 /* LabelPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C61FBE3030007B2229 /* LabelPlayground.swift */; };
 		144351CB1FBE36D3007B2229 /* RibbonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C91FBE36D3007B2229 /* RibbonPlayground.swift */; };
-		144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */; };
 		144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CE1FBE3805007B2229 /* MarketHelpers.swift */; };
 		144351D11FBE3805007B2229 /* MarketGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */; };
 		144351D41FBE3A40007B2229 /* MarketGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */; };
@@ -54,6 +52,7 @@
 		457A7FDC1FCD814C00254E61 /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449364F11FC44AA3002DC005 /* LoginViewDefaultData.swift */; };
 		457A7FD81FCD508A00254E61 /* AttachableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A7FD71FCD508A00254E61 /* AttachableView.swift */; };
 		457A7FDA1FCD517700254E61 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A7FD91FCD517700254E61 /* RectangleView.swift */; };
+		457A7FDE1FCDB1CE00254E61 /* Ribbon+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A7FDD1FCDB1CE00254E61 /* Ribbon+Style.swift */; };
 		457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C61F7BC4100031E125 /* Identifiable.swift */; };
 		457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */; };
 		457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */; };
@@ -116,7 +115,6 @@
 		144351C31FBE2FA2007B2229 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		144351C61FBE3030007B2229 /* LabelPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPlayground.swift; sourceTree = "<group>"; };
 		144351C91FBE36D3007B2229 /* RibbonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonPlayground.swift; sourceTree = "<group>"; };
-		144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonHelpers.swift; sourceTree = "<group>"; };
 		144351CE1FBE3805007B2229 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
 		144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewPlayground.swift; sourceTree = "<group>"; };
 		144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellPlayground.swift; sourceTree = "<group>"; };
@@ -144,11 +142,11 @@
 		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
 		457A7FD71FCD508A00254E61 /* AttachableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachableView.swift; sourceTree = "<group>"; };
 		457A7FD91FCD517700254E61 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
+		457A7FDD1FCDB1CE00254E61 /* Ribbon+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ribbon+Style.swift"; sourceTree = "<group>"; };
 		457B35C61F7BC4100031E125 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
 		457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
 		459D37F71F87620B00038582 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
-		459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonViewModel.swift; sourceTree = "<group>"; };
 		45DBF7701FC5C044003B345F /* LoginViewPlayground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewPlayground.swift; sourceTree = "<group>"; };
 		45DBF7691FC5B16E003B345F /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		45DBF76C1FC5B1D7003B345F /* EmptyViewPlayground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewPlayground.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 			isa = PBXGroup;
 			children = (
 				144351C91FBE36D3007B2229 /* RibbonPlayground.swift */,
-				144351CA1FBE36D3007B2229 /* RibbonHelpers.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -417,7 +414,7 @@
 			children = (
 				144351C81FBE36D3007B2229 /* Playground */,
 				459D37F71F87620B00038582 /* RibbonView.swift */,
-				459D37FD1F87AE5D00038582 /* RibbonViewModel.swift */,
+				457A7FDD1FCDB1CE00254E61 /* Ribbon+Style.swift */,
 			);
 			path = Ribbon;
 			sourceTree = "<group>";
@@ -715,7 +712,6 @@
 				45DBF76E1FC5B2D8003B345F /* EmptyViewPlayground.swift in Sources */,
 				1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */,
 				457A7FDC1FCD814C00254E61 /* LoginViewDefaultData.swift in Sources */,
-				144351CC1FBE36D3007B2229 /* RibbonHelpers.swift in Sources */,
 				146D3C3E1FBE453700124B76 /* PreviewHelpers.swift in Sources */,
 				144351D71FBE3BDD007B2229 /* PreviewGridViewPlayground.swift in Sources */,
 				144351DA1FBE3D33007B2229 /* PreviewGridCellPlayground.swift in Sources */,
@@ -734,7 +730,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				457A7FDA1FCD517700254E61 /* RectangleView.swift in Sources */,
-				14256A1C1FBE1ECC00017B4F /* RibbonViewModel.swift in Sources */,
 				14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */,
 				442F759F1FC447E500034BF6 /* LoginView.swift in Sources */,
 				44CCCCF71FC4422F00940514 /* ToastView+Style.swift in Sources */,
@@ -752,6 +747,7 @@
 				14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */,
 				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
 				4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */,
+				457A7FDE1FCDB1CE00254E61 /* Ribbon+Style.swift in Sources */,
 				CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */,
 				453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */,
 				4537D0201F94ECE6006942E7 /* CGFloat+Troika.swift in Sources */,
