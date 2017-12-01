@@ -2,72 +2,34 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![](https://img.shields.io/badge/platform-iOS-lightgrey.svg) ![](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)
 
 # Table of content
-1. [Introduction](#introduction)
-2. [Structure](#structure)
-    1. [Protocols](#protocols)
-    2. [Extensions](#extensions)
-    3. [Templates](#templates)
-    4. [Resources](#resources)
-3. [Components](#components)
-   1. [Toast](#toast)
-   2. [Label](#label)
-   3. [Ribbon](#ribbon)
-   4. [MarketGrid](#marketgrid)
-   5. [PreviewGrid](#previewgrid)
-4. [Installation](#installation)
-5. [Usage](#usage)
 
-## Introduction <a name="introduction"></a>
-Some introduction text.
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
-## Structure <a name="structure"></a>
-Explaning the structure/architecture of the project.
+## Introduction
 
-### Protocols <a name="protocols"></a>
-What goes in the ´Protocols´ folder?
+Troika is the iOS native implementation of FINN's design system. [You can find the reference here](http://finnivers.finn.no/d/2koIuZwTP5cy/design-system). This framework is composed of small components that are meant to be used as building blocks of the FINN iOS app. 
 
-### Extensions <a name="extensions"></a>
-What goes in the ´Extensions´ folder?
+In order to develop our components in an isolated way we have structured them so they can be used idependently of each other. Check the [App.swift](/Playground/App.swift) for a list of all our components, to try a different component change the `typealias View` to a different Playground and run the project.
 
-### Templates <a name="templates"></a>
-The template is a guideline of the structure of the classes, written in Swift...
+## Installation
 
-### Resources <a name="resources"></a>
-Fonts and image assets.
-
-## Components <a name="components"></a>
-Explain the different components
-
-### Toast <a name="toast"></a>
-Toast
-
-### Label <a name="label"></a>
-Label
-
-### Ribbon <a name="ribbon"></a>
-Ribbon
-
-### MarketGrid <a name="marketgrid"></a>
-Market
-#### MarketGrid View
-The view
-#### MarketGrid Cell
-The cell
-
-### PreviewGrid <a name="previewgrid"></a>
-Preview
-#### PreviewGridView
-The view
-#### PreviewGrid Cell
-The cell
-
-## Installation <a name="installation"></a>
 ### Carthage
+
 ```
-github "finn-no/troika-ios" ~> 0.2
+github "finn-no/troika-ios" "master"
 ```
-## Usage <a name="usage"></a>
+
+## Usage
+
 Remember to use the following command so that the custom FINN fonts are loaded from the framework bundle:
+
 ``` Swift
 UIFont.registerTroikaFonts()
 ```
+
+## License
+
+**Troika** is available under the Apache License 2.0. See the [LICENSE file](/LICENSE.md) for more info.
