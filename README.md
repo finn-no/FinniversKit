@@ -40,4 +40,4 @@ UIFont.registerTroikaFonts()
 
 **Troika** is available under the Apache License 2.0. See the [LICENSE file](/LICENSE.md) for more info.
 
-The **FINN.no** branding, icons, images, assets, sounds and others are solely reserved for usage within **FINN.no.**
+The **FINN.no** branding, icons, images, assets, sounds and others are solely reserved for usage within **FINN.no**, the main purpose of this library is for internal use and to be used as reference for other teams in how we do things inside **FINN.no**.
