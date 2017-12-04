@@ -87,6 +87,7 @@ public class MarketGridCell: UICollectionViewCell {
     public override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
+        badgeImageView.image = nil
         titleLabel.text = ""
         accessibilityLabel = ""
     }
