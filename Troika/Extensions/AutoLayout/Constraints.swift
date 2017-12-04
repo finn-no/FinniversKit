@@ -26,7 +26,7 @@ public extension Constrainable {
     }
 
     @discardableResult
-    public func edges(to view: Constrainable, insets: UIEdgeInsets = .zero, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
+    public func fill(in view: Constrainable, insets: UIEdgeInsets = .zero, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForLayout()
 
         let constraints = [

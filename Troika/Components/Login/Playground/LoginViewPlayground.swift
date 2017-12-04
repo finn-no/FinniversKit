@@ -25,12 +25,6 @@ public class LoginViewPlayground: UIView {
         loginView.model = LoginViewDefaultData()
 
         addSubview(loginView)
-
-        NSLayoutConstraint.activate([
-            loginView.topAnchor.constraint(equalTo: topAnchor),
-            loginView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            loginView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            loginView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
+        loginView.fill(in: self)
     }
 }

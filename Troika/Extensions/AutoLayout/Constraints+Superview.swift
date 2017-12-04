@@ -114,7 +114,7 @@ public extension UIView {
     @discardableResult
     public func edgesToSuperview(insets: UIEdgeInsets = .zero, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
-        return edges(to: constrainable, insets: insets, priority: priority, isActive: isActive)
+        return fill(in: constrainable, insets: insets, priority: priority, isActive: isActive)
     }
 
     @discardableResult
