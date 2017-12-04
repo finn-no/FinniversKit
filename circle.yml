@@ -1,3 +1,5 @@
-machine:
-  xcode:
-    version: "9.0"
+version: 2
+jobs:
+  build:
+    macos:
+      xcode: "9.0"
