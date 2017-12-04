@@ -34,9 +34,6 @@ public protocol Constrainable {
 
     var widthAnchor: NSLayoutDimension { get }
     var heightAnchor: NSLayoutDimension { get }
-
-    @discardableResult
-    func prepareForLayout() -> Self
 }
 
 public enum ConstraintRelation: Int {
