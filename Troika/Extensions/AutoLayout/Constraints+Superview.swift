@@ -92,6 +92,8 @@ public extension UIView {
 
     private func safeConstrainable(for superview: UIView?, usingSafeArea: Bool) -> Constrainable {
         guard let superview = superview else { fatalError("Unable to create this constraint to it's superview, because it has no superview.") }
+        prepareForLayout()
+
         #if os(iOS) || os(tvOS)
             if #available(iOS 11, tvOS 11, *) {
                 if usingSafeArea {
