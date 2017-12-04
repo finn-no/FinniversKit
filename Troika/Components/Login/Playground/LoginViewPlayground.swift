@@ -8,9 +8,7 @@ import Troika
 public class LoginViewPlayground: UIView {
 
     private lazy var loginView: LoginView = {
-        let loginView = LoginView()
-        loginView.translatesAutoresizingMaskIntoConstraints = false
-        return loginView
+        return LoginView(withAutoLayout: true)
     }()
 
     override init(frame: CGRect) {
