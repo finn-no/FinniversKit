@@ -9,34 +9,20 @@ import UIKit
 
 public extension UIView {
 
-    @available(tvOS 10.0, *)
-    @available(iOS 10.0, *)
     @discardableResult
-    func edgesToSuperview(excluding excludedEdge: LayoutEdge = .none, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+    func fillInSuperview(excluding excludedEdge: LayoutEdge = .none, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
         if !excludedEdge.contains(.top) {
             constraints.append(topToSuperview(offset: insets.top))
         }
 
-        if effectiveUserInterfaceLayoutDirection == .leftToRight {
+        if !(excludedEdge.contains(.leading) || excludedEdge.contains(.left)) {
+            constraints.append(leftToSuperview(offset: insets.left))
+        }
 
-            if !(excludedEdge.contains(.leading) || excludedEdge.contains(.left)) {
-                constraints.append(leftToSuperview(offset: insets.left))
-            }
-
-            if !(excludedEdge.contains(.trailing) || excludedEdge.contains(.right)) {
-                constraints.append(rightToSuperview(offset: -insets.right))
-            }
-        } else {
-
-            if !(excludedEdge.contains(.leading) || excludedEdge.contains(.right)) {
-                constraints.append(rightToSuperview(offset: -insets.right))
-            }
-
-            if !(excludedEdge.contains(.trailing) || excludedEdge.contains(.left)) {
-                constraints.append(leftToSuperview(offset: insets.left))
-            }
+        if !(excludedEdge.contains(.trailing) || excludedEdge.contains(.right)) {
+            constraints.append(rightToSuperview(offset: -insets.right))
         }
 
         if !excludedEdge.contains(.bottom) {
@@ -46,30 +32,17 @@ public extension UIView {
         return constraints
     }
 
-    @available(tvOS 10.0, *)
-    @available(iOS 10.0, *)
     @discardableResult
     public func leadingToSuperview(_ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
 
-        if effectiveUserInterfaceLayoutDirection == .rightToLeft {
-            return leading(to: constrainable, anchor, offset: -offset, relation: relation, priority: priority, isActive: isActive)
-        } else {
-            return leading(to: constrainable, anchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
-        }
+        return leading(to: constrainable, anchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
 
-    @available(tvOS 10.0, *)
-    @available(iOS 10.0, *)
-    @discardableResult
     public func trailingToSuperview(_ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
 
-        if effectiveUserInterfaceLayoutDirection == .rightToLeft {
-            return trailing(to: constrainable, anchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
-        } else {
-            return trailing(to: constrainable, anchor, offset: -offset, relation: relation, priority: priority, isActive: isActive)
-        }
+        return trailing(to: constrainable, anchor, offset: -offset, relation: relation, priority: priority, isActive: isActive)
     }
 }
 
@@ -112,7 +85,7 @@ public extension UIView {
     }
 
     @discardableResult
-    public func edgesToSuperview(insets: UIEdgeInsets = .zero, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
+    public func fillInSuperview(insets: UIEdgeInsets = .zero, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         return fill(in: constrainable, insets: insets, priority: priority, isActive: isActive)
     }
