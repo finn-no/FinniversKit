@@ -10,24 +10,13 @@ import UIKit
 public extension UIView {
 
     @discardableResult
-    func fillInSuperview(excluding excludedEdge: LayoutEdge = .none, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+    func fillInSuperview(insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
 
-        if !excludedEdge.contains(.top) {
-            constraints.append(topToSuperview(offset: insets.top))
-        }
-
-        if !(excludedEdge.contains(.leading) || excludedEdge.contains(.left)) {
-            constraints.append(leftToSuperview(offset: insets.left))
-        }
-
-        if !(excludedEdge.contains(.trailing) || excludedEdge.contains(.right)) {
-            constraints.append(rightToSuperview(offset: -insets.right))
-        }
-
-        if !excludedEdge.contains(.bottom) {
-            constraints.append(bottomToSuperview(offset: -insets.bottom))
-        }
+        constraints.append(topToSuperview(offset: insets.top))
+        constraints.append(leftToSuperview(offset: insets.left))
+        constraints.append(rightToSuperview(offset: -insets.right))
+        constraints.append(bottomToSuperview(offset: -insets.bottom))
 
         return constraints
     }
@@ -46,34 +35,17 @@ public extension UIView {
     }
 }
 
-public struct LayoutEdge: OptionSet {
-    public let rawValue: UInt8
-    public init(rawValue: UInt8) {
-        self.rawValue = rawValue
-    }
-
-    public static let top = LayoutEdge(rawValue: 1 << 0)
-    public static let bottom = LayoutEdge(rawValue: 1 << 1)
-    public static let trailing = LayoutEdge(rawValue: 1 << 2)
-    public static let leading = LayoutEdge(rawValue: 1 << 3)
-    public static let left = LayoutEdge(rawValue: 1 << 4)
-    public static let right = LayoutEdge(rawValue: 1 << 5)
-    public static let none = LayoutEdge(rawValue: 1 << 6)
-}
-
 public extension UIView {
 
     private func safeConstrainable(for superview: UIView?, usingSafeArea: Bool) -> Constrainable {
         guard let superview = superview else { fatalError("Unable to create this constraint to it's superview, because it has no superview.") }
         prepareForLayout()
 
-        #if os(iOS) || os(tvOS)
-            if #available(iOS 11, tvOS 11, *) {
-                if usingSafeArea {
-                    return superview.safeAreaLayoutGuide
-                }
+        if #available(iOS 11, tvOS 11, *) {
+            if usingSafeArea {
+                return superview.safeAreaLayoutGuide
             }
-        #endif
+        }
 
         return superview
     }
