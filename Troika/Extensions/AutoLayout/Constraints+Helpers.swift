@@ -7,9 +7,19 @@
 
 import UIKit
 
-extension UIView: Constrainable {}
+extension UIView: Constrainable {
 
-extension UILayoutGuide: Constrainable {}
+    @discardableResult
+    public func prepareForLayout() -> Self {
+        translatesAutoresizingMaskIntoConstraints = false
+        return self
+    }
+}
+
+extension UILayoutGuide: Constrainable {
+    @discardableResult
+    public func prepareForLayout() -> Self { return self }
+}
 
 public protocol Constrainable {
     var topAnchor: NSLayoutYAxisAnchor { get }
@@ -51,8 +61,8 @@ public extension Collection where Iterator.Element == NSLayoutConstraint {
 
 public extension NSLayoutConstraint {
     @objc
-    func with(_ priority: UILayoutPriority) -> Self {
-        self.priority = priority
+    func with(_ p: UILayoutPriority) -> Self {
+        priority = p
         return self
     }
 
