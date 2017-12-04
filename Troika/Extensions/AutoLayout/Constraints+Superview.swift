@@ -69,18 +69,6 @@ public extension UIView {
     }
 
     @discardableResult
-    public func widthToSuperview(_ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
-        let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
-        return width(to: constrainable, dimension, multiplier: multiplier, offset: offset, priority: priority, isActive: isActive)
-    }
-
-    @discardableResult
-    public func heightToSuperview(_ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
-        let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
-        return height(to: constrainable, dimension, multiplier: multiplier, offset: offset, priority: priority, isActive: isActive)
-    }
-
-    @discardableResult
     public func leftToSuperview(_ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         return left(to: constrainable, anchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
