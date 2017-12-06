@@ -29,8 +29,7 @@ public class Button: UIButton {
     private func setup() {
         isAccessibilityElement = true
 
-        titleEdgeInsets = UIEdgeInsets(top: 0, left: .mediumSpacing, bottom: 0, right: .mediumSpacing)
-
+        contentEdgeInsets = style.margins
         titleLabel?.font = style.font
         layer.cornerRadius = cornerRadius
         layer.borderWidth = style.borderWidth
