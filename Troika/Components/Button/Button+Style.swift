@@ -91,5 +91,12 @@ public extension Button {
             default: return .sardine
             }
         }
+
+        var margins: UIEdgeInsets {
+            switch self {
+            case .link: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
+            default: return UIEdgeInsets(top: .smallSpacing, left: .mediumSpacing, bottom: .smallSpacing, right: .mediumSpacing)
+            }
+        }
     }
 }
