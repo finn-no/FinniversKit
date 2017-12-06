@@ -91,11 +91,10 @@ public class ButtonPlayground: UIView {
 
             button1.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .largeSpacing),
             button1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            button1.widthAnchor.constraint(equalToConstant: frame.width / 2 - .largeSpacing - .mediumSpacing),
+            button1.trailingAnchor.constraint(lessThanOrEqualTo: button2.leadingAnchor),
 
             button2.topAnchor.constraint(equalTo: button1.topAnchor),
             button2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
-            button2.widthAnchor.constraint(equalToConstant: frame.width / 2 - .largeSpacing - .mediumSpacing),
 
             disabledNormalButton.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: .largeSpacing),
             disabledNormalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
