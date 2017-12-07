@@ -15,12 +15,13 @@ public class EmptyViewPlayground: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let emptyView = EmptyView(withAutoLayout: true)
+        backgroundColor = .green
 
-        emptyView.header = "Her var det stille gitt"
-        emptyView.message = "Når du prater med andre på FINN, vil meldingene dine dukke opp her.\n\n Søk på noe du har lyst på, send en melding til selgeren og bli enige om en handel på én-to-tre!"
+        let emptyView = UIView(withAutoLayout: true)
+        emptyView.backgroundColor = .red
 
         addSubview(emptyView)
-        emptyView.fillInSuperview()
+        emptyView.fillInSuperview(insets: EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
+
