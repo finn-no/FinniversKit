@@ -4,7 +4,7 @@
 
 import Foundation
 
-internal class PreviewGridHeaderView: UICollectionReusableView {
+class PreviewGridHeaderView: UICollectionReusableView {
 
     var contentView: UIView? {
         willSet {

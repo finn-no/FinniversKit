@@ -4,7 +4,7 @@
 
 import UIKit
 
-internal class RoundedRectangleView: UIView, AttachableView {
+class RoundedRectangleView: UIView, AttachableView {
 
     var attach: UIAttachmentBehavior?
 

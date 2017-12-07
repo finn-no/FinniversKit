@@ -4,7 +4,7 @@
 
 import UIKit
 
-internal class CircleView: UIView, AttachableView {
+class CircleView: UIView, AttachableView {
 
     var attach: UIAttachmentBehavior?
 

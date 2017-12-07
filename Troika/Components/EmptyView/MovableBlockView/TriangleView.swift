@@ -4,7 +4,7 @@
 
 import UIKit
 
-internal class TriangleView: UIView, AttachableView {
+class TriangleView: UIView, AttachableView {
 
     var attach: UIAttachmentBehavior?
 
