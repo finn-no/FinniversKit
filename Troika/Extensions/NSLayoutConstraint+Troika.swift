@@ -4,7 +4,7 @@
 
 import UIKit
 
-/// A struct that holds the offsets when laying out a view.
+/// A struct that holds the insets when laying out a view.
 public struct EdgeInsets {
     // Replace with NSDirectionalEdgeInsets when going for > iOS 11.
     // The reason for using this instead of UIEdgeInsets is because in UIEdgeInsets uses left and right instead of
@@ -25,7 +25,7 @@ public extension UIView {
     /// Layouts the current view to fit it's superview.
     ///
     /// - Parameters:
-    ///   - insets: The offset for fitting the superview.
+    ///   - insets: The inset for fitting the superview.
     ///   - isActive: A boolean on whether the constraint is active or not.
     /// - Returns: The added constraints.
     @discardableResult
