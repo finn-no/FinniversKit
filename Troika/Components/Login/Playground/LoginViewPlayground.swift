@@ -20,9 +20,8 @@ public class LoginViewPlayground: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        loginView.model = LoginViewDefaultData()
-
         addSubview(loginView)
         loginView.fillInSuperview()
+        loginView.model = LoginViewDefaultData()
     }
 }
