@@ -16,15 +16,15 @@ public class ButtonPlayground: UIView {
 
     private func setup() {
         let normalButton = Button(style: .default)
-        let flatButton = Button(style: .flat)
+        let flatButton = Button(style: .callToAction)
         let destructiveButton = Button(style: .destructive)
         let linkButton = Button(style: .link)
 
-        let button1 = Button(style: .flat)
+        let button1 = Button(style: .callToAction)
         let button2 = Button(style: .default)
 
         let disabledNormalButton = Button(style: .default)
-        let disabledFlatButton = Button(style: .flat)
+        let disabledFlatButton = Button(style: .callToAction)
         let disabledDestructiveButton = Button(style: .destructive)
         let disabledLinkButton = Button(style: .link)
 

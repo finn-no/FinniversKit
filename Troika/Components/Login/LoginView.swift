@@ -51,7 +51,7 @@ public class LoginView: UIView {
     }()
 
     private lazy var loginButton: Button = {
-        let button = Button(style: .flat)
+        let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return button

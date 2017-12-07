@@ -8,7 +8,7 @@ public extension Button {
 
     public enum Style {
         case `default`
-        case flat
+        case callToAction
         case destructive
         case link
 
@@ -22,7 +22,7 @@ public extension Button {
         var bodyColor: UIColor {
             switch self {
             case .default, .link: return .milk
-            case .flat: return .primaryBlue
+            case .callToAction: return .primaryBlue
             case .destructive: return .cherry
             }
         }
@@ -50,7 +50,7 @@ public extension Button {
 
         var highlightedBodyColor: UIColor? {
             switch self {
-            case .flat: return UIColor(red: 0 / 255, green: 79 / 255, blue: 201 / 255, alpha: 1.0) // #004fc9
+            case .callToAction: return UIColor(red: 0 / 255, green: 79 / 255, blue: 201 / 255, alpha: 1.0) // #004fc9
             case .destructive: return UIColor(red: 201 / 255, green: 79 / 255, blue: 0 / 255, alpha: 1.0)
             case .default: return UIColor(red: 241 / 255, green: 249 / 255, blue: 255 / 255, alpha: 1.0)
             default: return nil
@@ -87,7 +87,7 @@ public extension Button {
 
         var disabledTextColor: UIColor? {
             switch self {
-            case .flat, .destructive: return nil
+            case .callToAction, .destructive: return nil
             default: return .sardine
             }
         }
