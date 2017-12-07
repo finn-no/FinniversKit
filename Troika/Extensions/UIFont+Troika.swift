@@ -24,14 +24,12 @@ public extension UIFont {
         return font.scaledFont(forTextStyle: .title3)
     }
 
-    // Needed?
     public static var title4: UIFont {
         let font = UIFont(name: "FINNTypeWebStrippet-Medium", size: 17)!
 
         return font.scaledFont(forTextStyle: .headline)
     }
 
-    // Needed?
     public static var title5: UIFont {
         let font = UIFont(name: "FINNTypeWebStrippet-Medium", size: 14.0)!
 
