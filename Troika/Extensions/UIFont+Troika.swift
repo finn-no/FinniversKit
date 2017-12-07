@@ -7,37 +7,62 @@ import UIKit
 public extension UIFont {
 
     public static var title1: UIFont {
-        return UIFont(name: "FINNTypeWebStrippet-Medium", size: 36.0)!
+        let font = UIFont(name: "FINNTypeWebStrippet-Medium", size: 28)!
+
+        return font.scaledFont(forTextStyle: .title1)
     }
 
     public static var title2: UIFont {
-        return UIFont(name: "FINNTypeWebStrippet-Light", size: 28.0)!
+        let font = UIFont(name: "FINNTypeWebStrippet-Light", size: 22)!
+
+        return font.scaledFont(forTextStyle: .title2)
     }
 
     public static var title3: UIFont {
-        return UIFont(name: "FINNTypeWebStrippet-Light", size: 22.5)!
+        let font = UIFont(name: "FINNTypeWebStrippet-Light", size: 20)!
+
+        return font.scaledFont(forTextStyle: .title3)
     }
 
+    // Needed?
     public static var title4: UIFont {
-        return UIFont(name: "FINNTypeWebStrippet-Medium", size: 18.0)!
+        let font = UIFont(name: "FINNTypeWebStrippet-Medium", size: 17)!
+
+        return font.scaledFont(forTextStyle: .headline)
     }
 
+    // Needed?
     public static var title5: UIFont {
-        return UIFont(name: "FINNTypeWebStrippet-Medium", size: 14.0)!
+        let font = UIFont(name: "FINNTypeWebStrippet-Medium", size: 14.0)!
+
+        return font.scaledFont(forTextStyle: .callout)
     }
 
     public static var body: UIFont {
-        return UIFont(name: "FINNTypeWebStrippet-Light", size: 18.0)!
+        let font = UIFont(name: "FINNTypeWebStrippet-Light", size: 18.0)!
+
+        return font.scaledFont(forTextStyle: .body)
     }
 
     public static var detail: UIFont {
-        return UIFont(name: "FINNTypeWebStrippet-Light", size: 14.0)!
+        let font = UIFont(name: "FINNTypeWebStrippet-Light", size: 14.0)!
+
+        return font.scaledFont(forTextStyle: .footnote)
+    }
+
+    func scaledFont(forTextStyle textStyle: UIFontTextStyle) -> UIFont {
+        if #available(iOS 11.0, *) {
+            let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
+            return fontMetrics.scaledFont(for: self)
+        } else {
+            return self
+        }
     }
 }
 
 extension UIFont {
 
-    public static func registerFont(with filenameString: String, bundleIdentifierString: String) {
+    static func registerFont(with filenameString: String, bundleIdentifierString: String) {
         guard let bundle = Bundle(identifier: bundleIdentifierString) else {
             print("UIFont+:  Failed to register font - bundle identifier invalid.")
             return
