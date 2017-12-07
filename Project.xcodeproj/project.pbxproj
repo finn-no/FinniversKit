@@ -33,9 +33,7 @@
 		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
 		442F759F1FC447E500034BF6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F759D1FC447E500034BF6 /* LoginView.swift */; };
 		442F75A01FC447E500034BF6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F759E1FC447E500034BF6 /* LoginViewModel.swift */; };
-		446E35111FD5F61600D061BE /* Constraints+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E350B1FD5F61600D061BE /* Constraints+Helpers.swift */; };
-		446E35141FD5F61600D061BE /* Constraints+Superview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E350E1FD5F61600D061BE /* Constraints+Superview.swift */; };
-		446E35151FD5F61600D061BE /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E350F1FD5F61600D061BE /* Constraints.swift */; };
+		4438EF8D1FD9267E0023EFD3 /* NSLayoutConstraint+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4438EF8C1FD9267E0023EFD3 /* NSLayoutConstraint+Troika.swift */; };
 		446E35171FD5FCBE00D061BE /* UIView+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E35161FD5FCBE00D061BE /* UIView+Troika.swift */; };
 		44CCCCF71FC4422F00940514 /* ToastView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCCCF61FC4422F00940514 /* ToastView+Style.swift */; };
 		44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
@@ -130,9 +128,7 @@
 		14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		442F759D1FC447E500034BF6 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		442F759E1FC447E500034BF6 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		446E350B1FD5F61600D061BE /* Constraints+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+Helpers.swift"; sourceTree = "<group>"; };
-		446E350E1FD5F61600D061BE /* Constraints+Superview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constraints+Superview.swift"; sourceTree = "<group>"; };
-		446E350F1FD5F61600D061BE /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		4438EF8C1FD9267E0023EFD3 /* NSLayoutConstraint+Troika.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Troika.swift"; sourceTree = "<group>"; };
 		446E35161FD5FCBE00D061BE /* UIView+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Troika.swift"; sourceTree = "<group>"; };
 		449364F11FC44AA3002DC005 /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
 		44CCCCF61FC4422F00940514 /* ToastView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastView+Style.swift"; sourceTree = "<group>"; };
@@ -352,16 +348,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		446E35091FD5F61600D061BE /* AutoLayout */ = {
-			isa = PBXGroup;
-			children = (
-				446E350F1FD5F61600D061BE /* Constraints.swift */,
-				446E350E1FD5F61600D061BE /* Constraints+Superview.swift */,
-				446E350B1FD5F61600D061BE /* Constraints+Helpers.swift */,
-			);
-			path = AutoLayout;
-			sourceTree = "<group>";
-		};
 		453D88741F84FC3C00FC63C7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,7 +465,7 @@
 		CB3664231F73F7FE009D3244 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				446E35091FD5F61600D061BE /* AutoLayout */,
+				4438EF8C1FD9267E0023EFD3 /* NSLayoutConstraint+Troika.swift */,
 				CB3664241F73F818009D3244 /* UIFont+Troika.swift */,
 				4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */,
 				457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */,
@@ -770,6 +756,7 @@
 				4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */,
 				457A7FDE1FCDB1CE00254E61 /* Ribbon+Style.swift in Sources */,
 				CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */,
+				4438EF8D1FD9267E0023EFD3 /* NSLayoutConstraint+Troika.swift in Sources */,
 				453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */,
 				4537D0201F94ECE6006942E7 /* CGFloat+Troika.swift in Sources */,
 				45441D031F8CA1D300A3B007 /* Label.swift in Sources */,
@@ -777,14 +764,11 @@
 				45DBF77C1FC81C5C003B345F /* RoundedRectangleView.swift in Sources */,
 				14256A251FBE200300017B4F /* ToastView.swift in Sources */,
 				CB3E67C61F7E4D5D00C40D47 /* PreviewGridCell.swift in Sources */,
-				446E35141FD5F61600D061BE /* Constraints+Superview.swift in Sources */,
 				4523B77C1F8CF3C3001DFB96 /* Label+Style.swift in Sources */,
-				446E35111FD5F61600D061BE /* Constraints+Helpers.swift in Sources */,
 				455866071F7A751300F670EF /* MarketGridView.swift in Sources */,
 				4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */,
 				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
 				45DBF76A1FC5B16E003B345F /* EmptyView.swift in Sources */,
-				446E35151FD5F61600D061BE /* Constraints.swift in Sources */,
 				459D37F81F87620B00038582 /* RibbonView.swift in Sources */,
 				CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */,
 				457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */,

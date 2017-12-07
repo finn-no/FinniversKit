@@ -23,6 +23,6 @@ public class LoginViewPlayground: UIView {
         loginView.model = LoginViewDefaultData()
 
         addSubview(loginView)
-        loginView.fill(in: self)
+        loginView.fillInSuperview()
     }
 }
