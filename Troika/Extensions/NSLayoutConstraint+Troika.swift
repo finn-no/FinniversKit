@@ -18,6 +18,21 @@ public struct EdgeInsets {
     public static var zero: EdgeInsets {
         return EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
     }
+
+    public init(top: Int = 0, leading: Int = 0, bottom: Int = 0, trailing: Int = 0) {
+        self.init(top: CGFloat(top), leading: CGFloat(leading), bottom: CGFloat(bottom), trailing: CGFloat(trailing))
+    }
+
+    public init(top: Double = 0, leading: Double = 0, bottom: Double = 0, trailing: Double = 0) {
+        self.init(top: CGFloat(top), leading: CGFloat(leading), bottom: CGFloat(bottom), trailing: CGFloat(trailing))
+    }
+
+    public init(top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) {
+        self.top = top
+        self.leading = leading
+        self.bottom = bottom
+        self.trailing = trailing
+    }
 }
 
 public extension UIView {
@@ -40,7 +55,7 @@ public extension UIView {
         constraints.append(topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top))
         constraints.append(leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.leading))
         constraints.append(bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: insets.bottom))
-        constraints.append(trailingAnchor.constraint(equalTo: superview.rightAnchor, constant: insets.trailing))
+        constraints.append(trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: insets.trailing))
 
         if isActive {
             NSLayoutConstraint.activate(constraints)
