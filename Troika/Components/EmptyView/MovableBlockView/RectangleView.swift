@@ -4,7 +4,7 @@
 
 import UIKit
 
-internal class RectangleView: UIView, AttachableView {
+class RectangleView: UIView, AttachableView {
 
     var attach: UIAttachmentBehavior?
     private let cornerRadius: CGFloat = 4.0
