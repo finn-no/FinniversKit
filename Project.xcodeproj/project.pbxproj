@@ -32,10 +32,11 @@
 		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
 		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
 		14F4F1BE1FD6CEA800E9CECA /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
-		14F4F1C51FD6CED300E9CECA /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F4F1C41FD6CED300E9CECA /* UnitTests.swift */; };
 		442F759F1FC447E500034BF6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F759D1FC447E500034BF6 /* LoginView.swift */; };
 		442F75A01FC447E500034BF6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F759E1FC447E500034BF6 /* LoginViewModel.swift */; };
-		4438EF8D1FD9267E0023EFD3 /* NSLayoutConstraint+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4438EF8C1FD9267E0023EFD3 /* NSLayoutConstraint+Troika.swift */; };
+		4438EF8D1FD9267E0023EFD3 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4438EF8C1FD9267E0023EFD3 /* Layout.swift */; };
+		4447F6601FDB26BF0033DBC1 /* Layout+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F65F1FDB26BF0033DBC1 /* Layout+Helpers.swift */; };
+		4447F6621FDB26F60033DBC1 /* Layout+HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6611FDB26F60033DBC1 /* Layout+HelpersTests.swift */; };
 		446E35171FD5FCBE00D061BE /* UIView+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E35161FD5FCBE00D061BE /* UIView+Troika.swift */; };
 		44CCCCF71FC4422F00940514 /* ToastView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCCCF61FC4422F00940514 /* ToastView+Style.swift */; };
 		44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
@@ -137,10 +138,11 @@
 		14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14F4F1C41FD6CED300E9CECA /* UnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
 		442F759D1FC447E500034BF6 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		442F759E1FC447E500034BF6 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		4438EF8C1FD9267E0023EFD3 /* NSLayoutConstraint+Troika.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Troika.swift"; sourceTree = "<group>"; };
+		4438EF8C1FD9267E0023EFD3 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		4447F65F1FDB26BF0033DBC1 /* Layout+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Layout+Helpers.swift"; sourceTree = "<group>"; };
+		4447F6611FDB26F60033DBC1 /* Layout+HelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layout+HelpersTests.swift"; sourceTree = "<group>"; };
 		446E35161FD5FCBE00D061BE /* UIView+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Troika.swift"; sourceTree = "<group>"; };
 		449364F11FC44AA3002DC005 /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
 		44CCCCF61FC4422F00940514 /* ToastView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastView+Style.swift"; sourceTree = "<group>"; };
@@ -342,8 +344,8 @@
 		14F4F1BA1FD6CEA800E9CECA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				14F4F1C41FD6CED300E9CECA /* UnitTests.swift */,
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
+				4447F6611FDB26F60033DBC1 /* Layout+HelpersTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -496,7 +498,8 @@
 		CB3664231F73F7FE009D3244 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4438EF8C1FD9267E0023EFD3 /* NSLayoutConstraint+Troika.swift */,
+				4438EF8C1FD9267E0023EFD3 /* Layout.swift */,
+				4447F65F1FDB26BF0033DBC1 /* Layout+Helpers.swift */,
 				CB3664241F73F818009D3244 /* UIFont+Troika.swift */,
 				4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */,
 				457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */,
@@ -795,7 +798,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14F4F1C51FD6CED300E9CECA /* UnitTests.swift in Sources */,
+				4447F6621FDB26F60033DBC1 /* Layout+HelpersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +806,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4447F6601FDB26BF0033DBC1 /* Layout+Helpers.swift in Sources */,
 				457A7FDA1FCD517700254E61 /* RectangleView.swift in Sources */,
 				14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */,
 				442F759F1FC447E500034BF6 /* LoginView.swift in Sources */,
@@ -824,7 +828,7 @@
 				4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */,
 				457A7FDE1FCDB1CE00254E61 /* Ribbon+Style.swift in Sources */,
 				CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */,
-				4438EF8D1FD9267E0023EFD3 /* NSLayoutConstraint+Troika.swift in Sources */,
+				4438EF8D1FD9267E0023EFD3 /* Layout.swift in Sources */,
 				453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */,
 				4537D0201F94ECE6006942E7 /* CGFloat+Troika.swift in Sources */,
 				45441D031F8CA1D300A3B007 /* Label.swift in Sources */,
