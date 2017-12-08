@@ -7,73 +7,73 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C51F7E4D5D00C40D47 /* PreviewModel.swift */; };
-		14256A251FBE200300017B4F /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A221FBE200300017B4F /* ToastView.swift */; };
-		14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A291FBE204200017B4F /* TextField+InputType.swift */; };
-		14256A2D1FBE204200017B4F /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14256A2A1FBE204200017B4F /* TextField.swift */; };
-		143265AF1FBEEE220093B265 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143265AC1FBEEE220093B265 /* Button+Style.swift */; };
-		143265B01FBEEE220093B265 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143265AE1FBEEE220093B265 /* Button.swift */; };
-		143265B31FBEEE570093B265 /* ButtonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143265B21FBEEE570093B265 /* ButtonPlayground.swift */; };
 		14405C801FAFC3A900D03E04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7E1FAFC3A900D03E04 /* App.swift */; };
-		144351AB1FBE2A53007B2229 /* ToastPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351A91FBE2A53007B2229 /* ToastPlayground.swift */; };
 		144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */; };
 		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
-		144351C21FBE2EB9007B2229 /* TextFieldPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C01FBE2EB9007B2229 /* TextFieldPlayground.swift */; };
 		144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* AppDelegate.swift */; };
-		144351C71FBE3030007B2229 /* LabelPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C61FBE3030007B2229 /* LabelPlayground.swift */; };
-		144351CB1FBE36D3007B2229 /* RibbonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C91FBE36D3007B2229 /* RibbonPlayground.swift */; };
-		144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CE1FBE3805007B2229 /* MarketHelpers.swift */; };
-		144351D11FBE3805007B2229 /* MarketGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */; };
-		144351D41FBE3A40007B2229 /* MarketGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */; };
-		144351D71FBE3BDD007B2229 /* PreviewGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */; };
-		144351DA1FBE3D33007B2229 /* PreviewGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351D91FBE3D33007B2229 /* PreviewGridCellPlayground.swift */; };
 		1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145725491FBEEF6A00648D73 /* MarketView.swift */; };
-		146D3C3E1FBE453700124B76 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3D1FBE453700124B76 /* PreviewHelpers.swift */; };
 		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
 		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
 		14F4F1BE1FD6CEA800E9CECA /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		14F4F1C51FD6CED300E9CECA /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F4F1C41FD6CED300E9CECA /* UnitTests.swift */; };
-		442F759F1FC447E500034BF6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F759D1FC447E500034BF6 /* LoginView.swift */; };
-		442F75A01FC447E500034BF6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F759E1FC447E500034BF6 /* LoginViewModel.swift */; };
-		44CCCCF71FC4422F00940514 /* ToastView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCCCF61FC4422F00940514 /* ToastView+Style.swift */; };
+		4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6661FDB2B110033DBC1 /* Button+Style.swift */; };
+		4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; };
+		4447F6CA1FDB2B110033DBC1 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F66B1FDB2B110033DBC1 /* EmptyView.swift */; };
+		4447F6CB1FDB2B110033DBC1 /* AttachableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F66D1FDB2B110033DBC1 /* AttachableView.swift */; };
+		4447F6CC1FDB2B110033DBC1 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F66E1FDB2B110033DBC1 /* CircleView.swift */; };
+		4447F6CD1FDB2B110033DBC1 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F66F1FDB2B110033DBC1 /* RectangleView.swift */; };
+		4447F6CE1FDB2B110033DBC1 /* RoundedRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6701FDB2B110033DBC1 /* RoundedRectangleView.swift */; };
+		4447F6CF1FDB2B110033DBC1 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6711FDB2B110033DBC1 /* TriangleView.swift */; };
+		4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6751FDB2B110033DBC1 /* Label+Style.swift */; };
+		4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6761FDB2B110033DBC1 /* Label.swift */; };
+		4447F6D41FDB2B110033DBC1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F67A1FDB2B110033DBC1 /* LoginView.swift */; };
+		4447F6D51FDB2B110033DBC1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F67B1FDB2B110033DBC1 /* LoginViewModel.swift */; };
+		4447F6D81FDB2B110033DBC1 /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6841FDB2B110033DBC1 /* MarketGridCell.swift */; };
+		4447F6D91FDB2B110033DBC1 /* MarketGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6851FDB2B110033DBC1 /* MarketGridModel.swift */; };
+		4447F6DB1FDB2B110033DBC1 /* MarketGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6891FDB2B110033DBC1 /* MarketGridView.swift */; };
+		4447F6DC1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F68A1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift */; };
+		4447F6E01FDB2B110033DBC1 /* PreviewGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6921FDB2B110033DBC1 /* PreviewGridCell.swift */; };
+		4447F6E11FDB2B110033DBC1 /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6931FDB2B110033DBC1 /* PreviewModel.swift */; };
+		4447F6E41FDB2B110033DBC1 /* PreviewGridHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6981FDB2B110033DBC1 /* PreviewGridHeaderView.swift */; };
+		4447F6E51FDB2B110033DBC1 /* PreviewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6991FDB2B110033DBC1 /* PreviewGridLayout.swift */; };
+		4447F6E61FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69A1FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift */; };
+		4447F6E71FDB2B110033DBC1 /* PreviewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69B1FDB2B110033DBC1 /* PreviewGridView.swift */; };
+		4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */; };
+		4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A01FDB2B110033DBC1 /* RibbonView.swift */; };
+		4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A61FDB2B110033DBC1 /* TextField+InputType.swift */; };
+		4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A71FDB2B110033DBC1 /* TextField.swift */; };
+		4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AB1FDB2B110033DBC1 /* ToastView+Style.swift */; };
+		4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AD1FDB2B110033DBC1 /* ToastView.swift */; };
+		4447F6F11FDB2B110033DBC1 /* CGFloat+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AF1FDB2B110033DBC1 /* CGFloat+Troika.swift */; };
+		4447F6F21FDB2B110033DBC1 /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6B01FDB2B110033DBC1 /* UICollectionView+Identifiable.swift */; };
+		4447F6F31FDB2B110033DBC1 /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6B11FDB2B110033DBC1 /* UIColor+Troika.swift */; };
+		4447F6F41FDB2B110033DBC1 /* UIFont+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6B21FDB2B110033DBC1 /* UIFont+Troika.swift */; };
+		4447F6F51FDB2B110033DBC1 /* UIImage+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6B31FDB2B110033DBC1 /* UIImage+Troika.swift */; };
+		4447F6F61FDB2B110033DBC1 /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6B41FDB2B110033DBC1 /* UITableView+Identifiable.swift */; };
+		4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6B71FDB2B110033DBC1 /* Identifiable.swift */; };
+		4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6B91FDB2B110033DBC1 /* Assets.xcassets */; };
+		4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */; };
+		4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */; };
+		4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */; };
+		4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */; };
+		4447F7021FDB2B110033DBC1 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C51FDB2B110033DBC1 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4447F7031FDB2B110033DBC1 /* Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* Troika.swift */; };
+		4447F7041FDB2B1F0033DBC1 /* ButtonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6691FDB2B110033DBC1 /* ButtonPlayground.swift */; };
+		4447F7051FDB2B270033DBC1 /* EmptyViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6731FDB2B110033DBC1 /* EmptyViewPlayground.swift */; };
+		4447F7061FDB2B2C0033DBC1 /* LabelPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6781FDB2B110033DBC1 /* LabelPlayground.swift */; };
+		4447F7071FDB2B330033DBC1 /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F67D1FDB2B110033DBC1 /* LoginViewDefaultData.swift */; };
+		4447F7081FDB2B330033DBC1 /* LoginViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F67E1FDB2B110033DBC1 /* LoginViewPlayground.swift */; };
+		4447F7091FDB2B470033DBC1 /* MarketGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6871FDB2B110033DBC1 /* MarketGridCellPlayground.swift */; };
+		4447F70A1FDB2B4C0033DBC1 /* MarketGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F68C1FDB2B110033DBC1 /* MarketGridViewPlayground.swift */; };
+		4447F70B1FDB2B4C0033DBC1 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F68D1FDB2B110033DBC1 /* MarketHelpers.swift */; };
+		4447F70C1FDB2B540033DBC1 /* PreviewGridCellPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6911FDB2B110033DBC1 /* PreviewGridCellPlayground.swift */; };
+		4447F70D1FDB2B590033DBC1 /* PreviewGridViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6961FDB2B110033DBC1 /* PreviewGridViewPlayground.swift */; };
+		4447F70E1FDB2B590033DBC1 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6971FDB2B110033DBC1 /* PreviewHelpers.swift */; };
+		4447F70F1FDB2B650033DBC1 /* RibbonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69E1FDB2B110033DBC1 /* RibbonPlayground.swift */; };
+		4447F7101FDB2B810033DBC1 /* TextFieldPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A51FDB2B110033DBC1 /* TextFieldPlayground.swift */; };
+		4447F7111FDB2B8C0033DBC1 /* ToastPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AA1FDB2B110033DBC1 /* ToastPlayground.swift */; };
 		44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		44D32C291FB07850001E86D6 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4523B77C1F8CF3C3001DFB96 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */; };
-		4537D0201F94ECE6006942E7 /* CGFloat+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537D01F1F94ECE6006942E7 /* CGFloat+Troika.swift */; };
-		453D887F1F85192700FC63C7 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */; };
-		453D88801F85192700FC63C7 /* FINNTypeWebStrippet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D88791F84FF6900FC63C7 /* FINNTypeWebStrippet-Light.ttf */; };
-		453D88811F85192700FC63C7 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */; };
-		453D88821F85192700FC63C7 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */; };
-		453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */; };
-		453D88881F862D0E00FC63C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */; };
-		45441D031F8CA1D300A3B007 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45441D021F8CA1D300A3B007 /* Label.swift */; };
-		455866071F7A751300F670EF /* MarketGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866061F7A751300F670EF /* MarketGridView.swift */; };
-		455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455866081F7A77B100F670EF /* MarketGridCell.swift */; };
-		4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660A1F7A7B4800F670EF /* MarketGridModel.swift */; };
-		4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */; };
-		457A7FD81FCD508A00254E61 /* AttachableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A7FD71FCD508A00254E61 /* AttachableView.swift */; };
-		457A7FDA1FCD517700254E61 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A7FD91FCD517700254E61 /* RectangleView.swift */; };
-		457A7FDC1FCD814C00254E61 /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449364F11FC44AA3002DC005 /* LoginViewDefaultData.swift */; };
-		457A7FDE1FCDB1CE00254E61 /* Ribbon+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457A7FDD1FCDB1CE00254E61 /* Ribbon+Style.swift */; };
-		457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C61F7BC4100031E125 /* Identifiable.swift */; };
-		457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */; };
-		457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */; };
-		459D37F81F87620B00038582 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D37F71F87620B00038582 /* RibbonView.swift */; };
-		45DBF76A1FC5B16E003B345F /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DBF7691FC5B16E003B345F /* EmptyView.swift */; };
-		45DBF76E1FC5B2D8003B345F /* EmptyViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DBF76C1FC5B1D7003B345F /* EmptyViewPlayground.swift */; };
-		45DBF7721FC5C06A003B345F /* LoginViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DBF7701FC5C044003B345F /* LoginViewPlayground.swift */; };
-		45DBF7781FC711AE003B345F /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DBF7771FC711AE003B345F /* CircleView.swift */; };
-		45DBF77A1FC711F6003B345F /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DBF7791FC711F6003B345F /* TriangleView.swift */; };
-		45DBF77C1FC81C5C003B345F /* RoundedRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DBF77B1FC81C5C003B345F /* RoundedRectangleView.swift */; };
-		CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3664241F73F818009D3244 /* UIFont+Troika.swift */; };
-		CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = CB3CF1581F73E5870041EF20 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB3E67C11F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */; };
-		CB3E67C21F7E4D4000C40D47 /* PreviewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */; };
-		CB3E67C31F7E4D4000C40D47 /* PreviewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */; };
-		CB3E67C61F7E4D5D00C40D47 /* PreviewGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E67C41F7E4D5D00C40D47 /* PreviewGridCell.swift */; };
-		CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B211F83C96600B26C1C /* UIImage+Troika.swift */; };
-		CB400B241F83C9D400B26C1C /* Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB400B231F83C9D400B26C1C /* Troika.swift */; };
-		CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,77 +108,80 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		14256A221FBE200300017B4F /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		14256A291FBE204200017B4F /* TextField+InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
-		14256A2A1FBE204200017B4F /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		143265AC1FBEEE220093B265 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
-		143265AE1FBEEE220093B265 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		143265B21FBEEE570093B265 /* ButtonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonPlayground.swift; sourceTree = "<group>"; };
 		14405C5F1FAFBBF000D03E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14405C741FAFBD1800D03E04 /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14405C7E1FAFC3A900D03E04 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		144351A91FBE2A53007B2229 /* ToastPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastPlayground.swift; sourceTree = "<group>"; };
 		144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
 		144351BA1FBE2BF1007B2229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		144351C01FBE2EB9007B2229 /* TextFieldPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldPlayground.swift; sourceTree = "<group>"; };
 		144351C31FBE2FA2007B2229 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		144351C61FBE3030007B2229 /* LabelPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPlayground.swift; sourceTree = "<group>"; };
-		144351C91FBE36D3007B2229 /* RibbonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonPlayground.swift; sourceTree = "<group>"; };
-		144351CE1FBE3805007B2229 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
-		144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewPlayground.swift; sourceTree = "<group>"; };
-		144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellPlayground.swift; sourceTree = "<group>"; };
-		144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewPlayground.swift; sourceTree = "<group>"; };
-		144351D91FBE3D33007B2229 /* PreviewGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCellPlayground.swift; sourceTree = "<group>"; };
 		145725491FBEEF6A00648D73 /* MarketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
-		146D3C3D1FBE453700124B76 /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
 		146D3C3F1FBE466D00124B76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14F4F1C41FD6CED300E9CECA /* UnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
-		442F759D1FC447E500034BF6 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		442F759E1FC447E500034BF6 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		449364F11FC44AA3002DC005 /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
-		44CCCCF61FC4422F00940514 /* ToastView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastView+Style.swift"; sourceTree = "<group>"; };
-		4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
-		4537D01F1F94ECE6006942E7 /* CGFloat+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Troika.swift"; sourceTree = "<group>"; };
-		453D88791F84FF6900FC63C7 /* FINNTypeWebStrippet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Light.ttf"; sourceTree = "<group>"; };
-		453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
-		453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
-		453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
-		453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridViewConfigurable.swift; sourceTree = "<group>"; };
-		45441D021F8CA1D300A3B007 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		455866061F7A751300F670EF /* MarketGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridView.swift; sourceTree = "<group>"; };
-		455866081F7A77B100F670EF /* MarketGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
-		4558660A1F7A7B4800F670EF /* MarketGridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridModel.swift; sourceTree = "<group>"; };
-		4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
-		457A7FD71FCD508A00254E61 /* AttachableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachableView.swift; sourceTree = "<group>"; };
-		457A7FD91FCD517700254E61 /* RectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
-		457A7FDD1FCDB1CE00254E61 /* Ribbon+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ribbon+Style.swift"; sourceTree = "<group>"; };
-		457B35C61F7BC4100031E125 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
-		457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
-		457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
-		459D37F71F87620B00038582 /* RibbonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
-		45DBF7691FC5B16E003B345F /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
-		45DBF76C1FC5B1D7003B345F /* EmptyViewPlayground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewPlayground.swift; sourceTree = "<group>"; };
-		45DBF7701FC5C044003B345F /* LoginViewPlayground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewPlayground.swift; sourceTree = "<group>"; };
-		45DBF7771FC711AE003B345F /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		45DBF7791FC711F6003B345F /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
-		45DBF77B1FC81C5C003B345F /* RoundedRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleView.swift; sourceTree = "<group>"; };
-		CB2FE4D81F7A5D0800616815 /* TroikaView.xctemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TroikaView.xctemplate; sourceTree = "<group>"; };
-		CB3664241F73F818009D3244 /* UIFont+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
+		4447F6661FDB2B110033DBC1 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
+		4447F6671FDB2B110033DBC1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		4447F6691FDB2B110033DBC1 /* ButtonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonPlayground.swift; sourceTree = "<group>"; };
+		4447F66B1FDB2B110033DBC1 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		4447F66D1FDB2B110033DBC1 /* AttachableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachableView.swift; sourceTree = "<group>"; };
+		4447F66E1FDB2B110033DBC1 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		4447F66F1FDB2B110033DBC1 /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
+		4447F6701FDB2B110033DBC1 /* RoundedRectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectangleView.swift; sourceTree = "<group>"; };
+		4447F6711FDB2B110033DBC1 /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		4447F6731FDB2B110033DBC1 /* EmptyViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewPlayground.swift; sourceTree = "<group>"; };
+		4447F6751FDB2B110033DBC1 /* Label+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
+		4447F6761FDB2B110033DBC1 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		4447F6781FDB2B110033DBC1 /* LabelPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPlayground.swift; sourceTree = "<group>"; };
+		4447F67A1FDB2B110033DBC1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		4447F67B1FDB2B110033DBC1 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4447F67D1FDB2B110033DBC1 /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
+		4447F67E1FDB2B110033DBC1 /* LoginViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewPlayground.swift; sourceTree = "<group>"; };
+		4447F6841FDB2B110033DBC1 /* MarketGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
+		4447F6851FDB2B110033DBC1 /* MarketGridModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridModel.swift; sourceTree = "<group>"; };
+		4447F6871FDB2B110033DBC1 /* MarketGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellPlayground.swift; sourceTree = "<group>"; };
+		4447F6891FDB2B110033DBC1 /* MarketGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridView.swift; sourceTree = "<group>"; };
+		4447F68A1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewConfigurable.swift; sourceTree = "<group>"; };
+		4447F68C1FDB2B110033DBC1 /* MarketGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewPlayground.swift; sourceTree = "<group>"; };
+		4447F68D1FDB2B110033DBC1 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
+		4447F6911FDB2B110033DBC1 /* PreviewGridCellPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCellPlayground.swift; sourceTree = "<group>"; };
+		4447F6921FDB2B110033DBC1 /* PreviewGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCell.swift; sourceTree = "<group>"; };
+		4447F6931FDB2B110033DBC1 /* PreviewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
+		4447F6961FDB2B110033DBC1 /* PreviewGridViewPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewPlayground.swift; sourceTree = "<group>"; };
+		4447F6971FDB2B110033DBC1 /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
+		4447F6981FDB2B110033DBC1 /* PreviewGridHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridHeaderView.swift; sourceTree = "<group>"; };
+		4447F6991FDB2B110033DBC1 /* PreviewGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
+		4447F69A1FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
+		4447F69B1FDB2B110033DBC1 /* PreviewGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
+		4447F69E1FDB2B110033DBC1 /* RibbonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonPlayground.swift; sourceTree = "<group>"; };
+		4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ribbon+Style.swift"; sourceTree = "<group>"; };
+		4447F6A01FDB2B110033DBC1 /* RibbonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
+		4447F6A51FDB2B110033DBC1 /* TextFieldPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldPlayground.swift; sourceTree = "<group>"; };
+		4447F6A61FDB2B110033DBC1 /* TextField+InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
+		4447F6A71FDB2B110033DBC1 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		4447F6AA1FDB2B110033DBC1 /* ToastPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastPlayground.swift; sourceTree = "<group>"; };
+		4447F6AB1FDB2B110033DBC1 /* ToastView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastView+Style.swift"; sourceTree = "<group>"; };
+		4447F6AD1FDB2B110033DBC1 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		4447F6AF1FDB2B110033DBC1 /* CGFloat+Troika.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Troika.swift"; sourceTree = "<group>"; };
+		4447F6B01FDB2B110033DBC1 /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
+		4447F6B11FDB2B110033DBC1 /* UIColor+Troika.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Troika.swift"; sourceTree = "<group>"; };
+		4447F6B21FDB2B110033DBC1 /* UIFont+Troika.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Troika.swift"; sourceTree = "<group>"; };
+		4447F6B31FDB2B110033DBC1 /* UIImage+Troika.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Troika.swift"; sourceTree = "<group>"; };
+		4447F6B41FDB2B110033DBC1 /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
+		4447F6B51FDB2B110033DBC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4447F6B71FDB2B110033DBC1 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		4447F6B91FDB2B110033DBC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
+		4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Light.ttf"; sourceTree = "<group>"; };
+		4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
+		4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
+		4447F6C51FDB2B110033DBC1 /* Troika.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Troika.h; sourceTree = "<group>"; };
+		4447F6C61FDB2B110033DBC1 /* Troika.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Troika.swift; sourceTree = "<group>"; };
+		4447F7141FDB2C100033DBC1 /* ___FILEBASENAME___.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___.swift"; sourceTree = "<group>"; };
+		4447F7151FDB2C100033DBC1 /* TemplateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon.png; sourceTree = "<group>"; };
+		4447F7161FDB2C100033DBC1 /* TemplateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TemplateIcon@2x.png"; sourceTree = "<group>"; };
+		4447F7171FDB2C100033DBC1 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB3CF1581F73E5870041EF20 /* Troika.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Troika.h; sourceTree = "<group>"; };
-		CB3CF1591F73E5870041EF20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
-		CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
-		CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
-		CB3E67C41F7E4D5D00C40D47 /* PreviewGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCell.swift; sourceTree = "<group>"; };
-		CB3E67C51F7E4D5D00C40D47 /* PreviewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
-		CB400B211F83C96600B26C1C /* UIImage+Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Troika.swift"; sourceTree = "<group>"; };
-		CB400B231F83C9D400B26C1C /* Troika.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Troika.swift; path = Troika/Troika.swift; sourceTree = SOURCE_ROOT; };
-		CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGridHeaderView.swift; sourceTree = "<group>"; };
-		CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,44 +211,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		14256A201FBE200300017B4F /* Toast */ = {
-			isa = PBXGroup;
-			children = (
-				144351A71FBE2A53007B2229 /* Playground */,
-				14256A221FBE200300017B4F /* ToastView.swift */,
-				44CCCCF61FC4422F00940514 /* ToastView+Style.swift */,
-			);
-			path = Toast;
-			sourceTree = "<group>";
-		};
-		14256A261FBE204200017B4F /* TextField */ = {
-			isa = PBXGroup;
-			children = (
-				144351BE1FBE2EB9007B2229 /* Playground */,
-				14256A291FBE204200017B4F /* TextField+InputType.swift */,
-				14256A2A1FBE204200017B4F /* TextField.swift */,
-			);
-			path = TextField;
-			sourceTree = "<group>";
-		};
-		143265AB1FBEEE220093B265 /* Button */ = {
-			isa = PBXGroup;
-			children = (
-				143265B11FBEEE570093B265 /* Playground */,
-				143265AC1FBEEE220093B265 /* Button+Style.swift */,
-				143265AE1FBEEE220093B265 /* Button.swift */,
-			);
-			path = Button;
-			sourceTree = "<group>";
-		};
-		143265B11FBEEE570093B265 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				143265B21FBEEE570093B265 /* ButtonPlayground.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
 		14405C521FAFBBF000D03E04 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,72 +222,6 @@
 				144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */,
 				144351C31FBE2FA2007B2229 /* AppDelegate.swift */,
 				146D3C3F1FBE466D00124B76 /* ViewController.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		144351A71FBE2A53007B2229 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				144351A91FBE2A53007B2229 /* ToastPlayground.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		144351BE1FBE2EB9007B2229 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				144351C01FBE2EB9007B2229 /* TextFieldPlayground.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		144351C51FBE3030007B2229 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				144351C61FBE3030007B2229 /* LabelPlayground.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		144351C81FBE36D3007B2229 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				144351C91FBE36D3007B2229 /* RibbonPlayground.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		144351CD1FBE3805007B2229 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				144351CE1FBE3805007B2229 /* MarketHelpers.swift */,
-				144351CF1FBE3805007B2229 /* MarketGridViewPlayground.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		144351D21FBE3A40007B2229 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				144351D31FBE3A40007B2229 /* MarketGridCellPlayground.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		144351D51FBE3BDD007B2229 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				144351D61FBE3BDD007B2229 /* PreviewGridViewPlayground.swift */,
-				146D3C3D1FBE453700124B76 /* PreviewHelpers.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		144351D81FBE3D33007B2229 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				144351D91FBE3D33007B2229 /* PreviewGridCellPlayground.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -347,7 +246,8 @@
 		25D04D721F583B1800EA317D = {
 			isa = PBXGroup;
 			children = (
-				CB3CF1571F73E5870041EF20 /* Troika */,
+				4447F7121FDB2C100033DBC1 /* Templates */,
+				4447F6631FDB2B110033DBC1 /* Sources */,
 				14405C521FAFBBF000D03E04 /* Playground */,
 				14F4F1BA1FD6CEA800E9CECA /* UnitTests */,
 				25D04D7C1F583B1800EA317D /* Products */,
@@ -365,72 +265,327 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		442F759B1FC447E500034BF6 /* Login */ = {
+		4447F6631FDB2B110033DBC1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				45DBF76F1FC5C01C003B345F /* Playground */,
-				442F759D1FC447E500034BF6 /* LoginView.swift */,
-				442F759E1FC447E500034BF6 /* LoginViewModel.swift */,
+				4447F6641FDB2B110033DBC1 /* Components */,
+				4447F6AE1FDB2B110033DBC1 /* Extensions */,
+				4447F6B51FDB2B110033DBC1 /* Info.plist */,
+				4447F6B61FDB2B110033DBC1 /* Protocols */,
+				4447F6B81FDB2B110033DBC1 /* Resources */,
+				4447F6C51FDB2B110033DBC1 /* Troika.h */,
+				4447F6C61FDB2B110033DBC1 /* Troika.swift */,
 			);
-			path = Login;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		453D88741F84FC3C00FC63C7 /* Fonts */ = {
+		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				453D887B1F84FF6900FC63C7 /* FINNTypeWebStrippet-Bold.ttf */,
-				453D88791F84FF6900FC63C7 /* FINNTypeWebStrippet-Light.ttf */,
-				453D887A1F84FF6900FC63C7 /* FINNTypeWebStrippet-Medium.ttf */,
-				453D887C1F84FF6900FC63C7 /* FINNTypeWebStrippet-Regular.ttf */,
+				4447F6651FDB2B110033DBC1 /* Button */,
+				4447F66A1FDB2B110033DBC1 /* EmptyView */,
+				4447F6741FDB2B110033DBC1 /* Label */,
+				4447F6791FDB2B110033DBC1 /* Login */,
+				4447F6821FDB2B110033DBC1 /* MarketGrid */,
+				4447F68E1FDB2B110033DBC1 /* PreviewGrid */,
+				4447F69C1FDB2B110033DBC1 /* Ribbon */,
+				4447F6A31FDB2B110033DBC1 /* TextField */,
+				4447F6A81FDB2B110033DBC1 /* Toast */,
 			);
-			path = Fonts;
+			path = Components;
 			sourceTree = "<group>";
 		};
-		45441D011F8CA1BC00A3B007 /* Label */ = {
+		4447F6651FDB2B110033DBC1 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				144351C51FBE3030007B2229 /* Playground */,
-				45441D021F8CA1D300A3B007 /* Label.swift */,
-				4523B77B1F8CF3C3001DFB96 /* Label+Style.swift */,
+				4447F6661FDB2B110033DBC1 /* Button+Style.swift */,
+				4447F6671FDB2B110033DBC1 /* Button.swift */,
+				4447F6681FDB2B110033DBC1 /* Playground */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		4447F6681FDB2B110033DBC1 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6691FDB2B110033DBC1 /* ButtonPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F66A1FDB2B110033DBC1 /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				4447F66B1FDB2B110033DBC1 /* EmptyView.swift */,
+				4447F66C1FDB2B110033DBC1 /* MovableBlockView */,
+				4447F6721FDB2B110033DBC1 /* Playground */,
+			);
+			path = EmptyView;
+			sourceTree = "<group>";
+		};
+		4447F66C1FDB2B110033DBC1 /* MovableBlockView */ = {
+			isa = PBXGroup;
+			children = (
+				4447F66D1FDB2B110033DBC1 /* AttachableView.swift */,
+				4447F66E1FDB2B110033DBC1 /* CircleView.swift */,
+				4447F66F1FDB2B110033DBC1 /* RectangleView.swift */,
+				4447F6701FDB2B110033DBC1 /* RoundedRectangleView.swift */,
+				4447F6711FDB2B110033DBC1 /* TriangleView.swift */,
+			);
+			path = MovableBlockView;
+			sourceTree = "<group>";
+		};
+		4447F6721FDB2B110033DBC1 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6731FDB2B110033DBC1 /* EmptyViewPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F6741FDB2B110033DBC1 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6751FDB2B110033DBC1 /* Label+Style.swift */,
+				4447F6761FDB2B110033DBC1 /* Label.swift */,
+				4447F6771FDB2B110033DBC1 /* Playground */,
 			);
 			path = Label;
 			sourceTree = "<group>";
 		};
-		455866041F7A678400F670EF /* MarketGrid */ = {
+		4447F6771FDB2B110033DBC1 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				457B35C31F7BB0860031E125 /* MarketGridView */,
-				4558660C1F7A7B7400F670EF /* MarketGridCell */,
+				4447F6781FDB2B110033DBC1 /* LabelPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F6791FDB2B110033DBC1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4447F67A1FDB2B110033DBC1 /* LoginView.swift */,
+				4447F67B1FDB2B110033DBC1 /* LoginViewModel.swift */,
+				4447F67C1FDB2B110033DBC1 /* Playground */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4447F67C1FDB2B110033DBC1 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				4447F67D1FDB2B110033DBC1 /* LoginViewDefaultData.swift */,
+				4447F67E1FDB2B110033DBC1 /* LoginViewPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F6821FDB2B110033DBC1 /* MarketGrid */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6831FDB2B110033DBC1 /* MarketGridCell */,
+				4447F6881FDB2B110033DBC1 /* MarketGridView */,
 			);
 			path = MarketGrid;
 			sourceTree = "<group>";
 		};
-		4558660C1F7A7B7400F670EF /* MarketGridCell */ = {
+		4447F6831FDB2B110033DBC1 /* MarketGridCell */ = {
 			isa = PBXGroup;
 			children = (
-				144351D21FBE3A40007B2229 /* Playground */,
-				455866081F7A77B100F670EF /* MarketGridCell.swift */,
-				4558660A1F7A7B4800F670EF /* MarketGridModel.swift */,
+				4447F6841FDB2B110033DBC1 /* MarketGridCell.swift */,
+				4447F6851FDB2B110033DBC1 /* MarketGridModel.swift */,
+				4447F6861FDB2B110033DBC1 /* Playground */,
 			);
 			path = MarketGridCell;
 			sourceTree = "<group>";
 		};
-		457B35C31F7BB0860031E125 /* MarketGridView */ = {
+		4447F6861FDB2B110033DBC1 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				144351CD1FBE3805007B2229 /* Playground */,
-				455866061F7A751300F670EF /* MarketGridView.swift */,
-				453D88861F860B7900FC63C7 /* MarketGridViewConfigurable.swift */,
+				4447F6871FDB2B110033DBC1 /* MarketGridCellPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F6881FDB2B110033DBC1 /* MarketGridView */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6891FDB2B110033DBC1 /* MarketGridView.swift */,
+				4447F68A1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift */,
+				4447F68B1FDB2B110033DBC1 /* Playground */,
 			);
 			path = MarketGridView;
 			sourceTree = "<group>";
 		};
-		457B35C81F7BC4320031E125 /* Protocols */ = {
+		4447F68B1FDB2B110033DBC1 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				457B35C61F7BC4100031E125 /* Identifiable.swift */,
+				4447F68C1FDB2B110033DBC1 /* MarketGridViewPlayground.swift */,
+				4447F68D1FDB2B110033DBC1 /* MarketHelpers.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F68E1FDB2B110033DBC1 /* PreviewGrid */ = {
+			isa = PBXGroup;
+			children = (
+				4447F68F1FDB2B110033DBC1 /* PreviewGridCell */,
+				4447F6941FDB2B110033DBC1 /* PreviewGridView */,
+			);
+			path = PreviewGrid;
+			sourceTree = "<group>";
+		};
+		4447F68F1FDB2B110033DBC1 /* PreviewGridCell */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6901FDB2B110033DBC1 /* Playground */,
+				4447F6921FDB2B110033DBC1 /* PreviewGridCell.swift */,
+				4447F6931FDB2B110033DBC1 /* PreviewModel.swift */,
+			);
+			path = PreviewGridCell;
+			sourceTree = "<group>";
+		};
+		4447F6901FDB2B110033DBC1 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6911FDB2B110033DBC1 /* PreviewGridCellPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F6941FDB2B110033DBC1 /* PreviewGridView */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6951FDB2B110033DBC1 /* Playground */,
+				4447F6981FDB2B110033DBC1 /* PreviewGridHeaderView.swift */,
+				4447F6991FDB2B110033DBC1 /* PreviewGridLayout.swift */,
+				4447F69A1FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift */,
+				4447F69B1FDB2B110033DBC1 /* PreviewGridView.swift */,
+			);
+			path = PreviewGridView;
+			sourceTree = "<group>";
+		};
+		4447F6951FDB2B110033DBC1 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6961FDB2B110033DBC1 /* PreviewGridViewPlayground.swift */,
+				4447F6971FDB2B110033DBC1 /* PreviewHelpers.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F69C1FDB2B110033DBC1 /* Ribbon */ = {
+			isa = PBXGroup;
+			children = (
+				4447F69D1FDB2B110033DBC1 /* Playground */,
+				4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */,
+				4447F6A01FDB2B110033DBC1 /* RibbonView.swift */,
+			);
+			path = Ribbon;
+			sourceTree = "<group>";
+		};
+		4447F69D1FDB2B110033DBC1 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				4447F69E1FDB2B110033DBC1 /* RibbonPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F6A31FDB2B110033DBC1 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6A41FDB2B110033DBC1 /* Playground */,
+				4447F6A61FDB2B110033DBC1 /* TextField+InputType.swift */,
+				4447F6A71FDB2B110033DBC1 /* TextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		4447F6A41FDB2B110033DBC1 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6A51FDB2B110033DBC1 /* TextFieldPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F6A81FDB2B110033DBC1 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6A91FDB2B110033DBC1 /* Playground */,
+				4447F6AB1FDB2B110033DBC1 /* ToastView+Style.swift */,
+				4447F6AD1FDB2B110033DBC1 /* ToastView.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		4447F6A91FDB2B110033DBC1 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6AA1FDB2B110033DBC1 /* ToastPlayground.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		4447F6AE1FDB2B110033DBC1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6AF1FDB2B110033DBC1 /* CGFloat+Troika.swift */,
+				4447F6B01FDB2B110033DBC1 /* UICollectionView+Identifiable.swift */,
+				4447F6B11FDB2B110033DBC1 /* UIColor+Troika.swift */,
+				4447F6B21FDB2B110033DBC1 /* UIFont+Troika.swift */,
+				4447F6B31FDB2B110033DBC1 /* UIImage+Troika.swift */,
+				4447F6B41FDB2B110033DBC1 /* UITableView+Identifiable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4447F6B61FDB2B110033DBC1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6B71FDB2B110033DBC1 /* Identifiable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4447F6B81FDB2B110033DBC1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
+				4447F6BA1FDB2B110033DBC1 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4447F6BA1FDB2B110033DBC1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */,
+				4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */,
+				4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */,
+				4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4447F7121FDB2C100033DBC1 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				4447F7131FDB2C100033DBC1 /* TroikaView.xctemplate */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		4447F7131FDB2C100033DBC1 /* TroikaView.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				4447F7141FDB2C100033DBC1 /* ___FILEBASENAME___.swift */,
+				4447F7151FDB2C100033DBC1 /* TemplateIcon.png */,
+				4447F7161FDB2C100033DBC1 /* TemplateIcon@2x.png */,
+				4447F7171FDB2C100033DBC1 /* TemplateInfo.plist */,
+			);
+			path = TroikaView.xctemplate;
 			sourceTree = "<group>";
 		};
 		457B35CF1F7BE2670031E125 /* Frameworks */ = {
@@ -440,147 +595,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		459D37F41F87613D00038582 /* Ribbon */ = {
-			isa = PBXGroup;
-			children = (
-				144351C81FBE36D3007B2229 /* Playground */,
-				459D37F71F87620B00038582 /* RibbonView.swift */,
-				457A7FDD1FCDB1CE00254E61 /* Ribbon+Style.swift */,
-			);
-			path = Ribbon;
-			sourceTree = "<group>";
-		};
-		45DBF7681FC5B121003B345F /* EmptyView */ = {
-			isa = PBXGroup;
-			children = (
-				45DBF7741FC71149003B345F /* MovableBlockView */,
-				45DBF76B1FC5B1B4003B345F /* Playground */,
-				45DBF7691FC5B16E003B345F /* EmptyView.swift */,
-			);
-			path = EmptyView;
-			sourceTree = "<group>";
-		};
-		45DBF76B1FC5B1B4003B345F /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				45DBF76C1FC5B1D7003B345F /* EmptyViewPlayground.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		45DBF76F1FC5C01C003B345F /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				45DBF7701FC5C044003B345F /* LoginViewPlayground.swift */,
-				449364F11FC44AA3002DC005 /* LoginViewDefaultData.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		45DBF7741FC71149003B345F /* MovableBlockView */ = {
-			isa = PBXGroup;
-			children = (
-				45DBF7771FC711AE003B345F /* CircleView.swift */,
-				45DBF7791FC711F6003B345F /* TriangleView.swift */,
-				45DBF77B1FC81C5C003B345F /* RoundedRectangleView.swift */,
-				457A7FD91FCD517700254E61 /* RectangleView.swift */,
-				457A7FD71FCD508A00254E61 /* AttachableView.swift */,
-			);
-			path = MovableBlockView;
-			sourceTree = "<group>";
-		};
-		CB3664231F73F7FE009D3244 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				CB3664241F73F818009D3244 /* UIFont+Troika.swift */,
-				4558660D1F7A8C1E00F670EF /* UIColor+Troika.swift */,
-				457B35C91F7BC4620031E125 /* UITableView+Identifiable.swift */,
-				457B35CB1F7BC4920031E125 /* UICollectionView+Identifiable.swift */,
-				CB400B211F83C96600B26C1C /* UIImage+Troika.swift */,
-				4537D01F1F94ECE6006942E7 /* CGFloat+Troika.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		CB3664281F73F9A2009D3244 /* PreviewGrid */ = {
-			isa = PBXGroup;
-			children = (
-				CB3664291F73F9B6009D3244 /* PreviewGridView */,
-				CB58A75D1F73B81800A5A19F /* PreviewGridCell */,
-			);
-			path = PreviewGrid;
-			sourceTree = "<group>";
-		};
-		CB3664291F73F9B6009D3244 /* PreviewGridView */ = {
-			isa = PBXGroup;
-			children = (
-				144351D51FBE3BDD007B2229 /* Playground */,
-				CB3E67BF1F7E4D4000C40D47 /* PreviewGridLayout.swift */,
-				CB3E67BE1F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift */,
-				CB3E67C01F7E4D4000C40D47 /* PreviewGridView.swift */,
-				CB983C2D1F97683A0035FDD0 /* PreviewGridHeaderView.swift */,
-			);
-			path = PreviewGridView;
-			sourceTree = "<group>";
-		};
-		CB3CF1571F73E5870041EF20 /* Troika */ = {
-			isa = PBXGroup;
-			children = (
-				457B35C81F7BC4320031E125 /* Protocols */,
-				CB3664231F73F7FE009D3244 /* Extensions */,
-				CB58A7601F73B88E00A5A19F /* Templates */,
-				CB58A75C1F73B81000A5A19F /* Components */,
-				CBC2E0251F7D169E00D5CF58 /* Resources */,
-				CB3CF1581F73E5870041EF20 /* Troika.h */,
-				CB400B231F83C9D400B26C1C /* Troika.swift */,
-				CB3CF1591F73E5870041EF20 /* Info.plist */,
-			);
-			path = Troika;
-			sourceTree = "<group>";
-		};
-		CB58A75C1F73B81000A5A19F /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				45DBF7681FC5B121003B345F /* EmptyView */,
-				143265AB1FBEEE220093B265 /* Button */,
-				45441D011F8CA1BC00A3B007 /* Label */,
-				442F759B1FC447E500034BF6 /* Login */,
-				455866041F7A678400F670EF /* MarketGrid */,
-				CB3664281F73F9A2009D3244 /* PreviewGrid */,
-				459D37F41F87613D00038582 /* Ribbon */,
-				14256A261FBE204200017B4F /* TextField */,
-				14256A201FBE200300017B4F /* Toast */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		CB58A75D1F73B81800A5A19F /* PreviewGridCell */ = {
-			isa = PBXGroup;
-			children = (
-				144351D81FBE3D33007B2229 /* Playground */,
-				CB3E67C41F7E4D5D00C40D47 /* PreviewGridCell.swift */,
-				CB3E67C51F7E4D5D00C40D47 /* PreviewModel.swift */,
-			);
-			path = PreviewGridCell;
-			sourceTree = "<group>";
-		};
-		CB58A7601F73B88E00A5A19F /* Templates */ = {
-			isa = PBXGroup;
-			children = (
-				CB2FE4D81F7A5D0800616815 /* TroikaView.xctemplate */,
-			);
-			path = Templates;
-			sourceTree = "<group>";
-		};
-		CBC2E0251F7D169E00D5CF58 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				453D88741F84FC3C00FC63C7 /* Fonts */,
-				CBC2E0261F7D16BB00D5CF58 /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -588,7 +602,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB3CF15A1F73E5870041EF20 /* Troika.h in Headers */,
+				4447F7021FDB2B110033DBC1 /* Troika.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +617,7 @@
 				14405C6D1FAFBD1800D03E04 /* Frameworks */,
 				14405C6E1FAFBD1800D03E04 /* Resources */,
 				44D32C2C1FB07850001E86D6 /* Embed Frameworks */,
+				4447F7181FDB2C330033DBC1 /* Update templates */,
 			);
 			buildRules = (
 			);
@@ -639,7 +654,6 @@
 				CB3CF1511F73E5870041EF20 /* Sources */,
 				CB3CF1521F73E5870041EF20 /* Frameworks */,
 				CB3CF1531F73E5870041EF20 /* Headers */,
-				CB2FE4D71F7A533300616815 /* Update templates */,
 				453D887E1F85191600FC63C7 /* Resources */,
 				1411A1AF1F9FE8F6007D717A /* Run SwiftFormat */,
 			);
@@ -717,11 +731,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				453D88881F862D0E00FC63C7 /* Assets.xcassets in Resources */,
-				453D887F1F85192700FC63C7 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
-				453D88801F85192700FC63C7 /* FINNTypeWebStrippet-Light.ttf in Resources */,
-				453D88811F85192700FC63C7 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
-				453D88821F85192700FC63C7 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
+				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
+				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
+				4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */,
+				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
+				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,7 +756,7 @@
 			shellPath = /bin/sh;
 			shellScript = "sh \"${SRCROOT}/Others/format.sh\"";
 		};
-		CB2FE4D71F7A533300616815 /* Update templates */ = {
+		4447F7181FDB2C330033DBC1 /* Update templates */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -754,7 +768,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\" ]; then\n    mkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\"\nfi\n\nif [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika\" ]; then\n    mkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika\"\nfi\n\ncp -R ./Troika/Templates/TroikaView.xctemplate ${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika";
+			shellScript = "if [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\"\nfi\n\nif [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika\"\nfi\n\ncp -R ./Templates/TroikaView.xctemplate ${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Troika";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -763,25 +777,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				144351CB1FBE36D3007B2229 /* RibbonPlayground.swift in Sources */,
+				4447F7071FDB2B330033DBC1 /* LoginViewDefaultData.swift in Sources */,
 				146D3C401FBE466D00124B76 /* ViewController.swift in Sources */,
 				144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */,
-				144351D11FBE3805007B2229 /* MarketGridViewPlayground.swift in Sources */,
-				144351D41FBE3A40007B2229 /* MarketGridCellPlayground.swift in Sources */,
+				4447F70A1FDB2B4C0033DBC1 /* MarketGridViewPlayground.swift in Sources */,
+				4447F70E1FDB2B590033DBC1 /* PreviewHelpers.swift in Sources */,
+				4447F7081FDB2B330033DBC1 /* LoginViewPlayground.swift in Sources */,
+				4447F70C1FDB2B540033DBC1 /* PreviewGridCellPlayground.swift in Sources */,
+				4447F70D1FDB2B590033DBC1 /* PreviewGridViewPlayground.swift in Sources */,
 				14405C801FAFC3A900D03E04 /* App.swift in Sources */,
-				45DBF76E1FC5B2D8003B345F /* EmptyViewPlayground.swift in Sources */,
 				1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */,
-				457A7FDC1FCD814C00254E61 /* LoginViewDefaultData.swift in Sources */,
-				146D3C3E1FBE453700124B76 /* PreviewHelpers.swift in Sources */,
-				144351D71FBE3BDD007B2229 /* PreviewGridViewPlayground.swift in Sources */,
-				144351DA1FBE3D33007B2229 /* PreviewGridCellPlayground.swift in Sources */,
-				144351AB1FBE2A53007B2229 /* ToastPlayground.swift in Sources */,
-				144351C71FBE3030007B2229 /* LabelPlayground.swift in Sources */,
-				45DBF7721FC5C06A003B345F /* LoginViewPlayground.swift in Sources */,
+				4447F7041FDB2B1F0033DBC1 /* ButtonPlayground.swift in Sources */,
+				4447F70F1FDB2B650033DBC1 /* RibbonPlayground.swift in Sources */,
+				4447F7101FDB2B810033DBC1 /* TextFieldPlayground.swift in Sources */,
+				4447F7061FDB2B2C0033DBC1 /* LabelPlayground.swift in Sources */,
+				4447F7111FDB2B8C0033DBC1 /* ToastPlayground.swift in Sources */,
+				4447F7051FDB2B270033DBC1 /* EmptyViewPlayground.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
-				144351C21FBE2EB9007B2229 /* TextFieldPlayground.swift in Sources */,
-				143265B31FBEEE570093B265 /* ButtonPlayground.swift in Sources */,
-				144351D01FBE3805007B2229 /* MarketHelpers.swift in Sources */,
+				4447F70B1FDB2B4C0033DBC1 /* MarketHelpers.swift in Sources */,
+				4447F7091FDB2B470033DBC1 /* MarketGridCellPlayground.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,42 +811,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				457A7FDA1FCD517700254E61 /* RectangleView.swift in Sources */,
-				14256A1B1FBE1EC400017B4F /* PreviewModel.swift in Sources */,
-				442F759F1FC447E500034BF6 /* LoginView.swift in Sources */,
-				44CCCCF71FC4422F00940514 /* ToastView+Style.swift in Sources */,
-				457A7FD81FCD508A00254E61 /* AttachableView.swift in Sources */,
-				CB3E67C21F7E4D4000C40D47 /* PreviewGridLayout.swift in Sources */,
-				14256A2D1FBE204200017B4F /* TextField.swift in Sources */,
-				45DBF77A1FC711F6003B345F /* TriangleView.swift in Sources */,
-				45DBF7781FC711AE003B345F /* CircleView.swift in Sources */,
-				143265B01FBEEE220093B265 /* Button.swift in Sources */,
-				442F75A01FC447E500034BF6 /* LoginViewModel.swift in Sources */,
-				143265AF1FBEEE220093B265 /* Button+Style.swift in Sources */,
-				CB3E67C31F7E4D4000C40D47 /* PreviewGridView.swift in Sources */,
-				457B35CA1F7BC4620031E125 /* UITableView+Identifiable.swift in Sources */,
-				455866091F7A77B100F670EF /* MarketGridCell.swift in Sources */,
-				14256A2C1FBE204200017B4F /* TextField+InputType.swift in Sources */,
-				CB400B241F83C9D400B26C1C /* Troika.swift in Sources */,
-				4558660B1F7A7B4800F670EF /* MarketGridModel.swift in Sources */,
-				457A7FDE1FCDB1CE00254E61 /* Ribbon+Style.swift in Sources */,
-				CB983C2E1F97683B0035FDD0 /* PreviewGridHeaderView.swift in Sources */,
-				453D88871F860B7900FC63C7 /* MarketGridViewConfigurable.swift in Sources */,
-				4537D0201F94ECE6006942E7 /* CGFloat+Troika.swift in Sources */,
-				45441D031F8CA1D300A3B007 /* Label.swift in Sources */,
-				457B35CC1F7BC4920031E125 /* UICollectionView+Identifiable.swift in Sources */,
-				45DBF77C1FC81C5C003B345F /* RoundedRectangleView.swift in Sources */,
-				14256A251FBE200300017B4F /* ToastView.swift in Sources */,
-				CB3E67C61F7E4D5D00C40D47 /* PreviewGridCell.swift in Sources */,
-				4523B77C1F8CF3C3001DFB96 /* Label+Style.swift in Sources */,
-				455866071F7A751300F670EF /* MarketGridView.swift in Sources */,
-				4558660E1F7A8C1E00F670EF /* UIColor+Troika.swift in Sources */,
-				CB3664251F73F818009D3244 /* UIFont+Troika.swift in Sources */,
-				45DBF76A1FC5B16E003B345F /* EmptyView.swift in Sources */,
-				459D37F81F87620B00038582 /* RibbonView.swift in Sources */,
-				CB400B221F83C96600B26C1C /* UIImage+Troika.swift in Sources */,
-				457B35C71F7BC4100031E125 /* Identifiable.swift in Sources */,
-				CB3E67C11F7E4D4000C40D47 /* PreviewGridLayoutConfiguration.swift in Sources */,
+				4447F6CC1FDB2B110033DBC1 /* CircleView.swift in Sources */,
+				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
+				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
+				4447F6CD1FDB2B110033DBC1 /* RectangleView.swift in Sources */,
+				4447F6F31FDB2B110033DBC1 /* UIColor+Troika.swift in Sources */,
+				4447F7031FDB2B110033DBC1 /* Troika.swift in Sources */,
+				4447F6DC1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift in Sources */,
+				4447F6CB1FDB2B110033DBC1 /* AttachableView.swift in Sources */,
+				4447F6CA1FDB2B110033DBC1 /* EmptyView.swift in Sources */,
+				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
+				4447F6E01FDB2B110033DBC1 /* PreviewGridCell.swift in Sources */,
+				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
+				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
+				4447F6F51FDB2B110033DBC1 /* UIImage+Troika.swift in Sources */,
+				4447F6E61FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift in Sources */,
+				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
+				4447F6F11FDB2B110033DBC1 /* CGFloat+Troika.swift in Sources */,
+				4447F6F21FDB2B110033DBC1 /* UICollectionView+Identifiable.swift in Sources */,
+				4447F6F41FDB2B110033DBC1 /* UIFont+Troika.swift in Sources */,
+				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
+				4447F6D51FDB2B110033DBC1 /* LoginViewModel.swift in Sources */,
+				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
+				4447F6D41FDB2B110033DBC1 /* LoginView.swift in Sources */,
+				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
+				4447F6CE1FDB2B110033DBC1 /* RoundedRectangleView.swift in Sources */,
+				4447F6E71FDB2B110033DBC1 /* PreviewGridView.swift in Sources */,
+				4447F6E41FDB2B110033DBC1 /* PreviewGridHeaderView.swift in Sources */,
+				4447F6DB1FDB2B110033DBC1 /* MarketGridView.swift in Sources */,
+				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
+				4447F6F61FDB2B110033DBC1 /* UITableView+Identifiable.swift in Sources */,
+				4447F6D81FDB2B110033DBC1 /* MarketGridCell.swift in Sources */,
+				4447F6CF1FDB2B110033DBC1 /* TriangleView.swift in Sources */,
+				4447F6E11FDB2B110033DBC1 /* PreviewModel.swift in Sources */,
+				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
+				4447F6E51FDB2B110033DBC1 /* PreviewGridLayout.swift in Sources */,
+				4447F6D91FDB2B110033DBC1 /* MarketGridModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -899,6 +913,7 @@
 		14F4F1C11FD6CEA800E9CECA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -919,6 +934,7 @@
 		14F4F1C21FD6CEA800E9CECA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1062,7 +1078,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Troika/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1098,7 +1114,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Troika/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
