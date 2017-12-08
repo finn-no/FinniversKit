@@ -13,7 +13,7 @@ public extension UIView {
     ///   - isActive: A boolean on whether the constraint is active or not.
     /// - Returns: The added constraints.
     @discardableResult
-    func fillInSuperview(insets: EdgeInsets = .zero, isActive: Bool = true) -> [NSLayoutConstraint] {
+    func fillInSuperview(insets: Insets = .zero, isActive: Bool = true) -> [NSLayoutConstraint] {
         guard let superview = self.superview else {
             return [NSLayoutConstraint]()
         }

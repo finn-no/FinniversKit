@@ -5,7 +5,7 @@
 import UIKit
 
 /// A struct that holds the insets when laying out a view.
-public struct EdgeInsets {
+public struct Insets {
     // Replace with NSDirectionalEdgeInsets when going for > iOS 11.
     // The reason for using this instead of UIEdgeInsets is because in UIEdgeInsets uses left and right instead of
     // leading and trailing.
@@ -15,8 +15,8 @@ public struct EdgeInsets {
     let bottom: CGFloat
     let trailing: CGFloat
 
-    public static var zero: EdgeInsets {
-        return EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+    public static var zero: Insets {
+        return Insets(top: 0, leading: 0, bottom: 0, trailing: 0)
     }
 
     public init(top: Int = 0, leading: Int = 0, bottom: Int = 0, trailing: Int = 0) {

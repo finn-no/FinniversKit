@@ -8,7 +8,7 @@ import XCTest
 
 class LayoutHelpersTests: XCTestCase {
     func testEdgeInsets() {
-        let inset = EdgeInsets(top: -10, leading: -10, bottom: -10, trailing: -10)
+        let inset = Insets(top: -10, leading: -10, bottom: -10, trailing: -10)
         XCTAssertEqual(inset.top, 10)
         XCTAssertEqual(inset.leading, 10)
         XCTAssertEqual(inset.bottom, 10)
