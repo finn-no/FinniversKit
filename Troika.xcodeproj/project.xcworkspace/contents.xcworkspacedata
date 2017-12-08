@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Project.xcodeproj">
+      location = "self:/Users/elvisnunez/Projects/finn/troika-ios/Troika.xcodeproj">
    </FileRef>
 </Workspace>
