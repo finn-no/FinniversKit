@@ -8,8 +8,9 @@ public extension Button {
 
     public enum Style {
         case `default`
-        case flat
+        case callToAction
         case destructive
+        case flat
         case link
 
         var font: UIFont {
@@ -21,8 +22,8 @@ public extension Button {
 
         var bodyColor: UIColor {
             switch self {
-            case .default, .link: return .milk
-            case .flat: return .primaryBlue
+            case .default, .link, .flat: return .milk
+            case .callToAction: return .primaryBlue
             case .destructive: return .cherry
             }
         }
@@ -43,14 +44,14 @@ public extension Button {
 
         var textColor: UIColor {
             switch self {
-            case .default, .link: return .primaryBlue
+            case .default, .link, .flat: return .primaryBlue
             default: return .milk
             }
         }
 
         var highlightedBodyColor: UIColor? {
             switch self {
-            case .flat: return UIColor(red: 0 / 255, green: 79 / 255, blue: 201 / 255, alpha: 1.0) // #004fc9
+            case .callToAction: return UIColor(red: 0 / 255, green: 79 / 255, blue: 201 / 255, alpha: 1.0) // #004fc9
             case .destructive: return UIColor(red: 201 / 255, green: 79 / 255, blue: 0 / 255, alpha: 1.0)
             case .default: return UIColor(red: 241 / 255, green: 249 / 255, blue: 255 / 255, alpha: 1.0)
             default: return nil
@@ -66,14 +67,14 @@ public extension Button {
 
         var highlightedTextColor: UIColor? {
             switch self {
-            case .link: return UIColor(red: 0 / 255, green: 79 / 255, blue: 201 / 255, alpha: 1.0) // #004fc9
+            case .link, .flat: return UIColor(red: 0 / 255, green: 79 / 255, blue: 201 / 255, alpha: 1.0) // #004fc9
             default: return nil
             }
         }
 
         var disabledBodyColor: UIColor? {
             switch self {
-            case .default, .link: return nil
+            case .default, .link, .flat: return nil
             default: return .sardine
             }
         }
@@ -87,15 +88,15 @@ public extension Button {
 
         var disabledTextColor: UIColor? {
             switch self {
-            case .flat, .destructive: return nil
+            case .callToAction, .destructive: return nil
             default: return .sardine
             }
         }
 
         var margins: UIEdgeInsets {
             switch self {
-            case .link: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
-            default: return UIEdgeInsets(top: .smallSpacing, left: .mediumSpacing, bottom: .smallSpacing, right: .mediumSpacing)
+            case .link, .flat: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
+            default: return UIEdgeInsets(top: .mediumSpacing, left: .mediumSpacing, bottom: .mediumSpacing, right: .mediumSpacing)
             }
         }
     }
