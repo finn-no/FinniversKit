@@ -8,9 +8,7 @@ import Troika
 public class LoginViewPlayground: UIView {
 
     private lazy var loginView: LoginView = {
-        let loginView = LoginView()
-        loginView.translatesAutoresizingMaskIntoConstraints = false
-        return loginView
+        return LoginView(withAutoLayout: true)
     }()
 
     override init(frame: CGRect) {
@@ -22,15 +20,8 @@ public class LoginViewPlayground: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        loginView.model = LoginViewDefaultData()
-
         addSubview(loginView)
-
-        NSLayoutConstraint.activate([
-            loginView.topAnchor.constraint(equalTo: topAnchor),
-            loginView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            loginView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            loginView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
+        loginView.fillInSuperview()
+        loginView.model = LoginViewDefaultData()
     }
 }
