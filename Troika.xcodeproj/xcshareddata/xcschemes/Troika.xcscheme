@@ -17,7 +17,7 @@
                BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
                BuildableName = "Troika.framework"
                BlueprintName = "Troika"
-               ReferencedContainer = "container:Project.xcodeproj">
+               ReferencedContainer = "container:Troika.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -50,7 +50,7 @@
             BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
             BuildableName = "Troika.framework"
             BlueprintName = "Troika"
-            ReferencedContainer = "container:Project.xcodeproj">
+            ReferencedContainer = "container:Troika.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -68,7 +68,7 @@
             BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
             BuildableName = "Troika.framework"
             BlueprintName = "Troika"
-            ReferencedContainer = "container:Project.xcodeproj">
+            ReferencedContainer = "container:Troika.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
