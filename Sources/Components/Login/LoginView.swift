@@ -71,6 +71,14 @@ public class LoginView: UIView {
         return button
     }()
 
+    private lazy var spidLogoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(frameworkImageNamed: "SpidLogo")!
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
     private lazy var userTermsButton: Button = {
         let button = Button(style: .link)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -137,6 +145,7 @@ public class LoginView: UIView {
         contentView.addSubview(newUserButton)
         contentView.addSubview(userTermsIntroLabel)
         contentView.addSubview(userTermsButton)
+        contentView.addSubview(spidLogoImageView)
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -176,7 +185,10 @@ public class LoginView: UIView {
             newUserButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
             newUserButton.heightAnchor.constraint(equalToConstant: buttonHeight),
 
-            userTermsIntroLabel.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: .largeSpacing),
+            spidLogoImageView.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: .mediumLargeSpacing),
+            spidLogoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            userTermsIntroLabel.topAnchor.constraint(equalTo: spidLogoImageView.bottomAnchor, constant: .mediumLargeSpacing),
             userTermsIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             userTermsIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
