@@ -27,8 +27,8 @@ public struct Insets {
         self.top = top
         self.leading = leading
 
-        // Required in order to ensure this works fine when used against AutoLayout constants, where negative values
-        // are required in order to add a bottom and trailing inset.
+        // Required in order to ensure correct use against AutoLayout constants,
+        // where negative values are required in order to add a bottom and trailing inset.
         self.bottom = bottom > 0 ? bottom * -1 : bottom
         self.trailing = trailing > 0 ? trailing * -1 : trailing
     }
