@@ -299,9 +299,9 @@
 		4447F6651FDB2B110033DBC1 /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				4447F6681FDB2B110033DBC1 /* Playground */,
 				4447F6661FDB2B110033DBC1 /* Button+Style.swift */,
 				4447F6671FDB2B110033DBC1 /* Button.swift */,
-				4447F6681FDB2B110033DBC1 /* Playground */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -317,9 +317,9 @@
 		4447F66A1FDB2B110033DBC1 /* EmptyView */ = {
 			isa = PBXGroup;
 			children = (
+				4447F6721FDB2B110033DBC1 /* Playground */,
 				4447F66B1FDB2B110033DBC1 /* EmptyView.swift */,
 				4447F66C1FDB2B110033DBC1 /* MovableBlockView */,
-				4447F6721FDB2B110033DBC1 /* Playground */,
 			);
 			path = EmptyView;
 			sourceTree = "<group>";
@@ -347,9 +347,9 @@
 		4447F6741FDB2B110033DBC1 /* Label */ = {
 			isa = PBXGroup;
 			children = (
+				4447F6771FDB2B110033DBC1 /* Playground */,
 				4447F6751FDB2B110033DBC1 /* Label+Style.swift */,
 				4447F6761FDB2B110033DBC1 /* Label.swift */,
-				4447F6771FDB2B110033DBC1 /* Playground */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -365,9 +365,9 @@
 		4447F6791FDB2B110033DBC1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				4447F67C1FDB2B110033DBC1 /* Playground */,
 				4447F67A1FDB2B110033DBC1 /* LoginView.swift */,
 				4447F67B1FDB2B110033DBC1 /* LoginViewModel.swift */,
-				4447F67C1FDB2B110033DBC1 /* Playground */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -393,9 +393,9 @@
 		4447F6831FDB2B110033DBC1 /* MarketGridCell */ = {
 			isa = PBXGroup;
 			children = (
+				4447F6861FDB2B110033DBC1 /* Playground */,
 				4447F6841FDB2B110033DBC1 /* MarketGridCell.swift */,
 				4447F6851FDB2B110033DBC1 /* MarketGridModel.swift */,
-				4447F6861FDB2B110033DBC1 /* Playground */,
 			);
 			path = MarketGridCell;
 			sourceTree = "<group>";
@@ -411,9 +411,9 @@
 		4447F6881FDB2B110033DBC1 /* MarketGridView */ = {
 			isa = PBXGroup;
 			children = (
+				4447F68B1FDB2B110033DBC1 /* Playground */,
 				4447F6891FDB2B110033DBC1 /* MarketGridView.swift */,
 				4447F68A1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift */,
-				4447F68B1FDB2B110033DBC1 /* Playground */,
 			);
 			path = MarketGridView;
 			sourceTree = "<group>";
