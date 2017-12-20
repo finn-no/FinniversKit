@@ -15,6 +15,9 @@
 		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
 		14BE24B31FAFCC32004AC010 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */; };
 		14F4F1BE1FD6CEA800E9CECA /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
+		441D699B1FEA947600CD919A /* UIView+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIView+Troika.swift */; };
+		441D699C1FEA947600CD919A /* Layout+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69991FEA947500CD919A /* Layout+Helpers.swift */; };
+		441D699D1FEA947600CD919A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D699A1FEA947600CD919A /* Layout.swift */; };
 		4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6661FDB2B110033DBC1 /* Button+Style.swift */; };
 		4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; };
 		4447F6CA1FDB2B110033DBC1 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F66B1FDB2B110033DBC1 /* EmptyView.swift */; };
@@ -65,9 +68,6 @@
 		4447F70F1FDB2B650033DBC1 /* RibbonPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69E1FDB2B110033DBC1 /* RibbonPlayground.swift */; };
 		4447F7101FDB2B810033DBC1 /* TextFieldPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A51FDB2B110033DBC1 /* TextFieldPlayground.swift */; };
 		4447F7111FDB2B8C0033DBC1 /* ToastPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AA1FDB2B110033DBC1 /* ToastPlayground.swift */; };
-		44898D4E1FE5B3B000F6017B /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D4D1FE5B3B000F6017B /* Layout.swift */; };
-		44898D501FE5B3BA00F6017B /* Layout+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D4F1FE5B3BA00F6017B /* Layout+Helpers.swift */; };
-		44898D521FE5B3C600F6017B /* UIView+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D511FE5B3C600F6017B /* UIView+Troika.swift */; };
 		44898D541FE5B40D00F6017B /* Layout+HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */; };
 		44898D621FE5B9C200F6017B /* UIImage+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImage+Troika.swift */; };
 		44898D641FE5B9C200F6017B /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionView+Identifiable.swift */; };
@@ -122,6 +122,9 @@
 		14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		441D69981FEA947500CD919A /* UIView+Troika.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Troika.swift"; sourceTree = "<group>"; };
+		441D69991FEA947500CD919A /* Layout+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Layout+Helpers.swift"; sourceTree = "<group>"; };
+		441D699A1FEA947600CD919A /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		4447F6661FDB2B110033DBC1 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		4447F6671FDB2B110033DBC1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		4447F6691FDB2B110033DBC1 /* ButtonPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonPlayground.swift; sourceTree = "<group>"; };
@@ -258,6 +261,7 @@
 				4447F7121FDB2C100033DBC1 /* Templates */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
+				441D69971FEA944C00CD919A /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -269,6 +273,16 @@
 				14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		441D69971FEA944C00CD919A /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				44898D4F1FE5B3BA00F6017B /* Layout+Helpers.swift */,
+				44898D4D1FE5B3B000F6017B /* Layout.swift */,
+				44898D511FE5B3C600F6017B /* UIView+Troika.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		4447F6631FDB2B110033DBC1 /* Sources */ = {
@@ -593,6 +607,9 @@
 		44898D5A1FE5B9C200F6017B /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				441D699A1FEA947600CD919A /* Layout.swift */,
+				441D69991FEA947500CD919A /* Layout+Helpers.swift */,
+				441D69981FEA947500CD919A /* UIView+Troika.swift */,
 				44898D5B1FE5B9C200F6017B /* UIImage+Troika.swift */,
 				44898D5D1FE5B9C200F6017B /* UICollectionView+Identifiable.swift */,
 				44898D5E1FE5B9C200F6017B /* UITableView+Identifiable.swift */,
@@ -836,13 +853,14 @@
 				4447F6CC1FDB2B110033DBC1 /* CircleView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
-				44898D501FE5B3BA00F6017B /* Layout+Helpers.swift in Sources */,
+				441D699B1FEA947600CD919A /* UIView+Troika.swift in Sources */,
 				4447F6CD1FDB2B110033DBC1 /* RectangleView.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* Troika.swift in Sources */,
 				44898D6C1FE5BA1600F6017B /* Color.swift in Sources */,
 				4447F6DC1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift in Sources */,
 				4447F6CB1FDB2B110033DBC1 /* AttachableView.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionView+Identifiable.swift in Sources */,
+				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImage+Troika.swift in Sources */,
 				4447F6CA1FDB2B110033DBC1 /* EmptyView.swift in Sources */,
 				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
@@ -850,7 +868,7 @@
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				4447F6E61FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift in Sources */,
-				44898D4E1FE5B3B000F6017B /* Layout.swift in Sources */,
+				441D699C1FEA947600CD919A /* Layout+Helpers.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6D51FDB2B110033DBC1 /* LoginViewModel.swift in Sources */,
@@ -868,7 +886,6 @@
 				4447F6CF1FDB2B110033DBC1 /* TriangleView.swift in Sources */,
 				4447F6E11FDB2B110033DBC1 /* PreviewModel.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
-				44898D521FE5B3C600F6017B /* UIView+Troika.swift in Sources */,
 				4447F6E51FDB2B110033DBC1 /* PreviewGridLayout.swift in Sources */,
 				4447F6D91FDB2B110033DBC1 /* MarketGridModel.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableView+Identifiable.swift in Sources */,
