@@ -87,11 +87,6 @@
 		44C4E8C21FFBA714000B014D /* Button+Style.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6661FDB2B110033DBC1 /* Button+Style.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8C31FFBA714000B014D /* Button.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8C41FFBA714000B014D /* EmptyView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F66B1FDB2B110033DBC1 /* EmptyView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8C51FFBA714000B014D /* AttachableView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F66D1FDB2B110033DBC1 /* AttachableView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8C61FFBA714000B014D /* CircleView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F66E1FDB2B110033DBC1 /* CircleView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8C71FFBA714000B014D /* RectangleView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F66F1FDB2B110033DBC1 /* RectangleView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8C81FFBA714000B014D /* RoundedRectangleView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6701FDB2B110033DBC1 /* RoundedRectangleView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8C91FFBA714000B014D /* TriangleView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6711FDB2B110033DBC1 /* TriangleView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8CA1FFBA714000B014D /* Label+Style.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6751FDB2B110033DBC1 /* Label+Style.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8CB1FFBA714000B014D /* Label.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6761FDB2B110033DBC1 /* Label.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8CC1FFBA714000B014D /* LoginView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F67A1FDB2B110033DBC1 /* LoginView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -99,12 +94,8 @@
 		44C4E8CE1FFBA714000B014D /* MarketGridCell.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6841FDB2B110033DBC1 /* MarketGridCell.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8CF1FFBA714000B014D /* MarketGridModel.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6851FDB2B110033DBC1 /* MarketGridModel.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8D01FFBA714000B014D /* MarketGridView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6891FDB2B110033DBC1 /* MarketGridView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8D11FFBA714000B014D /* MarketGridViewConfigurable.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F68A1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8D21FFBA714000B014D /* PreviewGridCell.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6921FDB2B110033DBC1 /* PreviewGridCell.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8D31FFBA714000B014D /* PreviewModel.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6931FDB2B110033DBC1 /* PreviewModel.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8D41FFBA714000B014D /* PreviewGridHeaderView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6981FDB2B110033DBC1 /* PreviewGridHeaderView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8D51FFBA714000B014D /* PreviewGridLayout.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6991FDB2B110033DBC1 /* PreviewGridLayout.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8D61FFBA714000B014D /* PreviewGridLayoutConfiguration.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F69A1FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8D71FFBA714000B014D /* PreviewGridView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F69B1FDB2B110033DBC1 /* PreviewGridView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8D81FFBA714000B014D /* Ribbon+Style.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8D91FFBA714000B014D /* RibbonView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6A01FDB2B110033DBC1 /* RibbonView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -692,11 +683,6 @@
 				44C4E8C21FFBA714000B014D /* Button+Style.swift in Headers */,
 				44C4E8C31FFBA714000B014D /* Button.swift in Headers */,
 				44C4E8C41FFBA714000B014D /* EmptyView.swift in Headers */,
-				44C4E8C51FFBA714000B014D /* AttachableView.swift in Headers */,
-				44C4E8C61FFBA714000B014D /* CircleView.swift in Headers */,
-				44C4E8C71FFBA714000B014D /* RectangleView.swift in Headers */,
-				44C4E8C81FFBA714000B014D /* RoundedRectangleView.swift in Headers */,
-				44C4E8C91FFBA714000B014D /* TriangleView.swift in Headers */,
 				44C4E8CA1FFBA714000B014D /* Label+Style.swift in Headers */,
 				44C4E8CB1FFBA714000B014D /* Label.swift in Headers */,
 				44C4E8CC1FFBA714000B014D /* LoginView.swift in Headers */,
@@ -704,12 +690,8 @@
 				44C4E8CE1FFBA714000B014D /* MarketGridCell.swift in Headers */,
 				44C4E8CF1FFBA714000B014D /* MarketGridModel.swift in Headers */,
 				44C4E8D01FFBA714000B014D /* MarketGridView.swift in Headers */,
-				44C4E8D11FFBA714000B014D /* MarketGridViewConfigurable.swift in Headers */,
 				44C4E8D21FFBA714000B014D /* PreviewGridCell.swift in Headers */,
 				44C4E8D31FFBA714000B014D /* PreviewModel.swift in Headers */,
-				44C4E8D41FFBA714000B014D /* PreviewGridHeaderView.swift in Headers */,
-				44C4E8D51FFBA714000B014D /* PreviewGridLayout.swift in Headers */,
-				44C4E8D61FFBA714000B014D /* PreviewGridLayoutConfiguration.swift in Headers */,
 				44C4E8D71FFBA714000B014D /* PreviewGridView.swift in Headers */,
 				44C4E8D81FFBA714000B014D /* Ribbon+Style.swift in Headers */,
 				44C4E8D91FFBA714000B014D /* RibbonView.swift in Headers */,
