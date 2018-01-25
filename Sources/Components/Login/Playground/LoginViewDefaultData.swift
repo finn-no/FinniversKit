@@ -19,7 +19,7 @@ public struct LoginViewDefaultData: LoginViewModel {
 
     public let loginButtonTitle = "Logg inn"
 
-    public let newUserButtonTitle = "Ny bruker"
+    public let newUserButtonTitle = "Ny bruker?"
 
     public let userTermsIntroText = "Ved å logge inn aksepterer du brukervilkårene våre"
 

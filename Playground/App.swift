@@ -21,5 +21,5 @@ extension AppDelegate {
     // ** Others **
     // MarketView
 
-    typealias View = LoginViewPlayground
+    typealias View = EmptyViewPlayground
 }

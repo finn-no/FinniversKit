@@ -65,7 +65,7 @@ public class LoginView: UIView {
     }()
 
     private lazy var newUserButton: Button = {
-        let button = Button(style: .default)
+        let button = Button(style: .link)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(newUserTapped), for: .touchUpInside)
         return button
@@ -92,6 +92,16 @@ public class LoginView: UIView {
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
+    }()
+
+    private lazy var newUserStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [spidLogoImageView, newUserButton])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 2
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
 
     fileprivate let buttonHeight: CGFloat = 44
@@ -140,12 +150,13 @@ public class LoginView: UIView {
         contentView.addSubview(infoLabel)
         contentView.addSubview(emailTextField)
         contentView.addSubview(passwordTextField)
-        contentView.addSubview(loginButton)
         contentView.addSubview(forgotPasswordButton)
-        contentView.addSubview(newUserButton)
+        contentView.addSubview(loginButton)
+        contentView.addSubview(newUserStackView)
+        // contentView.addSubview(newUserButton)
         contentView.addSubview(userTermsIntroLabel)
         contentView.addSubview(userTermsButton)
-        contentView.addSubview(spidLogoImageView)
+        // contentView.addSubview(spidLogoImageView)
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -180,15 +191,19 @@ public class LoginView: UIView {
             loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
             loginButton.heightAnchor.constraint(equalToConstant: buttonHeight),
 
-            newUserButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumSpacing),
-            newUserButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            newUserButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
-            newUserButton.heightAnchor.constraint(equalToConstant: buttonHeight),
+            newUserStackView.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumLargeSpacing),
+            newUserStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            spidLogoImageView.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: .mediumLargeSpacing),
-            spidLogoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            // newUserButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumSpacing),
+            // newUserButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            // newUserButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            // newUserButton.heightAnchor.constraint(equalToConstant: buttonHeight),
 
-            userTermsIntroLabel.topAnchor.constraint(equalTo: spidLogoImageView.bottomAnchor, constant: .mediumLargeSpacing),
+            // spidLogoImageView.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: .mediumLargeSpacing),
+            // spidLogoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            spidLogoImageView.heightAnchor.constraint(equalToConstant: 17),
+
+            userTermsIntroLabel.topAnchor.constraint(equalTo: newUserStackView.bottomAnchor, constant: .mediumLargeSpacing),
             userTermsIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             userTermsIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
