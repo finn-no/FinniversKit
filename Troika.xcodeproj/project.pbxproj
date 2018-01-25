@@ -774,7 +774,7 @@
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
 					14405C691FAFBD1800D03E04 = {
-						DevelopmentTeam = D34XZHQLE3;
+						DevelopmentTeam = GUFWSL2HY3;
 						ProvisioningStyle = Automatic;
 					};
 					14F4F1B81FD6CEA800E9CECA = {
@@ -975,7 +975,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D34XZHQLE3;
+				DEVELOPMENT_TEAM = GUFWSL2HY3;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Playground/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -997,7 +997,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D34XZHQLE3;
+				DEVELOPMENT_TEAM = GUFWSL2HY3;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Playground/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

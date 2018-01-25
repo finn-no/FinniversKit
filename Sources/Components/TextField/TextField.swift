@@ -41,7 +41,7 @@ public class TextField: UIView {
     private let eyeImage = UIImage(frameworkImageNamed: "view")!.withRenderingMode(.alwaysTemplate)
     private let clearTextIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
     private let rightViewSize = CGSize(width: 40, height: 40)
-    private let underlineHeight: CGFloat = 2
+    private let underlineHeight: CGFloat = 1
     private let animationDuration: Double = 0.3
 
     private lazy var typeLabel: Label = {
