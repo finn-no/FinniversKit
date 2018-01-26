@@ -69,7 +69,7 @@ public class TextField: UIView {
         return button
     }()
 
-    public lazy var textField: UITextField = {
+    private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.body

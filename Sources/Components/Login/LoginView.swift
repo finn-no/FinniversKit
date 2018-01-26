@@ -181,6 +181,7 @@ public class LoginView: UIView {
         contentView.addSubview(userTermsStackView)
         contentView.addSubview(customerServiceButton)
 
+
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
@@ -227,7 +228,6 @@ public class LoginView: UIView {
             customerServiceButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             customerServiceButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
             customerServiceButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.largeSpacing),
-
         ])
     }
 
