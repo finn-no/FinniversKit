@@ -4,12 +4,17 @@
 
 import UIKit
 
+// MARK: - LoginViewDelegatew
+
 public protocol LoginViewDelegate: NSObjectProtocol {
-    func forgotPasswordButtonPressed(in: LoginView)
-    func loginButtonPressed(in: LoginView)
-    func newUserButtonPressed(in: LoginView)
-    func userTermsButtonPressed(in: LoginView)
-    func incompleteCredentials(in: LoginView)
+
+    func loginView(_ loginView: LoginView, didSelectForgetPasswordButton button: Button)
+    func loginView(_ loginView: LoginView, didSelectLoginButton button: Button)
+    func loginView(_ loginView: LoginView, didSelectNewUserButton button: Button)
+    func loginView(_ loginView: LoginView, didSelectUserTermsButton button: Button)
+    func loginView(_ loginView: LoginView, didSelectCustomerServiceButton button: Button)
+
+    func loginView(_ loginView: LoginView, didOccurIncompleteCredentials incompleteCredentials: Bool)
 }
 
 public class LoginView: UIView {
@@ -28,6 +33,14 @@ public class LoginView: UIView {
         return view
     }()
 
+    private lazy var infoLabel: Label = {
+        let label = Label(style: .body(.licorice))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+
     fileprivate lazy var emailTextField: TextField = {
         let textField = TextField(inputType: .email)
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -42,33 +55,25 @@ public class LoginView: UIView {
         return textField
     }()
 
-    private lazy var infoLabel: Label = {
-        let label = Label(style: .body(.licorice))
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
+    private lazy var forgotPasswordButton: Button = {
+        let button = Button(style: .link)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(forgotPasswordButtonSelected), for: .touchUpInside)
+        return button
     }()
 
     private lazy var loginButton: Button = {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginButtonSelected), for: .touchUpInside)
         return button
     }()
 
-    private lazy var forgotPasswordButton: Button = {
-        let button = Button(style: .link)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
-        return button
-    }()
-
-    private lazy var newUserButton: Button = {
-        let button = Button(style: .default)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(newUserTapped), for: .touchUpInside)
-        return button
+    private lazy var newUserStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [spidLogoImageView, newUserButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 11
+        return stackView
     }()
 
     private lazy var spidLogoImageView: UIImageView = {
@@ -79,24 +84,44 @@ public class LoginView: UIView {
         return imageView
     }()
 
-    private lazy var userTermsButton: Button = {
+    private lazy var newUserButton: Button = {
         let button = Button(style: .link)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(userTermsTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(newUserButtonSelected), for: .touchUpInside)
         return button
+    }()
+
+    private lazy var userTermsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [userTermsIntroLabel, userTermsButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        return stackView
     }()
 
     private lazy var userTermsIntroLabel: Label = {
         let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.numberOfLines = 0
         return label
+    }()
+
+    private lazy var userTermsButton: Button = {
+        let button = Button(style: .link)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(userTermsButtonSelected), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var customerServiceButton: Button = {
+        let button = Button(style: .link)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(customerServiceButtonSelected), for: .touchUpInside)
+        return button
     }()
 
     fileprivate let buttonHeight: CGFloat = 44
 
-    // MARK: - External properties / Dependency injection
+    // MARK: - Dependency injection
 
     public var model: LoginViewModel? {
         didSet {
@@ -111,10 +136,20 @@ public class LoginView: UIView {
             newUserButton.setTitle(model.newUserButtonTitle, for: .normal)
             userTermsIntroLabel.text = model.userTermsIntroText
             userTermsButton.setTitle(model.userTermsButtonTitle, for: .normal)
+            customerServiceButton.setTitle(model.customerServiceTitle, for: .normal)
         }
     }
 
+    // MARK: - External properties
+
     public weak var delegate: LoginViewDelegate?
+
+    public var email: String {
+        guard let email = emailTextField.text else {
+            return ""
+        }
+        return email
+    }
 
     // MARK: - Setup
 
@@ -140,12 +175,12 @@ public class LoginView: UIView {
         contentView.addSubview(infoLabel)
         contentView.addSubview(emailTextField)
         contentView.addSubview(passwordTextField)
-        contentView.addSubview(loginButton)
         contentView.addSubview(forgotPasswordButton)
-        contentView.addSubview(newUserButton)
-        contentView.addSubview(userTermsIntroLabel)
-        contentView.addSubview(userTermsButton)
-        contentView.addSubview(spidLogoImageView)
+        contentView.addSubview(loginButton)
+        contentView.addSubview(newUserStackView)
+        contentView.addSubview(userTermsStackView)
+        contentView.addSubview(customerServiceButton)
+
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -180,43 +215,42 @@ public class LoginView: UIView {
             loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
             loginButton.heightAnchor.constraint(equalToConstant: buttonHeight),
 
-            newUserButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumSpacing),
-            newUserButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            newUserButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
-            newUserButton.heightAnchor.constraint(equalToConstant: buttonHeight),
+            newUserStackView.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumLargeSpacing),
+            newUserStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            spidLogoImageView.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: .mediumLargeSpacing),
-            spidLogoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            spidLogoImageView.heightAnchor.constraint(equalToConstant: 15),
 
-            userTermsIntroLabel.topAnchor.constraint(equalTo: spidLogoImageView.bottomAnchor, constant: .mediumLargeSpacing),
-            userTermsIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            userTermsIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            userTermsStackView.topAnchor.constraint(equalTo: newUserStackView.bottomAnchor, constant: .mediumLargeSpacing),
+            userTermsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            userTermsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
-            userTermsButton.topAnchor.constraint(equalTo: userTermsIntroLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            userTermsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            userTermsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
-            userTermsButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.largeSpacing),
+            customerServiceButton.topAnchor.constraint(equalTo: userTermsStackView.bottomAnchor, constant: .largeSpacing),
+            customerServiceButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            customerServiceButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            customerServiceButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.largeSpacing),
         ])
     }
 
-    // MARK: - Private
-
     // MARK: - Actions
 
-    @objc func loginTapped() {
-        delegate?.loginButtonPressed(in: self)
+    @objc func loginButtonSelected() {
+        delegate?.loginView(self, didSelectLoginButton: loginButton)
     }
 
-    @objc func forgotPasswordTapped() {
-        delegate?.forgotPasswordButtonPressed(in: self)
+    @objc func forgotPasswordButtonSelected() {
+        delegate?.loginView(self, didSelectForgetPasswordButton: forgotPasswordButton)
     }
 
-    @objc func newUserTapped() {
-        delegate?.newUserButtonPressed(in: self)
+    @objc func newUserButtonSelected() {
+        delegate?.loginView(self, didSelectNewUserButton: newUserButton)
     }
 
-    @objc func userTermsTapped() {
-        delegate?.userTermsButtonPressed(in: self)
+    @objc func userTermsButtonSelected() {
+        delegate?.loginView(self, didSelectUserTermsButton: userTermsButton)
+    }
+
+    @objc func customerServiceButtonSelected() {
+        delegate?.loginView(self, didSelectCustomerServiceButton: userTermsButton)
     }
 
     @objc func handleTap() {
@@ -224,14 +258,17 @@ public class LoginView: UIView {
     }
 }
 
+// MARK: - TextFieldDelegate
+
 extension LoginView: TextFieldDelegate {
+
     public func textFieldShouldReturn(_ textField: TextField) -> Bool {
-        if textField == passwordTextField {
+        if textField == emailTextField {
+        } else {
             if loginButton.isEnabled {
-                textField.endEditing(true)
-                loginTapped()
+                loginButtonSelected()
             } else {
-                delegate?.incompleteCredentials(in: self)
+                delegate?.loginView(self, didOccurIncompleteCredentials: true)
             }
         }
         return true

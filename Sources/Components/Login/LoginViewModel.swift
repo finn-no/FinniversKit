@@ -13,6 +13,7 @@ public protocol LoginViewModel {
     var newUserButtonTitle: String { get }
     var userTermsIntroText: String { get }
     var userTermsButtonTitle: String { get }
+    var customerServiceTitle: String { get }
 }
 
 public extension LoginViewModel {

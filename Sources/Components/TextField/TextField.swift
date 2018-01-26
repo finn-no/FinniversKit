@@ -163,7 +163,7 @@ public class TextField: UIView {
         underline.heightAnchor.constraint(equalToConstant: underlineHeight).isActive = true
         underline.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
-        typeLabel.transform = transform.translatedBy(x: 0, y: typeLabel.frame.height)
+        typeLabel.transform = transform.translatedBy(x: 0, y: 20)
     }
 
     // MARK: - Actions
