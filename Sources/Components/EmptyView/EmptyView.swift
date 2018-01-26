@@ -57,7 +57,7 @@ public class EmptyView: UIView {
     }()
 
     private lazy var messageLabel: Label = {
-        let label = Label(style: .title4(.licorice))
+        let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isAccessibilityElement = true
         label.textAlignment = .center
