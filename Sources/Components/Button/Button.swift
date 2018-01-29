@@ -8,7 +8,7 @@ public class Button: UIButton {
 
     // MARK: - Internal properties
 
-    private let cornerRadius: CGFloat = 4.0
+    private let cornerRadius: CGFloat = 8.0
 
     // MARK: - External properties
 
