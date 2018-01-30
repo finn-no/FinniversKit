@@ -17,7 +17,7 @@ public class RibbonView: UIView {
 
     let horisontalMargin: CGFloat = 8
     let verticalMargin: CGFloat = 2
-    let cornerRadius: CGFloat = 3
+    let cornerRadius: CGFloat = 8
 
     // MARK: - External properties
 
