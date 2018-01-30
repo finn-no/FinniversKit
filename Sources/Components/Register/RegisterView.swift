@@ -6,17 +6,17 @@ import UIKit
 
 // MARK: - LoginViewDelegatew
 
-public protocol LoginViewDelegate: NSObjectProtocol {
+public protocol RegisterViewDelegate: NSObjectProtocol {
 
-    func loginView(_ loginView: LoginView, didSelectForgetPasswordButton button: Button)
-    func loginView(_ loginView: LoginView, didSelectLoginButton button: Button)
-    func loginView(_ loginView: LoginView, didSelectNewUserButton button: Button)
-    func loginView(_ loginView: LoginView, didSelectCustomerServiceButton button: Button)
+    func registerView(_ registerView: RegisterView, didSelectLoginButton button: Button)
+    func registerView(_ registerView: RegisterView, didSelectRegisterButton button: Button)
+    func registerView(_ registerView: RegisterView, didSelectUserTermsButton button: Button)
+    func registerView(_ registerView: RegisterView, didSelectCustomerServiceButton button: Button)
 
-    func loginView(_ loginView: LoginView, didOccurIncompleteCredentials incompleteCredentials: Bool)
+    func registerView(_ registerView: RegisterView, didOccurIncompleteCredentials incompleteCredentials: Bool)
 }
 
-public class LoginView: UIView {
+public class RegisterView: UIView {
 
     // MARK: - Internal properties
 
@@ -54,22 +54,15 @@ public class LoginView: UIView {
         return textField
     }()
 
-    private lazy var forgotPasswordButton: Button = {
-        let button = Button(style: .link)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(forgotPasswordButtonSelected), for: .touchUpInside)
-        return button
-    }()
-
-    private lazy var loginButton: Button = {
+    private lazy var registerButton: Button = {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(loginButtonSelected), for: .touchUpInside)
+        button.addTarget(self, action: #selector(registerButtonSelected), for: .touchUpInside)
         return button
     }()
 
     private lazy var newUserStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [spidLogoImageView, newUserButton])
+        let stackView = UIStackView(arrangedSubviews: [spidLogoImageView, loginButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 11
         return stackView
@@ -83,10 +76,31 @@ public class LoginView: UIView {
         return imageView
     }()
 
-    private lazy var newUserButton: Button = {
+    private lazy var loginButton: Button = {
         let button = Button(style: .link)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(newUserButtonSelected), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginButtonSelected), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var userTermsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [userTermsIntroLabel, userTermsButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        return stackView
+    }()
+
+    private lazy var userTermsIntroLabel: Label = {
+        let label = Label(style: .detail(.licorice))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private lazy var userTermsButton: Button = {
+        let button = Button(style: .link)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(userTermsButtonSelected), for: .touchUpInside)
         return button
     }()
 
@@ -101,7 +115,7 @@ public class LoginView: UIView {
 
     // MARK: - Dependency injection
 
-    public var model: LoginViewModel? {
+    public var model: RegisterViewModel? {
         didSet {
             guard let model = model else {
                 return
@@ -109,16 +123,17 @@ public class LoginView: UIView {
             infoLabel.text = model.headerText
             emailTextField.placeholderText = model.emailPlaceholder
             passwordTextField.placeholderText = model.passwordPlaceholder
-            forgotPasswordButton.setTitle(model.forgotPasswordButtonTitle, for: .normal)
             loginButton.setTitle(model.loginButtonTitle, for: .normal)
-            newUserButton.setTitle(model.newUserButtonTitle, for: .normal)
+            registerButton.setTitle(model.newUserButtonTitle, for: .normal)
+            userTermsIntroLabel.text = model.userTermsIntroText
+            userTermsButton.setTitle(model.userTermsButtonTitle, for: .normal)
             customerServiceButton.setTitle(model.customerServiceTitle, for: .normal)
         }
     }
 
     // MARK: - External properties
 
-    public weak var delegate: LoginViewDelegate?
+    public weak var delegate: RegisterViewDelegate?
 
     public var email: String {
         guard let email = emailTextField.text else {
@@ -143,7 +158,7 @@ public class LoginView: UIView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
 
-        loginButton.isEnabled = false
+        registerButton.isEnabled = false
 
         scrollView.addSubview(contentView)
         addSubview(scrollView)
@@ -151,9 +166,9 @@ public class LoginView: UIView {
         contentView.addSubview(infoLabel)
         contentView.addSubview(emailTextField)
         contentView.addSubview(passwordTextField)
-        contentView.addSubview(forgotPasswordButton)
-        contentView.addSubview(loginButton)
+        contentView.addSubview(registerButton)
         contentView.addSubview(newUserStackView)
+        contentView.addSubview(userTermsStackView)
         contentView.addSubview(customerServiceButton)
 
         NSLayoutConstraint.activate([
@@ -180,20 +195,21 @@ public class LoginView: UIView {
             passwordTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             passwordTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
-            forgotPasswordButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .mediumSpacing),
-            forgotPasswordButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            registerButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .largeSpacing),
+            registerButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            registerButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            registerButton.heightAnchor.constraint(equalToConstant: buttonHeight),
 
-            loginButton.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: .largeSpacing),
-            loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
-            loginButton.heightAnchor.constraint(equalToConstant: buttonHeight),
-
-            newUserStackView.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumLargeSpacing),
+            newUserStackView.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: .mediumLargeSpacing),
             newUserStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             spidLogoImageView.heightAnchor.constraint(equalToConstant: 15),
 
-            customerServiceButton.topAnchor.constraint(equalTo: newUserStackView.bottomAnchor, constant: .largeSpacing),
+            userTermsStackView.topAnchor.constraint(equalTo: newUserStackView.bottomAnchor, constant: .mediumLargeSpacing),
+            userTermsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            userTermsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+
+            customerServiceButton.topAnchor.constraint(equalTo: userTermsStackView.bottomAnchor, constant: .largeSpacing),
             customerServiceButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             customerServiceButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
         ])
@@ -202,19 +218,19 @@ public class LoginView: UIView {
     // MARK: - Actions
 
     @objc func loginButtonSelected() {
-        delegate?.loginView(self, didSelectLoginButton: loginButton)
+        delegate?.registerView(self, didSelectLoginButton: loginButton)
     }
 
-    @objc func forgotPasswordButtonSelected() {
-        delegate?.loginView(self, didSelectForgetPasswordButton: forgotPasswordButton)
+    @objc func registerButtonSelected() {
+        delegate?.registerView(self, didSelectRegisterButton: registerButton)
     }
 
-    @objc func newUserButtonSelected() {
-        delegate?.loginView(self, didSelectNewUserButton: newUserButton)
+    @objc func userTermsButtonSelected() {
+        delegate?.registerView(self, didSelectUserTermsButton: userTermsButton)
     }
 
     @objc func customerServiceButtonSelected() {
-        delegate?.loginView(self, didSelectCustomerServiceButton: customerServiceButton)
+        delegate?.registerView(self, didSelectCustomerServiceButton: userTermsButton)
     }
 
     @objc func handleTap() {
@@ -224,17 +240,17 @@ public class LoginView: UIView {
 
 // MARK: - TextFieldDelegate
 
-extension LoginView: TextFieldDelegate {
+extension RegisterView: TextFieldDelegate {
 
     public func textFieldShouldReturn(_ textField: TextField) -> Bool {
         if textField == emailTextField {
             passwordTextField.textField.becomeFirstResponder()
         } else {
-            if loginButton.isEnabled {
-                loginButtonSelected()
+            if registerButton.isEnabled {
+                registerButtonSelected()
                 textField.textField.resignFirstResponder()
             } else {
-                delegate?.loginView(self, didOccurIncompleteCredentials: true)
+                delegate?.registerView(self, didOccurIncompleteCredentials: true)
             }
         }
         return true
@@ -246,9 +262,9 @@ extension LoginView: TextFieldDelegate {
         }
 
         if emailText.isEmpty || passwordText.isEmpty {
-            loginButton.isEnabled = false
+            registerButton.isEnabled = false
         } else {
-            loginButton.isEnabled = true
+            registerButton.isEnabled = true
         }
     }
 }

@@ -3,9 +3,9 @@
 //
 
 import Foundation
-import Troika
 
-public struct LoginViewDefaultData: LoginViewModel {
+public struct RegisterViewDefaultData: RegisterViewModel {
+
     public init() {
     }
 
@@ -15,13 +15,11 @@ public struct LoginViewDefaultData: LoginViewModel {
 
     public let passwordPlaceholder = "Passord"
 
-    public let forgotPasswordButtonTitle = "Glemt passord?"
+    public let loginButtonTitle = "Allerede registrert?"
 
-    public let loginButtonTitle = "Logg inn"
+    public let newUserButtonTitle = "Registrer"
 
-    public let newUserButtonTitle = "Ny bruker?"
-
-    public let userTermsIntroText = "Ved å logge inn aksepterer du"
+    public let userTermsIntroText = "Ved å registrere deg aksepterer du"
 
     public let userTermsButtonTitle = "brukervilkårene."
 
