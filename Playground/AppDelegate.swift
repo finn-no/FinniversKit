@@ -16,7 +16,7 @@ extension NSNotification.Name {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, Viewable {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Viewable {
         NotificationCenter.default.addObserver(self, selector: #selector(injected(notification:)), name: Notification.Name.InjectionNotification, object: nil)
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = ViewController<View>()
+        let viewController = PlaygroundViewsTableViewController()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
 

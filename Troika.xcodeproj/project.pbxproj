@@ -109,6 +109,7 @@
 		AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; };
 		AA7313D720207900008A7251 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */; };
 		AA7313D92020792C008A7251 /* RegisterViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D82020792C008A7251 /* RegisterViewPlayground.swift */; };
+		4577F61E201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,7 @@
 		AA7313D4202078D4008A7251 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewDefaultData.swift; sourceTree = "<group>"; };
 		AA7313D82020792C008A7251 /* RegisterViewPlayground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewPlayground.swift; sourceTree = "<group>"; };
+		4577F61D201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundViewsTableViewController.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -265,6 +267,7 @@
 				144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */,
 				144351C31FBE2FA2007B2229 /* AppDelegate.swift */,
 				146D3C3F1FBE466D00124B76 /* ViewController.swift */,
+				4577F61D201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -902,6 +905,7 @@
 				4447F7071FDB2B330033DBC1 /* LoginViewDefaultData.swift in Sources */,
 				146D3C401FBE466D00124B76 /* ViewController.swift in Sources */,
 				144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */,
+				4577F61E201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift in Sources */,
 				4447F70A1FDB2B4C0033DBC1 /* MarketGridViewPlayground.swift in Sources */,
 				4447F70E1FDB2B590033DBC1 /* PreviewHelpers.swift in Sources */,
 				4447F7081FDB2B330033DBC1 /* LoginViewPlayground.swift in Sources */,
