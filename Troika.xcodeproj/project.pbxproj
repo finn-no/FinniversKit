@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14405C801FAFC3A900D03E04 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14405C7E1FAFC3A900D03E04 /* App.swift */; };
 		144351B71FBE2BC1007B2229 /* PlaygroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */; };
 		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
 		144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* AppDelegate.swift */; };
@@ -146,7 +145,6 @@
 /* Begin PBXFileReference section */
 		14405C5F1FAFBBF000D03E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14405C741FAFBD1800D03E04 /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		14405C7E1FAFC3A900D03E04 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundImage.swift; sourceTree = "<group>"; };
 		144351BA1FBE2BF1007B2229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		144351C31FBE2FA2007B2229 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 				144351BA1FBE2BF1007B2229 /* Assets.xcassets */,
 				14BE24B21FAFCC32004AC010 /* Default-568h@2x.png */,
 				14405C5F1FAFBBF000D03E04 /* Info.plist */,
-				14405C7E1FAFC3A900D03E04 /* App.swift */,
 				144351B01FBE2BC1007B2229 /* PlaygroundImage.swift */,
 				144351C31FBE2FA2007B2229 /* AppDelegate.swift */,
 				146D3C3F1FBE466D00124B76 /* ViewController.swift */,
@@ -910,7 +907,6 @@
 				4447F7081FDB2B330033DBC1 /* LoginViewPlayground.swift in Sources */,
 				4447F70C1FDB2B540033DBC1 /* PreviewGridCellPlayground.swift in Sources */,
 				4447F70D1FDB2B590033DBC1 /* PreviewGridViewPlayground.swift in Sources */,
-				14405C801FAFC3A900D03E04 /* App.swift in Sources */,
 				1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */,
 				4447F7041FDB2B1F0033DBC1 /* ButtonPlayground.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonPlayground.swift in Sources */,
