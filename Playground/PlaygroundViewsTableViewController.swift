@@ -4,7 +4,7 @@
 
 import UIKit
 
- let views = [
+let views = [
     ButtonPlayground(),
     LabelPlayground(),
     LoginViewPlayground(),
@@ -16,7 +16,7 @@ import UIKit
     TextFieldPlayground(),
     ToastPlayground(),
     EmptyViewPlayground(),
- ]
+]
 
 let viewNames: [String] = [
     "ButtonPlayground",
