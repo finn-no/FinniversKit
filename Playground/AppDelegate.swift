@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Viewable {
         NotificationCenter.default.addObserver(self, selector: #selector(injected(notification:)), name: Notification.Name.InjectionNotification, object: nil)
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = ViewController<View>()
+        let viewController = PlaygroundViewsTableViewController()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
 
