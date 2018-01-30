@@ -181,7 +181,6 @@ public class LoginView: UIView {
         contentView.addSubview(userTermsStackView)
         contentView.addSubview(customerServiceButton)
 
-
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
