@@ -5,10 +5,12 @@
 import Troika
 
 extension AppDelegate {
+
     // ** Components **
     // ButtonPlayground
     // LabelPlayground
     // LoginViewPlayground
+    // RegisterViewPlayground
     // MarketGridViewPlayground
     // MarketGridCellPlayground
     // PreviewGridViewPlayground
@@ -21,5 +23,5 @@ extension AppDelegate {
     // ** Others **
     // MarketView
 
-    typealias View = LoginViewPlayground
+    typealias View = RegisterViewPlayground
 }

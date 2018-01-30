@@ -69,7 +69,16 @@ public class TextField: UIView {
         return button
     }()
 
-    private lazy var textField: UITextField = {
+    private lazy var underline: UIView = {
+        let view = UIView()
+        view.backgroundColor = .stone
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    // MARK: - External properties
+
+    public lazy var textField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.body
@@ -83,15 +92,6 @@ public class TextField: UIView {
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
-
-    private lazy var underline: UIView = {
-        let view = UIView()
-        view.backgroundColor = .stone
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    // MARK: - External properties
 
     public let inputType: InputType
     public var placeholderText: String = "" {
