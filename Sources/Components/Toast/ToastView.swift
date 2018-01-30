@@ -122,7 +122,7 @@ public class ToastView: UIView {
         addSubview(actionButton)
 
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.mediumLargeSpacing),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.widthAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.width),
             imageView.heightAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.height),

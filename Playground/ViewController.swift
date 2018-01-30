@@ -4,10 +4,6 @@
 
 import UIKit
 
-protocol Viewable {
-    associatedtype View
-}
-
 class ViewController<View: UIView>: UIViewController {
     init() { super.init(nibName: nil, bundle: nil) }
     required init?(coder aDecoder: NSCoder) { fatalError() }
