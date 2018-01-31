@@ -105,11 +105,12 @@
 		44C4E8DE1FFBA714000B014D /* Troika.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* Troika.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44D32C281FB07850001E86D6 /* Troika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; };
 		44D32C291FB07850001E86D6 /* Troika.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Troika.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4577F61E201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift */; };
 		AA7313D3202078B8008A7251 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D2202078B8008A7251 /* RegisterView.swift */; };
 		AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; };
 		AA7313D720207900008A7251 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */; };
 		AA7313D92020792C008A7251 /* RegisterViewPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D82020792C008A7251 /* RegisterViewPlayground.swift */; };
-		4577F61E201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift */; };
+		AAC1AFB42021058000C71B7C /* Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1AFB32021058000C71B7C /* Playground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,11 +223,12 @@
 		44898D691FE5BA1600F6017B /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		44898D6A1FE5BA1600F6017B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		44898D6D1FE5BAB300F6017B /* Spacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		4577F61D201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundViewsTableViewController.swift; sourceTree = "<group>"; };
 		AA7313D2202078B8008A7251 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AA7313D4202078D4008A7251 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewDefaultData.swift; sourceTree = "<group>"; };
 		AA7313D82020792C008A7251 /* RegisterViewPlayground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewPlayground.swift; sourceTree = "<group>"; };
-		4577F61D201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundViewsTableViewController.swift; sourceTree = "<group>"; };
+		AAC1AFB32021058000C71B7C /* Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 				144351C31FBE2FA2007B2229 /* AppDelegate.swift */,
 				146D3C3F1FBE466D00124B76 /* ViewController.swift */,
 				4577F61D201F3D54009CBAE8 /* PlaygroundViewsTableViewController.swift */,
+				AAC1AFB32021058000C71B7C /* Playground.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -918,6 +921,7 @@
 				4447F7061FDB2B2C0033DBC1 /* LabelPlayground.swift in Sources */,
 				4447F7111FDB2B8C0033DBC1 /* ToastPlayground.swift in Sources */,
 				4447F7051FDB2B270033DBC1 /* EmptyViewPlayground.swift in Sources */,
+				AAC1AFB42021058000C71B7C /* Playground.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
 				4447F70B1FDB2B4C0033DBC1 /* MarketHelpers.swift in Sources */,
 				4447F7091FDB2B470033DBC1 /* MarketGridCellPlayground.swift in Sources */,

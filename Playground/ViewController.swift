@@ -5,10 +5,6 @@
 import UIKit
 
 class ViewController<View: UIView>: UIViewController {
-    init() { super.init(nibName: nil, bundle: nil) }
-    required init?(coder aDecoder: NSCoder) { fatalError() }
-
-    private var customView: View { return self.view as! View }
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -28,5 +24,13 @@ class ViewController<View: UIView>: UIViewController {
             playgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             playgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
+        doubleTap.numberOfTapsRequired = 2
+        view.addGestureRecognizer(doubleTap)
+    }
+
+    @objc func didDoubleTap() {
+        dismiss(animated: true, completion: nil)
     }
 }
