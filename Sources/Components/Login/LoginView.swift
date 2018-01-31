@@ -9,8 +9,8 @@ import UIKit
 public protocol LoginViewDelegate: NSObjectProtocol {
 
     func loginView(_ loginView: LoginView, didSelectForgetPasswordButton button: Button)
-    func loginView(_ loginView: LoginView, didSelectLoginButton button: Button)
-    func loginView(_ loginView: LoginView, didSelectNewUserButton button: Button)
+    func loginView(_ loginView: LoginView, didSelectLoginButton button: Button, with email: String, and password: String)
+    func loginView(_ loginView: LoginView, didSelectNewUserButton button: Button, with email: String)
     func loginView(_ loginView: LoginView, didSelectCustomerServiceButton button: Button)
 
     func loginView(_ loginView: LoginView, didOccurIncompleteCredentials incompleteCredentials: Bool)
@@ -99,6 +99,20 @@ public class LoginView: UIView {
 
     fileprivate let buttonHeight: CGFloat = 44
 
+    private var email: String {
+        guard let email = emailTextField.text else {
+            return ""
+        }
+        return email
+    }
+
+    private var password: String {
+        guard let password = passwordTextField.text else {
+            return ""
+        }
+        return password
+    }
+
     // MARK: - Dependency injection
 
     public var model: LoginViewModel? {
@@ -119,13 +133,6 @@ public class LoginView: UIView {
     // MARK: - External properties
 
     public weak var delegate: LoginViewDelegate?
-
-    public var email: String {
-        guard let email = emailTextField.text else {
-            return ""
-        }
-        return email
-    }
 
     // MARK: - Setup
 
@@ -202,7 +209,7 @@ public class LoginView: UIView {
     // MARK: - Actions
 
     @objc func loginButtonSelected() {
-        delegate?.loginView(self, didSelectLoginButton: loginButton)
+        delegate?.loginView(self, didSelectLoginButton: loginButton, with: email, and: password)
     }
 
     @objc func forgotPasswordButtonSelected() {
@@ -210,7 +217,7 @@ public class LoginView: UIView {
     }
 
     @objc func newUserButtonSelected() {
-        delegate?.loginView(self, didSelectNewUserButton: newUserButton)
+        delegate?.loginView(self, didSelectNewUserButton: newUserButton, with: email)
     }
 
     @objc func customerServiceButtonSelected() {
