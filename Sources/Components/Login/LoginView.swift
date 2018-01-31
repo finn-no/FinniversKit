@@ -9,7 +9,7 @@ import UIKit
 public protocol LoginViewDelegate: NSObjectProtocol {
 
     func loginView(_ loginView: LoginView, didSelectForgetPasswordButton button: Button)
-    func loginView(_ loginView: LoginView, didSelectLoginButton button: Button)
+    func loginView(_ loginView: LoginView, didSelectLoginButton button: Button, email: String, password: String)
     func loginView(_ loginView: LoginView, didSelectNewUserButton button: Button)
     func loginView(_ loginView: LoginView, didSelectCustomerServiceButton button: Button)
 
@@ -127,6 +127,13 @@ public class LoginView: UIView {
         return email
     }
 
+    public var password: String {
+        guard let password = passwordTextField.text else {
+            return ""
+        }
+        return password
+    }
+
     // MARK: - Setup
 
     public override init(frame: CGRect) {
@@ -202,7 +209,7 @@ public class LoginView: UIView {
     // MARK: - Actions
 
     @objc func loginButtonSelected() {
-        delegate?.loginView(self, didSelectLoginButton: loginButton)
+        delegate?.loginView(self, didSelectLoginButton: loginButton, email: email, password: password)
     }
 
     @objc func forgotPasswordButtonSelected() {

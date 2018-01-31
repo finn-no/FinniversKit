@@ -9,7 +9,7 @@ import UIKit
 public protocol RegisterViewDelegate: NSObjectProtocol {
 
     func registerView(_ registerView: RegisterView, didSelectLoginButton button: Button)
-    func registerView(_ registerView: RegisterView, didSelectRegisterButton button: Button)
+    func registerView(_ registerView: RegisterView, didSelectRegisterButton button: Button, email: String, password: String)
     func registerView(_ registerView: RegisterView, didSelectUserTermsButton button: Button)
     func registerView(_ registerView: RegisterView, didSelectCustomerServiceButton button: Button)
 
@@ -142,6 +142,13 @@ public class RegisterView: UIView {
         return email
     }
 
+    public var password: String {
+        guard let password = passwordTextField.text else {
+            return ""
+        }
+        return password
+    }
+
     // MARK: - Setup
 
     public override init(frame: CGRect) {
@@ -222,7 +229,7 @@ public class RegisterView: UIView {
     }
 
     @objc func registerButtonSelected() {
-        delegate?.registerView(self, didSelectRegisterButton: registerButton)
+        delegate?.registerView(self, didSelectRegisterButton: registerButton, email: email, password: password)
     }
 
     @objc func userTermsButtonSelected() {
