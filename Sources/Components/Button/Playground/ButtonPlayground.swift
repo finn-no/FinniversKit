@@ -95,12 +95,10 @@ public class ButtonPlayground: UIView {
             destructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
             flatButton.topAnchor.constraint(equalTo: destructiveButton.bottomAnchor, constant: .mediumLargeSpacing),
-            flatButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            flatButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            flatButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             linkButton.topAnchor.constraint(equalTo: flatButton.bottomAnchor, constant: .mediumLargeSpacing),
-            linkButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            linkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            linkButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             button1.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .mediumLargeSpacing),
             button1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
@@ -122,12 +120,10 @@ public class ButtonPlayground: UIView {
             disabledDestructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
             disabledFlatButton.topAnchor.constraint(equalTo: disabledDestructiveButton.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledFlatButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            disabledFlatButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            disabledFlatButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledLinkButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            disabledLinkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            disabledLinkButton.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
     }
 }

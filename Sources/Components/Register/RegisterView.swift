@@ -8,8 +8,8 @@ import UIKit
 
 public protocol RegisterViewDelegate: NSObjectProtocol {
 
-    func registerView(_ registerView: RegisterView, didSelectLoginButton button: Button)
-    func registerView(_ registerView: RegisterView, didSelectRegisterButton button: Button)
+    func registerView(_ registerView: RegisterView, didSelectLoginButton button: Button, with email: String)
+    func registerView(_ registerView: RegisterView, didSelectRegisterButton button: Button, with email: String, and password: String)
     func registerView(_ registerView: RegisterView, didSelectUserTermsButton button: Button)
     func registerView(_ registerView: RegisterView, didSelectCustomerServiceButton button: Button)
 
@@ -113,6 +113,20 @@ public class RegisterView: UIView {
 
     fileprivate let buttonHeight: CGFloat = 44
 
+    private var email: String {
+        guard let email = emailTextField.text else {
+            return ""
+        }
+        return email
+    }
+
+    private var password: String {
+        guard let password = passwordTextField.text else {
+            return ""
+        }
+        return password
+    }
+
     // MARK: - Dependency injection
 
     public var model: RegisterViewModel? {
@@ -135,11 +149,10 @@ public class RegisterView: UIView {
 
     public weak var delegate: RegisterViewDelegate?
 
-    public var email: String {
-        guard let email = emailTextField.text else {
-            return ""
-        }
-        return email
+    // MARK: - External methods
+
+    public func update(email: String) {
+        emailTextField.textField.text = email
     }
 
     // MARK: - Setup
@@ -218,18 +231,22 @@ public class RegisterView: UIView {
     // MARK: - Actions
 
     @objc func loginButtonSelected() {
-        delegate?.registerView(self, didSelectLoginButton: loginButton)
+        handleTap()
+        delegate?.registerView(self, didSelectLoginButton: loginButton, with: email)
     }
 
     @objc func registerButtonSelected() {
-        delegate?.registerView(self, didSelectRegisterButton: registerButton)
+        handleTap()
+        delegate?.registerView(self, didSelectRegisterButton: registerButton, with: email, and: password)
     }
 
     @objc func userTermsButtonSelected() {
+        handleTap()
         delegate?.registerView(self, didSelectUserTermsButton: userTermsButton)
     }
 
     @objc func customerServiceButtonSelected() {
+        handleTap()
         delegate?.registerView(self, didSelectCustomerServiceButton: userTermsButton)
     }
 
