@@ -89,6 +89,7 @@ public class TextField: UIView {
         textField.rightView = clearButton
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
+        textField.enablesReturnKeyAutomatically = true
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()

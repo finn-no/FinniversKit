@@ -149,6 +149,12 @@ public class RegisterView: UIView {
 
     public weak var delegate: RegisterViewDelegate?
 
+    // MARK: - External methods
+
+    public func update(email: String) {
+        emailTextField.textField.text = email
+    }
+
     // MARK: - Setup
 
     public override init(frame: CGRect) {
@@ -225,18 +231,22 @@ public class RegisterView: UIView {
     // MARK: - Actions
 
     @objc func loginButtonSelected() {
+        handleTap()
         delegate?.registerView(self, didSelectLoginButton: loginButton, with: email)
     }
 
     @objc func registerButtonSelected() {
+        handleTap()
         delegate?.registerView(self, didSelectRegisterButton: registerButton, with: email, and: password)
     }
 
     @objc func userTermsButtonSelected() {
+        handleTap()
         delegate?.registerView(self, didSelectUserTermsButton: userTermsButton)
     }
 
     @objc func customerServiceButtonSelected() {
+        handleTap()
         delegate?.registerView(self, didSelectCustomerServiceButton: userTermsButton)
     }
 

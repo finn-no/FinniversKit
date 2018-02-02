@@ -134,6 +134,12 @@ public class LoginView: UIView {
 
     public weak var delegate: LoginViewDelegate?
 
+    // MARK: - External methods
+
+    public func update(email: String) {
+        emailTextField.textField.text = email
+    }
+
     // MARK: - Setup
 
     public override init(frame: CGRect) {
@@ -209,18 +215,22 @@ public class LoginView: UIView {
     // MARK: - Actions
 
     @objc func loginButtonSelected() {
+        handleTap()
         delegate?.loginView(self, didSelectLoginButton: loginButton, with: email, and: password)
     }
 
     @objc func forgotPasswordButtonSelected() {
+        handleTap()
         delegate?.loginView(self, didSelectForgetPasswordButton: forgotPasswordButton)
     }
 
     @objc func newUserButtonSelected() {
+        handleTap()
         delegate?.loginView(self, didSelectNewUserButton: newUserButton, with: email)
     }
 
     @objc func customerServiceButtonSelected() {
+        handleTap()
         delegate?.loginView(self, didSelectCustomerServiceButton: customerServiceButton)
     }
 
