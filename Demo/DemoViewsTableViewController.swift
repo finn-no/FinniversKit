@@ -18,6 +18,7 @@ class DemoViewsTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.backgroundColor = .white
         tableView.delegate = self
+        tableView.separatorStyle = .none
     }
 }
 
@@ -31,7 +32,11 @@ extension DemoViewsTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = TroikaViews.all[indexPath.row].rawValue
+        let rawClassName = TroikaViews.all[indexPath.row].rawValue
+        let formattedName = rawClassName.replacingOccurrences(of: "DemoView", with: "").capitalizingFirstLetter()
+        cell.textLabel?.font = UIFont.title3
+        cell.textLabel?.text = formattedName
+
         return cell
     }
 
@@ -39,5 +44,11 @@ extension DemoViewsTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedView = TroikaViews.all[indexPath.row]
         present(selectedView.viewController(), animated: true)
+    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + dropFirst()
     }
 }
