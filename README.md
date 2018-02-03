@@ -3,7 +3,7 @@
 
 Troika is the iOS native implementation of FINN's design system. [You can find the reference here](http://finnivers.finn.no/d/2koIuZwTP5cy/design-system). This framework is composed of small components that are meant to be used as building blocks of the FINN iOS app. 
 
-In order to develop our components in an isolated way we have structured them so they can be used idependently of each other. Check the [App.swift](/Demo/App.swift) for a list of all our components, to try a different component change the `typealias View` to a different Demo and run the project.
+In order to develop our components in an isolated way we have structured them so they can be used idependently of each other. Run the Demo project for a list of all our components.
 
 ## Installation
 
