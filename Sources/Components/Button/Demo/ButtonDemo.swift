@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class ButtonPlayground: UIView {
+public class ButtonDemo: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 

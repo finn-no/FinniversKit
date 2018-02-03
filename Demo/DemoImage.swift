@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 import Troika
 
-public enum PlaygroundImage: String {
+public enum DemoImage: String {
     case bil
     case bT
     case eiendom

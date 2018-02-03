@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class TextFieldPlayground: UIView {
+public class TextFieldDemo: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 

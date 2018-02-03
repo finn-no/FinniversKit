@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-               BuildableName = "Playground.app"
-               BlueprintName = "Playground"
+               BuildableName = "Demo.app"
+               BlueprintName = "Demo"
                ReferencedContainer = "container:Troika.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-            BuildableName = "Playground.app"
-            BlueprintName = "Playground"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
             ReferencedContainer = "container:Troika.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -68,8 +68,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-            BuildableName = "Playground.app"
-            BlueprintName = "Playground"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
             ReferencedContainer = "container:Troika.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -87,8 +87,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-            BuildableName = "Playground.app"
-            BlueprintName = "Playground"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
             ReferencedContainer = "container:Troika.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

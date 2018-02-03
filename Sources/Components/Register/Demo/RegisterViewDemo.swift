@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class RegisterViewPlayground: UIView {
+public class RegisterViewDemo: UIView {
 
     private lazy var registerView: RegisterView = {
         let registerView = RegisterView()
