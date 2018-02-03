@@ -10,7 +10,7 @@ In order to develop our components in an isolated way we have structured them so
 ### Carthage
 
 ```
-github "finn-no/troika-ios" "master"
+github "finn-no/Troika" "master"
 ```
 
 ## Usage
