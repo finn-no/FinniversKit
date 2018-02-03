@@ -52,20 +52,20 @@
 		4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */; };
 		4447F7021FDB2B110033DBC1 /* Troika.h in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C51FDB2B110033DBC1 /* Troika.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4447F7031FDB2B110033DBC1 /* Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* Troika.swift */; };
-		4447F7041FDB2B1F0033DBC1 /* ButtonDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6691FDB2B110033DBC1 /* ButtonDemo.swift */; };
-		4447F7051FDB2B270033DBC1 /* EmptyViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6731FDB2B110033DBC1 /* EmptyViewDemo.swift */; };
-		4447F7061FDB2B2C0033DBC1 /* LabelDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6781FDB2B110033DBC1 /* LabelDemo.swift */; };
+		4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */; };
+		4447F7051FDB2B270033DBC1 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6731FDB2B110033DBC1 /* EmptyViewDemoView.swift */; };
+		4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6781FDB2B110033DBC1 /* LabelDemoView.swift */; };
 		4447F7071FDB2B330033DBC1 /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F67D1FDB2B110033DBC1 /* LoginViewDefaultData.swift */; };
-		4447F7081FDB2B330033DBC1 /* LoginViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F67E1FDB2B110033DBC1 /* LoginViewDemo.swift */; };
-		4447F7091FDB2B470033DBC1 /* MarketGridCellDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6871FDB2B110033DBC1 /* MarketGridCellDemo.swift */; };
-		4447F70A1FDB2B4C0033DBC1 /* MarketGridViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F68C1FDB2B110033DBC1 /* MarketGridViewDemo.swift */; };
+		4447F7081FDB2B330033DBC1 /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F67E1FDB2B110033DBC1 /* LoginViewDemoView.swift */; };
+		4447F7091FDB2B470033DBC1 /* MarketGridCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6871FDB2B110033DBC1 /* MarketGridCellDemoView.swift */; };
+		4447F70A1FDB2B4C0033DBC1 /* MarketGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F68C1FDB2B110033DBC1 /* MarketGridViewDemoView.swift */; };
 		4447F70B1FDB2B4C0033DBC1 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F68D1FDB2B110033DBC1 /* MarketHelpers.swift */; };
-		4447F70C1FDB2B540033DBC1 /* PreviewGridCellDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6911FDB2B110033DBC1 /* PreviewGridCellDemo.swift */; };
-		4447F70D1FDB2B590033DBC1 /* PreviewGridViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6961FDB2B110033DBC1 /* PreviewGridViewDemo.swift */; };
+		4447F70C1FDB2B540033DBC1 /* PreviewGridCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6911FDB2B110033DBC1 /* PreviewGridCellDemoView.swift */; };
+		4447F70D1FDB2B590033DBC1 /* PreviewGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6961FDB2B110033DBC1 /* PreviewGridViewDemoView.swift */; };
 		4447F70E1FDB2B590033DBC1 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6971FDB2B110033DBC1 /* PreviewHelpers.swift */; };
-		4447F70F1FDB2B650033DBC1 /* RibbonDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69E1FDB2B110033DBC1 /* RibbonDemo.swift */; };
-		4447F7101FDB2B810033DBC1 /* TextFieldDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A51FDB2B110033DBC1 /* TextFieldDemo.swift */; };
-		4447F7111FDB2B8C0033DBC1 /* ToastDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AA1FDB2B110033DBC1 /* ToastDemo.swift */; };
+		4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69E1FDB2B110033DBC1 /* RibbonDemoView.swift */; };
+		4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A51FDB2B110033DBC1 /* TextFieldDemoView.swift */; };
+		4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AA1FDB2B110033DBC1 /* ToastDemoView.swift */; };
 		44898D541FE5B40D00F6017B /* Layout+HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */; };
 		44898D621FE5B9C200F6017B /* UIImage+Troika.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImage+Troika.swift */; };
 		44898D641FE5B9C200F6017B /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionView+Identifiable.swift */; };
@@ -108,7 +108,7 @@
 		AA7313D3202078B8008A7251 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D2202078B8008A7251 /* RegisterView.swift */; };
 		AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; };
 		AA7313D720207900008A7251 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */; };
-		AA7313D92020792C008A7251 /* RegisterViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D82020792C008A7251 /* RegisterViewDemo.swift */; };
+		AA7313D92020792C008A7251 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D82020792C008A7251 /* RegisterViewDemoView.swift */; };
 		AAC1AFB42021058000C71B7C /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1AFB32021058000C71B7C /* Demo.swift */; };
 /* End PBXBuildFile section */
 
@@ -158,44 +158,44 @@
 		441D699A1FEA947600CD919A /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		4447F6661FDB2B110033DBC1 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		4447F6671FDB2B110033DBC1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		4447F6691FDB2B110033DBC1 /* ButtonDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDemo.swift; sourceTree = "<group>"; };
+		4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDemoView.swift; sourceTree = "<group>"; };
 		4447F66B1FDB2B110033DBC1 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		4447F66D1FDB2B110033DBC1 /* AttachableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachableView.swift; sourceTree = "<group>"; };
 		4447F66E1FDB2B110033DBC1 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		4447F66F1FDB2B110033DBC1 /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		4447F6701FDB2B110033DBC1 /* RoundedRectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectangleView.swift; sourceTree = "<group>"; };
 		4447F6711FDB2B110033DBC1 /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
-		4447F6731FDB2B110033DBC1 /* EmptyViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemo.swift; sourceTree = "<group>"; };
+		4447F6731FDB2B110033DBC1 /* EmptyViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoView.swift; sourceTree = "<group>"; };
 		4447F6751FDB2B110033DBC1 /* Label+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
 		4447F6761FDB2B110033DBC1 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		4447F6781FDB2B110033DBC1 /* LabelDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDemo.swift; sourceTree = "<group>"; };
+		4447F6781FDB2B110033DBC1 /* LabelDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDemoView.swift; sourceTree = "<group>"; };
 		4447F67A1FDB2B110033DBC1 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4447F67B1FDB2B110033DBC1 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4447F67D1FDB2B110033DBC1 /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
-		4447F67E1FDB2B110033DBC1 /* LoginViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDemo.swift; sourceTree = "<group>"; };
+		4447F67E1FDB2B110033DBC1 /* LoginViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDemoView.swift; sourceTree = "<group>"; };
 		4447F6841FDB2B110033DBC1 /* MarketGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
 		4447F6851FDB2B110033DBC1 /* MarketGridModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridModel.swift; sourceTree = "<group>"; };
-		4447F6871FDB2B110033DBC1 /* MarketGridCellDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellDemo.swift; sourceTree = "<group>"; };
+		4447F6871FDB2B110033DBC1 /* MarketGridCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellDemoView.swift; sourceTree = "<group>"; };
 		4447F6891FDB2B110033DBC1 /* MarketGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridView.swift; sourceTree = "<group>"; };
 		4447F68A1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewConfigurable.swift; sourceTree = "<group>"; };
-		4447F68C1FDB2B110033DBC1 /* MarketGridViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewDemo.swift; sourceTree = "<group>"; };
+		4447F68C1FDB2B110033DBC1 /* MarketGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewDemoView.swift; sourceTree = "<group>"; };
 		4447F68D1FDB2B110033DBC1 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
-		4447F6911FDB2B110033DBC1 /* PreviewGridCellDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCellDemo.swift; sourceTree = "<group>"; };
+		4447F6911FDB2B110033DBC1 /* PreviewGridCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCellDemoView.swift; sourceTree = "<group>"; };
 		4447F6921FDB2B110033DBC1 /* PreviewGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCell.swift; sourceTree = "<group>"; };
 		4447F6931FDB2B110033DBC1 /* PreviewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
-		4447F6961FDB2B110033DBC1 /* PreviewGridViewDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewDemo.swift; sourceTree = "<group>"; };
+		4447F6961FDB2B110033DBC1 /* PreviewGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewDemoView.swift; sourceTree = "<group>"; };
 		4447F6971FDB2B110033DBC1 /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
 		4447F6981FDB2B110033DBC1 /* PreviewGridHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridHeaderView.swift; sourceTree = "<group>"; };
 		4447F6991FDB2B110033DBC1 /* PreviewGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
 		4447F69A1FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
 		4447F69B1FDB2B110033DBC1 /* PreviewGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
-		4447F69E1FDB2B110033DBC1 /* RibbonDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonDemo.swift; sourceTree = "<group>"; };
+		4447F69E1FDB2B110033DBC1 /* RibbonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonDemoView.swift; sourceTree = "<group>"; };
 		4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ribbon+Style.swift"; sourceTree = "<group>"; };
 		4447F6A01FDB2B110033DBC1 /* RibbonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
-		4447F6A51FDB2B110033DBC1 /* TextFieldDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDemo.swift; sourceTree = "<group>"; };
+		4447F6A51FDB2B110033DBC1 /* TextFieldDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDemoView.swift; sourceTree = "<group>"; };
 		4447F6A61FDB2B110033DBC1 /* TextField+InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextField+InputType.swift"; sourceTree = "<group>"; };
 		4447F6A71FDB2B110033DBC1 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		4447F6AA1FDB2B110033DBC1 /* ToastDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastDemo.swift; sourceTree = "<group>"; };
+		4447F6AA1FDB2B110033DBC1 /* ToastDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastDemoView.swift; sourceTree = "<group>"; };
 		4447F6AB1FDB2B110033DBC1 /* ToastView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ToastView+Style.swift"; sourceTree = "<group>"; };
 		4447F6AD1FDB2B110033DBC1 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		4447F6B51FDB2B110033DBC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		AA7313D2202078B8008A7251 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AA7313D4202078D4008A7251 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewDefaultData.swift; sourceTree = "<group>"; };
-		AA7313D82020792C008A7251 /* RegisterViewDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewDemo.swift; sourceTree = "<group>"; };
+		AA7313D82020792C008A7251 /* RegisterViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewDemoView.swift; sourceTree = "<group>"; };
 		AAC1AFB32021058000C71B7C /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* Troika.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Troika.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -367,7 +367,7 @@
 		4447F6681FDB2B110033DBC1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4447F6691FDB2B110033DBC1 /* ButtonDemo.swift */,
+				4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -397,7 +397,7 @@
 		4447F6721FDB2B110033DBC1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4447F6731FDB2B110033DBC1 /* EmptyViewDemo.swift */,
+				4447F6731FDB2B110033DBC1 /* EmptyViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -415,7 +415,7 @@
 		4447F6771FDB2B110033DBC1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4447F6781FDB2B110033DBC1 /* LabelDemo.swift */,
+				4447F6781FDB2B110033DBC1 /* LabelDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -434,7 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				4447F67D1FDB2B110033DBC1 /* LoginViewDefaultData.swift */,
-				4447F67E1FDB2B110033DBC1 /* LoginViewDemo.swift */,
+				4447F67E1FDB2B110033DBC1 /* LoginViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -461,7 +461,7 @@
 		4447F6861FDB2B110033DBC1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4447F6871FDB2B110033DBC1 /* MarketGridCellDemo.swift */,
+				4447F6871FDB2B110033DBC1 /* MarketGridCellDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -479,7 +479,7 @@
 		4447F68B1FDB2B110033DBC1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4447F68C1FDB2B110033DBC1 /* MarketGridViewDemo.swift */,
+				4447F68C1FDB2B110033DBC1 /* MarketGridViewDemoView.swift */,
 				4447F68D1FDB2B110033DBC1 /* MarketHelpers.swift */,
 			);
 			path = Demo;
@@ -507,7 +507,7 @@
 		4447F6901FDB2B110033DBC1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4447F6911FDB2B110033DBC1 /* PreviewGridCellDemo.swift */,
+				4447F6911FDB2B110033DBC1 /* PreviewGridCellDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -527,7 +527,7 @@
 		4447F6951FDB2B110033DBC1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4447F6961FDB2B110033DBC1 /* PreviewGridViewDemo.swift */,
+				4447F6961FDB2B110033DBC1 /* PreviewGridViewDemoView.swift */,
 				4447F6971FDB2B110033DBC1 /* PreviewHelpers.swift */,
 			);
 			path = Demo;
@@ -546,7 +546,7 @@
 		4447F69D1FDB2B110033DBC1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4447F69E1FDB2B110033DBC1 /* RibbonDemo.swift */,
+				4447F69E1FDB2B110033DBC1 /* RibbonDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -564,7 +564,7 @@
 		4447F6A41FDB2B110033DBC1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4447F6A51FDB2B110033DBC1 /* TextFieldDemo.swift */,
+				4447F6A51FDB2B110033DBC1 /* TextFieldDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -582,7 +582,7 @@
 		4447F6A91FDB2B110033DBC1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4447F6AA1FDB2B110033DBC1 /* ToastDemo.swift */,
+				4447F6AA1FDB2B110033DBC1 /* ToastDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -686,7 +686,7 @@
 			isa = PBXGroup;
 			children = (
 				AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */,
-				AA7313D82020792C008A7251 /* RegisterViewDemo.swift */,
+				AA7313D82020792C008A7251 /* RegisterViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -905,22 +905,22 @@
 				4447F7071FDB2B330033DBC1 /* LoginViewDefaultData.swift in Sources */,
 				146D3C401FBE466D00124B76 /* ViewController.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
-				4447F70A1FDB2B4C0033DBC1 /* MarketGridViewDemo.swift in Sources */,
+				4447F70A1FDB2B4C0033DBC1 /* MarketGridViewDemoView.swift in Sources */,
 				4447F70E1FDB2B590033DBC1 /* PreviewHelpers.swift in Sources */,
-				4447F7081FDB2B330033DBC1 /* LoginViewDemo.swift in Sources */,
-				4447F70C1FDB2B540033DBC1 /* PreviewGridCellDemo.swift in Sources */,
-				4447F70D1FDB2B590033DBC1 /* PreviewGridViewDemo.swift in Sources */,
+				4447F7081FDB2B330033DBC1 /* LoginViewDemoView.swift in Sources */,
+				4447F70C1FDB2B540033DBC1 /* PreviewGridCellDemoView.swift in Sources */,
+				4447F70D1FDB2B590033DBC1 /* PreviewGridViewDemoView.swift in Sources */,
 				1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */,
-				4447F7041FDB2B1F0033DBC1 /* ButtonDemo.swift in Sources */,
-				4447F70F1FDB2B650033DBC1 /* RibbonDemo.swift in Sources */,
-				4447F7101FDB2B810033DBC1 /* TextFieldDemo.swift in Sources */,
-				4447F7061FDB2B2C0033DBC1 /* LabelDemo.swift in Sources */,
-				4447F7111FDB2B8C0033DBC1 /* ToastDemo.swift in Sources */,
-				4447F7051FDB2B270033DBC1 /* EmptyViewDemo.swift in Sources */,
+				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
+				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
+				4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */,
+				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
+				4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */,
+				4447F7051FDB2B270033DBC1 /* EmptyViewDemoView.swift in Sources */,
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
 				4447F70B1FDB2B4C0033DBC1 /* MarketHelpers.swift in Sources */,
-				4447F7091FDB2B470033DBC1 /* MarketGridCellDemo.swift in Sources */,
+				4447F7091FDB2B470033DBC1 /* MarketGridCellDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,7 +962,7 @@
 				4447F6D51FDB2B110033DBC1 /* LoginViewModel.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				4447F6D41FDB2B110033DBC1 /* LoginView.swift in Sources */,
-				AA7313D92020792C008A7251 /* RegisterViewDemo.swift in Sources */,
+				AA7313D92020792C008A7251 /* RegisterViewDemoView.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				44898D6B1FE5BA1600F6017B /* Font.swift in Sources */,
 				4447F6CE1FDB2B110033DBC1 /* RoundedRectangleView.swift in Sources */,

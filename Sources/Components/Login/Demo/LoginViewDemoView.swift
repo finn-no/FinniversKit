@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class LoginViewDemo: UIView {
+public class LoginViewDemoView: UIView {
 
     private lazy var loginView: LoginView = {
         let loginView = LoginView()

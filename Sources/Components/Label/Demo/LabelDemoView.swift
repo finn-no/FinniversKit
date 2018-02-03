@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class LabelDemo: UIView {
+public class LabelDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 

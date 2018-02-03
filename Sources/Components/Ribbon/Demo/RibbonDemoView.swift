@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class RibbonDemo: UIView {
+public class RibbonDemoView: UIView {
 
     public lazy var headerLabel: Label = {
         let label = Label(style: .title1)
