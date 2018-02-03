@@ -1,4 +1,4 @@
-<p align="center"><img width=100% src="https://raw.githubusercontent.com/finn-no/Troika/master/GitHub/cover.png"></p>
+<p align="center"><img width=100% src="https://raw.githubusercontent.com/finn-no/Troika/master/GitHub/cover-v2.png"></p>
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![](https://img.shields.io/badge/platform-iOS-lightgrey.svg) ![](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)
 
