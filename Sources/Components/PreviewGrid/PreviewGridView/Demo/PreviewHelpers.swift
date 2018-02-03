@@ -31,7 +31,6 @@ public struct PreviewDataModel: PreviewModel {
 
 /// For use with PreviewGridView.
 public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, PreviewGridViewDataSource {
-
     private let models = PreviewDataModelFactory.create(numberOfModels: 9)
 
     public func willDisplay(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
@@ -80,7 +79,6 @@ public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, P
 
 /// For use with PreviewGridCell.
 public class APreviewGridCellDataSource: NSObject, PreviewGridCellDataSource {
-
     public func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
@@ -107,7 +105,6 @@ public class APreviewGridCellDataSource: NSObject, PreviewGridCellDataSource {
 
 /// Creates PreviewDataModels
 public struct PreviewDataModelFactory {
-
     private struct ImageSource {
         let path: String
         let size: CGSize

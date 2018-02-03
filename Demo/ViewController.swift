@@ -5,7 +5,6 @@
 import UIKit
 
 class ViewController<View: UIView>: UIViewController {
-
     override var prefersStatusBarHidden: Bool {
         return true
     }

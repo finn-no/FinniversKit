@@ -96,8 +96,8 @@ public class PreviewGridView: UIView {
 }
 
 // MARK: - UICollectionViewDelegate
-extension PreviewGridView: UICollectionViewDelegate {
 
+extension PreviewGridView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelect(itemAtIndex: indexPath.row, inPreviewGridView: self)
     }
@@ -108,8 +108,8 @@ extension PreviewGridView: UICollectionViewDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
-extension PreviewGridView: UICollectionViewDataSource {
 
+extension PreviewGridView: UICollectionViewDataSource {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -156,8 +156,8 @@ extension PreviewGridView: UICollectionViewDataSource {
 }
 
 // MARK: - PreviewGridCellDataSource
-extension PreviewGridView: PreviewGridCellDataSource {
 
+extension PreviewGridView: PreviewGridCellDataSource {
     public func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         dataSource?.loadImage(for: model, imageWidth: imageWidth, completion: completion)
     }
@@ -168,8 +168,8 @@ extension PreviewGridView: PreviewGridCellDataSource {
 }
 
 // MARK: - PreviewGridLayoutDelegate
-extension PreviewGridView: PreviewGridLayoutDelegate {
 
+extension PreviewGridView: PreviewGridLayoutDelegate {
     func heightForHeaderView(inCollectionView collectionView: UICollectionView) -> CGFloat? {
         return headerView?.frame.size.height
     }

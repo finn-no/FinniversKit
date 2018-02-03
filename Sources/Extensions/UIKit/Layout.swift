@@ -5,7 +5,6 @@
 import UIKit
 
 public extension UIView {
-
     /// Layouts the current view to fit it's superview.
     ///
     /// - Parameters:

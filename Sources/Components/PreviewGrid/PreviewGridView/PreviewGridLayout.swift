@@ -11,7 +11,6 @@ protocol PreviewGridLayoutDelegate {
 }
 
 class PreviewGridLayout: UICollectionViewLayout {
-
     private let delegate: PreviewGridLayoutDelegate
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
@@ -101,7 +100,6 @@ class PreviewGridLayout: UICollectionViewLayout {
         }
 
         for index in 0 ..< numberOfItems {
-
             let columnIndex = indexOfLowestValue(in: columns)
 
             let xOffset = xOffsetForItemInColumn(itemWidth: itemWidth, columnIndex: columnIndex)

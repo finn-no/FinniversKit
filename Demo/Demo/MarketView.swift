@@ -2,11 +2,10 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 class MarketView: UIView {
-
     fileprivate lazy var discoverGridView: PreviewGridView = {
         let gridView = PreviewGridView(delegate: self, dataSource: self)
         gridView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,8 +83,8 @@ class MarketView: UIView {
 }
 
 // MARK: - PreviewGridViewDelegate
-extension MarketView: PreviewGridViewDelegate {
 
+extension MarketView: PreviewGridViewDelegate {
     func willDisplay(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
         // Don't care
     }
@@ -102,6 +101,7 @@ extension MarketView: PreviewGridViewDelegate {
 }
 
 // MARK: - ToastViewDelegate
+
 extension MarketView: ToastViewDelegate {
     func didTap(toastView: ToastView) {
         print("Toast view tapped!")
@@ -113,8 +113,8 @@ extension MarketView: ToastViewDelegate {
 }
 
 // MARK: - PreviewGridViewDataSource
-extension MarketView: PreviewGridViewDataSource {
 
+extension MarketView: PreviewGridViewDataSource {
     func numberOfItems(inPreviewGridView previewGridView: PreviewGridView) -> Int {
         return previewGridModels.count
     }
@@ -149,15 +149,15 @@ extension MarketView: PreviewGridViewDataSource {
 }
 
 // MARK: - MarketGridViewDelegate
-extension MarketView: MarketGridViewDelegate {
 
+extension MarketView: MarketGridViewDelegate {
     func didSelect(itemAtIndex index: Int, inMarketGridView gridView: MarketGridView) {
     }
 }
 
 // MARK: - MarketGridViewDataSource
-extension MarketView: MarketGridViewDataSource {
 
+extension MarketView: MarketGridViewDataSource {
     func numberOfItems(inMarketGridView marketGridView: MarketGridView) -> Int {
         return marketGridModels.count
     }

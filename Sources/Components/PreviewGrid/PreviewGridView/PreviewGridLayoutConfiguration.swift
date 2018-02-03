@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import Foundation
 
 enum PreviewGridLayoutConfiguration {
@@ -5,7 +9,7 @@ enum PreviewGridLayoutConfiguration {
     case medium
     case large
 
-    static let mediumRange: Range<CGFloat> = (375.0..<415.0)
+    static let mediumRange: Range<CGFloat> = (375.0 ..< 415.0)
 
     init(width: CGFloat) {
         switch width {
@@ -24,24 +28,24 @@ enum PreviewGridLayoutConfiguration {
 
     var sidePadding: CGFloat {
         switch self {
-        case .small:  return 10.0
+        case .small: return 10.0
         case .medium: return 15.0
-        case .large:  return 25.0
+        case .large: return 25.0
         }
     }
 
     var lineSpacing: CGFloat {
         switch self {
-        case .small:  return 0.0
+        case .small: return 0.0
         default: return columnSpacing
         }
     }
 
     var columnSpacing: CGFloat {
         switch self {
-        case .small:  return 2.0
+        case .small: return 2.0
         case .medium: return 8.0
-        case .large:  return 5.0
+        case .large: return 5.0
         }
     }
 

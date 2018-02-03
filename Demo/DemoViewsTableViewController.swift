@@ -2,13 +2,12 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 // MARK: - DemoViewsTableViewController
 
 class DemoViewsTableViewController: UITableViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -24,7 +23,6 @@ class DemoViewsTableViewController: UITableViewController {
 // MARK: - UITableViewDelegate
 
 extension DemoViewsTableViewController {
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TroikaViews.all.count
     }

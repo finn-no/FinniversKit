@@ -5,7 +5,6 @@
 import Foundation
 
 public extension Button {
-
     public enum Style {
         case `default`
         case callToAction

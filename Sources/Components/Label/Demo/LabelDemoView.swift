@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 public class LabelDemoView: UIView {
     override init(frame: CGRect) {
@@ -15,7 +15,6 @@ public class LabelDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-
         let topSpacing: CGFloat = 32
         let margin: CGFloat = 16
         let interimSpacing: CGFloat = 0

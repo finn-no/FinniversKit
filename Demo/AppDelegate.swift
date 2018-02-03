@@ -2,11 +2,10 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 extension NSNotification.Name {
-
     /// Notification used with http://johnholdsworth.com/injection.html
     /// 1.- Download the app http://johnholdsworth.com/Injection9.app.zip
     /// 2.- Open the app, enable File Watcher and press Inject Source
@@ -45,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 public extension Bundle {
-
     static var playgroundBundle: Bundle {
         return Bundle(for: AppDelegate.self)
     }

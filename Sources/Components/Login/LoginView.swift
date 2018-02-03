@@ -7,7 +7,6 @@ import UIKit
 // MARK: - LoginViewDelegatew
 
 public protocol LoginViewDelegate: NSObjectProtocol {
-
     func loginView(_ loginView: LoginView, didSelectForgetPasswordButton button: Button)
     func loginView(_ loginView: LoginView, didSelectLoginButton button: Button, with email: String, and password: String)
     func loginView(_ loginView: LoginView, didSelectNewUserButton button: Button, with email: String)
@@ -242,7 +241,6 @@ public class LoginView: UIView {
 // MARK: - TextFieldDelegate
 
 extension LoginView: TextFieldDelegate {
-
     public func textFieldShouldReturn(_ textField: TextField) -> Bool {
         if textField == emailTextField {
             passwordTextField.textField.becomeFirstResponder()

@@ -2,11 +2,10 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 public class LoginViewDemoView: UIView {
-
     private lazy var loginView: LoginView = {
         let loginView = LoginView()
         loginView.translatesAutoresizingMaskIntoConstraints = false

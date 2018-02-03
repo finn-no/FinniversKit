@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 class ToastClass: NSObject, ToastViewDelegate {
     func didTapActionButton(button: UIButton, in toastView: ToastView) {

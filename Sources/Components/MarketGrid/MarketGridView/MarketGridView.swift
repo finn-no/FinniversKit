@@ -114,7 +114,6 @@ public class MarketGridView: UIView {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension MarketGridView: UICollectionViewDelegateFlowLayout {
-
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return itemSize(for: bounds.width)
     }
@@ -135,7 +134,6 @@ extension MarketGridView: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDataSource
 
 extension MarketGridView: UICollectionViewDataSource {
-
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource?.numberOfItems(inMarketGridView: self) ?? 0
     }
