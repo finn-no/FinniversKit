@@ -15,7 +15,7 @@ class ToastClass: NSObject, ToastViewDelegate {
     }
 }
 
-public class ToastPlayground: UIView {
+public class ToastDemo: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 

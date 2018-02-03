@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class PreviewGridViewPlayground: UIView {
+public class PreviewGridViewDemo: UIView {
     lazy var delegateDataSource: PreviewGridDelegateDataSource = {
         return PreviewGridDelegateDataSource()
     }()

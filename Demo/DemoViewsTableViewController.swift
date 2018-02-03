@@ -5,9 +5,9 @@
 import UIKit
 import Troika
 
-// MARK: - PlaygroundViewsTableViewController
+// MARK: - DemoViewsTableViewController
 
-class PlaygroundViewsTableViewController: UITableViewController {
+class DemoViewsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class PlaygroundViewsTableViewController: UITableViewController {
 
 // MARK: - UITableViewDelegate
 
-extension PlaygroundViewsTableViewController {
+extension DemoViewsTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TroikaViews.all.count

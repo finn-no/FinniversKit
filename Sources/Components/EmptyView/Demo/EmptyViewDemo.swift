@@ -5,7 +5,7 @@
 import UIKit
 import Troika
 
-public class EmptyViewPlayground: UIView {
+public class EmptyViewDemo: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 

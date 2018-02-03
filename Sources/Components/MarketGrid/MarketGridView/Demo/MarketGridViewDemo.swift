@@ -24,7 +24,7 @@ extension MarketData: MarketGridViewDelegate {
     }
 }
 
-public class MarketGridViewPlayground: UIView {
+public class MarketGridViewDemo: UIView {
     lazy var data: MarketData = {
         return MarketData()
     }()
