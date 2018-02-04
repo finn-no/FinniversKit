@@ -8,6 +8,9 @@ import UIKit
 // MARK: - TroikaViews
 
 enum TroikaViews: String {
+    case colorDemoView
+    case fontDemoView
+    case spacingDemoView
     case registerViewDemoView
     case buttonDemoView
     case labelDemoView
@@ -24,6 +27,12 @@ enum TroikaViews: String {
 
     func viewController() -> UIViewController {
         switch self {
+        case .colorDemoView:
+            return ViewController<ColorDemoView>()
+        case .fontDemoView:
+            return ViewController<FontDemoView>()
+        case .spacingDemoView:
+            return ViewController<SpacingDemoView>()
         case .registerViewDemoView:
             return ViewController<RegisterViewDemoView>()
         case .buttonDemoView:
@@ -55,6 +64,9 @@ enum TroikaViews: String {
 
     static var all: [TroikaViews] {
         return [
+            .colorDemoView,
+            .fontDemoView,
+            .spacingDemoView,
             .registerViewDemoView,
             .buttonDemoView,
             .labelDemoView,
