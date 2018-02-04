@@ -16,12 +16,14 @@ class ViewController<View: UIView>: UIViewController {
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
         playgroundView.backgroundColor = .white
         view.addSubview(playgroundView)
+        view.backgroundColor = .white
 
+        let guide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             playgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             playgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            playgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-            playgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            playgroundView.topAnchor.constraint(equalTo: guide.topAnchor),
+            playgroundView.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
         ])
 
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
