@@ -3,8 +3,8 @@
 //
 
 import Foundation
-import XCTest
 @testable import Troika
+import XCTest
 
 class LayoutHelpersTests: XCTestCase {
     func testEdgeInsets() {

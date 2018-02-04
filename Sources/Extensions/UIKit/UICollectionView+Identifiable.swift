@@ -7,7 +7,6 @@ import UIKit
 extension UICollectionViewCell: Identifiable {}
 
 public extension UICollectionView {
-
     public func register(_ cellClass: UICollectionViewCell.Type) {
         register(cellClass.self, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
     }

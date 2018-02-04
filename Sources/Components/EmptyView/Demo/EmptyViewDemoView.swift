@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 public class EmptyViewDemoView: UIView {
     override init(frame: CGRect) {

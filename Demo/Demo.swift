@@ -2,13 +2,12 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 // MARK: - TroikaViews
 
 enum TroikaViews: String {
-
     case registerViewDemoView
     case buttonDemoView
     case labelDemoView

@@ -5,7 +5,6 @@
 import Foundation
 
 class PreviewGridHeaderView: UICollectionReusableView {
-
     var contentView: UIView? {
         willSet {
             contentView?.removeFromSuperview()

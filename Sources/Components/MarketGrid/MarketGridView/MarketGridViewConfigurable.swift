@@ -1,13 +1,17 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import Foundation
 
 enum ScreenSizeCategory {
     case small
     case medium
     case large(CGFloat)
-    
-    static let mediumRange: Range<CGFloat> = (375.0..<415.0)
+
+    static let mediumRange: Range<CGFloat> = (375.0 ..< 415.0)
     static let portraitModeScreenWidth = CGFloat(768)
-    
+
     init(width: CGFloat) {
         switch width {
         case let width where width > ScreenSizeCategory.mediumRange.upperBound:
@@ -18,7 +22,7 @@ enum ScreenSizeCategory {
             self = .medium
         }
     }
-    
+
     var interimSpacing: CGFloat {
         switch self {
         case .large:
@@ -27,7 +31,7 @@ enum ScreenSizeCategory {
             return 0
         }
     }
-    
+
     var sideMargins: CGFloat {
         switch self {
         case .large:
@@ -36,16 +40,16 @@ enum ScreenSizeCategory {
             return 16
         }
     }
-    
+
     var edgeInsets: UIEdgeInsets {
         switch self {
         case .large:
-            return UIEdgeInsets(top: 16, left: self.sideMargins, bottom: 0, right: self.sideMargins)
+            return UIEdgeInsets(top: 16, left: sideMargins, bottom: 0, right: sideMargins)
         default:
-            return UIEdgeInsets(top: 8, left: self.sideMargins, bottom: 0, right: self.sideMargins)
+            return UIEdgeInsets(top: 8, left: sideMargins, bottom: 0, right: sideMargins)
         }
     }
-    
+
     var lineSpacing: CGFloat {
         switch self {
         case .large:
@@ -54,10 +58,10 @@ enum ScreenSizeCategory {
             return 16
         }
     }
-    
+
     var itemsPerRow: CGFloat {
         switch self {
-        case .large(let width):
+        case let .large(width):
             if width > ScreenSizeCategory.portraitModeScreenWidth {
                 return 6
             } else {
@@ -69,7 +73,7 @@ enum ScreenSizeCategory {
             return 3
         }
     }
-    
+
     var itemHeight: CGFloat {
         switch self {
         case .large:

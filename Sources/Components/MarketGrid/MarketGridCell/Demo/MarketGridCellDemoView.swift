@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 public class MarketGridCellDemoView: UIView {
     override init(frame: CGRect) {
@@ -15,7 +15,6 @@ public class MarketGridCellDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-
         let marketGridCell = MarketGridCell(frame: .zero)
         marketGridCell.translatesAutoresizingMaskIntoConstraints = false
         let model = Market.moteplassen

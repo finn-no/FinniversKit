@@ -5,7 +5,6 @@
 import Foundation
 
 public extension Label {
-
     public enum Style {
         case title1
         case title2

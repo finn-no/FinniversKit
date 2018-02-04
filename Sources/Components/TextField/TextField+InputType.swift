@@ -5,7 +5,6 @@
 import Foundation
 
 extension TextField {
-
     public enum InputType {
         case email
         case password

@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 class MarketData: NSObject {
     var models = Market.allMarkets
@@ -38,7 +38,6 @@ public class MarketGridViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-
         let collectionView = MarketGridView(delegate: data, dataSource: data)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView)

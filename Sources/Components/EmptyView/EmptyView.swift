@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import CoreMotion
+import UIKit
 
 public class EmptyView: UIView {
 

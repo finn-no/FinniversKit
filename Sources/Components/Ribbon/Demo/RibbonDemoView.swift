@@ -2,11 +2,10 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 public class RibbonDemoView: UIView {
-
     public lazy var headerLabel: Label = {
         let label = Label(style: .title1)
         label.translatesAutoresizingMaskIntoConstraints = false

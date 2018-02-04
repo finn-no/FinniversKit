@@ -5,7 +5,6 @@
 import UIKit
 
 public extension UIFont {
-
     public static var title1: UIFont {
         let font = UIFont(name: "FINNTypeWebStrippet-Medium", size: 36.0)!
 
@@ -59,7 +58,6 @@ public extension UIFont {
 }
 
 extension UIFont {
-
     static func registerFont(with filenameString: String, bundleIdentifierString: String) {
         guard let bundle = Bundle(identifier: bundleIdentifierString) else {
             print("UIFont+:  Failed to register font - bundle identifier invalid.")

@@ -7,7 +7,6 @@ import UIKit
 extension UITableViewCell: Identifiable {}
 
 public extension UITableView {
-
     public func register(_ cellClass: UITableViewCell.Type) {
         register(cellClass.self, forCellReuseIdentifier: cellClass.reuseIdentifier)
     }

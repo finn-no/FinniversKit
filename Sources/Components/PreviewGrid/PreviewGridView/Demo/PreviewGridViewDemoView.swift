@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 public class PreviewGridViewDemoView: UIView {
     lazy var delegateDataSource: PreviewGridDelegateDataSource = {
@@ -19,7 +19,6 @@ public class PreviewGridViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-
         let view = PreviewGridView(delegate: delegateDataSource, dataSource: delegateDataSource)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)

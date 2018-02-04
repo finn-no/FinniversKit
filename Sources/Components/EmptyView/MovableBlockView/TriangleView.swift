@@ -5,7 +5,6 @@
 import UIKit
 
 class TriangleView: UIView, AttachableView {
-
     var attach: UIAttachmentBehavior?
 
     public override init(frame: CGRect) {

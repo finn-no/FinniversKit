@@ -7,7 +7,6 @@ import UIKit
 // MARK: - LoginViewDelegatew
 
 public protocol RegisterViewDelegate: NSObjectProtocol {
-
     func registerView(_ registerView: RegisterView, didSelectLoginButton button: Button, with email: String)
     func registerView(_ registerView: RegisterView, didSelectRegisterButton button: Button, with email: String, and password: String)
     func registerView(_ registerView: RegisterView, didSelectUserTermsButton button: Button)
@@ -258,7 +257,6 @@ public class RegisterView: UIView {
 // MARK: - TextFieldDelegate
 
 extension RegisterView: TextFieldDelegate {
-
     public func textFieldShouldReturn(_ textField: TextField) -> Bool {
         if textField == emailTextField {
             passwordTextField.textField.becomeFirstResponder()

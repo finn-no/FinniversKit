@@ -5,7 +5,6 @@
 import UIKit
 
 public class RegisterViewDemoView: UIView {
-
     private lazy var registerView: RegisterView = {
         let registerView = RegisterView()
         registerView.translatesAutoresizingMaskIntoConstraints = false

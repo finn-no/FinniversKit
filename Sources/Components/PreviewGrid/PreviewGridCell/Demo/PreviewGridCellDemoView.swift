@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
 import Troika
+import UIKit
 
 public class PreviewGridCellDemoView: UIView {
     override init(frame: CGRect) {
@@ -15,7 +15,6 @@ public class PreviewGridCellDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-
         let previewCell = PreviewGridCell(frame: .zero)
         previewCell.translatesAutoresizingMaskIntoConstraints = false
         let model = PreviewDataModelFactory.create(numberOfModels: 1).first!

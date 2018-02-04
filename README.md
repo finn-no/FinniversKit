@@ -1,16 +1,17 @@
-# Troika framework for iOS
+<p align="center"><img width=100% src="https://raw.githubusercontent.com/finn-no/Troika/master/GitHub/cover-v3.png"></p>
+
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![](https://img.shields.io/badge/platform-iOS-lightgrey.svg) ![](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)
 
 Troika is the iOS native implementation of FINN's design system. [You can find the reference here](http://finnivers.finn.no/d/2koIuZwTP5cy/design-system). This framework is composed of small components that are meant to be used as building blocks of the FINN iOS app. 
 
-In order to develop our components in an isolated way we have structured them so they can be used idependently of each other. Check the [App.swift](/Demo/App.swift) for a list of all our components, to try a different component change the `typealias View` to a different Demo and run the project.
+In order to develop our components in an isolated way we have structured them so they can be used idependently of each other. Run the Demo project for a list of all our components.
 
 ## Installation
 
 ### Carthage
 
 ```
-github "finn-no/troika-ios" "master"
+github "finn-no/Troika" "master"
 ```
 
 ## Usage

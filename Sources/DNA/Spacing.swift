@@ -5,7 +5,6 @@
 import Foundation
 
 public extension CGFloat {
-
     /// Separation of 2 points.
     static let verySmallSpacing: CGFloat = 2
 
