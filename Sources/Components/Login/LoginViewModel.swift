@@ -12,6 +12,8 @@ public protocol LoginViewModel {
     var loginButtonTitle: String { get }
     var newUserButtonTitle: String { get }
     var customerServiceTitle: String { get }
+    var customerServiceIntro: String { get }
+    var privacyPolicyTitle: String { get }
 }
 
 public extension LoginViewModel {

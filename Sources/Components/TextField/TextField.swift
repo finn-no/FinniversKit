@@ -95,6 +95,7 @@ public class TextField: UIView {
     }()
 
     public let inputType: InputType
+
     public var placeholderText: String = "" {
         didSet {
             typeLabel.text = placeholderText
@@ -108,6 +109,19 @@ public class TextField: UIView {
     }
 
     public weak var delegate: TextFieldDelegate?
+
+    public var isValid: Bool {
+        guard let text = textField.text else {
+            return false
+        }
+
+        switch inputType {
+        case .password:
+            return isValidEmail(text)
+        case .email:
+            return isValidEmail(text)
+        }
+    }
 
     // MARK: - Setup
 
@@ -206,11 +220,17 @@ public class TextField: UIView {
         textField.becomeFirstResponder()
     }
 
-    fileprivate func isValidEmail(_ emailAdress: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    fileprivate func evaluate(_ regEx: String, with string: String) -> Bool {
+        let regExTest = NSPredicate(format: "SELF MATCHES %@", regEx)
+        return regExTest.evaluate(with: string)
+    }
 
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: emailAdress)
+    fileprivate func isValidEmail(_ emailAdress: String) -> Bool {
+        return evaluate("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", with: emailAdress)
+    }
+
+    fileprivate func isValidPassword(_ password: String) -> Bool {
+        return evaluate("{3,64}", with: password)
     }
 }
 

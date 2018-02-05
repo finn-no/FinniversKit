@@ -10,7 +10,6 @@ public protocol RegisterViewDelegate: NSObjectProtocol {
     func registerView(_ registerView: RegisterView, didSelectLoginButton button: Button, with email: String)
     func registerView(_ registerView: RegisterView, didSelectRegisterButton button: Button, with email: String, and password: String)
     func registerView(_ registerView: RegisterView, didSelectUserTermsButton button: Button)
-    func registerView(_ registerView: RegisterView, didSelectCustomerServiceButton button: Button)
 
     func registerView(_ registerView: RegisterView, didOccurIncompleteCredentials incompleteCredentials: Bool)
 }
@@ -34,7 +33,7 @@ public class RegisterView: UIView {
     private lazy var infoLabel: Label = {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }()
@@ -86,7 +85,7 @@ public class RegisterView: UIView {
         let stackView = UIStackView(arrangedSubviews: [userTermsIntroLabel, userTermsButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.alignment = .center
+        stackView.alignment = .leading
         return stackView
     }()
 
@@ -100,13 +99,6 @@ public class RegisterView: UIView {
         let button = Button(style: .link)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(userTermsButtonSelected), for: .touchUpInside)
-        return button
-    }()
-
-    private lazy var customerServiceButton: Button = {
-        let button = Button(style: .link)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(customerServiceButtonSelected), for: .touchUpInside)
         return button
     }()
 
@@ -140,7 +132,6 @@ public class RegisterView: UIView {
             registerButton.setTitle(model.newUserButtonTitle, for: .normal)
             userTermsIntroLabel.text = model.userTermsIntroText
             userTermsButton.setTitle(model.userTermsButtonTitle, for: .normal)
-            customerServiceButton.setTitle(model.customerServiceTitle, for: .normal)
         }
     }
 
@@ -174,14 +165,13 @@ public class RegisterView: UIView {
 
         scrollView.addSubview(contentView)
         addSubview(scrollView)
+        addSubview(userTermsStackView)
 
         contentView.addSubview(infoLabel)
         contentView.addSubview(emailTextField)
         contentView.addSubview(passwordTextField)
         contentView.addSubview(registerButton)
         contentView.addSubview(newUserStackView)
-        contentView.addSubview(userTermsStackView)
-        contentView.addSubview(customerServiceButton)
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -213,17 +203,12 @@ public class RegisterView: UIView {
             registerButton.heightAnchor.constraint(equalToConstant: buttonHeight),
 
             newUserStackView.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: .mediumLargeSpacing),
-            newUserStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            newUserStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            newUserStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            spidLogoImageView.heightAnchor.constraint(equalToConstant: 17),
 
-            spidLogoImageView.heightAnchor.constraint(equalToConstant: 15),
-
-            userTermsStackView.topAnchor.constraint(equalTo: newUserStackView.bottomAnchor, constant: .mediumLargeSpacing),
-            userTermsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            userTermsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
-
-            customerServiceButton.topAnchor.constraint(equalTo: userTermsStackView.bottomAnchor, constant: .largeSpacing),
-            customerServiceButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            customerServiceButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+            userTermsStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.veryLargeSpacing),
+            userTermsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
         ])
     }
 
@@ -236,17 +221,16 @@ public class RegisterView: UIView {
 
     @objc func registerButtonSelected() {
         handleTap()
-        delegate?.registerView(self, didSelectRegisterButton: registerButton, with: email, and: password)
+        if emailTextField.isValid && passwordTextField.isValid {
+            delegate?.registerView(self, didSelectRegisterButton: registerButton, with: email, and: password)
+        } else {
+            delegate?.registerView(self, didOccurIncompleteCredentials: true)
+        }
     }
 
     @objc func userTermsButtonSelected() {
         handleTap()
         delegate?.registerView(self, didSelectUserTermsButton: userTermsButton)
-    }
-
-    @objc func customerServiceButtonSelected() {
-        handleTap()
-        delegate?.registerView(self, didSelectCustomerServiceButton: userTermsButton)
     }
 
     @objc func handleTap() {
