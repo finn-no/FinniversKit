@@ -2,7 +2,6 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import Troika
 import UIKit
 
 // MARK: - TroikaViews

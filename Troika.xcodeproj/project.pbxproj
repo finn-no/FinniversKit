@@ -108,8 +108,10 @@
 		AA7313D3202078B8008A7251 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D2202078B8008A7251 /* RegisterView.swift */; };
 		AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; };
 		AA7313D720207900008A7251 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */; };
-		AA7313D92020792C008A7251 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D82020792C008A7251 /* RegisterViewDemoView.swift */; };
 		AAC1AFB42021058000C71B7C /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1AFB32021058000C71B7C /* Demo.swift */; };
+		AACB03512029AAEE005FF060 /* RegisterView.swift in Headers */ = {isa = PBXBuildFile; fileRef = AA7313D2202078B8008A7251 /* RegisterView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		AACB03522029AAEE005FF060 /* RegisterViewModel.swift in Headers */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		AACB03532029AB8C005FF060 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D82020792C008A7251 /* RegisterViewDemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -760,6 +762,8 @@
 				44C4E8CB1FFBA714000B014D /* Label.swift in Headers */,
 				44C4E8CC1FFBA714000B014D /* LoginView.swift in Headers */,
 				44C4E8CD1FFBA714000B014D /* LoginViewModel.swift in Headers */,
+				AACB03512029AAEE005FF060 /* RegisterView.swift in Headers */,
+				AACB03522029AAEE005FF060 /* RegisterViewModel.swift in Headers */,
 				44C4E8CE1FFBA714000B014D /* MarketGridCell.swift in Headers */,
 				44C4E8CF1FFBA714000B014D /* MarketGridModel.swift in Headers */,
 				44C4E8D01FFBA714000B014D /* MarketGridView.swift in Headers */,
@@ -957,6 +961,7 @@
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
 				4447F70C1FDB2B540033DBC1 /* PreviewGridCellDemoView.swift in Sources */,
 				4447F70D1FDB2B590033DBC1 /* PreviewGridViewDemoView.swift in Sources */,
+				AACB03532029AB8C005FF060 /* RegisterViewDemoView.swift in Sources */,
 				1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */,
 				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
@@ -1010,7 +1015,6 @@
 				4447F6D51FDB2B110033DBC1 /* LoginViewModel.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				4447F6D41FDB2B110033DBC1 /* LoginView.swift in Sources */,
-				AA7313D92020792C008A7251 /* RegisterViewDemoView.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				4447F6CE1FDB2B110033DBC1 /* RoundedRectangleView.swift in Sources */,
 				4447F6E71FDB2B110033DBC1 /* PreviewGridView.swift in Sources */,
