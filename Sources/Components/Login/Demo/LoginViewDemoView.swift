@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import Troika
+import Munch
 import UIKit
 
 public class LoginViewDemoView: UIView {

@@ -3,7 +3,7 @@
 //
 
 import Foundation
-@testable import Troika
+@testable import Munch
 import XCTest
 
 class LayoutHelpersTests: XCTestCase {

@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import Troika
+import Munch
 import UIKit
 
 // MARK: - DemoViewsTableViewController
@@ -29,12 +29,12 @@ class DemoViewsTableViewController: UITableViewController {
 
 extension DemoViewsTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TroikaViews.all.count
+        return MunchViews.all.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
-        let rawClassName = TroikaViews.all[indexPath.row].rawValue
+        let rawClassName = MunchViews.all[indexPath.row].rawValue
         let formattedName = rawClassName.replacingOccurrences(of: "DemoView", with: "").capitalizingFirstLetter()
         cell.textLabel?.text = formattedName
         cell.textLabel?.font = UIFont.title3
@@ -47,7 +47,7 @@ extension DemoViewsTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedView = TroikaViews.all[indexPath.row]
+        let selectedView = MunchViews.all[indexPath.row]
         present(selectedView.viewController(), animated: true)
     }
 }

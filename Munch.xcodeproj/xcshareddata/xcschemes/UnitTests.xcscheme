@@ -17,7 +17,7 @@
                BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
                BuildableName = "UnitTests.xctest"
                BlueprintName = "UnitTests"
-               ReferencedContainer = "container:Troika.xcodeproj">
+               ReferencedContainer = "container:Munch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,7 +36,7 @@
                BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
                BuildableName = "UnitTests.xctest"
                BlueprintName = "UnitTests"
-               ReferencedContainer = "container:Troika.xcodeproj">
+               ReferencedContainer = "container:Munch.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -60,7 +60,7 @@
             BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
             BuildableName = "UnitTests.xctest"
             BlueprintName = "UnitTests"
-            ReferencedContainer = "container:Troika.xcodeproj">
+            ReferencedContainer = "container:Munch.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
             BuildableName = "UnitTests.xctest"
             BlueprintName = "UnitTests"
-            ReferencedContainer = "container:Troika.xcodeproj">
+            ReferencedContainer = "container:Munch.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
