@@ -4,6 +4,8 @@
 
 import UIKit
 
+// MARK: - TextFieldDelegate
+
 public protocol TextFieldDelegate: NSObjectProtocol {
     func textFieldDidBeginEditing(_ textField: TextField)
     func textFieldDidEndEditing(_ textField: TextField)
@@ -117,7 +119,7 @@ public class TextField: UIView {
 
         switch inputType {
         case .password:
-            return isValidEmail(text)
+            return isValidPassword(text)
         case .email:
             return isValidEmail(text)
         }
@@ -230,7 +232,7 @@ public class TextField: UIView {
     }
 
     fileprivate func isValidPassword(_ password: String) -> Bool {
-        return evaluate("{3,64}", with: password)
+        return !password.isEmpty
     }
 }
 
