@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import Munch
+import Finnivers
 
 public enum Market: MarketGridModel {
     case eiendom

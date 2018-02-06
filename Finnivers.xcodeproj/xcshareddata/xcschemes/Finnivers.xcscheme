@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-               BuildableName = "Demo.app"
-               BlueprintName = "Demo"
-               ReferencedContainer = "container:Munch.xcodeproj">
+               BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
+               BuildableName = "Finnivers.framework"
+               BlueprintName = "Finnivers"
+               ReferencedContainer = "container:Finnivers.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,26 +29,7 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
-               BuildableName = "UnitTests.xctest"
-               BlueprintName = "UnitTests"
-               ReferencedContainer = "container:Munch.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-            BuildableName = "Demo.app"
-            BlueprintName = "Demo"
-            ReferencedContainer = "container:Munch.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -63,16 +44,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-            BuildableName = "Demo.app"
-            BlueprintName = "Demo"
-            ReferencedContainer = "container:Munch.xcodeproj">
+            BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
+            BuildableName = "Finnivers.framework"
+            BlueprintName = "Finnivers"
+            ReferencedContainer = "container:Finnivers.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -82,16 +62,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "14405C691FAFBD1800D03E04"
-            BuildableName = "Demo.app"
-            BlueprintName = "Demo"
-            ReferencedContainer = "container:Munch.xcodeproj">
+            BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
+            BuildableName = "Finnivers.framework"
+            BlueprintName = "Finnivers"
+            ReferencedContainer = "container:Finnivers.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

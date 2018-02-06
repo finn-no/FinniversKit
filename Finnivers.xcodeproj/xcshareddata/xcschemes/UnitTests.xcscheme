@@ -9,15 +9,15 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
-               BuildableName = "Munch.framework"
-               BlueprintName = "Munch"
-               ReferencedContainer = "container:Munch.xcodeproj">
+               BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
+               BuildableName = "UnitTests.xctest"
+               BlueprintName = "UnitTests"
+               ReferencedContainer = "container:Finnivers.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,6 +29,16 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
+               BuildableName = "UnitTests.xctest"
+               BlueprintName = "UnitTests"
+               ReferencedContainer = "container:Finnivers.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <AdditionalOptions>
       </AdditionalOptions>
@@ -47,10 +57,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
-            BuildableName = "Munch.framework"
-            BlueprintName = "Munch"
-            ReferencedContainer = "container:Munch.xcodeproj">
+            BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
+            BuildableName = "UnitTests.xctest"
+            BlueprintName = "UnitTests"
+            ReferencedContainer = "container:Finnivers.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,10 +75,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
-            BuildableName = "Munch.framework"
-            BlueprintName = "Munch"
-            ReferencedContainer = "container:Munch.xcodeproj">
+            BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
+            BuildableName = "UnitTests.xctest"
+            BlueprintName = "UnitTests"
+            ReferencedContainer = "container:Finnivers.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -90,10 +90,10 @@ extension UIFont {
         }
     }
 
-    public static func registerMunchFonts() {
-        registerFont(with: "FINNTypeWebStrippet-Light", bundleIdentifierString: "no.finn.Munch")
-        registerFont(with: "FINNTypeWebStrippet-Medium", bundleIdentifierString: "no.finn.Munch")
-        registerFont(with: "FINNTypeWebStrippet-Regular", bundleIdentifierString: "no.finn.Munch")
-        registerFont(with: "FINNTypeWebStrippet-Bold", bundleIdentifierString: "no.finn.Munch")
+    public static func registerFinniversFonts() {
+        registerFont(with: "FINNTypeWebStrippet-Light", bundleIdentifierString: "no.finn.Finnivers")
+        registerFont(with: "FINNTypeWebStrippet-Medium", bundleIdentifierString: "no.finn.Finnivers")
+        registerFont(with: "FINNTypeWebStrippet-Regular", bundleIdentifierString: "no.finn.Finnivers")
+        registerFont(with: "FINNTypeWebStrippet-Bold", bundleIdentifierString: "no.finn.Finnivers")
     }
 }

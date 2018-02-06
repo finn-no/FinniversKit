@@ -4,9 +4,9 @@
 
 import UIKit
 
-// MARK: - MunchViews
+// MARK: - FinniversViews
 
-enum MunchViews: String {
+enum FinniversViews: String {
     case colorDemoView
     case fontDemoView
     case spacingDemoView
@@ -61,7 +61,7 @@ enum MunchViews: String {
         }
     }
 
-    static var all: [MunchViews] {
+    static var all: [FinniversViews] {
         return [
             .colorDemoView,
             .fontDemoView,

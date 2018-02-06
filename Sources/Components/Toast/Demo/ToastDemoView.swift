@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import Munch
+import Finnivers
 import UIKit
 
 class ToastClass: NSObject, ToastViewDelegate {
