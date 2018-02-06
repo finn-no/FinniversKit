@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import Troika
+import Munch
 
 /// A model confirming to the PreviewModel protocol for showcasing PreviewGridCell in playground.
 public struct PreviewDataModel: PreviewModel {

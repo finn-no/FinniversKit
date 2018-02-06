@@ -5,14 +5,14 @@
 import Foundation
 
 /// Class for referencing the framework bundle
-public class Troika {
+public class Munch {
     static var bundle: Bundle {
-        return Bundle(for: Troika.self)
+        return Bundle(for: Munch.self)
     }
 }
 
 public extension Bundle {
-    static var troika: Bundle {
-        return Troika.bundle
+    static var munch: Bundle {
+        return Munch.bundle
     }
 }

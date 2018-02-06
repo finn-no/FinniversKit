@@ -4,9 +4,9 @@
 
 import UIKit
 
-// MARK: - TroikaViews
+// MARK: - MunchViews
 
-enum TroikaViews: String {
+enum MunchViews: String {
     case colorDemoView
     case fontDemoView
     case spacingDemoView
@@ -61,7 +61,7 @@ enum TroikaViews: String {
         }
     }
 
-    static var all: [TroikaViews] {
+    static var all: [MunchViews] {
         return [
             .colorDemoView,
             .fontDemoView,
