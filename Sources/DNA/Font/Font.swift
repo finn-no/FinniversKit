@@ -90,7 +90,7 @@ extension UIFont {
         }
     }
 
-    public static func registerFinniversFonts() {
+    public static func registerFinniversKitFonts() {
         registerFont(with: "FINNTypeWebStrippet-Light", bundleIdentifierString: "no.finn.FinniversKit")
         registerFont(with: "FINNTypeWebStrippet-Medium", bundleIdentifierString: "no.finn.FinniversKit")
         registerFont(with: "FINNTypeWebStrippet-Regular", bundleIdentifierString: "no.finn.FinniversKit")

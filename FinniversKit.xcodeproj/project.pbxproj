@@ -687,12 +687,12 @@
 		4447F7121FDB2C100033DBC1 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				4447F7131FDB2C100033DBC1 /* FinniversView.xctemplate */,
+				4447F7131FDB2C100033DBC1 /* FinniversKitView.xctemplate */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
 		};
-		4447F7131FDB2C100033DBC1 /* FinniversView.xctemplate */ = {
+		4447F7131FDB2C100033DBC1 /* FinniversKitView.xctemplate */ = {
 			isa = PBXGroup;
 			children = (
 				4447F7141FDB2C100033DBC1 /* ___FILEBASENAME___.swift */,
@@ -700,7 +700,7 @@
 				4447F7161FDB2C100033DBC1 /* TemplateIcon@2x.png */,
 				4447F7171FDB2C100033DBC1 /* TemplateInfo.plist */,
 			);
-			path = FinniversView.xctemplate;
+			path = FinniversKitView.xctemplate;
 			sourceTree = "<group>";
 		};
 		44898D591FE5B9C200F6017B /* Extensions */ = {
