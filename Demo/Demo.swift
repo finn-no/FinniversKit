@@ -9,6 +9,7 @@ enum FinniversKitViews: String {
     case fontDemoView
     case spacingDemoView
     case registerViewDemoView
+    case broadcastDemoView
     case buttonDemoView
     case labelDemoView
     case loginViewDemoView
@@ -32,6 +33,8 @@ enum FinniversKitViews: String {
             return ViewController<SpacingDemoView>()
         case .registerViewDemoView:
             return ViewController<RegisterViewDemoView>()
+        case .broadcastDemoView:
+            return ViewController<BroadcastDemoView>()
         case .buttonDemoView:
             return ViewController<ButtonDemoView>()
         case .labelDemoView:
@@ -65,6 +68,7 @@ enum FinniversKitViews: String {
             .fontDemoView,
             .spacingDemoView,
             .registerViewDemoView,
+            .broadcastDemoView,
             .buttonDemoView,
             .labelDemoView,
             .loginViewDemoView,
