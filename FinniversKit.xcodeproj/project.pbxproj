@@ -104,6 +104,8 @@
 		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4535FD33202C42BF002335E2 /* ConsenetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535FD32202C42BF002335E2 /* ConsenetView.swift */; };
+		4535FD35202C42CF002335E2 /* ConsentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535FD34202C42CF002335E2 /* ConsentViewModel.swift */; };
 		4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */; };
 		AA7313D3202078B8008A7251 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D2202078B8008A7251 /* RegisterView.swift */; };
 		AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; };
@@ -223,6 +225,8 @@
 		44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		4535FD32202C42BF002335E2 /* ConsenetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsenetView.swift; sourceTree = "<group>"; };
+		4535FD34202C42CF002335E2 /* ConsentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewModel.swift; sourceTree = "<group>"; };
 		4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewsTableViewController.swift; sourceTree = "<group>"; };
 		AA7313D2202078B8008A7251 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AA7313D4202078D4008A7251 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -401,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				4447F6651FDB2B110033DBC1 /* Button */,
+				4535FD31202C4282002335E2 /* Consent */,
 				4447F66A1FDB2B110033DBC1 /* EmptyView */,
 				4447F6741FDB2B110033DBC1 /* Label */,
 				4447F6791FDB2B110033DBC1 /* Login */,
@@ -715,6 +720,16 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		4535FD31202C4282002335E2 /* Consent */ = {
+			isa = PBXGroup;
+			children = (
+				4535FD32202C42BF002335E2 /* ConsenetView.swift */,
+				4535FD34202C42CF002335E2 /* ConsentViewModel.swift */,
+			);
+			name = Consent;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		457B35CF1F7BE2670031E125 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -992,6 +1007,7 @@
 				4447F6CC1FDB2B110033DBC1 /* CircleView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
+				4535FD35202C42CF002335E2 /* ConsentViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				4447F6CD1FDB2B110033DBC1 /* RectangleView.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
@@ -1004,6 +1020,7 @@
 				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
 				4447F6E01FDB2B110033DBC1 /* PreviewGridCell.swift in Sources */,
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
+				4535FD33202C42BF002335E2 /* ConsenetView.swift in Sources */,
 				AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				4447F6E61FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift in Sources */,
