@@ -5,14 +5,14 @@
 import Foundation
 
 /// Class for referencing the framework bundle
-public class Finnivers {
+public class FinniversKit {
     static var bundle: Bundle {
-        return Bundle(for: Finnivers.self)
+        return Bundle(for: FinniversKit.self)
     }
 }
 
 public extension Bundle {
-    static var finnivers: Bundle {
-        return Finnivers.bundle
+    static var finniversKit: Bundle {
+        return FinniversKit.bundle
     }
 }

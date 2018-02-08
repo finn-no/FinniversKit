@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import FinniversKit
 import Foundation
-import Finnivers
 
 public enum Market: MarketGridModel {
     case eiendom

@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import Finnivers
+import FinniversKit
 import UIKit
 
 public class TextFieldDemoView: UIView {

@@ -17,7 +17,7 @@
                BlueprintIdentifier = "14405C691FAFBD1800D03E04"
                BuildableName = "Demo.app"
                BlueprintName = "Demo"
-               ReferencedContainer = "container:Finnivers.xcodeproj">
+               ReferencedContainer = "container:FinniversKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,7 +36,7 @@
                BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
                BuildableName = "UnitTests.xctest"
                BlueprintName = "UnitTests"
-               ReferencedContainer = "container:Finnivers.xcodeproj">
+               ReferencedContainer = "container:FinniversKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -46,7 +46,7 @@
             BlueprintIdentifier = "14405C691FAFBD1800D03E04"
             BuildableName = "Demo.app"
             BlueprintName = "Demo"
-            ReferencedContainer = "container:Finnivers.xcodeproj">
+            ReferencedContainer = "container:FinniversKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -70,7 +70,7 @@
             BlueprintIdentifier = "14405C691FAFBD1800D03E04"
             BuildableName = "Demo.app"
             BlueprintName = "Demo"
-            ReferencedContainer = "container:Finnivers.xcodeproj">
+            ReferencedContainer = "container:FinniversKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -89,7 +89,7 @@
             BlueprintIdentifier = "14405C691FAFBD1800D03E04"
             BuildableName = "Demo.app"
             BlueprintName = "Demo"
-            ReferencedContainer = "container:Finnivers.xcodeproj">
+            ReferencedContainer = "container:FinniversKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

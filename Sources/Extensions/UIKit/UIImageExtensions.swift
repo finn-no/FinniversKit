@@ -6,6 +6,6 @@ import UIKit
 
 extension UIImage {
     convenience init?(frameworkImageNamed name: String) {
-        self.init(named: name, in: .finnivers, compatibleWith: nil)
+        self.init(named: name, in: .finniversKit, compatibleWith: nil)
     }
 }

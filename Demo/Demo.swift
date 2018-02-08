@@ -4,9 +4,7 @@
 
 import UIKit
 
-// MARK: - FinniversViews
-
-enum FinniversViews: String {
+enum FinniversKitViews: String {
     case colorDemoView
     case fontDemoView
     case spacingDemoView
@@ -61,7 +59,7 @@ enum FinniversViews: String {
         }
     }
 
-    static var all: [FinniversViews] {
+    static var all: [FinniversKitViews] {
         return [
             .colorDemoView,
             .fontDemoView,

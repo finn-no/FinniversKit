@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import Finnivers
+import FinniversKit
 import UIKit
 
 // MARK: - DemoViewsTableViewController
@@ -29,12 +29,12 @@ class DemoViewsTableViewController: UITableViewController {
 
 extension DemoViewsTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FinniversViews.all.count
+        return FinniversKitViews.all.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
-        let rawClassName = FinniversViews.all[indexPath.row].rawValue
+        let rawClassName = FinniversKitViews.all[indexPath.row].rawValue
         let formattedName = rawClassName.replacingOccurrences(of: "DemoView", with: "").capitalizingFirstLetter()
         cell.textLabel?.text = formattedName
         cell.textLabel?.font = UIFont.title3
@@ -47,7 +47,7 @@ extension DemoViewsTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedView = FinniversViews.all[indexPath.row]
+        let selectedView = FinniversKitViews.all[indexPath.row]
         present(selectedView.viewController(), animated: true)
     }
 }

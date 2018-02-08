@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import FinniversKit
 import Foundation
-import Finnivers
 
 /// A model confirming to the PreviewModel protocol for showcasing PreviewGridCell in playground.
 public struct PreviewDataModel: PreviewModel {

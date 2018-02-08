@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
-               BuildableName = "Finnivers.framework"
-               BlueprintName = "Finnivers"
-               ReferencedContainer = "container:Finnivers.xcodeproj">
+               BuildableName = "FinniversKit.framework"
+               BlueprintName = "FinniversKit"
+               ReferencedContainer = "container:FinniversKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -48,9 +48,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
-            BuildableName = "Finnivers.framework"
-            BlueprintName = "Finnivers"
-            ReferencedContainer = "container:Finnivers.xcodeproj">
+            BuildableName = "FinniversKit.framework"
+            BlueprintName = "FinniversKit"
+            ReferencedContainer = "container:FinniversKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CB3CF1551F73E5870041EF20"
-            BuildableName = "Finnivers.framework"
-            BlueprintName = "Finnivers"
-            ReferencedContainer = "container:Finnivers.xcodeproj">
+            BuildableName = "FinniversKit.framework"
+            BlueprintName = "FinniversKit"
+            ReferencedContainer = "container:FinniversKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

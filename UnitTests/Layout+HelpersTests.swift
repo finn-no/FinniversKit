@@ -2,8 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+@testable import FinniversKit
 import Foundation
-@testable import Finnivers
 import XCTest
 
 class LayoutHelpersTests: XCTestCase {

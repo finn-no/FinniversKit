@@ -11,7 +11,7 @@
 		144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* AppDelegate.swift */; };
 		1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145725491FBEEF6A00648D73 /* MarketView.swift */; };
 		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
-		14F4F1BE1FD6CEA800E9CECA /* Finnivers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Finnivers.framework */; };
+		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */; };
 		4408A6A32027AC41008C0BD9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A69E2027AC41008C0BD9 /* Color.swift */; };
 		4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A02027AC41008C0BD9 /* Spacing.swift */; };
@@ -19,8 +19,8 @@
 		4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A72027AC71008C0BD9 /* ColorDemoView.swift */; };
 		4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6AA2027AC7A008C0BD9 /* FontDemoView.swift */; };
 		4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6AD2027AC7F008C0BD9 /* SpacingDemoView.swift */; };
-		441D699B1FEA947600CD919A /* UIView+Finnivers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIView+Finnivers.swift */; };
-		441D699C1FEA947600CD919A /* Layout+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69991FEA947500CD919A /* Layout+Helpers.swift */; };
+		441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIViewExtensions.swift */; };
+		441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69991FEA947500CD919A /* LayoutHelpers.swift */; };
 		441D699D1FEA947600CD919A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D699A1FEA947600CD919A /* Layout.swift */; };
 		4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6661FDB2B110033DBC1 /* Button+Style.swift */; };
 		4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; };
@@ -56,8 +56,8 @@
 		4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */; };
 		4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */; };
 		4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */; };
-		4447F7021FDB2B110033DBC1 /* Finnivers.h in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C51FDB2B110033DBC1 /* Finnivers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4447F7031FDB2B110033DBC1 /* Finnivers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* Finnivers.swift */; };
+		4447F7021FDB2B110033DBC1 /* FinniversKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C51FDB2B110033DBC1 /* FinniversKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; };
 		4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */; };
 		4447F7051FDB2B270033DBC1 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6731FDB2B110033DBC1 /* EmptyViewDemoView.swift */; };
 		4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6781FDB2B110033DBC1 /* LabelDemoView.swift */; };
@@ -73,15 +73,15 @@
 		4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A51FDB2B110033DBC1 /* TextFieldDemoView.swift */; };
 		4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AA1FDB2B110033DBC1 /* ToastDemoView.swift */; };
 		44898D541FE5B40D00F6017B /* Layout+HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */; };
-		44898D621FE5B9C200F6017B /* UIImage+Finnivers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImage+Finnivers.swift */; };
-		44898D641FE5B9C200F6017B /* UICollectionView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionView+Identifiable.swift */; };
-		44898D651FE5B9C200F6017B /* UITableView+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5E1FE5B9C200F6017B /* UITableView+Identifiable.swift */; };
+		44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */; };
+		44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */; };
+		44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */; };
 		44C4E8B91FFBA714000B014D /* Layout.swift in Headers */ = {isa = PBXBuildFile; fileRef = 441D699A1FEA947600CD919A /* Layout.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8BA1FFBA714000B014D /* Layout+Helpers.swift in Headers */ = {isa = PBXBuildFile; fileRef = 441D69991FEA947500CD919A /* Layout+Helpers.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8BB1FFBA714000B014D /* UIView+Finnivers.swift in Headers */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIView+Finnivers.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8BC1FFBA714000B014D /* UIImage+Finnivers.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImage+Finnivers.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8BD1FFBA714000B014D /* UICollectionView+Identifiable.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionView+Identifiable.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8BE1FFBA714000B014D /* UITableView+Identifiable.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44898D5E1FE5B9C200F6017B /* UITableView+Identifiable.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		44C4E8BA1FFBA714000B014D /* LayoutHelpers.swift in Headers */ = {isa = PBXBuildFile; fileRef = 441D69991FEA947500CD919A /* LayoutHelpers.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		44C4E8BB1FFBA714000B014D /* UIViewExtensions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIViewExtensions.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		44C4E8BC1FFBA714000B014D /* UIImageExtensions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		44C4E8BD1FFBA714000B014D /* UICollectionViewExtensions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		44C4E8BE1FFBA714000B014D /* UITableViewExtensions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8C21FFBA714000B014D /* Button+Style.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6661FDB2B110033DBC1 /* Button+Style.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8C31FFBA714000B014D /* Button.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8C41FFBA714000B014D /* EmptyView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F66B1FDB2B110033DBC1 /* EmptyView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,9 +101,9 @@
 		44C4E8DB1FFBA714000B014D /* TextField.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6A71FDB2B110033DBC1 /* TextField.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8DC1FFBA714000B014D /* ToastView+Style.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6AB1FDB2B110033DBC1 /* ToastView+Style.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8DD1FFBA714000B014D /* ToastView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6AD1FDB2B110033DBC1 /* ToastView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8DE1FFBA714000B014D /* Finnivers.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* Finnivers.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44D32C281FB07850001E86D6 /* Finnivers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Finnivers.framework */; };
-		44D32C291FB07850001E86D6 /* Finnivers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* Finnivers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
+		44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */; };
 		AA7313D3202078B8008A7251 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D2202078B8008A7251 /* RegisterView.swift */; };
 		AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; };
@@ -120,14 +120,14 @@
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
-			remoteInfo = Finnivers;
+			remoteInfo = FinniversKit;
 		};
 		44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
-			remoteInfo = Finnivers;
+			remoteInfo = FinniversKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -138,7 +138,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				44D32C291FB07850001E86D6 /* Finnivers.framework in Embed Frameworks */,
+				44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,8 +161,8 @@
 		4408A6A72027AC71008C0BD9 /* ColorDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDemoView.swift; sourceTree = "<group>"; };
 		4408A6AA2027AC7A008C0BD9 /* FontDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontDemoView.swift; sourceTree = "<group>"; };
 		4408A6AD2027AC7F008C0BD9 /* SpacingDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacingDemoView.swift; sourceTree = "<group>"; };
-		441D69981FEA947500CD919A /* UIView+Finnivers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Finnivers.swift"; sourceTree = "<group>"; };
-		441D69991FEA947500CD919A /* Layout+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Layout+Helpers.swift"; sourceTree = "<group>"; };
+		441D69981FEA947500CD919A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		441D69991FEA947500CD919A /* LayoutHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutHelpers.swift; sourceTree = "<group>"; };
 		441D699A1FEA947600CD919A /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		4447F6661FDB2B110033DBC1 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		4447F6671FDB2B110033DBC1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -213,23 +213,23 @@
 		4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Light.ttf"; sourceTree = "<group>"; };
 		4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
 		4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
-		4447F6C51FDB2B110033DBC1 /* Finnivers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finnivers.h; sourceTree = "<group>"; };
-		4447F6C61FDB2B110033DBC1 /* Finnivers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Finnivers.swift; sourceTree = "<group>"; };
+		4447F6C51FDB2B110033DBC1 /* FinniversKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinniversKit.h; sourceTree = "<group>"; };
+		4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversKit.swift; sourceTree = "<group>"; };
 		4447F7141FDB2C100033DBC1 /* ___FILEBASENAME___.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___.swift"; sourceTree = "<group>"; };
 		4447F7151FDB2C100033DBC1 /* TemplateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon.png; sourceTree = "<group>"; };
 		4447F7161FDB2C100033DBC1 /* TemplateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TemplateIcon@2x.png"; sourceTree = "<group>"; };
 		4447F7171FDB2C100033DBC1 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layout+HelpersTests.swift"; sourceTree = "<group>"; };
-		44898D5B1FE5B9C200F6017B /* UIImage+Finnivers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Finnivers.swift"; sourceTree = "<group>"; };
-		44898D5D1FE5B9C200F6017B /* UICollectionView+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Identifiable.swift"; sourceTree = "<group>"; };
-		44898D5E1FE5B9C200F6017B /* UITableView+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Identifiable.swift"; sourceTree = "<group>"; };
+		44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
+		44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewsTableViewController.swift; sourceTree = "<group>"; };
 		AA7313D2202078B8008A7251 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		AA7313D4202078D4008A7251 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewDefaultData.swift; sourceTree = "<group>"; };
 		AA7313D82020792C008A7251 /* RegisterViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewDemoView.swift; sourceTree = "<group>"; };
 		AAC1AFB32021058000C71B7C /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
-		CB3CF1561F73E5870041EF20 /* Finnivers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Finnivers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,7 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44D32C281FB07850001E86D6 /* Finnivers.framework in Frameworks */,
+				44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14F4F1BE1FD6CEA800E9CECA /* Finnivers.framework in Frameworks */,
+				14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +307,7 @@
 		25D04D7C1F583B1800EA317D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CB3CF1561F73E5870041EF20 /* Finnivers.framework */,
+				CB3CF1561F73E5870041EF20 /* FinniversKit.framework */,
 				14405C741FAFBD1800D03E04 /* Demo.app */,
 				14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */,
 			);
@@ -390,8 +390,8 @@
 				4447F6641FDB2B110033DBC1 /* Components */,
 				4447F6B61FDB2B110033DBC1 /* Protocols */,
 				4447F6B81FDB2B110033DBC1 /* Resources */,
-				4447F6C51FDB2B110033DBC1 /* Finnivers.h */,
-				4447F6C61FDB2B110033DBC1 /* Finnivers.swift */,
+				4447F6C51FDB2B110033DBC1 /* FinniversKit.h */,
+				4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */,
 				4447F6B51FDB2B110033DBC1 /* Info.plist */,
 			);
 			path = Sources;
@@ -706,11 +706,11 @@
 			isa = PBXGroup;
 			children = (
 				441D699A1FEA947600CD919A /* Layout.swift */,
-				441D69991FEA947500CD919A /* Layout+Helpers.swift */,
-				441D69981FEA947500CD919A /* UIView+Finnivers.swift */,
-				44898D5B1FE5B9C200F6017B /* UIImage+Finnivers.swift */,
-				44898D5D1FE5B9C200F6017B /* UICollectionView+Identifiable.swift */,
-				44898D5E1FE5B9C200F6017B /* UITableView+Identifiable.swift */,
+				441D69991FEA947500CD919A /* LayoutHelpers.swift */,
+				441D69981FEA947500CD919A /* UIViewExtensions.swift */,
+				44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */,
+				44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */,
+				44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -748,13 +748,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4447F7021FDB2B110033DBC1 /* Finnivers.h in Headers */,
+				4447F7021FDB2B110033DBC1 /* FinniversKit.h in Headers */,
 				44C4E8B91FFBA714000B014D /* Layout.swift in Headers */,
-				44C4E8BA1FFBA714000B014D /* Layout+Helpers.swift in Headers */,
-				44C4E8BB1FFBA714000B014D /* UIView+Finnivers.swift in Headers */,
-				44C4E8BC1FFBA714000B014D /* UIImage+Finnivers.swift in Headers */,
-				44C4E8BD1FFBA714000B014D /* UICollectionView+Identifiable.swift in Headers */,
-				44C4E8BE1FFBA714000B014D /* UITableView+Identifiable.swift in Headers */,
+				44C4E8BA1FFBA714000B014D /* LayoutHelpers.swift in Headers */,
+				44C4E8BB1FFBA714000B014D /* UIViewExtensions.swift in Headers */,
+				44C4E8BC1FFBA714000B014D /* UIImageExtensions.swift in Headers */,
+				44C4E8BD1FFBA714000B014D /* UICollectionViewExtensions.swift in Headers */,
+				44C4E8BE1FFBA714000B014D /* UITableViewExtensions.swift in Headers */,
 				44C4E8C21FFBA714000B014D /* Button+Style.swift in Headers */,
 				44C4E8C31FFBA714000B014D /* Button.swift in Headers */,
 				44C4E8C41FFBA714000B014D /* EmptyView.swift in Headers */,
@@ -776,7 +776,7 @@
 				44C4E8DB1FFBA714000B014D /* TextField.swift in Headers */,
 				44C4E8DC1FFBA714000B014D /* ToastView+Style.swift in Headers */,
 				44C4E8DD1FFBA714000B014D /* ToastView.swift in Headers */,
-				44C4E8DE1FFBA714000B014D /* Finnivers.swift in Headers */,
+				44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,9 +821,9 @@
 			productReference = 14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CB3CF1551F73E5870041EF20 /* Finnivers */ = {
+		CB3CF1551F73E5870041EF20 /* FinniversKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB3CF15D1F73E5870041EF20 /* Build configuration list for PBXNativeTarget "Finnivers" */;
+			buildConfigurationList = CB3CF15D1F73E5870041EF20 /* Build configuration list for PBXNativeTarget "FinniversKit" */;
 			buildPhases = (
 				CB3CF1511F73E5870041EF20 /* Sources */,
 				CB3CF1521F73E5870041EF20 /* Frameworks */,
@@ -835,9 +835,9 @@
 			);
 			dependencies = (
 			);
-			name = Finnivers;
-			productName = Finnivers;
-			productReference = CB3CF1561F73E5870041EF20 /* Finnivers.framework */;
+			name = FinniversKit;
+			productName = FinniversKit;
+			productReference = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -864,7 +864,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 25D04D761F583B1800EA317D /* Build configuration list for PBXProject "Finnivers" */;
+			buildConfigurationList = 25D04D761F583B1800EA317D /* Build configuration list for PBXProject "FinniversKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -877,7 +877,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CB3CF1551F73E5870041EF20 /* Finnivers */,
+				CB3CF1551F73E5870041EF20 /* FinniversKit */,
 				14405C691FAFBD1800D03E04 /* Demo */,
 				14F4F1B81FD6CEA800E9CECA /* UnitTests */,
 			);
@@ -942,7 +942,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\"\nfi\n\nif [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Finnivers\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Finnivers\"\nfi\n\ncp -R ./Templates/FinniversView.xctemplate ${USER_LIBRARY_DIR}/Developer/Xcode/Templates/Finnivers";
+			shellScript = "if [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\"\nfi\n\nif [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit\"\nfi\n\ncp -R ./Templates/FinniversKitView.xctemplate ${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -992,14 +992,14 @@
 				4447F6CC1FDB2B110033DBC1 /* CircleView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
-				441D699B1FEA947600CD919A /* UIView+Finnivers.swift in Sources */,
+				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				4447F6CD1FDB2B110033DBC1 /* RectangleView.swift in Sources */,
-				4447F7031FDB2B110033DBC1 /* Finnivers.swift in Sources */,
+				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				4447F6DC1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift in Sources */,
 				4447F6CB1FDB2B110033DBC1 /* AttachableView.swift in Sources */,
-				44898D641FE5B9C200F6017B /* UICollectionView+Identifiable.swift in Sources */,
+				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
-				44898D621FE5B9C200F6017B /* UIImage+Finnivers.swift in Sources */,
+				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				4447F6CA1FDB2B110033DBC1 /* EmptyView.swift in Sources */,
 				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
 				4447F6E01FDB2B110033DBC1 /* PreviewGridCell.swift in Sources */,
@@ -1007,7 +1007,7 @@
 				AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				4447F6E61FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift in Sources */,
-				441D699C1FEA947600CD919A /* Layout+Helpers.swift in Sources */,
+				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
@@ -1029,7 +1029,7 @@
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
 				4447F6E51FDB2B110033DBC1 /* PreviewGridLayout.swift in Sources */,
 				4447F6D91FDB2B110033DBC1 /* MarketGridModel.swift in Sources */,
-				44898D651FE5B9C200F6017B /* UITableView+Identifiable.swift in Sources */,
+				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
 				AA7313D720207900008A7251 /* RegisterViewDefaultData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1039,12 +1039,12 @@
 /* Begin PBXTargetDependency section */
 		14F4F1C01FD6CEA800E9CECA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CB3CF1551F73E5870041EF20 /* Finnivers */;
+			target = CB3CF1551F73E5870041EF20 /* FinniversKit */;
 			targetProxy = 14F4F1BF1FD6CEA800E9CECA /* PBXContainerItemProxy */;
 		};
 		44D32C2B1FB07850001E86D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CB3CF1551F73E5870041EF20 /* Finnivers */;
+			target = CB3CF1551F73E5870041EF20 /* FinniversKit */;
 			targetProxy = 44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1064,7 +1064,7 @@
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finnivers.playground;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finniversKit.playground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1086,7 +1086,7 @@
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finnivers.playground;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finniversKit.playground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1107,7 +1107,7 @@
 				INFOPLIST_FILE = UnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finnivers.UnitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finniversKit.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1128,7 +1128,7 @@
 				INFOPLIST_FILE = UnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finnivers.UnitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finniversKit.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1266,7 +1266,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Finnivers;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1302,7 +1302,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Finnivers;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1334,7 +1334,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		25D04D761F583B1800EA317D /* Build configuration list for PBXProject "Finnivers" */ = {
+		25D04D761F583B1800EA317D /* Build configuration list for PBXProject "FinniversKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				25D04D8B1F583B1800EA317D /* Debug */,
@@ -1343,7 +1343,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB3CF15D1F73E5870041EF20 /* Build configuration list for PBXNativeTarget "Finnivers" */ = {
+		CB3CF15D1F73E5870041EF20 /* Build configuration list for PBXNativeTarget "FinniversKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB3CF15B1F73E5870041EF20 /* Debug */,
