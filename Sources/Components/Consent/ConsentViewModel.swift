@@ -10,4 +10,5 @@ public protocol ConsentViewModel {
     var cancelButtonTitle: String { get }
     var descriptionTitle: String { get }
     var descriptionBodyText: String { get }
+    var image: UIImage? { get }
 }

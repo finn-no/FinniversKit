@@ -6,6 +6,7 @@ import FinniversKit
 import Foundation
 
 public struct ConsentViewDefaultData: ConsentViewModel {
+    public var image: UIImage?
     public var yesButtonTitle = "Ja, takk"
     public var noButtonTitle = "Nei, takk"
     public var cancelButtonTitle = "Hopp over" // "Utsett"
