@@ -9,9 +9,7 @@ import UIKit
 /// Especially if it has a consequence for how he or she uses the service.
 /// https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system#/components/broadcast
 public class BroadcastView: UIView {
-    let message: String
-
-    lazy var messageLabel: Label = {
+    private lazy var messageLabel: Label = {
         let label = Label(style: Style.labelStyle)
 
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -20,62 +18,166 @@ public class BroadcastView: UIView {
         return label
     }()
 
-    lazy var iconImage: UIImage? = {
+    private lazy var iconImage: UIImage? = {
         let image = UIImage(frameworkImageNamed: Style.iconImageAssetName)
 
         return image
     }()
 
-    lazy var iconImageView: UIImageView = {
+    private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = iconImage
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
-    public override init(frame: CGRect) {
-        message = ""
+    private lazy var subviewConstraints: [NSLayoutConstraint] = {
+        let messageLabelTopAnchorConstraint = messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
+        messageLabelTopAnchorConstraint.priority = UILayoutPriority(rawValue: 999)
+
+        return [
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.heightAnchor.constraint(equalToConstant: 28),
+            iconImageView.widthAnchor.constraint(equalToConstant: 28),
+            iconImageView.centerYAnchor.constraint(equalTo: messageLabel.centerYAnchor),
+            messageLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            messageLabelTopAnchorConstraint,
+            messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+        ]
+    }()
+
+    /// A property indicating if the BroadcastView is in its presenting state
+    public private(set) var isPresenting = false
+
+    /// The message displayed in the presented BroadcastView
+    /// This property will be nil if not in presenting state
+    public var message: String?
+
+    /// Initalizes a BrodcastView
+    /// When initialized the BroadcastView will have a height of zero and appear as invisible/collapsed
+    /// Use present(message:animated:completion) to show a message and dismiss(animated:completion) to hide
+    /// - Parameter frame:
+    public override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setup()
     }
 
-    public init(message: String) {
-        self.message = message
-        super.init(frame: .zero)
-        setup()
-    }
-
     public required init?(coder aDecoder: NSCoder) {
-        message = ""
         super.init(coder: aDecoder)
         setup()
     }
 }
 
-// MARK: - View setup
+// MARK: - Public
+
+extension BroadcastView {
+    /// Presents the message in the BroadcastView
+    /// When the message is presented the BroadcastView will expand to the size of the label
+    /// containing the text.
+    ///
+    /// - Parameters:
+    ///   - message: The message to present
+    ///   - animated: flag to determine if the expansion of the BroadcastView should be animated
+    ///   - completion: a closure called when the animation finished
+    public func present(message: String, animated: Bool = true, completion: (() -> Void)? = nil) {
+        if isPresenting {
+            return
+        }
+
+        inflate(withMessage: message, animated: animated, completion: completion)
+
+        isPresenting = true
+    }
+
+    /// Dismisses the BroadcastView by returning it to its zero height/collapsed state
+    ///
+    /// - Parameters:
+    ///   - animated: flag to determine if the collapse of the BroadcastView should be animated
+    ///   - completion: a closure called when the animation finished
+    public func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
+        guard isPresenting else {
+            return
+        }
+
+        deflate(animated: animated, completion: completion)
+
+        isPresenting = false
+    }
+}
+
+// MARK: - Private
 
 private extension BroadcastView {
     func setup() {
         isAccessibilityElement = true
         backgroundColor = Style.backgroundColor
+        clipsToBounds = true
         layer.cornerRadius = Style.containerCornerRadius
 
-        messageLabel.text = message
         iconImageView.image = iconImage
 
         addSubview(messageLabel)
         addSubview(iconImageView)
 
-        NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: 28),
-            iconImageView.heightAnchor.constraint(equalToConstant: 28),
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            messageLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
-        ])
+        NSLayoutConstraint.activate(subviewConstraints)
+
+        setClampedHeight(active: true)
+    }
+
+    func inflate(withMessage message: String, animated: Bool, completion: (() -> Void)?) {
+        self.message = message
+        messageLabel.text = message
+
+        setClampedHeight(active: false)
+
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                self?.superview?.layoutIfNeeded()
+            }) { _ in
+                completion?()
+            }
+        } else {
+            superview?.layoutIfNeeded()
+            completion?()
+        }
+    }
+
+    func deflate(animated: Bool, completion: (() -> Void)?) {
+        setClampedHeight(active: true)
+
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                self?.superview?.layoutIfNeeded()
+            }) { [weak self] _ in
+                self?.messageLabel.text = ""
+                self?.message = nil
+                completion?()
+            }
+        } else {
+            superview?.layoutIfNeeded()
+            messageLabel.text = ""
+            message = nil
+            completion?()
+        }
+    }
+
+    func setClampedHeight(active isActive: Bool) {
+        let clampedHeightConstraint: NSLayoutConstraint = {
+            let clampedHeightConstraintIdentifier = "heightConstraint"
+
+            if let clampedHeightConstraint = constraints.filter({ $0.identifier == clampedHeightConstraintIdentifier }).first {
+                return clampedHeightConstraint
+            } else {
+                let clampedHeightConstraint = heightAnchor.constraint(equalToConstant: 0)
+                clampedHeightConstraint.identifier = clampedHeightConstraintIdentifier
+
+                return clampedHeightConstraint
+            }
+        }()
+
+        clampedHeightConstraint.isActive = isActive
     }
 }
