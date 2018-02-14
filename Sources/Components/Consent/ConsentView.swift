@@ -4,12 +4,12 @@
 
 import UIKit
 
-// MARK: - LoginViewDelegatew
+// MARK: - ConsentViewDelegate
 
 public protocol ConsentViewDelegate: NSObjectProtocol {
     func consentView(_ consentView: ConsentView, didSelectYesButton button: Button)
     func consentView(_ consentView: ConsentView, didSelectNoButton button: Button)
-    func consentView(_ consentView: ConsentView, didSelectCancelButton button: UIButton)
+    func consentView(_ consentView: ConsentView, didSelectCancelButton button: Button)
 }
 
 public class ConsentView: UIView {
@@ -154,7 +154,7 @@ public class ConsentView: UIView {
         delegate?.consentView(self, didSelectNoButton: button)
     }
 
-    @objc private func cancelButtonTapped(button: UIButton) {
+    @objc private func cancelButtonTapped(button: Button) {
         delegate?.consentView(self, didSelectCancelButton: button)
     }
 }

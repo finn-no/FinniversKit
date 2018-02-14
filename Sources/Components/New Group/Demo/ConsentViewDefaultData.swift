@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import Foundation
 
 public struct ConsentViewDefaultData: ConsentViewModel {
     public var image: UIImage?
