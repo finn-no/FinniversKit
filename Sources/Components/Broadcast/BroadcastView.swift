@@ -33,7 +33,7 @@ public class BroadcastView: UIView {
         return imageView
     }()
     
-    private var imageViewSizeConstraintConstant = CGSize(width: 28, height: 28)
+    private let imageViewSizeConstraintConstant = CGSize(width: 28, height: 28)
 
     private lazy var subviewConstraints: [NSLayoutConstraint] = {
         let messageLabelTopAnchorConstraint = messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
