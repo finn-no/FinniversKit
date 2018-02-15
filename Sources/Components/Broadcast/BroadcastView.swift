@@ -106,6 +106,28 @@ extension BroadcastView {
 
         isPresenting = false
     }
+
+    /// Returns a calculated height for a BroadcastView by checking the bounding rect for the message.
+    ///
+    /// - Parameter constrainedWidth: the constrained width to use for calculating the size
+    /// - Returns: the calculated height of the BroadcastView
+    public func calculatedSize(withConstrainedWidth constrainedWidth: CGFloat) -> CGSize {
+        guard let message = message else {
+            return CGSize(width: constrainedWidth, height: 0)
+        }
+
+        let imageWidth: CGFloat = 28
+        let horizontalSpacings = .mediumLargeSpacing + imageWidth + .mediumLargeSpacing + .mediumLargeSpacing
+        let rectWidth = constrainedWidth - horizontalSpacings
+        let rectSize = CGSize(width: rectWidth, height: CGFloat.infinity)
+
+        let boundingRect = NSString(string: message).boundingRect(with: rectSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: messageLabel.labelAttributes, context: nil)
+
+        let verticalSpacing = .mediumLargeSpacing + .mediumLargeSpacing
+        let calculatedSize = CGSize(width: constrainedWidth, height: boundingRect.size.height + verticalSpacing)
+
+        return calculatedSize
+    }
 }
 
 // MARK: - Private
