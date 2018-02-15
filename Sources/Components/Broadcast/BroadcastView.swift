@@ -32,6 +32,8 @@ public class BroadcastView: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    private let imageViewSizeConstraintConstant = CGSize(width: 28, height: 28)
 
     private lazy var subviewConstraints: [NSLayoutConstraint] = {
         let messageLabelTopAnchorConstraint = messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
@@ -39,8 +41,8 @@ public class BroadcastView: UIView {
 
         return [
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.heightAnchor.constraint(equalToConstant: 28),
-            iconImageView.widthAnchor.constraint(equalToConstant: 28),
+            iconImageView.heightAnchor.constraint(equalToConstant: imageViewSizeConstraintConstant.height),
+            iconImageView.widthAnchor.constraint(equalToConstant: imageViewSizeConstraintConstant.width),
             iconImageView.centerYAnchor.constraint(equalTo: messageLabel.centerYAnchor),
             messageLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
             messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
@@ -105,6 +107,27 @@ extension BroadcastView {
         deflate(animated: animated, completion: completion)
 
         isPresenting = false
+    }
+
+    /// Returns a calculated height for a BroadcastView by checking the bounding rect for the message.
+    ///
+    /// - Parameter constrainedWidth: the constrained width to use for calculating the size
+    /// - Returns: the calculated height of the BroadcastView
+    public func calculatedSize(withConstrainedWidth constrainedWidth: CGFloat) -> CGSize {
+        guard let message = message else {
+            return CGSize(width: constrainedWidth, height: 0)
+        }
+
+        let horizontalSpacings = .mediumLargeSpacing + imageViewSizeConstraintConstant.width + .mediumLargeSpacing + .mediumLargeSpacing
+        let rectWidth = constrainedWidth - horizontalSpacings
+        let rectSize = CGSize(width: rectWidth, height: CGFloat.infinity)
+
+        let boundingRect = NSString(string: message).boundingRect(with: rectSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: messageLabel.labelAttributes, context: nil)
+
+        let verticalSpacing = .mediumLargeSpacing + .mediumLargeSpacing
+        let calculatedSize = CGSize(width: constrainedWidth, height: boundingRect.size.height + verticalSpacing)
+
+        return calculatedSize
     }
 }
 
