@@ -16,19 +16,31 @@ public class ConsentView: UIView {
 
     // MARK: - Internal properties
 
-    private let noImage: UIImage = UIImage(frameworkImageNamed: "NoImage")!
-
-    private lazy var yesButton: Button = {
-        let button = Button(style: .callToAction)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(yesButtonTapped), for: .touchUpInside)
-        return button
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
+
+    private lazy var contentView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private let noImage: UIImage = UIImage(frameworkImageNamed: "NoImage")!
 
     private lazy var noButton: Button = {
         let button = Button(style: .default)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(noButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var yesButton: Button = {
+        let button = Button(style: .callToAction)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(yesButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -40,7 +52,7 @@ public class ConsentView: UIView {
     }()
 
     private lazy var buttonStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [yesButton, noButton])
+        let view = UIStackView(arrangedSubviews: [noButton, yesButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = .mediumLargeSpacing
@@ -62,19 +74,25 @@ public class ConsentView: UIView {
         return label
     }()
 
-    private lazy var descriptionTextView: UITextView = {
-        let textView = UITextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.isAccessibilityElement = true
-        textView.isEditable = false
-        textView.isSelectable = true
-        textView.isScrollEnabled = false
-        textView.textContainer.lineFragmentPadding = 0
-        textView.textContainerInset = .zero
-        textView.contentMode = .topLeft
-        textView.font = .body
-        textView.textColor = .licorice
-        return textView
+    private lazy var introDescriptionLabel: Label = {
+        let label = Label(style: .body(.licorice))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var descriptionBulletPointsLabel: Label = {
+        let label = Label(style: .body(.licorice))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var descriptionLabel: Label = {
+        let label = Label(style: .body(.licorice))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
     }()
 
     // MARK: - External properties / Dependency injection
@@ -91,8 +109,9 @@ public class ConsentView: UIView {
             noButton.setTitle(model.noButtonTitle, for: .normal)
             cancelButton.setTitle(model.cancelButtonTitle, for: .normal)
             descriptionTitleLabel.text = model.descriptionTitle
-            descriptionTextView.text = model.descriptionBodyText
-            descriptionTextView.accessibilityLabel = model.descriptionBodyText
+            introDescriptionLabel.text = model.descriptionIntroText
+            descriptionBulletPointsLabel.attributedText = model.formatedBulletPoints(with: .body)
+            descriptionLabel.text = model.descriptionText
 
             if let image = model.image { // TODO: (UUS): Async loading og image
                 imageView.image = image
@@ -115,30 +134,56 @@ public class ConsentView: UIView {
     }
 
     private func setup() {
-        addSubview(cancelButton)
-        addSubview(descriptionTitleLabel)
-        addSubview(descriptionTextView)
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+
+        contentView.addSubview(cancelButton)
+        contentView.addSubview(imageView)
+        contentView.addSubview(descriptionTitleLabel)
+        contentView.addSubview(introDescriptionLabel)
+        contentView.addSubview(descriptionBulletPointsLabel)
+        contentView.addSubview(descriptionLabel)
         addSubview(buttonStackView)
-        addSubview(imageView)
 
         NSLayoutConstraint.activate([
-            cancelButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            cancelButton.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -.mediumSpacing),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            descriptionTitleLabel.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: .largeSpacing),
-            descriptionTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            descriptionTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            imageView.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            cancelButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            cancelButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            cancelButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            descriptionTextView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumSpacing),
-            descriptionTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            descriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            imageView.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: .mediumLargeSpacing),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            descriptionTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .largeSpacing),
+            descriptionTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            descriptionTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            descriptionTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            introDescriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            introDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            introDescriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+
+            descriptionBulletPointsLabel.topAnchor.constraint(equalTo: introDescriptionLabel.bottomAnchor, constant: .mediumSpacing),
+            descriptionBulletPointsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            descriptionBulletPointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+
+            descriptionLabel.topAnchor.constraint(equalTo: descriptionBulletPointsLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
             buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
