@@ -12,7 +12,6 @@ public protocol ConsentViewModel {
     var descriptionIntroText: String { get }
     var descriptionText: String { get }
     var bulletPoints: [String] { get }
-    var image: UIImage? { get }
 
     func formatedBulletPoints(with font: UIFont) -> NSAttributedString
 }

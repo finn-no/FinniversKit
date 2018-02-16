@@ -5,7 +5,6 @@
 import FinniversKit
 
 public struct ConsentViewDefaultData: ConsentViewModel {
-    public var image = UIImage(named: "page1", in: .playgroundBundle, compatibleWith: nil)
     public var yesButtonTitle = "Ja, det er greit"
     public var noButtonTitle = "Nei takk"
     public var cancelButtonTitle = "Avbryt"

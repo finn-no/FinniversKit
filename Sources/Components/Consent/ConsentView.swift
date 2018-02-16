@@ -64,6 +64,7 @@ public class ConsentView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(frameworkImageNamed: "consentViewImage1")
         return imageView
     }()
 
@@ -112,12 +113,6 @@ public class ConsentView: UIView {
             introDescriptionLabel.text = model.descriptionIntroText
             descriptionBulletPointsLabel.attributedText = model.formatedBulletPoints(with: .body)
             descriptionLabel.text = model.descriptionText
-
-            if let image = model.image { // TODO: (UUS): Async loading og image
-                imageView.image = image
-            } else {
-                imageView.image = noImage
-            }
         }
     }
 
