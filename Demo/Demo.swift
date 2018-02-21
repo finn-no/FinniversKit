@@ -88,16 +88,18 @@ enum FinniversKitViews: String {
         ]
     }
 
+    private static let lastSelectedViewRawValueKey = "lastSelectedViewRawValue"
+
     static var lastSelectedView: FinniversKitViews? {
         get {
-            guard let lastSelectedViewRawValue = UserDefaults.standard.value(forKey: "lastSelectedView") as? String else {
+            guard let lastSelectedViewRawValue = UserDefaults.standard.value(forKey: lastSelectedViewRawValueKey) as? String else {
                 return nil
             }
 
             return FinniversKitViews(rawValue: lastSelectedViewRawValue)
         }
         set {
-            UserDefaults.standard.set(newValue?.rawValue, forKey: "lastSelectedView")
+            UserDefaults.standard.set(newValue?.rawValue, forKey: lastSelectedViewRawValueKey)
             UserDefaults.standard.synchronize()
         }
     }
