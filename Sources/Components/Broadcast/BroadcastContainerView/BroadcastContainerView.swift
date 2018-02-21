@@ -11,7 +11,7 @@ public protocol BroadcastContainerViewDelegate: class {
 
 public protocol BroadcastContainerViewDataSource: class {
     func numberOfBroadcastMessagesToDisplay(in broadcastContainerView: BroadcastContainerView) -> Int
-    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, broadcastMessageForIndex index: Int) -> BroadcastViewMessage
+    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, broadcastViewMessageForIndex index: Int) -> BroadcastViewMessage
 }
 
 public final class BroadcastContainerView: UIView {
@@ -40,12 +40,74 @@ public final class BroadcastContainerView: UIView {
     }()
 
     public override init(frame: CGRect) {
-        super.init(frame: .zero)
+        super.init(frame: frame)
         setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - Public
+
+extension BroadcastContainerView {
+    func reload() {
+        guard let dataSource = dataSource else {
+            return
+        }
+        
+        reset()
+        
+        let rangeOfBroadcastMessagesToDisplay = 0 ..< dataSource.numberOfBroadcastMessagesToDisplay(in: self)
+        let broadcastMessagesToDisplay = rangeOfBroadcastMessagesToDisplay.map { dataSource.broadcastContainerView(self, broadcastViewMessageForIndex: $0) }
+        
+        if broadcastMessagesToDisplay.isEmpty {
+            return
+        }
+        
+        let laidOutBroadcastViews = layoutBroadcastViews(from: broadcastMessagesToDisplay)
+        
+        if let delegate = delegate {
+            delegate.broadcastContainer(self, willDisplayBroadcastViews: laidOutBroadcastViews, withContainerSize: intrinsicContentSize, commitToDisplaying: {
+                UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                    self?.contentView.arrangedSubviews.forEach { $0.isHidden = false }
+                })
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                self?.contentView.arrangedSubviews.forEach { $0.isHidden = false }
+            })
+        }
+    }
+    
+    public override var intrinsicContentSize: CGSize {
+        guard contentView.arrangedSubviews.count != 0 else {
+            return CGSize(width: frame.size.width, height: 0)
+        }
+        
+        let broadcastViewsHorizontalSpacings = LayoutConstants.ContentView.insets.leading + abs(LayoutConstants.ContentView.insets.trailing)
+        let constrainedWidth = frame.size.width - broadcastViewsHorizontalSpacings
+        
+        let broadcastViewsTotalHeight = contentView.arrangedSubviews.reduce(CGFloat(0), { acc, view in
+            guard let broadcastView = view as? BroadcastView else {
+                return acc
+            }
+            
+            let broadcastViewHeight = broadcastView.calculatedSize(withConstrainedWidth: constrainedWidth).height
+            
+            return acc + broadcastViewHeight
+        })
+        
+        guard broadcastViewsTotalHeight != 0 else {
+            return CGSize(width: frame.size.width, height: 0)
+        }
+        
+        let broadcastViewTotalSpacing = ((CGFloat(contentView.arrangedSubviews.count) * LayoutConstants.BroadcastView.spacing) - .mediumLargeSpacing)
+        let verticalSpacing = LayoutConstants.ContentView.insets.top + broadcastViewTotalSpacing
+        let containerHeight = broadcastViewsTotalHeight + verticalSpacing
+        
+        return CGSize(width: frame.size.width, height: containerHeight)
     }
 }
 
@@ -117,78 +179,29 @@ private extension BroadcastContainerView {
             return
         }
 
-        let newContainerSize: CGSize = {
-            let width = frame.width
-            if contentView.arrangedSubviews.count == 1 { // This is the last broadcast that soon will be removed
-                return CGSize(width: width, height: 0)
-            } else {
-                let height = frame.height - broadcastView.frame.height
+        if let delegate = delegate {
+            let newContainerSize: CGSize = {
+                let width = frame.width
+                if contentView.arrangedSubviews.count == 1 { // This is the last broadcast that soon will be removed
+                    return CGSize(width: width, height: 0)
+                } else {
+                    let height = frame.height - broadcastView.frame.height
 
-                return CGSize(width: width, height: height)
-            }
-        }()
+                    return CGSize(width: width, height: height)
+                }
+            }()
 
-        delegate?.broadcastContainer(self, willDismissBroadcastView: broadcastView, withNewContainerSize: newContainerSize, commitToDismissal: {
+            delegate.broadcastContainer(self, willDismissBroadcastView: broadcastView, withNewContainerSize: newContainerSize, commitToDismissal: {
+                UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                    broadcastView.isHidden = true
+                    self?.remove(broadcastView)
+                })
+            })
+        } else {
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
                 broadcastView.isHidden = true
                 self?.remove(broadcastView)
             })
-        })
-    }
-}
-
-// MARK: - Public
-
-extension BroadcastContainerView {
-    func reload() {
-        guard let dataSource = dataSource else {
-            return
         }
-
-        reset()
-
-        let rangeOfBroadcastMessagesToDisplay = 0 ..< dataSource.numberOfBroadcastMessagesToDisplay(in: self)
-        let broadcastMessagesToDisplay = rangeOfBroadcastMessagesToDisplay.map { dataSource.broadcastContainerView(self, broadcastMessageForIndex: $0) }
-
-        if broadcastMessagesToDisplay.isEmpty {
-            return
-        }
-
-        let laidOutBroadcastViews = layoutBroadcastViews(from: broadcastMessagesToDisplay)
-
-        delegate?.broadcastContainer(self, willDisplayBroadcastViews: laidOutBroadcastViews, withContainerSize: intrinsicContentSize, commitToDisplaying: {
-            UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                self?.contentView.arrangedSubviews.forEach { $0.isHidden = false }
-            })
-        })
-    }
-
-    public override var intrinsicContentSize: CGSize {
-        guard contentView.arrangedSubviews.count != 0 else {
-            return CGSize(width: frame.size.width, height: 0)
-        }
-
-        let broadcastViewsHorizontalSpacings = LayoutConstants.ContentView.insets.leading + abs(LayoutConstants.ContentView.insets.trailing)
-        let constrainedWidth = frame.size.width - broadcastViewsHorizontalSpacings
-
-        let broadcastViewsTotalHeight = contentView.arrangedSubviews.reduce(CGFloat(0), { acc, view in
-            guard let broadcastView = view as? BroadcastView else {
-                return acc
-            }
-
-            let broadcastViewHeight = broadcastView.calculatedSize(withConstrainedWidth: constrainedWidth).height
-
-            return acc + broadcastViewHeight
-        })
-
-        guard broadcastViewsTotalHeight != 0 else {
-            return CGSize(width: frame.size.width, height: 0)
-        }
-
-        let broadcastViewTotalSpacing = ((CGFloat(contentView.arrangedSubviews.count) * LayoutConstants.BroadcastView.spacing) - .mediumLargeSpacing)
-        let verticalSpacing = LayoutConstants.ContentView.insets.top + broadcastViewTotalSpacing
-        let containerHeight = broadcastViewsTotalHeight + verticalSpacing
-
-        return CGSize(width: frame.size.width, height: containerHeight)
     }
 }
