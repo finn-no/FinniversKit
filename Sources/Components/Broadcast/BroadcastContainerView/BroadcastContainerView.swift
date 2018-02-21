@@ -6,7 +6,7 @@ import UIKit
 
 public protocol BroadcastContainerViewDelegate: class {
     func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, willDisplayBroadcastViews broadcastViews: [BroadcastView], withContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void))
-    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, willDismissBroadcastView: BroadcastView, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void))
+    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, willDismissBroadcastView broadcastView: BroadcastView, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void))
 }
 
 public protocol BroadcastContainerViewDataSource: class {

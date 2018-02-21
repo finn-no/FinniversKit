@@ -765,6 +765,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		55C5B279203DC339007D7277 /* BroadcastView */ = {
+			isa = PBXGroup;
+			children = (
+				AF91BB96202C74D0003E6366 /* BroadcastView.swift */,
+				AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */,
+			);
+			path = BroadcastView;
+			sourceTree = "<group>";
+		};
+		55C5B27A203DC344007D7277 /* BroadcastContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */,
+				55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */,
+			);
+			path = BroadcastContainerView;
+			sourceTree = "<group>";
+		};
 		AA7313D020207846008A7251 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,10 +806,8 @@
 			isa = PBXGroup;
 			children = (
 				AF91BB9A202C7F52003E6366 /* Demo */,
-				AF91BB96202C74D0003E6366 /* BroadcastView.swift */,
-				AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */,
-				55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */,
-				55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */,
+				55C5B279203DC339007D7277 /* BroadcastView */,
+				55C5B27A203DC344007D7277 /* BroadcastContainerView */,
 			);
 			path = Broadcast;
 			sourceTree = "<group>";
