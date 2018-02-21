@@ -6,10 +6,10 @@ import UIKit
 
 /// A struct that holds the insets when laying out a view.
 public struct Insets {
-    let top: CGFloat
-    let leading: CGFloat
-    let bottom: CGFloat
-    let trailing: CGFloat
+    public let top: CGFloat
+    public let leading: CGFloat
+    public let bottom: CGFloat
+    public let trailing: CGFloat
 
     public static var zero: Insets {
         return Insets(top: 0, leading: 0, bottom: 0, trailing: 0)
