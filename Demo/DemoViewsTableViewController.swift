@@ -48,6 +48,7 @@ extension DemoViewsTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedView = FinniversKitViews.all[indexPath.row]
+        FinniversKitViews.lastSelectedView = selectedView
         present(selectedView.viewController(), animated: true)
     }
 }

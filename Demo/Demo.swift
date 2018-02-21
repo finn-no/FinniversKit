@@ -87,4 +87,18 @@ enum FinniversKitViews: String {
             .consentViewDemoView,
         ]
     }
+
+    static var lastSelectedView: FinniversKitViews? {
+        get {
+            guard let lastSelectedViewRawValue = UserDefaults.standard.value(forKey: "lastSelectedView") as? String else {
+                return nil
+            }
+
+            return FinniversKitViews(rawValue: lastSelectedViewRawValue)
+        }
+        set {
+            UserDefaults.standard.set(newValue?.rawValue, forKey: "lastSelectedView")
+            UserDefaults.standard.synchronize()
+        }
+    }
 }
