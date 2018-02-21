@@ -17,6 +17,14 @@ class DemoViewsTableViewController: UITableViewController {
         setup()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if let lastSelectedView = FinniversKitViews.lastSelectedView {
+            present(lastSelectedView.viewController(), animated: true)
+        }
+    }
+
     private func setup() {
         tableView.register(UITableViewCell.self)
         tableView.backgroundColor = UIColor.secondaryBlue
