@@ -17,6 +17,14 @@ class DemoViewsTableViewController: UITableViewController {
         setup()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if let lastSelectedView = FinniversKitViews.lastSelectedView {
+            present(lastSelectedView.viewController(), animated: true)
+        }
+    }
+
     private func setup() {
         tableView.register(UITableViewCell.self)
         tableView.backgroundColor = UIColor.secondaryBlue
@@ -48,6 +56,7 @@ extension DemoViewsTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedView = FinniversKitViews.all[indexPath.row]
+        FinniversKitViews.lastSelectedView = selectedView
         present(selectedView.viewController(), animated: true)
     }
 }
