@@ -4,11 +4,11 @@
 
 import Foundation
 
-public struct BroadcastViewMessage {
-    public let id: String
+public struct Broadcast {
+    public let id: Int
     public let message: String
 
-    public init(id: String, message: String) {
+    public init(id: Int, message: String) {
         self.id = id
         self.message = message
     }
