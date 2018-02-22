@@ -5,7 +5,6 @@
 import UIKit
 
 public protocol BroadcastContainerViewDelegate: class {
-    
     /// Called when the BroadcastContainerView is about to display its broadcasts
     ///
     /// - Parameters:
@@ -13,8 +12,7 @@ public protocol BroadcastContainerViewDelegate: class {
     ///   - containerSize: the size that the BroadcastContainerView will have when the broadcasts are displayed
     ///   - commitToDisplaying: a closure that must be called in order for the BroadcastContainerView to display its broadcasts
     func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void))
-    
-    
+
     /// Called when the BroadcastContainerView is about to dismiss a broadcast
     ///
     /// - Parameters:
@@ -26,14 +24,12 @@ public protocol BroadcastContainerViewDelegate: class {
 }
 
 public protocol BroadcastContainerViewDataSource: class {
-    
     /// The number of broadcasts to display in the BroadcastContainerView
     ///
     /// - Parameter broadcastContainerView: the BroadcastContainerView
     /// - Returns: The number of broadcasts to display in the BroadcastContainerView
     func numberOfBroadcastsToDisplay(in broadcastContainerView: BroadcastContainerView) -> Int
-    
-    
+
     /// The broadcast to display at the index
     ///
     /// - Parameters:
@@ -42,7 +38,6 @@ public protocol BroadcastContainerViewDataSource: class {
     /// - Returns: The broadcast to display at the index
     func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, broadcastForIndex index: Int) -> Broadcast
 }
-
 
 /// A view that is used to display multiple BroadcastViews
 public final class BroadcastContainerView: UIView {
@@ -56,7 +51,6 @@ public final class BroadcastContainerView: UIView {
         }
     }
 
-    
     /// The datasource for the BroadcastContainerView
     public weak var dataSource: BroadcastContainerViewDataSource? {
         didSet {
@@ -64,7 +58,6 @@ public final class BroadcastContainerView: UIView {
         }
     }
 
-    
     /// The delegate of the BroadcastContainerView
     public weak var delegate: BroadcastContainerViewDelegate?
 
@@ -97,7 +90,6 @@ public final class BroadcastContainerView: UIView {
 // MARK: - Public
 
 public extension BroadcastContainerView {
-    
     /// Reloads the container by removing existing broadcasts and laying out all the broadcasts that the datasource provides
     func reload() {
         guard let dataSource = dataSource else {
