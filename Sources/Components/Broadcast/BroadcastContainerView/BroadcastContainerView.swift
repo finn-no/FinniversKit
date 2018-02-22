@@ -168,8 +168,6 @@ private extension BroadcastContainerView {
 
         contentView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         contentView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-
-        contentView.layoutIfNeeded()
     }
 
     func layoutBroadcastViews(from broadcasts: [Broadcast]) {
