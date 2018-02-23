@@ -72,7 +72,7 @@ extension BroadcastContainerDemoView: UITableViewDataSource {
 }
 
 extension BroadcastContainerDemoView: BroadcastContainerViewDataSource {
-    func numberOfBroadcastsToDisplay(in broadcastContainerView: BroadcastContainerView) -> Int {
+    func numberOfBroadcasts(in broadcastContainerView: BroadcastContainerView) -> Int {
         return broadcastViewMessages.count
     }
 

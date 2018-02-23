@@ -28,7 +28,7 @@ public protocol BroadcastContainerViewDataSource: class {
     ///
     /// - Parameter broadcastContainerView: the BroadcastContainerView
     /// - Returns: The number of broadcasts to display in the BroadcastContainerView
-    func numberOfBroadcastsToDisplay(in broadcastContainerView: BroadcastContainerView) -> Int
+    func numberOfBroadcasts(in broadcastContainerView: BroadcastContainerView) -> Int
 
     /// The broadcast to display at the index
     ///
@@ -89,7 +89,7 @@ public extension BroadcastContainerView {
 
         removeContentViewSubviews()
 
-        let rangeOfBroadcastsToDisplay = 0 ..< dataSource.numberOfBroadcastsToDisplay(in: self)
+        let rangeOfBroadcastsToDisplay = 0 ..< dataSource.numberOfBroadcasts(in: self)
         let broadcastToDisplay = rangeOfBroadcastsToDisplay.map { dataSource.broadcastContainerView(self, broadcastForIndex: $0) }
 
         if broadcastToDisplay.isEmpty {
