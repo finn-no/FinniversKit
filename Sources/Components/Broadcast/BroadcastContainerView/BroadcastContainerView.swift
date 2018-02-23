@@ -119,14 +119,14 @@ public extension BroadcastContainerView {
         let broadcastViewsHorizontalSpacings = contentViewInsets.leading + abs(contentViewInsets.trailing)
         let constrainedWidth = frame.size.width - broadcastViewsHorizontalSpacings
 
-        let broadcastViewsTotalHeight = contentView.arrangedSubviews.reduce(CGFloat(0), { acc, view in
-            guard let broadcastView = view as? BroadcastView else {
-                return acc
+        let broadcastViewsTotalHeight = contentView.arrangedSubviews.reduce(CGFloat(0), { accumulatedHeight, arrangedSubview in
+            guard let broadcastView = arrangedSubview as? BroadcastView else {
+                return accumulatedHeight
             }
 
             let broadcastViewHeight = broadcastView.calculatedSize(withConstrainedWidth: constrainedWidth).height
 
-            return acc + broadcastViewHeight
+            return accumulatedHeight + broadcastViewHeight
         })
 
         guard broadcastViewsTotalHeight != 0 else {
