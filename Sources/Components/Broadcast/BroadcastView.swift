@@ -32,7 +32,7 @@ public class BroadcastView: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+
     private let imageViewSizeConstraintConstant = CGSize(width: 28, height: 28)
 
     private lazy var subviewConstraints: [NSLayoutConstraint] = {
