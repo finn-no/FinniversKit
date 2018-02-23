@@ -227,7 +227,6 @@ private extension BroadcastContainerView {
             }()
 
             let broadcastViewMessageIndex = contentView.arrangedSubviews.index(of: broadcastView) ?? 0
-
             delegate.broadcastContainer(self, willDismissBroadcastAtIndex: broadcastViewMessageIndex, withNewContainerSize: newContainerSize, commitToDismissal: {
                 UIView.animate(withDuration: 0.2, animations: {
                     broadcastView.isHidden = true
