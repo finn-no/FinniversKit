@@ -217,11 +217,11 @@ private extension BroadcastContainerView {
         if let delegate = delegate {
             let newContainerSize: CGSize = {
                 let width = frame.width
-                if contentView.arrangedSubviews.count == 1 { // This is the last broadcast that soon will be removed
+                let isLastBroadcastToBeRemoved = contentView.arrangedSubviews.count == 1
+                if isLastBroadcastToBeRemoved {
                     return CGSize(width: width, height: 0)
                 } else {
                     let height = frame.height - broadcastView.frame.height
-
                     return CGSize(width: width, height: height)
                 }
             }()
