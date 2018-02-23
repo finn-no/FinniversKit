@@ -87,7 +87,7 @@ public extension BroadcastContainerView {
             return
         }
 
-        reset()
+        removeContentViewSubviews()
 
         let rangeOfBroadcastsToDisplay = 0 ..< dataSource.numberOfBroadcastsToDisplay(in: self)
         let broadcastToDisplay = rangeOfBroadcastsToDisplay.map { dataSource.broadcastContainerView(self, broadcastForIndex: $0) }
@@ -201,7 +201,7 @@ private extension BroadcastContainerView {
         subView.removeFromSuperview()
     }
 
-    func reset() {
+    func removeContentViewSubviews() {
         contentView.arrangedSubviews.forEach { view in
             contentView.removeArrangedSubview(view)
             view.removeFromSuperview()
