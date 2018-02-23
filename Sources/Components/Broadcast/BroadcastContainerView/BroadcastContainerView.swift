@@ -161,7 +161,6 @@ private extension BroadcastContainerView {
 
     func layoutBroadcastViews(from broadcasts: [Broadcast]) {
         let broadcastViews = broadcasts.map { broadcastView(from: $0) }
-
         broadcastViews.forEach { add($0, to: contentView) }
     }
 
