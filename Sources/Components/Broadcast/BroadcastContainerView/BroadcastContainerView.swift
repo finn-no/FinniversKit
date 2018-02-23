@@ -41,15 +41,8 @@ public protocol BroadcastContainerViewDataSource: class {
 
 /// A view that is used to display multiple BroadcastViews
 public final class BroadcastContainerView: UIView {
-    private struct LayoutConstants {
-        struct ContentView {
-            static let insets = Insets(top: .mediumLargeSpacing, leading: .mediumLargeSpacing, bottom: 0, trailing: .mediumLargeSpacing)
-        }
-
-        struct BroadcastView {
-            static let spacing: CGFloat = .mediumLargeSpacing
-        }
-    }
+    private let contentViewInsets = Insets(top: .mediumLargeSpacing, leading: .mediumLargeSpacing, bottom: 0, trailing: .mediumLargeSpacing)
+    private let broadcastViewSpacing: CGFloat = .mediumLargeSpacing
 
     /// The datasource for the BroadcastContainerView
     public weak var dataSource: BroadcastContainerViewDataSource? {
@@ -66,7 +59,7 @@ public final class BroadcastContainerView: UIView {
 
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
-        view.spacing = LayoutConstants.BroadcastView.spacing
+        view.spacing = broadcastViewSpacing
         view.distribution = .fillProportionally
 
         return view
@@ -125,7 +118,7 @@ public extension BroadcastContainerView {
             return CGSize(width: frame.size.width, height: 0)
         }
 
-        let broadcastViewsHorizontalSpacings = LayoutConstants.ContentView.insets.leading + abs(LayoutConstants.ContentView.insets.trailing)
+        let broadcastViewsHorizontalSpacings = contentViewInsets.leading + abs(contentViewInsets.trailing)
         let constrainedWidth = frame.size.width - broadcastViewsHorizontalSpacings
 
         let broadcastViewsTotalHeight = contentView.arrangedSubviews.reduce(CGFloat(0), { acc, view in
@@ -142,8 +135,8 @@ public extension BroadcastContainerView {
             return CGSize(width: frame.size.width, height: 0)
         }
 
-        let broadcastViewTotalSpacing = ((CGFloat(contentView.arrangedSubviews.count) * LayoutConstants.BroadcastView.spacing) - .mediumLargeSpacing)
-        let verticalSpacing = LayoutConstants.ContentView.insets.top + broadcastViewTotalSpacing
+        let broadcastViewTotalSpacing = ((CGFloat(contentView.arrangedSubviews.count) * broadcastViewSpacing) - .mediumLargeSpacing)
+        let verticalSpacing = contentViewInsets.top + broadcastViewTotalSpacing
         let containerHeight = broadcastViewsTotalHeight + verticalSpacing
 
         return CGSize(width: frame.size.width, height: containerHeight)
@@ -158,12 +151,10 @@ private extension BroadcastContainerView {
 
         addSubview(contentView)
 
-        let insets = LayoutConstants.ContentView.insets
-
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor, constant: insets.top),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: insets.leading),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: insets.trailing),
+            contentView.topAnchor.constraint(equalTo: topAnchor, constant: contentViewInsets.top),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentViewInsets.leading),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: contentViewInsets.trailing),
         ])
 
         contentView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
