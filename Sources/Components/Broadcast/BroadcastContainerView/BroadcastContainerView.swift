@@ -168,7 +168,6 @@ private extension BroadcastContainerView {
     func broadcastView(from broadcast: Broadcast) -> BroadcastView {
         let broadcastView = BroadcastView(frame: .zero)
 
-        // Set the message on the broadcast view and prepare it in its expanded state
         broadcastView.present(message: broadcast.message, animated: false)
 
         return broadcastView
