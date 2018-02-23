@@ -112,11 +112,11 @@ public class LabelDemoView: UIView {
         multilineLabel.text = "Test Test Test"
         labelWide.text = "Test center"
 
-        labelT1.text = "Label T1"
-        labelT2.text = "Label T2"
-        labelT3.text = "Label T3"
-        labelT4.text = "Label T4"
-        labelT5.text = "Label T5"
+        labelT1.text = "Label Title1"
+        labelT2.text = "Label Title2"
+        labelT3.text = "Label Title3"
+        labelT4.text = "Label Title4"
+        labelT5.text = "Label Title5"
         labelBody.text = "Label Body"
         labelDetail.text = "Label Detail"
     }
