@@ -84,7 +84,7 @@ public final class BroadcastContainerView: UIView {
 
 public extension BroadcastContainerView {
     /// Reloads the container by removing existing broadcasts and laying out all the broadcasts that the datasource provides
-    func reload() {
+    public func reload() {
         guard let dataSource = dataSource else {
             return
         }
