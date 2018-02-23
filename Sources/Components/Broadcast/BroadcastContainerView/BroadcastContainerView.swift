@@ -56,12 +56,10 @@ public final class BroadcastContainerView: UIView {
 
     private lazy var contentView: UIStackView = {
         let view = UIStackView(frame: .zero)
-
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.spacing = broadcastViewSpacing
         view.distribution = .fillProportionally
-
         return view
     }()
 
