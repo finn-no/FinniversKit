@@ -5,7 +5,13 @@
 import FinniversKit
 
 public class ToggleSwitchViewDemoView: UIView {
-    private lazy var toggleSwitchView: ToggleSwitchView = {
+    private lazy var recommendationsToggleSwitchView: ToggleSwitchView = {
+        let toggleSwitchView = ToggleSwitchView()
+        toggleSwitchView.translatesAutoresizingMaskIntoConstraints = false
+        return toggleSwitchView
+    }()
+
+    private lazy var commercialToggleSwitchView: ToggleSwitchView = {
         let toggleSwitchView = ToggleSwitchView()
         toggleSwitchView.translatesAutoresizingMaskIntoConstraints = false
         return toggleSwitchView
@@ -20,9 +26,20 @@ public class ToggleSwitchViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        toggleSwitchView.model = ToggleSwitchDefaultData()
+        recommendationsToggleSwitchView.model = ToggleSwitchDefaultData1()
+        commercialToggleSwitchView.model = ToggleSwitchDefaultData2()
 
-        addSubview(toggleSwitchView)
-        toggleSwitchView.fillInSuperview()
+        addSubview(recommendationsToggleSwitchView)
+        addSubview(commercialToggleSwitchView)
+
+        NSLayoutConstraint.activate([
+            recommendationsToggleSwitchView.topAnchor.constraint(equalTo: topAnchor),
+            recommendationsToggleSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            recommendationsToggleSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            commercialToggleSwitchView.topAnchor.constraint(equalTo: recommendationsToggleSwitchView.bottomAnchor, constant: .mediumSpacing),
+            commercialToggleSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            commercialToggleSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
     }
 }
