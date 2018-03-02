@@ -33,13 +33,13 @@ public class ToggleSwitchViewDemoView: UIView {
         addSubview(commercialToggleSwitchView)
 
         NSLayoutConstraint.activate([
-            recommendationsToggleSwitchView.topAnchor.constraint(equalTo: topAnchor),
-            recommendationsToggleSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            recommendationsToggleSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            recommendationsToggleSwitchView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            recommendationsToggleSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            recommendationsToggleSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
             commercialToggleSwitchView.topAnchor.constraint(equalTo: recommendationsToggleSwitchView.bottomAnchor, constant: .mediumSpacing),
-            commercialToggleSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            commercialToggleSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            commercialToggleSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            commercialToggleSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }
