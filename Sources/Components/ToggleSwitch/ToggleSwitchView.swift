@@ -77,9 +77,19 @@ public class ToggleSwitchView: UIView {
     }
 
     private func setup() {
-        // Perform setup
-        // Add child views as subviews
-        // Setup constraints/frames
+        addSubview(stackView)
+        addSubview(descriptionLabel)
+
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            descriptionLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumSpacing),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
     }
 
     // MARK: - Private actions
