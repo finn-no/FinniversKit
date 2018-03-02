@@ -104,20 +104,12 @@ public class ToggleSwitchView: UIView {
             return
         }
 
-        if sender.isOn {
-            fadeTransition(with: animationDuration)
-            descriptionLabel.text = model.onDescriptionText
-        } else {
-            fadeTransition(with: animationDuration)
-            descriptionLabel.text = model.offDescriptionText
-        }
-    }
-
-    private func fadeTransition(with duration: Double) {
-        let animation = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.type = kCATransitionFade
-        animation.duration = duration
-        layer.add(animation, forKey: kCATransitionFade)
+        UIView.transition(with: descriptionLabel, duration: animationDuration, options: .transitionCrossDissolve, animations: { [weak self] in
+            if sender.isOn {
+                self?.descriptionLabel.text = model.onDescriptionText
+            } else {
+                self?.descriptionLabel.text = model.offDescriptionText
+            }
+        }, completion: nil)
     }
 }
