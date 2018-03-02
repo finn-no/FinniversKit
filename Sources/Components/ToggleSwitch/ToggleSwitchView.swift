@@ -12,8 +12,11 @@ public class ToggleSwitchView: UIView {
 
     // MARK: - Internal properties
 
+    private let animationDuration: Double = 0.4
+
     private lazy var headerLabel: Label = {
         let label = Label(style: .title3)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -85,9 +88,10 @@ public class ToggleSwitchView: UIView {
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            descriptionLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumSpacing),
+            descriptionLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .smallSpacing),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            descriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            descriptionLabel.widthAnchor.constraint(equalTo: headerLabel.widthAnchor),
             descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
@@ -102,9 +106,19 @@ public class ToggleSwitchView: UIView {
         }
 
         if sender.isOn {
+            fadeTransition(with: animationDuration)
             descriptionLabel.text = model.onDescriptionText
         } else {
+            fadeTransition(with: animationDuration)
             descriptionLabel.text = model.offDescriptionText
         }
+    }
+
+    private func fadeTransition(with duration: Double) {
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.type = kCATransitionFade
+        animation.duration = duration
+        layer.add(animation, forKey: kCATransitionFade)
     }
 }
