@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 import UIKit
 
 public protocol ToggleSwitchDelegate: NSObjectProtocol {
@@ -16,6 +20,7 @@ public class ToggleSwitchView: UIView {
     private lazy var descriptionLabel: Label = {
         let label = Label(style: .detail(.stone))
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         return label
     }()
 
@@ -37,7 +42,27 @@ public class ToggleSwitchView: UIView {
         return view
     }()
 
-    // MARK: - External properties / Dependency injection
+    // MARK: - Dependency injection
+
+    public var model: ToggleSwitchViewModel? {
+        didSet {
+            guard let model = model else {
+                return
+            }
+
+            headerLabel.text = model.headerText
+
+            if mySwitch.isOn {
+                descriptionLabel.text = model.onDescriptionText
+            } else {
+                descriptionLabel.text = model.offDescriptionText
+            }
+        }
+    }
+
+    // MARK: - External properties
+
+    public weak var delegate: ToggleSwitchDelegate?
 
     // MARK: - Setup
 
@@ -60,6 +85,16 @@ public class ToggleSwitchView: UIView {
     // MARK: - Private actions
 
     @objc func switchChangedState(_ sender: UISwitch) {
+        delegate?.toggleSwitch(self, didChangeValueFor: sender)
 
+        guard let model = model else {
+            return
+        }
+
+        if sender.isOn {
+            descriptionLabel.text = model.onDescriptionText
+        } else {
+            descriptionLabel.text = model.offDescriptionText
+        }
     }
 }
