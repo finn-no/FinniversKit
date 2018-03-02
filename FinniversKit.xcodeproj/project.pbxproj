@@ -109,6 +109,10 @@
 		4535FD3D202C504A002335E2 /* ConsentViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535FD3B202C461D002335E2 /* ConsentViewDemoView.swift */; };
 		4535FD40202C5094002335E2 /* ConsentViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535FD3E202C5074002335E2 /* ConsentViewDefaultData.swift */; };
 		4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */; };
+		45D7C56B204949E2000E788F /* ToggleSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56A204949E2000E788F /* ToggleSwitchView.swift */; };
+		45D7C56D20494C7A000E788F /* ToggleSwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56C20494C7A000E788F /* ToggleSwitchViewModel.swift */; };
+		45D7C57120494F77000E788F /* ToggleSwitchViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56F20494F72000E788F /* ToggleSwitchViewDemoView.swift */; };
+		45D7C574204950BC000E788F /* ToggleSwitchViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C57220495039000E788F /* ToggleSwitchViewDefaultData.swift */; };
 		45FB44492036F21500C121EB /* NSAttributedString+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB44482036F21500C121EB /* NSAttributedString+FinniversKit.swift */; };
 		55C5B274203D8E20007D7277 /* BroadcastContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastViewMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */; };
@@ -239,6 +243,10 @@
 		4535FD3B202C461D002335E2 /* ConsentViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewDemoView.swift; sourceTree = "<group>"; };
 		4535FD3E202C5074002335E2 /* ConsentViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewDefaultData.swift; sourceTree = "<group>"; };
 		4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewsTableViewController.swift; sourceTree = "<group>"; };
+		45D7C56A204949E2000E788F /* ToggleSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSwitchView.swift; sourceTree = "<group>"; };
+		45D7C56C20494C7A000E788F /* ToggleSwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSwitchViewModel.swift; sourceTree = "<group>"; };
+		45D7C56F20494F72000E788F /* ToggleSwitchViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSwitchViewDemoView.swift; sourceTree = "<group>"; };
+		45D7C57220495039000E788F /* ToggleSwitchViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSwitchViewDefaultData.swift; sourceTree = "<group>"; };
 		45FB44482036F21500C121EB /* NSAttributedString+FinniversKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+FinniversKit.swift"; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainerView.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewMessage.swift; sourceTree = "<group>"; };
@@ -422,6 +430,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				45D7C569204949B7000E788F /* ToggleSwitch */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
 				4535FD31202C4282002335E2 /* Consent */,
@@ -767,6 +776,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		45D7C569204949B7000E788F /* ToggleSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				45D7C56E20494F60000E788F /* Demo */,
+				45D7C56A204949E2000E788F /* ToggleSwitchView.swift */,
+				45D7C56C20494C7A000E788F /* ToggleSwitchViewModel.swift */,
+			);
+			path = ToggleSwitch;
+			sourceTree = "<group>";
+		};
+		45D7C56E20494F60000E788F /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				45D7C56F20494F72000E788F /* ToggleSwitchViewDemoView.swift */,
+				45D7C57220495039000E788F /* ToggleSwitchViewDefaultData.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		55C5B279203DC339007D7277 /* BroadcastView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1046,6 +1074,7 @@
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
 				146D3C401FBE466D00124B76 /* ViewController.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
+				45D7C57120494F77000E788F /* ToggleSwitchViewDemoView.swift in Sources */,
 				4447F70A1FDB2B4C0033DBC1 /* MarketGridViewDemoView.swift in Sources */,
 				AF91BB9F202C868E003E6366 /* BroadcastDemoView.swift in Sources */,
 				4447F70E1FDB2B590033DBC1 /* PreviewHelpers.swift in Sources */,
@@ -1060,6 +1089,7 @@
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
 				4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */,
+				45D7C574204950BC000E788F /* ToggleSwitchViewDefaultData.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				4535FD3D202C504A002335E2 /* ConsentViewDemoView.swift in Sources */,
 				4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */,
@@ -1115,12 +1145,14 @@
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				4447F6D41FDB2B110033DBC1 /* LoginView.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
+				45D7C56D20494C7A000E788F /* ToggleSwitchViewModel.swift in Sources */,
 				4447F6CE1FDB2B110033DBC1 /* RoundedRectangleView.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastView.swift in Sources */,
 				4447F6E71FDB2B110033DBC1 /* PreviewGridView.swift in Sources */,
 				4447F6E41FDB2B110033DBC1 /* PreviewGridHeaderView.swift in Sources */,
 				4447F6DB1FDB2B110033DBC1 /* MarketGridView.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
+				45D7C56B204949E2000E788F /* ToggleSwitchView.swift in Sources */,
 				4447F6D81FDB2B110033DBC1 /* MarketGridCell.swift in Sources */,
 				4447F6CF1FDB2B110033DBC1 /* TriangleView.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
