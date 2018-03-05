@@ -92,10 +92,6 @@ public extension BroadcastContainerView {
         let rangeOfBroadcastsToDisplay = 0 ..< dataSource.numberOfBroadcasts(in: self)
         let broadcastToDisplay = rangeOfBroadcastsToDisplay.map { dataSource.broadcastContainerView(self, broadcastForIndex: $0) }
 
-        if broadcastToDisplay.isEmpty {
-            return
-        }
-
         layoutBroadcastViews(from: broadcastToDisplay)
 
         if let delegate = delegate {
