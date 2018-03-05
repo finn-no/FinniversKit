@@ -32,6 +32,6 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/finn-no/FinniversKit.git", :tag => s.version }
 
-  s.source_files  = "Sources/", "Sources/Extensions", "Sources/Extensions/UIKit", "Sources/Components/**/", "Sources/DNA/**/", "Sources/Protocols/"
+  s.source_files  = "Sources/", "Sources/Extensions/", "Sources/Extensions/UIKit/", "Sources/Components/**/*.swift", "Sources/DNA/**/*.swift", "Sources/Protocols/"
   s.resources     = "Sources/Resources/Fonts/*.ttf", "Sources/Resources/*.xcassets"
 end
