@@ -431,7 +431,8 @@
 			isa = PBXGroup;
 			children = (
 				45D7C569204949B7000E788F /* ToggleSwitch */,
-				AF91BB95202C7487003E6366 /* Broadcast */,
+				AF91BB95202C7487003E6366 /* BroadcastView */,
+				55C5B27A203DC344007D7277 /* BroadcastContainerView */,
 				4447F6651FDB2B110033DBC1 /* Button */,
 				4535FD31202C4282002335E2 /* Consent */,
 				4447F66A1FDB2B110033DBC1 /* EmptyView */,
@@ -795,15 +796,6 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		55C5B279203DC339007D7277 /* BroadcastView */ = {
-			isa = PBXGroup;
-			children = (
-				AF91BB96202C74D0003E6366 /* BroadcastView.swift */,
-				AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */,
-			);
-			path = BroadcastView;
-			sourceTree = "<group>";
-		};
 		55C5B27A203DC344007D7277 /* BroadcastContainerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -841,14 +833,14 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		AF91BB95202C7487003E6366 /* Broadcast */ = {
+		AF91BB95202C7487003E6366 /* BroadcastView */ = {
 			isa = PBXGroup;
 			children = (
 				AF91BB9A202C7F52003E6366 /* Demo */,
-				55C5B279203DC339007D7277 /* BroadcastView */,
-				55C5B27A203DC344007D7277 /* BroadcastContainerView */,
+				AF91BB96202C74D0003E6366 /* BroadcastView.swift */,
+				AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */,
 			);
-			path = Broadcast;
+			path = BroadcastView;
 			sourceTree = "<group>";
 		};
 		AF91BB9A202C7F52003E6366 /* Demo */ = {
