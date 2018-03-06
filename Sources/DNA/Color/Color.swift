@@ -4,7 +4,7 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     public class var ice: UIColor {
         return UIColor(r: 241, g: 249, b: 255)!
     }
