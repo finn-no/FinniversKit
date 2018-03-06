@@ -68,6 +68,12 @@ public class LoginView: UIView {
         return button
     }()
 
+    private lazy var inputsContainer: UIView = {
+        let container = UIView(frame: .zero)
+        container.translatesAutoresizingMaskIntoConstraints = false
+        return container
+    }()
+
     private lazy var newUserStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [spidLogoImageView, newUserButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -166,6 +172,10 @@ public class LoginView: UIView {
 
     // MARK: - Setup
 
+    deinit {
+        unRegisterKeyboardNotifications()
+    }
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -174,6 +184,46 @@ public class LoginView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+
+    public override func didMoveToSuperview() {
+        registerForKeyboardNotifications()
+    }
+
+    private func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    private func unRegisterKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc private func adjustKeyboard(notification: Notification) {
+        guard let keyboardEndFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+
+        if notification.name == Notification.Name.UIKeyboardWillShow {
+            if keyboardEndFrame.intersects(inputsContainer.frame) {
+                let intersectionFrame = keyboardEndFrame.intersection(inputsContainer.frame)
+                let keyboardOverlap = intersectionFrame.height
+                let bottomInset = keyboardOverlap + .mediumLargeSpacing
+                let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
+
+                let animationDuration = ((notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]) as? TimeInterval) ?? 0.25
+                UIView.animate(withDuration: animationDuration) { [weak scrollView] in
+                    scrollView?.contentInset = contentInset
+                    scrollView?.contentOffset = CGPoint(x: 0, y: contentInset.bottom)
+                }
+            }
+        } else {
+            let animationDuration = ((notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]) as? TimeInterval) ?? 0.25
+            UIView.animate(withDuration: animationDuration) { [weak scrollView] in
+                scrollView?.contentInset = .zero
+                scrollView?.contentOffset = CGPoint(x: 0, y: 0)
+            }
+        }
     }
 
     private func setup() {
@@ -188,10 +238,13 @@ public class LoginView: UIView {
         addSubview(customerServiceStackView)
 
         contentView.addSubview(infoLabel)
-        contentView.addSubview(emailTextField)
-        contentView.addSubview(passwordTextField)
+        contentView.addSubview(inputsContainer)
+
+        inputsContainer.addSubview(emailTextField)
+        inputsContainer.addSubview(passwordTextField)
+        inputsContainer.addSubview(loginButton)
+
         contentView.addSubview(forgotPasswordButton)
-        contentView.addSubview(loginButton)
         contentView.addSubview(newUserStackView)
 
         NSLayoutConstraint.activate([
@@ -210,20 +263,25 @@ public class LoginView: UIView {
             infoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
-            emailTextField.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            emailTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            inputsContainer.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            inputsContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            inputsContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+
+            emailTextField.topAnchor.constraint(equalTo: inputsContainer.topAnchor),
+            emailTextField.leadingAnchor.constraint(equalTo: inputsContainer.leadingAnchor),
+            emailTextField.trailingAnchor.constraint(equalTo: inputsContainer.trailingAnchor),
 
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .largeSpacing),
-            passwordTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            passwordTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            passwordTextField.leadingAnchor.constraint(equalTo: inputsContainer.leadingAnchor),
+            passwordTextField.trailingAnchor.constraint(equalTo: inputsContainer.trailingAnchor),
 
             loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .largeSpacing),
-            loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
-            loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
+            loginButton.leadingAnchor.constraint(equalTo: inputsContainer.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: inputsContainer.trailingAnchor),
             loginButton.heightAnchor.constraint(equalToConstant: buttonHeight),
+            loginButton.bottomAnchor.constraint(equalTo: inputsContainer.bottomAnchor),
 
-            newUserStackView.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumLargeSpacing),
+            newUserStackView.topAnchor.constraint(equalTo: inputsContainer.bottomAnchor, constant: .mediumLargeSpacing),
             newUserStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
             newUserStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             spidLogoImageView.heightAnchor.constraint(equalToConstant: 17),
