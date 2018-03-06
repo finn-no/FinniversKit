@@ -34,4 +34,6 @@ Pod::Spec.new do |s|
 
   s.source_files  = "Sources/", "Sources/Extensions/", "Sources/Extensions/UIKit/", "Sources/Components/**/*.swift", "Sources/DNA/**/*.swift", "Sources/Protocols/"
   s.resources     = "Sources/Resources/Fonts/*.ttf", "Sources/Resources/*.xcassets"
+
+  s.exclude_files = "Sources/Components/**/*DemoView.swift", "Sources/Components/**/Demo/", "*DemoView.swift", "Sources/Components/**/**/Demo/*.swift", "*Helpers.swift"
 end
