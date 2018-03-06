@@ -58,12 +58,22 @@ private extension BroadcastDemoView {
         addSubview(presentBroadcastViewButton)
 
         NSLayoutConstraint.activate([
-            broadcastView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
+            broadcastView.topAnchor.constraint(equalTo: compatibleTopAnchor, constant: .mediumSpacing),
             broadcastView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             broadcastView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
             presentBroadcastViewButton.topAnchor.constraint(equalTo: broadcastView.bottomAnchor, constant: .mediumLargeSpacing),
             presentBroadcastViewButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             presentBroadcastViewButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
+    }
+}
+
+fileprivate extension UIView {
+    fileprivate var compatibleTopAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.topAnchor
+        } else {
+            return topAnchor
+        }
     }
 }
