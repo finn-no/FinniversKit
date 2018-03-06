@@ -54,7 +54,7 @@ public class TextField: UIView {
     }()
 
     private lazy var clearButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: rightViewSize.width, height: rightViewSize.height))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: clearTextIcon.size.width, height: clearTextIcon.size.height))
         button.setImage(clearTextIcon, for: .normal)
         button.imageView?.tintColor = .stone
         button.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
@@ -62,11 +62,9 @@ public class TextField: UIView {
     }()
 
     private lazy var showPasswordButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: eyeImage.size.width, height: eyeImage.size.width))
         button.setImage(eyeImage, for: .normal)
         button.imageView?.tintColor = .stone
-        button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(showHidePassword), for: .touchUpInside)
         return button
     }()
@@ -87,8 +85,6 @@ public class TextField: UIView {
         textField.textColor = .licorice
         textField.tintColor = .secondaryBlue
         textField.delegate = self
-        textField.rightViewMode = .whileEditing
-        textField.rightView = clearButton
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.enablesReturnKeyAutomatically = true
@@ -144,41 +140,36 @@ public class TextField: UIView {
         addGestureRecognizer(tap)
 
         textField.isSecureTextEntry = inputType.isSecureMode
-        showPasswordButton.isHidden = !inputType.isSecureMode
         textField.keyboardType = inputType.keyBoardStyle
         textField.returnKeyType = inputType.returnKeyType
 
         if inputType.isSecureMode {
-            textField.rightViewMode = .never
+            textField.rightViewMode = .always
+            textField.rightView = showPasswordButton
+        } else {
+            textField.rightViewMode = .whileEditing
+            textField.rightView = clearButton
         }
 
         addSubview(typeLabel)
         addSubview(textField)
-        addSubview(showPasswordButton)
         addSubview(underline)
 
-        typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        typeLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            typeLabel.topAnchor.constraint(equalTo: topAnchor),
 
-        textField.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .mediumSpacing).isActive = true
-        textField.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        textField.trailingAnchor.constraint(equalTo: showPasswordButton.leadingAnchor).isActive = true
+            textField.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .mediumSpacing),
+            textField.leadingAnchor.constraint(equalTo: leadingAnchor),
+            textField.trailingAnchor.constraint(equalTo: trailingAnchor),
+            textField.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-        showPasswordButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        showPasswordButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor).isActive = true
-        showPasswordButton.heightAnchor.constraint(equalToConstant: eyeImage.size.height).isActive = true
-
-        if inputType.isSecureMode {
-            showPasswordButton.widthAnchor.constraint(equalToConstant: rightViewSize.width).isActive = true
-        } else {
-            showPasswordButton.widthAnchor.constraint(equalToConstant: 0).isActive = true
-        }
-
-        underline.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        underline.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        underline.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: .mediumSpacing).isActive = true
-        underline.heightAnchor.constraint(equalToConstant: underlineHeight).isActive = true
-        underline.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+            underline.leadingAnchor.constraint(equalTo: leadingAnchor),
+            underline.trailingAnchor.constraint(equalTo: trailingAnchor),
+            underline.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: .mediumSpacing),
+            underline.heightAnchor.constraint(equalToConstant: underlineHeight),
+            underline.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
 
         typeLabel.transform = transform.translatedBy(x: 0, y: 20)
     }
@@ -195,6 +186,8 @@ public class TextField: UIView {
             sender.imageView?.tintColor = .stone
             textField.isSecureTextEntry = true
         }
+
+        textField.becomeFirstResponder()
     }
 
     @objc private func clearTapped() {
