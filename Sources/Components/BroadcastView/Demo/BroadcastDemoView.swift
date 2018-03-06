@@ -71,7 +71,7 @@ private extension BroadcastDemoView {
 fileprivate extension UIView {
     fileprivate var compatibleTopAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
-            return self.safeAreaLayoutGuide.topAnchor
+            return safeAreaLayoutGuide.topAnchor
         } else {
             return topAnchor
         }
