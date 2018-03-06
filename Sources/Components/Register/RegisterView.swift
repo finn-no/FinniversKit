@@ -152,6 +152,9 @@ public class RegisterView: UIView {
     }
 
     // MARK: - Setup
+    deinit {
+        unRegisterKeyboardNotifications()
+    }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
