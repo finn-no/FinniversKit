@@ -169,6 +169,7 @@ private extension BroadcastContainerView {
     }
 
     func add(_ broadcastView: BroadcastView, to stackView: UIStackView) {
+        broadcastView.delegate = self
         broadcastView.translatesAutoresizingMaskIntoConstraints = false
         broadcastView.isHidden = true
 
@@ -181,9 +182,6 @@ private extension BroadcastContainerView {
 
         broadcastView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         broadcastView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-
-        let tapRecogninzer = UITapGestureRecognizer(target: self, action: #selector(broadcastViewTapped(_:)))
-        broadcastView.addGestureRecognizer(tapRecogninzer)
 
         broadcastView.layoutIfNeeded()
     }
@@ -203,12 +201,12 @@ private extension BroadcastContainerView {
             view.removeFromSuperview()
         }
     }
+}
 
-    @objc private func broadcastViewTapped(_ sender: UIGestureRecognizer) {
-        guard let broadcastView = sender.view as? BroadcastView else {
-            return
-        }
+// MARK: - BroadcastViewDelegate
 
+extension BroadcastContainerView: BroadcastViewDelegate {
+    public func broadcastViewDismissButtonTapped(_ broadcastView: BroadcastView) {
         if let delegate = delegate {
             let newContainerSize: CGSize = {
                 let width = frame.width
