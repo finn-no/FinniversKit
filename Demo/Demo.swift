@@ -24,7 +24,7 @@ enum FinniversKitViews: String {
     case toastDemoView
     case emptyViewDemoView
     case consentViewDemoView
-    case toggleSwitchViewDemoView
+    case switchViewDemoView
 
     func viewController() -> UIViewController {
         switch self {
@@ -66,8 +66,8 @@ enum FinniversKitViews: String {
             return ViewController<EmptyViewDemoView>()
         case .consentViewDemoView:
             return ViewController<ConsentViewDemoView>()
-        case .toggleSwitchViewDemoView:
-            return ViewController<ToggleSwitchViewDemoView>()
+        case .switchViewDemoView:
+            return ViewController<SwitchViewDemoView>()
         }
     }
 
@@ -92,7 +92,7 @@ enum FinniversKitViews: String {
             .toastDemoView,
             .emptyViewDemoView,
             .consentViewDemoView,
-            .toggleSwitchViewDemoView,
+            .switchViewDemoView,
         ]
     }
 

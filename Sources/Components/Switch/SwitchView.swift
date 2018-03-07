@@ -4,11 +4,11 @@
 
 import UIKit
 
-public protocol ToggleSwitchDelegate: NSObjectProtocol {
-    func toggleSwitch(_ toggleSwitchView: ToggleSwitchView, didChangeValueFor toggleSwitch: UISwitch)
+public protocol SwitchDelegate: NSObjectProtocol {
+    func switchView(_ switchView: SwitchView, didChangeValueFor switch: UISwitch)
 }
 
-public class ToggleSwitchView: UIView {
+public class SwitchView: UIView {
 
     // MARK: - Internal properties
 
@@ -46,7 +46,7 @@ public class ToggleSwitchView: UIView {
 
     // MARK: - Dependency injection
 
-    public var model: ToggleSwitchViewModel? {
+    public var model: SwitchViewModel? {
         didSet {
             guard let model = model else {
                 return
@@ -64,7 +64,7 @@ public class ToggleSwitchView: UIView {
 
     // MARK: - External properties
 
-    public weak var delegate: ToggleSwitchDelegate?
+    public weak var delegate: SwitchDelegate?
 
     // MARK: - Setup
 
@@ -98,7 +98,7 @@ public class ToggleSwitchView: UIView {
     // MARK: - Private actions
 
     @objc func switchChangedState(_ sender: UISwitch) {
-        delegate?.toggleSwitch(self, didChangeValueFor: sender)
+        delegate?.switchView(self, didChangeValueFor: sender)
 
         guard let model = model else {
             return
