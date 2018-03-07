@@ -152,6 +152,7 @@ public class RegisterView: UIView {
     }
 
     // MARK: - Setup
+
     deinit {
         unRegisterKeyboardNotifications()
     }
