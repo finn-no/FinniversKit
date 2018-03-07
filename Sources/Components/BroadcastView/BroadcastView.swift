@@ -4,6 +4,10 @@
 
 import UIKit
 
+public protocol BroadcastViewDelegate: class {
+    func broadcastViewDismissButtonTapped(_ broadcastView: BroadcastView)
+}
+
 /// Broadcast messages appears without any action from the user.
 /// They are used when it´s important to inform the user about something that has affected the whole system and many users.
 /// Especially if it has a consequence for how he or she uses the service.
@@ -20,7 +24,6 @@ public class BroadcastView: UIView {
 
     private lazy var iconImage: UIImage? = {
         let image = UIImage(frameworkImageNamed: Style.iconImageAssetName)
-
         return image
     }()
 
@@ -33,10 +36,23 @@ public class BroadcastView: UIView {
         return imageView
     }()
 
+    private lazy var dismissButtonImage: UIImage? = {
+        let image = UIImage(frameworkImageNamed: Style.dismissButtonImageAssetName)
+        return image
+    }()
+
+    private lazy var dismissButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(dismissButtonImage, for: .normal)
+        button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
+        return button
+    }()
+
     private let imageViewSizeConstraintConstant = CGSize(width: 28, height: 28)
 
     private lazy var subviewConstraints: [NSLayoutConstraint] = {
-        let messageLabelTopAnchorConstraint = messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
+        let messageLabelTopAnchorConstraint = messageLabel.topAnchor.constraint(equalTo: dismissButton.bottomAnchor, constant: .mediumSpacing)
         messageLabelTopAnchorConstraint.priority = UILayoutPriority(rawValue: 999)
 
         return [
@@ -44,12 +60,18 @@ public class BroadcastView: UIView {
             iconImageView.heightAnchor.constraint(equalToConstant: imageViewSizeConstraintConstant.height),
             iconImageView.widthAnchor.constraint(equalToConstant: imageViewSizeConstraintConstant.width),
             iconImageView.centerYAnchor.constraint(equalTo: messageLabel.centerYAnchor),
+            dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            dismissButton.heightAnchor.constraint(equalToConstant: dismissButtonImage?.size.height ?? 0),
+            dismissButton.widthAnchor.constraint(equalToConstant: dismissButtonImage?.size.width ?? 0),
             messageLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            messageLabel.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: 0),
             messageLabelTopAnchorConstraint,
             messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
         ]
     }()
+
+    public weak var delegate: BroadcastViewDelegate?
 
     /// A property indicating if the BroadcastView is in its presenting state
     public private(set) var isPresenting = false
@@ -144,6 +166,7 @@ private extension BroadcastView {
 
         addSubview(messageLabel)
         addSubview(iconImageView)
+        addSubview(dismissButton)
 
         NSLayoutConstraint.activate(subviewConstraints)
 
@@ -202,5 +225,9 @@ private extension BroadcastView {
         }()
 
         clampedHeightConstraint.isActive = isActive
+    }
+
+    @objc func dismissButtonTapped(_ sender: UIButton) {
+        delegate?.broadcastViewDismissButtonTapped(self)
     }
 }

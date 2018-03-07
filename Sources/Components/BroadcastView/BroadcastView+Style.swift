@@ -10,5 +10,6 @@ extension BroadcastView {
         static let containerCornerRadius: CGFloat = 8.0
         static let labelStyle = Label.Style.body(.licorice)
         static let iconImageAssetName = "important"
+        static let dismissButtonImageAssetName = "remove"
     }
 }
