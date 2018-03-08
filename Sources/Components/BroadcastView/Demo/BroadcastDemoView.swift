@@ -44,7 +44,8 @@ public class BroadcastDemoView: UIView {
             broadcastView.dismiss()
             sender.setTitle("Present BroadcastView", for: .normal)
         } else {
-            broadcastView.present(message: broadcastMessage)
+            let viewModel = BroadcastViewModel(with: broadcastMessage)
+            broadcastView.presentMessage(using: viewModel)
             sender.setTitle("Dismiss BroadcastView", for: .normal)
         }
 

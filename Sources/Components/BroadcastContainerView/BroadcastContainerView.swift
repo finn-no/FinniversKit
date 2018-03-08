@@ -162,8 +162,8 @@ private extension BroadcastContainerView {
 
     func broadcastView(from broadcast: Broadcast) -> BroadcastView {
         let broadcastView = BroadcastView(frame: .zero)
-
-        broadcastView.present(message: broadcast.message, animated: false)
+        let viewModel = BroadcastViewModel(with: broadcast.message)
+        broadcastView.presentMessage(using: viewModel, animated: false)
 
         return broadcastView
     }

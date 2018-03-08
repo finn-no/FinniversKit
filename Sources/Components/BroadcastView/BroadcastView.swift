@@ -103,15 +103,15 @@ extension BroadcastView {
     /// containing the text.
     ///
     /// - Parameters:
-    ///   - message: The message to present
+    ///   - viewModel: The view model containing the message to present
     ///   - animated: flag to determine if the expansion of the BroadcastView should be animated
     ///   - completion: a closure called when the animation finished
-    public func present(message: String, animated: Bool = true, completion: (() -> Void)? = nil) {
+    public func presentMessage(using viewModel: BroadcastViewModel, animated: Bool = true, completion: (() -> Void)? = nil) {
         if isPresenting {
             return
         }
 
-        inflate(withMessage: message, animated: animated, completion: completion)
+        inflate(using: viewModel, animated: animated, completion: completion)
 
         isPresenting = true
     }
@@ -173,9 +173,10 @@ private extension BroadcastView {
         setClampedHeight(active: true)
     }
 
-    func inflate(withMessage message: String, animated: Bool, completion: (() -> Void)?) {
-        self.message = message
-        messageLabel.text = message
+    func inflate(using viewModel: BroadcastViewModel, animated: Bool, completion: (() -> Void)?) {
+        let attributedText = viewModel.messageWithHTMLLinksReplacedByAttributedStrings
+        message = attributedText.string
+        messageLabel.attributedText = attributedText
 
         setClampedHeight(active: false)
 
