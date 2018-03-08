@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.author             = "FINN.no"
   s.social_media_url   = "https://twitter.com/search?q=FINN.no"
 
-  s.platform = :ios, '9.0'
+  s.platform = :ios
   s.swift_version = "4.0"
   s.ios.deployment_target = "9.0"
   s.pod_target_xcconfig = { "SWIFT_VERSION" => "4.0" }

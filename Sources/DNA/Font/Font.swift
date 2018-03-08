@@ -107,7 +107,7 @@ extension UIFont {
     }
 
     private static func registerFinniversKitFonts() {
-        Fontregister.registerFinniversKitFonts
+        _ = Fontregister.registerFinniversKitFonts
     }
 }
 
