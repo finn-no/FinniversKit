@@ -121,6 +121,9 @@
 		AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; };
 		AA7313D720207900008A7251 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */; };
 		AAC1AFB42021058000C71B7C /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1AFB32021058000C71B7C /* Demo.swift */; };
+		AAC76F1620518E2A003B020A /* Spacing.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4408A6A02027AC41008C0BD9 /* Spacing.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC76F1720518E32003B020A /* Color.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4408A69E2027AC41008C0BD9 /* Color.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC76F1820518E35003B020A /* Font.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4408A6A22027AC41008C0BD9 /* Font.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AACB03512029AAEE005FF060 /* RegisterView.swift in Headers */ = {isa = PBXBuildFile; fileRef = AA7313D2202078B8008A7251 /* RegisterView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AACB03522029AAEE005FF060 /* RegisterViewModel.swift in Headers */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AACB03532029AB8C005FF060 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D82020792C008A7251 /* RegisterViewDemoView.swift */; };
@@ -871,11 +874,14 @@
 				44C4E8CA1FFBA714000B014D /* Label+Style.swift in Headers */,
 				44C4E8CB1FFBA714000B014D /* Label.swift in Headers */,
 				44C4E8CC1FFBA714000B014D /* LoginView.swift in Headers */,
+				AAC76F1720518E32003B020A /* Color.swift in Headers */,
 				44C4E8CD1FFBA714000B014D /* LoginViewModel.swift in Headers */,
 				AACB03512029AAEE005FF060 /* RegisterView.swift in Headers */,
 				AACB03522029AAEE005FF060 /* RegisterViewModel.swift in Headers */,
 				44C4E8CE1FFBA714000B014D /* MarketGridCell.swift in Headers */,
+				AAC76F1820518E35003B020A /* Font.swift in Headers */,
 				44C4E8CF1FFBA714000B014D /* MarketGridModel.swift in Headers */,
+				AAC76F1620518E2A003B020A /* Spacing.swift in Headers */,
 				44C4E8D01FFBA714000B014D /* MarketGridView.swift in Headers */,
 				44C4E8D21FFBA714000B014D /* PreviewGridCell.swift in Headers */,
 				44C4E8D31FFBA714000B014D /* PreviewModel.swift in Headers */,
@@ -1392,7 +1398,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -1428,7 +1435,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
