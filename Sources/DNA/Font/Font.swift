@@ -69,6 +69,7 @@ extension UIFont {
         if let bundleUrl = Bundle(for: FinniversKit.self).url(forResource: "FinniversKit", withExtension: "bundle") {
             if let bundle = Bundle(url: bundleUrl) {
                 registerFontFor(bundle: bundle, forResource: filenameString)
+                return
             }
         }
 
