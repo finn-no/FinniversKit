@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "FinniversKit"
-  s.version      = "0.2.7"
+  s.version      = "0.2.8"
   s.summary      = "FINN's iOS Components"
   s.description  = <<-DESC
   FinniversKit is the iOS native implementation of FINN's design system.
