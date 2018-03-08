@@ -38,7 +38,16 @@ Pod::Spec.new do |s|
       'FinniversKit' => ["Sources/Resources/*.xcassets", "Sources/Resources/Fonts/*.ttf"]
     }
 
-  s.exclude_files = "Sources/Components/**/*DemoView.swift", "Sources/Components/**/Demo/", "*DemoView.swift", "Sources/Components/**/**/Demo/*.swift", "*Helpers.swift"
+  s.exclude_files = "Sources/Components/**/*DemoView.swift", "Sources/Components/**/Demo/", "*DemoView.swift", "Sources/Components/**/**/Demo/*.swift", "*Helpers.swift", "Sources/DNA/**/Demo/*.swift",
 
   s.requires_arc = true
+
+  s.subspec 'DNA' do |dna|
+  dna.source_files  = "Sources/DNA/Color/Color.swift", "Sources/DNA/Font/Font.swift", "Sources/DNA/Spacing/Spacing.swift"
+  dna.resources     = "Sources/Resources/Fonts/*.ttf", "Sources/Resources/*.xcassets"
+  dna.resource_bundles = {
+      'FinniversKit' => ["Sources/Resources/*.xcassets", "Sources/Resources/Fonts/*.ttf"]
+    }
+  dna.requires_arc = true
+  end
 end
