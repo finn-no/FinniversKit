@@ -25,7 +25,7 @@ public class BroadcastDemoView: UIView {
         return button
     }()
 
-    let broadcastMessage = "Broadcast messages appears without any action from the user. They are used when it´s important to inform the user about something that has affected the whole system and many users. Especially if it has a consequence for how he or she uses the service.\n\nThere containers should have the colour \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content."
+    let broadcastMessage = "Broadcast messages appears without any action from the user. They are used when it´s important to inform the user about something that has affected the whole system and many users. Especially if it has a consequence for how he or she uses the service.\n\nThere containers should have the colour \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content. Broadcast can also contain a <a href=\"www.finn.no\">HTML link</a> and turn regular urls into links - like this 👉 www.finn.no"
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
