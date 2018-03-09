@@ -69,7 +69,7 @@ private extension BroadcastDemoView {
 }
 
 extension BroadcastDemoView: BroadcastViewDelegate {
-    public func broadcastView(_ broadcastView: BroadcastView, urlInMessageTapped url: URL) {
+    public func broadcastView(_ broadcastView: BroadcastView, didTapURL url: URL) {
         let ac = UIAlertController(title: "Link tapped", message: "URL: \(url)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         ac.addAction(okAction)

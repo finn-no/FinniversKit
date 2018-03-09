@@ -28,13 +28,13 @@ public protocol BroadcastContainerViewDelegate: class {
     ///   - broadcastContainerView: the BroadcastContainerView
     ///   - url: the URL that was tapped
     ///   - index: the index of the broadcast that containes the URL that was tapped
-    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, urlTapped url: URL, inBroadcastAtIndex index: Int)
+    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, didTapURL url: URL, inBroadcastAtIndex index: Int)
 }
 
 // MARK: - BroadcastContainerViewDelegate default implementations
 
 public extension BroadcastContainerViewDelegate {
-    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, urlTapped url: URL, inBroadcastAtIndex index: Int) {}
+    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, didTapURL url: URL, inBroadcastAtIndex index: Int) {}
 }
 
 public protocol BroadcastContainerViewDataSource: class {
@@ -220,9 +220,9 @@ private extension BroadcastContainerView {
 // MARK: - BroadcastViewDelegate
 
 extension BroadcastContainerView: BroadcastViewDelegate {
-    public func broadcastView(_ broadcastView: BroadcastView, urlInMessageTapped url: URL) {
+    public func broadcastView(_ broadcastView: BroadcastView, didTapURL url: URL) {
         let broadcastViewIndex = contentView.arrangedSubviews.index(of: broadcastView) ?? 0
-        delegate?.broadcastContainer(self, urlTapped: url, inBroadcastAtIndex: broadcastViewIndex)
+        delegate?.broadcastContainer(self, didTapURL: url, inBroadcastAtIndex: broadcastViewIndex)
     }
 
     public func broadcastViewDismissButtonTapped(_ broadcastView: BroadcastView) {

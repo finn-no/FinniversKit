@@ -102,7 +102,7 @@ extension BroadcastContainerDemoView: BroadcastContainerViewDelegate {
         tableView.endUpdates()
     }
 
-    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, urlTapped url: URL, inBroadcastAtIndex index: Int) {
+    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, didTapURL url: URL, inBroadcastAtIndex index: Int) {
         let ac = UIAlertController(title: "Link tapped in broadcast at index \(index)", message: "URL: \(url)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         ac.addAction(okAction)
