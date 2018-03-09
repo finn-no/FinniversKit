@@ -12,14 +12,19 @@ public protocol BroadcastViewDelegate: class {
 /// They are used when it´s important to inform the user about something that has affected the whole system and many users.
 /// Especially if it has a consequence for how he or she uses the service.
 /// https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system#/components/broadcast
-public class BroadcastView: UIView {
-    private lazy var messageLabel: Label = {
-        let label = Label(style: Style.labelStyle)
-
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-
-        return label
+public final class BroadcastView: UIView {
+    private lazy var messageTextView: UITextView = {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.backgroundColor = .clear
+        textView.isAccessibilityElement = true
+        textView.isEditable = false
+        textView.isSelectable = true
+        textView.isScrollEnabled = false
+        textView.textContainerInset = .zero
+        textView.dataDetectorTypes = .link
+        textView.linkTextAttributes = BroadcastView.Style.linkTextAttributes
+        return textView
     }()
 
     private lazy var iconImage: UIImage? = {
@@ -52,22 +57,22 @@ public class BroadcastView: UIView {
     private let imageViewSizeConstraintConstant = CGSize(width: 28, height: 28)
 
     private lazy var subviewConstraints: [NSLayoutConstraint] = {
-        let messageLabelTopAnchorConstraint = messageLabel.topAnchor.constraint(equalTo: dismissButton.bottomAnchor, constant: .mediumSpacing)
+        let messageLabelTopAnchorConstraint = messageTextView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing + .mediumSpacing)
         messageLabelTopAnchorConstraint.priority = UILayoutPriority(rawValue: 999)
 
         return [
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             iconImageView.heightAnchor.constraint(equalToConstant: imageViewSizeConstraintConstant.height),
             iconImageView.widthAnchor.constraint(equalToConstant: imageViewSizeConstraintConstant.width),
-            iconImageView.centerYAnchor.constraint(equalTo: messageLabel.centerYAnchor),
-            dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            iconImageView.centerYAnchor.constraint(equalTo: messageTextView.centerYAnchor),
+            dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
             dismissButton.heightAnchor.constraint(equalToConstant: dismissButtonImage?.size.height ?? 0),
             dismissButton.widthAnchor.constraint(equalToConstant: dismissButtonImage?.size.width ?? 0),
-            messageLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            messageLabel.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: 0),
+            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: 0),
             messageLabelTopAnchorConstraint,
-            messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            messageTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -(.mediumLargeSpacing + .mediumSpacing)),
         ]
     }()
 
@@ -78,7 +83,15 @@ public class BroadcastView: UIView {
 
     /// The message displayed in the presented BroadcastView
     /// This property will be nil if not in presenting state
-    public var message: String?
+    public var message: String? {
+        return messageTextView.text
+    }
+
+    /// The attributed message displayed in the presented BroadcastView
+    /// This property will be nil if not in presenting state
+    public var attributedMessage: NSAttributedString? {
+        return messageTextView.attributedText
+    }
 
     /// Initalizes a BrodcastView
     /// When initialized the BroadcastView will have a height of zero and appear as invisible/collapsed
@@ -136,18 +149,17 @@ extension BroadcastView {
     /// - Parameter constrainedWidth: the constrained width to use for calculating the size
     /// - Returns: the calculated height of the BroadcastView
     public func calculatedSize(withConstrainedWidth constrainedWidth: CGFloat) -> CGSize {
-        guard let message = message else {
+        guard let attributedMessage = attributedMessage else {
             return CGSize(width: constrainedWidth, height: 0)
         }
 
-        let horizontalSpacings = .mediumLargeSpacing + imageViewSizeConstraintConstant.width + .mediumLargeSpacing + .mediumLargeSpacing
+        let horizontalSpacings = .mediumLargeSpacing + imageViewSizeConstraintConstant.width + .mediumLargeSpacing + (dismissButtonImage?.size.width ?? 0) + .mediumSpacing
         let rectWidth = constrainedWidth - horizontalSpacings
         let rectSize = CGSize(width: rectWidth, height: CGFloat.infinity)
+        let boundingRect = attributedMessage.boundingRect(with: rectSize, options: .usesLineFragmentOrigin, context: nil)
 
-        let boundingRect = NSString(string: message).boundingRect(with: rectSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: messageLabel.labelAttributes, context: nil)
-
-        let verticalSpacing = .mediumLargeSpacing + .mediumLargeSpacing
-        let calculatedSize = CGSize(width: constrainedWidth, height: boundingRect.size.height + verticalSpacing)
+        let verticalSpacing = .mediumLargeSpacing + .mediumSpacing + .mediumLargeSpacing + .mediumSpacing
+        let calculatedSize = CGSize(width: constrainedWidth, height: boundingRect.height + verticalSpacing)
 
         return calculatedSize
     }
@@ -164,7 +176,7 @@ private extension BroadcastView {
 
         iconImageView.image = iconImage
 
-        addSubview(messageLabel)
+        addSubview(messageTextView)
         addSubview(iconImageView)
         addSubview(dismissButton)
 
@@ -174,9 +186,9 @@ private extension BroadcastView {
     }
 
     func inflate(using viewModel: BroadcastViewModel, animated: Bool, completion: (() -> Void)?) {
-        let attributedText = viewModel.messageWithHTMLLinksReplacedByAttributedStrings
-        message = attributedText.string
-        messageLabel.attributedText = attributedText
+        let attributedText = NSMutableAttributedString(attributedString: viewModel.messageWithHTMLLinksReplacedByAttributedStrings)
+        attributedText.addAttributes(BroadcastView.Style.fontAttributes, range: NSMakeRange(0, attributedText.string.utf16.count))
+        messageTextView.attributedText = attributedText
 
         setClampedHeight(active: false)
 
@@ -199,14 +211,12 @@ private extension BroadcastView {
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
                 self?.superview?.layoutIfNeeded()
             }) { [weak self] _ in
-                self?.messageLabel.text = ""
-                self?.message = nil
+                self?.messageTextView.text = ""
                 completion?()
             }
         } else {
             superview?.layoutIfNeeded()
-            messageLabel.text = ""
-            message = nil
+            messageTextView.text = ""
             completion?()
         }
     }
