@@ -82,7 +82,7 @@ extension BroadcastContainerDemoView: BroadcastContainerViewDataSource {
 }
 
 extension BroadcastContainerDemoView: BroadcastContainerViewDelegate {
-    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void)) {
+    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void)) {
         let tableHeaderViewFrame = CGRect(origin: .zero, size: CGSize(width: frame.width, height: containerSize.height))
 
         tableView.beginUpdates()
