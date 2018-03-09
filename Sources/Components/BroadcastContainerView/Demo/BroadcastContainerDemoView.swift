@@ -82,7 +82,7 @@ extension BroadcastContainerDemoView: BroadcastContainerViewDataSource {
 }
 
 extension BroadcastContainerDemoView: BroadcastContainerViewDelegate {
-    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void)) {
+    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void)) {
         let tableHeaderViewFrame = CGRect(origin: .zero, size: CGSize(width: frame.width, height: containerSize.height))
 
         tableView.beginUpdates()
@@ -92,7 +92,7 @@ extension BroadcastContainerDemoView: BroadcastContainerViewDelegate {
         tableView.endUpdates()
     }
 
-    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, willDismissBroadcastAtIndex index: Int, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void)) {
+    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, willDismissBroadcastAtIndex index: Int, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void)) {
         let tableHeaderViewFrame = CGRect(origin: .zero, size: CGSize(width: frame.width, height: newContainerSize.height))
 
         tableView.beginUpdates()
@@ -102,7 +102,7 @@ extension BroadcastContainerDemoView: BroadcastContainerViewDelegate {
         tableView.endUpdates()
     }
 
-    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, didTapURL url: URL, inBroadcastAtIndex index: Int) {
+    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, didTapURL url: URL, inBroadcastAtIndex index: Int) {
         let alertController = UIAlertController(title: "Link tapped in broadcast at index \(index)", message: "URL: \(url)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
