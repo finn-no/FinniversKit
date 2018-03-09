@@ -6,6 +6,7 @@ import UIKit
 
 public protocol BroadcastViewDelegate: class {
     func broadcastViewDismissButtonTapped(_ broadcastView: BroadcastView)
+    func broadcastView(_ broadcastView: BroadcastView, urlInMessageTapped url: URL)
 }
 
 /// Broadcast messages appears without any action from the user.
@@ -15,6 +16,7 @@ public protocol BroadcastViewDelegate: class {
 public final class BroadcastView: UIView {
     private lazy var messageTextView: UITextView = {
         let textView = UITextView()
+        textView.delegate = self
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
         textView.isAccessibilityElement = true
@@ -240,5 +242,12 @@ private extension BroadcastView {
 
     @objc func dismissButtonTapped(_ sender: UIButton) {
         delegate?.broadcastViewDismissButtonTapped(self)
+    }
+}
+
+extension BroadcastView: UITextViewDelegate {
+    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        delegate?.broadcastView(self, urlInMessageTapped: URL)
+        return false
     }
 }

@@ -206,6 +206,9 @@ private extension BroadcastContainerView {
 // MARK: - BroadcastViewDelegate
 
 extension BroadcastContainerView: BroadcastViewDelegate {
+    public func broadcastView(_ broadcastView: BroadcastView, urlInMessageTapped url: URL) {
+    }
+
     public func broadcastViewDismissButtonTapped(_ broadcastView: BroadcastView) {
         if let delegate = delegate {
             let newContainerSize: CGSize = {
