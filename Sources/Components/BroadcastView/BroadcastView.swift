@@ -24,7 +24,6 @@ public final class BroadcastView: UIView {
         textView.isSelectable = true
         textView.isScrollEnabled = false
         textView.textContainerInset = .zero
-        textView.dataDetectorTypes = .link
         textView.linkTextAttributes = BroadcastView.Style.linkTextAttributes
         return textView
     }()
