@@ -2,7 +2,6 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import FinniversKit
 import UIKit
 
 struct ColorItem {

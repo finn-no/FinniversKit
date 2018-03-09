@@ -12,6 +12,13 @@
 		1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145725491FBEEF6A00648D73 /* MarketView.swift */; };
 		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
 		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
+		1AA066782051E782000EE98F /* BroadcastView.swift in Headers */ = {isa = PBXBuildFile; fileRef = AF91BB96202C74D0003E6366 /* BroadcastView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1AA066792051E7AC000EE98F /* BroadcastView+Style.swift in Headers */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1AA0667A2051E7B4000EE98F /* BroadcastContainerView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1AA0667B2051E7BD000EE98F /* BroadcastViewMessage.swift in Headers */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1AA0667C2051E83A000EE98F /* ConsentView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4535FD36202C4560002335E2 /* ConsentView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1AA0667D2051E841000EE98F /* ConsentViewModel.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4535FD38202C456E002335E2 /* ConsentViewModel.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1AA0667E2051E875000EE98F /* MarketGridViewConfigurable.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F68A1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */; };
 		4408A6A32027AC41008C0BD9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A69E2027AC41008C0BD9 /* Color.swift */; };
 		4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A02027AC41008C0BD9 /* Spacing.swift */; };
@@ -121,6 +128,9 @@
 		AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; };
 		AA7313D720207900008A7251 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D620207900008A7251 /* RegisterViewDefaultData.swift */; };
 		AAC1AFB42021058000C71B7C /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1AFB32021058000C71B7C /* Demo.swift */; };
+		AAC76F1620518E2A003B020A /* Spacing.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4408A6A02027AC41008C0BD9 /* Spacing.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC76F1720518E32003B020A /* Color.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4408A69E2027AC41008C0BD9 /* Color.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC76F1820518E35003B020A /* Font.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4408A6A22027AC41008C0BD9 /* Font.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AACB03512029AAEE005FF060 /* RegisterView.swift in Headers */ = {isa = PBXBuildFile; fileRef = AA7313D2202078B8008A7251 /* RegisterView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AACB03522029AAEE005FF060 /* RegisterViewModel.swift in Headers */ = {isa = PBXBuildFile; fileRef = AA7313D4202078D4008A7251 /* RegisterViewModel.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AACB03532029AB8C005FF060 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7313D82020792C008A7251 /* RegisterViewDemoView.swift */; };
@@ -439,7 +449,8 @@
 				4447F6741FDB2B110033DBC1 /* Label */,
 				4447F6791FDB2B110033DBC1 /* Login */,
 				4447F6821FDB2B110033DBC1 /* MarketGrid */,
-				4447F68E1FDB2B110033DBC1 /* PreviewGrid */,
+				4447F68F1FDB2B110033DBC1 /* PreviewGridCell */,
+				4447F6941FDB2B110033DBC1 /* PreviewGridView */,
 				AA7313D020207846008A7251 /* Register */,
 				4447F69C1FDB2B110033DBC1 /* Ribbon */,
 				4447F6A31FDB2B110033DBC1 /* TextField */,
@@ -577,15 +588,6 @@
 				4447F68D1FDB2B110033DBC1 /* MarketHelpers.swift */,
 			);
 			path = Demo;
-			sourceTree = "<group>";
-		};
-		4447F68E1FDB2B110033DBC1 /* PreviewGrid */ = {
-			isa = PBXGroup;
-			children = (
-				4447F68F1FDB2B110033DBC1 /* PreviewGridCell */,
-				4447F6941FDB2B110033DBC1 /* PreviewGridView */,
-			);
-			path = PreviewGrid;
 			sourceTree = "<group>";
 		};
 		4447F68F1FDB2B110033DBC1 /* PreviewGridCell */ = {
@@ -867,18 +869,28 @@
 				44C4E8BE1FFBA714000B014D /* UITableViewExtensions.swift in Headers */,
 				44C4E8C21FFBA714000B014D /* Button+Style.swift in Headers */,
 				44C4E8C31FFBA714000B014D /* Button.swift in Headers */,
+				1AA066782051E782000EE98F /* BroadcastView.swift in Headers */,
+				1AA066792051E7AC000EE98F /* BroadcastView+Style.swift in Headers */,
+				1AA0667A2051E7B4000EE98F /* BroadcastContainerView.swift in Headers */,
+				1AA0667B2051E7BD000EE98F /* BroadcastViewMessage.swift in Headers */,
 				44C4E8C41FFBA714000B014D /* EmptyView.swift in Headers */,
 				44C4E8CA1FFBA714000B014D /* Label+Style.swift in Headers */,
 				44C4E8CB1FFBA714000B014D /* Label.swift in Headers */,
+				1AA0667C2051E83A000EE98F /* ConsentView.swift in Headers */,
+				AAC76F1720518E32003B020A /* Color.swift in Headers */,
+				1AA0667D2051E841000EE98F /* ConsentViewModel.swift in Headers */,
 				44C4E8CC1FFBA714000B014D /* LoginView.swift in Headers */,
 				44C4E8CD1FFBA714000B014D /* LoginViewModel.swift in Headers */,
 				AACB03512029AAEE005FF060 /* RegisterView.swift in Headers */,
 				AACB03522029AAEE005FF060 /* RegisterViewModel.swift in Headers */,
+				AAC76F1820518E35003B020A /* Font.swift in Headers */,
 				44C4E8CE1FFBA714000B014D /* MarketGridCell.swift in Headers */,
 				44C4E8CF1FFBA714000B014D /* MarketGridModel.swift in Headers */,
-				44C4E8D01FFBA714000B014D /* MarketGridView.swift in Headers */,
+				AAC76F1620518E2A003B020A /* Spacing.swift in Headers */,
 				44C4E8D21FFBA714000B014D /* PreviewGridCell.swift in Headers */,
+				44C4E8D01FFBA714000B014D /* MarketGridView.swift in Headers */,
 				44C4E8D31FFBA714000B014D /* PreviewModel.swift in Headers */,
+				1AA0667E2051E875000EE98F /* MarketGridViewConfigurable.swift in Headers */,
 				44C4E8D71FFBA714000B014D /* PreviewGridView.swift in Headers */,
 				44C4E8D81FFBA714000B014D /* Ribbon+Style.swift in Headers */,
 				44C4E8D91FFBA714000B014D /* RibbonView.swift in Headers */,
@@ -1392,7 +1404,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -1428,7 +1441,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.FinniversKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
