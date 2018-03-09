@@ -8,9 +8,8 @@ import UIKit
 public class BroadcastDemoView: UIView {
     lazy var broadcastView: BroadcastView = {
         let view = BroadcastView()
-
         view.translatesAutoresizingMaskIntoConstraints = false
-
+        view.delegate = self
         return view
     }()
 
@@ -66,6 +65,21 @@ private extension BroadcastDemoView {
             presentBroadcastViewButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             presentBroadcastViewButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
+    }
+}
+
+extension BroadcastDemoView: BroadcastViewDelegate {
+    public func broadcastView(_ broadcastView: BroadcastView, urlInMessageTapped url: URL) {
+        let ac = UIAlertController(title: "Link tapped", message: "URL: \(url)", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        ac.addAction(okAction)
+        UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(ac, animated: true, completion: nil)
+    }
+
+    public func broadcastViewDismissButtonTapped(_ broadcastView: BroadcastView) {
+        broadcastView.dismiss()
+        presentBroadcastViewButton.setTitle("Present BroadcastView", for: .normal)
+        presentBroadcastViewButton.tag = 0
     }
 }
 
