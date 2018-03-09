@@ -25,7 +25,7 @@ class BroadcastContainerDemoView: UIView {
 
     private var broadcastViewMessages = [
         Broadcast(id: 1, message: "Broadcast messages appears without any action from the user. They are used when it´s important to inform the user about something that has affected the whole system and many users. Especially if it has a consequence for how he or she uses the service."),
-        Broadcast(id: 2, message: "There containers should have the colour \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content."),
+        Broadcast(id: 2, message: "There containers should have the colour \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content.\n\nBroadcasts can also contain <a href=\"www.finn.no\">HTML links</a> and make plain text urls in message clickable \nlike this 👉 www.finn.no"),
     ]
 
     override func didMoveToSuperview() {
@@ -100,5 +100,12 @@ extension BroadcastContainerDemoView: BroadcastContainerViewDelegate {
         tableView.tableHeaderView = tableHeaderView
         commitToDismissal()
         tableView.endUpdates()
+    }
+
+    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, urlTapped url: URL, inBroadcastAtIndex index: Int) {
+        let ac = UIAlertController(title: "Link tapped in broadcast at index \(index)", message: "URL: \(url)", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        ac.addAction(okAction)
+        UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(ac, animated: true, completion: nil)
     }
 }
