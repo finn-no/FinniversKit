@@ -21,6 +21,20 @@ public protocol BroadcastContainerViewDelegate: class {
     ///   - newContainerSize: the size that the BroadcastContainerView will have when the broadcast is dismissed
     ///   - commitToDismissal: a closure that must be called in order for the BroadcastContainerView to dismiss the broadcast
     func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, willDismissBroadcastAtIndex index: Int, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void))
+
+    /// Called when a URL in a broadcasts message is tapped
+    ///
+    /// - Parameters:
+    ///   - broadcastContainerView: the BroadcastContainerView
+    ///   - url: the URL that was tapped
+    ///   - index: the index of the broadcast that containes the URL that was tapped
+    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, urlTapped url: URL, inBroadcastAtIndex index: Int)
+}
+
+// MARK: - BroadcastContainerViewDelegate default implementations
+
+public extension BroadcastContainerViewDelegate {
+    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, urlTapped url: URL, inBroadcastAtIndex index: Int) {}
 }
 
 public protocol BroadcastContainerViewDataSource: class {
@@ -207,6 +221,8 @@ private extension BroadcastContainerView {
 
 extension BroadcastContainerView: BroadcastViewDelegate {
     public func broadcastView(_ broadcastView: BroadcastView, urlInMessageTapped url: URL) {
+        let broadcastViewIndex = contentView.arrangedSubviews.index(of: broadcastView) ?? 0
+        delegate?.broadcastContainer(self, urlTapped: url, inBroadcastAtIndex: broadcastViewIndex)
     }
 
     public func broadcastViewDismissButtonTapped(_ broadcastView: BroadcastView) {
@@ -222,8 +238,8 @@ extension BroadcastContainerView: BroadcastViewDelegate {
                 }
             }()
 
-            let broadcastViewMessageIndex = contentView.arrangedSubviews.index(of: broadcastView) ?? 0
-            delegate.broadcastContainer(self, willDismissBroadcastAtIndex: broadcastViewMessageIndex, withNewContainerSize: newContainerSize, commitToDismissal: {
+            let broadcastViewIndex = contentView.arrangedSubviews.index(of: broadcastView) ?? 0
+            delegate.broadcastContainer(self, willDismissBroadcastAtIndex: broadcastViewIndex, withNewContainerSize: newContainerSize, commitToDismissal: {
                 UIView.animate(withDuration: 0.2, animations: {
                     broadcastView.isHidden = true
                 }, completion: { [weak self] _ in
