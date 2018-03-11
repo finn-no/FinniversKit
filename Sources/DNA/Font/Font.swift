@@ -4,53 +4,60 @@
 
 import UIKit
 
+enum FontType: String {
+    case light = "FINNTypeWebStrippet-Light"
+    case medium = "FINNTypeWebStrippet-Medium"
+    case regular = "FINNTypeWebStrippet-Regular"
+    case bold = "FINNTypeWebStrippet-Bold"
+}
+
 public extension UIFont {
     public static var title1: UIFont {
-        registerFinniversKitFonts()
+        registerCustomFonts()
 
-        let font = UIFont(name: "FINNTypeWebStrippet-Medium", size: 36.0)!
+        let font = UIFont(name: FontType.medium.rawValue, size: 36.0)!
         return font.scaledFont(forTextStyle: .title1)
     }
 
     public static var title2: UIFont {
-        registerFinniversKitFonts()
+        registerCustomFonts()
 
-        let font = UIFont(name: "FINNTypeWebStrippet-Light", size: 28.0)!
+        let font = UIFont(name: FontType.light.rawValue, size: 28.0)!
         return font.scaledFont(forTextStyle: .title2)
     }
 
     public static var title3: UIFont {
-        registerFinniversKitFonts()
+        registerCustomFonts()
 
-        let font = UIFont(name: "FINNTypeWebStrippet-Light", size: 22.5)!
+        let font = UIFont(name: FontType.light.rawValue, size: 22.5)!
         return font.scaledFont(forTextStyle: .title3)
     }
 
     public static var title4: UIFont {
-        registerFinniversKitFonts()
+        registerCustomFonts()
 
-        let font = UIFont(name: "FINNTypeWebStrippet-Medium", size: 18.0)!
+        let font = UIFont(name: FontType.medium.rawValue, size: 18.0)!
         return font.scaledFont(forTextStyle: .headline)
     }
 
     public static var title5: UIFont {
-        registerFinniversKitFonts()
+        registerCustomFonts()
 
-        let font = UIFont(name: "FINNTypeWebStrippet-Medium", size: 14.0)!
+        let font = UIFont(name: FontType.medium.rawValue, size: 14.0)!
         return font.scaledFont(forTextStyle: .callout)
     }
 
     public static var body: UIFont {
-        registerFinniversKitFonts()
+        registerCustomFonts()
 
-        let font = UIFont(name: "FINNTypeWebStrippet-Light", size: 18.0)!
+        let font = UIFont(name: FontType.light.rawValue, size: 18.0)!
         return font.scaledFont(forTextStyle: .body)
     }
 
     public static var detail: UIFont {
-        registerFinniversKitFonts()
+        registerCustomFonts()
 
-        let font = UIFont(name: "FINNTypeWebStrippet-Light", size: 14.0)!
+        let font = UIFont(name: FontType.light.rawValue, size: 14.0)!
         return font.scaledFont(forTextStyle: .footnote)
     }
 
@@ -66,8 +73,8 @@ public extension UIFont {
 
 extension UIFont {
     static func registerFont(with filenameString: String) {
-        if let bundleUrl = Bundle(for: FinniversKit.self).url(forResource: "FinniversKit", withExtension: "bundle") {
-            if let bundle = Bundle(url: bundleUrl) {
+        if let bundleURL = Bundle(for: FinniversKit.self).url(forResource: "FinniversKit", withExtension: "bundle") {
+            if let bundle = Bundle(url: bundleURL) {
                 registerFontFor(bundle: bundle, forResource: filenameString)
                 return
             }
@@ -107,8 +114,8 @@ extension UIFont {
         }
     }
 
-    private static func registerFinniversKitFonts() {
-        _ = Fontregister.registerFinniversKitFonts
+    private static func registerCustomFonts() {
+        _ = FontRegistrator.registerCustomFonts
     }
 }
 
@@ -116,13 +123,12 @@ extension UIFont {
 // https://stackoverflow.com/questions/37801407/whither-dispatch-once-in-swift-3/37801408
 // Registering fonts, only once instead of each time.
 
-private final class Fontregister {
-    static let registerFinniversKitFonts = Fontregister()
+private final class FontRegistrator {
+    static let registerCustomFonts = FontRegistrator()
     init() {
-        print("Fontregister register FinniversKit Fonts")
-        UIFont.registerFont(with: "FINNTypeWebStrippet-Light")
-        UIFont.registerFont(with: "FINNTypeWebStrippet-Medium")
-        UIFont.registerFont(with: "FINNTypeWebStrippet-Regular")
-        UIFont.registerFont(with: "FINNTypeWebStrippet-Bold")
+        UIFont.registerFont(with: FontType.light.rawValue)
+        UIFont.registerFont(with: FontType.medium.rawValue)
+        UIFont.registerFont(with: FontType.regular.rawValue)
+        UIFont.registerFont(with: FontType.bold.rawValue)
     }
 }
