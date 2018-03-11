@@ -9,4 +9,20 @@ public extension UIView {
         self.init()
         translatesAutoresizingMaskIntoConstraints = !autoLayout
     }
+
+    public var compatibleTopAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.topAnchor
+        } else {
+            return topAnchor
+        }
+    }
+
+    public var compatibleBottomAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.bottomAnchor
+        } else {
+            return bottomAnchor
+        }
+    }
 }
