@@ -8,9 +8,8 @@ import UIKit
 public class BroadcastDemoView: UIView {
     lazy var broadcastView: BroadcastView = {
         let view = BroadcastView()
-
         view.translatesAutoresizingMaskIntoConstraints = false
-
+        view.delegate = self
         return view
     }()
 
@@ -25,7 +24,7 @@ public class BroadcastDemoView: UIView {
         return button
     }()
 
-    let broadcastMessage = "Broadcast messages appears without any action from the user. They are used when it´s important to inform the user about something that has affected the whole system and many users. Especially if it has a consequence for how he or she uses the service.\n\nThere containers should have the colour \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content."
+    let broadcastMessage = "Broadcast messages appears without any action from the user. They are used when it´s important to inform the user about something that has affected the whole system and many users. Especially if it has a consequence for how he or she uses the service.\n\nTheir containers should have the color \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content.\n\nBroadcasts can also contain <a href=\"http://www.finn.no\">HTML links</a>."
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,7 +43,8 @@ public class BroadcastDemoView: UIView {
             broadcastView.dismiss()
             sender.setTitle("Present BroadcastView", for: .normal)
         } else {
-            broadcastView.present(message: broadcastMessage)
+            let viewModel = BroadcastViewModel(with: broadcastMessage)
+            broadcastView.presentMessage(using: viewModel)
             sender.setTitle("Dismiss BroadcastView", for: .normal)
         }
 
@@ -65,5 +65,20 @@ private extension BroadcastDemoView {
             presentBroadcastViewButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             presentBroadcastViewButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
+    }
+}
+
+extension BroadcastDemoView: BroadcastViewDelegate {
+    public func broadcastView(_ broadcastView: BroadcastView, didTapURL url: URL) {
+        let ac = UIAlertController(title: "Link tapped", message: "URL: \(url)", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        ac.addAction(okAction)
+        UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(ac, animated: true, completion: nil)
+    }
+
+    public func broadcastViewDismissButtonTapped(_ broadcastView: BroadcastView) {
+        broadcastView.dismiss()
+        presentBroadcastViewButton.setTitle("Present BroadcastView", for: .normal)
+        presentBroadcastViewButton.tag = 0
     }
 }
