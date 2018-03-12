@@ -114,6 +114,8 @@
 		45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */; };
 		45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C57220495039000E788F /* SwitchViewDefaultData.swift */; };
 		45FB44492036F21500C121EB /* NSAttributedString+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB44482036F21500C121EB /* NSAttributedString+FinniversKit.swift */; };
+		559FD9BA205122A200A101B0 /* BroadcastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9B9205122A200A101B0 /* BroadcastViewModel.swift */; };
+		559FD9BD2051684F00A101B0 /* BroadcastViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastViewModelTests.swift */; };
 		55C5B274203D8E20007D7277 /* BroadcastContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastViewMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */; };
 		55C5B27E203EB9DA007D7277 /* BroadcastContainerDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B27B203DC458007D7277 /* BroadcastContainerDemoView.swift */; };
@@ -248,6 +250,8 @@
 		45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDemoView.swift; sourceTree = "<group>"; };
 		45D7C57220495039000E788F /* SwitchViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDefaultData.swift; sourceTree = "<group>"; };
 		45FB44482036F21500C121EB /* NSAttributedString+FinniversKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+FinniversKit.swift"; sourceTree = "<group>"; };
+		559FD9B9205122A200A101B0 /* BroadcastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewModel.swift; sourceTree = "<group>"; };
+		559FD9BB205122C500A101B0 /* BroadcastViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewModelTests.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainerView.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewMessage.swift; sourceTree = "<group>"; };
 		55C5B27B203DC458007D7277 /* BroadcastContainerDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainerDemoView.swift; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 			children = (
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
 				44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */,
+				559FD9BB205122C500A101B0 /* BroadcastViewModelTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -838,6 +843,7 @@
 			children = (
 				AF91BB9A202C7F52003E6366 /* Demo */,
 				AF91BB96202C74D0003E6366 /* BroadcastView.swift */,
+				559FD9B9205122A200A101B0 /* BroadcastViewModel.swift */,
 				AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */,
 			);
 			path = BroadcastView;
@@ -1097,6 +1103,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				559FD9BD2051684F00A101B0 /* BroadcastViewModelTests.swift in Sources */,
 				44898D541FE5B40D00F6017B /* Layout+HelpersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1151,6 +1158,7 @@
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				4447F6E11FDB2B110033DBC1 /* PreviewModel.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
+				559FD9BA205122A200A101B0 /* BroadcastViewModel.swift in Sources */,
 				4447F6E51FDB2B110033DBC1 /* PreviewGridLayout.swift in Sources */,
 				4447F6D91FDB2B110033DBC1 /* MarketGridModel.swift in Sources */,
 				45FB44492036F21500C121EB /* NSAttributedString+FinniversKit.swift in Sources */,
