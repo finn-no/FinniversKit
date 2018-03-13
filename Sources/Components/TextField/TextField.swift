@@ -37,14 +37,19 @@ public extension TextFieldDelegate {
 }
 
 public class TextField: UIView {
+    enum UnderlineHeight: CGFloat {
+        case inactive = 1
+        case active = 2
+    }
 
     // MARK: - Internal properties
 
     private let eyeImage = UIImage(frameworkImageNamed: "view")!.withRenderingMode(.alwaysTemplate)
     private let clearTextIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
     private let rightViewSize = CGSize(width: 40, height: 40)
-    private let underlineHeight: CGFloat = 1
     private let animationDuration: Double = 0.3
+
+    private var underlineHeightConstraint: NSLayoutConstraint?
 
     private lazy var typeLabel: Label = {
         let label = Label(style: .detail(.licorice))
@@ -162,14 +167,15 @@ public class TextField: UIView {
             textField.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .mediumSpacing),
             textField.leadingAnchor.constraint(equalTo: leadingAnchor),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor),
+            textField.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             underline.leadingAnchor.constraint(equalTo: leadingAnchor),
             underline.trailingAnchor.constraint(equalTo: trailingAnchor),
             underline.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: .mediumSpacing),
-            underline.heightAnchor.constraint(equalToConstant: underlineHeight),
-            underline.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+
+        underlineHeightConstraint = underline.heightAnchor.constraint(equalToConstant: UnderlineHeight.inactive.rawValue)
+        underlineHeightConstraint?.isActive = true
 
         typeLabel.transform = transform.translatedBy(x: 0, y: 20)
     }
@@ -227,6 +233,16 @@ public class TextField: UIView {
     fileprivate func isValidPassword(_ password: String) -> Bool {
         return !password.isEmpty
     }
+
+    private func animateUnderline(to height: UnderlineHeight, and color: UIColor) {
+        layoutIfNeeded()
+        underlineHeightConstraint?.constant = height.rawValue
+
+        UIView.animate(withDuration: animationDuration) {
+            self.layoutIfNeeded()
+            self.underline.backgroundColor = color
+        }
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -234,21 +250,16 @@ public class TextField: UIView {
 extension TextField: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldDidBeginEditing(self)
-        UIView.animate(withDuration: animationDuration) {
-            self.underline.backgroundColor = .secondaryBlue
-        }
+        animateUnderline(to: .active, and: .secondaryBlue)
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.textFieldDidEndEditing(self)
+
         if let text = textField.text, !isValidEmail(text), !text.isEmpty, inputType == .email {
-            UIView.animate(withDuration: animationDuration) {
-                self.underline.backgroundColor = .cherry
-            }
+            animateUnderline(to: .inactive, and: .cherry)
         } else {
-            UIView.animate(withDuration: animationDuration) {
-                self.underline.backgroundColor = .stone
-            }
+            animateUnderline(to: .inactive, and: .stone)
         }
     }
 
