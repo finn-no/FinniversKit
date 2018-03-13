@@ -13,7 +13,8 @@ public class MarketGridCell: UICollectionViewCell {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: UILayoutConstraintAxis.vertical)
+        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
