@@ -47,7 +47,7 @@ public class TextField: UIView {
     private let animationDuration: Double = 0.3
 
     private lazy var typeLabel: Label = {
-        let label = Label(style: .detail(.stone))
+        let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.alpha = 0
         return label
