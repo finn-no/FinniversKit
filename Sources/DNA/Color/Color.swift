@@ -70,11 +70,11 @@ extension UIColor {
 
 extension UIColor {
     public class var callToActionButtonHighlightedBodyColor: UIColor {
-        return UIColor(r: 0, g: 79, b: 201)!
+        return primaryBlue.withAlphaComponent(0.8)
     }
 
     public class var destructiveButtonHighlightedBodyColor: UIColor {
-        return UIColor(r: 201, g: 79, b: 0)!
+        return cherry.withAlphaComponent(0.8)
     }
 
     public class var defaultButtonHighlightedBodyColor: UIColor {
@@ -82,10 +82,10 @@ extension UIColor {
     }
 
     public class var linkButtonHighlightedTextColor: UIColor {
-        return UIColor(r: 0, g: 79, b: 201)!
+        return primaryBlue.withAlphaComponent(0.8)
     }
 
     public class var flatButtonHighlightedTextColor: UIColor {
-        return UIColor(r: 0, g: 79, b: 201)!
+        return primaryBlue.withAlphaComponent(0.8)
     }
 }
