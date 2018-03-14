@@ -50,9 +50,9 @@ public extension Button {
 
         var highlightedBodyColor: UIColor? {
             switch self {
-            case .callToAction: return UIColor(red: 0 / 255, green: 79 / 255, blue: 201 / 255, alpha: 1.0) // #004fc9
-            case .destructive: return UIColor(red: 201 / 255, green: 79 / 255, blue: 0 / 255, alpha: 1.0)
-            case .default: return UIColor(red: 241 / 255, green: 249 / 255, blue: 255 / 255, alpha: 1.0)
+            case .callToAction: return .callToActionButtonHighlightedBodyColor
+            case .destructive: return .destructiveButtonHighlightedBodyColor
+            case .default: return .defaultButtonHighlightedBodyColor
             default: return nil
             }
         }
@@ -66,7 +66,8 @@ public extension Button {
 
         var highlightedTextColor: UIColor? {
             switch self {
-            case .link, .flat: return UIColor(red: 0 / 255, green: 79 / 255, blue: 201 / 255, alpha: 1.0) // #004fc9
+            case .link: return .linkButtonHighlightedTextColor
+            case .flat: return .flatButtonHighlightedTextColor
             default: return nil
             }
         }

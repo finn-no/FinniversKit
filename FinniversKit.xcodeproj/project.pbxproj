@@ -116,6 +116,7 @@
 		45FB44492036F21500C121EB /* NSAttributedString+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB44482036F21500C121EB /* NSAttributedString+FinniversKit.swift */; };
 		559FD9BA205122A200A101B0 /* BroadcastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9B9205122A200A101B0 /* BroadcastViewModel.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastViewModelTests.swift */; };
+		55A9241A20591ED900458FC3 /* Color+Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A9241920591ED900458FC3 /* Color+Button.swift */; };
 		55C5B274203D8E20007D7277 /* BroadcastContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastViewMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */; };
 		55C5B27E203EB9DA007D7277 /* BroadcastContainerDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B27B203DC458007D7277 /* BroadcastContainerDemoView.swift */; };
@@ -252,6 +253,7 @@
 		45FB44482036F21500C121EB /* NSAttributedString+FinniversKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+FinniversKit.swift"; sourceTree = "<group>"; };
 		559FD9B9205122A200A101B0 /* BroadcastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewModel.swift; sourceTree = "<group>"; };
 		559FD9BB205122C500A101B0 /* BroadcastViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewModelTests.swift; sourceTree = "<group>"; };
+		55A9241920591ED900458FC3 /* Color+Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Button.swift"; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainerView.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewMessage.swift; sourceTree = "<group>"; };
 		55C5B27B203DC458007D7277 /* BroadcastContainerDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainerDemoView.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 			children = (
 				4408A6A62027AC71008C0BD9 /* Demo */,
 				4408A69E2027AC41008C0BD9 /* Color.swift */,
+				55A9241920591ED900458FC3 /* Color+Button.swift */,
 			);
 			path = Color;
 			sourceTree = "<group>";
@@ -1112,6 +1115,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A9241A20591ED900458FC3 /* Color+Button.swift in Sources */,
 				4447F6CC1FDB2B110033DBC1 /* CircleView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* BroadcastView+Style.swift in Sources */,
