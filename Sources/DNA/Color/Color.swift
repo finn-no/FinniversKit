@@ -4,7 +4,7 @@
 
 import UIKit
 
-public extension UIColor {
+extension UIColor {
     public class var ice: UIColor {
         return UIColor(r: 241, g: 249, b: 255)!
     }
@@ -61,7 +61,7 @@ public extension UIColor {
         return UIColor(r: 104, g: 226, b: 184)!
     }
 
-    internal convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
+    convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
 }
