@@ -4,7 +4,7 @@
 
 import UIKit
 
-public extension UIColor {
+extension UIColor {
     public class var ice: UIColor {
         return UIColor(r: 241, g: 249, b: 255)!
     }
@@ -61,7 +61,31 @@ public extension UIColor {
         return UIColor(r: 104, g: 226, b: 184)!
     }
 
-    private convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
+    convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
+    }
+}
+
+// MARK: - Button
+
+extension UIColor {
+    public class var callToActionButtonHighlightedBodyColor: UIColor {
+        return primaryBlue.withAlphaComponent(0.8)
+    }
+
+    public class var destructiveButtonHighlightedBodyColor: UIColor {
+        return cherry.withAlphaComponent(0.8)
+    }
+
+    public class var defaultButtonHighlightedBodyColor: UIColor {
+        return UIColor(r: 241, g: 249, b: 255)!
+    }
+
+    public class var linkButtonHighlightedTextColor: UIColor {
+        return primaryBlue.withAlphaComponent(0.8)
+    }
+
+    public class var flatButtonHighlightedTextColor: UIColor {
+        return primaryBlue.withAlphaComponent(0.8)
     }
 }
