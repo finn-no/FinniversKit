@@ -66,6 +66,64 @@ extension UIColor {
     }
 }
 
+extension CGColor {
+    public class var ice: CGColor {
+        return UIColor.ice.cgColor
+    }
+
+    public class var milk: CGColor {
+        return UIColor.milk.cgColor
+    }
+
+    public class var licorice: CGColor {
+        return UIColor.licorice.cgColor
+    }
+
+    public class var primaryBlue: CGColor {
+        return UIColor.primaryBlue.cgColor
+    }
+
+    public class var secondaryBlue: CGColor {
+        return UIColor.secondaryBlue.cgColor
+    }
+
+    public class var stone: CGColor {
+        return UIColor.stone.cgColor
+    }
+
+    public class var sardine: CGColor {
+        return UIColor.sardine.cgColor
+    }
+
+    public class var salmon: CGColor {
+        return UIColor.salmon.cgColor
+    }
+
+    public class var mint: CGColor {
+        return UIColor.mint.cgColor
+    }
+
+    public class var toothPaste: CGColor {
+        return UIColor.toothPaste.cgColor
+    }
+
+    public class var banana: CGColor {
+        return UIColor.banana.cgColor
+    }
+
+    public class var cherry: CGColor {
+        return UIColor.cherry.cgColor
+    }
+
+    public class var watermelon: CGColor {
+        return UIColor.watermelon.cgColor
+    }
+
+    public class var pea: CGColor {
+        return UIColor.pea.cgColor
+    }
+}
+
 // MARK: - Button
 
 extension UIColor {
@@ -87,5 +145,27 @@ extension UIColor {
 
     public class var flatButtonHighlightedTextColor: UIColor {
         return primaryBlue.withAlphaComponent(0.8)
+    }
+}
+
+extension CGColor {
+    public class var callToActionButtonHighlightedBodyColor: CGColor {
+        return UIColor.callToActionButtonHighlightedBodyColor.cgColor
+    }
+
+    public class var destructiveButtonHighlightedBodyColor: CGColor {
+        return UIColor.destructiveButtonHighlightedBodyColor.cgColor
+    }
+
+    public class var defaultButtonHighlightedBodyColor: CGColor {
+        return UIColor.defaultButtonHighlightedBodyColor.cgColor
+    }
+
+    public class var linkButtonHighlightedTextColor: CGColor {
+        return UIColor.linkButtonHighlightedTextColor.cgColor
+    }
+
+    public class var flatButtonHighlightedTextColor: CGColor {
+        return UIColor.flatButtonHighlightedTextColor.cgColor
     }
 }
