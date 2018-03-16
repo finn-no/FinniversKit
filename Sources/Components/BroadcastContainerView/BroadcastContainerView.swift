@@ -11,7 +11,7 @@ public protocol BroadcastContainerViewDelegate: class {
     ///   - broadcastContainerView: the BroadcastContainerView
     ///   - containerSize: the size that the BroadcastContainerView will have when the broadcasts are displayed
     ///   - commitToDisplaying: a closure that must be called in order for the BroadcastContainerView to display its broadcasts
-    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void))
+    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void))
 
     /// Called when the BroadcastContainerView is about to dismiss a broadcast
     ///
@@ -20,7 +20,21 @@ public protocol BroadcastContainerViewDelegate: class {
     ///   - index: the index of the broadcast that is about to be dismissed
     ///   - newContainerSize: the size that the BroadcastContainerView will have when the broadcast is dismissed
     ///   - commitToDismissal: a closure that must be called in order for the BroadcastContainerView to dismiss the broadcast
-    func broadcastContainer(_ broadcastContainerView: BroadcastContainerView, willDismissBroadcastAtIndex index: Int, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void))
+    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, willDismissBroadcastAtIndex index: Int, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void))
+
+    /// Called when a URL in a broadcasts message is tapped
+    ///
+    /// - Parameters:
+    ///   - broadcastContainerView: the BroadcastContainerView
+    ///   - url: the URL that was tapped
+    ///   - index: the index of the broadcast that containes the URL that was tapped
+    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, didTapURL url: URL, inBroadcastAtIndex index: Int)
+}
+
+// MARK: - BroadcastContainerViewDelegate default implementations
+
+public extension BroadcastContainerViewDelegate {
+    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, didTapURL url: URL, inBroadcastAtIndex index: Int) {}
 }
 
 public protocol BroadcastContainerViewDataSource: class {
@@ -95,7 +109,7 @@ public extension BroadcastContainerView {
         layoutBroadcastViews(from: broadcastToDisplay)
 
         if let delegate = delegate {
-            delegate.broadcastContainer(self, willDisplayBroadcastsWithContainerSize: intrinsicContentSize, commitToDisplaying: {
+            delegate.broadcastContainerView(self, willDisplayBroadcastsWithContainerSize: intrinsicContentSize, commitToDisplaying: {
                 UIView.animate(withDuration: 0.3, animations: { [weak self] in
                     self?.contentView.arrangedSubviews.forEach { $0.isHidden = false }
                 })
@@ -162,13 +176,14 @@ private extension BroadcastContainerView {
 
     func broadcastView(from broadcast: Broadcast) -> BroadcastView {
         let broadcastView = BroadcastView(frame: .zero)
-
-        broadcastView.present(message: broadcast.message, animated: false)
+        let viewModel = BroadcastViewModel(with: broadcast.message)
+        broadcastView.presentMessage(using: viewModel, animated: false)
 
         return broadcastView
     }
 
     func add(_ broadcastView: BroadcastView, to stackView: UIStackView) {
+        broadcastView.delegate = self
         broadcastView.translatesAutoresizingMaskIntoConstraints = false
         broadcastView.isHidden = true
 
@@ -181,9 +196,6 @@ private extension BroadcastContainerView {
 
         broadcastView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         broadcastView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-
-        let tapRecogninzer = UITapGestureRecognizer(target: self, action: #selector(broadcastViewTapped(_:)))
-        broadcastView.addGestureRecognizer(tapRecogninzer)
 
         broadcastView.layoutIfNeeded()
     }
@@ -203,12 +215,17 @@ private extension BroadcastContainerView {
             view.removeFromSuperview()
         }
     }
+}
 
-    @objc private func broadcastViewTapped(_ sender: UIGestureRecognizer) {
-        guard let broadcastView = sender.view as? BroadcastView else {
-            return
-        }
+// MARK: - BroadcastViewDelegate
 
+extension BroadcastContainerView: BroadcastViewDelegate {
+    public func broadcastView(_ broadcastView: BroadcastView, didTapURL url: URL) {
+        let broadcastViewIndex = contentView.arrangedSubviews.index(of: broadcastView) ?? 0
+        delegate?.broadcastContainerView(self, didTapURL: url, inBroadcastAtIndex: broadcastViewIndex)
+    }
+
+    public func broadcastViewDismissButtonTapped(_ broadcastView: BroadcastView) {
         if let delegate = delegate {
             let newContainerSize: CGSize = {
                 let width = frame.width
@@ -221,8 +238,8 @@ private extension BroadcastContainerView {
                 }
             }()
 
-            let broadcastViewMessageIndex = contentView.arrangedSubviews.index(of: broadcastView) ?? 0
-            delegate.broadcastContainer(self, willDismissBroadcastAtIndex: broadcastViewMessageIndex, withNewContainerSize: newContainerSize, commitToDismissal: {
+            let broadcastViewIndex = contentView.arrangedSubviews.index(of: broadcastView) ?? 0
+            delegate.broadcastContainerView(self, willDismissBroadcastAtIndex: broadcastViewIndex, withNewContainerSize: newContainerSize, commitToDismissal: {
                 UIView.animate(withDuration: 0.2, animations: {
                     broadcastView.isHidden = true
                 }, completion: { [weak self] _ in

@@ -138,7 +138,11 @@ class PreviewGridLayout: UICollectionViewLayout {
         }
 
         guard collectionView.numberOfItems(inSection: 0) > 0 else {
-            return collectionView.bounds.size
+            if let height = delegate.heightForHeaderView(inCollectionView: collectionView) {
+                return CGSize(width: collectionView.frame.size.width, height: height)
+            } else {
+                return collectionView.bounds.size
+            }
         }
 
         var size = collectionView.bounds.size
