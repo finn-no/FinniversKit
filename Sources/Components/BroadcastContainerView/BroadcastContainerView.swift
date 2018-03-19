@@ -233,7 +233,7 @@ extension BroadcastContainerView: BroadcastViewDelegate {
                 if isLastBroadcastToBeRemoved {
                     return CGSize(width: width, height: 0)
                 } else {
-                    let height = frame.height - broadcastView.frame.height
+                    let height = frame.height - (broadcastView.frame.height + .mediumLargeSpacing)
                     return CGSize(width: width, height: height)
                 }
             }()
