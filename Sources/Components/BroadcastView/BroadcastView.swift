@@ -58,22 +58,22 @@ public final class BroadcastView: UIView {
     private let imageViewSizeConstraintConstant = CGSize(width: 28, height: 28)
 
     private lazy var subviewConstraints: [NSLayoutConstraint] = {
-        let messageLabelTopAnchorConstraint = messageTextView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing + .mediumSpacing)
+        let messageLabelTopAnchorConstraint = messageTextView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
         messageLabelTopAnchorConstraint.priority = UILayoutPriority(rawValue: 999)
 
         return [
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             iconImageView.heightAnchor.constraint(equalToConstant: imageViewSizeConstraintConstant.height),
             iconImageView.widthAnchor.constraint(equalToConstant: imageViewSizeConstraintConstant.width),
-            iconImageView.centerYAnchor.constraint(equalTo: messageTextView.centerYAnchor),
-            dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            iconImageView.topAnchor.constraint(equalTo: messageTextView.topAnchor, constant: -.smallSpacing),
+            dismissButton.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
+            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             dismissButton.heightAnchor.constraint(equalToConstant: dismissButtonImage?.size.height ?? 0),
             dismissButton.widthAnchor.constraint(equalToConstant: dismissButtonImage?.size.width ?? 0),
-            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: 0),
+            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .smallSpacing),
+            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.smallSpacing),
             messageLabelTopAnchorConstraint,
-            messageTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -(.mediumLargeSpacing + .mediumSpacing)),
+            messageTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
         ]
     }()
 
@@ -154,12 +154,12 @@ extension BroadcastView {
             return CGSize(width: constrainedWidth, height: 0)
         }
 
-        let horizontalSpacings = .mediumLargeSpacing + imageViewSizeConstraintConstant.width + .mediumLargeSpacing + (dismissButtonImage?.size.width ?? 0) + .mediumSpacing
+        let horizontalSpacings = .mediumLargeSpacing + imageViewSizeConstraintConstant.width + .smallSpacing + .smallSpacing + (dismissButtonImage?.size.width ?? 0) + .mediumLargeSpacing
         let rectWidth = constrainedWidth - horizontalSpacings
         let rectSize = CGSize(width: rectWidth, height: CGFloat.infinity)
         let boundingRect = attributedMessage.boundingRect(with: rectSize, options: .usesLineFragmentOrigin, context: nil)
 
-        let verticalSpacing = .mediumLargeSpacing + .mediumSpacing + .mediumLargeSpacing + .mediumSpacing
+        let verticalSpacing = .mediumLargeSpacing + .mediumLargeSpacing
         let calculatedSize = CGSize(width: constrainedWidth, height: boundingRect.height + verticalSpacing)
 
         return calculatedSize
