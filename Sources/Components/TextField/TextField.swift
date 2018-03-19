@@ -12,6 +12,7 @@ public protocol TextFieldDelegate: NSObjectProtocol {
     func textFieldShouldReturn(_ textField: TextField) -> Bool
     func textField(_ textField: TextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     func textFieldDidChange(_ textField: TextField)
+    func textFieldDidTapMultilineAction(_ textField: TextField)
 }
 
 public extension TextFieldDelegate {
@@ -34,6 +35,10 @@ public extension TextFieldDelegate {
     func textFieldDidChange(_ textField: TextField) {
         // Default empty implementation
     }
+
+    func textFieldDidTapMultilineAction(_ textField: TextField) {
+        // Default empty implementation
+    }
 }
 
 public class TextField: UIView {
@@ -46,15 +51,15 @@ public class TextField: UIView {
 
     private let eyeImage = UIImage(frameworkImageNamed: "view")!.withRenderingMode(.alwaysTemplate)
     private let clearTextIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
+    private let multilineDisclosureIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
     private let rightViewSize = CGSize(width: 40, height: 40)
     private let animationDuration: Double = 0.3
 
     private var underlineHeightConstraint: NSLayoutConstraint?
 
     private lazy var typeLabel: Label = {
-        let label = Label(style: .detail(.licorice))
+        let label = Label(style: .title5(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.alpha = 0
         return label
     }()
 
@@ -74,11 +79,32 @@ public class TextField: UIView {
         return button
     }()
 
+    private lazy var multilineDisclosureButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: eyeImage.size.width, height: eyeImage.size.width))
+        button.setImage(multilineDisclosureIcon, for: .normal)
+        button.imageView?.tintColor = .stone
+        button.addTarget(self, action: #selector(multilineDisclusureTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var textFieldBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .ice
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private lazy var underline: UIView = {
         let view = UIView()
         view.backgroundColor = .stone
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+
+    private lazy var helpTextLabel: Label = {
+        let label = Label(style: .detail(.licorice))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     // MARK: - External properties
@@ -111,6 +137,12 @@ public class TextField: UIView {
         return textField.text
     }
 
+    public var helpText: String? {
+        didSet {
+            helpTextLabel.text = helpText
+        }
+    }
+
     public weak var delegate: TextFieldDelegate?
 
     public var isValid: Bool {
@@ -123,6 +155,8 @@ public class TextField: UIView {
             return isValidPassword(text)
         case .email:
             return isValidEmail(text)
+        case .normal, .multiline:
+            return true
         }
     }
 
@@ -151,33 +185,45 @@ public class TextField: UIView {
         if inputType.isSecureMode {
             textField.rightViewMode = .always
             textField.rightView = showPasswordButton
+        } else if case .multiline = inputType {
+            textField.rightViewMode = .always
+            textField.rightView = multilineDisclosureButton
         } else {
             textField.rightViewMode = .whileEditing
             textField.rightView = clearButton
         }
 
         addSubview(typeLabel)
+        addSubview(textFieldBackgroundView)
         addSubview(textField)
         addSubview(underline)
+        addSubview(helpTextLabel)
 
         NSLayoutConstraint.activate([
             typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             typeLabel.topAnchor.constraint(equalTo: topAnchor),
 
-            textField.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .mediumSpacing),
-            textField.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textField.bottomAnchor.constraint(equalTo: bottomAnchor),
+            textFieldBackgroundView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .mediumSpacing),
+            textFieldBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            textFieldBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            textField.topAnchor.constraint(equalTo: textFieldBackgroundView.topAnchor, constant: .mediumSpacing),
+            textField.leadingAnchor.constraint(equalTo: textFieldBackgroundView.leadingAnchor, constant: .mediumSpacing),
+            textField.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor, constant: -.mediumSpacing),
+            textField.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: -.mediumSpacing),
 
             underline.leadingAnchor.constraint(equalTo: leadingAnchor),
             underline.trailingAnchor.constraint(equalTo: trailingAnchor),
-            underline.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: .mediumSpacing),
+            underline.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor),
+
+            helpTextLabel.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .mediumSpacing),
+            helpTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            helpTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            helpTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
 
         underlineHeightConstraint = underline.heightAnchor.constraint(equalToConstant: UnderlineHeight.inactive.rawValue)
         underlineHeightConstraint?.isActive = true
-
-        typeLabel.transform = transform.translatedBy(x: 0, y: 20)
     }
 
     // MARK: - Actions
@@ -201,20 +247,12 @@ public class TextField: UIView {
         textFieldDidChange()
     }
 
+    @objc private func multilineDisclusureTapped(sender: UIButton) {
+        delegate?.textFieldDidTapMultilineAction(self)
+    }
+
     @objc private func textFieldDidChange() {
         delegate?.textFieldDidChange(self)
-
-        if let text = textField.text, !text.isEmpty {
-            UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
-                self.typeLabel.transform = CGAffineTransform.identity
-                self.typeLabel.alpha = 1.0
-            })
-        } else {
-            UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
-                self.typeLabel.transform = self.typeLabel.transform.translatedBy(x: 0, y: self.typeLabel.frame.height)
-                self.typeLabel.alpha = 0
-            })
-        }
     }
 
     @objc private func handleTap() {
@@ -248,6 +286,16 @@ public class TextField: UIView {
 // MARK: - UITextFieldDelegate
 
 extension TextField: UITextFieldDelegate {
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switch inputType {
+        case .multiline:
+            delegate?.textFieldDidTapMultilineAction(self)
+            return false
+
+        default: return true
+        }
+    }
+
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldDidBeginEditing(self)
         animateUnderline(to: .active, and: .secondaryBlue)
