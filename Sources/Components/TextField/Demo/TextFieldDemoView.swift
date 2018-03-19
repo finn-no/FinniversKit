@@ -22,9 +22,20 @@ public class TextFieldDemoView: UIView {
         let passwordTextField = TextField(inputType: .password)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholderText = "Passord"
+        emailTextField.helpText = "Bruk store og små bokstaver"
+
+        let normalTextField = TextField(inputType: .normal)
+        normalTextField.translatesAutoresizingMaskIntoConstraints = false
+        normalTextField.placeholderText = "Normal"
+
+        let multilineTextField = TextField(inputType: .multiline)
+        multilineTextField.translatesAutoresizingMaskIntoConstraints = false
+        multilineTextField.placeholderText = "Multiline"
 
         addSubview(emailTextField)
         addSubview(passwordTextField)
+        addSubview(normalTextField)
+        addSubview(multilineTextField)
 
         NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
@@ -34,6 +45,14 @@ public class TextFieldDemoView: UIView {
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .mediumLargeSpacing),
             passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            normalTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            normalTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            normalTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            multilineTextField.topAnchor.constraint(equalTo: normalTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            multilineTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            multilineTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }
