@@ -4,7 +4,7 @@
 
 import UIKit
 
-enum FontType: String {
+public enum FontType: String {
     case light = "FINNTypeWebStrippet-Light"
     case medium = "FINNTypeWebStrippet-Medium"
     case regular = "FINNTypeWebStrippet-Regular"
@@ -67,6 +67,25 @@ public extension UIFont {
             return fontMetrics.scaledFont(for: self)
         } else {
             return self
+        }
+    }
+    
+    /// Returns a font with a given font type and size, optionally scaled by a UIFontTextStyle.
+    ///
+    /// - Parameters:
+    ///   - fontType: the font type/weight of the font
+    ///   - size: the size of the font
+    ///   - textStyle: optional text style to scale font
+    /// - Returns: Returns a font based on font type and size
+   public static func font(ofType fontType: FontType, size: CGFloat, textStyle: UIFontTextStyle? = nil) -> UIFont {
+        registerCustomFonts()
+        
+        let font = UIFont(name: fontType.rawValue, size: size)!
+        
+        if let textStyle = textStyle {
+            return font.scaledFont(forTextStyle: textStyle)
+        } else {
+            return font
         }
     }
 }
