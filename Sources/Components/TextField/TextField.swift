@@ -42,10 +42,6 @@ public extension TextFieldDelegate {
 }
 
 public class TextField: UIView {
-    enum UnderlineHeight: CGFloat {
-        case inactive = 1
-        case active = 2
-    }
 
     // MARK: - Internal properties
 
@@ -56,6 +52,12 @@ public class TextField: UIView {
     private let animationDuration: Double = 0.3
 
     private var underlineHeightConstraint: NSLayoutConstraint?
+
+    private var state: State = .normal {
+        didSet {
+            transition(to: state)
+        }
+    }
 
     private lazy var typeLabel: Label = {
         let label = Label(style: .title5(.licorice))
@@ -222,7 +224,7 @@ public class TextField: UIView {
             helpTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
 
-        underlineHeightConstraint = underline.heightAnchor.constraint(equalToConstant: UnderlineHeight.inactive.rawValue)
+        underlineHeightConstraint = underline.heightAnchor.constraint(equalToConstant: State.normal.underlineHeight)
         underlineHeightConstraint?.isActive = true
     }
 
@@ -259,6 +261,8 @@ public class TextField: UIView {
         textField.becomeFirstResponder()
     }
 
+    // MARK: - Functionality
+
     fileprivate func evaluate(_ regEx: String, with string: String) -> Bool {
         let regExTest = NSPredicate(format: "SELF MATCHES %@", regEx)
         return regExTest.evaluate(with: string)
@@ -272,13 +276,16 @@ public class TextField: UIView {
         return !password.isEmpty
     }
 
-    private func animateUnderline(to height: UnderlineHeight, and color: UIColor) {
+    private func transition(to state: State) {
         layoutIfNeeded()
-        underlineHeightConstraint?.constant = height.rawValue
+        underlineHeightConstraint?.constant = state.underlineHeight
 
         UIView.animate(withDuration: animationDuration) {
             self.layoutIfNeeded()
-            self.underline.backgroundColor = color
+            self.underline.backgroundColor = state.underlineColor
+            self.textFieldBackgroundView.backgroundColor = state.textFieldBackgroundColor
+            self.typeLabel.textColor = state.accessoryLabelTextColor
+            self.helpTextLabel.textColor = state.accessoryLabelTextColor
         }
     }
 }
@@ -298,16 +305,16 @@ extension TextField: UITextFieldDelegate {
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.textFieldDidBeginEditing(self)
-        animateUnderline(to: .active, and: .secondaryBlue)
+        state = .focus
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.textFieldDidEndEditing(self)
 
         if let text = textField.text, !isValidEmail(text), !text.isEmpty, inputType == .email {
-            animateUnderline(to: .inactive, and: .cherry)
+            state = .error
         } else {
-            animateUnderline(to: .inactive, and: .stone)
+            state = .normal
         }
     }
 
