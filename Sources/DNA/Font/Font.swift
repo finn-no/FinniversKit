@@ -13,9 +13,10 @@ enum FontType: String {
 
 public extension UIFont {
     /// FINNTypeWebStrippet-Medium with a size of 36 scaled for UIFontTextStyle.title1
-    /// Usage:
-    /// It should only be used one T1 and it should be the first text element that catches the users attention. It shall give the user an overview of which page he or she is located.
-    /// This always has the weight Medium.
+    /// ## Usage:
+    /// - It should only be used one T1 and it should be the first text element that catches the users attention.
+    /// - It shall give the user an overview of which page he or she is located.
+    /// - This always has the weight Medium.
     public static var title1: UIFont {
         registerCustomFonts()
 
@@ -24,9 +25,11 @@ public extension UIFont {
     }
 
     /// FINNTypeWebStrippet-Light with a size of 28 scaled for UIFontTextStyle.title2
-    /// Usage:
-    /// A page can contain multiple T2 to divide content into several sections. There should be a lot of space between sections to create a clear distinction on the content.
-    /// This always has the weight Light.
+    ///
+    /// ## Usage:
+    /// - A page can contain multiple T2 to divide content into several sections.
+    /// - There should be a lot of space between sections to create a clear distinction on the content.
+    /// - This always has the weight Light.
     public static var title2: UIFont {
         registerCustomFonts()
 
@@ -35,8 +38,10 @@ public extension UIFont {
     }
 
     /// FINNTypeWebStrippet-Light with a size of 22.5 scaled for UIFontTextStyle.title3
-    /// Usage:
-    /// If a T2 have more sublevels, you can use T3. This always has the weight Light.
+    ///
+    /// ## Usage:
+    /// - If a T2 have more sublevels, you can use T3.
+    /// - This always has the weight Light.
     public static var title3: UIFont {
         registerCustomFonts()
 
@@ -45,8 +50,9 @@ public extension UIFont {
     }
 
     /// FINNTypeWebStrippet-Medium with a size of 18 scaled for UIFontTextStyle.headline
-    /// Usage:
-    /// This have the same size as the body text, but is always bolded (Medium) to differenciate them.
+    ///
+    /// ## Usage:
+    /// - This have the same size as the body text, but is always bolded (Medium) to differenciate them.
     public static var title4: UIFont {
         registerCustomFonts()
 
@@ -55,8 +61,9 @@ public extension UIFont {
     }
 
     /// FINNTypeWebStrippet-Medium with a size of 14 scaled for UIFontTextStyle.callout
-    /// Usage:
-    /// Used for small, bold headlines.
+    ///
+    /// ## Usage:
+    /// - Used for small, bold headlines.
     public static var title5: UIFont {
         registerCustomFonts()
 
@@ -65,8 +72,9 @@ public extension UIFont {
     }
 
     /// FINNTypeWebStrippet-Light with a size of 18 scaled for UIFontTextStyle.body
-    /// Usage:
-    /// Regular text below titles is called body text and is weighted Medium.
+    ///
+    /// ## Usage:
+    /// - Regular text below titles is called body text and is weighted Medium.
     public static var body: UIFont {
         registerCustomFonts()
 
@@ -75,9 +83,12 @@ public extension UIFont {
     }
 
     /// FINNTypeWebStrippet-Light with a size of 14 scaled for UIFontTextStyle.footnote
-    /// Usage:
-    /// Less important information can be shown as detail text. This is slightly smaller than body text. Weighted Light.
-    /// The color Stone is prefered in most cases with white background. For colored background such as ribbons, the color should be Licorice.
+    ///
+    /// ## Usage:
+    /// - Less important information can be shown as detail text.
+    /// - This is slightly smaller than body text. Weighted Light.
+    /// - The color Stone is prefered in most cases with white background.
+    /// - For colored background such as ribbons, the color should be Licorice.
     public static var detail: UIFont {
         registerCustomFonts()
 
