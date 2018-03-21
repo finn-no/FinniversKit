@@ -18,7 +18,7 @@ public class TextFieldDemoView: UIView {
         let emailTextField = TextField(inputType: .email)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.placeholderText = "E-post"
-        emailTextField.helpText = "Ikke en gyldig epost-adresse"
+        emailTextField.helpText = "Ikke en gyldig e-postadresse"
 
         let passwordTextField = TextField(inputType: .password)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
