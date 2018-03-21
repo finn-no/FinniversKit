@@ -18,15 +18,20 @@ public class TextFieldDemoView: UIView {
         let emailTextField = TextField(inputType: .email)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.placeholderText = "E-post"
+        emailTextField.helpText = "Ikke en gyldig epost-adresse"
 
         let passwordTextField = TextField(inputType: .password)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholderText = "Passord"
-        emailTextField.helpText = "Bruk store og små bokstaver"
 
         let normalTextField = TextField(inputType: .normal)
         normalTextField.translatesAutoresizingMaskIntoConstraints = false
         normalTextField.placeholderText = "Normal"
+
+        let normalWithHelpTextTextField = TextField(inputType: .normal)
+        normalWithHelpTextTextField.translatesAutoresizingMaskIntoConstraints = false
+        normalWithHelpTextTextField.placeholderText = "Hjelpetekst"
+        normalWithHelpTextTextField.helpText = "Her er en hjelpetekst"
 
         let multilineTextField = TextField(inputType: .multiline)
         multilineTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +41,7 @@ public class TextFieldDemoView: UIView {
         addSubview(passwordTextField)
         addSubview(normalTextField)
         addSubview(multilineTextField)
+        addSubview(normalWithHelpTextTextField)
 
         NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
@@ -50,7 +56,11 @@ public class TextFieldDemoView: UIView {
             normalTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             normalTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            multilineTextField.topAnchor.constraint(equalTo: normalTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            normalWithHelpTextTextField.topAnchor.constraint(equalTo: normalTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            normalWithHelpTextTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            normalWithHelpTextTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            multilineTextField.topAnchor.constraint(equalTo: normalWithHelpTextTextField.bottomAnchor, constant: .mediumLargeSpacing),
             multilineTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             multilineTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
