@@ -48,10 +48,13 @@ public class TextField: UIView {
     private let eyeImage = UIImage(frameworkImageNamed: "view")!.withRenderingMode(.alwaysTemplate)
     private let clearTextIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
     private let multilineDisclosureIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
+    private let errorImage = UIImage(frameworkImageNamed: "error")!
     private let rightViewSize = CGSize(width: 40, height: 40)
     private let animationDuration: Double = 0.3
+    private let errorIconWidth: CGFloat = 18
 
     private var underlineHeightConstraint: NSLayoutConstraint?
+    private var helpTextLabelLeadingConstraint: NSLayoutConstraint?
 
     private var state: State = .normal {
         didSet {
@@ -107,6 +110,12 @@ public class TextField: UIView {
         let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+
+    private lazy var errorIconImageView: UIImageView = {
+        let imageView = UIImageView(image: errorImage)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
 
     // MARK: - External properties
@@ -203,11 +212,15 @@ public class TextField: UIView {
             helpTextLabel.alpha = 0.0
         }
 
+        // Error image should not show until we are in an error state
+        errorIconImageView.alpha = 0.0
+
         addSubview(typeLabel)
         addSubview(textFieldBackgroundView)
         addSubview(textField)
         addSubview(underline)
         addSubview(helpTextLabel)
+        addSubview(errorIconImageView)
 
         NSLayoutConstraint.activate([
             typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -226,11 +239,16 @@ public class TextField: UIView {
             underline.trailingAnchor.constraint(equalTo: trailingAnchor),
             underline.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor),
 
+            errorIconImageView.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .mediumSpacing),
+            errorIconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+
             helpTextLabel.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .mediumSpacing),
-            helpTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             helpTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             helpTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+
+        helpTextLabelLeadingConstraint = helpTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
+        helpTextLabelLeadingConstraint?.isActive = true
 
         underlineHeightConstraint = underline.heightAnchor.constraint(equalToConstant: State.normal.underlineHeight)
         underlineHeightConstraint?.isActive = true
@@ -284,9 +302,19 @@ public class TextField: UIView {
         return !password.isEmpty
     }
 
+    fileprivate func shouldDisplayErrorHelpText() -> Bool {
+        return inputType == .email && state == .error
+    }
+
     private func transition(to state: State) {
         layoutIfNeeded()
         underlineHeightConstraint?.constant = state.underlineHeight
+
+        if shouldDisplayErrorHelpText() {
+            helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .mediumSpacing
+        } else {
+            helpTextLabelLeadingConstraint?.constant = 0.0
+        }
 
         UIView.animate(withDuration: animationDuration) {
             self.layoutIfNeeded()
@@ -295,12 +323,12 @@ public class TextField: UIView {
             self.typeLabel.textColor = state.accessoryLabelTextColor
             self.helpTextLabel.textColor = state.accessoryLabelTextColor
 
-            if self.inputType == .email {
-                if state == .error {
-                    self.helpTextLabel.alpha = 1.0
-                } else {
-                    self.helpTextLabel.alpha = 0.0
-                }
+            if self.shouldDisplayErrorHelpText() {
+                self.helpTextLabel.alpha = 1.0
+                self.errorIconImageView.alpha = 1.0
+            } else {
+                self.helpTextLabel.alpha = 0.0
+                self.errorIconImageView.alpha = 0.0
             }
         }
     }
