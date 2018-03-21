@@ -303,10 +303,6 @@ public class TextField: UIView {
     }
 
     fileprivate func shouldDisplayErrorHelpText() -> Bool {
-        guard inputType == .email else {
-            return false
-        }
-
         guard state == .error else {
             return false
         }
@@ -322,10 +318,12 @@ public class TextField: UIView {
         layoutIfNeeded()
         underlineHeightConstraint?.constant = state.underlineHeight
 
-        if shouldDisplayErrorHelpText() {
-            helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .smallSpacing
-        } else {
-            helpTextLabelLeadingConstraint?.constant = 0.0
+        if inputType == .email {
+            if shouldDisplayErrorHelpText() {
+                helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .smallSpacing
+            } else {
+                helpTextLabelLeadingConstraint?.constant = 0.0
+            }
         }
 
         UIView.animate(withDuration: animationDuration) {
@@ -335,12 +333,14 @@ public class TextField: UIView {
             self.typeLabel.textColor = state.accessoryLabelTextColor
             self.helpTextLabel.textColor = state.accessoryLabelTextColor
 
-            if self.shouldDisplayErrorHelpText() {
-                self.helpTextLabel.alpha = 1.0
-                self.errorIconImageView.alpha = 1.0
-            } else {
-                self.helpTextLabel.alpha = 0.0
-                self.errorIconImageView.alpha = 0.0
+            if self.inputType == .email {
+                if self.shouldDisplayErrorHelpText() {
+                    self.helpTextLabel.alpha = 1.0
+                    self.errorIconImageView.alpha = 1.0
+                } else {
+                    self.helpTextLabel.alpha = 0.0
+                    self.errorIconImageView.alpha = 0.0
+                }
             }
         }
     }
