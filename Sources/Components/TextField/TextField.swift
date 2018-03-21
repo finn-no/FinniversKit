@@ -226,7 +226,7 @@ public class TextField: UIView {
             typeLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             typeLabel.topAnchor.constraint(equalTo: topAnchor),
 
-            textFieldBackgroundView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .mediumSpacing),
+            textFieldBackgroundView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: .smallSpacing),
             textFieldBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
@@ -239,10 +239,10 @@ public class TextField: UIView {
             underline.trailingAnchor.constraint(equalTo: trailingAnchor),
             underline.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor),
 
-            errorIconImageView.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .mediumSpacing),
+            errorIconImageView.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .smallSpacing),
             errorIconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            helpTextLabel.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .mediumSpacing),
+            helpTextLabel.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .smallSpacing),
             helpTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             helpTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
@@ -311,7 +311,7 @@ public class TextField: UIView {
         underlineHeightConstraint?.constant = state.underlineHeight
 
         if shouldDisplayErrorHelpText() {
-            helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .mediumSpacing
+            helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .smallSpacing
         } else {
             helpTextLabelLeadingConstraint?.constant = 0.0
         }
