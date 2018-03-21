@@ -184,15 +184,23 @@ public class TextField: UIView {
         textField.keyboardType = inputType.keyBoardStyle
         textField.returnKeyType = inputType.returnKeyType
 
-        if inputType.isSecureMode {
+        switch inputType {
+        case .password:
             textField.rightViewMode = .always
             textField.rightView = showPasswordButton
-        } else if case .multiline = inputType {
+
+        case .multiline:
             textField.rightViewMode = .always
             textField.rightView = multilineDisclosureButton
-        } else {
+
+        default:
             textField.rightViewMode = .whileEditing
             textField.rightView = clearButton
+        }
+
+        if case .email = inputType {
+            // Help text shows on error only.
+            helpTextLabel.alpha = 0.0
         }
 
         addSubview(typeLabel)
@@ -286,6 +294,14 @@ public class TextField: UIView {
             self.textFieldBackgroundView.backgroundColor = state.textFieldBackgroundColor
             self.typeLabel.textColor = state.accessoryLabelTextColor
             self.helpTextLabel.textColor = state.accessoryLabelTextColor
+
+            if self.inputType == .email {
+                if state == .error {
+                    self.helpTextLabel.alpha = 1.0
+                } else {
+                    self.helpTextLabel.alpha = 0.0
+                }
+            }
         }
     }
 }
