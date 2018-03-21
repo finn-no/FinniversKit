@@ -303,7 +303,19 @@ public class TextField: UIView {
     }
 
     fileprivate func shouldDisplayErrorHelpText() -> Bool {
-        return inputType == .email && state == .error
+        guard inputType == .email else {
+            return false
+        }
+
+        guard state == .error else {
+            return false
+        }
+
+        guard let helpText = helpText, helpText.count > 0 else {
+            return false
+        }
+
+        return true
     }
 
     private func transition(to state: State) {
