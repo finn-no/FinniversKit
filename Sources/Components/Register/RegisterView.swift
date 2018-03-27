@@ -173,7 +173,6 @@ public class RegisterView: UIView {
 
     private func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
     }
 
     private func unRegisterKeyboardNotifications() {
@@ -193,18 +192,28 @@ public class RegisterView: UIView {
                 let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
 
                 let animationDuration = ((notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]) as? TimeInterval) ?? 0.25
-                UIView.animate(withDuration: animationDuration) { [weak scrollView] in
-                    scrollView?.contentInset = contentInset
-                    scrollView?.contentOffset = CGPoint(x: 0, y: contentInset.bottom)
+                UIView.animate(withDuration: animationDuration) { [weak self] in
+                    self?.adjustKeyboardUp(contentInset: contentInset)
                 }
             }
         } else {
             let animationDuration = ((notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]) as? TimeInterval) ?? 0.25
-            UIView.animate(withDuration: animationDuration) { [weak scrollView] in
-                scrollView?.contentInset = .zero
-                scrollView?.contentOffset = CGPoint(x: 0, y: 0)
+            UIView.animate(withDuration: animationDuration) { [weak self] in
+                self?.adjustKeyboardDown()
             }
         }
+    }
+
+    fileprivate func adjustKeyboardUp(contentInset: UIEdgeInsets) {
+        scrollView.contentInset = contentInset
+        scrollView.contentOffset = CGPoint(x: 0, y: contentInset.bottom)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    fileprivate func adjustKeyboardDown() {
+        scrollView.contentInset = .zero
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
     }
 
     private func setup() {
