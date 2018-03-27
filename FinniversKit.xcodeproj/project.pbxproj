@@ -104,6 +104,7 @@
 		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */; };
 		4535FD37202C4560002335E2 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535FD36202C4560002335E2 /* ConsentView.swift */; };
 		4535FD39202C456E002335E2 /* ConsentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535FD38202C456E002335E2 /* ConsentViewModel.swift */; };
 		4535FD3D202C504A002335E2 /* ConsentViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535FD3B202C461D002335E2 /* ConsentViewDemoView.swift */; };
@@ -113,7 +114,6 @@
 		45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56C20494C7A000E788F /* SwitchViewModel.swift */; };
 		45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */; };
 		45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C57220495039000E788F /* SwitchViewDefaultData.swift */; };
-		45FB44492036F21500C121EB /* NSAttributedString+FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB44482036F21500C121EB /* NSAttributedString+FinniversKit.swift */; };
 		559FD9BA205122A200A101B0 /* BroadcastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9B9205122A200A101B0 /* BroadcastViewModel.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastViewModelTests.swift */; };
 		55C5B274203D8E20007D7277 /* BroadcastContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */; };
@@ -129,6 +129,7 @@
 		AF91BB97202C74D0003E6366 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB96202C74D0003E6366 /* BroadcastView.swift */; };
 		AF91BB9F202C868E003E6366 /* BroadcastDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB98202C7F4D003E6366 /* BroadcastDemoView.swift */; };
 		AF91BBA1202C8B72003E6366 /* BroadcastView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */; };
+		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +241,7 @@
 		44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		4535FD36202C4560002335E2 /* ConsentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsentView.swift; path = Sources/Components/Consent/ConsentView.swift; sourceTree = SOURCE_ROOT; };
 		4535FD38202C456E002335E2 /* ConsentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsentViewModel.swift; path = Sources/Components/Consent/ConsentViewModel.swift; sourceTree = SOURCE_ROOT; };
 		4535FD3B202C461D002335E2 /* ConsentViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewDemoView.swift; sourceTree = "<group>"; };
@@ -249,7 +251,6 @@
 		45D7C56C20494C7A000E788F /* SwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewModel.swift; sourceTree = "<group>"; };
 		45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDemoView.swift; sourceTree = "<group>"; };
 		45D7C57220495039000E788F /* SwitchViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDefaultData.swift; sourceTree = "<group>"; };
-		45FB44482036F21500C121EB /* NSAttributedString+FinniversKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+FinniversKit.swift"; sourceTree = "<group>"; };
 		559FD9B9205122A200A101B0 /* BroadcastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewModel.swift; sourceTree = "<group>"; };
 		559FD9BB205122C500A101B0 /* BroadcastViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewModelTests.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainerView.swift; sourceTree = "<group>"; };
@@ -264,6 +265,7 @@
 		AF91BB98202C7F4D003E6366 /* BroadcastDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastDemoView.swift; sourceTree = "<group>"; };
 		AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BroadcastView+Style.swift"; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -655,6 +657,7 @@
 			children = (
 				4447F6A41FDB2B110033DBC1 /* Demo */,
 				4447F6A61FDB2B110033DBC1 /* TextField+InputType.swift */,
+				CBD2F08C20615990002AA385 /* TextField+State.swift */,
 				4447F6A71FDB2B110033DBC1 /* TextField.swift */,
 			);
 			path = TextField;
@@ -736,8 +739,8 @@
 		44898D591FE5B9C200F6017B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				44F8831020551D59003E3171 /* Foundation */,
 				44898D5A1FE5B9C200F6017B /* UIKit */,
-				45FB44482036F21500C121EB /* NSAttributedString+FinniversKit.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -753,6 +756,14 @@
 				44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		44F8831020551D59003E3171 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		4535FD31202C4282002335E2 /* Consent */ = {
@@ -1133,7 +1144,9 @@
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				AA7313D5202078D4008A7251 /* RegisterViewModel.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
+				44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */,
 				4447F6E61FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift in Sources */,
+				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
@@ -1161,7 +1174,6 @@
 				559FD9BA205122A200A101B0 /* BroadcastViewModel.swift in Sources */,
 				4447F6E51FDB2B110033DBC1 /* PreviewGridLayout.swift in Sources */,
 				4447F6D91FDB2B110033DBC1 /* MarketGridModel.swift in Sources */,
-				45FB44492036F21500C121EB /* NSAttributedString+FinniversKit.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
 				AA7313D720207900008A7251 /* RegisterViewDefaultData.swift in Sources */,
 			);

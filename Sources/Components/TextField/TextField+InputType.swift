@@ -6,8 +6,10 @@ import Foundation
 
 extension TextField {
     public enum InputType {
+        case normal
         case email
         case password
+        case multiline
 
         var isSecureMode: Bool {
             switch self {
@@ -26,7 +28,7 @@ extension TextField {
         var returnKeyType: UIReturnKeyType {
             switch self {
             case .email: return .next
-            case .password: return .done
+            case .normal, .password, .multiline: return .done
             }
         }
     }
