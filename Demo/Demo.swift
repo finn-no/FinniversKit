@@ -64,7 +64,6 @@ enum Sections: String {
         }
     }
 
-    private static let lastSelectedIndexPathKey = "lastSelectedIndexPathKey"
     private static let lastSelectedRowKey = "lastSelectedRowKey"
     private static let lastSelectedSectionKey = "lastSelectedSectionKey"
 
