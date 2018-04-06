@@ -50,7 +50,7 @@ public protocol BroadcastContainerViewDataSource: class {
     ///   - broadcastContainerView: the BroadcastContainerView
     ///   - index: the index for the broadcast
     /// - Returns: The broadcast to display at the index
-    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, broadcastForIndex index: Int) -> Broadcast
+    func broadcastContainerView(_ broadcastContainerView: BroadcastContainerView, broadcastMessageForIndex index: Int) -> BroadcastMessage
 }
 
 /// A view that is used to display multiple BroadcastViews
@@ -104,9 +104,9 @@ public extension BroadcastContainerView {
         removeContentViewSubviews()
 
         let rangeOfBroadcastsToDisplay = 0 ..< dataSource.numberOfBroadcasts(in: self)
-        let broadcastToDisplay = rangeOfBroadcastsToDisplay.map { dataSource.broadcastContainerView(self, broadcastForIndex: $0) }
+        let broadcastMessagesToDisplay = rangeOfBroadcastsToDisplay.map { dataSource.broadcastContainerView(self, broadcastMessageForIndex: $0) }
 
-        layoutBroadcastViews(from: broadcastToDisplay)
+        layoutBroadcastViews(from: broadcastMessagesToDisplay)
 
         if let delegate = delegate {
             delegate.broadcastContainerView(self, willDisplayBroadcastsWithContainerSize: intrinsicContentSize, commitToDisplaying: {
@@ -169,14 +169,14 @@ private extension BroadcastContainerView {
         contentView.setContentHuggingPriority(.defaultHigh, for: .vertical)
     }
 
-    func layoutBroadcastViews(from broadcasts: [Broadcast]) {
-        let broadcastViews = broadcasts.map { broadcastView(from: $0) }
+    func layoutBroadcastViews(from broadcastMessages: [BroadcastMessage]) {
+        let broadcastViews = broadcastMessages.map { broadcastView(from: $0) }
         broadcastViews.forEach { add($0, to: contentView) }
     }
 
-    func broadcastView(from broadcast: Broadcast) -> BroadcastView {
+    func broadcastView(from broadcastMessage: BroadcastMessage) -> BroadcastView {
         let broadcastView = BroadcastView(frame: .zero)
-        let viewModel = BroadcastViewModel(with: broadcast.message)
+        let viewModel = BroadcastViewModel(with: broadcastMessage.message)
         broadcastView.presentMessage(using: viewModel, animated: false)
 
         return broadcastView
