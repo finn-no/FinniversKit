@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct BroadcastViewModel {
+public struct BroadcastModel {
     public let message: String
 
     public init(with message: String) {
