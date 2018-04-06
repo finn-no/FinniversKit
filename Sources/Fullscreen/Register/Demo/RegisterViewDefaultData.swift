@@ -2,6 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import FinniversKit
 import Foundation
 
 public struct RegisterViewDefaultData: RegisterViewModel {
