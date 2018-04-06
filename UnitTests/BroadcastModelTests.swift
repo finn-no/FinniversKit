@@ -5,8 +5,8 @@
 @testable import FinniversKit
 import XCTest
 
-class BroadcastViewModelTests: XCTestCase {
-    func testBroadcastViewModelCanReplaceHTMLLinkWithAttributedStringWithLinkAttrbutes() {
+class BroadcastModelTests: XCTestCase {
+    func testBroadcastModelCanReplaceHTMLLinkWithAttributedStringWithLinkAttrbutes() {
         // Given
         let linkURL = URL(string: "https://www.finn.no/")!
         let linkText = "Besøk oss på vår nettside"
@@ -14,7 +14,7 @@ class BroadcastViewModelTests: XCTestCase {
         let testMessage = "Dette er en melding som inneholder en link \(link)"
 
         // When
-        let viewModel = BroadcastViewModel(with: testMessage)
+        let viewModel = BroadcastModel(with: testMessage)
         let expectedResult = "Dette er en melding som inneholder en link \(linkText)"
         let result = viewModel.messageWithHTMLLinksReplacedByAttributedStrings
         let resultRange = NSMakeRange(0, result.string.count)

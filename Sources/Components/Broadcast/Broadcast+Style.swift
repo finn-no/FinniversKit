@@ -4,7 +4,7 @@
 
 import Foundation
 
-extension BroadcastView {
+extension Broadcast {
     struct Style {
         static let backgroundColor = UIColor.banana
         static let containerCornerRadius: CGFloat = 8.0

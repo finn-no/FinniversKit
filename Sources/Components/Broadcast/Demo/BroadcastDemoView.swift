@@ -6,18 +6,18 @@ import FinniversKit
 import UIKit
 
 public class BroadcastDemoView: UIView {
-    lazy var broadcastView: BroadcastView = {
-        let view = BroadcastView()
+    lazy var broadcast: Broadcast = {
+        let view = Broadcast()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
     }()
 
-    lazy var presentBroadcastViewButton: Button = {
+    lazy var presentBroadcastButton: Button = {
         let button = Button(style: .default)
 
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Present BroadcastView", for: .normal)
+        button.setTitle("Present Broadcast", for: .normal)
         button.addTarget(self, action: #selector(broadcastButtonTapped(_:)), for: .touchUpInside)
         button.tag = 0
 
@@ -40,12 +40,12 @@ public class BroadcastDemoView: UIView {
         let isButtonOn = sender.tag == 1
 
         if isButtonOn {
-            broadcastView.dismiss()
-            sender.setTitle("Present BroadcastView", for: .normal)
+            broadcast.dismiss()
+            sender.setTitle("Present Broadcast", for: .normal)
         } else {
-            let viewModel = BroadcastViewModel(with: broadcastMessage)
-            broadcastView.presentMessage(using: viewModel)
-            sender.setTitle("Dismiss BroadcastView", for: .normal)
+            let viewModel = BroadcastModel(with: broadcastMessage)
+            broadcast.presentMessage(using: viewModel)
+            sender.setTitle("Dismiss Broadcast", for: .normal)
         }
 
         sender.tag = isButtonOn ? 0 : 1
@@ -54,31 +54,31 @@ public class BroadcastDemoView: UIView {
 
 private extension BroadcastDemoView {
     func setup() {
-        addSubview(broadcastView)
-        addSubview(presentBroadcastViewButton)
+        addSubview(broadcast)
+        addSubview(presentBroadcastButton)
 
         NSLayoutConstraint.activate([
-            broadcastView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            broadcastView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            broadcastView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            presentBroadcastViewButton.topAnchor.constraint(equalTo: broadcastView.bottomAnchor, constant: .mediumLargeSpacing),
-            presentBroadcastViewButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            presentBroadcastViewButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            broadcast.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            broadcast.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            broadcast.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            presentBroadcastButton.topAnchor.constraint(equalTo: broadcast.bottomAnchor, constant: .mediumLargeSpacing),
+            presentBroadcastButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            presentBroadcastButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }
 
-extension BroadcastDemoView: BroadcastViewDelegate {
-    public func broadcastView(_ broadcastView: BroadcastView, didTapURL url: URL) {
+extension BroadcastDemoView: BroadcastDelegate {
+    public func broadcast(_ broadcast: Broadcast, didTapURL url: URL) {
         let ac = UIAlertController(title: "Link tapped", message: "URL: \(url)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         ac.addAction(okAction)
         UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(ac, animated: true, completion: nil)
     }
 
-    public func broadcastViewDismissButtonTapped(_ broadcastView: BroadcastView) {
-        broadcastView.dismiss()
-        presentBroadcastViewButton.setTitle("Present BroadcastView", for: .normal)
-        presentBroadcastViewButton.tag = 0
+    public func broadcastDismissButtonTapped(_ broadcast: Broadcast) {
+        broadcast.dismiss()
+        presentBroadcastButton.setTitle("Present Broadcast", for: .normal)
+        presentBroadcastButton.tag = 0
     }
 }

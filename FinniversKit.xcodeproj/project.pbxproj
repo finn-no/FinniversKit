@@ -115,15 +115,15 @@
 		45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56C20494C7A000E788F /* SwitchViewModel.swift */; };
 		45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */; };
 		45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C57220495039000E788F /* SwitchViewDefaultData.swift */; };
-		559FD9BA205122A200A101B0 /* BroadcastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9B9205122A200A101B0 /* BroadcastViewModel.swift */; };
-		559FD9BD2051684F00A101B0 /* BroadcastViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastViewModelTests.swift */; };
-		55C5B274203D8E20007D7277 /* BroadcastContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */; };
-		55C5B278203DB56A007D7277 /* BroadcastViewMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */; };
+		559FD9BA205122A200A101B0 /* BroadcastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9B9205122A200A101B0 /* BroadcastModel.swift */; };
+		559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */; };
+		55C5B274203D8E20007D7277 /* BroadcastContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* BroadcastContainer.swift */; };
+		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
 		55C5B27E203EB9DA007D7277 /* BroadcastContainerDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B27B203DC458007D7277 /* BroadcastContainerDemoView.swift */; };
 		AAC1AFB42021058000C71B7C /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1AFB32021058000C71B7C /* Demo.swift */; };
-		AF91BB97202C74D0003E6366 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB96202C74D0003E6366 /* BroadcastView.swift */; };
+		AF91BB97202C74D0003E6366 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB96202C74D0003E6366 /* Broadcast.swift */; };
 		AF91BB9F202C868E003E6366 /* BroadcastDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB98202C7F4D003E6366 /* BroadcastDemoView.swift */; };
-		AF91BBA1202C8B72003E6366 /* BroadcastView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */; };
+		AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 /* End PBXBuildFile section */
 
@@ -250,15 +250,15 @@
 		45D7C56C20494C7A000E788F /* SwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewModel.swift; sourceTree = "<group>"; };
 		45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDemoView.swift; sourceTree = "<group>"; };
 		45D7C57220495039000E788F /* SwitchViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDefaultData.swift; sourceTree = "<group>"; };
-		559FD9B9205122A200A101B0 /* BroadcastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewModel.swift; sourceTree = "<group>"; };
-		559FD9BB205122C500A101B0 /* BroadcastViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewModelTests.swift; sourceTree = "<group>"; };
-		55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainerView.swift; sourceTree = "<group>"; };
-		55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastViewMessage.swift; sourceTree = "<group>"; };
+		559FD9B9205122A200A101B0 /* BroadcastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastModel.swift; sourceTree = "<group>"; };
+		559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastModelTests.swift; sourceTree = "<group>"; };
+		55C5B273203D8E20007D7277 /* BroadcastContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainer.swift; sourceTree = "<group>"; };
+		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
 		55C5B27B203DC458007D7277 /* BroadcastContainerDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainerDemoView.swift; sourceTree = "<group>"; };
 		AAC1AFB32021058000C71B7C /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
-		AF91BB96202C74D0003E6366 /* BroadcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastView.swift; sourceTree = "<group>"; };
+		AF91BB96202C74D0003E6366 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		AF91BB98202C7F4D003E6366 /* BroadcastDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastDemoView.swift; sourceTree = "<group>"; };
-		AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BroadcastView+Style.swift"; sourceTree = "<group>"; };
+		AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Broadcast+Style.swift"; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -318,7 +318,7 @@
 			children = (
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
 				44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */,
-				559FD9BB205122C500A101B0 /* BroadcastViewModelTests.swift */,
+				559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -434,8 +434,8 @@
 			isa = PBXGroup;
 			children = (
 				45D7C569204949B7000E788F /* Switch */,
-				AF91BB95202C7487003E6366 /* BroadcastView */,
-				55C5B27A203DC344007D7277 /* BroadcastContainerView */,
+				AF91BB95202C7487003E6366 /* Broadcast */,
+				55C5B27A203DC344007D7277 /* BroadcastContainer */,
 				4447F6651FDB2B110033DBC1 /* Button */,
 				4447F6741FDB2B110033DBC1 /* Label */,
 				4447F6821FDB2B110033DBC1 /* MarketGrid */,
@@ -833,14 +833,14 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		55C5B27A203DC344007D7277 /* BroadcastContainerView */ = {
+		55C5B27A203DC344007D7277 /* BroadcastContainer */ = {
 			isa = PBXGroup;
 			children = (
 				55C5B27D203EB7F0007D7277 /* Demo */,
-				55C5B273203D8E20007D7277 /* BroadcastContainerView.swift */,
-				55C5B277203DB56A007D7277 /* BroadcastViewMessage.swift */,
+				55C5B273203D8E20007D7277 /* BroadcastContainer.swift */,
+				55C5B277203DB56A007D7277 /* BroadcastMessage.swift */,
 			);
-			path = BroadcastContainerView;
+			path = BroadcastContainer;
 			sourceTree = "<group>";
 		};
 		55C5B27D203EB7F0007D7277 /* Demo */ = {
@@ -851,15 +851,15 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		AF91BB95202C7487003E6366 /* BroadcastView */ = {
+		AF91BB95202C7487003E6366 /* Broadcast */ = {
 			isa = PBXGroup;
 			children = (
 				AF91BB9A202C7F52003E6366 /* Demo */,
-				AF91BB96202C74D0003E6366 /* BroadcastView.swift */,
-				559FD9B9205122A200A101B0 /* BroadcastViewModel.swift */,
-				AF91BBA0202C8B72003E6366 /* BroadcastView+Style.swift */,
+				AF91BB96202C74D0003E6366 /* Broadcast.swift */,
+				559FD9B9205122A200A101B0 /* BroadcastModel.swift */,
+				AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */,
 			);
-			path = BroadcastView;
+			path = Broadcast;
 			sourceTree = "<group>";
 		};
 		AF91BB9A202C7F52003E6366 /* Demo */ = {
@@ -1112,7 +1112,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				559FD9BD2051684F00A101B0 /* BroadcastViewModelTests.swift in Sources */,
+				559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */,
 				44898D541FE5B40D00F6017B /* Layout+HelpersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1124,8 +1124,8 @@
 				44D9125D2077AC8A00486848 /* RegisterView.swift in Sources */,
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
-				AF91BBA1202C8B72003E6366 /* BroadcastView+Style.swift in Sources */,
-				55C5B278203DB56A007D7277 /* BroadcastViewMessage.swift in Sources */,
+				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
+				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
@@ -1147,13 +1147,13 @@
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,
-				55C5B274203D8E20007D7277 /* BroadcastContainerView.swift in Sources */,
+				55C5B274203D8E20007D7277 /* BroadcastContainer.swift in Sources */,
 				44D912612077AC8A00486848 /* RoundedRectangleView.swift in Sources */,
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
-				AF91BB97202C74D0003E6366 /* BroadcastView.swift in Sources */,
+				AF91BB97202C74D0003E6366 /* Broadcast.swift in Sources */,
 				4447F6E71FDB2B110033DBC1 /* PreviewGridView.swift in Sources */,
 				4447F6E41FDB2B110033DBC1 /* PreviewGridHeaderView.swift in Sources */,
 				4447F6DB1FDB2B110033DBC1 /* MarketGridView.swift in Sources */,
@@ -1169,7 +1169,7 @@
 				44D912652077AC8A00486848 /* LoginViewModel.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
-				559FD9BA205122A200A101B0 /* BroadcastViewModel.swift in Sources */,
+				559FD9BA205122A200A101B0 /* BroadcastModel.swift in Sources */,
 				4447F6E51FDB2B110033DBC1 /* PreviewGridLayout.swift in Sources */,
 				4447F6D91FDB2B110033DBC1 /* MarketGridModel.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,

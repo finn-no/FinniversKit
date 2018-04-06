@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct Broadcast: Equatable {
+public struct BroadcastMessage: Equatable {
     public let id: Int
     public let message: String
 
@@ -13,7 +13,7 @@ public struct Broadcast: Equatable {
         self.message = message
     }
 
-    public static func == (lhs: Broadcast, rhs: Broadcast) -> Bool {
+    public static func == (lhs: BroadcastMessage, rhs: BroadcastMessage) -> Bool {
         return lhs.id == rhs.id && lhs.message == rhs.message
     }
 }
