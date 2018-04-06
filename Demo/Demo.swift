@@ -4,29 +4,98 @@
 
 import UIKit
 
-enum FinniversKitViews: String {
+enum Sections: String {
+    case dna
+    case components
+    case fullscreen
+
+    static var all: [Sections] {
+        return [
+            .dna,
+            .components,
+            .fullscreen,
+        ]
+    }
+
+    var numberOfItems: Int {
+        switch self {
+        case .dna:
+            return DnaViews.all.count
+        case .components:
+            return ComponentViews.all.count
+        case .fullscreen:
+            return FullscreenViews.all.count
+        }
+    }
+
+    static func formattedName(for section: Int) -> String {
+        let section = Sections.all[section]
+        let rawClassName = section.rawValue
+        return rawClassName.capitalizingFirstLetter
+    }
+
+    static func formattedName(for indexPath: IndexPath) -> String {
+        let section = Sections.all[indexPath.section]
+        var rawClassName: String
+        switch section {
+        case .dna:
+            rawClassName = DnaViews.all[indexPath.row].rawValue
+        case .components:
+            rawClassName = ComponentViews.all[indexPath.row].rawValue
+        case .fullscreen:
+            rawClassName = FullscreenViews.all[indexPath.row].rawValue
+        }
+
+        return rawClassName.replacingOccurrences(of: "DemoView", with: "").capitalizingFirstLetter
+    }
+
+    static func viewController(for indexPath: IndexPath) -> UIViewController {
+        let section = Sections.all[indexPath.section]
+        switch section {
+        case .dna:
+            let selectedView = DnaViews.all[indexPath.row]
+            return selectedView.viewController
+        case .components:
+            let selectedView = ComponentViews.all[indexPath.row]
+            return selectedView.viewController
+        case .fullscreen:
+            let selectedView = FullscreenViews.all[indexPath.row]
+            return selectedView.viewController
+        }
+    }
+
+    private static let lastSelectedRowKey = "lastSelectedRowKey"
+    private static let lastSelectedSectionKey = "lastSelectedSectionKey"
+
+    static var lastSelectedIndexPath: IndexPath? {
+        get {
+            guard let row = UserDefaults.standard.object(forKey: lastSelectedRowKey) as? Int else { return nil }
+            guard let section = UserDefaults.standard.object(forKey: lastSelectedSectionKey) as? Int else { return nil }
+            return IndexPath(row: row, section: section)
+        }
+        set {
+            if let row = newValue?.row {
+                UserDefaults.standard.set(row, forKey: lastSelectedRowKey)
+            } else {
+                UserDefaults.standard.removeObject(forKey: lastSelectedRowKey)
+            }
+
+            if let section = newValue?.section {
+                UserDefaults.standard.set(section, forKey: lastSelectedSectionKey)
+            } else {
+                UserDefaults.standard.removeObject(forKey: lastSelectedSectionKey)
+            }
+            UserDefaults.standard.synchronize()
+        }
+    }
+}
+
+enum DnaViews: String {
     case colorDemoView
     case fontDemoView
     case spacingDemoView
-    case registerViewDemoView
-    case broadcastDemoView
-    case broadcastContainerDemoView
-    case buttonDemoView
-    case labelDemoView
-    case loginViewDemoView
-    case marketGridViewDemoView
-    case marketView
-    case marketGridCellDemoView
-    case previewGridViewDemoView
-    case previewGridCellDemoView
-    case ribbonDemoView
-    case textFieldDemoView
-    case toastDemoView
-    case emptyViewDemoView
-    case consentViewDemoView
-    case switchViewDemoView
 
-    func viewController() -> UIViewController {
+    var viewController: UIViewController {
         switch self {
         case .colorDemoView:
             return ViewController<ColorDemoView>()
@@ -34,8 +103,30 @@ enum FinniversKitViews: String {
             return ViewController<FontDemoView>()
         case .spacingDemoView:
             return ViewController<SpacingDemoView>()
-        case .registerViewDemoView:
-            return ViewController<RegisterViewDemoView>()
+        }
+    }
+
+    static var all: [DnaViews] {
+        return [
+            .colorDemoView,
+            .fontDemoView,
+            .spacingDemoView,
+        ]
+    }
+}
+
+enum ComponentViews: String {
+    case broadcastDemoView
+    case broadcastContainerDemoView
+    case buttonDemoView
+    case labelDemoView
+    case ribbonDemoView
+    case textFieldDemoView
+    case toastDemoView
+    case switchViewDemoView
+
+    var viewController: UIViewController {
+        switch self {
         case .broadcastDemoView:
             return ViewController<BroadcastDemoView>()
         case .broadcastContainerDemoView:
@@ -44,6 +135,46 @@ enum FinniversKitViews: String {
             return ViewController<ButtonDemoView>()
         case .labelDemoView:
             return ViewController<LabelDemoView>()
+        case .ribbonDemoView:
+            return ViewController<RibbonDemoView>()
+        case .textFieldDemoView:
+            return ViewController<TextFieldDemoView>()
+        case .toastDemoView:
+            return ViewController<ToastDemoView>()
+        case .switchViewDemoView:
+            return ViewController<SwitchViewDemoView>()
+        }
+    }
+
+    static var all: [ComponentViews] {
+        return [
+            .broadcastDemoView,
+            .broadcastContainerDemoView,
+            .buttonDemoView,
+            .labelDemoView,
+            .ribbonDemoView,
+            .textFieldDemoView,
+            .toastDemoView,
+            .switchViewDemoView,
+        ]
+    }
+}
+
+enum FullscreenViews: String {
+    case registerViewDemoView
+    case consentViewDemoView
+    case emptyViewDemoView
+    case marketGridViewDemoView
+    case marketView
+    case marketGridCellDemoView
+    case previewGridViewDemoView
+    case previewGridCellDemoView
+    case loginViewDemoView
+
+    var viewController: UIViewController {
+        switch self {
+        case .registerViewDemoView:
+            return ViewController<RegisterViewDemoView>()
         case .loginViewDemoView:
             return ViewController<LoginViewDemoView>()
         case .marketGridViewDemoView:
@@ -56,59 +187,24 @@ enum FinniversKitViews: String {
             return ViewController<PreviewGridViewDemoView>()
         case .previewGridCellDemoView:
             return ViewController<PreviewGridCellDemoView>()
-        case .ribbonDemoView:
-            return ViewController<RibbonDemoView>()
-        case .textFieldDemoView:
-            return ViewController<TextFieldDemoView>()
-        case .toastDemoView:
-            return ViewController<ToastDemoView>()
         case .emptyViewDemoView:
             return ViewController<EmptyViewDemoView>()
         case .consentViewDemoView:
             return ViewController<ConsentViewDemoView>()
-        case .switchViewDemoView:
-            return ViewController<SwitchViewDemoView>()
         }
     }
 
-    static var all: [FinniversKitViews] {
+    static var all: [FullscreenViews] {
         return [
-            .colorDemoView,
-            .fontDemoView,
-            .spacingDemoView,
             .registerViewDemoView,
-            .broadcastDemoView,
-            .broadcastContainerDemoView,
-            .buttonDemoView,
-            .labelDemoView,
-            .loginViewDemoView,
+            .consentViewDemoView,
+            .emptyViewDemoView,
             .marketGridViewDemoView,
             .marketView,
             .marketGridCellDemoView,
             .previewGridViewDemoView,
             .previewGridCellDemoView,
-            .ribbonDemoView,
-            .textFieldDemoView,
-            .toastDemoView,
-            .emptyViewDemoView,
-            .consentViewDemoView,
-            .switchViewDemoView,
+            .loginViewDemoView,
         ]
-    }
-
-    private static let lastSelectedViewRawValueKey = "lastSelectedViewRawValue"
-
-    static var lastSelectedView: FinniversKitViews? {
-        get {
-            guard let lastSelectedViewRawValue = UserDefaults.standard.value(forKey: lastSelectedViewRawValueKey) as? String else {
-                return nil
-            }
-
-            return FinniversKitViews(rawValue: lastSelectedViewRawValue)
-        }
-        set {
-            UserDefaults.standard.set(newValue?.rawValue, forKey: lastSelectedViewRawValueKey)
-            UserDefaults.standard.synchronize()
-        }
     }
 }

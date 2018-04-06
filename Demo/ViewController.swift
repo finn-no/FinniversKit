@@ -31,7 +31,7 @@ class ViewController<View: UIView>: UIViewController {
     }
 
     @objc func didDoubleTap() {
-        FinniversKitViews.lastSelectedView = nil
+        Sections.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 }
