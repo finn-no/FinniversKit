@@ -112,6 +112,7 @@
 		44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */; };
 		4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */; };
 		45B2E062207C9B6000C68B92 /* InlineConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E061207C9B6000C68B92 /* InlineConsentView.swift */; };
+		45B2E068207CAA5900C68B92 /* InlineConsentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E066207CAA4C00C68B92 /* InlineConsentDemoView.swift */; };
 		45D7C56B204949E2000E788F /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56A204949E2000E788F /* SwitchView.swift */; };
 		45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56C20494C7A000E788F /* SwitchViewModel.swift */; };
 		45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */; };
@@ -248,6 +249,7 @@
 		44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewsTableViewController.swift; sourceTree = "<group>"; };
 		45B2E061207C9B6000C68B92 /* InlineConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineConsentView.swift; sourceTree = "<group>"; };
+		45B2E066207CAA4C00C68B92 /* InlineConsentDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineConsentDemoView.swift; sourceTree = "<group>"; };
 		45D7C56A204949E2000E788F /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		45D7C56C20494C7A000E788F /* SwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewModel.swift; sourceTree = "<group>"; };
 		45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDemoView.swift; sourceTree = "<group>"; };
@@ -820,10 +822,19 @@
 		45B2E060207C9B0400C68B92 /* InlineConsent */ = {
 			isa = PBXGroup;
 			children = (
+				45B2E065207CAA2A00C68B92 /* Demo */,
 				45B2E061207C9B6000C68B92 /* InlineConsentView.swift */,
 			);
 			name = InlineConsent;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		45B2E065207CAA2A00C68B92 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				45B2E066207CAA4C00C68B92 /* InlineConsentDemoView.swift */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		45D7C569204949B7000E788F /* Switch */ = {
@@ -1097,6 +1108,7 @@
 				4447F70A1FDB2B4C0033DBC1 /* MarketGridViewDemoView.swift in Sources */,
 				AF91BB9F202C868E003E6366 /* BroadcastDemoView.swift in Sources */,
 				44D912772077AD1800486848 /* LoginViewDefaultData.swift in Sources */,
+				45B2E068207CAA5900C68B92 /* InlineConsentDemoView.swift in Sources */,
 				4447F70E1FDB2B590033DBC1 /* PreviewHelpers.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
 				4447F70C1FDB2B540033DBC1 /* PreviewGridCellDemoView.swift in Sources */,
