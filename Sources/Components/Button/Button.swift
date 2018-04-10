@@ -9,6 +9,8 @@ public class Button: UIButton {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 8.0
+    private var titleHeight: CGFloat?
+    private var titleWidth: CGFloat?
 
     // MARK: - External properties
 
@@ -49,6 +51,9 @@ public class Button: UIButton {
             return
         }
 
+        titleHeight = title.height(withConstrainedWidth: bounds.width, font: style.font)
+        titleWidth = title.width(withConstrainedHeight: bounds.height, font: style.font)
+
         if style == .link {
             setAsLink(title: title)
         } else {
@@ -78,6 +83,15 @@ public class Button: UIButton {
         }
     }
 
+    public override var intrinsicContentSize: CGSize {
+        guard let titleWidth = titleWidth, let titleHeight = titleHeight else {
+            return CGSize.zero
+        }
+        let buttonSize = CGSize(width: titleWidth + style.margins.left + style.margins.right, height: titleHeight + style.margins.top + style.margins.bottom)
+
+        return buttonSize
+    }
+
     // MARK: - Private methods
 
     private func setAsLink(title: String) {
@@ -96,5 +110,21 @@ public class Button: UIButton {
         super.setAttributedTitle(attributedTitle, for: .normal)
         super.setAttributedTitle(underlinedAttributedTitle, for: .highlighted)
         super.setAttributedTitle(disabledAttributedTitle, for: .disabled)
+    }
+}
+
+fileprivate extension String {
+    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = (self as NSString).boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+
+        return ceil(boundingBox.height)
+    }
+
+    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = (self as NSString).boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+
+        return ceil(boundingBox.width)
     }
 }
