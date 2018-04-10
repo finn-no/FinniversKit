@@ -5,8 +5,8 @@
 import UIKit
 
 public protocol InlineConsentViewDelegate: NSObjectProtocol {
-    func inlineConsentView(_ consentActivateDiscoverView: InlineConsentView, didSelectActivateButton button: Button)
-    func inlineConsentView(_ consentActivateDiscoverView: InlineConsentView, didSelectInfoButton button: Button)
+    func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectYesButton button: Button)
+    func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectInfoButton button: Button)
 }
 
 public class InlineConsentView: UIView {
@@ -90,7 +90,7 @@ public class InlineConsentView: UIView {
     // MARK: - Actions
 
     @objc private func yesButtonTapped(_ sender: Button) {
-        delegate?.inlineConsentView(self, didSelectActivateButton: sender)
+        delegate?.inlineConsentView(self, didSelectYesButton: sender)
     }
 
     @objc private func infoButtonTapped(_ sender: Button) {
