@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol InlineConsentViewDelegate: NSObjectProtocol {
+public protocol InlineConsentViewDelegate: AnyObject {
     func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectYesButton button: Button)
     func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectInfoButton button: Button)
 }
