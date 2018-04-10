@@ -108,11 +108,9 @@ public class InlineConsentView: UIView {
         let screenSize = UIScreen.main.bounds
 
         let titleHeight = descriptionText.height(withConstrainedWidth: screenSize.width - .mediumLargeSpacing * 2, font: descriptionTitleLabel.font) // .meiumLargeSpacing * 2, is margins in MarketViewController
-        let activateButtonSize = CGSize(width: 130, height: 38)
-        let infoButtonSize = CGSize(width: 142, height: 30)
-        let widestButtonWidth = max(activateButtonSize.width, infoButtonSize.width)
+        let widestButtonWidth = max(yesButton.intrinsicContentSize.width, infoButton.intrinsicContentSize.width)
 
-        return CGSize(width: max(screenSize.width, widestButtonWidth), height: intermediateSpacing + titleHeight + activateButtonSize.height + infoButtonSize.height)
+        return CGSize(width: max(screenSize.width, widestButtonWidth), height: intermediateSpacing + titleHeight + yesButton.intrinsicContentSize.height + infoButton.intrinsicContentSize.height)
     }
 }
 
