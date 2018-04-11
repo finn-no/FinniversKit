@@ -9,6 +9,8 @@ public class Button: UIButton {
     // MARK: - Internal properties
 
     private let cornerRadius: CGFloat = 8.0
+    private var titleHeight: CGFloat?
+    private var titleWidth: CGFloat?
 
     // MARK: - External properties
 
@@ -49,6 +51,9 @@ public class Button: UIButton {
             return
         }
 
+        titleHeight = title.height(withConstrainedWidth: bounds.width, font: style.font)
+        titleWidth = title.width(withConstrainedHeight: bounds.height, font: style.font)
+
         if style == .link {
             setAsLink(title: title)
         } else {
@@ -76,6 +81,15 @@ public class Button: UIButton {
             backgroundColor = isEnabled ? style.bodyColor : style.disabledBodyColor
             layer.borderColor = isEnabled ? style.borderColor?.cgColor : style.disabledBorderColor?.cgColor
         }
+    }
+
+    public override var intrinsicContentSize: CGSize {
+        guard let titleWidth = titleWidth, let titleHeight = titleHeight else {
+            return CGSize.zero
+        }
+        let buttonSize = CGSize(width: titleWidth + style.margins.left + style.margins.right, height: titleHeight + style.margins.top + style.margins.bottom)
+
+        return buttonSize
     }
 
     // MARK: - Private methods
