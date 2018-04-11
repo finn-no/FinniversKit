@@ -111,9 +111,9 @@
 		44D912782077AD1800486848 /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912762077AD1800486848 /* LoginViewDemoView.swift */; };
 		44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */; };
 		4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */; };
-		45B2E062207C9B6000C68B92 /* InlineConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E061207C9B6000C68B92 /* InlineConsentView.swift */; };
-		45B2E068207CAA5900C68B92 /* InlineConsentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E066207CAA4C00C68B92 /* InlineConsentDemoView.swift */; };
 		45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E069207CF5C100C68B92 /* StringExtensions.swift */; };
+		45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E06E207E181C00C68B92 /* InlineConsentView.swift */; };
+		45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E073207E184D00C68B92 /* InlineConsentDemoView.swift */; };
 		45D7C56B204949E2000E788F /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56A204949E2000E788F /* SwitchView.swift */; };
 		45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56C20494C7A000E788F /* SwitchViewModel.swift */; };
 		45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */; };
@@ -249,9 +249,9 @@
 		44D912762077AD1800486848 /* LoginViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDemoView.swift; sourceTree = "<group>"; };
 		44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewsTableViewController.swift; sourceTree = "<group>"; };
-		45B2E061207C9B6000C68B92 /* InlineConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineConsentView.swift; sourceTree = "<group>"; };
-		45B2E066207CAA4C00C68B92 /* InlineConsentDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineConsentDemoView.swift; sourceTree = "<group>"; };
 		45B2E069207CF5C100C68B92 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		45B2E06E207E181C00C68B92 /* InlineConsentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InlineConsentView.swift; sourceTree = "<group>"; };
+		45B2E073207E184D00C68B92 /* InlineConsentDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InlineConsentDemoView.swift; sourceTree = "<group>"; };
 		45D7C56A204949E2000E788F /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		45D7C56C20494C7A000E788F /* SwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewModel.swift; sourceTree = "<group>"; };
 		45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDemoView.swift; sourceTree = "<group>"; };
@@ -439,7 +439,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				45B2E060207C9B0400C68B92 /* InlineConsent */,
+				45B2E06B207E181C00C68B92 /* Consent */,
 				45D7C569204949B7000E788F /* Switch */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				55C5B27A203DC344007D7277 /* BroadcastContainer */,
@@ -822,20 +822,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		45B2E060207C9B0400C68B92 /* InlineConsent */ = {
+		45B2E06B207E181C00C68B92 /* Consent */ = {
 			isa = PBXGroup;
 			children = (
-				45B2E065207CAA2A00C68B92 /* Demo */,
-				45B2E061207C9B6000C68B92 /* InlineConsentView.swift */,
+				45B2E072207E184D00C68B92 /* Demo */,
+				45B2E06E207E181C00C68B92 /* InlineConsentView.swift */,
 			);
-			name = InlineConsent;
-			path = "New Group";
+			path = Consent;
 			sourceTree = "<group>";
 		};
-		45B2E065207CAA2A00C68B92 /* Demo */ = {
+		45B2E072207E184D00C68B92 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				45B2E066207CAA4C00C68B92 /* InlineConsentDemoView.swift */,
+				45B2E073207E184D00C68B92 /* InlineConsentDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1111,7 +1110,7 @@
 				4447F70A1FDB2B4C0033DBC1 /* MarketGridViewDemoView.swift in Sources */,
 				AF91BB9F202C868E003E6366 /* BroadcastDemoView.swift in Sources */,
 				44D912772077AD1800486848 /* LoginViewDefaultData.swift in Sources */,
-				45B2E068207CAA5900C68B92 /* InlineConsentDemoView.swift in Sources */,
+				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				4447F70E1FDB2B590033DBC1 /* PreviewHelpers.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
 				4447F70C1FDB2B540033DBC1 /* PreviewGridCellDemoView.swift in Sources */,
@@ -1170,7 +1169,6 @@
 				4447F6E61FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift in Sources */,
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
-				45B2E062207C9B6000C68B92 /* InlineConsentView.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
@@ -1199,6 +1197,7 @@
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
 				559FD9BA205122A200A101B0 /* BroadcastModel.swift in Sources */,
+				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
 				4447F6E51FDB2B110033DBC1 /* PreviewGridLayout.swift in Sources */,
 				4447F6D91FDB2B110033DBC1 /* MarketGridModel.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
