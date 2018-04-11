@@ -2,7 +2,7 @@
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![](https://img.shields.io/badge/platform-iOS-lightgrey.svg) ![](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)
 
-FinniversKit is the iOS native implementation of FINN's design system. [You can find the reference here](https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system). This framework is composed of small components that are meant to be used as building blocks of the FINN iOS app.
+FinniversKit is the iOS native implementation of FINN's design system. [You can find the reference here](https://finnivers.finn.no/d/oCLrx0cypXJM/design-system). This framework is composed of small components that are meant to be used as building blocks of the FINN iOS app.
 
 In order to develop our components in an isolated way we have structured them so they can be used idependently of each other. Run the Demo project for a list of all our components.
 
