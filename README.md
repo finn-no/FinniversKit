@@ -4,7 +4,7 @@
 
 FinniversKit is the iOS native implementation of FINN's design system. [You can find the reference here](https://finnivers.finn.no/d/oCLrx0cypXJM/design-system). This framework is composed of small components that are meant to be used as building blocks of the FINN iOS app.
 
-In order to develop our components in an isolated way we have structured them so they can be used idependently of each other. Run the Demo project for a list of all our components.
+In order to develop our components in an isolated way, we have structured them so they can be used independently of each other. Run the Demo project for a list of all our components.
 
 <p align="center"><img width=100% src="https://raw.githubusercontent.com/finn-no/FinniversKit/master/GitHub/demo.jpg"></p>
 
