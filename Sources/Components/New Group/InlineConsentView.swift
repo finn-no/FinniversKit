@@ -105,20 +105,10 @@ public class InlineConsentView: UIView {
         guard let descriptionText = descriptionTitleLabel.text else {
             return CGSize.zero
         }
-        let screenSize = UIScreen.main.bounds
 
-        let titleHeight = descriptionText.height(withConstrainedWidth: screenSize.width - .mediumLargeSpacing * 2, font: descriptionTitleLabel.font) // .meiumLargeSpacing * 2, is margins in MarketViewController
+        let titleHeight = descriptionText.height(withConstrainedWidth: frame.width, font: descriptionTitleLabel.font)
         let widestButtonWidth = max(yesButton.intrinsicContentSize.width, infoButton.intrinsicContentSize.width)
-
-        return CGSize(width: max(screenSize.width, widestButtonWidth), height: intermediateSpacing + titleHeight + yesButton.intrinsicContentSize.height + infoButton.intrinsicContentSize.height)
-    }
-}
-
-fileprivate extension String {
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = (self as NSString).boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
-
-        return ceil(boundingBox.height)
+        
+        return CGSize(width: max(frame.width, widestButtonWidth), height: intermediateSpacing + titleHeight + yesButton.intrinsicContentSize.height + infoButton.intrinsicContentSize.height)
     }
 }
