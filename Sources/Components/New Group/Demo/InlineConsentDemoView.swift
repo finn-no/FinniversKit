@@ -6,7 +6,7 @@ import FinniversKit
 
 public class InlineConsentDemoView: UIView {
     private lazy var inlineConsentView: InlineConsentView = {
-        let view = InlineConsentView()
+        let view = InlineConsentView(frame: frame)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

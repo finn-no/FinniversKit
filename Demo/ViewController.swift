@@ -12,7 +12,7 @@ class ViewController<View: UIView>: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let playgroundView = View()
+        let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
         playgroundView.backgroundColor = .white
         view.addSubview(playgroundView)
