@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   s.source        = { :git => "https://github.com/finn-no/FinniversKit.git", :tag => s.version }
   s.requires_arc  = true
 
-  s.source_files  = 'Sources/', 'Sources/Extensions/', 'Sources/Extensions/UIKit/', 'Sources/Components/**/*.swift', 'Sources/DNA/**/*.swift', 'Sources/Protocols/'
+  s.source_files  = 'Sources/', 'Sources/Extensions/Foundation', 'Sources/Extensions/UIKit/', 'Sources/Components/**/*.swift', 'Sources/DNA/**/*.swift', 'Sources/Protocols/'
   s.resources     = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets'
   s.resource_bundles = {
       'FinniversKit' => ['Sources/Resources/*.xcassets', 'Sources/Resources/Fonts/*.ttf']
