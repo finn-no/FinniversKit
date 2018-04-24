@@ -163,7 +163,7 @@ public class EmptyView: UIView {
 
         let slice = frame.width / 8
 
-        // We resposition the shapes after the EmptyView itself has layed out its frame.
+        // We reposition the shapes after the EmptyView itself has layed out its frame.
         // At this point we will have its size even if we use constraints to lay it out.
         triangle.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
         circle.center = CGPoint(x: slice * 3, y: frame.height - (sizeOfCircle.height / 2))
