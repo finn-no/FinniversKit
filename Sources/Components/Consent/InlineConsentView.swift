@@ -108,7 +108,7 @@ public class InlineConsentView: UIView {
 
         let titleHeight = descriptionText.height(withConstrainedWidth: frame.width, font: descriptionTitleLabel.font)
         let widestButtonWidth = max(yesButton.intrinsicContentSize.width, infoButton.intrinsicContentSize.width)
-
+        
         return CGSize(width: max(frame.width, widestButtonWidth), height: intermediateSpacing + titleHeight + yesButton.intrinsicContentSize.height + infoButton.intrinsicContentSize.height)
     }
 }
