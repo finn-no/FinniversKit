@@ -9,39 +9,36 @@ public class EmptyView: UIView {
 
     // MARK: - Internal properties
 
-    private let screenSize: CGSize = UIScreen.main.bounds.size
     private let sizeOfTriangle = CGSize(width: 90, height: 90)
     private let sizeOfCircle = CGSize(width: 75, height: 75)
     private let sizeOfRoundedSquare = CGSize(width: 55, height: 55)
     private let sizeOfSquare = CGSize(width: 100, height: 100)
 
+    private var hasLayedOut = false
+
     private lazy var triangle: TriangleView = {
-        let startingPosition = CGPoint(x: screenSize.width / 2 - sizeOfTriangle.width - sizeOfCircle.width, y: screenSize.height - sizeOfTriangle.height - 10)
-        let view = TriangleView(frame: CGRect(x: startingPosition.x, y: startingPosition.y, width: sizeOfTriangle.width, height: sizeOfTriangle.height))
+        let view = TriangleView(frame: CGRect(x: 0, y: 0, width: sizeOfTriangle.width, height: sizeOfTriangle.height))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
         return view
     }()
 
     private lazy var circle: CircleView = {
-        let startingPosition = CGPoint(x: screenSize.width / 2 - sizeOfCircle.width - 1, y: screenSize.height - sizeOfCircle.height - 10)
-        let view = CircleView(frame: CGRect(x: startingPosition.x, y: startingPosition.y, width: sizeOfCircle.width, height: sizeOfCircle.height))
+        let view = CircleView(frame: CGRect(x: 0, y: 0, width: sizeOfCircle.width, height: sizeOfCircle.height))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
         return view
     }()
 
     private lazy var roundedSquare: RoundedRectangleView = {
-        let startingPosition = CGPoint(x: screenSize.width / 2 + 1, y: screenSize.height - sizeOfRoundedSquare.height - 10)
-        let view = RoundedRectangleView(frame: CGRect(x: startingPosition.x, y: startingPosition.y, width: sizeOfRoundedSquare.width, height: sizeOfRoundedSquare.height))
+        let view = RoundedRectangleView(frame: CGRect(x: 0, y: 0, width: sizeOfRoundedSquare.width, height: sizeOfRoundedSquare.height))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
         return view
     }()
 
     private lazy var rectangle: RectangleView = {
-        let startingPosition = CGPoint(x: screenSize.width / 2 + sizeOfRoundedSquare.width + 1, y: screenSize.height - sizeOfSquare.height - 10)
-        let view = RectangleView(frame: CGRect(x: startingPosition.x, y: startingPosition.y, width: sizeOfSquare.width, height: sizeOfSquare.height))
+        let view = RectangleView(frame: CGRect(x: 0, y: 0, width: sizeOfSquare.width, height: sizeOfSquare.height))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
         return view
@@ -143,11 +140,6 @@ public class EmptyView: UIView {
         addSubview(headerLabel)
         addSubview(messageLabel)
 
-        // Add behaviour to animator
-        animator.addBehavior(gravity)
-        animator.addBehavior(collision)
-        animator.addBehavior(itemBehavior)
-
         getAccelerometerData()
 
         NSLayoutConstraint.activate([
@@ -159,6 +151,31 @@ public class EmptyView: UIView {
             messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
         ])
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        // We only want to lay out once
+        guard hasLayedOut == false else {
+            return
+        }
+
+        let slice = frame.width / 8
+
+        // We resposition the shapes after the EmptyView itself has layed out its frame.
+        // At this point we will have its size even if we use constraints to lay it out.
+        triangle.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
+        circle.center = CGPoint(x: slice * 3, y: frame.height - (sizeOfCircle.height / 2))
+        roundedSquare.center = CGPoint(x: slice * 5, y: frame.height - (sizeOfRoundedSquare.height / 2))
+        rectangle.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfSquare.height / 2))
+
+        // We add the behaviors after laying out the subviews to avoid issues with initial positions of the shapes
+        animator.addBehavior(gravity)
+        animator.addBehavior(collision)
+        animator.addBehavior(itemBehavior)
+
+        hasLayedOut = true
     }
 
     // MARK: - Actions
