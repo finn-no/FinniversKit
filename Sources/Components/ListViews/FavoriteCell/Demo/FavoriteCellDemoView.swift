@@ -5,7 +5,7 @@
 import FinniversKit
 import UIKit
 
-public class MarketGridCellDemoView: UIView {
+public class FavoriteCellDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 

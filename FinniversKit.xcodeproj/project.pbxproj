@@ -32,7 +32,7 @@
 		441E23C42088D8F3007BC7F1 /* GenericCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23B92088D8F3007BC7F1 /* GenericCell.swift */; };
 		441E23C52088D8F3007BC7F1 /* YourAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23BB2088D8F3007BC7F1 /* YourAdsCell.swift */; };
 		441E23C62088D8F3007BC7F1 /* YourAdsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23BC2088D8F3007BC7F1 /* YourAdsCellModel.swift */; };
-		441E23C92088D9B9007BC7F1 /* ResultCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23C82088D9B9007BC7F1 /* ResultCellDemoView.swift */; };
+		441E23C92088D9B9007BC7F1 /* ResultPageCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23C82088D9B9007BC7F1 /* ResultPageCellDemoView.swift */; };
 		441E23CC2088DA04007BC7F1 /* FavoriteCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23CB2088DA04007BC7F1 /* FavoriteCellDemoView.swift */; };
 		441E23D72088F250007BC7F1 /* NotificationCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23D62088F250007BC7F1 /* NotificationCellDemoView.swift */; };
 		441E23DA2088F257007BC7F1 /* GenericCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23D92088F257007BC7F1 /* GenericCellDemoView.swift */; };
@@ -205,7 +205,7 @@
 		441E23B92088D8F3007BC7F1 /* GenericCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCell.swift; sourceTree = "<group>"; };
 		441E23BB2088D8F3007BC7F1 /* YourAdsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourAdsCell.swift; sourceTree = "<group>"; };
 		441E23BC2088D8F3007BC7F1 /* YourAdsCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourAdsCellModel.swift; sourceTree = "<group>"; };
-		441E23C82088D9B9007BC7F1 /* ResultCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCellDemoView.swift; sourceTree = "<group>"; };
+		441E23C82088D9B9007BC7F1 /* ResultPageCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultPageCellDemoView.swift; sourceTree = "<group>"; };
 		441E23CB2088DA04007BC7F1 /* FavoriteCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCellDemoView.swift; sourceTree = "<group>"; };
 		441E23D62088F250007BC7F1 /* NotificationCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCellDemoView.swift; sourceTree = "<group>"; };
 		441E23D92088F257007BC7F1 /* GenericCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCellDemoView.swift; sourceTree = "<group>"; };
@@ -515,7 +515,7 @@
 		441E23C72088D9B9007BC7F1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				441E23C82088D9B9007BC7F1 /* ResultCellDemoView.swift */,
+				441E23C82088D9B9007BC7F1 /* ResultPageCellDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1251,7 +1251,7 @@
 				44D912702077AD0C00486848 /* RegisterViewDemoView.swift in Sources */,
 				1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */,
 				44D9126B2077AD0200486848 /* ConsentViewDemoView.swift in Sources */,
-				441E23C92088D9B9007BC7F1 /* ResultCellDemoView.swift in Sources */,
+				441E23C92088D9B9007BC7F1 /* ResultPageCellDemoView.swift in Sources */,
 				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
