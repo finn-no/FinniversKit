@@ -6,7 +6,7 @@ import CoreMotion
 import UIKit
 
 public protocol EmptyViewDelegate: class {
-    func performAction(from emptyView: EmptyView)
+    func emptyView(_ emptyView: EmptyView, didSelectActionButton button: Button)
 }
 
 public class EmptyView: UIView {
@@ -233,7 +233,7 @@ public class EmptyView: UIView {
     }
 
     @objc private func performAction() {
-        delegate?.performAction(from: self)
+        delegate?.emptyView(self, didSelectActionButton: actionButton)
     }
 
     // MARK: - Accelerometer calculations
