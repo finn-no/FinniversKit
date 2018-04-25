@@ -20,6 +20,7 @@ public class EmptyViewDemoView: UIView {
 
         emptyView.header = "Her var det stille gitt"
         emptyView.message = "Når du prater med andre på FINN, vil meldingene dine dukke opp her.\n\n Søk på noe du har lyst på, send en melding til selgeren og bli enige om en handel på én-to-tre!"
+        emptyView.actionButtonTitle = "Gjør et søk"
 
         addSubview(emptyView)
 

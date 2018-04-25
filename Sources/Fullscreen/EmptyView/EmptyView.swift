@@ -5,6 +5,10 @@
 import CoreMotion
 import UIKit
 
+public protocol EmptyViewDelegate: class {
+    func emptyView(_ emptyView: EmptyView, didSelectActionButton button: Button)
+}
+
 public class EmptyView: UIView {
 
     // MARK: - Internal properties
@@ -62,6 +66,14 @@ public class EmptyView: UIView {
         return label
     }()
 
+    private lazy var actionButton: Button = {
+        let button = Button(style: .callToAction)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(performAction), for: .touchUpInside)
+        button.isHidden = true // Default is hidden. When a title is set it will be displayed.
+        return button
+    }()
+
     private lazy var animator: UIDynamicAnimator = {
         let animator = UIDynamicAnimator(referenceView: self)
         return animator
@@ -103,6 +115,8 @@ public class EmptyView: UIView {
 
     // MARK: - External properties / Dependency injection
 
+    public weak var delegate: EmptyViewDelegate?
+
     public var header: String = "" {
         didSet {
             headerLabel.text = header
@@ -114,6 +128,14 @@ public class EmptyView: UIView {
         didSet {
             messageLabel.text = message
             messageLabel.accessibilityLabel = message
+        }
+    }
+
+    public var actionButtonTitle: String = "" {
+        didSet {
+            actionButton.setTitle(actionButtonTitle, for: .normal)
+            actionButton.accessibilityLabel = actionButtonTitle
+            actionButton.isHidden = actionButtonTitle.isEmpty
         }
     }
 
@@ -139,6 +161,7 @@ public class EmptyView: UIView {
 
         addSubview(headerLabel)
         addSubview(messageLabel)
+        addSubview(actionButton)
 
         getAccelerometerData()
 
@@ -150,6 +173,10 @@ public class EmptyView: UIView {
             messageLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .largeSpacing),
             messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+
+            actionButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .largeSpacing),
+            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
         ])
     }
 
@@ -203,6 +230,10 @@ public class EmptyView: UIView {
                 itemBehavior.addLinearVelocity(sender.velocity(in: self), for: objectView)
             }
         }
+    }
+
+    @objc private func performAction() {
+        delegate?.emptyView(self, didSelectActionButton: actionButton)
     }
 
     // MARK: - Accelerometer calculations
