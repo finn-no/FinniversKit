@@ -16,7 +16,8 @@ public class EmptyView: UIView {
     private let sizeOfTriangle = CGSize(width: 90, height: 90)
     private let sizeOfCircle = CGSize(width: 75, height: 75)
     private let sizeOfRoundedSquare = CGSize(width: 55, height: 55)
-    private let sizeOfSquare = CGSize(width: 100, height: 100)
+    private let sizeOfRectangle = CGSize(width: 100, height: 100)
+    private let sizeOfSquare = CGSize(width: 50, height: 50)
 
     private var hasLayedOut = false
 
@@ -42,9 +43,17 @@ public class EmptyView: UIView {
     }()
 
     private lazy var rectangle: RectangleView = {
+        let view = RectangleView(frame: CGRect(x: 0, y: 0, width: sizeOfRectangle.width, height: sizeOfRectangle.height))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        return view
+    }()
+
+    private lazy var square: RectangleView = {
         let view = RectangleView(frame: CGRect(x: 0, y: 0, width: sizeOfSquare.width, height: sizeOfSquare.height))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
+        view.backgroundColor = .salmon
         return view
     }()
 
@@ -110,7 +119,7 @@ public class EmptyView: UIView {
     private lazy var motionQueue = OperationQueue()
 
     private lazy var allShapes: [UIView] = {
-        return [rectangle, triangle, roundedSquare, circle]
+        return [rectangle, triangle, roundedSquare, circle, square]
     }()
 
     // MARK: - External properties / Dependency injection
@@ -158,6 +167,7 @@ public class EmptyView: UIView {
         addSubview(triangle)
         addSubview(roundedSquare)
         addSubview(circle)
+        addSubview(square)
 
         addSubview(headerLabel)
         addSubview(messageLabel)
@@ -193,9 +203,10 @@ public class EmptyView: UIView {
         // We reposition the shapes after the EmptyView itself has layed out its frame.
         // At this point we will have its size even if we use constraints to lay it out.
         triangle.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
-        circle.center = CGPoint(x: slice * 3, y: frame.height - (sizeOfCircle.height / 2))
+        circle.center = CGPoint(x: slice * 2, y: frame.height - (sizeOfCircle.height / 2))
+        square.center = CGPoint(x: slice * 3, y: frame.height - (sizeOfSquare.height / 2))
         roundedSquare.center = CGPoint(x: slice * 5, y: frame.height - (sizeOfRoundedSquare.height / 2))
-        rectangle.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfSquare.height / 2))
+        rectangle.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfRectangle.height / 2))
 
         // We add the behaviors after laying out the subviews to avoid issues with initial positions of the shapes
         animator.addBehavior(gravity)

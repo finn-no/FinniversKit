@@ -19,7 +19,7 @@ class RectangleView: UIView, AttachableView {
     }
 
     private func setup() {
-        backgroundColor = .salmon
+        backgroundColor = .banana
         layer.cornerRadius = cornerRadius
     }
 

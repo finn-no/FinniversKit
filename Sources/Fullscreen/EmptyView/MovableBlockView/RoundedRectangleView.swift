@@ -33,7 +33,7 @@ class RoundedRectangleView: UIView, AttachableView {
         let path = createRoundedRectanglePath(from: rect)
 
         context.addPath(path)
-        context.setFillColor(UIColor.mint.cgColor)
+        context.setFillColor(UIColor.watermelon.cgColor)
         context.fillPath()
     }
 
