@@ -70,7 +70,7 @@ public class EmptyView: UIView {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(performAction), for: .touchUpInside)
-        button.isHidden = true // Default is hidden. When a title is set it well be displayed.
+        button.isHidden = true // Default is hidden. When a title is set it will be displayed.
         return button
     }()
 
