@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol MarketGridModel {
+public protocol YourAdsCellModel {
     var iconImage: UIImage? { get }
     var showExternalLinkIcon: Bool { get }
     var badgeImage: UIImage? { get }
@@ -12,7 +12,7 @@ public protocol MarketGridModel {
     var accessibilityLabel: String { get }
 }
 
-public extension MarketGridModel {
+public extension YourAdsCellModel {
     var accessibilityLabel: String {
         return title
     }

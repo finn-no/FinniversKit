@@ -466,8 +466,8 @@
 			isa = PBXGroup;
 			children = (
 				441E23C72088D9B9007BC7F1 /* Demo */,
-				441E23AF2088D8F3007BC7F1 /* ResultPageCellModel.swift */,
 				441E23B02088D8F3007BC7F1 /* ResultPageCell.swift */,
+				441E23AF2088D8F3007BC7F1 /* ResultPageCellModel.swift */,
 			);
 			path = ResultPageCell;
 			sourceTree = "<group>";
@@ -496,8 +496,8 @@
 			isa = PBXGroup;
 			children = (
 				441E23D82088F257007BC7F1 /* Demo */,
-				441E23B82088D8F3007BC7F1 /* GenericCellModel.swift */,
 				441E23B92088D8F3007BC7F1 /* GenericCell.swift */,
+				441E23B82088D8F3007BC7F1 /* GenericCellModel.swift */,
 			);
 			path = GenericCell;
 			sourceTree = "<group>";
