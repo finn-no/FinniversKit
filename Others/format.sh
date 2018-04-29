@@ -4,7 +4,7 @@ HEADER="//\n//  Copyright © FINN.no AS, Inc. All rights reserved.\n//"
 
 command="${SRCROOT}/Others/swiftformat"
 
-OUTPUT=$($command \
+OUTPUT=$("$command" \
 --stripunusedargs closure-only \
 --header "$HEADER" \
 --disable redundantReturn \
