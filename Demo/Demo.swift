@@ -169,7 +169,6 @@ enum FullscreenViews: String {
     case consentViewDemoView
     case emptyViewDemoView
     case marketGridViewDemoView
-    case marketView
     case marketGridCellDemoView
     case previewGridViewDemoView
     case previewGridCellDemoView
@@ -183,8 +182,6 @@ enum FullscreenViews: String {
             return ViewController<LoginViewDemoView>()
         case .marketGridViewDemoView:
             return ViewController<MarketGridViewDemoView>()
-        case .marketView:
-            return ViewController<MarketView>()
         case .marketGridCellDemoView:
             return ViewController<MarketCellDemoView>()
         case .previewGridViewDemoView:
@@ -204,7 +201,6 @@ enum FullscreenViews: String {
             .consentViewDemoView,
             .emptyViewDemoView,
             .marketGridViewDemoView,
-            .marketView,
             .marketGridCellDemoView,
             .previewGridViewDemoView,
             .previewGridCellDemoView,
