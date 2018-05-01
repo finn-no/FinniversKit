@@ -85,31 +85,9 @@ class FrontpageViewDemoView: UIView {
 // MARK: - GridPreviewListViewDelegate
 
 extension FrontpageViewDemoView: GridPreviewListViewDelegate {
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, willDisplayItemAtIndex index: Int) {
-        // Don't care
-    }
-
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didScrollInScrollView scrollView: UIScrollView) {
-        // Don't care
-    }
-
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didSelectItemAtIndex index: Int) {
-        //        let toast = ToastView(delegate: self)
-        //        toast.model = ToastDataModel.successButton
-        //        toast.presentFromBottom(view: self, animateOffset: tabBarController?.tabBar.frame.height ?? 0, timeOut: 4)
-    }
-}
-
-// MARK: - ToastViewDelegate
-
-extension FrontpageViewDemoView: ToastViewDelegate {
-    func didTap(toastView: ToastView) {
-        print("Toast view tapped!")
-    }
-
-    func didTapActionButton(button: UIButton, in toastView: ToastView) {
-        print("Action button tapped!")
-    }
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, willDisplayItemAtIndex index: Int) { }
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didScrollInScrollView scrollView: UIScrollView) { }
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didSelectItemAtIndex index: Int) { }
 }
 
 // MARK: - GridPreviewListViewDataSource
@@ -143,26 +121,23 @@ extension FrontpageViewDemoView: GridPreviewListViewDataSource {
         task.resume()
     }
 
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) {
-        // No point in doing this in demo
-    }
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) { }
 }
 
 // MARK: - MarketListViewDelegate
 
 extension FrontpageViewDemoView: MarketListViewDelegate {
-    func didSelect(itemAtIndex index: Int, inMarketListView gridView: MarketListView) {
-    }
+    func marketListView(_ marketListView: MarketListView, didSelectItemAtIndex index: Int) {}
 }
 
 // MARK: - MarketListViewDataSource
 
 extension FrontpageViewDemoView: MarketListViewDataSource {
-    func numberOfItems(inMarketListView marketGridView: MarketListView) -> Int {
+    func numberOfItems(inMarketListView marketListView: MarketListView) -> Int {
         return marketGridModels.count
     }
 
-    func marketGridView(_ marketGridView: MarketListView, modelAtIndex index: Int) -> MarketListViewModel {
+    func marketListView(_ marketListView: MarketListView, modelAtIndex index: Int) -> MarketListViewModel {
         return marketGridModels[index]
     }
 }

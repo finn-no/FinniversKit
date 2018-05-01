@@ -31,16 +31,15 @@ public class MarketListViewDemoView: UIView {
 }
 
 extension MarketListViewDemoView: MarketListViewDataSource {
-    public func numberOfItems(inMarketListView marketGridView: MarketListView) -> Int {
+    public func numberOfItems(inMarketListView marketListView: MarketListView) -> Int {
         return dataSource.models.count
     }
 
-    public func marketGridView(_ marketGridView: MarketListView, modelAtIndex index: Int) -> MarketListViewModel {
+    public func marketListView(_ marketListView: MarketListView, modelAtIndex index: Int) -> MarketListViewModel {
         return dataSource.models[index]
     }
 }
 
 extension MarketListViewDemoView: MarketListViewDelegate {
-    public func didSelect(itemAtIndex index: Int, inMarketListView gridView: MarketListView) {
-    }
+    public func marketListView(_ marketListView: MarketListView, didSelectItemAtIndex index: Int) { }
 }

@@ -5,12 +5,12 @@
 import UIKit
 
 public protocol MarketListViewDelegate: NSObjectProtocol {
-    func didSelect(itemAtIndex index: Int, inMarketListView gridView: MarketListView)
+    func marketListView(_ marketListView: MarketListView, didSelectItemAtIndex index: Int)
 }
 
 public protocol MarketListViewDataSource: NSObjectProtocol {
-    func numberOfItems(inMarketListView marketGridView: MarketListView) -> Int
-    func marketGridView(_ marketGridView: MarketListView, modelAtIndex index: Int) -> MarketListViewModel
+    func numberOfItems(inMarketListView marketListView: MarketListView) -> Int
+    func marketListView(_ marketListView: MarketListView, modelAtIndex index: Int) -> MarketListViewModel
 }
 
 public class MarketListView: UIView {
@@ -141,7 +141,7 @@ extension MarketListView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(MarketCell.self, for: indexPath)
 
-        if let model = dataSource?.marketGridView(self, modelAtIndex: indexPath.row) {
+        if let model = dataSource?.marketListView(self, modelAtIndex: indexPath.row) {
             cell.model = model
         }
 
@@ -153,6 +153,6 @@ extension MarketListView: UICollectionViewDataSource {
 
 extension MarketListView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelect(itemAtIndex: indexPath.row, inMarketListView: self)
+        delegate?.marketListView(self, didSelectItemAtIndex: indexPath.row)
     }
 }
