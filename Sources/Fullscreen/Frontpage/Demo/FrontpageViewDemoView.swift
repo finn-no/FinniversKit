@@ -85,9 +85,9 @@ class FrontpageViewDemoView: UIView {
 // MARK: - GridPreviewListViewDelegate
 
 extension FrontpageViewDemoView: GridPreviewListViewDelegate {
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, willDisplayItemAtIndex index: Int) { }
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didScrollInScrollView scrollView: UIScrollView) { }
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didSelectItemAtIndex index: Int) { }
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, willDisplayItemAtIndex index: Int) {}
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didScrollInScrollView scrollView: UIScrollView) {}
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didSelectItemAtIndex index: Int) {}
 }
 
 // MARK: - GridPreviewListViewDataSource
@@ -121,7 +121,7 @@ extension FrontpageViewDemoView: GridPreviewListViewDataSource {
         task.resume()
     }
 
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) { }
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) {}
 }
 
 // MARK: - MarketListViewDelegate

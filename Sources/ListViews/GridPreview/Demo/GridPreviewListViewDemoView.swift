@@ -32,11 +32,11 @@ public class GridPreviewListViewDemoView: UIView {
 }
 
 extension GridPreviewListViewDemoView: GridPreviewListViewDelegate {
-    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didSelectItemAtIndex index: Int) { }
+    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didSelectItemAtIndex index: Int) {}
 
-    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, willDisplayItemAtIndex index: Int) { }
+    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, willDisplayItemAtIndex index: Int) {}
 
-    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didScrollInScrollView scrollView: UIScrollView) { }
+    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didScrollInScrollView scrollView: UIScrollView) {}
 }
 
 extension GridPreviewListViewDemoView: GridPreviewListViewDataSource {
@@ -67,5 +67,5 @@ extension GridPreviewListViewDemoView: GridPreviewListViewDataSource {
         task.resume()
     }
 
-    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) { }
+    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) {}
 }

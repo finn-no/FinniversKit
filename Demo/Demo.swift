@@ -7,15 +7,15 @@ import UIKit
 enum Sections: String {
     case dna
     case components
-    case fullscreen
     case listViews
+    case fullscreen
 
     static var all: [Sections] {
         return [
             .dna,
             .components,
-            .fullscreen,
             .listViews,
+            .fullscreen,
         ]
     }
 
@@ -25,10 +25,10 @@ enum Sections: String {
             return DnaViews.all.count
         case .components:
             return ComponentViews.all.count
-        case .fullscreen:
-            return FullscreenViews.all.count
         case .listViews:
             return ListViews.all.count
+        case .fullscreen:
+            return FullscreenViews.all.count
         }
     }
 
@@ -46,10 +46,10 @@ enum Sections: String {
             rawClassName = DnaViews.all[indexPath.row].rawValue
         case .components:
             rawClassName = ComponentViews.all[indexPath.row].rawValue
-        case .fullscreen:
-            rawClassName = FullscreenViews.all[indexPath.row].rawValue
         case .listViews:
             rawClassName = ListViews.all[indexPath.row].rawValue
+        case .fullscreen:
+            rawClassName = FullscreenViews.all[indexPath.row].rawValue
         }
 
         return rawClassName.replacingOccurrences(of: "DemoView", with: "").capitalizingFirstLetter
@@ -64,11 +64,11 @@ enum Sections: String {
         case .components:
             let selectedView = ComponentViews.all[indexPath.row]
             return selectedView.viewController
-        case .fullscreen:
-            let selectedView = FullscreenViews.all[indexPath.row]
-            return selectedView.viewController
         case .listViews:
             let selectedView = ListViews.all[indexPath.row]
+            return selectedView.viewController
+        case .fullscreen:
+            let selectedView = FullscreenViews.all[indexPath.row]
             return selectedView.viewController
         }
     }
@@ -173,6 +173,27 @@ enum ComponentViews: String {
     }
 }
 
+enum ListViews: String {
+    case market
+    case gridPreview
+
+    static var all: [ListViews] {
+        return [
+            .market,
+            .gridPreview,
+        ]
+    }
+
+    var viewController: UIViewController {
+        switch self {
+        case .market:
+            return ViewController<MarketListViewDemoView>()
+        case .gridPreview:
+            return ViewController<GridPreviewListViewDemoView>()
+        }
+    }
+}
+
 enum FullscreenViews: String {
     case frontpageViewDemoView
     case registerViewDemoView
@@ -203,26 +224,5 @@ enum FullscreenViews: String {
             .emptyViewDemoView,
             .loginViewDemoView,
         ]
-    }
-}
-
-enum ListViews: String {
-    case market
-    case gridPreview
-
-    static var all: [ListViews] {
-        return [
-            .market,
-            .gridPreview,
-        ]
-    }
-
-    var viewController: UIViewController {
-        switch self {
-        case .market:
-            return ViewController<MarketListViewDemoView>()
-        case .gridPreview:
-            return ViewController<GridPreviewListViewDemoView>()
-        }
     }
 }

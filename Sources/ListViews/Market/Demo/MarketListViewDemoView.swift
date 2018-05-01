@@ -41,5 +41,5 @@ extension MarketListViewDemoView: MarketListViewDataSource {
 }
 
 extension MarketListViewDemoView: MarketListViewDelegate {
-    public func marketListView(_ marketListView: MarketListView, didSelectItemAtIndex index: Int) { }
+    public func marketListView(_ marketListView: MarketListView, didSelectItemAtIndex index: Int) {}
 }
