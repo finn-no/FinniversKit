@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class MarketCollectionViewCell: UICollectionViewCell {
+public class MarketCell: UICollectionViewCell {
 
     // MARK: - Internal properties
 

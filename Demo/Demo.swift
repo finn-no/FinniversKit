@@ -28,7 +28,7 @@ enum Sections: String {
         case .fullscreen:
             return FullscreenViews.all.count
         case .listViews:
-            return ListViewsSections.all.count
+            return ListViews.all.count
         }
     }
 
@@ -49,7 +49,7 @@ enum Sections: String {
         case .fullscreen:
             rawClassName = FullscreenViews.all[indexPath.row].rawValue
         case .listViews:
-            rawClassName = ListViewsViews.all[indexPath.row].rawValue
+            rawClassName = ListViews.all[indexPath.row].rawValue
         }
 
         return rawClassName.replacingOccurrences(of: "DemoView", with: "").capitalizingFirstLetter
@@ -68,7 +68,7 @@ enum Sections: String {
             let selectedView = FullscreenViews.all[indexPath.row]
             return selectedView.viewController
         case .listViews:
-            let selectedView = ListViewsViews.all[indexPath.row]
+            let selectedView = ListViews.all[indexPath.row]
             return selectedView.viewController
         }
     }
@@ -202,10 +202,10 @@ enum FullscreenViews: String {
     }
 }
 
-enum ListViewsSections: String {
+enum ListViews: String {
     case market
 
-    static var all: [ListViewsSections] {
+    static var all: [ListViews] {
         return [
             .market,
         ]
@@ -214,7 +214,7 @@ enum ListViewsSections: String {
     var viewController: UIViewController {
         switch self {
         case .market:
-            return ViewController<MarketCollectionViewCellDemoView>()
+            return ViewController<MarketListViewDemoView>()
         }
     }
 }

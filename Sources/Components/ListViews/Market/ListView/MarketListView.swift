@@ -4,16 +4,16 @@
 
 import UIKit
 
-public protocol MarketGridViewDelegate: NSObjectProtocol {
-    func didSelect(itemAtIndex index: Int, inMarketGridView gridView: MarketGridView)
+public protocol MarketListViewDelegate: NSObjectProtocol {
+    func didSelect(itemAtIndex index: Int, inMarketListView gridView: MarketListView)
 }
 
-public protocol MarketGridViewDataSource: NSObjectProtocol {
-    func numberOfItems(inMarketGridView marketGridView: MarketGridView) -> Int
-    func marketGridView(_ marketGridView: MarketGridView, modelAtIndex index: Int) -> MarketListViewModel
+public protocol MarketListViewDataSource: NSObjectProtocol {
+    func numberOfItems(inMarketListView marketGridView: MarketListView) -> Int
+    func marketGridView(_ marketGridView: MarketListView, modelAtIndex index: Int) -> MarketListViewModel
 }
 
-public class MarketGridView: UIView {
+public class MarketListView: UIView {
 
     // MARK: - Internal properties
 
@@ -26,12 +26,12 @@ public class MarketGridView: UIView {
         return collectionView
     }()
 
-    private weak var delegate: MarketGridViewDelegate?
-    private weak var dataSource: MarketGridViewDataSource?
+    private weak var delegate: MarketListViewDelegate?
+    private weak var dataSource: MarketListViewDataSource?
 
     // MARK: - Setup
 
-    public init(frame: CGRect = .zero, delegate: MarketGridViewDelegate, dataSource: MarketGridViewDataSource) {
+    public init(frame: CGRect = .zero, delegate: MarketListViewDelegate, dataSource: MarketListViewDataSource) {
         super.init(frame: frame)
 
         self.delegate = delegate
@@ -51,7 +51,7 @@ public class MarketGridView: UIView {
     }
 
     private func setup() {
-        collectionView.register(MarketCollectionViewCell.self)
+        collectionView.register(MarketCell.self)
         addSubview(collectionView)
 
         NSLayoutConstraint.activate([
@@ -82,7 +82,7 @@ public class MarketGridView: UIView {
     // MARK: - Private
 
     private func numberOfRows(for viewWidth: CGFloat) -> Int {
-        guard let modelsCount = dataSource?.numberOfItems(inMarketGridView: self) else {
+        guard let modelsCount = dataSource?.numberOfItems(inMarketListView: self) else {
             return 0
         }
 
@@ -113,7 +113,7 @@ public class MarketGridView: UIView {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension MarketGridView: UICollectionViewDelegateFlowLayout {
+extension MarketListView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return itemSize(for: bounds.width)
     }
@@ -133,13 +133,13 @@ extension MarketGridView: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UICollectionViewDataSource
 
-extension MarketGridView: UICollectionViewDataSource {
+extension MarketListView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inMarketGridView: self) ?? 0
+        return dataSource?.numberOfItems(inMarketListView: self) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(MarketCollectionViewCell.self, for: indexPath)
+        let cell = collectionView.dequeue(MarketCell.self, for: indexPath)
 
         if let model = dataSource?.marketGridView(self, modelAtIndex: indexPath.row) {
             cell.model = model
@@ -151,8 +151,8 @@ extension MarketGridView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension MarketGridView: UICollectionViewDelegate {
+extension MarketListView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelect(itemAtIndex: indexPath.row, inMarketGridView: self)
+        delegate?.didSelect(itemAtIndex: indexPath.row, inMarketListView: self)
     }
 }
