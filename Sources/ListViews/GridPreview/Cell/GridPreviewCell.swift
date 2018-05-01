@@ -5,8 +5,8 @@
 import UIKit
 
 public protocol GridPreviewCellDataSource {
-    func loadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-    func cancelLoadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat)
+    func gridPreviewCell(_ gridPreviewCell: GridPreviewCell, loadImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func gridPreviewCell(_ gridPreviewCell: GridPreviewCell, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat)
 }
 
 public class GridPreviewCell: UICollectionViewCell {
@@ -78,11 +78,11 @@ public class GridPreviewCell: UICollectionViewCell {
 }
 
 extension GridPreviewCell: GridPreviewViewDataSource {
-    public func loadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        dataSource?.loadImage(for: model, imageWidth: imageWidth, completion: completion)
+    public func gridPreviewView(_ gridPreviewView: GridPreviewView, loadImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.gridPreviewCell(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 
-    public func cancelLoadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat) {
-        dataSource?.cancelLoadImage(for: model, imageWidth: imageWidth)
+    public func gridPreviewView(_ gridPreviewView: GridPreviewView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) {
+        dataSource?.gridPreviewCell(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
     }
 }

@@ -152,11 +152,11 @@ extension GridPreviewListView: UICollectionViewDataSource {
 // MARK: - GridPreviewCellDataSource
 
 extension GridPreviewListView: GridPreviewCellDataSource {
-    public func loadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func gridPreviewCell(_ gridPreviewCell: GridPreviewCell, loadImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         dataSource?.gridPreviewListView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 
-    public func cancelLoadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat) {
+    public func gridPreviewCell(_ gridPreviewCell: GridPreviewCell, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) {
         dataSource?.gridPreviewListView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
     }
 }

@@ -5,8 +5,8 @@
 import UIKit
 
 public protocol GridPreviewViewDataSource {
-    func loadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-    func cancelLoadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat)
+    func gridPreviewView(_ gridPreviewView: GridPreviewView, loadImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func gridPreviewView(_ gridPreviewView: GridPreviewView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat)
 }
 
 public class GridPreviewView: UIView {
@@ -158,7 +158,7 @@ public class GridPreviewView: UIView {
         accessibilityLabel = ""
 
         if let model = model {
-            dataSource?.cancelLoadImage(for: model, imageWidth: imageView.frame.size.width)
+            dataSource?.gridPreviewView(self, cancelLoadingImageForModel: model, imageWidth: imageView.frame.size.width)
         }
     }
 
@@ -197,7 +197,7 @@ public class GridPreviewView: UIView {
 
         imageView.backgroundColor = loadingColor
 
-        dataSource.loadImage(for: model, imageWidth: frame.size.width) { [weak self] image in
+        dataSource.gridPreviewView(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
             self?.imageView.backgroundColor = .clear
 
             if let image = image {
