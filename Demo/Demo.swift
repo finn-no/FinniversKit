@@ -8,12 +8,14 @@ enum Sections: String {
     case dna
     case components
     case fullscreen
+    case listViews
 
     static var all: [Sections] {
         return [
             .dna,
             .components,
             .fullscreen,
+            .listViews,
         ]
     }
 
@@ -25,6 +27,8 @@ enum Sections: String {
             return ComponentViews.all.count
         case .fullscreen:
             return FullscreenViews.all.count
+        case .listViews:
+            return ListViewsSections.all.count
         }
     }
 
@@ -44,6 +48,8 @@ enum Sections: String {
             rawClassName = ComponentViews.all[indexPath.row].rawValue
         case .fullscreen:
             rawClassName = FullscreenViews.all[indexPath.row].rawValue
+        case .listViews:
+            rawClassName = ListViewsViews.all[indexPath.row].rawValue
         }
 
         return rawClassName.replacingOccurrences(of: "DemoView", with: "").capitalizingFirstLetter
@@ -60,6 +66,9 @@ enum Sections: String {
             return selectedView.viewController
         case .fullscreen:
             let selectedView = FullscreenViews.all[indexPath.row]
+            return selectedView.viewController
+        case .listViews:
+            let selectedView = ListViewsViews.all[indexPath.row]
             return selectedView.viewController
         }
     }
@@ -168,10 +177,6 @@ enum FullscreenViews: String {
     case registerViewDemoView
     case consentViewDemoView
     case emptyViewDemoView
-    case marketGridViewDemoView
-    case marketGridCellDemoView
-    case previewGridViewDemoView
-    case previewGridCellDemoView
     case loginViewDemoView
 
     var viewController: UIViewController {
@@ -180,14 +185,6 @@ enum FullscreenViews: String {
             return ViewController<RegisterViewDemoView>()
         case .loginViewDemoView:
             return ViewController<LoginViewDemoView>()
-        case .marketGridViewDemoView:
-            return ViewController<MarketGridViewDemoView>()
-        case .marketGridCellDemoView:
-            return ViewController<MarketCellDemoView>()
-        case .previewGridViewDemoView:
-            return ViewController<PreviewGridViewDemoView>()
-        case .previewGridCellDemoView:
-            return ViewController<PreviewGridCellDemoView>()
         case .emptyViewDemoView:
             return ViewController<EmptyViewDemoView>()
         case .consentViewDemoView:
@@ -200,11 +197,24 @@ enum FullscreenViews: String {
             .registerViewDemoView,
             .consentViewDemoView,
             .emptyViewDemoView,
-            .marketGridViewDemoView,
-            .marketGridCellDemoView,
-            .previewGridViewDemoView,
-            .previewGridCellDemoView,
             .loginViewDemoView,
         ]
+    }
+}
+
+enum ListViewsSections: String {
+    case market
+
+    static var all: [ListViewsSections] {
+        return [
+            .market,
+        ]
+    }
+
+    var viewController: UIViewController {
+        switch self {
+        case .market:
+            return ViewController<MarketCollectionViewCellDemoView>()
+        }
     }
 }

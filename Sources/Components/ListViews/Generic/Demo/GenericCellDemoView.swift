@@ -15,7 +15,7 @@ public class GenericCellDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let marketGridCell = MarketCell(frame: .zero)
+        let marketGridCell = MarketCollectionViewCell(frame: .zero)
         marketGridCell.translatesAutoresizingMaskIntoConstraints = false
         let model = Market.moteplassen
 

@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum ScreenSizeCategory {
+public enum MarketListViewConfigurable {
     case small
     case medium
     case large(CGFloat)
@@ -12,18 +12,18 @@ enum ScreenSizeCategory {
     static let mediumRange: Range<CGFloat> = (375.0 ..< 415.0)
     static let portraitModeScreenWidth = CGFloat(768)
 
-    init(width: CGFloat) {
+    public init(width: CGFloat) {
         switch width {
-        case let width where width > ScreenSizeCategory.mediumRange.upperBound:
+        case let width where width > MarketListViewConfigurable.mediumRange.upperBound:
             self = .large(width)
-        case let width where width < ScreenSizeCategory.mediumRange.lowerBound:
+        case let width where width < MarketListViewConfigurable.mediumRange.lowerBound:
             self = .small
         default:
             self = .medium
         }
     }
 
-    var interimSpacing: CGFloat {
+    public var interimSpacing: CGFloat {
         switch self {
         case .large:
             return 0
@@ -32,7 +32,7 @@ enum ScreenSizeCategory {
         }
     }
 
-    var sideMargins: CGFloat {
+    public var sideMargins: CGFloat {
         switch self {
         case .large:
             return 20
@@ -41,7 +41,7 @@ enum ScreenSizeCategory {
         }
     }
 
-    var edgeInsets: UIEdgeInsets {
+    public var edgeInsets: UIEdgeInsets {
         switch self {
         case .large:
             return UIEdgeInsets(top: 16, left: sideMargins, bottom: 0, right: sideMargins)
@@ -50,7 +50,7 @@ enum ScreenSizeCategory {
         }
     }
 
-    var lineSpacing: CGFloat {
+    public var lineSpacing: CGFloat {
         switch self {
         case .large:
             return 30
@@ -59,10 +59,10 @@ enum ScreenSizeCategory {
         }
     }
 
-    var itemsPerRow: CGFloat {
+    public var itemsPerRow: CGFloat {
         switch self {
         case let .large(width):
-            if width > ScreenSizeCategory.portraitModeScreenWidth {
+            if width > MarketListViewConfigurable.portraitModeScreenWidth {
                 return 6
             } else {
                 return 5
@@ -74,7 +74,7 @@ enum ScreenSizeCategory {
         }
     }
 
-    var itemHeight: CGFloat {
+    public var itemHeight: CGFloat {
         switch self {
         case .large:
             return 80

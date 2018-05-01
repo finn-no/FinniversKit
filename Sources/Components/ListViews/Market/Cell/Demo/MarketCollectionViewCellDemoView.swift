@@ -2,20 +2,16 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import FinniversKit
 import UIKit
 
-public protocol MarketGridViewDelegate: NSObjectProtocol {
-    func didSelect(itemAtIndex index: Int, inMarketGridView gridView: MarketGridView)
-}
-
-public protocol MarketGridViewDataSource: NSObjectProtocol {
-    func numberOfItems(inMarketGridView marketGridView: MarketGridView) -> Int
-    func marketGridView(_ marketGridView: MarketGridView, modelAtIndex index: Int) -> MarketListViewModel
-}
-
-public class MarketGridView: UIView {
+public class MarketCollectionViewCellDemoView: UIView {
 
     // MARK: - Internal properties
+
+    lazy var dataSource: [Market] = {
+        return Market.allMarkets
+    }()
 
     @objc private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -26,19 +22,7 @@ public class MarketGridView: UIView {
         return collectionView
     }()
 
-    private weak var delegate: MarketGridViewDelegate?
-    private weak var dataSource: MarketGridViewDataSource?
-
     // MARK: - Setup
-
-    public init(frame: CGRect = .zero, delegate: MarketGridViewDelegate, dataSource: MarketGridViewDataSource) {
-        super.init(frame: frame)
-
-        self.delegate = delegate
-        self.dataSource = dataSource
-
-        setup()
-    }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,20 +37,10 @@ public class MarketGridView: UIView {
     private func setup() {
         collectionView.register(MarketCollectionViewCell.self)
         addSubview(collectionView)
-
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
+        collectionView.fillInSuperview()
     }
 
     // MARK: - Functionality
-
-    public func reloadData() {
-        collectionView.reloadData()
-    }
 
     public func calculateSize(constrainedTo width: CGFloat) -> CGSize {
         let size = itemSize(for: width)
@@ -82,10 +56,7 @@ public class MarketGridView: UIView {
     // MARK: - Private
 
     private func numberOfRows(for viewWidth: CGFloat) -> Int {
-        guard let modelsCount = dataSource?.numberOfItems(inMarketGridView: self) else {
-            return 0
-        }
-
+        let modelsCount = dataSource.count
         return Int(ceil(Double(modelsCount) / Double(MarketListViewConfigurable(width: viewWidth).itemsPerRow)))
     }
 
@@ -113,7 +84,7 @@ public class MarketGridView: UIView {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension MarketGridView: UICollectionViewDelegateFlowLayout {
+extension MarketCollectionViewCellDemoView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return itemSize(for: bounds.width)
     }
@@ -133,26 +104,14 @@ extension MarketGridView: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UICollectionViewDataSource
 
-extension MarketGridView: UICollectionViewDataSource {
+extension MarketCollectionViewCellDemoView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inMarketGridView: self) ?? 0
+        return dataSource.count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(MarketCollectionViewCell.self, for: indexPath)
-
-        if let model = dataSource?.marketGridView(self, modelAtIndex: indexPath.row) {
-            cell.model = model
-        }
-
+        cell.model = dataSource[indexPath.row]
         return cell
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension MarketGridView: UICollectionViewDelegate {
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelect(itemAtIndex: indexPath.row, inMarketGridView: self)
     }
 }

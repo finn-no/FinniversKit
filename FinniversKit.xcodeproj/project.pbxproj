@@ -62,11 +62,11 @@
 		447AFBDF20982F00000F793E /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD220982F00000F793E /* PreviewGridLayoutConfiguration.swift */; };
 		447AFBE020982F00000F793E /* PreviewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD320982F00000F793E /* PreviewGridView.swift */; };
 		447AFBE120982F00000F793E /* PreviewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD420982F00000F793E /* PreviewGridLayout.swift */; };
-		447AFBE220982F00000F793E /* MarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD720982F00000F793E /* MarketCell.swift */; };
+		447AFBE220982F00000F793E /* MarketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD720982F00000F793E /* MarketCollectionViewCell.swift */; };
 		447AFBE320982F00000F793E /* MarketListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD820982F00000F793E /* MarketListViewModel.swift */; };
-		447AFBE420982F00000F793E /* MarketGridViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBDA20982F00000F793E /* MarketGridViewConfigurable.swift */; };
+		447AFBE420982F00000F793E /* MarketListViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBDA20982F00000F793E /* MarketListViewConfigurable.swift */; };
 		447AFBE520982F00000F793E /* MarketGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBDB20982F00000F793E /* MarketGridView.swift */; };
-		447AFBE820982F1A000F793E /* MarketCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBE720982F1A000F793E /* MarketCellDemoView.swift */; };
+		447AFBE820982F1A000F793E /* MarketCollectionViewCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBE720982F1A000F793E /* MarketCollectionViewCellDemoView.swift */; };
 		447AFBED20982F30000F793E /* MarketGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBEB20982F30000F793E /* MarketGridViewDemoView.swift */; };
 		447AFBF020982F45000F793E /* PreviewGridCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBEF20982F45000F793E /* PreviewGridCellDemoView.swift */; };
 		447AFBF520982F54000F793E /* PreviewGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBF320982F54000F793E /* PreviewGridViewDemoView.swift */; };
@@ -231,11 +231,11 @@
 		447AFBD220982F00000F793E /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
 		447AFBD320982F00000F793E /* PreviewGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
 		447AFBD420982F00000F793E /* PreviewGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
-		447AFBD720982F00000F793E /* MarketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCell.swift; sourceTree = "<group>"; };
+		447AFBD720982F00000F793E /* MarketCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCollectionViewCell.swift; sourceTree = "<group>"; };
 		447AFBD820982F00000F793E /* MarketListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketListViewModel.swift; sourceTree = "<group>"; };
-		447AFBDA20982F00000F793E /* MarketGridViewConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewConfigurable.swift; sourceTree = "<group>"; };
+		447AFBDA20982F00000F793E /* MarketListViewConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketListViewConfigurable.swift; sourceTree = "<group>"; };
 		447AFBDB20982F00000F793E /* MarketGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridView.swift; sourceTree = "<group>"; };
-		447AFBE720982F1A000F793E /* MarketCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCellDemoView.swift; sourceTree = "<group>"; };
+		447AFBE720982F1A000F793E /* MarketCollectionViewCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCollectionViewCellDemoView.swift; sourceTree = "<group>"; };
 		447AFBEB20982F30000F793E /* MarketGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewDemoView.swift; sourceTree = "<group>"; };
 		447AFBEF20982F45000F793E /* PreviewGridCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCellDemoView.swift; sourceTree = "<group>"; };
 		447AFBF320982F54000F793E /* PreviewGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewDemoView.swift; sourceTree = "<group>"; };
@@ -731,7 +731,7 @@
 				447AFBE620982F1A000F793E /* Demo */,
 				447AFBD820982F00000F793E /* MarketListViewModel.swift */,
 				447AFBFA209830FB000F793E /* MarketView.swift */,
-				447AFBD720982F00000F793E /* MarketCell.swift */,
+				447AFBD720982F00000F793E /* MarketCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -740,7 +740,7 @@
 			isa = PBXGroup;
 			children = (
 				447AFBE920982F30000F793E /* Demo */,
-				447AFBDA20982F00000F793E /* MarketGridViewConfigurable.swift */,
+				447AFBDA20982F00000F793E /* MarketListViewConfigurable.swift */,
 				447AFBDB20982F00000F793E /* MarketGridView.swift */,
 			);
 			path = ListView;
@@ -750,7 +750,7 @@
 			isa = PBXGroup;
 			children = (
 				447AFBF620982FF2000F793E /* MarketListViewHelpers.swift */,
-				447AFBE720982F1A000F793E /* MarketCellDemoView.swift */,
+				447AFBE720982F1A000F793E /* MarketCollectionViewCellDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1200,7 +1200,7 @@
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
 				44D912702077AD0C00486848 /* RegisterViewDemoView.swift in Sources */,
-				447AFBE820982F1A000F793E /* MarketCellDemoView.swift in Sources */,
+				447AFBE820982F1A000F793E /* MarketCollectionViewCellDemoView.swift in Sources */,
 				44D9126B2077AD0200486848 /* ConsentViewDemoView.swift in Sources */,
 				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
@@ -1250,7 +1250,7 @@
 				447AFBDC20982F00000F793E /* PreviewGridCell.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				441E23C12088D8F3007BC7F1 /* NotificationCell.swift in Sources */,
-				447AFBE420982F00000F793E /* MarketGridViewConfigurable.swift in Sources */,
+				447AFBE420982F00000F793E /* MarketListViewConfigurable.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				44D912662077AC8A00486848 /* LoginView.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
@@ -1261,7 +1261,7 @@
 				447AFBFB209830FB000F793E /* MarketView.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				44D9125E2077AC8A00486848 /* RegisterViewModel.swift in Sources */,
-				447AFBE220982F00000F793E /* MarketCell.swift in Sources */,
+				447AFBE220982F00000F793E /* MarketCollectionViewCell.swift in Sources */,
 				44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */,
 				447AFBE520982F00000F793E /* MarketGridView.swift in Sources */,
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
