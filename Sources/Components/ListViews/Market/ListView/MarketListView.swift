@@ -86,27 +86,27 @@ public class MarketListView: UIView {
             return 0
         }
 
-        return Int(ceil(Double(modelsCount) / Double(MarketListViewConfigurable(width: viewWidth).itemsPerRow)))
+        return Int(ceil(Double(modelsCount) / Double(MarketListViewLayoutConfiguration(width: viewWidth).itemsPerRow)))
     }
 
     private func itemSize(for viewWidth: CGFloat) -> CGSize {
-        let screenWidth = MarketListViewConfigurable(width: viewWidth)
+        let screenWidth = MarketListViewLayoutConfiguration(width: viewWidth)
         let itemSize = CGSize(width: viewWidth / screenWidth.itemsPerRow - screenWidth.sideMargins - screenWidth.interimSpacing, height: screenWidth.itemHeight)
         return itemSize
     }
 
     private func insets(for viewWidth: CGFloat) -> UIEdgeInsets {
-        let screenWidth = MarketListViewConfigurable(width: viewWidth)
+        let screenWidth = MarketListViewLayoutConfiguration(width: viewWidth)
         return screenWidth.edgeInsets
     }
 
     private func lineSpacing(for viewWidth: CGFloat) -> CGFloat {
-        let screenWidth = MarketListViewConfigurable(width: viewWidth)
+        let screenWidth = MarketListViewLayoutConfiguration(width: viewWidth)
         return screenWidth.lineSpacing
     }
 
     private func interimSpacing(for viewWidth: CGFloat) -> CGFloat {
-        let screenWidth = MarketListViewConfigurable(width: viewWidth)
+        let screenWidth = MarketListViewLayoutConfiguration(width: viewWidth)
         return screenWidth.interimSpacing
     }
 }

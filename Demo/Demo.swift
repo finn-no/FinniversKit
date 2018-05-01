@@ -204,10 +204,12 @@ enum FullscreenViews: String {
 
 enum ListViews: String {
     case market
+    case gridPreview
 
     static var all: [ListViews] {
         return [
             .market,
+            .gridPreview,
         ]
     }
 
@@ -215,6 +217,8 @@ enum ListViews: String {
         switch self {
         case .market:
             return ViewController<MarketListViewDemoView>()
+        case .gridPreview:
+            return ViewController<GridPreviewListViewDemoView>()
         }
     }
 }

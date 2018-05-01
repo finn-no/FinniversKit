@@ -4,25 +4,25 @@
 
 import UIKit
 
-public protocol PreviewGridViewDelegate: NSObjectProtocol {
-    func didSelect(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView)
-    func willDisplay(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView)
+public protocol GridPreviewListViewDelegate: NSObjectProtocol {
+    func didSelect(itemAtIndex index: Int, inGridPreviewListView gridView: GridPreviewListView)
+    func willDisplay(itemAtIndex index: Int, inGridPreviewListView gridView: GridPreviewListView)
     func didScroll(gridScrollView: UIScrollView)
 }
 
-public protocol PreviewGridViewDataSource: NSObjectProtocol {
-    func numberOfItems(inPreviewGridView previewGridView: PreviewGridView) -> Int
-    func previewGridView(_ previewGridView: PreviewGridView, modelAtIndex index: Int) -> PreviewModel
-    func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-    func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat)
+public protocol GridPreviewListViewDataSource: NSObjectProtocol {
+    func numberOfItems(inGridPreviewListView previewGridView: GridPreviewListView) -> Int
+    func previewGridView(_ previewGridView: GridPreviewListView, modelAtIndex index: Int) -> GridPreviewListViewModel
+    func loadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func cancelLoadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat)
 }
 
-public class PreviewGridView: UIView {
+public class GridPreviewListView: UIView {
 
     // MARK: - Internal properties
 
-    private lazy var collectionViewLayout: PreviewGridLayout = {
-        return PreviewGridLayout(delegate: self)
+    private lazy var collectionViewLayout: GridPreviewListViewLayout = {
+        return GridPreviewListViewLayout(delegate: self)
     }()
 
     // Have the collection view be private so nobody messes with it.
@@ -35,8 +35,8 @@ public class PreviewGridView: UIView {
         return collectionView
     }()
 
-    private weak var delegate: PreviewGridViewDelegate?
-    private weak var dataSource: PreviewGridViewDataSource?
+    private weak var delegate: GridPreviewListViewDelegate?
+    private weak var dataSource: GridPreviewListViewDataSource?
 
     // MARK: - External properties
 
@@ -48,7 +48,7 @@ public class PreviewGridView: UIView {
 
     // MARK: - Setup
 
-    public init(delegate: PreviewGridViewDelegate, dataSource: PreviewGridViewDataSource) {
+    public init(delegate: GridPreviewListViewDelegate, dataSource: GridPreviewListViewDataSource) {
         super.init(frame: .zero)
 
         self.delegate = delegate
@@ -68,16 +68,10 @@ public class PreviewGridView: UIView {
     }
 
     private func setup() {
-        collectionView.register(PreviewGridCell.self, forCellWithReuseIdentifier: String(describing: PreviewGridCell.self))
-        collectionView.register(PreviewGridHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: PreviewGridHeaderView.self))
+        collectionView.register(GridPreviewCell.self, forCellWithReuseIdentifier: String(describing: GridPreviewCell.self))
+        collectionView.register(GridPreviewHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: GridPreviewHeaderView.self))
         addSubview(collectionView)
-
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            collectionView.leftAnchor.constraint(equalTo: leftAnchor),
-        ])
+        collectionView.fillInSuperview()
     }
 
     public func invalidateLayout() {
@@ -97,9 +91,9 @@ public class PreviewGridView: UIView {
 
 // MARK: - UICollectionViewDelegate
 
-extension PreviewGridView: UICollectionViewDelegate {
+extension GridPreviewListView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelect(itemAtIndex: indexPath.row, inPreviewGridView: self)
+        delegate?.didSelect(itemAtIndex: indexPath.row, inGridPreviewListView: self)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -109,17 +103,17 @@ extension PreviewGridView: UICollectionViewDelegate {
 
 // MARK: - UICollectionViewDataSource
 
-extension PreviewGridView: UICollectionViewDataSource {
+extension GridPreviewListView: UICollectionViewDataSource {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inPreviewGridView: self) ?? 0
+        return dataSource?.numberOfItems(inGridPreviewListView: self) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(PreviewGridCell.self, for: indexPath)
+        let cell = collectionView.dequeue(GridPreviewCell.self, for: indexPath)
 
         // Show a pretty color while we load the image
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
@@ -136,11 +130,11 @@ extension PreviewGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? PreviewGridCell {
+        if let cell = cell as? GridPreviewCell {
             cell.loadImage()
         }
 
-        delegate?.willDisplay(itemAtIndex: indexPath.row, inPreviewGridView: self)
+        delegate?.willDisplay(itemAtIndex: indexPath.row, inGridPreviewListView: self)
     }
 
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -148,28 +142,28 @@ extension PreviewGridView: UICollectionViewDataSource {
             fatalError("Suplementary view of kind '\(kind)' not supported.")
         }
 
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: PreviewGridHeaderView.self), for: indexPath) as! PreviewGridHeaderView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: GridPreviewHeaderView.self), for: indexPath) as! GridPreviewHeaderView
         header.contentView = headerView
 
         return header
     }
 }
 
-// MARK: - PreviewGridCellDataSource
+// MARK: - GridPreviewCellDataSource
 
-extension PreviewGridView: PreviewGridCellDataSource {
-    public func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+extension GridPreviewListView: GridPreviewCellDataSource {
+    public func loadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         dataSource?.loadImage(for: model, imageWidth: imageWidth, completion: completion)
     }
 
-    public func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat) {
+    public func cancelLoadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat) {
         dataSource?.cancelLoadImage(for: model, imageWidth: imageWidth)
     }
 }
 
-// MARK: - PreviewGridLayoutDelegate
+// MARK: - GridPreviewListViewLayoutDelegate
 
-extension PreviewGridView: PreviewGridLayoutDelegate {
+extension GridPreviewListView: GridPreviewListViewLayoutDelegate {
     func heightForHeaderView(inCollectionView collectionView: UICollectionView) -> CGFloat? {
         return headerView?.frame.size.height
     }
@@ -184,6 +178,6 @@ extension PreviewGridView: PreviewGridLayoutDelegate {
     }
 
     func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        return PreviewGridCell.nonImageHeight
+        return GridPreviewCell.nonImageHeight
     }
 }

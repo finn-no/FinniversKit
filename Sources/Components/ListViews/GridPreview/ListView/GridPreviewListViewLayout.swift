@@ -4,25 +4,25 @@
 
 import UIKit
 
-protocol PreviewGridLayoutDelegate {
+protocol GridPreviewListViewLayoutDelegate {
     func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
     func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
     func heightForHeaderView(inCollectionView collectionView: UICollectionView) -> CGFloat?
 }
 
-class PreviewGridLayout: UICollectionViewLayout {
-    private let delegate: PreviewGridLayoutDelegate
+class GridPreviewListViewLayout: UICollectionViewLayout {
+    private let delegate: GridPreviewListViewLayoutDelegate
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
-    private var configuration: PreviewGridLayoutConfiguration {
+    private var configuration: GridPreviewLayoutConfiguration {
         guard let collectionView = collectionView else {
             fatalError("Layout unusable without collection view!")
         }
 
-        return PreviewGridLayoutConfiguration(width: collectionView.frame.size.width)
+        return GridPreviewLayoutConfiguration(width: collectionView.frame.size.width)
     }
 
-    init(delegate: PreviewGridLayoutDelegate) {
+    init(delegate: GridPreviewListViewLayoutDelegate) {
         self.delegate = delegate
         super.init()
     }

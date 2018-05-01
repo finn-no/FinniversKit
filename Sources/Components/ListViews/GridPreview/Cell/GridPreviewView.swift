@@ -4,12 +4,12 @@
 
 import UIKit
 
-public protocol PreviewGridCellDataSource {
-    func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-    func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat)
+public protocol GridPreviewViewDataSource {
+    func loadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func cancelLoadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat)
 }
 
-public class PreviewGridCell: UICollectionViewCell {
+public class GridPreviewView: UIView {
 
     // MARK: - Internal properties
 
@@ -26,7 +26,7 @@ public class PreviewGridCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = PreviewGridCell.cornerRadius
+        imageView.layer.cornerRadius = GridPreviewView.cornerRadius
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -60,7 +60,7 @@ public class PreviewGridCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         view.alpha = 1.0
-        view.layer.cornerRadius = PreviewGridCell.cornerRadius
+        view.layer.cornerRadius = GridPreviewView.cornerRadius
         view.layer.masksToBounds = true
 
         if #available(iOS 11.0, *) {
@@ -83,7 +83,7 @@ public class PreviewGridCell: UICollectionViewCell {
     public var loadingColor: UIColor?
 
     /// A data source for the loading of the image
-    public var dataSource: PreviewGridCellDataSource?
+    public var dataSource: GridPreviewViewDataSource?
 
     /// Height in cell that is not image
     public static var nonImageHeight: CGFloat {
@@ -120,37 +120,36 @@ public class PreviewGridCell: UICollectionViewCell {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: PreviewGridCell.subtitleTopMargin),
+            subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: GridPreviewView.subtitleTopMargin),
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            subTitleLabel.heightAnchor.constraint(equalToConstant: PreviewGridCell.subtitleHeight),
+            subTitleLabel.heightAnchor.constraint(equalToConstant: GridPreviewView.subtitleHeight),
 
-            titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: PreviewGridCell.titleTopMargin),
+            titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: GridPreviewView.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: PreviewGridCell.titleHeight),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -PreviewGridCell.titleBottomMargin),
+            titleLabel.heightAnchor.constraint(equalToConstant: GridPreviewView.titleHeight),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -GridPreviewView.titleBottomMargin),
 
-            iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: PreviewGridCell.margin),
-            iconImageView.heightAnchor.constraint(equalToConstant: PreviewGridCell.iconSize),
-            iconImageView.widthAnchor.constraint(equalToConstant: PreviewGridCell.iconSize),
+            iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: GridPreviewView.margin),
+            iconImageView.heightAnchor.constraint(equalToConstant: GridPreviewView.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: GridPreviewView.iconSize),
             iconImageView.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
 
-            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: PreviewGridCell.margin),
+            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: GridPreviewView.margin),
             imageTextLabel.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
 
             imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: PreviewGridCell.margin),
+            imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: GridPreviewView.margin),
             imageDesciptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            imageDesciptionView.heightAnchor.constraint(equalToConstant: PreviewGridCell.imageDescriptionHeight),
+            imageDesciptionView.heightAnchor.constraint(equalToConstant: GridPreviewView.imageDescriptionHeight),
             imageDesciptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
         ])
     }
 
     // MARK: - Superclass Overrides
 
-    public override func prepareForReuse() {
-        super.prepareForReuse()
+    public func prepareForReuse() {
         imageView.image = nil
         iconImageView.image = nil
         titleLabel.text = ""
@@ -166,7 +165,7 @@ public class PreviewGridCell: UICollectionViewCell {
     // MARK: - Dependency injection
 
     /// The model contains data used to populate the view.
-    public var model: PreviewModel? {
+    public var model: GridPreviewListViewModel? {
         didSet {
             if let model = model {
                 iconImageView.image = model.iconImage?.withRenderingMode(.alwaysTemplate)
@@ -189,7 +188,7 @@ public class PreviewGridCell: UICollectionViewCell {
 
     // MARK: - Private
 
-    private func loadImage(model: PreviewModel) {
+    private func loadImage(model: GridPreviewListViewModel) {
         guard let dataSource = dataSource, let _ = model.imagePath else {
             loadingColor = .clear
             imageView.image = defaultImage

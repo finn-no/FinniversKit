@@ -5,8 +5,8 @@
 import FinniversKit
 import Foundation
 
-/// A model confirming to the PreviewModel protocol for showcasing PreviewGridCell in playground.
-public struct PreviewDataModel: PreviewModel {
+/// A model confirming to the GridPreviewListViewModel protocol for showcasing GridPreviewCell in playground.
+public struct GridPreview: GridPreviewListViewModel {
     public let imagePath: String?
     public let imageSize: CGSize
     public var iconImage: UIImage?
@@ -29,94 +29,20 @@ public struct PreviewDataModel: PreviewModel {
     }
 }
 
-/// For use with PreviewGridView.
-public class PreviewGridDelegateDataSource: NSObject, PreviewGridViewDelegate, PreviewGridViewDataSource {
-    private let models = PreviewDataModelFactory.create(numberOfModels: 9)
-
-    public func willDisplay(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
-        // Don't care
-    }
-
-    public func didScroll(gridScrollView: UIScrollView) {
-        // Don't care
-    }
-
-    public func didSelect(itemAtIndex index: Int, inPreviewGridView gridView: PreviewGridView) {
-        // Not in use
-    }
-
-    public func numberOfItems(inPreviewGridView previewGridView: PreviewGridView) -> Int {
-        return models.count
-    }
-
-    public func previewGridView(_ previewGridView: PreviewGridView, modelAtIndex index: Int) -> PreviewModel {
-        return models[index]
-    }
-
-    public func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let path = model.imagePath, let url = URL(string: path) else {
-            completion(nil)
-            return
-        }
-
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    public func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat) {
-        // No point in doing this in demo
-    }
-}
-
-/// For use with PreviewGridCell.
-public class APreviewGridCellDataSource: NSObject, PreviewGridCellDataSource {
-    public func loadImage(for model: PreviewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let path = model.imagePath, let url = URL(string: path) else {
-            completion(nil)
-            return
-        }
-
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    public func cancelLoadImage(for model: PreviewModel, imageWidth: CGFloat) {
-        // No point in doing this in demo
-    }
-}
-
-/// Creates PreviewDataModels
-public struct PreviewDataModelFactory {
+/// Creates GridPreviews
+public struct GridPreviewFactory {
     private struct ImageSource {
         let path: String
         let size: CGSize
     }
 
-    public static func create(numberOfModels: Int) -> [PreviewDataModel] {
+    public static func create(numberOfModels: Int) -> [GridPreview] {
         return (0 ..< numberOfModels).map { index in
             let imageSource = imageSources[index]
             let title = titles[index]
             let subTitle = subTitles[index]
             let icon = UIImage(named: "bil", in: .playgroundBundle, compatibleWith: nil)!
-            return PreviewDataModel(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subTitle: subTitle, imageText: price)
+            return GridPreview(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subTitle: subTitle, imageText: price)
         }
     }
 

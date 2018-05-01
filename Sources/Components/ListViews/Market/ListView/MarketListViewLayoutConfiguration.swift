@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum MarketListViewConfigurable {
+enum MarketListViewLayoutConfiguration {
     case small
     case medium
     case large(CGFloat)
@@ -12,18 +12,18 @@ public enum MarketListViewConfigurable {
     static let mediumRange: Range<CGFloat> = (375.0 ..< 415.0)
     static let portraitModeScreenWidth = CGFloat(768)
 
-    public init(width: CGFloat) {
+    init(width: CGFloat) {
         switch width {
-        case let width where width > MarketListViewConfigurable.mediumRange.upperBound:
+        case let width where width > MarketListViewLayoutConfiguration.mediumRange.upperBound:
             self = .large(width)
-        case let width where width < MarketListViewConfigurable.mediumRange.lowerBound:
+        case let width where width < MarketListViewLayoutConfiguration.mediumRange.lowerBound:
             self = .small
         default:
             self = .medium
         }
     }
 
-    public var interimSpacing: CGFloat {
+    var interimSpacing: CGFloat {
         switch self {
         case .large:
             return 0
@@ -32,7 +32,7 @@ public enum MarketListViewConfigurable {
         }
     }
 
-    public var sideMargins: CGFloat {
+    var sideMargins: CGFloat {
         switch self {
         case .large:
             return 20
@@ -41,7 +41,7 @@ public enum MarketListViewConfigurable {
         }
     }
 
-    public var edgeInsets: UIEdgeInsets {
+    var edgeInsets: UIEdgeInsets {
         switch self {
         case .large:
             return UIEdgeInsets(top: 16, left: sideMargins, bottom: 0, right: sideMargins)
@@ -50,7 +50,7 @@ public enum MarketListViewConfigurable {
         }
     }
 
-    public var lineSpacing: CGFloat {
+    var lineSpacing: CGFloat {
         switch self {
         case .large:
             return 30
@@ -59,10 +59,10 @@ public enum MarketListViewConfigurable {
         }
     }
 
-    public var itemsPerRow: CGFloat {
+    var itemsPerRow: CGFloat {
         switch self {
         case let .large(width):
-            if width > MarketListViewConfigurable.portraitModeScreenWidth {
+            if width > MarketListViewLayoutConfiguration.portraitModeScreenWidth {
                 return 6
             } else {
                 return 5
@@ -74,7 +74,7 @@ public enum MarketListViewConfigurable {
         }
     }
 
-    public var itemHeight: CGFloat {
+    var itemHeight: CGFloat {
         switch self {
         case .large:
             return 80
