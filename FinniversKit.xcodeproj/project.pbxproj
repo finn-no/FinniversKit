@@ -22,8 +22,6 @@
 		441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIViewExtensions.swift */; };
 		441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69991FEA947500CD919A /* LayoutHelpers.swift */; };
 		441D699D1FEA947600CD919A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D699A1FEA947600CD919A /* Layout.swift */; };
-		441E23BD2088D8F3007BC7F1 /* ResultPageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23AF2088D8F3007BC7F1 /* ResultPageCellModel.swift */; };
-		441E23BE2088D8F3007BC7F1 /* ResultPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23B02088D8F3007BC7F1 /* ResultPageCell.swift */; };
 		441E23BF2088D8F3007BC7F1 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23B22088D8F3007BC7F1 /* FavoriteCell.swift */; };
 		441E23C02088D8F3007BC7F1 /* FavoriteCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23B32088D8F3007BC7F1 /* FavoriteCellModel.swift */; };
 		441E23C12088D8F3007BC7F1 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23B52088D8F3007BC7F1 /* NotificationCell.swift */; };
@@ -32,7 +30,6 @@
 		441E23C42088D8F3007BC7F1 /* GenericCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23B92088D8F3007BC7F1 /* GenericCell.swift */; };
 		441E23C52088D8F3007BC7F1 /* YourAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23BB2088D8F3007BC7F1 /* YourAdsCell.swift */; };
 		441E23C62088D8F3007BC7F1 /* YourAdsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23BC2088D8F3007BC7F1 /* YourAdsCellModel.swift */; };
-		441E23C92088D9B9007BC7F1 /* ResultPageCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23C82088D9B9007BC7F1 /* ResultPageCellDemoView.swift */; };
 		441E23CC2088DA04007BC7F1 /* FavoriteCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23CB2088DA04007BC7F1 /* FavoriteCellDemoView.swift */; };
 		441E23D72088F250007BC7F1 /* NotificationCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23D62088F250007BC7F1 /* NotificationCellDemoView.swift */; };
 		441E23DA2088F257007BC7F1 /* GenericCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441E23D92088F257007BC7F1 /* GenericCellDemoView.swift */; };
@@ -41,16 +38,6 @@
 		4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; };
 		4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6751FDB2B110033DBC1 /* Label+Style.swift */; };
 		4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6761FDB2B110033DBC1 /* Label.swift */; };
-		4447F6D81FDB2B110033DBC1 /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6841FDB2B110033DBC1 /* MarketGridCell.swift */; };
-		4447F6D91FDB2B110033DBC1 /* MarketGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6851FDB2B110033DBC1 /* MarketGridModel.swift */; };
-		4447F6DB1FDB2B110033DBC1 /* MarketGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6891FDB2B110033DBC1 /* MarketGridView.swift */; };
-		4447F6DC1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F68A1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift */; };
-		4447F6E01FDB2B110033DBC1 /* PreviewGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6921FDB2B110033DBC1 /* PreviewGridCell.swift */; };
-		4447F6E11FDB2B110033DBC1 /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6931FDB2B110033DBC1 /* PreviewModel.swift */; };
-		4447F6E41FDB2B110033DBC1 /* PreviewGridHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6981FDB2B110033DBC1 /* PreviewGridHeaderView.swift */; };
-		4447F6E51FDB2B110033DBC1 /* PreviewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6991FDB2B110033DBC1 /* PreviewGridLayout.swift */; };
-		4447F6E61FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69A1FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift */; };
-		4447F6E71FDB2B110033DBC1 /* PreviewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69B1FDB2B110033DBC1 /* PreviewGridView.swift */; };
 		4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */; };
 		4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A01FDB2B110033DBC1 /* RibbonView.swift */; };
 		4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A61FDB2B110033DBC1 /* TextField+InputType.swift */; };
@@ -67,15 +54,25 @@
 		4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; };
 		4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */; };
 		4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6781FDB2B110033DBC1 /* LabelDemoView.swift */; };
-		4447F7091FDB2B470033DBC1 /* MarketGridCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6871FDB2B110033DBC1 /* MarketGridCellDemoView.swift */; };
-		4447F70A1FDB2B4C0033DBC1 /* MarketGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F68C1FDB2B110033DBC1 /* MarketGridViewDemoView.swift */; };
-		4447F70B1FDB2B4C0033DBC1 /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F68D1FDB2B110033DBC1 /* MarketHelpers.swift */; };
-		4447F70C1FDB2B540033DBC1 /* PreviewGridCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6911FDB2B110033DBC1 /* PreviewGridCellDemoView.swift */; };
-		4447F70D1FDB2B590033DBC1 /* PreviewGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6961FDB2B110033DBC1 /* PreviewGridViewDemoView.swift */; };
-		4447F70E1FDB2B590033DBC1 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6971FDB2B110033DBC1 /* PreviewHelpers.swift */; };
 		4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69E1FDB2B110033DBC1 /* RibbonDemoView.swift */; };
 		4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A51FDB2B110033DBC1 /* TextFieldDemoView.swift */; };
 		4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AA1FDB2B110033DBC1 /* ToastDemoView.swift */; };
+		447AFBDC20982F00000F793E /* PreviewGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBCE20982F00000F793E /* PreviewGridCell.swift */; };
+		447AFBDD20982F00000F793E /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBCF20982F00000F793E /* PreviewModel.swift */; };
+		447AFBDE20982F00000F793E /* PreviewGridHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD120982F00000F793E /* PreviewGridHeaderView.swift */; };
+		447AFBDF20982F00000F793E /* PreviewGridLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD220982F00000F793E /* PreviewGridLayoutConfiguration.swift */; };
+		447AFBE020982F00000F793E /* PreviewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD320982F00000F793E /* PreviewGridView.swift */; };
+		447AFBE120982F00000F793E /* PreviewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD420982F00000F793E /* PreviewGridLayout.swift */; };
+		447AFBE220982F00000F793E /* MarketGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD720982F00000F793E /* MarketGridCell.swift */; };
+		447AFBE320982F00000F793E /* MarketGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBD820982F00000F793E /* MarketGridModel.swift */; };
+		447AFBE420982F00000F793E /* MarketGridViewConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBDA20982F00000F793E /* MarketGridViewConfigurable.swift */; };
+		447AFBE520982F00000F793E /* MarketGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBDB20982F00000F793E /* MarketGridView.swift */; };
+		447AFBE820982F1A000F793E /* MarketGridCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBE720982F1A000F793E /* MarketGridCellDemoView.swift */; };
+		447AFBEC20982F30000F793E /* MarketHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBEA20982F30000F793E /* MarketHelpers.swift */; };
+		447AFBED20982F30000F793E /* MarketGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBEB20982F30000F793E /* MarketGridViewDemoView.swift */; };
+		447AFBF020982F45000F793E /* PreviewGridCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBEF20982F45000F793E /* PreviewGridCellDemoView.swift */; };
+		447AFBF420982F54000F793E /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBF220982F54000F793E /* PreviewHelpers.swift */; };
+		447AFBF520982F54000F793E /* PreviewGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFBF320982F54000F793E /* PreviewGridViewDemoView.swift */; };
 		44898D541FE5B40D00F6017B /* Layout+HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */; };
 		44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */; };
 		44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */; };
@@ -90,12 +87,6 @@
 		44C4E8C31FFBA714000B014D /* Button.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8CA1FFBA714000B014D /* Label+Style.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6751FDB2B110033DBC1 /* Label+Style.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8CB1FFBA714000B014D /* Label.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6761FDB2B110033DBC1 /* Label.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8CE1FFBA714000B014D /* MarketGridCell.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6841FDB2B110033DBC1 /* MarketGridCell.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8CF1FFBA714000B014D /* MarketGridModel.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6851FDB2B110033DBC1 /* MarketGridModel.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8D01FFBA714000B014D /* MarketGridView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6891FDB2B110033DBC1 /* MarketGridView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8D21FFBA714000B014D /* PreviewGridCell.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6921FDB2B110033DBC1 /* PreviewGridCell.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8D31FFBA714000B014D /* PreviewModel.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6931FDB2B110033DBC1 /* PreviewModel.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44C4E8D71FFBA714000B014D /* PreviewGridView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F69B1FDB2B110033DBC1 /* PreviewGridView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8D81FFBA714000B014D /* Ribbon+Style.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8D91FFBA714000B014D /* RibbonView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6A01FDB2B110033DBC1 /* RibbonView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8DA1FFBA714000B014D /* TextField+InputType.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6A61FDB2B110033DBC1 /* TextField+InputType.swift */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -195,8 +186,6 @@
 		441D69981FEA947500CD919A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		441D69991FEA947500CD919A /* LayoutHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutHelpers.swift; sourceTree = "<group>"; };
 		441D699A1FEA947600CD919A /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		441E23AF2088D8F3007BC7F1 /* ResultPageCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultPageCellModel.swift; sourceTree = "<group>"; };
-		441E23B02088D8F3007BC7F1 /* ResultPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultPageCell.swift; sourceTree = "<group>"; };
 		441E23B22088D8F3007BC7F1 /* FavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		441E23B32088D8F3007BC7F1 /* FavoriteCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCellModel.swift; sourceTree = "<group>"; };
 		441E23B52088D8F3007BC7F1 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
@@ -205,7 +194,6 @@
 		441E23B92088D8F3007BC7F1 /* GenericCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCell.swift; sourceTree = "<group>"; };
 		441E23BB2088D8F3007BC7F1 /* YourAdsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourAdsCell.swift; sourceTree = "<group>"; };
 		441E23BC2088D8F3007BC7F1 /* YourAdsCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourAdsCellModel.swift; sourceTree = "<group>"; };
-		441E23C82088D9B9007BC7F1 /* ResultPageCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultPageCellDemoView.swift; sourceTree = "<group>"; };
 		441E23CB2088DA04007BC7F1 /* FavoriteCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCellDemoView.swift; sourceTree = "<group>"; };
 		441E23D62088F250007BC7F1 /* NotificationCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCellDemoView.swift; sourceTree = "<group>"; };
 		441E23D92088F257007BC7F1 /* GenericCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCellDemoView.swift; sourceTree = "<group>"; };
@@ -216,22 +204,6 @@
 		4447F6751FDB2B110033DBC1 /* Label+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Label+Style.swift"; sourceTree = "<group>"; };
 		4447F6761FDB2B110033DBC1 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		4447F6781FDB2B110033DBC1 /* LabelDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDemoView.swift; sourceTree = "<group>"; };
-		4447F6841FDB2B110033DBC1 /* MarketGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
-		4447F6851FDB2B110033DBC1 /* MarketGridModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridModel.swift; sourceTree = "<group>"; };
-		4447F6871FDB2B110033DBC1 /* MarketGridCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellDemoView.swift; sourceTree = "<group>"; };
-		4447F6891FDB2B110033DBC1 /* MarketGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridView.swift; sourceTree = "<group>"; };
-		4447F68A1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewConfigurable.swift; sourceTree = "<group>"; };
-		4447F68C1FDB2B110033DBC1 /* MarketGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewDemoView.swift; sourceTree = "<group>"; };
-		4447F68D1FDB2B110033DBC1 /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
-		4447F6911FDB2B110033DBC1 /* PreviewGridCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCellDemoView.swift; sourceTree = "<group>"; };
-		4447F6921FDB2B110033DBC1 /* PreviewGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCell.swift; sourceTree = "<group>"; };
-		4447F6931FDB2B110033DBC1 /* PreviewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
-		4447F6961FDB2B110033DBC1 /* PreviewGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewDemoView.swift; sourceTree = "<group>"; };
-		4447F6971FDB2B110033DBC1 /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
-		4447F6981FDB2B110033DBC1 /* PreviewGridHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridHeaderView.swift; sourceTree = "<group>"; };
-		4447F6991FDB2B110033DBC1 /* PreviewGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
-		4447F69A1FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
-		4447F69B1FDB2B110033DBC1 /* PreviewGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
 		4447F69E1FDB2B110033DBC1 /* RibbonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonDemoView.swift; sourceTree = "<group>"; };
 		4447F69F1FDB2B110033DBC1 /* Ribbon+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ribbon+Style.swift"; sourceTree = "<group>"; };
 		4447F6A01FDB2B110033DBC1 /* RibbonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RibbonView.swift; sourceTree = "<group>"; };
@@ -254,6 +226,22 @@
 		4447F7151FDB2C100033DBC1 /* TemplateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon.png; sourceTree = "<group>"; };
 		4447F7161FDB2C100033DBC1 /* TemplateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TemplateIcon@2x.png"; sourceTree = "<group>"; };
 		4447F7171FDB2C100033DBC1 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
+		447AFBCE20982F00000F793E /* PreviewGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCell.swift; sourceTree = "<group>"; };
+		447AFBCF20982F00000F793E /* PreviewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
+		447AFBD120982F00000F793E /* PreviewGridHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridHeaderView.swift; sourceTree = "<group>"; };
+		447AFBD220982F00000F793E /* PreviewGridLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayoutConfiguration.swift; sourceTree = "<group>"; };
+		447AFBD320982F00000F793E /* PreviewGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridView.swift; sourceTree = "<group>"; };
+		447AFBD420982F00000F793E /* PreviewGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridLayout.swift; sourceTree = "<group>"; };
+		447AFBD720982F00000F793E /* MarketGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCell.swift; sourceTree = "<group>"; };
+		447AFBD820982F00000F793E /* MarketGridModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridModel.swift; sourceTree = "<group>"; };
+		447AFBDA20982F00000F793E /* MarketGridViewConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewConfigurable.swift; sourceTree = "<group>"; };
+		447AFBDB20982F00000F793E /* MarketGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridView.swift; sourceTree = "<group>"; };
+		447AFBE720982F1A000F793E /* MarketGridCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridCellDemoView.swift; sourceTree = "<group>"; };
+		447AFBEA20982F30000F793E /* MarketHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketHelpers.swift; sourceTree = "<group>"; };
+		447AFBEB20982F30000F793E /* MarketGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketGridViewDemoView.swift; sourceTree = "<group>"; };
+		447AFBEF20982F45000F793E /* PreviewGridCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridCellDemoView.swift; sourceTree = "<group>"; };
+		447AFBF220982F54000F793E /* PreviewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
+		447AFBF320982F54000F793E /* PreviewGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewGridViewDemoView.swift; sourceTree = "<group>"; };
 		44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layout+HelpersTests.swift"; sourceTree = "<group>"; };
 		44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
@@ -453,71 +441,54 @@
 		441E23AD2088D8F3007BC7F1 /* ListViews */ = {
 			isa = PBXGroup;
 			children = (
-				441E23AE2088D8F3007BC7F1 /* ResultPageCell */,
-				441E23B12088D8F3007BC7F1 /* FavoriteCell */,
-				441E23B42088D8F3007BC7F1 /* NotificationCell */,
-				441E23B72088D8F3007BC7F1 /* GenericCell */,
-				441E23BA2088D8F3007BC7F1 /* YourAdsCell */,
+				447AFBD520982F00000F793E /* Market */,
+				447AFBCC20982F00000F793E /* Result */,
+				441E23B12088D8F3007BC7F1 /* Favorite */,
+				441E23B42088D8F3007BC7F1 /* Notification */,
+				441E23B72088D8F3007BC7F1 /* Generic */,
+				441E23BA2088D8F3007BC7F1 /* YourAds */,
 			);
 			path = ListViews;
 			sourceTree = "<group>";
 		};
-		441E23AE2088D8F3007BC7F1 /* ResultPageCell */ = {
-			isa = PBXGroup;
-			children = (
-				441E23C72088D9B9007BC7F1 /* Demo */,
-				441E23B02088D8F3007BC7F1 /* ResultPageCell.swift */,
-				441E23AF2088D8F3007BC7F1 /* ResultPageCellModel.swift */,
-			);
-			path = ResultPageCell;
-			sourceTree = "<group>";
-		};
-		441E23B12088D8F3007BC7F1 /* FavoriteCell */ = {
+		441E23B12088D8F3007BC7F1 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
 				441E23CA2088DA04007BC7F1 /* Demo */,
 				441E23B22088D8F3007BC7F1 /* FavoriteCell.swift */,
 				441E23B32088D8F3007BC7F1 /* FavoriteCellModel.swift */,
 			);
-			path = FavoriteCell;
+			path = Favorite;
 			sourceTree = "<group>";
 		};
-		441E23B42088D8F3007BC7F1 /* NotificationCell */ = {
+		441E23B42088D8F3007BC7F1 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
 				441E23D52088F250007BC7F1 /* Demo */,
 				441E23B52088D8F3007BC7F1 /* NotificationCell.swift */,
 				441E23B62088D8F3007BC7F1 /* NotificationCellModel.swift */,
 			);
-			path = NotificationCell;
+			path = Notification;
 			sourceTree = "<group>";
 		};
-		441E23B72088D8F3007BC7F1 /* GenericCell */ = {
+		441E23B72088D8F3007BC7F1 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
 				441E23D82088F257007BC7F1 /* Demo */,
 				441E23B92088D8F3007BC7F1 /* GenericCell.swift */,
 				441E23B82088D8F3007BC7F1 /* GenericCellModel.swift */,
 			);
-			path = GenericCell;
+			path = Generic;
 			sourceTree = "<group>";
 		};
-		441E23BA2088D8F3007BC7F1 /* YourAdsCell */ = {
+		441E23BA2088D8F3007BC7F1 /* YourAds */ = {
 			isa = PBXGroup;
 			children = (
 				441E23DB2088F25F007BC7F1 /* Demo */,
 				441E23BB2088D8F3007BC7F1 /* YourAdsCell.swift */,
 				441E23BC2088D8F3007BC7F1 /* YourAdsCellModel.swift */,
 			);
-			path = YourAdsCell;
-			sourceTree = "<group>";
-		};
-		441E23C72088D9B9007BC7F1 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				441E23C82088D9B9007BC7F1 /* ResultPageCellDemoView.swift */,
-			);
-			path = Demo;
+			path = YourAds;
 			sourceTree = "<group>";
 		};
 		441E23CA2088DA04007BC7F1 /* Demo */ = {
@@ -578,8 +549,6 @@
 				55C5B27A203DC344007D7277 /* BroadcastContainer */,
 				4447F6651FDB2B110033DBC1 /* Button */,
 				4447F6741FDB2B110033DBC1 /* Label */,
-				4447F6821FDB2B110033DBC1 /* MarketGrid */,
-				4447F68E1FDB2B110033DBC1 /* PreviewGrid */,
 				4447F69C1FDB2B110033DBC1 /* Ribbon */,
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
@@ -619,100 +588,6 @@
 			isa = PBXGroup;
 			children = (
 				4447F6781FDB2B110033DBC1 /* LabelDemoView.swift */,
-			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
-		4447F6821FDB2B110033DBC1 /* MarketGrid */ = {
-			isa = PBXGroup;
-			children = (
-				4447F6831FDB2B110033DBC1 /* MarketGridCell */,
-				4447F6881FDB2B110033DBC1 /* MarketGridView */,
-			);
-			path = MarketGrid;
-			sourceTree = "<group>";
-		};
-		4447F6831FDB2B110033DBC1 /* MarketGridCell */ = {
-			isa = PBXGroup;
-			children = (
-				4447F6861FDB2B110033DBC1 /* Demo */,
-				4447F6841FDB2B110033DBC1 /* MarketGridCell.swift */,
-				4447F6851FDB2B110033DBC1 /* MarketGridModel.swift */,
-			);
-			path = MarketGridCell;
-			sourceTree = "<group>";
-		};
-		4447F6861FDB2B110033DBC1 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				4447F6871FDB2B110033DBC1 /* MarketGridCellDemoView.swift */,
-			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
-		4447F6881FDB2B110033DBC1 /* MarketGridView */ = {
-			isa = PBXGroup;
-			children = (
-				4447F68B1FDB2B110033DBC1 /* Demo */,
-				4447F6891FDB2B110033DBC1 /* MarketGridView.swift */,
-				4447F68A1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift */,
-			);
-			path = MarketGridView;
-			sourceTree = "<group>";
-		};
-		4447F68B1FDB2B110033DBC1 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				4447F68C1FDB2B110033DBC1 /* MarketGridViewDemoView.swift */,
-				4447F68D1FDB2B110033DBC1 /* MarketHelpers.swift */,
-			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
-		4447F68E1FDB2B110033DBC1 /* PreviewGrid */ = {
-			isa = PBXGroup;
-			children = (
-				4447F68F1FDB2B110033DBC1 /* PreviewGridCell */,
-				4447F6941FDB2B110033DBC1 /* PreviewGridView */,
-			);
-			path = PreviewGrid;
-			sourceTree = "<group>";
-		};
-		4447F68F1FDB2B110033DBC1 /* PreviewGridCell */ = {
-			isa = PBXGroup;
-			children = (
-				4447F6901FDB2B110033DBC1 /* Demo */,
-				4447F6921FDB2B110033DBC1 /* PreviewGridCell.swift */,
-				4447F6931FDB2B110033DBC1 /* PreviewModel.swift */,
-			);
-			path = PreviewGridCell;
-			sourceTree = "<group>";
-		};
-		4447F6901FDB2B110033DBC1 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				4447F6911FDB2B110033DBC1 /* PreviewGridCellDemoView.swift */,
-			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
-		4447F6941FDB2B110033DBC1 /* PreviewGridView */ = {
-			isa = PBXGroup;
-			children = (
-				4447F6951FDB2B110033DBC1 /* Demo */,
-				4447F6981FDB2B110033DBC1 /* PreviewGridHeaderView.swift */,
-				4447F6991FDB2B110033DBC1 /* PreviewGridLayout.swift */,
-				4447F69A1FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift */,
-				4447F69B1FDB2B110033DBC1 /* PreviewGridView.swift */,
-			);
-			path = PreviewGridView;
-			sourceTree = "<group>";
-		};
-		4447F6951FDB2B110033DBC1 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				4447F6961FDB2B110033DBC1 /* PreviewGridViewDemoView.swift */,
-				4447F6971FDB2B110033DBC1 /* PreviewHelpers.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -817,6 +692,100 @@
 				4447F7171FDB2C100033DBC1 /* TemplateInfo.plist */,
 			);
 			path = FinniversKitView.xctemplate;
+			sourceTree = "<group>";
+		};
+		447AFBCC20982F00000F793E /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				447AFBCD20982F00000F793E /* Cell */,
+				447AFBD020982F00000F793E /* ListView */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		447AFBCD20982F00000F793E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				447AFBEE20982F45000F793E /* Demo */,
+				447AFBCE20982F00000F793E /* PreviewGridCell.swift */,
+				447AFBCF20982F00000F793E /* PreviewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		447AFBD020982F00000F793E /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				447AFBF120982F54000F793E /* Demo */,
+				447AFBD120982F00000F793E /* PreviewGridHeaderView.swift */,
+				447AFBD220982F00000F793E /* PreviewGridLayoutConfiguration.swift */,
+				447AFBD320982F00000F793E /* PreviewGridView.swift */,
+				447AFBD420982F00000F793E /* PreviewGridLayout.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		447AFBD520982F00000F793E /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				447AFBD620982F00000F793E /* Cell */,
+				447AFBD920982F00000F793E /* ListView */,
+			);
+			path = Market;
+			sourceTree = "<group>";
+		};
+		447AFBD620982F00000F793E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				447AFBE620982F1A000F793E /* Demo */,
+				447AFBD720982F00000F793E /* MarketGridCell.swift */,
+				447AFBD820982F00000F793E /* MarketGridModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		447AFBD920982F00000F793E /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				447AFBE920982F30000F793E /* Demo */,
+				447AFBDA20982F00000F793E /* MarketGridViewConfigurable.swift */,
+				447AFBDB20982F00000F793E /* MarketGridView.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		447AFBE620982F1A000F793E /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				447AFBE720982F1A000F793E /* MarketGridCellDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		447AFBE920982F30000F793E /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				447AFBEA20982F30000F793E /* MarketHelpers.swift */,
+				447AFBEB20982F30000F793E /* MarketGridViewDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		447AFBEE20982F45000F793E /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				447AFBEF20982F45000F793E /* PreviewGridCellDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		447AFBF120982F54000F793E /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				447AFBF220982F54000F793E /* PreviewHelpers.swift */,
+				447AFBF320982F54000F793E /* PreviewGridViewDemoView.swift */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		44898D591FE5B9C200F6017B /* Extensions */ = {
@@ -1046,12 +1015,6 @@
 				44C4E8C31FFBA714000B014D /* Button.swift in Headers */,
 				44C4E8CA1FFBA714000B014D /* Label+Style.swift in Headers */,
 				44C4E8CB1FFBA714000B014D /* Label.swift in Headers */,
-				44C4E8CE1FFBA714000B014D /* MarketGridCell.swift in Headers */,
-				44C4E8CF1FFBA714000B014D /* MarketGridModel.swift in Headers */,
-				44C4E8D01FFBA714000B014D /* MarketGridView.swift in Headers */,
-				44C4E8D21FFBA714000B014D /* PreviewGridCell.swift in Headers */,
-				44C4E8D31FFBA714000B014D /* PreviewModel.swift in Headers */,
-				44C4E8D71FFBA714000B014D /* PreviewGridView.swift in Headers */,
 				44C4E8D81FFBA714000B014D /* Ribbon+Style.swift in Headers */,
 				44C4E8D91FFBA714000B014D /* RibbonView.swift in Headers */,
 				44C4E8DA1FFBA714000B014D /* TextField+InputType.swift in Headers */,
@@ -1240,35 +1203,34 @@
 				44D9126A2077AD0200486848 /* ConsentViewDefaultData.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */,
-				4447F70A1FDB2B4C0033DBC1 /* MarketGridViewDemoView.swift in Sources */,
 				AF91BB9F202C868E003E6366 /* BroadcastDemoView.swift in Sources */,
 				44D912772077AD1800486848 /* LoginViewDefaultData.swift in Sources */,
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
-				4447F70E1FDB2B590033DBC1 /* PreviewHelpers.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
-				4447F70C1FDB2B540033DBC1 /* PreviewGridCellDemoView.swift in Sources */,
-				4447F70D1FDB2B590033DBC1 /* PreviewGridViewDemoView.swift in Sources */,
 				44D912702077AD0C00486848 /* RegisterViewDemoView.swift in Sources */,
 				1457254B1FBEEF6A00648D73 /* MarketView.swift in Sources */,
+				447AFBE820982F1A000F793E /* MarketGridCellDemoView.swift in Sources */,
 				44D9126B2077AD0200486848 /* ConsentViewDemoView.swift in Sources */,
-				441E23C92088D9B9007BC7F1 /* ResultPageCellDemoView.swift in Sources */,
 				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
 				44D9126F2077AD0C00486848 /* RegisterViewDefaultData.swift in Sources */,
+				447AFBF020982F45000F793E /* PreviewGridCellDemoView.swift in Sources */,
 				441E23DD2088F25F007BC7F1 /* YourAdsCellDemoView.swift in Sources */,
 				4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */,
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				441E23D72088F250007BC7F1 /* NotificationCellDemoView.swift in Sources */,
 				44D912782077AD1800486848 /* LoginViewDemoView.swift in Sources */,
+				447AFBF420982F54000F793E /* PreviewHelpers.swift in Sources */,
 				441E23DA2088F257007BC7F1 /* GenericCellDemoView.swift in Sources */,
+				447AFBEC20982F30000F793E /* MarketHelpers.swift in Sources */,
 				4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */,
+				447AFBF520982F54000F793E /* PreviewGridViewDemoView.swift in Sources */,
+				447AFBED20982F30000F793E /* MarketGridViewDemoView.swift in Sources */,
 				441E23CC2088DA04007BC7F1 /* FavoriteCellDemoView.swift in Sources */,
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
-				4447F70B1FDB2B4C0033DBC1 /* MarketHelpers.swift in Sources */,
-				4447F7091FDB2B470033DBC1 /* MarketGridCellDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1292,29 +1254,34 @@
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
+				447AFBE020982F00000F793E /* PreviewGridView.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
+				447AFBDC20982F00000F793E /* PreviewGridCell.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
-				4447F6DC1FDB2B110033DBC1 /* MarketGridViewConfigurable.swift in Sources */,
 				441E23C12088D8F3007BC7F1 /* NotificationCell.swift in Sources */,
+				447AFBE420982F00000F793E /* MarketGridViewConfigurable.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				44D912662077AC8A00486848 /* LoginView.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
-				4447F6E01FDB2B110033DBC1 /* PreviewGridCell.swift in Sources */,
 				441E23BF2088D8F3007BC7F1 /* FavoriteCell.swift in Sources */,
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				44D9125E2077AC8A00486848 /* RegisterViewModel.swift in Sources */,
+				447AFBE220982F00000F793E /* MarketGridCell.swift in Sources */,
 				44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */,
-				4447F6E61FDB2B110033DBC1 /* PreviewGridLayoutConfiguration.swift in Sources */,
+				447AFBE520982F00000F793E /* MarketGridView.swift in Sources */,
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
+				447AFBE120982F00000F793E /* PreviewGridLayout.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,
 				441E23C42088D8F3007BC7F1 /* GenericCell.swift in Sources */,
+				447AFBE320982F00000F793E /* MarketGridModel.swift in Sources */,
+				447AFBDE20982F00000F793E /* PreviewGridHeaderView.swift in Sources */,
 				55C5B274203D8E20007D7277 /* BroadcastContainer.swift in Sources */,
 				44D912612077AC8A00486848 /* RoundedRectangleView.swift in Sources */,
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
@@ -1323,19 +1290,13 @@
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* Broadcast.swift in Sources */,
-				4447F6E71FDB2B110033DBC1 /* PreviewGridView.swift in Sources */,
-				4447F6E41FDB2B110033DBC1 /* PreviewGridHeaderView.swift in Sources */,
-				441E23BE2088D8F3007BC7F1 /* ResultPageCell.swift in Sources */,
 				441E23C62088D8F3007BC7F1 /* YourAdsCellModel.swift in Sources */,
 				441E23C02088D8F3007BC7F1 /* FavoriteCellModel.swift in Sources */,
-				4447F6DB1FDB2B110033DBC1 /* MarketGridView.swift in Sources */,
 				44D9125C2077AC8A00486848 /* ConsentViewModel.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
-				4447F6D81FDB2B110033DBC1 /* MarketGridCell.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
-				4447F6E11FDB2B110033DBC1 /* PreviewModel.swift in Sources */,
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
 				44D9125B2077AC8A00486848 /* ConsentView.swift in Sources */,
 				44D912652077AC8A00486848 /* LoginViewModel.swift in Sources */,
@@ -1343,10 +1304,9 @@
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
 				559FD9BA205122A200A101B0 /* BroadcastModel.swift in Sources */,
+				447AFBDD20982F00000F793E /* PreviewModel.swift in Sources */,
 				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
-				4447F6E51FDB2B110033DBC1 /* PreviewGridLayout.swift in Sources */,
-				441E23BD2088D8F3007BC7F1 /* ResultPageCellModel.swift in Sources */,
-				4447F6D91FDB2B110033DBC1 /* MarketGridModel.swift in Sources */,
+				447AFBDF20982F00000F793E /* PreviewGridLayoutConfiguration.swift in Sources */,
 				441E23C52088D8F3007BC7F1 /* YourAdsCell.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
 			);

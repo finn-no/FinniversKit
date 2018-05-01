@@ -125,7 +125,6 @@ enum ComponentViews: String {
     case toastDemoView
     case switchViewDemoView
     case inlineConsentDemoView
-    case resultPageCellDemoView
 
     var viewController: UIViewController {
         switch self {
@@ -147,8 +146,6 @@ enum ComponentViews: String {
             return ViewController<SwitchViewDemoView>()
         case .inlineConsentDemoView:
             return ViewController<InlineConsentDemoView>()
-        case .resultPageCellDemoView:
-            return ViewController<ResultPageCellDemoView>()
         }
     }
 
@@ -163,7 +160,6 @@ enum ComponentViews: String {
             .toastDemoView,
             .switchViewDemoView,
             .inlineConsentDemoView,
-            .resultPageCellDemoView,
         ]
     }
 }
