@@ -28,40 +28,33 @@ public class GridPreviewListViewDemoView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         view.fillInSuperview()
-
-        NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            view.topAnchor.constraint(equalTo: topAnchor),
-            view.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
     }
 }
 
 extension GridPreviewListViewDemoView: GridPreviewListViewDelegate {
-    public func didSelect(itemAtIndex index: Int, inGridPreviewListView gridView: GridPreviewListView) {
+    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didSelectItemAtIndex index: Int) {
         // Not in use
     }
 
-    public func willDisplay(itemAtIndex index: Int, inGridPreviewListView gridView: GridPreviewListView) {
+    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, willDisplayItemAtIndex index: Int) {
         // Don't care
     }
 
-    public func didScroll(gridScrollView: UIScrollView) {
+    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didScrollInScrollView scrollView: UIScrollView) {
         // Don't care
     }
 }
 
 extension GridPreviewListViewDemoView: GridPreviewListViewDataSource {
-    public func numberOfItems(inGridPreviewListView previewGridView: GridPreviewListView) -> Int {
+    public func numberOfItems(inGridPreviewListView gridPreviewListView: GridPreviewListView) -> Int {
         return dataSource.models.count
     }
 
-    public func previewGridView(_ previewGridView: GridPreviewListView, modelAtIndex index: Int) -> GridPreviewListViewModel {
+    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, modelAtIndex index: Int) -> GridPreviewListViewModel {
         return dataSource.models[index]
     }
 
-    public func loadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, loadImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
@@ -80,7 +73,7 @@ extension GridPreviewListViewDemoView: GridPreviewListViewDataSource {
         task.resume()
     }
 
-    public func cancelLoadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat) {
+    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) {
         // No point in doing this in demo
     }
 }

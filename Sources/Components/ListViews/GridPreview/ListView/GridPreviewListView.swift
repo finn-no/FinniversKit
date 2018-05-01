@@ -5,16 +5,16 @@
 import UIKit
 
 public protocol GridPreviewListViewDelegate: NSObjectProtocol {
-    func didSelect(itemAtIndex index: Int, inGridPreviewListView gridView: GridPreviewListView)
-    func willDisplay(itemAtIndex index: Int, inGridPreviewListView gridView: GridPreviewListView)
-    func didScroll(gridScrollView: UIScrollView)
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didSelectItemAtIndex index: Int)
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, willDisplayItemAtIndex index: Int)
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didScrollInScrollView scrollView: UIScrollView)
 }
 
 public protocol GridPreviewListViewDataSource: NSObjectProtocol {
-    func numberOfItems(inGridPreviewListView previewGridView: GridPreviewListView) -> Int
-    func previewGridView(_ previewGridView: GridPreviewListView, modelAtIndex index: Int) -> GridPreviewListViewModel
-    func loadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-    func cancelLoadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat)
+    func numberOfItems(inGridPreviewListView gridPreviewListView: GridPreviewListView) -> Int
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, modelAtIndex index: Int) -> GridPreviewListViewModel
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, loadImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat)
 }
 
 public class GridPreviewListView: UIView {
@@ -93,11 +93,11 @@ public class GridPreviewListView: UIView {
 
 extension GridPreviewListView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelect(itemAtIndex: indexPath.row, inGridPreviewListView: self)
+        delegate?.gridPreviewListView(self, didSelectItemAtIndex: indexPath.row)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegate?.didScroll(gridScrollView: scrollView)
+        delegate?.gridPreviewListView(self, didScrollInScrollView: scrollView)
     }
 }
 
@@ -122,7 +122,7 @@ extension GridPreviewListView: UICollectionViewDataSource {
         cell.loadingColor = color
         cell.dataSource = self
 
-        if let model = dataSource?.previewGridView(self, modelAtIndex: indexPath.row) {
+        if let model = dataSource?.gridPreviewListView(self, modelAtIndex: indexPath.row) {
             cell.model = model
         }
 
@@ -134,7 +134,7 @@ extension GridPreviewListView: UICollectionViewDataSource {
             cell.loadImage()
         }
 
-        delegate?.willDisplay(itemAtIndex: indexPath.row, inGridPreviewListView: self)
+        delegate?.gridPreviewListView(self, willDisplayItemAtIndex: indexPath.row)
     }
 
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -153,23 +153,23 @@ extension GridPreviewListView: UICollectionViewDataSource {
 
 extension GridPreviewListView: GridPreviewCellDataSource {
     public func loadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        dataSource?.loadImage(for: model, imageWidth: imageWidth, completion: completion)
+        dataSource?.gridPreviewListView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 
     public func cancelLoadImage(for model: GridPreviewListViewModel, imageWidth: CGFloat) {
-        dataSource?.cancelLoadImage(for: model, imageWidth: imageWidth)
+        dataSource?.gridPreviewListView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
     }
 }
 
 // MARK: - GridPreviewListViewLayoutDelegate
 
 extension GridPreviewListView: GridPreviewListViewLayoutDelegate {
-    func heightForHeaderView(inCollectionView collectionView: UICollectionView) -> CGFloat? {
+    func gridPreviewListViewLayout(_ gridPreviewListViewLayout: GridPreviewListViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat? {
         return headerView?.frame.size.height
     }
 
-    func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        guard let model = dataSource?.previewGridView(self, modelAtIndex: indexPath.row), model.imageSize != .zero, model.imagePath != nil else {
+    func gridPreviewListViewLayout(_ gridPreviewListViewLayout: GridPreviewListViewLayout, imageHeightRatioForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
+        guard let model = dataSource?.gridPreviewListView(self, modelAtIndex: indexPath.row), model.imageSize != .zero, model.imagePath != nil else {
             let defaultImageSize = CGSize(width: 104, height: 78)
             return defaultImageSize.height / defaultImageSize.width
         }
@@ -177,7 +177,7 @@ extension GridPreviewListView: GridPreviewListViewLayoutDelegate {
         return model.imageSize.height / model.imageSize.width
     }
 
-    func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
+    func gridPreviewListViewLayout(_ gridPreviewListViewLayout: GridPreviewListViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
         return GridPreviewCell.nonImageHeight
     }
 }
