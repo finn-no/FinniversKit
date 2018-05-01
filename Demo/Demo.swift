@@ -174,6 +174,7 @@ enum ComponentViews: String {
 }
 
 enum FullscreenViews: String {
+    case frontpageViewDemoView
     case registerViewDemoView
     case consentViewDemoView
     case emptyViewDemoView
@@ -181,6 +182,8 @@ enum FullscreenViews: String {
 
     var viewController: UIViewController {
         switch self {
+        case .frontpageViewDemoView:
+            return ViewController<FrontpageViewDemoView>()
         case .registerViewDemoView:
             return ViewController<RegisterViewDemoView>()
         case .loginViewDemoView:
@@ -194,6 +197,7 @@ enum FullscreenViews: String {
 
     static var all: [FullscreenViews] {
         return [
+            .frontpageViewDemoView,
             .registerViewDemoView,
             .consentViewDemoView,
             .emptyViewDemoView,
