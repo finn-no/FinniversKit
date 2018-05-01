@@ -615,37 +615,21 @@
 		447AFC1420984F33000F793E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				447AFC1520984F33000F793E /* Demo */,
 				447AFC1620984F33000F793E /* GridPreviewView.swift */,
 				447AFC1720984F33000F793E /* GridPreviewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		447AFC1520984F33000F793E /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
 		447AFC1820984F33000F793E /* ListView */ = {
 			isa = PBXGroup;
 			children = (
-				447AFC1920984F33000F793E /* Demo */,
 				447AFC1A20984F33000F793E /* GridPreviewHeaderView.swift */,
 				447AFC1B20984F33000F793E /* GridPreviewLayoutConfiguration.swift */,
 				447AFC1C20984F33000F793E /* GridPreviewListViewLayout.swift */,
 				447AFC1D20984F33000F793E /* GridPreviewListView.swift */,
 			);
 			path = ListView;
-			sourceTree = "<group>";
-		};
-		447AFC1920984F33000F793E /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Demo;
 			sourceTree = "<group>";
 		};
 		447AFC1E20984F33000F793E /* Model */ = {
@@ -679,18 +663,10 @@
 		447AFC2420984F33000F793E /* ListView */ = {
 			isa = PBXGroup;
 			children = (
-				447AFC2520984F33000F793E /* Demo */,
 				447AFC2620984F33000F793E /* MarketListViewLayoutConfiguration.swift */,
 				447AFC2720984F33000F793E /* MarketListView.swift */,
 			);
 			path = ListView;
-			sourceTree = "<group>";
-		};
-		447AFC2520984F33000F793E /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Demo;
 			sourceTree = "<group>";
 		};
 		447AFC2820984F33000F793E /* Model */ = {
