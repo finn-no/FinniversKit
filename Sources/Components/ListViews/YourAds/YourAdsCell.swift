@@ -95,7 +95,7 @@ public class YourAdsCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
-    public var model: MarketGridModel? {
+    public var model: MarketListViewModel? {
         didSet {
             iconImageView.image = model?.iconImage
             titleLabel.text = model?.title

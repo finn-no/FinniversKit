@@ -162,7 +162,7 @@ extension MarketView: MarketGridViewDataSource {
         return marketGridModels.count
     }
 
-    func marketGridView(_ marketGridView: MarketGridView, modelAtIndex index: Int) -> MarketGridModel {
+    func marketGridView(_ marketGridView: MarketGridView, modelAtIndex index: Int) -> MarketListViewModel {
         return marketGridModels[index]
     }
 }

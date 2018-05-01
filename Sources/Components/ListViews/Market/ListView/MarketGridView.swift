@@ -10,7 +10,7 @@ public protocol MarketGridViewDelegate: NSObjectProtocol {
 
 public protocol MarketGridViewDataSource: NSObjectProtocol {
     func numberOfItems(inMarketGridView marketGridView: MarketGridView) -> Int
-    func marketGridView(_ marketGridView: MarketGridView, modelAtIndex index: Int) -> MarketGridModel
+    func marketGridView(_ marketGridView: MarketGridView, modelAtIndex index: Int) -> MarketListViewModel
 }
 
 public class MarketGridView: UIView {
@@ -51,7 +51,7 @@ public class MarketGridView: UIView {
     }
 
     private func setup() {
-        collectionView.register(MarketGridCell.self)
+        collectionView.register(MarketCell.self)
         addSubview(collectionView)
 
         NSLayoutConstraint.activate([
@@ -139,7 +139,7 @@ extension MarketGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(MarketGridCell.self, for: indexPath)
+        let cell = collectionView.dequeue(MarketCell.self, for: indexPath)
 
         if let model = dataSource?.marketGridView(self, modelAtIndex: indexPath.row) {
             cell.model = model

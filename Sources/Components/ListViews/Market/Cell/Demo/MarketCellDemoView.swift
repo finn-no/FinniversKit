@@ -5,7 +5,7 @@
 import FinniversKit
 import UIKit
 
-public class MarketGridCellDemoView: UIView {
+public class MarketCellDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -15,7 +15,7 @@ public class MarketGridCellDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let marketGridCell = MarketGridCell(frame: .zero)
+        let marketGridCell = MarketCell(frame: .zero)
         marketGridCell.translatesAutoresizingMaskIntoConstraints = false
         let model = Market.moteplassen
 
