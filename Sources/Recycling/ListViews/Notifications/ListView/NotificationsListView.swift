@@ -69,7 +69,7 @@ public class NotificationsListView: UIView {
 
     private func setup() {
         collectionView.register(NotificationsListViewCell.self, forCellWithReuseIdentifier: String(describing: NotificationsListViewCell.self))
-        collectionView.register(AdsGridHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: AdsGridHeaderView.self))
+        collectionView.register(NotificationsListHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: NotificationsListHeaderView.self))
         addSubview(collectionView)
         collectionView.fillInSuperview()
     }
@@ -142,7 +142,7 @@ extension NotificationsListView: UICollectionViewDataSource {
             fatalError("Suplementary view of kind '\(kind)' not supported.")
         }
 
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: AdsGridHeaderView.self), for: indexPath) as! AdsGridHeaderView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: NotificationsListHeaderView.self), for: indexPath) as! NotificationsListHeaderView
         header.contentView = headerView
 
         return header

@@ -6,13 +6,13 @@ import FinniversKit
 import UIKit
 
 /// For use with NotificationsListView.
-public class GridPreviewDataSource: NSObject {
-    let models = GridPreviewFactory.create(numberOfModels: 9)
+public class NotificationDataSource: NSObject {
+    let models = NotificationFactory.create(numberOfModels: 9)
 }
 
 public class NotificationsListViewDemoView: UIView {
-    lazy var dataSource: GridPreviewDataSource = {
-        return GridPreviewDataSource()
+    lazy var dataSource: NotificationDataSource = {
+        return NotificationDataSource()
     }()
 
     override init(frame: CGRect) {
