@@ -21,6 +21,9 @@ public protocol NotificationsListViewDataSource: NSObjectProtocol {
 }
 
 public class NotificationsListView: UIView {
+    public static let estimatedRowHeight: CGFloat = 106.0
+    public static let estimatedSectionHeaderHeight: CGFloat = 60.0
+    public static let estimatedSectionFooterHeight: CGFloat = 70.0
 
     // MARK: - Internal properties
 
@@ -31,8 +34,10 @@ public class NotificationsListView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .white
-        tableView.rowHeight = NotificationsListViewCell.cellHeight
-        tableView.estimatedRowHeight = NotificationsListViewCell.cellHeight
+        tableView.rowHeight = NotificationsListView.estimatedRowHeight
+        tableView.estimatedRowHeight = NotificationsListView.estimatedRowHeight
+        tableView.estimatedSectionHeaderHeight = NotificationsListView.estimatedSectionHeaderHeight
+        tableView.estimatedSectionFooterHeight = NotificationsListView.estimatedSectionFooterHeight
         return tableView
     }()
 
@@ -62,6 +67,8 @@ public class NotificationsListView: UIView {
 
     private func setup() {
         tableView.register(NotificationsListViewCell.self)
+        tableView.register(NotificationsListHeaderView.self)
+        tableView.register(NotificationsListFooterView.self)
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -88,12 +95,25 @@ extension NotificationsListView: UITableViewDelegate {
         delegate?.notificationsListView(self, didScrollInScrollView: scrollView)
     }
 
-    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return delegate?.notificationsListView(self, titleForHeaderInSection: section)
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return NotificationsListView.estimatedSectionHeaderHeight
     }
 
-    public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return delegate?.notificationsListView(self, titleForFooterInSection: section)
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return NotificationsListView.estimatedSectionFooterHeight
+    }
+
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeue(NotificationsListHeaderView.self)
+        headerView.titleLabel.text = "Nye treff i \"Sogn og Fjordane+Møre og Romsdal+Nordland+Treff\""
+        headerView.dateLabel.text = "1 minutt siden"
+        return headerView
+    }
+
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = tableView.dequeue(NotificationsListFooterView.self)
+        footerView.titleLabel.text = "Viser 3 av 223 nye annonser"
+        return footerView
     }
 }
 

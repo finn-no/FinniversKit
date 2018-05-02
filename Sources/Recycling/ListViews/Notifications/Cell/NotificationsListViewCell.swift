@@ -19,8 +19,6 @@ public class NotificationsListViewCell: UITableViewCell {
     /// A data source for the loading of the image
     public weak var dataSource: NotificationsListViewCellDataSource?
 
-    public static let cellHeight: CGFloat = 106.0
-
     // MARK: - Internal properties
 
     private static let titleHeight: CGFloat = 20.0
