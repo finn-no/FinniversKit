@@ -109,7 +109,11 @@ extension NotificationsListView: UITableViewDelegate {
         let headerView = tableView.dequeue(NotificationsListHeaderView.self)
         headerView.delegate = self
         headerView.section = section
-        headerView.titleLabel.text = "Nye treff i \"Sogn og Fjordane+Møre og Romsdal+Nordland+Treff\""
+
+        let stringValue = "Nye treff i \"Sogn og Fjordane+Møre og Romsdal+Nordland+Treff\""
+        let attributedString = NSMutableAttributedString(string: stringValue)
+        attributedString.setColor(color: .primaryBlue, forText: "\"Sogn og Fjordane+Møre og Romsdal+Nordland+Treff\"")
+        headerView.titleLabel.attributedText = attributedString
         headerView.dateLabel.text = "1 m siden"
         return headerView
     }
@@ -183,5 +187,12 @@ extension NotificationsListView: NotificationsListHeaderViewDelegate {
 extension NotificationsListView: NotificationsListFooterViewDelegate {
     public func notificationsListFooterView(_ notificationsListFooterView: NotificationsListFooterView, didSelectFooterViewAtSection section: Int) {
         delegate?.notificationsListView(self, didSelectFooterAtSection: section)
+    }
+}
+
+extension NSMutableAttributedString {
+    func setColor(color: UIColor, forText stringValue: String) {
+        let range: NSRange = mutableString.range(of: stringValue, options: .caseInsensitive)
+        addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
     }
 }

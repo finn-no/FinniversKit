@@ -13,7 +13,7 @@ public class NotificationsListFooterView: UITableViewHeaderFooterView {
     var section: Int = 0
 
     lazy var titleLabel: UILabel = {
-        let label = Label(style: .detail(.licorice))
+        let label = Label(style: .detail(.primaryBlue))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
