@@ -108,6 +108,7 @@ extension NotificationsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeue(NotificationsListHeaderView.self)
         headerView.delegate = self
+        headerView.section = section
         headerView.titleLabel.text = "Nye treff i \"Sogn og Fjordane+Møre og Romsdal+Nordland+Treff\""
         headerView.dateLabel.text = "1 minutt siden"
         return headerView
@@ -115,6 +116,8 @@ extension NotificationsListView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = tableView.dequeue(NotificationsListFooterView.self)
+        footerView.delegate = self
+        footerView.section = section
         footerView.titleLabel.text = "Viser 3 av 223 nye annonser"
         return footerView
     }
@@ -173,7 +176,7 @@ extension NotificationsListView: NotificationsListViewCellDataSource {
 
 extension NotificationsListView: NotificationsListHeaderViewDelegate {
     public func notificationsListHeaderView(_ notificationsListHeaderView: NotificationsListHeaderView, didSelectHeaderViewAtSection section: Int) {
-            delegate?.notificationsListView(self, didSelectHeaderAtSection: section)
+        delegate?.notificationsListView(self, didSelectHeaderAtSection: section)
     }
 }
 

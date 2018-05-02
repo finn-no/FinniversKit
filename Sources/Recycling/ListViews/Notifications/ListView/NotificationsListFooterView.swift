@@ -8,7 +8,10 @@ protocol NotificationsListFooterViewDelegate: class {
     func notificationsListFooterView(_ notificationsListFooterView: NotificationsListFooterView, didSelectFooterViewAtSection section: Int)
 }
 
-class NotificationsListFooterView: UITableViewHeaderFooterView {
+public class NotificationsListFooterView: UITableViewHeaderFooterView {
+    weak var delegate: NotificationsListFooterViewDelegate?
+    var section: Int = 0
+
     lazy var titleLabel: UILabel = {
         let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +25,7 @@ class NotificationsListFooterView: UITableViewHeaderFooterView {
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         setup()
@@ -39,8 +42,8 @@ class NotificationsListFooterView: UITableViewHeaderFooterView {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
         ])
     }
-    
+
     @objc func tapped() {
-        delegate?.notificationsListHeaderView(self, didSelectFooterViewAtSection: section)
+        delegate?.notificationsListFooterView(self, didSelectFooterViewAtSection: section)
     }
 }

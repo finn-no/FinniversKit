@@ -47,6 +47,10 @@ extension NotificationsListViewDemoView: NotificationsListViewDelegate {
         let group = dataSource.groups[section]
         return String(describing: group.totalNumberOfElements)
     }
+
+    public func notificationsListView(_ notificationsListView: NotificationsListView, didSelectHeaderAtSection section: Int) {}
+
+    public func notificationsListView(_ notificationsListView: NotificationsListView, didSelectFooterAtSection section: Int) {}
 }
 
 extension NotificationsListViewDemoView: NotificationsListViewDataSource {
