@@ -38,16 +38,6 @@ extension NotificationsListViewDemoView: NotificationsListViewDelegate {
 
     public func notificationsListView(_ notificationsListView: NotificationsListView, didScrollInScrollView scrollView: UIScrollView) {}
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, titleForHeaderInSection section: Int) -> String? {
-        let group = dataSource.groups[section]
-        return group.title
-    }
-
-    public func notificationsListView(_ notificationsListView: NotificationsListView, titleForFooterInSection section: Int) -> String? {
-        let group = dataSource.groups[section]
-        return String(describing: group.totalNumberOfElements)
-    }
-
     public func notificationsListView(_ notificationsListView: NotificationsListView, didSelectHeaderAtSection section: Int) {}
 
     public func notificationsListView(_ notificationsListView: NotificationsListView, didSelectFooterAtSection section: Int) {}
@@ -61,6 +51,10 @@ extension NotificationsListViewDemoView: NotificationsListViewDataSource {
     public func notificationsListView(_ notificationsListView: NotificationsListView, numberOfItemsInSection section: Int) -> Int {
         let group = dataSource.groups[section]
         return group.notifications.count
+    }
+
+    public func notificationsListView(_ notificationsListView: NotificationsListView, groupModelAtSection section: Int) -> NotificationsGroupListViewModel {
+        return dataSource.groups[section]
     }
 
     public func notificationsListView(_ notificationsListView: NotificationsListView, modelAtIndexPath indexPath: IndexPath) -> NotificationsListViewModel {

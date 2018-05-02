@@ -8,8 +8,6 @@ public protocol NotificationsListViewDelegate: NSObjectProtocol {
     func notificationsListView(_ notificationsListView: NotificationsListView, didSelectItemAtIndexPath indexPath: IndexPath)
     func notificationsListView(_ notificationsListView: NotificationsListView, willDisplayItemAtIndexPath indexPath: IndexPath)
     func notificationsListView(_ notificationsListView: NotificationsListView, didScrollInScrollView scrollView: UIScrollView)
-    func notificationsListView(_ notificationsListView: NotificationsListView, titleForHeaderInSection section: Int) -> String?
-    func notificationsListView(_ notificationsListView: NotificationsListView, titleForFooterInSection section: Int) -> String?
     func notificationsListView(_ notificationsListView: NotificationsListView, didSelectHeaderAtSection section: Int)
     func notificationsListView(_ notificationsListView: NotificationsListView, didSelectFooterAtSection section: Int)
 }
@@ -17,6 +15,7 @@ public protocol NotificationsListViewDelegate: NSObjectProtocol {
 public protocol NotificationsListViewDataSource: NSObjectProtocol {
     func numberOfSections(inNotificationsListView notificationsListView: NotificationsListView) -> Int
     func notificationsListView(_ notificationsListView: NotificationsListView, numberOfItemsInSection section: Int) -> Int
+    func notificationsListView(_ notificationsListView: NotificationsListView, groupModelAtSection section: Int) -> NotificationsGroupListViewModel
     func notificationsListView(_ notificationsListView: NotificationsListView, modelAtIndexPath indexPath: IndexPath) -> NotificationsListViewModel
     func notificationsListView(_ notificationsListView: NotificationsListView, loadImageForModel model: NotificationsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func notificationsListView(_ notificationsListView: NotificationsListView, cancelLoadingImageForModel model: NotificationsListViewModel, imageWidth: CGFloat)
@@ -106,23 +105,26 @@ extension NotificationsListView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let group = dataSource?.notificationsListView(self, groupModelAtSection: section) else {
+            return nil
+        }
+
         let headerView = tableView.dequeue(NotificationsListHeaderView.self)
         headerView.delegate = self
         headerView.section = section
-
-        let stringValue = "Nye treff i \"Sogn og Fjordane+Møre og Romsdal+Nordland+Treff\""
-        let attributedString = NSMutableAttributedString(string: stringValue)
-        attributedString.setColor(color: .primaryBlue, forText: "\"Sogn og Fjordane+Møre og Romsdal+Nordland+Treff\"")
-        headerView.titleLabel.attributedText = attributedString
-        headerView.dateLabel.text = "1 m siden"
+        headerView.group = group
         return headerView
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let group = dataSource?.notificationsListView(self, groupModelAtSection: section) else {
+            return nil
+        }
+
         let footerView = tableView.dequeue(NotificationsListFooterView.self)
         footerView.delegate = self
         footerView.section = section
-        footerView.titleLabel.text = "Viser 3 av 223 nye annonser"
+        footerView.group = group
         return footerView
     }
 }
@@ -187,12 +189,5 @@ extension NotificationsListView: NotificationsListHeaderViewDelegate {
 extension NotificationsListView: NotificationsListFooterViewDelegate {
     public func notificationsListFooterView(_ notificationsListFooterView: NotificationsListFooterView, didSelectFooterViewAtSection section: Int) {
         delegate?.notificationsListView(self, didSelectFooterAtSection: section)
-    }
-}
-
-extension NSMutableAttributedString {
-    func setColor(color: UIColor, forText stringValue: String) {
-        let range: NSRange = mutableString.range(of: stringValue, options: .caseInsensitive)
-        addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
     }
 }

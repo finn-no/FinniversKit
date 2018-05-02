@@ -4,6 +4,13 @@
 
 import Foundation
 
+public protocol NotificationsGroupListViewModel {
+    var attributedTitle: NSAttributedString { get }
+    var timeAgo: String { get }
+    var footerAction: String { get }
+    var notifications: [NotificationsListViewModel] { get }
+}
+
 public protocol NotificationsListViewModel {
     var imagePath: String? { get }
     var imageSize: CGSize { get }

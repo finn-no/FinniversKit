@@ -46,4 +46,13 @@ public class NotificationsListFooterView: UITableViewHeaderFooterView {
     @objc func tapped() {
         delegate?.notificationsListFooterView(self, didSelectFooterViewAtSection: section)
     }
+
+    // MARK: - Dependency injection
+
+    /// The model contains data used to populate the view.
+    public var group: NotificationsGroupListViewModel? {
+        didSet {
+            titleLabel.text = group?.footerAction
+        }
+    }
 }

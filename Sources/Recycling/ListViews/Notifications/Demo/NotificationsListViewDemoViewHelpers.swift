@@ -5,11 +5,11 @@
 import FinniversKit
 import Foundation
 
-public struct NotificationGroup {
-    public var title: String
-    public var receivedDate: Date
-    public var totalNumberOfElements: Int
-    public var notifications: [Notification]
+public struct NotificationGroup: NotificationsGroupListViewModel {
+    public var attributedTitle: NSAttributedString
+    public var timeAgo: String
+    public var footerAction: String
+    public var notifications: [NotificationsListViewModel]
 }
 
 /// A model confirming to the NotificationsListViewModel protocol for showcasing NotificationsListViewCell in playground.
@@ -44,8 +44,24 @@ public struct NotificationFactory {
                 let title = titles[notificationIndex]
                 notifications.append(Notification(imagePath: imageSource.path, imageSize: imageSource.size, detail: detail, title: title, price: price))
             }
-            return NotificationGroup(title: "Biler i norge", receivedDate: Date(), totalNumberOfElements: 100, notifications: notifications)
+
+            let groupTitleIndex = Int(arc4random_uniform(UInt32(NotificationFactory.groupTitles.count)))
+            let groupTitle = groupTitles[groupTitleIndex]
+            let stringValue = "Nye treff i \"\(groupTitle)\""
+            let attributedString = NSMutableAttributedString(string: stringValue)
+            attributedString.setColor(color: .primaryBlue, forText: "\"\(groupTitle)\"")
+
+            let footerAction = "Viser 100 av \(notifications.count) nye annonser"
+            return NotificationGroup(attributedTitle: attributedString, timeAgo: "\(groupTitleIndex + 10) m siden", footerAction: footerAction, notifications: notifications)
         }
+    }
+
+    private static var groupTitles: [String] {
+        return [
+            "Biler i norge",
+            "Sogn og Fjordane+Møre og Romsdal+Nordland+Treff",
+            "Aston Martin",
+        ]
     }
 
     private static var details: [String] {
@@ -100,5 +116,12 @@ public struct NotificationFactory {
             ImageSource(path: "https://i.pinimg.com/736x/38/f2/02/38f2028c5956cd6b33bfd16441a05961--victorian-homes-stone-victorian-house.jpg", size: CGSize(width: 523, height: 640)),
             ImageSource(path: "https://www.younghouselove.com/wp-content/uploads//2017/04/Beach-House-Update-Three-Houses-One-Pink.jpg", size: CGSize(width: 1500, height: 1125)),
         ]
+    }
+}
+
+extension NSMutableAttributedString {
+    func setColor(color: UIColor, forText stringValue: String) {
+        let range: NSRange = mutableString.range(of: stringValue, options: .caseInsensitive)
+        addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
     }
 }

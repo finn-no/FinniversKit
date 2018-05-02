@@ -45,11 +45,11 @@ public class NotificationsListHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(dateLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -.mediumSpacing),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
 
-            dateLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            dateLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             dateLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
         ])
@@ -57,5 +57,15 @@ public class NotificationsListHeaderView: UITableViewHeaderFooterView {
 
     @objc func tapped() {
         delegate?.notificationsListHeaderView(self, didSelectHeaderViewAtSection: section)
+    }
+
+    // MARK: - Dependency injection
+
+    /// The model contains data used to populate the view.
+    public var group: NotificationsGroupListViewModel? {
+        didSet {
+            titleLabel.attributedText = group?.attributedTitle
+            dateLabel.text = group?.timeAgo
+        }
     }
 }
