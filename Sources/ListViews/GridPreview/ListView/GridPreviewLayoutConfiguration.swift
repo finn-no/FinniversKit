@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum PreviewGridLayoutConfiguration {
+enum GridPreviewLayoutConfiguration {
     case small
     case medium
     case large
@@ -13,8 +13,8 @@ enum PreviewGridLayoutConfiguration {
 
     init(width: CGFloat) {
         switch width {
-        case let width where width > PreviewGridLayoutConfiguration.mediumRange.upperBound: self = .large
-        case let width where width < PreviewGridLayoutConfiguration.mediumRange.lowerBound: self = .small
+        case let width where width > GridPreviewLayoutConfiguration.mediumRange.upperBound: self = .large
+        case let width where width < GridPreviewLayoutConfiguration.mediumRange.lowerBound: self = .small
         default: self = .medium
         }
     }

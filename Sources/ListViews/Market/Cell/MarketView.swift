@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class MarketGridCell: UICollectionViewCell {
+public class MarketView: UIView {
 
     // MARK: - Internal properties
 
@@ -83,33 +83,24 @@ public class MarketGridCell: UICollectionViewCell {
         ])
     }
 
-    // MARK: - Superclass Overrides
+    // MARK: - Dependency injection
 
-    public override func prepareForReuse() {
-        super.prepareForReuse()
+    public func prepareForReuse() {
         iconImageView.image = nil
         badgeImageView.image = nil
         titleLabel.text = ""
         accessibilityLabel = ""
     }
 
-    // MARK: - Dependency injection
-
-    public var model: MarketGridModel? {
+    public var model: MarketListViewModel? {
         didSet {
             iconImageView.image = model?.iconImage
             titleLabel.text = model?.title
             accessibilityLabel = model?.accessibilityLabel
 
-            guard let model = model else {
-                return
-            }
-
-            externalLinkImageView.isHidden = !model.showExternalLinkIcon
-
-            if let badgeImage = model.badgeImage {
-                badgeImageView.image = badgeImage
-            }
+            let showExternalLinkIcon = model?.showExternalLinkIcon ?? false
+            externalLinkImageView.isHidden = !showExternalLinkIcon
+            badgeImageView.image = model?.badgeImage
         }
     }
 }

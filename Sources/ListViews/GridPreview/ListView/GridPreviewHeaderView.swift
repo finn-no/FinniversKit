@@ -4,7 +4,7 @@
 
 import Foundation
 
-class PreviewGridHeaderView: UICollectionReusableView {
+class GridPreviewHeaderView: UICollectionReusableView {
     var contentView: UIView? {
         willSet {
             contentView?.removeFromSuperview()
@@ -15,15 +15,8 @@ class PreviewGridHeaderView: UICollectionReusableView {
             }
 
             addSubview(contentView)
-
             contentView.translatesAutoresizingMaskIntoConstraints = false
-
-            NSLayoutConstraint.activate([
-                contentView.topAnchor.constraint(equalTo: topAnchor),
-                contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-                contentView.leftAnchor.constraint(equalTo: leftAnchor),
-            ])
+            contentView.fillInSuperview()
         }
     }
 }

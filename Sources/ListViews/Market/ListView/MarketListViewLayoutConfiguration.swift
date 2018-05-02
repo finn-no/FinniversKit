@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum ScreenSizeCategory {
+enum MarketListViewLayoutConfiguration {
     case small
     case medium
     case large(CGFloat)
@@ -14,9 +14,9 @@ enum ScreenSizeCategory {
 
     init(width: CGFloat) {
         switch width {
-        case let width where width > ScreenSizeCategory.mediumRange.upperBound:
+        case let width where width > MarketListViewLayoutConfiguration.mediumRange.upperBound:
             self = .large(width)
-        case let width where width < ScreenSizeCategory.mediumRange.lowerBound:
+        case let width where width < MarketListViewLayoutConfiguration.mediumRange.lowerBound:
             self = .small
         default:
             self = .medium
@@ -62,7 +62,7 @@ enum ScreenSizeCategory {
     var itemsPerRow: CGFloat {
         switch self {
         case let .large(width):
-            if width > ScreenSizeCategory.portraitModeScreenWidth {
+            if width > MarketListViewLayoutConfiguration.portraitModeScreenWidth {
                 return 6
             } else {
                 return 5

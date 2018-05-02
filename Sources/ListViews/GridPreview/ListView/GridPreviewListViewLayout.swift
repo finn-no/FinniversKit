@@ -4,25 +4,25 @@
 
 import UIKit
 
-protocol PreviewGridLayoutDelegate {
-    func imageHeightRatio(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
-    func itemNonImageHeight(forItemAt indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
-    func heightForHeaderView(inCollectionView collectionView: UICollectionView) -> CGFloat?
+protocol GridPreviewListViewLayoutDelegate {
+    func gridPreviewListViewLayout(_ gridPreviewListViewLayout: GridPreviewListViewLayout, imageHeightRatioForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
+    func gridPreviewListViewLayout(_ gridPreviewListViewLayout: GridPreviewListViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
+    func gridPreviewListViewLayout(_ gridPreviewListViewLayout: GridPreviewListViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat?
 }
 
-class PreviewGridLayout: UICollectionViewLayout {
-    private let delegate: PreviewGridLayoutDelegate
+class GridPreviewListViewLayout: UICollectionViewLayout {
+    private let delegate: GridPreviewListViewLayoutDelegate
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
-    private var configuration: PreviewGridLayoutConfiguration {
+    private var configuration: GridPreviewLayoutConfiguration {
         guard let collectionView = collectionView else {
             fatalError("Layout unusable without collection view!")
         }
 
-        return PreviewGridLayoutConfiguration(width: collectionView.frame.size.width)
+        return GridPreviewLayoutConfiguration(width: collectionView.frame.size.width)
     }
 
-    init(delegate: PreviewGridLayoutDelegate) {
+    init(delegate: GridPreviewListViewLayoutDelegate) {
         self.delegate = delegate
         super.init()
     }
@@ -66,7 +66,8 @@ class PreviewGridLayout: UICollectionViewLayout {
     }
 
     private func indexOfLowestValue(in columns: [Int]) -> Int {
-        return columns.index(of: columns.min() ?? 0) ?? 0 // Shortest column index
+        let shortestColumnIndex = columns.index(of: columns.min() ?? 0) ?? 0
+        return shortestColumnIndex
     }
 
     private func xOffsetForItemInColumn(itemWidth: CGFloat, columnIndex: Int) -> CGFloat {
@@ -90,8 +91,7 @@ class PreviewGridLayout: UICollectionViewLayout {
         var attributesCollection = [UICollectionViewLayoutAttributes]()
         var yOffset = configuration.topOffset
 
-        // Add attributes for header view if we have any
-        if let height = delegate.heightForHeaderView(inCollectionView: collectionView) {
+        if let height = delegate.gridPreviewListViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
             let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: IndexPath(item: 0, section: 0))
             attributes.frame = CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: height)
             attributesCollection.append(attributes)
@@ -107,8 +107,8 @@ class PreviewGridLayout: UICollectionViewLayout {
             let verticalOffset = CGFloat(columns[columnIndex]) + topPadding
 
             let indexPath = IndexPath(item: index, section: 0)
-            let imageHeightRatio = delegate.imageHeightRatio(forItemAt: indexPath, inCollectionView: collectionView)
-            let itemNonImageHeight = delegate.itemNonImageHeight(forItemAt: indexPath, inCollectionView: collectionView)
+            let imageHeightRatio = delegate.gridPreviewListViewLayout(self, imageHeightRatioForItemAtIndexPath: indexPath, inCollectionView: collectionView)
+            let itemNonImageHeight = delegate.gridPreviewListViewLayout(self, itemNonImageHeightForItemAtIndexPath: indexPath, inCollectionView: collectionView)
 
             let itemHeight = (imageHeightRatio * itemWidth) + itemNonImageHeight
 
@@ -123,8 +123,8 @@ class PreviewGridLayout: UICollectionViewLayout {
     }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return itemAttributes.filter { a in
-            return a.frame.intersects(rect)
+        return itemAttributes.filter { itemAttribute in
+            return itemAttribute.frame.intersects(rect)
         }
     }
 
@@ -138,7 +138,7 @@ class PreviewGridLayout: UICollectionViewLayout {
         }
 
         guard collectionView.numberOfItems(inSection: 0) > 0 else {
-            if let height = delegate.heightForHeaderView(inCollectionView: collectionView) {
+            if let height = delegate.gridPreviewListViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
                 return CGSize(width: collectionView.frame.size.width, height: height)
             } else {
                 return collectionView.bounds.size

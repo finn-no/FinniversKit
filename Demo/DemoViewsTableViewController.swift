@@ -28,7 +28,7 @@ class DemoViewsTableViewController: UITableViewController {
 
         if let indexPath = Sections.lastSelectedIndexPath {
             let viewController = Sections.viewController(for: indexPath)
-            present(viewController, animated: true)
+            present(viewController, animated: false)
         }
     }
 
