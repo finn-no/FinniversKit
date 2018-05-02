@@ -40,7 +40,7 @@ public class MarketCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
-    public var model: MarketListViewModel? {
+    public var model: MarketsGridViewModel? {
         didSet {
             marketView.model = model
         }

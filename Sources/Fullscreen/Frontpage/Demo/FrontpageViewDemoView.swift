@@ -6,14 +6,14 @@ import FinniversKit
 import UIKit
 
 class FrontpageViewDemoView: UIView {
-    fileprivate lazy var discoverGridView: GridPreviewListView = {
-        let gridView = GridPreviewListView(delegate: self, dataSource: self)
+    fileprivate lazy var discoverGridView: AdsGridView = {
+        let gridView = AdsGridView(delegate: self, dataSource: self)
         gridView.translatesAutoresizingMaskIntoConstraints = false
         return gridView
     }()
 
-    fileprivate lazy var marketGridView: MarketListView = {
-        let marketGridView = MarketListView(delegate: self, dataSource: self)
+    fileprivate lazy var marketGridView: MarketsGridView = {
+        let marketGridView = MarketsGridView(delegate: self, dataSource: self)
         marketGridView.translatesAutoresizingMaskIntoConstraints = false
         return marketGridView
     }()
@@ -82,26 +82,26 @@ class FrontpageViewDemoView: UIView {
     }
 }
 
-// MARK: - GridPreviewListViewDelegate
+// MARK: - AdsGridViewDelegate
 
-extension FrontpageViewDemoView: GridPreviewListViewDelegate {
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, willDisplayItemAtIndex index: Int) {}
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didScrollInScrollView scrollView: UIScrollView) {}
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didSelectItemAtIndex index: Int) {}
+extension FrontpageViewDemoView: AdsGridViewDelegate {
+    func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
+    func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
+    func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
 }
 
-// MARK: - GridPreviewListViewDataSource
+// MARK: - AdsGridViewDataSource
 
-extension FrontpageViewDemoView: GridPreviewListViewDataSource {
-    func numberOfItems(inGridPreviewListView gridPreviewListView: GridPreviewListView) -> Int {
+extension FrontpageViewDemoView: AdsGridViewDataSource {
+    func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
         return previewGridModels.count
     }
 
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, modelAtIndex index: Int) -> GridPreviewListViewModel {
+    func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
         return previewGridModels[index]
     }
 
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, loadImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
@@ -121,23 +121,23 @@ extension FrontpageViewDemoView: GridPreviewListViewDataSource {
         task.resume()
     }
 
-    func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) {}
+    func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat) {}
 }
 
-// MARK: - MarketListViewDelegate
+// MARK: - MarketsGridViewDelegate
 
-extension FrontpageViewDemoView: MarketListViewDelegate {
-    func marketListView(_ marketListView: MarketListView, didSelectItemAtIndex index: Int) {}
+extension FrontpageViewDemoView: MarketsGridViewDelegate {
+    func marketsGridView(_ marketsGridView: MarketsGridView, didSelectItemAtIndex index: Int) {}
 }
 
-// MARK: - MarketListViewDataSource
+// MARK: - MarketsGridViewDataSource
 
-extension FrontpageViewDemoView: MarketListViewDataSource {
-    func numberOfItems(inMarketListView marketListView: MarketListView) -> Int {
+extension FrontpageViewDemoView: MarketsGridViewDataSource {
+    func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int {
         return marketGridModels.count
     }
 
-    func marketListView(_ marketListView: MarketListView, modelAtIndex index: Int) -> MarketListViewModel {
+    func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
         return marketGridModels[index]
     }
 }

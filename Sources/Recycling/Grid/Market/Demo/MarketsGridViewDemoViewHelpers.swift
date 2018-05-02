@@ -5,7 +5,7 @@
 import FinniversKit
 import Foundation
 
-public enum Market: MarketListViewModel {
+public enum Market: MarketsGridViewModel {
     case eiendom
     case bil
     case torget

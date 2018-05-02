@@ -92,7 +92,7 @@ public class MarketView: UIView {
         accessibilityLabel = ""
     }
 
-    public var model: MarketListViewModel? {
+    public var model: MarketsGridViewModel? {
         didSet {
             iconImageView.image = model?.iconImage
             titleLabel.text = model?.title

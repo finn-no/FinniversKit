@@ -9,7 +9,7 @@ class MarketDataSource: NSObject {
     var models = Market.allMarkets
 }
 
-public class MarketListViewDemoView: UIView {
+public class MarketsGridViewDemoView: UIView {
     lazy var dataSource: MarketDataSource = {
         return MarketDataSource()
     }()
@@ -23,23 +23,23 @@ public class MarketListViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let collectionView = MarketListView(delegate: self, dataSource: self)
+        let collectionView = MarketsGridView(delegate: self, dataSource: self)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView)
         collectionView.fillInSuperview()
     }
 }
 
-extension MarketListViewDemoView: MarketListViewDataSource {
-    public func numberOfItems(inMarketListView marketListView: MarketListView) -> Int {
+extension MarketsGridViewDemoView: MarketsGridViewDataSource {
+    public func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int {
         return dataSource.models.count
     }
 
-    public func marketListView(_ marketListView: MarketListView, modelAtIndex index: Int) -> MarketListViewModel {
+    public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
         return dataSource.models[index]
     }
 }
 
-extension MarketListViewDemoView: MarketListViewDelegate {
-    public func marketListView(_ marketListView: MarketListView, didSelectItemAtIndex index: Int) {}
+extension MarketsGridViewDemoView: MarketsGridViewDelegate {
+    public func marketsGridView(_ marketsGridView: MarketsGridView, didSelectItemAtIndex index: Int) {}
 }

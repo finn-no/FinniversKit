@@ -187,9 +187,9 @@ enum ListViews: String {
     var viewController: UIViewController {
         switch self {
         case .market:
-            return ViewController<MarketListViewDemoView>()
+            return ViewController<MarketsGridViewDemoView>()
         case .gridPreview:
-            return ViewController<GridPreviewListViewDemoView>()
+            return ViewController<AdsGridViewDemoView>()
         }
     }
 }
