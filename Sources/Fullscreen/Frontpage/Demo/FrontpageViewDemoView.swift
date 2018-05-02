@@ -21,10 +21,10 @@ class FrontpageViewDemoView: UIView {
     fileprivate lazy var headerLabel = Label(style: .title4(.licorice))
     fileprivate lazy var headerView = UIView()
 
-    fileprivate let previewGridModels = GridPreviewFactory.create(numberOfModels: 9)
-    fileprivate let marketGridModels = Market.allMarkets
+    fileprivate let ads = AdFactory.create(numberOfModels: 9)
+    fileprivate let markets = Market.allMarkets
 
-    // Makes sure preview grid layout is calculated after we know how much space we have for its collection view
+    // Makes sure ads grid view layout is calculated after we know how much space we have for its collection view
     private var didSetupView = false
 
     override init(frame: CGRect) {
@@ -67,13 +67,13 @@ class FrontpageViewDemoView: UIView {
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: .mediumLargeSpacing),
         ])
 
-        let height = calculatePreviewHeaderHeight()
+        let height = calculateAdsHeaderHeight()
         headerView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: height)
 
         discoverGridView.headerView = headerView
     }
 
-    private func calculatePreviewHeaderHeight() -> CGFloat {
+    private func calculateAdsHeaderHeight() -> CGFloat {
         let headerTopSpacing: CGFloat = .largeSpacing
         let headerBottomSpacing: CGFloat = .mediumLargeSpacing
         let headerHeight = headerLabel.intrinsicContentSize.height
@@ -94,11 +94,11 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
 
 extension FrontpageViewDemoView: AdsGridViewDataSource {
     func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
-        return previewGridModels.count
+        return ads.count
     }
 
     func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
-        return previewGridModels[index]
+        return ads[index]
     }
 
     func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
@@ -134,10 +134,10 @@ extension FrontpageViewDemoView: MarketsGridViewDelegate {
 
 extension FrontpageViewDemoView: MarketsGridViewDataSource {
     func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int {
-        return marketGridModels.count
+        return markets.count
     }
 
     func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
-        return marketGridModels[index]
+        return markets[index]
     }
 }

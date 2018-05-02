@@ -6,7 +6,7 @@ import FinniversKit
 import Foundation
 
 /// A model confirming to the AdsGridViewModel protocol for showcasing AdsGridViewCell in playground.
-public struct GridPreview: AdsGridViewModel {
+public struct Ad: AdsGridViewModel {
     public let imagePath: String?
     public let imageSize: CGSize
     public var iconImage: UIImage?
@@ -29,20 +29,20 @@ public struct GridPreview: AdsGridViewModel {
     }
 }
 
-/// Creates GridPreviews
-public struct GridPreviewFactory {
+/// Creates Ads
+public struct AdFactory {
     private struct ImageSource {
         let path: String
         let size: CGSize
     }
 
-    public static func create(numberOfModels: Int) -> [GridPreview] {
+    public static func create(numberOfModels: Int) -> [Ad] {
         return (0 ..< numberOfModels).map { index in
             let imageSource = imageSources[index]
             let title = titles[index]
             let subTitle = subTitles[index]
             let icon = UIImage(named: "bil", in: .playgroundBundle, compatibleWith: nil)!
-            return GridPreview(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subTitle: subTitle, imageText: price)
+            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subTitle: subTitle, imageText: price)
         }
     }
 
