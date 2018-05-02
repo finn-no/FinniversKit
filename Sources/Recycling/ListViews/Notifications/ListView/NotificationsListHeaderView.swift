@@ -4,7 +4,14 @@
 
 import UIKit
 
+protocol NotificationsListHeaderViewDelegate: class {
+    func notificationsListHeaderView(_ notificationsListHeaderView: NotificationsListHeaderView, didSelectHeaderViewAtSection section: Int)
+}
+
 class NotificationsListHeaderView: UITableViewHeaderFooterView {
+    weak var delegate: NotificationsListHeaderViewDelegate?
+    var section: Int = 0
+    
     lazy var titleLabel: UILabel = {
         let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -31,9 +38,12 @@ class NotificationsListHeaderView: UITableViewHeaderFooterView {
     }
 
     func setup() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        contentView.addGestureRecognizer(tapGestureRecognizer)
+
         contentView.addSubview(titleLabel)
         contentView.addSubview(dateLabel)
-
+        
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
@@ -43,5 +53,9 @@ class NotificationsListHeaderView: UITableViewHeaderFooterView {
             dateLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
         ])
+    }
+    
+    @objc func tapped() {
+        delegate?.notificationsListHeaderView(self, didSelectHeaderViewAtSection: section)
     }
 }

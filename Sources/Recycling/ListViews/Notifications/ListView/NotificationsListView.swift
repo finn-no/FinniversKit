@@ -10,6 +10,8 @@ public protocol NotificationsListViewDelegate: NSObjectProtocol {
     func notificationsListView(_ notificationsListView: NotificationsListView, didScrollInScrollView scrollView: UIScrollView)
     func notificationsListView(_ notificationsListView: NotificationsListView, titleForHeaderInSection section: Int) -> String?
     func notificationsListView(_ notificationsListView: NotificationsListView, titleForFooterInSection section: Int) -> String?
+    func notificationsListView(_ notificationsListView: NotificationsListView, didSelectHeaderAtSection section: Int)
+    func notificationsListView(_ notificationsListView: NotificationsListView, didSelectFooterAtSection section: Int)
 }
 
 public protocol NotificationsListViewDataSource: NSObjectProtocol {
@@ -105,6 +107,7 @@ extension NotificationsListView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeue(NotificationsListHeaderView.self)
+        headerView.delegate = self
         headerView.titleLabel.text = "Nye treff i \"Sogn og Fjordane+Møre og Romsdal+Nordland+Treff\""
         headerView.dateLabel.text = "1 minutt siden"
         return headerView
@@ -163,5 +166,19 @@ extension NotificationsListView: NotificationsListViewCellDataSource {
 
     public func notificationsListViewCell(_ notificationsListViewCell: NotificationsListViewCell, cancelLoadingImageForModel model: NotificationsListViewModel, imageWidth: CGFloat) {
         dataSource?.notificationsListView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
+    }
+}
+
+// MARK: - NotificationsListHeaderViewDelegate
+
+extension NotificationsListView: NotificationsListHeaderViewDelegate {
+    public func notificationsListHeaderView(_ notificationsListHeaderView: NotificationsListHeaderView, didSelectHeaderViewAtSection section: Int) {
+            delegate?.notificationsListView(self, didSelectHeaderAtSection: section)
+    }
+}
+
+extension NotificationsListView: NotificationsListFooterViewDelegate {
+    public func notificationsListFooterView(_ notificationsListFooterView: NotificationsListFooterView, didSelectFooterViewAtSection section: Int) {
+        delegate?.notificationsListView(self, didSelectFooterAtSection: section)
     }
 }
