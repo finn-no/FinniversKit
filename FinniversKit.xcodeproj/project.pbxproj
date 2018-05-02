@@ -404,21 +404,21 @@
 		441FE414209A24E500B04EF1 /* Recycling */ = {
 			isa = PBXGroup;
 			children = (
-				441FE415209A24E500B04EF1 /* Grid */,
+				441FE415209A24E500B04EF1 /* GridView */,
 			);
 			path = Recycling;
 			sourceTree = "<group>";
 		};
-		441FE415209A24E500B04EF1 /* Grid */ = {
+		441FE415209A24E500B04EF1 /* GridView */ = {
 			isa = PBXGroup;
 			children = (
-				441FE416209A24E500B04EF1 /* Market */,
-				441FE41F209A24E500B04EF1 /* Ad */,
+				441FE416209A24E500B04EF1 /* Markets */,
+				441FE41F209A24E500B04EF1 /* Ads */,
 			);
-			path = Grid;
+			path = GridView;
 			sourceTree = "<group>";
 		};
-		441FE416209A24E500B04EF1 /* Market */ = {
+		441FE416209A24E500B04EF1 /* Markets */ = {
 			isa = PBXGroup;
 			children = (
 				441FE43B209A254900B04EF1 /* Demo */,
@@ -426,7 +426,7 @@
 				441FE41A209A24E500B04EF1 /* GridView */,
 				441FE41D209A24E500B04EF1 /* Model */,
 			);
-			path = Market;
+			path = Markets;
 			sourceTree = "<group>";
 		};
 		441FE417209A24E500B04EF1 /* Cell */ = {
@@ -454,7 +454,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		441FE41F209A24E500B04EF1 /* Ad */ = {
+		441FE41F209A24E500B04EF1 /* Ads */ = {
 			isa = PBXGroup;
 			children = (
 				441FE436209A254200B04EF1 /* Demo */,
@@ -462,7 +462,7 @@
 				441FE423209A24E500B04EF1 /* GridView */,
 				441FE428209A24E500B04EF1 /* Model */,
 			);
-			path = Ad;
+			path = Ads;
 			sourceTree = "<group>";
 		};
 		441FE420209A24E500B04EF1 /* Cell */ = {
