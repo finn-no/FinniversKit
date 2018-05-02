@@ -36,10 +36,7 @@
 		441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE43C209A254900B04EF1 /* MarketsGridViewDemoView.swift */; };
 		441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE43D209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift */; };
 		441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE443209A2F2C00B04EF1 /* NotificationsListViewCell.swift */; };
-		441FE44C209A2F2C00B04EF1 /* NotificationsListViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE445209A2F2C00B04EF1 /* NotificationsListViewLayout.swift */; };
-		441FE44D209A2F2C00B04EF1 /* NotificationsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE446209A2F2C00B04EF1 /* NotificationsListHeaderView.swift */; };
 		441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE447209A2F2C00B04EF1 /* NotificationsListView.swift */; };
-		441FE44F209A2F2C00B04EF1 /* NotificationsListViewLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE448209A2F2C00B04EF1 /* NotificationsListViewLayoutConfiguration.swift */; };
 		441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE44A209A2F2C00B04EF1 /* NotificationsListViewModel.swift */; };
 		441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE452209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift */; };
 		441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */; };
@@ -194,10 +191,7 @@
 		441FE43C209A254900B04EF1 /* MarketsGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewDemoView.swift; sourceTree = "<group>"; };
 		441FE43D209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		441FE443209A2F2C00B04EF1 /* NotificationsListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewCell.swift; sourceTree = "<group>"; };
-		441FE445209A2F2C00B04EF1 /* NotificationsListViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewLayout.swift; sourceTree = "<group>"; };
-		441FE446209A2F2C00B04EF1 /* NotificationsListHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListHeaderView.swift; sourceTree = "<group>"; };
 		441FE447209A2F2C00B04EF1 /* NotificationsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListView.swift; sourceTree = "<group>"; };
-		441FE448209A2F2C00B04EF1 /* NotificationsListViewLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewLayoutConfiguration.swift; sourceTree = "<group>"; };
 		441FE44A209A2F2C00B04EF1 /* NotificationsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewModel.swift; sourceTree = "<group>"; };
 		441FE452209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoView.swift; sourceTree = "<group>"; };
 		441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
@@ -557,10 +551,7 @@
 		441FE444209A2F2C00B04EF1 /* ListView */ = {
 			isa = PBXGroup;
 			children = (
-				441FE445209A2F2C00B04EF1 /* NotificationsListViewLayout.swift */,
-				441FE446209A2F2C00B04EF1 /* NotificationsListHeaderView.swift */,
 				441FE447209A2F2C00B04EF1 /* NotificationsListView.swift */,
-				441FE448209A2F2C00B04EF1 /* NotificationsListViewLayoutConfiguration.swift */,
 			);
 			path = ListView;
 			sourceTree = "<group>";
@@ -1226,8 +1217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D9125D2077AC8A00486848 /* RegisterView.swift in Sources */,
-				441FE44F209A2F2C00B04EF1 /* NotificationsListViewLayoutConfiguration.swift in Sources */,
-				441FE44C209A2F2C00B04EF1 /* NotificationsListViewLayout.swift in Sources */,
 				441FE433209A24E500B04EF1 /* AdsGridViewLayout.swift in Sources */,
 				441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */,
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
@@ -1238,7 +1227,6 @@
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
-				441FE44D209A2F2C00B04EF1 /* NotificationsListHeaderView.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,

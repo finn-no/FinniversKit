@@ -7,24 +7,16 @@ import Foundation
 
 /// A model confirming to the NotificationsListViewModel protocol for showcasing NotificationsListViewCell in playground.
 public struct Notification: NotificationsListViewModel {
-    public let imagePath: String?
-    public let imageSize: CGSize
-    public var iconImage: UIImage?
-    public let title: String
-    public let subTitle: String?
-    public let imageText: String?
+    public var imagePath: String?
+    public var imageSize: CGSize
+    public var detail: String
+    public var title: String
+    public var price: String
 
     public var accessibilityLabel: String {
-        var message = title
-
-        if let subTitle = subTitle {
-            message += ". " + subTitle
-        }
-
-        if let imageText = imageText {
-            message += ". Pris: kroner " + imageText
-        }
-
+        var message = detail
+        message += ". " + title
+        message += ". Pris: kroner " + price
         return message
     }
 }
@@ -39,16 +31,29 @@ public struct NotificationFactory {
     public static func create(numberOfModels: Int) -> [Notification] {
         return (0 ..< numberOfModels).map { index in
             let imageSource = imageSources[index]
+            let detail = details[index]
             let title = titles[index]
-            let subTitle = subTitles[index]
-            let icon = UIImage(named: "bil", in: .playgroundBundle, compatibleWith: nil)!
-            return Notification(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subTitle: subTitle, imageText: price)
+            return Notification(imagePath: imageSource.path, imageSize: imageSource.size, detail: detail, title: title, price: price)
         }
+    }
+
+    private static var details: [String] {
+        return [
+            "Oslo • Privat",
+            "Drammen • Bedrift",
+            "Lillestrom • Privat",
+            "Tønsberg • Privat",
+            "Bærum • Privat",
+            "Lillehammer • Privat",
+            "Oslo • Privat",
+            "Tønsberg • Privat",
+            "Bærum • Privat",
+        ]
     }
 
     private static var titles: [String] {
         return [
-            "Home Sweet Home",
+            "Home Sweet Home Home Sweet Home Home Sweet Home Home Sweet Home Home Sweet Home",
             "Hjemmekjært",
             "Mansion",
             "Villa Medusa",
@@ -60,24 +65,9 @@ public struct NotificationFactory {
         ]
     }
 
-    private static var subTitles: [String] {
-        return [
-            "Oslo",
-            "Bergen",
-            "Trondheim",
-            "Ved havet",
-            "Toten",
-            "Nordkapp",
-            "Langtvekkistan",
-            "Elverum",
-            "Brønnøysund",
-            "Bodø",
-        ]
-    }
-
     private static var price: String {
-        let thousands = Int(arc4random_uniform(UInt32(999)))
-        return "\(thousands) 000,-"
+        let thousands = Int(arc4random_uniform(UInt32(99)))
+        return "\(thousands) 000 000,-"
     }
 
     private static var randomImageSource: ImageSource {

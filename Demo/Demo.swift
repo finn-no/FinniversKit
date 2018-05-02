@@ -174,11 +174,13 @@ enum ComponentViews: String {
 }
 
 enum Recycling: String {
+    case notificationsListView
     case marketsGridView
     case adsGridView
 
     static var all: [Recycling] {
         return [
+            .notificationsListView,
             .marketsGridView,
             .adsGridView,
         ]
@@ -186,6 +188,8 @@ enum Recycling: String {
 
     var viewController: UIViewController {
         switch self {
+        case .notificationsListView:
+            return ViewController<NotificationsListViewDemoView>()
         case .marketsGridView:
             return ViewController<MarketsGridViewDemoView>()
         case .adsGridView:

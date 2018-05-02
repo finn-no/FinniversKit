@@ -21,30 +21,20 @@ public class NotificationsListView: UIView {
 
     // MARK: - Internal properties
 
-    private lazy var collectionViewLayout: NotificationsListViewLayout = {
-        return NotificationsListViewLayout(delegate: self)
-    }()
-
     // Have the collection view be private so nobody messes with it.
-    private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .white
-        return collectionView
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .white
+        tableView.rowHeight = NotificationsListViewCell.cellHeight
+        tableView.estimatedRowHeight = NotificationsListViewCell.cellHeight
+        return tableView
     }()
 
     private weak var delegate: NotificationsListViewDelegate?
     private weak var dataSource: NotificationsListViewDataSource?
-
-    // MARK: - External properties
-
-    public var headerView: UIView? {
-        willSet {
-            headerView?.removeFromSuperview()
-        }
-    }
 
     // MARK: - Setup
 
@@ -68,31 +58,26 @@ public class NotificationsListView: UIView {
     }
 
     private func setup() {
-        collectionView.register(NotificationsListViewCell.self, forCellWithReuseIdentifier: String(describing: NotificationsListViewCell.self))
-        collectionView.register(NotificationsListHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: NotificationsListHeaderView.self))
-        addSubview(collectionView)
-        collectionView.fillInSuperview()
-    }
-
-    public func invalidateLayout() {
-        collectionView.collectionViewLayout.invalidateLayout()
+        tableView.register(NotificationsListViewCell.self)
+        addSubview(tableView)
+        tableView.fillInSuperview()
     }
 
     // MARK: - Public
 
     public func reloadData() {
-        collectionView.reloadData()
+        tableView.reloadData()
     }
 
     public func scrollToTop(animated: Bool = true) {
-        collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
+        tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
     }
 }
 
 // MARK: - UICollectionViewDelegate
 
-extension NotificationsListView: UICollectionViewDelegate {
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+extension NotificationsListView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.notificationsListView(self, didSelectItemAtIndex: indexPath.row)
     }
 
@@ -103,17 +88,17 @@ extension NotificationsListView: UICollectionViewDelegate {
 
 // MARK: - UICollectionViewDataSource
 
-extension NotificationsListView: UICollectionViewDataSource {
-    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension NotificationsListView: UITableViewDataSource {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.numberOfItems(inNotificationsListView: self) ?? 0
     }
 
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(NotificationsListViewCell.self, for: indexPath)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(NotificationsListViewCell.self, for: indexPath)
 
         // Show a pretty color while we load the image
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
@@ -129,23 +114,12 @@ extension NotificationsListView: UICollectionViewDataSource {
         return cell
     }
 
-    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? NotificationsListViewCell {
             cell.loadImage()
         }
 
         delegate?.notificationsListView(self, willDisplayItemAtIndex: indexPath.row)
-    }
-
-    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard kind == UICollectionElementKindSectionHeader, let headerView = headerView else {
-            fatalError("Suplementary view of kind '\(kind)' not supported.")
-        }
-
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: NotificationsListHeaderView.self), for: indexPath) as! NotificationsListHeaderView
-        header.contentView = headerView
-
-        return header
     }
 }
 
@@ -158,26 +132,5 @@ extension NotificationsListView: NotificationsListViewCellDataSource {
 
     public func notificationsListViewCell(_ notificationsListViewCell: NotificationsListViewCell, cancelLoadingImageForModel model: NotificationsListViewModel, imageWidth: CGFloat) {
         dataSource?.notificationsListView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
-    }
-}
-
-// MARK: - NotificationsListViewLayoutDelegate
-
-extension NotificationsListView: NotificationsListViewLayoutDelegate {
-    func notificationsListViewLayout(_ notificationsListViewLayout: NotificationsListViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat? {
-        return headerView?.frame.size.height
-    }
-
-    func notificationsListViewLayout(_ notificationsListViewLayout: NotificationsListViewLayout, imageHeightRatioForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        guard let model = dataSource?.notificationsListView(self, modelAtIndex: indexPath.row), model.imageSize != .zero, model.imagePath != nil else {
-            let defaultImageSize = CGSize(width: 104, height: 78)
-            return defaultImageSize.height / defaultImageSize.width
-        }
-
-        return model.imageSize.height / model.imageSize.width
-    }
-
-    func notificationsListViewLayout(_ notificationsListViewLayout: NotificationsListViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        return NotificationsListViewCell.nonImageHeight
     }
 }

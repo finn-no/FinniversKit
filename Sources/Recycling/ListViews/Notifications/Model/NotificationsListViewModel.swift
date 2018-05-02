@@ -7,24 +7,17 @@ import Foundation
 public protocol NotificationsListViewModel {
     var imagePath: String? { get }
     var imageSize: CGSize { get }
-    var iconImage: UIImage? { get }
+    var detail: String { get }
     var title: String { get }
-    var subTitle: String? { get }
-    var imageText: String? { get }
+    var price: String { get }
     var accessibilityLabel: String { get }
 }
 
 public extension NotificationsListViewModel {
     var accessibilityLabel: String {
-        var message = title
-
-        if let subTitle = subTitle {
-            message += ". " + subTitle
-        }
-
-        if let imageText = imageText {
-            message += ". " + imageText
-        }
+        var message = detail
+        message += ". " + title
+        message += ". " + price
 
         return message
     }
