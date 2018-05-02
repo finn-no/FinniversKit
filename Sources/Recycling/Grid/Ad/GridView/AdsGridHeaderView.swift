@@ -4,7 +4,7 @@
 
 import Foundation
 
-class GridPreviewHeaderView: UICollectionReusableView {
+class AdsGridHeaderView: UICollectionReusableView {
     var contentView: UIView? {
         willSet {
             contentView?.removeFromSuperview()

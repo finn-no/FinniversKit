@@ -4,12 +4,12 @@
 
 import UIKit
 
-public protocol GridPreviewViewDataSource {
-    func gridPreviewView(_ gridPreviewView: GridPreviewView, loadImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-    func gridPreviewView(_ gridPreviewView: GridPreviewView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat)
+public protocol AdViewDataSource {
+    func adView(_ adView: AdView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func adView(_ adView: AdView, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
 }
 
-public class GridPreviewView: UIView {
+public class AdView: UIView {
 
     // MARK: - Internal properties
 
@@ -26,7 +26,7 @@ public class GridPreviewView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = GridPreviewView.cornerRadius
+        imageView.layer.cornerRadius = AdView.cornerRadius
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -60,7 +60,7 @@ public class GridPreviewView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         view.alpha = 1.0
-        view.layer.cornerRadius = GridPreviewView.cornerRadius
+        view.layer.cornerRadius = AdView.cornerRadius
         view.layer.masksToBounds = true
 
         if #available(iOS 11.0, *) {
@@ -83,7 +83,7 @@ public class GridPreviewView: UIView {
     public var loadingColor: UIColor?
 
     /// A data source for the loading of the image
-    public var dataSource: GridPreviewViewDataSource?
+    public var dataSource: AdViewDataSource?
 
     /// Height in cell that is not image
     public static var nonImageHeight: CGFloat {
@@ -120,29 +120,29 @@ public class GridPreviewView: UIView {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: GridPreviewView.subtitleTopMargin),
+            subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: AdView.subtitleTopMargin),
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            subTitleLabel.heightAnchor.constraint(equalToConstant: GridPreviewView.subtitleHeight),
+            subTitleLabel.heightAnchor.constraint(equalToConstant: AdView.subtitleHeight),
 
-            titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: GridPreviewView.titleTopMargin),
+            titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: AdView.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: GridPreviewView.titleHeight),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -GridPreviewView.titleBottomMargin),
+            titleLabel.heightAnchor.constraint(equalToConstant: AdView.titleHeight),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -AdView.titleBottomMargin),
 
-            iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: GridPreviewView.margin),
-            iconImageView.heightAnchor.constraint(equalToConstant: GridPreviewView.iconSize),
-            iconImageView.widthAnchor.constraint(equalToConstant: GridPreviewView.iconSize),
+            iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: AdView.margin),
+            iconImageView.heightAnchor.constraint(equalToConstant: AdView.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: AdView.iconSize),
             iconImageView.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
 
-            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: GridPreviewView.margin),
+            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: AdView.margin),
             imageTextLabel.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
 
             imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: GridPreviewView.margin),
+            imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdView.margin),
             imageDesciptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            imageDesciptionView.heightAnchor.constraint(equalToConstant: GridPreviewView.imageDescriptionHeight),
+            imageDesciptionView.heightAnchor.constraint(equalToConstant: AdView.imageDescriptionHeight),
             imageDesciptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
         ])
     }
@@ -158,14 +158,14 @@ public class GridPreviewView: UIView {
         accessibilityLabel = ""
 
         if let model = model {
-            dataSource?.gridPreviewView(self, cancelLoadingImageForModel: model, imageWidth: imageView.frame.size.width)
+            dataSource?.adView(self, cancelLoadingImageForModel: model, imageWidth: imageView.frame.size.width)
         }
     }
 
     // MARK: - Dependency injection
 
     /// The model contains data used to populate the view.
-    public var model: GridPreviewListViewModel? {
+    public var model: AdsGridViewModel? {
         didSet {
             if let model = model {
                 iconImageView.image = model.iconImage?.withRenderingMode(.alwaysTemplate)
@@ -188,7 +188,7 @@ public class GridPreviewView: UIView {
 
     // MARK: - Private
 
-    private func loadImage(model: GridPreviewListViewModel) {
+    private func loadImage(model: AdsGridViewModel) {
         guard let dataSource = dataSource, let _ = model.imagePath else {
             loadingColor = .clear
             imageView.image = defaultImage
@@ -197,7 +197,7 @@ public class GridPreviewView: UIView {
 
         imageView.backgroundColor = loadingColor
 
-        dataSource.gridPreviewView(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
+        dataSource.adView(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
             self?.imageView.backgroundColor = .clear
 
             if let image = image {

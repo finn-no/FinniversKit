@@ -5,12 +5,12 @@
 import FinniversKit
 import UIKit
 
-/// For use with GridPreviewListView.
+/// For use with AdsGridView.
 public class GridPreviewDataSource: NSObject {
     let models = GridPreviewFactory.create(numberOfModels: 9)
 }
 
-public class GridPreviewListViewDemoView: UIView {
+public class AdsGridViewDemoView: UIView {
     lazy var dataSource: GridPreviewDataSource = {
         return GridPreviewDataSource()
     }()
@@ -24,31 +24,31 @@ public class GridPreviewListViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let view = GridPreviewListView(delegate: self, dataSource: self)
+        let view = AdsGridView(delegate: self, dataSource: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         view.fillInSuperview()
     }
 }
 
-extension GridPreviewListViewDemoView: GridPreviewListViewDelegate {
-    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didSelectItemAtIndex index: Int) {}
+extension AdsGridViewDemoView: AdsGridViewDelegate {
+    public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
 
-    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, willDisplayItemAtIndex index: Int) {}
+    public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
 
-    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, didScrollInScrollView scrollView: UIScrollView) {}
+    public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
 }
 
-extension GridPreviewListViewDemoView: GridPreviewListViewDataSource {
-    public func numberOfItems(inGridPreviewListView gridPreviewListView: GridPreviewListView) -> Int {
+extension AdsGridViewDemoView: AdsGridViewDataSource {
+    public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
         return dataSource.models.count
     }
 
-    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, modelAtIndex index: Int) -> GridPreviewListViewModel {
+    public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
         return dataSource.models[index]
     }
 
-    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, loadImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
@@ -67,5 +67,5 @@ extension GridPreviewListViewDemoView: GridPreviewListViewDataSource {
         task.resume()
     }
 
-    public func gridPreviewListView(_ gridPreviewListView: GridPreviewListView, cancelLoadingImageForModel model: GridPreviewListViewModel, imageWidth: CGFloat) {}
+    public func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat) {}
 }
