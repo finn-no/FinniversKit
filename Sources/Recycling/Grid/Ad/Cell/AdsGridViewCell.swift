@@ -4,12 +4,12 @@
 
 import UIKit
 
-public protocol AdViewDataSource {
-    func adView(_ adView: AdView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-    func adView(_ adView: AdView, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
+public protocol AdsGridViewCellDataSource {
+    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
 }
 
-public class AdView: UIView {
+public class AdsGridViewCell: UICollectionViewCell {
 
     // MARK: - Internal properties
 
@@ -26,7 +26,7 @@ public class AdView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = AdView.cornerRadius
+        imageView.layer.cornerRadius = AdsGridViewCell.cornerRadius
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -60,7 +60,7 @@ public class AdView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         view.alpha = 1.0
-        view.layer.cornerRadius = AdView.cornerRadius
+        view.layer.cornerRadius = AdsGridViewCell.cornerRadius
         view.layer.masksToBounds = true
 
         if #available(iOS 11.0, *) {
@@ -83,7 +83,7 @@ public class AdView: UIView {
     public var loadingColor: UIColor?
 
     /// A data source for the loading of the image
-    public var dataSource: AdViewDataSource?
+    public var dataSource: AdsGridViewCellDataSource?
 
     /// Height in cell that is not image
     public static var nonImageHeight: CGFloat {
@@ -120,36 +120,37 @@ public class AdView: UIView {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: AdView.subtitleTopMargin),
+            subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: AdsGridViewCell.subtitleTopMargin),
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            subTitleLabel.heightAnchor.constraint(equalToConstant: AdView.subtitleHeight),
+            subTitleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.subtitleHeight),
 
-            titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: AdView.titleTopMargin),
+            titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: AdsGridViewCell.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: AdView.titleHeight),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -AdView.titleBottomMargin),
+            titleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.titleHeight),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -AdsGridViewCell.titleBottomMargin),
 
-            iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: AdView.margin),
-            iconImageView.heightAnchor.constraint(equalToConstant: AdView.iconSize),
-            iconImageView.widthAnchor.constraint(equalToConstant: AdView.iconSize),
+            iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: AdsGridViewCell.margin),
+            iconImageView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
             iconImageView.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
 
-            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: AdView.margin),
+            imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: AdsGridViewCell.margin),
             imageTextLabel.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
 
             imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdView.margin),
+            imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
             imageDesciptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            imageDesciptionView.heightAnchor.constraint(equalToConstant: AdView.imageDescriptionHeight),
+            imageDesciptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
             imageDesciptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
         ])
     }
 
     // MARK: - Superclass Overrides
 
-    public func prepareForReuse() {
+    public override func prepareForReuse() {
+        super.prepareForReuse()
         imageView.image = nil
         iconImageView.image = nil
         titleLabel.text = ""
@@ -158,7 +159,7 @@ public class AdView: UIView {
         accessibilityLabel = ""
 
         if let model = model {
-            dataSource?.adView(self, cancelLoadingImageForModel: model, imageWidth: imageView.frame.size.width)
+            dataSource?.adsGridViewCell(self, cancelLoadingImageForModel: model, imageWidth: imageView.frame.size.width)
         }
     }
 
@@ -197,7 +198,7 @@ public class AdView: UIView {
 
         imageView.backgroundColor = loadingColor
 
-        dataSource.adView(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
+        dataSource.adsGridViewCell(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
             self?.imageView.backgroundColor = .clear
 
             if let image = image {

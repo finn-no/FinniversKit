@@ -21,13 +21,11 @@
 		441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIViewExtensions.swift */; };
 		441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69991FEA947500CD919A /* LayoutHelpers.swift */; };
 		441D699D1FEA947600CD919A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D699A1FEA947600CD919A /* Layout.swift */; };
-		441FE42A209A24E500B04EF1 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE418209A24E500B04EF1 /* MarketView.swift */; };
-		441FE42B209A24E500B04EF1 /* MarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE419209A24E500B04EF1 /* MarketCell.swift */; };
+		441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE419209A24E500B04EF1 /* MarketsGridViewCell.swift */; };
 		441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE41B209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift */; };
 		441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE41C209A24E500B04EF1 /* MarketsGridView.swift */; };
 		441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE41E209A24E500B04EF1 /* MarketsGridViewModel.swift */; };
-		441FE42F209A24E500B04EF1 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE421209A24E500B04EF1 /* AdView.swift */; };
-		441FE430209A24E500B04EF1 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE422209A24E500B04EF1 /* AdCell.swift */; };
+		441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE422209A24E500B04EF1 /* AdsGridViewCell.swift */; };
 		441FE431209A24E500B04EF1 /* AdsGridHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE424209A24E500B04EF1 /* AdsGridHeaderView.swift */; };
 		441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE425209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift */; };
 		441FE433209A24E500B04EF1 /* AdsGridViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE426209A24E500B04EF1 /* AdsGridViewLayout.swift */; };
@@ -173,13 +171,11 @@
 		441D69981FEA947500CD919A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		441D69991FEA947500CD919A /* LayoutHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutHelpers.swift; sourceTree = "<group>"; };
 		441D699A1FEA947600CD919A /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		441FE418209A24E500B04EF1 /* MarketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
-		441FE419209A24E500B04EF1 /* MarketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCell.swift; sourceTree = "<group>"; };
+		441FE419209A24E500B04EF1 /* MarketsGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewCell.swift; sourceTree = "<group>"; };
 		441FE41B209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewLayoutConfiguration.swift; sourceTree = "<group>"; };
 		441FE41C209A24E500B04EF1 /* MarketsGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridView.swift; sourceTree = "<group>"; };
 		441FE41E209A24E500B04EF1 /* MarketsGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewModel.swift; sourceTree = "<group>"; };
-		441FE421209A24E500B04EF1 /* AdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
-		441FE422209A24E500B04EF1 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
+		441FE422209A24E500B04EF1 /* AdsGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsGridViewCell.swift; sourceTree = "<group>"; };
 		441FE424209A24E500B04EF1 /* AdsGridHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsGridHeaderView.swift; sourceTree = "<group>"; };
 		441FE425209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsGridViewLayoutConfiguration.swift; sourceTree = "<group>"; };
 		441FE426209A24E500B04EF1 /* AdsGridViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsGridViewLayout.swift; sourceTree = "<group>"; };
@@ -436,8 +432,7 @@
 		441FE417209A24E500B04EF1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				441FE418209A24E500B04EF1 /* MarketView.swift */,
-				441FE419209A24E500B04EF1 /* MarketCell.swift */,
+				441FE419209A24E500B04EF1 /* MarketsGridViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -473,8 +468,7 @@
 		441FE420209A24E500B04EF1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				441FE421209A24E500B04EF1 /* AdView.swift */,
-				441FE422209A24E500B04EF1 /* AdCell.swift */,
+				441FE422209A24E500B04EF1 /* AdsGridViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1159,7 +1153,7 @@
 			files = (
 				44D9125D2077AC8A00486848 /* RegisterView.swift in Sources */,
 				441FE433209A24E500B04EF1 /* AdsGridViewLayout.swift in Sources */,
-				441FE42B209A24E500B04EF1 /* MarketCell.swift in Sources */,
+				441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */,
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
@@ -1169,11 +1163,10 @@
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
-				441FE430209A24E500B04EF1 /* AdCell.swift in Sources */,
+				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				44D912662077AC8A00486848 /* LoginView.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
-				441FE42A209A24E500B04EF1 /* MarketView.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
@@ -1184,7 +1177,6 @@
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
-				441FE42F209A24E500B04EF1 /* AdView.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,

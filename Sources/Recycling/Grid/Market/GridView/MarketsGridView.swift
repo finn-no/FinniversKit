@@ -51,7 +51,7 @@ public class MarketsGridView: UIView {
     }
 
     private func setup() {
-        collectionView.register(MarketCell.self)
+        collectionView.register(MarketsGridViewCell.self)
         addSubview(collectionView)
 
         NSLayoutConstraint.activate([
@@ -139,7 +139,7 @@ extension MarketsGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(MarketCell.self, for: indexPath)
+        let cell = collectionView.dequeue(MarketsGridViewCell.self, for: indexPath)
 
         if let model = dataSource?.marketsGridView(self, modelAtIndex: indexPath.row) {
             cell.model = model

@@ -68,7 +68,7 @@ public class AdsGridView: UIView {
     }
 
     private func setup() {
-        collectionView.register(AdCell.self, forCellWithReuseIdentifier: String(describing: AdCell.self))
+        collectionView.register(AdsGridViewCell.self, forCellWithReuseIdentifier: String(describing: AdsGridViewCell.self))
         collectionView.register(AdsGridHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: String(describing: AdsGridHeaderView.self))
         addSubview(collectionView)
         collectionView.fillInSuperview()
@@ -113,7 +113,7 @@ extension AdsGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(AdCell.self, for: indexPath)
+        let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
 
         // Show a pretty color while we load the image
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
@@ -130,7 +130,7 @@ extension AdsGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? AdCell {
+        if let cell = cell as? AdsGridViewCell {
             cell.loadImage()
         }
 
@@ -149,14 +149,14 @@ extension AdsGridView: UICollectionViewDataSource {
     }
 }
 
-// MARK: - AdCellDataSource
+// MARK: - AdsGridViewCellDataSource
 
-extension AdsGridView: AdCellDataSource {
-    public func adCell(_ adCell: AdCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+extension AdsGridView: AdsGridViewCellDataSource {
+    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         dataSource?.adsGridView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 
-    public func adCell(_ adCell: AdCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat) {
+    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat) {
         dataSource?.adsGridView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
     }
 }
@@ -178,6 +178,6 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
     }
 
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        return AdCell.nonImageHeight
+        return AdsGridViewCell.nonImageHeight
     }
 }

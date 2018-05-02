@@ -5,7 +5,7 @@
 import FinniversKit
 import Foundation
 
-/// A model confirming to the AdsGridViewModel protocol for showcasing AdCell in playground.
+/// A model confirming to the AdsGridViewModel protocol for showcasing AdsGridViewCell in playground.
 public struct GridPreview: AdsGridViewModel {
     public let imagePath: String?
     public let imageSize: CGSize
