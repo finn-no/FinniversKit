@@ -39,6 +39,7 @@ public class NotificationsListView: UIView {
         tableView.estimatedRowHeight = NotificationsListView.estimatedRowHeight
         tableView.estimatedSectionHeaderHeight = NotificationsListView.estimatedSectionHeaderHeight
         tableView.estimatedSectionFooterHeight = NotificationsListView.estimatedSectionFooterHeight
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return tableView
     }()
 
