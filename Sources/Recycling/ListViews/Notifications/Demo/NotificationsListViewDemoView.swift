@@ -7,7 +7,7 @@ import UIKit
 
 /// For use with NotificationsListView.
 public class NotificationDataSource: NSObject {
-    let models = NotificationFactory.create(numberOfModels: 9)
+    let groups = NotificationFactory.create(numberOfGroups: 9)
 }
 
 public class NotificationsListViewDemoView: UIView {
@@ -32,20 +32,37 @@ public class NotificationsListViewDemoView: UIView {
 }
 
 extension NotificationsListViewDemoView: NotificationsListViewDelegate {
-    public func notificationsListView(_ notificationsListView: NotificationsListView, didSelectItemAtIndex index: Int) {}
+    public func notificationsListView(_ notificationsListView: NotificationsListView, didSelectItemAtIndexPath indexPath: IndexPath) {}
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, willDisplayItemAtIndex index: Int) {}
+    public func notificationsListView(_ notificationsListView: NotificationsListView, willDisplayItemAtIndexPath indexPath: IndexPath) {}
 
     public func notificationsListView(_ notificationsListView: NotificationsListView, didScrollInScrollView scrollView: UIScrollView) {}
+
+    public func notificationsListView(_ notificationsListView: NotificationsListView, titleForHeaderInSection section: Int) -> String? {
+        let group = dataSource.groups[section]
+        return group.title
+    }
+
+    public func notificationsListView(_ notificationsListView: NotificationsListView, titleForFooterInSection section: Int) -> String? {
+        let group = dataSource.groups[section]
+        return String(describing: group.totalNumberOfElements)
+    }
 }
 
 extension NotificationsListViewDemoView: NotificationsListViewDataSource {
-    public func numberOfItems(inNotificationsListView notificationsListView: NotificationsListView) -> Int {
-        return dataSource.models.count
+    public func numberOfSections(inNotificationsListView notificationsListView: NotificationsListView) -> Int {
+        return dataSource.groups.count
     }
 
-    public func notificationsListView(_ notificationsListView: NotificationsListView, modelAtIndex index: Int) -> NotificationsListViewModel {
-        return dataSource.models[index]
+    public func notificationsListView(_ notificationsListView: NotificationsListView, numberOfItemsInSection section: Int) -> Int {
+        let group = dataSource.groups[section]
+        return group.notifications.count
+    }
+
+    public func notificationsListView(_ notificationsListView: NotificationsListView, modelAtIndexPath indexPath: IndexPath) -> NotificationsListViewModel {
+        let group = dataSource.groups[indexPath.section]
+        let notification = group.notifications[indexPath.row]
+        return notification
     }
 
     public func notificationsListView(_ notificationsListView: NotificationsListView, loadImageForModel model: NotificationsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {

@@ -5,6 +5,13 @@
 import FinniversKit
 import Foundation
 
+public struct NotificationGroup {
+    public var title: String
+    public var receivedDate: Date
+    public var totalNumberOfElements: Int
+    public var notifications: [Notification]
+}
+
 /// A model confirming to the NotificationsListViewModel protocol for showcasing NotificationsListViewCell in playground.
 public struct Notification: NotificationsListViewModel {
     public var imagePath: String?
@@ -28,12 +35,16 @@ public struct NotificationFactory {
         let size: CGSize
     }
 
-    public static func create(numberOfModels: Int) -> [Notification] {
-        return (0 ..< numberOfModels).map { index in
-            let imageSource = imageSources[index]
-            let detail = details[index]
-            let title = titles[index]
-            return Notification(imagePath: imageSource.path, imageSize: imageSource.size, detail: detail, title: title, price: price)
+    public static func create(numberOfGroups: Int) -> [NotificationGroup] {
+        return (0 ..< numberOfGroups).map { _ in
+            var notifications = [Notification]()
+            for notificationIndex in 0 ... 3 {
+                let imageSource = imageSources[notificationIndex]
+                let detail = details[notificationIndex]
+                let title = titles[notificationIndex]
+                notifications.append(Notification(imagePath: imageSource.path, imageSize: imageSource.size, detail: detail, title: title, price: price))
+            }
+            return NotificationGroup(title: "Biler i norge", receivedDate: Date(), totalNumberOfElements: 100, notifications: notifications)
         }
     }
 

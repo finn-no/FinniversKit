@@ -5,14 +5,17 @@
 import UIKit
 
 public protocol NotificationsListViewDelegate: NSObjectProtocol {
-    func notificationsListView(_ notificationsListView: NotificationsListView, didSelectItemAtIndex index: Int)
-    func notificationsListView(_ notificationsListView: NotificationsListView, willDisplayItemAtIndex index: Int)
+    func notificationsListView(_ notificationsListView: NotificationsListView, didSelectItemAtIndexPath indexPath: IndexPath)
+    func notificationsListView(_ notificationsListView: NotificationsListView, willDisplayItemAtIndexPath indexPath: IndexPath)
     func notificationsListView(_ notificationsListView: NotificationsListView, didScrollInScrollView scrollView: UIScrollView)
+    func notificationsListView(_ notificationsListView: NotificationsListView, titleForHeaderInSection section: Int) -> String?
+    func notificationsListView(_ notificationsListView: NotificationsListView, titleForFooterInSection section: Int) -> String?
 }
 
 public protocol NotificationsListViewDataSource: NSObjectProtocol {
-    func numberOfItems(inNotificationsListView notificationsListView: NotificationsListView) -> Int
-    func notificationsListView(_ notificationsListView: NotificationsListView, modelAtIndex index: Int) -> NotificationsListViewModel
+    func numberOfSections(inNotificationsListView notificationsListView: NotificationsListView) -> Int
+    func notificationsListView(_ notificationsListView: NotificationsListView, numberOfItemsInSection section: Int) -> Int
+    func notificationsListView(_ notificationsListView: NotificationsListView, modelAtIndexPath indexPath: IndexPath) -> NotificationsListViewModel
     func notificationsListView(_ notificationsListView: NotificationsListView, loadImageForModel model: NotificationsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func notificationsListView(_ notificationsListView: NotificationsListView, cancelLoadingImageForModel model: NotificationsListViewModel, imageWidth: CGFloat)
 }
@@ -23,7 +26,7 @@ public class NotificationsListView: UIView {
 
     // Have the collection view be private so nobody messes with it.
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -78,11 +81,19 @@ public class NotificationsListView: UIView {
 
 extension NotificationsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.notificationsListView(self, didSelectItemAtIndex: indexPath.row)
+        delegate?.notificationsListView(self, didSelectItemAtIndexPath: indexPath)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.notificationsListView(self, didScrollInScrollView: scrollView)
+    }
+
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return delegate?.notificationsListView(self, titleForHeaderInSection: section)
+    }
+
+    public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return delegate?.notificationsListView(self, titleForFooterInSection: section)
     }
 }
 
@@ -90,11 +101,11 @@ extension NotificationsListView: UITableViewDelegate {
 
 extension NotificationsListView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return dataSource?.numberOfSections(inNotificationsListView: self) ?? 0
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inNotificationsListView: self) ?? 0
+        return dataSource?.notificationsListView(self, numberOfItemsInSection: section) ?? 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -107,7 +118,7 @@ extension NotificationsListView: UITableViewDataSource {
         cell.loadingColor = color
         cell.dataSource = self
 
-        if let model = dataSource?.notificationsListView(self, modelAtIndex: indexPath.row) {
+        if let model = dataSource?.notificationsListView(self, modelAtIndexPath: indexPath) {
             cell.model = model
         }
 
@@ -119,7 +130,7 @@ extension NotificationsListView: UITableViewDataSource {
             cell.loadImage()
         }
 
-        delegate?.notificationsListView(self, willDisplayItemAtIndex: indexPath.row)
+        delegate?.notificationsListView(self, willDisplayItemAtIndexPath: indexPath)
     }
 }
 
