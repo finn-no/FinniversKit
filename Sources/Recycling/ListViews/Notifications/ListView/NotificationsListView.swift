@@ -110,7 +110,7 @@ extension NotificationsListView: UITableViewDelegate {
         headerView.delegate = self
         headerView.section = section
         headerView.titleLabel.text = "Nye treff i \"Sogn og Fjordane+Møre og Romsdal+Nordland+Treff\""
-        headerView.dateLabel.text = "1 minutt siden"
+        headerView.dateLabel.text = "1 m siden"
         return headerView
     }
 
