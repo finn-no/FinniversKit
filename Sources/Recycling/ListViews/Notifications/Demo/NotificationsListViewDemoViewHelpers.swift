@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import Foundation
 
 public struct NotificationGroup: NotificationsGroupListViewModel {
     public var attributedTitle: NSAttributedString
