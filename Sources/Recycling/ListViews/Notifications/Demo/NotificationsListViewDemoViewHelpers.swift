@@ -23,7 +23,8 @@ public struct Notification: NotificationsListViewModel {
     public var accessibilityLabel: String {
         var message = detail
         message += ". " + title
-        message += ". Pris: kroner " + price
+        let cleanPrice = price.replacingOccurrences(of: " ", with: "")
+        message += ". Pris: \(cleanPrice)kroner"
         return message
     }
 }

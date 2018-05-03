@@ -24,8 +24,8 @@ public extension NotificationsListViewModel {
     var accessibilityLabel: String {
         var message = detail
         message += ". " + title
-        message += ". " + price
-
+        let cleanPrice = price.replacingOccurrences(of: " ", with: "")
+        message += ". Pris: \(cleanPrice)kroner"
         return message
     }
 }

@@ -113,7 +113,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         imageDescriptionView.addSubview(iconImageView)
         imageDescriptionView.addSubview(imageTextLabel)
 
-        backgroundColor = .white
+        backgroundColor = .milk
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),

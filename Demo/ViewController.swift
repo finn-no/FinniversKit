@@ -14,9 +14,9 @@ class ViewController<View: UIView>: UIViewController {
 
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
-        playgroundView.backgroundColor = .white
+        playgroundView.backgroundColor = .milk
         view.addSubview(playgroundView)
-        view.backgroundColor = .white
+        view.backgroundColor = .milk
 
         NSLayoutConstraint.activate([
             playgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

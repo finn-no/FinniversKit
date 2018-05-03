@@ -31,7 +31,7 @@ public class AdsGridView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .milk
         return collectionView
     }()
 
