@@ -8,10 +8,7 @@ public class InlineConsentDemoView: UIView {
     private let plusScreenWidth: CGFloat = 414.0
 
     private lazy var inlineConsentView: InlineConsentView = {
-        let margins = .mediumLargeSpacing * 2
-        let consentWidth = min(frame.width, plusScreenWidth)
-        let consentFrame = CGRect(x: 0, y: 0, width: (consentWidth - margins), height: frame.height)
-        let view = InlineConsentView(frame: consentFrame)
+        let view = InlineConsentView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.descriptionText = "Vi kan vise deg relevante FINN-annonser du ikke har sett. Da trenger vi å lagre dine søkevalg."
         view.yesButtonTitle = "Ja, det er greit"
