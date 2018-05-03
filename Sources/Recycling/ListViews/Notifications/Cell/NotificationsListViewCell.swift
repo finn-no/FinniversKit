@@ -21,16 +21,7 @@ public class NotificationsListViewCell: UITableViewCell {
 
     // MARK: - Internal properties
 
-    private static let titleHeight: CGFloat = 20.0
-    private static let titleTopMargin: CGFloat = 3.0
-    private static let titleBottomMargin: CGFloat = 17.0
-    private static let subtitleHeight: CGFloat = 17.0
-    private static let subtitleTopMargin: CGFloat = 6.0
-    private static let margin: CGFloat = 8.0
     private static let cornerRadius: CGFloat = 2.0
-    private static let imageDescriptionHeight: CGFloat = 35.0
-    private static let iconSize: CGFloat = 23.0
-
     private static let imageSize: CGFloat = 74.0
 
     private lazy var adImageView: UIImageView = {
