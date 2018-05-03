@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 public class RegisterViewDemoView: UIView {
     private lazy var registerView: RegisterView = {

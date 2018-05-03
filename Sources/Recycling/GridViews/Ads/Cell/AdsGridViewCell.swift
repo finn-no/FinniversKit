@@ -48,14 +48,14 @@ public class AdsGridViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var subTitleLabel: Label = {
+    private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
     }()
 
-    private lazy var imageDesciptionView: UIView = {
+    private lazy var imageDescriptionView: UIView = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
@@ -106,12 +106,12 @@ public class AdsGridViewCell: UICollectionViewCell {
         isAccessibilityElement = true
 
         addSubview(imageView)
-        addSubview(subTitleLabel)
+        addSubview(subtitleLabel)
         addSubview(titleLabel)
-        addSubview(imageDesciptionView)
+        addSubview(imageDescriptionView)
 
-        imageDesciptionView.addSubview(iconImageView)
-        imageDesciptionView.addSubview(imageTextLabel)
+        imageDescriptionView.addSubview(iconImageView)
+        imageDescriptionView.addSubview(imageTextLabel)
 
         backgroundColor = .white
 
@@ -120,30 +120,30 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            subTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: AdsGridViewCell.subtitleTopMargin),
-            subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            subTitleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.subtitleHeight),
+            subtitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: AdsGridViewCell.subtitleTopMargin),
+            subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            subtitleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.subtitleHeight),
 
-            titleLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: AdsGridViewCell.titleTopMargin),
+            titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: AdsGridViewCell.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.titleHeight),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -AdsGridViewCell.titleBottomMargin),
 
-            iconImageView.leadingAnchor.constraint(equalTo: imageDesciptionView.leadingAnchor, constant: AdsGridViewCell.margin),
+            iconImageView.leadingAnchor.constraint(equalTo: imageDescriptionView.leadingAnchor, constant: AdsGridViewCell.margin),
             iconImageView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
             iconImageView.widthAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
-            iconImageView.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
 
             imageTextLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: AdsGridViewCell.margin),
-            imageTextLabel.centerYAnchor.constraint(equalTo: imageDesciptionView.centerYAnchor),
+            imageTextLabel.centerYAnchor.constraint(equalTo: imageDescriptionView.centerYAnchor),
 
-            imageDesciptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageDesciptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
-            imageDesciptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            imageDesciptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
-            imageDesciptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            imageDescriptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
+            imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
+            imageDescriptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
         ])
     }
 
@@ -154,7 +154,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         imageView.image = nil
         iconImageView.image = nil
         titleLabel.text = ""
-        subTitleLabel.text = ""
+        subtitleLabel.text = ""
         imageTextLabel.text = ""
         accessibilityLabel = ""
 
@@ -171,7 +171,7 @@ public class AdsGridViewCell: UICollectionViewCell {
             if let model = model {
                 iconImageView.image = model.iconImage?.withRenderingMode(.alwaysTemplate)
                 titleLabel.text = model.title
-                subTitleLabel.text = model.subTitle
+                subtitleLabel.text = model.subTitle
                 imageTextLabel.text = model.imageText
                 accessibilityLabel = model.accessibilityLabel
             }

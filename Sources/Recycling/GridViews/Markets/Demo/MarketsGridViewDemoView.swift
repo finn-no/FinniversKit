@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 class MarketDataSource: NSObject {
     var models = Market.allMarkets

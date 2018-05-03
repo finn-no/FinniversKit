@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import Foundation
 
 public enum Market: MarketsGridViewModel {
     case eiendom

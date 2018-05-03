@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 public class BroadcastDemoView: UIView {
     lazy var broadcast: Broadcast = {

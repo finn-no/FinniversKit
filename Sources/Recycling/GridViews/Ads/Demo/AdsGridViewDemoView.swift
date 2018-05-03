@@ -3,16 +3,15 @@
 //
 
 import FinniversKit
-import UIKit
 
 /// For use with AdsGridView.
-public class GridPreviewDataSource: NSObject {
-    let models = GridPreviewFactory.create(numberOfModels: 9)
+public class AdDataSource: NSObject {
+    let models = AdFactory.create(numberOfModels: 9)
 }
 
 public class AdsGridViewDemoView: UIView {
-    lazy var dataSource: GridPreviewDataSource = {
-        return GridPreviewDataSource()
+    lazy var dataSource: AdDataSource = {
+        return AdDataSource()
     }()
 
     override init(frame: CGRect) {

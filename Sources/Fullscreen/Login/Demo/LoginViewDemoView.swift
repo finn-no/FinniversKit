@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 public class LoginViewDemoView: UIView {
     private lazy var loginView: LoginView = {

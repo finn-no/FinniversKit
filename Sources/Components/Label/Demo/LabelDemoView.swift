@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 public class LabelDemoView: UIView {
     override init(frame: CGRect) {

@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 public class RibbonDemoView: UIView {
     public lazy var headerLabel: Label = {
