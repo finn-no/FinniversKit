@@ -50,7 +50,6 @@ public class NotificationsListHeaderView: UITableViewHeaderFooterView {
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
 
             dateLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-            dateLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
         ])
     }
