@@ -5,9 +5,17 @@
 import FinniversKit
 
 public class InlineConsentDemoView: UIView {
+    private let plusScreenWidth: CGFloat = 414.0
+
     private lazy var inlineConsentView: InlineConsentView = {
-        let view = InlineConsentView(frame: frame)
+        let margins = .mediumLargeSpacing * 2
+        let consentWidth = min(frame.width, plusScreenWidth)
+        let consentFrame = CGRect(x: 0, y: 0, width: (consentWidth - margins), height: frame.height)
+        let view = InlineConsentView(frame: consentFrame)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.descriptionText = "Vi kan vise deg relevante FINN-annonser du ikke har sett. Da trenger vi å lagre dine søkevalg."
+        view.yesButtonTitle = "Ja, det er greit"
+        view.infoButtonTitle = "Mer om samtykke"
         return view
     }()
 
@@ -20,16 +28,14 @@ public class InlineConsentDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        inlineConsentView.descriptionText = "Vi kan bruke søkemønsteret ditt til å gi deg relevante anbefalinger fra FINN. Er det greit at vi lagrer dine søkevalg?"
-        inlineConsentView.yesButtonTitle = "Ja, det er greit"
-        inlineConsentView.infoButtonTitle = "Mer om samtykke"
-
         addSubview(inlineConsentView)
 
         NSLayoutConstraint.activate([
             inlineConsentView.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
-            inlineConsentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            inlineConsentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            inlineConsentView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            inlineConsentView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumLargeSpacing),
+            inlineConsentView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            inlineConsentView.widthAnchor.constraint(equalToConstant: plusScreenWidth),
         ])
     }
 }
