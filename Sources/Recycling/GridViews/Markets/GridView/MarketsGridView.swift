@@ -4,16 +4,16 @@
 
 import UIKit
 
-public protocol MarketListViewDelegate: NSObjectProtocol {
-    func marketListView(_ marketListView: MarketListView, didSelectItemAtIndex index: Int)
+public protocol MarketsGridViewDelegate: NSObjectProtocol {
+    func marketsGridView(_ marketsGridView: MarketsGridView, didSelectItemAtIndex index: Int)
 }
 
-public protocol MarketListViewDataSource: NSObjectProtocol {
-    func numberOfItems(inMarketListView marketListView: MarketListView) -> Int
-    func marketListView(_ marketListView: MarketListView, modelAtIndex index: Int) -> MarketListViewModel
+public protocol MarketsGridViewDataSource: NSObjectProtocol {
+    func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int
+    func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel
 }
 
-public class MarketListView: UIView {
+public class MarketsGridView: UIView {
 
     // MARK: - Internal properties
 
@@ -26,12 +26,12 @@ public class MarketListView: UIView {
         return collectionView
     }()
 
-    private weak var delegate: MarketListViewDelegate?
-    private weak var dataSource: MarketListViewDataSource?
+    private weak var delegate: MarketsGridViewDelegate?
+    private weak var dataSource: MarketsGridViewDataSource?
 
     // MARK: - Setup
 
-    public init(frame: CGRect = .zero, delegate: MarketListViewDelegate, dataSource: MarketListViewDataSource) {
+    public init(frame: CGRect = .zero, delegate: MarketsGridViewDelegate, dataSource: MarketsGridViewDataSource) {
         super.init(frame: frame)
 
         self.delegate = delegate
@@ -51,7 +51,7 @@ public class MarketListView: UIView {
     }
 
     private func setup() {
-        collectionView.register(MarketCell.self)
+        collectionView.register(MarketsGridViewCell.self)
         addSubview(collectionView)
 
         NSLayoutConstraint.activate([
@@ -82,38 +82,38 @@ public class MarketListView: UIView {
     // MARK: - Private
 
     private func numberOfRows(for viewWidth: CGFloat) -> Int {
-        guard let modelsCount = dataSource?.numberOfItems(inMarketListView: self) else {
+        guard let modelsCount = dataSource?.numberOfItems(inMarketsGridView: self) else {
             return 0
         }
 
-        return Int(ceil(Double(modelsCount) / Double(MarketListViewLayoutConfiguration(width: viewWidth).itemsPerRow)))
+        return Int(ceil(Double(modelsCount) / Double(MarketsGridViewLayoutConfiguration(width: viewWidth).itemsPerRow)))
     }
 
     private func itemSize(for viewWidth: CGFloat) -> CGSize {
-        let screenWidth = MarketListViewLayoutConfiguration(width: viewWidth)
+        let screenWidth = MarketsGridViewLayoutConfiguration(width: viewWidth)
         let itemSize = CGSize(width: viewWidth / screenWidth.itemsPerRow - screenWidth.sideMargins - screenWidth.interimSpacing, height: screenWidth.itemHeight)
         return itemSize
     }
 
     private func insets(for viewWidth: CGFloat) -> UIEdgeInsets {
-        let screenWidth = MarketListViewLayoutConfiguration(width: viewWidth)
+        let screenWidth = MarketsGridViewLayoutConfiguration(width: viewWidth)
         return screenWidth.edgeInsets
     }
 
     private func lineSpacing(for viewWidth: CGFloat) -> CGFloat {
-        let screenWidth = MarketListViewLayoutConfiguration(width: viewWidth)
+        let screenWidth = MarketsGridViewLayoutConfiguration(width: viewWidth)
         return screenWidth.lineSpacing
     }
 
     private func interimSpacing(for viewWidth: CGFloat) -> CGFloat {
-        let screenWidth = MarketListViewLayoutConfiguration(width: viewWidth)
+        let screenWidth = MarketsGridViewLayoutConfiguration(width: viewWidth)
         return screenWidth.interimSpacing
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension MarketListView: UICollectionViewDelegateFlowLayout {
+extension MarketsGridView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return itemSize(for: bounds.width)
     }
@@ -133,15 +133,15 @@ extension MarketListView: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UICollectionViewDataSource
 
-extension MarketListView: UICollectionViewDataSource {
+extension MarketsGridView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inMarketListView: self) ?? 0
+        return dataSource?.numberOfItems(inMarketsGridView: self) ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(MarketCell.self, for: indexPath)
+        let cell = collectionView.dequeue(MarketsGridViewCell.self, for: indexPath)
 
-        if let model = dataSource?.marketListView(self, modelAtIndex: indexPath.row) {
+        if let model = dataSource?.marketsGridView(self, modelAtIndex: indexPath.row) {
             cell.model = model
         }
 
@@ -151,8 +151,8 @@ extension MarketListView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension MarketListView: UICollectionViewDelegate {
+extension MarketsGridView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.marketListView(self, didSelectItemAtIndex: indexPath.row)
+        delegate?.marketsGridView(self, didSelectItemAtIndex: indexPath.row)
     }
 }

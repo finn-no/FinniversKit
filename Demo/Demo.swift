@@ -7,14 +7,14 @@ import UIKit
 enum Sections: String {
     case dna
     case components
-    case listViews
+    case recycling
     case fullscreen
 
     static var all: [Sections] {
         return [
             .dna,
             .components,
-            .listViews,
+            .recycling,
             .fullscreen,
         ]
     }
@@ -25,8 +25,8 @@ enum Sections: String {
             return DnaViews.all.count
         case .components:
             return ComponentViews.all.count
-        case .listViews:
-            return ListViews.all.count
+        case .recycling:
+            return Recycling.all.count
         case .fullscreen:
             return FullscreenViews.all.count
         }
@@ -46,8 +46,8 @@ enum Sections: String {
             rawClassName = DnaViews.all[indexPath.row].rawValue
         case .components:
             rawClassName = ComponentViews.all[indexPath.row].rawValue
-        case .listViews:
-            rawClassName = ListViews.all[indexPath.row].rawValue
+        case .recycling:
+            rawClassName = Recycling.all[indexPath.row].rawValue
         case .fullscreen:
             rawClassName = FullscreenViews.all[indexPath.row].rawValue
         }
@@ -64,8 +64,8 @@ enum Sections: String {
         case .components:
             let selectedView = ComponentViews.all[indexPath.row]
             return selectedView.viewController
-        case .listViews:
-            let selectedView = ListViews.all[indexPath.row]
+        case .recycling:
+            let selectedView = Recycling.all[indexPath.row]
             return selectedView.viewController
         case .fullscreen:
             let selectedView = FullscreenViews.all[indexPath.row]
@@ -173,23 +173,23 @@ enum ComponentViews: String {
     }
 }
 
-enum ListViews: String {
-    case market
-    case gridPreview
+enum Recycling: String {
+    case marketsGridView
+    case adsGridView
 
-    static var all: [ListViews] {
+    static var all: [Recycling] {
         return [
-            .market,
-            .gridPreview,
+            .marketsGridView,
+            .adsGridView,
         ]
     }
 
     var viewController: UIViewController {
         switch self {
-        case .market:
-            return ViewController<MarketListViewDemoView>()
-        case .gridPreview:
-            return ViewController<GridPreviewListViewDemoView>()
+        case .marketsGridView:
+            return ViewController<MarketsGridViewDemoView>()
+        case .adsGridView:
+            return ViewController<AdsGridViewDemoView>()
         }
     }
 }

@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum MarketListViewLayoutConfiguration {
+enum MarketsGridViewLayoutConfiguration {
     case small
     case medium
     case large(CGFloat)
@@ -14,9 +14,9 @@ enum MarketListViewLayoutConfiguration {
 
     init(width: CGFloat) {
         switch width {
-        case let width where width > MarketListViewLayoutConfiguration.mediumRange.upperBound:
+        case let width where width > MarketsGridViewLayoutConfiguration.mediumRange.upperBound:
             self = .large(width)
-        case let width where width < MarketListViewLayoutConfiguration.mediumRange.lowerBound:
+        case let width where width < MarketsGridViewLayoutConfiguration.mediumRange.lowerBound:
             self = .small
         default:
             self = .medium
@@ -62,7 +62,7 @@ enum MarketListViewLayoutConfiguration {
     var itemsPerRow: CGFloat {
         switch self {
         case let .large(width):
-            if width > MarketListViewLayoutConfiguration.portraitModeScreenWidth {
+            if width > MarketsGridViewLayoutConfiguration.portraitModeScreenWidth {
                 return 6
             } else {
                 return 5

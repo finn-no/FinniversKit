@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol MarketListViewModel {
+public protocol MarketsGridViewModel {
     var iconImage: UIImage? { get }
     var showExternalLinkIcon: Bool { get }
     var badgeImage: UIImage? { get }
@@ -12,7 +12,7 @@ public protocol MarketListViewModel {
     var accessibilityLabel: String { get }
 }
 
-public extension MarketListViewModel {
+public extension MarketsGridViewModel {
     var accessibilityLabel: String {
         return title
     }

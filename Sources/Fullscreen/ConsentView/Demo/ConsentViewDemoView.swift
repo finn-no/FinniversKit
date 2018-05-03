@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 public class ConsentViewDemoView: UIView {
     private lazy var consentView: ConsentView = {

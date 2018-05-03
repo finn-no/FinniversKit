@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 struct ColorItem {
     let color: UIColor

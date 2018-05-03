@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class MarketView: UIView {
+public class MarketsGridViewCell: UICollectionViewCell {
 
     // MARK: - Internal properties
 
@@ -83,16 +83,19 @@ public class MarketView: UIView {
         ])
     }
 
-    // MARK: - Dependency injection
+    // MARK: - Superclass Overrides
 
-    public func prepareForReuse() {
+    public override func prepareForReuse() {
+        super.prepareForReuse()
         iconImageView.image = nil
         badgeImageView.image = nil
         titleLabel.text = ""
         accessibilityLabel = ""
     }
 
-    public var model: MarketListViewModel? {
+    // MARK: - Dependency injection
+
+    public var model: MarketsGridViewModel? {
         didSet {
             iconImageView.image = model?.iconImage
             titleLabel.text = model?.title

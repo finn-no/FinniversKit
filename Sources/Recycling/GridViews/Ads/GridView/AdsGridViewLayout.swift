@@ -4,25 +4,25 @@
 
 import UIKit
 
-protocol GridPreviewListViewLayoutDelegate {
-    func gridPreviewListViewLayout(_ gridPreviewListViewLayout: GridPreviewListViewLayout, imageHeightRatioForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
-    func gridPreviewListViewLayout(_ gridPreviewListViewLayout: GridPreviewListViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
-    func gridPreviewListViewLayout(_ gridPreviewListViewLayout: GridPreviewListViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat?
+protocol AdsGridViewLayoutDelegate {
+    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, imageHeightRatioForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
+    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
+    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat?
 }
 
-class GridPreviewListViewLayout: UICollectionViewLayout {
-    private let delegate: GridPreviewListViewLayoutDelegate
+class AdsGridViewLayout: UICollectionViewLayout {
+    private let delegate: AdsGridViewLayoutDelegate
     private var itemAttributes = [UICollectionViewLayoutAttributes]()
 
-    private var configuration: GridPreviewLayoutConfiguration {
+    private var configuration: AdsGridViewLayoutConfiguration {
         guard let collectionView = collectionView else {
             fatalError("Layout unusable without collection view!")
         }
 
-        return GridPreviewLayoutConfiguration(width: collectionView.frame.size.width)
+        return AdsGridViewLayoutConfiguration(width: collectionView.frame.size.width)
     }
 
-    init(delegate: GridPreviewListViewLayoutDelegate) {
+    init(delegate: AdsGridViewLayoutDelegate) {
         self.delegate = delegate
         super.init()
     }
@@ -91,7 +91,7 @@ class GridPreviewListViewLayout: UICollectionViewLayout {
         var attributesCollection = [UICollectionViewLayoutAttributes]()
         var yOffset = configuration.topOffset
 
-        if let height = delegate.gridPreviewListViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
+        if let height = delegate.adsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
             let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: IndexPath(item: 0, section: 0))
             attributes.frame = CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: height)
             attributesCollection.append(attributes)
@@ -107,8 +107,8 @@ class GridPreviewListViewLayout: UICollectionViewLayout {
             let verticalOffset = CGFloat(columns[columnIndex]) + topPadding
 
             let indexPath = IndexPath(item: index, section: 0)
-            let imageHeightRatio = delegate.gridPreviewListViewLayout(self, imageHeightRatioForItemAtIndexPath: indexPath, inCollectionView: collectionView)
-            let itemNonImageHeight = delegate.gridPreviewListViewLayout(self, itemNonImageHeightForItemAtIndexPath: indexPath, inCollectionView: collectionView)
+            let imageHeightRatio = delegate.adsGridViewLayout(self, imageHeightRatioForItemAtIndexPath: indexPath, inCollectionView: collectionView)
+            let itemNonImageHeight = delegate.adsGridViewLayout(self, itemNonImageHeightForItemAtIndexPath: indexPath, inCollectionView: collectionView)
 
             let itemHeight = (imageHeightRatio * itemWidth) + itemNonImageHeight
 
@@ -138,7 +138,7 @@ class GridPreviewListViewLayout: UICollectionViewLayout {
         }
 
         guard collectionView.numberOfItems(inSection: 0) > 0 else {
-            if let height = delegate.gridPreviewListViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
+            if let height = delegate.adsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
                 return CGSize(width: collectionView.frame.size.width, height: height)
             } else {
                 return collectionView.bounds.size

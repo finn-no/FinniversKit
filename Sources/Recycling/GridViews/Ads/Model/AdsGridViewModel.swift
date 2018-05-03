@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol GridPreviewListViewModel {
+public protocol AdsGridViewModel {
     var imagePath: String? { get }
     var imageSize: CGSize { get }
     var iconImage: UIImage? { get }
@@ -14,7 +14,7 @@ public protocol GridPreviewListViewModel {
     var accessibilityLabel: String { get }
 }
 
-public extension GridPreviewListViewModel {
+public extension AdsGridViewModel {
     var accessibilityLabel: String {
         var message = title
 

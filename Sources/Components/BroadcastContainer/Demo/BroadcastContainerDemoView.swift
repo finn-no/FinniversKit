@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 class BroadcastContainerDemoView: UIView {
     private lazy var tableView: UITableView = {
