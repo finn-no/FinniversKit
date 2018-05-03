@@ -1,6 +1,6 @@
 import UIKit
 
-class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
+final public class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
 
     // MARK: - Internal properties
 
@@ -18,14 +18,21 @@ class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
         setup()
     }
 
-    private func setup() {
+    // MARK: - Superclass Overrides
+    
+}
+
+// MARK: - Public
+
+public extension ___FILEBASENAMEASIDENTIFIER___ {
+}
+
+// MARK: - Private
+
+private extension ___FILEBASENAMEASIDENTIFIER___ {
+    func setup() {
         // Perform setup
         // Add child views as subviews
         // Setup constraints/frames
     }
-
-    // MARK: - Superclass Overrides
-
-    // MARK: - Private
-
 }
