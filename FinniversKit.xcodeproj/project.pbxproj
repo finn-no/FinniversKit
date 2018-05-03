@@ -65,7 +65,8 @@
 		4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69E1FDB2B110033DBC1 /* RibbonDemoView.swift */; };
 		4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A51FDB2B110033DBC1 /* TextFieldDemoView.swift */; };
 		4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AA1FDB2B110033DBC1 /* ToastDemoView.swift */; };
-		447AFC1120984B6E000F793E /* FrontpageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFC1020984B6E000F793E /* FrontpageViewDemoView.swift */; };
+		445F6D81209B5C0D00D1B49C /* FrontpageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F6D80209B5C0D00D1B49C /* FrontpageGridView.swift */; };
+		445F6D8A209B5C2E00D1B49C /* FrontpageGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F6D88209B5C2E00D1B49C /* FrontpageGridViewDemoView.swift */; };
 		44898D541FE5B40D00F6017B /* Layout+HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */; };
 		44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */; };
 		44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */; };
@@ -227,7 +228,8 @@
 		4447F7151FDB2C100033DBC1 /* TemplateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon.png; sourceTree = "<group>"; };
 		4447F7161FDB2C100033DBC1 /* TemplateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TemplateIcon@2x.png"; sourceTree = "<group>"; };
 		4447F7171FDB2C100033DBC1 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
-		447AFC1020984B6E000F793E /* FrontpageViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontpageViewDemoView.swift; sourceTree = "<group>"; };
+		445F6D80209B5C0D00D1B49C /* FrontpageGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontpageGridView.swift; sourceTree = "<group>"; };
+		445F6D88209B5C2E00D1B49C /* FrontpageGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontpageGridViewDemoView.swift; sourceTree = "<group>"; };
 		44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layout+HelpersTests.swift"; sourceTree = "<group>"; };
 		44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 		441FE415209A24E500B04EF1 /* GridViews */ = {
 			isa = PBXGroup;
 			children = (
+				445F6D7E209B5C0D00D1B49C /* Frontpage */,
 				441FE416209A24E500B04EF1 /* Markets */,
 				441FE41F209A24E500B04EF1 /* Ads */,
 			);
@@ -750,18 +753,27 @@
 			path = FinniversKitView.xctemplate;
 			sourceTree = "<group>";
 		};
-		447AFC0E20984B63000F793E /* Frontpage */ = {
+		445F6D7E209B5C0D00D1B49C /* Frontpage */ = {
 			isa = PBXGroup;
 			children = (
-				447AFC0F20984B6E000F793E /* Demo */,
+				445F6D87209B5C2E00D1B49C /* Demo */,
+				445F6D7F209B5C0D00D1B49C /* GridView */,
 			);
 			path = Frontpage;
 			sourceTree = "<group>";
 		};
-		447AFC0F20984B6E000F793E /* Demo */ = {
+		445F6D7F209B5C0D00D1B49C /* GridView */ = {
 			isa = PBXGroup;
 			children = (
-				447AFC1020984B6E000F793E /* FrontpageViewDemoView.swift */,
+				445F6D80209B5C0D00D1B49C /* FrontpageGridView.swift */,
+			);
+			path = GridView;
+			sourceTree = "<group>";
+		};
+		445F6D87209B5C2E00D1B49C /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				445F6D88209B5C2E00D1B49C /* FrontpageGridViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -791,7 +803,6 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
-				447AFC0E20984B63000F793E /* Frontpage */,
 				44D9124A2077AC8A00486848 /* ConsentView */,
 				44D9124D2077AC8A00486848 /* Register */,
 				44D912502077AC8A00486848 /* EmptyView */,
@@ -1202,10 +1213,10 @@
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				44D912782077AD1800486848 /* LoginViewDemoView.swift in Sources */,
+				445F6D8A209B5C2E00D1B49C /* FrontpageGridViewDemoView.swift in Sources */,
 				4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */,
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
-				447AFC1120984B6E000F793E /* FrontpageViewDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1231,6 +1242,7 @@
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */,
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
+				445F6D81209B5C0D00D1B49C /* FrontpageGridView.swift in Sources */,
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,

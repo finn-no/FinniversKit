@@ -174,32 +174,35 @@ enum ComponentViews: String {
 }
 
 enum Recycling: String {
-    case notificationsListView
     case marketsGridView
     case adsGridView
+    case frontpageGridView
+    case notificationsListView
 
     static var all: [Recycling] {
         return [
-            .notificationsListView,
             .marketsGridView,
             .adsGridView,
+            .frontpageGridView,
+            .notificationsListView,
         ]
     }
 
     var viewController: UIViewController {
         switch self {
-        case .notificationsListView:
-            return ViewController<NotificationsListViewDemoView>()
         case .marketsGridView:
             return ViewController<MarketsGridViewDemoView>()
         case .adsGridView:
             return ViewController<AdsGridViewDemoView>()
+        case .frontpageGridView:
+            return ViewController<FrontpageGridViewDemoView>()
+        case .notificationsListView:
+            return ViewController<NotificationsListViewDemoView>()
         }
     }
 }
 
 enum FullscreenViews: String {
-    case frontpageViewDemoView
     case registerViewDemoView
     case consentViewDemoView
     case emptyViewDemoView
@@ -207,8 +210,6 @@ enum FullscreenViews: String {
 
     var viewController: UIViewController {
         switch self {
-        case .frontpageViewDemoView:
-            return ViewController<FrontpageViewDemoView>()
         case .registerViewDemoView:
             return ViewController<RegisterViewDemoView>()
         case .loginViewDemoView:
@@ -222,7 +223,6 @@ enum FullscreenViews: String {
 
     static var all: [FullscreenViews] {
         return [
-            .frontpageViewDemoView,
             .registerViewDemoView,
             .consentViewDemoView,
             .emptyViewDemoView,
