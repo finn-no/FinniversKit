@@ -35,6 +35,13 @@
 		441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE438209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift */; };
 		441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE43C209A254900B04EF1 /* MarketsGridViewDemoView.swift */; };
 		441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE43D209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift */; };
+		441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE443209A2F2C00B04EF1 /* NotificationsListViewCell.swift */; };
+		441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE447209A2F2C00B04EF1 /* NotificationsListView.swift */; };
+		441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE44A209A2F2C00B04EF1 /* NotificationsListViewModel.swift */; };
+		441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE452209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift */; };
+		441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */; };
+		443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */; };
+		443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */; };
 		4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6661FDB2B110033DBC1 /* Button+Style.swift */; };
 		4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; };
 		4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6751FDB2B110033DBC1 /* Label+Style.swift */; };
@@ -185,6 +192,13 @@
 		441FE438209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsGridViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		441FE43C209A254900B04EF1 /* MarketsGridViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewDemoView.swift; sourceTree = "<group>"; };
 		441FE43D209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewDemoViewHelpers.swift; sourceTree = "<group>"; };
+		441FE443209A2F2C00B04EF1 /* NotificationsListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewCell.swift; sourceTree = "<group>"; };
+		441FE447209A2F2C00B04EF1 /* NotificationsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListView.swift; sourceTree = "<group>"; };
+		441FE44A209A2F2C00B04EF1 /* NotificationsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewModel.swift; sourceTree = "<group>"; };
+		441FE452209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoView.swift; sourceTree = "<group>"; };
+		441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
+		443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListHeaderView.swift; sourceTree = "<group>"; };
+		443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListFooterView.swift; sourceTree = "<group>"; };
 		4447F6661FDB2B110033DBC1 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		4447F6671FDB2B110033DBC1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDemoView.swift; sourceTree = "<group>"; };
@@ -404,6 +418,7 @@
 		441FE414209A24E500B04EF1 /* Recycling */ = {
 			isa = PBXGroup;
 			children = (
+				441FE440209A2F2C00B04EF1 /* ListViews */,
 				441FE415209A24E500B04EF1 /* GridViews */,
 			);
 			path = Recycling;
@@ -506,6 +521,60 @@
 			children = (
 				441FE43C209A254900B04EF1 /* MarketsGridViewDemoView.swift */,
 				441FE43D209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		441FE440209A2F2C00B04EF1 /* ListViews */ = {
+			isa = PBXGroup;
+			children = (
+				441FE441209A2F2C00B04EF1 /* Notifications */,
+			);
+			path = ListViews;
+			sourceTree = "<group>";
+		};
+		441FE441209A2F2C00B04EF1 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				441FE451209A2F3A00B04EF1 /* Demo */,
+				441FE442209A2F2C00B04EF1 /* Cell */,
+				441FE444209A2F2C00B04EF1 /* ListView */,
+				441FE449209A2F2C00B04EF1 /* Model */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		441FE442209A2F2C00B04EF1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				441FE443209A2F2C00B04EF1 /* NotificationsListViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		441FE444209A2F2C00B04EF1 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				441FE447209A2F2C00B04EF1 /* NotificationsListView.swift */,
+				443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */,
+				443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		441FE449209A2F2C00B04EF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				441FE44A209A2F2C00B04EF1 /* NotificationsListViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		441FE451209A2F3A00B04EF1 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				441FE452209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift */,
+				441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1108,6 +1177,7 @@
 			files = (
 				44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */,
 				55C5B27E203EB9DA007D7277 /* BroadcastContainerDemoView.swift in Sources */,
+				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
 				146D3C401FBE466D00124B76 /* ViewController.swift in Sources */,
 				44D9126A2077AD0200486848 /* ConsentViewDefaultData.swift in Sources */,
@@ -1117,6 +1187,7 @@
 				AF91BB9F202C868E003E6366 /* BroadcastDemoView.swift in Sources */,
 				44D912772077AD1800486848 /* LoginViewDefaultData.swift in Sources */,
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
+				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
 				44D912702077AD0C00486848 /* RegisterViewDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
@@ -1159,6 +1230,8 @@
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */,
+				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
+				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
@@ -1168,9 +1241,11 @@
 				44D912662077AC8A00486848 /* LoginView.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
+				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				441FE431209A24E500B04EF1 /* AdsGridHeaderView.swift in Sources */,
+				443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				44D9125E2077AC8A00486848 /* RegisterViewModel.swift in Sources */,
 				44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */,
@@ -1196,6 +1271,7 @@
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
+				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
 				44D9125B2077AC8A00486848 /* ConsentView.swift in Sources */,
 				44D912652077AC8A00486848 /* LoginViewModel.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
