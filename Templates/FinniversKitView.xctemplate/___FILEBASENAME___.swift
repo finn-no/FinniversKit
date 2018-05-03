@@ -22,6 +22,11 @@ final public class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
     
 }
 
+// MARK: - Public
+
+public extension ___FILEBASENAMEASIDENTIFIER___ {
+}
+
 // MARK: - Private
 
 private extension ___FILEBASENAMEASIDENTIFIER___ {
@@ -30,9 +35,4 @@ private extension ___FILEBASENAMEASIDENTIFIER___ {
         // Add child views as subviews
         // Setup constraints/frames
     }
-}
-
-// MARK: - Public
-
-public extension ___FILEBASENAMEASIDENTIFIER___ {
 }
