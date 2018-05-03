@@ -18,14 +18,21 @@ final public class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
         setup()
     }
 
-    private func setup() {
+    // MARK: - Superclass Overrides
+    
+}
+
+// MARK: - Private
+
+private extension ___FILEBASENAMEASIDENTIFIER___ {
+    func setup() {
         // Perform setup
         // Add child views as subviews
         // Setup constraints/frames
     }
+}
 
-    // MARK: - Superclass Overrides
+// MARK: - Public
 
-    // MARK: - Private
-
+public extension ___FILEBASENAMEASIDENTIFIER___ {
 }
