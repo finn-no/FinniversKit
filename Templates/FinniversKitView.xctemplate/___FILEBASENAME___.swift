@@ -1,6 +1,6 @@
 import UIKit
 
-class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
+final public class ___FILEBASENAMEASIDENTIFIER___: <#View Class#> {
 
     // MARK: - Internal properties
 
