@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 class FrontpageViewDemoView: UIView {
     fileprivate lazy var discoverGridView: AdsGridView = {

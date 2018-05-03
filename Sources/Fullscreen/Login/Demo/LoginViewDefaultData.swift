@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import Foundation
 
 public struct LoginViewDefaultData: LoginViewModel {
     public let headerText = "Logg inn for å sende meldinger, lagre favoritter og søk. Du får også varsler når det skjer noe nytt!"

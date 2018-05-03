@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import Foundation
 
 public struct RegisterViewDefaultData: RegisterViewModel {
     public init() {

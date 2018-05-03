@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 /// For use with AdsGridView.
 public class AdDataSource: NSObject {

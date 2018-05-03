@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import Foundation
 
 /// A model confirming to the AdsGridViewModel protocol for showcasing AdsGridViewCell in playground.
 public struct Ad: AdsGridViewModel {

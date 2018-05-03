@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 public class SpacingDemoView: UIView {
     override init(frame: CGRect) {

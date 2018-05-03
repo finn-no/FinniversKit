@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 public class TextFieldDemoView: UIView {
     override init(frame: CGRect) {

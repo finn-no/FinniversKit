@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 class ToastClass: NSObject, ToastViewDelegate {
     func didTapActionButton(button: UIButton, in toastView: ToastView) {

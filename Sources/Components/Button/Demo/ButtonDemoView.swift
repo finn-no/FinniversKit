@@ -3,7 +3,6 @@
 //
 
 import FinniversKit
-import UIKit
 
 public class ButtonDemoView: UIView {
     override init(frame: CGRect) {
