@@ -10,6 +10,7 @@ public protocol ConsentViewDelegate: NSObjectProtocol {
     func consentView(_ consentView: ConsentView, didSelectYesButton button: Button)
     func consentView(_ consentView: ConsentView, didSelectNoButton button: Button)
     func consentView(_ consentView: ConsentView, didSelectCancelButton button: Button)
+    func consentView(_ consentView: ConsentView, didSelectInfoButton button: Button)
 }
 
 public class ConsentView: UIView {
@@ -28,7 +29,42 @@ public class ConsentView: UIView {
         return view
     }()
 
-    private let noImage: UIImage = UIImage(frameworkImageNamed: "NoImage")!
+    private lazy var cancelButton: Button = {
+        let button = Button(style: .flat)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
+    private lazy var descriptionTitleLabel: Label = {
+        let label = Label(style: .title2)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+
+    private lazy var descriptionLabel: Label = {
+        let label = Label(style: .body(.licorice))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+
+    private lazy var infoButton: Button = {
+        let button = Button(style: .link)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+        return button
+    }()
 
     private lazy var noButton: Button = {
         let button = Button(style: .default)
@@ -44,13 +80,6 @@ public class ConsentView: UIView {
         return button
     }()
 
-    private lazy var cancelButton: Button = {
-        let button = Button(style: .flat)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
-        return button
-    }()
-
     private lazy var buttonStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [noButton, yesButton])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -58,42 +87,6 @@ public class ConsentView: UIView {
         view.spacing = .mediumLargeSpacing
         view.distribution = .fillEqually
         return view
-    }()
-
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(frameworkImageNamed: "consentViewImage1")
-        return imageView
-    }()
-
-    private lazy var descriptionTitleLabel: Label = {
-        let label = Label(style: .title2)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private lazy var introDescriptionLabel: Label = {
-        let label = Label(style: .body(.licorice))
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private lazy var descriptionBulletPointsLabel: Label = {
-        let label = Label(style: .body(.licorice))
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private lazy var descriptionLabel: Label = {
-        let label = Label(style: .body(.licorice))
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
     }()
 
     // MARK: - External properties / Dependency injection
@@ -108,11 +101,24 @@ public class ConsentView: UIView {
 
             yesButton.setTitle(model.yesButtonTitle, for: .normal)
             noButton.setTitle(model.noButtonTitle, for: .normal)
-            cancelButton.setTitle(model.cancelButtonTitle, for: .normal)
+
+            if let cancelButtonTitle = model.cancelButtonTitle, cancelButtonTitle != "" {
+                cancelButton.isHidden = false
+                cancelButton.setTitle(cancelButtonTitle, for: .normal)
+            } else {
+                cancelButton.isHidden = true
+            }
+
+            if let infoButtonTitle = model.infoButtonTitle, infoButtonTitle != "" {
+                infoButton.isHidden = false
+                infoButton.setTitle(infoButtonTitle, for: .normal)
+            } else {
+                infoButton.isHidden = true
+            }
             descriptionTitleLabel.text = model.descriptionTitle
-            introDescriptionLabel.text = model.descriptionIntroText
-            descriptionBulletPointsLabel.attributedText = model.formatedBulletPoints(with: .body)
             descriptionLabel.text = model.descriptionText
+
+            imageView.image = model.image
         }
     }
 
@@ -135,9 +141,8 @@ public class ConsentView: UIView {
         contentView.addSubview(cancelButton)
         contentView.addSubview(imageView)
         contentView.addSubview(descriptionTitleLabel)
-        contentView.addSubview(introDescriptionLabel)
-        contentView.addSubview(descriptionBulletPointsLabel)
         contentView.addSubview(descriptionLabel)
+        contentView.addSubview(infoButton)
         addSubview(buttonStackView)
 
         NSLayoutConstraint.activate([
@@ -156,27 +161,24 @@ public class ConsentView: UIView {
             cancelButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             cancelButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            imageView.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: .mediumLargeSpacing),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: .veryLargeSpacing),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            descriptionTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .largeSpacing),
+            descriptionTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumLargeSpacing),
             descriptionTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             descriptionTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             descriptionTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            introDescriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            introDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            introDescriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-
-            descriptionBulletPointsLabel.topAnchor.constraint(equalTo: introDescriptionLabel.bottomAnchor, constant: .mediumSpacing),
-            descriptionBulletPointsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            descriptionBulletPointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-
-            descriptionLabel.topAnchor.constraint(equalTo: descriptionBulletPointsLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            infoButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            infoButton.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            infoButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            infoButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            infoButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
             buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
             buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
@@ -196,5 +198,9 @@ public class ConsentView: UIView {
 
     @objc private func cancelButtonTapped(button: Button) {
         delegate?.consentView(self, didSelectCancelButton: button)
+    }
+
+    @objc private func infoButtonTapped(button: Button) {
+        delegate?.consentView(self, didSelectInfoButton: button)
     }
 }
