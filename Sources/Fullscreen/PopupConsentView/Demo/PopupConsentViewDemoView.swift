@@ -5,8 +5,10 @@
 import FinniversKit
 
 public class PopupConsentViewDemoView: UIView {
+    private let plusScreenSize = CGSize(width: 414, height: 736)
+
     private lazy var consentView: PopupConsentView = {
-        let view = PopupConsentView()
+        let view = PopupConsentView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -26,9 +28,12 @@ public class PopupConsentViewDemoView: UIView {
 
         NSLayoutConstraint.activate([
             consentView.topAnchor.constraint(equalTo: topAnchor),
-            consentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            consentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            consentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            consentView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
+            consentView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
+            consentView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            consentView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            consentView.widthAnchor.constraint(equalToConstant: plusScreenSize.width),
+            consentView.heightAnchor.constraint(equalToConstant: plusScreenSize.height),
         ])
     }
 }
