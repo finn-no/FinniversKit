@@ -320,7 +320,6 @@
 			isa = PBXGroup;
 			children = (
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
-				44898D531FE5B40D00F6017B /* Layout+HelpersTests.swift */,
 				559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */,
 			);
 			path = UnitTests;
@@ -1225,7 +1224,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */,
-				44898D541FE5B40D00F6017B /* Layout+HelpersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
