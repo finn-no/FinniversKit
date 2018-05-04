@@ -5,19 +5,25 @@
 import FinniversKit
 
 public struct ConsentViewDefaultData: ConsentViewModel {
-    public var yesButtonTitle = "Ja, det er greit"
+    public var yesButtonTitle = "Ja, takk"
     public var noButtonTitle = "Nei takk"
-    public var cancelButtonTitle = "Avbryt"
-    public var descriptionTitle = "Få anbefalinger der du er"
-    public var descriptionIntroText = "Ved at vi tar vare på din"
-    public var bulletPoints: [String] {
-        let bulletPoint1 = "Søkehostorikk"
-        let bulletPoint2 = "Lagrede søk"
-        let bulletPoint3 = "Annonser du har besøkt"
-        return [bulletPoint1, bulletPoint2, bulletPoint3]
-    }
+    public var cancelButtonTitle: String? = "Spør senere"
+    public var infoButtonTitle: String? = "Mer om anbefalinger"
+    public var descriptionTitle = "Få personlige anbefalinger"
+    public var descriptionText = "Vi kan vise deg relevante FINN-annonser du ikke har sett. Da trenger vi å lagre dine søkevalg."
+    public var image: UIImage = UIImage(named: "illustrasjonMedFarge")!
 
-    public var descriptionText = "Kan vi vise deg innhold vi tror du ikke vil gå glipp av, når du er inne på FINN, Facebook, VG eller Aftenposten."
+    public init() {}
+}
+
+public struct ConsentViewDefaultDataRejected: ConsentViewModel {
+    public var yesButtonTitle = "Lukk"
+    public var noButtonTitle = "Angre"
+    public var cancelButtonTitle: String?
+    public var infoButtonTitle: String?
+    public var descriptionTitle = "Personlige anbefalinger er slått av"
+    public var descriptionText = "Vi vil ikke lenger tipse deg om relevante annonser du ikke sett."
+    public var image: UIImage = UIImage(named: "illustrasjonUtenFarge")!
 
     public init() {}
 }
