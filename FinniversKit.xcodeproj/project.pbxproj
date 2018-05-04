@@ -40,6 +40,7 @@
 		441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE44A209A2F2C00B04EF1 /* NotificationsListViewModel.swift */; };
 		441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE452209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift */; };
 		441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */; };
+		4423F227209CB24500B81D68 /* MiniToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4423F226209CB24500B81D68 /* MiniToastView.swift */; };
 		443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */; };
 		443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */; };
 		4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6661FDB2B110033DBC1 /* Button+Style.swift */; };
@@ -196,6 +197,7 @@
 		441FE44A209A2F2C00B04EF1 /* NotificationsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewModel.swift; sourceTree = "<group>"; };
 		441FE452209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoView.swift; sourceTree = "<group>"; };
 		441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
+		4423F226209CB24500B81D68 /* MiniToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniToastView.swift; sourceTree = "<group>"; };
 		443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListHeaderView.swift; sourceTree = "<group>"; };
 		443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListFooterView.swift; sourceTree = "<group>"; };
 		4447F6661FDB2B110033DBC1 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */,
 				AAC1AFB32021058000C71B7C /* Demo.swift */,
 				4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */,
+				4423F226209CB24500B81D68 /* MiniToastView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1173,6 +1176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */,
+				4423F227209CB24500B81D68 /* MiniToastView.swift in Sources */,
 				55C5B27E203EB9DA007D7277 /* BroadcastContainerDemoView.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,

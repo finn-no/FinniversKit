@@ -34,4 +34,10 @@ class ViewController<View: UIView>: UIViewController {
         Sections.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        
+    }
 }
