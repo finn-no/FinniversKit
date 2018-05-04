@@ -4,7 +4,7 @@
 
 import UIKit
 
-// MARK: - ConsentViewDelegate
+// MARK: - PopupConsentViewDelegate
 
 public protocol PopupConsentViewDelegate: NSObjectProtocol {
     func popupConsentView(_ popupConsentView: PopupConsentView, didSelectYesButton button: Button)
