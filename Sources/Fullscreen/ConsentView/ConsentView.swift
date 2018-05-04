@@ -28,7 +28,7 @@ public class ConsentView: UIView {
         return view
     }()
 
-    private let noImage: UIImage = UIImage(frameworkImageNamed: "NoImage")!
+    private let noImage: UIImage = UIImage(named: .noImage)
 
     private lazy var noButton: Button = {
         let button = Button(style: .default)
@@ -64,7 +64,7 @@ public class ConsentView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(frameworkImageNamed: "consentViewImage1")
+        imageView.image = UIImage(named: .consentViewImage1)
         return imageView
     }()
 

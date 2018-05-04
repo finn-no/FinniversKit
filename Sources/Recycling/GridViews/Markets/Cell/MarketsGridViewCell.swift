@@ -21,7 +21,7 @@ public class MarketsGridViewCell: UICollectionViewCell {
 
     private lazy var externalLinkImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(frameworkImageNamed: "webview")
+        imageView.image = UIImage(named: .webview)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit

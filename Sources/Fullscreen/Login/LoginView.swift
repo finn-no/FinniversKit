@@ -84,7 +84,7 @@ public class LoginView: UIView {
     private lazy var spidLogoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(frameworkImageNamed: "SpidLogo")!
+        imageView.image = UIImage(named: .spidLogo)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
