@@ -2,7 +2,7 @@
 
 HEADER="//\n//  Copyright © FINN.no AS, Inc. All rights reserved.\n//"
 
-command="${SRCROOT}/Others/swiftformat"
+command="${SRCROOT}/Scripts/swiftformat"
 
 OUTPUT=$("$command" \
 --stripunusedargs closure-only \

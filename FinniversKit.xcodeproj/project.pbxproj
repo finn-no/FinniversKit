@@ -86,6 +86,7 @@
 		44C4E8DC1FFBA714000B014D /* ToastView+Style.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6AB1FDB2B110033DBC1 /* ToastView+Style.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8DD1FFBA714000B014D /* ToastView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6AD1FDB2B110033DBC1 /* ToastView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		44C6CE44209CABFE00929269 /* AssetImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6CE43209CABFE00929269 /* AssetImageNames.swift */; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D9125B2077AC8A00486848 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9124B2077AC8A00486848 /* ConsentView.swift */; };
@@ -230,6 +231,7 @@
 		44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		44C6CE43209CABFE00929269 /* AssetImageNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetImageNames.swift; sourceTree = "<group>"; };
 		44D9124B2077AC8A00486848 /* ConsentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
 		44D9124C2077AC8A00486848 /* ConsentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewModel.swift; sourceTree = "<group>"; };
 		44D9124E2077AC8A00486848 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -711,6 +713,7 @@
 		4447F6B81FDB2B110033DBC1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				44C6CE43209CABFE00929269 /* AssetImageNames.swift */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
 				4447F6BA1FDB2B110033DBC1 /* Fonts */,
 			);
@@ -1051,6 +1054,7 @@
 				CB3CF1531F73E5870041EF20 /* Headers */,
 				453D887E1F85191600FC63C7 /* Resources */,
 				1411A1AF1F9FE8F6007D717A /* Run SwiftFormat */,
+				44C6CE42209CAA3300929269 /* Generate constants for assets names */,
 			);
 			buildRules = (
 			);
@@ -1149,7 +1153,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sh \"${SRCROOT}/Others/format.sh\"";
+			shellScript = "sh \"${SRCROOT}/Scripts/format.sh\"";
 		};
 		4447F7181FDB2C330033DBC1 /* Update templates */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1164,6 +1168,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\"\nfi\n\nif [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit\"\nfi\n\ncp -R ./Templates/FinniversKitView.xctemplate ${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit";
+		};
+		44C6CE42209CAA3300929269 /* Generate constants for assets names */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate constants for assets names";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ruby \"${SRCROOT}/Scripts/generate_image_assets_symbols\" AssetImageNames\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1261,6 +1279,7 @@
 				AF91BB97202C74D0003E6366 /* Broadcast.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
 				44D9125C2077AC8A00486848 /* ConsentViewModel.swift in Sources */,
+				44C6CE44209CABFE00929269 /* AssetImageNames.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,

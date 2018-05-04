@@ -72,9 +72,9 @@ public class ToastView: UIView {
         get {
             guard let image = imageView.image else {
                 switch style {
-                case .error, .errorButton: return UIImage(frameworkImageNamed: "error")!
-                case .sucesssWithImage: return UIImage(frameworkImageNamed: "NoImage")!
-                default: return UIImage(frameworkImageNamed: "success")!
+                case .error, .errorButton: return UIImage(named: .error)
+                case .sucesssWithImage: return UIImage(named: .noImage)
+                default: return UIImage(named: .success)
                 }
             }
             return image
