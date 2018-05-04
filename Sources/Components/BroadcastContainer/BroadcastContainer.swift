@@ -55,7 +55,7 @@ public protocol BroadcastContainerDataSource: class {
 
 /// A view that is used to display multiple Broadcasts
 public final class BroadcastContainer: UIView {
-    private let contentViewInsets = Insets(top: .mediumLargeSpacing, leading: .mediumLargeSpacing, bottom: 0, trailing: .mediumLargeSpacing)
+    private let contentViewInsets = UIEdgeInsets(top: .mediumLargeSpacing, leading: .mediumLargeSpacing, bottom: 0, trailing: -.mediumLargeSpacing)
     private let broadcastSpacing: CGFloat = .mediumLargeSpacing
 
     /// The datasource for the BroadcastContainer

@@ -4,32 +4,20 @@
 
 import UIKit
 
-/// A struct that holds the insets when laying out a view.
-public struct Insets {
-    public let top: CGFloat
-    public let leading: CGFloat
-    public let bottom: CGFloat
-    public let trailing: CGFloat
-
-    public static var zero: Insets {
-        return Insets(top: 0, leading: 0, bottom: 0, trailing: 0)
+extension UIEdgeInsets {
+    init(top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) {
+        self.init(top: top, left: leading, bottom: bottom, right: trailing)
     }
 
-    public init(top: Int = 0, leading: Int = 0, bottom: Int = 0, trailing: Int = 0) {
-        self.init(top: CGFloat(top), leading: CGFloat(leading), bottom: CGFloat(bottom), trailing: CGFloat(trailing))
+    public var leading: CGFloat {
+        return left
     }
 
-    public init(top: Double = 0, leading: Double = 0, bottom: Double = 0, trailing: Double = 0) {
-        self.init(top: CGFloat(top), leading: CGFloat(leading), bottom: CGFloat(bottom), trailing: CGFloat(trailing))
+    public var trailing: CGFloat {
+        return right
     }
 
-    public init(top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) {
-        self.top = top
-        self.leading = leading
-
-        // Required in order to ensure correct use against AutoLayout constants,
-        // where negative values are required in order to add a bottom and trailing inset.
-        self.bottom = bottom > 0 ? bottom * -1 : bottom
-        self.trailing = trailing > 0 ? trailing * -1 : trailing
+    public static var zero: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
     }
 }
