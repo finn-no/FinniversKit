@@ -201,7 +201,7 @@ enum Recycling: String {
 enum FullscreenViews: String {
     case frontpageViewDemoView
     case registerViewDemoView
-    case consentViewDemoView
+    case popupConsentViewDemoView
     case emptyViewDemoView
     case loginViewDemoView
 
@@ -215,8 +215,8 @@ enum FullscreenViews: String {
             return ViewController<LoginViewDemoView>()
         case .emptyViewDemoView:
             return ViewController<EmptyViewDemoView>()
-        case .consentViewDemoView:
-            return ViewController<ConsentViewDemoView>()
+        case .popupConsentViewDemoView:
+            return ViewController<PopupConsentViewDemoView>()
         }
     }
 
@@ -224,7 +224,7 @@ enum FullscreenViews: String {
         return [
             .frontpageViewDemoView,
             .registerViewDemoView,
-            .consentViewDemoView,
+            .popupConsentViewDemoView,
             .emptyViewDemoView,
             .loginViewDemoView,
         ]

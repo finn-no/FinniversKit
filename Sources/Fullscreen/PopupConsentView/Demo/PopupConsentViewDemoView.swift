@@ -4,9 +4,9 @@
 
 import FinniversKit
 
-public class ConsentViewDemoView: UIView {
-    private lazy var consentView: ConsentView = {
-        let view = ConsentView()
+public class PopupConsentViewDemoView: UIView {
+    private lazy var consentView: PopupConsentView = {
+        let view = PopupConsentView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -20,7 +20,7 @@ public class ConsentViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        consentView.model = ConsentViewDefaultData()
+        consentView.model = PopupConsentViewDefaultData()
 
         addSubview(consentView)
 

@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-public struct ConsentViewDefaultData: ConsentViewModel {
+public struct PopupConsentViewDefaultData: PopupConsentViewModel {
     public var yesButtonTitle = "Ja, takk"
     public var noButtonTitle = "Nei takk"
     public var cancelButtonTitle: String? = "Spør senere"
@@ -16,7 +16,7 @@ public struct ConsentViewDefaultData: ConsentViewModel {
     public init() {}
 }
 
-public struct ConsentViewDefaultDataRejected: ConsentViewModel {
+public struct PopupConsentViewDefaultDataRejected: PopupConsentViewModel {
     public var yesButtonTitle = "Lukk"
     public var noButtonTitle = "Angre"
     public var cancelButtonTitle: String?

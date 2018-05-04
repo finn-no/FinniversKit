@@ -89,8 +89,8 @@
 		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		44D9125B2077AC8A00486848 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9124B2077AC8A00486848 /* ConsentView.swift */; };
-		44D9125C2077AC8A00486848 /* ConsentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9124C2077AC8A00486848 /* ConsentViewModel.swift */; };
+		44D9125B2077AC8A00486848 /* PopupConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9124B2077AC8A00486848 /* PopupConsentView.swift */; };
+		44D9125C2077AC8A00486848 /* PopupConsentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9124C2077AC8A00486848 /* PopupConsentViewModel.swift */; };
 		44D9125D2077AC8A00486848 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9124E2077AC8A00486848 /* RegisterView.swift */; };
 		44D9125E2077AC8A00486848 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9124F2077AC8A00486848 /* RegisterViewModel.swift */; };
 		44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912512077AC8A00486848 /* EmptyView.swift */; };
@@ -101,8 +101,8 @@
 		44D912642077AC8A00486848 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912572077AC8A00486848 /* RectangleView.swift */; };
 		44D912652077AC8A00486848 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912592077AC8A00486848 /* LoginViewModel.swift */; };
 		44D912662077AC8A00486848 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9125A2077AC8A00486848 /* LoginView.swift */; };
-		44D9126A2077AD0200486848 /* ConsentViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912682077AD0200486848 /* ConsentViewDefaultData.swift */; };
-		44D9126B2077AD0200486848 /* ConsentViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912692077AD0200486848 /* ConsentViewDemoView.swift */; };
+		44D9126A2077AD0200486848 /* PopupConsentViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912682077AD0200486848 /* PopupConsentViewDefaultData.swift */; };
+		44D9126B2077AD0200486848 /* PopupConsentViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912692077AD0200486848 /* PopupConsentViewDemoView.swift */; };
 		44D9126F2077AD0C00486848 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9126D2077AD0C00486848 /* RegisterViewDefaultData.swift */; };
 		44D912702077AD0C00486848 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9126E2077AD0C00486848 /* RegisterViewDemoView.swift */; };
 		44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912722077AD1200486848 /* EmptyViewDemoView.swift */; };
@@ -232,8 +232,8 @@
 		44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
-		44D9124B2077AC8A00486848 /* ConsentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
-		44D9124C2077AC8A00486848 /* ConsentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewModel.swift; sourceTree = "<group>"; };
+		44D9124B2077AC8A00486848 /* PopupConsentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupConsentView.swift; sourceTree = "<group>"; };
+		44D9124C2077AC8A00486848 /* PopupConsentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupConsentViewModel.swift; sourceTree = "<group>"; };
 		44D9124E2077AC8A00486848 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		44D9124F2077AC8A00486848 /* RegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		44D912512077AC8A00486848 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -244,8 +244,8 @@
 		44D912572077AC8A00486848 /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		44D912592077AC8A00486848 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		44D9125A2077AC8A00486848 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		44D912682077AD0200486848 /* ConsentViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewDefaultData.swift; sourceTree = "<group>"; };
-		44D912692077AD0200486848 /* ConsentViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentViewDemoView.swift; sourceTree = "<group>"; };
+		44D912682077AD0200486848 /* PopupConsentViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupConsentViewDefaultData.swift; sourceTree = "<group>"; };
+		44D912692077AD0200486848 /* PopupConsentViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupConsentViewDemoView.swift; sourceTree = "<group>"; };
 		44D9126D2077AD0C00486848 /* RegisterViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDefaultData.swift; sourceTree = "<group>"; };
 		44D9126E2077AD0C00486848 /* RegisterViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDemoView.swift; sourceTree = "<group>"; };
 		44D912722077AD1200486848 /* EmptyViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoView.swift; sourceTree = "<group>"; };
@@ -792,7 +792,7 @@
 			isa = PBXGroup;
 			children = (
 				447AFC0E20984B63000F793E /* Frontpage */,
-				44D9124A2077AC8A00486848 /* ConsentView */,
+				44D9124A2077AC8A00486848 /* PopupConsentView */,
 				44D9124D2077AC8A00486848 /* Register */,
 				44D912502077AC8A00486848 /* EmptyView */,
 				44D912582077AC8A00486848 /* Login */,
@@ -800,14 +800,14 @@
 			path = Fullscreen;
 			sourceTree = "<group>";
 		};
-		44D9124A2077AC8A00486848 /* ConsentView */ = {
+		44D9124A2077AC8A00486848 /* PopupConsentView */ = {
 			isa = PBXGroup;
 			children = (
 				44D912672077AD0200486848 /* Demo */,
-				44D9124B2077AC8A00486848 /* ConsentView.swift */,
-				44D9124C2077AC8A00486848 /* ConsentViewModel.swift */,
+				44D9124B2077AC8A00486848 /* PopupConsentView.swift */,
+				44D9124C2077AC8A00486848 /* PopupConsentViewModel.swift */,
 			);
-			path = ConsentView;
+			path = PopupConsentView;
 			sourceTree = "<group>";
 		};
 		44D9124D2077AC8A00486848 /* Register */ = {
@@ -855,8 +855,8 @@
 		44D912672077AD0200486848 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				44D912682077AD0200486848 /* ConsentViewDefaultData.swift */,
-				44D912692077AD0200486848 /* ConsentViewDemoView.swift */,
+				44D912682077AD0200486848 /* PopupConsentViewDefaultData.swift */,
+				44D912692077AD0200486848 /* PopupConsentViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1180,7 +1180,7 @@
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
 				146D3C401FBE466D00124B76 /* ViewController.swift in Sources */,
-				44D9126A2077AD0200486848 /* ConsentViewDefaultData.swift in Sources */,
+				44D9126A2077AD0200486848 /* PopupConsentViewDefaultData.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */,
 				45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */,
@@ -1192,7 +1192,7 @@
 				44D912702077AD0C00486848 /* RegisterViewDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
-				44D9126B2077AD0200486848 /* ConsentViewDemoView.swift in Sources */,
+				44D9126B2077AD0200486848 /* PopupConsentViewDemoView.swift in Sources */,
 				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
@@ -1264,7 +1264,7 @@
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* Broadcast.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
-				44D9125C2077AC8A00486848 /* ConsentViewModel.swift in Sources */,
+				44D9125C2077AC8A00486848 /* PopupConsentViewModel.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
@@ -1272,7 +1272,7 @@
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
-				44D9125B2077AC8A00486848 /* ConsentView.swift in Sources */,
+				44D9125B2077AC8A00486848 /* PopupConsentView.swift in Sources */,
 				44D912652077AC8A00486848 /* LoginViewModel.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
