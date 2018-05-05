@@ -42,6 +42,7 @@
 		441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */; };
 		443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */; };
 		443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */; };
+		4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443F9B0209D5ECE00E35719 /* Helpers.swift */; };
 		4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6661FDB2B110033DBC1 /* Button+Style.swift */; };
 		4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; };
 		4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6751FDB2B110033DBC1 /* Label+Style.swift */; };
@@ -199,6 +200,7 @@
 		441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListHeaderView.swift; sourceTree = "<group>"; };
 		443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListFooterView.swift; sourceTree = "<group>"; };
+		4443F9B0209D5ECE00E35719 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		4447F6661FDB2B110033DBC1 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		4447F6671FDB2B110033DBC1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDemoView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				146D3C3F1FBE466D00124B76 /* ViewController.swift */,
 				4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */,
 				AAC1AFB32021058000C71B7C /* Demo.swift */,
+				4443F9B0209D5ECE00E35719 /* Helpers.swift */,
 				4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */,
 			);
 			path = Demo;
@@ -1217,6 +1220,7 @@
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				44D912782077AD1800486848 /* LoginViewDemoView.swift in Sources */,
+				4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */,
 				4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */,
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
