@@ -35,7 +35,7 @@ enum Sections: String {
     static func formattedName(for section: Int) -> String {
         let section = Sections.all[section]
         let rawClassName = section.rawValue
-        return rawClassName.capitalizingFirstLetter
+        return rawClassName
     }
 
     static func formattedName(for indexPath: IndexPath) -> String {
