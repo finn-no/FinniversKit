@@ -4,6 +4,12 @@
 
 import UIKit
 
+enum TabletDisplayMode {
+    case master
+    case detail
+    case fullscreen
+}
+
 enum Sections: String {
     case dna
     case components
@@ -55,25 +61,52 @@ enum Sections: String {
         return rawClassName.capitalizingFirstLetter
     }
 
-    static func section(for indexPath: IndexPath) -> Sections {
+    static func `for`(_ indexPath: IndexPath) -> Sections {
         return Sections.all[indexPath.section]
     }
 
     static func viewController(for indexPath: IndexPath) -> UIViewController {
         let section = Sections.all[indexPath.section]
+        let viewController: UIViewController
         switch section {
         case .dna:
             let selectedView = DnaViews.all[indexPath.row]
-            return selectedView.viewController
+            viewController = selectedView.viewController
         case .components:
             let selectedView = ComponentViews.all[indexPath.row]
-            return selectedView.viewController
+            viewController = selectedView.viewController
         case .recycling:
             let selectedView = Recycling.all[indexPath.row]
-            return selectedView.viewController
+            viewController = selectedView.viewController
         case .fullscreen:
             let selectedView = FullscreenViews.all[indexPath.row]
-            return selectedView.viewController
+            viewController = selectedView.viewController
+        }
+
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return viewController
+        case .pad:
+            let sectionType = Sections.for(indexPath)
+            switch sectionType.tabletDisplayMode {
+            case .master:
+                return SplitViewController(masterViewController: viewController)
+            case .detail:
+                return SplitViewController(detailViewController: viewController)
+            case .fullscreen:
+                return viewController
+            }
+        default:
+            fatalError("Not supported")
+        }
+    }
+
+    var tabletDisplayMode: TabletDisplayMode {
+        switch self {
+        case .dna, .components, .fullscreen:
+            return .fullscreen
+        case .recycling:
+            return .master
         }
     }
 }

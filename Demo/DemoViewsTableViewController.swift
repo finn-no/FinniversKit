@@ -65,6 +65,7 @@ extension DemoViewsTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         IndexPath.lastSelected = indexPath
+
         let viewController = Sections.viewController(for: indexPath)
         present(viewController, animated: true)
     }
