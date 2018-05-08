@@ -909,8 +909,7 @@
 		45B2E06B207E181C00C68B92 /* Consent */ = {
 			isa = PBXGroup;
 			children = (
-				45B2E072207E184D00C68B92 /* Demo */,
-				45B2E06E207E181C00C68B92 /* InlineConsentView.swift */,
+				45EDD61D20A1A795008F4503 /* InlineConsent */,
 			);
 			path = Consent;
 			sourceTree = "<group>";
@@ -940,6 +939,15 @@
 				45D7C57220495039000E788F /* SwitchViewDefaultData.swift */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		45EDD61D20A1A795008F4503 /* InlineConsent */ = {
+			isa = PBXGroup;
+			children = (
+				45B2E072207E184D00C68B92 /* Demo */,
+				45B2E06E207E181C00C68B92 /* InlineConsentView.swift */,
+			);
+			path = InlineConsent;
 			sourceTree = "<group>";
 		};
 		55C5B27A203DC344007D7277 /* BroadcastContainer */ = {
