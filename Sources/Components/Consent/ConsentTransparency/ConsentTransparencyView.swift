@@ -26,6 +26,7 @@ public final class ConsentTransparencyView: UIView {
     private lazy var headerLabel: Label = {
         let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Din data, dine valg"
         return label
     }()
 
@@ -33,18 +34,21 @@ public final class ConsentTransparencyView: UIView {
         let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.text = "FINN er en del av Schibsted Norge. Når du bruker FINN er Schibsted Norge behandlingsansvarlig for påloggingsløsning og reklame, mens FINN er behandlingsansvarlig for det øvrige innholdet i tjenesten vår. Både FINN og Schibsted Norge behandler data om deg.\n\nFINN bruker dine data til å tilpasse tjenestene til deg, mens Schibsted Norge i tillegg bruker dem til å gi deg mer relevante annonser. Persondata brukes også for å sikre at tjenestene er trygge og sikre for deg."
         return label
     }()
 
     private lazy var moreButton: Button = {
         let button = Button(style: .flat)
         button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
+        button.setTitle("Vis meg mer", for: .normal)
         return button
     }()
 
     private lazy var okayButton: Button = {
         let button = Button(style: .callToAction)
         button.addTarget(self, action: #selector(okayButtonTapped), for: .touchUpInside)
+        button.setTitle("Jeg forstår", for: .normal)
         return button
     }()
 
@@ -60,30 +64,6 @@ public final class ConsentTransparencyView: UIView {
     // MARK: - External properties / Dependency injection
 
     weak var delegate: ConsentTransparencyViewDelegate?
-
-    public var headerText: String = "" {
-        didSet {
-            headerLabel.text = headerText
-        }
-    }
-
-    public var detailText: String = "" {
-        didSet {
-            detailLabel.text = detailText
-        }
-    }
-
-    public var moreButtonTitle: String = "" {
-        didSet {
-            moreButton.setTitle(moreButtonTitle, for: .normal)
-        }
-    }
-
-    public var okayButtonTitle: String = "" {
-        didSet {
-            okayButton.setTitle(okayButtonTitle, for: .normal)
-        }
-    }
 
     // MARK: - Setup
 
