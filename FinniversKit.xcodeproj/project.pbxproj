@@ -120,6 +120,7 @@
 		45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7C57220495039000E788F /* SwitchViewDefaultData.swift */; };
 		45EDD62020A1A7F3008F4503 /* ConsentTransparencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD61F20A1A7F3008F4503 /* ConsentTransparencyView.swift */; };
 		45EDD62720A1BAA3008F4503 /* ConsentTransparencyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD62620A1BAA3008F4503 /* ConsentTransparencyDemoView.swift */; };
+		45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD62820A1CC0D008F4503 /* ConsentTransparencyInfoView.swift */; };
 		559FD9BA205122A200A101B0 /* BroadcastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9B9205122A200A101B0 /* BroadcastModel.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */; };
 		55C5B274203D8E20007D7277 /* BroadcastContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* BroadcastContainer.swift */; };
@@ -266,6 +267,7 @@
 		45D7C57220495039000E788F /* SwitchViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDefaultData.swift; sourceTree = "<group>"; };
 		45EDD61F20A1A7F3008F4503 /* ConsentTransparencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyView.swift; sourceTree = "<group>"; };
 		45EDD62620A1BAA3008F4503 /* ConsentTransparencyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyDemoView.swift; sourceTree = "<group>"; };
+		45EDD62820A1CC0D008F4503 /* ConsentTransparencyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoView.swift; sourceTree = "<group>"; };
 		559FD9B9205122A200A101B0 /* BroadcastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastModel.swift; sourceTree = "<group>"; };
 		559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastModelTests.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* BroadcastContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainer.swift; sourceTree = "<group>"; };
@@ -960,6 +962,7 @@
 			children = (
 				45EDD62520A1BAA3008F4503 /* Demo */,
 				45EDD61F20A1A7F3008F4503 /* ConsentTransparencyView.swift */,
+				45EDD62820A1CC0D008F4503 /* ConsentTransparencyInfoView.swift */,
 			);
 			path = ConsentTransparency;
 			sourceTree = "<group>";
@@ -1284,6 +1287,7 @@
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
+				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
