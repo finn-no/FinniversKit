@@ -15,23 +15,6 @@ public final class ConsentTransparencyInfoView: UIView {
 
     // MARK: - Internal properties
 
-    private lazy var usageBulletPointsArray: [String] = {
-        return [
-            "Annonsering, annonsevisninger og mulighet for å kontakte annonsør",
-            "Meldingsutveksling",
-            "Søk og varslinger",
-            "Gi en best mulig tjeneste til deg, gjennom å tilpasse innholdet vårt. For eksempel ved å vektlegge søketreff nær der du bor.",
-            "Anbefale innhold vi tror er interessant for deg. Dette innholdet kan vi vise på FINN, eller på andre nettsteder.",
-        ]
-    }()
-
-    private lazy var usageSchibstedBulletPointsArray: [String] = {
-        return [
-            "Ivareta en trygg, enkel og effektiv påloggingstjeneste.",
-            "Gi deg relevant reklameinnhold fremfor tilfeldig reklame.",
-        ]
-    }()
-
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +31,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .title1)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Sikring og bruk av dine data"
         return label
     }()
 
@@ -56,7 +38,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Når du bruker FINN, gir du oss og Schibsted Norge tilgang til opplysninger om deg. Her kan du lese hva vi bruker dem til."
         return label
     }()
 
@@ -64,7 +45,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .title2)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Hva bruker FINN dataen til?"
         return label
     }()
 
@@ -72,7 +52,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "FINN bruker data om deg og hva du gjør på FINN til flere formål."
         return label
     }()
 
@@ -80,7 +59,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Levere den tjenesten du forventer av oss"
         return label
     }()
 
@@ -88,7 +66,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.attributedText = NSAttributedString.makeBulletPointFrom(stringList: usageBulletPointsArray, font: label.font, bullet: "\u{2022}", indentation: .mediumLargeSpacing, lineSpacing: .verySmallSpacing, paragraphSpacing: .mediumSpacing, textColor: label.textColor, bulletColor: .licorice)
         return label
     }()
 
@@ -96,7 +73,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Forbedre produktene våre"
         return label
     }()
 
@@ -104,7 +80,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Vi bruker statistikk og analyse som grunnlag for avgjørelser om hvilke endringer vi bør gjøre i tjenestene våre, og hvilken effekt endringene har. Sikre en trygg markedsplass ved å forhindre svindel, misbruk av tjenestene våre, eller brudd på annonsereglene."
         return label
     }()
 
@@ -112,7 +87,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Du kan endre innstillingene dine eller lese vår personvernerklæring ved å trykke knappene under dette avsnittet."
         return label
     }()
 
@@ -120,7 +94,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(settingsFinnTapped), for: .touchUpInside)
-        button.setTitle("Innstillinger", for: .normal)
         return button
     }()
 
@@ -128,7 +101,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(privacyFinnTapped), for: .touchUpInside)
-        button.setTitle("Personvernerklæring", for: .normal)
         return button
     }()
 
@@ -136,7 +108,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .title2)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Hva bruker Scibsted dataen til?"
         return label
     }()
 
@@ -144,7 +115,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Schibsted Norge bruker data om deg og hva du gjør på FINN og andre Schibsted-tjenester primært for å"
         return label
     }()
 
@@ -152,7 +122,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.attributedText = NSAttributedString.makeBulletPointFrom(stringList: usageSchibstedBulletPointsArray, font: label.font, bullet: "\u{2022}", indentation: .mediumLargeSpacing, lineSpacing: .verySmallSpacing, paragraphSpacing: .mediumSpacing, textColor: label.textColor, bulletColor: .licorice)
         return label
     }()
 
@@ -160,7 +129,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Du kan endre innstillingene dine eller lese Schibsted Norges personvernerklæring ved å trykke knappene under dette avsnittet."
         return label
     }()
 
@@ -168,7 +136,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(settingsSchibstedTapped), for: .touchUpInside)
-        button.setTitle("Innstillinger", for: .normal)
         return button
     }()
 
@@ -176,7 +143,6 @@ public final class ConsentTransparencyInfoView: UIView {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(privacySchibstedTapped), for: .touchUpInside)
-        button.setTitle("Personvernerklæring", for: .normal)
         return button
     }()
 
@@ -187,7 +153,31 @@ public final class ConsentTransparencyInfoView: UIView {
 
     weak var delegate: ConsentTransparencyInfoViewDelegate?
 
-//    public var model
+    public var model: ConsentTransparencyInfoViewModel? {
+        didSet {
+            guard let model = model else {
+                return
+            }
+
+            mainHeaderLabel.text = model.mainHeaderText
+            mainIntroLabel.text = model.MainIntroText
+            usageHeaderLabel.text = model.usageHeaderText
+            usageIntro1Label.text = model.usageIntro1Text
+            usageIntro2Label.text = model.usageIntro2Text
+            usageBulletPointsLabel.attributedText = model.usageBulletPointsText.asBulletPoints()
+            improveHeaderLabel.text = model.improveHeaderText
+            improveIntroLabel.text = model.improveIntroText
+            improveButtonIntroLabel.text = model.improveButtonIntroText
+            settingsFinnButton.setTitle(model.settingsFinnButtonTitle, for: .normal)
+            privacyFinnButton.setTitle(model.privacyFinnButtonTitle, for: .normal)
+            usageScibstedHeaderLabel.text = model.usageSchibstedHeaderText
+            usageSchibstedIntroLabel.text = model.usageSchibstedIntroText
+            usageSchibstedBulletPointsLabel.attributedText = model.usageBulletPointsText.asBulletPoints()
+            usageScibstedButtonIntroLabel.text = model.usageScibstedButtonIntroText
+            settingsSchibstedButton.setTitle(model.settingsSchibstedButtonTitle, for: .normal)
+            privacySchibstedButton.setTitle(model.privacySchibstedButtonTitle, for: .normal)
+        }
+    }
 
     // MARK: - Setup
 
