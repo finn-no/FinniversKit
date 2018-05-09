@@ -5,6 +5,8 @@
 import FinniversKit
 
 public class ConsentTransparencyInfoDemoView: UIView {
+    private let maxScreenWidth: CGFloat = 800.0
+
     private lazy var consentTransparencyInfoView: ConsentTransparencyInfoView = {
         let view = ConsentTransparencyInfoView(isUserLoggedIn: true)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -22,6 +24,13 @@ public class ConsentTransparencyInfoDemoView: UIView {
     private func setup() {
         addSubview(consentTransparencyInfoView)
 
-        consentTransparencyInfoView.fillInSuperview()
+        NSLayoutConstraint.activate([
+            consentTransparencyInfoView.topAnchor.constraint(equalTo: topAnchor),
+            consentTransparencyInfoView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            consentTransparencyInfoView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
+            consentTransparencyInfoView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            consentTransparencyInfoView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            consentTransparencyInfoView.widthAnchor.constraint(lessThanOrEqualToConstant: maxScreenWidth),
+        ])
     }
 }
