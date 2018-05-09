@@ -187,6 +187,8 @@ public final class ConsentTransparencyInfoView: UIView {
 
     weak var delegate: ConsentTransparencyInfoViewDelegate?
 
+//    public var model
+
     // MARK: - Setup
 
     private override init(frame: CGRect) {

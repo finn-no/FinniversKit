@@ -122,6 +122,8 @@
 		45EDD62720A1BAA3008F4503 /* ConsentTransparencyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD62620A1BAA3008F4503 /* ConsentTransparencyDemoView.swift */; };
 		45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD62820A1CC0D008F4503 /* ConsentTransparencyInfoView.swift */; };
 		45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD62B20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift */; };
+		45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD62E20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift */; };
+		45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63220A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift */; };
 		559FD9BA205122A200A101B0 /* BroadcastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9B9205122A200A101B0 /* BroadcastModel.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */; };
 		55C5B274203D8E20007D7277 /* BroadcastContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* BroadcastContainer.swift */; };
@@ -270,6 +272,8 @@
 		45EDD62620A1BAA3008F4503 /* ConsentTransparencyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyDemoView.swift; sourceTree = "<group>"; };
 		45EDD62820A1CC0D008F4503 /* ConsentTransparencyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoView.swift; sourceTree = "<group>"; };
 		45EDD62B20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDemoView.swift; sourceTree = "<group>"; };
+		45EDD62E20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoViewModel.swift; sourceTree = "<group>"; };
+		45EDD63220A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
 		559FD9B9205122A200A101B0 /* BroadcastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastModel.swift; sourceTree = "<group>"; };
 		559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastModelTests.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* BroadcastContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainer.swift; sourceTree = "<group>"; };
@@ -962,9 +966,8 @@
 		45EDD61E20A1A7C5008F4503 /* ConsentTransparency */ = {
 			isa = PBXGroup;
 			children = (
-				45EDD62520A1BAA3008F4503 /* Demo */,
-				45EDD61F20A1A7F3008F4503 /* ConsentTransparencyView.swift */,
-				45EDD62820A1CC0D008F4503 /* ConsentTransparencyInfoView.swift */,
+				45EDD63420A3276A008F4503 /* ConsentTransparencyView */,
+				45EDD62D20A31273008F4503 /* ConsentTransparencyInfoView */,
 			);
 			path = ConsentTransparency;
 			sourceTree = "<group>";
@@ -973,9 +976,36 @@
 			isa = PBXGroup;
 			children = (
 				45EDD62620A1BAA3008F4503 /* ConsentTransparencyDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		45EDD62D20A31273008F4503 /* ConsentTransparencyInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				45EDD63120A3251D008F4503 /* Demo */,
+				45EDD62820A1CC0D008F4503 /* ConsentTransparencyInfoView.swift */,
+				45EDD62E20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift */,
+			);
+			path = ConsentTransparencyInfoView;
+			sourceTree = "<group>";
+		};
+		45EDD63120A3251D008F4503 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				45EDD63220A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift */,
 				45EDD62B20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		45EDD63420A3276A008F4503 /* ConsentTransparencyView */ = {
+			isa = PBXGroup;
+			children = (
+				45EDD62520A1BAA3008F4503 /* Demo */,
+				45EDD61F20A1A7F3008F4503 /* ConsentTransparencyView.swift */,
+			);
+			path = ConsentTransparencyView;
 			sourceTree = "<group>";
 		};
 		55C5B27A203DC344007D7277 /* BroadcastContainer */ = {
@@ -1253,6 +1283,7 @@
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
 				44D9126F2077AD0C00486848 /* RegisterViewDefaultData.swift in Sources */,
+				45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
 				4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */,
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
@@ -1282,6 +1313,7 @@
 				441FE433209A24E500B04EF1 /* AdsGridViewLayout.swift in Sources */,
 				441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */,
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
+				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
