@@ -76,14 +76,6 @@ public final class ConsentTransparencyView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-
-    // MARK: - Superclass Overrides
-
-}
-
-// MARK: - Public
-
-public extension ConsentTransparencyView {
 }
 
 // MARK: - Private
