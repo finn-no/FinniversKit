@@ -146,8 +146,7 @@ public final class ConsentTransparencyInfoView: UIView {
         return button
     }()
 
-    /// Set to true to show settings buttons
-    private var isUserLoggedIn: Bool = false
+    private var showSettingsButtons: Bool = false
 
     // MARK: - External properties / Dependency injection
 
@@ -192,10 +191,10 @@ public final class ConsentTransparencyInfoView: UIView {
 
     // MARK: - Superclass Overrides
 
-    public convenience init(isUserLoggedIn: Bool = false) {
+    public convenience init(showSettingsButtons: Bool = false) {
         self.init(frame: .zero)
 
-        self.isUserLoggedIn = isUserLoggedIn
+        self.showSettingsButtons = showSettingsButtons
 
         setup()
     }
@@ -312,7 +311,7 @@ private extension ConsentTransparencyInfoView {
             privacySchibstedButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
         ])
 
-        if isUserLoggedIn {
+        if showSettingsButtons {
             contentView.addSubview(settingsFinnButton)
             contentView.addSubview(settingsSchibstedButton)
 

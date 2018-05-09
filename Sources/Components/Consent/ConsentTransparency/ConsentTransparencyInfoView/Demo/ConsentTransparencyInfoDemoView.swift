@@ -8,7 +8,7 @@ public class ConsentTransparencyInfoDemoView: UIView {
     private let maxScreenWidth: CGFloat = 800.0
 
     private lazy var consentTransparencyInfoView: ConsentTransparencyInfoView = {
-        let view = ConsentTransparencyInfoView(isUserLoggedIn: true)
+        let view = ConsentTransparencyInfoView(showSettingsButtons: true)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
