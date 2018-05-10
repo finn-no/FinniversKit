@@ -42,16 +42,16 @@ class ViewController<View: UIView>: UIViewController {
     }
 
     @objc func didDoubleTap() {
-        IndexPath.lastSelected = nil
+        State.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if Helpers.shouldShowDismissInstructions {
+        if State.shouldShowDismissInstructions {
             miniToastView.show(in: view)
-            Helpers.shouldShowDismissInstructions = false
+            State.shouldShowDismissInstructions = false
         }
     }
 }
