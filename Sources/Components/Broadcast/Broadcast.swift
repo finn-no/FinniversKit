@@ -29,7 +29,7 @@ public final class Broadcast: UIView {
     }()
 
     private lazy var iconImage: UIImage? = {
-        let image = UIImage(frameworkImageNamed: Style.iconImageAssetName)
+        let image = UIImage(named: .important)
         return image
     }()
 
@@ -43,7 +43,7 @@ public final class Broadcast: UIView {
     }()
 
     private lazy var dismissButtonImage: UIImage? = {
-        let image = UIImage(frameworkImageNamed: Style.dismissButtonImageAssetName)
+        let image = UIImage(named: .remove)
         return image
     }()
 
