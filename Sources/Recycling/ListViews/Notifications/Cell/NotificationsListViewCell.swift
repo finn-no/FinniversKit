@@ -158,6 +158,6 @@ public class NotificationsListViewCell: UITableViewCell {
     }
 
     private var defaultImage: UIImage? {
-        return UIImage(frameworkImageNamed: "NoImage")
+        return UIImage(named: .noImage)
     }
 }

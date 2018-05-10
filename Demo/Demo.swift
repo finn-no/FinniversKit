@@ -4,6 +4,12 @@
 
 import UIKit
 
+enum TabletDisplayMode {
+    case master
+    case detail
+    case fullscreen
+}
+
 enum Sections: String {
     case dna
     case components
@@ -35,7 +41,7 @@ enum Sections: String {
     static func formattedName(for section: Int) -> String {
         let section = Sections.all[section]
         let rawClassName = section.rawValue
-        return rawClassName.capitalizingFirstLetter
+        return rawClassName
     }
 
     static func formattedName(for indexPath: IndexPath) -> String {
@@ -52,124 +58,130 @@ enum Sections: String {
             rawClassName = FullscreenViews.all[indexPath.row].rawValue
         }
 
-        return rawClassName.replacingOccurrences(of: "DemoView", with: "").capitalizingFirstLetter
+        return rawClassName.capitalizingFirstLetter
+    }
+
+    static func `for`(_ indexPath: IndexPath) -> Sections {
+        return Sections.all[indexPath.section]
     }
 
     static func viewController(for indexPath: IndexPath) -> UIViewController {
         let section = Sections.all[indexPath.section]
+        let viewController: UIViewController
         switch section {
         case .dna:
             let selectedView = DnaViews.all[indexPath.row]
-            return selectedView.viewController
+            viewController = selectedView.viewController
         case .components:
             let selectedView = ComponentViews.all[indexPath.row]
-            return selectedView.viewController
+            viewController = selectedView.viewController
         case .recycling:
             let selectedView = Recycling.all[indexPath.row]
-            return selectedView.viewController
+            viewController = selectedView.viewController
         case .fullscreen:
             let selectedView = FullscreenViews.all[indexPath.row]
-            return selectedView.viewController
+            viewController = selectedView.viewController
+        }
+
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            return viewController
+        case .pad:
+            let sectionType = Sections.for(indexPath)
+            switch sectionType.tabletDisplayMode {
+            case .master:
+                return SplitViewController(masterViewController: viewController)
+            case .detail:
+                return SplitViewController(detailViewController: viewController)
+            case .fullscreen:
+                return viewController
+            }
+        default:
+            fatalError("Not supported")
         }
     }
 
-    private static let lastSelectedRowKey = "lastSelectedRowKey"
-    private static let lastSelectedSectionKey = "lastSelectedSectionKey"
-
-    static var lastSelectedIndexPath: IndexPath? {
-        get {
-            guard let row = UserDefaults.standard.object(forKey: lastSelectedRowKey) as? Int else { return nil }
-            guard let section = UserDefaults.standard.object(forKey: lastSelectedSectionKey) as? Int else { return nil }
-            return IndexPath(row: row, section: section)
-        }
-        set {
-            if let row = newValue?.row {
-                UserDefaults.standard.set(row, forKey: lastSelectedRowKey)
-            } else {
-                UserDefaults.standard.removeObject(forKey: lastSelectedRowKey)
-            }
-
-            if let section = newValue?.section {
-                UserDefaults.standard.set(section, forKey: lastSelectedSectionKey)
-            } else {
-                UserDefaults.standard.removeObject(forKey: lastSelectedSectionKey)
-            }
-            UserDefaults.standard.synchronize()
+    var tabletDisplayMode: TabletDisplayMode {
+        switch self {
+        case .dna, .components, .fullscreen:
+            return .fullscreen
+        case .recycling:
+            return .master
         }
     }
 }
 
 enum DnaViews: String {
-    case colorDemoView
-    case fontDemoView
-    case spacingDemoView
-
-    var viewController: UIViewController {
-        switch self {
-        case .colorDemoView:
-            return ViewController<ColorDemoView>()
-        case .fontDemoView:
-            return ViewController<FontDemoView>()
-        case .spacingDemoView:
-            return ViewController<SpacingDemoView>()
-        }
-    }
+    case color
+    case font
+    case spacing
 
     static var all: [DnaViews] {
         return [
-            .colorDemoView,
-            .fontDemoView,
-            .spacingDemoView,
+            .color,
+            .font,
+            .spacing,
         ]
+    }
+
+    var viewController: UIViewController {
+        switch self {
+        case .color:
+            return ViewController<ColorDemoView>()
+        case .font:
+            return ViewController<FontDemoView>()
+        case .spacing:
+            return ViewController<SpacingDemoView>()
+        }
     }
 }
 
 enum ComponentViews: String {
-    case broadcastDemoView
-    case broadcastContainerDemoView
-    case buttonDemoView
-    case labelDemoView
-    case ribbonDemoView
-    case textFieldDemoView
-    case toastDemoView
-    case switchViewDemoView
-    case inlineConsentDemoView
-
-    var viewController: UIViewController {
-        switch self {
-        case .broadcastDemoView:
-            return ViewController<BroadcastDemoView>()
-        case .broadcastContainerDemoView:
-            return ViewController<BroadcastContainerDemoView>()
-        case .buttonDemoView:
-            return ViewController<ButtonDemoView>()
-        case .labelDemoView:
-            return ViewController<LabelDemoView>()
-        case .ribbonDemoView:
-            return ViewController<RibbonDemoView>()
-        case .textFieldDemoView:
-            return ViewController<TextFieldDemoView>()
-        case .toastDemoView:
-            return ViewController<ToastDemoView>()
-        case .switchViewDemoView:
-            return ViewController<SwitchViewDemoView>()
-        case .inlineConsentDemoView:
-            return ViewController<InlineConsentDemoView>()
-        }
-    }
+    case broadcast
+    case broadcastContainer
+    case button
+    case label
+    case ribbon
+    case textField
+    case toast
+    case switchView
+    case inlineConsent
 
     static var all: [ComponentViews] {
         return [
-            .broadcastDemoView,
-            .broadcastContainerDemoView,
-            .buttonDemoView,
-            .labelDemoView,
-            .ribbonDemoView,
-            .textFieldDemoView,
-            .toastDemoView,
-            .switchViewDemoView,
-            .inlineConsentDemoView,
+            .broadcast,
+            .broadcastContainer,
+            .button,
+            .label,
+            .ribbon,
+            .textField,
+            .toast,
+            .switchView,
+            .inlineConsent,
         ]
+    }
+
+    var viewController: UIViewController {
+        switch self {
+        case .broadcast:
+            return ViewController<BroadcastDemoView>()
+        case .broadcastContainer:
+            return ViewController<BroadcastContainerDemoView>()
+        case .button:
+            return ViewController<ButtonDemoView>()
+        case .label:
+            return ViewController<LabelDemoView>()
+        case .ribbon:
+            return ViewController<RibbonDemoView>()
+        case .textField:
+            return ViewController<TextFieldDemoView>()
+        case .toast:
+            return ViewController<ToastDemoView>()
+        case .switchView:
+            return ViewController<SwitchViewDemoView>()
+        case .inlineConsent:
+            return ViewController<InlineConsentDemoView>()
+        }
     }
 }
 
@@ -199,34 +211,34 @@ enum Recycling: String {
 }
 
 enum FullscreenViews: String {
-    case frontpageViewDemoView
-    case registerViewDemoView
-    case consentViewDemoView
-    case emptyViewDemoView
-    case loginViewDemoView
-
-    var viewController: UIViewController {
-        switch self {
-        case .frontpageViewDemoView:
-            return ViewController<FrontpageViewDemoView>()
-        case .registerViewDemoView:
-            return ViewController<RegisterViewDemoView>()
-        case .loginViewDemoView:
-            return ViewController<LoginViewDemoView>()
-        case .emptyViewDemoView:
-            return ViewController<EmptyViewDemoView>()
-        case .consentViewDemoView:
-            return ViewController<ConsentViewDemoView>()
-        }
-    }
+    case frontpageView
+    case registerView
+    case consentView
+    case emptyView
+    case loginView
 
     static var all: [FullscreenViews] {
         return [
-            .frontpageViewDemoView,
-            .registerViewDemoView,
-            .consentViewDemoView,
-            .emptyViewDemoView,
-            .loginViewDemoView,
+            .frontpageView,
+            .registerView,
+            .consentView,
+            .emptyView,
+            .loginView,
         ]
+    }
+
+    var viewController: UIViewController {
+        switch self {
+        case .frontpageView:
+            return ViewController<FrontpageViewDemoView>()
+        case .registerView:
+            return ViewController<RegisterViewDemoView>()
+        case .loginView:
+            return ViewController<LoginViewDemoView>()
+        case .emptyView:
+            return ViewController<EmptyViewDemoView>()
+        case .consentView:
+            return ViewController<ConsentViewDemoView>()
+        }
     }
 }
