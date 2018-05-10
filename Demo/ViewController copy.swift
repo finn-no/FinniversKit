@@ -46,9 +46,21 @@ class ViewController<View: UIView>: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    var bottomAnchor: NSLayoutConstraint?
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        miniToastView.show(in: view)
+        view.addSubview(miniToastView)
+        bottomAnchor = miniToastView.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor, constant: .veryLargeSpacing)
+        bottomAnchor?.isActive = true
+        miniToastView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        perform(#selector(animate), with: nil, afterDelay: 2)
+    }
+
+    @objc func animate() {
+        bottomAnchor?.constant = -.largeSpacing
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
