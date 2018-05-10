@@ -49,6 +49,9 @@ class ViewController<View: UIView>: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        miniToastView.show(in: view)
+        if Helpers.shouldShowDismissInstructions {
+            miniToastView.show(in: view)
+            Helpers.shouldShowDismissInstructions = false
+        }
     }
 }

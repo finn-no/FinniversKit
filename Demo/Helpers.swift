@@ -37,37 +37,16 @@ extension IndexPath {
     }
 }
 
-class SplitViewController: UISplitViewController {
-    lazy var alternativeViewController: UIViewController = {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .milk
+struct Helpers {
+    private static let shouldShowDismissInstructionsKey = "shouldShowDismissInstructions"
 
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
-        doubleTap.numberOfTapsRequired = 2
-        viewController.view.addGestureRecognizer(doubleTap)
-        return viewController
-    }()
-
-    convenience init(masterViewController: UIViewController) {
-        self.init(nibName: nil, bundle: nil)
-
-        viewControllers = [masterViewController, alternativeViewController]
-        setup()
-    }
-
-    convenience init(detailViewController: UIViewController) {
-        self.init(nibName: nil, bundle: nil)
-
-        viewControllers = [alternativeViewController, detailViewController]
-        setup()
-    }
-
-    func setup() {
-        preferredDisplayMode = .allVisible
-    }
-
-    @objc func didDoubleTap() {
-        IndexPath.lastSelected = nil
-        dismiss(animated: true, completion: nil)
+    static var shouldShowDismissInstructions: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: shouldShowDismissInstructionsKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: shouldShowDismissInstructionsKey)
+            UserDefaults.standard.synchronize()
+        }
     }
 }
