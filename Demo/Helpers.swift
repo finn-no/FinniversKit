@@ -42,7 +42,7 @@ struct Helpers {
 
     static var shouldShowDismissInstructions: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: shouldShowDismissInstructionsKey)
+            return UserDefaults.standard.object(forKey: shouldShowDismissInstructionsKey) as? Bool ?? true
         }
         set {
             UserDefaults.standard.set(newValue, forKey: shouldShowDismissInstructionsKey)
