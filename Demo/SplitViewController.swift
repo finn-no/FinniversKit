@@ -34,7 +34,7 @@ class SplitViewController: UISplitViewController {
     }
 
     @objc func didDoubleTap() {
-        IndexPath.lastSelected = nil
+        State.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 }

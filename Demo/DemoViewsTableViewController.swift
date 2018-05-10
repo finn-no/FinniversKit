@@ -25,7 +25,7 @@ class DemoViewsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if let indexPath = IndexPath.lastSelected {
+        if let indexPath = State.lastSelectedIndexPath {
             let viewController = Sections.viewController(for: indexPath)
             present(viewController, animated: false)
         }
@@ -64,7 +64,7 @@ extension DemoViewsTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        IndexPath.lastSelected = indexPath
+        State.lastSelectedIndexPath = indexPath
 
         let viewController = Sections.viewController(for: indexPath)
         present(viewController, animated: true)

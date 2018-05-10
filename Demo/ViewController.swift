@@ -5,6 +5,20 @@
 import UIKit
 
 class ViewController<View: UIView>: UIViewController {
+    lazy var playgroundView: View = {
+        let playgroundView = View(frame: view.frame)
+        playgroundView.translatesAutoresizingMaskIntoConstraints = false
+        playgroundView.backgroundColor = .milk
+        return playgroundView
+    }()
+
+    lazy var miniToastView: MiniToastView = {
+        let view = MiniToastView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.titleLabel.text = "Double tap to dismiss"
+        return view
+    }()
+
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -12,9 +26,6 @@ class ViewController<View: UIView>: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let playgroundView = View(frame: view.frame)
-        playgroundView.translatesAutoresizingMaskIntoConstraints = false
-        playgroundView.backgroundColor = .milk
         view.addSubview(playgroundView)
         view.backgroundColor = .milk
 
@@ -31,7 +42,16 @@ class ViewController<View: UIView>: UIViewController {
     }
 
     @objc func didDoubleTap() {
-        IndexPath.lastSelected = nil
+        State.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if State.shouldShowDismissInstructions {
+            miniToastView.show(in: view)
+            State.shouldShowDismissInstructions = false
+        }
     }
 }
