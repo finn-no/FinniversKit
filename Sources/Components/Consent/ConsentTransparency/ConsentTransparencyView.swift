@@ -124,7 +124,6 @@ private extension ConsentTransparencyView {
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -.mediumLargeSpacing),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
@@ -148,7 +147,7 @@ private extension ConsentTransparencyView {
             detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.smallSpacing),
 
-//            buttonStackView.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .largeSpacing),
+            buttonStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: .mediumLargeSpacing),
             buttonStackView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumLargeSpacing),
             buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
