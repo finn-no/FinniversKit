@@ -166,13 +166,21 @@ public final class ConsentTransparencyInfoView: UIView {
             usageBulletPointsLabel.attributedText = model.usageBulletPointsText.asBulletPoints()
             improveHeaderLabel.text = model.improveHeaderText
             improveIntroLabel.text = model.improveIntroText
-            improveButtonIntroLabel.text = model.improveButtonIntroText
+            if showSettingsButtons {
+                improveButtonIntroLabel.text = model.improveButtonIntroWithSettingsText
+            } else {
+                improveButtonIntroLabel.text = model.improveButtonIntroWithoutSettingsText
+            }
             settingsFinnButton.setTitle(model.settingsFinnButtonTitle, for: .normal)
             privacyFinnButton.setTitle(model.privacyFinnButtonTitle, for: .normal)
             usageScibstedHeaderLabel.text = model.usageSchibstedHeaderText
             usageSchibstedIntroLabel.text = model.usageSchibstedIntroText
             usageSchibstedBulletPointsLabel.attributedText = model.usageBulletPointsText.asBulletPoints()
-            usageScibstedButtonIntroLabel.text = model.usageScibstedButtonIntroText
+            if showSettingsButtons {
+                usageScibstedButtonIntroLabel.text = model.usageScibstedButtonIntroWithSettingsText
+            } else {
+                usageScibstedButtonIntroLabel.text = model.usageScibstedButtonIntroWithoutSettingsText
+            }
             settingsSchibstedButton.setTitle(model.settingsSchibstedButtonTitle, for: .normal)
             privacySchibstedButton.setTitle(model.privacySchibstedButtonTitle, for: .normal)
         }

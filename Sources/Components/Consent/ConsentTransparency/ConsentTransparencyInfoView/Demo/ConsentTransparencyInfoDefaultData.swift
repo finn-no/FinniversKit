@@ -31,7 +31,9 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
 
     public var improveIntroText = "Vi bruker statistikk og analyse som grunnlag for avgjørelser om hvilke endringer vi bør gjøre i tjenestene våre, og hvilken effekt endringene har. Sikre en trygg markedsplass ved å forhindre svindel, misbruk av tjenestene våre, eller brudd på annonsereglene."
 
-    public var improveButtonIntroText = "Du kan endre innstillingene dine eller lese vår personvernerklæring ved å trykke knappene under dette avsnittet."
+    public var improveButtonIntroWithSettingsText = "Du kan endre innstillingene dine eller lese vår personvernerklæring ved å trykke knappene under dette avsnittet."
+
+    public var improveButtonIntroWithoutSettingsText = "Du kan lese vår personvernerklæring her:"
 
     public var settingsFinnButtonTitle = "Innstillinger"
 
@@ -48,7 +50,9 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
         ]
     }
 
-    public var usageScibstedButtonIntroText = "Du kan endre innstillingene dine eller lese Schibsted Norges personvernerklæring ved å trykke knappene under dette avsnittet."
+    public var usageScibstedButtonIntroWithSettingsText = "Du kan endre innstillingene dine eller lese Schibsted Norges personvernerklæring ved å trykke knappene under dette avsnittet."
+
+    public var usageScibstedButtonIntroWithoutSettingsText = "Du kan lese Schibsted Norges personvernerklæring her:"
 
     public var settingsSchibstedButtonTitle = "Innstillinger"
 

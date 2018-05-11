@@ -13,13 +13,15 @@ public protocol ConsentTransparencyInfoViewModel {
     var usageBulletPointsText: [String] { get }
     var improveHeaderText: String { get }
     var improveIntroText: String { get }
-    var improveButtonIntroText: String { get }
+    var improveButtonIntroWithSettingsText: String { get }
+    var improveButtonIntroWithoutSettingsText: String { get }
     var settingsFinnButtonTitle: String { get }
     var privacyFinnButtonTitle: String { get }
     var usageSchibstedHeaderText: String { get }
     var usageSchibstedIntroText: String { get }
     var usageSchibstedBulletPointsText: [String] { get }
-    var usageScibstedButtonIntroText: String { get }
+    var usageScibstedButtonIntroWithSettingsText: String { get }
+    var usageScibstedButtonIntroWithoutSettingsText: String { get }
     var settingsSchibstedButtonTitle: String { get }
     var privacySchibstedButtonTitle: String { get }
 }
