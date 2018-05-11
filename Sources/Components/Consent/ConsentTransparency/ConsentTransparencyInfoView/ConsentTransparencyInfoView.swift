@@ -159,7 +159,7 @@ public final class ConsentTransparencyInfoView: UIView {
             }
 
             mainHeaderLabel.text = model.mainHeaderText
-            mainIntroLabel.text = model.MainIntroText
+            mainIntroLabel.text = model.mainIntroText
             usageHeaderLabel.text = model.usageHeaderText
             usageIntro1Label.text = model.usageIntro1Text
             usageIntro2Label.text = model.usageIntro2Text
