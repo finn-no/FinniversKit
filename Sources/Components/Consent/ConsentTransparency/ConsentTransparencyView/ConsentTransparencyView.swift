@@ -15,6 +15,18 @@ public final class ConsentTransparencyView: UIView {
 
     private let topImage = UIImage(named: .consentTransparencyImage)
 
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private lazy var contentView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +38,6 @@ public final class ConsentTransparencyView: UIView {
     private lazy var headerLabel: Label = {
         let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Din data, dine valg"
         return label
     }()
 
@@ -34,21 +45,18 @@ public final class ConsentTransparencyView: UIView {
         let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "FINN er en del av Schibsted Norge. Når du bruker FINN er Schibsted Norge behandlingsansvarlig for påloggingsløsning og reklame, mens FINN er behandlingsansvarlig for det øvrige innholdet i tjenesten vår. Både FINN og Schibsted Norge behandler data om deg.\n\nFINN bruker dine data til å tilpasse tjenestene til deg, mens Schibsted Norge i tillegg bruker dem til å gi deg mer relevante annonser. Persondata brukes også for å sikre at tjenestene er trygge og sikre for deg."
         return label
     }()
 
     private lazy var moreButton: Button = {
         let button = Button(style: .flat)
         button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
-        button.setTitle("Vis meg mer", for: .normal)
         return button
     }()
 
     private lazy var okayButton: Button = {
         let button = Button(style: .callToAction)
         button.addTarget(self, action: #selector(okayButtonTapped), for: .touchUpInside)
-        button.setTitle("Jeg forstår", for: .normal)
         return button
     }()
 
@@ -65,6 +73,30 @@ public final class ConsentTransparencyView: UIView {
 
     weak var delegate: ConsentTransparencyViewDelegate?
 
+    public var headerText: String = "" {
+        didSet {
+            headerLabel.text = headerText
+        }
+    }
+
+    public var detailText: String = "" {
+        didSet {
+            detailLabel.text = detailText
+        }
+    }
+
+    public var moreButtonTitle: String = "" {
+        didSet {
+            moreButton.setTitle(moreButtonTitle, for: .normal)
+        }
+    }
+
+    public var okayButtonTitle: String = "" {
+        didSet {
+            okayButton.setTitle(okayButtonTitle, for: .normal)
+        }
+    }
+
     // MARK: - Setup
 
     public override init(frame: CGRect) {
@@ -76,40 +108,46 @@ public final class ConsentTransparencyView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-
-    // MARK: - Superclass Overrides
-
-}
-
-// MARK: - Public
-
-public extension ConsentTransparencyView {
 }
 
 // MARK: - Private
 
 private extension ConsentTransparencyView {
     func setup() {
-        addSubview(imageView)
-        addSubview(headerLabel)
-        addSubview(detailLabel)
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+
+        contentView.addSubview(imageView)
+        contentView.addSubview(headerLabel)
+        contentView.addSubview(detailLabel)
         addSubview(buttonStackView)
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            imageView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumLargeSpacing),
-            imageView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            imageView.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            imageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             headerLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumLargeSpacing),
-            headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            headerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            headerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
             detailLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .mediumSpacing),
-            detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            detailLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.smallSpacing),
 
-            buttonStackView.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .largeSpacing),
+            buttonStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: .mediumLargeSpacing),
             buttonStackView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumLargeSpacing),
             buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
