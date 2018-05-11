@@ -6,7 +6,7 @@ import Foundation
 
 public protocol ConsentTransparencyInfoViewModel {
     var mainHeaderText: String { get }
-    var MainIntroText: String { get }
+    var mainIntroText: String { get }
     var usageHeaderText: String { get }
     var usageIntro1Text: String { get }
     var usageIntro2Text: String { get }

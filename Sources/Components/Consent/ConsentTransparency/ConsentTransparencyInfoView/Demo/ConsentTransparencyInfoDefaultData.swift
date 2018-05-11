@@ -9,7 +9,7 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
 
     public var mainHeaderText = "Sikring og bruk av dine data"
 
-    public var MainIntroText = "Når du bruker FINN, gir du oss og Schibsted Norge tilgang til opplysninger om deg. Her kan du lese hva vi bruker dem til."
+    public var mainIntroText = "Når du bruker FINN, gir du oss og Schibsted Norge tilgang til opplysninger om deg. Her kan du lese hva vi bruker dem til."
 
     public var usageHeaderText = "Hva bruker FINN dataen til?"
 
