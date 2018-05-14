@@ -71,7 +71,7 @@ public final class ConsentTransparencyView: UIView {
 
     // MARK: - External properties / Dependency injection
 
-    weak var delegate: ConsentTransparencyViewDelegate?
+    public weak var delegate: ConsentTransparencyViewDelegate?
 
     public var headerText: String = "" {
         didSet {
