@@ -150,7 +150,7 @@ public final class ConsentTransparencyInfoView: UIView {
 
     // MARK: - External properties / Dependency injection
 
-    weak var delegate: ConsentTransparencyInfoViewDelegate?
+    public weak var delegate: ConsentTransparencyInfoViewDelegate?
 
     public var model: ConsentTransparencyInfoViewModel? {
         didSet {
