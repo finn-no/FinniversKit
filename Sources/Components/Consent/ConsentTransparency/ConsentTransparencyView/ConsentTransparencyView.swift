@@ -83,7 +83,7 @@ public final class ConsentTransparencyView: UIView {
     public var detailText: String = "" {
         didSet {
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 4
+            paragraphStyle.lineSpacing = 3
             let attributedString = NSMutableAttributedString(string: detailText)
             attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
             detailLabel.attributedText = attributedString
