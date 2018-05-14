@@ -45,10 +45,10 @@ public class TextField: UIView {
 
     // MARK: - Internal properties
 
-    private let eyeImage = UIImage(frameworkImageNamed: "view")!.withRenderingMode(.alwaysTemplate)
-    private let clearTextIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
-    private let multilineDisclosureIcon = UIImage(frameworkImageNamed: "remove")!.withRenderingMode(.alwaysTemplate)
-    private let errorImage = UIImage(frameworkImageNamed: "error")!
+    private let eyeImage = UIImage(named: .view).withRenderingMode(.alwaysTemplate)
+    private let clearTextIcon = UIImage(named: .remove).withRenderingMode(.alwaysTemplate)
+    private let multilineDisclosureIcon = UIImage(named: .remove).withRenderingMode(.alwaysTemplate)
+    private let errorImage = UIImage(named: .error)
     private let rightViewSize = CGSize(width: 40, height: 40)
     private let animationDuration: Double = 0.3
     private let errorIconWidth: CGFloat = 18
