@@ -45,6 +45,7 @@ public final class ConsentTransparencyView: UIView {
         let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.textAlignment = .justified
         return label
     }()
 
@@ -81,7 +82,11 @@ public final class ConsentTransparencyView: UIView {
 
     public var detailText: String = "" {
         didSet {
-            detailLabel.text = detailText
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 4
+            let attributedString = NSMutableAttributedString(string: detailText)
+            attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+            detailLabel.attributedText = attributedString
         }
     }
 

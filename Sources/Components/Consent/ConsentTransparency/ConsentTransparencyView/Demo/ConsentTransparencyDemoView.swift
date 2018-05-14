@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class ConsentTransparencyDemoView: UIView {
-    private let maxScreenSize = CGSize(width: 414, height: 736)
+    private let maxScreenSize = CGSize(width: 420, height: 470)
 
     private lazy var shadedBackgroundView: UIView = {
         let view = UIView(frame: .zero)
@@ -41,13 +41,10 @@ public class ConsentTransparencyDemoView: UIView {
         shadedBackgroundView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            consentTransparencyView.topAnchor.constraint(greaterThanOrEqualTo: shadedBackgroundView.topAnchor, constant: .largeSpacing),
-            consentTransparencyView.bottomAnchor.constraint(lessThanOrEqualTo: shadedBackgroundView.bottomAnchor, constant: -.largeSpacing),
-            consentTransparencyView.leadingAnchor.constraint(greaterThanOrEqualTo: shadedBackgroundView.leadingAnchor, constant: .largeSpacing),
-            consentTransparencyView.trailingAnchor.constraint(lessThanOrEqualTo: shadedBackgroundView.trailingAnchor, constant: -.largeSpacing),
+            consentTransparencyView.leadingAnchor.constraint(equalTo: shadedBackgroundView.leadingAnchor, constant: .largeSpacing),
+            consentTransparencyView.trailingAnchor.constraint(equalTo: shadedBackgroundView.trailingAnchor, constant: -.largeSpacing),
             consentTransparencyView.centerXAnchor.constraint(equalTo: shadedBackgroundView.centerXAnchor),
             consentTransparencyView.centerYAnchor.constraint(equalTo: shadedBackgroundView.centerYAnchor),
-            consentTransparencyView.widthAnchor.constraint(equalToConstant: maxScreenSize.width),
             consentTransparencyView.heightAnchor.constraint(equalToConstant: maxScreenSize.height),
         ])
     }
