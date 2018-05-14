@@ -39,7 +39,7 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
 
     public var privacyFinnButtonTitle = "Personvernerklæring"
 
-    public var usageSchibstedHeaderText = "Hva bruker Scibsted dataen til?"
+    public var usageSchibstedHeaderText = "Hva bruker Schibsted dataen til?"
 
     public var usageSchibstedIntroText = "Schibsted Norge bruker data om deg og hva du gjør på FINN og andre Schibsted-tjenester primært for å"
 
@@ -50,9 +50,9 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
         ]
     }
 
-    public var usageScibstedButtonIntroWithSettingsText = "Du kan endre innstillingene dine eller lese Schibsted Norges personvernerklæring ved å trykke knappene under dette avsnittet."
+    public var usageSchibstedButtonIntroWithSettingsText = "Du kan endre innstillingene dine eller lese Schibsted Norges personvernerklæring ved å trykke knappene under dette avsnittet."
 
-    public var usageScibstedButtonIntroWithoutSettingsText = "Du kan lese Schibsted Norges personvernerklæring her:"
+    public var usageSchibstedButtonIntroWithoutSettingsText = "Du kan lese Schibsted Norges personvernerklæring her:"
 
     public var settingsSchibstedButtonTitle = "Innstillinger"
 

@@ -104,7 +104,7 @@ public final class ConsentTransparencyInfoView: UIView {
         return button
     }()
 
-    private lazy var usageScibstedHeaderLabel: Label = {
+    private lazy var usageSchibstedHeaderLabel: Label = {
         let label = Label(style: .title2)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -125,7 +125,7 @@ public final class ConsentTransparencyInfoView: UIView {
         return label
     }()
 
-    private lazy var usageScibstedButtonIntroLabel: Label = {
+    private lazy var usageSchibstedButtonIntroLabel: Label = {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -173,13 +173,13 @@ public final class ConsentTransparencyInfoView: UIView {
             }
             settingsFinnButton.setTitle(model.settingsFinnButtonTitle, for: .normal)
             privacyFinnButton.setTitle(model.privacyFinnButtonTitle, for: .normal)
-            usageScibstedHeaderLabel.text = model.usageSchibstedHeaderText
+            usageSchibstedHeaderLabel.text = model.usageSchibstedHeaderText
             usageSchibstedIntroLabel.text = model.usageSchibstedIntroText
             usageSchibstedBulletPointsLabel.attributedText = model.usageBulletPointsText.asBulletPoints()
             if showSettingsButtons {
-                usageScibstedButtonIntroLabel.text = model.usageScibstedButtonIntroWithSettingsText
+                usageSchibstedButtonIntroLabel.text = model.usageSchibstedButtonIntroWithSettingsText
             } else {
-                usageScibstedButtonIntroLabel.text = model.usageScibstedButtonIntroWithoutSettingsText
+                usageSchibstedButtonIntroLabel.text = model.usageSchibstedButtonIntroWithoutSettingsText
             }
             settingsSchibstedButton.setTitle(model.settingsSchibstedButtonTitle, for: .normal)
             privacySchibstedButton.setTitle(model.privacySchibstedButtonTitle, for: .normal)
@@ -230,17 +230,17 @@ private extension ConsentTransparencyInfoView {
         contentView.addSubview(improveIntroLabel)
         contentView.addSubview(improveButtonIntroLabel)
         contentView.addSubview(privacyFinnButton)
-        contentView.addSubview(usageScibstedHeaderLabel)
+        contentView.addSubview(usageSchibstedHeaderLabel)
         contentView.addSubview(usageSchibstedIntroLabel)
         contentView.addSubview(usageSchibstedBulletPointsLabel)
-        contentView.addSubview(usageScibstedButtonIntroLabel)
+        contentView.addSubview(usageSchibstedButtonIntroLabel)
         contentView.addSubview(privacySchibstedButton)
 
         let privacyFinnButtonConstraintToSettings = privacyFinnButton.topAnchor.constraint(equalTo: settingsFinnButton.bottomAnchor, constant: .mediumLargeSpacing)
         let privacyFinnButtonConstraintToIntro = privacyFinnButton.topAnchor.constraint(equalTo: improveButtonIntroLabel.bottomAnchor, constant: .mediumLargeSpacing)
 
         let privacySchibstedButtonConstraintToSettings = privacySchibstedButton.topAnchor.constraint(equalTo: settingsSchibstedButton.bottomAnchor, constant: .mediumLargeSpacing)
-        let privacySchibstedButtonConstraintToIntro = privacySchibstedButton.topAnchor.constraint(equalTo: usageScibstedButtonIntroLabel.bottomAnchor, constant: .mediumLargeSpacing)
+        let privacySchibstedButtonConstraintToIntro = privacySchibstedButton.topAnchor.constraint(equalTo: usageSchibstedButtonIntroLabel.bottomAnchor, constant: .mediumLargeSpacing)
 
         privacyFinnButtonConstraintToSettings.isActive = false
         privacySchibstedButtonConstraintToSettings.isActive = false
@@ -297,11 +297,11 @@ private extension ConsentTransparencyInfoView {
             privacyFinnButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             privacyFinnButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            usageScibstedHeaderLabel.topAnchor.constraint(equalTo: privacyFinnButton.bottomAnchor, constant: .mediumLargeSpacing),
-            usageScibstedHeaderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            usageScibstedHeaderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            usageSchibstedHeaderLabel.topAnchor.constraint(equalTo: privacyFinnButton.bottomAnchor, constant: .mediumLargeSpacing),
+            usageSchibstedHeaderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            usageSchibstedHeaderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            usageSchibstedIntroLabel.topAnchor.constraint(equalTo: usageScibstedHeaderLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            usageSchibstedIntroLabel.topAnchor.constraint(equalTo: usageSchibstedHeaderLabel.bottomAnchor, constant: .mediumLargeSpacing),
             usageSchibstedIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             usageSchibstedIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -309,9 +309,9 @@ private extension ConsentTransparencyInfoView {
             usageSchibstedBulletPointsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             usageSchibstedBulletPointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            usageScibstedButtonIntroLabel.topAnchor.constraint(equalTo: usageSchibstedBulletPointsLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            usageScibstedButtonIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            usageScibstedButtonIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            usageSchibstedButtonIntroLabel.topAnchor.constraint(equalTo: usageSchibstedBulletPointsLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            usageSchibstedButtonIntroLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            usageSchibstedButtonIntroLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
             privacySchibstedButtonConstraintToIntro,
             privacySchibstedButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
@@ -333,7 +333,7 @@ private extension ConsentTransparencyInfoView {
                 settingsFinnButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
                 privacySchibstedButtonConstraintToSettings,
-                settingsSchibstedButton.topAnchor.constraint(equalTo: usageScibstedButtonIntroLabel.bottomAnchor, constant: .mediumLargeSpacing),
+                settingsSchibstedButton.topAnchor.constraint(equalTo: usageSchibstedButtonIntroLabel.bottomAnchor, constant: .mediumLargeSpacing),
                 settingsSchibstedButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
                 settingsSchibstedButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             ])
