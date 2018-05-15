@@ -7,10 +7,10 @@ import UIKit
 // MARK: - PopupConsentViewDelegate
 
 public protocol PopupConsentViewDelegate: NSObjectProtocol {
-    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectYesButton button: Button)
-    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectNoButton button: Button)
-    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectCancelButton button: Button)
-    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectInfoButton button: Button)
+    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectBottomRightButton button: Button)
+    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectBottomLeftButton button: Button)
+    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectTopRightButton button: Button)
+    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectLinkButton button: Button)
 }
 
 public class PopupConsentView: UIView {
@@ -29,10 +29,10 @@ public class PopupConsentView: UIView {
         return view
     }()
 
-    private lazy var cancelButton: Button = {
+    private lazy var topRightButton: Button = {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(topRightButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -57,29 +57,29 @@ public class PopupConsentView: UIView {
         return label
     }()
 
-    private lazy var infoButton: Button = {
+    private lazy var linkButton: Button = {
         let button = Button(style: .link)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(linkButtonTapped), for: .touchUpInside)
         return button
     }()
 
-    private lazy var noButton: Button = {
+    private lazy var bottomLeftButton: Button = {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(noButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(bottomLeftButtonTapped), for: .touchUpInside)
         return button
     }()
 
-    private lazy var yesButton: Button = {
+    private lazy var bottomRightButton: Button = {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(yesButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(bottomRightButtonTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var buttonStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [noButton, yesButton])
+        let view = UIStackView(arrangedSubviews: [bottomLeftButton, bottomRightButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = .mediumLargeSpacing
@@ -97,21 +97,21 @@ public class PopupConsentView: UIView {
                 return
             }
 
-            yesButton.setTitle(model.yesButtonTitle, for: .normal)
-            noButton.setTitle(model.noButtonTitle, for: .normal)
+            bottomRightButton.setTitle(model.yesButtonTitle, for: .normal)
+            bottomLeftButton.setTitle(model.noButtonTitle, for: .normal)
 
             if let cancelButtonTitle = model.cancelButtonTitle, cancelButtonTitle != "" {
-                cancelButton.isHidden = false
-                cancelButton.setTitle(cancelButtonTitle, for: .normal)
+                topRightButton.isHidden = false
+                topRightButton.setTitle(cancelButtonTitle, for: .normal)
             } else {
-                cancelButton.isHidden = true
+                topRightButton.isHidden = true
             }
 
             if let infoButtonTitle = model.infoButtonTitle, infoButtonTitle != "" {
-                infoButton.isHidden = false
-                infoButton.setTitle(infoButtonTitle, for: .normal)
+                linkButton.isHidden = false
+                linkButton.setTitle(infoButtonTitle, for: .normal)
             } else {
-                infoButton.isHidden = true
+                linkButton.isHidden = true
             }
             descriptionTitleLabel.text = model.descriptionTitle
             descriptionLabel.text = model.descriptionText
@@ -136,11 +136,11 @@ public class PopupConsentView: UIView {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
 
-        contentView.addSubview(cancelButton)
+        contentView.addSubview(topRightButton)
         contentView.addSubview(imageView)
         contentView.addSubview(descriptionTitleLabel)
         contentView.addSubview(descriptionLabel)
-        contentView.addSubview(infoButton)
+        contentView.addSubview(linkButton)
         addSubview(buttonStackView)
 
         NSLayoutConstraint.activate([
@@ -155,11 +155,11 @@ public class PopupConsentView: UIView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            cancelButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
-            cancelButton.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            cancelButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            topRightButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            topRightButton.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            topRightButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            imageView.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: .mediumLargeSpacing),
+            imageView.topAnchor.constraint(equalTo: topRightButton.bottomAnchor, constant: .mediumLargeSpacing),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -171,11 +171,11 @@ public class PopupConsentView: UIView {
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            infoButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            infoButton.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            infoButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            infoButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            infoButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            linkButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            linkButton.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            linkButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            linkButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            linkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
             buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
             buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
@@ -185,19 +185,19 @@ public class PopupConsentView: UIView {
 
     // MARK: - Private actions
 
-    @objc private func yesButtonTapped(button: Button) {
-        delegate?.popupConsentView(self, didSelectYesButton: button)
+    @objc private func bottomRightButtonTapped(button: Button) {
+        delegate?.popupConsentView(self, didSelectBottomRightButton: button)
     }
 
-    @objc private func noButtonTapped(button: Button) {
-        delegate?.popupConsentView(self, didSelectNoButton: button)
+    @objc private func bottomLeftButtonTapped(button: Button) {
+        delegate?.popupConsentView(self, didSelectBottomLeftButton: button)
     }
 
-    @objc private func cancelButtonTapped(button: Button) {
-        delegate?.popupConsentView(self, didSelectCancelButton: button)
+    @objc private func topRightButtonTapped(button: Button) {
+        delegate?.popupConsentView(self, didSelectTopRightButton: button)
     }
 
-    @objc private func infoButtonTapped(button: Button) {
-        delegate?.popupConsentView(self, didSelectInfoButton: button)
+    @objc private func linkButtonTapped(button: Button) {
+        delegate?.popupConsentView(self, didSelectLinkButton: button)
     }
 }
