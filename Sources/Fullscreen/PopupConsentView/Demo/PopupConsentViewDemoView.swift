@@ -31,7 +31,7 @@ public class PopupConsentViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        consentView.model = PopupConsentViewDefaultData()
+        consentView.model = PopupConsentDefaultData.reccomendations.model
 
         addSubview(shadedBackgroundView)
         shadedBackgroundView.addSubview(consentView)
