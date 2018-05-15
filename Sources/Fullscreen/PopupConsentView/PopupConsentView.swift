@@ -44,18 +44,16 @@ public class PopupConsentView: UIView {
     }()
 
     private lazy var descriptionTitleLabel: Label = {
-        let label = Label(style: .title2)
+        let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textAlignment = .center
         return label
     }()
 
     private lazy var descriptionLabel: Label = {
-        let label = Label(style: .body(.licorice))
+        let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textAlignment = .center
         return label
     }()
 
