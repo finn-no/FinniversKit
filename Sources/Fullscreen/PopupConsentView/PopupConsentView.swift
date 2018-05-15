@@ -65,7 +65,7 @@ public class PopupConsentView: UIView {
     }()
 
     private lazy var noButton: Button = {
-        let button = Button(style: .default)
+        let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(noButtonTapped), for: .touchUpInside)
         return button
