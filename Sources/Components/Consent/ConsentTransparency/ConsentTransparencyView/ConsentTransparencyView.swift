@@ -45,6 +45,7 @@ public final class ConsentTransparencyView: UIView {
         let label = Label(style: .detail(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.textAlignment = .justified
         return label
     }()
 
@@ -81,7 +82,11 @@ public final class ConsentTransparencyView: UIView {
 
     public var detailText: String = "" {
         didSet {
-            detailLabel.text = detailText
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 3
+            let attributedString = NSMutableAttributedString(string: detailText)
+            attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+            detailLabel.attributedText = attributedString
         }
     }
 
@@ -148,7 +153,7 @@ private extension ConsentTransparencyView {
             detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.smallSpacing),
 
             buttonStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: .mediumLargeSpacing),
-            buttonStackView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumLargeSpacing),
+            buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
         ])
