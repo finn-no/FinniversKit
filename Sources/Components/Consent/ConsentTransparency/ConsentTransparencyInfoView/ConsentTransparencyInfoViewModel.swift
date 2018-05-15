@@ -20,8 +20,8 @@ public protocol ConsentTransparencyInfoViewModel {
     var usageSchibstedHeaderText: String { get }
     var usageSchibstedIntroText: String { get }
     var usageSchibstedBulletPointsText: [String] { get }
-    var usageScibstedButtonIntroWithSettingsText: String { get }
-    var usageScibstedButtonIntroWithoutSettingsText: String { get }
+    var usageSchibstedButtonIntroWithSettingsText: String { get }
+    var usageSchibstedButtonIntroWithoutSettingsText: String { get }
     var settingsSchibstedButtonTitle: String { get }
     var privacySchibstedButtonTitle: String { get }
 }
