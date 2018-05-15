@@ -161,7 +161,7 @@ public class PopupConsentView: UIView {
             cancelButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             cancelButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            imageView.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: .veryLargeSpacing),
+            imageView.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: .mediumLargeSpacing),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
