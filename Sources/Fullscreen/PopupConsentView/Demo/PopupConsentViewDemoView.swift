@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class PopupConsentViewDemoView: UIView {
-    private let maxScreenSize = CGSize(width: 414, height: 736)
+    private let maxScreenSize = CGSize(width: 320, height: 480)
 
     private lazy var shadedBackgroundView: UIView = {
         let view = UIView(frame: .zero)
@@ -39,14 +39,10 @@ public class PopupConsentViewDemoView: UIView {
         shadedBackgroundView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            consentView.topAnchor.constraint(greaterThanOrEqualTo: shadedBackgroundView.topAnchor, constant: .largeSpacing),
-            consentView.bottomAnchor.constraint(lessThanOrEqualTo: shadedBackgroundView.bottomAnchor, constant: -.largeSpacing),
-            consentView.leadingAnchor.constraint(greaterThanOrEqualTo: shadedBackgroundView.leadingAnchor, constant: .largeSpacing),
-            consentView.trailingAnchor.constraint(lessThanOrEqualTo: shadedBackgroundView.trailingAnchor, constant: -.largeSpacing),
             consentView.centerXAnchor.constraint(equalTo: shadedBackgroundView.centerXAnchor),
             consentView.centerYAnchor.constraint(equalTo: shadedBackgroundView.centerYAnchor),
-            consentView.widthAnchor.constraint(equalToConstant: maxScreenSize.width),
             consentView.heightAnchor.constraint(equalToConstant: maxScreenSize.height),
+            consentView.widthAnchor.constraint(equalToConstant: maxScreenSize.width),
         ])
     }
 }
