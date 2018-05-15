@@ -5,11 +5,20 @@
 import FinniversKit
 
 public class PopupConsentViewDemoView: UIView {
-    private let plusScreenSize = CGSize(width: 414, height: 736)
+    private let maxScreenSize = CGSize(width: 414, height: 736)
+
+    private lazy var shadedBackgroundView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .gray
+        return view
+    }()
 
     private lazy var consentView: PopupConsentView = {
         let view = PopupConsentView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .milk
+        view.layer.cornerRadius = 8
         return view
     }()
 
@@ -24,16 +33,20 @@ public class PopupConsentViewDemoView: UIView {
     private func setup() {
         consentView.model = PopupConsentViewDefaultData()
 
-        addSubview(consentView)
+        addSubview(shadedBackgroundView)
+        shadedBackgroundView.addSubview(consentView)
+
+        shadedBackgroundView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            consentView.topAnchor.constraint(equalTo: topAnchor),
-            consentView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
-            consentView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
-            consentView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            consentView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            consentView.widthAnchor.constraint(equalToConstant: plusScreenSize.width),
-            consentView.heightAnchor.constraint(equalToConstant: plusScreenSize.height),
+            consentView.topAnchor.constraint(greaterThanOrEqualTo: shadedBackgroundView.topAnchor, constant: .largeSpacing),
+            consentView.bottomAnchor.constraint(lessThanOrEqualTo: shadedBackgroundView.bottomAnchor, constant: -.largeSpacing),
+            consentView.leadingAnchor.constraint(greaterThanOrEqualTo: shadedBackgroundView.leadingAnchor, constant: .largeSpacing),
+            consentView.trailingAnchor.constraint(lessThanOrEqualTo: shadedBackgroundView.trailingAnchor, constant: -.largeSpacing),
+            consentView.centerXAnchor.constraint(equalTo: shadedBackgroundView.centerXAnchor),
+            consentView.centerYAnchor.constraint(equalTo: shadedBackgroundView.centerYAnchor),
+            consentView.widthAnchor.constraint(equalToConstant: maxScreenSize.width),
+            consentView.heightAnchor.constraint(equalToConstant: maxScreenSize.height),
         ])
     }
 }
