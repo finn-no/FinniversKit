@@ -13,6 +13,16 @@ public protocol PopupViewDelegate: NSObjectProtocol {
     func popupView(_ popupView: PopupView, didSelectLinkButton button: Button)
 }
 
+public extension PopupViewDelegate {
+    func popupView(_ popupView: PopupView, didSelectDismissButton button: Button) {
+        // Doesn't need to be implemented
+    }
+
+    func popupView(_ popupView: PopupView, didSelectLinkButton button: Button) {
+        // Doesn't need to be implemented
+    }
+}
+
 public class PopupView: UIView {
 
     // MARK: - Internal properties
