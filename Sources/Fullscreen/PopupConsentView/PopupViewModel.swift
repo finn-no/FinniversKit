@@ -5,10 +5,10 @@
 import Foundation
 
 public protocol PopupViewModel {
-    var yesButtonTitle: String { get }
-    var noButtonTitle: String { get }
-    var cancelButtonTitle: String? { get }
-    var infoButtonTitle: String? { get }
+    var bottomRightButtonTitle: String { get }
+    var bottomLeftButtonTitle: String { get }
+    var topRightButtonTitle: String? { get }
+    var linkButtonTitle: String? { get }
     var descriptionTitle: String { get }
     var descriptionText: String { get }
     var image: UIImage { get }

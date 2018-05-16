@@ -97,19 +97,19 @@ public class PopupView: UIView {
                 return
             }
 
-            bottomRightButton.setTitle(model.yesButtonTitle, for: .normal)
-            bottomLeftButton.setTitle(model.noButtonTitle, for: .normal)
+            bottomRightButton.setTitle(model.bottomRightButtonTitle, for: .normal)
+            bottomLeftButton.setTitle(model.bottomLeftButtonTitle, for: .normal)
 
-            if let cancelButtonTitle = model.cancelButtonTitle, cancelButtonTitle != "" {
+            if let topRightButtonTitle = model.topRightButtonTitle, topRightButtonTitle != "" {
                 topRightButton.isHidden = false
-                topRightButton.setTitle(cancelButtonTitle, for: .normal)
+                topRightButton.setTitle(topRightButtonTitle, for: .normal)
             } else {
                 topRightButton.isHidden = true
             }
 
-            if let infoButtonTitle = model.infoButtonTitle, infoButtonTitle != "" {
+            if let linkButtonTitle = model.linkButtonTitle, linkButtonTitle != "" {
                 linkButton.isHidden = false
-                linkButton.setTitle(infoButtonTitle, for: .normal)
+                linkButton.setTitle(linkButtonTitle, for: .normal)
             } else {
                 linkButton.isHidden = true
             }
