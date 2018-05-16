@@ -102,7 +102,7 @@
 		44D912642077AC8A00486848 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912572077AC8A00486848 /* RectangleView.swift */; };
 		44D912652077AC8A00486848 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912592077AC8A00486848 /* LoginViewModel.swift */; };
 		44D912662077AC8A00486848 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9125A2077AC8A00486848 /* LoginView.swift */; };
-		44D9126A2077AD0200486848 /* PopupViewConsentDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912682077AD0200486848 /* PopupViewConsentDefaultData.swift */; };
+		44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912682077AD0200486848 /* PopupViewDefaultData.swift */; };
 		44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912692077AD0200486848 /* PopupViewDemoView.swift */; };
 		44D9126F2077AD0C00486848 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9126D2077AD0C00486848 /* RegisterViewDefaultData.swift */; };
 		44D912702077AD0C00486848 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9126E2077AD0C00486848 /* RegisterViewDemoView.swift */; };
@@ -252,7 +252,7 @@
 		44D912572077AC8A00486848 /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleView.swift; sourceTree = "<group>"; };
 		44D912592077AC8A00486848 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		44D9125A2077AC8A00486848 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		44D912682077AD0200486848 /* PopupViewConsentDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewConsentDefaultData.swift; sourceTree = "<group>"; };
+		44D912682077AD0200486848 /* PopupViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDefaultData.swift; sourceTree = "<group>"; };
 		44D912692077AD0200486848 /* PopupViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDemoView.swift; sourceTree = "<group>"; };
 		44D9126D2077AD0C00486848 /* RegisterViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDefaultData.swift; sourceTree = "<group>"; };
 		44D9126E2077AD0C00486848 /* RegisterViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDemoView.swift; sourceTree = "<group>"; };
@@ -801,7 +801,7 @@
 			isa = PBXGroup;
 			children = (
 				447AFC0E20984B63000F793E /* Frontpage */,
-				44D9124A2077AC8A00486848 /* PopupConsentView */,
+				44D9124A2077AC8A00486848 /* Popup */,
 				44D9124D2077AC8A00486848 /* Register */,
 				44D912502077AC8A00486848 /* EmptyView */,
 				44D912582077AC8A00486848 /* Login */,
@@ -809,14 +809,14 @@
 			path = Fullscreen;
 			sourceTree = "<group>";
 		};
-		44D9124A2077AC8A00486848 /* PopupConsentView */ = {
+		44D9124A2077AC8A00486848 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
 				44D912672077AD0200486848 /* Demo */,
 				45EDD63C20A9CA22008F4503 /* PopupView.swift */,
 				45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */,
 			);
-			path = PopupConsentView;
+			path = Popup;
 			sourceTree = "<group>";
 		};
 		44D9124D2077AC8A00486848 /* Register */ = {
@@ -864,7 +864,7 @@
 		44D912672077AD0200486848 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				44D912682077AD0200486848 /* PopupViewConsentDefaultData.swift */,
+				44D912682077AD0200486848 /* PopupViewDefaultData.swift */,
 				44D912692077AD0200486848 /* PopupViewDemoView.swift */,
 			);
 			path = Demo;
@@ -1242,7 +1242,7 @@
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
 				146D3C401FBE466D00124B76 /* ViewController.swift in Sources */,
-				44D9126A2077AD0200486848 /* PopupViewConsentDefaultData.swift in Sources */,
+				44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */,
 				45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */,
