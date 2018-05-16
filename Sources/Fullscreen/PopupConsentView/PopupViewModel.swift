@@ -5,9 +5,9 @@
 import Foundation
 
 public protocol PopupViewModel {
-    var bottomRightButtonTitle: String { get }
-    var bottomLeftButtonTitle: String { get }
-    var topRightButtonTitle: String? { get }
+    var callToActionButtonTitle: String { get }
+    var alternativeActionButtonTitle: String { get }
+    var dismissButtonTitle: String? { get }
     var linkButtonTitle: String? { get }
     var descriptionTitle: String { get }
     var descriptionText: String { get }

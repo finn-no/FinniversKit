@@ -7,9 +7,9 @@ import UIKit
 // MARK: - PopupViewDelegate
 
 public protocol PopupViewDelegate: NSObjectProtocol {
-    func popupView(_ popupView: PopupView, didSelectBottomRightButton button: Button)
-    func popupView(_ popupView: PopupView, didSelectBottomLeftButton button: Button)
-    func popupView(_ popupView: PopupView, didSelectTopRightButton button: Button)
+    func popupView(_ popupView: PopupView, didSelectCallToActionButton button: Button)
+    func popupView(_ popupView: PopupView, didSelectAlternativeActionButton button: Button)
+    func popupView(_ popupView: PopupView, didSelectDismissButton button: Button)
     func popupView(_ popupView: PopupView, didSelectLinkButton button: Button)
 }
 
@@ -29,10 +29,10 @@ public class PopupView: UIView {
         return view
     }()
 
-    private lazy var topRightButton: Button = {
+    private lazy var dismissButton: Button = {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(topRightButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -64,22 +64,22 @@ public class PopupView: UIView {
         return button
     }()
 
-    private lazy var bottomLeftButton: Button = {
+    private lazy var alternativeActionButton: Button = {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(bottomLeftButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(alternativeActionButtonTapped), for: .touchUpInside)
         return button
     }()
 
-    private lazy var bottomRightButton: Button = {
+    private lazy var callToActionButton: Button = {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(bottomRightButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(callToActionButtonTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var buttonStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [bottomLeftButton, bottomRightButton])
+        let view = UIStackView(arrangedSubviews: [alternativeActionButton, callToActionButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = .mediumLargeSpacing
@@ -97,14 +97,14 @@ public class PopupView: UIView {
                 return
             }
 
-            bottomRightButton.setTitle(model.bottomRightButtonTitle, for: .normal)
-            bottomLeftButton.setTitle(model.bottomLeftButtonTitle, for: .normal)
+            callToActionButton.setTitle(model.callToActionButtonTitle, for: .normal)
+            alternativeActionButton.setTitle(model.alternativeActionButtonTitle, for: .normal)
 
-            if let topRightButtonTitle = model.topRightButtonTitle, topRightButtonTitle != "" {
-                topRightButton.isHidden = false
-                topRightButton.setTitle(topRightButtonTitle, for: .normal)
+            if let topRightButtonTitle = model.dismissButtonTitle, topRightButtonTitle != "" {
+                dismissButton.isHidden = false
+                dismissButton.setTitle(topRightButtonTitle, for: .normal)
             } else {
-                topRightButton.isHidden = true
+                dismissButton.isHidden = true
             }
 
             if let linkButtonTitle = model.linkButtonTitle, linkButtonTitle != "" {
@@ -136,7 +136,7 @@ public class PopupView: UIView {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
 
-        contentView.addSubview(topRightButton)
+        contentView.addSubview(dismissButton)
         contentView.addSubview(imageView)
         contentView.addSubview(descriptionTitleLabel)
         contentView.addSubview(descriptionLabel)
@@ -155,11 +155,11 @@ public class PopupView: UIView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            topRightButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
-            topRightButton.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            topRightButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            dismissButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            dismissButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            dismissButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            imageView.topAnchor.constraint(equalTo: topRightButton.bottomAnchor, constant: .mediumLargeSpacing),
+            imageView.topAnchor.constraint(equalTo: dismissButton.bottomAnchor, constant: .mediumLargeSpacing),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -185,16 +185,16 @@ public class PopupView: UIView {
 
     // MARK: - Private actions
 
-    @objc private func bottomRightButtonTapped(button: Button) {
-        delegate?.popupView(self, didSelectBottomRightButton: button)
+    @objc private func callToActionButtonTapped(button: Button) {
+        delegate?.popupView(self, didSelectCallToActionButton: button)
     }
 
-    @objc private func bottomLeftButtonTapped(button: Button) {
-        delegate?.popupView(self, didSelectBottomLeftButton: button)
+    @objc private func alternativeActionButtonTapped(button: Button) {
+        delegate?.popupView(self, didSelectAlternativeActionButton: button)
     }
 
-    @objc private func topRightButtonTapped(button: Button) {
-        delegate?.popupView(self, didSelectTopRightButton: button)
+    @objc private func dismissButtonTapped(button: Button) {
+        delegate?.popupView(self, didSelectDismissButton: button)
     }
 
     @objc private func linkButtonTapped(button: Button) {
