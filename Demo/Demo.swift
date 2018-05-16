@@ -146,7 +146,6 @@ enum ComponentViews: String {
     case toast
     case switchView
     case inlineConsent
-    case consentTransparency
     case consentTransparencyInfo
 
     static var all: [ComponentViews] {
@@ -160,7 +159,6 @@ enum ComponentViews: String {
             .toast,
             .switchView,
             .inlineConsent,
-            .consentTransparency,
             .consentTransparencyInfo,
         ]
     }
@@ -185,8 +183,6 @@ enum ComponentViews: String {
             return ViewController<SwitchViewDemoView>()
         case .inlineConsent:
             return ViewController<InlineConsentDemoView>()
-        case .consentTransparency:
-            return ViewController<ConsentTransparencyDemoView>()
         case .consentTransparencyInfo:
             return ViewController<ConsentTransparencyInfoDemoView>()
         }
