@@ -103,7 +103,7 @@
 		44D912652077AC8A00486848 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912592077AC8A00486848 /* LoginViewModel.swift */; };
 		44D912662077AC8A00486848 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9125A2077AC8A00486848 /* LoginView.swift */; };
 		44D9126A2077AD0200486848 /* PopupConsentViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912682077AD0200486848 /* PopupConsentViewDefaultData.swift */; };
-		44D9126B2077AD0200486848 /* PopupConsentViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912692077AD0200486848 /* PopupConsentViewDemoView.swift */; };
+		44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912692077AD0200486848 /* PopupViewDemoView.swift */; };
 		44D9126F2077AD0C00486848 /* RegisterViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9126D2077AD0C00486848 /* RegisterViewDefaultData.swift */; };
 		44D912702077AD0C00486848 /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D9126E2077AD0C00486848 /* RegisterViewDemoView.swift */; };
 		44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912722077AD1200486848 /* EmptyViewDemoView.swift */; };
@@ -122,8 +122,8 @@
 		45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD62B20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift */; };
 		45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD62E20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift */; };
 		45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63220A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift */; };
-		45EDD63E20A9CA22008F4503 /* PopupConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63C20A9CA22008F4503 /* PopupConsentView.swift */; };
-		45EDD63F20A9CA22008F4503 /* PopupConsentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63D20A9CA22008F4503 /* PopupConsentViewModel.swift */; };
+		45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63C20A9CA22008F4503 /* PopupView.swift */; };
+		45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */; };
 		559FD9BA205122A200A101B0 /* BroadcastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9B9205122A200A101B0 /* BroadcastModel.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */; };
 		55C5B274203D8E20007D7277 /* BroadcastContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* BroadcastContainer.swift */; };
@@ -253,7 +253,7 @@
 		44D912592077AC8A00486848 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		44D9125A2077AC8A00486848 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		44D912682077AD0200486848 /* PopupConsentViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupConsentViewDefaultData.swift; sourceTree = "<group>"; };
-		44D912692077AD0200486848 /* PopupConsentViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupConsentViewDemoView.swift; sourceTree = "<group>"; };
+		44D912692077AD0200486848 /* PopupViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDemoView.swift; sourceTree = "<group>"; };
 		44D9126D2077AD0C00486848 /* RegisterViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDefaultData.swift; sourceTree = "<group>"; };
 		44D9126E2077AD0C00486848 /* RegisterViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDemoView.swift; sourceTree = "<group>"; };
 		44D912722077AD1200486848 /* EmptyViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoView.swift; sourceTree = "<group>"; };
@@ -272,8 +272,8 @@
 		45EDD62B20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDemoView.swift; sourceTree = "<group>"; };
 		45EDD62E20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoViewModel.swift; sourceTree = "<group>"; };
 		45EDD63220A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
-		45EDD63C20A9CA22008F4503 /* PopupConsentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupConsentView.swift; sourceTree = "<group>"; };
-		45EDD63D20A9CA22008F4503 /* PopupConsentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupConsentViewModel.swift; sourceTree = "<group>"; };
+		45EDD63C20A9CA22008F4503 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
 		559FD9B9205122A200A101B0 /* BroadcastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastModel.swift; sourceTree = "<group>"; };
 		559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastModelTests.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* BroadcastContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastContainer.swift; sourceTree = "<group>"; };
@@ -813,8 +813,8 @@
 			isa = PBXGroup;
 			children = (
 				44D912672077AD0200486848 /* Demo */,
-				45EDD63C20A9CA22008F4503 /* PopupConsentView.swift */,
-				45EDD63D20A9CA22008F4503 /* PopupConsentViewModel.swift */,
+				45EDD63C20A9CA22008F4503 /* PopupView.swift */,
+				45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */,
 			);
 			path = PopupConsentView;
 			sourceTree = "<group>";
@@ -865,7 +865,7 @@
 			isa = PBXGroup;
 			children = (
 				44D912682077AD0200486848 /* PopupConsentViewDefaultData.swift */,
-				44D912692077AD0200486848 /* PopupConsentViewDemoView.swift */,
+				44D912692077AD0200486848 /* PopupViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1255,7 +1255,7 @@
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
-				44D9126B2077AD0200486848 /* PopupConsentViewDemoView.swift in Sources */,
+				44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */,
 				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
@@ -1308,7 +1308,7 @@
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
-				45EDD63E20A9CA22008F4503 /* PopupConsentView.swift in Sources */,
+				45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */,
 				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				441FE431209A24E500B04EF1 /* AdsGridHeaderView.swift in Sources */,
@@ -1342,7 +1342,7 @@
 				44D912652077AC8A00486848 /* LoginViewModel.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
-				45EDD63F20A9CA22008F4503 /* PopupConsentViewModel.swift in Sources */,
+				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
 				559FD9BA205122A200A101B0 /* BroadcastModel.swift in Sources */,

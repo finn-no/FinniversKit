@@ -6,14 +6,14 @@ import UIKit
 
 // MARK: - PopupConsentViewDelegate
 
-public protocol PopupConsentViewDelegate: NSObjectProtocol {
-    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectBottomRightButton button: Button)
-    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectBottomLeftButton button: Button)
-    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectTopRightButton button: Button)
-    func popupConsentView(_ popupConsentView: PopupConsentView, didSelectLinkButton button: Button)
+public protocol PopupViewDelegate: NSObjectProtocol {
+    func popupView(_ popupView: PopupView, didSelectBottomRightButton button: Button)
+    func popupView(_ popupView: PopupView, didSelectBottomLeftButton button: Button)
+    func popupView(_ popupView: PopupView, didSelectTopRightButton button: Button)
+    func popupView(_ popupView: PopupView, didSelectLinkButton button: Button)
 }
 
-public class PopupConsentView: UIView {
+public class PopupView: UIView {
 
     // MARK: - Internal properties
 
@@ -89,9 +89,9 @@ public class PopupConsentView: UIView {
 
     // MARK: - External properties / Dependency injection
 
-    public weak var delegate: PopupConsentViewDelegate?
+    public weak var delegate: PopupViewDelegate?
 
-    public var model: PopupConsentViewModel? {
+    public var model: PopupViewModel? {
         didSet {
             guard let model = model else {
                 return
@@ -186,18 +186,18 @@ public class PopupConsentView: UIView {
     // MARK: - Private actions
 
     @objc private func bottomRightButtonTapped(button: Button) {
-        delegate?.popupConsentView(self, didSelectBottomRightButton: button)
+        delegate?.popupView(self, didSelectBottomRightButton: button)
     }
 
     @objc private func bottomLeftButtonTapped(button: Button) {
-        delegate?.popupConsentView(self, didSelectBottomLeftButton: button)
+        delegate?.popupView(self, didSelectBottomLeftButton: button)
     }
 
     @objc private func topRightButtonTapped(button: Button) {
-        delegate?.popupConsentView(self, didSelectTopRightButton: button)
+        delegate?.popupView(self, didSelectTopRightButton: button)
     }
 
     @objc private func linkButtonTapped(button: Button) {
-        delegate?.popupConsentView(self, didSelectLinkButton: button)
+        delegate?.popupView(self, didSelectLinkButton: button)
     }
 }

@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol PopupConsentViewModel {
+public protocol PopupViewModel {
     var yesButtonTitle: String { get }
     var noButtonTitle: String { get }
     var cancelButtonTitle: String? { get }

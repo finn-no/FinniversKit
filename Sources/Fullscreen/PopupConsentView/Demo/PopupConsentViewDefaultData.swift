@@ -9,7 +9,7 @@ public enum PopupConsentDefaultData {
     case reccomendationsRejected
     case transparency
 
-    var model: PopupConsentViewModel {
+    var model: PopupViewModel {
         switch self {
         case .reccomendations:
             return PopupConsentViewDefaultData()
@@ -21,7 +21,7 @@ public enum PopupConsentDefaultData {
     }
 }
 
-struct PopupConsentViewDefaultData: PopupConsentViewModel {
+struct PopupConsentViewDefaultData: PopupViewModel {
     public var yesButtonTitle = "Ja, takk"
     public var noButtonTitle = "Nei takk"
     public var cancelButtonTitle: String? = "Spør senere"
@@ -33,7 +33,7 @@ struct PopupConsentViewDefaultData: PopupConsentViewModel {
     public init() {}
 }
 
-struct PopupConsentViewDefaultDataRejected: PopupConsentViewModel {
+struct PopupConsentViewDefaultDataRejected: PopupViewModel {
     public var yesButtonTitle = "Lukk"
     public var noButtonTitle = "Angre"
     public var cancelButtonTitle: String?
@@ -45,7 +45,7 @@ struct PopupConsentViewDefaultDataRejected: PopupConsentViewModel {
     public init() {}
 }
 
-struct PopupConsentViewTransparency: PopupConsentViewModel {
+struct PopupConsentViewTransparency: PopupViewModel {
     public var yesButtonTitle = "Jeg forstår"
     public var noButtonTitle = "Vis meg mer"
     public var cancelButtonTitle: String?

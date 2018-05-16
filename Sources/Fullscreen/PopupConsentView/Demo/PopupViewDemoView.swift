@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-public class PopupConsentViewDemoView: UIView {
+public class PopupViewDemoView: UIView {
     private let maxScreenSize = CGSize(width: 320, height: 480)
 
     private lazy var shadedBackgroundView: UIView = {
@@ -14,8 +14,8 @@ public class PopupConsentViewDemoView: UIView {
         return view
     }()
 
-    private lazy var consentView: PopupConsentView = {
-        let view = PopupConsentView(frame: .zero)
+    private lazy var consentView: PopupView = {
+        let view = PopupView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .milk
         view.layer.cornerRadius = 8

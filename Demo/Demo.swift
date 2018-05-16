@@ -242,7 +242,7 @@ enum FullscreenViews: String {
         case .emptyView:
             return ViewController<EmptyViewDemoView>()
         case .popupConsentView:
-            return ViewController<PopupConsentViewDemoView>()
+            return ViewController<PopupViewDemoView>()
         }
     }
 }
