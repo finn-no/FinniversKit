@@ -9,6 +9,8 @@ public class FinniversKit {
     static var bundle: Bundle {
         return Bundle(for: FinniversKit.self)
     }
+
+    public static var isDynamicTypeEnabled: Bool = true
 }
 
 public extension Bundle {
