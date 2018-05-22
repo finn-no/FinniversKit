@@ -61,7 +61,7 @@ struct PopupConsentViewTransparency: PopupViewModel {
         let firstParagraph = NSAttributedString(string: "Hei! For å gjøre FINN bedre samler vi inn informasjon fra alle dere som besøker oss. Vi bruker personlig informasjon og data for å:\n\n")
         let bulletPointArray: [String] = ["Kunne gi deg relevante anbefalinger og tips", "Sørge for at tjenesten FINN fungerer så bra som mulig", "Sikre at FINN er trygg plass å handle på"]
         let secondParagraph = NSAttributedString.makeBulletPointFrom(stringList: bulletPointArray, font: .detail, paragraphSpacing: .smallSpacing)
-        let thirdParagraph = NSAttributedString(string: "\nNår du bruker FINN er Schibsted Norge (eieren vår) behandlingsansvarlig for påloggingsløsning og reklame, mens FINN er behandlingsansvarlig for det øvrige innholdet. Både FINN og Schibsted Norge behandler data om deg.")
+        let thirdParagraph = NSAttributedString(string: "\n\nNår du bruker FINN er Schibsted Norge (eieren vår) behandlingsansvarlig for påloggingsløsning og reklame, mens FINN er behandlingsansvarlig for det øvrige innholdet. Både FINN og Schibsted Norge behandler data om deg.")
         mutableAttributedString.append(firstParagraph)
         mutableAttributedString.append(secondParagraph)
         mutableAttributedString.append(thirdParagraph)
