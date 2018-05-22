@@ -5,10 +5,12 @@
 import Foundation
 
 /// Class for referencing the framework bundle
-public class FinniversKit {
+@objc public class FinniversKit: NSObject {
     static var bundle: Bundle {
         return Bundle(for: FinniversKit.self)
     }
+
+    @objc public static var isDynamicTypeEnabled: Bool = true
 }
 
 public extension Bundle {
