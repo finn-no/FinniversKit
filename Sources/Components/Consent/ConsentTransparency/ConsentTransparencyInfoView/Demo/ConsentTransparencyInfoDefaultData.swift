@@ -17,14 +17,9 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
 
     public var usageIntro2Text = "Levere den tjenesten du forventer av oss"
 
-    public var usageBulletPointsText: [String] {
-        return [
-            "Annonsering, annonsevisninger og mulighet for å kontakte annonsør",
-            "Meldingsutveksling",
-            "Søk og varslinger",
-            "Gi en best mulig tjeneste til deg, gjennom å tilpasse innholdet vårt. For eksempel ved å vektlegge søketreff nær der du bor.",
-            "Anbefale innhold vi tror er interessant for deg. Dette innholdet kan vi vise på FINN, eller på andre nettsteder.",
-        ]
+    public var usageBulletPointsText: NSAttributedString {
+        let bulletPoints = ["Annonsering, annonsevisninger og mulighet for å kontakte annonsør", "Meldingsutveksling", "Søk og varslinger", "Gi en best mulig tjeneste til deg, gjennom å tilpasse innholdet vårt. For eksempel ved å vektlegge søketreff nær der du bor.", "Anbefale innhold vi tror er interessant for deg. Dette innholdet kan vi vise på FINN, eller på andre nettsteder."]
+        return NSAttributedString.makeBulletPointFrom(stringList: bulletPoints, font: .body)
     }
 
     public var improveHeaderText = "Forbedre produktene våre"
@@ -43,11 +38,9 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
 
     public var usageSchibstedIntroText = "Schibsted Norge bruker data om deg og hva du gjør på FINN og andre Schibsted-tjenester primært for å"
 
-    public var usageSchibstedBulletPointsText: [String] {
-        return [
-            "Ivareta en trygg, enkel og effektiv påloggingstjeneste.",
-            "Gi deg relevant reklameinnhold fremfor tilfeldig reklame.",
-        ]
+    public var usageSchibstedBulletPointsText: NSAttributedString {
+        let bulletPoints = ["Ivareta en trygg, enkel og effektiv påloggingstjeneste.", "Gi deg relevant reklameinnhold fremfor tilfeldig reklame."]
+        return NSAttributedString.makeBulletPointFrom(stringList: bulletPoints, font: .body)
     }
 
     public var usageSchibstedButtonIntroWithSettingsText = "Du kan endre innstillingene dine eller lese Schibsted Norges personvernerklæring ved å trykke knappene under dette avsnittet."

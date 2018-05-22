@@ -10,7 +10,7 @@ public protocol ConsentTransparencyInfoViewModel {
     var usageHeaderText: String { get }
     var usageIntro1Text: String { get }
     var usageIntro2Text: String { get }
-    var usageBulletPointsText: [String] { get }
+    var usageBulletPointsText: NSAttributedString { get }
     var improveHeaderText: String { get }
     var improveIntroText: String { get }
     var improveButtonIntroWithSettingsText: String { get }
@@ -19,7 +19,7 @@ public protocol ConsentTransparencyInfoViewModel {
     var privacyFinnButtonTitle: String { get }
     var usageSchibstedHeaderText: String { get }
     var usageSchibstedIntroText: String { get }
-    var usageSchibstedBulletPointsText: [String] { get }
+    var usageSchibstedBulletPointsText: NSAttributedString { get }
     var usageSchibstedButtonIntroWithSettingsText: String { get }
     var usageSchibstedButtonIntroWithoutSettingsText: String { get }
     var settingsSchibstedButtonTitle: String { get }
