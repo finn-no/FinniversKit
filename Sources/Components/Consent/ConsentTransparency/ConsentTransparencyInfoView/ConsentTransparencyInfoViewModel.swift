@@ -25,9 +25,3 @@ public protocol ConsentTransparencyInfoViewModel {
     var settingsSchibstedButtonTitle: String { get }
     var privacySchibstedButtonTitle: String { get }
 }
-
-extension Array where Element == String {
-    func asBulletPoints() -> NSAttributedString {
-        return NSAttributedString.makeBulletPointFrom(stringList: self, font: .body, bullet: "\u{2022}", indentation: .mediumLargeSpacing, lineSpacing: .verySmallSpacing, paragraphSpacing: .mediumSpacing, textColor: .licorice, bulletColor: .licorice)
-    }
-}
