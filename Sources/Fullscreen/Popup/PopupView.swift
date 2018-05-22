@@ -124,7 +124,11 @@ public class PopupView: UIView {
                 linkButton.isHidden = true
             }
             descriptionTitleLabel.text = model.descriptionTitle
-            descriptionLabel.text = model.descriptionText
+            if let attributedString = model.attributedDescriptionText {
+                descriptionLabel.attributedText = attributedString
+            } else {
+                descriptionLabel.text = model.descriptionText
+            }
 
             imageView.image = model.image
         }
