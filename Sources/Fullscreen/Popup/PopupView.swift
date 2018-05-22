@@ -190,7 +190,7 @@ public class PopupView: UIView {
             linkButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             linkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
             buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
