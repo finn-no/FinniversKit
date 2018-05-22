@@ -109,6 +109,8 @@ public class PopupView: UIView {
 
             callToActionButton.setTitle(model.callToActionButtonTitle, for: .normal)
             alternativeActionButton.setTitle(model.alternativeActionButtonTitle, for: .normal)
+            descriptionTitleLabel.text = model.descriptionTitle
+            imageView.image = model.image
 
             if let topRightButtonTitle = model.dismissButtonTitle, topRightButtonTitle != "" {
                 dismissButton.isHidden = false
@@ -123,14 +125,12 @@ public class PopupView: UIView {
             } else {
                 linkButton.isHidden = true
             }
-            descriptionTitleLabel.text = model.descriptionTitle
+            
             if let attributedString = model.attributedDescriptionText {
                 descriptionLabel.attributedText = attributedString
             } else {
                 descriptionLabel.text = model.descriptionText
             }
-
-            imageView.image = model.image
         }
     }
 
