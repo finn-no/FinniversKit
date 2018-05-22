@@ -10,6 +10,18 @@ enum TabletDisplayMode {
     case fullscreen
 }
 
+public struct ContainmentOptions: OptionSet {
+    public let rawValue: Int
+
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+
+    public static let navigationController = ContainmentOptions(rawValue: 1 << 0)
+    public static let tabBarController = ContainmentOptions(rawValue: 1 << 1)
+    public static let all: ContainmentOptions = [.navigationController, .tabBarController]
+}
+
 enum Sections: String {
     case dna
     case components
@@ -67,7 +79,7 @@ enum Sections: String {
 
     static func viewController(for indexPath: IndexPath) -> UIViewController {
         let section = Sections.all[indexPath.section]
-        let viewController: UIViewController
+        var viewController: UIViewController
         switch section {
         case .dna:
             let selectedView = DnaViews.all[indexPath.row]
@@ -83,22 +95,34 @@ enum Sections: String {
             viewController = selectedView.viewController
         }
 
+        let sectionType = Sections.for(indexPath)
         switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return viewController
         case .pad:
-            let sectionType = Sections.for(indexPath)
             switch sectionType.tabletDisplayMode {
             case .master:
-                return SplitViewController(masterViewController: viewController)
+                viewController = SplitViewController(masterViewController: viewController)
             case .detail:
-                return SplitViewController(detailViewController: viewController)
-            case .fullscreen:
-                return viewController
+                viewController = SplitViewController(detailViewController: viewController)
+            default:
+                break
             }
         default:
-            fatalError("Not supported")
+            break
         }
+
+        let shouldIncludeNavigationController = Sections.contaimentOptions(for: indexPath)?.contains(.navigationController) ?? false
+        if shouldIncludeNavigationController {
+            viewController = UINavigationController(rootViewController: viewController)
+        }
+
+        let shouldIncludeTabBarController = Sections.contaimentOptions(for: indexPath)?.contains(.tabBarController) ?? false
+        if shouldIncludeTabBarController {
+            let tabBarController = UITabBarController()
+            tabBarController.viewControllers = [viewController]
+            viewController = tabBarController
+        }
+
+        return viewController
     }
 
     var tabletDisplayMode: TabletDisplayMode {
@@ -107,6 +131,24 @@ enum Sections: String {
             return .fullscreen
         case .recycling:
             return .master
+        }
+    }
+
+    static func contaimentOptions(for indexPath: IndexPath) -> ContainmentOptions? {
+        let sectionType = Sections.for(indexPath)
+        switch sectionType {
+        case .dna, .fullscreen:
+            return nil
+        case .components:
+            let selected = ComponentViews.all[indexPath.row]
+            switch selected {
+            case .toast:
+                return .all
+            default:
+                return nil
+            }
+        case .recycling:
+            return nil
         }
     }
 }

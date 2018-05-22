@@ -105,7 +105,33 @@ public class ToastView: UIView {
     public required convenience init?(coder aDecoder: NSCoder) {
         self.init(style: .success)
     }
+}
 
+extension ToastView {
+    public func presentFromBottom(view: UIView, animateOffset: CGFloat, timeOut: Double? = nil) {
+        setupToastConstraint(for: view)
+
+        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
+        })
+        if let timeOut = timeOut {
+            dismissToast(after: timeOut)
+        }
+    }
+
+    public func dismissToast(after delay: Double = 0.0) {
+        // Uses asyncAfter instead of animate delay because then it can be dismissed by swipe before the timeout if needed
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
+            UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+                self.transform = CGAffineTransform.identity
+            }) { _ in
+                self.removeFromSuperview()
+            }
+        }
+    }
+}
+
+extension ToastView {
     private func setup() {
         isAccessibilityElement = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
@@ -162,28 +188,6 @@ public class ToastView: UIView {
         delegate?.didSwipeDown(on: self)
     }
 
-    public func presentFromBottom(view: UIView, animateOffset: CGFloat, timeOut: Double? = nil) {
-        setupToastConstraint(for: view)
-
-        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
-            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
-        })
-        if let timeOut = timeOut {
-            dismissToast(after: timeOut)
-        }
-    }
-
-    public func dismissToast(after delay: Double = 0.0) {
-        // Uses asyncAfter instead of animate delay because then it can be dismissed by swipe before the timeout if needed
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
-            UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
-                self.transform = CGAffineTransform.identity
-            }) { _ in
-                self.removeFromSuperview()
-            }
-        }
-    }
-
     private func setupToastConstraint(for view: UIView) {
         view.addSubview(self)
 
@@ -192,7 +196,7 @@ public class ToastView: UIView {
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: view.leadingAnchor),
             trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topAnchor.constraint(equalTo: view.bottomAnchor),
+            topAnchor.constraint(equalTo: view.compatibleBottomAnchor),
         ])
 
         view.layoutIfNeeded()
