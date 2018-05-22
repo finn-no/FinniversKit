@@ -125,7 +125,7 @@ public class PopupView: UIView {
             } else {
                 linkButton.isHidden = true
             }
-            
+
             if let attributedString = model.attributedDescriptionText {
                 descriptionLabel.attributedText = attributedString
             } else {
