@@ -25,7 +25,7 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
     public var finnSettingsButtonTitle = "Innstillinger på FINN"
     public var finnPrivacyButtonTitle = "Vår personvernerklæring"
 
-    public var schibstedHeaderText = "Hva bruker Schibsted dataen til?"
+    public var schibstedHeaderText = "Hva bruker Schibsted Norge dataen til?"
     public var schibstedIntroText = "Schibsted Norge bruker data om deg og hva du gjør på FINN og andre Schibsted-tjenester primært for å"
     public var schibstedBulletPointsText: NSAttributedString {
         let bulletPoints = [
