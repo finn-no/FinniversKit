@@ -109,6 +109,8 @@ public class PopupView: UIView {
 
             callToActionButton.setTitle(model.callToActionButtonTitle, for: .normal)
             alternativeActionButton.setTitle(model.alternativeActionButtonTitle, for: .normal)
+            descriptionTitleLabel.text = model.descriptionTitle
+            imageView.image = model.image
 
             if let topRightButtonTitle = model.dismissButtonTitle, topRightButtonTitle != "" {
                 dismissButton.isHidden = false
@@ -123,10 +125,12 @@ public class PopupView: UIView {
             } else {
                 linkButton.isHidden = true
             }
-            descriptionTitleLabel.text = model.descriptionTitle
-            descriptionLabel.text = model.descriptionText
 
-            imageView.image = model.image
+            if let attributedString = model.attributedDescriptionText {
+                descriptionLabel.attributedText = attributedString
+            } else {
+                descriptionLabel.text = model.descriptionText
+            }
         }
     }
 
@@ -173,11 +177,11 @@ public class PopupView: UIView {
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            descriptionTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumLargeSpacing),
+            descriptionTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumSpacing),
             descriptionTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             descriptionTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: .mediumSpacing),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -186,7 +190,7 @@ public class PopupView: UIView {
             linkButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             linkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
             buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
