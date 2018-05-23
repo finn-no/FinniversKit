@@ -16,7 +16,6 @@ extension UIImage {
 enum ImageAsset: String {
     case noImage = "NoImage"
     case spidLogo = "SpidLogo"
-    case consentViewImage1
     case error
     case important
     case remove

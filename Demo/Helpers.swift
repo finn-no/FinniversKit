@@ -10,64 +10,41 @@ extension String {
     }
 }
 
-extension IndexPath {
-    private static let lastSelectedRowKey = "lastSelectedRowKey"
-    private static let lastSelectedSectionKey = "lastSelectedSectionKey"
+struct State {
+    private static let lastSelectedIndexPathRowKey = "lastSelectedIndexPathRowKey"
+    private static let lastSelectedIndexPathSectionKey = "lastSelectedIndexPathSectionKey"
 
-    static var lastSelected: IndexPath? {
+    static var lastSelectedIndexPath: IndexPath? {
         get {
-            guard let row = UserDefaults.standard.object(forKey: lastSelectedRowKey) as? Int else { return nil }
-            guard let section = UserDefaults.standard.object(forKey: lastSelectedSectionKey) as? Int else { return nil }
+            guard let row = UserDefaults.standard.object(forKey: lastSelectedIndexPathRowKey) as? Int else { return nil }
+            guard let section = UserDefaults.standard.object(forKey: lastSelectedIndexPathSectionKey) as? Int else { return nil }
             return IndexPath(row: row, section: section)
         }
         set {
             if let row = newValue?.row {
-                UserDefaults.standard.set(row, forKey: lastSelectedRowKey)
+                UserDefaults.standard.set(row, forKey: lastSelectedIndexPathRowKey)
             } else {
-                UserDefaults.standard.removeObject(forKey: lastSelectedRowKey)
+                UserDefaults.standard.removeObject(forKey: lastSelectedIndexPathRowKey)
             }
 
             if let section = newValue?.section {
-                UserDefaults.standard.set(section, forKey: lastSelectedSectionKey)
+                UserDefaults.standard.set(section, forKey: lastSelectedIndexPathSectionKey)
             } else {
-                UserDefaults.standard.removeObject(forKey: lastSelectedSectionKey)
+                UserDefaults.standard.removeObject(forKey: lastSelectedIndexPathSectionKey)
             }
             UserDefaults.standard.synchronize()
         }
     }
-}
 
-class SplitViewController: UISplitViewController {
-    lazy var alternativeViewController: UIViewController = {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .milk
+    private static let shouldShowDismissInstructionsKey = "shouldShowDismissInstructions"
 
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
-        doubleTap.numberOfTapsRequired = 2
-        viewController.view.addGestureRecognizer(doubleTap)
-        return viewController
-    }()
-
-    convenience init(masterViewController: UIViewController) {
-        self.init(nibName: nil, bundle: nil)
-
-        viewControllers = [masterViewController, alternativeViewController]
-        setup()
-    }
-
-    convenience init(detailViewController: UIViewController) {
-        self.init(nibName: nil, bundle: nil)
-
-        viewControllers = [alternativeViewController, detailViewController]
-        setup()
-    }
-
-    func setup() {
-        preferredDisplayMode = .allVisible
-    }
-
-    @objc func didDoubleTap() {
-        IndexPath.lastSelected = nil
-        dismiss(animated: true, completion: nil)
+    static var shouldShowDismissInstructions: Bool {
+        get {
+            return UserDefaults.standard.object(forKey: shouldShowDismissInstructionsKey) as? Bool ?? true
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: shouldShowDismissInstructionsKey)
+            UserDefaults.standard.synchronize()
+        }
     }
 }

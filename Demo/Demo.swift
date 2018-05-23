@@ -146,6 +146,7 @@ enum ComponentViews: String {
     case toast
     case switchView
     case inlineConsent
+    case consentTransparencyInfo
 
     static var all: [ComponentViews] {
         return [
@@ -158,6 +159,7 @@ enum ComponentViews: String {
             .toast,
             .switchView,
             .inlineConsent,
+            .consentTransparencyInfo,
         ]
     }
 
@@ -181,6 +183,8 @@ enum ComponentViews: String {
             return ViewController<SwitchViewDemoView>()
         case .inlineConsent:
             return ViewController<InlineConsentDemoView>()
+        case .consentTransparencyInfo:
+            return ViewController<ConsentTransparencyInfoDemoView>()
         }
     }
 }
@@ -216,14 +220,14 @@ enum Recycling: String {
 
 enum FullscreenViews: String {
     case registerView
-    case consentView
+    case popupConsentView
     case emptyView
     case loginView
 
     static var all: [FullscreenViews] {
         return [
             .registerView,
-            .consentView,
+            .popupConsentView,
             .emptyView,
             .loginView,
         ]
@@ -237,8 +241,8 @@ enum FullscreenViews: String {
             return ViewController<LoginViewDemoView>()
         case .emptyView:
             return ViewController<EmptyViewDemoView>()
-        case .consentView:
-            return ViewController<ConsentViewDemoView>()
+        case .popupConsentView:
+            return ViewController<PopupViewDemoView>()
         }
     }
 }

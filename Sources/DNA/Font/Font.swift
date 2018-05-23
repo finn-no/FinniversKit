@@ -98,8 +98,12 @@ public extension UIFont {
 
     func scaledFont(forTextStyle textStyle: UIFontTextStyle) -> UIFont {
         if #available(iOS 11.0, *) {
-            let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
-            return fontMetrics.scaledFont(for: self)
+            if FinniversKit.isDynamicTypeEnabled {
+                let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
+                return fontMetrics.scaledFont(for: self)
+            } else {
+                return self
+            }
         } else {
             return self
         }
