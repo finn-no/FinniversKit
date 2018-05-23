@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FinniversKit'
-  s.version      = '0.3.1'
+  s.version      = '0.4.0'
   s.summary      = "FINN's iOS Components"
   s.author       = 'FINN.no'
   s.homepage     = 'https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system'
@@ -29,13 +29,12 @@ Pod::Spec.new do |s|
   s.source        = { :git => "https://github.com/finn-no/FinniversKit.git", :tag => s.version }
   s.requires_arc  = true
 
-  s.source_files  = 'Sources/', 'Sources/Extensions/Foundation', 'Sources/Extensions/UIKit/', 'Sources/Components/**/*.swift', 'Sources/Fullscreen/**/*.swift', 'Sources/DNA/**/*.swift', 'Sources/Protocols/'
-  s.resources     = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets'
+  s.source_files = 'Sources/*.swift', 'Sources/**/*.swift', 'Sources/**/**/*.swift'
+  s.resources    = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets'
   s.resource_bundles = {
       'FinniversKit' => ['Sources/Resources/*.xcassets', 'Sources/Resources/Fonts/*.ttf']
     }
-  s.exclude_files = 'Sources/Components/**/*DemoView.swift', 'Sources/Components/**/Demo/', '*DemoView.swift', 'Sources/Components/**/**/Demo/*.swift', '*Helpers.swift', 'Sources/DNA/**/Demo/*.swift'
-
+  s.exclude_files = 'Demo*.swift', '*Demo*.swift', 'Sources/**/**/Demo/*swift', 'Sources/**/**/**/Demo/*swift', 'Sources/Components/**/*DemoView.swift', 'Sources/Components/**/Demo/', '*DemoView.swift', 'Sources/Components/**/**/Demo/*.swift', '*Helpers.swift', 'Sources/DNA/**/Demo/*.swift'
 
   s.subspec 'DNA' do |sp|
   sp.source_files  = 'Sources', 'Sources/DNA/Color/Color.swift', 'Sources/DNA/Font/Font.swift', 'Sources/DNA/Spacing/Spacing.swift'
