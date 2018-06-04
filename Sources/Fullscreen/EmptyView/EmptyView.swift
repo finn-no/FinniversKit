@@ -259,7 +259,7 @@ public class EmptyView: UIView {
         delegate?.emptyView(self, didSelectActionButton: actionButton)
     }
 
-    @objc func userDidLongPress(_ gesture: UILongPressGestureRecognizer) {
+    @objc private func userDidLongPress(_ gesture: UILongPressGestureRecognizer) {
         if rectangleSnapBehavior != nil {
             removeAllSnapBehaviors()
         }
@@ -268,7 +268,7 @@ public class EmptyView: UIView {
         addAllSnapBehaviors()
     }
 
-    @objc func userHasTapped() {
+    @objc private func userHasTapped() {
         removeAllSnapBehaviors()
     }
 
