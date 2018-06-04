@@ -110,6 +110,12 @@ public class EmptyView: UIView {
         return itemBehavior
     }()
 
+    private var rectangleSnapBehavior: UISnapBehavior?
+    private var triangleSnapBehavior: UISnapBehavior?
+    private var roundedSquareSnapBehavior: UISnapBehavior?
+    private var circleSnapBehavior: UISnapBehavior?
+    private var squareSnapBehavior: UISnapBehavior?
+
     private lazy var motionManager: CMMotionManager = {
         let motionManager = CMMotionManager()
         motionManager.accelerometerUpdateInterval = 1 / 60
@@ -162,6 +168,12 @@ public class EmptyView: UIView {
 
     private func setup() {
         backgroundColor = .milk
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userHasTapped))
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(userDidLongPress))
+        longPressGesture.minimumPressDuration = 2.0
+        addGestureRecognizer(tapGesture)
+        addGestureRecognizer(longPressGesture)
 
         addSubview(rectangle)
         addSubview(triangle)
@@ -245,6 +257,49 @@ public class EmptyView: UIView {
 
     @objc private func performAction() {
         delegate?.emptyView(self, didSelectActionButton: actionButton)
+    }
+
+    @objc func userDidLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if rectangleSnapBehavior != nil {
+            removeAllSnapBehaviors()
+        }
+
+        setAllSnapBehaviors(to: gesture.location(in: self))
+        addAllSnapBehaviors()
+    }
+
+    @objc func userHasTapped() {
+        removeAllSnapBehaviors()
+    }
+
+    private func setAllSnapBehaviors(to point: CGPoint) {
+        rectangleSnapBehavior = UISnapBehavior(item: rectangle, snapTo: point)
+        triangleSnapBehavior = UISnapBehavior(item: triangle, snapTo: point)
+        roundedSquareSnapBehavior = UISnapBehavior(item: roundedSquare, snapTo: point)
+        circleSnapBehavior = UISnapBehavior(item: circle, snapTo: point)
+        squareSnapBehavior = UISnapBehavior(item: square, snapTo: point)
+    }
+
+    private func addAllSnapBehaviors() {
+        guard let rectangleSnapBehavior = rectangleSnapBehavior, let triangleSnapBehavior = triangleSnapBehavior, let roundedSquareSnapBehavior = roundedSquareSnapBehavior, let circleSnapBehavior = circleSnapBehavior, let squareSnapBehavior = squareSnapBehavior else {
+            return
+        }
+        animator.addBehavior(rectangleSnapBehavior)
+        animator.addBehavior(triangleSnapBehavior)
+        animator.addBehavior(roundedSquareSnapBehavior)
+        animator.addBehavior(circleSnapBehavior)
+        animator.addBehavior(squareSnapBehavior)
+    }
+
+    private func removeAllSnapBehaviors() {
+        guard let rectangleSnapBehavior = rectangleSnapBehavior, let triangleSnapBehavior = triangleSnapBehavior, let roundedSquareSnapBehavior = roundedSquareSnapBehavior, let circleSnapBehavior = circleSnapBehavior, let squareSnapBehavior = squareSnapBehavior else {
+            return
+        }
+        animator.removeBehavior(rectangleSnapBehavior)
+        animator.removeBehavior(triangleSnapBehavior)
+        animator.removeBehavior(roundedSquareSnapBehavior)
+        animator.removeBehavior(circleSnapBehavior)
+        animator.removeBehavior(squareSnapBehavior)
     }
 
     // MARK: - Accelerometer calculations
