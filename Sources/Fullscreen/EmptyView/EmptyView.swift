@@ -284,21 +284,37 @@ public class EmptyView: UIView {
     }
 
     private func addAllSnapBehaviors() {
-        if let rectangleSnapBehavior = rectangleSnapBehavior, let triangleSnapBehavior = triangleSnapBehavior, let roundedSquareSnapBehavior = roundedSquareSnapBehavior, let circleSnapBehavior = circleSnapBehavior, let squareSnapBehavior = squareSnapBehavior {
+        if let rectangleSnapBehavior = rectangleSnapBehavior {
             animator.addBehavior(rectangleSnapBehavior)
+        }
+        if let triangleSnapBehavior = triangleSnapBehavior {
             animator.addBehavior(triangleSnapBehavior)
+        }
+        if let roundedSquareSnapBehavior = roundedSquareSnapBehavior {
             animator.addBehavior(roundedSquareSnapBehavior)
+        }
+        if let circleSnapBehavior = circleSnapBehavior {
             animator.addBehavior(circleSnapBehavior)
+        }
+        if let squareSnapBehavior = squareSnapBehavior {
             animator.addBehavior(squareSnapBehavior)
         }
     }
 
     private func removeAllSnapBehaviors() {
-        if let rectangleSnapBehavior = rectangleSnapBehavior, let triangleSnapBehavior = triangleSnapBehavior, let roundedSquareSnapBehavior = roundedSquareSnapBehavior, let circleSnapBehavior = circleSnapBehavior, let squareSnapBehavior = squareSnapBehavior {
+        if let rectangleSnapBehavior = rectangleSnapBehavior {
             animator.removeBehavior(rectangleSnapBehavior)
+        }
+        if let triangleSnapBehavior = triangleSnapBehavior {
             animator.removeBehavior(triangleSnapBehavior)
+        }
+        if let roundedSquareSnapBehavior = roundedSquareSnapBehavior {
             animator.removeBehavior(roundedSquareSnapBehavior)
+        }
+        if let circleSnapBehavior = circleSnapBehavior {
             animator.removeBehavior(circleSnapBehavior)
+        }
+        if let squareSnapBehavior = squareSnapBehavior {
             animator.removeBehavior(squareSnapBehavior)
         }
     }
