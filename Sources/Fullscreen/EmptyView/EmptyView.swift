@@ -260,13 +260,13 @@ public class EmptyView: UIView {
     }
 
     // MARK: - Snap Behavior stuff
-    
+
     @objc private func userDidLongPress(_ gesture: UILongPressGestureRecognizer) {
         if rectangleSnapBehavior != nil {
             removeAllSnapBehaviors()
         }
-
-        setAllSnapBehaviors(to: gesture.location(in: self))
+        let touchPosition = gesture.location(in: self)
+        setAllSnapBehaviors(to: touchPosition)
         addAllSnapBehaviors()
     }
 
