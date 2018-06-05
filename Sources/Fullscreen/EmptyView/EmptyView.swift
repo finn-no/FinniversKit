@@ -170,10 +170,7 @@ public class EmptyView: UIView {
         backgroundColor = .milk
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userHasTapped))
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(userDidLongPress))
-        longPressGesture.minimumPressDuration = 2.0
         addGestureRecognizer(tapGesture)
-        addGestureRecognizer(longPressGesture)
 
         addSubview(rectangle)
         addSubview(triangle)
@@ -261,14 +258,6 @@ public class EmptyView: UIView {
 
     // MARK: - Snap Behavior stuff
 
-    @objc private func userDidLongPress(_ gesture: UILongPressGestureRecognizer) {
-        if rectangleSnapBehavior != nil, triangleSnapBehavior != nil, roundedSquareSnapBehavior != nil, circleSnapBehavior != nil, squareSnapBehavior != nil {
-            removeAllSnapBehaviors()
-        }
-        let touchPosition = gesture.location(in: self)
-        setAllSnapBehaviors(to: touchPosition)
-    }
-
     @objc private func userHasTapped() {
         removeAllSnapBehaviors()
     }
@@ -316,6 +305,24 @@ public class EmptyView: UIView {
         }
         if let squareSnapBehavior = squareSnapBehavior {
             animator.removeBehavior(squareSnapBehavior)
+        }
+    }
+
+    // MARK: 3D-touch
+
+    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            if traitCollection.forceTouchCapability == .available {
+                let normalizedTouch = touch.force / touch.maximumPossibleForce
+
+                if normalizedTouch >= 0.95 {
+                    if rectangleSnapBehavior != nil, triangleSnapBehavior != nil, roundedSquareSnapBehavior != nil, circleSnapBehavior != nil, squareSnapBehavior != nil {
+                        removeAllSnapBehaviors()
+                    }
+                    let touchPosition = touch.location(in: self)
+                    setAllSnapBehaviors(to: touchPosition)
+                }
+            }
         }
     }
 
