@@ -19,7 +19,9 @@ enum ImageAsset: String {
     case error
     case important
     case remove
-    case sparkParticle
+    case sparkParticle1
+    case sparkParticle2
+    case sparkParticle3
     case success
     case view
     case webview

@@ -161,7 +161,7 @@ public class EmptyView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     deinit {
         emitterLayer.removeFromSuperlayer()
     }
@@ -293,33 +293,50 @@ public class EmptyView: UIView {
 
     // MARK: - Emitter method
 
-    func setupEmitterLayer() {
+    private func setupEmitterLayer() {
         emitterLayer.frame = bounds
         emitterLayer.renderMode = kCAEmitterLayerAdditive
         layer.addSublayer(emitterLayer)
     }
 
-    func startEmitter(at position: CGPoint) {
+    private func startEmitter(at position: CGPoint) {
         emitterLayer.emitterPosition = position
 
         // Setup cells
-        let cell = CAEmitterCell()
-        cell.name = "cell"
-        cell.contents = UIImage(named: .sparkParticle).cgImage
-        cell.birthRate = 50
-        cell.lifetime = 0.2
-        cell.color = UIColor(red: 1.0, green: 0.5, blue: 0.1, alpha: 1).cgColor
-        cell.alphaSpeed = -0.6
-        cell.velocity = 50
-        cell.velocityRange = 300
-
-        cell.emissionRange = .pi * 2.0
-
+        let cell = makeEmitterCell()
         emitterLayer.emitterCells = [cell]
     }
 
-    func stopEmitter() {
+    private func stopEmitter() {
         emitterLayer.setValue(0, forKeyPath: "emitterCells.cell.birthRate")
+    }
+
+    private func makeEmitterCell() -> CAEmitterCell {
+        let cell = CAEmitterCell()
+        cell.name = "cell"
+        cell.contents = randomSparkImagePicker()
+        cell.birthRate = 150
+        cell.redRange = 0.5
+        cell.blueRange = 0.9
+        cell.greenRange = 0.9
+        cell.lifetime = 0.2
+        cell.color = UIColor(red: 1.0, green: 0.5, blue: 0.1, alpha: 1).cgColor
+        cell.alphaSpeed = -0.6
+        cell.velocity = 400
+        cell.velocityRange = 900
+        cell.emissionRange = .pi * 2.0
+
+        return cell
+    }
+
+    private func randomSparkImagePicker() -> CGImage {
+        let sparkImage1 = UIImage(named: .sparkParticle1)
+        let sparkImage2 = UIImage(named: .sparkParticle2)
+        let sparkImage3 = UIImage(named: .sparkParticle3)
+
+        let sparkImages = [sparkImage1, sparkImage2, sparkImage3]
+        let randomIndex = Int(arc4random_uniform(UInt32(sparkImages.count))) // Int.random(in: 0 ... sparkImages.count)
+        return sparkImages[randomIndex].cgImage!
     }
 }
 
@@ -327,6 +344,7 @@ public class EmptyView: UIView {
 
 extension EmptyView: UICollisionBehaviorDelegate {
     public func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
+        item1.
         startEmitter(at: p)
     }
 
