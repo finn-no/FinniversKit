@@ -328,7 +328,7 @@ public class EmptyView: UIView {
         }
     }
 
-    // MARK: - Motion Shake
+    // MARK: Motion Shake
 
     public override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
