@@ -160,6 +160,10 @@ public class EmptyView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
+    
+    deinit {
+        emitterLayer.removeFromSuperlayer()
+    }
 
     private func setup() {
         backgroundColor = .milk
