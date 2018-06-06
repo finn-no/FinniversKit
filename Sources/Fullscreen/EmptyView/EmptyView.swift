@@ -258,7 +258,7 @@ public class EmptyView: UIView {
         delegate?.emptyView(self, didSelectActionButton: actionButton)
     }
 
-    // MARK: - Snap Behavior stuff
+    // MARK: - Snap Behavior methods
 
     @objc private func userHasTapped() {
         removeAllSnapBehaviors()
