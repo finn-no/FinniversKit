@@ -117,6 +117,7 @@ public class EmptyView: UIView {
     }()
 
     private lazy var motionQueue = OperationQueue()
+    private var emitterLayer = CAEmitterLayer()
 
     private lazy var allShapes: [UIView] = {
         return [rectangle, triangle, roundedSquare, circle, square]
@@ -173,6 +174,7 @@ public class EmptyView: UIView {
         addSubview(messageLabel)
         addSubview(actionButton)
 
+        setupEmitterLayer()
         getAccelerometerData()
 
         NSLayoutConstraint.activate([
@@ -282,5 +284,13 @@ public class EmptyView: UIView {
                 self.gravity.gravityDirection = vector
             }
         })
+    }
+
+    // MARK: - Emitter method
+
+    func setupEmitterLayer() {
+        emitterLayer.frame = bounds
+        emitterLayer.renderMode = kCAEmitterLayerAdditive
+        layer.addSublayer(emitterLayer)
     }
 }
