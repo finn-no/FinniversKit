@@ -264,6 +264,14 @@ public class EmptyView: UIView {
         removeAllSnapBehaviors()
     }
 
+    @objc private func userHasLongPressed(gesture: UILongPressGestureRecognizer) {
+        if rectangleSnapBehavior != nil, triangleSnapBehavior != nil, roundedSquareSnapBehavior != nil, circleSnapBehavior != nil, squareSnapBehavior != nil {
+            removeAllSnapBehaviors()
+        }
+        let touchPosition = gesture.location(in: self)
+        setAllSnapBehaviors(to: touchPosition)
+    }
+
     private func setAllSnapBehaviors(to point: CGPoint) {
         rectangleSnapBehavior = UISnapBehavior(item: rectangle, snapTo: point)
         triangleSnapBehavior = UISnapBehavior(item: triangle, snapTo: point)
@@ -324,6 +332,10 @@ public class EmptyView: UIView {
                     let touchPosition = touch.location(in: self)
                     setAllSnapBehaviors(to: touchPosition)
                 }
+            } else {
+                let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(userHasLongPressed))
+                longPressGesture.minimumPressDuration = 2.5
+                addGestureRecognizer(longPressGesture)
             }
         }
     }
