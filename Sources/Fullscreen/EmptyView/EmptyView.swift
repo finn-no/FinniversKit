@@ -293,4 +293,28 @@ public class EmptyView: UIView {
         emitterLayer.renderMode = kCAEmitterLayerAdditive
         layer.addSublayer(emitterLayer)
     }
+
+    func startEmitter(at position: CGPoint) {
+        emitterLayer.emitterPosition = position
+
+        // Setup cells
+        let cell = CAEmitterCell()
+        cell.name = "cell"
+        cell.contents = UIImage(named: .sparkParticle).cgImage
+        cell.birthRate = 50
+        cell.lifetime = 0.2
+        cell.color = UIColor(red: 1.0, green: 0.5, blue: 0.1, alpha: 1).cgColor
+        cell.alphaSpeed = -0.6
+        cell.velocity = 50
+        cell.velocityRange = 300
+
+        cell.emissionRange = .pi * 2.0
+
+        emitterLayer.emitterCells = [cell]
+    }
+
+    func stopEmitter() {
+        emitterLayer.setValue(0, forKeyPath: "emitterCells.cell.birthRate")
+    }
+}
 }
