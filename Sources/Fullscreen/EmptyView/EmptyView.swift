@@ -97,6 +97,7 @@ public class EmptyView: UIView {
     private lazy var collision: UICollisionBehavior = {
         let collision = UICollisionBehavior(items: allShapes)
         collision.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsetsMake(-10000, 0, 0, 0))
+        collision.collisionDelegate = self
         return collision
     }()
 
@@ -321,4 +322,15 @@ public class EmptyView: UIView {
         emitterLayer.setValue(0, forKeyPath: "emitterCells.cell.birthRate")
     }
 }
+
+// MARK: - UICollisionBehaviorDelegate
+
+extension EmptyView: UICollisionBehaviorDelegate {
+    public func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
+        startEmitter(at: p)
+    }
+
+    public func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem) {
+        stopEmitter()
+    }
 }
