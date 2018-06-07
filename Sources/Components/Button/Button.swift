@@ -31,6 +31,7 @@ public class Button: UIButton {
     private func setup() {
         isAccessibilityElement = true
 
+        titleEdgeInsets = style.paddings
         contentEdgeInsets = style.margins
         titleLabel?.font = style.font
         layer.cornerRadius = cornerRadius
@@ -87,7 +88,7 @@ public class Button: UIButton {
         guard let titleWidth = titleWidth, let titleHeight = titleHeight else {
             return CGSize.zero
         }
-        let buttonSize = CGSize(width: titleWidth + style.margins.left + style.margins.right, height: titleHeight + style.margins.top + style.margins.bottom)
+        let buttonSize = CGSize(width: titleWidth + style.margins.left + style.margins.right, height: titleHeight + style.margins.top + style.margins.bottom + style.paddings.top + style.paddings.bottom)
 
         return buttonSize
     }
