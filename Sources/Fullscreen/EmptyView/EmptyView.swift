@@ -342,7 +342,13 @@ public class EmptyView: UIView {
 
 extension EmptyView: UICollisionBehaviorDelegate {
     public func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
-        startEmitter(at: p)
+        let velocitySparkLimit: CGFloat = 500
+        let absoluteVelocityItem1 = sqrt(pow(itemBehavior.linearVelocity(for: item1).x, 2) + pow(itemBehavior.linearVelocity(for: item1).y, 2))
+        let absoluteVelocityItem2 = sqrt(pow(itemBehavior.linearVelocity(for: item2).x, 2) + pow(itemBehavior.linearVelocity(for: item2).y, 2))
+
+        if absoluteVelocityItem1 >= velocitySparkLimit || absoluteVelocityItem2 >= velocitySparkLimit {
+            startEmitter(at: p, with: max(absoluteVelocityItem1, absoluteVelocityItem2))
+        }
     }
 
     public func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem) {
