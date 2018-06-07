@@ -344,7 +344,6 @@ public class EmptyView: UIView {
 
 extension EmptyView: UICollisionBehaviorDelegate {
     public func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
-        item1.
         startEmitter(at: p)
     }
 
