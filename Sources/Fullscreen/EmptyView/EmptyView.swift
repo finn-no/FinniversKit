@@ -299,11 +299,11 @@ public class EmptyView: UIView {
         layer.addSublayer(emitterLayer)
     }
 
-    private func startEmitter(at position: CGPoint) {
+    private func startEmitter(at position: CGPoint, with velocity: CGFloat) {
         emitterLayer.emitterPosition = position
 
         // Setup cells
-        let cell = makeEmitterCell()
+        let cell = makeEmitterCell(with: velocity)
         emitterLayer.emitterCells = [cell]
     }
 
@@ -311,10 +311,10 @@ public class EmptyView: UIView {
         emitterLayer.setValue(0, forKeyPath: "emitterCells.cell.birthRate")
     }
 
-    private func makeEmitterCell() -> CAEmitterCell {
+    private func makeEmitterCell(with velocity: CGFloat) -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.name = "cell"
-        cell.contents = randomSparkImagePicker()
+        cell.contents = sparkImagePicker(for: velocity)
         cell.birthRate = 150
         cell.redRange = 0.5
         cell.blueRange = 0.9
