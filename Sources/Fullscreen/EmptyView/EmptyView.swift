@@ -329,14 +329,12 @@ public class EmptyView: UIView {
         return cell
     }
 
-    private func randomSparkImagePicker() -> CGImage {
-        let sparkImage1 = UIImage(named: .sparkParticle1)
-        let sparkImage2 = UIImage(named: .sparkParticle2)
-        let sparkImage3 = UIImage(named: .sparkParticle3)
-
-        let sparkImages = [sparkImage1, sparkImage2, sparkImage3]
-        let randomIndex = Int(arc4random_uniform(UInt32(sparkImages.count))) // Int.random(in: 0 ... sparkImages.count)
-        return sparkImages[randomIndex].cgImage!
+    private func sparkImagePicker(for velocity: CGFloat) -> CGImage {
+        switch velocity {
+        case 1000 ... 1499: return UIImage(named: .sparkParticle2).cgImage!
+        case 1500 ... .greatestFiniteMagnitude: return UIImage(named: .sparkParticle3).cgImage!
+        default: return UIImage(named: .sparkParticle1).cgImage!
+        }
     }
 }
 
