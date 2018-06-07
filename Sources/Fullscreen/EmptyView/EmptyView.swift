@@ -331,9 +331,12 @@ public class EmptyView: UIView {
 
     private func sparkImagePicker(for velocity: CGFloat) -> CGImage {
         switch velocity {
-        case 1000 ... 1499: return UIImage(named: .sparkParticle2).cgImage!
-        case 1500 ... .greatestFiniteMagnitude: return UIImage(named: .sparkParticle3).cgImage!
-        default: return UIImage(named: .sparkParticle1).cgImage!
+        case 1000 ..< 1800:
+            return UIImage(named: .sparkParticle2).cgImage!
+        case 1800 ... .greatestFiniteMagnitude:
+            return UIImage(named: .sparkParticle3).cgImage!
+        default:
+            return UIImage(named: .sparkParticle1).cgImage!
         }
     }
 }
