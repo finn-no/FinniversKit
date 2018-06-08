@@ -314,7 +314,7 @@ public class EmptyView: UIView {
     private func makeEmitterCell(with velocity: CGFloat) -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.name = "cell"
-        cell.contents = sparkImagePicker(for: velocity)
+        cell.contents = sparkImagePicker(for: velocity).cgImage
         cell.birthRate = 150
         cell.redRange = 0.5
         cell.blueRange = 0.9
@@ -329,14 +329,14 @@ public class EmptyView: UIView {
         return cell
     }
 
-    private func sparkImagePicker(for velocity: CGFloat) -> CGImage {
+    private func sparkImagePicker(for velocity: CGFloat) -> UIImage {
         switch velocity {
         case 1000 ..< 1800:
-            return UIImage(named: .sparkParticle2).cgImage!
+            return UIImage(named: .sparkParticle2)
         case 1800 ... .greatestFiniteMagnitude:
-            return UIImage(named: .sparkParticle3).cgImage!
+            return UIImage(named: .sparkParticle3)
         default:
-            return UIImage(named: .sparkParticle1).cgImage!
+            return UIImage(named: .sparkParticle1)
         }
     }
 }
