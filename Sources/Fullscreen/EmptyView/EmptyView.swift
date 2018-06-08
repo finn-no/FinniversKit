@@ -314,13 +314,19 @@ public class EmptyView: UIView {
     private func makeEmitterCell(with velocity: CGFloat) -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.name = "cell"
+
+        // Lifespan stuff
+        cell.birthRate = 400
+        cell.lifetime = 0.2
+
+        // Visual stuff
         cell.contents = sparkImagePicker(for: velocity).cgImage
-        cell.birthRate = 150
         cell.redRange = 0.5
         cell.blueRange = 0.9
         cell.greenRange = 0.9
-        cell.lifetime = 0.2
         cell.color = UIColor(red: 1.0, green: 0.5, blue: 0.1, alpha: 1).cgColor
+
+        // Behavior stuff
         cell.alphaSpeed = -0.6
         cell.velocity = 400
         cell.velocityRange = 900
