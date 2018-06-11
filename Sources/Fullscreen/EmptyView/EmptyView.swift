@@ -349,6 +349,9 @@ public class EmptyView: UIView {
     }
 
     public override var canBecomeFirstResponder: Bool {
+        guard window != nil else {
+            return false
+        }
         return true
     }
 
