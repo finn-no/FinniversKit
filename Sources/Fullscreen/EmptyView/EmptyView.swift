@@ -342,7 +342,7 @@ public class EmptyView: UIView {
 
     // MARK: Motion Shake
 
-    public override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+    public override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             removeAllSnapBehaviors()
         }
