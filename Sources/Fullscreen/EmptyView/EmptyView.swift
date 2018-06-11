@@ -169,9 +169,6 @@ public class EmptyView: UIView {
     private func setup() {
         backgroundColor = .milk
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userHasTapped))
-        addGestureRecognizer(tapGesture)
-
         addSubview(rectangle)
         addSubview(triangle)
         addSubview(roundedSquare)
@@ -256,11 +253,7 @@ public class EmptyView: UIView {
         delegate?.emptyView(self, didSelectActionButton: actionButton)
     }
 
-    // MARK: - Snap Behavior methods
-
-    @objc private func userHasTapped() {
-        removeAllSnapBehaviors()
-    }
+    // MARK: - SnapBehavior methods
 
     @objc private func userHasLongPressed(gesture: UILongPressGestureRecognizer) {
         if rectangleSnapBehavior != nil, triangleSnapBehavior != nil, roundedSquareSnapBehavior != nil, circleSnapBehavior != nil, squareSnapBehavior != nil {
@@ -338,6 +331,8 @@ public class EmptyView: UIView {
         }
     }
 
+    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        removeAllSnapBehaviors()
     }
 
     // MARK: - Accelerometer calculations
