@@ -172,8 +172,6 @@ public class EmptyView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userHasTapped))
         addGestureRecognizer(tapGesture)
 
-        becomeFirstResponder()
-
         addSubview(rectangle)
         addSubview(triangle)
         addSubview(roundedSquare)
@@ -340,19 +338,6 @@ public class EmptyView: UIView {
         }
     }
 
-    // MARK: Motion Shake
-
-    public override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        if motion == .motionShake {
-            removeAllSnapBehaviors()
-        }
-    }
-
-    public override var canBecomeFirstResponder: Bool {
-        guard window != nil else {
-            return false
-        }
-        return true
     }
 
     // MARK: - Accelerometer calculations
