@@ -30,7 +30,7 @@ extension UIColor {
     }
 
     public class var sardine: UIColor {
-        return UIColor(r: 223, g: 228, b: 232)!
+        return UIColor(r: 195, g: 204, b: 217)!
     }
 
     public class var salmon: UIColor {
