@@ -19,7 +19,7 @@ public class AdsGridViewCell: UICollectionViewCell {
     private static let subtitleHeight: CGFloat = 17.0
     private static let subtitleTopMargin: CGFloat = 6.0
     private static let margin: CGFloat = 8.0
-    private static let cornerRadius: CGFloat = 2.0
+    private static let cornerRadius: CGFloat = 8.0
     private static let imageDescriptionHeight: CGFloat = 35.0
     private static let iconSize: CGFloat = 23.0
 
@@ -42,14 +42,14 @@ public class AdsGridViewCell: UICollectionViewCell {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .detail(.licorice))
+        let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
     }()
 
     private lazy var subtitleLabel: Label = {
-        let label = Label(style: .detail(.licorice))
+        let label = Label(style: .detail(.stone))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
