@@ -120,8 +120,8 @@ public class TextField: UIView {
 
     // MARK: - External properties
 
-    public lazy var textField: UITextField = {
-        let textField = UITextField()
+    public lazy var textField: FKTextField = {
+        let textField = FKTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.body
         textField.textColor = .licorice
@@ -380,5 +380,33 @@ extension TextField: UITextFieldDelegate {
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return delegate?.textField(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
+    }
+}
+
+// MARK: - FKTextField
+
+/**
+ This class exist for drawing and positioning overrides to make custom padding in text fields.
+
+ - note:
+ https://stackoverflow.com/questions/2694411/text-inset-for-uitextfield
+ https://medium.com/@lawrey/swift-3-add-padding-to-uitextfield-40288b0a57f5
+
+ */
+
+public class FKTextField: UITextField {
+    public override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return UIEdgeInsetsInsetRect(bounds,
+                                     UIEdgeInsetsMake(5, 0, 5, .mediumSpacing))
+    }
+
+    public override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return UIEdgeInsetsInsetRect(bounds,
+                                     UIEdgeInsetsMake(5, 0, 5, 0))
+    }
+
+    public override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return UIEdgeInsetsInsetRect(bounds,
+                                     UIEdgeInsetsMake(5, 0, 5, .largeSpacing))
     }
 }
