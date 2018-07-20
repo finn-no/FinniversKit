@@ -61,7 +61,7 @@ public class PopupView: UIView {
     }()
 
     private lazy var descriptionLabel: Label = {
-        let label = Label(style: .detail(.licorice))
+        let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
