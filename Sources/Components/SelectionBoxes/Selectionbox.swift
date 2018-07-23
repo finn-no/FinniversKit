@@ -50,7 +50,8 @@ public protocol SelectionboxDelegate: class {
 public class Selectionbox: UIView {
     public var unselectedImage: UIImage? {
         didSet {
-            for item in stack.arrangedSubviews as! [SelectionboxItem] {
+            guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
+            for item in items {
                 item.imageView.image = unselectedImage
             }
         }
@@ -58,7 +59,8 @@ public class Selectionbox: UIView {
 
     public var unselectedAnimationImages: [UIImage]? {
         didSet {
-            for item in stack.arrangedSubviews as! [SelectionboxItem] {
+            guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
+            for item in items {
                 item.imageView.animationImages = unselectedAnimationImages
                 if let unselected = unselectedAnimationImages {
                     item.imageView.unselectedDuration = Double(unselected.count) / 60.0
@@ -69,7 +71,8 @@ public class Selectionbox: UIView {
 
     public var selectedImage: UIImage? {
         didSet {
-            for item in stack.arrangedSubviews as! [SelectionboxItem] {
+            guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
+            for item in items {
                 item.imageView.highlightedImage = selectedImage
             }
         }
@@ -77,7 +80,8 @@ public class Selectionbox: UIView {
 
     public var selectedAnimationImages: [UIImage]? {
         didSet {
-            for item in stack.arrangedSubviews as! [SelectionboxItem] {
+            guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
+            for item in items {
                 item.imageView.highlightedAnimationImages = selectedAnimationImages
                 if let selected = selectedAnimationImages {
                     item.imageView.selectedDuration = Double(selected.count) / 60.0

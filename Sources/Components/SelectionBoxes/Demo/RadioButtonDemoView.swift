@@ -18,8 +18,6 @@ class RadioButtonDemoView: UIView {
         return box
     }()
 
-    private var touchEnabled = false
-
     override init(frame: CGRect) {
         super.init(frame: frame)
 
