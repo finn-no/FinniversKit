@@ -21,8 +21,10 @@ class RadioButtonDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        let radiobuttonSelected = UIImage.animatedImageNamed("radiobutton-selected-", duration: 41 / 60.0)
-        let radiobuttonUnselected = UIImage.animatedImageNamed("radiobutton-unselected-", duration: 10 / 60.0)
+        let framesPerSecond = 60.0
+
+        let radiobuttonSelected = UIImage.animatedImageNamed("radiobutton-selected-", duration: 41 / framesPerSecond)
+        let radiobuttonUnselected = UIImage.animatedImageNamed("radiobutton-unselected-", duration: 10 / framesPerSecond)
 
         radioButton.selectedImage = radiobuttonSelected?.images?.last
         radioButton.selectedAnimationImages = radiobuttonSelected?.images

@@ -10,12 +10,15 @@ import UIKit
  current frame of the cancelled animation **/
 
 class AnimatedImageView: UIImageView {
+    
+    // MARK: Static properties
+    
+    static var framesPerSecond = 60.0
 
     // MARK: Internal properties
 
     var selectedDuration = 0.0
     var unselectedDuration = 0.0
-    var framesPerSecond = 60.0
 
     // MARK: Private properties
 
@@ -27,6 +30,8 @@ class AnimatedImageView: UIImageView {
     override init(frame: CGRect) {
         reverseImageView = UIImageView(frame: .zero)
         super.init(frame: frame)
+        
+        reverseImageView.isHidden = true
         addSubview(reverseImageView)
     }
 
@@ -44,7 +49,7 @@ class AnimatedImageView: UIImageView {
         // Get current animation frame
         guard let startTime = startTime else { return }
         let elapsedTime = CACurrentMediaTime() - startTime
-        let currentAnimationFrame = Int(framesPerSecond * elapsedTime)
+        let currentAnimationFrame = Int(AnimatedImageView.framesPerSecond * elapsedTime)
 
         guard let images = isHighlighted ? highlightedAnimationImages : animationImages else { return }
         guard currentAnimationFrame < images.count else { return }
@@ -56,7 +61,7 @@ class AnimatedImageView: UIImageView {
         reverseImageView.image = animationSequence.last
         reverseImageView.animationRepeatCount = 1
         reverseImageView.animationImages = Array(animationSequence)
-        reverseImageView.animationDuration = Double(animationSequence.count) / framesPerSecond
+        reverseImageView.animationDuration = Double(animationSequence.count) / AnimatedImageView.framesPerSecond
         reverseImageView.startAnimating()
     }
 

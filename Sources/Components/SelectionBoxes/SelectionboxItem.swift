@@ -5,6 +5,9 @@
 import UIKit
 
 public class SelectionboxItem: UIView {
+
+    // MARK: Internal properties
+
     let imageView: AnimatedImageView = {
         let view = AnimatedImageView(frame: .zero)
         view.contentMode = .scaleAspectFit
@@ -19,6 +22,8 @@ public class SelectionboxItem: UIView {
         return label
     }()
 
+    // MARK: Public properties
+
     public var index: Int
 
     public var text: String? {
@@ -30,6 +35,8 @@ public class SelectionboxItem: UIView {
             animateImage(selected: isSelected)
         }
     }
+
+    // MARK: Implementation
 
     public init(index: Int) {
         self.index = index
@@ -59,9 +66,9 @@ extension SelectionboxItem {
         addSubview(imageView)
         addSubview(label)
         NSLayoutConstraint.activate([
-            imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
+            imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: Spacing.mediumSpacing),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            label.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 16),
+            label.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: Spacing.mediumLargeSpacing),
             label.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }

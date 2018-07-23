@@ -25,8 +25,10 @@ class CheckboxDemoView: UIView {
         Selectionbox.appearance().font = .body
         Selectionbox.appearance().textColor = .licorice
 
-        let checkboxSelected = UIImage.animatedImageNamed("checkbox-selected-", duration: 20 / 60.0)
-        let checkboxUnselected = UIImage.animatedImageNamed("checkbox-unselected-", duration: 14 / 60.0)
+        let framesPerSecond = 60.0
+
+        let checkboxSelected = UIImage.animatedImageNamed("checkbox-selected-", duration: 20 / framesPerSecond)
+        let checkboxUnselected = UIImage.animatedImageNamed("checkbox-unselected-", duration: 14 / framesPerSecond)
 
         checkbox.selectedImage = checkboxSelected?.images?.last
         checkbox.selectedAnimationImages = checkboxSelected?.images
@@ -49,12 +51,12 @@ class CheckboxDemoView: UIView {
     }
 }
 
-extension CheckboxDemoView: SelectionboxDelegate {
-    func selectionbox(_ selectionbox: Selectionbox, didSelectItem item: SelectionboxItem) {
+extension CheckboxDemoView: CheckboxDelegate {
+    func checkbox(_ checkbox: Checkbox, didSelectItem item: SelectionboxItem) {
         print("Selected item index:", item.index)
     }
 
-    func selectionbox(_ selectionbox: Selectionbox, didUnselectItem item: SelectionboxItem) {
+    func checkbox(_ checkbox: Checkbox, didUnselectItem item: SelectionboxItem) {
         print("Did unselected item", item)
     }
 }
