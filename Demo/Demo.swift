@@ -190,9 +190,9 @@ enum ComponentViews: String {
         case .consentTransparencyInfo:
             return ViewController<ConsentTransparencyInfoDemoView>()
         case .checkbox:
-            return ViewController<CheckboxDemoView>()
+            return ViewController<CheckboxDemoView>(usingDoubleTap: false)
         case .radiobutton:
-            return ViewController<RadioButtonDemoView>()
+            return ViewController<RadioButtonDemoView>(usingDoubleTap: false)
         }
     }
 }
