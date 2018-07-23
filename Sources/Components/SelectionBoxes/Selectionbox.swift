@@ -7,18 +7,18 @@ import UIKit
 /* Selection box for selecting a single item */
 
 public protocol RadioButtonDelegate: class {
-    func radioButton(_ radioButton: RadioButton, didSelectItem item: SelectionboxItem)
-    func radioButton(_ radioButton: RadioButton, didUnselectItem item: SelectionboxItem)
+    func radioButton(_ radioButton: RadioButton, didSelectItem item: RadioButtonItem)
+    func radioButton(_ radioButton: RadioButton, didUnselectItem item: RadioButtonItem)
 }
 
 public class RadioButton: Selectionbox {
 
     // MARK: Public properties
 
-    public var selectedItem: SelectionboxItem?
+    public var selectedItem: RadioButtonItem?
     public weak var delegate: RadioButtonDelegate?
 
-    fileprivate override func handleSelecting(_ item: SelectionboxItem) {
+    fileprivate override func handleSelecting(_ item: RadioButtonItem) {
         selectedItem?.isSelected = false
 
         if item === selectedItem {
@@ -35,18 +35,18 @@ public class RadioButton: Selectionbox {
 /* Selection box for selecting multiple items */
 
 public protocol CheckboxDelegate: class {
-    func checkbox(_ checkbox: Checkbox, didSelectItem item: SelectionboxItem)
-    func checkbox(_ checkbox: Checkbox, didUnselectItem item: SelectionboxItem)
+    func checkbox(_ checkbox: Checkbox, didSelectItem item: CheckboxItem)
+    func checkbox(_ checkbox: Checkbox, didUnselectItem item: CheckboxItem)
 }
 
 public class Checkbox: Selectionbox {
 
     // MARK: Public properties
 
-    public var selectedItems: Set<SelectionboxItem> = []
+    public var selectedItems: Set<CheckboxItem> = []
     public weak var delegate: CheckboxDelegate?
 
-    fileprivate override func handleSelecting(_ item: SelectionboxItem) {
+    fileprivate override func handleSelecting(_ item: CheckboxItem) {
         item.isSelected = !item.isSelected
         if item.isSelected {
             let result = selectedItems.insert(item)

@@ -52,11 +52,11 @@ class CheckboxDemoView: UIView {
 }
 
 extension CheckboxDemoView: CheckboxDelegate {
-    func checkbox(_ checkbox: Checkbox, didSelectItem item: SelectionboxItem) {
+    func checkbox(_ checkbox: Checkbox, didSelectItem item: CheckboxItem) {
         print("Selected item index:", item.index)
     }
 
-    func checkbox(_ checkbox: Checkbox, didUnselectItem item: SelectionboxItem) {
+    func checkbox(_ checkbox: Checkbox, didUnselectItem item: CheckboxItem) {
         print("Did unselected item", item)
     }
 }

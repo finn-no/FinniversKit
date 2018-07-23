@@ -23,7 +23,7 @@ class RadioButtonDemoView: UIView {
 
         let framesPerSecond = 60.0
 
-        let radiobuttonSelected = UIImage.animatedImageNamed("radiobutton-selected-", duration: 41 / framesPerSecond)
+        let radiobuttonSelected = UIImage.animatedImageNamed("radiobutton-select-", duration: 13 / framesPerSecond)
         let radiobuttonUnselected = UIImage.animatedImageNamed("radiobutton-unselected-", duration: 10 / framesPerSecond)
 
         radioButton.selectedImage = radiobuttonSelected?.images?.last
