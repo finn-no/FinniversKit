@@ -30,21 +30,21 @@ class AnimatedImageView: UIImageView {
         super.stopAnimating()
         // Get current animation frame
         guard let startTime = startTime else { return }
-        let elapsed = CACurrentMediaTime() - startTime
-        let frame = Int(60.0 * elapsed)
+        let elapsedTime = CACurrentMediaTime() - startTime
+        let currentAnimationFrame = Int(60.0 * elapsedTime)
 
         guard let images = isHighlighted ? highlightedAnimationImages : animationImages else { return }
-        guard frame < images.count else { return }
+        guard currentAnimationFrame < images.count else { return }
 
-        let sequence = images[..<frame].reversed()
+        let animationSequence = images[..<currentAnimationFrame].reversed()
 
         let reverse = UIImageView(frame: bounds)
         addSubview(reverse)
 
-        reverse.image = sequence.last
+        reverse.image = animationSequence.last
         reverse.animationRepeatCount = 1
-        reverse.animationImages = Array(sequence)
-        reverse.animationDuration = Double(sequence.count) / 60.0
+        reverse.animationImages = Array(animationSequence)
+        reverse.animationDuration = Double(animationSequence.count) / 60.0
         reverse.startAnimating()
         reverseImageView = reverse
     }
