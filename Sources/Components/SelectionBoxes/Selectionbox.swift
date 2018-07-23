@@ -167,7 +167,7 @@ extension Selectionbox {
     private func setupBoxes(with strings: [String]) {
         for (i, string) in strings.enumerated() {
             let item = SelectionboxItem(index: i)
-            item.label.text = string
+            item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }
 

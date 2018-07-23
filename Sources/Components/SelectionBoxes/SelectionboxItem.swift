@@ -16,7 +16,7 @@ public class SelectionboxItem: UIView {
         return view
     }()
 
-    let label: UILabel = {
+    let titleLabel: UILabel = {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -27,7 +27,7 @@ public class SelectionboxItem: UIView {
     public var index: Int
 
     public var text: String? {
-        return label.text
+        return titleLabel.text
     }
 
     public var isSelected: Bool = false {
@@ -64,24 +64,24 @@ extension SelectionboxItem {
 
     private func setupSubviews() {
         addSubview(imageView)
-        addSubview(label)
+        addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: Spacing.mediumSpacing),
+            imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumSpacing),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            label.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: Spacing.mediumLargeSpacing),
-            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: .mediumLargeSpacing),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }
 }
 
 extension SelectionboxItem {
     @objc dynamic var textColor: UIColor {
-        get { return label.textColor }
-        set { label.textColor = newValue }
+        get { return titleLabel.textColor }
+        set { titleLabel.textColor = newValue }
     }
 
     @objc dynamic var font: UIFont {
-        get { return label.font }
-        set { label.font = newValue }
+        get { return titleLabel.font }
+        set { titleLabel.font = newValue }
     }
 }
