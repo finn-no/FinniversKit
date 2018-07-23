@@ -4,15 +4,53 @@
 
 import UIKit
 
-public protocol SelectionBoxDelegate: class {
-    func selectionbox(_ selectionbox: SelectionBox, didSelectItem item: SelectionBoxItem)
-    func selectionbox(_ selectionbox: SelectionBox, didUnselectItem item: SelectionBoxItem)
+/* Selection box for selecting a singel item */
+
+public class RadioButton: Selectionbox {
+    public var selectedItem: SelectionboxItem?
+
+    fileprivate override func handleSelecting(_ item: SelectionboxItem) {
+        selectedItem?.isSelected = false
+
+        if item === selectedItem {
+            selectedItem = nil
+            return
+        }
+
+        item.isSelected = true
+        selectedItem = item
+        delegate?.selectionbox(self, didSelectItem: item)
+    }
 }
 
-public class SelectionBox: UIView {
+/* Selection box for selecting multiple items */
+
+public class Checkbox: Selectionbox {
+    public var selectedItems: Set<SelectionboxItem> = []
+
+    fileprivate override func handleSelecting(_ item: SelectionboxItem) {
+        item.isSelected = !item.isSelected
+        if item.isSelected {
+            let result = selectedItems.insert(item)
+            if result.inserted { delegate?.selectionbox(self, didSelectItem: result.memberAfterInsert) }
+        } else {
+            guard let removedItem = selectedItems.remove(item) else { return }
+            delegate?.selectionbox(self, didUnselectItem: removedItem)
+        }
+    }
+}
+
+/* Base class for selections */
+
+public protocol SelectionboxDelegate: class {
+    func selectionbox(_ selectionbox: Selectionbox, didSelectItem item: SelectionboxItem)
+    func selectionbox(_ selectionbox: Selectionbox, didUnselectItem item: SelectionboxItem)
+}
+
+public class Selectionbox: UIView {
     public var unselectedImage: UIImage? {
         didSet {
-            for item in stack.arrangedSubviews as! [SelectionBoxItem] {
+            for item in stack.arrangedSubviews as! [SelectionboxItem] {
                 item.imageView.image = unselectedImage
             }
         }
@@ -20,7 +58,7 @@ public class SelectionBox: UIView {
 
     public var unselectedAnimationImages: [UIImage]? {
         didSet {
-            for item in stack.arrangedSubviews as! [SelectionBoxItem] {
+            for item in stack.arrangedSubviews as! [SelectionboxItem] {
                 item.imageView.animationImages = unselectedAnimationImages
                 if let unselected = unselectedAnimationImages {
                     item.imageView.unselectedDuration = Double(unselected.count) / 60.0
@@ -31,7 +69,7 @@ public class SelectionBox: UIView {
 
     public var selectedImage: UIImage? {
         didSet {
-            for item in stack.arrangedSubviews as! [SelectionBoxItem] {
+            for item in stack.arrangedSubviews as! [SelectionboxItem] {
                 item.imageView.highlightedImage = selectedImage
             }
         }
@@ -39,7 +77,7 @@ public class SelectionBox: UIView {
 
     public var selectedAnimationImages: [UIImage]? {
         didSet {
-            for item in stack.arrangedSubviews as! [SelectionBoxItem] {
+            for item in stack.arrangedSubviews as! [SelectionboxItem] {
                 item.imageView.highlightedAnimationImages = selectedAnimationImages
                 if let selected = selectedAnimationImages {
                     item.imageView.selectedDuration = Double(selected.count) / 60.0
@@ -53,14 +91,14 @@ public class SelectionBox: UIView {
         set { titleLabel.text = newValue }
     }
 
-    weak var delegate: SelectionBoxDelegate?
+    public weak var delegate: SelectionboxDelegate?
 
     // MARK: Private properties
 
-    private var highlightedItem: SelectionBoxItem?
+    private var highlightedItem: SelectionboxItem?
 
     private let titleLabel: UILabel = {
-        let label = Label(style: .body(.licorice))
+        let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -83,19 +121,19 @@ public class SelectionBox: UIView {
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
-        guard let item = hitTest(location, with: event) as? SelectionBoxItem else { return }
+        guard let item = hitTest(location, with: event) as? SelectionboxItem else { return }
         highlightedItem = item
     }
 
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
-        guard let item = hitTest(location, with: event) as? SelectionBoxItem else { return }
+        guard let item = hitTest(location, with: event) as? SelectionboxItem else { return }
         guard item === highlightedItem else { return }
         handleSelecting(item)
     }
 
-    public func handleSelecting(_ item: SelectionBoxItem) {
+    fileprivate func handleSelecting(_ item: SelectionboxItem) {
         fatalError("This class should not be used directly")
     }
 
@@ -104,10 +142,10 @@ public class SelectionBox: UIView {
     }
 }
 
-extension SelectionBox {
+extension Selectionbox {
     private func setupBoxes(with strings: [String]) {
-        for string in strings {
-            let item = SelectionBoxItem(frame: .zero)
+        for (i, string) in strings.enumerated() {
+            let item = SelectionboxItem(index: i)
             item.label.text = string
             stack.addArrangedSubview(item)
         }
@@ -127,14 +165,14 @@ extension SelectionBox {
     }
 }
 
-extension SelectionBox {
+extension Selectionbox {
     @objc public dynamic var textColor: UIColor {
-        get { return SelectionBoxItem.appearance().textColor }
-        set { SelectionBoxItem.appearance().textColor = newValue }
+        get { return SelectionboxItem.appearance().textColor }
+        set { SelectionboxItem.appearance().textColor = newValue }
     }
 
     @objc public dynamic var font: UIFont {
-        get { return SelectionBoxItem.appearance().font }
-        set { SelectionBoxItem.appearance().font = newValue }
+        get { return SelectionboxItem.appearance().font }
+        set { SelectionboxItem.appearance().font = newValue }
     }
 }

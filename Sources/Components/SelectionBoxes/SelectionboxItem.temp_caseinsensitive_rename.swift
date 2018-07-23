@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class SelectionBoxItem: UIView {
+public class SelectionboxItem: UIView {
     let imageView: AnimatedImageView = {
         let view = AnimatedImageView(frame: .zero)
         view.contentMode = .scaleAspectFit
@@ -35,7 +35,7 @@ public class SelectionBoxItem: UIView {
     }
 }
 
-extension SelectionBoxItem {
+extension SelectionboxItem {
     private func animateImage(selected: Bool) {
         if imageView.isAnimating {
             imageView.cancelAnimation()
@@ -60,7 +60,7 @@ extension SelectionBoxItem {
     }
 }
 
-extension SelectionBoxItem {
+extension SelectionboxItem {
     @objc dynamic var textColor: UIColor {
         get { return label.textColor }
         set { label.textColor = newValue }

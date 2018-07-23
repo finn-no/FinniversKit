@@ -26,6 +26,10 @@ class ViewController<View: UIView>: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
+        doubleTap.numberOfTapsRequired = 2
+        view.addGestureRecognizer(doubleTap)
+
         view.addSubview(playgroundView)
         view.backgroundColor = .milk
 
@@ -35,10 +39,6 @@ class ViewController<View: UIView>: UIViewController {
             playgroundView.topAnchor.constraint(equalTo: view.compatibleTopAnchor),
             playgroundView.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor),
         ])
-
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
-        doubleTap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(doubleTap)
     }
 
     @objc func didDoubleTap() {

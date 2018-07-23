@@ -9,14 +9,14 @@ import UIKit
  initial frame of the reverse animation will be the
  current frame of the cancelled animation */
 
-public class AnimatedImageView: UIImageView {
+class AnimatedImageView: UIImageView {
     private var startTime: TimeInterval?
     private var reverseImageView: UIImageView? // Used for reversing an animation
 
     var selectedDuration = 0.0
     var unselectedDuration = 0.0
 
-    public override func startAnimating() {
+    override func startAnimating() {
         if let reverse = reverseImageView {
             reverse.removeFromSuperview()
             reverseImageView = nil
@@ -26,7 +26,7 @@ public class AnimatedImageView: UIImageView {
         startTime = CACurrentMediaTime()
     }
 
-    public func cancelAnimation() {
+    func cancelAnimation() {
         super.stopAnimating()
         // Get current animation frame
         guard let startTime = startTime else { return }
