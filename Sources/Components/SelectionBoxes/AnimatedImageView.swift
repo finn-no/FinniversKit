@@ -10,9 +10,9 @@ import UIKit
  current frame of the cancelled animation **/
 
 class AnimatedImageView: UIImageView {
-    
+
     // MARK: Static properties
-    
+
     static var framesPerSecond = 60.0
 
     // MARK: Internal properties
@@ -30,7 +30,7 @@ class AnimatedImageView: UIImageView {
     override init(frame: CGRect) {
         reverseImageView = UIImageView(frame: .zero)
         super.init(frame: frame)
-        
+
         reverseImageView.isHidden = true
         addSubview(reverseImageView)
     }

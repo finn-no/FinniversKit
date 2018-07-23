@@ -161,9 +161,9 @@ public class Selectionbox: UIView {
 }
 
 extension Selectionbox {
-    
+
     // MARK: Private methods
-    
+
     private func setupBoxes(with strings: [String]) {
         for (i, string) in strings.enumerated() {
             let item = SelectionboxItem(index: i)
@@ -175,12 +175,12 @@ extension Selectionbox {
         addSubview(stack)
 
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: Spacing.mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Spacing.mediumSpacing),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
 
-            stack.leftAnchor.constraint(equalTo: leftAnchor, constant: Spacing.mediumLargeSpacing),
-            stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Spacing.mediumSpacing),
-            stack.rightAnchor.constraint(equalTo: rightAnchor, constant: -Spacing.mediumLargeSpacing),
+            stack.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
+            stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+            stack.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
             stack.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }

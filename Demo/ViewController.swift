@@ -66,7 +66,7 @@ class ViewController<View: UIView>: UIViewController {
             view.addSubview(button)
             NSLayoutConstraint.activate([
                 button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -64),
+                button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.veryLargeSpacing),
             ])
         }
     }
