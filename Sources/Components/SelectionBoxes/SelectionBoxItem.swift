@@ -14,7 +14,7 @@ public class SelectionBoxItem: UIView {
     }()
 
     let label: UILabel = {
-        let label = UILabel(frame: .zero)
+        let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -23,16 +23,6 @@ public class SelectionBoxItem: UIView {
         didSet {
             animateImage(selected: isSelected)
         }
-    }
-
-    @objc dynamic var textColor: UIColor {
-        get { return label.textColor }
-        set { label.textColor = newValue }
-    }
-
-    @objc dynamic var font: UIFont {
-        get { return label.font }
-        set { label.font = newValue }
     }
 
     override init(frame: CGRect) {
@@ -67,5 +57,17 @@ extension SelectionBoxItem {
             label.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 16),
             label.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
+    }
+}
+
+extension SelectionBoxItem {
+    @objc dynamic var textColor: UIColor {
+        get { return label.textColor }
+        set { label.textColor = newValue }
+    }
+
+    @objc dynamic var font: UIFont {
+        get { return label.font }
+        set { label.font = newValue }
     }
 }

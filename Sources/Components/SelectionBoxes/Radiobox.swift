@@ -7,7 +7,7 @@ import UIKit
 /* Selection box for selecting a singel item */
 
 public class Radiobox: SelectionBox {
-    weak var selectedItem: SelectionBoxItem?
+    var selectedItem: SelectionBoxItem?
 
     public override func handleSelecting(_ item: SelectionBoxItem) {
         selectedItem?.isSelected = false

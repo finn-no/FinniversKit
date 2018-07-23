@@ -60,8 +60,7 @@ public class SelectionBox: UIView {
     private var highlightedItem: SelectionBoxItem?
 
     private let titleLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.font = .body
+        let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -112,8 +111,10 @@ extension SelectionBox {
             item.label.text = string
             stack.addArrangedSubview(item)
         }
+
         addSubview(titleLabel)
         addSubview(stack)
+
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
