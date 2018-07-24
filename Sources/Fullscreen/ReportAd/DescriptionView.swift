@@ -30,6 +30,11 @@ class DescriptionView: UIView {
         }
     }
 
+    @discardableResult
+    override func resignFirstResponder() -> Bool {
+        return textView.resignFirstResponder()
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()

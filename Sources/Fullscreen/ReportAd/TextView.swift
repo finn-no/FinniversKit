@@ -43,6 +43,11 @@ public class TextView: UIView {
 
     weak var delegate: UITextViewDelegate?
 
+    @discardableResult
+    public override func resignFirstResponder() -> Bool {
+        return textView.resignFirstResponder()
+    }
+
     // MARK: - Setup
 
     override init(frame: CGRect) {
