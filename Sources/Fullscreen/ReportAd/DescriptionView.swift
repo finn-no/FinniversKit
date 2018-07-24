@@ -5,6 +5,9 @@
 import UIKit
 
 class DescriptionView: UIView {
+
+    // MARK: - Internal properties
+
     lazy var title: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = UIFont(name: FontType.light.rawValue, size: 18)
@@ -37,13 +40,15 @@ class DescriptionView: UIView {
         addSubview(textView)
 
         NSLayoutConstraint.activate([
-            title.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
-            title.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            title.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
+            title.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
 
-            textView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
-            textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 16),
-            textView.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
-            textView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            textView.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
+            textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: .mediumLargeSpacing),
+            textView.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
+            textView.heightAnchor.constraint(equalToConstant: 147),
+
+            bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing),
         ])
     }
 

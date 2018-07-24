@@ -184,7 +184,7 @@ extension Selectionbox {
             stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
             stack.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
 
-            bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: .mediumSpacing),
+            bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: .mediumLargeSpacing),
         ])
     }
 }

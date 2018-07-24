@@ -21,7 +21,7 @@ public class TextView: UIView {
 
     lazy var underLine: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = UIColor(red: 6 / 255, green: 190 / 255, blue: 251 / 255, alpha: 1.0)
+        view.backgroundColor = .secondaryBlue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -60,6 +60,7 @@ public class TextView: UIView {
         addSubview(underLine)
 
         NSLayoutConstraint.activate([
+            // Added 5 pts to align it with the text of the text view
             placeholderLabel.leftAnchor.constraint(equalTo: textView.leftAnchor, constant: textView.textContainerInset.left + 5),
             placeholderLabel.topAnchor.constraint(equalTo: textView.topAnchor, constant: textView.textContainerInset.top),
 
