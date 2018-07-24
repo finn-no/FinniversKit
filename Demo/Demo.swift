@@ -254,7 +254,7 @@ enum FullscreenViews: String {
         case .popupView:
             return ViewController<PopupViewDemoView>()
         case .reportAdView:
-            return ViewController<ReportAdDemoView>()
+            return ViewController<ReportAdDemoView>(usingDoubleTap: false)
         }
     }
 }

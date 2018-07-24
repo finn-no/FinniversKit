@@ -140,9 +140,10 @@
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
 		DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */; };
 		DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
-		DAA9A3B621021CC70021F7DC /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 		DAD0D48A210730200091DD4D /* ReportAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D489210730200091DD4D /* ReportAdView.swift */; };
 		DAD0D48E210731C60091DD4D /* ReportAdDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* ReportAdDemoView.swift */; };
+		DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
+		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1220,7 +1221,7 @@
 			files = (
 				DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */,
 				4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */,
-				DAA9A3B621021CC70021F7DC /* RadioboxAnimation.xcassets in Resources */,
+				DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */,
 				144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1236,6 +1237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */,
 				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
 				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
 				4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */,
