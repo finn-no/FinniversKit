@@ -230,10 +230,10 @@ public class TextField: UIView {
             textFieldBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            textField.topAnchor.constraint(equalTo: textFieldBackgroundView.topAnchor, constant: .mediumSpacing),
+            textField.topAnchor.constraint(equalTo: textFieldBackgroundView.topAnchor, constant: .mediumSpacing + .smallSpacing),
             textField.leadingAnchor.constraint(equalTo: textFieldBackgroundView.leadingAnchor, constant: .mediumSpacing),
             textField.trailingAnchor.constraint(equalTo: textFieldBackgroundView.trailingAnchor, constant: -.mediumSpacing),
-            textField.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: -.mediumSpacing),
+            textField.bottomAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: -.mediumSpacing + -.smallSpacing),
 
             underline.leadingAnchor.constraint(equalTo: leadingAnchor),
             underline.trailingAnchor.constraint(equalTo: trailingAnchor),

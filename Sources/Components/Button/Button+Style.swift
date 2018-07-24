@@ -14,7 +14,7 @@ public extension Button {
 
         var font: UIFont {
             switch self {
-            case .link: return .detail
+            case .link: return .caption
             default: return .title4
             }
         }
@@ -95,8 +95,15 @@ public extension Button {
 
         var margins: UIEdgeInsets {
             switch self {
+            case .link: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
+            default: return UIEdgeInsets(top: .mediumSpacing, left: .mediumLargeSpacing, bottom: .mediumSpacing, right: .mediumLargeSpacing)
+            }
+        }
+
+        var paddings: UIEdgeInsets {
+            switch self {
             case .link, .flat: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
-            default: return UIEdgeInsets(top: .mediumSpacing, left: .mediumSpacing, bottom: .mediumSpacing, right: .mediumSpacing)
+            default: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
             }
         }
     }

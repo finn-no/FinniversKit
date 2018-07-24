@@ -7,6 +7,7 @@ import UIKit
 
 public protocol EmptyViewDelegate: class {
     func emptyView(_ emptyView: EmptyView, didSelectActionButton button: Button)
+    func emptyView(_ emptyView: EmptyView, didMoveObjectView view: UIView)
 }
 
 public class EmptyView: UIView {
@@ -239,6 +240,7 @@ public class EmptyView: UIView {
             if let attach = attachable.attach {
                 animator.removeBehavior(attach)
                 itemBehavior.addLinearVelocity(sender.velocity(in: self), for: objectView)
+                delegate?.emptyView(self, didMoveObjectView: objectView)
             }
         }
     }

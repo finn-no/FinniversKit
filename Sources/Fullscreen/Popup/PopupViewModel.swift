@@ -10,6 +10,7 @@ public protocol PopupViewModel {
     var dismissButtonTitle: String? { get }
     var linkButtonTitle: String? { get }
     var descriptionTitle: String { get }
-    var descriptionText: String { get }
+    var descriptionText: String? { get }
+    var attributedDescriptionText: NSAttributedString? { get }
     var image: UIImage { get }
 }
