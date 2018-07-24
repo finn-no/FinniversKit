@@ -6,7 +6,9 @@ import UIKit
 
 class DescriptionView: UIView {
     lazy var title: UILabel = {
-        let label = Label(style: .title3)
+        let label = UILabel(frame: .zero)
+        label.font = UIFont(name: FontType.light.rawValue, size: 18)
+        label.textColor = .licorice
         label.text = "Beskrivelse"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

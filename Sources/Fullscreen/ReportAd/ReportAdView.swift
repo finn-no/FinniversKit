@@ -5,9 +5,9 @@
 import UIKit
 
 public class ReportAdView: UIView {
-    
+
     // MARK: - Private properties
-    
+
     private let fields = [
         "Mistanke om svindel",
         "Regebrudd",
@@ -40,7 +40,7 @@ public class ReportAdView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     // MARK: - Setup
 
     public override init(frame: CGRect) {
@@ -58,7 +58,7 @@ public class ReportAdView: UIView {
 
         setupSubviews()
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
