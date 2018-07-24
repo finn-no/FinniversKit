@@ -228,6 +228,7 @@ enum FullscreenViews: String {
     case popupView
     case emptyView
     case loginView
+    case reportAdView
 
     static var all: [FullscreenViews] {
         return [
@@ -236,6 +237,7 @@ enum FullscreenViews: String {
             .popupView,
             .emptyView,
             .loginView,
+            .reportAdView,
         ]
     }
 
@@ -251,6 +253,8 @@ enum FullscreenViews: String {
             return ViewController<EmptyViewDemoView>()
         case .popupView:
             return ViewController<PopupViewDemoView>()
+        case .reportAdView:
+            return ViewController<ReportAdDemoView>()
         }
     }
 }

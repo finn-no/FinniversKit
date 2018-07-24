@@ -141,6 +141,8 @@
 		DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */; };
 		DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
 		DAA9A3B621021CC70021F7DC /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
+		DAD0D48A210730200091DD4D /* ReportAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D489210730200091DD4D /* ReportAdView.swift */; };
+		DAD0D48E210731C60091DD4D /* ReportAdDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* ReportAdDemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,6 +301,8 @@
 		DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
 		DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadioboxAnimation.xcassets; sourceTree = "<group>"; };
+		DAD0D489210730200091DD4D /* ReportAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAdView.swift; sourceTree = "<group>"; };
+		DAD0D48C210731B60091DD4D /* ReportAdDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAdDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -815,6 +819,7 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				DAD0D48621072EDD0091DD4D /* ReportAd */,
 				447AFC0E20984B63000F793E /* Frontpage */,
 				44D9124A2077AC8A00486848 /* Popup */,
 				44D9124D2077AC8A00486848 /* Register */,
@@ -1054,6 +1059,23 @@
 			children = (
 				DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */,
 				DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		DAD0D48621072EDD0091DD4D /* ReportAd */ = {
+			isa = PBXGroup;
+			children = (
+				DAD0D48B210731A70091DD4D /* Demo */,
+				DAD0D489210730200091DD4D /* ReportAdView.swift */,
+			);
+			path = ReportAd;
+			sourceTree = "<group>";
+		};
+		DAD0D48B210731A70091DD4D /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				DAD0D48C210731B60091DD4D /* ReportAdDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1312,6 +1334,7 @@
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
 				447AFC1120984B6E000F793E /* FrontpageViewDemoView.swift in Sources */,
+				DAD0D48E210731C60091DD4D /* ReportAdDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1346,6 +1369,7 @@
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
+				DAD0D48A210730200091DD4D /* ReportAdView.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				44D912662077AC8A00486848 /* LoginView.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
