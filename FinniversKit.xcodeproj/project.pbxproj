@@ -134,6 +134,13 @@
 		AF91BB9F202C868E003E6366 /* BroadcastDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB98202C7F4D003E6366 /* BroadcastDemoView.swift */; };
 		AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
+		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
+		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
+		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
+		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
+		DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */; };
+		DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
+		DAA9A3B621021CC70021F7DC /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,6 +292,13 @@
 		AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Broadcast+Style.swift"; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
+		DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoView.swift; sourceTree = "<group>"; };
+		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
+		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
+		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
+		DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
+		DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
+		DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadioboxAnimation.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -607,6 +621,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
 				45B2E06B207E181C00C68B92 /* Consent */,
 				45D7C569204949B7000E788F /* Switch */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
@@ -1021,6 +1036,28 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
+		DAA9A3A2210214B80021F7DC /* SelectionBoxes */ = {
+			isa = PBXGroup;
+			children = (
+				DAA9A3B1210216110021F7DC /* Demo */,
+				DAA9A3A32102153F0021F7DC /* Selectionbox.swift */,
+				DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */,
+				DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */,
+				DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */,
+				DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */,
+			);
+			path = SelectionBoxes;
+			sourceTree = "<group>";
+		};
+		DAA9A3B1210216110021F7DC /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */,
+				DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1159,7 +1196,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */,
 				4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */,
+				DAA9A3B621021CC70021F7DC /* RadioboxAnimation.xcassets in Resources */,
 				144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1266,6 +1305,8 @@
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				44D912782077AD1800486848 /* LoginViewDemoView.swift in Sources */,
+				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
+				DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */,
 				4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */,
 				4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */,
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
@@ -1301,10 +1342,13 @@
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
+				DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
+				DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				44D912662077AC8A00486848 /* LoginView.swift in Sources */,
+				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
