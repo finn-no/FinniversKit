@@ -8,14 +8,14 @@ public class ReportAdView: UIView {
 
     // MARK: - Private properties
 
-    private let fields = [
+    private let radioButtonFields = [
         "Mistanke om svindel",
         "Regebrudd",
         "Forhandler opptrer som privat",
     ]
 
     private lazy var radioButton: RadioButton = {
-        let radioButton = RadioButton(strings: fields)
+        let radioButton = RadioButton(strings: radioButtonFields)
         radioButton.title = "Hva gjelder det?"
         radioButton.translatesAutoresizingMaskIntoConstraints = false
         return radioButton
