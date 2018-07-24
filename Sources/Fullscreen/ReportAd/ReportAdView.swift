@@ -5,6 +5,9 @@
 import UIKit
 
 public class ReportAdView: UIView {
+    
+    // MARK: - Private properties
+    
     private let fields = [
         "Mistanke om svindel",
         "Regebrudd",
@@ -17,6 +20,28 @@ public class ReportAdView: UIView {
         radioButton.translatesAutoresizingMaskIntoConstraints = false
         return radioButton
     }()
+
+    private lazy var seperationLine: UIView = {
+        let line = UIView(frame: .zero)
+        line.backgroundColor = .sardine
+        line.translatesAutoresizingMaskIntoConstraints = false
+        return line
+    }()
+
+    private lazy var descriptionView: DescriptionView = {
+        let descriptionView = DescriptionView(frame: .zero)
+        descriptionView.translatesAutoresizingMaskIntoConstraints = false
+        return descriptionView
+    }()
+
+    private lazy var helpButton: Button = {
+        let button = Button(style: .link)
+        button.setTitle("Trenger du hjelp?", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,18 +58,35 @@ public class ReportAdView: UIView {
 
         setupSubviews()
     }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private func setupSubviews() {
         addSubview(radioButton)
+        addSubview(seperationLine)
+        addSubview(descriptionView)
+        addSubview(helpButton)
+
         NSLayoutConstraint.activate([
             radioButton.leftAnchor.constraint(equalTo: leftAnchor),
             radioButton.topAnchor.constraint(equalTo: topAnchor),
             radioButton.rightAnchor.constraint(equalTo: rightAnchor),
             radioButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1 / 4),
-        ])
-    }
 
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+            seperationLine.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
+            seperationLine.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
+            seperationLine.topAnchor.constraint(equalTo: radioButton.bottomAnchor),
+            seperationLine.heightAnchor.constraint(equalToConstant: 1),
+
+            descriptionView.leftAnchor.constraint(equalTo: leftAnchor),
+            descriptionView.topAnchor.constraint(equalTo: seperationLine.bottomAnchor),
+            descriptionView.rightAnchor.constraint(equalTo: rightAnchor),
+            descriptionView.heightAnchor.constraint(equalToConstant: 220),
+
+            helpButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: .mediumLargeSpacing),
+            helpButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+        ])
     }
 }

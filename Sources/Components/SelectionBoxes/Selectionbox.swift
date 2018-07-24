@@ -176,12 +176,12 @@ extension Selectionbox {
 
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
 
             stack.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
             stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
             stack.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
-            stack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }
