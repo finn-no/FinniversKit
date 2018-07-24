@@ -148,7 +148,7 @@ enum ComponentViews: String {
     case inlineConsent
     case consentTransparencyInfo
     case checkbox
-    case radiobutton
+    case radioButton
 
     static var all: [ComponentViews] {
         return [
@@ -163,7 +163,7 @@ enum ComponentViews: String {
             .inlineConsent,
             .consentTransparencyInfo,
             .checkbox,
-            .radiobutton,
+            .radioButton,
         ]
     }
 
@@ -191,7 +191,7 @@ enum ComponentViews: String {
             return ViewController<ConsentTransparencyInfoDemoView>()
         case .checkbox:
             return ViewController<CheckboxDemoView>(usingDoubleTap: false)
-        case .radiobutton:
+        case .radioButton:
             return ViewController<RadioButtonDemoView>(usingDoubleTap: false)
         }
     }

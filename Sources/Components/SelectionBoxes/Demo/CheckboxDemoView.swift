@@ -22,9 +22,6 @@ class CheckboxDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        Selectionbox.appearance().font = .body
-        Selectionbox.appearance().textColor = .licorice
-
         let framesPerSecond = 60.0
 
         let checkboxSelected = UIImage.animatedImageNamed("checkbox-selected-", duration: 20 / framesPerSecond)
