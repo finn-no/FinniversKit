@@ -73,7 +73,7 @@ public class ReportAdView: UIView {
             radioButton.leftAnchor.constraint(equalTo: leftAnchor),
             radioButton.topAnchor.constraint(equalTo: topAnchor),
             radioButton.rightAnchor.constraint(equalTo: rightAnchor),
-            radioButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1 / 4),
+            //            radioButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1 / 4),
 
             seperationLine.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
             seperationLine.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
