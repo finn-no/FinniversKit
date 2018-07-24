@@ -98,6 +98,7 @@ public class EmptyView: UIView {
     private lazy var collision: UICollisionBehavior = {
         let collision = UICollisionBehavior(items: allShapes)
         collision.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsetsMake(-10000, 0, 0, 0))
+        collision.collisionDelegate = self
         return collision
     }()
 
@@ -118,6 +119,7 @@ public class EmptyView: UIView {
     }()
 
     private lazy var motionQueue = OperationQueue()
+    private var emitterLayer = CAEmitterLayer()
 
     private lazy var allShapes: [UIView] = {
         return [rectangle, triangle, roundedSquare, circle, square]
@@ -161,6 +163,10 @@ public class EmptyView: UIView {
         setup()
     }
 
+    deinit {
+        emitterLayer.removeFromSuperlayer()
+    }
+
     private func setup() {
         backgroundColor = .milk
 
@@ -174,6 +180,7 @@ public class EmptyView: UIView {
         addSubview(messageLabel)
         addSubview(actionButton)
 
+        setupEmitterLayer()
         getAccelerometerData()
 
         NSLayoutConstraint.activate([
@@ -284,5 +291,78 @@ public class EmptyView: UIView {
                 self.gravity.gravityDirection = vector
             }
         })
+    }
+
+    // MARK: - Emitter method
+
+    private func setupEmitterLayer() {
+        emitterLayer.frame = bounds
+        emitterLayer.renderMode = kCAEmitterLayerAdditive
+        layer.addSublayer(emitterLayer)
+    }
+
+    private func startEmitter(at position: CGPoint, with velocity: CGFloat) {
+        emitterLayer.emitterPosition = position
+
+        // Setup cells
+        let cell = makeEmitterCell(with: velocity)
+        emitterLayer.emitterCells = [cell]
+    }
+
+    private func stopEmitter() {
+        emitterLayer.setValue(0, forKeyPath: "emitterCells.cell.birthRate")
+    }
+
+    private func makeEmitterCell(with velocity: CGFloat) -> CAEmitterCell {
+        let cell = CAEmitterCell()
+        cell.name = "cell"
+
+        // Lifespan stuff
+        cell.birthRate = 400
+        cell.lifetime = 0.2
+
+        // Visual stuff
+        cell.contents = sparkImagePicker(for: velocity).cgImage
+        cell.redRange = 0.5
+        cell.blueRange = 0.9
+        cell.greenRange = 0.9
+        cell.color = UIColor(red: 1.0, green: 0.5, blue: 0.1, alpha: 1).cgColor
+
+        // Behavior stuff
+        cell.alphaSpeed = -0.6
+        cell.velocity = 400
+        cell.velocityRange = 900
+        cell.emissionRange = .pi * 2.0
+
+        return cell
+    }
+
+    private func sparkImagePicker(for velocity: CGFloat) -> UIImage {
+        switch velocity {
+        case 1000 ..< 1800:
+            return UIImage(named: .sparkParticle2)
+        case 1800 ... .greatestFiniteMagnitude:
+            return UIImage(named: .sparkParticle3)
+        default:
+            return UIImage(named: .sparkParticle1)
+        }
+    }
+}
+
+// MARK: - UICollisionBehaviorDelegate
+
+extension EmptyView: UICollisionBehaviorDelegate {
+    public func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
+        let velocitySparkLimit: CGFloat = 500
+        let absoluteVelocityItem1 = sqrt(pow(itemBehavior.linearVelocity(for: item1).x, 2) + pow(itemBehavior.linearVelocity(for: item1).y, 2))
+        let absoluteVelocityItem2 = sqrt(pow(itemBehavior.linearVelocity(for: item2).x, 2) + pow(itemBehavior.linearVelocity(for: item2).y, 2))
+
+        if absoluteVelocityItem1 >= velocitySparkLimit || absoluteVelocityItem2 >= velocitySparkLimit {
+            startEmitter(at: p, with: max(absoluteVelocityItem1, absoluteVelocityItem2))
+        }
+    }
+
+    public func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem) {
+        stopEmitter()
     }
 }
