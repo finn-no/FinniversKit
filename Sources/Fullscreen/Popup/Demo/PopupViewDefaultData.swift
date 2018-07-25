@@ -27,7 +27,8 @@ struct PopupConsentViewDefaultData: PopupViewModel {
     public var dismissButtonTitle: String? = "Spør senere"
     public var linkButtonTitle: String? = "Mer om anbefalinger"
     public var descriptionTitle = "Få personlige anbefalinger"
-    public var descriptionText = "Vi kan vise deg relevante FINN-annonser du ikke har sett. Da trenger vi å lagre dine søkevalg."
+    public var descriptionText: String? = "Vi kan vise deg relevante FINN-annonser du ikke har sett. Da trenger vi å lagre dine søkevalg."
+    public var attributedDescriptionText: NSAttributedString?
     public var image: UIImage = UIImage(named: "illustrasjonMedFarge")!
 
     public init() {}
@@ -39,7 +40,8 @@ struct PopupConsentViewDefaultDataRejected: PopupViewModel {
     public var dismissButtonTitle: String?
     public var linkButtonTitle: String?
     public var descriptionTitle = "Personlige anbefalinger er slått av"
-    public var descriptionText = "Vi vil ikke lenger tipse deg om relevante annonser du ikke sett."
+    public var descriptionText: String? = "Vi vil ikke lenger tipse deg om relevante annonser du ikke sett."
+    public var attributedDescriptionText: NSAttributedString?
     public var image: UIImage = UIImage(named: "illustrasjonUtenFarge")!
 
     public init() {}
@@ -47,12 +49,24 @@ struct PopupConsentViewDefaultDataRejected: PopupViewModel {
 
 struct PopupConsentViewTransparency: PopupViewModel {
     public var callToActionButtonTitle = "Jeg forstår"
-    public var alternativeActionButtonTitle = "Vis meg mer"
+    public var alternativeActionButtonTitle = "Les mer"
     public var dismissButtonTitle: String?
     public var linkButtonTitle: String?
-    public var descriptionTitle = "Din data, dine valg"
-    public var descriptionText = "FINN er en del av Schibsted Norge. Når du bruker FINN er Schibsted Norge behandlingsansvarlig for påloggingsløsning og reklame, mens FINN er behandlingsansvarlig for det øvrige innholdet i tjenesten vår. Både FINN og Schibsted Norge behandler data om deg.\n\nFINN bruker dine data til å tilpasse tjenestene til deg, mens Schibsted Norge i tillegg bruker dem til å gi deg mer relevante annonser. Persondata brukes også for å sikre at tjenestene er trygge og sikre for deg."
+    public var descriptionTitle = "Dine data, dine valg"
+    public var descriptionText: String?
     public var image: UIImage = UIImage(named: "consentTransparencyImage")!
+
+    public var attributedDescriptionText: NSAttributedString? {
+        let mutableAttributedString = NSMutableAttributedString()
+        let firstParagraph = NSAttributedString(string: "Hei! For å gjøre FINN bedre samler vi inn informasjon fra alle dere som besøker oss. Vi bruker personlig informasjon og data for å:\n\n")
+        let bulletPointArray: [String] = ["Kunne gi deg relevante anbefalinger og tips", "Sørge for at tjenesten FINN fungerer så bra som mulig", "Sikre at FINN er trygg plass å handle på"]
+        let secondParagraph = NSAttributedString.makeBulletPointFrom(stringList: bulletPointArray, font: .detail, paragraphSpacing: .verySmallSpacing)
+        let thirdParagraph = NSAttributedString(string: "\n\nNår du bruker FINN er Schibsted Norge (eieren vår) behandlingsansvarlig for påloggingsløsning og reklame, mens FINN er behandlingsansvarlig for det øvrige innholdet. Både FINN og Schibsted Norge behandler data om deg.")
+        mutableAttributedString.append(firstParagraph)
+        mutableAttributedString.append(secondParagraph)
+        mutableAttributedString.append(thirdParagraph)
+        return mutableAttributedString
+    }
 
     public init() {}
 }

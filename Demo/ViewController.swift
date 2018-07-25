@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
+import FinniversKit
 
 class ViewController<View: UIView>: UIViewController {
     lazy var playgroundView: View = {
@@ -23,6 +23,24 @@ class ViewController<View: UIView>: UIViewController {
         return true
     }
 
+    var usingDoubleTap: Bool
+
+    // Normal behaviour
+    init() {
+        usingDoubleTap = true
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    // Instantiate the view controller with a dismiss button
+    init(usingDoubleTap: Bool) {
+        self.usingDoubleTap = usingDoubleTap
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,9 +55,21 @@ class ViewController<View: UIView>: UIViewController {
             playgroundView.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor),
         ])
 
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
-        doubleTap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(doubleTap)
+        if usingDoubleTap {
+            let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
+            doubleTap.numberOfTapsRequired = 2
+            view.addGestureRecognizer(doubleTap)
+        } else {
+            let button = Button(style: .callToAction)
+            button.setTitle("Dismiss", for: .normal)
+            button.addTarget(self, action: #selector(didDoubleTap), for: .touchUpInside)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(button)
+            NSLayoutConstraint.activate([
+                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.veryLargeSpacing),
+            ])
+        }
     }
 
     @objc func didDoubleTap() {

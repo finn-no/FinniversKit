@@ -5,7 +5,7 @@
 import Foundation
 
 public extension NSAttributedString {
-    static func makeBulletPointFrom(stringList: [String], font: UIFont, bullet: String, indentation: CGFloat, lineSpacing: CGFloat, paragraphSpacing: CGFloat, textColor: UIColor, bulletColor: UIColor) -> NSAttributedString {
+    static func makeBulletPointFrom(stringList: [String], font: UIFont, bullet: String = "\u{2022}", indentation: CGFloat = .mediumLargeSpacing, lineSpacing: CGFloat = .verySmallSpacing, paragraphSpacing: CGFloat = .mediumSpacing, textColor: UIColor = .licorice, bulletColor: UIColor = .licorice) -> NSAttributedString {
         let textAttributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: textColor]
         let bulletAttributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: bulletColor]
 
