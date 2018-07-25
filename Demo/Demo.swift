@@ -21,10 +21,19 @@ public struct ContainmentOptions: OptionSet {
     public static let tabBarController = ContainmentOptions(rawValue: 1 << 1)
     public static let all: ContainmentOptions = [.navigationController, .tabBarController]
 
+
+    /// Attaches a navigation bar, a tab bar or both depending on what is returned here.
+    /// If you return nil the screen will have no containers.
+    ///
+    /// - Parameter indexPath: The component's index path
     init?(indexPath: IndexPath) {
         let sectionType = Sections.for(indexPath)
         switch sectionType {
-        case .dna, .fullscreen:
+        case .dna:
+            let _ = DnaViews.all[indexPath.row]
+            return nil
+        case .fullscreen:
+            let _ = FullscreenViews.all[indexPath.row]
             return nil
         case .components:
             let selected = ComponentViews.all[indexPath.row]
@@ -35,6 +44,7 @@ public struct ContainmentOptions: OptionSet {
                 return nil
             }
         case .recycling:
+            let _ = RecyclingViews.all[indexPath.row]
             return nil
         }
     }
@@ -239,12 +249,12 @@ enum ComponentViews: String {
     }
 }
 
-enum Recycling: String {
+enum RecyclingViews: String {
     case notificationsListView
     case marketsGridView
     case adsGridView
 
-    static var all: [Recycling] {
+    static var all: [RecyclingViews] {
         return [
             .notificationsListView,
             .marketsGridView,
