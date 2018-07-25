@@ -21,7 +21,6 @@ public struct ContainmentOptions: OptionSet {
     public static let tabBarController = ContainmentOptions(rawValue: 1 << 1)
     public static let all: ContainmentOptions = [.navigationController, .tabBarController]
 
-
     /// Attaches a navigation bar, a tab bar or both depending on what is returned here.
     /// If you return nil the screen will have no containers.
     ///
@@ -30,10 +29,10 @@ public struct ContainmentOptions: OptionSet {
         let sectionType = Sections.for(indexPath)
         switch sectionType {
         case .dna:
-            let _ = DnaViews.all[indexPath.row]
+            _ = DnaViews.all[indexPath.row]
             return nil
         case .fullscreen:
-            let _ = FullscreenViews.all[indexPath.row]
+            _ = FullscreenViews.all[indexPath.row]
             return nil
         case .components:
             let selected = ComponentViews.all[indexPath.row]
@@ -44,7 +43,7 @@ public struct ContainmentOptions: OptionSet {
                 return nil
             }
         case .recycling:
-            let _ = RecyclingViews.all[indexPath.row]
+            _ = RecyclingViews.all[indexPath.row]
             return nil
         }
     }
@@ -72,7 +71,7 @@ enum Sections: String {
         case .components:
             return ComponentViews.all.count
         case .recycling:
-            return Recycling.all.count
+            return RecyclingViews.all.count
         case .fullscreen:
             return FullscreenViews.all.count
         }
@@ -93,7 +92,7 @@ enum Sections: String {
         case .components:
             rawClassName = ComponentViews.all[indexPath.row].rawValue
         case .recycling:
-            rawClassName = Recycling.all[indexPath.row].rawValue
+            rawClassName = RecyclingViews.all[indexPath.row].rawValue
         case .fullscreen:
             rawClassName = FullscreenViews.all[indexPath.row].rawValue
         }
@@ -116,7 +115,7 @@ enum Sections: String {
             let selectedView = ComponentViews.all[indexPath.row]
             viewController = selectedView.viewController
         case .recycling:
-            let selectedView = Recycling.all[indexPath.row]
+            let selectedView = RecyclingViews.all[indexPath.row]
             viewController = selectedView.viewController
         case .fullscreen:
             let selectedView = FullscreenViews.all[indexPath.row]
