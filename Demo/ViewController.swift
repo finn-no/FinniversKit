@@ -46,7 +46,6 @@ class ViewController<View: UIView>: UIViewController {
 
         view.addSubview(playgroundView)
         view.backgroundColor = .milk
-        title = "Demo"
 
         NSLayoutConstraint.activate([
             playgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
