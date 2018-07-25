@@ -20,6 +20,24 @@ public struct ContainmentOptions: OptionSet {
     public static let navigationController = ContainmentOptions(rawValue: 1 << 0)
     public static let tabBarController = ContainmentOptions(rawValue: 1 << 1)
     public static let all: ContainmentOptions = [.navigationController, .tabBarController]
+
+    init?(indexPath: IndexPath) {
+        let sectionType = Sections.for(indexPath)
+        switch sectionType {
+        case .dna, .fullscreen:
+            return nil
+        case .components:
+            let selected = ComponentViews.all[indexPath.row]
+            switch selected {
+            case .toast:
+                self = .all
+            default:
+                return nil
+            }
+        case .recycling:
+            return nil
+        }
+    }
 }
 
 enum Sections: String {
@@ -110,12 +128,12 @@ enum Sections: String {
             break
         }
 
-        let shouldIncludeNavigationController = Sections.contaimentOptions(for: indexPath)?.contains(.navigationController) ?? false
+        let shouldIncludeNavigationController = ContainmentOptions(indexPath: indexPath)?.contains(.navigationController) ?? false
         if shouldIncludeNavigationController {
             viewController = UINavigationController(rootViewController: viewController)
         }
 
-        let shouldIncludeTabBarController = Sections.contaimentOptions(for: indexPath)?.contains(.tabBarController) ?? false
+        let shouldIncludeTabBarController = ContainmentOptions(indexPath: indexPath)?.contains(.tabBarController) ?? false
         if shouldIncludeTabBarController {
             let tabBarController = UITabBarController()
             tabBarController.viewControllers = [viewController]
@@ -131,24 +149,6 @@ enum Sections: String {
             return .fullscreen
         case .recycling:
             return .master
-        }
-    }
-
-    static func contaimentOptions(for indexPath: IndexPath) -> ContainmentOptions? {
-        let sectionType = Sections.for(indexPath)
-        switch sectionType {
-        case .dna, .fullscreen:
-            return nil
-        case .components:
-            let selected = ComponentViews.all[indexPath.row]
-            switch selected {
-            case .toast:
-                return .all
-            default:
-                return nil
-            }
-        case .recycling:
-            return nil
         }
     }
 }
