@@ -192,7 +192,7 @@ public class ToastView: UIView {
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: view.leadingAnchor),
             trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topAnchor.constraint(equalTo: view.bottomAnchor),
+            topAnchor.constraint(equalTo: view.compatibleBottomAnchor),
         ])
 
         view.layoutIfNeeded()
