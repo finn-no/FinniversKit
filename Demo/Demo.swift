@@ -32,8 +32,13 @@ public struct ContainmentOptions: OptionSet {
             _ = DnaViews.all[indexPath.row]
             return nil
         case .fullscreen:
-            _ = FullscreenViews.all[indexPath.row]
-            return nil
+            let screens = FullscreenViews.all[indexPath.row]
+            switch screens {
+            case .reportAdView:
+                self = .navigationController
+            default:
+                return nil
+            }
         case .components:
             let selected = ComponentViews.all[indexPath.row]
             switch selected {
