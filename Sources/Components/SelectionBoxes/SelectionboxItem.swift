@@ -22,6 +22,7 @@ public class SelectionboxItem: UIView {
 
     let titleLabel: UILabel = {
         let label = Label(style: .body(.licorice))
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -72,12 +73,13 @@ extension SelectionboxItem {
 
         NSLayoutConstraint.activate([
             // Make sure item is bigger than imageView height if title text is small
-            heightAnchor.constraint(greaterThanOrEqualTo: imageView.heightAnchor, multiplier: 1.0, constant: .mediumLargeSpacing),
             heightAnchor.constraint(greaterThanOrEqualTo: titleLabel.heightAnchor, multiplier: 1.0, constant: .mediumLargeSpacing),
+            titleLabel.heightAnchor.constraint(greaterThanOrEqualTo: imageView.heightAnchor, multiplier: 1.0),
             imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumSpacing),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: .mediumLargeSpacing),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }
