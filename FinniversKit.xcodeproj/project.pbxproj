@@ -1073,8 +1073,8 @@
 			children = (
 				DAD0D48B210731A70091DD4D /* Demo */,
 				DAD0D489210730200091DD4D /* ReportAdView.swift */,
-				DAD0D491210737A30091DD4D /* TextView.swift */,
 				DAD0D493210739500091DD4D /* DescriptionView.swift */,
+				DAD0D491210737A30091DD4D /* TextView.swift */,
 			);
 			path = ReportAd;
 			sourceTree = "<group>";

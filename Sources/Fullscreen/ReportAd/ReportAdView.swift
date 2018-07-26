@@ -30,6 +30,7 @@ public class ReportAdView: UIView {
 
     private lazy var descriptionView: DescriptionView = {
         let descriptionView = DescriptionView(frame: .zero)
+        descriptionView.delegate = self
         descriptionView.translatesAutoresizingMaskIntoConstraints = false
         return descriptionView
     }()
@@ -47,9 +48,17 @@ public class ReportAdView: UIView {
         content.translatesAutoresizingMaskIntoConstraints = false
         return content
     }()
-    
+
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(frame: .zero)
+        scrollView.alwaysBounceVertical = true
+        scrollView.keyboardDismissMode = .interactive
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
     // Used to scroll content view if needed when keyboard will appear
-    private var contentTopConstraint: NSLayoutConstraint!
+    private var currentTextViewFrame: CGRect = .null
 
     // MARK: - Setup
 
@@ -73,79 +82,89 @@ public class ReportAdView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     private func setupSubviews() {
         contentView.addSubview(radioButton)
         contentView.addSubview(seperationLine)
         contentView.addSubview(descriptionView)
         contentView.addSubview(helpButton)
-        addSubview(contentView)
-        
-        contentTopConstraint = contentView.topAnchor.constraint(equalTo: topAnchor)
-        
+        scrollView.addSubview(contentView)
+        addSubview(scrollView)
+
         NSLayoutConstraint.activate([
             radioButton.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             radioButton.topAnchor.constraint(equalTo: contentView.topAnchor),
             radioButton.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            
+
             seperationLine.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
             seperationLine.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
             seperationLine.topAnchor.constraint(equalTo: radioButton.bottomAnchor),
             seperationLine.heightAnchor.constraint(equalToConstant: 1),
-            
+
             descriptionView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             descriptionView.topAnchor.constraint(equalTo: seperationLine.bottomAnchor),
             descriptionView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            
+
             helpButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: .mediumLargeSpacing),
             helpButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            
+
             contentView.leftAnchor.constraint(equalTo: leftAnchor),
             contentView.rightAnchor.constraint(equalTo: rightAnchor),
-            contentTopConstraint,
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: helpButton.bottomAnchor, constant: .mediumLargeSpacing),
-            ])
+
+            scrollView.leftAnchor.constraint(equalTo: leftAnchor),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.rightAnchor.constraint(equalTo: rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
     }
-    
+
     private func registerKeyboardEvents() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
     }
-    
+
     // MARK: - Actions
 
     @objc func helpButtonPressed(sender: UIButton) {
-        descriptionView.resignFirstResponder()
+        print("Help button pressed")
     }
-    
+
+    @objc func handleGesture(gesture: UIGestureRecognizer) {
+        endEditing(true)
+    }
+
     // MARK: - Keyboard Events
 
     @objc func keyboardWillShow(notification: Notification) {
         print("Keyboard will show!")
         guard let keyboardSize = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
 
-        let overlap = keyboardSize.intersection(contentView.frame)
-        
+        let overlap = keyboardSize.intersection(convert(contentView.frame, to: UIScreen.main.coordinateSpace))
+
         if overlap != .null {
             guard let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
             guard let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt else { return }
 
             UIView.animate(withDuration: duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: curve), animations: {
-                self.contentTopConstraint.constant = -overlap.height
-                self.layoutIfNeeded()
+                self.scrollView.contentInset = UIEdgeInsets(top: -overlap.height, leading: 0, bottom: overlap.height, trailing: 0)
             })
         }
     }
 
     @objc func keyboardWillHide(notification: Notification) {
-        if contentTopConstraint.constant != 0 {
-            guard let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
-            guard let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt else { return }
+        scrollView.contentInset = .zero
+    }
+}
 
-            UIView.animate(withDuration: duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: curve), animations: {
-                self.contentTopConstraint.constant = 0
-                self.layoutIfNeeded()
-            })
-        }
+extension ReportAdView: TextViewDelegate {
+    func textView(_ textView: UITextView, willChangeSize size: CGSize) {
+        print("Will change size:", size)
+        scrollView.contentOffset.y += size.height
     }
 }

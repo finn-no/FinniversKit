@@ -4,6 +4,10 @@
 
 import UIKit
 
+protocol TextViewDelegate: UITextViewDelegate {
+    func textView(_ textView: UITextView, willChangeSize size: CGSize)
+}
+
 public class TextView: UIView {
 
     // MARK: - Internal properties
@@ -14,6 +18,7 @@ public class TextView: UIView {
         view.textColor = .licorice
         view.backgroundColor = .ice
         view.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        view.isScrollEnabled = false
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -41,12 +46,9 @@ public class TextView: UIView {
         }
     }
 
-    weak var delegate: UITextViewDelegate?
+    weak var delegate: TextViewDelegate?
 
-    @discardableResult
-    public override func resignFirstResponder() -> Bool {
-        return textView.resignFirstResponder()
-    }
+    private var heightConstraint: NSLayoutConstraint!
 
     // MARK: - Setup
 
@@ -64,6 +66,8 @@ public class TextView: UIView {
         addSubview(textView)
         addSubview(underLine)
 
+        heightConstraint = textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 147.0)
+
         NSLayoutConstraint.activate([
             // Added 5 pts to align it with the text of the text view
             placeholderLabel.leftAnchor.constraint(equalTo: textView.leftAnchor, constant: textView.textContainerInset.left + 5),
@@ -72,17 +76,19 @@ public class TextView: UIView {
             textView.leftAnchor.constraint(equalTo: leftAnchor),
             textView.topAnchor.constraint(equalTo: topAnchor),
             textView.rightAnchor.constraint(equalTo: rightAnchor),
-            textView.bottomAnchor.constraint(equalTo: underLine.topAnchor),
+            heightConstraint,
 
             underLine.leftAnchor.constraint(equalTo: leftAnchor),
-            underLine.bottomAnchor.constraint(equalTo: bottomAnchor),
+            underLine.topAnchor.constraint(equalTo: textView.bottomAnchor),
             underLine.rightAnchor.constraint(equalTo: rightAnchor),
             underLine.heightAnchor.constraint(equalToConstant: 2),
+
+            bottomAnchor.constraint(equalTo: underLine.bottomAnchor),
         ])
     }
 }
 
-// MARK: - TextView Delegate
+// MARK: - UITextView Delegate
 
 extension TextView: UITextViewDelegate {
     public func textViewDidBeginEditing(_ textView: UITextView) {
@@ -90,6 +96,11 @@ extension TextView: UITextViewDelegate {
     }
 
     public func textViewDidChange(_ textView: UITextView) {
+        if textView.contentSize.height - textView.frame.height > 0 {
+            delegate?.textView(textView, willChangeSize: CGSize(width: 0, height: textView.contentSize.height - textView.frame.height))
+            heightConstraint.constant = textView.contentSize.height
+        }
+
         delegate?.textViewDidChange?(textView)
 
         if textView.text.isEmpty {

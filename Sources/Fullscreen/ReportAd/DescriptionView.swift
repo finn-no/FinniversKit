@@ -24,15 +24,10 @@ class DescriptionView: UIView {
         return view
     }()
 
-    weak var delegate: UITextViewDelegate? {
+    weak var delegate: TextViewDelegate? {
         didSet {
             textView.delegate = delegate
         }
-    }
-
-    @discardableResult
-    override func resignFirstResponder() -> Bool {
-        return textView.resignFirstResponder()
     }
 
     override init(frame: CGRect) {
@@ -51,7 +46,6 @@ class DescriptionView: UIView {
             textView.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
             textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: .mediumLargeSpacing),
             textView.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
-            textView.heightAnchor.constraint(equalToConstant: 147),
 
             bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing),
         ])
