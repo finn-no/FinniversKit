@@ -42,6 +42,12 @@ public class ReportAdView: UIView {
         return button
     }()
 
+    private lazy var containerView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private lazy var contentView: UIView = {
         let content = UIView(frame: .zero)
         content.translatesAutoresizingMaskIntoConstraints = false
@@ -71,6 +77,7 @@ public class ReportAdView: UIView {
         radioButton.unselectedImage = radiobuttonUnselected?.images?.last
         radioButton.unselectedAnimationImages = radiobuttonUnselected?.images
 
+        NotificationCenter.default.removeObserver(self)
         registerKeyboardEvents()
         setupSubviews()
     }
@@ -92,31 +99,33 @@ public class ReportAdView: UIView {
         addSubview(scrollView)
 
         NSLayoutConstraint.activate([
-            scrollView.leftAnchor.constraint(equalTo: leftAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.rightAnchor.constraint(equalTo: rightAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
-            contentView.bottomAnchor.constraint(equalTo: helpButton.bottomAnchor, constant: .mediumLargeSpacing),
 
-            radioButton.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             radioButton.topAnchor.constraint(equalTo: contentView.topAnchor),
-            radioButton.widthAnchor.constraint(equalTo: widthAnchor),
+            radioButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            seperationLine.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
-            seperationLine.widthAnchor.constraint(equalTo: widthAnchor, constant: -.mediumLargeSpacing),
+            seperationLine.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            seperationLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             seperationLine.topAnchor.constraint(equalTo: radioButton.bottomAnchor),
             seperationLine.heightAnchor.constraint(equalToConstant: 1),
 
-            descriptionView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            descriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             descriptionView.topAnchor.constraint(equalTo: seperationLine.bottomAnchor),
-            descriptionView.widthAnchor.constraint(equalTo: widthAnchor),
+            descriptionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             helpButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: .mediumLargeSpacing),
             helpButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            helpButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.mediumLargeSpacing),
 
         ])
     }
@@ -139,21 +148,17 @@ public class ReportAdView: UIView {
         guard let keyboardSize = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
 
         let overlap = keyboardSize.intersection(convert(contentView.frame, to: UIScreen.main.coordinateSpace))
-        print("Overlap", overlap)
 
         if overlap != .null {
-//            scrollView.setContentOffset(CGPoint(x: 0, y: overlap.height), animated: false)
-            scrollView.contentInset = UIEdgeInsets(top: -overlap.height, leading: 0, bottom: 0, trailing: 0)
+            scrollView.contentInset = UIEdgeInsets(top: 0, leading: 0, bottom: keyboardSize.height + 32, trailing: 0)
+//            scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom)
+            scrollView.contentOffset = CGPoint(x: 0, y: overlap.height)
+            print(scrollView.contentOffset)
         }
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        print("content size", scrollView.contentSize)
-    }
-
     @objc func keyboardWillHide(notification: Notification) {
-        print("keyboard will hide")
+        print("Current offset:", scrollView.contentOffset)
         scrollView.contentInset = .zero
     }
 }
