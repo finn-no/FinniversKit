@@ -30,7 +30,6 @@ public class ReportAdView: UIView {
 
     private lazy var descriptionView: DescriptionView = {
         let descriptionView = DescriptionView(frame: .zero)
-        descriptionView.delegate = self
         descriptionView.translatesAutoresizingMaskIntoConstraints = false
         return descriptionView
     }()
@@ -56,9 +55,6 @@ public class ReportAdView: UIView {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
-
-    // Used to scroll content view if needed when keyboard will appear
-    private var currentTextViewFrame: CGRect = .null
 
     // MARK: - Setup
 
@@ -96,31 +92,32 @@ public class ReportAdView: UIView {
         addSubview(scrollView)
 
         NSLayoutConstraint.activate([
+            scrollView.leftAnchor.constraint(equalTo: leftAnchor),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.rightAnchor.constraint(equalTo: rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.widthAnchor.constraint(equalTo: widthAnchor),
+            contentView.bottomAnchor.constraint(equalTo: helpButton.bottomAnchor, constant: .mediumLargeSpacing),
+
             radioButton.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             radioButton.topAnchor.constraint(equalTo: contentView.topAnchor),
-            radioButton.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            radioButton.widthAnchor.constraint(equalTo: widthAnchor),
 
             seperationLine.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
-            seperationLine.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
+            seperationLine.widthAnchor.constraint(equalTo: widthAnchor, constant: -.mediumLargeSpacing),
             seperationLine.topAnchor.constraint(equalTo: radioButton.bottomAnchor),
             seperationLine.heightAnchor.constraint(equalToConstant: 1),
 
             descriptionView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             descriptionView.topAnchor.constraint(equalTo: seperationLine.bottomAnchor),
-            descriptionView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            descriptionView.widthAnchor.constraint(equalTo: widthAnchor),
 
             helpButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: .mediumLargeSpacing),
             helpButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            contentView.leftAnchor.constraint(equalTo: leftAnchor),
-            contentView.rightAnchor.constraint(equalTo: rightAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: helpButton.bottomAnchor, constant: .mediumLargeSpacing),
-
-            scrollView.leftAnchor.constraint(equalTo: leftAnchor),
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.rightAnchor.constraint(equalTo: rightAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 
@@ -135,10 +132,6 @@ public class ReportAdView: UIView {
         print("Help button pressed")
     }
 
-    @objc func handleGesture(gesture: UIGestureRecognizer) {
-        endEditing(true)
-    }
-
     // MARK: - Keyboard Events
 
     @objc func keyboardWillShow(notification: Notification) {
@@ -146,25 +139,21 @@ public class ReportAdView: UIView {
         guard let keyboardSize = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
 
         let overlap = keyboardSize.intersection(convert(contentView.frame, to: UIScreen.main.coordinateSpace))
+        print("Overlap", overlap)
 
         if overlap != .null {
-            guard let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
-            guard let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt else { return }
-
-            UIView.animate(withDuration: duration, delay: 0.0, options: UIViewAnimationOptions(rawValue: curve), animations: {
-                self.scrollView.contentInset = UIEdgeInsets(top: -overlap.height, leading: 0, bottom: overlap.height, trailing: 0)
-            })
+//            scrollView.setContentOffset(CGPoint(x: 0, y: overlap.height), animated: false)
+            scrollView.contentInset = UIEdgeInsets(top: -overlap.height, leading: 0, bottom: 0, trailing: 0)
         }
     }
 
-    @objc func keyboardWillHide(notification: Notification) {
-        scrollView.contentInset = .zero
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        print("content size", scrollView.contentSize)
     }
-}
 
-extension ReportAdView: TextViewDelegate {
-    func textView(_ textView: UITextView, willChangeSize size: CGSize) {
-        print("Will change size:", size)
-        scrollView.contentOffset.y += size.height
+    @objc func keyboardWillHide(notification: Notification) {
+        print("keyboard will hide")
+        scrollView.contentInset = .zero
     }
 }
