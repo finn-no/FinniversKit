@@ -111,6 +111,12 @@ public class Selectionbox: UIView {
         set { titleLabel.text = newValue }
     }
 
+    public var fields = [String]() {
+        didSet {
+            setFields()
+        }
+    }
+
     // MARK: Private properties
 
     private var highlightedItem: SelectionboxItem?
@@ -131,9 +137,15 @@ public class Selectionbox: UIView {
 
     // MARK: Implementation
 
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupSubviews()
+    }
+
     public init(strings: [String]) {
         super.init(frame: .zero)
         setupBoxes(with: strings)
+        setupSubviews()
     }
 
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -164,13 +176,7 @@ extension Selectionbox {
 
     // MARK: Private methods
 
-    private func setupBoxes(with strings: [String]) {
-        for (i, string) in strings.enumerated() {
-            let item = SelectionboxItem(index: i)
-            item.titleLabel.text = string
-            stack.addArrangedSubview(item)
-        }
-
+    private func setupSubviews() {
         addSubview(titleLabel)
         addSubview(stack)
 
@@ -184,6 +190,40 @@ extension Selectionbox {
 
             bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: .mediumLargeSpacing),
         ])
+    }
+
+    private func setupBoxes(with strings: [String]) {
+        for (i, string) in strings.enumerated() {
+            let item = SelectionboxItem(index: i)
+            item.titleLabel.text = string
+            stack.addArrangedSubview(item)
+        }
+    }
+
+    private func setFields() {
+        for (i, string) in fields.enumerated() {
+            let item = SelectionboxItem(index: i)
+            item.titleLabel.text = string
+            stack.addArrangedSubview(item)
+        }
+        setImages()
+    }
+
+    private func setImages() {
+        guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
+        for item in items {
+            item.imageView.image = unselectedImage
+            item.imageView.animationImages = unselectedAnimationImages
+            item.imageView.highlightedImage = selectedImage
+            item.imageView.highlightedAnimationImages = selectedAnimationImages
+
+            if let unselected = unselectedAnimationImages {
+                item.imageView.unselectedDuration = Double(unselected.count) / AnimatedImageView.framesPerSecond
+            }
+            if let selected = selectedAnimationImages {
+                item.imageView.selectedDuration = Double(selected.count) / AnimatedImageView.framesPerSecond
+            }
+        }
     }
 }
 

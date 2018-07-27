@@ -67,7 +67,7 @@ public class TextView: UIView {
             placeholderLabel.topAnchor.constraint(equalTo: textView.topAnchor, constant: textView.textContainerInset.top),
             placeholderLabel.widthAnchor.constraint(lessThanOrEqualTo: textView.widthAnchor,
                                                     multiplier: 1.0,
-                                                    constant: textView.textContainerInset.left + textView.textContainerInset.right),
+                                                    constant: textView.textContainerInset.left + textView.textContainerInset.right - 10),
 
             textView.leftAnchor.constraint(equalTo: leftAnchor),
             textView.topAnchor.constraint(equalTo: topAnchor),

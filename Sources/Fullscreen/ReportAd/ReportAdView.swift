@@ -8,15 +8,8 @@ public class ReportAdView: UIView {
 
     // MARK: - Private properties
 
-    private let radioButtonFields = [
-        "Mistanke om svindel",
-        "Regebrudd",
-        "Forhandler opptrer som privat",
-    ]
-
     private lazy var radioButton: RadioButton = {
-        let radioButton = RadioButton(strings: radioButtonFields)
-        radioButton.title = "Hva gjelder det?"
+        let radioButton = RadioButton(frame: .zero)
         radioButton.translatesAutoresizingMaskIntoConstraints = false
         return radioButton
     }()
@@ -36,16 +29,9 @@ public class ReportAdView: UIView {
 
     private lazy var helpButton: Button = {
         let button = Button(style: .link)
-        button.setTitle("Trenger du hjelp?", for: .normal)
         button.addTarget(self, action: #selector(helpButtonPressed(sender:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-    }()
-
-    private lazy var containerView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
 
     private lazy var contentView: UIView = {
@@ -62,6 +48,19 @@ public class ReportAdView: UIView {
         return scrollView
     }()
 
+    // MARK: - Public properties
+
+    public var model: ReportAdViewModel? {
+        didSet {
+            guard let model = model else { return }
+            radioButton.title = model.radioButtonTitle
+            radioButton.fields = model.radioButtonFields
+            descriptionView.title = model.descriptionViewTitle
+            descriptionView.placeholderText = model.descriptionViewPlaceholderText
+            helpButton.setTitle(model.helpButtonText, for: .normal)
+        }
+    }
+
     // MARK: - Setup
 
     public override init(frame: CGRect) {
@@ -77,7 +76,6 @@ public class ReportAdView: UIView {
         radioButton.unselectedImage = radiobuttonUnselected?.images?.last
         radioButton.unselectedAnimationImages = radiobuttonUnselected?.images
 
-        NotificationCenter.default.removeObserver(self)
         registerKeyboardEvents()
         setupSubviews()
     }

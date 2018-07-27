@@ -4,9 +4,20 @@
 
 import FinniversKit
 
+public struct ReportAdViewData: ReportAdViewModel {
+    public var radioButtonTitle = "Hva gjelder det?"
+    public var radioButtonFields = ["Mistanke om svindel", "Regelbrudd", "Forhandler opptrer som privat"]
+    public var descriptionViewTitle = "Beskrivelse"
+    public var descriptionViewPlaceholderText = "Beskriv kort hva problemet er"
+    public var helpButtonText = "Trenger du hjelp?"
+
+    public init() {}
+}
+
 class ReportAdDemoView: UIView {
     private lazy var reportAdView: ReportAdView = {
         let view = ReportAdView(frame: .zero)
+        view.model = ReportAdViewData()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

@@ -8,19 +8,29 @@ class DescriptionView: UIView {
 
     // MARK: - Internal properties
 
-    lazy var title: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = Label(style: .title3)
-        label.text = "Beskrivelse"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     lazy var textView: TextView = {
         let view = TextView(frame: .zero)
-        view.placeholderText = "Beskriv kort hva problemet er"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    var title: String? {
+        didSet {
+            titleLabel.text = title
+        }
+    }
+
+    var placeholderText: String? {
+        didSet {
+            textView.placeholderText = placeholderText
+        }
+    }
 
     weak var delegate: UITextViewDelegate? {
         didSet {
@@ -34,15 +44,15 @@ class DescriptionView: UIView {
     }
 
     private func setupSubviews() {
-        addSubview(title)
+        addSubview(titleLabel)
         addSubview(textView)
 
         NSLayoutConstraint.activate([
-            title.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
-            title.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
 
             textView.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
-            textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: .mediumLargeSpacing),
+            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing),
             textView.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
 
             bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing),
