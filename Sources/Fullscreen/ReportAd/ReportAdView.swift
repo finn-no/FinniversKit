@@ -21,7 +21,7 @@ public class ReportAdView: UIView {
         return radioButton
     }()
 
-    private lazy var seperationLine: UIView = {
+    private lazy var hairlineView: UIView = {
         let line = UIView(frame: .zero)
         line.backgroundColor = .sardine
         line.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +92,7 @@ public class ReportAdView: UIView {
 
     private func setupSubviews() {
         contentView.addSubview(radioButton)
-        contentView.addSubview(seperationLine)
+        contentView.addSubview(hairlineView)
         contentView.addSubview(descriptionView)
         contentView.addSubview(helpButton)
         scrollView.addSubview(contentView)
@@ -114,13 +114,13 @@ public class ReportAdView: UIView {
             radioButton.topAnchor.constraint(equalTo: contentView.topAnchor),
             radioButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            seperationLine.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            seperationLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            seperationLine.topAnchor.constraint(equalTo: radioButton.bottomAnchor),
-            seperationLine.heightAnchor.constraint(equalToConstant: 1),
+            hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            hairlineView.topAnchor.constraint(equalTo: radioButton.bottomAnchor),
+            hairlineView.heightAnchor.constraint(equalToConstant: 1),
 
             descriptionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            descriptionView.topAnchor.constraint(equalTo: seperationLine.bottomAnchor),
+            descriptionView.topAnchor.constraint(equalTo: hairlineView.bottomAnchor),
             descriptionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             helpButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: .mediumLargeSpacing),
@@ -143,10 +143,10 @@ public class ReportAdView: UIView {
     // MARK: - Keyboard Events
 
     @objc func keyboardWillShow(notification: Notification) {
-        guard let keyboardSize = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
+        print("Keyboard will show!")
+        guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
 
-        let overlap = keyboardSize.intersection(convert(contentView.frame, to: UIScreen.main.coordinateSpace))
-
+        let overlap = keyboardFrame.intersection(convert(contentView.frame, to: UIScreen.main.coordinateSpace))
         if overlap != .null {
             scrollView.contentInset = UIEdgeInsets(top: 0, leading: 0, bottom: keyboardSize.height, trailing: 0)
             scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom)
