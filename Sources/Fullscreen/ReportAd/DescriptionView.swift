@@ -38,6 +38,12 @@ class DescriptionView: UIView {
         }
     }
 
+    var textViewMinimumHeight: CGFloat = 0 {
+        didSet {
+            textView.minimumHeight = textViewMinimumHeight
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()

@@ -23,7 +23,9 @@ public class ReportAdView: UIView {
 
     private lazy var descriptionView: DescriptionView = {
         let descriptionView = DescriptionView(frame: .zero)
+        descriptionView.delegate = self
         descriptionView.translatesAutoresizingMaskIntoConstraints = false
+        descriptionView.textViewMinimumHeight = 147
         return descriptionView
     }()
 
@@ -47,6 +49,8 @@ public class ReportAdView: UIView {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
+
+    private var shouldScrollDown = false
 
     // MARK: - Public properties
 
@@ -124,7 +128,6 @@ public class ReportAdView: UIView {
             helpButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: .mediumLargeSpacing),
             helpButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             helpButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.mediumLargeSpacing),
-
         ])
     }
 
@@ -142,15 +145,33 @@ public class ReportAdView: UIView {
 
     @objc func keyboardWillShow(notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
+        scrollView.contentInset = UIEdgeInsets(top: 0, leading: 0, bottom: keyboardFrame.height + scrollView.contentOffset.y, trailing: 0)
 
         let overlap = keyboardFrame.intersection(convert(contentView.frame, to: UIScreen.main.coordinateSpace))
+
         if overlap != .null {
-            scrollView.contentInset = UIEdgeInsets(top: 0, leading: 0, bottom: keyboardFrame.height, trailing: 0)
             scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom)
         }
     }
 
     @objc func keyboardWillHide(notification: Notification) {
         scrollView.contentInset = .zero
+    }
+}
+
+extension ReportAdView: UITextViewDelegate {
+    public func textViewDidChange(_ textView: UITextView) {
+        if textView.intrinsicContentSize.height > textView.frame.height {
+            shouldScrollDown = true
+            scrollView.contentOffset.y += textView.intrinsicContentSize.height - textView.frame.height
+
+        } else if textView.intrinsicContentSize.height < textView.frame.height, shouldScrollDown {
+            if textView.intrinsicContentSize.height < descriptionView.textViewMinimumHeight {
+                shouldScrollDown = false
+                scrollView.contentOffset.y += descriptionView.textViewMinimumHeight - textView.frame.height
+                return
+            }
+            scrollView.contentOffset.y += textView.intrinsicContentSize.height - textView.frame.height
+        }
     }
 }

@@ -4,6 +4,10 @@
 
 import UIKit
 
+public protocol TextViewDelegate: UITextViewDelegate {
+    func textViewDidChange(_ textView: TextView)
+}
+
 public class TextView: UIView {
 
     // MARK: - Internal properties
@@ -35,11 +39,24 @@ public class TextView: UIView {
         return label
     }()
 
+    private var textViewHeightConstraint: NSLayoutConstraint!
+
     // MARK: - Public properties
+
+    public override var intrinsicContentSize: CGSize {
+        return textView.intrinsicContentSize
+    }
 
     public var placeholderText: String? {
         didSet {
             placeholderLabel.text = placeholderText
+        }
+    }
+
+    public var minimumHeight: CGFloat = 0 {
+        didSet {
+            textViewHeightConstraint.constant = minimumHeight
+            layoutIfNeeded()
         }
     }
 
@@ -61,6 +78,8 @@ public class TextView: UIView {
         addSubview(textView)
         addSubview(underLine)
 
+        textViewHeightConstraint = textView.heightAnchor.constraint(greaterThanOrEqualToConstant: minimumHeight)
+
         NSLayoutConstraint.activate([
             // Added 5 pts to align it with the text of the text view
             placeholderLabel.leftAnchor.constraint(equalTo: textView.leftAnchor, constant: textView.textContainerInset.left + 5),
@@ -72,7 +91,7 @@ public class TextView: UIView {
             textView.leftAnchor.constraint(equalTo: leftAnchor),
             textView.topAnchor.constraint(equalTo: topAnchor),
             textView.rightAnchor.constraint(equalTo: rightAnchor),
-            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 147.0),
+            textViewHeightConstraint,
 
             underLine.leftAnchor.constraint(equalTo: leftAnchor),
             underLine.topAnchor.constraint(equalTo: textView.bottomAnchor),
@@ -92,8 +111,6 @@ extension TextView: UITextViewDelegate {
     }
 
     public func textViewDidChange(_ textView: UITextView) {
-//        use 'textView.intrinsicContentSize' to get new size of textView
-
         delegate?.textViewDidChange?(textView)
 
         if textView.text.isEmpty {
