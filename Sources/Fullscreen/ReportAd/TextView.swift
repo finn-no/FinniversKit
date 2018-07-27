@@ -45,8 +45,6 @@ public class TextView: UIView {
 
     weak var delegate: UITextViewDelegate?
 
-    private var heightConstraint: NSLayoutConstraint!
-
     // MARK: - Setup
 
     override init(frame: CGRect) {
@@ -63,8 +61,6 @@ public class TextView: UIView {
         addSubview(textView)
         addSubview(underLine)
 
-        heightConstraint = textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 147.0)
-
         NSLayoutConstraint.activate([
             // Added 5 pts to align it with the text of the text view
             placeholderLabel.leftAnchor.constraint(equalTo: textView.leftAnchor, constant: textView.textContainerInset.left + 5),
@@ -76,7 +72,7 @@ public class TextView: UIView {
             textView.leftAnchor.constraint(equalTo: leftAnchor),
             textView.topAnchor.constraint(equalTo: topAnchor),
             textView.rightAnchor.constraint(equalTo: rightAnchor),
-            heightConstraint,
+            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 147.0),
 
             underLine.leftAnchor.constraint(equalTo: leftAnchor),
             underLine.topAnchor.constraint(equalTo: textView.bottomAnchor),
