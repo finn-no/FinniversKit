@@ -52,6 +52,13 @@ public class FrontpageGridView: UIView {
 
     public var adsGridViewHeaderTitle: String
 
+    public func reloadData() {
+        discoverGridView.reloadData()
+        marketGridView.reloadData()
+    }
+}
+
+extension FrontpageGridView {
     private func setupView() {
         addSubview(discoverGridView)
 
