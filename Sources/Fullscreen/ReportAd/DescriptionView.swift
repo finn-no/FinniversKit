@@ -8,13 +8,13 @@ class DescriptionView: UIView {
 
     // MARK: - Internal properties
 
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    lazy var textView: TextView = {
+    private lazy var textView: TextView = {
         let view = TextView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

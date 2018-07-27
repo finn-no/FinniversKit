@@ -8,7 +8,7 @@ public class TextView: UIView {
 
     // MARK: - Internal properties
 
-    lazy var textView: UITextView = {
+    private lazy var textView: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = .body
         view.textColor = .licorice
@@ -20,14 +20,14 @@ public class TextView: UIView {
         return view
     }()
 
-    lazy var underLine: UIView = {
+    private lazy var underLine: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .secondaryBlue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    lazy var placeholderLabel: UILabel = {
+    private lazy var placeholderLabel: UILabel = {
         let label = Label(style: .body(.stone))
         label.textColor = .sardine
         label.numberOfLines = 0
@@ -43,7 +43,7 @@ public class TextView: UIView {
         }
     }
 
-    weak var delegate: UITextViewDelegate?
+    public weak var delegate: UITextViewDelegate?
 
     // MARK: - Setup
 
