@@ -14,7 +14,7 @@ public class TextView: UIView {
         view.textColor = .licorice
         view.backgroundColor = .ice
         view.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        view.isScrollEnabled = true // Change this to 'false' if the text view should grow
+        view.isScrollEnabled = false
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
