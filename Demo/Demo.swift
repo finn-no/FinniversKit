@@ -249,7 +249,6 @@ enum ComponentViews: String {
 }
 
 enum RecyclingViews: String {
-    case notificationsListView
     case marketsGridView
     case adsGridView
     case frontpageGridView
