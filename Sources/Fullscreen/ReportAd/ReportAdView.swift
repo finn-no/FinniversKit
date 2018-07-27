@@ -145,12 +145,11 @@ public class ReportAdView: UIView {
 
     @objc func keyboardWillShow(notification: Notification) {
         print("Keyboard will show!")
-        guard let keyboardSize = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
+        guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
 
-        let overlap = keyboardSize.intersection(convert(contentView.frame, to: UIScreen.main.coordinateSpace))
-
+        let overlap = keyboardFrame.intersection(convert(contentView.frame, to: UIScreen.main.coordinateSpace))
         if overlap != .null {
-            scrollView.contentInset = UIEdgeInsets(top: 0, leading: 0, bottom: keyboardSize.height + 32, trailing: 0)
+            scrollView.contentInset = UIEdgeInsets(top: 0, leading: 0, bottom: keyboardFrame.height + 32, trailing: 0)
 //            scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom)
             scrollView.contentOffset = CGPoint(x: 0, y: overlap.height)
             print(scrollView.contentOffset)
