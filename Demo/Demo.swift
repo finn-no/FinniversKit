@@ -10,6 +10,45 @@ enum TabletDisplayMode {
     case fullscreen
 }
 
+public struct ContainmentOptions: OptionSet {
+    public let rawValue: Int
+
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+
+    public static let navigationController = ContainmentOptions(rawValue: 1 << 0)
+    public static let tabBarController = ContainmentOptions(rawValue: 1 << 1)
+    public static let all: ContainmentOptions = [.navigationController, .tabBarController]
+
+    /// Attaches a navigation bar, a tab bar or both depending on what is returned here.
+    /// If you return nil the screen will have no containers.
+    ///
+    /// - Parameter indexPath: The component's index path
+    init?(indexPath: IndexPath) {
+        let sectionType = Sections.for(indexPath)
+        switch sectionType {
+        case .dna:
+            _ = DnaViews.all[indexPath.row]
+            return nil
+        case .fullscreen:
+            _ = FullscreenViews.all[indexPath.row]
+            return nil
+        case .components:
+            let selected = ComponentViews.all[indexPath.row]
+            switch selected {
+            case .toast:
+                self = .all
+            default:
+                return nil
+            }
+        case .recycling:
+            _ = RecyclingViews.all[indexPath.row]
+            return nil
+        }
+    }
+}
+
 enum Sections: String {
     case dna
     case components
@@ -32,7 +71,7 @@ enum Sections: String {
         case .components:
             return ComponentViews.all.count
         case .recycling:
-            return Recycling.all.count
+            return RecyclingViews.all.count
         case .fullscreen:
             return FullscreenViews.all.count
         }
@@ -53,7 +92,7 @@ enum Sections: String {
         case .components:
             rawClassName = ComponentViews.all[indexPath.row].rawValue
         case .recycling:
-            rawClassName = Recycling.all[indexPath.row].rawValue
+            rawClassName = RecyclingViews.all[indexPath.row].rawValue
         case .fullscreen:
             rawClassName = FullscreenViews.all[indexPath.row].rawValue
         }
@@ -67,7 +106,7 @@ enum Sections: String {
 
     static func viewController(for indexPath: IndexPath) -> UIViewController {
         let section = Sections.all[indexPath.section]
-        let viewController: UIViewController
+        var viewController: UIViewController
         switch section {
         case .dna:
             let selectedView = DnaViews.all[indexPath.row]
@@ -76,29 +115,41 @@ enum Sections: String {
             let selectedView = ComponentViews.all[indexPath.row]
             viewController = selectedView.viewController
         case .recycling:
-            let selectedView = Recycling.all[indexPath.row]
+            let selectedView = RecyclingViews.all[indexPath.row]
             viewController = selectedView.viewController
         case .fullscreen:
             let selectedView = FullscreenViews.all[indexPath.row]
             viewController = selectedView.viewController
         }
 
+        let sectionType = Sections.for(indexPath)
         switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            return viewController
         case .pad:
-            let sectionType = Sections.for(indexPath)
             switch sectionType.tabletDisplayMode {
             case .master:
-                return SplitViewController(masterViewController: viewController)
+                viewController = SplitViewController(masterViewController: viewController)
             case .detail:
-                return SplitViewController(detailViewController: viewController)
-            case .fullscreen:
-                return viewController
+                viewController = SplitViewController(detailViewController: viewController)
+            default:
+                break
             }
         default:
-            fatalError("Not supported")
+            break
         }
+
+        let shouldIncludeNavigationController = ContainmentOptions(indexPath: indexPath)?.contains(.navigationController) ?? false
+        if shouldIncludeNavigationController {
+            viewController = UINavigationController(rootViewController: viewController)
+        }
+
+        let shouldIncludeTabBarController = ContainmentOptions(indexPath: indexPath)?.contains(.tabBarController) ?? false
+        if shouldIncludeTabBarController {
+            let tabBarController = UITabBarController()
+            tabBarController.viewControllers = [viewController]
+            viewController = tabBarController
+        }
+
+        return viewController
     }
 
     var tabletDisplayMode: TabletDisplayMode {
@@ -197,13 +248,14 @@ enum ComponentViews: String {
     }
 }
 
-enum Recycling: String {
+enum RecyclingViews: String {
+    case notificationsListView
     case marketsGridView
     case adsGridView
     case frontpageGridView
     case notificationsListView
 
-    static var all: [Recycling] {
+    static var all: [RecyclingViews] {
         return [
             .marketsGridView,
             .adsGridView,
