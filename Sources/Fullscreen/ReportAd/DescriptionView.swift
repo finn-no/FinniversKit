@@ -9,9 +9,7 @@ class DescriptionView: UIView {
     // MARK: - Internal properties
 
     lazy var title: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.font = UIFont(name: FontType.light.rawValue, size: 18)
-        label.textColor = .licorice
+        let label = Label(style: .title3)
         label.text = "Beskrivelse"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -24,7 +22,7 @@ class DescriptionView: UIView {
         return view
     }()
 
-    weak var delegate: TextViewDelegate? {
+    weak var delegate: UITextViewDelegate? {
         didSet {
             textView.delegate = delegate
         }
@@ -53,15 +51,5 @@ class DescriptionView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension DescriptionView: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        print("Did begin editing")
-    }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        print("Did end editing")
     }
 }

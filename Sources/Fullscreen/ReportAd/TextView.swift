@@ -4,10 +4,6 @@
 
 import UIKit
 
-protocol TextViewDelegate: UITextViewDelegate {
-    func textView(_ textView: UITextView, willChangeSize size: CGSize)
-}
-
 public class TextView: UIView {
 
     // MARK: - Internal properties
@@ -18,7 +14,7 @@ public class TextView: UIView {
         view.textColor = .licorice
         view.backgroundColor = .ice
         view.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        view.isScrollEnabled = false
+        view.isScrollEnabled = true // Change this to 'false' if the text view should grow
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -34,6 +30,7 @@ public class TextView: UIView {
     lazy var placeholderLabel: UILabel = {
         let label = Label(style: .body(.stone))
         label.textColor = .sardine
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -46,7 +43,7 @@ public class TextView: UIView {
         }
     }
 
-    weak var delegate: TextViewDelegate?
+    weak var delegate: UITextViewDelegate?
 
     private var heightConstraint: NSLayoutConstraint!
 
@@ -72,6 +69,9 @@ public class TextView: UIView {
             // Added 5 pts to align it with the text of the text view
             placeholderLabel.leftAnchor.constraint(equalTo: textView.leftAnchor, constant: textView.textContainerInset.left + 5),
             placeholderLabel.topAnchor.constraint(equalTo: textView.topAnchor, constant: textView.textContainerInset.top),
+            placeholderLabel.widthAnchor.constraint(lessThanOrEqualTo: textView.widthAnchor,
+                                                    multiplier: 1.0,
+                                                    constant: textView.textContainerInset.left + textView.textContainerInset.right),
 
             textView.leftAnchor.constraint(equalTo: leftAnchor),
             textView.topAnchor.constraint(equalTo: topAnchor),
@@ -96,10 +96,7 @@ extension TextView: UITextViewDelegate {
     }
 
     public func textViewDidChange(_ textView: UITextView) {
-        if textView.contentSize.height - textView.frame.height > 0 {
-            delegate?.textView(textView, willChangeSize: CGSize(width: 0, height: textView.contentSize.height - textView.frame.height))
-            heightConstraint.constant = textView.contentSize.height
-        }
+//        use 'textView.intrinsicContentSize' to get new size of textView
 
         delegate?.textViewDidChange?(textView)
 

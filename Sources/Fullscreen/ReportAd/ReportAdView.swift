@@ -138,27 +138,22 @@ public class ReportAdView: UIView {
     // MARK: - Actions
 
     @objc func helpButtonPressed(sender: UIButton) {
-        print("Help button pressed")
     }
 
     // MARK: - Keyboard Events
 
     @objc func keyboardWillShow(notification: Notification) {
-        print("Keyboard will show!")
         guard let keyboardSize = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
 
         let overlap = keyboardSize.intersection(convert(contentView.frame, to: UIScreen.main.coordinateSpace))
 
         if overlap != .null {
-            scrollView.contentInset = UIEdgeInsets(top: 0, leading: 0, bottom: keyboardSize.height + 32, trailing: 0)
-//            scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom)
-            scrollView.contentOffset = CGPoint(x: 0, y: overlap.height)
-            print(scrollView.contentOffset)
+            scrollView.contentInset = UIEdgeInsets(top: 0, leading: 0, bottom: keyboardSize.height, trailing: 0)
+            scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom)
         }
     }
 
     @objc func keyboardWillHide(notification: Notification) {
-        print("Current offset:", scrollView.contentOffset)
         scrollView.contentInset = .zero
     }
 }
