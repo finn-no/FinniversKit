@@ -44,6 +44,7 @@ public class ReportAdView: UIView {
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.alwaysBounceVertical = true
         scrollView.keyboardDismissMode = .interactive
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -156,6 +157,7 @@ public class ReportAdView: UIView {
 
     @objc func keyboardWillHide(notification: Notification) {
         scrollView.contentInset = .zero
+        scrollView.contentOffset = .zero
     }
 }
 
