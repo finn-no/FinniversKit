@@ -56,7 +56,6 @@ public class TextView: UIView {
     public var minimumHeight: CGFloat = 0 {
         didSet {
             textViewHeightConstraint.constant = minimumHeight
-            layoutIfNeeded()
         }
     }
 

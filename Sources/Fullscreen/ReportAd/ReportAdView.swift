@@ -24,8 +24,8 @@ public class ReportAdView: UIView {
     private lazy var descriptionView: DescriptionView = {
         let descriptionView = DescriptionView(frame: .zero)
         descriptionView.delegate = self
-        descriptionView.translatesAutoresizingMaskIntoConstraints = false
         descriptionView.textViewMinimumHeight = 147
+        descriptionView.translatesAutoresizingMaskIntoConstraints = false
         return descriptionView
     }()
 
@@ -50,7 +50,7 @@ public class ReportAdView: UIView {
         return scrollView
     }()
 
-    private var shouldScrollDown = false
+    private var textViewShouldGrow = false
 
     // MARK: - Public properties
 
@@ -159,15 +159,22 @@ public class ReportAdView: UIView {
     }
 }
 
-extension ReportAdView: UITextViewDelegate {
-    public func textViewDidChange(_ textView: UITextView) {
-        if textView.intrinsicContentSize.height > textView.frame.height {
-            shouldScrollDown = true
-            scrollView.contentOffset.y += textView.intrinsicContentSize.height - textView.frame.height
+// MARK: -
 
-        } else if textView.intrinsicContentSize.height < textView.frame.height, shouldScrollDown {
+extension ReportAdView: UITextViewDelegate {
+
+    // MARK: TextView Delegate
+
+    public func textViewDidChange(_ textView: UITextView) {
+        let deltaHeight = textView.intrinsicContentSize.height - textView.frame.height
+
+        if deltaHeight > 0 {
+            textViewShouldGrow = true
+            scrollView.contentOffset.y += deltaHeight
+
+        } else if deltaHeight < 0, textViewShouldGrow {
             if textView.intrinsicContentSize.height < descriptionView.textViewMinimumHeight {
-                shouldScrollDown = false
+                textViewShouldGrow = false
                 scrollView.contentOffset.y += descriptionView.textViewMinimumHeight - textView.frame.height
                 return
             }
