@@ -8,29 +8,17 @@ class DescriptionView: UIView {
 
     // MARK: - Internal properties
 
-    private lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var textView: TextView = {
+    lazy var textView: TextView = {
         let view = TextView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-    var title: String? {
-        didSet {
-            titleLabel.text = title
-        }
-    }
-
-    var placeholderText: String? {
-        didSet {
-            textView.placeholderText = placeholderText
-        }
-    }
 
     weak var delegate: UITextViewDelegate? {
         didSet {

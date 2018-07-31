@@ -4,6 +4,10 @@
 
 import UIKit
 
+public protocol ReportAdDelegate: RadioButtonDelegate {
+    func reportAdViewHelpButtonPressed(_ reportAdView: ReportAdView)
+}
+
 public class ReportAdView: UIView {
 
     // MARK: - Private properties
@@ -60,9 +64,19 @@ public class ReportAdView: UIView {
             guard let model = model else { return }
             radioButton.title = model.radioButtonTitle
             radioButton.fields = model.radioButtonFields
-            descriptionView.title = model.descriptionViewTitle
-            descriptionView.placeholderText = model.descriptionViewPlaceholderText
+            descriptionView.titleLabel.text = model.descriptionViewTitle
+            descriptionView.textView.placeholderText = model.descriptionViewPlaceholderText
             helpButton.setTitle(model.helpButtonText, for: .normal)
+        }
+    }
+
+    public var message: String {
+        return descriptionView.textView.text
+    }
+
+    public weak var delegate: ReportAdDelegate? {
+        didSet {
+            radioButton.delegate = delegate
         }
     }
 
@@ -153,6 +167,8 @@ public class ReportAdView: UIView {
     // MARK: - Actions
 
     @objc func helpButtonPressed(sender: UIButton) {
+        endEditing(true)
+        delegate?.reportAdViewHelpButtonPressed(self)
     }
 
     // MARK: - Keyboard Events

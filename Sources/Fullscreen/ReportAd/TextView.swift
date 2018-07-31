@@ -47,6 +47,11 @@ public class TextView: UIView {
         return textView.intrinsicContentSize
     }
 
+    public var text: String! {
+        get { return textView.text }
+        set { textView.text = newValue }
+    }
+
     public var placeholderText: String? {
         didSet {
             placeholderLabel.text = placeholderText
