@@ -8,7 +8,7 @@ public protocol AdReporterDelegate: RadioButtonDelegate {
     func adReporterViewHelpButtonPressed(_ adReporterView: AdReporterView)
 }
 
-public class AdReporterView: UIView {
+public class AdReporterView: UIScrollView {
 
     // MARK: - Private properties
 
@@ -40,19 +40,11 @@ public class AdReporterView: UIView {
         return button
     }()
 
-    private lazy var contentView: UIView = {
+    public lazy var contentView: UIView = {
         let content = UIView(frame: .zero)
+        content.backgroundColor = .gray
         content.translatesAutoresizingMaskIntoConstraints = false
         return content
-    }()
-
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView(frame: .zero)
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.alwaysBounceVertical = true
-        scrollView.keyboardDismissMode = .interactive
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
     }()
 
     private var textViewShouldGrow = false
@@ -74,9 +66,9 @@ public class AdReporterView: UIView {
         return descriptionView.textView.text
     }
 
-    public weak var delegate: AdReporterDelegate? {
+    public weak var reporterDelegate: AdReporterDelegate? {
         didSet {
-            radioButton.delegate = delegate
+            radioButton.delegate = reporterDelegate
         }
     }
 
@@ -86,16 +78,11 @@ public class AdReporterView: UIView {
         super.init(frame: frame)
 
         loadRadioImages()
-        registerKeyboardEvents()
         setupSubviews()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 
     private func loadRadioImages() {
@@ -125,19 +112,13 @@ public class AdReporterView: UIView {
         contentView.addSubview(hairlineView)
         contentView.addSubview(descriptionView)
         contentView.addSubview(helpButton)
-        scrollView.addSubview(contentView)
-        addSubview(scrollView)
+        addSubview(contentView)
 
         NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: widthAnchor),
 
             radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -155,38 +136,15 @@ public class AdReporterView: UIView {
 
             helpButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: .mediumLargeSpacing),
             helpButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            helpButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.mediumLargeSpacing),
+            helpButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
         ])
-    }
-
-    private func registerKeyboardEvents() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
     }
 
     // MARK: - Actions
 
     @objc func helpButtonPressed(sender: UIButton) {
         endEditing(true)
-        delegate?.adReporterViewHelpButtonPressed(self)
-    }
-
-    // MARK: - Keyboard Events
-
-    @objc func keyboardWillShow(notification: Notification) {
-        guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
-        scrollView.contentInset = UIEdgeInsets(top: 0, leading: 0, bottom: keyboardFrame.height + scrollView.contentOffset.y, trailing: 0)
-
-        let overlap = keyboardFrame.intersection(convert(contentView.frame, to: UIScreen.main.coordinateSpace))
-
-        if overlap != .null {
-            scrollView.contentOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom)
-        }
-    }
-
-    @objc func keyboardWillHide(notification: Notification) {
-        scrollView.contentInset = .zero
-        scrollView.contentOffset = .zero
+        reporterDelegate?.adReporterViewHelpButtonPressed(self)
     }
 }
 
@@ -201,15 +159,15 @@ extension AdReporterView: UITextViewDelegate {
 
         if deltaHeight > 0 {
             textViewShouldGrow = true
-            scrollView.contentOffset.y += deltaHeight
+            contentOffset.y += deltaHeight
 
         } else if deltaHeight < 0, textViewShouldGrow {
             if textView.intrinsicContentSize.height < descriptionView.textViewMinimumHeight {
                 textViewShouldGrow = false
-                scrollView.contentOffset.y += descriptionView.textViewMinimumHeight - textView.frame.height
+                contentOffset.y += descriptionView.textViewMinimumHeight - textView.frame.height
                 return
             }
-            scrollView.contentOffset.y += textView.intrinsicContentSize.height - textView.frame.height
+            contentOffset.y += textView.intrinsicContentSize.height - textView.frame.height
         }
     }
 }
