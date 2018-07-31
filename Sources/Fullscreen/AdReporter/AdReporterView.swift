@@ -42,7 +42,6 @@ public class AdReporterView: UIScrollView {
 
     public lazy var contentView: UIView = {
         let content = UIView(frame: .zero)
-        content.backgroundColor = .gray
         content.translatesAutoresizingMaskIntoConstraints = false
         return content
     }()

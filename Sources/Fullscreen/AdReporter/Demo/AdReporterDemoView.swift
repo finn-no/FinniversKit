@@ -20,6 +20,7 @@ class AdReporterDemoView: UIView {
         view.model = AdReporterViewData()
         view.reporterDelegate = self
         view.alwaysBounceVertical = true
+        view.keyboardDismissMode = .interactive
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -34,17 +35,12 @@ class AdReporterDemoView: UIView {
         NotificationCenter.default.removeObserver(self)
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        print(adReporterView.contentView.frame)
-    }
-
     private func setupSubviews() {
         addSubview(adReporterView)
         NSLayoutConstraint.activate([
-            adReporterView.leftAnchor.constraint(equalTo: leftAnchor),
+            adReporterView.leadingAnchor.constraint(equalTo: leadingAnchor),
             adReporterView.topAnchor.constraint(equalTo: topAnchor),
-            adReporterView.rightAnchor.constraint(equalTo: rightAnchor),
+            adReporterView.trailingAnchor.constraint(equalTo: trailingAnchor),
             adReporterView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
@@ -56,18 +52,18 @@ class AdReporterDemoView: UIView {
 
     @objc func keyboardWillShow(notification: Foundation.Notification) {
         guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
-        adReporterView.contentInset = UIEdgeInsets(top: 0, leading: 0, bottom: keyboardFrame.height + adReporterView.contentOffset.y, trailing: 0)
 
-        let overlap = keyboardFrame.intersection(convert(adReporterView.contentView.frame, to: UIScreen.main.coordinateSpace))
+        let contentFrame = adReporterView.convert(adReporterView.contentView.frame, to: UIScreen.main.coordinateSpace)
+        let overlap = keyboardFrame.intersection(contentFrame)
+        print("overlap", overlap)
 
         if overlap != .null {
-            adReporterView.contentOffset = CGPoint(x: 0, y: adReporterView.contentSize.height - adReporterView.bounds.height + adReporterView.contentInset.bottom)
+            adReporterView.contentInset = UIEdgeInsets(top: -overlap.height, leading: 0, bottom: keyboardFrame.height, trailing: 0)
         }
     }
 
     @objc func keyboardWillHide(notification: Foundation.Notification) {
         adReporterView.contentInset = .zero
-        adReporterView.contentOffset = .zero
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -78,7 +74,6 @@ class AdReporterDemoView: UIView {
 extension AdReporterDemoView: AdReporterDelegate {
     func adReporterViewHelpButtonPressed(_ adReporterView: AdReporterView) {
         print("Help button pressed")
-        print("Message:", adReporterView.message)
     }
 
     func radioButton(_ radioButton: RadioButton, didSelectItem item: RadioButtonItem) {
