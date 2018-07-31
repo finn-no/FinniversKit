@@ -71,16 +71,7 @@ public class ReportAdView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        let framesPerSecond = 60.0
-
-        let radiobuttonSelected = UIImage.animatedImageNamed("radiobutton-select-", duration: 13 / framesPerSecond)
-        let radiobuttonUnselected = UIImage.animatedImageNamed("radiobutton-unselected-", duration: 10 / framesPerSecond)
-
-        radioButton.selectedImage = radiobuttonSelected?.images?.last
-        radioButton.selectedAnimationImages = radiobuttonSelected?.images
-        radioButton.unselectedImage = radiobuttonUnselected?.images?.last
-        radioButton.unselectedAnimationImages = radiobuttonUnselected?.images
-
+        loadRadioImages()
         registerKeyboardEvents()
         setupSubviews()
     }
@@ -91,6 +82,28 @@ public class ReportAdView: UIView {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+
+    private func loadRadioImages() {
+        var radioButtonSelected = [UIImage]()
+        var radioButtonUnselected = [UIImage]()
+
+        for i in 0 ..< 13 {
+            if let image = UIImage(named: "radiobutton-select-\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
+                radioButtonSelected.append(image)
+            }
+        }
+
+        for i in 0 ..< 10 {
+            if let image = UIImage(named: "radiobutton-unselected-\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
+                radioButtonUnselected.append(image)
+            }
+        }
+
+        radioButton.selectedImage = radioButtonSelected.last
+        radioButton.selectedAnimationImages = radioButtonSelected
+        radioButton.unselectedImage = radioButtonUnselected.last
+        radioButton.unselectedAnimationImages = radioButtonUnselected
     }
 
     private func setupSubviews() {
