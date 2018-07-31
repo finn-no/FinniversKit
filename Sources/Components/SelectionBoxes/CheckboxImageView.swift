@@ -4,19 +4,19 @@
 
 import UIKit
 
-public class CheckboxImageView: AnimatedImageView {
+class CheckboxImageView: AnimatedImageView {
     private let selectedImageName = "checkbox-selected"
     private let selectedImageCount = 20
     
     private let unselectedImageName = "checkbox-unselected"
     private let unselectedImageCount = 14
 
-    public init() {
+    init() {
         super.init(frame: .zero)
         loadImages()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

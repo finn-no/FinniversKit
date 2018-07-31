@@ -4,19 +4,19 @@
 
 import UIKit
 
-public class RadioButtonImageView: AnimatedImageView {
+class RadioButtonImageView: AnimatedImageView {
     private let selectedImageName = "radiobutton-select"
     private let selectedImageCount = 13
     
     private let unselectedImageName = "radiobutton-unselected"
     private let unselectedImageCount = 10
 
-    public init() {
+    init() {
         super.init(frame: .zero)
         loadImages()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
