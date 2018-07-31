@@ -55,7 +55,6 @@ class AdReporterDemoView: UIView {
 
         let contentFrame = adReporterView.convert(adReporterView.contentView.frame, to: UIScreen.main.coordinateSpace)
         let overlap = keyboardFrame.intersection(contentFrame)
-        print("overlap", overlap)
 
         if overlap != .null {
             adReporterView.contentInset = UIEdgeInsets(top: -overlap.height, leading: 0, bottom: keyboardFrame.height, trailing: 0)
