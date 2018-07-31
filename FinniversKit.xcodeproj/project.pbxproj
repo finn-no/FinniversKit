@@ -826,7 +826,7 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
-				DAD0D48621072EDD0091DD4D /* ReportAd */,
+				DAD0D48621072EDD0091DD4D /* AdReporter */,
 				447AFC0E20984B63000F793E /* Frontpage */,
 				44D9124A2077AC8A00486848 /* Popup */,
 				44D9124D2077AC8A00486848 /* Register */,
@@ -1070,7 +1070,7 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		DAD0D48621072EDD0091DD4D /* ReportAd */ = {
+		DAD0D48621072EDD0091DD4D /* AdReporter */ = {
 			isa = PBXGroup;
 			children = (
 				DAD0D48B210731A70091DD4D /* Demo */,
@@ -1079,7 +1079,7 @@
 				DAD0D493210739500091DD4D /* DescriptionView.swift */,
 				DAD0D491210737A30091DD4D /* TextView.swift */,
 			);
-			path = ReportAd;
+			path = AdReporter;
 			sourceTree = "<group>";
 		};
 		DAD0D48B210731A70091DD4D /* Demo */ = {
