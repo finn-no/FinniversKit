@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol ReportAdViewModel {
+public protocol AdReporterViewModel {
     var radioButtonTitle: String { get }
     var radioButtonFields: [String] { get }
     var descriptionViewTitle: String { get }

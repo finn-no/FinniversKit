@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-public struct ReportAdViewData: ReportAdViewModel {
+public struct AdReporterViewData: AdReporterViewModel {
     public var radioButtonTitle = "Hva gjelder det?"
     public var radioButtonFields = ["Mistanke om svindel", "Regelbrudd", "Forhandler opptrer som privat"]
     public var descriptionViewTitle = "Beskrivelse"
@@ -14,10 +14,10 @@ public struct ReportAdViewData: ReportAdViewModel {
     public init() {}
 }
 
-class ReportAdDemoView: UIView {
-    private lazy var reportAdView: ReportAdView = {
-        let view = ReportAdView(frame: .zero)
-        view.model = ReportAdViewData()
+class AdReporterDemoView: UIView {
+    private lazy var adReporterView: AdReporterView = {
+        let view = AdReporterView(frame: .zero)
+        view.model = AdReporterViewData()
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -29,12 +29,12 @@ class ReportAdDemoView: UIView {
     }
 
     private func setupSubviews() {
-        addSubview(reportAdView)
+        addSubview(adReporterView)
         NSLayoutConstraint.activate([
-            reportAdView.leftAnchor.constraint(equalTo: leftAnchor),
-            reportAdView.topAnchor.constraint(equalTo: topAnchor),
-            reportAdView.rightAnchor.constraint(equalTo: rightAnchor),
-            reportAdView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            adReporterView.leftAnchor.constraint(equalTo: leftAnchor),
+            adReporterView.topAnchor.constraint(equalTo: topAnchor),
+            adReporterView.rightAnchor.constraint(equalTo: rightAnchor),
+            adReporterView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 
@@ -43,10 +43,10 @@ class ReportAdDemoView: UIView {
     }
 }
 
-extension ReportAdDemoView: ReportAdDelegate {
-    func reportAdViewHelpButtonPressed(_ reportAdView: ReportAdView) {
+extension AdReporterDemoView: AdReporterDelegate {
+    func adReporterViewHelpButtonPressed(_ adReporterView: AdReporterView) {
         print("Help button pressed")
-        print("Message:", reportAdView.message)
+        print("Message:", adReporterView.message)
     }
 
     func radioButton(_ radioButton: RadioButton, didSelectItem item: RadioButtonItem) {
