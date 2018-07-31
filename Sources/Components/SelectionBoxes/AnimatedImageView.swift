@@ -9,16 +9,16 @@ import UIKit
  initial frame of the reverse animation will be the
  current frame of the cancelled animation **/
 
-class AnimatedImageView: UIImageView {
+public class AnimatedImageView: UIImageView {
 
     // MARK: Static properties
 
-    static var framesPerSecond = 60.0
+    public static var framesPerSecond = 60.0
 
     // MARK: Internal properties
 
-    var selectedDuration = 0.0
-    var unselectedDuration = 0.0
+    public var selectedDuration = 0.0
+    public var unselectedDuration = 0.0
 
     // MARK: Private properties
 
@@ -35,7 +35,7 @@ class AnimatedImageView: UIImageView {
         addSubview(reverseImageView)
     }
 
-    override func startAnimating() {
+    public override func startAnimating() {
         reverseImageView.stopAnimating()
         reverseImageView.isHidden = true
 
@@ -43,7 +43,7 @@ class AnimatedImageView: UIImageView {
         startTime = CACurrentMediaTime()
     }
 
-    func cancelAnimation() {
+    public func cancelAnimation() {
         super.stopAnimating()
 
         // Get current animation frame
@@ -65,7 +65,7 @@ class AnimatedImageView: UIImageView {
         reverseImageView.startAnimating()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
