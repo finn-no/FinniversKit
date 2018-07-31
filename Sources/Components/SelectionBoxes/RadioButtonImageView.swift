@@ -6,7 +6,10 @@ import UIKit
 
 public class RadioButtonImageView: AnimatedImageView {
     private let selectedImageName = "radiobutton-select"
+    private let selectedImageCount = 13
+    
     private let unselectedImageName = "radiobutton-unselected"
+    private let unselectedImageCount = 10
 
     public init() {
         super.init(frame: .zero)
@@ -21,13 +24,13 @@ public class RadioButtonImageView: AnimatedImageView {
         highlightedAnimationImages = [UIImage]()
         animationImages = [UIImage]()
 
-        for i in 0 ..< 13 {
+        for i in 0 ..< selectedImageCount {
             if let image = UIImage(named: "\(selectedImageName)-\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
                 highlightedAnimationImages?.append(image)
             }
         }
 
-        for i in 0 ..< 10 {
+        for i in 0 ..< unselectedImageCount {
             if let image = UIImage(named: "\(unselectedImageName)-\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
                 animationImages?.append(image)
             }

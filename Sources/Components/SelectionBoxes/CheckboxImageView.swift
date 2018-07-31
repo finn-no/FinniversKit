@@ -6,7 +6,10 @@ import UIKit
 
 public class CheckboxImageView: AnimatedImageView {
     private let selectedImageName = "checkbox-selected"
+    private let selectedImageCount = 20
+    
     private let unselectedImageName = "checkbox-unselected"
+    private let unselectedImageCount = 14
 
     public init() {
         super.init(frame: .zero)
@@ -21,13 +24,13 @@ public class CheckboxImageView: AnimatedImageView {
         highlightedAnimationImages = [UIImage]()
         animationImages = [UIImage]()
 
-        for i in 0 ..< 20 {
+        for i in 0 ..< selectedImageCount {
             if let image = UIImage(named: "\(selectedImageName)-\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
                 highlightedAnimationImages?.append(image)
             }
         }
 
-        for i in 0 ..< 14 {
+        for i in 0 ..< unselectedImageCount {
             if let image = UIImage(named: "\(unselectedImageName)-\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
                 animationImages?.append(image)
             }
