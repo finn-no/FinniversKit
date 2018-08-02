@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol ConfirmationViewDelegate: class {
-    func confirmationViewShouldDismiss(_ confirmationView: ConfirmationView)
+    func confirmationViewDidPressDismissButton(_ confirmationView: ConfirmationView)
 }
 
 public class ConfirmationView: UIView {
@@ -90,6 +90,6 @@ public class ConfirmationView: UIView {
     }
     
     @objc func buttonPressed() {
-        delegate?.confirmationViewShouldDismiss(self)
+        delegate?.confirmationViewDidPressDismissButton(self)
     }
 }
