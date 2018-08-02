@@ -15,7 +15,7 @@ class ReviewTextHeader: UITableViewHeaderFooterView {
         return label
     }()
 
-    lazy var subTitle: Label = {
+    lazy var subtitle: Label = {
         let label = Label(style: Label.Style.body(.stone))
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -27,22 +27,22 @@ class ReviewTextHeader: UITableViewHeaderFooterView {
         contentView.backgroundColor = .white
 
         contentView.addSubview(title)
-        contentView.addSubview(subTitle)
+        contentView.addSubview(subtitle)
         NSLayoutConstraint.activate([
             title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
             title.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
-            subTitle.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
-            subTitle.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
+            subtitle.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
+            subtitle.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
             title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            title.bottomAnchor.constraint(equalTo: subTitle.topAnchor, constant: -.mediumSpacing),
-            subTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+            title.bottomAnchor.constraint(equalTo: subtitle.topAnchor, constant: -.mediumSpacing),
+            subtitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
         ])
     }
 
     public override func prepareForReuse() {
         super.prepareForReuse()
         title.text = ""
-        subTitle.text = ""
+        subtitle.text = ""
     }
 
     required init?(coder aDecoder: NSCoder) {

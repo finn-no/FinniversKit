@@ -95,7 +95,7 @@ extension ReviewView: UITableViewDelegate {
 
         header.translatesAutoresizingMaskIntoConstraints = false
         header.title.text = model?.title
-        header.subTitle.text = model?.subTitle
+        header.subtitle.text = model?.subtitle
 
         return header
     }
