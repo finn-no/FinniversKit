@@ -13,13 +13,13 @@ class ReviewProfileCell: UITableViewCell {
     static let identifier = "ReviewProfileCell"
     static let profileImageSize: CGFloat = 44
 
-    lazy var profileImage: UIImageView = {
+    lazy var profileImage: RoundedImageView = {
         let image = RoundedImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
 
-    lazy var name: UILabel = {
+    lazy var name: Label = {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -32,7 +32,7 @@ class ReviewProfileCell: UITableViewCell {
         return selectIndicator
     }()
 
-    lazy var separator: UIView = {
+    lazy var hairlineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .ice
@@ -41,8 +41,7 @@ class ReviewProfileCell: UITableViewCell {
 
     var model: ReviewViewProfileModel? {
         didSet {
-            guard let model = model else { return }
-            name.text = model.name
+            name.text = model?.name ?? ""
         }
     }
 
@@ -57,19 +56,21 @@ class ReviewProfileCell: UITableViewCell {
         profileStack.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(profileStack)
-        contentView.addSubview(separator)
+        contentView.addSubview(hairlineView)
 
         NSLayoutConstraint.activate([
             profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+
             profileImage.heightAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
             profileImage.widthAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
-            separator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            separator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            separator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-            separator.heightAnchor.constraint(equalToConstant: 2),
+
+            hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            hairlineView.heightAnchor.constraint(equalToConstant: 2),
         ])
     }
 
@@ -82,9 +83,7 @@ class ReviewProfileCell: UITableViewCell {
     func loadImage() {
         guard let model = model else { return }
         profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: ReviewProfileCell.profileImageSize, completion: { [weak self] image in
-            if image != nil {
-                self?.profileImage.image = image
-            }
+            self?.profileImage.image = image
         })
     }
 

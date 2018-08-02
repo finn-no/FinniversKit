@@ -6,7 +6,7 @@ import Foundation
 
 public protocol ReviewViewModel {
     var title: String { get }
-    var subTitle: String { get }
+    var subtitle: String { get }
     var profiles: [ReviewViewProfileModel] { get }
 }
 
