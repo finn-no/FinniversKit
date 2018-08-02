@@ -184,12 +184,12 @@ extension Selectionbox {
         addSubview(stack)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
 
-            stack.leadingAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
+            stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
-            stack.trailingAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
+            stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
             bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: .mediumLargeSpacing),
         ])

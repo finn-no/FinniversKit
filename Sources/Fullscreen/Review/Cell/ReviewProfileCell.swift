@@ -11,6 +11,7 @@ protocol ReviewProfileCellDelegate: class {
 
 class ReviewProfileCell: UITableViewCell {
     static let identifier = "ReviewProfileCell"
+    static let profileImageSize: CGFloat = 44
 
     lazy var profileImage: UIImageView = {
         let image = RoundedImageView()
@@ -60,14 +61,14 @@ class ReviewProfileCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            profileStack.leadingAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
-            profileStack.trailingAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
+            profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
-            profileImage.heightAnchor.constraint(equalToConstant: 44),
-            profileImage.widthAnchor.constraint(equalToConstant: 44),
+            profileImage.heightAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
+            profileImage.widthAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
             separator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            separator.leadingAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumSpacing),
-            separator.trailingAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumSpacing),
+            separator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            separator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
             separator.heightAnchor.constraint(equalToConstant: 2),
         ])
     }
@@ -80,7 +81,7 @@ class ReviewProfileCell: UITableViewCell {
 
     func loadImage() {
         guard let model = model else { return }
-        profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: 44, completion: { [weak self] image in
+        profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: ReviewProfileCell.profileImageSize, completion: { [weak self] image in
             if image != nil {
                 self?.profileImage.image = image
             }
