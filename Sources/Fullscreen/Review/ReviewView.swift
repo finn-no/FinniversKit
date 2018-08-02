@@ -59,35 +59,13 @@ public class ReviewView: UIView {
     }
 }
 
-extension ReviewView: UITableViewDelegate, UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-
-        guard let user = model?.cells[indexPath.row] else {
-            return
-        }
-
-        delegate?.reviewView(self, didSelect: user)
-    }
-
+extension ReviewView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model?.cells.count ?? 0
-    }
-
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReviewTextHeader.identifier) as? ReviewTextHeader else {
-            return nil
-        }
-
-        header.translatesAutoresizingMaskIntoConstraints = false
-        header.title.text = model?.title
-        header.subTitle.text = model?.subTitle
-
-        return header
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,6 +89,31 @@ extension ReviewView: UITableViewDelegate, UITableViewDataSource {
         cell.loadImage()
 
         return cell
+    }
+}
+
+extension ReviewView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReviewTextHeader.identifier) as? ReviewTextHeader else {
+            return nil
+        }
+
+        header.translatesAutoresizingMaskIntoConstraints = false
+        header.title.text = model?.title
+        header.subTitle.text = model?.subTitle
+
+        return header
+    }
+
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        guard let user = model?.cells[indexPath.row] else {
+            return
+        }
+
+        delegate?.reviewView(self, didSelect: user)
     }
 }
 
