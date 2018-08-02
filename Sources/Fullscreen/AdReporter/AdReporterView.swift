@@ -166,7 +166,8 @@ extension AdReporterView: UITextViewDelegate {
                 contentOffset.y += descriptionView.textViewMinimumHeight - textView.frame.height
                 return
             }
-            contentOffset.y += textView.intrinsicContentSize.height - textView.frame.height
+            print("Should shrink and scroll down")
+            contentOffset.y += deltaHeight
         }
     }
 }

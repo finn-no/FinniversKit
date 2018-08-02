@@ -57,12 +57,13 @@ class AdReporterDemoView: UIView {
         let overlap = keyboardFrame.intersection(contentFrame)
 
         if overlap != .null {
-            adReporterView.contentInset = UIEdgeInsets(top: -overlap.height, leading: 0, bottom: keyboardFrame.height, trailing: 0)
+            adReporterView.contentInset.bottom = keyboardFrame.height
+            adReporterView.setContentOffset(CGPoint(x: 0, y: overlap.height), animated: false)
         }
     }
 
     @objc func keyboardWillHide(notification: Foundation.Notification) {
-        adReporterView.contentInset = .zero
+        adReporterView.contentInset.bottom = 0
     }
 
     required init?(coder aDecoder: NSCoder) {
