@@ -70,7 +70,7 @@ extension ReviewView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let model = model?.cells[indexPath.row] else {
-            fatalError("ReviewViewModel is missing")
+            return UITableViewCell()
         }
 
         return reviewProfileCell(tableView: tableView, for: indexPath, model: model)
