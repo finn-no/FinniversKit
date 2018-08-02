@@ -80,8 +80,7 @@ class ReviewProfileCell: UITableViewCell {
 
     func loadImage() {
         guard let model = model else { return }
-        profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: 44, completion:
-        { [weak self] image in
+        profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: 44, completion: { [weak self] image in
             if image != nil {
                 self?.profileImage.image = image
             }

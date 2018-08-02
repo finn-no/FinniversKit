@@ -13,7 +13,7 @@
 		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		431875C1211180F100D71723 /* ReviewProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* ReviewProfileCell.swift */; };
 		431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C221118CE200D71723 /* ReviewViewDefaultData.swift */; };
-		432CE09D2112DBC500F01EC5 /* ReviewTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* ReviewTextCell.swift */; };
+		432CE09D2112DBC500F01EC5 /* ReviewTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* ReviewTextHeader.swift */; };
 		432CE09E21131B4800F01EC5 /* RoundedImageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7BD31E0D28C10BBE2FF4 /* RoundedImageViewDemoView.swift */; };
 		43BACE6A21117D430052114C /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* ReviewView.swift */; };
 		43BACE6C21117D530052114C /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6B21117D530052114C /* ReviewViewModel.swift */; };
@@ -192,7 +192,7 @@
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* ReviewProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewProfileCell.swift; sourceTree = "<group>"; };
 		431875C221118CE200D71723 /* ReviewViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewDefaultData.swift; sourceTree = "<group>"; };
-		432CE09C2112DBC500F01EC5 /* ReviewTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextCell.swift; sourceTree = "<group>"; };
+		432CE09C2112DBC500F01EC5 /* ReviewTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextHeader.swift; sourceTree = "<group>"; };
 		43BACE6921117D430052114C /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		43BACE6B21117D530052114C /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		43BACE6D21117DC70052114C /* ReviewViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewDemoView.swift; sourceTree = "<group>"; };
@@ -396,7 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				431875C0211180F000D71723 /* ReviewProfileCell.swift */,
-				432CE09C2112DBC500F01EC5 /* ReviewTextCell.swift */,
+				432CE09C2112DBC500F01EC5 /* ReviewTextHeader.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1437,7 +1437,7 @@
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,
 				55C5B274203D8E20007D7277 /* BroadcastContainer.swift in Sources */,
 				44D912612077AC8A00486848 /* RoundedRectangleView.swift in Sources */,
-				432CE09D2112DBC500F01EC5 /* ReviewTextCell.swift in Sources */,
+				432CE09D2112DBC500F01EC5 /* ReviewTextHeader.swift in Sources */,
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,

@@ -62,11 +62,11 @@ extension ReviewView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.cells.count ?? 0
+        return model?.profiles.count ?? 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let model = model?.cells[indexPath.row] else {
+        guard let model = model?.profiles[indexPath.row] else {
             return UITableViewCell()
         }
 
@@ -100,11 +100,10 @@ extension ReviewView: UITableViewDelegate {
         return header
     }
 
-
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let user = model?.cells[indexPath.row] else {
+        guard let user = model?.profiles[indexPath.row] else {
             return
         }
 

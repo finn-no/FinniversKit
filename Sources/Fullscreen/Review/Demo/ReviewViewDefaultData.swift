@@ -18,7 +18,7 @@ public class ReviewViewUser: ReviewViewProfileModel {
 public struct ReviewViewDefaultData: ReviewViewModel {
     public let title = "Gratulerer med handelen!\nGi en vurdering og fortell hvordan det gikk."
     public let subTitle = "Hvem vil du gi en vurdering til?"
-    public let cells: [ReviewViewProfileModel] = [
+    public let profiles: [ReviewViewProfileModel] = [
         ReviewViewUser(name: "Ola Nordmann", image: URL(string: "http://via.placeholder.com/44x44/111111/111111")),
         ReviewViewUser(name: "Per Johansen", image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")),
         ReviewViewUser(name: "Per"),
