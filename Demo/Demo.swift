@@ -206,6 +206,7 @@ enum ComponentViews: String {
     case consentTransparencyInfo
     case checkbox
     case radioButton
+    case roundedImageView
 
     static var all: [ComponentViews] {
         return [
@@ -221,6 +222,7 @@ enum ComponentViews: String {
             .consentTransparencyInfo,
             .checkbox,
             .radioButton,
+            .roundedImageView,
         ]
     }
 
@@ -250,6 +252,8 @@ enum ComponentViews: String {
             return ViewController<CheckboxDemoView>(usingDoubleTap: false)
         case .radioButton:
             return ViewController<RadioButtonDemoView>(usingDoubleTap: false)
+        case .roundedImageView:
+            return ViewController<RoundedImageViewDemoView>()
         }
     }
 }
@@ -286,6 +290,7 @@ enum FullscreenViews: String {
     case emptyView
     case loginView
     case reportAdView
+    case reviewView
 
     static var all: [FullscreenViews] {
         return [
@@ -295,6 +300,7 @@ enum FullscreenViews: String {
             .emptyView,
             .loginView,
             .reportAdView,
+            .reviewView,
         ]
     }
 
@@ -312,6 +318,8 @@ enum FullscreenViews: String {
             return ViewController<PopupViewDemoView>()
         case .reportAdView:
             return ViewController<AdReporterDemoView>(usingDoubleTap: false)
+        case .reviewView:
+            return ViewController<ReviewViewDemoView>()
         }
     }
 }

@@ -29,6 +29,10 @@ DerivedData
 *.gcda
 *.bcsymbolmap
 
+# Appcode
+.idea/
+
+# Carthage
 Carthage/Checkouts/*
 Carthage/Build/watchOS/*
 Carthage/Build/tvOS/FinniversKit.framework*
