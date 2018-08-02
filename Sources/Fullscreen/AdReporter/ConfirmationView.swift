@@ -4,17 +4,21 @@
 
 import UIKit
 
-public class AdReporterConfirmationView: UIView {
+public protocol ConfirmationViewDelegate: class {
+    func confirmationViewShouldDismiss(_ confirmationView: ConfirmationView)
+}
+
+public class ConfirmationView: UIView {
     
     // MARK: - Private properties
     
-    private lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: Label = {
         let label = Label(style: .title2)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var messageLabel: UILabel = {
+    private lazy var messageLabel: Label = {
         let label = Label(style: .body(.licorice))
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -22,7 +26,7 @@ public class AdReporterConfirmationView: UIView {
         return label
     }()
     
-    private lazy var closeButton: UIButton = {
+    private lazy var closeButton: Button = {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -45,9 +49,7 @@ public class AdReporterConfirmationView: UIView {
         set { closeButton.setTitle(newValue, for: .normal) }
     }
     
-    // MARK: - Action
-    
-    public var action: (() -> Void)?
+    public weak var delegate: ConfirmationViewDelegate?
     
     // MARK: - Setup
     
@@ -88,6 +90,6 @@ public class AdReporterConfirmationView: UIView {
     }
     
     @objc func buttonPressed() {
-        action?()
+        delegate?.confirmationViewShouldDismiss(self)
     }
 }
