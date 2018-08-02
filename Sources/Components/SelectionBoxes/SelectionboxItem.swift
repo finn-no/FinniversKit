@@ -75,9 +75,9 @@ extension SelectionboxItem {
             // Make sure item is bigger than imageView height if title text is small
             heightAnchor.constraint(greaterThanOrEqualTo: titleLabel.heightAnchor, multiplier: 1.0, constant: .mediumLargeSpacing),
             titleLabel.heightAnchor.constraint(greaterThanOrEqualTo: imageView.heightAnchor, multiplier: 1.0),
-            imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumSpacing),
+            imageView.leadingAnchor.constraint(equalTo: leftAnchor, constant: .mediumSpacing),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: imageView.rightAnchor, constant: .mediumLargeSpacing),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])

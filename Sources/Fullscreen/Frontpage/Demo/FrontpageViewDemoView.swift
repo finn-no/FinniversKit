@@ -52,9 +52,9 @@ class FrontpageViewDemoView: UIView {
 
         NSLayoutConstraint.activate([
             discoverGridView.topAnchor.constraint(equalTo: topAnchor),
-            discoverGridView.rightAnchor.constraint(equalTo: rightAnchor),
+            discoverGridView.trailingAnchor.constraint(equalTo: rightAnchor),
             discoverGridView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            discoverGridView.leftAnchor.constraint(equalTo: leftAnchor),
+            discoverGridView.leadingAnchor.constraint(equalTo: leftAnchor),
 
             marketGridView.topAnchor.constraint(equalTo: headerView.topAnchor),
             marketGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),

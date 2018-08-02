@@ -50,8 +50,8 @@ public class ReviewView: UIView {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: topAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.leftAnchor.constraint(equalTo: leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: rightAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leftAnchor),
+            tableView.trailingAnchor.constraint(equalTo: rightAnchor),
         ])
     }
 }

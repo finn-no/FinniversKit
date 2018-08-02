@@ -60,14 +60,14 @@ class ReviewProfileCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            profileStack.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
-            profileStack.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
+            profileStack.leadingAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
+            profileStack.trailingAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
             profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
             profileImage.heightAnchor.constraint(equalToConstant: 44),
             profileImage.widthAnchor.constraint(equalToConstant: 44),
             separator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            separator.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumSpacing),
-            separator.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumSpacing),
+            separator.leadingAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumSpacing),
+            separator.trailingAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumSpacing),
             separator.heightAnchor.constraint(equalToConstant: 2),
         ])
     }
