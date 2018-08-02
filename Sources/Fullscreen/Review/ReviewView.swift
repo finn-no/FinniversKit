@@ -11,6 +11,8 @@ public protocol ReviewViewDelegate: NSObjectProtocol {
 }
 
 public class ReviewView: UIView {
+    static let defaultRowHeight: CGFloat = 40
+
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .white
@@ -21,8 +23,8 @@ public class ReviewView: UIView {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 40
-        tableView.estimatedSectionHeaderHeight = 40
+        tableView.estimatedRowHeight = ReviewView.defaultRowHeight
+        tableView.estimatedSectionHeaderHeight = ReviewView.defaultRowHeight
         return tableView
     }()
 
@@ -46,13 +48,7 @@ public class ReviewView: UIView {
 
     private func setup() {
         addSubview(tableView)
-
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.leftAnchor.constraint(equalTo: leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: rightAnchor),
-        ])
+        tableView.fillInSuperview()
     }
 }
 
@@ -74,8 +70,7 @@ extension ReviewView: UITableViewDataSource {
     }
 
     private func reviewProfileCell(tableView: UITableView, for indexPath: IndexPath, model: ReviewViewProfileModel) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewProfileCell.identifier,
-                                                       for: indexPath) as? ReviewProfileCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewProfileCell.identifier, for: indexPath) as? ReviewProfileCell else {
             return UITableViewCell()
         }
 

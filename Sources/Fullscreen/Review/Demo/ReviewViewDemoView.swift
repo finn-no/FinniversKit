@@ -25,13 +25,7 @@ public class ReviewViewDemoView: UIView {
         reviewView.delegate = self
         reviewView.model = ReviewViewDefaultData()
         addSubview(reviewView)
-
-        NSLayoutConstraint.activate([
-            reviewView.topAnchor.constraint(equalTo: topAnchor),
-            reviewView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            reviewView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            reviewView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
+        reviewView.fillInSuperview()
     }
 }
 

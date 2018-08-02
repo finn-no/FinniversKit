@@ -9,14 +9,14 @@ class ReviewTextHeader: UITableViewHeaderFooterView {
     static let identifier = "ReviewTextCell"
 
     lazy var title: Label = {
-        let label = Label(style: Label.Style.title3)
+        let label = Label(style: .title3)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     lazy var subtitle: Label = {
-        let label = Label(style: Label.Style.body(.stone))
+        let label = Label(style: .body(.stone))
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -31,10 +31,13 @@ class ReviewTextHeader: UITableViewHeaderFooterView {
         NSLayoutConstraint.activate([
             title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
             title.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
+
             subtitle.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
             subtitle.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
+
             title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             title.bottomAnchor.constraint(equalTo: subtitle.topAnchor, constant: -.mediumSpacing),
+
             subtitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
         ])
     }
