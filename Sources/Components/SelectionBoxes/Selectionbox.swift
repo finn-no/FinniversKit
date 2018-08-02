@@ -20,6 +20,9 @@ public class RadioButton: Selectionbox {
 
     fileprivate override func handleSelecting(_ item: RadioButtonItem) {
         selectedItem?.isSelected = false
+        if let selectedItem = selectedItem {
+            delegate?.radioButton(self, didUnselectItem: selectedItem)
+        }
 
         if item === selectedItem {
             selectedItem = nil
