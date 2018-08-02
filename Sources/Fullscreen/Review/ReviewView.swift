@@ -5,10 +5,7 @@
 import UIKit
 
 public protocol ReviewViewDelegate: NSObjectProtocol {
-    func reviewView(_ reviewView: ReviewView,
-                    loadImageForModel model: ReviewViewProfileModel,
-                    imageWidth: CGFloat,
-                    completion: @escaping ((UIImage?) -> Void)) -> UIImage?
+    func reviewView(_ reviewView: ReviewView, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
     func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel)
     func reviewView(_ reviewView: ReviewView, didSelect user: ReviewViewProfileModel)
 }
@@ -76,9 +73,7 @@ extension ReviewView: UITableViewDataSource {
         return reviewProfileCell(tableView: tableView, for: indexPath, model: model)
     }
 
-    private func reviewProfileCell(tableView: UITableView,
-                                   for indexPath: IndexPath,
-                                   model: ReviewViewProfileModel) -> UITableViewCell {
+    private func reviewProfileCell(tableView: UITableView, for indexPath: IndexPath, model: ReviewViewProfileModel) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewProfileCell.identifier,
                                                        for: indexPath) as? ReviewProfileCell else {
             return UITableViewCell()
@@ -118,15 +113,11 @@ extension ReviewView: UITableViewDelegate {
 }
 
 extension ReviewView: ReviewProfileCellDelegate {
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell,
-                           loadImageForModel model: ReviewViewProfileModel,
-                           imageWidth: CGFloat,
-                           completion: @escaping ((UIImage?) -> Void)) -> UIImage? {
+    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage? {
         return delegate?.reviewView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell,
-                           cancelLoadingImageForModel model: ReviewViewProfileModel) {
+    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel) {
         delegate?.reviewView(self, cancelLoadingImageForModel: model)
     }
 }

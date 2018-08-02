@@ -40,10 +40,7 @@ extension ReviewViewDemoView: ReviewViewDelegate {
         print("Did select: \(user.name) for review")
     }
 
-    public func reviewView(_ reviewView: ReviewView,
-                           loadImageForModel model: ReviewViewProfileModel,
-                           imageWidth: CGFloat,
-                           completion: @escaping ((UIImage?) -> Void)) -> UIImage? {
+    public func reviewView(_ reviewView: ReviewView, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage? {
         guard let url = model.image else {
             return UIImage(named: "consentTransparencyImage")
         }
@@ -61,7 +58,6 @@ extension ReviewViewDemoView: ReviewViewDelegate {
         return UIImage(named: "consentTransparencyImage")
     }
 
-    public func reviewView(_ reviewView: ReviewView,
-                           cancelLoadingImageForModel model: ReviewViewProfileModel) {
+    public func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel) {
     }
 }
