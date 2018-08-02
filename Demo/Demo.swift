@@ -200,6 +200,7 @@ enum ComponentViews: String {
     case consentTransparencyInfo
     case checkbox
     case radioButton
+    case roundedImageView
 
     static var all: [ComponentViews] {
         return [
@@ -215,6 +216,7 @@ enum ComponentViews: String {
             .consentTransparencyInfo,
             .checkbox,
             .radioButton,
+            .roundedImageView,
         ]
     }
 
@@ -244,6 +246,8 @@ enum ComponentViews: String {
             return ViewController<CheckboxDemoView>(usingDoubleTap: false)
         case .radioButton:
             return ViewController<RadioButtonDemoView>(usingDoubleTap: false)
+        case .roundedImageView:
+            return ViewController<RoundedImageViewDemoView>()
         }
     }
 }

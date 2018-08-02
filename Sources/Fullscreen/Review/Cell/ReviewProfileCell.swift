@@ -4,15 +4,6 @@
 
 import UIKit
 
-class ReviewProfileImageView: UIImageView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        layer.cornerRadius = frame.size.width / 2
-        clipsToBounds = true
-    }
-}
-
 protocol ReviewProfileCellDelegate: class {
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell,
                            loadImageForModel model: ReviewViewProfileModel,
@@ -25,7 +16,7 @@ class ReviewProfileCell: UITableViewCell {
     static let identifier = "ReviewProfileCell"
 
     lazy var profileImage: UIImageView = {
-        let image = ReviewProfileImageView()
+        let image = RoundedImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
