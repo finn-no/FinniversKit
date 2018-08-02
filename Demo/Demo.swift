@@ -32,8 +32,14 @@ public struct ContainmentOptions: OptionSet {
             _ = DnaViews.all[indexPath.row]
             return nil
         case .fullscreen:
-            _ = FullscreenViews.all[indexPath.row]
-            return nil
+            let screens = FullscreenViews.all[indexPath.row]
+            switch screens {
+            case .reportAdView:
+//                self = .navigationController
+                return nil
+            default:
+                return nil
+            }
         case .components:
             let selected = ComponentViews.all[indexPath.row]
             switch selected {
@@ -283,6 +289,7 @@ enum FullscreenViews: String {
     case popupView
     case emptyView
     case loginView
+    case reportAdView
     case reviewView
 
     static var all: [FullscreenViews] {
@@ -292,6 +299,7 @@ enum FullscreenViews: String {
             .popupView,
             .emptyView,
             .loginView,
+            .reportAdView,
             .reviewView,
         ]
     }
@@ -308,6 +316,8 @@ enum FullscreenViews: String {
             return ViewController<EmptyViewDemoView>()
         case .popupView:
             return ViewController<PopupViewDemoView>()
+        case .reportAdView:
+            return ViewController<AdReporterDemoView>(usingDoubleTap: false)
         case .reviewView:
             return ViewController<ReviewViewDemoView>()
         }

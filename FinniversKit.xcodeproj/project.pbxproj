@@ -126,13 +126,19 @@
 		AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */; };
 		B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
+		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
+		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
 		DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */; };
 		DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
-		DAA9A3B621021CC70021F7DC /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
+		DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */; };
+		DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
+		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
+		DAD0D492210737A30091DD4D /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D491210737A30091DD4D /* TextView.swift */; };
+		DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D493210739500091DD4D /* DescriptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -292,13 +298,18 @@
 		B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
+		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoView.swift; sourceTree = "<group>"; };
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
+		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
 		DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
 		DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadioboxAnimation.xcassets; sourceTree = "<group>"; };
+		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
+		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -845,6 +856,7 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				DAD0D48621072EDD0091DD4D /* AdReporter */,
 				447AFC0E20984B63000F793E /* Frontpage */,
 				44D9124A2077AC8A00486848 /* Popup */,
 				44D9124D2077AC8A00486848 /* Register */,
@@ -1106,6 +1118,26 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
+		DAD0D48621072EDD0091DD4D /* AdReporter */ = {
+			isa = PBXGroup;
+			children = (
+				DAD0D48B210731A70091DD4D /* Demo */,
+				DA4E438521104EB8000DDEC3 /* AdReporterView.swift */,
+				DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */,
+				DAD0D493210739500091DD4D /* DescriptionView.swift */,
+				DAD0D491210737A30091DD4D /* TextView.swift */,
+			);
+			path = AdReporter;
+			sourceTree = "<group>";
+		};
+		DAD0D48B210731A70091DD4D /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1229,7 +1261,7 @@
 			files = (
 				DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */,
 				4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */,
-				DAA9A3B621021CC70021F7DC /* RadioboxAnimation.xcassets in Resources */,
+				DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */,
 				144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1245,6 +1277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */,
 				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
 				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
 				4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */,
@@ -1331,6 +1364,7 @@
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
 				447AFC1120984B6E000F793E /* FrontpageViewDemoView.swift in Sources */,
+				DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1363,9 +1397,11 @@
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
 				DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */,
+				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
+				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				44D912662077AC8A00486848 /* LoginView.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
@@ -1378,6 +1414,7 @@
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				441FE431209A24E500B04EF1 /* AdsGridHeaderView.swift in Sources */,
 				443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */,
+				DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				44D9125E2077AC8A00486848 /* RegisterViewModel.swift in Sources */,
 				44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */,
@@ -1407,6 +1444,7 @@
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
 				44D912652077AC8A00486848 /* LoginViewModel.swift in Sources */,
+				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
