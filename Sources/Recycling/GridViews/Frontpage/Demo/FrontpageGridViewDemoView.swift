@@ -4,15 +4,9 @@
 
 import FinniversKit
 
-class FrontpageDataSource: NSObject {
-    let ads = AdFactory.create(numberOfModels: 9)
-    let markets = Market.allMarkets
-}
-
 public class FrontpageGridViewDemoView: UIView {
-    lazy var dataSource: FrontpageDataSource = {
-        return FrontpageDataSource()
-    }()
+    var ads = [Ad]()
+    var markets = [Market]()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,11 +15,23 @@ public class FrontpageGridViewDemoView: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    private func setup() {
+    lazy var collectionView: FrontpageGridView = {
         let collectionView = FrontpageGridView(marketsGridViewDelegate: self, marketsGridViewDataSource: self, adsGridViewHeaderTitle: "Anbefalinger", adsGridViewDelegate: self, adsGridViewDataSource: self)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+
+    private func setup() {
         addSubview(collectionView)
         collectionView.fillInSuperview()
+
+        perform(#selector(self.fillData), with: nil, afterDelay: 2)
+    }
+
+    @objc func fillData() {
+        ads = AdFactory.create(numberOfModels: 9)
+        markets = Market.allMarkets
+        collectionView.reloadData()
     }
 }
 
@@ -33,11 +39,11 @@ public class FrontpageGridViewDemoView: UIView {
 
 extension FrontpageGridViewDemoView: MarketsGridViewDataSource {
     public func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int {
-        return dataSource.markets.count
+        return markets.count
     }
 
     public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
-        return dataSource.markets[index]
+        return markets[index]
     }
 }
 
@@ -51,11 +57,11 @@ extension FrontpageGridViewDemoView: MarketsGridViewDelegate {
 
 extension FrontpageGridViewDemoView: AdsGridViewDataSource {
     public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
-        return dataSource.ads.count
+        return ads.count
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
-        return dataSource.ads[index]
+        return ads[index]
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
