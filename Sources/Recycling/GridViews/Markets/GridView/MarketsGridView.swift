@@ -67,6 +67,10 @@ public class MarketsGridView: UIView {
         collectionView.reloadData()
     }
 
+    public func invalidateLayout() {
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+
     public func calculateSize(constrainedTo width: CGFloat) -> CGSize {
         let size = itemSize(for: width)
         let line = lineSpacing(for: width)

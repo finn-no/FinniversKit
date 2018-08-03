@@ -56,6 +56,11 @@ public class FrontpageGridView: UIView {
         discoverGridView.reloadData()
         marketGridView.reloadData()
     }
+
+    public func invalidateLayout() {
+        discoverGridView.invalidateLayout()
+        marketGridView.invalidateLayout()
+    }
 }
 
 extension FrontpageGridView {
