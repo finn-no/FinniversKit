@@ -1,0 +1,21 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+    {
+      "name" : "FBSnapshotTestCase",
+      "hash" : "8b48d2039cfc10290dcfe8c62c9cb24b67a755ba4987dce0539639da2c7c0ccb"
+    }
+  ],
+  "commitish" : "cbe20afd122db679e5b043edfe1c9efabd17bc1e",
+  "iOS" : [
+    {
+      "name" : "FBSnapshotTestCase",
+      "hash" : "74122a75e01e7807d83c656b3bfe5688919b814ed49f05e65a261ed42166841e"
+    }
+  ]
+}

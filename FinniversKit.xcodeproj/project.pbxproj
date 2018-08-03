@@ -131,6 +131,8 @@
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
+		DAA14BC3211475CA00F47E8C /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */; };
+		DAA14BC62114763900F47E8C /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA14BC52114763900F47E8C /* SnapshotTests.swift */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
 		DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */; };
@@ -304,6 +306,8 @@
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
+		DAA14BC52114763900F47E8C /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
 		DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */,
+				DAA14BC3211475CA00F47E8C /* FBSnapshotTestCase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +368,7 @@
 			children = (
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
 				559FD9BB205122C500A101B0 /* BroadcastModelTests.swift */,
+				DAA14BC52114763900F47E8C /* SnapshotTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -371,8 +377,8 @@
 			isa = PBXGroup;
 			children = (
 				4447F6631FDB2B110033DBC1 /* Sources */,
-				14F4F1BA1FD6CEA800E9CECA /* UnitTests */,
 				14405C521FAFBBF000D03E04 /* Demo */,
+				14F4F1BA1FD6CEA800E9CECA /* UnitTests */,
 				4447F7121FDB2C100033DBC1 /* Templates */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
@@ -968,6 +974,7 @@
 		457B35CF1F7BE2670031E125 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1183,6 +1190,7 @@
 				14F4F1B51FD6CEA800E9CECA /* Sources */,
 				14F4F1B61FD6CEA800E9CECA /* Frameworks */,
 				14F4F1B71FD6CEA800E9CECA /* Resources */,
+				DAA14BC4211475CE00F47E8C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1320,6 +1328,20 @@
 			shellPath = /bin/sh;
 			shellScript = "ruby \"${SRCROOT}/Scripts/generate_image_assets_symbols\" AssetImageNames\n";
 		};
+		DAA14BC4211475CE00F47E8C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FBSnapshotTestCase.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1376,6 +1398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */,
+				DAA14BC62114763900F47E8C /* SnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1533,9 +1556,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = UnitTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finniversKit.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1554,9 +1581,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = UnitTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finniversKit.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
