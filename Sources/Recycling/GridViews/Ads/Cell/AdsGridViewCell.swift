@@ -171,7 +171,7 @@ public class AdsGridViewCell: UICollectionViewCell {
             if let model = model {
                 iconImageView.image = model.iconImage?.withRenderingMode(.alwaysTemplate)
                 titleLabel.text = model.title
-                subtitleLabel.text = model.subTitle
+                subtitleLabel.text = model.subtitle
                 imageTextLabel.text = model.imageText
                 accessibilityLabel = model.accessibilityLabel
             }

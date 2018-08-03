@@ -10,14 +10,14 @@ public struct Ad: AdsGridViewModel {
     public let imageSize: CGSize
     public var iconImage: UIImage?
     public let title: String
-    public let subTitle: String?
+    public let subtitle: String?
     public let imageText: String?
 
     public var accessibilityLabel: String {
         var message = title
 
-        if let subTitle = subTitle {
-            message += ". " + subTitle
+        if let subtitle = subtitle {
+            message += ". " + subtitle
         }
 
         if let imageText = imageText {
@@ -39,9 +39,9 @@ public struct AdFactory {
         return (0 ..< numberOfModels).map { index in
             let imageSource = imageSources[index]
             let title = titles[index]
-            let subTitle = subTitles[index]
+            let subtitle = subtitles[index]
             let icon = UIImage(named: "bil", in: .playgroundBundle, compatibleWith: nil)!
-            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subTitle: subTitle, imageText: price)
+            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subtitle: subtitle, imageText: price)
         }
     }
 
@@ -59,7 +59,7 @@ public struct AdFactory {
         ]
     }
 
-    private static var subTitles: [String] {
+    private static var subtitles: [String] {
         return [
             "Oslo",
             "Bergen",
