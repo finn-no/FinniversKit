@@ -9,7 +9,6 @@ public protocol TextViewDelegate: UITextViewDelegate {
 }
 
 public class TextView: UIView {
-
     // MARK: - Internal properties
 
     private lazy var textView: UITextView = {

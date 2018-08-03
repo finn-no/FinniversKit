@@ -25,7 +25,6 @@ public extension ToastViewDelegate {
 }
 
 public class ToastView: UIView {
-
     // MARK: - Internal properties
 
     private let animationDuration: Double = 0.3

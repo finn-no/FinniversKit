@@ -15,7 +15,6 @@ public protocol RegisterViewDelegate: NSObjectProtocol {
 }
 
 public class RegisterView: UIView {
-
     // MARK: - Internal properties
 
     private lazy var scrollView: UIScrollView = {

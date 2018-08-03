@@ -17,7 +17,6 @@ public protocol LoginViewDelegate: NSObjectProtocol {
 }
 
 public class LoginView: UIView {
-
     // MARK: - Internal properties
 
     private lazy var scrollView: UIScrollView = {

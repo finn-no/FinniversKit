@@ -42,7 +42,6 @@ public extension TextFieldDelegate {
 }
 
 public class TextField: UIView {
-
     // MARK: - Internal properties
 
     private let eyeImage = UIImage(named: .view).withRenderingMode(.alwaysTemplate)

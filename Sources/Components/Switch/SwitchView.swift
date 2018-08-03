@@ -9,7 +9,6 @@ public protocol SwitchDelegate: NSObjectProtocol {
 }
 
 public class SwitchView: UIView {
-
     // MARK: - Internal properties
 
     private let animationDuration: Double = 0.4

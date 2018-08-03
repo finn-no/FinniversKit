@@ -18,7 +18,6 @@ public protocol AdsGridViewDataSource: NSObjectProtocol {
 }
 
 public class AdsGridView: UIView {
-
     // MARK: - Internal properties
 
     private lazy var collectionViewLayout: AdsGridViewLayout = {

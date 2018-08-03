@@ -9,7 +9,6 @@ public protocol AdReporterDelegate: RadioButtonDelegate {
 }
 
 public class AdReporterView: UIScrollView {
-
     // MARK: - Private properties
 
     private lazy var radioButton: RadioButton = {
@@ -150,7 +149,6 @@ public class AdReporterView: UIScrollView {
 // MARK: -
 
 extension AdReporterView: UITextViewDelegate {
-
     // MARK: TextView Delegate
 
     public func textViewDidChange(_ textView: UITextView) {

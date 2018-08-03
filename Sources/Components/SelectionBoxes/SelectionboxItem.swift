@@ -9,7 +9,6 @@ public typealias RadioButtonItem = SelectionboxItem
 public typealias CheckboxItem = SelectionboxItem
 
 public class SelectionboxItem: UIView {
-
     // MARK: Internal properties
 
     let imageView: AnimatedImageView = {

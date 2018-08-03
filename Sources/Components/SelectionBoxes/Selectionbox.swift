@@ -12,7 +12,6 @@ public protocol RadioButtonDelegate: class {
 }
 
 public class RadioButton: Selectionbox {
-
     // MARK: Public properties
 
     public var selectedItem: RadioButtonItem?
@@ -43,7 +42,6 @@ public protocol CheckboxDelegate: class {
 }
 
 public class Checkbox: Selectionbox {
-
     // MARK: Public properties
 
     public var selectedItems: Set<CheckboxItem> = []
@@ -64,7 +62,6 @@ public class Checkbox: Selectionbox {
 /* Base class for selections */
 
 public class Selectionbox: UIView {
-
     // MARK: Public properties
 
     public var unselectedImage: UIImage? {
@@ -176,7 +173,6 @@ public class Selectionbox: UIView {
 }
 
 extension Selectionbox {
-
     // MARK: Private methods
 
     private func setupSubviews() {

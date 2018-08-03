@@ -5,7 +5,6 @@
 import UIKit
 
 public class RibbonView: UIView {
-
     // MARK: - Internal properties
 
     private lazy var titleLabel: Label = {

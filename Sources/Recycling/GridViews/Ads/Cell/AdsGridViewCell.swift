@@ -10,7 +10,6 @@ public protocol AdsGridViewCellDataSource {
 }
 
 public class AdsGridViewCell: UICollectionViewCell {
-
     // MARK: - Internal properties
 
     private static let titleHeight: CGFloat = 20.0

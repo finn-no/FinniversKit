@@ -5,7 +5,6 @@
 import UIKit
 
 class DescriptionView: UIView {
-
     // MARK: - Internal properties
 
     lazy var titleLabel: UILabel = {

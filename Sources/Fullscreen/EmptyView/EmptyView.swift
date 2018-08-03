@@ -11,7 +11,6 @@ public protocol EmptyViewDelegate: class {
 }
 
 public class EmptyView: UIView {
-
     // MARK: - Internal properties
 
     private let sizeOfTriangle = CGSize(width: 90, height: 90)

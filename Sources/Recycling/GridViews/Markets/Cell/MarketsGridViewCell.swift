@@ -5,7 +5,6 @@
 import UIKit
 
 public class MarketsGridViewCell: UICollectionViewCell {
-
     // MARK: - Internal properties
 
     private let badgeImageSize = CGSize(width: 30, height: 30)
