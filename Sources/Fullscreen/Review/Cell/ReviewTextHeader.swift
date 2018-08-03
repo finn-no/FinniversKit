@@ -6,8 +6,6 @@ import Foundation
 import UIKit
 
 class ReviewTextHeader: UITableViewHeaderFooterView {
-    static let identifier = "ReviewTextCell"
-
     lazy var title: Label = {
         let label = Label(style: .title3)
         label.numberOfLines = 0

@@ -13,8 +13,8 @@ public extension UITableView {
         register(cellClass.self, forCellReuseIdentifier: cellClass.reuseIdentifier)
     }
 
-    public func register(_ cellClass: UITableViewHeaderFooterView.Type) {
-        register(cellClass.self, forHeaderFooterViewReuseIdentifier: cellClass.reuseIdentifier)
+    public func register(_ headerFooterClass: UITableViewHeaderFooterView.Type) {
+        register(headerFooterClass.self, forHeaderFooterViewReuseIdentifier: headerFooterClass.reuseIdentifier)
     }
 
     public func registerNib(_ cellClass: UITableViewCell.Type) {
@@ -25,7 +25,7 @@ public extension UITableView {
         return dequeueReusableCell(withIdentifier: cellClass.reuseIdentifier, for: indexPath) as! T
     }
 
-    public func dequeue<T>(_ cellClass: T.Type) -> T where T: UITableViewHeaderFooterView {
-        return dequeueReusableHeaderFooterView(withIdentifier: cellClass.reuseIdentifier) as! T
+    public func dequeue<T>(_ headerFooterClass: T.Type) -> T where T: UITableViewHeaderFooterView {
+        return dequeueReusableHeaderFooterView(withIdentifier: headerFooterClass.reuseIdentifier) as! T
     }
 }
