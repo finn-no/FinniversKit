@@ -86,20 +86,20 @@ public class TextView: UIView {
 
         NSLayoutConstraint.activate([
             // Added 5 pts to align it with the text of the text view
-            placeholderLabel.leftAnchor.constraint(equalTo: textView.leftAnchor, constant: textView.textContainerInset.left + 5),
+            placeholderLabel.leadingAnchor.constraint(equalTo: textView.leadingAnchor, constant: textView.textContainerInset.left + 5),
             placeholderLabel.topAnchor.constraint(equalTo: textView.topAnchor, constant: textView.textContainerInset.top),
             placeholderLabel.widthAnchor.constraint(lessThanOrEqualTo: textView.widthAnchor,
                                                     multiplier: 1.0,
                                                     constant: textView.textContainerInset.left + textView.textContainerInset.right - 10),
 
-            textView.leftAnchor.constraint(equalTo: leftAnchor),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textView.topAnchor.constraint(equalTo: topAnchor),
-            textView.rightAnchor.constraint(equalTo: rightAnchor),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor),
             textViewHeightConstraint,
 
-            underLine.leftAnchor.constraint(equalTo: leftAnchor),
+            underLine.leadingAnchor.constraint(equalTo: leadingAnchor),
             underLine.topAnchor.constraint(equalTo: textView.bottomAnchor),
-            underLine.rightAnchor.constraint(equalTo: rightAnchor),
+            underLine.trailingAnchor.constraint(equalTo: trailingAnchor),
             underLine.heightAnchor.constraint(equalToConstant: 2),
 
             bottomAnchor.constraint(equalTo: underLine.bottomAnchor),

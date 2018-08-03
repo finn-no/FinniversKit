@@ -36,8 +36,8 @@ class CheckboxDemoView: UIView {
         addSubview(checkbox)
 
         NSLayoutConstraint.activate([
-            checkbox.leftAnchor.constraint(equalTo: leftAnchor),
-            checkbox.rightAnchor.constraint(equalTo: rightAnchor),
+            checkbox.leadingAnchor.constraint(equalTo: leadingAnchor),
+            checkbox.trailingAnchor.constraint(equalTo: trailingAnchor),
             checkbox.topAnchor.constraint(equalTo: topAnchor),
             checkbox.heightAnchor.constraint(equalToConstant: CGFloat(strings.count + 1) * 44),
         ])

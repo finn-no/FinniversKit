@@ -60,16 +60,16 @@ class ReviewProfileCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             profileStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            profileStack.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
-            profileStack.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
+            profileStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
 
             profileImage.heightAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
             profileImage.widthAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
 
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            hairlineView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumSpacing),
-            hairlineView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumSpacing),
+            hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
             hairlineView.heightAnchor.constraint(equalToConstant: 2),
         ])
     }
@@ -82,7 +82,7 @@ class ReviewProfileCell: UITableViewCell {
 
     func loadImage() {
         guard let model = model else { return }
-        profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: 44, completion: { [weak self] image in
+        profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: ReviewProfileCell.profileImageSize, completion: { [weak self] image in
             self?.profileImage.image = image
         })
     }

@@ -29,11 +29,11 @@ class ReviewTextHeader: UITableViewHeaderFooterView {
         contentView.addSubview(title)
         contentView.addSubview(subtitle)
         NSLayoutConstraint.activate([
-            title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
-            title.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            subtitle.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: .mediumLargeSpacing),
-            subtitle.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -.mediumLargeSpacing),
+            subtitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            subtitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
             title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             title.bottomAnchor.constraint(equalTo: subtitle.topAnchor, constant: -.mediumSpacing),
