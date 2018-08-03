@@ -5,7 +5,6 @@
 import UIKit
 
 public class Label: UILabel {
-
     // MARK: - Internal properties
 
     var labelAttributes: [NSAttributedStringKey: Any] {

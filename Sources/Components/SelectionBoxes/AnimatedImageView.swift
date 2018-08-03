@@ -10,7 +10,6 @@ import UIKit
  current frame of the cancelled animation **/
 
 class AnimatedImageView: UIImageView {
-
     // MARK: Static properties
 
     static var framesPerSecond = 60.0

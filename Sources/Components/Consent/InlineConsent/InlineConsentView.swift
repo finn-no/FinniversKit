@@ -10,7 +10,6 @@ public protocol InlineConsentViewDelegate: AnyObject {
 }
 
 public class InlineConsentView: UIView {
-
     // MARK: - Internal properties
 
     private lazy var descriptionTitleLabel: Label = {

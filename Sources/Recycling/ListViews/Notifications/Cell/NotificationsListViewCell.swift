@@ -10,7 +10,6 @@ public protocol NotificationsListViewCellDataSource: class {
 }
 
 public class NotificationsListViewCell: UITableViewCell {
-
     // MARK: - External properties
 
     /// The loading color is used to fill the image view while we load the image.

@@ -12,7 +12,6 @@ public protocol ConsentTransparencyInfoViewDelegate: AnyObject {
 }
 
 public final class ConsentTransparencyInfoView: UIView {
-
     // MARK: - Internal properties
 
     private lazy var scrollView: UIScrollView = {

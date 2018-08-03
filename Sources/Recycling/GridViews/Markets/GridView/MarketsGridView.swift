@@ -14,7 +14,6 @@ public protocol MarketsGridViewDataSource: NSObjectProtocol {
 }
 
 public class MarketsGridView: UIView {
-
     // MARK: - Internal properties
 
     @objc private lazy var collectionView: UICollectionView = {

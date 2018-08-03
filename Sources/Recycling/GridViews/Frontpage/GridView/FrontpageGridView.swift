@@ -70,9 +70,9 @@ extension FrontpageGridView {
 
         NSLayoutConstraint.activate([
             discoverGridView.topAnchor.constraint(equalTo: topAnchor),
-            discoverGridView.rightAnchor.constraint(equalTo: rightAnchor),
+            discoverGridView.trailingAnchor.constraint(equalTo: trailingAnchor),
             discoverGridView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            discoverGridView.leftAnchor.constraint(equalTo: leftAnchor),
+            discoverGridView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
             marketGridView.topAnchor.constraint(equalTo: headerView.topAnchor),
             marketGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),

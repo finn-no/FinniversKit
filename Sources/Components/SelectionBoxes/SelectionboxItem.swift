@@ -9,7 +9,6 @@ public typealias RadioButtonItem = SelectionboxItem
 public typealias CheckboxItem = SelectionboxItem
 
 public class SelectionboxItem: UIView {
-
     // MARK: Internal properties
 
     let imageView: AnimatedImageView = {
@@ -22,6 +21,7 @@ public class SelectionboxItem: UIView {
 
     let titleLabel: UILabel = {
         let label = Label(style: .body(.licorice))
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -69,11 +69,16 @@ extension SelectionboxItem {
     private func setupSubviews() {
         addSubview(imageView)
         addSubview(titleLabel)
+
         NSLayoutConstraint.activate([
-            imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumSpacing),
+            // Make sure item is bigger than imageView height if title text is small
+            heightAnchor.constraint(greaterThanOrEqualTo: titleLabel.heightAnchor, multiplier: 1.0, constant: .mediumLargeSpacing),
+            titleLabel.heightAnchor.constraint(greaterThanOrEqualTo: imageView.heightAnchor, multiplier: 1.0),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }

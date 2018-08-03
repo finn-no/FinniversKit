@@ -12,7 +12,6 @@ public protocol RadioButtonDelegate: class {
 }
 
 public class RadioButton: Selectionbox {
-
     // MARK: Public properties
 
     public var selectedItem: RadioButtonItem?
@@ -20,6 +19,9 @@ public class RadioButton: Selectionbox {
 
     fileprivate override func handleSelecting(_ item: RadioButtonItem) {
         selectedItem?.isSelected = false
+        if let selectedItem = selectedItem {
+            delegate?.radioButton(self, didUnselectItem: selectedItem)
+        }
 
         if item === selectedItem {
             selectedItem = nil
@@ -40,7 +42,6 @@ public protocol CheckboxDelegate: class {
 }
 
 public class Checkbox: Selectionbox {
-
     // MARK: Public properties
 
     public var selectedItems: Set<CheckboxItem> = []
@@ -61,7 +62,6 @@ public class Checkbox: Selectionbox {
 /* Base class for selections */
 
 public class Selectionbox: UIView {
-
     // MARK: Public properties
 
     public var unselectedImage: UIImage? {
@@ -111,6 +111,12 @@ public class Selectionbox: UIView {
         set { titleLabel.text = newValue }
     }
 
+    public var fields = [String]() {
+        didSet {
+            setFields()
+        }
+    }
+
     // MARK: Private properties
 
     private var highlightedItem: SelectionboxItem?
@@ -131,9 +137,15 @@ public class Selectionbox: UIView {
 
     // MARK: Implementation
 
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupSubviews()
+    }
+
     public init(strings: [String]) {
         super.init(frame: .zero)
         setupBoxes(with: strings)
+        setupSubviews()
     }
 
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -161,8 +173,23 @@ public class Selectionbox: UIView {
 }
 
 extension Selectionbox {
-
     // MARK: Private methods
+
+    private func setupSubviews() {
+        addSubview(titleLabel)
+        addSubview(stack)
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+
+            stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+            stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: .mediumLargeSpacing),
+        ])
+    }
 
     private func setupBoxes(with strings: [String]) {
         for (i, string) in strings.enumerated() {
@@ -170,19 +197,32 @@ extension Selectionbox {
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }
+    }
 
-        addSubview(titleLabel)
-        addSubview(stack)
+    private func setFields() {
+        for (i, string) in fields.enumerated() {
+            let item = SelectionboxItem(index: i)
+            item.titleLabel.text = string
+            stack.addArrangedSubview(item)
+        }
+        setImages()
+    }
 
-        NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+    private func setImages() {
+        guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
+        for item in items {
+            item.imageView.image = unselectedImage
+            item.imageView.animationImages = unselectedAnimationImages
+            item.imageView.highlightedImage = selectedImage
+            item.imageView.highlightedAnimationImages = selectedAnimationImages
 
-            stack.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
-            stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
-            stack.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
-            stack.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
+            if let unselected = unselectedAnimationImages {
+                item.imageView.unselectedDuration = Double(unselected.count) / AnimatedImageView.framesPerSecond
+            }
+            if let selected = selectedAnimationImages {
+                item.imageView.selectedDuration = Double(selected.count) / AnimatedImageView.framesPerSecond
+            }
+        }
     }
 }
 

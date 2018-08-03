@@ -24,7 +24,6 @@ public extension PopupViewDelegate {
 }
 
 public class PopupView: UIView {
-
     // MARK: - Internal properties
 
     private lazy var scrollView: UIScrollView = {
