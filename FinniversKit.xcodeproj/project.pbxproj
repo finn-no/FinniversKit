@@ -159,6 +159,13 @@
 			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
 			remoteInfo = FinniversKit;
 		};
+		DAD475A221149386009449DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14405C691FAFBD1800D03E04;
+			remoteInfo = Demo;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1196,6 +1203,7 @@
 			);
 			dependencies = (
 				14F4F1C01FD6CEA800E9CECA /* PBXTargetDependency */,
+				DAD475A321149386009449DF /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			productName = UnitTests;
@@ -1238,6 +1246,7 @@
 					14F4F1B81FD6CEA800E9CECA = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Manual;
+						TestTargetID = 14405C691FAFBD1800D03E04;
 					};
 					CB3CF1551F73E5870041EF20 = {
 						CreatedOnToolsVersion = 9.0;
@@ -1498,6 +1507,11 @@
 			target = CB3CF1551F73E5870041EF20 /* FinniversKit */;
 			targetProxy = 44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */;
 		};
+		DAD475A321149386009449DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14405C691FAFBD1800D03E04 /* Demo */;
+			targetProxy = DAD475A221149386009449DF /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -1569,6 +1583,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 			};
 			name = Debug;
 		};
@@ -1594,6 +1609,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 			};
 			name = Release;
 		};

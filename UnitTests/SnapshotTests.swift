@@ -13,8 +13,9 @@ class SnapshotTests: FBSnapshotTestCase {
     }
     
     func testExample() {
-        let label = Label(style: .title2)
-        label.text = "Snapshot Testing"
+        let label = Label(frame: CGRect(x: 0, y: 0, width: 250, height: 44))
+        label.font = .title2
+        label.text = "Snapshot Test"
         FBSnapshotVerifyView(label)
         FBSnapshotVerifyLayer(label.layer)
     }
