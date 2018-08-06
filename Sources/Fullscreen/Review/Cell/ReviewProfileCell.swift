@@ -77,6 +77,10 @@ class ReviewProfileCell: UITableViewCell {
         super.prepareForReuse()
         profileImage.image = nil
         name.text = ""
+
+        if let model = model {
+            delegate?.reviewProfileCell(self, cancelLoadingImageForModel: model)
+        }
     }
 
     func loadImage() {
