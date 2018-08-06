@@ -31,7 +31,7 @@ class SnapshotTests: FBSnapshotTestCase {
     }
     
     func testExampleControllerView() {
-        // Appends device (iPhone, iPad), iOS version and frame size to image name
+        // Appends device model (iPhone, iPad, etc.), iOS version and screen size to image name
         isDeviceAgnostic = true
         
         let controller = ViewController<LoginViewDemoView>()
