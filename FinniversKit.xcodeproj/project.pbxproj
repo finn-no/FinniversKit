@@ -135,6 +135,7 @@
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
 		DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */; };
 		DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
+		DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */; };
 		DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */; };
 		DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
@@ -309,6 +310,7 @@
 		DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
 		DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadioboxAnimation.xcassets; sourceTree = "<group>"; };
+		DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
@@ -780,6 +782,7 @@
 		4447F6B81FDB2B110033DBC1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
 				44C6CE43209CABFE00929269 /* AssetImageNames.swift */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
 				4447F6BA1FDB2B110033DBC1 /* Fonts */,
@@ -1280,6 +1283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */,
 				DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */,
 				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
 				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
