@@ -24,6 +24,14 @@ Import the framework to access all the components.
 import FinniversKit
 ```
 
+## Snapshot Testing
+
+**FinniversKit** uses snapshot test cases to compare the contents of a UIView or CALayer against a reference image.
+
+From within your test case, use `FBSnapshotVerifyView` to both generate reference images and compare. To generate the reference images, run the tests once with `self.recordMode = true`. The filename of the reference images will be the same as the test method name.
+
+UIViews have to be given a frame, intrinsic content size and constraints does not work. UIViews within a UIViewController works as normal.
+
 ## License
 
 **FinniversKit** is available under the Apache License 2.0. See the [LICENSE file](/LICENSE.md) for more info.
