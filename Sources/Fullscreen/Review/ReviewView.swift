@@ -18,8 +18,8 @@ public class ReviewView: UIView {
         tableView.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.register(ReviewTextHeader.self, forHeaderFooterViewReuseIdentifier: ReviewTextHeader.identifier)
-        tableView.register(ReviewProfileCell.self, forCellReuseIdentifier: ReviewProfileCell.identifier)
+        tableView.register(ReviewTextHeader.self)
+        tableView.register(ReviewProfileCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -70,10 +70,7 @@ extension ReviewView: UITableViewDataSource {
     }
 
     private func reviewProfileCell(tableView: UITableView, for indexPath: IndexPath, model: ReviewViewProfileModel) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewProfileCell.identifier, for: indexPath) as? ReviewProfileCell else {
-            return UITableViewCell()
-        }
-
+        let cell = tableView.dequeue(ReviewProfileCell.self, for: indexPath)
         cell.model = model
         cell.delegate = self
         cell.loadImage()
@@ -84,10 +81,7 @@ extension ReviewView: UITableViewDataSource {
 
 extension ReviewView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReviewTextHeader.identifier) as? ReviewTextHeader else {
-            return nil
-        }
-
+        let header = tableView.dequeue(ReviewTextHeader.self)
         header.translatesAutoresizingMaskIntoConstraints = false
         header.title.text = model?.title
         header.subtitle.text = model?.subtitle

@@ -10,7 +10,6 @@ protocol ReviewProfileCellDelegate: class {
 }
 
 class ReviewProfileCell: UITableViewCell {
-    static let identifier = "ReviewProfileCell"
     static let profileImageSize: CGFloat = 44
 
     lazy var profileImage: RoundedImageView = {
@@ -78,6 +77,10 @@ class ReviewProfileCell: UITableViewCell {
         super.prepareForReuse()
         profileImage.image = nil
         name.text = ""
+
+        if let model = model {
+            delegate?.reviewProfileCell(self, cancelLoadingImageForModel: model)
+        }
     }
 
     func loadImage() {
