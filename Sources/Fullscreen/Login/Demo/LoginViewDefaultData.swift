@@ -5,10 +5,10 @@
 import FinniversKit
 
 public struct LoginViewDefaultData: LoginViewModel {
-    public let headerText = "Hei Henrik!"
-    public let emailPlaceholder = "No E-post"
-    public let passwordPlaceholder = "No Passord"
-    public let forgotPasswordButtonTitle = ":D"
+    public let headerText = "Logg inn for å sende meldinger, lagre favoritter og søk. Du får også varsler når det skjer noe nytt!"
+    public let emailPlaceholder = "E-post"
+    public let passwordPlaceholder = "Passord"
+    public let forgotPasswordButtonTitle = "Glemt passord?"
     public let loginButtonTitle = "Logg inn"
     public let newUserButtonTitle = "Ny bruker?"
     public let userTermsIntroText = "Ved å logge inn aksepterer du"
