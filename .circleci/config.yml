@@ -6,7 +6,10 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
-      - run: xcodebuild -project FinniversKit.xcodeproj -scheme "Demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=11.4,name=iPhone X' test | xcpretty
+      - run: xrun -project FinniversKit.xcodeproj -scheme Demo test | xcpretty
+
+
+        # xcodebuild -project FinniversKit.xcodeproj -scheme "Demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=11.4,name=iPhone X' test | xcpretty
 
 workflows:
   version: 2
