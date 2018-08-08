@@ -24,6 +24,41 @@ Import the framework to access all the components.
 import FinniversKit
 ```
 
+## Snapshot Testing
+
+**FinniversKit** uses [Uber's snapshot test cases](https://github.com/uber/ios-snapshot-test-case) to compare the contents of a UIView or UIViewController against a reference image.
+
+From within your test case, use `FBSnapshotVerifyView` to both generate reference images and compare them against your current view. To generate the reference images, run the tests once with `self.recordMode = true`, once the reference images have been created you can set `self.recordMode = false` to test your views for any changes.
+
+The filename of the reference images will be the same as the test method name. `isDeviceAgnostic = true` will append the device model, iOS version and screen size to the file name. This way, you will have separate reference images for iPad and iPhone, as well as iPhone X and iPhone 8, etc.
+
+UIViews have to be given a frame, intrinsic content size and constraints does not work. UIViews within a UIViewController works as normal.
+
+### Example
+
+```swift
+//
+//  Copyright © 2018 FINN AS. All rights reserved.
+//
+
+import FBSnapshotTestCase
+import FinniversKit
+import Demo
+
+class YourComponentDemoViewTest: FBSnapshotTestCase {
+    override func setUp() {
+        super.setUp()
+        recordMode = false
+        isDeviceAgnostic = false
+    }
+
+    func testExampleControllerView() {
+        let controller = ViewController<YourComponentViewController>()
+        FBSnapshotVerifyView(controller.view)
+    }
+}
+```
+
 ## License
 
 **FinniversKit** is available under the Apache License 2.0. See the [LICENSE file](/LICENSE.md) for more info.
