@@ -8,14 +8,14 @@
   "tvOS" : [
     {
       "name" : "FBSnapshotTestCase",
-      "hash" : "a8ff52379821ead85eaab1f0809a792e0784c91c0143e1fe2f8fd4fee46b4038"
+      "hash" : "3729281bd07da55be9414ff0b1e3e3b463be1ee8241bda992506099e6b96adbb"
     }
   ],
-  "commitish" : "0f637d885b6778b3dc80a4080a91ddfe998b91a8",
+  "commitish" : "cbe20afd122db679e5b043edfe1c9efabd17bc1e",
   "iOS" : [
     {
       "name" : "FBSnapshotTestCase",
-      "hash" : "be2d38afce26da270e1ee71b36da49b26906ea76cc359e60fb62522591ccabe7"
+      "hash" : "37d517ec7adf16b30c360b65db357b453492ef7d831bbecb257d4e01313abeb7"
     }
   ]
 }

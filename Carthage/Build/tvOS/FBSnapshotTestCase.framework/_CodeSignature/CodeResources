@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/FBSnapshotTestCase-Swift.h</key>
 		<data>
-		XeayQRB86yHR1U1sUA91KUS5Tik=
+		CVuikx0lEzoGehnjvFCzwxq7E/0=
 		</data>
 		<key>Headers/FBSnapshotTestCase.h</key>
 		<data>
@@ -78,11 +78,11 @@
 		</data>
 		<key>Modules/FBSnapshotTestCase.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		uHiWVNGxvnGQnIxnUhorjuxkap8=
+		tRM3uAyyIpMvLb+hjNqWe2P5Tlo=
 		</data>
 		<key>Modules/FBSnapshotTestCase.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		BqvWFozigxBoKK/7KAOWmqATXIE=
+		SLjMIEogA9ZYCdxymEJNYzQblQY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -242,11 +242,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XeayQRB86yHR1U1sUA91KUS5Tik=
+			CVuikx0lEzoGehnjvFCzwxq7E/0=
 			</data>
 			<key>hash2</key>
 			<data>
-			pDyV/fTUfstaAHkA5cqbYQA00fgPPl/V8qlFz21eHkY=
+			uKrgkknPD4pFN65ySJaO5Rz6Ghx5AYwkljXmIhIJ1uk=
 			</data>
 		</dict>
 		<key>Headers/FBSnapshotTestCase.h</key>
@@ -286,22 +286,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uHiWVNGxvnGQnIxnUhorjuxkap8=
+			tRM3uAyyIpMvLb+hjNqWe2P5Tlo=
 			</data>
 			<key>hash2</key>
 			<data>
-			KzcKc7vIi+dvGxohgsy/aJ3GuzBqzSCHQW8IJDyusSM=
+			pheEXKSwOLoWzEHQMiudsVSx4HWpod6B3wldudl/fJg=
 			</data>
 		</dict>
 		<key>Modules/FBSnapshotTestCase.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			BqvWFozigxBoKK/7KAOWmqATXIE=
+			SLjMIEogA9ZYCdxymEJNYzQblQY=
 			</data>
 			<key>hash2</key>
 			<data>
-			gjP2M9uEseaDqiFWxnnWWRy1ecxc/uv6Bn4CvN+UkpE=
+			JKpddOZUWTfSac+aBxMJ5lNatvUewBsGOr4h8uFTwng=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
