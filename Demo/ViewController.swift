@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-class ViewController<View: UIView>: UIViewController {
+public class ViewController<View: UIView>: UIViewController {
     lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,29 +19,29 @@ class ViewController<View: UIView>: UIViewController {
         return view
     }()
 
-    override var prefersStatusBarHidden: Bool {
+    public override var prefersStatusBarHidden: Bool {
         return true
     }
 
     var usingDoubleTap: Bool
 
     // Normal behaviour
-    init() {
+    public init() {
         usingDoubleTap = true
         super.init(nibName: nil, bundle: nil)
     }
 
     // Instantiate the view controller with a dismiss button
-    init(usingDoubleTap: Bool) {
+    public init(usingDoubleTap: Bool) {
         self.usingDoubleTap = usingDoubleTap
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         view.addSubview(playgroundView)
@@ -76,7 +76,7 @@ class ViewController<View: UIView>: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         if State.shouldShowDismissInstructions {
