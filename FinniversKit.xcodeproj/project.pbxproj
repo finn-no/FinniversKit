@@ -783,8 +783,8 @@
 			isa = PBXGroup;
 			children = (
 				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
-				44C6CE43209CABFE00929269 /* AssetImageNames.swift */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
+				44C6CE43209CABFE00929269 /* AssetImageNames.swift */,
 				4447F6BA1FDB2B110033DBC1 /* Fonts */,
 			);
 			path = Resources;

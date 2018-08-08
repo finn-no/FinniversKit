@@ -16,11 +16,72 @@ extension UIImage {
 enum ImageAsset: String {
     case noImage = "NoImage"
     case spidLogo = "SpidLogo"
+    case arrowDown
     case arrowRight
+    case arrowUp
+    case attachment
+    case blockUser
+    case boat
+    case calendar
+    case camera
+    case car
+    case check
+    case checkmarkBig
+    case classifieds
+    case distance
+    case download
+    case edit
+    case editBig
     case error
+    case favouriteAdd
+    case favouriteAddImg
+    case favouriteAdded
+    case favouriteAddedImg
+    case favourites
+    case gallery
+    case gridView
+    case help
+    case hide
+    case home
     case important
+    case info
+    case jobs
+    case listView
+    case mapDirections
+    case mapDrawarea
+    case mapMyposition
+    case mc
+    case messages
+    case minus
+    case miscLike
+    case miscLiked
+    case miscMoney
+    case mittanbud
+    case more
+    case moreImg
+    case moteplassen
+    case notifications
+    case pin
+    case plus
+    case profile
+    case rate
+    case rated
+    case ratings
+    case realestate
     case remove
+    case search
+    case searchBig
+    case send
+    case settings
+    case share
+    case shopping
+    case smalljobs
     case success
+    case trashcan
+    case travel
+    case vehicles
+    case verified
     case view
     case webview
+    case yourads
 }
