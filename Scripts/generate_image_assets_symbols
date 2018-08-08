@@ -4,7 +4,7 @@ require "time"
 require "fileutils"
 require "digest/md5"
 
-input = ["Sources/Resources/Assets.xcassets"]
+input = ["Sources/Resources/Icons.xcassets", "Sources/Resources/Assets.xcassets"]
 output_filename = ARGV[0]
 output_path = File.join(File.dirname(__FILE__), "..",  "Sources", "Resources")
 
@@ -19,7 +19,7 @@ end
 
 names  = []
 asset_folders.each do |folder|
-  names += Dir.glob(File.join(folder, "/*")).select{|f| File.extname(f) == ".imageset" }.map{|f| File.basename(f, ".*") }
+  names += Dir.glob(File.join(folder, "/**/*.imageset")).map { |f| File.basename(f, File.extname(f)) }
 end
 
 names = names.sort
