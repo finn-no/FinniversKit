@@ -7,13 +7,13 @@
 
 import UIKit
 
-extension UIImage {
-    convenience init(named imageAsset: ImageAsset, in bundle: Bundle? = .finniversKit, compatibleWith traitCollection: UITraitCollection? = nil) {
-        self.init(named: imageAsset.rawValue, in: bundle, compatibleWith: traitCollection)!
+public extension UIImage {
+    public convenience init(named imageAsset: ImageAsset) {
+        self.init(named: imageAsset.rawValue, in: FinniversKit.bundle, compatibleWith: nil)!
     }
 }
 
-enum ImageAsset: String {
+public enum ImageAsset: String {
     case noImage = "NoImage"
     case spidLogo = "SpidLogo"
     case arrowDown
@@ -61,6 +61,7 @@ enum ImageAsset: String {
     case moreImg
     case moteplassen
     case notifications
+    case onlyNew
     case pin
     case plus
     case profile

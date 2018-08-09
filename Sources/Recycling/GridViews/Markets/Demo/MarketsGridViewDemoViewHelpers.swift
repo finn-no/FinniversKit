@@ -10,7 +10,7 @@ public enum Market: MarketsGridViewModel {
     case torget
     case jobb
     case mc
-    case bT
+    case boat
     case nytte
     case reise
     case shopping
@@ -25,7 +25,7 @@ public enum Market: MarketsGridViewModel {
         case .torget: return "Torget"
         case .jobb: return "Jobb"
         case .mc: return "MC"
-        case .bT: return "Båt"
+        case .boat: return "Båt"
         case .nytte: return "Nyttekjøretøy"
         case .reise: return "Reise"
         case .shopping: return "Shopping"
@@ -37,18 +37,18 @@ public enum Market: MarketsGridViewModel {
 
     public var iconImage: UIImage? {
         switch self {
-        case .eiendom: return UIImage(named: "eiendom", in: .playgroundBundle, compatibleWith: nil)
-        case .bil: return UIImage(named: "bil", in: .playgroundBundle, compatibleWith: nil)
-        case .torget: return UIImage(named: "torget", in: .playgroundBundle, compatibleWith: nil)
-        case .jobb: return UIImage(named: "jobb", in: .playgroundBundle, compatibleWith: nil)
-        case .mc: return UIImage(named: "mc", in: .playgroundBundle, compatibleWith: nil)
-        case .bT: return UIImage(named: "bT", in: .playgroundBundle, compatibleWith: nil)
-        case .nytte: return UIImage(named: "nytte", in: .playgroundBundle, compatibleWith: nil)
-        case .reise: return UIImage(named: "reise", in: .playgroundBundle, compatibleWith: nil)
-        case .shopping: return UIImage(named: "shopping", in: .playgroundBundle, compatibleWith: nil)
-        case .smajobb: return UIImage(named: "smajobb", in: .playgroundBundle, compatibleWith: nil)
-        case .moteplassen: return UIImage(named: "moteplassen", in: .playgroundBundle, compatibleWith: nil)
-        case .mittAnbud: return UIImage(named: "mittAnbud", in: .playgroundBundle, compatibleWith: nil)
+        case .eiendom: return UIImage(named: .realestate)
+        case .bil: return UIImage(named: .car)
+        case .torget: return UIImage(named: .classifieds)
+        case .jobb: return UIImage(named: .jobs)
+        case .mc: return UIImage(named: .mc)
+        case .boat: return UIImage(named: .boat)
+        case .nytte: return UIImage(named: .vehicles)
+        case .reise: return UIImage(named: .travel)
+        case .shopping: return UIImage(named: .shopping)
+        case .smajobb: return UIImage(named: .smalljobs)
+        case .moteplassen: return UIImage(named: .moteplassen)
+        case .mittAnbud: return UIImage(named: .mittanbud)
         }
     }
 
@@ -59,7 +59,7 @@ public enum Market: MarketsGridViewModel {
         case .torget: return false
         case .jobb: return false
         case .mc: return false
-        case .bT: return false
+        case .boat: return false
         case .nytte: return false
         case .reise: return true
         case .shopping: return true
@@ -71,7 +71,7 @@ public enum Market: MarketsGridViewModel {
 
     public var badgeImage: UIImage? {
         switch self {
-        case .shopping: return UIImage(named: "onlyNew", in: .playgroundBundle, compatibleWith: nil)
+        case .shopping: return UIImage(named: .onlyNew)
         default: return nil
         }
     }
@@ -84,5 +84,5 @@ public enum Market: MarketsGridViewModel {
         }
     }
 
-    public static var allMarkets: [Market] = [.eiendom, .bil, .torget, .jobb, .mc, .bT, .nytte, .reise, .shopping, .smajobb, .moteplassen, .mittAnbud]
+    public static var allMarkets: [Market] = [.eiendom, .bil, .torget, .jobb, .mc, .boat, .nytte, .reise, .shopping, .smajobb, .moteplassen, .mittAnbud]
 }
