@@ -136,6 +136,8 @@
 		DA81758C211C7D3700E3F098 /* CheckboxDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81758A211C7D1900E3F098 /* CheckboxDemoViewTest.swift */; };
 		DA81758E211C7F5000E3F098 /* InlineConsentDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81758D211C7F5000E3F098 /* InlineConsentDemoViewTest.swift */; };
 		DA817591211C802B00E3F098 /* ConsentTransparencyInfoDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81758F211C802600E3F098 /* ConsentTransparencyInfoDemoViewTest.swift */; };
+		DA817594211C825900E3F098 /* SwitchViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817592211C824E00E3F098 /* SwitchViewDemoViewTest.swift */; };
+		DA817597211C84C000E3F098 /* BroadcastDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817595211C849600E3F098 /* BroadcastDemoViewTest.swift */; };
 		DAA14BC3211475CA00F47E8C /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
@@ -323,6 +325,8 @@
 		DA81758A211C7D1900E3F098 /* CheckboxDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoViewTest.swift; sourceTree = "<group>"; };
 		DA81758D211C7F5000E3F098 /* InlineConsentDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineConsentDemoViewTest.swift; sourceTree = "<group>"; };
 		DA81758F211C802600E3F098 /* ConsentTransparencyInfoDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDemoViewTest.swift; sourceTree = "<group>"; };
+		DA817592211C824E00E3F098 /* SwitchViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDemoViewTest.swift; sourceTree = "<group>"; };
+		DA817595211C849600E3F098 /* BroadcastDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastDemoViewTest.swift; sourceTree = "<group>"; };
 		DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
@@ -1030,6 +1034,7 @@
 			children = (
 				45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */,
 				45D7C57220495039000E788F /* SwitchViewDefaultData.swift */,
+				DA817592211C824E00E3F098 /* SwitchViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1104,6 +1109,7 @@
 			isa = PBXGroup;
 			children = (
 				AF91BB98202C7F4D003E6366 /* BroadcastDemoView.swift */,
+				DA817595211C849600E3F098 /* BroadcastDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1423,7 +1429,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA817591211C802B00E3F098 /* ConsentTransparencyInfoDemoViewTest.swift in Sources */,
+				DA817597211C84C000E3F098 /* BroadcastDemoViewTest.swift in Sources */,
 				DA81758C211C7D3700E3F098 /* CheckboxDemoViewTest.swift in Sources */,
+				DA817594211C825900E3F098 /* SwitchViewDemoViewTest.swift in Sources */,
 				559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */,
 				1479E73A211AE5FF0027EAEB /* LoginViewDemoViewTest.swift in Sources */,
 				DA817589211C7B9E00E3F098 /* RadioButtonDemoViewTest.swift in Sources */,
