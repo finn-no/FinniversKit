@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-class RadioButtonDemoView: UIView {
+public class RadioButtonDemoView: UIView {
     let strings = [
         "Mistanke om svindel",
         "Regelbrudd",
@@ -18,7 +18,7 @@ class RadioButtonDemoView: UIView {
         return box
     }()
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
 
         let framesPerSecond = 60.0
@@ -42,7 +42,7 @@ class RadioButtonDemoView: UIView {
         ])
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

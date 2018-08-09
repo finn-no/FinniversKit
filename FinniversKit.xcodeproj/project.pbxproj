@@ -132,6 +132,8 @@
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
+		DA817589211C7B9E00E3F098 /* RadioButtonDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817584211C7AE400E3F098 /* RadioButtonDemoViewTest.swift */; };
+		DA81758C211C7D3700E3F098 /* CheckboxDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81758A211C7D1900E3F098 /* CheckboxDemoViewTest.swift */; };
 		DAA14BC3211475CA00F47E8C /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
@@ -315,6 +317,8 @@
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		DA817584211C7AE400E3F098 /* RadioButtonDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoViewTest.swift; sourceTree = "<group>"; };
+		DA81758A211C7D1900E3F098 /* CheckboxDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoViewTest.swift; sourceTree = "<group>"; };
 		DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
@@ -1132,7 +1136,9 @@
 			isa = PBXGroup;
 			children = (
 				DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */,
+				DA817584211C7AE400E3F098 /* RadioButtonDemoViewTest.swift */,
 				DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */,
+				DA81758A211C7D1900E3F098 /* CheckboxDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1410,8 +1416,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA81758C211C7D3700E3F098 /* CheckboxDemoViewTest.swift in Sources */,
 				559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */,
 				1479E73A211AE5FF0027EAEB /* LoginViewDemoViewTest.swift in Sources */,
+				DA817589211C7B9E00E3F098 /* RadioButtonDemoViewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

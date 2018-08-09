@@ -61,6 +61,7 @@ enum ImageAsset: String {
     case moreImg
     case moteplassen
     case notifications
+    case onlyNew
     case pin
     case plus
     case profile
