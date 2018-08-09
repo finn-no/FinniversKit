@@ -13,7 +13,7 @@ class LoginViewDemoViewTest: FBSnapshotTestCase {
         isDeviceAgnostic = false
     }
 
-    func testExampleControllerView() {
+    func testLoginViewDemoView() {
         let controller = ViewController<LoginViewDemoView>()
         FBSnapshotVerifyView(controller.view)
     }
