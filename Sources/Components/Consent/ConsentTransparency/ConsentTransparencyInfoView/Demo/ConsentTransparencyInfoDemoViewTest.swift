@@ -13,7 +13,7 @@ class ConsentTransparencyInfoDemoViewTest: FBSnapshotTestCase {
         recordMode = false
     }
 
-    func testInlineConsentDemoView() {
+    func testConsentTransparencyInfoDemoView() {
         let controller = ViewController<ConsentTransparencyInfoDemoView>()
         FBSnapshotVerifyView(controller.view)
     }

@@ -6,15 +6,15 @@ import FBSnapshotTestCase
 import FinniversKit
 import Demo
 
-class SwitchViewDemoViewTest: FBSnapshotTestCase {
+class ButtonDemoViewTest: FBSnapshotTestCase {
 
     override func setUp() {
         super.setUp()
         recordMode = false
     }
 
-    func testSwitchViewDemoView() {
-        let controller = ViewController<SwitchViewDemoView>()
+    func testButtonDemoView() {
+        let controller = ViewController<ButtonDemoView>()
         FBSnapshotVerifyView(controller.view)
     }
 

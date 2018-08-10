@@ -127,6 +127,12 @@
 		AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */; };
 		B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
+		DA1812B1211D6AC3006A0DC2 /* ButtonDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812AF211D6ABB006A0DC2 /* ButtonDemoViewTest.swift */; };
+		DA1812B4211D6C52006A0DC2 /* LabelDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812B2211D6C2B006A0DC2 /* LabelDemoViewTest.swift */; };
+		DA1812B7211D6D26006A0DC2 /* RibbonDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812B5211D6D09006A0DC2 /* RibbonDemoViewTest.swift */; };
+		DA1812BA211D6DFC006A0DC2 /* TextFieldDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812B8211D6DF1006A0DC2 /* TextFieldDemoViewTest.swift */; };
+		DA1812BD211D6EAF006A0DC2 /* ToastDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812BB211D6E9E006A0DC2 /* ToastDemoViewTest.swift */; };
+		DA1812C0211D6F82006A0DC2 /* RoundedImageViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812BE211D6F71006A0DC2 /* RoundedImageViewDemoViewTest.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
@@ -316,6 +322,12 @@
 		B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
+		DA1812AF211D6ABB006A0DC2 /* ButtonDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDemoViewTest.swift; sourceTree = "<group>"; };
+		DA1812B2211D6C2B006A0DC2 /* LabelDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDemoViewTest.swift; sourceTree = "<group>"; };
+		DA1812B5211D6D09006A0DC2 /* RibbonDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonDemoViewTest.swift; sourceTree = "<group>"; };
+		DA1812B8211D6DF1006A0DC2 /* TextFieldDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDemoViewTest.swift; sourceTree = "<group>"; };
+		DA1812BB211D6E9E006A0DC2 /* ToastDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDemoViewTest.swift; sourceTree = "<group>"; };
+		DA1812BE211D6F71006A0DC2 /* RoundedImageViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageViewDemoViewTest.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoView.swift; sourceTree = "<group>"; };
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
@@ -718,6 +730,7 @@
 			isa = PBXGroup;
 			children = (
 				4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */,
+				DA1812AF211D6ABB006A0DC2 /* ButtonDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -736,6 +749,7 @@
 			isa = PBXGroup;
 			children = (
 				4447F6781FDB2B110033DBC1 /* LabelDemoView.swift */,
+				DA1812B2211D6C2B006A0DC2 /* LabelDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -754,6 +768,7 @@
 			isa = PBXGroup;
 			children = (
 				4447F69E1FDB2B110033DBC1 /* RibbonDemoView.swift */,
+				DA1812B5211D6D09006A0DC2 /* RibbonDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -773,6 +788,7 @@
 			isa = PBXGroup;
 			children = (
 				4447F6A51FDB2B110033DBC1 /* TextFieldDemoView.swift */,
+				DA1812B8211D6DF1006A0DC2 /* TextFieldDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -791,6 +807,7 @@
 			isa = PBXGroup;
 			children = (
 				4447F6AA1FDB2B110033DBC1 /* ToastDemoView.swift */,
+				DA1812BB211D6E9E006A0DC2 /* ToastDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1118,6 +1135,7 @@
 			isa = PBXGroup;
 			children = (
 				B01D7BD31E0D28C10BBE2FF4 /* RoundedImageViewDemoView.swift */,
+				DA1812BE211D6F71006A0DC2 /* RoundedImageViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1428,12 +1446,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA1812B4211D6C52006A0DC2 /* LabelDemoViewTest.swift in Sources */,
+				DA1812B7211D6D26006A0DC2 /* RibbonDemoViewTest.swift in Sources */,
 				DA817591211C802B00E3F098 /* ConsentTransparencyInfoDemoViewTest.swift in Sources */,
+				DA1812BA211D6DFC006A0DC2 /* TextFieldDemoViewTest.swift in Sources */,
+				DA1812C0211D6F82006A0DC2 /* RoundedImageViewDemoViewTest.swift in Sources */,
 				DA817597211C84C000E3F098 /* BroadcastDemoViewTest.swift in Sources */,
+				DA1812B1211D6AC3006A0DC2 /* ButtonDemoViewTest.swift in Sources */,
 				DA81758C211C7D3700E3F098 /* CheckboxDemoViewTest.swift in Sources */,
 				DA817594211C825900E3F098 /* SwitchViewDemoViewTest.swift in Sources */,
 				559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */,
 				1479E73A211AE5FF0027EAEB /* LoginViewDemoViewTest.swift in Sources */,
+				DA1812BD211D6EAF006A0DC2 /* ToastDemoViewTest.swift in Sources */,
 				DA817589211C7B9E00E3F098 /* RadioButtonDemoViewTest.swift in Sources */,
 				DA81758E211C7F5000E3F098 /* InlineConsentDemoViewTest.swift in Sources */,
 			);

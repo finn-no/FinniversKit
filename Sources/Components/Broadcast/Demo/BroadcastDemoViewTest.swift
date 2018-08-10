@@ -13,7 +13,7 @@ class BroadcastDemoViewTest: FBSnapshotTestCase {
         recordMode = false
     }
 
-    func testInlineConsentDemoView() {
+    func testBroadcastDemoView() {
         let controller = ViewController<BroadcastDemoView>()
         FBSnapshotVerifyView(controller.view)
     }
