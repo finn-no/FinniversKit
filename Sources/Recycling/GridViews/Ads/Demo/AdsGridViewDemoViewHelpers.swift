@@ -41,7 +41,7 @@ public struct AdFactory {
             let title = titles[index]
             let subtitle = subtitles[index]
             let icon = UIImage(named: "bil", in: .playgroundBundle, compatibleWith: nil)!
-            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subtitle: subtitle, imageText: price)
+            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subtitle: subtitle, imageText: price[index])
         }
     }
 
@@ -74,9 +74,17 @@ public struct AdFactory {
         ]
     }
 
-    private static var price: String {
-        let thousands = Int(arc4random_uniform(UInt32(999)))
-        return "\(thousands) 000,-"
+    private static var price: [String] {
+        return ["845 000,-",
+                "164 000,-",
+                "945 000,-",
+                "355 000,-",
+                "746 000,-",
+                "347 000,-",
+                "546 000,-",
+                "647 000,-",
+                "264 000,-"
+        ]
     }
 
     private static var randomImageSource: ImageSource {

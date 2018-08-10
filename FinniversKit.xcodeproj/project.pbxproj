@@ -133,6 +133,11 @@
 		DA1812BA211D6DFC006A0DC2 /* TextFieldDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812B8211D6DF1006A0DC2 /* TextFieldDemoViewTest.swift */; };
 		DA1812BD211D6EAF006A0DC2 /* ToastDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812BB211D6E9E006A0DC2 /* ToastDemoViewTest.swift */; };
 		DA1812C0211D6F82006A0DC2 /* RoundedImageViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812BE211D6F71006A0DC2 /* RoundedImageViewDemoViewTest.swift */; };
+		DA1812C3211D71A1006A0DC2 /* AdReporterDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812C1211D7194006A0DC2 /* AdReporterDemoViewTest.swift */; };
+		DA1812C6211D7304006A0DC2 /* FrontpageDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812C4211D72ED006A0DC2 /* FrontpageDemoViewTest.swift */; };
+		DA1812C9211D78D8006A0DC2 /* PopupViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812C7211D78C4006A0DC2 /* PopupViewDemoViewTest.swift */; };
+		DA1812CC211D79A5006A0DC2 /* ReviewViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812CA211D797F006A0DC2 /* ReviewViewDemoViewTest.swift */; };
+		DA1812CF211D7A55006A0DC2 /* EmptyViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812CD211D7A3F006A0DC2 /* EmptyViewDemoViewTest.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
@@ -328,6 +333,11 @@
 		DA1812B8211D6DF1006A0DC2 /* TextFieldDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDemoViewTest.swift; sourceTree = "<group>"; };
 		DA1812BB211D6E9E006A0DC2 /* ToastDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDemoViewTest.swift; sourceTree = "<group>"; };
 		DA1812BE211D6F71006A0DC2 /* RoundedImageViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageViewDemoViewTest.swift; sourceTree = "<group>"; };
+		DA1812C1211D7194006A0DC2 /* AdReporterDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoViewTest.swift; sourceTree = "<group>"; };
+		DA1812C4211D72ED006A0DC2 /* FrontpageDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontpageDemoViewTest.swift; sourceTree = "<group>"; };
+		DA1812C7211D78C4006A0DC2 /* PopupViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewDemoViewTest.swift; sourceTree = "<group>"; };
+		DA1812CA211D797F006A0DC2 /* ReviewViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewDemoViewTest.swift; sourceTree = "<group>"; };
+		DA1812CD211D7A3F006A0DC2 /* EmptyViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoViewTest.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoView.swift; sourceTree = "<group>"; };
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
@@ -452,6 +462,7 @@
 			children = (
 				43BACE6D21117DC70052114C /* ReviewViewDemoView.swift */,
 				431875C221118CE200D71723 /* ReviewViewDefaultData.swift */,
+				DA1812CA211D797F006A0DC2 /* ReviewViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -873,6 +884,7 @@
 			isa = PBXGroup;
 			children = (
 				447AFC1020984B6E000F793E /* FrontpageViewDemoView.swift */,
+				DA1812C4211D72ED006A0DC2 /* FrontpageDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -970,6 +982,7 @@
 			children = (
 				44D912682077AD0200486848 /* PopupViewDefaultData.swift */,
 				44D912692077AD0200486848 /* PopupViewDemoView.swift */,
+				DA1812C7211D78C4006A0DC2 /* PopupViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -987,6 +1000,7 @@
 			isa = PBXGroup;
 			children = (
 				44D912722077AD1200486848 /* EmptyViewDemoView.swift */,
+				DA1812CD211D7A3F006A0DC2 /* EmptyViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1190,6 +1204,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */,
+				DA1812C1211D7194006A0DC2 /* AdReporterDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1449,6 +1464,8 @@
 				DA1812B4211D6C52006A0DC2 /* LabelDemoViewTest.swift in Sources */,
 				DA1812B7211D6D26006A0DC2 /* RibbonDemoViewTest.swift in Sources */,
 				DA817591211C802B00E3F098 /* ConsentTransparencyInfoDemoViewTest.swift in Sources */,
+				DA1812C9211D78D8006A0DC2 /* PopupViewDemoViewTest.swift in Sources */,
+				DA1812C3211D71A1006A0DC2 /* AdReporterDemoViewTest.swift in Sources */,
 				DA1812BA211D6DFC006A0DC2 /* TextFieldDemoViewTest.swift in Sources */,
 				DA1812C0211D6F82006A0DC2 /* RoundedImageViewDemoViewTest.swift in Sources */,
 				DA817597211C84C000E3F098 /* BroadcastDemoViewTest.swift in Sources */,
@@ -1457,6 +1474,9 @@
 				DA817594211C825900E3F098 /* SwitchViewDemoViewTest.swift in Sources */,
 				559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */,
 				1479E73A211AE5FF0027EAEB /* LoginViewDemoViewTest.swift in Sources */,
+				DA1812C6211D7304006A0DC2 /* FrontpageDemoViewTest.swift in Sources */,
+				DA1812CC211D79A5006A0DC2 /* ReviewViewDemoViewTest.swift in Sources */,
+				DA1812CF211D7A55006A0DC2 /* EmptyViewDemoViewTest.swift in Sources */,
 				DA1812BD211D6EAF006A0DC2 /* ToastDemoViewTest.swift in Sources */,
 				DA817589211C7B9E00E3F098 /* RadioButtonDemoViewTest.swift in Sources */,
 				DA81758E211C7F5000E3F098 /* InlineConsentDemoViewTest.swift in Sources */,
