@@ -69,23 +69,11 @@ public class ViewController<View: UIView>: UIViewController {
                 button.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor, constant: -.veryLargeSpacing),
             ])
         }
-
-        if let view = playgroundView as? Lifecyclable {
-            view.viewDidLoad?()
-        }
     }
 
     @objc func didDoubleTap() {
         State.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
-    }
-
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        if let view = playgroundView as? Lifecyclable {
-            view.viewWillAppear?()
-        }
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -94,10 +82,6 @@ public class ViewController<View: UIView>: UIViewController {
         if State.shouldShowDismissInstructions {
             miniToastView.show(in: view)
             State.shouldShowDismissInstructions = false
-        }
-
-        if let view = playgroundView as? Lifecyclable {
-            view.viewDidAppear?()
         }
     }
 }
