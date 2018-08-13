@@ -262,12 +262,14 @@ enum RecyclingViews: String {
     case notificationsListView
     case marketsGridView
     case adsGridView
+    case favoritesListView
 
     static var all: [RecyclingViews] {
         return [
             .notificationsListView,
             .marketsGridView,
             .adsGridView,
+            .favoritesListView,
         ]
     }
 
@@ -279,6 +281,8 @@ enum RecyclingViews: String {
             return ViewController<MarketsGridViewDemoView>()
         case .adsGridView:
             return ViewController<AdsGridViewDemoView>()
+        case .favoritesListView:
+            return ViewController<FavoritesListViewDemoView>()
         }
     }
 }
