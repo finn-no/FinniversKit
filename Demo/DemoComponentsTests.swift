@@ -53,6 +53,12 @@ class DemoComponentsTests: FBSnapshotTestCase {
     // Missing broadcast container
 
     // MARK: Button
+    func testBroadcastContainerDemoView() {
+        let controller = ViewController<BroadcastContainerDemoView>()
+        FBSnapshotVerifyView(controller.view)
+    }
+
+    // MARK: Button
     func testButtonDemoView() {
         let controller = ViewController<ButtonDemoView>()
         FBSnapshotVerifyView(controller.view)

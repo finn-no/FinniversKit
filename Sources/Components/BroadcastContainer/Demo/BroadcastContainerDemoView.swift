@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-class BroadcastContainerDemoView: UIView {
+public class BroadcastContainerDemoView: UIView, Lifecyclable {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
 
@@ -27,12 +27,9 @@ class BroadcastContainerDemoView: UIView {
         BroadcastMessage(id: 2, message: "Their containers should have the colour \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content.\\n\nBroadcasts can also contain <a href=\"http://www.finn.no\">HTML links</a>."),
     ]
 
-    override func didMoveToSuperview() {
+    func viewDidAppear() {
         setup()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [weak self] in
-            self?.displayBroadcastContainer()
-        }
+        displayBroadcastContainer()
     }
 }
 
@@ -71,17 +68,17 @@ extension BroadcastContainerDemoView: UITableViewDataSource {
 }
 
 extension BroadcastContainerDemoView: BroadcastContainerDataSource {
-    func numberOfBroadcasts(in broadcastContainer: BroadcastContainer) -> Int {
+    public func numberOfBroadcasts(in broadcastContainer: BroadcastContainer) -> Int {
         return broadcastMessages.count
     }
 
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, broadcastMessageForIndex index: Int) -> BroadcastMessage {
+    public func broadcastContainer(_ broadcastContainer: BroadcastContainer, broadcastMessageForIndex index: Int) -> BroadcastMessage {
         return broadcastMessages[index]
     }
 }
 
 extension BroadcastContainerDemoView: BroadcastContainerDelegate {
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void)) {
+    public func broadcastContainer(_ broadcastContainer: BroadcastContainer, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void)) {
         let tableHeaderViewFrame = CGRect(origin: .zero, size: CGSize(width: frame.width, height: containerSize.height))
 
         tableView.beginUpdates()
@@ -91,7 +88,7 @@ extension BroadcastContainerDemoView: BroadcastContainerDelegate {
         tableView.endUpdates()
     }
 
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, willDismissBroadcastAtIndex index: Int, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void)) {
+    public func broadcastContainer(_ broadcastContainer: BroadcastContainer, willDismissBroadcastAtIndex index: Int, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void)) {
         let tableHeaderViewFrame = CGRect(origin: .zero, size: CGSize(width: frame.width, height: newContainerSize.height))
 
         tableView.beginUpdates()
@@ -101,7 +98,7 @@ extension BroadcastContainerDemoView: BroadcastContainerDelegate {
         tableView.endUpdates()
     }
 
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, didTapURL url: URL, inBroadcastAtIndex index: Int) {
+    public func broadcastContainer(_ broadcastContainer: BroadcastContainer, didTapURL url: URL, inBroadcastAtIndex index: Int) {
         let alertController = UIAlertController(title: "Link tapped in broadcast at index \(index)", message: "URL: \(url)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
