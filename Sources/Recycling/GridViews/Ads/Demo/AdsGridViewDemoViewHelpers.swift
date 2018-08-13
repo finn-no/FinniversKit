@@ -40,7 +40,7 @@ public struct AdFactory {
             let imageSource = imageSources[index]
             let title = titles[index]
             let subtitle = subtitles[index]
-            let icon = UIImage(named: "bil", in: .playgroundBundle, compatibleWith: nil)!
+            let icon = UIImage(named: .car)
             return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subtitle: subtitle, imageText: price[index])
         }
     }

@@ -50,7 +50,7 @@ public final class Broadcast: UIView {
     private lazy var dismissButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(dismissButtonImage, for: .normal)
+        button.setImage(dismissButtonImage?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
