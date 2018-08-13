@@ -364,11 +364,11 @@
 				146D3C3F1FBE466D00124B76 /* ViewController.swift */,
 				4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */,
 				AAC1AFB32021058000C71B7C /* Demo.swift */,
+				DACE1CC62121714A00F7197A /* DemoComponentsTests.swift */,
 				4443F9B0209D5ECE00E35719 /* Helpers.swift */,
 				4412FDCC20A433550037A2FC /* SplitViewController.swift */,
 				4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */,
 				4423F226209CB24500B81D68 /* MiniToastView.swift */,
-				DACE1CC62121714A00F7197A /* DemoComponentsTests.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
