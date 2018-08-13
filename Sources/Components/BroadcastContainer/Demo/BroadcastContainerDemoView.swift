@@ -29,10 +29,7 @@ public class BroadcastContainerDemoView: UIView, Lifecyclable {
 
     func viewDidAppear() {
         setup()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [weak self] in
-            self?.displayBroadcastContainer()
-        }
+        displayBroadcastContainer()
     }
 }
 
