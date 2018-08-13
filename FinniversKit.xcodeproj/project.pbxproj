@@ -10,7 +10,6 @@
 		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
 		144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* AppDelegate.swift */; };
 		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
-		1479E73A211AE5FF0027EAEB /* LoginViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1479E739211AE5FF0027EAEB /* LoginViewDemoViewTest.swift */; };
 		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		431875C1211180F100D71723 /* ReviewProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* ReviewProfileCell.swift */; };
 		431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C221118CE200D71723 /* ReviewViewDefaultData.swift */; };
@@ -127,34 +126,18 @@
 		AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */; };
 		B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
-		DA1812B1211D6AC3006A0DC2 /* ButtonDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812AF211D6ABB006A0DC2 /* ButtonDemoViewTest.swift */; };
-		DA1812B4211D6C52006A0DC2 /* LabelDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812B2211D6C2B006A0DC2 /* LabelDemoViewTest.swift */; };
-		DA1812B7211D6D26006A0DC2 /* RibbonDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812B5211D6D09006A0DC2 /* RibbonDemoViewTest.swift */; };
-		DA1812BA211D6DFC006A0DC2 /* TextFieldDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812B8211D6DF1006A0DC2 /* TextFieldDemoViewTest.swift */; };
-		DA1812BD211D6EAF006A0DC2 /* ToastDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812BB211D6E9E006A0DC2 /* ToastDemoViewTest.swift */; };
-		DA1812C0211D6F82006A0DC2 /* RoundedImageViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812BE211D6F71006A0DC2 /* RoundedImageViewDemoViewTest.swift */; };
-		DA1812C3211D71A1006A0DC2 /* AdReporterDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812C1211D7194006A0DC2 /* AdReporterDemoViewTest.swift */; };
-		DA1812C6211D7304006A0DC2 /* FrontpageDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812C4211D72ED006A0DC2 /* FrontpageDemoViewTest.swift */; };
-		DA1812C9211D78D8006A0DC2 /* PopupViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812C7211D78C4006A0DC2 /* PopupViewDemoViewTest.swift */; };
-		DA1812CC211D79A5006A0DC2 /* ReviewViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812CA211D797F006A0DC2 /* ReviewViewDemoViewTest.swift */; };
-		DA1812CF211D7A55006A0DC2 /* EmptyViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1812CD211D7A3F006A0DC2 /* EmptyViewDemoViewTest.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
-		DA817589211C7B9E00E3F098 /* RadioButtonDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817584211C7AE400E3F098 /* RadioButtonDemoViewTest.swift */; };
-		DA81758C211C7D3700E3F098 /* CheckboxDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81758A211C7D1900E3F098 /* CheckboxDemoViewTest.swift */; };
-		DA81758E211C7F5000E3F098 /* InlineConsentDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81758D211C7F5000E3F098 /* InlineConsentDemoViewTest.swift */; };
-		DA817591211C802B00E3F098 /* ConsentTransparencyInfoDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81758F211C802600E3F098 /* ConsentTransparencyInfoDemoViewTest.swift */; };
-		DA817594211C825900E3F098 /* SwitchViewDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817592211C824E00E3F098 /* SwitchViewDemoViewTest.swift */; };
-		DA817597211C84C000E3F098 /* BroadcastDemoViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817595211C849600E3F098 /* BroadcastDemoViewTest.swift */; };
 		DAA14BC3211475CA00F47E8C /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
 		DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */; };
 		DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
 		DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */; };
+		DACE1CC72121714A00F7197A /* DemoComponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACE1CC62121714A00F7197A /* DemoComponentsTests.swift */; };
 		DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */; };
 		DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
@@ -206,7 +189,6 @@
 		144351BA1FBE2BF1007B2229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		144351C31FBE2FA2007B2229 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		146D3C3F1FBE466D00124B76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1479E739211AE5FF0027EAEB /* LoginViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewDemoViewTest.swift; sourceTree = "<group>"; };
 		14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* ReviewProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewProfileCell.swift; sourceTree = "<group>"; };
@@ -327,28 +309,11 @@
 		B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
-		DA1812AF211D6ABB006A0DC2 /* ButtonDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDemoViewTest.swift; sourceTree = "<group>"; };
-		DA1812B2211D6C2B006A0DC2 /* LabelDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDemoViewTest.swift; sourceTree = "<group>"; };
-		DA1812B5211D6D09006A0DC2 /* RibbonDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RibbonDemoViewTest.swift; sourceTree = "<group>"; };
-		DA1812B8211D6DF1006A0DC2 /* TextFieldDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDemoViewTest.swift; sourceTree = "<group>"; };
-		DA1812BB211D6E9E006A0DC2 /* ToastDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDemoViewTest.swift; sourceTree = "<group>"; };
-		DA1812BE211D6F71006A0DC2 /* RoundedImageViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageViewDemoViewTest.swift; sourceTree = "<group>"; };
-		DA1812C1211D7194006A0DC2 /* AdReporterDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoViewTest.swift; sourceTree = "<group>"; };
-		DA1812C4211D72ED006A0DC2 /* FrontpageDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontpageDemoViewTest.swift; sourceTree = "<group>"; };
-		DA1812C7211D78C4006A0DC2 /* PopupViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewDemoViewTest.swift; sourceTree = "<group>"; };
-		DA1812CA211D797F006A0DC2 /* ReviewViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewDemoViewTest.swift; sourceTree = "<group>"; };
-		DA1812CD211D7A3F006A0DC2 /* EmptyViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoViewTest.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoView.swift; sourceTree = "<group>"; };
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
-		DA817584211C7AE400E3F098 /* RadioButtonDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoViewTest.swift; sourceTree = "<group>"; };
-		DA81758A211C7D1900E3F098 /* CheckboxDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoViewTest.swift; sourceTree = "<group>"; };
-		DA81758D211C7F5000E3F098 /* InlineConsentDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineConsentDemoViewTest.swift; sourceTree = "<group>"; };
-		DA81758F211C802600E3F098 /* ConsentTransparencyInfoDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDemoViewTest.swift; sourceTree = "<group>"; };
-		DA817592211C824E00E3F098 /* SwitchViewDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewDemoViewTest.swift; sourceTree = "<group>"; };
-		DA817595211C849600E3F098 /* BroadcastDemoViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastDemoViewTest.swift; sourceTree = "<group>"; };
 		DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
@@ -356,6 +321,7 @@
 		DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadioboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		DACE1CC62121714A00F7197A /* DemoComponentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoComponentsTests.swift; sourceTree = "<group>"; };
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
@@ -402,6 +368,7 @@
 				4412FDCC20A433550037A2FC /* SplitViewController.swift */,
 				4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */,
 				4423F226209CB24500B81D68 /* MiniToastView.swift */,
+				DACE1CC62121714A00F7197A /* DemoComponentsTests.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -462,7 +429,6 @@
 			children = (
 				43BACE6D21117DC70052114C /* ReviewViewDemoView.swift */,
 				431875C221118CE200D71723 /* ReviewViewDefaultData.swift */,
-				DA1812CA211D797F006A0DC2 /* ReviewViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -741,7 +707,6 @@
 			isa = PBXGroup;
 			children = (
 				4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */,
-				DA1812AF211D6ABB006A0DC2 /* ButtonDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -760,7 +725,6 @@
 			isa = PBXGroup;
 			children = (
 				4447F6781FDB2B110033DBC1 /* LabelDemoView.swift */,
-				DA1812B2211D6C2B006A0DC2 /* LabelDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -779,7 +743,6 @@
 			isa = PBXGroup;
 			children = (
 				4447F69E1FDB2B110033DBC1 /* RibbonDemoView.swift */,
-				DA1812B5211D6D09006A0DC2 /* RibbonDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -799,7 +762,6 @@
 			isa = PBXGroup;
 			children = (
 				4447F6A51FDB2B110033DBC1 /* TextFieldDemoView.swift */,
-				DA1812B8211D6DF1006A0DC2 /* TextFieldDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -818,7 +780,6 @@
 			isa = PBXGroup;
 			children = (
 				4447F6AA1FDB2B110033DBC1 /* ToastDemoView.swift */,
-				DA1812BB211D6E9E006A0DC2 /* ToastDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -884,7 +845,6 @@
 			isa = PBXGroup;
 			children = (
 				447AFC1020984B6E000F793E /* FrontpageViewDemoView.swift */,
-				DA1812C4211D72ED006A0DC2 /* FrontpageDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -982,7 +942,6 @@
 			children = (
 				44D912682077AD0200486848 /* PopupViewDefaultData.swift */,
 				44D912692077AD0200486848 /* PopupViewDemoView.swift */,
-				DA1812C7211D78C4006A0DC2 /* PopupViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1000,7 +959,6 @@
 			isa = PBXGroup;
 			children = (
 				44D912722077AD1200486848 /* EmptyViewDemoView.swift */,
-				DA1812CD211D7A3F006A0DC2 /* EmptyViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1010,7 +968,6 @@
 			children = (
 				44D912752077AD1800486848 /* LoginViewDefaultData.swift */,
 				44D912762077AD1800486848 /* LoginViewDemoView.swift */,
-				1479E739211AE5FF0027EAEB /* LoginViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1045,7 +1002,6 @@
 			isa = PBXGroup;
 			children = (
 				45B2E073207E184D00C68B92 /* InlineConsentDemoView.swift */,
-				DA81758D211C7F5000E3F098 /* InlineConsentDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1065,7 +1021,6 @@
 			children = (
 				45D7C56F20494F72000E788F /* SwitchViewDemoView.swift */,
 				45D7C57220495039000E788F /* SwitchViewDefaultData.swift */,
-				DA817592211C824E00E3F098 /* SwitchViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1102,7 +1057,6 @@
 			children = (
 				45EDD63220A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift */,
 				45EDD62B20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift */,
-				DA81758F211C802600E3F098 /* ConsentTransparencyInfoDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1140,7 +1094,6 @@
 			isa = PBXGroup;
 			children = (
 				AF91BB98202C7F4D003E6366 /* BroadcastDemoView.swift */,
-				DA817595211C849600E3F098 /* BroadcastDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1149,7 +1102,6 @@
 			isa = PBXGroup;
 			children = (
 				B01D7BD31E0D28C10BBE2FF4 /* RoundedImageViewDemoView.swift */,
-				DA1812BE211D6F71006A0DC2 /* RoundedImageViewDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1180,9 +1132,7 @@
 			isa = PBXGroup;
 			children = (
 				DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */,
-				DA817584211C7AE400E3F098 /* RadioButtonDemoViewTest.swift */,
 				DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */,
-				DA81758A211C7D1900E3F098 /* CheckboxDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1204,7 +1154,6 @@
 			isa = PBXGroup;
 			children = (
 				DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */,
-				DA1812C1211D7194006A0DC2 /* AdReporterDemoViewTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1461,25 +1410,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA1812B4211D6C52006A0DC2 /* LabelDemoViewTest.swift in Sources */,
-				DA1812B7211D6D26006A0DC2 /* RibbonDemoViewTest.swift in Sources */,
-				DA817591211C802B00E3F098 /* ConsentTransparencyInfoDemoViewTest.swift in Sources */,
-				DA1812C9211D78D8006A0DC2 /* PopupViewDemoViewTest.swift in Sources */,
-				DA1812C3211D71A1006A0DC2 /* AdReporterDemoViewTest.swift in Sources */,
-				DA1812BA211D6DFC006A0DC2 /* TextFieldDemoViewTest.swift in Sources */,
-				DA1812C0211D6F82006A0DC2 /* RoundedImageViewDemoViewTest.swift in Sources */,
-				DA817597211C84C000E3F098 /* BroadcastDemoViewTest.swift in Sources */,
-				DA1812B1211D6AC3006A0DC2 /* ButtonDemoViewTest.swift in Sources */,
-				DA81758C211C7D3700E3F098 /* CheckboxDemoViewTest.swift in Sources */,
-				DA817594211C825900E3F098 /* SwitchViewDemoViewTest.swift in Sources */,
 				559FD9BD2051684F00A101B0 /* BroadcastModelTests.swift in Sources */,
-				1479E73A211AE5FF0027EAEB /* LoginViewDemoViewTest.swift in Sources */,
-				DA1812C6211D7304006A0DC2 /* FrontpageDemoViewTest.swift in Sources */,
-				DA1812CC211D79A5006A0DC2 /* ReviewViewDemoViewTest.swift in Sources */,
-				DA1812CF211D7A55006A0DC2 /* EmptyViewDemoViewTest.swift in Sources */,
-				DA1812BD211D6EAF006A0DC2 /* ToastDemoViewTest.swift in Sources */,
-				DA817589211C7B9E00E3F098 /* RadioButtonDemoViewTest.swift in Sources */,
-				DA81758E211C7F5000E3F098 /* InlineConsentDemoViewTest.swift in Sources */,
+				DACE1CC72121714A00F7197A /* DemoComponentsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
