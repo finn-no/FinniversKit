@@ -14,9 +14,8 @@ class RoundedImageViewDemoViewTest: FBSnapshotTestCase {
     }
 
     func testRoundedImageViewDemoView() {
-        let imageView = RoundedImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        imageView.image = UIImage(named: "AppIcon")
-        FBSnapshotVerifyView(imageView)
+        let controller = ViewController<RoundedImageViewDemoView>()
+        FBSnapshotVerifyView(controller.view)
     }
 
 }
