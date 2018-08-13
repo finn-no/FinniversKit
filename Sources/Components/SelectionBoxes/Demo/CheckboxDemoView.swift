@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-class CheckboxDemoView: UIView {
+public class CheckboxDemoView: UIView {
     let strings = [
         "Mistanke om svindel",
         "Regelbrudd",
@@ -19,7 +19,7 @@ class CheckboxDemoView: UIView {
         return box
     }()
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
 
         let framesPerSecond = 60.0
@@ -43,17 +43,17 @@ class CheckboxDemoView: UIView {
         ])
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension CheckboxDemoView: CheckboxDelegate {
-    func checkbox(_ checkbox: Checkbox, didSelectItem item: CheckboxItem) {
+    public func checkbox(_ checkbox: Checkbox, didSelectItem item: CheckboxItem) {
         print("Selected item index:", item.index)
     }
 
-    func checkbox(_ checkbox: Checkbox, didUnselectItem item: CheckboxItem) {
+    public func checkbox(_ checkbox: Checkbox, didUnselectItem item: CheckboxItem) {
         print("Did unselected item", item)
     }
 }

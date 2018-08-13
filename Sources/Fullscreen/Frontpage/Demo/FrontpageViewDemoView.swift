@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-class FrontpageViewDemoView: UIView {
+public class FrontpageViewDemoView: UIView {
     fileprivate lazy var discoverGridView: AdsGridView = {
         let gridView = AdsGridView(delegate: self, dataSource: self)
         gridView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,11 +26,11 @@ class FrontpageViewDemoView: UIView {
     // Makes sure ads grid view layout is calculated after we know how much space we have for its collection view
     private var didSetupView = false
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
     }
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
 
         if didSetupView == false {
@@ -39,7 +39,7 @@ class FrontpageViewDemoView: UIView {
         }
     }
 
-    required init?(coder aDecoder: NSCoder) { fatalError() }
+    public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setupView() {
         addSubview(discoverGridView)
@@ -84,23 +84,23 @@ class FrontpageViewDemoView: UIView {
 // MARK: - AdsGridViewDelegate
 
 extension FrontpageViewDemoView: AdsGridViewDelegate {
-    func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
-    func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
-    func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
+    public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
+    public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
+    public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
 }
 
 // MARK: - AdsGridViewDataSource
 
 extension FrontpageViewDemoView: AdsGridViewDataSource {
-    func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
+    public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
         return ads.count
     }
 
-    func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
+    public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
         return ads[index]
     }
 
-    func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
@@ -120,23 +120,23 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         task.resume()
     }
 
-    func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat) {}
+    public func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat) {}
 }
 
 // MARK: - MarketsGridViewDelegate
 
 extension FrontpageViewDemoView: MarketsGridViewDelegate {
-    func marketsGridView(_ marketsGridView: MarketsGridView, didSelectItemAtIndex index: Int) {}
+    public func marketsGridView(_ marketsGridView: MarketsGridView, didSelectItemAtIndex index: Int) {}
 }
 
 // MARK: - MarketsGridViewDataSource
 
 extension FrontpageViewDemoView: MarketsGridViewDataSource {
-    func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int {
+    public func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int {
         return markets.count
     }
 
-    func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
+    public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
         return markets[index]
     }
 }
