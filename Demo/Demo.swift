@@ -315,9 +315,3 @@ enum FullscreenViews: String {
         }
     }
 }
-
-@objc protocol Lifecyclable where Self: UIView {
-    @objc optional func viewDidLoad()
-    @objc optional func viewWillAppear()
-    @objc optional func viewDidAppear()
-}
