@@ -37,12 +37,12 @@ File.open(File.join(temp_path, "#{output_filename}.swift"), "w") do |f|
 import UIKit
 
 public extension UIImage {
-    public convenience init(named imageAsset: ImageAsset) {
+    public convenience init(named imageAsset: FinniversImageAsset) {
         self.init(named: imageAsset.rawValue, in: FinniversKit.bundle, compatibleWith: nil)!
     }
 }
 
-public enum ImageAsset: String {
+public enum FinniversImageAsset: String {
 EOS
   names.each do |name|
     casename = name.dup

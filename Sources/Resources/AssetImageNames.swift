@@ -8,12 +8,12 @@
 import UIKit
 
 public extension UIImage {
-    public convenience init(named imageAsset: ImageAsset) {
+    public convenience init(named imageAsset: FinniversImageAsset) {
         self.init(named: imageAsset.rawValue, in: FinniversKit.bundle, compatibleWith: nil)!
     }
 }
 
-public enum ImageAsset: String {
+public enum FinniversImageAsset: String {
     case noImage = "NoImage"
     case spidLogo = "SpidLogo"
     case arrowDown
