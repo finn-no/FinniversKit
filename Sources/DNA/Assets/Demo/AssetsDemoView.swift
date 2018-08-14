@@ -39,8 +39,7 @@ extension AssetsDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(AssetsDemoViewCell.self, for: indexPath)
         let image = images[indexPath.row]
-        cell.iconImageView.image = UIImage(named: image)
-        cell.nameLabel.text = image.rawValue
+        cell.asset = image
         return cell
     }
 }

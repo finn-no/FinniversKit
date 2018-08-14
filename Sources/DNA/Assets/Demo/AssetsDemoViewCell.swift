@@ -41,4 +41,16 @@ class AssetsDemoViewCell: UITableViewCell {
             nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             ])
     }
+
+    var asset: FinniversImageAsset? {
+        didSet {
+            if let asset = asset {
+                iconImageView.image = UIImage(named: asset)
+            } else {
+                iconImageView.image = nil
+            }
+
+            nameLabel.text = asset?.rawValue ?? ""
+        }
+    }
 }
