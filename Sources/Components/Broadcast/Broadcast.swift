@@ -36,8 +36,8 @@ public final class Broadcast: UIView {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = iconImage
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
@@ -48,10 +48,10 @@ public final class Broadcast: UIView {
 
     private lazy var dismissButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(dismissButtonImage, for: .normal)
         button.tintColor = .stone
         button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -106,9 +106,11 @@ private extension Broadcast {
         NSLayoutConstraint.activate([
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            iconImageView.heightAnchor.constraint(equalToConstant: 28),
+            iconImageView.widthAnchor.constraint(equalToConstant: 28),
 
             dismissButton.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
-            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
+            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             dismissButton.heightAnchor.constraint(equalToConstant: 28),
             dismissButton.widthAnchor.constraint(equalToConstant: 28),
 

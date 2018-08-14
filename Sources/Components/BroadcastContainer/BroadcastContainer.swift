@@ -46,19 +46,19 @@ public final class BroadcastContainer: UIView {
 
     public weak var dataSource: BroadcastContainerDataSource? { didSet { needsReload = true } }
     public weak var delegate: BroadcastContainerDelegate?
-    public weak var tableView: UITableView? { didSet { didSet(tableView) } }
 
     // MARK: - Private properties
 
+    private weak var tableView: UITableView?
     private var needsReload = false
 
     private lazy var contentView: UIStackView = {
         let stack = UIStackView(frame: .zero)
-        stack.translatesAutoresizingMaskIntoConstraints = false
         stack.spacing = .mediumLargeSpacing
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.alignment = .fill
+        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
 
@@ -66,6 +66,7 @@ public final class BroadcastContainer: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .gray
         setupSubviews()
     }
 
@@ -87,11 +88,14 @@ public final class BroadcastContainer: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        print("Container layout")
+        print("Container layoutSubviews")
+
         if needsReload {
-            guard let dataSource = dataSource else { return }
 
             removeContent()
+
+            guard let dataSource = dataSource else { return }
+            needsReload = false
 
             let count = dataSource.numberOfBroadcasts(in: self)
 
@@ -102,25 +106,24 @@ public final class BroadcastContainer: UIView {
                 broadcast.delegate = self
                 contentView.addArrangedSubview(broadcast)
             }
-
-            needsReload = false
-            layoutIfNeeded()
-            tableView?.tableHeaderView = self
         }
+    }
+
+    public func present(in tableView: UITableView) {
+        self.tableView = tableView
+        tableView.tableHeaderView = self
+
+        leadingAnchor.constraint(equalTo: tableView.leadingAnchor).isActive = true
+        topAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
+        widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
+
+        tableView.layoutIfNeeded()
     }
 }
 
 // MARK: - Private
 
 private extension BroadcastContainer {
-
-    func didSet(_ tableView: UITableView?) {
-        guard let tableView = tableView else { return }
-        tableView.tableHeaderView = self
-        leadingAnchor.constraint(equalTo: tableView.leadingAnchor).isActive = true
-        topAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: tableView.trailingAnchor).isActive = true
-    }
 
     func remove(_ broadcast: Broadcast) {
         guard let subView = contentView.arrangedSubviews.filter({ $0 == broadcast }).first else {
@@ -148,6 +151,14 @@ extension BroadcastContainer: BroadcastDelegate {
     }
 
     public func broadcastDismissButtonTapped(_ broadcast: Broadcast) {
+        remove(broadcast)
 
+        if contentView.arrangedSubviews.count == 0 {
+            tableView?.tableHeaderView = nil
+            return
+        }
+
+        layoutIfNeeded()
+        tableView?.tableHeaderView = self
     }
 }
