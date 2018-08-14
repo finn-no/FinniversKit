@@ -75,8 +75,18 @@ EOS
       f.puts "    case #{casename} = \"#{name}\"\n"
     end
   end
-  f.puts "}"
 
+  f.puts "\n    var imageNames: [FinniversImageAsset] {\n"
+  f.puts "        return [\n"
+  names.each do |name|
+    casename = name.dup
+    casename[0] = casename[0].downcase
+    f.puts "            .#{casename},\n"
+  end
+  f.puts "    ]\n"
+  f.puts "  }\n"
+
+  f.puts "}"
 end
 
 swiftNewDigest = Digest::MD5.hexdigest(File.read(File.join(temp_path, "#{output_filename}.swift")))
