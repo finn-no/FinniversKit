@@ -14,8 +14,6 @@ public extension UIImage {
 }
 
 public enum FinniversImageAsset: String {
-    case noImage = "NoImage"
-    case spidLogo = "SpidLogo"
     case arrowDown
     case arrowRight
     case arrowUp
@@ -60,6 +58,7 @@ public enum FinniversImageAsset: String {
     case more
     case moreImg
     case moteplassen
+    case noImage
     case notifications
     case onlyNew
     case pin
@@ -85,4 +84,79 @@ public enum FinniversImageAsset: String {
     case view
     case webview
     case yourads
+
+    public static var imageNames: [FinniversImageAsset] {
+        return [
+            .arrowDown,
+            .arrowRight,
+            .arrowUp,
+            .attachment,
+            .blockUser,
+            .boat,
+            .calendar,
+            .camera,
+            .car,
+            .check,
+            .checkmarkBig,
+            .classifieds,
+            .distance,
+            .download,
+            .edit,
+            .editBig,
+            .error,
+            .favouriteAdd,
+            .favouriteAddImg,
+            .favouriteAdded,
+            .favouriteAddedImg,
+            .favourites,
+            .gallery,
+            .gridView,
+            .help,
+            .hide,
+            .home,
+            .important,
+            .info,
+            .jobs,
+            .listView,
+            .mapDirections,
+            .mapDrawarea,
+            .mapMyposition,
+            .mc,
+            .messages,
+            .minus,
+            .miscLike,
+            .miscLiked,
+            .miscMoney,
+            .mittanbud,
+            .more,
+            .moreImg,
+            .moteplassen,
+            .noImage,
+            .notifications,
+            .onlyNew,
+            .pin,
+            .plus,
+            .profile,
+            .rate,
+            .rated,
+            .ratings,
+            .realestate,
+            .remove,
+            .search,
+            .searchBig,
+            .send,
+            .settings,
+            .share,
+            .shopping,
+            .smalljobs,
+            .success,
+            .trashcan,
+            .travel,
+            .vehicles,
+            .verified,
+            .view,
+            .webview,
+            .yourads,
+    ]
+  }
 }
