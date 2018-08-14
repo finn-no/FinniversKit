@@ -40,6 +40,7 @@ extension AssetsDemoView: UITableViewDataSource {
         let image = images[indexPath.row]
         cell.imageView?.image = UIImage(named: image)
         cell.textLabel?.text = image.rawValue
+        cell.textLabel?.font = .body
         return cell
     }
 }
