@@ -14,8 +14,6 @@ public extension UIImage {
 }
 
 public enum FinniversImageAsset: String {
-    case noImage = "NoImage"
-    case spidLogo = "SpidLogo"
     case arrowDown
     case arrowRight
     case arrowUp
@@ -60,6 +58,7 @@ public enum FinniversImageAsset: String {
     case more
     case moreImg
     case moteplassen
+    case noImage
     case notifications
     case onlyNew
     case pin

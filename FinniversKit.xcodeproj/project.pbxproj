@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
 		144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* AppDelegate.swift */; };
+		144959DB2122C4400084549F /* AssetImageNames.h in Headers */ = {isa = PBXBuildFile; fileRef = 144959D92122C4400084549F /* AssetImageNames.h */; };
+		144959DC2122C4400084549F /* AssetImageNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 144959DA2122C4400084549F /* AssetImageNames.m */; };
 		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
 		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		431875C1211180F100D71723 /* ReviewProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* ReviewProfileCell.swift */; };
@@ -180,6 +182,8 @@
 		14405C741FAFBD1800D03E04 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		144351BA1FBE2BF1007B2229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		144351C31FBE2FA2007B2229 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		144959D92122C4400084549F /* AssetImageNames.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetImageNames.h; sourceTree = "<group>"; };
+		144959DA2122C4400084549F /* AssetImageNames.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetImageNames.m; sourceTree = "<group>"; };
 		146D3C3F1FBE466D00124B76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -782,6 +786,8 @@
 				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
 				44C6CE43209CABFE00929269 /* AssetImageNames.swift */,
+				144959D92122C4400084549F /* AssetImageNames.h */,
+				144959DA2122C4400084549F /* AssetImageNames.m */,
 				4447F6BA1FDB2B110033DBC1 /* Fonts */,
 			);
 			path = Resources;
@@ -916,7 +922,6 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-
 		44F8831020551D59003E3171 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1112,6 +1117,7 @@
 			files = (
 				4447F7021FDB2B110033DBC1 /* FinniversKit.h in Headers */,
 				44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */,
+				144959DB2122C4400084549F /* AssetImageNames.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1198,6 +1204,7 @@
 					};
 					CB3CF1551F73E5870041EF20 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -1420,6 +1427,7 @@
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
+				144959DC2122C4400084549F /* AssetImageNames.m in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
@@ -1669,6 +1677,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
@@ -1694,6 +1703,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1705,6 +1715,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
