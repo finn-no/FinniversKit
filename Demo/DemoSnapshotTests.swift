@@ -35,55 +35,55 @@ class ComponentViewTests: FBSnapshotTestCase {
         recordMode = false
     }
 
-    func testComponentViewBroadcast() {
+    func testBroadcast() {
         snapshot(.broadcast)
     }
 
-    func testComponentViewBroadcastContainer() {
+    func testBroadcastContainer() {
         snapshot(.broadcastContainer)
     }
 
-    func testComponentViewButton() {
+    func testButton() {
         snapshot(.button)
     }
 
-    func testComponentViewLabel() {
+    func testLabel() {
         snapshot(.label)
     }
 
-    func testComponentViewRibbon() {
+    func testRibbon() {
         snapshot(.ribbon)
     }
 
-    func testComponentViewTextField() {
+    func testTextField() {
         snapshot(.textField)
     }
 
-    func testComponentViewToast() {
+    func testToast() {
         snapshot(.toast)
     }
 
-    func testComponentViewSwitchView() {
+    func testSwitchView() {
         snapshot(.switchView)
     }
 
-    func testComponentViewInlineConsent() {
+    func testInlineConsent() {
         snapshot(.inlineConsent)
     }
 
-    func testComponentViewConsentTransparencyInfo() {
+    func testConsentTransparencyInfo() {
         snapshot(.consentTransparencyInfo)
     }
 
-    func testComponentViewCheckbox() {
+    func testCheckbox() {
         snapshot(.checkbox)
     }
 
-    func testComponentViewRadioButton() {
+    func testRadioButton() {
         snapshot(.radioButton)
     }
 
-    func testComponentViewRoundedImageView() {
+    func testRoundedImageView() {
         snapshot(.roundedImageView)
     }
 }
@@ -94,15 +94,15 @@ class RecyclingViewTests: FBSnapshotTestCase {
         recordMode = false
     }
 
-    func testRecyclingViewNotificationsListView() {
+    func testNotificationsListView() {
         snapshot(.notificationsListView)
     }
 
-    func testRecyclingViewMarketsGridView() {
+    func testMarketsGridView() {
         snapshot(.marketsGridView)
     }
 
-    func testRecyclingViewAdsGridView() {
+    func testAdsGridView() {
         snapshot(.adsGridView)
     }
 }
@@ -113,23 +113,23 @@ class FullscreenViewTests: FBSnapshotTestCase {
         recordMode = false
     }
 
-    func testFullscreenViewFrontpageView() {
+    func testFrontpageView() {
         snapshot(.frontpageView)
     }
 
-    func testFullscreenViewPopupView() {
+    func testPopupView() {
         snapshot(.popupView)
     }
 
-    func testFullscreenViewEmptyView() {
+    func testEmptyView() {
         snapshot(.emptyView)
     }
 
-    func testFullscreenViewReportAdView() {
+    func testReportAdView() {
         snapshot(.reportAdView)
     }
 
-    func testFullscreenViewReviewView() {
+    func testReviewView() {
         snapshot(.reviewView)
     }
 }
