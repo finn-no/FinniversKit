@@ -10,7 +10,7 @@
 		141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141F08C52123110B001DB145 /* DemoHelpers.swift */; };
 		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
 		144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* AppDelegate.swift */; };
-		144959DB2122C4400084549F /* AssetImageNames.h in Headers */ = {isa = PBXBuildFile; fileRef = 144959D92122C4400084549F /* AssetImageNames.h */; };
+		144959DB2122C4400084549F /* AssetImageNames.h in Headers */ = {isa = PBXBuildFile; fileRef = 144959D92122C4400084549F /* AssetImageNames.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		144959DC2122C4400084549F /* AssetImageNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 144959DA2122C4400084549F /* AssetImageNames.m */; };
 		144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144959DF2122D8C20084549F /* AssetsDemoView.swift */; };
 		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
