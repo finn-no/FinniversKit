@@ -118,11 +118,3 @@ public struct NotificationFactory {
         ]
     }
 }
-
-extension NSMutableAttributedString {
-    func setColor(color: UIColor, forText stringValue: String) {
-        let range: NSRange = mutableString.range(of: stringValue, options: .caseInsensitive)
-        addAttribute(.foregroundColor, value: color, range: range)
-        addAttribute(.font, value: UIFont.title5, range: range)
-    }
-}
