@@ -19,7 +19,6 @@ public class AssetsDemoView: UIView {
         let view = UITableView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .milk
-        view.rowHeight = AssetsDemoViewCell.size
         return view
     }()
 
@@ -27,7 +26,7 @@ public class AssetsDemoView: UIView {
         addSubview(tableView)
         tableView.fillInSuperview()
         tableView.dataSource = self
-        tableView.register(AssetsDemoViewCell.self)
+        tableView.register(UITableViewCell.self)
     }
 }
 
@@ -37,9 +36,10 @@ extension AssetsDemoView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(AssetsDemoViewCell.self, for: indexPath)
+        let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
         let image = images[indexPath.row]
-        cell.asset = image
+        cell.imageView?.image = UIImage(named: image)
+        cell.textLabel?.text = image.rawValue
         return cell
     }
 }
