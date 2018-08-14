@@ -1,10 +1,11 @@
 import UIKit
 import FinniversKit
 
-class AssetsDemoViewCell: UICollectionViewCell {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+class AssetsDemoViewCell: UITableViewCell {
+    static let size: CGFloat = 70
 
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
 
@@ -12,7 +13,7 @@ class AssetsDemoViewCell: UICollectionViewCell {
         fatalError()
     }
 
-    lazy var imageView: UIImageView = {
+    lazy var iconImageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
@@ -22,23 +23,22 @@ class AssetsDemoViewCell: UICollectionViewCell {
     lazy var nameLabel: Label = {
         let label = Label(style: .body(.licorice))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
         return label
     }()
 
     func setup() {
-        contentView.addSubview(imageView)
+        contentView.addSubview(iconImageView)
         contentView.addSubview(nameLabel)
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            iconImageView.widthAnchor.constraint(equalToConstant: AssetsDemoViewCell.size),
+            iconImageView.heightAnchor.constraint(equalToConstant: AssetsDemoViewCell.size - 20),
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            nameLabel.topAnchor.constraint(equalTo: imageView.topAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             ])
     }
 }

@@ -15,36 +15,31 @@ public class AssetsDemoView: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let size = UIScreen.main.bounds.width / 5
-        let spacing: CGFloat = 10
-        layout.itemSize = CGSize(width: size, height: size * 2)
-        layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = spacing
-        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    lazy var tableView: UITableView = {
+        let view = UITableView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .milk
+        view.rowHeight = AssetsDemoViewCell.size
         return view
     }()
 
     private func setup() {
-        addSubview(collectionView)
-        collectionView.fillInSuperview()
-        collectionView.dataSource = self
-        collectionView.register(AssetsDemoViewCell.self)
+        addSubview(tableView)
+        tableView.fillInSuperview()
+        tableView.dataSource = self
+        tableView.register(AssetsDemoViewCell.self)
     }
 }
 
-extension AssetsDemoView: UICollectionViewDataSource {
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension AssetsDemoView: UITableViewDataSource {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return images.count
     }
 
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(AssetsDemoViewCell.self, for: indexPath)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(AssetsDemoViewCell.self, for: indexPath)
         let image = images[indexPath.row]
-        cell.imageView.image = UIImage(named: image)
+        cell.iconImageView.image = UIImage(named: image)
         cell.nameLabel.text = image.rawValue
         return cell
     }
