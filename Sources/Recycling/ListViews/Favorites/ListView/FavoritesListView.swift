@@ -18,13 +18,13 @@ public protocol FavoritesListViewDataSource: NSObjectProtocol {
 }
 
 public class FavoritesListView: UIView {
-    public static let estimatedRowHeight: CGFloat = 106.0
+    public static let estimatedRowHeight: CGFloat = 90.0
 
     // MARK: - Internal properties
 
     // Have the collection view be private so nobody messes with it.
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self

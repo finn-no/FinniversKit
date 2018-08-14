@@ -49,7 +49,7 @@ public struct FavoriteFactory {
 
     private static var titles: [String] {
         return [
-            "Findings Festival 2018 - Helgepass",
+            "Findings Festival 2018 - Helgepass, betal senere! :D",
             "Superfin Flodhest",
             "Annonsen er slettet",
             "Canon 5d mark iii",

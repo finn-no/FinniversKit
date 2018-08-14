@@ -35,7 +35,6 @@ public struct ContainmentOptions: OptionSet {
             let screens = FullscreenViews.all[indexPath.row]
             switch screens {
             case .reportAdView:
-                //                self = .navigationController
                 return nil
             default:
                 return nil
@@ -49,8 +48,7 @@ public struct ContainmentOptions: OptionSet {
                 return nil
             }
         case .recycling:
-            _ = RecyclingViews.all[indexPath.row]
-            return nil
+            self = .all
         }
     }
 }
