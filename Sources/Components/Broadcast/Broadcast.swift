@@ -37,7 +37,6 @@ public final class Broadcast: UIView {
         let imageView = UIImageView()
         imageView.image = iconImage
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -54,28 +53,6 @@ public final class Broadcast: UIView {
         button.tintColor = .stone
         button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
         return button
-    }()
-
-    private let imageViewSizeConstraintConstant = CGSize(width: 28, height: 28)
-
-    private lazy var subviewConstraints: [NSLayoutConstraint] = {
-        let messageLabelTopAnchorConstraint = messageTextView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
-        messageLabelTopAnchorConstraint.priority = UILayoutPriority(rawValue: 999)
-
-        return [
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.heightAnchor.constraint(equalToConstant: imageViewSizeConstraintConstant.height),
-            iconImageView.widthAnchor.constraint(equalToConstant: imageViewSizeConstraintConstant.width),
-            iconImageView.topAnchor.constraint(equalTo: messageTextView.topAnchor, constant: -.smallSpacing),
-            dismissButton.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
-            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            dismissButton.heightAnchor.constraint(equalToConstant: dismissButtonImage?.size.height ?? 0),
-            dismissButton.widthAnchor.constraint(equalToConstant: dismissButtonImage?.size.width ?? 0),
-            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .smallSpacing),
-            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.smallSpacing),
-            messageLabelTopAnchorConstraint,
-            messageTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
-        ]
     }()
 
     public weak var delegate: BroadcastDelegate?
@@ -95,75 +72,17 @@ public final class Broadcast: UIView {
         return messageTextView.attributedText
     }
 
+    public let model: BroadcastModel
+
     /// Initalizes a BrodcastView
-    /// When initialized the Broadcast will have a height of zero and appear as invisible/collapsed
-    /// Use present(message:animated:completion) to show a message and dismiss(animated:completion) to hide
-    /// - Parameter frame:
-    public override init(frame: CGRect = .zero) {
-        super.init(frame: frame)
+    public init(model: BroadcastModel) {
+        self.model = model
+        super.init(frame: .zero)
         setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-}
-
-// MARK: - Public
-
-extension Broadcast {
-    /// Presents the message in the Broadcast
-    /// When the message is presented the Broadcast will expand to the size of the label
-    /// containing the text.
-    ///
-    /// - Parameters:
-    ///   - viewModel: The view model containing the message to present
-    ///   - animated: flag to determine if the expansion of the Broadcast should be animated
-    ///   - completion: a closure called when the animation finished
-    public func presentMessage(using viewModel: BroadcastModel, animated: Bool = true, completion: (() -> Void)? = nil) {
-        if isPresenting {
-            return
-        }
-
-        inflate(using: viewModel, animated: animated, completion: completion)
-
-        isPresenting = true
-    }
-
-    /// Dismisses the Broadcast by returning it to its zero height/collapsed state
-    ///
-    /// - Parameters:
-    ///   - animated: flag to determine if the collapse of the Broadcast should be animated
-    ///   - completion: a closure called when the animation finished
-    public func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
-        guard isPresenting else {
-            return
-        }
-
-        deflate(animated: animated, completion: completion)
-
-        isPresenting = false
-    }
-
-    /// Returns a calculated height for a Broadcast by checking the bounding rect for the message.
-    ///
-    /// - Parameter constrainedWidth: the constrained width to use for calculating the size
-    /// - Returns: the calculated height of the Broadcast
-    public func calculatedSize(withConstrainedWidth constrainedWidth: CGFloat) -> CGSize {
-        guard let attributedMessage = attributedMessage else {
-            return CGSize(width: constrainedWidth, height: 0)
-        }
-
-        let horizontalSpacings = .mediumLargeSpacing + imageViewSizeConstraintConstant.width + .smallSpacing + .smallSpacing + (dismissButtonImage?.size.width ?? 0) + .mediumLargeSpacing
-        let rectWidth = constrainedWidth - horizontalSpacings
-        let rectSize = CGSize(width: rectWidth, height: CGFloat.infinity)
-        let boundingRect = attributedMessage.boundingRect(with: rectSize, options: .usesLineFragmentOrigin, context: nil)
-
-        let verticalSpacing = .mediumLargeSpacing + .mediumLargeSpacing
-        let calculatedSize = CGSize(width: constrainedWidth, height: boundingRect.height + verticalSpacing)
-
-        return calculatedSize
+        fatalError("Init not implemented")
     }
 }
 
@@ -176,69 +95,32 @@ private extension Broadcast {
         clipsToBounds = true
         layer.cornerRadius = Style.containerCornerRadius
 
-        iconImageView.image = iconImage
+        let attributedText = NSMutableAttributedString(attributedString: model.messageWithHTMLLinksReplacedByAttributedStrings)
+        attributedText.addAttributes(Broadcast.Style.fontAttributes, range: NSMakeRange(0, attributedText.string.utf16.count))
+        messageTextView.attributedText = attributedText
 
         addSubview(messageTextView)
         addSubview(iconImageView)
         addSubview(dismissButton)
 
-        NSLayoutConstraint.activate(subviewConstraints)
+        NSLayoutConstraint.activate([
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
 
-        setClampedHeight(active: true)
+            dismissButton.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
+            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
+            dismissButton.heightAnchor.constraint(equalToConstant: 28),
+            dismissButton.widthAnchor.constraint(equalToConstant: 28),
+
+            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .smallSpacing),
+            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.smallSpacing),
+            messageTextView.topAnchor.constraint(equalTo: iconImageView.topAnchor),
+            messageTextView.heightAnchor.constraint(greaterThanOrEqualTo: iconImageView.heightAnchor),
+
+            bottomAnchor.constraint(equalTo: messageTextView.bottomAnchor, constant: .mediumLargeSpacing)
+        ])
     }
 
-    func inflate(using viewModel: BroadcastModel, animated: Bool, completion: (() -> Void)?) {
-        let attributedText = NSMutableAttributedString(attributedString: viewModel.messageWithHTMLLinksReplacedByAttributedStrings)
-        attributedText.addAttributes(Broadcast.Style.fontAttributes, range: NSMakeRange(0, attributedText.string.utf16.count))
-        messageTextView.attributedText = attributedText
-
-        setClampedHeight(active: false)
-
-        if animated {
-            UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                self?.superview?.layoutIfNeeded()
-            }) { _ in
-                completion?()
-            }
-        } else {
-            superview?.layoutIfNeeded()
-            completion?()
-        }
-    }
-
-    func deflate(animated: Bool, completion: (() -> Void)?) {
-        setClampedHeight(active: true)
-
-        if animated {
-            UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                self?.superview?.layoutIfNeeded()
-            }) { [weak self] _ in
-                self?.messageTextView.text = ""
-                completion?()
-            }
-        } else {
-            superview?.layoutIfNeeded()
-            messageTextView.text = ""
-            completion?()
-        }
-    }
-
-    func setClampedHeight(active isActive: Bool) {
-        let clampedHeightConstraint: NSLayoutConstraint = {
-            let clampedHeightConstraintIdentifier = "heightConstraint"
-
-            if let clampedHeightConstraint = constraints.filter({ $0.identifier == clampedHeightConstraintIdentifier }).first {
-                return clampedHeightConstraint
-            } else {
-                let clampedHeightConstraint = heightAnchor.constraint(equalToConstant: 0)
-                clampedHeightConstraint.identifier = clampedHeightConstraintIdentifier
-
-                return clampedHeightConstraint
-            }
-        }()
-
-        clampedHeightConstraint.isActive = isActive
-    }
 
     @objc func dismissButtonTapped(_ sender: UIButton) {
         delegate?.broadcastDismissButtonTapped(self)

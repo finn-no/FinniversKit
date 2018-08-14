@@ -7,19 +7,12 @@ import FinniversKit
 class BroadcastContainerDemoView: UIView {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
-
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self)
         tableView.separatorStyle = .none
         tableView.rowHeight = 100
-
+        tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
-    }()
-
-    private lazy var tableHeaderView: BroadcastContainer = {
-        let view = BroadcastContainer(frame: .zero)
-
-        return view
     }()
 
     private var broadcastMessages = [
@@ -27,30 +20,33 @@ class BroadcastContainerDemoView: UIView {
         BroadcastMessage(id: 2, message: "Their containers should have the colour \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content.\\n\nBroadcasts can also contain <a href=\"http://www.finn.no\">HTML links</a>."),
     ]
 
-    override func didMoveToSuperview() {
-        setup()
+    private lazy var tableHeaderView: BroadcastContainer = {
+        let container = BroadcastContainer(frame: .zero)
+        container.dataSource = self
+        container.tableView = tableView
+        container.translatesAutoresizingMaskIntoConstraints = false
+        return container
+    }()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [weak self] in
-            self?.displayBroadcastContainer()
-        }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
 private extension BroadcastContainerDemoView {
     func setup() {
         addSubview(tableView)
-
-        tableView.fillInSuperview()
-
-        tableView.dataSource = self
-    }
-
-    func displayBroadcastContainer() {
-        tableHeaderView.frame = CGRect(x: 0, y: 0, width: frame.width, height: 0)
-        tableView.tableHeaderView = tableHeaderView
-
-        tableHeaderView.delegate = self
-        tableHeaderView.dataSource = self
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
     }
 }
 
@@ -81,25 +77,7 @@ extension BroadcastContainerDemoView: BroadcastContainerDataSource {
 }
 
 extension BroadcastContainerDemoView: BroadcastContainerDelegate {
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void)) {
-        let tableHeaderViewFrame = CGRect(origin: .zero, size: CGSize(width: frame.width, height: containerSize.height))
 
-        tableView.beginUpdates()
-        tableHeaderView.frame = tableHeaderViewFrame
-        tableView.tableHeaderView = tableHeaderView
-        commitToDisplaying()
-        tableView.endUpdates()
-    }
-
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, willDismissBroadcastAtIndex index: Int, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void)) {
-        let tableHeaderViewFrame = CGRect(origin: .zero, size: CGSize(width: frame.width, height: newContainerSize.height))
-
-        tableView.beginUpdates()
-        tableHeaderView.frame = tableHeaderViewFrame
-        tableView.tableHeaderView = tableHeaderView
-        commitToDismissal()
-        tableView.endUpdates()
-    }
 
     func broadcastContainer(_ broadcastContainer: BroadcastContainer, didTapURL url: URL, inBroadcastAtIndex index: Int) {
         let alertController = UIAlertController(title: "Link tapped in broadcast at index \(index)", message: "URL: \(url)", preferredStyle: .alert)

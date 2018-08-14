@@ -5,22 +5,6 @@
 import UIKit
 
 public protocol BroadcastContainerDelegate: class {
-    /// Called when the BroadcastContainer is about to display its broadcasts
-    ///
-    /// - Parameters:
-    ///   - broadcastContainer: the BroadcastContainer
-    ///   - containerSize: the size that the BroadcastContainer will have when the broadcasts are displayed
-    ///   - commitToDisplaying: a closure that must be called in order for the BroadcastContainer to display its broadcasts
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, willDisplayBroadcastsWithContainerSize containerSize: CGSize, commitToDisplaying: @escaping (() -> Void))
-
-    /// Called when the BroadcastContainer is about to dismiss a broadcast
-    ///
-    /// - Parameters:
-    ///   - broadcastContainer: the BroadcastContainer
-    ///   - index: the index of the broadcast that is about to be dismissed
-    ///   - newContainerSize: the size that the BroadcastContainer will have when the broadcast is dismissed
-    ///   - commitToDismissal: a closure that must be called in order for the BroadcastContainer to dismiss the broadcast
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, willDismissBroadcastAtIndex index: Int, withNewContainerSize newContainerSize: CGSize, commitToDismissal: @escaping (() -> Void))
 
     /// Called when a URL in a broadcasts message is tapped
     ///
@@ -53,151 +37,89 @@ public protocol BroadcastContainerDataSource: class {
     func broadcastContainer(_ broadcastContainer: BroadcastContainer, broadcastMessageForIndex index: Int) -> BroadcastMessage
 }
 
+// MARK: -
+
 /// A view that is used to display multiple Broadcasts
 public final class BroadcastContainer: UIView {
-    private let contentViewInsets = UIEdgeInsets(top: .mediumLargeSpacing, leading: .mediumLargeSpacing, bottom: 0, trailing: -.mediumLargeSpacing)
-    private let broadcastSpacing: CGFloat = .mediumLargeSpacing
 
-    /// The datasource for the BroadcastContainer
-    public weak var dataSource: BroadcastContainerDataSource? {
-        didSet {
-            reload()
-        }
-    }
+    // MARK: Public properties
 
-    /// The delegate of the BroadcastContainer
+    public weak var dataSource: BroadcastContainerDataSource? { didSet { needsReload = true } }
     public weak var delegate: BroadcastContainerDelegate?
+    public weak var tableView: UITableView? { didSet { didSet(tableView) } }
+
+    // MARK: - Private properties
+
+    private var needsReload = false
 
     private lazy var contentView: UIStackView = {
-        let view = UIStackView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .vertical
-        view.spacing = broadcastSpacing
-        view.distribution = .fillProportionally
-        return view
+        let stack = UIStackView(frame: .zero)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.spacing = .mediumLargeSpacing
+        stack.axis = .vertical
+        stack.distribution = .fillProportionally
+        stack.alignment = .fill
+        return stack
     }()
+
+    // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setupSubviews()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    public required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    public override func didMoveToSuperview() {
-        contentView.frame = CGRect(x: 0, y: 0, width: frame.width, height: 0)
-    }
-}
+    private func setupSubviews() {
+        addSubview(contentView)
 
-// MARK: - Public
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-public extension BroadcastContainer {
-    /// Reloads the container by removing existing broadcasts and laying out all the broadcasts that the datasource provides
-    public func reload() {
-        guard let dataSource = dataSource else {
-            return
-        }
-
-        removeContentViewSubviews()
-
-        let rangeOfBroadcastsToDisplay = 0 ..< dataSource.numberOfBroadcasts(in: self)
-        let broadcastMessagesToDisplay = rangeOfBroadcastsToDisplay.map { dataSource.broadcastContainer(self, broadcastMessageForIndex: $0) }
-
-        layoutBroadcasts(from: broadcastMessagesToDisplay)
-
-        if let delegate = delegate {
-            delegate.broadcastContainer(self, willDisplayBroadcastsWithContainerSize: intrinsicContentSize, commitToDisplaying: {
-                UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                    self?.contentView.arrangedSubviews.forEach { $0.isHidden = false }
-                })
-            })
-        } else {
-            UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                self?.contentView.arrangedSubviews.forEach { $0.isHidden = false }
-            })
-        }
+            bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: .mediumLargeSpacing)
+        ])
     }
 
-    public override var intrinsicContentSize: CGSize {
-        guard contentView.arrangedSubviews.count != 0 else {
-            return CGSize(width: frame.size.width, height: 0)
-        }
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        print("Container layout")
+        if needsReload {
+            guard let dataSource = dataSource else { return }
 
-        let broadcastsHorizontalSpacings = contentViewInsets.leading + abs(contentViewInsets.trailing)
-        let constrainedWidth = frame.size.width - broadcastsHorizontalSpacings
+            removeContent()
 
-        let broadcastsTotalHeight = contentView.arrangedSubviews.reduce(CGFloat(0), { accumulatedHeight, arrangedSubview in
-            guard let broadcast = arrangedSubview as? Broadcast else {
-                return accumulatedHeight
+            let count = dataSource.numberOfBroadcasts(in: self)
+
+            for i in 0 ..< count {
+                let message = dataSource.broadcastContainer(self, broadcastMessageForIndex: i)
+                let model = BroadcastModel(with: message.text)
+                let broadcast = Broadcast(model: model)
+                broadcast.delegate = self
+                contentView.addArrangedSubview(broadcast)
             }
 
-            let broadcastHeight = broadcast.calculatedSize(withConstrainedWidth: constrainedWidth).height
-
-            return accumulatedHeight + broadcastHeight
-        })
-
-        guard broadcastsTotalHeight != 0 else {
-            return CGSize(width: frame.size.width, height: 0)
+            needsReload = false
+            layoutIfNeeded()
+            tableView?.tableHeaderView = self
         }
-
-        let broadcastTotalSpacing = ((CGFloat(contentView.arrangedSubviews.count) * broadcastSpacing) - .mediumLargeSpacing)
-        let verticalSpacing = contentViewInsets.top + broadcastTotalSpacing
-        let containerHeight = broadcastsTotalHeight + verticalSpacing
-
-        return CGSize(width: frame.size.width, height: containerHeight)
     }
 }
 
 // MARK: - Private
 
 private extension BroadcastContainer {
-    func setup() {
-        contentView.frame = CGRect(x: 0, y: 0, width: frame.width, height: 0)
 
-        addSubview(contentView)
-
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor, constant: contentViewInsets.top),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentViewInsets.leading),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: contentViewInsets.trailing),
-        ])
-
-        contentView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-        contentView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-    }
-
-    func layoutBroadcasts(from broadcastMessages: [BroadcastMessage]) {
-        let broadcasts = broadcastMessages.map { broadcast(from: $0) }
-        broadcasts.forEach { add($0, to: contentView) }
-    }
-
-    func broadcast(from broadcastMessage: BroadcastMessage) -> Broadcast {
-        let broadcast = Broadcast(frame: .zero)
-        let viewModel = BroadcastModel(with: broadcastMessage.message)
-        broadcast.presentMessage(using: viewModel, animated: false)
-
-        return broadcast
-    }
-
-    func add(_ broadcast: Broadcast, to stackView: UIStackView) {
-        broadcast.delegate = self
-        broadcast.translatesAutoresizingMaskIntoConstraints = false
-        broadcast.isHidden = true
-
-        stackView.addArrangedSubview(broadcast)
-
-        NSLayoutConstraint.activate([
-            broadcast.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            broadcast.widthAnchor.constraint(equalTo: stackView.widthAnchor),
-        ])
-
-        broadcast.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-        broadcast.setContentHuggingPriority(.defaultHigh, for: .vertical)
-
-        broadcast.layoutIfNeeded()
+    func didSet(_ tableView: UITableView?) {
+        guard let tableView = tableView else { return }
+        tableView.tableHeaderView = self
+        leadingAnchor.constraint(equalTo: tableView.leadingAnchor).isActive = true
+        topAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: tableView.trailingAnchor).isActive = true
     }
 
     func remove(_ broadcast: Broadcast) {
@@ -209,7 +131,7 @@ private extension BroadcastContainer {
         subView.removeFromSuperview()
     }
 
-    func removeContentViewSubviews() {
+    func removeContent() {
         contentView.arrangedSubviews.forEach { view in
             contentView.removeArrangedSubview(view)
             view.removeFromSuperview()
@@ -226,32 +148,6 @@ extension BroadcastContainer: BroadcastDelegate {
     }
 
     public func broadcastDismissButtonTapped(_ broadcast: Broadcast) {
-        if let delegate = delegate {
-            let newContainerSize: CGSize = {
-                let width = frame.width
-                let isLastBroadcastToBeRemoved = contentView.arrangedSubviews.count == 1
-                if isLastBroadcastToBeRemoved {
-                    return CGSize(width: width, height: 0)
-                } else {
-                    let height = frame.height - (broadcast.frame.height + .mediumLargeSpacing)
-                    return CGSize(width: width, height: height)
-                }
-            }()
 
-            let broadcastIndex = contentView.arrangedSubviews.index(of: broadcast) ?? 0
-            delegate.broadcastContainer(self, willDismissBroadcastAtIndex: broadcastIndex, withNewContainerSize: newContainerSize, commitToDismissal: {
-                UIView.animate(withDuration: 0.2, animations: {
-                    broadcast.isHidden = true
-                }, completion: { [weak self] _ in
-                    self?.remove(broadcast)
-                })
-            })
-        } else {
-            UIView.animate(withDuration: 0.2, animations: {
-                broadcast.isHidden = true
-            }, completion: { [weak self] _ in
-                self?.remove(broadcast)
-            })
-        }
     }
 }
