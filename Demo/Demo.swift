@@ -172,12 +172,14 @@ enum DnaViews: String {
     case color
     case font
     case spacing
+    case assets
 
     static var all: [DnaViews] {
         return [
             .color,
             .font,
             .spacing,
+            .assets,
         ]
     }
 
@@ -189,6 +191,8 @@ enum DnaViews: String {
             return ViewController<FontDemoView>()
         case .spacing:
             return ViewController<SpacingDemoView>()
+        case .assets:
+            return ViewController<AssetsDemoView>()
         }
     }
 }

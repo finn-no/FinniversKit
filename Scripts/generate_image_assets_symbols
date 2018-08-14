@@ -76,7 +76,7 @@ EOS
     end
   end
 
-  f.puts "\n    var imageNames: [FinniversImageAsset] {\n"
+  f.puts "\n    public static var imageNames: [FinniversImageAsset] {\n"
   f.puts "        return [\n"
   names.each do |name|
     casename = name.dup

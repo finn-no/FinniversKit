@@ -85,7 +85,7 @@ public enum FinniversImageAsset: String {
     case webview
     case yourads
 
-    var imageNames: [FinniversImageAsset] {
+    public static var imageNames: [FinniversImageAsset] {
         return [
             .arrowDown,
             .arrowRight,
