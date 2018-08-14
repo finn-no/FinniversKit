@@ -45,12 +45,15 @@ class DemoComponentsTests: FBSnapshotTestCase {
     }
 
     // MARK: Broadcasts
-    func testBroadcastDemoView() {
-        let controller = ViewController<BroadcastDemoView>()
+//    func testBroadcastDemoView() {
+//        let controller = ViewController<BroadcastDemoView>()
+//        FBSnapshotVerifyView(controller.view)
+//    }
+
+    func testBroadcastContainerDemoView() {
+        let controller = ViewController<BroadcastContainerDemoView>()
         FBSnapshotVerifyView(controller.view)
     }
-
-    // Missing broadcast container
 
     // MARK: Button
     func testButtonDemoView() {

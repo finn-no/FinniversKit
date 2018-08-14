@@ -4,10 +4,9 @@
 
 import FinniversKit
 
-class BroadcastContainerDemoView: UIView {
+public class BroadcastContainerDemoView: UIView {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
-        tableView.backgroundColor = .lightGray
         tableView.register(UITableViewCell.self)
         tableView.separatorStyle = .none
         tableView.rowHeight = 100
@@ -23,19 +22,20 @@ class BroadcastContainerDemoView: UIView {
 
     private lazy var broadcastContainer: BroadcastContainer = {
         let container = BroadcastContainer(frame: .zero)
+        container.delegate = self
         container.dataSource = self
         container.translatesAutoresizingMaskIntoConstraints = false
         return container
     }()
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
     func setup() {
         addSubview(tableView)
-        
+
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.topAnchor.constraint(equalTo: topAnchor),
@@ -46,7 +46,7 @@ class BroadcastContainerDemoView: UIView {
         broadcastContainer.present(in: tableView)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -68,21 +68,18 @@ extension BroadcastContainerDemoView: UITableViewDataSource {
 }
 
 extension BroadcastContainerDemoView: BroadcastContainerDataSource {
-    func numberOfBroadcasts(in broadcastContainer: BroadcastContainer) -> Int {
+    public func numberOfBroadcasts(in broadcastContainer: BroadcastContainer) -> Int {
         return broadcastMessages.count
     }
 
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, broadcastMessageForIndex index: Int) -> BroadcastMessage {
+    public func broadcastContainer(_ broadcastContainer: BroadcastContainer, broadcastMessageForIndex index: Int) -> BroadcastMessage {
         return broadcastMessages[index]
     }
 }
 
 extension BroadcastContainerDemoView: BroadcastContainerDelegate {
 
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, didTapURL url: URL, inBroadcastAtIndex index: Int) {
-        let alertController = UIAlertController(title: "Link tapped in broadcast at index \(index)", message: "URL: \(url)", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(okAction)
-        UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(alertController, animated: true, completion: nil)
+    public func broadcastContainer(_ broadcastContainer: BroadcastContainer, didTapURL url: URL, inBroadcastAtIndex index: Int) {
+        print("Did tap url:", url)
     }
 }

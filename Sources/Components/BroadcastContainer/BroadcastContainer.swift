@@ -66,7 +66,6 @@ public final class BroadcastContainer: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .gray
         setupSubviews()
     }
 
@@ -109,15 +108,18 @@ public final class BroadcastContainer: UIView {
         }
     }
 
-    public func present(in tableView: UITableView) {
-        self.tableView = tableView
-        tableView.tableHeaderView = self
+    public func present(in view: UIView) {
+        if let tableView = view as? UITableView {
+            self.tableView = tableView
+            tableView.tableHeaderView = self
 
-        leadingAnchor.constraint(equalTo: tableView.leadingAnchor).isActive = true
-        topAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
-        widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
+            leadingAnchor.constraint(equalTo: tableView.leadingAnchor).isActive = true
+            topAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
+            widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
 
-        tableView.layoutIfNeeded()
+            tableView.layoutIfNeeded()
+            tableView.tableHeaderView = self
+        }
     }
 }
 
