@@ -46,11 +46,11 @@ class AssetsDemoViewCell: UITableViewCell {
         didSet {
             if let asset = asset {
                 iconImageView.image = UIImage(named: asset)
+                nameLabel.text = "." + asset.rawValue
             } else {
                 iconImageView.image = nil
+                nameLabel.text = nil
             }
-
-            nameLabel.text = asset?.rawValue ?? ""
         }
     }
 }
