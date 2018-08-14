@@ -160,7 +160,7 @@ extension BroadcastContainer: BroadcastDelegate {
             return
         }
 
-        layoutIfNeeded()
+        tableView?.layoutIfNeeded()
         tableView?.tableHeaderView = self
     }
 }
