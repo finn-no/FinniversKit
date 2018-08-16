@@ -163,7 +163,7 @@ enum Sections: String {
         case .dna, .components, .fullscreen:
             return .fullscreen
         case .recycling:
-            return .master
+            return .fullscreen
         }
     }
 }
