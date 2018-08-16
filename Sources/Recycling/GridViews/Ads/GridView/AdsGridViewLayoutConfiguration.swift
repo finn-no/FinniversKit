@@ -52,9 +52,7 @@ enum AdsGridViewLayoutConfiguration {
     var numberOfColumns: Int {
         switch self {
         case .large:
-            let isLandscape = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)
-            return isLandscape ? 4 : 3
-
+            return 3
         default: return 2
         }
     }
