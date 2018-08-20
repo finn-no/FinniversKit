@@ -5,12 +5,12 @@
 import FinniversKit
 
 public class BroadcastDemoView: UIView {
-    lazy var broadcast: Broadcast = {
-        let view = Broadcast()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.delegate = self
-        return view
-    }()
+//    lazy var broadcast: Broadcast = {
+//        let view = Broadcast()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.delegate = self
+//        return view
+//    }()
 
     lazy var presentBroadcastButton: Button = {
         let button = Button(style: .default)
@@ -28,7 +28,7 @@ public class BroadcastDemoView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        broadcast.presentMessage(using: BroadcastModel(with: broadcastMessage), animated: false, completion: nil)
+//        broadcast.presentMessage(using: BroadcastModel(with: broadcastMessage), animated: false, completion: nil)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -40,11 +40,11 @@ public class BroadcastDemoView: UIView {
         let isButtonOn = sender.tag == 1
 
         if isButtonOn {
-            broadcast.dismiss()
+//            broadcast.dismiss()
             sender.setTitle("Present Broadcast", for: .normal)
         } else {
-            let viewModel = BroadcastModel(with: broadcastMessage)
-            broadcast.presentMessage(using: viewModel)
+//            let viewModel = BroadcastModel(with: broadcastMessage)
+//            broadcast.presentMessage(using: viewModel)
             sender.setTitle("Dismiss Broadcast", for: .normal)
         }
 
@@ -54,14 +54,14 @@ public class BroadcastDemoView: UIView {
 
 private extension BroadcastDemoView {
     func setup() {
-        addSubview(broadcast)
+//        addSubview(broadcast)
         addSubview(presentBroadcastButton)
 
         NSLayoutConstraint.activate([
-            broadcast.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            broadcast.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            broadcast.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            presentBroadcastButton.topAnchor.constraint(equalTo: broadcast.bottomAnchor, constant: .mediumLargeSpacing),
+//            broadcast.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+//            broadcast.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+//            broadcast.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+//            presentBroadcastButton.topAnchor.constraint(equalTo: broadcast.bottomAnchor, constant: .mediumLargeSpacing),
             presentBroadcastButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             presentBroadcastButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
@@ -77,7 +77,7 @@ extension BroadcastDemoView: BroadcastDelegate {
     }
 
     public func broadcastDismissButtonTapped(_ broadcast: Broadcast) {
-        broadcast.dismiss()
+//        broadcast.dismiss()
         presentBroadcastButton.setTitle("Present Broadcast", for: .normal)
         presentBroadcastButton.tag = 0
     }

@@ -87,6 +87,11 @@ public struct AdFactory {
         ]
     }
 
+    private static var randomImageSource: ImageSource {
+        let random = Int(arc4random_uniform(UInt32(imageSources.count)))
+        return imageSources[random]
+    }
+
     private static var imageSources: [ImageSource] {
         return [
             ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),

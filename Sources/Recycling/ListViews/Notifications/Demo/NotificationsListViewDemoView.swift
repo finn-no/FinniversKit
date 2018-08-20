@@ -6,7 +6,7 @@ import FinniversKit
 
 /// For use with NotificationsListView.
 public class NotificationDataSource: NSObject {
-    let groups = NotificationFactory.create(numberOfGroups: 3)
+    let groups = NotificationFactory.create(numberOfGroups: 9)
 }
 
 public class NotificationsListViewDemoView: UIView {

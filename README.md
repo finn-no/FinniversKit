@@ -28,23 +28,36 @@ import FinniversKit
 
 **FinniversKit** uses [Uber's snapshot test cases](https://github.com/uber/ios-snapshot-test-case) to compare the contents of a UIView or UIViewController against a reference image.
 
-When you run the tests **FinniversKit** will take snapshot of all the components and will look for differences. If a difference is caught you'll be informed in the form of a failed test. Running the tests locally will generate a diff between the old and the new images so you can see what caused the test to fail.
+From within your test case, use `FBSnapshotVerifyView` to both generate reference images and compare them against your current view. To generate the reference images, run the tests once with `self.recordMode = true`, once the reference images have been created you can set `self.recordMode = false` to test your views for any changes.
 
-### Testing a new component
+The filename of the reference images will be the same as the test method name. `isDeviceAgnostic = true` will append the device model, iOS version and screen size to the file name. This way, you will have separate reference images for iPad and iPhone, as well as iPhone X and iPhone 8, etc.
 
-To test a new component go to `DemoSnapshotTests.swift` and add a new `func` with the name of your component under the section that makes sense, for example if your component is a _Fullscreen_ component and it's called _RegisterView_ then you'll need to add a method to `FullscreenViewTests` your method should look like this:
+UIViews have to be given a frame, intrinsic content size and constraints does not work. UIViews within a UIViewController works as normal.
 
-```
-    func testRegisterView() {
-        snapshot(.registerView)
+### Example
+
+```swift
+//
+//  Copyright © 2018 FINN AS. All rights reserved.
+//
+
+import FBSnapshotTestCase
+import FinniversKit
+import Demo
+
+class YourComponentDemoViewTest: FBSnapshotTestCase {
+    override func setUp() {
+        super.setUp()
+        recordMode = false
+        isDeviceAgnostic = false
     }
+
+    func testExampleControllerView() {
+        let controller = ViewController<YourComponentViewController>()
+        FBSnapshotVerifyView(controller.view)
+    }
+}
 ```
-
-Note that the `snapshot` method is a helper method that will call `FBSnapshotVerifyView` under the hood.
-
-### Verifying changes for an existing component
-
-If you make changes to any components you'll have to run the test for that component after changing `recordMode` to `true`. Doing this will generate a new reference image that will be used later to verify for changes that affect your component. After you've generated the reference image change `recordMode` back to `false`.
 
 ## License
 

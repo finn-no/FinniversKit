@@ -36,29 +36,24 @@ public struct NotificationFactory {
     }
 
     public static func create(numberOfGroups: Int) -> [NotificationGroup] {
-        var groups = [NotificationGroup]()
-
-        for groupsIndex in 0 ... numberOfGroups {
+        return (0 ..< numberOfGroups).map { _ in
             var notifications = [Notification]()
             for notificationIndex in 0 ... 3 {
                 let imageSource = imageSources[notificationIndex]
                 let detail = details[notificationIndex]
                 let title = titles[notificationIndex]
-                let price = prices[notificationIndex]
                 notifications.append(Notification(imagePath: imageSource.path, imageSize: imageSource.size, detail: detail, title: title, price: price))
             }
 
-            let groupTitle = groupTitles[groupsIndex]
+            let groupTitleIndex = Int(arc4random_uniform(UInt32(NotificationFactory.groupTitles.count)))
+            let groupTitle = groupTitles[groupTitleIndex]
             let stringValue = "Nye treff i \"\(groupTitle)\""
             let attributedString = NSMutableAttributedString(string: stringValue)
             attributedString.setColor(color: .primaryBlue, forText: "\"\(groupTitle)\"")
 
             let footerAction = "Viser 100 av \(notifications.count) nye annonser"
-            let group = NotificationGroup(attributedTitle: attributedString, timeAgo: "\(groupsIndex + 10) m siden", footerAction: footerAction, notifications: notifications)
-            groups.append(group)
+            return NotificationGroup(attributedTitle: attributedString, timeAgo: "\(groupTitleIndex + 10) m siden", footerAction: footerAction, notifications: notifications)
         }
-
-        return groups
     }
 
     private static var groupTitles: [String] {
@@ -66,7 +61,6 @@ public struct NotificationFactory {
             "Biler i norge",
             "Sogn og Fjordane+Møre og Romsdal+Nordland+Treff",
             "Aston Martin",
-            "Bolig til leie",
         ]
     }
 
@@ -98,17 +92,14 @@ public struct NotificationFactory {
         ]
     }
 
-    private static var prices: [String] {
-        return ["845 000,-",
-                "164 000,-",
-                "945 000,-",
-                "355 000,-",
-                "746 000,-",
-                "347 000,-",
-                "546 000,-",
-                "647 000,-",
-                "264 000,-"
-        ]
+    private static var price: String {
+        let thousands = Int(arc4random_uniform(UInt32(99)))
+        return "\(thousands) 000 000,-"
+    }
+
+    private static var randomImageSource: ImageSource {
+        let random = Int(arc4random_uniform(UInt32(imageSources.count)))
+        return imageSources[random]
     }
 
     private static var imageSources: [ImageSource] {
