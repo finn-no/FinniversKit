@@ -5,11 +5,15 @@
 import FinniversKit
 
 public class BroadcastContainerDemoView: UIView {
+
+    private let items = ["Select", "any", "row", "and", "the", "broadcasts", "will", "reappear"]
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.register(UITableViewCell.self)
         tableView.separatorStyle = .none
         tableView.rowHeight = 100
+        tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -23,7 +27,6 @@ public class BroadcastContainerDemoView: UIView {
     private lazy var broadcastContainer: BroadcastContainer = {
         let container = BroadcastContainer(frame: .zero)
         container.delegate = self
-        container.dataSource = self
         container.translatesAutoresizingMaskIntoConstraints = false
         return container
     }()
@@ -43,7 +46,7 @@ public class BroadcastContainerDemoView: UIView {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
 
-        broadcastContainer.present(in: tableView)
+        broadcastContainer.presentMessages(broadcastMessages, in: tableView, animated: false)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -51,29 +54,30 @@ public class BroadcastContainerDemoView: UIView {
     }
 }
 
+extension BroadcastContainerDemoView: UITableViewDelegate {
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        broadcastContainer.presentMessages(broadcastMessages, in: tableView)
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        broadcastContainer.handleScrolling()
+    }
+}
+
 extension BroadcastContainerDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return items.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
 
-        cell.textLabel?.text = "👋 Scrollable content"
+        cell.textLabel?.text = items[indexPath.row]
         cell.textLabel?.textAlignment = .center
         cell.selectionStyle = .none
 
         return cell
-    }
-}
-
-extension BroadcastContainerDemoView: BroadcastContainerDataSource {
-    public func numberOfBroadcasts(in broadcastContainer: BroadcastContainer) -> Int {
-        return broadcastMessages.count
-    }
-
-    public func broadcastContainer(_ broadcastContainer: BroadcastContainer, broadcastMessageForIndex index: Int) -> BroadcastMessage {
-        return broadcastMessages[index]
     }
 }
 

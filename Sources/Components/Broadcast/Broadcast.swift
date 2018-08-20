@@ -13,7 +13,13 @@ public protocol BroadcastDelegate: class {
 /// They are used when it´s important to inform the user about something that has affected the whole system and many users.
 /// Especially if it has a consequence for how he or she uses the service.
 /// https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system#/components/broadcast
+
+// MARK: -
+
 public final class Broadcast: UIView {
+
+    // MARK: Private Properties
+
     private lazy var messageTextView: UITextView = {
         let textView = UITextView()
         textView.delegate = self
@@ -28,41 +34,29 @@ public final class Broadcast: UIView {
         return textView
     }()
 
-    private lazy var iconImage: UIImage? = {
-        let image = UIImage(named: .important)
-        return image
-    }()
-
     private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = iconImage
+        let imageView = UIImageView(image: UIImage(named: .important))
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private lazy var dismissButtonImage: UIImage? = {
-        let image = UIImage(named: .remove)
-        return image
-    }()
-
     private lazy var dismissButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.setImage(dismissButtonImage, for: .normal)
+        button.setImage(UIImage(named: .remove), for: .normal)
         button.tintColor = .stone
         button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    public weak var delegate: BroadcastDelegate?
+    // MARK: - Public Properties
 
-    /// A property indicating if the Broadcast is in its presenting state
-    public private(set) var isPresenting = false
+    public weak var delegate: BroadcastDelegate?
 
     /// The message displayed in the presented Broadcast
     /// This property will be nil if not in presenting state
-    public var message: String? {
+    public var message: String {
         return messageTextView.text
     }
 
@@ -72,57 +66,60 @@ public final class Broadcast: UIView {
         return messageTextView.attributedText
     }
 
-    public let model: BroadcastModel
+    public var model: BroadcastModel? {
+        didSet {
+            guard let model = model else { return }
+            let attributedString = NSMutableAttributedString(attributedString: model.messageWithHTMLLinksReplacedByAttributedStrings)
+            attributedString.addAttributes(Broadcast.Style.fontAttributes, range: NSMakeRange(0, attributedString.string.utf16.count))
+            messageTextView.attributedText = attributedString
+        }
+    }
 
-    /// Initalizes a BrodcastView
-    public init(model: BroadcastModel) {
-        self.model = model
-        super.init(frame: .zero)
-        setup()
+    // MARK: - Setup
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        isAccessibilityElement = true
+        clipsToBounds = true
+        layer.cornerRadius = Style.containerCornerRadius
+        backgroundColor = Style.backgroundColor
+        setupSubviews()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("Init not implemented")
     }
-}
 
-// MARK: - Private
-
-private extension Broadcast {
-    func setup() {
-        isAccessibilityElement = true
-        backgroundColor = Style.backgroundColor
-        clipsToBounds = true
-        layer.cornerRadius = Style.containerCornerRadius
-
-        let attributedText = NSMutableAttributedString(attributedString: model.messageWithHTMLLinksReplacedByAttributedStrings)
-        attributedText.addAttributes(Broadcast.Style.fontAttributes, range: NSMakeRange(0, attributedText.string.utf16.count))
-        messageTextView.attributedText = attributedText
+    private func setupSubviews() {
 
         addSubview(messageTextView)
         addSubview(iconImageView)
         addSubview(dismissButton)
 
+        let topConstraint = messageTextView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
+        topConstraint.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
+
+            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .smallSpacing),
+            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.smallSpacing),
+            topConstraint,
+
+            iconImageView.topAnchor.constraint(equalTo: messageTextView.topAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
             iconImageView.heightAnchor.constraint(equalToConstant: 28),
             iconImageView.widthAnchor.constraint(equalToConstant: 28),
 
-            dismissButton.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
+            dismissButton.topAnchor.constraint(equalTo: messageTextView.topAnchor),
             dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             dismissButton.heightAnchor.constraint(equalToConstant: 28),
             dismissButton.widthAnchor.constraint(equalToConstant: 28),
 
-            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .smallSpacing),
-            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.smallSpacing),
-            messageTextView.topAnchor.constraint(equalTo: iconImageView.topAnchor),
-            messageTextView.heightAnchor.constraint(greaterThanOrEqualTo: iconImageView.heightAnchor),
-
             bottomAnchor.constraint(equalTo: messageTextView.bottomAnchor, constant: .mediumLargeSpacing)
-        ])
+            ])
     }
 
+    // MARK: - Actions
 
     @objc func dismissButtonTapped(_ sender: UIButton) {
         delegate?.broadcastDismissButtonTapped(self)

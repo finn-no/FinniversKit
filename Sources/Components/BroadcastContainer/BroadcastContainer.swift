@@ -5,13 +5,6 @@
 import UIKit
 
 public protocol BroadcastContainerDelegate: class {
-
-    /// Called when a URL in a broadcasts message is tapped
-    ///
-    /// - Parameters:
-    ///   - broadcastContainer: the BroadcastContainer
-    ///   - url: the URL that was tapped
-    ///   - index: the index of the broadcast that containes the URL that was tapped
     func broadcastContainer(_ broadcastContainer: BroadcastContainer, didTapURL url: URL, inBroadcastAtIndex index: Int)
 }
 
@@ -21,125 +14,127 @@ public extension BroadcastContainerDelegate {
     func broadcastContainer(_ broadcastContainer: BroadcastContainer, didTapURL url: URL, inBroadcastAtIndex index: Int) {}
 }
 
-public protocol BroadcastContainerDataSource: class {
-    /// The number of broadcasts to display in the BroadcastContainer
-    ///
-    /// - Parameter broadcastContainer: the BroadcastContainer
-    /// - Returns: The number of broadcasts to display in the BroadcastContainer
-    func numberOfBroadcasts(in broadcastContainer: BroadcastContainer) -> Int
-
-    /// The broadcast to display at the index
-    ///
-    /// - Parameters:
-    ///   - broadcastContainer: the BroadcastContainer
-    ///   - index: the index for the broadcast
-    /// - Returns: The broadcast to display at the index
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, broadcastMessageForIndex index: Int) -> BroadcastMessage
-}
-
 // MARK: -
 
-/// A view that is used to display multiple Broadcasts
-public final class BroadcastContainer: UIView {
+public final class BroadcastContainer: UIStackView {
 
     // MARK: Public properties
 
-    public weak var dataSource: BroadcastContainerDataSource? { didSet { needsReload = true } }
     public weak var delegate: BroadcastContainerDelegate?
 
     // MARK: - Private properties
 
-    private weak var tableView: UITableView?
-    private var needsReload = false
-
-    private lazy var contentView: UIStackView = {
-        let stack = UIStackView(frame: .zero)
-        stack.spacing = .mediumLargeSpacing
-        stack.axis = .vertical
-        stack.distribution = .fillProportionally
-        stack.alignment = .fill
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
+    private weak var scrollView: UIScrollView?
+    private var topConstraint: NSLayoutConstraint!
+    private var animationDuration = 0.3
 
     // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSubviews()
+        spacing = .mediumLargeSpacing
+
+        axis = .vertical
+        distribution = .fill
+        alignment = .fill
+
+        layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing, leading: .mediumLargeSpacing, bottom: .mediumLargeSpacing, trailing: .mediumLargeSpacing)
+        isLayoutMarginsRelativeArrangement = true
     }
 
     public required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupSubviews() {
-        addSubview(contentView)
+    // MARK: - Implementation
 
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+    public func presentMessages(_ messages: [BroadcastMessage], in view: UIView, animated: Bool = true) {
+        guard superview == nil else { return }
 
-            bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: .mediumLargeSpacing)
-        ])
-    }
+        if let scrollView = view as? UIScrollView {
+            self.scrollView = scrollView
+            // Add container on top of scroll view
+            scrollView.superview?.addSubview(self)
+            // Moving gesture to superview enables scrolling inside the broadcast container as well
+            superview?.addGestureRecognizer(scrollView.panGestureRecognizer)
+        } else {
+            view.addSubview(self)
+        }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        print("Container layoutSubviews")
+        superview?.clipsToBounds = true
+        translatesAutoresizingMaskIntoConstraints = false
+        leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        topConstraint = topAnchor.constraint(equalTo: view.topAnchor)
 
-        if needsReload {
+        // Bottom constraint is only used for the presenting animation
+        let bottomConstraint = bottomAnchor.constraint(equalTo: view.topAnchor)
+        bottomConstraint.isActive = true
 
-            removeContent()
+        for message in messages {
+            let model = BroadcastModel(with: message.text)
+            let broadcast = Broadcast(frame: .zero)
+            broadcast.model = model
+            broadcast.delegate = self
+            addArrangedSubview(broadcast)
+        }
 
-            guard let dataSource = dataSource else { return }
-            needsReload = false
+        // Place container above the screen
+        superview?.layoutIfNeeded()
+        bottomConstraint.isActive = false
+        topConstraint.isActive = true
 
-            let count = dataSource.numberOfBroadcasts(in: self)
-
-            for i in 0 ..< count {
-                let message = dataSource.broadcastContainer(self, broadcastMessageForIndex: i)
-                let model = BroadcastModel(with: message.text)
-                let broadcast = Broadcast(model: model)
-                broadcast.delegate = self
-                contentView.addArrangedSubview(broadcast)
+        if animated {
+            // Animate down from the top
+            UIView.animate(withDuration: animationDuration) {
+                self.superview?.layoutIfNeeded()
+                self.scrollView?.contentInset.top = self.frame.height
+                self.scrollView?.contentOffset.y = -self.frame.height
             }
+        } else {
+            scrollView?.contentInset.top = self.frame.height
+            scrollView?.contentOffset.y = -self.frame.height
         }
     }
 
-    public func present(in view: UIView) {
-        if let tableView = view as? UITableView {
-            self.tableView = tableView
-            tableView.tableHeaderView = self
+    // Can't override scrollView delegate so have to called this method from the outside
+    public func handleScrolling() {
+        guard let scrollView = scrollView else { return }
 
-            leadingAnchor.constraint(equalTo: tableView.leadingAnchor).isActive = true
-            topAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
-            widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
-
-            tableView.layoutIfNeeded()
-            tableView.tableHeaderView = self
-        }
-    }
-}
-
-// MARK: - Private
-
-private extension BroadcastContainer {
-
-    func remove(_ broadcast: Broadcast) {
-        guard let subView = contentView.arrangedSubviews.filter({ $0 == broadcast }).first else {
+        let offset = scrollView.contentInset.top + scrollView.contentOffset.y
+        
+        if offset > 2 * frame.height {
+            isHidden = true
             return
         }
 
-        contentView.removeArrangedSubview(subView)
-        subView.removeFromSuperview()
+        isHidden = false
+        topConstraint.constant = -offset
     }
 
-    func removeContent() {
-        contentView.arrangedSubviews.forEach { view in
-            contentView.removeArrangedSubview(view)
-            view.removeFromSuperview()
+    func remove(_ broadcast: Broadcast) {
+
+        UIView.animate(withDuration: animationDuration, animations: {
+            if self.subviews.count == 1 {
+                self.layoutMargins = UIEdgeInsets(top: 0, leading: .mediumLargeSpacing, bottom: 0, trailing: .mediumLargeSpacing)
+            }
+
+            broadcast.isHidden = true
+            broadcast.alpha = 0
+
+            self.layoutIfNeeded()
+            self.scrollView?.contentInset.top = self.frame.height
+            self.scrollView?.contentOffset.y = -self.frame.height
+
+        }) { (completed) in
+            broadcast.removeFromSuperview()
+            if self.subviews.count == 0 {
+                self.removeFromSuperview()
+
+                guard let scrollView = self.scrollView else { return }
+                scrollView.addGestureRecognizer(scrollView.panGestureRecognizer)
+                self.scrollView = nil
+            }
         }
     }
 }
@@ -148,19 +143,11 @@ private extension BroadcastContainer {
 
 extension BroadcastContainer: BroadcastDelegate {
     public func broadcast(_ broadcast: Broadcast, didTapURL url: URL) {
-        let broadcastIndex = contentView.arrangedSubviews.index(of: broadcast) ?? 0
+        let broadcastIndex = arrangedSubviews.index(of: broadcast) ?? 0
         delegate?.broadcastContainer(self, didTapURL: url, inBroadcastAtIndex: broadcastIndex)
     }
 
     public func broadcastDismissButtonTapped(_ broadcast: Broadcast) {
         remove(broadcast)
-
-        if contentView.arrangedSubviews.count == 0 {
-            tableView?.tableHeaderView = nil
-            return
-        }
-
-        tableView?.layoutIfNeeded()
-        tableView?.tableHeaderView = self
     }
 }
