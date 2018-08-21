@@ -4,8 +4,8 @@
 
 import UIKit
 
-public protocol BroadcastContainerDelegate: class {
-    func broadcastContainer(_ broadcastContainer: Broadcast, didTapURL url: URL, inBroadcastAtIndex index: Int)
+public protocol BroadcastDelegate: class {
+    func broadcast(_ broadcast: Broadcast, didTapURL url: URL, inItemAtIndex index: Int)
 }
 
 // MARK: - Public
@@ -14,7 +14,7 @@ public final class Broadcast: UIStackView {
 
     // MARK: Public properties
 
-    public weak var delegate: BroadcastContainerDelegate?
+    public weak var delegate: BroadcastDelegate?
 
     // MARK: - Private properties
 
@@ -55,7 +55,6 @@ public final class Broadcast: UIStackView {
             view.addSubview(self)
         }
 
-        superview?.clipsToBounds = true
         translatesAutoresizingMaskIntoConstraints = false
         leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
@@ -138,13 +137,13 @@ extension Broadcast {
 
 // MARK: - BroadcastDelegate
 
-extension Broadcast: BroadcastDelegate {
-    public func broadcast(_ broadcast: BroadcastItem, didTapURL url: URL) {
-        let broadcastIndex = arrangedSubviews.index(of: broadcast) ?? 0
-        delegate?.broadcastContainer(self, didTapURL: url, inBroadcastAtIndex: broadcastIndex)
+extension Broadcast: BroadcastItemDelegate {
+    public func broadcastItemDismissButtonTapped(_ broadcastItem: BroadcastItem) {
+        remove(broadcastItem)
     }
 
-    public func broadcastDismissButtonTapped(_ broadcast: BroadcastItem) {
-        remove(broadcast)
+    public func broadcastItem(_ broadcastItem: BroadcastItem, didTapURL url: URL) {
+        let broadcastIndex = arrangedSubviews.index(of: broadcastItem) ?? 0
+        delegate?.broadcast(self, didTapURL: url, inItemAtIndex: broadcastIndex)
     }
 }

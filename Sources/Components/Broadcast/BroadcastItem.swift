@@ -3,9 +3,9 @@
 //
 import UIKit
 
-public protocol BroadcastDelegate: class {
-    func broadcastDismissButtonTapped(_ broadcast: BroadcastItem)
-    func broadcast(_ broadcast: BroadcastItem, didTapURL url: URL)
+public protocol BroadcastItemDelegate: class {
+    func broadcastItemDismissButtonTapped(_ broadcastItem: BroadcastItem)
+    func broadcastItem(_ broadcastItem: BroadcastItem, didTapURL url: URL)
 }
 
 /// Broadcast messages appears without any action from the user.
@@ -47,19 +47,7 @@ public final class BroadcastItem: UIView {
     }()
 
     // MARK: - Public Properties
-    public weak var delegate: BroadcastDelegate?
-
-    /// The message displayed in the presented Broadcast
-    /// This property will be nil if not in presenting state
-    public var message: String {
-        return messageTextView.text
-    }
-
-    /// The attributed message displayed in the presented Broadcast
-    /// This property will be nil if not in presenting state
-    public var attributedMessage: NSAttributedString? {
-        return messageTextView.attributedText
-    }
+    public weak var delegate: BroadcastItemDelegate?
 
     public var model: BroadcastModel? {
         didSet {
@@ -118,13 +106,13 @@ extension BroadcastItem {
 
     // MARK: - Actions
     @objc func dismissButtonTapped(_ sender: UIButton) {
-        delegate?.broadcastDismissButtonTapped(self)
+        delegate?.broadcastItemDismissButtonTapped(self)
     }
 }
 
 extension BroadcastItem: UITextViewDelegate {
     public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        delegate?.broadcast(self, didTapURL: URL)
+        delegate?.broadcastItem(self, didTapURL: URL)
         return false
     }
 }

@@ -32,6 +32,7 @@ public class BroadcastDemoView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        clipsToBounds = true
         setup()
     }
 
@@ -79,8 +80,8 @@ extension BroadcastDemoView: UITableViewDataSource {
     }
 }
 
-extension BroadcastDemoView: BroadcastContainerDelegate {
-    public func broadcastContainer(_ broadcastContainer: Broadcast, didTapURL url: URL, inBroadcastAtIndex index: Int) {
+extension BroadcastDemoView: BroadcastDelegate {
+    public func broadcast(_ broadcast: Broadcast, didTapURL url: URL, inItemAtIndex index: Int) {
         print("Did tap url:", url)
     }
 }
