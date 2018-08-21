@@ -19,7 +19,7 @@ public final class Broadcast: UIStackView {
     // MARK: - Private properties
 
     private weak var scrollView: UIScrollView?
-    private var topConstraint: NSLayoutConstraint!
+    private var topConstraint: NSLayoutConstraint?
     private var animationDuration = 0.3
 
     // MARK: - Setup
@@ -75,7 +75,7 @@ public final class Broadcast: UIStackView {
         // Place container above the screen
         superview?.layoutIfNeeded()
         bottomConstraint.isActive = false
-        topConstraint.isActive = true
+        topConstraint?.isActive = true
 
         if animated {
             // Animate down from the top
@@ -102,7 +102,7 @@ public final class Broadcast: UIStackView {
         }
 
         isHidden = false
-        topConstraint.constant = -offset
+        topConstraint?.constant = -offset
     }
 }
 
