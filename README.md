@@ -34,10 +34,10 @@ When you run the tests **FinniversKit** will take snapshot of all the components
 
 To test a new component go to `DemoSnapshotTests.swift` and add a new `func` with the name of your component under the section that makes sense, for example if your component is a _Fullscreen_ component and it's called _RegisterView_ then you'll need to add a method to `FullscreenViewTests` your method should look like this:
 
-```
-    func testRegisterView() {
-        snapshot(.registerView)
-    }
+```swift
+func testRegisterView() {
+    snapshot(.registerView)
+}
 ```
 
 Note that the `snapshot` method is a helper method that will call `FBSnapshotVerifyView` under the hood.
