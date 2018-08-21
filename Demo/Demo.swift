@@ -35,7 +35,6 @@ public enum DnaViews: String {
 
 public enum ComponentViews: String {
     case broadcast
-    case broadcastContainer
     case button
     case label
     case ribbon
@@ -51,7 +50,6 @@ public enum ComponentViews: String {
     static var all: [ComponentViews] {
         return [
             .broadcast,
-            .broadcastContainer,
             .button,
             .label,
             .ribbon,
@@ -70,8 +68,6 @@ public enum ComponentViews: String {
         switch self {
         case .broadcast:
             return ViewController<BroadcastDemoView>()
-        case .broadcastContainer:
-            return ViewController<BroadcastContainerDemoView>()
         case .button:
             return ViewController<ButtonDemoView>()
         case .label:

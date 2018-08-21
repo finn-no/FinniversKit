@@ -1,130 +1,150 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
+
 import UIKit
 
-public protocol BroadcastDelegate: class {
-    func broadcastDismissButtonTapped(_ broadcast: Broadcast)
-    func broadcast(_ broadcast: Broadcast, didTapURL url: URL)
+public protocol BroadcastContainerDelegate: class {
+    func broadcastContainer(_ broadcastContainer: Broadcast, didTapURL url: URL, inBroadcastAtIndex index: Int)
 }
 
-/// Broadcast messages appears without any action from the user.
-/// They are used when it´s important to inform the user about something that has affected the whole system and many users.
-/// Especially if it has a consequence for how he or she uses the service.
-/// https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system#/components/broadcast
 // MARK: - Public
-public final class Broadcast: UIView {
 
-    // MARK: Private Properties
-    private lazy var messageTextView: UITextView = {
-        let textView = UITextView()
-        textView.delegate = self
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .clear
-        textView.isAccessibilityElement = true
-        textView.isEditable = false
-        textView.isSelectable = true
-        textView.isScrollEnabled = false
-        textView.textContainerInset = .zero
-        textView.linkTextAttributes = Broadcast.Style.linkTextAttributes
-        return textView
-    }()
+public final class Broadcast: UIStackView {
 
-    private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: .important))
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+    // MARK: Public properties
 
-    private lazy var dismissButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setImage(UIImage(named: .remove), for: .normal)
-        button.tintColor = .stone
-        button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    public weak var delegate: BroadcastContainerDelegate?
 
-    // MARK: - Public Properties
-    public weak var delegate: BroadcastDelegate?
+    // MARK: - Private properties
 
-    /// The message displayed in the presented Broadcast
-    /// This property will be nil if not in presenting state
-    public var message: String {
-        return messageTextView.text
+    private weak var scrollView: UIScrollView?
+    private var topConstraint: NSLayoutConstraint!
+    private var animationDuration = 0.3
+
+    // MARK: - Setup
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        spacing = .mediumLargeSpacing
+
+        axis = .vertical
+        distribution = .fill
+        alignment = .fill
+
+        layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing, leading: .mediumLargeSpacing, bottom: .mediumLargeSpacing, trailing: .mediumLargeSpacing)
+        isLayoutMarginsRelativeArrangement = true
     }
 
-    /// The attributed message displayed in the presented Broadcast
-    /// This property will be nil if not in presenting state
-    public var attributedMessage: NSAttributedString? {
-        return messageTextView.attributedText
+    public required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    public var model: BroadcastModel? {
-        didSet {
-            guard let model = model else { return }
-            let attributedString = NSMutableAttributedString(attributedString: model.messageWithHTMLLinksReplacedByAttributedStrings)
-            attributedString.addAttributes(Broadcast.Style.fontAttributes, range: NSMakeRange(0, attributedString.string.utf16.count))
-            messageTextView.attributedText = attributedString
+    // MARK: - Public methods
+
+    public func presentMessages(_ messages: [BroadcastMessage], in view: UIView, animated: Bool = true) {
+        guard superview == nil else { return }
+
+        if let scrollView = view as? UIScrollView {
+            self.scrollView = scrollView
+            // Add container on top of scroll view
+            scrollView.superview?.addSubview(self)
+            // Moving gesture to superview enables scrolling inside the broadcast container as well
+            superview?.addGestureRecognizer(scrollView.panGestureRecognizer)
+        } else {
+            view.addSubview(self)
+        }
+
+        superview?.clipsToBounds = true
+        translatesAutoresizingMaskIntoConstraints = false
+        leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        topConstraint = topAnchor.constraint(equalTo: view.topAnchor)
+
+        // Bottom constraint is only used for the presenting animation
+        let bottomConstraint = bottomAnchor.constraint(equalTo: view.topAnchor)
+        bottomConstraint.isActive = true
+
+        for message in messages {
+            let model = BroadcastModel(with: message.text)
+            let broadcast = BroadcastItem(frame: .zero)
+            broadcast.model = model
+            broadcast.delegate = self
+            addArrangedSubview(broadcast)
+        }
+
+        // Place container above the screen
+        superview?.layoutIfNeeded()
+        bottomConstraint.isActive = false
+        topConstraint.isActive = true
+
+        if animated {
+            // Animate down from the top
+            UIView.animate(withDuration: animationDuration) {
+                self.superview?.layoutIfNeeded()
+                self.scrollView?.contentInset.top = self.frame.height
+                self.scrollView?.contentOffset.y = -self.frame.height
+            }
+        } else {
+            scrollView?.contentInset.top = self.frame.height
+            scrollView?.contentOffset.y = -self.frame.height
         }
     }
 
-    // MARK: - Setup
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        isAccessibilityElement = true
-        clipsToBounds = true
-        layer.cornerRadius = Style.containerCornerRadius
-        backgroundColor = Style.backgroundColor
-        setupSubviews()
-    }
+    // Can't override scrollView delegate so have to called this method from the outside
+    public func handleScrolling() {
+        guard let scrollView = scrollView else { return }
 
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("Init not implemented")
+        let offset = scrollView.contentInset.top + scrollView.contentOffset.y
+
+        if offset > 2 * frame.height {
+            isHidden = true
+            return
+        }
+
+        isHidden = false
+        topConstraint.constant = -offset
     }
 }
 
 // MARK: - Private
 
 extension Broadcast {
-    private func setupSubviews() {
-        addSubview(messageTextView)
-        addSubview(iconImageView)
-        addSubview(dismissButton)
+    func remove(_ broadcast: BroadcastItem) {
+        UIView.animate(withDuration: animationDuration, animations: {
+            if self.subviews.count == 1 {
+                self.layoutMargins = UIEdgeInsets(top: 0, leading: .mediumLargeSpacing, bottom: 0, trailing: .mediumLargeSpacing)
+            }
 
-        let topConstraint = messageTextView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
-        topConstraint.priority = .defaultHigh
+            broadcast.isHidden = true
+            broadcast.alpha = 0
 
-        NSLayoutConstraint.activate([
+            self.layoutIfNeeded()
+            self.scrollView?.contentInset.top = self.frame.height
+            self.scrollView?.contentOffset.y = -self.frame.height
 
-            messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .smallSpacing),
-            messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.smallSpacing),
-            topConstraint,
+        }) { completed in
+            broadcast.removeFromSuperview()
+            if self.subviews.count == 0 {
+                self.removeFromSuperview()
 
-            iconImageView.topAnchor.constraint(equalTo: messageTextView.topAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.heightAnchor.constraint(equalToConstant: 28),
-            iconImageView.widthAnchor.constraint(equalToConstant: 28),
-
-            dismissButton.topAnchor.constraint(equalTo: messageTextView.topAnchor),
-            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            dismissButton.heightAnchor.constraint(equalToConstant: 28),
-            dismissButton.widthAnchor.constraint(equalToConstant: 28),
-
-            bottomAnchor.constraint(equalTo: messageTextView.bottomAnchor, constant: .mediumLargeSpacing)
-            ])
-    }
-
-    // MARK: - Actions
-    @objc func dismissButtonTapped(_ sender: UIButton) {
-        delegate?.broadcastDismissButtonTapped(self)
+                guard let scrollView = self.scrollView else { return }
+                scrollView.addGestureRecognizer(scrollView.panGestureRecognizer)
+                self.scrollView = nil
+            }
+        }
     }
 }
 
-extension Broadcast: UITextViewDelegate {
-    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        delegate?.broadcast(self, didTapURL: URL)
-        return false
+// MARK: - BroadcastDelegate
+
+extension Broadcast: BroadcastDelegate {
+    public func broadcast(_ broadcast: BroadcastItem, didTapURL url: URL) {
+        let broadcastIndex = arrangedSubviews.index(of: broadcast) ?? 0
+        delegate?.broadcastContainer(self, didTapURL: url, inBroadcastAtIndex: broadcastIndex)
+    }
+
+    public func broadcastDismissButtonTapped(_ broadcast: BroadcastItem) {
+        remove(broadcast)
     }
 }
