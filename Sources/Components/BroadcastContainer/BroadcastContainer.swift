@@ -8,13 +8,7 @@ public protocol BroadcastContainerDelegate: class {
     func broadcastContainer(_ broadcastContainer: BroadcastContainer, didTapURL url: URL, inBroadcastAtIndex index: Int)
 }
 
-// MARK: - BroadcastContainerDelegate default implementations
-
-public extension BroadcastContainerDelegate {
-    func broadcastContainer(_ broadcastContainer: BroadcastContainer, didTapURL url: URL, inBroadcastAtIndex index: Int) {}
-}
-
-// MARK: -
+// MARK: - Public
 
 public final class BroadcastContainer: UIStackView {
 
@@ -46,7 +40,7 @@ public final class BroadcastContainer: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Implementation
+    // MARK: - Public methods
 
     public func presentMessages(_ messages: [BroadcastMessage], in view: UIView, animated: Bool = true) {
         guard superview == nil else { return }
@@ -111,9 +105,12 @@ public final class BroadcastContainer: UIStackView {
         isHidden = false
         topConstraint.constant = -offset
     }
+}
 
+// MARK: - Private
+
+extension BroadcastContainer {
     func remove(_ broadcast: Broadcast) {
-
         UIView.animate(withDuration: animationDuration, animations: {
             if self.subviews.count == 1 {
                 self.layoutMargins = UIEdgeInsets(top: 0, leading: .mediumLargeSpacing, bottom: 0, trailing: .mediumLargeSpacing)
@@ -126,7 +123,7 @@ public final class BroadcastContainer: UIStackView {
             self.scrollView?.contentInset.top = self.frame.height
             self.scrollView?.contentOffset.y = -self.frame.height
 
-        }) { (completed) in
+        }) { completed in
             broadcast.removeFromSuperview()
             if self.subviews.count == 0 {
                 self.removeFromSuperview()

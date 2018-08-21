@@ -54,7 +54,6 @@ public class BroadcastContainerDemoView: UIView {
 }
 
 extension BroadcastContainerDemoView: UITableViewDelegate {
-
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         broadcastContainer.presentMessages(broadcastMessages, in: tableView)
     }
@@ -81,7 +80,6 @@ extension BroadcastContainerDemoView: UITableViewDataSource {
 }
 
 extension BroadcastContainerDemoView: BroadcastContainerDelegate {
-
     public func broadcastContainer(_ broadcastContainer: BroadcastContainer, didTapURL url: URL, inBroadcastAtIndex index: Int) {
         print("Did tap url:", url)
     }

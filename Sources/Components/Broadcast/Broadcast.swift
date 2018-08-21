@@ -12,7 +12,7 @@ public protocol BroadcastDelegate: class {
 /// They are used when it´s important to inform the user about something that has affected the whole system and many users.
 /// Especially if it has a consequence for how he or she uses the service.
 /// https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system#/components/broadcast
-// MARK: -
+// MARK: - Public
 public final class Broadcast: UIView {
 
     // MARK: Private Properties
@@ -83,9 +83,12 @@ public final class Broadcast: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("Init not implemented")
     }
+}
 
+// MARK: - Private
+
+extension Broadcast {
     private func setupSubviews() {
-
         addSubview(messageTextView)
         addSubview(iconImageView)
         addSubview(dismissButton)
