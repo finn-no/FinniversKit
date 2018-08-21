@@ -12,6 +12,8 @@ public class BroadcastDemoView: UIView {
         return view
     }()
 
+    var heightConstraint: NSLayoutConstraint!
+
     lazy var presentBroadcastButton: Button = {
         let button = Button(style: .default)
 
@@ -27,8 +29,11 @@ public class BroadcastDemoView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
+
+        let model = BroadcastModel(with: broadcastMessage)
+        broadcast.model = model
+
         setup()
-        broadcast.presentMessage(using: BroadcastModel(with: broadcastMessage), animated: false, completion: nil)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -40,15 +45,21 @@ public class BroadcastDemoView: UIView {
         let isButtonOn = sender.tag == 1
 
         if isButtonOn {
-            broadcast.dismiss()
+            animate(dismiss: true)
             sender.setTitle("Present Broadcast", for: .normal)
         } else {
-            let viewModel = BroadcastModel(with: broadcastMessage)
-            broadcast.presentMessage(using: viewModel)
+            animate(dismiss: false)
             sender.setTitle("Dismiss Broadcast", for: .normal)
         }
 
         sender.tag = isButtonOn ? 0 : 1
+    }
+
+    private func animate(dismiss: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            self.heightConstraint.isActive = dismiss
+            self.layoutIfNeeded()
+        }
     }
 }
 
@@ -57,6 +68,7 @@ private extension BroadcastDemoView {
         addSubview(broadcast)
         addSubview(presentBroadcastButton)
 
+        heightConstraint = broadcast.heightAnchor.constraint(equalToConstant: 0)
         NSLayoutConstraint.activate([
             broadcast.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             broadcast.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
@@ -77,7 +89,7 @@ extension BroadcastDemoView: BroadcastDelegate {
     }
 
     public func broadcastDismissButtonTapped(_ broadcast: Broadcast) {
-        broadcast.dismiss()
+        animate(dismiss: true)
         presentBroadcastButton.setTitle("Present Broadcast", for: .normal)
         presentBroadcastButton.tag = 0
     }

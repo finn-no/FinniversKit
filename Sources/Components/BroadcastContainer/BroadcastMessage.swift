@@ -6,14 +6,14 @@ import Foundation
 
 public struct BroadcastMessage: Equatable {
     public let id: Int
-    public let message: String
+    public let text: String
 
-    public init(id: Int, message: String) {
+    public init(id: Int, text: String) {
         self.id = id
-        self.message = message
+        self.text = text
     }
 
     public static func == (lhs: BroadcastMessage, rhs: BroadcastMessage) -> Bool {
-        return lhs.id == rhs.id && lhs.message == rhs.message
+        return lhs.id == rhs.id && lhs.text == rhs.text
     }
 }
