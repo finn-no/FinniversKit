@@ -31,9 +31,6 @@ public final class Broadcast: UIStackView {
         axis = .vertical
         distribution = .fill
         alignment = .fill
-
-        layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing, leading: .mediumLargeSpacing, bottom: .mediumLargeSpacing, trailing: .mediumLargeSpacing)
-        isLayoutMarginsRelativeArrangement = true
     }
 
     public required init(coder: NSCoder) {
@@ -44,6 +41,9 @@ public final class Broadcast: UIStackView {
 
     public func presentMessages(_ messages: [BroadcastMessage], in view: UIView, animated: Bool = true) {
         guard superview == nil else { return }
+
+        layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing, leading: .mediumLargeSpacing, bottom: .mediumLargeSpacing, trailing: .mediumLargeSpacing)
+        isLayoutMarginsRelativeArrangement = true
 
         if let scrollView = view as? UIScrollView {
             self.scrollView = scrollView
