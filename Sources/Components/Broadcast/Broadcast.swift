@@ -43,7 +43,10 @@ public final class Broadcast: UIStackView {
     // MARK: - Public methods
 
     public func presentMessages(_ messages: Set<BroadcastMessage>, in view: UIView, animated: Bool = true) {
-        guard superview == nil else { return }
+        guard superview == nil else {
+            add(messages, animated: animated)
+            return
+        }
 
         // This might have been set to zero, reset it
         layoutMargins.top = .mediumLargeSpacing
@@ -81,36 +84,6 @@ public final class Broadcast: UIStackView {
         isHidden = false
         topConstraint?.constant = -offset
     }
-
-    public func add(_ messages: Set<BroadcastMessage>, animated: Bool = true) {
-        guard let superview = superview else { return }
-
-        for message in messages {
-            let item = BroadcastItem(message: message)
-            item.delegate = self
-            item.isHidden = animated // Need to hide for animation to work properly
-            insertArrangedSubview(item, at: 0)
-        }
-
-        if animated {
-            arrangedSubviews.forEach { view in view.isHidden = false }
-            let deltaHeight = systemLayoutSizeFitting(UILayoutFittingCompressedSize).height - frame.height
-            topConstraint?.constant = -deltaHeight
-            superview.layoutIfNeeded()
-            topConstraint?.constant = 0
-
-            // Animate down from the top
-            UIView.animate(withDuration: animationDuration) {
-                superview.layoutIfNeeded()
-                self.scrollView?.contentInset.top = self.frame.height
-                self.scrollView?.contentOffset.y = -self.frame.height
-            }
-        } else {
-            superview.layoutIfNeeded()
-            scrollView?.contentInset.top = self.frame.height
-            scrollView?.contentOffset.y = -self.frame.height
-        }
-    }
 }
 
 // MARK: - Private
@@ -138,6 +111,36 @@ private extension Broadcast {
                 scrollView.addGestureRecognizer(scrollView.panGestureRecognizer)
                 self.scrollView = nil
             }
+        }
+    }
+
+    func add(_ messages: Set<BroadcastMessage>, animated: Bool = true) {
+        guard let superview = superview else { return }
+
+        for message in messages {
+            let item = BroadcastItem(message: message)
+            item.delegate = self
+            item.isHidden = animated // Need to hide for animation to work properly
+            insertArrangedSubview(item, at: 0)
+        }
+
+        if animated {
+            arrangedSubviews.forEach { view in view.isHidden = false }
+            let deltaHeight = systemLayoutSizeFitting(UILayoutFittingCompressedSize).height - frame.height
+            topConstraint?.constant = -deltaHeight
+            superview.layoutIfNeeded()
+            topConstraint?.constant = 0
+
+            // Animate down from the top
+            UIView.animate(withDuration: animationDuration) {
+                superview.layoutIfNeeded()
+                self.scrollView?.contentInset.top = self.frame.height
+                self.scrollView?.contentOffset.y = -self.frame.height
+            }
+        } else {
+            superview.layoutIfNeeded()
+            scrollView?.contentInset.top = self.frame.height
+            scrollView?.contentOffset.y = -self.frame.height
         }
     }
 }
