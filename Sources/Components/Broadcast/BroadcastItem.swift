@@ -88,6 +88,7 @@ extension BroadcastItem {
 
             messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .smallSpacing),
             messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.smallSpacing),
+            messageTextView.heightAnchor.constraint(greaterThanOrEqualTo: iconImageView.heightAnchor),
             topConstraint,
 
             iconImageView.topAnchor.constraint(equalTo: messageTextView.topAnchor),
