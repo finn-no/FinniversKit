@@ -24,7 +24,9 @@ public class BroadcastDemoView: UIView {
         BroadcastMessage(id: 3, text: "Their containers should have the colour \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content.\\n\nBroadcasts can also contain <a href=\"http://www.finn.no\">HTML links</a>."),
         ]
 
-    private lazy var broadcastContainer: Broadcast = {
+    private var dismissedMessages = [BroadcastMessage]()
+
+    private lazy var broadcast: Broadcast = {
         let container = Broadcast(frame: .zero)
         container.delegate = self
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +49,7 @@ public class BroadcastDemoView: UIView {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             ])
 
-        broadcastContainer.presentMessages(broadcastMessages, in: tableView, animated: false)
+        broadcast.presentMessages(broadcastMessages, in: tableView, animated: false)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -57,11 +59,16 @@ public class BroadcastDemoView: UIView {
 
 extension BroadcastDemoView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        broadcastContainer.presentMessages(broadcastMessages, in: tableView)
+        if dismissedMessages.count == broadcastMessages.count {
+            broadcast.presentMessages(broadcastMessages, in: tableView)
+        } else {
+            broadcast.add(dismissedMessages)
+        }
+        dismissedMessages.removeAll()
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        broadcastContainer.handleScrolling()
+        broadcast.handleScrolling()
     }
 }
 
@@ -85,6 +92,7 @@ extension BroadcastDemoView: BroadcastDelegate {
 
     public func broadcast(_ broadcast: Broadcast, didDismiss message: BroadcastMessage) {
         print("Did dismiss message id:", message.id)
+        dismissedMessages.append(message)
     }
 
     public func broadcast(_ broadcast: Broadcast, didTapURL url: URL, inItemAtIndex index: Int) {

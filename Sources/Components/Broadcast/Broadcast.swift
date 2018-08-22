@@ -62,33 +62,9 @@ public final class Broadcast: UIStackView {
         leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         topConstraint = topAnchor.constraint(equalTo: view.topAnchor)
-
-        // Bottom constraint is only used for the presenting animation
-        let bottomConstraint = bottomAnchor.constraint(equalTo: view.topAnchor)
-        bottomConstraint.isActive = true
-
-        for message in messages {
-            let broadcast = BroadcastItem(message: message)
-            broadcast.delegate = self
-            addArrangedSubview(broadcast)
-        }
-
-        // Place container above the screen
-        superview?.layoutIfNeeded()
-        bottomConstraint.isActive = false
         topConstraint?.isActive = true
 
-        if animated {
-            // Animate down from the top
-            UIView.animate(withDuration: animationDuration) {
-                self.superview?.layoutIfNeeded()
-                self.scrollView?.contentInset.top = self.frame.height
-                self.scrollView?.contentOffset.y = -self.frame.height
-            }
-        } else {
-            scrollView?.contentInset.top = self.frame.height
-            scrollView?.contentOffset.y = -self.frame.height
-        }
+        add(messages, animated: animated)
     }
 
     // Can't override scrollView delegate so have to called this method from the outside
@@ -107,7 +83,34 @@ public final class Broadcast: UIStackView {
     }
 
     public func add(_ messages: [BroadcastMessage], animated: Bool = true) {
-        
+
+        guard let superview = superview else { return }
+
+        for message in messages {
+            let item = BroadcastItem(message: message)
+            item.delegate = self
+            item.isHidden = animated // Need to hide for animation to work properly
+            insertArrangedSubview(item, at: 0)
+        }
+
+        if animated {
+            arrangedSubviews.forEach { view in view.isHidden = false }
+            let deltaHeight = systemLayoutSizeFitting(UILayoutFittingCompressedSize).height - frame.height
+            topConstraint?.constant = -deltaHeight
+            superview.layoutIfNeeded()
+            topConstraint?.constant = 0
+
+            // Animate down from the top
+            UIView.animate(withDuration: animationDuration) {
+                superview.layoutIfNeeded()
+                self.scrollView?.contentInset.top = self.frame.height
+                self.scrollView?.contentOffset.y = -self.frame.height
+            }
+        } else {
+            superview.layoutIfNeeded()
+            scrollView?.contentInset.top = self.frame.height
+            scrollView?.contentOffset.y = -self.frame.height
+        }
     }
 }
 
