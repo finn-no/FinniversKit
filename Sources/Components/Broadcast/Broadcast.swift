@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol BroadcastDelegate: class {
+    func broadcast(_ broadcast: Broadcast, didDismiss message: BroadcastMessage)
     func broadcast(_ broadcast: Broadcast, didTapURL url: URL, inItemAtIndex index: Int)
 }
 
@@ -67,9 +68,7 @@ public final class Broadcast: UIStackView {
         bottomConstraint.isActive = true
 
         for message in messages {
-            let model = BroadcastModel(with: message.text)
-            let broadcast = BroadcastItem(frame: .zero)
-            broadcast.model = model
+            let broadcast = BroadcastItem(message: message)
             broadcast.delegate = self
             addArrangedSubview(broadcast)
         }
@@ -106,11 +105,15 @@ public final class Broadcast: UIStackView {
         isHidden = false
         topConstraint?.constant = -offset
     }
+
+    public func add(_ messages: [BroadcastMessage], animated: Bool = true) {
+        
+    }
 }
 
 // MARK: - Private
 
-extension Broadcast {
+private extension Broadcast {
     func remove(_ broadcast: BroadcastItem) {
         UIView.animate(withDuration: animationDuration, animations: {
             if self.subviews.count == 1 {
@@ -140,11 +143,12 @@ extension Broadcast {
 // MARK: - BroadcastDelegate
 
 extension Broadcast: BroadcastItemDelegate {
-    public func broadcastItemDismissButtonTapped(_ broadcastItem: BroadcastItem) {
+    func broadcastItemDismissButtonTapped(_ broadcastItem: BroadcastItem) {
         remove(broadcastItem)
+        delegate?.broadcast(self, didDismiss: broadcastItem.message)
     }
 
-    public func broadcastItem(_ broadcastItem: BroadcastItem, didTapURL url: URL) {
+    func broadcastItem(_ broadcastItem: BroadcastItem, didTapURL url: URL) {
         let broadcastIndex = arrangedSubviews.index(of: broadcastItem) ?? 0
         delegate?.broadcast(self, didTapURL: url, inItemAtIndex: broadcastIndex)
     }

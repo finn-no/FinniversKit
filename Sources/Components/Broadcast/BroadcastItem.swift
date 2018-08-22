@@ -3,7 +3,7 @@
 //
 import UIKit
 
-public protocol BroadcastItemDelegate: class {
+protocol BroadcastItemDelegate: class {
     func broadcastItemDismissButtonTapped(_ broadcastItem: BroadcastItem)
     func broadcastItem(_ broadcastItem: BroadcastItem, didTapURL url: URL)
 }
@@ -12,8 +12,9 @@ public protocol BroadcastItemDelegate: class {
 /// They are used when it´s important to inform the user about something that has affected the whole system and many users.
 /// Especially if it has a consequence for how he or she uses the service.
 /// https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system#/components/broadcast
+
 // MARK: - Public
-public final class BroadcastItem: UIView {
+class BroadcastItem: UIView {
 
     // MARK: Private Properties
     private lazy var messageTextView: UITextView = {
@@ -47,28 +48,25 @@ public final class BroadcastItem: UIView {
     }()
 
     // MARK: - Public Properties
-    public weak var delegate: BroadcastItemDelegate?
+    weak var delegate: BroadcastItemDelegate?
 
-    public var model: BroadcastModel? {
-        didSet {
-            guard let model = model else { return }
-            let attributedString = NSMutableAttributedString(attributedString: model.messageWithHTMLLinksReplacedByAttributedStrings)
-            attributedString.addAttributes(BroadcastItem.Style.fontAttributes, range: NSMakeRange(0, attributedString.string.utf16.count))
-            messageTextView.attributedText = attributedString
-        }
-    }
+    var message: BroadcastMessage
 
     // MARK: - Setup
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(message: BroadcastMessage) {
+        self.message = message
+        super.init(frame: .zero)
+        
         isAccessibilityElement = true
         clipsToBounds = true
         layer.cornerRadius = Style.containerCornerRadius
         backgroundColor = Style.backgroundColor
+
+        setAttributedText(message)
         setupSubviews()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("Init not implemented")
     }
 }
@@ -105,6 +103,12 @@ extension BroadcastItem {
             ])
     }
 
+    private func setAttributedText(_ message: BroadcastMessage) {
+        let attributedString = NSMutableAttributedString(attributedString: message.messageWithHTMLLinksReplacedByAttributedStrings)
+        attributedString.addAttributes(BroadcastItem.Style.fontAttributes, range: NSMakeRange(0, attributedString.string.utf16.count))
+        messageTextView.attributedText = attributedString
+    }
+
     // MARK: - Actions
     @objc func dismissButtonTapped(_ sender: UIButton) {
         delegate?.broadcastItemDismissButtonTapped(self)
@@ -112,7 +116,7 @@ extension BroadcastItem {
 }
 
 extension BroadcastItem: UITextViewDelegate {
-    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         delegate?.broadcastItem(self, didTapURL: URL)
         return false
     }
