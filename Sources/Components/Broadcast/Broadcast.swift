@@ -42,7 +42,7 @@ public final class Broadcast: UIStackView {
 
     // MARK: - Public methods
 
-    public func presentMessages(_ messages: [BroadcastMessage], in view: UIView, animated: Bool = true) {
+    public func presentMessages(_ messages: Set<BroadcastMessage>, in view: UIView, animated: Bool = true) {
         guard superview == nil else { return }
 
         // This might have been set to zero, reset it
@@ -82,7 +82,7 @@ public final class Broadcast: UIStackView {
         topConstraint?.constant = -offset
     }
 
-    public func add(_ messages: [BroadcastMessage], animated: Bool = true) {
+    public func add(_ messages: Set<BroadcastMessage>, animated: Bool = true) {
         guard let superview = superview else { return }
 
         for message in messages {
