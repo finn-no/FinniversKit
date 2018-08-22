@@ -42,11 +42,13 @@ public final class Broadcast: UIStackView {
 
     // MARK: - Public methods
 
-    public func presentMessages(_ messages: Set<BroadcastMessage>, in view: UIView, animated: Bool = true) {
+    public func presentMessages(_ messages: Set<BroadcastMessage>, in view: UIView? = nil, animated: Bool = true) {
         guard superview == nil else {
             add(messages, animated: animated)
             return
         }
+
+        guard let view = view else { return }
 
         // This might have been set to zero, reset it
         layoutMargins.top = .mediumLargeSpacing
@@ -106,6 +108,7 @@ private extension Broadcast {
             broadcast.removeFromSuperview()
             if self.subviews.count == 0 {
                 self.removeFromSuperview()
+                self.topConstraint = nil
 
                 guard let scrollView = self.scrollView else { return }
                 scrollView.addGestureRecognizer(scrollView.panGestureRecognizer)
