@@ -24,6 +24,16 @@ Import the framework to access all the components.
 import FinniversKit
 ```
 
+## Interesting things about FinniversKit
+
+- Folder structure (tests and demo)
+- Delegates and data sources (instead blocks and injection)
+- Why not playgrounds?
+- Snapshot testing
+- Accessibility
+- Dark mode
+
+
 ## Snapshot Testing
 
 **FinniversKit** uses [Uber's snapshot test cases](https://github.com/uber/ios-snapshot-test-case) to compare the contents of a UIView against a reference image.
