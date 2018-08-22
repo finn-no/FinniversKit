@@ -83,7 +83,6 @@ public final class Broadcast: UIStackView {
     }
 
     public func add(_ messages: [BroadcastMessage], animated: Bool = true) {
-
         guard let superview = superview else { return }
 
         for message in messages {
