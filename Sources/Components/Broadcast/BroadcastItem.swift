@@ -16,6 +16,15 @@ protocol BroadcastItemDelegate: class {
 // MARK: - Public
 class BroadcastItem: UIView {
 
+    private lazy var contentView: UIView = {
+        let view = UIView(frame: .zero)
+        view.clipsToBounds = true
+        view.layer.cornerRadius = Style.containerCornerRadius
+        view.backgroundColor = Style.backgroundColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     // MARK: Private Properties
     private lazy var messageTextView: UITextView = {
         let textView = UITextView()
@@ -48,6 +57,9 @@ class BroadcastItem: UIView {
     }()
 
     // MARK: - Public Properties
+
+    var heightConstraint: NSLayoutConstraint!
+
     weak var delegate: BroadcastItemDelegate?
 
     var message: BroadcastMessage
@@ -59,8 +71,6 @@ class BroadcastItem: UIView {
         
         isAccessibilityElement = true
         clipsToBounds = true
-        layer.cornerRadius = Style.containerCornerRadius
-        backgroundColor = Style.backgroundColor
 
         setAttributedText(message)
         setupSubviews()
@@ -75,31 +85,39 @@ class BroadcastItem: UIView {
 
 extension BroadcastItem {
     private func setupSubviews() {
-        addSubview(messageTextView)
-        addSubview(iconImageView)
-        addSubview(dismissButton)
+        contentView.addSubview(messageTextView)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(dismissButton)
+        addSubview(contentView)
 
-        let topConstraint = messageTextView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
+        heightConstraint = heightAnchor.constraint(equalToConstant: 0)
+
+        let topConstraint = contentView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
         topConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            topConstraint,
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
+            messageTextView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             messageTextView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .smallSpacing),
             messageTextView.trailingAnchor.constraint(equalTo: dismissButton.leadingAnchor, constant: -.smallSpacing),
-            messageTextView.heightAnchor.constraint(greaterThanOrEqualTo: iconImageView.heightAnchor),
-            topConstraint,
+            messageTextView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .mediumLargeSpacing),
 
-            iconImageView.topAnchor.constraint(equalTo: messageTextView.topAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             iconImageView.heightAnchor.constraint(equalToConstant: 28),
             iconImageView.widthAnchor.constraint(equalToConstant: 28),
 
-            dismissButton.topAnchor.constraint(equalTo: messageTextView.topAnchor),
-            dismissButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            dismissButton.topAnchor.constraint(equalTo: iconImageView.topAnchor),
+            dismissButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
             dismissButton.heightAnchor.constraint(equalToConstant: 28),
             dismissButton.widthAnchor.constraint(equalToConstant: 28),
 
-            bottomAnchor.constraint(equalTo: messageTextView.bottomAnchor, constant: .mediumLargeSpacing)
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: messageTextView.bottomAnchor, constant: .mediumLargeSpacing),
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: .mediumLargeSpacing),
+            bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             ])
     }
 

@@ -27,13 +27,10 @@ public final class Broadcast: UIStackView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        spacing = .mediumLargeSpacing
 
         axis = .vertical
         distribution = .fill
         alignment = .fill
-        layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing, leading: .mediumLargeSpacing, bottom: 0, trailing: .mediumLargeSpacing)
-        isLayoutMarginsRelativeArrangement = true
     }
 
     public required init(coder: NSCoder) {
@@ -49,9 +46,6 @@ public final class Broadcast: UIStackView {
         }
 
         guard let view = view else { return }
-
-        // This might have been set to zero, reset it
-        layoutMargins.top = .mediumLargeSpacing
 
         if let scrollView = view as? UIScrollView {
             self.scrollView = scrollView
@@ -91,21 +85,19 @@ public final class Broadcast: UIStackView {
 // MARK: - Private
 
 private extension Broadcast {
-    func remove(_ broadcast: BroadcastItem) {
+    func remove(_ item: BroadcastItem) {
+        item.heightConstraint.constant = 0
+        item.heightConstraint.isActive = true
+
         UIView.animate(withDuration: animationDuration, animations: {
-            if self.subviews.count == 1 {
-                self.layoutMargins.top = 0
-            }
+            item.alpha = 0
 
-            broadcast.isHidden = true
-            broadcast.alpha = 0
-
-            self.layoutIfNeeded()
+            self.superview?.layoutIfNeeded()
             self.scrollView?.contentInset.top = self.frame.height
             self.scrollView?.contentOffset.y = -self.frame.height
 
         }) { completed in
-            broadcast.removeFromSuperview()
+            item.removeFromSuperview()
             if self.subviews.count == 0 {
                 self.removeFromSuperview()
                 self.topConstraint = nil
@@ -117,7 +109,7 @@ private extension Broadcast {
         }
     }
 
-    func add(_ messages: Set<BroadcastMessage>, animated: Bool = true) {
+    func add(_ messages: Set<BroadcastMessage>, animated: Bool) {
         guard let superview = superview else { return }
 
         for message in messages {
@@ -129,6 +121,8 @@ private extension Broadcast {
 
         if animated {
             arrangedSubviews.forEach { view in view.isHidden = false }
+            updateConstraintsIfNeeded()
+
             let deltaHeight = systemLayoutSizeFitting(UILayoutFittingCompressedSize).height - frame.height
             topConstraint?.constant = -deltaHeight
             superview.layoutIfNeeded()
@@ -136,15 +130,17 @@ private extension Broadcast {
 
             // Animate down from the top
             UIView.animate(withDuration: animationDuration) {
-                superview.layoutIfNeeded()
-                self.scrollView?.contentInset.top = self.frame.height
-                self.scrollView?.contentOffset.y = -self.frame.height
+                self.appearAnimation()
             }
         } else {
-            superview.layoutIfNeeded()
-            scrollView?.contentInset.top = self.frame.height
-            scrollView?.contentOffset.y = -self.frame.height
+            self.appearAnimation()
         }
+    }
+
+    func appearAnimation() {
+        superview?.layoutIfNeeded()
+        scrollView?.contentInset.top = frame.height
+        scrollView?.contentOffset.y = -frame.height
     }
 }
 
