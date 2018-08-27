@@ -5,7 +5,7 @@ import FinniversKit
 
 public class BroadcastDemoView: UIView {
 
-    private let items = ["Select", "any", "row", "and", "the", "broadcasts", "will", "reappear"]
+    private let items = ["Select", "any", "row", "and", "the", "broadcasts", "will", "reappear", "fdas", "fdsaf", "gfd", "gsg", "2", "fewaf", "gdg", "fsa", "fesf", "gadfd", "fafdsaf"]
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -48,7 +48,7 @@ public class BroadcastDemoView: UIView {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             ])
 
-        broadcast.presentMessages(broadcastMessages, in: tableView, animated: false)
+//        broadcast.presentMessages(broadcastMessages, in: tableView, animated: false)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -58,10 +58,10 @@ public class BroadcastDemoView: UIView {
 
 extension BroadcastDemoView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if dismissedMessages.count == broadcastMessages.count {
+        if dismissedMessages.isEmpty {
             broadcast.presentMessages(broadcastMessages, in: tableView)
         } else {
-            broadcast.presentMessages(dismissedMessages)
+            broadcast.presentMessages(dismissedMessages, in: tableView)
         }
         dismissedMessages.removeAll()
     }

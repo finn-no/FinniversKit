@@ -71,6 +71,7 @@ public final class Broadcast: UIStackView {
         guard let scrollView = scrollView else { return }
 
         let offset = scrollView.contentInset.top + scrollView.contentOffset.y
+        print("Handle scrolling", scrollView.contentInset.top, scrollView.contentOffset.y)
 
         if offset > 2 * frame.height {
             isHidden = true
@@ -91,10 +92,7 @@ private extension Broadcast {
 
         UIView.animate(withDuration: animationDuration, animations: {
             item.alpha = 0
-
-            self.superview?.layoutIfNeeded()
-            self.scrollView?.contentInset.top = self.frame.height
-            self.scrollView?.contentOffset.y = -self.frame.height
+            self.animate(to: nil)
 
         }) { completed in
             item.removeFromSuperview()
@@ -112,35 +110,55 @@ private extension Broadcast {
     func add(_ messages: Set<BroadcastMessage>, animated: Bool) {
         guard let superview = superview else { return }
 
-        for message in messages {
-            let item = BroadcastItem(message: message)
-            item.delegate = self
-            item.isHidden = animated // Need to hide for animation to work properly
-            insertArrangedSubview(item, at: 0)
+        var contentOffset: CGFloat = 0
+        if let scrollView = scrollView {
+            contentOffset = scrollView.contentInset.top + scrollView.contentOffset.y
         }
 
-        if animated {
-            arrangedSubviews.forEach { view in view.isHidden = false }
-            updateConstraintsIfNeeded()
+        insert(messages)
 
-            let deltaHeight = systemLayoutSizeFitting(UILayoutFittingCompressedSize).height - frame.height
-            topConstraint?.constant = -deltaHeight
+        arrangedSubviews.forEach { view in view.isHidden = false }
+        updateConstraintsIfNeeded()
+
+        let nextFrame = systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        let deltaHeight = nextFrame.height - frame.height
+
+        if nextFrame.height - contentOffset < 0 {
+            // Broadcast is not visuable inside scrollview
+            isHidden = true
+            animate(to: nil)
+            return
+        }
+
+        // Visuable
+        topConstraint?.constant = -contentOffset - deltaHeight
+
+        if animated {
             superview.layoutIfNeeded()
-            topConstraint?.constant = 0
+            topConstraint?.constant = -contentOffset
 
             // Animate down from the top
             UIView.animate(withDuration: animationDuration) {
-                self.appearAnimation()
+                self.animate(to: contentOffset - self.frame.height)
             }
         } else {
-            self.appearAnimation()
+            self.animate(to: contentOffset - self.frame.height)
         }
     }
 
-    func appearAnimation() {
+    func insert(_ messages: Set<BroadcastMessage>) {
+        for message in messages {
+            let item = BroadcastItem(message: message)
+            item.delegate = self
+            item.isHidden = true
+            insertArrangedSubview(item, at: 0)
+        }
+    }
+
+    func animate(to offset: CGFloat?) {
+        scrollView?.contentInset.top = systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        if let offset = offset { scrollView?.contentOffset.y = offset }
         superview?.layoutIfNeeded()
-        scrollView?.contentInset.top = frame.height
-        scrollView?.contentOffset.y = -frame.height
     }
 }
 
