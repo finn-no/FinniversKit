@@ -71,7 +71,6 @@ public final class Broadcast: UIStackView {
         guard let scrollView = scrollView else { return }
 
         let offset = scrollView.contentInset.top + scrollView.contentOffset.y
-        print("Handle scrolling", scrollView.contentInset.top, scrollView.contentOffset.y)
 
         if offset > 2 * frame.height {
             isHidden = true
