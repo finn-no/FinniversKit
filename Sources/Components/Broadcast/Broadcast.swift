@@ -120,10 +120,10 @@ private extension Broadcast {
         arrangedSubviews.forEach { view in view.isHidden = false }
         updateConstraintsIfNeeded()
 
-        let nextFrame = systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-        let deltaHeight = nextFrame.height - frame.height
+        let nextSize = systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        let deltaHeight = nextSize.height - frame.height
 
-        if nextFrame.height - contentOffset < 0 {
+        if nextSize.height - contentOffset < 0 {
             // Broadcast is not visuable inside scrollview
             isHidden = true
             animate(to: nil)
@@ -142,7 +142,8 @@ private extension Broadcast {
                 self.animate(to: contentOffset - self.frame.height)
             }
         } else {
-            self.animate(to: contentOffset - self.frame.height)
+            print(nextSize)
+            self.animate(to: contentOffset - nextSize.height)
         }
     }
 
