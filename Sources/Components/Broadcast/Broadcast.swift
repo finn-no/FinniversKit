@@ -92,7 +92,7 @@ private extension Broadcast {
 
         UIView.animate(withDuration: animationDuration, animations: {
             item.alpha = 0
-            self.animate(to: nil)
+            self.animate(to: nil) // keep current content offset
 
         }) { completed in
             item.removeFromSuperview()
@@ -142,7 +142,7 @@ private extension Broadcast {
                 self.animate(to: contentOffset - self.frame.height)
             }
         } else {
-            print(nextSize)
+            topConstraint?.constant = -contentOffset
             self.animate(to: contentOffset - nextSize.height)
         }
     }

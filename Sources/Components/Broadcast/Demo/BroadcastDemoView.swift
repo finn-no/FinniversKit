@@ -48,7 +48,7 @@ public class BroadcastDemoView: UIView {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             ])
 
-        broadcast.presentMessages(broadcastMessages, in: tableView, animated: true)
+//        broadcast.presentMessages(broadcastMessages, in: tableView, animated: true)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -59,7 +59,7 @@ public class BroadcastDemoView: UIView {
 extension BroadcastDemoView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if dismissedMessages.isEmpty {
-            broadcast.presentMessages(broadcastMessages, in: tableView)
+            broadcast.presentMessages(broadcastMessages, in: tableView, animated: false)
         } else {
             broadcast.presentMessages(dismissedMessages, in: tableView)
         }
