@@ -132,9 +132,9 @@ private extension Broadcast {
 
         // Visuable
         topConstraint?.constant = -contentOffset - deltaHeight
+        superview.layoutIfNeeded()
 
         if animated {
-            superview.layoutIfNeeded()
             topConstraint?.constant = -contentOffset
 
             // Animate down from the top
@@ -143,7 +143,7 @@ private extension Broadcast {
             }
         } else {
             topConstraint?.constant = -contentOffset
-            self.animate(to: contentOffset - nextSize.height)
+            self.animate(to: contentOffset - self.frame.height)
         }
     }
 

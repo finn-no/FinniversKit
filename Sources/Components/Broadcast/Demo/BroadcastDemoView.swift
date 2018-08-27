@@ -48,7 +48,7 @@ public class BroadcastDemoView: UIView {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             ])
 
-//        broadcast.presentMessages(broadcastMessages, in: tableView, animated: true)
+        broadcast.presentMessages(broadcastMessages, in: tableView, animated: false)
     }
 
     public required init?(coder aDecoder: NSCoder) {
