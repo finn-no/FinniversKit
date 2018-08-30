@@ -17,7 +17,6 @@ public class Label: UILabel {
 
         return [
             NSAttributedStringKey.font: style.font,
-            NSAttributedStringKey.foregroundColor: style.color,
             NSAttributedStringKey.paragraphStyle: paragraphStyle,
         ]
     }
@@ -44,7 +43,6 @@ public class Label: UILabel {
         isAccessibilityElement = true
 
         accessibilityLabel = text
-        textColor = style?.color
         font = style?.font
     }
 

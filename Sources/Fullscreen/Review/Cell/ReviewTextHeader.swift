@@ -14,7 +14,8 @@ class ReviewTextHeader: UITableViewHeaderFooterView {
     }()
 
     lazy var subtitle: Label = {
-        let label = Label(style: .body(.stone))
+        let label = Label(style: .body)
+        label.textColor = .stone
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

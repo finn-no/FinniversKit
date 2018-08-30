@@ -32,10 +32,10 @@ public class ToastView: UIView {
     private let imageSizeAllowedMax = CGSize(width: 26, height: 26)
 
     private lazy var messageTitle: Label = {
-        let label = Label()
+        let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.style = .body(.licorice)
+        label.textColor = .licorice
         return label
     }()
 

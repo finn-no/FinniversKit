@@ -33,14 +33,16 @@ public class NotificationsListViewCell: UITableViewCell {
     }()
 
     private lazy var detailLabel: Label = {
-        let label = Label(style: .detail(.stone))
+        let label = Label(style: .detail)
+        label.textColor = .stone
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .body(.licorice))
+        let label = Label(style: .body)
+        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         label.numberOfLines = 2
@@ -48,7 +50,8 @@ public class NotificationsListViewCell: UITableViewCell {
     }()
 
     private lazy var priceLabel: Label = {
-        let label = Label(style: .detail(.stone))
+        let label = Label(style: .detail)
+        label.textColor = .stone
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
