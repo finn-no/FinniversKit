@@ -18,10 +18,7 @@ public class Label: UILabel {
         var attributes = [NSAttributedStringKey: Any]()
         attributes[.font] = style.font
         attributes[.paragraphStyle] = paragraphStyle
-
-        if let color = color(for: style) {
-            attributes[.foregroundColor] = color
-        }
+        attributes[.foregroundColor] = UIColor.licorice
 
         return attributes
     }
@@ -49,27 +46,10 @@ public class Label: UILabel {
 
         accessibilityLabel = text
         font = style?.font
-
-        if let color = color(for: style) {
-            textColor = color
-        }
+        textColor = .licorice
     }
 
     // MARK: - Dependency injection
 
-    public var style: Style?
-
-    // Required for backwards compatibility https://github.com/finn-no/FinniversKit/pull/217
-    private func color(for style: Style?) -> UIColor? {
-        guard let style = style else {
-            return nil
-        }
-
-        switch style {
-        case .title1, .title2, .title3:
-            return .licorice
-        case .title4, .title5, .body, .detail:
-            return nil
-        }
-    }
+    public private(set) var style: Style?
 }
