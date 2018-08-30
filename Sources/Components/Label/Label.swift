@@ -15,10 +15,15 @@ public class Label: UILabel {
         paragraphStyle.lineSpacing = style.lineSpacing
         paragraphStyle.alignment = textAlignment
 
-        return [
-            NSAttributedStringKey.font: style.font,
-            NSAttributedStringKey.paragraphStyle: paragraphStyle,
-        ]
+        var attributes = [NSAttributedStringKey: Any]()
+        attributes[.font] = style.font
+        attributes[.paragraphStyle] = paragraphStyle
+
+        if let color = color(for: style) {
+            attributes[.foregroundColor] = color
+        }
+
+        return attributes
     }
 
     // MARK: - Setup
@@ -44,9 +49,27 @@ public class Label: UILabel {
 
         accessibilityLabel = text
         font = style?.font
+
+        if let color = color(for: style) {
+            textColor = color
+        }
     }
 
     // MARK: - Dependency injection
 
     public var style: Style?
+
+    // Required for backwards compatibility https://github.com/finn-no/FinniversKit/pull/217
+    private func color(for style: Style?) -> UIColor? {
+        guard let style = style else {
+            return nil
+        }
+
+        switch style {
+        case .title1, .title2, .title3:
+            return .licorice
+        case .title4, .title5, .body, .detail:
+            return nil
+        }
+    }
 }
