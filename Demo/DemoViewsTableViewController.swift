@@ -26,8 +26,9 @@ class DemoViewsTableViewController: UITableViewController {
         super.viewDidAppear(animated)
 
         if let indexPath = State.lastSelectedIndexPath {
-            let viewController = Sections.viewController(for: indexPath)
-            present(viewController, animated: false)
+            if let viewController = Sections.viewController(for: indexPath) {
+                present(viewController, animated: false)
+            }
         }
     }
 
@@ -66,8 +67,9 @@ extension DemoViewsTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         State.lastSelectedIndexPath = indexPath
 
-        let viewController = Sections.viewController(for: indexPath)
-        present(viewController, animated: true)
+        if let viewController = Sections.viewController(for: indexPath) {
+            present(viewController, animated: true)
+        }
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

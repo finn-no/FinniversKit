@@ -100,6 +100,8 @@ public enum ComponentViews: String {
 
 public enum RecyclingViews: String {
     case notificationsListView
+    case favoriteFoldersListView
+    case savedSearchesListView
     case marketsGridView
     case adsGridView
     case favoritesListView
@@ -107,6 +109,8 @@ public enum RecyclingViews: String {
     static var all: [RecyclingViews] {
         return [
             .notificationsListView,
+            .favoriteFoldersListView,
+            .savedSearchesListView,
             .marketsGridView,
             .adsGridView,
             .favoritesListView,
@@ -117,6 +121,10 @@ public enum RecyclingViews: String {
         switch self {
         case .notificationsListView:
             return ViewController<NotificationsListViewDemoView>()
+        case .favoriteFoldersListView:
+            return ViewController<FavoriteFoldersListViewDemoView>()
+        case .savedSearchesListView:
+            return ViewController<SavedSearchesListViewDemoView>()
         case .marketsGridView:
             return ViewController<MarketsGridViewDemoView>()
         case .adsGridView:
