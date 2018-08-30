@@ -9,7 +9,7 @@ public enum DnaViews: String {
     case spacing
     case assets
 
-    static var all: [DnaViews] {
+    public static var all: [DnaViews] {
         return [
             .color,
             .font,
@@ -47,7 +47,7 @@ public enum ComponentViews: String {
     case radioButton
     case roundedImageView
 
-    static var all: [ComponentViews] {
+    public static var all: [ComponentViews] {
         return [
             .broadcast,
             .broadcastContainer,
@@ -105,7 +105,7 @@ public enum RecyclingViews: String {
     case marketsGridView
     case adsGridView
 
-    static var all: [RecyclingViews] {
+    public static var all: [RecyclingViews] {
         return [
             .notificationsListView,
             .favoriteFoldersListView,
@@ -141,7 +141,7 @@ public enum FullscreenViews: String {
     case reportAdView
     case reviewView
 
-    static var all: [FullscreenViews] {
+    public static var all: [FullscreenViews] {
         return [
             .frontpageView,
             .popupView,
