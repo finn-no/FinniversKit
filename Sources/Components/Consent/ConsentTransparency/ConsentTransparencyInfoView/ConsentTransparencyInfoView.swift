@@ -35,7 +35,6 @@ public final class ConsentTransparencyInfoView: UIView {
 
     private lazy var finnHeaderLabel: Label = {
         let label = Label(style: .title4)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -43,7 +42,6 @@ public final class ConsentTransparencyInfoView: UIView {
 
     private lazy var finnIntroLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -51,7 +49,6 @@ public final class ConsentTransparencyInfoView: UIView {
 
     private lazy var finnBulletPointsLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -59,7 +56,6 @@ public final class ConsentTransparencyInfoView: UIView {
 
     private lazy var finnButtonIntroLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -81,7 +77,6 @@ public final class ConsentTransparencyInfoView: UIView {
 
     private lazy var schibstedHeaderLabel: Label = {
         let label = Label(style: .title4)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -89,7 +84,6 @@ public final class ConsentTransparencyInfoView: UIView {
 
     private lazy var schibstedIntroLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -97,7 +91,6 @@ public final class ConsentTransparencyInfoView: UIView {
 
     private lazy var schibstedBulletPointsLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -105,7 +98,6 @@ public final class ConsentTransparencyInfoView: UIView {
 
     private lazy var schibstedButtonIntroLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label

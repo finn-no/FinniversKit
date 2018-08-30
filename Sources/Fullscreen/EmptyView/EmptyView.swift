@@ -68,7 +68,6 @@ public class EmptyView: UIView {
 
     private lazy var messageLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isAccessibilityElement = true
         label.textAlignment = .center

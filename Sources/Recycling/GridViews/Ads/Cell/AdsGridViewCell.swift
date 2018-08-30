@@ -42,7 +42,6 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label

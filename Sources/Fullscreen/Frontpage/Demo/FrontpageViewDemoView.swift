@@ -19,7 +19,6 @@ public class FrontpageViewDemoView: UIView {
 
     fileprivate lazy var headerLabel: Label = {
         var headerLabel = Label(style: .title4)
-        headerLabel.textColor = .licorice
         return headerLabel
     }()
     fileprivate lazy var headerView = UIView()

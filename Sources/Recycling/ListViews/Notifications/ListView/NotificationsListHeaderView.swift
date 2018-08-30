@@ -14,7 +14,6 @@ public class NotificationsListHeaderView: UITableViewHeaderFooterView {
 
     lazy var titleLabel: UILabel = {
         let label = Label(style: .detail)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         return label

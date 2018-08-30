@@ -63,7 +63,6 @@ public class TextField: UIView {
 
     private lazy var typeLabel: Label = {
         let label = Label(style: .title5)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -108,7 +107,6 @@ public class TextField: UIView {
 
     private lazy var helpTextLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

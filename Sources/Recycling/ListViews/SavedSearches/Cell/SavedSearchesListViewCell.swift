@@ -9,14 +9,15 @@ import UIKit
     @objc var indexPath: IndexPath?
 
     @objc lazy var titleLabel: UILabel = {
-        let label = Label(style: .body(.licorice))
+        let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
     }()
 
     @objc lazy var subtitleLabel: UILabel = {
-        let label = Label(style: .detail(.primaryBlue))
+        let label = Label(style: .detail)
+        label.textColor = .primaryBlue
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label

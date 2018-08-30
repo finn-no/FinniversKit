@@ -42,7 +42,6 @@ public class NotificationsListViewCell: UITableViewCell {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         label.numberOfLines = 2

@@ -8,7 +8,7 @@ public class FavoriteFoldersListViewCell: UITableViewCell {
     // MARK: - Internal properties
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .body(.licorice))
+        let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         label.numberOfLines = 2
@@ -16,7 +16,8 @@ public class FavoriteFoldersListViewCell: UITableViewCell {
     }()
 
     private lazy var detailLabel: Label = {
-        let label = Label(style: .detail(.stone))
+        let label = Label(style: .detail)
+        label.textColor = .stone
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label

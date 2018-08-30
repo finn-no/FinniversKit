@@ -35,7 +35,6 @@ public class ToastView: UIView {
         let label = Label(style: .title4)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .licorice
         return label
     }()
 

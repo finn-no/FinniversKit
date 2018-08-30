@@ -37,7 +37,6 @@ public class MarketsGridViewCell: UICollectionViewCell {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
