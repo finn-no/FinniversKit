@@ -32,26 +32,30 @@ public struct ContainmentOptions: OptionSet {
             guard let screens = DnaViews.all[safe: indexPath.row] else {
                 return nil
             }
-            return nil
+            switch screens {
+            default: return nil
+            }
         case .fullscreen:
             guard let screens = FullscreenViews.all[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
-            case .reportAdView:
-                return nil
-            default:
-                return nil
+            default: return nil
             }
         case .components:
             guard let screens = ComponentViews.all[safe: indexPath.row] else {
                 return nil
             }
-
-            return nil
+            switch screens {
+            default: return nil
+            }
         case .recycling:
-            _ = RecyclingViews.all[indexPath.row]
-            return nil
+            guard let screens = RecyclingViews.all[safe: indexPath.row] else {
+                return nil
+            }
+            switch screens {
+            default: return nil
+            }
         }
     }
 }
