@@ -122,9 +122,22 @@ extension BroadcastItem {
     }
 
     private func setAttributedText(_ message: BroadcastMessage) {
-        let attributedString = NSMutableAttributedString(attributedString: message.messageWithHTMLLinksReplacedByAttributedStrings)
+        let attributedString = NSMutableAttributedString(attributedString: messageWithHTMLLinksReplacedByAttributedStrings(message.text))
         attributedString.addAttributes(BroadcastItem.Style.fontAttributes, range: NSMakeRange(0, attributedString.string.utf16.count))
         messageTextView.attributedText = attributedString
+    }
+
+    private func messageWithHTMLLinksReplacedByAttributedStrings(_ text: String) -> NSAttributedString {
+        guard let messageData = text.data(using: .utf16) else {
+            return NSAttributedString(string: text)
+        }
+
+        let options = [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html]
+        guard let attributedString = try? NSMutableAttributedString(data: messageData, options: options, documentAttributes: nil) else {
+            return NSAttributedString(string: text  )
+        }
+
+        return attributedString
     }
 
     // MARK: - Actions

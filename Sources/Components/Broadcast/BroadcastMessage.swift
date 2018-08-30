@@ -4,25 +4,23 @@
 
 import Foundation
 
-public struct BroadcastMessage: Hashable {
+public struct BroadcastMessage: Hashable, Decodable {
     public let id: Int
     public let text: String
+    public let broadcastAreas: [String]
+
+    enum CodingKeys: String, CodingKey {
+        case text = "message"
+        case id, broadcastAreas
+    }
 
     public init(id: Int, text: String) {
         self.id = id
         self.text = text
+        self.broadcastAreas = []
     }
 
-    var messageWithHTMLLinksReplacedByAttributedStrings: NSAttributedString {
-        guard let messageData = text.data(using: .utf16) else {
-            return NSAttributedString(string: text)
-        }
-
-        let options = [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html]
-        guard let attributedString = try? NSMutableAttributedString(data: messageData, options: options, documentAttributes: nil) else {
-            return NSAttributedString(string: text  )
-        }
-
-        return attributedString
+    public var hashValue: Int {
+        return id.hashValue
     }
 }
