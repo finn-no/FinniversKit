@@ -4,7 +4,8 @@
 
 import Foundation
 
-public struct BroadcastMessage: Hashable, Decodable {
+public struct BroadcastMessage: Hashable, Codable {
+
     public let id: Int
     public let text: String
     public let broadcastAreas: [String]
@@ -22,5 +23,9 @@ public struct BroadcastMessage: Hashable, Decodable {
 
     public var hashValue: Int {
         return id.hashValue
+    }
+
+    public static func == (lhs: BroadcastMessage, rhs: BroadcastMessage) -> Bool {
+        return lhs.id == rhs.id
     }
 }
