@@ -29,7 +29,7 @@ import FinniversKit
 - Folder structure (tests and demo)
 - Delegates and data sources (instead blocks and injection)
 - Why not playgrounds?
-- Snapshot testing
+- Snapshot testing: Forces you to share an snapshot of your changes otherwise the tests won't pass
 - Accessibility
 - Dark mode
 
