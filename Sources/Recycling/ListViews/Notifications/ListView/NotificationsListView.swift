@@ -86,7 +86,7 @@ public class NotificationsListView: UIView {
     }
 }
 
-// MARK: - UICollectionViewDelegate
+// MARK: - UITableViewDelegate
 
 extension NotificationsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -130,7 +130,7 @@ extension NotificationsListView: UITableViewDelegate {
     }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UITableViewDataSource
 
 extension NotificationsListView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
