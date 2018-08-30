@@ -1,7 +1,6 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-
 import UIKit
 
 public enum DnaViews: String {
@@ -101,6 +100,7 @@ public enum ComponentViews: String {
 public enum RecyclingViews: String {
     case notificationsListView
     case favoriteFoldersListView
+    case favoritesListView
     case savedSearchesListView
     case marketsGridView
     case adsGridView
@@ -109,6 +109,7 @@ public enum RecyclingViews: String {
         return [
             .notificationsListView,
             .favoriteFoldersListView,
+            .favoritesListView,
             .savedSearchesListView,
             .marketsGridView,
             .adsGridView,
@@ -121,6 +122,8 @@ public enum RecyclingViews: String {
             return ViewController<NotificationsListViewDemoView>()
         case .favoriteFoldersListView:
             return ViewController<FavoriteFoldersListViewDemoView>()
+        case .favoritesListView:
+            return ViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:
             return ViewController<SavedSearchesListViewDemoView>()
         case .marketsGridView:

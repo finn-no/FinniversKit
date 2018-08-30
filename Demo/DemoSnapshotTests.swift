@@ -105,6 +105,10 @@ class RecyclingViewTests: FBSnapshotTestCase {
     func testAdsGridView() {
         snapshot(.adsGridView)
     }
+
+    func testFavoritesListView() {
+        snapshot(.favoritesListView)
+    }
 }
 
 class FullscreenViewTests: FBSnapshotTestCase {
