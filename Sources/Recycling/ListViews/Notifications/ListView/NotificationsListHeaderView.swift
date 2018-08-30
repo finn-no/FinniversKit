@@ -13,14 +13,16 @@ public class NotificationsListHeaderView: UITableViewHeaderFooterView {
     var section: Int = 0
 
     lazy var titleLabel: UILabel = {
-        let label = Label(style: .detail(.licorice))
+        let label = Label(style: .detail)
+        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         return label
     }()
 
     lazy var dateLabel: UILabel = {
-        let label = Label(style: .detail(.stone))
+        let label = Label(style: .detail)
+        label.textColor = .stone
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

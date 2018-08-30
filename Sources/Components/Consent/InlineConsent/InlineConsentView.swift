@@ -13,7 +13,8 @@ public class InlineConsentView: UIView {
     // MARK: - Internal properties
 
     private lazy var descriptionTitleLabel: Label = {
-        let label = Label(style: .body(.licorice))
+        let label = Label(style: .body)
+        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label

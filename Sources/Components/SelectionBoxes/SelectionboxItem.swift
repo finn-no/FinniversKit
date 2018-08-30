@@ -20,7 +20,8 @@ public class SelectionboxItem: UIView {
     }()
 
     let titleLabel: UILabel = {
-        let label = Label(style: .body(.licorice))
+        let label = Label(style: .body)
+        label.textColor = .licorice
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

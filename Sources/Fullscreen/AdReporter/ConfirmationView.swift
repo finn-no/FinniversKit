@@ -19,7 +19,8 @@ public class ConfirmationView: UIView {
     }()
     
     private lazy var messageLabel: Label = {
-        let label = Label(style: .body(.licorice))
+        let label = Label(style: .body)
+        label.textColor = .licorice
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false

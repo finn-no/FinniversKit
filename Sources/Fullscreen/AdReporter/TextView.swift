@@ -31,7 +31,7 @@ public class TextView: UIView {
     }()
 
     private lazy var placeholderLabel: UILabel = {
-        let label = Label(style: .body(.stone))
+        let label = Label(style: .body)        
         label.textColor = .sardine
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false

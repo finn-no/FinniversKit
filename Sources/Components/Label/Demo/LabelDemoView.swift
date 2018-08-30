@@ -21,17 +21,26 @@ public class LabelDemoView: UIView {
         let labelT1 = Label(style: .title1)
         let labelT2 = Label(style: .title2)
         let labelT3 = Label(style: .title3)
-        let labelT4 = Label(style: .title4(.licorice))
-        let labelT5 = Label(style: .title5(.licorice))
-        let labelBody = Label(style: .body(.licorice))
-        let labelDetail = Label(style: .detail(.licorice))
+        let labelT4 = Label(style: .title4)
+        labelT4.textColor = .licorice
+        let labelT5 = Label(style: .title5)
+        labelT5.textColor = .licorice
+        let labelBody = Label(style: .body)
+        labelBody.textColor = .licorice
+        let labelDetail = Label(style: .detail)
+        labelDetail.textColor = .licorice
 
-        let testStyle: Label.Style = .body(.licorice)
+        let testStyle: Label.Style = .body
         let multilineLabel = Label(style: testStyle)
+        multilineLabel.textColor = .licorice
         let label1 = Label(style: testStyle)
+        label1.textColor = .licorice
         let label2 = Label(style: testStyle)
+        label2.textColor = .licorice
         let label3 = Label(style: testStyle)
-        let labelWide = Label(style: .body(.licorice))
+        label3.textColor = .licorice
+        let labelWide = Label(style: .body)
+        labelWide.textColor = .licorice
 
         labelT1.translatesAutoresizingMaskIntoConstraints = false
         labelT2.translatesAutoresizingMaskIntoConstraints = false

@@ -17,7 +17,11 @@ public class FrontpageViewDemoView: UIView {
         return marketGridView
     }()
 
-    fileprivate lazy var headerLabel = Label(style: .title4(.licorice))
+    fileprivate lazy var headerLabel: Label = {
+        var headerLabel = Label(style: .title4)
+        headerLabel.textColor = .licorice
+        return headerLabel
+    }()
     fileprivate lazy var headerView = UIView()
 
     fileprivate let ads = AdFactory.create(numberOfModels: 9)
