@@ -8,7 +8,7 @@ public class RibbonView: UIView {
     // MARK: - Internal properties
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .detail(.licorice))
+        let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label

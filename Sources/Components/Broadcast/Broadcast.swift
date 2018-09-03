@@ -51,6 +51,7 @@ public final class Broadcast: UIView {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(dismissButtonImage, for: .normal)
+        button.tintColor = .stone
         button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
         return button
     }()

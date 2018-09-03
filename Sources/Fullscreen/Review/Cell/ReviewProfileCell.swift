@@ -19,7 +19,7 @@ class ReviewProfileCell: UITableViewCell {
     }()
 
     lazy var name: Label = {
-        let label = Label(style: .body(.licorice))
+        let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

@@ -9,52 +9,10 @@ public extension Label {
         case title1
         case title2
         case title3
-        case title4(FlexibleColorGroup)
-        case title5(FlexibleColorGroup)
-        case body(AllColorGroup)
-        case detail(AllColorGroup)
-
-        public enum FlexibleColorGroup {
-            case licorice
-            case milk
-
-            var color: UIColor {
-                switch self {
-                case .licorice: return .licorice
-                case .milk: return .milk
-                }
-            }
-        }
-
-        public enum AllColorGroup {
-            case licorice
-            case milk
-            case stone
-            case primaryBlue
-            case cherry
-
-            var color: UIColor {
-                switch self {
-                case .licorice: return .licorice
-                case .milk: return .milk
-                case .stone: return .stone
-                case .primaryBlue: return .primaryBlue
-                case .cherry: return .cherry
-                }
-            }
-        }
-
-        var color: UIColor {
-            switch self {
-            case .title1: return .licorice
-            case .title2: return .licorice
-            case .title3: return .licorice
-            case let .title4(colorGroup): return colorGroup.color
-            case let .title5(colorGroup): return colorGroup.color
-            case let .body(colorGroup): return colorGroup.color
-            case let .detail(colorGroup): return colorGroup.color
-            }
-        }
+        case title4
+        case title5
+        case body
+        case detail
 
         var font: UIFont {
             switch self {

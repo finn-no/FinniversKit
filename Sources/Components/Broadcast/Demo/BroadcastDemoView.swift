@@ -16,9 +16,9 @@ public class BroadcastDemoView: UIView {
         let button = Button(style: .default)
 
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Present Broadcast", for: .normal)
+        button.setTitle("Dismiss Broadcast", for: .normal)
         button.addTarget(self, action: #selector(broadcastButtonTapped(_:)), for: .touchUpInside)
-        button.tag = 0
+        button.tag = 1
 
         return button
     }()
@@ -28,6 +28,7 @@ public class BroadcastDemoView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        broadcast.presentMessage(using: BroadcastModel(with: broadcastMessage), animated: false, completion: nil)
     }
 
     public required init?(coder aDecoder: NSCoder) {

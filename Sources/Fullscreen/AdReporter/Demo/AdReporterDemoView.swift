@@ -14,7 +14,7 @@ public struct AdReporterViewData: AdReporterViewModel {
     public init() {}
 }
 
-class AdReporterDemoView: UIView {
+public class AdReporterDemoView: UIView {
     private lazy var adReporterView: AdReporterView = {
         let view = AdReporterView(frame: .zero)
         view.model = AdReporterViewData()
@@ -25,7 +25,7 @@ class AdReporterDemoView: UIView {
         return view
     }()
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         registerKeyboardEvents()
         setupSubviews()
@@ -66,21 +66,21 @@ class AdReporterDemoView: UIView {
         adReporterView.contentInset.bottom = 0
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension AdReporterDemoView: AdReporterDelegate {
-    func adReporterViewHelpButtonPressed(_ adReporterView: AdReporterView) {
+    public func adReporterViewHelpButtonPressed(_ adReporterView: AdReporterView) {
         print("Help button pressed")
     }
 
-    func radioButton(_ radioButton: RadioButton, didSelectItem item: RadioButtonItem) {
+    public func radioButton(_ radioButton: RadioButton, didSelectItem item: RadioButtonItem) {
         print("Did Select Item:", item)
     }
 
-    func radioButton(_ radioButton: RadioButton, didUnselectItem item: RadioButtonItem) {
+    public func radioButton(_ radioButton: RadioButton, didUnselectItem item: RadioButtonItem) {
         print("Did Unselect Item:", item)
     }
 }

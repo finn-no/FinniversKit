@@ -5,23 +5,6 @@
 import UIKit
 
 public class Label: UILabel {
-    // MARK: - Internal properties
-
-    var labelAttributes: [NSAttributedStringKey: Any] {
-        guard let style = style else {
-            return [:]
-        }
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = style.lineSpacing
-        paragraphStyle.alignment = textAlignment
-
-        return [
-            NSAttributedStringKey.font: style.font,
-            NSAttributedStringKey.foregroundColor: style.color,
-            NSAttributedStringKey.paragraphStyle: paragraphStyle,
-        ]
-    }
-
     // MARK: - Setup
 
     public init(style: Style) {
@@ -44,11 +27,11 @@ public class Label: UILabel {
         isAccessibilityElement = true
 
         accessibilityLabel = text
-        textColor = style?.color
         font = style?.font
+        textColor = .licorice
     }
 
     // MARK: - Dependency injection
 
-    public var style: Style?
+    public private(set) var style: Style?
 }
