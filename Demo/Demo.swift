@@ -1,7 +1,6 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-
 import UIKit
 
 public enum DnaViews: String {
@@ -10,7 +9,7 @@ public enum DnaViews: String {
     case spacing
     case assets
 
-    static var all: [DnaViews] {
+    public static var all: [DnaViews] {
         return [
             .color,
             .font,
@@ -47,7 +46,7 @@ public enum ComponentViews: String {
     case radioButton
     case roundedImageView
 
-    static var all: [ComponentViews] {
+    public static var all: [ComponentViews] {
         return [
             .broadcast,
             .button,
@@ -96,12 +95,18 @@ public enum ComponentViews: String {
 
 public enum RecyclingViews: String {
     case notificationsListView
+    case favoriteFoldersListView
+    case favoritesListView
+    case savedSearchesListView
     case marketsGridView
     case adsGridView
 
-    static var all: [RecyclingViews] {
+    public static var all: [RecyclingViews] {
         return [
             .notificationsListView,
+            .favoriteFoldersListView,
+            .favoritesListView,
+            .savedSearchesListView,
             .marketsGridView,
             .adsGridView,
         ]
@@ -111,6 +116,12 @@ public enum RecyclingViews: String {
         switch self {
         case .notificationsListView:
             return ViewController<NotificationsListViewDemoView>()
+        case .favoriteFoldersListView:
+            return ViewController<FavoriteFoldersListViewDemoView>()
+        case .favoritesListView:
+            return ViewController<FavoritesListViewDemoView>()
+        case .savedSearchesListView:
+            return ViewController<SavedSearchesListViewDemoView>()
         case .marketsGridView:
             return ViewController<MarketsGridViewDemoView>()
         case .adsGridView:
@@ -126,7 +137,7 @@ public enum FullscreenViews: String {
     case reportAdView
     case reviewView
 
-    static var all: [FullscreenViews] {
+    public static var all: [FullscreenViews] {
         return [
             .frontpageView,
             .popupView,

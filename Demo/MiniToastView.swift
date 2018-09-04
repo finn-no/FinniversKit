@@ -6,7 +6,8 @@ import FinniversKit
 
 class MiniToastView: UIView {
     lazy var titleLabel: UILabel = {
-        let label = Label(style: .body(.milk))
+        let label = Label(style: .body)
+        label.textColor = .milk
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label

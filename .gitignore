@@ -40,3 +40,6 @@ Carthage/Build/Mac/FinniversKit.framework*
 Carthage/Build/iOS/FinniversKit.framework*
 FinniversKit.framework.zip
 
+# Snapshot tests
+FailureDiffs/
+

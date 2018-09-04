@@ -1,7 +1,6 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-
 import UIKit
 
 enum TabletDisplayMode {
@@ -29,28 +28,33 @@ public struct ContainmentOptions: OptionSet {
         let sectionType = Sections.for(indexPath)
         switch sectionType {
         case .dna:
-            _ = DnaViews.all[indexPath.row]
-            return nil
-        case .fullscreen:
-            let screens = FullscreenViews.all[indexPath.row]
+            guard let screens = DnaViews.all[safe: indexPath.row] else {
+                return nil
+            }
             switch screens {
-            case .reportAdView:
-                //                self = .navigationController
+            default: return nil
+            }
+        case .fullscreen:
+            guard let screens = FullscreenViews.all[safe: indexPath.row] else {
                 return nil
-            default:
-                return nil
+            }
+            switch screens {
+            default: return nil
             }
         case .components:
-            let selected = ComponentViews.all[indexPath.row]
-            switch selected {
-            case .toast:
-                self = .all
-            default:
+            guard let screens = ComponentViews.all[safe: indexPath.row] else {
                 return nil
             }
+            switch screens {
+            default: return nil
+            }
         case .recycling:
-            _ = RecyclingViews.all[indexPath.row]
-            return nil
+            guard let screens = RecyclingViews.all[safe: indexPath.row] else {
+                return nil
+            }
+            switch screens {
+            default: return nil
+            }
         }
     }
 }
@@ -110,22 +114,24 @@ enum Sections: String {
         return Sections.all[indexPath.section]
     }
 
-    static func viewController(for indexPath: IndexPath) -> UIViewController {
-        let section = Sections.all[indexPath.section]
-        var viewController: UIViewController
+    static func viewController(for indexPath: IndexPath) -> UIViewController? {
+        guard let section = Sections.all[safe: indexPath.section] else {
+            return nil
+        }
+        var viewController: UIViewController?
         switch section {
         case .dna:
-            let selectedView = DnaViews.all[indexPath.row]
-            viewController = selectedView.viewController
+            let selectedView = DnaViews.all[safe: indexPath.row]
+            viewController = selectedView?.viewController
         case .components:
-            let selectedView = ComponentViews.all[indexPath.row]
-            viewController = selectedView.viewController
+            let selectedView = ComponentViews.all[safe: indexPath.row]
+            viewController = selectedView?.viewController
         case .recycling:
-            let selectedView = RecyclingViews.all[indexPath.row]
-            viewController = selectedView.viewController
+            let selectedView = RecyclingViews.all[safe: indexPath.row]
+            viewController = selectedView?.viewController
         case .fullscreen:
-            let selectedView = FullscreenViews.all[indexPath.row]
-            viewController = selectedView.viewController
+            let selectedView = FullscreenViews.all[safe: indexPath.row]
+            viewController = selectedView?.viewController
         }
 
         let sectionType = Sections.for(indexPath)
@@ -133,9 +139,13 @@ enum Sections: String {
         case .pad:
             switch sectionType.tabletDisplayMode {
             case .master:
-                viewController = SplitViewController(masterViewController: viewController)
+                if let unwrappedViewController = viewController {
+                    viewController = SplitViewController(masterViewController: unwrappedViewController)
+                }
             case .detail:
-                viewController = SplitViewController(detailViewController: viewController)
+                if let unwrappedViewController = viewController {
+                    viewController = SplitViewController(detailViewController: unwrappedViewController)
+                }
             default:
                 break
             }
@@ -145,14 +155,18 @@ enum Sections: String {
 
         let shouldIncludeNavigationController = ContainmentOptions(indexPath: indexPath)?.contains(.navigationController) ?? false
         if shouldIncludeNavigationController {
-            viewController = UINavigationController(rootViewController: viewController)
+            if let unwrappedViewController = viewController {
+                viewController = UINavigationController(rootViewController: unwrappedViewController)
+            }
         }
 
         let shouldIncludeTabBarController = ContainmentOptions(indexPath: indexPath)?.contains(.tabBarController) ?? false
         if shouldIncludeTabBarController {
             let tabBarController = UITabBarController()
-            tabBarController.viewControllers = [viewController]
-            viewController = tabBarController
+            if let unwrappedViewController = viewController {
+                tabBarController.viewControllers = [unwrappedViewController]
+                viewController = tabBarController
+            }
         }
 
         return viewController
@@ -168,3 +182,9 @@ enum Sections: String {
     }
 }
 
+extension Array {
+    /// Returns nil if index < count
+    subscript(safe index: Int) -> Element? {
+        return indices.contains(index) ? self[index] : .none
+    }
+}
