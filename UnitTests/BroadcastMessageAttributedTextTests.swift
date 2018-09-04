@@ -16,7 +16,7 @@ class BroadcastMessageAttributedTextTests: XCTestCase {
         // When
         let broadcastMessage = BroadcastMessage(id: 0, text: testMessage)
         let expectedResult = "Dette er en melding som inneholder en link \(linkText)"
-        let result = broadcastMessage.messageWithHTMLLinksReplacedByAttributedStrings
+        let result = broadcastMessage.attributedString(for: testMessage)
         let resultRange = NSMakeRange(0, result.string.count)
         let linkTextRangeInResult = NSString(string: result.string).range(of: linkText)
 

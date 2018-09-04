@@ -29,3 +29,18 @@ public struct BroadcastMessage: Hashable, Codable {
         return lhs.id == rhs.id
     }
 }
+
+extension BroadcastMessage {
+    func attributedString(for text: String) -> NSAttributedString {
+        guard let messageData = text.data(using: .utf16) else {
+            return NSAttributedString(string: text)
+        }
+
+        let options = [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html]
+        guard let attributedString = try? NSMutableAttributedString(data: messageData, options: options, documentAttributes: nil) else {
+            return NSAttributedString(string: text  )
+        }
+
+        return attributedString
+    }
+}
