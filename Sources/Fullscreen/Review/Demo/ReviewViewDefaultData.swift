@@ -25,6 +25,8 @@ public struct ReviewViewDefaultData: ReviewViewModel {
         ReviewViewUser(name: "FINN Bruker"),
         ReviewViewUser(name: "Test testesen", image: URL(string: "http://via.placeholder.com/44x44/ffff00/ffff00")),
     ]
+    public let skiptitle = "Hopp over"
+    public let nonOfTheseTitle = "Ingen av disse"
 
     public init() {
     }

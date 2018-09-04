@@ -7,10 +7,16 @@ import UIKit
 public protocol ReviewViewDelegate: NSObjectProtocol {
     func reviewView(_ reviewView: ReviewView, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
     func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel)
-    func reviewView(_ reviewView: ReviewView, didSelect user: ReviewViewProfileModel)
+    func reviewView(_ reviewView: ReviewView, didClick type: ReviewView.SelectType)
 }
 
 public class ReviewView: UIView {
+    public enum SelectType {
+        case user(ReviewViewProfileModel)
+        case skip
+        case noneOfThese
+    }
+
     static let defaultRowHeight: CGFloat = 40
 
     lazy var tableView: UITableView = {
@@ -20,11 +26,13 @@ public class ReviewView: UIView {
         tableView.separatorStyle = .none
         tableView.register(ReviewTextHeader.self)
         tableView.register(ReviewProfileCell.self)
+        tableView.register(ReviewTextFooter.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = ReviewView.defaultRowHeight
         tableView.estimatedSectionHeaderHeight = ReviewView.defaultRowHeight
+        tableView.estimatedSectionFooterHeight = ReviewView.defaultRowHeight
         return tableView
     }()
 
@@ -89,14 +97,35 @@ extension ReviewView: UITableViewDelegate {
         return header
     }
 
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = tableView.dequeue(ReviewTextFooter.self)
+        footer.translatesAutoresizingMaskIntoConstraints = false
+        footer.title.setTitle(model?.nonOfTheseTitle, for: .normal)
+        footer.title.addTarget(self, action:  #selector(didSelectNonOfThese), for: .touchUpInside)
+        footer.subtitle.setTitle(model?.skiptitle, for: .normal)
+        footer.subtitle.addTarget(self, action: #selector(didSelectSkip), for: .touchUpInside)
+
+        return footer
+    }
+
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard let user = model?.profiles[indexPath.row] else {
+        guard let selectedUser = model?.profiles[indexPath.row] else {
             return
         }
 
-        delegate?.reviewView(self, didSelect: user)
+        delegate?.reviewView(self, didClick: .user(selectedUser))
+    }
+}
+
+extension ReviewView {
+    @objc func didSelectNonOfThese() {
+        delegate?.reviewView(self, didClick: .noneOfThese)
+    }
+
+    @objc func didSelectSkip() {
+        delegate?.reviewView(self, didClick: .skip)
     }
 }
 
