@@ -5,7 +5,7 @@
 @testable import FinniversKit
 import XCTest
 
-class BroadcastMessageAttributedTextTests: XCTestCase {
+class BroadcastMessageTests: XCTestCase {
     func testBroadcastModelCanReplaceHTMLLinkWithAttributedStringWithLinkAttrbutes() {
         // Given
         let linkURL = URL(string: "https://www.finn.no/")!
