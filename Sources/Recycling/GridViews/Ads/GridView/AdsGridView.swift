@@ -25,7 +25,7 @@ public class AdsGridView: UIView {
     }()
 
     // Have the collection view be private so nobody messes with it.
-    private lazy var collectionView: UICollectionView = {
+    public lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self

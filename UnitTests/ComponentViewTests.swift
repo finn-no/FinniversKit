@@ -31,10 +31,6 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.broadcast)
     }
 
-    func testBroadcastContainer() {
-        snapshot(.broadcastContainer)
-    }
-
     func testButton() {
         snapshot(.button)
     }
