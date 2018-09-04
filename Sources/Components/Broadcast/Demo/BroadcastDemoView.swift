@@ -58,11 +58,7 @@ public class BroadcastDemoView: UIView {
 
 extension BroadcastDemoView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if dismissedMessages.isEmpty {
-            broadcast.presentMessages(broadcastMessages, in: tableView, animated: false)
-        } else {
-            broadcast.presentMessages(dismissedMessages, in: tableView)
-        }
+        broadcast.presentMessages(dismissedMessages, in: tableView)
         dismissedMessages.removeAll()
     }
 
