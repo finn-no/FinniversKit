@@ -157,13 +157,9 @@ extension UIFont {
             return
         }
 
-        guard let fontRef = CGFont(dataProvider) else {
+        guard CGFont(dataProvider) != nil else {
             print("UIFont+:  Failed to register font - font could not be loaded.")
             return
-        }
-
-        var errorRef: Unmanaged<CFError>?
-        if CTFontManagerRegisterGraphicsFont(fontRef, &errorRef) == false {
         }
     }
 
