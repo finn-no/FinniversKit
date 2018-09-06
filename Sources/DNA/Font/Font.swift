@@ -164,7 +164,6 @@ extension UIFont {
 
         var errorRef: Unmanaged<CFError>?
         if CTFontManagerRegisterGraphicsFont(fontRef, &errorRef) == false {
-           
         }
     }
 
