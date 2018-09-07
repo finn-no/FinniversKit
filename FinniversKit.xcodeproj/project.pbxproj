@@ -17,7 +17,7 @@
 		144959DB2122C4400084549F /* FinniversImageAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 144959D92122C4400084549F /* FinniversImageAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 144959DA2122C4400084549F /* FinniversImageAsset.m */; };
 		144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144959DF2122D8C20084549F /* AssetsDemoView.swift */; };
-		146D3C401FBE466D00124B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* ViewController.swift */; };
+		146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* DemoViewController.swift */; };
 		146E175D2142728D00AA9667 /* ErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E175B2142728D00AA9667 /* ErrorViewModel.swift */; };
 		146E175E2142728D00AA9667 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E175C2142728D00AA9667 /* ErrorView.swift */; };
 		146E17622142729800AA9667 /* ErrorViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E17602142729800AA9667 /* ErrorViewDefaultData.swift */; };
@@ -226,7 +226,7 @@
 		144959D92122C4400084549F /* FinniversImageAsset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinniversImageAsset.h; sourceTree = "<group>"; };
 		144959DA2122C4400084549F /* FinniversImageAsset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinniversImageAsset.m; sourceTree = "<group>"; };
 		144959DF2122D8C20084549F /* AssetsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsDemoView.swift; sourceTree = "<group>"; };
-		146D3C3F1FBE466D00124B76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		146D3C3F1FBE466D00124B76 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		146E175B2142728D00AA9667 /* ErrorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
 		146E175C2142728D00AA9667 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		146E17602142729800AA9667 /* ErrorViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewDefaultData.swift; sourceTree = "<group>"; };
@@ -422,7 +422,7 @@
 				144351BA1FBE2BF1007B2229 /* Assets.xcassets */,
 				14405C5F1FAFBBF000D03E04 /* Info.plist */,
 				144351C31FBE2FA2007B2229 /* AppDelegate.swift */,
-				146D3C3F1FBE466D00124B76 /* ViewController.swift */,
+				146D3C3F1FBE466D00124B76 /* DemoViewController.swift */,
 				4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */,
 				AAC1AFB32021058000C71B7C /* Demo.swift */,
 				141F08C52123110B001DB145 /* DemoHelpers.swift */,
@@ -1628,7 +1628,7 @@
 				44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
 				4458701D213FA353009187BE /* RegisterViewDefaultData.swift in Sources */,
 				146E17632142729800AA9667 /* ErrorViewDemoView.swift in Sources */,
-				146D3C401FBE466D00124B76 /* ViewController.swift in Sources */,
+				146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */,
 				44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */,
 				444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				432CE09E21131B4800F01EC5 /* RoundedImageViewDemoView.swift in Sources */,

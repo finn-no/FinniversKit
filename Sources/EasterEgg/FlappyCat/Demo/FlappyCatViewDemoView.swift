@@ -9,6 +9,7 @@ public class FlappyCatViewDemoView: UIView {
     lazy var flappyCatView: FlappyCatView = {
         let view = FlappyCatView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
 
@@ -23,5 +24,24 @@ public class FlappyCatViewDemoView: UIView {
     private func setup() {
         addSubview(flappyCatView)
         flappyCatView.fillInSuperview()
+    }
+
+    class func viewController(_ view: UIView) -> UIViewController {
+        var responder: UIResponder? = view
+        while !(responder is UIViewController) {
+            responder = responder?.next
+            if nil == responder {
+                break
+            }
+        }
+        return (responder as? UIViewController)!
+    }
+}
+
+extension FlappyCatViewDemoView: FlappyCatViewDelegate {
+    public func flappyCatViewDidPressBackButton(_ flappyCatView: FlappyCatView) {
+        if let viewController = FlappyCatViewDemoView.viewController(self) as? DemoViewController<FlappyCatViewDemoView> {
+            viewController.didDoubleTap()
+        }
     }
 }

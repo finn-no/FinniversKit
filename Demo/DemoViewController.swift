@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-public class ViewController<View: UIView>: UIViewController {
+public class DemoViewController<View: UIView>: UIViewController {
     lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false

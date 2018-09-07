@@ -4,7 +4,13 @@
 
 import SpriteKit
 
+public protocol FlappyCatViewDelegate: class {
+    func flappyCatViewDidPressBackButton(_ flappyCatView: FlappyCatView)
+}
+
 public class FlappyCatView: UIView {
+    public weak var delegate: FlappyCatViewDelegate?
+
     lazy var skView: SKView = {
         let view = SKView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +56,6 @@ public class FlappyCatView: UIView {
     }
 
     @objc func backButtonPressed(sender button: UIButton) {
-        
+        delegate?.flappyCatViewDidPressBackButton(self)
     }
 }
