@@ -24,7 +24,6 @@ NSString *const FinniversImageAssetdownload = @"download";
 NSString *const FinniversImageAssetedit = @"edit";
 NSString *const FinniversImageAsseteditBig = @"editBig";
 NSString *const FinniversImageAsseterror = @"error";
-NSString *const FinniversImageAssetfailureCat = @"failureCat";
 NSString *const FinniversImageAssetfavouriteAdd = @"favouriteAdd";
 NSString *const FinniversImageAssetfavouriteAddImg = @"favouriteAddImg";
 NSString *const FinniversImageAssetfavouriteAdded = @"favouriteAdded";

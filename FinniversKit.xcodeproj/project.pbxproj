@@ -23,6 +23,11 @@
 		146E17622142729800AA9667 /* ErrorViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E17602142729800AA9667 /* ErrorViewDefaultData.swift */; };
 		146E17632142729800AA9667 /* ErrorViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E17612142729800AA9667 /* ErrorViewDemoView.swift */; };
 		146E1765214288AC00AA9667 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E1764214288AC00AA9667 /* UIColor+Hex.swift */; };
+		146E176B2142898E00AA9667 /* FlappyCatScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E17692142898D00AA9667 /* FlappyCatScene.swift */; };
+		146E177221428A0500AA9667 /* FlappyCatViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E177021428A0500AA9667 /* FlappyCatViewDemoView.swift */; };
+		146E177521428B1800AA9667 /* FlappyCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E177321428B0D00AA9667 /* FlappyCatView.swift */; };
+		146E177921428CA400AA9667 /* cat.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 146E177821428CA400AA9667 /* cat.atlas */; };
+		146E177B21428CFE00AA9667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146E177A21428CFD00AA9667 /* Assets.xcassets */; };
 		14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7CE212324C900A7230C /* FavoritesListViewCell.swift */; };
 		14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7D0212324C900A7230C /* FavoritesListView.swift */; };
 		14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7D2212324C900A7230C /* FavoritesListViewModel.swift */; };
@@ -86,7 +91,6 @@
 		4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AB1FDB2B110033DBC1 /* ToastView+Style.swift */; };
 		4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AD1FDB2B110033DBC1 /* ToastView.swift */; };
 		4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6B71FDB2B110033DBC1 /* Identifiable.swift */; };
-		4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6B91FDB2B110033DBC1 /* Assets.xcassets */; };
 		4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */; };
 		4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */; };
 		4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */; };
@@ -228,6 +232,11 @@
 		146E17602142729800AA9667 /* ErrorViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewDefaultData.swift; sourceTree = "<group>"; };
 		146E17612142729800AA9667 /* ErrorViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewDemoView.swift; sourceTree = "<group>"; };
 		146E1764214288AC00AA9667 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		146E17692142898D00AA9667 /* FlappyCatScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyCatScene.swift; sourceTree = "<group>"; };
+		146E177021428A0500AA9667 /* FlappyCatViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyCatViewDemoView.swift; sourceTree = "<group>"; };
+		146E177321428B0D00AA9667 /* FlappyCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyCatView.swift; sourceTree = "<group>"; };
+		146E177821428CA400AA9667 /* cat.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cat.atlas; sourceTree = "<group>"; };
+		146E177A21428CFD00AA9667 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14C6F7CE212324C900A7230C /* FavoritesListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListViewCell.swift; sourceTree = "<group>"; };
 		14C6F7D0212324C900A7230C /* FavoritesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListView.swift; sourceTree = "<group>"; };
 		14C6F7D2212324C900A7230C /* FavoritesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListViewModel.swift; sourceTree = "<group>"; };
@@ -297,7 +306,6 @@
 		4447F6AD1FDB2B110033DBC1 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		4447F6B51FDB2B110033DBC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4447F6B71FDB2B110033DBC1 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
-		4447F6B91FDB2B110033DBC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
 		4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Light.ttf"; sourceTree = "<group>"; };
 		4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
@@ -410,6 +418,7 @@
 		14405C521FAFBBF000D03E04 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				146E177821428CA400AA9667 /* cat.atlas */,
 				144351BA1FBE2BF1007B2229 /* Assets.xcassets */,
 				14405C5F1FAFBBF000D03E04 /* Info.plist */,
 				144351C31FBE2FA2007B2229 /* AppDelegate.swift */,
@@ -456,6 +465,32 @@
 			children = (
 				146E17602142729800AA9667 /* ErrorViewDefaultData.swift */,
 				146E17612142729800AA9667 /* ErrorViewDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		146E17662142898D00AA9667 /* EasterEgg */ = {
+			isa = PBXGroup;
+			children = (
+				146E17672142898D00AA9667 /* FlappyCat */,
+			);
+			path = EasterEgg;
+			sourceTree = "<group>";
+		};
+		146E17672142898D00AA9667 /* FlappyCat */ = {
+			isa = PBXGroup;
+			children = (
+				146E176E21428A0500AA9667 /* Demo */,
+				146E17692142898D00AA9667 /* FlappyCatScene.swift */,
+				146E177321428B0D00AA9667 /* FlappyCatView.swift */,
+			);
+			path = FlappyCat;
+			sourceTree = "<group>";
+		};
+		146E176E21428A0500AA9667 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				146E177021428A0500AA9667 /* FlappyCatViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -852,6 +887,7 @@
 				4447F6641FDB2B110033DBC1 /* Components */,
 				44D912492077AC8A00486848 /* Fullscreen */,
 				441FE414209A24E500B04EF1 /* Recycling */,
+				146E17662142898D00AA9667 /* EasterEgg */,
 				4447F6B81FDB2B110033DBC1 /* Resources */,
 				4447F6C51FDB2B110033DBC1 /* FinniversKit.h */,
 				4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */,
@@ -979,8 +1015,8 @@
 		4447F6B81FDB2B110033DBC1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				146E177A21428CFD00AA9667 /* Assets.xcassets */,
 				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
-				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
 				44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */,
 				144959D92122C4400084549F /* FinniversImageAsset.h */,
 				144959DA2122C4400084549F /* FinniversImageAsset.m */,
@@ -1501,6 +1537,7 @@
 			files = (
 				DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */,
 				4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */,
+				146E177921428CA400AA9667 /* cat.atlas in Resources */,
 				DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */,
 				144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */,
 			);
@@ -1521,7 +1558,7 @@
 				DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */,
 				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
 				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
-				4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */,
+				146E177B21428CFE00AA9667 /* Assets.xcassets in Resources */,
 				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
 				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 			);
@@ -1603,6 +1640,7 @@
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
+				146E177221428A0500AA9667 /* FlappyCatViewDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
@@ -1677,6 +1715,7 @@
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
 				444246032137D60400D42AB8 /* FavoriteFoldersListViewModel.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
+				146E177521428B1800AA9667 /* FlappyCatView.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
@@ -1694,6 +1733,7 @@
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
+				146E176B2142898E00AA9667 /* FlappyCatScene.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,

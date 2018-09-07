@@ -31,7 +31,6 @@ public enum FinniversImageAsset: String {
     case edit
     case editBig
     case error
-    case failureCat
     case favouriteAdd
     case favouriteAddImg
     case favouriteAdded
@@ -106,7 +105,6 @@ public enum FinniversImageAsset: String {
             .edit,
             .editBig,
             .error,
-            .failureCat,
             .favouriteAdd,
             .favouriteAddImg,
             .favouriteAdded,
