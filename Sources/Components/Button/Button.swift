@@ -65,10 +65,6 @@ public class Button: UIButton {
         }
     }
 
-    public override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
-        assertionFailure("The title color cannot be changed outside the class")
-    }
-
     public override var isHighlighted: Bool {
         didSet {
             backgroundColor = isHighlighted ? style.highlightedBodyColor : style.bodyColor

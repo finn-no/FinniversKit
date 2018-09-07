@@ -84,9 +84,9 @@ public enum ComponentViews: String {
         case .consentTransparencyInfo:
             return ViewController<ConsentTransparencyInfoDemoView>()
         case .checkbox:
-            return ViewController<CheckboxDemoView>(usingDoubleTap: false)
+            return ViewController<CheckboxDemoView>(withDismissButton: true)
         case .radioButton:
-            return ViewController<RadioButtonDemoView>(usingDoubleTap: false)
+            return ViewController<RadioButtonDemoView>(withDismissButton: true)
         case .roundedImageView:
             return ViewController<RoundedImageViewDemoView>()
         }
@@ -164,7 +164,7 @@ public enum FullscreenViews: String {
         case .popupView:
             return ViewController<PopupViewDemoView>()
         case .reportAdView:
-            return ViewController<AdReporterDemoView>(usingDoubleTap: false)
+            return ViewController<AdReporterDemoView>(withDismissButton: true)
         case .reviewView:
             return ViewController<ReviewViewDemoView>()
         case .registerView:
@@ -174,7 +174,7 @@ public enum FullscreenViews: String {
         case .errorView:
             return ViewController<ErrorViewDemoView>()
         case .flappyCat:
-            return ViewController<FlappyCatViewDemoView>()
+            return ViewController<FlappyCatViewDemoView>(withDismissButton: false)
         }
     }
 }

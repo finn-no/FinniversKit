@@ -24,6 +24,7 @@ extern NSString *const FinniversImageAssetdownload;
 extern NSString *const FinniversImageAssetedit;
 extern NSString *const FinniversImageAsseteditBig;
 extern NSString *const FinniversImageAsseterror;
+extern NSString *const FinniversImageAssetfailureCat;
 extern NSString *const FinniversImageAssetfavouriteAdd;
 extern NSString *const FinniversImageAssetfavouriteAddImg;
 extern NSString *const FinniversImageAssetfavouriteAdded;
