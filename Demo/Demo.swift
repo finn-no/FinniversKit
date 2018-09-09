@@ -45,6 +45,7 @@ public enum ComponentViews: String {
     case checkbox
     case radioButton
     case roundedImageView
+    case bottomSheet
 
     public static var all: [ComponentViews] {
         return [
@@ -60,6 +61,7 @@ public enum ComponentViews: String {
             .checkbox,
             .radioButton,
             .roundedImageView,
+            .bottomSheet,
         ]
     }
 
@@ -89,6 +91,12 @@ public enum ComponentViews: String {
             return ViewController<RadioButtonDemoView>(usingDoubleTap: false)
         case .roundedImageView:
             return ViewController<RoundedImageViewDemoView>()
+        case .bottomSheet:
+            let bottomSheetDemoViewController = BottomSheetDemoViewController()
+            let navigationController = UINavigationController(rootViewController: bottomSheetDemoViewController)
+            navigationController.transitioningDelegate = bottomSheetDemoViewController.bottomsheetTransitioningDelegate
+            navigationController.modalPresentationStyle = .custom
+            return navigationController
         }
     }
 }
