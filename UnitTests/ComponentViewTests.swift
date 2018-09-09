@@ -74,4 +74,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testRoundedImageView() {
         snapshot(.roundedImageView)
     }
+
+    func testBottomSheet() {
+        snapshot(.bottomSheet)
+    }
 }
