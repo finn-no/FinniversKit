@@ -33,12 +33,14 @@ Pod::Spec.new do |s|
   s.resources    = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets'
   s.resource_bundles = {
       'FinniversKit' => ['Sources/Resources/*.xcassets', 'Sources/Resources/Fonts/*.ttf']
-    }
+  }
   s.exclude_files = 'Demo*.swift', '*Demo*.swift', 'Sources/**/**/Demo/*swift', 'Sources/**/**/**/Demo/*swift', 'Sources/Components/**/*DemoView.swift', 'Sources/Components/**/Demo/', '*DemoView.swift', 'Sources/Components/**/**/Demo/*.swift', '*Helpers.swift', 'Sources/DNA/**/Demo/*.swift'
   s.frameworks = 'Foundation', 'UIKit'
   s.subspec 'DNA' do |sp|
-    sp.source_files  = 'Sources/*.{h,m,swift}', 'Sources/DNA/*.{h,m,swift}', 'Sources/DNA/**/*.{h,m,swift}', 'Sources/DNA/**/**/*.{h,m,swift}'
-    sp.resources     = 'Sources/Resources/*.{xcassets,ttf}', 'Sources/Resources/**/*.{xcassets,ttf}', 'Sources/Resources/**/**/*.{xcassets,ttf}'
+    sp.source_files  = 'Sources/*.{h,m,swift}', 'Sources/DNA/*.{h,m,swift}', 'Sources/DNA/**/*.{h,m,swift}', 'Sources/DNA/**/**/*.{h,m,swift}', 'Sources/Resources/*.{h,m,swift}', 'Sources/Resources/**/*.{h,m,swift}', 'Sources/Resources/**/**/*.{h,m,swift}'
+    s.resource_bundles = {
+        'FinniversKitDNA' => ['Sources/Resources/*.xcassets', 'Sources/Resources/Fonts/*.ttf']
+    }
     sp.requires_arc = true
     sp.exclude_files = 'Demo*.swift', '*Demo*.swift', 'Sources/**/**/Demo/*swift', 'Sources/**/**/**/Demo/*swift', 'Sources/Components/**/*DemoView.swift', 'Sources/Components/**/Demo/', '*DemoView.swift', 'Sources/Components/**/**/Demo/*.swift', '*Helpers.swift', 'Sources/DNA/**/Demo/*.swift'
     sp.frameworks = 'Foundation', 'UIKit'
