@@ -58,4 +58,8 @@ class FullscreenViewTests: FBSnapshotTestCase {
     func testErrorView() {
         snapshot(.errorView)
     }
+
+    func testFlappyCatView() {
+        snapshot(.flappyCat)
+    }
 }
