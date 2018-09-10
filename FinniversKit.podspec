@@ -36,4 +36,9 @@ Pod::Spec.new do |s|
     }
   s.exclude_files = 'Demo*.swift', '*Demo*.swift', 'Sources/**/**/Demo/*swift', 'Sources/**/**/**/Demo/*swift', 'Sources/Components/**/*DemoView.swift', 'Sources/Components/**/Demo/', '*DemoView.swift', 'Sources/Components/**/**/Demo/*.swift', '*Helpers.swift', 'Sources/DNA/**/Demo/*.swift'
   s.frameworks = 'Foundation', 'UIKit'
+  s.subspec 'DNA' do |sp|
+    sp.source_files  = 'Sources/DNA/*.{h,m,swift}', 'Sources/DNA/**/*.{h,m,swift}', 'Sources/DNA/**/**/*.{h,m,swift}'
+    sp.resources     = 'Sources/Resources/*.{xcassets,ttf}', 'Sources/Resources/**/*.{xcassets,ttf}', 'Sources/Resources/**/**/*.{xcassets,ttf}'
+    sp.requires_arc = true
+  end
 end
