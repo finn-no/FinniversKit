@@ -1342,7 +1342,6 @@
 				14405C6D1FAFBD1800D03E04 /* Frameworks */,
 				14405C6E1FAFBD1800D03E04 /* Resources */,
 				44D32C2C1FB07850001E86D6 /* Embed Frameworks */,
-				4447F7181FDB2C330033DBC1 /* Update templates */,
 			);
 			buildRules = (
 			);
@@ -1475,20 +1474,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4447F7181FDB2C330033DBC1 /* Update templates */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update templates";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\"\nfi\n\nif [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit\"\nfi\n\ncp -R ./Templates/FinniversKitView.xctemplate ${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit";
-		};
 		44C6CE42209CAA3300929269 /* Generate constants for assets names */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
