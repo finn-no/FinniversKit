@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "FINN's iOS Components"
   s.author       = 'FINN.no'
   s.homepage     = 'https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system'
-  s.social_media_url   = 'https://twitter.com/search?q=FINN.no'
+  s.social_media_url   = 'https://twitter.com/FINN_tech'
   s.description  = <<-DESC
   FinniversKit is the iOS native implementation of FINN's design system.
                    DESC
