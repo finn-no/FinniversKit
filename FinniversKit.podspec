@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation', 'UIKit'
   s.subspec 'DNA' do |sp|
     sp.source_files  = 'Sources/*.{h,m,swift}', 'Sources/DNA/*.{h,m,swift}', 'Sources/DNA/**/*.{h,m,swift}', 'Sources/DNA/**/**/*.{h,m,swift}', 'Sources/Resources/*.{h,m,swift}', 'Sources/Resources/**/*.{h,m,swift}', 'Sources/Resources/**/**/*.{h,m,swift}'
-    s.resource_bundles = {
+    sp.resource_bundles = {
         'FinniversKitDNA' => ['Sources/Resources/*.xcassets', 'Sources/Resources/Fonts/*.ttf']
     }
     sp.requires_arc = true
