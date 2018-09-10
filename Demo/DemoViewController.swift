@@ -1,7 +1,6 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-
 import FinniversKit
 
 public class DemoViewController<View: UIView>: UIViewController {
@@ -53,7 +52,7 @@ public class DemoViewController<View: UIView>: UIViewController {
             playgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             playgroundView.topAnchor.constraint(equalTo: view.compatibleTopAnchor),
             playgroundView.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor),
-        ])
+            ])
 
         if hasDismissButton {
             let button = Button(style: .callToAction)

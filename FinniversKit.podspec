@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name         = 'FinniversKit'
-  s.version      = '0.4.0'
+  s.version      = '0.5.1'
   s.summary      = "FINN's iOS Components"
   s.author       = 'FINN.no'
   s.homepage     = 'https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system'
-  s.social_media_url   = 'https://twitter.com/search?q=FINN.no'
+  s.social_media_url   = 'https://twitter.com/FINN_tech'
   s.description  = <<-DESC
   FinniversKit is the iOS native implementation of FINN's design system.
                    DESC
@@ -29,16 +29,20 @@ Pod::Spec.new do |s|
   s.source        = { :git => "https://github.com/finn-no/FinniversKit.git", :tag => s.version }
   s.requires_arc  = true
 
-  s.source_files = 'Sources/*.swift', 'Sources/**/*.swift', 'Sources/**/**/*.swift'
+  s.source_files = 'Sources/*.{h,m,swift}', 'Sources/**/*.{h,m,swift}', 'Sources/**/**/*.{h,m,swift}'
   s.resources    = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets'
   s.resource_bundles = {
       'FinniversKit' => ['Sources/Resources/*.xcassets', 'Sources/Resources/Fonts/*.ttf']
-    }
+  }
   s.exclude_files = 'Demo*.swift', '*Demo*.swift', 'Sources/**/**/Demo/*swift', 'Sources/**/**/**/Demo/*swift', 'Sources/Components/**/*DemoView.swift', 'Sources/Components/**/Demo/', '*DemoView.swift', 'Sources/Components/**/**/Demo/*.swift', '*Helpers.swift', 'Sources/DNA/**/Demo/*.swift'
-
+  s.frameworks = 'Foundation', 'UIKit'
   s.subspec 'DNA' do |sp|
-  sp.source_files  = 'Sources', 'Sources/DNA/Color/Color.swift', 'Sources/DNA/Font/Font.swift', 'Sources/DNA/Spacing/Spacing.swift'
-  sp.resources     = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets'
-  sp.requires_arc = true
- end
+    sp.source_files  = 'Sources/*.{h,m,swift}', 'Sources/DNA/*.{h,m,swift}', 'Sources/DNA/**/*.{h,m,swift}', 'Sources/DNA/**/**/*.{h,m,swift}', 'Sources/Resources/*.{h,m,swift}', 'Sources/Resources/**/*.{h,m,swift}', 'Sources/Resources/**/**/*.{h,m,swift}'
+    sp.resource_bundles = {
+        'FinniversKitDNA' => ['Sources/Resources/*.xcassets', 'Sources/Resources/Fonts/*.ttf']
+    }
+    sp.requires_arc = true
+    sp.exclude_files = 'Demo*.swift', '*Demo*.swift', 'Sources/**/**/Demo/*swift', 'Sources/**/**/**/Demo/*swift', 'Sources/Components/**/*DemoView.swift', 'Sources/Components/**/Demo/', '*DemoView.swift', 'Sources/Components/**/**/Demo/*.swift', '*Helpers.swift', 'Sources/DNA/**/Demo/*.swift'
+    sp.frameworks = 'Foundation', 'UIKit'
+  end
 end

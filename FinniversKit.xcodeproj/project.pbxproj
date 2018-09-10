@@ -27,7 +27,6 @@
 		146E177221428A0500AA9667 /* FlappyCatViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E177021428A0500AA9667 /* FlappyCatViewDemoView.swift */; };
 		146E177521428B1800AA9667 /* FlappyCatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E177321428B0D00AA9667 /* FlappyCatView.swift */; };
 		146E177921428CA400AA9667 /* cat.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 146E177821428CA400AA9667 /* cat.atlas */; };
-		146E177B21428CFE00AA9667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146E177A21428CFD00AA9667 /* Assets.xcassets */; };
 		14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7CE212324C900A7230C /* FavoritesListViewCell.swift */; };
 		14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7D0212324C900A7230C /* FavoritesListView.swift */; };
 		14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7D2212324C900A7230C /* FavoritesListViewModel.swift */; };
@@ -236,7 +235,6 @@
 		146E177021428A0500AA9667 /* FlappyCatViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyCatViewDemoView.swift; sourceTree = "<group>"; };
 		146E177321428B0D00AA9667 /* FlappyCatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyCatView.swift; sourceTree = "<group>"; };
 		146E177821428CA400AA9667 /* cat.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cat.atlas; sourceTree = "<group>"; };
-		146E177A21428CFD00AA9667 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14C6F7CE212324C900A7230C /* FavoritesListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListViewCell.swift; sourceTree = "<group>"; };
 		14C6F7D0212324C900A7230C /* FavoritesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListView.swift; sourceTree = "<group>"; };
 		14C6F7D2212324C900A7230C /* FavoritesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListViewModel.swift; sourceTree = "<group>"; };
