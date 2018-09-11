@@ -112,6 +112,10 @@
 		44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149F02137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift */; };
 		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */; };
+		44D1278C21478EF000D8392A /* SavedSearchSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1278A21478EF000D8392A /* SavedSearchSettingsViewModel.swift */; };
+		44D1278D21478EF000D8392A /* SavedSearchSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1278B21478EF000D8392A /* SavedSearchSettingsView.swift */; };
+		44D1279121478EFF00D8392A /* SavedSearchSettingsViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1278F21478EFF00D8392A /* SavedSearchSettingsViewDefaultData.swift */; };
+		44D1279221478EFF00D8392A /* SavedSearchSettingsViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1279021478EFF00D8392A /* SavedSearchSettingsViewDemoView.swift */; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912512077AC8A00486848 /* EmptyView.swift */; };
@@ -316,6 +320,10 @@
 		44A149EF2137805C0053D5F7 /* SavedSearchesListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewDemoView.swift; sourceTree = "<group>"; };
 		44A149F02137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversImageAsset.swift; sourceTree = "<group>"; };
+		44D1278A21478EF000D8392A /* SavedSearchSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchSettingsViewModel.swift; sourceTree = "<group>"; };
+		44D1278B21478EF000D8392A /* SavedSearchSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchSettingsView.swift; sourceTree = "<group>"; };
+		44D1278F21478EFF00D8392A /* SavedSearchSettingsViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchSettingsViewDefaultData.swift; sourceTree = "<group>"; };
+		44D1279021478EFF00D8392A /* SavedSearchSettingsViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchSettingsViewDemoView.swift; sourceTree = "<group>"; };
 		44D912512077AC8A00486848 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		44D912532077AC8A00486848 /* AttachableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachableView.swift; sourceTree = "<group>"; };
 		44D912542077AC8A00486848 /* RoundedRectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectangleView.swift; sourceTree = "<group>"; };
@@ -1110,9 +1118,29 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
+		44D1278921478EF000D8392A /* SavedSearchSettings */ = {
+			isa = PBXGroup;
+			children = (
+				44D1278E21478EFF00D8392A /* Demo */,
+				44D1278A21478EF000D8392A /* SavedSearchSettingsViewModel.swift */,
+				44D1278B21478EF000D8392A /* SavedSearchSettingsView.swift */,
+			);
+			path = SavedSearchSettings;
+			sourceTree = "<group>";
+		};
+		44D1278E21478EFF00D8392A /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				44D1278F21478EFF00D8392A /* SavedSearchSettingsViewDefaultData.swift */,
+				44D1279021478EFF00D8392A /* SavedSearchSettingsViewDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				44D1278921478EF000D8392A /* SavedSearchSettings */,
 				44587010213FA344009187BE /* Login */,
 				44587013213FA344009187BE /* Register */,
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
@@ -1557,6 +1585,7 @@
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
+				44D1279221478EFF00D8392A /* SavedSearchSettingsViewDemoView.swift in Sources */,
 				44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
 				4458701D213FA353009187BE /* RegisterViewDefaultData.swift in Sources */,
 				146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */,
@@ -1571,6 +1600,7 @@
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
+				44D1279121478EFF00D8392A /* SavedSearchSettingsViewDefaultData.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
@@ -1630,6 +1660,7 @@
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
+				44D1278C21478EF000D8392A /* SavedSearchSettingsViewModel.swift in Sources */,
 				DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */,
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
@@ -1643,6 +1674,7 @@
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
 				444246032137D60400D42AB8 /* FavoriteFoldersListViewModel.swift in Sources */,
+				44D1278D21478EF000D8392A /* SavedSearchSettingsView.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */,
