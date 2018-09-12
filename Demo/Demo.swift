@@ -21,13 +21,13 @@ public enum DnaViews: String {
     public var viewController: UIViewController {
         switch self {
         case .color:
-            return ViewController<ColorDemoView>()
+            return DemoViewController<ColorDemoView>()
         case .font:
-            return ViewController<FontDemoView>()
+            return DemoViewController<FontDemoView>()
         case .spacing:
-            return ViewController<SpacingDemoView>()
+            return DemoViewController<SpacingDemoView>()
         case .assets:
-            return ViewController<AssetsDemoView>()
+            return DemoViewController<AssetsDemoView>()
         }
     }
 }
@@ -66,29 +66,29 @@ public enum ComponentViews: String {
     public var viewController: UIViewController {
         switch self {
         case .broadcast:
-            return ViewController<BroadcastDemoView>()
+            return DemoViewController<BroadcastDemoView>()
         case .button:
-            return ViewController<ButtonDemoView>()
+            return DemoViewController<ButtonDemoView>()
         case .label:
-            return ViewController<LabelDemoView>()
+            return DemoViewController<LabelDemoView>()
         case .ribbon:
-            return ViewController<RibbonDemoView>()
+            return DemoViewController<RibbonDemoView>()
         case .textField:
-            return ViewController<TextFieldDemoView>()
+            return DemoViewController<TextFieldDemoView>()
         case .toast:
-            return ViewController<ToastDemoView>()
+            return DemoViewController<ToastDemoView>()
         case .switchView:
-            return ViewController<SwitchViewDemoView>()
+            return DemoViewController<SwitchViewDemoView>()
         case .inlineConsent:
-            return ViewController<InlineConsentDemoView>()
+            return DemoViewController<InlineConsentDemoView>()
         case .consentTransparencyInfo:
-            return ViewController<ConsentTransparencyInfoDemoView>()
+            return DemoViewController<ConsentTransparencyInfoDemoView>()
         case .checkbox:
-            return ViewController<CheckboxDemoView>(usingDoubleTap: false)
+            return DemoViewController<CheckboxDemoView>(withDismissButton: true)
         case .radioButton:
-            return ViewController<RadioButtonDemoView>(usingDoubleTap: false)
+            return DemoViewController<RadioButtonDemoView>(withDismissButton: true)
         case .roundedImageView:
-            return ViewController<RoundedImageViewDemoView>()
+            return DemoViewController<RoundedImageViewDemoView>()
         }
     }
 }
@@ -115,17 +115,17 @@ public enum RecyclingViews: String {
     public var viewController: UIViewController {
         switch self {
         case .notificationsListView:
-            return ViewController<NotificationsListViewDemoView>()
+            return DemoViewController<NotificationsListViewDemoView>()
         case .favoriteFoldersListView:
-            return ViewController<FavoriteFoldersListViewDemoView>()
+            return DemoViewController<FavoriteFoldersListViewDemoView>()
         case .favoritesListView:
-            return ViewController<FavoritesListViewDemoView>()
+            return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:
-            return ViewController<SavedSearchesListViewDemoView>()
+            return DemoViewController<SavedSearchesListViewDemoView>()
         case .marketsGridView:
-            return ViewController<MarketsGridViewDemoView>()
+            return DemoViewController<MarketsGridViewDemoView>()
         case .adsGridView:
-            return ViewController<AdsGridViewDemoView>()
+            return DemoViewController<AdsGridViewDemoView>()
         }
     }
 }
@@ -154,19 +154,19 @@ public enum FullscreenViews: String {
     public var viewController: UIViewController {
         switch self {
         case .frontpageView:
-            return ViewController<FrontpageViewDemoView>()
+            return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:
-            return ViewController<EmptyViewDemoView>()
+            return DemoViewController<EmptyViewDemoView>()
         case .popupView:
-            return ViewController<PopupViewDemoView>()
+            return DemoViewController<PopupViewDemoView>()
         case .reportAdView:
-            return ViewController<AdReporterDemoView>(usingDoubleTap: false)
+            return DemoViewController<AdReporterDemoView>(withDismissButton: true)
         case .reviewView:
-            return ViewController<ReviewViewDemoView>()
+            return DemoViewController<ReviewViewDemoView>()
         case .registerView:
-            return ViewController<RegisterViewDemoView>()
+            return DemoViewController<RegisterViewDemoView>()
         case .loginView:
-            return ViewController<LoginViewDemoView>()
+            return DemoViewController<LoginViewDemoView>()
         }
     }
 }
