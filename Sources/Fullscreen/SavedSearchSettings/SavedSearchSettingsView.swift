@@ -133,11 +133,6 @@ public class SavedSearchSettingsView: UIView {
     }
 
     private func setup() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        addGestureRecognizer(tap)
-
-        deleteButton.isEnabled = false
-
         scrollView.addSubview(contentView)
 
         addSubview(scrollView)
@@ -214,8 +209,4 @@ public class SavedSearchSettingsView: UIView {
 // MARK: - TextFieldDelegate
 
 extension SavedSearchSettingsView: TextFieldDelegate {
-    public func textFieldShouldReturn(_ textField: TextField) -> Bool {
-        // delegate?.savedSearchSettingsView(self, didOccurIncompleteCredentials: true)
-        return true
-    }
 }
