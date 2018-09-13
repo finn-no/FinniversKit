@@ -69,20 +69,22 @@ public final class Broadcast: UIStackView {
         add(messages, animated: animated)
     }
 
-    public func removeMessages(_ messages: Set<BroadcastMessage>) {
+    public func removeMessages(_ messages: Set<BroadcastMessage>) -> Set<BroadcastMessage> {
+        guard !messages.isEmpty else { return [] }
+        guard let items = arrangedSubviews as? [BroadcastItem] else { return [] }
+
         let messagesToRemove = self.messages.intersection(messages)
 
-        let items = arrangedSubviews.filter { (view) -> Bool in
-            guard let item = view as? BroadcastItem else { return false }
+        let itemsToRemove = items.filter { (item) -> Bool in
             return messagesToRemove.contains(item.message)
         }
 
-        for item in items {
-            guard let item = item as? BroadcastItem else { return }
+        for item in itemsToRemove {
             remove(item, animated: false)
         }
 
         self.messages.subtract(messagesToRemove)
+        return messagesToRemove
     }
 
     // Can't override scrollView delegate so have to called this method from the outside
