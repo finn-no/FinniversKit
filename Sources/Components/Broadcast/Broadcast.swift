@@ -186,6 +186,7 @@ private extension Broadcast {
 extension Broadcast: BroadcastItemDelegate {
     func broadcastItemDismissButtonTapped(_ broadcastItem: BroadcastItem) {
         remove(broadcastItem)
+        messages.remove(broadcastItem.message)
         delegate?.broadcast(self, didDismiss: broadcastItem.message)
     }
 
