@@ -5,7 +5,7 @@ import FinniversKit
 
 public class BroadcastDemoView: UIView {
 
-    private let items = ["Select", "any", "row", "and", "the", "broadcasts", "will", "reappear", "fdas", "fdsaf", "gfd", "gsg", "2", "fewaf", "gdg", "fsa", "fesf", "gadfd", "fafdsaf"]
+    private let items = ["Select", "any", "row", "and", "the", "broadcasts", "will", "reappear"]
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
