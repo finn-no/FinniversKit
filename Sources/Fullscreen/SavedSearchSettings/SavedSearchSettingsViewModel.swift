@@ -5,7 +5,7 @@
 import Foundation
 
 public protocol SavedSearchSettingsViewModel {
-    var name: String { get }
+    var name: String? { get }
     var namePlaceholder: String { get }
     var isAppNotificationEnabled: Bool { get }
     var isEmailNotificationEnabled: Bool { get }

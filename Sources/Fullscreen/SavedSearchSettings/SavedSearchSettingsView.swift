@@ -22,7 +22,7 @@ public class SavedSearchSettingsView: UIView {
     }()
 
     private lazy var deleteButton: Button = {
-        let button = Button(style: .callToAction)
+        let button = Button(style: .destructive)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(deleteButtonSelected), for: .touchUpInside)
         return button
@@ -65,7 +65,7 @@ public class SavedSearchSettingsView: UIView {
         addSubview(deleteButton)
 
         NSLayoutConstraint.activate([
-            nameTextField.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            nameTextField.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
             nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -81,3 +81,4 @@ public class SavedSearchSettingsView: UIView {
         
     }
 }
+ 
