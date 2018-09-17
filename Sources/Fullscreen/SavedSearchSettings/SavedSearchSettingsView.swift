@@ -21,6 +21,16 @@ public class SavedSearchSettingsView: UIView {
         return view
     }()
 
+    private lazy var appSwitch: SwitchView = {
+        let view = SwitchView(withAutoLayout: true)
+        return view
+    }()
+
+    private lazy var emailSwitch: SwitchView = {
+        let view = SwitchView(withAutoLayout: true)
+        return view
+    }()
+
     private lazy var deleteButton: Button = {
         let button = Button(style: .destructive)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -41,6 +51,8 @@ public class SavedSearchSettingsView: UIView {
             nameTextField.textField.text = model.name
             nameTextField.placeholderText = model.namePlaceholder
             deleteButton.setTitle(model.deleteButtonTitle, for: .normal)
+            // appSwitch.model = SwitchDefaultData1()
+            // emailSwitch.model = SwitchDefaultData2()
         }
     }
 
@@ -63,13 +75,23 @@ public class SavedSearchSettingsView: UIView {
     private func setup() {
         addSubview(nameTextField)
         addSubview(deleteButton)
+        addSubview(appSwitch)
+        addSubview(emailSwitch)
 
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
             nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            deleteButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            appSwitch.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            appSwitch.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            appSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            emailSwitch.topAnchor.constraint(equalTo: appSwitch.bottomAnchor, constant: .mediumLargeSpacing),
+            emailSwitch.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            emailSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            deleteButton.topAnchor.constraint(equalTo: emailSwitch.bottomAnchor, constant: .mediumLargeSpacing),
             deleteButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             deleteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
