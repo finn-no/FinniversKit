@@ -51,8 +51,8 @@ public class SavedSearchSettingsView: UIView {
             nameTextField.textField.text = model.name
             nameTextField.placeholderText = model.namePlaceholder
             deleteButton.setTitle(model.deleteButtonTitle, for: .normal)
-            // appSwitch.model = SwitchDefaultData1()
-            // emailSwitch.model = SwitchDefaultData2()
+            appSwitch.model = model.appSwitchModel
+            emailSwitch.model = model.emailSwitchModel
         }
     }
 

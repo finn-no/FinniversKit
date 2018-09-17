@@ -7,13 +7,8 @@ import Foundation
 public protocol SavedSearchSettingsViewModel {
     var name: String? { get }
     var namePlaceholder: String { get }
-
-    var appSwitchTitle: String { get }
-    var isAppNotificationEnabled: Bool { get }
-
-    var emailSwitchTitle: String { get }
-    var isEmailNotificationEnabled: Bool { get }
-
+    var appSwitchModel: SwitchViewModel { get }
+    var emailSwitchModel: SwitchViewModel { get }
     var deleteButtonTitle: String { get }
 }
 

@@ -7,17 +7,14 @@ import FinniversKit
 public struct SavedSearchSettingsViewDefaultData: SavedSearchSettingsViewModel {
     public let name: String? = nil
     public let namePlaceholder = "Navn på søket"
-    public let appSwitchTitle = "Appvarsling"
-    public let isAppNotificationEnabled = false
-    public let emailSwitchTitle = "E-postvarsling"
-    public let isEmailNotificationEnabled = false
     public let deleteButtonTitle = "Slett lagret søk"
-    public let isOn = false
+    public var appSwitchModel: SwitchViewModel = SavedSearchSwitchViewModel(headerText: "Appvarsling", isOn: false)
+    public var emailSwitchModel: SwitchViewModel = SavedSearchSwitchViewModel(headerText: "E-postvarsling", isOn: false)
 
     public init() {}
 }
 
-public struct AppSwitchViewModel: SwitchViewModel {
+public struct SavedSearchSwitchViewModel: SwitchViewModel {
     public var headerText: String
     public var onDescriptionText: String?
     public var offDescriptionText: String?
