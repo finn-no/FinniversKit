@@ -9,26 +9,42 @@ extension TextField {
         case normal
         case email
         case password
-        case multiline
 
-        var isSecureMode: Bool {
+        var isSecureTextEntry: Bool {
             switch self {
             case .password: return true
             default: return false
             }
         }
 
-        var keyBoardStyle: UIKeyboardType {
+        var keyboardType: UIKeyboardType {
             switch self {
+            case .normal: return .default
             case .email: return .emailAddress
-            default: return .default
+            case .password: return .asciiCapable
+            }
+        }
+
+        var autocapitalizationType: UITextAutocapitalizationType {
+            switch self {
+            case .normal: return .words
+            case .email: return .none
+            case .password: return .none
+            }
+        }
+
+        var autocorrectionType: UITextAutocorrectionType {
+            switch self {
+            case .normal: return .default
+            case .email: return .no
+            case .password: return .no
             }
         }
 
         var returnKeyType: UIReturnKeyType {
             switch self {
             case .email: return .next
-            case .normal, .password, .multiline: return .done
+            case .normal, .password: return .done
             }
         }
     }
