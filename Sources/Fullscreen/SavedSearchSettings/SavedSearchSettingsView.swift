@@ -83,7 +83,7 @@ public class SavedSearchSettingsView: UIView {
             nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            appSwitch.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            appSwitch.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: .largeSpacing),
             appSwitch.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             appSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -91,7 +91,7 @@ public class SavedSearchSettingsView: UIView {
             emailSwitch.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             emailSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            deleteButton.topAnchor.constraint(equalTo: emailSwitch.bottomAnchor, constant: .mediumLargeSpacing),
+            deleteButton.topAnchor.constraint(equalTo: emailSwitch.bottomAnchor, constant: .largeSpacing),
             deleteButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             deleteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])

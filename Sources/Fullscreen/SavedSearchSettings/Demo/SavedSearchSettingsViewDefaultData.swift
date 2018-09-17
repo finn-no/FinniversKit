@@ -5,7 +5,7 @@
 import FinniversKit
 
 public struct SavedSearchSettingsViewDefaultData: SavedSearchSettingsViewModel {
-    public let name: String? = nil
+    public let name: String? = "Business fun"
     public let namePlaceholder = "Navn på søket"
     public let deleteButtonTitle = "Slett lagret søk"
     public var appSwitchModel: SwitchViewModel = SavedSearchSwitchViewModel(headerText: "Appvarsling", isOn: false)
