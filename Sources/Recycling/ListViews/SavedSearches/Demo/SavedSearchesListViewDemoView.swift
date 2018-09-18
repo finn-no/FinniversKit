@@ -42,22 +42,9 @@ extension SavedSearchesListViewDemoView: SavedSearchesListViewDelegate {
         let after = dataSource.models
 
         let changes = ChangeSet(new: after, old: previous)
-
-        if changes.hasInsertions || changes.hasDeletions {
-            DispatchQueue.main.async {
-                if #available(iOS 11.0, *) {
-                    savedSearchesListView.tableView.performBatchUpdates({
-                        let deleteIndexPaths = changes.deletionIndexPaths()
-                        savedSearchesListView.tableView.deleteRows(at: deleteIndexPaths, with: .middle)
-
-                        let insertIndexPaths = changes.insertionIndexPaths()
-                        savedSearchesListView.tableView.insertRows(at: insertIndexPaths, with: .middle)
-                    }, completion: nil)
-                } else {
-                    savedSearchesListView.reload()
-                }
-            }
-        }
+        let deleteIndexPaths = changes.deletionIndexPaths()
+        let rows = deleteIndexPaths.map { $0.row }
+        savedSearchesListView.deleteRows(at: rows)
     }
 }
 

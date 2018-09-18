@@ -68,6 +68,13 @@ public class SavedSearchesListView: UIView {
     public func setEditing(editing: Bool) {
         tableView.setEditing(editing, animated: true)
     }
+
+    public func deleteRows(at indexes: [Int]) {
+        if indexes.count > 0 {
+            let indexPaths = indexes.map { IndexPath(row: $0, section: 0) }
+            tableView.deleteRows(at: indexPaths, with: .right)
+        }
+    }
 }
 
 // MARK: - Private methods
