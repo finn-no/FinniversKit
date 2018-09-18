@@ -38,7 +38,7 @@ extension SavedSearchesListViewDemoView: SavedSearchesListViewDataSource {
         return dataSource.models.count
     }
 
-    public func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, modelAtIndex index: Int) -> SavedSearchesListViewModel {
+    public func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, modelAtIndex index: Int) -> SavedSearchesListViewModel? {
         return dataSource.models[index]
     }
 }

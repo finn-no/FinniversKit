@@ -10,7 +10,7 @@ public protocol SavedSearchesListViewDelegate: NSObjectProtocol {
 
 public protocol SavedSearchesListViewDataSource: NSObjectProtocol {
     func numberOfItems(inSavedSearchesListView savedSearchesListView: SavedSearchesListView) -> Int
-    func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, modelAtIndex index: Int) -> SavedSearchesListViewModel
+    func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, modelAtIndex index: Int) -> SavedSearchesListViewModel?
 }
 
 public class SavedSearchesListView: UIView {
