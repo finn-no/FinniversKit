@@ -55,6 +55,10 @@ public class SavedSearchesListView: UIView {
         setup()
     }
 
+    public func reload() {
+        tableView.reloadData()
+    }
+
     private func setup() {
         tableView.register(SavedSearchesListViewCell.self)
         addSubview(tableView)
