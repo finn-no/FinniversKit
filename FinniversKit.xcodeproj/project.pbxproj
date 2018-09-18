@@ -18,6 +18,7 @@
 		144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 144959DA2122C4400084549F /* FinniversImageAsset.m */; };
 		144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144959DF2122D8C20084549F /* AssetsDemoView.swift */; };
 		146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* DemoViewController.swift */; };
+		1489A42021514FF3000D31D0 /* ChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1489A41F21514FF3000D31D0 /* ChangeSet.swift */; };
 		14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7CE212324C900A7230C /* FavoritesListViewCell.swift */; };
 		14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7D0212324C900A7230C /* FavoritesListView.swift */; };
 		14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7D2212324C900A7230C /* FavoritesListViewModel.swift */; };
@@ -222,6 +223,7 @@
 		144959DA2122C4400084549F /* FinniversImageAsset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinniversImageAsset.m; sourceTree = "<group>"; };
 		144959DF2122D8C20084549F /* AssetsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsDemoView.swift; sourceTree = "<group>"; };
 		146D3C3F1FBE466D00124B76 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		1489A41F21514FF3000D31D0 /* ChangeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSet.swift; sourceTree = "<group>"; };
 		14C6F7CE212324C900A7230C /* FavoritesListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListViewCell.swift; sourceTree = "<group>"; };
 		14C6F7D0212324C900A7230C /* FavoritesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListView.swift; sourceTree = "<group>"; };
 		14C6F7D2212324C900A7230C /* FavoritesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListViewModel.swift; sourceTree = "<group>"; };
@@ -1090,6 +1092,7 @@
 			children = (
 				44A149EF2137805C0053D5F7 /* SavedSearchesListViewDemoView.swift */,
 				44A149F02137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift */,
+				1489A41F21514FF3000D31D0 /* ChangeSet.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1577,6 +1580,7 @@
 				4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
+				1489A42021514FF3000D31D0 /* ChangeSet.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
 				44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */,

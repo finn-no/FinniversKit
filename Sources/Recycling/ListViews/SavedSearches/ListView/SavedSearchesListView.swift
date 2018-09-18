@@ -6,6 +6,7 @@ import UIKit
 
 public protocol SavedSearchesListViewDelegate: NSObjectProtocol {
     func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didSelectItemAtIndex index: Int)
+    func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didDeleteItemAt index: Int)
 }
 
 public protocol SavedSearchesListViewDataSource: NSObjectProtocol {
@@ -14,11 +15,10 @@ public protocol SavedSearchesListViewDataSource: NSObjectProtocol {
 }
 
 public class SavedSearchesListView: UIView {
-    public static let estimatedRowHeight: CGFloat = 60.0
-
     // MARK: - Internal properties
+    private static let estimatedRowHeight: CGFloat = 60.0
 
-    private lazy var tableView: UITableView = {
+    public lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
@@ -55,10 +55,24 @@ public class SavedSearchesListView: UIView {
         setup()
     }
 
+    // MARK: - Public methods
+
     public func reload() {
         tableView.reloadData()
     }
 
+    public var isEditing: Bool {
+        return tableView.isEditing
+    }
+
+    public func setEditing(editing: Bool) {
+        tableView.setEditing(editing, animated: true)
+    }
+}
+
+// MARK: - Private methods
+
+extension SavedSearchesListView {
     private func setup() {
         tableView.register(SavedSearchesListViewCell.self)
         addSubview(tableView)
@@ -71,6 +85,19 @@ public class SavedSearchesListView: UIView {
 extension SavedSearchesListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.savedSearchesListView(self, didSelectItemAtIndex: indexPath.row)
+    }
+
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            delegate?.savedSearchesListView(self, didDeleteItemAt: indexPath.row)
+        case .insert, .none:
+            break
+        }
     }
 }
 

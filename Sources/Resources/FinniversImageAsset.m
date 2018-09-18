@@ -7,7 +7,6 @@
 
 #import "FinniversImageAsset.h"
 
-NSString *const FinniversImageAssetNoImage = @"NoImage";
 NSString *const FinniversImageAssetarrowDown = @"arrowDown";
 NSString *const FinniversImageAssetarrowRight = @"arrowRight";
 NSString *const FinniversImageAssetarrowUp = @"arrowUp";
@@ -52,6 +51,7 @@ NSString *const FinniversImageAssetmittanbud = @"mittanbud";
 NSString *const FinniversImageAssetmore = @"more";
 NSString *const FinniversImageAssetmoreImg = @"moreImg";
 NSString *const FinniversImageAssetmoteplassen = @"moteplassen";
+NSString *const FinniversImageAssetnoImage = @"noImage";
 NSString *const FinniversImageAssetnotifications = @"notifications";
 NSString *const FinniversImageAssetonlyNew = @"onlyNew";
 NSString *const FinniversImageAssetpin = @"pin";

@@ -17,6 +17,12 @@ public struct SavedSearch: SavedSearchesListViewModel {
     }
 }
 
+extension SavedSearch: Equatable {
+    public static func ==(lhs: SavedSearch, rhs: SavedSearch) -> Bool {
+        return lhs.title == rhs.title
+    }
+}
+
 public struct SavedSearchFactory {
     public static func create(numberOfModels: Int) -> [SavedSearch] {
         return (0 ..< numberOfModels).map { index in

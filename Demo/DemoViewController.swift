@@ -69,6 +69,18 @@ public class DemoViewController<View: UIView>: UIViewController {
             doubleTap.numberOfTapsRequired = 2
             view.addGestureRecognizer(doubleTap)
         }
+
+        updateRightBarButtonItem()
+    }
+
+    func updateRightBarButtonItem() {
+        guard let viewController = self as? DemoViewController<SavedSearchesListViewDemoView> else {
+            return
+        }
+
+        let isEditing = viewController.playgroundView.savedSearchesListView.isEditing
+        let style: UIBarButtonSystemItem = isEditing ? .done : .edit
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: style, target: self, action: #selector(editTapped))
     }
 
     @objc func didDoubleTap() {
@@ -83,5 +95,15 @@ public class DemoViewController<View: UIView>: UIViewController {
             miniToastView.show(in: view)
             State.shouldShowDismissInstructions = false
         }
+    }
+
+    @objc func editTapped() {
+        guard let viewController = self as? DemoViewController<SavedSearchesListViewDemoView> else {
+            return
+        }
+
+        let editing = !viewController.playgroundView.savedSearchesListView.isEditing
+        viewController.playgroundView.savedSearchesListView.setEditing(editing: editing)
+        updateRightBarButtonItem()
     }
 }

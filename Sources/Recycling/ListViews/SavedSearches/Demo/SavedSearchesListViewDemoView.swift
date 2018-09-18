@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class SavedSearchesDataSource: NSObject {
-    let models = SavedSearchFactory.create(numberOfModels: 9)
+    var models = SavedSearchFactory.create(numberOfModels: 9)
 }
 
 public class SavedSearchesListViewDemoView: UIView {
@@ -21,16 +21,44 @@ public class SavedSearchesListViewDemoView: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    private func setup() {
+    lazy var savedSearchesListView: SavedSearchesListView = {
         let view = SavedSearchesListView(delegate: self, dataSource: self)
         view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        view.fillInSuperview()
+        return view
+    }()
+
+    private func setup() {
+        addSubview(savedSearchesListView)
+        savedSearchesListView.fillInSuperview()
     }
 }
 
 extension SavedSearchesListViewDemoView: SavedSearchesListViewDelegate {
     public func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didSelectItemAtIndex index: Int) {}
+
+    public func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didDeleteItemAt index: Int) {
+        let previous = dataSource.models
+        dataSource.models.remove(at: index)
+        let after = dataSource.models
+
+        let changes = ChangeSet(new: after, old: previous)
+
+        if changes.hasInsertions || changes.hasDeletions {
+            DispatchQueue.main.async {
+                if #available(iOS 11.0, *) {
+                    savedSearchesListView.tableView.performBatchUpdates({
+                        let deleteIndexPaths = changes.deletionIndexPaths()
+                        savedSearchesListView.tableView.deleteRows(at: deleteIndexPaths, with: .middle)
+
+                        let insertIndexPaths = changes.insertionIndexPaths()
+                        savedSearchesListView.tableView.insertRows(at: insertIndexPaths, with: .middle)
+                    }, completion: nil)
+                } else {
+                    savedSearchesListView.reload()
+                }
+            }
+        }
+    }
 }
 
 extension SavedSearchesListViewDemoView: SavedSearchesListViewDataSource {
