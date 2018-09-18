@@ -37,14 +37,12 @@ extension SavedSearchesListViewDemoView: SavedSearchesListViewDelegate {
     public func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didSelectItemAtIndex index: Int) {}
 
     public func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didDeleteItemAt index: Int) {
-        let previous = dataSource.models
+        let old = dataSource.models
         dataSource.models.remove(at: index)
-        let after = dataSource.models
+        let updated = dataSource.models
 
-        let changes = ChangeSet(new: after, old: previous)
-        let deleteIndexPaths = changes.deletionIndexPaths()
-        let rows = deleteIndexPaths.map { $0.row }
-        savedSearchesListView.deleteRows(at: rows)
+        let changes = ChangeSet(old: old, updated: updated)
+        savedSearchesListView.deleteRows(at: changes.deletedRows)
     }
 }
 

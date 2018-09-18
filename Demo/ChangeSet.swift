@@ -4,55 +4,46 @@ struct ChangeSet<T: Equatable> {
     // MARK: Public properties
 
     public var hasInsertions: Bool {
-        return insertions.count > 0
+        return insertedRows.count > 0
     }
 
     public var hasDeletions: Bool {
-        return deletions.count > 0
+        return deletedRows.count > 0
     }
+
+    public var insertedRows: [Int]
+    public var deletedRows: [Int]
 
     // MARK: Private properties
 
-    private var new: [T]
     private var old: [T]
+    private var updated: [T]
 
-    private var insertions: [Int]
-    private var deletions: [Int]
-
-    init(new: [T], old: [T]) {
+    init(old: [T], updated: [T]) {
         self.old = old
-        self.new = new
+        self.updated = updated
 
-        let (insertions, deletions) = ChangeSet.diff(new: new, old: old)
-        self.insertions = insertions
-        self.deletions = deletions
+        let (insertions, deletions) = ChangeSet.diff(new: updated, old: old)
+        self.insertedRows = insertions
+        self.deletedRows = deletions
     }
 
     // MARK: Public methods
 
     public func updatedObjects() -> [T] {
         // Create an new array containing the old elements that was not deleted during the update
-        let updatedObjectsIndicies = self.old.enumerated().filter { !deletions.contains($0.offset) }.map{ $0.element }
-        var updatedObjects = self.new.enumerated().filter { updatedObjectsIndicies.contains($0.element) }.map { $0.element }
+        let updatedObjectsIndexes = old.enumerated().filter { !deletedRows.contains($0.offset) }.map { $0.element }
+        var updatedObjects = updated.enumerated().filter { updatedObjectsIndexes.contains($0.element) }.map { $0.element }
 
         // Insert the new objects into the array
-        self.insertions.forEach { updatedObjects.insert(self.new[$0], at: $0) }
+        insertedRows.forEach { updatedObjects.insert(updated[$0], at: $0) }
 
         return updatedObjects
-    }
-
-    public func insertionIndexPaths(section: Int = 0) -> [IndexPath] {
-        return self.insertions.map { IndexPath(row: $0, section: section) }
-    }
-
-    public func deletionIndexPaths(section: Int = 0) -> [IndexPath] {
-        return self.deletions.map { IndexPath(row: $0, section: section) }
     }
 
     // MARK: Private methods
 
     private static func diff<T: Equatable>(new: [T], old: [T]) -> ([Int], [Int]) {
-        // Edge case - The `old` array is empty, hence nothing to diff against.
         guard old.count > 0 else {
             let insertionIndexes = new.enumerated().map { $0.offset }
             let deletionIndexes: [Int] = []
