@@ -298,10 +298,6 @@
 		4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
 		4447F6C51FDB2B110033DBC1 /* FinniversKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinniversKit.h; sourceTree = "<group>"; };
 		4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversKit.swift; sourceTree = "<group>"; };
-		4447F7141FDB2C100033DBC1 /* ___FILEBASENAME___.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "___FILEBASENAME___.swift"; sourceTree = "<group>"; };
-		4447F7151FDB2C100033DBC1 /* TemplateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon.png; sourceTree = "<group>"; };
-		4447F7161FDB2C100033DBC1 /* TemplateIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TemplateIcon@2x.png"; sourceTree = "<group>"; };
-		4447F7171FDB2C100033DBC1 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		44587011213FA344009187BE /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		44587012213FA344009187BE /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		44587014213FA344009187BE /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -503,7 +499,6 @@
 				4447F6631FDB2B110033DBC1 /* Sources */,
 				14405C521FAFBBF000D03E04 /* Demo */,
 				14F4F1BA1FD6CEA800E9CECA /* UnitTests */,
-				4447F7121FDB2C100033DBC1 /* Templates */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
 			);
@@ -979,25 +974,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		4447F7121FDB2C100033DBC1 /* Templates */ = {
-			isa = PBXGroup;
-			children = (
-				4447F7131FDB2C100033DBC1 /* FinniversKitView.xctemplate */,
-			);
-			path = Templates;
-			sourceTree = "<group>";
-		};
-		4447F7131FDB2C100033DBC1 /* FinniversKitView.xctemplate */ = {
-			isa = PBXGroup;
-			children = (
-				4447F7141FDB2C100033DBC1 /* ___FILEBASENAME___.swift */,
-				4447F7151FDB2C100033DBC1 /* TemplateIcon.png */,
-				4447F7161FDB2C100033DBC1 /* TemplateIcon@2x.png */,
-				4447F7171FDB2C100033DBC1 /* TemplateInfo.plist */,
-			);
-			path = FinniversKitView.xctemplate;
-			sourceTree = "<group>";
-		};
 		44587010213FA344009187BE /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1394,7 +1370,6 @@
 				14405C6D1FAFBD1800D03E04 /* Frameworks */,
 				14405C6E1FAFBD1800D03E04 /* Resources */,
 				44D32C2C1FB07850001E86D6 /* Embed Frameworks */,
-				4447F7181FDB2C330033DBC1 /* Update templates */,
 			);
 			buildRules = (
 			);
@@ -1527,20 +1502,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4447F7181FDB2C330033DBC1 /* Update templates */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update templates";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates\"\nfi\n\nif [ ! -d \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit\" ]; then\nmkdir \"${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit\"\nfi\n\ncp -R ./Templates/FinniversKitView.xctemplate ${USER_LIBRARY_DIR}/Developer/Xcode/Templates/FinniversKit";
-		};
 		44C6CE42209CAA3300929269 /* Generate constants for assets names */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
