@@ -1,7 +1,6 @@
 import Foundation
 
 struct ChangeSet<T: Equatable> {
-
     // MARK: Public properties
 
     public var hasInsertions: Bool {
@@ -33,21 +32,21 @@ struct ChangeSet<T: Equatable> {
 
     public func updatedObjects() -> [T] {
         // Create an new array containing the old elements that was not deleted during the update
-        let updatedObjectsIndicies = self.old.enumerated().filter({ !deletions.contains($0.offset) }).map({ $0.element })
-        var updatedObjects = self.new.enumerated().filter({ updatedObjectsIndicies.contains($0.element) }).map({ $0.element })
+        let updatedObjectsIndicies = self.old.enumerated().filter { !deletions.contains($0.offset) }.map{ $0.element }
+        var updatedObjects = self.new.enumerated().filter { updatedObjectsIndicies.contains($0.element) }.map { $0.element }
 
         // Insert the new objects into the array
-        self.insertions.forEach({ updatedObjects.insert(self.new[$0], at: $0) })
+        self.insertions.forEach { updatedObjects.insert(self.new[$0], at: $0) }
 
         return updatedObjects
     }
 
     public func insertionIndexPaths(section: Int = 0) -> [IndexPath] {
-        return self.insertions.map({ IndexPath(row: $0, section: section) })
+        return self.insertions.map { IndexPath(row: $0, section: section) }
     }
 
     public func deletionIndexPaths(section: Int = 0) -> [IndexPath] {
-        return self.deletions.map({ IndexPath(row: $0, section: section) })
+        return self.deletions.map { IndexPath(row: $0, section: section) }
     }
 
     // MARK: Private methods
@@ -55,17 +54,17 @@ struct ChangeSet<T: Equatable> {
     private static func diff<T: Equatable>(new: [T], old: [T]) -> ([Int], [Int]) {
         // Edge case - The `old` array is empty, hence nothing to diff against.
         guard old.count > 0 else {
-            let insertionIndicies = new.enumerated().map({ $0.offset})
-            let deletionIndicies: [Int] = []
-            return (insertionIndicies, deletionIndicies)
+            let insertionIndexes = new.enumerated().map { $0.offset }
+            let deletionIndexes: [Int] = []
+            return (insertionIndexes, deletionIndexes)
         }
 
-        let insertedObjects = new.filter({ !old.contains($0) })
-        let insertionIndicies = insertedObjects.compactMap({ new.index(of: $0) })
+        let insertedObjects = new.filter { !old.contains($0) }
+        let insertionIndexes = insertedObjects.compactMap { new.index(of: $0) }
 
-        let deletedObjects = old.filter({ !new.contains($0) })
-        let deletionIndicies = deletedObjects.compactMap({ old.index(of: $0) })
+        let deletedObjects = old.filter { !new.contains($0) }
+        let deletionIndexes = deletedObjects.compactMap { old.index(of: $0) }
 
-        return (insertionIndicies, deletionIndicies)
+        return (insertionIndexes, deletionIndexes)
     }
 }
