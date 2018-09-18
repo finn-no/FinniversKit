@@ -28,6 +28,7 @@ public class SavedSearchesListView: UIView {
         tableView.estimatedRowHeight = SavedSearchesListView.estimatedRowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.separatorColor = .sardine
+        tableView.tableFooterView = UIView()
         return tableView
     }()
 
@@ -87,6 +88,24 @@ extension SavedSearchesListView {
     }
 }
 
+// MARK: - UITableViewDataSource
+
+extension SavedSearchesListView: UITableViewDataSource {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource?.numberOfItems(inSavedSearchesListView: self) ?? 0
+    }
+
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(SavedSearchesListViewCell.self, for: indexPath)
+
+        if let model = dataSource?.savedSearchesListView(self, modelAtIndex: indexPath.row) {
+            cell.model = model
+        }
+
+        return cell
+    }
+}
+
 // MARK: - UITableViewDelegate
 
 extension SavedSearchesListView: UITableViewDelegate {
@@ -105,23 +124,5 @@ extension SavedSearchesListView: UITableViewDelegate {
         case .insert, .none:
             break
         }
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension SavedSearchesListView: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inSavedSearchesListView: self) ?? 0
-    }
-
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(SavedSearchesListViewCell.self, for: indexPath)
-
-        if let model = dataSource?.savedSearchesListView(self, modelAtIndex: indexPath.row) {
-            cell.model = model
-        }
-
-        return cell
     }
 }
