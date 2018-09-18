@@ -54,7 +54,7 @@ public struct ContainmentOptions: OptionSet {
                 return nil
             }
             switch screens {
-            default: return nil
+            default: self = .all
             }
         }
     }

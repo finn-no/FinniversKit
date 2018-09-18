@@ -14,7 +14,7 @@ public class SwitchView: UIView {
     private let animationDuration: Double = 0.4
 
     private lazy var headerLabel: Label = {
-        let label = Label(style: .title3)
+        let label = Label(style: .title4)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
