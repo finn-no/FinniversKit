@@ -18,7 +18,7 @@ public class SavedSearchesListView: UIView {
     // MARK: - Internal properties
     private static let estimatedRowHeight: CGFloat = 60.0
 
-    public lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
