@@ -11,10 +11,12 @@ public struct ConsentViewCellModel: Codable {
 
     public let title: String
     public let state: State?
+    public let tag: Int
 
-    public init(title: String, state: State?) {
+    public init(title: String, state: State?, tag: Int) {
         self.title = title
         self.state = state
+        self.tag = tag
     }
 }
 
@@ -49,6 +51,12 @@ public class ConsentViewCell: UITableViewCell {
         return line
     }()
 
+    public var model: ConsentViewCellModel? {
+        didSet { set(model: model) }
+    }
+
+    public var labelInset: CGFloat = 14
+
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
@@ -58,16 +66,20 @@ public class ConsentViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func set(model: ConsentViewCellModel) {
+    public func removeHairLine() {
+        hairLine.backgroundColor = .clear
+    }
+}
+
+private extension ConsentViewCell {
+
+    func set(model: ConsentViewCellModel?) {
+        guard let model = model else { return }
         titleLabel.text = model.title
         stateLabel.text = model.state?.rawValue
     }
 
-    public func removeHairLine() {
-        hairLine.backgroundColor = .clear
-    }
-
-    private func setupSubviews() {
+    func setupSubviews() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(stateLabel)
         contentView.addSubview(arrowView)
@@ -75,7 +87,7 @@ public class ConsentViewCell: UITableViewCell {
 
         let constraints = [
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: labelInset),
             titleLabel.trailingAnchor.constraint(equalTo: stateLabel.leadingAnchor, constant: -.smallSpacing),
 
             stateLabel.trailingAnchor.constraint(equalTo: arrowView.leadingAnchor, constant: -.mediumLargeSpacing),
@@ -83,14 +95,13 @@ public class ConsentViewCell: UITableViewCell {
 
             arrowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             arrowView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            arrowView.widthAnchor.constraint(equalToConstant: 10),
 
             hairLine.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             hairLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             hairLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairLine.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
-            contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 14)
+            contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: labelInset)
         ]
 
         NSLayoutConstraint.activate(constraints)
