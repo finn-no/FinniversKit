@@ -159,6 +159,11 @@
 		DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */; };
 		DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
 		DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */; };
+		DAC7DCAA21538608004602A3 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA921538608004602A3 /* ConsentView.swift */; };
+		DAC7DCAC21538615004602A3 /* ConsentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCAB21538615004602A3 /* ConsentDetailView.swift */; };
+		DAC7DCAE2153866E004602A3 /* ConsentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCAD2153866E004602A3 /* ConsentViewCell.swift */; };
+		DAC7DCAF215386E4004602A3 /* ConsentViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA521538590004602A3 /* ConsentViewDemoView.swift */; };
+		DAC7DCB0215386E7004602A3 /* ConsentDetailViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA7215385A8004602A3 /* ConsentDetailViewDemoView.swift */; };
 		DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */; };
 		DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
@@ -360,6 +365,11 @@
 		DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadioboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		DAC7DCA521538590004602A3 /* ConsentViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewDemoView.swift; sourceTree = "<group>"; };
+		DAC7DCA7215385A8004602A3 /* ConsentDetailViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentDetailViewDemoView.swift; sourceTree = "<group>"; };
+		DAC7DCA921538608004602A3 /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
+		DAC7DCAB21538615004602A3 /* ConsentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentDetailView.swift; sourceTree = "<group>"; };
+		DAC7DCAD2153866E004602A3 /* ConsentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewCell.swift; sourceTree = "<group>"; };
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
@@ -1089,6 +1099,7 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				DAC7DCA021538511004602A3 /* Consent */,
 				44587010213FA344009187BE /* Login */,
 				44587013213FA344009187BE /* Register */,
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
@@ -1293,6 +1304,50 @@
 			children = (
 				DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */,
 				DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		DAC7DCA021538511004602A3 /* Consent */ = {
+			isa = PBXGroup;
+			children = (
+				DAC7DCA221538538004602A3 /* Details */,
+				DAC7DCA12153852D004602A3 /* Settings */,
+			);
+			path = Consent;
+			sourceTree = "<group>";
+		};
+		DAC7DCA12153852D004602A3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DAC7DCA421538543004602A3 /* Demo */,
+				DAC7DCA921538608004602A3 /* ConsentView.swift */,
+				DAC7DCAD2153866E004602A3 /* ConsentViewCell.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DAC7DCA221538538004602A3 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				DAC7DCA32153853F004602A3 /* Demo */,
+				DAC7DCAB21538615004602A3 /* ConsentDetailView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		DAC7DCA32153853F004602A3 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				DAC7DCA7215385A8004602A3 /* ConsentDetailViewDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		DAC7DCA421538543004602A3 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				DAC7DCA521538590004602A3 /* ConsentViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1531,6 +1586,7 @@
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
+				DAC7DCB0215386E7004602A3 /* ConsentDetailViewDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
@@ -1549,6 +1605,7 @@
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
+				DAC7DCAF215386E4004602A3 /* ConsentViewDemoView.swift in Sources */,
 				44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */,
 				DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */,
 				4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */,
@@ -1590,6 +1647,7 @@
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
+				DAC7DCAE2153866E004602A3 /* ConsentViewCell.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
 				DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */,
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
@@ -1597,6 +1655,7 @@
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */,
 				444246012137D60400D42AB8 /* FavoriteFoldersListViewCell.swift in Sources */,
+				DAC7DCAA21538608004602A3 /* ConsentView.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
@@ -1615,6 +1674,7 @@
 				441FE431209A24E500B04EF1 /* AdsGridHeaderView.swift in Sources */,
 				443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */,
 				DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */,
+				DAC7DCAC21538615004602A3 /* ConsentDetailView.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */,
 				44A149EB21377C7B0053D5F7 /* SavedSearchesListViewCell.swift in Sources */,
