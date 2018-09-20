@@ -7,15 +7,15 @@ import FinniversKit
 class ConsentViewDemoView: UIView {
 
     let sections = [
-        Section(title: "Varslinger", items: [ConsentViewCellModel(title: "Meldinger", state: nil, tag: 0),
-                                             ConsentViewCellModel(title: "Lagrede Søk", state: nil, tag: 0),
-                                             ConsentViewCellModel(title: "Prisnedgang på Torget", state: nil, tag: 0)]),
-        Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", state: .off, tag: 0),
-                                             ConsentViewCellModel(title: "Personlig tilpasset FINN", state: .on, tag: 0),
-                                             ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", state: .on, tag: 0),
-                                             ConsentViewCellModel(title: "Smart reklame", state: nil, tag: 0),
-                                             ConsentViewCellModel(title: "Last ned dine data", state: nil, tag: 0),
-                                             ConsentViewCellModel(title: "Slett meg som bruker", state: nil, tag: 0)])]
+        Section(title: "Varslinger", items: [ConsentViewCellModel(title: "Meldinger", state: nil, tag: .detail),
+                                             ConsentViewCellModel(title: "Lagrede Søk", state: nil, tag: .detail),
+                                             ConsentViewCellModel(title: "Prisnedgang på Torget", state: nil, tag: .detail)]),
+        Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", state: .off, tag: .detail),
+                                             ConsentViewCellModel(title: "Personlig tilpasset FINN", state: .on, tag: .detail),
+                                             ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", state: .on, tag: .detail),
+                                             ConsentViewCellModel(title: "Smart reklame", state: nil, tag: .action),
+                                             ConsentViewCellModel(title: "Last ned dine data", state: nil, tag: .action),
+                                             ConsentViewCellModel(title: "Slett meg som bruker", state: nil, tag: .action)])]
 
     lazy var consentView: ConsentView = {
         let view = ConsentView(frame: .zero, style: .grouped)

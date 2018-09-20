@@ -3,6 +3,10 @@
 //
 import UIKit
 
+public enum ConsentTag: Int, Codable {
+    case detail, action
+}
+
 public struct ConsentViewCellModel: Codable {
 
     public enum State: String, Codable {
@@ -11,9 +15,9 @@ public struct ConsentViewCellModel: Codable {
 
     public let title: String
     public let state: State?
-    public let tag: Int
+    public let tag: ConsentTag
 
-    public init(title: String, state: State?, tag: Int) {
+    public init(title: String, state: State?, tag: ConsentTag) {
         self.title = title
         self.state = state
         self.tag = tag
