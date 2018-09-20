@@ -11,6 +11,7 @@ class ConsentDetailViewDemoView: UIView {
         let view = ConsentDetailView()
         view.text = dummyText
         view.heading = "Få nyhetsbrev fra FINN"
+        view.buttonTitle = "Les mer"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

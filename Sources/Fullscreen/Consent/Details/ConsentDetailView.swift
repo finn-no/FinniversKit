@@ -6,13 +6,17 @@ import UIKit
 public class ConsentDetailView: UIView {
 
     public var text: String? {
-        get { return textView.text }
-        set { textView.attributedText = attributedText(for: newValue) }
+        get { return textView.attributedText?.string }
+        set { textView.attributedText = newValue?.withLineSpacing(4) }
     }
 
     public var heading: String? {
         get { return headingView.text }
         set { headingView.text = newValue }
+    }
+
+    public var buttonTitle: String? {
+        didSet { button.setTitle(buttonTitle, for: .normal) }
     }
 
     lazy var textView: Label = {
@@ -38,7 +42,6 @@ public class ConsentDetailView: UIView {
 
     lazy var button: Button = {
         let button = Button(style: .flat)
-        button.setTitle("Mer om anbefalinger", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -76,18 +79,6 @@ private extension ConsentDetailView {
             button.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing)
         ]
         NSLayoutConstraint.activate(constraints)
-    }
-
-    func attributedText(for string: String?) -> NSAttributedString? {
-        guard let string = string else { return nil }
-
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 4
-
-        let attrString = NSMutableAttributedString(string: string)
-        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
-
-        return attrString
     }
 
 }
