@@ -3,6 +3,7 @@
 //
 import UIKit
 
+
 public class ConsentDetailView: UIView {
 
     public var text: String? {
@@ -76,7 +77,7 @@ private extension ConsentDetailView {
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
             button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            button.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing)
+            button.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing + .smallSpacing)
         ]
         NSLayoutConstraint.activate(constraints)
     }

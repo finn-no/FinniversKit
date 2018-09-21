@@ -12,9 +12,7 @@ public class ConsentActionView: UIView {
     }
 
     public var buttonTitle: String? {
-        didSet {
-            button?.setTitle(buttonTitle, for: .normal)
-        }
+        didSet { button?.setTitle(buttonTitle, for: .normal) }
     }
 
     public var action: (() -> Void)?

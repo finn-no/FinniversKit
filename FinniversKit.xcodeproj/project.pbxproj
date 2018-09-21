@@ -166,6 +166,7 @@
 		DAC7DCB0215386E7004602A3 /* ConsentDetailViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA7215385A8004602A3 /* ConsentDetailViewDemoView.swift */; };
 		DAC7DCB421539E77004602A3 /* ConsentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCB321539E77004602A3 /* ConsentActionView.swift */; };
 		DAC7DCB52153AC27004602A3 /* ConsentActionViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCB121539E6A004602A3 /* ConsentActionViewDemoView.swift */; };
+		DAC7DCB721551E08004602A3 /* ConsentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCB621551E08004602A3 /* ConsentModels.swift */; };
 		DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */; };
 		DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
@@ -374,6 +375,7 @@
 		DAC7DCAD2153866E004602A3 /* ConsentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewCell.swift; sourceTree = "<group>"; };
 		DAC7DCB121539E6A004602A3 /* ConsentActionViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentActionViewDemoView.swift; sourceTree = "<group>"; };
 		DAC7DCB321539E77004602A3 /* ConsentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentActionView.swift; sourceTree = "<group>"; };
+		DAC7DCB621551E08004602A3 /* ConsentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentModels.swift; sourceTree = "<group>"; };
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
@@ -1317,6 +1319,7 @@
 			children = (
 				DAC7DCA221538538004602A3 /* Details */,
 				DAC7DCA12153852D004602A3 /* Settings */,
+				DAC7DCB621551E08004602A3 /* ConsentModels.swift */,
 			);
 			path = Consent;
 			sourceTree = "<group>";
@@ -1710,6 +1713,7 @@
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
+				DAC7DCB721551E08004602A3 /* ConsentModels.swift in Sources */,
 				43BACE6A21117D430052114C /* ReviewView.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,

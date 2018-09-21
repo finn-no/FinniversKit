@@ -63,6 +63,7 @@ public class ConsentViewCell: UITableViewCell {
 
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         setupSubviews()
     }
 
