@@ -1,5 +1,5 @@
 //
-//  Copyright © readng.co . All rights reserved.
+//  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
 import FinniversKit
