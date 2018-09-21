@@ -12,20 +12,20 @@ struct Purpose: ConsentDetailPurpose {
     let description: String
 }
 
-struct Data: ConsentDetailViewModel {
+struct DetailModel: ConsentDetailViewModel {
     let definition: ConsentDetailDefinition
     let purpose: ConsentDetailPurpose
 }
 
 class ConsentDetailViewDemoView: UIView {
 
-    let data = Data(definition: Definition(text: "FINN sender deg nyhetsbrev med for eksempel reisetips, jobbtrender, morsomme konkurranser og smarte råd til deg som kjøper og selger.\nFor å gjøre dette bruker vi kontaktinformasjonen knyttet til brukeren din på FINN."),
-                    purpose: Purpose(heading: "Få nyhetsbrev fra FINN", description: ""))
+    let detailModel = DetailModel(definition: Definition(text: "FINN sender deg nyhetsbrev med for eksempel reisetips, jobbtrender, morsomme konkurranser og smarte råd til deg som kjøper og selger.\nFor å gjøre dette bruker vi kontaktinformasjonen knyttet til brukeren din på FINN."),
+                                  purpose: Purpose(heading: "Få nyhetsbrev fra FINN", description: ""))
 
     lazy var consentDetailView: ConsentDetailView = {
         let view = ConsentDetailView()
-        view.text = data.definition.text
-        view.heading = data.purpose.heading
+        view.text = detailModel.definition.text
+        view.heading = detailModel.purpose.heading
         view.buttonTitle = "Les mer"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

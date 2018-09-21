@@ -3,22 +3,22 @@
 //
 import UIKit
 
-public enum ConsentTag: Int, Codable {
+public enum ConsentTag {
     case detail, action
 }
 
-public struct ConsentViewCellModel: Codable {
+public struct ConsentViewCellModel {
 
-    public enum State: String, Codable {
+    public enum State: String {
         case on = "På", off = "Av"
     }
 
-    public let title: String
+    public let detailModel: ConsentDetailViewModel
     public let state: State?
     public let tag: ConsentTag
 
-    public init(title: String, state: State?, tag: ConsentTag) {
-        self.title = title
+    public init(detailModel: ConsentDetailViewModel, state: State?, tag: ConsentTag) {
+        self.detailModel = detailModel
         self.state = state
         self.tag = tag
     }
@@ -80,7 +80,7 @@ private extension ConsentViewCell {
 
     func set(model: ConsentViewCellModel?) {
         guard let model = model else { return }
-        titleLabel.text = model.title
+        titleLabel.text = model.detailModel.purpose.heading
         stateLabel.text = model.state?.rawValue
     }
 
