@@ -35,7 +35,7 @@ public final class BottomSheetTransitioningAnimator: NSObject, UIViewControllerA
 }
 
 private extension BottomSheetTransitioningAnimator {
-    func animatePresentationTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    private func animatePresentationTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let presentedViewController = transitionContext.viewController(forKey: .to), let presentingViewController = transitionContext.viewController(forKey: .from) else {
             transitionContext.completeTransition(false)
             return
@@ -57,7 +57,7 @@ private extension BottomSheetTransitioningAnimator {
         }
     }
 
-    func animateDismissalTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    private func animateDismissalTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let dismissingViewController = transitionContext.viewController(forKey: .from) else {
             transitionContext.completeTransition(false)
             return

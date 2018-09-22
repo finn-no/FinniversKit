@@ -5,10 +5,10 @@
 import UIKit
 
 public final class BottomSheetInteractiveDismissalController: UIPercentDrivenInteractiveTransition {
-    let dismissalTransitioningRect: CGRect
-    let dismissalPercentageThreshold: CGFloat
-    let containerView: UIView
-    let presentedView: UIView
+    private let dismissalTransitioningRect: CGRect
+    private let dismissalPercentageThreshold: CGFloat
+    private let containerView: UIView
+    private let presentedView: UIView
 
     public lazy var gestureRecognizer: UIPanGestureRecognizer = {
         let panGestureRecognizer = UIPanGestureRecognizer()
@@ -20,7 +20,7 @@ public final class BottomSheetInteractiveDismissalController: UIPercentDrivenInt
     public private(set) var isDismissing = false
     public var isInteractionActive = false
 
-    var initialDismissalTranslation: CGFloat = 0.0
+    private var initialDismissalTranslation: CGFloat = 0.0
 
     init(containerView: UIView, presentedView: UIView, dismissalTransitioningRect: CGRect, dismissalPercentageThreshold: CGFloat) {
         self.containerView = containerView
@@ -31,7 +31,7 @@ public final class BottomSheetInteractiveDismissalController: UIPercentDrivenInt
         self.containerView.addGestureRecognizer(gestureRecognizer)
     }
 
-    @objc func viewPanned(sender: UIPanGestureRecognizer) {
+    @objc private func viewPanned(sender: UIPanGestureRecognizer) {
         let translationY = sender.translation(in: containerView).y
         let dismissalPercentage = (translationY - initialDismissalTranslation) / dismissalTransitioningRect.height
 

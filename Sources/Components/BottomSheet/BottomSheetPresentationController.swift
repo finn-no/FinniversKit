@@ -195,7 +195,7 @@ public final class BottomSheetPresentationController: UIPresentationController {
 // MARK: - ContentSizeMode
 
 public extension BottomSheetPresentationController {
-    enum ContentSizeMode {
+    public enum ContentSizeMode {
         case compact, expanded
 
         func bottomSheetHeight(for containerHeight: CGFloat) -> CGFloat {
@@ -229,7 +229,7 @@ public extension BottomSheetPresentationController {
 // MARK: - Transitions
 
 public extension BottomSheetPresentationController {
-    func transition(to contentSizeMode: ContentSizeMode) {
+    private func transition(to contentSizeMode: ContentSizeMode) {
         guard let containerView = containerView else {
             return
         }
@@ -267,7 +267,7 @@ public extension BottomSheetPresentationController {
 // MARK: - Helpers
 
 private extension BottomSheetPresentationController {
-    func rect(for contentSizeMode: ContentSizeMode, in rect: CGRect) -> CGRect {
+    private func rect(for contentSizeMode: ContentSizeMode, in rect: CGRect) -> CGRect {
         let height = contentSizeMode.bottomSheetHeight(for: rect.height)
         let origin = CGPoint(x: 0, y: rect.height - height)
         let size = CGSize(width: rect.width, height: height)
@@ -275,7 +275,7 @@ private extension BottomSheetPresentationController {
         return CGRect(origin: origin, size: size)
     }
 
-    func transitionRect(in rect: CGRect) -> CGRect {
+    private func transitionRect(in rect: CGRect) -> CGRect {
         let compactSizeRect = self.rect(for: .compact, in: rect)
         let expandedSizeRect = self.rect(for: .expanded, in: rect)
         let transitioningRect = CGRect(x: rect.origin.x, y: expandedSizeRect.origin.y, width: rect.width, height: compactSizeRect.origin.y - expandedSizeRect.origin.y)
@@ -283,7 +283,7 @@ private extension BottomSheetPresentationController {
         return transitioningRect
     }
 
-    func transitionRect(for contententSizeMode: ContentSizeMode, in rect: CGRect, transitioningThreshold: CGFloat) -> CGRect {
+    private func transitionRect(for contententSizeMode: ContentSizeMode, in rect: CGRect, transitioningThreshold: CGFloat) -> CGRect {
         let transitioningRect = transitionRect(in: rect)
 
         switch contententSizeMode {
@@ -296,7 +296,7 @@ private extension BottomSheetPresentationController {
         }
     }
 
-    func dismissalTransitionRect(in rect: CGRect, dismissalThreshold: CGFloat = 0.0) -> CGRect {
+    private func dismissalTransitionRect(in rect: CGRect, dismissalThreshold: CGFloat = 0.0) -> CGRect {
         let swipeBarOffset = -(.mediumSpacing + BottomSheetPresentationController.swipeHandleSize.height)
         let compactSizeRect = self.rect(for: .compact, in: rect).offsetBy(dx: 0, dy: swipeBarOffset)
         let thresholdInPoints = compactSizeRect.height * dismissalThreshold
@@ -308,15 +308,15 @@ private extension BottomSheetPresentationController {
 // MARK: - Gestures
 
 private extension BottomSheetPresentationController {
-    enum VerticalPanDirection {
+    private enum VerticalPanDirection {
         case up, down
     }
 
-    func verticalPanDirection(from verticalTranslation: CGFloat) -> VerticalPanDirection {
+    private func verticalPanDirection(from verticalTranslation: CGFloat) -> VerticalPanDirection {
         return verticalTranslation.isLess(than: 0.0) ? VerticalPanDirection.up : .down
     }
 
-    @objc func handlePanGesture(sender: UIPanGestureRecognizer) {
+    @objc private func handlePanGesture(sender: UIPanGestureRecognizer) {
         guard let containerView = sender.view, let presentedView = presentedView else {
             return
         }
@@ -366,7 +366,7 @@ private extension BottomSheetPresentationController {
         }
     }
 
-    @objc func dismissPresentedViewController() {
+    @objc private func dismissPresentedViewController() {
         presentingViewController.dismiss(animated: true, completion: nil)
     }
 }
