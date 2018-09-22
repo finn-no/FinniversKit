@@ -1,10 +1,9 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-
 import FinniversKit
 
-public class ViewController<View: UIView>: UIViewController {
+public class DemoViewController<View: UIView>: UIViewController {
     lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,17 +22,18 @@ public class ViewController<View: UIView>: UIViewController {
         return true
     }
 
-    var usingDoubleTap: Bool
+    var hasDismissButton: Bool = false
+    var usingDoubleTapToDismiss: Bool = false
 
     // Normal behaviour
-    public init() {
-        usingDoubleTap = true
+    public init(usingDoubleTapToDismiss: Bool = true) {
+        self.usingDoubleTapToDismiss = usingDoubleTapToDismiss
         super.init(nibName: nil, bundle: nil)
     }
 
     // Instantiate the view controller with a dismiss button
-    public init(usingDoubleTap: Bool) {
-        self.usingDoubleTap = usingDoubleTap
+    public init(withDismissButton hasDismissButton: Bool) {
+        self.hasDismissButton = hasDismissButton
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -52,13 +52,9 @@ public class ViewController<View: UIView>: UIViewController {
             playgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             playgroundView.topAnchor.constraint(equalTo: view.compatibleTopAnchor),
             playgroundView.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor),
-        ])
+            ])
 
-        if usingDoubleTap {
-            let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
-            doubleTap.numberOfTapsRequired = 2
-            view.addGestureRecognizer(doubleTap)
-        } else {
+        if hasDismissButton {
             let button = Button(style: .callToAction)
             button.setTitle("Dismiss", for: .normal)
             button.addTarget(self, action: #selector(didDoubleTap), for: .touchUpInside)
@@ -67,7 +63,11 @@ public class ViewController<View: UIView>: UIViewController {
             NSLayoutConstraint.activate([
                 button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 button.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor, constant: -.veryLargeSpacing),
-            ])
+                ])
+        } else if usingDoubleTapToDismiss {
+            let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
+            doubleTap.numberOfTapsRequired = 2
+            view.addGestureRecognizer(doubleTap)
         }
     }
 

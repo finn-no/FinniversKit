@@ -22,6 +22,7 @@ public struct ContainmentOptions: OptionSet {
 
     /// Attaches a navigation bar, a tab bar or both depending on what is returned here.
     /// If you return nil the screen will have no containers.
+    /// Or replace `return nil` with `self = .all`, `self = .navigationController` or `self = .tabBarController`
     ///
     /// - Parameter indexPath: The component's index path
     init?(indexPath: IndexPath) {

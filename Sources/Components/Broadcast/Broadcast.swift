@@ -22,6 +22,7 @@ public final class Broadcast: UIStackView {
     private weak var scrollView: UIScrollView?
     private var topConstraint: NSLayoutConstraint?
     private var animationDuration = 0.3
+    private var messages: Set<BroadcastMessage> = []
 
     // MARK: - Setup
 
@@ -41,6 +42,7 @@ public final class Broadcast: UIStackView {
 
     public func presentMessages(_ messages: Set<BroadcastMessage>, in view: UIView? = nil, animated: Bool = true) {
         guard superview == nil else {
+            self.messages.formUnion(messages)
             add(messages, animated: animated)
             return
         }
@@ -63,7 +65,26 @@ public final class Broadcast: UIStackView {
         topConstraint = topAnchor.constraint(equalTo: view.topAnchor)
         topConstraint?.isActive = true
 
+        self.messages.formUnion(messages)
         add(messages, animated: animated)
+    }
+
+    public func removeMessages(_ messages: Set<BroadcastMessage>) -> Set<BroadcastMessage> {
+        guard !messages.isEmpty else { return [] }
+        guard let items = arrangedSubviews as? [BroadcastItem] else { return [] }
+
+        let messagesToRemove = self.messages.intersection(messages)
+
+        let itemsToRemove = items.filter { (item) -> Bool in
+            return messagesToRemove.contains(item.message)
+        }
+
+        for item in itemsToRemove {
+            remove(item, animated: false)
+        }
+
+        self.messages.subtract(messagesToRemove)
+        return messagesToRemove
     }
 
     // Can't override scrollView delegate so have to called this method from the outside
@@ -85,11 +106,11 @@ public final class Broadcast: UIStackView {
 // MARK: - Private
 
 private extension Broadcast {
-    func remove(_ item: BroadcastItem) {
+    func remove(_ item: BroadcastItem, animated: Bool = true) {
         item.heightConstraint.constant = 0
         item.heightConstraint.isActive = true
 
-        UIView.animate(withDuration: animationDuration, animations: {
+        UIView.animate(withDuration: animated ? animationDuration : 0, animations: {
             item.alpha = 0
             self.animate(to: nil) // keep current content offset
 
@@ -167,6 +188,7 @@ private extension Broadcast {
 extension Broadcast: BroadcastItemDelegate {
     func broadcastItemDismissButtonTapped(_ broadcastItem: BroadcastItem) {
         remove(broadcastItem)
+        messages.remove(broadcastItem.message)
         delegate?.broadcast(self, didDismiss: broadcastItem.message)
     }
 
