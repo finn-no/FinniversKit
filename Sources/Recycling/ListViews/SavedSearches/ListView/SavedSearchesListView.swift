@@ -100,6 +100,7 @@ extension SavedSearchesListView: UITableViewDataSource {
         let cell = tableView.dequeue(SavedSearchesListViewCell.self, for: indexPath)
         let model = dataSource?.savedSearchesListView(self, modelAtIndex: indexPath.row)
         cell.update(model: model, indexPath: indexPath)
+        cell.delegate = self
 
         return cell
     }
