@@ -1,7 +1,7 @@
 import UIKit
 
 @objc protocol SavedSearchesListViewCellDelegate: class {
-    func savedSearchesListViewCell(_ savedSearchesListViewCell: SavedSearchesListViewCell, didPressSettingsButton button: UIButton)
+    func savedSearchesListViewCell(_ savedSearchesListViewCell: SavedSearchesListViewCell, didPressSettingsForItemAt indexPath: IndexPath?)
 }
 
 @objc class SavedSearchesListViewCell: UITableViewCell {
@@ -87,19 +87,18 @@ import UIKit
     }
 
     @objc func showSettings(button: UIButton) {
-        delegate?.savedSearchesListViewCell(self, didPressSettingsButton: button)
+        if let indexPath = indexPath {
+            delegate?.savedSearchesListViewCell(self, didPressSettingsForItemAt: indexPath)
+        }
     }
 
     // MARK: - Dependency injection
 
-    public var model: SavedSearchesListViewModel? {
-        didSet {
-            if let model = model {
-                titleLabel.text = model.title
-                subtitleLabel.text = model.subtitle
-                accessibilityLabel = model.accessibilityLabel
-                settingsButton.accessibilityLabel = model.settingsButtonAccessibilityLabel
-            }
-        }
+    public func update(model: SavedSearchesListViewModel?, indexPath: IndexPath?) {
+        titleLabel.text = model?.title
+        subtitleLabel.text = model?.subtitle
+        accessibilityLabel = model?.accessibilityLabel
+        settingsButton.accessibilityLabel = model?.settingsButtonAccessibilityLabel
+        self.indexPath = indexPath
     }
 }

@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol SavedSearchesListViewDelegate: NSObjectProtocol {
+    func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didSelectSettingsAtIndex index: Int)
     func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didSelectItemAtIndex index: Int)
     func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didDeleteItemAt index: Int)
 }
@@ -97,10 +98,8 @@ extension SavedSearchesListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(SavedSearchesListViewCell.self, for: indexPath)
-
-        if let model = dataSource?.savedSearchesListView(self, modelAtIndex: indexPath.row) {
-            cell.model = model
-        }
+        let model = dataSource?.savedSearchesListView(self, modelAtIndex: indexPath.row)
+        cell.update(model: model, indexPath: indexPath)
 
         return cell
     }
@@ -123,6 +122,16 @@ extension SavedSearchesListView: UITableViewDelegate {
             delegate?.savedSearchesListView(self, didDeleteItemAt: indexPath.row)
         case .insert, .none:
             break
+        }
+    }
+}
+
+// MARK: - SavedSearchesListViewCellDelegate
+
+extension SavedSearchesListView: SavedSearchesListViewCellDelegate {
+    func savedSearchesListViewCell(_ savedSearchesListViewCell: SavedSearchesListViewCell, didPressSettingsForItemAt indexPath: IndexPath?) {
+        if let index = indexPath?.row {
+            delegate?.savedSearchesListView(self, didSelectSettingsAtIndex: index)
         }
     }
 }

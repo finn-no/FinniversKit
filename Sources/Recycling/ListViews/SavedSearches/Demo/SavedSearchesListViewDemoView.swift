@@ -44,6 +44,8 @@ extension SavedSearchesListViewDemoView: SavedSearchesListViewDelegate {
         let changes = ChangeSet(old: old, updated: updated)
         savedSearchesListView.deleteRows(at: changes.deletedRows)
     }
+
+    public func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didSelectSettingsAtIndex index: Int) {}
 }
 
 extension SavedSearchesListViewDemoView: SavedSearchesListViewDataSource {
