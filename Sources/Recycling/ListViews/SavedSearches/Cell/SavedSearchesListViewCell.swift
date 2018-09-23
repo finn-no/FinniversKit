@@ -59,7 +59,7 @@ import UIKit
         contentView.addSubview(settingsButton)
         contentView.addSubview(arrowImageView)
 
-        let margin: CGFloat = 8
+        let margin: CGFloat = .mediumSpacing
         let settingsSize: CGFloat = 50
         let arrowSize: CGFloat = 20
         NSLayoutConstraint.activate([

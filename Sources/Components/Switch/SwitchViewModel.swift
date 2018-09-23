@@ -3,8 +3,7 @@
 //
 
 public protocol SwitchViewModel {
-    var headerText: String { get set }
-    var onDescriptionText: String? { get set }
-    var offDescriptionText: String? { get set }
+    var title: String { get set }
+    var subtitle: String? { get set }
     var isOn: Bool { get set }
 }

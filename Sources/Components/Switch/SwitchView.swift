@@ -13,13 +13,13 @@ public class SwitchView: UIView {
 
     private let animationDuration: Double = 0.4
 
-    private lazy var headerLabel: Label = {
+    private lazy var titleLabel: Label = {
         let label = Label(style: .title4)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var descriptionLabel: Label = {
+    private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail)
         label.textColor = .stone
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -27,20 +27,20 @@ public class SwitchView: UIView {
         return label
     }()
 
-    private lazy var mySwitch: UISwitch = {
-        let mySwitch = UISwitch()
-        mySwitch.tintColor = .sardine
-        mySwitch.onTintColor = .pea
-        mySwitch.addTarget(self, action: #selector(switchChangedState), for: .valueChanged)
-        return mySwitch
+    private lazy var stackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.spacing = .smallSpacing
+        return view
     }()
 
-    private lazy var stackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [headerLabel, mySwitch])
+    private lazy var aSwitch: UISwitch = {
+        let view = UISwitch()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .horizontal
-        view.distribution = .fill
-        view.spacing = .mediumLargeSpacing
+        view.tintColor = .sardine
+        view.onTintColor = .pea
+        view.addTarget(self, action: #selector(switchChangedState), for: .valueChanged)
         return view
     }()
 
@@ -48,17 +48,9 @@ public class SwitchView: UIView {
 
     public var model: SwitchViewModel? {
         didSet {
-            guard let model = model else {
-                return
-            }
-
-            headerLabel.text = model.headerText
-
-            if mySwitch.isOn {
-                descriptionLabel.text = model.onDescriptionText
-            } else {
-                descriptionLabel.text = model.offDescriptionText
-            }
+            titleLabel.text = model?.title
+            subtitleLabel.text = model?.subtitle
+            aSwitch.isOn = model?.isOn ?? false
         }
     }
 
@@ -80,36 +72,25 @@ public class SwitchView: UIView {
 
     private func setup() {
         addSubview(stackView)
-        addSubview(descriptionLabel)
+        addSubview(aSwitch)
 
+        let margin: CGFloat = .mediumSpacing
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: margin),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
+            stackView.trailingAnchor.constraint(equalTo: aSwitch.leadingAnchor, constant: -margin),
 
-            descriptionLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .smallSpacing),
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            descriptionLabel.widthAnchor.constraint(equalTo: headerLabel.widthAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
+            aSwitch.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: margin),
+            aSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin),
+            aSwitch.topAnchor.constraint(equalTo: topAnchor, constant: margin)
+            ])
     }
 
     // MARK: - Private actions
 
     @objc func switchChangedState(_ sender: UISwitch) {
         delegate?.switchView(self, didChangeValueFor: sender)
-
-        guard let model = model else {
-            return
-        }
-
-        UIView.transition(with: descriptionLabel, duration: animationDuration, options: .transitionCrossDissolve, animations: { [weak self] in
-            if sender.isOn {
-                self?.descriptionLabel.text = model.onDescriptionText
-            } else {
-                self?.descriptionLabel.text = model.offDescriptionText
-            }
-        }, completion: nil)
+        model?.isOn = sender.isOn
     }
 }
