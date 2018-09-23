@@ -3,17 +3,10 @@ import UIKit
 public class LoadingIndicatorView: UIView {
     private var backgroundLayer = CAShapeLayer()
     private var animatedLayer = CAShapeLayer()
-    private var animating = false
     private var duration: CGFloat = 3
     private var borderColor: UIColor = .secondaryBlue
     private var backgroundLayerColor: UIColor = .sardine
     private var lineWidth: CGFloat = 4
-
-    public var isAnimating: Bool {
-        return animating
-    }
-
-    public var hidesWhenStopped: Bool = false
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,7 +19,7 @@ public class LoadingIndicatorView: UIView {
     }
 
     private func setup() {
-        self.backgroundColor = UIColor.clear
+        backgroundColor = .clear
 
         backgroundLayer.fillColor = UIColor.clear.cgColor
         backgroundLayer.strokeColor = backgroundLayerColor.cgColor
@@ -41,26 +34,23 @@ public class LoadingIndicatorView: UIView {
         animatedLayer.strokeEnd = 1
         animatedLayer.lineWidth = lineWidth
         animatedLayer.lineCap = kCALineCapRound
-
-        isHidden = true
     }
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        let center = CGPoint(x: self.bounds.size.width / 2.0, y: self.bounds.size.height / 2.0)
-        let radius = min(self.bounds.size.width, self.bounds.size.height) / 2.0 - self.animatedLayer.lineWidth / 2.0
+        let center = CGPoint(x: bounds.size.width / 2.0, y: bounds.size.height / 2.0)
+        let radius = min(bounds.size.width, bounds.size.height) / 2.0 - animatedLayer.lineWidth / 2.0
 
         let bezierPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
 
         backgroundLayer.path = bezierPath.cgPath
         animatedLayer.path = bezierPath.cgPath
-        backgroundLayer.frame = self.bounds
-        animatedLayer.frame = self.bounds
-        isHidden = hidesWhenStopped
+        backgroundLayer.frame = bounds
+        animatedLayer.frame = bounds
 
-        self.layer.addSublayer(backgroundLayer)
-        self.layer.addSublayer(animatedLayer)
+        layer.addSublayer(backgroundLayer)
+        layer.addSublayer(animatedLayer)
     }
 
     private func animateStrokeEnd() -> CABasicAnimation {
@@ -107,14 +97,13 @@ public class LoadingIndicatorView: UIView {
     }
 
     public func startAnimating() {
-        animating = true
-        isHidden = false
         animateGroup()
+        isHidden = false
     }
 
     public func stopAnimating() {
-        animating = false
-        isHidden = hidesWhenStopped
+        backgroundLayer.removeAllAnimations()
         animatedLayer.removeAllAnimations()
+        isHidden = true
     }
 }
