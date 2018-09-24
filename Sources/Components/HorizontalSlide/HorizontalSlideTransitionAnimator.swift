@@ -1,23 +1,15 @@
 import UIKit
 
-final class HorizontalSlideTransitionAnimator: NSObject {
-    // MARK: - Properties
-    private let isPresenting: Bool
-
-    // MARK: - Initializers
-    init(isPresenting: Bool) {
-        self.isPresenting = isPresenting
-        super.init()
-    }
-}
-
-// MARK: - UIViewControllerAnimatedTransitioning
-extension HorizontalSlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
+class HorizontalSlideTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromViewController = transitionContext.viewController(forKey: .from) else { return }
+        guard let toViewController = transitionContext.viewController(forKey: .to) else { return }
+
+        let isPresenting = toViewController.presentingViewController === fromViewController
         let key: UITransitionContextViewControllerKey = isPresenting ? .to : .from
         guard let controller = transitionContext.viewController(forKey: key) else { return }
 

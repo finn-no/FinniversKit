@@ -7,10 +7,10 @@ public class HorizontalSlideTransitionDelegate: NSObject, UIViewControllerTransi
     }
 
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HorizontalSlideTransitionAnimator(isPresenting: true)
+        return HorizontalSlideTransitionAnimator()
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HorizontalSlideTransitionAnimator(isPresenting: false)
+        return HorizontalSlideTransitionAnimator()
     }
 }
