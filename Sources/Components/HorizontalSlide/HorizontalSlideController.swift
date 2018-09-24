@@ -34,18 +34,18 @@ class HorizontalSlideController: UIPresentationController {
             dimmingView.alpha = 1.0
             return
         }
-        
+
         coordinator.animate(alongsideTransition: { _ in
             self.dimmingView.alpha = 1.0
         })
     }
-    
+
     override func dismissalTransitionWillBegin() {
         guard let coordinator = presentedViewController.transitionCoordinator else {
             dimmingView.alpha = 0.0
             return
         }
-        
+
         coordinator.animate(alongsideTransition: { _ in
             self.dimmingView.alpha = 0.0
         })
@@ -54,7 +54,7 @@ class HorizontalSlideController: UIPresentationController {
     override func containerViewWillLayoutSubviews() {
         presentedView?.frame = frameOfPresentedViewInContainerView
     }
-    
+
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         return CGSize(width: parentSize.width * containerPercentage, height: parentSize.height)
     }

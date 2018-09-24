@@ -13,13 +13,12 @@ final class HorizontalSlideTransitionAnimator: NSObject {
 
 // MARK: - UIViewControllerAnimatedTransitioning
 extension HorizontalSlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
-
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let key = isPresenting ? UITransitionContextViewControllerKey.to : UITransitionContextViewControllerKey.from
+        let key: UITransitionContextViewControllerKey = isPresenting ? .to : .from
         guard let controller = transitionContext.viewController(forKey: key) else { return }
 
         if isPresenting {
