@@ -21,7 +21,7 @@ final class HorizontalSlideController: UIPresentationController {
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = containerView else { return .zero }
 
-        var frame: CGRect = .zero
+        var frame = CGRect.zero
         frame.size = size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView.bounds.size)
         switch direction {
         case .right:
@@ -76,11 +76,12 @@ final class HorizontalSlideController: UIPresentationController {
     }
     
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
-        if direction == .top || direction == .bottom {
+        switch direction {
+        case .top, .bottom:
             return CGSize(width: parentSize.width, height: parentSize.height * containerPercentage)
-        } else if direction == .left || direction == .right {
+        case .left, .right:
             return CGSize(width: parentSize.width * containerPercentage, height: parentSize.height)
-        } else {
+        default:
             fatalError("targetEdge must be one of UIRectEdgeTop, UIRectEdgeBottom, UIRectEdgeLeft, or UIRectEdgeRight.")
         }
     }

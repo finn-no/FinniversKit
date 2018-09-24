@@ -1,14 +1,14 @@
 import UIKit
 
-public class HorizontalSlideHelper: NSObject {
+public class HorizontalSlideTransitionDelegate: NSObject {
     
     // MARK: - Properties
-    public var direction: UIRectEdge = []
+    private var direction: UIRectEdge = .right
     var disableCompactHeight = false
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
-extension HorizontalSlideHelper: UIViewControllerTransitioningDelegate {
+extension HorizontalSlideTransitionDelegate: UIViewControllerTransitioningDelegate {
     
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         let presentationController = HorizontalSlideController(presentedViewController: presented, presenting: presenting, direction: direction)
@@ -16,10 +16,10 @@ extension HorizontalSlideHelper: UIViewControllerTransitioningDelegate {
     }
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HorizontalSlideAnimator(direction: direction, isPresentation: true)
+        return HorizontalSlideTransitionAnimator(direction: direction, isPresentation: true)
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HorizontalSlideAnimator(direction: direction, isPresentation: false)
+        return HorizontalSlideTransitionAnimator(direction: direction, isPresentation: false)
     }
 }

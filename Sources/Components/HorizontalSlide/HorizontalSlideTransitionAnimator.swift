@@ -1,6 +1,6 @@
 import UIKit
 
-final class HorizontalSlideAnimator: NSObject {
+final class HorizontalSlideTransitionAnimator: NSObject {
 
     // MARK: - Properties
     let direction: UIRectEdge
@@ -15,7 +15,7 @@ final class HorizontalSlideAnimator: NSObject {
 }
 
 // MARK: - UIViewControllerAnimatedTransitioning
-extension HorizontalSlideAnimator: UIViewControllerAnimatedTransitioning {
+extension HorizontalSlideTransitionAnimator: UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
@@ -32,15 +32,16 @@ extension HorizontalSlideAnimator: UIViewControllerAnimatedTransitioning {
         let presentedFrame = transitionContext.finalFrame(for: controller)
         var dismissedFrame = presentedFrame
 
-        if direction == .top {
+        switch direction {
+        case .top:
             dismissedFrame.origin.y = -presentedFrame.height
-        } else if direction == .bottom {
+        case .bottom:
             dismissedFrame.origin.y = transitionContext.containerView.frame.size.height
-        } else if direction == .left {
+        case .left:
             dismissedFrame.origin.x = -presentedFrame.width
-        } else if direction == .right {
+        case .right:
             dismissedFrame.origin.x = transitionContext.containerView.frame.size.width
-        } else {
+        default:
             fatalError("targetEdge must be one of UIRectEdgeTop, UIRectEdgeBottom, UIRectEdgeLeft, or UIRectEdgeRight.")
         }
 
