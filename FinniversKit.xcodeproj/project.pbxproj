@@ -164,6 +164,11 @@
 		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 		DAD0D492210737A30091DD4D /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D491210737A30091DD4D /* TextView.swift */; };
 		DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D493210739500091DD4D /* DescriptionView.swift */; };
+		F2AC78B32154FFB2008F787A /* WishListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AC78B22154FFB2008F787A /* WishListViewCell.swift */; };
+		F2AC78B52154FFC0008F787A /* WishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AC78B42154FFC0008F787A /* WishListView.swift */; };
+		F2AC78B72154FFCD008F787A /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AC78B62154FFCD008F787A /* WishListViewModel.swift */; };
+		F2AC78BC21550577008F787A /* WishListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AC78B82154FFEA008F787A /* WishListViewDemoView.swift */; };
+		F2AC78BD215505ED008F787A /* WishListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AC78BA21550346008F787A /* WishListViewDemoViewHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -363,6 +368,11 @@
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		F2AC78B22154FFB2008F787A /* WishListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListViewCell.swift; path = Sources/Recycling/ListViews/Wishlist/Cell/WishListViewCell.swift; sourceTree = SOURCE_ROOT; };
+		F2AC78B42154FFC0008F787A /* WishListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListView.swift; path = Sources/Recycling/ListViews/Wishlist/ListView/WishListView.swift; sourceTree = SOURCE_ROOT; };
+		F2AC78B62154FFCD008F787A /* WishListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListViewModel.swift; path = Sources/Recycling/ListViews/Wishlist/Model/WishListViewModel.swift; sourceTree = SOURCE_ROOT; };
+		F2AC78B82154FFEA008F787A /* WishListViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WishListViewDemoView.swift; path = Sources/Recycling/ListViews/Wishlist/Demo/WishListViewDemoView.swift; sourceTree = SOURCE_ROOT; };
+		F2AC78BA21550346008F787A /* WishListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WishListViewDemoViewHelpers.swift; path = Sources/Recycling/ListViews/Wishlist/Demo/WishListViewDemoViewHelpers.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -601,6 +611,7 @@
 		441FE414209A24E500B04EF1 /* Recycling */ = {
 			isa = PBXGroup;
 			children = (
+				F2AC78A32153D568008F787A /* Wishlist */,
 				14C6F7CC212324C900A7230C /* Favorites */,
 				441FE440209A2F2C00B04EF1 /* ListViews */,
 				441FE415209A24E500B04EF1 /* GridViews */,
@@ -1318,6 +1329,51 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
+		F2AC78A32153D568008F787A /* Wishlist */ = {
+			isa = PBXGroup;
+			children = (
+				F2AC78A42153D57B008F787A /* Demo */,
+				F2AC78A52153D582008F787A /* Cell */,
+				F2AC78A62153D58B008F787A /* ListView */,
+				F2AC78A72153D596008F787A /* Model */,
+			);
+			name = Wishlist;
+			path = ListViews/Wishlist;
+			sourceTree = "<group>";
+		};
+		F2AC78A42153D57B008F787A /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				F2AC78B82154FFEA008F787A /* WishListViewDemoView.swift */,
+				F2AC78BA21550346008F787A /* WishListViewDemoViewHelpers.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		F2AC78A52153D582008F787A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F2AC78B22154FFB2008F787A /* WishListViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F2AC78A62153D58B008F787A /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				F2AC78B42154FFC0008F787A /* WishListView.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		F2AC78A72153D596008F787A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2AC78B62154FFCD008F787A /* WishListViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1403,8 +1459,7 @@
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
 					14405C691FAFBD1800D03E04 = {
-						DevelopmentTeam = D34XZHQLE3;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					14F4F1B81FD6CEA800E9CECA = {
 						CreatedOnToolsVersion = 9.1;
@@ -1516,6 +1571,7 @@
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
+				F2AC78BC21550577008F787A /* WishListViewDemoView.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
 				44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
@@ -1541,6 +1597,7 @@
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
 				43BACE6F21117DD20052114C /* ReviewViewDemoView.swift in Sources */,
+				F2AC78BD215505ED008F787A /* WishListViewDemoViewHelpers.swift in Sources */,
 				45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
 				4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */,
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
@@ -1632,12 +1689,14 @@
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
+				F2AC78B32154FFB2008F787A /* WishListViewCell.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
 				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
+				F2AC78B52154FFC0008F787A /* WishListView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
@@ -1648,6 +1707,7 @@
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
 				144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
+				F2AC78B72154FFCD008F787A /* WishListViewModel.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
@@ -1695,8 +1755,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D34XZHQLE3;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1718,8 +1778,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D34XZHQLE3;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
