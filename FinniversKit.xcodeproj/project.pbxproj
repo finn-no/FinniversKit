@@ -110,6 +110,11 @@
 		44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149EA21377C7B0053D5F7 /* SavedSearchesListViewModel.swift */; };
 		44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149EF2137805C0053D5F7 /* SavedSearchesListViewDemoView.swift */; };
 		44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149F02137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift */; };
+		44B514872145CD000005266C /* BottomSheetPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B514832145CCFF0005266C /* BottomSheetPresentationController.swift */; };
+		44B514882145CD000005266C /* BottomSheetTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B514842145CCFF0005266C /* BottomSheetTransitioningDelegate.swift */; };
+		44B514892145CD000005266C /* BottomSheetInteractiveDismissalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B514852145CCFF0005266C /* BottomSheetInteractiveDismissalController.swift */; };
+		44B5148A2145CD000005266C /* BottomSheetTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B514862145CCFF0005266C /* BottomSheetTransitioningAnimator.swift */; };
+		44B5148D2145CD1A0005266C /* BottomSheetDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5148C2145CD1A0005266C /* BottomSheetDemoViewController.swift */; };
 		44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */; };
 		44AFCE4A215839FB005984DB /* LoadingIndicatorViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFCE46215839F6005984DB /* LoadingIndicatorViewDemoView.swift */; };
 		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -313,6 +318,11 @@
 		44A149EA21377C7B0053D5F7 /* SavedSearchesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewModel.swift; sourceTree = "<group>"; };
 		44A149EF2137805C0053D5F7 /* SavedSearchesListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewDemoView.swift; sourceTree = "<group>"; };
 		44A149F02137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
+		44B514832145CCFF0005266C /* BottomSheetPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetPresentationController.swift; sourceTree = "<group>"; };
+		44B514842145CCFF0005266C /* BottomSheetTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetTransitioningDelegate.swift; sourceTree = "<group>"; };
+		44B514852145CCFF0005266C /* BottomSheetInteractiveDismissalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetInteractiveDismissalController.swift; sourceTree = "<group>"; };
+		44B514862145CCFF0005266C /* BottomSheetTransitioningAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetTransitioningAnimator.swift; sourceTree = "<group>"; };
+		44B5148C2145CD1A0005266C /* BottomSheetDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetDemoViewController.swift; sourceTree = "<group>"; };
 		44AFCE46215839F6005984DB /* LoadingIndicatorViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorViewDemoView.swift; sourceTree = "<group>"; };
 		44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversImageAsset.swift; sourceTree = "<group>"; };
@@ -833,6 +843,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				44B514822145CCFF0005266C /* BottomSheet */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
 				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
 				45B2E06B207E181C00C68B92 /* Consent */,
@@ -1088,6 +1099,26 @@
 				44A149EF2137805C0053D5F7 /* SavedSearchesListViewDemoView.swift */,
 				44A149F02137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift */,
 			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		44B514822145CCFF0005266C /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				44B5148B2145CD1A0005266C /* Demo */,
+				44B514832145CCFF0005266C /* BottomSheetPresentationController.swift */,
+				44B514842145CCFF0005266C /* BottomSheetTransitioningDelegate.swift */,
+				44B514852145CCFF0005266C /* BottomSheetInteractiveDismissalController.swift */,
+				44B514862145CCFF0005266C /* BottomSheetTransitioningAnimator.swift */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		44B5148B2145CD1A0005266C /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				44B5148C2145CD1A0005266C /* BottomSheetDemoViewController.swift */,
+      );
 			path = Demo;
 			sourceTree = "<group>";
 		};
@@ -1554,6 +1585,7 @@
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
+				44B5148D2145CD1A0005266C /* BottomSheetDemoViewController.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
@@ -1659,13 +1691,17 @@
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
+				44B514872145CD000005266C /* BottomSheetPresentationController.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
 				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
+				44B5148A2145CD000005266C /* BottomSheetTransitioningAnimator.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
+				44B514892145CD000005266C /* BottomSheetInteractiveDismissalController.swift in Sources */,
+				44B514882145CD000005266C /* BottomSheetTransitioningDelegate.swift in Sources */,
 				43BACE6A21117D430052114C /* ReviewView.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
