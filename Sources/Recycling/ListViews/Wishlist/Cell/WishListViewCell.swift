@@ -21,7 +21,7 @@ public class WishListViewCell: UITableViewCell {
     // MARK: - Internal properties
     
     private static let layerOpacity: Float = 0.85
-    private static let cornerRadius: CGFloat = 4
+    private static let cornerRadius: CGFloat = 8
     
     private lazy var adImageView: UIImageView = {
         let imageView = UIImageView()
@@ -142,15 +142,15 @@ public class WishListViewCell: UITableViewCell {
         let roundedCornerLayer = CAShapeLayer()
         roundedCornerLayer.bounds = rightImageDetail.frame
         roundedCornerLayer.position = rightImageDetail.center
-        roundedCornerLayer.path = UIBezierPath(roundedRect: rightImageDetail.bounds, cornerRadius: WishListViewCell.cornerRadius * 2).cgPath
+        roundedCornerLayer.path = UIBezierPath(roundedRect: rightImageDetail.bounds, cornerRadius: WishListViewCell.cornerRadius).cgPath
         rightImageDetail.layer.mask = roundedCornerLayer
         
         let roundedRightCornerLayer = CAShapeLayer()
         roundedRightCornerLayer.bounds = leftImageDetail.frame
         roundedRightCornerLayer.position = leftImageDetail.center
         roundedRightCornerLayer.path = UIBezierPath(roundedRect: leftImageDetail.bounds, byRoundingCorners: [UIRectCorner.topRight],
-                                                    cornerRadii: CGSize(width: WishListViewCell.cornerRadius * 2,
-                                                                        height: WishListViewCell.cornerRadius * 2)).cgPath
+                                                    cornerRadii: CGSize(width: WishListViewCell.cornerRadius,
+                                                                        height: WishListViewCell.cornerRadius)).cgPath
         leftImageDetail.layer.mask = roundedRightCornerLayer
     }
     
