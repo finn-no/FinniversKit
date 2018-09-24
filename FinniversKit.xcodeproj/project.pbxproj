@@ -372,11 +372,11 @@
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
-		F2ACF97A21591FB7003958D8 /* WishListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListViewDemoView.swift; path = ../../ListViews/Wishlist/Demo/WishListViewDemoView.swift; sourceTree = "<group>"; };
-		F2ACF97B21591FB7003958D8 /* WishListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListViewDemoViewHelpers.swift; path = ../../ListViews/Wishlist/Demo/WishListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
-		F2ACF97D21591FB7003958D8 /* WishListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListViewCell.swift; path = ../../ListViews/Wishlist/Cell/WishListViewCell.swift; sourceTree = "<group>"; };
-		F2ACF97F21591FB7003958D8 /* WishListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListView.swift; path = ../../ListViews/Wishlist/ListView/WishListView.swift; sourceTree = "<group>"; };
-		F2ACF98121591FB7003958D8 /* WishListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListViewModel.swift; path = ../../ListViews/Wishlist/Model/WishListViewModel.swift; sourceTree = "<group>"; };
+		F2ACF97A21591FB7003958D8 /* WishListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewDemoView.swift; sourceTree = "<group>"; };
+		F2ACF97B21591FB7003958D8 /* WishListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
+		F2ACF97D21591FB7003958D8 /* WishListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewCell.swift; sourceTree = "<group>"; };
+		F2ACF97F21591FB7003958D8 /* WishListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListView.swift; sourceTree = "<group>"; };
+		F2ACF98121591FB7003958D8 /* WishListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1359,7 +1359,8 @@
 				F2ACF97E21591FB7003958D8 /* ListView */,
 				F2ACF98021591FB7003958D8 /* Model */,
 			);
-			path = Wishlist;
+			name = Wishlist;
+			path = ListViews/Wishlist;
 			sourceTree = "<group>";
 		};
 		F2ACF97921591FB7003958D8 /* Demo */ = {
