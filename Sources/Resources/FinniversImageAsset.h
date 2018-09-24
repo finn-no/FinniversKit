@@ -7,7 +7,6 @@
 
 @import Foundation;
 
-extern NSString *const FinniversImageAssetNoImage;
 extern NSString *const FinniversImageAssetarrowDown;
 extern NSString *const FinniversImageAssetarrowRight;
 extern NSString *const FinniversImageAssetarrowUp;
@@ -52,6 +51,7 @@ extern NSString *const FinniversImageAssetmittanbud;
 extern NSString *const FinniversImageAssetmore;
 extern NSString *const FinniversImageAssetmoreImg;
 extern NSString *const FinniversImageAssetmoteplassen;
+extern NSString *const FinniversImageAssetnoImage;
 extern NSString *const FinniversImageAssetnotifications;
 extern NSString *const FinniversImageAssetonlyNew;
 extern NSString *const FinniversImageAssetpin;

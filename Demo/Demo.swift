@@ -45,6 +45,7 @@ public enum ComponentViews: String {
     case checkbox
     case radioButton
     case roundedImageView
+    case loadingIndicator
 
     public static var all: [ComponentViews] {
         return [
@@ -60,6 +61,7 @@ public enum ComponentViews: String {
             .checkbox,
             .radioButton,
             .roundedImageView,
+            .loadingIndicator
         ]
     }
 
@@ -89,6 +91,8 @@ public enum ComponentViews: String {
             return DemoViewController<RadioButtonDemoView>(withDismissButton: true)
         case .roundedImageView:
             return DemoViewController<RoundedImageViewDemoView>()
+        case .loadingIndicator:
+            return DemoViewController<LoadingIndicatorViewDemoView>()
         }
     }
 }
