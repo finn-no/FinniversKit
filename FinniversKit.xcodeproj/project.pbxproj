@@ -488,9 +488,9 @@
 			isa = PBXGroup;
 			children = (
 				14DC126921593B0000326DC3 /* Demo */,
-				14DC126B21593B0000326DC3 /* HorizontalSlideController.swift */,
 				14DC126C21593B0000326DC3 /* HorizontalSlideTransitionDelegate.swift */,
 				14DC126D21593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift */,
+				14DC126B21593B0000326DC3 /* HorizontalSlideController.swift */,
 			);
 			path = HorizontalSlide;
 			sourceTree = "<group>";

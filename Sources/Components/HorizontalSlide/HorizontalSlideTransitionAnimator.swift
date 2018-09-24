@@ -1,15 +1,12 @@
 import UIKit
 
 final class HorizontalSlideTransitionAnimator: NSObject {
-
     // MARK: - Properties
-    let direction: UIRectEdge
-    let isPresentation: Bool
+    private let isPresenting: Bool
 
     // MARK: - Initializers
-    init(direction: UIRectEdge, isPresentation: Bool) {
-        self.direction = direction
-        self.isPresentation = isPresentation
+    init(isPresenting: Bool) {
+        self.isPresenting = isPresenting
         super.init()
     }
 }
@@ -22,31 +19,19 @@ extension HorizontalSlideTransitionAnimator: UIViewControllerAnimatedTransitioni
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let key = isPresentation ? UITransitionContextViewControllerKey.to : UITransitionContextViewControllerKey.from
+        let key = isPresenting ? UITransitionContextViewControllerKey.to : UITransitionContextViewControllerKey.from
         guard let controller = transitionContext.viewController(forKey: key) else { return }
 
-        if isPresentation {
+        if isPresenting {
             transitionContext.containerView.addSubview(controller.view)
         }
 
         let presentedFrame = transitionContext.finalFrame(for: controller)
         var dismissedFrame = presentedFrame
+        dismissedFrame.origin.x = transitionContext.containerView.frame.size.width
 
-        switch direction {
-        case .top:
-            dismissedFrame.origin.y = -presentedFrame.height
-        case .bottom:
-            dismissedFrame.origin.y = transitionContext.containerView.frame.size.height
-        case .left:
-            dismissedFrame.origin.x = -presentedFrame.width
-        case .right:
-            dismissedFrame.origin.x = transitionContext.containerView.frame.size.width
-        default:
-            fatalError("targetEdge must be one of UIRectEdgeTop, UIRectEdgeBottom, UIRectEdgeLeft, or UIRectEdgeRight.")
-        }
-
-        let initialFrame = isPresentation ? dismissedFrame : presentedFrame
-        let finalFrame = isPresentation ? presentedFrame : dismissedFrame
+        let initialFrame = isPresenting ? dismissedFrame : presentedFrame
+        let finalFrame = isPresenting ? presentedFrame : dismissedFrame
 
         let animationDuration = transitionDuration(using: transitionContext)
         controller.view.frame = initialFrame

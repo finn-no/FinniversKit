@@ -1,11 +1,10 @@
 import UIKit
 
-final class HorizontalSlideController: UIPresentationController {
-    
+class HorizontalSlideController: UIPresentationController {
     // MARK: - Properties
-    let containerPercentage: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 0.60 : 0.85
+    private let containerPercentage: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 0.60 : 0.85
 
-    lazy var dimmingView: UIView = {
+    private lazy var dimmingView: UIView = {
         let dimmingView = UIView()
         dimmingView.translatesAutoresizingMaskIntoConstraints = false
         dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
@@ -16,39 +15,20 @@ final class HorizontalSlideController: UIPresentationController {
         return dimmingView
     }()
 
-    private var direction: UIRectEdge
-    
+    // MARK: - Overrides
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = containerView else { return .zero }
 
         var frame = CGRect.zero
         frame.size = size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView.bounds.size)
-        switch direction {
-        case .right:
-            frame.origin.x = containerView.frame.width * (1.0 - containerPercentage)
-        case .bottom:
-            frame.origin.y = containerView.frame.height * (1.0 - containerPercentage)
-        default:
-            frame.origin = .zero
-        }
+        frame.origin.x = containerView.frame.width * (1.0 - containerPercentage)
         return frame
     }
-    
-    // MARK: - Initializers
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: UIRectEdge) {
-        self.direction = direction
-        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-    }
-    
+
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView else { return }
         containerView.insertSubview(dimmingView, at: 0)
-        NSLayoutConstraint.activate([
-            dimmingView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            dimmingView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            dimmingView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            dimmingView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
-            ])
+        dimmingView.fillInSuperview()
 
         guard let coordinator = presentedViewController.transitionCoordinator else {
             dimmingView.alpha = 1.0
@@ -76,20 +56,11 @@ final class HorizontalSlideController: UIPresentationController {
     }
     
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
-        switch direction {
-        case .top, .bottom:
-            return CGSize(width: parentSize.width, height: parentSize.height * containerPercentage)
-        case .left, .right:
-            return CGSize(width: parentSize.width * containerPercentage, height: parentSize.height)
-        default:
-            fatalError("targetEdge must be one of UIRectEdgeTop, UIRectEdgeBottom, UIRectEdgeLeft, or UIRectEdgeRight.")
-        }
+        return CGSize(width: parentSize.width * containerPercentage, height: parentSize.height)
     }
-}
 
-// MARK: - Private
-private extension HorizontalSlideController {
-    @objc func handleTap(recognizer: UITapGestureRecognizer) {
+    // MARK: - Private
+    @objc private func handleTap(recognizer: UITapGestureRecognizer) {
         presentingViewController.dismiss(animated: true)
     }
 }
