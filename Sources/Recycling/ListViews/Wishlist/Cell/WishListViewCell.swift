@@ -196,7 +196,7 @@ public class WishListViewCell: UITableViewCell {
     // MARK: - Private
     
     private func loadImage(model: WishListViewModel) {
-        guard let dataSource = dataSource else {
+        guard let dataSource = dataSource, let _ = model.imagePath else {
             loadingColor = .clear
             adImageView.image = defaultImage
             return
