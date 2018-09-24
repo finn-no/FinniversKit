@@ -149,8 +149,8 @@ public class WishListViewCell: UITableViewCell {
         roundedRightCornerLayer.bounds = leftImageDetail.frame
         roundedRightCornerLayer.position = leftImageDetail.center
         roundedRightCornerLayer.path = UIBezierPath(roundedRect: leftImageDetail.bounds, byRoundingCorners: [UIRectCorner.topRight],
-                                                    cornerRadii: CGSize(width: WishListViewCell.cornerRadius,
-                                                                        height: WishListViewCell.cornerRadius)).cgPath
+                                                    cornerRadii: CGSize(width: WishListViewCell.cornerRadius * 2,
+                                                                        height: WishListViewCell.cornerRadius * 2)).cgPath
         leftImageDetail.layer.mask = roundedRightCornerLayer
     }
     
