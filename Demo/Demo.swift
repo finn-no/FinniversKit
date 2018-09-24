@@ -97,6 +97,7 @@ public enum RecyclingViews: String {
     case notificationsListView
     case favoriteFoldersListView
     case favoritesListView
+    case wishListView
     case savedSearchesListView
     case marketsGridView
     case adsGridView
@@ -106,6 +107,7 @@ public enum RecyclingViews: String {
             .notificationsListView,
             .favoriteFoldersListView,
             .favoritesListView,
+            .wishListView,
             .savedSearchesListView,
             .marketsGridView,
             .adsGridView,
@@ -120,6 +122,8 @@ public enum RecyclingViews: String {
             return DemoViewController<FavoriteFoldersListViewDemoView>()
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
+        case .wishListView:
+            return DemoViewController<WishListViewDemoView>()
         case .savedSearchesListView:
             return DemoViewController<SavedSearchesListViewDemoView>()
         case .marketsGridView:
