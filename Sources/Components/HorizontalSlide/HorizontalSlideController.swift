@@ -1,5 +1,7 @@
 import UIKit
 
+
+/// Used by the HorizontalSlideTransitionDelegate when using `modalPresentationStyle = .custom`.
 class HorizontalSlideController: UIPresentationController {
     // MARK: - Properties
     private let containerPercentage: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 0.60 : 0.85
