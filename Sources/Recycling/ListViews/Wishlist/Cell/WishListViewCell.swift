@@ -115,7 +115,7 @@ public class WishListViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            adImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.80),
+            adImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75),
             adImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.95),
             
             leftImageDetail.leadingAnchor.constraint(equalTo: adImageView.leadingAnchor),
