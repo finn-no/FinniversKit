@@ -3,11 +3,11 @@ import UIKit
 final class HorizontalSlideAnimator: NSObject {
 
     // MARK: - Properties
-    let direction: PresentationDirection
+    let direction: UIRectEdge
     let isPresentation: Bool
 
     // MARK: - Initializers
-    init(direction: PresentationDirection, isPresentation: Bool) {
+    init(direction: UIRectEdge, isPresentation: Bool) {
         self.direction = direction
         self.isPresentation = isPresentation
         super.init()
@@ -31,15 +31,17 @@ extension HorizontalSlideAnimator: UIViewControllerAnimatedTransitioning {
 
         let presentedFrame = transitionContext.finalFrame(for: controller)
         var dismissedFrame = presentedFrame
-        switch direction {
-        case .left:
-            dismissedFrame.origin.x = -presentedFrame.width
-        case .right:
-            dismissedFrame.origin.x = transitionContext.containerView.frame.size.width
-        case .top:
+
+        if direction == .top {
             dismissedFrame.origin.y = -presentedFrame.height
-        case .bottom:
+        } else if direction == .bottom {
             dismissedFrame.origin.y = transitionContext.containerView.frame.size.height
+        } else if direction == .left {
+            dismissedFrame.origin.x = -presentedFrame.width
+        } else if direction == .right {
+            dismissedFrame.origin.x = transitionContext.containerView.frame.size.width
+        } else {
+            fatalError("targetEdge must be one of UIRectEdgeTop, UIRectEdgeBottom, UIRectEdgeLeft, or UIRectEdgeRight.")
         }
 
         let initialFrame = isPresentation ? dismissedFrame : presentedFrame

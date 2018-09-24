@@ -16,7 +16,7 @@ final class HorizontalSlideController: UIPresentationController {
         return dimmingView
     }()
 
-    private var direction: PresentationDirection
+    private var direction: UIRectEdge
     
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = containerView else { return .zero }
@@ -35,7 +35,7 @@ final class HorizontalSlideController: UIPresentationController {
     }
     
     // MARK: - Initializers
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: PresentationDirection) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, direction: UIRectEdge) {
         self.direction = direction
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
@@ -76,11 +76,12 @@ final class HorizontalSlideController: UIPresentationController {
     }
     
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
-        switch direction {
-        case .left, .right:
-            return CGSize(width: parentSize.width * containerPercentage, height: parentSize.height)
-        case .bottom, .top:
+        if direction == .top || direction == .bottom {
             return CGSize(width: parentSize.width, height: parentSize.height * containerPercentage)
+        } else if direction == .left || direction == .right {
+            return CGSize(width: parentSize.width * containerPercentage, height: parentSize.height)
+        } else {
+            fatalError("targetEdge must be one of UIRectEdgeTop, UIRectEdgeBottom, UIRectEdgeLeft, or UIRectEdgeRight.")
         }
     }
 }

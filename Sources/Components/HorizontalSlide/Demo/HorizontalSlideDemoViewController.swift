@@ -6,8 +6,7 @@ import FinniversKit
 
 class HorizontalSlideDemoViewController: UIViewController {
     lazy var customTransitionDelegate: HorizontalSlideHelper = {
-        let delegate = HorizontalSlideHelper()
-        return delegate
+        return HorizontalSlideHelper()
     }()
 
     override func viewDidLoad() {
@@ -21,7 +20,7 @@ class HorizontalSlideDemoViewController: UIViewController {
         let presentedViewController = UIViewController()
         presentedViewController.view.backgroundColor = .red
         let secondViewController = UINavigationController(rootViewController: presentedViewController)
-        secondViewController.transitioningDelegate = self.customTransitionDelegate
+        secondViewController.transitioningDelegate = customTransitionDelegate
         self.customTransitionDelegate.direction = .right
         secondViewController.modalPresentationStyle = .custom
         present(secondViewController, animated: true, completion: nil)

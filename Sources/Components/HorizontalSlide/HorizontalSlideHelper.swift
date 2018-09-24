@@ -1,16 +1,9 @@
 import UIKit
 
-public enum PresentationDirection {
-    case left
-    case top
-    case right
-    case bottom
-}
-
 public class HorizontalSlideHelper: NSObject {
     
     // MARK: - Properties
-    public var direction = PresentationDirection.left
+    public var direction: UIRectEdge = []
     var disableCompactHeight = false
 }
 
@@ -19,7 +12,6 @@ extension HorizontalSlideHelper: UIViewControllerTransitioningDelegate {
     
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         let presentationController = HorizontalSlideController(presentedViewController: presented, presenting: presenting, direction: direction)
-        presentationController.delegate = self
         return presentationController
     }
     
@@ -29,23 +21,5 @@ extension HorizontalSlideHelper: UIViewControllerTransitioningDelegate {
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return HorizontalSlideAnimator(direction: direction, isPresentation: false)
-    }
-}
-
-// MARK: - UIAdaptivePresentationControllerDelegate
-extension HorizontalSlideHelper: UIAdaptivePresentationControllerDelegate {
-    
-    public func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        if traitCollection.verticalSizeClass == .compact && disableCompactHeight {
-            return .overFullScreen
-        } else {
-            return .none
-        }
-    }
-    
-    public func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-        guard case(.overFullScreen) = style else { return nil }
-        
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RotateViewController")
     }
 }
