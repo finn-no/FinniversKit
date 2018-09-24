@@ -5,7 +5,7 @@
 import FinniversKit
 
 class HorizontalSlideDemoViewController: UIViewController {
-    lazy var customTransitionDelegate: HorizontalSlideTransitionDelegate = {
+    lazy var transitionDelegate: HorizontalSlideTransitionDelegate = {
         return HorizontalSlideTransitionDelegate()
     }()
 
@@ -13,20 +13,5 @@ class HorizontalSlideDemoViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .green
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show horizontal slide", style: .done, target: self, action: #selector(showHorizontalSlide(sender:)))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(dismissTapped(sender:)))
-    }
-
-    @objc func showHorizontalSlide(sender: Any?) {
-        let presentedViewController = UIViewController()
-        presentedViewController.view.backgroundColor = .red
-        let secondViewController = UINavigationController(rootViewController: presentedViewController)
-        secondViewController.transitioningDelegate = customTransitionDelegate
-        secondViewController.modalPresentationStyle = .custom
-        present(secondViewController, animated: true, completion: nil)
-    }
-
-    @objc func dismissTapped(sender: Any?) {
-        dismiss(animated: true, completion: nil)
     }
 }

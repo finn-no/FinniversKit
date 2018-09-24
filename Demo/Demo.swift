@@ -96,9 +96,12 @@ public enum ComponentViews: String {
         case .loadingIndicator:
             return DemoViewController<LoadingIndicatorViewDemoView>()
         case .horizontalSlide:
-            let demoViewController = HorizontalSlideDemoViewController()
-            let navigationController = UINavigationController(rootViewController: demoViewController)
-            return navigationController
+            let presentedViewController = HorizontalSlideDemoViewController()
+            presentedViewController.view.backgroundColor = .red
+            let secondViewController = UINavigationController(rootViewController: presentedViewController)
+            secondViewController.transitioningDelegate = presentedViewController.transitionDelegate
+            secondViewController.modalPresentationStyle = .custom
+            return secondViewController
         }
     }
 }
