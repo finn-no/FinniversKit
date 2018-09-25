@@ -154,6 +154,14 @@
 		B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */; };
 		B01D787D3884A46F34B16C76 /* ReviewTextFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CB20C0311EBE8455109 /* ReviewTextFooter.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
+		CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */; };
+		CF3D5EE4215A65D7006E4D08 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE3215A65D7006E4D08 /* Instrument.swift */; };
+		CF3D5EEA215A6723006E4D08 /* DrumPadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE9215A6723006E4D08 /* DrumPadCollectionViewCell.swift */; };
+		CF3D5EEC215A6741006E4D08 /* DrumMachineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EEB215A6741006E4D08 /* DrumMachineView.swift */; };
+		CF3D5EF4215A6D9E006E4D08 /* hi-hats.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF0215A6D9E006E4D08 /* hi-hats.wav */; };
+		CF3D5EF5215A6D9E006E4D08 /* pusefinn.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */; };
+		CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF2215A6D9E006E4D08 /* kick.wav */; };
+		CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF3215A6D9E006E4D08 /* snare.wav */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
@@ -360,6 +368,14 @@
 		B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
+		CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectorView.swift; sourceTree = "<group>"; };
+		CF3D5EE3215A65D7006E4D08 /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
+		CF3D5EE9215A6723006E4D08 /* DrumPadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumPadCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF3D5EEB215A6741006E4D08 /* DrumMachineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumMachineView.swift; sourceTree = "<group>"; };
+		CF3D5EF0215A6D9E006E4D08 /* hi-hats.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "hi-hats.wav"; sourceTree = "<group>"; };
+		CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pusefinn.wav; sourceTree = "<group>"; };
+		CF3D5EF2215A6D9E006E4D08 /* kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kick.wav; sourceTree = "<group>"; };
+		CF3D5EF3215A6D9E006E4D08 /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoView.swift; sourceTree = "<group>"; };
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
@@ -843,6 +859,7 @@
 		4447F6631FDB2B110033DBC1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CF3D5EDF215A6486006E4D08 /* EasterEggs */,
 				44898D591FE5B9C200F6017B /* Extensions */,
 				4447F6B61FDB2B110033DBC1 /* Protocols */,
 				4408A69C2027AC41008C0BD9 /* DNA */,
@@ -978,6 +995,7 @@
 		4447F6B81FDB2B110033DBC1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF3D5EEF215A6D9E006E4D08 /* DrumSounds */,
 				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
 				44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */,
@@ -1325,6 +1343,36 @@
 			path = RoundedImageView;
 			sourceTree = "<group>";
 		};
+		CF3D5EDF215A6486006E4D08 /* EasterEggs */ = {
+			isa = PBXGroup;
+			children = (
+				CF3D5EE0215A6499006E4D08 /* DrumMachine */,
+			);
+			path = EasterEggs;
+			sourceTree = "<group>";
+		};
+		CF3D5EE0215A6499006E4D08 /* DrumMachine */ = {
+			isa = PBXGroup;
+			children = (
+				CF3D5EE9215A6723006E4D08 /* DrumPadCollectionViewCell.swift */,
+				CF3D5EEB215A6741006E4D08 /* DrumMachineView.swift */,
+				CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */,
+				CF3D5EE3215A65D7006E4D08 /* Instrument.swift */,
+			);
+			path = DrumMachine;
+			sourceTree = "<group>";
+		};
+		CF3D5EEF215A6D9E006E4D08 /* DrumSounds */ = {
+			isa = PBXGroup;
+			children = (
+				CF3D5EF0215A6D9E006E4D08 /* hi-hats.wav */,
+				CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */,
+				CF3D5EF2215A6D9E006E4D08 /* kick.wav */,
+				CF3D5EF3215A6D9E006E4D08 /* snare.wav */,
+			);
+			path = DrumSounds;
+			sourceTree = "<group>";
+		};
 		DAA9A3A2210214B80021F7DC /* SelectionBoxes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1511,11 +1559,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */,
 				DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */,
 				DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */,
 				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
 				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
+				CF3D5EF5215A6D9E006E4D08 /* pusefinn.wav in Resources */,
 				4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */,
+				CF3D5EF4215A6D9E006E4D08 /* hi-hats.wav in Resources */,
+				CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */,
 				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
 				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 			);
@@ -1649,6 +1701,7 @@
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */,
 				444246012137D60400D42AB8 /* FavoriteFoldersListViewCell.swift in Sources */,
+				CF3D5EEA215A6723006E4D08 /* DrumPadCollectionViewCell.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
@@ -1705,6 +1758,7 @@
 				144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
+				CF3D5EEC215A6741006E4D08 /* DrumMachineView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
@@ -1712,11 +1766,13 @@
 				44587018213FA344009187BE /* RegisterView.swift in Sources */,
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
+				CF3D5EE4215A65D7006E4D08 /* Instrument.swift in Sources */,
 				44587017213FA344009187BE /* LoginView.swift in Sources */,
 				43BACE6C21117D530052114C /* ReviewViewModel.swift in Sources */,
 				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
 				B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */,
+				CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */,
 				B01D787D3884A46F34B16C76 /* ReviewTextFooter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
