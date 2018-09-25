@@ -59,6 +59,8 @@ enum Instrument: String {
     }
 }
 
+// MARK: - Extensions
+
 private extension UIColor {
     class var yellow: UIColor {
         return .init(red: 235/255.0, green: 201/255.0, blue: 62/255.0, alpha: 1.0)

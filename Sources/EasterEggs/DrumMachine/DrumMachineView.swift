@@ -140,31 +140,21 @@ public final class DrumMachineView: UIView {
     }
 
     private func setupConstraints() {
-        if #available(iOS 11.0, *) {
-            selectorView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        } else {
-            selectorView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        }
-
         NSLayoutConstraint.activate([
+            selectorView.topAnchor.constraint(equalTo: topAnchor),
             selectorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             selectorView.trailingAnchor.constraint(equalTo: trailingAnchor),
             selectorView.heightAnchor.constraint(equalToConstant: 100),
 
-            collectionView.topAnchor.constraint(equalTo: selectorView.bottomAnchor, constant: 30),
+            collectionView.topAnchor.constraint(equalTo: selectorView.bottomAnchor, constant: .largeSpacing),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bpmSlider.topAnchor),
 
             bpmSlider.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: .mediumLargeSpacing),
-            bpmSlider.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: -.mediumLargeSpacing)
+            bpmSlider.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: -.mediumLargeSpacing),
+            bpmSlider.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-
-        if #available(iOS 11.0, *) {
-            bpmSlider.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        } else {
-            bpmSlider.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        }
     }
 }
 
