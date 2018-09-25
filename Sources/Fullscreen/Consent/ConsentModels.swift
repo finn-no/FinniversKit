@@ -4,16 +4,14 @@
 
 import UIKit
 
-public protocol ConsentDetailDefinition {
-    var text: String { get }
-}
-
-public protocol ConsentDetailPurpose {
-    var heading: String { get }
-    var description: String { get }
-}
-
-public protocol ConsentDetailViewModel {
-    var definition: ConsentDetailDefinition { get }
-    var purpose: ConsentDetailPurpose { get }
+public struct ConsentDetailViewModel { 
+    public let heading: String
+    public let definition: String
+    public let purpose: String
+    
+    public init(heading: String, definition: String, purpose: String) {
+        self.heading = heading
+        self.definition = definition
+        self.purpose = purpose
+    }
 }

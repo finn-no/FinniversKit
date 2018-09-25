@@ -6,13 +6,13 @@ import FinniversKit
 
 class ConsentActionViewDemoView: UIView {
 
-    let definition = Definition(text: "Med GDPR-forordningen (General Data Protection Regulation) har du rett til å vite hva selskaper vet om deg. Det inkluderer informasjon du har delt med dem og data de har samlet om din aktivitet. Her kan du laste ned en oversikt over alle dine data FINN.no har lagret.")
+    let text = "Med GDPR-forordningen (General Data Protection Regulation) har du rett til å vite hva selskaper vet om deg. Det inkluderer informasjon du har delt med dem og data de har samlet om din aktivitet. Her kan du laste ned en oversikt over alle dine data FINN.no har lagret."
 
     lazy var consentActionView: ConsentActionView = {
         let view = ConsentActionView(frame: .zero)
-        view.text = definition.text
+        view.text = text
         view.buttonTitle = "Last ned data"
-        view.buttonStyle = .destructive
+        view.buttonStyle = .callToAction
         view.action = {
             print("Nå må jeg laste ned dataen!")
         }

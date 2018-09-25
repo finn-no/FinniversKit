@@ -4,8 +4,8 @@
 import UIKit
 
 public struct Section {
-    public let title: String
-    public let items: [ConsentViewCellModel]
+    public var title: String
+    public var items: [ConsentViewCellModel]
 
     public init(title: String, items: [ConsentViewCellModel]) {
         self.title = title

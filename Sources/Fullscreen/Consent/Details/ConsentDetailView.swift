@@ -6,14 +6,8 @@ import UIKit
 
 public class ConsentDetailView: UIView {
 
-    public var text: String? {
-        get { return textView.attributedText?.string }
-        set { textView.attributedText = newValue?.withLineSpacing(4) }
-    }
-
-    public var heading: String? {
-        get { return headingView.text }
-        set { headingView.text = newValue }
+    public var model: ConsentDetailViewModel? {
+        didSet { set(model: model) }
     }
 
     public var buttonTitle: String? {
@@ -28,7 +22,7 @@ public class ConsentDetailView: UIView {
         return label
     }()
 
-    lazy var headingView: Label = {
+    lazy var switchLabel: Label = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -61,25 +55,31 @@ public class ConsentDetailView: UIView {
 private extension ConsentDetailView {
     func setupSubviews() {
         addSubview(textView)
-        addSubview(headingView)
+        addSubview(switchLabel)
         addSubview(theSwitch)
         addSubview(button)
 
         let constraints = [
-            headingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            headingView.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
+            switchLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            switchLabel.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
 
             theSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            theSwitch.centerYAnchor.constraint(equalTo: headingView.centerYAnchor),
+            theSwitch.centerYAnchor.constraint(equalTo: switchLabel.centerYAnchor),
 
             textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            textView.topAnchor.constraint(equalTo: headingView.bottomAnchor, constant: .largeSpacing),
+            textView.topAnchor.constraint(equalTo: switchLabel.bottomAnchor, constant: .largeSpacing),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
             button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             button.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing + .smallSpacing)
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+
+    func set(model: ConsentDetailViewModel?) {
+        guard let model = model else { return }
+        textView.text = model.definition
+        switchLabel.text = model.heading
     }
 
 }

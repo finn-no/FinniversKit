@@ -7,18 +7,18 @@ public enum ConsentTag {
     case detail, action
 }
 
+public enum ConsentState: String {
+    case accepted = "På", withdrawn = "Av"
+}
+
 public struct ConsentViewCellModel {
 
-    public enum State: String {
-        case on = "På", off = "Av"
-    }
-
-    public let detailModel: ConsentDetailViewModel
-    public let state: State?
+    public let title: String
+    public let state: ConsentState?
     public let tag: ConsentTag
 
-    public init(detailModel: ConsentDetailViewModel, state: State?, tag: ConsentTag) {
-        self.detailModel = detailModel
+    public init(title: String, state: ConsentState?, tag: ConsentTag) {
+        self.title = title
         self.state = state
         self.tag = tag
     }
@@ -80,7 +80,7 @@ private extension ConsentViewCell {
 
     func set(model: ConsentViewCellModel?) {
         guard let model = model else { return }
-        titleLabel.text = model.detailModel.purpose.heading
+        titleLabel.text = model.title
         stateLabel.text = model.state?.rawValue
     }
 

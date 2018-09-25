@@ -5,18 +5,17 @@
 import FinniversKit
 
 class ConsentViewDemoView: UIView {
-
-    let model = ConsentViewCellModel(detailModel: DetailModel(definition: Definition(text: ""), purpose: Purpose(heading: "", description: "")), state: nil, tag: .detail)
     
-    let sections = [Section(title: "Varslinger", items: [ConsentViewCellModel(detailModel: DetailModel(definition: Definition(text: ""), purpose: Purpose(heading: "Meldinger", description: "")), state: nil, tag: .detail),
-                                                         ConsentViewCellModel(detailModel: DetailModel(definition: Definition(text: ""), purpose: Purpose(heading: "Varslinger", description: "")), state: nil, tag: .detail),
-                                                         ConsentViewCellModel(detailModel: DetailModel(definition: Definition(text: ""), purpose: Purpose(heading: "Prisnedgang på torget", description: "")), state: nil, tag: .detail)]),
-                    Section(title: "Personvern", items: [ConsentViewCellModel(detailModel: DetailModel(definition: Definition(text: ""), purpose: Purpose(heading: "Få nyhetsbrev fra FINN", description: "")), state: nil, tag: .detail),
-                                                         ConsentViewCellModel(detailModel: DetailModel(definition: Definition(text: ""), purpose: Purpose(heading: "Personlig tilpasset FINN", description: "")), state: nil, tag: .detail),
-                                                         ConsentViewCellModel(detailModel: DetailModel(definition: Definition(text: ""), purpose: Purpose(heading: "Motta viktig informasjon fra FINN", description: "")), state: nil, tag: .detail),
-                                                         ConsentViewCellModel(detailModel: DetailModel(definition: Definition(text: ""), purpose: Purpose(heading: "Smart reklame", description: "")), state: nil, tag: .detail),
-                                                         ConsentViewCellModel(detailModel: DetailModel(definition: Definition(text: ""), purpose: Purpose(heading: "Last ned dine data", description: "")), state: nil, tag: .detail),
-                                                         ConsentViewCellModel(detailModel: DetailModel(definition: Definition(text: ""), purpose: Purpose(heading: "Slett meg som bruker", description: "")), state: nil, tag: .detail)])]
+    let sections = [Section(title: "Varslinger", items: [ConsentViewCellModel(title: "Meldinger", state: nil, tag: .detail),
+                                                         ConsentViewCellModel(title: "Varslinger", state: nil, tag: .detail),
+                                                         ConsentViewCellModel(title: "Prisnedgang på torget", state: nil, tag: .detail)]),
+
+                    Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", state: .withdrawn, tag: .detail),
+                                                         ConsentViewCellModel(title: "Personlin tilpasset FINN", state: .accepted, tag: .detail),
+                                                         ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", state: .accepted, tag: .detail),
+                                                         ConsentViewCellModel(title: "Smart reklame", state: nil, tag: .detail),
+                                                         ConsentViewCellModel(title: "Last ned dine data", state: nil, tag: .detail),
+                                                         ConsentViewCellModel(title: "Slett meg som bruker", state: nil, tag: .detail)])]
 
     lazy var consentView: ConsentView = {
         let view = ConsentView(frame: .zero, style: .grouped)
@@ -68,12 +67,6 @@ private extension ConsentViewDemoView {
 
     func setupSubviews() {
         addSubview(consentView)
-        let constraints = [
-            consentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            consentView.topAnchor.constraint(equalTo: topAnchor),
-            consentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            consentView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
+        consentView.fillInSuperview()
     }
 }
