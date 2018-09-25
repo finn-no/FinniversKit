@@ -162,6 +162,7 @@
 		CF3D5EF5215A6D9E006E4D08 /* pusefinn.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */; };
 		CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF2215A6D9E006E4D08 /* kick.wav */; };
 		CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF3215A6D9E006E4D08 /* snare.wav */; };
+		CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EF8215A6F3B006E4D08 /* EasterEggButton.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
@@ -376,6 +377,7 @@
 		CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pusefinn.wav; sourceTree = "<group>"; };
 		CF3D5EF2215A6D9E006E4D08 /* kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kick.wav; sourceTree = "<group>"; };
 		CF3D5EF3215A6D9E006E4D08 /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
+		CF3D5EF8215A6F3B006E4D08 /* EasterEggButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggButton.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoView.swift; sourceTree = "<group>"; };
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
@@ -1347,6 +1349,7 @@
 			isa = PBXGroup;
 			children = (
 				CF3D5EE0215A6499006E4D08 /* DrumMachine */,
+				CF3D5EF8215A6F3B006E4D08 /* EasterEggButton.swift */,
 			);
 			path = EasterEggs;
 			sourceTree = "<group>";
@@ -1733,6 +1736,7 @@
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
+				CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,
 				55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */,
 				44D912612077AC8A00486848 /* RoundedRectangleView.swift in Sources */,
