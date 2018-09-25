@@ -27,6 +27,8 @@
 		14DC127021593B0000326DC3 /* HorizontalSlideTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC126C21593B0000326DC3 /* HorizontalSlideTransitionDelegate.swift */; };
 		14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC126D21593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift */; };
 		14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC126A21593B0000326DC3 /* HorizontalSlideDemoViewController.swift */; };
+		14EBA258215A633800613E5A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EBA256215A633800613E5A /* LoadingView.swift */; };
+		14EBA25A215A634100613E5A /* LoadingViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EBA255215A633800613E5A /* LoadingViewDemoView.swift */; };
 		14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		431875C1211180F100D71723 /* ReviewProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C0211180F000D71723 /* ReviewProfileCell.swift */; };
 		431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C221118CE200D71723 /* ReviewViewDefaultData.swift */; };
@@ -233,6 +235,8 @@
 		14DC126B21593B0000326DC3 /* HorizontalSlideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSlideController.swift; sourceTree = "<group>"; };
 		14DC126C21593B0000326DC3 /* HorizontalSlideTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSlideTransitionDelegate.swift; sourceTree = "<group>"; };
 		14DC126D21593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSlideTransitionAnimator.swift; sourceTree = "<group>"; };
+		14EBA255215A633800613E5A /* LoadingViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewDemoView.swift; sourceTree = "<group>"; };
+		14EBA256215A633800613E5A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F4F1BD1FD6CEA800E9CECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		431875C0211180F000D71723 /* ReviewProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewProfileCell.swift; sourceTree = "<group>"; };
@@ -499,6 +503,23 @@
 			isa = PBXGroup;
 			children = (
 				14DC126A21593B0000326DC3 /* HorizontalSlideDemoViewController.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		14EBA253215A633800613E5A /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				14EBA254215A633800613E5A /* Demo */,
+				14EBA256215A633800613E5A /* LoadingView.swift */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		14EBA254215A633800613E5A /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				14EBA255215A633800613E5A /* LoadingViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1139,6 +1160,7 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				14EBA253215A633800613E5A /* LoadingView */,
 				44587010213FA344009187BE /* Login */,
 				44587013213FA344009187BE /* Register */,
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
@@ -1595,6 +1617,7 @@
 				43BACE6F21117DD20052114C /* ReviewViewDemoView.swift in Sources */,
 				45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
 				4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */,
+				14EBA25A215A634100613E5A /* LoadingViewDemoView.swift in Sources */,
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
 				4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
@@ -1673,6 +1696,7 @@
 				44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */,
 				44A149EB21377C7B0053D5F7 /* SavedSearchesListViewCell.swift in Sources */,
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
+				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
