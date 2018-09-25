@@ -34,7 +34,7 @@ enum Instrument: String {
         }
     }
 
-    private var sound: SystemSoundID? {
+    var sound: SystemSoundID? {
         let resource = rawValue.lowercased()
         let bundle = Bundle.finniversKit
 
@@ -47,7 +47,7 @@ enum Instrument: String {
         return sound
     }
 
-    private var haptics: SystemSoundID? {
+    var haptics: SystemSoundID? {
         switch self {
         case .kick:
             return SystemSoundID(1520) // 'Pop' feedback (strong boom)
