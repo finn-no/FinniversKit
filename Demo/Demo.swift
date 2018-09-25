@@ -46,6 +46,7 @@ public enum ComponentViews: String {
     case radioButton
     case roundedImageView
     case loadingIndicator
+    case horizontalSlide
 
     public static var all: [ComponentViews] {
         return [
@@ -61,7 +62,8 @@ public enum ComponentViews: String {
             .checkbox,
             .radioButton,
             .roundedImageView,
-            .loadingIndicator
+            .loadingIndicator,
+            .horizontalSlide
         ]
     }
 
@@ -93,6 +95,12 @@ public enum ComponentViews: String {
             return DemoViewController<RoundedImageViewDemoView>()
         case .loadingIndicator:
             return DemoViewController<LoadingIndicatorViewDemoView>()
+        case .horizontalSlide:
+            let presentedViewController = HorizontalSlideDemoViewController()
+            let secondViewController = UINavigationController(rootViewController: presentedViewController)
+            secondViewController.transitioningDelegate = presentedViewController.transitionDelegate
+            secondViewController.modalPresentationStyle = .custom
+            return secondViewController
         }
     }
 }
