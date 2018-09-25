@@ -24,8 +24,8 @@ enum Instrument: String {
         }
     }
 
-    func play(bundle: Bundle = .main) {
-        if let sound = makeSound(bundle: bundle) {
+    func play() {
+        if let sound = sound {
             AudioServicesPlaySystemSound(sound)
         }
 
@@ -34,8 +34,9 @@ enum Instrument: String {
         }
     }
 
-    private func makeSound(bundle: Bundle = .main) -> SystemSoundID? {
+    private var sound: SystemSoundID? {
         let resource = rawValue.lowercased()
+        let bundle = Bundle.finniversKit
 
         guard let soundURL = bundle.url(forResource: resource, withExtension: "wav") else {
             return nil

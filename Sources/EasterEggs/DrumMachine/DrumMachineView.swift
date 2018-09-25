@@ -4,7 +4,7 @@
 
 import UIKit
 
-final class DrumMachineView: UIView {
+public final class DrumMachineView: UIView {
     private let padSpacing: CGFloat = .largeSpacing
     private let cellSpacing: CGFloat = .mediumSpacing
     private let numberOfPads = 16
@@ -60,46 +60,31 @@ final class DrumMachineView: UIView {
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
         setupConstraints()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Setup
-
-    private func setupSubviews() {
-        backgroundColor = .black
-
-        addSubview(selectorView)
-        addSubview(collectionView)
-        addSubview(bpmSlider)
-
-        selectorView.delegate = self
-        bpmSlider.setValue(beatsPerMinute, animated: false)
-        bpmSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
-        collectionView.reloadData()
     }
 
     // MARK: - Actions
 
-    func reset() {
-        endLoop()
+    public func reset() {
+        stop()
         currentPad = 0
         compositions = makeEmptyCompositions()
         collectionView.reloadData()
-        startLoop()
+        start()
     }
 
-    func startLoop() {
+    public func start() {
         timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(update), userInfo: nil, repeats: true)
     }
 
-    func endLoop() {
+    public func stop() {
         timer?.invalidate()
         timer = nil
     }
@@ -135,11 +120,24 @@ final class DrumMachineView: UIView {
 
     @objc private func sliderValueChanged(_ slider: UISlider) {
         beatsPerMinute = slider.value
-        endLoop()
-        startLoop()
+        stop()
+        start()
     }
 
-    // MARK: - Layout
+    // MARK: - Setup
+
+    private func setupSubviews() {
+        backgroundColor = .black
+
+        addSubview(selectorView)
+        addSubview(collectionView)
+        addSubview(bpmSlider)
+
+        selectorView.delegate = self
+        bpmSlider.setValue(beatsPerMinute, animated: false)
+        bpmSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        collectionView.reloadData()
+    }
 
     private func setupConstraints() {
         if #available(iOS 11.0, *) {
@@ -173,11 +171,11 @@ final class DrumMachineView: UIView {
 // MARK: - UICollectionViewDataSource
 
 extension DrumMachineView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfPads
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(DrumPadCollectionViewCell.self, for: indexPath)
         cell.contentView.backgroundColor = instrument.color
         cell.updateOverlayVisibility(isVisible: compositions[instrument]?[indexPath.item] ?? false)
@@ -188,7 +186,7 @@ extension DrumMachineView: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension DrumMachineView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let pad = indexPath.item
         let currentValue = compositions[instrument]?[pad] ?? false
         let newValue = !currentValue
@@ -198,7 +196,7 @@ extension DrumMachineView: UICollectionViewDelegateFlowLayout {
         cell?.updateOverlayVisibility(isVisible: newValue)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = calculateItemMeasurement(for: collectionView.frame.width)
         return CGSize(width: size, height: size)
     }

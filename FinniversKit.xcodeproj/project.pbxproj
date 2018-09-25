@@ -163,6 +163,7 @@
 		CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF2215A6D9E006E4D08 /* kick.wav */; };
 		CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF3215A6D9E006E4D08 /* snare.wav */; };
 		CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EF8215A6F3B006E4D08 /* EasterEggButton.swift */; };
+		CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
@@ -378,6 +379,7 @@
 		CF3D5EF2215A6D9E006E4D08 /* kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kick.wav; sourceTree = "<group>"; };
 		CF3D5EF3215A6D9E006E4D08 /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
 		CF3D5EF8215A6F3B006E4D08 /* EasterEggButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggButton.swift; sourceTree = "<group>"; };
+		CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumMachineDemoView.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoView.swift; sourceTree = "<group>"; };
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
@@ -1357,10 +1359,11 @@
 		CF3D5EE0215A6499006E4D08 /* DrumMachine */ = {
 			isa = PBXGroup;
 			children = (
-				CF3D5EE9215A6723006E4D08 /* DrumPadCollectionViewCell.swift */,
+				CF3D5EFA215A7202006E4D08 /* Demo */,
 				CF3D5EEB215A6741006E4D08 /* DrumMachineView.swift */,
-				CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */,
+				CF3D5EE9215A6723006E4D08 /* DrumPadCollectionViewCell.swift */,
 				CF3D5EE3215A65D7006E4D08 /* Instrument.swift */,
+				CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */,
 			);
 			path = DrumMachine;
 			sourceTree = "<group>";
@@ -1374,6 +1377,14 @@
 				CF3D5EF3215A6D9E006E4D08 /* snare.wav */,
 			);
 			path = DrumSounds;
+			sourceTree = "<group>";
+		};
+		CF3D5EFA215A7202006E4D08 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		DAA9A3A2210214B80021F7DC /* SelectionBoxes */ = {
@@ -1642,6 +1653,7 @@
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
+				CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */,
 				44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */,
 				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
 				14C6F7DA212324D600A7230C /* FavoritesListViewDemoViewHelpers.swift in Sources */,

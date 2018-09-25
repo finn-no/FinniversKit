@@ -4,14 +4,14 @@
 
 import UIKit
 
-final class EasterEggButton: UIButton {
-    override var isHighlighted: Bool {
+public final class EasterEggButton: UIButton {
+    public override var isHighlighted: Bool {
         didSet {
             backgroundColor = isHighlighted ? .ice : .milk
         }
     }
 
-    override var isSelected: Bool {
+    public override var isSelected: Bool {
         didSet {
             backgroundColor = isSelected ? .ice : .milk
         }
@@ -19,18 +19,18 @@ final class EasterEggButton: UIButton {
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupStyles()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Setup
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.height / 2
 
