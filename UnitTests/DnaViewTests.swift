@@ -43,5 +43,3 @@ class DnaViewTests: FBSnapshotTestCase {
         snapshot(.assets)
     }
 }
-
-

@@ -47,6 +47,7 @@ public enum ComponentViews: String {
     case roundedImageView
     case loadingIndicator
     case horizontalSlide
+    case easterEggButton
 
     public static var all: [ComponentViews] {
         return [
@@ -63,7 +64,8 @@ public enum ComponentViews: String {
             .radioButton,
             .roundedImageView,
             .loadingIndicator,
-            .horizontalSlide
+            .horizontalSlide,
+            .easterEggButton
         ]
     }
 
@@ -101,6 +103,8 @@ public enum ComponentViews: String {
             secondViewController.transitioningDelegate = presentedViewController.transitionDelegate
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
+        case .easterEggButton:
+            return DemoViewController<EasterEggButtonDemoView>()
         }
     }
 }
@@ -150,6 +154,7 @@ public enum FullscreenViews: String {
     case reviewView
     case registerView
     case loginView
+    case drumMachine
 
     public static var all: [FullscreenViews] {
         return [
@@ -159,7 +164,8 @@ public enum FullscreenViews: String {
             .reportAdView,
             .reviewView,
             .registerView,
-            .loginView
+            .loginView,
+            .drumMachine
         ]
     }
 
@@ -179,6 +185,8 @@ public enum FullscreenViews: String {
             return DemoViewController<RegisterViewDemoView>()
         case .loginView:
             return DemoViewController<LoginViewDemoView>()
+        case .drumMachine:
+            return DemoViewController<DrumMachineDemoView>()
         }
     }
 }

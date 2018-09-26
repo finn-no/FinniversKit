@@ -82,4 +82,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testHorizontalSlide() {
         snapshot(.horizontalSlide)
     }
+
+    func testEasterEggButton() {
+        snapshot(.easterEggButton)
+    }
 }
