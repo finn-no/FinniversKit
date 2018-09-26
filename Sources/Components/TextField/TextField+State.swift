@@ -12,23 +12,23 @@ public extension TextField {
         case error
         case readOnly
 
-        var underlineHeight: CGFloat {
+        var borderWidth: CGFloat {
             switch self {
             case .normal, .disabled:
-                return 1
+                return 0.5
 
             case .focus, .error:
-                return 2
+                return 1.5
 
             case .readOnly:
                 return 0
             }
         }
 
-        var underlineColor: UIColor {
+        var borderColor: UIColor {
             switch self {
             case .normal:
-                return .stone
+                return .sardine
 
             case .disabled:
                 return .sardine
@@ -44,7 +44,7 @@ public extension TextField {
             }
         }
 
-        var textFieldBackgroundColor: UIColor {
+        var backgroundColor: UIColor {
             switch self {
             case .disabled, .readOnly:
                 return .clear

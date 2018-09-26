@@ -14,6 +14,10 @@ public class TextFieldDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
+        let normalTextField = TextField(inputType: .normal)
+        normalTextField.translatesAutoresizingMaskIntoConstraints = false
+        normalTextField.placeholderText = "Normal"
+
         let emailTextField = TextField(inputType: .email)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.placeholderText = "E-post"
@@ -23,27 +27,34 @@ public class TextFieldDemoView: UIView {
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholderText = "Passord"
 
-        let normalTextField = TextField(inputType: .normal)
-        normalTextField.translatesAutoresizingMaskIntoConstraints = false
-        normalTextField.placeholderText = "Normal"
-
         let normalWithHelpTextTextField = TextField(inputType: .normal)
         normalWithHelpTextTextField.translatesAutoresizingMaskIntoConstraints = false
         normalWithHelpTextTextField.placeholderText = "Hjelpetekst"
         normalWithHelpTextTextField.helpText = "Her er en hjelpetekst"
 
-        let multilineTextField = TextField(inputType: .multiline)
-        multilineTextField.translatesAutoresizingMaskIntoConstraints = false
-        multilineTextField.placeholderText = "Multiline"
+        let disabledTextField = TextField(inputType: .normal)
+        disabledTextField.translatesAutoresizingMaskIntoConstraints = false
+        disabledTextField.placeholderText = "Disabled"
+        disabledTextField.isEnabled = false
+
+        let readOnlyTextField = TextField(state: .readOnly, inputType: .normal)
+        readOnlyTextField.translatesAutoresizingMaskIntoConstraints = false
+        readOnlyTextField.placeholderText = "Read only"
+        readOnlyTextField.text = "Read only text!"
 
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(normalTextField)
-        addSubview(multilineTextField)
         addSubview(normalWithHelpTextTextField)
+        addSubview(disabledTextField)
+        addSubview(readOnlyTextField)
 
         NSLayoutConstraint.activate([
-            emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            normalTextField.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            normalTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            normalTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            emailTextField.topAnchor.constraint(equalTo: normalTextField.bottomAnchor, constant: .mediumLargeSpacing),
             emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -51,17 +62,17 @@ public class TextFieldDemoView: UIView {
             passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            normalTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .mediumLargeSpacing),
-            normalTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            normalTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-
-            normalWithHelpTextTextField.topAnchor.constraint(equalTo: normalTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            normalWithHelpTextTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: .mediumLargeSpacing),
             normalWithHelpTextTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             normalWithHelpTextTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            multilineTextField.topAnchor.constraint(equalTo: normalWithHelpTextTextField.bottomAnchor, constant: .mediumLargeSpacing),
-            multilineTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            multilineTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            disabledTextField.topAnchor.constraint(equalTo: normalWithHelpTextTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            disabledTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            disabledTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            readOnlyTextField.topAnchor.constraint(equalTo: disabledTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            readOnlyTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            readOnlyTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 }
