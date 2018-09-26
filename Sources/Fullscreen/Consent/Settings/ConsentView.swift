@@ -3,16 +3,6 @@
 //
 import UIKit
 
-public struct Section {
-    public var title: String
-    public var items: [ConsentViewCellModel]
-
-    public init(title: String, items: [ConsentViewCellModel]) {
-        self.title = title
-        self.items = items
-    }
-}
-
 public class ConsentView: UITableView {
 
     public override init(frame: CGRect, style: UITableViewStyle) {

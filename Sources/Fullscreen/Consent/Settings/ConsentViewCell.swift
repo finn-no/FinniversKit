@@ -3,10 +3,6 @@
 //
 import UIKit
 
-public enum ConsentCellTag {
-    case detail, consent, action, delete
-}
-
 public enum ConsentState: String {
     case accepted = "På", withdrawn = "Av"
 }
@@ -15,12 +11,12 @@ public struct ConsentViewCellModel {
 
     public let title: String
     public let state: ConsentState?
-    public let tag: ConsentCellTag
+    public let hairLine: Bool
 
-    public init(title: String, state: ConsentState?, tag: ConsentCellTag) {
+    public init(title: String, state: ConsentState? = nil, hairLine: Bool = true) {
         self.title = title
         self.state = state
-        self.tag = tag
+        self.hairLine = hairLine
     }
 }
 
@@ -70,10 +66,6 @@ public class ConsentViewCell: UITableViewCell {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    public func removeHairLine() {
-        hairLine.backgroundColor = .clear
-    }
 }
 
 private extension ConsentViewCell {
@@ -82,6 +74,9 @@ private extension ConsentViewCell {
         guard let model = model else { return }
         titleLabel.text = model.title
         stateLabel.text = model.state?.rawValue
+
+        guard !model.hairLine else { return }
+        hairLine.removeFromSuperview()
     }
 
     func setupSubviews() {

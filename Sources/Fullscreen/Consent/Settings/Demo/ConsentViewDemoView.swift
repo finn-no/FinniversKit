@@ -4,18 +4,23 @@
 //
 import FinniversKit
 
+struct Section {
+    var title: String
+    var items: [ConsentViewCellModel]
+}
+
 class ConsentViewDemoView: UIView {
     
-    let sections = [Section(title: "Varslinger", items: [ConsentViewCellModel(title: "Meldinger", state: nil, tag: .detail),
-                                                         ConsentViewCellModel(title: "Varslinger", state: nil, tag: .detail),
-                                                         ConsentViewCellModel(title: "Prisnedgang på torget", state: nil, tag: .detail)]),
+    let sections = [Section(title: "Varslinger", items: [ConsentViewCellModel(title: "Meldinger"),
+                                                         ConsentViewCellModel(title: "Varslinger"),
+                                                         ConsentViewCellModel(title: "Prisnedgang på torget", hairLine: false)]),
 
-                    Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", state: .withdrawn, tag: .consent),
-                                                         ConsentViewCellModel(title: "Personlin tilpasset FINN", state: .accepted, tag: .consent),
-                                                         ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", state: .accepted, tag: .consent),
-                                                         ConsentViewCellModel(title: "Smart reklame", state: nil, tag: .action),
-                                                         ConsentViewCellModel(title: "Last ned dine data", state: nil, tag: .action),
-                                                         ConsentViewCellModel(title: "Slett meg som bruker", state: nil, tag: .delete)])]
+                    Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", state: .withdrawn),
+                                                         ConsentViewCellModel(title: "Personlin tilpasset FINN", state: .accepted),
+                                                         ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", state: .accepted),
+                                                         ConsentViewCellModel(title: "Smart reklame"),
+                                                         ConsentViewCellModel(title: "Last ned dine data"),
+                                                         ConsentViewCellModel(title: "Slett meg som bruker", hairLine: false)])]
 
     lazy var consentView: ConsentView = {
         let view = ConsentView(frame: .zero, style: .grouped)
@@ -47,7 +52,6 @@ extension ConsentViewDemoView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ConsentViewCell.identifier, for: indexPath) as? ConsentViewCell else { return UITableViewCell() }
         cell.model = sections[indexPath.section].items[indexPath.row]
-        if indexPath.row == sections[indexPath.section].items.count - 1 { cell.removeHairLine() }
         return cell
     }
 }
