@@ -120,7 +120,6 @@ public class WishListViewCell: UITableViewCell {
             priceLabel.leadingAnchor.constraint(equalTo: adImageView.leadingAnchor),
             priceLabel.bottomAnchor.constraint(equalTo: adImageView.bottomAnchor),
             priceLabel.heightAnchor.constraint(equalTo: adImageView.heightAnchor, multiplier: 0.15),
-            priceLabel.widthAnchor.constraint(equalTo: adImageView.widthAnchor, multiplier: 0.25),
             
             statusLabel.trailingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: -.mediumLargeSpacing),
             statusLabel.bottomAnchor.constraint(equalTo: adImageView.bottomAnchor, constant: -.mediumSpacing),
@@ -166,7 +165,7 @@ public class WishListViewCell: UITableViewCell {
     /// The model contains data used to populate the view.
     public var model: WishListViewModel? {
         didSet {
-            priceLabel.text = model?.priceLabel
+            priceLabel.text = String(repeating: " ", count: 2) + "\(model?.priceLabel ?? "")" + String(repeating: " ", count: 2)
             statusLabel.title = model?.statusLabel ?? ""
             recentUpdateLabel.text = model?.recentUpdateLabel
             locationLabel.text = model?.locationLabel

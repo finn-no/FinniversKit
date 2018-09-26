@@ -63,11 +63,11 @@ public struct WishListFactory {
     
     private static var details: [Detail] = {
         return [
-            Detail(priceLabel: "20 500,-", statusLabel: "Aktiv", recentUpdateLabel: "2 timer siden", locationLabel: "Bergen"),
-            Detail(priceLabel: "5000,-", statusLabel: "Inaktiv", recentUpdateLabel: "10 timer siden", locationLabel: "Oslo"),
-            Detail(priceLabel: "3000,-", statusLabel: "Inaktiv", recentUpdateLabel: "15 timer siden", locationLabel: "Trondheim"),
-            Detail(priceLabel: "120,-", statusLabel: "Aktiv", recentUpdateLabel: "48 timer siden", locationLabel: "Akershus"),
-            Detail(priceLabel: "500,-", statusLabel: "Inaktiv", recentUpdateLabel: "1 time siden", locationLabel: "Stavanger")
+            Detail(priceLabel: "0,-", statusLabel: "Aktiv", recentUpdateLabel: "2 uker siden", locationLabel: "Bergen"),
+            Detail(priceLabel: "500 000 000 000,-", statusLabel: "Inaktiv", recentUpdateLabel: "128 uker siden", locationLabel: "Oslo"),
+            Detail(priceLabel: "300,-", statusLabel: "Inaktiv", recentUpdateLabel: "1 timer siden", locationLabel: "Trondheim"),
+            Detail(priceLabel: "12 000 000,-", statusLabel: "Aktiv", recentUpdateLabel: "2 dager siden", locationLabel: "Akershus"),
+            Detail(priceLabel: "500 000,-", statusLabel: "Inaktiv", recentUpdateLabel: "13 timer siden", locationLabel: "Stavanger")
         ]
     }()
     
