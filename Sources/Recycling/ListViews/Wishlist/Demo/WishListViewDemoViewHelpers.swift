@@ -7,17 +7,17 @@ import FinniversKit
 public struct WishList: WishListViewModel {
     public var imagePath: String?
     public var imageSize: CGSize
-    public var leftImageDetail: String
-    public var rightImageDetail: String
-    public var leftSubtitleDetail: String
-    public var rightSubtitleDetail: String
+    public var priceLabel: String
+    public var statusLabel: String
+    public var recentUpdateLabel: String
+    public var locationLabel: String
     public var title: String
     
     public var accessibilityLabel: String {
-        var message = leftImageDetail
-        message += ". " + rightImageDetail
-        message += ". " + leftSubtitleDetail
-        message += ". " + rightSubtitleDetail
+        var message = priceLabel
+        message += ". " + statusLabel
+        message += ". " + recentUpdateLabel
+        message += ". " + locationLabel
         message += ". " + title
         return message
     }
@@ -30,10 +30,10 @@ public struct WishListFactory {
     }
     
     private struct Detail {
-        let leftImageDetail: String
-        let rightImageDetail: String
-        let leftSubtitleDetail: String
-        let rightSubtitleDetail: String
+        let priceLabel: String
+        let statusLabel: String
+        let recentUpdateLabel: String
+        let locationLabel: String
     }
     
     public static func create() -> [WishList] {
@@ -43,7 +43,8 @@ public struct WishListFactory {
             let imageSource = images[index]
             let detail = details[index]
             let title = titles[index]
-            let wish = WishList(imagePath: imageSource.path, imageSize: imageSource.size, leftImageDetail: detail.leftImageDetail, rightImageDetail: detail.rightImageDetail, leftSubtitleDetail: detail.leftSubtitleDetail, rightSubtitleDetail: detail.rightSubtitleDetail, title: title)
+            let wish = WishList(imagePath: imageSource.path, imageSize: imageSource.size, priceLabel: detail.priceLabel, statusLabel: detail.statusLabel,
+                                recentUpdateLabel: detail.recentUpdateLabel, locationLabel: detail.locationLabel, title: title)
             wishlist.append(wish)
         }
         
@@ -62,11 +63,11 @@ public struct WishListFactory {
     
     private static var details: [Detail] = {
         return [
-            Detail(leftImageDetail: "20 500,-", rightImageDetail: "Aktiv", leftSubtitleDetail: "2 timer siden", rightSubtitleDetail: "Bergen"),
-            Detail(leftImageDetail: "5000,-", rightImageDetail: "Inaktiv", leftSubtitleDetail: "10 timer siden", rightSubtitleDetail: "Oslo"),
-            Detail(leftImageDetail: "3000,-", rightImageDetail: "Inaktiv", leftSubtitleDetail: "15 timer siden", rightSubtitleDetail: "Trondheim"),
-            Detail(leftImageDetail: "120,-", rightImageDetail: "Aktiv", leftSubtitleDetail: "48 timer siden", rightSubtitleDetail: "Akershus"),
-            Detail(leftImageDetail: "500,-", rightImageDetail: "Inaktiv", leftSubtitleDetail: "1 time siden", rightSubtitleDetail: "Stavanger")
+            Detail(priceLabel: "20 500,-", statusLabel: "Aktiv", recentUpdateLabel: "2 timer siden", locationLabel: "Bergen"),
+            Detail(priceLabel: "5000,-", statusLabel: "Inaktiv", recentUpdateLabel: "10 timer siden", locationLabel: "Oslo"),
+            Detail(priceLabel: "3000,-", statusLabel: "Inaktiv", recentUpdateLabel: "15 timer siden", locationLabel: "Trondheim"),
+            Detail(priceLabel: "120,-", statusLabel: "Aktiv", recentUpdateLabel: "48 timer siden", locationLabel: "Akershus"),
+            Detail(priceLabel: "500,-", statusLabel: "Inaktiv", recentUpdateLabel: "1 time siden", locationLabel: "Stavanger")
         ]
     }()
     

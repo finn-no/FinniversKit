@@ -92,10 +92,7 @@ extension WishListView: UITableViewDataSource {
         
         cell.loadingColor = color
         cell.dataSource = self
-        
-        if let model = dataSource?.wishListView(self, modelAtIndex: indexPath.row) {
-            cell.model = model
-        }
+        cell.model = dataSource?.wishListView(self, modelAtIndex: indexPath.row)
         
         return cell
     }

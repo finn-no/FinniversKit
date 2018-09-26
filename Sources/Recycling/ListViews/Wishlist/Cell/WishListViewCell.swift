@@ -22,17 +22,18 @@ public class WishListViewCell: UITableViewCell {
     
     private static let layerOpacity: Float = 0.85
     private static let cornerRadius: CGFloat = 8
+    private static let defaultImage: UIImage = UIImage(named: .noImage)
     
     private lazy var adImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = WishListViewCell.cornerRadius
-        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    private lazy var leftImageDetail: Label = {
+    private lazy var priceLabel: Label = {
         let label = Label(style: .title4)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .licorice
@@ -42,15 +43,13 @@ public class WishListViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var rightImageDetail: Label = {
-        let label = Label(style: .title4)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .mint
-        label.textAlignment = .center
-        return label
+    private lazy var statusLabel: RibbonView = {
+        let view = RibbonView(style: .success)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
-    private lazy var leftSubtitleDetail: Label = {
+    private lazy var recentUpdateLabel: Label = {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
@@ -58,7 +57,7 @@ public class WishListViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var rightSubtitleDetail: Label = {
+    private lazy var locationLabel: Label = {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
@@ -67,7 +66,7 @@ public class WishListViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var subtitleContainer: UIStackView = {
+    private lazy var infoContainer: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
@@ -101,12 +100,12 @@ public class WishListViewCell: UITableViewCell {
         selectionStyle = .none
         
         addSubview(adImageView)
-        adImageView.addSubview(leftImageDetail)
-        adImageView.addSubview(rightImageDetail)
+        adImageView.addSubview(priceLabel)
+        adImageView.addSubview(statusLabel)
         
-        addSubview(subtitleContainer)
-        subtitleContainer.addArrangedSubview(leftSubtitleDetail)
-        subtitleContainer.addArrangedSubview(rightSubtitleDetail)
+        addSubview(infoContainer)
+        infoContainer.addArrangedSubview(recentUpdateLabel)
+        infoContainer.addArrangedSubview(locationLabel)
         
         addSubview(titleLabel)
         
@@ -118,50 +117,43 @@ public class WishListViewCell: UITableViewCell {
             adImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75),
             adImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.95),
             
-            leftImageDetail.leadingAnchor.constraint(equalTo: adImageView.leadingAnchor),
-            leftImageDetail.bottomAnchor.constraint(equalTo: adImageView.bottomAnchor),
-            leftImageDetail.heightAnchor.constraint(equalTo: adImageView.heightAnchor, multiplier: 0.15),
-            leftImageDetail.widthAnchor.constraint(equalTo: adImageView.widthAnchor, multiplier: 0.25),
+            priceLabel.leadingAnchor.constraint(equalTo: adImageView.leadingAnchor),
+            priceLabel.bottomAnchor.constraint(equalTo: adImageView.bottomAnchor),
+            priceLabel.heightAnchor.constraint(equalTo: adImageView.heightAnchor, multiplier: 0.15),
+            priceLabel.widthAnchor.constraint(equalTo: adImageView.widthAnchor, multiplier: 0.25),
             
-            rightImageDetail.trailingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: -.mediumLargeSpacing),
-            rightImageDetail.bottomAnchor.constraint(equalTo: adImageView.bottomAnchor, constant: -.mediumSpacing),
-            rightImageDetail.heightAnchor.constraint(equalTo: adImageView.heightAnchor, multiplier: 0.10),
-            rightImageDetail.widthAnchor.constraint(equalTo: adImageView.widthAnchor, multiplier: 0.20),
+            statusLabel.trailingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: -.mediumLargeSpacing),
+            statusLabel.bottomAnchor.constraint(equalTo: adImageView.bottomAnchor, constant: -.mediumSpacing),
+            statusLabel.heightAnchor.constraint(equalTo: adImageView.heightAnchor, multiplier: 0.10),
+            statusLabel.widthAnchor.constraint(equalTo: adImageView.widthAnchor, multiplier: 0.20),
             
-            subtitleContainer.leadingAnchor.constraint(equalTo: adImageView.leadingAnchor),
-            subtitleContainer.trailingAnchor.constraint(equalTo: adImageView.trailingAnchor),
-            subtitleContainer.topAnchor.constraint(equalTo: adImageView.bottomAnchor, constant: .mediumSpacing),
+            infoContainer.leadingAnchor.constraint(equalTo: adImageView.leadingAnchor),
+            infoContainer.trailingAnchor.constraint(equalTo: adImageView.trailingAnchor),
+            infoContainer.topAnchor.constraint(equalTo: adImageView.bottomAnchor, constant: .mediumSpacing),
             
-            titleLabel.leadingAnchor.constraint(equalTo: subtitleContainer.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: subtitleContainer.trailingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: subtitleContainer.bottomAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: infoContainer.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: infoContainer.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: infoContainer.bottomAnchor),
         ])
     }
     
     public override func layoutSubviews() {
-        let roundedCornerLayer = CAShapeLayer()
-        roundedCornerLayer.bounds = rightImageDetail.frame
-        roundedCornerLayer.position = rightImageDetail.center
-        roundedCornerLayer.path = UIBezierPath(roundedRect: rightImageDetail.bounds, cornerRadius: WishListViewCell.cornerRadius).cgPath
-        rightImageDetail.layer.mask = roundedCornerLayer
-        
         let roundedRightCornerLayer = CAShapeLayer()
-        roundedRightCornerLayer.bounds = leftImageDetail.frame
-        roundedRightCornerLayer.position = leftImageDetail.center
-        roundedRightCornerLayer.path = UIBezierPath(roundedRect: leftImageDetail.bounds, byRoundingCorners: [UIRectCorner.topRight],
-                                                    cornerRadii: CGSize(width: WishListViewCell.cornerRadius,
-                                                                        height: WishListViewCell.cornerRadius)).cgPath
-        leftImageDetail.layer.mask = roundedRightCornerLayer
+        roundedRightCornerLayer.bounds = priceLabel.frame
+        roundedRightCornerLayer.position = priceLabel.center
+        roundedRightCornerLayer.path = UIBezierPath(roundedRect: priceLabel.bounds, byRoundingCorners: [UIRectCorner.topRight],
+                                                    cornerRadii: CGSize(width: WishListViewCell.cornerRadius, height: WishListViewCell.cornerRadius)).cgPath
+        priceLabel.layer.mask = roundedRightCornerLayer
     }
     
     // MARK: - Superclass Overrides
     
     override public func prepareForReuse() {
         adImageView.image = nil
-        leftImageDetail.text = ""
-        rightImageDetail.text = ""
-        leftSubtitleDetail.text = ""
-        rightSubtitleDetail.text = ""
+        priceLabel.text = ""
+        statusLabel.title = ""
+        recentUpdateLabel.text = ""
+        locationLabel.text = ""
         titleLabel.text = ""
         
         if let model = model {
@@ -174,13 +166,12 @@ public class WishListViewCell: UITableViewCell {
     /// The model contains data used to populate the view.
     public var model: WishListViewModel? {
         didSet {
-            guard let model = model else { return }
-            leftImageDetail.text = model.leftImageDetail
-            rightImageDetail.text = model.rightImageDetail
-            leftSubtitleDetail.text = model.leftSubtitleDetail
-            rightSubtitleDetail.text = model.rightSubtitleDetail
-            titleLabel.text = model.title
-            accessibilityLabel = model.accessibilityLabel
+            priceLabel.text = model?.priceLabel
+            statusLabel.title = model?.statusLabel ?? ""
+            recentUpdateLabel.text = model?.recentUpdateLabel
+            locationLabel.text = model?.locationLabel
+            titleLabel.text = model?.title
+            accessibilityLabel = model?.accessibilityLabel
         }
     }
     
@@ -188,17 +179,9 @@ public class WishListViewCell: UITableViewCell {
     
     /// Loads the image for the `model` if imagePath is set
     public func loadImage() {
-        if let model = model {
-            loadImage(model: model)
-        }
-    }
-    
-    // MARK: - Private
-    
-    private func loadImage(model: WishListViewModel) {
-        guard let dataSource = dataSource, let _ = model.imagePath else {
+        guard let dataSource = dataSource, let model = model, let _ = model.imagePath else {
             loadingColor = .clear
-            adImageView.image = defaultImage
+            adImageView.image = WishListViewCell.defaultImage
             return
         }
         
@@ -210,12 +193,8 @@ public class WishListViewCell: UITableViewCell {
             if let image = image {
                 self?.adImageView.image = image
             } else {
-                self?.adImageView.image = self?.defaultImage
+                self?.adImageView.image = WishListViewCell.defaultImage
             }
         }
-    }
-    
-    private var defaultImage: UIImage? {
-        return UIImage(named: .noImage)
     }
 }

@@ -25,8 +25,8 @@ public class WishListViewDemoView: UIView {
     
     private func setupView() {
         let view = WishListView(delegate: self, dataSource: self)
-        addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
         view.fillInSuperview()
     }
 }
