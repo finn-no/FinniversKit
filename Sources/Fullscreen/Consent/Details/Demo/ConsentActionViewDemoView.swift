@@ -13,9 +13,6 @@ class ConsentActionViewDemoView: UIView {
         view.text = text
         view.buttonTitle = "Last ned data"
         view.buttonStyle = .callToAction
-        view.action = {
-            print("Nå må jeg laste ned dataen!")
-        }
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

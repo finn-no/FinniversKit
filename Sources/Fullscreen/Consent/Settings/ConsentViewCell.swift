@@ -3,8 +3,8 @@
 //
 import UIKit
 
-public enum ConsentTag {
-    case detail, action
+public enum ConsentCellTag {
+    case detail, consent, action, delete
 }
 
 public enum ConsentState: String {
@@ -15,9 +15,9 @@ public struct ConsentViewCellModel {
 
     public let title: String
     public let state: ConsentState?
-    public let tag: ConsentTag
+    public let tag: ConsentCellTag
 
-    public init(title: String, state: ConsentState?, tag: ConsentTag) {
+    public init(title: String, state: ConsentState?, tag: ConsentCellTag) {
         self.title = title
         self.state = state
         self.tag = tag

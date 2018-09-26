@@ -3,6 +3,22 @@
 //
 import UIKit
 
+public protocol ConsentDetailViewDelegate: class {
+    func consentDetailView(_ consentDetailView: ConsentDetailView, didToggleSwitch position: Bool)
+    func readMoreButtonPressed(in consentDetailView: ConsentDetailView)
+}
+
+public struct ConsentDetailViewModel {
+    public let heading: String
+    public let definition: String
+    public let purpose: String
+
+    public init(heading: String, definition: String, purpose: String) {
+        self.heading = heading
+        self.definition = definition
+        self.purpose = purpose
+    }
+}
 
 public class ConsentDetailView: UIView {
 
@@ -13,6 +29,9 @@ public class ConsentDetailView: UIView {
     public var buttonTitle: String? {
         didSet { button.setTitle(buttonTitle, for: .normal) }
     }
+
+    public var consentName: String?
+    public weak var delegate: ConsentDetailViewDelegate?
 
     lazy var textView: Label = {
         let label = Label(style: .body)
@@ -31,12 +50,14 @@ public class ConsentDetailView: UIView {
     lazy var theSwitch: UISwitch = {
         let view = UISwitch(frame: .zero)
         view.onTintColor = .pea
+        view.addTarget(self, action: #selector(switchDidToogle(sender:)), for: .valueChanged)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     lazy var button: Button = {
         let button = Button(style: .flat)
+        button.addTarget(self, action: #selector(readMoreButtonPressed(sender:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -80,6 +101,13 @@ private extension ConsentDetailView {
         guard let model = model else { return }
         textView.text = model.definition
         switchLabel.text = model.heading
+    }
+
+    @objc func switchDidToogle(sender: UISwitch) {
+        delegate?.consentDetailView(self, didToggleSwitch: sender.isOn)
+    }
+    @objc func readMoreButtonPressed(sender: UIButton) {
+        delegate?.readMoreButtonPressed(in: self)
     }
 
 }

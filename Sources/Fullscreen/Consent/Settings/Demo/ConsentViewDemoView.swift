@@ -10,12 +10,12 @@ class ConsentViewDemoView: UIView {
                                                          ConsentViewCellModel(title: "Varslinger", state: nil, tag: .detail),
                                                          ConsentViewCellModel(title: "Prisnedgang på torget", state: nil, tag: .detail)]),
 
-                    Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", state: .withdrawn, tag: .detail),
-                                                         ConsentViewCellModel(title: "Personlin tilpasset FINN", state: .accepted, tag: .detail),
-                                                         ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", state: .accepted, tag: .detail),
-                                                         ConsentViewCellModel(title: "Smart reklame", state: nil, tag: .detail),
-                                                         ConsentViewCellModel(title: "Last ned dine data", state: nil, tag: .detail),
-                                                         ConsentViewCellModel(title: "Slett meg som bruker", state: nil, tag: .detail)])]
+                    Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", state: .withdrawn, tag: .consent),
+                                                         ConsentViewCellModel(title: "Personlin tilpasset FINN", state: .accepted, tag: .consent),
+                                                         ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", state: .accepted, tag: .consent),
+                                                         ConsentViewCellModel(title: "Smart reklame", state: nil, tag: .action),
+                                                         ConsentViewCellModel(title: "Last ned dine data", state: nil, tag: .action),
+                                                         ConsentViewCellModel(title: "Slett meg som bruker", state: nil, tag: .delete)])]
 
     lazy var consentView: ConsentView = {
         let view = ConsentView(frame: .zero, style: .grouped)
