@@ -5,17 +5,17 @@
 import UIKit
 
 final class DrumPadCollectionViewCell: UICollectionViewCell {
-    private lazy var overlayLayer: CALayer = {
-        let layer = CALayer()
-        layer.backgroundColor = UIColor.init(white: 1, alpha: 0.8).cgColor
-        return layer
+    private lazy var overlayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
+        return view
     }()
 
     // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.layer.addSublayer(overlayLayer)
+        contentView.addSubview(overlayView)
         setupStyles()
     }
 
@@ -28,8 +28,7 @@ final class DrumPadCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layer.cornerRadius = contentView.frame.height / 2
-        overlayLayer.frame = contentView.bounds
-        overlayLayer.cornerRadius = contentView.layer.cornerRadius
+        overlayView.frame = contentView.bounds
     }
 
     // MARK: - Styles
@@ -46,7 +45,7 @@ final class DrumPadCollectionViewCell: UICollectionViewCell {
     }
 
     func updateOverlayVisibility(isVisible: Bool) {
-        overlayLayer.isHidden = !isVisible
+        overlayView.isHidden = !isVisible
     }
 
     private func setupStyles() {

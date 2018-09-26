@@ -49,7 +49,7 @@ public final class DrumMachineView: UIView {
         return layout
     }()
 
-    private lazy var bpmSlider: UISlider = {
+    private lazy var beatsPerMinuteSlider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.minimumValue = 80
@@ -62,8 +62,7 @@ public final class DrumMachineView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSubviews()
-        setupConstraints()
+        setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -111,10 +110,10 @@ public final class DrumMachineView: UIView {
 
     private func makeEmptyCompositions() -> [Instrument: [Bool]] {
         return [
-            .kick: Array(repeating: false, count: self.numberOfPads),
-            .snare: Array(repeating: false, count: self.numberOfPads),
-            .hats: Array(repeating: false, count: self.numberOfPads),
-            .cat: Array(repeating: false, count: self.numberOfPads)
+            .kick: Array(repeating: false, count: numberOfPads),
+            .snare: Array(repeating: false, count: numberOfPads),
+            .hats: Array(repeating: false, count: numberOfPads),
+            .cat: Array(repeating: false, count: numberOfPads)
         ]
     }
 
@@ -126,34 +125,33 @@ public final class DrumMachineView: UIView {
 
     // MARK: - Setup
 
-    private func setupSubviews() {
+    private func setup() {
         backgroundColor = .black
-
         addSubview(selectorView)
         addSubview(collectionView)
-        addSubview(bpmSlider)
+        addSubview(beatsPerMinuteSlider)
 
         selectorView.delegate = self
-        bpmSlider.setValue(beatsPerMinute, animated: false)
-        bpmSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        beatsPerMinuteSlider.setValue(beatsPerMinute, animated: false)
+        beatsPerMinuteSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
         collectionView.reloadData()
-    }
 
-    private func setupConstraints() {
+        let selectorViewHeight: CGFloat = 100
+
         NSLayoutConstraint.activate([
             selectorView.topAnchor.constraint(equalTo: topAnchor),
             selectorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             selectorView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            selectorView.heightAnchor.constraint(equalToConstant: 100),
+            selectorView.heightAnchor.constraint(equalToConstant: selectorViewHeight),
 
             collectionView.topAnchor.constraint(equalTo: selectorView.bottomAnchor, constant: .largeSpacing),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bpmSlider.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: beatsPerMinuteSlider.topAnchor),
 
-            bpmSlider.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: .mediumLargeSpacing),
-            bpmSlider.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: -.mediumLargeSpacing),
-            bpmSlider.bottomAnchor.constraint(equalTo: bottomAnchor)
+            beatsPerMinuteSlider.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: .mediumLargeSpacing),
+            beatsPerMinuteSlider.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: -.mediumLargeSpacing),
+            beatsPerMinuteSlider.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
