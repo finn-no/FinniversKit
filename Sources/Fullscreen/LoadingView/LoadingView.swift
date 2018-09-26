@@ -5,20 +5,24 @@
 import UIKit
 
 public class LoadingView: UIView {
-    lazy var loadingIndicator: LoadingIndicatorView = {
+    private let loadingIndicatorSize: CGFloat = 40
+    private let loadingIndicatorInitialTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+    private static let shared = LoadingView()
+
+    private lazy var loadingIndicator: LoadingIndicatorView = {
         let view = LoadingIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.transform = self.loadingIndicatorInitialTransform
         return view
     }()
 
-    var defaultWindow: UIWindow?
+    private var defaultWindow: UIWindow?
 
     public init(window: UIWindow? = UIApplication.shared.keyWindow) {
         super.init(frame: .zero)
         self.defaultWindow = window
         self.alpha = 0
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         setup()
     }
 
@@ -26,7 +30,19 @@ public class LoadingView: UIView {
         fatalError()
     }
 
-    func setup() {
+    public class func show() {
+        LoadingView.shared.startAnimating()
+    }
+
+    public class func hide() {
+        LoadingView.shared.stopAnimating()
+    }
+}
+
+// MARK: - Private methods
+
+extension LoadingView {
+    private func setup() {
         backgroundColor = UIColor.milk.withAlphaComponent(0.8)
         addSubview(loadingIndicator)
 
@@ -38,17 +54,7 @@ public class LoadingView: UIView {
             ])
     }
 
-    public class func show() {
-        let loadingView = LoadingView()
-        loadingView.startAnimating()
-    }
-
-    public class func hide() {
-        let loadingView = LoadingView()
-        loadingView.stopAnimating()
-    }
-
-    func startAnimating() {
+    private func startAnimating() {
         if superview == nil {
             defaultWindow?.addSubview(self)
             self.fillInSuperview()
@@ -58,15 +64,15 @@ public class LoadingView: UIView {
 
         UIView.animate(withDuration: 0.3) {
             self.alpha = 1
-            self.transform = .identity
+            self.loadingIndicator.transform = .identity
         }
     }
 
-    func stopAnimating() {
+    private func stopAnimating() {
         if defaultWindow != nil {
             UIView.animate(withDuration: 0.3, animations: {
                 self.alpha = 0
-                self.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                self.loadingIndicator.transform = self.loadingIndicatorInitialTransform
             }) { (_) in
                 self.loadingIndicator.stopAnimating()
                 self.removeFromSuperview()

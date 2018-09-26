@@ -166,7 +166,7 @@ public enum FullscreenViews: String {
             .reviewView,
             .registerView,
             .loginView,
-            .loadingView
+            .loadingView,
             .drumMachine
         ]
     }

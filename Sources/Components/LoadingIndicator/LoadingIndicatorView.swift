@@ -3,7 +3,7 @@ import UIKit
 public class LoadingIndicatorView: UIView {
     private var backgroundLayer = CAShapeLayer()
     private var animatedLayer = CAShapeLayer()
-    private var duration: CGFloat = 3
+    private var duration: CGFloat = 2
     private var borderColor: UIColor = .secondaryBlue
     private var backgroundLayerColor: UIColor = .sardine
     private var lineWidth: CGFloat = 4

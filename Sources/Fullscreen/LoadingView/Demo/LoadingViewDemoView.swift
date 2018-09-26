@@ -31,5 +31,9 @@ public class LoadingViewDemoView: UIView {
 
     @objc func startLoadingButtonTapped() {
         LoadingView.show()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            LoadingView.hide()
+        })
     }
 }
