@@ -9,7 +9,7 @@ public class LoadingView: UIView {
     /// Allows the loading view to use a plain UIActivityIndicatorView,
     /// useful for a smooth transition between the old indicator and the new one,
     /// by using this flag we can avoid having multiple styles of showing progress in our app.
-    public static let shouldUseOldIndicator: Bool = true
+    public static let shouldUseOldIndicator: Bool = false
 
     private let animationDuration: TimeInterval = 0.3
     private let loadingIndicatorSize: CGFloat = 40
