@@ -58,8 +58,8 @@ extension LoadingView {
         let view = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : loadingIndicator
         addSubview(view)
         NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 40),
-            view.heightAnchor.constraint(equalToConstant: 40),
+            view.widthAnchor.constraint(equalToConstant: loadingIndicatorSize),
+            view.heightAnchor.constraint(equalToConstant: loadingIndicatorSize),
             view.centerXAnchor.constraint(equalTo: centerXAnchor),
             view.centerYAnchor.constraint(equalTo: centerYAnchor)
             ])
