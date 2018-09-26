@@ -154,6 +154,7 @@
 		B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */; };
 		B01D787D3884A46F34B16C76 /* ReviewTextFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CB20C0311EBE8455109 /* ReviewTextFooter.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
+		CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */; };
 		CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */; };
 		CF3D5EE4215A65D7006E4D08 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE3215A65D7006E4D08 /* Instrument.swift */; };
 		CF3D5EEA215A6723006E4D08 /* DrumPadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE9215A6723006E4D08 /* DrumPadCollectionViewCell.swift */; };
@@ -371,6 +372,7 @@
 		B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
+		CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggButtonDemoView.swift; sourceTree = "<group>"; };
 		CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectorView.swift; sourceTree = "<group>"; };
 		CF3D5EE3215A65D7006E4D08 /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		CF3D5EE9215A6723006E4D08 /* DrumPadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumPadCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -866,7 +868,6 @@
 		4447F6631FDB2B110033DBC1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CF3D5EDF215A6486006E4D08 /* EasterEggs */,
 				44898D591FE5B9C200F6017B /* Extensions */,
 				4447F6B61FDB2B110033DBC1 /* Protocols */,
 				4408A69C2027AC41008C0BD9 /* DNA */,
@@ -884,6 +885,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CF15D9AF215B93B8004F5F02 /* EasterEggButton */,
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
 				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
@@ -1164,6 +1166,7 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44587010213FA344009187BE /* Login */,
 				44587013213FA344009187BE /* Register */,
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
@@ -1350,13 +1353,29 @@
 			path = RoundedImageView;
 			sourceTree = "<group>";
 		};
-		CF3D5EDF215A6486006E4D08 /* EasterEggs */ = {
+		CF15D9AF215B93B8004F5F02 /* EasterEggButton */ = {
+			isa = PBXGroup;
+			children = (
+				CF15D9B1215B9470004F5F02 /* Demo */,
+				CF3D5EF8215A6F3B006E4D08 /* EasterEggButton.swift */,
+			);
+			path = EasterEggButton;
+			sourceTree = "<group>";
+		};
+		CF15D9B0215B9453004F5F02 /* EasterEggs */ = {
 			isa = PBXGroup;
 			children = (
 				CF3D5EE0215A6499006E4D08 /* DrumMachine */,
-				CF3D5EF8215A6F3B006E4D08 /* EasterEggButton.swift */,
 			);
 			path = EasterEggs;
+			sourceTree = "<group>";
+		};
+		CF15D9B1215B9470004F5F02 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		CF3D5EE0215A6499006E4D08 /* DrumMachine */ = {
@@ -1686,6 +1705,7 @@
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
+				CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */,
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
 				44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */,
 				DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */,

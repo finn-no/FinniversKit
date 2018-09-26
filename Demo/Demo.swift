@@ -47,6 +47,7 @@ public enum ComponentViews: String {
     case roundedImageView
     case loadingIndicator
     case horizontalSlide
+    case easterEggButton
 
     public static var all: [ComponentViews] {
         return [
@@ -63,7 +64,8 @@ public enum ComponentViews: String {
             .radioButton,
             .roundedImageView,
             .loadingIndicator,
-            .horizontalSlide
+            .horizontalSlide,
+            .easterEggButton
         ]
     }
 
@@ -101,6 +103,8 @@ public enum ComponentViews: String {
             secondViewController.transitioningDelegate = presentedViewController.transitionDelegate
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
+        case .easterEggButton:
+            return DemoViewController<EasterEggButtonDemoView>()
         }
     }
 }
