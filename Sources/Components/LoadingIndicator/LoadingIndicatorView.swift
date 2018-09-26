@@ -8,6 +8,7 @@ public protocol LoadingViewAnimatable {
 
 extension UIActivityIndicatorView: LoadingViewAnimatable { }
 
+/// Branded replacement for UIActivityIndicatorView.
 public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
     private var backgroundLayer = CAShapeLayer()
     private var animatedLayer = CAShapeLayer()
@@ -43,11 +44,13 @@ public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
         layer.addSublayer(animatedLayer)
     }
 
+    /// Starts the animation of the loading indicator.
     public func startAnimating() {
         animateGroup()
         isHidden = false
     }
 
+    /// Stops the animation of the loading indicator.
     public func stopAnimating() {
         backgroundLayer.removeAllAnimations()
         animatedLayer.removeAllAnimations()

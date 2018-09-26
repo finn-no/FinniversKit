@@ -4,7 +4,11 @@
 
 import UIKit
 
+/// Branded alternative of SVProgressHUD. It's presented on top of the top-most view.
 public class LoadingView: UIView {
+    /// Allows the loading view to use a plain UIActivityIndicatorView,
+    /// useful for a smooth transition between the old indicator and the new one,
+    /// by using this flag we can avoid having multiple styles of showing progress in our app.
     public static let shouldUseOldIndicator: Bool = true
 
     private let animationDuration: TimeInterval = 0.3
@@ -41,10 +45,12 @@ public class LoadingView: UIView {
         fatalError()
     }
 
+    /// Adds a layer on top of the top-most view and starts the animation of the loading indicator.
     public class func show() {
         LoadingView.shared.startAnimating()
     }
 
+    /// Stops the animation of the loading indicator and removes the loading view.
     public class func hide() {
         LoadingView.shared.stopAnimating()
     }
