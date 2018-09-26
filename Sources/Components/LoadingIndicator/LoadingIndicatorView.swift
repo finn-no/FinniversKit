@@ -11,7 +11,7 @@ extension UIActivityIndicatorView: LoadingViewAnimatable { }
 public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
     private var backgroundLayer = CAShapeLayer()
     private var animatedLayer = CAShapeLayer()
-    private var duration: CGFloat = 2
+    private var duration: CGFloat = 2.5
     private var borderColor: UIColor = .secondaryBlue
     private var backgroundLayerColor: UIColor = .sardine
     private var lineWidth: CGFloat = 4
@@ -79,7 +79,7 @@ extension LoadingIndicatorView {
         animation.beginTime = 0
         animation.duration = CFTimeInterval(duration / 2.0)
         animation.fromValue = 0
-        animation.toValue = 0.9
+        animation.toValue = 1
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 
         return animation
