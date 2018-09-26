@@ -1,5 +1,6 @@
 /*
- *  Copyright (c) 2015-present, Facebook, Inc.
+ *  Copyright (c) 2017-2018, Uber Technologies, Inc.
+ *  Copyright (c) 2015-2018, Facebook, Inc.
  *
  *  This source code is licensed under the MIT license found in the
  *  LICENSE file in the root directory of this source tree.
@@ -84,17 +85,15 @@ extern NSString *const FBDiffedImageKey;
 @property (readwrite, nonatomic, copy) NSString *referenceImagesDirectory;
 
 /**
+ The name folder in which the snapshots will be saved for a given test case.
+*/
+@property (readwrite, nonatomic, copy) NSString *folderName;
+
+/**
  @param testClass The subclass of FBSnapshotTestCase that is using this controller.
  @returns An instance of FBSnapshotTestController.
  */
 - (instancetype)initWithTestClass:(Class)testClass;
-
-/**
- Designated initializer.
- @param testName The name of the tests.
- @returns An instance of FBSnapshotTestController.
- */
-- (instancetype)initWithTestName:(NSString *)testName;
 
 /**
  Performs the comparison of the layer.

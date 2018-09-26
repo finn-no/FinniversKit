@@ -21,6 +21,7 @@ NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
 NSString *const FinniversImageAssetclassifieds = @"classifieds";
 NSString *const FinniversImageAssetdistance = @"distance";
 NSString *const FinniversImageAssetdownload = @"download";
+NSString *const FinniversImageAsseteasterEgg = @"easterEgg";
 NSString *const FinniversImageAssetedit = @"edit";
 NSString *const FinniversImageAsseteditBig = @"editBig";
 NSString *const FinniversImageAsseterror = @"error";
