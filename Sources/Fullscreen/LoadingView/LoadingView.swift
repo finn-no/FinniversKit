@@ -5,6 +5,8 @@
 import UIKit
 
 public class LoadingView: UIView {
+    public static let shouldUseOldIndicator: Bool = true
+
     private let loadingIndicatorSize: CGFloat = 40
     private let loadingIndicatorInitialTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     private static let shared = LoadingView()
@@ -12,7 +14,15 @@ public class LoadingView: UIView {
     private lazy var loadingIndicator: LoadingIndicatorView = {
         let view = LoadingIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.transform = self.loadingIndicatorInitialTransform
+        view.transform = loadingIndicatorInitialTransform
+        return view
+    }()
+
+    private lazy var oldLoadingIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.transform = loadingIndicatorInitialTransform
+        view.color = .primaryBlue
         return view
     }()
 
@@ -44,37 +54,39 @@ public class LoadingView: UIView {
 extension LoadingView {
     private func setup() {
         backgroundColor = UIColor.milk.withAlphaComponent(0.8)
-        addSubview(loadingIndicator)
 
+        let view = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : loadingIndicator
+        addSubview(view)
         NSLayoutConstraint.activate([
-            loadingIndicator.widthAnchor.constraint(equalToConstant: 40),
-            loadingIndicator.heightAnchor.constraint(equalToConstant: 40),
-            loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
+            view.widthAnchor.constraint(equalToConstant: 40),
+            view.heightAnchor.constraint(equalToConstant: 40),
+            view.centerXAnchor.constraint(equalTo: centerXAnchor),
+            view.centerYAnchor.constraint(equalTo: centerYAnchor)
             ])
     }
 
     private func startAnimating() {
         if superview == nil {
             defaultWindow?.addSubview(self)
-            self.fillInSuperview()
+            fillInSuperview()
         }
 
-        loadingIndicator.startAnimating()
-
+        var view: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : loadingIndicator
+        view.startAnimating()
         UIView.animate(withDuration: 0.3) {
             self.alpha = 1
-            self.loadingIndicator.transform = .identity
+            view.transform = .identity
         }
     }
 
     private func stopAnimating() {
         if defaultWindow != nil {
+            var view: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : loadingIndicator
             UIView.animate(withDuration: 0.3, animations: {
                 self.alpha = 0
-                self.loadingIndicator.transform = self.loadingIndicatorInitialTransform
+                view.transform = self.loadingIndicatorInitialTransform
             }) { (_) in
-                self.loadingIndicator.stopAnimating()
+                view.stopAnimating()
                 self.removeFromSuperview()
             }
         }
