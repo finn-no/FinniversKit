@@ -7,6 +7,7 @@ import UIKit
 public class LoadingView: UIView {
     public static let shouldUseOldIndicator: Bool = true
 
+    private let animationDuration: TimeInterval = 0.3
     private let loadingIndicatorSize: CGFloat = 40
     private let loadingIndicatorInitialTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     private static let shared = LoadingView()
@@ -73,7 +74,7 @@ extension LoadingView {
 
         var view: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : loadingIndicator
         view.startAnimating()
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: animationDuration) {
             self.alpha = 1
             view.transform = .identity
         }
@@ -82,7 +83,7 @@ extension LoadingView {
     private func stopAnimating() {
         if defaultWindow != nil {
             var view: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : loadingIndicator
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: animationDuration, animations: {
                 self.alpha = 0
                 view.transform = self.loadingIndicatorInitialTransform
             }) { (_) in

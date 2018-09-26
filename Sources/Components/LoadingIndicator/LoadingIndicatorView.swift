@@ -79,7 +79,7 @@ extension LoadingIndicatorView {
         animation.beginTime = 0
         animation.duration = CFTimeInterval(duration / 2.0)
         animation.fromValue = 0
-        animation.toValue = 1
+        animation.toValue = 0.9
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 
         return animation
@@ -101,7 +101,7 @@ extension LoadingIndicatorView {
         animation.fromValue = 0
         animation.toValue = .pi * 2.0
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.repeatCount = Float.infinity
+        animation.repeatCount = .infinity
 
         return animation
     }
@@ -112,7 +112,7 @@ extension LoadingIndicatorView {
         animationGroup.duration = CFTimeInterval(duration)
         animationGroup.fillMode = kCAFillModeBoth
         animationGroup.isRemovedOnCompletion = false
-        animationGroup.repeatCount = Float.infinity
+        animationGroup.repeatCount = .infinity
 
         animatedLayer.add(animationGroup, forKey: "loading")
     }
