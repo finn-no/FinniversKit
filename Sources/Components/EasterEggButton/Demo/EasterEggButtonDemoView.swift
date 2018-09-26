@@ -30,8 +30,8 @@ public class EasterEggButtonDemoView: UIView {
         NSLayoutConstraint.activate([
             easterEggButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             easterEggButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            easterEggButton.widthAnchor.constraint(equalToConstant: 64),
-            easterEggButton.heightAnchor.constraint(equalToConstant: 64)
+            easterEggButton.widthAnchor.constraint(equalToConstant: .veryLargeSpacing),
+            easterEggButton.heightAnchor.constraint(equalToConstant: .veryLargeSpacing)
         ])
     }
 }

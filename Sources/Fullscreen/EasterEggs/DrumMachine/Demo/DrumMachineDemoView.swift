@@ -5,11 +5,7 @@
 import FinniversKit
 
 public class DrumMachineDemoView: UIView {
-    private lazy var drumMachineView: DrumMachineView = {
-        let drumMachineView = DrumMachineView()
-        drumMachineView.translatesAutoresizingMaskIntoConstraints = false
-        return drumMachineView
-    }()
+    private lazy var drumMachineView = DrumMachineView()
 
     // MARK: - Init
 
@@ -37,12 +33,6 @@ public class DrumMachineDemoView: UIView {
 
     private func setup() {
         addSubview(drumMachineView)
-
-        NSLayoutConstraint.activate([
-            drumMachineView.topAnchor.constraint(equalTo: topAnchor),
-            drumMachineView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            drumMachineView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            drumMachineView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
+        drumMachineView.fillInSuperview()
     }
 }
