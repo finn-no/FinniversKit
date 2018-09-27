@@ -11,12 +11,12 @@ public protocol ConsentDetailViewDelegate: class {
 public struct ConsentDetailViewModel {
     public let heading: String
     public let definition: String
-    public let purpose: String
+    public let consentName: String?
 
-    public init(heading: String, definition: String, purpose: String) {
+    public init(heading: String, definition: String, consentName: String? = nil) {
         self.heading = heading
         self.definition = definition
-        self.purpose = purpose
+        self.consentName = consentName
     }
 }
 
@@ -30,7 +30,6 @@ public class ConsentDetailView: UIView {
         didSet { button.setTitle(buttonTitle, for: .normal) }
     }
 
-    public var consentName: String?
     public weak var delegate: ConsentDetailViewDelegate?
 
     lazy var textView: Label = {
@@ -99,7 +98,7 @@ private extension ConsentDetailView {
 
     func set(model: ConsentDetailViewModel?) {
         guard let model = model else { return }
-        textView.text = model.definition
+        textView.attributedText = model.definition.withLineSpacing(4)
         switchLabel.text = model.heading
     }
 

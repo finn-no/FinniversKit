@@ -4,10 +4,6 @@
 
 import UIKit
 
-public protocol ConsentActionViewDelegate: class {
-    func actionButtonPressed(in consentActionView: ConsentActionView)
-}
-
 public class ConsentActionView: UIView {
 
     public var text: String? {
@@ -19,7 +15,7 @@ public class ConsentActionView: UIView {
         didSet { button?.setTitle(buttonTitle, for: .normal) }
     }
 
-    public weak var delegate: ConsentActionViewDelegate?
+    public var action: (() -> Void)?
 
     private lazy var textLabel: Label = {
         let label = Label(style: .body)
@@ -80,7 +76,7 @@ private extension ConsentActionView {
     }
 
     @objc func handleButtonPressed() {
-        delegate?.actionButtonPressed(in: self)
+        action?()
     }
 
 }
