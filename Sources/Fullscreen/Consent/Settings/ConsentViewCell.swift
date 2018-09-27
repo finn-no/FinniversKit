@@ -10,7 +10,7 @@ public enum ConsentState: String {
 public struct ConsentViewCellModel {
 
     public let title: String
-    public let state: ConsentState?
+    public var state: ConsentState?
     public let hairLine: Bool
 
     public init(title: String, state: ConsentState? = nil, hairLine: Bool = true) {
