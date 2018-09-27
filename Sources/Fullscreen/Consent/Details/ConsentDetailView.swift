@@ -32,6 +32,10 @@ public class ConsentDetailView: UIView {
 
     public weak var delegate: ConsentDetailViewDelegate?
 
+    public var state: Bool = false {
+        didSet { theSwitch.setOn(state, animated: false) }
+    }
+
     lazy var textView: Label = {
         let label = Label(style: .body)
         label.textColor = .stone
