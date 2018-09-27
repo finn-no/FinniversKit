@@ -111,7 +111,7 @@ enum FontType: String {
         return font.scaledFont(forTextStyle: .caption1)
     }
 
-    func scaledFont(forTextStyle textStyle: UIFontTextStyle) -> UIFont {
+    func scaledFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
         if #available(iOS 11.0, *) {
             if FinniversKit.isDynamicTypeEnabled {
                 let fontMetrics = UIFontMetrics(forTextStyle: textStyle)

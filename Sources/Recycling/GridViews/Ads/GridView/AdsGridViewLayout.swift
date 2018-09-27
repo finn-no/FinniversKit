@@ -92,7 +92,7 @@ class AdsGridViewLayout: UICollectionViewLayout {
         var yOffset = configuration.topOffset
 
         if let height = delegate.adsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
-            let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: IndexPath(item: 0, section: 0))
+            let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: IndexPath(item: 0, section: 0))
             attributes.frame = CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: height)
             attributesCollection.append(attributes)
 

@@ -36,7 +36,7 @@ class BroadcastItem: UIView {
         textView.isSelectable = true
         textView.isScrollEnabled = false
         textView.textContainerInset = .zero
-        textView.linkTextAttributes = BroadcastItem.Style.linkTextAttributes
+        textView.linkTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(BroadcastItem.Style.linkTextAttributes)
         return textView
     }()
 
@@ -138,4 +138,10 @@ extension BroadcastItem: UITextViewDelegate {
         delegate?.broadcastItem(self, didTapURL: URL)
         return false
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

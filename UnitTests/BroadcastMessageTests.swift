@@ -26,10 +26,10 @@ class BroadcastMessageTests: XCTestCase {
         for location in resultRange.lowerBound ..< resultRange.upperBound {
             let attributes = result.attributes(at: location, longestEffectiveRange: nil, in: resultRange)
             if linkTextRangeInResult.contains(location) {
-                XCTAssertNotNil(attributes[NSAttributedStringKey.link])
-                XCTAssertEqual(attributes[NSAttributedStringKey.link] as? URL, linkURL)
+                XCTAssertNotNil(attributes[NSAttributedString.Key.link])
+                XCTAssertEqual(attributes[NSAttributedString.Key.link] as? URL, linkURL)
             } else {
-                XCTAssertNil(attributes[NSAttributedStringKey.link])
+                XCTAssertNil(attributes[NSAttributedString.Key.link])
             }
         }
     }

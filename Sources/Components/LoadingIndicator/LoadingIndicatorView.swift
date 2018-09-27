@@ -26,14 +26,14 @@ public class LoadingIndicatorView: UIView {
         backgroundLayer.strokeStart = 0
         backgroundLayer.strokeEnd = 1
         backgroundLayer.lineWidth = lineWidth
-        backgroundLayer.lineCap = kCALineCapRound
+        backgroundLayer.lineCap = CAShapeLayerLineCap.round
 
         animatedLayer.fillColor = UIColor.clear.cgColor
         animatedLayer.strokeColor = borderColor.cgColor
         animatedLayer.strokeStart = 0
         animatedLayer.strokeEnd = 1
         animatedLayer.lineWidth = lineWidth
-        animatedLayer.lineCap = kCALineCapRound
+        animatedLayer.lineCap = CAShapeLayerLineCap.round
     }
 
     public override func layoutSubviews() {
@@ -59,7 +59,7 @@ public class LoadingIndicatorView: UIView {
         animation.duration = CFTimeInterval(duration / 2.0)
         animation.fromValue = 0
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 
         return animation
     }
@@ -70,7 +70,7 @@ public class LoadingIndicatorView: UIView {
         animation.duration = CFTimeInterval(duration / 2.0)
         animation.fromValue = 0
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 
         return animation
     }
@@ -79,7 +79,7 @@ public class LoadingIndicatorView: UIView {
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
         animation.fromValue = 0
         animation.toValue = .pi * 2.0
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         animation.repeatCount = Float.infinity
 
         return animation
@@ -89,7 +89,7 @@ public class LoadingIndicatorView: UIView {
         let animationGroup = CAAnimationGroup()
         animationGroup.animations = [animateStrokeEnd(), animateStrokeStart(), animateRotation()]
         animationGroup.duration = CFTimeInterval(duration)
-        animationGroup.fillMode = kCAFillModeBoth
+        animationGroup.fillMode = CAMediaTimingFillMode.both
         animationGroup.isRemovedOnCompletion = false
         animationGroup.repeatCount = Float.infinity
 

@@ -43,7 +43,7 @@ public class ToastView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.primaryBlue, for: .normal)
         button.layer.masksToBounds = true
-        button.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: UILayoutConstraintAxis.horizontal)
+        button.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: NSLayoutConstraint.Axis.horizontal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
