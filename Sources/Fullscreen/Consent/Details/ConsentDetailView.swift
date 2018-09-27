@@ -11,12 +11,12 @@ public protocol ConsentDetailViewDelegate: class {
 public struct ConsentDetailViewModel {
     public let heading: String
     public let definition: String
-    public let consentName: String?
+    public let indexPath: IndexPath
 
-    public init(heading: String, definition: String, consentName: String? = nil) {
+    public init(heading: String, definition: String, indexPath: IndexPath) {
         self.heading = heading
         self.definition = definition
-        self.consentName = consentName
+        self.indexPath = indexPath
     }
 }
 
@@ -31,7 +31,6 @@ public class ConsentDetailView: UIView {
     }
 
     public weak var delegate: ConsentDetailViewDelegate?
-
     public var state: Bool = false {
         didSet { theSwitch.setOn(state, animated: false) }
     }
