@@ -11,19 +11,18 @@ struct Section {
 
 class ConsentViewDemoView: UIView {
     
-    let sections = [Section(title: "Varslinger", items: [ConsentViewCellModel(title: "Meldinger"),
-                                                         ConsentViewCellModel(title: "Varslinger"),
-                                                         ConsentViewCellModel(title: "Prisnedgang på torget", hairLine: false)]),
+    private let sections = [Section(title: "Varslinger", items: [ConsentViewCellModel(title: "Prisnedgang på torget", hairLine: false)]),
 
-                    Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", state: .withdrawn),
-                                                         ConsentViewCellModel(title: "Personlin tilpasset FINN", state: .accepted),
-                                                         ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", state: .accepted),
-                                                         ConsentViewCellModel(title: "Smart reklame"),
-                                                         ConsentViewCellModel(title: "Last ned dine data"),
-                                                         ConsentViewCellModel(title: "Slett meg som bruker", hairLine: false)])]
+                            Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", state: .withdrawn),
+                                                                 ConsentViewCellModel(title: "Personlin tilpasset FINN", state: .accepted),
+                                                                 ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", state: .accepted),
+                                                                 ConsentViewCellModel(title: "Smart reklame"),
+                                                                 ConsentViewCellModel(title: "Last ned dine data"),
+                                                                 ConsentViewCellModel(title: "Slett meg som bruker", hairLine: false)])]
 
-    lazy var consentView: ConsentView = {
+    private lazy var consentView: ConsentView = {
         let view = ConsentView(frame: .zero, style: .grouped)
+        view.contentInset = UIEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
         view.dataSource = self
         view.delegate = self
         return view
@@ -50,7 +49,7 @@ extension ConsentViewDemoView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ConsentViewCell.identifier, for: indexPath) as? ConsentViewCell else { return UITableViewCell() }
+        let cell = tableView.dequeue(ConsentViewCell.self, for: indexPath)
         cell.model = sections[indexPath.section].items[indexPath.row]
         return cell
     }

@@ -9,12 +9,12 @@ public protocol ConsentDetailViewDelegate: class {
 }
 
 public struct ConsentDetailViewModel {
-    public let heading: String
+    public let switchTitle: String
     public let definition: String
     public let indexPath: IndexPath
 
     public init(heading: String, definition: String, indexPath: IndexPath) {
-        self.heading = heading
+        self.switchTitle = heading
         self.definition = definition
         self.indexPath = indexPath
     }
@@ -22,20 +22,9 @@ public struct ConsentDetailViewModel {
 
 public class ConsentDetailView: UIView {
 
-    public var model: ConsentDetailViewModel? {
-        didSet { set(model: model) }
-    }
+    // MARK: - Private properties
 
-    public var buttonTitle: String? {
-        didSet { button.setTitle(buttonTitle, for: .normal) }
-    }
-
-    public weak var delegate: ConsentDetailViewDelegate?
-    public var state: Bool = false {
-        didSet { theSwitch.setOn(state, animated: false) }
-    }
-
-    lazy var textView: Label = {
+    private lazy var textView: Label = {
         let label = Label(style: .body)
         label.textColor = .stone
         label.numberOfLines = 0
@@ -43,13 +32,13 @@ public class ConsentDetailView: UIView {
         return label
     }()
 
-    lazy var switchLabel: Label = {
+    private lazy var switchLabel: Label = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    lazy var theSwitch: UISwitch = {
+    private lazy var theSwitch: UISwitch = {
         let view = UISwitch(frame: .zero)
         view.onTintColor = .pea
         view.addTarget(self, action: #selector(switchDidToogle(sender:)), for: .valueChanged)
@@ -57,12 +46,30 @@ public class ConsentDetailView: UIView {
         return view
     }()
 
-    lazy var button: Button = {
+    private lazy var readMoreButton: Button = {
         let button = Button(style: .flat)
         button.addTarget(self, action: #selector(readMoreButtonPressed(sender:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
+    // MARK: - Public properties
+
+    public var model: ConsentDetailViewModel? {
+        didSet { set(model: model) }
+    }
+
+    public var buttonTitle: String? {
+        didSet { readMoreButton.setTitle(buttonTitle, for: .normal) }
+    }
+
+    public weak var delegate: ConsentDetailViewDelegate?
+
+    public var state: Bool = false {
+        didSet { theSwitch.setOn(state, animated: false) }
+    }
+
+    // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,12 +82,14 @@ public class ConsentDetailView: UIView {
 
 }
 
+// MARK: - Private functions
+
 private extension ConsentDetailView {
     func setupSubviews() {
         addSubview(textView)
         addSubview(switchLabel)
         addSubview(theSwitch)
-        addSubview(button)
+        addSubview(readMoreButton)
 
         let constraints = [
             switchLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
@@ -93,16 +102,16 @@ private extension ConsentDetailView {
             textView.topAnchor.constraint(equalTo: switchLabel.bottomAnchor, constant: .largeSpacing),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            button.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing + .smallSpacing)
+            readMoreButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            readMoreButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing + .smallSpacing)
         ]
         NSLayoutConstraint.activate(constraints)
     }
 
     func set(model: ConsentDetailViewModel?) {
         guard let model = model else { return }
-        textView.attributedText = model.definition.withLineSpacing(4)
-        switchLabel.text = model.heading
+        textView.attributedText = model.definition.attributedStringWithLineSpacing(4)
+        switchLabel.text = model.switchTitle
     }
 
     @objc func switchDidToogle(sender: UISwitch) {

@@ -6,16 +6,7 @@ import UIKit
 
 public class ConsentActionView: UIView {
 
-    public var text: String? {
-        get { return textLabel.attributedText?.string }
-        set { textLabel.attributedText = newValue?.withLineSpacing(4) }
-    }
-
-    public var buttonTitle: String? {
-        didSet { button?.setTitle(buttonTitle, for: .normal) }
-    }
-
-    public var action: (() -> Void)?
+    // MARK: - Private properties
 
     private lazy var textLabel: Label = {
         let label = Label(style: .body)
@@ -26,10 +17,26 @@ public class ConsentActionView: UIView {
     }()
 
     private var button: Button?
+
+    // MARK: - Public properties
+
     public var buttonStyle: Button.Style? {
         get { return button?.style }
         set { button = createButton(with: newValue) }
     }
+
+    public var text: String? {
+        get { return textLabel.attributedText?.string }
+        set { textLabel.attributedText = newValue?.attributedStringWithLineSpacing(4) }
+    }
+
+    public var buttonTitle: String? {
+        didSet { button?.setTitle(buttonTitle, for: .normal) }
+    }
+
+    public var action: (() -> Void)?
+
+    // MARK: - Setup
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,6 +47,8 @@ public class ConsentActionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Private functions
 
 private extension ConsentActionView {
 

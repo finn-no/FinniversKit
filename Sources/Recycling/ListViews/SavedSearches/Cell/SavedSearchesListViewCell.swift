@@ -37,7 +37,7 @@ import UIKit
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: FinniversImageAsset.settings), for: .normal)
-        button.addTarget(self, action: #selector(showSettings(button:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showSettings(readMoreButton:)), for: .touchUpInside)
         button.isAccessibilityElement = true
 
         return button

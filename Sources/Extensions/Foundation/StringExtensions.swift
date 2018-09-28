@@ -19,7 +19,7 @@ public extension String {
         return ceil(boundingBox.width)
     }
 
-    func withLineSpacing(_ space: CGFloat) -> NSAttributedString {
+    func attributedStringWithLineSpacing(_ space: CGFloat) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = space
 

@@ -4,7 +4,7 @@
 import UIKit
 
 public enum ConsentState: String {
-    case accepted = "På", withdrawn = "Av"
+    case accepted, withdrawn
 }
 
 public struct ConsentViewCellModel {
@@ -21,30 +21,30 @@ public struct ConsentViewCellModel {
 }
 
 public class ConsentViewCell: UITableViewCell {
-    static public let identifier = "consent-cell"
+    public static var reuseIdentifier = "consent-cell"
 
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = Label(style: .body)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    lazy var stateLabel: UILabel = {
+    private lazy var stateLabel: UILabel = {
         let label = Label(style: .body)
         label.textColor = .stone
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    lazy var arrowView: UIImageView = {
+    private lazy var arrowView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate))
         imageView.tintColor = .sardine
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    lazy var hairLine: UIView = {
+    private lazy var hairLine: UIView = {
         let line = UIView(frame: .zero)
         line.backgroundColor = .sardine
         line.translatesAutoresizingMaskIntoConstraints = false
