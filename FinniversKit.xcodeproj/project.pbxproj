@@ -171,6 +171,8 @@
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
+		DA9BF913215E66640072584C /* ConsentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF912215E66640072584C /* ConsentDetailViewModel.swift */; };
+		DA9BF915215E66980072584C /* ConsentViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF914215E66980072584C /* ConsentViewCellModel.swift */; };
 		DAA14BC3211475CA00F47E8C /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
@@ -396,6 +398,8 @@
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		DA9BF912215E66640072584C /* ConsentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentDetailViewModel.swift; sourceTree = "<group>"; };
+		DA9BF914215E66980072584C /* ConsentViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewCellModel.swift; sourceTree = "<group>"; };
 		DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
@@ -1440,6 +1444,15 @@
 			path = DrumMachine;
 			sourceTree = "<group>";
 		};
+		DA9BF911215E66440072584C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA9BF912215E66640072584C /* ConsentDetailViewModel.swift */,
+				DA9BF914215E66980072584C /* ConsentViewCellModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DAA9A3A2210214B80021F7DC /* SelectionBoxes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1465,6 +1478,7 @@
 		DAC7DCA021538511004602A3 /* Consent */ = {
 			isa = PBXGroup;
 			children = (
+				DA9BF911215E66440072584C /* Models */,
 				DAC7DCA221538538004602A3 /* Details */,
 				DAC7DCA12153852D004602A3 /* Settings */,
 			);
@@ -1819,6 +1833,7 @@
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
+				DA9BF913215E66640072584C /* ConsentDetailViewModel.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */,
 				444246012137D60400D42AB8 /* FavoriteFoldersListViewCell.swift in Sources */,
 				DAC7DCAA21538608004602A3 /* ConsentView.swift in Sources */,
@@ -1895,6 +1910,7 @@
 				43BACE6C21117D530052114C /* ReviewViewModel.swift in Sources */,
 				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
+				DA9BF915215E66980072584C /* ConsentViewCellModel.swift in Sources */,
 				B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */,
 				CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */,
 				B01D787D3884A46F34B16C76 /* ReviewTextFooter.swift in Sources */,

@@ -3,55 +3,52 @@
 //
 import UIKit
 
-public struct ConsentViewCellModel {
-
-    public let title: String
-    public var stateText: String?
-    public let hairLine: Bool
-
-    public init(title: String, stateText: String? = nil, hairLine: Bool = true) {
-        self.title = title
-        self.stateText = stateText
-        self.hairLine = hairLine
-    }
-}
-
 public class ConsentViewCell: UITableViewCell {
-    public static var reuseIdentifier = "consent-cell"
+
+    // MARK: - Private properties
 
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .body)
-        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
     private lazy var stateLabel: UILabel = {
         let label = Label(style: .body)
-        label.textColor = .stone
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .stone
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return label
     }()
 
     private lazy var arrowView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate))
-        imageView.tintColor = .sardine
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .sardine
+        imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return imageView
     }()
 
     private lazy var hairLine: UIView = {
         let line = UIView(frame: .zero)
-        line.backgroundColor = .sardine
         line.translatesAutoresizingMaskIntoConstraints = false
+        line.backgroundColor = .sardine
         return line
     }()
+
+    // MARK: - Public properties
+
+    public static var reuseIdentifier = "consent-cell"
 
     public var model: ConsentViewCellModel? {
         didSet { set(model: model) }
     }
 
     public var labelInset: CGFloat = 14
+
+    // MARK: - Setup
 
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -63,6 +60,8 @@ public class ConsentViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - Private methods
 
 private extension ConsentViewCell {
 
@@ -81,7 +80,7 @@ private extension ConsentViewCell {
         contentView.addSubview(arrowView)
         contentView.addSubview(hairLine)
 
-        let constraints = [
+        NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: labelInset),
             titleLabel.trailingAnchor.constraint(equalTo: stateLabel.leadingAnchor, constant: -.smallSpacing),
@@ -98,8 +97,6 @@ private extension ConsentViewCell {
             hairLine.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
             contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: labelInset)
-        ]
-
-        NSLayoutConstraint.activate(constraints)
+        ])
     }
 }

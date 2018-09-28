@@ -8,18 +8,6 @@ public protocol ConsentDetailViewDelegate: class {
     func readMoreButtonPressed(in consentDetailView: ConsentDetailView)
 }
 
-public struct ConsentDetailViewModel {
-    public let switchTitle: String
-    public let definition: String
-    public let indexPath: IndexPath
-
-    public init(heading: String, definition: String, indexPath: IndexPath) {
-        self.switchTitle = heading
-        self.definition = definition
-        self.indexPath = indexPath
-    }
-}
-
 public class ConsentDetailView: UIView {
 
     // MARK: - Private properties
@@ -34,6 +22,7 @@ public class ConsentDetailView: UIView {
 
     private lazy var switchLabel: Label = {
         let label = Label(style: .body)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -51,6 +40,13 @@ public class ConsentDetailView: UIView {
         button.addTarget(self, action: #selector(readMoreButtonPressed(sender:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+
+    private lazy var scrollView: UIScrollView = {
+        let scroll = UIScrollView(frame: .zero)
+        scroll.alwaysBounceVertical = true
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        return scroll
     }()
 
     // MARK: - Public properties
@@ -86,26 +82,34 @@ public class ConsentDetailView: UIView {
 
 private extension ConsentDetailView {
     func setupSubviews() {
-        addSubview(textView)
-        addSubview(switchLabel)
-        addSubview(theSwitch)
-        addSubview(readMoreButton)
+        addSubview(scrollView)
+        scrollView.addSubview(textView)
+        scrollView.addSubview(switchLabel)
+        scrollView.addSubview(theSwitch)
+        scrollView.addSubview(readMoreButton)
 
-        let constraints = [
-            switchLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            switchLabel.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
+        NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.widthAnchor.constraint(equalTo: widthAnchor),
+            scrollView.heightAnchor.constraint(equalTo: heightAnchor),
+
+            switchLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .mediumLargeSpacing),
+            switchLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .largeSpacing),
+            switchLabel.trailingAnchor.constraint(lessThanOrEqualTo: theSwitch.leadingAnchor, constant: .mediumSpacing),
 
             theSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             theSwitch.centerYAnchor.constraint(equalTo: switchLabel.centerYAnchor),
 
-            textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            textView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .mediumLargeSpacing),
             textView.topAnchor.constraint(equalTo: switchLabel.bottomAnchor, constant: .largeSpacing),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            readMoreButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            readMoreButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing + .smallSpacing)
-        ]
-        NSLayoutConstraint.activate(constraints)
+            readMoreButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
+            readMoreButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing + .smallSpacing),
+
+            scrollView.bottomAnchor.constraint(equalTo: readMoreButton.bottomAnchor, constant: .mediumLargeSpacing)
+        ])
     }
 
     func set(model: ConsentDetailViewModel?) {

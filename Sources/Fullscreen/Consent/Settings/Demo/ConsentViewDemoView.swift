@@ -22,7 +22,8 @@ class ConsentViewDemoView: UIView {
 
     private lazy var consentView: ConsentView = {
         let view = ConsentView(frame: .zero, style: .grouped)
-        view.contentInset = UIEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentInset = UIEdgeInsets(top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0)
         view.dataSource = self
         view.delegate = self
         return view

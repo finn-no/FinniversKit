@@ -9,9 +9,9 @@ class ConsentDetailViewDemoView: UIView {
 
     private lazy var consentDetailView: ConsentDetailView = {
         let view = ConsentDetailView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.model = detailModel
         view.buttonTitle = "Les mer"
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 

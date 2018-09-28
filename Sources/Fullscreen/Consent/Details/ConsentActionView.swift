@@ -10,13 +10,20 @@ public class ConsentActionView: UIView {
 
     private lazy var textLabel: Label = {
         let label = Label(style: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .stone
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private var button: Button?
+
+    private lazy var scrollView: UIScrollView = {
+        let scroll = UIScrollView(frame: .zero)
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.alwaysBounceVertical = true
+        return scroll
+    }()
 
     // MARK: - Public properties
 
@@ -62,12 +69,13 @@ private extension ConsentActionView {
         newButton.setTitle(buttonTitle, for: .normal)
         newButton.addTarget(self, action: #selector(handleButtonPressed), for: .touchUpInside)
         newButton.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(newButton)
+        scrollView.addSubview(newButton)
 
         let constraints = [
             newButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             newButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             newButton.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: .largeSpacing),
+            scrollView.bottomAnchor.constraint(equalTo: newButton.bottomAnchor, constant: .mediumLargeSpacing)
         ]
         NSLayoutConstraint.activate(constraints)
 
@@ -75,13 +83,20 @@ private extension ConsentActionView {
     }
 
     func setupSubviews() {
-        addSubview(textLabel)
-        let constraints = [
+        addSubview(scrollView)
+        scrollView.addSubview(textLabel)
+        NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.widthAnchor.constraint(equalTo: widthAnchor),
+            scrollView.heightAnchor.constraint(equalTo: heightAnchor),
+
             textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            textLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .mediumLargeSpacing),
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-        ]
-        NSLayoutConstraint.activate(constraints)
+
+            scrollView.bottomAnchor.constraint(greaterThanOrEqualTo: textLabel.bottomAnchor, constant: .mediumLargeSpacing)
+        ])
     }
 
     @objc func handleButtonPressed() {

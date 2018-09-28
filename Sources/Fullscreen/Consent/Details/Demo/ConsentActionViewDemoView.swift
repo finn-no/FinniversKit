@@ -10,10 +10,10 @@ class ConsentActionViewDemoView: UIView {
 
     private lazy var consentActionView: ConsentActionView = {
         let view = ConsentActionView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.text = text
         view.buttonTitle = "Last ned data"
         view.buttonStyle = .callToAction
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
