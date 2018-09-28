@@ -123,8 +123,6 @@ public class WishListViewCell: UITableViewCell {
             
             statusLabel.trailingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: -.mediumLargeSpacing),
             statusLabel.bottomAnchor.constraint(equalTo: adImageView.bottomAnchor, constant: -.mediumSpacing),
-            statusLabel.heightAnchor.constraint(equalTo: adImageView.heightAnchor, multiplier: 0.10),
-            statusLabel.widthAnchor.constraint(equalTo: adImageView.widthAnchor, multiplier: 0.20),
             
             infoContainer.leadingAnchor.constraint(equalTo: adImageView.leadingAnchor),
             infoContainer.trailingAnchor.constraint(equalTo: adImageView.trailingAnchor),
