@@ -13,116 +13,52 @@ public class SpacingDemoView: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
+    func makeLabel(text: String) -> Label {
+        let label = Label(style: .title4)
+        label.text = text
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .licorice
+        label.textColor = .milk
+        label.textAlignment = .center
+        return label
+    }
+
     private func setup() {
-        let normalButton = Button(style: .default)
-        let callToActionButton = Button(style: .callToAction)
-        let destructiveButton = Button(style: .destructive)
-        let flatButton = Button(style: .flat)
-        let linkButton = Button(style: .link)
+        let verySmallSpacingView = makeLabel(text: "👈        verySmallSpacing        👉")
+        addSubview(verySmallSpacingView)
 
-        let button1 = Button(style: .callToAction)
-        let button2 = Button(style: .default)
+        let smallSpacingView = makeLabel(text: "👈        smallSpacing        👉")
+        addSubview(smallSpacingView)
 
-        let disabledNormalButton = Button(style: .default)
-        let disabledCallToActionButton = Button(style: .callToAction)
-        let disabledDestructiveButton = Button(style: .destructive)
-        let disabledFlatButton = Button(style: .flat)
-        let disabledLinkButton = Button(style: .link)
+        let mediumSpacingView = makeLabel(text: "👈        mediumSpacing        👉")
+        addSubview(mediumSpacingView)
 
-        normalButton.setTitle("Default button", for: .normal)
-        callToActionButton.setTitle("Call to action button", for: .normal)
-        destructiveButton.setTitle("Destructive button", for: .normal)
-        flatButton.setTitle("Flat button", for: .normal)
-        linkButton.setTitle("Link button", for: .normal)
+        let largeSpacingView = makeLabel(text: "👈        largeSpacing        👉")
+        addSubview(largeSpacingView)
 
-        button1.setTitle("Left button", for: .normal)
-        button2.setTitle("Right button", for: .normal)
-
-        disabledNormalButton.setTitle("Disabled default button", for: .normal)
-        disabledCallToActionButton.setTitle("Disabled call to action button", for: .normal)
-        disabledDestructiveButton.setTitle("Disabled destructive button", for: .normal)
-        disabledFlatButton.setTitle("Disabled flat button", for: .normal)
-        disabledLinkButton.setTitle("Disabled link button", for: .normal)
-
-        disabledNormalButton.isEnabled = false
-        disabledCallToActionButton.isEnabled = false
-        disabledDestructiveButton.isEnabled = false
-        disabledFlatButton.isEnabled = false
-        disabledLinkButton.isEnabled = false
-
-        normalButton.translatesAutoresizingMaskIntoConstraints = false
-        callToActionButton.translatesAutoresizingMaskIntoConstraints = false
-        destructiveButton.translatesAutoresizingMaskIntoConstraints = false
-        flatButton.translatesAutoresizingMaskIntoConstraints = false
-        linkButton.translatesAutoresizingMaskIntoConstraints = false
-
-        button1.translatesAutoresizingMaskIntoConstraints = false
-        button2.translatesAutoresizingMaskIntoConstraints = false
-
-        disabledNormalButton.translatesAutoresizingMaskIntoConstraints = false
-        disabledCallToActionButton.translatesAutoresizingMaskIntoConstraints = false
-        disabledDestructiveButton.translatesAutoresizingMaskIntoConstraints = false
-        disabledFlatButton.translatesAutoresizingMaskIntoConstraints = false
-        disabledLinkButton.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(normalButton)
-        addSubview(callToActionButton)
-        addSubview(destructiveButton)
-        addSubview(flatButton)
-        addSubview(linkButton)
-
-        addSubview(button1)
-        addSubview(button2)
-
-        addSubview(disabledNormalButton)
-        addSubview(disabledCallToActionButton)
-        addSubview(disabledDestructiveButton)
-        addSubview(disabledFlatButton)
-        addSubview(disabledLinkButton)
+        let veryLargeSpacingView = makeLabel(text: "👈        veryLargeSpacing        👉")
+        addSubview(veryLargeSpacingView)
 
         NSLayoutConstraint.activate([
-            normalButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            normalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            normalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            verySmallSpacingView.topAnchor.constraint(equalTo: topAnchor, constant: .veryLargeSpacing),
+            verySmallSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .verySmallSpacing),
+            verySmallSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.verySmallSpacing),
 
-            callToActionButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .mediumLargeSpacing),
-            callToActionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            callToActionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            smallSpacingView.topAnchor.constraint(equalTo: verySmallSpacingView.bottomAnchor, constant: .veryLargeSpacing),
+            smallSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
+            smallSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
 
-            destructiveButton.topAnchor.constraint(equalTo: callToActionButton.bottomAnchor, constant: .mediumLargeSpacing),
-            destructiveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            destructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            mediumSpacingView.topAnchor.constraint(equalTo: smallSpacingView.bottomAnchor, constant: .veryLargeSpacing),
+            mediumSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            mediumSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
 
-            flatButton.topAnchor.constraint(equalTo: destructiveButton.bottomAnchor, constant: .mediumLargeSpacing),
-            flatButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            largeSpacingView.topAnchor.constraint(equalTo: mediumSpacingView.bottomAnchor, constant: .veryLargeSpacing),
+            largeSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            largeSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
-            linkButton.topAnchor.constraint(equalTo: flatButton.bottomAnchor, constant: .mediumLargeSpacing),
-            linkButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-
-            button1.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .mediumLargeSpacing),
-            button1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            button1.trailingAnchor.constraint(lessThanOrEqualTo: button2.leadingAnchor),
-
-            button2.topAnchor.constraint(equalTo: button1.topAnchor),
-            button2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
-
-            disabledNormalButton.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledNormalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            disabledNormalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
-
-            disabledCallToActionButton.topAnchor.constraint(equalTo: disabledNormalButton.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledCallToActionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            disabledCallToActionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
-
-            disabledDestructiveButton.topAnchor.constraint(equalTo: disabledCallToActionButton.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledDestructiveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            disabledDestructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
-
-            disabledFlatButton.topAnchor.constraint(equalTo: disabledDestructiveButton.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledFlatButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-
-            disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledLinkButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-        ])
+            veryLargeSpacingView.topAnchor.constraint(equalTo: largeSpacingView.bottomAnchor, constant: .veryLargeSpacing),
+            veryLargeSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .veryLargeSpacing),
+            veryLargeSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.veryLargeSpacing),
+            ])
     }
 }

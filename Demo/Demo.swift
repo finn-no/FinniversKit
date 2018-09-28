@@ -45,6 +45,9 @@ public enum ComponentViews: String {
     case checkbox
     case radioButton
     case roundedImageView
+    case loadingIndicator
+    case horizontalSlide
+    case easterEggButton
 
     public static var all: [ComponentViews] {
         return [
@@ -60,6 +63,9 @@ public enum ComponentViews: String {
             .checkbox,
             .radioButton,
             .roundedImageView,
+            .loadingIndicator,
+            .horizontalSlide,
+            .easterEggButton
         ]
     }
 
@@ -89,6 +95,16 @@ public enum ComponentViews: String {
             return DemoViewController<RadioButtonDemoView>(withDismissButton: true)
         case .roundedImageView:
             return DemoViewController<RoundedImageViewDemoView>()
+        case .loadingIndicator:
+            return DemoViewController<LoadingIndicatorViewDemoView>()
+        case .horizontalSlide:
+            let presentedViewController = HorizontalSlideDemoViewController()
+            let secondViewController = UINavigationController(rootViewController: presentedViewController)
+            secondViewController.transitioningDelegate = presentedViewController.transitionDelegate
+            secondViewController.modalPresentationStyle = .custom
+            return secondViewController
+        case .easterEggButton:
+            return DemoViewController<EasterEggButtonDemoView>()
         }
     }
 }
@@ -141,6 +157,7 @@ public enum FullscreenViews: String {
     case consentView
     case consentDetailView
     case consentActionView
+    case drumMachine
 
     public static var all: [FullscreenViews] {
         return [
@@ -153,7 +170,8 @@ public enum FullscreenViews: String {
             .loginView,
             .consentView,
             .consentDetailView,
-            .consentActionView
+            .consentActionView,
+            .drumMachine
         ]
     }
 
@@ -179,6 +197,8 @@ public enum FullscreenViews: String {
             return DemoViewController<ConsentDetailViewDemoView>()
         case .consentActionView:
             return DemoViewController<ConsentActionViewDemoView>()
+        case .drumMachine:
+            return DemoViewController<DrumMachineDemoView>()
         }
     }
 }

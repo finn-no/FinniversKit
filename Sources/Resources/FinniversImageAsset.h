@@ -21,6 +21,7 @@ extern NSString *const FinniversImageAssetcheckmarkBig;
 extern NSString *const FinniversImageAssetclassifieds;
 extern NSString *const FinniversImageAssetdistance;
 extern NSString *const FinniversImageAssetdownload;
+extern NSString *const FinniversImageAsseteasterEgg;
 extern NSString *const FinniversImageAssetedit;
 extern NSString *const FinniversImageAsseteditBig;
 extern NSString *const FinniversImageAsseterror;
