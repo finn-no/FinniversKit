@@ -13,9 +13,9 @@ class ConsentViewDemoView: UIView {
     
     private let sections = [Section(title: "Varslinger", items: [ConsentViewCellModel(title: "Prisnedgang på torget", hairLine: false)]),
 
-                            Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", state: .withdrawn),
-                                                                 ConsentViewCellModel(title: "Personlin tilpasset FINN", state: .accepted),
-                                                                 ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", state: .accepted),
+                            Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", stateText: "Av"),
+                                                                 ConsentViewCellModel(title: "Personlin tilpasset FINN", stateText: "På"),
+                                                                 ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", stateText: "På"),
                                                                  ConsentViewCellModel(title: "Smart reklame"),
                                                                  ConsentViewCellModel(title: "Last ned dine data"),
                                                                  ConsentViewCellModel(title: "Slett meg som bruker", hairLine: false)])]

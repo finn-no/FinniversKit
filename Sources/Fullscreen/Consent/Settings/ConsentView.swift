@@ -9,7 +9,7 @@ public class ConsentView: UITableView {
         super.init(frame: frame, style: style)
         backgroundColor = .milk
         separatorStyle = .none
-        register(ConsentViewCell.self, forCellReuseIdentifier: ConsentViewCell.reuseIdentifier)
+        register(ConsentViewCell.self)
         translatesAutoresizingMaskIntoConstraints = false
     }
 

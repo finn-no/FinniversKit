@@ -3,19 +3,15 @@
 //
 import UIKit
 
-public enum ConsentState: String {
-    case accepted, withdrawn
-}
-
 public struct ConsentViewCellModel {
 
     public let title: String
-    public var state: ConsentState?
+    public var stateText: String?
     public let hairLine: Bool
 
-    public init(title: String, state: ConsentState? = nil, hairLine: Bool = true) {
+    public init(title: String, stateText: String? = nil, hairLine: Bool = true) {
         self.title = title
-        self.state = state
+        self.stateText = stateText
         self.hairLine = hairLine
     }
 }
@@ -73,7 +69,7 @@ private extension ConsentViewCell {
     func set(model: ConsentViewCellModel?) {
         guard let model = model else { return }
         titleLabel.text = model.title
-        stateLabel.text = model.state?.rawValue
+        stateLabel.text = model.stateText
 
         guard !model.hairLine else { return }
         hairLine.removeFromSuperview()
