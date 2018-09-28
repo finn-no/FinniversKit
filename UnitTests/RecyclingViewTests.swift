@@ -42,6 +42,10 @@ class RecyclingViewTests: FBSnapshotTestCase {
     func testFavoritesListView() {
         snapshot(.favoritesListView)
     }
+    
+    func testWishListView() {
+        snapshot(.wishListView)
+    }
 
     func testFavoriteFoldersListView() {
         snapshot(.favoriteFoldersListView)

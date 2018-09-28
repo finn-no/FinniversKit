@@ -182,6 +182,11 @@
 		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 		DAD0D492210737A30091DD4D /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D491210737A30091DD4D /* TextView.swift */; };
 		DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D493210739500091DD4D /* DescriptionView.swift */; };
+		F2E3558D215A5FC800ACA391 /* WishListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E35586215A5FC800ACA391 /* WishListViewCell.swift */; };
+		F2E3558E215A5FC800ACA391 /* WishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E35588215A5FC800ACA391 /* WishListView.swift */; };
+		F2E3558F215A5FC800ACA391 /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E3558A215A5FC800ACA391 /* WishListViewModel.swift */; };
+		F2E35590215A5FDA00ACA391 /* WishListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E35583215A5FC800ACA391 /* WishListViewDemoView.swift */; };
+		F2E35591215A5FDE00ACA391 /* WishListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E35584215A5FC800ACA391 /* WishListViewDemoViewHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -399,6 +404,11 @@
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		F2E35583215A5FC800ACA391 /* WishListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewDemoView.swift; sourceTree = "<group>"; };
+		F2E35584215A5FC800ACA391 /* WishListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
+		F2E35586215A5FC800ACA391 /* WishListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewCell.swift; sourceTree = "<group>"; };
+		F2E35588215A5FC800ACA391 /* WishListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListView.swift; sourceTree = "<group>"; };
+		F2E3558A215A5FC800ACA391 /* WishListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -658,6 +668,7 @@
 			isa = PBXGroup;
 			children = (
 				14C6F7CC212324C900A7230C /* Favorites */,
+				F2E35581215A5FC800ACA391 /* Wishlist */,
 				441FE440209A2F2C00B04EF1 /* ListViews */,
 				441FE415209A24E500B04EF1 /* GridViews */,
 			);
@@ -1468,6 +1479,51 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
+		F2E35581215A5FC800ACA391 /* Wishlist */ = {
+			isa = PBXGroup;
+			children = (
+				F2E35582215A5FC800ACA391 /* Demo */,
+				F2E35585215A5FC800ACA391 /* Cell */,
+				F2E35587215A5FC800ACA391 /* ListView */,
+				F2E35589215A5FC800ACA391 /* Model */,
+			);
+			name = Wishlist;
+			path = ListViews/Wishlist;
+			sourceTree = "<group>";
+		};
+		F2E35582215A5FC800ACA391 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				F2E35583215A5FC800ACA391 /* WishListViewDemoView.swift */,
+				F2E35584215A5FC800ACA391 /* WishListViewDemoViewHelpers.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		F2E35585215A5FC800ACA391 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F2E35586215A5FC800ACA391 /* WishListViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F2E35587215A5FC800ACA391 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				F2E35588215A5FC800ACA391 /* WishListView.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		F2E35589215A5FC800ACA391 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2E3558A215A5FC800ACA391 /* WishListViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1669,6 +1725,7 @@
 				44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
+				F2E35590215A5FDA00ACA391 /* WishListViewDemoView.swift in Sources */,
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
@@ -1685,6 +1742,7 @@
 				45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */,
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
+				F2E35591215A5FDE00ACA391 /* WishListViewDemoViewHelpers.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
@@ -1737,8 +1795,10 @@
 			files = (
 				441FE433209A24E500B04EF1 /* AdsGridViewLayout.swift in Sources */,
 				441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */,
+				F2E3558D215A5FC800ACA391 /* WishListViewCell.swift in Sources */,
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
+				F2E3558E215A5FC800ACA391 /* WishListView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
@@ -1782,6 +1842,7 @@
 				44A149EB21377C7B0053D5F7 /* SavedSearchesListViewCell.swift in Sources */,
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
+				F2E3558F215A5FC800ACA391 /* WishListViewModel.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
