@@ -7,10 +7,13 @@ import UIKit
 protocol ReviewProfileCellDelegate: class {
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel)
+
+    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, didSelectChat model: ReviewViewProfileModel)
 }
 
 class ReviewProfileCell: UITableViewCell {
     static let profileImageSize: CGFloat = 44
+    static let radioButtonSize: CGFloat = 26
 
     lazy var profileImage: RoundedImageView = {
         let image = RoundedImageView()
@@ -24,11 +27,11 @@ class ReviewProfileCell: UITableViewCell {
         return label
     }()
 
-    lazy var selectIndicator: UIImageView = {
-        let selectIndicator = UIImageView()
-        selectIndicator.image = UIImage(named: .arrowRight)
-        selectIndicator.translatesAutoresizingMaskIntoConstraints = false
-        return selectIndicator
+    lazy var showChat: Button = {
+        let button = Button(style: .default)
+        button.setTitle("Se chat", for: .normal)
+        button.addTarget(self, action: #selector(didSelectChat), for: .touchUpInside)
+        return button
     }()
 
     lazy var hairlineView: UIView = {
@@ -36,6 +39,10 @@ class ReviewProfileCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .ice
         return view
+    }()
+
+    lazy var radioButton: StandaloneSelectionboxItem = {
+        return StandaloneSelectionboxItem(type: .radio)
     }()
 
     var model: ReviewViewProfileModel? {
@@ -49,7 +56,7 @@ class ReviewProfileCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        let profileStack = UIStackView(arrangedSubviews: [profileImage, name, selectIndicator])
+        let profileStack = UIStackView(arrangedSubviews: [radioButton, profileImage, name, showChat])
         profileStack.alignment = .center
         profileStack.spacing = .mediumSpacing
         profileStack.translatesAutoresizingMaskIntoConstraints = false
@@ -66,11 +73,22 @@ class ReviewProfileCell: UITableViewCell {
             profileImage.heightAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
             profileImage.widthAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
 
+            radioButton.heightAnchor.constraint(equalToConstant: ReviewProfileCell.radioButtonSize),
+            radioButton.widthAnchor.constraint(equalToConstant: ReviewProfileCell.radioButtonSize),
+
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
             hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
             hairlineView.heightAnchor.constraint(equalToConstant: 2),
         ])
+
+        selectionStyle = .none
+    }
+
+    override var isSelected: Bool {
+        didSet {
+            radioButton.isSelected = isSelected
+        }
     }
 
     override func prepareForReuse() {
@@ -88,6 +106,11 @@ class ReviewProfileCell: UITableViewCell {
         profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: ReviewProfileCell.profileImageSize, completion: { [weak self] image in
             self?.profileImage.image = image
         })
+    }
+
+    @objc func didSelectChat() {
+        guard let model = model else { return }
+        delegate?.reviewProfileCell(self, didSelectChat: model)
     }
 
     required init?(coder aDecoder: NSCoder) {

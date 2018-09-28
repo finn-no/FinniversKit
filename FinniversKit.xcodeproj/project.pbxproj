@@ -34,6 +34,7 @@
 		431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431875C221118CE200D71723 /* ReviewViewDefaultData.swift */; };
 		432CE09D2112DBC500F01EC5 /* ReviewTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE09C2112DBC500F01EC5 /* ReviewTextHeader.swift */; };
 		432CE09E21131B4800F01EC5 /* RoundedImageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7BD31E0D28C10BBE2FF4 /* RoundedImageViewDemoView.swift */; };
+		4372C50B215E1CE100C2EE38 /* StandaloneSelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4372C50A215E1CE100C2EE38 /* StandaloneSelectionboxItem.swift */; };
 		43BACE6A21117D430052114C /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* ReviewView.swift */; };
 		43BACE6C21117D530052114C /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6B21117D530052114C /* ReviewViewModel.swift */; };
 		43BACE6F21117DD20052114C /* ReviewViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6D21117DC70052114C /* ReviewViewDemoView.swift */; };
@@ -154,7 +155,6 @@
 		AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB96202C74D0003E6366 /* BroadcastItem.swift */; };
 		AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */; };
 		B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */; };
-		B01D787D3884A46F34B16C76 /* ReviewTextFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CB20C0311EBE8455109 /* ReviewTextFooter.swift */; };
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 		CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */; };
 		CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */; };
@@ -265,6 +265,7 @@
 		431875C0211180F000D71723 /* ReviewProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewProfileCell.swift; sourceTree = "<group>"; };
 		431875C221118CE200D71723 /* ReviewViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewDefaultData.swift; sourceTree = "<group>"; };
 		432CE09C2112DBC500F01EC5 /* ReviewTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextHeader.swift; sourceTree = "<group>"; };
+		4372C50A215E1CE100C2EE38 /* StandaloneSelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandaloneSelectionboxItem.swift; sourceTree = "<group>"; };
 		43BACE6921117D430052114C /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		43BACE6B21117D530052114C /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		43BACE6D21117DC70052114C /* ReviewViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewDemoView.swift; sourceTree = "<group>"; };
@@ -383,7 +384,6 @@
 		AF91BB96202C74D0003E6366 /* BroadcastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastItem.swift; sourceTree = "<group>"; };
 		AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Broadcast+Style.swift"; sourceTree = "<group>"; };
 		B01D7BD31E0D28C10BBE2FF4 /* RoundedImageViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageViewDemoView.swift; sourceTree = "<group>"; };
-		B01D7CB20C0311EBE8455109 /* ReviewTextFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTextFooter.swift; sourceTree = "<group>"; };
 		B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		CB3CF1561F73E5870041EF20 /* FinniversKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FinniversKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
@@ -609,7 +609,6 @@
 			children = (
 				431875C0211180F000D71723 /* ReviewProfileCell.swift */,
 				432CE09C2112DBC500F01EC5 /* ReviewTextHeader.swift */,
-				B01D7CB20C0311EBE8455109 /* ReviewTextFooter.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1495,6 +1494,7 @@
 				DAA9A3B1210216110021F7DC /* Demo */,
 				DAA9A3A32102153F0021F7DC /* Selectionbox.swift */,
 				DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */,
+				4372C50A215E1CE100C2EE38 /* StandaloneSelectionboxItem.swift */,
 				DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */,
 				DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */,
 				DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */,
@@ -1938,6 +1938,7 @@
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
 				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
+				4372C50B215E1CE100C2EE38 /* StandaloneSelectionboxItem.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
@@ -1970,7 +1971,6 @@
 				DA9BF915215E66980072584C /* SettingsViewCellModel.swift in Sources */,
 				B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */,
 				CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */,
-				B01D787D3884A46F34B16C76 /* ReviewTextFooter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

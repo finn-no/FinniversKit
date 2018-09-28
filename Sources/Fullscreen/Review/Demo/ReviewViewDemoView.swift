@@ -55,10 +55,10 @@ extension ReviewViewDemoView: ReviewViewDelegate {
         switch type {
         case .user(let user):
             print("Did select: \(user.name) for review")
+        case .chat(let user):
+            print("Did select: \(user.name) for chat view")
         case .skip:
             print("Skip")
-        case .noneOfThese:
-            print("None of these")
         }
     }
 }
