@@ -58,7 +58,7 @@ public class LoadingView: UIView {
 
 // MARK: - Private methods
 
-extension LoadingView {
+private extension LoadingView {
     private func setup() {
         backgroundColor = UIColor.milk.withAlphaComponent(0.8)
 
