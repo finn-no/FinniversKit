@@ -28,6 +28,7 @@ public enum FinniversImageAsset: String {
     case classifieds
     case distance
     case download
+    case easterEgg
     case edit
     case editBig
     case error
@@ -102,6 +103,7 @@ public enum FinniversImageAsset: String {
             .classifieds,
             .distance,
             .download,
+            .easterEgg,
             .edit,
             .editBig,
             .error,

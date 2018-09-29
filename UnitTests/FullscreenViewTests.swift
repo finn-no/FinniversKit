@@ -58,4 +58,12 @@ class FullscreenViewTests: FBSnapshotTestCase {
     func testSavedSearchSettings() {
         snapshot(.savedSearchSettings)
     }
+
+    func testDrumMachineView() {
+        snapshot(.drumMachine)
+    }
+
+    func testLoadingView() {
+        snapshot(.loadingView)
+    }
 }
