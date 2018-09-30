@@ -5,18 +5,18 @@
 import UIKit
 
 /// Branded alternative of SVProgressHUD. It's presented on top of the top-most view.
-public class LoadingView: UIView {
+@objc public class LoadingView: UIView {
     /// Allows the loading view to use a plain UIActivityIndicatorView,
     /// useful for a smooth transition between the old indicator and the new one,
     /// by using this flag we can avoid having multiple styles of showing progress in our app.
-    public static let shouldUseOldIndicator: Bool = false
+    @objc public static let shouldUseOldIndicator: Bool = false
 
     private let animationDuration: TimeInterval = 0.3
     private let loadingIndicatorSize: CGFloat = 40
     private let loadingIndicatorInitialTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     private static let shared = LoadingView()
 
-    private lazy var loadingIndicator: LoadingIndicatorView = {
+    private lazy var newLoadingIndicator: LoadingIndicatorView = {
         let view = LoadingIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.transform = loadingIndicatorInitialTransform
@@ -31,9 +31,17 @@ public class LoadingView: UIView {
         return view
     }()
 
+    private lazy var messageLabel: UILabel = {
+        let label = Label(style: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = . center
+        label.numberOfLines = 0
+        return label
+    }()
+
     private var defaultWindow: UIWindow?
 
-    public init(window: UIWindow? = UIApplication.shared.keyWindow) {
+    init(window: UIWindow? = UIApplication.shared.keyWindow) {
         super.init(frame: .zero)
         self.defaultWindow = window
         self.alpha = 0
@@ -46,12 +54,19 @@ public class LoadingView: UIView {
     }
 
     /// Adds a layer on top of the top-most view and starts the animation of the loading indicator.
-    public class func show() {
+    @objc public class func show() {
         LoadingView.shared.startAnimating()
     }
 
+    /// Adds a layer on top of the top-most view and starts the animation of the loading indicator.
+    ///
+    /// - Parameter message: The message to be displayed
+    @objc public class func show(withMessage message: String) {
+        LoadingView.shared.startAnimating(withMessage: message)
+    }
+
     /// Stops the animation of the loading indicator and removes the loading view.
-    public class func hide() {
+    @objc public class func hide() {
         LoadingView.shared.stopAnimating()
     }
 }
@@ -62,38 +77,43 @@ private extension LoadingView {
     private func setup() {
         backgroundColor = UIColor.milk.withAlphaComponent(0.8)
 
-        let view = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : loadingIndicator
-        addSubview(view)
+        let loadingIndicator = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
+        addSubview(loadingIndicator)
+        addSubview(messageLabel)
         NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: loadingIndicatorSize),
-            view.heightAnchor.constraint(equalToConstant: loadingIndicatorSize),
-            view.centerXAnchor.constraint(equalTo: centerXAnchor),
-            view.centerYAnchor.constraint(equalTo: centerYAnchor)
+            loadingIndicator.widthAnchor.constraint(equalToConstant: loadingIndicatorSize),
+            loadingIndicator.heightAnchor.constraint(equalToConstant: loadingIndicatorSize),
+            loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing),
+            messageLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: .mediumLargeSpacing),
+            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .veryLargeSpacing),
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.veryLargeSpacing)
             ])
     }
 
-    private func startAnimating() {
+    private func startAnimating(withMessage message: String? = nil) {
         if superview == nil {
             defaultWindow?.addSubview(self)
             fillInSuperview()
         }
 
-        var view: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : loadingIndicator
-        view.startAnimating()
+        var loadingIndicator: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
+        loadingIndicator.startAnimating()
+        messageLabel.text = message
         UIView.animate(withDuration: animationDuration) {
             self.alpha = 1
-            view.transform = .identity
+            loadingIndicator.transform = .identity
         }
     }
 
     private func stopAnimating() {
         if defaultWindow != nil {
-            var view: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : loadingIndicator
+            var loadingIndicator: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
             UIView.animate(withDuration: animationDuration, animations: {
                 self.alpha = 0
-                view.transform = self.loadingIndicatorInitialTransform
+                loadingIndicator.transform = self.loadingIndicatorInitialTransform
             }) { (_) in
-                view.stopAnimating()
+                loadingIndicator.stopAnimating()
                 self.removeFromSuperview()
             }
         }
