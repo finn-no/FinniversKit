@@ -39,6 +39,16 @@ import UIKit
         return label
     }()
 
+    private lazy var successImageView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.image = UIImage(named: .checkmarkBig).withRenderingMode(.alwaysTemplate)
+        view.tintColor = LoadingView.shouldUseOldIndicator ? .primaryBlue : .secondaryBlue
+        view.alpha = 0
+        view.transform = loadingIndicatorInitialTransform
+        return view
+    }()
+
     private var defaultWindow: UIWindow?
 
     init(window: UIWindow? = UIApplication.shared.keyWindow) {
@@ -60,6 +70,13 @@ import UIKit
         LoadingView.shared.startAnimating(withMessage: message)
     }
 
+    /// Adds a layer on top of the top-most view and starts the animation of the loading indicator.
+    ///
+    /// - Parameter message: The message to be displayed (optional)
+    @objc public class func showSuccess(withMessage message: String? = nil) {
+        LoadingView.shared.showSuccess(withMessage: message)
+    }
+
     /// Stops the animation of the loading indicator and removes the loading view.
     @objc public class func hide() {
         LoadingView.shared.stopAnimating()
@@ -75,11 +92,18 @@ private extension LoadingView {
         let loadingIndicator = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
         addSubview(loadingIndicator)
         addSubview(messageLabel)
+        addSubview(successImageView)
         NSLayoutConstraint.activate([
+            successImageView.widthAnchor.constraint(equalToConstant: loadingIndicatorSize),
+            successImageView.heightAnchor.constraint(equalToConstant: loadingIndicatorSize),
+            successImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            successImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing),
+
             loadingIndicator.widthAnchor.constraint(equalToConstant: loadingIndicatorSize),
             loadingIndicator.heightAnchor.constraint(equalToConstant: loadingIndicatorSize),
             loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
             loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing),
+
             messageLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: .mediumLargeSpacing),
             messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .veryLargeSpacing),
             messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.veryLargeSpacing)
@@ -95,9 +119,27 @@ private extension LoadingView {
         var loadingIndicator: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
         loadingIndicator.startAnimating()
         messageLabel.text = message
+        successImageView.alpha = 0
         UIView.animate(withDuration: animationDuration) {
             self.alpha = 1
+            loadingIndicator.alpha = 1
             loadingIndicator.transform = .identity
+        }
+    }
+
+    private func showSuccess(withMessage message: String? = nil) {
+        if superview == nil {
+            defaultWindow?.addSubview(self)
+            fillInSuperview()
+        }
+
+        var loadingIndicator: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
+        loadingIndicator.alpha = 0
+        messageLabel.text = message
+        UIView.animate(withDuration: animationDuration) {
+            self.alpha = 1
+            self.successImageView.alpha = 1
+            self.successImageView.transform = .identity
         }
     }
 
@@ -107,6 +149,7 @@ private extension LoadingView {
             UIView.animate(withDuration: animationDuration, animations: {
                 self.alpha = 0
                 loadingIndicator.transform = self.loadingIndicatorInitialTransform
+                self.successImageView.transform = self.loadingIndicatorInitialTransform
             }) { (_) in
                 self.messageLabel.text = nil
                 loadingIndicator.stopAnimating()

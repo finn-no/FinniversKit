@@ -1,6 +1,7 @@
 import UIKit
 
 public protocol LoadingViewAnimatable {
+    var alpha: CGFloat { get set }
     var transform: CGAffineTransform { get set }
     func startAnimating()
     func stopAnimating()
