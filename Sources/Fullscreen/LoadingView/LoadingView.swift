@@ -54,14 +54,9 @@ import UIKit
     }
 
     /// Adds a layer on top of the top-most view and starts the animation of the loading indicator.
-    @objc public class func show() {
-        LoadingView.shared.startAnimating()
-    }
-
-    /// Adds a layer on top of the top-most view and starts the animation of the loading indicator.
     ///
-    /// - Parameter message: The message to be displayed
-    @objc public class func show(withMessage message: String) {
+    /// - Parameter message: The message to be displayed (optional)
+    @objc public class func show(withMessage message: String? = nil) {
         LoadingView.shared.startAnimating(withMessage: message)
     }
 
