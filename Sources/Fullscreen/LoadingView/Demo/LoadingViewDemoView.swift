@@ -30,7 +30,7 @@ public class LoadingViewDemoView: UIView {
     }
 
     @objc func startLoadingButtonTapped() {
-        LoadingView.show()
+        LoadingView.show(withMessage: "Saving changes...")
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             LoadingView.hide()
