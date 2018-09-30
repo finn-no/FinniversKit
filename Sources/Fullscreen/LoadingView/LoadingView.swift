@@ -108,6 +108,7 @@ private extension LoadingView {
                 self.alpha = 0
                 loadingIndicator.transform = self.loadingIndicatorInitialTransform
             }) { (_) in
+                self.messageLabel.text = nil
                 loadingIndicator.stopAnimating()
                 self.removeFromSuperview()
             }
