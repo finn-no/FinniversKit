@@ -4,13 +4,13 @@
 
 import FinniversKit
 
-struct Option {
+private struct Option {
     var title: String
     var action: (() -> ())
 }
 
 public class LoadingViewDemoView: UIView {
-    lazy var options: [Option] = {
+    private lazy var options: [Option] = {
         var options = [Option]()
 
         options.append(Option(title: "Simple show (hides after a second)", action: {
@@ -54,9 +54,11 @@ public class LoadingViewDemoView: UIView {
         return options
     }()
 
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.dataSource = self
+        view.delegate = self
         return view
     }()
 
@@ -71,8 +73,6 @@ public class LoadingViewDemoView: UIView {
     private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
-        tableView.dataSource = self
-        tableView.delegate = self
         tableView.register(UITableViewCell.self)
     }
 }
@@ -96,9 +96,9 @@ extension LoadingViewDemoView: UITableViewDataSource {
 
 extension LoadingViewDemoView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let option = options[indexPath.row]
         option.action()
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
