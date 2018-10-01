@@ -5,6 +5,29 @@
 import UIKit
 
 public class SelectionIndicatorView: UIView {
+    public enum `Type` {
+        case radio
+        case check
+
+        var selected: String {
+            switch self {
+            case .radio:
+                return "radiobutton-select-"
+            case .check:
+                return "checkbox-selected-"
+            }
+        }
+
+        var unselected: String {
+            switch self {
+            case .radio:
+                return "radiobutton-unselected-"
+            case .check:
+                return "checkbox-unselected-"
+            }
+        }
+    }
+
     let imageView: AnimatedImageView = {
         let view = AnimatedImageView(frame: .zero)
         view.contentMode = .scaleAspectFit
@@ -49,7 +72,7 @@ public class SelectionIndicatorView: UIView {
         }
     }
 
-    public var type: SelectionBoxType = .check
+    public var type: Type = .check
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,7 +80,7 @@ public class SelectionIndicatorView: UIView {
         setupSubviews()
     }
 
-    init(type: SelectionBoxType) {
+    init(type: Type) {
         self.type = type
         super.init(frame: .zero)
         setupStyle()
@@ -96,28 +119,5 @@ public class SelectionIndicatorView: UIView {
         imageView.isHighlighted = selected
         imageView.animationDuration = selected ? imageView.selectedDuration : imageView.unselectedDuration
         imageView.startAnimating()
-    }
-}
-
-public enum SelectionBoxType {
-    case radio
-    case check
-
-    var selected: String {
-        switch self {
-        case .radio:
-            return "radiobutton-select-"
-        case .check:
-            return "checkbox-selected-"
-        }
-    }
-
-    var unselected: String {
-        switch self {
-        case .radio:
-            return "radiobutton-unselected-"
-        case .check:
-            return "checkbox-unselected-"
-        }
     }
 }
