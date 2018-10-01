@@ -41,8 +41,8 @@ class ReviewProfileCell: UITableViewCell {
         return view
     }()
 
-    lazy var radioButton: StandaloneSelectionboxItem = {
-        return StandaloneSelectionboxItem(type: .radio)
+    lazy var radioButton: SelectionIndicatorView = {
+        return SelectionIndicatorView(type: .radio)
     }()
 
     var model: ReviewViewProfileModel? {

@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class StandaloneSelectionboxItem: UIView {
+public class SelectionIndicatorView: UIView {
     let imageView: AnimatedImageView = {
         let view = AnimatedImageView(frame: .zero)
         view.contentMode = .scaleAspectFit
