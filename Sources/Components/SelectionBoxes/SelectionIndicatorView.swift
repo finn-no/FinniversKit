@@ -98,15 +98,25 @@ public class SelectionIndicatorView: UIView {
     }
 
     private func setupStyle() {
-        let framesPerSecond = 60.0
+        var buttonSelected = [UIImage]()
+        var buttonUnselected = [UIImage]()
 
-        let radiobuttonSelected = UIImage.animatedImageNamed(type.selected, duration: 13 / framesPerSecond)
-        let radiobuttonUnselected = UIImage.animatedImageNamed(type.unselected, duration: 10 / framesPerSecond)
+        for i in 0 ..< 13 {
+            if let image = UIImage(named: "\(type.selected)\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
+                buttonSelected.append(image)
+            }
+        }
 
-        selectedImage = radiobuttonSelected?.images?.last
-        selectedAnimationImages = radiobuttonSelected?.images
-        unselectedImage = radiobuttonUnselected?.images?.last
-        unselectedAnimationImages = radiobuttonUnselected?.images
+        for i in 0 ..< 10 {
+            if let image = UIImage(named: "\(type.unselected)\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
+                buttonUnselected.append(image)
+            }
+        }
+
+        selectedImage = buttonSelected.last
+        selectedAnimationImages = buttonSelected
+        unselectedImage = buttonUnselected.last
+        unselectedAnimationImages = buttonUnselected
     }
 
     private func animateImage(selected: Bool) {

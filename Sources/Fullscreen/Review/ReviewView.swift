@@ -18,6 +18,7 @@ public class ReviewView: UIView {
     }
 
     static let defaultRowHeight: CGFloat = 40
+    static let defaultHeaderHeight: CGFloat = 60
 
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -30,7 +31,7 @@ public class ReviewView: UIView {
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = ReviewView.defaultRowHeight
-        tableView.estimatedSectionHeaderHeight = ReviewView.defaultRowHeight
+        tableView.estimatedSectionHeaderHeight = ReviewView.defaultHeaderHeight
         return tableView
     }()
 
@@ -122,7 +123,6 @@ extension ReviewView: UITableViewDataSource {
 extension ReviewView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeue(ReviewTextHeader.self)
-        header.translatesAutoresizingMaskIntoConstraints = false
         header.title.text = model?.title
 
         return header

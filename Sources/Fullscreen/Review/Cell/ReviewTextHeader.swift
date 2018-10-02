@@ -15,12 +15,13 @@ class ReviewTextHeader: UITableViewHeaderFooterView {
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
         contentView.addSubview(title)
 
         let inset = UIEdgeInsets(top: .mediumLargeSpacing,
                                  left: .mediumLargeSpacing,
-                                 bottom: -.mediumLargeSpacing,
+                                 bottom: -.largeSpacing,
                                  right: -.mediumLargeSpacing)
         title.fillInSuperview(insets: inset, isActive: true)
     }
