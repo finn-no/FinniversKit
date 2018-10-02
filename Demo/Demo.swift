@@ -116,6 +116,7 @@ public enum RecyclingViews: String {
     case savedSearchesListView
     case marketsGridView
     case adsGridView
+    case settingsView
 
     public static var all: [RecyclingViews] {
         return [
@@ -125,6 +126,7 @@ public enum RecyclingViews: String {
             .savedSearchesListView,
             .marketsGridView,
             .adsGridView,
+            .settingsView,
         ]
     }
 
@@ -142,6 +144,8 @@ public enum RecyclingViews: String {
             return DemoViewController<MarketsGridViewDemoView>()
         case .adsGridView:
             return DemoViewController<AdsGridViewDemoView>()
+        case .settingsView:
+            return DemoViewController<SettingsViewDemoView>()
         }
     }
 }
@@ -154,9 +158,7 @@ public enum FullscreenViews: String {
     case reviewView
     case registerView
     case loginView
-    case settingsView
-    case consentDetailView
-    case consentActionView
+    case consentView
     case drumMachine
 
     public static var all: [FullscreenViews] {
@@ -168,9 +170,7 @@ public enum FullscreenViews: String {
             .reviewView,
             .registerView,
             .loginView,
-            .settingsView,
-            .consentDetailView,
-            .consentActionView,
+            .consentView,
             .drumMachine
         ]
     }
@@ -191,12 +191,8 @@ public enum FullscreenViews: String {
             return DemoViewController<RegisterViewDemoView>()
         case .loginView:
             return DemoViewController<LoginViewDemoView>()
-        case .settingsView:
-            return DemoViewController<SettingsViewDemoView>()
-        case .consentDetailView:
-            return DemoViewController<ConsentDetailViewDemoView>()
-        case .consentActionView:
-            return DemoViewController<ConsentActionViewDemoView>()
+        case .consentView:
+            return DemoViewController<ConsentViewDemoView>()
         case .drumMachine:
             return DemoViewController<DrumMachineDemoView>()
         }

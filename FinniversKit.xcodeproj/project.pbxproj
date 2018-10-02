@@ -171,7 +171,7 @@
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
-		DA9BF913215E66640072584C /* ConsentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF912215E66640072584C /* ConsentDetailViewModel.swift */; };
+		DA9BF913215E66640072584C /* ConsentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF912215E66640072584C /* ConsentViewModel.swift */; };
 		DA9BF915215E66980072584C /* SettingsViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF914215E66980072584C /* SettingsViewCellModel.swift */; };
 		DAA14BC3211475CA00F47E8C /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
@@ -180,12 +180,10 @@
 		DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
 		DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */; };
 		DAC7DCAA21538608004602A3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA921538608004602A3 /* SettingsView.swift */; };
-		DAC7DCAC21538615004602A3 /* ConsentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCAB21538615004602A3 /* ConsentDetailView.swift */; };
+		DAC7DCAC21538615004602A3 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCAB21538615004602A3 /* ConsentView.swift */; };
 		DAC7DCAE2153866E004602A3 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCAD2153866E004602A3 /* SettingsViewCell.swift */; };
 		DAC7DCAF215386E4004602A3 /* SettingsViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA521538590004602A3 /* SettingsViewDemoView.swift */; };
-		DAC7DCB0215386E7004602A3 /* ConsentDetailViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA7215385A8004602A3 /* ConsentDetailViewDemoView.swift */; };
-		DAC7DCB421539E77004602A3 /* ConsentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCB321539E77004602A3 /* ConsentActionView.swift */; };
-		DAC7DCB52153AC27004602A3 /* ConsentActionViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCB121539E6A004602A3 /* ConsentActionViewDemoView.swift */; };
+		DAC7DCB0215386E7004602A3 /* ConsentViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA7215385A8004602A3 /* ConsentViewDemoView.swift */; };
 		DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */; };
 		DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
@@ -398,7 +396,7 @@
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
-		DA9BF912215E66640072584C /* ConsentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentDetailViewModel.swift; sourceTree = "<group>"; };
+		DA9BF912215E66640072584C /* ConsentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewModel.swift; sourceTree = "<group>"; };
 		DA9BF914215E66980072584C /* SettingsViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCellModel.swift; sourceTree = "<group>"; };
 		DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
@@ -408,12 +406,10 @@
 		DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadioboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		DAC7DCA521538590004602A3 /* SettingsViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewDemoView.swift; sourceTree = "<group>"; };
-		DAC7DCA7215385A8004602A3 /* ConsentDetailViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentDetailViewDemoView.swift; sourceTree = "<group>"; };
+		DAC7DCA7215385A8004602A3 /* ConsentViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewDemoView.swift; sourceTree = "<group>"; };
 		DAC7DCA921538608004602A3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		DAC7DCAB21538615004602A3 /* ConsentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentDetailView.swift; sourceTree = "<group>"; };
+		DAC7DCAB21538615004602A3 /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
 		DAC7DCAD2153866E004602A3 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
-		DAC7DCB121539E6A004602A3 /* ConsentActionViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentActionViewDemoView.swift; sourceTree = "<group>"; };
-		DAC7DCB321539E77004602A3 /* ConsentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentActionView.swift; sourceTree = "<group>"; };
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
@@ -1471,9 +1467,8 @@
 			isa = PBXGroup;
 			children = (
 				DAC7DCA32153853F004602A3 /* Demo */,
-				DA9BF912215E66640072584C /* ConsentDetailViewModel.swift */,
-				DAC7DCAB21538615004602A3 /* ConsentDetailView.swift */,
-				DAC7DCB321539E77004602A3 /* ConsentActionView.swift */,
+				DA9BF912215E66640072584C /* ConsentViewModel.swift */,
+				DAC7DCAB21538615004602A3 /* ConsentView.swift */,
 			);
 			path = Consent;
 			sourceTree = "<group>";
@@ -1492,8 +1487,7 @@
 		DAC7DCA32153853F004602A3 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				DAC7DCA7215385A8004602A3 /* ConsentDetailViewDemoView.swift */,
-				DAC7DCB121539E6A004602A3 /* ConsentActionViewDemoView.swift */,
+				DAC7DCA7215385A8004602A3 /* ConsentViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1769,7 +1763,7 @@
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
-				DAC7DCB0215386E7004602A3 /* ConsentDetailViewDemoView.swift in Sources */,
+				DAC7DCB0215386E7004602A3 /* ConsentViewDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
@@ -1795,7 +1789,6 @@
 				44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */,
 				DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */,
 				4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */,
-				DAC7DCB52153AC27004602A3 /* ConsentActionViewDemoView.swift in Sources */,
 				4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */,
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
@@ -1841,7 +1834,7 @@
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
-				DA9BF913215E66640072584C /* ConsentDetailViewModel.swift in Sources */,
+				DA9BF913215E66640072584C /* ConsentViewModel.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */,
 				444246012137D60400D42AB8 /* FavoriteFoldersListViewCell.swift in Sources */,
 				DAC7DCAA21538608004602A3 /* SettingsView.swift in Sources */,
@@ -1850,7 +1843,6 @@
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
-				DAC7DCB421539E77004602A3 /* ConsentActionView.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
@@ -1867,7 +1859,7 @@
 				441FE431209A24E500B04EF1 /* AdsGridHeaderView.swift in Sources */,
 				443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */,
 				DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */,
-				DAC7DCAC21538615004602A3 /* ConsentDetailView.swift in Sources */,
+				DAC7DCAC21538615004602A3 /* ConsentView.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,
 				44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */,
 				44A149EB21377C7B0053D5F7 /* SavedSearchesListViewCell.swift in Sources */,
