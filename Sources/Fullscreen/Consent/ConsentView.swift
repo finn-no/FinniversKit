@@ -113,7 +113,7 @@ private extension ConsentView {
 
         var aboveAnchor = scrollView.topAnchor
         if let title = model.title {
-            let view = addSwitchView(with: title)
+            let view = addSwitchView(with: title, and: model.state)
             aboveAnchor = view.bottomAnchor
         }
 
@@ -137,13 +137,13 @@ private extension ConsentView {
         changeButton(to: model.buttonStyle, with: model.buttonTitle)
     }
 
-    func addSwitchView(with title: String) -> UIView {
+    func addSwitchView(with title: String, and state: Bool) -> UIView {
         let backgroundView = UIView(frame: .zero)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.backgroundColor = .ice
 
         let label = titleLabel(with: title)
-        let localSwitch = switchWithTarget()
+        let localSwitch = switchWithTarget(state: state)
 
         scrollView.addSubview(backgroundView)
         scrollView.addSubview(label)
@@ -208,9 +208,10 @@ private extension ConsentView {
         return label
     }
 
-    func switchWithTarget() -> UISwitch {
+    func switchWithTarget(state: Bool) -> UISwitch {
         let view = UISwitch(frame: .zero)
         view.onTintColor = .pea
+        view.setOn(state, animated: false)
         view.addTarget(self, action: #selector(switchDidToogle(sender:)), for: .valueChanged)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
