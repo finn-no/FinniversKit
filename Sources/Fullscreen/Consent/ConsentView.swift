@@ -14,6 +14,7 @@ public class ConsentView: UIView {
 
     private var titleLabel: Label?
     private var _switch: UISwitch?
+    private var switchBackgroundView: UIView?
 
     private lazy var textLabel: Label = {
         let label = Label(style: .body)
@@ -24,12 +25,21 @@ public class ConsentView: UIView {
     }()
 
     private lazy var button: Button = buttonWith(style: .flat)
+    private var buttonBackgroundView: UIView?
 
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView(frame: .zero)
         scroll.alwaysBounceVertical = true
+        scroll.delegate = self
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
+    }()
+
+    // Used to controll the size of the scroll view when the button is moved to the bottom
+    private lazy var sizeView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     // MARK: - Public properties
@@ -55,42 +65,56 @@ public class ConsentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        guard let view = buttonBackgroundView, textLabel.intrinsicContentSize.height >= view.frame.minY else { return }
+        buttonBackgroundView?.layer.shadowOpacity = 0.2
+    }
+
+}
+
+extension ConsentView: UIScrollViewDelegate {
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let view = buttonBackgroundView else { return }
+        if -scrollView.contentOffset.y + textLabel.intrinsicContentSize.height + .largeSpacing > view.frame.minY {
+            self.buttonBackgroundView?.layer.shadowOpacity = 0.2
+        } else {
+            self.buttonBackgroundView?.layer.shadowOpacity = 0
+        }
+    }
 }
 
 // MARK: - Private functions
 
 private extension ConsentView {
     func setupScrollView() {
+        addSubview(sizeView)
         addSubview(scrollView)
+
+        let sizeBottomConstraints = sizeView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        sizeBottomConstraints.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
+            sizeView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            sizeView.topAnchor.constraint(equalTo: topAnchor),
+            sizeView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            sizeBottomConstraints,
+
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.topAnchor.constraint(equalTo: topAnchor),
             scrollView.widthAnchor.constraint(equalTo: widthAnchor),
-            scrollView.heightAnchor.constraint(equalTo: heightAnchor)
+            scrollView.heightAnchor.constraint(equalTo: sizeView.heightAnchor)
         ])
     }
 
     func set(model: ConsentViewModel?) {
         guard let model = model else { return }
 
-        var aboveAnchor = topAnchor
+        var aboveAnchor = scrollView.topAnchor
         if let title = model.title {
-            let label = titleLabel(with: title)
-            aboveAnchor = label.bottomAnchor
-
-            let s = switchWithTarget()
-
-            scrollView.addSubview(label)
-            scrollView.addSubview(s)
-
-            NSLayoutConstraint.activate([
-                label.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .largeSpacing),
-                label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .mediumLargeSpacing),
-                label.trailingAnchor.constraint(lessThanOrEqualTo: s.leadingAnchor, constant: -.mediumSpacing),
-
-                s.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-                s.centerYAnchor.constraint(equalTo: label.centerYAnchor)
-            ])
+            let view = addSwitchView(with: title)
+            aboveAnchor = view.bottomAnchor
         }
 
         textLabel.attributedText = model.text.attributedStringWithLineSpacing(4)
@@ -106,22 +130,74 @@ private extension ConsentView {
             button.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             button.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: .mediumLargeSpacing + .smallSpacing),
 
-            scrollView.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: .mediumLargeSpacing)
+            scrollView.bottomAnchor.constraint(greaterThanOrEqualTo: button.bottomAnchor, constant: .mediumLargeSpacing)
         ])
 
         guard model.buttonStyle != .flat else { return }
+        changeButton(to: model.buttonStyle, with: model.buttonTitle)
+    }
 
+    func addSwitchView(with title: String) -> UIView {
+        let backgroundView = UIView(frame: .zero)
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.backgroundColor = .ice
+
+        let label = titleLabel(with: title)
+        let localSwitch = switchWithTarget()
+
+        scrollView.addSubview(backgroundView)
+        scrollView.addSubview(label)
+        scrollView.addSubview(localSwitch)
+
+        NSLayoutConstraint.activate([
+            backgroundView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            backgroundView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 24),
+
+            label.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 24),
+            label.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .mediumLargeSpacing),
+            label.trailingAnchor.constraint(lessThanOrEqualTo: localSwitch.leadingAnchor, constant: -.mediumSpacing),
+
+            localSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            localSwitch.centerYAnchor.constraint(equalTo: label.centerYAnchor)
+            ])
+
+        titleLabel = label
+        _switch = localSwitch
+        switchBackgroundView = backgroundView
+        return backgroundView
+    }
+
+    func changeButton(to style: Button.Style, with title: String) {
         button.removeFromSuperview()
 
-        let b = buttonWith(style: model.buttonStyle)
-        b.setTitle(model.buttonTitle, for: .normal)
+        let backgroundView = UIView(frame: .zero)
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.backgroundColor = .milk
+        backgroundView.layer.shadowOffset = .zero
 
-        addSubview(b)
+        let _button = buttonWith(style: style)
+        _button.setTitle(title, for: .normal)
+
+        addSubview(backgroundView)
+        backgroundView.addSubview(_button)
         NSLayoutConstraint.activate([
-            b.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            b.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            b.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
-        ])
+            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            backgroundView.topAnchor.constraint(equalTo: _button.topAnchor, constant: -.mediumLargeSpacing),
+
+            _button.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .mediumLargeSpacing),
+            _button.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.mediumLargeSpacing),
+            _button.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -.mediumLargeSpacing),
+
+            sizeView.bottomAnchor.constraint(equalTo: backgroundView.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            ])
+
+        button = _button
+        buttonBackgroundView = backgroundView
     }
 
     func titleLabel(with text: String) -> Label {
