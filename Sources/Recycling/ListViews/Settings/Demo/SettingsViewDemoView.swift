@@ -6,22 +6,22 @@ import FinniversKit
 
 struct Section {
     var title: String
-    var items: [ConsentViewCellModel]
+    var items: [SettingsViewCellModel]
 }
 
-class ConsentViewDemoView: UIView {
+class SettingsViewDemoView: UIView {
     
-    private let sections = [Section(title: "Varslinger", items: [ConsentViewCellModel(title: "Prisnedgang på torget", hairLine: false)]),
+    private let sections = [Section(title: "Varslinger", items: [SettingsViewCellModel(title: "Prisnedgang på torget", hairLine: false)]),
 
-                            Section(title: "Personvern", items: [ConsentViewCellModel(title: "Få nyhetsbrev fra FINN", stateText: "Av"),
-                                                                 ConsentViewCellModel(title: "Personlin tilpasset FINN", stateText: "På"),
-                                                                 ConsentViewCellModel(title: "Motta viktig informasjon fra FINN", stateText: "På"),
-                                                                 ConsentViewCellModel(title: "Smart reklame"),
-                                                                 ConsentViewCellModel(title: "Last ned dine data"),
-                                                                 ConsentViewCellModel(title: "Slett meg som bruker", hairLine: false)])]
+                            Section(title: "Personvern", items: [SettingsViewCellModel(title: "Få nyhetsbrev fra FINN", stateText: "Av"),
+                                                                 SettingsViewCellModel(title: "Personlin tilpasset FINN", stateText: "På"),
+                                                                 SettingsViewCellModel(title: "Motta viktig informasjon fra FINN", stateText: "På"),
+                                                                 SettingsViewCellModel(title: "Smart reklame"),
+                                                                 SettingsViewCellModel(title: "Last ned dine data"),
+                                                                 SettingsViewCellModel(title: "Slett meg som bruker", hairLine: false)])]
 
-    private lazy var consentView: ConsentView = {
-        let view = ConsentView(frame: .zero, style: .grouped)
+    private lazy var consentView: SettingsView = {
+        let view = SettingsView(frame: .zero, style: .grouped)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentInset = UIEdgeInsets(top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0)
         view.dataSource = self
@@ -39,7 +39,7 @@ class ConsentViewDemoView: UIView {
     }
 }
 
-extension ConsentViewDemoView: UITableViewDataSource {
+extension SettingsViewDemoView: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
@@ -50,13 +50,13 @@ extension ConsentViewDemoView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(ConsentViewCell.self, for: indexPath)
+        let cell = tableView.dequeue(SettingsViewCell.self, for: indexPath)
         cell.model = sections[indexPath.section].items[indexPath.row]
         return cell
     }
 }
 
-extension ConsentViewDemoView: UITableViewDelegate {
+extension SettingsViewDemoView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return consentView.headerView(for: section, with: sections[section].title)
@@ -67,7 +67,7 @@ extension ConsentViewDemoView: UITableViewDelegate {
     }
 }
 
-private extension ConsentViewDemoView {
+private extension SettingsViewDemoView {
 
     func setupSubviews() {
         addSubview(consentView)

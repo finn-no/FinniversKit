@@ -3,14 +3,14 @@
 //
 import UIKit
 
-public class ConsentView: UITableView {
+public class SettingsView: UITableView {
 
     public override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .milk
         separatorStyle = .none
-        register(ConsentViewCell.self)
+        register(SettingsViewCell.self)
     }
 
     public required init?(coder aDecoder: NSCoder) {

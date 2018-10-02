@@ -154,7 +154,7 @@ public enum FullscreenViews: String {
     case reviewView
     case registerView
     case loginView
-    case consentView
+    case settingsView
     case consentDetailView
     case consentActionView
     case drumMachine
@@ -168,7 +168,7 @@ public enum FullscreenViews: String {
             .reviewView,
             .registerView,
             .loginView,
-            .consentView,
+            .settingsView,
             .consentDetailView,
             .consentActionView,
             .drumMachine
@@ -191,8 +191,8 @@ public enum FullscreenViews: String {
             return DemoViewController<RegisterViewDemoView>()
         case .loginView:
             return DemoViewController<LoginViewDemoView>()
-        case .consentView:
-            return DemoViewController<ConsentViewDemoView>()
+        case .settingsView:
+            return DemoViewController<SettingsViewDemoView>()
         case .consentDetailView:
             return DemoViewController<ConsentDetailViewDemoView>()
         case .consentActionView:

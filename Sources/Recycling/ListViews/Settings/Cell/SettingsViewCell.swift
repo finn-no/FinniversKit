@@ -3,7 +3,7 @@
 //
 import UIKit
 
-public class ConsentViewCell: UITableViewCell {
+public class SettingsViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
@@ -42,7 +42,7 @@ public class ConsentViewCell: UITableViewCell {
 
     public static var reuseIdentifier = "consent-cell"
 
-    public var model: ConsentViewCellModel? {
+    public var model: SettingsViewCellModel? {
         didSet { set(model: model) }
     }
 
@@ -63,9 +63,9 @@ public class ConsentViewCell: UITableViewCell {
 
 // MARK: - Private methods
 
-private extension ConsentViewCell {
+private extension SettingsViewCell {
 
-    func set(model: ConsentViewCellModel?) {
+    func set(model: SettingsViewCellModel?) {
         guard let model = model else { return }
         titleLabel.text = model.title
         stateLabel.text = model.stateText

@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct ConsentViewCellModel {
+public struct SettingsViewCellModel {
 
     public let title: String
     public var stateText: String?
