@@ -486,8 +486,7 @@
 				14C6F7CF212324C900A7230C /* ListView */,
 				14C6F7D1212324C900A7230C /* Model */,
 			);
-			name = Favorites;
-			path = ListViews/Favorites;
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		14C6F7CD212324C900A7230C /* Cell */ = {
@@ -689,7 +688,6 @@
 		441FE414209A24E500B04EF1 /* Recycling */ = {
 			isa = PBXGroup;
 			children = (
-				14C6F7CC212324C900A7230C /* Favorites */,
 				441FE440209A2F2C00B04EF1 /* ListViews */,
 				441FE415209A24E500B04EF1 /* GridViews */,
 			);
@@ -800,6 +798,7 @@
 		441FE440209A2F2C00B04EF1 /* ListViews */ = {
 			isa = PBXGroup;
 			children = (
+				14C6F7CC212324C900A7230C /* Favorites */,
 				444245FA2137D60400D42AB8 /* FavoriteFolders */,
 				44A149E421377C7B0053D5F7 /* SavedSearches */,
 				441FE441209A2F2C00B04EF1 /* Notifications */,
