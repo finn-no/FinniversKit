@@ -7,7 +7,7 @@ public class SettingsViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: Label = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -15,7 +15,7 @@ public class SettingsViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var stateLabel: UILabel = {
+    private lazy var stateLabel: Label = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .stone

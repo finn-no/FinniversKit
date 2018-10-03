@@ -102,7 +102,8 @@ private extension ConsentActionView {
             NSLayoutConstraint.activate([
                 button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
                 button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
-                button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
+                button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+                buttonBackgroundView.topAnchor.constraint(equalTo: button.topAnchor, constant: -.mediumLargeSpacing)
             ])
         }
         button.setTitle(model.buttonTitle, for: .normal)
