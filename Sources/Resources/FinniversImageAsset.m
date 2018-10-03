@@ -25,10 +25,10 @@ NSString *const FinniversImageAsseteasterEgg = @"easterEgg";
 NSString *const FinniversImageAssetedit = @"edit";
 NSString *const FinniversImageAsseteditBig = @"editBig";
 NSString *const FinniversImageAsseterror = @"error";
-NSString *const FinniversImageAssetfavouriteAdd = @"favouriteAdd";
-NSString *const FinniversImageAssetfavouriteAddImg = @"favouriteAddImg";
-NSString *const FinniversImageAssetfavouriteAdded = @"favouriteAdded";
-NSString *const FinniversImageAssetfavouriteAddedImg = @"favouriteAddedImg";
+NSString *const FinniversImageAssetfavoriteAdd = @"favoriteAdd";
+NSString *const FinniversImageAssetfavoriteAddImg = @"favoriteAddImg";
+NSString *const FinniversImageAssetfavoriteAdded = @"favoriteAdded";
+NSString *const FinniversImageAssetfavoriteAddedImg = @"favoriteAddedImg";
 NSString *const FinniversImageAssetfavourites = @"favourites";
 NSString *const FinniversImageAssetgallery = @"gallery";
 NSString *const FinniversImageAssetgridView = @"gridView";
@@ -101,10 +101,10 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetedit,
              FinniversImageAsseteditBig,
              FinniversImageAsseterror,
-             FinniversImageAssetfavouriteAdd,
-             FinniversImageAssetfavouriteAddImg,
-             FinniversImageAssetfavouriteAdded,
-             FinniversImageAssetfavouriteAddedImg,
+             FinniversImageAssetfavoriteAdd,
+             FinniversImageAssetfavoriteAddImg,
+             FinniversImageAssetfavoriteAdded,
+             FinniversImageAssetfavoriteAddedImg,
              FinniversImageAssetfavourites,
              FinniversImageAssetgallery,
              FinniversImageAssetgridView,
