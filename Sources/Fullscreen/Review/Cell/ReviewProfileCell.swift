@@ -6,7 +6,7 @@ import UIKit
 
 protocol ReviewProfileCellDelegate: class {
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel)
+    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat)
 
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, didSelectChat model: ReviewViewProfileModel)
 }
@@ -97,7 +97,7 @@ class ReviewProfileCell: UITableViewCell {
         name.text = ""
 
         if let model = model {
-            delegate?.reviewProfileCell(self, cancelLoadingImageForModel: model)
+            delegate?.reviewProfileCell(self, cancelLoadingImageForModel: model, imageWidth: ReviewProfileCell.profileImageSize)
         }
     }
 

@@ -6,7 +6,7 @@ import UIKit
 
 public protocol ReviewViewDelegate: NSObjectProtocol {
     func reviewView(_ reviewView: ReviewView, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
-    func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel)
+    func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat)
     func reviewView(_ reviewView: ReviewView, didClick type: ReviewView.SelectType)
 }
 
@@ -172,8 +172,8 @@ extension ReviewView: ReviewProfileCellDelegate {
         return delegate?.reviewView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel) {
-        delegate?.reviewView(self, cancelLoadingImageForModel: model)
+    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat) {
+        delegate?.reviewView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
     }
 
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, didSelectChat model: ReviewViewProfileModel) {
