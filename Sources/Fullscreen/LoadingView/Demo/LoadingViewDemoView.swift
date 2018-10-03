@@ -51,6 +51,11 @@ public class LoadingViewDemoView: UIView {
             })
         }))
 
+        options.append(Option(title: "throttling: show and hide right after", action: {
+            LoadingView.show(withMessage: "Hi there!")
+            LoadingView.hide()
+        }))
+
         return options
     }()
 

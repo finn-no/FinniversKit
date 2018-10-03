@@ -13,6 +13,8 @@ import UIKit
 
     private let animationDuration: TimeInterval = 0.3
     private let loadingIndicatorSize: CGFloat = 40
+    /// Used for throttling
+    private var shouldShow: Bool = false
     private let loadingIndicatorInitialTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     private static let shared = LoadingView()
 
@@ -67,18 +69,34 @@ import UIKit
     ///
     /// - Parameter message: The message to be displayed (optional)
     @objc public class func show(withMessage message: String? = nil) {
-        LoadingView.shared.startAnimating(withMessage: message)
+        LoadingView.shared.shouldShow = true
+
+        let deadline = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            if LoadingView.shared.shouldShow {
+                LoadingView.shared.startAnimating(withMessage: message)
+            }
+        }
     }
 
     /// Adds a layer on top of the top-most view and starts the animation of the loading indicator.
     ///
     /// - Parameter message: The message to be displayed (optional)
     @objc public class func showSuccess(withMessage message: String? = nil) {
-        LoadingView.shared.showSuccess(withMessage: message)
+        LoadingView.shared.shouldShow = true
+
+        let deadline = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            if LoadingView.shared.shouldShow {
+                LoadingView.shared.showSuccess(withMessage: message)
+            }
+        }
     }
 
     /// Stops the animation of the loading indicator and removes the loading view.
     @objc public class func hide() {
+        LoadingView.shared.shouldShow = false
+
         LoadingView.shared.stopAnimating()
     }
 }
