@@ -27,7 +27,7 @@ public enum DnaViews: String {
         case .spacing:
             return DemoViewController<SpacingDemoView>()
         case .assets:
-            return DemoViewController<AssetsDemoView>()
+            return AssetsDemoViewObjc(nibName: nil, bundle: nil)
         }
     }
 }
