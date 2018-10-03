@@ -194,7 +194,7 @@ public enum FullscreenViews: String {
         case .loginView:
             return DemoViewController<LoginViewDemoView>()
         case .consentToggleView:
-            return DemoViewController<ConsentViewDemoView>()
+            return DemoViewController<ConsentToggleViewDemoView>()
         case .consentActionView:
             return DemoViewController<ConsentActionViewDemoView>()
         case .drumMachine:

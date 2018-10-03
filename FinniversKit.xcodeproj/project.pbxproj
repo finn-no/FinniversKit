@@ -186,7 +186,7 @@
 		DAC7DCAA21538608004602A3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA921538608004602A3 /* SettingsView.swift */; };
 		DAC7DCAE2153866E004602A3 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCAD2153866E004602A3 /* SettingsViewCell.swift */; };
 		DAC7DCAF215386E4004602A3 /* SettingsViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA521538590004602A3 /* SettingsViewDemoView.swift */; };
-		DAC7DCB0215386E7004602A3 /* ConsentViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA7215385A8004602A3 /* ConsentViewDemoView.swift */; };
+		DAC7DCB0215386E7004602A3 /* ConsentToggleViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA7215385A8004602A3 /* ConsentToggleViewDemoView.swift */; };
 		DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */; };
 		DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
 		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
@@ -413,7 +413,7 @@
 		DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadioboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		DAC7DCA521538590004602A3 /* SettingsViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewDemoView.swift; sourceTree = "<group>"; };
-		DAC7DCA7215385A8004602A3 /* ConsentViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewDemoView.swift; sourceTree = "<group>"; };
+		DAC7DCA7215385A8004602A3 /* ConsentToggleViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentToggleViewDemoView.swift; sourceTree = "<group>"; };
 		DAC7DCA921538608004602A3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DAC7DCAD2153866E004602A3 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
@@ -1512,7 +1512,7 @@
 		DAC7DCA32153853F004602A3 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				DAC7DCA7215385A8004602A3 /* ConsentViewDemoView.swift */,
+				DAC7DCA7215385A8004602A3 /* ConsentToggleViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1788,7 +1788,7 @@
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
-				DAC7DCB0215386E7004602A3 /* ConsentViewDemoView.swift in Sources */,
+				DAC7DCB0215386E7004602A3 /* ConsentToggleViewDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,

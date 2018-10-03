@@ -12,7 +12,7 @@ struct ConsentViewData: ConsentToggleViewModel {
     var indexPath = IndexPath(row: 0, section: 0)
 }
 
-class ConsentViewDemoView: UIView {
+class ConsentToggleViewDemoView: UIView {
 
     private lazy var consentToggleView: ConsentToggleView = {
         let view = ConsentToggleView()

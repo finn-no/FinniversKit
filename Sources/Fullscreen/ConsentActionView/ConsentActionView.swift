@@ -87,13 +87,6 @@ extension ConsentActionView: UIScrollViewDelegate {
 
 private extension ConsentActionView {
 
-    func newButton(with style: Button.Style) -> Button {
-        let button = Button(style: style)
-        button.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }
-
     @objc func buttonPressed(sender: UIButton) {
         guard let model = model else { return }
         delegate?.consentActionView(self, didPressButtonAt: model.indexPath)
@@ -105,8 +98,21 @@ private extension ConsentActionView {
         if button.style != model.buttonStyle {
             button.removeFromSuperview()
             button = newButton(with: model.buttonStyle)
+            addSubview(button)
+            NSLayoutConstraint.activate([
+                button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+                button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+                button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
+            ])
         }
         button.setTitle(model.buttonTitle, for: .normal)
+    }
+
+    func newButton(with style: Button.Style) -> Button {
+        let button = Button(style: style)
+        button.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }
 
     func setupSubViews() {
