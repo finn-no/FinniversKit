@@ -4,20 +4,11 @@
 
 import Foundation
 
-public struct ConsentViewModel {
-    public let title: String?
-    public var state: Bool
-    public let text: String
-    public let buttonTitle: String
-    public let buttonStyle: Button.Style
-    public let indexPath: IndexPath
-
-    public init(title: String?, state: Bool, text: String, buttonTitle: String, buttonStyle: Button.Style, indexPath: IndexPath) {
-        self.title = title
-        self.state = state
-        self.text = text
-        self.buttonTitle = buttonTitle
-        self.buttonStyle = buttonStyle
-        self.indexPath = indexPath
-    }
+public protocol ConsentViewModel {
+    var title: String? { get }
+    var state: Bool { get set }
+    var text: String { get }
+    var buttonTitle: String { get }
+    var buttonStyle: Button.Style { get }
+    var indexPath: IndexPath { get }
 }
