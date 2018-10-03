@@ -31,7 +31,7 @@ public class SettingsViewCell: UITableViewCell {
         return imageView
     }()
 
-    private lazy var hairLine: UIView = {
+    private lazy var hairline: UIView = {
         let line = UIView(frame: .zero)
         line.translatesAutoresizingMaskIntoConstraints = false
         line.backgroundColor = .sardine
@@ -71,14 +71,14 @@ private extension SettingsViewCell {
         stateLabel.text = model.stateText
 
         guard !model.hairLine else { return }
-        hairLine.removeFromSuperview()
+        hairline.removeFromSuperview()
     }
 
     func setupSubviews() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(stateLabel)
         contentView.addSubview(arrowView)
-        contentView.addSubview(hairLine)
+        contentView.addSubview(hairline)
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
@@ -91,10 +91,10 @@ private extension SettingsViewCell {
             arrowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             arrowView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            hairLine.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            hairLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            hairLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            hairLine.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
+            hairline.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            hairline.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            hairline.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            hairline.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
             contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: labelInset)
         ])
