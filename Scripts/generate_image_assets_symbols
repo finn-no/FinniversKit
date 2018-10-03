@@ -77,8 +77,8 @@ public extension UIImage {
         self.init(named: imageAsset.rawValue, in: FinniversKit.bundle, compatibleWith: nil)!
     }
 
-    @objc public class func named(_ imageName: String) -> UIImage {
-        return UIImage(named: imageName, in: FinniversKit.bundle, compatibleWith: nil)!
+    @objc public class func assetNamed(_ assetName: String) -> UIImage {
+        return UIImage(named: assetName, in: FinniversKit.bundle, compatibleWith: nil)!
     }
 }
 
