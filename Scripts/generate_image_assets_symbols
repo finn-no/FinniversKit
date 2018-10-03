@@ -37,17 +37,32 @@ PREFIX = "FinniversImageAsset"
 
 File.open(File.join(temp_path, "#{output_filename}.h"), "w") do |f|
   f.puts prelude
-  f.puts "@import Foundation;\n\n"
+  f.puts "@import UIKit;\n\n"
   names.each do |name|
     f.puts "extern NSString *const #{PREFIX + name};\n"
   end
+
+  f.puts "\n\n@interface UIImage (FinniversKit)\n"
+  f.puts "+ (NSArray<NSString *> *)finniversImageNames;\n"
+  f.puts "@end\n"
 end
+
 File.open(File.join(temp_path, "#{output_filename}.m"), "w") do |f|
   f.puts prelude
   f.puts "#import \"#{output_filename}.h\"\n\n"
   names.each do |name|
     f.puts "NSString *const #{PREFIX + name} = @\"#{name}\";\n"
   end
+
+  f.puts "@implementation UIImage (FinniversKit)\n\n"
+  f.puts "+ (NSArray<NSString *> *)finniversImageNames {\n"
+  f.puts "    return @[\n"
+  names.each do |name|
+  f.puts "             #{PREFIX + name},\n"
+  end
+  f.puts "             ];\n"
+  f.puts "}\n\n"
+  f.puts "@end\n"
 end
 
 # swift
@@ -60,6 +75,10 @@ import UIKit
 public extension UIImage {
     public convenience init(named imageAsset: FinniversImageAsset) {
         self.init(named: imageAsset.rawValue, in: FinniversKit.bundle, compatibleWith: nil)!
+    }
+
+    @objc public class func named(_ imageName: String) -> UIImage {
+        return UIImage(named: imageName, in: FinniversKit.bundle, compatibleWith: nil)!
     }
 }
 
