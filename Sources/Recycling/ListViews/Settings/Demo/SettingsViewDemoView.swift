@@ -13,9 +13,9 @@ class SettingsViewDemoView: UIView {
     
     private let sections = [Section(title: "Varslinger", items: [SettingsViewCellModel(title: "Prisnedgang på torget", hairline: false)]),
 
-                            Section(title: "Personvern", items: [SettingsViewCellModel(title: "Få nyhetsbrev fra FINN", stateText: "Av"),
-                                                                 SettingsViewCellModel(title: "Personlin tilpasset FINN", stateText: "På"),
-                                                                 SettingsViewCellModel(title: "Motta viktig informasjon fra FINN", stateText: "På"),
+                            Section(title: "Personvern", items: [SettingsViewCellModel(title: "Få nyhetsbrev fra FINN", status: "Av"),
+                                                                 SettingsViewCellModel(title: "Personlin tilpasset FINN", status: "På"),
+                                                                 SettingsViewCellModel(title: "Motta viktig informasjon fra FINN", status: "På"),
                                                                  SettingsViewCellModel(title: "Smart reklame"),
                                                                  SettingsViewCellModel(title: "Last ned dine data"),
                                                                  SettingsViewCellModel(title: "Slett meg som bruker", hairline: false)])]

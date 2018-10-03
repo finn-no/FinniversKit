@@ -4,11 +4,9 @@
 
 import Foundation
 
-public protocol ConsentViewModel {
-    var title: String? { get }
-    var state: Bool { get set }
+public protocol ConsentActionViewModel {
     var text: String { get }
-    var buttonTitle: String { get }
     var buttonStyle: Button.Style { get }
+    var buttonTitle: String { get }
     var indexPath: IndexPath { get }
 }

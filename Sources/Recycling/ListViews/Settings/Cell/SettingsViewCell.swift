@@ -68,7 +68,7 @@ private extension SettingsViewCell {
     func set(model: SettingsViewCellModel?) {
         guard let model = model else { return }
         titleLabel.text = model.title
-        stateLabel.text = model.stateText
+        stateLabel.text = model.status
 
         guard !model.hairline else { return }
         hairline.removeFromSuperview()
