@@ -28,10 +28,11 @@ public class SwitchView: UIView {
     }()
 
     private lazy var stackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        let view = UIStackView(arrangedSubviews: [titleLabel])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.spacing = .smallSpacing
+        view.distribution = .fillEqually
         return view
     }()
 
@@ -50,6 +51,12 @@ public class SwitchView: UIView {
         didSet {
             titleLabel.text = model?.title
             subtitleLabel.text = model?.subtitle
+            if subtitleLabel.text == nil {
+                self.stackView.removeArrangedSubview(subtitleLabel)
+            } else {
+                self.stackView.addArrangedSubview(subtitleLabel)
+            }
+
             aSwitch.isOn = model?.isOn ?? false
         }
     }
@@ -76,14 +83,13 @@ public class SwitchView: UIView {
 
         let margin: CGFloat = .mediumSpacing
         NSLayoutConstraint.activate([
+            aSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin),
+            aSwitch.centerYAnchor.constraint(equalTo: centerYAnchor),
+
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: margin),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
             stackView.trailingAnchor.constraint(equalTo: aSwitch.leadingAnchor, constant: -margin),
-
-            aSwitch.leadingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: margin),
-            aSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin),
-            aSwitch.topAnchor.constraint(equalTo: topAnchor, constant: margin)
             ])
     }
 
