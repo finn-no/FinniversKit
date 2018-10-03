@@ -18,9 +18,3 @@ import Foundation
         return FinniversKit.bundle
     }
 }
-
-@objc public extension UIImage {
-    @objc public class func named(_ imageName: String) -> UIImage {
-        return UIImage(named: imageName, in: FinniversKit.bundle, compatibleWith: nil)!
-    }
-}

@@ -116,7 +116,6 @@
 		44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149EA21377C7B0053D5F7 /* SavedSearchesListViewModel.swift */; };
 		44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149EF2137805C0053D5F7 /* SavedSearchesListViewDemoView.swift */; };
 		44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149F02137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift */; };
-		44AD1A36216460D6005D7B62 /* AssetsDemoViewObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AD1A35216460D6005D7B62 /* AssetsDemoViewObjc.m */; };
 		44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */; };
 		44AFCE4A215839FB005984DB /* LoadingIndicatorViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFCE46215839F6005984DB /* LoadingIndicatorViewDemoView.swift */; };
 		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -338,9 +337,6 @@
 		44A149EA21377C7B0053D5F7 /* SavedSearchesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewModel.swift; sourceTree = "<group>"; };
 		44A149EF2137805C0053D5F7 /* SavedSearchesListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewDemoView.swift; sourceTree = "<group>"; };
 		44A149F02137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
-		44AD1A34216460D6005D7B62 /* AssetsDemoViewObjc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetsDemoViewObjc.h; sourceTree = "<group>"; };
-		44AD1A35216460D6005D7B62 /* AssetsDemoViewObjc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetsDemoViewObjc.m; sourceTree = "<group>"; };
-		44AD1A37216460F6005D7B62 /* Demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		44AFCE46215839F6005984DB /* LoadingIndicatorViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorViewDemoView.swift; sourceTree = "<group>"; };
 		44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversImageAsset.swift; sourceTree = "<group>"; };
@@ -451,7 +447,6 @@
 				4412FDCC20A433550037A2FC /* SplitViewController.swift */,
 				4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */,
 				4423F226209CB24500B81D68 /* MiniToastView.swift */,
-				44AD1A37216460F6005D7B62 /* Demo-Bridging-Header.h */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -468,8 +463,6 @@
 			isa = PBXGroup;
 			children = (
 				144959DF2122D8C20084549F /* AssetsDemoView.swift */,
-				44AD1A34216460D6005D7B62 /* AssetsDemoViewObjc.h */,
-				44AD1A35216460D6005D7B62 /* AssetsDemoViewObjc.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1702,7 +1695,6 @@
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
 				44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
-				44AD1A36216460D6005D7B62 /* AssetsDemoViewObjc.m in Sources */,
 				4458701D213FA353009187BE /* RegisterViewDefaultData.swift in Sources */,
 				146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */,
 				44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */,
@@ -1905,7 +1897,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finniversKit.playground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Demo/Demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1931,7 +1922,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finniversKit.playground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Demo/Demo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
