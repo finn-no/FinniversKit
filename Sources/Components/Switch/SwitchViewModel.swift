@@ -4,6 +4,5 @@
 
 public protocol SwitchViewModel {
     var title: String { get set }
-    var subtitle: String? { get set }
     var isOn: Bool { get set }
 }

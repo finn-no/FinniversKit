@@ -19,23 +19,6 @@ public class SwitchView: UIView {
         return label
     }()
 
-    private lazy var subtitleLabel: Label = {
-        let label = Label(style: .detail)
-        label.textColor = .stone
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private lazy var stackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [titleLabel])
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .vertical
-        view.spacing = .smallSpacing
-        view.distribution = .fillEqually
-        return view
-    }()
-
     private lazy var aSwitch: UISwitch = {
         let view = UISwitch()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -50,13 +33,6 @@ public class SwitchView: UIView {
     public var model: SwitchViewModel? {
         didSet {
             titleLabel.text = model?.title
-            subtitleLabel.text = model?.subtitle
-            if subtitleLabel.text == nil {
-                self.stackView.removeArrangedSubview(subtitleLabel)
-            } else {
-                self.stackView.addArrangedSubview(subtitleLabel)
-            }
-
             aSwitch.isOn = model?.isOn ?? false
         }
     }
@@ -78,7 +54,7 @@ public class SwitchView: UIView {
     }
 
     private func setup() {
-        addSubview(stackView)
+        addSubview(titleLabel)
         addSubview(aSwitch)
 
         let margin: CGFloat = .mediumSpacing
@@ -86,10 +62,10 @@ public class SwitchView: UIView {
             aSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin),
             aSwitch.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: margin),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
-            stackView.trailingAnchor.constraint(equalTo: aSwitch.leadingAnchor, constant: -margin),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: margin),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
+            titleLabel.trailingAnchor.constraint(equalTo: aSwitch.leadingAnchor, constant: -margin),
             ])
     }
 
