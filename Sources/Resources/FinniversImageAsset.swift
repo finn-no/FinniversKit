@@ -36,10 +36,10 @@ public enum FinniversImageAsset: String {
     case edit
     case editBig
     case error
-    case favoriteAdd
-    case favoriteAddImg
-    case favoriteAdded
-    case favoriteAddedImg
+    case favouriteAdd
+    case favouriteAddImg
+    case favouriteAdded
+    case favouriteAddedImg
     case favourites
     case gallery
     case gridView
@@ -111,10 +111,10 @@ public enum FinniversImageAsset: String {
             .edit,
             .editBig,
             .error,
-            .favoriteAdd,
-            .favoriteAddImg,
-            .favoriteAdded,
-            .favoriteAddedImg,
+            .favouriteAdd,
+            .favouriteAddImg,
+            .favouriteAdded,
+            .favouriteAddedImg,
             .favourites,
             .gallery,
             .gridView,
