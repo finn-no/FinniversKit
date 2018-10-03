@@ -11,14 +11,14 @@ struct Section {
 
 class SettingsViewDemoView: UIView {
     
-    private let sections = [Section(title: "Varslinger", items: [SettingsViewCellModel(title: "Prisnedgang på torget", hairLine: false)]),
+    private let sections = [Section(title: "Varslinger", items: [SettingsViewCellModel(title: "Prisnedgang på torget", hairline: false)]),
 
                             Section(title: "Personvern", items: [SettingsViewCellModel(title: "Få nyhetsbrev fra FINN", stateText: "Av"),
                                                                  SettingsViewCellModel(title: "Personlin tilpasset FINN", stateText: "På"),
                                                                  SettingsViewCellModel(title: "Motta viktig informasjon fra FINN", stateText: "På"),
                                                                  SettingsViewCellModel(title: "Smart reklame"),
                                                                  SettingsViewCellModel(title: "Last ned dine data"),
-                                                                 SettingsViewCellModel(title: "Slett meg som bruker", hairLine: false)])]
+                                                                 SettingsViewCellModel(title: "Slett meg som bruker", hairline: false)])]
 
     private lazy var consentView: SettingsView = {
         let view = SettingsView(frame: .zero, style: .grouped)

@@ -70,7 +70,7 @@ private extension SettingsViewCell {
         titleLabel.text = model.title
         stateLabel.text = model.stateText
 
-        guard !model.hairLine else { return }
+        guard !model.hairline else { return }
         hairline.removeFromSuperview()
     }
 

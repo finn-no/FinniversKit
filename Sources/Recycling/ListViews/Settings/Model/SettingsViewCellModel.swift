@@ -8,11 +8,11 @@ public struct SettingsViewCellModel {
 
     public let title: String
     public var stateText: String?
-    public let hairLine: Bool
+    public let hairline: Bool
 
-    public init(title: String, stateText: String? = nil, hairLine: Bool = true) {
+    public init(title: String, stateText: String? = nil, hairline: Bool = true) {
         self.title = title
         self.stateText = stateText
-        self.hairLine = hairLine
+        self.hairline = hairline
     }
 }
