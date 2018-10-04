@@ -19,6 +19,7 @@ public protocol WishListViewDataSource: NSObjectProtocol {
 
 public class WishListView: UIView {
     public static let estimatedRowHeight: CGFloat = 300
+    public static let seperatorInset: UIEdgeInsets = UIEdgeInsetsMake(5, 0, 5, 0)
     
     // MARK: - Internal properties
     
@@ -31,6 +32,7 @@ public class WishListView: UIView {
         tableView.rowHeight = WishListView.estimatedRowHeight
         tableView.estimatedRowHeight = WishListView.estimatedRowHeight
         tableView.separatorStyle = .none
+        tableView.separatorInset = WishListView.seperatorInset
         return tableView
     }()
     
