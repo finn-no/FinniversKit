@@ -9,16 +9,28 @@ struct Section {
     var items: [SettingsViewCellModel]
 }
 
+struct SettingsItem: SettingsViewCellModel {
+    let title: String
+    var status: String?
+    let hairline: Bool
+
+    init(title: String, status: String? = nil, hairline: Bool = true) {
+        self.title = title
+        self.status = status
+        self.hairline = hairline
+    }
+}
+
 class SettingsViewDemoView: UIView {
     
-    private let sections = [Section(title: "Varslinger", items: [SettingsViewCellModel(title: "Prisnedgang på torget", hairline: false)]),
+    private let sections = [Section(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget", hairline: false)]),
 
-                            Section(title: "Personvern", items: [SettingsViewCellModel(title: "Få nyhetsbrev fra FINN", status: "Av"),
-                                                                 SettingsViewCellModel(title: "Personlin tilpasset FINN", status: "På"),
-                                                                 SettingsViewCellModel(title: "Motta viktig informasjon fra FINN", status: "På"),
-                                                                 SettingsViewCellModel(title: "Smart reklame"),
-                                                                 SettingsViewCellModel(title: "Last ned dine data"),
-                                                                 SettingsViewCellModel(title: "Slett meg som bruker", hairline: false)])]
+                            Section(title: "Personvern", items: [SettingsItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
+                                                                 SettingsItem(title: "Personlin tilpasset FINN", status: "På"),
+                                                                 SettingsItem(title: "Motta viktig informasjon fra FINN", status: "På"),
+                                                                 SettingsItem(title: "Smart reklame"),
+                                                                 SettingsItem(title: "Last ned dine data"),
+                                                                 SettingsItem(title: "Slett meg som bruker", hairline: false)])]
 
     private lazy var consentView: SettingsView = {
         let view = SettingsView(frame: .zero, style: .grouped)
