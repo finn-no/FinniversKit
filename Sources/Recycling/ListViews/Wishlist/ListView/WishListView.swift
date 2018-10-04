@@ -72,6 +72,14 @@ public class WishListView: UIView {
         tableView.reloadData()
     }
     
+    public func insertRows(at indexPath: [IndexPath], with animation: UITableViewRowAnimation) {
+        tableView.insertRows(at: indexPath, with: animation)
+    }
+    
+    public func deleteRows(at indexPath: [IndexPath], with animation: UITableViewRowAnimation) {
+        tableView.deleteRows(at: indexPath, with: animation)
+    }
+    
     public func scrollToTop(animated: Bool = true) {
         tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
     }
