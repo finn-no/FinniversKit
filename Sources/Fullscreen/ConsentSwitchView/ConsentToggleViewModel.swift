@@ -9,5 +9,5 @@ public protocol ConsentToggleViewModel {
     var state: Bool { get set }
     var text: String { get }
     var buttonTitle: String { get }
-    var indexPath: IndexPath { get }
+    var id: String { get }
 }

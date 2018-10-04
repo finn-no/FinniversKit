@@ -8,7 +8,7 @@ struct ActionViewModel: ConsentActionViewModel {
     var text = "Med GDPR-forordningen (General Data Protection Regulation) har du rett til å vite hva selskaper vet om deg. Det inkluderer informasjon du har delt med dem og data de har samlet om din aktivitet. Her kan du laste ned en oversikt over alle dine data FINN.no har lagret."
     var buttonStyle: Button.Style = .callToAction
     var buttonTitle = "Last ned data"
-    var indexPath = IndexPath(row: 0, section: 0)
+    var id = "actionModel"
 }
 
 class ConsentActionViewDemoView: UIView {

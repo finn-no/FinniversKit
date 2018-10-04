@@ -5,7 +5,7 @@ import UIKit
 
 public protocol ConsentSwitchViewDelegate: class {
     func consentToggleView(_ consentToggleView: ConsentToggleView, didToggleSwitch position: Bool)
-    func consentToggleView(_ consentToggleView: ConsentToggleView, didPressButtonAt indexPath: IndexPath)
+    func consentToggleViewDidPressButton(_ consentToggleView: ConsentToggleView)
 }
 
 public class ConsentToggleView: UIView {
@@ -96,8 +96,7 @@ private extension ConsentToggleView {
     }
 
     @objc func buttonPressed(sender: UIButton) {
-        guard let indexPath = model?.indexPath else { return }
-        delegate?.consentToggleView(self, didPressButtonAt: indexPath)
+        delegate?.consentToggleViewDidPressButton(self)
     }
 
     func set(model: ConsentToggleViewModel?) {

@@ -8,5 +8,5 @@ public protocol ConsentActionViewModel {
     var text: String { get }
     var buttonStyle: Button.Style { get }
     var buttonTitle: String { get }
-    var indexPath: IndexPath { get }
+    var id: String { get }
 }

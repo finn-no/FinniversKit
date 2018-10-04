@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol ConsentActionViewDelegate: class {
-    func consentActionView(_ consentActionView: ConsentActionView, didPressButtonAt indexPath: IndexPath)
+    func consentActionViewDidPressButton(_ consentActionView: ConsentActionView)
 }
 
 public class ConsentActionView: UIView {
@@ -88,8 +88,7 @@ extension ConsentActionView: UIScrollViewDelegate {
 private extension ConsentActionView {
 
     @objc func buttonPressed(sender: UIButton) {
-        guard let model = model else { return }
-        delegate?.consentActionView(self, didPressButtonAt: model.indexPath)
+        delegate?.consentActionViewDidPressButton(self)
     }
 
     func set(model: ConsentActionViewModel?) {
