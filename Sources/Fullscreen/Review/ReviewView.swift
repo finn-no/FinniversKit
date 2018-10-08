@@ -29,7 +29,7 @@ public class ReviewView: UIView {
         tableView.register(ReviewTextFooter.self)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = .automaticDimension
         tableView.estimatedRowHeight = ReviewView.defaultRowHeight
         tableView.estimatedSectionHeaderHeight = ReviewView.defaultRowHeight
         tableView.estimatedSectionFooterHeight = ReviewView.defaultRowHeight

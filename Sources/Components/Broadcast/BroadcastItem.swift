@@ -36,7 +36,7 @@ class BroadcastItem: UIView {
         textView.isSelectable = true
         textView.isScrollEnabled = false
         textView.textContainerInset = .zero
-        textView.linkTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(BroadcastItem.Style.linkTextAttributes)
+        textView.linkTextAttributes = BroadcastItem.Style.linkTextAttributes
         return textView
     }()
 
