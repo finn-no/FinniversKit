@@ -32,10 +32,9 @@ class SettingsViewDemoView: UIView {
                                                                  SettingsItem(title: "Last ned dine data"),
                                                                  SettingsItem(title: "Slett meg som bruker", hairline: false)])]
 
-    private lazy var consentView: SettingsView = {
-        let view = SettingsView(frame: .zero, style: .grouped)
+    private lazy var settingsView: SettingsView = {
+        let view = SettingsView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentInset = UIEdgeInsets(top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0)
         view.dataSource = self
         view.delegate = self
         return view
@@ -51,30 +50,28 @@ class SettingsViewDemoView: UIView {
     }
 }
 
-extension SettingsViewDemoView: UITableViewDataSource {
+extension SettingsViewDemoView: SettingsViewDataSource {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in settingsView: SettingsView) -> Int {
         return sections.count
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func settingsView(_ settingsView: SettingsView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].items.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(SettingsViewCell.self, for: indexPath)
-        cell.model = sections[indexPath.section].items[indexPath.row]
-        return cell
+    func settingsView(_ settingsView: SettingsView, modelForItemAt indexPath: IndexPath) -> SettingsViewCellModel {
+        return sections[indexPath.section].items[indexPath.row]
     }
 }
 
-extension SettingsViewDemoView: UITableViewDelegate {
+extension SettingsViewDemoView: SettingsViewDelegate {
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return consentView.headerView(for: section, with: sections[section].title)
+    func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].title
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func settingsView(_ settingsView: SettingsView, didSelectRowAt indexPath: IndexPath) {
         print("did select")
     }
 }
@@ -82,7 +79,7 @@ extension SettingsViewDemoView: UITableViewDelegate {
 private extension SettingsViewDemoView {
 
     func setupSubviews() {
-        addSubview(consentView)
-        consentView.fillInSuperview()
+        addSubview(settingsView)
+        settingsView.fillInSuperview()
     }
 }
