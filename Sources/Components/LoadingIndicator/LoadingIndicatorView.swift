@@ -1,9 +1,19 @@
 import UIKit
 
-public class LoadingIndicatorView: UIView {
+public protocol LoadingViewAnimatable {
+    var alpha: CGFloat { get set }
+    var transform: CGAffineTransform { get set }
+    func startAnimating()
+    func stopAnimating()
+}
+
+extension UIActivityIndicatorView: LoadingViewAnimatable { }
+
+/// Branded replacement for UIActivityIndicatorView.
+public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
     private var backgroundLayer = CAShapeLayer()
     private var animatedLayer = CAShapeLayer()
-    private var duration: CGFloat = 3
+    private var duration: CGFloat = 2.5
     private var borderColor: UIColor = .secondaryBlue
     private var backgroundLayerColor: UIColor = .sardine
     private var lineWidth: CGFloat = 4
@@ -16,24 +26,6 @@ public class LoadingIndicatorView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
-    }
-
-    private func setup() {
-        backgroundColor = .clear
-
-        backgroundLayer.fillColor = UIColor.clear.cgColor
-        backgroundLayer.strokeColor = backgroundLayerColor.cgColor
-        backgroundLayer.strokeStart = 0
-        backgroundLayer.strokeEnd = 1
-        backgroundLayer.lineWidth = lineWidth
-        backgroundLayer.lineCap = CAShapeLayerLineCap.round
-
-        animatedLayer.fillColor = UIColor.clear.cgColor
-        animatedLayer.strokeColor = borderColor.cgColor
-        animatedLayer.strokeStart = 0
-        animatedLayer.strokeEnd = 1
-        animatedLayer.lineWidth = lineWidth
-        animatedLayer.lineCap = CAShapeLayerLineCap.round
     }
 
     public override func layoutSubviews() {
@@ -51,6 +43,39 @@ public class LoadingIndicatorView: UIView {
 
         layer.addSublayer(backgroundLayer)
         layer.addSublayer(animatedLayer)
+    }
+
+    /// Starts the animation of the loading indicator.
+    public func startAnimating() {
+        animateGroup()
+        isHidden = false
+    }
+
+    /// Stops the animation of the loading indicator.
+    public func stopAnimating() {
+        backgroundLayer.removeAllAnimations()
+        animatedLayer.removeAllAnimations()
+        isHidden = true
+    }
+}
+
+extension LoadingIndicatorView {
+    private func setup() {
+        backgroundColor = .clear
+
+        backgroundLayer.fillColor = UIColor.clear.cgColor
+        backgroundLayer.strokeColor = backgroundLayerColor.cgColor
+        backgroundLayer.strokeStart = 0
+        backgroundLayer.strokeEnd = 1
+        backgroundLayer.lineWidth = lineWidth
+        backgroundLayer.lineCap = CAShapeLayerLineCap.round
+
+        animatedLayer.fillColor = UIColor.clear.cgColor
+        animatedLayer.strokeColor = borderColor.cgColor
+        animatedLayer.strokeStart = 0
+        animatedLayer.strokeEnd = 1
+        animatedLayer.lineWidth = lineWidth
+        animatedLayer.lineCap = CAShapeLayerLineCap.round
     }
 
     private func animateStrokeEnd() -> CABasicAnimation {
@@ -80,7 +105,7 @@ public class LoadingIndicatorView: UIView {
         animation.fromValue = 0
         animation.toValue = .pi * 2.0
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        animation.repeatCount = Float.infinity
+        animation.repeatCount = .infinity
 
         return animation
     }
@@ -91,19 +116,8 @@ public class LoadingIndicatorView: UIView {
         animationGroup.duration = CFTimeInterval(duration)
         animationGroup.fillMode = CAMediaTimingFillMode.both
         animationGroup.isRemovedOnCompletion = false
-        animationGroup.repeatCount = Float.infinity
+        animationGroup.repeatCount = .infinity
 
         animatedLayer.add(animationGroup, forKey: "loading")
-    }
-
-    public func startAnimating() {
-        animateGroup()
-        isHidden = false
-    }
-
-    public func stopAnimating() {
-        backgroundLayer.removeAllAnimations()
-        animatedLayer.removeAllAnimations()
-        isHidden = true
     }
 }
