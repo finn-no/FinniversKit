@@ -25,6 +25,7 @@ public class SettingsView: UIView {
         view.dataSource = self
         view.delegate = self
         view.register(SettingsViewCell.self)
+        view.register(SettingsViewSectionHeaderView.self)
         return view
     }()
 
@@ -33,7 +34,7 @@ public class SettingsView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSubViews()
+        setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -42,7 +43,7 @@ public class SettingsView: UIView {
 }
 
 private extension SettingsView {
-    func setupSubViews() {
+    func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -68,22 +69,9 @@ extension SettingsView: UITableViewDataSource {
 extension SettingsView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: .zero)
-
-        let label = Label(style: .title3)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = delegate?.settingsView(self, titleForHeaderInSection: section)
-
-        view.addSubview(label)
-
-        NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .mediumLargeSpacing),
-            label.topAnchor.constraint(equalTo: view.topAnchor, constant: .mediumSpacing),
-            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.mediumLargeSpacing),
-            label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.mediumSpacing),
-        ])
-
-        return view
+        let headerView = tableView.dequeue(SettingsViewSectionHeaderView.self)
+        headerView.title = delegate?.settingsView(self, titleForHeaderInSection: section)
+        return headerView
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

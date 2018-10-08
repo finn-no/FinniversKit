@@ -51,6 +51,7 @@ public class ConsentActionView: UIView {
 
     // MARK: - Public properties
 
+    public var shadowAnimationDuration = 0.12
     public var lineSpacing: CGFloat = 4
     public weak var delegate: ConsentActionViewDelegate?
     public var model: ConsentActionViewModel? {
@@ -61,7 +62,7 @@ public class ConsentActionView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSubViews()
+        setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -81,9 +82,9 @@ extension ConsentActionView: UIScrollViewDelegate {
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if -scrollView.contentOffset.y + textLabel.intrinsicContentSize.height + .largeSpacing >= buttonBackgroundView.frame.minY {
-            buttonBackgroundView.layer.shadowOpacity = 0.2
+            animateShadow(fromValue: 0, toValue: 0.2, duration: shadowAnimationDuration)
         } else {
-            buttonBackgroundView.layer.shadowOpacity = 0
+            animateShadow(fromValue: 0.2, toValue: 0, duration: shadowAnimationDuration)
         }
     }
 }
@@ -91,6 +92,16 @@ extension ConsentActionView: UIScrollViewDelegate {
 // MARK: - Private methods
 
 private extension ConsentActionView {
+
+    func animateShadow(fromValue from: Float, toValue to: Float, duration: Double) {
+        guard buttonBackgroundView.layer.shadowOpacity != to else { return }
+        let animation = CABasicAnimation(keyPath: "shadowOpacity")
+        animation.fromValue = from
+        animation.toValue = to
+        animation.duration = duration
+        buttonBackgroundView.layer.add(animation, forKey: nil)
+        buttonBackgroundView.layer.shadowOpacity = to
+    }
 
     @objc func buttonPressed(sender: UIButton) {
         delegate?.consentActionViewDidPressButton(self)
@@ -110,7 +121,7 @@ private extension ConsentActionView {
         return button
     }
 
-    func setupSubViews() {
+    func setup() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(textLabel)
@@ -145,16 +156,3 @@ private extension ConsentActionView {
         ])
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

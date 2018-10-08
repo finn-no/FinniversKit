@@ -21,7 +21,7 @@ class ConsentActionViewDemoView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSubViews()
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -30,7 +30,7 @@ class ConsentActionViewDemoView: UIView {
 }
 
 private extension ConsentActionViewDemoView {
-    func setupSubViews() {
+    func setup() {
         addSubview(consentActionView)
         consentActionView.fillInSuperview()
     }

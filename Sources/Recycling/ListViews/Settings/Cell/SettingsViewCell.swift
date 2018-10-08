@@ -40,8 +40,6 @@ public class SettingsViewCell: UITableViewCell {
 
     // MARK: - Public properties
 
-    public static var reuseIdentifier = "consent-cell"
-
     public var model: SettingsViewCellModel? {
         didSet { set(model: model) }
     }
@@ -53,7 +51,7 @@ public class SettingsViewCell: UITableViewCell {
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        setupSubviews()
+        setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -66,15 +64,12 @@ public class SettingsViewCell: UITableViewCell {
 private extension SettingsViewCell {
 
     func set(model: SettingsViewCellModel?) {
-        guard let model = model else { return }
-        titleLabel.text = model.title
-        stateLabel.text = model.status
-
-        guard !model.hairline else { return }
-        hairline.removeFromSuperview()
+        titleLabel.text = model?.title
+        stateLabel.text = model?.status
+        hairline.isHidden = !(model?.hairline ?? true) // isHidden is false by default
     }
 
-    func setupSubviews() {
+    func setup() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(stateLabel)
         contentView.addSubview(arrowView)

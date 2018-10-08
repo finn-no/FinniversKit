@@ -4,7 +4,7 @@
 //
 import FinniversKit
 
-struct Section {
+struct SettingsSection {
     var title: String
     var items: [SettingsViewCellModel]
 }
@@ -23,9 +23,9 @@ struct SettingsItem: SettingsViewCellModel {
 
 class SettingsViewDemoView: UIView {
     
-    private let sections = [Section(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget", hairline: false)]),
+    private let sections = [SettingsSection(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget", hairline: false)]),
 
-                            Section(title: "Personvern", items: [SettingsItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
+                            SettingsSection(title: "Personvern", items: [SettingsItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
                                                                  SettingsItem(title: "Personlin tilpasset FINN", status: "På"),
                                                                  SettingsItem(title: "Motta viktig informasjon fra FINN", status: "På"),
                                                                  SettingsItem(title: "Smart reklame"),
@@ -42,7 +42,7 @@ class SettingsViewDemoView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSubviews()
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -78,7 +78,7 @@ extension SettingsViewDemoView: SettingsViewDelegate {
 
 private extension SettingsViewDemoView {
 
-    func setupSubviews() {
+    func setup() {
         addSubview(settingsView)
         settingsView.fillInSuperview()
     }

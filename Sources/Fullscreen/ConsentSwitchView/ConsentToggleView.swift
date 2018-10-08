@@ -77,7 +77,7 @@ public class ConsentToggleView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSubView()
+        setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -107,7 +107,7 @@ private extension ConsentToggleView {
         button.setTitle(model.buttonTitle, for: .normal)
     }
 
-    func setupSubView() {
+    func setup() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(backgroundView)
