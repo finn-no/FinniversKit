@@ -13,7 +13,9 @@ public class Button: UIButton {
 
     // MARK: - External properties
 
-    public let style: Style
+    public var style: Style {
+        didSet { setup() }
+    }
 
     // MARK: - Setup
 

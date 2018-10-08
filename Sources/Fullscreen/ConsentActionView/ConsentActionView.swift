@@ -20,7 +20,12 @@ public class ConsentActionView: UIView {
         return label
     }()
 
-    private lazy var button: Button = newButton(with: .callToAction)
+    private lazy var button: Button = {
+        let button = Button(style: .callToAction)
+        button.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     private var buttonBackgroundView: UIView = {
         let view = UIView(frame: .zero)
@@ -94,17 +99,7 @@ private extension ConsentActionView {
     func set(model: ConsentActionViewModel?) {
         guard let model = model else { return }
         textLabel.attributedText = model.text.attributedStringWithLineSpacing(lineSpacing)
-        if button.style != model.buttonStyle {
-            button.removeFromSuperview()
-            button = newButton(with: model.buttonStyle)
-            addSubview(button)
-            NSLayoutConstraint.activate([
-                button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-                button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
-                button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-                buttonBackgroundView.topAnchor.constraint(equalTo: button.topAnchor, constant: -.mediumLargeSpacing)
-            ])
-        }
+        button.style = model.buttonStyle
         button.setTitle(model.buttonTitle, for: .normal)
     }
 
