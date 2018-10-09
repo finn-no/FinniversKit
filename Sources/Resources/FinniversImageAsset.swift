@@ -11,6 +11,10 @@ public extension UIImage {
     public convenience init(named imageAsset: FinniversImageAsset) {
         self.init(named: imageAsset.rawValue, in: FinniversKit.bundle, compatibleWith: nil)!
     }
+
+    @objc public class func assetNamed(_ assetName: String) -> UIImage {
+        return UIImage(named: assetName, in: FinniversKit.bundle, compatibleWith: nil)!
+    }
 }
 
 public enum FinniversImageAsset: String {
@@ -28,6 +32,7 @@ public enum FinniversImageAsset: String {
     case classifieds
     case distance
     case download
+    case easterEgg
     case edit
     case editBig
     case error
@@ -76,6 +81,7 @@ public enum FinniversImageAsset: String {
     case share
     case shopping
     case smalljobs
+    case spidLogo
     case success
     case trashcan
     case travel
@@ -101,6 +107,7 @@ public enum FinniversImageAsset: String {
             .classifieds,
             .distance,
             .download,
+            .easterEgg,
             .edit,
             .editBig,
             .error,
@@ -149,6 +156,7 @@ public enum FinniversImageAsset: String {
             .share,
             .shopping,
             .smalljobs,
+            .spidLogo,
             .success,
             .trashcan,
             .travel,

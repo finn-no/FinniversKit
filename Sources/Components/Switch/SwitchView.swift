@@ -20,7 +20,8 @@ public class SwitchView: UIView {
     }()
 
     private lazy var descriptionLabel: Label = {
-        let label = Label(style: .detail(.stone))
+        let label = Label(style: .detail)
+        label.textColor = .stone
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label

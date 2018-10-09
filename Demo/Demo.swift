@@ -1,7 +1,6 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-
 import UIKit
 
 public enum DnaViews: String {
@@ -10,7 +9,7 @@ public enum DnaViews: String {
     case spacing
     case assets
 
-    static var all: [DnaViews] {
+    public static var all: [DnaViews] {
         return [
             .color,
             .font,
@@ -22,20 +21,19 @@ public enum DnaViews: String {
     public var viewController: UIViewController {
         switch self {
         case .color:
-            return ViewController<ColorDemoView>()
+            return DemoViewController<ColorDemoView>()
         case .font:
-            return ViewController<FontDemoView>()
+            return DemoViewController<FontDemoView>()
         case .spacing:
-            return ViewController<SpacingDemoView>()
+            return DemoViewController<SpacingDemoView>()
         case .assets:
-            return ViewController<AssetsDemoView>()
+            return DemoViewController<AssetsDemoView>()
         }
     }
 }
 
 public enum ComponentViews: String {
     case broadcast
-    case broadcastContainer
     case button
     case label
     case ribbon
@@ -47,11 +45,13 @@ public enum ComponentViews: String {
     case checkbox
     case radioButton
     case roundedImageView
+    case loadingIndicator
+    case horizontalSlide
+    case easterEggButton
 
-    static var all: [ComponentViews] {
+    public static var all: [ComponentViews] {
         return [
             .broadcast,
-            .broadcastContainer,
             .button,
             .label,
             .ribbon,
@@ -63,62 +63,89 @@ public enum ComponentViews: String {
             .checkbox,
             .radioButton,
             .roundedImageView,
+            .loadingIndicator,
+            .horizontalSlide,
+            .easterEggButton
         ]
     }
 
     public var viewController: UIViewController {
         switch self {
         case .broadcast:
-            return ViewController<BroadcastDemoView>()
-        case .broadcastContainer:
-            return ViewController<BroadcastContainerDemoView>()
+            return DemoViewController<BroadcastDemoView>()
         case .button:
-            return ViewController<ButtonDemoView>()
+            return DemoViewController<ButtonDemoView>()
         case .label:
-            return ViewController<LabelDemoView>()
+            return DemoViewController<LabelDemoView>()
         case .ribbon:
-            return ViewController<RibbonDemoView>()
+            return DemoViewController<RibbonDemoView>()
         case .textField:
-            return ViewController<TextFieldDemoView>()
+            return DemoViewController<TextFieldDemoView>()
         case .toast:
-            return ViewController<ToastDemoView>()
+            return DemoViewController<ToastDemoView>()
         case .switchView:
-            return ViewController<SwitchViewDemoView>()
+            return DemoViewController<SwitchViewDemoView>()
         case .inlineConsent:
-            return ViewController<InlineConsentDemoView>()
+            return DemoViewController<InlineConsentDemoView>()
         case .consentTransparencyInfo:
-            return ViewController<ConsentTransparencyInfoDemoView>()
+            return DemoViewController<ConsentTransparencyInfoDemoView>()
         case .checkbox:
-            return ViewController<CheckboxDemoView>(usingDoubleTap: false)
+            return DemoViewController<CheckboxDemoView>(withDismissButton: true)
         case .radioButton:
-            return ViewController<RadioButtonDemoView>(usingDoubleTap: false)
+            return DemoViewController<RadioButtonDemoView>(withDismissButton: true)
         case .roundedImageView:
-            return ViewController<RoundedImageViewDemoView>()
+            return DemoViewController<RoundedImageViewDemoView>()
+        case .loadingIndicator:
+            return DemoViewController<LoadingIndicatorViewDemoView>()
+        case .horizontalSlide:
+            let presentedViewController = HorizontalSlideDemoViewController()
+            let secondViewController = UINavigationController(rootViewController: presentedViewController)
+            secondViewController.transitioningDelegate = presentedViewController.transition
+            secondViewController.modalPresentationStyle = .custom
+            return secondViewController
+        case .easterEggButton:
+            return DemoViewController<EasterEggButtonDemoView>()
         }
     }
 }
 
 public enum RecyclingViews: String {
     case notificationsListView
+    case favoriteFoldersListView
+    case favoritesListView
+    case savedSearchesListView
     case marketsGridView
     case adsGridView
+    case settingsView
 
-    static var all: [RecyclingViews] {
+    public static var all: [RecyclingViews] {
         return [
             .notificationsListView,
+            .favoriteFoldersListView,
+            .favoritesListView,
+            .savedSearchesListView,
             .marketsGridView,
             .adsGridView,
+            .settingsView,
         ]
     }
 
     public var viewController: UIViewController {
         switch self {
         case .notificationsListView:
-            return ViewController<NotificationsListViewDemoView>()
+            return DemoViewController<NotificationsListViewDemoView>()
+        case .favoriteFoldersListView:
+            return DemoViewController<FavoriteFoldersListViewDemoView>()
+        case .favoritesListView:
+            return DemoViewController<FavoritesListViewDemoView>()
+        case .savedSearchesListView:
+            return DemoViewController<SavedSearchesListViewDemoView>()
         case .marketsGridView:
-            return ViewController<MarketsGridViewDemoView>()
+            return DemoViewController<MarketsGridViewDemoView>()
         case .adsGridView:
-            return ViewController<AdsGridViewDemoView>()
+            return DemoViewController<AdsGridViewDemoView>()
+        case .settingsView:
+            return DemoViewController<SettingsViewDemoView>()
         }
     }
 }
@@ -129,29 +156,53 @@ public enum FullscreenViews: String {
     case emptyView
     case reportAdView
     case reviewView
+    case registerView
+    case loginView
+    case consentToggleView
+    case consentActionView
+    case loadingView
+    case drumMachine
 
-    static var all: [FullscreenViews] {
+    public static var all: [FullscreenViews] {
         return [
             .frontpageView,
             .popupView,
             .emptyView,
             .reportAdView,
             .reviewView,
+            .registerView,
+            .loginView,
+            .consentToggleView,
+            .consentActionView,
+            .loadingView,
+            .drumMachine
         ]
     }
 
     public var viewController: UIViewController {
         switch self {
         case .frontpageView:
-            return ViewController<FrontpageViewDemoView>()
+            return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:
-            return ViewController<EmptyViewDemoView>()
+            return DemoViewController<EmptyViewDemoView>()
         case .popupView:
-            return ViewController<PopupViewDemoView>()
+            return DemoViewController<PopupViewDemoView>()
         case .reportAdView:
-            return ViewController<AdReporterDemoView>(usingDoubleTap: false)
+            return DemoViewController<AdReporterDemoView>(withDismissButton: true)
         case .reviewView:
-            return ViewController<ReviewViewDemoView>()
+            return DemoViewController<ReviewViewDemoView>()
+        case .registerView:
+            return DemoViewController<RegisterViewDemoView>()
+        case .loginView:
+            return DemoViewController<LoginViewDemoView>()
+        case .consentToggleView:
+            return DemoViewController<ConsentToggleViewDemoView>()
+        case .consentActionView:
+            return DemoViewController<ConsentActionViewDemoView>()
+        case .loadingView:
+            return DemoViewController<LoadingViewDemoView>()
+        case .drumMachine:
+            return DemoViewController<DrumMachineDemoView>()
         }
     }
 }
