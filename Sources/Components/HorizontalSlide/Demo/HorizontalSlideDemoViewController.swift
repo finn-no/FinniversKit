@@ -5,8 +5,10 @@
 import FinniversKit
 
 class HorizontalSlideDemoViewController: UIViewController {
-    lazy var transitionDelegate: HorizontalSlideTransitionDelegate = {
-        return HorizontalSlideTransitionDelegate()
+    lazy var transition: HorizontalSlideTransition = {
+        let transition = HorizontalSlideTransition()
+        transition.delegate = self
+        return transition
     }()
 
     override func viewDidLoad() {
@@ -22,5 +24,11 @@ class HorizontalSlideDemoViewController: UIViewController {
 
     @objc func swipeGestureRecognizerAction() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension HorizontalSlideDemoViewController: HorizontalSlideTransitionDelegate {
+    func horizontalSlideTransitionDidDismiss(_ horizontalSlideTransition: HorizontalSlideTransition) {
+        // Do something
     }
 }

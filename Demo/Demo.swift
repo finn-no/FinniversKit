@@ -100,7 +100,7 @@ public enum ComponentViews: String {
         case .horizontalSlide:
             let presentedViewController = HorizontalSlideDemoViewController()
             let secondViewController = UINavigationController(rootViewController: presentedViewController)
-            secondViewController.transitioningDelegate = presentedViewController.transitionDelegate
+            secondViewController.transitioningDelegate = presentedViewController.transition
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
         case .easterEggButton:
