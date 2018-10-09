@@ -105,6 +105,8 @@ private extension ConsentToggleView {
         toggle.setOn(model.state, animated: false)
         textLabel.attributedText = model.text.attributedStringWithLineSpacing(lineSpacing)
         button.setTitle(model.buttonTitle, for: .normal)
+        guard model.buttonTitle == nil else { return }
+        button.isHidden = true
     }
 
     func setup() {

@@ -7,8 +7,7 @@ struct ConsentViewData: ConsentToggleViewModel {
     var title = "Få nyhetsbrev fra FINN"
     var state = true
     var text = "FINN sender deg nyhetsbrev med for eksempel reisetips, jobbtrender, morsomme konkurranser og smarte råd til deg som kjøper og selger.\nFor å gjøre dette bruker vi kontaktinformasjonen knyttet til brukeren din på FINN."
-    var buttonTitle = "Les mer"
-    var buttonStyle = Button.Style.destructive
+    var buttonTitle: String? = "Les mer"
 }
 
 class ConsentToggleViewDemoView: UIView {
