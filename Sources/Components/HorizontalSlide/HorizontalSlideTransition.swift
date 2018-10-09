@@ -1,8 +1,15 @@
 import UIKit
 
-public class HorizontalSlideTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
+public protocol HorizontalSlideTransitionDelegate: class {
+    func horizontalSlideTransitionDidDismiss(_ horizontalSlideTransition: HorizontalSlideTransition)
+}
+
+public class HorizontalSlideTransition: NSObject, UIViewControllerTransitioningDelegate {
+    public weak var delegate: HorizontalSlideTransitionDelegate?
+
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         let presentationController = HorizontalSlideController(presentedViewController: presented, presenting: presenting)
+        presentationController.dismissalDelegate = self
         return presentationController
     }
 
@@ -12,5 +19,12 @@ public class HorizontalSlideTransitionDelegate: NSObject, UIViewControllerTransi
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return HorizontalSlideTransitionAnimator()
+    }
+}
+
+// MARK: - HorizontalSlideControllerDelegate
+extension HorizontalSlideTransition: HorizontalSlideControllerDelegate {
+    func horizontalSlideControllerDidDismiss(_ horizontalSlideController: HorizontalSlideController) {
+        delegate?.horizontalSlideTransitionDidDismiss(self)
     }
 }

@@ -1,8 +1,13 @@
 import UIKit
 
+protocol HorizontalSlideControllerDelegate: class {
+    func horizontalSlideControllerDidDismiss(_ horizontalSlideController: HorizontalSlideController)
+}
 
-/// Used by the HorizontalSlideTransitionDelegate when using `modalPresentationStyle = .custom`.
+/// Used by the HorizontalSlideTransition when using `modalPresentationStyle = .custom`.
 class HorizontalSlideController: UIPresentationController {
+    weak var dismissalDelegate: HorizontalSlideControllerDelegate?
+
     // MARK: - Properties
     private let containerPercentage: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 0.60 : 0.85
 
@@ -74,5 +79,6 @@ class HorizontalSlideController: UIPresentationController {
     // MARK: - Private
     @objc private func handleDismissGesture() {
         presentingViewController.dismiss(animated: true)
+        dismissalDelegate?.horizontalSlideControllerDidDismiss(self)
     }
 }
