@@ -18,4 +18,14 @@ public extension String {
 
         return ceil(boundingBox.width)
     }
+
+    func attributedStringWithLineSpacing(_ space: CGFloat) -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = space
+
+        let attrString = NSMutableAttributedString(string: self)
+        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+
+        return attrString
+    }
 }
