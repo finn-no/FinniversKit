@@ -40,6 +40,10 @@ public class SettingsView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    public func reloadData() {
+        tableView.reloadData()
+    }
 }
 
 private extension SettingsView {
