@@ -1,12 +1,12 @@
 import UIKit
 
-@objc protocol HorizontalSlideControllerDelegate: class {
-    @objc func horizontalSlideControllerDidDismiss(_ horizontalSlideController: HorizontalSlideController)
+protocol HorizontalSlideControllerDelegate: class {
+    func horizontalSlideControllerDidDismiss(_ horizontalSlideController: HorizontalSlideController)
 }
 
 /// Used by the HorizontalSlideTransition when using `modalPresentationStyle = .custom`.
-@objc class HorizontalSlideController: UIPresentationController {
-    @objc weak var dismissalDelegate: HorizontalSlideControllerDelegate?
+class HorizontalSlideController: UIPresentationController {
+    weak var dismissalDelegate: HorizontalSlideControllerDelegate?
 
     // MARK: - Properties
     private let containerPercentage: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 0.60 : 0.85

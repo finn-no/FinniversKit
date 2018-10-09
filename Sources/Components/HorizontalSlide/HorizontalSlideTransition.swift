@@ -1,11 +1,11 @@
 import UIKit
 
-public protocol HorizontalSlideTransitionDelegate: class {
-    func horizontalSlideTransitionDidDismiss(_ horizontalSlideTransition: HorizontalSlideTransition)
+@objc public protocol HorizontalSlideTransitionDelegate: class {
+    @objc func horizontalSlideTransitionDidDismiss(_ horizontalSlideTransition: HorizontalSlideTransition)
 }
 
 public class HorizontalSlideTransition: NSObject, UIViewControllerTransitioningDelegate {
-    public weak var delegate: HorizontalSlideTransitionDelegate?
+    @objc public weak var delegate: HorizontalSlideTransitionDelegate?
 
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         let presentationController = HorizontalSlideController(presentedViewController: presented, presenting: presenting)
