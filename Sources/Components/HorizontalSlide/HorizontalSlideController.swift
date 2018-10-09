@@ -12,8 +12,13 @@ class HorizontalSlideController: UIPresentationController {
         dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         dimmingView.alpha = 0.0
 
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleDismissGesture))
         dimmingView.addGestureRecognizer(recognizer)
+
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleDismissGesture))
+        swipeGestureRecognizer.direction = .right
+        dimmingView.addGestureRecognizer(swipeGestureRecognizer)
+
         return dimmingView
     }()
 
@@ -30,7 +35,12 @@ class HorizontalSlideController: UIPresentationController {
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView else { return }
         containerView.insertSubview(dimmingView, at: 0)
-        dimmingView.fillInSuperview()
+        NSLayoutConstraint.activate([
+            dimmingView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            dimmingView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            dimmingView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            dimmingView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+            ])
 
         guard let coordinator = presentedViewController.transitionCoordinator else {
             dimmingView.alpha = 1.0
@@ -52,7 +62,7 @@ class HorizontalSlideController: UIPresentationController {
             self.dimmingView.alpha = 0.0
         })
     }
-    
+
     override func containerViewWillLayoutSubviews() {
         presentedView?.frame = frameOfPresentedViewInContainerView
     }
@@ -62,7 +72,7 @@ class HorizontalSlideController: UIPresentationController {
     }
 
     // MARK: - Private
-    @objc private func handleTap(recognizer: UITapGestureRecognizer) {
+    @objc private func handleDismissGesture() {
         presentingViewController.dismiss(animated: true)
     }
 }
