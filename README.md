@@ -32,7 +32,7 @@ Inspired by Kickstarter (and Ruby on Rails) we place relevant files next to each
 
 ### Delegates and data sources (instead blocks and injection)
 
-In order to maintain consistency we have opted out for using data sources for giving data to our recyclabe views and using delegates to interact for actions inside views.
+In order to maintain consistency we have opted for using data sources for giving data to our recyclabe views and using delegates to interact for actions inside views.
 
 If the view isn't recyclable then we use ViewModels. There are tradeoffs when you choose to be consistent instead of pragmatic but we hope that by having a clear pattern it reduces the discussion points and let's us focus on improving the UI and adding value to our users.
 
