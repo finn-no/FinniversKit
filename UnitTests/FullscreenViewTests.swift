@@ -11,7 +11,7 @@ class FullscreenViewTests: FBSnapshotTestCase {
 
     override func setUp() {
         super.setUp()
-        recordMode = true
+        recordMode = false
     }
 
     override class func tearDown() {
@@ -61,5 +61,13 @@ class FullscreenViewTests: FBSnapshotTestCase {
 
     func testLoadingView() {
         snapshot(.loadingView)
+    }
+
+    func testConsentToggleView() {
+        snapshot(.consentToggleView)
+    }
+
+    func testConsentActionView() {
+        snapshot(.consentActionView)
     }
 }
