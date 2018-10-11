@@ -7,16 +7,10 @@ import UIKit
 public protocol ReviewViewDelegate: NSObjectProtocol {
     func reviewView(_ reviewView: ReviewView, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
     func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat)
-    func reviewView(_ reviewView: ReviewView, didClick type: ReviewView.SelectType)
+    func reviewView(_ reviewView: ReviewView, didSelect profile: ReviewViewProfileModel)
 }
 
 public class ReviewView: UIView {
-    public enum SelectType {
-        case user(ReviewViewProfileModel)
-        case chat(ReviewViewProfileModel)
-        case skip
-    }
-
     static let defaultRowHeight: CGFloat = 40
     static let defaultHeaderHeight: CGFloat = 60
 
@@ -39,7 +33,7 @@ public class ReviewView: UIView {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
-        button.addTarget(self, action: #selector(didSelectUser), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didSelectProfile), for: .touchUpInside)
         return button
     }()
 
@@ -153,17 +147,13 @@ extension ReviewView: UITableViewDelegate {
 }
 
 extension ReviewView {
-    @objc func didSelectSkip() {
-        delegate?.reviewView(self, didClick: .skip)
-    }
-
-    @objc func didSelectUser() {
+    @objc func didSelectProfile() {
         guard let indexPath = tableView.indexPathForSelectedRow,
-            let selectedUser = model?.profiles[indexPath.row] else {
+            let selectedProfile = model?.profiles[indexPath.row] else {
                 return
         }
 
-        delegate?.reviewView(self, didClick: .user(selectedUser))
+        delegate?.reviewView(self, didSelect: selectedProfile)
     }
 }
 
@@ -174,9 +164,5 @@ extension ReviewView: ReviewProfileCellDelegate {
 
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat) {
         delegate?.reviewView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
-    }
-
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, didSelectChat model: ReviewViewProfileModel) {
-        delegate?.reviewView(self, didClick: .chat(model))
     }
 }

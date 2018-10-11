@@ -7,8 +7,6 @@ import UIKit
 protocol ReviewProfileCellDelegate: class {
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat)
-
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, didSelectChat model: ReviewViewProfileModel)
 }
 
 class ReviewProfileCell: UITableViewCell {
@@ -25,13 +23,6 @@ class ReviewProfileCell: UITableViewCell {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-
-    lazy var showChat: Button = {
-        let button = Button(style: .default)
-        button.setTitle("Se chat", for: .normal)
-        button.addTarget(self, action: #selector(didSelectChat), for: .touchUpInside)
-        return button
     }()
 
     lazy var hairlineView: UIView = {
@@ -56,7 +47,7 @@ class ReviewProfileCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        let profileStack = UIStackView(arrangedSubviews: [radioButton, profileImage, name, showChat])
+        let profileStack = UIStackView(arrangedSubviews: [radioButton, profileImage, name])
         profileStack.alignment = .center
         profileStack.spacing = .mediumSpacing
         profileStack.translatesAutoresizingMaskIntoConstraints = false
@@ -106,11 +97,6 @@ class ReviewProfileCell: UITableViewCell {
         profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: ReviewProfileCell.profileImageSize, completion: { [weak self] image in
             self?.profileImage.image = image
         })
-    }
-
-    @objc func didSelectChat() {
-        guard let model = model else { return }
-        delegate?.reviewProfileCell(self, didSelectChat: model)
     }
 
     required init?(coder aDecoder: NSCoder) {

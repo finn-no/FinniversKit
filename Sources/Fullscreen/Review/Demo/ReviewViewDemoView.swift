@@ -30,6 +30,10 @@ public class ReviewViewDemoView: UIView {
 }
 
 extension ReviewViewDemoView: ReviewViewDelegate {
+    public func reviewView(_ reviewView: ReviewView, didSelect profile: ReviewViewProfileModel) {
+        print("Did select: \(profile.name) for review")
+    }
+
     public func reviewView(_ reviewView: ReviewView, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage? {
         guard let url = model.image else {
             return UIImage(named: "consentTransparencyImage")
@@ -49,16 +53,5 @@ extension ReviewViewDemoView: ReviewViewDelegate {
     }
 
     public func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat) {
-    }
-
-    public func reviewView(_ reviewView: ReviewView, didClick type: ReviewView.SelectType) {
-        switch type {
-        case .user(let user):
-            print("Did select: \(user.name) for review")
-        case .chat(let user):
-            print("Did select: \(user.name) for chat view")
-        case .skip:
-            print("Skip")
-        }
     }
 }
