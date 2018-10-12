@@ -27,10 +27,6 @@ class ComponentViewTests: FBSnapshotTestCase {
         ComponentViewTests.allViews = ComponentViewTests.allViews.filter { $0 != component }
     }
 
-    func testBroadcast() {
-        snapshot(.broadcast)
-    }
-
     func testButton() {
         snapshot(.button)
     }
