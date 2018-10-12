@@ -28,6 +28,7 @@ Pod::Spec.new do |s|
   s.swift_version = '4.0'
   s.source        = { :git => "https://github.com/finn-no/FinniversKit.git", :tag => s.version }
   s.requires_arc  = true
+  s.swift_version = '4.2'
 
   s.source_files = 'Sources/*.{h,m,swift}', 'Sources/**/*.{h,m,swift}', 'Sources/**/**/*.{h,m,swift}'
   s.resources    = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets'
