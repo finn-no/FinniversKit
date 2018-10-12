@@ -48,7 +48,7 @@ public class Button: UIButton {
 
     // MARK: - Superclass Overrides
 
-    public override func setTitle(_ title: String?, for state: UIControlState) {
+    public override func setTitle(_ title: String?, for state: UIControl.State) {
         guard let title = title else {
             return
         }
@@ -67,7 +67,7 @@ public class Button: UIButton {
         }
     }
 
-    public override func setTitleColor(_ color: UIColor?, for state: UIControlState) {
+    public override func setTitleColor(_ color: UIColor?, for state: UIControl.State) {
         assertionFailure("The title color cannot be changed outside the class")
     }
 
@@ -100,13 +100,13 @@ public class Button: UIButton {
         let textRange = NSMakeRange(0, title.count)
         let attributedTitle = NSMutableAttributedString(string: title)
 
-        attributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: style.textColor, range: textRange)
+        attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: style.textColor, range: textRange)
         let underlinedAttributedTitle = NSMutableAttributedString(string: title)
         let disabledAttributedTitle = NSMutableAttributedString(string: title)
-        disabledAttributedTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: style.disabledTextColor ?? UIColor.milk, range: textRange)
-        let underlineAttributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
-            NSAttributedStringKey.foregroundColor: style.highlightedTextColor ?? style.textColor,
+        disabledAttributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: style.disabledTextColor ?? UIColor.milk, range: textRange)
+        let underlineAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+            NSAttributedString.Key.foregroundColor: style.highlightedTextColor ?? style.textColor,
         ]
         underlinedAttributedTitle.addAttributes(underlineAttributes, range: textRange)
         super.setAttributedTitle(attributedTitle, for: .normal)

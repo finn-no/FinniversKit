@@ -6,8 +6,8 @@ import Foundation
 
 public extension NSAttributedString {
     static func makeBulletPointFrom(stringList: [String], font: UIFont, bullet: String = "\u{2022}", indentation: CGFloat = .mediumLargeSpacing, lineSpacing: CGFloat = .verySmallSpacing, paragraphSpacing: CGFloat = .mediumSpacing, textColor: UIColor = .licorice, bulletColor: UIColor = .licorice) -> NSAttributedString {
-        let textAttributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: textColor]
-        let bulletAttributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: bulletColor]
+        let textAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: textColor]
+        let bulletAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: bulletColor]
 
         let paragraphStyle = NSMutableParagraphStyle()
         let nonOptions = [NSTextTab.OptionKey: Any]()
@@ -25,7 +25,7 @@ public extension NSAttributedString {
             let attributedLineShift = NSMutableAttributedString(string: lineShift)
 
             let attributeRange = NSMakeRange(0, attributedString.length)
-            attributedString.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle], range: attributeRange)
+            attributedString.addAttributes([NSAttributedString.Key.paragraphStyle: paragraphStyle], range: attributeRange)
             attributedString.addAttributes(textAttributes, range: attributeRange)
 
             let nsString: NSString = NSString(string: formattedString)

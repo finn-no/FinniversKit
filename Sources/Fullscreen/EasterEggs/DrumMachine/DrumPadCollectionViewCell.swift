@@ -40,7 +40,7 @@ final class DrumPadCollectionViewCell: UICollectionViewCell {
         animation.duration = duration
         animation.autoreverses = true
         animation.repeatCount = 1
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         contentView.layer.add(animation, forKey: nil)
     }
 

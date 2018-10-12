@@ -26,7 +26,7 @@ import UIKit
     }()
 
     private lazy var oldLoadingIndicator: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let view = UIActivityIndicatorView(style: .whiteLarge)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.transform = loadingIndicatorInitialTransform
         view.color = .primaryBlue

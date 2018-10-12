@@ -140,7 +140,7 @@ private extension Broadcast {
         arrangedSubviews.forEach { view in view.isHidden = false }
         updateConstraintsIfNeeded()
 
-        let nextSize = systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        let nextSize = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         let deltaHeight = nextSize.height - frame.height
 
         if nextSize.height - contentOffset < 0 {
@@ -177,7 +177,7 @@ private extension Broadcast {
     }
 
     func animate(to offset: CGFloat?) {
-        scrollView?.contentInset.top = systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        scrollView?.contentInset.top = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         if let offset = offset { scrollView?.contentOffset.y = offset }
         superview?.layoutIfNeeded()
     }
