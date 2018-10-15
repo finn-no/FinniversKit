@@ -1,7 +1,6 @@
 force_cast: error
 force_try: error
 force_unwrapping: error
-line_length: 200
 type_body_length: 250
 file_length: 500
 type_name:
@@ -9,6 +8,10 @@ type_name:
 identifier_name:
   min_length: 2
 cyclomatic_complexity: 10
+
+disabled_rules:
+  - line_length
+
 included:
   - Sources
   - Demo
