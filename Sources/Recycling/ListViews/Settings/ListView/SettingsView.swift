@@ -22,6 +22,8 @@ public class SettingsView: UIView {
         view.contentInset = UIEdgeInsets(top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0)
         view.backgroundColor = .milk
         view.separatorStyle = .none
+        view.estimatedRowHeight = 44
+        view.estimatedSectionHeaderHeight = 44
         view.dataSource = self
         view.delegate = self
         view.register(SettingsViewCell.self)
