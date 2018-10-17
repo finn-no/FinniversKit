@@ -6,7 +6,7 @@ import FinniversKit
 
 private struct Option {
     var title: String
-    var action: (() -> ())
+    var action: (() -> Void)
 }
 
 public class LoadingViewDemoView: UIView {
@@ -106,5 +106,3 @@ extension LoadingViewDemoView: UITableViewDelegate {
         option.action()
     }
 }
-
-

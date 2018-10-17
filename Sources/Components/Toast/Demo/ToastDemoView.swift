@@ -78,7 +78,7 @@ public class ToastDemoView: UIView {
 
             errorButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor),
             errorButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            errorButtonToast.topAnchor.constraint(equalTo: successButtonToast.bottomAnchor, constant: 32),
+            errorButtonToast.topAnchor.constraint(equalTo: successButtonToast.bottomAnchor, constant: 32)
         ])
     }
 }

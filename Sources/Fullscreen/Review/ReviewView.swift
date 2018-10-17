@@ -129,7 +129,7 @@ extension ReviewView: UITableViewDelegate {
         }
 
         cell.isSelected = false
-        
+
         return indexPath
     }
 

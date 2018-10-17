@@ -187,21 +187,21 @@ extension Selectionbox {
             stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: .mediumLargeSpacing),
+            bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: .mediumLargeSpacing)
         ])
     }
 
     private func setupBoxes(with strings: [String]) {
-        for (i, string) in strings.enumerated() {
-            let item = SelectionboxItem(index: i)
+        for (index, string) in strings.enumerated() {
+            let item = SelectionboxItem(index: index)
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }
     }
 
     private func setFields() {
-        for (i, string) in fields.enumerated() {
-            let item = SelectionboxItem(index: i)
+        for (index, string) in fields.enumerated() {
+            let item = SelectionboxItem(index: index)
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }

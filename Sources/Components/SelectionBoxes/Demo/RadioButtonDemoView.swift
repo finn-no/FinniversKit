@@ -8,7 +8,7 @@ public class RadioButtonDemoView: UIView {
     let strings = [
         "Mistanke om svindel",
         "Regelbrudd",
-        "Forhandler opptrer som privat",
+        "Forhandler opptrer som privat"
     ]
 
     lazy var radioButton: RadioButton = {
@@ -38,7 +38,7 @@ public class RadioButtonDemoView: UIView {
             radioButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             radioButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             radioButton.topAnchor.constraint(equalTo: topAnchor),
-            radioButton.heightAnchor.constraint(equalToConstant: CGFloat(strings.count + 1) * 44),
+            radioButton.heightAnchor.constraint(equalToConstant: CGFloat(strings.count + 1) * 44)
         ])
     }
 

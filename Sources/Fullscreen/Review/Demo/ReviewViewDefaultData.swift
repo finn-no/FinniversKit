@@ -22,7 +22,7 @@ public struct ReviewViewDefaultData: ReviewViewModel {
         ReviewViewUser(name: "Per Johansen", image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")),
         ReviewViewUser(name: "Per"),
         ReviewViewUser(name: "FINN Bruker"),
-        ReviewViewUser(name: "Test testesen", image: URL(string: "http://via.placeholder.com/44x44/ffff00/ffff00")),
+        ReviewViewUser(name: "Test testesen", image: URL(string: "http://via.placeholder.com/44x44/ffff00/ffff00"))
     ]
     public let selectTitle = "Velg"
     public let confirmationTitle = "Du kan ikke endre valget ditt senere"

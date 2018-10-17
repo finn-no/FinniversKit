@@ -114,7 +114,7 @@ private extension Broadcast {
             item.alpha = 0
             self.animate(to: nil) // keep current content offset
 
-        }) { completed in
+        }, completion: { _ in
             item.removeFromSuperview()
             if self.subviews.count == 0 {
                 self.removeFromSuperview()
@@ -124,7 +124,7 @@ private extension Broadcast {
                 scrollView.addGestureRecognizer(scrollView.panGestureRecognizer)
                 self.scrollView = nil
             }
-        }
+        })
     }
 
     func add(_ messages: Set<BroadcastMessage>, animated: Bool) {

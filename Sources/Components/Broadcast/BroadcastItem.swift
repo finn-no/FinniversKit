@@ -68,7 +68,7 @@ class BroadcastItem: UIView {
     init(message: BroadcastMessage) {
         self.message = message
         super.init(frame: .zero)
-        
+
         isAccessibilityElement = true
         clipsToBounds = true
 
@@ -123,7 +123,7 @@ extension BroadcastItem {
 
     private func setAttributedText(_ message: BroadcastMessage) {
         let attributedString = NSMutableAttributedString(attributedString: message.attributedString(for: message.text))
-        attributedString.addAttributes(BroadcastItem.Style.fontAttributes, range: NSMakeRange(0, attributedString.string.utf16.count))
+        attributedString.addAttributes(BroadcastItem.Style.fontAttributes, range: NSRange(location: 0, length: attributedString.string.utf16.count))
         messageTextView.attributedText = attributedString
     }
 

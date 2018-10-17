@@ -70,7 +70,7 @@ class ReviewProfileCell: UITableViewCell {
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
             hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-            hairlineView.heightAnchor.constraint(equalToConstant: 2),
+            hairlineView.heightAnchor.constraint(equalToConstant: 2)
         ])
 
         selectionStyle = .none

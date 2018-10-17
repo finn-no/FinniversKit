@@ -276,7 +276,7 @@ public class RegisterView: UIView {
             spidLogoImageView.heightAnchor.constraint(equalToConstant: 17),
 
             userTermsStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.veryLargeSpacing),
-            userTermsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            userTermsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing)
         ])
     }
 

@@ -28,7 +28,7 @@ public class LoginViewDemoView: UIView {
             loginView.topAnchor.constraint(equalTo: topAnchor),
             loginView.bottomAnchor.constraint(equalTo: bottomAnchor),
             loginView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            loginView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            loginView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 }
