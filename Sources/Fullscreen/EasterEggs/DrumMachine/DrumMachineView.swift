@@ -101,10 +101,8 @@ public final class DrumMachineView: UIView {
 
         nextCell?.flash(withDuration: timeInterval)
 
-        for (_, instrumentComposition) in compositions.enumerated() {
-            if instrumentComposition.value[currentPad] {
-                instrumentComposition.key.play()
-            }
+        for instrumentComposition in compositions where instrumentComposition.value[currentPad] {
+            instrumentComposition.key.play()
         }
     }
 

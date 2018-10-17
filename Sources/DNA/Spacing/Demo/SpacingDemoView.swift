@@ -58,7 +58,7 @@ public class SpacingDemoView: UIView {
 
             veryLargeSpacingView.topAnchor.constraint(equalTo: largeSpacingView.bottomAnchor, constant: .veryLargeSpacing),
             veryLargeSpacingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .veryLargeSpacing),
-            veryLargeSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.veryLargeSpacing),
+            veryLargeSpacingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.veryLargeSpacing)
             ])
     }
 }

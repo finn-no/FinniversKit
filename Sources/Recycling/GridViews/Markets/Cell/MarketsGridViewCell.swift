@@ -78,7 +78,7 @@ public class MarketsGridViewCell: UICollectionViewCell {
             badgeImageView.widthAnchor.constraint(equalToConstant: badgeImageSize.width),
             badgeImageView.heightAnchor.constraint(equalToConstant: badgeImageSize.height),
             badgeImageView.topAnchor.constraint(equalTo: iconImageView.topAnchor, constant: -.smallSpacing),
-            badgeImageView.trailingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing),
+            badgeImageView.trailingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing)
         ])
     }
 

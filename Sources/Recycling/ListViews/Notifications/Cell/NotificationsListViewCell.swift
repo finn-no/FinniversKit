@@ -94,7 +94,7 @@ public class NotificationsListViewCell: UITableViewCell {
 
             priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
             priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-            priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
         ])
     }
 
@@ -139,7 +139,7 @@ public class NotificationsListViewCell: UITableViewCell {
     // MARK: - Private
 
     private func loadImage(model: NotificationsListViewModel) {
-        guard let dataSource = dataSource, let _ = model.imagePath else {
+        guard let dataSource = dataSource, model.imagePath != nil else {
             loadingColor = .clear
             adImageView.image = defaultImage
             return

@@ -132,4 +132,3 @@ extension FavoritesListView: FavoritesListViewCellDataSource {
         dataSource?.favoritesListView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
     }
 }
-

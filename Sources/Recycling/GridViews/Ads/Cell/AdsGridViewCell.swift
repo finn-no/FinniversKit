@@ -144,7 +144,7 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
             imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
             imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
-            imageDescriptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            imageDescriptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
         ])
     }
 
@@ -191,7 +191,7 @@ public class AdsGridViewCell: UICollectionViewCell {
     // MARK: - Private
 
     private func loadImage(model: AdsGridViewModel) {
-        guard let dataSource = dataSource, let _ = model.imagePath else {
+        guard let dataSource = dataSource, model.imagePath != nil else {
             loadingColor = .clear
             imageView.image = defaultImage
             return

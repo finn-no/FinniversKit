@@ -66,7 +66,7 @@ public struct NotificationFactory {
             "Biler i norge",
             "Sogn og Fjordane+Møre og Romsdal+Nordland+Treff",
             "Aston Martin",
-            "Bolig til leie",
+            "Bolig til leie"
         ]
     }
 
@@ -80,7 +80,7 @@ public struct NotificationFactory {
             "Lillehammer • Privat",
             "Oslo • Privat",
             "Tønsberg • Privat",
-            "Bærum • Privat",
+            "Bærum • Privat"
         ]
     }
 
@@ -94,7 +94,7 @@ public struct NotificationFactory {
             "Privat slott",
             "Pent brukt bolig",
             "Enebolig i rolig strøk",
-            "Hus til slags",
+            "Hus til slags"
         ]
     }
 
@@ -123,7 +123,7 @@ public struct NotificationFactory {
             ImageSource(path: "http://www.discoverydreamhomes.com/wp-content/uploads/Model-Features-Copper-House.jpg", size: CGSize(width: 1000, height: 563)),
             ImageSource(path: "https://i.pinimg.com/736x/72/14/22/721422aa64cbb51ccb5f02eb29c22255--gray-houses-colored-doors-on-houses.jpg", size: CGSize(width: 640, height: 799)),
             ImageSource(path: "https://i.pinimg.com/736x/38/f2/02/38f2028c5956cd6b33bfd16441a05961--victorian-homes-stone-victorian-house.jpg", size: CGSize(width: 523, height: 640)),
-            ImageSource(path: "https://www.younghouselove.com/wp-content/uploads//2017/04/Beach-House-Update-Three-Houses-One-Pink.jpg", size: CGSize(width: 1500, height: 1125)),
+            ImageSource(path: "https://www.younghouselove.com/wp-content/uploads//2017/04/Beach-House-Update-Three-Houses-One-Pink.jpg", size: CGSize(width: 1500, height: 1125))
         ]
     }
 }

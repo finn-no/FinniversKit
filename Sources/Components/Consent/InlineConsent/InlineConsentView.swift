@@ -82,7 +82,7 @@ public class InlineConsentView: UIView {
 
             infoButton.topAnchor.constraint(equalTo: yesButton.bottomAnchor, constant: .mediumLargeSpacing),
             infoButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            infoButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            infoButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 

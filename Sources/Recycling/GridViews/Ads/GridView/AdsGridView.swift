@@ -67,8 +67,8 @@ public class AdsGridView: UIView {
     }
 
     private func setup() {
-        collectionView.register(AdsGridViewCell.self, forCellWithReuseIdentifier: String(describing: AdsGridViewCell.self))
-        collectionView.register(AdsGridHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: AdsGridHeaderView.self))
+        collectionView.register(AdsGridViewCell.self)
+        collectionView.register(AdsGridHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         addSubview(collectionView)
         collectionView.fillInSuperview()
     }
@@ -141,7 +141,7 @@ extension AdsGridView: UICollectionViewDataSource {
             fatalError("Suplementary view of kind '\(kind)' not supported.")
         }
 
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: AdsGridHeaderView.self), for: indexPath) as! AdsGridHeaderView
+        let header = collectionView.dequeue(AdsGridHeaderView.self, for: indexPath, ofKind: UICollectionView.elementKindSectionHeader)
         header.contentView = headerView
 
         return header

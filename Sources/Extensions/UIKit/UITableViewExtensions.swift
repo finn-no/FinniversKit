@@ -22,10 +22,12 @@ public extension UITableView {
     }
 
     public func dequeue<T>(_ cellClass: T.Type, for indexPath: IndexPath) -> T where T: UITableViewCell {
+        // swiftlint:disable:next force_cast
         return dequeueReusableCell(withIdentifier: cellClass.reuseIdentifier, for: indexPath) as! T
     }
 
     public func dequeue<T>(_ headerFooterClass: T.Type) -> T where T: UITableViewHeaderFooterView {
+        // swiftlint:disable:next force_cast
         return dequeueReusableHeaderFooterView(withIdentifier: headerFooterClass.reuseIdentifier) as! T
     }
 }

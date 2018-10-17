@@ -28,7 +28,7 @@ public class RegisterViewDemoView: UIView {
             registerView.topAnchor.constraint(equalTo: topAnchor),
             registerView.bottomAnchor.constraint(equalTo: bottomAnchor),
             registerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            registerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            registerView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 }
