@@ -34,7 +34,6 @@ public class BasicTableViewCell: UITableViewCell {
     public func configure(with viewModel: BasicTableViewCellViewModel) {
         titleLabel.text = viewModel.title
         separatorInset = .leadingInset(.mediumLargeSpacing)
-
     }
     
     required init?(coder aDecoder: NSCoder) {

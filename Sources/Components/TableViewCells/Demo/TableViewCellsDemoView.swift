@@ -95,7 +95,7 @@ public class TableViewCellsDemoView: UIView {
     }
     
     @objc private func segmentedControlChangedValue() {
-        self.currentCellType = TableViewCellType.init(rawValue: self.segmentedControl.selectedSegmentIndex)!
+        self.currentCellType = TableViewCellType(rawValue: self.segmentedControl.selectedSegmentIndex)!
     }
     
     required init?(coder aDecoder: NSCoder) {
