@@ -8,22 +8,25 @@ public protocol CheckboxTableViewCellViewModel: BasicTableViewCellViewModel {
     var isSelected: Bool { get }
 }
 
-public class CheckboxTableViewCell: UITableViewCell {
-    lazy private var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .body
-        return label
-    }()
+public class CheckboxTableViewCell: BasicTableViewCell {
     
-    lazy private var checkbox: AnimatedCheckboxImageView = {
+    lazy var checkbox: AnimatedCheckboxImageView = {
         let checkbox = AnimatedCheckboxImageView(frame: .zero)
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         return checkbox
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier, layoutInSubclass: true)
         setup()
+    }
+    
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, layoutInSubclass: Bool) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier, layoutInSubclass: true)
+        
+        if !layoutInSubclass {
+            setup()
+        }
     }
     
     private func setup() {

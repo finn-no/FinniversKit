@@ -9,6 +9,7 @@ public protocol BasicTableViewCellViewModel {
 }
 
 public class BasicTableViewCell: UITableViewCell {
+
     lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
@@ -18,6 +19,14 @@ public class BasicTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
+    }
+    
+    public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, layoutInSubclass: Bool) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        if !layoutInSubclass {
+            setup()
+        }
     }
 
     private func setup() {

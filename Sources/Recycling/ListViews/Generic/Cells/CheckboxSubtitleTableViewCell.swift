@@ -8,21 +8,16 @@ public protocol CheckboxSubtitleTableViewCellViewModel: CheckboxTableViewCellVie
     var subtitle: String? { get }
 }
 
-public class CheckboxSubtitleTableViewCell: UITableViewCell {
-    lazy private var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .body
-        return label
-    }()
+public class CheckboxSubtitleTableViewCell: CheckboxTableViewCell {
     
-    lazy private var subtitleLabel: UILabel = {
+    lazy var subtitleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
         label.numberOfLines = 0
         return label
     }()
     
-    lazy private var stackView: UIStackView = {
+    lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.addArrangedSubview(titleLabel)
@@ -30,15 +25,17 @@ public class CheckboxSubtitleTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    lazy private var checkbox: AnimatedCheckboxImageView = {
-        let checkbox = AnimatedCheckboxImageView(frame: .zero)
-        checkbox.translatesAutoresizingMaskIntoConstraints = false
-        return checkbox
-    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier, layoutInSubclass: true)
         setup()
+    }
+    
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, layoutInSubclass: Bool) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier, layoutInSubclass: true)
+        
+        if !layoutInSubclass {
+            setup()
+        }
     }
     
     private func setup() {
@@ -64,10 +61,6 @@ public class CheckboxSubtitleTableViewCell: UITableViewCell {
         subtitleLabel.text = viewModel.subtitle
         checkbox.isHighlighted = viewModel.isSelected
         separatorInset = .leadingInset(56)
-    }
-    
-    public func animateSelection(isSelected: Bool) {
-        checkbox.animateCheckbox(selected: isSelected)
     }
     
     required init?(coder aDecoder: NSCoder) {
