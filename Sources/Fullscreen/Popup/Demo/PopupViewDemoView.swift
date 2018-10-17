@@ -42,7 +42,7 @@ public class PopupViewDemoView: UIView {
             consentView.centerXAnchor.constraint(equalTo: shadedBackgroundView.centerXAnchor),
             consentView.centerYAnchor.constraint(equalTo: shadedBackgroundView.centerYAnchor),
             consentView.heightAnchor.constraint(equalToConstant: maxScreenSize.height),
-            consentView.widthAnchor.constraint(equalToConstant: maxScreenSize.width),
+            consentView.widthAnchor.constraint(equalToConstant: maxScreenSize.width)
         ])
     }
 }

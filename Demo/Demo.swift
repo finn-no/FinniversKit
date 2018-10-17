@@ -14,7 +14,7 @@ public enum DnaViews: String {
             .color,
             .font,
             .spacing,
-            .assets,
+            .assets
         ]
     }
 
@@ -122,7 +122,7 @@ public enum RecyclingViews: String {
             .savedSearchesListView,
             .marketsGridView,
             .adsGridView,
-            .settingsView,
+            .settingsView
         ]
     }
 

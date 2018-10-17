@@ -61,7 +61,7 @@ public class TextFieldDemoView: UIView {
 
             multilineTextField.topAnchor.constraint(equalTo: normalWithHelpTextTextField.bottomAnchor, constant: .mediumLargeSpacing),
             multilineTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            multilineTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            multilineTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 }

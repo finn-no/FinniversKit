@@ -42,7 +42,6 @@ public class FavoriteFoldersListViewCell: UITableViewCell {
         return view
     }()
 
-
     // MARK: - Setup
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

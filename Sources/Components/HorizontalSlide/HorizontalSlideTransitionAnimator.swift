@@ -28,8 +28,8 @@ class HorizontalSlideTransitionAnimator: NSObject, UIViewControllerAnimatedTrans
         controller.view.frame = initialFrame
         UIView.animate(withDuration: animationDuration, animations: {
             controller.view.frame = finalFrame
-        }) { finished in
+        }, completion: { (finished) in
             transitionContext.completeTransition(finished)
-        }
+        })
     }
 }

@@ -75,7 +75,7 @@ enum Sections: String {
             .dna,
             .components,
             .recycling,
-            .fullscreen,
+            .fullscreen
         ]
     }
 

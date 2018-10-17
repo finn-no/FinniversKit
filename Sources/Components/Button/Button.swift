@@ -97,7 +97,7 @@ public class Button: UIButton {
     // MARK: - Private methods
 
     private func setAsLink(title: String) {
-        let textRange = NSMakeRange(0, title.count)
+        let textRange = NSRange(location: 0, length: title.count)
         let attributedTitle = NSMutableAttributedString(string: title)
 
         attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: style.textColor, range: textRange)
@@ -106,7 +106,7 @@ public class Button: UIButton {
         disabledAttributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: style.disabledTextColor ?? UIColor.milk, range: textRange)
         let underlineAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-            NSAttributedString.Key.foregroundColor: style.highlightedTextColor ?? style.textColor,
+            NSAttributedString.Key.foregroundColor: style.highlightedTextColor ?? style.textColor
         ]
         underlinedAttributedTitle.addAttributes(underlineAttributes, range: textRange)
         super.setAttributedTitle(attributedTitle, for: .normal)

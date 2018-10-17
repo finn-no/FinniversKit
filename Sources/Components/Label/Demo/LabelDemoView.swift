@@ -12,7 +12,7 @@ public class LabelDemoView: UIView {
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
-
+    
     private func setup() {
         let topSpacing: CGFloat = 32
         let margin: CGFloat = 16
@@ -102,7 +102,7 @@ public class LabelDemoView: UIView {
             labelWide.topAnchor.constraint(equalTo: label3.bottomAnchor, constant: 16),
             labelWide.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             labelWide.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            labelWide.heightAnchor.constraint(equalToConstant: 40),
+            labelWide.heightAnchor.constraint(equalToConstant: 40)
         ])
 
         label1.text = "Test"

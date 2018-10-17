@@ -263,7 +263,7 @@ private extension ConsentTransparencyInfoView {
             schibstedPrivacyButtonConstraintToIntro,
             schibstedPrivacyButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             schibstedPrivacyButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            schibstedPrivacyButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+            schibstedPrivacyButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
         ])
 
         if showSettingsButtons {
@@ -283,7 +283,7 @@ private extension ConsentTransparencyInfoView {
 
                 finnSettingsButton.topAnchor.constraint(equalTo: finnButtonIntroLabel.bottomAnchor, constant: .mediumLargeSpacing),
                 finnSettingsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-                finnSettingsButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+                finnSettingsButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
             ])
         }
     }
