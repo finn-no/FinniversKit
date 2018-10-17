@@ -12,6 +12,7 @@ public class SettingsViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -20,6 +21,7 @@ public class SettingsViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .stone
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return label
     }()
 
@@ -28,6 +30,7 @@ public class SettingsViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .sardine
         imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return imageView
     }()
 
