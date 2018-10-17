@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-fileprivate struct ViewModel: BasicTableViewCellViewModel {
+private struct ViewModel: BasicTableViewCellViewModel {
     var title: String
 }
 

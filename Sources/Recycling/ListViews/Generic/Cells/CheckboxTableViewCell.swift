@@ -15,15 +15,15 @@ public class CheckboxTableViewCell: BasicTableViewCell {
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         return checkbox
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier, layoutInSubclass: true)
         setup()
     }
-    
+
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, layoutInSubclass: Bool) {
         super.init(style: style, reuseIdentifier: reuseIdentifier, layoutInSubclass: true)
-        
+
         if !layoutInSubclass {
             setup()
         }
@@ -39,13 +39,13 @@ public class CheckboxTableViewCell: BasicTableViewCell {
             checkbox.widthAnchor.constraint(equalTo: checkbox.heightAnchor),
             checkbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             checkbox.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
+
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
             titleLabel.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: .mediumSpacing),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13),
             ])
     }
-    
+
     public func configure(with viewModel: CheckboxTableViewCellViewModel) {
         titleLabel.text = viewModel.title
         checkbox.isHighlighted = viewModel.isSelected

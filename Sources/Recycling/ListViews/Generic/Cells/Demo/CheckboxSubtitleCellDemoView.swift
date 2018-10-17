@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-fileprivate struct ViewModel: CheckboxSubtitleTableViewCellViewModel {
+private struct ViewModel: CheckboxSubtitleTableViewCellViewModel {
     var title: String
     var subtitle: String?
     var isSelected: Bool
@@ -16,9 +16,9 @@ class CheckboxSubtitleCellDemoView: UIView {
         ViewModel(title: "Kattepuser", subtitle: "Fin-fine kattunger", isSelected: true),
         ViewModel(title: "Mac Mini Pro", subtitle: "En noe kraftigere Mac Mini", isSelected: true),
         ViewModel(title: "Mac Pro Mini", subtitle: "En noe svakere Mac Pro", isSelected: false),
-        ViewModel(title: "Mac Pro Max", subtitle: "Gir deg stødige 140fps i Minecraft", isSelected: false),
+        ViewModel(title: "Mac Pro Max", subtitle: "Gir deg stødige 140fps i Minecraft", isSelected: false)
         ]
-    
+
     lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
         tableView.delegate = self
@@ -38,7 +38,7 @@ class CheckboxSubtitleCellDemoView: UIView {
         addSubview(tableView)
         tableView.fillInSuperview()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -56,8 +56,8 @@ extension CheckboxSubtitleCellDemoView: UITableViewDelegate {
         if #available(iOS 10.0, *) {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
-        
-        let cell = tableView.cellForRow(at: indexPath) as! CheckboxSubtitleTableViewCell
+
+        guard let cell = tableView.cellForRow(at: indexPath) as? CheckboxSubtitleTableViewCell else { return }
         var viewModel = viewModels[indexPath.row]
         viewModel.isSelected = !viewModel.isSelected
         viewModels[indexPath.row] = viewModel
@@ -68,15 +68,14 @@ extension CheckboxSubtitleCellDemoView: UITableViewDelegate {
 }
 
 extension CheckboxSubtitleCellDemoView: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(CheckboxSubtitleTableViewCell.self, for: indexPath)
         cell.configure(with: viewModels[indexPath.row])
         return cell
     }
 }
-
