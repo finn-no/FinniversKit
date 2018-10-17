@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08A1130A2174FFDA00584B97 /* AnimatedCheckboxImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A113092174FFDA00584B97 /* AnimatedCheckboxImageView.swift */; };
+		08A1130F2175C3BC00584B97 /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08A1130E2175C3BC00584B97 /* CheckboxAnimation.xcassets */; };
+		08A113102175C3BC00584B97 /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08A1130E2175C3BC00584B97 /* CheckboxAnimation.xcassets */; };
+		08A113122175F68C00584B97 /* CheckboxCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A113112175F68C00584B97 /* CheckboxCellDemoView.swift */; };
+		08A113142175F6A200584B97 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A113132175F6A200584B97 /* CheckboxTableViewCell.swift */; };
+		08A1131A21760A4D00584B97 /* CheckboxSubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A1131921760A4D00584B97 /* CheckboxSubtitleTableViewCell.swift */; };
+		08A1131C217611A800584B97 /* CheckboxSubtitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A1131B217611A800584B97 /* CheckboxSubtitleCellDemoView.swift */; };
+		08A1131E217621D800584B97 /* TableViewCellsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A1131D217621D800584B97 /* TableViewCellsDemoView.swift */; };
+		08A1132021774F6500584B97 /* UIEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A1131F21774F6500584B97 /* UIEdgeInsetsExtensions.swift */; };
+		08F6788F2174B7B30016B579 /* BasicCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6788E2174B7B30016B579 /* BasicCellDemoView.swift */; };
+		08F678912174B8360016B579 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F678902174B8360016B579 /* BasicTableViewCell.swift */; };
 		14193AAD21380DC800EC7FC0 /* ComponentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AA921380DC800EC7FC0 /* ComponentViewTests.swift */; };
 		14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */; };
 		14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */; };
@@ -183,7 +194,6 @@
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
 		DAA9A3AC210215400021F7DC /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */; };
-		DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
 		DAB1F6D3216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1F6D2216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift */; };
 		DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */; };
 		DAC7DCAA21538608004602A3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA921538608004602A3 /* SettingsView.swift */; };
@@ -236,6 +246,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		08A113092174FFDA00584B97 /* AnimatedCheckboxImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxImageView.swift; sourceTree = "<group>"; };
+		08A1130E2175C3BC00584B97 /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
+		08A113112175F68C00584B97 /* CheckboxCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCellDemoView.swift; sourceTree = "<group>"; };
+		08A113132175F6A200584B97 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
+		08A1131921760A4D00584B97 /* CheckboxSubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxSubtitleTableViewCell.swift; sourceTree = "<group>"; };
+		08A1131B217611A800584B97 /* CheckboxSubtitleCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxSubtitleCellDemoView.swift; sourceTree = "<group>"; };
+		08A1131D217621D800584B97 /* TableViewCellsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellsDemoView.swift; sourceTree = "<group>"; };
+		08A1131F21774F6500584B97 /* UIEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
+		08F6788E2174B7B30016B579 /* BasicCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCellDemoView.swift; sourceTree = "<group>"; };
+		08F678902174B8360016B579 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
 		14193AA921380DC800EC7FC0 /* ComponentViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewTests.swift; sourceTree = "<group>"; };
 		14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewTests.swift; sourceTree = "<group>"; };
 		14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnaViewTests.swift; sourceTree = "<group>"; };
@@ -414,7 +434,6 @@
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
 		DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
-		DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadioboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAB1F6D2216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewSectionHeaderView.swift; sourceTree = "<group>"; };
 		DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
@@ -455,6 +474,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08F6788C2174B7450016B579 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				08F6788D2174B7660016B579 /* Demo */,
+				08F678902174B8360016B579 /* BasicTableViewCell.swift */,
+				08A113132175F6A200584B97 /* CheckboxTableViewCell.swift */,
+				08A1131921760A4D00584B97 /* CheckboxSubtitleTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		08F6788D2174B7660016B579 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				08F6788E2174B7B30016B579 /* BasicCellDemoView.swift */,
+				08A113112175F68C00584B97 /* CheckboxCellDemoView.swift */,
+				08A1131B217611A800584B97 /* CheckboxSubtitleCellDemoView.swift */,
+				08A1131D217621D800584B97 /* TableViewCellsDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		14405C521FAFBBF000D03E04 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -928,6 +969,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				08F6788C2174B7450016B579 /* TableViewCells */,
 				CF15D9AF215B93B8004F5F02 /* EasterEggButton */,
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
@@ -1141,6 +1183,7 @@
 				44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */,
 				44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */,
 				44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */,
+				08A1131F21774F6500584B97 /* UIEdgeInsetsExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1496,8 +1539,9 @@
 				DAA9A3A32102153F0021F7DC /* Selectionbox.swift */,
 				DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */,
 				DAA9A3A7210215400021F7DC /* AnimatedImageView.swift */,
-				DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */,
 				DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */,
+				08A1130E2175C3BC00584B97 /* CheckboxAnimation.xcassets */,
+				08A113092174FFDA00584B97 /* AnimatedCheckboxImageView.swift */,
 			);
 			path = SelectionBoxes;
 			sourceTree = "<group>";
@@ -1721,8 +1765,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */,
 				4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */,
+				08A113102175C3BC00584B97 /* CheckboxAnimation.xcassets in Resources */,
 				DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */,
 				144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */,
 			);
@@ -1748,6 +1792,7 @@
 				4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */,
 				CF3D5EF4215A6D9E006E4D08 /* hi-hats.wav in Resources */,
 				CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */,
+				08A1130F2175C3BC00584B97 /* CheckboxAnimation.xcassets in Resources */,
 				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
 				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 			);
@@ -1792,12 +1837,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */,
+				08F6788F2174B7B30016B579 /* BasicCellDemoView.swift in Sources */,
 				4423F227209CB24500B81D68 /* MiniToastView.swift in Sources */,
 				55C5B27E203EB9DA007D7277 /* BroadcastDemoView.swift in Sources */,
 				44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
+				08A113122175F68C00584B97 /* CheckboxCellDemoView.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
 				44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
@@ -1818,6 +1865,7 @@
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
+				08A1131E217621D800584B97 /* TableViewCellsDemoView.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
 				CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */,
@@ -1839,6 +1887,7 @@
 				CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */,
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
 				DAC7DCAF215386E4004602A3 /* SettingsViewDemoView.swift in Sources */,
+				08A1131C217611A800584B97 /* CheckboxSubtitleCellDemoView.swift in Sources */,
 				44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */,
 				DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */,
 				4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */,
@@ -1873,6 +1922,7 @@
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
+				08F678912174B8360016B579 /* BasicTableViewCell.swift in Sources */,
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */,
 				431875C1211180F100D71723 /* ReviewProfileCell.swift in Sources */,
@@ -1919,10 +1969,12 @@
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
+				08A1131A21760A4D00584B97 /* CheckboxSubtitleTableViewCell.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
+				08A113142175F6A200584B97 /* CheckboxTableViewCell.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
 				CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */,
@@ -1952,9 +2004,11 @@
 				DA8EF1262164E7EC0028740C /* ConsentToggleViewModel.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
+				08A1130A2174FFDA00584B97 /* AnimatedCheckboxImageView.swift in Sources */,
 				CF3D5EEC215A6741006E4D08 /* DrumMachineView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
+				08A1132021774F6500584B97 /* UIEdgeInsetsExtensions.swift in Sources */,
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
 				444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */,
 				44587018213FA344009187BE /* RegisterView.swift in Sources */,
@@ -2014,8 +2068,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.finn.finniversKit.playground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;

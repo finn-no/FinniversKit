@@ -113,6 +113,7 @@ public enum RecyclingViews: String {
     case marketsGridView
     case adsGridView
     case settingsView
+    case tableViewCells
 
     public static var all: [RecyclingViews] {
         return [
@@ -123,6 +124,7 @@ public enum RecyclingViews: String {
             .marketsGridView,
             .adsGridView,
             .settingsView,
+            .tableViewCells,
         ]
     }
 
@@ -142,6 +144,8 @@ public enum RecyclingViews: String {
             return DemoViewController<AdsGridViewDemoView>()
         case .settingsView:
             return DemoViewController<SettingsViewDemoView>()
+        case .tableViewCells:
+            return DemoViewController<TableViewCellsDemoView>(withDismissButton: true)
         }
     }
 }
