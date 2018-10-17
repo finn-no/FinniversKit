@@ -474,7 +474,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08F6788C2174B7450016B579 /* TableViewCells */ = {
+		08A1132121775DCC00584B97 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				08F6788D2174B7660016B579 /* Demo */,
@@ -482,7 +482,15 @@
 				08A113132175F6A200584B97 /* CheckboxTableViewCell.swift */,
 				08A1131921760A4D00584B97 /* CheckboxSubtitleTableViewCell.swift */,
 			);
-			path = TableViewCells;
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		08F6788C2174B7450016B579 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				08A1132121775DCC00584B97 /* Cells */,
+			);
+			path = Generic;
 			sourceTree = "<group>";
 		};
 		08F6788D2174B7660016B579 /* Demo */ = {
@@ -850,6 +858,7 @@
 		441FE440209A2F2C00B04EF1 /* ListViews */ = {
 			isa = PBXGroup;
 			children = (
+				08F6788C2174B7450016B579 /* Generic */,
 				DAC7DCA12153852D004602A3 /* Settings */,
 				14C6F7CC212324C900A7230C /* Favorites */,
 				444245FA2137D60400D42AB8 /* FavoriteFolders */,
@@ -969,7 +978,6 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				08F6788C2174B7450016B579 /* TableViewCells */,
 				CF15D9AF215B93B8004F5F02 /* EasterEggButton */,
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
