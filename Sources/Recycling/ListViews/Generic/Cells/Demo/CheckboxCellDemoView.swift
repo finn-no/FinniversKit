@@ -55,7 +55,7 @@ extension CheckboxCellDemoView: UITableViewDelegate {
         if #available(iOS 10.0, *) {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
-        
+
         guard let cell = tableView.cellForRow(at: indexPath) as? CheckboxTableViewCell else { return }
         var viewModel = viewModels[indexPath.row]
         viewModel.isSelected = !viewModel.isSelected

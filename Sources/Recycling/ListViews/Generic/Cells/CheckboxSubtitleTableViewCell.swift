@@ -16,7 +16,7 @@ public class CheckboxSubtitleTableViewCell: CheckboxTableViewCell {
         label.numberOfLines = 0
         return label
     }()
-    
+
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
@@ -55,14 +55,14 @@ public class CheckboxSubtitleTableViewCell: CheckboxTableViewCell {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
             ])
     }
-    
+
     public func configure(with viewModel: CheckboxSubtitleTableViewCellViewModel) {
         titleLabel.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
         checkbox.isHighlighted = viewModel.isSelected
         separatorInset = .leadingInset(56)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

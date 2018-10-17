@@ -36,7 +36,7 @@ public class BasicTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
             ])
     }
 

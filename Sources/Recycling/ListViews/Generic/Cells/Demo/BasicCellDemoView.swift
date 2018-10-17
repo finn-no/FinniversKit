@@ -16,7 +16,7 @@ class BasicCellDemoView: UIView {
         ViewModel(title: "Mac Pro Mini"),
         ViewModel(title: "Mac Pro Max")
     ]
-    
+
     lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
         tableView.delegate = self
@@ -31,12 +31,12 @@ class BasicCellDemoView: UIView {
         super.init(frame: frame)
         setup()
     }
-    
+
     func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -55,7 +55,7 @@ extension BasicCellDemoView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(BasicTableViewCell.self, for: indexPath)
         cell.configure(with: viewModels[indexPath.row])

@@ -28,12 +28,12 @@ class CheckboxSubtitleCellDemoView: UIView {
         tableView.separatorInset = .leadingInset(frame.width)
         return tableView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
+
     func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
@@ -51,7 +51,7 @@ extension CheckboxSubtitleCellDemoView: UITableViewDelegate {
             cell.separatorInset = .leadingInset(frame.width)
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if #available(iOS 10.0, *) {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -62,7 +62,7 @@ extension CheckboxSubtitleCellDemoView: UITableViewDelegate {
         viewModel.isSelected = !viewModel.isSelected
         viewModels[indexPath.row] = viewModel
         cell.animateSelection(isSelected: viewModel.isSelected)
-        
+
         print("Checkbox cells w/subtitle selected:", viewModels.filter { $0.isSelected }.map { $0.title })
     }
 }
