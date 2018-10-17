@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0818F4E9217771FB008608C0 /* TableViewCellViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0818F4E8217771FB008608C0 /* TableViewCellViewsTests.swift */; };
 		08A1130A2174FFDA00584B97 /* AnimatedCheckboxImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A113092174FFDA00584B97 /* AnimatedCheckboxImageView.swift */; };
 		08A1130F2175C3BC00584B97 /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08A1130E2175C3BC00584B97 /* CheckboxAnimation.xcassets */; };
 		08A113102175C3BC00584B97 /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08A1130E2175C3BC00584B97 /* CheckboxAnimation.xcassets */; };
@@ -245,6 +246,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0818F4E8217771FB008608C0 /* TableViewCellViewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewsTests.swift; sourceTree = "<group>"; };
 		08A113092174FFDA00584B97 /* AnimatedCheckboxImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxImageView.swift; sourceTree = "<group>"; };
 		08A1130E2175C3BC00584B97 /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
 		08A113112175F68C00584B97 /* CheckboxCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCellDemoView.swift; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 				14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */,
 				14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */,
 				14193AAC21380DC800EC7FC0 /* RecyclingViewTests.swift */,
+				0818F4E8217771FB008608C0 /* TableViewCellViewsTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -1924,6 +1927,7 @@
 			files = (
 				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				14193AAD21380DC800EC7FC0 /* ComponentViewTests.swift in Sources */,
+				0818F4E9217771FB008608C0 /* TableViewCellViewsTests.swift in Sources */,
 				559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */,
 				14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */,
 				14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */,
