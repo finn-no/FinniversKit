@@ -6,18 +6,13 @@ import UIKit
 
 public protocol ReviewViewDelegate: NSObjectProtocol {
     func reviewView(_ reviewView: ReviewView, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
-    func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel)
-    func reviewView(_ reviewView: ReviewView, didClick type: ReviewView.SelectType)
+    func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat)
+    func reviewView(_ reviewView: ReviewView, didSelect profile: ReviewViewProfileModel)
 }
 
 public class ReviewView: UIView {
-    public enum SelectType {
-        case user(ReviewViewProfileModel)
-        case skip
-        case noneOfThese
-    }
-
     static let defaultRowHeight: CGFloat = 40
+    static let defaultHeaderHeight: CGFloat = 60
 
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -26,20 +21,43 @@ public class ReviewView: UIView {
         tableView.separatorStyle = .none
         tableView.register(ReviewTextHeader.self)
         tableView.register(ReviewProfileCell.self)
-        tableView.register(ReviewTextFooter.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = ReviewView.defaultRowHeight
-        tableView.estimatedSectionHeaderHeight = ReviewView.defaultRowHeight
-        tableView.estimatedSectionFooterHeight = ReviewView.defaultRowHeight
+        tableView.estimatedSectionHeaderHeight = ReviewView.defaultHeaderHeight
         return tableView
+    }()
+
+    lazy var selectButton: Button = {
+        let button = Button(style: .callToAction)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(didSelectProfile), for: .touchUpInside)
+        return button
+    }()
+
+    lazy var label: Label = {
+        let label = Label(style: Label.Style.detail)
+        label.textAlignment = .center
+        label.isEnabled = false
+        return label
+    }()
+
+    lazy var wrapper: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [selectButton, label])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = .mediumSpacing
+        return stack
     }()
 
     public weak var delegate: ReviewViewDelegate?
 
     public var model: ReviewViewModel? {
         didSet {
+            selectButton.setTitle(model?.selectTitle ?? "", for: .normal)
+            label.text = model?.confirmationTitle ?? ""
             tableView.reloadData()
         }
     }
@@ -56,7 +74,16 @@ public class ReviewView: UIView {
 
     private func setup() {
         addSubview(tableView)
-        tableView.fillInSuperview()
+        addSubview(wrapper)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.leftAnchor.constraint(equalTo: leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: wrapper.topAnchor),
+            wrapper.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
+            wrapper.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
+            wrapper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+        ])
     }
 }
 
@@ -90,42 +117,43 @@ extension ReviewView: UITableViewDataSource {
 extension ReviewView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeue(ReviewTextHeader.self)
-        header.translatesAutoresizingMaskIntoConstraints = false
         header.title.text = model?.title
-        header.subtitle.text = model?.subtitle
 
         return header
     }
 
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = tableView.dequeue(ReviewTextFooter.self)
-        footer.translatesAutoresizingMaskIntoConstraints = false
-        footer.title.setTitle(model?.nonOfTheseTitle, for: .normal)
-        footer.title.addTarget(self, action:  #selector(didSelectNonOfThese), for: .touchUpInside)
-        footer.subtitle.setTitle(model?.skiptitle, for: .normal)
-        footer.subtitle.addTarget(self, action: #selector(didSelectSkip), for: .touchUpInside)
+    public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        guard let row = tableView.indexPathForSelectedRow,
+            let cell = tableView.cellForRow(at: row) as? ReviewProfileCell else {
+            return indexPath
+        }
 
-        return footer
+        cell.isSelected = false
+        
+        return indexPath
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-
-        guard let selectedUser = model?.profiles[indexPath.row] else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ReviewProfileCell,
+            let selectedUser = model?.profiles[indexPath.row] else {
             return
         }
 
-        delegate?.reviewView(self, didClick: .user(selectedUser))
+        selectButton.setTitle("\(model?.selectTitle ?? "") \(selectedUser.name)", for: .normal)
+        selectButton.isEnabled = true
+        label.isEnabled = true
+        cell.isSelected = true
     }
 }
 
 extension ReviewView {
-    @objc func didSelectNonOfThese() {
-        delegate?.reviewView(self, didClick: .noneOfThese)
-    }
+    @objc func didSelectProfile() {
+        guard let indexPath = tableView.indexPathForSelectedRow,
+            let selectedProfile = model?.profiles[indexPath.row] else {
+                return
+        }
 
-    @objc func didSelectSkip() {
-        delegate?.reviewView(self, didClick: .skip)
+        delegate?.reviewView(self, didSelect: selectedProfile)
     }
 }
 
@@ -134,7 +162,7 @@ extension ReviewView: ReviewProfileCellDelegate {
         return delegate?.reviewView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel) {
-        delegate?.reviewView(self, cancelLoadingImageForModel: model)
+    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat) {
+        delegate?.reviewView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
     }
 }
