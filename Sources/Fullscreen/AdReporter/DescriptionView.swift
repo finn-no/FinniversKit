@@ -48,7 +48,7 @@ class DescriptionView: UIView {
             textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing),
+            bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: .mediumLargeSpacing)
         ])
     }
 

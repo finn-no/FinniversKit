@@ -300,7 +300,7 @@ public class LoginView: UIView {
             forgotPasswordButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
             customerServiceStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.veryLargeSpacing),
-            customerServiceStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            customerServiceStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing)
         ])
     }
 

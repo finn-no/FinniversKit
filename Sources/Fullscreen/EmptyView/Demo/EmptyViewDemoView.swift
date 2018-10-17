@@ -27,7 +27,7 @@ public class EmptyViewDemoView: UIView {
             emptyView.topAnchor.constraint(equalTo: topAnchor),
             emptyView.bottomAnchor.constraint(equalTo: bottomAnchor),
             emptyView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            emptyView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            emptyView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 }

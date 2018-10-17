@@ -243,7 +243,7 @@ public class TextField: UIView {
 
             helpTextLabel.topAnchor.constraint(equalTo: textFieldBackgroundView.bottomAnchor, constant: .smallSpacing),
             helpTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            helpTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            helpTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
         helpTextLabelLeadingConstraint = helpTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor)

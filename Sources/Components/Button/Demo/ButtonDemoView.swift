@@ -122,7 +122,7 @@ public class ButtonDemoView: UIView {
             disabledFlatButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .mediumLargeSpacing),
-            disabledLinkButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            disabledLinkButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 }

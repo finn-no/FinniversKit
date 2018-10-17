@@ -87,14 +87,14 @@ public class AdReporterView: UIScrollView {
         var radioButtonSelected = [UIImage]()
         var radioButtonUnselected = [UIImage]()
 
-        for i in 0 ..< 13 {
-            if let image = UIImage(named: "radiobutton-select-\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
+        for index in 0 ..< 13 {
+            if let image = UIImage(named: "radiobutton-select-\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
                 radioButtonSelected.append(image)
             }
         }
 
-        for i in 0 ..< 10 {
-            if let image = UIImage(named: "radiobutton-unselected-\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
+        for index in 0 ..< 10 {
+            if let image = UIImage(named: "radiobutton-unselected-\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
                 radioButtonUnselected.append(image)
             }
         }
@@ -134,7 +134,7 @@ public class AdReporterView: UIScrollView {
 
             helpButton.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: .mediumLargeSpacing),
             helpButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            helpButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
+            helpButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 

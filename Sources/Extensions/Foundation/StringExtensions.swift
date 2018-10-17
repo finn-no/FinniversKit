@@ -24,7 +24,7 @@ public extension String {
         paragraphStyle.lineSpacing = space
 
         let attrString = NSMutableAttributedString(string: self)
-        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
 
         return attrString
     }

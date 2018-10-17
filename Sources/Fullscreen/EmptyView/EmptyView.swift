@@ -186,7 +186,7 @@ public class EmptyView: UIView {
 
             actionButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .largeSpacing),
             actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing)
         ])
     }
 

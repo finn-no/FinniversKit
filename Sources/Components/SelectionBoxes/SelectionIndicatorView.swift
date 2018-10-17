@@ -101,14 +101,14 @@ public class SelectionIndicatorView: UIView {
         var buttonSelected = [UIImage]()
         var buttonUnselected = [UIImage]()
 
-        for i in 0 ..< 13 {
-            if let image = UIImage(named: "\(type.selected)\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
+        for index in 0 ..< 13 {
+            if let image = UIImage(named: "\(type.selected)\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
                 buttonSelected.append(image)
             }
         }
 
-        for i in 0 ..< 10 {
-            if let image = UIImage(named: "\(type.unselected)\(i)", in: FinniversKit.bundle, compatibleWith: nil) {
+        for index in 0 ..< 10 {
+            if let image = UIImage(named: "\(type.unselected)\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
                 buttonUnselected.append(image)
             }
         }

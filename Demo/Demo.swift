@@ -14,7 +14,7 @@ public enum DnaViews: String {
             .color,
             .font,
             .spacing,
-            .assets,
+            .assets
         ]
     }
 
@@ -122,7 +122,7 @@ public enum RecyclingViews: String {
             .savedSearchesListView,
             .marketsGridView,
             .adsGridView,
-            .settingsView,
+            .settingsView
         ]
     }
 
@@ -150,15 +150,15 @@ public enum TableViewCellViews: String {
     case basicCell
     case checkboxCell
     case checkboxSubtitleCell
-    
+
     public static var all: [TableViewCellViews] {
         return [
             .basicCell,
             .checkboxCell,
-            .checkboxSubtitleCell,
+            .checkboxSubtitleCell
         ]
     }
-    
+
     public var viewController: UIViewController {
         switch self {
         case .basicCell:

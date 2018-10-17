@@ -24,7 +24,7 @@ public extension NSAttributedString {
             let lineShift = "\n"
             let attributedLineShift = NSMutableAttributedString(string: lineShift)
 
-            let attributeRange = NSMakeRange(0, attributedString.length)
+            let attributeRange = NSRange(location: 0, length: attributedString.length)
             attributedString.addAttributes([NSAttributedString.Key.paragraphStyle: paragraphStyle], range: attributeRange)
             attributedString.addAttributes(textAttributes, range: attributeRange)
 

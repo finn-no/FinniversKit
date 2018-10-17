@@ -31,7 +31,7 @@ public class TextView: UIView {
     }()
 
     private lazy var placeholderLabel: UILabel = {
-        let label = Label(style: .body)        
+        let label = Label(style: .body)
         label.textColor = .sardine
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -101,7 +101,7 @@ public class TextView: UIView {
             underLine.trailingAnchor.constraint(equalTo: trailingAnchor),
             underLine.heightAnchor.constraint(equalToConstant: 2),
 
-            bottomAnchor.constraint(equalTo: underLine.bottomAnchor),
+            bottomAnchor.constraint(equalTo: underLine.bottomAnchor)
         ])
     }
 }

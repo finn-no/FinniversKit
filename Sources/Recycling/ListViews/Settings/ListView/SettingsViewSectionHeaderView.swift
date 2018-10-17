@@ -33,7 +33,7 @@ private extension SettingsViewSectionHeaderView {
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
         ])
     }
 }

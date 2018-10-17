@@ -84,7 +84,7 @@ enum Sections: String {
             .components,
             .recycling,
             .fullscreen,
-            .tableviewcells,
+            .tableviewcells
         ]
     }
 

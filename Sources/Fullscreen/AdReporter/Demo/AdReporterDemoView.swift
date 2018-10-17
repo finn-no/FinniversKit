@@ -41,7 +41,7 @@ public class AdReporterDemoView: UIView {
             adReporterView.leadingAnchor.constraint(equalTo: leadingAnchor),
             adReporterView.topAnchor.constraint(equalTo: topAnchor),
             adReporterView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            adReporterView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            adReporterView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 

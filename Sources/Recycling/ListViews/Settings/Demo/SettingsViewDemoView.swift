@@ -1,4 +1,3 @@
-
 //
 //  Copyright © 2018 FINN AS. All rights reserved.
 //
@@ -22,7 +21,7 @@ struct SettingsItem: SettingsViewCellModel {
 }
 
 class SettingsViewDemoView: UIView {
-    
+
     private let sections = [SettingsSection(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget", hairline: false)]),
 
                             SettingsSection(title: "Personvern", items: [SettingsItem(title: "Få nyhetsbrev fra FINN", status: "Av"),

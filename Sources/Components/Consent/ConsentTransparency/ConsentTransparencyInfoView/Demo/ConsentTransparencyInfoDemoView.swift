@@ -32,7 +32,7 @@ public class ConsentTransparencyInfoDemoView: UIView {
             consentTransparencyInfoView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
             consentTransparencyInfoView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
             consentTransparencyInfoView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            consentTransparencyInfoView.widthAnchor.constraint(lessThanOrEqualToConstant: maxScreenWidth),
+            consentTransparencyInfoView.widthAnchor.constraint(lessThanOrEqualToConstant: maxScreenWidth)
         ])
     }
 }
