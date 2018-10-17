@@ -39,7 +39,7 @@ public class SwitchViewDemoView: UIView {
 
             commercialSwitchView.topAnchor.constraint(equalTo: recommendationsSwitchView.bottomAnchor, constant: .mediumSpacing),
             commercialSwitchView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            commercialSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            commercialSwitchView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 }

@@ -41,17 +41,17 @@ public class AdReporterDemoView: UIView {
             adReporterView.leadingAnchor.constraint(equalTo: leadingAnchor),
             adReporterView.topAnchor.constraint(equalTo: topAnchor),
             adReporterView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            adReporterView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            adReporterView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
     private func registerKeyboardEvents() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: Foundation.Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: Foundation.Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     @objc func keyboardWillShow(notification: Foundation.Notification) {
-        guard let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
 
         let contentFrame = adReporterView.convert(adReporterView.contentView.frame, to: UIScreen.main.coordinateSpace)
         let overlap = keyboardFrame.intersection(contentFrame)

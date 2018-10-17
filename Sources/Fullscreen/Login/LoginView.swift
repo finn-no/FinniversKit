@@ -192,7 +192,7 @@ public class LoginView: UIView {
     }
 
     private func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 
     private func unRegisterKeyboardNotifications() {
@@ -200,24 +200,24 @@ public class LoginView: UIView {
     }
 
     @objc private func adjustKeyboard(notification: Notification) {
-        guard let keyboardEndFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+        guard let keyboardEndFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
 
-        if notification.name == Notification.Name.UIKeyboardWillShow {
+        if notification.name == UIResponder.keyboardWillShowNotification {
             if keyboardEndFrame.intersects(inputsContainer.frame) {
                 let intersectionFrame = keyboardEndFrame.intersection(inputsContainer.frame)
                 let keyboardOverlap = intersectionFrame.height
                 let bottomInset = keyboardOverlap + .mediumLargeSpacing
                 let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
 
-                let animationDuration = ((notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]) as? TimeInterval) ?? 0.25
+                let animationDuration = ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]) as? TimeInterval) ?? 0.25
                 UIView.animate(withDuration: animationDuration) { [weak self] in
                     self?.adjustKeyboardUp(contentInset: contentInset)
                 }
             }
         } else {
-            let animationDuration = ((notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey]) as? TimeInterval) ?? 0.25
+            let animationDuration = ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]) as? TimeInterval) ?? 0.25
             UIView.animate(withDuration: animationDuration) { [weak self] in
                 self?.adjustKeyboardDown()
             }
@@ -227,13 +227,13 @@ public class LoginView: UIView {
     fileprivate func adjustKeyboardUp(contentInset: UIEdgeInsets) {
         scrollView.contentInset = contentInset
         scrollView.contentOffset = CGPoint(x: 0, y: contentInset.bottom)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     fileprivate func adjustKeyboardDown() {
         scrollView.contentInset = .zero
         scrollView.contentOffset = CGPoint(x: 0, y: 0)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     private func setup() {
@@ -300,7 +300,7 @@ public class LoginView: UIView {
             forgotPasswordButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing),
 
             customerServiceStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.veryLargeSpacing),
-            customerServiceStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            customerServiceStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing)
         ])
     }
 

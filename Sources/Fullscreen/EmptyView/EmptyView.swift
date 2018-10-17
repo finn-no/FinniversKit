@@ -96,7 +96,7 @@ public class EmptyView: UIView {
 
     private lazy var collision: UICollisionBehavior = {
         let collision = UICollisionBehavior(items: allShapes)
-        collision.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsetsMake(-10000, 0, 0, 0))
+        collision.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsets(top: -10000, left: 0, bottom: 0, right: 0))
         return collision
     }()
 
@@ -186,7 +186,7 @@ public class EmptyView: UIView {
 
             actionButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .largeSpacing),
             actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing)
         ])
     }
 
@@ -225,7 +225,7 @@ public class EmptyView: UIView {
 
         let location = sender.location(in: self)
         let touchLocation = sender.location(in: objectView)
-        let touchOffset = UIOffsetMake(touchLocation.x - objectView.bounds.midX, touchLocation.y - objectView.bounds.midY)
+        let touchOffset = UIOffset(horizontal: touchLocation.x - objectView.bounds.midX, vertical: touchLocation.y - objectView.bounds.midY)
 
         if sender.state == .began {
             let newAttach = UIAttachmentBehavior(item: objectView, offsetFromCenter: touchOffset, attachedToAnchor: location)

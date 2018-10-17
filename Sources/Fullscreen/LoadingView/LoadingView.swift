@@ -26,7 +26,7 @@ import UIKit
     }()
 
     private lazy var oldLoadingIndicator: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let view = UIActivityIndicatorView(style: .whiteLarge)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.transform = loadingIndicatorInitialTransform
         view.color = .primaryBlue
@@ -168,11 +168,11 @@ private extension LoadingView {
                 self.alpha = 0
                 loadingIndicator.transform = self.loadingIndicatorInitialTransform
                 self.successImageView.transform = self.loadingIndicatorInitialTransform
-            }) { (_) in
+            }, completion: { (_) in
                 self.messageLabel.text = nil
                 loadingIndicator.stopAnimating()
                 self.removeFromSuperview()
-            }
+            })
         }
     }
 }

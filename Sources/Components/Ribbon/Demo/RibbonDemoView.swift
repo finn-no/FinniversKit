@@ -71,7 +71,7 @@ public class RibbonDemoView: UIView {
             disabledRibbonView.topAnchor.constraint(equalTo: defaultRibbonView.bottomAnchor, constant: lineSpacing),
 
             sponsoredRibbonView.leadingAnchor.constraint(equalTo: disabledRibbonView.trailingAnchor, constant: interimSpacing),
-            sponsoredRibbonView.topAnchor.constraint(equalTo: disabledRibbonView.topAnchor),
+            sponsoredRibbonView.topAnchor.constraint(equalTo: disabledRibbonView.topAnchor)
         ])
     }
 }

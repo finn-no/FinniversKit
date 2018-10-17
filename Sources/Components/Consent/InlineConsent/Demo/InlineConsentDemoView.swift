@@ -32,7 +32,7 @@ public class InlineConsentDemoView: UIView {
             inlineConsentView.centerXAnchor.constraint(equalTo: centerXAnchor),
             inlineConsentView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumLargeSpacing),
             inlineConsentView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            inlineConsentView.widthAnchor.constraint(equalToConstant: plusScreenWidth),
+            inlineConsentView.widthAnchor.constraint(equalToConstant: plusScreenWidth)
         ])
     }
 }

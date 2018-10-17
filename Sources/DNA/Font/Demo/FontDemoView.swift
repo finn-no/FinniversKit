@@ -32,7 +32,7 @@ public class FontDemoView: UIView {
             FontItem(font: .title4, title: "title4"),
             FontItem(font: .title5, title: "title5"),
             FontItem(font: .body, title: "body"),
-            FontItem(font: .detail, title: "detail"),
+            FontItem(font: .detail, title: "detail")
         ]
     }()
 
@@ -45,7 +45,7 @@ public class FontDemoView: UIView {
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
         tableView.register(UITableViewCell.self)

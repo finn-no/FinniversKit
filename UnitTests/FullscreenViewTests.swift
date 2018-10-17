@@ -62,4 +62,12 @@ class FullscreenViewTests: FBSnapshotTestCase {
     func testLoadingView() {
         snapshot(.loadingView)
     }
+
+    func testConsentToggleView() {
+        snapshot(.consentToggleView)
+    }
+
+    func testConsentActionView() {
+        snapshot(.consentActionView)
+    }
 }

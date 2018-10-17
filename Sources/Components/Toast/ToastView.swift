@@ -43,7 +43,7 @@ public class ToastView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.primaryBlue, for: .normal)
         button.layer.masksToBounds = true
-        button.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: UILayoutConstraintAxis.horizontal)
+        button.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: .horizontal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -129,7 +129,7 @@ public class ToastView: UIView {
 
             messageTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
             messageTitle.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            messageTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            messageTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
         ])
 
         if style == .successButton || style == .errorButton {
@@ -138,7 +138,7 @@ public class ToastView: UIView {
             NSLayoutConstraint.activate([
                 messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -.mediumLargeSpacing),
                 actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-                actionButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+                actionButton.centerYAnchor.constraint(equalTo: centerYAnchor)
             ])
         } else {
             actionButton.isHidden = true
@@ -176,9 +176,9 @@ public class ToastView: UIView {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
             UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
                 self.transform = CGAffineTransform.identity
-            }) { _ in
+            }, completion: { _ in
                 self.removeFromSuperview()
-            }
+            })
         }
     }
 
@@ -190,7 +190,7 @@ public class ToastView: UIView {
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: view.leadingAnchor),
             trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topAnchor.constraint(equalTo: view.compatibleBottomAnchor),
+            topAnchor.constraint(equalTo: view.compatibleBottomAnchor)
         ])
 
         view.layoutIfNeeded()

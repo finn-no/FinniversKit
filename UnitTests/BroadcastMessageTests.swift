@@ -17,7 +17,7 @@ class BroadcastMessageTests: XCTestCase {
         let broadcastMessage = BroadcastMessage(id: 0, text: testMessage)
         let expectedResult = "Dette er en melding som inneholder en link \(linkText)"
         let result = broadcastMessage.attributedString(for: testMessage)
-        let resultRange = NSMakeRange(0, result.string.count)
+        let resultRange = NSRange(location: 0, length: result.string.count)
         let linkTextRangeInResult = NSString(string: result.string).range(of: linkText)
 
         // Then
@@ -26,10 +26,10 @@ class BroadcastMessageTests: XCTestCase {
         for location in resultRange.lowerBound ..< resultRange.upperBound {
             let attributes = result.attributes(at: location, longestEffectiveRange: nil, in: resultRange)
             if linkTextRangeInResult.contains(location) {
-                XCTAssertNotNil(attributes[NSAttributedStringKey.link])
-                XCTAssertEqual(attributes[NSAttributedStringKey.link] as? URL, linkURL)
+                XCTAssertNotNil(attributes[NSAttributedString.Key.link])
+                XCTAssertEqual(attributes[NSAttributedString.Key.link] as? URL, linkURL)
             } else {
-                XCTAssertNil(attributes[NSAttributedStringKey.link])
+                XCTAssertNil(attributes[NSAttributedString.Key.link])
             }
         }
     }

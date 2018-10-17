@@ -16,7 +16,7 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
             "Levere den tjenesten du forventer av oss: Vise frem annonser, sørge for medlingsutveksling og tilby søk og varslinger",
             "Gi deg tilpasset innhold: Vise søketrff nær deg, og anbefale relevant innhold. Dette kan vi vise på FINN, eller på andre nettsteder", "Annonsering, annonsevisninger og mulighet for å kontakte annonsør",
             "Forbedre produktene våre gjennom statistikk: Sjekke hvordan tjenesten fungerer, og måle effekten av endringer vi gjør",
-            "Sikre en trygg markedsplass ved å forhindre svindel, brudd på annonsereglene og annen misbruk av tjenestene våre",
+            "Sikre en trygg markedsplass ved å forhindre svindel, brudd på annonsereglene og annen misbruk av tjenestene våre"
         ]
         return NSAttributedString.makeBulletPointFrom(stringList: bulletPoints, font: .body)
     }
@@ -30,7 +30,7 @@ public struct ConsentTransparencyInfoDefaultData: ConsentTransparencyInfoViewMod
     public var schibstedBulletPointsText: NSAttributedString {
         let bulletPoints = [
             "Tilby en trygg, enkel og effektiv påloggingstjeneste.",
-            "Gi deg relevant reklameinnhold: Vi tror du setter mer pris på reklame som er tilpasset deg, enn tilfeldig reklame.",
+            "Gi deg relevant reklameinnhold: Vi tror du setter mer pris på reklame som er tilpasset deg, enn tilfeldig reklame."
         ]
         return NSAttributedString.makeBulletPointFrom(stringList: bulletPoints, font: .body)
     }

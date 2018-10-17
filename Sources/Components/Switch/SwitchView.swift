@@ -91,7 +91,7 @@ public class SwitchView: UIView {
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
             descriptionLabel.widthAnchor.constraint(equalTo: headerLabel.widthAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 

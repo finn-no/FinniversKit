@@ -39,7 +39,7 @@ public class ColorDemoView: UIView {
             ColorItem(color: .banana, title: "banana"),
             ColorItem(color: .cherry, title: "cherry"),
             ColorItem(color: .watermelon, title: "watermelon"),
-            ColorItem(color: .pea, title: "pea"),
+            ColorItem(color: .pea, title: "pea")
         ]
     }()
 
@@ -52,7 +52,7 @@ public class ColorDemoView: UIView {
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
         tableView.register(UITableViewCell.self)

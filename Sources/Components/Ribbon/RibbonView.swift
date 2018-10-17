@@ -59,7 +59,7 @@ public class RibbonView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horisontalMargin),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horisontalMargin),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -verticalMargin),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin)
         ])
     }
 

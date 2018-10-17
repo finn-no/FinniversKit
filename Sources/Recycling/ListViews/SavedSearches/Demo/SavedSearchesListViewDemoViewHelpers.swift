@@ -39,7 +39,7 @@ public struct SavedSearchFactory {
             "Privat slott",
             "Pent brukt bolig",
             "Enebolig i rolig strøk",
-            "Hus til slags",
+            "Hus til slags"
         ]
     }
 

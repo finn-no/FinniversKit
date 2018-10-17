@@ -25,7 +25,7 @@ public class RoundedImageViewDemoView: UIView {
 
         NSLayoutConstraint.activate([
             roundedImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            roundedImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            roundedImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }

@@ -8,7 +8,7 @@ public class CheckboxDemoView: UIView {
     let strings = [
         "Mistanke om svindel",
         "Regelbrudd",
-        "Forhandler opptrer som privat",
+        "Forhandler opptrer som privat"
     ]
 
     lazy var checkbox: Checkbox = {
@@ -39,7 +39,7 @@ public class CheckboxDemoView: UIView {
             checkbox.leadingAnchor.constraint(equalTo: leadingAnchor),
             checkbox.trailingAnchor.constraint(equalTo: trailingAnchor),
             checkbox.topAnchor.constraint(equalTo: topAnchor),
-            checkbox.heightAnchor.constraint(equalToConstant: CGFloat(strings.count + 1) * 44),
+            checkbox.heightAnchor.constraint(equalToConstant: CGFloat(strings.count + 1) * 44)
         ])
     }
 

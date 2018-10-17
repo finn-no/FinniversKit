@@ -50,4 +50,8 @@ class RecyclingViewTests: FBSnapshotTestCase {
     func testSavedSearchesListView() {
         snapshot(.savedSearchesListView)
     }
+
+    func testSettingsView() {
+        snapshot(.settingsView)
+    }
 }

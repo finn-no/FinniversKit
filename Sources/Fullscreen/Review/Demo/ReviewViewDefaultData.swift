@@ -16,17 +16,16 @@ public class ReviewViewUser: ReviewViewProfileModel {
 }
 
 public struct ReviewViewDefaultData: ReviewViewModel {
-    public let title = "Gratulerer med handelen!\nGi en vurdering og fortell hvordan det gikk."
-    public let subtitle = "Hvem vil du gi en vurdering til?"
+    public let title = "Velg den du gjorde handelen med:"
     public let profiles: [ReviewViewProfileModel] = [
         ReviewViewUser(name: "Ola Nordmann", image: URL(string: "http://via.placeholder.com/44x44/111111/111111")),
         ReviewViewUser(name: "Per Johansen", image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")),
         ReviewViewUser(name: "Per"),
         ReviewViewUser(name: "FINN Bruker"),
-        ReviewViewUser(name: "Test testesen", image: URL(string: "http://via.placeholder.com/44x44/ffff00/ffff00")),
+        ReviewViewUser(name: "Test testesen", image: URL(string: "http://via.placeholder.com/44x44/ffff00/ffff00"))
     ]
-    public let skiptitle = "Hopp over"
-    public let nonOfTheseTitle = "Ingen av disse"
+    public let selectTitle = "Velg"
+    public let confirmationTitle = "Du kan ikke endre valget ditt senere"
 
     public init() {
     }

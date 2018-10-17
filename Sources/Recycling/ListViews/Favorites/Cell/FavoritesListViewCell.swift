@@ -50,7 +50,7 @@ public class FavoritesListViewCell: UITableViewCell {
 
     // MARK: - Setup
 
-    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
@@ -81,7 +81,7 @@ public class FavoritesListViewCell: UITableViewCell {
 
             titleLabel.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .smallSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
         ])
     }
 
@@ -124,7 +124,7 @@ public class FavoritesListViewCell: UITableViewCell {
     // MARK: - Private
 
     private func loadImage(model: FavoritesListViewModel) {
-        guard let dataSource = dataSource, let _ = model.imagePath else {
+        guard let dataSource = dataSource, model.imagePath != nil else {
             loadingColor = .clear
             adImageView.image = defaultImage
             return
