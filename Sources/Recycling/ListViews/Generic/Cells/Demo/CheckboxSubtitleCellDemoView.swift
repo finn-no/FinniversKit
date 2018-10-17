@@ -11,8 +11,6 @@ fileprivate struct ViewModel: CheckboxSubtitleTableViewCellViewModel {
 }
 
 class CheckboxSubtitleCellDemoView: UIView {
-    weak var feedbackProducer: HapticFeedbackProducer?
-    
     fileprivate var viewModels = [
         ViewModel(title: "Hagemøbler", subtitle: "For deg som liker noe godt å sitte i når du gjør deg flid med grillen", isSelected: false),
         ViewModel(title: "Kattepuser", subtitle: "Fin-fine kattunger", isSelected: true),
@@ -55,7 +53,10 @@ extension CheckboxSubtitleCellDemoView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        feedbackProducer?.produceFeedback()
+        if #available(iOS 10.0, *) {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
+        
         let cell = tableView.cellForRow(at: indexPath) as! CheckboxSubtitleTableViewCell
         var viewModel = viewModels[indexPath.row]
         viewModel.isSelected = !viewModel.isSelected

@@ -10,8 +10,6 @@ fileprivate struct ViewModel: CheckboxTableViewCellViewModel {
 }
 
 class CheckboxCellDemoView: UIView {
-    weak var feedbackProducer: HapticFeedbackProducer?
-
     fileprivate var viewModels = [
         ViewModel(title: "Hagemøbler", isSelected: false),
         ViewModel(title: "Kattepuser", isSelected: true),
@@ -54,7 +52,10 @@ extension CheckboxCellDemoView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        feedbackProducer?.produceFeedback()
+        if #available(iOS 10.0, *) {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
+        
         let cell = tableView.cellForRow(at: indexPath) as! CheckboxTableViewCell
         var viewModel = viewModels[indexPath.row]
         viewModel.isSelected = !viewModel.isSelected

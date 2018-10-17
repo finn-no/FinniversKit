@@ -113,7 +113,6 @@ public enum RecyclingViews: String {
     case marketsGridView
     case adsGridView
     case settingsView
-    case tableViewCells
 
     public static var all: [RecyclingViews] {
         return [
@@ -124,7 +123,6 @@ public enum RecyclingViews: String {
             .marketsGridView,
             .adsGridView,
             .settingsView,
-            .tableViewCells,
         ]
     }
 
@@ -144,8 +142,31 @@ public enum RecyclingViews: String {
             return DemoViewController<AdsGridViewDemoView>()
         case .settingsView:
             return DemoViewController<SettingsViewDemoView>()
-        case .tableViewCells:
-            return DemoViewController<TableViewCellsDemoView>(withDismissButton: true)
+        }
+    }
+}
+
+public enum TableViewCellViews: String {
+    case basicCell
+    case checkboxCell
+    case checkboxSubtitleCell
+    
+    public static var all: [TableViewCellViews] {
+        return [
+            .basicCell,
+            .checkboxCell,
+            .checkboxSubtitleCell,
+        ]
+    }
+    
+    public var viewController: UIViewController {
+        switch self {
+        case .basicCell:
+            return DemoViewController<BasicCellDemoView>(withDismissButton: true)
+        case .checkboxCell:
+            return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
+        case .checkboxSubtitleCell:
+            return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
         }
     }
 }

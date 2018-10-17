@@ -14,7 +14,6 @@
 		08A113142175F6A200584B97 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A113132175F6A200584B97 /* CheckboxTableViewCell.swift */; };
 		08A1131A21760A4D00584B97 /* CheckboxSubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A1131921760A4D00584B97 /* CheckboxSubtitleTableViewCell.swift */; };
 		08A1131C217611A800584B97 /* CheckboxSubtitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A1131B217611A800584B97 /* CheckboxSubtitleCellDemoView.swift */; };
-		08A1131E217621D800584B97 /* TableViewCellsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A1131D217621D800584B97 /* TableViewCellsDemoView.swift */; };
 		08A1132021774F6500584B97 /* UIEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A1131F21774F6500584B97 /* UIEdgeInsetsExtensions.swift */; };
 		08F6788F2174B7B30016B579 /* BasicCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6788E2174B7B30016B579 /* BasicCellDemoView.swift */; };
 		08F678912174B8360016B579 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F678902174B8360016B579 /* BasicTableViewCell.swift */; };
@@ -252,7 +251,6 @@
 		08A113132175F6A200584B97 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
 		08A1131921760A4D00584B97 /* CheckboxSubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxSubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		08A1131B217611A800584B97 /* CheckboxSubtitleCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxSubtitleCellDemoView.swift; sourceTree = "<group>"; };
-		08A1131D217621D800584B97 /* TableViewCellsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellsDemoView.swift; sourceTree = "<group>"; };
 		08A1131F21774F6500584B97 /* UIEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		08F6788E2174B7B30016B579 /* BasicCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCellDemoView.swift; sourceTree = "<group>"; };
 		08F678902174B8360016B579 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
@@ -499,7 +497,6 @@
 				08F6788E2174B7B30016B579 /* BasicCellDemoView.swift */,
 				08A113112175F68C00584B97 /* CheckboxCellDemoView.swift */,
 				08A1131B217611A800584B97 /* CheckboxSubtitleCellDemoView.swift */,
-				08A1131D217621D800584B97 /* TableViewCellsDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1873,7 +1870,6 @@
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
-				08A1131E217621D800584B97 /* TableViewCellsDemoView.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
 				CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */,
