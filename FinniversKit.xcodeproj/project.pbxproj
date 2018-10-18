@@ -12,6 +12,8 @@
 		14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */; };
 		14193AB021380DC800EC7FC0 /* RecyclingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAC21380DC800EC7FC0 /* RecyclingViewTests.swift */; };
 		141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141F08C52123110B001DB145 /* DemoHelpers.swift */; };
+		1430D440216E4DA10038AC84 /* Spacing.h in Headers */ = {isa = PBXBuildFile; fileRef = 1430D43E216E4DA10038AC84 /* Spacing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1430D441216E4DA10038AC84 /* Spacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 1430D43F216E4DA10038AC84 /* Spacing.m */; };
 		144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144351BA1FBE2BF1007B2229 /* Assets.xcassets */; };
 		144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144351C31FBE2FA2007B2229 /* AppDelegate.swift */; };
 		144959DB2122C4400084549F /* FinniversImageAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 144959D92122C4400084549F /* FinniversImageAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -241,6 +243,8 @@
 		14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnaViewTests.swift; sourceTree = "<group>"; };
 		14193AAC21380DC800EC7FC0 /* RecyclingViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecyclingViewTests.swift; sourceTree = "<group>"; };
 		141F08C52123110B001DB145 /* DemoHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoHelpers.swift; sourceTree = "<group>"; };
+		1430D43E216E4DA10038AC84 /* Spacing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Spacing.h; sourceTree = "<group>"; };
+		1430D43F216E4DA10038AC84 /* Spacing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spacing.m; sourceTree = "<group>"; };
 		14405C5F1FAFBBF000D03E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14405C741FAFBD1800D03E04 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		144351BA1FBE2BF1007B2229 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -658,6 +662,8 @@
 			children = (
 				4408A6AC2027AC7F008C0BD9 /* Demo */,
 				4408A6A02027AC41008C0BD9 /* Spacing.swift */,
+				1430D43E216E4DA10038AC84 /* Spacing.h */,
+				1430D43F216E4DA10038AC84 /* Spacing.m */,
 			);
 			path = Spacing;
 			sourceTree = "<group>";
@@ -1603,6 +1609,7 @@
 			files = (
 				4447F7021FDB2B110033DBC1 /* FinniversKit.h in Headers */,
 				44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */,
+				1430D440216E4DA10038AC84 /* Spacing.h in Headers */,
 				144959DB2122C4400084549F /* FinniversImageAsset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1948,6 +1955,7 @@
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
+				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
