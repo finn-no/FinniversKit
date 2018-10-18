@@ -7,6 +7,7 @@ import Foundation
 enum MarketsGridViewLayoutConfiguration {
     case small
     case medium
+    // swiftlint:disable:next identifier_name
     case large(CGFloat)
 
     static let mediumRange: Range<CGFloat> = (375.0 ..< 415.0)
