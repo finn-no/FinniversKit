@@ -14,8 +14,8 @@ protocol BroadcastItemDelegate: class {
 /// https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system#/components/broadcast
 
 // MARK: - Public
-class BroadcastItem: UIView {
 
+class BroadcastItem: UIView {
     private lazy var contentView: UIView = {
         let view = UIView(frame: .zero)
         view.clipsToBounds = true
@@ -26,6 +26,7 @@ class BroadcastItem: UIView {
     }()
 
     // MARK: Private Properties
+
     private lazy var messageTextView: UITextView = {
         let textView = UITextView()
         textView.delegate = self
@@ -65,6 +66,7 @@ class BroadcastItem: UIView {
     var message: BroadcastMessage
 
     // MARK: - Setup
+
     init(message: BroadcastMessage) {
         self.message = message
         super.init(frame: .zero)
@@ -118,7 +120,7 @@ extension BroadcastItem {
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: messageTextView.bottomAnchor, constant: .mediumLargeSpacing),
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: .mediumLargeSpacing),
             bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-            ])
+        ])
     }
 
     private func setAttributedText(_ message: BroadcastMessage) {
@@ -128,6 +130,7 @@ extension BroadcastItem {
     }
 
     // MARK: - Actions
+
     @objc func dismissButtonTapped(_ sender: UIButton) {
         delegate?.broadcastItemDismissButtonTapped(self)
     }

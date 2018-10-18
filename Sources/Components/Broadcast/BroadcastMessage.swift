@@ -5,7 +5,6 @@
 import Foundation
 
 public struct BroadcastMessage: Hashable, Codable {
-
     public let id: Int
     public let text: String
     public let broadcastAreas: [String]
@@ -18,7 +17,7 @@ public struct BroadcastMessage: Hashable, Codable {
     public init(id: Int, text: String) {
         self.id = id
         self.text = text
-        self.broadcastAreas = []
+        broadcastAreas = []
     }
 
     public var hashValue: Int {
@@ -38,7 +37,7 @@ extension BroadcastMessage {
 
         let options = [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html]
         guard let attributedString = try? NSMutableAttributedString(data: messageData, options: options, documentAttributes: nil) else {
-            return NSAttributedString(string: text  )
+            return NSAttributedString(string: text)
         }
 
         return attributedString

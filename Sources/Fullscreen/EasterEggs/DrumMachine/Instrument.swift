@@ -2,8 +2,8 @@
 //  Copyright © 2018 FINN.no. All rights reserved.
 //
 
-import UIKit
 import AudioToolbox
+import UIKit
 
 enum Instrument: String {
     case kick = "Kick"
@@ -63,6 +63,6 @@ enum Instrument: String {
 
 private extension UIColor {
     class var yellow: UIColor {
-        return .init(red: 235/255.0, green: 201/255.0, blue: 62/255.0, alpha: 1.0)
+        return .init(red: 235 / 255.0, green: 201 / 255.0, blue: 62 / 255.0, alpha: 1.0)
     }
 }

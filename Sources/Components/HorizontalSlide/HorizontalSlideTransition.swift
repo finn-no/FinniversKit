@@ -23,6 +23,7 @@ public class HorizontalSlideTransition: NSObject, UIViewControllerTransitioningD
 }
 
 // MARK: - HorizontalSlideControllerDelegate
+
 extension HorizontalSlideTransition: HorizontalSlideControllerDelegate {
     func horizontalSlideControllerDidDismiss(_ horizontalSlideController: HorizontalSlideController) {
         delegate?.horizontalSlideTransitionDidDismiss(self)

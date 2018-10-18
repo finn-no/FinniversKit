@@ -9,7 +9,6 @@ public protocol ConsentActionViewDelegate: class {
 }
 
 public class ConsentActionView: UIView {
-
     // MARK: - Private properties
 
     private lazy var textLabel: Label = {
@@ -79,7 +78,6 @@ public class ConsentActionView: UIView {
 // MARK: - ScrollView Delegate
 
 extension ConsentActionView: UIScrollViewDelegate {
-
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if -scrollView.contentOffset.y + textLabel.intrinsicContentSize.height + .largeSpacing >= buttonBackgroundView.frame.minY {
             animateShadow(fromValue: 0, toValue: 0.2, duration: shadowAnimationDuration)
@@ -92,7 +90,6 @@ extension ConsentActionView: UIScrollViewDelegate {
 // MARK: - Private methods
 
 private extension ConsentActionView {
-
     func animateShadow(fromValue from: Float, toValue to: Float, duration: Double) {
         guard buttonBackgroundView.layer.shadowOpacity != to else { return }
         let animation = CABasicAnimation(keyPath: "shadowOpacity")

@@ -11,7 +11,6 @@ struct ActionViewModel: ConsentActionViewModel {
 }
 
 class ConsentActionViewDemoView: UIView {
-
     lazy var consentActionView: ConsentActionView = {
         let view = ConsentActionView(frame: .zero)
         view.model = ActionViewModel()

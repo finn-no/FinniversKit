@@ -9,7 +9,6 @@ public protocol ConfirmationViewDelegate: class {
 }
 
 public class ConfirmationView: UIView {
-
     // MARK: - Private properties
 
     private lazy var titleLabel: Label = {
@@ -36,7 +35,7 @@ public class ConfirmationView: UIView {
 
     public var title: String? {
         get { return titleLabel.text }
-        set { titleLabel.text = newValue}
+        set { titleLabel.text = newValue }
     }
 
     public var message: String? {
@@ -80,7 +79,7 @@ public class ConfirmationView: UIView {
             view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
             view.centerYAnchor.constraint(equalTo: centerYAnchor)
-            ])
+        ])
 
         closeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }

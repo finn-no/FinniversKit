@@ -4,7 +4,6 @@
 import FinniversKit
 
 public class BroadcastDemoView: UIView {
-
     private let items = ["Select", "any", "row", "and", "the", "broadcasts", "will", "reappear"]
 
     private lazy var tableView: UITableView = {
@@ -21,7 +20,7 @@ public class BroadcastDemoView: UIView {
     private var broadcastMessages: Set<BroadcastMessage> = [
         BroadcastMessage(id: 1, text: "Broadcast messages appears without any action from the user. They are used when it´s important to inform the user about something that has affected the whole system and many users. Especially if it has a consequence for how he or she uses the service."),
         BroadcastMessage(id: 2, text: "Their containers should have the colour \"Banana\" and associated text. An exclamation mark icon is used if it is very important that the user gets this info. They appear under the banners and pushes the other content down. It scrolls with the content.\\n\nBroadcasts can also contain <a href=\"http://www.finn.no\">HTML links</a>.")
-        ]
+    ]
 
     private var dismissedMessages: Set<BroadcastMessage> = []
 
@@ -46,7 +45,7 @@ public class BroadcastDemoView: UIView {
             tableView.topAnchor.constraint(equalTo: topAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
-            ])
+        ])
 
         broadcast.presentMessages(broadcastMessages, in: tableView, animated: false)
     }
@@ -84,7 +83,6 @@ extension BroadcastDemoView: UITableViewDataSource {
 }
 
 extension BroadcastDemoView: BroadcastDelegate {
-
     public func broadcast(_ broadcast: Broadcast, didDismiss message: BroadcastMessage) {
         print("Did dismiss message id:", message.id)
         dismissedMessages.insert(message)

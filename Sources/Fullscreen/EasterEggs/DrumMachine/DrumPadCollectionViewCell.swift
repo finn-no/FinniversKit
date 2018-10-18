@@ -7,7 +7,7 @@ import UIKit
 final class DrumPadCollectionViewCell: UICollectionViewCell {
     private lazy var overlayView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.init(white: 1, alpha: 0.8)
+        view.backgroundColor = UIColor(white: 1, alpha: 0.8)
         return view
     }()
 

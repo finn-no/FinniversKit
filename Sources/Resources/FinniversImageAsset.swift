@@ -164,7 +164,7 @@ public enum FinniversImageAsset: String {
             .verified,
             .view,
             .webview,
-            .yourads,
-    ]
-  }
+            .yourads
+        ]
+    }
 }

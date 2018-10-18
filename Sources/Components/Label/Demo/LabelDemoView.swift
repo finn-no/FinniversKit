@@ -12,7 +12,7 @@ public class LabelDemoView: UIView {
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
-    
+
     private func setup() {
         let topSpacing: CGFloat = 32
         let margin: CGFloat = 16

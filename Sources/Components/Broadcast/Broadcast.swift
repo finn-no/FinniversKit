@@ -12,7 +12,6 @@ public protocol BroadcastDelegate: class {
 // MARK: - Public
 
 public final class Broadcast: UIStackView {
-
     // MARK: Public properties
 
     public weak var delegate: BroadcastDelegate?
@@ -163,7 +162,7 @@ private extension Broadcast {
             }
         } else {
             topConstraint?.constant = -contentOffset
-            self.animate(to: contentOffset - self.frame.height)
+            animate(to: contentOffset - frame.height)
         }
     }
 

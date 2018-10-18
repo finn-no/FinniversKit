@@ -7,7 +7,7 @@ public protocol LoadingViewAnimatable {
     func stopAnimating()
 }
 
-extension UIActivityIndicatorView: LoadingViewAnimatable { }
+extension UIActivityIndicatorView: LoadingViewAnimatable {}
 
 /// Branded replacement for UIActivityIndicatorView.
 public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
@@ -18,12 +18,12 @@ public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
     private var backgroundLayerColor: UIColor = .sardine
     private var lineWidth: CGFloat = 4
 
-    override public init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }

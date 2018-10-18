@@ -58,6 +58,6 @@ public final class EasterEggButton: UIButton {
         titleLabel?.font = .detail
 
         adjustsImageWhenHighlighted = false
-        setImage(UIImage.init(named: .easterEgg), for: .normal)
+        setImage(UIImage(named: .easterEgg), for: .normal)
     }
 }

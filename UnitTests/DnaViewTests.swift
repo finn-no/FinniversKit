@@ -2,9 +2,9 @@
 //  Copyright © 2018 FINN AS. All rights reserved.
 //
 
+import Demo
 import FBSnapshotTestCase
 import FinniversKit
-import Demo
 
 class DnaViewTests: FBSnapshotTestCase {
     static var allViews = DnaViews.all

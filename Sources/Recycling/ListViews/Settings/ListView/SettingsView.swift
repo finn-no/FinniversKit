@@ -15,7 +15,6 @@ public protocol SettingsViewDelegate: class {
 }
 
 public class SettingsView: UIView {
-
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .grouped)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +58,6 @@ private extension SettingsView {
 }
 
 extension SettingsView: UITableViewDataSource {
-
     public func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource?.numberOfSections(in: self) ?? 0
     }
@@ -76,7 +74,6 @@ extension SettingsView: UITableViewDataSource {
 }
 
 extension SettingsView: UITableViewDelegate {
-
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeue(SettingsViewSectionHeaderView.self)
         headerView.title = delegate?.settingsView(self, titleForHeaderInSection: section)

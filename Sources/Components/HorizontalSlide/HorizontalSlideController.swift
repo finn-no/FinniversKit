@@ -9,6 +9,7 @@ class HorizontalSlideController: UIPresentationController {
     weak var dismissalDelegate: HorizontalSlideControllerDelegate?
 
     // MARK: - Properties
+
     private let containerPercentage: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 0.60 : 0.85
 
     private lazy var dimmingView: UIView = {
@@ -28,6 +29,7 @@ class HorizontalSlideController: UIPresentationController {
     }()
 
     // MARK: - Overrides
+
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = containerView else { return .zero }
 
@@ -45,7 +47,7 @@ class HorizontalSlideController: UIPresentationController {
             dimmingView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             dimmingView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             dimmingView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
-            ])
+        ])
 
         guard let coordinator = presentedViewController.transitionCoordinator else {
             dimmingView.alpha = 1.0
@@ -77,6 +79,7 @@ class HorizontalSlideController: UIPresentationController {
     }
 
     // MARK: - Private
+
     @objc private func handleDismissGesture() {
         presentingViewController.dismiss(animated: true)
         dismissalDelegate?.horizontalSlideControllerDidDismiss(self)

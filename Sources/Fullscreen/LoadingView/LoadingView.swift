@@ -36,7 +36,7 @@ import UIKit
     private lazy var messageLabel: UILabel = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = . center
+        label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()
@@ -55,13 +55,13 @@ import UIKit
 
     init(window: UIWindow? = UIApplication.shared.keyWindow) {
         super.init(frame: .zero)
-        self.defaultWindow = window
-        self.alpha = 0
-        self.translatesAutoresizingMaskIntoConstraints = false
+        defaultWindow = window
+        alpha = 0
+        translatesAutoresizingMaskIntoConstraints = false
         setup()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
 
@@ -125,7 +125,7 @@ private extension LoadingView {
             messageLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: .mediumLargeSpacing),
             messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .veryLargeSpacing),
             messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.veryLargeSpacing)
-            ])
+        ])
     }
 
     private func startAnimating(withMessage message: String? = nil) {
@@ -168,7 +168,7 @@ private extension LoadingView {
                 self.alpha = 0
                 loadingIndicator.transform = self.loadingIndicatorInitialTransform
                 self.successImageView.transform = self.loadingIndicatorInitialTransform
-            }, completion: { (_) in
+            }, completion: { _ in
                 self.messageLabel.text = nil
                 loadingIndicator.stopAnimating()
                 self.removeFromSuperview()

@@ -4,7 +4,6 @@
 import UIKit
 
 public class SettingsViewCell: UITableViewCell {
-
     // MARK: - Private properties
 
     private lazy var titleLabel: Label = {
@@ -65,7 +64,6 @@ public class SettingsViewCell: UITableViewCell {
 // MARK: - Private methods
 
 private extension SettingsViewCell {
-
     func set(model: SettingsViewCellModel?) {
         titleLabel.text = model?.title
         stateLabel.text = model?.status

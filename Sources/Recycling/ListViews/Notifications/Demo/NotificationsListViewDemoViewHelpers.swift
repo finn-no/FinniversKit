@@ -107,8 +107,7 @@ public struct NotificationFactory {
                 "347 000,-",
                 "546 000,-",
                 "647 000,-",
-                "264 000,-"
-        ]
+                "264 000,-"]
     }
 
     private static var imageSources: [ImageSource] {

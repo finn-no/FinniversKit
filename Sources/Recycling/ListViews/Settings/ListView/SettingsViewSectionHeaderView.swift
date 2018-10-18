@@ -5,7 +5,6 @@
 import UIKit
 
 class SettingsViewSectionHeaderView: UITableViewHeaderFooterView {
-
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
