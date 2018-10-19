@@ -6,7 +6,7 @@ import UIKit
 
 // MARK: - LoginViewDelegatew
 
-public protocol LoginViewDelegate: NSObjectProtocol {
+public protocol LoginViewDelegate: class {
     func loginView(_ loginView: LoginView, didSelectForgetPasswordButton button: Button)
     func loginView(_ loginView: LoginView, didSelectLoginButton button: Button, with email: String, and password: String)
     func loginView(_ loginView: LoginView, didSelectNewUserButton button: Button, with email: String)
@@ -174,7 +174,7 @@ public class LoginView: UIView {
     // MARK: - Setup
 
     deinit {
-        unRegisterKeyboardNotifications()
+        NotificationCenter.default.removeObserver(self)
     }
 
     public override init(frame: CGRect) {
@@ -188,15 +188,7 @@ public class LoginView: UIView {
     }
 
     public override func didMoveToSuperview() {
-        registerForKeyboardNotifications()
-    }
-
-    private func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-
-    private func unRegisterKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self)
     }
 
     @objc private func adjustKeyboard(notification: Notification) {

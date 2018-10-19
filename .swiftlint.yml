@@ -7,10 +7,15 @@ type_name:
   min_length: 2
 identifier_name:
   min_length: 2
+  max_length: 80
 cyclomatic_complexity: 10
 
 disabled_rules:
   - line_length
+  - function_body_length
+  - weak_delegate
+  - trailing_comma
+  - class_delegate_protocol
 
 included:
   - Sources

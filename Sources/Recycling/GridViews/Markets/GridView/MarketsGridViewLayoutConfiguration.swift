@@ -7,8 +7,7 @@ import Foundation
 enum MarketsGridViewLayoutConfiguration {
     case small
     case medium
-    // swiftlint:disable:next identifier_name
-    case large(CGFloat)
+    case large
 
     static let mediumRange: Range<CGFloat> = (375.0 ..< 415.0)
     static let portraitModeScreenWidth = CGFloat(768)
@@ -16,7 +15,7 @@ enum MarketsGridViewLayoutConfiguration {
     init(width: CGFloat) {
         switch width {
         case let width where width > MarketsGridViewLayoutConfiguration.mediumRange.upperBound:
-            self = .large(width)
+            self = .large
         case let width where width < MarketsGridViewLayoutConfiguration.mediumRange.lowerBound:
             self = .small
         default:
@@ -62,8 +61,8 @@ enum MarketsGridViewLayoutConfiguration {
 
     var itemsPerRow: CGFloat {
         switch self {
-        case let .large(width):
-            if width > MarketsGridViewLayoutConfiguration.portraitModeScreenWidth {
+        case .large:
+            if UIScreen.main.bounds.width > MarketsGridViewLayoutConfiguration.portraitModeScreenWidth {
                 return 6
             } else {
                 return 5

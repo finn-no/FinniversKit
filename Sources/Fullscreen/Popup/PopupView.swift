@@ -6,7 +6,7 @@ import UIKit
 
 // MARK: - PopupViewDelegate
 
-public protocol PopupViewDelegate: NSObjectProtocol {
+public protocol PopupViewDelegate: class {
     func popupView(_ popupView: PopupView, didSelectCallToActionButton button: Button)
     func popupView(_ popupView: PopupView, didSelectAlternativeActionButton button: Button)
     func popupView(_ popupView: PopupView, didSelectDismissButton button: Button)

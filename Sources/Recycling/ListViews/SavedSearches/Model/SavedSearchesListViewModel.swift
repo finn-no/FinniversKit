@@ -13,7 +13,6 @@ public protocol SavedSearchesListViewModel {
 
 public extension SavedSearchesListViewModel {
     var accessibilityLabel: String {
-        // TODO: Maybe should add the push types here
         return title
     }
 }

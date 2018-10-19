@@ -4,11 +4,11 @@
 
 import UIKit
 
-public protocol MarketsGridViewDelegate: NSObjectProtocol {
+public protocol MarketsGridViewDelegate: class {
     func marketsGridView(_ marketsGridView: MarketsGridView, didSelectItemAtIndex index: Int)
 }
 
-public protocol MarketsGridViewDataSource: NSObjectProtocol {
+public protocol MarketsGridViewDataSource: class {
     func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int
     func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel
 }
