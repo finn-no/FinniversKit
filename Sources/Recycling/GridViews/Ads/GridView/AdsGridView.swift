@@ -4,13 +4,13 @@
 
 import UIKit
 
-public protocol AdsGridViewDelegate: NSObjectProtocol {
+public protocol AdsGridViewDelegate: class {
     func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView)
 }
 
-public protocol AdsGridViewDataSource: NSObjectProtocol {
+public protocol AdsGridViewDataSource: class {
     func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int
     func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel
     func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))

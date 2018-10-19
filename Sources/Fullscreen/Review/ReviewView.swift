@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol ReviewViewDelegate: NSObjectProtocol {
+public protocol ReviewViewDelegate: class {
     func reviewView(_ reviewView: ReviewView, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
     func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat)
     func reviewView(_ reviewView: ReviewView, didSelect profile: ReviewViewProfileModel)

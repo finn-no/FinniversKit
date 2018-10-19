@@ -22,7 +22,7 @@ struct SettingsItem: SettingsViewCellModel {
 
 class SettingsViewDemoView: UIView {
     private let sections = [SettingsSection(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget", hairline: false)]),
-                            
+
                             SettingsSection(title: "Personvern", items: [SettingsItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
                                                                          SettingsItem(title: "Personlin tilpasset FINN", status: "På"),
                                                                          SettingsItem(title: "Motta viktig informasjon fra FINN", status: "På"),

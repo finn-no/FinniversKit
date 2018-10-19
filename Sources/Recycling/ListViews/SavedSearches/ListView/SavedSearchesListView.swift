@@ -4,11 +4,11 @@
 
 import UIKit
 
-public protocol SavedSearchesListViewDelegate: NSObjectProtocol {
+public protocol SavedSearchesListViewDelegate: class {
     func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, didSelectItemAtIndex index: Int)
 }
 
-public protocol SavedSearchesListViewDataSource: NSObjectProtocol {
+public protocol SavedSearchesListViewDataSource: class {
     func numberOfItems(inSavedSearchesListView savedSearchesListView: SavedSearchesListView) -> Int
     func savedSearchesListView(_ savedSearchesListView: SavedSearchesListView, modelAtIndex index: Int) -> SavedSearchesListViewModel
 }

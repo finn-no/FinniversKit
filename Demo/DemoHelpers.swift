@@ -16,15 +16,17 @@ public struct ContainmentOptions: OptionSet {
         self.rawValue = rawValue
     }
 
-    public static let navigationController = ContainmentOptions(rawValue: 1 << 0)
-    public static let tabBarController = ContainmentOptions(rawValue: 1 << 1)
+    public static let navigationController = ContainmentOptions(rawValue: 2 << 0)
+    public static let tabBarController = ContainmentOptions(rawValue: 2 << 1)
     public static let all: ContainmentOptions = [.navigationController, .tabBarController]
+    public static let none = ContainmentOptions(rawValue: 2 << 2)
 
     /// Attaches a navigation bar, a tab bar or both depending on what is returned here.
     /// If you return nil the screen will have no containers.
     /// Or replace `return nil` with `self = .all`, `self = .navigationController` or `self = .tabBarController`
     ///
     /// - Parameter indexPath: The component's index path
+    // swiftlint:disable:next cyclomatic_complexity
     init?(indexPath: IndexPath) {
         let sectionType = Sections.for(indexPath)
         switch sectionType {
@@ -119,6 +121,7 @@ enum Sections: String {
         return Sections.all[indexPath.section]
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     static func viewController(for indexPath: IndexPath) -> UIViewController? {
         guard let section = Sections.all[safe: indexPath.section] else {
             return nil

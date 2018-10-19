@@ -4,11 +4,11 @@
 
 import UIKit
 
-public protocol FavoriteFoldersListViewDelegate: NSObjectProtocol {
+public protocol FavoriteFoldersListViewDelegate: class {
     func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
 }
 
-public protocol FavoriteFoldersListViewDataSource: NSObjectProtocol {
+public protocol FavoriteFoldersListViewDataSource: class {
     func numberOfItems(inFavoriteFoldersListView favoriteFoldersListView: FavoriteFoldersListView) -> Int
     func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, modelAtIndex index: Int) -> FavoriteFoldersListViewModel
 }
