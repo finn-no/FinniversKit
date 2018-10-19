@@ -177,8 +177,7 @@ public final class ConsentTransparencyInfoView: UIView {
 
 // MARK: - Public
 
-public extension ConsentTransparencyInfoView {
-}
+public extension ConsentTransparencyInfoView {}
 
 // MARK: - Private
 

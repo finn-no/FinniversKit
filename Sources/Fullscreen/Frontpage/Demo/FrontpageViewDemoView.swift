@@ -21,6 +21,7 @@ public class FrontpageViewDemoView: UIView {
         var headerLabel = Label(style: .title4)
         return headerLabel
     }()
+
     fileprivate lazy var headerView = UIView()
 
     fileprivate let ads = AdFactory.create(numberOfModels: 9)

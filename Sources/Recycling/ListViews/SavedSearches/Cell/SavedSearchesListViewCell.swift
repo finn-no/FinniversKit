@@ -79,7 +79,7 @@ import UIKit
 
             // We use "greaterThanOrEqualTo" instead of "equalTo" because otherwise we get an AutoLayout error
             arrowImageView.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -margin * 2)
-            ])
+        ])
     }
 
     required init?(coder aDecoder: NSCoder) {

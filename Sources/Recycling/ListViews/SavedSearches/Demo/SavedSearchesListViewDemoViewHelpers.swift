@@ -23,7 +23,7 @@ public struct SavedSearchFactory {
             let title = titles[index]
             var subtitle: String?
             if index < subtitles.count {
-                 subtitle = subtitles[index]
+                subtitle = subtitles[index]
             }
             return SavedSearch(title: title, subtitle: subtitle)
         }

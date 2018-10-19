@@ -9,7 +9,6 @@ public protocol ConsentSwitchViewDelegate: class {
 }
 
 public class ConsentToggleView: UIView {
-
     // MARK: - Private properties
 
     private var titleLabel: Label = {
@@ -83,13 +82,11 @@ public class ConsentToggleView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
 // MARK: - Private methods
 
 private extension ConsentToggleView {
-
     @objc func switchDidToogle(sender: UISwitch) {
         model?.state = sender.isOn
         delegate?.consentToggleView(self, didToggleSwitch: sender.isOn)
@@ -151,5 +148,4 @@ private extension ConsentToggleView {
             button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing)
         ])
     }
-
 }

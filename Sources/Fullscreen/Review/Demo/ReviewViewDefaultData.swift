@@ -27,6 +27,5 @@ public struct ReviewViewDefaultData: ReviewViewModel {
     public let selectTitle = "Velg"
     public let confirmationTitle = "Du kan ikke endre valget ditt senere"
 
-    public init() {
-    }
+    public init() {}
 }

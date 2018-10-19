@@ -52,6 +52,5 @@ extension ReviewViewDemoView: ReviewViewDelegate {
         return UIImage(named: "consentTransparencyImage")
     }
 
-    public func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat) {
-    }
+    public func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat) {}
 }

@@ -52,7 +52,7 @@ public class DemoViewController<View: UIView>: UIViewController {
             playgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             playgroundView.topAnchor.constraint(equalTo: view.compatibleTopAnchor),
             playgroundView.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor)
-            ])
+        ])
 
         if hasDismissButton {
             let button = Button(style: .callToAction)
@@ -63,7 +63,7 @@ public class DemoViewController<View: UIView>: UIViewController {
             NSLayoutConstraint.activate([
                 button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 button.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor, constant: -.veryLargeSpacing)
-                ])
+            ])
         } else if usingDoubleTapToDismiss {
             let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
             doubleTap.numberOfTapsRequired = 2

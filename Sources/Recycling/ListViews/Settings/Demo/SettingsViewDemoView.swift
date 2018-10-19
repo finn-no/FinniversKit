@@ -21,15 +21,14 @@ struct SettingsItem: SettingsViewCellModel {
 }
 
 class SettingsViewDemoView: UIView {
-
     private let sections = [SettingsSection(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget", hairline: false)]),
-
+                            
                             SettingsSection(title: "Personvern", items: [SettingsItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
-                                                                 SettingsItem(title: "Personlin tilpasset FINN", status: "På"),
-                                                                 SettingsItem(title: "Motta viktig informasjon fra FINN", status: "På"),
-                                                                 SettingsItem(title: "Smart reklame"),
-                                                                 SettingsItem(title: "Last ned dine data"),
-                                                                 SettingsItem(title: "Slett meg som bruker", hairline: false)])]
+                                                                         SettingsItem(title: "Personlin tilpasset FINN", status: "På"),
+                                                                         SettingsItem(title: "Motta viktig informasjon fra FINN", status: "På"),
+                                                                         SettingsItem(title: "Smart reklame"),
+                                                                         SettingsItem(title: "Last ned dine data"),
+                                                                         SettingsItem(title: "Slett meg som bruker", hairline: false)])]
 
     private lazy var settingsView: SettingsView = {
         let view = SettingsView(frame: .zero)
@@ -50,7 +49,6 @@ class SettingsViewDemoView: UIView {
 }
 
 extension SettingsViewDemoView: SettingsViewDataSource {
-
     func numberOfSections(in settingsView: SettingsView) -> Int {
         return sections.count
     }
@@ -65,7 +63,6 @@ extension SettingsViewDemoView: SettingsViewDataSource {
 }
 
 extension SettingsViewDemoView: SettingsViewDelegate {
-
     func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].title
     }
@@ -76,7 +73,6 @@ extension SettingsViewDemoView: SettingsViewDelegate {
 }
 
 private extension SettingsViewDemoView {
-
     func setup() {
         addSubview(settingsView)
         settingsView.fillInSuperview()

@@ -2,9 +2,9 @@
 //  Copyright © 2018 FINN.no. All rights reserved.
 //
 
+import AudioToolbox
 @testable import FinniversKit
 import XCTest
-import AudioToolbox
 
 final class InstrumentTests: XCTestCase {
     func testRawValue() {
@@ -16,7 +16,7 @@ final class InstrumentTests: XCTestCase {
 
     func testColor() {
         XCTAssertEqual(Instrument.kick.color, .pea)
-        XCTAssertEqual(Instrument.snare.color, UIColor(red: 235/255.0, green: 201/255.0, blue: 62/255.0, alpha: 1.0))
+        XCTAssertEqual(Instrument.snare.color, UIColor(red: 235 / 255.0, green: 201 / 255.0, blue: 62 / 255.0, alpha: 1.0))
         XCTAssertEqual(Instrument.hats.color, .watermelon)
         XCTAssertEqual(Instrument.cat.color, .secondaryBlue)
     }

@@ -150,7 +150,7 @@ extension ReviewView {
     @objc func didSelectProfile() {
         guard let indexPath = tableView.indexPathForSelectedRow,
             let selectedProfile = model?.profiles[indexPath.row] else {
-                return
+            return
         }
 
         delegate?.reviewView(self, didSelect: selectedProfile)

@@ -73,7 +73,7 @@ public class FavoriteFoldersListViewCell: UITableViewCell {
 
             // We use "greaterThanOrEqualTo" instead of "equalTo" because otherwise we get an AutoLayout error
             arrowImageView.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
-            ])
+        ])
     }
 
     // MARK: - Superclass Overrides

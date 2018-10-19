@@ -31,7 +31,7 @@ final class InstrumentSelectorView: UIView {
     // MARK: - Init
 
     init(instrument: Instrument) {
-        self.selectedInstrument = instrument
+        selectedInstrument = instrument
         super.init(frame: .zero)
         setup()
     }
@@ -48,7 +48,7 @@ final class InstrumentSelectorView: UIView {
         addSubview(segmentedControl)
 
         titleLabel.text = "Trommemaskin"
-        segmentedControl.selectedSegmentIndex = instruments.index(where: { $0 == selectedInstrument}) ?? 0
+        segmentedControl.selectedSegmentIndex = instruments.index(where: { $0 == selectedInstrument }) ?? 0
         segmentedControl.addTarget(self, action: #selector(handleSegmentedControlChange(_:)), for: .valueChanged)
 
         NSLayoutConstraint.activate([

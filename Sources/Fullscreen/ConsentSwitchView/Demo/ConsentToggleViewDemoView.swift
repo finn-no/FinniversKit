@@ -11,7 +11,6 @@ struct ConsentViewData: ConsentToggleViewModel {
 }
 
 class ConsentToggleViewDemoView: UIView {
-
     private lazy var consentToggleView: ConsentToggleView = {
         let view = ConsentToggleView()
         view.translatesAutoresizingMaskIntoConstraints = false
