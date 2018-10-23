@@ -11,24 +11,24 @@ struct SettingsSection {
 struct SettingsItem: SettingsViewCellModel {
     let title: String
     var status: String?
-    let hairline: Bool
+    let isLastItem: Bool
 
-    init(title: String, status: String? = nil, hairline: Bool = true) {
+    init(title: String, status: String? = nil, isLastItem: Bool = false) {
         self.title = title
         self.status = status
-        self.hairline = hairline
+        self.isLastItem = isLastItem
     }
 }
 
 class SettingsViewDemoView: UIView {
-    private let sections = [SettingsSection(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget", hairline: false)]),
+    private let sections = [SettingsSection(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget", isLastItem: true)]),
 
                             SettingsSection(title: "Personvern", items: [SettingsItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
                                                                          SettingsItem(title: "Personlin tilpasset FINN", status: "På"),
                                                                          SettingsItem(title: "Motta viktig informasjon fra FINN", status: "På"),
                                                                          SettingsItem(title: "Smart reklame"),
                                                                          SettingsItem(title: "Last ned dine data"),
-                                                                         SettingsItem(title: "Slett meg som bruker", hairline: false)])]
+                                                                         SettingsItem(title: "Slett meg som bruker", isLastItem: true)])]
 
     private lazy var settingsView: SettingsView = {
         let view = SettingsView(frame: .zero)

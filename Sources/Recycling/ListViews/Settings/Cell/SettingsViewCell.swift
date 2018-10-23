@@ -67,7 +67,7 @@ private extension SettingsViewCell {
     func set(model: SettingsViewCellModel?) {
         titleLabel.text = model?.title
         stateLabel.text = model?.status
-        hairline.isHidden = !(model?.hairline ?? true) // isHidden is false by default
+        hairline.isHidden = model?.isLastItem ?? false
     }
 
     func setup() {
