@@ -53,7 +53,7 @@ public class CheckboxSubtitleTableViewCell: CheckboxTableViewCell {
             stackView.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: .mediumLargeSpacing),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
-            ])
+        ])
     }
 
     public func configure(with viewModel: CheckboxSubtitleTableViewCellViewModel) {

@@ -43,7 +43,7 @@ public class CheckboxTableViewCell: BasicTableViewCell {
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
             titleLabel.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: .mediumSpacing),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
-            ])
+        ])
     }
 
     public func configure(with viewModel: CheckboxTableViewCellViewModel) {

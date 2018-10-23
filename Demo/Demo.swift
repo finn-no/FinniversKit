@@ -150,12 +150,14 @@ public enum TableViewCellViews: String {
     case basicCell
     case checkboxCell
     case checkboxSubtitleCell
+    case iconTitleCell
 
     public static var all: [TableViewCellViews] {
         return [
             .basicCell,
             .checkboxCell,
-            .checkboxSubtitleCell
+            .checkboxSubtitleCell,
+            .iconTitleCell
         ]
     }
 
@@ -167,6 +169,8 @@ public enum TableViewCellViews: String {
             return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
         case .checkboxSubtitleCell:
             return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
+        case .iconTitleCell:
+            return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
         }
     }
 }
