@@ -76,7 +76,7 @@ extension SelectionboxItem {
             titleLabel.heightAnchor.constraint(greaterThanOrEqualTo: imageView.heightAnchor, multiplier: 1.0),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing)
         ])
