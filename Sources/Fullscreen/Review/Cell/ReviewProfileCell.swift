@@ -32,8 +32,10 @@ class ReviewProfileCell: UITableViewCell {
         return view
     }()
 
-    lazy var radioButton: SelectionIndicatorView = {
-        return SelectionIndicatorView(type: .radio)
+    lazy var radioButton: AnimatedRadioButtonView = {
+        let radioButton = AnimatedRadioButtonView(frame: .zero)
+        radioButton.translatesAutoresizingMaskIntoConstraints = false
+        return radioButton
     }()
 
     var model: ReviewViewProfileModel? {
@@ -64,9 +66,6 @@ class ReviewProfileCell: UITableViewCell {
             profileImage.heightAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
             profileImage.widthAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
 
-            radioButton.heightAnchor.constraint(equalToConstant: ReviewProfileCell.radioButtonSize),
-            radioButton.widthAnchor.constraint(equalToConstant: ReviewProfileCell.radioButtonSize),
-
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
             hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
@@ -78,7 +77,7 @@ class ReviewProfileCell: UITableViewCell {
 
     override var isSelected: Bool {
         didSet {
-            radioButton.isSelected = isSelected
+            radioButton.animateSelection(selected: isSelected)
         }
     }
 

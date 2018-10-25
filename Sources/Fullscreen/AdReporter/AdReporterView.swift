@@ -75,34 +75,11 @@ public class AdReporterView: UIScrollView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        loadRadioImages()
         setupSubviews()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    private func loadRadioImages() {
-        var radioButtonSelected = [UIImage]()
-        var radioButtonUnselected = [UIImage]()
-
-        for index in 0 ..< 13 {
-            if let image = UIImage(named: "radiobutton-select-\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
-                radioButtonSelected.append(image)
-            }
-        }
-
-        for index in 0 ..< 10 {
-            if let image = UIImage(named: "radiobutton-unselected-\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
-                radioButtonUnselected.append(image)
-            }
-        }
-
-        radioButton.selectedImage = radioButtonSelected.last
-        radioButton.selectedAnimationImages = radioButtonSelected
-        radioButton.unselectedImage = radioButtonUnselected.last
-        radioButton.unselectedAnimationImages = radioButtonUnselected
     }
 
     private func setupSubviews() {
