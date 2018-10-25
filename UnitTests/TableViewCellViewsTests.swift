@@ -26,7 +26,7 @@ class TableViewCellsViewTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(component.viewController.view)
         TableViewCellsViewTests.allViews = TableViewCellsViewTests.allViews.filter { $0 != component }
     }
-    
+
     func testBasicCell() {
         snapshot(.basicCell)
     }
@@ -34,7 +34,12 @@ class TableViewCellsViewTests: FBSnapshotTestCase {
     func testCheckboxCell() {
         snapshot(.checkboxCell)
     }
+
     func testCheckboxSubtitleCell() {
         snapshot(.checkboxSubtitleCell)
+    }
+
+    func testIconTitleCell() {
+        snapshot(.iconTitleCell)
     }
 }
