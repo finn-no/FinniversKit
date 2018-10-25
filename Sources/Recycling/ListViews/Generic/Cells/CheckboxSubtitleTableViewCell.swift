@@ -8,11 +8,12 @@ public protocol CheckboxSubtitleTableViewCellViewModel: CheckboxTableViewCellVie
     var subtitle: String? { get }
 }
 
-public class CheckboxSubtitleTableViewCell: CheckboxTableViewCell {
+open class CheckboxSubtitleTableViewCell: CheckboxTableViewCell {
 
     lazy var subtitleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
+        label.textColor = .licorice
         label.numberOfLines = 0
         return label
     }()
@@ -63,7 +64,7 @@ public class CheckboxSubtitleTableViewCell: CheckboxTableViewCell {
         separatorInset = .leadingInset(56)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

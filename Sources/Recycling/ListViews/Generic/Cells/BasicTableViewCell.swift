@@ -8,11 +8,12 @@ public protocol BasicTableViewCellViewModel {
     var title: String { get }
 }
 
-public class BasicTableViewCell: UITableViewCell {
+open class BasicTableViewCell: UITableViewCell {
 
     lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
+        label.textColor = .licorice
         return label
     }()
 
@@ -45,7 +46,7 @@ public class BasicTableViewCell: UITableViewCell {
         separatorInset = .leadingInset(.mediumLargeSpacing)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

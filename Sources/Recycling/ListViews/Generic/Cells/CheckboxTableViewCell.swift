@@ -8,7 +8,7 @@ public protocol CheckboxTableViewCellViewModel: BasicTableViewCellViewModel {
     var isSelected: Bool { get }
 }
 
-public class CheckboxTableViewCell: BasicTableViewCell {
+open class CheckboxTableViewCell: BasicTableViewCell {
 
     lazy var checkbox: AnimatedCheckboxImageView = {
         let checkbox = AnimatedCheckboxImageView(frame: .zero)
@@ -56,7 +56,7 @@ public class CheckboxTableViewCell: BasicTableViewCell {
         checkbox.animateCheckbox(selected: isSelected)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

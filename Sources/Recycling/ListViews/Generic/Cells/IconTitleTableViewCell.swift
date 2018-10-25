@@ -10,7 +10,7 @@ public protocol IconTitleTableViewCellViewModel: BasicTableViewCellViewModel {
     var hasChevron: Bool { get }
 }
 
-public class IconTitleTableViewCell: BasicTableViewCell {
+open class IconTitleTableViewCell: BasicTableViewCell {
 
     lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -45,7 +45,7 @@ public class IconTitleTableViewCell: BasicTableViewCell {
         ])
     }
 
-    public override func prepareForReuse() {
+    open override func prepareForReuse() {
         titleLabel.text = nil
         iconImageView.image = nil
         iconImageView.tintColor = UIImageView.appearance().tintColor
@@ -68,7 +68,7 @@ public class IconTitleTableViewCell: BasicTableViewCell {
         separatorInset = .leadingInset(.mediumLargeSpacing)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
