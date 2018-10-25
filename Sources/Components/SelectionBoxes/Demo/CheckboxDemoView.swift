@@ -22,16 +22,6 @@ public class CheckboxDemoView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        let framesPerSecond = 60.0
-
-        let checkboxSelected = UIImage.animatedImageNamed("checkbox-selected-", duration: 20 / framesPerSecond)
-        let checkboxUnselected = UIImage.animatedImageNamed("checkbox-unselected-", duration: 14 / framesPerSecond)
-
-        checkbox.selectedImage = checkboxSelected?.images?.last
-        checkbox.selectedAnimationImages = checkboxSelected?.images
-        checkbox.unselectedImage = checkboxUnselected?.images?.last
-        checkbox.unselectedAnimationImages = checkboxUnselected?.images
-
         backgroundColor = .white
         addSubview(checkbox)
 

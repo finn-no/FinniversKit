@@ -17,6 +17,12 @@ public class RadioButton: Selectionbox {
     public var selectedItem: RadioButtonItem?
     public weak var delegate: RadioButtonDelegate?
 
+    // MARK: Private properties
+
+    fileprivate override var animatedImageView: AnimatedRadioButtonView {
+        return AnimatedRadioButtonView(frame: .zero)
+    }
+
     fileprivate override func handleSelecting(_ item: RadioButtonItem) {
         selectedItem?.isSelected = false
         if let selectedItem = selectedItem {
@@ -47,6 +53,12 @@ public class Checkbox: Selectionbox {
     public var selectedItems: Set<CheckboxItem> = []
     public weak var delegate: CheckboxDelegate?
 
+    // MARK: Private properties
+
+    fileprivate override var animatedImageView: AnimatedCheckboxView {
+        return AnimatedCheckboxView(frame: .zero)
+    }
+
     fileprivate override func handleSelecting(_ item: CheckboxItem) {
         item.isSelected = !item.isSelected
         if item.isSelected {
@@ -64,48 +76,6 @@ public class Checkbox: Selectionbox {
 public class Selectionbox: UIView {
     // MARK: Public properties
 
-    public var unselectedImage: UIImage? {
-        didSet {
-            guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
-            for item in items {
-                item.imageView.image = unselectedImage
-            }
-        }
-    }
-
-    public var unselectedAnimationImages: [UIImage]? {
-        didSet {
-            guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
-            for item in items {
-                item.imageView.animationImages = unselectedAnimationImages
-                if let unselected = unselectedAnimationImages {
-                    item.imageView.unselectedDuration = Double(unselected.count) / AnimatedImageView.framesPerSecond
-                }
-            }
-        }
-    }
-
-    public var selectedImage: UIImage? {
-        didSet {
-            guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
-            for item in items {
-                item.imageView.highlightedImage = selectedImage
-            }
-        }
-    }
-
-    public var selectedAnimationImages: [UIImage]? {
-        didSet {
-            guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
-            for item in items {
-                item.imageView.highlightedAnimationImages = selectedAnimationImages
-                if let selected = selectedAnimationImages {
-                    item.imageView.selectedDuration = Double(selected.count) / AnimatedImageView.framesPerSecond
-                }
-            }
-        }
-    }
-
     public var title: String? {
         get { return titleLabel.text }
         set { titleLabel.text = newValue }
@@ -119,6 +89,10 @@ public class Selectionbox: UIView {
 
     // MARK: Private properties
 
+    fileprivate var animatedImageView: AnimatedSelectionView {
+        fatalError("Override this in your subclass to return an appropriate animated image")
+    }
+
     private var highlightedItem: SelectionboxItem?
 
     private let titleLabel: UILabel = {
@@ -128,10 +102,9 @@ public class Selectionbox: UIView {
     }()
 
     private let stack: UIStackView = {
-        let stack = UIStackView(frame: .zero)
+        let stack = UIStackView(withAutoLayout: true)
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
 
@@ -183,17 +156,17 @@ extension Selectionbox {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
 
-            stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+//            stack.heightAnchor.constraint(equalToConstant: CGFloat(fields.count * 48)),
             stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+            stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-
-            bottomAnchor.constraint(equalTo: stack.bottomAnchor, constant: .mediumLargeSpacing)
+            stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 
     private func setupBoxes(with strings: [String]) {
         for (index, string) in strings.enumerated() {
-            let item = SelectionboxItem(index: index)
+            let item = SelectionboxItem(index: index, animatedImageView: animatedImageView)
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
         }
@@ -201,27 +174,9 @@ extension Selectionbox {
 
     private func setFields() {
         for (index, string) in fields.enumerated() {
-            let item = SelectionboxItem(index: index)
+            let item = SelectionboxItem(index: index, animatedImageView: animatedImageView)
             item.titleLabel.text = string
             stack.addArrangedSubview(item)
-        }
-        setImages()
-    }
-
-    private func setImages() {
-        guard let items = stack.arrangedSubviews as? [SelectionboxItem] else { return }
-        for item in items {
-            item.imageView.image = unselectedImage
-            item.imageView.animationImages = unselectedAnimationImages
-            item.imageView.highlightedImage = selectedImage
-            item.imageView.highlightedAnimationImages = selectedAnimationImages
-
-            if let unselected = unselectedAnimationImages {
-                item.imageView.unselectedDuration = Double(unselected.count) / AnimatedImageView.framesPerSecond
-            }
-            if let selected = selectedAnimationImages {
-                item.imageView.selectedDuration = Double(selected.count) / AnimatedImageView.framesPerSecond
-            }
         }
     }
 }

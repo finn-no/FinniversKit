@@ -11,13 +11,7 @@ public typealias CheckboxItem = SelectionboxItem
 public class SelectionboxItem: UIView {
     // MARK: Internal properties
 
-    let imageView: AnimatedImageView = {
-        let view = AnimatedImageView(frame: .zero)
-        view.contentMode = .scaleAspectFit
-        view.animationRepeatCount = 1
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    let imageView: AnimatedSelectionView
 
     let titleLabel: UILabel = {
         let label = Label(style: .body)
@@ -36,14 +30,15 @@ public class SelectionboxItem: UIView {
 
     public var isSelected: Bool = false {
         didSet {
-            animateImage(selected: isSelected)
+            imageView.animateSelection(selected: isSelected)
         }
     }
 
     // MARK: Implementation
 
-    public init(index: Int) {
+    public init(index: Int, animatedImageView: AnimatedSelectionView) {
         self.index = index
+        self.imageView = animatedImageView
         super.init(frame: .zero)
         setupSubviews()
     }
@@ -54,28 +49,17 @@ public class SelectionboxItem: UIView {
 }
 
 extension SelectionboxItem {
-    private func animateImage(selected: Bool) {
-        if imageView.isAnimating {
-            imageView.cancelAnimation()
-            imageView.isHighlighted = selected
-            return
-        }
-
-        imageView.isHighlighted = selected
-        imageView.animationDuration = selected ? imageView.selectedDuration : imageView.unselectedDuration
-        imageView.startAnimating()
-    }
-
     private func setupSubviews() {
         addSubview(imageView)
         addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            // Make sure item is bigger than imageView height if title text is small
-            heightAnchor.constraint(greaterThanOrEqualTo: titleLabel.heightAnchor, multiplier: 1.0, constant: .mediumLargeSpacing),
-            titleLabel.heightAnchor.constraint(greaterThanOrEqualTo: imageView.heightAnchor, multiplier: 1.0),
+            heightAnchor.constraint(equalToConstant: 40),
+
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+            titleLabel.heightAnchor.constraint(greaterThanOrEqualTo: imageView.heightAnchor, multiplier: 1.0),
             titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing)

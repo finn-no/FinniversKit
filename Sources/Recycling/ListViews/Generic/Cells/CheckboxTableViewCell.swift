@@ -10,8 +10,8 @@ public protocol CheckboxTableViewCellViewModel: BasicTableViewCellViewModel {
 
 open class CheckboxTableViewCell: BasicTableViewCell {
 
-    lazy var checkbox: AnimatedCheckboxImageView = {
-        let checkbox = AnimatedCheckboxImageView(frame: .zero)
+    lazy var checkbox: AnimatedCheckboxView = {
+        let checkbox = AnimatedCheckboxView(frame: .zero)
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         return checkbox
     }()
@@ -53,7 +53,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
     }
 
     public func animateSelection(isSelected: Bool) {
-        checkbox.animateCheckbox(selected: isSelected)
+        checkbox.animateSelection(selected: isSelected)
     }
 
     required public init?(coder aDecoder: NSCoder) {
