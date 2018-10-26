@@ -61,7 +61,7 @@ open class IconTitleTableViewCell: BasicTableViewCell {
         }
         setNeedsLayout()
 
-        separatorInset = UIEdgeInsets(top: 0, leading: .mediumLargeSpacing, bottom: 0, trailing: 0)
+        separatorInset = .leadingInset(.mediumLargeSpacing)
     }
 
     // MARK: - Private methods

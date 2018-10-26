@@ -42,7 +42,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
     open func configure(with viewModel: CheckboxTableViewCellViewModel) {
         titleLabel.text = viewModel.title
         checkbox.isHighlighted = viewModel.isSelected
-        separatorInset = UIEdgeInsets(top: 0, leading: 48, bottom: 0, trailing: 0)
+        separatorInset = .leadingInset(48)
     }
 
     open func animateSelection(isSelected: Bool) {

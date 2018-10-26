@@ -53,7 +53,7 @@ open class CheckboxSubtitleTableViewCell: CheckboxTableViewCell {
         titleLabel.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
         checkbox.isHighlighted = viewModel.isSelected
-        separatorInset = UIEdgeInsets(top: 0, leading: 56, bottom: 0, trailing: 0)
+        separatorInset = .leadingInset(56)
     }
 
     // MARK: - Private methods

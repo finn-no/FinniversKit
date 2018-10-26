@@ -42,7 +42,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     open func configure(with viewModel: BasicTableViewCellViewModel) {
         titleLabel.text = viewModel.title
-        separatorInset = UIEdgeInsets(top: 0, leading: .mediumLargeSpacing, bottom: 0, trailing: 0)
+        separatorInset = .leadingInset(.mediumLargeSpacing)
     }
 
     // MARK: - Private methods
