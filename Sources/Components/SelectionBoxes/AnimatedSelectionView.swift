@@ -9,7 +9,7 @@ import UIKit
  initial frame of the reverse animation will be the
  current frame of the cancelled animation **/
 
-class AnimatedImageView: UIImageView {
+open class AnimatedSelectionView: UIImageView {
     // MARK: Static properties
 
     static var framesPerSecond = 60.0
@@ -26,7 +26,7 @@ class AnimatedImageView: UIImageView {
 
     // MARK: Implementation
 
-    override init(frame: CGRect) {
+    required override public init(frame: CGRect) {
         reverseImageView = UIImageView(frame: .zero)
         super.init(frame: frame)
 
@@ -34,7 +34,19 @@ class AnimatedImageView: UIImageView {
         addSubview(reverseImageView)
     }
 
-    override func startAnimating() {
+    func animateSelection(selected: Bool) {
+        if isAnimating {
+            cancelAnimation()
+            isHighlighted = selected
+            return
+        }
+
+        isHighlighted = selected
+        animationDuration = selected ? selectedDuration : unselectedDuration
+        startAnimating()
+    }
+
+    override open func startAnimating() {
         reverseImageView.stopAnimating()
         reverseImageView.isHidden = true
 
@@ -48,7 +60,7 @@ class AnimatedImageView: UIImageView {
         // Get current animation frame
         guard let startTime = startTime else { return }
         let elapsedTime = CACurrentMediaTime() - startTime
-        let currentAnimationFrame = Int(AnimatedImageView.framesPerSecond * elapsedTime)
+        let currentAnimationFrame = Int(AnimatedSelectionView.framesPerSecond * elapsedTime)
 
         guard let images = isHighlighted ? highlightedAnimationImages : animationImages else { return }
         guard currentAnimationFrame < images.count else { return }
@@ -60,11 +72,11 @@ class AnimatedImageView: UIImageView {
         reverseImageView.image = animationSequence.last
         reverseImageView.animationRepeatCount = 1
         reverseImageView.animationImages = Array(animationSequence)
-        reverseImageView.animationDuration = Double(animationSequence.count) / AnimatedImageView.framesPerSecond
+        reverseImageView.animationDuration = Double(animationSequence.count) / AnimatedSelectionView.framesPerSecond
         reverseImageView.startAnimating()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
