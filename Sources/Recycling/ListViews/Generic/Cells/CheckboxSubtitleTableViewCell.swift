@@ -58,7 +58,6 @@ open class CheckboxSubtitleTableViewCell: CheckboxTableViewCell {
 
     // MARK: - Private methods
 
-
     private func setup() {
         selectionStyle = .none
         contentView.addSubview(checkbox)

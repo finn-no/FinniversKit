@@ -62,6 +62,13 @@ public struct ContainmentOptions: OptionSet {
             switch screens {
             default: return nil
             }
+        case .tableviewcells:
+            guard let screens = TableViewCellViews.all[safe: indexPath.row] else {
+                return nil
+            }
+            switch screens {
+            default: return nil
+            }
         }
     }
 }
@@ -71,13 +78,15 @@ enum Sections: String {
     case components
     case recycling
     case fullscreen
+    case tableviewcells
 
     static var all: [Sections] {
         return [
             .dna,
             .components,
             .recycling,
-            .fullscreen
+            .fullscreen,
+            .tableviewcells
         ]
     }
 
@@ -91,6 +100,8 @@ enum Sections: String {
             return RecyclingViews.all.count
         case .fullscreen:
             return FullscreenViews.all.count
+        case .tableviewcells:
+            return TableViewCellViews.all.count
         }
     }
 
@@ -112,6 +123,8 @@ enum Sections: String {
             rawClassName = RecyclingViews.all[indexPath.row].rawValue
         case .fullscreen:
             rawClassName = FullscreenViews.all[indexPath.row].rawValue
+        case .tableviewcells:
+            rawClassName = TableViewCellViews.all[indexPath.row].rawValue
         }
 
         return rawClassName.capitalizingFirstLetter
@@ -139,6 +152,9 @@ enum Sections: String {
             viewController = selectedView?.viewController
         case .fullscreen:
             let selectedView = FullscreenViews.all[safe: indexPath.row]
+            viewController = selectedView?.viewController
+        case .tableviewcells:
+            let selectedView = TableViewCellViews.all[safe: indexPath.row]
             viewController = selectedView?.viewController
         }
 
@@ -182,7 +198,7 @@ enum Sections: String {
 
     var tabletDisplayMode: TabletDisplayMode {
         switch self {
-        case .dna, .components, .fullscreen:
+        case .dna, .components, .fullscreen, .tableviewcells:
             return .fullscreen
         case .recycling:
             return .fullscreen
