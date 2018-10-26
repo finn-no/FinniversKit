@@ -156,7 +156,6 @@ extension Selectionbox {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
 
-            //            stack.heightAnchor.constraint(equalToConstant: CGFloat(fields.count * 48)),
             stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
             stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
