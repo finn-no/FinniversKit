@@ -17,6 +17,7 @@
 		08D70A21218329D1003E2222 /* BasicCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A20218329D1003E2222 /* BasicCellDemoView.swift */; };
 		08D70A23218329ED003E2222 /* CheckboxCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A22218329ED003E2222 /* CheckboxCellDemoView.swift */; };
 		08D70A25218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A24218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift */; };
+		08D70A2721832A0C003E2222 /* IconTitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A2621832A0C003E2222 /* IconTitleCellDemoView.swift */; };
 		14193AAD21380DC800EC7FC0 /* ComponentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AA921380DC800EC7FC0 /* ComponentViewTests.swift */; };
 		14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */; };
 		14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */; };
@@ -257,6 +258,7 @@
 		08D70A20218329D1003E2222 /* BasicCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCellDemoView.swift; sourceTree = "<group>"; };
 		08D70A22218329ED003E2222 /* CheckboxCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxCellDemoView.swift; sourceTree = "<group>"; };
 		08D70A24218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxSubtitleCellDemoView.swift; sourceTree = "<group>"; };
+		08D70A2621832A0C003E2222 /* IconTitleCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconTitleCellDemoView.swift; sourceTree = "<group>"; };
 		14193AA921380DC800EC7FC0 /* ComponentViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewTests.swift; sourceTree = "<group>"; };
 		14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewTests.swift; sourceTree = "<group>"; };
 		14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnaViewTests.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 				08D70A20218329D1003E2222 /* BasicCellDemoView.swift */,
 				08D70A22218329ED003E2222 /* CheckboxCellDemoView.swift */,
 				08D70A24218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift */,
+				08D70A2621832A0C003E2222 /* IconTitleCellDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1869,6 +1872,7 @@
 				55C5B27E203EB9DA007D7277 /* BroadcastDemoView.swift in Sources */,
 				08D70A25218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift in Sources */,
 				44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */,
+				08D70A2721832A0C003E2222 /* IconTitleCellDemoView.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
