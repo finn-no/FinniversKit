@@ -10,6 +10,7 @@
 		0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */; };
 		0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */; };
 		08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A0A21832546003E2222 /* BasicTableViewCell.swift */; };
+		08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */; };
 		14193AAD21380DC800EC7FC0 /* ComponentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AA921380DC800EC7FC0 /* ComponentViewTests.swift */; };
 		14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */; };
 		14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */; };
@@ -243,6 +244,7 @@
 		0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedRadiobuttonView.swift; sourceTree = "<group>"; };
 		0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxView.swift; sourceTree = "<group>"; };
 		08D70A0A21832546003E2222 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
+		08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
 		14193AA921380DC800EC7FC0 /* ComponentViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewTests.swift; sourceTree = "<group>"; };
 		14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewTests.swift; sourceTree = "<group>"; };
 		14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnaViewTests.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				08D70A0A21832546003E2222 /* BasicTableViewCell.swift */,
+				08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1979,6 +1982,7 @@
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
+				08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
