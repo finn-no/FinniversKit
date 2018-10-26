@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08012BE521832C2E00A04F43 /* TableViewCellViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08012BE421832C2E00A04F43 /* TableViewCellViewsTests.swift */; };
 		0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */; };
 		0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */; };
 		08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A0A21832546003E2222 /* BasicTableViewCell.swift */; };
@@ -248,6 +249,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		08012BE421832C2E00A04F43 /* TableViewCellViewsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellViewsTests.swift; sourceTree = "<group>"; };
 		0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedRadiobuttonView.swift; sourceTree = "<group>"; };
 		0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxView.swift; sourceTree = "<group>"; };
 		08D70A0A21832546003E2222 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 				14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */,
 				14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */,
 				14193AAC21380DC800EC7FC0 /* RecyclingViewTests.swift */,
+				08012BE421832C2E00A04F43 /* TableViewCellViewsTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -1936,6 +1939,7 @@
 			files = (
 				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				14193AAD21380DC800EC7FC0 /* ComponentViewTests.swift in Sources */,
+				08012BE521832C2E00A04F43 /* TableViewCellViewsTests.swift in Sources */,
 				559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */,
 				14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */,
 				14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */,
