@@ -22,25 +22,14 @@ public class CheckboxDemoView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        let framesPerSecond = 60.0
-
-        let checkboxSelected = UIImage.animatedImageNamed("checkbox-selected-", duration: 20 / framesPerSecond)
-        let checkboxUnselected = UIImage.animatedImageNamed("checkbox-unselected-", duration: 14 / framesPerSecond)
-
-        checkbox.selectedImage = checkboxSelected?.images?.last
-        checkbox.selectedAnimationImages = checkboxSelected?.images
-        checkbox.unselectedImage = checkboxUnselected?.images?.last
-        checkbox.unselectedAnimationImages = checkboxUnselected?.images
-
         backgroundColor = .white
         addSubview(checkbox)
 
         NSLayoutConstraint.activate([
             checkbox.leadingAnchor.constraint(equalTo: leadingAnchor),
             checkbox.trailingAnchor.constraint(equalTo: trailingAnchor),
-            checkbox.topAnchor.constraint(equalTo: topAnchor),
-            checkbox.heightAnchor.constraint(equalToConstant: CGFloat(strings.count + 1) * 44)
-        ])
+            checkbox.topAnchor.constraint(equalTo: topAnchor)
+            ])
     }
 
     public required init?(coder aDecoder: NSCoder) {
