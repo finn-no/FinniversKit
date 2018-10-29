@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08012BE521832C2E00A04F43 /* TableViewCellViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08012BE421832C2E00A04F43 /* TableViewCellViewsTests.swift */; };
+		08012BF02187319A00A04F43 /* BasicCellVariationsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08012BEF2187319A00A04F43 /* BasicCellVariationsDemoView.swift */; };
 		0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */; };
 		0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */; };
 		08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A0A21832546003E2222 /* BasicTableViewCell.swift */; };
@@ -249,6 +250,7 @@
 
 /* Begin PBXFileReference section */
 		08012BE421832C2E00A04F43 /* TableViewCellViewsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellViewsTests.swift; sourceTree = "<group>"; };
+		08012BEF2187319A00A04F43 /* BasicCellVariationsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCellVariationsDemoView.swift; sourceTree = "<group>"; };
 		0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedRadiobuttonView.swift; sourceTree = "<group>"; };
 		0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxView.swift; sourceTree = "<group>"; };
 		08D70A0A21832546003E2222 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				08D70A20218329D1003E2222 /* BasicCellDemoView.swift */,
+				08012BEF2187319A00A04F43 /* BasicCellVariationsDemoView.swift */,
 				08D70A22218329ED003E2222 /* CheckboxCellDemoView.swift */,
 				08D70A24218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift */,
 				08D70A2621832A0C003E2222 /* IconTitleCellDemoView.swift */,
@@ -1897,6 +1900,7 @@
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
+				08012BF02187319A00A04F43 /* BasicCellVariationsDemoView.swift in Sources */,
 				08D70A21218329D1003E2222 /* BasicCellDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
 				CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */,
