@@ -33,7 +33,7 @@ class CheckboxCellDemoView: UIView {
         setup()
     }
 
-    func setup() {
+    private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -61,8 +61,6 @@ extension CheckboxCellDemoView: UITableViewDelegate {
         viewModel.isSelected = !viewModel.isSelected
         viewModels[indexPath.row] = viewModel
         cell.animateSelection(isSelected: viewModel.isSelected)
-
-        print("Checkbox cells selected:", viewModels.filter { $0.isSelected }.map { $0.title })
     }
 }
 

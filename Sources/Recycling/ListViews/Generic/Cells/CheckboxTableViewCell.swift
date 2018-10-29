@@ -21,14 +21,14 @@ open class CheckboxTableViewCell: BasicTableViewCell {
     // MARK: - Setup
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier, layoutInSubclass: true)
+        super.init(style: style, reuseIdentifier: reuseIdentifier, handleLayoutInSubclass: true)
         setup()
     }
 
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, layoutInSubclass: Bool) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier, layoutInSubclass: true)
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, handleLayoutInSubclass: Bool) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier, handleLayoutInSubclass: true)
 
-        if !layoutInSubclass {
+        if !handleLayoutInSubclass {
             setup()
         }
     }

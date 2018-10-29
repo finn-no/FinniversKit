@@ -32,7 +32,7 @@ class BasicCellDemoView: UIView {
         setup()
     }
 
-    func setup() {
+    private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
     }

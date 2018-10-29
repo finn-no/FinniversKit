@@ -26,10 +26,10 @@ open class BasicTableViewCell: UITableViewCell {
         setup()
     }
 
-    public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, layoutInSubclass: Bool) {
+    public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, handleLayoutInSubclass: Bool) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        if !layoutInSubclass {
+        if !handleLayoutInSubclass {
             setup()
         }
     }

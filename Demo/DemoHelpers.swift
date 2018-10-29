@@ -62,7 +62,7 @@ public struct ContainmentOptions: OptionSet {
             switch screens {
             default: return nil
             }
-        case .tableviewcells:
+        case .tableViewCells:
             guard let screens = TableViewCellViews.all[safe: indexPath.row] else {
                 return nil
             }
@@ -78,7 +78,7 @@ enum Sections: String {
     case components
     case recycling
     case fullscreen
-    case tableviewcells
+    case tableViewCells
 
     static var all: [Sections] {
         return [
@@ -86,7 +86,7 @@ enum Sections: String {
             .components,
             .recycling,
             .fullscreen,
-            .tableviewcells
+            .tableViewCells
         ]
     }
 
@@ -100,7 +100,7 @@ enum Sections: String {
             return RecyclingViews.all.count
         case .fullscreen:
             return FullscreenViews.all.count
-        case .tableviewcells:
+        case .tableViewCells:
             return TableViewCellViews.all.count
         }
     }
@@ -123,7 +123,7 @@ enum Sections: String {
             rawClassName = RecyclingViews.all[indexPath.row].rawValue
         case .fullscreen:
             rawClassName = FullscreenViews.all[indexPath.row].rawValue
-        case .tableviewcells:
+        case .tableViewCells:
             rawClassName = TableViewCellViews.all[indexPath.row].rawValue
         }
 
@@ -153,7 +153,7 @@ enum Sections: String {
         case .fullscreen:
             let selectedView = FullscreenViews.all[safe: indexPath.row]
             viewController = selectedView?.viewController
-        case .tableviewcells:
+        case .tableViewCells:
             let selectedView = TableViewCellViews.all[safe: indexPath.row]
             viewController = selectedView?.viewController
         }
@@ -198,7 +198,7 @@ enum Sections: String {
 
     var tabletDisplayMode: TabletDisplayMode {
         switch self {
-        case .dna, .components, .fullscreen, .tableviewcells:
+        case .dna, .components, .fullscreen, .tableViewCells:
             return .fullscreen
         case .recycling:
             return .fullscreen

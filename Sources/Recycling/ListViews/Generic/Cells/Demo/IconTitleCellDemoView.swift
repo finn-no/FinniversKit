@@ -36,7 +36,7 @@ class IconTitleCellDemoView: UIView {
         setup()
     }
 
-    func setup() {
+    private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
     }

@@ -34,7 +34,7 @@ class CheckboxSubtitleCellDemoView: UIView {
         setup()
     }
 
-    func setup() {
+    private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
     }
@@ -62,8 +62,6 @@ extension CheckboxSubtitleCellDemoView: UITableViewDelegate {
         viewModel.isSelected = !viewModel.isSelected
         viewModels[indexPath.row] = viewModel
         cell.animateSelection(isSelected: viewModel.isSelected)
-
-        print("Checkbox cells w/subtitle selected:", viewModels.filter { $0.isSelected }.map { $0.title })
     }
 }
 
