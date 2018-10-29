@@ -42,33 +42,35 @@ open class IconTitleTableViewCell: BasicTableViewCell {
     // MARK: - Public methods
 
     open override func prepareForReuse() {
-        titleLabel.text = nil
+        super.prepareForReuse()
         iconImageView.image = nil
         iconImageView.tintColor = UIImageView.appearance().tintColor
     }
 
     open func configure(with viewModel: IconTitleTableViewCellViewModel) {
-        titleLabel.text = viewModel.title
-        accessoryType = viewModel.hasChevron ? .disclosureIndicator : .none
+        super.configure(with: viewModel)
+        selectionStyle = .default
+
         if let icon = viewModel.icon {
             iconImageView.image = icon
             if let tintColor = viewModel.iconTintColor {
                 iconImageView.tintColor = tintColor
             }
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing).isActive = true
+            stackView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing).isActive = true
         } else {
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing).isActive = true
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing).isActive = true
         }
-        setNeedsLayout()
 
         separatorInset = .leadingInset(.mediumLargeSpacing)
+
+        setNeedsLayout()
     }
 
     // MARK: - Private methods
 
     private func setup() {
         contentView.addSubview(iconImageView)
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 24),
@@ -76,7 +78,8 @@ open class IconTitleTableViewCell: BasicTableViewCell {
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing)
             ])
     }
 }
