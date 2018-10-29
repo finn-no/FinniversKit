@@ -6,6 +6,8 @@ import UIKit
 
 public protocol BasicTableViewCellViewModel {
     var title: String { get }
+    var subtitle: String? { get }
+    var hasChevron: Bool { get }
 }
 
 open class BasicTableViewCell: UITableViewCell {
@@ -17,6 +19,21 @@ open class BasicTableViewCell: UITableViewCell {
         label.font = .body
         label.textColor = .licorice
         return label
+    }()
+
+    open lazy var subtitleLabel: UILabel = {
+        let label = UILabel(withAutoLayout: true)
+        label.font = .caption
+        label.textColor = .licorice
+        label.numberOfLines = 0
+        return label
+    }()
+
+    open lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        return stackView
     }()
 
     // MARK: - Setup
@@ -42,19 +59,41 @@ open class BasicTableViewCell: UITableViewCell {
 
     open func configure(with viewModel: BasicTableViewCellViewModel) {
         titleLabel.text = viewModel.title
+
+        if let subtitle = viewModel.subtitle {
+            subtitleLabel.text = subtitle
+            subtitleLabel.isHidden = false
+        } else {
+            subtitleLabel.isHidden = true
+        }
+
+        if viewModel.hasChevron {
+            accessoryType = .disclosureIndicator
+            selectionStyle = .default
+        } else {
+            accessoryType = .none
+            selectionStyle = .none
+        }
+
         separatorInset = .leadingInset(.mediumLargeSpacing)
+    }
+
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        subtitleLabel.text = nil
     }
 
     // MARK: - Private methods
 
     private func setup() {
-        selectionStyle = .none
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
-            ])
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13),
+        ])
     }
 }
