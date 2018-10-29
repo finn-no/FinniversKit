@@ -18,6 +18,10 @@ open class CheckboxTableViewCell: BasicTableViewCell {
         return checkbox
     }()
 
+    // MARK: - Private properties
+
+    private lazy var stackViewLeadingConstraint: NSLayoutConstraint = stackView.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor)
+
     // MARK: - Setup
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -40,21 +44,35 @@ open class CheckboxTableViewCell: BasicTableViewCell {
     // MARK: - Public methods
 
     open func configure(with viewModel: CheckboxTableViewCellViewModel) {
-        titleLabel.text = viewModel.title
+        super.configure(with: viewModel)
+        selectionStyle = .none
         checkbox.isHighlighted = viewModel.isSelected
-        separatorInset = .leadingInset(48)
+
+        if viewModel.subtitle != nil {
+            stackViewLeadingConstraint.constant = .mediumLargeSpacing
+            separatorInset = .leadingInset(56)
+        } else {
+            stackViewLeadingConstraint.constant = .mediumSpacing
+            separatorInset = .leadingInset(48)
+        }
+
+        layoutIfNeeded()
     }
 
     open func animateSelection(isSelected: Bool) {
         checkbox.animateSelection(selected: isSelected)
     }
 
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        checkbox.isHighlighted = false
+    }
+
     // MARK: - Private methods
 
     private func setup() {
-        selectionStyle = .none
         contentView.addSubview(checkbox)
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
             checkbox.heightAnchor.constraint(equalToConstant: 24),
@@ -62,9 +80,10 @@ open class CheckboxTableViewCell: BasicTableViewCell {
             checkbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             checkbox.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
-            titleLabel.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: .mediumSpacing),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
+            stackViewLeadingConstraint,
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
             ])
     }
 }
