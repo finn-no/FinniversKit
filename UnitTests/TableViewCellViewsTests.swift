@@ -31,6 +31,10 @@ class TableViewCellsViewTests: FBSnapshotTestCase {
         snapshot(.basicCell)
     }
 
+    func testBasicCellVariations() {
+        snapshot(.basicCellVariations)
+    }
+
     func testCheckboxCell() {
         snapshot(.checkboxCell)
     }
