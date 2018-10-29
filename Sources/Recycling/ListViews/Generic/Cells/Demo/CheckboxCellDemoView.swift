@@ -5,12 +5,14 @@
 import FinniversKit
 
 private struct ViewModel: CheckboxTableViewCellViewModel {
-    var title: String
+    let title: String
+    let subtitle: String? = nil
+    let hasChevron: Bool = false
     var isSelected: Bool
 }
 
 class CheckboxCellDemoView: UIView {
-    fileprivate var viewModels = [
+    private var viewModels = [
         ViewModel(title: "Hagemøbler", isSelected: false),
         ViewModel(title: "Kattepuser", isSelected: true),
         ViewModel(title: "Mac Mini Pro", isSelected: true),
@@ -18,7 +20,7 @@ class CheckboxCellDemoView: UIView {
         ViewModel(title: "Mac Pro Max", isSelected: false)
     ]
 
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
         tableView.delegate = self
         tableView.dataSource = self

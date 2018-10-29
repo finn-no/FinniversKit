@@ -6,13 +6,14 @@ import FinniversKit
 
 private struct ViewModel: IconTitleTableViewCellViewModel {
     var title: String
+    let subtitle: String? = nil
     var icon: UIImage?
     var iconTintColor: UIColor?
     var hasChevron: Bool
 }
 
 class IconTitleCellDemoView: UIView {
-    fileprivate var viewModels = [
+    private var viewModels = [
         ViewModel(title: "Favoritter", icon: UIImage(named: .favouriteAdded), iconTintColor: .watermelon, hasChevron: true),
         ViewModel(title: "Lagrede søk", icon: UIImage(named: .search), iconTintColor: .licorice, hasChevron: false),
         ViewModel(title: "Varslingsinnstillinger", icon: nil, iconTintColor: nil, hasChevron: true),
@@ -22,7 +23,7 @@ class IconTitleCellDemoView: UIView {
         ViewModel(title: "Logg ut", icon: nil, iconTintColor: nil, hasChevron: false)
     ]
 
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
         tableView.dataSource = self
         tableView.rowHeight = 44

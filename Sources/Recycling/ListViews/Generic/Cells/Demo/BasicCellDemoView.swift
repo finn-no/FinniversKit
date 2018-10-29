@@ -6,10 +6,12 @@ import FinniversKit
 
 private struct ViewModel: BasicTableViewCellViewModel {
     var title: String
+    let subtitle: String? = nil
+    let hasChevron: Bool = false
 }
 
 class BasicCellDemoView: UIView {
-    fileprivate let viewModels = [
+    private let viewModels = [
         ViewModel(title: "Hagemøbler"),
         ViewModel(title: "Kattepuser"),
         ViewModel(title: "Mac Mini Pro"),
@@ -17,7 +19,7 @@ class BasicCellDemoView: UIView {
         ViewModel(title: "Mac Pro Max")
     ]
 
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
         tableView.delegate = self
         tableView.dataSource = self
@@ -48,6 +50,10 @@ extension BasicCellDemoView: UITableViewDelegate {
         if isLastCell {
             cell.separatorInset = .leadingInset(frame.width)
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
