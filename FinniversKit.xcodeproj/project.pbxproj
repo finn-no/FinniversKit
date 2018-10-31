@@ -1217,7 +1217,7 @@
 			isa = PBXGroup;
 			children = (
 				DA24BA272164C0AF006E2E5E /* ConsentActionView */,
-				DAC7DCA021538511004602A3 /* ConsentSwitchView */,
+				DAC7DCA021538511004602A3 /* ConsentToggleView */,
 				14EBA253215A633800613E5A /* LoadingView */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44587010213FA344009187BE /* Login */,
@@ -1520,14 +1520,14 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		DAC7DCA021538511004602A3 /* ConsentSwitchView */ = {
+		DAC7DCA021538511004602A3 /* ConsentToggleView */ = {
 			isa = PBXGroup;
 			children = (
 				DAC7DCA32153853F004602A3 /* Demo */,
 				DA8EF1232164E7AF0028740C /* ConsentToggleView.swift */,
 				DA8EF1252164E7EB0028740C /* ConsentToggleViewModel.swift */,
 			);
-			path = ConsentSwitchView;
+			path = ConsentToggleView;
 			sourceTree = "<group>";
 		};
 		DAC7DCA12153852D004602A3 /* Settings */ = {
