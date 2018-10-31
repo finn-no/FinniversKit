@@ -82,6 +82,11 @@ public class ConsentToggleView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    public func setOn(_ on: Bool, animated: Bool = false) {
+        toggle.setOn(on, animated: animated)
+        model?.state = on
+    }
 }
 
 // MARK: - Private methods
