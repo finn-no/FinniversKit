@@ -30,10 +30,18 @@ public class AnimatedCheckboxView: AnimatedSelectionView {
     }
 
     private func setImages() {
-        let framesPerSecond = AnimatedSelectionView.framesPerSecond
-        guard let selectedImages = UIImage.animatedImageNamed("checkbox-selected-", duration: 20 / framesPerSecond)?.images,
-            let unselectedImages = UIImage.animatedImageNamed("checkbox-unselected-", duration: 14 / framesPerSecond)?.images else {
-                fatalError("Could not instantiate animation images")
+        var selectedImages = [UIImage]()
+        for index in 0 ..< 20 {
+            if let image = UIImage(named: "checkbox-selected-\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
+                selectedImages.append(image)
+            }
+        }
+
+        var unselectedImages = [UIImage]()
+        for index in 0 ..< 14 {
+            if let image = UIImage(named: "checkbox-unselected-\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
+                unselectedImages.append(image)
+            }
         }
 
         self.selectedImage = selectedImages.last
@@ -46,7 +54,7 @@ public class AnimatedCheckboxView: AnimatedSelectionView {
         highlightedImage = self.selectedImage
         highlightedAnimationImages = self.selectedImages
 
-        selectedDuration = Double(selectedImages.count) / framesPerSecond
-        unselectedDuration = Double(unselectedImages.count) / framesPerSecond
+        selectedDuration = Double(selectedImages.count) / AnimatedSelectionView.framesPerSecond
+        unselectedDuration = Double(unselectedImages.count) / AnimatedSelectionView.framesPerSecond
     }
 }
