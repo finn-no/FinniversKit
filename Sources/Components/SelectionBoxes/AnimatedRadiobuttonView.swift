@@ -30,10 +30,18 @@ public class AnimatedRadioButtonView: AnimatedSelectionView {
     }
 
     private func setImages() {
-        let framesPerSecond = AnimatedSelectionView.framesPerSecond
-        guard let selectedImages = UIImage.animatedImageNamed("radiobutton-select-", duration: 13 / framesPerSecond)?.images,
-            let unselectedImages = UIImage.animatedImageNamed("radiobutton-unselected-", duration: 11 / framesPerSecond)?.images else {
-                fatalError("Could not instantiate animation images")
+        var selectedImages = [UIImage]()
+        for index in 0 ..< 13 {
+            if let image = UIImage(named: "radiobutton-select-\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
+                selectedImages.append(image)
+            }
+        }
+
+        var unselectedImages = [UIImage]()
+        for index in 0 ..< 11 {
+            if let image = UIImage(named: "radiobutton-unselected-\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
+                unselectedImages.append(image)
+            }
         }
 
         self.selectedImage = selectedImages.last
@@ -46,7 +54,7 @@ public class AnimatedRadioButtonView: AnimatedSelectionView {
         highlightedImage = self.selectedImage
         highlightedAnimationImages = self.selectedImages
 
-        selectedDuration = Double(selectedImages.count) / framesPerSecond
-        unselectedDuration = Double(unselectedImages.count) / framesPerSecond
+        selectedDuration = Double(selectedImages.count) / AnimatedSelectionView.framesPerSecond
+        unselectedDuration = Double(unselectedImages.count) / AnimatedSelectionView.framesPerSecond
     }
 }
