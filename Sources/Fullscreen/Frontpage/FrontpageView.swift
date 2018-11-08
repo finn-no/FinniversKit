@@ -7,10 +7,12 @@ public protocol FrontpageViewDelegate: AnyObject {
 }
 
 public final class FrontpageView: UIView {
-    private weak var delegate: FrontpageViewDelegate?
-    private let adsGridViewHeaderTitle: String
-    private let retryButtonTitle: String
+    public var adsGridViewHeaderTitle = ""
+    public var retryButtonTitle = ""
 
+    // MARK: - Private properties
+
+    private weak var delegate: FrontpageViewDelegate?
     private let marketsGridView: MarketsGridView
     private let adsGridView: AdsGridView
     private lazy var headerView = UIView()
@@ -42,14 +44,15 @@ public final class FrontpageView: UIView {
 
     // MARK: - Init
 
-    public init(viewModel: FrontpageViewModel) {
-        self.adsGridViewHeaderTitle = viewModel.adsGridViewHeaderTitle
-        self.retryButtonTitle = viewModel.retryButtonTitle
+    public convenience init(delegate: FrontpageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate & AdsGridViewDataSource) {
+        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: delegate)
+    }
 
-        marketsGridView = MarketsGridView(delegate: viewModel.marketsGridViewDelegate, dataSource: viewModel.marketsGridViewDataSource)
+    public init(delegate: FrontpageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource) {
+        marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
 
-        adsGridView = AdsGridView(delegate: viewModel.adsGridViewDelegate, dataSource: viewModel.adsGridViewDataSource)
+        adsGridView = AdsGridView(delegate: adsGridViewDelegate, dataSource: adsGridViewDataSource)
         adsGridView.translatesAutoresizingMaskIntoConstraints = false
 
         super.init(frame: .zero)
@@ -61,6 +64,11 @@ public final class FrontpageView: UIView {
     }
 
     // MARK: - Public
+
+    public func reloadData() {
+        reloadMarkets()
+        reloadAds()
+    }
 
     public func reloadMarkets() {
         marketsGridView.reloadData()
