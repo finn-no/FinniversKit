@@ -7,12 +7,9 @@ public protocol FrontpageViewDelegate: AnyObject {
 }
 
 public final class FrontpageView: UIView {
-    public var adsGridViewHeaderTitle = ""
-    public var retryButtonTitle = ""
-
-    // MARK: - Private properties
-
     private weak var delegate: FrontpageViewDelegate?
+    private var didSetupView = false
+
     private let marketsGridView: MarketsGridView
     private let adsGridView: AdsGridView
     private lazy var headerView = UIView()
@@ -20,7 +17,6 @@ public final class FrontpageView: UIView {
     private lazy var headerLabel: Label = {
         var headerLabel = Label(style: .title3)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
-        headerLabel.text = self.adsGridViewHeaderTitle
         return headerLabel
     }()
 
@@ -33,7 +29,6 @@ public final class FrontpageView: UIView {
 
     private lazy var adsRetryButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setTitle(self.retryButtonTitle, for: .normal)
         button.setTitleColor(.primaryBlue, for: .normal)
         button.addTarget(self, action: #selector(handleAdsRetryButtonTap), for: .touchUpInside)
         button.titleLabel?.font = .body
@@ -56,7 +51,6 @@ public final class FrontpageView: UIView {
         adsGridView.translatesAutoresizingMaskIntoConstraints = false
 
         super.init(frame: .zero)
-        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -64,6 +58,20 @@ public final class FrontpageView: UIView {
     }
 
     // MARK: - Public
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if didSetupView == false {
+            setup()
+            didSetupView = true
+        }
+    }
+
+    public func set(adsGridViewHeaderTitle: String, retryButtonTitle: String) {
+        headerLabel.text = adsGridViewHeaderTitle
+        adsRetryButton.setTitle(retryButtonTitle, for: .normal)
+    }
 
     public func reloadData() {
         reloadMarkets()

@@ -12,6 +12,7 @@ public class FrontpageViewDemoView: UIView {
 
     private lazy var frontpageView: FrontpageView = {
         let view = FrontpageView(delegate: self)
+        view.set(adsGridViewHeaderTitle: "Anbefalinger", retryButtonTitle: "Prøv igjen")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
