@@ -7,8 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08012BE521832C2E00A04F43 /* TableViewCellViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08012BE421832C2E00A04F43 /* TableViewCellViewsTests.swift */; };
+		08012BF02187319A00A04F43 /* BasicCellVariationsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08012BEF2187319A00A04F43 /* BasicCellVariationsDemoView.swift */; };
 		0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */; };
 		0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */; };
+		08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A0A21832546003E2222 /* BasicTableViewCell.swift */; };
+		08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */; };
+		08D70A19218328EB003E2222 /* IconTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A18218328EB003E2222 /* IconTitleTableViewCell.swift */; };
+		08D70A1B21832901003E2222 /* UIEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A1A21832901003E2222 /* UIEdgeInsetsExtensions.swift */; };
+		08D70A21218329D1003E2222 /* BasicCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A20218329D1003E2222 /* BasicCellDemoView.swift */; };
+		08D70A23218329ED003E2222 /* CheckboxCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A22218329ED003E2222 /* CheckboxCellDemoView.swift */; };
+		08D70A25218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A24218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift */; };
+		08D70A2721832A0C003E2222 /* IconTitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A2621832A0C003E2222 /* IconTitleCellDemoView.swift */; };
 		08D8B2ED2193129700EA22CC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
 		14193AAD21380DC800EC7FC0 /* ComponentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AA921380DC800EC7FC0 /* ComponentViewTests.swift */; };
 		14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */; };
@@ -240,8 +250,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		08012BE421832C2E00A04F43 /* TableViewCellViewsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellViewsTests.swift; sourceTree = "<group>"; };
+		08012BEF2187319A00A04F43 /* BasicCellVariationsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCellVariationsDemoView.swift; sourceTree = "<group>"; };
 		0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedRadiobuttonView.swift; sourceTree = "<group>"; };
 		0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxView.swift; sourceTree = "<group>"; };
+		08D70A0A21832546003E2222 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
+		08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
+		08D70A18218328EB003E2222 /* IconTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconTitleTableViewCell.swift; sourceTree = "<group>"; };
+		08D70A1A21832901003E2222 /* UIEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
+		08D70A20218329D1003E2222 /* BasicCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCellDemoView.swift; sourceTree = "<group>"; };
+		08D70A22218329ED003E2222 /* CheckboxCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxCellDemoView.swift; sourceTree = "<group>"; };
+		08D70A24218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxSubtitleCellDemoView.swift; sourceTree = "<group>"; };
+		08D70A2621832A0C003E2222 /* IconTitleCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconTitleCellDemoView.swift; sourceTree = "<group>"; };
 		14193AA921380DC800EC7FC0 /* ComponentViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentViewTests.swift; sourceTree = "<group>"; };
 		14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenViewTests.swift; sourceTree = "<group>"; };
 		14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnaViewTests.swift; sourceTree = "<group>"; };
@@ -462,6 +482,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08D70A082183252F003E2222 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				08D70A0921832538003E2222 /* Cells */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
+		08D70A0921832538003E2222 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				08D70A1C21832958003E2222 /* Demo */,
+				08D70A0A21832546003E2222 /* BasicTableViewCell.swift */,
+				08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */,
+				08D70A18218328EB003E2222 /* IconTitleTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		08D70A1C21832958003E2222 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				08D70A20218329D1003E2222 /* BasicCellDemoView.swift */,
+				08012BEF2187319A00A04F43 /* BasicCellVariationsDemoView.swift */,
+				08D70A22218329ED003E2222 /* CheckboxCellDemoView.swift */,
+				08D70A24218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift */,
+				08D70A2621832A0C003E2222 /* IconTitleCellDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		14405C521FAFBBF000D03E04 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +637,7 @@
 				14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */,
 				14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */,
 				14193AAC21380DC800EC7FC0 /* RecyclingViewTests.swift */,
+				08012BE421832C2E00A04F43 /* TableViewCellViewsTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -817,6 +869,7 @@
 		441FE440209A2F2C00B04EF1 /* ListViews */ = {
 			isa = PBXGroup;
 			children = (
+				08D70A082183252F003E2222 /* Generic */,
 				DAC7DCA12153852D004602A3 /* Settings */,
 				14C6F7CC212324C900A7230C /* Favorites */,
 				444245FA2137D60400D42AB8 /* FavoriteFolders */,
@@ -1149,6 +1202,7 @@
 				44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */,
 				44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */,
 				44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */,
+				08D70A1A21832901003E2222 /* UIEdgeInsetsExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1821,7 +1875,9 @@
 				44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */,
 				4423F227209CB24500B81D68 /* MiniToastView.swift in Sources */,
 				55C5B27E203EB9DA007D7277 /* BroadcastDemoView.swift in Sources */,
+				08D70A25218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift in Sources */,
 				44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */,
+				08D70A2721832A0C003E2222 /* IconTitleCellDemoView.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
@@ -1846,6 +1902,8 @@
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
+				08012BF02187319A00A04F43 /* BasicCellVariationsDemoView.swift in Sources */,
+				08D70A21218329D1003E2222 /* BasicCellDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
 				CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */,
 				44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */,
@@ -1853,6 +1911,7 @@
 				14C6F7DA212324D600A7230C /* FavoritesListViewDemoViewHelpers.swift in Sources */,
 				DA8EF1202164E2090028740C /* ConsentActionViewDemoView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
+				08D70A23218329ED003E2222 /* CheckboxCellDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
 				43BACE6F21117DD20052114C /* ReviewViewDemoView.swift in Sources */,
 				45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
@@ -1883,6 +1942,7 @@
 			files = (
 				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				14193AAD21380DC800EC7FC0 /* ComponentViewTests.swift in Sources */,
+				08012BE521832C2E00A04F43 /* TableViewCellViewsTests.swift in Sources */,
 				559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */,
 				14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */,
 				14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */,
@@ -1949,6 +2009,7 @@
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
+				08D70A1B21832901003E2222 /* UIEdgeInsetsExtensions.swift in Sources */,
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
@@ -1962,11 +2023,13 @@
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
+				08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
 				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
+				08D70A19218328EB003E2222 /* IconTitleTableViewCell.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
@@ -1974,6 +2037,7 @@
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
 				43BACE6A21117D430052114C /* ReviewView.swift in Sources */,
+				08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */,
