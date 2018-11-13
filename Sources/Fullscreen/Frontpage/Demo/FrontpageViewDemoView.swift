@@ -7,12 +7,11 @@ import FinniversKit
 public class FrontpageViewDemoView: UIView {
     private let ads = AdFactory.create(numberOfModels: 9)
     private let markets = Market.allMarkets
-    // Makes sure ads grid view layout is calculated after we know how much space we have for its collection view
     private var didSetupView = false
 
     private lazy var frontpageView: FrontpageView = {
         let view = FrontpageView(delegate: self)
-        view.set(adsGridViewHeaderTitle: "Anbefalinger", retryButtonTitle: "Prøv igjen")
+        view.model = FrontpageViewDefaultData()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

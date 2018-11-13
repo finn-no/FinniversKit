@@ -173,6 +173,9 @@
 		CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */; };
 		CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */; };
 		CF3DEDB4219465F300DB3E5A /* FrontpageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEDB3219465F300DB3E5A /* FrontpageView.swift */; };
+		CFE43E4C219B13B400D3D5F7 /* FrontpageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4B219B13B400D3D5F7 /* FrontpageViewModel.swift */; };
+		CFE43E50219B150D00D3D5F7 /* FrontpageViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4D219B149100D3D5F7 /* FrontpageViewDefaultData.swift */; };
+		CFE43E52219B1B2900D3D5F7 /* FrontpageRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E51219B1B2900D3D5F7 /* FrontpageRetryView.swift */; };
 		DA24BA292164C0BE006E2E5E /* ConsentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24BA282164C0BE006E2E5E /* ConsentActionView.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
@@ -408,6 +411,9 @@
 		CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumMachineDemoView.swift; sourceTree = "<group>"; };
 		CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentTests.swift; sourceTree = "<group>"; };
 		CF3DEDB3219465F300DB3E5A /* FrontpageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontpageView.swift; sourceTree = "<group>"; };
+		CFE43E4B219B13B400D3D5F7 /* FrontpageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontpageViewModel.swift; sourceTree = "<group>"; };
+		CFE43E4D219B149100D3D5F7 /* FrontpageViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontpageViewDefaultData.swift; sourceTree = "<group>"; };
+		CFE43E51219B1B2900D3D5F7 /* FrontpageRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontpageRetryView.swift; sourceTree = "<group>"; };
 		DA24BA282164C0BE006E2E5E /* ConsentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentActionView.swift; sourceTree = "<group>"; };
 		DA24BA2A2164C1A8006E2E5E /* ConsentActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentActionViewModel.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
@@ -1121,7 +1127,9 @@
 			isa = PBXGroup;
 			children = (
 				447AFC0F20984B6E000F793E /* Demo */,
+				CFE43E51219B1B2900D3D5F7 /* FrontpageRetryView.swift */,
 				CF3DEDB3219465F300DB3E5A /* FrontpageView.swift */,
+				CFE43E4B219B13B400D3D5F7 /* FrontpageViewModel.swift */,
 			);
 			path = Frontpage;
 			sourceTree = "<group>";
@@ -1129,6 +1137,7 @@
 		447AFC0F20984B6E000F793E /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				CFE43E4D219B149100D3D5F7 /* FrontpageViewDefaultData.swift */,
 				447AFC1020984B6E000F793E /* FrontpageViewDemoView.swift */,
 			);
 			path = Demo;
@@ -1839,6 +1848,7 @@
 				432CE09E21131B4800F01EC5 /* RoundedImageViewDemoView.swift in Sources */,
 				444246082137D61200D42AB8 /* FavoriteFoldersListViewDemoView.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
+				CFE43E50219B150D00D3D5F7 /* FrontpageViewDefaultData.swift in Sources */,
 				441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */,
 				45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */,
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
@@ -1950,6 +1960,7 @@
 				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
+				CFE43E52219B1B2900D3D5F7 /* FrontpageRetryView.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
@@ -1966,6 +1977,7 @@
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
+				CFE43E4C219B13B400D3D5F7 /* FrontpageViewModel.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,

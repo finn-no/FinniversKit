@@ -7,8 +7,17 @@ public protocol FrontpageViewDelegate: AnyObject {
 }
 
 public final class FrontpageView: UIView {
+    public var model: FrontpageViewModel? {
+        didSet {
+            headerLabel.text = model?.adsGridViewHeaderTitle
+            adsRetryView.set(labelText: model?.noRecommendationsText, buttonText: model?.retryButtonTitle)
+        }
+    }
+
     private weak var delegate: FrontpageViewDelegate?
     private var didSetupView = false
+
+    // MARK: - Subviews
 
     private let marketsGridView: MarketsGridView
     private let adsGridView: AdsGridView
@@ -20,21 +29,10 @@ public final class FrontpageView: UIView {
         return headerLabel
     }()
 
-    private lazy var adsLoadingIndicatorView: UIActivityIndicatorView = {
-        let indicatorView = UIActivityIndicatorView(style: .whiteLarge)
-        indicatorView.translatesAutoresizingMaskIntoConstraints = false
-        indicatorView.color = .primaryBlue
-        return indicatorView
-    }()
-
-    private lazy var adsRetryButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitleColor(.primaryBlue, for: .normal)
-        button.addTarget(self, action: #selector(handleAdsRetryButtonTap), for: .touchUpInside)
-        button.titleLabel?.font = .body
-        button.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
-        button.isHidden = true
-        return button
+    private lazy var adsRetryView: FrontpageRetryView = {
+        let view = FrontpageRetryView()
+        view.delegate = self
+        return view
     }()
 
     // MARK: - Init
@@ -68,11 +66,6 @@ public final class FrontpageView: UIView {
         }
     }
 
-    public func set(adsGridViewHeaderTitle: String, retryButtonTitle: String) {
-        headerLabel.text = adsGridViewHeaderTitle
-        adsRetryButton.setTitle(retryButtonTitle, for: .normal)
-    }
-
     public func reloadData() {
         reloadMarkets()
         reloadAds()
@@ -81,18 +74,17 @@ public final class FrontpageView: UIView {
     public func reloadMarkets() {
         marketsGridView.reloadData()
         setupAdsHeaderFrame()
-        setupAdsRetryButton()
         adsGridView.reloadData()
+        setupAdsRetryView()
     }
 
     public func reloadAds() {
-        adsRetryButton.isHidden = true
-        adsLoadingIndicatorView.stopAnimating()
+        adsRetryView.state = .hidden
         adsGridView.reloadData()
     }
 
     public func showAdsRetryButton() {
-        adsRetryButton.isHidden = false
+        adsRetryView.state = .labelAndButton
     }
 
     public func invalidateLayout() {
@@ -109,8 +101,7 @@ public final class FrontpageView: UIView {
         backgroundColor = .milk
 
         addSubview(adsGridView)
-        addSubview(adsRetryButton)
-        addSubview(adsLoadingIndicatorView)
+        addSubview(adsRetryView)
 
         headerView.addSubview(headerLabel)
         headerView.addSubview(marketsGridView)
@@ -123,43 +114,39 @@ public final class FrontpageView: UIView {
             headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .mediumLargeSpacing),
             headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumSpacing),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .mediumLargeSpacing),
-            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: .mediumLargeSpacing),
-
-            adsLoadingIndicatorView.centerXAnchor.constraint(equalTo: adsRetryButton.centerXAnchor),
-            adsLoadingIndicatorView.centerYAnchor.constraint(equalTo: adsRetryButton.centerYAnchor)
+            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.mediumLargeSpacing)
         ])
 
         adsGridView.fillInSuperview()
         adsGridView.headerView = headerView
 
         setupAdsHeaderFrame()
-        setupAdsRetryButton()
+        setupAdsRetryView()
     }
 
     private func setupAdsHeaderFrame() {
         let headerTopSpacing: CGFloat = .largeSpacing
         let headerBottomSpacing: CGFloat = .mediumLargeSpacing
         let headerHeight = headerLabel.intrinsicContentSize.height
-        let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: frame.size.width).height
+        let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height
         let height = headerTopSpacing + headerBottomSpacing + headerHeight + marketGridViewHeight
 
-        headerView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: height)
+        headerView.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: height)
     }
 
-    private func setupAdsRetryButton() {
-        adsRetryButton.sizeToFit()
-
-        let xCoordinate = (bounds.width - adsRetryButton.frame.width) / 2
-        let yCoordinate = (bounds.height - headerView.frame.height) / 2
-
-        adsRetryButton.frame.origin = CGPoint(x: xCoordinate, y: yCoordinate)
+    private func setupAdsRetryView() {
+        let yCoordinate = headerView.bounds.height + .veryLargeSpacing
+        adsRetryView.frame.size.height = 200
+        adsRetryView.frame.size.width = bounds.width
+        adsRetryView.frame.origin = CGPoint(x: 0, y: yCoordinate)
     }
+}
 
-    // MARK: - Actions
+// MARK: - FrontpageRetryViewDelegate
 
-    @objc private func handleAdsRetryButtonTap() {
-        adsRetryButton.isHidden = true
-        adsLoadingIndicatorView.startAnimating()
+extension FrontpageView: FrontpageRetryViewDelegate {
+    func frontpageRetryViewDidSelectButton(_ view: FrontpageRetryView) {
+        adsRetryView.state = .loading
         delegate?.frontpageViewDidSelectRetryButton(self)
     }
 }
