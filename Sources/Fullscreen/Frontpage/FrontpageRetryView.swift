@@ -17,7 +17,7 @@ final class FrontpageRetryView: UIView {
 
     var state: State = .hidden {
         didSet {
-            render(state: state)
+            configure(for: state)
         }
     }
 
@@ -54,7 +54,7 @@ final class FrontpageRetryView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        render(state: state)
+        configure(for: state)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -86,7 +86,7 @@ final class FrontpageRetryView: UIView {
         ])
     }
 
-    private func render(state: State) {
+    private func configure(for state: State) {
         switch state {
         case .hidden:
             activityIndicatorView.stopAnimating()
