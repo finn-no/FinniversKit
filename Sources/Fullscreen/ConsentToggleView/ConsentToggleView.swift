@@ -3,7 +3,7 @@
 //
 import UIKit
 
-public protocol ConsentSwitchViewDelegate: class {
+public protocol ConsentToggleViewDelegate: class {
     func consentToggleView(_ consentToggleView: ConsentToggleView, didToggleSwitch position: Bool)
     func consentToggleViewDidPressButton(_ consentToggleView: ConsentToggleView)
 }
@@ -68,7 +68,7 @@ public class ConsentToggleView: UIView {
         didSet { set(model: model) }
     }
 
-    public weak var delegate: ConsentSwitchViewDelegate?
+    public weak var delegate: ConsentToggleViewDelegate?
 
     public var lineSpacing: CGFloat = 4
 
@@ -81,6 +81,11 @@ public class ConsentToggleView: UIView {
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public func setOn(_ on: Bool, animated: Bool = false) {
+        toggle.setOn(on, animated: animated)
+        model?.state = on
     }
 }
 

@@ -19,6 +19,7 @@
 		08D70A23218329ED003E2222 /* CheckboxCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A22218329ED003E2222 /* CheckboxCellDemoView.swift */; };
 		08D70A25218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A24218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift */; };
 		08D70A2721832A0C003E2222 /* IconTitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A2621832A0C003E2222 /* IconTitleCellDemoView.swift */; };
+		08D8B2ED2193129700EA22CC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
 		14193AAD21380DC800EC7FC0 /* ComponentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AA921380DC800EC7FC0 /* ComponentViewTests.swift */; };
 		14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */; };
 		14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */; };
@@ -204,8 +205,8 @@
 		DAC7DCAF215386E4004602A3 /* SettingsViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA521538590004602A3 /* SettingsViewDemoView.swift */; };
 		DAC7DCB0215386E7004602A3 /* ConsentToggleViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA7215385A8004602A3 /* ConsentToggleViewDemoView.swift */; };
 		DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */; };
-		DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
-		DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */; };
+		DAD0D48F210735060091DD4D /* RadiobuttonAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */; };
+		DAD0D490210735080091DD4D /* RadiobuttonAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */; };
 		DAD0D492210737A30091DD4D /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D491210737A30091DD4D /* TextView.swift */; };
 		DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D493210739500091DD4D /* DescriptionView.swift */; };
 /* End PBXBuildFile section */
@@ -441,7 +442,7 @@
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
 		DAA9A3A7210215400021F7DC /* AnimatedSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSelectionView.swift; sourceTree = "<group>"; };
 		DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
-		DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadioboxAnimation.xcassets; sourceTree = "<group>"; };
+		DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadiobuttonAnimation.xcassets; sourceTree = "<group>"; };
 		DAB1F6D2216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewSectionHeaderView.swift; sourceTree = "<group>"; };
 		DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		DAC7DCA521538590004602A3 /* SettingsViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewDemoView.swift; sourceTree = "<group>"; };
@@ -1271,7 +1272,7 @@
 			isa = PBXGroup;
 			children = (
 				DA24BA272164C0AF006E2E5E /* ConsentActionView */,
-				DAC7DCA021538511004602A3 /* ConsentSwitchView */,
+				DAC7DCA021538511004602A3 /* ConsentToggleView */,
 				14EBA253215A633800613E5A /* LoadingView */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44587010213FA344009187BE /* Login */,
@@ -1558,7 +1559,7 @@
 				DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */,
 				DAA9A3A7210215400021F7DC /* AnimatedSelectionView.swift */,
 				DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */,
-				DAA9A3AF2102157B0021F7DC /* RadioboxAnimation.xcassets */,
+				DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */,
 				0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */,
 				0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */,
 			);
@@ -1574,14 +1575,14 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		DAC7DCA021538511004602A3 /* ConsentSwitchView */ = {
+		DAC7DCA021538511004602A3 /* ConsentToggleView */ = {
 			isa = PBXGroup;
 			children = (
 				DAC7DCA32153853F004602A3 /* Demo */,
 				DA8EF1232164E7AF0028740C /* ConsentToggleView.swift */,
 				DA8EF1252164E7EB0028740C /* ConsentToggleViewModel.swift */,
 			);
-			path = ConsentSwitchView;
+			path = ConsentToggleView;
 			sourceTree = "<group>";
 		};
 		DAC7DCA12153852D004602A3 /* Settings */ = {
@@ -1788,7 +1789,7 @@
 			files = (
 				DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */,
 				4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */,
-				DAD0D490210735080091DD4D /* RadioboxAnimation.xcassets in Resources */,
+				DAD0D490210735080091DD4D /* RadiobuttonAnimation.xcassets in Resources */,
 				144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1806,13 +1807,14 @@
 			files = (
 				CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */,
 				DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */,
-				DAD0D48F210735060091DD4D /* RadioboxAnimation.xcassets in Resources */,
+				DAD0D48F210735060091DD4D /* RadiobuttonAnimation.xcassets in Resources */,
 				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
 				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
 				CF3D5EF5215A6D9E006E4D08 /* pusefinn.wav in Resources */,
 				4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */,
 				CF3D5EF4215A6D9E006E4D08 /* hi-hats.wav in Resources */,
 				CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */,
+				08D8B2ED2193129700EA22CC /* CheckboxAnimation.xcassets in Resources */,
 				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
 				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 			);
