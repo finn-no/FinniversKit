@@ -3,20 +3,11 @@
 //
 import UIKit
 
-public enum DnaViews: String {
+public enum DnaViews: String, CaseIterable {
     case color
     case font
     case spacing
     case assets
-
-    public static var all: [DnaViews] {
-        return [
-            .color,
-            .font,
-            .spacing,
-            .assets
-        ]
-    }
 
     public var viewController: UIViewController {
         switch self {
@@ -32,7 +23,7 @@ public enum DnaViews: String {
     }
 }
 
-public enum ComponentViews: String {
+public enum ComponentViews: String, CaseIterable {
     case button
     case label
     case ribbon
@@ -47,25 +38,6 @@ public enum ComponentViews: String {
     case loadingIndicator
     case horizontalSlide
     case easterEggButton
-
-    public static var all: [ComponentViews] {
-        return [
-            .button,
-            .label,
-            .ribbon,
-            .textField,
-            .toast,
-            .switchView,
-            .inlineConsent,
-            .consentTransparencyInfo,
-            .checkbox,
-            .radioButton,
-            .roundedImageView,
-            .loadingIndicator,
-            .horizontalSlide,
-            .easterEggButton
-        ]
-    }
 
     public var viewController: UIViewController {
         switch self {
@@ -105,7 +77,7 @@ public enum ComponentViews: String {
     }
 }
 
-public enum RecyclingViews: String {
+public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
     case favoritesListView
@@ -113,18 +85,6 @@ public enum RecyclingViews: String {
     case marketsGridView
     case adsGridView
     case settingsView
-
-    public static var all: [RecyclingViews] {
-        return [
-            .notificationsListView,
-            .favoriteFoldersListView,
-            .favoritesListView,
-            .savedSearchesListView,
-            .marketsGridView,
-            .adsGridView,
-            .settingsView
-        ]
-    }
 
     public var viewController: UIViewController {
         switch self {
@@ -146,7 +106,7 @@ public enum RecyclingViews: String {
     }
 }
 
-public enum FullscreenViews: String {
+public enum FullscreenViews: String, CaseIterable {
     case frontpageView
     case popupView
     case emptyView
@@ -158,22 +118,6 @@ public enum FullscreenViews: String {
     case consentActionView
     case loadingView
     case drumMachine
-
-    public static var all: [FullscreenViews] {
-        return [
-            .frontpageView,
-            .popupView,
-            .emptyView,
-            .reportAdView,
-            .reviewView,
-            .registerView,
-            .loginView,
-            .consentToggleView,
-            .consentActionView,
-            .loadingView,
-            .drumMachine
-        ]
-    }
 
     public var viewController: UIViewController {
         switch self {
@@ -203,22 +147,12 @@ public enum FullscreenViews: String {
     }
 }
 
-public enum TableViewCellViews: String {
+public enum TableViewCellViews: String, CaseIterable {
     case basicCell
     case basicCellVariations
     case checkboxCell
     case checkboxSubtitleCell
     case iconTitleCell
-
-    public static var all: [TableViewCellViews] {
-        return [
-            .basicCell,
-            .basicCellVariations,
-            .checkboxCell,
-            .checkboxSubtitleCell,
-            .iconTitleCell
-        ]
-    }
 
     public var viewController: UIViewController {
         switch self {

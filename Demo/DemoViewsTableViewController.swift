@@ -44,11 +44,11 @@ class DemoViewsTableViewController: UITableViewController {
 
 extension DemoViewsTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return Sections.all.count
+        return Sections.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = Sections.all[section]
+        let section = Sections.allCases[section]
         return section.numberOfItems
     }
 
