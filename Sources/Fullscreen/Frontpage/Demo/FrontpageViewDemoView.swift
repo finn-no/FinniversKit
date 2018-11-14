@@ -5,87 +5,42 @@
 import FinniversKit
 
 public class FrontpageViewDemoView: UIView {
-    fileprivate lazy var discoverGridView: AdsGridView = {
-        let gridView = AdsGridView(delegate: self, dataSource: self)
-        gridView.translatesAutoresizingMaskIntoConstraints = false
-        return gridView
-    }()
-
-    fileprivate lazy var marketGridView: MarketsGridView = {
-        let marketGridView = MarketsGridView(delegate: self, dataSource: self)
-        marketGridView.translatesAutoresizingMaskIntoConstraints = false
-        return marketGridView
-    }()
-
-    fileprivate lazy var headerLabel: Label = {
-        var headerLabel = Label(style: .title4)
-        return headerLabel
-    }()
-
-    fileprivate lazy var headerView = UIView()
-
-    fileprivate let ads = AdFactory.create(numberOfModels: 9)
-    fileprivate let markets = Market.allMarkets
-
-    // Makes sure ads grid view layout is calculated after we know how much space we have for its collection view
+    private let ads = AdFactory.create(numberOfModels: 9)
+    private let markets = Market.allMarkets
     private var didSetupView = false
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
+    private lazy var frontpageView: FrontpageView = {
+        let view = FrontpageView(delegate: self)
+        view.model = FrontpageViewDefaultData()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    // MARK: - Setup
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
         if didSetupView == false {
-            setupView()
+            setup()
             didSetupView = true
         }
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
-
-    private func setupView() {
-        addSubview(discoverGridView)
-
-        headerLabel.translatesAutoresizingMaskIntoConstraints = false
-        headerLabel.text = "Anbefalinger"
-
-        headerView.addSubview(headerLabel)
-        headerView.addSubview(marketGridView)
-
-        NSLayoutConstraint.activate([
-            discoverGridView.topAnchor.constraint(equalTo: topAnchor),
-            discoverGridView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            discoverGridView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            discoverGridView.leadingAnchor.constraint(equalTo: leadingAnchor),
-
-            marketGridView.topAnchor.constraint(equalTo: headerView.topAnchor),
-            marketGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            marketGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-
-            headerLabel.topAnchor.constraint(equalTo: marketGridView.bottomAnchor, constant: .largeSpacing),
-            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumLargeSpacing),
-            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .mediumLargeSpacing),
-            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: .mediumLargeSpacing)
-        ])
-
-        let height = calculateAdsHeaderHeight()
-        headerView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: height)
-
-        discoverGridView.headerView = headerView
-    }
-
-    private func calculateAdsHeaderHeight() -> CGFloat {
-        let headerTopSpacing: CGFloat = .largeSpacing
-        let headerBottomSpacing: CGFloat = .mediumLargeSpacing
-        let headerHeight = headerLabel.intrinsicContentSize.height
-        let marketGridViewHeight = marketGridView.calculateSize(constrainedTo: frame.size.width).height
-        return headerTopSpacing + headerBottomSpacing + headerHeight + marketGridViewHeight
+    private func setup() {
+        addSubview(frontpageView)
+        frontpageView.fillInSuperview()
+        frontpageView.reloadData()
     }
 }
 
 // MARK: - AdsGridViewDelegate
+
+extension FrontpageViewDemoView: FrontpageViewDelegate {
+    public func frontpageViewDidSelectRetryButton(_ frontpageView: FrontpageView) {
+        frontpageView.reloadData()
+    }
+}
 
 extension FrontpageViewDemoView: AdsGridViewDelegate {
     public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
