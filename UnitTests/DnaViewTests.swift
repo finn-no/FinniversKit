@@ -7,7 +7,7 @@ import FBSnapshotTestCase
 import FinniversKit
 
 class DnaViewTests: FBSnapshotTestCase {
-    static var allViews = DnaViews.all
+    static var allViews = DnaViews.allCases
 
     override func setUp() {
         super.setUp()

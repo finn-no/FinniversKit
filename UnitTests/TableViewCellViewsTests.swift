@@ -7,7 +7,7 @@ import FinniversKit
 import Demo
 
 class TableViewCellsViewTests: FBSnapshotTestCase {
-    static var allViews = TableViewCellViews.all
+    static var allViews = TableViewCellViews.allCases
 
     override func setUp() {
         super.setUp()
