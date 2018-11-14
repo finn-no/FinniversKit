@@ -23,7 +23,7 @@ public struct ContainmentOptions: OptionSet {
 
     /// Attaches a navigation bar, a tab bar or both depending on what is returned here.
     /// If you return nil the screen will have no containers.
-    /// Or replace `return nil` with `self = .all`, `self = .navigationController` or `self = .tabBarController`
+    /// Or replace `return nil` with `self = .allCases`, `self = .navigationController` or `self = .tabBarController`
     ///
     /// - Parameter indexPath: The component's index path
     // swiftlint:disable:next cyclomatic_complexity
@@ -31,14 +31,14 @@ public struct ContainmentOptions: OptionSet {
         let sectionType = Sections.for(indexPath)
         switch sectionType {
         case .dna:
-            guard let screens = DnaViews.all[safe: indexPath.row] else {
+            guard let screens = DnaViews.allCases[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
             default: return nil
             }
         case .fullscreen:
-            guard let screens = FullscreenViews.all[safe: indexPath.row] else {
+            guard let screens = FullscreenViews.allCases[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
@@ -49,21 +49,21 @@ public struct ContainmentOptions: OptionSet {
             default: return nil
             }
         case .components:
-            guard let screens = ComponentViews.all[safe: indexPath.row] else {
+            guard let screens = ComponentViews.allCases[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
             default: return nil
             }
         case .recycling:
-            guard let screens = RecyclingViews.all[safe: indexPath.row] else {
+            guard let screens = RecyclingViews.allCases[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
             default: return nil
             }
         case .tableViewCells:
-            guard let screens = TableViewCellViews.all[safe: indexPath.row] else {
+            guard let screens = TableViewCellViews.allCases[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
@@ -73,88 +73,78 @@ public struct ContainmentOptions: OptionSet {
     }
 }
 
-enum Sections: String {
+enum Sections: String, CaseIterable {
     case dna
     case components
     case recycling
     case fullscreen
     case tableViewCells
 
-    static var all: [Sections] {
-        return [
-            .dna,
-            .components,
-            .recycling,
-            .fullscreen,
-            .tableViewCells
-        ]
-    }
-
     var numberOfItems: Int {
         switch self {
         case .dna:
-            return DnaViews.all.count
+            return DnaViews.allCases.count
         case .components:
-            return ComponentViews.all.count
+            return ComponentViews.allCases.count
         case .recycling:
-            return RecyclingViews.all.count
+            return RecyclingViews.allCases.count
         case .fullscreen:
-            return FullscreenViews.all.count
+            return FullscreenViews.allCases.count
         case .tableViewCells:
-            return TableViewCellViews.all.count
+            return TableViewCellViews.allCases.count
         }
     }
 
     static func formattedName(for section: Int) -> String {
-        let section = Sections.all[section]
+        let section = Sections.allCases[section]
         let rawClassName = section.rawValue
         return rawClassName
     }
 
     static func formattedName(for indexPath: IndexPath) -> String {
-        let section = Sections.all[indexPath.section]
+        let section = Sections.allCases[indexPath.section]
         var rawClassName: String
         switch section {
         case .dna:
-            rawClassName = DnaViews.all[indexPath.row].rawValue
+            rawClassName = DnaViews.allCases[indexPath.row].rawValue
         case .components:
-            rawClassName = ComponentViews.all[indexPath.row].rawValue
+            rawClassName = ComponentViews.allCases[indexPath.row].rawValue
         case .recycling:
-            rawClassName = RecyclingViews.all[indexPath.row].rawValue
+            rawClassName = RecyclingViews.allCases[indexPath.row].rawValue
         case .fullscreen:
-            rawClassName = FullscreenViews.all[indexPath.row].rawValue
+            rawClassName = FullscreenViews.allCases[indexPath.row].rawValue
         case .tableViewCells:
-            rawClassName = TableViewCellViews.all[indexPath.row].rawValue
+            rawClassName = TableViewCellViews.allCases[indexPath.row].rawValue
         }
 
         return rawClassName.capitalizingFirstLetter
     }
 
     static func `for`(_ indexPath: IndexPath) -> Sections {
-        return Sections.all[indexPath.section]
+        return Sections.allCases[indexPath.section]
     }
 
     // swiftlint:disable:next cyclomatic_complexity
     static func viewController(for indexPath: IndexPath) -> UIViewController? {
-        guard let section = Sections.all[safe: indexPath.section] else {
+        guard let section = Sections.allCases[safe: indexPath.section] else {
             return nil
         }
         var viewController: UIViewController?
         switch section {
         case .dna:
-            let selectedView = DnaViews.all[safe: indexPath.row]
+            let selectedView = DnaViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .components:
-            let selectedView = ComponentViews.all[safe: indexPath.row]
+            let selectedView = ComponentViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .recycling:
-            let selectedView = RecyclingViews.all[safe: indexPath.row]
+            let selectedView = RecyclingViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .fullscreen:
-            let selectedView = FullscreenViews.all[safe: indexPath.row]
+            let selectedView = FullscreenViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .tableViewCells:
-            let selectedView = TableViewCellViews.all[safe: indexPath.row]
+            let selectedView = TableViewCellViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         }
 

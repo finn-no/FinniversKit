@@ -7,7 +7,7 @@ import FBSnapshotTestCase
 import FinniversKit
 
 class FullscreenViewTests: FBSnapshotTestCase {
-    static var allViews = FullscreenViews.all
+    static var allViews = FullscreenViews.allCases
 
     override func setUp() {
         super.setUp()
