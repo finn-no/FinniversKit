@@ -202,3 +202,36 @@ public enum FullscreenViews: String {
         }
     }
 }
+
+public enum TableViewCellViews: String {
+    case basicCell
+    case basicCellVariations
+    case checkboxCell
+    case checkboxSubtitleCell
+    case iconTitleCell
+
+    public static var all: [TableViewCellViews] {
+        return [
+            .basicCell,
+            .basicCellVariations,
+            .checkboxCell,
+            .checkboxSubtitleCell,
+            .iconTitleCell
+        ]
+    }
+
+    public var viewController: UIViewController {
+        switch self {
+        case .basicCell:
+            return DemoViewController<BasicCellDemoView>(withDismissButton: true)
+        case .basicCellVariations:
+            return DemoViewController<BasicCellVariationsDemoView>(withDismissButton: true)
+        case .checkboxCell:
+            return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
+        case .checkboxSubtitleCell:
+            return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
+        case .iconTitleCell:
+            return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
+        }
+    }
+}
