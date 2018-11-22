@@ -31,6 +31,13 @@ class AdsGridViewLayout: UICollectionViewLayout {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func invalidateHeader() {
+        let invalidationContext = UICollectionViewLayoutInvalidationContext()
+        let kind = UICollectionView.elementKindSectionHeader
+        invalidationContext.invalidateSupplementaryElements(ofKind: kind, at: [IndexPath(item: 0, section: 0)])
+        invalidateLayout(with: invalidationContext)
+    }
+
     private var itemWidth: CGFloat {
         guard let collectionView = collectionView else {
             return 50.0

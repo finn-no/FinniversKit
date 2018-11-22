@@ -23,7 +23,7 @@ public final class FrontpageView: UIView {
 
     private let marketsGridView: MarketsGridView
     private let adsGridView: AdsGridView
-    private lazy var headerView = UIView()
+    private lazy var headerView = UIView(withAutoLayout: true)
 
     private lazy var inlineConsentView: InlineConsentView = {
         let view = InlineConsentView(frame: .zero)
@@ -105,14 +105,12 @@ public final class FrontpageView: UIView {
         inlineConsentView.isHidden = false
         inlineConsentView.descriptionText = text
         setupAdsHeaderFrame()
-        invalidateLayout()
     }
 
     public func hideInlineConsents() {
         inlineConsentView.isHidden = true
         inlineConsentView.descriptionText = ""
         setupAdsHeaderFrame()
-        invalidateLayout()
     }
 
     public func invalidateLayout() {
@@ -140,7 +138,7 @@ public final class FrontpageView: UIView {
         inlineConsentViewWidth.priority = UILayoutPriority(rawValue: 999)
 
         headerLabelBottom = headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumSpacing)
-        inlineConsentViewBottom = headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumSpacing)
+        inlineConsentViewBottom = inlineConsentView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumSpacing)
 
         NSLayoutConstraint.activate([
             marketsGridView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: .mediumLargeSpacing),
@@ -148,6 +146,7 @@ public final class FrontpageView: UIView {
             marketsGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
 
             headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .mediumSpacing),
+            //headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumSpacing),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .mediumLargeSpacing),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -157,6 +156,8 @@ public final class FrontpageView: UIView {
             inlineConsentView.trailingAnchor.constraint(lessThanOrEqualTo: headerView.trailingAnchor, constant: -.mediumLargeSpacing),
             inlineConsentViewWidth
         ])
+
+        //headerLabelBottom?.isActive = inlineConsentView.isHidden
 
         adsGridView.fillInSuperview()
         adsGridView.headerView = headerView
@@ -178,15 +179,15 @@ public final class FrontpageView: UIView {
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height
         let height = headerTopSpacing + headerBottomSpacing + headerHeight + marketGridViewHeight + inlineConsentViewHeight
 
-        headerView.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: height)
-
+        adsGridView.headerHeight = height
+//
         headerLabelBottom?.isActive = inlineConsentView.isHidden
         inlineConsentViewBottom?.isActive = !inlineConsentView.isHidden
-        layoutIfNeeded()
+        adsGridView.reloadHeader()
     }
 
     private func setupAdsRetryView() {
-        let yCoordinate = headerView.bounds.height + .veryLargeSpacing
+        let yCoordinate = adsGridView.headerHeight ?? 0 + .veryLargeSpacing
         adsRetryView.frame.size.height = 200
         adsRetryView.frame.size.width = bounds.width
         adsRetryView.frame.origin = CGPoint(x: 0, y: yCoordinate)
