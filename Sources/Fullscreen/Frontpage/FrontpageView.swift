@@ -11,6 +11,8 @@ public final class FrontpageView: UIView {
         didSet {
             headerLabel.text = model?.adsGridViewHeaderTitle
             adsRetryView.set(labelText: model?.noRecommendationsText, buttonText: model?.retryButtonTitle)
+            inlineConsentView.yesButtonTitle = model?.inlineConsentYesButtonTitle ?? ""
+            inlineConsentView.infoButtonTitle = model?.inlineConsentInfoButtonTitle ?? ""
         }
     }
 
@@ -22,6 +24,13 @@ public final class FrontpageView: UIView {
     private let marketsGridView: MarketsGridView
     private let adsGridView: AdsGridView
     private lazy var headerView = UIView()
+
+    private lazy var inlineConsentView: InlineConsentView = {
+        let view = InlineConsentView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
 
     private lazy var headerLabel: Label = {
         var headerLabel = Label(style: .title3)
@@ -87,6 +96,18 @@ public final class FrontpageView: UIView {
         adsRetryView.state = .labelAndButton
     }
 
+    public func showInlineConsents(withText text: String) {
+        adsGridView.collectionView.isScrollEnabled = false
+        inlineConsentView.isHidden = false
+        inlineConsentView.descriptionText = text
+    }
+
+    public func hideInlineConsents() {
+        adsGridView.collectionView.isScrollEnabled = true
+        inlineConsentView.isHidden = true
+        inlineConsentView.descriptionText = ""
+    }
+
     public func invalidateLayout() {
         adsGridView.invalidateLayout()
     }
@@ -102,9 +123,14 @@ public final class FrontpageView: UIView {
 
         addSubview(adsGridView)
         addSubview(adsRetryView)
+        addSubview(inlineConsentView)
 
         headerView.addSubview(headerLabel)
         headerView.addSubview(marketsGridView)
+
+        let maxInlineConsentViewWidth: CGFloat = 414.0
+        let inlineConsentViewWidth = inlineConsentView.widthAnchor.constraint(equalToConstant: maxInlineConsentViewWidth)
+        inlineConsentViewWidth.priority = UILayoutPriority(rawValue: 999)
 
         NSLayoutConstraint.activate([
             marketsGridView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: .mediumLargeSpacing),
@@ -114,7 +140,14 @@ public final class FrontpageView: UIView {
             headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .mediumLargeSpacing),
             headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumSpacing),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .mediumLargeSpacing),
-            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.mediumLargeSpacing)
+            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.mediumLargeSpacing),
+
+            inlineConsentView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            inlineConsentView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            inlineConsentView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumLargeSpacing),
+            inlineConsentView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            inlineConsentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            inlineConsentViewWidth
         ])
 
         adsGridView.fillInSuperview()
