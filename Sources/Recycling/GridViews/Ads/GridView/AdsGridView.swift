@@ -45,12 +45,6 @@ public class AdsGridView: UIView {
         }
     }
 
-    public var headerHeight: CGFloat?
-
-    func reloadHeader() {
-        collectionViewLayout.invalidateHeader()
-    }
-
     // MARK: - Setup
 
     public init(delegate: AdsGridViewDelegate, dataSource: AdsGridViewDataSource) {
@@ -170,7 +164,7 @@ extension AdsGridView: AdsGridViewCellDataSource {
 
 extension AdsGridView: AdsGridViewLayoutDelegate {
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat? {
-        return headerHeight ?? headerView?.frame.size.height
+        return headerView?.frame.size.height
     }
 
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, imageHeightRatioForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {

@@ -45,8 +45,7 @@ public final class FrontpageView: UIView {
         return view
     }()
 
-    private var headerLabelBottom: NSLayoutConstraint?
-    private var inlineConsentViewBottom: NSLayoutConstraint?
+    private lazy var marketsGridViewHeight = self.marketsGridView.heightAnchor.constraint(equalToConstant: 0)
 
     // MARK: - Init
 
@@ -87,9 +86,8 @@ public final class FrontpageView: UIView {
 
     public func reloadMarkets() {
         marketsGridView.reloadData()
-        setupAdsHeaderFrame()
+        setupFrames()
         adsGridView.reloadData()
-        setupAdsRetryView()
     }
 
     public func reloadAds() {
@@ -104,13 +102,13 @@ public final class FrontpageView: UIView {
     public func showInlineConsents(withText text: String) {
         inlineConsentView.isHidden = false
         inlineConsentView.descriptionText = text
-        setupAdsHeaderFrame()
+        setupFrames()
     }
 
     public func hideInlineConsents() {
         inlineConsentView.isHidden = true
         inlineConsentView.descriptionText = ""
-        setupAdsHeaderFrame()
+        setupFrames()
     }
 
     public func invalidateLayout() {
@@ -137,16 +135,13 @@ public final class FrontpageView: UIView {
         let inlineConsentViewWidth = inlineConsentView.widthAnchor.constraint(equalToConstant: maxInlineConsentViewWidth)
         inlineConsentViewWidth.priority = UILayoutPriority(rawValue: 999)
 
-        headerLabelBottom = headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumSpacing)
-        inlineConsentViewBottom = inlineConsentView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumSpacing)
-
         NSLayoutConstraint.activate([
             marketsGridView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: .mediumLargeSpacing),
             marketsGridView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
             marketsGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            marketsGridViewHeight,
 
-            headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .mediumSpacing),
-            //headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -.mediumSpacing),
+            headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .largeSpacing),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .mediumLargeSpacing),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -157,40 +152,29 @@ public final class FrontpageView: UIView {
             inlineConsentViewWidth
         ])
 
-        //headerLabelBottom?.isActive = inlineConsentView.isHidden
-
         adsGridView.fillInSuperview()
         adsGridView.headerView = headerView
 
-        setupAdsHeaderFrame()
-        setupAdsRetryView()
+        setupFrames()
     }
 
-    private func setupAdsHeaderFrame() {
+    private func setupFrames() {
         let inlineConsentViewHeight: CGFloat = {
             guard !inlineConsentView.isHidden else { return 0.0 }
             let inlineConsentViewHeight = inlineConsentView.intrinsicContentSize.height
             return inlineConsentViewHeight + .largeSpacing
         }()
 
-        let headerTopSpacing: CGFloat = .largeSpacing
+        let headerTopSpacing: CGFloat = .mediumLargeSpacing
         let headerBottomSpacing: CGFloat = .mediumLargeSpacing
-        let headerHeight = headerLabel.intrinsicContentSize.height
+        let labelHeight = headerLabel.intrinsicContentSize.height + .largeSpacing
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height
-        let height = headerTopSpacing + headerBottomSpacing + headerHeight + marketGridViewHeight + inlineConsentViewHeight
+        let height = headerTopSpacing + labelHeight + marketGridViewHeight + inlineConsentViewHeight + headerBottomSpacing
 
-        adsGridView.headerHeight = height
-//
-        headerLabelBottom?.isActive = inlineConsentView.isHidden
-        inlineConsentViewBottom?.isActive = !inlineConsentView.isHidden
-        adsGridView.reloadHeader()
-    }
-
-    private func setupAdsRetryView() {
-        let yCoordinate = adsGridView.headerHeight ?? 0 + .veryLargeSpacing
-        adsRetryView.frame.size.height = 200
-        adsRetryView.frame.size.width = bounds.width
-        adsRetryView.frame.origin = CGPoint(x: 0, y: yCoordinate)
+        marketsGridViewHeight.constant = marketGridViewHeight
+        headerView.frame.size.height = height
+        adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .veryLargeSpacing)
+        adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
     }
 }
 
