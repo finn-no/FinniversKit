@@ -30,7 +30,8 @@ public class FrontpageViewDemoView: UIView {
     private func setup() {
         addSubview(frontpageView)
         frontpageView.fillInSuperview()
-        frontpageView.reloadData()
+        frontpageView.reloadMarkets()
+        frontpageView.showInlineConsents(withText: "Vi kan vise deg relevante FINN-annonser du ikke har sett. Da trenger vi å lagre dine søkevalg.")
     }
 }
 
@@ -98,4 +99,15 @@ extension FrontpageViewDemoView: MarketsGridViewDataSource {
     public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
         return markets[index]
     }
+}
+
+// MARK: - InlineConsentViewDelegate
+
+extension FrontpageViewDemoView: InlineConsentViewDelegate {
+    public func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectYesButton button: Button) {
+        frontpageView.hideInlineConsents()
+        frontpageView.reloadAds()
+    }
+
+    public func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectInfoButton button: Button) {}
 }
