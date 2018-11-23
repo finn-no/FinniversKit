@@ -23,11 +23,11 @@ public final class FrontpageView: UIView {
 
     private let marketsGridView: MarketsGridView
     private let adsGridView: AdsGridView
-    private lazy var headerView = UIView(withAutoLayout: true)
+    private lazy var headerView = UIView()
 
     private lazy var inlineConsentView: InlineConsentView = {
         let view = InlineConsentView(frame: .zero)
-        view.backgroundColor = .white
+        view.backgroundColor = .milk
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
         return view
