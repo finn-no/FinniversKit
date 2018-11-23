@@ -30,8 +30,7 @@ public class FrontpageViewDemoView: UIView {
     private func setup() {
         addSubview(frontpageView)
         frontpageView.fillInSuperview()
-        frontpageView.reloadMarkets()
-        frontpageView.showInlineConsents(withText: "Vi kan vise deg relevante FINN-annonser du ikke har sett. Da trenger vi å lagre dine søkevalg.")
+        frontpageView.reloadData()
     }
 }
 

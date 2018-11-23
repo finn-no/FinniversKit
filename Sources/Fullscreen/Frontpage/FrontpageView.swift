@@ -141,7 +141,7 @@ public final class FrontpageView: UIView {
             marketsGridView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             marketsGridViewHeight,
 
-            headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .largeSpacing),
+            headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .mediumLargeSpacing),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .mediumLargeSpacing),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -166,9 +166,9 @@ public final class FrontpageView: UIView {
         }()
 
         let headerTopSpacing: CGFloat = .mediumLargeSpacing
-        let headerBottomSpacing: CGFloat = .mediumLargeSpacing
-        let labelHeight = headerLabel.intrinsicContentSize.height + .largeSpacing
-        let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height
+        let headerBottomSpacing: CGFloat = .mediumSpacing
+        let labelHeight = headerLabel.intrinsicContentSize.height + .mediumLargeSpacing
+        let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .smallSpacing
         let height = headerTopSpacing + labelHeight + marketGridViewHeight + inlineConsentViewHeight + headerBottomSpacing
 
         marketsGridViewHeight.constant = marketGridViewHeight
