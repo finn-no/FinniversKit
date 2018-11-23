@@ -107,7 +107,7 @@ public enum RecyclingViews: String, CaseIterable {
 }
 
 public enum FullscreenViews: String, CaseIterable {
-    case frontpageView
+    case frontPageView
     case popupView
     case emptyView
     case reportAdView
@@ -121,7 +121,7 @@ public enum FullscreenViews: String, CaseIterable {
 
     public var viewController: UIViewController {
         switch self {
-        case .frontpageView:
+        case .frontPageView:
             return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:
             return DemoViewController<EmptyViewDemoView>()

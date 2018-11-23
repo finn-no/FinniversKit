@@ -28,7 +28,7 @@ class FullscreenViewTests: FBSnapshotTestCase {
     }
 
     func testFrontpageView() {
-        snapshot(.frontpageView)
+        snapshot(.frontPageView)
     }
 
     func testPopupView() {

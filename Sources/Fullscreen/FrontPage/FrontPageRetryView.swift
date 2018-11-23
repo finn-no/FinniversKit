@@ -4,16 +4,16 @@
 
 import UIKit
 
-protocol FrontpageRetryViewDelegate: AnyObject {
-    func frontpageRetryViewDidSelectButton(_ view: FrontpageRetryView)
+protocol FrontPageRetryViewDelegate: AnyObject {
+    func frontPageRetryViewDidSelectButton(_ view: FrontPageRetryView)
 }
 
-final class FrontpageRetryView: UIView {
+final class FrontPageRetryView: UIView {
     enum State {
         case hidden, labelAndButton, loading
     }
 
-    weak var delegate: FrontpageRetryViewDelegate?
+    weak var delegate: FrontPageRetryViewDelegate?
 
     var state: State = .hidden {
         didSet {
@@ -107,6 +107,6 @@ final class FrontpageRetryView: UIView {
     // MARK: - Actions
 
     @objc private func handleButtonTap() {
-        delegate?.frontpageRetryViewDidSelectButton(self)
+        delegate?.frontPageRetryViewDidSelectButton(self)
     }
 }
