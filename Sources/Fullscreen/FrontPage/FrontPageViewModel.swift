@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol FrontpageViewModel {
+public protocol FrontPageViewModel {
     var adsGridViewHeaderTitle: String { get }
     var retryButtonTitle: String { get }
     var noRecommendationsText: String { get }

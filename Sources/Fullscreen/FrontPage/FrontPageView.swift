@@ -2,12 +2,12 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-public protocol FrontpageViewDelegate: AnyObject {
-    func frontpageViewDidSelectRetryButton(_ frontpageView: FrontpageView)
+public protocol FrontPageViewDelegate: AnyObject {
+    func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
 }
 
-public final class FrontpageView: UIView {
-    public var model: FrontpageViewModel? {
+public final class FrontPageView: UIView {
+    public var model: FrontPageViewModel? {
         didSet {
             headerLabel.text = model?.adsGridViewHeaderTitle
             adsRetryView.set(labelText: model?.noRecommendationsText, buttonText: model?.retryButtonTitle)
@@ -16,7 +16,7 @@ public final class FrontpageView: UIView {
         }
     }
 
-    private weak var delegate: FrontpageViewDelegate?
+    private weak var delegate: FrontPageViewDelegate?
     private var didSetupView = false
 
     // MARK: - Subviews
@@ -39,8 +39,8 @@ public final class FrontpageView: UIView {
         return headerLabel
     }()
 
-    private lazy var adsRetryView: FrontpageRetryView = {
-        let view = FrontpageRetryView()
+    private lazy var adsRetryView: FrontPageRetryView = {
+        let view = FrontPageRetryView()
         view.delegate = self
         return view
     }()
@@ -49,11 +49,11 @@ public final class FrontpageView: UIView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FrontpageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate & AdsGridViewDataSource & InlineConsentViewDelegate) {
+    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate & AdsGridViewDataSource & InlineConsentViewDelegate) {
         self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: delegate, inlineConsentViewDelegate: delegate)
     }
 
-    public init(delegate: FrontpageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource, inlineConsentViewDelegate: InlineConsentViewDelegate) {
+    public init(delegate: FrontPageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource, inlineConsentViewDelegate: InlineConsentViewDelegate) {
         marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -180,9 +180,9 @@ public final class FrontpageView: UIView {
 
 // MARK: - FrontpageRetryViewDelegate
 
-extension FrontpageView: FrontpageRetryViewDelegate {
-    func frontpageRetryViewDidSelectButton(_ view: FrontpageRetryView) {
+extension FrontPageView: FrontPageRetryViewDelegate {
+    func frontPageRetryViewDidSelectButton(_ view: FrontPageRetryView) {
         adsRetryView.state = .loading
-        delegate?.frontpageViewDidSelectRetryButton(self)
+        delegate?.frontPageViewDidSelectRetryButton(self)
     }
 }
