@@ -8,6 +8,7 @@ public protocol FrontPageViewModel {
     var adsGridViewHeaderTitle: String { get }
     var retryButtonTitle: String { get }
     var noRecommendationsText: String { get }
+    var inlineConsentTitle: String { get }
     var inlineConsentYesButtonTitle: String { get }
     var inlineConsentInfoButtonTitle: String { get }
 }

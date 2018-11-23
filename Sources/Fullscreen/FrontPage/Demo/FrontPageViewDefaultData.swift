@@ -5,11 +5,12 @@
 import FinniversKit
 
 public struct FrontpageViewDefaultData: FrontPageViewModel {
-    public var adsGridViewHeaderTitle = "Anbefalinger"
-    public var retryButtonTitle = "Prøv igjen"
-    public var noRecommendationsText = "Vi klarte dessverre ikke å laste dine anbefalinger."
-    public var inlineConsentYesButtonTitle = "Ja, det er greit"
-    public var inlineConsentInfoButtonTitle = "Mer om samtykke"
+    public let adsGridViewHeaderTitle = "Anbefalinger"
+    public let retryButtonTitle = "Prøv igjen"
+    public let noRecommendationsText = "Vi klarte dessverre ikke å laste dine anbefalinger."
+    public let inlineConsentYesButtonTitle = "Ja, det er greit"
+    public let inlineConsentInfoButtonTitle = "Mer om samtykke"
+    public let inlineConsentTitle = "Slå på anbefalinger"
 
     public init() {}
 }
