@@ -9,10 +9,10 @@ public protocol FrontPageViewDelegate: AnyObject {
 public final class FrontPageView: UIView {
     public var model: FrontPageViewModel? {
         didSet {
-            headerLabel.text = model?.adsGridViewHeaderTitle
             adsRetryView.set(labelText: model?.noRecommendationsText, buttonText: model?.retryButtonTitle)
             inlineConsentView.yesButtonTitle = model?.inlineConsentYesButtonTitle ?? ""
             inlineConsentView.infoButtonTitle = model?.inlineConsentInfoButtonTitle ?? ""
+            updateHeaderTitle()
         }
     }
 
@@ -102,12 +102,14 @@ public final class FrontPageView: UIView {
     public func showInlineConsents(withText text: String) {
         inlineConsentView.isHidden = false
         inlineConsentView.descriptionText = text
+        updateHeaderTitle()
         setupFrames()
     }
 
     public func hideInlineConsents() {
         inlineConsentView.isHidden = true
         inlineConsentView.descriptionText = ""
+        updateHeaderTitle()
         setupFrames()
     }
 
@@ -175,6 +177,10 @@ public final class FrontPageView: UIView {
         headerView.frame.size.height = height
         adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .veryLargeSpacing)
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
+    }
+
+    private func updateHeaderTitle() {
+        headerLabel.text = inlineConsentView.isHidden ? model?.adsGridViewHeaderTitle : model?.inlineConsentTitle
     }
 }
 
