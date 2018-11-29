@@ -47,7 +47,7 @@ public class SoldView: UIView {
                 button
             ])
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.spacing = 16
+        stack.spacing = 24
         stack.alignment = .center
         stack.axis = .vertical
         return stack
