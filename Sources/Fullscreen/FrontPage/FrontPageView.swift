@@ -61,6 +61,7 @@ public final class FrontPageView: UIView {
         adsGridView.translatesAutoresizingMaskIntoConstraints = false
 
         super.init(frame: .zero)
+        self.delegate = delegate
         inlineConsentView.delegate = inlineConsentViewDelegate
     }
 
