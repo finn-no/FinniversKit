@@ -46,6 +46,10 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
     public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
     public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
     public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
+
+    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButtonOnCell cell: AdsGridViewCell, at index: Int) {
+        adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
+    }
 }
 
 // MARK: - AdsGridViewDataSource

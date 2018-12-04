@@ -8,6 +8,7 @@ public protocol AdsGridViewDelegate: class {
     func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView)
+    func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButtonOnCell cell: AdsGridViewCell, at index: Int)
 }
 
 public protocol AdsGridViewDataSource: class {
@@ -83,6 +84,12 @@ public class AdsGridView: UIView {
         collectionView.reloadData()
     }
 
+    public func updateItem(at index: Int, isFavorite: Bool) {
+        let indexPath = IndexPath(row: index, section: 0)
+        guard let cell = collectionView.cellForItem(at: indexPath) as? AdsGridViewCell else { return }
+        cell.isFavorite = isFavorite
+    }
+
     public func scrollToTop(animated: Bool = true) {
         collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
     }
@@ -118,8 +125,10 @@ extension AdsGridView: UICollectionViewDataSource {
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
         let color = colors[indexPath.row % 4]
 
+        cell.index = indexPath.row
         cell.loadingColor = color
         cell.dataSource = self
+        cell.delegate = self
 
         if let model = dataSource?.adsGridView(self, modelAtIndex: indexPath.row) {
             cell.model = model
@@ -157,6 +166,15 @@ extension AdsGridView: AdsGridViewCellDataSource {
 
     public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat) {
         dataSource?.adsGridView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
+    }
+}
+
+// MARK: - AdsGridViewDelegate
+
+extension AdsGridView: AdsGridViewCellDelegate {
+    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, didSelectFavoriteButton button: UIButton) {
+        guard let index = adsGridViewCell.index else { return }
+        delegate?.adsGridView(self, didSelectFavoriteButtonOnCell: adsGridViewCell, at: index)
     }
 }
 

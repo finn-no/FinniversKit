@@ -9,6 +9,10 @@ public protocol AdsGridViewCellDataSource {
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
 }
 
+public protocol AdsGridViewCellDelegate {
+    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, didSelectFavoriteButton button: UIButton)
+}
+
 public class AdsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
@@ -78,7 +82,11 @@ public class AdsGridViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var favoriteButton = UIButton(withAutoLayout: true)
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton(withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleFavoriteButtonTap(_:)), for: .touchUpInside)
+        return button
+    }()
 
     // MARK: - External properties
 
@@ -87,6 +95,12 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     /// A data source for the loading of the image
     public var dataSource: AdsGridViewCellDataSource?
+
+    /// A delegate for actions triggered from the cell
+    public var delegate: AdsGridViewCellDelegate?
+
+    /// Optional index of the cell
+    public var index: Int?
 
     /// Height in cell that is not image
     public static var nonImageHeight: CGFloat {
@@ -231,5 +245,9 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private var defaultImage: UIImage? {
         return UIImage(named: .noImage)
+    }
+
+    @objc private func handleFavoriteButtonTap(_ button: UIButton) {
+        delegate?.adsGridViewCell(self, didSelectFavoriteButton: button)
     }
 }
