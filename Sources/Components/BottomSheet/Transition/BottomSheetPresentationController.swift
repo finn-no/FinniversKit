@@ -1,9 +1,5 @@
 //
-//  BottomSheetPresentationController.swift
-//  bottom-sheets
-//
-//  Created by Granheim Brustad , Henrik on 16/10/2018.
-//  Copyright © 2018 Henrik Brustad. All rights reserved.
+//  Copyright © 2018 FINN.no. All rights reserved.
 //
 
 import UIKit
