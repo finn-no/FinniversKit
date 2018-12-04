@@ -12,6 +12,7 @@ public protocol AdsGridViewModel {
     var subtitle: String? { get }
     var imageText: String? { get }
     var accessibilityLabel: String { get }
+    var isFavorite: Bool { get }
 }
 
 public extension AdsGridViewModel {

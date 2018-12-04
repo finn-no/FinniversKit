@@ -78,6 +78,8 @@ public class AdsGridViewCell: UICollectionViewCell {
         return label
     }()
 
+    private lazy var favoriteButton = UIButton(withAutoLayout: true)
+
     // MARK: - External properties
 
     /// The loading color is used to fill the image view while we load the image.
@@ -110,6 +112,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         addSubview(subtitleLabel)
         addSubview(titleLabel)
         addSubview(imageDescriptionView)
+        addSubview(favoriteButton)
 
         imageDescriptionView.addSubview(iconImageView)
         imageDescriptionView.addSubview(imageTextLabel)
@@ -144,7 +147,12 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
             imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
             imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
-            imageDescriptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
+            imageDescriptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+
+            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 28),
+            favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])
     }
 
@@ -158,6 +166,8 @@ public class AdsGridViewCell: UICollectionViewCell {
         subtitleLabel.text = ""
         imageTextLabel.text = ""
         accessibilityLabel = ""
+        favoriteButton.isHidden = true
+        favoriteButton.setImage(nil, for: .normal)
 
         if let model = model {
             dataSource?.adsGridViewCell(self, cancelLoadingImageForModel: model, imageWidth: imageView.frame.size.width)
@@ -175,7 +185,16 @@ public class AdsGridViewCell: UICollectionViewCell {
                 subtitleLabel.text = model.subtitle
                 imageTextLabel.text = model.imageText
                 accessibilityLabel = model.accessibilityLabel
+                isFavorite = model.isFavorite
             }
+        }
+    }
+
+    public var isFavorite = false {
+        didSet {
+            let favouriteImage = isFavorite ? UIImage(named: .favouriteAddedImg) : UIImage(named: .favouriteAddImg)
+            favoriteButton.setImage(favouriteImage, for: .normal)
+            favoriteButton.isHidden = false
         }
     }
 

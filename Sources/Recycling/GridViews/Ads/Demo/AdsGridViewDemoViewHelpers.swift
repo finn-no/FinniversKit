@@ -12,6 +12,7 @@ public struct Ad: AdsGridViewModel {
     public let title: String
     public let subtitle: String?
     public let imageText: String?
+    public var isFavorite = false
 
     public var accessibilityLabel: String {
         var message = title
@@ -41,7 +42,7 @@ public struct AdFactory {
             let title = titles[index]
             let subtitle = subtitles[index]
             let icon = UIImage(named: .car)
-            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subtitle: subtitle, imageText: price[index])
+            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subtitle: subtitle, imageText: price[index], isFavorite: false)
         }
     }
 
