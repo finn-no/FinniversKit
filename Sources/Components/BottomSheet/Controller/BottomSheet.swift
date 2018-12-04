@@ -6,14 +6,12 @@ import UIKit
 
 public class BottomSheet: UIViewController {
 
-    // MARK: - Public properties
-
-    public var rootViewController: UIViewController
-
     // MARK: - Private properties
 
+    private let rootViewController: UIViewController
     private let transitionDelegate = BottomSheetTransitioningDelegate()
 
+    private let notchSize = CGSize(width: 25, height: 4)
     private let notch: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .sardine
@@ -21,6 +19,8 @@ public class BottomSheet: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    private let cornerRadius: CGFloat = 16
 
     // Only necessary if iOS < 11.0
     private let maskLayer = CAShapeLayer()
@@ -48,7 +48,7 @@ public class BottomSheet: UIViewController {
         } else {
             let path = UIBezierPath(roundedRect: view.bounds,
                                     byRoundingCorners: [.topLeft, .topRight],
-                                    cornerRadii: CGSize(width: 16, height: 16)).cgPath
+                                    cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
             maskLayer.path = path
             view.layer.mask = maskLayer
         }
@@ -60,7 +60,7 @@ public class BottomSheet: UIViewController {
         view.backgroundColor = .white
         view.clipsToBounds = true
         if #available(iOS 11.0, *) {
-            view.layer.cornerRadius = 16
+            view.layer.cornerRadius = cornerRadius
             view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         }
         view.addSubview(notch)
@@ -72,9 +72,9 @@ public class BottomSheet: UIViewController {
 
         NSLayoutConstraint.activate([
             notch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            notch.topAnchor.constraint(equalTo: view.topAnchor, constant: 8),
-            notch.heightAnchor.constraint(equalToConstant: 4),
-            notch.widthAnchor.constraint(equalToConstant: 25),
+            notch.topAnchor.constraint(equalTo: view.topAnchor, constant: .mediumSpacing),
+            notch.heightAnchor.constraint(equalToConstant: notchSize.height),
+            notch.widthAnchor.constraint(equalToConstant: notchSize.width),
 
             rootViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             rootViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),

@@ -98,23 +98,23 @@ private extension BottomSheetPresentationController {
 
 extension BottomSheetPresentationController: BottomSheetGestureControllerDelegate {
     // This method expects to return the current y position of the bottom sheet
-    func gestureDidBegin() -> CGFloat {
+    func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGFloat {
         springAnimator.pauseAnimation()
         return constraint?.constant ?? 0
     }
     // Position is the y position of the bottom sheet in the container view
-    func gestureDidChange(position: CGFloat) {
+    func bottomSheetGestureController(_ controller: BottomSheetGestureController, didChangeGesture position: CGFloat) {
         constraint?.constant = position
     }
 
-    func gestureDidEnd(with state: BottomSheetPresentationController.State, targetPosition position: CGFloat, andVelocity velocity: CGFloat) {
+    func bottomSheetGestureController(_ controller: BottomSheetGestureController, didEndGestureWith state: BottomSheetPresentationController.State, andTargetPosition position: CGFloat) {
         self.presentationState = state
         switch state {
         case .dismissed:
             presentedViewController.dismiss(animated: true)
         default:
             springAnimator.targetPosition = position
-            springAnimator.initialVelocity = velocity
+            springAnimator.initialVelocity = controller.velocity
             springAnimator.startAnimation()
         }
     }

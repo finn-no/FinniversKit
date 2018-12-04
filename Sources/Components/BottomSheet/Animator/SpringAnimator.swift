@@ -13,12 +13,12 @@ extension SpringAnimator {
 class SpringAnimator: NSObject {
 
     // Spring properties
-    let damping: CGFloat
-    let stiffness: CGFloat
+    private let damping: CGFloat
+    private let stiffness: CGFloat
 
     // View properties
-    private var velocity = 0.0 as CGFloat
-    private var position = 0.0 as CGFloat
+    private var velocity: CGFloat = 0.0
+    private var position: CGFloat = 0.0
     var initialVelocity: CGFloat = 0 {
         didSet { velocity = -initialVelocity }
     }
@@ -40,7 +40,9 @@ class SpringAnimator: NSObject {
     }
 
     func startAnimation() {
-        if state == .paused { continueAnimation() }
+        if state == .paused {
+            continueAnimation()
+        }
 
         guard let constraint = constraint else { return }
         position = targetPosition - constraint.constant
@@ -86,7 +88,9 @@ private extension SpringAnimator {
     }
 
     func stopAnimation(didComplete: Bool) {
-        if didComplete { constraint?.constant = targetPosition }
+        if didComplete {
+            constraint?.constant = targetPosition
+        }
         displayLink?.invalidate()
         displayLink = nil
         completion?(didComplete)

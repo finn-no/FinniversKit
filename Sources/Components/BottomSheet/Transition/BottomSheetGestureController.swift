@@ -5,15 +5,16 @@
 import UIKit
 
 protocol BottomSheetGestureControllerDelegate: class {
-    func gestureDidBegin() -> CGFloat // Expects to get the current position of the bottom sheet
-    func gestureDidChange(position: CGFloat)
-    func gestureDidEnd(with state: BottomSheetPresentationController.State, targetPosition position: CGFloat, andVelocity velocity: CGFloat)
+    // Expects to get the current position of the bottom sheet
+    func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGFloat
+    func bottomSheetGestureController(_ controller: BottomSheetGestureController, didChangeGesture position: CGFloat)
+    func bottomSheetGestureController(_ controller: BottomSheetGestureController, didEndGestureWith state: BottomSheetPresentationController.State, andTargetPosition position: CGFloat)
     func currentPresentationState(for gestureController: BottomSheetGestureController) -> BottomSheetPresentationController.State
 }
 
 class BottomSheetGestureController {
 
-    var velocity = 0 as CGFloat
+    var velocity: CGFloat = 0
     weak var delegate: BottomSheetGestureControllerDelegate?
 
     private var initialConstant = 0 as CGFloat
@@ -39,17 +40,17 @@ private extension BottomSheetGestureController {
 
         switch gesture.state {
         case .began:
-            initialConstant = delegate?.gestureDidBegin() ?? 0
+            initialConstant = delegate?.bottomSheetGestureControllerDidBeginGesture(self) ?? 0
 
         case .changed:
             let position = initialConstant + transition.y
-            delegate?.gestureDidChange(position: position)
+            delegate?.bottomSheetGestureController(self, didChangeGesture: position)
 
         case .ended:
             guard let currentState = delegate?.currentPresentationState(for: self) else { return }
             let nextState = self.nextState(forTransition: transition, withCurrent: currentState, usingThreshold: threshold)
             let targetPosition = self.targetPosition(for: nextState)
-            delegate?.gestureDidEnd(with: nextState, targetPosition: targetPosition, andVelocity: velocity.y)
+            delegate?.bottomSheetGestureController(self, didEndGestureWith: nextState, andTargetPosition: targetPosition)
 
         default:
             return

@@ -43,21 +43,21 @@ class BottomSheetInteractionController: NSObject, UIViewControllerInteractiveTra
 
 // The interaction is only used during the presentation transition
 extension BottomSheetInteractionController: BottomSheetGestureControllerDelegate {
-    func gestureDidBegin() -> CGFloat {
+    func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGFloat {
         // interrupt the transition
         animationController.pauseTransition()
         return constraint?.constant ?? 0
     }
 
-    func gestureDidChange(position: CGFloat) {
+    func bottomSheetGestureController(_ controller: BottomSheetGestureController, didChangeGesture position: CGFloat) {
         // Update constraint based on gesture
         constraint?.constant = position
     }
 
-    func gestureDidEnd(with state: BottomSheetPresentationController.State, targetPosition position: CGFloat, andVelocity velocity: CGFloat) {
+    func bottomSheetGestureController(_ controller: BottomSheetGestureController, didEndGestureWith state: BottomSheetPresentationController.State, andTargetPosition position: CGFloat) {
         guard let transitionContext = transitionContext else { return }
         self.presentationState = state
-        animationController.initialVelocity = velocity
+        animationController.initialVelocity = controller.velocity
         animationController.targetPosition = position
         switch state {
         case .dismissed: animationController.cancelTransition(using: transitionContext)
