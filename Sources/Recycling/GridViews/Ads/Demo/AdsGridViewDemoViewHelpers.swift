@@ -27,6 +27,8 @@ public struct Ad: AdsGridViewModel {
 
         return message
     }
+
+    public var favoriteButtonAccessibilityLabel = "Sett annonsen som favoritt"
 }
 
 /// Creates Ads
@@ -42,7 +44,7 @@ public struct AdFactory {
             let title = titles[index]
             let subtitle = subtitles[index]
             let icon = UIImage(named: .car)
-            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subtitle: subtitle, imageText: price[index], isFavorite: false)
+            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subtitle: subtitle, imageText: price[index], isFavorite: false, favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
     }
 
