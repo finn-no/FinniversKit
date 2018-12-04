@@ -1,7 +1,7 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-import UIKit
+import FinniversKit
 
 public enum DnaViews: String, CaseIterable {
     case color
@@ -38,6 +38,7 @@ public enum ComponentViews: String, CaseIterable {
     case loadingIndicator
     case horizontalSlide
     case easterEggButton
+    case bottomSheet
 
     public var viewController: UIViewController {
         switch self {
@@ -73,6 +74,9 @@ public enum ComponentViews: String, CaseIterable {
             return secondViewController
         case .easterEggButton:
             return DemoViewController<EasterEggButtonDemoView>()
+        case .bottomSheet:
+            let controller = DemoViewController<ButtonDemoView>()
+            return BottomSheet(rootViewController: controller)
         }
     }
 }

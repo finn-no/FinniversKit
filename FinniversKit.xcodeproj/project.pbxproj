@@ -203,6 +203,13 @@
 		DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedSelectionView.swift */; };
 		DAA9A3B521021CC20021F7DC /* CheckboxAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */; };
 		DAB1F6D3216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB1F6D2216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift */; };
+		DAB7FAA621B690DD00BF8CC6 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7FA9F21B690DD00BF8CC6 /* BottomSheet.swift */; };
+		DAB7FAA721B690DD00BF8CC6 /* BottomSheetPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7FAA121B690DD00BF8CC6 /* BottomSheetPresentationController.swift */; };
+		DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7FAA221B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift */; };
+		DAB7FAA921B690DD00BF8CC6 /* BottomSheetAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7FAA321B690DD00BF8CC6 /* BottomSheetAnimationController.swift */; };
+		DAB7FAAA21B690DD00BF8CC6 /* BottomSheetGestureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7FAA421B690DD00BF8CC6 /* BottomSheetGestureController.swift */; };
+		DAB7FAAB21B690DD00BF8CC6 /* BottomSheetInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7FAA521B690DD00BF8CC6 /* BottomSheetInteractionController.swift */; };
+		DAB7FAAE21B6924E00BF8CC6 /* SpringAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7FAAD21B6924E00BF8CC6 /* SpringAnimator.swift */; };
 		DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */; };
 		DAC7DCAA21538608004602A3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA921538608004602A3 /* SettingsView.swift */; };
 		DAC7DCAE2153866E004602A3 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCAD2153866E004602A3 /* SettingsViewCell.swift */; };
@@ -452,6 +459,13 @@
 		DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CheckboxAnimation.xcassets; sourceTree = "<group>"; };
 		DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadiobuttonAnimation.xcassets; sourceTree = "<group>"; };
 		DAB1F6D2216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewSectionHeaderView.swift; sourceTree = "<group>"; };
+		DAB7FA9F21B690DD00BF8CC6 /* BottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		DAB7FAA121B690DD00BF8CC6 /* BottomSheetPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetPresentationController.swift; sourceTree = "<group>"; };
+		DAB7FAA221B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetTransitioningDelegate.swift; sourceTree = "<group>"; };
+		DAB7FAA321B690DD00BF8CC6 /* BottomSheetAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetAnimationController.swift; sourceTree = "<group>"; };
+		DAB7FAA421B690DD00BF8CC6 /* BottomSheetGestureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetGestureController.swift; sourceTree = "<group>"; };
+		DAB7FAA521B690DD00BF8CC6 /* BottomSheetInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetInteractionController.swift; sourceTree = "<group>"; };
+		DAB7FAAD21B6924E00BF8CC6 /* SpringAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringAnimator.swift; sourceTree = "<group>"; };
 		DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		DAC7DCA521538590004602A3 /* SettingsViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewDemoView.swift; sourceTree = "<group>"; };
 		DAC7DCA7215385A8004602A3 /* ConsentToggleViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentToggleViewDemoView.swift; sourceTree = "<group>"; };
@@ -997,6 +1011,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				CF15D9AF215B93B8004F5F02 /* EasterEggButton */,
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
@@ -1587,6 +1602,44 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
+		DAB7FAA021B690DD00BF8CC6 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				DAB7FAA121B690DD00BF8CC6 /* BottomSheetPresentationController.swift */,
+				DAB7FAA221B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift */,
+				DAB7FAA321B690DD00BF8CC6 /* BottomSheetAnimationController.swift */,
+				DAB7FAA421B690DD00BF8CC6 /* BottomSheetGestureController.swift */,
+				DAB7FAA521B690DD00BF8CC6 /* BottomSheetInteractionController.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		DAB7FAAC21B690E900BF8CC6 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				DAB7FAAF21B6925D00BF8CC6 /* Controller */,
+				DAB7FAB021B6926400BF8CC6 /* Animator */,
+				DAB7FAA021B690DD00BF8CC6 /* Transition */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		DAB7FAAF21B6925D00BF8CC6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DAB7FA9F21B690DD00BF8CC6 /* BottomSheet.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DAB7FAB021B6926400BF8CC6 /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				DAB7FAAD21B6924E00BF8CC6 /* SpringAnimator.swift */,
+			);
+			path = Animator;
+			sourceTree = "<group>";
+		};
 		DAC7DCA021538511004602A3 /* ConsentToggleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2019,8 +2072,11 @@
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
+				DAB7FAAA21B690DD00BF8CC6 /* BottomSheetGestureController.swift in Sources */,
+				DAB7FAAE21B6924E00BF8CC6 /* SpringAnimator.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
 				CFE43E52219B1B2900D3D5F7 /* FrontPageRetryView.swift in Sources */,
+				DAB7FAA721B690DD00BF8CC6 /* BottomSheetPresentationController.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				08D70A1B21832901003E2222 /* UIEdgeInsetsExtensions.swift in Sources */,
@@ -2037,9 +2093,12 @@
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
+				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
+				DAB7FAA621B690DD00BF8CC6 /* BottomSheet.swift in Sources */,
 				08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				CFE43E4C219B13B400D3D5F7 /* FrontPageViewModel.swift in Sources */,
+				DAB7FAAB21B690DD00BF8CC6 /* BottomSheetInteractionController.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
@@ -2050,6 +2109,7 @@
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
 				14DC127021593B0000326DC3 /* HorizontalSlideTransition.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
+				DAB7FAA921B690DD00BF8CC6 /* BottomSheetAnimationController.swift in Sources */,
 				CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
 				43BACE6A21117D430052114C /* ReviewView.swift in Sources */,
