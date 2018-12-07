@@ -60,8 +60,9 @@ private extension BottomSheetGestureController {
     func nextState(forTransition transition: CGPoint, withCurrent current: BottomSheetPresentationController.State, usingThreshold threshold: CGFloat) -> BottomSheetPresentationController.State {
         switch current {
         case .compressed:
-            if transition.y < -threshold { return .expanded }
-            else if transition.y > threshold { return .dismissed }
+            if transition.y < -threshold {
+                return .expanded
+            } else if transition.y > threshold { return .dismissed }
         case .expanded:
             if transition.y > threshold { return .compressed }
         case .dismissed:
