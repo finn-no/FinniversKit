@@ -8,7 +8,7 @@ public protocol AdsGridViewDelegate: class {
     func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView)
-    func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButtonOnCell cell: AdsGridViewCell, at index: Int)
+    func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int)
 }
 
 public protocol AdsGridViewDataSource: class {
@@ -174,7 +174,7 @@ extension AdsGridView: AdsGridViewCellDataSource {
 extension AdsGridView: AdsGridViewCellDelegate {
     public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, didSelectFavoriteButton button: UIButton) {
         guard let index = adsGridViewCell.index else { return }
-        delegate?.adsGridView(self, didSelectFavoriteButtonOnCell: adsGridViewCell, at: index)
+        delegate?.adsGridView(self, didSelectFavoriteButton: button, on: adsGridViewCell, at: index)
     }
 }
 
