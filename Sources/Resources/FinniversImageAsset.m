@@ -29,6 +29,8 @@ NSString *const FinniversImageAssetfavouriteAdd = @"favouriteAdd";
 NSString *const FinniversImageAssetfavouriteAddImg = @"favouriteAddImg";
 NSString *const FinniversImageAssetfavouriteAdded = @"favouriteAdded";
 NSString *const FinniversImageAssetfavouriteAddedImg = @"favouriteAddedImg";
+NSString *const FinniversImageAssetfavouriteLegacyAdd = @"favouriteLegacyAdd";
+NSString *const FinniversImageAssetfavouriteLegacyAdded = @"favouriteLegacyAdded";
 NSString *const FinniversImageAssetfavourites = @"favourites";
 NSString *const FinniversImageAssetgallery = @"gallery";
 NSString *const FinniversImageAssetgridView = @"gridView";
@@ -105,6 +107,8 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetfavouriteAddImg,
              FinniversImageAssetfavouriteAdded,
              FinniversImageAssetfavouriteAddedImg,
+             FinniversImageAssetfavouriteLegacyAdd,
+             FinniversImageAssetfavouriteLegacyAdded,
              FinniversImageAssetfavourites,
              FinniversImageAssetgallery,
              FinniversImageAssetgridView,

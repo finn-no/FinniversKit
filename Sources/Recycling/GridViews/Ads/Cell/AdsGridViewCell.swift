@@ -165,7 +165,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
             favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 28),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])
     }
@@ -256,7 +256,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 private final class FavoriteButton: UIButton {
     var isFavorite = false {
         didSet {
-            let image = isFavorite ? UIImage(named: .favouriteAddedImg) : UIImage(named: .favouriteAddImg)
+            let image = isFavorite ? UIImage(named: .favouriteLegacyAdded) : UIImage(named: .favouriteLegacyAdd)
             setImage(image, for: .normal)
         }
     }
