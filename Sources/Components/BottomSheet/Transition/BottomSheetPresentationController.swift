@@ -15,7 +15,7 @@ import UIKit
 **/
 
 class BottomSheetPresentationController: UIPresentationController {
-    
+
     let interactionController: BottomSheetInteractionController
     // Constraint is used to set the y position of the bottom sheet
     private var constraint: NSLayoutConstraint?
