@@ -15,9 +15,7 @@ class BottomSheetInteractionController: NSObject, UIViewControllerInteractiveTra
 
     let animationController: BottomSheetAnimationController
     var initialTransitionVelocity = 0 as CGFloat
-    var targetTransitionPosition = 0 as CGFloat
-
-    var presentationState: BottomSheetPresentationController.State = .compressed
+    var stateController: BottomSheetStateController?
 
     private var constraint: NSLayoutConstraint?
     private var transitionContext: UIViewControllerContextTransitioning?
@@ -35,7 +33,7 @@ class BottomSheetInteractionController: NSObject, UIViewControllerInteractiveTra
         // Keep track of context for any future transition related actions
         self.transitionContext = transitionContext
         // Start transition animation
-        animationController.targetPosition = targetTransitionPosition
+        animationController.targetPosition = stateController?.targetPosition ?? 0
         animationController.initialVelocity = initialTransitionVelocity
         animationController.animateTransition(using: transitionContext)
     }
@@ -49,23 +47,19 @@ extension BottomSheetInteractionController: BottomSheetGestureControllerDelegate
         return constraint?.constant ?? 0
     }
 
-    func bottomSheetGestureController(_ controller: BottomSheetGestureController, didChangeGesture position: CGFloat) {
+    func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController) {
         // Update constraint based on gesture
-        constraint?.constant = position
+        constraint?.constant = controller.position
     }
 
-    func bottomSheetGestureController(_ controller: BottomSheetGestureController, didEndGestureWith state: BottomSheetPresentationController.State, andTargetPosition position: CGFloat) {
-        guard let transitionContext = transitionContext else { return }
-        self.presentationState = state
+    func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController) {
+        guard let transitionContext = transitionContext, let stateController = stateController else { return }
+        stateController.updateState(withTranslation: controller.translation)
         animationController.initialVelocity = controller.velocity
-        animationController.targetPosition = position
-        switch state {
+        animationController.targetPosition = stateController.targetPosition
+        switch stateController.state {
         case .dismissed: animationController.cancelTransition(using: transitionContext)
         default: animationController.continueTransition()
         }
-    }
-
-    func currentPresentationState(for gestureController: BottomSheetGestureController) -> BottomSheetPresentationController.State {
-        return presentationState
     }
 }
