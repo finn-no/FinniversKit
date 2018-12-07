@@ -22,8 +22,8 @@ class BottomSheetStateController {
         }
     }
     
-    private var minValue = 44 as CGFloat
-    private var threshold = 75 as CGFloat
+    private var minValue: CGFloat = 44
+    private var threshold: CGFloat = 75
 
     func updateState(withTranslation translation: CGFloat) {
         state = nextState(forTranslation: translation, withCurrent: state, usingThreshold: threshold)
