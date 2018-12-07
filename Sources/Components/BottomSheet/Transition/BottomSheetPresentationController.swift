@@ -14,22 +14,13 @@ import UIKit
  At this point, only the presenting transition is made interactive because the presentation is it self an interactive way of dismissing the bottom sheet.
 **/
 
-extension BottomSheetPresentationController {
-    enum State {
-        case expanded
-        case compressed
-        case dismissed
-    }
-}
-
 class BottomSheetPresentationController: UIPresentationController {
 
     let interactionController: BottomSheetInteractionController
     // Constraint is used to set the y position of the bottom sheet
     private var constraint: NSLayoutConstraint?
     private var gestureController: BottomSheetGestureController?
-
-    private var presentationState: State = .compressed
+    private var stateController = BottomSheetStateController()
     private var springAnimator = SpringAnimator(dampingRatio: 0.78, frequencyResponse: 0.5)
 
     override var presentationStyle: UIModalPresentationStyle {
@@ -57,12 +48,12 @@ class BottomSheetPresentationController: UIPresentationController {
             presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             presentedView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
         ])
-        // Setup gesture with interactive transition as delegate
+        // Setup controller
+        stateController.frame = containerView.bounds
         gestureController = BottomSheetGestureController(presentedView: presentedView, containerView: containerView)
         gestureController?.delegate = interactionController
-        // Setup interactive transition for presenting
         interactionController.setup(with: constraint)
-        interactionController.targetTransitionPosition = containerView.frame.height / 2
+        interactionController.stateController = stateController
     }
 
     override func presentationTransitionDidEnd(_ completed: Bool) {
@@ -75,9 +66,7 @@ class BottomSheetPresentationController: UIPresentationController {
         // Clean up animator and gesture
         springAnimator.stopAnimation()
         // Setup interaction controller for dismissal
-        interactionController.presentationState = presentationState
         interactionController.initialTransitionVelocity = gestureController?.velocity ?? 0
-        interactionController.targetTransitionPosition = containerView?.frame.height ?? 0
     }
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {
@@ -90,7 +79,6 @@ class BottomSheetPresentationController: UIPresentationController {
 private extension BottomSheetPresentationController {
     func setupInteractivePresentation() {
         // Setup gesture and animation for presentation
-        presentationState = interactionController.presentationState
         gestureController?.delegate = self
         springAnimator.constraint = constraint
     }
@@ -103,23 +91,19 @@ extension BottomSheetPresentationController: BottomSheetGestureControllerDelegat
         return constraint?.constant ?? 0
     }
     // Position is the y position of the bottom sheet in the container view
-    func bottomSheetGestureController(_ controller: BottomSheetGestureController, didChangeGesture position: CGFloat) {
-        constraint?.constant = position
+    func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController) {
+        constraint?.constant = controller.position
     }
 
-    func bottomSheetGestureController(_ controller: BottomSheetGestureController, didEndGestureWith state: BottomSheetPresentationController.State, andTargetPosition position: CGFloat) {
-        self.presentationState = state
-        switch state {
+    func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController) {
+        stateController.updateState(withTranslation: controller.translation)
+        switch stateController.state {
         case .dismissed:
             presentedViewController.dismiss(animated: true)
         default:
-            springAnimator.targetPosition = position
+            springAnimator.targetPosition = stateController.targetPosition
             springAnimator.initialVelocity = controller.velocity
             springAnimator.startAnimation()
         }
-    }
-
-    func currentPresentationState(for gestureController: BottomSheetGestureController) -> BottomSheetPresentationController.State {
-        return presentationState
     }
 }

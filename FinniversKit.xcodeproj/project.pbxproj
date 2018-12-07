@@ -196,6 +196,7 @@
 		DA8EF1222164E46E0028740C /* ConsentActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24BA2A2164C1A8006E2E5E /* ConsentActionViewModel.swift */; };
 		DA8EF1242164E7AF0028740C /* ConsentToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8EF1232164E7AF0028740C /* ConsentToggleView.swift */; };
 		DA8EF1262164E7EC0028740C /* ConsentToggleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8EF1252164E7EB0028740C /* ConsentToggleViewModel.swift */; };
+		DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */; };
 		DA9BF915215E66980072584C /* SettingsViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BF914215E66980072584C /* SettingsViewCellModel.swift */; };
 		DAA14BC3211475CA00F47E8C /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
@@ -451,6 +452,7 @@
 		DA8EF11E2164E2050028740C /* ConsentActionViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentActionViewDemoView.swift; sourceTree = "<group>"; };
 		DA8EF1232164E7AF0028740C /* ConsentToggleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentToggleView.swift; sourceTree = "<group>"; };
 		DA8EF1252164E7EB0028740C /* ConsentToggleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentToggleViewModel.swift; sourceTree = "<group>"; };
+		DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStateController.swift; sourceTree = "<group>"; };
 		DA9BF914215E66980072584C /* SettingsViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCellModel.swift; sourceTree = "<group>"; };
 		DAA14BC2211475CA00F47E8C /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
@@ -1605,11 +1607,12 @@
 		DAB7FAA021B690DD00BF8CC6 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
-				DAB7FAA121B690DD00BF8CC6 /* BottomSheetPresentationController.swift */,
 				DAB7FAA221B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift */,
+				DAB7FAA121B690DD00BF8CC6 /* BottomSheetPresentationController.swift */,
+				DAB7FAA521B690DD00BF8CC6 /* BottomSheetInteractionController.swift */,
 				DAB7FAA321B690DD00BF8CC6 /* BottomSheetAnimationController.swift */,
 				DAB7FAA421B690DD00BF8CC6 /* BottomSheetGestureController.swift */,
-				DAB7FAA521B690DD00BF8CC6 /* BottomSheetInteractionController.swift */,
+				DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */,
 			);
 			path = Transition;
 			sourceTree = "<group>";
@@ -2074,6 +2077,7 @@
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				DAB7FAAA21B690DD00BF8CC6 /* BottomSheetGestureController.swift in Sources */,
 				DAB7FAAE21B6924E00BF8CC6 /* SpringAnimator.swift in Sources */,
+				DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
 				CFE43E52219B1B2900D3D5F7 /* FrontPageRetryView.swift in Sources */,
 				DAB7FAA721B690DD00BF8CC6 /* BottomSheetPresentationController.swift in Sources */,
