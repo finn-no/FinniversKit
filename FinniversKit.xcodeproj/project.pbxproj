@@ -52,6 +52,8 @@
 		43BACE6A21117D430052114C /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6921117D430052114C /* ReviewView.swift */; };
 		43BACE6C21117D530052114C /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6B21117D530052114C /* ReviewViewModel.swift */; };
 		43BACE6F21117DD20052114C /* ReviewViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BACE6D21117DC70052114C /* ReviewViewDemoView.swift */; };
+		43EA977F21941E5D003A548A /* SoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA977E21941E5D003A548A /* SoldView.swift */; };
+		43EA9793219965F3003A548A /* SoldViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA9790219965C3003A548A /* SoldViewDemoView.swift */; };
 		4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */; };
 		4408A6A32027AC41008C0BD9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A69E2027AC41008C0BD9 /* Color.swift */; };
 		4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A02027AC41008C0BD9 /* Spacing.swift */; };
@@ -308,6 +310,8 @@
 		43BACE6921117D430052114C /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		43BACE6B21117D530052114C /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		43BACE6D21117DC70052114C /* ReviewViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewDemoView.swift; sourceTree = "<group>"; };
+		43EA977E21941E5D003A548A /* SoldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldView.swift; sourceTree = "<group>"; };
+		43EA9790219965C3003A548A /* SoldViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldViewDemoView.swift; sourceTree = "<group>"; };
 		4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4408A69E2027AC41008C0BD9 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4408A6A02027AC41008C0BD9 /* Spacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
@@ -712,6 +716,23 @@
 			children = (
 				43BACE6D21117DC70052114C /* ReviewViewDemoView.swift */,
 				431875C221118CE200D71723 /* ReviewViewDefaultData.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		43EA978021941E63003A548A /* SoldView */ = {
+			isa = PBXGroup;
+			children = (
+				43EA9792219965C9003A548A /* Demo */,
+				43EA977E21941E5D003A548A /* SoldView.swift */,
+			);
+			path = SoldView;
+			sourceTree = "<group>";
+		};
+		43EA9792219965C9003A548A /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				43EA9790219965C3003A548A /* SoldViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1311,6 +1332,7 @@
 				44D9124A2077AC8A00486848 /* Popup */,
 				43BACE6721117CF90052114C /* Review */,
 				44D912502077AC8A00486848 /* EmptyView */,
+				43EA978021941E63003A548A /* SoldView */,
 			);
 			path = Fullscreen;
 			sourceTree = "<group>";
@@ -1991,6 +2013,7 @@
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
+				43EA9793219965F3003A548A /* SoldViewDemoView.swift in Sources */,
 				CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */,
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
 				DAC7DCAF215386E4004602A3 /* SettingsViewDemoView.swift in Sources */,
@@ -2087,6 +2110,7 @@
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
+				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
 				CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,

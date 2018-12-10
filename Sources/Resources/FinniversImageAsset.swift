@@ -81,6 +81,7 @@ public enum FinniversImageAsset: String {
     case share
     case shopping
     case smalljobs
+    case sold
     case spidLogo
     case success
     case trashcan
@@ -156,6 +157,7 @@ public enum FinniversImageAsset: String {
             .share,
             .shopping,
             .smalljobs,
+            .sold,
             .spidLogo,
             .success,
             .trashcan,
