@@ -71,10 +71,14 @@ class BottomSheetPresentationController: UIPresentationController {
     override func presentationTransitionDidEnd(_ completed: Bool) {
         // If completed is false, the transition was cancelled by user interacion
         guard completed else { return }
-        setupInteractivePresentation()
+        // Setup gesture and animation for presentation
+        springAnimator.constraint = constraint
+        gestureController?.delegate = self
     }
 
     override func dismissalTransitionWillBegin() {
+        // Make sure state is dismissed
+        stateController.state = .dismissed
         // Clean up animator and gesture
         springAnimator.stopAnimation()
         // Setup interaction controller for dismissal
@@ -84,19 +88,11 @@ class BottomSheetPresentationController: UIPresentationController {
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         // Completed should always be true at this point of development
         guard !completed else { return }
-        setupInteractivePresentation()
     }
 }
 
 private extension BottomSheetPresentationController {
-    func setupInteractivePresentation() {
-        // Setup gesture and animation for presentation
-        springAnimator.constraint = constraint
-        gestureController?.delegate = self
-    }
-
     @objc func handleTap(sender: UITapGestureRecognizer) {
-        stateController.state = .dismissed
         presentedViewController.dismiss(animated: true)
     }
 }
