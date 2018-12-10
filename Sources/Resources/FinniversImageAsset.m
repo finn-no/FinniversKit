@@ -32,6 +32,7 @@ NSString *const FinniversImageAssetfavouriteAddedImg = @"favouriteAddedImg";
 NSString *const FinniversImageAssetfavouriteLegacyAdd = @"favouriteLegacyAdd";
 NSString *const FinniversImageAssetfavouriteLegacyAdded = @"favouriteLegacyAdded";
 NSString *const FinniversImageAssetfavourites = @"favourites";
+NSString *const FinniversImageAssetfinnLogo = @"finnLogo";
 NSString *const FinniversImageAssetgallery = @"gallery";
 NSString *const FinniversImageAssetgridView = @"gridView";
 NSString *const FinniversImageAssethelp = @"help";
@@ -111,6 +112,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetfavouriteLegacyAdd,
              FinniversImageAssetfavouriteLegacyAdded,
              FinniversImageAssetfavourites,
+             FinniversImageAssetfinnLogo,
              FinniversImageAssetgallery,
              FinniversImageAssetgridView,
              FinniversImageAssethelp,

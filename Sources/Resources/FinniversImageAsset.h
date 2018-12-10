@@ -32,6 +32,7 @@ extern NSString *const FinniversImageAssetfavouriteAddedImg;
 extern NSString *const FinniversImageAssetfavouriteLegacyAdd;
 extern NSString *const FinniversImageAssetfavouriteLegacyAdded;
 extern NSString *const FinniversImageAssetfavourites;
+extern NSString *const FinniversImageAssetfinnLogo;
 extern NSString *const FinniversImageAssetgallery;
 extern NSString *const FinniversImageAssetgridView;
 extern NSString *const FinniversImageAssethelp;

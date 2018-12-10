@@ -185,6 +185,9 @@
 		CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */; };
 		CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */; };
 		CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */; };
+		CF9AC8AD21BE94CC005A0D2F /* BannerTransparencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8AC21BE94CC005A0D2F /* BannerTransparencyView.swift */; };
+		CF9AC8B021BE9A78005A0D2F /* BannerTransparencyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8AF21BE9A78005A0D2F /* BannerTransparencyDemoView.swift */; };
+		CF9AC8B321BE9D4B005A0D2F /* BannerTransparencySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8B121BE9C8C005A0D2F /* BannerTransparencySectionView.swift */; };
 		CFE43E4C219B13B400D3D5F7 /* FrontPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4B219B13B400D3D5F7 /* FrontPageViewModel.swift */; };
 		CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */; };
 		CFE43E52219B1B2900D3D5F7 /* FrontPageRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */; };
@@ -443,6 +446,9 @@
 		CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumMachineDemoView.swift; sourceTree = "<group>"; };
 		CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentTests.swift; sourceTree = "<group>"; };
 		CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageView.swift; sourceTree = "<group>"; };
+		CF9AC8AC21BE94CC005A0D2F /* BannerTransparencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTransparencyView.swift; sourceTree = "<group>"; };
+		CF9AC8AF21BE9A78005A0D2F /* BannerTransparencyDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTransparencyDemoView.swift; sourceTree = "<group>"; };
+		CF9AC8B121BE9C8C005A0D2F /* BannerTransparencySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTransparencySectionView.swift; sourceTree = "<group>"; };
 		CFE43E4B219B13B400D3D5F7 /* FrontPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewModel.swift; sourceTree = "<group>"; };
 		CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewDefaultData.swift; sourceTree = "<group>"; };
 		CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageRetryView.swift; sourceTree = "<group>"; };
@@ -1034,6 +1040,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CF9AC8AB21BE9463005A0D2F /* BannerTransparency */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				CF15D9AF215B93B8004F5F02 /* EasterEggButton */,
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
@@ -1584,6 +1591,24 @@
 			path = DrumMachine;
 			sourceTree = "<group>";
 		};
+		CF9AC8AB21BE9463005A0D2F /* BannerTransparency */ = {
+			isa = PBXGroup;
+			children = (
+				CF9AC8AE21BE9A5E005A0D2F /* Demo */,
+				CF9AC8AC21BE94CC005A0D2F /* BannerTransparencyView.swift */,
+				CF9AC8B121BE9C8C005A0D2F /* BannerTransparencySectionView.swift */,
+			);
+			path = BannerTransparency;
+			sourceTree = "<group>";
+		};
+		CF9AC8AE21BE9A5E005A0D2F /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				CF9AC8AF21BE9A78005A0D2F /* BannerTransparencyDemoView.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		DA24BA272164C0AF006E2E5E /* ConsentActionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2017,6 +2042,7 @@
 				CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */,
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
 				DAC7DCAF215386E4004602A3 /* SettingsViewDemoView.swift in Sources */,
+				CF9AC8B021BE9A78005A0D2F /* BannerTransparencyDemoView.swift in Sources */,
 				44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */,
 				DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */,
 				4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */,
@@ -2075,6 +2101,7 @@
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
+				CF9AC8AD21BE94CC005A0D2F /* BannerTransparencyView.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
 				DA8EF1242164E7AF0028740C /* ConsentToggleView.swift in Sources */,
@@ -2083,6 +2110,7 @@
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
+				CF9AC8B321BE9D4B005A0D2F /* BannerTransparencySectionView.swift in Sources */,
 				45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */,
 				44587016213FA344009187BE /* LoginViewModel.swift in Sources */,
 				44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */,
