@@ -4,12 +4,12 @@
 
 import UIKit
 
-public protocol AdsGridViewCellDataSource {
+public protocol AdsGridViewCellDataSource: AnyObject {
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
 }
 
-public protocol AdsGridViewCellDelegate {
+public protocol AdsGridViewCellDelegate: AnyObject {
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, didSelectFavoriteButton button: UIButton)
 }
 
@@ -94,10 +94,10 @@ public class AdsGridViewCell: UICollectionViewCell {
     public var loadingColor: UIColor?
 
     /// A data source for the loading of the image
-    public var dataSource: AdsGridViewCellDataSource?
+    public weak var dataSource: AdsGridViewCellDataSource?
 
     /// A delegate for actions triggered from the cell
-    public var delegate: AdsGridViewCellDelegate?
+    public weak var delegate: AdsGridViewCellDelegate?
 
     /// Optional index of the cell
     public var index: Int?
