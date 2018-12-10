@@ -10,6 +10,11 @@ extension BottomSheetStateController {
         case compressed
         case dismissed
     }
+
+    enum Size: CGFloat {
+        case normal = 510
+        case large = 570
+    }
 }
 
 class BottomSheetStateController {
@@ -17,11 +22,13 @@ class BottomSheetStateController {
     var state: State = .compressed
     var frame: CGRect = .zero
     var targetPosition: CGFloat {
-        get {
-            return targetPosition(for: state)
-        }
+        return targetPosition(for: state)
     }
-    
+
+    private var size: Size {
+        return UIScreen.main.bounds.height >= 812 ? .large : .normal
+    }
+
     private var minValue: CGFloat = 44
     private var threshold: CGFloat = 75
 
@@ -47,7 +54,7 @@ private extension BottomSheetStateController {
     func targetPosition(for state: State) -> CGFloat {
         switch state {
         case .compressed:
-            return frame.height / 2
+            return size.rawValue
         case .expanded:
             return frame.height - minValue
         case .dismissed:

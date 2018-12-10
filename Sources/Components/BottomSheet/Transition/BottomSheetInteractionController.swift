@@ -49,7 +49,7 @@ extension BottomSheetInteractionController: BottomSheetGestureControllerDelegate
 
     func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController) {
         // Update constraint based on gesture
-        constraint?.constant = controller.height
+        constraint?.constant = controller.position
     }
 
     func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController) {

@@ -6,9 +6,15 @@ import UIKit
 
 class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    var presentationController: BottomSheetPresentationController?
-    let interactionController: BottomSheetInteractionController
-    let animationController: BottomSheetAnimationController
+    // MARK: - Public properties
+
+    var isStatic = false
+
+    // MARK: - Private properties
+
+    private var presentationController: BottomSheetPresentationController?
+    private let interactionController: BottomSheetInteractionController
+    private let animationController: BottomSheetAnimationController
 
     override init() {
         animationController = BottomSheetAnimationController()
@@ -17,6 +23,7 @@ class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningD
 
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         presentationController = BottomSheetPresentationController(presentedViewController: presented, presenting: presenting, interactionController: interactionController)
+        presentationController?.isStatic = isStatic
         return presentationController
     }
 

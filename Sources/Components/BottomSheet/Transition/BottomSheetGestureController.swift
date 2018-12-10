@@ -13,12 +13,12 @@ protocol BottomSheetGestureControllerDelegate: class {
 
 class BottomSheetGestureController {
 
-    var height: CGFloat = 0
+    var position: CGFloat = 0
     var velocity: CGFloat = 0
     var translation: CGFloat = 0
     weak var delegate: BottomSheetGestureControllerDelegate?
 
-    private var initialConstant = 0 as CGFloat
+    private var initialConstant: CGFloat = 0
     private lazy var panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
     private let presentedView: UIView
     private let containerView: UIView
@@ -42,7 +42,7 @@ private extension BottomSheetGestureController {
             initialConstant = delegate?.bottomSheetGestureControllerDidBeginGesture(self) ?? 0
 
         case .changed:
-            height = initialConstant - translation.y
+            position = initialConstant - translation.y
             delegate?.bottomSheetGestureControllerDidChangeGesture(self)
 
         case .ended:

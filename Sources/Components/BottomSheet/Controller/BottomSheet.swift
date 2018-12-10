@@ -28,9 +28,10 @@ public class BottomSheet: UIViewController {
 
     // MARK: - Setup
 
-    public init(rootViewController: UIViewController) {
+    public init(rootViewController: UIViewController, isStatic: Bool = true) {
         self.rootViewController = rootViewController
         super.init(nibName: nil, bundle: nil)
+        transitionDelegate.isStatic = isStatic
         transitioningDelegate = transitionDelegate
         modalPresentationStyle = .custom
     }

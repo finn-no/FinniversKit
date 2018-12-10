@@ -16,12 +16,18 @@ import UIKit
 
 class BottomSheetPresentationController: UIPresentationController {
 
+    // MARK: - Public properties
+
+    var isStatic = false
     let interactionController: BottomSheetInteractionController
-    // Constraint is used to set the y position of the bottom sheet
+
+    // MARK: - Private properties
+
+    // Constraint is used to set the height of the bottom sheet
     private var constraint: NSLayoutConstraint?
     private var gestureController: BottomSheetGestureController?
-    private var stateController = BottomSheetStateController()
-    private var springAnimator = SpringAnimator(dampingRatio: 0.78, frequencyResponse: 0.5)
+    private let stateController = BottomSheetStateController()
+    private let springAnimator = SpringAnimator(dampingRatio: 0.78, frequencyResponse: 0.5)
 
     override var presentationStyle: UIModalPresentationStyle {
         return .overCurrentContext
@@ -38,6 +44,10 @@ class BottomSheetPresentationController: UIPresentationController {
 
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView, let presentedView = presentedView else { return }
+        // Add tap gesture to dismiss controller
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        tapGesture.delegate = self
+        containerView.addGestureRecognizer(tapGesture)
         // Setup views
         containerView.addSubview(presentedView)
         presentedView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,12 +58,13 @@ class BottomSheetPresentationController: UIPresentationController {
             presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             presentedView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
         ])
-        // Setup controller
+        // Setup controllers
         stateController.frame = containerView.bounds
-        gestureController = BottomSheetGestureController(presentedView: presentedView, containerView: containerView)
-        gestureController?.delegate = interactionController
         interactionController.setup(with: constraint)
         interactionController.stateController = stateController
+        guard !isStatic else { return }
+        gestureController = BottomSheetGestureController(presentedView: presentedView, containerView: containerView)
+        gestureController?.delegate = interactionController
     }
 
     override func presentationTransitionDidEnd(_ completed: Bool) {
@@ -79,20 +90,33 @@ class BottomSheetPresentationController: UIPresentationController {
 private extension BottomSheetPresentationController {
     func setupInteractivePresentation() {
         // Setup gesture and animation for presentation
-        gestureController?.delegate = self
         springAnimator.constraint = constraint
+        gestureController?.delegate = self
+    }
+
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        stateController.state = .dismissed
+        presentedViewController.dismiss(animated: true)
+    }
+}
+
+extension BottomSheetPresentationController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let tapGesture = gestureRecognizer as? UITapGestureRecognizer else { return true }
+        let location = tapGesture.location(in: containerView)
+        return !presentedViewController.view.frame.contains(location)
     }
 }
 
 extension BottomSheetPresentationController: BottomSheetGestureControllerDelegate {
-    // This method expects to return the current y position of the bottom sheet
+    // This method expects to return the current height of the bottom sheet
     func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGFloat {
         springAnimator.pauseAnimation()
         return constraint?.constant ?? 0
     }
-    // Position is the y position of the bottom sheet in the container view
+    
     func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController) {
-        constraint?.constant = controller.height
+        constraint?.constant = controller.position
     }
 
     func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController) {
