@@ -40,6 +40,8 @@ public enum FinniversImageAsset: String {
     case favouriteAddImg
     case favouriteAdded
     case favouriteAddedImg
+    case favouriteLegacyAdd
+    case favouriteLegacyAdded
     case favourites
     case gallery
     case gridView
@@ -116,6 +118,8 @@ public enum FinniversImageAsset: String {
             .favouriteAddImg,
             .favouriteAdded,
             .favouriteAddedImg,
+            .favouriteLegacyAdd,
+            .favouriteLegacyAdded,
             .favourites,
             .gallery,
             .gridView,
