@@ -86,8 +86,9 @@ public class AdsGridView: UIView {
 
     public func updateItem(at index: Int, isFavorite: Bool) {
         let indexPath = IndexPath(row: index, section: 0)
-        guard let cell = collectionView.cellForItem(at: indexPath) as? AdsGridViewCell else { return }
-        cell.isFavorite = isFavorite
+        if let cell = collectionView.cellForItem(at: indexPath) as? AdsGridViewCell {
+            cell.isFavorite = isFavorite
+        }
     }
 
     public func scrollToTop(animated: Bool = true) {
