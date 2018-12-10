@@ -163,8 +163,8 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
             imageDescriptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
 
-            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: .smallSpacing),
+            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])
