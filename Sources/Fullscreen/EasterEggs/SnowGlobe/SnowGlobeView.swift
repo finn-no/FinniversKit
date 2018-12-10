@@ -51,10 +51,6 @@ public class SnowGlobeView: UIView {
         return emitterLayer.lifetime != 0
     }
 
-    public override var canBecomeFirstResponder: Bool {
-        return true
-    }
-
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -69,16 +65,6 @@ public class SnowGlobeView: UIView {
 
     deinit {
         stopAnimating()
-    }
-
-    // MARK: - Motion
-
-    public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        super.motionEnded(motion, with: event)
-
-        if event?.subtype == .motionShake {
-            startAnimating()
-        }
     }
 
     // MARK: - Animation

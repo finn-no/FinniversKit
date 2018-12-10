@@ -1595,18 +1595,18 @@
 		CF9AC8B421BEBFD2005A0D2F /* SnowGlobe */ = {
 			isa = PBXGroup;
 			children = (
-				CF9AC8B921BECDBE005A0D2F /* Group */,
+				CF9AC8B921BECDBE005A0D2F /* Demo */,
 				CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */,
 			);
 			path = SnowGlobe;
 			sourceTree = "<group>";
 		};
-		CF9AC8B921BECDBE005A0D2F /* Group */ = {
+		CF9AC8B921BECDBE005A0D2F /* Demo */ = {
 			isa = PBXGroup;
 			children = (
 				CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */,
 			);
-			path = Group;
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		DA24BA272164C0AF006E2E5E /* ConsentActionView */ = {
