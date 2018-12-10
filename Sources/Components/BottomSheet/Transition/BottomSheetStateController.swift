@@ -25,7 +25,7 @@ class BottomSheetStateController {
         return targetPosition(for: state)
     }
 
-    private var size: Size {
+    var size: Size {
         return UIScreen.main.bounds.height >= 812 ? .large : .normal
     }
 
@@ -54,11 +54,11 @@ private extension BottomSheetStateController {
     func targetPosition(for state: State) -> CGFloat {
         switch state {
         case .compressed:
-            return size.rawValue
+            return frame.height - size.rawValue
         case .expanded:
-            return frame.height - minValue
+            return minValue
         case .dismissed:
-            return 0
+            return frame.height
         }
     }
 }

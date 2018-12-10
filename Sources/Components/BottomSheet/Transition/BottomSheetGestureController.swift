@@ -5,7 +5,7 @@
 import UIKit
 
 protocol BottomSheetGestureControllerDelegate: class {
-    // Expects to get the current position of the bottom sheet
+    // Expects to get the current y position of the bottom sheet
     func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGFloat
     func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController)
     func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController)
@@ -42,7 +42,7 @@ private extension BottomSheetGestureController {
             initialConstant = delegate?.bottomSheetGestureControllerDidBeginGesture(self) ?? 0
 
         case .changed:
-            position = initialConstant - translation.y
+            position = initialConstant + translation.y
             delegate?.bottomSheetGestureControllerDidChangeGesture(self)
 
         case .ended:

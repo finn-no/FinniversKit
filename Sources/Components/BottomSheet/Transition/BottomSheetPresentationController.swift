@@ -51,12 +51,13 @@ class BottomSheetPresentationController: UIPresentationController {
         // Setup views
         containerView.addSubview(presentedView)
         presentedView.translatesAutoresizingMaskIntoConstraints = false
-        constraint = presentedView.heightAnchor.constraint(equalToConstant: 0)
+        constraint = presentedView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: containerView.frame.height)
         NSLayoutConstraint.activate([
             constraint!,
             presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            presentedView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
+            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: stateController.size.rawValue)
         ])
         // Setup controllers
         stateController.frame = containerView.bounds
@@ -109,7 +110,7 @@ extension BottomSheetPresentationController: UIGestureRecognizerDelegate {
 }
 
 extension BottomSheetPresentationController: BottomSheetGestureControllerDelegate {
-    // This method expects to return the current height of the bottom sheet
+    // This method expects to return the current y position of the bottom sheet
     func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGFloat {
         springAnimator.pauseAnimation()
         return constraint?.constant ?? 0
