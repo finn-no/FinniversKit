@@ -7,10 +7,6 @@ import FinniversKit
 public class SnowGlobeDemoView: UIView {
     private lazy var snowGlobeView = SnowGlobeView()
 
-    public override var canBecomeFirstResponder: Bool {
-        return true
-    }
-
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -29,17 +25,7 @@ public class SnowGlobeDemoView: UIView {
         if superview == nil {
             snowGlobeView.stopAnimating()
         } else {
-            becomeFirstResponder()
-        }
-    }
-
-    // MARK: - Motion
-
-    public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        super.motionEnded(motion, with: event)
-
-        if event?.subtype == .motionShake {
-            snowGlobeView.startAnimating()
+            snowGlobeView.becomeFirstResponder()
         }
     }
 

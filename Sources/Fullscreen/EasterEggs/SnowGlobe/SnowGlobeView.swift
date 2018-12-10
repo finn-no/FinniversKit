@@ -51,6 +51,10 @@ public class SnowGlobeView: UIView {
         return emitterLayer.lifetime != 0
     }
 
+    public override var canBecomeFirstResponder: Bool {
+        return true
+    }
+
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -67,6 +71,16 @@ public class SnowGlobeView: UIView {
         stopAnimating()
     }
 
+    // MARK: - Motion
+
+    public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionEnded(motion, with: event)
+
+        if event?.subtype == .motionShake {
+            startAnimating()
+        }
+    }
+
     // MARK: - Animation
 
     public func startAnimating() {
@@ -74,18 +88,23 @@ public class SnowGlobeView: UIView {
             return
         }
 
+        backgroundLayer.isHidden = false
+        emitterLayer.isHidden = false
+
         if let sound = sound {
             AudioServicesPlaySystemSound(sound)
         }
 
         emitterLayer.lifetime = 1
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
-            self?.emitterLayer.lifetime = 0
+            self?.stopAnimating()
         }
     }
 
     public func stopAnimating() {
         emitterLayer.lifetime = 0
+        backgroundLayer.isHidden = true
+        emitterLayer.isHidden = true
     }
 
     // MARK: - Setup
@@ -105,5 +124,7 @@ public class SnowGlobeView: UIView {
 
         layer.addSublayer(backgroundLayer)
         layer.addSublayer(emitterLayer)
+
+        stopAnimating()
     }
 }
