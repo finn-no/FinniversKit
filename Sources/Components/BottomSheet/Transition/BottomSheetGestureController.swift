@@ -13,7 +13,7 @@ protocol BottomSheetGestureControllerDelegate: class {
 
 class BottomSheetGestureController {
 
-    var position: CGFloat = 0
+    var height: CGFloat = 0
     var velocity: CGFloat = 0
     var translation: CGFloat = 0
     weak var delegate: BottomSheetGestureControllerDelegate?
@@ -42,7 +42,7 @@ private extension BottomSheetGestureController {
             initialConstant = delegate?.bottomSheetGestureControllerDidBeginGesture(self) ?? 0
 
         case .changed:
-            position = initialConstant + translation.y
+            height = initialConstant - translation.y
             delegate?.bottomSheetGestureControllerDidChangeGesture(self)
 
         case .ended:

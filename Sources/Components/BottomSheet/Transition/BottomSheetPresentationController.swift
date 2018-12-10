@@ -41,7 +41,7 @@ class BottomSheetPresentationController: UIPresentationController {
         // Setup views
         containerView.addSubview(presentedView)
         presentedView.translatesAutoresizingMaskIntoConstraints = false
-        constraint = presentedView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: containerView.bounds.height)
+        constraint = presentedView.heightAnchor.constraint(equalToConstant: 0)
         NSLayoutConstraint.activate([
             constraint!,
             presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
@@ -92,7 +92,7 @@ extension BottomSheetPresentationController: BottomSheetGestureControllerDelegat
     }
     // Position is the y position of the bottom sheet in the container view
     func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController) {
-        constraint?.constant = controller.position
+        constraint?.constant = controller.height
     }
 
     func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController) {

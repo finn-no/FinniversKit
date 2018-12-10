@@ -79,7 +79,7 @@ public class BottomSheet: UIViewController {
             rootViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             rootViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             rootViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            rootViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            rootViewController.view.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor)
         ])
     }
 }

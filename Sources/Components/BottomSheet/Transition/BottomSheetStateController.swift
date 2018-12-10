@@ -49,9 +49,9 @@ private extension BottomSheetStateController {
         case .compressed:
             return frame.height / 2
         case .expanded:
-            return minValue
+            return frame.height - minValue
         case .dismissed:
-            return frame.height
+            return 0
         }
     }
 }

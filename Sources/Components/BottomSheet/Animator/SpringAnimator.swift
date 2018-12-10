@@ -20,7 +20,7 @@ class SpringAnimator: NSObject {
     private var velocity: CGFloat = 0.0
     private var position: CGFloat = 0.0
     var initialVelocity: CGFloat = 0 {
-        didSet { velocity = -initialVelocity }
+        didSet { velocity = initialVelocity }
     }
 
     // Animation properties
