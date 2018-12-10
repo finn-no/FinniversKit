@@ -72,6 +72,7 @@ NSString *const FinniversImageAssetsettings = @"settings";
 NSString *const FinniversImageAssetshare = @"share";
 NSString *const FinniversImageAssetshopping = @"shopping";
 NSString *const FinniversImageAssetsmalljobs = @"smalljobs";
+NSString *const FinniversImageAssetsold = @"sold";
 NSString *const FinniversImageAssetspidLogo = @"spidLogo";
 NSString *const FinniversImageAssetsuccess = @"success";
 NSString *const FinniversImageAssettrashcan = @"trashcan";
@@ -150,6 +151,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetshare,
              FinniversImageAssetshopping,
              FinniversImageAssetsmalljobs,
+             FinniversImageAssetsold,
              FinniversImageAssetspidLogo,
              FinniversImageAssetsuccess,
              FinniversImageAssettrashcan,
