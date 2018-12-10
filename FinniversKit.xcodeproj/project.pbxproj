@@ -185,6 +185,9 @@
 		CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */; };
 		CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */; };
 		CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */; };
+		CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */; };
+		CF9AC8BC21BECE13005A0D2F /* SnowGlobeDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */; };
+		CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */; };
 		CFE43E4C219B13B400D3D5F7 /* FrontPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4B219B13B400D3D5F7 /* FrontPageViewModel.swift */; };
 		CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */; };
 		CFE43E52219B1B2900D3D5F7 /* FrontPageRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */; };
@@ -443,6 +446,9 @@
 		CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumMachineDemoView.swift; sourceTree = "<group>"; };
 		CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentTests.swift; sourceTree = "<group>"; };
 		CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageView.swift; sourceTree = "<group>"; };
+		CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowGlobeView.swift; sourceTree = "<group>"; };
+		CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowGlobeDemoView.swift; sourceTree = "<group>"; };
+		CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sleighbell.mp3; sourceTree = "<group>"; };
 		CFE43E4B219B13B400D3D5F7 /* FrontPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewModel.swift; sourceTree = "<group>"; };
 		CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewDefaultData.swift; sourceTree = "<group>"; };
 		CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageRetryView.swift; sourceTree = "<group>"; };
@@ -1154,7 +1160,7 @@
 		4447F6B81FDB2B110033DBC1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CF3D5EEF215A6D9E006E4D08 /* DrumSounds */,
+				CF3D5EEF215A6D9E006E4D08 /* Sounds */,
 				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
 				44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */,
@@ -1524,6 +1530,7 @@
 		CF15D9B0215B9453004F5F02 /* EasterEggs */ = {
 			isa = PBXGroup;
 			children = (
+				CF9AC8B421BEBFD2005A0D2F /* SnowGlobe */,
 				CF3D5EE0215A6499006E4D08 /* DrumMachine */,
 			);
 			path = EasterEggs;
@@ -1549,15 +1556,16 @@
 			path = DrumMachine;
 			sourceTree = "<group>";
 		};
-		CF3D5EEF215A6D9E006E4D08 /* DrumSounds */ = {
+		CF3D5EEF215A6D9E006E4D08 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */,
 				CF3D5EF0215A6D9E006E4D08 /* hi-hats.wav */,
 				CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */,
 				CF3D5EF2215A6D9E006E4D08 /* kick.wav */,
 				CF3D5EF3215A6D9E006E4D08 /* snare.wav */,
 			);
-			path = DrumSounds;
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		CF3D5EFA215A7202006E4D08 /* Demo */ = {
@@ -1582,6 +1590,23 @@
 				CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */,
 			);
 			path = DrumMachine;
+			sourceTree = "<group>";
+		};
+		CF9AC8B421BEBFD2005A0D2F /* SnowGlobe */ = {
+			isa = PBXGroup;
+			children = (
+				CF9AC8B921BECDBE005A0D2F /* Group */,
+				CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */,
+			);
+			path = SnowGlobe;
+			sourceTree = "<group>";
+		};
+		CF9AC8B921BECDBE005A0D2F /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 		DA24BA272164C0AF006E2E5E /* ConsentActionView */ = {
@@ -1906,6 +1931,7 @@
 				CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */,
 				08D8B2ED2193129700EA22CC /* CheckboxAnimation.xcassets in Resources */,
 				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
+				CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */,
 				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1996,6 +2022,7 @@
 				08012BF02187319A00A04F43 /* BasicCellVariationsDemoView.swift in Sources */,
 				08D70A21218329D1003E2222 /* BasicCellDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
+				CF9AC8BC21BECE13005A0D2F /* SnowGlobeDemoView.swift in Sources */,
 				CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */,
 				44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */,
 				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
@@ -2150,6 +2177,7 @@
 				DA8EF1262164E7EC0028740C /* ConsentToggleViewModel.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
+				CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */,
 				CF3D5EEC215A6741006E4D08 /* DrumMachineView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,

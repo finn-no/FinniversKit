@@ -72,6 +72,7 @@ extern NSString *const FinniversImageAssetsettings;
 extern NSString *const FinniversImageAssetshare;
 extern NSString *const FinniversImageAssetshopping;
 extern NSString *const FinniversImageAssetsmalljobs;
+extern NSString *const FinniversImageAssetsnowflake;
 extern NSString *const FinniversImageAssetsold;
 extern NSString *const FinniversImageAssetspidLogo;
 extern NSString *const FinniversImageAssetsuccess;

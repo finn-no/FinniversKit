@@ -21,7 +21,7 @@ class BottomSheetStateController {
             return targetPosition(for: state)
         }
     }
-    
+
     private var minValue: CGFloat = 44
     private var threshold: CGFloat = 75
 
