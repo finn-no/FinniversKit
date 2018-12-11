@@ -18,13 +18,13 @@ class BottomSheetPresentationController: UIPresentationController {
 
     // MARK: - Public properties
 
-    var isStatic = false
-    let interactionController: BottomSheetInteractionController
+    var size: BottomSheet.Size = .zero
 
     // MARK: - Private properties
     // Constraint is used to set the height of the bottom sheet
     private var constraint: NSLayoutConstraint?
     private var gestureController: BottomSheetGestureController?
+    private let interactionController: BottomSheetInteractionController
     private let stateController = BottomSheetStateController()
     private let springAnimator = SpringAnimator(dampingRatio: 0.78, frequencyResponse: 0.5)
 
@@ -56,13 +56,15 @@ class BottomSheetPresentationController: UIPresentationController {
             presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
-            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: stateController.size.rawValue)
+            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: size.compact)
         ])
         // Setup controllers
+        stateController.size = size
         stateController.frame = containerView.bounds
         interactionController.setup(with: constraint)
         interactionController.stateController = stateController
-        guard !isStatic else { return }
+        // If no expanded size if given it should be static
+        guard size.expanded != nil else { return }
         gestureController = BottomSheetGestureController(presentedView: presentedView, containerView: containerView)
         gestureController?.delegate = interactionController
     }

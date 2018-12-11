@@ -8,7 +8,7 @@ class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningD
 
     // MARK: - Public properties
 
-    var isStatic = false
+    var size: BottomSheet.Size = .zero
 
     // MARK: - Private properties
 
@@ -23,7 +23,7 @@ class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningD
 
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         presentationController = BottomSheetPresentationController(presentedViewController: presented, presenting: presenting, interactionController: interactionController)
-        presentationController?.isStatic = isStatic
+        presentationController?.size = size
         return presentationController
     }
 

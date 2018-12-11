@@ -7,28 +7,20 @@ import UIKit
 extension BottomSheetStateController {
     enum State {
         case expanded
-        case compressed
+        case compact
         case dismissed
-    }
-
-    enum Size: CGFloat {
-        case normal = 510
-        case large = 570
     }
 }
 
 class BottomSheetStateController {
 
-    var state: State = .compressed
+    var state: State = .compact
     var frame: CGRect = .zero
     var targetPosition: CGFloat {
         return targetPosition(for: state)
     }
 
-    var size: Size {
-        // Only iPhone X and X Max should have large size
-        return UIScreen.main.bounds.height >= 812 ? .large : .normal
-    }
+    var size: BottomSheet.Size = .zero
 
     private var minValue: CGFloat = 44
     private var threshold: CGFloat = 75
@@ -41,23 +33,23 @@ class BottomSheetStateController {
 private extension BottomSheetStateController {
     func nextState(forTranslation translation: CGFloat, withCurrent current: State, usingThreshold threshold: CGFloat) -> State {
         switch current {
-        case .compressed:
+        case .compact:
             if translation < -threshold { return .expanded }
             else if translation > threshold { return .dismissed }
         case .expanded:
-            if translation > threshold { return .compressed }
+            if translation > threshold { return .compact }
         case .dismissed:
-            if translation < -threshold { return .compressed }
+            if translation < -threshold { return .compact }
         }
         return current
     }
 
     func targetPosition(for state: State) -> CGFloat {
         switch state {
-        case .compressed:
-            return frame.height - size.rawValue
+        case .compact:
+            return frame.height - size.compact
         case .expanded:
-            return minValue
+            return frame.height - (size.expanded ?? 0)
         case .dismissed:
             return frame.height
         }

@@ -4,11 +4,23 @@
 
 import UIKit
 
+extension BottomSheet {
+    public struct Size {
+        let compact: CGFloat
+        let expanded: CGFloat?
+        public static let zero = Size(compact: 0, expanded: 0)
+        public init(compact: CGFloat, expanded: CGFloat? = nil) {
+            self.compact = compact
+            self.expanded = expanded
+        }
+    }
+}
+
 public class BottomSheet: UIViewController {
 
     // MARK: - Private properties
 
-    private let isStatic: Bool
+    private let size: Size
 
     private let rootViewController: UIViewController
     private let transitionDelegate = BottomSheetTransitioningDelegate()
@@ -30,11 +42,11 @@ public class BottomSheet: UIViewController {
 
     // MARK: - Setup
 
-    public init(rootViewController: UIViewController, isStatic: Bool = true) {
-        self.isStatic = isStatic
+    public init(rootViewController: UIViewController, size: Size) {
+        self.size = size
         self.rootViewController = rootViewController
         super.init(nibName: nil, bundle: nil)
-        transitionDelegate.isStatic = isStatic
+        transitionDelegate.size = size
         transitioningDelegate = transitionDelegate
         modalPresentationStyle = .custom
     }
@@ -68,8 +80,8 @@ public class BottomSheet: UIViewController {
             view.layer.cornerRadius = cornerRadius
             view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         }
-
-        if !isStatic {
+        // No expanded size means bottom sheet should be static
+        if size.expanded != nil {
             view.addSubview(notch)
             NSLayoutConstraint.activate([
                 notch.centerXAnchor.constraint(equalTo: view.centerXAnchor),

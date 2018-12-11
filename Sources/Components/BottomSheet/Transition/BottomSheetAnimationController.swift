@@ -9,7 +9,7 @@ class BottomSheetAnimationController: NSObject, UIViewControllerAnimatedTransiti
     var initialVelocity = 0 as CGFloat
     var targetPosition = 0 as CGFloat
 
-    private let animator = SpringAnimator(dampingRatio: 0.85, frequencyResponse: 0.42)
+    private let animator = SpringAnimator(dampingRatio: 0.8, frequencyResponse: 0.48)
 
     func setup(with constraint: NSLayoutConstraint?) {
         animator.constraint = constraint
