@@ -22,7 +22,6 @@ class BottomSheetPresentationController: UIPresentationController {
     let interactionController: BottomSheetInteractionController
 
     // MARK: - Private properties
-
     // Constraint is used to set the height of the bottom sheet
     private var constraint: NSLayoutConstraint?
     private var gestureController: BottomSheetGestureController?
@@ -91,12 +90,14 @@ class BottomSheetPresentationController: UIPresentationController {
     }
 }
 
+// MARK: - Private methods
 private extension BottomSheetPresentationController {
     @objc func handleTap(sender: UITapGestureRecognizer) {
         presentedViewController.dismiss(animated: true)
     }
 }
 
+// MARK: - UIGesture delegate
 extension BottomSheetPresentationController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let tapGesture = gestureRecognizer as? UITapGestureRecognizer else { return true }
@@ -105,6 +106,7 @@ extension BottomSheetPresentationController: UIGestureRecognizerDelegate {
     }
 }
 
+// MARK: - Gesture controller delegate
 extension BottomSheetPresentationController: BottomSheetGestureControllerDelegate {
     // This method expects to return the current y position of the bottom sheet
     func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGFloat {
