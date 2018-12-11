@@ -14,15 +14,13 @@ extension BottomSheetStateController {
 
 class BottomSheetStateController {
 
+    var size: BottomSheet.Size = .zero
     var state: State = .compact
     var frame: CGRect = .zero
     var targetPosition: CGFloat {
         return targetPosition(for: state)
     }
 
-    var size: BottomSheet.Size = .zero
-
-    private var minValue: CGFloat = 44
     private var threshold: CGFloat = 75
 
     func updateState(withTranslation translation: CGFloat) {

@@ -95,12 +95,15 @@ class BottomSheetPresentationController: UIPresentationController {
 // MARK: - Private methods
 private extension BottomSheetPresentationController {
     @objc func handleTap(sender: UITapGestureRecognizer) {
+        // Make sure to reset any previous initial velocity
+        gestureController?.velocity = 0
         presentedViewController.dismiss(animated: true)
     }
 }
 
 // MARK: - UIGesture delegate
 extension BottomSheetPresentationController: UIGestureRecognizerDelegate {
+    // Dismiss bottom sheet if user taps on the outside
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let tapGesture = gestureRecognizer as? UITapGestureRecognizer else { return true }
         let location = tapGesture.location(in: containerView)
