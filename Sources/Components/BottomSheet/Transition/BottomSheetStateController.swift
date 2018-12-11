@@ -26,6 +26,7 @@ class BottomSheetStateController {
     }
 
     var size: Size {
+        // Only iPhone X and X Max should have large size
         return UIScreen.main.bounds.height >= 812 ? .large : .normal
     }
 
