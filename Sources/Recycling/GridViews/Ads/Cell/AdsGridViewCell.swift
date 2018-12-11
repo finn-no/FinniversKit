@@ -4,9 +4,13 @@
 
 import UIKit
 
-public protocol AdsGridViewCellDataSource {
+public protocol AdsGridViewCellDataSource: AnyObject {
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
+}
+
+public protocol AdsGridViewCellDelegate: AnyObject {
+    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, didSelectFavoriteButton button: UIButton)
 }
 
 public class AdsGridViewCell: UICollectionViewCell {
@@ -78,13 +82,25 @@ public class AdsGridViewCell: UICollectionViewCell {
         return label
     }()
 
+    private lazy var favoriteButton: FavoriteButton = {
+        let button = FavoriteButton(withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleFavoriteButtonTap(_:)), for: .touchUpInside)
+        return button
+    }()
+
     // MARK: - External properties
 
     /// The loading color is used to fill the image view while we load the image.
     public var loadingColor: UIColor?
 
     /// A data source for the loading of the image
-    public var dataSource: AdsGridViewCellDataSource?
+    public weak var dataSource: AdsGridViewCellDataSource?
+
+    /// A delegate for actions triggered from the cell
+    public weak var delegate: AdsGridViewCellDelegate?
+
+    /// Optional index of the cell
+    public var index: Int?
 
     /// Height in cell that is not image
     public static var nonImageHeight: CGFloat {
@@ -110,6 +126,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         addSubview(subtitleLabel)
         addSubview(titleLabel)
         addSubview(imageDescriptionView)
+        addSubview(favoriteButton)
 
         imageDescriptionView.addSubview(iconImageView)
         imageDescriptionView.addSubview(imageTextLabel)
@@ -144,7 +161,12 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
             imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
             imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
-            imageDescriptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
+            imageDescriptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+
+            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: .smallSpacing),
+            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 34),
+            favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
         ])
     }
 
@@ -158,6 +180,8 @@ public class AdsGridViewCell: UICollectionViewCell {
         subtitleLabel.text = ""
         imageTextLabel.text = ""
         accessibilityLabel = ""
+        favoriteButton.accessibilityLabel = ""
+        favoriteButton.setImage(nil, for: .normal)
 
         if let model = model {
             dataSource?.adsGridViewCell(self, cancelLoadingImageForModel: model, imageWidth: imageView.frame.size.width)
@@ -175,7 +199,15 @@ public class AdsGridViewCell: UICollectionViewCell {
                 subtitleLabel.text = model.subtitle
                 imageTextLabel.text = model.imageText
                 accessibilityLabel = model.accessibilityLabel
+                favoriteButton.accessibilityLabel = model.favoriteButtonAccessibilityLabel
+                isFavorite = model.isFavorite
             }
+        }
+    }
+
+    public var isFavorite = false {
+        didSet {
+            favoriteButton.isFavorite = isFavorite
         }
     }
 
@@ -212,5 +244,35 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private var defaultImage: UIImage? {
         return UIImage(named: .noImage)
+    }
+
+    @objc private func handleFavoriteButtonTap(_ button: UIButton) {
+        delegate?.adsGridViewCell(self, didSelectFavoriteButton: button)
+    }
+}
+
+// MARK: - Private types
+
+private final class FavoriteButton: UIButton {
+    var isFavorite = false {
+        didSet {
+            let image = isFavorite ? UIImage(named: .favouriteLegacyAdded) : UIImage(named: .favouriteLegacyAdd)
+            setImage(image, for: .normal)
+        }
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        adjustsImageWhenHighlighted = false
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override var isHighlighted: Bool {
+        didSet {
+            alpha = isHighlighted ? 0.8 : 1
+        }
     }
 }

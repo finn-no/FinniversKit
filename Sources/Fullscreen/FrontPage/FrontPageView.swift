@@ -96,6 +96,10 @@ public final class FrontPageView: UIView {
         adsGridView.reloadData()
     }
 
+    public func updateAd(at index: Int, isFavorite: Bool) {
+        adsGridView.updateItem(at: index, isFavorite: isFavorite)
+    }
+
     public func showAdsRetryButton() {
         adsRetryView.state = .labelAndButton
     }

@@ -36,6 +36,8 @@ extension AdsGridViewDemoView: AdsGridViewDelegate {
     public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
 
     public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
+
+    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int) {}
 }
 
 extension AdsGridViewDemoView: AdsGridViewDataSource {
