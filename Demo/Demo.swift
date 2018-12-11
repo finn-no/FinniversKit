@@ -79,9 +79,9 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<EasterEggButtonDemoView>()
         case .bottomSheet:
             let controller = DemoViewController<AdsGridViewDemoView>(usingDoubleTapToDismiss: false)
-            let height: CGFloat = UIScreen.main.bounds.height >= 812 ? 570 : 510
-            let size = BottomSheet.Size(compact: height)
-            return BottomSheet(rootViewController: controller, size: size)
+            let value: CGFloat = UIScreen.main.bounds.height >= 812 ? 570 : 510
+            let height = BottomSheet.Height(compact: value)
+            return BottomSheet(rootViewController: controller, height: height)
         }
     }
 }

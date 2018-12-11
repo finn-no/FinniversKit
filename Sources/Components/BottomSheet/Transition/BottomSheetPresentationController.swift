@@ -18,7 +18,7 @@ class BottomSheetPresentationController: UIPresentationController {
 
     // MARK: - Public properties
 
-    var size: BottomSheet.Size = .zero
+    var height: BottomSheet.Height = .zero
 
     // MARK: - Private properties
     // Constraint is used to set the height of the bottom sheet
@@ -56,15 +56,15 @@ class BottomSheetPresentationController: UIPresentationController {
             presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
-            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: size.compact)
+            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact)
         ])
         // Setup controllers
-        stateController.size = size
+        stateController.height = height
         stateController.frame = containerView.bounds
         interactionController.setup(with: constraint)
         interactionController.stateController = stateController
         // If no expanded size if given it should be static
-        guard size.expanded != nil else { return }
+        guard height.expanded != nil else { return }
         gestureController = BottomSheetGestureController(presentedView: presentedView, containerView: containerView)
         gestureController?.delegate = interactionController
     }

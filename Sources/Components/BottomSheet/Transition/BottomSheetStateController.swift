@@ -14,7 +14,7 @@ extension BottomSheetStateController {
 
 class BottomSheetStateController {
 
-    var size: BottomSheet.Size = .zero
+    var height: BottomSheet.Height = .zero
     var state: State = .compact
     var frame: CGRect = .zero
     var targetPosition: CGFloat {
@@ -45,9 +45,9 @@ private extension BottomSheetStateController {
     func targetPosition(for state: State) -> CGFloat {
         switch state {
         case .compact:
-            return frame.height - size.compact
+            return frame.height - height.compact
         case .expanded:
-            return frame.height - (size.expanded ?? 0)
+            return frame.height - (height.expanded ?? 0)
         case .dismissed:
             return frame.height
         }

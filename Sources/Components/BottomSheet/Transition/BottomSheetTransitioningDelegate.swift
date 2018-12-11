@@ -8,7 +8,7 @@ class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningD
 
     // MARK: - Public properties
 
-    var size: BottomSheet.Size = .zero
+    var height: BottomSheet.Height = .zero
 
     // MARK: - Private properties
 
@@ -23,7 +23,7 @@ class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningD
 
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         presentationController = BottomSheetPresentationController(presentedViewController: presented, presenting: presenting, interactionController: interactionController)
-        presentationController?.size = size
+        presentationController?.height = height
         return presentationController
     }
 
