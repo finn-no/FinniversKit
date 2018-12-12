@@ -120,7 +120,11 @@ public class EmptyView: UIView {
     private lazy var motionQueue = OperationQueue()
 
     private lazy var allShapes: [UIView] = {
-        return [rectangle, triangle, roundedSquare, circle, square]
+        if isChristmasThemed {
+            return []
+        } else {
+            return [rectangle, triangle, roundedSquare, circle, square]
+        }
     }()
 
     // MARK: - External properties / Dependency injection
@@ -172,11 +176,9 @@ public class EmptyView: UIView {
     private func setup() {
         backgroundColor = .milk
 
-        addSubview(rectangle)
-        addSubview(triangle)
-        addSubview(roundedSquare)
-        addSubview(circle)
-        addSubview(square)
+        for shape in allShapes {
+            addSubview(shape)
+        }
 
         addSubview(headerLabel)
         addSubview(messageLabel)
@@ -211,11 +213,14 @@ public class EmptyView: UIView {
 
         // We reposition the shapes after the EmptyView itself has layed out its frame.
         // At this point we will have its size even if we use constraints to lay it out.
-        triangle.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
-        circle.center = CGPoint(x: slice * 2, y: frame.height - (sizeOfCircle.height / 2))
-        square.center = CGPoint(x: slice * 3, y: frame.height - (sizeOfSquare.height / 2))
-        roundedSquare.center = CGPoint(x: slice * 5, y: frame.height - (sizeOfRoundedSquare.height / 2))
-        rectangle.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfRectangle.height / 2))
+        if isChristmasThemed {
+        } else {
+            triangle.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
+            circle.center = CGPoint(x: slice * 2, y: frame.height - (sizeOfCircle.height / 2))
+            square.center = CGPoint(x: slice * 3, y: frame.height - (sizeOfSquare.height / 2))
+            roundedSquare.center = CGPoint(x: slice * 5, y: frame.height - (sizeOfRoundedSquare.height / 2))
+            rectangle.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfRectangle.height / 2))
+        }
 
         // We add the behaviors after laying out the subviews to avoid issues with initial positions of the shapes
         animator.addBehavior(gravity)
