@@ -91,8 +91,15 @@ public class EmptyView: UIView {
         return view
     }()
 
-    private lazy var circularOrnament: ChristmasOrnamentView = {
-        let view = ChristmasOrnamentView(frame: CGRect(origin: .zero, size: sizeOfCircle))
+    private lazy var blueOrnament: ChristmasOrnamentView = {
+        let view = ChristmasOrnamentView(frame: CGRect(origin: .zero, size: sizeOfCircle), ornamentColor: .blue)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        return view
+    }()
+
+    private lazy var redOrnament: ChristmasOrnamentView = {
+        let view = ChristmasOrnamentView(frame: CGRect(origin: .zero, size: sizeOfSquare), ornamentColor: .red)
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
         return view
@@ -177,7 +184,7 @@ public class EmptyView: UIView {
 
     private lazy var allShapes: [UIView] = {
         if isChristmasThemed {
-            return [smallPinkGift, smallStarOrnament, triangleGift, roundedSquareGift, circularOrnament, bigStarOrnament, bigYellowGift]
+            return [smallPinkGift, smallStarOrnament, triangleGift, roundedSquareGift, blueOrnament, redOrnament, bigStarOrnament, bigYellowGift]
         } else {
             return [rectangle, triangle, roundedSquare, circle, square]
         }
@@ -272,10 +279,11 @@ public class EmptyView: UIView {
         if isChristmasThemed {
             triangleGift.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
             bigStarOrnament.center = CGPoint(x: slice, y: frame.height - (sizeOfCircle.height * 1.5))
-            circularOrnament.center = CGPoint(x: slice * 2.3, y: frame.height - sizeOfCircle.height)
+            blueOrnament.center = CGPoint(x: slice * 2.3, y: frame.height - sizeOfCircle.height)
             smallPinkGift.center = CGPoint(x: slice * 3.5, y: frame.height - (sizeOfSquare.height / 2))
             roundedSquareGift.center = CGPoint(x: slice * 5, y: frame.height - (sizeOfRoundedSquare.height / 2))
             smallStarOrnament.center = CGPoint(x: slice * 5.5, y: frame.height - (sizeOfSquare.height * 2))
+            redOrnament.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfRectangle.height + (sizeOfSquare.height * 1.2)))
             bigYellowGift.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfRectangle.height / 2))
         } else {
             triangle.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
