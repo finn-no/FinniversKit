@@ -14,13 +14,13 @@ class ChristmasOrnamentView: UIImageView, AttachableView {
 
     // MARK: - Init
 
-    public init(frame: CGRect, ornamentColor: ChristmasOrnamentColor) {
+    init(frame: CGRect, ornamentColor: ChristmasOrnamentColor) {
         self.ornamentColor = ornamentColor
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("Not implemented")
     }
 

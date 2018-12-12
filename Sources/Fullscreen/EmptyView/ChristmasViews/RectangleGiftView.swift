@@ -11,13 +11,13 @@ class RectangleGiftView: UIImageView, AttachableView {
 
     // MARK: - Init
 
-    public init(frame: CGRect, image: FinniversImageAsset) {
+    init(frame: CGRect, image: FinniversImageAsset) {
         self.imageAsset = image
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("Not implemented")
     }
 
