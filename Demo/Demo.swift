@@ -1,7 +1,7 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-import UIKit
+import FinniversKit
 
 public enum DnaViews: String, CaseIterable {
     case color
@@ -24,6 +24,7 @@ public enum DnaViews: String, CaseIterable {
 }
 
 public enum ComponentViews: String, CaseIterable {
+    case broadcast
     case button
     case label
     case ribbon
@@ -38,9 +39,12 @@ public enum ComponentViews: String, CaseIterable {
     case loadingIndicator
     case horizontalSlide
     case easterEggButton
+    case bottomSheet
 
     public var viewController: UIViewController {
         switch self {
+        case .broadcast:
+            return DemoViewController<BroadcastDemoView>()
         case .button:
             return DemoViewController<ButtonDemoView>()
         case .label:
@@ -73,6 +77,9 @@ public enum ComponentViews: String, CaseIterable {
             return secondViewController
         case .easterEggButton:
             return DemoViewController<EasterEggButtonDemoView>()
+        case .bottomSheet:
+            let controller = DemoViewController<ButtonDemoView>()
+            return BottomSheet(rootViewController: controller)
         }
     }
 }
@@ -107,7 +114,7 @@ public enum RecyclingViews: String, CaseIterable {
 }
 
 public enum FullscreenViews: String, CaseIterable {
-    case frontpageView
+    case frontPageView
     case popupView
     case emptyView
     case emptyChristmasView
@@ -119,10 +126,12 @@ public enum FullscreenViews: String, CaseIterable {
     case consentActionView
     case loadingView
     case drumMachine
+    case snowGlobe
+    case soldView
 
     public var viewController: UIViewController {
         switch self {
-        case .frontpageView:
+        case .frontPageView:
             return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:
             return DemoViewController<EmptyViewDemoView>()
@@ -146,6 +155,10 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<LoadingViewDemoView>()
         case .drumMachine:
             return DemoViewController<DrumMachineDemoView>()
+        case .snowGlobe:
+            return DemoViewController<SnowGlobeDemoView>()
+        case .soldView:
+            return DemoViewController<SoldViewDemoView>()
         }
     }
 }

@@ -12,6 +12,8 @@ public protocol AdsGridViewModel {
     var subtitle: String? { get }
     var imageText: String? { get }
     var accessibilityLabel: String { get }
+    var isFavorite: Bool { get }
+    var favoriteButtonAccessibilityLabel: String { get }
 }
 
 public extension AdsGridViewModel {

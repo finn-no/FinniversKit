@@ -28,7 +28,7 @@ class FullscreenViewTests: FBSnapshotTestCase {
     }
 
     func testFrontpageView() {
-        snapshot(.frontpageView)
+        snapshot(.frontPageView)
     }
 
     func testPopupView() {
@@ -63,6 +63,10 @@ class FullscreenViewTests: FBSnapshotTestCase {
         snapshot(.drumMachine)
     }
 
+    func testSnowGlobeView() {
+        snapshot(.snowGlobe)
+    }
+
     func testLoadingView() {
         snapshot(.loadingView)
     }
@@ -73,5 +77,9 @@ class FullscreenViewTests: FBSnapshotTestCase {
 
     func testConsentActionView() {
         snapshot(.consentActionView)
+    }
+
+    func testSoldView() {
+        snapshot(.soldView)
     }
 }

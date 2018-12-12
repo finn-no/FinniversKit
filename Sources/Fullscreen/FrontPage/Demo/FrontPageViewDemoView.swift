@@ -9,8 +9,8 @@ public class FrontpageViewDemoView: UIView {
     private let markets = Market.allMarkets
     private var didSetupView = false
 
-    private lazy var frontpageView: FrontpageView = {
-        let view = FrontpageView(delegate: self)
+    private lazy var frontPageView: FrontPageView = {
+        let view = FrontPageView(delegate: self)
         view.model = FrontpageViewDefaultData()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -28,17 +28,17 @@ public class FrontpageViewDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(frontpageView)
-        frontpageView.fillInSuperview()
-        frontpageView.reloadData()
+        addSubview(frontPageView)
+        frontPageView.fillInSuperview()
+        frontPageView.reloadData()
     }
 }
 
 // MARK: - AdsGridViewDelegate
 
-extension FrontpageViewDemoView: FrontpageViewDelegate {
-    public func frontpageViewDidSelectRetryButton(_ frontpageView: FrontpageView) {
-        frontpageView.reloadData()
+extension FrontpageViewDemoView: FrontPageViewDelegate {
+    public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
+        frontPageView.reloadData()
     }
 }
 
@@ -46,6 +46,10 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
     public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
     public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
     public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
+
+    public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int) {
+        adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
+    }
 }
 
 // MARK: - AdsGridViewDataSource
@@ -98,4 +102,15 @@ extension FrontpageViewDemoView: MarketsGridViewDataSource {
     public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
         return markets[index]
     }
+}
+
+// MARK: - InlineConsentViewDelegate
+
+extension FrontpageViewDemoView: InlineConsentViewDelegate {
+    public func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectYesButton button: Button) {
+        frontPageView.hideInlineConsents()
+        frontPageView.reloadAds()
+    }
+
+    public func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectInfoButton button: Button) {}
 }

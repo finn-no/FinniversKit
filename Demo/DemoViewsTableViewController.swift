@@ -27,7 +27,11 @@ class DemoViewsTableViewController: UITableViewController {
 
         if let indexPath = State.lastSelectedIndexPath {
             if let viewController = Sections.viewController(for: indexPath) {
-                present(viewController, animated: false)
+                if let bottomSheet = viewController as? BottomSheet {
+                    present(bottomSheet, animated: true)
+                } else {
+                    present(viewController, animated: false)
+                }
             }
         }
     }

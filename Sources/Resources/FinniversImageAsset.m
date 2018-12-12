@@ -30,6 +30,8 @@ NSString *const FinniversImageAssetfavouriteAdd = @"favouriteAdd";
 NSString *const FinniversImageAssetfavouriteAddImg = @"favouriteAddImg";
 NSString *const FinniversImageAssetfavouriteAdded = @"favouriteAdded";
 NSString *const FinniversImageAssetfavouriteAddedImg = @"favouriteAddedImg";
+NSString *const FinniversImageAssetfavouriteLegacyAdd = @"favouriteLegacyAdd";
+NSString *const FinniversImageAssetfavouriteLegacyAdded = @"favouriteLegacyAdded";
 NSString *const FinniversImageAssetfavourites = @"favourites";
 NSString *const FinniversImageAssetgallery = @"gallery";
 NSString *const FinniversImageAssetgiftRoundedRectRed = @"giftRoundedRectRed";
@@ -78,6 +80,8 @@ NSString *const FinniversImageAssetsettings = @"settings";
 NSString *const FinniversImageAssetshare = @"share";
 NSString *const FinniversImageAssetshopping = @"shopping";
 NSString *const FinniversImageAssetsmalljobs = @"smalljobs";
+NSString *const FinniversImageAssetsnowflake = @"snowflake";
+NSString *const FinniversImageAssetsold = @"sold";
 NSString *const FinniversImageAssetspidLogo = @"spidLogo";
 NSString *const FinniversImageAssetsuccess = @"success";
 NSString *const FinniversImageAssettrashcan = @"trashcan";
@@ -114,6 +118,8 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetfavouriteAddImg,
              FinniversImageAssetfavouriteAdded,
              FinniversImageAssetfavouriteAddedImg,
+             FinniversImageAssetfavouriteLegacyAdd,
+             FinniversImageAssetfavouriteLegacyAdded,
              FinniversImageAssetfavourites,
              FinniversImageAssetgallery,
              FinniversImageAssetgiftRoundedRectRed,
@@ -162,6 +168,8 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetshare,
              FinniversImageAssetshopping,
              FinniversImageAssetsmalljobs,
+             FinniversImageAssetsnowflake,
+             FinniversImageAssetsold,
              FinniversImageAssetspidLogo,
              FinniversImageAssetsuccess,
              FinniversImageAssettrashcan,
