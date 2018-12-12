@@ -11,6 +11,7 @@ public protocol EmptyViewDelegate: class {
 }
 
 public class EmptyView: UIView {
+
     // MARK: - Internal properties
 
     private let sizeOfTriangle = CGSize(width: 90, height: 90)
@@ -21,6 +22,8 @@ public class EmptyView: UIView {
 
     private var hasLayedOut = false
     private let isChristmasThemed: Bool
+
+    // MARK: - Regular shapes
 
     private lazy var triangle: TriangleView = {
         let view = TriangleView(frame: CGRect(x: 0, y: 0, width: sizeOfTriangle.width, height: sizeOfTriangle.height))
@@ -57,6 +60,52 @@ public class EmptyView: UIView {
         view.backgroundColor = .salmon
         return view
     }()
+
+    // MARK: - Christmas shapes
+
+    private lazy var triangleGift: TriangleGiftView = {
+        let view = TriangleGiftView(frame: CGRect(origin: .zero, size: sizeOfTriangle))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        return view
+    }()
+
+    private lazy var bigYellowGift: RectangleGiftView = {
+        let view = RectangleGiftView(frame: CGRect(origin: .zero, size: sizeOfRectangle), image: .giftSquareYellow)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        return view
+    }()
+
+    private lazy var smallPinkGift: RectangleGiftView = {
+        let view = RectangleGiftView(frame: CGRect(origin: .zero, size: sizeOfSquare), image: .giftSquarePink)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        return view
+    }()
+
+    private lazy var roundedSquareGift: RoundedRectangleGiftView = {
+        let view = RoundedRectangleGiftView(frame: CGRect(origin: .zero, size: sizeOfRoundedSquare))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        return view
+    }()
+
+    private lazy var circularOrnament: ChristmasOrnamentView = {
+        let view = ChristmasOrnamentView(frame: CGRect(origin: .zero, size: sizeOfCircle))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        return view
+    }()
+
+    private lazy var starOrnament: StarView = {
+        let view = StarView(frame: CGRect(origin: .zero, size: sizeOfSquare))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        view.addGestureRecognizer(pan)
+        return view
+    }()
+
+    // MARK: - Other private attributes
 
     private lazy var headerLabel: Label = {
         let label = Label(style: .title1)
@@ -121,7 +170,7 @@ public class EmptyView: UIView {
 
     private lazy var allShapes: [UIView] = {
         if isChristmasThemed {
-            return []
+            return [smallPinkGift, starOrnament, triangleGift, roundedSquareGift, circularOrnament, bigYellowGift]
         } else {
             return [rectangle, triangle, roundedSquare, circle, square]
         }
@@ -214,6 +263,12 @@ public class EmptyView: UIView {
         // We reposition the shapes after the EmptyView itself has layed out its frame.
         // At this point we will have its size even if we use constraints to lay it out.
         if isChristmasThemed {
+            triangleGift.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
+            starOrnament.center = CGPoint(x: slice * 1.5, y: frame.height - sizeOfSquare.height)
+            circularOrnament.center = CGPoint(x: slice * 2, y: frame.height - (sizeOfCircle.height / 2))
+            smallPinkGift.center = CGPoint(x: slice * 3, y: frame.height - (sizeOfSquare.height / 2))
+            roundedSquareGift.center = CGPoint(x: slice * 5, y: frame.height - (sizeOfRoundedSquare.height / 2))
+            bigYellowGift.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfRectangle.height / 2))
         } else {
             triangle.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
             circle.center = CGPoint(x: slice * 2, y: frame.height - (sizeOfCircle.height / 2))
