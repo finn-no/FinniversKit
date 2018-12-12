@@ -15,6 +15,7 @@ NSString *const FinniversImageAssetblockUser = @"blockUser";
 NSString *const FinniversImageAssetboat = @"boat";
 NSString *const FinniversImageAssetcalendar = @"calendar";
 NSString *const FinniversImageAssetcamera = @"camera";
+NSString *const FinniversImageAssetcandyCane = @"candyCane";
 NSString *const FinniversImageAssetcar = @"car";
 NSString *const FinniversImageAssetcheck = @"check";
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
@@ -59,7 +60,8 @@ NSString *const FinniversImageAssetmoteplassen = @"moteplassen";
 NSString *const FinniversImageAssetnoImage = @"noImage";
 NSString *const FinniversImageAssetnotifications = @"notifications";
 NSString *const FinniversImageAssetonlyNew = @"onlyNew";
-NSString *const FinniversImageAssetornamentCircle = @"ornamentCircle";
+NSString *const FinniversImageAssetornamentCircleBlue = @"ornamentCircleBlue";
+NSString *const FinniversImageAssetornamentCircleRed = @"ornamentCircleRed";
 NSString *const FinniversImageAssetornamentStar = @"ornamentStar";
 NSString *const FinniversImageAssetpin = @"pin";
 NSString *const FinniversImageAssetplus = @"plus";
@@ -97,6 +99,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetboat,
              FinniversImageAssetcalendar,
              FinniversImageAssetcamera,
+             FinniversImageAssetcandyCane,
              FinniversImageAssetcar,
              FinniversImageAssetcheck,
              FinniversImageAssetcheckmarkBig,
@@ -141,7 +144,8 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetnoImage,
              FinniversImageAssetnotifications,
              FinniversImageAssetonlyNew,
-             FinniversImageAssetornamentCircle,
+             FinniversImageAssetornamentCircleBlue,
+             FinniversImageAssetornamentCircleRed,
              FinniversImageAssetornamentStar,
              FinniversImageAssetpin,
              FinniversImageAssetplus,

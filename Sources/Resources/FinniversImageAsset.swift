@@ -26,6 +26,7 @@ public enum FinniversImageAsset: String {
     case boat
     case calendar
     case camera
+    case candyCane
     case car
     case check
     case checkmarkBig
@@ -70,7 +71,8 @@ public enum FinniversImageAsset: String {
     case noImage
     case notifications
     case onlyNew
-    case ornamentCircle
+    case ornamentCircleBlue
+    case ornamentCircleRed
     case ornamentStar
     case pin
     case plus
@@ -107,6 +109,7 @@ public enum FinniversImageAsset: String {
             .boat,
             .calendar,
             .camera,
+            .candyCane,
             .car,
             .check,
             .checkmarkBig,
@@ -151,7 +154,8 @@ public enum FinniversImageAsset: String {
             .noImage,
             .notifications,
             .onlyNew,
-            .ornamentCircle,
+            .ornamentCircleBlue,
+            .ornamentCircleRed,
             .ornamentStar,
             .pin,
             .plus,
