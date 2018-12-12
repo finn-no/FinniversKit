@@ -14,7 +14,7 @@ public class EmptyChristmasViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let emptyView = EmptyView(isChristmasThemed: true)
+        let emptyView = EmptyView(frame: .zero, isChristmasThemed: true)
         emptyView.translatesAutoresizingMaskIntoConstraints = false
 
         emptyView.header = "Her var det stille gitt"

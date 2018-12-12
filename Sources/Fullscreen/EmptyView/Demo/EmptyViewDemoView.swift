@@ -14,7 +14,7 @@ public class EmptyViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let emptyView = EmptyView()
+        let emptyView = EmptyView(frame: .zero)
         emptyView.translatesAutoresizingMaskIntoConstraints = false
 
         emptyView.header = "Her var det stille gitt"

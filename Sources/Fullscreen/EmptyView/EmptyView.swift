@@ -218,14 +218,8 @@ public class EmptyView: UIView {
 
     // MARK: - Setup
 
-    public init(isChristmasThemed: Bool) {
+    public init(frame: CGRect, isChristmasThemed: Bool = false) {
         self.isChristmasThemed = isChristmasThemed
-        super.init(frame: .zero)
-        setup()
-    }
-
-    public override init(frame: CGRect) {
-        self.isChristmasThemed = false
         super.init(frame: frame)
         setup()
     }
