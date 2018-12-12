@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.swift_version = '4.2'
 
   s.source_files = 'Sources/*.{h,m,swift}', 'Sources/**/*.{h,m,swift}', 'Sources/**/**/*.{h,m,swift}'
-  s.resources    = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets'
+  s.resources    = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets', 'Sources/Resources/Sounds/*.{mp3,wav}'
   s.resource_bundles = {
       'FinniversKit' => ['Sources/Resources/*.xcassets', 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/Sounds/*.{mp3,wav}']
   }
