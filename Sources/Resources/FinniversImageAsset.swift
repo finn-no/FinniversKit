@@ -42,6 +42,10 @@ public enum FinniversImageAsset: String {
     case favouriteAddedImg
     case favourites
     case gallery
+    case giftRoundedRectRed
+    case giftSquarePink
+    case giftSquareYellow
+    case giftTriangleGreen
     case gridView
     case help
     case hide
@@ -66,6 +70,8 @@ public enum FinniversImageAsset: String {
     case noImage
     case notifications
     case onlyNew
+    case ornamentCircle
+    case ornamentStar
     case pin
     case plus
     case profile
@@ -117,6 +123,10 @@ public enum FinniversImageAsset: String {
             .favouriteAddedImg,
             .favourites,
             .gallery,
+            .giftRoundedRectRed,
+            .giftSquarePink,
+            .giftSquareYellow,
+            .giftTriangleGreen,
             .gridView,
             .help,
             .hide,
@@ -141,6 +151,8 @@ public enum FinniversImageAsset: String {
             .noImage,
             .notifications,
             .onlyNew,
+            .ornamentCircle,
+            .ornamentStar,
             .pin,
             .plus,
             .profile,

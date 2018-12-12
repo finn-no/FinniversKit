@@ -31,6 +31,10 @@ NSString *const FinniversImageAssetfavouriteAdded = @"favouriteAdded";
 NSString *const FinniversImageAssetfavouriteAddedImg = @"favouriteAddedImg";
 NSString *const FinniversImageAssetfavourites = @"favourites";
 NSString *const FinniversImageAssetgallery = @"gallery";
+NSString *const FinniversImageAssetgiftRoundedRectRed = @"giftRoundedRectRed";
+NSString *const FinniversImageAssetgiftSquarePink = @"giftSquarePink";
+NSString *const FinniversImageAssetgiftSquareYellow = @"giftSquareYellow";
+NSString *const FinniversImageAssetgiftTriangleGreen = @"giftTriangleGreen";
 NSString *const FinniversImageAssetgridView = @"gridView";
 NSString *const FinniversImageAssethelp = @"help";
 NSString *const FinniversImageAssethide = @"hide";
@@ -55,6 +59,8 @@ NSString *const FinniversImageAssetmoteplassen = @"moteplassen";
 NSString *const FinniversImageAssetnoImage = @"noImage";
 NSString *const FinniversImageAssetnotifications = @"notifications";
 NSString *const FinniversImageAssetonlyNew = @"onlyNew";
+NSString *const FinniversImageAssetornamentCircle = @"ornamentCircle";
+NSString *const FinniversImageAssetornamentStar = @"ornamentStar";
 NSString *const FinniversImageAssetpin = @"pin";
 NSString *const FinniversImageAssetplus = @"plus";
 NSString *const FinniversImageAssetprofile = @"profile";
@@ -107,6 +113,10 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetfavouriteAddedImg,
              FinniversImageAssetfavourites,
              FinniversImageAssetgallery,
+             FinniversImageAssetgiftRoundedRectRed,
+             FinniversImageAssetgiftSquarePink,
+             FinniversImageAssetgiftSquareYellow,
+             FinniversImageAssetgiftTriangleGreen,
              FinniversImageAssetgridView,
              FinniversImageAssethelp,
              FinniversImageAssethide,
@@ -131,6 +141,8 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetnoImage,
              FinniversImageAssetnotifications,
              FinniversImageAssetonlyNew,
+             FinniversImageAssetornamentCircle,
+             FinniversImageAssetornamentStar,
              FinniversImageAssetpin,
              FinniversImageAssetplus,
              FinniversImageAssetprofile,
