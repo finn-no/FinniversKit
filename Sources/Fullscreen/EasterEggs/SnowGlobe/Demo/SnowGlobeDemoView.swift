@@ -23,7 +23,7 @@ public class SnowGlobeDemoView: UIView {
     public override func didMoveToSuperview() {
         super.didMoveToSuperview()
         if superview == nil {
-            snowGlobeView.stopAnimating()
+            snowGlobeView.stop(animated: false)
         } else {
             snowGlobeView.becomeFirstResponder()
         }
