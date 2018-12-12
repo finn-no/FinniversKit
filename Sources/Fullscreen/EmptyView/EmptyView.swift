@@ -20,6 +20,7 @@ public class EmptyView: UIView {
     private let sizeOfSquare = CGSize(width: 50, height: 50)
 
     private var hasLayedOut = false
+    private let isChristmasThemed: Bool
 
     private lazy var triangle: TriangleView = {
         let view = TriangleView(frame: CGRect(x: 0, y: 0, width: sizeOfTriangle.width, height: sizeOfTriangle.height))
@@ -150,12 +151,20 @@ public class EmptyView: UIView {
 
     // MARK: - Setup
 
+    public init(isChristmasThemed: Bool) {
+        self.isChristmasThemed = isChristmasThemed
+        super.init(frame: .zero)
+        setup()
+    }
+
     public override init(frame: CGRect) {
+        self.isChristmasThemed = false
         super.init(frame: frame)
         setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
+        self.isChristmasThemed = false
         super.init(coder: aDecoder)
         setup()
     }
