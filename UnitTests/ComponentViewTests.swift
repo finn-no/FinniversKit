@@ -83,10 +83,6 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.easterEggButton)
     }
 
-    func testBroadcast() {
-        snapshot(.broadcast)
-    }
-
     func testBottomSheet() {
         snapshot(.bottomSheet)
     }
