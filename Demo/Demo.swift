@@ -125,6 +125,7 @@ public enum FullscreenViews: String, CaseIterable {
     case consentActionView
     case loadingView
     case drumMachine
+    case snowGlobe
     case soldView
 
     public var viewController: UIViewController {
@@ -151,6 +152,8 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<LoadingViewDemoView>()
         case .drumMachine:
             return DemoViewController<DrumMachineDemoView>()
+        case .snowGlobe:
+            return DemoViewController<SnowGlobeDemoView>()
         case .soldView:
             return DemoViewController<SoldViewDemoView>()
         }
