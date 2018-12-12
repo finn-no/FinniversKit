@@ -29,7 +29,7 @@ class CandyCaneView: UIImageView, AttachableView {
     // MARK: - Override methods
 
     override var collisionBoundsType: UIDynamicItemCollisionBoundsType {
-        return .rectangle
+        return .path
     }
 
     override var collisionBoundingPath: UIBezierPath {
@@ -50,7 +50,7 @@ class CandyCaneView: UIImageView, AttachableView {
         let path = UIBezierPath()
 
         let headCircleCenter = CGPoint(x: shapeFrame.width / 2, y: shapeFrame.width / 2)
-        let candyCaneWidth = shapeFrame.width / 1.5
+        let candyCaneWidth = shapeFrame.width / 1.9
         path.addArc(withCenter: headCircleCenter, radius: shapeFrame.width / 2, startAngle: 0, endAngle: 90, clockwise: false)
         path.addLine(to: CGPoint(x: shapeFrame.width - candyCaneWidth, y: shapeFrame.height))
         path.addLine(to: CGPoint(x: shapeFrame.width, y: shapeFrame.height))
