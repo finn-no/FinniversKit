@@ -12,6 +12,7 @@
 		0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */; };
 		0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */; };
 		082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */; };
+		089DF42321C13178008A8711 /* RectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089DF42221C13178008A8711 /* RectangleGiftView.swift */; };
 		08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A0A21832546003E2222 /* BasicTableViewCell.swift */; };
 		08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */; };
 		08D70A19218328EB003E2222 /* IconTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A18218328EB003E2222 /* IconTitleTableViewCell.swift */; };
@@ -260,6 +261,7 @@
 		0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedRadiobuttonView.swift; sourceTree = "<group>"; };
 		0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxView.swift; sourceTree = "<group>"; };
 		082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyChristmasViewDemoView.swift; sourceTree = "<group>"; };
+		089DF42221C13178008A8711 /* RectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleGiftView.swift; sourceTree = "<group>"; };
 		08D70A0A21832546003E2222 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
 		08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
 		08D70A18218328EB003E2222 /* IconTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconTitleTableViewCell.swift; sourceTree = "<group>"; };
@@ -492,6 +494,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		089DF42121C13064008A8711 /* ChristmasViews */ = {
+			isa = PBXGroup;
+			children = (
+				089DF42221C13178008A8711 /* RectangleGiftView.swift */,
+			);
+			path = ChristmasViews;
+			sourceTree = "<group>";
+		};
 		08D70A082183252F003E2222 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1316,6 +1326,7 @@
 				44D912712077AD1200486848 /* Demo */,
 				44D912512077AC8A00486848 /* EmptyView.swift */,
 				44D912522077AC8A00486848 /* MovableBlockView */,
+				089DF42121C13064008A8711 /* ChristmasViews */,
 			);
 			path = EmptyView;
 			sourceTree = "<group>";
@@ -2013,6 +2024,7 @@
 				44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */,
 				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
 				DA24BA292164C0BE006E2E5E /* ConsentActionView.swift in Sources */,
+				089DF42321C13178008A8711 /* RectangleGiftView.swift in Sources */,
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				441FE431209A24E500B04EF1 /* AdsGridHeaderView.swift in Sources */,
 				443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */,
