@@ -271,9 +271,9 @@ public class EmptyView: UIView {
         // At this point we will have its size even if we use constraints to lay it out.
         if isChristmasThemed {
             triangleGift.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
-            bigStarOrnament.center = CGPoint(x: slice * 1.5, y: frame.height - (sizeOfCircle.height * 1.5))
-            circularOrnament.center = CGPoint(x: slice * 2, y: frame.height - (sizeOfCircle.height / 2))
-            smallPinkGift.center = CGPoint(x: slice * 3, y: frame.height - (sizeOfSquare.height / 2))
+            bigStarOrnament.center = CGPoint(x: slice, y: frame.height - (sizeOfCircle.height * 1.5))
+            circularOrnament.center = CGPoint(x: slice * 2.3, y: frame.height - sizeOfCircle.height)
+            smallPinkGift.center = CGPoint(x: slice * 3.5, y: frame.height - (sizeOfSquare.height / 2))
             roundedSquareGift.center = CGPoint(x: slice * 5, y: frame.height - (sizeOfRoundedSquare.height / 2))
             smallStarOrnament.center = CGPoint(x: slice * 5.5, y: frame.height - (sizeOfSquare.height * 2))
             bigYellowGift.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfRectangle.height / 2))
