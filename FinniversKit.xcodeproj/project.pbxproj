@@ -14,6 +14,7 @@
 		082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */; };
 		082D80CD21C13D5300831BDE /* TriangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CC21C13D5300831BDE /* TriangleGiftView.swift */; };
 		082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CE21C13E8B00831BDE /* ChristmasOrnamentView.swift */; };
+		082D80D121C1411700831BDE /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D021C1411700831BDE /* StarView.swift */; };
 		082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */; };
 		089DF42321C13178008A8711 /* RectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089DF42221C13178008A8711 /* RectangleGiftView.swift */; };
 		08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A0A21832546003E2222 /* BasicTableViewCell.swift */; };
@@ -266,6 +267,7 @@
 		082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleGiftView.swift; sourceTree = "<group>"; };
 		082D80CC21C13D5300831BDE /* TriangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleGiftView.swift; sourceTree = "<group>"; };
 		082D80CE21C13E8B00831BDE /* ChristmasOrnamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasOrnamentView.swift; sourceTree = "<group>"; };
+		082D80D021C1411700831BDE /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 		082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyChristmasViewDemoView.swift; sourceTree = "<group>"; };
 		089DF42221C13178008A8711 /* RectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleGiftView.swift; sourceTree = "<group>"; };
 		08D70A0A21832546003E2222 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */,
 				082D80CC21C13D5300831BDE /* TriangleGiftView.swift */,
 				082D80CE21C13E8B00831BDE /* ChristmasOrnamentView.swift */,
+				082D80D021C1411700831BDE /* StarView.swift */,
 			);
 			path = ChristmasViews;
 			sourceTree = "<group>";
@@ -2062,6 +2065,7 @@
 				432CE09D2112DBC500F01EC5 /* ReviewTextHeader.swift in Sources */,
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
+				082D80D121C1411700831BDE /* StarView.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
 				08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */,
