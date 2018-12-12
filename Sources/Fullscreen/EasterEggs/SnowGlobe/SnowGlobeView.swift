@@ -3,8 +3,6 @@
 //
 
 import UIKit
-import CoreMotion
-import AudioToolbox
 import AVFoundation
 
 public class SnowGlobeView: UIView {
@@ -17,17 +15,11 @@ public class SnowGlobeView: UIView {
         return layer
     }()
 
-    private lazy var topGradientLayer: CALayer = {
+    private lazy var gradientLayer: CALayer = {
         let layer = CAGradientLayer()
-        layer.locations = [0.0, 0.7]
-        layer.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.3).cgColor]
-        return layer
-    }()
-
-    private lazy var bottomGradientLayer: CALayer = {
-        let layer = CAGradientLayer()
-        layer.locations = [0.0, 0.7]
-        layer.colors = [UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.clear.cgColor]
+        let color = UIColor(r: 0, g: 98, b: 255, a: 0.2) ?? UIColor.black.withAlphaComponent(0.2)
+        layer.colors = [UIColor.clear.cgColor, color.cgColor, color.cgColor, UIColor.clear.cgColor]
+        layer.locations = [0.0, 0.1, 0.9, 1.0]
         return layer
     }()
 
@@ -46,22 +38,14 @@ public class SnowGlobeView: UIView {
     }()
 
     private lazy var audioPlayer: AVAudioPlayer? = {
-        let player = soundUrl.flatMap({ try? AVAudioPlayer(contentsOf: $0) })
-        player?.delegate = self
+        let url = Bundle.finniversKit.url(forResource: "sleighbell", withExtension: "mp3")
+        let player = url.flatMap({ try? AVAudioPlayer(contentsOf: $0) })
         player?.volume = 0.8
         return player
     }()
 
-    private var soundUrl: URL? {
-        return Bundle.finniversKit.url(forResource: "sleighbell", withExtension: "mp3")
-    }
-
     private var isAnimating: Bool {
         return emitterLayer.lifetime != 0
-    }
-
-    public override var canBecomeFirstResponder: Bool {
-        return true
     }
 
     // MARK: - Init
@@ -80,16 +64,6 @@ public class SnowGlobeView: UIView {
         start(animated: false)
     }
 
-    // MARK: - Motion
-
-    public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        super.motionEnded(motion, with: event)
-
-        if event?.subtype == .motionShake {
-            start(animated: true)
-        }
-    }
-
     // MARK: - Animation
 
     public func start(animated: Bool) {
@@ -98,7 +72,13 @@ public class SnowGlobeView: UIView {
         }
 
         audioPlayer?.play()
+        let duration = (audioPlayer?.duration ?? 9) - 2
+
         updateLayersVisibility(isVisible: true, animated: animated)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
+            self?.updateLayersVisibility(isVisible: false, animated: animated)
+        }
     }
 
     public func stop(animated: Bool) {
@@ -124,9 +104,7 @@ public class SnowGlobeView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let halfHeight = bounds.height / 2
-        topGradientLayer.frame = CGRect(x: 0, y: 0, width: bounds.width, height: halfHeight)
-        bottomGradientLayer.frame = CGRect(x: 0, y: halfHeight, width: bounds.width, height: halfHeight)
+        gradientLayer.frame = bounds
 
         emitterLayer.frame = bounds
         emitterLayer.emitterSize = CGSize(width: bounds.width, height: bounds.height)
@@ -139,21 +117,9 @@ public class SnowGlobeView: UIView {
         isUserInteractionEnabled = false
 
         layer.opacity = 0
-        layer.addSublayer(topGradientLayer)
-        layer.addSublayer(bottomGradientLayer)
+        layer.addSublayer(gradientLayer)
         layer.addSublayer(emitterLayer)
 
         audioPlayer?.prepareToPlay()
-    }
-}
-
-// MARK: - AVAudioPlayerDelegate
-
-extension SnowGlobeView: AVAudioPlayerDelegate {
-    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        guard isAnimating else {
-            return
-        }
-        updateLayersVisibility(isVisible: false, animated: true)
     }
 }
