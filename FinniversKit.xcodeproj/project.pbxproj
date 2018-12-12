@@ -11,6 +11,7 @@
 		08012BF02187319A00A04F43 /* BasicCellVariationsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08012BEF2187319A00A04F43 /* BasicCellVariationsDemoView.swift */; };
 		0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */; };
 		0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */; };
+		082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */; };
 		082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */; };
 		089DF42321C13178008A8711 /* RectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089DF42221C13178008A8711 /* RectangleGiftView.swift */; };
 		08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A0A21832546003E2222 /* BasicTableViewCell.swift */; };
@@ -260,6 +261,7 @@
 		08012BEF2187319A00A04F43 /* BasicCellVariationsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCellVariationsDemoView.swift; sourceTree = "<group>"; };
 		0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedRadiobuttonView.swift; sourceTree = "<group>"; };
 		0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxView.swift; sourceTree = "<group>"; };
+		082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleGiftView.swift; sourceTree = "<group>"; };
 		082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyChristmasViewDemoView.swift; sourceTree = "<group>"; };
 		089DF42221C13178008A8711 /* RectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleGiftView.swift; sourceTree = "<group>"; };
 		08D70A0A21832546003E2222 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				089DF42221C13178008A8711 /* RectangleGiftView.swift */,
+				082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */,
 			);
 			path = ChristmasViews;
 			sourceTree = "<group>";
@@ -1991,6 +1994,7 @@
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */,
 				431875C1211180F100D71723 /* ReviewProfileCell.swift in Sources */,
+				082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */,
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
