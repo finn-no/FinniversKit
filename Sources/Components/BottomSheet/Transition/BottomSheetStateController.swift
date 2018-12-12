@@ -17,9 +17,7 @@ class BottomSheetStateController {
     var state: State = .compressed
     var frame: CGRect = .zero
     var targetPosition: CGFloat {
-        get {
-            return targetPosition(for: state)
-        }
+        return targetPosition(for: state)
     }
 
     private var minValue: CGFloat = 44
@@ -34,8 +32,9 @@ private extension BottomSheetStateController {
     func nextState(forTranslation translation: CGFloat, withCurrent current: State, usingThreshold threshold: CGFloat) -> State {
         switch current {
         case .compressed:
-            if translation < -threshold { return .expanded }
-            else if translation > threshold { return .dismissed }
+            if translation < -threshold {
+                return .expanded
+            } else if translation > threshold { return .dismissed }
         case .expanded:
             if translation > threshold { return .compressed }
         case .dismissed:

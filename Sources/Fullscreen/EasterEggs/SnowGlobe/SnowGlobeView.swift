@@ -61,7 +61,7 @@ public class SnowGlobeView: UIView {
     }
 
     deinit {
-        start(animated: false)
+        stop(animated: false)
     }
 
     // MARK: - Animation
