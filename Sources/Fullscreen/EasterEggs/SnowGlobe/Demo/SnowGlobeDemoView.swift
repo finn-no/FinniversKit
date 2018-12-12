@@ -5,6 +5,14 @@
 import FinniversKit
 
 public class SnowGlobeDemoView: UIView {
+    private lazy var label: UILabel = {
+        let label = Label(style: .title1)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.text = "Shake me!"
+        return label
+    }()
+
     private lazy var snowGlobeView = SnowGlobeView()
 
     public override var canBecomeFirstResponder: Bool {
@@ -44,7 +52,13 @@ public class SnowGlobeDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        addSubview(label)
         addSubview(snowGlobeView)
+
         snowGlobeView.fillInSuperview()
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
 }
