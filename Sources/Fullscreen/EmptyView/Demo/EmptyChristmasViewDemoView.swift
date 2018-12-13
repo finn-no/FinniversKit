@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-public class EmptyViewDemoView: UIView {
+public class EmptyChristmasViewDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -14,7 +14,7 @@ public class EmptyViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        let emptyView = EmptyView(frame: .zero)
+        let emptyView = EmptyView(frame: .zero, isChristmasThemed: true)
         emptyView.translatesAutoresizingMaskIntoConstraints = false
 
         emptyView.header = "Her var det stille gitt"
@@ -28,6 +28,6 @@ public class EmptyViewDemoView: UIView {
             emptyView.bottomAnchor.constraint(equalTo: bottomAnchor),
             emptyView.leadingAnchor.constraint(equalTo: leadingAnchor),
             emptyView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+            ])
     }
 }

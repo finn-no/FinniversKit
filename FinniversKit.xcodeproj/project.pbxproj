@@ -11,6 +11,13 @@
 		08012BF02187319A00A04F43 /* BasicCellVariationsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08012BEF2187319A00A04F43 /* BasicCellVariationsDemoView.swift */; };
 		0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */; };
 		0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */; };
+		082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */; };
+		082D80CD21C13D5300831BDE /* TriangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CC21C13D5300831BDE /* TriangleGiftView.swift */; };
+		082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80CE21C13E8B00831BDE /* ChristmasOrnamentView.swift */; };
+		082D80D121C1411700831BDE /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D021C1411700831BDE /* StarView.swift */; };
+		082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */; };
+		082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D421C15C9200831BDE /* CandyCaneView.swift */; };
+		089DF42321C13178008A8711 /* RectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089DF42221C13178008A8711 /* RectangleGiftView.swift */; };
 		08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A0A21832546003E2222 /* BasicTableViewCell.swift */; };
 		08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */; };
 		08D70A19218328EB003E2222 /* IconTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A18218328EB003E2222 /* IconTitleTableViewCell.swift */; };
@@ -271,6 +278,13 @@
 		08012BEF2187319A00A04F43 /* BasicCellVariationsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCellVariationsDemoView.swift; sourceTree = "<group>"; };
 		0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedRadiobuttonView.swift; sourceTree = "<group>"; };
 		0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedCheckboxView.swift; sourceTree = "<group>"; };
+		082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleGiftView.swift; sourceTree = "<group>"; };
+		082D80CC21C13D5300831BDE /* TriangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleGiftView.swift; sourceTree = "<group>"; };
+		082D80CE21C13E8B00831BDE /* ChristmasOrnamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasOrnamentView.swift; sourceTree = "<group>"; };
+		082D80D021C1411700831BDE /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
+		082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyChristmasViewDemoView.swift; sourceTree = "<group>"; };
+		082D80D421C15C9200831BDE /* CandyCaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyCaneView.swift; sourceTree = "<group>"; };
+		089DF42221C13178008A8711 /* RectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleGiftView.swift; sourceTree = "<group>"; };
 		08D70A0A21832546003E2222 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
 		08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
 		08D70A18218328EB003E2222 /* IconTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconTitleTableViewCell.swift; sourceTree = "<group>"; };
@@ -516,6 +530,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		089DF42121C13064008A8711 /* ChristmasViews */ = {
+			isa = PBXGroup;
+			children = (
+				089DF42221C13178008A8711 /* RectangleGiftView.swift */,
+				082D80CA21C13C7B00831BDE /* RoundedRectangleGiftView.swift */,
+				082D80CC21C13D5300831BDE /* TriangleGiftView.swift */,
+				082D80CE21C13E8B00831BDE /* ChristmasOrnamentView.swift */,
+				082D80D021C1411700831BDE /* StarView.swift */,
+				082D80D421C15C9200831BDE /* CandyCaneView.swift */,
+			);
+			path = ChristmasViews;
+			sourceTree = "<group>";
+		};
 		08D70A082183252F003E2222 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1359,6 +1386,7 @@
 				44D912712077AD1200486848 /* Demo */,
 				44D912512077AC8A00486848 /* EmptyView.swift */,
 				44D912522077AC8A00486848 /* MovableBlockView */,
+				089DF42121C13064008A8711 /* ChristmasViews */,
 			);
 			path = EmptyView;
 			sourceTree = "<group>";
@@ -1388,6 +1416,7 @@
 			isa = PBXGroup;
 			children = (
 				44D912722077AD1200486848 /* EmptyViewDemoView.swift */,
+				082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -2010,6 +2039,7 @@
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */,
 				441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */,
+				082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */,
 				45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */,
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
@@ -2082,6 +2112,7 @@
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */,
 				431875C1211180F100D71723 /* ReviewProfileCell.swift in Sources */,
+				082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */,
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
@@ -2094,6 +2125,7 @@
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */,
+				082D80CD21C13D5300831BDE /* TriangleGiftView.swift in Sources */,
 				444246012137D60400D42AB8 /* FavoriteFoldersListViewCell.swift in Sources */,
 				DAC7DCAA21538608004602A3 /* SettingsView.swift in Sources */,
 				CF3D5EEA215A6723006E4D08 /* DrumPadCollectionViewCell.swift in Sources */,
@@ -2110,11 +2142,13 @@
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
+				082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */,
 				45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */,
 				44587016213FA344009187BE /* LoginViewModel.swift in Sources */,
 				44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */,
 				4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */,
 				DA24BA292164C0BE006E2E5E /* ConsentActionView.swift in Sources */,
+				089DF42321C13178008A8711 /* RectangleGiftView.swift in Sources */,
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				441FE431209A24E500B04EF1 /* AdsGridHeaderView.swift in Sources */,
 				443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */,
@@ -2146,6 +2180,7 @@
 				432CE09D2112DBC500F01EC5 /* ReviewTextHeader.swift in Sources */,
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
+				082D80D121C1411700831BDE /* StarView.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
@@ -2184,6 +2219,7 @@
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
 				444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */,
 				44587018213FA344009187BE /* RegisterView.swift in Sources */,
+				082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */,
 				DAB1F6D3216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift in Sources */,
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
