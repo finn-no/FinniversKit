@@ -22,10 +22,10 @@ public enum FinniversImageAsset: String {
     case arrowRight
     case arrowUp
     case attachment
-    case balloon_0
-    case balloon_1
-    case balloon_2
-    case balloon_9
+    case balloon0
+    case balloon1
+    case balloon2
+    case balloon9
     case blockUser
     case boat
     case calendar
@@ -114,10 +114,10 @@ public enum FinniversImageAsset: String {
             .arrowRight,
             .arrowUp,
             .attachment,
-            .balloon_0,
-            .balloon_1,
-            .balloon_2,
-            .balloon_9,
+            .balloon0,
+            .balloon1,
+            .balloon2,
+            .balloon9,
             .blockUser,
             .boat,
             .calendar,

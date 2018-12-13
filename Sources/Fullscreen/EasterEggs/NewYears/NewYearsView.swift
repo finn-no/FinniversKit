@@ -6,7 +6,7 @@ import UIKit
 
 public class NewYearsView: UIView {
 
-    private let assets: [FinniversImageAsset] = [.balloon_2, .balloon_0, .balloon_1, .balloon_9]
+    private let assets: [FinniversImageAsset] = [.balloon2, .balloon0, .balloon1, .balloon9]
     private lazy var balloonView = BalloonView(frame: .zero)
     private lazy var fireworksView = FireworksView(frame: .zero)
 

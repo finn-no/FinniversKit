@@ -26,8 +26,8 @@ public class BalloonView: UIView {
     public func animate(duration: Double, completion: @escaping () -> Void) {
         guard !isAnimating else { return }
         isAnimating = true
-        imageViews.enumerated().forEach { (i, imageView) in
-            imageView.frame.origin = CGPoint(x: self.imagePositions[i] * frame.width - imageView.frame.width / 2,
+        imageViews.enumerated().forEach { (index, imageView) in
+            imageView.frame.origin = CGPoint(x: self.imagePositions[index] * frame.width - imageView.frame.width / 2,
                                              y: frame.height)
             imageView.isHidden = false
         }
@@ -56,7 +56,7 @@ private extension BalloonView {
         })
 
         guard imageViews.count == imagePositions.count else { return }
-        imageViews.enumerated().forEach { (i, imageView) in
+        imageViews.forEach { imageView in
             let scale = CGFloat.random(in: 0.8 ... 1.0)
             imageView.transform = CGAffineTransform.identity.scaledBy(x: scale, y: scale)
             imageView.isHidden = true
