@@ -69,7 +69,7 @@ private extension FireworksView {
         rocketCell.duration = Double(rocketDuration)
 
         let explosionCell = CAEmitterCell()
-        explosionCell.birthRate = 10000
+        explosionCell.birthRate = 500
         explosionCell.lifetime = explosionLifetime
         explosionCell.alphaSpeed = -0.5 / explosionLifetime
         explosionCell.velocity = 100
@@ -78,10 +78,21 @@ private extension FireworksView {
         explosionCell.scaleSpeed = -0.1 / CGFloat(explosionLifetime)
         explosionCell.emissionRange = 2 * .pi
         explosionCell.yAcceleration = 100
-        explosionCell.contents = UIImage(named: .spark).cgImage
         explosionCell.beginTime = 1.5
         explosionCell.duration = 0.1
 
+        let flareCell = CAEmitterCell()
+        flareCell.birthRate = 50
+        flareCell.lifetime = explosionLifetime
+        flareCell.velocity = 0
+        flareCell.velocityRange = 20
+        flareCell.alphaSpeed = -0.5 / explosionLifetime
+        flareCell.emissionRange = 2 * .pi
+        flareCell.yAcceleration = 5
+        flareCell.contents = UIImage(named: .spark).cgImage
+        flareCell.duration = Double(explosionLifetime)
+
+        explosionCell.emitterCells = [flareCell]
         baseCell.emitterCells = [rocketCell, explosionCell]
         emitterLayer.emitterCells = [baseCell]
         emitterLayer.renderMode = .unordered
