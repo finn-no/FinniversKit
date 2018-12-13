@@ -7,7 +7,8 @@ import FinniversKit
 class BalloonDemoView: UIView {
 
     private let assets: [FinniversImageAsset] = [.balloon_2, .balloon_0, .balloon_1, .balloon_9]
-    private lazy var balloonView = BalloonView(frame: UIScreen.main.bounds)
+    private lazy var balloonView = BalloonView(frame: .zero)
+    private lazy var fireworksView = FireworksView(frame: .zero)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,13 +22,20 @@ class BalloonDemoView: UIView {
     }
 
     @objc func handleTap(sender: UITapGestureRecognizer) {
-        balloonView.animate(duration: 10.0)
+        fireworksView.start()
+        balloonView.animate(duration: 10.0) {
+            self.fireworksView.stop()
+        }
     }
 }
 
 private extension BalloonDemoView {
     func setup() {
+        balloonView.imagePositions = [0.2, 0.4, 0.6, 0.8]
         balloonView.imageAssets = assets
+        
+        addSubview(fireworksView)
+        fireworksView.fillInSuperview()
         addSubview(balloonView)
         balloonView.fillInSuperview()
     }

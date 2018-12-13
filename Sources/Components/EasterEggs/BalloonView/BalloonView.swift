@@ -6,15 +6,13 @@ import UIKit
 
 public class BalloonView: UIView {
 
+    public var imagePositions: [CGFloat] = []
     public var imageAssets: [FinniversImageAsset] = [] {
         didSet { loadImages(assets: imageAssets) }
     }
 
-    public var isAnimating = false
-
+    private var isAnimating = false
     private var imageViews: [UIImageView] = []
-    private var topAnchors: [NSLayoutConstraint] = []
-    private var leadingAnchors: [NSLayoutConstraint] = []
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,10 +23,16 @@ public class BalloonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func animate(duration: Double) {
+    public func animate(duration: Double, completion: @escaping () -> Void) {
         guard !isAnimating else { return }
         isAnimating = true
-        UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeCubic, animations: {
+        imageViews.enumerated().forEach { (i, imageView) in
+            imageView.frame.origin = CGPoint(x: self.imagePositions[i] * frame.width - imageView.frame.width / 2,
+                                             y: frame.height)
+            imageView.isHidden = false
+        }
+
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeLinear, animations: {
             self.imageViews.forEach({ imageView in
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: Double.random(in: 0.8 ... 1.0), animations: {
                     imageView.frame.origin.y = -imageView.frame.height
@@ -36,13 +40,13 @@ public class BalloonView: UIView {
             })
         }, completion: { _ in
             self.isAnimating = false
+            completion()
         })
     }
 }
 
 private extension BalloonView {
     func loadImages(assets: [FinniversImageAsset]) {
-        superview?.layoutIfNeeded()
         if !imageViews.isEmpty {
             imageViews.forEach { $0.removeFromSuperview() }
         }
@@ -50,12 +54,13 @@ private extension BalloonView {
         imageViews = assets.map({ asset -> UIImageView in
             return UIImageView(image: UIImage(named: asset))
         })
-        
-        imageViews.enumerated().forEach { (index, imageView) in
+
+        guard imageViews.count == imagePositions.count else { return }
+        imageViews.enumerated().forEach { (i, imageView) in
             let scale = CGFloat.random(in: 0.8 ... 1.0)
             imageView.transform = CGAffineTransform.identity.scaledBy(x: scale, y: scale)
-            imageView.frame.origin = CGPoint(x: 32 + CGFloat(index) * 68, y: frame.height)
-            addSubview(imageView)
+            imageView.isHidden = true
+            insertSubview(imageView, at: Int.random(in: 0 ..< imageViews.count))
         }
     }
 }
