@@ -43,7 +43,7 @@ private extension NewYearsDemoView {
         newYearsView.fillInSuperview()
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: centerXAnchor),
-            label.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing)
+            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.largeSpacing)
         ])
     }
 }
