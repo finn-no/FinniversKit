@@ -40,6 +40,8 @@ public enum ComponentViews: String, CaseIterable {
     case horizontalSlide
     case easterEggButton
     case bottomSheet
+    case balloonView
+    case fireworksView
 
     public var viewController: UIViewController {
         switch self {
@@ -80,6 +82,10 @@ public enum ComponentViews: String, CaseIterable {
         case .bottomSheet:
             let controller = DemoViewController<ButtonDemoView>()
             return BottomSheet(rootViewController: controller)
+        case .balloonView:
+            return DemoViewController<BalloonDemoView>()
+        case .fireworksView:
+                return DemoViewController<FireworksView>()
         }
     }
 }

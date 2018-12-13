@@ -11,6 +11,10 @@ NSString *const FinniversImageAssetarrowDown = @"arrowDown";
 NSString *const FinniversImageAssetarrowRight = @"arrowRight";
 NSString *const FinniversImageAssetarrowUp = @"arrowUp";
 NSString *const FinniversImageAssetattachment = @"attachment";
+NSString *const FinniversImageAssetballoon_0 = @"balloon_0";
+NSString *const FinniversImageAssetballoon_1 = @"balloon_1";
+NSString *const FinniversImageAssetballoon_2 = @"balloon_2";
+NSString *const FinniversImageAssetballoon_9 = @"balloon_9";
 NSString *const FinniversImageAssetblockUser = @"blockUser";
 NSString *const FinniversImageAssetboat = @"boat";
 NSString *const FinniversImageAssetcalendar = @"calendar";
@@ -73,6 +77,7 @@ NSString *const FinniversImageAssetshare = @"share";
 NSString *const FinniversImageAssetshopping = @"shopping";
 NSString *const FinniversImageAssetsmalljobs = @"smalljobs";
 NSString *const FinniversImageAssetsold = @"sold";
+NSString *const FinniversImageAssetspark = @"spark";
 NSString *const FinniversImageAssetspidLogo = @"spidLogo";
 NSString *const FinniversImageAssetsuccess = @"success";
 NSString *const FinniversImageAssettrashcan = @"trashcan";
@@ -90,6 +95,10 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetarrowRight,
              FinniversImageAssetarrowUp,
              FinniversImageAssetattachment,
+             FinniversImageAssetballoon_0,
+             FinniversImageAssetballoon_1,
+             FinniversImageAssetballoon_2,
+             FinniversImageAssetballoon_9,
              FinniversImageAssetblockUser,
              FinniversImageAssetboat,
              FinniversImageAssetcalendar,
@@ -152,6 +161,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetshopping,
              FinniversImageAssetsmalljobs,
              FinniversImageAssetsold,
+             FinniversImageAssetspark,
              FinniversImageAssetspidLogo,
              FinniversImageAssetsuccess,
              FinniversImageAssettrashcan,
