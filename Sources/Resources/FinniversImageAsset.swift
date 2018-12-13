@@ -30,6 +30,7 @@ public enum FinniversImageAsset: String {
     case boat
     case calendar
     case camera
+    case candyCane
     case car
     case check
     case checkmarkBig
@@ -48,6 +49,10 @@ public enum FinniversImageAsset: String {
     case favouriteLegacyAdded
     case favourites
     case gallery
+    case giftRoundedRectRed
+    case giftSquarePink
+    case giftSquareYellow
+    case giftTriangleGreen
     case gridView
     case help
     case hide
@@ -72,6 +77,9 @@ public enum FinniversImageAsset: String {
     case noImage
     case notifications
     case onlyNew
+    case ornamentCircleBlue
+    case ornamentCircleRed
+    case ornamentStar
     case pin
     case plus
     case profile
@@ -87,6 +95,7 @@ public enum FinniversImageAsset: String {
     case share
     case shopping
     case smalljobs
+    case snowflake
     case sold
     case spark
     case spidLogo
@@ -113,6 +122,7 @@ public enum FinniversImageAsset: String {
             .boat,
             .calendar,
             .camera,
+            .candyCane,
             .car,
             .check,
             .checkmarkBig,
@@ -131,6 +141,10 @@ public enum FinniversImageAsset: String {
             .favouriteLegacyAdded,
             .favourites,
             .gallery,
+            .giftRoundedRectRed,
+            .giftSquarePink,
+            .giftSquareYellow,
+            .giftTriangleGreen,
             .gridView,
             .help,
             .hide,
@@ -155,6 +169,9 @@ public enum FinniversImageAsset: String {
             .noImage,
             .notifications,
             .onlyNew,
+            .ornamentCircleBlue,
+            .ornamentCircleRed,
+            .ornamentStar,
             .pin,
             .plus,
             .profile,
@@ -170,6 +187,7 @@ public enum FinniversImageAsset: String {
             .share,
             .shopping,
             .smalljobs,
+            .snowflake,
             .sold,
             .spark,
             .spidLogo,
