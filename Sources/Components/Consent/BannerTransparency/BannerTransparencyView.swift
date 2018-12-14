@@ -4,7 +4,8 @@
 
 import UIKit
 
-public final class BannerTransparencyView: UIScrollView {
+public final class BannerTransparencyView: UIView {
+    private lazy var scrollView = UIScrollView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
 
     private lazy var logoImageView: UIImageView = {
@@ -31,7 +32,7 @@ public final class BannerTransparencyView: UIScrollView {
 
             headerLabel.text = model.headerText
             adSettingsSection.set(title: model.adsSettingsTitle, text: model.adsSettingsText, buttonTitle: model.adsSettingsButtonTitle)
-            adSettingsSection.set(title: model.readMoreTitle, text: model.readMoreText, buttonTitle: model.readMoreButtonTitle)
+            readMoreSection.set(title: model.readMoreTitle, text: model.readMoreText, buttonTitle: model.readMoreButtonTitle)
         }
     }
 
@@ -50,19 +51,22 @@ public final class BannerTransparencyView: UIScrollView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(contentView)
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
 
         contentView.addSubview(logoImageView)
         contentView.addSubview(headerLabel)
         contentView.addSubview(adSettingsSection)
         contentView.addSubview(readMoreSection)
 
+        scrollView.fillInSuperview()
+
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentView.widthAnchor.constraint(equalTo: widthAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
             logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
             logoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),

@@ -21,5 +21,6 @@ public class BannerTransparencyDemoView: UIView {
     private func setup() {
         addSubview(bannerTranparencyView)
         bannerTranparencyView.fillInSuperview()
+        bannerTranparencyView.model = BannerTransparencyInfoDefaultData()
     }
 }
