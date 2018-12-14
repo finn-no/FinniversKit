@@ -4,7 +4,13 @@
 
 import UIKit
 
+public protocol BannerTransparencyViewDelegate: AnyObject {
+    func bannerTransparencyViewDidSelectAdSettingsButton(_ view: BannerTransparencyView)
+    func bannerTransparencyViewDidSelectReadMoreButton(_ view: BannerTransparencyView)
+}
+
 public final class BannerTransparencyView: UIView {
+    public weak var delegate: BannerTransparencyViewDelegate?
     private lazy var scrollView = UIScrollView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
 
@@ -93,6 +99,10 @@ public final class BannerTransparencyView: UIView {
 
 extension BannerTransparencyView: BannerTransparencySectionViewDelegate {
     func bannerTransparencySectionViewDidSelectExternalLinkButton(_ view: BannerTransparencySectionView) {
-
+        if view === adSettingsSection {
+            delegate?.bannerTransparencyViewDidSelectAdSettingsButton(self)
+        } else if view == readMoreSection {
+            delegate?.bannerTransparencyViewDidSelectReadMoreButton(self)
+        }
     }
 }
