@@ -1,0 +1,94 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
+import UIKit
+
+public final class BannerTransparencyView: UIScrollView {
+    private lazy var contentView = UIView(withAutoLayout: true)
+
+    private lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: FinniversImageAsset.finnLogo)
+        return imageView
+    }()
+
+    private lazy var headerLabel: UILabel = {
+        let label = UILabel(withAutoLayout: true)
+        label.font = .caption
+        label.textColor = .licorice
+        return label
+    }()
+
+    private lazy var adSettingsSection = BannerTransparencySectionView(withAutoLayout: true)
+    private lazy var readMoreSection = BannerTransparencySectionView(withAutoLayout: true)
+
+    public var model: BannerTransparencyViewModel? {
+        didSet {
+            guard let model = model else {
+                return
+            }
+
+            headerLabel.text = model.headerText
+            adSettingsSection.set(title: model.adsSettingsTitle, text: model.adsSettingsText, buttonTitle: model.adsSettingsButtonTitle)
+            adSettingsSection.set(title: model.readMoreTitle, text: model.readMoreText, buttonTitle: model.readMoreButtonTitle)
+        }
+    }
+
+    // MARK: - Init
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    // MARK: - Setup
+
+    private func setup() {
+        addSubview(contentView)
+
+        contentView.addSubview(logoImageView)
+        contentView.addSubview(headerLabel)
+        contentView.addSubview(adSettingsSection)
+        contentView.addSubview(readMoreSection)
+
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: widthAnchor),
+
+            logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            logoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            logoImageView.widthAnchor.constraint(equalToConstant: 77),
+            logoImageView.heightAnchor.constraint(equalToConstant: 27),
+
+            headerLabel.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: .mediumSpacing),
+            headerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            headerLabel.centerYAnchor.constraint(equalTo: logoImageView.centerYAnchor),
+
+            adSettingsSection.topAnchor.constraint(equalTo: headerLabel.bottomAnchor),
+            adSettingsSection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            adSettingsSection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+
+            readMoreSection.topAnchor.constraint(equalTo: adSettingsSection.bottomAnchor),
+            readMoreSection.leadingAnchor.constraint(equalTo: adSettingsSection.leadingAnchor),
+            readMoreSection.trailingAnchor.constraint(equalTo: adSettingsSection.trailingAnchor),
+            readMoreSection.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
+        ])
+    }
+}
+
+// MARK: - BannerTransparencySectionViewDelegate
+
+extension BannerTransparencyView: BannerTransparencySectionViewDelegate {
+    func bannerTransparencySectionViewDidSelectExternalLinkButton(_ view: BannerTransparencySectionView) {
+
+    }
+}
