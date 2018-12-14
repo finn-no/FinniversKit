@@ -256,7 +256,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 private final class FavoriteButton: UIButton {
     var isFavorite = false {
         didSet {
-            let image = isFavorite ? UIImage(named: .favouriteLegacyAdded) : UIImage(named: .favouriteLegacyAdd)
+            let image = isFavorite ? UIImage(named: .favouriteAddedImg) : UIImage(named: .favouriteAddImg)
             setImage(image, for: .normal)
         }
     }
