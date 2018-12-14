@@ -22,6 +22,10 @@ public enum FinniversImageAsset: String {
     case arrowRight
     case arrowUp
     case attachment
+    case balloon0
+    case balloon1
+    case balloon2
+    case balloon9
     case blockUser
     case boat
     case calendar
@@ -93,6 +97,7 @@ public enum FinniversImageAsset: String {
     case smalljobs
     case snowflake
     case sold
+    case spark
     case spidLogo
     case success
     case trashcan
@@ -109,6 +114,10 @@ public enum FinniversImageAsset: String {
             .arrowRight,
             .arrowUp,
             .attachment,
+            .balloon0,
+            .balloon1,
+            .balloon2,
+            .balloon9,
             .blockUser,
             .boat,
             .calendar,
@@ -180,6 +189,7 @@ public enum FinniversImageAsset: String {
             .smalljobs,
             .snowflake,
             .sold,
+            .spark,
             .spidLogo,
             .success,
             .trashcan,
