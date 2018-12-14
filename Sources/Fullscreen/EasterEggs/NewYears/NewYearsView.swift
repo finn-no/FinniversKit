@@ -6,6 +6,8 @@ import UIKit
 
 public class NewYearsView: UIView {
 
+    public var isAnimating = false
+
     private let assets: [FinniversImageAsset] = [.balloon2, .balloon0, .balloon1, .balloon9]
     private lazy var balloonView = BalloonView(frame: .zero)
     private lazy var fireworksView = FireworksView(frame: .zero)
@@ -20,14 +22,25 @@ public class NewYearsView: UIView {
     }
 
     public func startAnimation(duration: Double) {
+        isAnimating = true
         fireworksView.start()
-        balloonView.animate(duration: duration) {
-            self.fireworksView.stop()
+        balloonView.animate(duration: duration) { [weak self] in
+            self?.fadeOut()
         }
     }
 }
 
 private extension NewYearsView {
+    func fadeOut() {
+        UIView.animate(withDuration: 2, animations: {
+            self.alpha = 0
+        }) { didComplete in
+            self.fireworksView.stop()
+            self.isAnimating = false
+            self.isHidden = true
+        }
+    }
+
     func setup() {
         balloonView.imagePositions = [0.2, 0.4, 0.6, 0.8]
         balloonView.imageAssets = assets

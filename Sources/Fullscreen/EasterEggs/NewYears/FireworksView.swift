@@ -51,7 +51,7 @@ private extension FireworksView {
         baseCell.lifetime = rocketDuration + explosionLifetime
         baseCell.velocity = 300
         baseCell.velocityRange = 100
-        baseCell.color = UIColor(white: 0.5, alpha: 0.5).cgColor
+        baseCell.color = UIColor(white: 0.5, alpha: 1.0).cgColor
         baseCell.redRange = 0.9
         baseCell.greenRange = 0.9
         baseCell.blueRange = 0.9
@@ -59,7 +59,7 @@ private extension FireworksView {
         let rocketCell = CAEmitterCell()
         rocketCell.birthRate = 200
         rocketCell.lifetime = rocketLifetime
-        rocketCell.alphaSpeed = -0.5 / rocketLifetime
+        rocketCell.alphaSpeed = -1.0 / rocketLifetime
         rocketCell.velocity = 0
         rocketCell.velocityRange = 50
         rocketCell.scale = 0.07
@@ -71,7 +71,7 @@ private extension FireworksView {
         let explosionCell = CAEmitterCell()
         explosionCell.birthRate = 500
         explosionCell.lifetime = explosionLifetime
-        explosionCell.alphaSpeed = -0.5 / explosionLifetime
+        explosionCell.alphaSpeed = -1.0 / explosionLifetime
         explosionCell.velocity = 100
         explosionCell.velocityRange = 50
         explosionCell.scale = 0.1
