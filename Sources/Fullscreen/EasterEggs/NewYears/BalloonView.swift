@@ -5,7 +5,6 @@
 import UIKit
 
 public class BalloonView: UIView {
-
     public var imagePositions: [CGFloat] = []
     public var imageAssets: [FinniversImageAsset] = [] {
         didSet { loadImages(assets: imageAssets) }
@@ -27,17 +26,16 @@ public class BalloonView: UIView {
         guard !isAnimating else { return }
         isAnimating = true
         imageViews.enumerated().forEach { (index, imageView) in
-            imageView.frame.origin = CGPoint(x: self.imagePositions[index] * frame.width - imageView.frame.width / 2,
-                                             y: frame.height)
+            imageView.frame.origin = CGPoint(x: self.imagePositions[index] * frame.width - imageView.frame.width / 2, y: frame.height)
             imageView.isHidden = false
         }
 
         UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModeLinear, animations: {
-            self.imageViews.forEach({ imageView in
+            self.imageViews.forEach { imageView in
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: Double.random(in: 0.8 ... 1.0), animations: {
                     imageView.frame.origin.y = -imageView.frame.height
                 })
-            })
+            }
         }, completion: { _ in
             self.isAnimating = false
             completion()
@@ -51,9 +49,9 @@ private extension BalloonView {
             imageViews.forEach { $0.removeFromSuperview() }
         }
 
-        imageViews = assets.map({ asset -> UIImageView in
+        imageViews = assets.map { asset -> UIImageView in
             return UIImageView(image: UIImage(named: asset))
-        })
+        }
 
         guard imageViews.count == imagePositions.count else { return }
         imageViews.forEach { imageView in

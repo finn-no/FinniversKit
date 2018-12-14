@@ -5,7 +5,6 @@
 import FinniversKit
 
 class NewYearsDemoView: UIView {
-
     private lazy var label: Label = {
         let label = Label(style: .title2)
         label.text = "Tap to start animation"
