@@ -5,7 +5,6 @@
 import UIKit
 
 public class FireworksView: UIView {
-
     private var positions: [CGFloat] = [0.25, 0.5, 0.8]
     private var emitterLayers: [CAEmitterLayer] = []
     private let rocketLifetime: Float = 0.3

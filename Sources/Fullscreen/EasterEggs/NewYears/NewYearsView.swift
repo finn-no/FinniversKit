@@ -44,7 +44,7 @@ private extension NewYearsView {
     func setup() {
         balloonView.imagePositions = [0.2, 0.4, 0.6, 0.8]
         balloonView.imageAssets = assets
-        
+
         addSubview(fireworksView)
         fireworksView.fillInSuperview()
         addSubview(balloonView)
