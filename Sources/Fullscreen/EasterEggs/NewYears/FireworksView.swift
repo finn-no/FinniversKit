@@ -85,7 +85,7 @@ private extension FireworksView {
         flareCell.lifetime = explosionLifetime
         flareCell.velocity = 0
         flareCell.velocityRange = 20
-        flareCell.alphaSpeed = -0.5 / explosionLifetime
+        flareCell.alphaSpeed = -1.0 / explosionLifetime
         flareCell.emissionRange = 2 * .pi
         flareCell.yAcceleration = 5
         flareCell.contents = UIImage(named: .spark).cgImage
