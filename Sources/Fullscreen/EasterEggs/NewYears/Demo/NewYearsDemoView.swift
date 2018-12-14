@@ -33,6 +33,7 @@ class NewYearsDemoView: UIView {
 
 private extension NewYearsDemoView {
     @objc func handleTap() {
+        newYearsView.isHidden = false
         newYearsView.startAnimation(duration: 10.0)
     }
 

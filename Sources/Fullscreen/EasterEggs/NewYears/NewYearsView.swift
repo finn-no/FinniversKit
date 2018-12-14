@@ -38,6 +38,7 @@ private extension NewYearsView {
             self.fireworksView.stop()
             self.isAnimating = false
             self.isHidden = true
+            self.alpha = 1
         }
     }
 
