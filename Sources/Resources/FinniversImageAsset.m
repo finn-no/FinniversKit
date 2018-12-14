@@ -15,6 +15,7 @@ NSString *const FinniversImageAssetblockUser = @"blockUser";
 NSString *const FinniversImageAssetboat = @"boat";
 NSString *const FinniversImageAssetcalendar = @"calendar";
 NSString *const FinniversImageAssetcamera = @"camera";
+NSString *const FinniversImageAssetcandyCane = @"candyCane";
 NSString *const FinniversImageAssetcar = @"car";
 NSString *const FinniversImageAssetcheck = @"check";
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
@@ -34,6 +35,10 @@ NSString *const FinniversImageAssetfavouriteLegacyAdded = @"favouriteLegacyAdded
 NSString *const FinniversImageAssetfavourites = @"favourites";
 NSString *const FinniversImageAssetfinnLogo = @"finnLogo";
 NSString *const FinniversImageAssetgallery = @"gallery";
+NSString *const FinniversImageAssetgiftRoundedRectRed = @"giftRoundedRectRed";
+NSString *const FinniversImageAssetgiftSquarePink = @"giftSquarePink";
+NSString *const FinniversImageAssetgiftSquareYellow = @"giftSquareYellow";
+NSString *const FinniversImageAssetgiftTriangleGreen = @"giftTriangleGreen";
 NSString *const FinniversImageAssetgridView = @"gridView";
 NSString *const FinniversImageAssethelp = @"help";
 NSString *const FinniversImageAssethide = @"hide";
@@ -58,6 +63,9 @@ NSString *const FinniversImageAssetmoteplassen = @"moteplassen";
 NSString *const FinniversImageAssetnoImage = @"noImage";
 NSString *const FinniversImageAssetnotifications = @"notifications";
 NSString *const FinniversImageAssetonlyNew = @"onlyNew";
+NSString *const FinniversImageAssetornamentCircleBlue = @"ornamentCircleBlue";
+NSString *const FinniversImageAssetornamentCircleRed = @"ornamentCircleRed";
+NSString *const FinniversImageAssetornamentStar = @"ornamentStar";
 NSString *const FinniversImageAssetpin = @"pin";
 NSString *const FinniversImageAssetplus = @"plus";
 NSString *const FinniversImageAssetprofile = @"profile";
@@ -73,6 +81,7 @@ NSString *const FinniversImageAssetsettings = @"settings";
 NSString *const FinniversImageAssetshare = @"share";
 NSString *const FinniversImageAssetshopping = @"shopping";
 NSString *const FinniversImageAssetsmalljobs = @"smalljobs";
+NSString *const FinniversImageAssetsnowflake = @"snowflake";
 NSString *const FinniversImageAssetsold = @"sold";
 NSString *const FinniversImageAssetspidLogo = @"spidLogo";
 NSString *const FinniversImageAssetsuccess = @"success";
@@ -95,6 +104,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetboat,
              FinniversImageAssetcalendar,
              FinniversImageAssetcamera,
+             FinniversImageAssetcandyCane,
              FinniversImageAssetcar,
              FinniversImageAssetcheck,
              FinniversImageAssetcheckmarkBig,
@@ -114,6 +124,10 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetfavourites,
              FinniversImageAssetfinnLogo,
              FinniversImageAssetgallery,
+             FinniversImageAssetgiftRoundedRectRed,
+             FinniversImageAssetgiftSquarePink,
+             FinniversImageAssetgiftSquareYellow,
+             FinniversImageAssetgiftTriangleGreen,
              FinniversImageAssetgridView,
              FinniversImageAssethelp,
              FinniversImageAssethide,
@@ -138,6 +152,9 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetnoImage,
              FinniversImageAssetnotifications,
              FinniversImageAssetonlyNew,
+             FinniversImageAssetornamentCircleBlue,
+             FinniversImageAssetornamentCircleRed,
+             FinniversImageAssetornamentStar,
              FinniversImageAssetpin,
              FinniversImageAssetplus,
              FinniversImageAssetprofile,
@@ -153,6 +170,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetshare,
              FinniversImageAssetshopping,
              FinniversImageAssetsmalljobs,
+             FinniversImageAssetsnowflake,
              FinniversImageAssetsold,
              FinniversImageAssetspidLogo,
              FinniversImageAssetsuccess,
