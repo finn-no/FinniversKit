@@ -11,7 +11,7 @@ class ComponentViewTests: FBSnapshotTestCase {
 
     override func setUp() {
         super.setUp()
-        recordMode = false
+        recordMode = true
     }
 
     override class func tearDown() {
@@ -29,6 +29,14 @@ class ComponentViewTests: FBSnapshotTestCase {
 
     func testButton() {
         snapshot(.button)
+    }
+
+    func testEasterEggButton() {
+        snapshot(.easterEggButton)
+    }
+
+    func testCogWheelButton() {
+        snapshot(.cogWheelButton)
     }
 
     func testLabel() {
@@ -77,10 +85,6 @@ class ComponentViewTests: FBSnapshotTestCase {
 
     func testHorizontalSlide() {
         snapshot(.horizontalSlide)
-    }
-
-    func testEasterEggButton() {
-        snapshot(.easterEggButton)
     }
 
     func testBottomSheet() {
