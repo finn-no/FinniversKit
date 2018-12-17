@@ -4,60 +4,46 @@
 
 import FinniversKit
 
-class BottomSheetDemoViewController: UIViewController {
+class BottomSheetDemoView: UIView {
 
-    private lazy var tableView: UITableView = {
-        let view = UITableView()
-        return view
+    private lazy var topAnchorLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = .title3
+        label.textColor = .stone
+        label.text = "Top anchor"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
-    private lazy var viewController: UIViewController = {
-        let viewController = UIViewController(nibName: nil, bundle: nil)
-        viewController.navigationItem.title = "Bottom Sheet"
-        viewController.view.backgroundColor = .milk
-        return viewController
+    private lazy var bottomAnchorLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = .title3
+        label.textColor = .stone
+        label.text = "Bottom anchor"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
-    private lazy var button: Button = {
-        let button = Button(style: .callToAction)
-        button.setTitle("Present", for: .normal)
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
-        doubleTap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(doubleTap)
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }
 
-private extension BottomSheetDemoViewController {
-    @objc func buttonTapped() {
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.navigationBar.barTintColor = .white
-        navigationController.navigationBar.tintColor = .white
-        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.stone]
-        navigationController.navigationBar.isTranslucent = false
-        let bottomSheet = BottomSheet(rootViewController: navigationController)
-        present(bottomSheet, animated: true)
-    }
-
-    @objc func didDoubleTap() {
-        State.lastSelectedIndexPath = nil
-        dismiss(animated: true)
-    }
-
+private extension BottomSheetDemoView {
     func setup() {
-        view.backgroundColor = .milk
-        view.addSubview(button)
+        addSubview(topAnchorLabel)
+        addSubview(bottomAnchorLabel)
         NSLayoutConstraint.activate([
-            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
-            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            button.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor, constant: -.largeSpacing),
+            topAnchorLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            topAnchorLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bottomAnchorLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            bottomAnchorLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 }

@@ -76,7 +76,8 @@ public enum ComponentViews: String, CaseIterable {
         case .easterEggButton:
             return DemoViewController<EasterEggButtonDemoView>()
         case .bottomSheet:
-            return BottomSheetDemoViewController()
+            let controller = DemoViewController<BottomSheetDemoView>()
+            return BottomSheet(rootViewController: controller)
         case .newYearsView:
                 return DemoViewController<NewYearsDemoView>()
         }
