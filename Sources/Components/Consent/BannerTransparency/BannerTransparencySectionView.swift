@@ -18,7 +18,7 @@ final class BannerTransparencySectionView: UIView {
         return label
     }()
 
-    private lazy var textLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .caption
@@ -44,6 +44,18 @@ final class BannerTransparencySectionView: UIView {
         return imageView
     }()
 
+    var model: BannerTransparencySectionViewModel? {
+        didSet {
+            guard let model = model else {
+                return
+            }
+
+            titleLabel.text = model.headerText
+            descriptionLabel.attributedText = model.detailText.attributedStringWithLineSpacing(4)
+            externalLinkButton.setTitle(model.buttonTitle, for: .normal)
+        }
+    }
+
     // MARK: - Init
 
     override init(frame: CGRect) {
@@ -58,15 +70,9 @@ final class BannerTransparencySectionView: UIView {
 
     // MARK: - Setup
 
-    func set(title: String, text: String, buttonTitle: String) {
-        titleLabel.text = title
-        textLabel.attributedText = text.attributedStringWithLineSpacing(4)
-        externalLinkButton.setTitle(buttonTitle, for: .normal)
-    }
-
     private func setup() {
         addSubview(titleLabel)
-        addSubview(textLabel)
+        addSubview(descriptionLabel)
         addSubview(externalLinkButton)
         addSubview(externalLinkImageView)
 
@@ -75,11 +81,11 @@ final class BannerTransparencySectionView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            externalLinkButton.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: .smallSpacing),
+            externalLinkButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .smallSpacing),
             externalLinkButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             externalLinkButton.trailingAnchor.constraint(equalTo: externalLinkImageView.leadingAnchor, constant: -.mediumLargeSpacing),
 

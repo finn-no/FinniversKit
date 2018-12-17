@@ -47,8 +47,8 @@ public final class BannerTransparencyView: UIView {
             }
 
             headerLabel.text = model.headerText
-            adSettingsSection.set(title: model.adsSettingsTitle, text: model.adsSettingsText, buttonTitle: model.adsSettingsButtonTitle)
-            readMoreSection.set(title: model.readMoreTitle, text: model.readMoreText, buttonTitle: model.readMoreButtonTitle)
+            adSettingsSection.model = model.adSettingsModel
+            readMoreSection.model = model.readMoreModel
         }
     }
 
