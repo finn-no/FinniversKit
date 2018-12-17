@@ -64,7 +64,7 @@ final class BannerTransparencySectionView: UIView {
 
     func set(title: String, text: String, buttonTitle: String) {
         titleLabel.text = title
-        textLabel.text = text
+        textLabel.attributedText = text.attributedStringWithLineSpacing(4)
         externalLinkButton.setTitle(buttonTitle, for: .normal)
 
         [titleLabel, textLabel, externalLinkButton].forEach {
@@ -79,15 +79,15 @@ final class BannerTransparencySectionView: UIView {
         addSubview(externalLinkImageView)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
             textLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            externalLinkButton.topAnchor.constraint(equalTo: textLabel.bottomAnchor),
+            externalLinkButton.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: .smallSpacing),
             externalLinkButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             externalLinkButton.trailingAnchor.constraint(equalTo: externalLinkImageView.leadingAnchor, constant: -.mediumLargeSpacing),
 
@@ -96,7 +96,7 @@ final class BannerTransparencySectionView: UIView {
             externalLinkImageView.widthAnchor.constraint(equalToConstant: 18),
             externalLinkImageView.heightAnchor.constraint(equalTo: externalLinkImageView.widthAnchor),
 
-            bottomAnchor.constraint(equalTo: externalLinkButton.bottomAnchor, constant: .mediumSpacing)
+            bottomAnchor.constraint(equalTo: externalLinkButton.bottomAnchor, constant: .smallSpacing)
         ])
     }
 

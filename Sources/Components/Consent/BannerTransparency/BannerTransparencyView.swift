@@ -80,12 +80,12 @@ public final class BannerTransparencyView: UIView {
             logoImageView.heightAnchor.constraint(equalToConstant: 27),
 
             headerLabel.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: .mediumSpacing),
-            headerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            headerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             headerLabel.centerYAnchor.constraint(equalTo: logoImageView.centerYAnchor),
 
-            adSettingsSection.topAnchor.constraint(equalTo: headerLabel.bottomAnchor),
+            adSettingsSection.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .mediumLargeSpacing),
             adSettingsSection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            adSettingsSection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            adSettingsSection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
             readMoreSection.topAnchor.constraint(equalTo: adSettingsSection.bottomAnchor),
             readMoreSection.leadingAnchor.constraint(equalTo: adSettingsSection.leadingAnchor),
