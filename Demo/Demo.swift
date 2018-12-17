@@ -32,6 +32,7 @@ public enum ComponentViews: String, CaseIterable {
     case switchView
     case inlineConsent
     case consentTransparencyInfo
+    case bannerTransparency
     case checkbox
     case radioButton
     case roundedImageView
@@ -59,6 +60,9 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<InlineConsentDemoView>()
         case .consentTransparencyInfo:
             return DemoViewController<ConsentTransparencyInfoDemoView>()
+        case .bannerTransparency:
+            let controller = DemoViewController<BannerTransparencyDemoView>()
+            return BottomSheet(rootViewController: controller)
         case .checkbox:
             return DemoViewController<CheckboxDemoView>(withDismissButton: true)
         case .radioButton:

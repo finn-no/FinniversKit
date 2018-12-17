@@ -34,12 +34,12 @@ private extension NewYearsView {
     func fadeOut() {
         UIView.animate(withDuration: 2, animations: {
             self.alpha = 0
-        }) { didComplete in
+        }, completion: { _ in
             self.fireworksView.stop()
             self.isAnimating = false
             self.isHidden = true
             self.alpha = 1
-        }
+        })
     }
 
     func setup() {
