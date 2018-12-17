@@ -49,7 +49,7 @@ class SpringAnimator: NSObject {
 
         guard position != 0, displayLink == nil else { return }
         displayLink = CADisplayLink(target: self, selector: #selector(step(displayLink:)))
-        displayLink?.add(to: .current, forMode: .default)
+        displayLink?.add(to: .current, forMode: .common)
         state = .animating
     }
 

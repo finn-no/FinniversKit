@@ -80,8 +80,14 @@ public enum ComponentViews: String, CaseIterable {
         case .easterEggButton:
             return DemoViewController<EasterEggButtonDemoView>()
         case .bottomSheet:
-            let controller = DemoViewController<ButtonDemoView>()
-            return BottomSheet(rootViewController: controller)
+            let controller = DemoViewController<AdsGridViewDemoView>()
+            controller.navigationItem.title = "Bottom Sheet"
+            let navigation = UINavigationController(rootViewController: controller)
+            navigation.navigationBar.barTintColor = .white
+            navigation.navigationBar.tintColor = .white
+            navigation.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.stone]
+            navigation.navigationBar.isTranslucent = false
+            return BottomSheet(rootViewController: navigation)
         case .newYearsView:
                 return DemoViewController<NewYearsDemoView>()
         }

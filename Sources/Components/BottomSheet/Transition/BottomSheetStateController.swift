@@ -7,21 +7,22 @@ import UIKit
 extension BottomSheetStateController {
     enum State {
         case expanded
-        case compressed
+        case compact
         case dismissed
     }
 }
 
 class BottomSheetStateController {
 
-    var state: State = .compressed
+    var state: State = .compact
     var frame: CGRect = .zero
+    var height: BottomSheet.Height = .zero
+
     var targetPosition: CGFloat {
         return targetPosition(for: state)
     }
 
-    private var minValue: CGFloat = 44
-    private var threshold: CGFloat = 75
+    private let threshold: CGFloat = 75
 
     func updateState(withTranslation translation: CGFloat) {
         state = nextState(forTranslation: translation, withCurrent: state, usingThreshold: threshold)
@@ -31,24 +32,24 @@ class BottomSheetStateController {
 private extension BottomSheetStateController {
     func nextState(forTranslation translation: CGFloat, withCurrent current: State, usingThreshold threshold: CGFloat) -> State {
         switch current {
-        case .compressed:
+        case .compact:
             if translation < -threshold {
                 return .expanded
             } else if translation > threshold { return .dismissed }
         case .expanded:
-            if translation > threshold { return .compressed }
+            if translation > threshold { return .compact }
         case .dismissed:
-            if translation < -threshold { return .compressed }
+            if translation < -threshold { return .compact }
         }
         return current
     }
 
     func targetPosition(for state: State) -> CGFloat {
         switch state {
-        case .compressed:
-            return frame.height / 2
+        case .compact:
+            return frame.height - height.compact
         case .expanded:
-            return minValue
+            return frame.height - height.expanded
         case .dismissed:
             return frame.height
         }
