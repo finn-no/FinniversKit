@@ -90,4 +90,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testNewYearsView() {
         snapshot(.newYearsView)
     }
+
+    func testBannerTransparencyView() {
+        snapshot(.bannerTransparency)
+    }
 }
