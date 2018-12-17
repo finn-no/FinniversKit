@@ -44,10 +44,6 @@ final class BannerTransparencySectionView: UIView {
         return imageView
     }()
 
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: bounds.width, height: UIView.noIntrinsicMetric)
-    }
-
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -66,10 +62,6 @@ final class BannerTransparencySectionView: UIView {
         titleLabel.text = title
         textLabel.attributedText = text.attributedStringWithLineSpacing(4)
         externalLinkButton.setTitle(buttonTitle, for: .normal)
-
-        [titleLabel, textLabel, externalLinkButton].forEach {
-            $0.layoutIfNeeded()
-        }
     }
 
     private func setup() {
@@ -96,7 +88,7 @@ final class BannerTransparencySectionView: UIView {
             externalLinkImageView.widthAnchor.constraint(equalToConstant: 18),
             externalLinkImageView.heightAnchor.constraint(equalTo: externalLinkImageView.widthAnchor),
 
-            bottomAnchor.constraint(equalTo: externalLinkButton.bottomAnchor, constant: .smallSpacing)
+            externalLinkButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.smallSpacing)
         ])
     }
 

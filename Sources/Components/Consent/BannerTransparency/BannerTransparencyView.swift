@@ -11,6 +11,7 @@ public protocol BannerTransparencyViewDelegate: AnyObject {
 
 public final class BannerTransparencyView: UIView {
     public weak var delegate: BannerTransparencyViewDelegate?
+
     private lazy var scrollView = UIScrollView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
 
@@ -27,8 +28,17 @@ public final class BannerTransparencyView: UIView {
         return label
     }()
 
-    private lazy var adSettingsSection = BannerTransparencySectionView(withAutoLayout: true)
-    private lazy var readMoreSection = BannerTransparencySectionView(withAutoLayout: true)
+    private lazy var adSettingsSection: BannerTransparencySectionView = {
+        let view = BannerTransparencySectionView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
+
+    private lazy var readMoreSection: BannerTransparencySectionView = {
+        let view = BannerTransparencySectionView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
 
     public var model: BannerTransparencyViewModel? {
         didSet {
