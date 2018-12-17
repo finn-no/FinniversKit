@@ -16,7 +16,7 @@ extension BottomSheet {
             return Height(compact: compact, expanded: expanded)
         }
 
-        public static var zero = Height(compact: 0, expanded: 0)
+        public static let zero = Height(compact: 0, expanded: 0)
 
         public init(compact: CGFloat, expanded: CGFloat) {
             self.compact = compact
