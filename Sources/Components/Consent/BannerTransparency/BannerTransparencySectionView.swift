@@ -18,7 +18,7 @@ final class BannerTransparencySectionView: UIView {
         return label
     }()
 
-    private lazy var detailLabel: UILabel = {
+    private lazy var detailTextLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .caption
@@ -51,7 +51,7 @@ final class BannerTransparencySectionView: UIView {
             }
 
             headerLabel.text = model.headerText
-            detailLabel.attributedText = model.detailText.attributedStringWithLineSpacing(4)
+            detailTextLabel.attributedText = model.detailText.attributedStringWithLineSpacing(4)
             externalLinkButton.setTitle(model.buttonTitle, for: .normal)
         }
     }
@@ -72,7 +72,7 @@ final class BannerTransparencySectionView: UIView {
 
     private func setup() {
         addSubview(headerLabel)
-        addSubview(detailLabel)
+        addSubview(detailTextLabel)
         addSubview(externalLinkButton)
         addSubview(externalLinkImageView)
 
@@ -81,11 +81,11 @@ final class BannerTransparencySectionView: UIView {
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            detailLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .smallSpacing),
-            detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            detailTextLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .smallSpacing),
+            detailTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            detailTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            externalLinkButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .smallSpacing),
+            externalLinkButton.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: .smallSpacing),
             externalLinkButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             externalLinkButton.trailingAnchor.constraint(equalTo: externalLinkImageView.leadingAnchor, constant: -.mediumLargeSpacing),
 
