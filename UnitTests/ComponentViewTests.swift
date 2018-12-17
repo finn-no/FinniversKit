@@ -31,6 +31,14 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.button)
     }
 
+    func testEasterEggButton() {
+        snapshot(.easterEggButton)
+    }
+
+    func testCogWheelButton() {
+        snapshot(.cogWheelButton)
+    }
+
     func testLabel() {
         snapshot(.label)
     }
@@ -77,10 +85,6 @@ class ComponentViewTests: FBSnapshotTestCase {
 
     func testHorizontalSlide() {
         snapshot(.horizontalSlide)
-    }
-
-    func testEasterEggButton() {
-        snapshot(.easterEggButton)
     }
 
     func testBottomSheet() {
