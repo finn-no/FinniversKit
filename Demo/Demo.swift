@@ -83,14 +83,8 @@ public enum ComponentViews: String, CaseIterable {
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
         case .bottomSheet:
-            let controller = DemoViewController<AdsGridViewDemoView>()
-            controller.navigationItem.title = "Bottom Sheet"
-            let navigation = UINavigationController(rootViewController: controller)
-            navigation.navigationBar.barTintColor = .white
-            navigation.navigationBar.tintColor = .white
-            navigation.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.stone]
-            navigation.navigationBar.isTranslucent = false
-            return BottomSheet(rootViewController: navigation)
+            let controller = DemoViewController<BottomSheetDemoView>()
+            return BottomSheet(rootViewController: controller)
         case .newYearsView:
                 return DemoViewController<NewYearsDemoView>()
         }
