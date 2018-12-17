@@ -16,22 +16,19 @@ import UIKit
 
 class BottomSheetPresentationController: UIPresentationController {
 
-    let interactionController: BottomSheetInteractionController
-    // Constraint is used to set the y position of the bottom sheet
-    private var constraint: NSLayoutConstraint?
+    private let height: BottomSheet.Height
+    private let interactionController: BottomSheetInteractionController
+    private var constraint: NSLayoutConstraint? // Constraint is used to set the y position of the bottom sheet
     private var gestureController: BottomSheetGestureController?
-    private var stateController = BottomSheetStateController()
-    private var springAnimator = SpringAnimator(dampingRatio: 0.78, frequencyResponse: 0.5)
+    private let stateController = BottomSheetStateController()
+    private let springAnimator = SpringAnimator(dampingRatio: 0.78, frequencyResponse: 0.5)
 
     override var presentationStyle: UIModalPresentationStyle {
         return .overCurrentContext
     }
 
-    override var shouldPresentInFullscreen: Bool {
-        return false
-    }
-
-    init(presentedViewController: UIViewController, presenting: UIViewController?, interactionController: BottomSheetInteractionController) {
+    init(presentedViewController: UIViewController, presenting: UIViewController?, height: BottomSheet.Height, interactionController: BottomSheetInteractionController) {
+        self.height = height
         self.interactionController = interactionController
         super.init(presentedViewController: presentedViewController, presenting: presenting)
     }
@@ -46,10 +43,12 @@ class BottomSheetPresentationController: UIPresentationController {
             constraint!,
             presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            presentedView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact),
+            presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
         ])
         // Setup controller
         stateController.frame = containerView.bounds
+        stateController.height = height
         gestureController = BottomSheetGestureController(presentedView: presentedView, containerView: containerView)
         gestureController?.delegate = interactionController
         interactionController.setup(with: constraint)

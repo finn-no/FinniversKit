@@ -4,12 +4,33 @@
 
 import UIKit
 
+extension BottomSheet {
+    public struct Height {
+        public let compact: CGFloat
+        public let expanded: CGFloat
+
+        public static var defaultFilterHeight: Height {
+            let screenSize = UIScreen.main.bounds.size
+            let compact: CGFloat = screenSize.height >= 812 ? 570 : 510
+            let expanded = screenSize.height - 64
+            return Height(compact: compact, expanded: expanded)
+        }
+
+        public static var zero = Height(compact: 0, expanded: 0)
+
+        public init(compact: CGFloat, expanded: CGFloat) {
+            self.compact = compact
+            self.expanded = expanded
+        }
+    }
+}
+
 public class BottomSheet: UIViewController {
 
     // MARK: - Private properties
 
     private let rootViewController: UIViewController
-    private let transitionDelegate = BottomSheetTransitioningDelegate()
+    private let transitionDelegate: BottomSheetTransitioningDelegate
 
     private let notchSize = CGSize(width: 25, height: 4)
     private let notch: UIView = {
@@ -28,8 +49,9 @@ public class BottomSheet: UIViewController {
 
     // MARK: - Setup
 
-    public init(rootViewController: UIViewController) {
+    public init(rootViewController: UIViewController, height: Height = .defaultFilterHeight) {
         self.rootViewController = rootViewController
+        self.transitionDelegate = BottomSheetTransitioningDelegate(height: height)
         super.init(nibName: nil, bundle: nil)
         transitioningDelegate = transitionDelegate
         modalPresentationStyle = .custom
