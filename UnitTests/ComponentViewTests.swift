@@ -11,7 +11,7 @@ class ComponentViewTests: FBSnapshotTestCase {
 
     override func setUp() {
         super.setUp()
-        recordMode = true
+        recordMode = false
     }
 
     override class func tearDown() {
