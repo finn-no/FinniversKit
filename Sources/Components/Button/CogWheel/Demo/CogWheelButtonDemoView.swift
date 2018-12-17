@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class CogWheelButtonDemoView: UIView {
-    private lazy var cogWheelButton = CogWheelButton(corners: [.bottomRight], withAutoLayout: true)
+    private lazy var cogWheelButton = CogWheelButton(corners: [.bottomRight], autoLayout: true)
 
     // MARK: - Init
 

@@ -25,7 +25,7 @@ public final class CogWheelButton: UIButton {
 
     // MARK: - Init
 
-    public required init(corners: UIRectCorner, withAutoLayout autoLayout: Bool = false) {
+    @objc public required init(corners: UIRectCorner, autoLayout: Bool) {
         self.corners = corners
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !autoLayout
