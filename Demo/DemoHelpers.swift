@@ -1,6 +1,7 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
+import FinniversKit
 import UIKit
 
 enum TabletDisplayMode {
@@ -18,8 +19,9 @@ public struct ContainmentOptions: OptionSet {
 
     public static let navigationController = ContainmentOptions(rawValue: 2 << 0)
     public static let tabBarController = ContainmentOptions(rawValue: 2 << 1)
-    public static let all: ContainmentOptions = [.navigationController, .tabBarController]
-    public static let none = ContainmentOptions(rawValue: 2 << 2)
+    public static let bottomSheet = ContainmentOptions(rawValue: 2 << 2)
+    public static let all: ContainmentOptions = [.navigationController, .tabBarController, .bottomSheet]
+    public static let none = ContainmentOptions(rawValue: 2 << 3)
 
     /// Attaches a navigation bar, a tab bar or both depending on what is returned here.
     /// If you return nil the screen will have no containers.
@@ -43,9 +45,9 @@ public struct ContainmentOptions: OptionSet {
             }
             switch screens {
             case .consentToggleView:
-                rawValue = ContainmentOptions.all.rawValue
+                self = [.navigationController, .tabBarController]
             case .consentActionView:
-                rawValue = ContainmentOptions.all.rawValue
+                self = [.navigationController, .tabBarController]
             default: return nil
             }
         case .components:
@@ -53,6 +55,8 @@ public struct ContainmentOptions: OptionSet {
                 return nil
             }
             switch screens {
+            case .bannerTransparency:
+                self = .bottomSheet
             default: return nil
             }
         case .recycling:
@@ -180,6 +184,14 @@ enum Sections: String, CaseIterable {
             if let unwrappedViewController = viewController {
                 tabBarController.viewControllers = [unwrappedViewController]
                 viewController = tabBarController
+            }
+        }
+
+        let shouldPresentInBottomSheet = ContainmentOptions(indexPath: indexPath)?.contains(.bottomSheet) ?? false
+        if shouldPresentInBottomSheet {
+            if let unwrappedViewController = viewController {
+                let bottomSheet = BottomSheet(rootViewController: unwrappedViewController)
+                viewController = bottomSheet
             }
         }
 
