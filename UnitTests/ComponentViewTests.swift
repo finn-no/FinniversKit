@@ -87,10 +87,6 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.horizontalSlide)
     }
 
-    func testBottomSheet() {
-        snapshot(.bottomSheet)
-    }
-
     func testNewYearsView() {
         snapshot(.newYearsView)
     }

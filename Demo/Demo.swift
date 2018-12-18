@@ -40,7 +40,6 @@ public enum ComponentViews: String, CaseIterable {
     case roundedImageView
     case loadingIndicator
     case horizontalSlide
-    case bottomSheet
     case newYearsView
 
     public var viewController: UIViewController {
@@ -66,8 +65,7 @@ public enum ComponentViews: String, CaseIterable {
         case .consentTransparencyInfo:
             return DemoViewController<ConsentTransparencyInfoDemoView>()
         case .bannerTransparency:
-            let controller = DemoViewController<BannerTransparencyDemoView>()
-            return BottomSheet(rootViewController: controller)
+            return DemoViewController<BannerTransparencyDemoView>()
         case .checkbox:
             return DemoViewController<CheckboxDemoView>(withDismissButton: true)
         case .radioButton:
@@ -82,9 +80,6 @@ public enum ComponentViews: String, CaseIterable {
             secondViewController.transitioningDelegate = presentedViewController.transition
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
-        case .bottomSheet:
-            let controller = DemoViewController<BottomSheetDemoView>()
-            return BottomSheet(rootViewController: controller)
         case .newYearsView:
                 return DemoViewController<NewYearsDemoView>()
         }
