@@ -9,13 +9,13 @@ public final class CogWheelButton: UIButton {
 
     public override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? .ice : .cogWheelColor
+            backgroundColor = isHighlighted ? .defaultButtonHighlightedBodyColor : .cogWheelColor
         }
     }
 
     public override var isSelected: Bool {
         didSet {
-            backgroundColor = isSelected ? .ice : .cogWheelColor
+            backgroundColor = isSelected ? .defaultButtonHighlightedBodyColor : .cogWheelColor
         }
     }
 
@@ -57,6 +57,6 @@ public final class CogWheelButton: UIButton {
 
 private extension UIColor {
     static var cogWheelColor: UIColor? {
-        return UIColor(r: 225, g: 233, b: 246)
+        return UIColor(white: 1, alpha: 0.7)
     }
 }
