@@ -57,6 +57,6 @@ public final class CogWheelButton: UIButton {
 
 private extension UIColor {
     static var cogWheelColor: UIColor? {
-        return UIColor(r: 179, g: 209, b: 255, a: 0.3)
+        return UIColor(r: 225, g: 233, b: 246)
     }
 }
