@@ -25,6 +25,8 @@ public enum DnaViews: String, CaseIterable {
 
 public enum ComponentViews: String, CaseIterable {
     case button
+    case easterEggButton
+    case cogWheelButton
     case label
     case ribbon
     case textField
@@ -38,13 +40,16 @@ public enum ComponentViews: String, CaseIterable {
     case roundedImageView
     case loadingIndicator
     case horizontalSlide
-    case easterEggButton
     case newYearsView
 
     public var viewController: UIViewController {
         switch self {
         case .button:
             return DemoViewController<ButtonDemoView>()
+        case .easterEggButton:
+            return DemoViewController<EasterEggButtonDemoView>()
+        case .cogWheelButton:
+            return DemoViewController<CogWheelButtonDemoView>()
         case .label:
             return DemoViewController<LabelDemoView>()
         case .ribbon:
@@ -75,8 +80,6 @@ public enum ComponentViews: String, CaseIterable {
             secondViewController.transitioningDelegate = presentedViewController.transition
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
-        case .easterEggButton:
-            return DemoViewController<EasterEggButtonDemoView>()
         case .newYearsView:
                 return DemoViewController<NewYearsDemoView>()
         }
