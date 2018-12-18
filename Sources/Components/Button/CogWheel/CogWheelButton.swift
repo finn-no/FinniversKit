@@ -9,13 +9,13 @@ public final class CogWheelButton: UIButton {
 
     public override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? .ice : .cogWheelColor
+            backgroundColor = isHighlighted ? .cogWheelHighlightedColor : .cogWheelColor
         }
     }
 
     public override var isSelected: Bool {
         didSet {
-            backgroundColor = isSelected ? .ice : .cogWheelColor
+            backgroundColor = isSelected ? .cogWheelHighlightedColor : .cogWheelColor
         }
     }
 
@@ -48,6 +48,11 @@ public final class CogWheelButton: UIButton {
     }
 
     private func setup() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 5)
+        layer.shadowRadius = .mediumLargeSpacing
+        layer.shadowOpacity = 0.6
+
         backgroundColor = UIColor.cogWheelColor
         setImage(UIImage(named: .cogWheel), for: .normal)
     }
@@ -57,6 +62,10 @@ public final class CogWheelButton: UIButton {
 
 private extension UIColor {
     static var cogWheelColor: UIColor? {
-        return UIColor(r: 225, g: 233, b: 246)
+        return UIColor(white: 1, alpha: 0.7)
+    }
+
+    static var cogWheelHighlightedColor: UIColor? {
+        return UIColor.defaultButtonHighlightedBodyColor.withAlphaComponent(0.8)
     }
 }
