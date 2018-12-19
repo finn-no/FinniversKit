@@ -27,6 +27,13 @@ class BottomSheetPresentationController: UIPresentationController {
         return .overCurrentContext
     }
 
+    private lazy var dimView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        view.alpha = 0
+        return view
+    }()
+
     init(presentedViewController: UIViewController, presenting: UIViewController?, height: BottomSheet.Height, interactionController: BottomSheetInteractionController) {
         self.height = height
         self.interactionController = interactionController
@@ -35,17 +42,8 @@ class BottomSheetPresentationController: UIPresentationController {
 
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView, let presentedView = presentedView else { return }
-        // Setup views
-        containerView.addSubview(presentedView)
-        presentedView.translatesAutoresizingMaskIntoConstraints = false
-        let constraint = presentedView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: containerView.bounds.height)
-        NSLayoutConstraint.activate([
-            constraint,
-            presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact),
-            presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
-        ])
+        setupDimView(dimView, inContainerView: containerView)
+        setupPresentedView(presentedView, inContainerView: containerView)
         // Setup controller
         stateController.frame = containerView.bounds
         stateController.height = height
@@ -53,15 +51,11 @@ class BottomSheetPresentationController: UIPresentationController {
         gestureController?.delegate = interactionController
         interactionController.setup(with: constraint)
         interactionController.stateController = stateController
-        // Add animation
-        springAnimator.addAnimation { position in
-            constraint.constant = position.y
-        }
-        self.constraint = constraint
+        animateDimView(to: 1.0)
     }
 
     override func presentationTransitionDidEnd(_ completed: Bool) {
-        // If completed is false, the transition was cancelled by user interacion
+        // If completed is false, the transition was cancelled by user interaction
         guard completed else { return }
         gestureController?.delegate = self
     }
@@ -70,11 +64,50 @@ class BottomSheetPresentationController: UIPresentationController {
         springAnimator.stopAnimation(true)
         // Make sure initial transition velocity is the same the current velocity of the bottom sheet
         interactionController.initialTransitionVelocity = -(gestureController?.velocity ?? .zero)
+        animateDimView(to: 0)
     }
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         // Completed should always be true at this point of development
         guard !completed else { return }
+        setupInteractivePresentation()
+    }
+}
+
+private extension BottomSheetPresentationController {
+    func setupDimView(_ dimView: UIView, inContainerView containerView: UIView) {
+        containerView.addSubview(dimView)
+        dimView.fillInSuperview()
+        dimView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+    }
+
+    func setupPresentedView(_ presentedView: UIView, inContainerView containerView: UIView) {
+        containerView.addSubview(presentedView)
+        presentedView.translatesAutoresizingMaskIntoConstraints = false
+        constraint = presentedView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: containerView.bounds.height)
+        NSLayoutConstraint.activate([
+            constraint!,
+            presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact),
+            presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
+        ])
+    }
+
+    @objc func handleTap() {
+        stateController.state = .dismissed
+        gestureController?.velocity = .zero
+        presentedViewController.dismiss(animated: true)
+    }
+
+    func animateDimView(to alpha: CGFloat) {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.dimView.alpha = alpha
+        }
+    }
+
+    func setupInteractivePresentation() {
+        // Setup gesture and animation for presentation
         gestureController?.delegate = self
     }
 }
