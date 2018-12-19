@@ -28,7 +28,7 @@ class BottomSheetPresentationController: UIPresentationController {
     }
 
     private lazy var dimView: UIView = {
-        let view = UIView(frame: UIScreen.main.bounds)
+        let view = UIView(frame: .zero)
         view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         view.alpha = 0
         return view
@@ -42,9 +42,8 @@ class BottomSheetPresentationController: UIPresentationController {
 
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView, let presentedView = presentedView else { return }
-        containerView.addSubview(dimView)
-        dimView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
-        setupView(presentedView, inContainerView: containerView)
+        setupDimView(dimView, inContainerView: containerView)
+        setupPresentedView(presentedView, inContainerView: containerView)
         // Setup controller
         stateController.frame = containerView.bounds
         stateController.height = height
@@ -52,7 +51,6 @@ class BottomSheetPresentationController: UIPresentationController {
         gestureController?.delegate = interactionController
         interactionController.setup(with: constraint)
         interactionController.stateController = stateController
-
         animateDimView(to: 1.0)
     }
 
@@ -78,7 +76,13 @@ class BottomSheetPresentationController: UIPresentationController {
 }
 
 private extension BottomSheetPresentationController {
-    func setupView(_ presentedView: UIView, inContainerView containerView: UIView) {
+    func setupDimView(_ dimView: UIView, inContainerView containerView: UIView) {
+        containerView.addSubview(dimView)
+        dimView.fillInSuperview()
+        dimView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+    }
+
+    func setupPresentedView(_ presentedView: UIView, inContainerView containerView: UIView) {
         containerView.addSubview(presentedView)
         presentedView.translatesAutoresizingMaskIntoConstraints = false
         constraint = presentedView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: containerView.bounds.height)
