@@ -44,7 +44,7 @@ public class SnowGlobeView: UIView {
         return player
     }()
 
-    private var isAnimating: Bool {
+    public var isAnimating: Bool {
         return emitterLayer.lifetime != 0
     }
 
@@ -71,13 +71,16 @@ public class SnowGlobeView: UIView {
             return
         }
 
+        audioPlayer?.currentTime = 0
         audioPlayer?.play()
         let duration = (audioPlayer?.duration ?? 9) - 2
 
         updateLayersVisibility(isVisible: true, animated: animated)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
-            self?.updateLayersVisibility(isVisible: false, animated: animated)
+            if self?.isAnimating == true {
+                self?.updateLayersVisibility(isVisible: false, animated: animated)
+            }
         }
     }
 
@@ -87,16 +90,22 @@ public class SnowGlobeView: UIView {
     }
 
     private func updateLayersVisibility(isVisible: Bool, animated: Bool) {
-        let animation = CABasicAnimation(keyPath: "opacity")
-        animation.fromValue = isVisible ? 0.0 : 1.0
-        animation.toValue = isVisible ? 1.0 : 0.0
-        animation.duration = animated ? 2.0 : 0.0
-        animation.fillMode = .forwards
-        animation.isRemovedOnCompletion = false
-
         let animationKey = "fade"
         layer.removeAnimation(forKey: animationKey)
-        layer.add(animation, forKey: animationKey)
+
+        if animated {
+            let animation = CABasicAnimation(keyPath: "opacity")
+            animation.fromValue = isVisible ? 0.0 : 1.0
+            animation.toValue = isVisible ? 1.0 : 0.0
+            animation.duration = 2.0
+            animation.fillMode = .forwards
+            animation.isRemovedOnCompletion = false
+
+            layer.add(animation, forKey: animationKey)
+        } else {
+            layer.opacity = isVisible ? 1 : 0
+        }
+
         emitterLayer.lifetime = isVisible ? 1 : 0
     }
 
