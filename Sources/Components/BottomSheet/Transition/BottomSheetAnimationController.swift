@@ -19,6 +19,10 @@ class BottomSheetAnimationController: NSObject, UIViewControllerAnimatedTransiti
         }
     }
 
+    func addAnimation(_ animation: @escaping (CGPoint) -> Void) {
+        animator.addAnimation(animation)
+    }
+
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         animateToTargetPosition { didComplete in
             transitionContext.completeTransition(didComplete)

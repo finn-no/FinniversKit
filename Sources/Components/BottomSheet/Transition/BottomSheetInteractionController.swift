@@ -37,6 +37,10 @@ class BottomSheetInteractionController: NSObject, UIViewControllerInteractiveTra
         animationController.initialVelocity = initialTransitionVelocity
         animationController.animateTransition(using: transitionContext)
     }
+
+    func animate(alongsideTransition animation: @escaping (CGPoint) -> Void) {
+        animationController.addAnimation(animation)
+    }
 }
 
 // The interaction is only used during the presentation transition
