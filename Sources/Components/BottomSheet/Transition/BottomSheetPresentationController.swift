@@ -55,23 +55,22 @@ class BottomSheetPresentationController: UIPresentationController {
     }
 
     override func presentationTransitionDidEnd(_ completed: Bool) {
-        // If completed is false, the transition was cancelled by user interacion
+        // If completed is false, the transition was cancelled by user interaction
         guard completed else { return }
-        setupInteractivePresentation()
+        gestureController?.delegate = self
     }
 
     override func dismissalTransitionWillBegin() {
-        // Clean up animator and gesture
-        springAnimator.stopAnimation()
-        // Setup interaction controller for dismissal
-        interactionController.initialTransitionVelocity = gestureController?.velocity ?? 0
+        springAnimator.stopAnimation(true)
+        // Make sure initial transition velocity is the same the current velocity of the bottom sheet
+        interactionController.initialTransitionVelocity = -(gestureController?.velocity ?? .zero)
         animateDimView(to: 0)
     }
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         // Completed should always be true at this point of development
         guard !completed else { return }
-        setupInteractivePresentation()
+        gestureController?.delegate = self
     }
 }
 
@@ -85,19 +84,23 @@ private extension BottomSheetPresentationController {
     func setupPresentedView(_ presentedView: UIView, inContainerView containerView: UIView) {
         containerView.addSubview(presentedView)
         presentedView.translatesAutoresizingMaskIntoConstraints = false
-        constraint = presentedView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: containerView.bounds.height)
+        let constraint = presentedView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: containerView.bounds.height)
         NSLayoutConstraint.activate([
-            constraint!,
+            constraint,
             presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact),
             presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
         ])
+        springAnimator.addAnimation { position in
+            constraint.constant = position.y
+        }
+        self.constraint = constraint
     }
 
     @objc func handleTap() {
         stateController.state = .dismissed
-        gestureController?.velocity = 0
+        gestureController?.velocity = .zero
         presentedViewController.dismiss(animated: true)
     }
 
@@ -106,33 +109,30 @@ private extension BottomSheetPresentationController {
             self?.dimView.alpha = alpha
         }
     }
-
-    func setupInteractivePresentation() {
-        // Setup gesture and animation for presentation
-        gestureController?.delegate = self
-        springAnimator.constraint = constraint
-    }
 }
 
 extension BottomSheetPresentationController: BottomSheetGestureControllerDelegate {
-    // This method expects to return the current y position of the bottom sheet
-    func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGFloat {
+    // This method expects to return the current position of the bottom sheet
+    func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGPoint {
+        guard let constraint = constraint else { return .zero }
         springAnimator.pauseAnimation()
-        return constraint?.constant ?? 0
+        return CGPoint(x: 0, y: constraint.constant)
     }
-    // Position is the y position of the bottom sheet in the container view
+    // Position is the position of the bottom sheet in the container view
     func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController) {
-        constraint?.constant = controller.position
+        constraint?.constant = controller.position.y
     }
 
     func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController) {
+        guard let constraint = constraint else { return }
         stateController.updateState(withTranslation: controller.translation)
         switch stateController.state {
         case .dismissed:
             presentedViewController.dismiss(animated: true)
         default:
-            springAnimator.targetPosition = stateController.targetPosition
-            springAnimator.initialVelocity = controller.velocity
+            springAnimator.fromPosition = CGPoint(x: 0, y: constraint.constant)
+            springAnimator.toPosition = stateController.targetPosition
+            springAnimator.initialVelocity = -controller.velocity
             springAnimator.startAnimation()
         }
     }
