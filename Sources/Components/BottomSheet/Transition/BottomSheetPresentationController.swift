@@ -29,7 +29,7 @@ class BottomSheetPresentationController: UIPresentationController {
 
     private lazy var dimView: UIView = {
         let view = UIView(frame: UIScreen.main.bounds)
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         view.alpha = 0
         return view
     }()
