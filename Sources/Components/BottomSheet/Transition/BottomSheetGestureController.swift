@@ -6,19 +6,19 @@ import UIKit
 
 protocol BottomSheetGestureControllerDelegate: class {
     // Expects to get the current position of the bottom sheet
-    func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGFloat
+    func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGPoint
     func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController)
     func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController)
 }
 
 class BottomSheetGestureController {
 
-    var position: CGFloat = 0
-    var velocity: CGFloat = 0
-    var translation: CGFloat = 0
+    var position: CGPoint = .zero
+    var velocity: CGPoint = .zero
+    var translation: CGPoint = .zero
     weak var delegate: BottomSheetGestureControllerDelegate?
 
-    private var initialConstant = 0 as CGFloat
+    private var initialPosition: CGPoint = .zero
     private lazy var panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
     private let presentedView: UIView
     private let containerView: UIView
@@ -33,16 +33,16 @@ class BottomSheetGestureController {
 private extension BottomSheetGestureController {
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: containerView)
-        self.translation = translation.y
+        self.translation = translation
         let velocity = gesture.velocity(in: containerView)
-        self.velocity = velocity.y
+        self.velocity = velocity
 
         switch gesture.state {
         case .began:
-            initialConstant = delegate?.bottomSheetGestureControllerDidBeginGesture(self) ?? 0
+            initialPosition = delegate?.bottomSheetGestureControllerDidBeginGesture(self) ?? .zero
 
         case .changed:
-            position = initialConstant + translation.y
+            position = initialPosition + translation
             delegate?.bottomSheetGestureControllerDidChangeGesture(self)
 
         case .ended:
