@@ -70,7 +70,7 @@ class BottomSheetPresentationController: UIPresentationController {
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         // Completed should always be true at this point of development
         guard !completed else { return }
-        setupInteractivePresentation()
+        gestureController?.delegate = self
     }
 }
 
@@ -84,14 +84,18 @@ private extension BottomSheetPresentationController {
     func setupPresentedView(_ presentedView: UIView, inContainerView containerView: UIView) {
         containerView.addSubview(presentedView)
         presentedView.translatesAutoresizingMaskIntoConstraints = false
-        constraint = presentedView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: containerView.bounds.height)
+        let constraint = presentedView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: containerView.bounds.height)
         NSLayoutConstraint.activate([
-            constraint!,
+            constraint,
             presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact),
             presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
         ])
+        springAnimator.addAnimation { position in
+            constraint.constant = position.y
+        }
+        self.constraint = constraint
     }
 
     @objc func handleTap() {
@@ -104,11 +108,6 @@ private extension BottomSheetPresentationController {
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.dimView.alpha = alpha
         }
-    }
-
-    func setupInteractivePresentation() {
-        // Setup gesture and animation for presentation
-        gestureController?.delegate = self
     }
 }
 
