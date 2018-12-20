@@ -18,6 +18,7 @@
 		082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */; };
 		082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D421C15C9200831BDE /* CandyCaneView.swift */; };
 		08796D8821CB89400023A441 /* AnimatedHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D8721CB89400023A441 /* AnimatedHeartView.swift */; };
+		08796D8A21CB8AB90023A441 /* HeartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D8921CB8AB90023A441 /* HeartTableViewCell.swift */; };
 		08796D9121CB97F40023A441 /* BasicTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9021CB97F40023A441 /* BasicTableViewCellViewModel.swift */; };
 		08796D9321CB982F0023A441 /* SelectableTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9221CB982F0023A441 /* SelectableTableViewCellViewModel.swift */; };
 		08796D9521CB984E0023A441 /* IconTitleTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9421CB984E0023A441 /* IconTitleTableViewCellViewModel.swift */; };
@@ -301,6 +302,7 @@
 		082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyChristmasViewDemoView.swift; sourceTree = "<group>"; };
 		082D80D421C15C9200831BDE /* CandyCaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyCaneView.swift; sourceTree = "<group>"; };
 		08796D8721CB89400023A441 /* AnimatedHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedHeartView.swift; sourceTree = "<group>"; };
+		08796D8921CB8AB90023A441 /* HeartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartTableViewCell.swift; sourceTree = "<group>"; };
 		08796D9021CB97F40023A441 /* BasicTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		08796D9221CB982F0023A441 /* SelectableTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		08796D9421CB984E0023A441 /* IconTitleTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTitleTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -601,6 +603,7 @@
 				08D70A0A21832546003E2222 /* BasicTableViewCell.swift */,
 				08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */,
 				08D70A18218328EB003E2222 /* IconTitleTableViewCell.swift */,
+				08796D8921CB8AB90023A441 /* HeartTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2344,6 +2347,7 @@
 				144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */,
 				DA8EF1262164E7EC0028740C /* ConsentToggleViewModel.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
+				08796D8A21CB8AB90023A441 /* HeartTableViewCell.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
 				CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */,
 				CF3D5EEC215A6741006E4D08 /* DrumMachineView.swift in Sources */,
