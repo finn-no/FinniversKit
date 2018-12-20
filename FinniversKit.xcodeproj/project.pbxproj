@@ -1213,6 +1213,8 @@
 				CF3D5EEF215A6D9E006E4D08 /* Sounds */,
 				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
+				DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */,
+				DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */,
 				44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */,
 				144959D92122C4400084549F /* FinniversImageAsset.h */,
 				144959DA2122C4400084549F /* FinniversImageAsset.m */,
@@ -1736,8 +1738,6 @@
 				DAA9A3A32102153F0021F7DC /* Selectionbox.swift */,
 				DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */,
 				DAA9A3A7210215400021F7DC /* AnimatedSelectionView.swift */,
-				DAA9A3AD2102156C0021F7DC /* CheckboxAnimation.xcassets */,
-				DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */,
 				0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */,
 				0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */,
 			);
