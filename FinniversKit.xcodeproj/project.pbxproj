@@ -17,6 +17,12 @@
 		082D80D121C1411700831BDE /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D021C1411700831BDE /* StarView.swift */; };
 		082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */; };
 		082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D421C15C9200831BDE /* CandyCaneView.swift */; };
+		08796D8821CB89400023A441 /* AnimatedHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D8721CB89400023A441 /* AnimatedHeartView.swift */; };
+		08796D8A21CB8AB90023A441 /* HeartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D8921CB8AB90023A441 /* HeartTableViewCell.swift */; };
+		08796D8E21CB97200023A441 /* HeartSubtitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D8D21CB97200023A441 /* HeartSubtitleCellDemoView.swift */; };
+		08796D9121CB97F40023A441 /* BasicTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9021CB97F40023A441 /* BasicTableViewCellViewModel.swift */; };
+		08796D9321CB982F0023A441 /* SelectableTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9221CB982F0023A441 /* SelectableTableViewCellViewModel.swift */; };
+		08796D9521CB984E0023A441 /* IconTitleTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9421CB984E0023A441 /* IconTitleTableViewCellViewModel.swift */; };
 		089DF42321C13178008A8711 /* RectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089DF42221C13178008A8711 /* RectangleGiftView.swift */; };
 		08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A0A21832546003E2222 /* BasicTableViewCell.swift */; };
 		08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */; };
@@ -294,6 +300,12 @@
 		082D80D021C1411700831BDE /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 		082D80D221C1440D00831BDE /* EmptyChristmasViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyChristmasViewDemoView.swift; sourceTree = "<group>"; };
 		082D80D421C15C9200831BDE /* CandyCaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyCaneView.swift; sourceTree = "<group>"; };
+		08796D8721CB89400023A441 /* AnimatedHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedHeartView.swift; sourceTree = "<group>"; };
+		08796D8921CB8AB90023A441 /* HeartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartTableViewCell.swift; sourceTree = "<group>"; };
+		08796D8D21CB97200023A441 /* HeartSubtitleCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartSubtitleCellDemoView.swift; sourceTree = "<group>"; };
+		08796D9021CB97F40023A441 /* BasicTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		08796D9221CB982F0023A441 /* SelectableTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		08796D9421CB984E0023A441 /* IconTitleTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTitleTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		089DF42221C13178008A8711 /* RectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleGiftView.swift; sourceTree = "<group>"; };
 		08D70A0A21832546003E2222 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
 		08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
@@ -552,6 +564,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08796D8F21CB97D70023A441 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				08796D9021CB97F40023A441 /* BasicTableViewCellViewModel.swift */,
+				08796D9221CB982F0023A441 /* SelectableTableViewCellViewModel.swift */,
+				08796D9421CB984E0023A441 /* IconTitleTableViewCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		089DF42121C13064008A8711 /* ChristmasViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +591,7 @@
 			isa = PBXGroup;
 			children = (
 				08D70A0921832538003E2222 /* Cells */,
+				08796D8F21CB97D70023A441 /* ViewModels */,
 			);
 			path = Generic;
 			sourceTree = "<group>";
@@ -580,6 +603,7 @@
 				08D70A0A21832546003E2222 /* BasicTableViewCell.swift */,
 				08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */,
 				08D70A18218328EB003E2222 /* IconTitleTableViewCell.swift */,
+				08796D8921CB8AB90023A441 /* HeartTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -592,6 +616,7 @@
 				08D70A22218329ED003E2222 /* CheckboxCellDemoView.swift */,
 				08D70A24218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift */,
 				08D70A2621832A0C003E2222 /* IconTitleCellDemoView.swift */,
+				08796D8D21CB97200023A441 /* HeartSubtitleCellDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1738,6 +1763,7 @@
 				DAA9A3A7210215400021F7DC /* AnimatedSelectionView.swift */,
 				0817FFCD21831045001BD9C4 /* AnimatedCheckboxView.swift */,
 				0817FFCC21831045001BD9C4 /* AnimatedRadiobuttonView.swift */,
+				08796D8721CB89400023A441 /* AnimatedHeartView.swift */,
 			);
 			path = SelectionBoxes;
 			sourceTree = "<group>";
@@ -2135,6 +2161,7 @@
 				444246082137D61200D42AB8 /* FavoriteFoldersListViewDemoView.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
+				08796D8E21CB97200023A441 /* HeartSubtitleCellDemoView.swift in Sources */,
 				CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */,
 				441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */,
 				082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */,
@@ -2229,10 +2256,12 @@
 				082D80CD21C13D5300831BDE /* TriangleGiftView.swift in Sources */,
 				444246012137D60400D42AB8 /* FavoriteFoldersListViewCell.swift in Sources */,
 				DAC7DCAA21538608004602A3 /* SettingsView.swift in Sources */,
+				08796D8821CB89400023A441 /* AnimatedHeartView.swift in Sources */,
 				CF3D5EEA215A6723006E4D08 /* DrumPadCollectionViewCell.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
+				08796D9121CB97F40023A441 /* BasicTableViewCellViewModel.swift in Sources */,
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
@@ -2279,6 +2308,7 @@
 				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
 				CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */,
+				08796D9321CB982F0023A441 /* SelectableTableViewCellViewModel.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,
 				55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */,
 				44D912612077AC8A00486848 /* RoundedRectangleView.swift in Sources */,
@@ -2317,6 +2347,7 @@
 				144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */,
 				DA8EF1262164E7EC0028740C /* ConsentToggleViewModel.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
+				08796D8A21CB8AB90023A441 /* HeartTableViewCell.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
 				CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */,
 				CF3D5EEC215A6741006E4D08 /* DrumMachineView.swift in Sources */,
@@ -2329,6 +2360,7 @@
 				082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */,
 				DAB1F6D3216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift in Sources */,
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
+				08796D9521CB984E0023A441 /* IconTitleTableViewCellViewModel.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
 				CF3D5EE4215A65D7006E4D08 /* Instrument.swift in Sources */,
 				DA8EF1222164E46E0028740C /* ConsentActionViewModel.swift in Sources */,

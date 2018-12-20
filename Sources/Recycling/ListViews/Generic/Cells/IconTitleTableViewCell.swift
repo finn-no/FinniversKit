@@ -4,12 +4,6 @@
 
 import UIKit
 
-public protocol IconTitleTableViewCellViewModel: BasicTableViewCellViewModel {
-    var icon: UIImage? { get }
-    var iconTintColor: UIColor? { get }
-    var hasChevron: Bool { get }
-}
-
 open class IconTitleTableViewCell: BasicTableViewCell {
 
     // MARK: - Public properties

@@ -170,6 +170,7 @@ public enum TableViewCellViews: String, CaseIterable {
     case basicCellVariations
     case checkboxCell
     case checkboxSubtitleCell
+    case heartSubtitleCell
     case iconTitleCell
 
     public var viewController: UIViewController {
@@ -182,6 +183,8 @@ public enum TableViewCellViews: String, CaseIterable {
             return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
         case .checkboxSubtitleCell:
             return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
+        case .heartSubtitleCell:
+            return DemoViewController<HeartSubtitleCellDemoView>(withDismissButton: true)
         case .iconTitleCell:
             return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
         }

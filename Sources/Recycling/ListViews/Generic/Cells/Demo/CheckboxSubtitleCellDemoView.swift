@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-private struct ViewModel: CheckboxTableViewCellViewModel {
+private struct ViewModel: SelectableTableViewCellViewModel {
     let title: String
     let subtitle: String?
     let hasChevron: Bool = false

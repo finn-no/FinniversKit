@@ -4,19 +4,19 @@
 
 import UIKit
 
-open class CheckboxTableViewCell: BasicTableViewCell {
+open class HeartTableViewCell: BasicTableViewCell {
 
     // MARK: - Public properties
 
-    open var checkbox: AnimatedCheckboxView = {
-        let checkbox = AnimatedCheckboxView(frame: .zero)
-        checkbox.translatesAutoresizingMaskIntoConstraints = false
-        return checkbox
+    open var heartView: AnimatedHeartView = {
+        let heartView = AnimatedHeartView(frame: .zero)
+        heartView.translatesAutoresizingMaskIntoConstraints = false
+        return heartView
     }()
 
     // MARK: - Private properties
 
-    private lazy var stackViewLeadingConstraint: NSLayoutConstraint = stackView.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor)
+    private lazy var stackViewLeadingConstraint: NSLayoutConstraint = stackView.leadingAnchor.constraint(equalTo: heartView.trailingAnchor)
 
     // MARK: - Setup
 
@@ -42,7 +42,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
     open func configure(with viewModel: SelectableTableViewCellViewModel) {
         super.configure(with: viewModel)
         selectionStyle = .none
-        checkbox.isHighlighted = viewModel.isSelected
+        heartView.isHighlighted = viewModel.isSelected
 
         if viewModel.subtitle != nil {
             stackViewLeadingConstraint.constant = .mediumLargeSpacing
@@ -56,25 +56,25 @@ open class CheckboxTableViewCell: BasicTableViewCell {
     }
 
     open func animateSelection(isSelected: Bool) {
-        checkbox.animateSelection(selected: isSelected)
+        heartView.animateSelection(selected: isSelected)
     }
 
     open override func prepareForReuse() {
         super.prepareForReuse()
-        checkbox.isHighlighted = false
+        heartView.isHighlighted = false
     }
 
     // MARK: - Private methods
 
     private func setup() {
-        contentView.addSubview(checkbox)
+        contentView.addSubview(heartView)
         contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            checkbox.heightAnchor.constraint(equalToConstant: 28),
-            checkbox.widthAnchor.constraint(equalTo: checkbox.heightAnchor),
-            checkbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            checkbox.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            heartView.heightAnchor.constraint(equalToConstant: 28),
+            heartView.widthAnchor.constraint(equalTo: heartView.heightAnchor),
+            heartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            heartView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             stackViewLeadingConstraint,
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
