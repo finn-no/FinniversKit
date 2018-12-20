@@ -50,10 +50,10 @@ open class CheckboxTableViewCell: BasicTableViewCell {
 
         if viewModel.subtitle != nil {
             stackViewLeadingConstraint.constant = .mediumLargeSpacing
-            separatorInset = .leadingInset(56)
+            separatorInset = .leadingInset(60)
         } else {
             stackViewLeadingConstraint.constant = .mediumSpacing
-            separatorInset = .leadingInset(48)
+            separatorInset = .leadingInset(52)
         }
 
         layoutIfNeeded()
@@ -75,7 +75,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
         contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            checkbox.heightAnchor.constraint(equalToConstant: 24),
+            checkbox.heightAnchor.constraint(equalToConstant: 28),
             checkbox.widthAnchor.constraint(equalTo: checkbox.heightAnchor),
             checkbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             checkbox.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
