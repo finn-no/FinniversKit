@@ -19,6 +19,7 @@
 		082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D80D421C15C9200831BDE /* CandyCaneView.swift */; };
 		08796D8821CB89400023A441 /* AnimatedHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D8721CB89400023A441 /* AnimatedHeartView.swift */; };
 		08796D8A21CB8AB90023A441 /* HeartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D8921CB8AB90023A441 /* HeartTableViewCell.swift */; };
+		08796D8E21CB97200023A441 /* HeartSubtitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D8D21CB97200023A441 /* HeartSubtitleCellDemoView.swift */; };
 		08796D9121CB97F40023A441 /* BasicTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9021CB97F40023A441 /* BasicTableViewCellViewModel.swift */; };
 		08796D9321CB982F0023A441 /* SelectableTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9221CB982F0023A441 /* SelectableTableViewCellViewModel.swift */; };
 		08796D9521CB984E0023A441 /* IconTitleTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9421CB984E0023A441 /* IconTitleTableViewCellViewModel.swift */; };
@@ -303,6 +304,7 @@
 		082D80D421C15C9200831BDE /* CandyCaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyCaneView.swift; sourceTree = "<group>"; };
 		08796D8721CB89400023A441 /* AnimatedHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedHeartView.swift; sourceTree = "<group>"; };
 		08796D8921CB8AB90023A441 /* HeartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartTableViewCell.swift; sourceTree = "<group>"; };
+		08796D8D21CB97200023A441 /* HeartSubtitleCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartSubtitleCellDemoView.swift; sourceTree = "<group>"; };
 		08796D9021CB97F40023A441 /* BasicTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		08796D9221CB982F0023A441 /* SelectableTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		08796D9421CB984E0023A441 /* IconTitleTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTitleTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				08D70A22218329ED003E2222 /* CheckboxCellDemoView.swift */,
 				08D70A24218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift */,
 				08D70A2621832A0C003E2222 /* IconTitleCellDemoView.swift */,
+				08796D8D21CB97200023A441 /* HeartSubtitleCellDemoView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -2162,6 +2165,7 @@
 				444246082137D61200D42AB8 /* FavoriteFoldersListViewDemoView.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
+				08796D8E21CB97200023A441 /* HeartSubtitleCellDemoView.swift in Sources */,
 				CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */,
 				441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */,
 				082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */,
