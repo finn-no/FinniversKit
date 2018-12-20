@@ -4,10 +4,6 @@
 
 import UIKit
 
-public protocol CheckboxTableViewCellViewModel: BasicTableViewCellViewModel {
-    var isSelected: Bool { get }
-}
-
 open class CheckboxTableViewCell: BasicTableViewCell {
 
     // MARK: - Public properties
@@ -43,7 +39,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
 
     // MARK: - Public methods
 
-    open func configure(with viewModel: CheckboxTableViewCellViewModel) {
+    open func configure(with viewModel: SelectableTableViewCellViewModel) {
         super.configure(with: viewModel)
         selectionStyle = .none
         checkbox.isHighlighted = viewModel.isSelected
