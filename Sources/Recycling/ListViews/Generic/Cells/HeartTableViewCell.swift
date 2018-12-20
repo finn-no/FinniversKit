@@ -49,7 +49,7 @@ open class HeartTableViewCell: BasicTableViewCell {
             separatorInset = .leadingInset(60)
         } else {
             stackViewLeadingConstraint.constant = .mediumSpacing
-            separatorInset = .leadingInset(50)
+            separatorInset = .leadingInset(52)
         }
 
         layoutIfNeeded()
