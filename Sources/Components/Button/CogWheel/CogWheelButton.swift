@@ -22,7 +22,8 @@ public final class CogWheelButton: UIButton {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.isUserInteractionEnabled = false
-        imageView.image = UIImage(named: .cogWheel)
+        imageView.image = UIImage(named: .settings).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = UIColor(r: 54, g: 52, b: 41)
         return imageView
     }()
 

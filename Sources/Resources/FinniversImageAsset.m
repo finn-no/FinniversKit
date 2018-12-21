@@ -24,7 +24,6 @@ NSString *const FinniversImageAssetcar = @"car";
 NSString *const FinniversImageAssetcheck = @"check";
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
 NSString *const FinniversImageAssetclassifieds = @"classifieds";
-NSString *const FinniversImageAssetcogWheel = @"cogWheel";
 NSString *const FinniversImageAssetdistance = @"distance";
 NSString *const FinniversImageAssetdownload = @"download";
 NSString *const FinniversImageAsseteasterEgg = @"easterEgg";
@@ -119,7 +118,6 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetcheck,
              FinniversImageAssetcheckmarkBig,
              FinniversImageAssetclassifieds,
-             FinniversImageAssetcogWheel,
              FinniversImageAssetdistance,
              FinniversImageAssetdownload,
              FinniversImageAsseteasterEgg,
