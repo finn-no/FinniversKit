@@ -11,7 +11,7 @@ public final class CogWheelButton: UIButton {
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.isUserInteractionEnabled = false
-        view.backgroundColor = UIColor.iconTintColor
+        view.backgroundColor = .buttonBackgroundColor
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 5)
         view.layer.shadowRadius = .mediumLargeSpacing
@@ -23,7 +23,7 @@ public final class CogWheelButton: UIButton {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.isUserInteractionEnabled = false
         imageView.image = UIImage(named: .settings).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = UIColor(r: 54, g: 52, b: 41)
+        imageView.tintColor = .iconTintColor
         return imageView
     }()
 
