@@ -11,7 +11,7 @@ public final class CogWheelButton: UIButton {
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.isUserInteractionEnabled = false
-        view.backgroundColor = UIColor.cogWheelColor
+        view.backgroundColor = UIColor.iconTintColor
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 5)
         view.layer.shadowRadius = .mediumLargeSpacing
@@ -31,14 +31,14 @@ public final class CogWheelButton: UIButton {
 
     public override var isHighlighted: Bool {
         didSet {
-            contentView.backgroundColor = isHighlighted ? .cogWheelHighlightedColor : .cogWheelColor
+            contentView.backgroundColor = isHighlighted ? .buttonHighlightedColor : .buttonBackgroundColor
             contentView.alpha = isHighlighted ? 0.8 : 1
         }
     }
 
     public override var isSelected: Bool {
         didSet {
-            contentView.backgroundColor = isSelected ? .cogWheelHighlightedColor : .cogWheelColor
+            contentView.backgroundColor = isSelected ? .buttonHighlightedColor : .buttonBackgroundColor
             contentView.alpha = isSelected ? 0.8 : 1
         }
     }
@@ -94,11 +94,15 @@ public final class CogWheelButton: UIButton {
 // MARK: - Private extensions
 
 private extension UIColor {
-    static var cogWheelColor: UIColor? {
+    static var iconTintColor: UIColor? {
+        return UIColor(r: 54, g: 52, b: 41)
+    }
+
+    static var buttonBackgroundColor: UIColor? {
         return UIColor(white: 1, alpha: 0.7)
     }
 
-    static var cogWheelHighlightedColor: UIColor? {
+    static var buttonHighlightedColor: UIColor? {
         return UIColor.defaultButtonHighlightedBodyColor.withAlphaComponent(0.8)
     }
 }
