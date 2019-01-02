@@ -40,6 +40,10 @@ extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
     }
+
+    public func frontPageViewDidStartRefreshing(_ frontPageView: FrontPageView) {
+        frontPageView.reloadData()
+    }
 }
 
 extension FrontpageViewDemoView: AdsGridViewDelegate {
