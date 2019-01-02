@@ -4,6 +4,7 @@
 
 public protocol FrontPageViewDelegate: AnyObject {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
+    func frontPageViewDidStartRefreshing(_ frontPageView: FrontPageView)
 }
 
 public final class FrontPageView: UIView {
@@ -45,6 +46,12 @@ public final class FrontPageView: UIView {
         return view
     }()
 
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefreshControlValueChange(_:)), for: .valueChanged)
+        return refreshControl
+    }()
+
     private lazy var marketsGridViewHeight = self.marketsGridView.heightAnchor.constraint(equalToConstant: 0)
 
     // MARK: - Init
@@ -81,17 +88,24 @@ public final class FrontPageView: UIView {
     }
 
     public func reloadData() {
-        reloadMarkets()
-        reloadAds()
+        endRefreshing()
+
+        marketsGridView.reloadData()
+        setupFrames()
+
+        adsRetryView.state = .hidden
+        adsGridView.reloadData()
     }
 
     public func reloadMarkets() {
+        endRefreshing()
         marketsGridView.reloadData()
         setupFrames()
         adsGridView.reloadData()
     }
 
     public func reloadAds() {
+        endRefreshing()
         adsRetryView.state = .hidden
         adsGridView.reloadData()
     }
@@ -137,6 +151,12 @@ public final class FrontPageView: UIView {
         headerView.addSubview(marketsGridView)
         headerView.addSubview(headerLabel)
         headerView.addSubview(inlineConsentView)
+
+        if #available(iOS 10.0, *) {
+            adsGridView.collectionView.refreshControl = refreshControl
+        } else {
+            adsGridView.addSubview(refreshControl)
+        }
 
         let maxInlineConsentViewWidth: CGFloat = 414.0
         let inlineConsentViewWidth = inlineConsentView.widthAnchor.constraint(equalToConstant: maxInlineConsentViewWidth)
@@ -186,6 +206,20 @@ public final class FrontPageView: UIView {
 
     private func updateHeaderTitle() {
         headerLabel.text = inlineConsentView.isHidden ? model?.adsGridViewHeaderTitle : model?.inlineConsentTitle
+    }
+
+    // MARK: - Refresh control
+
+    @objc private func handleRefreshControlValueChange(_ refreshControl: UIRefreshControl) {
+        delegate?.frontPageViewDidStartRefreshing(self)
+    }
+
+    private func endRefreshing() {
+        guard refreshControl.isRefreshing else {
+            return
+        }
+
+        refreshControl.endRefreshing()
     }
 }
 
