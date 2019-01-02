@@ -624,6 +624,7 @@
 		14405C521FAFBBF000D03E04 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				CF8F021021DCC4D7004C4042 /* DNA */,
 				144351BA1FBE2BF1007B2229 /* Assets.xcassets */,
 				14405C5F1FAFBBF000D03E04 /* Info.plist */,
 				144351C31FBE2FA2007B2229 /* AppDelegate.swift */,
@@ -820,7 +821,6 @@
 		4408A69C2027AC41008C0BD9 /* DNA */ = {
 			isa = PBXGroup;
 			children = (
-				144959DD2122D8C20084549F /* Assets */,
 				4408A69D2027AC41008C0BD9 /* Color */,
 				4408A6A12027AC41008C0BD9 /* Font */,
 				4408A69F2027AC41008C0BD9 /* Spacing */,
@@ -831,7 +831,6 @@
 		4408A69D2027AC41008C0BD9 /* Color */ = {
 			isa = PBXGroup;
 			children = (
-				4408A6A62027AC71008C0BD9 /* Demo */,
 				4408A69E2027AC41008C0BD9 /* Color.swift */,
 			);
 			path = Color;
@@ -840,7 +839,6 @@
 		4408A69F2027AC41008C0BD9 /* Spacing */ = {
 			isa = PBXGroup;
 			children = (
-				4408A6AC2027AC7F008C0BD9 /* Demo */,
 				4408A6A02027AC41008C0BD9 /* Spacing.swift */,
 				1430D43E216E4DA10038AC84 /* Spacing.h */,
 				1430D43F216E4DA10038AC84 /* Spacing.m */,
@@ -851,7 +849,6 @@
 		4408A6A12027AC41008C0BD9 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				4408A6A92027AC7A008C0BD9 /* Demo */,
 				4408A6A22027AC41008C0BD9 /* Font.swift */,
 			);
 			path = Font;
@@ -1697,6 +1694,41 @@
 				CF848C2E21C7E3010086530E /* CogWheelButtonDemoView.swift */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		CF8F021021DCC4D7004C4042 /* DNA */ = {
+			isa = PBXGroup;
+			children = (
+				CF8F021321DCC580004C4042 /* Spacing */,
+				CF8F021221DCC548004C4042 /* Font */,
+				CF8F021121DCC534004C4042 /* Color */,
+				144959DD2122D8C20084549F /* Assets */,
+			);
+			path = DNA;
+			sourceTree = "<group>";
+		};
+		CF8F021121DCC534004C4042 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				4408A6A62027AC71008C0BD9 /* Demo */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		CF8F021221DCC548004C4042 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				4408A6A92027AC7A008C0BD9 /* Demo */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		CF8F021321DCC580004C4042 /* Spacing */ = {
+			isa = PBXGroup;
+			children = (
+				4408A6AC2027AC7F008C0BD9 /* Demo */,
+			);
+			path = Spacing;
 			sourceTree = "<group>";
 		};
 		CF9AC8B421BEBFD2005A0D2F /* SnowGlobe */ = {
