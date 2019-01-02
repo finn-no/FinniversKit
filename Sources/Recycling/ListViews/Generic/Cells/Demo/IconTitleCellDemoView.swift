@@ -14,7 +14,7 @@ private struct ViewModel: IconTitleTableViewCellViewModel {
 
 class IconTitleCellDemoView: UIView {
     private var viewModels = [
-        ViewModel(title: "Favoritter", icon: UIImage(named: .favouriteAdded), iconTintColor: .watermelon, hasChevron: true),
+        ViewModel(title: "Favoritter", icon: UIImage(named: .favouriteAdded), iconTintColor: .licorice, hasChevron: true),
         ViewModel(title: "Lagrede søk", icon: UIImage(named: .search), iconTintColor: .licorice, hasChevron: false),
         ViewModel(title: "Varslingsinnstillinger", icon: nil, iconTintColor: nil, hasChevron: true),
         ViewModel(title: "Personvernerklæring", icon: nil, iconTintColor: nil, hasChevron: true),
