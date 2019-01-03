@@ -6,99 +6,98 @@ import UIKit
 
 extension SpringAnimator {
     enum State {
-        case animating, paused, cancelled, stopped
+        case inactive, active, stopped
     }
 }
 
 class SpringAnimator: NSObject {
 
-    // Spring properties
-    private let damping: CGFloat
-    private let stiffness: CGFloat
-
-    // View properties
-    private var velocity: CGFloat = 0.0
-    private var position: CGFloat = 0.0
-    var initialVelocity: CGFloat = 0 {
-        didSet { velocity = -initialVelocity }
+    var fromPosition: CGPoint = .zero {
+        didSet {
+            position = toPosition - fromPosition
+        }
     }
 
-    // Animation properties
+    var toPosition: CGPoint = .zero {
+        didSet {
+            position = toPosition - fromPosition
+        }
+    }
+
+    var initialVelocity: CGPoint = .zero {
+        didSet {
+            velocity = initialVelocity
+        }
+    }
+
     var state: State = .stopped
-
-    var targetPosition = 0 as CGFloat
-    var constraint: NSLayoutConstraint?
-
+    var isRunning: Bool = false
     var completion: ((Bool) -> Void)?
-
+    // MARK: - Spring physics
+    private let damping: CGFloat
+    private let stiffness: CGFloat
+    private var velocity: CGPoint = .zero
+    private var position: CGPoint = .zero
+    // MARK: - Animation properties
+    private var animations: [(CGPoint) -> Void] = []
+    private lazy var displayLink = CADisplayLink(target: self, selector: #selector(step(displayLink:)))
     private let scale = 1 / UIScreen.main.scale
-    private var displayLink: CADisplayLink?
 
+    // MARK: - Setup
     init(dampingRatio: CGFloat, frequencyResponse: CGFloat) {
         self.stiffness = pow(2 * .pi / frequencyResponse, 2)
         self.damping = 2 * dampingRatio * sqrt(stiffness)
     }
 
-    func startAnimation() {
-        if state == .paused {
-            continueAnimation()
-        }
-
-        guard let constraint = constraint else { return }
-        position = targetPosition - constraint.constant
-
-        guard position != 0, displayLink == nil else { return }
-        displayLink = CADisplayLink(target: self, selector: #selector(step(displayLink:)))
-        displayLink?.add(to: .current, forMode: .default)
-        state = .animating
+    // MARK: - ViewAnimating
+    func addAnimation(_ animation: @escaping (CGPoint) -> Void) {
+        animations.append(animation)
     }
 
-    func continueAnimation() {
-        guard state == .paused, let constraint = constraint else { return }
-        position = targetPosition - constraint.constant
-        state = .animating
-        displayLink?.isPaused = false
+    func startAnimation() {
+        guard !isRunning else { return }
+        switch state {
+        case .stopped:
+            displayLink.add(to: .current, forMode: .common)
+        case .inactive:
+            displayLink.isPaused = false
+        default:
+            break
+        }
+        isRunning = true
+        state = .active
     }
 
     func pauseAnimation() {
-        guard state == .animating else { return }
-        state = .paused
-        displayLink?.isPaused = true
+        guard isRunning else { return }
+        displayLink.isPaused = true
+        isRunning = false
+        state = .inactive
     }
 
-    func stopAnimation() {
-        switch state {
-        case .animating, .paused: stopAnimation(didComplete: false)
-        default: return
-        }
+    func stopAnimation(_ withoutFinishing: Bool) {
+        guard isRunning else { return }
+        displayLink.remove(from: .current, forMode: .common)
+        isRunning = false
+        state = .stopped
+        completion?(!withoutFinishing)
     }
 }
 
 private extension SpringAnimator {
-
     @objc func step(displayLink: CADisplayLink) {
+        // Calculate new potision
         let acceleration = -velocity * damping - position * stiffness
         velocity += acceleration * CGFloat(displayLink.duration)
         position += velocity * CGFloat(displayLink.duration)
-        constraint?.constant = targetPosition - position
-
-        if abs(position) < scale, abs(velocity) < scale {
-            stopAnimation(didComplete: true)
+        // If it moves less than a pixel, animation is done
+        if position < scale, velocity < scale {
+            stopAnimation(false)
+            position = .zero
         }
-    }
-
-    func stopAnimation(didComplete: Bool) {
-        if didComplete {
-            constraint?.constant = targetPosition
-        }
-        displayLink?.invalidate()
-        displayLink = nil
-        completion?(didComplete)
-        completion = nil
-
-        switch didComplete {
-        case true: state = .stopped
-        case false: state = .cancelled
+        // Call to animation blocks
+        animations.forEach { animation in
+            animation(toPosition - position)
         }
     }
 }

@@ -4,12 +4,6 @@
 
 import UIKit
 
-public protocol BasicTableViewCellViewModel {
-    var title: String { get }
-    var subtitle: String? { get }
-    var hasChevron: Bool { get }
-}
-
 open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Public properties

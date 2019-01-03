@@ -6,36 +6,29 @@ import UIKit
 
 class BottomSheetAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
 
-    var initialVelocity = 0 as CGFloat
-    var targetPosition = 0 as CGFloat
+    var initialVelocity: CGPoint = .zero
+    var targetPosition: CGPoint = .zero
 
     private let animator = SpringAnimator(dampingRatio: 0.85, frequencyResponse: 0.42)
+    private var constraint: NSLayoutConstraint?
 
     func setup(with constraint: NSLayoutConstraint?) {
-        animator.constraint = constraint
-    }
-    // Because this is a spring animation the duration is unknown
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0
+        self.constraint = constraint
+        animator.addAnimation { position in
+            constraint?.constant = position.y
+        }
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        animator.targetPosition = targetPosition
-        animator.initialVelocity = initialVelocity
-        animator.completion = { didComplete in
+        animateToTargetPosition { didComplete in
             transitionContext.completeTransition(didComplete)
         }
-        animator.startAnimation()
     }
 
     func cancelTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard animator.state == .paused else { return }
-        animator.targetPosition = targetPosition
-        animator.initialVelocity = initialVelocity
-        animator.completion = { _ in
+        animateToTargetPosition { _ in
             transitionContext.completeTransition(false)
         }
-        animator.continueAnimation()
     }
 
     func pauseTransition() {
@@ -43,8 +36,26 @@ class BottomSheetAnimationController: NSObject, UIViewControllerAnimatedTransiti
     }
 
     func continueTransition() {
-        animator.targetPosition = targetPosition
+        guard let constraint = constraint else { return }
+        animator.fromPosition = CGPoint(x: 0, y: constraint.constant)
+        animator.toPosition = targetPosition
         animator.initialVelocity = initialVelocity
-        animator.continueAnimation()
+        animator.startAnimation()
+    }
+
+    // Because this is a spring animation the duration is unknown
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0
+    }
+}
+
+private extension BottomSheetAnimationController {
+    func animateToTargetPosition(_ completion: @escaping (Bool) -> Void) {
+        guard let constraint = constraint else { return }
+        animator.fromPosition = CGPoint(x: 0, y: constraint.constant)
+        animator.toPosition = targetPosition
+        animator.initialVelocity = initialVelocity
+        animator.completion = completion
+        animator.startAnimation()
     }
 }

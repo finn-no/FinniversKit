@@ -43,6 +43,10 @@ class TableViewCellsViewTests: FBSnapshotTestCase {
         snapshot(.checkboxSubtitleCell)
     }
 
+    func testHeartSubtitleCell() {
+        snapshot(.heartSubtitleCell)
+    }
+
     func testIconTitleCell() {
         snapshot(.iconTitleCell)
     }

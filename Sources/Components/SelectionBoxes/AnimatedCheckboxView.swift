@@ -24,8 +24,8 @@ public class AnimatedCheckboxView: AnimatedSelectionView {
         translatesAutoresizingMaskIntoConstraints = false
         animationRepeatCount = 1
         NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 24),
-            heightAnchor.constraint(equalToConstant: 24)
+            widthAnchor.constraint(equalToConstant: 28),
+            heightAnchor.constraint(equalToConstant: 28)
         ])
     }
 

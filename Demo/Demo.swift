@@ -25,6 +25,8 @@ public enum DnaViews: String, CaseIterable {
 
 public enum ComponentViews: String, CaseIterable {
     case button
+    case easterEggButton
+    case cogWheelButton
     case label
     case ribbon
     case textField
@@ -32,18 +34,22 @@ public enum ComponentViews: String, CaseIterable {
     case switchView
     case inlineConsent
     case consentTransparencyInfo
+    case bannerTransparency
     case checkbox
     case radioButton
     case roundedImageView
     case loadingIndicator
     case horizontalSlide
-    case easterEggButton
-    case bottomSheet
+    case newYearsView
 
     public var viewController: UIViewController {
         switch self {
         case .button:
             return DemoViewController<ButtonDemoView>()
+        case .easterEggButton:
+            return DemoViewController<EasterEggButtonDemoView>()
+        case .cogWheelButton:
+            return DemoViewController<CogWheelButtonDemoView>()
         case .label:
             return DemoViewController<LabelDemoView>()
         case .ribbon:
@@ -58,6 +64,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<InlineConsentDemoView>()
         case .consentTransparencyInfo:
             return DemoViewController<ConsentTransparencyInfoDemoView>()
+        case .bannerTransparency:
+            return DemoViewController<BannerTransparencyDemoView>()
         case .checkbox:
             return DemoViewController<CheckboxDemoView>(withDismissButton: true)
         case .radioButton:
@@ -72,11 +80,8 @@ public enum ComponentViews: String, CaseIterable {
             secondViewController.transitioningDelegate = presentedViewController.transition
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
-        case .easterEggButton:
-            return DemoViewController<EasterEggButtonDemoView>()
-        case .bottomSheet:
-            let controller = DemoViewController<ButtonDemoView>()
-            return BottomSheet(rootViewController: controller)
+        case .newYearsView:
+                return DemoViewController<NewYearsDemoView>()
         }
     }
 }
@@ -165,6 +170,7 @@ public enum TableViewCellViews: String, CaseIterable {
     case basicCellVariations
     case checkboxCell
     case checkboxSubtitleCell
+    case heartSubtitleCell
     case iconTitleCell
 
     public var viewController: UIViewController {
@@ -177,6 +183,8 @@ public enum TableViewCellViews: String, CaseIterable {
             return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
         case .checkboxSubtitleCell:
             return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
+        case .heartSubtitleCell:
+            return DemoViewController<HeartSubtitleCellDemoView>(withDismissButton: true)
         case .iconTitleCell:
             return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
         }

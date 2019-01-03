@@ -31,6 +31,14 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.button)
     }
 
+    func testEasterEggButton() {
+        snapshot(.easterEggButton)
+    }
+
+    func testCogWheelButton() {
+        snapshot(.cogWheelButton)
+    }
+
     func testLabel() {
         snapshot(.label)
     }
@@ -79,11 +87,11 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.horizontalSlide)
     }
 
-    func testEasterEggButton() {
-        snapshot(.easterEggButton)
+    func testNewYearsView() {
+        snapshot(.newYearsView)
     }
 
-    func testBottomSheet() {
-        snapshot(.bottomSheet)
+    func testBannerTransparencyView() {
+        snapshot(.bannerTransparency)
     }
 }

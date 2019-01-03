@@ -6,17 +6,22 @@ import UIKit
 
 class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    var presentationController: BottomSheetPresentationController?
-    let interactionController: BottomSheetInteractionController
-    let animationController: BottomSheetAnimationController
+    private let height: BottomSheet.Height
+    private var presentationController: BottomSheetPresentationController?
+    private let interactionController: BottomSheetInteractionController
+    private let animationController: BottomSheetAnimationController
 
-    override init() {
+    init(height: BottomSheet.Height) {
+        self.height = height
         animationController = BottomSheetAnimationController()
         interactionController = BottomSheetInteractionController(animationController: animationController)
     }
 
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        presentationController = BottomSheetPresentationController(presentedViewController: presented, presenting: presenting, interactionController: interactionController)
+        presentationController = BottomSheetPresentationController(presentedViewController: presented,
+                                                                   presenting: presenting,
+                                                                   height: height,
+                                                                   interactionController: interactionController)
         return presentationController
     }
 
