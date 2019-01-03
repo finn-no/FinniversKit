@@ -14,11 +14,6 @@ public class RefreshControl: UIRefreshControl {
     private let defaultPullDistance: CGFloat = 100
     private var isAnimating = false
     private lazy var loadingIndicatorView = LoadingIndicatorView(withAutoLayout: true)
-    private lazy var contentView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .white
-        return view
-    }()
 
     // MARK: - Init
 
@@ -39,6 +34,14 @@ public class RefreshControl: UIRefreshControl {
             return
         }
 
+        let pullDistance = superview.flatMap({ $0.bounds.height / 5 }) ?? defaultPullDistance
+        let distance = max(0.0, -frame.origin.y)
+        let alpha = min(max(distance, 0.0), frame.size.height) / frame.size.height
+
+        // Control alpha value of the loading indicator to avoid overlapping with cells
+        loadingIndicatorView.alpha = alpha
+
+        // Stop animating when the refresh control scrolls up back to its initial position
         if isAnimating && frame.origin.y == 0 {
             stopAnimatingLoadingIndicator()
         }
@@ -47,10 +50,8 @@ public class RefreshControl: UIRefreshControl {
             return
         }
 
-        let pullDistance = superview.flatMap({ $0.bounds.height / 5 }) ?? defaultPullDistance
-        let distance = max(0.0, -frame.origin.y)
+        // Control progress of the loading indicator based on the current scroll position
         let progress = min(max(distance, 0.0), pullDistance) / pullDistance
-
         loadingIndicatorView.progress = progress
 
         if distance >= pullDistance {
@@ -61,10 +62,8 @@ public class RefreshControl: UIRefreshControl {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(contentView)
+        tintColor = .white
         addSubview(loadingIndicatorView)
-
-        contentView.fillInSuperview()
 
         NSLayoutConstraint.activate([
             loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),

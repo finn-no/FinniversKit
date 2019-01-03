@@ -25,6 +25,7 @@ public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
         get { return animatedLayer.strokeEnd }
         set {
             animatedLayer.strokeEnd = newValue
+            backgroundLayer.opacity = Float(newValue)
         }
     }
 
