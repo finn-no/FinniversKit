@@ -32,7 +32,7 @@ public class AnimatedHeartView: AnimatedSelectionView {
             self.selectedImage = selectedImage
         }
 
-        if let unselectedImage = UIImage(named: FinniversImageAsset.favouriteAdd.rawValue, in: FinniversKit.bundle, compatibleWith: nil) {
+        if let unselectedImage = UIImage(named: FinniversImageAsset.favoriteAdd.rawValue, in: FinniversKit.bundle, compatibleWith: nil) {
             self.unselectedImage = unselectedImage
         }
 

@@ -30,6 +30,7 @@ extern NSString *const FinniversImageAsseteasterEgg;
 extern NSString *const FinniversImageAssetedit;
 extern NSString *const FinniversImageAsseteditBig;
 extern NSString *const FinniversImageAsseterror;
+extern NSString *const FinniversImageAssetfavoriteAdd;
 extern NSString *const FinniversImageAssetfavouriteAddImg;
 extern NSString *const FinniversImageAssetfavouriteAdded;
 extern NSString *const FinniversImageAssetfavouriteAddedImg;
