@@ -8,6 +8,7 @@ public protocol RefreshControlDelegate: AnyObject {
     func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl)
 }
 
+/// Branded replacement for UIRefreshControl.
 public class RefreshControl: UIRefreshControl {
     public weak var delegate: RefreshControlDelegate?
 
