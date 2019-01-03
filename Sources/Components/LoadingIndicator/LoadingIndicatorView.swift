@@ -24,8 +24,11 @@ public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
     public var progress: CGFloat {
         get { return animatedLayer.strokeEnd }
         set {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
             animatedLayer.strokeEnd = newValue
             backgroundLayer.opacity = Float(newValue)
+            CATransaction.commit()
         }
     }
 
@@ -84,7 +87,7 @@ extension LoadingIndicatorView {
         animatedLayer.fillColor = UIColor.clear.cgColor
         animatedLayer.strokeColor = UIColor.secondaryBlue.cgColor
         animatedLayer.strokeStart = 0
-        animatedLayer.strokeEnd = 0
+        animatedLayer.strokeEnd = 1
         animatedLayer.lineWidth = lineWidth
         animatedLayer.lineCap = .round
     }
