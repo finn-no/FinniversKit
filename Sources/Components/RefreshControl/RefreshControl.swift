@@ -15,6 +15,10 @@ public class RefreshControl: UIRefreshControl {
     private var isAnimating = false
     private lazy var loadingIndicatorView = LoadingIndicatorView(withAutoLayout: true)
 
+    private var topOffset: CGFloat {
+        return max(0.0, -frame.origin.y)
+    }
+
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -34,28 +38,15 @@ public class RefreshControl: UIRefreshControl {
             return
         }
 
-        let pullDistance = superview.flatMap({ $0.bounds.height / 5 }) ?? defaultPullDistance
-        let distance = max(0.0, -frame.origin.y)
-        let alpha = min(max(distance, 0.0), frame.size.height) / frame.size.height
-
-        // Control alpha value of the loading indicator to avoid overlapping with cells
-        loadingIndicatorView.alpha = alpha
+        setLoadingAlpha()
 
         // Stop animating when the refresh control scrolls up back to its initial position
         if isAnimating && frame.origin.y == 0 {
             stopAnimatingLoadingIndicator()
         }
 
-        guard !isAnimating else {
-            return
-        }
-
-        // Control progress of the loading indicator based on the current scroll position
-        let progress = min(max(distance, 0.0), pullDistance) / pullDistance
-        loadingIndicatorView.progress = progress
-
-        if distance >= pullDistance {
-            beginRefreshing()
+        if !isAnimating {
+            handleLoadingProgress()
         }
     }
 
@@ -73,6 +64,23 @@ public class RefreshControl: UIRefreshControl {
         ])
 
         addTarget(self, action: #selector(handleValueChange), for: .valueChanged)
+    }
+
+    /// Set alpha value of the loading indicator to avoid overlapping with cells
+    private func setLoadingAlpha() {
+        let alpha = min(max(topOffset, 0.0), frame.size.height) / frame.size.height
+        loadingIndicatorView.alpha = alpha
+    }
+
+    /// Set progress based on the current scroll position and begin refreshing if needed.
+    private func handleLoadingProgress() {
+        let pullDistance = superview.flatMap({ $0.bounds.height / 5 }) ?? defaultPullDistance
+        let progress = min(max(topOffset, 0.0), pullDistance) / pullDistance
+        loadingIndicatorView.progress = progress
+
+        if topOffset >= pullDistance {
+            beginRefreshing()
+        }
     }
 
     // MARK: - Animations
