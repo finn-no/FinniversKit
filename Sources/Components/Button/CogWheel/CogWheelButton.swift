@@ -6,21 +6,46 @@ import UIKit
 
 public final class CogWheelButton: UIButton {
     private let corners: UIRectCorner
+    private let defaultContentSize: CGFloat = .largeSpacing
+
+    private lazy var contentView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.isUserInteractionEnabled = false
+        view.backgroundColor = .buttonBackgroundColor
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 5)
+        view.layer.shadowRadius = .mediumLargeSpacing
+        view.layer.shadowOpacity = 0.6
+        return view
+    }()
+
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.isUserInteractionEnabled = false
+        imageView.image = UIImage(named: .settings).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .iconTintColor
+        return imageView
+    }()
+
+    // MARK: - Overrides
 
     public override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? .cogWheelHighlightedColor : .cogWheelColor
+            contentView.backgroundColor = isHighlighted ? .buttonHighlightedColor : .buttonBackgroundColor
+            contentView.alpha = isHighlighted ? 0.8 : 1
         }
     }
 
     public override var isSelected: Bool {
         didSet {
-            backgroundColor = isSelected ? .cogWheelHighlightedColor : .cogWheelColor
+            contentView.backgroundColor = isSelected ? .buttonHighlightedColor : .buttonBackgroundColor
+            contentView.alpha = isSelected ? 0.8 : 1
         }
     }
 
     public override var intrinsicContentSize: CGSize {
-        return CGSize(width: .largeSpacing, height: .largeSpacing)
+        let size: CGFloat = 44
+        return CGSize(width: size, height: size)
     }
 
     // MARK: - Init
@@ -40,32 +65,44 @@ public final class CogWheelButton: UIButton {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let radius = CGSize(width: .mediumLargeSpacing, height: .mediumLargeSpacing)
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: radius)
+        let radius = CGSize(width: defaultContentSize / 2, height: defaultContentSize / 2)
+        let path = UIBezierPath(roundedRect: contentView.bounds, byRoundingCorners: corners, cornerRadii: radius)
         let mask = CAShapeLayer()
         mask.path = path.cgPath
-        layer.mask = mask
+        contentView.layer.mask = mask
     }
 
     private func setup() {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 5)
-        layer.shadowRadius = .mediumLargeSpacing
-        layer.shadowOpacity = 0.6
+        addSubview(contentView)
+        contentView.addSubview(iconImageView)
 
-        backgroundColor = UIColor.cogWheelColor
-        setImage(UIImage(named: .cogWheel), for: .normal)
+        let contentWidthMultiplier: CGFloat = defaultContentSize / intrinsicContentSize.width
+        let contentHeightMultiplier: CGFloat = defaultContentSize / intrinsicContentSize.height
+
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: contentWidthMultiplier),
+            contentView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: contentHeightMultiplier),
+
+            iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
     }
 }
 
 // MARK: - Private extensions
 
 private extension UIColor {
-    static var cogWheelColor: UIColor? {
+    static var iconTintColor: UIColor? {
+        return UIColor(r: 54, g: 52, b: 41)
+    }
+
+    static var buttonBackgroundColor: UIColor? {
         return UIColor(white: 1, alpha: 0.7)
     }
 
-    static var cogWheelHighlightedColor: UIColor? {
+    static var buttonHighlightedColor: UIColor? {
         return UIColor.defaultButtonHighlightedBodyColor.withAlphaComponent(0.8)
     }
 }
