@@ -35,11 +35,11 @@ public class RefreshControl: UIRefreshControl {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
+        setLoadingAlpha()
+
         guard !isRefreshing else {
             return
         }
-
-        setLoadingAlpha()
 
         // Stop animating when the refresh control scrolls up back to its initial position
         if isAnimating && frame.origin.y == 0 {
@@ -54,7 +54,7 @@ public class RefreshControl: UIRefreshControl {
     // MARK: - Setup
 
     private func setup() {
-        tintColor = .white
+        tintColor = .clear
         addSubview(loadingIndicatorView)
 
         NSLayoutConstraint.activate([
