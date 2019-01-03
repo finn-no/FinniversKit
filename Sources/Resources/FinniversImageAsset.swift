@@ -35,7 +35,6 @@ public enum FinniversImageAsset: String {
     case check
     case checkmarkBig
     case classifieds
-    case cogWheel
     case distance
     case download
     case easterEgg
@@ -129,7 +128,6 @@ public enum FinniversImageAsset: String {
             .check,
             .checkmarkBig,
             .classifieds,
-            .cogWheel,
             .distance,
             .download,
             .easterEgg,

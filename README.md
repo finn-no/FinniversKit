@@ -26,9 +26,12 @@ import FinniversKit
 
 ## Interesting things
 
-### Folder structure (tests and demo)
+### Folder structure (sources, resources, demo and tests)
 
-Inspired by Kickstarter (and Ruby on Rails) we place relevant files next to each other, even if these files are placed in different targets. We believe that having files closer together makes you aware of the different elements that might be affect after a change.
+- `Sources` folder contains Swift and Objective C files, grouped by relevant category/feature if needed
+- `Resources` folder contains fonts, images, sounds, generated constants and other resources used in the framework
+- `UnitTests` folder is used for snapshot tests and other files related to testing
+- `Demo` folder is a place for files that belong to `Demo` target. It is good practise to have corresponding demo view for every component, fullscreen or recycling view.
 
 ### Delegates and data sources (instead blocks and injection)
 
