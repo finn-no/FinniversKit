@@ -36,12 +36,10 @@ public class AdsGridView: UIView {
     }()
 
     private lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
+        let refreshControl = RefreshControl(frame: .zero)
         refreshControl.addTarget(self, action: #selector(handleRefreshControlValueChange(_:)), for: .valueChanged)
         return refreshControl
     }()
-
-    private lazy var loadingIndicatorView = LoadingIndicatorView(withAutoLayout: true)
 
     private weak var delegate: AdsGridViewDelegate?
     private weak var dataSource: AdsGridViewDataSource?
@@ -86,15 +84,6 @@ public class AdsGridView: UIView {
         } else {
             collectionView.addSubview(refreshControl)
         }
-
-        refreshControl.addSubview(loadingIndicatorView)
-
-        NSLayoutConstraint.activate([
-            loadingIndicatorView.centerXAnchor.constraint(equalTo: refreshControl.centerXAnchor),
-            loadingIndicatorView.centerYAnchor.constraint(equalTo: refreshControl.centerYAnchor),
-            loadingIndicatorView.widthAnchor.constraint(equalToConstant: 40),
-            loadingIndicatorView.heightAnchor.constraint(equalToConstant: 40)
-        ])
     }
 
     public func invalidateLayout() {
@@ -104,6 +93,7 @@ public class AdsGridView: UIView {
     // MARK: - Public
 
     public func reloadData() {
+        refreshControl.endRefreshing()
         collectionView.reloadData()
     }
 
@@ -121,17 +111,8 @@ public class AdsGridView: UIView {
     // MARK: - Refresh control
 
     @objc private func handleRefreshControlValueChange(_ refreshControl: UIRefreshControl) {
-        loadingIndicatorView.startAnimating()
+
         //delegate?.frontPageViewDidStartRefreshing(self)
-    }
-
-    private func endRefreshing() {
-        guard refreshControl.isRefreshing else {
-            return
-        }
-
-        refreshControl.endRefreshing()
-        loadingIndicatorView.stopAnimating()
     }
 }
 
@@ -144,15 +125,6 @@ extension AdsGridView: UICollectionViewDelegate {
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.adsGridView(self, didScrollInScrollView: scrollView)
-
-        guard !refreshControl.isRefreshing else {
-            return
-        }
-
-        let pullDistance: CGFloat = max(0.0, -refreshControl.frame.origin.y)
-        let pullRatio: CGFloat = min(max(pullDistance, 0.0), 145.0) / 145.0
-        print(pullRatio)
-        loadingIndicatorView.progress = pullRatio
     }
 }
 

@@ -14,8 +14,6 @@ public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
     private let backgroundLayer = CAShapeLayer()
     private let animatedLayer = CAShapeLayer()
     private let duration: CGFloat = 2.5
-    private let borderColor: UIColor = .secondaryBlue
-    private let backgroundLayerColor: UIColor = .sardine
     private let lineWidth: CGFloat = 4
     private let startAngle: CGFloat = 3 * .pi / 2
 
@@ -76,14 +74,14 @@ extension LoadingIndicatorView {
         backgroundColor = .clear
 
         backgroundLayer.fillColor = UIColor.clear.cgColor
-        backgroundLayer.strokeColor = backgroundLayerColor.cgColor
+        backgroundLayer.strokeColor = UIColor.loadingIndicatorBackground?.cgColor
         backgroundLayer.strokeStart = 0
         backgroundLayer.strokeEnd = 1
         backgroundLayer.lineWidth = lineWidth
         backgroundLayer.lineCap = .round
 
         animatedLayer.fillColor = UIColor.clear.cgColor
-        animatedLayer.strokeColor = borderColor.cgColor
+        animatedLayer.strokeColor = UIColor.secondaryBlue.cgColor
         animatedLayer.strokeStart = 0
         animatedLayer.strokeEnd = 0
         animatedLayer.lineWidth = lineWidth
@@ -131,5 +129,13 @@ extension LoadingIndicatorView {
         animationGroup.repeatCount = .infinity
 
         animatedLayer.add(animationGroup, forKey: "loading")
+    }
+}
+
+// MARK: - Private extensions
+
+private extension UIColor {
+    static var loadingIndicatorBackground: UIColor? {
+        return UIColor(r: 221, g: 232, b: 250)
     }
 }
