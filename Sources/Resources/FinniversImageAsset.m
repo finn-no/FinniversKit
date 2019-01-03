@@ -45,7 +45,7 @@ NSString *const FinniversImageAssetgridView = @"gridView";
 NSString *const FinniversImageAssethelp = @"help";
 NSString *const FinniversImageAssethide = @"hide";
 NSString *const FinniversImageAssethome = @"home";
-NSString *const FinniversImageAssetimportant = @"important";
+NSString *const FinniversImageAssetinfo = @"info";
 NSString *const FinniversImageAssetinfo = @"info";
 NSString *const FinniversImageAssetjobs = @"jobs";
 NSString *const FinniversImageAssetlistView = @"listView";
@@ -137,7 +137,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssethelp,
              FinniversImageAssethide,
              FinniversImageAssethome,
-             FinniversImageAssetimportant,
+             FinniversImageAssetinfo,
              FinniversImageAssetinfo,
              FinniversImageAssetjobs,
              FinniversImageAssetlistView,
