@@ -40,16 +40,16 @@ extension FrontpageViewDemoView: FrontPageViewDelegate {
     public func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView) {
         frontPageView.reloadData()
     }
-
-    public func frontPageViewDidStartRefreshing(_ frontPageView: FrontPageView) {
-        frontPageView.reloadData()
-    }
 }
 
 extension FrontpageViewDemoView: AdsGridViewDelegate {
     public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
     public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
     public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
+
+    public func adsGridViewDidStartRefreshing(_ adsGridView: AdsGridView) {
+        frontPageView.reloadData()
+    }
 
     public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int) {
         adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)

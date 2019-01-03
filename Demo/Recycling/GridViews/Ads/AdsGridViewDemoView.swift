@@ -31,6 +31,12 @@ public class AdsGridViewDemoView: UIView {
 }
 
 extension AdsGridViewDemoView: AdsGridViewDelegate {
+    public func adsGridViewDidStartRefreshing(_ adsGridView: AdsGridView) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { [weak adsGridView] in
+            adsGridView?.reloadData()
+        }
+    }
+
     public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
 
     public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}

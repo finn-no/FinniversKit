@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol AdsGridViewDelegate: class {
+    func adsGridViewDidStartRefreshing(_ adsGridView: AdsGridView)
     func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView)
@@ -37,7 +38,7 @@ public class AdsGridView: UIView {
 
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = RefreshControl(frame: .zero)
-        refreshControl.addTarget(self, action: #selector(handleRefreshControlValueChange(_:)), for: .valueChanged)
+        refreshControl.delegate = self
         return refreshControl
     }()
 
@@ -106,13 +107,6 @@ public class AdsGridView: UIView {
 
     public func scrollToTop(animated: Bool = true) {
         collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
-    }
-
-    // MARK: - Refresh control
-
-    @objc private func handleRefreshControlValueChange(_ refreshControl: UIRefreshControl) {
-
-        //delegate?.frontPageViewDidStartRefreshing(self)
     }
 }
 
@@ -217,5 +211,13 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
 
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
         return AdsGridViewCell.nonImageHeight
+    }
+}
+
+// MARK: - RefreshControlDelegate
+
+extension AdsGridView: RefreshControlDelegate {
+    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        delegate?.adsGridViewDidStartRefreshing(self)
     }
 }

@@ -4,7 +4,6 @@
 
 public protocol FrontPageViewDelegate: AnyObject {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
-    func frontPageViewDidStartRefreshing(_ frontPageView: FrontPageView)
 }
 
 public final class FrontPageView: UIView {
