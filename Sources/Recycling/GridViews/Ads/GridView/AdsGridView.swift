@@ -35,6 +35,14 @@ public class AdsGridView: UIView {
         return collectionView
     }()
 
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefreshControlValueChange(_:)), for: .valueChanged)
+        return refreshControl
+    }()
+
+    private lazy var loadingIndicatorView = LoadingIndicatorView(withAutoLayout: true)
+
     private weak var delegate: AdsGridViewDelegate?
     private weak var dataSource: AdsGridViewDataSource?
 
@@ -72,6 +80,21 @@ public class AdsGridView: UIView {
         collectionView.register(AdsGridHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         addSubview(collectionView)
         collectionView.fillInSuperview()
+
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = refreshControl
+        } else {
+            collectionView.addSubview(refreshControl)
+        }
+
+        refreshControl.addSubview(loadingIndicatorView)
+
+        NSLayoutConstraint.activate([
+            loadingIndicatorView.centerXAnchor.constraint(equalTo: refreshControl.centerXAnchor),
+            loadingIndicatorView.centerYAnchor.constraint(equalTo: refreshControl.centerYAnchor),
+            loadingIndicatorView.widthAnchor.constraint(equalToConstant: 40),
+            loadingIndicatorView.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
 
     public func invalidateLayout() {
@@ -94,6 +117,22 @@ public class AdsGridView: UIView {
     public func scrollToTop(animated: Bool = true) {
         collectionView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
     }
+
+    // MARK: - Refresh control
+
+    @objc private func handleRefreshControlValueChange(_ refreshControl: UIRefreshControl) {
+        loadingIndicatorView.startAnimating()
+        //delegate?.frontPageViewDidStartRefreshing(self)
+    }
+
+    private func endRefreshing() {
+        guard refreshControl.isRefreshing else {
+            return
+        }
+
+        refreshControl.endRefreshing()
+        loadingIndicatorView.stopAnimating()
+    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -105,6 +144,15 @@ extension AdsGridView: UICollectionViewDelegate {
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.adsGridView(self, didScrollInScrollView: scrollView)
+
+        guard !refreshControl.isRefreshing else {
+            return
+        }
+
+        let pullDistance: CGFloat = max(0.0, -refreshControl.frame.origin.y)
+        let pullRatio: CGFloat = min(max(pullDistance, 0.0), 145.0) / 145.0
+        print(pullRatio)
+        loadingIndicatorView.progress = pullRatio
     }
 }
 

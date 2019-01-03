@@ -11,12 +11,24 @@ extension UIActivityIndicatorView: LoadingViewAnimatable {}
 
 /// Branded replacement for UIActivityIndicatorView.
 public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
-    private var backgroundLayer = CAShapeLayer()
-    private var animatedLayer = CAShapeLayer()
-    private var duration: CGFloat = 2.5
-    private var borderColor: UIColor = .secondaryBlue
-    private var backgroundLayerColor: UIColor = .sardine
-    private var lineWidth: CGFloat = 4
+    private let backgroundLayer = CAShapeLayer()
+    private let animatedLayer = CAShapeLayer()
+    private let duration: CGFloat = 2.5
+    private let borderColor: UIColor = .secondaryBlue
+    private let backgroundLayerColor: UIColor = .sardine
+    private let lineWidth: CGFloat = 4
+    private let startAngle: CGFloat = 3 * .pi / 2
+
+    private var endAngle: CGFloat {
+        return startAngle + 2 * .pi
+    }
+
+    public var progress: CGFloat {
+        get { return animatedLayer.strokeEnd }
+        set {
+            animatedLayer.strokeEnd = newValue
+        }
+    }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +46,7 @@ public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
         let center = CGPoint(x: bounds.size.width / 2.0, y: bounds.size.height / 2.0)
         let radius = min(bounds.size.width, bounds.size.height) / 2.0 - animatedLayer.lineWidth / 2.0
 
-        let bezierPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+        let bezierPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
 
         backgroundLayer.path = bezierPath.cgPath
         animatedLayer.path = bezierPath.cgPath
@@ -73,7 +85,7 @@ extension LoadingIndicatorView {
         animatedLayer.fillColor = UIColor.clear.cgColor
         animatedLayer.strokeColor = borderColor.cgColor
         animatedLayer.strokeStart = 0
-        animatedLayer.strokeEnd = 1
+        animatedLayer.strokeEnd = 0
         animatedLayer.lineWidth = lineWidth
         animatedLayer.lineCap = .round
     }
