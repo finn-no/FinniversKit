@@ -46,7 +46,6 @@ extern NSString *const FinniversImageAssethelp;
 extern NSString *const FinniversImageAssethide;
 extern NSString *const FinniversImageAssethome;
 extern NSString *const FinniversImageAssetinfo;
-extern NSString *const FinniversImageAssetinfo;
 extern NSString *const FinniversImageAssetjobs;
 extern NSString *const FinniversImageAssetlistView;
 extern NSString *const FinniversImageAssetmapDirections;
