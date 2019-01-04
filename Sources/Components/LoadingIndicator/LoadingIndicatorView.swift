@@ -11,12 +11,26 @@ extension UIActivityIndicatorView: LoadingViewAnimatable {}
 
 /// Branded replacement for UIActivityIndicatorView.
 public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
-    private var backgroundLayer = CAShapeLayer()
-    private var animatedLayer = CAShapeLayer()
-    private var duration: CGFloat = 2.5
-    private var borderColor: UIColor = .secondaryBlue
-    private var backgroundLayerColor: UIColor = .sardine
-    private var lineWidth: CGFloat = 4
+    private let backgroundLayer = CAShapeLayer()
+    private let animatedLayer = CAShapeLayer()
+    private let duration: CGFloat = 2.5
+    private let lineWidth: CGFloat = 4
+    private let startAngle: CGFloat = 3 * .pi / 2
+
+    private var endAngle: CGFloat {
+        return startAngle + 2 * .pi
+    }
+
+    public var progress: CGFloat {
+        get { return animatedLayer.strokeEnd }
+        set {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            animatedLayer.strokeEnd = newValue
+            backgroundLayer.opacity = Float(newValue)
+            CATransaction.commit()
+        }
+    }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +48,7 @@ public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
         let center = CGPoint(x: bounds.size.width / 2.0, y: bounds.size.height / 2.0)
         let radius = min(bounds.size.width, bounds.size.height) / 2.0 - animatedLayer.lineWidth / 2.0
 
-        let bezierPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+        let bezierPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
 
         backgroundLayer.path = bezierPath.cgPath
         animatedLayer.path = bezierPath.cgPath
@@ -64,14 +78,14 @@ extension LoadingIndicatorView {
         backgroundColor = .clear
 
         backgroundLayer.fillColor = UIColor.clear.cgColor
-        backgroundLayer.strokeColor = backgroundLayerColor.cgColor
+        backgroundLayer.strokeColor = UIColor.loadingIndicatorBackground?.cgColor
         backgroundLayer.strokeStart = 0
         backgroundLayer.strokeEnd = 1
         backgroundLayer.lineWidth = lineWidth
         backgroundLayer.lineCap = .round
 
         animatedLayer.fillColor = UIColor.clear.cgColor
-        animatedLayer.strokeColor = borderColor.cgColor
+        animatedLayer.strokeColor = UIColor.secondaryBlue.cgColor
         animatedLayer.strokeStart = 0
         animatedLayer.strokeEnd = 1
         animatedLayer.lineWidth = lineWidth
@@ -119,5 +133,13 @@ extension LoadingIndicatorView {
         animationGroup.repeatCount = .infinity
 
         animatedLayer.add(animationGroup, forKey: "loading")
+    }
+}
+
+// MARK: - Private extensions
+
+private extension UIColor {
+    static var loadingIndicatorBackground: UIColor? {
+        return UIColor(r: 221, g: 232, b: 250)
     }
 }

@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol AdsGridViewDelegate: class {
+    func adsGridViewDidStartRefreshing(_ adsGridView: AdsGridView)
     func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView)
@@ -35,6 +36,12 @@ public class AdsGridView: UIView {
         return collectionView
     }()
 
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = RefreshControl(frame: .zero)
+        refreshControl.delegate = self
+        return refreshControl
+    }()
+
     private weak var delegate: AdsGridViewDelegate?
     private weak var dataSource: AdsGridViewDataSource?
 
@@ -43,6 +50,12 @@ public class AdsGridView: UIView {
     public var headerView: UIView? {
         willSet {
             headerView?.removeFromSuperview()
+        }
+    }
+
+    public var isRefreshEnabled = false {
+        didSet {
+            setupRefreshControl()
         }
     }
 
@@ -74,6 +87,18 @@ public class AdsGridView: UIView {
         collectionView.fillInSuperview()
     }
 
+    private func setupRefreshControl() {
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = isRefreshEnabled ? refreshControl : nil
+        } else {
+            refreshControl.removeFromSuperview()
+
+            if isRefreshEnabled {
+                collectionView.addSubview(refreshControl)
+            }
+        }
+    }
+
     public func invalidateLayout() {
         collectionView.collectionViewLayout.invalidateLayout()
     }
@@ -81,7 +106,12 @@ public class AdsGridView: UIView {
     // MARK: - Public
 
     public func reloadData() {
+        endRefreshing()
         collectionView.reloadData()
+    }
+
+    public func endRefreshing() {
+        refreshControl.endRefreshing()
     }
 
     public func updateItem(at index: Int, isFavorite: Bool) {
@@ -197,5 +227,13 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
 
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
         return AdsGridViewCell.nonImageHeight
+    }
+}
+
+// MARK: - RefreshControlDelegate
+
+extension AdsGridView: RefreshControlDelegate {
+    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        delegate?.adsGridViewDidStartRefreshing(self)
     }
 }

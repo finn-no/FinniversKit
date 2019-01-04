@@ -12,6 +12,7 @@ public class FrontpageViewDemoView: UIView {
     private lazy var frontPageView: FrontPageView = {
         let view = FrontPageView(delegate: self)
         view.model = FrontpageViewDefaultData()
+        view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -46,6 +47,10 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
     public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
     public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
     public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
+
+    public func adsGridViewDidStartRefreshing(_ adsGridView: AdsGridView) {
+        frontPageView.reloadData()
+    }
 
     public func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int) {
         adsGridView.updateItem(at: index, isFavorite: !cell.isFavorite)
