@@ -200,6 +200,8 @@
 		CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */; };
 		CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF848C2B21C7E0860086530E /* CogWheelButton.swift */; };
 		CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF848C2E21C7E3010086530E /* CogWheelButtonDemoView.swift */; };
+		CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F024421DE1013004C4042 /* RefreshControl.swift */; };
+		CF8F024821DE3813004C4042 /* RefreshControlDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F024721DE3813004C4042 /* RefreshControlDemo.swift */; };
 		CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */; };
 		CF9AC8BC21BECE13005A0D2F /* SnowGlobeDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */; };
 		CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */; };
@@ -484,6 +486,8 @@
 		CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageView.swift; sourceTree = "<group>"; };
 		CF848C2B21C7E0860086530E /* CogWheelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CogWheelButton.swift; sourceTree = "<group>"; };
 		CF848C2E21C7E3010086530E /* CogWheelButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CogWheelButtonDemoView.swift; sourceTree = "<group>"; };
+		CF8F024421DE1013004C4042 /* RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
+		CF8F024721DE3813004C4042 /* RefreshControlDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshControlDemo.swift; sourceTree = "<group>"; };
 		CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowGlobeView.swift; sourceTree = "<group>"; };
 		CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowGlobeDemoView.swift; sourceTree = "<group>"; };
 		CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sleighbell.mp3; sourceTree = "<group>"; };
@@ -982,18 +986,19 @@
 			isa = PBXGroup;
 			children = (
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
-				14DC126821593B0000326DC3 /* HorizontalSlide */,
-				44AFCE44215839F6005984DB /* LoadingIndicator */,
-				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
-				45B2E06B207E181C00C68B92 /* Consent */,
-				45D7C569204949B7000E788F /* Switch */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
+				45B2E06B207E181C00C68B92 /* Consent */,
+				14DC126821593B0000326DC3 /* HorizontalSlide */,
 				4447F6741FDB2B110033DBC1 /* Label */,
+				44AFCE44215839F6005984DB /* LoadingIndicator */,
+				CF8F024321DE0FF9004C4042 /* RefreshControl */,
 				4447F69C1FDB2B110033DBC1 /* Ribbon */,
+				B01D752811A625A4D0690F25 /* RoundedImageView */,
+				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
+				45D7C569204949B7000E788F /* Switch */,
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
-				B01D752811A625A4D0690F25 /* RoundedImageView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1414,6 +1419,7 @@
 				CF8F021521DCC5DA004C4042 /* HorizontalSlide */,
 				CF8F022221DCC6D5004C4042 /* Label */,
 				CF8F021621DCC5F6004C4042 /* LoadingIndicator */,
+				CF8F024621DE37FE004C4042 /* RefreshControl */,
 				CF8F022321DCC6E5004C4042 /* Ribbon */,
 				CF8F022621DCC705004C4042 /* RoundedImageView */,
 				CF8F021721DCC60E004C4042 /* SelectionBoxes */,
@@ -1829,6 +1835,22 @@
 			path = Ads;
 			sourceTree = "<group>";
 		};
+		CF8F024321DE0FF9004C4042 /* RefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				CF8F024421DE1013004C4042 /* RefreshControl.swift */,
+			);
+			path = RefreshControl;
+			sourceTree = "<group>";
+		};
+		CF8F024621DE37FE004C4042 /* RefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				CF8F024721DE3813004C4042 /* RefreshControlDemo.swift */,
+			);
+			path = RefreshControl;
+			sourceTree = "<group>";
+		};
 		CF9AC8B421BEBFD2005A0D2F /* SnowGlobe */ = {
 			isa = PBXGroup;
 			children = (
@@ -2224,6 +2246,7 @@
 				45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */,
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
+				CF8F024821DE3813004C4042 /* RefreshControlDemo.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
 				DAC7DCB0215386E7004602A3 /* ConsentToggleViewDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
@@ -2395,6 +2418,7 @@
 				CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
 				43BACE6A21117D430052114C /* ReviewView.swift in Sources */,
+				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
 				08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,

@@ -83,6 +83,10 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.loadingIndicator)
     }
 
+    func testRefreshControl() {
+        snapshot(.refreshControl)
+    }
+
     func testHorizontalSlide() {
         snapshot(.horizontalSlide)
     }

@@ -39,6 +39,7 @@ public enum ComponentViews: String, CaseIterable {
     case radioButton
     case roundedImageView
     case loadingIndicator
+    case refreshControl
     case horizontalSlide
     case newYearsView
 
@@ -74,6 +75,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<RoundedImageViewDemoView>()
         case .loadingIndicator:
             return DemoViewController<LoadingIndicatorViewDemoView>()
+        case .refreshControl:
+            return DemoViewController<RefreshControlDemoView>()
         case .horizontalSlide:
             let presentedViewController = HorizontalSlideDemoViewController()
             let secondViewController = UINavigationController(rootViewController: presentedViewController)
