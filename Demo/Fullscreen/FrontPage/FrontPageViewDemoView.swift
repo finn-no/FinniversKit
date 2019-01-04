@@ -12,7 +12,7 @@ public class FrontpageViewDemoView: UIView {
     private lazy var frontPageView: FrontPageView = {
         let view = FrontPageView(delegate: self)
         view.model = FrontpageViewDefaultData()
-        view.isRefreshEnabled = false
+        view.isRefreshEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
