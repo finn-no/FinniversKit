@@ -56,7 +56,6 @@ public enum FinniversImageAsset: String {
     case help
     case hide
     case home
-    case important
     case info
     case jobs
     case listView
@@ -147,7 +146,6 @@ public enum FinniversImageAsset: String {
             .help,
             .hide,
             .home,
-            .important,
             .info,
             .jobs,
             .listView,
