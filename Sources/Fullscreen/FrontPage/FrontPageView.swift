@@ -16,6 +16,15 @@ public final class FrontPageView: UIView {
         }
     }
 
+    public var isRefreshEnabled: Bool {
+        get {
+            return adsGridView.isRefreshEnabled
+        }
+        set {
+            adsGridView.isRefreshEnabled = newValue
+        }
+    }
+
     private weak var delegate: FrontPageViewDelegate?
     private var didSetupView = false
 

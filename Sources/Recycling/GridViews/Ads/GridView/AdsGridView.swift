@@ -53,6 +53,12 @@ public class AdsGridView: UIView {
         }
     }
 
+    public var isRefreshEnabled = false {
+        didSet {
+            setupRefreshControl()
+        }
+    }
+
     // MARK: - Setup
 
     public init(delegate: AdsGridViewDelegate, dataSource: AdsGridViewDataSource) {
@@ -79,11 +85,17 @@ public class AdsGridView: UIView {
         collectionView.register(AdsGridHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         addSubview(collectionView)
         collectionView.fillInSuperview()
+    }
 
+    private func setupRefreshControl() {
         if #available(iOS 10.0, *) {
-            collectionView.refreshControl = refreshControl
+            collectionView.refreshControl = isRefreshEnabled ? refreshControl : nil
         } else {
-            collectionView.addSubview(refreshControl)
+            refreshControl.removeFromSuperview()
+
+            if isRefreshEnabled {
+                collectionView.addSubview(refreshControl)
+            }
         }
     }
 
