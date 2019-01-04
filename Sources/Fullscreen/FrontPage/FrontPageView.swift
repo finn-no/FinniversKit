@@ -117,12 +117,14 @@ public final class FrontPageView: UIView {
     }
 
     public func showAdsRetryButton() {
+        adsGridView.endRefreshing()
         adsRetryView.state = .labelAndButton
     }
 
     public func showInlineConsents(withText text: String) {
         inlineConsentView.isHidden = false
         inlineConsentView.descriptionText = text
+        adsGridView.endRefreshing()
         updateHeaderTitle()
         setupFrames()
     }
@@ -130,6 +132,7 @@ public final class FrontPageView: UIView {
     public func hideInlineConsents() {
         inlineConsentView.isHidden = true
         inlineConsentView.descriptionText = ""
+        adsGridView.endRefreshing()
         updateHeaderTitle()
         setupFrames()
     }

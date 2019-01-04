@@ -106,8 +106,12 @@ public class AdsGridView: UIView {
     // MARK: - Public
 
     public func reloadData() {
-        refreshControl.endRefreshing()
+        endRefreshing()
         collectionView.reloadData()
+    }
+
+    public func endRefreshing() {
+        refreshControl.endRefreshing()
     }
 
     public func updateItem(at index: Int, isFavorite: Bool) {
