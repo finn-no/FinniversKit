@@ -42,7 +42,7 @@ class BroadcastItem: UIView {
     }()
 
     private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: .important))
+        let imageView = UIImageView(image: UIImage(named: .info))
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
