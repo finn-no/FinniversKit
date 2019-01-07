@@ -116,7 +116,7 @@ private extension BottomSheetPresentationController {
         guard let containerView = containerView else { return 0 }
         return (containerView.bounds.height - position.y) / height.compact
     }
-  
+    
     func updateState(_ state: BottomSheet.State) {
         guard state != stateController.state else { return }
         stateController.state = state
