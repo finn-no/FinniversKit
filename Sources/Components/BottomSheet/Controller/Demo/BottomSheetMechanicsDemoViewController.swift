@@ -59,15 +59,15 @@ class RootViewController: UIViewController {
         ])
     }
 
-    @objc func expandButtonPressed() {
+    @objc private func expandButtonPressed() {
         delegate?.rootViewControllerDidPressExpandButton(self)
     }
 
-    @objc func compactButtonPressed() {
+    @objc private func compactButtonPressed() {
         delegate?.rootViewControllerDidPressCompactButton(self)
     }
 
-    @objc func dismissButtonPressed() {
+    @objc private func dismissButtonPressed() {
         delegate?.rootViewControllerDidPressDismissButton(self)
     }
 }
@@ -95,7 +95,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
         ])
     }
 
-    @objc func presentButtonPressed() {
+    @objc private func presentButtonPressed() {
         let rootController = RootViewController()
         rootController.delegate = self
         let bottomSheet = BottomSheet(rootViewController: rootController)
