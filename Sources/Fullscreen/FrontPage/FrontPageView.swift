@@ -16,6 +16,15 @@ public final class FrontPageView: UIView {
         }
     }
 
+    public var isRefreshEnabled: Bool {
+        get {
+            return adsGridView.isRefreshEnabled
+        }
+        set {
+            adsGridView.isRefreshEnabled = newValue
+        }
+    }
+
     private weak var delegate: FrontPageViewDelegate?
     private var didSetupView = false
 
@@ -47,6 +56,8 @@ public final class FrontPageView: UIView {
 
     private lazy var marketsGridViewHeight = self.marketsGridView.heightAnchor.constraint(equalToConstant: 0)
 
+    private var keyValueObservation: NSKeyValueObservation?
+
     // MARK: - Init
 
     public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate & AdsGridViewDataSource & InlineConsentViewDelegate) {
@@ -69,6 +80,10 @@ public final class FrontPageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        keyValueObservation?.invalidate()
+    }
+
     // MARK: - Public
 
     public override func layoutSubviews() {
@@ -81,7 +96,8 @@ public final class FrontPageView: UIView {
     }
 
     public func reloadData() {
-        reloadMarkets()
+        marketsGridView.reloadData()
+        setupFrames()
         reloadAds()
     }
 
@@ -101,12 +117,14 @@ public final class FrontPageView: UIView {
     }
 
     public func showAdsRetryButton() {
+        adsGridView.endRefreshing()
         adsRetryView.state = .labelAndButton
     }
 
     public func showInlineConsents(withText text: String) {
         inlineConsentView.isHidden = false
         inlineConsentView.descriptionText = text
+        adsGridView.endRefreshing()
         updateHeaderTitle()
         setupFrames()
     }
@@ -114,6 +132,7 @@ public final class FrontPageView: UIView {
     public func hideInlineConsents() {
         inlineConsentView.isHidden = true
         inlineConsentView.descriptionText = ""
+        adsGridView.endRefreshing()
         updateHeaderTitle()
         setupFrames()
     }

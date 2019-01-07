@@ -39,6 +39,7 @@ public enum ComponentViews: String, CaseIterable {
     case radioButton
     case roundedImageView
     case loadingIndicator
+    case refreshControl
     case horizontalSlide
     case newYearsView
 
@@ -74,6 +75,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<RoundedImageViewDemoView>()
         case .loadingIndicator:
             return DemoViewController<LoadingIndicatorViewDemoView>()
+        case .refreshControl:
+            return DemoViewController<RefreshControlDemoView>()
         case .horizontalSlide:
             let presentedViewController = HorizontalSlideDemoViewController()
             let secondViewController = UINavigationController(rootViewController: presentedViewController)
@@ -170,6 +173,7 @@ public enum TableViewCellViews: String, CaseIterable {
     case basicCellVariations
     case checkboxCell
     case checkboxSubtitleCell
+    case heartSubtitleCell
     case iconTitleCell
 
     public var viewController: UIViewController {
@@ -182,6 +186,8 @@ public enum TableViewCellViews: String, CaseIterable {
             return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
         case .checkboxSubtitleCell:
             return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
+        case .heartSubtitleCell:
+            return DemoViewController<HeartSubtitleCellDemoView>(withDismissButton: true)
         case .iconTitleCell:
             return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
         }
