@@ -32,7 +32,7 @@ class SpringAnimator: NSObject {
 
     var state: State = .stopped
     var isRunning: Bool = false
-    var completion: ((Bool) -> Void)?
+
     // MARK: - Spring physics
     private let damping: CGFloat
     private let stiffness: CGFloat
@@ -40,6 +40,8 @@ class SpringAnimator: NSObject {
     private var position: CGPoint = .zero
     // MARK: - Animation properties
     private var animations: [(CGPoint) -> Void] = []
+    private var completion: ((Bool) -> Void)?
+
     private lazy var displayLink = CADisplayLink(target: self, selector: #selector(step(displayLink:)))
     private let scale = 1 / UIScreen.main.scale
 
@@ -52,6 +54,10 @@ class SpringAnimator: NSObject {
     // MARK: - ViewAnimating
     func addAnimation(_ animation: @escaping (CGPoint) -> Void) {
         animations.append(animation)
+    }
+
+    func addCompletion(_ completion: @escaping (Bool) -> Void) {
+        self.completion = completion
     }
 
     func startAnimation() {

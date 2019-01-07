@@ -61,7 +61,15 @@ class BottomSheetPresentationController: UIPresentationController {
         gestureController?.delegate = interactionController
         interactionController.setup(with: constraint)
         interactionController.stateController = stateController
-        animateDimView(to: 1.0)
+        // Setup animations
+        springAnimator.addAnimation { [weak self] position in
+            self?.constraint?.constant = position.y
+            self?.dimView.alpha = self?.alphaValue(for: position) ?? 0
+        }
+        // Animate dim view alpha in sync with transition animation
+        interactionController.animate { [weak self] position in
+            self?.dimView.alpha = self?.alphaValue(for: position) ?? 0
+        }
     }
 
     override func presentationTransitionDidEnd(_ completed: Bool) {
@@ -74,7 +82,6 @@ class BottomSheetPresentationController: UIPresentationController {
         springAnimator.stopAnimation(true)
         // Make sure initial transition velocity is the same the current velocity of the bottom sheet
         interactionController.initialTransitionVelocity = -(gestureController?.velocity ?? .zero)
-        animateDimView(to: 0)
     }
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {
@@ -102,12 +109,14 @@ private extension BottomSheetPresentationController {
             presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact),
             presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
         ])
-        springAnimator.addAnimation { position in
-            constraint.constant = position.y
-        }
         self.constraint = constraint
     }
 
+    func alphaValue(for position: CGPoint) -> CGFloat {
+        guard let containerView = containerView else { return 0 }
+        return (containerView.bounds.height - position.y) / height.compact
+    }
+    
     func updateState(_ state: BottomSheet.State) {
         guard state != stateController.state else { return }
         stateController.state = state
@@ -118,12 +127,6 @@ private extension BottomSheetPresentationController {
         stateController.state = .dismissed
         gestureController?.velocity = .zero
         presentedViewController.dismiss(animated: true)
-    }
-
-    func animateDimView(to alpha: CGFloat) {
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.dimView.alpha = alpha
-        }
     }
 
     func animateToTargetPosition(initialVelocity: CGPoint = .zero) {
@@ -147,6 +150,7 @@ extension BottomSheetPresentationController: BottomSheetGestureControllerDelegat
     }
     // Position is the position of the bottom sheet in the container view
     func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController) {
+        dimView.alpha = alphaValue(for: controller.position)
         constraint?.constant = controller.position.y
     }
 

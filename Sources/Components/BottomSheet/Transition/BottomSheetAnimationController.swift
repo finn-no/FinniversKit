@@ -19,6 +19,10 @@ class BottomSheetAnimationController: NSObject, UIViewControllerAnimatedTransiti
         }
     }
 
+    func addAnimation(_ animation: @escaping (CGPoint) -> Void) {
+        animator.addAnimation(animation)
+    }
+
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         animateToTargetPosition { didComplete in
             transitionContext.completeTransition(didComplete)
@@ -55,7 +59,7 @@ private extension BottomSheetAnimationController {
         animator.fromPosition = CGPoint(x: 0, y: constraint.constant)
         animator.toPosition = targetPosition
         animator.initialVelocity = initialVelocity
-        animator.completion = completion
+        animator.addCompletion(completion)
         animator.startAnimation()
     }
 }
