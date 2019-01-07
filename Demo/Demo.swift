@@ -42,6 +42,7 @@ public enum ComponentViews: String, CaseIterable {
     case refreshControl
     case horizontalSlide
     case newYearsView
+    case bottomSheetMechanis
 
     public var viewController: UIViewController {
         switch self {
@@ -85,6 +86,8 @@ public enum ComponentViews: String, CaseIterable {
             return secondViewController
         case .newYearsView:
                 return DemoViewController<NewYearsDemoView>()
+        case .bottomSheetMechanis:
+            return BottomSheetMechanicsDemoViewController()
         }
     }
 }

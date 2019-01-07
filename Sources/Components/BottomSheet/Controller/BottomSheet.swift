@@ -23,9 +23,20 @@ extension BottomSheet {
             self.expanded = expanded
         }
     }
+
+    public enum State {
+        case expanded
+        case compact
+        case dismissed
+    }
 }
 
 public class BottomSheet: UIViewController {
+
+    public var state: State {
+        get { return transitionDelegate.presentationController?.state ?? .dismissed }
+        set { transitionDelegate.presentationController?.state = newValue }
+    }
 
     // MARK: - Private properties
 
