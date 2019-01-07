@@ -59,7 +59,7 @@ private extension BottomSheetAnimationController {
         animator.fromPosition = CGPoint(x: 0, y: constraint.constant)
         animator.toPosition = targetPosition
         animator.initialVelocity = initialVelocity
-        animator.completion = completion
+        animator.addCompletion(completion)
         animator.startAnimation()
     }
 }

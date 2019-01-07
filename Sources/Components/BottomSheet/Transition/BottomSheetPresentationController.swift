@@ -52,13 +52,13 @@ class BottomSheetPresentationController: UIPresentationController {
         interactionController.setup(with: constraint)
         interactionController.stateController = stateController
         // Setup animations
-        springAnimator.addAnimation { position in
-            self.constraint?.constant = position.y
-            self.dimView.alpha = self.alphaValue(for: position)
+        springAnimator.addAnimation { [weak self] position in
+            self?.constraint?.constant = position.y
+            self?.dimView.alpha = self?.alphaValue(for: position) ?? 0
         }
         // Animate dim view alpha in sync with transition animation
-        interactionController.animate { position in
-            self.dimView.alpha = self.alphaValue(for: position)
+        interactionController.animate { [weak self] position in
+            self?.dimView.alpha = self?.alphaValue(for: position) ?? 0
         }
     }
 
