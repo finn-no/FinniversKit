@@ -6,8 +6,9 @@ import UIKit
 
 class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
+    var presentationController: BottomSheetPresentationController?
+
     private let height: BottomSheet.Height
-    private var presentationController: BottomSheetPresentationController?
     private let interactionController: BottomSheetInteractionController
     private let animationController: BottomSheetAnimationController
 

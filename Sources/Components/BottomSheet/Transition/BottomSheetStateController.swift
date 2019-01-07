@@ -4,17 +4,9 @@
 
 import UIKit
 
-extension BottomSheetStateController {
-    enum State {
-        case expanded
-        case compact
-        case dismissed
-    }
-}
-
 class BottomSheetStateController {
 
-    var state: State = .compact
+    var state: BottomSheet.State = .compact
     var frame: CGRect = .zero
     var height: BottomSheet.Height = .zero
 
@@ -30,21 +22,27 @@ class BottomSheetStateController {
 }
 
 private extension BottomSheetStateController {
-    func nextState(forTranslation translation: CGPoint, withCurrent current: State, usingThreshold threshold: CGFloat) -> State {
+    func nextState(forTranslation translation: CGPoint, withCurrent current: BottomSheet.State, usingThreshold threshold: CGFloat) -> BottomSheet.State {
         switch current {
         case .compact:
             if translation.y < -threshold {
                 return .expanded
-            } else if translation.y > threshold { return .dismissed }
+            } else if translation.y > threshold {
+                return .dismissed
+            }
         case .expanded:
-            if translation.y > threshold { return .compact }
+            if translation.y > threshold {
+                return .compact
+            }
         case .dismissed:
-            if translation.y < -threshold { return .compact }
+            if translation.y < -threshold {
+                return .compact
+            }
         }
         return current
     }
 
-    func targetPosition(for state: State) -> CGPoint {
+    func targetPosition(for state: BottomSheet.State) -> CGPoint {
         switch state {
         case .compact:
             return CGPoint(x: 0, y: frame.height - height.compact)
