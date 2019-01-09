@@ -28,7 +28,7 @@ class BottomSheetPresentationController: UIPresentationController {
     private let stateController = BottomSheetStateController()
     private let springAnimator = SpringAnimator(dampingRatio: 0.78, frequencyResponse: 0.5)
 
-    private var hasReachExpandedPosition = true
+    private var hasReachExpandedPosition = false
     private var currentPosition: CGPoint {
         guard let constraint = constraint else { return .zero }
         return CGPoint(x: 0, y: constraint.constant)
