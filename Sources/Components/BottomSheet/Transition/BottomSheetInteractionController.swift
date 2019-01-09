@@ -21,7 +21,7 @@ class BottomSheetInteractionController: NSObject, UIViewControllerInteractiveTra
     private var constraint: NSLayoutConstraint?
     private var transitionContext: UIViewControllerContextTransitioning?
 
-    private var hasReachExpandedPosition = true
+    private var hasReachExpandedPosition = false
     private var currentPosition: CGPoint {
         guard let constraint = constraint else { return .zero }
         return CGPoint(x: 0, y: constraint.constant)
