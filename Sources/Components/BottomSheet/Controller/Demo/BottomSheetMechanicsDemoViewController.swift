@@ -93,6 +93,16 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
             presentButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
             presentButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.veryLargeSpacing),
         ])
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
+        tapGesture.numberOfTapsRequired = 2
+        tapGesture.numberOfTouchesRequired = 2
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func handleDoubleTap() {
+        State.lastSelectedIndexPath = nil
+        dismiss(animated: true)
     }
 
     @objc private func presentButtonPressed() {
