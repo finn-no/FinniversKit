@@ -16,9 +16,16 @@ class BottomSheetInteractionController: NSObject, UIViewControllerInteractiveTra
     let animationController: BottomSheetAnimationController
     var initialTransitionVelocity: CGPoint = .zero
     var stateController: BottomSheetStateController?
+    var dimView: UIView?
 
     private var constraint: NSLayoutConstraint?
     private var transitionContext: UIViewControllerContextTransitioning?
+
+    private var hasReachExpandedPosition = false
+    private var currentPosition: CGPoint {
+        guard let constraint = constraint else { return .zero }
+        return CGPoint(x: 0, y: constraint.constant)
+    }
 
     init(animationController: BottomSheetAnimationController) {
         self.animationController = animationController
@@ -43,22 +50,45 @@ class BottomSheetInteractionController: NSObject, UIViewControllerInteractiveTra
     }
 }
 
+private extension BottomSheetInteractionController {
+    func alphaValue(for position: CGPoint) -> CGFloat {
+        guard let stateController = stateController else { return 0 }
+        return (stateController.frame.height - position.y) / stateController.height.compact
+    }
+}
+
 // The interaction is only used during the presentation transition
 extension BottomSheetInteractionController: BottomSheetGestureControllerDelegate {
     func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGPoint {
-        guard let constraint = constraint else { return .zero }
+        guard let constraint = constraint, let stateController = stateController, constraint.constant > stateController.expandedPosition.y else {
+            hasReachExpandedPosition = true
+            return currentPosition
+        }
         animationController.pauseTransition()
-        return CGPoint(x: 0, y: constraint.constant)
+        animationController.setSpringParameters(dampingRatio: 0.78, frequencyResponse: 0.5)
+        return currentPosition
     }
 
     func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController) {
-        // Update constraint based on gesture
+        guard let stateController = stateController else { return }
+        if controller.position.y <= stateController.expandedPosition.y {
+            guard !hasReachExpandedPosition else { return }
+            hasReachExpandedPosition = true
+            animationController.targetPosition = stateController.expandedPosition
+            animationController.initialVelocity = -controller.velocity
+            animationController.continueTransition()
+            return
+        }
+
+        hasReachExpandedPosition = false
+        dimView?.alpha = alphaValue(for: controller.position)
         constraint?.constant = controller.position.y
     }
 
     func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController) {
         guard let transitionContext = transitionContext, let stateController = stateController else { return }
         stateController.updateState(withTranslation: controller.translation)
+        guard !hasReachExpandedPosition else { return }
         animationController.initialVelocity = -controller.velocity
         animationController.targetPosition = stateController.targetPosition
         switch stateController.state {
