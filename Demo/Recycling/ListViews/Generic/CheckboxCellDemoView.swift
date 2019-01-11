@@ -7,6 +7,7 @@ import FinniversKit
 private struct ViewModel: SelectableTableViewCellViewModel {
     let title: String
     let subtitle: String? = nil
+    let detailText: String? = nil
     let hasChevron: Bool = false
     var isSelected: Bool
 }
