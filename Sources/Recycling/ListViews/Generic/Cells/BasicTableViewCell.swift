@@ -103,7 +103,6 @@ open class BasicTableViewCell: UITableViewCell {
     private func setup() {
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
-        
         NSLayoutConstraint.activate([
             stackViewToContentViewConstraint,
             stackViewTrailingAnchor,
