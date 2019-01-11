@@ -7,6 +7,7 @@ import FinniversKit
 private struct ViewModel: IconTitleTableViewCellViewModel {
     var title: String
     let subtitle: String? = nil
+    let detailText: String? = nil
     var icon: UIImage?
     var iconTintColor: UIColor?
     var hasChevron: Bool
