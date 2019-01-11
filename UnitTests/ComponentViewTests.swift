@@ -98,4 +98,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testBannerTransparencyView() {
         snapshot(.bannerTransparency)
     }
+
+    func testBottomSheetMechanics() {
+        snapshot(.bottomSheetMechanics)
+    }
 }

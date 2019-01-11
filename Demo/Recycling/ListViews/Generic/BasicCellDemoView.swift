@@ -7,6 +7,7 @@ import FinniversKit
 private struct ViewModel: BasicTableViewCellViewModel {
     var title: String
     let subtitle: String? = nil
+    let detailText: String? = nil
     let hasChevron: Bool = false
 }
 
