@@ -56,7 +56,14 @@ public class BottomSheet: UIViewController {
 
     // Only necessary if iOS < 11.0
     private let maskLayer = CAShapeLayer()
-    // ---------------
+
+    private var bottomSafeAreaInset: CGFloat {
+        if #available(iOS 11.0, *) {
+            return UIApplication.shared.delegate?.window??.safeAreaInsets.bottom ?? 0
+        } else {
+            return 0
+        }
+    }
 
     // MARK: - Setup
 
@@ -112,7 +119,7 @@ public class BottomSheet: UIViewController {
             rootViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             rootViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             rootViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            rootViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            rootViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomSafeAreaInset)
         ])
     }
 }
