@@ -56,13 +56,20 @@ public class BottomSheet: UIViewController {
 
     // Only necessary if iOS < 11.0
     private let maskLayer = CAShapeLayer()
-    // ---------------
+    private let bottomSafeAreaInset: CGFloat
 
     // MARK: - Setup
 
-    public init(rootViewController: UIViewController, height: Height = .defaultFilterHeight) {
+    public init(rootViewController: UIViewController,
+                appWindow: UIWindow? = UIApplication.shared.delegate?.window ?? nil,
+                height: Height = .defaultFilterHeight) {
         self.rootViewController = rootViewController
         self.transitionDelegate = BottomSheetTransitioningDelegate(height: height)
+        if #available(iOS 11.0, *) {
+            self.bottomSafeAreaInset = appWindow?.safeAreaInsets.bottom ?? 0
+        } else {
+            self.bottomSafeAreaInset = 0
+        }
         super.init(nibName: nil, bundle: nil)
         transitioningDelegate = transitionDelegate
         modalPresentationStyle = .custom
@@ -112,7 +119,7 @@ public class BottomSheet: UIViewController {
             rootViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             rootViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             rootViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            rootViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            rootViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomSafeAreaInset)
         ])
     }
 }
