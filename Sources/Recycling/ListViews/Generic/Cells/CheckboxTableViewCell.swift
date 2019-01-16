@@ -60,7 +60,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
 
     private func setup() {
         contentView.addSubview(checkbox)
-        stackViewToContentViewConstraint.isActive = false
+        stackViewLeadingAnchor.isActive = false
 
         NSLayoutConstraint.activate([
             stackViewToCheckboxConstraint,
