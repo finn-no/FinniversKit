@@ -570,6 +570,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		083349EA21EF24AE000E68D3 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				DAC65FBA21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
 		08796D8F21CB97D70023A441 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -1415,6 +1423,7 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
 				CF8F021821DCC624004C4042 /* Consent */,
@@ -1919,7 +1928,6 @@
 		DAB7FAAF21B6925D00BF8CC6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DAC65FB921E35F5E00644CDE /* Demo */,
 				DAB7FA9F21B690DD00BF8CC6 /* BottomSheet.swift */,
 			);
 			path = Controller;
@@ -1941,14 +1949,6 @@
 				DAC1EC4D21C1297500F4FEC4 /* BalloonView.swift */,
 			);
 			path = NewYears;
-			sourceTree = "<group>";
-		};
-		DAC65FB921E35F5E00644CDE /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				DAC65FBA21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift */,
-			);
-			path = Demo;
 			sourceTree = "<group>";
 		};
 		DAC7DCA021538511004602A3 /* ConsentToggleView */ = {
