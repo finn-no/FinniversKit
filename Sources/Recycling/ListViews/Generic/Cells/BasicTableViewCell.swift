@@ -38,10 +38,10 @@ open class BasicTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    open lazy var stackViewLeadingAnchor = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing)
-    open lazy var stackViewTrailingAnchor = stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor)
-    open lazy var stackViewBottomAnchor = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
-    open lazy var stackViewTopAnchor = stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13)
+    open lazy var stackViewLeadingAnchorConstraint = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing)
+    open lazy var stackViewTrailingAnchorConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor)
+    open lazy var stackViewBottomAnchorConstraint = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
+    open lazy var stackViewTopAnchorConstraint = stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13)
 
     // MARK: - Private properties
 
@@ -84,12 +84,12 @@ open class BasicTableViewCell: UITableViewCell {
             accessoryType = .disclosureIndicator
             selectionStyle = .default
             detailLabelTrailingConstraint.constant = 0
-            stackViewTrailingAnchor.constant = 0
+            stackViewTrailingAnchorConstraint.constant = 0
         } else {
             accessoryType = .none
             selectionStyle = .none
             detailLabelTrailingConstraint.constant = -.mediumLargeSpacing
-            stackViewTrailingAnchor.constant = -.mediumLargeSpacing
+            stackViewTrailingAnchorConstraint.constant = -.mediumLargeSpacing
         }
 
         separatorInset = .leadingInset(.mediumLargeSpacing)
@@ -107,10 +107,10 @@ open class BasicTableViewCell: UITableViewCell {
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
         NSLayoutConstraint.activate([
-            stackViewTopAnchor,
-            stackViewLeadingAnchor,
-            stackViewTrailingAnchor,
-            stackViewBottomAnchor,
+            stackViewTopAnchorConstraint,
+            stackViewLeadingAnchorConstraint,
+            stackViewTrailingAnchorConstraint,
+            stackViewBottomAnchorConstraint,
 
             detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             detailLabelTrailingConstraint

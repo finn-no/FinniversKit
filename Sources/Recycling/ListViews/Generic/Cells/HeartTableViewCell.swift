@@ -60,7 +60,7 @@ open class HeartTableViewCell: BasicTableViewCell {
 
     private func setup() {
         contentView.addSubview(heartView)
-        stackViewLeadingAnchor.isActive = false
+        stackViewLeadingAnchorConstraint.isActive = false
         NSLayoutConstraint.activate([
             stackViewToHeartConstraint,
             heartView.heightAnchor.constraint(equalToConstant: 28),

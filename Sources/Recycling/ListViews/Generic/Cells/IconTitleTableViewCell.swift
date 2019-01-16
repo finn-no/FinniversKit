@@ -46,11 +46,11 @@ open class IconTitleTableViewCell: BasicTableViewCell {
             if let tintColor = viewModel.iconTintColor {
                 iconImageView.tintColor = tintColor
             }
-            stackViewLeadingAnchor.isActive = false
+            stackViewLeadingAnchorConstraint.isActive = false
             stackViewToIconConstraint.isActive = true
         } else {
             stackViewToIconConstraint.isActive = false
-            stackViewLeadingAnchor.isActive = true
+            stackViewLeadingAnchorConstraint.isActive = true
         }
 
         separatorInset = .leadingInset(.mediumLargeSpacing)
