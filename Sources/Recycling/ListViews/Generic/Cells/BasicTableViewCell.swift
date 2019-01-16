@@ -38,13 +38,16 @@ open class BasicTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    open lazy var stackViewToContentViewConstraint = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing)
+    open lazy var stackViewLeadingAnchor = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing)
+    open lazy var stackViewTrailingAnchor = stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor)
+    open lazy var stackViewBottomAnchor = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
+    open lazy var stackViewTopAnchor = stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13)
 
     // MARK: - Private properties
 
     private lazy var detailLabelTrailingConstraint = detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
     private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.smallSpacing)
-    private lazy var stackViewTrailingAnchor = stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor)
+
     // MARK: - Setup
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -104,12 +107,13 @@ open class BasicTableViewCell: UITableViewCell {
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
         NSLayoutConstraint.activate([
-            stackViewToContentViewConstraint,
+            stackViewTopAnchor,
+            stackViewLeadingAnchor,
             stackViewTrailingAnchor,
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13),
+            stackViewBottomAnchor,
+
             detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             detailLabelTrailingConstraint
-        ])
+            ])
     }
 }
