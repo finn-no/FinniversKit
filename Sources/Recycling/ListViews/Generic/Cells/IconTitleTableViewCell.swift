@@ -63,8 +63,8 @@ open class IconTitleTableViewCell: BasicTableViewCell {
     private func setup() {
         contentView.addSubview(iconImageView)
         NSLayoutConstraint.activate([
-            iconImageView.heightAnchor.constraint(equalToConstant: 24),
-            iconImageView.widthAnchor.constraint(equalToConstant: 24),
+            iconImageView.heightAnchor.constraint(equalToConstant: 28),
+            iconImageView.widthAnchor.constraint(equalToConstant: 28),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
