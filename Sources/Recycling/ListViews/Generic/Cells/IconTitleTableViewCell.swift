@@ -14,19 +14,15 @@ open class IconTitleTableViewCell: BasicTableViewCell {
         return imageView
     }()
 
+    // MARK: - Private properties
+
+    private lazy var stackViewToIconConstraint = stackView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing)
+
     // MARK: - Setup
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier, handleLayoutInSubclass: true)
-        setup()
-    }
-
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, handleLayoutInSubclass: Bool) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        if !handleLayoutInSubclass {
-            setup()
-        }
+        setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -50,9 +46,11 @@ open class IconTitleTableViewCell: BasicTableViewCell {
             if let tintColor = viewModel.iconTintColor {
                 iconImageView.tintColor = tintColor
             }
-            stackView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing).isActive = true
+            stackViewLeadingAnchorConstraint.isActive = false
+            stackViewToIconConstraint.isActive = true
         } else {
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing).isActive = true
+            stackViewToIconConstraint.isActive = false
+            stackViewLeadingAnchorConstraint.isActive = true
         }
 
         separatorInset = .leadingInset(.mediumLargeSpacing)
@@ -64,16 +62,11 @@ open class IconTitleTableViewCell: BasicTableViewCell {
 
     private func setup() {
         contentView.addSubview(iconImageView)
-        contentView.addSubview(stackView)
-
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 28),
             iconImageView.widthAnchor.constraint(equalToConstant: 28),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-
-            stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.largeSpacing)
-            ])
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
     }
 }

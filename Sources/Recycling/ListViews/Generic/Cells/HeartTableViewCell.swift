@@ -16,21 +16,13 @@ open class HeartTableViewCell: BasicTableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var stackViewLeadingConstraint: NSLayoutConstraint = stackView.leadingAnchor.constraint(equalTo: heartView.trailingAnchor)
+    private lazy var stackViewToHeartConstraint = stackView.leadingAnchor.constraint(equalTo: heartView.trailingAnchor)
 
     // MARK: - Setup
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier, handleLayoutInSubclass: true)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
-    }
-
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, handleLayoutInSubclass: Bool) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier, handleLayoutInSubclass: true)
-
-        if !handleLayoutInSubclass {
-            setup()
-        }
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -45,10 +37,10 @@ open class HeartTableViewCell: BasicTableViewCell {
         heartView.isHighlighted = viewModel.isSelected
 
         if viewModel.subtitle != nil {
-            stackViewLeadingConstraint.constant = .mediumLargeSpacing
+            stackViewToHeartConstraint.constant = .mediumLargeSpacing
             separatorInset = .leadingInset(60)
         } else {
-            stackViewLeadingConstraint.constant = .mediumSpacing
+            stackViewToHeartConstraint.constant = .mediumSpacing
             separatorInset = .leadingInset(52)
         }
 
@@ -68,18 +60,13 @@ open class HeartTableViewCell: BasicTableViewCell {
 
     private func setup() {
         contentView.addSubview(heartView)
-        contentView.addSubview(stackView)
-
+        stackViewLeadingAnchorConstraint.isActive = false
         NSLayoutConstraint.activate([
+            stackViewToHeartConstraint,
             heartView.heightAnchor.constraint(equalToConstant: 28),
             heartView.widthAnchor.constraint(equalTo: heartView.heightAnchor),
             heartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            heartView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-
-            stackViewLeadingConstraint,
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
-            ])
+            heartView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
     }
 }

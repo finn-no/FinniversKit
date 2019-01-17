@@ -12,6 +12,7 @@ open class BasicTableViewCell: UITableViewCell {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
         label.textColor = .licorice
+        label.numberOfLines = 0
         return label
     }()
 
@@ -23,6 +24,13 @@ open class BasicTableViewCell: UITableViewCell {
         return label
     }()
 
+    open lazy var detailLabel: UILabel = {
+        let label = UILabel(withAutoLayout: true)
+        label.font = .detail
+        label.textColor = .stone
+        return label
+    }()
+
     open lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,19 +38,21 @@ open class BasicTableViewCell: UITableViewCell {
         return stackView
     }()
 
+    open lazy var stackViewLeadingAnchorConstraint = stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing)
+    open lazy var stackViewTrailingAnchorConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor)
+    open lazy var stackViewBottomAnchorConstraint = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
+    open lazy var stackViewTopAnchorConstraint = stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13)
+
+    // MARK: - Private properties
+
+    private lazy var detailLabelTrailingConstraint = detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+    private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.smallSpacing)
+
     // MARK: - Setup
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
-    }
-
-    public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, handleLayoutInSubclass: Bool) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        if !handleLayoutInSubclass {
-            setup()
-        }
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -61,12 +71,25 @@ open class BasicTableViewCell: UITableViewCell {
             subtitleLabel.isHidden = true
         }
 
+        if let detailText = viewModel.detailText {
+            detailLabel.text = detailText
+            detailLabel.isHidden = false
+            stackViewToDetailLabelConstraint.isActive = true
+        } else {
+            detailLabel.isHidden = true
+            stackViewToDetailLabelConstraint.isActive = false
+        }
+
         if viewModel.hasChevron {
             accessoryType = .disclosureIndicator
             selectionStyle = .default
+            detailLabelTrailingConstraint.constant = 0
+            stackViewTrailingAnchorConstraint.constant = 0
         } else {
             accessoryType = .none
             selectionStyle = .none
+            detailLabelTrailingConstraint.constant = -.mediumLargeSpacing
+            stackViewTrailingAnchorConstraint.constant = -.mediumLargeSpacing
         }
 
         separatorInset = .leadingInset(.mediumLargeSpacing)
@@ -82,12 +105,15 @@ open class BasicTableViewCell: UITableViewCell {
 
     private func setup() {
         contentView.addSubview(stackView)
-
+        contentView.addSubview(detailLabel)
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13),
-        ])
+            stackViewTopAnchorConstraint,
+            stackViewLeadingAnchorConstraint,
+            stackViewTrailingAnchorConstraint,
+            stackViewBottomAnchorConstraint,
+
+            detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            detailLabelTrailingConstraint
+            ])
     }
 }

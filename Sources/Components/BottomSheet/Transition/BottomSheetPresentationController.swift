@@ -16,12 +16,23 @@ import UIKit
 
 class BottomSheetPresentationController: UIPresentationController {
 
+    var state: BottomSheet.State {
+        get { return stateController.state }
+        set { updateState(newValue) }
+    }
+
     private let height: BottomSheet.Height
     private let interactionController: BottomSheetInteractionController
     private var constraint: NSLayoutConstraint? // Constraint is used to set the y position of the bottom sheet
     private var gestureController: BottomSheetGestureController?
     private let stateController = BottomSheetStateController()
     private let springAnimator = SpringAnimator(dampingRatio: 0.78, frequencyResponse: 0.5)
+
+    private var hasReachExpandedPosition = false
+    private var currentPosition: CGPoint {
+        guard let constraint = constraint else { return .zero }
+        return CGPoint(x: 0, y: constraint.constant)
+    }
 
     override var presentationStyle: UIModalPresentationStyle {
         return .overCurrentContext
@@ -51,7 +62,16 @@ class BottomSheetPresentationController: UIPresentationController {
         gestureController?.delegate = interactionController
         interactionController.setup(with: constraint)
         interactionController.stateController = stateController
-        animateDimView(to: 1.0)
+        interactionController.dimView = dimView
+        // Setup animations
+        springAnimator.addAnimation { [weak self] position in
+            self?.constraint?.constant = position.y
+            self?.dimView.alpha = self?.alphaValue(for: position) ?? 0
+        }
+        // Animate dim view alpha in sync with transition animation
+        interactionController.animate { [weak self] position in
+            self?.dimView.alpha = self?.alphaValue(for: position) ?? 0
+        }
     }
 
     override func presentationTransitionDidEnd(_ completed: Bool) {
@@ -64,7 +84,6 @@ class BottomSheetPresentationController: UIPresentationController {
         springAnimator.stopAnimation(true)
         // Make sure initial transition velocity is the same the current velocity of the bottom sheet
         interactionController.initialTransitionVelocity = -(gestureController?.velocity ?? .zero)
-        animateDimView(to: 0)
     }
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {
@@ -92,10 +111,18 @@ private extension BottomSheetPresentationController {
             presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact),
             presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
         ])
-        springAnimator.addAnimation { position in
-            constraint.constant = position.y
-        }
         self.constraint = constraint
+    }
+
+    func alphaValue(for position: CGPoint) -> CGFloat {
+        guard let containerView = containerView else { return 0 }
+        return (containerView.bounds.height - position.y) / height.compact
+    }
+
+    func updateState(_ state: BottomSheet.State) {
+        guard state != stateController.state else { return }
+        stateController.state = state
+        animate(to: stateController.targetPosition)
     }
 
     @objc func handleTap() {
@@ -104,9 +131,15 @@ private extension BottomSheetPresentationController {
         presentedViewController.dismiss(animated: true)
     }
 
-    func animateDimView(to alpha: CGFloat) {
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.dimView.alpha = alpha
+    func animate(to position: CGPoint, initialVelocity: CGPoint = .zero) {
+        switch stateController.state {
+        case .dismissed:
+            presentedViewController.dismiss(animated: true)
+        default:
+            springAnimator.fromPosition = currentPosition
+            springAnimator.toPosition = position
+            springAnimator.initialVelocity = initialVelocity
+            springAnimator.startAnimation()
         }
     }
 }
@@ -114,26 +147,30 @@ private extension BottomSheetPresentationController {
 extension BottomSheetPresentationController: BottomSheetGestureControllerDelegate {
     // This method expects to return the current position of the bottom sheet
     func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGPoint {
-        guard let constraint = constraint else { return .zero }
+        guard let constraint = constraint, constraint.constant > stateController.expandedPosition.y else {
+            hasReachExpandedPosition = true
+            return currentPosition
+        }
         springAnimator.pauseAnimation()
-        return CGPoint(x: 0, y: constraint.constant)
+        return currentPosition
     }
     // Position is the position of the bottom sheet in the container view
     func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController) {
+        if controller.position.y <= stateController.expandedPosition.y {
+            guard !hasReachExpandedPosition else { return }
+            hasReachExpandedPosition = true
+            animate(to: stateController.expandedPosition, initialVelocity: -controller.velocity)
+            return
+        }
+
+        hasReachExpandedPosition = false
+        dimView.alpha = alphaValue(for: controller.position)
         constraint?.constant = controller.position.y
     }
 
     func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController) {
-        guard let constraint = constraint else { return }
         stateController.updateState(withTranslation: controller.translation)
-        switch stateController.state {
-        case .dismissed:
-            presentedViewController.dismiss(animated: true)
-        default:
-            springAnimator.fromPosition = CGPoint(x: 0, y: constraint.constant)
-            springAnimator.toPosition = stateController.targetPosition
-            springAnimator.initialVelocity = -controller.velocity
-            springAnimator.startAnimation()
-        }
+        guard !hasReachExpandedPosition else { return }
+        animate(to: stateController.targetPosition, initialVelocity: -controller.velocity)
     }
 }

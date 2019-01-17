@@ -19,6 +19,10 @@ class BottomSheetAnimationController: NSObject, UIViewControllerAnimatedTransiti
         }
     }
 
+    func addAnimation(_ animation: @escaping (CGPoint) -> Void) {
+        animator.addAnimation(animation)
+    }
+
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         animateToTargetPosition { didComplete in
             transitionContext.completeTransition(didComplete)
@@ -43,6 +47,10 @@ class BottomSheetAnimationController: NSObject, UIViewControllerAnimatedTransiti
         animator.startAnimation()
     }
 
+    func setSpringParameters(dampingRatio: CGFloat, frequencyResponse: CGFloat) {
+        animator.set(dampingRatio: dampingRatio, frequencyResponse: frequencyResponse)
+    }
+
     // Because this is a spring animation the duration is unknown
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0
@@ -55,7 +63,7 @@ private extension BottomSheetAnimationController {
         animator.fromPosition = CGPoint(x: 0, y: constraint.constant)
         animator.toPosition = targetPosition
         animator.initialVelocity = initialVelocity
-        animator.completion = completion
+        animator.addCompletion(completion)
         animator.startAnimation()
     }
 }

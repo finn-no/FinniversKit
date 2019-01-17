@@ -7,16 +7,19 @@ import FinniversKit
 private struct ViewModel: BasicTableViewCellViewModel {
     var title: String
     var subtitle: String?
+    var detailText: String?
     var hasChevron: Bool
 }
 
 class BasicCellVariationsDemoView: UIView {
     private let viewModels = [
-        ViewModel(title: "Hagemøbler", subtitle: nil, hasChevron: false),
-        ViewModel(title: "Kattepuser", subtitle: "Fin-fine kattunger", hasChevron: true),
-        ViewModel(title: "Mac Mini Pro", subtitle: "En noe kraftigere Mac Mini", hasChevron: true),
-        ViewModel(title: "Mac Pro Mini", subtitle: nil, hasChevron: false),
-        ViewModel(title: "Mac Pro Max", subtitle: nil, hasChevron: false)
+        ViewModel(title: "Hagemøbler", subtitle: nil, detailText: nil, hasChevron: false),
+        ViewModel(title: "Kattepuser", subtitle: "Fin-fine kattunger", detailText: nil, hasChevron: true),
+        ViewModel(title: "Mac Mini Pro", subtitle: "En noe kraftigere Mac Mini", detailText: nil, hasChevron: true),
+        ViewModel(title: "Mac Pro Mini", subtitle: nil, detailText: nil, hasChevron: false),
+        ViewModel(title: "Mac Pro Max", subtitle: nil, detailText: nil, hasChevron: false),
+        ViewModel(title: "Kristiansand", subtitle: nil, detailText: "4 352", hasChevron: false),
+        ViewModel(title: "Oslo", subtitle: nil, detailText: "46 347", hasChevron: true)
     ]
 
     private lazy var tableView: UITableView = {

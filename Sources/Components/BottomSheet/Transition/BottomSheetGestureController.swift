@@ -32,10 +32,8 @@ class BottomSheetGestureController {
 
 private extension BottomSheetGestureController {
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: containerView)
-        self.translation = translation
-        let velocity = gesture.velocity(in: containerView)
-        self.velocity = velocity
+        self.translation = gesture.translation(in: containerView)
+        self.velocity = gesture.velocity(in: containerView)
 
         switch gesture.state {
         case .began:

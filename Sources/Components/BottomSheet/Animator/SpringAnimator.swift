@@ -32,26 +32,43 @@ class SpringAnimator: NSObject {
 
     var state: State = .stopped
     var isRunning: Bool = false
-    var completion: ((Bool) -> Void)?
+
     // MARK: - Spring physics
-    private let damping: CGFloat
-    private let stiffness: CGFloat
+    private var dampingRatio: CGFloat = 0
+    private var frequencyResponse: CGFloat = 0
+    private var damping: CGFloat = 0
+    private var stiffness: CGFloat = 0
     private var velocity: CGPoint = .zero
     private var position: CGPoint = .zero
+
     // MARK: - Animation properties
     private var animations: [(CGPoint) -> Void] = []
+    private var completion: ((Bool) -> Void)?
+
     private lazy var displayLink = CADisplayLink(target: self, selector: #selector(step(displayLink:)))
     private let scale = 1 / UIScreen.main.scale
 
     // MARK: - Setup
     init(dampingRatio: CGFloat, frequencyResponse: CGFloat) {
-        self.stiffness = pow(2 * .pi / frequencyResponse, 2)
-        self.damping = 2 * dampingRatio * sqrt(stiffness)
+        super.init()
+        set(dampingRatio: dampingRatio, frequencyResponse: frequencyResponse)
+    }
+
+    func set(dampingRatio: CGFloat, frequencyResponse: CGFloat) {
+        guard !isRunning else { return }
+        self.dampingRatio = dampingRatio
+        self.frequencyResponse = frequencyResponse
+        stiffness = pow(2 * .pi / frequencyResponse, 2)
+        damping = 2 * dampingRatio * sqrt(stiffness)
     }
 
     // MARK: - ViewAnimating
     func addAnimation(_ animation: @escaping (CGPoint) -> Void) {
         animations.append(animation)
+    }
+
+    func addCompletion(_ completion: @escaping (Bool) -> Void) {
+        self.completion = completion
     }
 
     func startAnimation() {
