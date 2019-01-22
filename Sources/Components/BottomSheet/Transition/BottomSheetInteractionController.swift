@@ -53,7 +53,7 @@ class BottomSheetInteractionController: NSObject, UIViewControllerInteractiveTra
 private extension BottomSheetInteractionController {
     func alphaValue(for position: CGPoint) -> CGFloat {
         guard let stateController = stateController else { return 0 }
-        return (stateController.frame.height - position.y) / (stateController.height.compact ?? stateController.height.expanded)
+        return (stateController.frame.height - position.y) / stateController.height.compact
     }
 }
 

@@ -107,7 +107,7 @@ private extension BottomSheetPresentationController {
             constraint,
             presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact ?? height.expanded),
+            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact),
             presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
         ])
         self.constraint = constraint
@@ -115,7 +115,7 @@ private extension BottomSheetPresentationController {
 
     func alphaValue(for position: CGPoint) -> CGFloat {
         guard let containerView = containerView else { return 0 }
-        return (containerView.bounds.height - position.y) / (height.compact ?? height.expanded)
+        return (containerView.bounds.height - position.y) / height.compact
     }
 
     func updateState(_ state: BottomSheet.State) {
