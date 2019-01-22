@@ -25,8 +25,8 @@ class BottomSheetPresentationController: UIPresentationController {
     private let interactionController: BottomSheetInteractionController
     private var constraint: NSLayoutConstraint? // Constraint is used to set the y position of the bottom sheet
     private var gestureController: BottomSheetGestureController?
-    private let stateController = BottomSheetStateController()
     private let springAnimator = SpringAnimator(dampingRatio: 0.78, frequencyResponse: 0.5)
+    private lazy var stateController = BottomSheetStateController(height: height)
 
     private var hasReachExpandedPosition = false
     private var currentPosition: CGPoint {
@@ -57,7 +57,6 @@ class BottomSheetPresentationController: UIPresentationController {
         setupPresentedView(presentedView, inContainerView: containerView)
         // Setup controller
         stateController.frame = containerView.bounds
-        stateController.height = height
         gestureController = BottomSheetGestureController(presentedView: presentedView, containerView: containerView)
         gestureController?.delegate = interactionController
         interactionController.setup(with: constraint)
@@ -108,7 +107,7 @@ private extension BottomSheetPresentationController {
             constraint,
             presentedView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             presentedView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact),
+            presentedView.heightAnchor.constraint(greaterThanOrEqualToConstant: height.compact ?? height.expanded),
             presentedView.bottomAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor),
         ])
         self.constraint = constraint
@@ -116,7 +115,7 @@ private extension BottomSheetPresentationController {
 
     func alphaValue(for position: CGPoint) -> CGFloat {
         guard let containerView = containerView else { return 0 }
-        return (containerView.bounds.height - position.y) / height.compact
+        return (containerView.bounds.height - position.y) / (height.compact ?? height.expanded)
     }
 
     func updateState(_ state: BottomSheet.State) {

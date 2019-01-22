@@ -6,19 +6,23 @@ import UIKit
 
 extension BottomSheet {
     public struct Height {
-        public let compact: CGFloat
+        public let compact: CGFloat?
         public let expanded: CGFloat
 
         public static var defaultFilterHeight: Height {
             let screenSize = UIScreen.main.bounds.size
-            let compact: CGFloat = screenSize.height >= 812 ? 570 : 510
-            let expanded = screenSize.height - 64
-            return Height(compact: compact, expanded: expanded)
+            if screenSize.height <= 568 {
+                return Height(compact: nil, expanded: 510)
+            }
+            if screenSize.height >= 812 {
+                return Height(compact: 570, expanded: screenSize.height - 64)
+            }
+            return Height(compact: 510, expanded: screenSize.height - 64)
         }
 
         public static let zero = Height(compact: 0, expanded: 0)
 
-        public init(compact: CGFloat, expanded: CGFloat) {
+        public init(compact: CGFloat?, expanded: CGFloat) {
             self.compact = compact
             self.expanded = expanded
         }
