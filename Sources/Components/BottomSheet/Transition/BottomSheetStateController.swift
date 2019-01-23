@@ -6,9 +6,9 @@ import UIKit
 
 class BottomSheetStateController {
 
-    var state: BottomSheet.State = .compact
     var frame: CGRect = .zero
-    var height: BottomSheet.Height = .zero
+    var state: BottomSheet.State
+    var height: BottomSheet.Height
 
     var targetPosition: CGPoint {
         return targetPosition(for: state)
@@ -23,6 +23,13 @@ class BottomSheetStateController {
     }
 
     private let threshold: CGFloat = 75
+    private var isExpandedByDefault = false
+
+    init(height: BottomSheet.Height) {
+        self.height = height
+        self.isExpandedByDefault = height.compact == height.expanded
+        self.state = isExpandedByDefault ? .expanded : .compact
+    }
 
     func updateState(withTranslation translation: CGPoint) {
         state = nextState(forTranslation: translation, withCurrent: state, usingThreshold: threshold)
@@ -40,7 +47,7 @@ private extension BottomSheetStateController {
             }
         case .expanded:
             if translation.y > threshold {
-                return .compact
+                return isExpandedByDefault ? .dismissed : .compact
             }
         case .dismissed:
             if translation.y < -threshold {
