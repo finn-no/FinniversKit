@@ -1,9 +1,10 @@
 import UIKit
+import AVFoundation
 
 public class FavoriteButton: UIView {
     public private(set) var isSelected: Bool = false
 
-    lazy var nonSelected: UIImageView = {
+    private lazy var nonSelected: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: .favoriteAdd)
@@ -11,12 +12,19 @@ public class FavoriteButton: UIView {
         return imageView
     }()
 
-    lazy var selected: UIImageView = {
+    private lazy var selected: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: .favouriteAdded)
         imageView.alpha = 0
         return imageView
+    }()
+
+    private lazy var audioPlayer: AVAudioPlayer? = {
+        let url = Bundle.finniversKit.url(forResource: "favorite-sound", withExtension: "mp3")
+        let player = url.flatMap({ try? AVAudioPlayer(contentsOf: $0) })
+        player?.volume = 0.8
+        return player
     }()
 
     public override init(frame: CGRect) {
@@ -60,6 +68,9 @@ public class FavoriteButton: UIView {
             }, completion: nil)
         } else {
             isSelected = true
+
+            audioPlayer?.currentTime = 0
+            audioPlayer?.play()
 
             UIView.animate(withDuration: 0.1, delay: 0, options: .beginFromCurrentState, animations: {
                 self.nonSelected.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)

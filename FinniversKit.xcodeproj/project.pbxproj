@@ -163,6 +163,7 @@
 		44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912722077AD1200486848 /* EmptyViewDemoView.swift */; };
 		44EE83E921F9C11500DE5B6D /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE83E821F9C11500DE5B6D /* FavoriteButton.swift */; };
 		44EE83EC21F9C16000DE5B6D /* FavoriteButtonDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE83EB21F9C16000DE5B6D /* FavoriteButtonDemoViewController.swift */; };
+		44EE83EE21F9EAD600DE5B6D /* favorite-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44EE83ED21F9EAD600DE5B6D /* favorite-sound.mp3 */; };
 		44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */; };
 		4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */; };
 		45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E069207CF5C100C68B92 /* StringExtensions.swift */; };
@@ -450,6 +451,7 @@
 		44D912722077AD1200486848 /* EmptyViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoView.swift; sourceTree = "<group>"; };
 		44EE83E821F9C11500DE5B6D /* FavoriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		44EE83EB21F9C16000DE5B6D /* FavoriteButtonDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButtonDemoViewController.swift; sourceTree = "<group>"; };
+		44EE83ED21F9EAD600DE5B6D /* favorite-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "favorite-sound.mp3"; sourceTree = "<group>"; };
 		44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewsTableViewController.swift; sourceTree = "<group>"; };
 		45B2E069207CF5C100C68B92 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -1364,6 +1366,7 @@
 		CF3D5EEF215A6D9E006E4D08 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				44EE83ED21F9EAD600DE5B6D /* favorite-sound.mp3 */,
 				CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */,
 				CF3D5EF0215A6D9E006E4D08 /* hi-hats.wav */,
 				CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */,
@@ -2192,6 +2195,7 @@
 				CF3D5EF4215A6D9E006E4D08 /* hi-hats.wav in Resources */,
 				CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */,
 				08D8B2ED2193129700EA22CC /* CheckboxAnimation.xcassets in Resources */,
+				44EE83EE21F9EAD600DE5B6D /* favorite-sound.mp3 in Resources */,
 				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
 				CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */,
 				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,6 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = DemoViewsTableViewController()
         window?.makeKeyAndVisible()
+
+        if #available(iOS 10.0, *) {
+            try? AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default, options: .init(rawValue: 0))
+            try? AVAudioSession.sharedInstance().setActive(true)
+        }
 
         return true
     }
