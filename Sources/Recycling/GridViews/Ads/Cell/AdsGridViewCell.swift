@@ -82,8 +82,8 @@ public class AdsGridViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var favoriteButton: FavoriteButton = {
-        let button = FavoriteButton(withAutoLayout: true)
+    private lazy var favoriteButton: AdsGridFavoriteButton = {
+        let button = AdsGridFavoriteButton(withAutoLayout: true)
         button.addTarget(self, action: #selector(handleFavoriteButtonTap(_:)), for: .touchUpInside)
         return button
     }()
@@ -253,7 +253,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
 // MARK: - Private types
 
-private final class FavoriteButton: UIButton {
+private final class AdsGridFavoriteButton: UIButton {
     var isFavorite = false {
         didSet {
             let image = isFavorite ? UIImage(named: .favouriteAddedImg) : UIImage(named: .favouriteAddImg)
