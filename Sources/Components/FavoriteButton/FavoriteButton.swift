@@ -92,25 +92,4 @@ public class FavoriteButton: UIView {
             }
         }
     }
-
-//    override public func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-//        UIView.animate(withDuration: 0.3,
-//                       animations: {
-//                        self.nonSelected.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-//        })
-//    }
-//
-//    override public func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-//        UIView.animate(withDuration: 0.3,
-//                       animations: {
-//                        self.nonSelected.transform = CGAffineTransform.identity
-//        })
-//    }
-//
-//    override public func pressesCancelled(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-//        UIView.animate(withDuration: 0.3,
-//                       animations: {
-//                        self.nonSelected.transform = CGAffineTransform.identity
-//        })
-//    }
 }
