@@ -161,8 +161,8 @@
 		44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912682077AD0200486848 /* PopupViewDefaultData.swift */; };
 		44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912692077AD0200486848 /* PopupViewDemoView.swift */; };
 		44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912722077AD1200486848 /* EmptyViewDemoView.swift */; };
-		44EE83E921F9C11500DE5B6D /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE83E821F9C11500DE5B6D /* FavoriteButton.swift */; };
-		44EE83EC21F9C16000DE5B6D /* FavoriteButtonDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE83EB21F9C16000DE5B6D /* FavoriteButtonDemoViewController.swift */; };
+		44EE83E921F9C11500DE5B6D /* AnimatedFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE83E821F9C11500DE5B6D /* AnimatedFavoriteButton.swift */; };
+		44EE83EC21F9C16000DE5B6D /* AnimatedFavoriteButtonDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE83EB21F9C16000DE5B6D /* AnimatedFavoriteButtonDemoViewController.swift */; };
 		44EE83EE21F9EAD600DE5B6D /* favorite-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44EE83ED21F9EAD600DE5B6D /* favorite-sound.mp3 */; };
 		44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */; };
 		4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */; };
@@ -449,8 +449,8 @@
 		44D912682077AD0200486848 /* PopupViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDefaultData.swift; sourceTree = "<group>"; };
 		44D912692077AD0200486848 /* PopupViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDemoView.swift; sourceTree = "<group>"; };
 		44D912722077AD1200486848 /* EmptyViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoView.swift; sourceTree = "<group>"; };
-		44EE83E821F9C11500DE5B6D /* FavoriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
-		44EE83EB21F9C16000DE5B6D /* FavoriteButtonDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButtonDemoViewController.swift; sourceTree = "<group>"; };
+		44EE83E821F9C11500DE5B6D /* AnimatedFavoriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedFavoriteButton.swift; sourceTree = "<group>"; };
+		44EE83EB21F9C16000DE5B6D /* AnimatedFavoriteButtonDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedFavoriteButtonDemoViewController.swift; sourceTree = "<group>"; };
 		44EE83ED21F9EAD600DE5B6D /* favorite-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "favorite-sound.mp3"; sourceTree = "<group>"; };
 		44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewsTableViewController.swift; sourceTree = "<group>"; };
@@ -1001,7 +1001,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				44EE83E721F9C11500DE5B6D /* FavoriteButton */,
+				44EE83E721F9C11500DE5B6D /* AnimatedFavoriteButton */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
@@ -1246,20 +1246,20 @@
 			path = MovableBlockView;
 			sourceTree = "<group>";
 		};
-		44EE83E721F9C11500DE5B6D /* FavoriteButton */ = {
+		44EE83E721F9C11500DE5B6D /* AnimatedFavoriteButton */ = {
 			isa = PBXGroup;
 			children = (
-				44EE83E821F9C11500DE5B6D /* FavoriteButton.swift */,
+				44EE83E821F9C11500DE5B6D /* AnimatedFavoriteButton.swift */,
 			);
-			path = FavoriteButton;
+			path = AnimatedFavoriteButton;
 			sourceTree = "<group>";
 		};
-		44EE83EA21F9C16000DE5B6D /* FavoriteButton */ = {
+		44EE83EA21F9C16000DE5B6D /* AnimatedFavoriteButton */ = {
 			isa = PBXGroup;
 			children = (
-				44EE83EB21F9C16000DE5B6D /* FavoriteButtonDemoViewController.swift */,
+				44EE83EB21F9C16000DE5B6D /* AnimatedFavoriteButtonDemoViewController.swift */,
 			);
-			path = FavoriteButton;
+			path = AnimatedFavoriteButton;
 			sourceTree = "<group>";
 		};
 		44F8831020551D59003E3171 /* Foundation */ = {
@@ -1447,7 +1447,7 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				44EE83EA21F9C16000DE5B6D /* FavoriteButton */,
+				44EE83EA21F9C16000DE5B6D /* AnimatedFavoriteButton */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
@@ -2267,7 +2267,7 @@
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
 				44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
-				44EE83EC21F9C16000DE5B6D /* FavoriteButtonDemoViewController.swift in Sources */,
+				44EE83EC21F9C16000DE5B6D /* AnimatedFavoriteButtonDemoViewController.swift in Sources */,
 				4458701D213FA353009187BE /* RegisterViewDefaultData.swift in Sources */,
 				146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */,
 				44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */,
@@ -2423,7 +2423,7 @@
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
-				44EE83E921F9C11500DE5B6D /* FavoriteButton.swift in Sources */,
+				44EE83E921F9C11500DE5B6D /* AnimatedFavoriteButton.swift in Sources */,
 				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
 				CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */,

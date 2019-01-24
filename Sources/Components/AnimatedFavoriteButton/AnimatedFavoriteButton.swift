@@ -1,7 +1,7 @@
 import UIKit
 import AVFoundation
 
-public class FavoriteButton: UIView {
+public class AnimatedFavoriteButton: UIView {
     public private(set) var isSelected: Bool = false
 
     private lazy var nonSelected: UIImageView = {

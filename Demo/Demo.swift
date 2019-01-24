@@ -24,7 +24,7 @@ public enum DnaViews: String, CaseIterable {
 }
 
 public enum ComponentViews: String, CaseIterable {
-    case favoriteButton
+    case animatedFavoriteButton
     case button
     case easterEggButton
     case cogWheelButton
@@ -47,8 +47,8 @@ public enum ComponentViews: String, CaseIterable {
 
     public var viewController: UIViewController {
         switch self {
-        case .favoriteButton:
-            let viewController = FavoriteButtonDemoViewController()
+        case .animatedFavoriteButton:
+            let viewController = AnimatedFavoriteButtonDemoViewController()
             let navigationViewController = UINavigationController(rootViewController: viewController)
             return navigationViewController
         case .button:

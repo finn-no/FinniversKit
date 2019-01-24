@@ -4,13 +4,13 @@
 
 import FinniversKit
 
-class FavoriteButtonDemoViewController: UIViewController {
+class AnimatedFavoriteButtonDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
 
-        let favoriteButton  = FavoriteButton()
+        let favoriteButton  = AnimatedFavoriteButton()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
     }
 }
