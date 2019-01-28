@@ -4,8 +4,6 @@
 
 import UIKit
 
-// MARK: - Slider
-
 final class PianoSlider: UIView {
     private(set) lazy var trackView: UIView = {
         let view = UIView(withAutoLayout: true)
