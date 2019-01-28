@@ -8,16 +8,14 @@ import UIKit
 
 final class PianoSlider: UIView {
     private(set) lazy var trackView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = tintColor
         view.clipsToBounds = true
         return view
     }()
 
     private lazy var pointerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = UIColor(white: 1.0, alpha: 0.7)
         view.clipsToBounds = true
         return view

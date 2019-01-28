@@ -24,10 +24,17 @@ public class DemoViewController<View: UIView>: UIViewController {
 
     var hasDismissButton: Bool = false
     var usingDoubleTapToDismiss: Bool = false
+    private var preferredInterfaceOrientation: UIInterfaceOrientationMask = .all
+
+    public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return preferredInterfaceOrientation
+    }
 
     // Normal behaviour
-    public init(usingDoubleTapToDismiss: Bool = true) {
+    public init(usingDoubleTapToDismiss: Bool = true,
+                supportedInterfaceOrientations: UIInterfaceOrientationMask = .all) {
         self.usingDoubleTapToDismiss = usingDoubleTapToDismiss
+        self.preferredInterfaceOrientation = supportedInterfaceOrientations
         super.init(nibName: nil, bundle: nil)
     }
 

@@ -44,10 +44,11 @@ final class PianoEffectIndicatorsView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        replicatorLayer.frame = bounds
 
         let dotSize: CGFloat = 4
         let midY = bounds.midY - dotSize / 2.0
+
+        replicatorLayer.frame = bounds
         dotInstanceLayer.frame = CGRect(x: bounds.maxX, y: midY, width: dotSize, height: dotSize)
         dotInstanceLayer.cornerRadius = dotSize / 2
     }

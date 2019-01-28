@@ -6,19 +6,14 @@ import UIKit
 
 final class PianoEffectView: UIView {
     private(set) lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14)
+        let label = UILabel(withAutoLayout: true)
+        label.font = .caption
         label.textColor = UIColor(r: 143, g: 145, b: 150)
         label.textAlignment = .center
         return label
     }()
 
-    private(set) lazy var control: PianoEffectControl = {
-        let view = PianoEffectControl()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private(set) lazy var control = PianoEffectControl(withAutoLayout: true)
 
     // MARK: - Init
 
@@ -37,6 +32,8 @@ final class PianoEffectView: UIView {
         addSubview(titleLabel)
         addSubview(control)
 
+        let controlWidth: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 140 : 80
+
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
@@ -45,7 +42,7 @@ final class PianoEffectView: UIView {
             control.bottomAnchor.constraint(equalTo: bottomAnchor),
             control.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10),
             control.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            control.widthAnchor.constraint(equalToConstant: 80),
+            control.widthAnchor.constraint(equalToConstant: controlWidth),
             control.heightAnchor.constraint(equalTo: control.widthAnchor)
         ])
     }

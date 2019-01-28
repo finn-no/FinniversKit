@@ -10,7 +10,6 @@ public final class PianoView: UIView {
         let octave: UInt8 = 5
         let root: UInt8 = octave * 12
         let numberOfNotesInOctave: UInt8 = 12
-
         return (0..<numberOfNotesInOctave).map({ root + $0 })
     }()
 
@@ -44,26 +43,25 @@ public final class PianoView: UIView {
         return distortion
     }()
 
+    // MARK: - Views
+
     private lazy var pianoView: PianoKeyboardView = {
-        let pianoView = PianoKeyboardView()
-        pianoView.translatesAutoresizingMaskIntoConstraints = false
+        let pianoView = PianoKeyboardView(withAutoLayout: true)
         pianoView.dataSource = self
         pianoView.delegate = self
         return pianoView
     }()
 
     private lazy var reverbView: PianoEffectView = {
-        let view = PianoEffectView()
+        let view = PianoEffectView(withAutoLayout: true)
         view.titleLabel.text = "reverb"
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.control.sliderColor = UIColor(r: 50, g: 162, b: 255)
         view.control.delegate = self
         return view
     }()
 
     private lazy var distortionView: PianoEffectView = {
-        let view = PianoEffectView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = PianoEffectView(withAutoLayout: true)
         view.titleLabel.text = "distortion"
         view.control.sliderColor = UIColor(r: 255, g: 75, b: 0)
         view.control.delegate = self
@@ -88,33 +86,28 @@ public final class PianoView: UIView {
     private func setup() {
         backgroundColor = UIColor(r: 216, g: 219, b: 227)
 
-        addSubview(pianoView)
         addSubview(reverbView)
         addSubview(distortionView)
+        addSubview(pianoView)
 
         let isPad = UIDevice.current.userInterfaceIdiom == .pad
-        let widthMultiplier: CGFloat = isPad ? 0.6 : 0.9
-        let heightMultiplier: CGFloat = isPad ? 0.5 : 0.75
-        let yConstraint: NSLayoutConstraint
-
-        if isPad {
-            yConstraint = pianoView.centerYAnchor.constraint(equalTo: centerYAnchor)
-        } else {
-            yConstraint = pianoView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        }
+        let reverbYAnchor = isPad
+            ? reverbView.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -.veryLargeSpacing)
+            : reverbView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing)
+        let pianoTopConstant: CGFloat = isPad ? .veryLargeSpacing : .mediumLargeSpacing
 
         NSLayoutConstraint.activate([
-            yConstraint,
-            pianoView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pianoView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: widthMultiplier),
-            pianoView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: heightMultiplier),
-
-            reverbView.bottomAnchor.constraint(equalTo: pianoView.topAnchor),
+            reverbYAnchor,
             reverbView.trailingAnchor.constraint(equalTo: pianoView.centerXAnchor),
 
-            distortionView.bottomAnchor.constraint(equalTo: reverbView.bottomAnchor),
+            distortionView.topAnchor.constraint(equalTo: reverbView.topAnchor),
             distortionView.leadingAnchor.constraint(equalTo: reverbView.trailingAnchor, constant: 55),
-            distortionView.heightAnchor.constraint(equalTo: reverbView.heightAnchor)
+            distortionView.heightAnchor.constraint(equalTo: reverbView.heightAnchor),
+
+            pianoView.topAnchor.constraint(equalTo: reverbView.bottomAnchor, constant: pianoTopConstant),
+            pianoView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            pianoView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+            pianoView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
         ])
 
         pianoView.reloadData()

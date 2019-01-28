@@ -63,6 +63,10 @@ class FullscreenViewTests: FBSnapshotTestCase {
         snapshot(.drumMachine)
     }
 
+    func testPianoView() {
+        snapshot(.piano)
+    }
+
     func testSnowGlobeView() {
         snapshot(.snowGlobe)
     }
