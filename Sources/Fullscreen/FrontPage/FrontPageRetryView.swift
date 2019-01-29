@@ -42,11 +42,10 @@ final class FrontPageRetryView: UIView {
         return button
     }()
 
-    private lazy var activityIndicatorView: UIActivityIndicatorView = {
-        let indicatorView = UIActivityIndicatorView(style: .whiteLarge)
-        indicatorView.translatesAutoresizingMaskIntoConstraints = false
-        indicatorView.color = .primaryBlue
-        return indicatorView
+    private lazy var loadingIndicatorView: LoadingIndicatorView = {
+        let view = LoadingIndicatorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     // MARK: - Init
@@ -73,7 +72,7 @@ final class FrontPageRetryView: UIView {
 
         addSubview(label)
         addSubview(button)
-        addSubview(activityIndicatorView)
+        addSubview(loadingIndicatorView)
 
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
@@ -83,25 +82,27 @@ final class FrontPageRetryView: UIView {
             button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: .largeSpacing),
             button.centerXAnchor.constraint(equalTo: label.centerXAnchor),
 
-            activityIndicatorView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-            activityIndicatorView.centerYAnchor.constraint(equalTo: button.centerYAnchor)
+            loadingIndicatorView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            loadingIndicatorView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            loadingIndicatorView.widthAnchor.constraint(equalToConstant: 40),
+            loadingIndicatorView.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 
     private func configure(for state: State) {
         switch state {
         case .hidden:
-            activityIndicatorView.stopAnimating()
+            loadingIndicatorView.stopAnimating()
             isHidden = true
         case .labelAndButton:
             button.isHidden = false
             label.isHidden = false
-            activityIndicatorView.stopAnimating()
+            loadingIndicatorView.stopAnimating()
             isHidden = false
         case .loading:
             button.isHidden = true
             label.isHidden = true
-            activityIndicatorView.startAnimating()
+            loadingIndicatorView.startAnimating()
             isHidden = false
         }
     }
