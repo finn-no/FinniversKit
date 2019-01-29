@@ -12,6 +12,8 @@ public extension Label {
         case title4
         case title5
         case body
+        case captionHeavy
+        case caption
         case detail
 
         var font: UIFont {
@@ -22,6 +24,8 @@ public extension Label {
             case .title4: return UIFont.title4
             case .title5: return UIFont.title5
             case .body: return UIFont.body
+            case .captionHeavy: return UIFont.captionHeavy
+            case .caption: return UIFont.caption
             case .detail: return UIFont.detail
             }
         }

@@ -85,6 +85,19 @@ enum FontType: String {
         let font = UIFont(name: FontType.light.rawValue, size: 14.0)!
         return font.scaledFont(forTextStyle: .footnote)
     }
+    
+    /// FINNTypeWebStrippet-Light with a size of 14 scaled for UIFontTextStyle.footnote
+    ///
+    /// ## Usage:
+    /// - Used for short amount of text if neither the Body or Detail is appropriate.
+    /// - Bold version of Caption
+    /// - This is slightly smaller than body text. Weighted Medium.
+    @objc public static var captionHeavy: UIFont {
+        registerCustomFonts()
+        
+        let font = UIFont(name: FontType.medium.rawValue, size: 14.0)!
+        return font.scaledFont(forTextStyle: .footnote)
+    }
 
     /// FINNTypeWebStrippet-Medium with a size of 12 scaled for UIFontTextStyle.caption1
     ///
