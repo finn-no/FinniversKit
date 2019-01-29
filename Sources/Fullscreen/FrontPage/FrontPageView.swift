@@ -151,7 +151,7 @@ public final class FrontPageView: UIView {
         backgroundColor = .milk
 
         addSubview(adsGridView)
-        addSubview(adsRetryView)
+        adsGridView.collectionView.addSubview(adsRetryView)
 
         headerView.addSubview(marketsGridView)
         headerView.addSubview(headerLabel)

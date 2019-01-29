@@ -69,12 +69,14 @@ final class FrontPageRetryView: UIView {
     }
 
     private func setup() {
+        backgroundColor = .milk
+
         addSubview(label)
         addSubview(button)
         addSubview(activityIndicatorView)
 
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor),
+            label.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
 
