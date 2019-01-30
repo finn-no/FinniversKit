@@ -8,6 +8,7 @@ import FinniversKit
 
 class FullscreenViewTests: FBSnapshotTestCase {
     static var allViews = FullscreenViews.allCases
+    private let excludedComponents: [FullscreenViews] = [.piano]
 
     override func setUp() {
         super.setUp()
@@ -24,7 +25,9 @@ class FullscreenViewTests: FBSnapshotTestCase {
 
     func snapshot(_ component: FullscreenViews) {
         FBSnapshotVerifyView(component.viewController.view)
-        FullscreenViewTests.allViews = FullscreenViewTests.allViews.filter { $0 != component }
+        FullscreenViewTests.allViews = FullscreenViewTests.allViews.filter {
+            $0 != component && !excludedComponents.contains($0)
+        }
     }
 
     func testFrontpageView() {
@@ -81,9 +84,5 @@ class FullscreenViewTests: FBSnapshotTestCase {
 
     func testSoldView() {
         snapshot(.soldView)
-    }
-
-    func testPianoView() {
-        snapshot(.piano)
     }
 }
