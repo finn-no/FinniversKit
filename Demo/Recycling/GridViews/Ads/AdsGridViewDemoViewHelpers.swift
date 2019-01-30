@@ -51,7 +51,7 @@ public struct AdFactory {
                 iconImage: icon,
                 title: title,
                 subtitle: subtitle,
-                accessory: index == numberOfModels / 2 ? "Totalpris \(price[index])" : nil,
+                accessory: index % 2 == 0 ? "Totalpris \(price[index])" : nil,
                 imageText: price[index],
                 isFavorite: false,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
