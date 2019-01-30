@@ -25,8 +25,8 @@ class BottomSheetPresentationController: UIPresentationController {
     private let interactionController: BottomSheetInteractionController
     private var constraint: NSLayoutConstraint? // Constraint is used to set the y position of the bottom sheet
     private var gestureController: BottomSheetGestureController?
-    private let stateController = BottomSheetStateController()
     private let springAnimator = SpringAnimator(dampingRatio: 0.78, frequencyResponse: 0.5)
+    private lazy var stateController = BottomSheetStateController(height: height)
 
     private var hasReachExpandedPosition = false
     private var currentPosition: CGPoint {
@@ -57,7 +57,6 @@ class BottomSheetPresentationController: UIPresentationController {
         setupPresentedView(presentedView, inContainerView: containerView)
         // Setup controller
         stateController.frame = containerView.bounds
-        stateController.height = height
         gestureController = BottomSheetGestureController(presentedView: presentedView, containerView: containerView)
         gestureController?.delegate = interactionController
         interactionController.setup(with: constraint)

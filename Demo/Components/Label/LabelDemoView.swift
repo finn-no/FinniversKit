@@ -23,6 +23,8 @@ public class LabelDemoView: UIView {
         let labelT3 = Label(style: .title3)
         let labelT4 = Label(style: .title4)
         let labelT5 = Label(style: .title5)
+        let labelCaptionHeavy = Label(style: .captionHeavy)
+        let labelCaption = Label(style: .caption)
         let labelBody = Label(style: .body)
         let labelDetail = Label(style: .detail)
 
@@ -38,6 +40,8 @@ public class LabelDemoView: UIView {
         labelT3.translatesAutoresizingMaskIntoConstraints = false
         labelT4.translatesAutoresizingMaskIntoConstraints = false
         labelT5.translatesAutoresizingMaskIntoConstraints = false
+        labelCaptionHeavy.translatesAutoresizingMaskIntoConstraints = false
+        labelCaption.translatesAutoresizingMaskIntoConstraints = false
         labelBody.translatesAutoresizingMaskIntoConstraints = false
         labelDetail.translatesAutoresizingMaskIntoConstraints = false
 
@@ -55,6 +59,8 @@ public class LabelDemoView: UIView {
         addSubview(labelT3)
         addSubview(labelT4)
         addSubview(labelT5)
+        addSubview(labelCaptionHeavy)
+        addSubview(labelCaption)
         addSubview(labelBody)
         addSubview(labelDetail)
 
@@ -79,9 +85,15 @@ public class LabelDemoView: UIView {
 
             labelT5.topAnchor.constraint(equalTo: labelT4.bottomAnchor, constant: interimSpacing),
             labelT5.leadingAnchor.constraint(equalTo: labelT4.leadingAnchor),
+            
+            labelCaptionHeavy.topAnchor.constraint(equalTo: labelT5.bottomAnchor, constant: interimSpacing),
+            labelCaptionHeavy.leadingAnchor.constraint(equalTo: labelT5.leadingAnchor),
+            
+            labelCaption.topAnchor.constraint(equalTo: labelCaptionHeavy.bottomAnchor, constant: interimSpacing),
+            labelCaption.leadingAnchor.constraint(equalTo: labelCaptionHeavy.leadingAnchor),
 
-            labelBody.topAnchor.constraint(equalTo: labelT5.bottomAnchor, constant: interimSpacing),
-            labelBody.leadingAnchor.constraint(equalTo: labelT5.leadingAnchor),
+            labelBody.topAnchor.constraint(equalTo: labelCaption.bottomAnchor, constant: interimSpacing),
+            labelBody.leadingAnchor.constraint(equalTo: labelCaption.leadingAnchor),
 
             labelDetail.topAnchor.constraint(equalTo: labelBody.bottomAnchor, constant: interimSpacing),
             labelDetail.leadingAnchor.constraint(equalTo: labelBody.leadingAnchor),
@@ -116,6 +128,8 @@ public class LabelDemoView: UIView {
         labelT3.text = "Label Title3"
         labelT4.text = "Label Title4"
         labelT5.text = "Label Title5"
+        labelCaptionHeavy.text = "Label Caption Heavy"
+        labelCaption.text = "Label Caption"
         labelBody.text = "Label Body"
         labelDetail.text = "Label Detail"
     }
