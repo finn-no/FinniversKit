@@ -10,6 +10,7 @@ public protocol AdsGridViewModel {
     var iconImage: UIImage? { get }
     var title: String { get }
     var subtitle: String? { get }
+    var accessory: String? { get }
     var imageText: String? { get }
     var accessibilityLabel: String { get }
     var isFavorite: Bool { get }
