@@ -48,7 +48,7 @@ public final class InfoboxView: UIView {
     }()
 
     private lazy var secondaryButton: UIButton = {
-        let button = Button(style: .flat)
+        let button = Button(style: .flatTransparent)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleSecondaryButtonTap), for: .touchUpInside)
         return button
@@ -86,7 +86,7 @@ public final class InfoboxView: UIView {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: leadingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
             detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
             detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
@@ -95,7 +95,7 @@ public final class InfoboxView: UIView {
             primaryButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .mediumLargeSpacing),
             primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumLargeSpacing),
+            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumSpacing),
             secondaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
         ])

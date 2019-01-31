@@ -10,6 +10,7 @@ public extension Button {
         case callToAction
         case destructive
         case flat
+        case flatTransparent
         case link
 
         var font: UIFont {
@@ -24,6 +25,7 @@ public extension Button {
             case .default, .link, .flat: return .milk
             case .callToAction: return .primaryBlue
             case .destructive: return .cherry
+            case .flatTransparent: return .clear
             }
         }
 
@@ -43,7 +45,7 @@ public extension Button {
 
         var textColor: UIColor {
             switch self {
-            case .default, .link, .flat: return .primaryBlue
+            case .default, .link, .flat, .flatTransparent: return .primaryBlue
             default: return .milk
             }
         }
@@ -67,14 +69,14 @@ public extension Button {
         var highlightedTextColor: UIColor? {
             switch self {
             case .link: return .linkButtonHighlightedTextColor
-            case .flat: return .flatButtonHighlightedTextColor
+            case .flat, .flatTransparent: return .flatButtonHighlightedTextColor
             default: return nil
             }
         }
 
         var disabledBodyColor: UIColor? {
             switch self {
-            case .default, .link, .flat: return nil
+            case .default, .link, .flat, .flatTransparent: return nil
             default: return .sardine
             }
         }
@@ -102,7 +104,7 @@ public extension Button {
 
         var paddings: UIEdgeInsets {
             switch self {
-            case .link, .flat: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
+            case .link, .flat, .flatTransparent: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
             default: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
             }
         }
