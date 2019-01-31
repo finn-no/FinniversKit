@@ -226,7 +226,11 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
     }
 
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        return AdsGridViewCell.nonImageHeight
+        if let model = dataSource?.adsGridView(self, modelAtIndex: indexPath.row), model.accessory?.isEmpty == false {
+            return AdsGridViewCell.nonImageWithAccessoryHeight
+        } else {
+            return AdsGridViewCell.nonImageHeight
+        }
     }
 }
 
