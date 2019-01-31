@@ -85,10 +85,10 @@ public class LabelDemoView: UIView {
 
             labelT5.topAnchor.constraint(equalTo: labelT4.bottomAnchor, constant: interimSpacing),
             labelT5.leadingAnchor.constraint(equalTo: labelT4.leadingAnchor),
-            
+
             labelCaptionHeavy.topAnchor.constraint(equalTo: labelT5.bottomAnchor, constant: interimSpacing),
             labelCaptionHeavy.leadingAnchor.constraint(equalTo: labelT5.leadingAnchor),
-            
+
             labelCaption.topAnchor.constraint(equalTo: labelCaptionHeavy.bottomAnchor, constant: interimSpacing),
             labelCaption.leadingAnchor.constraint(equalTo: labelCaptionHeavy.leadingAnchor),
 

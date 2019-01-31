@@ -198,6 +198,17 @@
 		CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */; };
 		CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */; };
 		CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */; };
+		CF4A053721FB2ACB000BB7DA /* PianoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052821FB2ACA000BB7DA /* PianoView.swift */; };
+		CF4A053821FB2ACB000BB7DA /* PianoKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052A21FB2ACA000BB7DA /* PianoKeyView.swift */; };
+		CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052C21FB2ACA000BB7DA /* PianoEffectView.swift */; };
+		CF4A053A21FB2ACB000BB7DA /* PianoEffectIndicatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052D21FB2ACA000BB7DA /* PianoEffectIndicatorsView.swift */; };
+		CF4A053B21FB2ACB000BB7DA /* PianoSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052E21FB2ACA000BB7DA /* PianoSliderView.swift */; };
+		CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052F21FB2ACA000BB7DA /* PianoEffectControl.swift */; };
+		CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A053021FB2ACA000BB7DA /* PianoKeyboardView.swift */; };
+		CF4A053E21FB2ACB000BB7DA /* AVAudioSession+Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4A053221FB2ACA000BB7DA /* AVAudioSession+Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF4A054121FB2ACB000BB7DA /* AVAudioSession+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4A053521FB2ACA000BB7DA /* AVAudioSession+Swift.m */; };
+		CF4A054421FB2B4E000BB7DA /* Piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = CF4A054321FB2B4E000BB7DA /* Piano.sf2 */; };
+		CF4A054821FB58FA000BB7DA /* PianoDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A054721FB58FA000BB7DA /* PianoDemoView.swift */; };
 		CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF848C2B21C7E0860086530E /* CogWheelButton.swift */; };
 		CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF848C2E21C7E3010086530E /* CogWheelButtonDemoView.swift */; };
 		CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F024421DE1013004C4042 /* RefreshControl.swift */; };
@@ -485,6 +496,17 @@
 		CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumMachineDemoView.swift; sourceTree = "<group>"; };
 		CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentTests.swift; sourceTree = "<group>"; };
 		CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageView.swift; sourceTree = "<group>"; };
+		CF4A052821FB2ACA000BB7DA /* PianoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoView.swift; sourceTree = "<group>"; };
+		CF4A052A21FB2ACA000BB7DA /* PianoKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKeyView.swift; sourceTree = "<group>"; };
+		CF4A052C21FB2ACA000BB7DA /* PianoEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoEffectView.swift; sourceTree = "<group>"; };
+		CF4A052D21FB2ACA000BB7DA /* PianoEffectIndicatorsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoEffectIndicatorsView.swift; sourceTree = "<group>"; };
+		CF4A052E21FB2ACA000BB7DA /* PianoSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoSliderView.swift; sourceTree = "<group>"; };
+		CF4A052F21FB2ACA000BB7DA /* PianoEffectControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoEffectControl.swift; sourceTree = "<group>"; };
+		CF4A053021FB2ACA000BB7DA /* PianoKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKeyboardView.swift; sourceTree = "<group>"; };
+		CF4A053221FB2ACA000BB7DA /* AVAudioSession+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVAudioSession+Swift.h"; sourceTree = "<group>"; };
+		CF4A053521FB2ACA000BB7DA /* AVAudioSession+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVAudioSession+Swift.m"; sourceTree = "<group>"; };
+		CF4A054321FB2B4E000BB7DA /* Piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Piano.sf2; sourceTree = "<group>"; };
+		CF4A054721FB58FA000BB7DA /* PianoDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoDemoView.swift; sourceTree = "<group>"; };
 		CF848C2B21C7E0860086530E /* CogWheelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CogWheelButton.swift; sourceTree = "<group>"; };
 		CF848C2E21C7E3010086530E /* CogWheelButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CogWheelButtonDemoView.swift; sourceTree = "<group>"; };
 		CF8F024421DE1013004C4042 /* RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
@@ -1322,6 +1344,7 @@
 		CF15D9B0215B9453004F5F02 /* EasterEggs */ = {
 			isa = PBXGroup;
 			children = (
+				CF4A052721FB2ACA000BB7DA /* Piano */,
 				DAC1EC4C21C1296300F4FEC4 /* NewYears */,
 				CF9AC8B421BEBFD2005A0D2F /* SnowGlobe */,
 				CF3D5EE0215A6499006E4D08 /* DrumMachine */,
@@ -1343,6 +1366,7 @@
 		CF3D5EEF215A6D9E006E4D08 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				CF4A054321FB2B4E000BB7DA /* Piano.sf2 */,
 				CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */,
 				CF3D5EF0215A6D9E006E4D08 /* hi-hats.wav */,
 				CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */,
@@ -1366,6 +1390,62 @@
 				CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */,
 			);
 			path = DrumMachine;
+			sourceTree = "<group>";
+		};
+		CF4A052721FB2ACA000BB7DA /* Piano */ = {
+			isa = PBXGroup;
+			children = (
+				CF4A052821FB2ACA000BB7DA /* PianoView.swift */,
+				CF4A053121FB2ACA000BB7DA /* Extensions */,
+				CF4A052921FB2ACA000BB7DA /* Views */,
+			);
+			path = Piano;
+			sourceTree = "<group>";
+		};
+		CF4A052921FB2ACA000BB7DA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF4A054521FB2C5D000BB7DA /* Keyboard */,
+				CF4A052B21FB2ACA000BB7DA /* EffectControl */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CF4A052B21FB2ACA000BB7DA /* EffectControl */ = {
+			isa = PBXGroup;
+			children = (
+				CF4A052C21FB2ACA000BB7DA /* PianoEffectView.swift */,
+				CF4A052D21FB2ACA000BB7DA /* PianoEffectIndicatorsView.swift */,
+				CF4A052E21FB2ACA000BB7DA /* PianoSliderView.swift */,
+				CF4A052F21FB2ACA000BB7DA /* PianoEffectControl.swift */,
+			);
+			path = EffectControl;
+			sourceTree = "<group>";
+		};
+		CF4A053121FB2ACA000BB7DA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CF4A053221FB2ACA000BB7DA /* AVAudioSession+Swift.h */,
+				CF4A053521FB2ACA000BB7DA /* AVAudioSession+Swift.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CF4A054521FB2C5D000BB7DA /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				CF4A052A21FB2ACA000BB7DA /* PianoKeyView.swift */,
+				CF4A053021FB2ACA000BB7DA /* PianoKeyboardView.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		CF4A054621FB58D3000BB7DA /* Piano */ = {
+			isa = PBXGroup;
+			children = (
+				CF4A054721FB58FA000BB7DA /* PianoDemoView.swift */,
+			);
+			path = Piano;
 			sourceTree = "<group>";
 		};
 		CF848C2921C7E0690086530E /* Button */ = {
@@ -1639,6 +1719,7 @@
 		CF8F022B21DCC74F004C4042 /* EasterEggs */ = {
 			isa = PBXGroup;
 			children = (
+				CF4A054621FB58D3000BB7DA /* Piano */,
 				CF8F022E21DCC776004C4042 /* DrumMachine */,
 				CF8F022C21DCC75A004C4042 /* NewYears */,
 				CF8F022D21DCC765004C4042 /* SnowGlobe */,
@@ -2025,6 +2106,7 @@
 				4447F7021FDB2B110033DBC1 /* FinniversKit.h in Headers */,
 				44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */,
 				1430D440216E4DA10038AC84 /* Spacing.h in Headers */,
+				CF4A053E21FB2ACB000BB7DA /* AVAudioSession+Swift.h in Headers */,
 				144959DB2122C4400084549F /* FinniversImageAsset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2167,6 +2249,7 @@
 				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
 				CF3D5EF5215A6D9E006E4D08 /* pusefinn.wav in Resources */,
 				4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */,
+				CF4A054421FB2B4E000BB7DA /* Piano.sf2 in Resources */,
 				CF3D5EF4215A6D9E006E4D08 /* hi-hats.wav in Resources */,
 				CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */,
 				08D8B2ED2193129700EA22CC /* CheckboxAnimation.xcassets in Resources */,
@@ -2247,6 +2330,7 @@
 				444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				44AFCE4A215839FB005984DB /* LoadingIndicatorViewDemoView.swift in Sources */,
 				432CE09E21131B4800F01EC5 /* RoundedImageViewDemoView.swift in Sources */,
+				CF4A054821FB58FA000BB7DA /* PianoDemoView.swift in Sources */,
 				444246082137D61200D42AB8 /* FavoriteFoldersListViewDemoView.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
@@ -2327,6 +2411,7 @@
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
+				CF4A053821FB2ACB000BB7DA /* PianoKeyView.swift in Sources */,
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */,
 				431875C1211180F100D71723 /* ReviewProfileCell.swift in Sources */,
@@ -2334,6 +2419,7 @@
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
+				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				DAC7DCAE2153866E004602A3 /* SettingsViewCell.swift in Sources */,
@@ -2351,6 +2437,7 @@
 				CF3D5EEA215A6723006E4D08 /* DrumPadCollectionViewCell.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
+				CF4A053721FB2ACB000BB7DA /* PianoView.swift in Sources */,
 				DA708853211338650067519A /* ConfirmationView.swift in Sources */,
 				08796D9121CB97F40023A441 /* BasicTableViewCellViewModel.swift in Sources */,
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
@@ -2412,6 +2499,7 @@
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
 				DAB7FAA621B690DD00BF8CC6 /* BottomSheet.swift in Sources */,
 				08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */,
+				CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */,
 				CFE43E4C219B13B400D3D5F7 /* FrontPageViewModel.swift in Sources */,
@@ -2428,6 +2516,7 @@
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
 				DAB7FAA921B690DD00BF8CC6 /* BottomSheetAnimationController.swift in Sources */,
 				CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */,
+				CF4A053A21FB2ACB000BB7DA /* PianoEffectIndicatorsView.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
 				43BACE6A21117D430052114C /* ReviewView.swift in Sources */,
 				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
@@ -2447,6 +2536,8 @@
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
 				444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */,
+				CF4A053B21FB2ACB000BB7DA /* PianoSliderView.swift in Sources */,
+				CF4A054121FB2ACB000BB7DA /* AVAudioSession+Swift.m in Sources */,
 				DA93EFA821C2BA4F00207239 /* NewYearsView.swift in Sources */,
 				44587018213FA344009187BE /* RegisterView.swift in Sources */,
 				082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */,
@@ -2460,6 +2551,7 @@
 				DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */,
 				43BACE6C21117D530052114C /* ReviewViewModel.swift in Sources */,
 				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
+				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
 				DA9BF915215E66980072584C /* SettingsViewCellModel.swift in Sources */,
 				B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */,
