@@ -12,6 +12,15 @@ public protocol InfoboxViewDelegate: AnyObject {
 public final class InfoboxView: UIView {
     public weak var delegate: InfoboxViewDelegate?
 
+    public var model: InfoboxViewModel? {
+        didSet {
+            titleLabel.text = model?.title
+            detailLabel.text = model?.detail
+            primaryButton.setTitle(model?.primaryButtonTitle, for: .normal)
+            secondaryButton.setTitle(model?.secondaryButtonTitle, for: .normal)
+        }
+    }
+
     // MARK: - Subviews
 
     private lazy var titleLabel: UILabel = {
