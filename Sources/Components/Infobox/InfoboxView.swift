@@ -4,7 +4,16 @@
 
 import UIKit
 
+public protocol InfoboxViewDelegate: AnyObject {
+    func infoboxViewDidSelectPrimaryButton(_ view: InfoboxView)
+    func infoboxViewDidSelectSecondaryButton(_ view: InfoboxView)
+}
+
 public final class InfoboxView: UIView {
+    public weak var delegate: InfoboxViewDelegate?
+
+    // MARK: - Subviews
+
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .title4)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -25,12 +34,14 @@ public final class InfoboxView: UIView {
     private lazy var primaryButton: UIButton = {
         let button = Button(style: .default)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handlePrimaryButtonTap), for: .touchUpInside)
         return button
     }()
 
     private lazy var secondaryButton: UIButton = {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleSecondaryButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -79,5 +90,15 @@ public final class InfoboxView: UIView {
             secondaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
         ])
+    }
+
+    // MARK: - Actions
+
+    @objc private func handlePrimaryButtonTap() {
+        delegate?.infoboxViewDidSelectPrimaryButton(self)
+    }
+
+    @objc private func handleSecondaryButtonTap() {
+        delegate?.infoboxViewDidSelectSecondaryButton(self)
     }
 }
