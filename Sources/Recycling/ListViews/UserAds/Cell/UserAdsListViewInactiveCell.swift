@@ -155,12 +155,7 @@ public class UserAdsListViewInactiveCell: UITableViewCell {
 
         dataSource.userAdsListViewInactiveCell(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
             self?.adImageView.backgroundColor = .clear
-
-            if let image = image {
-                self?.adImageView.image = image
-            } else {
-                self?.adImageView.image = self?.defaultImage
-            }
+            self?.adImageView.image = image ?? self?.defaultImage
         }
     }
 }
