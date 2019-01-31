@@ -72,7 +72,6 @@ public class UserAdsListView: UIView {
     private func setup() {
         tableView.register(UserAdsListViewNewAdCell.self)
         tableView.register(UserAdsListViewActiveCell.self)
-        tableView.register(UserAdsListViewInactiveCell.self)
         tableView.register(UserAdsListViewSeeAllAdsCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
@@ -140,7 +139,7 @@ extension UserAdsListView: UITableViewDataSource {
         switch indexPath.section {
         case 0: return UserAdsListView.firstSectionCellHeight
         case 1: return UserAdsListView.secondSectionCellHeight
-        case 2: return UserAdsListView.thirdSectionCellHeight
+        case 2: return UserAdsListView.secondSectionCellHeight
         case 3: return UserAdsListView.firstSectionCellHeight
         default: return 0.0
         }
@@ -152,7 +151,6 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var activeCell = UserAdsListViewActiveCell()
-        var inactiveCell = UserAdsListViewInactiveCell()
 
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
         let color = colors[indexPath.row % 4]
@@ -174,13 +172,13 @@ extension UserAdsListView: UITableViewDataSource {
             }
             return activeCell
         case 2:
-            inactiveCell = tableView.dequeue(UserAdsListViewInactiveCell.self, for: indexPath)
-            inactiveCell.loadingColor = color
-            inactiveCell.dataSource = self
+            activeCell = tableView.dequeue(UserAdsListViewActiveCell.self, for: indexPath)
+            activeCell.loadingColor = color
+            activeCell.dataSource = self
             if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
-                inactiveCell.model = model
+                activeCell.model = model
             }
-            return inactiveCell
+            return activeCell
         case 3:
             let seeAllAdsCell = tableView.dequeue(UserAdsListViewSeeAllAdsCell.self, for: indexPath)
             seeAllAdsCell.delegate = self
@@ -194,7 +192,6 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? UserAdsListViewActiveCell { cell.loadImage() }
-        if let cell = cell as? UserAdsListViewInactiveCell { cell.loadImage() }
         delegate?.userAdsListView(self, willDisplayItemAtIndex: indexPath.row)
     }
 
