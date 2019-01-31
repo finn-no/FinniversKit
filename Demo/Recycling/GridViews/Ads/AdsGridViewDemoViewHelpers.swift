@@ -11,6 +11,7 @@ public struct Ad: AdsGridViewModel {
     public var iconImage: UIImage?
     public let title: String
     public let subtitle: String?
+    public var accessory: String?
     public let imageText: String?
     public var isFavorite = false
 
@@ -43,8 +44,17 @@ public struct AdFactory {
             let imageSource = imageSources[index]
             let title = titles[index]
             let subtitle = subtitles[index]
-            let icon = UIImage(named: .car)
-            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subtitle: subtitle, imageText: price[index], isFavorite: false, favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
+            let icon = UIImage(named: .realestate)
+            return Ad(
+                imagePath: imageSource.path,
+                imageSize: imageSource.size,
+                iconImage: icon,
+                title: title,
+                subtitle: subtitle,
+                accessory: index % 2 == 0 ? "Totalpris \(price[index])" : nil,
+                imageText: price[index],
+                isFavorite: false,
+                favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
     }
 

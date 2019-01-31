@@ -18,9 +18,10 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private static let titleHeight: CGFloat = 20.0
     private static let titleTopMargin: CGFloat = 3.0
-    private static let titleBottomMargin: CGFloat = 17.0
+    private static let bottomMargin: CGFloat = 15.0
     private static let subtitleHeight: CGFloat = 17.0
     private static let subtitleTopMargin: CGFloat = 6.0
+    private static let accessoryHeight: CGFloat = 14.0
     private static let margin: CGFloat = 8.0
     private static let cornerRadius: CGFloat = 8.0
     private static let imageDescriptionHeight: CGFloat = 35.0
@@ -54,6 +55,14 @@ public class AdsGridViewCell: UICollectionViewCell {
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail)
         label.textColor = .stone
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
+        return label
+    }()
+
+    private lazy var accessoryLabel: Label = {
+        let label = Label(style: .title5)
+        label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -104,7 +113,12 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     /// Height in cell that is not image
     public static var nonImageHeight: CGFloat {
-        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + titleBottomMargin
+        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
+    }
+
+    /// Height in cell that is not image including the height of accessory label
+    public static var nonImageWithAccessoryHeight: CGFloat {
+        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + accessoryHeight + bottomMargin
     }
 
     // MARK: - Setup
@@ -127,6 +141,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         addSubview(titleLabel)
         addSubview(imageDescriptionView)
         addSubview(favoriteButton)
+        addSubview(accessoryLabel)
 
         imageDescriptionView.addSubview(iconImageView)
         imageDescriptionView.addSubview(imageTextLabel)
@@ -147,7 +162,11 @@ public class AdsGridViewCell: UICollectionViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.titleHeight),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -AdsGridViewCell.titleBottomMargin),
+
+            accessoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            accessoryLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            accessoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            accessoryLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -AdsGridViewCell.bottomMargin),
 
             iconImageView.leadingAnchor.constraint(equalTo: imageDescriptionView.leadingAnchor, constant: AdsGridViewCell.margin),
             iconImageView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
@@ -178,6 +197,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         iconImageView.image = nil
         titleLabel.text = ""
         subtitleLabel.text = ""
+        accessoryLabel.text = ""
         imageTextLabel.text = ""
         accessibilityLabel = ""
         favoriteButton.accessibilityLabel = ""
@@ -197,6 +217,7 @@ public class AdsGridViewCell: UICollectionViewCell {
                 iconImageView.image = model.iconImage?.withRenderingMode(.alwaysTemplate)
                 titleLabel.text = model.title
                 subtitleLabel.text = model.subtitle
+                accessoryLabel.text = model.accessory
                 imageTextLabel.text = model.imageText
                 accessibilityLabel = model.accessibilityLabel
                 favoriteButton.accessibilityLabel = model.favoriteButtonAccessibilityLabel
