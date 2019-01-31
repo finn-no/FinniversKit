@@ -9,9 +9,7 @@ class UserAdsListDataSource: NSObject {
 }
 
 class UserAdsListViewDemoView: UIView {
-    lazy var dataSource: UserAdsListDataSource = {
-        return UserAdsListDataSource()
-    }()
+    private lazy var dataSource = UserAdsListDataSource()
 
     // MARK: - Init
 
@@ -88,27 +86,4 @@ extension UserAdsListViewDemoView: UserAdsListViewDataSource {
     }
 
     func userAdsListView(_ userAdsListView: UserAdsListView, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat) {}
-}
-
-extension UserAdsListViewDemoView: UserAdsListViewInactiveCellDataSource {
-    func userAdsListViewInactiveCell(_ userAdsListViewInactiveCell: UserAdsListViewInactiveCell, loadImageForModel model: UserAdsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        guard let path = model.imagePath, let url = URL(string: path) else {
-            completion(nil)
-            return
-        }
-
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    func userAdsListViewInactiveCell(_ userAdsListViewInactiveCell: UserAdsListViewInactiveCell, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat) {}
 }

@@ -4,28 +4,7 @@
 
 import UIKit
 
-public protocol UserAdsListViewInactiveCellDataSource: class {
-    func userAdsListViewInactiveCell(_ userAdsListViewInactiveCell: UserAdsListViewInactiveCell,
-                                     loadImageForModel model: UserAdsListViewModel,
-                                     imageWidth: CGFloat,
-                                     completion: @escaping ((UIImage?) -> Void))
-
-    func userAdsListViewInactiveCell(_ userAdsListViewInactiveCell: UserAdsListViewInactiveCell,
-                                     cancelLoadingImageForModel model: UserAdsListViewModel,
-                                     imageWidth: CGFloat)
-}
-
-public class UserAdsListViewInactiveCell: UITableViewCell {
-    // MARK: - External properties
-
-    /// The loading color is used to fill the image view while we load the image.
-
-    public var loadingColor: UIColor?
-
-    /// A data source for the loading of the image
-
-    public weak var dataSource: UserAdsListViewInactiveCellDataSource?
-
+public class UserAdsListViewInactiveCell: UserAdsListViewActiveCell {
     // MARK: - Internal properties
 
     private static let cornerRadius: CGFloat = 12
@@ -65,7 +44,7 @@ public class UserAdsListViewInactiveCell: UITableViewCell {
         setup()
     }
 
-    private func setup() {
+    public override func setup() {
         isAccessibilityElement = true
         backgroundColor = .milk
         accessoryType = .disclosureIndicator
@@ -87,28 +66,6 @@ public class UserAdsListViewInactiveCell: UITableViewCell {
         ])
     }
 
-    private func setupRibbonView(forUserAdStatus status: UserAdStatus) {
-        ribbonView?.removeFromSuperview()
-        ribbonView = nil
-
-        switch status {
-        case .started: ribbonView = RibbonView(style: .warning, with: status.rawValue)
-        case .active: ribbonView = RibbonView(style: .success, with: status.rawValue)
-        case .inactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
-        case .expired: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
-        case .sold: ribbonView = RibbonView(style: .warning, with: status.rawValue)
-        case .unknown: return
-        }
-
-        guard let ribbonView = ribbonView else { return }
-        ribbonView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(ribbonView)
-        NSLayoutConstraint.activate([
-            ribbonView.trailingAnchor.constraint(equalTo: accessoryView?.leadingAnchor ?? contentView.trailingAnchor),
-            ribbonView.centerYAnchor.constraint(equalTo: accessoryView?.centerYAnchor ?? contentView.centerYAnchor),
-        ])
-    }
-
     // MARK: - Superclass Overrides
 
     public override func prepareForReuse() {
@@ -119,13 +76,13 @@ public class UserAdsListViewInactiveCell: UITableViewCell {
         accessibilityLabel = nil
 
         if let model = model {
-            dataSource?.userAdsListViewInactiveCell(self, cancelLoadingImageForModel: model, imageWidth: adImageView.frame.size.width)
+            dataSource?.userAdsListViewActiveCell(self, cancelLoadingImageForModel: model, imageWidth: adImageView.frame.size.width)
         }
     }
 
     // MARK: - Dependency injection
 
-    public var model: UserAdsListViewModel? {
+    public override var model: UserAdsListViewModel? {
         didSet {
             guard let model = model else { return }
             titleLabel.text = model.title
@@ -136,7 +93,7 @@ public class UserAdsListViewInactiveCell: UITableViewCell {
 
     // MARK: - Public
 
-    func loadImage() {
+    public override func loadImage() {
         if let model = model {
             loadImage(model)
         }
@@ -153,7 +110,7 @@ public class UserAdsListViewInactiveCell: UITableViewCell {
 
         adImageView.backgroundColor = loadingColor
 
-        dataSource.userAdsListViewInactiveCell(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
+        dataSource.userAdsListViewActiveCell(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
             self?.adImageView.backgroundColor = .clear
             self?.adImageView.image = image ?? self?.defaultImage
         }

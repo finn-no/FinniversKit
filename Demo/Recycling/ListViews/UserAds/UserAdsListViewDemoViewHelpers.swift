@@ -5,8 +5,8 @@
 import FinniversKit
 
 public struct UserAdHeaderCell: UserAdsListViewHeaderModel, Hashable {
-    public var title: String
-    public var buttonTitle: String
+    public let title: String
+    public let buttonTitle: String
 
     public var accessibilityLabel: String {
         var message = title
@@ -21,12 +21,12 @@ public struct UserAdHeaderCell: UserAdsListViewHeaderModel, Hashable {
 }
 
 public struct UserAdCell: UserAdsListViewModel {
-    public var imagePath: String?
-    public var imageSize: CGSize
-    public var title: String
-    public var price: String
-    public var detail: String
-    public var status: String
+    public let imagePath: String?
+    public let imageSize: CGSize
+    public let title: String
+    public let price: String
+    public let detail: String
+    public let status: String
 
     public var accessibilityLabel: String {
         var message = title

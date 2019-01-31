@@ -17,7 +17,6 @@ public enum UserAdStatus: String {
 public protocol UserAdsListViewActiveCellDataSource: class {
     func userAdsListViewActiveCell(_ userAdsListViewActiveCell: UserAdsListViewActiveCell, loadImageForModel model: UserAdsListViewModel,
                                    imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
-
     func userAdsListViewActiveCell(_ userAdsListViewActiveCell: UserAdsListViewActiveCell, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat)
 }
 
@@ -86,7 +85,7 @@ public class UserAdsListViewActiveCell: UITableViewCell {
         setup()
     }
 
-    private func setup() {
+    public func setup() {
         isAccessibilityElement = true
         backgroundColor = .milk
         accessoryType = .disclosureIndicator
@@ -118,7 +117,7 @@ public class UserAdsListViewActiveCell: UITableViewCell {
         ])
     }
 
-    private func setupRibbonView(forUserAdStatus status: UserAdStatus) {
+    public func setupRibbonView(forUserAdStatus status: UserAdStatus) {
         ribbonView?.removeFromSuperview()
         ribbonView = nil
 
@@ -172,7 +171,7 @@ public class UserAdsListViewActiveCell: UITableViewCell {
 
     // MARK: - Public
 
-    func loadImage() {
+    public func loadImage() {
         if let model = model {
             loadImage(model)
         }

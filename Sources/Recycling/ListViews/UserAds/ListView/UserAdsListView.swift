@@ -192,6 +192,7 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? UserAdsListViewActiveCell { cell.loadImage() }
+        if let cell = cell as? UserAdsListViewInactiveCell { cell.loadImage() }
         delegate?.userAdsListView(self, willDisplayItemAtIndex: indexPath.row)
     }
 
@@ -229,18 +230,6 @@ extension UserAdsListView: UserAdsListViewActiveCellDataSource {
     }
 
     public func userAdsListViewActiveCell(_ userAdsListViewActiveCell: UserAdsListViewActiveCell, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat) {
-        dataSource?.userAdsListView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
-    }
-}
-
-// MARK: - UserAdsListViewInactiveCellDataSource
-
-extension UserAdsListView: UserAdsListViewInactiveCellDataSource {
-    public func userAdsListViewInactiveCell(_ userAdsListViewInactiveCell: UserAdsListViewInactiveCell, loadImageForModel model: UserAdsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
-        dataSource?.userAdsListView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
-    }
-
-    public func userAdsListViewInactiveCell(_ userAdsListViewInactiveCell: UserAdsListViewInactiveCell, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat) {
         dataSource?.userAdsListView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
     }
 }
