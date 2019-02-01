@@ -199,6 +199,7 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 || indexPath.section == 3 { return false }
         return true
     }
 
