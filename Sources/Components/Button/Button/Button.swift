@@ -25,8 +25,12 @@ public class Button: UIButton {
         setup()
     }
 
+    public convenience init(style: Style.Kind, size: Style.Size = .normal) {
+        self.init(style: Style(style, size: size))
+    }
+
     public required convenience init?(coder aDecoder: NSCoder) {
-        self.init(style: .default)
+        self.init(style: Style(.default, size: .normal))
     }
 
     private func setup() {
@@ -56,7 +60,7 @@ public class Button: UIButton {
         titleHeight = title.height(withConstrainedWidth: bounds.width, font: style.font)
         titleWidth = title.width(withConstrainedHeight: bounds.height, font: style.font)
 
-        if style == .link {
+        if style.kind == .link {
             setAsLink(title: title)
         } else {
             super.setTitle(title, for: state)
