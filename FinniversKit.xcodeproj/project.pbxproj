@@ -190,7 +190,6 @@
 		CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */; };
 		CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */; };
 		CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */; };
-		CF39AE0122048713002FC43E /* Button+StyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39AE0022048713002FC43E /* Button+StyleSheet.swift */; };
 		CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */; };
 		CF3D5EE4215A65D7006E4D08 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE3215A65D7006E4D08 /* Instrument.swift */; };
 		CF3D5EEA215A6723006E4D08 /* DrumPadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE9215A6723006E4D08 /* DrumPadCollectionViewCell.swift */; };
@@ -493,7 +492,6 @@
 		CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggButtonDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDefaultData.swift; sourceTree = "<group>"; };
-		CF39AE0022048713002FC43E /* Button+StyleSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+StyleSheet.swift"; sourceTree = "<group>"; };
 		CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectorView.swift; sourceTree = "<group>"; };
 		CF3D5EE3215A65D7006E4D08 /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		CF3D5EE9215A6723006E4D08 /* DrumPadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumPadCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1482,7 +1480,6 @@
 			children = (
 				4447F6661FDB2B110033DBC1 /* Button+Style.swift */,
 				4447F6671FDB2B110033DBC1 /* Button.swift */,
-				CF39AE0022048713002FC43E /* Button+StyleSheet.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -2469,7 +2466,6 @@
 				DAC7DCAA21538608004602A3 /* SettingsView.swift in Sources */,
 				08796D8821CB89400023A441 /* AnimatedHeartView.swift in Sources */,
 				CF3D5EEA215A6723006E4D08 /* DrumPadCollectionViewCell.swift in Sources */,
-				CF39AE0122048713002FC43E /* Button+StyleSheet.swift in Sources */,
 				441FE430209A24E500B04EF1 /* AdsGridViewCell.swift in Sources */,
 				DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */,
 				CF4A053721FB2ACB000BB7DA /* PianoView.swift in Sources */,
