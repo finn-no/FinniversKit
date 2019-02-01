@@ -19,17 +19,18 @@ class BottomSheetGestureController {
     weak var delegate: BottomSheetGestureControllerDelegate?
 
     private var initialPosition: CGPoint = .zero
-    private let presentedView: UIView
     private lazy var panGesture: BottomSheetPanGestureRecognizer = {
         let panGesture = BottomSheetPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
+        panGesture.draggableRect = bottomSheet.draggableRect
         return panGesture
     }()
+    private let bottomSheet: BottomSheet
     private let containerView: UIView
 
-    init(presentedView: UIView, containerView: UIView) {
-        self.presentedView = presentedView
+    init(bottomSheet: BottomSheet, containerView: UIView) {
+        self.bottomSheet = bottomSheet
         self.containerView = containerView
-        presentedView.addGestureRecognizer(panGesture)
+        bottomSheet.view.addGestureRecognizer(panGesture)
     }
 }
 
