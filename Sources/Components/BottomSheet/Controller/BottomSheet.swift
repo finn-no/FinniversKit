@@ -49,6 +49,20 @@ public class BottomSheet: UIViewController {
         set { transitionDelegate.presentationController?.state = newValue }
     }
 
+    var draggableRect: CGRect? {
+        switch draggableArea {
+        case .everything:
+            return nil
+        case .navigationBar:
+            guard let navigationController = rootViewController as? UINavigationController else { return nil }
+            let navBarFrame = navigationController.navigationBar.bounds
+            let draggableBounds = CGRect(origin: navBarFrame.origin, size: CGSize(width: navBarFrame.width, height: navBarFrame.height + 20))
+            return draggableBounds
+        case .customRect(let customRect):
+            return CGRect(origin: CGPoint(x: customRect.minX, y: customRect.minY + 20), size: customRect.size)
+        }
+    }
+
     // MARK: - Private properties
 
     private let rootViewController: UIViewController
