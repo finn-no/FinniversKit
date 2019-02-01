@@ -226,7 +226,7 @@ extension UserAdsListView: UserAdsListHeaderViewDelegate {
 // MARK: - UserAdsListViewCellDataSource
 
 extension UserAdsListView: UserAdsListViewCellDataSource {
-    public func shouldDisplayCellAsInactive(_ userAdsListViewCell: UserAdsListViewCell) -> Bool {
+    public func userAdsListViewCellShouldDisplayAsInactive(_ userAdsListViewCell: UserAdsListViewCell) -> Bool {
         guard let indexPath = tableView.indexPathForRow(at: userAdsListViewCell.center) else { return  false}
         return dataSource?.userAdsListView(self, shouldDisplayInactiveSectionAt: indexPath) ?? false
     }

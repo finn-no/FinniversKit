@@ -14,7 +14,7 @@ public enum UserAdStatus: String {
 }
 
 public protocol UserAdsListViewCellDataSource: class {
-    func shouldDisplayCellAsInactive(_ userAdsListViewCell: UserAdsListViewCell) -> Bool
+    func userAdsListViewCellShouldDisplayAsInactive(_ userAdsListViewCell: UserAdsListViewCell) -> Bool
     func userAdsListViewCell(_ userAdsListViewCell: UserAdsListViewCell, loadImageForModel model: UserAdsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func userAdsListViewCell(_ userAdsListViewCell: UserAdsListViewCell, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat)
 }
@@ -41,6 +41,8 @@ public class UserAdsListViewCell: UITableViewCell {
     private var defaultImage: UIImage? {
         return UIImage(named: .noImage)
     }
+
+    private lazy var userAdStatus: UserAdStatus = .unknown
 
     private lazy var adImageView: UIImageView = {
         let imageView = UIImageView()
@@ -73,7 +75,7 @@ public class UserAdsListViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var userAdStatus: UserAdStatus = .unknown
+    private lazy var ribbonView: RibbonView? = nil
 
     // MARK: - Setup
 
@@ -83,13 +85,10 @@ public class UserAdsListViewCell: UITableViewCell {
         accessoryType = .disclosureIndicator
         selectionStyle = .none
 
-        let ribbonView = createRibbonView(forUserAdStatus: userAdStatus)
-
-        addSubview(ribbonView)
         addSubview(adImageView)
         addSubview(titleLabel)
 
-        if dataSource?.shouldDisplayCellAsInactive(self) ?? false {
+        if dataSource?.userAdsListViewCellShouldDisplayAsInactive(self) ?? false {
             separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.inactiveImageSize + .mediumSpacing), bottom: 0, right: 0)
 
             NSLayoutConstraint.activate([
@@ -98,12 +97,9 @@ public class UserAdsListViewCell: UITableViewCell {
                 adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
                 adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
 
-                ribbonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                ribbonView.centerYAnchor.constraint(equalTo: centerYAnchor),
-
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView.leadingAnchor)
+                titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor)
             ])
         } else {
             separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.imageSize + .mediumSpacing), bottom: 0, right: 0)
@@ -117,12 +113,9 @@ public class UserAdsListViewCell: UITableViewCell {
                 adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
                 adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
 
-                ribbonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                ribbonView.centerYAnchor.constraint(equalTo: centerYAnchor),
-
                 priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView.leadingAnchor),
+                priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
 
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -135,8 +128,16 @@ public class UserAdsListViewCell: UITableViewCell {
         }
     }
 
-    private func createRibbonView(forUserAdStatus status: UserAdStatus) -> RibbonView {
-        var ribbonView = RibbonView(style: .disabled, with: status.rawValue)
+    private func teardownView() {
+        adImageView.removeFromSuperview()
+        titleLabel.removeFromSuperview()
+        priceLabel.removeFromSuperview()
+        ribbonView?.removeFromSuperview()
+        detailLabel.removeFromSuperview()
+    }
+
+    private func setupRibbonView(forUserAdStatus status: UserAdStatus) {
+        ribbonView?.removeFromSuperview()
 
         switch status {
         case .started: ribbonView = RibbonView(style: .warning, with: status.rawValue)
@@ -144,11 +145,17 @@ public class UserAdsListViewCell: UITableViewCell {
         case .inactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .expired: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .sold: ribbonView = RibbonView(style: .warning, with: status.rawValue)
-        case .unknown: return ribbonView
+        case .unknown: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         }
 
-        ribbonView.translatesAutoresizingMaskIntoConstraints = false
-        return ribbonView
+        if let ribbon = ribbonView {
+            ribbon.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(ribbon)
+            NSLayoutConstraint.activate([
+                ribbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                ribbon.centerYAnchor.constraint(equalTo: centerYAnchor),
+            ])
+        }
     }
 
     // MARK: - Superclass Overrides
@@ -171,12 +178,15 @@ public class UserAdsListViewCell: UITableViewCell {
     public var model: UserAdsListViewModel? {
         didSet {
             guard let model = model else { return }
+            teardownView()
+
             titleLabel.text = model.title
             priceLabel.text = model.price
             detailLabel.text = model.detail
             userAdStatus = UserAdStatus(rawValue: model.status) ?? .unknown
             accessibilityLabel = model.accessibilityLabel
 
+            setupRibbonView(forUserAdStatus: userAdStatus)
             setupView()
         }
     }

@@ -29,10 +29,7 @@ public struct UserAdCell: UserAdsListViewModel {
     public let status: String
 
     public var accessibilityLabel: String {
-        var message = title
-        message += ". " + price
-        message += ". " + detail
-        message += ". " + status
+        let message = [title, price, detail, status].joined(separator: ". ")
         return message
     }
 
@@ -53,15 +50,12 @@ public struct UserAdsFactory {
         let size: CGSize
     }
 
-    public static func createAds() -> [Int: (header: UserAdHeaderCell, ads: [UserAdCell])] {
+    public static func createAds() -> [(header: UserAdHeaderCell, ads: [UserAdCell])] {
         let newAd = createNewAd()
         let activeAds = createActiveAds()
         let inactiveAds = createInactiveAds()
         let seeAllAds = createSeeAllAds()
-        return [0: newAd,
-                1: activeAds,
-                2: inactiveAds,
-                3: seeAllAds]
+        return [newAd, activeAds, inactiveAds, seeAllAds]
     }
 
     private static func createNewAd() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {

@@ -51,26 +51,26 @@ extension UserAdsListViewDemoView: UserAdsListViewDataSource {
     func userAdsListView(_ userAdsListView: UserAdsListView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            dataSource.userAds[indexPath.section]?.ads.remove(at: indexPath.row)
+            dataSource.userAds[indexPath.section].ads.remove(at: indexPath.row)
             userAdsListView.deleteRows(at: [indexPath], with: .automatic)
         default: return
         }
     }
 
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex section: Int) -> UserAdsListViewHeaderModel {
-        return dataSource.userAds[section]?.header ?? UserAdHeaderCell()
+        return dataSource.userAds[section].header
     }
 
     func numberOfSections(in userAdsListView: UserAdsListView) -> Int {
-        return dataSource.userAds.keys.count
+        return dataSource.userAds.count
     }
 
     func userAdsListView(_ userAdsListView: UserAdsListView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.userAds[section]?.ads.count ?? 0
+        return dataSource.userAds[section].ads.count
     }
 
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex indexPath: IndexPath) -> UserAdsListViewModel {
-        return dataSource.userAds[indexPath.section]?.ads[indexPath.row] ?? UserAdCell()
+        return dataSource.userAds[indexPath.section].ads[indexPath.row]
     }
 
     func userAdsListView(_ userAdsListView: UserAdsListView, loadImageForModel model: UserAdsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
