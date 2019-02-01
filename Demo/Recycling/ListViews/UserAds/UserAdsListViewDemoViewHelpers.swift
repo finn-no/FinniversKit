@@ -27,7 +27,6 @@ public struct UserAdCell: UserAdsListViewModel {
     public let price: String
     public let detail: String
     public let status: String
-    public let isInactive: Bool
 
     public var accessibilityLabel: String {
         var message = title
@@ -38,14 +37,13 @@ public struct UserAdCell: UserAdsListViewModel {
     }
 
     public init(imagePath: String? = nil, imageSize: CGSize = CGSize(width: 0, height: 0),
-                title: String = "", price: String = "", detail: String = "", status: String = "", isInactive: Bool = false) {
+                title: String = "", price: String = "", detail: String = "", status: String = "") {
         self.imagePath = imagePath
         self.imageSize = imageSize
         self.title = title
         self.price = price
         self.detail = detail
         self.status = status
-        self.isInactive = isInactive
     }
 }
 
@@ -96,7 +94,7 @@ public struct UserAdsFactory {
             let detail = details[index]
             let status = statuses[index]
             inactiveAds.append(UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: title,
-                                          price: price, detail: detail, status: status, isInactive: true))
+                                          price: price, detail: detail, status: status))
         }
         let header = UserAdHeaderCell(title: "INAKTIVE ANNONSER (\(inactiveAds.count))", buttonTitle: "Vis alle")
         return (header: header, ads: inactiveAds)

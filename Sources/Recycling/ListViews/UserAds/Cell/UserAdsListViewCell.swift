@@ -74,7 +74,6 @@ public class UserAdsListViewCell: UITableViewCell {
     }()
 
     private lazy var userAdStatus: UserAdStatus = .unknown
-    private lazy var isInactive: Bool = false
 
     // MARK: - Setup
 
@@ -90,7 +89,7 @@ public class UserAdsListViewCell: UITableViewCell {
         addSubview(adImageView)
         addSubview(titleLabel)
 
-        if isInactive && dataSource?.shouldDisplayCellAsInactive(self) ?? false {
+        if dataSource?.shouldDisplayCellAsInactive(self) ?? false {
             separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.inactiveImageSize + .mediumSpacing), bottom: 0, right: 0)
 
             NSLayoutConstraint.activate([
@@ -176,7 +175,6 @@ public class UserAdsListViewCell: UITableViewCell {
             priceLabel.text = model.price
             detailLabel.text = model.detail
             userAdStatus = UserAdStatus(rawValue: model.status) ?? .unknown
-            isInactive = model.isInactive
             accessibilityLabel = model.accessibilityLabel
 
             setupView()

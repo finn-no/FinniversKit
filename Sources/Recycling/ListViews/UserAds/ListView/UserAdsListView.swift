@@ -14,8 +14,8 @@ public protocol UserAdsListViewDelegate: class {
 }
 
 public protocol UserAdsListViewDataSource: class {
-    func shouldDisplayInactiveSection(_ userAdsListView: UserAdsListView) -> Bool
     func numberOfSections(in userAdsListView: UserAdsListView) -> Int
+    func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool
     func userAdsListView(_ userAdsListView: UserAdsListView, numberOfRowsInSection section: Int) -> Int
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex section: Int) -> UserAdsListViewHeaderModel
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex indexPath: IndexPath) -> UserAdsListViewModel
@@ -137,10 +137,12 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let isInactiveSection = dataSource?.userAdsListView(self, shouldDisplayInactiveSectionAt: indexPath) ?? false
+
         switch indexPath.section {
         case 0: return UserAdsListView.firstSectionCellHeight
-        case 1: return UserAdsListView.secondSectionCellHeight
-        case 2: return (dataSource?.shouldDisplayInactiveSection(self) ?? false) ? UserAdsListView.thirdSectionCellHeight : UserAdsListView.secondSectionCellHeight
+        case 1: return isInactiveSection ? UserAdsListView.thirdSectionCellHeight : UserAdsListView.secondSectionCellHeight
+        case 2: return isInactiveSection ? UserAdsListView.thirdSectionCellHeight : UserAdsListView.secondSectionCellHeight
         case 3: return UserAdsListView.firstSectionCellHeight
         default: return 0.0
         }
@@ -225,7 +227,8 @@ extension UserAdsListView: UserAdsListHeaderViewDelegate {
 
 extension UserAdsListView: UserAdsListViewCellDataSource {
     public func shouldDisplayCellAsInactive(_ userAdsListViewCell: UserAdsListViewCell) -> Bool {
-        return dataSource?.shouldDisplayInactiveSection(self) ?? false
+        guard let indexPath = tableView.indexPathForRow(at: userAdsListViewCell.center) else { return  false}
+        return dataSource?.userAdsListView(self, shouldDisplayInactiveSectionAt: indexPath) ?? false
     }
 
     public func userAdsListViewCell(_ userAdsListViewCell: UserAdsListViewCell, loadImageForModel model: UserAdsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {

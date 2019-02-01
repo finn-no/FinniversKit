@@ -40,8 +40,12 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
 }
 
 extension UserAdsListViewDemoView: UserAdsListViewDataSource {
-    func shouldDisplayInactiveSection(_ userAdsListView: UserAdsListView) -> Bool {
-        return false
+    func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool {
+        switch indexPath.section {
+        case 1: return false
+        case 2: return false
+        default: return false
+        }
     }
 
     func userAdsListView(_ userAdsListView: UserAdsListView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
