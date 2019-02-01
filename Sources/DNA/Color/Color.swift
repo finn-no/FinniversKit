@@ -5,59 +5,59 @@
 import UIKit
 
 @objc extension UIColor {
-    @objc public class var ice: UIColor {
+    public class var ice: UIColor {
         return UIColor(r: 241, g: 249, b: 255)!
     }
 
-    @objc public class var milk: UIColor {
+    public class var milk: UIColor {
         return UIColor(r: 255, g: 255, b: 255)!
     }
 
-    @objc public class var licorice: UIColor {
+    public class var licorice: UIColor {
         return UIColor(r: 71, g: 68, b: 69)!
     }
 
-    @objc public class var primaryBlue: UIColor {
+    public class var primaryBlue: UIColor {
         return UIColor(r: 0, g: 99, b: 251)!
     }
 
-    @objc public class var secondaryBlue: UIColor {
+    public class var secondaryBlue: UIColor {
         return UIColor(r: 6, g: 190, b: 251)!
     }
 
-    @objc public class var stone: UIColor {
+    public class var stone: UIColor {
         return UIColor(r: 118, g: 118, b: 118)!
     }
 
-    @objc public class var sardine: UIColor {
+    public class var sardine: UIColor {
         return UIColor(r: 195, g: 204, b: 217)!
     }
 
-    @objc public class var salmon: UIColor {
+    public class var salmon: UIColor {
         return UIColor(r: 255, g: 206, b: 215)!
     }
 
-    @objc public class var mint: UIColor {
+    public class var mint: UIColor {
         return UIColor(r: 204, g: 255, b: 236)!
     }
 
-    @objc public class var toothPaste: UIColor {
+    public class var toothPaste: UIColor {
         return UIColor(r: 182, g: 240, b: 255)!
     }
 
-    @objc public class var banana: UIColor {
+    public class var banana: UIColor {
         return UIColor(r: 255, g: 245, b: 200)!
     }
 
-    @objc public class var cherry: UIColor {
+    public class var cherry: UIColor {
         return UIColor(r: 218, g: 36, b: 0)!
     }
 
-    @objc public class var watermelon: UIColor {
+    public class var watermelon: UIColor {
         return UIColor(r: 255, g: 88, b: 68)!
     }
 
-    @objc public class var pea: UIColor {
+    public class var pea: UIColor {
         return UIColor(r: 104, g: 226, b: 184)!
     }
 
@@ -127,24 +127,24 @@ extension CGColor {
 
 // MARK: - Button
 
-extension UIColor {
-    @objc public class var callToActionButtonHighlightedBodyColor: UIColor {
+@objc extension UIColor {
+    public class var callToActionButtonHighlightedBodyColor: UIColor {
         return primaryBlue.withAlphaComponent(0.8)
     }
 
-    @objc public class var destructiveButtonHighlightedBodyColor: UIColor {
+    public class var destructiveButtonHighlightedBodyColor: UIColor {
         return cherry.withAlphaComponent(0.8)
     }
 
-    @objc public class var defaultButtonHighlightedBodyColor: UIColor {
+    public class var defaultButtonHighlightedBodyColor: UIColor {
         return UIColor(r: 241, g: 249, b: 255)!
     }
 
-    @objc public class var linkButtonHighlightedTextColor: UIColor {
+    public class var linkButtonHighlightedTextColor: UIColor {
         return primaryBlue.withAlphaComponent(0.8)
     }
 
-    @objc public class var flatButtonHighlightedTextColor: UIColor {
+    public class var flatButtonHighlightedTextColor: UIColor {
         return primaryBlue.withAlphaComponent(0.8)
     }
 }
