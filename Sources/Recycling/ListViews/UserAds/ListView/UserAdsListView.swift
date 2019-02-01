@@ -5,7 +5,6 @@
 import UIKit
 
 public protocol UserAdsListViewDelegate: class {
-    func shouldDisplayInactiveSection(_ userAdsListView: UserAdsListView) -> Bool
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button)
@@ -15,6 +14,7 @@ public protocol UserAdsListViewDelegate: class {
 }
 
 public protocol UserAdsListViewDataSource: class {
+    func shouldDisplayInactiveSection(_ userAdsListView: UserAdsListView) -> Bool
     func numberOfSections(in userAdsListView: UserAdsListView) -> Int
     func userAdsListView(_ userAdsListView: UserAdsListView, numberOfRowsInSection section: Int) -> Int
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex section: Int) -> UserAdsListViewHeaderModel
@@ -140,7 +140,7 @@ extension UserAdsListView: UITableViewDataSource {
         switch indexPath.section {
         case 0: return UserAdsListView.firstSectionCellHeight
         case 1: return UserAdsListView.secondSectionCellHeight
-        case 2: return (delegate?.shouldDisplayInactiveSection(self) ?? false) ? UserAdsListView.thirdSectionCellHeight : UserAdsListView.secondSectionCellHeight
+        case 2: return (dataSource?.shouldDisplayInactiveSection(self) ?? false) ? UserAdsListView.thirdSectionCellHeight : UserAdsListView.secondSectionCellHeight
         case 3: return UserAdsListView.firstSectionCellHeight
         default: return 0.0
         }
@@ -225,7 +225,7 @@ extension UserAdsListView: UserAdsListHeaderViewDelegate {
 
 extension UserAdsListView: UserAdsListViewCellDataSource {
     public func shouldDisplayCellAsInactive(_ userAdsListViewCell: UserAdsListViewCell) -> Bool {
-        return delegate?.shouldDisplayInactiveSection(self) ?? false
+        return dataSource?.shouldDisplayInactiveSection(self) ?? false
     }
 
     public func userAdsListViewCell(_ userAdsListViewCell: UserAdsListViewCell, loadImageForModel model: UserAdsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {

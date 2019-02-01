@@ -31,10 +31,6 @@ class UserAdsListViewDemoView: UIView {
 }
 
 extension UserAdsListViewDemoView: UserAdsListViewDelegate {
-    func shouldDisplayInactiveSection(_ userAdsListView: UserAdsListView) -> Bool {
-        return false
-    }
-
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button) {}
@@ -44,13 +40,16 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
 }
 
 extension UserAdsListViewDemoView: UserAdsListViewDataSource {
+    func shouldDisplayInactiveSection(_ userAdsListView: UserAdsListView) -> Bool {
+        return true
+    }
+
     func userAdsListView(_ userAdsListView: UserAdsListView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
             dataSource.userAds[indexPath.section]?.ads.remove(at: indexPath.row)
             userAdsListView.deleteRows(at: [indexPath], with: .automatic)
-        case .insert: return
-        case .none: return
+        default: return
         }
     }
 
