@@ -20,8 +20,8 @@ public struct BroadcastMessage: Hashable, Codable {
         broadcastAreas = []
     }
 
-    public var hashValue: Int {
-        return id.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id.hashValue)
     }
 
     public static func == (lhs: BroadcastMessage, rhs: BroadcastMessage) -> Bool {
