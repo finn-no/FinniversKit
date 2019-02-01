@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol UserAdsListViewDelegate: class {
+    func shouldDisplayInactiveSection(_ userAdsListView: UserAdsListView) -> Bool
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button)
@@ -71,7 +72,7 @@ public class UserAdsListView: UIView {
 
     private func setup() {
         tableView.register(UserAdsListViewNewAdCell.self)
-        tableView.register(UserAdsListViewActiveCell.self)
+        tableView.register(UserAdsListViewCell.self)
         tableView.register(UserAdsListViewSeeAllAdsCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
@@ -139,7 +140,7 @@ extension UserAdsListView: UITableViewDataSource {
         switch indexPath.section {
         case 0: return UserAdsListView.firstSectionCellHeight
         case 1: return UserAdsListView.secondSectionCellHeight
-        case 2: return UserAdsListView.secondSectionCellHeight
+        case 2: return (delegate?.shouldDisplayInactiveSection(self) ?? false) ? UserAdsListView.thirdSectionCellHeight : UserAdsListView.secondSectionCellHeight
         case 3: return UserAdsListView.firstSectionCellHeight
         default: return 0.0
         }
@@ -150,7 +151,7 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var activeCell = UserAdsListViewActiveCell()
+        var cell = UserAdsListViewCell()
 
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
         let color = colors[indexPath.row % 4]
@@ -164,21 +165,21 @@ extension UserAdsListView: UITableViewDataSource {
             }
             return newAdCell
         case 1:
-            activeCell = tableView.dequeue(UserAdsListViewActiveCell.self, for: indexPath)
-            activeCell.loadingColor = color
-            activeCell.dataSource = self
+            cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath)
+            cell.loadingColor = color
+            cell.dataSource = self
             if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
-                activeCell.model = model
+                cell.model = model
             }
-            return activeCell
+            return cell
         case 2:
-            activeCell = tableView.dequeue(UserAdsListViewActiveCell.self, for: indexPath)
-            activeCell.loadingColor = color
-            activeCell.dataSource = self
+            cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath)
+            cell.loadingColor = color
+            cell.dataSource = self
             if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
-                activeCell.model = model
+                cell.model = model
             }
-            return activeCell
+            return cell
         case 3:
             let seeAllAdsCell = tableView.dequeue(UserAdsListViewSeeAllAdsCell.self, for: indexPath)
             seeAllAdsCell.delegate = self
@@ -191,8 +192,7 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let cell = cell as? UserAdsListViewActiveCell { cell.loadImage() }
-        if let cell = cell as? UserAdsListViewInactiveCell { cell.loadImage() }
+        if let cell = cell as? UserAdsListViewCell { cell.loadImage() }
         delegate?.userAdsListView(self, willDisplayItemAtIndex: indexPath.row)
     }
 
@@ -223,13 +223,16 @@ extension UserAdsListView: UserAdsListHeaderViewDelegate {
 
 // MARK: - UserAdsListViewCellDataSource
 
-extension UserAdsListView: UserAdsListViewActiveCellDataSource {
-    public func userAdsListViewActiveCell(_ userAdsListViewActiveCell: UserAdsListViewActiveCell, loadImageForModel model: UserAdsListViewModel,
-                                          imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+extension UserAdsListView: UserAdsListViewCellDataSource {
+    public func shouldDisplayCellAsInactive(_ userAdsListViewCell: UserAdsListViewCell) -> Bool {
+        return delegate?.shouldDisplayInactiveSection(self) ?? false
+    }
+
+    public func userAdsListViewCell(_ userAdsListViewCell: UserAdsListViewCell, loadImageForModel model: UserAdsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         dataSource?.userAdsListView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 
-    public func userAdsListViewActiveCell(_ userAdsListViewActiveCell: UserAdsListViewActiveCell, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat) {
+    public func userAdsListViewCell(_ userAdsListViewCell: UserAdsListViewCell, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat) {
         dataSource?.userAdsListView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
     }
 }

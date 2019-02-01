@@ -254,12 +254,11 @@
 		DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6A55B21CA524B00837BFA /* CGPoint.swift */; };
 		F26852D621F7530A000978C8 /* UserAdsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D521F7530A000978C8 /* UserAdsListView.swift */; };
 		F26852D821F753A5000978C8 /* UserAdsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D721F753A5000978C8 /* UserAdsListHeaderView.swift */; };
-		F26852DA21F75435000978C8 /* UserAdsListViewActiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D921F75435000978C8 /* UserAdsListViewActiveCell.swift */; };
+		F26852DA21F75435000978C8 /* UserAdsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D921F75435000978C8 /* UserAdsListViewCell.swift */; };
 		F26852DF21F755B6000978C8 /* UserAdsListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852DE21F755B6000978C8 /* UserAdsListViewDemoView.swift */; };
 		F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852E021F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift */; };
 		F26852F221FEFA97000978C8 /* UserAdsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852DB21F75457000978C8 /* UserAdsListViewModel.swift */; };
 		F26852F321FEFA9C000978C8 /* UserAdsListViewHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852EF21FEF9AB000978C8 /* UserAdsListViewHeaderModel.swift */; };
-		F26852F622003BEC000978C8 /* UserAdsListViewInactiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852F4220039D9000978C8 /* UserAdsListViewInactiveCell.swift */; };
 		F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */; };
 		F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */; };
 /* End PBXBuildFile section */
@@ -552,12 +551,11 @@
 		DAE6A55B21CA524B00837BFA /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		F26852D521F7530A000978C8 /* UserAdsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListView.swift; sourceTree = "<group>"; };
 		F26852D721F753A5000978C8 /* UserAdsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListHeaderView.swift; sourceTree = "<group>"; };
-		F26852D921F75435000978C8 /* UserAdsListViewActiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewActiveCell.swift; sourceTree = "<group>"; };
+		F26852D921F75435000978C8 /* UserAdsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewCell.swift; sourceTree = "<group>"; };
 		F26852DB21F75457000978C8 /* UserAdsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewModel.swift; sourceTree = "<group>"; };
 		F26852DE21F755B6000978C8 /* UserAdsListViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewDemoView.swift; sourceTree = "<group>"; };
 		F26852E021F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		F26852EF21FEF9AB000978C8 /* UserAdsListViewHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewHeaderModel.swift; sourceTree = "<group>"; };
-		F26852F4220039D9000978C8 /* UserAdsListViewInactiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewInactiveCell.swift; sourceTree = "<group>"; };
 		F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewNewAdCell.swift; sourceTree = "<group>"; };
 		F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewSeeAllAdsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2051,8 +2049,7 @@
 			isa = PBXGroup;
 			children = (
 				F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */,
-				F26852D921F75435000978C8 /* UserAdsListViewActiveCell.swift */,
-				F26852F4220039D9000978C8 /* UserAdsListViewInactiveCell.swift */,
+				F26852D921F75435000978C8 /* UserAdsListViewCell.swift */,
 				F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */,
 			);
 			path = Cell;
@@ -2404,7 +2401,6 @@
 				431875C1211180F100D71723 /* ReviewProfileCell.swift in Sources */,
 				F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */,
 				082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */,
-				F26852F622003BEC000978C8 /* UserAdsListViewInactiveCell.swift in Sources */,
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
 				F26852D821F753A5000978C8 /* UserAdsListHeaderView.swift in Sources */,
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
@@ -2498,7 +2494,7 @@
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
-				F26852DA21F75435000978C8 /* UserAdsListViewActiveCell.swift in Sources */,
+				F26852DA21F75435000978C8 /* UserAdsListViewCell.swift in Sources */,
 				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
 				08D70A19218328EB003E2222 /* IconTitleTableViewCell.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,

@@ -31,6 +31,10 @@ class UserAdsListViewDemoView: UIView {
 }
 
 extension UserAdsListViewDemoView: UserAdsListViewDelegate {
+    func shouldDisplayInactiveSection(_ userAdsListView: UserAdsListView) -> Bool {
+        return true
+    }
+
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button) {}

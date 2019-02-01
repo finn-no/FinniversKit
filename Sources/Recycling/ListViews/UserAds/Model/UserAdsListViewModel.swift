@@ -11,6 +11,7 @@ public protocol UserAdsListViewModel {
     var price: String { get }
     var detail: String { get }
     var status: String { get }
+    var isInactive: Bool { get }
     var accessibilityLabel: String { get }
 }
 
