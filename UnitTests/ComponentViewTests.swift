@@ -102,4 +102,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testBottomSheetMechanics() {
         snapshot(.bottomSheetMechanics)
     }
+
+    func testInfobox() {
+        snapshot(.infobox)
+    }
 }
