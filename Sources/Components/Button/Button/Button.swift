@@ -17,28 +17,29 @@ public class Button: UIButton {
         didSet { setup() }
     }
 
+    public var size: Size {
+        didSet { setup() }
+    }
+
     // MARK: - Setup
 
-    public init(style: Style) {
+    public init(style: Style, size: Size = .normal) {
         self.style = style
+        self.size = size
         super.init(frame: .zero)
         setup()
     }
 
-    public convenience init(style: Style.Kind, size: Style.Size = .normal) {
-        self.init(style: Style(style, size: size))
-    }
-
     public required convenience init?(coder aDecoder: NSCoder) {
-        self.init(style: Style(.default, size: .normal))
+        self.init(style: .default)
     }
 
     private func setup() {
         isAccessibilityElement = true
 
-        titleEdgeInsets = style.paddings
+        titleEdgeInsets = style.paddings(forSize: size)
         contentEdgeInsets = style.margins
-        titleLabel?.font = style.font
+        titleLabel?.font = style.font(forSize: size)
         layer.cornerRadius = cornerRadius
         layer.borderWidth = style.borderWidth
         layer.borderColor = style.borderColor?.cgColor
@@ -57,10 +58,10 @@ public class Button: UIButton {
             return
         }
 
-        titleHeight = title.height(withConstrainedWidth: bounds.width, font: style.font)
-        titleWidth = title.width(withConstrainedHeight: bounds.height, font: style.font)
+        titleHeight = title.height(withConstrainedWidth: bounds.width, font: style.font(forSize: size))
+        titleWidth = title.width(withConstrainedHeight: bounds.height, font: style.font(forSize: size))
 
-        if style.kind == .link {
+        if style == .link {
             setAsLink(title: title)
         } else {
             super.setTitle(title, for: state)
@@ -93,7 +94,11 @@ public class Button: UIButton {
         guard let titleWidth = titleWidth, let titleHeight = titleHeight else {
             return CGSize.zero
         }
-        let buttonSize = CGSize(width: titleWidth + style.margins.left + style.margins.right, height: titleHeight + style.margins.top + style.margins.bottom + style.paddings.top + style.paddings.bottom)
+        let paddings = style.paddings(forSize: size)
+        let buttonSize = CGSize(
+            width: titleWidth + style.margins.left + style.margins.right,
+            height: titleHeight + style.margins.top + style.margins.bottom + paddings.top + paddings.bottom
+        )
 
         return buttonSize
     }

@@ -41,14 +41,14 @@ public final class InfoboxView: UIView {
     }()
 
     private lazy var primaryButton: UIButton = {
-        let button = Button(style: .default)
+        let button = Button(style: .default, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handlePrimaryButtonTap), for: .touchUpInside)
         return button
     }()
 
     private lazy var secondaryButton: UIButton = {
-        let button = Button(style: .flat)
+        let button = Button(style: .flat, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleSecondaryButtonTap), for: .touchUpInside)
         return button
@@ -95,7 +95,7 @@ public final class InfoboxView: UIView {
             primaryButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .mediumLargeSpacing),
             primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumSpacing),
+            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .smallSpacing),
             secondaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
         ])

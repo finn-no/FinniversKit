@@ -4,21 +4,25 @@
 
 import Foundation
 
-public extension Button {
-    public enum Size {
-        case normal
-        case small
-    }
+extension Button {
+    struct StyleSheet {
+        private let style: Style
+        private let size: Size
 
-    public enum Style {
-        case `default`
-        case callToAction
-        case destructive
-        case flat
-        case link
+        init(style: Style, size: Size) {
+            self.style = style
+            self.size = size
+        }
+
+        var font: UIFont {
+            switch style {
+            case .link: return .caption
+            default: return .title4
+            }
+        }
 
         var bodyColor: UIColor {
-            switch self {
+            switch style {
             case .default, .link, .flat: return .clear
             case .callToAction: return .primaryBlue
             case .destructive: return .cherry
@@ -26,28 +30,28 @@ public extension Button {
         }
 
         var borderWidth: CGFloat {
-            switch self {
+            switch style {
             case .default: return 2.0
             default: return 0.0
             }
         }
 
         var borderColor: UIColor? {
-            switch self {
+            switch style {
             case .default: return .secondaryBlue
             default: return nil
             }
         }
 
         var textColor: UIColor {
-            switch self {
+            switch style {
             case .default, .link, .flat: return .primaryBlue
             default: return .milk
             }
         }
 
         var highlightedBodyColor: UIColor? {
-            switch self {
+            switch style {
             case .callToAction: return .callToActionButtonHighlightedBodyColor
             case .destructive: return .destructiveButtonHighlightedBodyColor
             case .default: return .defaultButtonHighlightedBodyColor
@@ -56,14 +60,14 @@ public extension Button {
         }
 
         var highlightedBorderColor: UIColor? {
-            switch self {
+            switch style {
             case .default: return .primaryBlue
             default: return nil
             }
         }
 
         var highlightedTextColor: UIColor? {
-            switch self {
+            switch style {
             case .link: return .linkButtonHighlightedTextColor
             case .flat: return .flatButtonHighlightedTextColor
             default: return nil
@@ -71,52 +75,37 @@ public extension Button {
         }
 
         var disabledBodyColor: UIColor? {
-            switch self {
+            switch style {
             case .default, .link, .flat: return nil
             default: return .sardine
             }
         }
 
         var disabledBorderColor: UIColor? {
-            switch self {
+            switch style {
             case .default: return .sardine
             default: return nil
             }
         }
 
         var disabledTextColor: UIColor? {
-            switch self {
+            switch style {
             case .callToAction, .destructive: return nil
             default: return .sardine
             }
         }
 
         var margins: UIEdgeInsets {
-            switch self {
+            switch style {
             case .link: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
             default: return UIEdgeInsets(top: .mediumSpacing, left: .mediumLargeSpacing, bottom: .mediumSpacing, right: .mediumLargeSpacing)
             }
         }
 
-        func font(forSize size: Size) -> UIFont {
-            switch (self, size) {
-            case (.link, .normal):
-                return .caption
-            case (.link, .small):
-                return .detail
-            case (_, .normal):
-                return .title4
-            case (_, .small):
-                return .title5
-            }
-        }
-
-        func paddings(forSize size: Size) -> UIEdgeInsets {
-            switch size {
-            case .normal:
-                return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
-            case .small:
-                return .zero
+        var paddings: UIEdgeInsets {
+            switch style {
+            case .link, .flat: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
+            default: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
             }
         }
     }

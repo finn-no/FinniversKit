@@ -6,7 +6,7 @@ import FinniversKit
 
 struct ActionViewModel: ConsentActionViewModel {
     var text = "Med GDPR-forordningen (General Data Protection Regulation) har du rett til å vite hva selskaper vet om deg. Det inkluderer informasjon du har delt med dem og data de har samlet om din aktivitet. Her kan du laste ned en oversikt over alle dine data FINN.no har lagret."
-    var buttonStyle = Button.Style(.callToAction, size: .normal)
+    var buttonStyle: Button.Style = .callToAction
     var buttonTitle = "Last ned data"
 }
 
