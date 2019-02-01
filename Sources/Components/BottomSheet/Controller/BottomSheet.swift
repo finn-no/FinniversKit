@@ -36,6 +36,13 @@ extension BottomSheet {
 }
 
 public class BottomSheet: UIViewController {
+    public enum DraggableArea {
+        case everything
+        case navigationBar
+        case customRect(CGRect)
+    }
+
+    // MARK: - Public properties
 
     public var state: State {
         get { return transitionDelegate.presentationController?.state ?? .dismissed }
@@ -47,6 +54,7 @@ public class BottomSheet: UIViewController {
     private let rootViewController: UIViewController
     private let transitionDelegate: BottomSheetTransitioningDelegate
 
+    private let draggableArea: DraggableArea
     private let notchSize = CGSize(width: 25, height: 4)
     private let notch: UIView = {
         let view = UIView(frame: .zero)
@@ -66,9 +74,12 @@ public class BottomSheet: UIViewController {
 
     public init(rootViewController: UIViewController,
                 appWindow: UIWindow? = UIApplication.shared.delegate?.window ?? nil,
-                height: Height = .defaultFilterHeight) {
+                height: Height = .defaultFilterHeight,
+                draggableArea: DraggableArea = .everything
+                ) {
         self.rootViewController = rootViewController
         self.transitionDelegate = BottomSheetTransitioningDelegate(height: height)
+        self.draggableArea = draggableArea
         if #available(iOS 11.0, *) {
             self.bottomSafeAreaInset = appWindow?.safeAreaInsets.bottom ?? 0
         } else {
