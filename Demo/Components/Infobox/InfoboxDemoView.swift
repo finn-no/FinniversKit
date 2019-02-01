@@ -23,7 +23,7 @@ public class InfoboxDemoView: UIView {
         infoboxView.model = InfoboxDefaultData()
 
         NSLayoutConstraint.activate([
-            infoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+            infoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             infoboxView.centerXAnchor.constraint(equalTo: centerXAnchor),
             infoboxView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])

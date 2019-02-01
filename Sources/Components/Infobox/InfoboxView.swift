@@ -89,8 +89,8 @@ public final class InfoboxView: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
             detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
-            detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            detailLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            detailLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            detailLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
 
             primaryButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .mediumLargeSpacing),
             primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
