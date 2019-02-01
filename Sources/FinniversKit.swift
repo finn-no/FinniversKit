@@ -14,7 +14,7 @@ import Foundation
 }
 
 @objc public extension Bundle {
-    @objc static var finniversKit: Bundle {
+    static var finniversKit: Bundle {
         return FinniversKit.bundle
     }
 }
