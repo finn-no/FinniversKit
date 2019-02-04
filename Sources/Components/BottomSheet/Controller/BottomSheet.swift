@@ -46,16 +46,8 @@ public class BottomSheet: UIViewController {
 
     private let rootViewController: UIViewController
     private let transitionDelegate: BottomSheetTransitioningDelegate
-
-    private let notchSize = CGSize(width: 25, height: 4)
-    private let notch: UIView = {
-        let view = UIView(frame: .zero)
-        view.backgroundColor = .sardine
-        view.layer.cornerRadius = 2
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
+    private let notchHeight: CGFloat = 20
+    private let notch = Notch(withAutoLayout: true)
     private let cornerRadius: CGFloat = 16
 
     // Only necessary if iOS < 11.0
@@ -115,15 +107,53 @@ public class BottomSheet: UIViewController {
         rootViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            notch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            notch.topAnchor.constraint(equalTo: view.topAnchor, constant: .mediumSpacing),
-            notch.heightAnchor.constraint(equalToConstant: notchSize.height),
-            notch.widthAnchor.constraint(equalToConstant: notchSize.width),
+            notch.heightAnchor.constraint(equalToConstant: notchHeight),
+            notch.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            notch.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            notch.topAnchor.constraint(equalTo: view.topAnchor),
 
+            rootViewController.view.topAnchor.constraint(equalTo: notch.bottomAnchor),
             rootViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            rootViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             rootViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             rootViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomSafeAreaInset)
+        ])
+    }
+}
+
+private class Notch: UIView {
+
+    // MARK: - private properties
+
+    private let notchSize = CGSize(width: 25, height: 4)
+    private let notch: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .sardine
+        view.layer.cornerRadius = 2
+        return view
+    }()
+
+    // MARK: - Init
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    // MARK: - Setup
+
+    private func setup() {
+        addSubview(notch)
+
+        NSLayoutConstraint.activate([
+            notch.centerXAnchor.constraint(equalTo: centerXAnchor),
+            notch.centerYAnchor.constraint(equalTo: centerYAnchor),
+            notch.heightAnchor.constraint(equalToConstant: notchSize.height),
+            notch.widthAnchor.constraint(equalToConstant: notchSize.width)
         ])
     }
 }
