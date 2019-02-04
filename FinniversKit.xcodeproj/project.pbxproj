@@ -263,6 +263,15 @@
 		DAD0D492210737A30091DD4D /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D491210737A30091DD4D /* TextView.swift */; };
 		DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D493210739500091DD4D /* DescriptionView.swift */; };
 		DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6A55B21CA524B00837BFA /* CGPoint.swift */; };
+		F26852D621F7530A000978C8 /* UserAdsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D521F7530A000978C8 /* UserAdsListView.swift */; };
+		F26852D821F753A5000978C8 /* UserAdsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D721F753A5000978C8 /* UserAdsListHeaderView.swift */; };
+		F26852DA21F75435000978C8 /* UserAdsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D921F75435000978C8 /* UserAdsListViewCell.swift */; };
+		F26852DF21F755B6000978C8 /* UserAdsListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852DE21F755B6000978C8 /* UserAdsListViewDemoView.swift */; };
+		F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852E021F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift */; };
+		F26852F221FEFA97000978C8 /* UserAdsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852DB21F75457000978C8 /* UserAdsListViewModel.swift */; };
+		F26852F321FEFA9C000978C8 /* UserAdsListViewHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852EF21FEF9AB000978C8 /* UserAdsListViewHeaderModel.swift */; };
+		F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */; };
+		F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -562,6 +571,15 @@
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		DAE6A55B21CA524B00837BFA /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		F26852D521F7530A000978C8 /* UserAdsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListView.swift; sourceTree = "<group>"; };
+		F26852D721F753A5000978C8 /* UserAdsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListHeaderView.swift; sourceTree = "<group>"; };
+		F26852D921F75435000978C8 /* UserAdsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewCell.swift; sourceTree = "<group>"; };
+		F26852DB21F75457000978C8 /* UserAdsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewModel.swift; sourceTree = "<group>"; };
+		F26852DE21F755B6000978C8 /* UserAdsListViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewDemoView.swift; sourceTree = "<group>"; };
+		F26852E021F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
+		F26852EF21FEF9AB000978C8 /* UserAdsListViewHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewHeaderModel.swift; sourceTree = "<group>"; };
+		F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewNewAdCell.swift; sourceTree = "<group>"; };
+		F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewSeeAllAdsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -923,6 +941,7 @@
 				444245FA2137D60400D42AB8 /* FavoriteFolders */,
 				44A149E421377C7B0053D5F7 /* SavedSearches */,
 				441FE441209A2F2C00B04EF1 /* Notifications */,
+				F26852D121F7525B000978C8 /* UserAds */,
 			);
 			path = ListViews;
 			sourceTree = "<group>";
@@ -1833,6 +1852,7 @@
 		CF8F023821DCD481004C4042 /* ListViews */ = {
 			isa = PBXGroup;
 			children = (
+				F26852DD21F754A0000978C8 /* UserAds */,
 				CF8F023D21DCD510004C4042 /* FavoriteFolders */,
 				CF8F023C21DCD4E6004C4042 /* Favorites */,
 				CF8F023A21DCD4B8004C4042 /* Generic */,
@@ -2096,6 +2116,53 @@
 			path = "Core Graphics";
 			sourceTree = "<group>";
 		};
+		F26852D121F7525B000978C8 /* UserAds */ = {
+			isa = PBXGroup;
+			children = (
+				F26852D221F7528D000978C8 /* Cell */,
+				F26852D321F75296000978C8 /* ListView */,
+				F26852D421F7529F000978C8 /* Model */,
+			);
+			path = UserAds;
+			sourceTree = "<group>";
+		};
+		F26852D221F7528D000978C8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */,
+				F26852D921F75435000978C8 /* UserAdsListViewCell.swift */,
+				F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F26852D321F75296000978C8 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				F26852D721F753A5000978C8 /* UserAdsListHeaderView.swift */,
+				F26852D521F7530A000978C8 /* UserAdsListView.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		F26852D421F7529F000978C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F26852EF21FEF9AB000978C8 /* UserAdsListViewHeaderModel.swift */,
+				F26852DB21F75457000978C8 /* UserAdsListViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F26852DD21F754A0000978C8 /* UserAds */ = {
+			isa = PBXGroup;
+			children = (
+				F26852DE21F755B6000978C8 /* UserAdsListViewDemoView.swift */,
+				F26852E021F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift */,
+			);
+			path = UserAds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2327,6 +2394,7 @@
 				4458701D213FA353009187BE /* RegisterViewDefaultData.swift in Sources */,
 				146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */,
 				44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */,
+				F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */,
 				444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				44AFCE4A215839FB005984DB /* LoadingIndicatorViewDemoView.swift in Sources */,
 				432CE09E21131B4800F01EC5 /* RoundedImageViewDemoView.swift in Sources */,
@@ -2370,6 +2438,7 @@
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
+				F26852DF21F755B6000978C8 /* UserAdsListViewDemoView.swift in Sources */,
 				43EA9793219965F3003A548A /* SoldViewDemoView.swift in Sources */,
 				CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */,
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
@@ -2415,8 +2484,10 @@
 				55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */,
 				441FE432209A24E500B04EF1 /* AdsGridViewLayoutConfiguration.swift in Sources */,
 				431875C1211180F100D71723 /* ReviewProfileCell.swift in Sources */,
+				F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */,
 				082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */,
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
+				F26852D821F753A5000978C8 /* UserAdsListHeaderView.swift in Sources */,
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
@@ -2444,6 +2515,7 @@
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
+				F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */,
 				DA8EF1242164E7AF0028740C /* ConsentToggleView.swift in Sources */,
 				444246032137D60400D42AB8 /* FavoriteFoldersListViewModel.swift in Sources */,
 				DAAAC8FD21C14FEE0071B028 /* FireworksView.swift in Sources */,
@@ -2479,7 +2551,9 @@
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
 				08D70A1B21832901003E2222 /* UIEdgeInsetsExtensions.swift in Sources */,
+				F26852F221FEFA97000978C8 /* UserAdsListViewModel.swift in Sources */,
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
+				F26852F321FEFA9C000978C8 /* UserAdsListViewHeaderModel.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
@@ -2503,10 +2577,12 @@
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */,
 				CFE43E4C219B13B400D3D5F7 /* FrontPageViewModel.swift in Sources */,
+				F26852D621F7530A000978C8 /* UserAdsListView.swift in Sources */,
 				DAB7FAAB21B690DD00BF8CC6 /* BottomSheetInteractionController.swift in Sources */,
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
+				F26852DA21F75435000978C8 /* UserAdsListViewCell.swift in Sources */,
 				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
 				08D70A19218328EB003E2222 /* IconTitleTableViewCell.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
