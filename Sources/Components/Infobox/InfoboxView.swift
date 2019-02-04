@@ -66,17 +66,11 @@ public final class InfoboxView: UIView {
         setup()
     }
 
-    // MARK: - Overrides
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.cornerRadius = 8
-    }
-
     // MARK: - Setup
 
     private func setup() {
         backgroundColor = .ice
+        layer.cornerRadius = 8
 
         addSubview(titleLabel)
         addSubview(detailLabel)
