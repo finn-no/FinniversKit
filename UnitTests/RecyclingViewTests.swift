@@ -54,4 +54,8 @@ class RecyclingViewTests: FBSnapshotTestCase {
     func testSettingsView() {
         snapshot(.settingsView)
     }
+
+    func testUserAds() {
+        snapshot(.userAds)
+    }
 }

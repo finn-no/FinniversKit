@@ -100,6 +100,7 @@ public enum RecyclingViews: String, CaseIterable {
     case marketsGridView
     case adsGridView
     case settingsView
+    case userAds
 
     public var viewController: UIViewController {
         switch self {
@@ -117,6 +118,8 @@ public enum RecyclingViews: String, CaseIterable {
             return DemoViewController<AdsGridViewDemoView>()
         case .settingsView:
             return DemoViewController<SettingsViewDemoView>()
+        case .userAds:
+            return DemoViewController<UserAdsListViewDemoView>()
         }
     }
 }
