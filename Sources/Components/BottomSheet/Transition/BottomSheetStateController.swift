@@ -36,6 +36,7 @@ class BottomSheetStateController {
     }
 }
 
+
 private extension BottomSheetStateController {
     func nextState(forTranslation translation: CGPoint, withCurrent current: BottomSheet.State, usingThreshold threshold: CGFloat) -> BottomSheet.State {
         switch current {
