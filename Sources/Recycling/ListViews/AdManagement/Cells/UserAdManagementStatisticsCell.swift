@@ -14,7 +14,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
     }()
     var separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .sardine
         return view
     }()
 
@@ -53,8 +53,10 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
         contentView.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
+        let hairLineConstant = 1.0/UIScreen.main.scale
+
         NSLayoutConstraint.activate(
-            [ separatorView.heightAnchor.constraint(equalToConstant: 0.5),
+            [ separatorView.heightAnchor.constraint(equalToConstant: hairLineConstant),
               separatorView.topAnchor.constraint(equalTo: contentView.topAnchor),
               separatorView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
               separatorView.rightAnchor.constraint(equalTo: contentView.rightAnchor),

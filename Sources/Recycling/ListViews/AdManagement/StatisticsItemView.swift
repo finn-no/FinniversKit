@@ -14,8 +14,8 @@ class StatisticsItemView: UIView {
     lazy var valueLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 1
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 28)
-        label.textColor = .black
+        label.font = UIFont.title2 // subject to change medium/26 seems closer to the sketches
+        label.textColor = .licorice
         label.textAlignment = .center
         return label
     }()
@@ -23,21 +23,21 @@ class StatisticsItemView: UIView {
     lazy var textLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
-        label.font = UIFont(name: "HelveticaNeue", size: 14)
-        label.textColor = .gray
+        label.font = UIFont.caption
+        label.textColor = .licorice
         label.textAlignment = .center
         return label
     }()
 
     lazy var leftSeparator: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .black
+        view.backgroundColor = .sardine
         return view
     }()
-    
+
     lazy var rightSeparator: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .black
+        view.backgroundColor = .sardine
         return view
     }()
 
@@ -51,17 +51,23 @@ class StatisticsItemView: UIView {
     var itemModel: StatisticsItemModel? {
         didSet {
             guard let model = itemModel else { return }
-            valueLabel.text = model.valueString
-            textLabel.text = model.text
+
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.locale = Locale(identifier: "nb_NO")
+            let valueString = formatter.string(for: model.value) ?? "\(model.value)"
+
+            valueLabel.attributedText = NSAttributedString(string: valueString)
+            textLabel.attributedText = NSAttributedString(string: model.text)
 
             var image: UIImage? {
                 switch model.type {
                 case .email:
-                    return UIImage(named: "mailAd")
+                    return UIImage(named: .favoriteAdd)
                 case .seen:
-                    return UIImage(named: "seenAd")
+                    return UIImage(named: .favoriteAdd)
                 case .favourited:
-                    return UIImage(named: "favoriteAd")
+                    return UIImage(named: .favoriteAdd)
                 }
             }
             imageView.image = image
@@ -80,30 +86,33 @@ class StatisticsItemView: UIView {
         addSubview(rightSeparator)
         rightSeparator.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate(
-            [ imageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-              imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-              imageView.heightAnchor.constraint(equalToConstant: 50),
-              imageView.widthAnchor.constraint(equalToConstant: 50),
+        let hairLineConstant = 1.0/UIScreen.main.scale
 
-              valueLabel.leftAnchor.constraint(equalTo: leftAnchor),
-              valueLabel.rightAnchor.constraint(equalTo: rightAnchor),
-              valueLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 0),
-              valueLabel.widthAnchor.constraint(equalTo: widthAnchor),
+        NSLayoutConstraint.activate(
+            [ imageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+              imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+              imageView.heightAnchor.constraint(equalToConstant: 40),
+              imageView.widthAnchor.constraint(equalToConstant: 40),
+
+              valueLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+              valueLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 6),
+              valueLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.mediumLargeSpacing),
 
               textLabel.centerXAnchor.constraint(equalTo: valueLabel.centerXAnchor),
-              textLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: 4),
-              textLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -32),
+              textLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor),
+              textLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
+              textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
 
               leftSeparator.centerYAnchor.constraint(equalTo: centerYAnchor),
               leftSeparator.leftAnchor.constraint(equalTo: leftAnchor),
-              leftSeparator.widthAnchor.constraint(equalToConstant: 0.5),
-              leftSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -32),
+              leftSeparator.widthAnchor.constraint(equalToConstant: hairLineConstant),
+              leftSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.veryLargeSpacing),
 
               rightSeparator.centerYAnchor.constraint(equalTo: centerYAnchor),
               rightSeparator.rightAnchor.constraint(equalTo: rightAnchor),
-              rightSeparator.widthAnchor.constraint(equalToConstant: 0.5),
-              rightSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -32) ]
+              rightSeparator.widthAnchor.constraint(equalToConstant: hairLineConstant),
+              rightSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.veryLargeSpacing)
+              ]
         )
     }
 }

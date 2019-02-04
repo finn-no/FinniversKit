@@ -11,13 +11,13 @@ public struct StatisticsItemModel {
     }
 
     // Annoying Swift shortcoming for structs
-    public init(type: StatisticsItemType, valueString: String, text: String) {
+    public init(type: StatisticsItemType, value: Int, text: String) {
         self.type = type
-        self.valueString = valueString
+        self.value = value
         self.text = text
     }
 
     public var type: StatisticsItemType
-    public var valueString: String
+    public var value: Int
     public var text: String
 }
