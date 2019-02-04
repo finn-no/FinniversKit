@@ -1,13 +1,23 @@
+//
+//  Copyright © FINN.no AS. All rights reserved.
+//
 import Foundation
 
-struct StatisticsItemModel {
-    enum StatisticsItemType {
+public struct StatisticsItemModel {
+    public enum StatisticsItemType {
         case seen
         case favourited
         case email
     }
 
-    var type: StatisticsItemType
-    var valueString: String
-    var text: String
+    // Annoying Swift shortcoming for structs
+    public init(type: StatisticsItemType, valueString: String, text: String) {
+        self.type = type
+        self.valueString = valueString
+        self.text = text
+    }
+
+    public var type: StatisticsItemType
+    public var valueString: String
+    public var text: String
 }

@@ -1,7 +1,9 @@
-import UIKit
+//
+//  Copyright © FINN.no AS. All rights reserved.
+//
 
-class UserAdManagementStatisticsCell: UITableViewCell {
-    var itemModels = [StatisticsItemModel]() {
+public class UserAdManagementStatisticsCell: UITableViewCell {
+    public var itemModels = [StatisticsItemModel]() {
         didSet { updateStackViewContent() }
     }
     var stackView: UIStackView = {

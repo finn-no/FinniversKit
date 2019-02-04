@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS. All rights reserved.
+//
+
 import UIKit
 
 class StatisticsItemView: UIView {
