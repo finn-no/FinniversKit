@@ -143,7 +143,7 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case firstSection: return 0.1 // Return 0.1 so we dont show a eperator if there's no section/ads to show.
+        case firstSection: return 0.1 // Return 0.1 so we dont show a seperator if there's no section/ads to show.
         case lastSection: return 0.1
         default: return UserAdsListView.sectionHeaderHeight
         }
