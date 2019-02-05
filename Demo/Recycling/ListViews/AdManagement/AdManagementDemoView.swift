@@ -23,6 +23,10 @@ public class AdManagementDemoView: UIView {
         setup()
     }
 
+    public override func didMoveToSuperview() {
+        tableView.reloadData()
+    }
+
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {

@@ -28,16 +28,10 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
         setup()
     }
 
-    public override func prepareForReuse() {
+    private func updateStackViewContent() {
         for oldSubview in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(oldSubview)
         }
-    }
-
-    private func updateStackViewContent() {
-//        for oldSubview in stackView.arrangedSubviews {
-//            stackView.removeArrangedSubview(oldSubview)
-//        }
         let lastIndex = itemModels.count-1
 
         for (index, model) in itemModels.enumerated() {
