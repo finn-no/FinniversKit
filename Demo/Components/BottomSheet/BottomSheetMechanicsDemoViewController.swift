@@ -15,7 +15,12 @@ class RootViewController: UIViewController {
     // MARK: - Public properties
 
     weak var delegate: RootViewControllerDelegate?
-    lazy var draggableLabelFrame = CGRect(origin: CGPoint(x: 0, y: 150), size: CGSize(width: view.frame.width, height: 44))
+    var draggableLabelFrame: CGRect {
+        return CGRect(
+            origin: CGPoint(x: 0, y: 150),
+            size: CGSize(width: view.frame.width, height: 44)
+        )
+    }
 
     // MARK: - Private properties
 
