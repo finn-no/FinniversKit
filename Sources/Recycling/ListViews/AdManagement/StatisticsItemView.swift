@@ -4,15 +4,17 @@
 
 import UIKit
 
-class StatisticsItemView: UIView {
-    lazy var imageView: UIImageView = {
+public class StatisticsItemView: UIView {
+    private lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
-        return UIImageView()
+        return view
     }()
 
-    lazy var valueLabel: UILabel = {
+    private lazy var valueLabel: UILabel = {
         let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.font = UIFont.title2 // subject to change medium/26 seems closer to the sketches
         label.textColor = .licorice
@@ -20,8 +22,9 @@ class StatisticsItemView: UIView {
         return label
     }()
 
-    lazy var textLabel: UILabel = {
+    private lazy var textLabel: UILabel = {
         let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.font = UIFont.caption
         label.textColor = .licorice
@@ -29,14 +32,14 @@ class StatisticsItemView: UIView {
         return label
     }()
 
-    lazy var leftSeparator: UIView = {
-        let view = UIView(frame: .zero)
+    private lazy var leftSeparator: UIView = {
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = .sardine
         return view
     }()
 
-    lazy var rightSeparator: UIView = {
-        let view = UIView(frame: .zero)
+    private lazy var rightSeparator: UIView = {
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = .sardine
         return view
     }()
@@ -48,7 +51,7 @@ class StatisticsItemView: UIView {
         didSet { rightSeparator.isHidden = !shouldShowRightSeparator }
     }
 
-    var itemModel: StatisticsItemModel? {
+    public var itemModel: StatisticsItemModel? {
         didSet {
             guard let model = itemModel else { return }
 
@@ -76,17 +79,12 @@ class StatisticsItemView: UIView {
 
     func setup() {
         addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(valueLabel)
-        valueLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(textLabel)
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(leftSeparator)
-        leftSeparator.translatesAutoresizingMaskIntoConstraints = false
         addSubview(rightSeparator)
-        rightSeparator.translatesAutoresizingMaskIntoConstraints = false
 
-        let hairLineConstant = 1.0/UIScreen.main.scale
+        let hairLineSize = 1.0/UIScreen.main.scale
 
         NSLayoutConstraint.activate(
             [ imageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
@@ -105,12 +103,12 @@ class StatisticsItemView: UIView {
 
               leftSeparator.centerYAnchor.constraint(equalTo: centerYAnchor),
               leftSeparator.leftAnchor.constraint(equalTo: leftAnchor),
-              leftSeparator.widthAnchor.constraint(equalToConstant: hairLineConstant),
+              leftSeparator.widthAnchor.constraint(equalToConstant: hairLineSize),
               leftSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.veryLargeSpacing),
 
               rightSeparator.centerYAnchor.constraint(equalTo: centerYAnchor),
               rightSeparator.rightAnchor.constraint(equalTo: rightAnchor),
-              rightSeparator.widthAnchor.constraint(equalToConstant: hairLineConstant),
+              rightSeparator.widthAnchor.constraint(equalToConstant: hairLineSize),
               rightSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.veryLargeSpacing)
               ]
         )

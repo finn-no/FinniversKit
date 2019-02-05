@@ -5,13 +5,15 @@
 import FinniversKit
 
 public class AdManagementDemoView: UIView {
+    private let estimatedRowHeight: CGFloat = 200
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
         tableView.dataSource = self
         tableView.register(UserAdManagementStatisticsCell.self)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .ice
-        tableView.estimatedRowHeight = 200
+        tableView.estimatedRowHeight = estimatedRowHeight
         tableView.rowHeight = UITableView.automaticDimension
         return tableView
     }()

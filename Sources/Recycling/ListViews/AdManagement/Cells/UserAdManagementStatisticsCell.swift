@@ -6,14 +6,14 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
     public var itemModels = [StatisticsItemModel]() {
         didSet { updateStackViewContent() }
     }
-    var stackView: UIStackView = {
-        let view = UIStackView(frame: .zero)
+    private var stackView: UIStackView = {
+        let view = UIStackView(withAutoLayout: true)
         view.alignment = .fill
         view.distribution = .fillEqually
         return view
     }()
-    var separatorView: UIView = {
-        let view = UIView()
+    private var separatorView: UIView = {
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = .sardine
         return view
     }()
@@ -28,10 +28,16 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
         setup()
     }
 
-    private func updateStackViewContent() {
+    public override func prepareForReuse() {
         for oldSubview in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(oldSubview)
         }
+    }
+
+    private func updateStackViewContent() {
+//        for oldSubview in stackView.arrangedSubviews {
+//            stackView.removeArrangedSubview(oldSubview)
+//        }
         let lastIndex = itemModels.count-1
 
         for (index, model) in itemModels.enumerated() {
@@ -49,14 +55,12 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
 
     func setup() {
         contentView.addSubview(separatorView)
-        separatorView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
 
-        let hairLineConstant = 1.0/UIScreen.main.scale
+        let hairLineSize = 1.0/UIScreen.main.scale
 
         NSLayoutConstraint.activate(
-            [ separatorView.heightAnchor.constraint(equalToConstant: hairLineConstant),
+            [ separatorView.heightAnchor.constraint(equalToConstant: hairLineSize),
               separatorView.topAnchor.constraint(equalTo: contentView.topAnchor),
               separatorView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
               separatorView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
