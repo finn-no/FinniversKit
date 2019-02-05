@@ -32,6 +32,7 @@ public enum ComponentViews: String, CaseIterable {
     case textField
     case toast
     case switchView
+    case infobox
     case inlineConsent
     case consentTransparencyInfo
     case bannerTransparency
@@ -62,6 +63,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<ToastDemoView>()
         case .switchView:
             return DemoViewController<SwitchViewDemoView>()
+        case .infobox:
+            return DemoViewController<InfoboxDemoView>()
         case .inlineConsent:
             return DemoViewController<InlineConsentDemoView>()
         case .consentTransparencyInfo:
