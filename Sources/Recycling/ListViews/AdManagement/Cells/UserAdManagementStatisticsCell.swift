@@ -47,7 +47,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
         }
     }
 
-    func setup() {
+    private func setup() {
         contentView.addSubview(separatorView)
         contentView.addSubview(stackView)
 

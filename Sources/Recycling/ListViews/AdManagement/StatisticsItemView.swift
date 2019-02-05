@@ -44,10 +44,10 @@ public class StatisticsItemView: UIView {
         return view
     }()
 
-    var shouldShowLeftSeparator: Bool = false {
+    public var shouldShowLeftSeparator: Bool = false {
         didSet { leftSeparator.isHidden = !shouldShowLeftSeparator }
     }
-    var shouldShowRightSeparator: Bool = false {
+    public var shouldShowRightSeparator: Bool = false {
         didSet { rightSeparator.isHidden = !shouldShowRightSeparator }
     }
 
