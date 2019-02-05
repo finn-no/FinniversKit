@@ -74,16 +74,19 @@ public class StatisticsItemView: UIView {
                 }
             }
             imageView.image = image
+            setup()
         }
     }
 
-    func setup() {
+    private func setup() {
         addSubview(imageView)
         addSubview(valueLabel)
         addSubview(textLabel)
         addSubview(leftSeparator)
         addSubview(rightSeparator)
+    }
 
+    func setupConstraints() {
         let hairLineSize = 1.0/UIScreen.main.scale
 
         NSLayoutConstraint.activate(

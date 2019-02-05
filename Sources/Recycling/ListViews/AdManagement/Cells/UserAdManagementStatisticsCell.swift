@@ -43,7 +43,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
             if lastIndex == 1 { itemView.shouldShowLeftSeparator = index == lastIndex }
             if lastIndex > 2 { itemView.shouldShowRightSeparator = index == lastIndex-1 }
             stackView.addArrangedSubview(itemView)
-            itemView.setup()
+            itemView.setupConstraints()
         }
     }
 
