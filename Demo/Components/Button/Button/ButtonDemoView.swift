@@ -15,6 +15,8 @@ public class ButtonDemoView: UIView {
 
     private func setup() {
         let normalButton = Button(style: .default)
+        let smallNormalButton = Button(style: .default, size: .small)
+
         let callToActionButton = Button(style: .callToAction)
         let destructiveButton = Button(style: .destructive)
         let flatButton = Button(style: .flat)
@@ -30,8 +32,11 @@ public class ButtonDemoView: UIView {
         let disabledLinkButton = Button(style: .link)
 
         normalButton.setTitle("Default button", for: .normal)
+        smallNormalButton.setTitle("Small default button", for: .normal)
+
         callToActionButton.setTitle("Call to action button", for: .normal)
         destructiveButton.setTitle("Destructive button", for: .normal)
+
         flatButton.setTitle("Flat button", for: .normal)
         linkButton.setTitle("Link button", for: .normal)
 
@@ -51,8 +56,11 @@ public class ButtonDemoView: UIView {
         disabledLinkButton.isEnabled = false
 
         normalButton.translatesAutoresizingMaskIntoConstraints = false
+        smallNormalButton.translatesAutoresizingMaskIntoConstraints = false
+
         callToActionButton.translatesAutoresizingMaskIntoConstraints = false
         destructiveButton.translatesAutoresizingMaskIntoConstraints = false
+
         flatButton.translatesAutoresizingMaskIntoConstraints = false
         linkButton.translatesAutoresizingMaskIntoConstraints = false
 
@@ -66,8 +74,11 @@ public class ButtonDemoView: UIView {
         disabledLinkButton.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(normalButton)
+        addSubview(smallNormalButton)
+
         addSubview(callToActionButton)
         addSubview(destructiveButton)
+
         addSubview(flatButton)
         addSubview(linkButton)
 
@@ -85,7 +96,10 @@ public class ButtonDemoView: UIView {
             normalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             normalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
-            callToActionButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .mediumLargeSpacing),
+            smallNormalButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .mediumLargeSpacing),
+            smallNormalButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            callToActionButton.topAnchor.constraint(equalTo: smallNormalButton.bottomAnchor, constant: .mediumLargeSpacing),
             callToActionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             callToActionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
@@ -121,7 +135,7 @@ public class ButtonDemoView: UIView {
             disabledFlatButton.topAnchor.constraint(equalTo: disabledDestructiveButton.bottomAnchor, constant: .mediumLargeSpacing),
             disabledFlatButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .mediumLargeSpacing),
+            disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .mediumSpacing),
             disabledLinkButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

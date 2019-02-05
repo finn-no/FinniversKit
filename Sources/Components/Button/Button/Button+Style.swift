@@ -5,6 +5,11 @@
 import Foundation
 
 public extension Button {
+    public enum Size {
+        case normal
+        case small
+    }
+
     public enum Style {
         case `default`
         case callToAction
@@ -12,16 +17,9 @@ public extension Button {
         case flat
         case link
 
-        var font: UIFont {
-            switch self {
-            case .link: return .caption
-            default: return .title4
-            }
-        }
-
         var bodyColor: UIColor {
             switch self {
-            case .default, .link, .flat: return .milk
+            case .default, .link, .flat: return .clear
             case .callToAction: return .primaryBlue
             case .destructive: return .cherry
             }
@@ -100,10 +98,25 @@ public extension Button {
             }
         }
 
-        var paddings: UIEdgeInsets {
-            switch self {
-            case .link, .flat: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
-            default: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
+        func font(forSize size: Size) -> UIFont {
+            switch (self, size) {
+            case (.link, .normal):
+                return .caption
+            case (.link, .small):
+                return .detail
+            case (_, .normal):
+                return .title4
+            case (_, .small):
+                return .title5
+            }
+        }
+
+        func paddings(forSize size: Size) -> UIEdgeInsets {
+            switch size {
+            case .normal:
+                return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
+            case .small:
+                return .zero
             }
         }
     }
