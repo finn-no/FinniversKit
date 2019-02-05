@@ -19,14 +19,18 @@ class BottomSheetGestureController {
     weak var delegate: BottomSheetGestureControllerDelegate?
 
     private var initialPosition: CGPoint = .zero
-    private lazy var panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
-    private let presentedView: UIView
+    private lazy var panGesture: BottomSheetPanGestureRecognizer = {
+        let panGesture = BottomSheetPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
+        panGesture.draggableRect = bottomSheet.draggableRect
+        return panGesture
+    }()
+    private let bottomSheet: BottomSheet
     private let containerView: UIView
 
-    init(presentedView: UIView, containerView: UIView) {
-        self.presentedView = presentedView
+    init(bottomSheet: BottomSheet, containerView: UIView) {
+        self.bottomSheet = bottomSheet
         self.containerView = containerView
-        presentedView.addGestureRecognizer(panGesture)
+        bottomSheet.view.addGestureRecognizer(panGesture)
     }
 }
 
@@ -48,6 +52,21 @@ private extension BottomSheetGestureController {
 
         default:
             return
+        }
+    }
+}
+
+private class BottomSheetPanGestureRecognizer: UIPanGestureRecognizer {
+    var draggableRect: CGRect?
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+        guard let firstTouch = touches.first, let view = view, let draggableRect = draggableRect else {
+            return super.touchesBegan(touches, with: event)
+        }
+
+        let touchPoint = firstTouch.location(in: view)
+        if draggableRect.contains(touchPoint) {
+            super.touchesBegan(touches, with: event)
         }
     }
 }

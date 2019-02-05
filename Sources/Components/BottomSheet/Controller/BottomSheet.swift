@@ -36,16 +36,39 @@ extension BottomSheet {
 }
 
 public class BottomSheet: UIViewController {
+    public enum DraggableArea {
+        case everything
+        case navigationBar
+        case customRect(CGRect)
+    }
+
+    // MARK: - Public properties
 
     public var state: State {
         get { return transitionDelegate.presentationController?.state ?? .dismissed }
         set { transitionDelegate.presentationController?.state = newValue }
     }
 
+    var draggableRect: CGRect? {
+        switch draggableArea {
+        case .everything:
+            return nil
+        case .navigationBar:
+            guard let navigationController = rootViewController as? UINavigationController else { return nil }
+            let navBarFrame = navigationController.navigationBar.bounds
+            let draggableBounds = CGRect(origin: navBarFrame.origin, size: CGSize(width: navBarFrame.width, height: navBarFrame.height + notchHeight))
+            return draggableBounds
+        case .customRect(let customRect):
+            return CGRect(origin: CGPoint(x: customRect.minX, y: customRect.minY + notchHeight), size: customRect.size)
+        }
+    }
+
     // MARK: - Private properties
 
     private let rootViewController: UIViewController
     private let transitionDelegate: BottomSheetTransitioningDelegate
+
+    private let draggableArea: DraggableArea
     private let notchHeight: CGFloat = 20
     private let notch = Notch(withAutoLayout: true)
     private let cornerRadius: CGFloat = 16
@@ -58,9 +81,12 @@ public class BottomSheet: UIViewController {
 
     public init(rootViewController: UIViewController,
                 appWindow: UIWindow? = UIApplication.shared.delegate?.window ?? nil,
-                height: Height = .defaultFilterHeight) {
+                height: Height = .defaultFilterHeight,
+                draggableArea: DraggableArea = .everything
+                ) {
         self.rootViewController = rootViewController
         self.transitionDelegate = BottomSheetTransitioningDelegate(height: height)
+        self.draggableArea = draggableArea
         if #available(iOS 11.0, *) {
             self.bottomSafeAreaInset = appWindow?.safeAreaInsets.bottom ?? 0
         } else {
