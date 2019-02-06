@@ -141,10 +141,6 @@ public final class FrontPageView: UIView {
         setupFrames()
     }
 
-    public func invalidateLayout() {
-        adsGridView.invalidateLayout()
-    }
-
     public func scrollToTop() {
         adsGridView.scrollToTop()
     }
