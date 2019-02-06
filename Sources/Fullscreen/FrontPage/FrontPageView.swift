@@ -58,6 +58,8 @@ public final class FrontPageView: UIView {
 
     private var keyValueObservation: NSKeyValueObservation?
 
+    private var boundsForCurrentSubviewSetup = CGRect.zero
+
     // MARK: - Init
 
     public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate & AdsGridViewDataSource & InlineConsentViewDelegate) {
@@ -92,6 +94,8 @@ public final class FrontPageView: UIView {
         if didSetupView == false {
             setup()
             didSetupView = true
+        } else if !boundsForCurrentSubviewSetup.equalTo(bounds) {
+            setupFrames()
         }
     }
 
@@ -201,6 +205,8 @@ public final class FrontPageView: UIView {
         headerView.frame.size.height = height
         adsRetryView.frame.origin = CGPoint(x: 0, y: headerView.frame.height + .veryLargeSpacing)
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
+        boundsForCurrentSubviewSetup = bounds
+        adsGridView.invalidateLayout()
     }
 
     private func updateHeaderTitle() {
