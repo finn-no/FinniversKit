@@ -49,7 +49,16 @@ public struct AdFactory {
             let subtitle = subtitles[dataIndex]
             let icon = UIImage(named: .car)
             let price = prices[dataIndex]
-            return Ad(imagePath: imageSource.path, imageSize: imageSource.size, iconImage: icon, title: title, subtitle: subtitle, accessory: index % 2 == 0 ? "Totalpris \(price)" : nil, imageText: price, isFavorite: false, favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
+            return Ad(
+                imagePath: imageSource.path,
+                imageSize: imageSource.size,
+                iconImage: icon,
+                title: title,
+                subtitle: subtitle,
+                accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
+                imageText: price,
+                isFavorite: false,
+                favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
     }
 
