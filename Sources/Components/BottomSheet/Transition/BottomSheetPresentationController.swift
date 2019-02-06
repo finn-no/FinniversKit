@@ -52,12 +52,12 @@ class BottomSheetPresentationController: UIPresentationController {
     }
 
     override func presentationTransitionWillBegin() {
-        guard let containerView = containerView, let presentedView = presentedView else { return }
+        guard let containerView = containerView, let bottomSheet = presentedViewController as? BottomSheet else { return }
         setupDimView(dimView, inContainerView: containerView)
-        setupPresentedView(presentedView, inContainerView: containerView)
+        setupPresentedView(bottomSheet.view, inContainerView: containerView)
         // Setup controller
         stateController.frame = containerView.bounds
-        gestureController = BottomSheetGestureController(presentedView: presentedView, containerView: containerView)
+        gestureController = BottomSheetGestureController(bottomSheet: bottomSheet, containerView: containerView)
         gestureController?.delegate = interactionController
         interactionController.setup(with: constraint)
         interactionController.stateController = stateController

@@ -80,6 +80,10 @@ public class UserAdsListView: UIView {
 
     // MARK: - Public
 
+    public func reloadData() {
+        tableView.reloadData()
+    }
+
     public func insertRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation) {
         tableView.insertRows(at: indexPaths, with: animation)
     }
@@ -90,6 +94,14 @@ public class UserAdsListView: UIView {
 
     public func reloadRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation) {
         tableView.reloadRows(at: indexPaths, with: animation)
+    }
+
+    public func scrollToTop() {
+        if #available(iOS 11.0, *) {
+            tableView.setContentOffset(CGPoint(x: 0, y: -tableView.adjustedContentInset.top), animated: true)
+        } else {
+            tableView.setContentOffset(CGPoint(x: 0, y: -tableView.contentInset.top), animated: true)
+        }
     }
 }
 
