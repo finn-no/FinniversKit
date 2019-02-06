@@ -13,11 +13,22 @@ public protocol MarketsGridViewDataSource: class {
     func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel
 }
 
+private class MarketsFlowLayout: UICollectionViewFlowLayout {
+    override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
+        let context = super.invalidationContext(forBoundsChange: newBounds)
+        if let context = context as? UICollectionViewFlowLayoutInvalidationContext, let collectionView = collectionView, !context.invalidateFlowLayoutDelegateMetrics {
+            let hasChangedWidth = newBounds.width != collectionView.bounds.width
+            context.invalidateFlowLayoutDelegateMetrics = hasChangedWidth
+        }
+        return context
+    }
+}
+
 public class MarketsGridView: UIView {
     // MARK: - Internal properties
 
     @objc private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: MarketsFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
