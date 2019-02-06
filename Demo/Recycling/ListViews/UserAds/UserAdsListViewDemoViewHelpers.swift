@@ -52,10 +52,11 @@ public struct UserAdsFactory {
 
     public static func createAds() -> [(header: UserAdHeaderCell, ads: [UserAdCell])] {
         let newAd = createNewAd()
+        let ongoingAds = createOngoingAds()
         let activeAds = createActiveAds()
         let inactiveAds = createInactiveAds()
         let seeAllAds = createSeeAllAds()
-        return [newAd, activeAds, inactiveAds, seeAllAds]
+        return [newAd, ongoingAds, activeAds, inactiveAds, seeAllAds]
     }
 
     private static func createNewAd() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
@@ -64,9 +65,25 @@ public struct UserAdsFactory {
         return (header: header, ads: ads)
     }
 
+    private static func createOngoingAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
+        var ongoingAds = [UserAdCell]()
+        for index in 0 ... 0 {
+            let imageSource = imageSources[index]
+            let title = titles[index]
+            let price = prices[index]
+            let detail = details[index]
+            let status = statuses[index]
+            ongoingAds.append(UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size,
+                                         title: title, price: price, detail: detail, status: status))
+        }
+
+        let header = UserAdHeaderCell(title: "PÅBEGYNTE ANNONSER (\(ongoingAds.count))", buttonTitle: "Vis alle")
+        return (header: header, ads: ongoingAds)
+    }
+
     private static func createActiveAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
         var activeAds = [UserAdCell]()
-        for index in 0 ... 2 {
+        for index in 1 ... 2 {
             let imageSource = imageSources[index]
             let title = titles[index]
             let price = prices[index]
@@ -75,13 +92,14 @@ public struct UserAdsFactory {
             activeAds.append(UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: title,
                                         price: price, detail: detail, status: status))
         }
+
         let header = UserAdHeaderCell(title: "AKTIVE ANNONSER (\(activeAds.count))", buttonTitle: "Vis alle")
         return (header: header, ads: activeAds)
     }
 
     private static func createInactiveAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
         var inactiveAds = [UserAdCell]()
-        for index in 3 ... 5 {
+        for index in 3 ... 4 {
             let imageSource = imageSources[index]
             let title = titles[index]
             let price = prices[index]
@@ -90,6 +108,7 @@ public struct UserAdsFactory {
             inactiveAds.append(UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: title,
                                           price: price, detail: detail, status: status))
         }
+
         let header = UserAdHeaderCell(title: "INAKTIVE ANNONSER (\(inactiveAds.count))", buttonTitle: "Vis alle")
         return (header: header, ads: inactiveAds)
     }
@@ -103,55 +122,50 @@ public struct UserAdsFactory {
     private static var imageSources: [ImageSource] {
         return [
             ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),
+            ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),
             ImageSource(path: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg", size: CGSize(width: 800, height: 600)),
             ImageSource(path: "http://jonvilma.com/images/house-6.jpg", size: CGSize(width: 992, height: 546)),
             ImageSource(path: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg", size: CGSize(width: 736, height: 566)),
-            ImageSource(path: "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg", size: CGSize(width: 550, height: 734)),
-            ImageSource(path: "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg", size: CGSize(width: 550, height: 734))
         ]
     }
 
     private static var titles: [String] {
         return [
+            "George Condo - My twisted fantasy",
             "Fender Jaguar Blå",
             "Nixon Kamera",
             "Dette er en halvlang tittel med noe ekstra informasjon",
             "Retro sko",
-            "George Condo - En veldig veldig lang tittel med masse tekst",
-            "Tittel Mangler",
         ]
     }
 
     private static var prices: [String] {
         return [
+            "1 200 00 000 000 000 000 000 000,-",
             "58 000 000 000 000,-",
             "Gis bort",
             "12 900 000,-",
             "1 800,-",
-            "0,-",
-            "Sekshundre,-"
         ]
     }
 
     private static var details: [String] {
         return [
+            "Sist redigert: 09.10.2019",
             "Sist redigert: 22.10.2018",
             "Sist redigert: 12.12.2015",
             "Sist redigert: 17.01.2019",
             "Sist redigert: 28.01.2019",
-            "Sist redigert: 02.01.2019",
-            "Sist redigert: 02.01.2019",
         ]
     }
 
     private static var statuses: [String] {
         return [
-            "Aktiv",
             "Påbegynt",
             "Aktiv",
-            "Utløpt",
+            "Aktiv",
             "Solgt",
-            "Utløpt"
+            "Utløpt",
         ]
     }
 }
