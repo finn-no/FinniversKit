@@ -2340,6 +2340,7 @@
 					};
 					14F4F1B81FD6CEA800E9CECA = {
 						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = D34XZHQLE3;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Manual;
 						TestTargetID = 14405C691FAFBD1800D03E04;
@@ -2806,7 +2807,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D34XZHQLE3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2833,7 +2834,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D34XZHQLE3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

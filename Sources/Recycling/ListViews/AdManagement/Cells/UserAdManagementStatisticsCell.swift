@@ -6,13 +6,13 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
     public var itemModels = [StatisticsItemModel]() {
         didSet { updateStackViewContent() }
     }
-    private var stackView: UIStackView = {
+    private lazy var stackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
         view.alignment = .fill
         view.distribution = .fillEqually
         return view
     }()
-    private var separatorView: UIView = {
+    private lazy var separatorView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .sardine
         return view
@@ -35,8 +35,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
         let lastIndex = itemModels.count-1
 
         for (index, model) in itemModels.enumerated() {
-            let itemView = StatisticsItemView()
-            itemView.itemModel = model
+            let itemView = StatisticsItemView(model: model)
             itemView.shouldShowLeftSeparator = index > 0 && index < lastIndex
             itemView.shouldShowRightSeparator = index > 0 && index < lastIndex
             // Slight overengineering, as there are currently no plans to receive any other number than three items

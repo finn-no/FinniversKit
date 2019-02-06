@@ -51,31 +51,37 @@ public class StatisticsItemView: UIView {
         didSet { rightSeparator.isHidden = !shouldShowRightSeparator }
     }
 
-    public var itemModel: StatisticsItemModel? {
-        didSet {
-            guard let model = itemModel else { return }
+    init(model: StatisticsItemModel) {
+        super.init(frame: .zero)
 
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            formatter.locale = Locale(identifier: "nb_NO")
-            let valueString = formatter.string(for: model.value) ?? "\(model.value)"
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale(identifier: "nb_NO")
+        let valueString = formatter.string(for: model.value) ?? "\(model.value)"
 
-            valueLabel.attributedText = NSAttributedString(string: valueString)
-            textLabel.attributedText = NSAttributedString(string: model.text)
+        valueLabel.attributedText = NSAttributedString(string: valueString)
+        textLabel.attributedText = NSAttributedString(string: model.text)
 
-            var image: UIImage? {
-                switch model.type {
-                case .email:
-                    return UIImage(named: .favoriteAdd)
-                case .seen:
-                    return UIImage(named: .favoriteAdd)
-                case .favourited:
-                    return UIImage(named: .favoriteAdd)
-                }
+        var image: UIImage? {
+            switch model.type {
+            case .email:
+                return UIImage(named: .favoriteAdd)
+            case .seen:
+                return UIImage(named: .favoriteAdd)
+            case .favourited:
+                return UIImage(named: .favoriteAdd)
             }
-            imageView.image = image
-            setup()
         }
+        imageView.image = image
+        setup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("Please use init(model:)")
+    }
+
+    override init(frame: CGRect) {
+        fatalError("Please use init(model:)")
     }
 
     private func setup() {
