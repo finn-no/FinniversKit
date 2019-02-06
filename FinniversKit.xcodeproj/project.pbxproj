@@ -177,6 +177,7 @@
 		45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63220A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift */; };
 		45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63C20A9CA22008F4503 /* PopupView.swift */; };
 		45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */; };
+		468F59F2220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F59F1220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
@@ -487,6 +488,7 @@
 		45EDD63220A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
 		45EDD63C20A9CA22008F4503 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
+		468F59F1220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsGridViewFlowLayout.swift; sourceTree = "<group>"; };
 		559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessageTests.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
@@ -899,8 +901,9 @@
 		441FE41A209A24E500B04EF1 /* GridView */ = {
 			isa = PBXGroup;
 			children = (
-				441FE41B209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift */,
 				441FE41C209A24E500B04EF1 /* MarketsGridView.swift */,
+				468F59F1220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift */,
+				441FE41B209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift */,
 			);
 			path = GridView;
 			sourceTree = "<group>";
@@ -2626,6 +2629,7 @@
 				45D7C56D20494C7A000E788F /* SwitchViewModel.swift in Sources */,
 				AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */,
 				441FE434209A24E500B04EF1 /* AdsGridView.swift in Sources */,
+				468F59F2220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift in Sources */,
 				F26852DA21F75435000978C8 /* UserAdsListViewCell.swift in Sources */,
 				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
 				08D70A19218328EB003E2222 /* IconTitleTableViewCell.swift in Sources */,
