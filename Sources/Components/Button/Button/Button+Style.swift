@@ -19,7 +19,8 @@ public extension Button {
 
         var bodyColor: UIColor {
             switch self {
-            case .default, .link, .flat: return .clear
+            case .default: return .milk
+            case .link, .flat: return .clear
             case .callToAction: return .primaryBlue
             case .destructive: return .cherry
             }
