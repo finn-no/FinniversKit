@@ -127,8 +127,7 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
-        case firstSection: return nil
-        case lastSection: return nil
+        case firstSection, lastSection: return nil
         default:
             let headerView = UserAdsListHeaderView(frame: .zero)
             headerView.delegate = self
@@ -143,8 +142,7 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case firstSection: return 0.1 // Return 0.1 so we dont show a seperator if there's no section/ads to show.
-        case lastSection: return 0.1
+        case firstSection, lastSection: return 0.1 // Return 0.1 so we dont show a seperator if there's no section/ads to show.
         default: return UserAdsListView.sectionHeaderHeight
         }
     }
@@ -153,8 +151,7 @@ extension UserAdsListView: UITableViewDataSource {
         let isInactiveSection = dataSource?.userAdsListView(self, shouldDisplayInactiveSectionAt: indexPath) ?? false
 
         switch indexPath.section {
-        case firstSection: return UserAdsListView.buttonCellHeight
-        case lastSection: return UserAdsListView.buttonCellHeight
+        case firstSection, lastSection: return UserAdsListView.buttonCellHeight
         default: return isInactiveSection ? UserAdsListView.inactiveCellHeight : UserAdsListView.activeCellHeight
         }
     }
@@ -202,8 +199,7 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         switch indexPath.section {
-        case firstSection: return false
-        case lastSection: return false
+        case firstSection, lastSection: return false
         default: return true
         }
     }
