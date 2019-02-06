@@ -25,15 +25,11 @@ public protocol UserAdsListViewDataSource: class {
 }
 
 public class UserAdsListView: UIView {
-    public static let firstSectionCellHeight: CGFloat = 80
+    public static let sectionHeaderHeight: CGFloat = 38
 
-    public static let secondSectionHeaderHeight: CGFloat = 38
-    public static let secondSectionCellHeight: CGFloat = 112
-
-    public static let thirdSectionHeaderHeight: CGFloat = 38
-    public static let thirdSectionCellHeight: CGFloat = 66
-
-    public static let fourthSectionCellHeight: CGFloat = 60
+    public static let buttonCellHeight: CGFloat = 80
+    public static let activeCellHeight: CGFloat = 112
+    public static let inactiveCellHeight: CGFloat = 66
 
     // MARK: - Internal properties
 
@@ -50,6 +46,11 @@ public class UserAdsListView: UIView {
 
     private weak var delegate: UserAdsListViewDelegate?
     private weak var dataSource: UserAdsListViewDataSource?
+
+    private var firstSection = 0
+    private lazy var lastSection: Int = {
+        return (dataSource?.numberOfSections(in: self) ?? 1) - 1
+    }()
 
     // MARK: - Setup
 
@@ -126,8 +127,7 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
-        case 0: return nil
-        case 4: return nil
+        case firstSection, lastSection: return nil
         default:
             let headerView = UserAdsListHeaderView(frame: .zero)
             headerView.delegate = self
@@ -142,9 +142,8 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case 1: return UserAdsListView.secondSectionHeaderHeight
-        case 2: return UserAdsListView.thirdSectionHeaderHeight
-        default: return 0.0
+        case firstSection, lastSection: return 0.1 // Return 0.1 so we dont show a seperator if there's no section/ads to show.
+        default: return UserAdsListView.sectionHeaderHeight
         }
     }
 
@@ -152,11 +151,8 @@ extension UserAdsListView: UITableViewDataSource {
         let isInactiveSection = dataSource?.userAdsListView(self, shouldDisplayInactiveSectionAt: indexPath) ?? false
 
         switch indexPath.section {
-        case 0: return UserAdsListView.firstSectionCellHeight
-        case 1: return isInactiveSection ? UserAdsListView.thirdSectionCellHeight : UserAdsListView.secondSectionCellHeight
-        case 2: return isInactiveSection ? UserAdsListView.thirdSectionCellHeight : UserAdsListView.secondSectionCellHeight
-        case 3: return UserAdsListView.firstSectionCellHeight
-        default: return 0.0
+        case firstSection, lastSection: return UserAdsListView.buttonCellHeight
+        default: return isInactiveSection ? UserAdsListView.inactiveCellHeight : UserAdsListView.activeCellHeight
         }
     }
 
@@ -171,37 +167,28 @@ extension UserAdsListView: UITableViewDataSource {
         let color = colors[indexPath.row % 4]
 
         switch indexPath.section {
-        case 0:
+        case firstSection:
             let newAdCell = tableView.dequeue(UserAdsListViewNewAdCell.self, for: indexPath)
             newAdCell.delegate = self
             if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
                 newAdCell.model = model
             }
             return newAdCell
-        case 1:
-            cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath)
-            cell.loadingColor = color
-            cell.dataSource = self
-            if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
-                cell.model = model
-            }
-            return cell
-        case 2:
-            cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath)
-            cell.loadingColor = color
-            cell.dataSource = self
-            if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
-                cell.model = model
-            }
-            return cell
-        case 3:
+        case lastSection:
             let seeAllAdsCell = tableView.dequeue(UserAdsListViewSeeAllAdsCell.self, for: indexPath)
             seeAllAdsCell.delegate = self
             if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
                 seeAllAdsCell.model = model
             }
             return seeAllAdsCell
-        default: return UITableViewCell(frame: .zero)
+        default:
+            cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath)
+            cell.loadingColor = color
+            cell.dataSource = self
+            if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
+                cell.model = model
+            }
+            return cell
         }
     }
 
@@ -211,8 +198,10 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 || indexPath.section == 3 { return false }
-        return true
+        switch indexPath.section {
+        case firstSection, lastSection: return false
+        default: return true
+        }
     }
 
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
