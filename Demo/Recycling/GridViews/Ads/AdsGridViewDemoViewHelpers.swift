@@ -47,7 +47,7 @@ public struct AdFactory {
             let imageSource = imageSources[dataIndex]
             let title = titles[dataIndex]
             let subtitle = subtitles[dataIndex]
-            let icon = UIImage(named: .car)
+            let icon = UIImage(named: .realestate)
             let price = prices[dataIndex]
             return Ad(
                 imagePath: imageSource.path,
