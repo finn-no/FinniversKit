@@ -58,7 +58,7 @@ extension UserAdsListViewDemoView: UserAdsListViewDataSource {
         }
     }
 
-    func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex section: Int) -> UserAdsListViewHeaderModel {
+    func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex section: Int) -> UserAdsListHeaderViewModel {
         return dataSource.userAds[section].header
     }
 

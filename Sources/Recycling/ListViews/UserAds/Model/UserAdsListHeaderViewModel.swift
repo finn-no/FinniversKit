@@ -4,13 +4,13 @@
 
 import Foundation
 
-public protocol UserAdsListViewHeaderModel {
+public protocol UserAdsListHeaderViewModel {
     var title: String { get }
     var buttonTitle: String { get }
     var accessibilityLabel: String { get }
 }
 
-public extension UserAdsListViewHeaderModel {
+public extension UserAdsListHeaderViewModel {
     var accessibilityLabel: String {
         var message = title
         message += ". " + buttonTitle
