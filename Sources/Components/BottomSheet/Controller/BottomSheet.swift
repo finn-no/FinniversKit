@@ -4,6 +4,10 @@
 
 import UIKit
 
+public protocol BottomSheetDelegate: class {
+    func bottomSheetDidDismiss(_ bottomSheet: BottomSheet)
+}
+
 extension BottomSheet {
     public struct Height {
         public let compact: CGFloat
@@ -43,6 +47,8 @@ public class BottomSheet: UIViewController {
     }
 
     // MARK: - Public properties
+
+    public weak var delegate: BottomSheetDelegate?
 
     public var state: State {
         get { return transitionDelegate.presentationController?.state ?? .dismissed }
@@ -93,6 +99,7 @@ public class BottomSheet: UIViewController {
             self.bottomSafeAreaInset = 0
         }
         super.init(nibName: nil, bundle: nil)
+        transitionDelegate.presentationControllerDelegate = self
         transitioningDelegate = transitionDelegate
         modalPresentationStyle = .custom
     }
@@ -145,6 +152,16 @@ public class BottomSheet: UIViewController {
         ])
     }
 }
+
+// MARK: - BottomSheetDismissalDelegate
+
+extension BottomSheet: BottomSheetPresentationControllerDelegate {
+    func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController) {
+        delegate?.bottomSheetDidDismiss(self)
+    }
+}
+
+// MARK: - Notch
 
 private class Notch: UIView {
 
