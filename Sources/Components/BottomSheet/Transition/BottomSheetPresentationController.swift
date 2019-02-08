@@ -126,6 +126,7 @@ private extension BottomSheetPresentationController {
     }
 
     @objc func handleTap() {
+        guard stateController.state != .dismissed else { return }
         stateController.state = .dismissed
         gestureController?.velocity = .zero
         presentedViewController.dismiss(animated: true)
