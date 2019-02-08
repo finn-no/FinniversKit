@@ -21,6 +21,7 @@ class BottomSheetPresentationController: UIPresentationController {
         set { updateState(newValue) }
     }
 
+    weak var dismissalDelegate: BottomSheetDismissalDelegate?
     private let height: BottomSheet.Height
     private let interactionController: BottomSheetInteractionController
     private var constraint: NSLayoutConstraint? // Constraint is used to set the y position of the bottom sheet
@@ -134,6 +135,7 @@ private extension BottomSheetPresentationController {
         switch stateController.state {
         case .dismissed:
             presentedViewController.dismiss(animated: true)
+            dismissalDelegate?.bottomSheetDidDismiss()
         default:
             springAnimator.fromPosition = currentPosition
             springAnimator.toPosition = position

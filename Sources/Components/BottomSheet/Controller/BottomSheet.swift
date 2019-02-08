@@ -103,6 +103,7 @@ public class BottomSheet: UIViewController {
             self.bottomSafeAreaInset = 0
         }
         super.init(nibName: nil, bundle: nil)
+        transitionDelegate.dismissalDelegate = self
         transitioningDelegate = transitionDelegate
         modalPresentationStyle = .custom
     }
