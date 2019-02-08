@@ -4,6 +4,14 @@
 
 import UIKit
 
+public protocol BottomSheetDelegate: class {
+    func bottomSheetDidDismiss(_ bottomSheet: BottomSheet)
+}
+
+protocol BottomSheetDismissalDelegate: class {
+    func bottomSheetDidDismiss()
+}
+
 extension BottomSheet {
     public struct Height {
         public let compact: CGFloat
@@ -43,6 +51,8 @@ public class BottomSheet: UIViewController {
     }
 
     // MARK: - Public properties
+
+    public weak var delegate: BottomSheetDelegate?
 
     public var state: State {
         get { return transitionDelegate.presentationController?.state ?? .dismissed }
@@ -145,6 +155,16 @@ public class BottomSheet: UIViewController {
         ])
     }
 }
+
+// MARK: - BottomSheetDismissalDelegate
+
+extension BottomSheet: BottomSheetDismissalDelegate {
+    func bottomSheetDidDismiss() {
+        delegate?.bottomSheetDidDismiss(self)
+    }
+}
+
+// MARK: - Notch
 
 private class Notch: UIView {
 
