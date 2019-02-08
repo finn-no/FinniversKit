@@ -173,6 +173,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
         let rootController = RootViewController()
         rootController.delegate = self
         let bottomSheet = BottomSheet(rootViewController: rootController, draggableArea: .everything)
+        bottomSheet.delegate = self
         present(bottomSheet, animated: true)
         self.bottomSheet = bottomSheet
     }
@@ -186,6 +187,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
         navigationController.navigationBar.isTranslucent = false
 
         let bottomSheet = BottomSheet(rootViewController: navigationController, draggableArea: .navigationBar)
+        bottomSheet.delegate = self
         present(bottomSheet, animated: true)
         self.bottomSheet = bottomSheet
     }
@@ -194,6 +196,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
         let rootController = RootViewController(showDraggableLabel: true)
         rootController.delegate = self
         let bottomSheet = BottomSheet(rootViewController: rootController, draggableArea: .customRect(rootController.draggableLabelFrame))
+        bottomSheet.delegate = self
         present(bottomSheet, animated: true)
         self.bottomSheet = bottomSheet
     }
@@ -210,5 +213,11 @@ extension BottomSheetMechanicsDemoViewController: RootViewControllerDelegate {
 
     func rootViewControllerDidPressDismissButton(_ controller: RootViewController) {
         bottomSheet?.state = .dismissed
+    }
+}
+
+extension BottomSheetMechanicsDemoViewController: BottomSheetDelegate {
+    func bottomSheetDidDismiss(_ bottomSheet: BottomSheet) {
+        // BottomSheet dismissed.
     }
 }
