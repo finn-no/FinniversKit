@@ -129,6 +129,7 @@ private extension BottomSheetPresentationController {
         stateController.state = .dismissed
         gestureController?.velocity = .zero
         presentedViewController.dismiss(animated: true)
+        dismissalDelegate?.bottomSheetDidDismiss()
     }
 
     func animate(to position: CGPoint, initialVelocity: CGPoint = .zero) {
