@@ -67,7 +67,7 @@ public class UserAdsListHeaderView: UIView {
 
     // MARK: - Dependency injection
 
-    public var model: UserAdsListViewHeaderModel? {
+    public var model: UserAdsListHeaderViewModel? {
         didSet {
             guard let model = model else { return }
             titleLabel.text = model.title

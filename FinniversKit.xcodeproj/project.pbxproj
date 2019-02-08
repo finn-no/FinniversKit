@@ -275,7 +275,7 @@
 		F26852DF21F755B6000978C8 /* UserAdsListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852DE21F755B6000978C8 /* UserAdsListViewDemoView.swift */; };
 		F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852E021F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift */; };
 		F26852F221FEFA97000978C8 /* UserAdsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852DB21F75457000978C8 /* UserAdsListViewModel.swift */; };
-		F26852F321FEFA9C000978C8 /* UserAdsListViewHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852EF21FEF9AB000978C8 /* UserAdsListViewHeaderModel.swift */; };
+		F26852F321FEFA9C000978C8 /* UserAdsListHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852EF21FEF9AB000978C8 /* UserAdsListHeaderViewModel.swift */; };
 		F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */; };
 		F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */; };
 /* End PBXBuildFile section */
@@ -589,7 +589,7 @@
 		F26852DB21F75457000978C8 /* UserAdsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewModel.swift; sourceTree = "<group>"; };
 		F26852DE21F755B6000978C8 /* UserAdsListViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewDemoView.swift; sourceTree = "<group>"; };
 		F26852E021F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
-		F26852EF21FEF9AB000978C8 /* UserAdsListViewHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewHeaderModel.swift; sourceTree = "<group>"; };
+		F26852EF21FEF9AB000978C8 /* UserAdsListHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListHeaderViewModel.swift; sourceTree = "<group>"; };
 		F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewNewAdCell.swift; sourceTree = "<group>"; };
 		F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewSeeAllAdsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2190,7 +2190,7 @@
 		F26852D421F7529F000978C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F26852EF21FEF9AB000978C8 /* UserAdsListViewHeaderModel.swift */,
+				F26852EF21FEF9AB000978C8 /* UserAdsListHeaderViewModel.swift */,
 				F26852DB21F75457000978C8 /* UserAdsListViewModel.swift */,
 			);
 			path = Model;
@@ -2600,7 +2600,7 @@
 				08D70A1B21832901003E2222 /* UIEdgeInsetsExtensions.swift in Sources */,
 				F26852F221FEFA97000978C8 /* UserAdsListViewModel.swift in Sources */,
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
-				F26852F321FEFA9C000978C8 /* UserAdsListViewHeaderModel.swift in Sources */,
+				F26852F321FEFA9C000978C8 /* UserAdsListHeaderViewModel.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,

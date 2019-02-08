@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-public struct UserAdHeaderCell: UserAdsListViewHeaderModel, Hashable {
+public struct UserAdHeaderCell: UserAdsListHeaderViewModel, Hashable {
     public let title: String
     public let buttonTitle: String
 
