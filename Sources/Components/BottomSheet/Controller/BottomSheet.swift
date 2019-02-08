@@ -8,10 +8,6 @@ public protocol BottomSheetDelegate: class {
     func bottomSheetDidDismiss(_ bottomSheet: BottomSheet)
 }
 
-protocol BottomSheetDismissalDelegate: class {
-    func bottomSheetDidDismiss()
-}
-
 extension BottomSheet {
     public struct Height {
         public let compact: CGFloat
@@ -103,7 +99,7 @@ public class BottomSheet: UIViewController {
             self.bottomSafeAreaInset = 0
         }
         super.init(nibName: nil, bundle: nil)
-        transitionDelegate.dismissalDelegate = self
+        transitionDelegate.presentationControllerDelegate = self
         transitioningDelegate = transitionDelegate
         modalPresentationStyle = .custom
     }
@@ -159,8 +155,8 @@ public class BottomSheet: UIViewController {
 
 // MARK: - BottomSheetDismissalDelegate
 
-extension BottomSheet: BottomSheetDismissalDelegate {
-    func bottomSheetDidDismiss() {
+extension BottomSheet: BottomSheetPresentationControllerDelegate {
+    func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController) {
         delegate?.bottomSheetDidDismiss(self)
     }
 }

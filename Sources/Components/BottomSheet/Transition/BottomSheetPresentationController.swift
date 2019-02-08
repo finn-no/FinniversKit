@@ -14,6 +14,10 @@ import UIKit
  At this point, only the presenting transition is made interactive because the presentation is it self an interactive way of dismissing the bottom sheet.
 **/
 
+protocol BottomSheetPresentationControllerDelegate: class {
+    func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController)
+}
+
 class BottomSheetPresentationController: UIPresentationController {
 
     var state: BottomSheet.State {
@@ -21,7 +25,7 @@ class BottomSheetPresentationController: UIPresentationController {
         set { updateState(newValue) }
     }
 
-    weak var dismissalDelegate: BottomSheetDismissalDelegate?
+    weak var presentationControllerDelegate: BottomSheetPresentationControllerDelegate?
     private let height: BottomSheet.Height
     private let interactionController: BottomSheetInteractionController
     private var constraint: NSLayoutConstraint? // Constraint is used to set the y position of the bottom sheet
@@ -88,7 +92,10 @@ class BottomSheetPresentationController: UIPresentationController {
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         // Completed should always be true at this point of development
-        guard !completed else { return }
+        guard !completed else {
+            presentationControllerDelegate?.bottomSheetPresentationController(self, didDismissPresentedViewController: presentedViewController)
+            return
+        }
         gestureController?.delegate = self
     }
 }
@@ -130,14 +137,12 @@ private extension BottomSheetPresentationController {
         stateController.state = .dismissed
         gestureController?.velocity = .zero
         presentedViewController.dismiss(animated: true)
-        dismissalDelegate?.bottomSheetDidDismiss()
     }
 
     func animate(to position: CGPoint, initialVelocity: CGPoint = .zero) {
         switch stateController.state {
         case .dismissed:
             presentedViewController.dismiss(animated: true)
-            dismissalDelegate?.bottomSheetDidDismiss()
         default:
             springAnimator.fromPosition = currentPosition
             springAnimator.toPosition = position
