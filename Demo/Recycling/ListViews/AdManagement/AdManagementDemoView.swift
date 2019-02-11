@@ -50,8 +50,8 @@ extension AdManagementDemoView: UITableViewDataSource {
             return cell
         }
         let cell = tableView.dequeue(UserAdManagementButtonAndInformationCell.self, for: indexPath)
-        cell.informationText = "Nescire autem quid antequam natus sis acciderit, id est semper esse puerum. Siripus Rubis Ideai. Alea Jacta Est. Bacon Lorem Schmipsum."
-        cell.buttonText = "Ex Nihilo Nihil Fit"
+        cell.informationText = "Du kan øke synligheten av annonsen din ytterligere ved å oppgradere den."
+        cell.buttonText = "Kjøp mer synlighet"
         return cell
     }
 }
