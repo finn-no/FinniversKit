@@ -2,16 +2,19 @@
 //  Copyright © FINN.no AS. All rights reserved.
 //
 
-protocol UserAdManagementButtonAndInformationCellDelegate: class {
+public protocol UserAdManagementButtonAndInformationCellDelegate: class {
     func buttonAndInformationCellButtonWasTapped(_ sender: UserAdManagementButtonAndInformationCell)
 }
 
-class UserAdManagementButtonAndInformationCell: UITableViewCell {
-    weak var delegate: UserAdManagementButtonAndInformationCellDelegate?
-    var buttonText: String? {
-        didSet { buttonLabel.text = buttonText }
+public class UserAdManagementButtonAndInformationCell: UITableViewCell {
+    weak public var delegate: UserAdManagementButtonAndInformationCellDelegate?
+    public var buttonText: String? {
+        didSet {
+            buttonLabel.text = buttonText
+            button.accessibilityLabel = buttonText
+        }
     }
-    var informationText: String? {
+    public var informationText: String? {
         didSet { informationLabel.text = informationText }
     }
 
@@ -22,6 +25,7 @@ class UserAdManagementButtonAndInformationCell: UITableViewCell {
         label.font = UIFont.title5
         label.textColor = .licorice
         label.textAlignment = .left
+        label.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
         return label
     }()
     private lazy var buttonLabel: UILabel = {
@@ -31,6 +35,7 @@ class UserAdManagementButtonAndInformationCell: UITableViewCell {
         label.font = UIFont.title5
         label.textColor = .milk
         label.textAlignment = .center
+        label.setContentCompressionResistancePriority(UILayoutPriority.required, for: NSLayoutConstraint.Axis.horizontal)
         return label
     }()
     private lazy var button: UIButton = {
@@ -38,6 +43,8 @@ class UserAdManagementButtonAndInformationCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor.primaryBlue
         button.layer.cornerRadius = 8
+        button.setContentCompressionResistancePriority(UILayoutPriority.required, for: NSLayoutConstraint.Axis.horizontal)
+        button.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
         return button
     }()
 
@@ -45,6 +52,7 @@ class UserAdManagementButtonAndInformationCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         button.addTarget(self, action: #selector(handleButtonTouchUpInside(_:)), for: .touchUpInside)
         button.addTarget(self, action: #selector(handleButtonTouchDown(_:)), for: .touchDown)
         setup()
@@ -53,7 +61,6 @@ class UserAdManagementButtonAndInformationCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 
     // MARK: - ButtonHandling
 
@@ -71,29 +78,24 @@ class UserAdManagementButtonAndInformationCell: UITableViewCell {
         }, completion: nil)
     }
 
-
     private func setup() {
         contentView.addSubview(informationLabel)
         contentView.addSubview(button)
         contentView.addSubview(buttonLabel)
 
-        informationLabel.addConstraint(NSLayoutConstraint(item: informationLabel, attribute: NSLayoutConstraint.Attribute.width , relatedBy: .lessThanOrEqual, toItem: contentView, attribute: NSLayoutConstraint.Attribute.width, multiplier: 0.67, constant: 1))
-
         NSLayoutConstraint.activate(
-            [
-                informationLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                informationLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 15),
-                informationLabel.rightAnchor.constraint(equalTo: button.leftAnchor, constant: 8)
-
-            ]
+            [ informationLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+              informationLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+              informationLabel.rightAnchor.constraint(equalTo: button.leftAnchor, constant: -8),
+              informationLabel.widthAnchor.constraint(greaterThanOrEqualTo: contentView.widthAnchor, multiplier: 0.67),
+              buttonLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+              buttonLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -21),
+              button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+              button.heightAnchor.constraint(equalToConstant: 38),
+              button.centerXAnchor.constraint(equalTo: buttonLabel.centerXAnchor),
+              button.widthAnchor.constraint(equalTo: buttonLabel.widthAnchor, constant: 20),
+              contentView.heightAnchor.constraint(greaterThanOrEqualTo: informationLabel.heightAnchor, constant: 24),
+              contentView.heightAnchor.constraint(greaterThanOrEqualTo: button.heightAnchor, constant: 24) ]
         )
-
-
-
     }
-
-
-
-
 }
-
