@@ -25,7 +25,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         label.font = UIFont.title5
         label.textColor = .licorice
         label.textAlignment = .left
-        label.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
+//        label.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: NSLayoutConstraint.Axis.horizontal)
         return label
     }()
     private lazy var buttonLabel: UILabel = {
@@ -84,13 +84,13 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         contentView.addSubview(buttonLabel)
 
         NSLayoutConstraint.activate(
-            [ informationLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            [ informationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
               informationLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
               informationLabel.rightAnchor.constraint(equalTo: button.leftAnchor, constant: -8),
-              informationLabel.widthAnchor.constraint(greaterThanOrEqualTo: contentView.widthAnchor, multiplier: 0.67),
-              buttonLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+              informationLabel.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.67),
+              buttonLabel.centerYAnchor.constraint(equalTo: informationLabel.centerYAnchor),
               buttonLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -21),
-              button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+              button.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor),
               button.heightAnchor.constraint(equalToConstant: 38),
               button.centerXAnchor.constraint(equalTo: buttonLabel.centerXAnchor),
               button.widthAnchor.constraint(equalTo: buttonLabel.widthAnchor, constant: 20),
