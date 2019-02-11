@@ -39,20 +39,24 @@ public struct AdFactory {
         let size: CGSize
     }
 
+    private static var minimumDataItemsCount = { return min(titles.count, min(imageSources.count, min(prices.count, subtitles.count))) }()
+
     public static func create(numberOfModels: Int) -> [Ad] {
         return (0 ..< numberOfModels).map { index in
-            let imageSource = imageSources[index]
-            let title = titles[index]
-            let subtitle = subtitles[index]
+            let dataIndex = index % minimumDataItemsCount
+            let imageSource = imageSources[dataIndex]
+            let title = titles[dataIndex]
+            let subtitle = subtitles[dataIndex]
             let icon = UIImage(named: .realestate)
+            let price = prices[dataIndex]
             return Ad(
                 imagePath: imageSource.path,
                 imageSize: imageSource.size,
                 iconImage: icon,
                 title: title,
                 subtitle: subtitle,
-                accessory: index % 2 == 0 ? "Totalpris \(price[index])" : nil,
-                imageText: price[index],
+                accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
+                imageText: price,
                 isFavorite: false,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
@@ -87,7 +91,7 @@ public struct AdFactory {
         ]
     }
 
-    private static var price: [String] {
+    private static var prices: [String] {
         return ["845 000,-",
                 "164 000,-",
                 "945 000,-",

@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class FrontpageViewDemoView: UIView {
-    private let ads = AdFactory.create(numberOfModels: 9)
+    private let ads = AdFactory.create(numberOfModels: 40)
     private let markets = Market.allMarkets
     private var didSetupView = false
 

@@ -5,7 +5,7 @@
 import UIKit
 
 public enum UserAdStatus: String {
-    case started = "Påbegynt"
+    case draft = "Påbegynt"
     case active = "Aktiv"
     case inactive = "Inaktiv"
     case expired = "Utløpt"
@@ -140,7 +140,7 @@ public class UserAdsListViewCell: UITableViewCell {
         ribbonView?.removeFromSuperview()
 
         switch status {
-        case .started: ribbonView = RibbonView(style: .warning, with: status.rawValue)
+        case .draft: ribbonView = RibbonView(style: .warning, with: status.rawValue)
         case .active: ribbonView = RibbonView(style: .success, with: status.rawValue)
         case .inactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .expired: ribbonView = RibbonView(style: .disabled, with: status.rawValue)

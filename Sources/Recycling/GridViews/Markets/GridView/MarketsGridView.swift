@@ -17,7 +17,7 @@ public class MarketsGridView: UIView {
     // MARK: - Internal properties
 
     @objc private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: MarketsGridViewFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false

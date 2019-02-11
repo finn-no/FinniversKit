@@ -7,6 +7,7 @@ import UIKit
 class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
     var presentationController: BottomSheetPresentationController?
+    weak var presentationControllerDelegate: BottomSheetPresentationControllerDelegate?
 
     private let height: BottomSheet.Height
     private let interactionController: BottomSheetInteractionController
@@ -23,6 +24,7 @@ class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningD
                                                                    presenting: presenting,
                                                                    height: height,
                                                                    interactionController: interactionController)
+        presentationController?.presentationControllerDelegate = presentationControllerDelegate
         return presentationController
     }
 
