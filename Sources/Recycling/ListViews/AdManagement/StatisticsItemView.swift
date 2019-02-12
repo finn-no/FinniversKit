@@ -19,7 +19,6 @@ public class StatisticsItemView: UIView {
         label.font = UIFont.title2 // subject to change medium/26 seems closer to the sketches
         label.textColor = .licorice
         label.textAlignment = .center
-        label.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.vertical)
         return label
     }()
 
