@@ -23,7 +23,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         }
     }
 
-    private let buttonHeight: CGFloat = 32 // This is way too small for comfort (Re. Apple's HIG), won't handle this now as the whole design is still subject to change
+    private let buttonHeight: CGFloat = 32 // This is too small for comfort (Re. Apple's HIG), won't handle this now as the whole design is still subject to change
     private let labelToButtonSpacing: CGFloat = 12
     private let labelLeftInset: CGFloat = 15
     private let labelWidthProportion: CGFloat = 0.67
@@ -33,7 +33,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.font = .title5
-        label.textColor = .licorice
+        label.textColor = .stone
         label.textAlignment = .left
         return label
     }()
@@ -106,16 +106,17 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
 
         NSLayoutConstraint.activate(
             [ informationLabel.heightAnchor.constraint(equalToConstant: 0),
-              informationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
               informationLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: labelLeftInset),
               informationLabel.rightAnchor.constraint(equalTo: button.leftAnchor, constant: -labelToButtonSpacing),
-              button.centerYAnchor.constraint(equalTo: informationLabel.centerYAnchor),
-              button.heightAnchor.constraint(equalToConstant: buttonHeight),
-              button.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
+              informationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
               button.widthAnchor.constraint(equalToConstant: 0),
+              button.heightAnchor.constraint(equalToConstant: buttonHeight),
+              button.centerYAnchor.constraint(equalTo: informationLabel.centerYAnchor),
+              button.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
               contentView.heightAnchor.constraint(greaterThanOrEqualTo: informationLabel.heightAnchor, constant: 24),
               contentView.heightAnchor.constraint(greaterThanOrEqualTo: button.heightAnchor, constant: 24),
-              contentView.bottomAnchor.constraint(greaterThanOrEqualTo: informationLabel.bottomAnchor) ]
+              contentView.bottomAnchor.constraint(greaterThanOrEqualTo: informationLabel.bottomAnchor)
+            ]
         )
     }
 }
