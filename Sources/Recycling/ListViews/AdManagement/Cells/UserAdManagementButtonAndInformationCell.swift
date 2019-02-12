@@ -10,12 +10,14 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
     weak public var delegate: UserAdManagementButtonAndInformationCellDelegate?
     public var buttonText: String? {
         didSet {
-            buttonLabel.text = buttonText
+            buttonLabel.attributedText = NSAttributedString(string: buttonText ?? "")
             button.accessibilityLabel = buttonText
         }
     }
     public var informationText: String? {
-        didSet { informationLabel.text = informationText }
+        didSet {
+            informationLabel.attributedText = NSAttributedString(string: informationText ?? "")
+        }
     }
 
     private lazy var informationLabel: UILabel = {
