@@ -22,7 +22,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = UIFont.title5
+        label.font = .title5
         label.textColor = .licorice
         label.textAlignment = .left
         return label
@@ -31,16 +31,16 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
-        label.font = UIFont.title5
+        label.font = .title5
         label.textColor = .milk
         label.textAlignment = .center
         label.setContentCompressionResistancePriority(UILayoutPriority.required, for: NSLayoutConstraint.Axis.horizontal)
         return label
     }()
-    private lazy var button: UIButton = {
-        let button = UIButton(frame: .zero)
+    private lazy var button: HIGFriendlyButton = {
+        let button = HIGFriendlyButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.primaryBlue
+        button.backgroundColor = .primaryBlue
         button.layer.cornerRadius = 8
         button.setContentCompressionResistancePriority(UILayoutPriority.required, for: NSLayoutConstraint.Axis.horizontal)
         button.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
@@ -66,15 +66,13 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
     @objc private func handleButtonTouchUpInside(_ sender: UIButton) {
         delegate?.buttonAndInformationCellButtonWasTapped(self)
 
-        UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: {
-            sender.alpha = 1
+        UIView.animate(withDuration: 0.1, delay: 0, options: .beginFromCurrentState, animations: {
+            sender.backgroundColor = .primaryBlue
         }, completion: nil)
     }
 
     @objc private func handleButtonTouchDown(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.1, delay: 0, options: .beginFromCurrentState, animations: {
-            sender.alpha = 0.6
-        }, completion: nil)
+        sender.backgroundColor = .callToActionButtonHighlightedBodyColor
     }
 
     private func setup() {
