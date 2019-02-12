@@ -80,12 +80,6 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
 
     // MARK: - Constraint updates
 
-    public override func updateConstraints() {
-        updateButtonConstraints()
-        updateInformationLabelConstraints()
-        super.updateConstraints()
-    }
-
     private func updateButtonConstraints() {
         guard let buttonText = buttonText else { return }
         let buttonWidth = 20 + buttonText.width(withConstrainedHeight: buttonHeight, font: .title5)
@@ -111,11 +105,10 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         contentView.addSubview(button)
 
         NSLayoutConstraint.activate(
-            [ informationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-              informationLabel.heightAnchor.constraint(equalToConstant: 0),
+            [ informationLabel.heightAnchor.constraint(equalToConstant: 0),
+              informationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
               informationLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: labelLeftInset),
               informationLabel.rightAnchor.constraint(equalTo: button.leftAnchor, constant: -labelToButtonSpacing),
-              informationLabel.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: labelWidthProportion),
               button.centerYAnchor.constraint(equalTo: informationLabel.centerYAnchor),
               button.heightAnchor.constraint(equalToConstant: buttonHeight),
               button.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
