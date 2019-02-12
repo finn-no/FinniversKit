@@ -10,15 +10,23 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
     weak public var delegate: UserAdManagementButtonAndInformationCellDelegate?
     public var buttonText: String? {
         didSet {
-            buttonLabel.attributedText = NSAttributedString(string: buttonText ?? "")
+            let attributedText = NSMutableAttributedString(string: buttonText ?? "")
+            button.setAttributedTitle(attributedText, for: .normal)
             button.accessibilityLabel = buttonText
+            updateButtonConstraints()
         }
     }
     public var informationText: String? {
         didSet {
             informationLabel.attributedText = NSAttributedString(string: informationText ?? "")
+            updateInformationLabelConstraints()
         }
     }
+
+    private let buttonHeight: CGFloat = 32 // This is way too small for comfort (Re. Apple's HIG), won't handle this now as the whole design is still subject to change
+    private let labelToButtonSpacing: CGFloat = 12
+    private let labelLeftInset: CGFloat = 15
+    private let labelWidthProportion: CGFloat = 0.67
 
     private lazy var informationLabel: UILabel = {
         let label = UILabel(frame: .zero)
@@ -29,23 +37,16 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         label.textAlignment = .left
         return label
     }()
-    private lazy var buttonLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 1
-        label.font = .title5
-        label.textColor = .milk
-        label.textAlignment = .center
-        label.setContentCompressionResistancePriority(UILayoutPriority.required, for: NSLayoutConstraint.Axis.horizontal)
-        return label
-    }()
-    private lazy var button: HIGFriendlyButton = {
-        let button = HIGFriendlyButton(frame: .zero)
+
+    private lazy var button: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.titleLabel?.font = .title5
+        button.titleLabel?.textColor = .milk
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .primaryBlue
         button.layer.cornerRadius = 8
-        button.setContentCompressionResistancePriority(UILayoutPriority.required, for: NSLayoutConstraint.Axis.horizontal)
-        button.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
+        button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return button
     }()
 
@@ -63,7 +64,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - ButtonHandling
+    // MARK: - ButtonActions
 
     @objc private func handleButtonTouchUpInside(_ sender: UIButton) {
         delegate?.buttonAndInformationCellButtonWasTapped(self)
@@ -77,24 +78,51 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         sender.backgroundColor = .callToActionButtonHighlightedBodyColor
     }
 
+    // MARK: - Constraint updates
+
+    public override func updateConstraints() {
+        updateButtonConstraints()
+        updateInformationLabelConstraints()
+        super.updateConstraints()
+    }
+
+    private func updateButtonConstraints() {
+        guard let buttonText = buttonText else { return }
+        let buttonWidth = 20 + buttonText.width(withConstrainedHeight: buttonHeight, font: .title5)
+        if let widthConstraint = (button.constraints.filter { $0.firstAttribute == .width }).first {
+            widthConstraint.constant = buttonWidth
+        }
+    }
+
+    private func updateInformationLabelConstraints() {
+        guard let informationText = informationText else { return }
+
+        let labelWidth = bounds.size.width*labelWidthProportion-labelToButtonSpacing-labelLeftInset
+        let labelHeight = informationText.height(withConstrainedWidth: labelWidth, font: .title5)
+        if let heightConstraint = (informationLabel.constraints.filter { $0.firstAttribute == .height }).first {
+            heightConstraint.constant = labelHeight
+        }
+    }
+
+    // MARK: - Setup
+
     private func setup() {
         contentView.addSubview(informationLabel)
         contentView.addSubview(button)
-        contentView.addSubview(buttonLabel)
 
         NSLayoutConstraint.activate(
             [ informationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-              informationLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
-              informationLabel.rightAnchor.constraint(equalTo: button.leftAnchor, constant: -12),
-              informationLabel.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.67),
-              buttonLabel.centerYAnchor.constraint(equalTo: informationLabel.centerYAnchor),
-              buttonLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -21),
-              button.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor),
-              button.heightAnchor.constraint(equalToConstant: 32),
-              button.centerXAnchor.constraint(equalTo: buttonLabel.centerXAnchor),
-              button.widthAnchor.constraint(equalTo: buttonLabel.widthAnchor, constant: 20),
+              informationLabel.heightAnchor.constraint(equalToConstant: 0),
+              informationLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: labelLeftInset),
+              informationLabel.rightAnchor.constraint(equalTo: button.leftAnchor, constant: -labelToButtonSpacing),
+              informationLabel.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: labelWidthProportion),
+              button.centerYAnchor.constraint(equalTo: informationLabel.centerYAnchor),
+              button.heightAnchor.constraint(equalToConstant: buttonHeight),
+              button.rightAnchor.constraint(equalTo: rightAnchor, constant: -15),
+              button.widthAnchor.constraint(equalToConstant: 0),
               contentView.heightAnchor.constraint(greaterThanOrEqualTo: informationLabel.heightAnchor, constant: 24),
-              contentView.heightAnchor.constraint(greaterThanOrEqualTo: button.heightAnchor, constant: 24) ]
+              contentView.heightAnchor.constraint(greaterThanOrEqualTo: button.heightAnchor, constant: 24),
+              contentView.bottomAnchor.constraint(greaterThanOrEqualTo: informationLabel.bottomAnchor) ]
         )
     }
 }
