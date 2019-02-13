@@ -8,8 +8,8 @@ public protocol UserAdsListViewDelegate: class {
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button)
-    func userAdsListView(_ userAdsListView: UserAdsListView, didSelectItemAtIndex index: Int)
-    func userAdsListView(_ userAdsListView: UserAdsListView, willDisplayItemAtIndex index: Int)
+    func userAdsListView(_ userAdsListView: UserAdsListView, didSelectItemAtIndex indexPath: IndexPath)
+    func userAdsListView(_ userAdsListView: UserAdsListView, willDisplayItemAtIndex indexPath: IndexPath)
     func userAdsListView(_ userAdsListView: UserAdsListView, didScrollInScrollView scrollView: UIScrollView)
 }
 
@@ -110,7 +110,7 @@ public class UserAdsListView: UIView {
 
 extension UserAdsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.userAdsListView(self, didSelectItemAtIndex: indexPath.row)
+        delegate?.userAdsListView(self, didSelectItemAtIndex: indexPath)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -194,7 +194,7 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? UserAdsListViewCell { cell.loadImage() }
-        delegate?.userAdsListView(self, willDisplayItemAtIndex: indexPath.row)
+        delegate?.userAdsListView(self, willDisplayItemAtIndex: indexPath)
     }
 
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
