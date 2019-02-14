@@ -31,6 +31,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
     private func updateStackViewContent() {
         for oldSubview in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(oldSubview)
+            oldSubview.removeFromSuperview()
         }
         let lastIndex = itemModels.count-1
 
