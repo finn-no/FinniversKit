@@ -11,6 +11,7 @@ public class AdManagementDemoView: UIView {
         let tableView = UITableView(withAutoLayout: true)
         tableView.dataSource = self
         tableView.register(UserAdManagementStatisticsCell.self)
+        tableView.register(UserAdManagementButtonAndInformationCell.self)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .ice
         tableView.estimatedRowHeight = estimatedRowHeight
@@ -37,14 +38,20 @@ public class AdManagementDemoView: UIView {
 
 extension AdManagementDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(UserAdManagementStatisticsCell.self, for: indexPath)
-        cell.itemModels = [StatisticsItemModel(type: .seen, value: 968, text: "har sett annonsen"),
-                           StatisticsItemModel(type: .favourited, value: 16, text: "har lagret annonsen"),
-                           StatisticsItemModel(type: .email, value: 1337, text: "har fått e-post om annonsen")]
+        if indexPath.row == 0 {
+            let cell = tableView.dequeue(UserAdManagementStatisticsCell.self, for: indexPath)
+            cell.itemModels = [StatisticsItemModel(type: .seen, value: 968, text: "har sett annonsen"),
+                               StatisticsItemModel(type: .favourited, value: 16, text: "har lagret annonsen"),
+                               StatisticsItemModel(type: .email, value: 1337, text: "har fått e-post om annonsen")]
+            return cell
+        }
+        let cell = tableView.dequeue(UserAdManagementButtonAndInformationCell.self, for: indexPath)
+        cell.informationText = "Du kan øke synligheten av annonsen din ytterligere ved å oppgradere den."
+        cell.buttonText = "Kjøp mer synlighet"
         return cell
     }
 }

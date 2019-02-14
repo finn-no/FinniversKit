@@ -31,6 +31,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
     private func updateStackViewContent() {
         for oldSubview in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(oldSubview)
+            oldSubview.removeFromSuperview()
         }
         let lastIndex = itemModels.count-1
 
@@ -47,6 +48,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
     }
 
     private func setup() {
+        selectionStyle = .none
         contentView.addSubview(separatorView)
         contentView.addSubview(stackView)
 
