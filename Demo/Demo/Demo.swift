@@ -196,7 +196,7 @@ public enum FullscreenViews: String, CaseIterable {
         case .confirmationView:
             return DemoViewController<ConfirmationViewDemoView>()
         case .fullscreenGallery:
-            return DemoViewController<FullscreenGalleryDemoView>()
+            return FullscreenGalleryDemoViewController()
         }
     }
 }
