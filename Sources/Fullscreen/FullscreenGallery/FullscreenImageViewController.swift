@@ -33,7 +33,7 @@ class FullscreenImageViewController: UIViewController {
         return scrollView
     }()
 
-    private lazy var tapRecognizer: UITapGestureRecognizer = {
+    private lazy var doubleTapRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap))
         recognizer.numberOfTapsRequired = 2
         recognizer.numberOfTouchesRequired = 1
@@ -68,7 +68,7 @@ class FullscreenImageViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.fillInSuperview()
         scrollView.bounds = view.bounds
-        scrollView.addGestureRecognizer(tapRecognizer)
+        scrollView.addGestureRecognizer(doubleTapRecognizer)
 
         scrollView.addSubview(imageView)
         imageView.fillInSuperview()

@@ -52,6 +52,17 @@ public class FullscreenGalleryViewController: UIPageViewController {
         return previewView
     }()
 
+    private var previewViewBottomConstraint: NSLayoutConstraint?
+    private var previewViewVisible: Bool = true
+
+    private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
+        let recognizer = UITapGestureRecognizer()
+        recognizer.numberOfTapsRequired = 1
+        recognizer.addTarget(self, action: #selector(onSingleTap))
+        recognizer.delegate = self
+        return recognizer
+    }()
+
     // MARK: - Public properties
 
     public weak var galleryDataSource: FullscreenGalleryViewControllerDataSource?
@@ -82,6 +93,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         view.addSubview(captionLabel)
         view.addSubview(dismissButton)
         view.addSubview(previewView)
+        view.addGestureRecognizer(singleTapGestureRecognizer)
 
         let layoutGuide: UILayoutGuide
         if #available(iOS 11.0, *) {
@@ -89,6 +101,8 @@ public class FullscreenGalleryViewController: UIPageViewController {
         } else {
             layoutGuide = view.layoutMarginsGuide
         }
+
+        previewViewBottomConstraint = previewView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
 
         NSLayoutConstraint.activate([
             captionLabel.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
@@ -99,7 +113,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
             dismissButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
             dismissButton.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: .mediumLargeSpacing),
 
-            previewView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor),
+            previewViewBottomConstraint!,
             previewView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
             previewView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor)
         ])
@@ -119,6 +133,20 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     @objc private func dismissButtonTapped() {
         dismiss(animated: true)
+    }
+
+    @objc private func onSingleTap(_ gestureRecognizer: UIGestureRecognizer) {
+        if previewViewVisible {
+            previewViewBottomConstraint?.constant = previewView.bounds.height
+            previewViewVisible = false
+        } else {
+            previewViewBottomConstraint?.constant = 0
+            previewViewVisible = true
+        }
+
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
 
     private func setCaptionLabel(index: Int) {
@@ -171,6 +199,13 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
         }
 
         setCaptionLabel(index: imageVc.imageIndex)
+    }
+}
+
+// MARK: - UIGesture
+extension FullscreenGalleryViewController: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return otherGestureRecognizer is UITapGestureRecognizer
     }
 }
 
