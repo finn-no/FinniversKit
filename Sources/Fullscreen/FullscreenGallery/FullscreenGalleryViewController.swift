@@ -18,7 +18,28 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     // MARK: - Private properties
 
+    private let captionFadeDuration = 0.2
+    private let dismissButtonTitle = "Ferdig"
+
     private var viewModel: FullscreenGalleryViewModel?
+
+    private lazy var captionLabel: Label = {
+        let label = Label(style: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textColor = .milk
+        label.textAlignment = .center
+        return label
+    }()
+
+    private lazy var dismissButton: UIButton = {
+        let button = Button(style: .default)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
+        button.backgroundColor = .clear
+        button.setTitle(dismissButtonTitle, for: .normal)
+        return button
+    }()
 
     // MARK: - Public properties
 
@@ -46,12 +67,45 @@ public class FullscreenGalleryViewController: UIPageViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.addSubview(captionLabel)
+        view.addSubview(dismissButton)
+
+        NSLayoutConstraint.activate([
+            captionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .mediumLargeSpacing),
+            captionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.mediumLargeSpacing),
+            captionLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.largeSpacing),
+
+            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.mediumLargeSpacing),
+            dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: .largeSpacing)
+        ])
+
         viewModel = galleryDataSource?.modelForFullscreenGalleryViewController(self)
         let initialImageIndex = galleryDataSource?.initialImageIndexForFullscreenGalleryViewController(self) ?? 0
+        setCaptionLabel(index: initialImageIndex)
 
         if let imageController = imageViewController(forIndex: initialImageIndex) {
             setViewControllers([imageController], direction: .forward, animated: false)
         }
+    }
+
+    // MARK: - Private methods
+
+    @objc private func dismissButtonTapped() {
+        dismiss(animated: true)
+    }
+
+    private func setCaptionLabel(index: Int) {
+        let caption: String? = {
+            if index >= 0 && index < viewModel?.imageCaptions.count ?? 0 {
+                return viewModel?.imageCaptions[index]
+            } else {
+                return nil
+            }
+        }()
+
+        UIView.transition(with: captionLabel, duration: captionFadeDuration, options: .transitionCrossDissolve, animations: { [weak self] in
+            self?.captionLabel.text = caption
+        })
     }
 }
 
@@ -85,7 +139,13 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
 
 // MARK: - UIPageViewControllerDelegate
 extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
+    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard let imageVc = pageViewController.viewControllers?.first as? FullscreenImageViewController else {
+            return
+        }
 
+        setCaptionLabel(index: imageVc.imageIndex)
+    }
 }
 
 // MARK: - FullscreenImageViewControllerDataSource

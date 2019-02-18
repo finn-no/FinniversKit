@@ -17,18 +17,9 @@ class FullscreenImageViewController: UIViewController {
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
-
-        // TODO!
-
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
-    }()
-
-    private lazy var captionLabel: Label = {
-        let label = Label(style: .caption)
-
-        // TODO!
-
-        return label
     }()
 
     // MARK: - Public properties
@@ -55,8 +46,10 @@ class FullscreenImageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(imageView)
+        imageView.fillInSuperview()
+
         loadImage()
-        captionLabel.text = dataSource?.title(forImageViewController: self)
     }
 
     // MARK: - Private methods

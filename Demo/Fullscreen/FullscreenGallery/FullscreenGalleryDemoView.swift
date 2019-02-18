@@ -19,7 +19,7 @@ struct FullscreenGalleryDemoViewModel: FullscreenGalleryViewModel {
     private(set) var imageCaptions: [String] = [
         "Bilde 1",
         "",
-        "Bilde 3",
+        "Bilde 3\nDette er den lang tekst. Det er mange som den, men denne er min. Uten den lange teksten min er jeg ingenting. Uten meg er den lange teksten min ingenting.",
         "Bilde 4",
         "Bilde 5",
     ]
@@ -189,7 +189,7 @@ class FullscreenGalleryDemoView: UIView {
             let gallery = FullscreenGalleryViewController()
             gallery.galleryDataSource = self
             gallery.galleryDelegate = self
-            viewController?.present(gallery, animated: true)
+            viewController.present(gallery, animated: true)
         }
     }
 }
