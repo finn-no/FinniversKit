@@ -11,8 +11,8 @@ public protocol FullscreenGalleryViewControllerDataSource: class {
 }
 
 public protocol FullscreenGalleryViewControllerDelegate: class {
-}
 
+}
 
 public class FullscreenGalleryViewController: UIPageViewController {
 
@@ -44,6 +44,14 @@ public class FullscreenGalleryViewController: UIPageViewController {
         return button
     }()
 
+    private lazy var previewView: GalleryPreviewView = {
+        let previewView = GalleryPreviewView()
+        previewView.translatesAutoresizingMaskIntoConstraints = false
+        previewView.delegate = self
+        previewView.dataSource = self
+        return previewView
+    }()
+
     // MARK: - Public properties
 
     public weak var galleryDataSource: FullscreenGalleryViewControllerDataSource?
@@ -73,6 +81,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         view.backgroundColor = .black
         view.addSubview(captionLabel)
         view.addSubview(dismissButton)
+        view.addSubview(previewView)
 
         let layoutGuide: UILayoutGuide
         if #available(iOS 11.0, *) {
@@ -84,13 +93,20 @@ public class FullscreenGalleryViewController: UIPageViewController {
         NSLayoutConstraint.activate([
             captionLabel.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
             captionLabel.widthAnchor.constraint(lessThanOrEqualTo: layoutGuide.widthAnchor, constant: -(2 * .mediumLargeSpacing)),
-            captionLabel.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -.mediumSpacing),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -.mediumSpacing),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.mediumSpacing),
 
             dismissButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
-            dismissButton.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: .mediumLargeSpacing)
+            dismissButton.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: .mediumLargeSpacing),
+
+            previewView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor),
+            previewView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
+            previewView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor)
         ])
 
         viewModel = galleryDataSource?.modelForFullscreenGalleryViewController(self)
+        previewView.viewModel = viewModel
+
         let initialImageIndex = galleryDataSource?.initialImageIndexForFullscreenGalleryViewController(self) ?? 0
         setCaptionLabel(index: initialImageIndex)
 
@@ -119,7 +135,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
         })
     }
 }
-
 
 // MARK: - UIPageViewControllerDataSource
 extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
@@ -162,6 +177,7 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
 // MARK: - FullscreenImageViewControllerDataSource
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSource {
     func loadImage(forImageViewController vc: FullscreenImageViewController, dataCallback: @escaping (UIImage?) -> Void) {
+        // TODO: Unify with GalleryPreviewViewDataSource loading, prevent double fetching images!!
         guard galleryDataSource != nil else {
             dataCallback(nil)
             return
@@ -180,5 +196,27 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
         }
 
         return nil
+    }
+}
+
+// MARK: - GalleryPreviewViewDataSource
+extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
+    func loadImage(withIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void) {
+        // TODO: Unify with FullscreenImageViewControllerDataSource loading, prevent double fetching images!!
+        guard galleryDataSource != nil else {
+            dataCallback(index, nil)
+            return
+        }
+
+        galleryDataSource!.fullscreenGalleryViewController(self, loadImageAtIndex: index, dataCallback: { image in
+            dataCallback(index, image)
+        })
+    }
+}
+
+// MARK: - GalleryPreviewViewDelegate
+extension FullscreenGalleryViewController: GalleryPreviewViewDelegate {
+    func galleryPreviewView(_ previewView: GalleryPreviewView, selectedImageAtIndex index: Int) {
+        print("Collection view selected item at index: \(index)")
     }
 }
