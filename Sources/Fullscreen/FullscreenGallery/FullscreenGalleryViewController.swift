@@ -70,13 +70,20 @@ public class FullscreenGalleryViewController: UIPageViewController {
         view.addSubview(captionLabel)
         view.addSubview(dismissButton)
 
-        NSLayoutConstraint.activate([
-            captionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .mediumLargeSpacing),
-            captionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.mediumLargeSpacing),
-            captionLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.largeSpacing),
+        let layoutGuide: UILayoutGuide
+        if #available(iOS 11.0, *) {
+            layoutGuide = view.safeAreaLayoutGuide
+        } else {
+            layoutGuide = view.layoutMarginsGuide
+        }
 
-            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.mediumLargeSpacing),
-            dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: .largeSpacing)
+        NSLayoutConstraint.activate([
+            captionLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+            captionLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
+            captionLabel.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -.mediumLargeSpacing),
+
+            dismissButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
+            dismissButton.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: .mediumLargeSpacing)
         ])
 
         viewModel = galleryDataSource?.modelForFullscreenGalleryViewController(self)
