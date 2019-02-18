@@ -14,6 +14,7 @@ class FullscreenImageViewController: UIViewController {
     // MARK: - Private properties
 
     private weak var dataSource: FullscreenImageViewControllerDataSource?
+    private var image: UIImage?
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -63,14 +64,35 @@ class FullscreenImageViewController: UIViewController {
         loadImage()
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        calculateZoomLimits(forViewSize: size)
+        adjustImageInsets(forViewSize: size)
+    }
+
     // MARK: - Private methods
 
-    private func calculateZoomLimits(forImage image: UIImage) {
-        let screenWidth = view.bounds.width
-        let imageWidth = image.size.width
+    private func calculateZoomLimits(forViewSize viewSize: CGSize) {
+        guard let image = self.image else {
+            return
+        }
 
-        let minZoomScale = screenWidth / imageWidth
-        let maxZoomScale = min(2.0, (2.5 * imageWidth) / screenWidth)
+        let constrainedImageSize: CGFloat
+        let constrainedScreenSize: CGFloat
+
+        let screenAspectRatio = viewSize.width / viewSize.height
+        let imageAspectRatio = image.size.width / image.size.height
+
+        if (screenAspectRatio < imageAspectRatio) {
+            constrainedImageSize = image.size.width
+            constrainedScreenSize = viewSize.width
+        } else {
+            constrainedImageSize = image.size.height
+            constrainedScreenSize = viewSize.height
+        }
+
+        let minZoomScale = constrainedScreenSize / constrainedImageSize
+        let maxZoomScale = min(2.0, (2.5 * constrainedImageSize) / constrainedScreenSize)
 
         scrollView.maximumZoomScale = maxZoomScale
         scrollView.minimumZoomScale = minZoomScale
@@ -81,20 +103,19 @@ class FullscreenImageViewController: UIViewController {
         scrollView.contentSize = CGSize(width: minZoomScale * image.size.width, height: minZoomScale * image.size.height)
     }
 
-    private func adjustImageInsets() {
-        let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0)
-        let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0)
+    private func adjustImageInsets(forViewSize viewSize: CGSize) {
+        let offsetX = max((viewSize.width - scrollView.contentSize.width) * 0.5, 0)
+        let offsetY = max((viewSize.height - scrollView.contentSize.height) * 0.5, 0)
         scrollView.contentInset = UIEdgeInsets(top: offsetY, leading: offsetX, bottom: 0, trailing: 0)
     }
 
     private func loadImage() {
         dataSource?.loadImage(forImageViewController: self, dataCallback: { [weak self] image in
-            self?.imageView.image = image
-
-            if let image = image {
-                self?.calculateZoomLimits(forImage: image)
-                self?.adjustImageInsets()
-            }
+            guard let self = self else { return }
+            self.imageView.image = image
+            self.image = image
+            self.calculateZoomLimits(forViewSize: self.view.bounds.size)
+            self.adjustImageInsets(forViewSize: self.view.bounds.size)
         })
     }
 }
@@ -105,6 +126,6 @@ extension FullscreenImageViewController: UIScrollViewDelegate {
     }
 
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        adjustImageInsets()
+        adjustImageInsets(forViewSize: view.bounds.size)
     }
 }
