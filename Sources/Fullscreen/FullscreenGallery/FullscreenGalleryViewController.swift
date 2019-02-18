@@ -24,11 +24,14 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private var viewModel: FullscreenGalleryViewModel?
 
     private lazy var captionLabel: Label = {
-        let label = Label(style: .body)
+        let label = Label(style: .title4)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = .milk
         label.textAlignment = .center
+        label.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.4)
+        label.shadowOffset = CGSize(width: 1.0, height: 1.0);
+        label.shadowColor = .black
         return label
     }()
 
@@ -67,6 +70,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .black
         view.addSubview(captionLabel)
         view.addSubview(dismissButton)
 
@@ -78,9 +82,9 @@ public class FullscreenGalleryViewController: UIPageViewController {
         }
 
         NSLayoutConstraint.activate([
-            captionLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-            captionLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
-            captionLabel.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -.mediumLargeSpacing),
+            captionLabel.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
+            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: layoutGuide.widthAnchor, constant: -(2 * .mediumLargeSpacing)),
+            captionLabel.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -.mediumSpacing),
 
             dismissButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
             dismissButton.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: .mediumLargeSpacing)

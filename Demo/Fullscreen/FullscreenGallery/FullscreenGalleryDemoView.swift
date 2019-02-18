@@ -17,11 +17,11 @@ struct FullscreenGalleryDemoViewModel: FullscreenGalleryViewModel {
     ]
 
     private(set) var imageCaptions: [String] = [
-        "Bilde 1",
-        "",
-        "Bilde 3\nDette er den lang tekst. Det er mange som den, men denne er min. Uten den lange teksten min er jeg ingenting. Uten meg er den lange teksten min ingenting.",
-        "Bilde 4",
-        "Bilde 5",
+        "Blått hus. Bjørnen følger ikke med.",
+        "Flytt inn i Syden – hjemme!",
+        "Dette er den lang tekst. Det er mange som den, men denne er min. Uten den lange teksten min er jeg ingenting. Uten meg er den lange teksten min ingenting.",
+        "Herskapelig og fint.\nMerk mangelen på rovdyr i hagen.",
+        "Live here or be square 📦",
     ]
 }
 
