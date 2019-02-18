@@ -13,6 +13,8 @@ class FullscreenImageViewController: UIViewController {
 
     // MARK: - Private properties
 
+    private static let zoomStep: CGFloat = 2.0
+
     private weak var dataSource: FullscreenImageViewControllerDataSource?
     private var image: UIImage?
 
@@ -29,6 +31,13 @@ class FullscreenImageViewController: UIViewController {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
+    }()
+
+    private lazy var tapRecognizer: UITapGestureRecognizer = {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap))
+        recognizer.numberOfTapsRequired = 2
+        recognizer.numberOfTouchesRequired = 1
+        return recognizer
     }()
 
     // MARK: - Public properties
@@ -59,6 +68,7 @@ class FullscreenImageViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.fillInSuperview()
         scrollView.bounds = view.bounds
+        scrollView.addGestureRecognizer(tapRecognizer)
 
         scrollView.addSubview(imageView)
         imageView.fillInSuperview()
@@ -97,7 +107,7 @@ class FullscreenImageViewController: UIViewController {
         }
 
         let minZoomScale = constrainedScreenSize / constrainedImageSize
-        let maxZoomScale = min(2.0, (2.5 * constrainedImageSize) / constrainedScreenSize)
+        let maxZoomScale = max(2.5 * minZoomScale, (2.0 * constrainedImageSize) / constrainedScreenSize)
 
         scrollView.maximumZoomScale = maxZoomScale
         scrollView.minimumZoomScale = minZoomScale
@@ -122,6 +132,34 @@ class FullscreenImageViewController: UIViewController {
             self.calculateZoomLimits(forViewSize: self.view.bounds.size)
             self.adjustImageInsets(forViewSize: self.view.bounds.size)
         })
+    }
+
+    // MARK: - Tap gesture handling
+
+    @objc private func onDoubleTap(_ recognizer: UIGestureRecognizer) {
+        var newZoom: CGFloat = scrollView.zoomScale * FullscreenImageViewController.zoomStep
+        if newZoom >= scrollView.maximumZoomScale * 0.9 {
+            newZoom = scrollView.minimumZoomScale
+        }
+
+        var center = recognizer.location(in: recognizer.view)
+        center.x /= scrollView.zoomScale
+        center.y /= scrollView.zoomScale
+
+        let newRect = zoomRect(forScale: newZoom, withCenter: center)
+        scrollView.zoom(to: newRect, animated: true)
+    }
+
+    private func zoomRect(forScale scale: CGFloat, withCenter center: CGPoint) -> CGRect {
+        var zoomRect = CGRect()
+
+        zoomRect.size.height = scrollView.frame.size.height / scale;
+        zoomRect.size.width = scrollView.frame.size.width  / scale;
+
+        zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
+        zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
+
+        return zoomRect
     }
 }
 
