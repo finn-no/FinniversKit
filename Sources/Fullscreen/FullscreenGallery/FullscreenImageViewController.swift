@@ -66,8 +66,11 @@ class FullscreenImageViewController: UIViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        calculateZoomLimits(forViewSize: size)
-        adjustImageInsets(forViewSize: size)
+
+        coordinator.animate(alongsideTransition: { [weak self] context in
+            self?.calculateZoomLimits(forViewSize: size)
+            self?.adjustImageInsets(forViewSize: size)
+        })
     }
 
     // MARK: - Private methods
