@@ -91,6 +91,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
         view.backgroundColor = .black
         view.addSubview(captionLabel)
+
         view.addSubview(dismissButton)
         view.addSubview(previewView)
         view.addGestureRecognizer(singleTapGestureRecognizer)
@@ -204,8 +205,16 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
 
 // MARK: - UIGesture
 extension FullscreenGalleryViewController: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        /// gestureRecognizer(_:shuoldRequireFailureOf:) is incapable of handling taps within the thumbnail-preview
+        /// view, so we need to explicitly make sure that the touch is not inside of it.
+        let locationInPreview = touch.location(in: previewView)
+        return !previewView.bounds.contains(locationInPreview)
+    }
+
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return otherGestureRecognizer is UITapGestureRecognizer
+        /// Give priority to all other gesture recognizers
+        return true
     }
 }
 
