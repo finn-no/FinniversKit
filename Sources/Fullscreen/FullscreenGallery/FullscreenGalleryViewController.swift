@@ -20,8 +20,8 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     private let captionFadeDuration = 0.2
     private let dismissButtonTitle = "Ferdig"
-
     private var viewModel: FullscreenGalleryViewModel?
+    private var previewViewVisible: Bool
 
     private lazy var captionLabel: Label = {
         let label = Label(style: .title4)
@@ -52,8 +52,13 @@ public class FullscreenGalleryViewController: UIPageViewController {
         return previewView
     }()
 
-    private var previewViewBottomConstraint: NSLayoutConstraint?
-    private var previewViewVisible: Bool = true
+    private lazy var previewViewVisibleConstraint: NSLayoutConstraint = {
+        return previewView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
+    }()
+
+    private lazy var previewViewHiddenConstraint: NSLayoutConstraint = {
+        return previewView.topAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
+    }()
 
     private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer()
@@ -61,6 +66,14 @@ public class FullscreenGalleryViewController: UIPageViewController {
         recognizer.addTarget(self, action: #selector(onSingleTap))
         recognizer.delegate = self
         return recognizer
+    }()
+
+    private lazy var layoutGuide: UILayoutGuide = {
+        if #available(iOS 11.0, *) {
+            return view.safeAreaLayoutGuide
+        } else {
+            return view.layoutMarginsGuide
+        }
     }()
 
     // MARK: - Public properties
@@ -78,10 +91,15 @@ public class FullscreenGalleryViewController: UIPageViewController {
         fatalError("not implemented: init(transitionStyle:navigationOrientation:options:)")
     }
 
-    init() {
+    public init(thumbnailsInitiallyVisible previewVisible: Bool) {
+        self.previewViewVisible = previewVisible
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
         self.delegate = self
         self.dataSource = self
+    }
+
+    convenience init() {
+        self.init(thumbnailsInitiallyVisible: false)
     }
 
     // MARK : - Lifecycle
@@ -96,14 +114,9 @@ public class FullscreenGalleryViewController: UIPageViewController {
         view.addSubview(previewView)
         view.addGestureRecognizer(singleTapGestureRecognizer)
 
-        let layoutGuide: UILayoutGuide
-        if #available(iOS 11.0, *) {
-            layoutGuide = view.safeAreaLayoutGuide
-        } else {
-            layoutGuide = view.layoutMarginsGuide
-        }
-
-        previewViewBottomConstraint = previewView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
+        let initialPreviewViewVisibilityConstraint = previewViewVisible
+            ? previewViewVisibleConstraint
+            : previewViewHiddenConstraint
 
         NSLayoutConstraint.activate([
             captionLabel.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
@@ -114,9 +127,9 @@ public class FullscreenGalleryViewController: UIPageViewController {
             dismissButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
             dismissButton.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: .mediumLargeSpacing),
 
-            previewViewBottomConstraint!,
             previewView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            previewView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor)
+            previewView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
+            initialPreviewViewVisibilityConstraint
         ])
 
         viewModel = galleryDataSource?.modelForFullscreenGalleryViewController(self)
@@ -130,24 +143,41 @@ public class FullscreenGalleryViewController: UIPageViewController {
         }
     }
 
-    // MARK: - Private methods
+    // MARK: - View interactions
 
     @objc private func dismissButtonTapped() {
         dismiss(animated: true)
     }
 
     @objc private func onSingleTap(_ gestureRecognizer: UIGestureRecognizer) {
-        if previewViewVisible {
-            previewViewBottomConstraint?.constant = previewView.bounds.height
-            previewViewVisible = false
-        } else {
-            previewViewBottomConstraint?.constant = 0
-            previewViewVisible = true
+        setThumbnailPreviewsVisible(!previewViewVisible, animated: true)
+    }
+
+    // MARK: - View modifications
+
+    private func setThumbnailPreviewsVisible(_ visible: Bool, animated: Bool) {
+        guard visible != previewViewVisible else {
+            print("The required constraints are already in place")
+            return
         }
 
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
+        if visible {
+            NSLayoutConstraint.deactivate([previewViewHiddenConstraint])
+            NSLayoutConstraint.activate([previewViewVisibleConstraint])
+        } else {
+            NSLayoutConstraint.deactivate([previewViewVisibleConstraint])
+            NSLayoutConstraint.activate([previewViewHiddenConstraint])
+        }
+
+        previewViewVisible = visible
+
+        if animated {
+            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        } else {
+            view.layoutIfNeeded()
+        }
     }
 
     private func setCaptionLabel(index: Int) {

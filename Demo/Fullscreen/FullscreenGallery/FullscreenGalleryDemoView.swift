@@ -131,15 +131,6 @@ class FullscreenGalleryDemoView: UIView {
 
     // MARK: - UI properties
 
-    private lazy var helpLabel: Label = {
-        let label = Label(style: .title2)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.text = "Tap an image to open the fullscreen gallery"
-        label.textAlignment = .center
-        return label
-    }()
-
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -152,6 +143,31 @@ class FullscreenGalleryDemoView: UIView {
         collectionView.backgroundColor = .black
         collectionView.register(FullscreenGalleryDemoPreviewCell.self)
         return collectionView
+    }()
+
+    private lazy var thumbnailSwitch: UISwitch = {
+        let switchView = UISwitch(frame: .zero)
+        switchView.translatesAutoresizingMaskIntoConstraints = false
+        switchView.isSelected = false
+        return switchView
+    }()
+
+    private lazy var thumbnailHelpLabel: Label = {
+        let label = Label(style: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.text = "Show thumbnails immediately"
+        return label
+    }()
+
+    private lazy var helpLabel: Label = {
+        let label = Label(style: .title2)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.text = "Tap an image to open the fullscreen gallery"
+        label.textAlignment = .center
+        return label
     }()
 
     // MARK: - Init
@@ -167,18 +183,27 @@ class FullscreenGalleryDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(helpLabel)
         addSubview(collectionView)
+        addSubview(thumbnailSwitch)
+        addSubview(thumbnailHelpLabel)
+        addSubview(helpLabel)
 
         NSLayoutConstraint.activate([
-            helpLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            helpLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            helpLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.largeSpacing),
-
             collectionView.heightAnchor.constraint(equalToConstant: collectionCellHeight + CGFloat.largeSpacing),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+            thumbnailSwitch.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .largeSpacing),
+            thumbnailSwitch.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+
+            thumbnailHelpLabel.leadingAnchor.constraint(equalTo: thumbnailSwitch.trailingAnchor, constant: .mediumLargeSpacing),
+            thumbnailHelpLabel.centerYAnchor.constraint(equalTo: thumbnailSwitch.centerYAnchor),
+
+            helpLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            helpLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            helpLabel.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
+
         ])
     }
 
@@ -186,7 +211,7 @@ class FullscreenGalleryDemoView: UIView {
 
     private func displayFullscreenGallery(forIndex index: Int) {
         if let viewController = parentViewController {
-            let gallery = FullscreenGalleryViewController()
+            let gallery = FullscreenGalleryViewController(thumbnailsInitiallyVisible: thumbnailSwitch.isOn)
             gallery.galleryDataSource = self
             gallery.galleryDelegate = self
             viewController.present(gallery, animated: true)
