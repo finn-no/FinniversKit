@@ -54,11 +54,11 @@ public class FullscreenGalleryViewController: UIPageViewController {
     }()
 
     private lazy var previewViewVisibleConstraint: NSLayoutConstraint = {
-        return previewView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
+        return previewView.bottomAnchor.constraint(equalTo: safeLayoutGuide.bottomAnchor)
     }()
 
     private lazy var previewViewHiddenConstraint: NSLayoutConstraint = {
-        return previewView.topAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
+        return previewView.topAnchor.constraint(equalTo: view.bottomAnchor)
     }()
 
     private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
@@ -69,7 +69,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         return recognizer
     }()
 
-    private lazy var layoutGuide: UILayoutGuide = {
+    private lazy var safeLayoutGuide: UILayoutGuide = {
         if #available(iOS 11.0, *) {
             return view.safeAreaLayoutGuide
         } else {
@@ -127,16 +127,16 @@ public class FullscreenGalleryViewController: UIPageViewController {
             : previewViewHiddenConstraint
 
         NSLayoutConstraint.activate([
-            captionLabel.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
-            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: layoutGuide.widthAnchor, constant: -(2 * .mediumLargeSpacing)),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: layoutGuide.bottomAnchor, constant: -.mediumSpacing),
+            captionLabel.centerXAnchor.constraint(equalTo: safeLayoutGuide.centerXAnchor),
+            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: safeLayoutGuide.widthAnchor, constant: -(2 * .mediumLargeSpacing)),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeLayoutGuide.bottomAnchor, constant: -.mediumSpacing),
             captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.mediumSpacing),
 
-            dismissButton.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
-            dismissButton.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: .mediumLargeSpacing),
+            dismissButton.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
+            dismissButton.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
 
-            previewView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
-            previewView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
+            previewView.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor),
+            previewView.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor),
             initialPreviewViewVisibilityConstraint
         ])
 
