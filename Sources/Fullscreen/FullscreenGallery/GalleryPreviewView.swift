@@ -80,8 +80,8 @@ class GalleryPreviewView: UIView {
 
     // MARK: - Public methods
 
-    public func scrollToItem(atIndex index: Int) {
-        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
+    public func scrollToItem(atIndex index: Int, animated: Bool) {
+        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: animated)
     }
 
     // MARK: - Private methods

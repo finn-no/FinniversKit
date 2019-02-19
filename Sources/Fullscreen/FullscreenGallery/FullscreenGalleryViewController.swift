@@ -22,6 +22,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private let dismissButtonTitle = "Ferdig"
     private var viewModel: FullscreenGalleryViewModel?
     private var previewViewVisible: Bool
+    private var hasPerformedInitialViewLayout: Bool = false
 
     private lazy var captionLabel: Label = {
         let label = Label(style: .title4)
@@ -104,6 +105,13 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     // MARK : - Lifecycle
 
+    public override func loadView() {
+        viewModel = galleryDataSource?.modelForFullscreenGalleryViewController(self)
+        previewView.viewModel = viewModel
+
+        super.loadView()
+    }
+
     public override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -132,15 +140,23 @@ public class FullscreenGalleryViewController: UIPageViewController {
             initialPreviewViewVisibilityConstraint
         ])
 
-        viewModel = galleryDataSource?.modelForFullscreenGalleryViewController(self)
-        previewView.viewModel = viewModel
-
         let initialImageIndex = galleryDataSource?.initialImageIndexForFullscreenGalleryViewController(self) ?? 0
-        setCaptionLabel(index: initialImageIndex)
+        transitionToImage(atIndex: initialImageIndex, animated: false)
+    }
 
-        if let imageController = imageViewController(forIndex: initialImageIndex) {
-            setViewControllers([imageController], direction: .forward, animated: false)
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        if !hasPerformedInitialViewLayout {
+            if let currentIndex = (viewControllers?.first as? FullscreenImageViewController)?.imageIndex {
+                // Without the layoutIfNeeded()-call, it appears to be quite random whether the
+                // scroll-call will have any effect or not.
+                previewView.layoutIfNeeded()
+                previewView.scrollToItem(atIndex: currentIndex, animated: false)
+            }
         }
+
+        hasPerformedInitialViewLayout = true
     }
 
     // MARK: - View interactions
@@ -154,6 +170,32 @@ public class FullscreenGalleryViewController: UIPageViewController {
     }
 
     // MARK: - View modifications
+
+    private func transitionToImage(atIndex index: Int, animated: Bool) {
+        if let currentIndex = (viewControllers?.first as? FullscreenImageViewController)?.imageIndex {
+            guard currentIndex != index else {
+                return
+            }
+        }
+
+        setCaptionLabel(index: index)
+
+        if let newController = imageViewController(forIndex: index) {
+            if animated, let currentController = viewControllers?.first as? FullscreenImageViewController {
+                UIView.animate(withDuration: 0.15, animations: {
+                    currentController.view.alpha = 0.0
+                }, completion: { _ in
+                    newController.view.alpha = 0.0
+                    self.setViewControllers([newController], direction: .forward, animated: false)
+                    UIView.animate(withDuration: 0.15, animations: {
+                        newController.view.alpha = 1.0
+                    })
+                })
+            } else {
+                setViewControllers([newController], direction: .forward, animated: false)
+            }
+        }
+    }
 
     private func setThumbnailPreviewsVisible(_ visible: Bool, animated: Bool) {
         guard visible != previewViewVisible else {
@@ -231,15 +273,15 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
 
         let imageIndex = imageVc.imageIndex
         setCaptionLabel(index: imageIndex)
-        previewView.scrollToItem(atIndex: imageIndex)
+        previewView.scrollToItem(atIndex: imageIndex, animated: true)
     }
 }
 
 // MARK: - UIGesture
 extension FullscreenGalleryViewController: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        /// gestureRecognizer(_:shuoldRequireFailureOf:) is incapable of handling taps within the thumbnail-preview
-        /// view, so we need to explicitly make sure that the touch is not inside of it.
+        /// gestureRecognizer(_:shouldRequireFailureOf:) is not able to properly prevent the recognizer from triggering
+        /// on touches inside the GalleryPreviewView, so we need to explicitly make sure that the touch is not inside of it.
         let locationInPreview = touch.location(in: previewView)
         return !previewView.bounds.contains(locationInPreview)
     }
@@ -293,6 +335,7 @@ extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
 // MARK: - GalleryPreviewViewDelegate
 extension FullscreenGalleryViewController: GalleryPreviewViewDelegate {
     func galleryPreviewView(_ previewView: GalleryPreviewView, selectedImageAtIndex index: Int) {
-        print("Collection view selected item at index: \(index)")
+        transitionToImage(atIndex: index, animated: true)
+        previewView.scrollToItem(atIndex: index, animated: true)
     }
 }
