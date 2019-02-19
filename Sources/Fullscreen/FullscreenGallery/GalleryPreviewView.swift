@@ -27,6 +27,8 @@ class GalleryPreviewView: UIView {
 
     // MARK: - Private properties
 
+    private let cellSpacing: CGFloat = 10.0
+
     private lazy var cellSize: CGSize = {
         switch (UIDevice.current.userInterfaceIdiom) {
         case .phone:
@@ -48,6 +50,7 @@ class GalleryPreviewView: UIView {
     }()
 
     private var images = [UIImage?]()
+    private var newSuperviewSize: CGSize?
 
     // MARK: - Init
 
@@ -79,6 +82,11 @@ class GalleryPreviewView: UIView {
     }
 
     // MARK: - Public methods
+
+    public func superviewWillTransition(to size: CGSize) {
+        newSuperviewSize = size
+        collectionView.reloadSections(IndexSet(integer: 0))
+    }
 
     public func scrollToItem(atIndex index: Int, animated: Bool) {
         collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: animated)
@@ -126,8 +134,26 @@ extension GalleryPreviewView: UICollectionViewDataSource {
     }
 }
 
-extension GalleryPreviewView: UICollectionViewDelegate {
+extension GalleryPreviewView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.galleryPreviewView(self, selectedImageAtIndex: indexPath.row)
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let totalCellWidth = cellSize.width * CGFloat(images.count)
+        let totalSpacingWidth = cellSpacing * CGFloat(images.count - 1)
+        let availableWidth = (newSuperviewSize?.width) ?? (collectionView.layer.frame.size.width)
+
+        let inset = (availableWidth - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
+
+        if inset > 0 {
+            return UIEdgeInsets(top: 0, leading: inset, bottom: 0, trailing: inset)
+        } else {
+            return .zero
+        }
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return cellSpacing
     }
 }

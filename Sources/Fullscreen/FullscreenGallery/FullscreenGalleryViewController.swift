@@ -135,8 +135,9 @@ public class FullscreenGalleryViewController: UIPageViewController {
             dismissButton.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
             dismissButton.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
 
-            previewView.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor),
-            previewView.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor),
+            previewView.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor),
+            previewView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            previewView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             initialPreviewViewVisibilityConstraint
         ])
 
@@ -157,6 +158,11 @@ public class FullscreenGalleryViewController: UIPageViewController {
         }
 
         hasPerformedInitialViewLayout = true
+    }
+
+    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        previewView.superviewWillTransition(to: size)
     }
 
     // MARK: - View interactions
