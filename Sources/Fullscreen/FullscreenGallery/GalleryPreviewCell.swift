@@ -11,7 +11,9 @@ class GalleryPreviewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .clear
+        imageView.clipsToBounds = true
         return imageView
     }()
 
@@ -28,6 +30,9 @@ class GalleryPreviewCell: UICollectionViewCell {
     }
 
     private func setup() {
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+
         contentView.addSubview(imageView)
         imageView.fillInSuperview()
     }

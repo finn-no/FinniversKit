@@ -46,6 +46,7 @@ class GalleryPreviewView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(GalleryPreviewCell.self)
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
 
