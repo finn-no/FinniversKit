@@ -78,6 +78,12 @@ class GalleryPreviewView: UIView {
         ])
     }
 
+    // MARK: - Public methods
+
+    public func scrollToItem(atIndex index: Int) {
+        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
+    }
+
     // MARK: - Private methods
 
     private func reloadData() {

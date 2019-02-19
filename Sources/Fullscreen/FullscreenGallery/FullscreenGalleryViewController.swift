@@ -229,7 +229,9 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
             return
         }
 
-        setCaptionLabel(index: imageVc.imageIndex)
+        let imageIndex = imageVc.imageIndex
+        setCaptionLabel(index: imageIndex)
+        previewView.scrollToItem(atIndex: imageIndex)
     }
 }
 
