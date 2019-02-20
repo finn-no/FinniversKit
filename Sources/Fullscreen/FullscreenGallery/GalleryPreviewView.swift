@@ -47,6 +47,7 @@ class GalleryPreviewView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(GalleryPreviewCell.self)
         collectionView.backgroundColor = .clear
+        collectionView.clipsToBounds = false
         return collectionView
     }()
 
@@ -73,6 +74,7 @@ class GalleryPreviewView: UIView {
     private func setup() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        clipsToBounds = false
 
         addSubview(collectionView)
         collectionView.fillInSuperview()
@@ -80,6 +82,7 @@ class GalleryPreviewView: UIView {
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: cellSize.height)
         ])
+
     }
 
     // MARK: - Public methods
@@ -131,6 +134,19 @@ extension GalleryPreviewView: UICollectionViewDataSource {
         }
 
         cell.configure(withImage: image)
+
+        let estimatedFrame = CGRect(x: 0, y: 0, width: cellSize.width, height: cellSize.height)
+        cell.clipsToBounds = false
+        cell.layer.masksToBounds = false
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOpacity = 0.3
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.layer.shadowRadius = 3
+
+        cell.layer.shadowPath = UIBezierPath(rect: estimatedFrame).cgPath
+        cell.layer.shouldRasterize = true
+        cell.layer.rasterizationScale = UIScreen.main.scale
+
         return cell
     }
 }
