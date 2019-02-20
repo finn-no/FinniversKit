@@ -90,6 +90,10 @@ public class FullscreenGalleryViewController: UIPageViewController {
     public weak var galleryDataSource: FullscreenGalleryViewControllerDataSource?
     public weak var galleryDelegate: FullscreenGalleryViewControllerDelegate?
 
+    public override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
     // MARK: - Init
 
     required init?(coder aDecoder: NSCoder) {
