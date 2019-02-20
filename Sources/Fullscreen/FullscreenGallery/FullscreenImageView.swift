@@ -115,9 +115,14 @@ class FullscreenImageView: UIScrollView {
 
 extension FullscreenImageView {
     @objc private func onDoubleTap(_ recognizer: UIGestureRecognizer) {
-        var newZoom: CGFloat = zoomScale * FullscreenImageView.zoomStep
-        if newZoom >= maximumZoomScale * 0.9 {
+        // When double tapping, only alternate between 1x and 2x. Further zooming may be permitted,
+        // but that has to be done explicitly. Double tapping an already zoomed in image should always
+        // result in zooming back out to 1x.
+        var newZoom: CGFloat
+        if zoomScale >= minimumZoomScale * 1.05 {
             newZoom = minimumZoomScale
+        } else {
+            newZoom = zoomScale * FullscreenImageView.zoomStep
         }
 
         var center = recognizer.location(in: recognizer.view)
