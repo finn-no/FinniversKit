@@ -58,7 +58,9 @@ public class FullscreenGalleryViewController: UIPageViewController {
     }()
 
     private lazy var previewViewHiddenConstraint: NSLayoutConstraint = {
-        return previewView.topAnchor.constraint(equalTo: view.bottomAnchor)
+        // The constant exists to prevent the preview-view from jumping back into the visible area
+        // during the dismissal animation.
+        return previewView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: .mediumLargeSpacing)
     }()
 
     private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
