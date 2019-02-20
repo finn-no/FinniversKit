@@ -19,7 +19,8 @@ public class FullscreenGalleryViewController: UIPageViewController {
     // MARK: - Private properties
 
     private let captionFadeDuration = 0.2
-    private let dismissButtonTitle = "Ferdig"
+    private let dismissButtonSize: CGFloat = 30.0
+
     private var viewModel: FullscreenGalleryViewModel?
     private var previewViewVisible: Bool
     private var hasPerformedInitialPreviewScroll: Bool = false
@@ -37,11 +38,16 @@ public class FullscreenGalleryViewController: UIPageViewController {
     }()
 
     private lazy var dismissButton: UIButton = {
-        let button = Button(style: .default)
+        let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         button.backgroundColor = .clear
-        button.setTitle(dismissButtonTitle, for: .normal)
+
+        let removeImage = UIImage(named: .remove)
+        button.setImage(removeImage, for: .normal)
+        button.setImage(removeImage, for: .selected)
+        button.imageView?.fillInSuperview()
+        button.imageView?.contentMode = .scaleToFill
         return button
     }()
 
@@ -134,8 +140,10 @@ public class FullscreenGalleryViewController: UIPageViewController {
             captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeLayoutGuide.bottomAnchor, constant: -.mediumSpacing),
             captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.mediumSpacing),
 
-            dismissButton.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
+            dismissButton.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
             dismissButton.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
+            dismissButton.widthAnchor.constraint(equalToConstant: dismissButtonSize),
+            dismissButton.heightAnchor.constraint(equalToConstant: dismissButtonSize),
 
             previewView.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor),
             previewView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
