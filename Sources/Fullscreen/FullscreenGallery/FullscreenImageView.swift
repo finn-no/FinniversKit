@@ -10,7 +10,6 @@ class FullscreenImageView: UIScrollView {
 
     public var image: UIImage? {
         didSet {
-            layoutIfNeeded()
             imageView.image = image
             recalculateLimitsAndBounds(forSize: bounds.size)
         }
@@ -64,6 +63,10 @@ class FullscreenImageView: UIScrollView {
 
     public func superviewWillTransition(to size: CGSize) {
         recalculateLimitsAndBounds(forSize: size)
+    }
+
+    public func recalculateLimitsAndBounds() {
+        recalculateLimitsAndBounds(forSize: bounds.size)
     }
 
     // MARK: - Private methods

@@ -7,6 +7,7 @@ import UIKit
 protocol FullscreenImageViewControllerDataSource: class {
     func loadImage(forImageViewController vc: FullscreenImageViewController, dataCallback: @escaping (UIImage?) -> Void)
     func title(forImageViewController vc: FullscreenImageViewController) -> String?
+    func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat
 }
 
 class FullscreenImageViewController: UIViewController {
@@ -19,9 +20,11 @@ class FullscreenImageViewController: UIViewController {
 
     private lazy var imageView: FullscreenImageView = {
         let imageView = FullscreenImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        // imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+
+    private var shouldAdjustForPreviewView: Bool = false
 
     // MARK: - Public properties
 
@@ -49,7 +52,9 @@ class FullscreenImageViewController: UIViewController {
         super.viewDidLoad()
 
         view.addSubview(imageView)
-        imageView.fillInSuperview()
+        view.layoutIfNeeded()
+
+        imageView.frame = calculateImageFrame()
 
         loadImage()
     }
@@ -58,12 +63,45 @@ class FullscreenImageViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
 
         coordinator.animate(alongsideTransition: { [weak self] context in
-            self?.imageView.superviewWillTransition(to: size)
+            guard let self = self else { return }
+
+            let newFrame = self.calculateImageFrame(fromSize: size)
+            self.imageView.superviewWillTransition(to: newFrame.size)
+            self.imageView.frame = newFrame
         })
+    }
+
+    // MARK: - Public methods
+
+    public func updateLayout(withPreviewViewVisible previewVisible: Bool) {
+        shouldAdjustForPreviewView = previewVisible
+        imageView.frame = calculateImageFrame()
+        imageView.recalculateLimitsAndBounds()
+    }
+
+    // MARK: - Private methods
+
+    private func calculateImageFrame() -> CGRect {
+        return calculateImageFrame(fromSize: view.bounds.size)
+    }
+
+    private func calculateImageFrame(fromSize size: CGSize) -> CGRect {
+        let size = adjustSizeToOffsetPreviewIfNeeded(size)
+        return CGRect(x: 0, y: 0, width: size.width, height: size.height)
+    }
+
+    private func adjustSizeToOffsetPreviewIfNeeded(_ size: CGSize) -> CGSize {
+        if !shouldAdjustForPreviewView {
+            return size
+        }
+
+        let previewHeight = dataSource?.heightForPreviewView(forImageViewController: self) ?? 0.0
+        return CGSize(width: size.width, height: size.height - previewHeight)
     }
 
     private func loadImage() {
         dataSource?.loadImage(forImageViewController: self, dataCallback: { [weak self] image in
+            self?.imageView.layoutIfNeeded()
             self?.imageView.image = image
         })
     }

@@ -141,6 +141,8 @@ public class FullscreenGalleryViewController: UIPageViewController {
             initialPreviewViewVisibilityConstraint
         ])
 
+        view.layoutIfNeeded()
+
         let initialImageIndex = galleryDataSource?.initialImageIndexForFullscreenGalleryViewController(self) ?? 0
         transitionToImage(atIndex: initialImageIndex, animated: false)
     }
@@ -219,12 +221,20 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
         previewViewVisible = visible
 
+        let performTransition = {
+            self.view.layoutIfNeeded()
+            self.viewControllers?.forEach({ vc in
+                guard let imageVc = vc as? FullscreenImageViewController else { return }
+                imageVc.updateLayout(withPreviewViewVisible: visible)
+            })
+        }
+
         if animated {
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
-                self.view.layoutIfNeeded()
+                performTransition()
             }, completion: nil)
         } else {
-            view.layoutIfNeeded()
+            performTransition()
         }
     }
 
@@ -266,7 +276,9 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
             return nil
         }
 
-        return FullscreenImageViewController(imageIndex: index, dataSource: self)
+        let vc = FullscreenImageViewController(imageIndex: index, dataSource: self)
+        vc.updateLayout(withPreviewViewVisible: previewViewVisible)
+        return vc
     }
 }
 
@@ -280,6 +292,14 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
         let imageIndex = imageVc.imageIndex
         setCaptionLabel(index: imageIndex)
         previewView.scrollToItem(atIndex: imageIndex, animated: true)
+    }
+
+    public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        pendingViewControllers.forEach({ vc in
+            guard let imageVc = vc as? FullscreenImageViewController else { return }
+
+            imageVc.updateLayout(withPreviewViewVisible: previewViewVisible)
+        })
     }
 }
 
@@ -320,6 +340,17 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
         }
 
         return nil
+    }
+
+    func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat {
+        let previewHeight = previewView.frame.height
+        var bottomInset: CGFloat = 0.0
+
+        if #available(iOS 11.0, *) {
+            bottomInset = view.safeAreaInsets.bottom
+        }
+
+        return previewHeight + bottomInset
     }
 }
 
