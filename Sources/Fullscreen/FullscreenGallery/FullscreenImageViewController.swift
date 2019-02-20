@@ -16,28 +16,11 @@ class FullscreenImageViewController: UIViewController {
     private static let zoomStep: CGFloat = 2.0
 
     private weak var dataSource: FullscreenImageViewControllerDataSource?
-    private var image: UIImage?
 
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
+    private lazy var imageView: FullscreenImageView = {
+        let imageView = FullscreenImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
-    }()
-
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView(frame: .zero)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.delegate = self
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
-        return scrollView
-    }()
-
-    private lazy var doubleTapRecognizer: UITapGestureRecognizer = {
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap))
-        recognizer.numberOfTapsRequired = 2
-        recognizer.numberOfTouchesRequired = 1
-        return recognizer
     }()
 
     // MARK: - Public properties
@@ -65,12 +48,7 @@ class FullscreenImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(scrollView)
-        scrollView.fillInSuperview()
-        scrollView.bounds = view.bounds
-        scrollView.addGestureRecognizer(doubleTapRecognizer)
-
-        scrollView.addSubview(imageView)
+        view.addSubview(imageView)
         imageView.fillInSuperview()
 
         loadImage()
@@ -80,95 +58,14 @@ class FullscreenImageViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
 
         coordinator.animate(alongsideTransition: { [weak self] context in
-            self?.calculateZoomLimits(forViewSize: size)
-            self?.adjustImageInsets(forViewSize: size)
+            self?.imageView.superviewWillTransition(to: size)
         })
-    }
-
-    // MARK: - Private methods
-
-    private func calculateZoomLimits(forViewSize viewSize: CGSize) {
-        guard let image = self.image else {
-            return
-        }
-
-        let constrainedImageSize: CGFloat
-        let constrainedScreenSize: CGFloat
-
-        let screenAspectRatio = viewSize.width / viewSize.height
-        let imageAspectRatio = image.size.width / image.size.height
-
-        if (screenAspectRatio < imageAspectRatio) {
-            constrainedImageSize = image.size.width
-            constrainedScreenSize = viewSize.width
-        } else {
-            constrainedImageSize = image.size.height
-            constrainedScreenSize = viewSize.height
-        }
-
-        let minZoomScale = constrainedScreenSize / constrainedImageSize
-        let maxZoomScale = max(2.5 * minZoomScale, (2.0 * constrainedImageSize) / constrainedScreenSize)
-
-        scrollView.maximumZoomScale = maxZoomScale
-        scrollView.minimumZoomScale = minZoomScale
-        scrollView.zoomScale = minZoomScale
-
-        // The contentSize will be set automatically at a later point in time, but in order
-        // to be able to work with it immediately we need to set it manually.
-        scrollView.contentSize = CGSize(width: minZoomScale * image.size.width, height: minZoomScale * image.size.height)
-    }
-
-    private func adjustImageInsets(forViewSize viewSize: CGSize) {
-        let offsetX = max((viewSize.width - scrollView.contentSize.width) * 0.5, 0)
-        let offsetY = max((viewSize.height - scrollView.contentSize.height) * 0.5, 0)
-        scrollView.contentInset = UIEdgeInsets(top: offsetY, leading: offsetX, bottom: 0, trailing: 0)
     }
 
     private func loadImage() {
         dataSource?.loadImage(forImageViewController: self, dataCallback: { [weak self] image in
-            guard let self = self else { return }
-            self.imageView.image = image
-            self.image = image
-            self.calculateZoomLimits(forViewSize: self.view.bounds.size)
-            self.adjustImageInsets(forViewSize: self.view.bounds.size)
+            self?.imageView.image = image
         })
     }
 
-    // MARK: - Tap gesture handling
-
-    @objc private func onDoubleTap(_ recognizer: UIGestureRecognizer) {
-        var newZoom: CGFloat = scrollView.zoomScale * FullscreenImageViewController.zoomStep
-        if newZoom >= scrollView.maximumZoomScale * 0.9 {
-            newZoom = scrollView.minimumZoomScale
-        }
-
-        var center = recognizer.location(in: recognizer.view)
-        center.x /= scrollView.zoomScale
-        center.y /= scrollView.zoomScale
-
-        let newRect = zoomRect(forScale: newZoom, withCenter: center)
-        scrollView.zoom(to: newRect, animated: true)
-    }
-
-    private func zoomRect(forScale scale: CGFloat, withCenter center: CGPoint) -> CGRect {
-        var zoomRect = CGRect()
-
-        zoomRect.size.height = scrollView.frame.size.height / scale;
-        zoomRect.size.width = scrollView.frame.size.width  / scale;
-
-        zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
-        zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
-
-        return zoomRect
-    }
-}
-
-extension FullscreenImageViewController: UIScrollViewDelegate {
-    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        adjustImageInsets(forViewSize: view.bounds.size)
-    }
 }
