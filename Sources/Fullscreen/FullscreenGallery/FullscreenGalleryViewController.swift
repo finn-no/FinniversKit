@@ -11,7 +11,7 @@ public protocol FullscreenGalleryViewControllerDataSource: class {
 }
 
 public protocol FullscreenGalleryViewControllerDelegate: class {
-
+    func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, intendsToDismissFromImageWithIndex index: Int)
 }
 
 public class FullscreenGalleryViewController: UIPageViewController {
@@ -181,6 +181,9 @@ public class FullscreenGalleryViewController: UIPageViewController {
     // MARK: - View interactions
 
     @objc private func dismissButtonTapped() {
+        let currentIndex = (viewControllers?.first as? FullscreenImageViewController)?.imageIndex ?? 0
+        galleryDelegate?.fullscreenGalleryViewController(self, intendsToDismissFromImageWithIndex: currentIndex)
+
         dismiss(animated: true)
     }
 

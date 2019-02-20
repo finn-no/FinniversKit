@@ -217,6 +217,17 @@ class FullscreenGalleryDemoView: UIView {
             viewController.present(gallery, animated: true)
         }
     }
+
+    private func highlightThumbnail(atIndexPath indexPath: IndexPath) {
+        var pathsToUpdate = [indexPath]
+
+        if let lastSelected = selectedIndex, lastSelected != indexPath.row {
+            pathsToUpdate.append(IndexPath(row: lastSelected, section: 0))
+        }
+
+        selectedIndex = indexPath.row
+        collectionView.reloadItems(at: pathsToUpdate)
+    }
 }
 
 // MARK: - FullscreenGallery
@@ -238,7 +249,10 @@ extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDataSource {
 }
 
 extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDelegate {
-
+    public func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, intendsToDismissFromImageWithIndex index: Int) {
+        highlightThumbnail(atIndexPath: IndexPath(row: index, section: 0))
+        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: false)
+    }
 }
 
 // MARK: - UICollectionView
@@ -258,14 +272,7 @@ extension FullscreenGalleryDemoView: UICollectionViewDataSource {
 
 extension FullscreenGalleryDemoView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var pathsToUpdate = [indexPath]
-
-        if let lastSelected = selectedIndex, lastSelected != indexPath.row {
-            pathsToUpdate.append(IndexPath(row: lastSelected, section: 0))
-        }
-
-        selectedIndex = indexPath.row
-        collectionView.reloadItems(at: pathsToUpdate)
+        highlightThumbnail(atIndexPath: indexPath)
         displayFullscreenGallery(forIndex: indexPath.row)
     }
 }
