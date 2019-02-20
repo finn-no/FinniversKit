@@ -20,7 +20,7 @@ class FullscreenImageViewController: UIViewController {
 
     private lazy var imageView: FullscreenImageView = {
         let imageView = FullscreenImageView()
-        // imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = false
         return imageView
     }()
 

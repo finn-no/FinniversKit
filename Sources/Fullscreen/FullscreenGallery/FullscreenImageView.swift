@@ -22,6 +22,7 @@ class FullscreenImageView: UIScrollView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = false
         return imageView
     }()
 
