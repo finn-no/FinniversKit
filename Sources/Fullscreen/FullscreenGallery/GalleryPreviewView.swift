@@ -27,7 +27,7 @@ class GalleryPreviewView: UIView {
 
     // MARK: - Private properties
 
-    private let cellSpacing: CGFloat = 10.0
+    private let cellSpacing: CGFloat = .mediumSpacing
 
     private lazy var cellSize: CGSize = {
         switch (UIDevice.current.userInterfaceIdiom) {

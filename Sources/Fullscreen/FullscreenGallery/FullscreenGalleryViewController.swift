@@ -340,6 +340,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
     }
 
     func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat {
+        let spacing: CGFloat = .mediumSpacing
         let previewHeight = previewView.frame.height
         var bottomInset: CGFloat = 0.0
 
@@ -347,7 +348,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
             bottomInset = view.safeAreaInsets.bottom
         }
 
-        return previewHeight + bottomInset
+        return previewHeight + bottomInset + spacing
     }
 }
 
