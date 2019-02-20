@@ -22,7 +22,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private let dismissButtonTitle = "Ferdig"
     private var viewModel: FullscreenGalleryViewModel?
     private var previewViewVisible: Bool
-    private var hasPerformedInitialViewLayout: Bool = false
+    private var hasPerformedInitialPreviewScroll: Bool = false
 
     private lazy var captionLabel: Label = {
         let label = Label(style: .title4)
@@ -150,16 +150,13 @@ public class FullscreenGalleryViewController: UIPageViewController {
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        if !hasPerformedInitialViewLayout {
+        if !hasPerformedInitialPreviewScroll {
             if let currentIndex = (viewControllers?.first as? FullscreenImageViewController)?.imageIndex {
-                // Without the layoutIfNeeded()-call, it appears to be quite random whether the
-                // scroll-call will have any effect or not.
                 previewView.layoutIfNeeded()
                 previewView.scrollToItem(atIndex: currentIndex, animated: false)
+                hasPerformedInitialPreviewScroll = true
             }
         }
-
-        hasPerformedInitialViewLayout = true
     }
 
     public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
