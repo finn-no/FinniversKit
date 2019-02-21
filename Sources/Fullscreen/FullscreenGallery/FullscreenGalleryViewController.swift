@@ -46,8 +46,9 @@ public class FullscreenGalleryViewController: UIPageViewController {
         let removeImage = UIImage(named: .remove)
         button.setImage(removeImage, for: .normal)
         button.setImage(removeImage, for: .selected)
-        button.imageView?.fillInSuperview()
-        button.imageView?.contentMode = .scaleToFill
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
 
