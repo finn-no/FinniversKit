@@ -18,17 +18,17 @@ class FullscreenImageViewController: UIViewController {
 
     private weak var dataSource: FullscreenImageViewControllerDataSource?
 
-    private lazy var imageView: FullscreenImageView = {
-        let imageView = FullscreenImageView()
-        imageView.clipsToBounds = false
-        return imageView
-    }()
-
     private var shouldAdjustForPreviewView: Bool = false
 
     // MARK: - Public properties
 
     public let imageIndex: Int
+
+    private(set) lazy var imageView: FullscreenImageView = {
+        let imageView = FullscreenImageView()
+        imageView.clipsToBounds = false
+        return imageView
+    }()
 
     // MARK: - Init
 

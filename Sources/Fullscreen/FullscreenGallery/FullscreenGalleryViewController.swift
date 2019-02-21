@@ -141,7 +141,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
         NSLayoutConstraint.activate([
             captionLabel.centerXAnchor.constraint(equalTo: safeLayoutGuide.centerXAnchor),
-            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: safeLayoutGuide.widthAnchor, constant: -(2 * .mediumLargeSpacing)),
+            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: safeLayoutGuide.widthAnchor, constant: -(2 * CGFloat.mediumLargeSpacing)),
             captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeLayoutGuide.bottomAnchor, constant: -.mediumSpacing),
             captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.mediumSpacing),
 
@@ -390,5 +390,16 @@ extension FullscreenGalleryViewController: GalleryPreviewViewDelegate {
     func galleryPreviewView(_ previewView: GalleryPreviewView, selectedImageAtIndex index: Int) {
         transitionToImage(atIndex: index, animated: true)
         previewView.scrollToItem(atIndex: index, animated: true)
+    }
+}
+
+// MARK: - FullscreenGalleryTransitionDestinationDelegate
+extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinationDelegate {
+    public func viewForFullscreenGalleryTransition() -> UIView {
+        guard let imageController = (viewControllers?.first as? FullscreenImageViewController) else {
+            return view
+        }
+
+        return imageController.imageView
     }
 }

@@ -117,6 +117,7 @@ class FullscreenGalleryDemoView: UIView {
     // MARK: - Private properties
 
     private let viewModel = FullscreenGalleryDemoViewModel()
+    private lazy var transitionController = FullscreenGalleryTransitioningController(withSourceDelegate: self)
 
     private lazy var collectionCellHeight: CGFloat = {
         switch (UIDevice.current.userInterfaceIdiom) {
@@ -214,6 +215,8 @@ class FullscreenGalleryDemoView: UIView {
             let gallery = FullscreenGalleryViewController(thumbnailsInitiallyVisible: thumbnailSwitch.isOn)
             gallery.galleryDataSource = self
             gallery.galleryDelegate = self
+            gallery.transitioningDelegate = transitionController
+
             viewController.present(gallery, animated: true)
         }
     }
@@ -252,6 +255,20 @@ extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDelegate {
     public func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, intendsToDismissFromImageWithIndex index: Int) {
         highlightThumbnail(atIndexPath: IndexPath(row: index, section: 0))
         collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: false)
+    }
+}
+
+// MARK: - FullscreenGalleryTransitionSourceDelegate
+
+extension FullscreenGalleryDemoView: FullscreenGalleryTransitionSourceDelegate {
+    public func viewForFullscreenGalleryTransition() -> UIView {
+        let imageIndex = selectedIndex ?? 0
+
+        guard let cell = collectionView.cellForItem(at: IndexPath(row: imageIndex, section: 0)) else {
+            return collectionView
+        }
+
+        return cell.contentView
     }
 }
 
