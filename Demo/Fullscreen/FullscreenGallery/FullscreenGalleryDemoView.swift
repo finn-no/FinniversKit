@@ -26,13 +26,17 @@ struct FullscreenGalleryDemoViewModel: FullscreenGalleryViewModel {
 }
 
 class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
-    private(set) var imageUrl: String?
+    private var imageUrl: String?
 
-    private lazy var imageView: UIImageView = {
+    private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .black
         return imageView
     }()
+
+    private var aspectRatioConstraint: NSLayoutConstraint?
 
     // MARK: - Init
 
@@ -52,10 +56,13 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
         setFocused(false)
 
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
+            imageView.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            imageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            imageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .mediumSpacing),
+            imageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+
+            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
 
@@ -80,10 +87,28 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
         imageUrl = url
 
         downloadImage(withUrl: url, dataCallback: { [weak self] (fetchedUrl, image) in
-            if fetchedUrl == self?.imageUrl {
-                self?.imageView.image = image
+            guard let self = self else { return }
+            if fetchedUrl == self.imageUrl {
+                self.imageView.image = image
+
+                if let image = image {
+                    if let oldConstraint = self.aspectRatioConstraint {
+                        self.imageView.removeConstraint(oldConstraint)
+                    }
+
+                    let newConstraint = self.createAspectRatioConstraint(forImage: image)
+                    self.imageView.addConstraint(newConstraint)
+                    self.aspectRatioConstraint = newConstraint
+                }
             }
         })
+    }
+
+    // MARK: - Private methods
+
+    private func createAspectRatioConstraint(forImage image: UIImage) -> NSLayoutConstraint {
+        let aspectRatio = image.size.width / image.size.height
+        return NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: imageView, attribute: .height, multiplier: aspectRatio, constant: 0.0)
     }
 }
 
@@ -264,11 +289,12 @@ extension FullscreenGalleryDemoView: FullscreenGalleryTransitionSourceDelegate {
     public func viewForFullscreenGalleryTransition() -> UIView {
         let imageIndex = selectedIndex ?? 0
 
-        guard let cell = collectionView.cellForItem(at: IndexPath(row: imageIndex, section: 0)) else {
-            return collectionView
+        let cell = collectionView.cellForItem(at: IndexPath(row: imageIndex, section: 0))!
+        guard let previewCell = cell as? FullscreenGalleryDemoPreviewCell else {
+            fatalError()
         }
 
-        return cell.contentView
+        return previewCell.imageView
     }
 }
 
