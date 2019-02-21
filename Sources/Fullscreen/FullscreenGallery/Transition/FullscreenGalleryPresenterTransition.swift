@@ -33,26 +33,28 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
         let sourceView = sourceDelegate.viewForFullscreenGalleryTransition()
         let sourceFrame = sourceView.convert(sourceView.bounds, to: transitionContext.containerView)
 
-        let sourceSnapshot = sourceView.snapshotView(afterScreenUpdates: false)!
-        sourceSnapshot.frame = sourceFrame
-
         let destinationView = destinationDelegate.viewForFullscreenGalleryTransition()
         let destinationFrame = destinationView.convert(destinationView.bounds, to: transitionContext.containerView)
+
+        let transitionView = destinationView.snapshotView(afterScreenUpdates: true)!
+        transitionView.frame = sourceFrame
 
         sourceView.isHidden = true
         destinationView.isHidden = true
 
-        transitionContext.containerView.addSubview(sourceSnapshot)
+        transitionContext.containerView.addSubview(toViewController.view)
+        transitionContext.containerView.addSubview(transitionView)
+
+        destinationDelegate.prepareForTransition()
         let duration = self.transitionDuration(using: transitionContext)
 
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, animations: {
-            sourceSnapshot.frame = destinationFrame
+            transitionView.frame = destinationFrame
+            self.destinationDelegate.performTransitionAnimation()
         }, completion: { _ in
-            sourceSnapshot.removeFromSuperview()
+            transitionView.removeFromSuperview()
             sourceView.isHidden = false
             destinationView.isHidden = false
-
-            transitionContext.containerView.addSubview(toViewController.view)
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
     }

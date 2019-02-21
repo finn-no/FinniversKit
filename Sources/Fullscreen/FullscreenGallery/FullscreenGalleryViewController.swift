@@ -16,6 +16,15 @@ public protocol FullscreenGalleryViewControllerDelegate: class {
 
 public class FullscreenGalleryViewController: UIPageViewController {
 
+    // MARK: - Public properties
+
+    public weak var galleryDataSource: FullscreenGalleryViewControllerDataSource?
+    public weak var galleryDelegate: FullscreenGalleryViewControllerDelegate?
+
+    public override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
     // MARK: - Private properties
 
     private let captionFadeDuration = 0.2
@@ -86,15 +95,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
         }
     }()
 
-    // MARK: - Public properties
-
-    public weak var galleryDataSource: FullscreenGalleryViewControllerDataSource?
-    public weak var galleryDelegate: FullscreenGalleryViewControllerDelegate?
-
-    public override var prefersStatusBarHidden: Bool {
-        return true
-    }
-
     // MARK: - Init
 
     required init?(coder aDecoder: NSCoder) {
@@ -108,8 +108,10 @@ public class FullscreenGalleryViewController: UIPageViewController {
     public init(thumbnailsInitiallyVisible previewVisible: Bool) {
         self.previewViewVisible = previewVisible
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
-        self.delegate = self
-        self.dataSource = self
+
+        modalPresentationStyle = .overCurrentContext
+        delegate = self
+        dataSource = self
     }
 
     convenience init() {
@@ -402,5 +404,13 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
 
         imageController.fullscreenImageView.layoutIfNeeded()
         return imageController.fullscreenImageView.imageView
+    }
+
+    public func prepareForTransition() {
+        view.alpha = 0.0
+    }
+
+    public func performTransitionAnimation() {
+        view.alpha = 1.0
     }
 }
