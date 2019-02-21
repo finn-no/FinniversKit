@@ -29,6 +29,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     private let captionFadeDuration = 0.2
     private let dismissButtonSize: CGFloat = 30.0
+    private let previewViewInitiallyVisible: Bool
 
     private var viewModel: FullscreenGalleryViewModel?
     private var previewViewVisible: Bool
@@ -106,6 +107,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     }
 
     public init(thumbnailsInitiallyVisible previewVisible: Bool) {
+        self.previewViewInitiallyVisible = previewVisible
         self.previewViewVisible = previewVisible
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
 
@@ -408,9 +410,17 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
 
     public func prepareForTransition() {
         view.alpha = 0.0
+
+        if previewViewInitiallyVisible {
+            setThumbnailPreviewsVisible(false, animated: false)
+        }
     }
 
     public func performTransitionAnimation() {
         view.alpha = 1.0
+
+        if previewViewInitiallyVisible {
+            setThumbnailPreviewsVisible(true, animated: false)
+        }
     }
 }
