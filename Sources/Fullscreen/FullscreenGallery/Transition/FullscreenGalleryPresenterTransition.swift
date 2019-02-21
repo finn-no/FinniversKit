@@ -22,7 +22,7 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
     // MARK: - UIViewControllerAnimatedTransitioning
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 1.0
+        return 0.75
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -31,17 +31,22 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
         }
 
         let sourceView = sourceDelegate.viewForFullscreenGalleryTransition()
+        let sourceFrame = sourceView.convert(sourceView.bounds, to: transitionContext.containerView)
+
         let sourceSnapshot = sourceView.snapshotView(afterScreenUpdates: false)!
-        sourceView.isHidden = true
+        sourceSnapshot.frame = sourceFrame
 
         let destinationView = destinationDelegate.viewForFullscreenGalleryTransition()
+        let destinationFrame = destinationView.convert(destinationView.bounds, to: transitionContext.containerView)
+
+        sourceView.isHidden = true
         destinationView.isHidden = true
 
         transitionContext.containerView.addSubview(sourceSnapshot)
         let duration = self.transitionDuration(using: transitionContext)
 
-        UIView.animate(withDuration: duration, animations: {
-            sourceSnapshot.frame = destinationView.frame
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, animations: {
+            sourceSnapshot.frame = destinationFrame
         }, completion: { _ in
             sourceSnapshot.removeFromSuperview()
             sourceView.isHidden = false
