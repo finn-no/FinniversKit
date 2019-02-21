@@ -86,7 +86,7 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
     public func configure(withUrl url: String) {
         imageUrl = url
 
-        downloadImage(withUrl: url, dataCallback: { [weak self] (fetchedUrl, image) in
+        ImageDownloader.shared.downloadImage(withUrl: url, dataCallback: { [weak self] (fetchedUrl, image) in
             guard let self = self else { return }
             if fetchedUrl == self.imageUrl {
                 self.imageView.image = image
@@ -112,23 +112,34 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
     }
 }
 
-private func downloadImage(withUrl urlString: String, dataCallback: @escaping (String, UIImage?) -> Void) {
-    guard let url = URL(string: urlString) else {
-        dataCallback(urlString, nil)
-        return
-    }
+private class ImageDownloader {
+    static let shared = ImageDownloader()
 
-    let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-        DispatchQueue.main.async {
-            if let data = data, let image = UIImage(data: data) {
-                dataCallback(urlString, image)
-            } else {
-                dataCallback(urlString, nil)
+    public var simulatedDelayMs: UInt32 = 0
+
+    public func downloadImage(withUrl urlString: String, dataCallback: @escaping (String, UIImage?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            dataCallback(urlString, nil)
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { [simulatedDelayMs] data, _, _ in
+            if simulatedDelayMs != 0 {
+                usleep(simulatedDelayMs * 1000)
+            }
+
+            DispatchQueue.main.async {
+                if let data = data, let image = UIImage(data: data) {
+                    dataCallback(urlString, image)
+                } else {
+                    dataCallback(urlString, nil)
+                }
             }
         }
+
+        task.resume()
     }
 
-    task.resume()
 }
 
 // MARK: - Demo view
@@ -178,12 +189,29 @@ class FullscreenGalleryDemoView: UIView {
         return switchView
     }()
 
-    private lazy var thumbnailHelpLabel: Label = {
+    private lazy var thumbnailLabel: Label = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textAlignment = .left
         label.text = "Show thumbnails immediately"
+        return label
+    }()
+
+    private lazy var simulateLoadingSwitch: UISwitch = {
+        let switchView = UISwitch(frame: .zero)
+        switchView.translatesAutoresizingMaskIntoConstraints = false
+        switchView.isSelected = false
+        switchView.addTarget(self, action: #selector(loadSimulationSwitchToggled), for: .valueChanged)
+        return switchView
+    }()
+
+    private lazy var simulateLoadingLabel: Label = {
+        let label = Label(style: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.text = "Simulate 200ms image load delay"
         return label
     }()
 
@@ -211,7 +239,9 @@ class FullscreenGalleryDemoView: UIView {
     private func setup() {
         addSubview(collectionView)
         addSubview(thumbnailSwitch)
-        addSubview(thumbnailHelpLabel)
+        addSubview(thumbnailLabel)
+        addSubview(simulateLoadingSwitch)
+        addSubview(simulateLoadingLabel)
         addSubview(helpLabel)
 
         NSLayoutConstraint.activate([
@@ -223,8 +253,14 @@ class FullscreenGalleryDemoView: UIView {
             thumbnailSwitch.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .largeSpacing),
             thumbnailSwitch.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
 
-            thumbnailHelpLabel.leadingAnchor.constraint(equalTo: thumbnailSwitch.trailingAnchor, constant: .mediumLargeSpacing),
-            thumbnailHelpLabel.centerYAnchor.constraint(equalTo: thumbnailSwitch.centerYAnchor),
+            thumbnailLabel.leadingAnchor.constraint(equalTo: thumbnailSwitch.trailingAnchor, constant: .mediumLargeSpacing),
+            thumbnailLabel.centerYAnchor.constraint(equalTo: thumbnailSwitch.centerYAnchor),
+
+            simulateLoadingSwitch.topAnchor.constraint(equalTo: thumbnailSwitch.bottomAnchor, constant: .mediumSpacing),
+            simulateLoadingSwitch.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+
+            simulateLoadingLabel.leadingAnchor.constraint(equalTo: simulateLoadingSwitch.trailingAnchor, constant: .mediumLargeSpacing),
+            simulateLoadingLabel.centerYAnchor.constraint(equalTo: simulateLoadingSwitch.centerYAnchor),
 
             helpLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             helpLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
@@ -256,6 +292,14 @@ class FullscreenGalleryDemoView: UIView {
         selectedIndex = indexPath.row
         collectionView.reloadItems(at: pathsToUpdate)
     }
+
+    @objc private func loadSimulationSwitchToggled() {
+        if simulateLoadingSwitch.isOn {
+            ImageDownloader.shared.simulatedDelayMs = 200
+        } else {
+            ImageDownloader.shared.simulatedDelayMs = 0
+        }
+    }
 }
 
 // MARK: - FullscreenGallery
@@ -270,7 +314,7 @@ extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDataSource {
     }
 
     public func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, loadImageAtIndex index: Int, dataCallback: @escaping (UIImage?) -> Void) {
-        downloadImage(withUrl: viewModel.imageUrls[index], dataCallback: { _, image in
+        ImageDownloader.shared.downloadImage(withUrl: viewModel.imageUrls[index], dataCallback: { _, image in
             dataCallback(image)
         })
     }
