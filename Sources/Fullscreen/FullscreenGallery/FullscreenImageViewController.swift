@@ -24,7 +24,7 @@ class FullscreenImageViewController: UIViewController {
 
     public let imageIndex: Int
 
-    private(set) lazy var imageView: FullscreenImageView = {
+    private(set) lazy var fullscreenImageView: FullscreenImageView = {
         let imageView = FullscreenImageView()
         imageView.clipsToBounds = false
         return imageView
@@ -51,10 +51,10 @@ class FullscreenImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(imageView)
+        view.addSubview(fullscreenImageView)
         view.layoutIfNeeded()
 
-        imageView.frame = calculateImageFrame()
+        fullscreenImageView.frame = calculateImageFrame()
 
         loadImage()
     }
@@ -66,8 +66,8 @@ class FullscreenImageViewController: UIViewController {
             guard let self = self else { return }
 
             let newFrame = self.calculateImageFrame(fromSize: size)
-            self.imageView.superviewWillTransition(to: newFrame.size)
-            self.imageView.frame = newFrame
+            self.fullscreenImageView.superviewWillTransition(to: newFrame.size)
+            self.fullscreenImageView.frame = newFrame
         })
     }
 
@@ -75,8 +75,8 @@ class FullscreenImageViewController: UIViewController {
 
     public func updateLayout(withPreviewViewVisible previewVisible: Bool) {
         shouldAdjustForPreviewView = previewVisible
-        imageView.frame = calculateImageFrame()
-        imageView.recalculateLimitsAndBounds()
+        fullscreenImageView.frame = calculateImageFrame()
+        fullscreenImageView.recalculateLimitsAndBounds()
     }
 
     // MARK: - Private methods
@@ -101,8 +101,8 @@ class FullscreenImageViewController: UIViewController {
 
     private func loadImage() {
         dataSource?.loadImage(forImageViewController: self, dataCallback: { [weak self] image in
-            self?.imageView.layoutIfNeeded()
-            self?.imageView.image = image
+            self?.fullscreenImageView.layoutIfNeeded()
+            self?.fullscreenImageView.image = image
         })
     }
 

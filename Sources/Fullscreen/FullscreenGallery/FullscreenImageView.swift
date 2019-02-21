@@ -15,16 +15,16 @@ class FullscreenImageView: UIScrollView {
         }
     }
 
-    // MARK: - Private properties
-
-    private static let zoomStep: CGFloat = 2.0
-
-    private lazy var imageView: UIImageView = {
+    private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = false
         return imageView
     }()
+
+    // MARK: - Private properties
+
+    private static let zoomStep: CGFloat = 2.0
 
     private lazy var doubleTapRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap))

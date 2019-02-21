@@ -400,6 +400,7 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
             return view
         }
 
-        return imageController.imageView
+        imageController.fullscreenImageView.layoutIfNeeded()
+        return imageController.fullscreenImageView.imageView
     }
 }
