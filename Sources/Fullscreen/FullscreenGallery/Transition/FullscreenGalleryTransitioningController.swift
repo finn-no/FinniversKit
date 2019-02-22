@@ -43,6 +43,18 @@ public class FullscreenGalleryTransitioningController: NSObject, UIViewControlle
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil
+        guard let presenterDelegate = self.presenterDelegate else {
+            print("Cannot perform fullscreen gallery transition. The source delegate has not been set.")
+            return nil
+        }
+
+        let fallbackDelegate = dismissed as? FullscreenGalleryTransitionDestinationDelegate
+        guard let destinationDelegate = self.destinationDelegate ?? fallbackDelegate else {
+            print("Cannot perform fullscreen gallery transition. No destination delegate has been set, and the " +
+                "dismissed UIViewController cannot be used as fallback.")
+            return nil
+        }
+
+        return FullscreenGalleryDismissalTransition(toPresenter: presenterDelegate, fromDestination: destinationDelegate)
     }
 }

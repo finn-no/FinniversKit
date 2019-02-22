@@ -13,7 +13,13 @@ protocol FullscreenImageViewControllerDataSource: class {
 protocol FullscreenImageViewControllerDelegate: class {
     func fullscreenImageViewControllerDidBeginPanning(_ vc: FullscreenImageViewController)
     func fullscreenImageViewControllerDidPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint)
-    func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint)
+
+    /// Called by the FullscreenImageViewController when the panning gesture on the primary image view has ended.
+    ///
+    /// - Returns
+    ///   True if the FullscreenImageViewController should animate the primary image view back into position.
+    ///   False otherwise.
+    func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool
 }
 
 class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelegate {
@@ -146,14 +152,14 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
             fullscreenImageView.frame = CGRect(x: pos.x, y: pos.y, width: size.width, height: size.height)
             delegate?.fullscreenImageViewControllerDidPan(self, withTranslation: translation)
 
-        case .ended:
+        case .ended, .cancelled, .failed:
             let translation = panGesture.translation(in: fullscreenImageView)
             let velocity = panGesture.velocity(in: fullscreenImageView)
-            delegate?.fullscreenImageViewControllerDidEndPan(self, withTranslation: translation, velocity: velocity)
-            animateBack()
+            let shouldAnimateBack = delegate?.fullscreenImageViewControllerDidEndPan(self, withTranslation: translation, velocity: velocity)
 
-        case .cancelled, .failed:
-            animateBack()
+            if shouldAnimateBack ?? true {
+                animateBack()
+            }
 
         default:
             break

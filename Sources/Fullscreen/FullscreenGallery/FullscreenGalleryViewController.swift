@@ -410,15 +410,17 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
         backgroundView.alpha = 1.0 - min(0.5, ratio / 2.0)
     }
 
-    func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) {
+    func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool {
         print("pan end! t=[\(translation) [l=[\(translation.length())]], v=[\(velocity) [l=[\(velocity.length())]]")
 
         if translation.length() >= 200 || velocity.length() >= 100 {
             dismiss(animated: true)
+            return false
         } else {
             UIView.animate(withDuration: 0.3, animations: {
                 self.backgroundView.alpha = 1.0
             })
+            return true
         }
     }
 }
@@ -471,6 +473,9 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
             if previewViewInitiallyVisible {
                 setThumbnailPreviewsVisible(true, animated: false)
             }
+        } else {
+            view.alpha = 0.0
+            setThumbnailPreviewsVisible(false, animated: false)
         }
     }
 }

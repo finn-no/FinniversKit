@@ -49,7 +49,7 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
         transitionContext.containerView.addSubview(transitionView)
 
         destinationDelegate.prepareForTransition(presenting: true)
-        let duration = self.transitionDuration(using: transitionContext)
+        let duration = transitionDuration(using: transitionContext)
 
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, animations: {
             transitionView.frame = destinationFrame

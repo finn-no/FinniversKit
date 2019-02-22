@@ -322,8 +322,10 @@ extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDataSource {
 
 extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDelegate {
     public func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, intendsToDismissFromImageWithIndex index: Int) {
-        highlightThumbnail(atIndexPath: IndexPath(row: index, section: 0))
-        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: false)
+        let indexPath = IndexPath(row: index, section: 0)
+        highlightThumbnail(atIndexPath: indexPath)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        collectionView.reloadItems(at: [indexPath])
     }
 }
 
@@ -333,7 +335,10 @@ extension FullscreenGalleryDemoView: FullscreenGalleryTransitionPresenterDelegat
     public func viewForFullscreenGalleryTransition() -> UIView {
         let imageIndex = selectedIndex ?? 0
 
-        let cell = collectionView.cellForItem(at: IndexPath(row: imageIndex, section: 0))!
+        guard let cell = collectionView.cellForItem(at: IndexPath(row: imageIndex, section: 0)) else {
+            return collectionView
+        }
+
         guard let previewCell = cell as? FullscreenGalleryDemoPreviewCell else {
             fatalError()
         }
