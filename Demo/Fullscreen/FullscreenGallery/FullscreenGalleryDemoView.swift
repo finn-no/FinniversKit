@@ -330,7 +330,7 @@ extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDelegate {
 // MARK: - FullscreenGalleryTransitionSourceDelegate
 
 extension FullscreenGalleryDemoView: FullscreenGalleryTransitionSourceDelegate {
-    public func viewForFullscreenGalleryTransition() -> UIView {
+    public func viewForFullscreenGalleryTransitionAsSource() -> UIView {
         let imageIndex = selectedIndex ?? 0
 
         let cell = collectionView.cellForItem(at: IndexPath(row: imageIndex, section: 0))!
@@ -340,6 +340,9 @@ extension FullscreenGalleryDemoView: FullscreenGalleryTransitionSourceDelegate {
 
         return previewCell.imageView
     }
+
+    public func prepareForTransitionAsSource() { }
+    public func performTransitionAnimationAsSource() { }
 }
 
 // MARK: - UICollectionView

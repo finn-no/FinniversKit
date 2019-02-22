@@ -405,7 +405,7 @@ extension FullscreenGalleryViewController: GalleryPreviewViewDelegate {
 
 // MARK: - FullscreenGalleryTransitionDestinationDelegate
 extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinationDelegate {
-    public func viewForFullscreenGalleryTransition() -> UIView {
+    public func viewForFullscreenGalleryTransitionAsDestination() -> UIView {
         guard let imageController = currentImageViewController() else {
             return view
         }
@@ -413,7 +413,7 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
         return imageController.fullscreenImageView.imageView
     }
 
-    public func prepareForTransition() {
+    public func prepareForTransitionAsDestination() {
         view.alpha = 0.0
 
         if previewViewInitiallyVisible {
@@ -421,7 +421,7 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
         }
     }
 
-    public func performTransitionAnimation() {
+    public func performTransitionAnimationAsDestination() {
         view.alpha = 1.0
 
         if previewViewInitiallyVisible {

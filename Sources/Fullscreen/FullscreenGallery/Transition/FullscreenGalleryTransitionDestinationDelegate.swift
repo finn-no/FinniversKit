@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol FullscreenGalleryTransitionDestinationDelegate: class {
-    func viewForFullscreenGalleryTransition() -> UIView
-    func prepareForTransition()
-    func performTransitionAnimation()
+    func viewForFullscreenGalleryTransitionAsDestination() -> UIView
+    func prepareForTransitionAsDestination()
+    func performTransitionAnimationAsDestination()
 }
