@@ -71,6 +71,7 @@ public class UserAdManagementActionCell: UITableViewCell {
         contentView.addSubview(separator)
         contentView.addSubview(iconView)
         contentView.addSubview(titleLabel)
+        model.shouldShowChevron ? contentView.addSubview(chevronView) : chevronView.removeFromSuperview()
 
         let hairLineSize = 1.0/UIScreen.main.scale
 
@@ -90,6 +91,9 @@ public class UserAdManagementActionCell: UITableViewCell {
 
         // Note, not all combination of model.properties are supported, as the Model will only allow
         // certain combinations, based on the ActionType
+
+        // TODO: Probably possible to avoid duplication for stuff like chevron, it
+        // can be checked on its own...
         if model.hasSwitch {
             // TODO: The type will infer what the toggle isOn status should be
             contentView.addSubview(toggle)
@@ -98,7 +102,6 @@ public class UserAdManagementActionCell: UITableViewCell {
                 toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                 titleLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: 8),
                 titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
             ]
         } else if model.description != nil {
             descriptionLabel.text = model.description
@@ -106,15 +109,9 @@ public class UserAdManagementActionCell: UITableViewCell {
             constraints += [
                 descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
                 descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
-                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)
             ]
             if model.shouldShowChevron {
-                contentView.addSubview(chevronView)
                 constraints += [
-                    chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-                    chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                    chevronView.widthAnchor.constraint(equalToConstant: 12),
-                    chevronView.heightAnchor.constraint(equalToConstant: 20),
                     descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
                 ]
             } else {
@@ -122,21 +119,24 @@ public class UserAdManagementActionCell: UITableViewCell {
                     descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16),
                 ]
             }
-        } else if model.shouldShowChevron {
+        }
+
+        if model.shouldShowChevron {
             contentView.addSubview(chevronView)
             constraints += [
-                chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -  16),
+                chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                 chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                 chevronView.widthAnchor.constraint(equalToConstant: 12),
                 chevronView.heightAnchor.constraint(equalToConstant: 20),
                 titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8),
-                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
-            ]
-        } else {
-            constraints += [
-                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
             ]
         }
+        if model.description == nil {
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
+        } else {
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)
+        }
+
         NSLayoutConstraint.activate(constraints)
     }
 
