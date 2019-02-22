@@ -14,6 +14,10 @@ extension CGPoint {
         return CGPoint(x: point.x * scalar, y: point.y * scalar)
     }
 
+    static func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
+        return CGPoint(x: point.x / scalar, y: point.y / scalar)
+    }
+
     static func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
     }

@@ -16,6 +16,8 @@ public class FullscreenGalleryTransitioningController: NSObject, UIViewControlle
     ///   this property.
     public weak var destinationDelegate: FullscreenGalleryTransitionDestinationDelegate?
 
+    public var dismissVelocity: CGPoint?
+
     // MARK: - Init
 
     public init(withPresenterDelegate presenterDelegate : FullscreenGalleryTransitionPresenterDelegate) {
@@ -55,6 +57,8 @@ public class FullscreenGalleryTransitioningController: NSObject, UIViewControlle
             return nil
         }
 
-        return FullscreenGalleryDismissalTransition(toPresenter: presenterDelegate, fromDestination: destinationDelegate)
+        let transition = FullscreenGalleryDismissalTransition(toPresenter: presenterDelegate, fromDestination: destinationDelegate)
+        transition.dismissVelocity = dismissVelocity
+        return transition
     }
 }

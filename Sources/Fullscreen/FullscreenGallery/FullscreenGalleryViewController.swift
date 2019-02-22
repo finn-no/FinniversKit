@@ -103,6 +103,10 @@ public class FullscreenGalleryViewController: UIPageViewController {
         }
     }()
 
+    private var galleryTransitioningController: FullscreenGalleryTransitioningController? {
+        return transitioningDelegate as? FullscreenGalleryTransitioningController
+    }
+
     // MARK: - Init
 
     required init?(coder aDecoder: NSCoder) {
@@ -202,6 +206,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         let currentIndex = currentImageViewController()?.imageIndex ?? 0
         galleryDelegate?.fullscreenGalleryViewController(self, intendsToDismissFromImageWithIndex: currentIndex)
 
+        galleryTransitioningController?.dismissVelocity = nil
         dismiss(animated: true)
     }
 
@@ -414,6 +419,8 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
         print("pan end! t=[\(translation) [l=[\(translation.length())]], v=[\(velocity) [l=[\(velocity.length())]]")
 
         if translation.length() >= 200 || velocity.length() >= 100 {
+            galleryTransitioningController?.dismissVelocity = velocity
+
             dismiss(animated: true)
             return false
         } else {
