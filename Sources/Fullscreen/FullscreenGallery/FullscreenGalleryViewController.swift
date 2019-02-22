@@ -301,7 +301,9 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
             return nil
         }
 
-        let vc = FullscreenImageViewController(imageIndex: index, dataSource: self)
+        let vc = FullscreenImageViewController(imageIndex: index)
+        vc.delegate = self
+        vc.dataSource = self
         vc.updateLayout(withPreviewViewVisible: previewViewVisible)
         return vc
     }
@@ -377,6 +379,29 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
         }
 
         return previewHeight + bottomInset + spacing
+    }
+}
+
+// MARK: - FullscreenImageViewControllerDelegate
+extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate {
+    func fullscreenImageViewControllerDidBeginPanning(_ vc: FullscreenImageViewController) {
+        print("begin")
+    }
+
+    func fullscreenImageViewControllerDidPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint) {
+        NSLog(".")
+    }
+
+    func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) {
+        let message: String
+        if translation.length() >= 200 || velocity.length() >= 100 {
+            message = "Dismissing!"
+            dismiss(animated: true)
+        } else {
+            message = "not doing anything"
+        }
+
+        print("end! t=[\(translation) [l=[\(translation.length())]], v=[\(velocity) [l=[\(velocity.length())]] \(message)")
     }
 }
 

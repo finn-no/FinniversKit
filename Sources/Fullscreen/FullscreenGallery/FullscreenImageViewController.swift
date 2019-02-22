@@ -10,17 +10,18 @@ protocol FullscreenImageViewControllerDataSource: class {
     func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat
 }
 
-class FullscreenImageViewController: UIViewController {
+protocol FullscreenImageViewControllerDelegate: class {
+    func fullscreenImageViewControllerDidBeginPanning(_ vc: FullscreenImageViewController)
+    func fullscreenImageViewControllerDidPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint)
+    func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint)
+}
 
-    // MARK: - Private properties
-
-    private static let zoomStep: CGFloat = 2.0
-
-    private weak var dataSource: FullscreenImageViewControllerDataSource?
-
-    private var shouldAdjustForPreviewView: Bool = false
+class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelegate {
 
     // MARK: - Public properties
+
+    public weak var dataSource: FullscreenImageViewControllerDataSource?
+    public weak var delegate: FullscreenImageViewControllerDelegate?
 
     public let imageIndex: Int
 
@@ -29,6 +30,22 @@ class FullscreenImageViewController: UIViewController {
         imageView.clipsToBounds = false
         return imageView
     }()
+
+    // MARK: - Private properties
+
+    private static let zoomStep: CGFloat = 2.0
+
+    private var shouldAdjustForPreviewView: Bool = false
+
+    private lazy var panGestureRecognizer: UIPanGestureRecognizer = {
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        gesture.maximumNumberOfTouches = 1
+        gesture.minimumNumberOfTouches = 1
+        gesture.delegate = self
+        return gesture
+    }()
+
+    private var initialPanFrame: CGRect = .zero
 
     // MARK: - Init
 
@@ -40,8 +57,7 @@ class FullscreenImageViewController: UIViewController {
         fatalError("not implemented: init(coder:)")
     }
 
-    init(imageIndex: Int, dataSource: FullscreenImageViewControllerDataSource) {
-        self.dataSource = dataSource
+    init(imageIndex: Int) {
         self.imageIndex = imageIndex
         super.init(nibName: nil, bundle: nil)
     }
@@ -55,6 +71,7 @@ class FullscreenImageViewController: UIViewController {
         view.layoutIfNeeded()
 
         fullscreenImageView.frame = calculateImageFrame()
+        fullscreenImageView.addGestureRecognizer(panGestureRecognizer)
 
         loadImage()
     }
@@ -63,7 +80,9 @@ class FullscreenImageViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
 
         coordinator.animate(alongsideTransition: { [weak self] context in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
 
             let newFrame = self.calculateImageFrame(fromSize: size)
             self.fullscreenImageView.superviewWillTransition(to: newFrame.size)
@@ -106,4 +125,47 @@ class FullscreenImageViewController: UIViewController {
         })
     }
 
+    // MARK: - Pan gesture handling
+
+    @objc private func handlePanGesture(_ panGesture: UIPanGestureRecognizer) {
+        let animateBack = {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.fullscreenImageView.frame = self.initialPanFrame
+            })
+        }
+
+        switch (panGesture.state) {
+        case .began:
+            initialPanFrame = fullscreenImageView.frame
+            delegate?.fullscreenImageViewControllerDidBeginPanning(self)
+
+        case .changed:
+            let size = fullscreenImageView.frame.size
+            let translation = panGesture.translation(in: fullscreenImageView)
+            let pos = initialPanFrame.origin + translation
+            fullscreenImageView.frame = CGRect(x: pos.x, y: pos.y, width: size.width, height: size.height)
+            delegate?.fullscreenImageViewControllerDidPan(self, withTranslation: translation)
+
+        case .ended:
+            let translation = panGesture.translation(in: fullscreenImageView)
+            let velocity = panGesture.velocity(in: fullscreenImageView)
+            delegate?.fullscreenImageViewControllerDidEndPan(self, withTranslation: translation, velocity: velocity)
+            animateBack()
+
+        case .cancelled, .failed:
+            animateBack()
+
+        default:
+            break
+        }
+    }
+
+    // MARK: - UIGestureRecognizerDelegate
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard gestureRecognizer == panGestureRecognizer else { return false }
+
+        let translation = panGestureRecognizer.translation(in: panGestureRecognizer.view)
+        return abs(translation.x) * 2 <= abs(translation.y)
+    }
 }
