@@ -30,12 +30,16 @@ public struct AdManagementActionCellModel {
     public init(actionType: AdManagementActionType, title: String, description: String? = nil) {
         let typesRequiringSwitch: [AdManagementActionType] = [.start, .stop, .dispose, .undispose]
         let typesRequiringChevron: [AdManagementActionType] = [.edit, .review, .republish]
+        let imagesForTypes: [AdManagementActionType: UIImage] = [.delete: UIImage(named: .trashcan),
+                                                                 .edit: UIImage(named: .edit),
+                                                                 .stop: UIImage(named: .hide),
+                                                                 .start: UIImage(named: .view)]
 
         self.actionType = actionType
         self.title = title
         self.description = description
         self.hasSwitch = typesRequiringSwitch.contains(actionType)
         self.shouldShowChevron = typesRequiringChevron.contains(actionType)
-        self.image = UIImage(named: .edit) // TODO
+        self.image = imagesForTypes[actionType] ?? UIImage(named: .info)
     }
 }

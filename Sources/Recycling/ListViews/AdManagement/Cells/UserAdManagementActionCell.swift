@@ -75,8 +75,8 @@ public class UserAdManagementActionCell: UITableViewCell {
             separator.heightAnchor.constraint(equalToConstant: hairLineSize),
             iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             iconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconView.widthAnchor.constraint(equalToConstant: 20),
-            iconView.heightAnchor.constraint(equalToConstant: 20),
+            iconView.widthAnchor.constraint(equalToConstant: 24),
+            iconView.heightAnchor.constraint(equalToConstant: 24),
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
             titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16),
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
