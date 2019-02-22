@@ -169,8 +169,10 @@ public class FullscreenGalleryViewController: UIPageViewController {
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
+        currentImageViewController()?.updateLayout(withPreviewViewVisible: previewViewVisible)
+
         if !hasPerformedInitialPreviewScroll {
-            if let currentIndex = (viewControllers?.first as? FullscreenImageViewController)?.imageIndex {
+            if let currentIndex = currentImageViewController()?.imageIndex {
                 previewView.layoutIfNeeded()
                 previewView.scrollToItem(atIndex: currentIndex, animated: false)
                 hasPerformedInitialPreviewScroll = true
@@ -186,7 +188,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     // MARK: - View interactions
 
     @objc private func dismissButtonTapped() {
-        let currentIndex = (viewControllers?.first as? FullscreenImageViewController)?.imageIndex ?? 0
+        let currentIndex = currentImageViewController()?.imageIndex ?? 0
         galleryDelegate?.fullscreenGalleryViewController(self, intendsToDismissFromImageWithIndex: currentIndex)
 
         dismiss(animated: true)
@@ -199,7 +201,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     // MARK: - View modifications
 
     private func transitionToImage(atIndex index: Int, animated: Bool) {
-        if let currentIndex = (viewControllers?.first as? FullscreenImageViewController)?.imageIndex {
+        if let currentIndex = currentImageViewController()?.imageIndex {
             guard currentIndex != index else {
                 return
             }
@@ -208,7 +210,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         setCaptionLabel(index: index)
 
         if let newController = imageViewController(forIndex: index) {
-            if animated, let currentController = viewControllers?.first as? FullscreenImageViewController {
+            if animated, let currentController = currentImageViewController() {
                 UIView.animate(withDuration: 0.15, animations: {
                     currentController.view.alpha = 0.0
                 }, completion: { _ in
@@ -243,7 +245,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         let performTransition = {
             self.view.layoutIfNeeded()
             self.viewControllers?.forEach({ vc in
-                guard let imageVc = vc as? FullscreenImageViewController else { return }
+                guard let imageVc = self.currentImageViewController() else { return }
                 imageVc.updateLayout(withPreviewViewVisible: visible)
             })
         }
@@ -269,6 +271,10 @@ public class FullscreenGalleryViewController: UIPageViewController {
         UIView.transition(with: captionLabel, duration: captionFadeDuration, options: .transitionCrossDissolve, animations: { [weak self] in
             self?.captionLabel.text = caption
         })
+    }
+
+    private func currentImageViewController() -> FullscreenImageViewController? {
+        return viewControllers?.first as? FullscreenImageViewController
     }
 }
 
@@ -400,11 +406,10 @@ extension FullscreenGalleryViewController: GalleryPreviewViewDelegate {
 // MARK: - FullscreenGalleryTransitionDestinationDelegate
 extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinationDelegate {
     public func viewForFullscreenGalleryTransition() -> UIView {
-        guard let imageController = (viewControllers?.first as? FullscreenImageViewController) else {
+        guard let imageController = currentImageViewController() else {
             return view
         }
 
-        imageController.fullscreenImageView.layoutIfNeeded()
         return imageController.fullscreenImageView.imageView
     }
 

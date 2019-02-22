@@ -30,6 +30,10 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
             return
         }
 
+        transitionContext.containerView.addSubview(toViewController.view)
+        toViewController.view.setNeedsLayout()
+        toViewController.view.layoutIfNeeded()
+
         let sourceView = sourceDelegate.viewForFullscreenGalleryTransition()
         let sourceFrame = sourceView.convert(sourceView.bounds, to: transitionContext.containerView)
 
@@ -42,7 +46,6 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
         sourceView.isHidden = true
         destinationView.isHidden = true
 
-        transitionContext.containerView.addSubview(toViewController.view)
         transitionContext.containerView.addSubview(transitionView)
 
         destinationDelegate.prepareForTransition()
