@@ -23,12 +23,12 @@ public class AdManagementDemoView: UIView {
 
     private let actionCellModels: [[AdManagementActionCellModel]] = [
         [
-        AdManagementActionCellModel(actionType: .delete, title: "Bubbalub", description: "Rancho Cuccamonga"),
-        AdManagementActionCellModel(actionType: .stop, title: "Bubbalub")
+            AdManagementActionCellModel(actionType: .delete, title: "Braccas meas vescimini", description: "Pulvis et umbra sumus"),
+            AdManagementActionCellModel(actionType: .stop, title: "Non est ad astra mollis e terris via")
         ],
         [
-            AdManagementActionCellModel(actionType: .edit, title: "Bubbalub", description: "Rancho Cuccamonga"),
-            AdManagementActionCellModel(actionType: .republish, title: "Bubbalub")
+            AdManagementActionCellModel(actionType: .edit, title: "Non nobis solum nati sumus", description: "Aut viam inveniam aut faciam tibi"),
+            AdManagementActionCellModel(actionType: .republish, title: "Fas est ab hoste doceri")
         ]
     ]
 
