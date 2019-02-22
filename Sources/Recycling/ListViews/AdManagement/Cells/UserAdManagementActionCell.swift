@@ -113,6 +113,8 @@ public class UserAdManagementActionCell: UITableViewCell {
                 constraints += [
                     chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                     chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                    chevronView.widthAnchor.constraint(equalToConstant: 12),
+                    chevronView.heightAnchor.constraint(equalToConstant: 20),
                     descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
                 ]
             } else {
@@ -123,9 +125,9 @@ public class UserAdManagementActionCell: UITableViewCell {
         } else if model.shouldShowChevron {
             contentView.addSubview(chevronView)
             constraints += [
-                chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16),
+                chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -  16),
                 chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                chevronView.widthAnchor.constraint(equalToConstant: 20),
+                chevronView.widthAnchor.constraint(equalToConstant: 12),
                 chevronView.heightAnchor.constraint(equalToConstant: 20),
                 titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8),
                 contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)

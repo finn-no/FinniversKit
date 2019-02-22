@@ -25,6 +25,10 @@ public class AdManagementDemoView: UIView {
         [
         AdManagementActionCellModel(actionType: .delete, title: "Bubbalub", description: "Rancho Cuccamonga"),
         AdManagementActionCellModel(actionType: .stop, title: "Bubbalub")
+        ],
+        [
+            AdManagementActionCellModel(actionType: .edit, title: "Bubbalub", description: "Rancho Cuccamonga"),
+            AdManagementActionCellModel(actionType: .republish, title: "Bubbalub")
         ]
     ]
 
