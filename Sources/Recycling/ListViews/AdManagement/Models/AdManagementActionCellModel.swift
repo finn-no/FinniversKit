@@ -27,7 +27,7 @@ public struct AdManagementActionCellModel {
     let shouldShowChevron: Bool
     let image: UIImage
 
-    init(actionType: AdManagementActionType, title: String, description: String? = nil) {
+    public init(actionType: AdManagementActionType, title: String, description: String? = nil) {
         let typesRequiringSwitch: [AdManagementActionType] = [.start, .stop, .dispose, .undispose]
         let typesRequiringChevron: [AdManagementActionType] = [.edit, .review, .republish]
 

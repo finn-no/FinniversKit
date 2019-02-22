@@ -8,7 +8,7 @@ public class UserAdManagementActionCell: UITableViewCell {
     private lazy var separator: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .sardine
-        return UIView()
+        return view
     }()
 
     private lazy var iconView: UIImageView = {
@@ -44,6 +44,7 @@ public class UserAdManagementActionCell: UITableViewCell {
     private lazy var toggle: UISwitch = {
         let toggle = UISwitch(frame: .zero)
         toggle.addTarget(self, action: #selector(toggleTapped(_:)), for: .touchUpInside)
+        toggle.translatesAutoresizingMaskIntoConstraints = false
         return toggle
     }()
 
@@ -58,12 +59,14 @@ public class UserAdManagementActionCell: UITableViewCell {
 //    }
 
     public func setupWithModel(_ model: AdManagementActionCellModel) {
+        selectionStyle = .none
         if model.actionType != actionType {
             // This might force us to clear old stuff out of the way...
         }
 
         actionType = model.actionType
         titleLabel.text = model.title
+        iconView.image = model.image
 
         contentView.addSubview(separator)
         contentView.addSubview(iconView)
@@ -72,10 +75,17 @@ public class UserAdManagementActionCell: UITableViewCell {
         let hairLineSize = 1.0/UIScreen.main.scale
 
         var constraints: [NSLayoutConstraint] = [
-            separator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .largeSpacing),
+            separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: .largeSpacing),
             separator.topAnchor.constraint(equalTo: contentView.topAnchor),
-            separator.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -.largeSpacing),
-            separator.heightAnchor.constraint(equalToConstant: hairLineSize)
+            separator.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            separator.heightAnchor.constraint(equalToConstant: hairLineSize),
+            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            iconView.widthAnchor.constraint(equalToConstant: 20),
+            iconView.heightAnchor.constraint(equalToConstant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
+            titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16),
+            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
         ]
 
         // Note, not all combination of model.properties are supported, as the Model will only allow
@@ -84,22 +94,24 @@ public class UserAdManagementActionCell: UITableViewCell {
             // TODO: The type will infer what the toggle isOn status should be
             contentView.addSubview(toggle)
             constraints += [
-                toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16),
+                toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                 toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
+                titleLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: 8),
+                titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
             ]
         } else if model.description != nil {
             descriptionLabel.text = model.description
             contentView.addSubview(descriptionLabel)
             constraints += [
                 descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-                descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-                contentView.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16)
+                descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
+                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)
             ]
             if model.shouldShowChevron {
                 contentView.addSubview(chevronView)
                 constraints += [
-                    chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16),
+                    chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                     chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                     descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
                 ]
@@ -116,11 +128,11 @@ public class UserAdManagementActionCell: UITableViewCell {
                 chevronView.widthAnchor.constraint(equalToConstant: 20),
                 chevronView.heightAnchor.constraint(equalToConstant: 20),
                 titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8),
-                contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16)
+                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
             ]
         } else {
             constraints += [
-                contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16)
+                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
             ]
         }
         NSLayoutConstraint.activate(constraints)
@@ -131,7 +143,6 @@ public class UserAdManagementActionCell: UITableViewCell {
     }
 
     // MARK: - Constraints
-    
 
     // MARK: - Private functions
 
