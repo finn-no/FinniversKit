@@ -35,6 +35,13 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private var previewViewVisible: Bool
     private var hasPerformedInitialPreviewScroll: Bool = false
 
+    private lazy var backgroundView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .black
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+
     private lazy var captionLabel: Label = {
         let label = Label(style: .title4)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -132,7 +139,11 @@ public class FullscreenGalleryViewController: UIPageViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .black
+        view.backgroundColor = .clear
+        view.addSubview(backgroundView)
+        view.sendSubviewToBack(backgroundView)
+        backgroundView.fillInSuperview()
+
         view.addSubview(captionLabel)
 
         view.addSubview(dismissButton)
@@ -386,10 +397,19 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate {
     func fullscreenImageViewControllerDidBeginPanning(_ vc: FullscreenImageViewController) {
         print("begin")
+
+        let currentIndex = currentImageViewController()?.imageIndex ?? 0
+        galleryDelegate?.fullscreenGalleryViewController(self, intendsToDismissFromImageWithIndex: currentIndex)
     }
 
     func fullscreenImageViewControllerDidPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint) {
         NSLog(".")
+
+        let dist = translation.length()
+        let ratio = dist / 200.0
+
+        // Let the panning fade out to 50% opacity over 200 px
+        backgroundView.alpha = 1.0 - min(0.5, ratio / 2.0)
     }
 
     func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) {
@@ -399,6 +419,10 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
             dismiss(animated: true)
         } else {
             message = "not doing anything"
+
+            UIView.animate(withDuration: 0.3, animations: {
+                self.backgroundView.alpha = 1.0
+            })
         }
 
         print("end! t=[\(translation) [l=[\(translation.length())]], v=[\(velocity) [l=[\(velocity.length())]] \(message)")
@@ -440,7 +464,7 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
 
     public func prepareForTransition(presenting: Bool) {
         if presenting {
-            view.alpha = 0.0
+            backgroundView.alpha = 0.0
             if previewViewInitiallyVisible {
                 setThumbnailPreviewsVisible(false, animated: false)
             }
@@ -449,7 +473,7 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
 
     public func performTransitionAnimation(presenting: Bool) {
         if presenting {
-            view.alpha = 1.0
+            backgroundView.alpha = 1.0
             if previewViewInitiallyVisible {
                 setThumbnailPreviewsVisible(true, animated: false)
             }
