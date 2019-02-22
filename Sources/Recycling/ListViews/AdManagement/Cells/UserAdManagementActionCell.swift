@@ -14,6 +14,7 @@ public class UserAdManagementActionCell: UITableViewCell {
     private lazy var iconView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .licorice
         return imageView
     }()
 
@@ -38,6 +39,7 @@ public class UserAdManagementActionCell: UITableViewCell {
     private lazy var chevronView: UIImageView = { // arrowRight?
         var imageView = UIImageView(image: UIImage(named: .arrowRight))
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .sardine
         return imageView
     }()
 
@@ -49,15 +51,6 @@ public class UserAdManagementActionCell: UITableViewCell {
     }()
 
     public private(set) var actionType: AdManagementActionType = .unknown
-
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-
     public func setupWithModel(_ model: AdManagementActionCellModel) {
         selectionStyle = .none
         if model.actionType != actionType {
@@ -76,11 +69,11 @@ public class UserAdManagementActionCell: UITableViewCell {
         let hairLineSize = 1.0/UIScreen.main.scale
 
         var constraints: [NSLayoutConstraint] = [
-            separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: .largeSpacing),
+            separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 24),
             separator.topAnchor.constraint(equalTo: contentView.topAnchor),
             separator.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             separator.heightAnchor.constraint(equalToConstant: hairLineSize),
-            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             iconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconView.widthAnchor.constraint(equalToConstant: 20),
             iconView.heightAnchor.constraint(equalToConstant: 20),
@@ -126,8 +119,9 @@ public class UserAdManagementActionCell: UITableViewCell {
             constraints += [
                 chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                 chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                chevronView.widthAnchor.constraint(equalToConstant: 12),
-                chevronView.heightAnchor.constraint(equalToConstant: 20),
+                chevronView.widthAnchor.constraint(equalToConstant: 9),
+                chevronView.heightAnchor.constraint(equalToConstant: 16),
+                titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                 titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8),
             ]
         }
