@@ -90,40 +90,30 @@ public class UserAdManagementActionCell: UITableViewCell {
         if model.hasSwitch {
             // TODO: The type will infer what the toggle isOn status should be
             contentView.addSubview(toggle)
-            constraints += [
-                toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-                toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                titleLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: 8),
-                titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            ]
+            constraints += [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+                             toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                             titleLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: 8),
+                             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor) ]
         } else if model.description != nil {
             descriptionLabel.text = model.description
             contentView.addSubview(descriptionLabel)
-            constraints += [
-                descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-                descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
-            ]
+            constraints += [ descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+                             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0) ]
             if model.shouldShowChevron {
-                constraints += [
-                    descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
-                ]
+                constraints += [ descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8) ]
             } else {
-                constraints += [
-                    descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16),
-                ]
+                constraints += [ descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16) ]
             }
         }
 
         if model.shouldShowChevron {
             contentView.addSubview(chevronView)
-            constraints += [
-                chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-                chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                chevronView.widthAnchor.constraint(equalToConstant: 9),
-                chevronView.heightAnchor.constraint(equalToConstant: 16),
-                titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8),
-            ]
+            constraints += [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+                             chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                             chevronView.widthAnchor.constraint(equalToConstant: 9),
+                             chevronView.heightAnchor.constraint(equalToConstant: 16),
+                             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                             titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8) ]
         }
         if model.description == nil {
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
@@ -145,14 +135,6 @@ public class UserAdManagementActionCell: UITableViewCell {
     @objc private func toggleTapped(_ sender: UISwitch) {
         delegate?.userAdManagementActionCell(self, switchChangedState: sender.isOn)
     }
-
-    private func commonSetup() {
-    }
-
-    private func tearDown() {
-
-    }
-
 }
 
 public protocol UserAdManagementActionCellDelegate: class {
