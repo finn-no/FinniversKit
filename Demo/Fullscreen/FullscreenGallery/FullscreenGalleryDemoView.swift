@@ -153,7 +153,7 @@ class FullscreenGalleryDemoView: UIView {
     // MARK: - Private properties
 
     private let viewModel = FullscreenGalleryDemoViewModel()
-    private lazy var transitionController = FullscreenGalleryTransitioningController(withSourceDelegate: self)
+    private lazy var transitionController = FullscreenGalleryTransitioningController(withPresenterDelegate: self)
 
     private lazy var collectionCellHeight: CGFloat = {
         switch (UIDevice.current.userInterfaceIdiom) {
@@ -329,8 +329,8 @@ extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDelegate {
 
 // MARK: - FullscreenGalleryTransitionSourceDelegate
 
-extension FullscreenGalleryDemoView: FullscreenGalleryTransitionSourceDelegate {
-    public func viewForFullscreenGalleryTransitionAsSource() -> UIView {
+extension FullscreenGalleryDemoView: FullscreenGalleryTransitionPresenterDelegate {
+    public func viewForFullscreenGalleryTransition() -> UIView {
         let imageIndex = selectedIndex ?? 0
 
         let cell = collectionView.cellForItem(at: IndexPath(row: imageIndex, section: 0))!
@@ -340,9 +340,6 @@ extension FullscreenGalleryDemoView: FullscreenGalleryTransitionSourceDelegate {
 
         return previewCell.imageView
     }
-
-    public func prepareForTransitionAsSource() { }
-    public func performTransitionAnimationAsSource() { }
 }
 
 // MARK: - UICollectionView

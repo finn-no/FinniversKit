@@ -8,14 +8,14 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
 
     // MARK: - Private properties
 
-    private let sourceDelegate: FullscreenGalleryTransitionSourceDelegate
+    private let presenterDelegate: FullscreenGalleryTransitionPresenterDelegate
     private let destinationDelegate: FullscreenGalleryTransitionDestinationDelegate
 
     // MARK: - Init
 
-    required init(withSource source: FullscreenGalleryTransitionSourceDelegate, destination: FullscreenGalleryTransitionDestinationDelegate) {
-        self.sourceDelegate = source
-        self.destinationDelegate = destination
+    required init(withPresenter presenter: FullscreenGalleryTransitionPresenterDelegate, destination: FullscreenGalleryTransitionDestinationDelegate) {
+        presenterDelegate = presenter
+        destinationDelegate = destination
         super.init()
     }
 
@@ -34,10 +34,10 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
         toViewController.view.setNeedsLayout()
         toViewController.view.layoutIfNeeded()
 
-        let sourceView = sourceDelegate.viewForFullscreenGalleryTransitionAsSource()
+        let sourceView = presenterDelegate.viewForFullscreenGalleryTransition()
         let sourceFrame = sourceView.convert(sourceView.bounds, to: transitionContext.containerView)
 
-        let destinationView = destinationDelegate.viewForFullscreenGalleryTransitionAsDestination()
+        let destinationView = destinationDelegate.viewForFullscreenGalleryTransition()
         let destinationFrame = destinationView.convert(destinationView.bounds, to: transitionContext.containerView)
 
         let transitionView = destinationView.snapshotView(afterScreenUpdates: true)!
@@ -48,12 +48,12 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
 
         transitionContext.containerView.addSubview(transitionView)
 
-        destinationDelegate.prepareForTransitionAsDestination()
+        destinationDelegate.prepareForTransition(presenting: true)
         let duration = self.transitionDuration(using: transitionContext)
 
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, animations: {
             transitionView.frame = destinationFrame
-            self.destinationDelegate.performTransitionAnimationAsDestination()
+            self.destinationDelegate.performTransitionAnimation(presenting: true)
         }, completion: { _ in
             transitionView.removeFromSuperview()
             sourceView.isHidden = false

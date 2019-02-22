@@ -197,7 +197,7 @@
 		9F2130071B3637C7AD91066E /* FullscreenGalleryTransitionDestinationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21396E3BBAE40481AB6380 /* FullscreenGalleryTransitionDestinationDelegate.swift */; };
 		9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2134FB742B5E38B8428113 /* FullscreenGalleryTransitioningController.swift */; };
 		9F21339B987A96DE48740F7B /* FullscreenGalleryPresenterTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F213561E8B39C18C22AE15D /* FullscreenGalleryPresenterTransition.swift */; };
-		9F2133BB9A1CAA93633B406C /* FullscreenGalleryTransitionSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F213B88B6D6E66371A88079 /* FullscreenGalleryTransitionSourceDelegate.swift */; };
+		9F2133BB9A1CAA93633B406C /* FullscreenGalleryPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F213B88B6D6E66371A88079 /* FullscreenGalleryPresenterDelegate.swift */; };
 		9F2133BEBE174152BD809417 /* GalleryPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F213F9DEE0BF048DD9B29FB /* GalleryPreviewView.swift */; };
 		9F213438F5413991D1B3D7CD /* FullscreenGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2135C4606E66A98D140AAC /* FullscreenGalleryViewModel.swift */; };
 		9F21365157F385AC63928150 /* FullscreenGalleryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2133F39A730EF3068C7DDA /* FullscreenGalleryDemoView.swift */; };
@@ -547,7 +547,7 @@
 		9F21379B5A6F7C76368BD8AF /* FullscreenImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenImageViewController.swift; sourceTree = "<group>"; };
 		9F21396E3BBAE40481AB6380 /* FullscreenGalleryTransitionDestinationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryTransitionDestinationDelegate.swift; sourceTree = "<group>"; };
 		9F21399D933575F69DB9DDCE /* GalleryPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryPreviewCell.swift; sourceTree = "<group>"; };
-		9F213B88B6D6E66371A88079 /* FullscreenGalleryTransitionSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryTransitionSourceDelegate.swift; sourceTree = "<group>"; };
+		9F213B88B6D6E66371A88079 /* FullscreenGalleryPresenterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryPresenterDelegate.swift; sourceTree = "<group>"; };
 		9F213F9DEE0BF048DD9B29FB /* GalleryPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryPreviewView.swift; sourceTree = "<group>"; };
 		AAC1AFB32021058000C71B7C /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
 		AF91BB96202C74D0003E6366 /* BroadcastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastItem.swift; sourceTree = "<group>"; };
@@ -1523,7 +1523,7 @@
 			children = (
 				9F2134FB742B5E38B8428113 /* FullscreenGalleryTransitioningController.swift */,
 				9F213561E8B39C18C22AE15D /* FullscreenGalleryPresenterTransition.swift */,
-				9F213B88B6D6E66371A88079 /* FullscreenGalleryTransitionSourceDelegate.swift */,
+				9F213B88B6D6E66371A88079 /* FullscreenGalleryPresenterDelegate.swift */,
 				9F21396E3BBAE40481AB6380 /* FullscreenGalleryTransitionDestinationDelegate.swift */,
 			);
 			path = Transition;
@@ -2943,7 +2943,7 @@
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
 				9F21339B987A96DE48740F7B /* FullscreenGalleryPresenterTransition.swift in Sources */,
-				9F2133BB9A1CAA93633B406C /* FullscreenGalleryTransitionSourceDelegate.swift in Sources */,
+				9F2133BB9A1CAA93633B406C /* FullscreenGalleryPresenterDelegate.swift in Sources */,
 				9F2130071B3637C7AD91066E /* FullscreenGalleryTransitionDestinationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

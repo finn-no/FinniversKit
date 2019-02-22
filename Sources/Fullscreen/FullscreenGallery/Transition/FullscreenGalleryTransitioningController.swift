@@ -8,7 +8,7 @@ public class FullscreenGalleryTransitioningController: NSObject, UIViewControlle
 
     // MARK: - Public properties
 
-    public weak var sourceDelegate: FullscreenGalleryTransitionSourceDelegate?
+    public weak var presenterDelegate: FullscreenGalleryTransitionPresenterDelegate?
 
     /// - Note:
     ///   The destination delegate defaults to the UIViewController being presented, if it conforms to
@@ -18,15 +18,15 @@ public class FullscreenGalleryTransitioningController: NSObject, UIViewControlle
 
     // MARK: - Init
 
-    public init(withSourceDelegate sourceDelegate: FullscreenGalleryTransitionSourceDelegate) {
+    public init(withPresenterDelegate presenterDelegate : FullscreenGalleryTransitionPresenterDelegate) {
         super.init()
-        self.sourceDelegate = sourceDelegate
+        self.presenterDelegate = presenterDelegate
     }
 
     // MARK: - UIViewControllerTransitioningDelegate
 
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let sourceDelegate = self.sourceDelegate else {
+        guard let presenterDelegate = self.presenterDelegate else {
             print("Cannot perform fullscreen gallery transition. The source delegate has not been set.")
             return nil
         }
@@ -38,7 +38,7 @@ public class FullscreenGalleryTransitioningController: NSObject, UIViewControlle
             return nil
         }
 
-        let transition = FullscreenGalleryPresenterTransition(withSource: sourceDelegate, destination: destinationDelegate)
+        let transition = FullscreenGalleryPresenterTransition(withPresenter: presenterDelegate, destination: destinationDelegate)
         return transition
     }
 
