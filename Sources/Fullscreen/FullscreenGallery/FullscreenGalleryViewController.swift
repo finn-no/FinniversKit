@@ -244,7 +244,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     private func setThumbnailPreviewsVisible(_ visible: Bool, animated: Bool) {
         guard visible != previewViewVisible else {
-            print("The required constraints are already in place")
             return
         }
 
