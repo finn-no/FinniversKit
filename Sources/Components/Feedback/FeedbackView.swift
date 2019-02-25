@@ -31,6 +31,7 @@ public class FeedbackView: UIView {
 
     // MARK: - Private properties
 
+    private var hasBeenPresented = false
     private var state: State = .initial
     private var presentation: FeedbackViewPresentation? {
         didSet {
@@ -146,20 +147,42 @@ public class FeedbackView: UIView {
     // MARK: - Private methods
 
     private func configure(withViewModel viewModel: FeedbackViewModel) {
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            guard let self = self else { return }
-            self.titleView.alpha = 0
-            self.titleView.setTitle(viewModel.title)
-            self.titleView.alpha = 1
+        if !hasBeenPresented {
+            titleView.setTitle(viewModel.title)
+
+            // PositiveButton.
+            positiveButton.isHidden = viewModel.positiveButtonTitle == nil
+            positiveButton.setTitle(viewModel.positiveButtonTitle, for: .normal)
+
+            // NegativeButton.
+            negativeButton.isHidden = viewModel.negativeButtonTitle == nil
+            negativeButton.setTitle(viewModel.negativeButtonTitle, for: .normal)
+        } else {
+            guard let snapshotTitleView = titleView.snapshotView(afterScreenUpdates: false) else { return }
+            snapshotTitleView.frame = titleView.frame
+            addSubview(snapshotTitleView)
+
+            titleView.transform = CGAffineTransform(translationX: 0, y: 30)
+            titleView.alpha = 0
+            titleView.setTitle(viewModel.title)
+            UIView.animate(withDuration: 0.2, animations: { [weak self] in
+                self?.titleView.transform = .identity
+                self?.titleView.alpha = 1
+                snapshotTitleView.alpha = 0
+                snapshotTitleView.transform = CGAffineTransform(translationX: 0, y: -30)
+
+            }, completion: { _ in
+                snapshotTitleView.removeFromSuperview()
+            })
+
+            // PositiveButton.
+            positiveButton.isHidden = viewModel.positiveButtonTitle == nil
+            positiveButton.setTitle(viewModel.positiveButtonTitle, for: .normal)
+
+            // NegativeButton.
+            negativeButton.isHidden = viewModel.negativeButtonTitle == nil
+            negativeButton.setTitle(viewModel.negativeButtonTitle, for: .normal)
         }
-
-        // PositiveButton.
-        positiveButton.isHidden = viewModel.positiveButtonTitle == nil
-        positiveButton.setTitle(viewModel.positiveButtonTitle, for: .normal)
-
-        // NegativeButton.
-        negativeButton.isHidden = viewModel.negativeButtonTitle == nil
-        negativeButton.setTitle(viewModel.negativeButtonTitle, for: .normal)
     }
 
     @objc private func positiveButtonTapped() {
@@ -187,6 +210,7 @@ public class FeedbackView: UIView {
 
         presentation = newPresentation
         setNeedsLayout()
+        hasBeenPresented = true
     }
 }
 
