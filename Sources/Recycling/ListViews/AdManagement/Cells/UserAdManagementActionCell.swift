@@ -116,21 +116,22 @@ public class UserAdManagementActionCell: UITableViewCell {
                 constraints += [ descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16) ]
             }
         }
-        if model.shouldShowChevron {
-            contentView.addSubview(chevronView)
-            constraints += [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-                             chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                             chevronView.widthAnchor.constraint(equalToConstant: 9),
-                             chevronView.heightAnchor.constraint(equalToConstant: 16),
-                             titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8) ]
-        } else if model.shouldShowExternalIcon {
+        if model.shouldShowExternalIcon { // External icon overrides chevron, as host-app needs this functionality
             contentView.addSubview(externalAction)
             constraints += [ externalAction.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
                              externalAction.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                              externalAction.widthAnchor.constraint(equalToConstant: 20),
                              externalAction.heightAnchor.constraint(equalToConstant: 20),
                              titleLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: 8) ]
+        } else if model.shouldShowChevron {
+            contentView.addSubview(chevronView)
+            constraints += [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+                             chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                             chevronView.widthAnchor.constraint(equalToConstant: 9),
+                             chevronView.heightAnchor.constraint(equalToConstant: 16),
+                             titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8) ]
         }
+
         if model.description == nil {
             constraints += [ titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                              contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16) ]
