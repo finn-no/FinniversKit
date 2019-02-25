@@ -73,6 +73,7 @@ extern NSString *const FinniversImageAssetplus;
 extern NSString *const FinniversImageAssetprofile;
 extern NSString *const FinniversImageAssetrate;
 extern NSString *const FinniversImageAssetrated;
+extern NSString *const FinniversImageAssetratingCat;
 extern NSString *const FinniversImageAssetratings;
 extern NSString *const FinniversImageAssetrealestate;
 extern NSString *const FinniversImageAssetremove;

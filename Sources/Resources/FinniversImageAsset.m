@@ -73,6 +73,7 @@ NSString *const FinniversImageAssetplus = @"plus";
 NSString *const FinniversImageAssetprofile = @"profile";
 NSString *const FinniversImageAssetrate = @"rate";
 NSString *const FinniversImageAssetrated = @"rated";
+NSString *const FinniversImageAssetratingCat = @"ratingCat";
 NSString *const FinniversImageAssetratings = @"ratings";
 NSString *const FinniversImageAssetrealestate = @"realestate";
 NSString *const FinniversImageAssetremove = @"remove";
@@ -165,6 +166,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetprofile,
              FinniversImageAssetrate,
              FinniversImageAssetrated,
+             FinniversImageAssetratingCat,
              FinniversImageAssetratings,
              FinniversImageAssetrealestate,
              FinniversImageAssetremove,
