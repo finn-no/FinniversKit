@@ -36,10 +36,10 @@ public class UserAdManagementActionCell: UITableViewCell {
         return label
     }()
 
-    private lazy var chevronView: UIImageView = { // arrowRight?
+    private lazy var chevronView: UIImageView = {
         var imageView = UIImageView(image: UIImage(named: .arrowRight))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .sardine
+        imageView.tintColor = .orange// .sardine
         return imageView
     }()
 
@@ -51,6 +51,14 @@ public class UserAdManagementActionCell: UITableViewCell {
         return toggle
     }()
 
+    private lazy var externalAction: UIImageView = {
+        let icon = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
+        var imageView = UIImageView(image: icon)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .stone
+        return imageView
+    }()
+
     public private(set) var actionType: AdManagementActionType = .unknown
     public func setupWithModel(_ model: AdManagementActionCellModel) {
         selectionStyle = .none
@@ -59,6 +67,7 @@ public class UserAdManagementActionCell: UITableViewCell {
             toggle.removeFromSuperview()
             descriptionLabel.removeFromSuperview()
             chevronView.removeFromSuperview()
+            externalAction.removeFromSuperview()
         }
 
         actionType = model.actionType
@@ -89,8 +98,7 @@ public class UserAdManagementActionCell: UITableViewCell {
         // Note, not all combination of model.properties are supported, as the Model will only allow
         // certain combinations, based on the ActionType
 
-        if model.hasSwitch {
-            // TODO: The type will infer what the toggle isOn status should be
+        if model.shouldShowSwitch {
             contentView.addSubview(toggle)
 
             constraints += [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
@@ -108,7 +116,6 @@ public class UserAdManagementActionCell: UITableViewCell {
                 constraints += [ descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16) ]
             }
         }
-
         if model.shouldShowChevron {
             contentView.addSubview(chevronView)
             constraints += [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
@@ -116,6 +123,13 @@ public class UserAdManagementActionCell: UITableViewCell {
                              chevronView.widthAnchor.constraint(equalToConstant: 9),
                              chevronView.heightAnchor.constraint(equalToConstant: 16),
                              titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8) ]
+        } else if model.shouldShowExternalIcon {
+            contentView.addSubview(externalAction)
+            constraints += [ externalAction.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+                             externalAction.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                             externalAction.widthAnchor.constraint(equalToConstant: 20),
+                             externalAction.heightAnchor.constraint(equalToConstant: 20),
+                             titleLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: 8) ]
         }
         if model.description == nil {
             constraints += [ titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
