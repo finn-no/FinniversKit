@@ -99,14 +99,14 @@ enum FontType: String {
         return font.scaledFont(forTextStyle: .footnote)
     }
 
-    /// FINNTypeWebStrippet-Medium with a size of 12 scaled for UIFontTextStyle.caption1
+    /// FINNTypeWebStrippet-Bold with a size of 12 scaled for UIFontTextStyle.caption1
     ///
     /// ## Usage:
     /// - Used for small, bold headlines.
     public static var title5: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.medium.rawValue, size: 12.0)!
+        let font = UIFont(name: FontType.bold.rawValue, size: 12.0)!
         return font.scaledFont(forTextStyle: .caption1)
     }
 
