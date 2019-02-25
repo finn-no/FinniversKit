@@ -869,8 +869,8 @@
 		441FE414209A24E500B04EF1 /* Recycling */ = {
 			isa = PBXGroup;
 			children = (
-				441FE440209A2F2C00B04EF1 /* ListViews */,
 				441FE415209A24E500B04EF1 /* GridViews */,
+				441FE440209A2F2C00B04EF1 /* ListViews */,
 			);
 			path = Recycling;
 			sourceTree = "<group>";
@@ -1062,12 +1062,12 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CF136ACB220320DD00247B30 /* Infobox */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
 				45B2E06B207E181C00C68B92 /* Consent */,
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
+				CF136ACB220320DD00247B30 /* Infobox */,
 				4447F6741FDB2B110033DBC1 /* Label */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
 				CF8F024321DE0FF9004C4042 /* RefreshControl */,
@@ -1139,6 +1139,7 @@
 		4447F6B81FDB2B110033DBC1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4447F6BA1FDB2B110033DBC1 /* Fonts */,
 				CF3D5EEF215A6D9E006E4D08 /* Sounds */,
 				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
@@ -1147,7 +1148,6 @@
 				44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */,
 				144959D92122C4400084549F /* FinniversImageAsset.h */,
 				144959DA2122C4400084549F /* FinniversImageAsset.m */,
-				4447F6BA1FDB2B110033DBC1 /* Fonts */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1260,17 +1260,17 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				DAD0D48621072EDD0091DD4D /* AdReporter */,
 				DA24BA272164C0AF006E2E5E /* ConsentActionView */,
 				DAC7DCA021538511004602A3 /* ConsentToggleView */,
-				14EBA253215A633800613E5A /* LoadingView */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
+				44D912502077AC8A00486848 /* EmptyView */,
+				447AFC0E20984B63000F793E /* FrontPage */,
+				14EBA253215A633800613E5A /* LoadingView */,
 				44587010213FA344009187BE /* Login */,
 				44587013213FA344009187BE /* Register */,
-				DAD0D48621072EDD0091DD4D /* AdReporter */,
-				447AFC0E20984B63000F793E /* FrontPage */,
-				44D9124A2077AC8A00486848 /* Popup */,
 				43BACE6721117CF90052114C /* Review */,
-				44D912502077AC8A00486848 /* EmptyView */,
+				44D9124A2077AC8A00486848 /* Popup */,
 				43EA978021941E63003A548A /* SoldView */,
 			);
 			path = Fullscreen;
@@ -1616,12 +1616,12 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CF39ADFB22034E9C002FC43E /* Infobox */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
 				CF8F021821DCC624004C4042 /* Consent */,
 				CF8F021521DCC5DA004C4042 /* HorizontalSlide */,
+				CF39ADFB22034E9C002FC43E /* Infobox */,
 				CF8F022221DCC6D5004C4042 /* Label */,
 				CF8F021621DCC5F6004C4042 /* LoadingIndicator */,
 				CF8F024621DE37FE004C4042 /* RefreshControl */,
@@ -1790,8 +1790,8 @@
 		CF8F022721DCC721004C4042 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
-				14A873D2220879870029DEA8 /* ConfirmationView */,
 				CF8F023121DCC7A0004C4042 /* AdReporter */,
+				14A873D2220879870029DEA8 /* ConfirmationView */,
 				CF8F022821DCC72B004C4042 /* ConsentActionView */,
 				CF8F022921DCC736004C4042 /* ConsentToggleView */,
 				CF8F022B21DCC74F004C4042 /* EasterEggs */,
@@ -1799,9 +1799,9 @@
 				CF8F023221DCC7AE004C4042 /* FrontPage */,
 				CF8F022A21DCC746004C4042 /* LoadingView */,
 				CF8F022F21DCC788004C4042 /* Login */,
-				CF8F023321DCC7B9004C4042 /* Popup */,
 				CF8F023021DCC793004C4042 /* Register */,
 				CF8F023421DCC7D2004C4042 /* Review */,
+				CF8F023321DCC7B9004C4042 /* Popup */,
 				CF8F023621DCC830004C4042 /* SoldView */,
 			);
 			path = Fullscreen;
