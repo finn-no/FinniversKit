@@ -71,6 +71,7 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
             return false
         }
 
+        // Perform the animations
         CATransaction.begin()
         CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .easeOut))
         CATransaction.setAnimationDuration(animationDuration)
@@ -98,12 +99,16 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
             return nil
         }
 
-        let velocity = rawVelocity / 10.0
+        // The CA-layers deal with anchorPoint=[0.5, 0.5], so we need to adjust the positions to be
+        // centered in the source & destination frames.
+        let fromFrameOffset = CGPoint(x: fromFrame.width / 2.0, y: fromFrame.height / 2.0)
+        let toFrameOffset = CGPoint(x: toFrame.width / 2.0, y: toFrame.height / 2.0)
 
+        let velocity = rawVelocity / 10.0
         let path = UIBezierPath()
 
-        let p1 = fromFrame.origin
-        let p2 = toFrame.origin
+        let p1 = fromFrame.origin + fromFrameOffset
+        let p2 = toFrame.origin + toFrameOffset
 
         let c1 = (p1 + velocity)
         let c1ToP2 = c1 - p2
