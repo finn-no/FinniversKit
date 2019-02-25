@@ -106,7 +106,7 @@ enum FontType: String {
     public static var title5: UIFont {
         registerCustomFonts()
 
-        let font = UIFont(name: FontType.medium.rawValue, size: 12.0)!
+        let font = UIFont(name: FontType.bold.rawValue, size: 12.0)!
         return font.scaledFont(forTextStyle: .caption1)
     }
 
