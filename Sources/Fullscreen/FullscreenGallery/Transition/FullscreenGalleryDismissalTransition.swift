@@ -31,10 +31,6 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let presenterViewController = transitionContext.viewController(forKey: .to) else {
-            return
-        }
-
         let presenterView = presenterDelegate.viewForFullscreenGalleryTransition()
         let presenterFrame = presenterView.convert(presenterView.bounds, to: transitionContext.containerView)
 
@@ -51,12 +47,8 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
         destinationDelegate.prepareForTransition(presenting: false)
 
         UIView.animate(withDuration: animationDuration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, animations: {
-            // FIXME: We are unable to perform the bezier animation when there is no dismiss-velocity, but this is REALLY not clear from the code.
-            if self.performBezierAnimation(onView: transitionView, from: presentedFrame, to: presenterFrame) {
-                transitionView.bounds = CGRect(x: 0, y: 0, width: presenterFrame.width, height: presenterFrame.height)
-            } else {
-                transitionView.frame = presenterFrame
-            }
+            self.performBezierAnimation(onView: transitionView, from: presentedFrame, to: presenterFrame)
+            transitionView.bounds = CGRect(x: 0, y: 0, width: presenterFrame.width, height: presenterFrame.height)
 
             self.destinationDelegate.performTransitionAnimation(presenting: false)
         }, completion: { _ in
@@ -69,10 +61,8 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
 
     // MARK: - Private methods
 
-    private func performBezierAnimation(onView view: UIView, from: CGRect, to: CGRect) -> Bool {
-        guard let bezierPath = calculateBezier(from: from, to: to) else {
-            return false
-        }
+    private func performBezierAnimation(onView view: UIView, from: CGRect, to: CGRect) {
+        let bezierPath = calculateBezier(from: from, to: to)
 
         // Perform the animations
         CATransaction.begin()
@@ -86,15 +76,9 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
         view.layer.add(bezierAnimation, forKey: nil)
 
         CATransaction.commit()
-
-        return true
     }
 
-    private func calculateBezier(from fromFrame: CGRect, to toFrame: CGRect) -> UIBezierPath? {
-        guard let rawVelocity = dismissVelocity else {
-            return nil
-        }
-
+    private func calculateBezier(from fromFrame: CGRect, to toFrame: CGRect) -> UIBezierPath {
         // The CA-layers deal with anchorPoint=[0.5, 0.5], so we need to adjust the positions to be
         // centered in the source & destination frames.
         let fromFrameOffset = CGPoint(x: fromFrame.width / 2.0, y: fromFrame.height / 2.0)
@@ -102,14 +86,14 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
 
         // The raw velocity seems to be quite exaggerated, and dividing it by 10 makes the
         // path seem way more natural and in line with the actual velocity of the motion.
-        let velocity = rawVelocity / 10.0
+        let adjustedVelocity = (dismissVelocity ?? CGPoint.zero) / 10.0
         let path = UIBezierPath()
 
         let p1 = fromFrame.origin + fromFrameOffset
         let p2 = toFrame.origin + toFrameOffset
 
-        let c1 = p1 + velocity
-        let c2 = p2 + (velocity * 0.5)
+        let c1 = p1 + adjustedVelocity
+        let c2 = p2 + (adjustedVelocity * 0.5)
 
         path.move(to: p1)
         path.addCurve(to: p2, controlPoint1: c1, controlPoint2: c2)
