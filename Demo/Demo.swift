@@ -93,7 +93,7 @@ public enum ComponentViews: String, CaseIterable {
         case .bottomSheetMechanics:
             return BottomSheetMechanicsDemoViewController()
         case .feedbackView:
-            return DemoViewController<FeedbackDemoView>()
+            return DemoViewController<FeedbackDemoView>(withDismissButton: true)
         }
     }
 }
