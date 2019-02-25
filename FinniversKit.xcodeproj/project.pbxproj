@@ -692,21 +692,15 @@
 		14405C521FAFBBF000D03E04 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				CF8F021021DCC4D7004C4042 /* DNA */,
 				CF8F021421DCC5B2004C4042 /* Components */,
+				AAF7C95D222432EC003110DB /* Demo */,
+				CF8F021021DCC4D7004C4042 /* DNA */,
 				CF8F022721DCC721004C4042 /* Fullscreen */,
 				CF8F023721DCC854004C4042 /* Recycling */,
 				144351BA1FBE2BF1007B2229 /* Assets.xcassets */,
 				14405C5F1FAFBBF000D03E04 /* Info.plist */,
 				144351C31FBE2FA2007B2229 /* AppDelegate.swift */,
-				146D3C3F1FBE466D00124B76 /* DemoViewController.swift */,
-				4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */,
-				AAC1AFB32021058000C71B7C /* Demo.swift */,
-				141F08C52123110B001DB145 /* DemoHelpers.swift */,
-				4443F9B0209D5ECE00E35719 /* Helpers.swift */,
-				4412FDCC20A433550037A2FC /* SplitViewController.swift */,
 				4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */,
-				4423F226209CB24500B81D68 /* MiniToastView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1057,11 +1051,11 @@
 		4447F6631FDB2B110033DBC1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				44898D591FE5B9C200F6017B /* Extensions */,
-				4447F6B61FDB2B110033DBC1 /* Protocols */,
-				4408A69C2027AC41008C0BD9 /* DNA */,
 				4447F6641FDB2B110033DBC1 /* Components */,
+				4408A69C2027AC41008C0BD9 /* DNA */,
+				44898D591FE5B9C200F6017B /* Extensions */,
 				44D912492077AC8A00486848 /* Fullscreen */,
+				4447F6B61FDB2B110033DBC1 /* Protocols */,
 				441FE414209A24E500B04EF1 /* Recycling */,
 				4447F6B81FDB2B110033DBC1 /* Resources */,
 				4447F6C51FDB2B110033DBC1 /* FinniversKit.h */,
@@ -1423,6 +1417,20 @@
 				9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */,
 			);
 			path = Feedback;
+			sourceTree = "<group>";
+		};
+		AAF7C95D222432EC003110DB /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				146D3C3F1FBE466D00124B76 /* DemoViewController.swift */,
+				4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */,
+				AAC1AFB32021058000C71B7C /* Demo.swift */,
+				141F08C52123110B001DB145 /* DemoHelpers.swift */,
+				4443F9B0209D5ECE00E35719 /* Helpers.swift */,
+				4412FDCC20A433550037A2FC /* SplitViewController.swift */,
+				4423F226209CB24500B81D68 /* MiniToastView.swift */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		AF91BB95202C7487003E6366 /* Broadcast */ = {
