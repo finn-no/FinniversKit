@@ -29,6 +29,13 @@ public class AdManagementDemoView: UIView {
         [
             AdManagementActionCellModel(actionType: .edit, title: "Non nobis solum nati sumus", description: "Aut viam inveniam aut faciam tibi"),
             AdManagementActionCellModel(actionType: .republish, title: "Fas est ab hoste doceri")
+        ],
+        [
+            AdManagementActionCellModel(actionType: .dispose, title: "Astra inclinant, sed non obligant"),
+            AdManagementActionCellModel(actionType: .externalFallback, title: "Carthago delenda est.", description: "Aut cum scuto aut in scuto")
+        ],
+        [
+            AdManagementActionCellModel(actionType: .start, title: "Igne natura renovatur integra")
         ]
     ]
 
