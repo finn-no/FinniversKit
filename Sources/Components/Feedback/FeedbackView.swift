@@ -186,10 +186,16 @@ public class FeedbackView: UIView {
     }
 
     @objc private func positiveButtonTapped() {
+        if #available(iOS 10.0, *) {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
         delegate?.feedbackView(self, didSelectButtonOfType: .positive, forState: state)
     }
 
     @objc private func negativeButtonTapped() {
+        if #available(iOS 10.0, *) {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
         delegate?.feedbackView(self, didSelectButtonOfType: .negative, forState: state)
     }
 
