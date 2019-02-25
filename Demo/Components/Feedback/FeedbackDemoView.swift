@@ -62,7 +62,7 @@ class FeedbackDemoView: UIView {
 class SingleQuestionFeedback: FeedbackViewDelegate {
     let viewModels: [FeedbackView.State: FeedbackViewModel] = [
         .initial: FeedbackViewModel(title: "Tjohei! Hvordan var det å bruke det nye filteret?", positiveButtonTitle: "Gi rask tilbakemelding"),
-        .finished: FeedbackViewModel(title: "Tusen takk for hjelpen! Med din tilbakemelding hjelper du oss å lage en enda bedre tjeneste for hele befolkningen.")
+        .finished: FeedbackViewModel(title: "Takk!\nVi setter pris på din tilbakemelding - det hjelper oss med å bli bedre")
     ]
 
     func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forState state: FeedbackView.State) {
@@ -84,7 +84,7 @@ class MultiQuestionFeedback: FeedbackViewDelegate {
         .initial: FeedbackViewModel(title: "Liker du FINN appen?", positiveButtonTitle: "Ja!", negativeButtonTitle: "Niks."),
         .accept: FeedbackViewModel(title: "Hurra! Hva med å gi oss noen stjerner i App Store?", positiveButtonTitle: "Selvfølgelig!", negativeButtonTitle: "Nei, takk"),
         .decline: FeedbackViewModel(title: "Å nei! Lyst til å hjelpe oss med å bli bedre?", positiveButtonTitle: "Selvfølgelig!", negativeButtonTitle: "Nei, takk"),
-        .finished: FeedbackViewModel(title: "Takk! Vi setter pris på din tilbakemelding - det hjelper oss med å bli bedre")
+        .finished: FeedbackViewModel(title: "Takk!\nVi setter pris på din tilbakemelding - det hjelper oss med å bli bedre")
     ]
 
     public func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forState state: FeedbackView.State) {
