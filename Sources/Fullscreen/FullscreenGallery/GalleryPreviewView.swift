@@ -29,6 +29,9 @@ class GalleryPreviewView: UIView {
 
     private let cellSpacing: CGFloat = .mediumSpacing
 
+    private var images = [UIImage?]()
+    private var newSuperviewSize: CGSize?
+
     private lazy var cellSize: CGSize = {
         switch (UIDevice.current.userInterfaceIdiom) {
         case .phone:
@@ -50,9 +53,6 @@ class GalleryPreviewView: UIView {
         collectionView.clipsToBounds = false
         return collectionView
     }()
-
-    private var images = [UIImage?]()
-    private var newSuperviewSize: CGSize?
 
     // MARK: - Init
 

@@ -31,17 +31,14 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
 
     public let imageIndex: Int
 
-    private(set) lazy var fullscreenImageView: FullscreenImageView = {
-        let imageView = FullscreenImageView()
-        imageView.clipsToBounds = false
-        return imageView
-    }()
-
     // MARK: - Private properties
 
     private static let zoomStep: CGFloat = 2.0
 
     private var shouldAdjustForPreviewView: Bool = false
+    private var initialPanFrame: CGRect = .zero
+
+    // MARK: - UI properties
 
     private lazy var panGestureRecognizer: UIPanGestureRecognizer = {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
@@ -51,7 +48,11 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
         return gesture
     }()
 
-    private var initialPanFrame: CGRect = .zero
+    private(set) lazy var fullscreenImageView: FullscreenImageView = {
+        let imageView = FullscreenImageView()
+        imageView.clipsToBounds = false
+        return imageView
+    }()
 
     // MARK: - Init
 

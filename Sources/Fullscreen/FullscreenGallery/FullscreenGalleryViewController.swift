@@ -27,13 +27,20 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     // MARK: - Private properties
 
-    private let captionFadeDuration = 0.2
-    private let dismissButtonSize: CGFloat = 30.0
+    private static let captionFadeDuration = 0.2
+    private static let dismissButtonSize: CGFloat = 30.0
+
     private let previewViewInitiallyVisible: Bool
 
     private var viewModel: FullscreenGalleryViewModel?
     private var previewViewVisible: Bool
     private var hasPerformedInitialPreviewScroll: Bool = false
+
+    private var galleryTransitioningController: FullscreenGalleryTransitioningController? {
+        return transitioningDelegate as? FullscreenGalleryTransitioningController
+    }
+
+    // MARK: - UI properties
 
     private lazy var backgroundView: UIView = {
         let view = UIView(frame: .zero)
@@ -103,10 +110,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
         }
     }()
 
-    private var galleryTransitioningController: FullscreenGalleryTransitioningController? {
-        return transitioningDelegate as? FullscreenGalleryTransitioningController
-    }
-
     // MARK: - Init
 
     required init?(coder aDecoder: NSCoder) {
@@ -144,12 +147,12 @@ public class FullscreenGalleryViewController: UIPageViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .clear
+
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
         backgroundView.fillInSuperview()
 
         view.addSubview(captionLabel)
-
         view.addSubview(dismissButton)
         view.addSubview(previewView)
         view.addGestureRecognizer(singleTapGestureRecognizer)
@@ -166,8 +169,8 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
             dismissButton.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
             dismissButton.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
-            dismissButton.widthAnchor.constraint(equalToConstant: dismissButtonSize),
-            dismissButton.heightAnchor.constraint(equalToConstant: dismissButtonSize),
+            dismissButton.widthAnchor.constraint(equalToConstant: FullscreenGalleryViewController.dismissButtonSize),
+            dismissButton.heightAnchor.constraint(equalToConstant: FullscreenGalleryViewController.dismissButtonSize),
 
             previewView.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor),
             previewView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
@@ -283,7 +286,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
             }
         }()
 
-        UIView.transition(with: captionLabel, duration: captionFadeDuration, options: .transitionCrossDissolve, animations: { [weak self] in
+        UIView.transition(with: captionLabel, duration: FullscreenGalleryViewController.captionFadeDuration, options: .transitionCrossDissolve, animations: { [weak self] in
             self?.captionLabel.text = caption
         })
     }
