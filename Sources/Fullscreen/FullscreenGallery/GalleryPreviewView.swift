@@ -33,7 +33,7 @@ class GalleryPreviewView: UIView {
     private var newSuperviewSize: CGSize?
 
     private lazy var cellSize: CGSize = {
-        switch (UIDevice.current.userInterfaceIdiom) {
+        switch UIDevice.current.userInterfaceIdiom {
         case .phone:
             return CGSize(width: 75, height: 75)
         default:
@@ -100,7 +100,7 @@ class GalleryPreviewView: UIView {
 
     private func reloadData() {
         let imageCount = viewModel?.imageUrls.count ?? 0
-        images = Array<UIImage?>(repeating: nil, count: imageCount)
+        images = [UIImage?](repeating: nil, count: imageCount)
 
         collectionView.reloadData()
 
@@ -128,7 +128,7 @@ extension GalleryPreviewView: UICollectionViewDataSource {
 
         let index = indexPath.row
 
-        var image: UIImage? = nil
+        var image: UIImage?
         if index >= 0 && index < images.count {
             image = images[index]
         }

@@ -19,7 +19,7 @@ public class FullscreenGalleryTransitioningController: NSObject, UIViewControlle
 
     // MARK: - Init
 
-    public init(withPresenterDelegate presenterDelegate : FullscreenGalleryTransitionPresenterDelegate) {
+    public init(withPresenterDelegate presenterDelegate: FullscreenGalleryTransitionPresenterDelegate) {
         super.init()
         self.presenterDelegate = presenterDelegate
     }

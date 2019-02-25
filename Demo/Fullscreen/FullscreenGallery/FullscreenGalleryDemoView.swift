@@ -4,7 +4,6 @@
 
 import FinniversKit
 
-
 // MARK: - Helpers
 
 struct FullscreenGalleryDemoViewModel: FullscreenGalleryViewModel {
@@ -156,7 +155,7 @@ class FullscreenGalleryDemoView: UIView {
     private lazy var transitionController = FullscreenGalleryTransitioningController(withPresenterDelegate: self)
 
     private lazy var collectionCellHeight: CGFloat = {
-        switch (UIDevice.current.userInterfaceIdiom) {
+        switch UIDevice.current.userInterfaceIdiom {
         case .pad:
             return 250.0
         default:
@@ -164,7 +163,7 @@ class FullscreenGalleryDemoView: UIView {
         }
     }()
 
-    private var selectedIndex: Int? = nil
+    private var selectedIndex: Int?
 
     // MARK: - UI properties
 
@@ -368,4 +367,3 @@ extension FullscreenGalleryDemoView: UICollectionViewDelegate {
         displayFullscreenGallery(forIndex: indexPath.row)
     }
 }
-

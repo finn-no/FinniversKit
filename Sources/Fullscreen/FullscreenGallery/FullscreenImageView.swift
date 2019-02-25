@@ -90,7 +90,7 @@ class FullscreenImageView: UIScrollView {
         let screenAspectRatio = viewSize.width / viewSize.height
         let imageAspectRatio = image.size.width / image.size.height
 
-        if (screenAspectRatio < imageAspectRatio) {
+        if screenAspectRatio < imageAspectRatio {
             constrainedImageSize = image.size.width
             constrainedScreenSize = viewSize.width
         } else {
@@ -142,11 +142,11 @@ extension FullscreenImageView {
     private func zoomRect(forScale scale: CGFloat, withCenter center: CGPoint) -> CGRect {
         var zoomRect = CGRect()
 
-        zoomRect.size.height = frame.size.height / scale;
-        zoomRect.size.width = frame.size.width  / scale;
+        zoomRect.size.height = frame.size.height / scale
+        zoomRect.size.width = frame.size.width  / scale
 
-        zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
-        zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
+        zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0)
+        zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0)
 
         return zoomRect
     }

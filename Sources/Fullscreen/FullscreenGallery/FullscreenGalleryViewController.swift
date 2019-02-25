@@ -56,7 +56,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         label.textColor = .milk
         label.textAlignment = .center
         label.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.4)
-        label.shadowOffset = CGSize(width: 1.0, height: 1.0);
+        label.shadowOffset = CGSize(width: 1.0, height: 1.0)
         label.shadowColor = .black
         return label
     }()
@@ -134,7 +134,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         self.init(thumbnailsInitiallyVisible: false)
     }
 
-    // MARK : - Lifecycle
+    // MARK: - Lifecycle
 
     public override func loadView() {
         viewModel = galleryDataSource?.modelForFullscreenGalleryViewController(self)
@@ -263,7 +263,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         let performTransition = {
             self.view.layoutIfNeeded()
             self.viewControllers?.forEach({ vc in
-                guard let imageVc = self.currentImageViewController() else { return }
+                guard let imageVc = vc as? FullscreenImageViewController else { return }
                 imageVc.updateLayout(withPreviewViewVisible: visible)
             })
         }

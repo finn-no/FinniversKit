@@ -86,7 +86,7 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
-        coordinator.animate(alongsideTransition: { [weak self] context in
+        coordinator.animate(alongsideTransition: { [weak self] _ in
             guard let self = self else {
                 return
             }
@@ -141,7 +141,7 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
             })
         }
 
-        switch (panGesture.state) {
+        switch panGesture.state {
         case .began:
             initialPanFrame = fullscreenImageView.frame
             delegate?.fullscreenImageViewControllerDidBeginPanning(self)
