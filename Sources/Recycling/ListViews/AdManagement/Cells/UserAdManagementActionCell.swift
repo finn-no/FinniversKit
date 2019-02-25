@@ -46,6 +46,7 @@ public class UserAdManagementActionCell: UITableViewCell {
     private lazy var toggle: UISwitch = {
         let toggle = UISwitch(frame: .zero)
         toggle.addTarget(self, action: #selector(toggleTapped(_:)), for: .touchUpInside)
+        toggle.setContentHuggingPriority(.required, for: .horizontal)
         toggle.translatesAutoresizingMaskIntoConstraints = false
         return toggle
     }()
@@ -55,6 +56,9 @@ public class UserAdManagementActionCell: UITableViewCell {
         selectionStyle = .none
         if model.actionType != actionType {
             // This might force us to clear old stuff out of the way...
+            toggle.removeFromSuperview()
+            descriptionLabel.removeFromSuperview()
+            chevronView.removeFromSuperview()
         }
 
         actionType = model.actionType
@@ -85,14 +89,13 @@ public class UserAdManagementActionCell: UITableViewCell {
         // Note, not all combination of model.properties are supported, as the Model will only allow
         // certain combinations, based on the ActionType
 
-        // TODO: Probably possible to avoid duplication for stuff like chevron, it
-        // can be checked on its own...
         if model.hasSwitch {
             // TODO: The type will infer what the toggle isOn status should be
             contentView.addSubview(toggle)
+
             constraints += [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                              toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                             titleLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: 8),
+                             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -8),
                              titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor) ]
         } else if model.description != nil {
             descriptionLabel.text = model.description
@@ -112,13 +115,13 @@ public class UserAdManagementActionCell: UITableViewCell {
                              chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                              chevronView.widthAnchor.constraint(equalToConstant: 9),
                              chevronView.heightAnchor.constraint(equalToConstant: 16),
-                             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                              titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8) ]
         }
         if model.description == nil {
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
+            constraints += [ titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16) ]
         } else {
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)
+            constraints += [contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)]
         }
 
         NSLayoutConstraint.activate(constraints)
