@@ -99,7 +99,7 @@ enum FontType: String {
         return font.scaledFont(forTextStyle: .footnote)
     }
 
-    /// FINNTypeWebStrippet-Medium with a size of 12 scaled for UIFontTextStyle.caption1
+    /// FINNTypeWebStrippet-Bold with a size of 12 scaled for UIFontTextStyle.caption1
     ///
     /// ## Usage:
     /// - Used for small, bold headlines.
