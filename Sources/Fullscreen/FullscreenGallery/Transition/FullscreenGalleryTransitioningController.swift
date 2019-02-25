@@ -11,9 +11,8 @@ public class FullscreenGalleryTransitioningController: NSObject, UIViewControlle
     public weak var presenterDelegate: FullscreenGalleryTransitionPresenterDelegate?
 
     /// - Note:
-    ///   The destination delegate defaults to the UIViewController being presented, if it conforms to
-    ///   FullscreenGalleryTransitionDestinationDelegate. This behaviour can be overridden by setting
-    ///   this property.
+    ///   If unset, the Transition Controller will use the destination view controller, if it conforms to
+    ///   the FullscreenGalleryTransitionDestinationDelegate protocol.
     public weak var destinationDelegate: FullscreenGalleryTransitionDestinationDelegate?
 
     public var dismissVelocity: CGPoint?
