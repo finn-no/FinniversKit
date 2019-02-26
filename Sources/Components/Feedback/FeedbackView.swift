@@ -36,13 +36,8 @@ public class FeedbackView: UIView {
     private var presentation: FeedbackViewPresentation? {
         didSet {
             guard let presentation = presentation else { return }
-            switch presentation {
-            case .grid:
-                buttonStackView.axis = .vertical
-            case .list:
-                buttonStackView.axis = .horizontal
-            }
             titleView.configure(forPresentation: presentation)
+            buttonView.configure(forPresentation: presentation)
         }
     }
 
@@ -55,32 +50,11 @@ public class FeedbackView: UIView {
 
     private lazy var titleView = TitleView(withAutoLayout: true)
 
-    private lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.spacing = .mediumSpacing
-        stackView.distribution = .fillEqually
-        stackView.addArrangedSubview(negativeButton)
-        stackView.addArrangedSubview(positiveButton)
-        return stackView
-    }()
-
-    private lazy var positiveButton: UIButton = {
-        let button = Button(style: .callToAction, size: .small)
-        button.titleLabel?.font = .title5
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(positiveButtonTapped), for: .touchUpInside)
-        return button
-    }()
-
-    private lazy var negativeButton: UIButton = {
-        let button = Button(style: .default, size: .small)
-        button.titleLabel?.font = .title5
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(negativeButtonTapped), for: .touchUpInside)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = .primaryBlue
-        return button
+    private lazy var buttonView: ButtonView = {
+        let buttonView = ButtonView(withAutoLayout: true)
+        buttonView.positiveButton.addTarget(self, action: #selector(positiveButtonTapped), for: .touchUpInside)
+        buttonView.negativeButton.addTarget(self, action: #selector(negativeButtonTapped), for: .touchUpInside)
+        return buttonView
     }()
 
     private lazy var gridPresentationConstraints: [NSLayoutConstraint] = [
@@ -88,8 +62,8 @@ public class FeedbackView: UIView {
         imageView.heightAnchor.constraint(equalToConstant: 130),
         titleView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumSpacing),
         titleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-        buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-        buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+        buttonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
     ]
 
     private lazy var listPresentationConstraints: [NSLayoutConstraint] = [
@@ -97,8 +71,8 @@ public class FeedbackView: UIView {
         imageView.widthAnchor.constraint(equalToConstant: 130),
         titleView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
         titleView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
-        buttonStackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
-        buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
+        buttonView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
+        buttonView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
     ]
 
     // MARK: - Init
@@ -124,16 +98,16 @@ public class FeedbackView: UIView {
 
         addSubview(imageView)
         addSubview(titleView)
-        addSubview(buttonStackView)
+        addSubview(buttonView)
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
 
             titleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            titleView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -.mediumSpacing),
+            titleView.bottomAnchor.constraint(equalTo: buttonView.topAnchor, constant: -.mediumSpacing),
 
-            buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+            buttonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
         ])
     }
 
@@ -149,14 +123,6 @@ public class FeedbackView: UIView {
     private func configure(withViewModel viewModel: FeedbackViewModel) {
         if !hasBeenPresented {
             titleView.setTitle(viewModel.title)
-
-            // PositiveButton.
-            positiveButton.isHidden = viewModel.positiveButtonTitle == nil
-            positiveButton.setTitle(viewModel.positiveButtonTitle, for: .normal)
-
-            // NegativeButton.
-            negativeButton.isHidden = viewModel.negativeButtonTitle == nil
-            negativeButton.setTitle(viewModel.negativeButtonTitle, for: .normal)
         } else {
             guard let snapshotTitleView = titleView.snapshotView(afterScreenUpdates: false) else { return }
             snapshotTitleView.frame = titleView.frame
@@ -174,15 +140,9 @@ public class FeedbackView: UIView {
             }, completion: { _ in
                 snapshotTitleView.removeFromSuperview()
             })
-
-            // PositiveButton.
-            positiveButton.isHidden = viewModel.positiveButtonTitle == nil
-            positiveButton.setTitle(viewModel.positiveButtonTitle, for: .normal)
-
-            // NegativeButton.
-            negativeButton.isHidden = viewModel.negativeButtonTitle == nil
-            negativeButton.setTitle(viewModel.negativeButtonTitle, for: .normal)
         }
+
+        buttonView.setButtonTitles(positive: viewModel.positiveButtonTitle, negative: viewModel.negativeButtonTitle)
     }
 
     @objc private func positiveButtonTapped() {
@@ -285,5 +245,97 @@ private class TitleView: UIView {
             titleLabel.font = .title4
             titleLabelLeadingConstraint.constant = .mediumSpacing
         }
+    }
+}
+
+// MARK: - ButtonView
+
+private class ButtonView: UIView {
+
+    // MARK: - Public properties
+
+    lazy var positiveButton: UIButton = {
+        let button = Button(style: .callToAction, size: .small)
+        button.titleLabel?.font = .title5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    lazy var negativeButton: UIButton = {
+        let button = Button(style: .default, size: .small)
+        button.titleLabel?.font = .title5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.borderWidth = 1
+        button.layer.borderColor = .primaryBlue
+        return button
+    }()
+
+    // MARK: - Private properties
+
+    private var currentPresentation: FeedbackViewPresentation?
+
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.spacing = .mediumSpacing
+        stackView.distribution = .fillEqually
+        stackView.addArrangedSubview(positiveButton)
+        stackView.addArrangedSubview(negativeButton)
+        return stackView
+    }()
+
+    // MARK: - Init
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Setup
+
+    private func setup() {
+        addSubview(stackView)
+
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
+
+    // MARK: - Public methods
+
+    func setButtonTitles(positive: String?, negative: String?) {
+        positiveButton.isHidden = positive == nil
+        positiveButton.setTitle(positive, for: .normal)
+
+        negativeButton.isHidden = negative == nil
+        negativeButton.setTitle(negative, for: .normal)
+    }
+
+    func configure(forPresentation presentation: FeedbackViewPresentation) {
+        guard presentation != currentPresentation else { return }
+
+        if !stackView.arrangedSubviews.isEmpty {
+            positiveButton.removeFromSuperview()
+            negativeButton.removeFromSuperview()
+        }
+
+        switch presentation {
+        case .list:
+            stackView.axis = .horizontal
+            stackView.addArrangedSubview(negativeButton)
+            stackView.addArrangedSubview(positiveButton)
+        case .grid:
+            stackView.axis = .vertical
+            stackView.addArrangedSubview(positiveButton)
+            stackView.addArrangedSubview(negativeButton)
+        }
+
+        currentPresentation = presentation
     }
 }
