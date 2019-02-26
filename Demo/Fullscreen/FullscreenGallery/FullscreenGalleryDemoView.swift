@@ -331,15 +331,15 @@ extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDelegate {
 // MARK: - FullscreenGalleryTransitionSourceDelegate
 
 extension FullscreenGalleryDemoView: FullscreenGalleryTransitionPresenterDelegate {
-    public func viewForFullscreenGalleryTransition() -> UIView {
+    public func imageViewForFullscreenGalleryTransition() -> UIImageView? {
         let imageIndex = selectedIndex ?? 0
 
         guard let cell = collectionView.cellForItem(at: IndexPath(row: imageIndex, section: 0)) else {
-            return collectionView
+            return nil
         }
 
         guard let previewCell = cell as? FullscreenGalleryDemoPreviewCell else {
-            fatalError()
+            return nil
         }
 
         return previewCell.imageView

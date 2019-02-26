@@ -14,5 +14,5 @@ import UIKit
 ///   The view will be snapshot by the transition, so the view should be
 ///   fully loaded and ready to render before the transition is initiated.
 public protocol FullscreenGalleryTransitionPresenterDelegate: class {
-    func viewForFullscreenGalleryTransition() -> UIView
+    func imageViewForFullscreenGalleryTransition() -> UIImageView?
 }
