@@ -83,6 +83,13 @@ public class UserAdManagementActionCell: UITableViewCell {
             titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16),
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
         ])
+
+        chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+                               chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                               chevronView.widthAnchor.constraint(equalToConstant: 9),
+                               chevronView.heightAnchor.constraint(equalToConstant: 16),
+                               titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
+        ]
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -99,13 +106,13 @@ public class UserAdManagementActionCell: UITableViewCell {
             descriptionLabel.removeFromSuperview()
             chevronView.removeFromSuperview()
             externalAction.removeFromSuperview()
+
+            NSLayoutConstraint.deactivate(chevronConstraints)
         }
 
         actionType = model.actionType
         titleLabel.text = model.title
         iconView.image = model.image
-
-        model.shouldShowChevron ? contentView.addSubview(chevronView) : chevronView.removeFromSuperview()
 
         var constraints = [NSLayoutConstraint]()
 
@@ -139,11 +146,7 @@ public class UserAdManagementActionCell: UITableViewCell {
                              titleLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: 8) ]
         } else if model.shouldShowChevron {
             contentView.addSubview(chevronView)
-            constraints += [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-                             chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                             chevronView.widthAnchor.constraint(equalToConstant: 9),
-                             chevronView.heightAnchor.constraint(equalToConstant: 16),
-                             titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8) ]
+            NSLayoutConstraint.activate(chevronConstraints)
         }
 
         if model.description == nil {
