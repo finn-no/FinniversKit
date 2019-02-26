@@ -25,13 +25,13 @@ struct FullscreenGalleryDemoViewModel: FullscreenGalleryViewModel {
 }
 
 class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
-    private var imageUrl: String?
+    private(set) var imageIndex: Int?
+    private(set) var imageUrl: String?
 
     private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .black
         return imageView
     }()
 
@@ -66,6 +66,10 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         setFocused(false)
+
+        imageView.image = nil
+        imageUrl = nil
+        imageIndex = nil
     }
 
     // MARK: - Public methods
@@ -78,8 +82,9 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
         }
     }
 
-    public func configure(withUrl url: String) {
+    public func configure(withIndex index: Int, url url: String) {
         imageUrl = url
+        imageIndex = index
 
         ImageDownloader.shared.downloadImage(withUrl: url, dataCallback: { [weak self] (fetchedUrl, image) in
             guard let self = self else { return }
@@ -261,14 +266,16 @@ class FullscreenGalleryDemoView: UIView {
     }
 
     private func highlightThumbnail(atIndexPath indexPath: IndexPath) {
-        var pathsToUpdate = [indexPath]
-
         if let lastSelected = selectedIndex, lastSelected != indexPath.row {
-            pathsToUpdate.append(IndexPath(row: lastSelected, section: 0))
+            let lastIndexPath = IndexPath(row: lastSelected, section: 0)
+            let cell = collectionView.cellForItem(at: lastIndexPath) as? FullscreenGalleryDemoPreviewCell
+            cell?.setFocused(false)
         }
 
         selectedIndex = indexPath.row
-        collectionView.reloadItems(at: pathsToUpdate)
+
+        let cell = collectionView.cellForItem(at: indexPath) as? FullscreenGalleryDemoPreviewCell
+        cell?.setFocused(false)
     }
 
     @objc private func loadSimulationSwitchToggled() {
@@ -312,16 +319,10 @@ extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDelegate {
 extension FullscreenGalleryDemoView: FullscreenGalleryTransitionPresenterDelegate {
     public func imageViewForFullscreenGalleryTransition() -> UIImageView? {
         let imageIndex = selectedIndex ?? 0
+        let indexPath = IndexPath(row: imageIndex, section: 0)
 
-        guard let cell = collectionView.cellForItem(at: IndexPath(row: imageIndex, section: 0)) else {
-            return nil
-        }
-
-        guard let previewCell = cell as? FullscreenGalleryDemoPreviewCell else {
-            return nil
-        }
-
-        return previewCell.imageView
+        let cell = collectionView.cellForItem(at: indexPath) as? FullscreenGalleryDemoPreviewCell
+        return cell?.imageView
     }
 }
 
@@ -334,7 +335,7 @@ extension FullscreenGalleryDemoView: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(FullscreenGalleryDemoPreviewCell.self, for: indexPath)
-        cell.configure(withUrl: viewModel.imageUrls[indexPath.row])
+        cell.configure(withIndex: indexPath.row, url: viewModel.imageUrls[indexPath.row])
         cell.setFocused(selectedIndex == indexPath.row)
         return cell
     }
