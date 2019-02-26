@@ -5,6 +5,7 @@
 public class UserAdManagementActionCell: UITableViewCell {
     public weak var delegate: UserAdManagementActionCellDelegate?
     public private(set) var actionType: AdManagementActionType = .unknown
+    private var shouldShowExternalIcon: Bool = false
 
     private lazy var separator: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -65,6 +66,7 @@ public class UserAdManagementActionCell: UITableViewCell {
     private var externalActionConstraints = [NSLayoutConstraint]()
     private var descriptionLabelConstraints = [NSLayoutConstraint]()
     private var descriptionToChevronTrailingConstraint = NSLayoutConstraint()
+    private var descriptionToExternalTrailingConstraint = NSLayoutConstraint()
     private var descriptionToContentTrailingConstraint = NSLayoutConstraint()
     private var titleLabelCenterYToContentViewConstraint = NSLayoutConstraint()
     private var contentViewBottomToTitleConstraint = NSLayoutConstraint()
@@ -109,13 +111,14 @@ public class UserAdManagementActionCell: UITableViewCell {
                                       externalAction.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                                       externalAction.widthAnchor.constraint(equalToConstant: 20),
                                       externalAction.heightAnchor.constraint(equalToConstant: 20),
-                                      titleLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: 8)
+                                      titleLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: -8)
         ]
         descriptionLabelConstraints = [ descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
                                         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0)
         ]
-        descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
-        descriptionToContentTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16)
+        descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -8)
+        descriptionToExternalTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: -8)
+        descriptionToContentTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
         titleLabelCenterYToContentViewConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 
         contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
@@ -131,24 +134,11 @@ public class UserAdManagementActionCell: UITableViewCell {
         iconView.image = model.image
         descriptionLabel.text = model.description
 
-        // TODO: External action can be dictated outside logic of actionType
-        if model.actionType == actionType { return }
-
-        toggle.removeFromSuperview()
-        descriptionLabel.removeFromSuperview()
-        chevronView.removeFromSuperview()
-        externalAction.removeFromSuperview()
-
-        NSLayoutConstraint.deactivate(chevronConstraints)
-        NSLayoutConstraint.deactivate(toggleConstraints)
-        NSLayoutConstraint.deactivate(externalActionConstraints)
-        NSLayoutConstraint.deactivate(descriptionLabelConstraints)
-        descriptionToChevronTrailingConstraint.isActive = false
-        descriptionToContentTrailingConstraint.isActive = false
-        contentViewBottomToDescriptionConstraint.isActive = false
-        contentViewBottomToTitleConstraint.isActive = false
+        if model.actionType == actionType &&  model.shouldShowExternalIcon == shouldShowExternalIcon { return }
         actionType = model.actionType
+        shouldShowExternalIcon = model.shouldShowExternalIcon
 
+        cleanup()
         // Note, not all combination of model.properties are supported, as the Model will only allow
         // certain combinations, based on the ActionType
         if model.shouldShowExternalIcon { // External icon overrides chevron, as host-app needs this functionality
@@ -165,7 +155,10 @@ public class UserAdManagementActionCell: UITableViewCell {
         } else if model.description != nil {
             contentView.addSubview(descriptionLabel)
             NSLayoutConstraint.activate(descriptionLabelConstraints)
-            let trailingConstraint = model.shouldShowChevron ? descriptionToChevronTrailingConstraint : descriptionToContentTrailingConstraint
+            var trailingConstraint = model.shouldShowChevron ? descriptionToChevronTrailingConstraint : descriptionToContentTrailingConstraint
+            if model.shouldShowExternalIcon {
+               trailingConstraint = descriptionToExternalTrailingConstraint
+            }
             trailingConstraint.isActive = true
         }
 
@@ -183,6 +176,23 @@ public class UserAdManagementActionCell: UITableViewCell {
     // MARK: - Constraints
 
     // MARK: - Private functions
+
+    private func cleanup() {
+        toggle.removeFromSuperview()
+        descriptionLabel.removeFromSuperview()
+        chevronView.removeFromSuperview()
+        externalAction.removeFromSuperview()
+
+        NSLayoutConstraint.deactivate(chevronConstraints)
+        NSLayoutConstraint.deactivate(toggleConstraints)
+        NSLayoutConstraint.deactivate(externalActionConstraints)
+        NSLayoutConstraint.deactivate(descriptionLabelConstraints)
+        descriptionToChevronTrailingConstraint.isActive = false
+        descriptionToExternalTrailingConstraint.isActive = false
+        descriptionToContentTrailingConstraint.isActive = false
+        contentViewBottomToDescriptionConstraint.isActive = false
+        contentViewBottomToTitleConstraint.isActive = false
+    }
 
     @objc private func toggleTapped(_ sender: UISwitch) {
         delegate?.userAdManagementActionCell(self, switchChangedState: sender.isOn)
