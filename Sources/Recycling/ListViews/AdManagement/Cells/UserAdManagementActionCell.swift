@@ -104,8 +104,7 @@ public class UserAdManagementActionCell: UITableViewCell {
         ]
         toggleConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                               toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                              titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -8),
-                              titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+                              titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -8)
         ]
         externalActionConstraints = [ externalAction.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
                                       externalAction.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
