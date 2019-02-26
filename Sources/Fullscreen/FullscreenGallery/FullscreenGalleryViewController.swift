@@ -418,6 +418,7 @@ extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
 // MARK: - GalleryPreviewViewDelegate
 extension FullscreenGalleryViewController: GalleryPreviewViewDelegate {
     func galleryPreviewView(_ previewView: GalleryPreviewView, selectedImageAtIndex index: Int) {
+        viewModel.selectedIndex = index
         transitionToImage(atIndex: index, animated: true)
         previewView.scrollToItem(atIndex: index, animated: true)
     }
