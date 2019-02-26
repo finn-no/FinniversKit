@@ -40,10 +40,9 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
         }
 
         let presenterFrame = presenterView.convert(presenterView.bounds, to: transitionContext.containerView)
-
         let presentedFrame = presentedView.convert(presentedView.bounds, to: transitionContext.containerView)
 
-        let transitionView = presentedView.snapshotView(afterScreenUpdates: true)!
+        let transitionView = createImageView(from: presentedView)
         transitionView.frame = presentedFrame
         transitionContext.containerView.addSubview(transitionView)
 
@@ -105,5 +104,11 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
         path.addCurve(to: p2, controlPoint1: c1, controlPoint2: c2)
 
         return path
+    }
+
+    private func createImageView(from: UIImageView) -> UIImageView {
+        let imageView = UIImageView(image: from.image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }
 }

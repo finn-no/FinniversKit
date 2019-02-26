@@ -11,7 +11,7 @@ import UIKit
 /// transitioning in, and scaled into when transitioning out.
 ///
 /// - Notes:
-///   The view will be snapshot by the transition, so the view should be
+///   An intermediate transition-view will be created from the returned view, so the view should be
 ///   fully loaded and ready to render before the transition is initiated.
 public protocol FullscreenGalleryTransitionPresenterDelegate: class {
     func imageViewForFullscreenGalleryTransition() -> UIImageView?

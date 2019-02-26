@@ -45,7 +45,7 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
         let sourceFrame = sourceView.convert(sourceView.bounds, to: transitionContext.containerView)
         let destinationFrame = destinationView.convert(destinationView.bounds, to: transitionContext.containerView)
 
-        let transitionView = destinationView.snapshotView(afterScreenUpdates: true)!
+        let transitionView = createImageView(from: sourceView)
         transitionView.frame = sourceFrame
 
         sourceView.isHidden = true
@@ -65,5 +65,13 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
             destinationView.isHidden = false
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
+    }
+
+    // MARK: - Private methods
+
+    private func createImageView(from: UIImageView) -> UIImageView {
+        let imageView = UIImageView(image: from.image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }
 }
