@@ -84,6 +84,7 @@ public enum FinniversImageAsset: String {
     case profile
     case rate
     case rated
+    case ratingCat
     case ratings
     case realestate
     case remove
@@ -175,6 +176,7 @@ public enum FinniversImageAsset: String {
             .profile,
             .rate,
             .rated,
+            .ratingCat,
             .ratings,
             .realestate,
             .remove,
