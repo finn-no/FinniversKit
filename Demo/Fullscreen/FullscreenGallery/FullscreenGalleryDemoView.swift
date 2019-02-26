@@ -50,18 +50,14 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
     }
 
     private func setup() {
-        // translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(imageView)
         setFocused(false)
 
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            imageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-            imageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .mediumSpacing),
-            imageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.mediumSpacing),
-
-            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
         ])
     }
 
@@ -89,25 +85,8 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
             guard let self = self else { return }
             if fetchedUrl == self.imageUrl {
                 self.imageView.image = image
-
-                if let image = image {
-                    if let oldConstraint = self.aspectRatioConstraint {
-                        self.imageView.removeConstraint(oldConstraint)
-                    }
-
-                    let newConstraint = self.createAspectRatioConstraint(forImage: image)
-                    self.imageView.addConstraint(newConstraint)
-                    self.aspectRatioConstraint = newConstraint
-                }
             }
         })
-    }
-
-    // MARK: - Private methods
-
-    private func createAspectRatioConstraint(forImage image: UIImage) -> NSLayoutConstraint {
-        let aspectRatio = image.size.width / image.size.height
-        return NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: imageView, attribute: .height, multiplier: aspectRatio, constant: 0.0)
     }
 }
 
