@@ -22,8 +22,25 @@ protocol FullscreenImageViewControllerDelegate: class {
     func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool
 }
 
-class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelegate {
+private class ScrollViewPrePanState {
+    let minimumZoomScale: CGFloat
+    let zoomScale: CGFloat
+    let frame: CGRect
 
+    init(from: UIScrollView) {
+        minimumZoomScale = from.minimumZoomScale
+        zoomScale = from.zoomScale
+        frame = from.frame
+    }
+
+    func apply(onScrollView scrollView: UIScrollView) {
+        scrollView.minimumZoomScale = minimumZoomScale
+        scrollView.zoomScale = zoomScale
+        scrollView.frame = frame
+    }
+}
+
+class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Public properties
 
     public weak var dataSource: FullscreenImageViewControllerDataSource?
@@ -36,7 +53,7 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
     private static let zoomStep: CGFloat = 2.0
 
     private var shouldAdjustForPreviewView: Bool = false
-    private var initialPanFrame: CGRect = .zero
+    private var prePanState: ScrollViewPrePanState?
 
     // MARK: - UI properties
 
@@ -137,20 +154,28 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
     @objc private func handlePanGesture(_ panGesture: UIPanGestureRecognizer) {
         let animateBack = {
             UIView.animate(withDuration: 0.4, animations: {
-                self.fullscreenImageView.frame = self.initialPanFrame
+                self.prePanState?.apply(onScrollView: self.fullscreenImageView)
             })
         }
 
         switch panGesture.state {
         case .began:
-            initialPanFrame = fullscreenImageView.frame
+            prePanState = ScrollViewPrePanState(from: fullscreenImageView)
+            fullscreenImageView.minimumZoomScale /= 3.0
             delegate?.fullscreenImageViewControllerDidBeginPanning(self)
 
         case .changed:
-            let size = fullscreenImageView.frame.size
+            guard let prePanState = prePanState else { return }
+
             let translation = panGesture.translation(in: fullscreenImageView)
-            let pos = initialPanFrame.origin + translation
+
+            let size = fullscreenImageView.frame.size
+            let pos = prePanState.frame.origin + translation
             fullscreenImageView.frame = CGRect(x: pos.x, y: pos.y, width: size.width, height: size.height)
+
+            let scaleFactor = 1.0 - (translation.length() / (view.bounds.height * 1.5))
+            fullscreenImageView.zoomScale = prePanState.zoomScale * scaleFactor
+
             delegate?.fullscreenImageViewControllerDidPan(self, withTranslation: translation)
 
         case .ended, .cancelled, .failed:
