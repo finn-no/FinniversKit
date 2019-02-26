@@ -136,7 +136,6 @@ public class FeedbackView: UIView {
                 self?.titleView.alpha = 1
                 snapshotTitleView.alpha = 0
                 snapshotTitleView.transform = CGAffineTransform(translationX: 0, y: -30)
-
             }, completion: { _ in
                 snapshotTitleView.removeFromSuperview()
             })

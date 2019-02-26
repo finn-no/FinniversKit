@@ -5,6 +5,9 @@
 import FinniversKit
 
 class FeedbackDemoView: UIView {
+
+    // MARK: - Private properties
+
     private let singleQuestionFeedback = SingleQuestionFeedback()
     private let multiQuestionFeedback = MultiQuestionFeedback()
 
@@ -13,10 +16,10 @@ class FeedbackDemoView: UIView {
     private let gridItemHeight: CGFloat = 300
     private let listItemHeight: CGFloat = 100
 
-    lazy var listItems = [singleQuestionFeedback.createFeedbackView(), multiQuestionFeedback.createFeedbackView()]
-    lazy var gridItems = [singleQuestionFeedback.createFeedbackView(), multiQuestionFeedback.createFeedbackView()]
+    private lazy var listItems = [singleQuestionFeedback.createFeedbackView(), multiQuestionFeedback.createFeedbackView()]
+    private lazy var gridItems = [singleQuestionFeedback.createFeedbackView(), multiQuestionFeedback.createFeedbackView()]
 
-    lazy var listFeedbackStackView: UIStackView = {
+    private lazy var listFeedbackStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
@@ -25,7 +28,7 @@ class FeedbackDemoView: UIView {
         return stackView
     }()
 
-    lazy var gridFeedbackStackView: UIStackView = {
+    private lazy var gridFeedbackStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.distribution = .fillEqually
         stackView.spacing = .mediumSpacing
@@ -33,7 +36,7 @@ class FeedbackDemoView: UIView {
         return stackView
     }()
 
-    lazy var switchViewsButton: UIButton = {
+    private lazy var switchViewsButton: UIButton = {
         let button = Button(style: .callToAction, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Switch grid / list views", for: .normal)
@@ -71,6 +74,8 @@ class FeedbackDemoView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Private methods
 
     @objc private func switchViewsButtonTapped() {
         switchViewsButton.isEnabled = false
