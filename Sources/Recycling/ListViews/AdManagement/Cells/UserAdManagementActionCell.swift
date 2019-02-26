@@ -61,6 +61,12 @@ public class UserAdManagementActionCell: UITableViewCell {
     }()
 
     private var chevronConstraints = [NSLayoutConstraint]()
+    private var toggleConstraints = [NSLayoutConstraint]() // TODO: Naming, toggle is also a verb
+    private var externalActionConstraints = [NSLayoutConstraint]()
+    private var descriptionLabelConstraints = [NSLayoutConstraint]()
+    private var descriptionToChevronTrailingConstraint = NSLayoutConstraint()
+    private var descriptionToContentTrailingConstraint = NSLayoutConstraint()
+    private var titleLabelCenterYConstraint = NSLayoutConstraint()
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -90,6 +96,23 @@ public class UserAdManagementActionCell: UITableViewCell {
                                chevronView.heightAnchor.constraint(equalToConstant: 16),
                                titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
         ]
+        toggleConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+                              toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                              titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -8),
+                              titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ]
+        externalActionConstraints = [ externalAction.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+                                      externalAction.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                                      externalAction.widthAnchor.constraint(equalToConstant: 20),
+                                      externalAction.heightAnchor.constraint(equalToConstant: 20),
+                                      titleLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: 8)
+        ]
+        descriptionLabelConstraints = [ descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+                                        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0)
+        ]
+        descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
+        descriptionToContentTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16)
+        titleLabelCenterYConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -100,7 +123,7 @@ public class UserAdManagementActionCell: UITableViewCell {
         // TODO: The common setup, for the componenets always present can be done through the init.
         // Then this function can deal only with the specifics for each type of action...
         selectionStyle = .none
-        if model.actionType != actionType {
+        if model.actionType != actionType { // TODO the oposite means no need to change constraints
             // We also need to remove the constraints for these views
             toggle.removeFromSuperview()
             descriptionLabel.removeFromSuperview()
@@ -108,52 +131,47 @@ public class UserAdManagementActionCell: UITableViewCell {
             externalAction.removeFromSuperview()
 
             NSLayoutConstraint.deactivate(chevronConstraints)
+            NSLayoutConstraint.deactivate(toggleConstraints)
+            NSLayoutConstraint.deactivate(externalActionConstraints)
+            NSLayoutConstraint.deactivate(descriptionLabelConstraints)
+            descriptionToChevronTrailingConstraint.isActive = false
+            descriptionToContentTrailingConstraint.isActive = false
         }
 
         actionType = model.actionType
         titleLabel.text = model.title
         iconView.image = model.image
 
+        descriptionLabel.text = model.description
+
         var constraints = [NSLayoutConstraint]()
 
         // Note, not all combination of model.properties are supported, as the Model will only allow
         // certain combinations, based on the ActionType
-
-        if model.shouldShowSwitch {
-            contentView.addSubview(toggle)
-
-            constraints += [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-                             toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -8),
-                             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor) ]
-        } else if model.description != nil {
-            descriptionLabel.text = model.description
-            contentView.addSubview(descriptionLabel)
-            constraints += [ descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-                             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0) ]
-            if model.shouldShowChevron {
-                constraints += [ descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8) ]
-            } else {
-                constraints += [ descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16) ]
-            }
-        }
         if model.shouldShowExternalIcon { // External icon overrides chevron, as host-app needs this functionality
             contentView.addSubview(externalAction)
-            constraints += [ externalAction.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-                             externalAction.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                             externalAction.widthAnchor.constraint(equalToConstant: 20),
-                             externalAction.heightAnchor.constraint(equalToConstant: 20),
-                             titleLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: 8) ]
+            NSLayoutConstraint.activate(externalActionConstraints)
         } else if model.shouldShowChevron {
             contentView.addSubview(chevronView)
             NSLayoutConstraint.activate(chevronConstraints)
         }
 
+        if model.shouldShowSwitch {
+            contentView.addSubview(toggle)
+            NSLayoutConstraint.activate(toggleConstraints)
+        } else if model.description != nil {
+            contentView.addSubview(descriptionLabel)
+            NSLayoutConstraint.activate(descriptionLabelConstraints)
+            let trailingConstraint = model.shouldShowChevron ? descriptionToChevronTrailingConstraint : descriptionToContentTrailingConstraint
+            trailingConstraint.isActive = true
+        }
+
+        titleLabelCenterYConstraint.isActive = model.description == nil
+
         if model.description == nil {
-            constraints += [ titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16) ]
+            constraints += [ contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16) ]
         } else {
-            constraints += [contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)]
+            constraints += [ contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)]
         }
 
         NSLayoutConstraint.activate(constraints)
