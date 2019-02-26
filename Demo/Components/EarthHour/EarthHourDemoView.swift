@@ -32,7 +32,9 @@ public class EarthHourDemoView: UIView {
 
     private func setup() {
         backgrounView.backgroundColor = .black
+
         earthHourView.model = EarthHourDefaultData()
+        earthHourView.delegate = self
 
         addSubview(backgrounView)
         addSubview(earthHourView)
@@ -40,9 +42,22 @@ public class EarthHourDemoView: UIView {
         backgrounView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            earthHourView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+            earthHourView.widthAnchor.constraint(greaterThanOrEqualToConstant: 320),
+            earthHourView.widthAnchor.constraint(lessThanOrEqualToConstant: 337),
             earthHourView.centerXAnchor.constraint(equalTo: centerXAnchor),
             earthHourView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
+}
+
+// MARK: - EarthHourViewDelegate
+
+extension EarthHourDemoView: EarthHourViewDelegate {
+    public func earthHourViewDidSelectReadMore(_ view: EarthHourView) {}
+
+    public func earthHourViewDidSelectAccept(_ view: EarthHourView) {
+        view.expand()
+    }
+
+    public func earthHourViewDidSelectDismiss(_ view: EarthHourView) {}
 }

@@ -30,8 +30,11 @@ public final class EarthHourView: UIView {
 
     // MARK: - Private properties
 
+    private let collapsedHeaderHeight: CGFloat = 159
+
     private lazy var headerView: EarthHourHeaderView = {
         let view = EarthHourHeaderView(withAutoLayout: true)
+        view.bottomCurveHeight = collapsedHeaderHeight
         view.closeButton.addTarget(self, action: #selector(handleCloseButtonTap), for: .touchUpInside)
         return view
     }()
@@ -51,7 +54,7 @@ public final class EarthHourView: UIView {
         return view
     }()
 
-    private lazy var headerViewHeight = headerView.heightAnchor.constraint(equalToConstant: 159)
+    private lazy var headerViewHeight = headerView.heightAnchor.constraint(equalToConstant: collapsedHeaderHeight)
     private lazy var singUpViewBottom = signUpView.bottomAnchor.constraint(equalTo: bottomAnchor)
     private lazy var thankYouViewBottom = thankYouView.bottomAnchor.constraint(
         equalTo: bottomAnchor,

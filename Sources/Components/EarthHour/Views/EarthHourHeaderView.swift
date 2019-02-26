@@ -5,7 +5,10 @@
 import UIKit
 
 final class EarthHourHeaderView: UIView {
+    var bottomCurveHeight: CGFloat = 0
+
     private let earthRotationDegrees = 15
+    private lazy var fillColor = UIColor(r: 27, g: 64, b: 134)
 
     private(set) lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
@@ -16,6 +19,12 @@ final class EarthHourHeaderView: UIView {
 
     private lazy var backgroundView = UIView(withAutoLayout: true)
     private lazy var bottomCurveView = UIView(withAutoLayout: true)
+
+    private lazy var bottomCurveLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.fillColor = fillColor?.cgColor
+        return layer
+    }()
 
     private lazy var earthImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -73,8 +82,10 @@ final class EarthHourHeaderView: UIView {
 
     private func setup() {
         backgroundColor = .white
-        backgroundView.backgroundColor = UIColor(r: 27, g: 64, b: 134)
-        bottomCurveView.backgroundColor = backgroundView.backgroundColor
+        backgroundView.backgroundColor = fillColor
+
+        bottomCurveView.backgroundColor = .clear
+        bottomCurveView.layer.addSublayer(bottomCurveLayer)
 
         addSubview(backgroundView)
         addSubview(bottomCurveView)
@@ -116,27 +127,16 @@ final class EarthHourHeaderView: UIView {
 
     private func addBottomCurve() {
         let bounds = bottomCurveView.bounds
-        let offset: CGFloat = bounds.width / 15
-        var maskBounds = bounds
-
-        maskBounds.size.height = bounds.size.height / 2
-
-        let maskPath = UIBezierPath(rect: maskBounds)
+        let offsetX = bounds.width / 5
+        let offsetY: CGFloat = 12
         let curveBounds = CGRect(
-            x: bounds.origin.x - offset / 2,
-            y: bounds.origin.y,
-            width: bounds.size.width + offset,
-            height: bounds.size.height
+            x: bounds.origin.x - offsetX,
+            y: bounds.maxY - bottomCurveHeight - offsetY,
+            width: bounds.size.width + offsetX * 2,
+            height: bottomCurveHeight
         )
 
-        let curvePath = UIBezierPath(ovalIn: curveBounds)
-        maskPath.append(curvePath)
-
-        let maskLayer: CAShapeLayer = CAShapeLayer()
-        maskLayer.frame = bounds
-        maskLayer.path = maskPath.cgPath
-
-        bottomCurveView.layer.mask = maskLayer
+        bottomCurveLayer.path = UIBezierPath(ovalIn: curveBounds).cgPath
     }
 
     // MARK: - Animations
