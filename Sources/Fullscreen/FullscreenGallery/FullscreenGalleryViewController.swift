@@ -5,34 +5,27 @@
 import UIKit
 
 public protocol FullscreenGalleryViewControllerDataSource: class {
-    func modelForFullscreenGalleryViewController(_ vc: FullscreenGalleryViewController) -> FullscreenGalleryViewModel
-    func initialImageIndexForFullscreenGalleryViewController(_ vc: FullscreenGalleryViewController) -> Int
     func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, loadImageAtIndex index: Int, dataCallback: @escaping (UIImage?) -> Void)
-}
-
-public protocol FullscreenGalleryViewControllerDelegate: class {
-    func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, intendsToDismissFromImageWithIndex index: Int)
 }
 
 public class FullscreenGalleryViewController: UIPageViewController {
 
     // MARK: - Public properties
 
-    public weak var galleryDataSource: FullscreenGalleryViewControllerDataSource?
-    public weak var galleryDelegate: FullscreenGalleryViewControllerDelegate?
-
     public override var prefersStatusBarHidden: Bool {
         return true
     }
+
+    private(set) var viewModel: FullscreenGalleryViewModel
 
     // MARK: - Private properties
 
     private static let captionFadeDuration = 0.2
     private static let dismissButtonSize: CGFloat = 30.0
 
+    private let galleryDataSource: FullscreenGalleryViewControllerDataSource
     private let previewViewInitiallyVisible: Bool
 
-    private var viewModel: FullscreenGalleryViewModel?
     private var previewViewVisible: Bool
     private var hasPerformedInitialPreviewScroll: Bool = false
 
@@ -120,9 +113,11 @@ public class FullscreenGalleryViewController: UIPageViewController {
         fatalError("not implemented: init(transitionStyle:navigationOrientation:options:)")
     }
 
-    public init(thumbnailsInitiallyVisible previewVisible: Bool) {
+    public required init(withDataSource galleryDataSource: FullscreenGalleryViewControllerDataSource, viewModel: FullscreenGalleryViewModel, thumbnailsInitiallyVisible previewVisible: Bool) {
         self.previewViewInitiallyVisible = previewVisible
         self.previewViewVisible = previewVisible
+        self.galleryDataSource = galleryDataSource
+        self.viewModel = viewModel
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
 
         modalPresentationStyle = .overCurrentContext
@@ -130,16 +125,10 @@ public class FullscreenGalleryViewController: UIPageViewController {
         dataSource = self
     }
 
-    convenience init() {
-        self.init(thumbnailsInitiallyVisible: false)
-    }
-
     // MARK: - Lifecycle
 
     public override func loadView() {
-        viewModel = galleryDataSource?.modelForFullscreenGalleryViewController(self)
         previewView.viewModel = viewModel
-
         super.loadView()
     }
 
@@ -180,8 +169,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
         view.layoutIfNeeded()
 
-        let initialImageIndex = galleryDataSource?.initialImageIndexForFullscreenGalleryViewController(self) ?? 0
-        transitionToImage(atIndex: initialImageIndex, animated: false)
+        transitionToImage(atIndex: viewModel.selectedIndex, animated: false)
     }
 
     public override func viewDidLayoutSubviews() {
@@ -206,9 +194,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
     // MARK: - View interactions
 
     @objc private func dismissButtonTapped() {
-        let currentIndex = currentImageViewController()?.imageIndex ?? 0
-        galleryDelegate?.fullscreenGalleryViewController(self, intendsToDismissFromImageWithIndex: currentIndex)
-
         galleryTransitioningController?.dismissVelocity = nil
         dismiss(animated: true)
     }
@@ -279,8 +264,8 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     private func setCaptionLabel(index: Int) {
         let caption: String? = {
-            if index >= 0 && index < viewModel?.imageCaptions.count ?? 0 {
-                return viewModel?.imageCaptions[index]
+            if index >= 0 && index < viewModel.imageCaptions.count ?? 0 {
+                return viewModel.imageCaptions[index]
             } else {
                 return nil
             }
@@ -315,7 +300,7 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
     }
 
     private func imageViewController(forIndex index: Int) -> FullscreenImageViewController? {
-        if index < 0 || index >= viewModel?.imageUrls.count ?? 0 {
+        if index < 0 || index >= viewModel.imageUrls.count ?? 0 {
             return nil
         }
 
@@ -335,6 +320,8 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
         }
 
         let imageIndex = imageVc.imageIndex
+        viewModel.selectedIndex = imageIndex
+
         setCaptionLabel(index: imageIndex)
         previewView.scrollToItem(atIndex: imageIndex, animated: true)
     }
@@ -372,19 +359,15 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
             return
         }
 
-        galleryDataSource!.fullscreenGalleryViewController(self, loadImageAtIndex: vc.imageIndex, dataCallback: dataCallback)
+        galleryDataSource.fullscreenGalleryViewController(self, loadImageAtIndex: vc.imageIndex, dataCallback: dataCallback)
     }
 
     func title(forImageViewController vc: FullscreenImageViewController) -> String? {
-        if let captions = viewModel?.imageCaptions {
-            if vc.imageIndex < 0 || vc.imageIndex >= captions.count {
-                return nil
-            }
-
-            return captions[vc.imageIndex]
+        if vc.imageIndex < 0 || vc.imageIndex >= viewModel.imageCaptions.count {
+            return nil
         }
 
-        return nil
+        return viewModel.imageCaptions[vc.imageIndex]
     }
 
     func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat {
@@ -403,8 +386,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
 // MARK: - FullscreenImageViewControllerDelegate
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate {
     func fullscreenImageViewControllerDidBeginPanning(_ vc: FullscreenImageViewController) {
-        let currentIndex = currentImageViewController()?.imageIndex ?? 0
-        galleryDelegate?.fullscreenGalleryViewController(self, intendsToDismissFromImageWithIndex: currentIndex)
+        // TODO: Remove this delegate method?
     }
 
     func fullscreenImageViewControllerDidPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint) {
@@ -439,7 +421,7 @@ extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
             return
         }
 
-        galleryDataSource!.fullscreenGalleryViewController(self, loadImageAtIndex: index, dataCallback: { image in
+        galleryDataSource.fullscreenGalleryViewController(self, loadImageAtIndex: index, dataCallback: { image in
             dataCallback(index, image)
         })
     }

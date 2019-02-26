@@ -6,25 +6,23 @@ import FinniversKit
 
 // MARK: - Helpers
 
-struct FullscreenGalleryDemoViewModel: FullscreenGalleryViewModel {
-    let imageUrls: [String] = [
-        "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg",
-        "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
-        "http://jonvilma.com/images/house-6.jpg",
-        "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
-        "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg"
-    ]
-
-    private(set) var imageCaptions: [String] = [
-        "Blått hus. Bjørnen følger ikke med.",
-        "Flytt inn i Syden – hjemme!",
-        "Dette er den lang tekst. Det er mange som den, men denne er min. Uten den lange teksten min er jeg ingenting. Uten meg er den lange teksten min ingenting.",
-        "Herskapelig og fint.\nMerk mangelen på rovdyr i hagen.",
-        "Live here or be square 📦",
-    ]
+private protocol SelectedIndexDelegate: class {
+    func selectedIndexChanged(to index: Int)
 }
 
-class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
+private struct DemoViewModel: FullscreenGalleryViewModel {
+    public weak var selectedIndexDelegate: SelectedIndexDelegate?
+
+    let imageUrls: [String]
+    let imageCaptions: [String]
+    var selectedIndex: Int {
+        didSet {
+            selectedIndexDelegate?.selectedIndexChanged(to: selectedIndex)
+        }
+    }
+}
+
+private class DemoPreviewCell: UICollectionViewCell {
     private(set) var imageIndex: Int?
     private(set) var imageUrl: String?
 
@@ -34,8 +32,6 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
-    private var aspectRatioConstraint: NSLayoutConstraint?
 
     // MARK: - Init
 
@@ -51,7 +47,6 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
 
     private func setup() {
         contentView.addSubview(imageView)
-        setFocused(false)
 
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
@@ -65,7 +60,6 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        setFocused(false)
 
         imageView.image = nil
         imageUrl = nil
@@ -73,14 +67,6 @@ class FullscreenGalleryDemoPreviewCell: UICollectionViewCell {
     }
 
     // MARK: - Public methods
-
-    public func setFocused(_ focus: Bool) {
-        if focus {
-            backgroundColor = .cherry
-        } else {
-            backgroundColor = .banana
-        }
-    }
 
     public func configure(withIndex index: Int, url url: String) {
         imageUrl = url
@@ -135,7 +121,24 @@ class FullscreenGalleryDemoView: UIView {
 
     // MARK: - Private properties
 
-    private let viewModel = FullscreenGalleryDemoViewModel()
+    let imageUrls: [String] = [
+        "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg",
+        "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg",
+        "http://jonvilma.com/images/house-6.jpg",
+        "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg",
+        "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg"
+    ]
+
+    let imageCaptions: [String] = [
+        "Blått hus. Bjørnen følger ikke med.",
+        "Flytt inn i Syden – hjemme!",
+        "Dette er den lang tekst. Det er mange som den, men denne er min. Uten den lange teksten min er jeg ingenting. Uten meg er den lange teksten min ingenting.",
+        "Herskapelig og fint.\nMerk mangelen på rovdyr i hagen.",
+        "Live here or be square 📦",
+    ]
+
+    private var selectedIndex: Int?
+
     private lazy var transitionController = FullscreenGalleryTransitioningController(withPresenterDelegate: self)
 
     private lazy var collectionCellHeight: CGFloat = {
@@ -146,8 +149,6 @@ class FullscreenGalleryDemoView: UIView {
             return 170.0
         }
     }()
-
-    private var selectedIndex: Int?
 
     // MARK: - UI properties
 
@@ -161,7 +162,7 @@ class FullscreenGalleryDemoView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .black
-        collectionView.register(FullscreenGalleryDemoPreviewCell.self)
+        collectionView.register(DemoPreviewCell.self)
         return collectionView
     }()
 
@@ -256,26 +257,13 @@ class FullscreenGalleryDemoView: UIView {
 
     private func displayFullscreenGallery(forIndex index: Int) {
         if let viewController = parentViewController {
-            let gallery = FullscreenGalleryViewController(thumbnailsInitiallyVisible: thumbnailSwitch.isOn)
-            gallery.galleryDataSource = self
-            gallery.galleryDelegate = self
+            let viewModel = DemoViewModel(selectedIndexDelegate: self, imageUrls: imageUrls, imageCaptions: imageCaptions, selectedIndex: index)
+
+            let gallery = FullscreenGalleryViewController(withDataSource: self, viewModel: viewModel, thumbnailsInitiallyVisible: thumbnailSwitch.isOn)
             gallery.transitioningDelegate = transitionController
 
             viewController.present(gallery, animated: true)
         }
-    }
-
-    private func highlightThumbnail(atIndexPath indexPath: IndexPath) {
-        if let lastSelected = selectedIndex, lastSelected != indexPath.row {
-            let lastIndexPath = IndexPath(row: lastSelected, section: 0)
-            let cell = collectionView.cellForItem(at: lastIndexPath) as? FullscreenGalleryDemoPreviewCell
-            cell?.setFocused(false)
-        }
-
-        selectedIndex = indexPath.row
-
-        let cell = collectionView.cellForItem(at: indexPath) as? FullscreenGalleryDemoPreviewCell
-        cell?.setFocused(false)
     }
 
     @objc private func loadSimulationSwitchToggled() {
@@ -290,27 +278,10 @@ class FullscreenGalleryDemoView: UIView {
 // MARK: - FullscreenGallery
 
 extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDataSource {
-    public func modelForFullscreenGalleryViewController(_ vc: FullscreenGalleryViewController) -> FullscreenGalleryViewModel {
-        return viewModel
-    }
-
-    public func initialImageIndexForFullscreenGalleryViewController(_ vc: FullscreenGalleryViewController) -> Int {
-        return selectedIndex ?? 0
-    }
-
     public func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, loadImageAtIndex index: Int, dataCallback: @escaping (UIImage?) -> Void) {
-        ImageDownloader.shared.downloadImage(withUrl: viewModel.imageUrls[index], dataCallback: { _, image in
+        ImageDownloader.shared.downloadImage(withUrl: imageUrls[index], dataCallback: { _, image in
             dataCallback(image)
         })
-    }
-}
-
-extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDelegate {
-    public func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, intendsToDismissFromImageWithIndex index: Int) {
-        let indexPath = IndexPath(row: index, section: 0)
-        highlightThumbnail(atIndexPath: indexPath)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-        collectionView.reloadItems(at: [indexPath])
     }
 }
 
@@ -318,10 +289,8 @@ extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDelegate {
 
 extension FullscreenGalleryDemoView: FullscreenGalleryTransitionPresenterDelegate {
     public func imageViewForFullscreenGalleryTransition() -> UIImageView? {
-        let imageIndex = selectedIndex ?? 0
-        let indexPath = IndexPath(row: imageIndex, section: 0)
-
-        let cell = collectionView.cellForItem(at: indexPath) as? FullscreenGalleryDemoPreviewCell
+        let indexPath = IndexPath(row: selectedIndex ?? 0, section: 0)
+        let cell = collectionView.cellForItem(at: indexPath) as? DemoPreviewCell
         return cell?.imageView
     }
 }
@@ -334,16 +303,25 @@ extension FullscreenGalleryDemoView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(FullscreenGalleryDemoPreviewCell.self, for: indexPath)
-        cell.configure(withIndex: indexPath.row, url: viewModel.imageUrls[indexPath.row])
-        cell.setFocused(selectedIndex == indexPath.row)
+        let cell = collectionView.dequeue(DemoPreviewCell.self, for: indexPath)
+        cell.configure(withIndex: indexPath.row, url: imageUrls[indexPath.row])
         return cell
     }
 }
 
 extension FullscreenGalleryDemoView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        highlightThumbnail(atIndexPath: indexPath)
+        selectedIndex = indexPath.row
         displayFullscreenGallery(forIndex: indexPath.row)
+    }
+}
+
+// MARK: - SelectedIndexDelegate
+
+extension FullscreenGalleryDemoView: SelectedIndexDelegate {
+    fileprivate func selectedIndexChanged(to index: Int) {
+        selectedIndex = index
+        let indexPath = IndexPath(row: index, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
     }
 }
