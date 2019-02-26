@@ -11,8 +11,6 @@ public protocol UserAdsListViewDelegate: class {
     func userAdsListView(_ userAdsListView: UserAdsListView, didSelectItemAtIndex indexPath: IndexPath)
     func userAdsListView(_ userAdsListView: UserAdsListView, willDisplayItemAtIndex indexPath: IndexPath)
     func userAdsListView(_ userAdsListView: UserAdsListView, didScrollInScrollView scrollView: UIScrollView)
-    func userAdsListView(_ userAdsListView: UserAdsListView, didEndDisplayingHeaderView view: UserAdsListHeaderView, forSection section: Int)
-    func userAdsListView(_ userAdsListView: UserAdsListView, didEndDisplaying cell: UserAdsListViewCell, forRowAt indexPath: IndexPath)
 }
 
 public protocol UserAdsListViewDataSource: class {
@@ -22,6 +20,7 @@ public protocol UserAdsListViewDataSource: class {
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex section: Int) -> UserAdsListHeaderViewModel
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex indexPath: IndexPath) -> UserAdsListViewModel
     func userAdsListView(_ userAdsListView: UserAdsListView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+    func userAdsListView(_ userAdsListView: UserAdsListView, didEndEditingRowAt indexPath: IndexPath?)
     func userAdsListView(_ userAdsListView: UserAdsListView, loadImageForModel model: UserAdsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func userAdsListView(_ userAdsListView: UserAdsListView, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat)
 }
@@ -115,16 +114,6 @@ public class UserAdsListView: UIView {
 // MARK: - UITableViewDelegate
 
 extension UserAdsListView: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
-        guard let headerView = view as? UserAdsListHeaderView else { return }
-        delegate?.userAdsListView(self, didEndDisplayingHeaderView: headerView, forSection: section)
-    }
-
-    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? UserAdsListViewCell else { return }
-        delegate?.userAdsListView(self, didEndDisplaying: cell, forRowAt: indexPath)
-    }
-
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.userAdsListView(self, didSelectItemAtIndex: indexPath)
     }
@@ -222,6 +211,10 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         dataSource?.userAdsListView(self, commit: editingStyle, forRowAt: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        dataSource?.userAdsListView(self, didEndEditingRowAt: indexPath)
     }
 }
 
