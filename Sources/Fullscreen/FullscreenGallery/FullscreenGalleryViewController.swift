@@ -459,9 +459,9 @@ extension FullscreenGalleryViewController: GalleryPreviewViewDelegate {
 
 // MARK: - FullscreenGalleryTransitionDestinationDelegate
 extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinationDelegate {
-    public func viewForFullscreenGalleryTransition() -> UIView {
+    public func imageViewForFullscreenGalleryTransition() -> UIImageView? {
         guard let imageController = currentImageViewController() else {
-            return view
+            return nil
         }
 
         return imageController.fullscreenImageView.imageView

@@ -35,9 +35,12 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
             return
         }
 
+        guard let presentedView = destinationDelegate.imageViewForFullscreenGalleryTransition() else {
+            return
+        }
+
         let presenterFrame = presenterView.convert(presenterView.bounds, to: transitionContext.containerView)
 
-        let presentedView = destinationDelegate.viewForFullscreenGalleryTransition()
         let presentedFrame = presentedView.convert(presentedView.bounds, to: transitionContext.containerView)
 
         let transitionView = presentedView.snapshotView(afterScreenUpdates: true)!
