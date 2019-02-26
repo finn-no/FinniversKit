@@ -127,27 +127,27 @@ public class UserAdManagementActionCell: UITableViewCell {
     }
 
     public func setupWithModel(_ model: AdManagementActionCellModel) {
-        if model.actionType != actionType { // TODO the oposite means no need to change constraints
-            // We also need to remove the constraints for these views
-            toggle.removeFromSuperview()
-            descriptionLabel.removeFromSuperview()
-            chevronView.removeFromSuperview()
-            externalAction.removeFromSuperview()
-
-            NSLayoutConstraint.deactivate(chevronConstraints)
-            NSLayoutConstraint.deactivate(toggleConstraints)
-            NSLayoutConstraint.deactivate(externalActionConstraints)
-            NSLayoutConstraint.deactivate(descriptionLabelConstraints)
-            descriptionToChevronTrailingConstraint.isActive = false
-            descriptionToContentTrailingConstraint.isActive = false
-            contentViewBottomToDescriptionConstraint.isActive = false
-            contentViewBottomToTitleConstraint.isActive = false
-        }
-
-        actionType = model.actionType
         titleLabel.text = model.title
         iconView.image = model.image
         descriptionLabel.text = model.description
+
+        // TODO: External action can be dictated outside logic of actionType
+        if model.actionType == actionType { return }
+
+        toggle.removeFromSuperview()
+        descriptionLabel.removeFromSuperview()
+        chevronView.removeFromSuperview()
+        externalAction.removeFromSuperview()
+
+        NSLayoutConstraint.deactivate(chevronConstraints)
+        NSLayoutConstraint.deactivate(toggleConstraints)
+        NSLayoutConstraint.deactivate(externalActionConstraints)
+        NSLayoutConstraint.deactivate(descriptionLabelConstraints)
+        descriptionToChevronTrailingConstraint.isActive = false
+        descriptionToContentTrailingConstraint.isActive = false
+        contentViewBottomToDescriptionConstraint.isActive = false
+        contentViewBottomToTitleConstraint.isActive = false
+        actionType = model.actionType
 
         // Note, not all combination of model.properties are supported, as the Model will only allow
         // certain combinations, based on the ActionType
