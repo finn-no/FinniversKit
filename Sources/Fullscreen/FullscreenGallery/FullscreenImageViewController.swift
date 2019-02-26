@@ -170,6 +170,10 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
     // MARK: - UIGestureRecognizerDelegate
 
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if fullscreenImageView.zoomScale >= fullscreenImageView.minimumZoomScale * 1.05 {
+            return false
+        }
+
         guard gestureRecognizer == panGestureRecognizer else { return false }
 
         let translation = panGestureRecognizer.translation(in: panGestureRecognizer.view)
