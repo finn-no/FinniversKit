@@ -66,10 +66,14 @@ public class UserAdManagementActionCell: UITableViewCell {
     private var descriptionLabelConstraints = [NSLayoutConstraint]()
     private var descriptionToChevronTrailingConstraint = NSLayoutConstraint()
     private var descriptionToContentTrailingConstraint = NSLayoutConstraint()
-    private var titleLabelCenterYConstraint = NSLayoutConstraint()
+    private var titleLabelCenterYToContentViewConstraint = NSLayoutConstraint()
+    private var contentViewBottomToTitleConstraint = NSLayoutConstraint()
+    private var contentViewBottomToDescriptionConstraint = NSLayoutConstraint()
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+
         contentView.addSubview(separator)
         contentView.addSubview(iconView)
         contentView.addSubview(titleLabel)
@@ -112,7 +116,10 @@ public class UserAdManagementActionCell: UITableViewCell {
         ]
         descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
         descriptionToContentTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16)
-        titleLabelCenterYConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        titleLabelCenterYToContentViewConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+
+        contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
+        contentViewBottomToDescriptionConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -120,9 +127,6 @@ public class UserAdManagementActionCell: UITableViewCell {
     }
 
     public func setupWithModel(_ model: AdManagementActionCellModel) {
-        // TODO: The common setup, for the componenets always present can be done through the init.
-        // Then this function can deal only with the specifics for each type of action...
-        selectionStyle = .none
         if model.actionType != actionType { // TODO the oposite means no need to change constraints
             // We also need to remove the constraints for these views
             toggle.removeFromSuperview()
@@ -136,15 +140,14 @@ public class UserAdManagementActionCell: UITableViewCell {
             NSLayoutConstraint.deactivate(descriptionLabelConstraints)
             descriptionToChevronTrailingConstraint.isActive = false
             descriptionToContentTrailingConstraint.isActive = false
+            contentViewBottomToDescriptionConstraint.isActive = false
+            contentViewBottomToTitleConstraint.isActive = false
         }
 
         actionType = model.actionType
         titleLabel.text = model.title
         iconView.image = model.image
-
         descriptionLabel.text = model.description
-
-        var constraints = [NSLayoutConstraint]()
 
         // Note, not all combination of model.properties are supported, as the Model will only allow
         // certain combinations, based on the ActionType
@@ -166,15 +169,11 @@ public class UserAdManagementActionCell: UITableViewCell {
             trailingConstraint.isActive = true
         }
 
-        titleLabelCenterYConstraint.isActive = model.description == nil
+        let noDescription = model.description == nil
 
-        if model.description == nil {
-            constraints += [ contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16) ]
-        } else {
-            constraints += [ contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)]
-        }
-
-        NSLayoutConstraint.activate(constraints)
+        titleLabelCenterYToContentViewConstraint.isActive = noDescription
+        let contentBottomConstraint = noDescription ? contentViewBottomToTitleConstraint : contentViewBottomToDescriptionConstraint
+        contentBottomConstraint.isActive = true
     }
 
     public func showSeparator(_ show: Bool) {
