@@ -5,6 +5,8 @@
 import UIKit
 
 final class EarthHourHeaderView: UIView {
+    private let earthRotationDegrees = 15
+
     private(set) lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
         button.tintColor = .milk
@@ -18,6 +20,7 @@ final class EarthHourHeaderView: UIView {
     private lazy var earthImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .earthHourEarth)
+        imageView.transform = imageView.transform.rotated(by: -earthRotationDegrees.radians)
         return imageView
     }()
 
@@ -140,8 +143,8 @@ final class EarthHourHeaderView: UIView {
 
     private func addEarthRotationAnimation() {
         let animation = CABasicAnimation(keyPath: "transform.rotation")
-        animation.fromValue = -15.radians
-        animation.toValue = 15.radians
+        animation.fromValue = -earthRotationDegrees.radians
+        animation.toValue = earthRotationDegrees.radians
         animation.duration = 1
         animation.autoreverses = true
         animation.repeatCount = .greatestFiniteMagnitude
