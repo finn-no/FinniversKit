@@ -8,16 +8,20 @@ class FeedbackDemoView: UIView {
     private let singleQuestionFeedback = SingleQuestionFeedback()
     private let multiQuestionFeedback = MultiQuestionFeedback()
 
+    private var hasSwitchedViews = false
+
     private let gridItemHeight: CGFloat = 300
     private let listItemHeight: CGFloat = 100
+
+    lazy var listItems = [singleQuestionFeedback.createFeedbackView(), multiQuestionFeedback.createFeedbackView()]
+    lazy var gridItems = [singleQuestionFeedback.createFeedbackView(), multiQuestionFeedback.createFeedbackView()]
 
     lazy var listFeedbackStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
         stackView.spacing = .mediumSpacing
-        stackView.addArrangedSubview(singleQuestionFeedback.createFeedbackView())
-        stackView.addArrangedSubview(multiQuestionFeedback.createFeedbackView())
+        listItems.forEach { stackView.addArrangedSubview($0) }
         return stackView
     }()
 
@@ -25,9 +29,16 @@ class FeedbackDemoView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.distribution = .fillEqually
         stackView.spacing = .mediumSpacing
-        stackView.addArrangedSubview(singleQuestionFeedback.createFeedbackView())
-        stackView.addArrangedSubview(multiQuestionFeedback.createFeedbackView())
+        gridItems.forEach { stackView.addArrangedSubview($0) }
         return stackView
+    }()
+
+    lazy var switchViewsButton: UIButton = {
+        let button = Button(style: .callToAction, size: .small)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Switch grid / list views", for: .normal)
+        button.addTarget(self, action: #selector(switchViewsButtonTapped), for: .touchUpInside)
+        return button
     }()
 
     // MARK: - Init
@@ -36,12 +47,17 @@ class FeedbackDemoView: UIView {
         super.init(frame: frame)
 
         backgroundColor = .white
+        addSubview(switchViewsButton)
         addSubview(listFeedbackStackView)
         addSubview(gridFeedbackStackView)
 
         NSLayoutConstraint.activate([
+            switchViewsButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            switchViewsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            switchViewsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+
             listFeedbackStackView.heightAnchor.constraint(equalToConstant: listItemHeight * 2 + .mediumSpacing),
-            listFeedbackStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            listFeedbackStackView.topAnchor.constraint(equalTo: switchViewsButton.bottomAnchor, constant: .mediumSpacing),
             listFeedbackStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             listFeedbackStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
 
@@ -54,6 +70,24 @@ class FeedbackDemoView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc private func switchViewsButtonTapped() {
+        switchViewsButton.isEnabled = false
+
+        listItems.forEach { $0.removeFromSuperview() }
+        gridItems.forEach { $0.removeFromSuperview() }
+
+        if hasSwitchedViews {
+            listItems.forEach { listFeedbackStackView.addArrangedSubview($0) }
+            gridItems.forEach { gridFeedbackStackView.addArrangedSubview($0) }
+        } else {
+            gridItems.forEach { listFeedbackStackView.addArrangedSubview($0) }
+            listItems.forEach { gridFeedbackStackView.addArrangedSubview($0) }
+        }
+
+        hasSwitchedViews = !hasSwitchedViews
+        switchViewsButton.isEnabled = true
     }
 }
 
