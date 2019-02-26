@@ -129,6 +129,11 @@ public class UserAdManagementActionCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.setNeedsUpdateConstraints()
+    }
+
     public func setupWithModel(_ model: AdManagementActionCellModel) {
         titleLabel.text = model.title
         iconView.image = model.image
@@ -147,12 +152,12 @@ public class UserAdManagementActionCell: UITableViewCell {
         } else if model.shouldShowChevron {
             contentView.addSubview(chevronView)
             NSLayoutConstraint.activate(chevronConstraints)
-        }
-
-        if model.shouldShowSwitch {
+        } else if model.shouldShowSwitch {
             contentView.addSubview(toggle)
             NSLayoutConstraint.activate(toggleConstraints)
-        } else if model.description != nil {
+        }
+
+        if model.description != nil {
             contentView.addSubview(descriptionLabel)
             NSLayoutConstraint.activate(descriptionLabelConstraints)
             var trailingConstraint = model.shouldShowChevron ? descriptionToChevronTrailingConstraint : descriptionToContentTrailingConstraint
@@ -190,6 +195,7 @@ public class UserAdManagementActionCell: UITableViewCell {
         descriptionToChevronTrailingConstraint.isActive = false
         descriptionToExternalTrailingConstraint.isActive = false
         descriptionToContentTrailingConstraint.isActive = false
+        titleLabelCenterYToContentViewConstraint.isActive = false
         contentViewBottomToDescriptionConstraint.isActive = false
         contentViewBottomToTitleConstraint.isActive = false
     }

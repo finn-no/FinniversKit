@@ -24,7 +24,7 @@ public class AdManagementDemoView: UIView {
     private let actionCellModels: [[AdManagementActionCellModel]] = [
         [
             AdManagementActionCellModel(actionType: .delete, title: "Braccas meas vescimini", description: "Pulvis et umbra sumus"),
-            AdManagementActionCellModel(actionType: .stop, title: "Non est ad astra mollis e terris via")
+            AdManagementActionCellModel(actionType: .stop, title: "Non est ad astra mollis e terris via", description: "Quis, Quid, Ubi, Quibus Auxiliis, Cur, Quomodo, Quando?")
         ],
         [
             AdManagementActionCellModel(actionType: .edit, title: "Non nobis solum nati sumus", description: "Aut viam inveniam aut faciam tibi"),
