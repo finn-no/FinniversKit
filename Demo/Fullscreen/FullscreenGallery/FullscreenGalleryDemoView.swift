@@ -68,11 +68,11 @@ private class DemoPreviewCell: UICollectionViewCell {
 
     // MARK: - Public methods
 
-    public func configure(withIndex index: Int, url url: String) {
+    public func configure(withIndex index: Int, url: String) {
         imageUrl = url
         imageIndex = index
 
-        ImageDownloader.shared.downloadImage(withUrl: url, dataCallback: { [weak self] (fetchedUrl, image) in
+        ImageDownloader.shared.downloadImage(withUrl: url, dataCallback: { [weak self] (fetchedUrl, image, error) in
             guard let self = self else { return }
             if fetchedUrl == self.imageUrl {
                 self.imageView.image = image
@@ -81,14 +81,14 @@ private class DemoPreviewCell: UICollectionViewCell {
     }
 }
 
-private class ImageDownloader {
+private class ImageDownloader: FullscreenGalleryImageSource {
     static let shared = ImageDownloader()
 
     public var simulatedDelayMs: UInt32 = 0
 
-    public func downloadImage(withUrl urlString: String, dataCallback: @escaping (String, UIImage?) -> Void) {
+    public func downloadImage(withUrl urlString: String, dataCallback: @escaping (String, UIImage?, Error?) -> Void) {
         guard let url = URL(string: urlString) else {
-            dataCallback(urlString, nil)
+            dataCallback(urlString, nil, nil)
             return
         }
 
@@ -99,9 +99,9 @@ private class ImageDownloader {
 
             DispatchQueue.main.async {
                 if let data = data, let image = UIImage(data: data) {
-                    dataCallback(urlString, image)
+                    dataCallback(urlString, image, nil)
                 } else {
-                    dataCallback(urlString, nil)
+                    dataCallback(urlString, nil, nil)
                 }
             }
         }
@@ -109,6 +109,10 @@ private class ImageDownloader {
         task.resume()
     }
 
+    func image(forUrlString urlString: String, size: FullscreenGalleryImageSize, completionHandler handler: @escaping (String, UIImage?, Error?) -> Void) {
+        // The size is not taken into account in the demo.
+        downloadImage(withUrl: urlString, dataCallback: handler)
+    }
 }
 
 // MARK: - Demo view
@@ -259,7 +263,7 @@ class FullscreenGalleryDemoView: UIView {
         if let viewController = parentViewController {
             let viewModel = DemoViewModel(selectedIndexDelegate: self, imageUrls: imageUrls, imageCaptions: imageCaptions, selectedIndex: index)
 
-            let gallery = FullscreenGalleryViewController(withDataSource: self, viewModel: viewModel, thumbnailsInitiallyVisible: thumbnailSwitch.isOn)
+            let gallery = FullscreenGalleryViewController(withImageSource: ImageDownloader.shared, viewModel: viewModel, thumbnailsInitiallyVisible: thumbnailSwitch.isOn)
             gallery.transitioningDelegate = transitionController
 
             viewController.present(gallery, animated: true)
@@ -272,16 +276,6 @@ class FullscreenGalleryDemoView: UIView {
         } else {
             ImageDownloader.shared.simulatedDelayMs = 0
         }
-    }
-}
-
-// MARK: - FullscreenGallery
-
-extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDataSource {
-    public func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, loadImageAtIndex index: Int, dataCallback: @escaping (UIImage?) -> Void) {
-        ImageDownloader.shared.downloadImage(withUrl: imageUrls[index], dataCallback: { _, image in
-            dataCallback(image)
-        })
     }
 }
 

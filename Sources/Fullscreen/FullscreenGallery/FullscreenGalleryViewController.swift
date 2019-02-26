@@ -4,10 +4,6 @@
 
 import UIKit
 
-public protocol FullscreenGalleryViewControllerDataSource: class {
-    func fullscreenGalleryViewController(_ vc: FullscreenGalleryViewController, loadImageAtIndex index: Int, dataCallback: @escaping (UIImage?) -> Void)
-}
-
 public class FullscreenGalleryViewController: UIPageViewController {
 
     // MARK: - Public properties
@@ -23,7 +19,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private static let captionFadeDuration = 0.2
     private static let dismissButtonSize: CGFloat = 30.0
 
-    private let galleryDataSource: FullscreenGalleryViewControllerDataSource
+    private let imageSource: FullscreenGalleryImageSource
     private let previewViewInitiallyVisible: Bool
 
     private var previewViewVisible: Bool
@@ -113,10 +109,10 @@ public class FullscreenGalleryViewController: UIPageViewController {
         fatalError("not implemented: init(transitionStyle:navigationOrientation:options:)")
     }
 
-    public required init(withDataSource galleryDataSource: FullscreenGalleryViewControllerDataSource, viewModel: FullscreenGalleryViewModel, thumbnailsInitiallyVisible previewVisible: Bool) {
+    public required init(withImageSource imageSource: FullscreenGalleryImageSource, viewModel: FullscreenGalleryViewModel, thumbnailsInitiallyVisible previewVisible: Bool) {
         self.previewViewInitiallyVisible = previewVisible
         self.previewViewVisible = previewVisible
-        self.galleryDataSource = galleryDataSource
+        self.imageSource = imageSource
         self.viewModel = viewModel
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
 
@@ -264,7 +260,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     private func setCaptionLabel(index: Int) {
         let caption: String? = {
-            if index >= 0 && index < viewModel.imageCaptions.count ?? 0 {
+            if index >= 0 && index < viewModel.imageCaptions.count {
                 return viewModel.imageCaptions[index]
             } else {
                 return nil
@@ -300,7 +296,7 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
     }
 
     private func imageViewController(forIndex index: Int) -> FullscreenImageViewController? {
-        if index < 0 || index >= viewModel.imageUrls.count ?? 0 {
+        if index < 0 || index >= viewModel.imageUrls.count {
             return nil
         }
 
@@ -353,13 +349,10 @@ extension FullscreenGalleryViewController: UIGestureRecognizerDelegate {
 // MARK: - FullscreenImageViewControllerDataSource
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSource {
     func loadImage(forImageViewController vc: FullscreenImageViewController, dataCallback: @escaping (UIImage?) -> Void) {
-        // TODO: Unify with GalleryPreviewViewDataSource loading, prevent double fetching images!!
-        guard galleryDataSource != nil else {
-            dataCallback(nil)
-            return
-        }
-
-        galleryDataSource.fullscreenGalleryViewController(self, loadImageAtIndex: vc.imageIndex, dataCallback: dataCallback)
+        let url = viewModel.imageUrls[vc.imageIndex]
+        imageSource.image(forUrlString: url, size: .fullscreen, completionHandler: { (_, image, _) in
+            dataCallback(image)
+        })
     }
 
     func title(forImageViewController vc: FullscreenImageViewController) -> String? {
@@ -415,13 +408,8 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
 // MARK: - GalleryPreviewViewDataSource
 extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
     func loadImage(withIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void) {
-        // TODO: Unify with FullscreenImageViewControllerDataSource loading, prevent double fetching images!!
-        guard galleryDataSource != nil else {
-            dataCallback(index, nil)
-            return
-        }
-
-        galleryDataSource.fullscreenGalleryViewController(self, loadImageAtIndex: index, dataCallback: { image in
+        let url = viewModel.imageUrls[index]
+        imageSource.image(forUrlString: url, size: .thumbnail, completionHandler: { (_, image, _) in
             dataCallback(index, image)
         })
     }
