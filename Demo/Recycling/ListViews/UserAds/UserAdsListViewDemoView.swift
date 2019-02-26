@@ -31,6 +31,8 @@ class UserAdsListViewDemoView: UIView {
 }
 
 extension UserAdsListViewDemoView: UserAdsListViewDelegate {
+    func userAdsListView(_ userAdsListView: UserAdsListView, didEndDisplayingHeaderView view: UserAdsListHeaderView, forSection section: Int) {}
+    func userAdsListView(_ userAdsListView: UserAdsListView, didEndDisplaying cell: UserAdsListViewCell, forRowAt indexPath: IndexPath) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button) {}
