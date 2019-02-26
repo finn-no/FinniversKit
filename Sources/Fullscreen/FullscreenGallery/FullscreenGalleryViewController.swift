@@ -403,8 +403,6 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
 // MARK: - FullscreenImageViewControllerDelegate
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate {
     func fullscreenImageViewControllerDidBeginPanning(_ vc: FullscreenImageViewController) {
-        print("pan begin!")
-
         let currentIndex = currentImageViewController()?.imageIndex ?? 0
         galleryDelegate?.fullscreenGalleryViewController(self, intendsToDismissFromImageWithIndex: currentIndex)
     }
@@ -418,8 +416,6 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
     }
 
     func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool {
-        print("pan end! t=[\(translation) [l=[\(translation.length())]], v=[\(velocity) [l=[\(velocity.length())]]")
-
         if translation.length() >= 200 || velocity.length() >= 100 {
             galleryTransitioningController?.dismissVelocity = velocity
 
