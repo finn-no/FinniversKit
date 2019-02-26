@@ -350,7 +350,9 @@ extension FullscreenGalleryViewController: UIGestureRecognizerDelegate {
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSource {
     func loadImage(forImageViewController vc: FullscreenImageViewController, dataCallback: @escaping (UIImage?) -> Void) {
         let url = viewModel.imageUrls[vc.imageIndex]
-        imageSource.image(forUrlString: url, size: .fullscreen, completionHandler: { (_, image, _) in
+        let imageWidth = min(view.bounds.width, view.bounds.height)
+
+        imageSource.image(forUrlString: url, width: imageWidth, completionHandler: { (_, image, _) in
             dataCallback(image)
         })
     }
@@ -407,9 +409,9 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
 
 // MARK: - GalleryPreviewViewDataSource
 extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
-    func loadImage(withIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void) {
+    func loadImage(withWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void) {
         let url = viewModel.imageUrls[index]
-        imageSource.image(forUrlString: url, size: .thumbnail, completionHandler: { (_, image, _) in
+        imageSource.image(forUrlString: url, width: width, completionHandler: { (_, image, _) in
             dataCallback(index, image)
         })
     }

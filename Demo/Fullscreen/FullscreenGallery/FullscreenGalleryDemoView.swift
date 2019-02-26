@@ -109,7 +109,7 @@ private class ImageDownloader: FullscreenGalleryImageSource {
         task.resume()
     }
 
-    func image(forUrlString urlString: String, size: FullscreenGalleryImageSize, completionHandler handler: @escaping (String, UIImage?, Error?) -> Void) {
+    func image(forUrlString urlString: String, width: CGFloat, completionHandler handler: @escaping (String, UIImage?, Error?) -> Void) {
         // The size is not taken into account in the demo.
         downloadImage(withUrl: urlString, dataCallback: handler)
     }

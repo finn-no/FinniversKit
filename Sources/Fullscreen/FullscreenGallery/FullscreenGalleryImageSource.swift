@@ -4,11 +4,6 @@
 
 import UIKit
 
-public enum FullscreenGalleryImageSize {
-    case thumbnail
-    case fullscreen
-}
-
-public protocol FullscreenGalleryImageSource {
-    func image(forUrlString urlString: String, size: FullscreenGalleryImageSize, completionHandler handler: @escaping (String, UIImage?, Error?) -> Void)
+public protocol FullscreenGalleryImageSource: class {
+    func image(forUrlString urlString: String, width: CGFloat, completionHandler handler: @escaping (String, UIImage?, Error?) -> Void)
 }

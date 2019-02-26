@@ -5,7 +5,7 @@
 import UIKit
 
 protocol GalleryPreviewViewDataSource {
-    func loadImage(withIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void)
+    func loadImage(withWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void)
 }
 
 protocol GalleryPreviewViewDelegate {
@@ -35,9 +35,9 @@ class GalleryPreviewView: UIView {
     private lazy var cellSize: CGSize = {
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
-            return CGSize(width: 75, height: 75)
+            return CGSize(width: 115, height: 80)
         default:
-            return CGSize(width: 125, height: 125)
+            return CGSize(width: 160, height: 120)
         }
     }()
 
@@ -105,7 +105,7 @@ class GalleryPreviewView: UIView {
         collectionView.reloadData()
 
         for counter in 0 ..< imageCount {
-            dataSource?.loadImage(withIndex: counter, dataCallback: { [weak self] (index, image) in
+            dataSource?.loadImage(withWidth: cellSize.width, imageIndex: counter, dataCallback: { [weak self] (index, image) in
                 guard let self = self else { return }
 
                 if index >= 0 && index < self.images.count {
