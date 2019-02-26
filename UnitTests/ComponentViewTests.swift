@@ -106,4 +106,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testInfobox() {
         snapshot(.infobox)
     }
+
+    func testFeedbackView() {
+        snapshot(.feedbackView)
+    }
 }
