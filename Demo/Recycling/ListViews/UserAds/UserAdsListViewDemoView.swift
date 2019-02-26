@@ -93,5 +93,6 @@ extension UserAdsListViewDemoView: UserAdsListViewDataSource {
         task.resume()
     }
 
+    func userAdsListView(_ userAdsListView: UserAdsListView, didEndEditingRowAt indexPath: IndexPath?) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat) {}
 }
