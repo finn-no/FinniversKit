@@ -49,9 +49,9 @@ public class UserAdsListView: UIView {
     private weak var dataSource: UserAdsListViewDataSource?
 
     private var firstSection = 0
-    private lazy var lastSection: Int = {
+    private var lastSection: Int {
         return (dataSource?.numberOfSections(in: self) ?? 1) - 1
-    }()
+    }
 
     // MARK: - Setup
 
