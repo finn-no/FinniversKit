@@ -463,6 +463,23 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
         return imageController.fullscreenImageView.imageView
     }
 
+    public func displayIntermediateImageAndCalculateGlobalFrame(_ image: UIImage) -> CGRect {
+        guard let fullscreenView = currentImageViewController()?.fullscreenImageView else {
+            return CGRect.zero
+        }
+
+        fullscreenView.image = image
+
+        let size = fullscreenView.contentSize
+        let contentInset = fullscreenView.contentInset
+
+        let frame = CGRect(x: contentInset.leading,
+                           y: contentInset.top,
+                           width: size.width,
+                           height: size.height)
+        return view.convert(frame, to: nil)
+    }
+
     public func prepareForTransition(presenting: Bool) {
         if presenting {
             backgroundView.alpha = 0.0

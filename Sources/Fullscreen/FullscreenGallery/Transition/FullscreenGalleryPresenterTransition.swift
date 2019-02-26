@@ -43,7 +43,7 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
         toViewController.view.layoutIfNeeded()
 
         let sourceFrame = sourceView.convert(sourceView.bounds, to: transitionContext.containerView)
-        let destinationFrame = destinationView.convert(destinationView.bounds, to: transitionContext.containerView)
+        let destinationFrame = getDestinationFrame(forDestinationView: destinationView, withImage: sourceView.image)
 
         let transitionView = createImageView(from: sourceView)
         transitionView.frame = sourceFrame
@@ -68,6 +68,14 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
     }
 
     // MARK: - Private methods
+
+    private func getDestinationFrame(forDestinationView destinationView: UIView, withImage image: UIImage?) -> CGRect {
+        if destinationView.frame.size == CGSize.zero, let intermediateImage = image {
+            return destinationDelegate.displayIntermediateImageAndCalculateGlobalFrame(intermediateImage)
+        }
+
+        return destinationView.convert(destinationView.bounds, to: nil)
+    }
 
     private func createImageView(from: UIImageView) -> UIImageView {
         let imageView = UIImageView(image: from.image)
