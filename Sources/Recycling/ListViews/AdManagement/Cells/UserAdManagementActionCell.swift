@@ -4,6 +4,7 @@
 
 public class UserAdManagementActionCell: UITableViewCell {
     public weak var delegate: UserAdManagementActionCellDelegate?
+    public private(set) var actionType: AdManagementActionType = .unknown
 
     private lazy var separator: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -59,29 +60,17 @@ public class UserAdManagementActionCell: UITableViewCell {
         return imageView
     }()
 
-    public private(set) var actionType: AdManagementActionType = .unknown
-    public func setupWithModel(_ model: AdManagementActionCellModel) {
-        selectionStyle = .none
-        if model.actionType != actionType {
-            // This might force us to clear old stuff out of the way...
-            toggle.removeFromSuperview()
-            descriptionLabel.removeFromSuperview()
-            chevronView.removeFromSuperview()
-            externalAction.removeFromSuperview()
-        }
+    private var chevronConstraints = [NSLayoutConstraint]()
 
-        actionType = model.actionType
-        titleLabel.text = model.title
-        iconView.image = model.image
-
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(separator)
         contentView.addSubview(iconView)
         contentView.addSubview(titleLabel)
-        model.shouldShowChevron ? contentView.addSubview(chevronView) : chevronView.removeFromSuperview()
 
         let hairLineSize = 1.0/UIScreen.main.scale
 
-        var constraints: [NSLayoutConstraint] = [
+        NSLayoutConstraint.activate([
             separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 24),
             separator.topAnchor.constraint(equalTo: contentView.topAnchor),
             separator.widthAnchor.constraint(equalTo: contentView.widthAnchor),
@@ -93,7 +82,32 @@ public class UserAdManagementActionCell: UITableViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
             titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16),
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
-        ]
+        ])
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    public func setupWithModel(_ model: AdManagementActionCellModel) {
+        // TODO: The common setup, for the componenets always present can be done through the init.
+        // Then this function can deal only with the specifics for each type of action...
+        selectionStyle = .none
+        if model.actionType != actionType {
+            // We also need to remove the constraints for these views
+            toggle.removeFromSuperview()
+            descriptionLabel.removeFromSuperview()
+            chevronView.removeFromSuperview()
+            externalAction.removeFromSuperview()
+        }
+
+        actionType = model.actionType
+        titleLabel.text = model.title
+        iconView.image = model.image
+
+        model.shouldShowChevron ? contentView.addSubview(chevronView) : chevronView.removeFromSuperview()
+
+        var constraints = [NSLayoutConstraint]()
 
         // Note, not all combination of model.properties are supported, as the Model will only allow
         // certain combinations, based on the ActionType
