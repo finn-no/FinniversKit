@@ -13,7 +13,7 @@ public class HappinessRatingView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: HappinessRatingViewDelegate?
-    public var selectedRating: HappinessRating? {
+    public private(set) var selectedRating: HappinessRating? {
         didSet {
             guard let selectedRating = selectedRating else { return }
             print(selectedRating)
