@@ -76,7 +76,8 @@ public class HappinessRatingView: UIView {
 
     @objc private func panGestureHandler(_ recognizer: UIPanGestureRecognizer) {
         let touchedView = recognizer.view
-        let touchLocation = recognizer.location(in: touchedView)
+        var touchLocation = recognizer.location(in: touchedView)
+        touchLocation.y = bounds.height / 2
         guard let ratingImageView = touchedView?.hitTest(touchLocation, with: nil) as? RatingImageView else { return }
         setSelectedRatingView(ratingImageView)
     }
