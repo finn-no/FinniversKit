@@ -72,7 +72,7 @@ private class DemoPreviewCell: UICollectionViewCell {
         imageUrl = url
         imageIndex = index
 
-        ImageDownloader.shared.downloadImage(withUrl: url, dataCallback: { [weak self] (fetchedUrl, image, error) in
+        ImageDownloader.shared.downloadImage(withUrl: url, dataCallback: { [weak self] (fetchedUrl, image, _) in
             guard let self = self else { return }
             if fetchedUrl == self.imageUrl {
                 self.imageView.image = image

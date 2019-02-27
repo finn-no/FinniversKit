@@ -11,7 +11,6 @@ protocol FullscreenImageViewControllerDataSource: class {
 }
 
 protocol FullscreenImageViewControllerDelegate: class {
-    func fullscreenImageViewControllerDidBeginPanning(_ vc: FullscreenImageViewController)
     func fullscreenImageViewControllerDidPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint)
 
     /// Called by the FullscreenImageViewController when the panning gesture on the primary image view has ended.
@@ -162,7 +161,6 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
         case .began:
             prePanState = ScrollViewPrePanState(from: fullscreenImageView)
             fullscreenImageView.minimumZoomScale /= 3.0
-            delegate?.fullscreenImageViewControllerDidBeginPanning(self)
 
         case .changed:
             guard let prePanState = prePanState else { return }

@@ -380,10 +380,6 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
 
 // MARK: - FullscreenImageViewControllerDelegate
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate {
-    func fullscreenImageViewControllerDidBeginPanning(_ vc: FullscreenImageViewController) {
-        // TODO: Remove this delegate method?
-    }
-
     func fullscreenImageViewControllerDidPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint) {
         let dist = translation.length()
         let ratio = dist / 200.0
