@@ -93,7 +93,7 @@ public class HappinessRatingView: UIView {
         UIView.animate(withDuration: animationDuration, animations: {
             nonSelectedViews.forEach {
                 $0.tintColor = .sardine
-                $0.transform = .identity
+                $0.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }
         })
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, animations: {
