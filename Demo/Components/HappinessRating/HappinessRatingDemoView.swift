@@ -8,10 +8,7 @@ class HappinessRatingDemoView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var happinessRatingView: HappinessRatingView = {
-        let happinessRatingView = HappinessRatingView(withAutoLayout: true)
-        return happinessRatingView
-    }()
+    private lazy var happinessRatingView = HappinessRatingView(withAutoLayout: true)
 
     // MARK: - Init
 
