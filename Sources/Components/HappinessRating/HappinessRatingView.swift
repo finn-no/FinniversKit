@@ -16,7 +16,6 @@ public class HappinessRatingView: UIView {
     public private(set) var selectedRating: HappinessRating? {
         didSet {
             guard let selectedRating = selectedRating else { return }
-            print(selectedRating)
             delegate?.happinessRatingView(self, didSelectRating: selectedRating)
         }
     }
