@@ -149,6 +149,7 @@ final class EarthHourHeaderView: UIView {
         animation.autoreverses = true
         animation.repeatCount = .greatestFiniteMagnitude
         animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.isRemovedOnCompletion = false
 
         earthImageView.layer.add(animation, forKey: nil)
     }
@@ -160,6 +161,7 @@ final class EarthHourHeaderView: UIView {
         animation.duration = 3.7
         animation.calculationMode = .discrete
         animation.repeatCount = .greatestFiniteMagnitude
+        animation.isRemovedOnCompletion = false
 
         eyesImageView.layer.add(animation, forKey: nil)
     }
