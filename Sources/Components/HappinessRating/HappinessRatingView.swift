@@ -35,8 +35,10 @@ public class HappinessRatingView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.distribution = .equalSpacing
         ratingImageViews.forEach { stackView.addArrangedSubview($0) }
+        stackView.addGestureRecognizer(panRecognizer)
         return stackView
     }()
+    private lazy var panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureHandler(_:)))
 
     // MARK: - Init
 
@@ -69,7 +71,17 @@ public class HappinessRatingView: UIView {
 
     @objc private func ratingImageViewTapped(_ recognizer: UITapGestureRecognizer) {
         guard let ratingImageView = recognizer.view as? RatingImageView else { return }
+        setSelectedRatingView(ratingImageView)
+    }
 
+    @objc private func panGestureHandler(_ recognizer: UIPanGestureRecognizer) {
+        let touchedView = recognizer.view
+        let touchLocation = recognizer.location(in: touchedView)
+        guard let ratingImageView = touchedView?.hitTest(touchLocation, with: nil) as? RatingImageView else { return }
+        setSelectedRatingView(ratingImageView)
+    }
+
+    private func setSelectedRatingView(_ ratingImageView: RatingImageView) {
         let animationDuration: Double
         switch selectedRating {
         case nil: animationDuration = 0.1
