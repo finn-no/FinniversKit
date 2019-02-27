@@ -91,13 +91,13 @@ public class HappinessRatingView: UIView {
 
         let nonSelectedViews = ratingImageViews.filter { $0.rating != ratingImageView.rating }
         UIView.animate(withDuration: animationDuration, animations: {
+            ratingImageView.tintColor = .primaryBlue
             nonSelectedViews.forEach {
-                $0.tintColor = .sardine
+                $0.tintColor = UIColor.primaryBlue.withAlphaComponent(0.6)
                 $0.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }
         })
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, animations: {
-            ratingImageView.tintColor = .primaryBlue
             ratingImageView.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
         })
 
