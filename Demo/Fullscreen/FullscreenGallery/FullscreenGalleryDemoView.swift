@@ -288,11 +288,12 @@ extension FullscreenGalleryDemoView: FullscreenGalleryTransitionPresenterDelegat
         return cell?.imageView
     }
 
-    public func fullscreenGalleryTransitionInCompleted() { }
-
     public func viewForFullscreenGalleryTransitionOut() -> UIView? {
         return imageViewForFullscreenGalleryTransitionIn()
     }
+
+    public func fullscreenGalleryTransitionInCompleted() { }
+    public func fullscreenGalleryTransitionOutCompleted() { }
 }
 
 // MARK: - UICollectionView

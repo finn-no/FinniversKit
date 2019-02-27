@@ -61,6 +61,8 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
             presenterView.isHidden = false
             presentedView.isHidden = false
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+
+            self.presenterDelegate.fullscreenGalleryTransitionOutCompleted()
         })
     }
 

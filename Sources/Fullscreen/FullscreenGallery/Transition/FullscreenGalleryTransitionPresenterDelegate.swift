@@ -17,4 +17,6 @@ public protocol FullscreenGalleryTransitionPresenterDelegate: class {
     /// When transitioning out, the primary image-view of the Fullscreen Gallery will be animated to overlap
     /// the returned view.
     func viewForFullscreenGalleryTransitionOut() -> UIView?
+
+    func fullscreenGalleryTransitionOutCompleted()
 }
