@@ -31,7 +31,7 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let presenterView = presenterDelegate.imageViewForFullscreenGalleryTransition() else {
+        guard let presenterView = presenterDelegate.viewForFullscreenGalleryTransitionOut() else {
             return
         }
 

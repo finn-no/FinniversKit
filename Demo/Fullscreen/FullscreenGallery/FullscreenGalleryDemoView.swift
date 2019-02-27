@@ -282,10 +282,16 @@ class FullscreenGalleryDemoView: UIView {
 // MARK: - FullscreenGalleryTransitionSourceDelegate
 
 extension FullscreenGalleryDemoView: FullscreenGalleryTransitionPresenterDelegate {
-    public func imageViewForFullscreenGalleryTransition() -> UIImageView? {
+    public func imageViewForFullscreenGalleryTransitionIn() -> UIImageView? {
         let indexPath = IndexPath(row: selectedIndex ?? 0, section: 0)
         let cell = collectionView.cellForItem(at: indexPath) as? DemoPreviewCell
         return cell?.imageView
+    }
+
+    public func fullscreenGalleryTransitionInCompleted() { }
+
+    public func viewForFullscreenGalleryTransitionOut() -> UIView? {
+        return imageViewForFullscreenGalleryTransitionIn()
     }
 }
 

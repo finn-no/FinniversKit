@@ -6,13 +6,15 @@ import UIKit
 
 /// The Fullscreen Gallery Transition is a round-trip, and the Transition Presenter Delegate will be used
 /// both when transitioning in, and when transitioning out.
-///
-/// The view returned by viewForFullscreenGalleryTransition will be scaled up to fill the screen when
-/// transitioning in, and scaled into when transitioning out.
-///
-/// - Notes:
-///   An intermediate transition-view will be created from the returned view, so the view should be
-///   fully loaded and ready to render before the transition is initiated.
 public protocol FullscreenGalleryTransitionPresenterDelegate: class {
-    func imageViewForFullscreenGalleryTransition() -> UIImageView?
+    /// - Notes:
+    ///   An intermediate transition-view may be created from the 'image'-property of the returned view, so
+    ///   the view should be fully loaded and ready to render before the transition is initiated.
+    func imageViewForFullscreenGalleryTransitionIn() -> UIImageView?
+
+    func fullscreenGalleryTransitionInCompleted()
+
+    /// When transitioning out, the primary image-view of the Fullscreen Gallery will be animated to overlap
+    /// the returned view.
+    func viewForFullscreenGalleryTransitionOut() -> UIView?
 }

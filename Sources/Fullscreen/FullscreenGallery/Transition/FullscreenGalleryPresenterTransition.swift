@@ -30,7 +30,7 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
             return
         }
 
-        guard let sourceView = presenterDelegate.imageViewForFullscreenGalleryTransition() else {
+        guard let sourceView = presenterDelegate.imageViewForFullscreenGalleryTransitionIn() else {
             return
         }
 
@@ -64,6 +64,8 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
             sourceView.isHidden = false
             destinationView.isHidden = false
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+
+            self.presenterDelegate.fullscreenGalleryTransitionInCompleted()
         })
     }
 
