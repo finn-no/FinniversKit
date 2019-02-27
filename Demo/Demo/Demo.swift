@@ -45,6 +45,7 @@ public enum ComponentViews: String, CaseIterable {
     case newYearsView
     case bottomSheetMechanics
     case feedbackView
+    case earthHour
 
     public var viewController: UIViewController {
         switch self {
@@ -94,6 +95,8 @@ public enum ComponentViews: String, CaseIterable {
             return BottomSheetMechanicsDemoViewController()
         case .feedbackView:
             return DemoViewController<FeedbackDemoView>(withDismissButton: true)
+        case .earthHour:
+            return DemoViewController<EarthHourDemoView>()
         }
     }
 }

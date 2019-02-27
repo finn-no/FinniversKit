@@ -24,8 +24,14 @@ NSString *const FinniversImageAssetcar = @"car";
 NSString *const FinniversImageAssetcheck = @"check";
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
 NSString *const FinniversImageAssetclassifieds = @"classifieds";
+NSString *const FinniversImageAssetclose = @"close";
 NSString *const FinniversImageAssetdistance = @"distance";
 NSString *const FinniversImageAssetdownload = @"download";
+NSString *const FinniversImageAssetearthHourClock = @"earthHourClock";
+NSString *const FinniversImageAssetearthHourEarth = @"earthHourEarth";
+NSString *const FinniversImageAssetearthHourEyes = @"earthHourEyes";
+NSString *const FinniversImageAssetearthHourHeart = @"earthHourHeart";
+NSString *const FinniversImageAssetearthHourStars = @"earthHourStars";
 NSString *const FinniversImageAsseteasterEgg = @"easterEgg";
 NSString *const FinniversImageAssetedit = @"edit";
 NSString *const FinniversImageAsseteditBig = @"editBig";
@@ -117,8 +123,14 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetcheck,
              FinniversImageAssetcheckmarkBig,
              FinniversImageAssetclassifieds,
+             FinniversImageAssetclose,
              FinniversImageAssetdistance,
              FinniversImageAssetdownload,
+             FinniversImageAssetearthHourClock,
+             FinniversImageAssetearthHourEarth,
+             FinniversImageAssetearthHourEyes,
+             FinniversImageAssetearthHourHeart,
+             FinniversImageAssetearthHourStars,
              FinniversImageAsseteasterEgg,
              FinniversImageAssetedit,
              FinniversImageAsseteditBig,
