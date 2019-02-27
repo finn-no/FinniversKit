@@ -110,4 +110,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testFeedbackView() {
         snapshot(.feedbackView)
     }
+
+    func testHappinessRating() {
+        snapshot(.happinessRating)
+    }
 }
