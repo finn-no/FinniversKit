@@ -9,6 +9,17 @@ public protocol TextViewDelegate: class {
     func textViewDidBeginEditing(_ textView: TextView)
     func textViewDidEndEditing(_ textView: TextView)
 }
+
+public extension TextViewDelegate {
+    func textViewDidChange(_ textView: TextView) {
+        // Default empty implementation.
+    }
+    func textViewDidBeginEditing(_ textView: TextView) {
+        // Default empty implementation.
+    }
+    func textViewDidEndEditing(_ textView: TextView) {
+        // Default empty implementation.
+    }
 }
 
 public class TextView: UIView {
