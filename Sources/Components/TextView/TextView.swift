@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol TextViewDelegate: UITextViewDelegate {
+public protocol TextViewDelegate: class {
     func textViewDidChange(_ textView: TextView)
 }
 
