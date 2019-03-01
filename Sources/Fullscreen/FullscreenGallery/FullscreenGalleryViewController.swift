@@ -97,14 +97,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
         return recognizer
     }()
 
-    private lazy var safeLayoutGuide: UILayoutGuide = {
-        if #available(iOS 11.0, *) {
-            return view.safeAreaLayoutGuide
-        } else {
-            return view.layoutMarginsGuide
-        }
-    }()
-
     // MARK: - Init
 
     required init?(coder aDecoder: NSCoder) {
@@ -149,13 +141,13 @@ public class FullscreenGalleryViewController: UIPageViewController {
             : previewViewHiddenConstraint
 
         NSLayoutConstraint.activate([
-            captionLabel.centerXAnchor.constraint(equalTo: safeLayoutGuide.centerXAnchor),
-            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: safeLayoutGuide.widthAnchor, constant: -(2 * CGFloat.mediumLargeSpacing)),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeLayoutGuide.bottomAnchor, constant: -.mediumSpacing),
+            captionLabel.centerXAnchor.constraint(equalTo: view.safeLayoutGuide.centerXAnchor),
+            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: view.safeLayoutGuide.widthAnchor, constant: -(2 * CGFloat.mediumLargeSpacing)),
+            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.safeLayoutGuide.bottomAnchor, constant: -.mediumSpacing),
             captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.mediumSpacing),
 
-            dismissButton.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-            dismissButton.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
+            dismissButton.leadingAnchor.constraint(equalTo: view.safeLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+            dismissButton.topAnchor.constraint(equalTo: view.safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
             dismissButton.widthAnchor.constraint(equalToConstant: FullscreenGalleryViewController.dismissButtonSize),
             dismissButton.heightAnchor.constraint(equalToConstant: FullscreenGalleryViewController.dismissButtonSize),
 
