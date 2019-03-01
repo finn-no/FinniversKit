@@ -409,7 +409,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
 
 // MARK: - GalleryPreviewViewDataSource
 extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
-    func loadImage(withWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void) {
+    func galleryPreviewView(_: GalleryPreviewView, loadImageWithWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void) {
         guard let galleryDataSource = galleryDataSource else {
             dataCallback(index, nil)
             return

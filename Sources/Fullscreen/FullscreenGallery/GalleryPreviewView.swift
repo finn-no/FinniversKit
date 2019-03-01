@@ -5,11 +5,11 @@
 import UIKit
 
 protocol GalleryPreviewViewDataSource:class {
-    func loadImage(withWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void)
+    func galleryPreviewView(_: GalleryPreviewView, loadImageWithWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void)
 }
 
 protocol GalleryPreviewViewDelegate: class {
-    func galleryPreviewView(_ previewView: GalleryPreviewView, selectedImageAtIndex index: Int)
+    func galleryPreviewView(_: GalleryPreviewView, selectedImageAtIndex index: Int)
 }
 
 class GalleryPreviewView: UIView {
@@ -105,7 +105,7 @@ class GalleryPreviewView: UIView {
         collectionView.reloadData()
 
         for counter in 0 ..< imageCount {
-            dataSource?.loadImage(withWidth: cellSize.width, imageIndex: counter, dataCallback: { [weak self] (index, image) in
+            dataSource?.galleryPreviewView(self, loadImageWithWidth: cellSize.width, imageIndex: counter, dataCallback: { [weak self] (index, image) in
                 guard let self = self else { return }
 
                 if index >= 0 && index < self.images.count {
