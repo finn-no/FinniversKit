@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol TextViewDelegate: class {
+public protocol TextViewDelegate: AnyObject {
     func textViewDidChange(_ textView: TextView)
     func textViewDidBeginEditing(_ textView: TextView)
     func textViewDidEndEditing(_ textView: TextView)
