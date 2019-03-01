@@ -32,10 +32,10 @@ extension CGPoint {
     }
 
     static func < (point: CGPoint, scalar: CGFloat) -> Bool {
-        return point.length() < scalar
+        return point.length < scalar
     }
 
-    public func length() -> CGFloat {
+    public var length: CGFloat {
         return sqrt(pow(x, 2) + pow(y, 2))
     }
 }

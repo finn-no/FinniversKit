@@ -171,7 +171,7 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
             let pos = prePanState.frame.origin + translation
             fullscreenImageView.frame = CGRect(x: pos.x, y: pos.y, width: size.width, height: size.height)
 
-            let scaleFactor = 1.0 - (translation.length() / (view.bounds.height * 1.5))
+            let scaleFactor = 1.0 - (translation.length / (view.bounds.height * 1.5))
             fullscreenImageView.zoomScale = prePanState.zoomScale * scaleFactor
 
             delegate?.fullscreenImageViewControllerDidPan(self, withTranslation: translation)

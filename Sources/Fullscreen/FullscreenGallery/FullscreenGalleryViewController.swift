@@ -19,11 +19,11 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private static let captionFadeDuration = 0.2
     private static let dismissButtonSize: CGFloat = 30.0
 
-    private let imageSource: FullscreenGalleryImageSource
+    private weak var imageSource: FullscreenGalleryImageSource?
     private let previewViewInitiallyVisible: Bool
 
     private var previewViewVisible: Bool
-    private var hasPerformedInitialPreviewScroll: Bool = false
+    private var hasPerformedInitialPreviewScroll = false
 
     private var galleryTransitioningController: FullscreenGalleryTransitioningController? {
         return transitioningDelegate as? FullscreenGalleryTransitioningController
@@ -44,7 +44,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         label.numberOfLines = 0
         label.textColor = .milk
         label.textAlignment = .center
-        label.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.4)
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         label.shadowOffset = CGSize(width: 1.0, height: 1.0)
         label.shadowColor = .black
         return label
@@ -58,7 +58,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
         let removeImage = UIImage(named: .remove)
         button.setImage(removeImage, for: .normal)
-        button.setImage(removeImage, for: .selected)
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
         button.imageView?.contentMode = .scaleAspectFit
@@ -349,6 +348,11 @@ extension FullscreenGalleryViewController: UIGestureRecognizerDelegate {
 // MARK: - FullscreenImageViewControllerDataSource
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSource {
     func loadImage(forImageViewController vc: FullscreenImageViewController, dataCallback: @escaping (UIImage?) -> Void) {
+        guard let imageSource = imageSource else {
+            dataCallback(nil)
+            return
+        }
+
         let url = viewModel.imageUrls[vc.imageIndex]
         let imageWidth = min(view.bounds.width, view.bounds.height)
 
@@ -381,7 +385,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
 // MARK: - FullscreenImageViewControllerDelegate
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate {
     func fullscreenImageViewControllerDidPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint) {
-        let dist = translation.length()
+        let dist = translation.length
         let ratio = dist / 200.0
 
         // Let the panning fade out to 50% opacity over 200 px
@@ -389,7 +393,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
     }
 
     func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool {
-        if translation.length() >= 200 || velocity.length() >= 100 {
+        if translation.length >= 200 || velocity.length >= 100 {
             galleryTransitioningController?.dismissVelocity = velocity
 
             dismiss(animated: true)
@@ -406,6 +410,11 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
 // MARK: - GalleryPreviewViewDataSource
 extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
     func loadImage(withWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void) {
+        guard let imageSource = imageSource else {
+            dataCallback(index, nil)
+            return
+        }
+
         let url = viewModel.imageUrls[index]
         imageSource.image(forUrlString: url, width: width, completionHandler: { (_, image, _) in
             dataCallback(index, image)

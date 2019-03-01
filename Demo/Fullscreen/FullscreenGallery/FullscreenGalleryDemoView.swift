@@ -27,7 +27,7 @@ private class DemoPreviewCell: UICollectionViewCell {
     private(set) var imageUrl: String?
 
     private(set) lazy var imageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -47,13 +47,7 @@ private class DemoPreviewCell: UICollectionViewCell {
 
     private func setup() {
         contentView.addSubview(imageView)
-
-        NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
-        ])
+        imageView.fillInSuperview(insets: UIEdgeInsets(all: .mediumSpacing))
     }
 
     // MARK: - Lifecycle
@@ -84,9 +78,9 @@ private class DemoPreviewCell: UICollectionViewCell {
 private class ImageDownloader: FullscreenGalleryImageSource {
     static let shared = ImageDownloader()
 
-    public var simulatedDelayMs: UInt32 = 0
+    var simulatedDelayMs: UInt32 = 0
 
-    public func downloadImage(withUrl urlString: String, dataCallback: @escaping (String, UIImage?, Error?) -> Void) {
+    func downloadImage(withUrl urlString: String, dataCallback: @escaping (String, UIImage?, Error?) -> Void) {
         guard let url = URL(string: urlString) else {
             dataCallback(urlString, nil, nil)
             return
