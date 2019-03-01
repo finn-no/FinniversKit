@@ -80,6 +80,11 @@ NSString *const FinniversImageAssetprofile = @"profile";
 NSString *const FinniversImageAssetrate = @"rate";
 NSString *const FinniversImageAssetrated = @"rated";
 NSString *const FinniversImageAssetratingCat = @"ratingCat";
+NSString *const FinniversImageAssetratingFaceAngry = @"ratingFaceAngry";
+NSString *const FinniversImageAssetratingFaceDissatisfied = @"ratingFaceDissatisfied";
+NSString *const FinniversImageAssetratingFaceHappy = @"ratingFaceHappy";
+NSString *const FinniversImageAssetratingFaceLove = @"ratingFaceLove";
+NSString *const FinniversImageAssetratingFaceNeutral = @"ratingFaceNeutral";
 NSString *const FinniversImageAssetratings = @"ratings";
 NSString *const FinniversImageAssetrealestate = @"realestate";
 NSString *const FinniversImageAssetremove = @"remove";
@@ -179,6 +184,11 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetrate,
              FinniversImageAssetrated,
              FinniversImageAssetratingCat,
+             FinniversImageAssetratingFaceAngry,
+             FinniversImageAssetratingFaceDissatisfied,
+             FinniversImageAssetratingFaceHappy,
+             FinniversImageAssetratingFaceLove,
+             FinniversImageAssetratingFaceNeutral,
              FinniversImageAssetratings,
              FinniversImageAssetrealestate,
              FinniversImageAssetremove,

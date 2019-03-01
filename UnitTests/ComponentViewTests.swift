@@ -111,6 +111,10 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.feedbackView)
     }
 
+    func testHappinessRating() {
+        snapshot(.happinessRating)
+    }
+
     func testEarthHourView() {
         snapshot(.earthHour)
     }
