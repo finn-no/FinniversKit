@@ -170,3 +170,17 @@ extension CGColor {
         return UIColor.flatButtonHighlightedTextColor.cgColor
     }
 }
+
+// MARK: - Cell
+
+@objc extension UIColor {
+    public class var defaultCellSelectedBackgroundColor: UIColor {
+        return UIColor(r: 230, g: 235, b: 242)!
+    }
+}
+
+extension CGColor {
+    public class var defaultCellSelectedBackgroundColor: CGColor {
+        return UIColor.defaultCellSelectedBackgroundColor.cgColor
+    }
+}
