@@ -12,7 +12,7 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
 
     // MARK: - Private properties
 
-    private let animationDuration = 0.5
+    private let animationDuration = 0.4
     private let presenterDelegate: FullscreenGalleryTransitionPresenterDelegate
     private let destinationDelegate: FullscreenGalleryTransitionDestinationDelegate
 
