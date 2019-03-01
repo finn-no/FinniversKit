@@ -35,15 +35,8 @@ open class CheckboxTableViewCell: BasicTableViewCell {
         super.configure(with: viewModel)
         selectionStyle = .none
         checkbox.isHighlighted = viewModel.isSelected
-
-        if viewModel.subtitle != nil {
-            stackViewToCheckboxConstraint.constant = .mediumLargeSpacing
-            separatorInset = .leadingInset(60)
-        } else {
-            stackViewToCheckboxConstraint.constant = .mediumSpacing
-            separatorInset = .leadingInset(52)
-        }
-
+        stackViewToCheckboxConstraint.constant = .mediumLargeSpacing
+        separatorInset = .leadingInset(60)
         layoutIfNeeded()
     }
 
