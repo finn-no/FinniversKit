@@ -6,20 +6,10 @@ import FinniversKit
 
 // MARK: - Helpers
 
-private protocol SelectedIndexDelegate: class {
-    func selectedIndexChanged(to index: Int)
-}
-
 private struct DemoViewModel: FullscreenGalleryViewModel {
-    public weak var selectedIndexDelegate: SelectedIndexDelegate?
-
     let imageUrls: [String]
     let imageCaptions: [String]
-    var selectedIndex: Int {
-        didSet {
-            selectedIndexDelegate?.selectedIndexChanged(to: selectedIndex)
-        }
-    }
+    let selectedIndex: Int
 }
 
 private class DemoPreviewCell: UICollectionViewCell {
@@ -255,9 +245,11 @@ class FullscreenGalleryDemoView: UIView {
 
     private func displayFullscreenGallery(forIndex index: Int) {
         if let viewController = parentViewController {
-            let viewModel = DemoViewModel(selectedIndexDelegate: self, imageUrls: imageUrls, imageCaptions: imageCaptions, selectedIndex: index)
+            let viewModel = DemoViewModel(imageUrls: imageUrls, imageCaptions: imageCaptions, selectedIndex: index)
 
-            let gallery = FullscreenGalleryViewController(withImageSource: ImageDownloader.shared, viewModel: viewModel, thumbnailsInitiallyVisible: thumbnailSwitch.isOn)
+            let gallery = FullscreenGalleryViewController(viewModel: viewModel, thumbnailsInitiallyVisible: thumbnailSwitch.isOn)
+            gallery.galleryDelegate = self
+            gallery.imageSource = ImageDownloader.shared
             gallery.transitioningDelegate = transitionController
 
             viewController.present(gallery, animated: true)
@@ -290,6 +282,20 @@ extension FullscreenGalleryDemoView: FullscreenGalleryTransitionPresenterDelegat
     public func fullscreenGalleryTransitionOutCompleted() { }
 }
 
+// MARK: - FullscreenGalleryViewControllerDelegate
+
+extension FullscreenGalleryDemoView: FullscreenGalleryViewControllerDelegate {
+    public func fullscreenGalleryViewControllerDismissButtonTapped(_ controller: FullscreenGalleryViewController) {
+        controller.dismiss(animated: true)
+    }
+
+    public func fullscreenGalleryViewController(_ controller: FullscreenGalleryViewController, didSelectImageAtIndex index: Int) {
+        selectedIndex = index
+        let indexPath = IndexPath(row: index, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+    }
+}
+
 // MARK: - UICollectionView
 
 extension FullscreenGalleryDemoView: UICollectionViewDataSource {
@@ -311,12 +317,3 @@ extension FullscreenGalleryDemoView: UICollectionViewDelegate {
     }
 }
 
-// MARK: - SelectedIndexDelegate
-
-extension FullscreenGalleryDemoView: SelectedIndexDelegate {
-    fileprivate func selectedIndexChanged(to index: Int) {
-        selectedIndex = index
-        let indexPath = IndexPath(row: index, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-    }
-}

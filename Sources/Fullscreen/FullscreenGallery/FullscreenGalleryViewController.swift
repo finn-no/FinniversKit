@@ -4,6 +4,11 @@
 
 import UIKit
 
+public protocol FullscreenGalleryViewControllerDelegate: class {
+    func fullscreenGalleryViewControllerDismissButtonTapped(_: FullscreenGalleryViewController)
+    func fullscreenGalleryViewController(_: FullscreenGalleryViewController, didSelectImageAtIndex: Int)
+}
+
 public class FullscreenGalleryViewController: UIPageViewController {
 
     // MARK: - Public properties
@@ -12,16 +17,18 @@ public class FullscreenGalleryViewController: UIPageViewController {
         return true
     }
 
-    private(set) var viewModel: FullscreenGalleryViewModel
+    public weak var imageSource: FullscreenGalleryImageSource?
+    public weak var galleryDelegate: FullscreenGalleryViewControllerDelegate?
 
     // MARK: - Private properties
 
     private static let captionFadeDuration = 0.2
     private static let dismissButtonSize: CGFloat = 30.0
 
-    private weak var imageSource: FullscreenGalleryImageSource?
+    private let viewModel: FullscreenGalleryViewModel
     private let previewViewInitiallyVisible: Bool
 
+    private var currentImageIndex: Int
     private var previewViewVisible: Bool
     private var hasPerformedInitialPreviewScroll = false
 
@@ -108,11 +115,11 @@ public class FullscreenGalleryViewController: UIPageViewController {
         fatalError("not implemented: init(transitionStyle:navigationOrientation:options:)")
     }
 
-    public required init(withImageSource imageSource: FullscreenGalleryImageSource, viewModel: FullscreenGalleryViewModel, thumbnailsInitiallyVisible previewVisible: Bool) {
+    public required init(viewModel: FullscreenGalleryViewModel, thumbnailsInitiallyVisible previewVisible: Bool) {
         self.previewViewInitiallyVisible = previewVisible
         self.previewViewVisible = previewVisible
-        self.imageSource = imageSource
         self.viewModel = viewModel
+        self.currentImageIndex = viewModel.selectedIndex
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
 
         modalPresentationStyle = .overCurrentContext
@@ -190,7 +197,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     @objc private func dismissButtonTapped() {
         galleryTransitioningController?.dismissVelocity = nil
-        dismiss(animated: true)
+        galleryDelegate?.fullscreenGalleryViewControllerDismissButtonTapped(self)
     }
 
     @objc private func onSingleTap(_ gestureRecognizer: UIGestureRecognizer) {
@@ -314,11 +321,11 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
             return
         }
 
-        let imageIndex = imageVc.imageIndex
-        viewModel.selectedIndex = imageIndex
+        currentImageIndex = imageVc.imageIndex
+        galleryDelegate?.fullscreenGalleryViewController(self, didSelectImageAtIndex: currentImageIndex)
 
-        setCaptionLabel(index: imageIndex)
-        previewView.scrollToItem(atIndex: imageIndex, animated: true)
+        setCaptionLabel(index: currentImageIndex)
+        previewView.scrollToItem(atIndex: currentImageIndex, animated: true)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
@@ -425,9 +432,11 @@ extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
 // MARK: - GalleryPreviewViewDelegate
 extension FullscreenGalleryViewController: GalleryPreviewViewDelegate {
     func galleryPreviewView(_ previewView: GalleryPreviewView, selectedImageAtIndex index: Int) {
-        viewModel.selectedIndex = index
-        transitionToImage(atIndex: index, animated: true)
-        previewView.scrollToItem(atIndex: index, animated: true)
+        currentImageIndex = index
+        galleryDelegate?.fullscreenGalleryViewController(self, didSelectImageAtIndex: currentImageIndex)
+
+        transitionToImage(atIndex: currentImageIndex, animated: true)
+        previewView.scrollToItem(atIndex: currentImageIndex, animated: true)
     }
 }
 
