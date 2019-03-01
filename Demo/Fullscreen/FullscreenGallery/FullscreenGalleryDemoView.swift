@@ -65,7 +65,7 @@ private class DemoPreviewCell: UICollectionViewCell {
     }
 }
 
-private class ImageDownloader: FullscreenGalleryImageSource {
+private class ImageDownloader: FullscreenGalleryViewControllerDataSource {
     static let shared = ImageDownloader()
 
     var simulatedDelayMs: UInt32 = 0
@@ -93,8 +93,10 @@ private class ImageDownloader: FullscreenGalleryImageSource {
         task.resume()
     }
 
-    func image(forUrlString urlString: String, width: CGFloat, completionHandler handler: @escaping (String, UIImage?, Error?) -> Void) {
-        // The size is not taken into account in the demo.
+    func fullscreenGalleryViewController(_: FullscreenGalleryViewController,
+                                         imageForUrlString urlString: String,
+                                         width _: CGFloat,
+                                         completionHandler handler: @escaping (String, UIImage?, Error?) -> Void) {
         downloadImage(withUrl: urlString, dataCallback: handler)
     }
 }
@@ -249,7 +251,7 @@ class FullscreenGalleryDemoView: UIView {
 
             let gallery = FullscreenGalleryViewController(viewModel: viewModel, thumbnailsInitiallyVisible: thumbnailSwitch.isOn)
             gallery.galleryDelegate = self
-            gallery.imageSource = ImageDownloader.shared
+            gallery.galleryDataSource = ImageDownloader.shared
             gallery.transitioningDelegate = transitionController
 
             viewController.present(gallery, animated: true)

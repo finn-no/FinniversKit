@@ -9,6 +9,13 @@ public protocol FullscreenGalleryViewControllerDelegate: class {
     func fullscreenGalleryViewController(_: FullscreenGalleryViewController, didSelectImageAtIndex: Int)
 }
 
+public protocol FullscreenGalleryViewControllerDataSource: class {
+    func fullscreenGalleryViewController(_: FullscreenGalleryViewController,
+                                         imageForUrlString urlString: String,
+                                         width: CGFloat,
+                                         completionHandler handler: @escaping (String, UIImage?, Error?) -> Void)
+}
+
 public class FullscreenGalleryViewController: UIPageViewController {
 
     // MARK: - Public properties
@@ -17,7 +24,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         return true
     }
 
-    public weak var imageSource: FullscreenGalleryImageSource?
+    public weak var galleryDataSource: FullscreenGalleryViewControllerDataSource?
     public weak var galleryDelegate: FullscreenGalleryViewControllerDelegate?
 
     // MARK: - Private properties
@@ -80,7 +87,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     }()
 
     private lazy var previewViewVisibleConstraint: NSLayoutConstraint = {
-        return previewView.bottomAnchor.constraint(equalTo: safeLayoutGuide.bottomAnchor)
+        return previewView.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor)
     }()
 
     private lazy var previewViewHiddenConstraint: NSLayoutConstraint = {
@@ -341,7 +348,7 @@ extension FullscreenGalleryViewController: UIGestureRecognizerDelegate {
 // MARK: - FullscreenImageViewControllerDataSource
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSource {
     func loadImage(forImageViewController vc: FullscreenImageViewController, dataCallback: @escaping (UIImage?) -> Void) {
-        guard let imageSource = imageSource else {
+        guard let galleryDataSource = galleryDataSource else {
             dataCallback(nil)
             return
         }
@@ -349,7 +356,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
         let url = viewModel.imageUrls[vc.imageIndex]
         let imageWidth = min(view.bounds.width, view.bounds.height)
 
-        imageSource.image(forUrlString: url, width: imageWidth, completionHandler: { (_, image, _) in
+        galleryDataSource.fullscreenGalleryViewController(self, imageForUrlString: url, width: imageWidth, completionHandler: { (_, image, _) in
             dataCallback(image)
         })
     }
@@ -403,13 +410,13 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
 // MARK: - GalleryPreviewViewDataSource
 extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
     func loadImage(withWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void) {
-        guard let imageSource = imageSource else {
+        guard let galleryDataSource = galleryDataSource else {
             dataCallback(index, nil)
             return
         }
 
         let url = viewModel.imageUrls[index]
-        imageSource.image(forUrlString: url, width: width, completionHandler: { (_, image, _) in
+        galleryDataSource.fullscreenGalleryViewController(self, imageForUrlString: url, width: width, completionHandler: { (_, image, _) in
             dataCallback(index, image)
         })
     }
