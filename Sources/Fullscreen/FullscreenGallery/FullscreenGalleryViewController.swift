@@ -384,7 +384,15 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
 
 // MARK: - FullscreenImageViewControllerDelegate
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate {
-    func fullscreenImageViewControllerDidPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint) {
+    func fullscreenImageViewControllerDidBeginPan(_: FullscreenImageViewController) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.captionLabel.alpha = 0.0
+            self.dismissButton.alpha = 0.0
+        })
+
+    }
+
+    func fullscreenImageViewControllerDidPan(_: FullscreenImageViewController, withTranslation translation: CGPoint) {
         let dist = translation.length
         let ratio = dist / 200.0
 
@@ -392,14 +400,15 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
         backgroundView.alpha = 1.0 - min(0.5, ratio / 2.0)
     }
 
-    func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool {
+    func fullscreenImageViewControllerDidEndPan(_: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool {
         if translation.length >= 200 || velocity.length >= 100 {
             galleryTransitioningController?.dismissVelocity = velocity
-
             dismiss(animated: true)
             return false
         } else {
             UIView.animate(withDuration: 0.3, animations: {
+                self.captionLabel.alpha = 1.0
+                self.dismissButton.alpha = 1.0
                 self.backgroundView.alpha = 1.0
             })
             return true
@@ -462,7 +471,10 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
 
     public func prepareForTransition(presenting: Bool) {
         if presenting {
+            captionLabel.alpha = 0.0
+            dismissButton.alpha = 0.0
             backgroundView.alpha = 0.0
+
             if previewViewInitiallyVisible {
                 setThumbnailPreviewsVisible(false, animated: false)
             }
@@ -471,7 +483,10 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
 
     public func performTransitionAnimation(presenting: Bool) {
         if presenting {
+            captionLabel.alpha = 1.0
+            dismissButton.alpha = 1.0
             backgroundView.alpha = 1.0
+
             if previewViewInitiallyVisible {
                 setThumbnailPreviewsVisible(true, animated: false)
             }

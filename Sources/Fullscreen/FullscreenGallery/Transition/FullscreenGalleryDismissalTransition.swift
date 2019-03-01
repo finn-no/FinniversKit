@@ -51,7 +51,7 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
 
         destinationDelegate.prepareForTransition(presenting: false)
 
-        UIView.animate(withDuration: animationDuration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, animations: {
+        UIView.animate(withDuration: animationDuration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.beginFromCurrentState], animations: {
             self.performBezierAnimation(onView: transitionView, from: presentedFrame, to: presenterFrame)
             transitionView.bounds = CGRect(x: 0, y: 0, width: presenterFrame.width, height: presenterFrame.height)
 

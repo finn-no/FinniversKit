@@ -11,14 +11,16 @@ protocol FullscreenImageViewControllerDataSource: class {
 }
 
 protocol FullscreenImageViewControllerDelegate: class {
-    func fullscreenImageViewControllerDidPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint)
+    func fullscreenImageViewControllerDidBeginPan(_: FullscreenImageViewController)
+
+    func fullscreenImageViewControllerDidPan(_: FullscreenImageViewController, withTranslation translation: CGPoint)
 
     /// Called by the FullscreenImageViewController when the panning gesture on the primary image view has ended.
     ///
     /// - Returns
     ///   True if the FullscreenImageViewController should animate the primary image view back into position.
     ///   False otherwise.
-    func fullscreenImageViewControllerDidEndPan(_ vc: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool
+    func fullscreenImageViewControllerDidEndPan(_: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool
 }
 
 private class ScrollViewPrePanState {
@@ -161,6 +163,7 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
         case .began:
             prePanState = ScrollViewPrePanState(from: fullscreenImageView)
             fullscreenImageView.minimumZoomScale /= 3.0
+            delegate?.fullscreenImageViewControllerDidBeginPan(self)
 
         case .changed:
             guard let prePanState = prePanState else { return }
