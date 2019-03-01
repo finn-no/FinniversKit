@@ -12,7 +12,7 @@ public class TextView: UIView {
 
     // MARK: - Public properties
 
-    public weak var delegate: UITextViewDelegate?
+    public weak var delegate: TextViewDelegate?
 
     public var text: String! {
         get { return textView.text }
