@@ -9,7 +9,33 @@ public protocol TextViewDelegate: UITextViewDelegate {
 }
 
 public class TextView: UIView {
-    // MARK: - Internal properties
+
+    // MARK: - Public properties
+
+    public weak var delegate: UITextViewDelegate?
+
+    public var text: String! {
+        get { return textView.text }
+        set { textView.text = newValue }
+    }
+
+    public var placeholderText: String? {
+        didSet {
+            placeholderLabel.text = placeholderText
+        }
+    }
+
+    public var minimumHeight: CGFloat = 0 {
+        didSet {
+            textViewHeightConstraint.constant = minimumHeight
+        }
+    }
+
+    public override var intrinsicContentSize: CGSize {
+        return textView.intrinsicContentSize
+    }
+
+    // MARK: - Private properties
 
     private lazy var textView: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
@@ -39,31 +65,6 @@ public class TextView: UIView {
     }()
 
     private var textViewHeightConstraint: NSLayoutConstraint!
-
-    // MARK: - Public properties
-
-    public override var intrinsicContentSize: CGSize {
-        return textView.intrinsicContentSize
-    }
-
-    public var text: String! {
-        get { return textView.text }
-        set { textView.text = newValue }
-    }
-
-    public var placeholderText: String? {
-        didSet {
-            placeholderLabel.text = placeholderText
-        }
-    }
-
-    public var minimumHeight: CGFloat = 0 {
-        didSet {
-            textViewHeightConstraint.constant = minimumHeight
-        }
-    }
-
-    public weak var delegate: UITextViewDelegate?
 
     // MARK: - Setup
 
@@ -106,7 +107,7 @@ public class TextView: UIView {
     }
 }
 
-// MARK: - UITextView Delegate
+// MARK: - UITextViewDelegate
 
 extension TextView: UITextViewDelegate {
     public func textViewDidBeginEditing(_ textView: UITextView) {
