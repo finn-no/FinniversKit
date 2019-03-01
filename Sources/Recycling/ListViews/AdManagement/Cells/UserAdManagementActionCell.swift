@@ -75,7 +75,65 @@ public class UserAdManagementActionCell: UITableViewCell {
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
+        setup()
+    }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.setNeedsUpdateConstraints()
+    }
+
+    public func setupWithModel(_ model: AdManagementActionCellModel) {
+        titleLabel.text = model.title
+        iconView.image = model.image
+        descriptionLabel.text = model.description
+
+        if model.actionType == actionType &&  model.shouldShowExternalIcon == shouldShowExternalIcon { return }
+        actionType = model.actionType
+        shouldShowExternalIcon = model.shouldShowExternalIcon
+        cleanup()
+
+        if model.shouldShowExternalIcon { // External icon overrides chevron, as host-app needs this functionality
+            contentView.addSubview(externalAction)
+            NSLayoutConstraint.activate(externalActionConstraints)
+        } else if model.shouldShowChevron {
+            contentView.addSubview(chevronView)
+            NSLayoutConstraint.activate(chevronConstraints)
+        } else if model.shouldShowSwitch {
+            contentView.addSubview(toggle)
+            NSLayoutConstraint.activate(toggleConstraints)
+        }
+
+        if model.description != nil {
+            contentView.addSubview(descriptionLabel)
+            NSLayoutConstraint.activate(descriptionLabelConstraints)
+
+            var trailingConstraint = model.shouldShowChevron ? descriptionToChevronTrailingConstraint : descriptionToContentTrailingConstraint
+            if model.shouldShowExternalIcon {
+               trailingConstraint = descriptionToExternalTrailingConstraint
+            }
+            trailingConstraint.isActive = true
+        }
+
+        let noDescription = model.description == nil
+        titleLabelCenterYToContentViewConstraint.isActive = noDescription
+        let contentBottomConstraint = noDescription ? contentViewBottomToTitleConstraint : contentViewBottomToDescriptionConstraint
+        contentBottomConstraint.isActive = true
+    }
+
+    public func showSeparator(_ show: Bool) {
+        separator.isHidden = !show
+    }
+
+    // MARK: - Constraints
+
+    // MARK: - Private functions
+
+    private func setup() {
         contentView.addSubview(separator)
         contentView.addSubview(iconView)
         contentView.addSubview(titleLabel)
@@ -94,7 +152,7 @@ public class UserAdManagementActionCell: UITableViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
             titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16),
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
-        ])
+            ])
 
         chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                                chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -123,63 +181,6 @@ public class UserAdManagementActionCell: UITableViewCell {
         contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
         contentViewBottomToDescriptionConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        self.setNeedsUpdateConstraints()
-    }
-
-    public func setupWithModel(_ model: AdManagementActionCellModel) {
-        titleLabel.text = model.title
-        iconView.image = model.image
-        descriptionLabel.text = model.description
-
-        if model.actionType == actionType &&  model.shouldShowExternalIcon == shouldShowExternalIcon { return }
-        actionType = model.actionType
-        shouldShowExternalIcon = model.shouldShowExternalIcon
-
-        cleanup()
-        // Note, not all combination of model.properties are supported, as the Model will only allow
-        // certain combinations, based on the ActionType
-        if model.shouldShowExternalIcon { // External icon overrides chevron, as host-app needs this functionality
-            contentView.addSubview(externalAction)
-            NSLayoutConstraint.activate(externalActionConstraints)
-        } else if model.shouldShowChevron {
-            contentView.addSubview(chevronView)
-            NSLayoutConstraint.activate(chevronConstraints)
-        } else if model.shouldShowSwitch {
-            contentView.addSubview(toggle)
-            NSLayoutConstraint.activate(toggleConstraints)
-        }
-
-        if model.description != nil {
-            contentView.addSubview(descriptionLabel)
-            NSLayoutConstraint.activate(descriptionLabelConstraints)
-            var trailingConstraint = model.shouldShowChevron ? descriptionToChevronTrailingConstraint : descriptionToContentTrailingConstraint
-            if model.shouldShowExternalIcon {
-               trailingConstraint = descriptionToExternalTrailingConstraint
-            }
-            trailingConstraint.isActive = true
-        }
-
-        let noDescription = model.description == nil
-
-        titleLabelCenterYToContentViewConstraint.isActive = noDescription
-        let contentBottomConstraint = noDescription ? contentViewBottomToTitleConstraint : contentViewBottomToDescriptionConstraint
-        contentBottomConstraint.isActive = true
-    }
-
-    public func showSeparator(_ show: Bool) {
-        separator.isHidden = !show
-    }
-
-    // MARK: - Constraints
-
-    // MARK: - Private functions
 
     private func cleanup() {
         toggle.removeFromSuperview()
