@@ -129,16 +129,12 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     // MARK: - Lifecycle
 
-    public override func loadView() {
-        previewView.viewModel = viewModel
-        super.loadView()
-    }
-
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .clear
+        previewView.viewModel = viewModel
 
+        view.backgroundColor = .clear
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
         backgroundView.fillInSuperview()
@@ -168,8 +164,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
             previewView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             initialPreviewViewVisibilityConstraint
         ])
-
-        view.layoutIfNeeded()
 
         transitionToImage(atIndex: viewModel.selectedIndex, animated: false)
     }
