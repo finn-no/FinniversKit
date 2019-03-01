@@ -68,6 +68,7 @@ public class UserAdManagementActionCell: UITableViewCell {
     private var descriptionToChevronTrailingConstraint = NSLayoutConstraint()
     private var descriptionToExternalTrailingConstraint = NSLayoutConstraint()
     private var descriptionToContentTrailingConstraint = NSLayoutConstraint()
+    private var descriptionToToggleTrailingConstraint = NSLayoutConstraint()
     private var titleLabelCenterYToContentViewConstraint = NSLayoutConstraint()
     private var contentViewBottomToTitleConstraint = NSLayoutConstraint()
     private var contentViewBottomToDescriptionConstraint = NSLayoutConstraint()
@@ -112,11 +113,15 @@ public class UserAdManagementActionCell: UITableViewCell {
             contentView.addSubview(descriptionLabel)
             NSLayoutConstraint.activate(descriptionLabelConstraints)
 
-            var trailingConstraint = model.shouldShowChevron ? descriptionToChevronTrailingConstraint : descriptionToContentTrailingConstraint
             if model.shouldShowExternalIcon {
-               trailingConstraint = descriptionToExternalTrailingConstraint
+                descriptionToExternalTrailingConstraint.isActive = true
+            } else if model.shouldShowChevron {
+                descriptionToChevronTrailingConstraint.isActive = true
+            } else if model.shouldShowSwitch {
+                descriptionToToggleTrailingConstraint.isActive = true
+            } else {
+                descriptionToContentTrailingConstraint.isActive = true
             }
-            trailingConstraint.isActive = true
         }
 
         let noDescription = model.description == nil
@@ -158,7 +163,7 @@ public class UserAdManagementActionCell: UITableViewCell {
                                chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                                chevronView.widthAnchor.constraint(equalToConstant: 9),
                                chevronView.heightAnchor.constraint(equalToConstant: 16),
-                               titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: 8)
+                               titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -8)
         ]
         toggleConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                               toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -176,6 +181,7 @@ public class UserAdManagementActionCell: UITableViewCell {
         descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -8)
         descriptionToExternalTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: -8)
         descriptionToContentTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+        descriptionToToggleTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: -8)
         titleLabelCenterYToContentViewConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 
         contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
@@ -195,6 +201,7 @@ public class UserAdManagementActionCell: UITableViewCell {
         descriptionToChevronTrailingConstraint.isActive = false
         descriptionToExternalTrailingConstraint.isActive = false
         descriptionToContentTrailingConstraint.isActive = false
+        descriptionToToggleTrailingConstraint.isActive = false
         titleLabelCenterYToContentViewConstraint.isActive = false
         contentViewBottomToDescriptionConstraint.isActive = false
         contentViewBottomToTitleConstraint.isActive = false
