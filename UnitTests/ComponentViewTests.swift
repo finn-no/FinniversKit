@@ -51,6 +51,10 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.textField)
     }
 
+    func testTextView() {
+        snapshot(.textView)
+    }
+
     func testToast() {
         snapshot(.toast)
     }
