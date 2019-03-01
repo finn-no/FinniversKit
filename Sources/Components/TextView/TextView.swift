@@ -4,8 +4,22 @@
 
 import UIKit
 
-public protocol TextViewDelegate: UITextViewDelegate {
+public protocol TextViewDelegate: AnyObject {
     func textViewDidChange(_ textView: TextView)
+    func textViewDidBeginEditing(_ textView: TextView)
+    func textViewDidEndEditing(_ textView: TextView)
+}
+
+public extension TextViewDelegate {
+    func textViewDidChange(_ textView: TextView) {
+        // Default empty implementation.
+    }
+    func textViewDidBeginEditing(_ textView: TextView) {
+        // Default empty implementation.
+    }
+    func textViewDidEndEditing(_ textView: TextView) {
+        // Default empty implementation.
+    }
 }
 
 public class TextView: UIView {
@@ -120,11 +134,11 @@ public class TextView: UIView {
 
 extension TextView: UITextViewDelegate {
     public func textViewDidBeginEditing(_ textView: UITextView) {
-        delegate?.textViewDidBeginEditing?(textView)
+        delegate?.textViewDidBeginEditing(self)
     }
 
     public func textViewDidChange(_ textView: UITextView) {
-        delegate?.textViewDidChange?(textView)
+        delegate?.textViewDidChange(self)
 
         if textView.text.isEmpty {
             placeholderLabel.isHidden = false
@@ -134,6 +148,6 @@ extension TextView: UITextViewDelegate {
     }
 
     public func textViewDidEndEditing(_ textView: UITextView) {
-        delegate?.textViewDidEndEditing?(textView)
+        delegate?.textViewDidEndEditing(self)
     }
 }
