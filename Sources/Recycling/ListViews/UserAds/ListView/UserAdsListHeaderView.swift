@@ -13,7 +13,7 @@ public class UserAdsListHeaderView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: UserAdsListHeaderViewDelegate?
-    public var section: Int
+    public let section: Int
 
     // MARK: - Internal properties
 
