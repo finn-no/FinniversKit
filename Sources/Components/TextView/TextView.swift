@@ -31,6 +31,15 @@ public class TextView: UIView {
         }
     }
 
+    public var isScrollEnabled: Bool {
+        get {
+            return textView.isScrollEnabled
+        }
+        set {
+            textView.isScrollEnabled = newValue
+        }
+    }
+
     public override var intrinsicContentSize: CGSize {
         return textView.intrinsicContentSize
     }
