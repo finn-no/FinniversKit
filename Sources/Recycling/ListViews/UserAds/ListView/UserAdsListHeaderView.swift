@@ -13,6 +13,7 @@ public class UserAdsListHeaderView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: UserAdsListHeaderViewDelegate?
+    public var section: Int
 
     // MARK: - Internal properties
 
@@ -36,14 +37,14 @@ public class UserAdsListHeaderView: UIView {
 
     // MARK: - Setup
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(atSection: Int) {
+        self.section = atSection
+        super.init(frame: .zero)
         setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+        fatalError("init(coder:) has not been implemented")
     }
 
     private func setup() {
