@@ -25,6 +25,8 @@ public class UserAdManagementActionCell: UITableViewCell {
         label.numberOfLines = 0
         label.font = UIFont.title4
         label.textColor = .licorice
+        label.backgroundColor = .orange
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,7 +50,6 @@ public class UserAdManagementActionCell: UITableViewCell {
     private lazy var toggle: UISwitch = {
         let toggle = UISwitch(frame: .zero)
         toggle.addTarget(self, action: #selector(toggleTapped(_:)), for: .touchUpInside)
-        toggle.setContentHuggingPriority(.required, for: .horizontal)
         toggle.translatesAutoresizingMaskIntoConstraints = false
         return toggle
     }()
@@ -72,6 +73,7 @@ public class UserAdManagementActionCell: UITableViewCell {
     private var titleLabelCenterYToContentViewConstraint = NSLayoutConstraint()
     private var contentViewBottomToTitleConstraint = NSLayoutConstraint()
     private var contentViewBottomToDescriptionConstraint = NSLayoutConstraint()
+    private var titleLabelHeightConstraint = NSLayoutConstraint()
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -85,11 +87,28 @@ public class UserAdManagementActionCell: UITableViewCell {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        self.setNeedsUpdateConstraints()
+        guard let text = titleLabel.text else { return }
+        let width = titleLabel.frame.width
+        if width <= .leastNormalMagnitude { return }
+        let height = text.height(withConstrainedWidth: width, font: titleLabel.font)
+        titleLabelHeightConstraint.constant = height
+        setNeedsUpdateConstraints()
     }
+
+
+/*
+
+     // TODO: Need to expose leading and trailing position for titleLabel as well, and move this after the other stuff
+     let frame = titleLabel.frame
+
+     let height = model.title.height(withConstrainedWidth: titleLabel.frame.size.width, font: titleLabel.font)
+     titleLabelHeightConstraint.constant = height
+
+     */
 
     public func setupWithModel(_ model: AdManagementActionCellModel) {
         titleLabel.text = model.title
+
         iconView.image = model.image
         descriptionLabel.text = model.description
 
@@ -128,6 +147,7 @@ public class UserAdManagementActionCell: UITableViewCell {
         titleLabelCenterYToContentViewConstraint.isActive = noDescription
         let contentBottomConstraint = noDescription ? contentViewBottomToTitleConstraint : contentViewBottomToDescriptionConstraint
         contentBottomConstraint.isActive = true
+        setNeedsUpdateConstraints()
     }
 
     public func showSeparator(_ show: Bool) {
@@ -145,6 +165,9 @@ public class UserAdManagementActionCell: UITableViewCell {
 
         let hairLineSize = 1.0/UIScreen.main.scale
 
+        titleLabelHeightConstraint = titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 0)
+//        titleLabelHeightConstraint.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
             separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 24),
             separator.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -156,8 +179,11 @@ public class UserAdManagementActionCell: UITableViewCell {
             iconView.heightAnchor.constraint(equalToConstant: 24),
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
             titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16),
+            titleLabelHeightConstraint,
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
             ])
+
+//        titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 18).isActive = true
 
         chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                                chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
