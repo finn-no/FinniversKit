@@ -256,11 +256,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     private func setCaptionLabel(index: Int) {
         let caption: String? = {
-            if index >= 0 && index < viewModel.imageCaptions.count {
-                return viewModel.imageCaptions[index]
-            } else {
-                return nil
-            }
+            return viewModel.imageCaptions[safe: index]
         }()
 
         UIView.transition(with: captionLabel, duration: FullscreenGalleryViewController.captionFadeDuration, options: .transitionCrossDissolve, animations: { [weak self] in
@@ -359,11 +355,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
     }
 
     func title(forImageViewController vc: FullscreenImageViewController) -> String? {
-        if vc.imageIndex < 0 || vc.imageIndex >= viewModel.imageCaptions.count {
-            return nil
-        }
-
-        return viewModel.imageCaptions[vc.imageIndex]
+        return viewModel.imageCaptions[safe: vc.imageIndex]
     }
 
     func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat {

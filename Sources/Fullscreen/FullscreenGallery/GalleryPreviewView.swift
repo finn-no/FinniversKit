@@ -4,7 +4,7 @@
 
 import UIKit
 
-protocol GalleryPreviewViewDataSource:class {
+protocol GalleryPreviewViewDataSource: class {
     func galleryPreviewView(_: GalleryPreviewView, loadImageWithWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void)
 }
 
@@ -125,13 +125,7 @@ extension GalleryPreviewView: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(GalleryPreviewCell.self, for: indexPath)
-
-        let index = indexPath.row
-
-        var image: UIImage?
-        if index >= 0 && index < images.count {
-            image = images[index]
-        }
+        var image = images[safe: indexPath.row]
 
         cell.configure(withImage: image)
 

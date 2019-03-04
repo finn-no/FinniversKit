@@ -307,4 +307,3 @@ extension FullscreenGalleryDemoViewController: FullscreenGalleryViewControllerDe
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
     }
 }
-
