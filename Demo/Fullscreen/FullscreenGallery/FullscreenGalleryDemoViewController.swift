@@ -37,7 +37,13 @@ private class DemoPreviewCell: UICollectionViewCell {
 
     private func setup() {
         contentView.addSubview(imageView)
-        imageView.fillInSuperview(insets: UIEdgeInsets(all: .mediumSpacing))
+
+        NSLayoutConstraint.activate([
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+        ])
     }
 
     // MARK: - Lifecycle
@@ -255,7 +261,7 @@ class FullscreenGalleryDemoViewController: DemoViewController<UIView>, UICollect
     // MARK: - UICollectionView
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return min(imageUrls.count, imageCaptions.count)
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

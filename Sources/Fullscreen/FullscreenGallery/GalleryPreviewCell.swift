@@ -9,8 +9,7 @@ class GalleryPreviewCell: UICollectionViewCell {
     // MARK: - Private properties
 
     private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .clear
         imageView.clipsToBounds = true

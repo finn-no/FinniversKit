@@ -113,7 +113,7 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
     }()
 
     private(set) lazy var fullscreenImageView: FullscreenImageView = {
-        let imageView = FullscreenImageView()
+        let imageView = FullscreenImageView(withAutoLayout: false)
         imageView.clipsToBounds = false
         return imageView
     }()

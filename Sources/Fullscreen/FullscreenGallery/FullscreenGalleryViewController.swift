@@ -47,7 +47,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     // MARK: - UI properties
 
     private lazy var backgroundView: UIView = {
-        let view = UIView(frame: .zero)
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = .black
         view.isUserInteractionEnabled = false
         return view
@@ -80,8 +80,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     }()
 
     private lazy var previewView: GalleryPreviewView = {
-        let previewView = GalleryPreviewView()
-        previewView.translatesAutoresizingMaskIntoConstraints = false
+        let previewView = GalleryPreviewView(withAutoLayout: true)
         previewView.delegate = self
         previewView.dataSource = self
         return previewView
@@ -91,15 +90,12 @@ public class FullscreenGalleryViewController: UIPageViewController {
         return previewView.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor)
     }()
 
-    private lazy var previewViewHiddenConstraint: NSLayoutConstraint = {
-        // The constant exists to prevent the preview-view from jumping back into the visible area
-        // during the dismissal animation.
-        return previewView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: .mediumLargeSpacing)
-    }()
+    // The constant exists to prevent the preview-view from jumping back into the visible area
+    // during the dismissal animation.
+    private lazy var previewViewHiddenConstraint = previewView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: .mediumLargeSpacing)
 
     private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer()
-        recognizer.numberOfTapsRequired = 1
         recognizer.addTarget(self, action: #selector(onSingleTap))
         recognizer.delegate = self
         return recognizer
