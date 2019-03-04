@@ -51,7 +51,7 @@ class FullscreenGalleryPresenterTransition: NSObject, UIViewControllerAnimatedTr
         sourceView.isHidden = true
         destinationView.isHidden = true
 
-        transitionContext.containerView.addSubview(transitionView)
+        toViewController.view.addSubview(transitionView)
 
         destinationDelegate.prepareForTransition(presenting: true)
         let duration = transitionDuration(using: transitionContext)

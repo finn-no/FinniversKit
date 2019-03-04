@@ -485,6 +485,8 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
             dismissButton.alpha = 0.0
             backgroundView.alpha = 0.0
 
+            captionLabel.superview?.bringSubviewToFront(captionLabel)
+
             if previewViewInitiallyVisible {
                 setThumbnailPreviewsVisible(false, animated: false)
             }
