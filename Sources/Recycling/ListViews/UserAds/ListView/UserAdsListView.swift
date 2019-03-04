@@ -102,6 +102,10 @@ public class UserAdsListView: UIView {
         tableView.deleteSections(sections, with: animation)
     }
 
+    public func reloadSections(_ sections: IndexSet, with animation: UITableView.RowAnimation) {
+        tableView.reloadSections(sections, with: animation)
+    }
+
     public func scrollToTop() {
         if #available(iOS 11.0, *) {
             tableView.setContentOffset(CGPoint(x: 0, y: -tableView.adjustedContentInset.top), animated: true)
