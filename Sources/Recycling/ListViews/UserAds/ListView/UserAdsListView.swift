@@ -134,7 +134,7 @@ extension UserAdsListView: UITableViewDataSource {
         switch section {
         case firstSection, lastSection: return nil
         default:
-            let headerView = UserAdsListHeaderView(frame: .zero)
+            let headerView = UserAdsListHeaderView(atSection: section)
             headerView.delegate = self
 
             if let model = dataSource?.userAdsListView(self, modelAtIndex: section) {
