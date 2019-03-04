@@ -104,8 +104,13 @@ open class BasicTableViewCell: UITableViewCell {
     // MARK: - Private methods
 
     private func setup() {
+        let selectedBackgroundView = UIView()
+        selectedBackgroundView.backgroundColor = .defaultCellSelectedBackgroundColor
+        self.selectedBackgroundView = selectedBackgroundView
+
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
+
         NSLayoutConstraint.activate([
             stackViewTopAnchorConstraint,
             stackViewLeadingAnchorConstraint,
@@ -114,6 +119,6 @@ open class BasicTableViewCell: UITableViewCell {
 
             detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             detailLabelTrailingConstraint
-            ])
+        ])
     }
 }
