@@ -85,26 +85,14 @@ public class UserAdManagementActionCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
+    public override func draw(_ rect: CGRect) {
+        super.draw(rect)
         guard let text = titleLabel.text else { return }
         let width = titleLabel.frame.width
         if width <= .leastNormalMagnitude { return }
         let height = text.height(withConstrainedWidth: width, font: titleLabel.font)
         titleLabelHeightConstraint.constant = height
-        setNeedsUpdateConstraints()
     }
-
-
-/*
-
-     // TODO: Need to expose leading and trailing position for titleLabel as well, and move this after the other stuff
-     let frame = titleLabel.frame
-
-     let height = model.title.height(withConstrainedWidth: titleLabel.frame.size.width, font: titleLabel.font)
-     titleLabelHeightConstraint.constant = height
-
-     */
 
     public func setupWithModel(_ model: AdManagementActionCellModel) {
         titleLabel.text = model.title
