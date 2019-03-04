@@ -74,6 +74,7 @@ public class UserAdManagementActionCell: UITableViewCell {
     private var contentViewBottomToTitleConstraint = NSLayoutConstraint()
     private var contentViewBottomToDescriptionConstraint = NSLayoutConstraint()
     private var titleLabelHeightConstraint = NSLayoutConstraint()
+    private var descriptionLabelHeightConstraint = NSLayoutConstraint()
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -89,9 +90,14 @@ public class UserAdManagementActionCell: UITableViewCell {
         super.draw(rect)
         guard let text = titleLabel.text else { return }
         let width = titleLabel.frame.width
-        if width <= .leastNormalMagnitude { return }
         let height = text.height(withConstrainedWidth: width, font: titleLabel.font)
         titleLabelHeightConstraint.constant = height
+        if contentView.subviews.contains(descriptionLabel) {
+            guard let text = descriptionLabel.text else { return }
+            let width = descriptionLabel.frame.width
+            let height = text.height(withConstrainedWidth: width, font: descriptionLabel.font)
+            descriptionLabelHeightConstraint.constant = height
+        }
     }
 
     public func setupWithModel(_ model: AdManagementActionCellModel) {
@@ -155,7 +161,7 @@ public class UserAdManagementActionCell: UITableViewCell {
 
         titleLabelHeightConstraint = titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 0)
         let titleLabelTopConstraint = titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16)
-        titleLabelTopConstraint.priority = .defaultHigh
+        titleLabelTopConstraint.priority = .defaultLow
 
         NSLayoutConstraint.activate([
             separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 24),
@@ -169,6 +175,7 @@ public class UserAdManagementActionCell: UITableViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
             titleLabelTopConstraint,
             titleLabelHeightConstraint,
+            titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 0),
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
             ])
 
@@ -190,8 +197,10 @@ public class UserAdManagementActionCell: UITableViewCell {
                                       externalAction.heightAnchor.constraint(equalToConstant: 20),
                                       titleLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: -8)
         ]
+        descriptionLabelHeightConstraint = descriptionLabel.heightAnchor.constraint(equalToConstant: 0)
         descriptionLabelConstraints = [ descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-                                        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0)
+                                        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
+                                        descriptionLabelHeightConstraint
         ]
         descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -8)
         descriptionToExternalTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: externalAction.leadingAnchor, constant: -8)
@@ -199,9 +208,11 @@ public class UserAdManagementActionCell: UITableViewCell {
         descriptionToToggleTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: -8)
         titleLabelCenterYToContentViewConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 
+        // TODO: These constants might also be manipulated...
         contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
         contentViewBottomToTitleConstraint.priority = .defaultHigh
         contentViewBottomToDescriptionConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)
+        contentViewBottomToDescriptionConstraint.priority = .defaultHigh
     }
 
     private func cleanup() {
