@@ -166,7 +166,8 @@ public class UserAdManagementActionCell: UITableViewCell {
         let hairLineSize = 1.0/UIScreen.main.scale
 
         titleLabelHeightConstraint = titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 0)
-//        titleLabelHeightConstraint.priority = .defaultHigh
+        let titleLabelTopConstraint = titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16)
+        titleLabelTopConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
             separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 24),
@@ -178,7 +179,7 @@ public class UserAdManagementActionCell: UITableViewCell {
             iconView.widthAnchor.constraint(equalToConstant: 24),
             iconView.heightAnchor.constraint(equalToConstant: 24),
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
-            titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16),
+            titleLabelTopConstraint,
             titleLabelHeightConstraint,
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
             ])
@@ -211,6 +212,7 @@ public class UserAdManagementActionCell: UITableViewCell {
         titleLabelCenterYToContentViewConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 
         contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
+        contentViewBottomToTitleConstraint.priority = .defaultHigh
         contentViewBottomToDescriptionConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)
     }
 
