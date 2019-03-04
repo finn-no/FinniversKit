@@ -37,6 +37,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     private var currentImageIndex: Int
     private var previewViewVisible: Bool
+    private var previewViewWasVisibleBeforePanning = false
     private var hasPerformedInitialPreviewScroll = false
 
     private var galleryTransitioningController: FullscreenGalleryTransitioningController? {
@@ -385,11 +386,16 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
 // MARK: - FullscreenImageViewControllerDelegate
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate {
     func fullscreenImageViewControllerDidBeginPan(_: FullscreenImageViewController) {
+        previewViewWasVisibleBeforePanning = previewViewVisible
+
         UIView.animate(withDuration: 0.3, animations: {
             self.captionLabel.alpha = 0.0
             self.dismissButton.alpha = 0.0
-        })
 
+            if self.previewViewVisible {
+                self.setThumbnailPreviewsVisible(false, animated: false)
+            }
+        })
     }
 
     func fullscreenImageViewControllerDidPan(_: FullscreenImageViewController, withTranslation translation: CGPoint) {
@@ -410,6 +416,10 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
                 self.captionLabel.alpha = 1.0
                 self.dismissButton.alpha = 1.0
                 self.backgroundView.alpha = 1.0
+
+                if self.previewViewWasVisibleBeforePanning {
+                    self.setThumbnailPreviewsVisible(true, animated: false)
+                }
             })
             return true
         }
@@ -449,7 +459,7 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
             return nil
         }
 
-        return imageController.fullscreenImageView.imageView
+        return imageController.imageViewForDismissiveAnimation()
     }
 
     public func displayIntermediateImageAndCalculateGlobalFrame(_ image: UIImage) -> CGRect {
