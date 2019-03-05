@@ -8,7 +8,7 @@ class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTr
 
     // MARK: - Public properties
 
-    public var dismissVelocity: CGPoint?
+    var dismissVelocity: CGPoint?
 
     // MARK: - Private properties
 

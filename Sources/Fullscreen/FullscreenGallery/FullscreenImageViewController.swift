@@ -26,12 +26,12 @@ protocol FullscreenImageViewControllerDelegate: AnyObject {
 class FullscreenImageViewController: UIViewController {
     // MARK: - Public properties
 
-    public weak var dataSource: FullscreenImageViewControllerDataSource?
-    public weak var delegate: FullscreenImageViewControllerDelegate?
+    weak var dataSource: FullscreenImageViewControllerDataSource?
+    weak var delegate: FullscreenImageViewControllerDelegate?
 
-    public let imageIndex: Int
+    let imageIndex: Int
 
-    public var imageViewForDismissiveAnimation: UIImageView {
+    var imageViewForDismissiveAnimation: UIImageView {
         return panStateController?.panView ?? fullscreenImageView.imageView
     }
 
@@ -108,7 +108,7 @@ class FullscreenImageViewController: UIViewController {
 
     // MARK: - Public methods
 
-    public func updateLayout(withPreviewViewVisible previewViewVisible: Bool) {
+    func updateLayout(withPreviewViewVisible previewViewVisible: Bool) {
         self.previewViewVisible = previewViewVisible
         fullscreenImageView.frame = calculateImageFrame()
         fullscreenImageView.recalculateLimitsAndBounds()

@@ -8,7 +8,7 @@ class FullscreenImageView: UIScrollView {
 
     // MARK: - Public properties
 
-    public var image: UIImage? {
+    var image: UIImage? {
         didSet {
             imageView.image = image
             recalculateLimitsAndBounds(forSize: bounds.size)
@@ -63,11 +63,11 @@ class FullscreenImageView: UIScrollView {
 
     // MARK: - Public methods
 
-    public func superviewWillTransition(to size: CGSize) {
+    func superviewWillTransition(to size: CGSize) {
         recalculateLimitsAndBounds(forSize: size)
     }
 
-    public func recalculateLimitsAndBounds() {
+    func recalculateLimitsAndBounds() {
         recalculateLimitsAndBounds(forSize: bounds.size)
     }
 
@@ -157,7 +157,7 @@ extension FullscreenImageView {
 }
 
 extension FullscreenImageView: UIScrollViewDelegate {
-    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
 

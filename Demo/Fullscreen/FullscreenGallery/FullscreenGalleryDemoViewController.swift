@@ -213,7 +213,7 @@ class FullscreenGalleryDemoViewController: DemoViewController<UIView>, UICollect
         playgroundView.addSubview(helpLabel)
 
         NSLayoutConstraint.activate([
-            collectionView.heightAnchor.constraint(equalToConstant: collectionCellHeight + CGFloat.largeSpacing),
+            collectionView.heightAnchor.constraint(equalToConstant: collectionCellHeight + .largeSpacing),
             collectionView.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: playgroundView.trailingAnchor),
             collectionView.centerYAnchor.constraint(equalTo: playgroundView.centerYAnchor),
@@ -232,8 +232,7 @@ class FullscreenGalleryDemoViewController: DemoViewController<UIView>, UICollect
 
             helpLabel.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .mediumLargeSpacing),
             helpLabel.trailingAnchor.constraint(equalTo: playgroundView.trailingAnchor, constant: -.mediumLargeSpacing),
-            helpLabel.topAnchor.constraint(equalTo: playgroundView.safeLayoutGuide.topAnchor, constant: .largeSpacing),
-
+            helpLabel.topAnchor.constraint(equalTo: playgroundView.safeLayoutGuide.topAnchor, constant: .largeSpacing)
         ])
     }
 

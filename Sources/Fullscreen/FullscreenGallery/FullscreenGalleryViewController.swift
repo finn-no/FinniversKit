@@ -144,11 +144,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     // MARK: - View modifications
 
     private func transitionToImage(atIndex index: Int, animated: Bool) {
-        if let currentIndex = currentImageViewController()?.imageIndex {
-            guard currentIndex != index else {
-                return
-            }
-        }
+        guard currentImageViewController()?.imageIndex != index else { return }
 
         if let newController = imageViewController(forIndex: index) {
             if animated, let currentController = currentImageViewController() {
