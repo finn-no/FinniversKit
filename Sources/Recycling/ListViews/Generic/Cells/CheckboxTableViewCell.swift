@@ -57,8 +57,6 @@ open class CheckboxTableViewCell: BasicTableViewCell {
 
         NSLayoutConstraint.activate([
             stackViewToCheckboxConstraint,
-            checkbox.heightAnchor.constraint(equalToConstant: 24),
-            checkbox.widthAnchor.constraint(equalTo: checkbox.heightAnchor),
             checkbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             checkbox.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
