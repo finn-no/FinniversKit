@@ -30,13 +30,11 @@ public class FullscreenGalleryViewController: UIPageViewController {
     // MARK: - Private properties
 
     private static let captionFadeDuration = 0.2
-    private static let dismissButtonSize: CGFloat = 30.0
 
     private let viewModel: FullscreenGalleryViewModel
     private let previewViewInitiallyVisible: Bool
 
     private var currentImageIndex: Int
-    private var previewViewVisible: Bool
     private var previewViewWasVisibleBeforePanning = false
     private var hasPerformedInitialPreviewScroll = false
 
@@ -53,46 +51,13 @@ public class FullscreenGalleryViewController: UIPageViewController {
         return view
     }()
 
-    private lazy var captionLabel: Label = {
-        let label = Label(style: .title4)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.textColor = .milk
-        label.textAlignment = .center
-        label.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        label.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        label.shadowColor = .black
-        return label
+    private lazy var overlayView: FullscreenGalleryOverlayView = {
+        let overlayView = FullscreenGalleryOverlayView(withPreviewViewVisible: previewViewInitiallyVisible)
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+        overlayView.dataSource = self
+        overlayView.delegate = self
+        return overlayView
     }()
-
-    private lazy var dismissButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
-        button.backgroundColor = .clear
-
-        let removeImage = UIImage(named: .remove)
-        button.setImage(removeImage, for: .normal)
-        button.contentHorizontalAlignment = .fill
-        button.contentVerticalAlignment = .fill
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
-    }()
-
-    private lazy var previewView: GalleryPreviewView = {
-        let previewView = GalleryPreviewView(withAutoLayout: true)
-        previewView.delegate = self
-        previewView.dataSource = self
-        return previewView
-    }()
-
-    private lazy var previewViewVisibleConstraint: NSLayoutConstraint = {
-        return previewView.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor)
-    }()
-
-    // The constant exists to prevent the preview-view from jumping back into the visible area
-    // during the dismissal animation.
-    private lazy var previewViewHiddenConstraint = previewView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: .mediumLargeSpacing)
 
     private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer()
@@ -113,7 +78,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     public required init(viewModel: FullscreenGalleryViewModel, thumbnailsInitiallyVisible previewVisible: Bool) {
         self.previewViewInitiallyVisible = previewVisible
-        self.previewViewVisible = previewVisible
         self.viewModel = viewModel
         self.currentImageIndex = viewModel.selectedIndex
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
@@ -128,38 +92,18 @@ public class FullscreenGalleryViewController: UIPageViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        previewView.viewModel = viewModel
-
         view.backgroundColor = .clear
-        view.addSubview(backgroundView)
-        view.sendSubviewToBack(backgroundView)
-        backgroundView.fillInSuperview()
-
-        view.addSubview(captionLabel)
-        view.addSubview(dismissButton)
-        view.addSubview(previewView)
         view.addGestureRecognizer(singleTapGestureRecognizer)
 
-        let initialPreviewViewVisibilityConstraint = previewViewVisible
-            ? previewViewVisibleConstraint
-            : previewViewHiddenConstraint
+        view.addSubview(backgroundView)
+        view.addSubview(overlayView)
+        view.sendSubviewToBack(backgroundView)
 
-        NSLayoutConstraint.activate([
-            captionLabel.centerXAnchor.constraint(equalTo: view.safeLayoutGuide.centerXAnchor),
-            captionLabel.widthAnchor.constraint(lessThanOrEqualTo: view.safeLayoutGuide.widthAnchor, constant: -(2 * CGFloat.mediumLargeSpacing)),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.safeLayoutGuide.bottomAnchor, constant: -.mediumSpacing),
-            captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.mediumSpacing),
+        backgroundView.fillInSuperview()
+        overlayView.fillInSuperview()
 
-            dismissButton.leadingAnchor.constraint(equalTo: view.safeLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-            dismissButton.topAnchor.constraint(equalTo: view.safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
-            dismissButton.widthAnchor.constraint(equalToConstant: FullscreenGalleryViewController.dismissButtonSize),
-            dismissButton.heightAnchor.constraint(equalToConstant: FullscreenGalleryViewController.dismissButtonSize),
-
-            previewView.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor),
-            previewView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
-            previewView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            initialPreviewViewVisibilityConstraint
-        ])
+        overlayView.viewModel = viewModel
+        overlayView.layoutIfNeeded()
 
         transitionToImage(atIndex: viewModel.selectedIndex, animated: false)
     }
@@ -167,12 +111,12 @@ public class FullscreenGalleryViewController: UIPageViewController {
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        currentImageViewController()?.updateLayout(withPreviewViewVisible: previewViewVisible)
+        currentImageViewController()?.updateLayout(withPreviewViewVisible: overlayView.previewViewVisible)
 
         if !hasPerformedInitialPreviewScroll {
             if let currentIndex = currentImageViewController()?.imageIndex {
-                previewView.layoutIfNeeded()
-                previewView.scrollToItem(atIndex: currentIndex, animated: false)
+                overlayView.layoutIfNeeded()
+                overlayView.scrollToImage(atIndex: currentIndex, animated: false)
                 hasPerformedInitialPreviewScroll = true
             }
         }
@@ -180,18 +124,23 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        previewView.superviewWillTransition(to: size)
+        overlayView.superviewWillTransition(to: size)
     }
 
     // MARK: - View interactions
 
-    @objc private func dismissButtonTapped() {
-        galleryTransitioningController?.dismissVelocity = nil
-        galleryDelegate?.fullscreenGalleryViewControllerDismissButtonTapped(self)
-    }
+    @objc private func onSingleTap() {
+        let visible = !overlayView.previewViewVisible
 
-    @objc private func onSingleTap(_ gestureRecognizer: UIGestureRecognizer) {
-        setThumbnailPreviewsVisible(!previewViewVisible, animated: true)
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
+            self.overlayView.setThumbnailPreviewsVisible(visible)
+            self.viewControllers?.forEach({ vc in
+                guard let imageVc = vc as? FullscreenImageViewController else {
+                    return
+                }
+                imageVc.updateLayout(withPreviewViewVisible: visible)
+            })
+        })
     }
 
     // MARK: - View modifications
@@ -202,8 +151,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
                 return
             }
         }
-
-        setCaptionLabel(index: index)
 
         if let newController = imageViewController(forIndex: index) {
             if animated, let currentController = currentImageViewController() {
@@ -222,45 +169,16 @@ public class FullscreenGalleryViewController: UIPageViewController {
         }
     }
 
-    private func setThumbnailPreviewsVisible(_ visible: Bool, animated: Bool) {
-        guard visible != previewViewVisible else {
+    private func setThumbnailPreviewsVisible(_ visible: Bool) {
+        guard visible != overlayView.previewViewVisible else {
             return
         }
 
-        if visible {
-            NSLayoutConstraint.deactivate([previewViewHiddenConstraint])
-            NSLayoutConstraint.activate([previewViewVisibleConstraint])
-        } else {
-            NSLayoutConstraint.deactivate([previewViewVisibleConstraint])
-            NSLayoutConstraint.activate([previewViewHiddenConstraint])
-        }
-
-        previewViewVisible = visible
-
-        let performTransition = {
-            self.view.layoutIfNeeded()
-            self.viewControllers?.forEach({ vc in
-                guard let imageVc = vc as? FullscreenImageViewController else { return }
-                imageVc.updateLayout(withPreviewViewVisible: visible)
-            })
-        }
-
-        if animated {
-            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
-                performTransition()
-            }, completion: nil)
-        } else {
-            performTransition()
-        }
-    }
-
-    private func setCaptionLabel(index: Int) {
-        let caption: String? = {
-            return viewModel.imageCaptions[safe: index]
-        }()
-
-        UIView.transition(with: captionLabel, duration: FullscreenGalleryViewController.captionFadeDuration, options: .transitionCrossDissolve, animations: { [weak self] in
-            self?.captionLabel.text = caption
+        view.layoutIfNeeded()
+        overlayView.setThumbnailPreviewsVisible(visible)
+        viewControllers?.forEach({ vc in
+            guard let imageVc = vc as? FullscreenImageViewController else { return }
+            imageVc.updateLayout(withPreviewViewVisible: visible)
         })
     }
 
@@ -295,7 +213,7 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
         let vc = FullscreenImageViewController(imageIndex: index)
         vc.delegate = self
         vc.dataSource = self
-        vc.updateLayout(withPreviewViewVisible: previewViewVisible)
+        vc.updateLayout(withPreviewViewVisible: overlayView.previewViewVisible)
         return vc
     }
 }
@@ -309,32 +227,14 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
 
         currentImageIndex = imageVc.imageIndex
         galleryDelegate?.fullscreenGalleryViewController(self, didSelectImageAtIndex: currentImageIndex)
-
-        setCaptionLabel(index: currentImageIndex)
-        previewView.scrollToItem(atIndex: currentImageIndex, animated: true)
+        overlayView.scrollToImage(atIndex: currentImageIndex, animated: true)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         pendingViewControllers.forEach({ vc in
             guard let imageVc = vc as? FullscreenImageViewController else { return }
-
-            imageVc.updateLayout(withPreviewViewVisible: previewViewVisible)
+            imageVc.updateLayout(withPreviewViewVisible: overlayView.previewViewVisible)
         })
-    }
-}
-
-// MARK: - UIGesture
-extension FullscreenGalleryViewController: UIGestureRecognizerDelegate {
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        /// gestureRecognizer(_:shouldRequireFailureOf:) is not able to properly prevent the recognizer from triggering
-        /// on touches inside the GalleryPreviewView, so we need to explicitly make sure that the touch is not inside of it.
-        let locationInPreview = touch.location(in: previewView)
-        return !previewView.bounds.contains(locationInPreview)
-    }
-
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        /// Give priority to all other gesture recognizers
-        return true
     }
 }
 
@@ -360,7 +260,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
 
     func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat {
         let spacing: CGFloat = .mediumSpacing
-        let previewHeight = previewView.frame.height
+        let previewHeight = overlayView.previewViewFrame.height
         var bottomInset: CGFloat = 0.0
 
         if #available(iOS 11.0, *) {
@@ -374,14 +274,13 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
 // MARK: - FullscreenImageViewControllerDelegate
 extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate {
     func fullscreenImageViewControllerDidBeginPan(_: FullscreenImageViewController) {
-        previewViewWasVisibleBeforePanning = previewViewVisible
+        previewViewWasVisibleBeforePanning = overlayView.previewViewVisible
 
         UIView.animate(withDuration: 0.3, animations: {
-            self.captionLabel.alpha = 0.0
-            self.dismissButton.alpha = 0.0
+            self.overlayView.supportiveElementAlpha = 0.0
 
-            if self.previewViewVisible {
-                self.setThumbnailPreviewsVisible(false, animated: false)
+            if self.previewViewWasVisibleBeforePanning {
+                self.setThumbnailPreviewsVisible(false)
             }
         })
     }
@@ -401,12 +300,11 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
             return false
         } else {
             UIView.animate(withDuration: 0.3, animations: {
-                self.captionLabel.alpha = 1.0
-                self.dismissButton.alpha = 1.0
+                self.overlayView.supportiveElementAlpha = 1.0
                 self.backgroundView.alpha = 1.0
 
                 if self.previewViewWasVisibleBeforePanning {
-                    self.setThumbnailPreviewsVisible(true, animated: false)
+                    self.setThumbnailPreviewsVisible(true)
                 }
             })
             return true
@@ -414,9 +312,9 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDelegate
     }
 }
 
-// MARK: - GalleryPreviewViewDataSource
-extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
-    func galleryPreviewView(_: GalleryPreviewView, loadImageWithWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void) {
+// MARK: - FullscreenGalleryOverlayViewDataSource
+extension FullscreenGalleryViewController: FullscreenGalleryOverlayViewDataSource {
+    func fullscreenGalleryOverlayView(_ view: FullscreenGalleryOverlayView, loadImageWithWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void) {
         guard let galleryDataSource = galleryDataSource else {
             dataCallback(index, nil)
             return
@@ -429,14 +327,18 @@ extension FullscreenGalleryViewController: GalleryPreviewViewDataSource {
     }
 }
 
-// MARK: - GalleryPreviewViewDelegate
-extension FullscreenGalleryViewController: GalleryPreviewViewDelegate {
-    func galleryPreviewView(_ previewView: GalleryPreviewView, selectedImageAtIndex index: Int) {
+// MARK: - FullscreenGalleryOverlayViewDelegate
+extension FullscreenGalleryViewController: FullscreenGalleryOverlayViewDelegate {
+    func fullscreenGalleryOverlayView(_ view: FullscreenGalleryOverlayView, selectedImageAtIndex index: Int) {
         currentImageIndex = index
         galleryDelegate?.fullscreenGalleryViewController(self, didSelectImageAtIndex: currentImageIndex)
 
         transitionToImage(atIndex: currentImageIndex, animated: true)
-        previewView.scrollToItem(atIndex: currentImageIndex, animated: true)
+    }
+
+    func fullscreenGalleryOverlayViewDismissButtonTapped(_ view: FullscreenGalleryOverlayView) {
+        galleryTransitioningController?.dismissVelocity = nil
+        galleryDelegate?.fullscreenGalleryViewControllerDismissButtonTapped(self)
     }
 }
 
@@ -469,30 +371,43 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
 
     public func prepareForTransition(presenting: Bool) {
         if presenting {
-            captionLabel.alpha = 0.0
-            dismissButton.alpha = 0.0
+            overlayView.supportiveElementAlpha = 0.0
             backgroundView.alpha = 0.0
 
-            captionLabel.superview?.bringSubviewToFront(captionLabel)
+            overlayView.superview?.bringSubviewToFront(overlayView)
 
             if previewViewInitiallyVisible {
-                setThumbnailPreviewsVisible(false, animated: false)
+                setThumbnailPreviewsVisible(false)
             }
         }
     }
 
     public func performTransitionAnimation(presenting: Bool) {
         if presenting {
-            captionLabel.alpha = 1.0
-            dismissButton.alpha = 1.0
+            overlayView.supportiveElementAlpha = 1.0
             backgroundView.alpha = 1.0
 
             if previewViewInitiallyVisible {
-                setThumbnailPreviewsVisible(true, animated: false)
+                setThumbnailPreviewsVisible(true)
             }
         } else {
             view.alpha = 0.0
-            setThumbnailPreviewsVisible(false, animated: false)
+            setThumbnailPreviewsVisible(false)
         }
+    }
+}
+
+// MARK: - UIGesture
+extension FullscreenGalleryViewController: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        /// gestureRecognizer(_:shouldRequireFailureOf:) is not able to properly prevent the recognizer from triggering
+        /// on touches inside the GalleryPreviewView, so we need to explicitly make sure that the touch is not inside of it.
+        let locationInOverlay = touch.location(in: overlayView)
+        return !overlayView.previewViewFrame.contains(locationInOverlay)
+    }
+
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        /// Give priority to all other gesture recognizers
+        return true
     }
 }

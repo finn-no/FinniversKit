@@ -6,7 +6,7 @@ import UIKit
 
 /// Delegate responsible for providing the fullscreen gallery transition with the destination view that the
 /// transition will scale into and out of. The delegate is used when transitioning both in and out.
-public protocol FullscreenGalleryTransitionDestinationDelegate: class {
+public protocol FullscreenGalleryTransitionDestinationDelegate: FullscreenGalleryTransitionAware {
     func imageViewForFullscreenGalleryTransition() -> UIImageView?
 
     /// When the UIImageView returned from imageViewForFullscreenGalleryTransition() has an unset image, this
@@ -15,7 +15,4 @@ public protocol FullscreenGalleryTransitionDestinationDelegate: class {
     /// - Notes:
     ///   The returned frame must be in global coordinates.
     func displayIntermediateImageAndCalculateGlobalFrame(_ image: UIImage) -> CGRect
-
-    func prepareForTransition(presenting: Bool)
-    func performTransitionAnimation(presenting: Bool)
 }

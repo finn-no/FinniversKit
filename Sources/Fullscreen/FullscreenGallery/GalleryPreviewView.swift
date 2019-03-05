@@ -125,7 +125,7 @@ extension GalleryPreviewView: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(GalleryPreviewCell.self, for: indexPath)
-        var image = images[safe: indexPath.row]
+        let image = images[safe: indexPath.row]
 
         cell.configure(withImage: image)
 

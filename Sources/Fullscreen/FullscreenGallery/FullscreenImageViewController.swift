@@ -99,6 +99,7 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
 
     private static let zoomStep: CGFloat = 2.0
 
+    // TODO: Rename this variable
     private var shouldAdjustForPreviewView: Bool = false
     private var panStateController: PanStateController?
 
