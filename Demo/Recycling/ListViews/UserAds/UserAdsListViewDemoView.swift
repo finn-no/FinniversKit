@@ -31,6 +31,15 @@ class UserAdsListViewDemoView: UIView {
 }
 
 extension UserAdsListViewDemoView: UserAdsListViewDelegate {
+    func userAdsListView(_ userAdsListView: UserAdsListView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (_, indexPath) in
+            guard let self = self else { return }
+            self.dataSource.userAds[indexPath.section].ads.remove(at: indexPath.row)
+            userAdsListView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        return [deleteAction]
+    }
+
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button) {}
