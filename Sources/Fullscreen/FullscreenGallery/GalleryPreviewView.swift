@@ -4,11 +4,11 @@
 
 import UIKit
 
-protocol GalleryPreviewViewDataSource: class {
+protocol GalleryPreviewViewDataSource: AnyObject {
     func galleryPreviewView(_: GalleryPreviewView, loadImageWithWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void)
 }
 
-protocol GalleryPreviewViewDelegate: class {
+protocol GalleryPreviewViewDelegate: AnyObject {
     func galleryPreviewView(_: GalleryPreviewView, selectedImageAtIndex index: Int)
 }
 

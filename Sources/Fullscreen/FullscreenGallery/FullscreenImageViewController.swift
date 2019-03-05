@@ -4,13 +4,13 @@
 
 import UIKit
 
-protocol FullscreenImageViewControllerDataSource: class {
+protocol FullscreenImageViewControllerDataSource: AnyObject {
     func loadImage(forImageViewController vc: FullscreenImageViewController, dataCallback: @escaping (UIImage?) -> Void)
     func title(forImageViewController vc: FullscreenImageViewController) -> String?
     func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat
 }
 
-protocol FullscreenImageViewControllerDelegate: class {
+protocol FullscreenImageViewControllerDelegate: AnyObject {
     func fullscreenImageViewControllerDidBeginPan(_: FullscreenImageViewController)
 
     func fullscreenImageViewControllerDidPan(_: FullscreenImageViewController, withTranslation translation: CGPoint)

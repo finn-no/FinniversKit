@@ -4,11 +4,11 @@
 
 import UIKit
 
-protocol FullscreenGalleryOverlayViewDataSource: class {
+protocol FullscreenGalleryOverlayViewDataSource: AnyObject {
     func fullscreenGalleryOverlayView(_: FullscreenGalleryOverlayView, loadImageWithWidth width: CGFloat, imageIndex index: Int, dataCallback: @escaping (Int, UIImage?) -> Void)
 }
 
-protocol FullscreenGalleryOverlayViewDelegate: class {
+protocol FullscreenGalleryOverlayViewDelegate: AnyObject {
     func fullscreenGalleryOverlayView(_: FullscreenGalleryOverlayView, selectedImageAtIndex index: Int)
     func fullscreenGalleryOverlayViewDismissButtonTapped(_: FullscreenGalleryOverlayView)
 }

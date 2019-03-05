@@ -6,7 +6,7 @@ import UIKit
 
 /// The Fullscreen Gallery Transition is a round-trip, and the Transition Presenter Delegate will be used
 /// both when transitioning in, and when transitioning out.
-public protocol FullscreenGalleryTransitionPresenterDelegate: class {
+public protocol FullscreenGalleryTransitionPresenterDelegate: AnyObject {
     /// - Notes:
     ///   An intermediate transition-view may be created from the 'image'-property of the returned view, so
     ///   the view should be fully loaded and ready to render before the transition is initiated.

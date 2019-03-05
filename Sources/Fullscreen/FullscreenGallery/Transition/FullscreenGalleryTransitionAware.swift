@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol FullscreenGalleryTransitionAware: class {
+public protocol FullscreenGalleryTransitionAware: AnyObject {
     func prepareForTransition(presenting: Bool)
     func performTransitionAnimation(presenting: Bool)
 }

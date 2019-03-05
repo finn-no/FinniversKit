@@ -4,12 +4,12 @@
 
 import UIKit
 
-public protocol FullscreenGalleryViewControllerDelegate: class {
+public protocol FullscreenGalleryViewControllerDelegate: AnyObject {
     func fullscreenGalleryViewControllerDismissButtonTapped(_: FullscreenGalleryViewController)
     func fullscreenGalleryViewController(_: FullscreenGalleryViewController, didSelectImageAtIndex: Int)
 }
 
-public protocol FullscreenGalleryViewControllerDataSource: class {
+public protocol FullscreenGalleryViewControllerDataSource: AnyObject {
     func fullscreenGalleryViewController(_: FullscreenGalleryViewController,
                                          imageForUrlString urlString: String,
                                          width: CGFloat,
