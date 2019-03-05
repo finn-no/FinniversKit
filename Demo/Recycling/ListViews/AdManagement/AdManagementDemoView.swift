@@ -23,19 +23,19 @@ public class AdManagementDemoView: UIView {
 
     private let actionCellModels: [[AdManagementActionCellModel]] = [
         [
-            AdManagementActionCellModel(actionType: .delete, title: "Braccas meas vescimini", description: "Pulvis et umbra sumus"),
-            AdManagementActionCellModel(actionType: .stop, title: "Non est ad astra mollis e terris via", description: "Quis, Quid, Ubi, Quibus Auxiliis, Cur, Quomodo, Quando?")
+            AdManagementActionCellModel(actionType: .delete, title: "Slett annonsen"),
+            AdManagementActionCellModel(actionType: .stop, title: "Skjul annonsen midlertidig", description: "Annonsen blir skjult fra FINNs søkeresultater")
         ],
         [
-            AdManagementActionCellModel(actionType: .edit, title: "Non nobis solum nati sumus", description: "Aut viam inveniam aut faciam tibi"),
-            AdManagementActionCellModel(actionType: .republish, title: "Fas est ab hoste doceri")
+            AdManagementActionCellModel(actionType: .edit, title: "Rediger annonsen", description: "Sist redigert 13.12.2018"),
+            AdManagementActionCellModel(actionType: .republish, title: "Legg ut annonsen på nytt")
         ],
         [
-            AdManagementActionCellModel(actionType: .dispose, title: "Astra inclinant, sed non obligant"),
-            AdManagementActionCellModel(actionType: .externalFallback, title: "Carthago delenda est.", description: "Aut cum scuto aut in scuto")
+            AdManagementActionCellModel(actionType: .dispose, title: "Marker annonsen som solgt"),
+            AdManagementActionCellModel(actionType: .externalFallback, title: "Eierskifteforsikring", description: "Se hvilke tilbud våre samarbeidspartnere kan by på")
         ],
         [
-            AdManagementActionCellModel(actionType: .start, title: "Igne natura renovatur integra")
+            AdManagementActionCellModel(actionType: .start, title: "Vis annonsen i søkeresultater")
         ]
     ]
 
