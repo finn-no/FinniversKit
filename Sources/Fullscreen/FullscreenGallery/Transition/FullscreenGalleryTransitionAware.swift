@@ -8,4 +8,3 @@ public protocol FullscreenGalleryTransitionAware: class {
     func prepareForTransition(presenting: Bool)
     func performTransitionAnimation(presenting: Bool)
 }
-

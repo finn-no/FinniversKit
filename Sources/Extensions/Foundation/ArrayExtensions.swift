@@ -4,10 +4,6 @@
 
 import Foundation
 
-protocol OptionalType { }
-
-extension Optional: OptionalType { }
-
 extension Array where Array.Element: ExpressibleByNilLiteral {
     subscript(safe index: Index) -> Element {
         return indices.contains(index) ? self[index] : nil
