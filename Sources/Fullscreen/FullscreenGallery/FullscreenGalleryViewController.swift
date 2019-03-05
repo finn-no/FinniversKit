@@ -29,8 +29,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     // MARK: - Private properties
 
-    private static let captionFadeDuration = 0.2
-
     private let viewModel: FullscreenGalleryViewModel
     private let previewViewInitiallyVisible: Bool
 

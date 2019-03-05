@@ -99,8 +99,7 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
 
     private static let zoomStep: CGFloat = 2.0
 
-    // TODO: Rename this variable
-    private var shouldAdjustForPreviewView: Bool = false
+    private var previewViewVisible: Bool = false
     private var panStateController: PanStateController?
 
     // MARK: - UI properties
@@ -169,8 +168,8 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
 
     // MARK: - Public methods
 
-    public func updateLayout(withPreviewViewVisible previewVisible: Bool) {
-        shouldAdjustForPreviewView = previewVisible
+    public func updateLayout(withPreviewViewVisible previewViewVisible: Bool) {
+        self.previewViewVisible = previewViewVisible
         fullscreenImageView.frame = calculateImageFrame()
         fullscreenImageView.recalculateLimitsAndBounds()
     }
@@ -191,7 +190,7 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
     }
 
     private func adjustSizeToOffsetPreviewIfNeeded(_ size: CGSize) -> CGSize {
-        if !shouldAdjustForPreviewView {
+        if !previewViewVisible {
             return size
         }
 
