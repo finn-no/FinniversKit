@@ -36,7 +36,7 @@ open class CheckboxTableViewCell: BasicTableViewCell {
         selectionStyle = .none
         checkbox.isHighlighted = viewModel.isSelected
         stackViewToCheckboxConstraint.constant = .mediumLargeSpacing
-        separatorInset = .leadingInset(60)
+        separatorInset = .leadingInset(56)
         layoutIfNeeded()
     }
 
