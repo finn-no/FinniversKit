@@ -347,7 +347,7 @@ extension FullscreenGalleryViewController: FullscreenGalleryTransitionDestinatio
             return nil
         }
 
-        return imageController.imageViewForDismissiveAnimation()
+        return imageController.imageViewForDismissiveAnimation
     }
 
     public func displayIntermediateImageAndCalculateGlobalFrame(_ image: UIImage) -> CGRect {

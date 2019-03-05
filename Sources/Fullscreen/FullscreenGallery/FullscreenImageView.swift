@@ -124,7 +124,12 @@ extension FullscreenImageView {
         // but that has to be done explicitly. Double tapping an already zoomed in image should always
         // result in zooming back out to 1x.
         var newZoom: CGFloat
-        if zoomScale >= minimumZoomScale * 1.05 {
+
+        // Consider the user zoomed in if the view is zoomed in more than 10%.
+        let zoomThresholdFactor = CGFloat(1.10)
+        let isZoomedIn = (zoomScale >= minimumZoomScale * zoomThresholdFactor)
+
+        if isZoomedIn {
             newZoom = minimumZoomScale
         } else {
             newZoom = zoomScale * FullscreenImageView.zoomStep

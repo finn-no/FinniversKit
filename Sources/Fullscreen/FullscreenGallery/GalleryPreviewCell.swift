@@ -29,6 +29,7 @@ class GalleryPreviewCell: UICollectionViewCell {
     }
 
     private func setup() {
+        clipsToBounds = false
         backgroundColor = .clear
         contentView.backgroundColor = .clear
 
@@ -37,6 +38,20 @@ class GalleryPreviewCell: UICollectionViewCell {
     }
 
     // MARK: - Lifecycle
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.4
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 5
+
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
+    }
 
     override func prepareForReuse() {
         super.prepareForReuse()

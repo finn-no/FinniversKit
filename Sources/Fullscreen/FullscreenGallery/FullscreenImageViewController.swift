@@ -23,77 +23,17 @@ protocol FullscreenImageViewControllerDelegate: class {
     func fullscreenImageViewControllerDidEndPan(_: FullscreenImageViewController, withTranslation translation: CGPoint, velocity: CGPoint) -> Bool
 }
 
-private class PanStateController {
-    let initialPanFrame: CGRect
-    let panView: UIImageView
-
-    private let fullscreenImageView: FullscreenImageView
-    private let parentView: UIView
-
-    private let minimumZoomScale: CGFloat
-    private let zoomScale: CGFloat
-    private let originalFrame: CGRect
-
-    private var completed = false
-
-    init(from fullscreenImageView: FullscreenImageView, parentView: UIView) {
-        self.parentView = parentView
-        self.fullscreenImageView = fullscreenImageView
-        let imageView = fullscreenImageView.imageView
-
-        minimumZoomScale = fullscreenImageView.minimumZoomScale
-        zoomScale = fullscreenImageView.zoomScale
-        originalFrame = imageView.frame
-
-        let pos = parentView.convert(originalFrame.origin, from: imageView)
-        initialPanFrame = CGRect(x: pos.x, y: pos.y, width: originalFrame.width, height: originalFrame.height)
-
-        panView = UIImageView(image: imageView.image)
-        parentView.addSubview(panView)
-
-        panView.frame = initialPanFrame
-        imageView.isHidden = true
-    }
-
-    func updateFrame(withTranslation translation: CGPoint, scale: CGFloat) {
-        guard !completed else { return }
-
-        let size = CGSize(width: initialPanFrame.width * scale, height: initialPanFrame.height * scale)
-
-        let scaleOffset = CGPoint(x: (initialPanFrame.width - size.width) / 2.0,
-                                  y: (initialPanFrame.height - size.height) / 2.0)
-
-        let pos = initialPanFrame.origin + translation + scaleOffset
-        let frame = CGRect(x: pos.x, y: pos.y, width: size.width, height: size.height)
-
-        panView.frame = frame
-    }
-
-    func revertAnimated(withDuration duration: TimeInterval) {
-        guard !completed else { return }
-        completed = true
-
-        fullscreenImageView.minimumZoomScale = minimumZoomScale
-        fullscreenImageView.zoomScale = zoomScale
-
-        let endFrame = parentView.convert(originalFrame, from: fullscreenImageView)
-
-        UIView.animate(withDuration: duration, animations: {
-            self.panView.frame = endFrame
-        }, completion: { _ in
-            self.panView.removeFromSuperview()
-            self.fullscreenImageView.imageView.isHidden = false
-        })
-    }
-}
-
-class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelegate {
+class FullscreenImageViewController: UIViewController {
     // MARK: - Public properties
 
     public weak var dataSource: FullscreenImageViewControllerDataSource?
     public weak var delegate: FullscreenImageViewControllerDelegate?
 
     public let imageIndex: Int
+
+    public var imageViewForDismissiveAnimation: UIImageView {
+        return panStateController?.panView ?? fullscreenImageView.imageView
+    }
 
     // MARK: - Private properties
 
@@ -174,10 +114,6 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
         fullscreenImageView.recalculateLimitsAndBounds()
     }
 
-    func imageViewForDismissiveAnimation() -> UIImageView {
-        return panStateController?.panView ?? fullscreenImageView.imageView
-    }
-
     // MARK: - Private methods
 
     private func calculateImageFrame() -> CGRect {
@@ -236,10 +172,12 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
             break
         }
     }
+}
 
-    // MARK: - UIGestureRecognizerDelegate
+// MARK: - UIGestureRecognizerDelegate
 
-    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+extension FullscreenImageViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if fullscreenImageView.zoomScale >= fullscreenImageView.minimumZoomScale * 1.05 {
             return false
         }
@@ -248,5 +186,71 @@ class FullscreenImageViewController: UIViewController, UIGestureRecognizerDelega
 
         let translation = panGestureRecognizer.translation(in: panGestureRecognizer.view)
         return abs(translation.x) * 2 <= abs(translation.y)
+    }
+}
+
+// MARK: - PanStateController
+
+private class PanStateController {
+    let initialPanFrame: CGRect
+    let panView: UIImageView
+
+    private let fullscreenImageView: FullscreenImageView
+    private let parentView: UIView
+
+    private let minimumZoomScale: CGFloat
+    private let zoomScale: CGFloat
+    private let originalFrame: CGRect
+
+    private var completed = false
+
+    init(from fullscreenImageView: FullscreenImageView, parentView: UIView) {
+        self.parentView = parentView
+        self.fullscreenImageView = fullscreenImageView
+        let imageView = fullscreenImageView.imageView
+
+        minimumZoomScale = fullscreenImageView.minimumZoomScale
+        zoomScale = fullscreenImageView.zoomScale
+        originalFrame = imageView.frame
+
+        let pos = parentView.convert(originalFrame.origin, from: imageView)
+        initialPanFrame = CGRect(x: pos.x, y: pos.y, width: originalFrame.width, height: originalFrame.height)
+
+        panView = UIImageView(image: imageView.image)
+        parentView.addSubview(panView)
+
+        panView.frame = initialPanFrame
+        imageView.isHidden = true
+    }
+
+    func updateFrame(withTranslation translation: CGPoint, scale: CGFloat) {
+        guard !completed else { return }
+
+        let size = CGSize(width: initialPanFrame.width * scale, height: initialPanFrame.height * scale)
+
+        let scaleOffset = CGPoint(x: (initialPanFrame.width - size.width) / 2.0,
+                                  y: (initialPanFrame.height - size.height) / 2.0)
+
+        let pos = initialPanFrame.origin + translation + scaleOffset
+        let frame = CGRect(x: pos.x, y: pos.y, width: size.width, height: size.height)
+
+        panView.frame = frame
+    }
+
+    func revertAnimated(withDuration duration: TimeInterval) {
+        guard !completed else { return }
+        completed = true
+
+        fullscreenImageView.minimumZoomScale = minimumZoomScale
+        fullscreenImageView.zoomScale = zoomScale
+
+        let endFrame = parentView.convert(originalFrame, from: fullscreenImageView)
+
+        UIView.animate(withDuration: duration, animations: {
+            self.panView.frame = endFrame
+        }, completion: { _ in
+            self.panView.removeFromSuperview()
+            self.fullscreenImageView.imageView.isHidden = false
+        })
     }
 }
