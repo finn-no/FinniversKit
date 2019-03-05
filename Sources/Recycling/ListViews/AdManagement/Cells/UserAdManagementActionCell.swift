@@ -5,6 +5,7 @@
 public class UserAdManagementActionCell: UITableViewCell {
     public weak var delegate: UserAdManagementActionCellDelegate?
     public private(set) var actionType: AdManagementActionType = .unknown
+
     private var shouldShowExternalIcon: Bool = false
 
     private lazy var separator: UIView = {
@@ -25,7 +26,6 @@ public class UserAdManagementActionCell: UITableViewCell {
         label.numberOfLines = 0
         label.font = UIFont.title4
         label.textColor = .licorice
-        label.backgroundColor = .orange
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -41,9 +41,11 @@ public class UserAdManagementActionCell: UITableViewCell {
     }()
 
     private lazy var chevronView: UIImageView = {
-        var imageView = UIImageView(image: UIImage(named: .arrowRight))
+        let chevron = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
+        var imageView = UIImageView(image: chevron)
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .orange// .sardine
+        imageView.tintColor = .stone
         return imageView
     }()
 
@@ -179,12 +181,12 @@ public class UserAdManagementActionCell: UITableViewCell {
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
             ])
 
-//        titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 18).isActive = true
-
+        // The chevron is smaller than elsewhere, but this is by design. I guess we'll disuss this
+        // while iterating, prior to release, ¯\_(ツ)_/¯
         chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                                chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                               chevronView.widthAnchor.constraint(equalToConstant: 9),
-                               chevronView.heightAnchor.constraint(equalToConstant: 16),
+                               chevronView.widthAnchor.constraint(equalToConstant: 10),
+                               chevronView.heightAnchor.constraint(equalToConstant: 10),
                                titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -8)
         ]
         toggleConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
@@ -208,7 +210,6 @@ public class UserAdManagementActionCell: UITableViewCell {
         descriptionToToggleTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: -8)
         titleLabelCenterYToContentViewConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 
-        // TODO: These constants might also be manipulated...
         contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
         contentViewBottomToTitleConstraint.priority = .defaultHigh
         contentViewBottomToDescriptionConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)
