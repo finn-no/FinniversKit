@@ -34,6 +34,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 2
         stackView.axis = .vertical
         return stackView
     }()
