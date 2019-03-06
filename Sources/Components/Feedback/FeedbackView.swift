@@ -18,8 +18,8 @@ public class FeedbackView: UIView {
         case negative
     }
 
-    public enum State {
-        case initial
+    @objc public enum State: Int {
+        case initial = 0
         case accept
         case decline
         case finished
