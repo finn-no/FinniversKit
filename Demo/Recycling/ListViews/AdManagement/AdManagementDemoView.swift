@@ -32,7 +32,7 @@ public class AdManagementDemoView: UIView {
         ],
         [
             AdManagementActionCellModel(actionType: .dispose, title: "Marker annonsen som solgt"),
-            AdManagementActionCellModel(actionType: .externalFallback, title: "Eierskifteforsikring", description: "Se hvilke tilbud våre samarbeidspartnere kan by på")
+            AdManagementActionCellModel(actionType: .externalFallback, title: "Eierskifteforsikring Lorem Ipsum Bla bacon ideai rubicon", description: "Se hvilke tilbud våre samarbeidspartnere kan by på")
         ],
         [
             AdManagementActionCellModel(actionType: .start, title: "Vis annonsen i søkeresultater")

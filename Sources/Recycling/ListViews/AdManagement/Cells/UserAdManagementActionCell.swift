@@ -161,9 +161,8 @@ public class UserAdManagementActionCell: UITableViewCell {
 
         let hairLineSize = 1.0/UIScreen.main.scale
 
-        titleLabelHeightConstraint = titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 0)
-        let titleLabelTopConstraint = titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16)
-        titleLabelTopConstraint.priority = .defaultLow
+        let titleLabelTopConstraint = titleLabel.topAnchor.constraint(lessThanOrEqualTo: contentView.topAnchor, constant: 16)
+//        titleLabelTopConstraint.priority = .defaultLow
 
         NSLayoutConstraint.activate([
             separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 24),
@@ -176,8 +175,8 @@ public class UserAdManagementActionCell: UITableViewCell {
             iconView.heightAnchor.constraint(equalToConstant: 24),
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
             titleLabelTopConstraint,
-            titleLabelHeightConstraint,
-            titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 0),
+//            titleLabelHeightConstraint,
+            titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 8),
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
             ])
 
@@ -202,7 +201,7 @@ public class UserAdManagementActionCell: UITableViewCell {
         descriptionLabelHeightConstraint = descriptionLabel.heightAnchor.constraint(equalToConstant: 0)
         descriptionLabelConstraints = [ descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
                                         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
-                                        descriptionLabelHeightConstraint
+//                                        descriptionLabelHeightConstraint
         ]
         descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -8)
         descriptionToExternalTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -8)
