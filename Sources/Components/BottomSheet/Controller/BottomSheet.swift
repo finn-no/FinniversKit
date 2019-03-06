@@ -43,6 +43,7 @@ public class BottomSheet: UIViewController {
     public enum DraggableArea {
         case everything
         case navigationBar
+        case topArea(height: CGFloat)
         case customRect(CGRect)
     }
 
@@ -64,6 +65,9 @@ public class BottomSheet: UIViewController {
             let navBarFrame = navigationController.navigationBar.bounds
             let draggableBounds = CGRect(origin: navBarFrame.origin, size: CGSize(width: navBarFrame.width, height: navBarFrame.height + notchHeight))
             return draggableBounds
+        case .topArea(let height):
+            let rootControllerWidth = rootViewController.view.bounds.width
+            return CGRect(origin: .zero, size: CGSize(width: rootControllerWidth, height: notchHeight + height))
         case .customRect(let customRect):
             return CGRect(origin: CGPoint(x: customRect.minX, y: customRect.minY + notchHeight), size: customRect.size)
         }
