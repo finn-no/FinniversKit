@@ -177,11 +177,3 @@ final class PianoKeyboardView: UIView {
         return keyViews.firstIndex(where: { $0.frame.contains(point) })
     }
 }
-
-// MARK: - Extensions
-
-private extension Array {
-    subscript(safe index: Index) -> Element? {
-        return index < count ? self[index] : nil
-    }
-}
