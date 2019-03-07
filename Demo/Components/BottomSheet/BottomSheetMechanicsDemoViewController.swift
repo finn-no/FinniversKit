@@ -127,6 +127,14 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
         return button
     }()
 
+    private lazy var presentTopAreaDraggableButton: Button = {
+        let button = Button(style: .callToAction)
+        button.setTitle("Present - topArea draggable", for: .normal)
+        button.addTarget(self, action: #selector(presentTopAreaDraggableButtonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     private lazy var presentCustomDraggableButton: Button = {
         let button = Button(style: .callToAction)
         button.setTitle("Present - custom draggable", for: .normal)
@@ -142,6 +150,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
         view.backgroundColor = .milk
         view.addSubview(presentAllDraggableButton)
         view.addSubview(presentNavBarDraggableButton)
+        view.addSubview(presentTopAreaDraggableButton)
         view.addSubview(presentCustomDraggableButton)
 
         NSLayoutConstraint.activate([
@@ -151,7 +160,11 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
 
             presentNavBarDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
             presentNavBarDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            presentNavBarDraggableButton.bottomAnchor.constraint(equalTo: presentCustomDraggableButton.topAnchor, constant: -.veryLargeSpacing),
+            presentNavBarDraggableButton.bottomAnchor.constraint(equalTo: presentTopAreaDraggableButton.topAnchor, constant: -.veryLargeSpacing),
+
+            presentTopAreaDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
+            presentTopAreaDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            presentTopAreaDraggableButton.bottomAnchor.constraint(equalTo: presentCustomDraggableButton.topAnchor, constant: -.veryLargeSpacing),
 
             presentCustomDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
             presentCustomDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
@@ -187,6 +200,22 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
         navigationController.navigationBar.isTranslucent = false
 
         let bottomSheet = BottomSheet(rootViewController: navigationController, draggableArea: .navigationBar)
+        bottomSheet.delegate = self
+        present(bottomSheet, animated: true)
+        self.bottomSheet = bottomSheet
+    }
+
+    @objc private func presentTopAreaDraggableButtonPressed() {
+        let rootController = RootViewController()
+        rootController.delegate = self
+        rootController.title = "👆😎👇"
+
+        let navigationController = UINavigationController(rootViewController: rootController)
+        navigationController.navigationBar.isTranslucent = false
+
+        // Set draggable height to height of navBar.
+        let draggableAreaHeight = navigationController.navigationBar.bounds.height
+        let bottomSheet = BottomSheet(rootViewController: navigationController, draggableArea: .topArea(height: draggableAreaHeight))
         bottomSheet.delegate = self
         present(bottomSheet, animated: true)
         self.bottomSheet = bottomSheet

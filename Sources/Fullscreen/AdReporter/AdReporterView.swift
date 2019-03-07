@@ -124,10 +124,10 @@ public class AdReporterView: UIScrollView {
 
 // MARK: -
 
-extension AdReporterView: UITextViewDelegate {
+extension AdReporterView: TextViewDelegate {
     // MARK: TextView Delegate
 
-    public func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: TextView) {
         let deltaHeight = textView.intrinsicContentSize.height - textView.frame.height
 
         if deltaHeight > 0 {

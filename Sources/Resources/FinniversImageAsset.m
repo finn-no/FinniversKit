@@ -24,8 +24,14 @@ NSString *const FinniversImageAssetcar = @"car";
 NSString *const FinniversImageAssetcheck = @"check";
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
 NSString *const FinniversImageAssetclassifieds = @"classifieds";
+NSString *const FinniversImageAssetclose = @"close";
 NSString *const FinniversImageAssetdistance = @"distance";
 NSString *const FinniversImageAssetdownload = @"download";
+NSString *const FinniversImageAssetearthHourClock = @"earthHourClock";
+NSString *const FinniversImageAssetearthHourEarth = @"earthHourEarth";
+NSString *const FinniversImageAssetearthHourEyes = @"earthHourEyes";
+NSString *const FinniversImageAssetearthHourHeart = @"earthHourHeart";
+NSString *const FinniversImageAssetearthHourStars = @"earthHourStars";
 NSString *const FinniversImageAsseteasterEgg = @"easterEgg";
 NSString *const FinniversImageAssetedit = @"edit";
 NSString *const FinniversImageAsseteditBig = @"editBig";
@@ -73,6 +79,12 @@ NSString *const FinniversImageAssetplus = @"plus";
 NSString *const FinniversImageAssetprofile = @"profile";
 NSString *const FinniversImageAssetrate = @"rate";
 NSString *const FinniversImageAssetrated = @"rated";
+NSString *const FinniversImageAssetratingCat = @"ratingCat";
+NSString *const FinniversImageAssetratingFaceAngry = @"ratingFaceAngry";
+NSString *const FinniversImageAssetratingFaceDissatisfied = @"ratingFaceDissatisfied";
+NSString *const FinniversImageAssetratingFaceHappy = @"ratingFaceHappy";
+NSString *const FinniversImageAssetratingFaceLove = @"ratingFaceLove";
+NSString *const FinniversImageAssetratingFaceNeutral = @"ratingFaceNeutral";
 NSString *const FinniversImageAssetratings = @"ratings";
 NSString *const FinniversImageAssetrealestate = @"realestate";
 NSString *const FinniversImageAssetremove = @"remove";
@@ -116,8 +128,14 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetcheck,
              FinniversImageAssetcheckmarkBig,
              FinniversImageAssetclassifieds,
+             FinniversImageAssetclose,
              FinniversImageAssetdistance,
              FinniversImageAssetdownload,
+             FinniversImageAssetearthHourClock,
+             FinniversImageAssetearthHourEarth,
+             FinniversImageAssetearthHourEyes,
+             FinniversImageAssetearthHourHeart,
+             FinniversImageAssetearthHourStars,
              FinniversImageAsseteasterEgg,
              FinniversImageAssetedit,
              FinniversImageAsseteditBig,
@@ -165,6 +183,12 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetprofile,
              FinniversImageAssetrate,
              FinniversImageAssetrated,
+             FinniversImageAssetratingCat,
+             FinniversImageAssetratingFaceAngry,
+             FinniversImageAssetratingFaceDissatisfied,
+             FinniversImageAssetratingFaceHappy,
+             FinniversImageAssetratingFaceLove,
+             FinniversImageAssetratingFaceNeutral,
              FinniversImageAssetratings,
              FinniversImageAssetrealestate,
              FinniversImageAssetremove,

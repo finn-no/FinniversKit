@@ -19,7 +19,7 @@ class DescriptionView: UIView {
         return view
     }()
 
-    weak var delegate: UITextViewDelegate? {
+    weak var delegate: TextViewDelegate? {
         didSet {
             textView.delegate = delegate
         }
