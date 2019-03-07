@@ -10,13 +10,13 @@ public class AnimatedCheckboxView: AnimatedSelectionView {
     var unselectedImage: UIImage?
     var unselectedImages: [UIImage]?
 
-    required init(frame: CGRect) {
+    public required init(frame: CGRect) {
         super.init(frame: frame)
         setup()
         setImages()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
