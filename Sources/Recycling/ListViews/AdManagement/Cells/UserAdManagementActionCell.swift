@@ -78,6 +78,8 @@ public class UserAdManagementActionCell: UITableViewCell {
     private var contentViewBottomToTitleConstraint = NSLayoutConstraint()
     private var contentViewBottomToDescriptionConstraint = NSLayoutConstraint()
 
+    // MARK: - Public
+
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
@@ -90,7 +92,6 @@ public class UserAdManagementActionCell: UITableViewCell {
 
     public func setupWithModel(_ model: AdManagementActionCellModel) {
         titleLabel.text = model.title
-
         iconView.image = model.image
         descriptionLabel.text = model.description
 
@@ -136,8 +137,6 @@ public class UserAdManagementActionCell: UITableViewCell {
         separator.isHidden = !show
     }
 
-    // MARK: - Constraints
-
     // MARK: - Private functions
 
     private func setup() {
@@ -146,52 +145,55 @@ public class UserAdManagementActionCell: UITableViewCell {
         contentView.addSubview(titleLabel)
 
         let hairLineSize = 1.0/UIScreen.main.scale
-        let titleLabelTopConstraint = titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16)
+        let titleLabelTopConstraint = titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing)
 
+        let missingMagicNumberSpacing: CGFloat = 24
         NSLayoutConstraint.activate([
-            separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 24),
+            separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: missingMagicNumberSpacing),
             separator.topAnchor.constraint(equalTo: contentView.topAnchor),
             separator.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             separator.heightAnchor.constraint(equalToConstant: hairLineSize),
-            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: missingMagicNumberSpacing),
             iconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconView.widthAnchor.constraint(equalToConstant: 24),
-            iconView.heightAnchor.constraint(equalToConstant: 24),
+            iconView.widthAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
+            iconView.heightAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
             titleLabelTopConstraint,
-            titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 8),
-            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 64)
+            titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .mediumSpacing),
+            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: .veryLargeSpacing)
             ])
 
         // The chevron is smaller than elsewhere, but this is by design. I guess we'll disuss this
         // while iterating, prior to release, ¯\_(ツ)_/¯
-        chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+        let chevronSize: CGFloat = 10
+        chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
                                chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                               chevronView.widthAnchor.constraint(equalToConstant: 10),
-                               chevronView.heightAnchor.constraint(equalToConstant: 10),
-                               titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -8)
+                               chevronView.widthAnchor.constraint(equalToConstant: chevronSize),
+                               chevronView.heightAnchor.constraint(equalToConstant: chevronSize),
+                               titleLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -.mediumSpacing)
         ]
-        toggleControlConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+        toggleControlConstraints = [ toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
                               toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                              titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -8)
+                              titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: toggle.leadingAnchor, constant: -.mediumSpacing)
         ]
+        let externalSize: CGFloat = 20
         externalActionConstraints = [ externalActionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
                                       externalActionView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                                      externalActionView.widthAnchor.constraint(equalToConstant: 20),
-                                      externalActionView.heightAnchor.constraint(equalToConstant: 20),
-                                      titleLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -8)
+                                      externalActionView.widthAnchor.constraint(equalToConstant: externalSize),
+                                      externalActionView.heightAnchor.constraint(equalToConstant: externalSize),
+                                      titleLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -.mediumSpacing)
         ]
         descriptionLabelConstraints = [ descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
                                         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
         ]
-        descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -8)
-        descriptionToExternalTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -8)
-        descriptionToContentTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
-        descriptionToToggleTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: -8)
+        descriptionToChevronTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: chevronView.leadingAnchor, constant: -.mediumSpacing)
+        descriptionToExternalTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: externalActionView.leadingAnchor, constant: -.mediumSpacing)
+        descriptionToContentTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
+        descriptionToToggleTrailingConstraint = descriptionLabel.trailingAnchor.constraint(equalTo: toggle.leadingAnchor, constant: -.mediumSpacing)
         titleLabelCenterYToContentViewConstraint = titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 
-        contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: 16)
-        contentViewBottomToDescriptionConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: 16)
+        contentViewBottomToTitleConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing)
+        contentViewBottomToDescriptionConstraint = contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.bottomAnchor, constant: .mediumLargeSpacing)
     }
 
     private func cleanup() {
