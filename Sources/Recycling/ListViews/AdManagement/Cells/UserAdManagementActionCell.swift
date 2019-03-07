@@ -145,8 +145,6 @@ public class UserAdManagementActionCell: UITableViewCell {
         contentView.addSubview(titleLabel)
 
         let hairLineSize = 1.0/UIScreen.main.scale
-        let titleLabelTopConstraint = titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing)
-
         let missingMagicNumberSpacing: CGFloat = 24
         NSLayoutConstraint.activate([
             separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: missingMagicNumberSpacing),
@@ -158,8 +156,7 @@ public class UserAdManagementActionCell: UITableViewCell {
             iconView.widthAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
             iconView.heightAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
-            titleLabelTopConstraint,
-            titleLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .mediumSpacing),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: .veryLargeSpacing)
             ])
 
