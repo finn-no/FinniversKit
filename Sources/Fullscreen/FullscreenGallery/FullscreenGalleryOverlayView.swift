@@ -40,7 +40,7 @@ class FullscreenGalleryOverlayView: UIView {
 
     // MARK: - Private properties
 
-    private static let dismissButtonSize: CGFloat = 30.0
+    private static let dismissButtonTappableSize: CGFloat = 55.0
     private static let captionFadeDuration = 0.2
 
     // MARK: - UI properties
@@ -65,11 +65,12 @@ class FullscreenGalleryOverlayView: UIView {
         button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         button.backgroundColor = .clear
 
-        let removeImage = UIImage(named: .remove)
-        button.setImage(removeImage, for: .normal)
-        button.contentHorizontalAlignment = .fill
-        button.contentVerticalAlignment = .fill
+        let dismissImage = UIImage(named: .miscCross)
+        button.setImage(dismissImage, for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.contentVerticalAlignment = .center
         button.imageView?.contentMode = .scaleAspectFit
+
         return button
     }()
 
@@ -118,10 +119,10 @@ class FullscreenGalleryOverlayView: UIView {
             captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: safeLayoutGuide.bottomAnchor, constant: -.mediumSpacing),
             captionLabel.bottomAnchor.constraint(lessThanOrEqualTo: previewView.topAnchor, constant: -.mediumSpacing),
 
-            dismissButton.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-            dismissButton.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
-            dismissButton.widthAnchor.constraint(equalToConstant: FullscreenGalleryOverlayView.dismissButtonSize),
-            dismissButton.heightAnchor.constraint(equalToConstant: FullscreenGalleryOverlayView.dismissButtonSize),
+            dismissButton.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor, constant: .mediumSpacing),
+            dismissButton.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumSpacing),
+            dismissButton.widthAnchor.constraint(equalToConstant: FullscreenGalleryOverlayView.dismissButtonTappableSize),
+            dismissButton.heightAnchor.constraint(equalToConstant: FullscreenGalleryOverlayView.dismissButtonTappableSize),
 
             previewView.leadingAnchor.constraint(lessThanOrEqualTo: leadingAnchor),
             previewView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
