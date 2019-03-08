@@ -89,4 +89,8 @@ class FullscreenViewTests: FBSnapshotTestCase {
     func testConfirmationView() {
         snapshot(.confirmationView)
     }
+
+    func testFullscreenGallery() {
+        snapshot(.fullscreenGallery)
+    }
 }

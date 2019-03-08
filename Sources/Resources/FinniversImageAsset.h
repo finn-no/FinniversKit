@@ -70,7 +70,6 @@ extern NSString *const FinniversImageAssetmoreImg;
 extern NSString *const FinniversImageAssetmoteplassen;
 extern NSString *const FinniversImageAssetnoImage;
 extern NSString *const FinniversImageAssetnotifications;
-extern NSString *const FinniversImageAssetonlyNew;
 extern NSString *const FinniversImageAssetornamentCircleBlue;
 extern NSString *const FinniversImageAssetornamentCircleRed;
 extern NSString *const FinniversImageAssetornamentStar;

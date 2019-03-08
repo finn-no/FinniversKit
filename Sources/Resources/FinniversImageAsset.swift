@@ -81,7 +81,6 @@ public enum FinniversImageAsset: String {
     case moteplassen
     case noImage
     case notifications
-    case onlyNew
     case ornamentCircleBlue
     case ornamentCircleRed
     case ornamentStar
@@ -184,7 +183,6 @@ public enum FinniversImageAsset: String {
             .moteplassen,
             .noImage,
             .notifications,
-            .onlyNew,
             .ornamentCircleBlue,
             .ornamentCircleRed,
             .ornamentStar,
