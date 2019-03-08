@@ -61,6 +61,7 @@ extern NSString *const FinniversImageAssetmapMyposition;
 extern NSString *const FinniversImageAssetmc;
 extern NSString *const FinniversImageAssetmessages;
 extern NSString *const FinniversImageAssetminus;
+extern NSString *const FinniversImageAssetmiscCross;
 extern NSString *const FinniversImageAssetmiscLike;
 extern NSString *const FinniversImageAssetmiscLiked;
 extern NSString *const FinniversImageAssetmiscMoney;
