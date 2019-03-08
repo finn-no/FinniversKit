@@ -61,6 +61,7 @@ NSString *const FinniversImageAssetmapMyposition = @"mapMyposition";
 NSString *const FinniversImageAssetmc = @"mc";
 NSString *const FinniversImageAssetmessages = @"messages";
 NSString *const FinniversImageAssetminus = @"minus";
+NSString *const FinniversImageAssetmiscCross = @"miscCross";
 NSString *const FinniversImageAssetmiscLike = @"miscLike";
 NSString *const FinniversImageAssetmiscLiked = @"miscLiked";
 NSString *const FinniversImageAssetmiscMoney = @"miscMoney";
@@ -164,6 +165,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetmc,
              FinniversImageAssetmessages,
              FinniversImageAssetminus,
+             FinniversImageAssetmiscCross,
              FinniversImageAssetmiscLike,
              FinniversImageAssetmiscLiked,
              FinniversImageAssetmiscMoney,
