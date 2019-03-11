@@ -7,8 +7,6 @@ import UIKit
 public class MarketsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
-    private let badgeImageSize = CGSize(width: 30, height: 30)
-
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,14 +22,6 @@ public class MarketsGridViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-
-    private lazy var badgeImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .clear
         return imageView
     }()
 
@@ -60,7 +50,6 @@ public class MarketsGridViewCell: UICollectionViewCell {
         addSubview(iconImageView)
         addSubview(titleLabel)
         addSubview(externalLinkImageView)
-        addSubview(badgeImageView)
         backgroundColor = .clear
 
         NSLayoutConstraint.activate([
@@ -73,12 +62,7 @@ public class MarketsGridViewCell: UICollectionViewCell {
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             externalLinkImageView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor),
-            externalLinkImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor),
-
-            badgeImageView.widthAnchor.constraint(equalToConstant: badgeImageSize.width),
-            badgeImageView.heightAnchor.constraint(equalToConstant: badgeImageSize.height),
-            badgeImageView.topAnchor.constraint(equalTo: iconImageView.topAnchor, constant: -.smallSpacing),
-            badgeImageView.trailingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing)
+            externalLinkImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor)
         ])
     }
 
@@ -87,7 +71,6 @@ public class MarketsGridViewCell: UICollectionViewCell {
     public override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
-        badgeImageView.image = nil
         titleLabel.text = ""
         accessibilityLabel = ""
     }
@@ -102,7 +85,6 @@ public class MarketsGridViewCell: UICollectionViewCell {
 
             let showExternalLinkIcon = model?.showExternalLinkIcon ?? false
             externalLinkImageView.isHidden = !showExternalLinkIcon
-            badgeImageView.image = model?.badgeImage
         }
     }
 }

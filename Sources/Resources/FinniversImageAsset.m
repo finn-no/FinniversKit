@@ -61,6 +61,7 @@ NSString *const FinniversImageAssetmapMyposition = @"mapMyposition";
 NSString *const FinniversImageAssetmc = @"mc";
 NSString *const FinniversImageAssetmessages = @"messages";
 NSString *const FinniversImageAssetminus = @"minus";
+NSString *const FinniversImageAssetmiscCross = @"miscCross";
 NSString *const FinniversImageAssetmiscLike = @"miscLike";
 NSString *const FinniversImageAssetmiscLiked = @"miscLiked";
 NSString *const FinniversImageAssetmiscMoney = @"miscMoney";
@@ -70,7 +71,6 @@ NSString *const FinniversImageAssetmoreImg = @"moreImg";
 NSString *const FinniversImageAssetmoteplassen = @"moteplassen";
 NSString *const FinniversImageAssetnoImage = @"noImage";
 NSString *const FinniversImageAssetnotifications = @"notifications";
-NSString *const FinniversImageAssetonlyNew = @"onlyNew";
 NSString *const FinniversImageAssetornamentCircleBlue = @"ornamentCircleBlue";
 NSString *const FinniversImageAssetornamentCircleRed = @"ornamentCircleRed";
 NSString *const FinniversImageAssetornamentStar = @"ornamentStar";
@@ -165,6 +165,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetmc,
              FinniversImageAssetmessages,
              FinniversImageAssetminus,
+             FinniversImageAssetmiscCross,
              FinniversImageAssetmiscLike,
              FinniversImageAssetmiscLiked,
              FinniversImageAssetmiscMoney,
@@ -174,7 +175,6 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetmoteplassen,
              FinniversImageAssetnoImage,
              FinniversImageAssetnotifications,
-             FinniversImageAssetonlyNew,
              FinniversImageAssetornamentCircleBlue,
              FinniversImageAssetornamentCircleRed,
              FinniversImageAssetornamentStar,
