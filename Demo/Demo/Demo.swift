@@ -31,6 +31,7 @@ public enum ComponentViews: String, CaseIterable {
     case label
     case ribbon
     case textField
+    case textView
     case toast
     case switchView
     case infobox
@@ -46,6 +47,9 @@ public enum ComponentViews: String, CaseIterable {
     case horizontalSlide
     case newYearsView
     case bottomSheetMechanics
+    case feedbackView
+    case happinessRating
+    case earthHour
 
     public var viewController: UIViewController {
         switch self {
@@ -63,6 +67,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<RibbonDemoView>()
         case .textField:
             return DemoViewController<TextFieldDemoView>()
+        case .textView:
+            return DemoViewController<TextViewDemoView>()
         case .toast:
             return DemoViewController<ToastDemoView>()
         case .switchView:
@@ -97,6 +103,12 @@ public enum ComponentViews: String, CaseIterable {
                 return DemoViewController<NewYearsDemoView>()
         case .bottomSheetMechanics:
             return BottomSheetMechanicsDemoViewController()
+        case .feedbackView:
+            return DemoViewController<FeedbackDemoView>(withDismissButton: true)
+        case .happinessRating:
+            return DemoViewController<HappinessRatingDemoView>(withDismissButton: true)
+        case .earthHour:
+            return DemoViewController<EarthHourDemoView>()
         }
     }
 }
@@ -153,6 +165,7 @@ public enum FullscreenViews: String, CaseIterable {
     case snowGlobe
     case soldView
     case confirmationView
+    case fullscreenGallery
 
     public var viewController: UIViewController {
         switch self {
@@ -188,6 +201,8 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<SoldViewDemoView>()
         case .confirmationView:
             return DemoViewController<ConfirmationViewDemoView>()
+        case .fullscreenGallery:
+            return FullscreenGalleryDemoViewController()
         }
     }
 }

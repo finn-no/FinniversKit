@@ -7,7 +7,6 @@ import Foundation
 public protocol MarketsGridViewModel {
     var iconImage: UIImage? { get }
     var showExternalLinkIcon: Bool { get }
-    var badgeImage: UIImage? { get }
     var title: String { get }
     var accessibilityLabel: String { get }
 }

@@ -69,13 +69,6 @@ public enum Market: MarketsGridViewModel {
         }
     }
 
-    public var badgeImage: UIImage? {
-        switch self {
-        case .shopping: return UIImage(named: .onlyNew)
-        default: return nil
-        }
-    }
-
     public var accessibilityLabel: String {
         if showExternalLinkIcon {
             return title + ". Merk: Åpner ekstern link"

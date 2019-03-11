@@ -11,6 +11,7 @@ public protocol UserAdsListViewDelegate: class {
     func userAdsListView(_ userAdsListView: UserAdsListView, didSelectItemAtIndex indexPath: IndexPath)
     func userAdsListView(_ userAdsListView: UserAdsListView, willDisplayItemAtIndex indexPath: IndexPath)
     func userAdsListView(_ userAdsListView: UserAdsListView, didScrollInScrollView scrollView: UIScrollView)
+    func userAdsListView(_ userAdsListView: UserAdsListView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
 }
 
 public protocol UserAdsListViewDataSource: class {
@@ -49,9 +50,9 @@ public class UserAdsListView: UIView {
     private weak var dataSource: UserAdsListViewDataSource?
 
     private var firstSection = 0
-    private lazy var lastSection: Int = {
+    private var lastSection: Int {
         return (dataSource?.numberOfSections(in: self) ?? 1) - 1
-    }()
+    }
 
     // MARK: - Setup
 
@@ -102,6 +103,10 @@ public class UserAdsListView: UIView {
         tableView.deleteSections(sections, with: animation)
     }
 
+    public func reloadSections(_ sections: IndexSet, with animation: UITableView.RowAnimation) {
+        tableView.reloadSections(sections, with: animation)
+    }
+
     public func scrollToTop() {
         if #available(iOS 11.0, *) {
             tableView.setContentOffset(CGPoint(x: 0, y: -tableView.adjustedContentInset.top), animated: true)
@@ -121,6 +126,10 @@ extension UserAdsListView: UITableViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.userAdsListView(self, didScrollInScrollView: scrollView)
     }
+
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        return delegate?.userAdsListView(self, editActionsForRowAt: indexPath)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -134,7 +143,7 @@ extension UserAdsListView: UITableViewDataSource {
         switch section {
         case firstSection, lastSection: return nil
         default:
-            let headerView = UserAdsListHeaderView(frame: .zero)
+            let headerView = UserAdsListHeaderView(atSection: section)
             headerView.delegate = self
 
             if let model = dataSource?.userAdsListView(self, modelAtIndex: section) {

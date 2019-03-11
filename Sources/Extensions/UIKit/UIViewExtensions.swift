@@ -25,4 +25,12 @@ public extension UIView {
             return bottomAnchor
         }
     }
+
+    public var safeLayoutGuide: UILayoutGuide {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide
+        } else {
+            return layoutMarginsGuide
+        }
+    }
 }

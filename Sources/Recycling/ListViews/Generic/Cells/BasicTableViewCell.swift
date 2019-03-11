@@ -34,6 +34,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 2
         stackView.axis = .vertical
         return stackView
     }()
@@ -104,8 +105,13 @@ open class BasicTableViewCell: UITableViewCell {
     // MARK: - Private methods
 
     private func setup() {
+        let selectedBackgroundView = UIView()
+        selectedBackgroundView.backgroundColor = .defaultCellSelectedBackgroundColor
+        self.selectedBackgroundView = selectedBackgroundView
+
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
+
         NSLayoutConstraint.activate([
             stackViewTopAnchorConstraint,
             stackViewLeadingAnchorConstraint,
@@ -114,6 +120,6 @@ open class BasicTableViewCell: UITableViewCell {
 
             detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             detailLabelTrailingConstraint
-            ])
+        ])
     }
 }

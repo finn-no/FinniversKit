@@ -35,8 +35,14 @@ public enum FinniversImageAsset: String {
     case check
     case checkmarkBig
     case classifieds
+    case close
     case distance
     case download
+    case earthHourClock
+    case earthHourEarth
+    case earthHourEyes
+    case earthHourHeart
+    case earthHourStars
     case easterEgg
     case edit
     case editBig
@@ -66,6 +72,7 @@ public enum FinniversImageAsset: String {
     case mc
     case messages
     case minus
+    case miscCross
     case miscLike
     case miscLiked
     case miscMoney
@@ -75,7 +82,6 @@ public enum FinniversImageAsset: String {
     case moteplassen
     case noImage
     case notifications
-    case onlyNew
     case ornamentCircleBlue
     case ornamentCircleRed
     case ornamentStar
@@ -84,6 +90,12 @@ public enum FinniversImageAsset: String {
     case profile
     case rate
     case rated
+    case ratingCat
+    case ratingFaceAngry
+    case ratingFaceDissatisfied
+    case ratingFaceHappy
+    case ratingFaceLove
+    case ratingFaceNeutral
     case ratings
     case realestate
     case remove
@@ -126,8 +138,14 @@ public enum FinniversImageAsset: String {
             .check,
             .checkmarkBig,
             .classifieds,
+            .close,
             .distance,
             .download,
+            .earthHourClock,
+            .earthHourEarth,
+            .earthHourEyes,
+            .earthHourHeart,
+            .earthHourStars,
             .easterEgg,
             .edit,
             .editBig,
@@ -157,6 +175,7 @@ public enum FinniversImageAsset: String {
             .mc,
             .messages,
             .minus,
+            .miscCross,
             .miscLike,
             .miscLiked,
             .miscMoney,
@@ -166,7 +185,6 @@ public enum FinniversImageAsset: String {
             .moteplassen,
             .noImage,
             .notifications,
-            .onlyNew,
             .ornamentCircleBlue,
             .ornamentCircleRed,
             .ornamentStar,
@@ -175,6 +193,12 @@ public enum FinniversImageAsset: String {
             .profile,
             .rate,
             .rated,
+            .ratingCat,
+            .ratingFaceAngry,
+            .ratingFaceDissatisfied,
+            .ratingFaceHappy,
+            .ratingFaceLove,
+            .ratingFaceNeutral,
             .ratings,
             .realestate,
             .remove,

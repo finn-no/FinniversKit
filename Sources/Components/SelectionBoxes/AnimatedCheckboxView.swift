@@ -10,13 +10,13 @@ public class AnimatedCheckboxView: AnimatedSelectionView {
     var unselectedImage: UIImage?
     var unselectedImages: [UIImage]?
 
-    required init(frame: CGRect) {
+    public required init(frame: CGRect) {
         super.init(frame: frame)
         setup()
         setImages()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -24,8 +24,8 @@ public class AnimatedCheckboxView: AnimatedSelectionView {
         translatesAutoresizingMaskIntoConstraints = false
         animationRepeatCount = 1
         NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 28),
-            heightAnchor.constraint(equalToConstant: 28)
+            widthAnchor.constraint(equalToConstant: 24),
+            heightAnchor.constraint(equalToConstant: 24)
         ])
     }
 
@@ -38,7 +38,7 @@ public class AnimatedCheckboxView: AnimatedSelectionView {
         }
 
         var unselectedImages = [UIImage]()
-        for index in 0 ..< 14 {
+        for index in 0 ..< 13 {
             if let image = UIImage(named: "checkbox-unselected-\(index)", in: FinniversKit.bundle, compatibleWith: nil) {
                 unselectedImages.append(image)
             }
