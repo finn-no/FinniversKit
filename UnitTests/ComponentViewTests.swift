@@ -31,6 +31,10 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.button)
     }
 
+    func testDialogue() {
+        snapshot(.dialogue)
+    }
+
     func testEasterEggButton() {
         snapshot(.easterEggButton)
     }
@@ -65,6 +69,10 @@ class ComponentViewTests: FBSnapshotTestCase {
 
     func testInlineConsent() {
         snapshot(.inlineConsent)
+    }
+
+    func testInlineConsentV2() {
+        snapshot(.inlineConsentV2)
     }
 
     func testConsentTransparencyInfo() {
