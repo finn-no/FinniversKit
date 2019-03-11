@@ -28,7 +28,7 @@ public protocol DialogueViewModel {
 
  */
 
-public protocol DialogueViewDelegate: class {
+public protocol DialogueViewDelegate: AnyObject {
     func dialogueViewDidSelectLink()
     func dialogueViewDidSelectPrimaryButton()
     func dialogueViewDidSelectSecondaryButton()

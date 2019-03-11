@@ -12,7 +12,7 @@ public struct DialogueDefaultData: DialogueViewModel {
     public var secondaryButtonTitle: String? = "Alternativ knapp"
 }
 
-public protocol DialogueViewControllerDelegate: class {
+public protocol DialogueViewControllerDelegate: AnyObject {
     func dialogueViewControllerDelegateDidSelectPrimaryButton()
 }
 
