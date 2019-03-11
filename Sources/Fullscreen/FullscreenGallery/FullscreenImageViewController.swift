@@ -103,6 +103,7 @@ class FullscreenImageViewController: UIViewController {
             let newFrame = self.calculateImageFrame(fromSize: size)
             self.fullscreenImageView.superviewWillTransition(to: newFrame.size)
             self.fullscreenImageView.frame = newFrame
+            self.view.bounds.size = size
         })
     }
 
