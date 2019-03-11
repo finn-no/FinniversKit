@@ -6,6 +6,7 @@ import UIKit
 
 public protocol BottomSheetDelegate: class {
     func bottomSheetDidDismiss(_ bottomSheet: BottomSheet)
+    func bottomSheetDidBeginDrag(_ bottomSheet: BottomSheet)
 }
 
 extension BottomSheet {
@@ -162,6 +163,10 @@ public class BottomSheet: UIViewController {
 extension BottomSheet: BottomSheetPresentationControllerDelegate {
     func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController) {
         delegate?.bottomSheetDidDismiss(self)
+    }
+
+    func bottomSheetPresentationControllerDidBeginDrag(_ presentationController: BottomSheetPresentationController) {
+        delegate?.bottomSheetDidBeginDrag(self)
     }
 }
 
