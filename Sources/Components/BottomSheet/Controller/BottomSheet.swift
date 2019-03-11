@@ -4,9 +4,14 @@
 
 import UIKit
 
-public protocol BottomSheetDelegate: class {
+public protocol BottomSheetDelegate: AnyObject {
     func bottomSheetDidDismiss(_ bottomSheet: BottomSheet)
     func bottomSheetDidBeginDrag(_ bottomSheet: BottomSheet)
+}
+
+extension BottomSheetDelegate {
+    // Default blank implementation.
+    func bottomSheetDidBeginDrag(_ bottomSheet: BottomSheet) {}
 }
 
 extension BottomSheet {
