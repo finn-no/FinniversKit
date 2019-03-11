@@ -194,6 +194,11 @@
 		6266C07022081EEA00FB8004 /* StatisticsItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C06F22081EEA00FB8004 /* StatisticsItemModel.swift */; };
 		6266C07222081EF600FB8004 /* StatisticsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C07122081EF600FB8004 /* StatisticsItemView.swift */; };
 		6266C0752208235000FB8004 /* AdManagementDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C0742208235000FB8004 /* AdManagementDemoView.swift */; };
+		AA7A854E22255AB200AF5F42 /* DialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A854D22255AB200AF5F42 /* DialogueView.swift */; };
+		AA864B37222D6F3F00BAE95A /* DialogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA864B36222D6F3F00BAE95A /* DialogueViewController.swift */; };
+		AA864B392231589B00BAE95A /* DialogueDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA864B382231589B00BAE95A /* DialogueDemoView.swift */; };
+		AA864B49223290B600BAE95A /* InlineConsentDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA864B48223290B600BAE95A /* InlineConsentDemoViewController.swift */; };
+		AA864B4D22329E7100BAE95A /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA864B4C22329E7100BAE95A /* UIDevice.swift */; };
 		899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */; };
 		899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D0BF7222D58D700794DEC /* FullscreenGalleryOverlayView.swift */; };
 		9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D9749A60B9BFD125F483 /* FeedbackView.swift */; };
@@ -542,6 +547,11 @@
 		6266C06F22081EEA00FB8004 /* StatisticsItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsItemModel.swift; sourceTree = "<group>"; };
 		6266C07122081EF600FB8004 /* StatisticsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsItemView.swift; sourceTree = "<group>"; };
 		6266C0742208235000FB8004 /* AdManagementDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManagementDemoView.swift; sourceTree = "<group>"; };
+		AA7A854D22255AB200AF5F42 /* DialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueView.swift; sourceTree = "<group>"; };
+		AA864B36222D6F3F00BAE95A /* DialogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueViewController.swift; sourceTree = "<group>"; };
+		AA864B382231589B00BAE95A /* DialogueDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueDemoView.swift; sourceTree = "<group>"; };
+		AA864B48223290B600BAE95A /* InlineConsentDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineConsentDemoViewController.swift; sourceTree = "<group>"; };
+		AA864B4C22329E7100BAE95A /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		899D0BF7222D58D700794DEC /* FullscreenGalleryOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryOverlayView.swift; sourceTree = "<group>"; };
 		9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
@@ -786,6 +796,7 @@
 				CF8F021421DCC5B2004C4042 /* Components */,
 				AAF7C95D222432EC003110DB /* Demo */,
 				CF8F021021DCC4D7004C4042 /* DNA */,
+				AA864B4A22329DF700BAE95A /* Extensions */,
 				CF8F022721DCC721004C4042 /* Fullscreen */,
 				CF8F023721DCC854004C4042 /* Recycling */,
 				144351BA1FBE2BF1007B2229 /* Assets.xcassets */,
@@ -1163,6 +1174,7 @@
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
 				45B2E06B207E181C00C68B92 /* Consent */,
+				AA7A854C22255A5700AF5F42 /* Dialogue */,
 				CF7C45FD22257A8A001FB92C /* EarthHour */,
 				9A37D8C01205DC426B502C5F /* Feedback */,
 				08F0D3F222259AB800968256 /* HappinessRating */,
@@ -1500,6 +1512,39 @@
 			path = AdManagement;
 			sourceTree = "<group>";
 		};
+		AA7A854C22255A5700AF5F42 /* Dialogue */ = {
+			isa = PBXGroup;
+			children = (
+				AA7A854D22255AB200AF5F42 /* DialogueView.swift */,
+			);
+			path = Dialogue;
+			sourceTree = "<group>";
+		};
+		AA7A854F22258A0B00AF5F42 /* Dialogue */ = {
+			isa = PBXGroup;
+			children = (
+				AA864B36222D6F3F00BAE95A /* DialogueViewController.swift */,
+				AA864B382231589B00BAE95A /* DialogueDemoView.swift */,
+			);
+			path = Dialogue;
+			sourceTree = "<group>";
+		};
+		AA864B4A22329DF700BAE95A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AA864B4B22329E4F00BAE95A /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AA864B4B22329E4F00BAE95A /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				AA864B4C22329E7100BAE95A /* UIDevice.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		9A37D8C01205DC426B502C5F /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
@@ -1808,6 +1853,7 @@
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
 				CF8F021821DCC624004C4042 /* Consent */,
+				AA7A854F22258A0B00AF5F42 /* Dialogue */,
 				CF7C460B22257AE1001FB92C /* EarthHour */,
 				9A37DBD671995665FDBC64C4 /* Feedback */,
 				08F0D3F5222691F000968256 /* HappinessRating */,
@@ -1884,6 +1930,7 @@
 			isa = PBXGroup;
 			children = (
 				45B2E073207E184D00C68B92 /* InlineConsentDemoView.swift */,
+				AA864B48223290B600BAE95A /* InlineConsentDemoViewController.swift */,
 			);
 			path = InlineConsent;
 			sourceTree = "<group>";
@@ -2694,10 +2741,12 @@
 				CF4A054821FB58FA000BB7DA /* PianoDemoView.swift in Sources */,
 				444246082137D61200D42AB8 /* FavoriteFoldersListViewDemoView.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
+				AA864B392231589B00BAE95A /* DialogueDemoView.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
 				08796D8E21CB97200023A441 /* HeartSubtitleCellDemoView.swift in Sources */,
 				081F51BA222930C500026C84 /* TextViewDemoView.swift in Sources */,
 				CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */,
+				AA864B37222D6F3F00BAE95A /* DialogueViewController.swift in Sources */,
 				441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */,
 				CF7C460E22257AE1001FB92C /* EarthHourDefaultData.swift in Sources */,
 				082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */,
@@ -2728,6 +2777,7 @@
 				45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
 				4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */,
 				14EBA25A215A634100613E5A /* LoadingViewDemoView.swift in Sources */,
+				AA864B49223290B600BAE95A /* InlineConsentDemoViewController.swift in Sources */,
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
 				CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */,
 				4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */,
@@ -2744,6 +2794,7 @@
 				CFF9727321C3BA2200C85238 /* BannerTransparencyDemoView.swift in Sources */,
 				DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */,
 				4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */,
+				AA864B4D22329E7100BAE95A /* UIDevice.swift in Sources */,
 				4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */,
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
@@ -2880,6 +2931,7 @@
 				432CE09D2112DBC500F01EC5 /* ReviewTextHeader.swift in Sources */,
 				4447F6EC1FDB2B110033DBC1 /* TextField+InputType.swift in Sources */,
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
+				AA7A854E22255AB200AF5F42 /* DialogueView.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
