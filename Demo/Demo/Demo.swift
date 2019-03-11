@@ -25,6 +25,7 @@ public enum DnaViews: String, CaseIterable {
 
 public enum ComponentViews: String, CaseIterable {
     case button
+    case dialogue
     case easterEggButton
     case cogWheelButton
     case label
@@ -35,6 +36,7 @@ public enum ComponentViews: String, CaseIterable {
     case switchView
     case infobox
     case inlineConsent
+    case inlineConsentV2
     case consentTransparencyInfo
     case bannerTransparency
     case checkbox
@@ -53,6 +55,8 @@ public enum ComponentViews: String, CaseIterable {
         switch self {
         case .button:
             return DemoViewController<ButtonDemoView>()
+        case .dialogue:
+            return DemoViewController<DialogueDemoView>()
         case .easterEggButton:
             return DemoViewController<EasterEggButtonDemoView>()
         case .cogWheelButton:
@@ -73,6 +77,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<InfoboxDemoView>()
         case .inlineConsent:
             return DemoViewController<InlineConsentDemoView>()
+        case .inlineConsentV2:
+            return InlineConsentDemoViewController()
         case .consentTransparencyInfo:
             return DemoViewController<ConsentTransparencyInfoDemoView>()
         case .bannerTransparency:
