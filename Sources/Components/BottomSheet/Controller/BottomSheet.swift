@@ -4,8 +4,12 @@
 
 import UIKit
 
-public protocol BottomSheetDelegate: class {
+public protocol BottomSheetDelegate: AnyObject {
     func bottomSheetDidDismiss(_ bottomSheet: BottomSheet)
+}
+
+public protocol BottomSheetDragDelegate: AnyObject {
+    func bottomSheetDidBeginDrag(_ bottomSheet: BottomSheet)
 }
 
 extension BottomSheet {
@@ -50,6 +54,7 @@ public class BottomSheet: UIViewController {
     // MARK: - Public properties
 
     public weak var delegate: BottomSheetDelegate?
+    public weak var dragDelegate: BottomSheetDragDelegate?
 
     public var state: State {
         get { return transitionDelegate.presentationController?.state ?? .dismissed }
@@ -162,6 +167,10 @@ public class BottomSheet: UIViewController {
 extension BottomSheet: BottomSheetPresentationControllerDelegate {
     func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController) {
         delegate?.bottomSheetDidDismiss(self)
+    }
+
+    func bottomSheetPresentationControllerDidBeginDrag(_ presentationController: BottomSheetPresentationController) {
+        dragDelegate?.bottomSheetDidBeginDrag(self)
     }
 }
 
