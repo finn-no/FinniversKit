@@ -20,19 +20,11 @@ public protocol UserAdsListViewDataSource: class {
     func userAdsListView(_ userAdsListView: UserAdsListView, numberOfRowsInSection section: Int) -> Int
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex section: Int) -> UserAdsListHeaderViewModel
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex indexPath: IndexPath) -> UserAdsListViewModel
-    func userAdsListView(_ userAdsListView: UserAdsListView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
-    func userAdsListView(_ userAdsListView: UserAdsListView, didEndEditingRowAt indexPath: IndexPath?)
     func userAdsListView(_ userAdsListView: UserAdsListView, loadImageForModel model: UserAdsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func userAdsListView(_ userAdsListView: UserAdsListView, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat)
 }
 
 public class UserAdsListView: UIView {
-    public static let sectionHeaderHeight: CGFloat = 38
-
-    public static let buttonCellHeight: CGFloat = 80
-    public static let activeCellHeight: CGFloat = 112
-    public static let inactiveCellHeight: CGFloat = 66
-
     // MARK: - Internal properties
 
     private lazy var tableView: UITableView = {
@@ -49,10 +41,23 @@ public class UserAdsListView: UIView {
     private weak var delegate: UserAdsListViewDelegate?
     private weak var dataSource: UserAdsListViewDataSource?
 
-    private var firstSection = 0
+    private let emptyTableViewSectionCount = 1
+    private let numberOfRowsInFirstOrLastSection = 1
+
+    private let firstSection = 0
     private var lastSection: Int {
         return (dataSource?.numberOfSections(in: self) ?? 1) - 1
     }
+
+    // MARK: - Internal properties
+
+    public static let sectionHeaderHeight: CGFloat = 38
+    public static let buttonCellHeight: CGFloat = 80
+    public static let activeCellHeight: CGFloat = 112
+    public static let inactiveCellHeight: CGFloat = 66
+
+    public var isEditing: Bool { return tableView.isEditing }
+    public var isEmpty: Bool { return (dataSource?.userAdsListView(self, numberOfRowsInSection: 1) ?? 0 ) == 0}
 
     // MARK: - Setup
 
@@ -120,6 +125,7 @@ public class UserAdsListView: UIView {
 
 extension UserAdsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == firstSection || indexPath.section == lastSection { return }
         delegate?.userAdsListView(self, didSelectItemAtIndex: indexPath)
     }
 
@@ -136,7 +142,8 @@ extension UserAdsListView: UITableViewDelegate {
 
 extension UserAdsListView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSource?.numberOfSections(in: self) ?? 0
+        if isEmpty { return emptyTableViewSectionCount }
+        return (dataSource?.numberOfSections(in: self) ?? 0)
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -156,7 +163,8 @@ extension UserAdsListView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case firstSection, lastSection: return 0.1 // Return 0.1 so we dont show a seperator if there's no section/ads to show.
+        // Return 0.1 so we dont show a seperator if there's no section to show.
+        case firstSection, lastSection: return 0.1
         default: return UserAdsListView.sectionHeaderHeight
         }
     }
@@ -171,6 +179,9 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isEmpty { return numberOfRowsInFirstOrLastSection }
+        if section == firstSection || section == lastSection { return numberOfRowsInFirstOrLastSection }
+
         return dataSource?.userAdsListView(self, numberOfRowsInSection: section) ?? 0
     }
 
@@ -216,14 +227,6 @@ extension UserAdsListView: UITableViewDataSource {
         case firstSection, lastSection: return false
         default: return true
         }
-    }
-
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        dataSource?.userAdsListView(self, commit: editingStyle, forRowAt: indexPath)
-    }
-
-    public func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-        dataSource?.userAdsListView(self, didEndEditingRowAt: indexPath)
     }
 }
 
