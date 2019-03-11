@@ -1,8 +1,4 @@
 //
-//  DialogueViewController.swift
-//  Demo
-//
-//  Created by Ghoreshi, Amir on 04/03/2019.
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 

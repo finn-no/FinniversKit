@@ -45,6 +45,14 @@ class InlineConsentDemoViewController: UIViewController {
         return frontPageView
     }()
 
+    private lazy var blurEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = frontPageView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        return blurEffectView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -114,11 +122,15 @@ extension InlineConsentDemoViewController {
         dialogue.didMove(toParent: self)
 
         NSLayoutConstraint.activate([
-            dialogue.view.topAnchor.constraint(equalTo: bottom.topAnchor, constant: .largeSpacing + 10),
-            dialogue.view.leadingAnchor.constraint(equalTo: bottom.leadingAnchor, constant: .largeSpacing),
-            dialogue.view.trailingAnchor.constraint(equalTo: bottom.trailingAnchor, constant: -.largeSpacing),
             dialogue.view.heightAnchor.constraint(equalTo: bottom.heightAnchor, multiplier: 0.4),
+            dialogue.view.widthAnchor.constraint(equalTo: bottom.widthAnchor, multiplier: 0.8),
+            dialogue.view.centerYAnchor.constraint(equalTo: bottom.centerYAnchor),
+            dialogue.view.centerXAnchor.constraint(equalTo: bottom.centerXAnchor),
             ])
+
+        if children.count == 1 {
+            frontPageView.addSubview(blurEffectView)
+        }
     }
 
     private func removeDialogueViewController() {
@@ -129,6 +141,10 @@ extension InlineConsentDemoViewController {
         dialogue.willMove(toParent: nil)
         dialogue.view.removeFromSuperview()
         dialogue.removeFromParent()
+
+        if children.count == 0 {
+            blurEffectView.removeFromSuperview()
+        }
     }
 }
 
