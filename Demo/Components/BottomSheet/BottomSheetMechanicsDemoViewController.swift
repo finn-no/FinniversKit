@@ -249,8 +249,4 @@ extension BottomSheetMechanicsDemoViewController: BottomSheetDelegate {
     func bottomSheetDidDismiss(_ bottomSheet: BottomSheet) {
         // BottomSheet dismissed.
     }
-
-    func bottomSheetDidBeginDrag(_ bottomSheet: BottomSheet) {
-        // BottomSheet didBeginDrag.
-    }
 }
