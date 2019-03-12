@@ -13,7 +13,7 @@ public class AdManagementDemoView: UIView {
         tableView.delegate = self
         tableView.register(UserAdManagementStatisticsCell.self)
         tableView.register(UserAdManagementButtonAndInformationCell.self)
-        tableView.register(UserAdManagementActionCell.self)
+        tableView.register(UserAdManagementUserActionCell.self)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .ice
         tableView.estimatedRowHeight = estimatedRowHeight
@@ -79,7 +79,7 @@ extension AdManagementDemoView: UITableViewDataSource {
             cell.buttonText = "Kjøp mer synlighet"
             return cell
         } else {
-            let cell = tableView.dequeue(UserAdManagementActionCell.self, for: indexPath)
+            let cell = tableView.dequeue(UserAdManagementUserActionCell.self, for: indexPath)
             cell.setupWithModel(actionCellModels[indexPath.section-1][indexPath.row])
             cell.showSeparator(indexPath.row != 0)
             return cell
