@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS. All rights reserved.
 //
 
-public class UserAdManagementActionCell: UITableViewCell {
+public class UserAdManagementUserActionCell: UITableViewCell {
     public weak var delegate: UserAdManagementActionCellDelegate?
     public private(set) var actionType: AdManagementActionType = .unknown
 
@@ -218,5 +218,5 @@ public class UserAdManagementActionCell: UITableViewCell {
 }
 
 public protocol UserAdManagementActionCellDelegate: class {
-    func userAdManagementActionCell(_ cell: UserAdManagementActionCell, switchChangedState switchIsOn: Bool)
+    func userAdManagementActionCell(_ cell: UserAdManagementUserActionCell, switchChangedState switchIsOn: Bool)
 }
