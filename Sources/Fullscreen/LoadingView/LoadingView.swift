@@ -68,36 +68,45 @@ import UIKit
     /// Adds a layer on top of the top-most view and starts the animation of the loading indicator.
     ///
     /// - Parameter message: The message to be displayed (optional)
-    @objc public class func show(withMessage message: String? = nil) {
+    /// - Parameter afterDelay: The delay time (in seconds) before the loading view will be shown (optional, defaults to 0.5s)
+    @objc public class func show(withMessage message: String? = nil, afterDelay delay: Double = 0.5) {
         LoadingView.shared.shouldShow = true
 
-        let deadline = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        DispatchQueue.main.asyncAfter(deadline: deadline) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
             if LoadingView.shared.shouldShow {
                 LoadingView.shared.startAnimating(withMessage: message)
             }
-        }
+        })
     }
 
     /// Adds a layer on top of the top-most view and starts the animation of the loading indicator.
     ///
     /// - Parameter message: The message to be displayed (optional)
-    @objc public class func showSuccess(withMessage message: String? = nil) {
+    /// - Parameter afterDelay: The delay time (in seconds) before the success view will be shown (optional, defaults to 0.5s)
+    @objc public class func showSuccess(withMessage message: String? = nil, afterDelay delay: Double = 0.5) {
         LoadingView.shared.shouldShow = true
 
-        let deadline = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        DispatchQueue.main.asyncAfter(deadline: deadline) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
             if LoadingView.shared.shouldShow {
                 LoadingView.shared.showSuccess(withMessage: message)
             }
-        }
+        })
     }
 
     /// Stops the animation of the loading indicator and removes the loading view.
+    /// - Note: Must be called from the main thread
     @objc public class func hide() {
         LoadingView.shared.shouldShow = false
 
         LoadingView.shared.stopAnimating()
+    }
+
+    /// After a delay, stops the animation of the loading indicator and removes the loading view.
+    /// - Note: Can be called from a background thread.
+    @objc public class func hide(afterDelay delay: Double) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
+            hide()
+        })
     }
 }
 
