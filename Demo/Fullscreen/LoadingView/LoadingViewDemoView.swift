@@ -77,6 +77,15 @@ public class LoadingViewDemoView: UIView {
             LoadingView.hide()
         }))
 
+        options.append(Option(title: "Racy scheduling", description: "Show only show the success-view", action: {
+            LoadingView.show(withMessage: "Should not be visible", afterDelay: 0.2)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                LoadingView.showSuccess(withMessage: "Success", afterDelay: 0)
+                LoadingView.hide(afterDelay: 0.5)
+            })
+        }))
+
         return options
     }()
 
