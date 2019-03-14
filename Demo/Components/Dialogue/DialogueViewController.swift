@@ -5,11 +5,11 @@
 import FinniversKit
 
 public struct DialogueDefaultData: DialogueViewModel {
+
     public let title = "Slå på anbefalinger"
     public let detail = "Vi viser deg relevante FINN-annonser og tilpasser FINN etter din bruk. For å gjøre dette lagrer vi info om hva du ser på hos oss."
-    public var link: String? = "Mer om samtykke"
+    public var link = "Mer om samtykke"
     public let primaryButtonTitle = "Aktiver personlige anbefalinger"
-    public var secondaryButtonTitle: String? = "Alternativ knapp"
 }
 
 public protocol DialogueViewControllerDelegate: AnyObject {

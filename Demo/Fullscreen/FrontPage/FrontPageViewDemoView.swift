@@ -25,6 +25,7 @@ public class FrontpageViewDemoView: UIView {
         if didSetupView == false {
             setup()
             didSetupView = true
+            frontPageView.showInlineConsent()
         }
     }
 
@@ -109,13 +110,11 @@ extension FrontpageViewDemoView: MarketsGridViewDataSource {
     }
 }
 
-// MARK: - InlineConsentViewDelegate
+// MARK: - DialogueViewDelegate
 
-extension FrontpageViewDemoView: InlineConsentViewDelegate {
-    public func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectYesButton button: Button) {
-        frontPageView.hideInlineConsents()
+extension FrontpageViewDemoView: DialogueViewDelegate {
+    public func dialogueViewDidSelectPrimaryButton() {
+        frontPageView.hideInlineConsent()
         frontPageView.reloadAds()
     }
-
-    public func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectInfoButton button: Button) {}
 }

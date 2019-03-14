@@ -2,6 +2,13 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+public protocol FrontPageViewModel {
+    var adsGridViewHeaderTitle: String { get }
+    var retryButtonTitle: String { get }
+    var noRecommendationsText: String { get }
+    var inlineConsentDialogueViewModel: DialogueViewModel { get }
+}
+
 public protocol FrontPageViewDelegate: AnyObject {
     func frontPageViewDidSelectRetryButton(_ frontPageView: FrontPageView)
 }
@@ -9,10 +16,9 @@ public protocol FrontPageViewDelegate: AnyObject {
 public final class FrontPageView: UIView {
     public var model: FrontPageViewModel? {
         didSet {
+            headerLabel.text = model?.adsGridViewHeaderTitle
             adsRetryView.set(labelText: model?.noRecommendationsText, buttonText: model?.retryButtonTitle)
-            inlineConsentView.yesButtonTitle = model?.inlineConsentYesButtonTitle ?? ""
-            inlineConsentView.infoButtonTitle = model?.inlineConsentInfoButtonTitle ?? ""
-            updateHeaderTitle()
+            inlineConsentDialogue.model = model?.inlineConsentDialogueViewModel
         }
     }
 
@@ -34,10 +40,16 @@ public final class FrontPageView: UIView {
     private let adsGridView: AdsGridView
     private lazy var headerView = UIView()
 
-    private lazy var inlineConsentView: InlineConsentView = {
-        let view = InlineConsentView(frame: .zero)
-        view.backgroundColor = .milk
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var inlineConsentDialogue: DialogueView = {
+        let dialogueView = DialogueView()
+        dialogueView.dropShadow(color: .licorice)
+        dialogueView.isHidden = true
+        return dialogueView
+    }()
+
+    private lazy var inlineConsentLockView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
         view.isHidden = true
         return view
     }()
@@ -62,11 +74,11 @@ public final class FrontPageView: UIView {
 
     // MARK: - Init
 
-    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate & AdsGridViewDataSource & InlineConsentViewDelegate) {
-        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: delegate, inlineConsentViewDelegate: delegate)
+    public convenience init(delegate: FrontPageViewDelegate & MarketsGridViewDelegate & MarketsGridViewDataSource & AdsGridViewDelegate & AdsGridViewDataSource & DialogueViewDelegate) {
+        self.init(delegate: delegate, marketsGridViewDelegate: delegate, marketsGridViewDataSource: delegate, adsGridViewDelegate: delegate, adsGridViewDataSource: delegate, inlineConsentDialogueViewDelegate: delegate)
     }
 
-    public init(delegate: FrontPageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource, inlineConsentViewDelegate: InlineConsentViewDelegate) {
+    public init(delegate: FrontPageViewDelegate, marketsGridViewDelegate: MarketsGridViewDelegate, marketsGridViewDataSource: MarketsGridViewDataSource, adsGridViewDelegate: AdsGridViewDelegate, adsGridViewDataSource: AdsGridViewDataSource, inlineConsentDialogueViewDelegate: DialogueViewDelegate) {
         marketsGridView = MarketsGridView(delegate: marketsGridViewDelegate, dataSource: marketsGridViewDataSource)
         marketsGridView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -75,7 +87,7 @@ public final class FrontPageView: UIView {
 
         super.init(frame: .zero)
         self.delegate = delegate
-        inlineConsentView.delegate = inlineConsentViewDelegate
+        inlineConsentDialogue.delegate = inlineConsentDialogueViewDelegate
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -125,20 +137,16 @@ public final class FrontPageView: UIView {
         adsRetryView.state = .labelAndButton
     }
 
-    public func showInlineConsents(withText text: String) {
-        inlineConsentView.isHidden = false
-        inlineConsentView.descriptionText = text
+    public func showInlineConsent() {
+        inlineConsentDialogue.isHidden = false
+        inlineConsentLockView.isHidden = false
         adsGridView.endRefreshing()
-        updateHeaderTitle()
-        setupFrames()
     }
 
-    public func hideInlineConsents() {
-        inlineConsentView.isHidden = true
-        inlineConsentView.descriptionText = ""
+    public func hideInlineConsent() {
+        inlineConsentDialogue.isHidden = true
+        inlineConsentLockView.isHidden = true
         adsGridView.endRefreshing()
-        updateHeaderTitle()
-        setupFrames()
     }
 
     public func scrollToTop() {
@@ -151,15 +159,13 @@ public final class FrontPageView: UIView {
         backgroundColor = .milk
 
         addSubview(adsGridView)
+
         adsGridView.collectionView.addSubview(adsRetryView)
+        adsGridView.collectionView.addSubview(inlineConsentLockView)
+        adsGridView.collectionView.addSubview(inlineConsentDialogue)
 
         headerView.addSubview(marketsGridView)
         headerView.addSubview(headerLabel)
-        headerView.addSubview(inlineConsentView)
-
-        let maxInlineConsentViewWidth: CGFloat = 414.0
-        let inlineConsentViewWidth = inlineConsentView.widthAnchor.constraint(equalToConstant: maxInlineConsentViewWidth)
-        inlineConsentViewWidth.priority = UILayoutPriority(rawValue: 999)
 
         NSLayoutConstraint.activate([
             marketsGridView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: .mediumLargeSpacing),
@@ -170,12 +176,6 @@ public final class FrontPageView: UIView {
             headerLabel.topAnchor.constraint(equalTo: marketsGridView.bottomAnchor, constant: .mediumLargeSpacing),
             headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: .mediumLargeSpacing),
             headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -.mediumLargeSpacing),
-
-            inlineConsentView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: .mediumSpacing),
-            inlineConsentView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            inlineConsentView.leadingAnchor.constraint(greaterThanOrEqualTo: headerView.leadingAnchor, constant: .mediumLargeSpacing),
-            inlineConsentView.trailingAnchor.constraint(lessThanOrEqualTo: headerView.trailingAnchor, constant: -.mediumLargeSpacing),
-            inlineConsentViewWidth
         ])
 
         adsGridView.fillInSuperview()
@@ -185,17 +185,11 @@ public final class FrontPageView: UIView {
     }
 
     private func setupFrames() {
-        let inlineConsentViewHeight: CGFloat = {
-            guard !inlineConsentView.isHidden else { return 0.0 }
-            let inlineConsentViewHeight = inlineConsentView.intrinsicContentSize.height
-            return inlineConsentViewHeight + .largeSpacing
-        }()
-
         let headerTopSpacing: CGFloat = .mediumLargeSpacing
         let headerBottomSpacing: CGFloat = .mediumSpacing
         let labelHeight = headerLabel.intrinsicContentSize.height + .mediumLargeSpacing
         let marketGridViewHeight = marketsGridView.calculateSize(constrainedTo: bounds.size.width).height + .smallSpacing
-        let height = headerTopSpacing + labelHeight + marketGridViewHeight + inlineConsentViewHeight + headerBottomSpacing
+        let height = headerTopSpacing + labelHeight + marketGridViewHeight + headerBottomSpacing
 
         marketsGridViewHeight.constant = marketGridViewHeight
         headerView.frame.size.height = height
@@ -203,10 +197,35 @@ public final class FrontPageView: UIView {
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
         boundsForCurrentSubviewSetup = bounds
         adsGridView.invalidateLayout()
-    }
 
-    private func updateHeaderTitle() {
-        headerLabel.text = inlineConsentView.isHidden ? model?.adsGridViewHeaderTitle : model?.inlineConsentTitle
+        var widthPercentage: CGFloat = 0.8
+        var heightPercentage: CGFloat = 0.3
+
+        if UIDevice.isSmallScreen() {
+            widthPercentage = 0.9
+            heightPercentage = 0.4
+        }
+        if UIDevice.isIPad() {
+            widthPercentage = 0.9
+            heightPercentage = 0.2
+        }
+
+        let dialogueWidth = bounds.width * widthPercentage
+        let dialogueHeight = (bounds.height * heightPercentage) +
+            inlineConsentDialogue.heightWithConstrainedWidth(width: dialogueWidth)
+        let inlineConsentDialogueY = height + 25
+
+        inlineConsentDialogue.frame = CGRect(
+            x: (bounds.width - dialogueWidth) / 2,
+            y: inlineConsentDialogueY,
+            width: dialogueWidth,
+            height: dialogueHeight)
+
+        inlineConsentLockView.frame = CGRect(
+            x: 0,
+            y: height,
+            width: bounds.width,
+            height: 5000)
     }
 }
 

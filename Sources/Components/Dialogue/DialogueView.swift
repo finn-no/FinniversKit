@@ -15,9 +15,8 @@ import UIKit
 public protocol DialogueViewModel {
     var title: String { get }
     var detail: String { get }
-    var link: String? { get }
+    var link: String { get }
     var primaryButtonTitle: String { get }
-    var secondaryButtonTitle: String? { get }
 }
 
 // MARK: - DialogueViewDelegate
@@ -90,13 +89,6 @@ public class DialogueView: UIView {
         return button
     }()
 
-    private lazy var secondaryButton: UIButton = {
-        let button = Button(style: .flat, size: .small)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleSecondaryButtonTap), for: .touchUpInside)
-        return button
-    }()
-
     // MARK: - Model
 
     public var model: DialogueViewModel? {
@@ -105,7 +97,6 @@ public class DialogueView: UIView {
             detail.text = model?.detail
             link.setTitle(model?.link, for: .normal)
             primaryButton.setTitle(model?.primaryButtonTitle, for: .normal)
-            secondaryButton.setTitle(model?.secondaryButtonTitle, for: .normal)
         }
     }
 
@@ -156,14 +147,31 @@ public class DialogueView: UIView {
             ])
     }
 
+    func heightWithConstrainedWidth(width: CGFloat) -> CGFloat {
+        guard let text = detail.text else {
+            return 0
+        }
+
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = text.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font: detail.font], context: nil)
+
+        var moreSpacing: CGFloat = 0
+
+        if UIDevice.isSmallScreen() {
+            moreSpacing = .largeSpacing
+        }
+
+        if UIDevice.isLandscape() {
+            moreSpacing = -.largeSpacing
+        }
+
+        return boundingBox.height - moreSpacing
+    }
+
     // MARK: - Actions
 
     @objc private func handlePrimaryButtonTap() {
         delegate?.dialogueViewDidSelectPrimaryButton()
-    }
-
-    @objc private func handleSecondaryButtonTap() {
-        delegate?.dialogueViewDidSelectSecondaryButton()
     }
 
     @objc private func handleLinkTap() {

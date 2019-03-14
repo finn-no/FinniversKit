@@ -33,4 +33,13 @@ public extension UIView {
             return layoutMarginsGuide
         }
     }
+
+    public func dropShadow(color: UIColor, opacity: Float = 0.5, offset: CGSize = CGSize.zero, radius: CGFloat = 10.0, usingPath: Bool = true) {
+        layer.masksToBounds = false
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offset
+        layer.shadowRadius = radius
+        layer.rasterizationScale = UIScreen.main.scale
+    }
 }

@@ -6,7 +6,7 @@ import UIKit.UIDevice
 
 // MARK: - UIDevice
 
- internal extension UIDevice {
+internal extension UIDevice {
 
     internal class func isIPad() -> Bool {
         return current.userInterfaceIdiom == .pad
@@ -14,5 +14,13 @@ import UIKit.UIDevice
 
     internal class func isIPhone() -> Bool {
         return current.userInterfaceIdiom == .phone
+    }
+
+    internal class func isSmallScreen() -> Bool {
+        return isIPhone() && UIScreen.main.nativeBounds.height == 1136
+    }
+
+    internal class func isLandscape() -> Bool {
+        return isIPad() && current.orientation.isLandscape
     }
 }
