@@ -11,10 +11,24 @@ public protocol ReviewViewDelegate: class {
 }
 
 public class ReviewView: UIView {
-    static let defaultRowHeight: CGFloat = 40
-    static let defaultHeaderHeight: CGFloat = 60
 
-    lazy var tableView: UITableView = {
+    // MARK: - Public properties
+
+    public weak var delegate: ReviewViewDelegate?
+    public var model: ReviewViewModel? {
+        didSet {
+            selectButton.setTitle(model?.selectTitle ?? "", for: .normal)
+            label.text = model?.confirmationTitle ?? ""
+            tableView.reloadData()
+        }
+    }
+
+    // MARK: - Private properties
+
+    private static let defaultRowHeight: CGFloat = 40
+    private static let defaultHeaderHeight: CGFloat = 60
+
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +43,7 @@ public class ReviewView: UIView {
         return tableView
     }()
 
-    lazy var selectButton: Button = {
+    private lazy var selectButton: Button = {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
@@ -37,14 +51,14 @@ public class ReviewView: UIView {
         return button
     }()
 
-    lazy var label: Label = {
+    private lazy var label: Label = {
         let label = Label(style: Label.Style.detail)
         label.textAlignment = .center
         label.isEnabled = false
         return label
     }()
 
-    lazy var wrapper: UIStackView = {
+    private lazy var wrapper: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [selectButton, label])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
@@ -52,15 +66,7 @@ public class ReviewView: UIView {
         return stack
     }()
 
-    public weak var delegate: ReviewViewDelegate?
-
-    public var model: ReviewViewModel? {
-        didSet {
-            selectButton.setTitle(model?.selectTitle ?? "", for: .normal)
-            label.text = model?.confirmationTitle ?? ""
-            tableView.reloadData()
-        }
-    }
+    // MARK: - Init
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,6 +77,8 @@ public class ReviewView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
+
+    // MARK: - Setup
 
     private func setup() {
         addSubview(tableView)
@@ -85,7 +93,22 @@ public class ReviewView: UIView {
             wrapper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
         ])
     }
+
+    // MARK: - Public methods
+
+    // MARK: - Private methods
+
+    @objc private func didSelectProfile() {
+        guard let indexPath = tableView.indexPathForSelectedRow,
+            let selectedProfile = model?.profiles[indexPath.row] else {
+                return
+        }
+
+        delegate?.reviewView(self, didSelect: selectedProfile)
+    }
 }
+
+// MARK: - UITableViewDataSource
 
 extension ReviewView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -113,6 +136,8 @@ extension ReviewView: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension ReviewView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -146,16 +171,7 @@ extension ReviewView: UITableViewDelegate {
     }
 }
 
-extension ReviewView {
-    @objc func didSelectProfile() {
-        guard let indexPath = tableView.indexPathForSelectedRow,
-            let selectedProfile = model?.profiles[indexPath.row] else {
-            return
-        }
-
-        delegate?.reviewView(self, didSelect: selectedProfile)
-    }
-}
+// MARK: - ReviewProfileCellDelegate
 
 extension ReviewView: ReviewProfileCellDelegate {
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage? {
