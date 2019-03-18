@@ -31,6 +31,12 @@ class UserAdsListViewDemoView: UIView {
 }
 
 extension UserAdsListViewDemoView: UserAdsListViewDelegate {
+    func userAdsListViewDidStartRefreshing(_ userAdsListView: UserAdsListView) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            userAdsListView.reloadData()
+        }
+    }
+
     func userAdsListView(_ userAdsListView: UserAdsListView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (_, indexPath) in
             guard let self = self else { return }
