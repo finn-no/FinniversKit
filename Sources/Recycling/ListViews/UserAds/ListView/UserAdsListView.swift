@@ -73,22 +73,20 @@ public class UserAdsListView: UIView {
         self.delegate = delegate
         self.dataSource = dataSource
         setup()
-        setupRefreshControl()
     }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        setupRefreshControl()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
-        setupRefreshControl()
     }
 
     private func setup() {
+        setupRefreshControl()
         tableView.register(UserAdsListViewNewAdCell.self)
         tableView.register(UserAdsListViewCell.self)
         tableView.register(UserAdsListViewSeeAllAdsCell.self)
