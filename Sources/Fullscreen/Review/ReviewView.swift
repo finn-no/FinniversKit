@@ -96,6 +96,10 @@ public class ReviewView: UIView {
 
     // MARK: - Public methods
 
+    public func setSelectButtonEnabled(_ isEnabled: Bool) {
+        selectButton.isEnabled = isEnabled
+    }
+
     // MARK: - Private methods
 
     @objc private func didSelectProfile() {
