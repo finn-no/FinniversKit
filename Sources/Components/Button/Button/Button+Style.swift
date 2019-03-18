@@ -120,5 +120,27 @@ public extension Button {
                 return .zero
             }
         }
+
+        func backgroundColor(forState state: State) -> UIColor? {
+            switch state {
+            case .highlighted:
+                return highlightedBodyColor
+            case .disabled:
+                return disabledBodyColor
+            default:
+                return bodyColor
+            }
+        }
+
+        func borderColor(forState state: State) -> CGColor? {
+            switch state {
+            case .highlighted:
+                return highlightedBorderColor?.cgColor
+            case .disabled:
+                return disabledBorderColor?.cgColor
+            default:
+                return borderColor?.cgColor
+            }
+        }
     }
 }

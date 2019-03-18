@@ -78,15 +78,15 @@ public class Button: UIButton {
 
     public override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? style.highlightedBodyColor : style.bodyColor
-            layer.borderColor = isHighlighted ? style.highlightedBorderColor?.cgColor : style.borderColor?.cgColor
+            backgroundColor = style.backgroundColor(forState: state)
+            layer.borderColor = style.borderColor(forState: state)
         }
     }
 
     public override var isEnabled: Bool {
         didSet {
-            backgroundColor = isEnabled ? style.bodyColor : style.disabledBodyColor
-            layer.borderColor = isEnabled ? style.borderColor?.cgColor : style.disabledBorderColor?.cgColor
+            backgroundColor = style.backgroundColor(forState: state)
+            layer.borderColor = style.borderColor(forState: state)
         }
     }
 
