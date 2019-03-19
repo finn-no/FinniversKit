@@ -126,7 +126,7 @@ public class UserAdsListViewCell: UITableViewCell {
 
                 detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                detailLabel.topAnchor.constraint(equalTo: (priceLabel?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
+                detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
             ])
         }
     }
