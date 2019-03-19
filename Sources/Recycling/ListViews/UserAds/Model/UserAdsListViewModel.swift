@@ -8,7 +8,7 @@ public protocol UserAdsListViewModel {
     var imagePath: String? { get }
     var imageSize: CGSize { get }
     var title: String { get }
-    var price: String { get }
+    var price: String? { get }
     var detail: String { get }
     var status: String { get }
     var accessibilityLabel: String { get }
@@ -17,7 +17,7 @@ public protocol UserAdsListViewModel {
 public extension UserAdsListViewModel {
     var accessibilityLabel: String {
         var message = title
-        message += ". " + price
+        message += ". " + (price ?? "")
         message += ". " + status
         message += ". " + detail
         return message
