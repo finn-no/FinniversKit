@@ -105,15 +105,6 @@ public class UserAdsListViewCell: UITableViewCell {
             separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.imageSize + .mediumSpacing), bottom: 0, right: 0)
             addSubview(detailLabel)
 
-            if let priceLabel = priceLabel {
-                addSubview(priceLabel)
-                NSLayoutConstraint.activate([
-                    priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-                    priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                    priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
-                ])
-            }
-
             NSLayoutConstraint.activate([
                 adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.imageSize),
                 adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.imageSize),
@@ -126,8 +117,24 @@ public class UserAdsListViewCell: UITableViewCell {
 
                 detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
             ])
+
+            // If price is not provided then the detailLabel should be centered with the ribbonView
+            if model?.price == nil {
+                NSLayoutConstraint.activate([
+                    detailLabel.centerYAnchor.constraint(equalTo: (ribbonView?.centerYAnchor ?? centerYAnchor)),
+                ])
+            } else {
+                guard let priceLabel = priceLabel else { return }
+                addSubview(priceLabel)
+                NSLayoutConstraint.activate([
+                    priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
+                    priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+                    priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
+
+                    detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
+                ])
+            }
         }
     }
 
