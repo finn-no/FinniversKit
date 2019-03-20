@@ -57,6 +57,7 @@ public class UserAdsListViewCell: UITableViewCell {
         let label = Label(style: .title4)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -64,6 +65,7 @@ public class UserAdsListViewCell: UITableViewCell {
         let label = Label(style: .title5)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -72,6 +74,7 @@ public class UserAdsListViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .stone
         label.backgroundColor = .clear
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -116,13 +119,13 @@ public class UserAdsListViewCell: UITableViewCell {
                 titleLabel.bottomAnchor.constraint(equalTo: (ribbonView?.topAnchor ?? detailLabel.topAnchor), constant: -.smallSpacing),
 
                 detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-                detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             ])
 
             // If price is not provided then the detailLabel should be centered with the ribbonView
             if model?.price == nil {
                 NSLayoutConstraint.activate([
                     detailLabel.centerYAnchor.constraint(equalTo: (ribbonView?.centerYAnchor ?? centerYAnchor)),
+                    detailLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
                 ])
             } else {
                 guard let priceLabel = priceLabel else { return }
@@ -133,6 +136,7 @@ public class UserAdsListViewCell: UITableViewCell {
                     priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
 
                     detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
+                    detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
                 ])
             }
         }
@@ -160,6 +164,7 @@ public class UserAdsListViewCell: UITableViewCell {
 
         if let ribbon = ribbonView {
             ribbon.translatesAutoresizingMaskIntoConstraints = false
+            ribbon.setContentCompressionResistancePriority(.required, for: .horizontal)
             addSubview(ribbon)
             NSLayoutConstraint.activate([
                 ribbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
