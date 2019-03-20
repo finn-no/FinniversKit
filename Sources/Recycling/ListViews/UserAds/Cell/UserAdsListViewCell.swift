@@ -102,7 +102,7 @@ public class UserAdsListViewCell: UITableViewCell {
 
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+                titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor)
             ])
         } else {
             separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.imageSize + .mediumSpacing), bottom: 0, right: 0)
