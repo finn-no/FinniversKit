@@ -31,7 +31,13 @@ public class ReviewViewDemoView: UIView {
 
 extension ReviewViewDemoView: ReviewViewDelegate {
     public func reviewView(_ reviewView: ReviewView, didSelect profile: ReviewViewProfileModel) {
+        LoadingView.show()
+        reviewView.setSelectButtonEnabled(false)
         print("Did select: \(profile.name) for review")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            LoadingView.hide()
+            reviewView.setSelectButtonEnabled(true)
+        })
     }
 
     public func reviewView(_ reviewView: ReviewView, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage? {
