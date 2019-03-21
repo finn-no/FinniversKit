@@ -60,7 +60,7 @@ public class UserAdsListViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var priceLabel: Label = {
+    private lazy var priceLabel: Label? = {
         let label = Label(style: .title5)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
@@ -103,8 +103,6 @@ public class UserAdsListViewCell: UITableViewCell {
             ])
         } else {
             separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.imageSize + .mediumSpacing), bottom: 0, right: 0)
-
-            addSubview(priceLabel)
             addSubview(detailLabel)
 
             NSLayoutConstraint.activate([
@@ -113,25 +111,37 @@ public class UserAdsListViewCell: UITableViewCell {
                 adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
                 adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
 
-                priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-                priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
-
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                titleLabel.bottomAnchor.constraint(equalTo: priceLabel.topAnchor, constant: -.mediumSpacing),
+                titleLabel.bottomAnchor.constraint(equalTo: (ribbonView?.topAnchor ?? detailLabel.topAnchor), constant: -.smallSpacing),
 
                 detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                detailLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: .mediumSpacing),
             ])
+
+            // If price is not provided then the detailLabel should be centered with the ribbonView
+            if model?.price == nil {
+                NSLayoutConstraint.activate([
+                    detailLabel.centerYAnchor.constraint(equalTo: (ribbonView?.centerYAnchor ?? centerYAnchor)),
+                ])
+            } else {
+                guard let priceLabel = priceLabel else { return }
+                addSubview(priceLabel)
+                NSLayoutConstraint.activate([
+                    priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
+                    priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+                    priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
+
+                    detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
+                ])
+            }
         }
     }
 
     private func teardownView() {
         adImageView.removeFromSuperview()
         titleLabel.removeFromSuperview()
-        priceLabel.removeFromSuperview()
+        priceLabel?.removeFromSuperview()
         ribbonView?.removeFromSuperview()
         detailLabel.removeFromSuperview()
     }
@@ -164,7 +174,7 @@ public class UserAdsListViewCell: UITableViewCell {
         super.prepareForReuse()
         adImageView.image = nil
         titleLabel.text = nil
-        priceLabel.text = nil
+        priceLabel?.text = nil
         detailLabel.text = nil
         accessibilityLabel = nil
 
@@ -178,10 +188,8 @@ public class UserAdsListViewCell: UITableViewCell {
     public var model: UserAdsListViewModel? {
         didSet {
             guard let model = model else { return }
-            teardownView()
-
             titleLabel.text = model.title
-            priceLabel.text = model.price
+            priceLabel?.text = model.price
             detailLabel.text = model.detail
             userAdStatus = UserAdStatus(rawValue: model.status) ?? .unknown
             accessibilityLabel = model.accessibilityLabel
