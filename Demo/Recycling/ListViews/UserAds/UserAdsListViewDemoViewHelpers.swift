@@ -143,8 +143,8 @@ public struct UserAdsFactory {
         return [
             "1 200 00 000 000 000 000 000 000,-",
             "58 000 000 000 000,-",
+            nil,
             "Gis bort",
-            "12 900 000,-",
             nil,
         ]
     }

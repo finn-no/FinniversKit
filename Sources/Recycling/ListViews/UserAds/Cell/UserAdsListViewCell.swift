@@ -33,9 +33,7 @@ public class UserAdsListViewCell: UITableViewCell {
     // MARK: - Internal properties
 
     private static let cornerRadius: CGFloat = 12
-    private static let imageSize: CGFloat = 100
-
-    private static let inactiveCornerRadius: CGFloat = 12
+    private static let activeImageSize: CGFloat = 100
     private static let inactiveImageSize: CGFloat = 56
 
     private var defaultImage: UIImage? {
@@ -56,6 +54,7 @@ public class UserAdsListViewCell: UITableViewCell {
     private lazy var titleLabel: Label = {
         let label = Label(style: .title4)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
         label.backgroundColor = .clear
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
@@ -97,26 +96,26 @@ public class UserAdsListViewCell: UITableViewCell {
             NSLayoutConstraint.activate([
                 adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.inactiveImageSize),
                 adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.inactiveImageSize),
-                adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
                 adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+                adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
 
-                titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+                titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor)
             ])
         } else {
-            separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.imageSize + .mediumSpacing), bottom: 0, right: 0)
+            separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.activeImageSize + .mediumSpacing), bottom: 0, right: 0)
             addSubview(detailLabel)
 
             NSLayoutConstraint.activate([
-                adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.imageSize),
-                adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.imageSize),
+                adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.activeImageSize),
+                adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.activeImageSize),
                 adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
                 adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
 
+                titleLabel.bottomAnchor.constraint(equalTo: (ribbonView?.topAnchor ?? detailLabel.topAnchor), constant: -.smallSpacing),
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                titleLabel.bottomAnchor.constraint(equalTo: (ribbonView?.topAnchor ?? detailLabel.topAnchor), constant: -.smallSpacing),
 
                 detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
             ])
@@ -131,8 +130,8 @@ public class UserAdsListViewCell: UITableViewCell {
                 guard let priceLabel = priceLabel else { return }
                 addSubview(priceLabel)
                 NSLayoutConstraint.activate([
-                    priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                     priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+                    priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                     priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
 
                     detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
