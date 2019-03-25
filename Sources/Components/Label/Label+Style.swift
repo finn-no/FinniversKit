@@ -10,7 +10,7 @@ public extension Label {
         case title2
         case title3
         case bodyStrong
-        case title5
+        case detailStrong
         case body
         case captionHeavy
         case caption
@@ -22,7 +22,7 @@ public extension Label {
             case .title2: return UIFont.title2
             case .title3: return UIFont.title3
             case .bodyStrong: return UIFont.bodyStrong
-            case .title5: return UIFont.title5
+            case .detailStrong: return UIFont.detailStrong
             case .body: return UIFont.body
             case .captionHeavy: return UIFont.captionHeavy
             case .caption: return UIFont.caption

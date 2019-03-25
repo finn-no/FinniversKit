@@ -255,14 +255,14 @@ private class ButtonView: UIView {
 
     lazy var positiveButton: UIButton = {
         let button = Button(style: .callToAction, size: .small)
-        button.titleLabel?.font = .title5
+        button.titleLabel?.font = .detailStrong
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     lazy var negativeButton: UIButton = {
         let button = Button(style: .default, size: .small)
-        button.titleLabel?.font = .title5
+        button.titleLabel?.font = .detailStrong
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
         button.layer.borderColor = .primaryBlue
