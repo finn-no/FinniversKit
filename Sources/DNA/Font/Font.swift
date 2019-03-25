@@ -92,7 +92,7 @@ enum FontType: String {
     /// - Used for short amount of text if neither the Body or Detail is appropriate.
     /// - Bold version of Caption
     /// - This is slightly smaller than body text. Weighted Medium.
-    public static var captionHeavy: UIFont {
+    public static var captionStrong: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.medium.rawValue, size: 14.0)!
