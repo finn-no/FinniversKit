@@ -50,6 +50,7 @@ public enum ComponentViews: String, CaseIterable {
     case feedbackView
     case happinessRating
     case earthHour
+    case stepIndicator
 
     public var viewController: UIViewController {
         switch self {
@@ -109,6 +110,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<HappinessRatingDemoView>(withDismissButton: true)
         case .earthHour:
             return DemoViewController<EarthHourDemoView>()
+        case .stepIndicator:
+            return DemoViewController<StepIndicatorDemoView>(withDismissButton: true)
         }
     }
 }
