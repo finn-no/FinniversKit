@@ -24,17 +24,17 @@ public struct UserAdCell: UserAdsListViewModel {
     public let imagePath: String?
     public let imageSize: CGSize
     public let title: String
-    public let price: String
+    public let price: String?
     public let detail: String
     public let status: String
 
     public var accessibilityLabel: String {
-        let message = [title, price, detail, status].joined(separator: ". ")
+        let message = [title, (price ?? ""), detail, status].joined(separator: ". ")
         return message
     }
 
     public init(imagePath: String? = nil, imageSize: CGSize = CGSize(width: 0, height: 0),
-                title: String = "", price: String = "", detail: String = "", status: String = "") {
+                title: String = "", price: String? = nil, detail: String = "", status: String = "") {
         self.imagePath = imagePath
         self.imageSize = imageSize
         self.title = title
@@ -134,18 +134,18 @@ public struct UserAdsFactory {
             "George Condo - My twisted fantasy",
             "Fender Jaguar Blå",
             "Nixon Kamera",
-            "Dette er en halvlang tittel med noe ekstra informasjon",
             "Retro sko",
+            "Dette er en halvlang tittel med noe ekstra informasjon",
         ]
     }
 
-    private static var prices: [String] {
+    private static var prices: [String?] {
         return [
             "1 200 00 000 000 000 000 000 000,-",
             "58 000 000 000 000,-",
+            nil,
             "Gis bort",
-            "12 900 000,-",
-            "1 800,-",
+            nil,
         ]
     }
 

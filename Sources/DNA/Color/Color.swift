@@ -34,7 +34,7 @@ import UIKit
     }
 
     public class var salmon: UIColor {
-        return UIColor(r: 255, g: 206, b: 215)!
+        return UIColor(r: 255, g: 227, b: 229)!
     }
 
     public class var mint: UIColor {
@@ -50,7 +50,7 @@ import UIKit
     }
 
     public class var cherry: UIColor {
-        return UIColor(r: 218, g: 36, b: 0)!
+        return UIColor(r: 228, g: 41, b: 10)!
     }
 
     public class var watermelon: UIColor {
@@ -58,7 +58,7 @@ import UIKit
     }
 
     public class var pea: UIColor {
-        return UIColor(r: 104, g: 226, b: 184)!
+        return UIColor(r: 46, g: 230, b: 159)!
     }
 
     // swiftlint:disable:next identifier_name

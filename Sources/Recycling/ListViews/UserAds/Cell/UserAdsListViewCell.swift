@@ -33,9 +33,7 @@ public class UserAdsListViewCell: UITableViewCell {
     // MARK: - Internal properties
 
     private static let cornerRadius: CGFloat = 12
-    private static let imageSize: CGFloat = 100
-
-    private static let inactiveCornerRadius: CGFloat = 12
+    private static let activeImageSize: CGFloat = 100
     private static let inactiveImageSize: CGFloat = 56
 
     private var defaultImage: UIImage? {
@@ -56,14 +54,17 @@ public class UserAdsListViewCell: UITableViewCell {
     private lazy var titleLabel: Label = {
         let label = Label(style: .title4)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
         label.backgroundColor = .clear
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
-    private lazy var priceLabel: Label = {
+    private lazy var priceLabel: Label? = {
         let label = Label(style: .title5)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -72,6 +73,7 @@ public class UserAdsListViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .stone
         label.backgroundColor = .clear
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -94,44 +96,55 @@ public class UserAdsListViewCell: UITableViewCell {
             NSLayoutConstraint.activate([
                 adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.inactiveImageSize),
                 adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.inactiveImageSize),
-                adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
                 adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+                adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
 
-                titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+                titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor)
             ])
         } else {
-            separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.imageSize + .mediumSpacing), bottom: 0, right: 0)
-
-            addSubview(priceLabel)
+            separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.activeImageSize + .mediumSpacing), bottom: 0, right: 0)
             addSubview(detailLabel)
 
             NSLayoutConstraint.activate([
-                adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.imageSize),
-                adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.imageSize),
+                adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.activeImageSize),
+                adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.activeImageSize),
                 adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
                 adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
 
-                priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-                priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
-
+                titleLabel.bottomAnchor.constraint(equalTo: (ribbonView?.topAnchor ?? detailLabel.topAnchor), constant: -.smallSpacing),
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                titleLabel.bottomAnchor.constraint(equalTo: priceLabel.topAnchor, constant: -.mediumSpacing),
 
                 detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-                detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                detailLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: .mediumSpacing),
             ])
+
+            // If price is not provided then the detailLabel should be centered with the ribbonView
+            if model?.price == nil {
+                NSLayoutConstraint.activate([
+                    detailLabel.centerYAnchor.constraint(equalTo: (ribbonView?.centerYAnchor ?? centerYAnchor)),
+                    detailLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
+                ])
+            } else {
+                guard let priceLabel = priceLabel else { return }
+                addSubview(priceLabel)
+                NSLayoutConstraint.activate([
+                    priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+                    priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
+                    priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
+
+                    detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
+                    detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                ])
+            }
         }
     }
 
     private func teardownView() {
         adImageView.removeFromSuperview()
         titleLabel.removeFromSuperview()
-        priceLabel.removeFromSuperview()
+        priceLabel?.removeFromSuperview()
         ribbonView?.removeFromSuperview()
         detailLabel.removeFromSuperview()
     }
@@ -150,6 +163,7 @@ public class UserAdsListViewCell: UITableViewCell {
 
         if let ribbon = ribbonView {
             ribbon.translatesAutoresizingMaskIntoConstraints = false
+            ribbon.setContentCompressionResistancePriority(.required, for: .horizontal)
             addSubview(ribbon)
             NSLayoutConstraint.activate([
                 ribbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -164,7 +178,7 @@ public class UserAdsListViewCell: UITableViewCell {
         super.prepareForReuse()
         adImageView.image = nil
         titleLabel.text = nil
-        priceLabel.text = nil
+        priceLabel?.text = nil
         detailLabel.text = nil
         accessibilityLabel = nil
 
@@ -178,10 +192,8 @@ public class UserAdsListViewCell: UITableViewCell {
     public var model: UserAdsListViewModel? {
         didSet {
             guard let model = model else { return }
-            teardownView()
-
             titleLabel.text = model.title
-            priceLabel.text = model.price
+            priceLabel?.text = model.price
             detailLabel.text = model.detail
             userAdStatus = UserAdStatus(rawValue: model.status) ?? .unknown
             accessibilityLabel = model.accessibilityLabel

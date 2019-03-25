@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol UserAdsListViewDelegate: class {
+    func userAdsListViewDidStartRefreshing(_ userAdsListView: UserAdsListView)
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button)
@@ -26,6 +27,12 @@ public protocol UserAdsListViewDataSource: class {
 
 public class UserAdsListView: UIView {
     // MARK: - Internal properties
+
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = RefreshControl(frame: .zero)
+        refreshControl.delegate = self
+        return refreshControl
+    }()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -79,6 +86,7 @@ public class UserAdsListView: UIView {
     }
 
     private func setup() {
+        setupRefreshControl()
         tableView.register(UserAdsListViewNewAdCell.self)
         tableView.register(UserAdsListViewCell.self)
         tableView.register(UserAdsListViewSeeAllAdsCell.self)
@@ -86,10 +94,23 @@ public class UserAdsListView: UIView {
         tableView.fillInSuperview()
     }
 
+    private func setupRefreshControl() {
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+    }
+
     // MARK: - Public
 
     public func reloadData() {
+        endRefreshing()
         tableView.reloadData()
+    }
+
+    public func endRefreshing() {
+        refreshControl.endRefreshing()
     }
 
     public func insertRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation) {
@@ -268,5 +289,11 @@ extension UserAdsListView: UserAdsListViewCellDataSource {
 extension UserAdsListView: UserAdsListViewSeeAllAdsCellDelegate {
     public func userAdsListViewSeeAllAdsCell(_ userAdsListViewSeeAllAdsCell: UserAdsListViewSeeAllAdsCell, didTapSeeAllAdsButton button: Button) {
         delegate?.userAdsListView(self, didTapSeeAllAdsButton: button)
+    }
+}
+
+extension UserAdsListView: RefreshControlDelegate {
+    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        delegate?.userAdsListViewDidStartRefreshing(self)
     }
 }
