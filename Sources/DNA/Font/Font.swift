@@ -56,7 +56,7 @@ enum FontType: String {
     ///
     /// ## Usage:
     /// - This have the same size as the body text, but is always bolded (Medium) to differenciate them.
-    public static var title4: UIFont {
+    public static var bodyStrong: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.medium.rawValue, size: 16.0)!
