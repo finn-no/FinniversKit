@@ -49,7 +49,8 @@ public final class FrontPageView: UIView {
 
     private lazy var inlineConsentLockView: UIView = {
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
+        view.alpha = 0.5
         view.isHidden = true
         return view
     }()
@@ -197,7 +198,10 @@ public final class FrontPageView: UIView {
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
         boundsForCurrentSubviewSetup = bounds
         adsGridView.invalidateLayout()
+        setupFrameForDialogue(height: height)
+    }
 
+    func setupFrameForDialogue(height: CGFloat) {
         var widthPercentage: CGFloat = 0.8
         var heightPercentage: CGFloat = 0.3
 
@@ -205,9 +209,10 @@ public final class FrontPageView: UIView {
             widthPercentage = 0.9
             heightPercentage = 0.4
         }
+
         if UIDevice.isIPad() {
-            widthPercentage = 0.9
-            heightPercentage = 0.2
+            widthPercentage = 0.5
+            heightPercentage = 0.17
         }
 
         let dialogueWidth = bounds.width * widthPercentage
@@ -225,7 +230,7 @@ public final class FrontPageView: UIView {
             x: 0,
             y: height,
             width: bounds.width,
-            height: 5000)
+            height: bounds.height + 100)
     }
 }
 

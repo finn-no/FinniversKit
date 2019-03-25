@@ -162,7 +162,7 @@ public class DialogueView: UIView {
         }
 
         if UIDevice.isLandscape() {
-            moreSpacing = -.largeSpacing
+            moreSpacing = -.largeSpacing - 10
         }
 
         return boundingBox.height - moreSpacing
