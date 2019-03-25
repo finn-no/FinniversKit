@@ -8,19 +8,19 @@ import UIKit.UIDevice
 
 extension UIDevice {
 
-    internal class func isIPad() -> Bool {
+    class func isIPad() -> Bool {
         return current.userInterfaceIdiom == .pad
     }
 
-    internal class func isIPhone() -> Bool {
+    class func isIPhone() -> Bool {
         return current.userInterfaceIdiom == .phone
     }
 
-    internal class func isSmallScreen() -> Bool {
+    class func isSmallScreen() -> Bool {
         return isIPhone() && UIScreen.main.nativeBounds.height == 1136
     }
 
-    internal class func isLandscape() -> Bool {
+    class func isLandscape() -> Bool {
         return isIPad() && current.orientation.isLandscape
     }
 }
