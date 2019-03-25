@@ -103,7 +103,7 @@ enum FontType: String {
     ///
     /// ## Usage:
     /// - Used for small, bold headlines.
-    public static var title5: UIFont {
+    public static var detailStrong: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.bold.rawValue, size: 12.0)!
