@@ -29,8 +29,7 @@ public class SwitchView: UIView {
 
     private lazy var mySwitch: UISwitch = {
         let mySwitch = UISwitch()
-        mySwitch.tintColor = .sardine
-        mySwitch.onTintColor = .pea
+        mySwitch.onTintColor = .primaryBlue
         mySwitch.addTarget(self, action: #selector(switchChangedState), for: .valueChanged)
         return mySwitch
     }()
