@@ -12,7 +12,7 @@ public extension Label {
         case bodyStrong
         case detailStrong
         case body
-        case captionHeavy
+        case captionStrong
         case caption
         case detail
 
@@ -24,7 +24,7 @@ public extension Label {
             case .bodyStrong: return UIFont.bodyStrong
             case .detailStrong: return UIFont.detailStrong
             case .body: return UIFont.body
-            case .captionHeavy: return UIFont.captionHeavy
+            case .captionStrong: return UIFont.captionStrong
             case .caption: return UIFont.caption
             case .detail: return UIFont.detail
             }

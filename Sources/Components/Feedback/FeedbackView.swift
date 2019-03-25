@@ -237,7 +237,7 @@ private class TitleView: UIView {
         switch presentation {
         case .list:
             titleLabel.textAlignment = .left
-            titleLabel.font = .captionHeavy
+            titleLabel.font = .captionStrong
             titleLabelLeadingConstraint.constant = 0
         case .grid:
             titleLabel.textAlignment = .center

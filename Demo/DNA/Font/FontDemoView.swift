@@ -31,7 +31,7 @@ public class FontDemoView: UIView {
             FontItem(font: .title3, title: "title3"),
             FontItem(font: .bodyStrong, title: "bodyStrong"),
             FontItem(font: .detailStrong, title: "detailStrong"),
-            FontItem(font: .captionHeavy, title: "captionHeavy"),
+            FontItem(font: .captionStrong, title: "captionStrong"),
             FontItem(font: .caption, title: "caption"),
             FontItem(font: .body, title: "body"),
             FontItem(font: .detail, title: "detail")
