@@ -198,10 +198,10 @@ public final class FrontPageView: UIView {
         adsRetryView.frame.size = CGSize(width: bounds.width, height: 200)
         boundsForCurrentSubviewSetup = bounds
         adsGridView.invalidateLayout()
-        setupFrameForDialogue(height: height)
+        setupFrameForDialogue(yPosition: height)
     }
 
-    func setupFrameForDialogue(height: CGFloat) {
+    func setupFrameForDialogue(yPosition: CGFloat) {
         var widthPercentage: CGFloat = 0.8
         var heightPercentage: CGFloat = 0.3
 
@@ -218,7 +218,7 @@ public final class FrontPageView: UIView {
         let dialogueWidth = bounds.width * widthPercentage
         let dialogueHeight = (bounds.height * heightPercentage) +
             inlineConsentDialogue.heightWithConstrainedWidth(width: dialogueWidth)
-        let inlineConsentDialogueY = height + 25
+        let inlineConsentDialogueY = yPosition + 25
 
         inlineConsentDialogue.frame = CGRect(
             x: (bounds.width - dialogueWidth) / 2,
@@ -228,7 +228,7 @@ public final class FrontPageView: UIView {
 
         inlineConsentLockView.frame = CGRect(
             x: 0,
-            y: height,
+            y: yPosition,
             width: bounds.width,
             height: bounds.height + 100)
     }
