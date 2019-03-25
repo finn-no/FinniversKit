@@ -130,4 +130,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testEarthHourView() {
         snapshot(.earthHour)
     }
+
+    func testStepIndicatorView() {
+        snapshot(.stepIndicator)
+    }
 }
