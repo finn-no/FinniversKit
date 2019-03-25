@@ -14,7 +14,7 @@ public class SpacingDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     func makeLabel(text: String) -> Label {
-        let label = Label(style: .title4)
+        let label = Label(style: .bodyStrong)
         label.text = text
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .licorice

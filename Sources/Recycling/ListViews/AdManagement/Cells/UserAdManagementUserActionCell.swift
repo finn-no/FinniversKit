@@ -24,7 +24,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
-        label.font = UIFont.title4
+        label.font = UIFont.bodyStrong
         label.textColor = .licorice
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false

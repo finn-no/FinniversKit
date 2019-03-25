@@ -106,7 +106,7 @@ public extension Button {
             case (.link, .small):
                 return .detail
             case (_, .normal):
-                return .title4
+                return .bodyStrong
             case (_, .small):
                 return .title5
             }

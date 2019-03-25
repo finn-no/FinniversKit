@@ -194,7 +194,7 @@ private class TitleView: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = .title4
+        label.font = .bodyStrong
         label.textAlignment = .center
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -241,7 +241,7 @@ private class TitleView: UIView {
             titleLabelLeadingConstraint.constant = 0
         case .grid:
             titleLabel.textAlignment = .center
-            titleLabel.font = .title4
+            titleLabel.font = .bodyStrong
             titleLabelLeadingConstraint.constant = .mediumSpacing
         }
     }
