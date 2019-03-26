@@ -56,7 +56,7 @@ enum FontType: String {
     ///
     /// ## Usage:
     /// - This have the same size as the body text, but is always bolded (Medium) to differenciate them.
-    public static var title4: UIFont {
+    public static var bodyStrong: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.medium.rawValue, size: 16.0)!
@@ -92,7 +92,7 @@ enum FontType: String {
     /// - Used for short amount of text if neither the Body or Detail is appropriate.
     /// - Bold version of Caption
     /// - This is slightly smaller than body text. Weighted Medium.
-    public static var captionHeavy: UIFont {
+    public static var captionStrong: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.medium.rawValue, size: 14.0)!
@@ -103,7 +103,7 @@ enum FontType: String {
     ///
     /// ## Usage:
     /// - Used for small, bold headlines.
-    public static var title5: UIFont {
+    public static var detailStrong: UIFont {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.bold.rawValue, size: 12.0)!
@@ -135,6 +135,25 @@ enum FontType: String {
         } else {
             return self
         }
+    }
+}
+
+// MARK: - Deprecated font names
+
+extension UIFont {
+    @available(*, deprecated, message: "Use bodyStrong instead.")
+    public static var title4: UIFont {
+        return bodyStrong
+    }
+
+    @available(*, deprecated, message: "Use detailStrong instead.")
+    public static var title5: UIFont {
+        return detailStrong
+    }
+
+    @available(*, deprecated, message: "Use captionStrong instead.")
+    public static var captionHeavy: UIFont {
+        return captionStrong
     }
 }
 

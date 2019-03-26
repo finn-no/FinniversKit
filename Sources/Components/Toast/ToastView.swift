@@ -32,7 +32,7 @@ public class ToastView: UIView {
     private let imageSizeAllowedMax = CGSize(width: 26, height: 26)
 
     private lazy var messageTitle: Label = {
-        let label = Label(style: .title4)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label

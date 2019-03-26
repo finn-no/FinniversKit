@@ -24,7 +24,7 @@ public final class InfoboxView: UIView {
     // MARK: - Subviews
 
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: .title4)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .licorice

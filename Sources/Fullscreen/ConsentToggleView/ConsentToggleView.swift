@@ -20,10 +20,9 @@ public class ConsentToggleView: UIView {
     }()
 
     private var toggle: UISwitch = {
-        let toggle = UISwitch(frame: .zero)
-        toggle.onTintColor = .pea
+        let toggle = UISwitch(withAutoLayout: true)
+        toggle.onTintColor = .primaryBlue
         toggle.addTarget(self, action: #selector(switchDidToogle(sender:)), for: .valueChanged)
-        toggle.translatesAutoresizingMaskIntoConstraints = false
         return toggle
     }()
 
