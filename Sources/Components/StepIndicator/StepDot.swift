@@ -104,8 +104,8 @@ class StepDot: UIView {
             outerFill.toValue = StepIndicator.activeColor.cgColor
             innerSize.toValue = [ 1.0, 1.0 ]
         case .peeked:
-            outerFill.toValue = StepIndicator.activeColor.cgColor
-            innerSize.toValue = [ 0.9, 0.9 ]
+            outerFill.toValue = StepIndicator.inactiveColor.cgColor
+            innerSize.toValue = [ 0, 0 ]
         case .completed:
             outerFill.toValue = StepIndicator.activeColor.cgColor
             innerSize.toValue = [ 0.0, 0.0 ]

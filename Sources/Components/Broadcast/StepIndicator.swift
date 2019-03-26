@@ -94,10 +94,6 @@ public class StepIndicator: UIView {
 
         furthestStep = max(furthestStep, currentStep)
 
-        for index in 0..<furthestStep {
-            connectors[safe: index]?.highlight()
-        }
-
         for index in 0..<numberOfSteps {
             let state: StepDot.State
 
@@ -112,6 +108,7 @@ public class StepIndicator: UIView {
             }
 
             stepDots[safe: index]?.setState(state)
+            connectors[safe: index]?.highlighted = (index < currentStep || index < furthestStep - 1)
         }
     }
 }
