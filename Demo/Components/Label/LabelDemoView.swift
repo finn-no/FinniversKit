@@ -21,9 +21,9 @@ public class LabelDemoView: UIView {
         let labelT1 = Label(style: .title1)
         let labelT2 = Label(style: .title2)
         let labelT3 = Label(style: .title3)
-        let labelT4 = Label(style: .title4)
-        let labelT5 = Label(style: .title5)
-        let labelCaptionHeavy = Label(style: .captionHeavy)
+        let labelBodyStrong = Label(style: .bodyStrong)
+        let labelDetailStrong = Label(style: .detailStrong)
+        let labelCaptionStrong = Label(style: .captionStrong)
         let labelCaption = Label(style: .caption)
         let labelBody = Label(style: .body)
         let labelDetail = Label(style: .detail)
@@ -38,9 +38,9 @@ public class LabelDemoView: UIView {
         labelT1.translatesAutoresizingMaskIntoConstraints = false
         labelT2.translatesAutoresizingMaskIntoConstraints = false
         labelT3.translatesAutoresizingMaskIntoConstraints = false
-        labelT4.translatesAutoresizingMaskIntoConstraints = false
-        labelT5.translatesAutoresizingMaskIntoConstraints = false
-        labelCaptionHeavy.translatesAutoresizingMaskIntoConstraints = false
+        labelBodyStrong.translatesAutoresizingMaskIntoConstraints = false
+        labelDetailStrong.translatesAutoresizingMaskIntoConstraints = false
+        labelCaptionStrong.translatesAutoresizingMaskIntoConstraints = false
         labelCaption.translatesAutoresizingMaskIntoConstraints = false
         labelBody.translatesAutoresizingMaskIntoConstraints = false
         labelDetail.translatesAutoresizingMaskIntoConstraints = false
@@ -57,9 +57,9 @@ public class LabelDemoView: UIView {
         addSubview(labelT1)
         addSubview(labelT2)
         addSubview(labelT3)
-        addSubview(labelT4)
-        addSubview(labelT5)
-        addSubview(labelCaptionHeavy)
+        addSubview(labelBodyStrong)
+        addSubview(labelDetailStrong)
+        addSubview(labelCaptionStrong)
         addSubview(labelCaption)
         addSubview(labelBody)
         addSubview(labelDetail)
@@ -80,17 +80,17 @@ public class LabelDemoView: UIView {
             labelT3.topAnchor.constraint(equalTo: labelT2.bottomAnchor, constant: interimSpacing),
             labelT3.leadingAnchor.constraint(equalTo: labelT2.leadingAnchor),
 
-            labelT4.topAnchor.constraint(equalTo: labelT3.bottomAnchor, constant: interimSpacing),
-            labelT4.leadingAnchor.constraint(equalTo: labelT3.leadingAnchor),
+            labelBodyStrong.topAnchor.constraint(equalTo: labelT3.bottomAnchor, constant: interimSpacing),
+            labelBodyStrong.leadingAnchor.constraint(equalTo: labelT3.leadingAnchor),
 
-            labelT5.topAnchor.constraint(equalTo: labelT4.bottomAnchor, constant: interimSpacing),
-            labelT5.leadingAnchor.constraint(equalTo: labelT4.leadingAnchor),
+            labelDetailStrong.topAnchor.constraint(equalTo: labelBodyStrong.bottomAnchor, constant: interimSpacing),
+            labelDetailStrong.leadingAnchor.constraint(equalTo: labelBodyStrong.leadingAnchor),
 
-            labelCaptionHeavy.topAnchor.constraint(equalTo: labelT5.bottomAnchor, constant: interimSpacing),
-            labelCaptionHeavy.leadingAnchor.constraint(equalTo: labelT5.leadingAnchor),
+            labelCaptionStrong.topAnchor.constraint(equalTo: labelDetailStrong.bottomAnchor, constant: interimSpacing),
+            labelCaptionStrong.leadingAnchor.constraint(equalTo: labelDetailStrong.leadingAnchor),
 
-            labelCaption.topAnchor.constraint(equalTo: labelCaptionHeavy.bottomAnchor, constant: interimSpacing),
-            labelCaption.leadingAnchor.constraint(equalTo: labelCaptionHeavy.leadingAnchor),
+            labelCaption.topAnchor.constraint(equalTo: labelCaptionStrong.bottomAnchor, constant: interimSpacing),
+            labelCaption.leadingAnchor.constraint(equalTo: labelCaptionStrong.leadingAnchor),
 
             labelBody.topAnchor.constraint(equalTo: labelCaption.bottomAnchor, constant: interimSpacing),
             labelBody.leadingAnchor.constraint(equalTo: labelCaption.leadingAnchor),
@@ -126,9 +126,9 @@ public class LabelDemoView: UIView {
         labelT1.text = "Label Title1"
         labelT2.text = "Label Title2"
         labelT3.text = "Label Title3"
-        labelT4.text = "Label Title4"
-        labelT5.text = "Label Title5"
-        labelCaptionHeavy.text = "Label Caption Heavy"
+        labelBodyStrong.text = "Label Body Strong"
+        labelDetailStrong.text = "Label Detail Strong"
+        labelCaptionStrong.text = "Label Caption Strong"
         labelCaption.text = "Label Caption"
         labelBody.text = "Label Body"
         labelDetail.text = "Label Detail"

@@ -35,7 +35,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = .title5
+        label.font = .detailStrong
         label.textColor = .licorice
         label.textAlignment = .left
         return label
@@ -43,7 +43,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
 
     private lazy var button: UIButton = {
         let button = UIButton(frame: .zero)
-        button.titleLabel?.font = .title5
+        button.titleLabel?.font = .detailStrong
         button.titleLabel?.textColor = .milk
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .primaryBlue
@@ -86,7 +86,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
     private func updateButtonConstraints() {
         guard let buttonText = buttonText else { return }
 
-        let buttonWidth = 20 + buttonText.width(withConstrainedHeight: buttonHeight, font: .title5)
+        let buttonWidth = 20 + buttonText.width(withConstrainedHeight: buttonHeight, font: .detailStrong)
         buttonWidthConstraint?.constant = buttonWidth
     }
 
@@ -94,7 +94,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         guard let informationText = informationText else { return }
 
         let labelWidth = bounds.size.width*labelWidthProportion-labelToButtonSpacing-labelLeftInset
-        let labelHeight = informationText.height(withConstrainedWidth: labelWidth, font: .title5)
+        let labelHeight = informationText.height(withConstrainedWidth: labelWidth, font: .detailStrong)
         labelHeightConstraint?.constant = labelHeight
     }
 

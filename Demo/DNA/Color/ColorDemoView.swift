@@ -70,7 +70,7 @@ extension ColorDemoView: UITableViewDataSource {
         cell.backgroundColor = item.color
         cell.textLabel?.text = item.title.capitalized
 
-        cell.textLabel?.font = UIFont.title4
+        cell.textLabel?.font = UIFont.bodyStrong
         cell.textLabel?.textColor = UIColor.black
         cell.selectionStyle = .none
 

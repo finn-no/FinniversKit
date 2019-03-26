@@ -34,7 +34,7 @@ public final class ConsentTransparencyInfoView: UIView {
     }()
 
     private lazy var finnHeaderLabel: Label = {
-        let label = Label(style: .title4)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -76,7 +76,7 @@ public final class ConsentTransparencyInfoView: UIView {
     }()
 
     private lazy var schibstedHeaderLabel: Label = {
-        let label = Label(style: .title4)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label

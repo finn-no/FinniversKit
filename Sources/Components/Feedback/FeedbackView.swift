@@ -194,7 +194,7 @@ private class TitleView: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = .title4
+        label.font = .bodyStrong
         label.textAlignment = .center
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
@@ -237,11 +237,11 @@ private class TitleView: UIView {
         switch presentation {
         case .list:
             titleLabel.textAlignment = .left
-            titleLabel.font = .captionHeavy
+            titleLabel.font = .captionStrong
             titleLabelLeadingConstraint.constant = 0
         case .grid:
             titleLabel.textAlignment = .center
-            titleLabel.font = .title4
+            titleLabel.font = .bodyStrong
             titleLabelLeadingConstraint.constant = .mediumSpacing
         }
     }
@@ -255,14 +255,14 @@ private class ButtonView: UIView {
 
     lazy var positiveButton: UIButton = {
         let button = Button(style: .callToAction, size: .small)
-        button.titleLabel?.font = .title5
+        button.titleLabel?.font = .detailStrong
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     lazy var negativeButton: UIButton = {
         let button = Button(style: .default, size: .small)
-        button.titleLabel?.font = .title5
+        button.titleLabel?.font = .detailStrong
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
         button.layer.borderColor = .primaryBlue

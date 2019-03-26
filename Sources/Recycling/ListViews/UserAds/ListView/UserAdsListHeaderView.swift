@@ -18,7 +18,7 @@ public class UserAdsListHeaderView: UIView {
     // MARK: - Internal properties
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title5)
+        let label = Label(style: .detailStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -29,7 +29,7 @@ public class UserAdsListHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .primaryBlue
         button.setTitleColor(.primaryBlue, for: .normal)
-        button.titleLabel?.font = .title5
+        button.titleLabel?.font = .detailStrong
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(seeMoreButtonTapped(_:)), for: .touchUpInside)
         return button

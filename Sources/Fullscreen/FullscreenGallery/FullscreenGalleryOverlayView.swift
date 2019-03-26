@@ -48,7 +48,7 @@ class FullscreenGalleryOverlayView: UIView {
     private let previewViewInitiallyVisible: Bool
 
     private lazy var captionLabel: Label = {
-        let label = Label(style: .title4)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = .milk
