@@ -47,6 +47,7 @@ public final class FrontPageView: UIView {
         return dialogueView
     }()
 
+    //Use this do disable all ads :D 
     private lazy var inlineConsentLockView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -230,7 +231,8 @@ public final class FrontPageView: UIView {
             x: 0,
             y: yPosition,
             width: bounds.width,
-            height: bounds.height + 100)
+            height: bounds.height * 2)
+        //we really dont know what the height of lock view should be since some ads are longer then other.
     }
 }
 
