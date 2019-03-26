@@ -8,7 +8,7 @@ public protocol StepIndicatorDelegate: AnyObject {
     func stepIndicator(_ stepIndicator: StepIndicator, stepTappedAtIndex index: Int)
 }
 
-public class StepIndicator: UIView {
+open class StepIndicator: UIView {
 
     // MARK: - Public properties
 
