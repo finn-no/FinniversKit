@@ -14,7 +14,7 @@ public class StepIndicator: UIView {
 
     public var currentStep: Int = 0 {
         didSet {
-            updateCurrentStep(previousValue: oldValue)
+            updateCurrentStep()
         }
     }
 
@@ -78,12 +78,12 @@ public class StepIndicator: UIView {
             connectors.append(connector)
         }
 
-        updateCurrentStep(previousValue: 0)
+        updateCurrentStep()
     }
 
     // MARK: - Private methods
 
-    private func updateCurrentStep(previousValue: Int) {
+    private func updateCurrentStep() {
         if currentStep < 0 {
             currentStep = 0
             return
