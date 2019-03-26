@@ -16,15 +16,22 @@ public extension Label {
         case caption
         case detail
 
+        @available(*, deprecated, message: "Use bodyStrong instead.")
+        case title4
+        @available(*, deprecated, message: "Use detailStrong instead.")
+        case title5
+        @available(*, deprecated, message: "Use captionStrong instead.")
+        case captionHeavy
+
         var font: UIFont {
             switch self {
             case .title1: return UIFont.title1
             case .title2: return UIFont.title2
             case .title3: return UIFont.title3
-            case .bodyStrong: return UIFont.bodyStrong
-            case .detailStrong: return UIFont.detailStrong
+            case .bodyStrong, .title4: return UIFont.bodyStrong
+            case .detailStrong, .title5: return UIFont.detailStrong
             case .body: return UIFont.body
-            case .captionStrong: return UIFont.captionStrong
+            case .captionStrong, .captionHeavy: return UIFont.captionStrong
             case .caption: return UIFont.caption
             case .detail: return UIFont.detail
             }
