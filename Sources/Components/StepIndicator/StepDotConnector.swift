@@ -6,10 +6,20 @@ import UIKit
 
 class StepDotConnector: UIView {
 
+    // MARK: - Internal properties
+
+    var highlighted = false {
+        didSet {
+            if oldValue != highlighted {
+                let color = highlighted ? StepIndicator.activeColor : StepIndicator.inactiveColor
+                transition(toColor: color)
+            }
+        }
+    }
+
     // MARK: - Private properties
 
     private var connected = false
-    private var highlighted = false
 
     // MARK: - Init
 
@@ -43,12 +53,11 @@ class StepDotConnector: UIView {
         ])
     }
 
-    func highlight() {
-        guard !highlighted else { return }
+    // MARK: - Private methods
 
-        highlighted = true
+    private func transition(toColor color: UIColor) {
         UIView.animate(withDuration: StepIndicator.animationDuration, animations: {
-            self.backgroundColor = StepIndicator.activeColor
+            self.backgroundColor = color
         })
     }
 }
