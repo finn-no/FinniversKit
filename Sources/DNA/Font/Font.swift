@@ -141,17 +141,17 @@ enum FontType: String {
 // MARK: - Deprecated font names
 
 extension UIFont {
-    @available(*, deprecated, message: "Deprecated! Use bodyStrong instead.")
+    @available(*, deprecated, message: "Use bodyStrong instead.")
     public static var title4: UIFont {
         return bodyStrong
     }
 
-    @available(*, deprecated, message: "Deprecated! Use detailStrong instead.")
+    @available(*, deprecated, message: "Use detailStrong instead.")
     public static var title5: UIFont {
         return detailStrong
     }
 
-    @available(*, deprecated, message: "Deprecated! Use captionStrong instead.")
+    @available(*, deprecated, message: "Use captionStrong instead.")
     public static var captionHeavy: UIFont {
         return captionStrong
     }
