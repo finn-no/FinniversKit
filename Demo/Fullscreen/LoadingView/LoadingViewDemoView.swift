@@ -149,7 +149,7 @@ private class OptionCell: UITableViewCell {
     }
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title4)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

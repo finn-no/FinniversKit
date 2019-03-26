@@ -52,7 +52,7 @@ public class UserAdsListViewCell: UITableViewCell {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title4)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         label.backgroundColor = .clear
@@ -61,7 +61,7 @@ public class UserAdsListViewCell: UITableViewCell {
     }()
 
     private lazy var priceLabel: Label? = {
-        let label = Label(style: .title5)
+        let label = Label(style: .detailStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)

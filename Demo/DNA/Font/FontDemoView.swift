@@ -29,9 +29,9 @@ public class FontDemoView: UIView {
             FontItem(font: .title1, title: "title1"),
             FontItem(font: .title2, title: "title2"),
             FontItem(font: .title3, title: "title3"),
-            FontItem(font: .title4, title: "title4"),
-            FontItem(font: .title5, title: "title5"),
-            FontItem(font: .captionHeavy, title: "captionHeavy"),
+            FontItem(font: .bodyStrong, title: "bodyStrong"),
+            FontItem(font: .detailStrong, title: "detailStrong"),
+            FontItem(font: .captionStrong, title: "captionStrong"),
             FontItem(font: .caption, title: "caption"),
             FontItem(font: .body, title: "body"),
             FontItem(font: .detail, title: "detail")

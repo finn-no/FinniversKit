@@ -62,7 +62,7 @@ public class TextField: UIView {
     }
 
     private lazy var typeLabel: Label = {
-        let label = Label(style: .captionHeavy)
+        let label = Label(style: .captionStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
