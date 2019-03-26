@@ -138,12 +138,12 @@ public class DialogueView: UIView {
             detail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             detail.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
-            link.topAnchor.constraint(equalTo: detail.bottomAnchor, constant: .mediumSpacing),
+            primaryButton.topAnchor.constraint(equalTo: detail.bottomAnchor, constant: .mediumLargeSpacing),
+            primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            link.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumSpacing),
             link.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             link.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
-
-            primaryButton.topAnchor.constraint(equalTo: link.bottomAnchor, constant: .mediumLargeSpacing),
-            primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             ])
     }
 
