@@ -112,6 +112,7 @@ extension FrontpageViewDemoView: MarketsGridViewDataSource {
 // MARK: - DialogueViewDelegate
 
 extension FrontpageViewDemoView: DialogueViewDelegate {
+    public func dialogueViewDidSelectLink() {}
     public func dialogueViewDidSelectPrimaryButton() {
         frontPageView.hideInlineConsent()
         frontPageView.reloadAds()

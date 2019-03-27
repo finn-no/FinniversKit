@@ -30,19 +30,6 @@ public protocol DialogueViewModel {
 public protocol DialogueViewDelegate: AnyObject {
     func dialogueViewDidSelectLink()
     func dialogueViewDidSelectPrimaryButton()
-    func dialogueViewDidSelectSecondaryButton()
-}
-
-/**
- - Note:
-   Default implementation for
-   Dialogue View Did Select Link
-   Dialogue View Did Select Secondary Button
-
- */
-extension DialogueViewDelegate {
-    public func dialogueViewDidSelectSecondaryButton() {}
-    public func dialogueViewDidSelectLink() {}
 }
 
 // MARK: - DialogueView

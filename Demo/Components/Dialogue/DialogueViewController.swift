@@ -45,6 +45,7 @@ class DialogueViewController: UIViewController {
 }
 
 extension DialogueViewController: DialogueViewDelegate {
+    func dialogueViewDidSelectLink() {}
     func dialogueViewDidSelectPrimaryButton() {
         delegate?.dialogueViewControllerDelegateDidSelectPrimaryButton()
     }
