@@ -14,7 +14,7 @@ import UIKit
 
 public protocol DialogueViewModel {
     var title: String { get }
-    var detail: String { get }
+    var detail: String { get set }
     var link: String { get }
     var primaryButtonTitle: String { get }
 }
