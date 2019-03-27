@@ -212,7 +212,7 @@ public final class FrontPageView: UIView {
 
         if UIDevice.isSmallScreen() {
             widthPercentage = 0.9
-            heightPercentage = 0.4
+            heightPercentage = 0.5
         }
 
         if UIDevice.isIPad() {
