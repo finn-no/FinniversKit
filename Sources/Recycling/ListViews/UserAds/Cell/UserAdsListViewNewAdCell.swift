@@ -42,8 +42,8 @@ public class UserAdsListViewNewAdCell: UITableViewCell {
         addSubview(createNewAdButton)
 
         NSLayoutConstraint.activate([
-            createNewAdButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6),
-            createNewAdButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+            createNewAdButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.65),
+            createNewAdButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.65),
             createNewAdButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             createNewAdButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
