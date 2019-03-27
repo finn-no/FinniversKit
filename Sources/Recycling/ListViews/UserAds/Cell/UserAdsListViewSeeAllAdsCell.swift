@@ -43,8 +43,8 @@ public class UserAdsListViewSeeAllAdsCell: UITableViewCell {
         addSubview(seeAllAdsButton)
 
         NSLayoutConstraint.activate([
-            seeAllAdsButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6),
-            seeAllAdsButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+            seeAllAdsButton.heightAnchor.constraint(equalTo: heightAnchor),
+            seeAllAdsButton.widthAnchor.constraint(equalTo: widthAnchor),
             seeAllAdsButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             seeAllAdsButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])

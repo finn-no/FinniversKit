@@ -67,7 +67,7 @@ extension UserAdsListViewDemoView: UserAdsListViewDataSource {
         switch indexPath.section {
         case 1: return false
         case 2: return false
-        case 3: return false
+        case 3: return true
         default: return false
         }
     }

@@ -56,12 +56,12 @@ public class UserAdsListView: UIView {
         return (dataSource?.numberOfSections(in: self) ?? 1) - 1
     }
 
-    // MARK: - Internal properties
+    private static let sectionHeaderHeight: CGFloat = 32
+    private static let buttonCellHeight: CGFloat = 72
+    private static let activeCellHeight: CGFloat = 120
+    private static let inactiveCellHeight: CGFloat = 80
 
-    public static let sectionHeaderHeight: CGFloat = 38
-    public static let buttonCellHeight: CGFloat = 80
-    public static let activeCellHeight: CGFloat = 112
-    public static let inactiveCellHeight: CGFloat = 66
+    // MARK: - Public properties
 
     public var isEditing: Bool { return tableView.isEditing }
     public var isEmpty: Bool { return (dataSource?.userAdsListView(self, numberOfRowsInSection: 1) ?? 0 ) == 0}
