@@ -33,8 +33,8 @@ public class UserAdsListViewCell: UITableViewCell {
     // MARK: - Internal properties
 
     private static let cornerRadius: CGFloat = 12
-    private static let activeImageSize: CGFloat = 100
-    private static let inactiveImageSize: CGFloat = 56
+    private static let activeImageSize: CGFloat = 104
+    private static let inactiveImageSize: CGFloat = 64
 
     private var defaultImage: UIImage? {
         return UIImage(named: .noImage)
@@ -97,7 +97,7 @@ public class UserAdsListViewCell: UITableViewCell {
                 adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.inactiveImageSize),
                 adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.inactiveImageSize),
                 adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-                adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
+                adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
 
                 titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
@@ -111,7 +111,7 @@ public class UserAdsListViewCell: UITableViewCell {
                 adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.activeImageSize),
                 adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.activeImageSize),
                 adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-                adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
+                adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
 
                 titleLabel.bottomAnchor.constraint(equalTo: (ribbonView?.topAnchor ?? detailLabel.topAnchor), constant: -.smallSpacing),
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
@@ -132,7 +132,7 @@ public class UserAdsListViewCell: UITableViewCell {
                 NSLayoutConstraint.activate([
                     priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
                     priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-                    priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
+                    priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor, constant: -.mediumSpacing),
 
                     detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
                     detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
