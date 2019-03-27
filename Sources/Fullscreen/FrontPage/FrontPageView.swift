@@ -139,8 +139,11 @@ public final class FrontPageView: UIView {
         adsRetryView.state = .labelAndButton
     }
 
-    public func showInlineConsent(detail: String) {
-        inlineConsentDialogue.model?.detail = detail
+    public func showInlineConsent(detail: String? = nil) {
+        if let detail = detail {
+            inlineConsentDialogue.model?.detail = detail
+        }
+
         inlineConsentDialogue.isHidden = false
         inlineConsentLockView.isHidden = false
         adsGridView.endRefreshing()

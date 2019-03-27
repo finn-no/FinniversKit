@@ -7,7 +7,7 @@ import FinniversKit
 public struct DialogueDefaultData: DialogueViewModel {
 
     public let title = "Slå på anbefalinger"
-    public var detail = "Vi viser deg relevante FINN-annonser og tilpasser FINN etter din bruk. For å gjøre dette lagrer vi info om hva du ser på hos oss."
+    public var detail = "Vi viser deg relevante FINN-annonser og tilpasser FINN etter din bruk.\nFor å gjøre dette lagrer vi info om hva du ser på hos oss."
     public let link = "Mer om personlig tilpasning"
     public let primaryButtonTitle = "Aktiver personlige anbefalinger"
 }

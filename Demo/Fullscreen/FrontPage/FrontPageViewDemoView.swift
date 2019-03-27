@@ -25,6 +25,7 @@ public class FrontpageViewDemoView: UIView {
         if didSetupView == false {
             setup()
             didSetupView = true
+            frontPageView.showInlineConsent()
         }
     }
 
