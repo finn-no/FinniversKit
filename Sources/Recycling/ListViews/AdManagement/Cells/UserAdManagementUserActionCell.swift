@@ -162,7 +162,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
 
         // The chevron is smaller than elsewhere, but this is by design. I guess we'll disuss this
         // while iterating, prior to release, ¯\_(ツ)_/¯
-        let chevronSize: CGFloat = 10
+        let chevronSize: CGFloat = 20
         chevronConstraints = [ chevronView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
                                chevronView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                                chevronView.widthAnchor.constraint(equalToConstant: chevronSize),

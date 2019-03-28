@@ -29,7 +29,6 @@ public struct AdManagementActionCellModel {
     let image: UIImage
 
     public init(actionType: AdManagementActionType, title: String, description: String? = nil, showExternalIcon: Bool = false) {
-        let typesRequiringSwitch: [AdManagementActionType] = []//.start, .stop, .dispose, .undispose]
         let typesRequiringChevron: [AdManagementActionType] = [.edit, .review, .republish]
         let imagesForTypes: [AdManagementActionType: UIImage] = [.delete: UIImage(named: .adManagementTrashcan),
                                                                  .edit: UIImage(named: .pencilPaper),
@@ -40,7 +39,7 @@ public struct AdManagementActionCellModel {
         self.actionType = actionType
         self.title = title
         self.description = description
-        self.shouldShowSwitch = typesRequiringSwitch.contains(actionType)
+        self.shouldShowSwitch = false
         self.shouldShowChevron = typesRequiringChevron.contains(actionType)
         // It is not possible to determine the state for shouldShowExternalIcon based on actionType alone
         self.shouldShowExternalIcon = actionType == .externalFallback || showExternalIcon
