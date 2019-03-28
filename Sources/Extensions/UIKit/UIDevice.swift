@@ -20,6 +20,10 @@ extension UIDevice {
         return isIPhone() && UIScreen.main.nativeBounds.height == 1136
     }
 
+    class func isLargeScreen() -> Bool {
+        return UIScreen.main.nativeBounds.height >= 2632
+    }
+
     class func isLandscape() -> Bool {
         return isIPad() && current.orientation.isLandscape
     }

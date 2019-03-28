@@ -218,7 +218,11 @@ public final class FrontPageView: UIView {
 
         if UIDevice.isIPad() {
             widthPercentage = 0.5
-            heightPercentage = 0.17
+            heightPercentage = 0.22
+
+            if UIDevice.isLargeScreen() {
+                heightPercentage = 0.16
+            }
         }
 
         let dialogueWidth = bounds.width * widthPercentage
