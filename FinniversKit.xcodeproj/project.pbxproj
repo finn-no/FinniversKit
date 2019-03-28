@@ -221,6 +221,7 @@
 		AA864B49223290B600BAE95A /* InlineConsentDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA864B48223290B600BAE95A /* InlineConsentDemoViewController.swift */; };
 		AA864B4D22329E7100BAE95A /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA864B4C22329E7100BAE95A /* UIDevice.swift */; };
 		AAC1AFB42021058000C71B7C /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC1AFB32021058000C71B7C /* Demo.swift */; };
+		AADED71C223FE25500647C50 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADED71B223FE25500647C50 /* UIDevice.swift */; };
 		AF91BB97202C74D0003E6366 /* BroadcastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BB96202C74D0003E6366 /* BroadcastItem.swift */; };
 		AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */; };
 		B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D7CF174F019F9D8C9DA51 /* RoundedImageView.swift */; };
@@ -268,7 +269,6 @@
 		CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */; };
 		CF9AC8BC21BECE13005A0D2F /* SnowGlobeDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */; };
 		CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */; };
-		CFE43E4C219B13B400D3D5F7 /* FrontPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4B219B13B400D3D5F7 /* FrontPageViewModel.swift */; };
 		CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */; };
 		CFE43E52219B1B2900D3D5F7 /* FrontPageRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */; };
 		CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9726E21C3BA1D00C85238 /* BannerTransparencySectionView.swift */; };
@@ -578,6 +578,7 @@
 		AA864B48223290B600BAE95A /* InlineConsentDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineConsentDemoViewController.swift; sourceTree = "<group>"; };
 		AA864B4C22329E7100BAE95A /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		AAC1AFB32021058000C71B7C /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
+		AADED71B223FE25500647C50 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		AF91BB96202C74D0003E6366 /* BroadcastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastItem.swift; sourceTree = "<group>"; };
 		AF91BBA0202C8B72003E6366 /* Broadcast+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Broadcast+Style.swift"; sourceTree = "<group>"; };
 		B01D7BD31E0D28C10BBE2FF4 /* RoundedImageViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageViewDemoView.swift; sourceTree = "<group>"; };
@@ -627,7 +628,6 @@
 		CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowGlobeView.swift; sourceTree = "<group>"; };
 		CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowGlobeDemoView.swift; sourceTree = "<group>"; };
 		CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sleighbell.mp3; sourceTree = "<group>"; };
-		CFE43E4B219B13B400D3D5F7 /* FrontPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewModel.swift; sourceTree = "<group>"; };
 		CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewDefaultData.swift; sourceTree = "<group>"; };
 		CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageRetryView.swift; sourceTree = "<group>"; };
 		CFF9726D21C3BA1D00C85238 /* BannerTransparencyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyDemoView.swift; sourceTree = "<group>"; };
@@ -1308,7 +1308,6 @@
 			children = (
 				CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */,
 				CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */,
-				CFE43E4B219B13B400D3D5F7 /* FrontPageViewModel.swift */,
 			);
 			path = FrontPage;
 			sourceTree = "<group>";
@@ -1333,6 +1332,7 @@
 				44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */,
 				44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */,
 				08D70A1A21832901003E2222 /* UIEdgeInsetsExtensions.swift */,
+				AADED71B223FE25500647C50 /* UIDevice.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -2974,7 +2974,6 @@
 				CF7C460822257A8A001FB92C /* EarthHourView.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */,
-				CFE43E4C219B13B400D3D5F7 /* FrontPageViewModel.swift in Sources */,
 				F26852D621F7530A000978C8 /* UserAdsListView.swift in Sources */,
 				DAB7FAAB21B690DD00BF8CC6 /* BottomSheetInteractionController.swift in Sources */,
 				CF7C460722257A8A001FB92C /* EarthHourTagView.swift in Sources */,
@@ -3008,6 +3007,7 @@
 				08796D8A21CB8AB90023A441 /* HeartTableViewCell.swift in Sources */,
 				DAD0D492210737A30091DD4D /* TextView.swift in Sources */,
 				CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */,
+				AADED71C223FE25500647C50 /* UIDevice.swift in Sources */,
 				CF3D5EEC215A6741006E4D08 /* DrumMachineView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */,

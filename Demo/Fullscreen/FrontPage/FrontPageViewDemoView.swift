@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class FrontpageViewDemoView: UIView {
-    private let ads = AdFactory.create(numberOfModels: 40)
+    private let ads = AdFactory.create(numberOfModels: 6)
     private let markets = Market.allMarkets
     private var didSetupView = false
 
@@ -109,13 +109,12 @@ extension FrontpageViewDemoView: MarketsGridViewDataSource {
     }
 }
 
-// MARK: - InlineConsentViewDelegate
+// MARK: - DialogueViewDelegate
 
-extension FrontpageViewDemoView: InlineConsentViewDelegate {
-    public func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectYesButton button: Button) {
-        frontPageView.hideInlineConsents()
+extension FrontpageViewDemoView: DialogueViewDelegate {
+    public func dialogueViewDidSelectLink() {}
+    public func dialogueViewDidSelectPrimaryButton() {
+        frontPageView.hideInlineConsent()
         frontPageView.reloadAds()
     }
-
-    public func inlineConsentView(_ inlineConsentView: InlineConsentView, didSelectInfoButton button: Button) {}
 }

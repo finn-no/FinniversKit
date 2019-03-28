@@ -14,10 +14,9 @@ import UIKit
 
 public protocol DialogueViewModel {
     var title: String { get }
-    var detail: String { get }
-    var link: String? { get }
+    var detail: String { get set }
+    var link: String { get }
     var primaryButtonTitle: String { get }
-    var secondaryButtonTitle: String? { get }
 }
 
 // MARK: - DialogueViewDelegate
@@ -31,19 +30,6 @@ public protocol DialogueViewModel {
 public protocol DialogueViewDelegate: AnyObject {
     func dialogueViewDidSelectLink()
     func dialogueViewDidSelectPrimaryButton()
-    func dialogueViewDidSelectSecondaryButton()
-}
-
-/**
- - Note:
-   Default implementation for
-   Dialogue View Did Select Link
-   Dialogue View Did Select Secondary Button
-
- */
-extension DialogueViewDelegate {
-    public func dialogueViewDidSelectSecondaryButton() {}
-    public func dialogueViewDidSelectLink() {}
 }
 
 // MARK: - DialogueView
@@ -90,13 +76,6 @@ public class DialogueView: UIView {
         return button
     }()
 
-    private lazy var secondaryButton: UIButton = {
-        let button = Button(style: .flat, size: .small)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleSecondaryButtonTap), for: .touchUpInside)
-        return button
-    }()
-
     // MARK: - Model
 
     public var model: DialogueViewModel? {
@@ -105,7 +84,6 @@ public class DialogueView: UIView {
             detail.text = model?.detail
             link.setTitle(model?.link, for: .normal)
             primaryButton.setTitle(model?.primaryButtonTitle, for: .normal)
-            secondaryButton.setTitle(model?.secondaryButtonTitle, for: .normal)
         }
     }
 
@@ -147,23 +125,38 @@ public class DialogueView: UIView {
             detail.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             detail.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
-            link.topAnchor.constraint(equalTo: detail.bottomAnchor, constant: .mediumSpacing),
+            primaryButton.topAnchor.constraint(equalTo: detail.bottomAnchor, constant: .mediumLargeSpacing),
+            primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            link.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumSpacing),
             link.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             link.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
-
-            primaryButton.topAnchor.constraint(equalTo: link.bottomAnchor, constant: .mediumLargeSpacing),
-            primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             ])
+    }
+
+    func heightWithConstrained(width: CGFloat) -> CGFloat {
+        guard let text = detail.text else {
+            return 0
+        }
+
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = text.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font: detail.font], context: nil)
+
+        var moreSpacing: CGFloat = 0
+
+        if UIDevice.isSmallScreen() {
+            moreSpacing = .largeSpacing
+        } else if UIDevice.isLandscape() {
+            moreSpacing = -.largeSpacing - 10
+        }
+
+        return boundingBox.height - moreSpacing
     }
 
     // MARK: - Actions
 
     @objc private func handlePrimaryButtonTap() {
         delegate?.dialogueViewDidSelectPrimaryButton()
-    }
-
-    @objc private func handleSecondaryButtonTap() {
-        delegate?.dialogueViewDidSelectSecondaryButton()
     }
 
     @objc private func handleLinkTap() {

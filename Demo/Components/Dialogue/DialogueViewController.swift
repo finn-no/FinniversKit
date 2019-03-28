@@ -5,11 +5,11 @@
 import FinniversKit
 
 public struct DialogueDefaultData: DialogueViewModel {
+
     public let title = "Slå på anbefalinger"
-    public let detail = "Vi viser deg relevante FINN-annonser og tilpasser FINN etter din bruk. For å gjøre dette lagrer vi info om hva du ser på hos oss."
-    public var link: String? = "Mer om samtykke"
+    public var detail = "Vi viser deg relevante FINN-annonser og tilpasser FINN etter din bruk.\nFor å gjøre dette lagrer vi info om hva du ser på hos oss."
+    public let link = "Mer om personlig tilpasning"
     public let primaryButtonTitle = "Aktiver personlige anbefalinger"
-    public var secondaryButtonTitle: String? = "Alternativ knapp"
 }
 
 public protocol DialogueViewControllerDelegate: AnyObject {
@@ -45,6 +45,7 @@ class DialogueViewController: UIViewController {
 }
 
 extension DialogueViewController: DialogueViewDelegate {
+    func dialogueViewDidSelectLink() {}
     func dialogueViewDidSelectPrimaryButton() {
         delegate?.dialogueViewControllerDelegateDidSelectPrimaryButton()
     }
