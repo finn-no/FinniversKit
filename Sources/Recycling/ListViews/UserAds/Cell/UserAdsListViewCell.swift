@@ -8,6 +8,7 @@ public enum UserAdStatus: String {
     case draft = "Påbegynt"
     case active = "Aktiv"
     case inactive = "Inaktiv"
+    case deactive = "Deaktivert"
     case expired = "Utløpt"
     case sold = "Solgt"
     case unknown = "Ukjent"
@@ -155,6 +156,7 @@ public class UserAdsListViewCell: UITableViewCell {
         switch status {
         case .draft: ribbonView = RibbonView(style: .warning, with: status.rawValue)
         case .active: ribbonView = RibbonView(style: .success, with: status.rawValue)
+        case .deactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .inactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .expired: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .sold: ribbonView = RibbonView(style: .warning, with: status.rawValue)
