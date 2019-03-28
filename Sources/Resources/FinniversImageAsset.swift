@@ -35,6 +35,7 @@ public enum FinniversImageAsset: String {
     case candyCane
     case car
     case check
+    case checkCircle
     case checkmarkBig
     case classifieds
     case close
@@ -103,6 +104,7 @@ public enum FinniversImageAsset: String {
     case ratings
     case realestate
     case remove
+    case republish
     case search
     case searchBig
     case send
@@ -146,6 +148,7 @@ public enum FinniversImageAsset: String {
             .candyCane,
             .car,
             .check,
+            .checkCircle,
             .checkmarkBig,
             .classifieds,
             .close,
@@ -214,6 +217,7 @@ public enum FinniversImageAsset: String {
             .ratings,
             .realestate,
             .remove,
+            .republish,
             .search,
             .searchBig,
             .send,

@@ -24,6 +24,7 @@ NSString *const FinniversImageAssetcamera = @"camera";
 NSString *const FinniversImageAssetcandyCane = @"candyCane";
 NSString *const FinniversImageAssetcar = @"car";
 NSString *const FinniversImageAssetcheck = @"check";
+NSString *const FinniversImageAssetcheckCircle = @"checkCircle";
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
 NSString *const FinniversImageAssetclassifieds = @"classifieds";
 NSString *const FinniversImageAssetclose = @"close";
@@ -92,6 +93,7 @@ NSString *const FinniversImageAssetratingFaceNeutral = @"ratingFaceNeutral";
 NSString *const FinniversImageAssetratings = @"ratings";
 NSString *const FinniversImageAssetrealestate = @"realestate";
 NSString *const FinniversImageAssetremove = @"remove";
+NSString *const FinniversImageAssetrepublish = @"republish";
 NSString *const FinniversImageAssetsearch = @"search";
 NSString *const FinniversImageAssetsearchBig = @"searchBig";
 NSString *const FinniversImageAssetsend = @"send";
@@ -136,6 +138,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetcandyCane,
              FinniversImageAssetcar,
              FinniversImageAssetcheck,
+             FinniversImageAssetcheckCircle,
              FinniversImageAssetcheckmarkBig,
              FinniversImageAssetclassifieds,
              FinniversImageAssetclose,
@@ -204,6 +207,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetratings,
              FinniversImageAssetrealestate,
              FinniversImageAssetremove,
+             FinniversImageAssetrepublish,
              FinniversImageAssetsearch,
              FinniversImageAssetsearchBig,
              FinniversImageAssetsend,

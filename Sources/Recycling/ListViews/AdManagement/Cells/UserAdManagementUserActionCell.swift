@@ -147,17 +147,17 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         let hairLineSize = 1.0/UIScreen.main.scale
         let missingMagicNumberSpacing: CGFloat = 24
         NSLayoutConstraint.activate([
-            separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: missingMagicNumberSpacing),
+            separator.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: .mediumLargeSpacing),
             separator.topAnchor.constraint(equalTo: contentView.topAnchor),
             separator.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             separator.heightAnchor.constraint(equalToConstant: hairLineSize),
-            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: missingMagicNumberSpacing),
+            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             iconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconView.widthAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
             iconView.heightAnchor.constraint(equalToConstant: missingMagicNumberSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: separator.leadingAnchor),
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
-            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: .veryLargeSpacing)
+            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 48)
             ])
 
         // The chevron is smaller than elsewhere, but this is by design. I guess we'll disuss this

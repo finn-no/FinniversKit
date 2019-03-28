@@ -35,8 +35,8 @@ public struct AdManagementActionCellModel {
                                                                  .edit: UIImage(named: .pencilPaper),
                                                                  .stop: UIImage(named: .eyeHide),
                                                                  .start: UIImage(named: .statsEye),
-                                                                 .republish: UIImage(named: .pencilPaper),
-                                                                 .dispose: UIImage(named: .checkmarkBig) ]
+                                                                 .republish: UIImage(named: .republish),
+                                                                 .dispose: UIImage(named: .checkCircle) ]
         self.actionType = actionType
         self.title = title
         self.description = description
