@@ -29,12 +29,14 @@ public struct AdManagementActionCellModel {
     let image: UIImage
 
     public init(actionType: AdManagementActionType, title: String, description: String? = nil, showExternalIcon: Bool = false) {
-        let typesRequiringSwitch: [AdManagementActionType] = [.start, .stop, .dispose, .undispose]
+        let typesRequiringSwitch: [AdManagementActionType] = []//.start, .stop, .dispose, .undispose]
         let typesRequiringChevron: [AdManagementActionType] = [.edit, .review, .republish]
-        let imagesForTypes: [AdManagementActionType: UIImage] = [.delete: UIImage(named: .trashcan),
-                                                                 .edit: UIImage(named: .edit),
-                                                                 .stop: UIImage(named: .hide),
-                                                                 .start: UIImage(named: .view)]
+        let imagesForTypes: [AdManagementActionType: UIImage] = [.delete: UIImage(named: .adManagementTrashcan),
+                                                                 .edit: UIImage(named: .pencilPaper),
+                                                                 .stop: UIImage(named: .eyeHide),
+                                                                 .start: UIImage(named: .statsEye),
+                                                                 .republish: UIImage(named: .pencilPaper),
+                                                                 .dispose: UIImage(named: .checkmarkBig) ]
         self.actionType = actionType
         self.title = title
         self.description = description
@@ -42,6 +44,6 @@ public struct AdManagementActionCellModel {
         self.shouldShowChevron = typesRequiringChevron.contains(actionType)
         // It is not possible to determine the state for shouldShowExternalIcon based on actionType alone
         self.shouldShowExternalIcon = actionType == .externalFallback || showExternalIcon
-        self.image = imagesForTypes[actionType] ?? UIImage(named: .info)
+        self.image = imagesForTypes[actionType]?.withRenderingMode(.alwaysTemplate) ?? UIImage(named: .more).withRenderingMode(.alwaysTemplate)
     }
 }
