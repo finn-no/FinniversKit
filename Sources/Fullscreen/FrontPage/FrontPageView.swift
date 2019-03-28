@@ -147,6 +147,7 @@ public final class FrontPageView: UIView {
         inlineConsentDialogue.isHidden = false
         inlineConsentLockView.isHidden = false
         adsGridView.endRefreshing()
+        setupFrames()
     }
 
     public func hideInlineConsent() {
