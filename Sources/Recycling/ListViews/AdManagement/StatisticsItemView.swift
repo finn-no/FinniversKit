@@ -9,6 +9,7 @@ public class StatisticsItemView: UIView {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
+        view.tintColor = .licorice
         return view
     }()
 
@@ -66,11 +67,11 @@ public class StatisticsItemView: UIView {
         var image: UIImage? {
             switch model.type {
             case .email:
-                return UIImage(named: .favoriteAdd)
+                return UIImage(named: .statsEnvelope).withRenderingMode(.alwaysTemplate)
             case .seen:
-                return UIImage(named: .favoriteAdd)
+                return UIImage(named: .statsEye).withRenderingMode(.alwaysTemplate)
             case .favourited:
-                return UIImage(named: .favoriteAdd)
+                return UIImage(named: .statsHeart).withRenderingMode(.alwaysTemplate)
             }
         }
         imageView.image = image
