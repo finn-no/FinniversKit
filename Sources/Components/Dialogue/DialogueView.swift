@@ -134,7 +134,7 @@ public class DialogueView: UIView {
             ])
     }
 
-    func heightWithConstrainedWidth(width: CGFloat) -> CGFloat {
+    func heightWithConstrained(width: CGFloat) -> CGFloat {
         guard let text = detail.text else {
             return 0
         }
@@ -146,9 +146,7 @@ public class DialogueView: UIView {
 
         if UIDevice.isSmallScreen() {
             moreSpacing = .largeSpacing
-        }
-
-        if UIDevice.isLandscape() {
+        } else if UIDevice.isLandscape() {
             moreSpacing = -.largeSpacing - 10
         }
 

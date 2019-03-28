@@ -222,7 +222,7 @@ public final class FrontPageView: UIView {
 
         let dialogueWidth = bounds.width * widthPercentage
         let dialogueHeight = (bounds.height * heightPercentage) +
-            inlineConsentDialogue.heightWithConstrainedWidth(width: dialogueWidth)
+            inlineConsentDialogue.heightWithConstrained(width: dialogueWidth)
         let inlineConsentDialogueY = yPosition + 25
 
         inlineConsentDialogue.frame = CGRect(
