@@ -163,7 +163,7 @@ public struct UserAdsFactory {
         return [
             "Påbegynt",
             "Aktiv",
-            "Aktiv",
+            "Deaktivert",
             "Solgt",
             "Utløpt",
         ]
