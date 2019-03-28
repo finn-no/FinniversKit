@@ -7,6 +7,8 @@
 
 #import "FinniversImageAsset.h"
 
+NSString *const FinniversImageAssetadManagementShare = @"adManagementShare";
+NSString *const FinniversImageAssetadManagementTrashcan = @"adManagementTrashcan";
 NSString *const FinniversImageAssetarrowDown = @"arrowDown";
 NSString *const FinniversImageAssetarrowRight = @"arrowRight";
 NSString *const FinniversImageAssetarrowUp = @"arrowUp";
@@ -36,6 +38,7 @@ NSString *const FinniversImageAsseteasterEgg = @"easterEgg";
 NSString *const FinniversImageAssetedit = @"edit";
 NSString *const FinniversImageAsseteditBig = @"editBig";
 NSString *const FinniversImageAsseterror = @"error";
+NSString *const FinniversImageAsseteyeHide = @"eyeHide";
 NSString *const FinniversImageAssetfavoriteAdd = @"favoriteAdd";
 NSString *const FinniversImageAssetfavouriteAddImg = @"favouriteAddImg";
 NSString *const FinniversImageAssetfavouriteAdded = @"favouriteAdded";
@@ -74,6 +77,7 @@ NSString *const FinniversImageAssetnotifications = @"notifications";
 NSString *const FinniversImageAssetornamentCircleBlue = @"ornamentCircleBlue";
 NSString *const FinniversImageAssetornamentCircleRed = @"ornamentCircleRed";
 NSString *const FinniversImageAssetornamentStar = @"ornamentStar";
+NSString *const FinniversImageAssetpencilPaper = @"pencilPaper";
 NSString *const FinniversImageAssetpin = @"pin";
 NSString *const FinniversImageAssetplus = @"plus";
 NSString *const FinniversImageAssetprofile = @"profile";
@@ -99,6 +103,10 @@ NSString *const FinniversImageAssetsnowflake = @"snowflake";
 NSString *const FinniversImageAssetsold = @"sold";
 NSString *const FinniversImageAssetspark = @"spark";
 NSString *const FinniversImageAssetspidLogo = @"spidLogo";
+NSString *const FinniversImageAssetstatsEmpty = @"statsEmpty";
+NSString *const FinniversImageAssetstatsEnvelope = @"statsEnvelope";
+NSString *const FinniversImageAssetstatsEye = @"statsEye";
+NSString *const FinniversImageAssetstatsHeart = @"statsHeart";
 NSString *const FinniversImageAssetsuccess = @"success";
 NSString *const FinniversImageAssettrashcan = @"trashcan";
 NSString *const FinniversImageAssettravel = @"travel";
@@ -111,6 +119,8 @@ NSString *const FinniversImageAssetyourads = @"yourads";
 
 + (NSArray<NSString *> *)finniversImageNames {
     return @[
+             FinniversImageAssetadManagementShare,
+             FinniversImageAssetadManagementTrashcan,
              FinniversImageAssetarrowDown,
              FinniversImageAssetarrowRight,
              FinniversImageAssetarrowUp,
@@ -140,6 +150,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetedit,
              FinniversImageAsseteditBig,
              FinniversImageAsseterror,
+             FinniversImageAsseteyeHide,
              FinniversImageAssetfavoriteAdd,
              FinniversImageAssetfavouriteAddImg,
              FinniversImageAssetfavouriteAdded,
@@ -178,6 +189,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetornamentCircleBlue,
              FinniversImageAssetornamentCircleRed,
              FinniversImageAssetornamentStar,
+             FinniversImageAssetpencilPaper,
              FinniversImageAssetpin,
              FinniversImageAssetplus,
              FinniversImageAssetprofile,
@@ -203,6 +215,10 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetsold,
              FinniversImageAssetspark,
              FinniversImageAssetspidLogo,
+             FinniversImageAssetstatsEmpty,
+             FinniversImageAssetstatsEnvelope,
+             FinniversImageAssetstatsEye,
+             FinniversImageAssetstatsHeart,
              FinniversImageAssetsuccess,
              FinniversImageAssettrashcan,
              FinniversImageAssettravel,

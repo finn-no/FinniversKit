@@ -7,6 +7,8 @@
 
 @import UIKit;
 
+extern NSString *const FinniversImageAssetadManagementShare;
+extern NSString *const FinniversImageAssetadManagementTrashcan;
 extern NSString *const FinniversImageAssetarrowDown;
 extern NSString *const FinniversImageAssetarrowRight;
 extern NSString *const FinniversImageAssetarrowUp;
@@ -36,6 +38,7 @@ extern NSString *const FinniversImageAsseteasterEgg;
 extern NSString *const FinniversImageAssetedit;
 extern NSString *const FinniversImageAsseteditBig;
 extern NSString *const FinniversImageAsseterror;
+extern NSString *const FinniversImageAsseteyeHide;
 extern NSString *const FinniversImageAssetfavoriteAdd;
 extern NSString *const FinniversImageAssetfavouriteAddImg;
 extern NSString *const FinniversImageAssetfavouriteAdded;
@@ -74,6 +77,7 @@ extern NSString *const FinniversImageAssetnotifications;
 extern NSString *const FinniversImageAssetornamentCircleBlue;
 extern NSString *const FinniversImageAssetornamentCircleRed;
 extern NSString *const FinniversImageAssetornamentStar;
+extern NSString *const FinniversImageAssetpencilPaper;
 extern NSString *const FinniversImageAssetpin;
 extern NSString *const FinniversImageAssetplus;
 extern NSString *const FinniversImageAssetprofile;
@@ -99,6 +103,10 @@ extern NSString *const FinniversImageAssetsnowflake;
 extern NSString *const FinniversImageAssetsold;
 extern NSString *const FinniversImageAssetspark;
 extern NSString *const FinniversImageAssetspidLogo;
+extern NSString *const FinniversImageAssetstatsEmpty;
+extern NSString *const FinniversImageAssetstatsEnvelope;
+extern NSString *const FinniversImageAssetstatsEye;
+extern NSString *const FinniversImageAssetstatsHeart;
 extern NSString *const FinniversImageAssetsuccess;
 extern NSString *const FinniversImageAssettrashcan;
 extern NSString *const FinniversImageAssettravel;

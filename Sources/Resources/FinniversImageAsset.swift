@@ -18,6 +18,8 @@ public extension UIImage {
 }
 
 public enum FinniversImageAsset: String {
+    case adManagementShare
+    case adManagementTrashcan
     case arrowDown
     case arrowRight
     case arrowUp
@@ -47,6 +49,7 @@ public enum FinniversImageAsset: String {
     case edit
     case editBig
     case error
+    case eyeHide
     case favoriteAdd
     case favouriteAddImg
     case favouriteAdded
@@ -85,6 +88,7 @@ public enum FinniversImageAsset: String {
     case ornamentCircleBlue
     case ornamentCircleRed
     case ornamentStar
+    case pencilPaper
     case pin
     case plus
     case profile
@@ -110,6 +114,10 @@ public enum FinniversImageAsset: String {
     case sold
     case spark
     case spidLogo
+    case statsEmpty
+    case statsEnvelope
+    case statsEye
+    case statsHeart
     case success
     case trashcan
     case travel
@@ -121,6 +129,8 @@ public enum FinniversImageAsset: String {
 
     public static var imageNames: [FinniversImageAsset] {
         return [
+            .adManagementShare,
+            .adManagementTrashcan,
             .arrowDown,
             .arrowRight,
             .arrowUp,
@@ -150,6 +160,7 @@ public enum FinniversImageAsset: String {
             .edit,
             .editBig,
             .error,
+            .eyeHide,
             .favoriteAdd,
             .favouriteAddImg,
             .favouriteAdded,
@@ -188,6 +199,7 @@ public enum FinniversImageAsset: String {
             .ornamentCircleBlue,
             .ornamentCircleRed,
             .ornamentStar,
+            .pencilPaper,
             .pin,
             .plus,
             .profile,
@@ -213,6 +225,10 @@ public enum FinniversImageAsset: String {
             .sold,
             .spark,
             .spidLogo,
+            .statsEmpty,
+            .statsEnvelope,
+            .statsEye,
+            .statsHeart,
             .success,
             .trashcan,
             .travel,
