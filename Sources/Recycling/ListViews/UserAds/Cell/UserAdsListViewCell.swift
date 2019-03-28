@@ -5,13 +5,15 @@
 import UIKit
 
 public enum UserAdStatus: String {
-    case draft = "Påbegynt"
     case active = "Aktiv"
-    case inactive = "Inaktiv"
+    case control = "Til kontroll"
+    case denied = "Avvist"
+    case draft = "Påbegynt"
     case deactive = "Deaktivert"
     case expired = "Utløpt"
     case sold = "Solgt"
-    case unknown = "Ukjent"
+    case inactive = "Inaktiv"
+    case unknown = "Venter på status"
 }
 
 public protocol UserAdsListViewCellDataSource: class {
