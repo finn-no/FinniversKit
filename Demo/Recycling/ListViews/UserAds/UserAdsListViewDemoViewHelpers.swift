@@ -165,7 +165,7 @@ public struct UserAdsFactory {
             "Aktiv",
             "Deaktivert",
             "Solgt",
-            "Utløpt",
+            "",
         ]
     }
 }

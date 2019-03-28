@@ -154,12 +154,19 @@ public class UserAdsListViewCell: UITableViewCell {
         ribbonView?.removeFromSuperview()
 
         switch status {
-        case .draft: ribbonView = RibbonView(style: .warning, with: status.rawValue)
+        // Active ad states
         case .active: ribbonView = RibbonView(style: .success, with: status.rawValue)
+        case .control: ribbonView = RibbonView(style: .success, with: status.rawValue)
+
+        // Inactive ad states
+        case .draft: ribbonView = RibbonView(style: .warning, with: status.rawValue)
+        case .denied: ribbonView = RibbonView(style: .warning, with: status.rawValue)
         case .deactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
-        case .inactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .expired: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
+        case .inactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .sold: ribbonView = RibbonView(style: .warning, with: status.rawValue)
+
+        // Edge case - the provided status is not supported in the UserAdStatus enum
         case .unknown: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         }
 
