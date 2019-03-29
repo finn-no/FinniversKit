@@ -20,6 +20,7 @@ public class UserAdsListHeaderView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .detailStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.backgroundColor = .clear
         return label
     }()
@@ -27,6 +28,7 @@ public class UserAdsListHeaderView: UIView {
     private lazy var moreButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.tintColor = .primaryBlue
         button.setTitleColor(.primaryBlue, for: .normal)
         button.titleLabel?.font = .detailStrong
@@ -57,6 +59,7 @@ public class UserAdsListHeaderView: UIView {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor),
             moreButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
             moreButton.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])

@@ -28,6 +28,11 @@ public protocol UserAdsListViewDataSource: class {
 public class UserAdsListView: UIView {
     // MARK: - Internal properties
 
+    private static let sectionHeaderHeight: CGFloat = 32
+    private static let buttonCellHeight: CGFloat = 72
+    private static let activeCellHeight: CGFloat = 120
+    private static let inactiveCellHeight: CGFloat = 80
+
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = RefreshControl(frame: .zero)
         refreshControl.delegate = self
@@ -41,6 +46,10 @@ public class UserAdsListView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .milk
+        tableView.estimatedRowHeight = UserAdsListView.activeCellHeight
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedSectionHeaderHeight = UserAdsListView.sectionHeaderHeight
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         return tableView
     }()
@@ -55,11 +64,6 @@ public class UserAdsListView: UIView {
     private var lastSection: Int {
         return (dataSource?.numberOfSections(in: self) ?? 1) - 1
     }
-
-    private static let sectionHeaderHeight: CGFloat = 32
-    private static let buttonCellHeight: CGFloat = 72
-    private static let activeCellHeight: CGFloat = 120
-    private static let inactiveCellHeight: CGFloat = 80
 
     // MARK: - Public properties
 

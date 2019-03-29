@@ -99,10 +99,11 @@ public class UserAdsListViewCell: UITableViewCell {
             NSLayoutConstraint.activate([
                 adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.inactiveImageSize),
                 adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.inactiveImageSize),
-                adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-                adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+                adImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+                adImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
 
-                titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+                titleLabel.topAnchor.constraint(equalTo: adImageView.topAnchor),
+                titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor)
             ])
@@ -113,9 +114,10 @@ public class UserAdsListViewCell: UITableViewCell {
             NSLayoutConstraint.activate([
                 adImageView.heightAnchor.constraint(equalToConstant: UserAdsListViewCell.activeImageSize),
                 adImageView.widthAnchor.constraint(equalToConstant: UserAdsListViewCell.activeImageSize),
-                adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-                adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+                adImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+                adImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
 
+                titleLabel.topAnchor.constraint(equalTo: adImageView.topAnchor),
                 titleLabel.bottomAnchor.constraint(equalTo: (ribbonView?.topAnchor ?? detailLabel.topAnchor), constant: -.smallSpacing),
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -127,15 +129,15 @@ public class UserAdsListViewCell: UITableViewCell {
             if model?.price == nil {
                 NSLayoutConstraint.activate([
                     detailLabel.centerYAnchor.constraint(equalTo: (ribbonView?.centerYAnchor ?? centerYAnchor)),
-                    detailLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
+                    detailLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? contentView.trailingAnchor),
                 ])
             } else {
                 guard let priceLabel = priceLabel else { return }
                 addSubview(priceLabel)
                 NSLayoutConstraint.activate([
-                    priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+                    priceLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                     priceLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-                    priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor, constant: -.mediumSpacing),
+                    priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? contentView.trailingAnchor, constant: -.mediumSpacing),
 
                     detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
                     detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -203,6 +205,8 @@ public class UserAdsListViewCell: UITableViewCell {
     public var model: UserAdsListViewModel? {
         didSet {
             guard let model = model else { return }
+            teardownView()
+
             titleLabel.text = model.title
             priceLabel?.text = model.price
             detailLabel.text = model.detail
