@@ -18,6 +18,7 @@ public class UserAdsListViewSeeAllAdsCell: UITableViewCell {
     private lazy var seeAllAdsButton: Button = {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.lineBreakMode = NSLineBreakMode.byTruncatingTail
         button.addTarget(self, action: #selector(seeAllAdsButtonTapped(_:)), for: .touchUpInside)
         return button
     }()

@@ -17,6 +17,7 @@ public class UserAdsListViewNewAdCell: UITableViewCell {
 
     private lazy var createNewAdButton: Button = {
         let button = Button(style: .callToAction)
+        button.titleLabel?.lineBreakMode = NSLineBreakMode.byTruncatingTail
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(createNewAdButtonTapped(_:)), for: .touchUpInside)
         return button
