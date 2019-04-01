@@ -9,6 +9,7 @@ public enum UserAdStatus: String {
     case control = "Til kontroll"
     case denied = "Avvist"
     case draft = "Påbegynt"
+    case dateExpiry = "Frist utløpt"
     case deactive = "Deaktivert"
     case expired = "Utløpt"
     case sold = "Solgt"
@@ -154,7 +155,6 @@ public class UserAdsListViewCell: UITableViewCell {
 
     private func setupRibbonView(forUserAdStatus status: UserAdStatus) {
         ribbonView?.removeFromSuperview()
-
         switch status {
         // Active ad states
         case .active: ribbonView = RibbonView(style: .success, with: status.rawValue)
@@ -164,6 +164,7 @@ public class UserAdsListViewCell: UITableViewCell {
         case .draft: ribbonView = RibbonView(style: .warning, with: status.rawValue)
         case .denied: ribbonView = RibbonView(style: .warning, with: status.rawValue)
         case .deactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
+        case .dateExpiry: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .expired: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .inactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .sold: ribbonView = RibbonView(style: .warning, with: status.rawValue)
