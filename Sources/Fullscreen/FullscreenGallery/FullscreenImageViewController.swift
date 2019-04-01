@@ -186,7 +186,7 @@ extension FullscreenImageViewController: UIGestureRecognizerDelegate {
         guard gestureRecognizer == panGestureRecognizer else { return false }
 
         let translation = panGestureRecognizer.translation(in: panGestureRecognizer.view)
-        return abs(translation.x) * 2 <= abs(translation.y)
+        return abs(translation.y) >= abs(translation.x) * 4
     }
 }
 
