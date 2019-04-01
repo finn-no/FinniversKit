@@ -94,6 +94,6 @@ extension AdManagementDemoView: UITableViewDataSource {
 
 extension AdManagementDemoView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 32
+        return 16
     }
 }
