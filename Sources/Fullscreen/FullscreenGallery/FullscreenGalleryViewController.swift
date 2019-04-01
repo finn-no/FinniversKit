@@ -78,7 +78,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         self.previewViewInitiallyVisible = previewVisible
         self.viewModel = viewModel
         self.currentImageIndex = viewModel.selectedIndex
-        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [.interPageSpacing: CGFloat.largeSpacing])
 
         modalPresentationStyle = .overCurrentContext
         delegate = self
