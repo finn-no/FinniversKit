@@ -34,7 +34,7 @@ open class AnimatedSelectionView: UIImageView {
         addSubview(reverseImageView)
     }
 
-    func animateSelection(selected: Bool) {
+    public func animateSelection(selected: Bool) {
         if isAnimating {
             cancelAnimation()
             isHighlighted = selected
