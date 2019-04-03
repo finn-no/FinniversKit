@@ -123,6 +123,7 @@ public enum FinniversImageAsset: String {
     case success
     case trashcan
     case travel
+    case uncheckCircle
     case vehicles
     case verified
     case view
@@ -236,6 +237,7 @@ public enum FinniversImageAsset: String {
             .success,
             .trashcan,
             .travel,
+            .uncheckCircle,
             .vehicles,
             .verified,
             .view,

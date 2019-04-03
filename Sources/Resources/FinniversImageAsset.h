@@ -112,6 +112,7 @@ extern NSString *const FinniversImageAssetstatsHeart;
 extern NSString *const FinniversImageAssetsuccess;
 extern NSString *const FinniversImageAssettrashcan;
 extern NSString *const FinniversImageAssettravel;
+extern NSString *const FinniversImageAssetuncheckCircle;
 extern NSString *const FinniversImageAssetvehicles;
 extern NSString *const FinniversImageAssetverified;
 extern NSString *const FinniversImageAssetview;

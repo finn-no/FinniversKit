@@ -35,7 +35,8 @@ public class AdManagementDemoView: UIView {
             AdManagementActionCellModel(actionType: .externalFallback, title: "Eierskifteforsikring", description: "Se hvilke tilbud våre samarbeidspartnere kan by på")
         ],
         [
-            AdManagementActionCellModel(actionType: .start, title: "Vis annonsen i søkeresultater")
+            AdManagementActionCellModel(actionType: .start, title: "Vis annonsen i søkeresultater"),
+            AdManagementActionCellModel(actionType: .undispose, title: "Fjern solgtmarkering")
         ]
     ]
 
