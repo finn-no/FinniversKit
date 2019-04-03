@@ -45,6 +45,7 @@ extension BottomSheet {
     public enum DismissAction {
         case tap
         case drag
+        case none
     }
 }
 
