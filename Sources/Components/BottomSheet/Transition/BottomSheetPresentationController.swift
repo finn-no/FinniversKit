@@ -15,11 +15,13 @@ import UIKit
 **/
 
 protocol BottomSheetPresentationControllerDelegate: class {
-    func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController)
+    func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction)
     func bottomSheetPresentationControllerDidBeginDrag(_ presentationController: BottomSheetPresentationController)
 }
 
 class BottomSheetPresentationController: UIPresentationController {
+
+    // MARK: - Internal properties
 
     var state: BottomSheet.State {
         get { return stateController.state }
@@ -27,6 +29,9 @@ class BottomSheetPresentationController: UIPresentationController {
     }
 
     weak var presentationControllerDelegate: BottomSheetPresentationControllerDelegate?
+
+    // MARK: - Private properties
+
     private let height: BottomSheet.Height
     private let interactionController: BottomSheetInteractionController
     private var constraint: NSLayoutConstraint? // Constraint is used to set the y position of the bottom sheet
@@ -35,6 +40,8 @@ class BottomSheetPresentationController: UIPresentationController {
     private lazy var stateController = BottomSheetStateController(height: height)
 
     private var hasReachExpandedPosition = false
+    private var dismissAction: BottomSheet.DismissAction = .drag
+
     private var currentPosition: CGPoint {
         guard let constraint = constraint else { return .zero }
         return CGPoint(x: 0, y: constraint.constant)
@@ -51,11 +58,15 @@ class BottomSheetPresentationController: UIPresentationController {
         return view
     }()
 
+    // MARK: - Init
+
     init(presentedViewController: UIViewController, presenting: UIViewController?, height: BottomSheet.Height, interactionController: BottomSheetInteractionController) {
         self.height = height
         self.interactionController = interactionController
         super.init(presentedViewController: presentedViewController, presenting: presenting)
     }
+
+    // MARK: - Overrides
 
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView, let bottomSheet = presentedViewController as? BottomSheet else { return }
@@ -94,7 +105,7 @@ class BottomSheetPresentationController: UIPresentationController {
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         // Completed should always be true at this point of development
         guard !completed else {
-            presentationControllerDelegate?.bottomSheetPresentationController(self, didDismissPresentedViewController: presentedViewController)
+            presentationControllerDelegate?.bottomSheetPresentationController(self, didDismissPresentedViewController: presentedViewController, by: dismissAction)
             return
         }
         gestureController?.delegate = self
@@ -137,12 +148,14 @@ private extension BottomSheetPresentationController {
         guard stateController.state != .dismissed else { return }
         stateController.state = .dismissed
         gestureController?.velocity = .zero
+        dismissAction = .tap
         presentedViewController.dismiss(animated: true)
     }
 
     func animate(to position: CGPoint, initialVelocity: CGPoint = .zero) {
         switch stateController.state {
         case .dismissed:
+            dismissAction = .drag
             presentedViewController.dismiss(animated: true)
         default:
             springAnimator.fromPosition = currentPosition

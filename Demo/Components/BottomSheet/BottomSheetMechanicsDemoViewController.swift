@@ -246,7 +246,7 @@ extension BottomSheetMechanicsDemoViewController: RootViewControllerDelegate {
 }
 
 extension BottomSheetMechanicsDemoViewController: BottomSheetDelegate {
-    func bottomSheetDidDismiss(_ bottomSheet: BottomSheet) {
+    func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction) {
         // BottomSheet dismissed.
     }
 }
