@@ -155,7 +155,6 @@ private extension BottomSheetPresentationController {
     func animate(to position: CGPoint, initialVelocity: CGPoint = .zero) {
         switch stateController.state {
         case .dismissed:
-            dismissAction = .drag
             presentedViewController.dismiss(animated: true)
         default:
             springAnimator.fromPosition = currentPosition
@@ -194,6 +193,11 @@ extension BottomSheetPresentationController: BottomSheetGestureControllerDelegat
     func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController) {
         stateController.updateState(withTranslation: controller.translation)
         guard !hasReachExpandedPosition else { return }
+
+        if stateController.state == .dismissed {
+            dismissAction = .drag
+        }
+
         animate(to: stateController.targetPosition, initialVelocity: -controller.velocity)
     }
 }
