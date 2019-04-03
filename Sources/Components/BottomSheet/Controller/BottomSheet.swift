@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol BottomSheetDelegate: AnyObject {
-    func bottomSheetDidDismiss(_ bottomSheet: BottomSheet)
+    func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction)
 }
 
 public protocol BottomSheetDragDelegate: AnyObject {
@@ -41,6 +41,11 @@ extension BottomSheet {
         case compact
         case dismissed
     }
+
+    public enum DismissAction {
+        case tap
+        case drag
+    }
 }
 
 public class BottomSheet: UIViewController {
@@ -53,6 +58,7 @@ public class BottomSheet: UIViewController {
 
     // MARK: - Public properties
 
+    public let rootViewController: UIViewController
     public weak var delegate: BottomSheetDelegate?
     public weak var dragDelegate: BottomSheetDragDelegate?
 
@@ -80,9 +86,7 @@ public class BottomSheet: UIViewController {
 
     // MARK: - Private properties
 
-    private let rootViewController: UIViewController
     private let transitionDelegate: BottomSheetTransitioningDelegate
-
     private let draggableArea: DraggableArea
     private let notchHeight: CGFloat = 20
     private let notch = Notch(withAutoLayout: true)
@@ -165,8 +169,8 @@ public class BottomSheet: UIViewController {
 // MARK: - BottomSheetDismissalDelegate
 
 extension BottomSheet: BottomSheetPresentationControllerDelegate {
-    func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController) {
-        delegate?.bottomSheetDidDismiss(self)
+    func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction) {
+        delegate?.bottomSheet(self, didDismissBy: action)
     }
 
     func bottomSheetPresentationControllerDidBeginDrag(_ presentationController: BottomSheetPresentationController) {
