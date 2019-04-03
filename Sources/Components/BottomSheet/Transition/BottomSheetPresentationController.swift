@@ -40,7 +40,7 @@ class BottomSheetPresentationController: UIPresentationController {
     private lazy var stateController = BottomSheetStateController(height: height)
 
     private var hasReachExpandedPosition = false
-    private var dismissAction: BottomSheet.DismissAction = .drag
+    private var dismissAction: BottomSheet.DismissAction = .none
 
     private var currentPosition: CGPoint {
         guard let constraint = constraint else { return .zero }
