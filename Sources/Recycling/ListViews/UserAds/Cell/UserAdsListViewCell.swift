@@ -214,7 +214,7 @@ public class UserAdsListViewCell: UITableViewCell {
             userAdStatus = UserAdStatus(rawValue: model.status) ?? .unknown
             accessibilityLabel = model.accessibilityLabel
 
-            setupRibbonView(forUserAdStatus: userAdStatus)
+            setupRibbonView(with: userAdStatus)
             setupView()
         }
     }
