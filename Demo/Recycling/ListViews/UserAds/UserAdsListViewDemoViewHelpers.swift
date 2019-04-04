@@ -67,7 +67,7 @@ public struct UserAdsFactory {
 
     private static func createOngoingAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
         var ongoingAds = [UserAdCell]()
-        for index in 0 ... 0 {
+        for index in 0 ... 1 {
             let imageSource = imageSources[index]
             let title = titles[index]
             let price = prices[index]
@@ -83,7 +83,7 @@ public struct UserAdsFactory {
 
     private static func createActiveAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
         var activeAds = [UserAdCell]()
-        for index in 1 ... 2 {
+        for index in 2 ... 2 {
             let imageSource = imageSources[index]
             let title = titles[index]
             let price = prices[index]
@@ -122,6 +122,7 @@ public struct UserAdsFactory {
     private static var imageSources: [ImageSource] {
         return [
             ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),
+            ImageSource(path: "http://jonvilma.com/images/house-6.jpg", size: CGSize(width: 992, height: 546)),
             ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),
             ImageSource(path: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg", size: CGSize(width: 800, height: 600)),
             ImageSource(path: "http://jonvilma.com/images/house-6.jpg", size: CGSize(width: 992, height: 546)),
@@ -132,6 +133,7 @@ public struct UserAdsFactory {
     private static var titles: [String] {
         return [
             "George Condo - My twisted fantasy",
+            "Macbook Air",
             "Fender Jaguar Blå",
             "Nixon Kamera",
             "Retro sko",
@@ -142,6 +144,7 @@ public struct UserAdsFactory {
     private static var prices: [String?] {
         return [
             "1 200 00 000 000 000 000 000 000,-",
+            "1200 Kroner",
             "58 000 000 000 000,-",
             nil,
             "Gis bort",
@@ -152,6 +155,7 @@ public struct UserAdsFactory {
     private static var details: [String] {
         return [
             "Sist redigert: 09.10.2019",
+            "Sist redigert: 01.01.2019",
             "Sist redigert: 22.10.2018",
             "Sist redigert: 12.12.2015",
             "Sist redigert: 17.01.2019",
@@ -162,6 +166,7 @@ public struct UserAdsFactory {
     private static var statuses: [String] {
         return [
             "Påbegynt",
+            "Venter på betaling",
             "Aktiv",
             "Deaktivert",
             "Solgt",
