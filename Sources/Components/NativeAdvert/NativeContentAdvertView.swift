@@ -13,7 +13,7 @@ public final class NativeContentAdvertView: UIView {
 
     // MARK: - Private properties
 
-    private let containerMaxWidth: CGFloat = 400
+    private let containerMaxWidth: CGFloat = 360
     private let logoImageSize: CGFloat = 48.0
     private let cornerRadius: CGFloat = 8.0
 
@@ -88,10 +88,12 @@ private extension NativeContentAdvertView {
         containerView.addSubview(settingsButton)
 
         NSLayoutConstraint.activate([
-            containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            containerView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumLargeSpacing),
+            containerView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
             containerView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            containerView.widthAnchor.constraint(lessThanOrEqualToConstant: containerMaxWidth),
 
             mainImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
             mainImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
@@ -109,7 +111,7 @@ private extension NativeContentAdvertView {
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .mediumSpacing),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: logoImageView.leadingAnchor, constant: -.mediumLargeSpacing),
             titleLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: .mediumLargeSpacing),
-            titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 
