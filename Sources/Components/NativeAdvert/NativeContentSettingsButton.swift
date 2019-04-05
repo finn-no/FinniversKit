@@ -94,6 +94,7 @@ final class NativeContentSettingsButton: UIButton {
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentView.heightAnchor.constraint(equalToConstant: .largeSpacing),
 
@@ -119,6 +120,6 @@ private extension UIColor {
     }
 
     static var buttonHighlightedColor: UIColor? {
-        return UIColor.defaultButtonHighlightedBodyColor.withAlphaComponent(0.8)
+        return UIColor(white: 0, alpha: 0.3)
     }
 }

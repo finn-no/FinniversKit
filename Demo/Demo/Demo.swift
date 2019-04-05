@@ -114,7 +114,7 @@ public enum ComponentViews: String, CaseIterable {
         case .stepIndicator:
             return DemoViewController<StepIndicatorDemoView>(withDismissButton: true)
         case .nativeAdvert:
-            return DemoViewController<NativeAdvertDemoView>()
+            return DemoViewController<NativeAdvertDemoView>(withDismissButton: true)
         }
     }
 }

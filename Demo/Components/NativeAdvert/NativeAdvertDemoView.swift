@@ -51,37 +51,25 @@ class NativeAdvertDemoView: UIView {
         addSubview(advertView)
         addSubview(contentAdvertView)
 
-        let hairlineAdTop = createHairlineView()
-        let hairlineAdBottom = createHairlineView()
         let hairlineContentTop = createHairlineView()
         let hairlineContentBottom = createHairlineView()
-        addSubview(hairlineAdTop)
-        addSubview(hairlineAdBottom)
         addSubview(hairlineContentTop)
         addSubview(hairlineContentBottom)
 
         NSLayoutConstraint.activate([
             advertView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            advertView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            advertView.topAnchor.constraint(equalTo: topAnchor),
             advertView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            advertView.heightAnchor.constraint(equalTo: advertView.widthAnchor, multiplier: 2.0 / 3.0),
-
-            hairlineAdBottom.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hairlineAdBottom.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineAdBottom.topAnchor.constraint(equalTo: advertView.bottomAnchor),
-
-            hairlineAdTop.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hairlineAdTop.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineAdTop.bottomAnchor.constraint(equalTo: advertView.topAnchor),
-
-            contentAdvertView.topAnchor.constraint(equalTo: advertView.bottomAnchor, constant: .largeSpacing),
-            contentAdvertView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentAdvertView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentAdvertView.heightAnchor.constraint(equalToConstant: 270),
+            advertView.heightAnchor.constraint(equalToConstant: 250.0),
 
             hairlineContentTop.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentTop.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineContentTop.bottomAnchor.constraint(equalTo: contentAdvertView.topAnchor),
+            hairlineContentTop.bottomAnchor.constraint(equalTo: advertView.bottomAnchor),
+
+            contentAdvertView.topAnchor.constraint(equalTo: hairlineContentTop.bottomAnchor),
+            contentAdvertView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentAdvertView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentAdvertView.heightAnchor.constraint(equalToConstant: 270),
 
             hairlineContentBottom.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentBottom.trailingAnchor.constraint(equalTo: trailingAnchor),
