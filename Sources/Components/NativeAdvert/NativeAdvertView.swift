@@ -91,13 +91,7 @@ public final class NativeAdvertView: UIView {
     private var largeTitles = false {
         didSet {
             if oldValue != largeTitles {
-                if largeTitles {
-                    titleLabel.font = UIFont.bodyStrong.withSize(16)
-                    sponsoredByLabel.font = UIFont.body.withSize(11)
-                } else {
-                    titleLabel.font = UIFont.bodyStrong.withSize(13)
-                    sponsoredByLabel.font = UIFont.body.withSize(10)
-                }
+                setupFonts()
             }
         }
     }
@@ -116,7 +110,7 @@ public final class NativeAdvertView: UIView {
         super.init(frame: .zero)
         self.imageDelegate = imageDelegate
         setup()
-        build(viewModel: viewModel)
+        configure(viewModel: viewModel)
     }
 
     public override func layoutSubviews() {
@@ -179,11 +173,12 @@ private extension NativeAdvertView {
             logoImageView.heightAnchor.constraint(equalToConstant: logoSize),
             logoImageView.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor),
             logoImageView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor)
-            ])
-        setupFonts(largeTitles: largeTitles)
+        ])
+
+        setupFonts()
     }
 
-    func build(viewModel: NativeAdvertViewModel) {
+    func configure(viewModel: NativeAdvertViewModel) {
         mainImageView.image = nil
         if let imageURL = viewModel.mainImageURL {
             imageDelegate?.nativeAdvertView(setImageWithURL: imageURL, onImageView: mainImageView)
@@ -198,7 +193,7 @@ private extension NativeAdvertView {
         sponsoredByLabel.text = viewModel.sponsoredText
     }
 
-    func setupFonts(largeTitles: Bool) {
+    func setupFonts() {
         if largeTitles {
             titleLabel.font = titleFont(withSize: 16)
             sponsoredByLabel.font = sponsoredByFont(withSize: 11)
@@ -247,4 +242,3 @@ private class ResizeableImageView: UIImageView {
         }
     }
 }
-

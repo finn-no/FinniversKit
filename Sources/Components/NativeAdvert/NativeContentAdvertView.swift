@@ -13,9 +13,13 @@ public final class NativeContentAdvertView: UIView {
 
     // MARK: - Private properties
 
-    private let containerMaxWidth: CGFloat = 360
+    private let containerMaxWidth: CGFloat = 320
     private let logoImageSize: CGFloat = 48.0
     private let cornerRadius: CGFloat = 8.0
+
+    // See specification on:
+    // https://annonseweb.schibsted.no/nb-no/product/finn-native-ads-16031
+    private let imageAspectRatio: CGFloat = (1200.0 / 627)
 
     // MARK: - UI properties
 
@@ -69,7 +73,7 @@ public final class NativeContentAdvertView: UIView {
         super.init(frame: .zero)
         self.imageDelegate = imageDelegate
         setup()
-        build(viewModel: viewModel)
+        configure(viewModel: viewModel)
     }
 
     // MARK: - Private methods
@@ -98,24 +102,24 @@ private extension NativeContentAdvertView {
             mainImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
             mainImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             mainImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            mainImageView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.61),
+            mainImageView.heightAnchor.constraint(equalTo: mainImageView.widthAnchor, multiplier: 1.0 / imageAspectRatio),
 
             settingsButton.topAnchor.constraint(equalTo: mainImageView.topAnchor),
             settingsButton.trailingAnchor.constraint(equalTo: mainImageView.trailingAnchor),
 
-            logoImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -.mediumLargeSpacing),
-            logoImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -.mediumLargeSpacing),
+            logoImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -.mediumSpacing),
+            logoImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -.mediumSpacing),
             logoImageView.widthAnchor.constraint(equalToConstant: logoImageSize),
             logoImageView.heightAnchor.constraint(equalToConstant: logoImageSize),
 
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .mediumSpacing),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: logoImageView.leadingAnchor, constant: -.mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: .mediumLargeSpacing),
-            titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor, constant: -.mediumLargeSpacing)
+            titleLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: .mediumSpacing),
+            titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor, constant: -.mediumSpacing)
         ])
     }
 
-    func build(viewModel: NativeAdvertViewModel) {
+    func configure(viewModel: NativeAdvertViewModel) {
         mainImageView.image = nil
         if let mainImageURL = viewModel.mainImageURL {
             imageDelegate?.nativeAdvertView(setImageWithURL: mainImageURL, onImageView: mainImageView)

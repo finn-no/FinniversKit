@@ -69,7 +69,7 @@ class NativeAdvertDemoView: UIView {
             contentAdvertView.topAnchor.constraint(equalTo: hairlineContentTop.bottomAnchor),
             contentAdvertView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentAdvertView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentAdvertView.heightAnchor.constraint(equalToConstant: 270),
+            contentAdvertView.heightAnchor.constraint(equalToConstant: 250),
 
             hairlineContentBottom.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentBottom.trailingAnchor.constraint(equalTo: trailingAnchor),
