@@ -49,6 +49,7 @@ public class StatisticsItemView: UIView {
     public var shouldShowLeftSeparator: Bool = false {
         didSet { leftSeparator.isHidden = !shouldShowLeftSeparator }
     }
+
     public var shouldShowRightSeparator: Bool = false {
         didSet { rightSeparator.isHidden = !shouldShowRightSeparator }
     }
@@ -94,34 +95,32 @@ public class StatisticsItemView: UIView {
         addSubview(rightSeparator)
     }
 
-    func setupConstraints() {
+    public func setupConstraints() {
         let hairLineSize = 1.0/UIScreen.main.scale
 
-        NSLayoutConstraint.activate(
-            [ imageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-              imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-              imageView.heightAnchor.constraint(equalToConstant: 40),
-              imageView.widthAnchor.constraint(equalToConstant: 40),
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 40),
+            imageView.widthAnchor.constraint(equalToConstant: 40),
 
-              valueLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-              valueLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 6),
-              valueLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.mediumLargeSpacing),
+            valueLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            valueLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 6),
+            valueLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.mediumLargeSpacing),
 
-              textLabel.centerXAnchor.constraint(equalTo: valueLabel.centerXAnchor),
-              textLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor),
-              textLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
-              textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            textLabel.centerXAnchor.constraint(equalTo: valueLabel.centerXAnchor),
+            textLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor),
+            textLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
+            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
 
-              leftSeparator.centerYAnchor.constraint(equalTo: centerYAnchor),
-              leftSeparator.leftAnchor.constraint(equalTo: leftAnchor),
-              leftSeparator.widthAnchor.constraint(equalToConstant: hairLineSize),
-              leftSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.veryLargeSpacing),
+            leftSeparator.centerYAnchor.constraint(equalTo: centerYAnchor),
+            leftSeparator.leftAnchor.constraint(equalTo: leftAnchor),
+            leftSeparator.widthAnchor.constraint(equalToConstant: hairLineSize),
+            leftSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.veryLargeSpacing),
 
-              rightSeparator.centerYAnchor.constraint(equalTo: centerYAnchor),
-              rightSeparator.rightAnchor.constraint(equalTo: rightAnchor),
-              rightSeparator.widthAnchor.constraint(equalToConstant: hairLineSize),
-              rightSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.veryLargeSpacing)
-              ]
-        )
+            rightSeparator.centerYAnchor.constraint(equalTo: centerYAnchor),
+            rightSeparator.rightAnchor.constraint(equalTo: rightAnchor),
+            rightSeparator.widthAnchor.constraint(equalToConstant: hairLineSize),
+            rightSeparator.heightAnchor.constraint(equalTo: heightAnchor, constant: -.veryLargeSpacing)])
     }
 }

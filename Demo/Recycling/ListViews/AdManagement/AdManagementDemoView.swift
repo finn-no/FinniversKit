@@ -21,7 +21,7 @@ public class AdManagementDemoView: UIView {
         return tableView
     }()
 
-    private let actionCellModels: [[AdManagementActionCellModel]] = [
+    private var actionCellModels: [[AdManagementActionCellModel]] = [
         [
             AdManagementActionCellModel(actionType: .delete, title: "Slett annonsen"),
             AdManagementActionCellModel(actionType: .stop, title: "Skjul annonsen midlertidig", description: "Annonsen blir skjult fra FINNs søkeresultater")
@@ -38,6 +38,12 @@ public class AdManagementDemoView: UIView {
             AdManagementActionCellModel(actionType: .start, title: "Vis annonsen i søkeresultater"),
             AdManagementActionCellModel(actionType: .undispose, title: "Fjern solgtmarkering")
         ]
+    ]
+
+    private var statisticsCellModels: [StatisticsItemModel] = [
+        StatisticsItemModel(type: .seen, value: 968, text: "har sett annonsen"),
+        StatisticsItemModel(type: .favourited, value: 16, text: "har lagret annonsen"),
+        StatisticsItemModel(type: .email, value: 1337, text: "har fått e-post om annonsen")
     ]
 
     override init(frame: CGRect) {
@@ -59,32 +65,40 @@ public class AdManagementDemoView: UIView {
 
 extension AdManagementDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2 : actionCellModels[section-1].count
+        if actionCellModels.isEmpty == true { return 1 }
+        if section == 0 && statisticsCellModels.isEmpty == true { return 1 }
+        if section == 0 && statisticsCellModels.isEmpty == false && actionCellModels.isEmpty == false { return 2 }
+        return actionCellModels[section - 1].count
     }
 
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1 + actionCellModels.count
+        return actionCellModels.count + 1
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            if indexPath.row == 0 {
+            if indexPath.row == 0 && statisticsCellModels.isEmpty == true {
                 let cell = tableView.dequeue(UserAdManagementStatisticsCell.self, for: indexPath)
-                cell.itemModels = [StatisticsItemModel(type: .seen, value: 968, text: "har sett annonsen"),
-                                   StatisticsItemModel(type: .favourited, value: 16, text: "har lagret annonsen"),
-                                   StatisticsItemModel(type: .email, value: 1337, text: "har fått e-post om annonsen")]
+                cell.itemModels = statisticsCellModels
+                return cell
+            } else if indexPath.row == 0 && statisticsCellModels.isEmpty == false {
+                let cell = tableView.dequeue(UserAdManagementStatisticsCell.self, for: indexPath)
+                cell.itemModels = statisticsCellModels
+                return cell
+            } else if indexPath.row == 1 && statisticsCellModels.isEmpty == false {
+                let cell = tableView.dequeue(UserAdManagementButtonAndInformationCell.self, for: indexPath)
+                cell.informationText = "Du kan øke synligheten av annonsen din ytterligere ved å oppgradere den."
+                cell.buttonText = "Kjøp mer synlighet"
                 return cell
             }
-            let cell = tableView.dequeue(UserAdManagementButtonAndInformationCell.self, for: indexPath)
-            cell.informationText = "Du kan øke synligheten av annonsen din ytterligere ved å oppgradere den."
-            cell.buttonText = "Kjøp mer synlighet"
-            return cell
         } else {
             let cell = tableView.dequeue(UserAdManagementUserActionCell.self, for: indexPath)
-            cell.setupWithModel(actionCellModels[indexPath.section-1][indexPath.row])
+            cell.setupWithModel(actionCellModels[indexPath.section - 1][indexPath.row])
             cell.showSeparator(indexPath.row != 0)
             return cell
         }
+
+        return UITableViewCell()
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
