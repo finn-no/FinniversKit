@@ -5,7 +5,8 @@
 import FinniversKit
 
 public class InfoboxDemoView: UIView {
-    private lazy var infoboxView = InfoboxView(withAutoLayout: true)
+    private lazy var smallInfoboxView = InfoboxView(style: .small(backgroundColor: .ice))
+    private lazy var normalInfoboxView = InfoboxView(style: .normal(backgroundColor: .white, primaryButtonIcon: UIImage(named: .webview)))
 
     // MARK: - Init
 
@@ -19,13 +20,22 @@ public class InfoboxDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(infoboxView)
-        infoboxView.model = InfoboxDefaultData()
+        smallInfoboxView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(smallInfoboxView)
+        smallInfoboxView.model = InfoboxDefaultData()
+
+        normalInfoboxView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(normalInfoboxView)
+        normalInfoboxView.model = InfoboxOpenBrowserData()
 
         NSLayoutConstraint.activate([
-            infoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
-            infoboxView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            infoboxView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            smallInfoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+            smallInfoboxView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            smallInfoboxView.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
+
+            normalInfoboxView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+            normalInfoboxView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            normalInfoboxView.topAnchor.constraint(equalTo: smallInfoboxView.bottomAnchor, constant: .largeSpacing),
         ])
     }
 }
