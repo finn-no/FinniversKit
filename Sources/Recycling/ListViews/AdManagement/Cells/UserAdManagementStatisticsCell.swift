@@ -3,20 +3,29 @@
 //
 
 public class UserAdManagementStatisticsCell: UITableViewCell {
+
+    // MARK: - Public
+
     public var itemModels = [StatisticsItemModel]() {
         didSet { updateStackViewContent() }
     }
+
+    // MARK: - Private
+
     private lazy var stackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
         view.alignment = .fill
         view.distribution = .fillEqually
         return view
     }()
+
     private lazy var separatorView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .sardine
         return view
     }()
+
+    // MARK: - Initalization
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,13 +37,15 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
         setup()
     }
 
+    // MARK: - Private methods
+
     private func updateStackViewContent() {
         for oldSubview in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(oldSubview)
             oldSubview.removeFromSuperview()
         }
-        let lastIndex = itemModels.count-1
 
+        let lastIndex = itemModels.count-1
         for (index, model) in itemModels.enumerated() {
             let itemView = StatisticsItemView(model: model)
             itemView.shouldShowLeftSeparator = index > 0 && index < lastIndex
@@ -54,15 +65,15 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
 
         let hairLineSize = 1.0/UIScreen.main.scale
 
-        NSLayoutConstraint.activate(
-            [ separatorView.heightAnchor.constraint(equalToConstant: hairLineSize),
-              separatorView.topAnchor.constraint(equalTo: contentView.topAnchor),
-              separatorView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-              separatorView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-              stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-              stackView.topAnchor.constraint(equalTo: separatorView.bottomAnchor),
-              stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-              stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor) ]
-        )
+        NSLayoutConstraint.activate([
+            separatorView.heightAnchor.constraint(equalToConstant: hairLineSize),
+            separatorView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            stackView.topAnchor.constraint(equalTo: separatorView.bottomAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
 }
