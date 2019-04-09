@@ -16,8 +16,7 @@ public class UserAdManagementStatisticsEmptyViewCell: UITableViewCell {
     // MARK: - Private
 
     private lazy var emptyView: StatisticsItemEmptyView = {
-        let view = StatisticsItemEmptyView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = StatisticsItemEmptyView(withAutoLayout: true)
         return view
     }()
 
