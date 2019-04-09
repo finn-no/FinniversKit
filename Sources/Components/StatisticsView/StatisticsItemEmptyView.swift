@@ -1,10 +1,13 @@
 //
-//  Copyright © 2019 FINN AS. All rights reserved.
+//  Copyright © FINN.no AS. All rights reserved.
 //
 
 import UIKit
 
 public class StatisticsItemEmptyView: UIView {
+
+    // MARK: - Private
+
     private lazy var imageView: UIImageView = {
         let view = UIImageView(image: UIImage(named: .statsEmpty))
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -14,8 +17,7 @@ public class StatisticsItemEmptyView: UIView {
     }()
 
     private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel(withAutoLayout: true)
         label.numberOfLines = 0
         label.font = UIFont.bodyStrong
         label.textColor = .licorice
@@ -25,8 +27,7 @@ public class StatisticsItemEmptyView: UIView {
     }()
 
     private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel(withAutoLayout: true)
         label.numberOfLines = 0
         label.font = UIFont.caption
         label.textColor = .licorice
@@ -35,11 +36,10 @@ public class StatisticsItemEmptyView: UIView {
         return label
     }()
 
-    init(title: String, description: String) {
-        super.init(frame: .zero)
-        titleLabel.text = title
-        descriptionLabel.text = description
+    // MARK: - Initalization
 
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
     }
 
@@ -47,9 +47,9 @@ public class StatisticsItemEmptyView: UIView {
         fatalError("Use init(frame:)")
     }
 
-    private func setup() {
-        translatesAutoresizingMaskIntoConstraints = false
+    // MARK: - Private methods
 
+    private func setup() {
         addSubview(imageView)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
@@ -69,5 +69,16 @@ public class StatisticsItemEmptyView: UIView {
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
         ])
+    }
+
+    // MARK: - Dependency injection
+
+    public var model: StatisticsItemEmptyViewModel? {
+        didSet {
+            guard let model = model else { return }
+            titleLabel.text = model.title
+            descriptionLabel.text = model.description
+            accessibilityLabel = model.accessibilityLabel
+        }
     }
 }

@@ -12,6 +12,7 @@ public class AdManagementDemoView: UIView {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UserAdManagementStatisticsCell.self)
+        tableView.register(UserAdManagementStatisticsEmptyViewCell.self)
         tableView.register(UserAdManagementButtonAndInformationCell.self)
         tableView.register(UserAdManagementUserActionCell.self)
         tableView.separatorStyle = .none
@@ -46,6 +47,11 @@ public class AdManagementDemoView: UIView {
         StatisticsItemModel(type: .email, value: 1337, text: "har fått e-post om annonsen")
     ]
 
+    private var statisticsEmptyViewCellModel: StatisticsItemEmptyViewModel = {
+        return StatisticsItemEmptyViewModel(title: "Følg med på effekten",
+                                            description: "Etter at du har publisert annonsen din kan du se statistikk for hvor mange som har sett annonsen din, favorisert den og som har fått tips om den.")
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -65,10 +71,7 @@ public class AdManagementDemoView: UIView {
 
 extension AdManagementDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if actionCellModels.isEmpty == true { return 1 }
-        if section == 0 && statisticsCellModels.isEmpty == true { return 1 }
-        if section == 0 && statisticsCellModels.isEmpty == false && actionCellModels.isEmpty == false { return 2 }
-        return actionCellModels[section - 1].count
+        return section == 0 ? 2 : actionCellModels[section - 1].count
     }
 
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,14 +81,15 @@ extension AdManagementDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row == 0 && statisticsCellModels.isEmpty == true {
+                let cell = tableView.dequeue(UserAdManagementStatisticsEmptyViewCell.self, for: indexPath)
+                cell.itemModel = statisticsEmptyViewCellModel
+                return cell
+            }
+            if indexPath.row == 0 {
                 let cell = tableView.dequeue(UserAdManagementStatisticsCell.self, for: indexPath)
                 cell.itemModels = statisticsCellModels
                 return cell
-            } else if indexPath.row == 0 && statisticsCellModels.isEmpty == false {
-                let cell = tableView.dequeue(UserAdManagementStatisticsCell.self, for: indexPath)
-                cell.itemModels = statisticsCellModels
-                return cell
-            } else if indexPath.row == 1 && statisticsCellModels.isEmpty == false {
+            } else {
                 let cell = tableView.dequeue(UserAdManagementButtonAndInformationCell.self, for: indexPath)
                 cell.informationText = "Du kan øke synligheten av annonsen din ytterligere ved å oppgradere den."
                 cell.buttonText = "Kjøp mer synlighet"
@@ -97,8 +101,6 @@ extension AdManagementDemoView: UITableViewDataSource {
             cell.showSeparator(indexPath.row != 0)
             return cell
         }
-
-        return UITableViewCell()
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

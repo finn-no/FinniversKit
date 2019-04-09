@@ -12,12 +12,6 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
 
     // MARK: - Private
 
-    private lazy var emptyView: StatisticsItemEmptyView = {
-        let view = StatisticsItemEmptyView(title: "Følg med på effekten", description: "Etter at du har publisert annonsen din kan du se statistikk for hvor mange som har sett annonsen din, favorisert den og som har fått tips om den.")
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
     private lazy var stackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
         view.alignment = .fill
@@ -31,6 +25,8 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
         return view
     }()
 
+    // MARK: - Initalization
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -41,27 +37,24 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
         setup()
     }
 
+    // MARK: - Private methods
+
     private func updateStackViewContent() {
         for oldSubview in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(oldSubview)
             oldSubview.removeFromSuperview()
         }
 
-        if itemModels.isEmpty {
-            stackView.addArrangedSubview(emptyView)
-        } else {
-            let lastIndex = itemModels.count-1
-
-            for (index, model) in itemModels.enumerated() {
-                let itemView = StatisticsItemView(model: model)
-                itemView.shouldShowLeftSeparator = index > 0 && index < lastIndex
-                itemView.shouldShowRightSeparator = index > 0 && index < lastIndex
-                // Slight overengineering, as there are currently no plans to receive any other number than three items
-                if lastIndex == 1 { itemView.shouldShowLeftSeparator = index == lastIndex }
-                if lastIndex > 2 { itemView.shouldShowRightSeparator = index == lastIndex-1 }
-                stackView.addArrangedSubview(itemView)
-                itemView.setupConstraints()
-            }
+        let lastIndex = itemModels.count-1
+        for (index, model) in itemModels.enumerated() {
+            let itemView = StatisticsItemView(model: model)
+            itemView.shouldShowLeftSeparator = index > 0 && index < lastIndex
+            itemView.shouldShowRightSeparator = index > 0 && index < lastIndex
+            // Slight overengineering, as there are currently no plans to receive any other number than three items
+            if lastIndex == 1 { itemView.shouldShowLeftSeparator = index == lastIndex }
+            if lastIndex > 2 { itemView.shouldShowRightSeparator = index == lastIndex-1 }
+            stackView.addArrangedSubview(itemView)
+            itemView.setupConstraints()
         }
     }
 

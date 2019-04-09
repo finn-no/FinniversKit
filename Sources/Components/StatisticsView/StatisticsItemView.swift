@@ -5,6 +5,9 @@
 import UIKit
 
 public class StatisticsItemView: UIView {
+
+    // MARK: - Private
+
     private lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +49,8 @@ public class StatisticsItemView: UIView {
         return view
     }()
 
+    // MARK: - Public
+
     public var shouldShowLeftSeparator: Bool = false {
         didSet { leftSeparator.isHidden = !shouldShowLeftSeparator }
     }
@@ -53,6 +58,8 @@ public class StatisticsItemView: UIView {
     public var shouldShowRightSeparator: Bool = false {
         didSet { rightSeparator.isHidden = !shouldShowRightSeparator }
     }
+
+    // MARK: - Initalization
 
     init(model: StatisticsItemModel) {
         super.init(frame: .zero)
@@ -75,6 +82,7 @@ public class StatisticsItemView: UIView {
                 return UIImage(named: .statsHeart).withRenderingMode(.alwaysTemplate)
             }
         }
+
         imageView.image = image
         setup()
     }
@@ -87,6 +95,8 @@ public class StatisticsItemView: UIView {
         fatalError("Please use init(model:)")
     }
 
+    // MARK: - Private methods
+
     private func setup() {
         addSubview(imageView)
         addSubview(valueLabel)
@@ -94,6 +104,8 @@ public class StatisticsItemView: UIView {
         addSubview(leftSeparator)
         addSubview(rightSeparator)
     }
+
+    // MARK: - Private methods
 
     public func setupConstraints() {
         let hairLineSize = 1.0/UIScreen.main.scale
