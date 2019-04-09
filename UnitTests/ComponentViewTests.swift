@@ -134,4 +134,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testStepIndicatorView() {
         snapshot(.stepIndicator)
     }
+
+    func testNativeAdverts() {
+        snapshot(.nativeAdvert)
+    }
 }
