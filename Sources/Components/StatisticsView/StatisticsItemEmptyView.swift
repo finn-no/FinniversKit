@@ -56,6 +56,8 @@ public class StatisticsItemEmptyView: UIView {
     // MARK: - Private methods
 
     private func setup() {
+        let hairLineSize = 1.0/UIScreen.main.scale
+
         addSubview(hairlineView)
         addSubview(imageView)
         addSubview(titleLabel)
@@ -65,7 +67,7 @@ public class StatisticsItemEmptyView: UIView {
             hairlineView.topAnchor.constraint(equalTo: topAnchor),
             hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineView.heightAnchor.constraint(equalToConstant: 1),
+            hairlineView.heightAnchor.constraint(equalToConstant: hairLineSize),
 
             imageView.topAnchor.constraint(equalTo: hairlineView.bottomAnchor, constant: .mediumSpacing),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
