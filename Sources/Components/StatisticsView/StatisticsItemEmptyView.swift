@@ -8,6 +8,12 @@ public class StatisticsItemEmptyView: UIView {
 
     // MARK: - Private
 
+    private lazy var hairlineView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .sardine
+        return view
+    }()
+
     private lazy var imageView: UIImageView = {
         let view = UIImageView(image: UIImage(named: .statsEmpty))
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -50,12 +56,20 @@ public class StatisticsItemEmptyView: UIView {
     // MARK: - Private methods
 
     private func setup() {
+        let hairLineSize = 1.0/UIScreen.main.scale
+
+        addSubview(hairlineView)
         addSubview(imageView)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            hairlineView.topAnchor.constraint(equalTo: topAnchor),
+            hairlineView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            hairlineView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            hairlineView.heightAnchor.constraint(equalToConstant: hairLineSize),
+
+            imageView.topAnchor.constraint(equalTo: hairlineView.bottomAnchor, constant: .mediumSpacing),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
