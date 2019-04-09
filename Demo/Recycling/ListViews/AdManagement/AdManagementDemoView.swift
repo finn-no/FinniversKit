@@ -79,6 +79,7 @@ extension AdManagementDemoView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        statisticsCellModels.removeAll()
         if indexPath.section == 0 {
             if indexPath.row == 0 && statisticsCellModels.isEmpty == true {
                 let cell = tableView.dequeue(UserAdManagementStatisticsEmptyViewCell.self, for: indexPath)
