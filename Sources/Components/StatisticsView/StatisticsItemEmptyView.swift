@@ -9,9 +9,9 @@ public class StatisticsItemEmptyView: UIView {
     // MARK: - Private
 
     private lazy var hairlineView: UIView = {
-        let label = UIView(withAutoLayout: true)
-        label.backgroundColor = .sardine
-        return label
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .sardine
+        return view
     }()
 
     private lazy var imageView: UIImageView = {
