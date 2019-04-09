@@ -21,10 +21,12 @@ public final class InfoboxView: UIView {
         }
     }
 
+    public private(set) var style: InfoboxView.Style
+
     // MARK: - Subviews
 
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: .bodyStrong)
+        let label = Label(style: style.titleStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .licorice
@@ -32,7 +34,7 @@ public final class InfoboxView: UIView {
     }()
 
     private lazy var detailLabel: UILabel = {
-        let label = Label(style: .caption)
+        let label = Label(style: style.detailStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .licorice
@@ -41,14 +43,23 @@ public final class InfoboxView: UIView {
     }()
 
     private lazy var primaryButton: UIButton = {
-        let button = Button(style: .default, size: .small)
+        let button = Button(style: style.primaryButtonStyle, size: style.primaryButtonSize)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handlePrimaryButtonTap), for: .touchUpInside)
         return button
     }()
 
+    private lazy var primaryButtonImageView: UIImageView? = {
+        if let image = style.primaryButtonIcon {
+            let imageView = UIImageView(image: image)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            return imageView
+        }
+        return nil
+    }()
+
     private lazy var secondaryButton: UIButton = {
-        let button = Button(style: .flat, size: .small)
+        let button = Button(style: style.secondaryButtonStyle, size: style.secondaryButtonSize)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleSecondaryButtonTap), for: .touchUpInside)
         return button
@@ -57,19 +68,27 @@ public final class InfoboxView: UIView {
     // MARK: - Init
 
     public override init(frame: CGRect) {
+        style = .small(backgroundColor: .ice)
         super.init(frame: frame)
         setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
+        style = .small(backgroundColor: .ice)
         super.init(coder: aDecoder)
+        setup()
+    }
+
+    public init(style: InfoboxView.Style) {
+        self.style = style
+        super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         setup()
     }
 
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .ice
+        backgroundColor = style.backgroundColor
         layer.cornerRadius = 8
 
         addSubview(titleLabel)
@@ -77,7 +96,7 @@ public final class InfoboxView: UIView {
         addSubview(primaryButton)
         addSubview(secondaryButton)
 
-        NSLayoutConstraint.activate([
+        var constraints: [NSLayoutConstraint] = [
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
@@ -92,7 +111,23 @@ public final class InfoboxView: UIView {
             secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .smallSpacing),
             secondaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
-        ])
+        ]
+
+        if let primaryButtonImageView = primaryButtonImageView {
+            primaryButton.addSubview(primaryButtonImageView)
+            let imageWidth: CGFloat = 18
+            constraints.append(contentsOf: [
+                primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+                primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+                primaryButtonImageView.widthAnchor.constraint(equalToConstant: imageWidth),
+                primaryButtonImageView.heightAnchor.constraint(equalToConstant: imageWidth),
+                primaryButtonImageView.centerYAnchor.constraint(equalTo: primaryButton.centerYAnchor),
+                primaryButtonImageView.trailingAnchor.constraint(equalTo: primaryButton.trailingAnchor, constant: -.mediumLargeSpacing),
+                ])
+            primaryButton.titleEdgeInsets = UIEdgeInsets(top: primaryButton.titleEdgeInsets.top, leading: primaryButton.titleEdgeInsets.leading + .mediumLargeSpacing + imageWidth, bottom: primaryButton.titleEdgeInsets.bottom, trailing: primaryButton.titleEdgeInsets.trailing + .mediumLargeSpacing + imageWidth)
+        }
+
+        NSLayoutConstraint.activate(constraints)
     }
 
     // MARK: - Actions
