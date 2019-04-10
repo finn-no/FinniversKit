@@ -88,15 +88,7 @@ public class AdsGridView: UIView {
     }
 
     private func setupRefreshControl() {
-        if #available(iOS 10.0, *) {
-            collectionView.refreshControl = isRefreshEnabled ? refreshControl : nil
-        } else {
-            refreshControl.removeFromSuperview()
-
-            if isRefreshEnabled {
-                collectionView.addSubview(refreshControl)
-            }
-        }
+        collectionView.refreshControl = isRefreshEnabled ? refreshControl : nil
     }
 
     public func invalidateLayout() {

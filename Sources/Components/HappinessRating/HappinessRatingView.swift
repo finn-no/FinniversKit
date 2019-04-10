@@ -101,9 +101,7 @@ public class HappinessRatingView: UIView {
             ratingImageView.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
         })
 
-        if #available(iOS 10.0, *) {
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-        }
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         selectedRating = ratingImageView.rating
     }
 }
