@@ -56,9 +56,7 @@ extension CheckboxSubtitleCellDemoView: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if #available(iOS 10.0, *) {
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        }
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
 
         guard let cell = tableView.cellForRow(at: indexPath) as? CheckboxTableViewCell else { return }
         var viewModel = viewModels[indexPath.row]

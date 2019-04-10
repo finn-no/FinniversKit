@@ -95,11 +95,7 @@ public class UserAdsListView: UIView {
     }
 
     private func setupRefreshControl() {
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        } else {
-            tableView.addSubview(refreshControl)
-        }
+        tableView.refreshControl = refreshControl
     }
 
     // MARK: - Public
