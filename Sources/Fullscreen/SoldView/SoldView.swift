@@ -21,6 +21,17 @@ public protocol SoldViewDelegate: NSObjectProtocol {
 }
 
 public class SoldView: UIView {
+
+    // MARK: - Public properties
+
+    public weak var delegate: SoldViewDelegate?
+
+    // MARK: - Internal properties
+
+    let viewModel: SoldViewModel
+
+    // MARK: - UI properties
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -37,6 +48,7 @@ public class SoldView: UIView {
     private lazy var button: Button = {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(callToActionButtonTapped(button:)), for: .touchUpInside)
         return button
     }()
 
@@ -53,8 +65,7 @@ public class SoldView: UIView {
         return stack
     }()
 
-    let viewModel: SoldViewModel
-    weak var delegate: SoldViewDelegate?
+    // MARK: - Init
 
     public init(viewModel: SoldViewModel) {
         self.viewModel = viewModel
@@ -81,6 +92,8 @@ public class SoldView: UIView {
             button.widthAnchor.constraint(equalToConstant: 250)
         ])
     }
+
+    // MARK: - Private methods
 
     @objc private func callToActionButtonTapped(button: Button) {
         delegate?.soldView(self, didSelectCallToAction: button)
