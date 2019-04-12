@@ -158,8 +158,7 @@ public class UserAdsListViewCell: UITableViewCell {
         ribbonView?.removeFromSuperview()
         switch status {
         // Draft ad states
-        case .draft: ribbonView = RibbonView(style: .warning, with: status.rawValue)
-        case .denied: ribbonView = RibbonView(style: .warning, with: status.rawValue)
+        case .draft, .denied: ribbonView = RibbonView(style: .warning, with: status.rawValue)
         case .awaitingPayment: ribbonView = RibbonView(style: .warning, with: status.rawValue)
 
         // Active ad states
@@ -167,8 +166,7 @@ public class UserAdsListViewCell: UITableViewCell {
         case .control: ribbonView = RibbonView(style: .success, with: status.rawValue)
 
         // Inactive ad states
-        case .deactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
-        case .dateExpiry: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
+        case .deactive, .dateExpiry: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .expired: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .inactive: ribbonView = RibbonView(style: .disabled, with: status.rawValue)
         case .sold: ribbonView = RibbonView(style: .warning, with: status.rawValue)
