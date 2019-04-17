@@ -8,7 +8,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AVAudioSession (Swift)
 
-- (BOOL)swift_setCategory:(AVAudioSessionCategory)category error:(NSError **)outError NS_SWIFT_NAME(setCategory(_:));
+- (BOOL)swift_setCategory:(AVAudioSessionCategory)category error:(NSError **)outError NS_SWIFT_NAME(swift_setCategory(_:)) __attribute__((deprecated("Remove when everyone is using Xcode 10.2 or above")));
 
 @end
 
