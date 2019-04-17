@@ -136,7 +136,7 @@ public final class PianoView: UIView {
         // start engine, set up audio session
         do {
             try audioEngine.start()
-            try audioSession.setCategory(.playback)
+            try audioSession.swift_setCategory(.playback)
             try audioSession.setActive(true)
         } catch {
             print("set up failed")
