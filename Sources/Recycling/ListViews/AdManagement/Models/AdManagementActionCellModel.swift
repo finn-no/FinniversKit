@@ -30,7 +30,8 @@ public struct AdManagementActionCellModel {
 
     public init(actionType: AdManagementActionType, title: String, description: String? = nil, showExternalIcon: Bool = false) {
         let typesRequiringChevron: [AdManagementActionType] = [.edit, .review, .republish]
-        let imagesForTypes: [AdManagementActionType: UIImage] = [.delete: UIImage(named: .adManagementTrashcan),
+        let imagesForTypes: [AdManagementActionType: UIImage] = [.preview: UIImage(named: .view),
+                                                                 .delete: UIImage(named: .adManagementTrashcan),
                                                                  .edit: UIImage(named: .pencilPaper),
                                                                  .stop: UIImage(named: .eyeHide),
                                                                  .start: UIImage(named: .statsEye),
