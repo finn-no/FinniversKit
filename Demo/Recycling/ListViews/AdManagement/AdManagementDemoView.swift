@@ -25,6 +25,7 @@ public class AdManagementDemoView: UIView {
     private var actionCellModels: [[AdManagementActionCellModel]] = [
         [
             AdManagementActionCellModel(actionType: .delete, title: "Slett annonsen"),
+            AdManagementActionCellModel(actionType: .preview, title: "Se annonsen"),
             AdManagementActionCellModel(actionType: .stop, title: "Skjul annonsen midlertidig", description: "Annonsen blir skjult fra FINNs søkeresultater")
         ],
         [
