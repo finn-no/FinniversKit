@@ -17,9 +17,6 @@ public final class CalloutView: UIView {
     private lazy var arrowView: UIView = {
         let view = ArrowView(withAutoLayout: true)
         view.backgroundColor = .clear
-        //view.backgroundColor = .mint
-        //view.layer.borderColor = .pea
-        //view.layer.borderWidth = 2
         return view
     }()
 
@@ -42,40 +39,27 @@ public final class CalloutView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Overrides
+    // MARK: - Public
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-
-    }
-
-    // MARK: - Setup
-
-    public func show(withText text: String) {
+    public func show(withText text: String, duration: TimeInterval = 0.3) {
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineSpacing = 2
         paragraph.alignment = .center
 
         textLabel.attributedText = NSAttributedString(string: text, attributes: [.paragraphStyle: paragraph])
 
-        alpha = 1
-        transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       usingSpringWithDamping: 0.6,
-                       initialSpringVelocity: 1.0,
-                       options: .allowUserInteraction,
-                       animations: { [weak self] in
-                        self?.transform = .identity
-            },
-                       completion: nil
-        )
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.alpha = 1
+        }
     }
 
-    public func hide() {
-        alpha = 0
+    public func hide(duration: TimeInterval = 0.3) {
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.alpha = 0
+        }
     }
+
+    // MARK: - Setup
 
     private func setup() {
         addSubview(boxView)

@@ -18,22 +18,14 @@ public class CalloutDemoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Overrides
-
-    public override func didMoveToSuperview() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            self?.calloutView.show(withText: "Trykk her i toppen for å se andre typer eiendommer som bolig til leie, fritidsboliger, tomter etc.")
-        }
-    }
-
     // MARK: - Setup
 
     private func setup() {
         addSubview(calloutView)
         calloutView.hide()
 
-        //let text =
-        //calloutView.show(withText: text)
+        let text = "Trykk her i toppen for å se andre typer eiendommer som bolig til leie, fritidsboliger, tomter etc."
+        calloutView.show(withText: text, duration: 0)
 
         NSLayoutConstraint.activate([
             calloutView.widthAnchor.constraint(equalToConstant: 320),
