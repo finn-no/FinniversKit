@@ -138,4 +138,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testNativeAdverts() {
         snapshot(.nativeAdvert)
     }
+
+    func testCallout() {
+        snapshot(.callout)
+    }
 }
