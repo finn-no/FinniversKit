@@ -27,10 +27,17 @@ public class AdsGridViewCell: UICollectionViewCell {
     private static let imageDescriptionHeight: CGFloat = 35.0
     private static let iconSize: CGFloat = 23.0
 
+    private lazy var imageBackgroundView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = AdsGridViewCell.cornerRadius
+        view.layer.masksToBounds = true
+        return view
+    }()
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = AdsGridViewCell.cornerRadius
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -100,7 +107,11 @@ public class AdsGridViewCell: UICollectionViewCell {
     // MARK: - External properties
 
     /// The loading color is used to fill the image view while we load the image.
-    public var loadingColor: UIColor?
+    public var loadingColor: UIColor? {
+        didSet {
+            imageBackgroundView.backgroundColor = loadingColor
+        }
+    }
 
     /// A data source for the loading of the image
     public weak var dataSource: AdsGridViewCellDataSource?
@@ -136,7 +147,10 @@ public class AdsGridViewCell: UICollectionViewCell {
     private func setup() {
         isAccessibilityElement = true
 
-        addSubview(imageView)
+        addSubview(imageBackgroundView)
+        imageBackgroundView.addSubview(imageView)
+        imageView.fillInSuperview()
+
         addSubview(subtitleLabel)
         addSubview(titleLabel)
         addSubview(imageDescriptionView)
@@ -149,11 +163,11 @@ public class AdsGridViewCell: UICollectionViewCell {
         backgroundColor = .milk
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageBackgroundView.topAnchor.constraint(equalTo: topAnchor),
+            imageBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            subtitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: AdsGridViewCell.subtitleTopMargin),
+            subtitleLabel.topAnchor.constraint(equalTo: imageBackgroundView.bottomAnchor, constant: AdsGridViewCell.subtitleTopMargin),
             subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             subtitleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.subtitleHeight),
@@ -180,7 +194,7 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
             imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
             imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
-            imageDescriptionView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            imageDescriptionView.bottomAnchor.constraint(equalTo: imageBackgroundView.bottomAnchor),
 
             favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: .smallSpacing),
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
@@ -235,26 +249,33 @@ public class AdsGridViewCell: UICollectionViewCell {
     // MARK: - Public
 
     public func loadImage() {
-        guard let viewModel = model, let dataSource = dataSource, viewModel.imagePath != nil else {
-            loadingColor = .clear
-            imageView.image = defaultImage
+        guard imageView.image == nil else {
             return
         }
 
-        imageView.backgroundColor = loadingColor
+        guard let viewModel = model, let dataSource = dataSource, viewModel.imagePath != nil else {
+            setImage(defaultImage)
+            return
+        }
 
         dataSource.adsGridViewCell(self, loadImageForModel: viewModel, imageWidth: frame.size.width) { [weak self] (fetchedModel, image) in
             guard let model = self?.model else { return }
             guard fetchedModel.imagePath == model.imagePath else { return }
 
-            self?.imageView.backgroundColor = .clear
-
-            if let image = image {
-                self?.imageView.image = image
-            } else {
-                self?.imageView.image = self?.defaultImage
-            }
+            let displayImage = image ?? self?.defaultImage
+            self?.setImage(displayImage)
         }
+    }
+
+    // MARK: - Private
+
+    private func setImage(_ image: UIImage?) {
+        imageView.alpha = 0.0
+        imageView.image = image
+
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: {
+            self.imageView.alpha = 1.0
+        }, completion: nil)
     }
 
     private var defaultImage: UIImage? {
