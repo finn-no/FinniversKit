@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class FrontpageViewDemoView: UIView {
-    private let ads = AdFactory.create(numberOfModels: 6)
+    private let ads = AdFactory.create(numberOfModels: 60)
     private let markets = Market.allMarkets
     private var didSetupView = false
 
@@ -68,19 +68,20 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         return ads[index]
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
-            completion(nil)
+            completion(model, nil)
             return
         }
 
         // Demo code only.
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            usleep(50_000)
             DispatchQueue.main.async {
                 if let data = data, let image = UIImage(data: data) {
-                    completion(image)
+                    completion(model, image)
                 } else {
-                    completion(nil)
+                    completion(model, nil)
                 }
             }
         }

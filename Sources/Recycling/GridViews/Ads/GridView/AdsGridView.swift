@@ -15,7 +15,7 @@ public protocol AdsGridViewDelegate: class {
 public protocol AdsGridViewDataSource: class {
     func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int
     func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel
-    func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void))
     func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
 }
 
@@ -183,7 +183,7 @@ extension AdsGridView: UICollectionViewDataSource {
 // MARK: - AdsGridViewCellDataSource
 
 extension AdsGridView: AdsGridViewCellDataSource {
-    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {
         dataSource?.adsGridView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 

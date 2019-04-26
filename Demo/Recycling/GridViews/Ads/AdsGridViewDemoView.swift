@@ -55,18 +55,18 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
         return dataSource.models[index]
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
-            completion(nil)
+            completion(model, nil)
             return
         }
 
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             DispatchQueue.main.async {
                 if let data = data, let image = UIImage(data: data) {
-                    completion(image)
+                    completion(model, image)
                 } else {
-                    completion(nil)
+                    completion(model, nil)
                 }
             }
         }

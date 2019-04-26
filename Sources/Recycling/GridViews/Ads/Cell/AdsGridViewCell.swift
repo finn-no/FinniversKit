@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol AdsGridViewCellDataSource: AnyObject {
-    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void))
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
 }
 
@@ -234,17 +234,8 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     // MARK: - Public
 
-    /// Loads the image for the `model` if imagePath is set
     public func loadImage() {
-        if let model = model {
-            loadImage(model: model)
-        }
-    }
-
-    // MARK: - Private
-
-    private func loadImage(model: AdsGridViewModel) {
-        guard let dataSource = dataSource, model.imagePath != nil else {
+        guard let viewModel = model, let dataSource = dataSource, viewModel.imagePath != nil else {
             loadingColor = .clear
             imageView.image = defaultImage
             return
@@ -252,7 +243,10 @@ public class AdsGridViewCell: UICollectionViewCell {
 
         imageView.backgroundColor = loadingColor
 
-        dataSource.adsGridViewCell(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
+        dataSource.adsGridViewCell(self, loadImageForModel: viewModel, imageWidth: frame.size.width) { [weak self] (fetchedModel, image) in
+            guard let model = self?.model else { return }
+            guard fetchedModel.imagePath == model.imagePath else { return }
+
             self?.imageView.backgroundColor = .clear
 
             if let image = image {
