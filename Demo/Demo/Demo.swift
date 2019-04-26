@@ -52,6 +52,7 @@ public enum ComponentViews: String, CaseIterable {
     case earthHour
     case stepIndicator
     case nativeAdvert
+    case callout
 
     public var viewController: UIViewController {
         switch self {
@@ -115,6 +116,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<StepIndicatorDemoView>(withDismissButton: true)
         case .nativeAdvert:
             return DemoViewController<NativeAdvertDemoView>(withDismissButton: true)
+        case .callout:
+            return DemoViewController<CalloutDemoView>()
         }
     }
 }
