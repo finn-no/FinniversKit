@@ -28,24 +28,21 @@ public class AdsGridViewCell: UICollectionViewCell {
     private static let iconSize: CGFloat = 23.0
 
     private lazy var imageBackgroundView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(withAutoLayout: true)
         view.layer.cornerRadius = AdsGridViewCell.cornerRadius
         view.layer.masksToBounds = true
         return view
     }()
 
     private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
     private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .milk
@@ -76,8 +73,7 @@ public class AdsGridViewCell: UICollectionViewCell {
     }()
 
     private lazy var imageDescriptionView: UIView = {
-        let view = UILabel()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UILabel(withAutoLayout: true)
         view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         view.alpha = 1.0
         view.layer.cornerRadius = AdsGridViewCell.cornerRadius
@@ -275,7 +271,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
         UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: {
             self.imageView.alpha = 1.0
-        }, completion: nil)
+        })
     }
 
     private var defaultImage: UIImage? {
