@@ -196,7 +196,7 @@ public class AdsGridViewCell: UICollectionViewCell {
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
-        ])
+            ])
     }
 
     // MARK: - Superclass Overrides
@@ -204,6 +204,8 @@ public class AdsGridViewCell: UICollectionViewCell {
     public override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
+        imageView.alpha = 0.0
+        imageBackgroundView.backgroundColor = loadingColor
         iconImageView.image = nil
         titleLabel.text = ""
         subtitleLabel.text = ""
@@ -220,7 +222,6 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
-    /// The model contains data used to populate the view.
     public var model: AdsGridViewModel? {
         didSet {
             if let model = model {
@@ -250,7 +251,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         }
 
         guard let viewModel = model, let dataSource = dataSource, viewModel.imagePath != nil else {
-            setImage(defaultImage)
+            setDefaultImage()
             return
         }
 
@@ -258,12 +259,24 @@ public class AdsGridViewCell: UICollectionViewCell {
             guard let model = self?.model else { return }
             guard fetchedModel.imagePath == model.imagePath else { return }
 
-            let displayImage = image ?? self?.defaultImage
-            self?.setImage(displayImage)
+            if let displayImage = image {
+                self?.setImage(displayImage)
+            } else {
+                self?.setDefaultImage()
+            }
         }
     }
 
     // MARK: - Private
+
+    private func setDefaultImage() {
+        imageView.alpha = 0.0
+        imageView.image = defaultImage
+
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: {
+            self.imageView.alpha = 1.0
+        })
+    }
 
     private func setImage(_ image: UIImage?) {
         imageView.alpha = 0.0
@@ -271,6 +284,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
         UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: {
             self.imageView.alpha = 1.0
+            self.imageBackgroundView.backgroundColor = .clear
         })
     }
 
