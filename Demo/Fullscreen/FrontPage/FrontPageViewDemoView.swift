@@ -50,8 +50,7 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
             visibleItems += 10
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
-                self!.frontPageView.reloadAds()
-                print("Displaying \(index), increasing to \(self!.visibleItems)")
+                self?.frontPageView.reloadAds()
             })
         }
     }
