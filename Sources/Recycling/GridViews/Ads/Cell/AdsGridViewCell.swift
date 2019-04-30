@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol AdsGridViewCellDataSource: AnyObject {
+    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cachedImageForModel model: AdsGridViewModel) -> UIImage?
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void))
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
 }
@@ -255,14 +256,18 @@ public class AdsGridViewCell: UICollectionViewCell {
             return
         }
 
-        dataSource.adsGridViewCell(self, loadImageForModel: viewModel, imageWidth: frame.size.width) { [weak self] (fetchedModel, image) in
-            guard let model = self?.model else { return }
-            guard fetchedModel.imagePath == model.imagePath else { return }
+        if let cachedImage = dataSource.adsGridViewCell(self, cachedImageForModel: viewModel) {
+            setImage(cachedImage, animated: false)
+        } else {
+            dataSource.adsGridViewCell(self, loadImageForModel: viewModel, imageWidth: frame.size.width) { [weak self] (fetchedModel, image) in
+                guard let model = self?.model else { return }
+                guard fetchedModel.imagePath == model.imagePath else { return }
 
-            if let displayImage = image {
-                self?.setImage(displayImage)
-            } else {
-                self?.setDefaultImage()
+                if let displayImage = image {
+                    self?.setImage(displayImage, animated: true)
+                } else {
+                    self?.setDefaultImage()
+                }
             }
         }
     }
@@ -270,22 +275,24 @@ public class AdsGridViewCell: UICollectionViewCell {
     // MARK: - Private
 
     private func setDefaultImage() {
-        imageView.alpha = 0.0
         imageView.image = defaultImage
-
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: {
-            self.imageView.alpha = 1.0
-        })
+        self.imageView.alpha = 1.0
     }
 
-    private func setImage(_ image: UIImage?) {
-        imageView.alpha = 0.0
+    private func setImage(_ image: UIImage?, animated: Bool) {
         imageView.image = image
 
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: {
-            self.imageView.alpha = 1.0
-            self.imageBackgroundView.backgroundColor = .clear
-        })
+        let animations = { [weak self] in
+            self?.imageView.alpha = 1.0
+            self?.imageBackgroundView.backgroundColor = .clear
+        }
+
+        if animated {
+            imageView.alpha = 0.0
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: animations)
+        } else {
+            animations()
+        }
     }
 
     private var defaultImage: UIImage? {

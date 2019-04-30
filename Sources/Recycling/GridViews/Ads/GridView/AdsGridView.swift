@@ -44,6 +44,7 @@ public class AdsGridView: UIView {
 
     private weak var delegate: AdsGridViewDelegate?
     private weak var dataSource: AdsGridViewDataSource?
+    private let imageCache = AdsGridImageCache()
 
     // MARK: - External properties
 
@@ -183,8 +184,22 @@ extension AdsGridView: UICollectionViewDataSource {
 // MARK: - AdsGridViewCellDataSource
 
 extension AdsGridView: AdsGridViewCellDataSource {
+    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cachedImageForModel model: AdsGridViewModel) -> UIImage? {
+        guard let imagePath = model.imagePath else {
+            return nil
+        }
+
+        return imageCache.image(forKey: imagePath)
+    }
+
     public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {
-        dataSource?.adsGridView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
+        dataSource?.adsGridView(self, loadImageForModel: model, imageWidth: imageWidth, completion: { [weak self] model, image in
+            if let image = image, let imagePath = model.imagePath {
+                self?.imageCache.add(image, forKey: imagePath)
+            }
+
+            completion(model, image)
+        })
     }
 
     public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat) {
