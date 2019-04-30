@@ -282,16 +282,16 @@ public class AdsGridViewCell: UICollectionViewCell {
     private func setImage(_ image: UIImage?, animated: Bool) {
         imageView.image = image
 
-        let animations = { [weak self] in
+        let performViewChanges = { [weak self] in
             self?.imageView.alpha = 1.0
             self?.imageBackgroundView.backgroundColor = .clear
         }
 
         if animated {
             imageView.alpha = 0.0
-            UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: animations)
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: performViewChanges)
         } else {
-            animations()
+            performViewChanges()
         }
     }
 
