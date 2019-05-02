@@ -5,9 +5,10 @@
 import FinniversKit
 
 public class FrontpageViewDemoView: UIView {
-    private let ads = AdFactory.create(numberOfModels: 60)
+    private let ads = AdFactory.create(numberOfModels: 120)
     private let markets = Market.allMarkets
     private var didSetupView = false
+    private var visibleItems = 20
 
     private lazy var frontPageView: FrontPageView = {
         let view = FrontPageView(delegate: self)
@@ -44,7 +45,16 @@ extension FrontpageViewDemoView: FrontPageViewDelegate {
 }
 
 extension FrontpageViewDemoView: AdsGridViewDelegate {
-    public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {}
+    public func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int) {
+        if index >= visibleItems - 10 {
+            visibleItems += 10
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
+                self?.frontPageView.reloadAds()
+            })
+        }
+    }
+
     public func adsGridView(_ adsGridView: AdsGridView, didScrollInScrollView scrollView: UIScrollView) {}
     public func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int) {}
 
@@ -61,7 +71,7 @@ extension FrontpageViewDemoView: AdsGridViewDelegate {
 
 extension FrontpageViewDemoView: AdsGridViewDataSource {
     public func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int {
-        return ads.count
+        return min(ads.count, visibleItems)
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {

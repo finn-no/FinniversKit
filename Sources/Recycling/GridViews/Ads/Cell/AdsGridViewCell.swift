@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol AdsGridViewCellDataSource: AnyObject {
+    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cachedImageForModel model: AdsGridViewModel) -> UIImage?
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void))
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
 }
@@ -196,7 +197,7 @@ public class AdsGridViewCell: UICollectionViewCell {
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
-        ])
+            ])
     }
 
     // MARK: - Superclass Overrides
@@ -204,6 +205,8 @@ public class AdsGridViewCell: UICollectionViewCell {
     public override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
+        imageView.alpha = 0.0
+        imageBackgroundView.backgroundColor = loadingColor
         iconImageView.image = nil
         titleLabel.text = ""
         subtitleLabel.text = ""
@@ -220,7 +223,6 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
-    /// The model contains data used to populate the view.
     public var model: AdsGridViewModel? {
         didSet {
             if let model = model {
@@ -250,28 +252,47 @@ public class AdsGridViewCell: UICollectionViewCell {
         }
 
         guard let viewModel = model, let dataSource = dataSource, viewModel.imagePath != nil else {
-            setImage(defaultImage)
+            setDefaultImage()
             return
         }
 
-        dataSource.adsGridViewCell(self, loadImageForModel: viewModel, imageWidth: frame.size.width) { [weak self] (fetchedModel, image) in
-            guard let model = self?.model else { return }
-            guard fetchedModel.imagePath == model.imagePath else { return }
+        if let cachedImage = dataSource.adsGridViewCell(self, cachedImageForModel: viewModel) {
+            setImage(cachedImage, animated: false)
+        } else {
+            dataSource.adsGridViewCell(self, loadImageForModel: viewModel, imageWidth: frame.size.width) { [weak self] (fetchedModel, image) in
+                guard let model = self?.model else { return }
+                guard fetchedModel.imagePath == model.imagePath else { return }
 
-            let displayImage = image ?? self?.defaultImage
-            self?.setImage(displayImage)
+                if let displayImage = image {
+                    self?.setImage(displayImage, animated: true)
+                } else {
+                    self?.setDefaultImage()
+                }
+            }
         }
     }
 
     // MARK: - Private
 
-    private func setImage(_ image: UIImage?) {
-        imageView.alpha = 0.0
+    private func setDefaultImage() {
+        imageView.image = defaultImage
+        self.imageView.alpha = 1.0
+    }
+
+    private func setImage(_ image: UIImage?, animated: Bool) {
         imageView.image = image
 
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: {
-            self.imageView.alpha = 1.0
-        })
+        let performViewChanges = { [weak self] in
+            self?.imageView.alpha = 1.0
+            self?.imageBackgroundView.backgroundColor = .clear
+        }
+
+        if animated {
+            imageView.alpha = 0.0
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: performViewChanges)
+        } else {
+            performViewChanges()
+        }
     }
 
     private var defaultImage: UIImage? {
