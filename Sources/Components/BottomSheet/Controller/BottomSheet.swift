@@ -95,23 +95,15 @@ public class BottomSheet: UIViewController {
 
     // Only necessary if iOS < 11.0
     private let maskLayer = CAShapeLayer()
-    private let bottomSafeAreaInset: CGFloat
 
     // MARK: - Setup
 
     public init(rootViewController: UIViewController,
-                appWindow: UIWindow? = UIApplication.shared.delegate?.window ?? nil,
                 height: Height = .defaultFilterHeight,
-                draggableArea: DraggableArea = .everything
-                ) {
+                draggableArea: DraggableArea = .everything) {
         self.rootViewController = rootViewController
         self.transitionDelegate = BottomSheetTransitioningDelegate(height: height)
         self.draggableArea = draggableArea
-        if #available(iOS 11.0, *) {
-            self.bottomSafeAreaInset = appWindow?.safeAreaInsets.bottom ?? 0
-        } else {
-            self.bottomSafeAreaInset = 0
-        }
         super.init(nibName: nil, bundle: nil)
         transitionDelegate.presentationControllerDelegate = self
         transitioningDelegate = transitionDelegate
@@ -162,7 +154,7 @@ public class BottomSheet: UIViewController {
             rootViewController.view.topAnchor.constraint(equalTo: notch.bottomAnchor),
             rootViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             rootViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            rootViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomSafeAreaInset)
+            rootViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
@@ -215,6 +207,6 @@ private class Notch: UIView {
             notch.centerYAnchor.constraint(equalTo: centerYAnchor),
             notch.heightAnchor.constraint(equalToConstant: notchSize.height),
             notch.widthAnchor.constraint(equalToConstant: notchSize.width)
-        ])
+            ])
     }
 }
