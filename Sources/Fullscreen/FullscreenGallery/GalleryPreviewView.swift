@@ -35,7 +35,7 @@ class GalleryPreviewView: UIView {
     private lazy var cellSize: CGSize = {
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
-            return CGSize(width: 115, height: 80)
+            return CGSize(width: 107, height: 71)
         default:
             return CGSize(width: 160, height: 120)
         }
