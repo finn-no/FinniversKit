@@ -91,6 +91,10 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.roundedImageView)
     }
 
+    func testReviewButtonView() {
+        snapshot(.reviewButtonView)
+    }
+
     func testLoadingIndicator() {
         snapshot(.loadingIndicator)
     }
