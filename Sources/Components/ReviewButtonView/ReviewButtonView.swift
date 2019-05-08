@@ -12,6 +12,11 @@ public final class ReviewButtonView: UIView {
     // MARK: - Public
 
     public weak var delegate: ReviewButtonViewDelegate?
+    public var text: String = "" {
+        didSet {
+            reviewButtonControl.text = text
+        }
+    }
 
     // MARK: - Private
 
@@ -31,7 +36,6 @@ public final class ReviewButtonView: UIView {
     }()
 
     // MARK: - Init
-
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

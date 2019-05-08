@@ -12,7 +12,11 @@ public final class ReviewButtonControl: UIControl {
     // MARK: - Public
 
     public weak var delegate: ReviewButtonControlDelegate?
-
+    public var text: String = "" {
+        didSet {
+            titleLabel.text = text
+        }
+    }
     public static let cornerRadius: CGFloat = 8
 
     // MARK: - Private
@@ -33,7 +37,6 @@ public final class ReviewButtonControl: UIControl {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .milk
         label.textAlignment = .center
-        label.text = "Gi vurdering av kjøperen"
         return label
     }()
 
