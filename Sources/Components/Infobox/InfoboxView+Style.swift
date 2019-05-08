@@ -5,7 +5,7 @@
 import Foundation
 
 public extension InfoboxView {
-    public enum Style {
+    enum Style {
         case small(backgroundColor: UIColor)
         case normal(backgroundColor: UIColor, primaryButtonIcon: UIImage?)
 

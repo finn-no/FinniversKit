@@ -5,7 +5,7 @@
 import UIKit
 
 public extension TextField {
-    public enum State {
+    enum State {
         case normal
         case focus
         case disabled
