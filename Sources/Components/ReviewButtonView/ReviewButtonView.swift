@@ -51,7 +51,7 @@ public final class ReviewButtonView: UIView {
     public func addToView(_ view: UIView) {
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: viewHeight),
-            widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1),
+            widthAnchor.constraint(equalTo: view.widthAnchor),
             bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
