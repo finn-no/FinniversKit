@@ -337,6 +337,9 @@
 		F26852F321FEFA9C000978C8 /* UserAdsListHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852EF21FEF9AB000978C8 /* UserAdsListHeaderViewModel.swift */; };
 		F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */; };
 		F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */; };
+		F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2772F4322803B310002D21F /* ReviewButtonView.swift */; };
+		F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */; };
+		F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -710,6 +713,9 @@
 		F26852EF21FEF9AB000978C8 /* UserAdsListHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListHeaderViewModel.swift; sourceTree = "<group>"; };
 		F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewNewAdCell.swift; sourceTree = "<group>"; };
 		F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewSeeAllAdsCell.swift; sourceTree = "<group>"; };
+		F2772F4322803B310002D21F /* ReviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonView.swift; sourceTree = "<group>"; };
+		F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonViewDemoView.swift; sourceTree = "<group>"; };
+		F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1208,6 +1214,7 @@
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
+				F2BE212E22819ED8004640F3 /* Control */,
 				CFCDDA5A22730213005E1F4A /* Callout */,
 				45B2E06B207E181C00C68B92 /* Consent */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
@@ -1222,6 +1229,7 @@
 				CF8F024321DE0FF9004C4042 /* RefreshControl */,
 				4447F69C1FDB2B110033DBC1 /* Ribbon */,
 				B01D752811A625A4D0690F25 /* RoundedImageView */,
+				F2772F3F2280397E0002D21F /* ReviewButtonView */,
 				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
 				F22612D6225631FD00472D22 /* StatisticsView */,
 				8951758E2248CF53008003FB /* StepIndicator */,
@@ -1943,6 +1951,7 @@
 				CF8F024621DE37FE004C4042 /* RefreshControl */,
 				CF8F022321DCC6E5004C4042 /* Ribbon */,
 				CF8F022621DCC705004C4042 /* RoundedImageView */,
+				F2772F4A228156020002D21F /* ReviewButtonView */,
 				CF8F021721DCC60E004C4042 /* SelectionBoxes */,
 				895175912248CFC2008003FB /* StepIndicator */,
 				CF8F021C21DCC685004C4042 /* Switch */,
@@ -2606,6 +2615,38 @@
 			path = UserAds;
 			sourceTree = "<group>";
 		};
+		F2772F3F2280397E0002D21F /* ReviewButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				F2772F4322803B310002D21F /* ReviewButtonView.swift */,
+			);
+			path = ReviewButtonView;
+			sourceTree = "<group>";
+		};
+		F2772F4A228156020002D21F /* ReviewButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */,
+			);
+			path = ReviewButtonView;
+			sourceTree = "<group>";
+		};
+		F2BE212E22819ED8004640F3 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				F2BE213122819F02004640F3 /* ReviewButtonControl */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		F2BE213122819F02004640F3 /* ReviewButtonControl */ = {
+			isa = PBXGroup;
+			children = (
+				F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */,
+			);
+			path = ReviewButtonControl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2833,6 +2874,7 @@
 				CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
+				F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */,
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
@@ -3035,6 +3077,7 @@
 				08D70A1B21832901003E2222 /* UIEdgeInsetsExtensions.swift in Sources */,
 				F26852F221FEFA97000978C8 /* UserAdsListViewModel.swift in Sources */,
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
+				F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */,
 				F26852F321FEFA9C000978C8 /* UserAdsListHeaderViewModel.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				89A7A63F2253387A0053D33B /* NativeAdvertView.swift in Sources */,
@@ -3122,6 +3165,7 @@
 				43BACE6C21117D530052114C /* ReviewViewModel.swift in Sources */,
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
 				895175952248D4D1008003FB /* StepDot.swift in Sources */,
+				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
 				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
 				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,

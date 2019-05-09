@@ -44,6 +44,7 @@ public enum ComponentViews: String, CaseIterable {
     case roundedImageView
     case loadingIndicator
     case refreshControl
+    case reviewButtonView
     case horizontalSlide
     case newYearsView
     case bottomSheetMechanics
@@ -62,6 +63,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<DialogueDemoView>()
         case .easterEggButton:
             return DemoViewController<EasterEggButtonDemoView>()
+        case .reviewButtonView:
+            return DemoViewController<ReviewButtonViewDemoView>()
         case .cogWheelButton:
             return DemoViewController<CogWheelButtonDemoView>()
         case .label:
