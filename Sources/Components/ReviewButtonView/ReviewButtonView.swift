@@ -50,7 +50,6 @@ public final class ReviewButtonView: UIView {
     // MARK: - Overrides
 
     public override func didMoveToSuperview() {
-        super.didMoveToSuperview()
         guard let superView = superview else { return }
 
         NSLayoutConstraint.activate([
