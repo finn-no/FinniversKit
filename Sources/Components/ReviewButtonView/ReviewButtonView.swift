@@ -15,6 +15,7 @@ public final class ReviewButtonView: UIView {
     public var buttonText: String = "" {
         didSet {
             reviewButtonControl.text = buttonText
+            accessibilityLabel = buttonText
         }
     }
 
