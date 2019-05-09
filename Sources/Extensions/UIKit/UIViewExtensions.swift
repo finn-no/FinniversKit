@@ -5,12 +5,12 @@
 import UIKit
 
 public extension UIView {
-    public convenience init(withAutoLayout autoLayout: Bool) {
+    convenience init(withAutoLayout autoLayout: Bool) {
         self.init()
         translatesAutoresizingMaskIntoConstraints = !autoLayout
     }
 
-    public var compatibleTopAnchor: NSLayoutYAxisAnchor {
+    var compatibleTopAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return safeAreaLayoutGuide.topAnchor
         } else {
@@ -18,7 +18,7 @@ public extension UIView {
         }
     }
 
-    public var compatibleBottomAnchor: NSLayoutYAxisAnchor {
+    var compatibleBottomAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return safeAreaLayoutGuide.bottomAnchor
         } else {
@@ -26,7 +26,7 @@ public extension UIView {
         }
     }
 
-    public var safeLayoutGuide: UILayoutGuide {
+    var safeLayoutGuide: UILayoutGuide {
         if #available(iOS 11.0, *) {
             return safeAreaLayoutGuide
         } else {
@@ -34,7 +34,7 @@ public extension UIView {
         }
     }
 
-    public func dropShadow(color: UIColor, opacity: Float = 0.5, offset: CGSize = CGSize.zero, radius: CGFloat = 10.0) {
+    func dropShadow(color: UIColor, opacity: Float = 0.5, offset: CGSize = CGSize.zero, radius: CGFloat = 10.0) {
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity

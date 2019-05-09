@@ -8,11 +8,11 @@
 import UIKit
 
 public extension UIImage {
-    public convenience init(named imageAsset: FinniversImageAsset) {
+    convenience init(named imageAsset: FinniversImageAsset) {
         self.init(named: imageAsset.rawValue, in: FinniversKit.bundle, compatibleWith: nil)!
     }
 
-    @objc public class func assetNamed(_ assetName: String) -> UIImage {
+    @objc class func assetNamed(_ assetName: String) -> UIImage {
         return UIImage(named: assetName, in: FinniversKit.bundle, compatibleWith: nil)!
     }
 }

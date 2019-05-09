@@ -5,12 +5,12 @@
 import Foundation
 
 public extension Button {
-    public enum Size {
+    enum Size {
         case normal
         case small
     }
 
-    public enum Style {
+    enum Style {
         case `default`
         case callToAction
         case destructive
