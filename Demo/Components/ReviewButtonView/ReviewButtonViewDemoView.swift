@@ -9,7 +9,7 @@ public class ReviewButtonViewDemoView: UIView {
         let view = ReviewButtonView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
-        view.text = "Gi vurdering av kjøperen"
+        view.buttonText = "Gi vurdering av kjøperen"
         return view
     }()
 
@@ -25,7 +25,6 @@ public class ReviewButtonViewDemoView: UIView {
 
     private func setup() {
         addSubview(reviewButtonView)
-        reviewButtonView.addToView(self)
     }
 }
 

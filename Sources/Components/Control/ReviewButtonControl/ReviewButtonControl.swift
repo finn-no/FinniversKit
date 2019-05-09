@@ -17,7 +17,6 @@ public final class ReviewButtonControl: UIControl {
             titleLabel.text = text
         }
     }
-    public static let cornerRadius: CGFloat = 8
 
     // MARK: - Private
 
@@ -56,25 +55,21 @@ public final class ReviewButtonControl: UIControl {
 
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        UIView.animate(withDuration: 0.0, animations: {
-            self.alpha = 0.9
-            self.delegate?.reviewButtonControl(self, giveReviewWasTapped: true)
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        })
+        self.alpha = 0.9
+        self.delegate?.reviewButtonControl(self, giveReviewWasTapped: true)
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
     }
 
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        UIView.animate(withDuration: 0.0) {
-            self.alpha = 1.0
-        }
+        self.alpha = 1.0
     }
 
     // MARK: - Private
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = ReviewButtonControl.cornerRadius
+        layer.cornerRadius = 8
         backgroundColor = .primaryBlue
 
         addSubview(titleLabel)

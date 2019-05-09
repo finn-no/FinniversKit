@@ -12,16 +12,15 @@ public final class ReviewButtonView: UIView {
     // MARK: - Public
 
     public weak var delegate: ReviewButtonViewDelegate?
-    public var text: String = "" {
+    public var buttonText: String = "" {
         didSet {
-            reviewButtonControl.text = text
+            reviewButtonControl.text = buttonText
         }
     }
 
     // MARK: - Private
 
-    private let reviewButtonControlHeight: CGFloat = 48
-    private let viewHeight: CGFloat = 64
+    private let height: CGFloat = 64
 
     private lazy var hairlineSeperator: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -36,6 +35,7 @@ public final class ReviewButtonView: UIView {
     }()
 
     // MARK: - Init
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -46,15 +46,20 @@ public final class ReviewButtonView: UIView {
         setup()
     }
 
-    // MARK: - Public methods
+    // MARK: - Overrides
 
-    public func addToView(_ view: UIView) {
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        guard let superView = superview else { return }
+
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: viewHeight),
-            widthAnchor.constraint(equalTo: view.widthAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            heightAnchor.constraint(equalToConstant: self.height),
+            widthAnchor.constraint(equalTo: superView.widthAnchor),
+            bottomAnchor.constraint(equalTo: superView.bottomAnchor)
         ])
     }
+
+    // MARK: - Public methods
 
     public func show() {
         UIView.animate(withDuration: 0.2) {
@@ -65,7 +70,7 @@ public final class ReviewButtonView: UIView {
 
     public func hide() {
         UIView.animate(withDuration: 0.2) {
-            self.transform = CGAffineTransform(translationX: 0, y: self.viewHeight * 2)
+            self.transform = CGAffineTransform(translationX: 0, y: self.height * 2)
             self.alpha = 0
         }
     }
@@ -88,7 +93,7 @@ public final class ReviewButtonView: UIView {
             reviewButtonControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             reviewButtonControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
             reviewButtonControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
-            reviewButtonControl.heightAnchor.constraint(equalToConstant: reviewButtonControlHeight),
+            reviewButtonControl.heightAnchor.constraint(equalToConstant: 48),
         ])
     }
 }
