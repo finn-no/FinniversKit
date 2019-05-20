@@ -236,6 +236,8 @@
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 		CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF136ACC2203211100247B30 /* InfoboxView.swift */; };
 		CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF136ACE220327F500247B30 /* InfoboxViewModel.swift */; };
+		CF13D6CD2292D2300087DA37 /* PhasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6CC2292D2300087DA37 /* PhasesView.swift */; };
+		CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */; };
 		CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */; };
 		CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */; };
 		CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */; };
@@ -611,6 +613,8 @@
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
 		CF136ACC2203211100247B30 /* InfoboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxView.swift; sourceTree = "<group>"; };
 		CF136ACE220327F500247B30 /* InfoboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxViewModel.swift; sourceTree = "<group>"; };
+		CF13D6CC2292D2300087DA37 /* PhasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhasesView.swift; sourceTree = "<group>"; };
+		CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseViewModel.swift; sourceTree = "<group>"; };
 		CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggButtonDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDefaultData.swift; sourceTree = "<group>"; };
@@ -1214,9 +1218,9 @@
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
-				F2BE212E22819ED8004640F3 /* Control */,
 				CFCDDA5A22730213005E1F4A /* Callout */,
 				45B2E06B207E181C00C68B92 /* Consent */,
+				F2BE212E22819ED8004640F3 /* Control */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
 				CF7C45FD22257A8A001FB92C /* EarthHour */,
 				9A37D8C01205DC426B502C5F /* Feedback */,
@@ -1226,10 +1230,11 @@
 				4447F6741FDB2B110033DBC1 /* Label */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
+				CF13D6CB2292D2100087DA37 /* PhasesView */,
 				CF8F024321DE0FF9004C4042 /* RefreshControl */,
+				F2772F3F2280397E0002D21F /* ReviewButtonView */,
 				4447F69C1FDB2B110033DBC1 /* Ribbon */,
 				B01D752811A625A4D0690F25 /* RoundedImageView */,
-				F2772F3F2280397E0002D21F /* ReviewButtonView */,
 				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
 				F22612D6225631FD00472D22 /* StatisticsView */,
 				8951758E2248CF53008003FB /* StepIndicator */,
@@ -1723,6 +1728,15 @@
 				CF136ACE220327F500247B30 /* InfoboxViewModel.swift */,
 			);
 			path = Infobox;
+			sourceTree = "<group>";
+		};
+		CF13D6CB2292D2100087DA37 /* PhasesView */ = {
+			isa = PBXGroup;
+			children = (
+				CF13D6CC2292D2300087DA37 /* PhasesView.swift */,
+				CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */,
+			);
+			path = PhasesView;
 			sourceTree = "<group>";
 		};
 		CF15D9AF215B93B8004F5F02 /* EasterEggButton */ = {
@@ -3136,6 +3150,7 @@
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */,
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
+				CF13D6CD2292D2300087DA37 /* PhasesView.swift in Sources */,
 				144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */,
 				DA8EF1262164E7EC0028740C /* ConsentToggleViewModel.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
@@ -3181,6 +3196,7 @@
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
+				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
 				9F21339B987A96DE48740F7B /* FullscreenGalleryPresenterTransition.swift in Sources */,
 				9F2133BB9A1CAA93633B406C /* FullscreenGalleryTransitionPresenterDelegate.swift in Sources */,
 				9F2130071B3637C7AD91066E /* FullscreenGalleryTransitionDestinationDelegate.swift in Sources */,
