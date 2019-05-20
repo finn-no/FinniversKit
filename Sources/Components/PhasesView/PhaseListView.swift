@@ -13,6 +13,12 @@ public final class PhaseListView: UIView {
         return stackView
     }()
 
+    private lazy var connectorView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .sardine
+        return view
+    }()
+
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -28,10 +34,33 @@ public final class PhaseListView: UIView {
     // MARK: - Setup
 
     public func configure(with viewModels: [PhaseViewModel]) {
-        
+        stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+
+        for viewModel in viewModels {
+            let phaseView = PhaseView()
+            phaseView.configure(with: viewModel)
+            stackView.addArrangedSubview(phaseView)
+        }
     }
 
     private func setup() {
-        stackView.fillInSuperview()
+        addSubview(connectorView)
+        addSubview(stackView)
+
+        let insets = UIEdgeInsets(
+            top: .mediumLargeSpacing,
+            leading: .mediumLargeSpacing,
+            bottom: -.mediumLargeSpacing,
+            trailing: -.mediumLargeSpacing
+        )
+
+        stackView.fillInSuperview(insets: insets)
+
+        NSLayoutConstraint.activate([
+            connectorView.topAnchor.constraint(equalTo: topAnchor),
+            connectorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            connectorView.centerXAnchor.constraint(equalTo: stackView.leadingAnchor, constant: PhaseView.dotCenterX),
+            connectorView.widthAnchor.constraint(equalToConstant: 2)
+        ])
     }
 }

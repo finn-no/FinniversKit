@@ -5,6 +5,17 @@
 import UIKit
 
 final class PhaseView: UIView {
+    private enum DotWidth: Float {
+        case regular = 12
+        case highlighted = 20
+
+        var value: CGFloat { return CGFloat(rawValue) }
+    }
+
+    static var dotCenterX: CGFloat {
+        return DotWidth.highlighted.value
+    }
+
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -24,7 +35,7 @@ final class PhaseView: UIView {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -36,17 +47,17 @@ final class PhaseView: UIView {
 
     // MARK: - Setup
 
-    public func configure(with viewModel: PhaseViewModel) {
+    func configure(with viewModel: PhaseViewModel) {
         titleLabel.text = viewModel.title
         detailTextLabel.text = " - \(viewModel.detailText)"
 
-        dotView.backgroundColor = viewModel.isHighlighted ? .milk : .stone
+        dotView.backgroundColor = viewModel.isHighlighted ? .milk : .sardine
         dotView.layer.borderColor = viewModel.isHighlighted ? .secondaryBlue : nil
         dotView.layer.borderWidth = viewModel.isHighlighted ? 2 : 0
 
-        let dotWidth: CGFloat = viewModel.isHighlighted ? 20 : 12
-        dotView.layer.cornerRadius = dotWidth / 2
-        dotViewWidthConstraint.constant = dotWidth
+        let dotWidth: DotWidth = viewModel.isHighlighted ? .highlighted : .regular
+        dotView.layer.cornerRadius = CGFloat(dotWidth.value) / 2
+        dotViewWidthConstraint.constant = dotWidth.value
 
         layoutIfNeeded()
     }
@@ -58,7 +69,7 @@ final class PhaseView: UIView {
 
         NSLayoutConstraint.activate([
             dotView.topAnchor.constraint(equalTo: topAnchor),
-            dotView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            dotView.centerXAnchor.constraint(equalTo: leadingAnchor, constant: PhaseView.dotCenterX),
             dotView.heightAnchor.constraint(equalTo: dotView.widthAnchor),
             dotViewWidthConstraint,
 
