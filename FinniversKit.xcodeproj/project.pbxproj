@@ -239,6 +239,7 @@
 		CF13D6CD2292D2300087DA37 /* PhaseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6CC2292D2300087DA37 /* PhaseListView.swift */; };
 		CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */; };
 		CF13D6D12292D50C0087DA37 /* PhaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6D02292D50C0087DA37 /* PhaseView.swift */; };
+		CF13D6D42292E3030087DA37 /* PhaseListViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6D32292E3030087DA37 /* PhaseListViewDemo.swift */; };
 		CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */; };
 		CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */; };
 		CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */; };
@@ -617,6 +618,7 @@
 		CF13D6CC2292D2300087DA37 /* PhaseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseListView.swift; sourceTree = "<group>"; };
 		CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseViewModel.swift; sourceTree = "<group>"; };
 		CF13D6D02292D50C0087DA37 /* PhaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseView.swift; sourceTree = "<group>"; };
+		CF13D6D32292E3030087DA37 /* PhaseListViewDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseListViewDemo.swift; sourceTree = "<group>"; };
 		CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggButtonDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDefaultData.swift; sourceTree = "<group>"; };
@@ -1232,7 +1234,7 @@
 				4447F6741FDB2B110033DBC1 /* Label */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
-				CF13D6CB2292D2100087DA37 /* PhasesView */,
+				CF13D6CB2292D2100087DA37 /* Phases */,
 				CF8F024321DE0FF9004C4042 /* RefreshControl */,
 				F2772F3F2280397E0002D21F /* ReviewButtonView */,
 				4447F69C1FDB2B110033DBC1 /* Ribbon */,
@@ -1732,14 +1734,22 @@
 			path = Infobox;
 			sourceTree = "<group>";
 		};
-		CF13D6CB2292D2100087DA37 /* PhasesView */ = {
+		CF13D6CB2292D2100087DA37 /* Phases */ = {
 			isa = PBXGroup;
 			children = (
 				CF13D6CC2292D2300087DA37 /* PhaseListView.swift */,
 				CF13D6D02292D50C0087DA37 /* PhaseView.swift */,
 				CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */,
 			);
-			path = PhasesView;
+			path = Phases;
+			sourceTree = "<group>";
+		};
+		CF13D6D22292E2DD0087DA37 /* Phases */ = {
+			isa = PBXGroup;
+			children = (
+				CF13D6D32292E3030087DA37 /* PhaseListViewDemo.swift */,
+			);
+			path = Phases;
 			sourceTree = "<group>";
 		};
 		CF15D9AF215B93B8004F5F02 /* EasterEggButton */ = {
@@ -1965,10 +1975,11 @@
 				CF8F022221DCC6D5004C4042 /* Label */,
 				CF8F021621DCC5F6004C4042 /* LoadingIndicator */,
 				89A7A640225344470053D33B /* NativeAdvert */,
+				CF13D6D22292E2DD0087DA37 /* Phases */,
 				CF8F024621DE37FE004C4042 /* RefreshControl */,
+				F2772F4A228156020002D21F /* ReviewButtonView */,
 				CF8F022321DCC6E5004C4042 /* Ribbon */,
 				CF8F022621DCC705004C4042 /* RoundedImageView */,
-				F2772F4A228156020002D21F /* ReviewButtonView */,
 				CF8F021721DCC60E004C4042 /* SelectionBoxes */,
 				895175912248CFC2008003FB /* StepIndicator */,
 				CF8F021C21DCC685004C4042 /* Switch */,
@@ -2912,6 +2923,7 @@
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
 				08796D8E21CB97200023A441 /* HeartSubtitleCellDemoView.swift in Sources */,
 				081F51BA222930C500026C84 /* TextViewDemoView.swift in Sources */,
+				CF13D6D42292E3030087DA37 /* PhaseListViewDemo.swift in Sources */,
 				CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */,
 				AA864B37222D6F3F00BAE95A /* DialogueViewController.swift in Sources */,
 				441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */,

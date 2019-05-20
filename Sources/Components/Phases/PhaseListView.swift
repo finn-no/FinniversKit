@@ -9,7 +9,7 @@ public final class PhaseListView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.alignment = .center
+        stackView.spacing = .smallSpacing
         return stackView
     }()
 
@@ -34,7 +34,7 @@ public final class PhaseListView: UIView {
     // MARK: - Setup
 
     public func configure(with viewModels: [PhaseViewModel]) {
-        stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        stackView.arrangedSubviews.forEach { stackView.removeArrangedSubview($0) }
 
         for viewModel in viewModels {
             let phaseView = PhaseView()
@@ -44,6 +44,8 @@ public final class PhaseListView: UIView {
     }
 
     private func setup() {
+        backgroundColor = .ice
+
         addSubview(connectorView)
         addSubview(stackView)
 

@@ -5,7 +5,7 @@
 import UIKit
 
 final class PhaseView: UIView {
-    private enum DotWidth: Float {
+    private enum DotSize: Float {
         case regular = 12
         case highlighted = 20
 
@@ -13,13 +13,14 @@ final class PhaseView: UIView {
     }
 
     static var dotCenterX: CGFloat {
-        return DotWidth.highlighted.value
+        return DotSize.highlighted.value / 2
     }
 
     private lazy var titleLabel: UILabel = {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .licorice
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return label
     }()
 
@@ -27,11 +28,16 @@ final class PhaseView: UIView {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .licorice
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         return label
     }()
 
     private(set) lazy var dotView = UIView(withAutoLayout: true)
     private lazy var dotViewWidthConstraint = self.dotView.widthAnchor.constraint(equalToConstant: 0)
+
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: frame.width, height: DotSize.highlighted.value)
+    }
 
     // MARK: - Init
 
@@ -55,7 +61,7 @@ final class PhaseView: UIView {
         dotView.layer.borderColor = viewModel.isHighlighted ? .secondaryBlue : nil
         dotView.layer.borderWidth = viewModel.isHighlighted ? 2 : 0
 
-        let dotWidth: DotWidth = viewModel.isHighlighted ? .highlighted : .regular
+        let dotWidth: DotSize = viewModel.isHighlighted ? .highlighted : .regular
         dotView.layer.cornerRadius = CGFloat(dotWidth.value) / 2
         dotViewWidthConstraint.constant = dotWidth.value
 
@@ -68,16 +74,17 @@ final class PhaseView: UIView {
         addSubview(detailTextLabel)
 
         NSLayoutConstraint.activate([
-            dotView.topAnchor.constraint(equalTo: topAnchor),
+            dotView.centerYAnchor.constraint(equalTo: centerYAnchor),
             dotView.centerXAnchor.constraint(equalTo: leadingAnchor, constant: PhaseView.dotCenterX),
             dotView.heightAnchor.constraint(equalTo: dotView.widthAnchor),
             dotViewWidthConstraint,
 
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: dotView.trailingAnchor, constant: .mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: PhaseView.dotCenterX * 2 + .mediumSpacing),
 
+            detailTextLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             detailTextLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            detailTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+            detailTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
 }

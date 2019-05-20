@@ -54,6 +54,7 @@ public enum ComponentViews: String, CaseIterable {
     case stepIndicator
     case nativeAdvert
     case callout
+    case phaseList
 
     public var viewController: UIViewController {
         switch self {
@@ -121,6 +122,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<NativeAdvertDemoView>(withDismissButton: true)
         case .callout:
             return DemoViewController<CalloutDemoView>()
+        case .phaseList:
+            return DemoViewController<PhaseListDemoView>()
         }
     }
 }
