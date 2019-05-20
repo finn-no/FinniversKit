@@ -4,7 +4,7 @@
 
 import UIKit
 
-public final class PhasesView: UIView {
+public final class PhaseListView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
@@ -28,7 +28,7 @@ public final class PhasesView: UIView {
     // MARK: - Setup
 
     public func configure(with viewModels: [PhaseViewModel]) {
-
+        
     }
 
     private func setup() {

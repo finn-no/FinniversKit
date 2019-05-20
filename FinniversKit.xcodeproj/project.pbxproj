@@ -236,8 +236,9 @@
 		CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2F08C20615990002AA385 /* TextField+State.swift */; };
 		CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF136ACC2203211100247B30 /* InfoboxView.swift */; };
 		CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF136ACE220327F500247B30 /* InfoboxViewModel.swift */; };
-		CF13D6CD2292D2300087DA37 /* PhasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6CC2292D2300087DA37 /* PhasesView.swift */; };
+		CF13D6CD2292D2300087DA37 /* PhaseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6CC2292D2300087DA37 /* PhaseListView.swift */; };
 		CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */; };
+		CF13D6D12292D50C0087DA37 /* PhaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6D02292D50C0087DA37 /* PhaseView.swift */; };
 		CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */; };
 		CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */; };
 		CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */; };
@@ -613,8 +614,9 @@
 		CBD2F08C20615990002AA385 /* TextField+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+State.swift"; sourceTree = "<group>"; };
 		CF136ACC2203211100247B30 /* InfoboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxView.swift; sourceTree = "<group>"; };
 		CF136ACE220327F500247B30 /* InfoboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxViewModel.swift; sourceTree = "<group>"; };
-		CF13D6CC2292D2300087DA37 /* PhasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhasesView.swift; sourceTree = "<group>"; };
+		CF13D6CC2292D2300087DA37 /* PhaseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseListView.swift; sourceTree = "<group>"; };
 		CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseViewModel.swift; sourceTree = "<group>"; };
+		CF13D6D02292D50C0087DA37 /* PhaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseView.swift; sourceTree = "<group>"; };
 		CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggButtonDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDefaultData.swift; sourceTree = "<group>"; };
@@ -1733,7 +1735,8 @@
 		CF13D6CB2292D2100087DA37 /* PhasesView */ = {
 			isa = PBXGroup;
 			children = (
-				CF13D6CC2292D2300087DA37 /* PhasesView.swift */,
+				CF13D6CC2292D2300087DA37 /* PhaseListView.swift */,
+				CF13D6D02292D50C0087DA37 /* PhaseView.swift */,
 				CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */,
 			);
 			path = PhasesView;
@@ -3077,6 +3080,7 @@
 				44A149EB21377C7B0053D5F7 /* SavedSearchesListViewCell.swift in Sources */,
 				CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */,
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
+				CF13D6D12292D50C0087DA37 /* PhaseView.swift in Sources */,
 				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				DAB7FAAA21B690DD00BF8CC6 /* BottomSheetGestureController.swift in Sources */,
@@ -3150,7 +3154,7 @@
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */,
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
-				CF13D6CD2292D2300087DA37 /* PhasesView.swift in Sources */,
+				CF13D6CD2292D2300087DA37 /* PhaseListView.swift in Sources */,
 				144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */,
 				DA8EF1262164E7EC0028740C /* ConsentToggleViewModel.swift in Sources */,
 				441FE450209A2F2C00B04EF1 /* NotificationsListViewModel.swift in Sources */,
