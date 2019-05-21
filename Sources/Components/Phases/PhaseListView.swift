@@ -8,8 +8,7 @@ public final class PhaseListView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.spacing = .mediumSpacing + .verySmallSpacing
+        stackView.spacing = 14
         return stackView
     }()
 
@@ -66,7 +65,7 @@ public final class PhaseListView: UIView {
     private func addLineView(from viewA: UIView, to viewB: UIView) {
         let lineView = UIView(withAutoLayout: true)
         lineView.backgroundColor = .sardine
-        addSubview(lineView)
+        insertSubview(lineView, belowSubview: stackView)
 
         NSLayoutConstraint.activate([
             lineView.topAnchor.constraint(equalTo: viewA.bottomAnchor),

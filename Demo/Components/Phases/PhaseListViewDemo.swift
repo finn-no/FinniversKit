@@ -14,12 +14,14 @@ public class PhaseListDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
 
-    // MARK: - Overrides
+    // MARK: - Setup
 
-    public override func didMoveToSuperview() {
-        super.didMoveToSuperview()
+    private func setup() {
+        addSubview(phaseListView)
 
         phaseListView.configure(with: [
             PhaseViewModel(title: "Planlegging", detailText: "Venter på godkjenning", isHighlighted: true),
@@ -27,12 +29,6 @@ public class PhaseListDemoView: UIView {
             PhaseViewModel(title: "Byggestart", detailText: "Estimert årsskifte 2019/2020", isHighlighted: false),
             PhaseViewModel(title: "Innflytting", detailText: "Planlagt Q2 2022", isHighlighted: false)
         ])
-    }
-
-    // MARK: - Setup
-
-    private func setup() {
-        addSubview(phaseListView)
 
         NSLayoutConstraint.activate([
             phaseListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
