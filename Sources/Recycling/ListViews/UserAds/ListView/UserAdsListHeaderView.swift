@@ -20,17 +20,19 @@ public class UserAdsListHeaderView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .detailStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         label.backgroundColor = .clear
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
     private lazy var moreButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = UIButton(withAutoLayout: true)
         button.tintColor = .primaryBlue
         button.setTitleColor(.primaryBlue, for: .normal)
         button.titleLabel?.font = .detailStrong
         button.backgroundColor = .clear
+        button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         button.addTarget(self, action: #selector(seeMoreButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
@@ -55,10 +57,12 @@ public class UserAdsListHeaderView: UIView {
         addSubview(moreButton)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: centerXAnchor),
+
             moreButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            moreButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+            moreButton.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }
 
