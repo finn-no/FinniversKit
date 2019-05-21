@@ -30,6 +30,7 @@ public final class PhaseListView: UIView {
 
     public func configure(with viewModels: [PhaseViewModel]) {
         stackView.arrangedSubviews.forEach { stackView.removeArrangedSubview($0) }
+        lineView?.removeFromSuperview()
 
         var phaseViews = [PhaseView]()
 
@@ -74,7 +75,6 @@ public final class PhaseListView: UIView {
             lineView.widthAnchor.constraint(equalToConstant: 2)
         ])
 
-        self.lineView?.removeFromSuperview()
         self.lineView = lineView
     }
 }
