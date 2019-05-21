@@ -41,13 +41,7 @@ public class UserAdsListViewSeeAllAdsCell: UITableViewCell {
         separatorInset = UIEdgeInsets(top: 0, left: frame.width, bottom: 0, right: 0)
 
         addSubview(seeAllAdsButton)
-
-        NSLayoutConstraint.activate([
-            seeAllAdsButton.heightAnchor.constraint(equalTo: heightAnchor),
-            seeAllAdsButton.widthAnchor.constraint(equalTo: widthAnchor),
-            seeAllAdsButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            seeAllAdsButton.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
+        seeAllAdsButton.fillInSuperview()
     }
 
     // MARK: - Private functions
