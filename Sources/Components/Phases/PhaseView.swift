@@ -5,38 +5,37 @@
 import UIKit
 
 final class PhaseView: UIView {
-    private enum DotSize: Float {
-        case regular = 12
-        case highlighted = 20
+    private static let regularDotSize: CGFloat = 12
+    private static let highlightedDotSize: CGFloat = 20
 
-        var value: CGFloat { return CGFloat(rawValue) }
-    }
+    // MARK: - Internal properties
 
-    static var dotCenterX: CGFloat {
-        return DotSize.highlighted.value / 2
-    }
+    private(set) lazy var dotView = UIView(withAutoLayout: true)
+
+    // MARK: - Private properties
 
     private lazy var titleLabel: UILabel = {
-        let label = Label(style: .bodyStrong)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel(withAutoLayout: true)
+        label.font = .bodyStrong
         label.textColor = .licorice
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return label
     }()
 
     private lazy var detailTextLabel: UILabel = {
-        let label = Label(style: .detail)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel(withAutoLayout: true)
+        label.font = .detail
         label.textColor = .licorice
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         return label
     }()
 
-    private(set) lazy var dotView = UIView(withAutoLayout: true)
     private lazy var dotViewWidthConstraint = self.dotView.widthAnchor.constraint(equalToConstant: 0)
 
+    // MARK: - Overrides
+
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: frame.width, height: DotSize.highlighted.value)
+        return CGSize(width: frame.width, height: PhaseView.highlightedDotSize)
     }
 
     // MARK: - Init
@@ -57,13 +56,15 @@ final class PhaseView: UIView {
         titleLabel.text = viewModel.title
         detailTextLabel.text = " - \(viewModel.detailText)"
 
+        titleLabel.font = viewModel.isHighlighted ? .bodyStrong : .detailStrong
+
         dotView.backgroundColor = viewModel.isHighlighted ? .milk : .sardine
         dotView.layer.borderColor = viewModel.isHighlighted ? .secondaryBlue : nil
-        dotView.layer.borderWidth = viewModel.isHighlighted ? 2 : 0
+        dotView.layer.borderWidth = viewModel.isHighlighted ? 3 : 0
 
-        let dotWidth: DotSize = viewModel.isHighlighted ? .highlighted : .regular
-        dotView.layer.cornerRadius = CGFloat(dotWidth.value) / 2
-        dotViewWidthConstraint.constant = dotWidth.value
+        let dotWidth = viewModel.isHighlighted ? PhaseView.highlightedDotSize : PhaseView.regularDotSize
+        dotView.layer.cornerRadius = dotWidth / 2
+        dotViewWidthConstraint.constant = dotWidth
 
         layoutIfNeeded()
     }
@@ -73,16 +74,17 @@ final class PhaseView: UIView {
         addSubview(titleLabel)
         addSubview(detailTextLabel)
 
+        let dotWidth = PhaseView.highlightedDotSize
         let titleLabelLeadingConstraint = titleLabel.leadingAnchor.constraint(
             equalTo: leadingAnchor,
-            constant: PhaseView.dotCenterX * 2 + .mediumSpacing
+            constant: dotWidth + .mediumSpacing
         )
 
-        titleLabelLeadingConstraint.priority = UILayoutPriority.init(rawValue: 999)
+        titleLabelLeadingConstraint.priority = UILayoutPriority(rawValue: 999)
 
         NSLayoutConstraint.activate([
             dotView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            dotView.centerXAnchor.constraint(equalTo: leadingAnchor, constant: PhaseView.dotCenterX),
+            dotView.centerXAnchor.constraint(equalTo: leadingAnchor, constant: dotWidth / 2),
             dotView.heightAnchor.constraint(equalTo: dotView.widthAnchor),
             dotViewWidthConstraint,
 

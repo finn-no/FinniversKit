@@ -9,7 +9,7 @@ public final class PhaseListView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.spacing = .smallSpacing
+        stackView.spacing = .mediumSpacing + .verySmallSpacing
         return stackView
     }()
 
@@ -49,6 +49,7 @@ public final class PhaseListView: UIView {
 
     private func setup() {
         backgroundColor = .ice
+        layer.cornerRadius = .mediumSpacing
 
         addSubview(stackView)
 
