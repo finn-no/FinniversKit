@@ -63,7 +63,7 @@ final class PhaseView: UIView {
             constant: dotWidth * 3 / 2
         )
 
-        textLabelLeadingConstraint.priority = UILayoutPriority(rawValue: 999)
+        textLabelLeadingConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
             dotView.topAnchor.constraint(equalTo: topAnchor),
