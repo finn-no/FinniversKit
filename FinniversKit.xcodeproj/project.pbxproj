@@ -283,6 +283,7 @@
 		CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */; };
 		CFB4BE8622943368004986D8 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB4BE8522943368004986D8 /* ContactFormView.swift */; };
 		CFB4BE88229433E4004986D8 /* ContactFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB4BE87229433E4004986D8 /* ContactFormViewModel.swift */; };
+		CFB4BE8B22943483004986D8 /* ContactFormDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB4BE8A22943483004986D8 /* ContactFormDemoView.swift */; };
 		CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDDA5B2273022A005E1F4A /* CalloutView.swift */; };
 		CFCDDA5F22731D60005E1F4A /* CalloutDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDDA5E22731D60005E1F4A /* CalloutDemoView.swift */; };
 		CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */; };
@@ -664,6 +665,7 @@
 		CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sleighbell.mp3; sourceTree = "<group>"; };
 		CFB4BE8522943368004986D8 /* ContactFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
 		CFB4BE87229433E4004986D8 /* ContactFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormViewModel.swift; sourceTree = "<group>"; };
+		CFB4BE8A22943483004986D8 /* ContactFormDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormDemoView.swift; sourceTree = "<group>"; };
 		CFCDDA5B2273022A005E1F4A /* CalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
 		CFCDDA5E22731D60005E1F4A /* CalloutDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutDemoView.swift; sourceTree = "<group>"; };
 		CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewDefaultData.swift; sourceTree = "<group>"; };
@@ -1228,7 +1230,6 @@
 				4447F6651FDB2B110033DBC1 /* Button */,
 				CFCDDA5A22730213005E1F4A /* Callout */,
 				45B2E06B207E181C00C68B92 /* Consent */,
-				CFB4BE8422943347004986D8 /* ContactForm */,
 				F2BE212E22819ED8004640F3 /* Control */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
 				CF7C45FD22257A8A001FB92C /* EarthHour */,
@@ -1437,16 +1438,17 @@
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
 				DA24BA272164C0AF006E2E5E /* ConsentActionView */,
 				DAC7DCA021538511004602A3 /* ConsentToggleView */,
+				CFB4BE8422943347004986D8 /* ContactForm */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44D912502077AC8A00486848 /* EmptyView */,
 				447AFC0E20984B63000F793E /* FrontPage */,
+				9F213E134EF7C0A184D133F5 /* FullscreenGallery */,
 				14EBA253215A633800613E5A /* LoadingView */,
 				44587010213FA344009187BE /* Login */,
+				44D9124A2077AC8A00486848 /* Popup */,
 				44587013213FA344009187BE /* Register */,
 				43BACE6721117CF90052114C /* Review */,
-				44D9124A2077AC8A00486848 /* Popup */,
 				43EA978021941E63003A548A /* SoldView */,
-				9F213E134EF7C0A184D133F5 /* FullscreenGallery */,
 			);
 			path = Fullscreen;
 			sourceTree = "<group>";
@@ -2155,16 +2157,17 @@
 				14A873D2220879870029DEA8 /* ConfirmationView */,
 				CF8F022821DCC72B004C4042 /* ConsentActionView */,
 				CF8F022921DCC736004C4042 /* ConsentToggleView */,
+				CFB4BE8922943419004986D8 /* ContactForm */,
 				CF8F022B21DCC74F004C4042 /* EasterEggs */,
 				CF8F023521DCC81E004C4042 /* EmptyView */,
 				CF8F023221DCC7AE004C4042 /* FrontPage */,
+				9F2139783BEC14AD02F9BF7A /* FullscreenGallery */,
 				CF8F022A21DCC746004C4042 /* LoadingView */,
 				CF8F022F21DCC788004C4042 /* Login */,
+				CF8F023321DCC7B9004C4042 /* Popup */,
 				CF8F023021DCC793004C4042 /* Register */,
 				CF8F023421DCC7D2004C4042 /* Review */,
-				CF8F023321DCC7B9004C4042 /* Popup */,
 				CF8F023621DCC830004C4042 /* SoldView */,
-				9F2139783BEC14AD02F9BF7A /* FullscreenGallery */,
 			);
 			path = Fullscreen;
 			sourceTree = "<group>";
@@ -2435,6 +2438,14 @@
 			children = (
 				CFB4BE8522943368004986D8 /* ContactFormView.swift */,
 				CFB4BE87229433E4004986D8 /* ContactFormViewModel.swift */,
+			);
+			path = ContactForm;
+			sourceTree = "<group>";
+		};
+		CFB4BE8922943419004986D8 /* ContactForm */ = {
+			isa = PBXGroup;
+			children = (
+				CFB4BE8A22943483004986D8 /* ContactFormDemoView.swift */,
 			);
 			path = ContactForm;
 			sourceTree = "<group>";
@@ -2911,6 +2922,7 @@
 				4423F227209CB24500B81D68 /* MiniToastView.swift in Sources */,
 				55C5B27E203EB9DA007D7277 /* BroadcastDemoView.swift in Sources */,
 				08D70A25218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift in Sources */,
+				CFB4BE8B22943483004986D8 /* ContactFormDemoView.swift in Sources */,
 				44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */,
 				08D70A2721832A0C003E2222 /* IconTitleCellDemoView.swift in Sources */,
 				CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */,
