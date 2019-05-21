@@ -9,6 +9,8 @@ public struct PhaseViewModel {
     public let detailText: String
     public let isHighlighted: Bool
 
+    // MARK: - Init
+
     public init(title: String, detailText: String, isHighlighted: Bool) {
         self.title = title
         self.detailText = detailText
