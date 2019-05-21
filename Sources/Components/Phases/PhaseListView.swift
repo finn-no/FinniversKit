@@ -13,11 +13,7 @@ public final class PhaseListView: UIView {
         return stackView
     }()
 
-    private lazy var connectorView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
-        return view
-    }()
+    private var lineView: UIView?
 
     // MARK: - Init
 
@@ -36,17 +32,24 @@ public final class PhaseListView: UIView {
     public func configure(with viewModels: [PhaseViewModel]) {
         stackView.arrangedSubviews.forEach { stackView.removeArrangedSubview($0) }
 
+        var phaseViews = [PhaseView]()
+
         for viewModel in viewModels {
             let phaseView = PhaseView()
             phaseView.configure(with: viewModel)
+
             stackView.addArrangedSubview(phaseView)
+            phaseViews.append(phaseView)
+        }
+
+        if let firstPhaseView = phaseViews.first, let lastPhaseView = phaseViews.last {
+            addLineView(from: firstPhaseView.dotView, to: lastPhaseView.dotView)
         }
     }
 
     private func setup() {
         backgroundColor = .ice
 
-        addSubview(connectorView)
         addSubview(stackView)
 
         let insets = UIEdgeInsets(
@@ -57,12 +60,21 @@ public final class PhaseListView: UIView {
         )
 
         stackView.fillInSuperview(insets: insets)
+    }
+
+    private func addLineView(from viewA: UIView, to viewB: UIView) {
+        let lineView = UIView(withAutoLayout: true)
+        lineView.backgroundColor = .sardine
+        addSubview(lineView)
 
         NSLayoutConstraint.activate([
-            connectorView.topAnchor.constraint(equalTo: topAnchor),
-            connectorView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            connectorView.centerXAnchor.constraint(equalTo: stackView.leadingAnchor, constant: PhaseView.dotCenterX),
-            connectorView.widthAnchor.constraint(equalToConstant: 2)
+            lineView.topAnchor.constraint(equalTo: viewA.bottomAnchor),
+            lineView.bottomAnchor.constraint(equalTo: viewB.topAnchor),
+            lineView.centerXAnchor.constraint(equalTo: viewA.centerXAnchor),
+            lineView.widthAnchor.constraint(equalToConstant: 2)
         ])
+
+        self.lineView?.removeFromSuperview()
+        self.lineView = lineView
     }
 }
