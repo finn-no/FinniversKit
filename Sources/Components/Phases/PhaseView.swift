@@ -73,6 +73,13 @@ final class PhaseView: UIView {
         addSubview(titleLabel)
         addSubview(detailTextLabel)
 
+        let titleLabelLeadingConstraint = titleLabel.leadingAnchor.constraint(
+            equalTo: leadingAnchor,
+            constant: PhaseView.dotCenterX * 2 + .mediumSpacing
+        )
+
+        titleLabelLeadingConstraint.priority = UILayoutPriority.init(rawValue: 999)
+
         NSLayoutConstraint.activate([
             dotView.centerYAnchor.constraint(equalTo: centerYAnchor),
             dotView.centerXAnchor.constraint(equalTo: leadingAnchor, constant: PhaseView.dotCenterX),
@@ -80,7 +87,7 @@ final class PhaseView: UIView {
             dotViewWidthConstraint,
 
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: PhaseView.dotCenterX * 2 + .mediumSpacing),
+            titleLabelLeadingConstraint,
 
             detailTextLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             detailTextLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
