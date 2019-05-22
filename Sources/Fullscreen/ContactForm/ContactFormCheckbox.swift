@@ -5,7 +5,7 @@
 import UIKit
 
 protocol ContactFormCheckboxDelegate: AnyObject {
-    func contactFormCheckbox(checkbox: ContactFormCheckbox, didChangeSelection isSelected: Bool)
+    func contactFormCheckbox(_ checkbox: ContactFormCheckbox, didChangeSelection isSelected: Bool)
 }
 
 final class ContactFormCheckbox: UIView {
@@ -19,7 +19,12 @@ final class ContactFormCheckbox: UIView {
         return label
     }()
 
-    private lazy var checkboxView = AnimatedCheckboxView(frame: .zero)
+    private lazy var checkboxView: AnimatedCheckboxView = {
+        let view = AnimatedCheckboxView(frame: .zero)
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleCheckboxTap)))
+        return view
+    }()
 
     private lazy var answerLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
@@ -65,5 +70,14 @@ final class ContactFormCheckbox: UIView {
             answerLabel.leadingAnchor.constraint(equalTo: checkboxView.trailingAnchor, constant: .smallSpacing),
             answerLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+    }
+
+    // MARK: - Action
+
+    @objc private func handleCheckboxTap() {
+        let isSelected = !checkboxView.isHighlighted
+
+        checkboxView.animateSelection(selected: isSelected)
+        delegate?.contactFormCheckbox(self, didChangeSelection: isSelected)
     }
 }

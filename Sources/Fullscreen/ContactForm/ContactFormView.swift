@@ -55,12 +55,14 @@ public final class ContactFormView: UIView {
     private lazy var phoneTextField: TextField = {
         let textField = TextField(inputType: .normal)
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.isHidden = true
         textField.delegate = self
         return textField
     }()
 
     private lazy var submitButton: Button = {
         let button = Button(style: .callToAction)
+        button.isEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(submit), for: .touchUpInside)
         return button
@@ -106,9 +108,13 @@ public final class ContactFormView: UIView {
         contentView.addSubview(nameTextField)
         contentView.addSubview(emailTextField)
         contentView.addSubview(showPhoneCheckbox)
-        contentView.addSubview(phoneTextField)
-        contentView.addSubview(submitButton)
 
+        let bottomStackView = UIStackView(arrangedSubviews: [phoneTextField, submitButton])
+        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
+        bottomStackView.axis = .vertical
+        bottomStackView.spacing = .largeSpacing
+
+        contentView.addSubview(bottomStackView)
         scrollView.fillInSuperview()
 
         NSLayoutConstraint.activate([
@@ -142,15 +148,10 @@ public final class ContactFormView: UIView {
             showPhoneCheckbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             showPhoneCheckbox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            phoneTextField.topAnchor.constraint(equalTo: showPhoneCheckbox.bottomAnchor, constant: .mediumSpacing),
-            phoneTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            phoneTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
-            submitButton.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: .largeSpacing),
-            submitButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
-            submitButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            submitButton.heightAnchor.constraint(equalToConstant: 44),
-            submitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            bottomStackView.topAnchor.constraint(equalTo: showPhoneCheckbox.bottomAnchor, constant: .mediumSpacing),
+            bottomStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            bottomStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            bottomStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 
@@ -179,7 +180,7 @@ extension ContactFormView: TextFieldDelegate {
 // MARK: - ContactFormCheckboxDelegate
 
 extension ContactFormView: ContactFormCheckboxDelegate {
-    func contactFormCheckbox(checkbox: ContactFormCheckbox, didChangeSelection isSelected: Bool) {
-
+    func contactFormCheckbox(_ checkbox: ContactFormCheckbox, didChangeSelection isSelected: Bool) {
+        phoneTextField.isHidden = !isSelected
     }
 }
