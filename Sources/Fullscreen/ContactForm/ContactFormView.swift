@@ -46,9 +46,8 @@ public final class ContactFormView: UIView {
         return textField
     }()
 
-    private lazy var showPhoneCheckbox: Checkbox = {
-        let checkbox = Checkbox(withAutoLayout: true)
-        checkbox.title = "Check Box Title"
+    private lazy var showPhoneCheckbox: ContactFormCheckbox = {
+        let checkbox = ContactFormCheckbox(withAutoLayout: true)
         checkbox.delegate = self
         return checkbox
     }()
@@ -87,8 +86,10 @@ public final class ContactFormView: UIView {
         accessoryLabel.text = viewModel.accessoryText
         nameTextField.placeholderText = viewModel.namePlaceholder
         emailTextField.placeholderText = viewModel.emailPlaceholder
-        showPhoneCheckbox.title = viewModel.showPhoneCheckboxQuestion
-        showPhoneCheckbox.fields = [viewModel.showPhoneCheckboxAnswer]
+        showPhoneCheckbox.configure(
+            question: viewModel.showPhoneCheckboxQuestion,
+            answer: viewModel.showPhoneCheckboxAnswer
+        )
         phoneTextField.placeholderText = viewModel.phonePlaceholder
         submitButton.setTitle(viewModel.submitButtonTitle, for: .normal)
     }
@@ -113,9 +114,9 @@ public final class ContactFormView: UIView {
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .largeSpacing),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.largeSpacing),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .largeSpacing),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.largeSpacing),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.veryLargeSpacing),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .mediumLargeSpacing),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.mediumLargeSpacing),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.largeSpacing),
 
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -137,15 +138,15 @@ public final class ContactFormView: UIView {
             emailTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            showPhoneCheckbox.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .veryLargeSpacing),
+            showPhoneCheckbox.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .largeSpacing),
             showPhoneCheckbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             showPhoneCheckbox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            phoneTextField.topAnchor.constraint(equalTo: showPhoneCheckbox.bottomAnchor),
+            phoneTextField.topAnchor.constraint(equalTo: showPhoneCheckbox.bottomAnchor, constant: .mediumSpacing),
             phoneTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             phoneTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            submitButton.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: .veryLargeSpacing),
+            submitButton.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: .largeSpacing),
             submitButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
             submitButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             submitButton.heightAnchor.constraint(equalToConstant: 44),
@@ -175,14 +176,10 @@ extension ContactFormView: TextFieldDelegate {
     }
 }
 
-// MARK: - CheckboxDelegate
+// MARK: - ContactFormCheckboxDelegate
 
-extension ContactFormView: CheckboxDelegate {
-    public func checkbox(_ checkbox: Checkbox, didSelectItem item: CheckboxItem) {
-
-    }
-
-    public func checkbox(_ checkbox: Checkbox, didUnselectItem item: CheckboxItem) {
+extension ContactFormView: ContactFormCheckboxDelegate {
+    func contactFormCheckbox(checkbox: ContactFormCheckbox, didChangeSelection isSelected: Bool) {
 
     }
 }
