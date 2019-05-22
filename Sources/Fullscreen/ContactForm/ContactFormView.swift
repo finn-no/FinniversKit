@@ -4,7 +4,13 @@
 
 import UIKit
 
+public protocol ContactFormViewDelegate: AnyObject {
+    func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String)
+}
+
 public final class ContactFormView: UIView {
+    public weak var delegate: ContactFormViewDelegate?
+
     private lazy var scrollView = UIScrollView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
 
@@ -158,6 +164,11 @@ public final class ContactFormView: UIView {
     // MARK: - Action
 
     @objc private func submit() {
+        guard let name = nameTextField.text, let email = emailTextField.text, let phoneNumber = phoneNumberTextField.text else {
+            return
+        }
+
+        delegate?.contactFormView(self, didSubmitWithName: name, email: email, phoneNumber: phoneNumber)
     }
 }
 

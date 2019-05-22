@@ -5,7 +5,12 @@
 import FinniversKit
 
 public class ContactFormDemoView: UIView {
-    private lazy var contactFormView = ContactFormView(withAutoLayout: true)
+    private lazy var contactFormView: ContactFormView = {
+        let view = ContactFormView(withAutoLayout: true)
+        view.delegate = self
+        view.configure(with: ViewModel())
+        return view
+    }()
 
     // MARK: - Init
 
@@ -23,7 +28,14 @@ public class ContactFormDemoView: UIView {
     private func setup() {
         addSubview(contactFormView)
         contactFormView.fillInSuperview()
-        contactFormView.configure(with: ViewModel())
+    }
+}
+
+// MARK: - ContactFormViewDelegate
+
+extension ContactFormDemoView: ContactFormViewDelegate {
+    public func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String) {
+        print("Name: \(name), email: \(email), phone number: \(phoneNumber)")
     }
 }
 
