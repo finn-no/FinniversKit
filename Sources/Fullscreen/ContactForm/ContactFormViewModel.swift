@@ -10,8 +10,8 @@ public protocol ContactFormViewModel {
     var accessoryText: String { get }
     var namePlaceholder: String { get }
     var emailPlaceholder: String { get }
-    var showPhoneCheckboxQuestion: String { get }
-    var showPhoneCheckboxAnswer: String { get }
-    var phonePlaceholder: String { get }
+    var showPhoneNumberQuestion: String { get }
+    var showPhoneNumberAnswer: String { get }
+    var phoneNumberPlaceholder: String { get }
     var submitButtonTitle: String { get }
 }

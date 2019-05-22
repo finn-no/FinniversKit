@@ -8,6 +8,7 @@ extension TextField {
     public enum InputType {
         case normal
         case email
+        case phoneNumber
         case password
         case multiline
 
@@ -21,6 +22,7 @@ extension TextField {
         var keyBoardStyle: UIKeyboardType {
             switch self {
             case .email: return .emailAddress
+            case .phoneNumber: return .phonePad
             default: return .default
             }
         }
@@ -28,7 +30,7 @@ extension TextField {
         var returnKeyType: UIReturnKeyType {
             switch self {
             case .email: return .next
-            case .normal, .password, .multiline: return .done
+            case .normal, .phoneNumber, .password, .multiline: return .done
             }
         }
     }

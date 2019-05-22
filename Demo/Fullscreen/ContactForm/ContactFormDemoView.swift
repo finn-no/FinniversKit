@@ -35,8 +35,8 @@ private struct ViewModel: ContactFormViewModel {
     let accessoryText = "Annonsens kontaktperson blir selvstendig behandlingsansvarlig for informasjonen de mottar."
     let namePlaceholder = "Navn"
     let emailPlaceholder = "E-post"
-    let showPhoneCheckboxQuestion = "Vil du også bli kontaktet på telefon?"
-    let showPhoneCheckboxAnswer = "Ja takk"
-    let phonePlaceholder = "Telefonnummer"
+    let showPhoneNumberQuestion = "Vil du også bli kontaktet på telefon?"
+    let showPhoneNumberAnswer = "Ja takk"
+    let phoneNumberPlaceholder = "Telefonnummer"
     let submitButtonTitle = "Kjør på!"
 }

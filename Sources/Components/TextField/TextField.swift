@@ -165,6 +165,8 @@ public class TextField: UIView {
             return isValidPassword(text)
         case .email:
             return isValidEmail(text)
+        case .phoneNumber:
+            return isValidPhoneNumber(text)
         case .normal, .multiline:
             return true
         }
@@ -295,6 +297,10 @@ public class TextField: UIView {
 
     fileprivate func isValidEmail(_ emailAdress: String) -> Bool {
         return evaluate("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", with: emailAdress)
+    }
+
+    fileprivate func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
+        return evaluate("^((\\+)|(00))[0-9]{6,14}$", with: phoneNumber)
     }
 
     fileprivate func isValidPassword(_ password: String) -> Bool {

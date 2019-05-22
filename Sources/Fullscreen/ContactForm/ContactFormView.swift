@@ -46,14 +46,14 @@ public final class ContactFormView: UIView {
         return textField
     }()
 
-    private lazy var showPhoneCheckbox: ContactFormCheckbox = {
+    private lazy var showPhoneNumberCheckbox: ContactFormCheckbox = {
         let checkbox = ContactFormCheckbox(withAutoLayout: true)
         checkbox.delegate = self
         return checkbox
     }()
 
-    private lazy var phoneTextField: TextField = {
-        let textField = TextField(inputType: .normal)
+    private lazy var phoneNumberTextField: TextField = {
+        let textField = TextField(inputType: .phoneNumber)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isHidden = true
         textField.delegate = self
@@ -88,11 +88,11 @@ public final class ContactFormView: UIView {
         accessoryLabel.text = viewModel.accessoryText
         nameTextField.placeholderText = viewModel.namePlaceholder
         emailTextField.placeholderText = viewModel.emailPlaceholder
-        showPhoneCheckbox.configure(
-            question: viewModel.showPhoneCheckboxQuestion,
-            answer: viewModel.showPhoneCheckboxAnswer
+        showPhoneNumberCheckbox.configure(
+            question: viewModel.showPhoneNumberQuestion,
+            answer: viewModel.showPhoneNumberAnswer
         )
-        phoneTextField.placeholderText = viewModel.phonePlaceholder
+        phoneNumberTextField.placeholderText = viewModel.phoneNumberPlaceholder
         submitButton.setTitle(viewModel.submitButtonTitle, for: .normal)
     }
 
@@ -107,9 +107,9 @@ public final class ContactFormView: UIView {
         contentView.addSubview(accessoryLabel)
         contentView.addSubview(nameTextField)
         contentView.addSubview(emailTextField)
-        contentView.addSubview(showPhoneCheckbox)
+        contentView.addSubview(showPhoneNumberCheckbox)
 
-        let bottomStackView = UIStackView(arrangedSubviews: [phoneTextField, submitButton])
+        let bottomStackView = UIStackView(arrangedSubviews: [phoneNumberTextField, submitButton])
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.axis = .vertical
         bottomStackView.spacing = .largeSpacing
@@ -144,11 +144,11 @@ public final class ContactFormView: UIView {
             emailTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            showPhoneCheckbox.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .largeSpacing),
-            showPhoneCheckbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            showPhoneCheckbox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            showPhoneNumberCheckbox.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .largeSpacing),
+            showPhoneNumberCheckbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            showPhoneNumberCheckbox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            bottomStackView.topAnchor.constraint(equalTo: showPhoneCheckbox.bottomAnchor, constant: .mediumSpacing),
+            bottomStackView.topAnchor.constraint(equalTo: showPhoneNumberCheckbox.bottomAnchor, constant: .mediumSpacing),
             bottomStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bottomStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             bottomStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
@@ -181,6 +181,6 @@ extension ContactFormView: TextFieldDelegate {
 
 extension ContactFormView: ContactFormCheckboxDelegate {
     func contactFormCheckbox(_ checkbox: ContactFormCheckbox, didChangeSelection isSelected: Bool) {
-        phoneTextField.isHidden = !isSelected
+        phoneNumberTextField.isHidden = !isSelected
     }
 }
