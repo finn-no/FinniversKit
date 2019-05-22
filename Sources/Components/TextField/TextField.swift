@@ -172,6 +172,10 @@ public class TextField: UIView {
         }
     }
 
+    public var isValidAndNotEmpty: Bool {
+        return textField.text?.isEmpty == false && isValid
+    }
+
     // MARK: - Setup
 
     public init(inputType: InputType) {
@@ -372,7 +376,7 @@ extension TextField: UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.textFieldDidEndEditing(self)
 
-        if let text = textField.text, !isValidEmail(text), !text.isEmpty, inputType == .email {
+        if let text = textField.text, !text.isEmpty, !isValid {
             state = .error
         } else {
             state = .normal

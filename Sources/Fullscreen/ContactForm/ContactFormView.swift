@@ -40,6 +40,7 @@ public final class ContactFormView: UIView {
 
     private lazy var nameTextField: TextField = {
         let textField = TextField(inputType: .normal)
+        textField.textField.returnKeyType = .next
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         return textField
@@ -47,6 +48,7 @@ public final class ContactFormView: UIView {
 
     private lazy var emailTextField: TextField = {
         let textField = TextField(inputType: .email)
+        textField.textField.returnKeyType = .next
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         return textField
@@ -60,6 +62,7 @@ public final class ContactFormView: UIView {
 
     private lazy var phoneNumberTextField: TextField = {
         let textField = TextField(inputType: .phoneNumber)
+        textField.textField.returnKeyType = .send
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isHidden = true
         textField.delegate = self
@@ -73,6 +76,14 @@ public final class ContactFormView: UIView {
         button.addTarget(self, action: #selector(submit), for: .touchUpInside)
         return button
     }()
+
+    public var isValid: Bool {
+        let isValidName = nameTextField.isValidAndNotEmpty
+        let isValidEmail = emailTextField.isValidAndNotEmpty
+        let isValidPhoneNumber = phoneNumberTextField.isHidden || phoneNumberTextField.isValidAndNotEmpty
+
+        return isValidName && isValidEmail && isValidPhoneNumber
+    }
 
     // MARK: - Init
 
@@ -161,14 +172,16 @@ public final class ContactFormView: UIView {
         ])
     }
 
-    // MARK: - Action
+    // MARK: - Actions
 
     @objc private func submit() {
         guard let name = nameTextField.text, let email = emailTextField.text, let phoneNumber = phoneNumberTextField.text else {
             return
         }
 
-        delegate?.contactFormView(self, didSubmitWithName: name, email: email, phoneNumber: phoneNumber)
+        if isValid {
+            delegate?.contactFormView(self, didSubmitWithName: name, email: email, phoneNumber: phoneNumber)
+        }
     }
 }
 
@@ -176,15 +189,22 @@ public final class ContactFormView: UIView {
 
 extension ContactFormView: TextFieldDelegate {
     public func textFieldShouldReturn(_ textField: TextField) -> Bool {
+        if textField == nameTextField {
+            emailTextField.textField.becomeFirstResponder()
+        } else if textField == emailTextField, !phoneNumberTextField.isHidden {
+            phoneNumberTextField.textField.becomeFirstResponder()
+        } else if textField == phoneNumberTextField, isValid {
+            textField.textField.resignFirstResponder()
+            submit()
+        } else {
+            textField.textField.resignFirstResponder()
+        }
+
         return true
     }
 
     public func textFieldDidChange(_ textField: TextField) {
-        if nameTextField.text?.isEmpty == true || emailTextField.text?.isEmpty == true {
-            submitButton.isEnabled = false
-        } else {
-            submitButton.isEnabled = true
-        }
+        submitButton.isEnabled = isValid
     }
 }
 
