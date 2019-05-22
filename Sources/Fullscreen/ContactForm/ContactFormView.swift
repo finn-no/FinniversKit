@@ -10,16 +10,25 @@ public final class ContactFormView: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
+        label.font = .title3
+        label.textColor = .licorice
+        label.numberOfLines = 0
         return label
     }()
 
     private lazy var detailTextLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
+        label.font = .body
+        label.textColor = .licorice
+        label.numberOfLines = 0
         return label
     }()
 
     private lazy var accessoryLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
+        label.font = .detail
+        label.textColor = .licorice
+        label.numberOfLines = 0
         return label
     }()
 
@@ -76,7 +85,62 @@ public final class ContactFormView: UIView {
     }
 
     private func setup() {
+        addSubview(scrollView)
 
+        scrollView.addSubview(contentView)
+
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(detailTextLabel)
+        contentView.addSubview(accessoryLabel)
+        contentView.addSubview(nameTextField)
+        contentView.addSubview(emailTextField)
+        contentView.addSubview(showPhoneCheckbox)
+        contentView.addSubview(phoneTextField)
+        contentView.addSubview(submitButton)
+
+        scrollView.fillInSuperview()
+
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .largeSpacing),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.largeSpacing),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .largeSpacing),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.largeSpacing),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.veryLargeSpacing),
+
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            detailTextLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .largeSpacing),
+            detailTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            detailTextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            accessoryLabel.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            nameTextField.topAnchor.constraint(equalTo: accessoryLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            nameTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            nameTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: .mediumLargeSpacing),
+            emailTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            showPhoneCheckbox.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .veryLargeSpacing),
+            showPhoneCheckbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            showPhoneCheckbox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            phoneTextField.topAnchor.constraint(equalTo: showPhoneCheckbox.bottomAnchor),
+            phoneTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            phoneTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            submitButton.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: .veryLargeSpacing),
+            submitButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
+            submitButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            submitButton.heightAnchor.constraint(equalToConstant: 44),
+            submitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
 
     // MARK: - Action
