@@ -74,19 +74,29 @@ public final class ContactFormView: UIView {
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
 
     // MARK: - Setup
 
-    func configure(with viewModel: ContactFormViewModel) {
+    public func configure(with viewModel: ContactFormViewModel) {
+        titleLabel.text = viewModel.title
+        detailTextLabel.text = viewModel.detailText
+        accessoryLabel.text = viewModel.accessoryText
+        nameTextField.placeholderText = viewModel.namePlaceholder
+        emailTextField.placeholderText = viewModel.emailPlaceholder
+        showPhoneCheckbox.title = viewModel.showPhoneCheckboxQuestion
+        showPhoneCheckbox.fields = [viewModel.showPhoneCheckboxAnswer]
+        phoneTextField.placeholderText = viewModel.phonePlaceholder
+        submitButton.setTitle(viewModel.submitButtonTitle, for: .normal)
     }
 
     private func setup() {
-        addSubview(scrollView)
+        backgroundColor = .milk
 
+        addSubview(scrollView)
         scrollView.addSubview(contentView)
 
         contentView.addSubview(titleLabel)
