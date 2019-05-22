@@ -10,6 +10,7 @@ public protocol ContactFormViewDelegate: AnyObject {
 
 public final class ContactFormView: UIView {
     public weak var delegate: ContactFormViewDelegate?
+    private let notificationCenter = NotificationCenter.default
 
     private lazy var scrollView = UIScrollView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
@@ -90,11 +91,17 @@ public final class ContactFormView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        addObserverForKeyboardNotifications()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+        addObserverForKeyboardNotifications()
+    }
+
+    deinit {
+        notificationCenter.removeObserver(self)
     }
 
     // MARK: - Setup
@@ -136,7 +143,7 @@ public final class ContactFormView: UIView {
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .largeSpacing),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.largeSpacing),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -.mediumLargeSpacing),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: .mediumLargeSpacing),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -.mediumLargeSpacing),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -.largeSpacing),
@@ -182,6 +189,37 @@ public final class ContactFormView: UIView {
         if isValid {
             delegate?.contactFormView(self, didSubmitWithName: name, email: email, phoneNumber: phoneNumber)
         }
+    }
+
+    // MARK: - Keyboard notifications
+
+    private func addObserverForKeyboardNotifications() {
+        addObserverForKeyboardNotification(named: UIResponder.keyboardWillHideNotification)
+        addObserverForKeyboardNotification(named: UIResponder.keyboardWillChangeFrameNotification)
+    }
+
+    private func addObserverForKeyboardNotification(named name: NSNotification.Name) {
+        notificationCenter.addObserver(self, selector: #selector(adjustScrollViewForKeyboard(_:)), name: name, object: nil)
+    }
+
+    @objc private func adjustScrollViewForKeyboard(_ notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+        var keyboardHeight = convert(keyboardValue.cgRectValue, from: window).height
+
+        if #available(iOS 11.0, *) {
+            keyboardHeight -= window?.safeAreaInsets.bottom ?? 0
+        }
+
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            scrollView.contentInset = .zero
+            scrollView.contentOffset = .zero
+        } else {
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+            scrollView.contentOffset = CGPoint(x: 0, y: submitButton.frame.height + contentView.frame.minY)
+        }
+
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
 }
 
