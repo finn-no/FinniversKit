@@ -106,7 +106,9 @@ public class UserAdsListViewCell: UITableViewCell {
 
                 titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
-                titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor)
+                titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
+
+                contentView.heightAnchor.constraint(equalToConstant: 80)
             ])
         } else {
             separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListViewCell.activeImageSize + .mediumSpacing), bottom: 0, right: 0)
@@ -118,11 +120,14 @@ public class UserAdsListViewCell: UITableViewCell {
                 adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
                 adImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
 
+                titleLabel.topAnchor.constraint(equalTo: adImageView.topAnchor, constant: -.smallSpacing),
                 titleLabel.bottomAnchor.constraint(equalTo: (ribbonView?.topAnchor ?? detailLabel.topAnchor), constant: -.smallSpacing),
                 titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
                 titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
                 detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
+
+                contentView.heightAnchor.constraint(equalToConstant: 120)
             ])
 
             // If price is not provided then the detailLabel should be centered with the ribbonView
@@ -206,6 +211,8 @@ public class UserAdsListViewCell: UITableViewCell {
     public var model: UserAdsListViewModel? {
         didSet {
             guard let model = model else { return }
+            teardownView()
+
             titleLabel.text = model.title
             priceLabel?.text = model.price
             detailLabel.text = model.detail

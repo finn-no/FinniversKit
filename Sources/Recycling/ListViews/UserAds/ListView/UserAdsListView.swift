@@ -43,6 +43,7 @@ public class UserAdsListView: UIView {
         tableView.register(UserAdsListViewSeeAllAdsCell.self)
         tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.backgroundColor = .milk
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 120
         tableView.estimatedSectionHeaderHeight = 48
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))

@@ -64,12 +64,7 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
 
 extension UserAdsListViewDemoView: UserAdsListViewDataSource {
     func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool {
-        switch indexPath.section {
-        case 1: return false
-        case 2: return false
-        case 3: return true
-        default: return false
-        }
+        return false
     }
 
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex section: Int) -> UserAdsListHeaderViewModel {
