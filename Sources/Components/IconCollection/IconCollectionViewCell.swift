@@ -63,8 +63,8 @@ public class IconCollectionViewCell: UICollectionViewCell {
             iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .smallSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
         ])
     }
 }
