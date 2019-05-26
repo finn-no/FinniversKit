@@ -21,7 +21,7 @@ public final class IconCollectionView: UIView {
     }()
 
     private lazy var collectionViewLayout: UICollectionViewLayout = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = MarketsGridViewFlowLayout()
         layout.sectionInset = .zero
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
