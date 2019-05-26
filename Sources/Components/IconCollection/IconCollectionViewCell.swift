@@ -45,9 +45,9 @@ public class IconCollectionViewCell: UICollectionViewCell {
     // MARK: - Setup
 
     func configure(with viewModel: IconCollectionViewModel) {
+        iconImageView.image = viewModel.image
         titleLabel.text = viewModel.title
         accessibilityLabel = viewModel.title
-        iconImageView.image = viewModel.image
     }
 
     private func setup() {
