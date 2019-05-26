@@ -281,6 +281,9 @@
 		CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */; };
 		CF9AC8BC21BECE13005A0D2F /* SnowGlobeDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */; };
 		CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */; };
+		CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61373229ACA6900DE283D /* IconCollectionView.swift */; };
+		CFB61376229ACB0C00DE283D /* IconCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */; };
+		CFB61379229ACB8600DE283D /* IconCollectionViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61378229ACB8600DE283D /* IconCollectionViewDemo.swift */; };
 		CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDDA5B2273022A005E1F4A /* CalloutView.swift */; };
 		CFCDDA5F22731D60005E1F4A /* CalloutDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDDA5E22731D60005E1F4A /* CalloutDemoView.swift */; };
 		CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */; };
@@ -660,6 +663,9 @@
 		CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowGlobeView.swift; sourceTree = "<group>"; };
 		CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowGlobeDemoView.swift; sourceTree = "<group>"; };
 		CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sleighbell.mp3; sourceTree = "<group>"; };
+		CFB61373229ACA6900DE283D /* IconCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionView.swift; sourceTree = "<group>"; };
+		CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewModel.swift; sourceTree = "<group>"; };
+		CFB61378229ACB8600DE283D /* IconCollectionViewDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewDemo.swift; sourceTree = "<group>"; };
 		CFCDDA5B2273022A005E1F4A /* CalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
 		CFCDDA5E22731D60005E1F4A /* CalloutDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutDemoView.swift; sourceTree = "<group>"; };
 		CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewDefaultData.swift; sourceTree = "<group>"; };
@@ -1230,6 +1236,7 @@
 				9A37D8C01205DC426B502C5F /* Feedback */,
 				08F0D3F222259AB800968256 /* HappinessRating */,
 				14DC126821593B0000326DC3 /* HorizontalSlide */,
+				CFB61372229ACA5200DE283D /* IconCollection */,
 				CF136ACB220320DD00247B30 /* Infobox */,
 				4447F6741FDB2B110033DBC1 /* Label */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
@@ -1961,6 +1968,7 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CFB61377229ACB6200DE283D /* IconCollection */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
@@ -2423,6 +2431,23 @@
 				CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */,
 			);
 			path = SnowGlobe;
+			sourceTree = "<group>";
+		};
+		CFB61372229ACA5200DE283D /* IconCollection */ = {
+			isa = PBXGroup;
+			children = (
+				CFB61373229ACA6900DE283D /* IconCollectionView.swift */,
+				CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */,
+			);
+			path = IconCollection;
+			sourceTree = "<group>";
+		};
+		CFB61377229ACB6200DE283D /* IconCollection */ = {
+			isa = PBXGroup;
+			children = (
+				CFB61378229ACB8600DE283D /* IconCollectionViewDemo.swift */,
+			);
+			path = IconCollection;
 			sourceTree = "<group>";
 		};
 		CFCDDA5A22730213005E1F4A /* Callout */ = {
@@ -2955,6 +2980,7 @@
 				43BACE6F21117DD20052114C /* ReviewViewDemoView.swift in Sources */,
 				45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
 				4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */,
+				CFB61379229ACB8600DE283D /* IconCollectionViewDemo.swift in Sources */,
 				14EBA25A215A634100613E5A /* LoadingViewDemoView.swift in Sources */,
 				AA864B49223290B600BAE95A /* InlineConsentDemoViewController.swift in Sources */,
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
@@ -3138,6 +3164,7 @@
 				CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */,
 				CF7C460822257A8A001FB92C /* EarthHourView.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
+				CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */,
 				CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */,
 				F26852D621F7530A000978C8 /* UserAdsListView.swift in Sources */,
 				DAB7FAAB21B690DD00BF8CC6 /* BottomSheetInteractionController.swift in Sources */,
@@ -3182,6 +3209,7 @@
 				444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */,
 				CF4A053B21FB2ACB000BB7DA /* PianoSliderView.swift in Sources */,
 				CF4A054121FB2ACB000BB7DA /* AVAudioSession+Swift.m in Sources */,
+				CFB61376229ACB0C00DE283D /* IconCollectionViewModel.swift in Sources */,
 				DA93EFA821C2BA4F00207239 /* NewYearsView.swift in Sources */,
 				44587018213FA344009187BE /* RegisterView.swift in Sources */,
 				082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */,

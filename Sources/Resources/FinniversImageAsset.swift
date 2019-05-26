@@ -66,6 +66,10 @@ public enum FinniversImageAsset: String {
     case help
     case hide
     case home
+    case iconRealestateApartments
+    case iconRealestateBebrooms
+    case iconRealestateOwner
+    case iconRealestatePrice
     case important
     case info
     case jobs
@@ -180,6 +184,10 @@ public enum FinniversImageAsset: String {
             .help,
             .hide,
             .home,
+            .iconRealestateApartments,
+            .iconRealestateBebrooms,
+            .iconRealestateOwner,
+            .iconRealestatePrice,
             .important,
             .info,
             .jobs,
