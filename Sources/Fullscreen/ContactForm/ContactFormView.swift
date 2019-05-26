@@ -133,12 +133,12 @@ public final class ContactFormView: UIView {
         contentView.addSubview(emailTextField)
         contentView.addSubview(showPhoneNumberCheckbox)
 
-        let bottomStackView = UIStackView(arrangedSubviews: [phoneNumberTextField, submitButton])
+        let bottomStackView = UIStackView(arrangedSubviews: [phoneNumberTextField])
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.axis = .vertical
-        bottomStackView.spacing = .largeSpacing
 
         contentView.addSubview(bottomStackView)
+        contentView.addSubview(submitButton)
         scrollView.fillInSuperview()
 
         NSLayoutConstraint.activate([
@@ -175,7 +175,11 @@ public final class ContactFormView: UIView {
             bottomStackView.topAnchor.constraint(equalTo: showPhoneNumberCheckbox.bottomAnchor, constant: .mediumSpacing),
             bottomStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bottomStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            bottomStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+
+            submitButton.topAnchor.constraint(equalTo: bottomStackView.bottomAnchor, constant: .largeSpacing),
+            submitButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            submitButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
+            submitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }
 
