@@ -270,6 +270,8 @@ extension ContactFormView: TextFieldDelegate {
 
 extension ContactFormView: ContactFormCheckboxDelegate {
     func contactFormCheckbox(_ checkbox: ContactFormCheckbox, didChangeSelection isSelected: Bool) {
+        phoneNumberTextField.textField.text = nil
+
         UIView.animate(withDuration: 0, animations: { [weak self] in
             self?.phoneNumberTextField.isHidden = !isSelected
         }, completion: { [weak self] _ in
