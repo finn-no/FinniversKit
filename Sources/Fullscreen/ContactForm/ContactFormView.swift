@@ -121,6 +121,9 @@ public final class ContactFormView: UIView {
     }
 
     private func setup() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        addGestureRecognizer(tap)
+
         backgroundColor = .milk
 
         addSubview(scrollView)
@@ -185,6 +188,10 @@ public final class ContactFormView: UIView {
 
     // MARK: - Actions
 
+    @objc private func handleTap() {
+        endEditing(true)
+    }
+
     @objc private func submit() {
         guard let name = nameTextField.text, let email = emailTextField.text, let phoneNumber = phoneNumberTextField.text else {
             return
@@ -195,11 +202,18 @@ public final class ContactFormView: UIView {
         }
     }
 
+    private func scrollToBottom(animated: Bool) {
+        let yOffset = scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom
+        if yOffset > 0 {
+            scrollView.setContentOffset(CGPoint(x: 0, y: yOffset), animated: animated)
+        }
+    }
+
     // MARK: - Keyboard notifications
 
     private func addObserverForKeyboardNotifications() {
         addObserverForKeyboardNotification(named: UIResponder.keyboardWillHideNotification)
-        addObserverForKeyboardNotification(named: UIResponder.keyboardWillChangeFrameNotification)
+        addObserverForKeyboardNotification(named: UIResponder.keyboardWillShowNotification)
     }
 
     private func addObserverForKeyboardNotification(named name: NSNotification.Name) {
@@ -220,7 +234,7 @@ public final class ContactFormView: UIView {
             scrollView.contentOffset = .zero
         } else {
             scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-            scrollView.contentOffset = CGPoint(x: 0, y: submitButton.frame.height + contentView.frame.minY)
+            scrollToBottom(animated: false)
         }
 
         scrollView.scrollIndicatorInsets = scrollView.contentInset
@@ -254,6 +268,10 @@ extension ContactFormView: TextFieldDelegate {
 
 extension ContactFormView: ContactFormCheckboxDelegate {
     func contactFormCheckbox(_ checkbox: ContactFormCheckbox, didChangeSelection isSelected: Bool) {
-        phoneNumberTextField.isHidden = !isSelected
+        UIView.animate(withDuration: 0, animations: { [weak self] in
+            self?.phoneNumberTextField.isHidden = !isSelected
+        }, completion: { [weak self] _ in
+            self?.scrollToBottom(animated: true)
+        })
     }
 }
