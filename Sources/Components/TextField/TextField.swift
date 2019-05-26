@@ -304,7 +304,7 @@ public class TextField: UIView {
     }
 
     fileprivate func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        return evaluate("^((\\+)|(00))[0-9]{6,14}$", with: phoneNumber)
+        return evaluate("^[0-9]{8,11}$", with: phoneNumber)
     }
 
     fileprivate func isValidPassword(_ password: String) -> Bool {

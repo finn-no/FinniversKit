@@ -34,8 +34,8 @@ public class ContactFormDemoView: UIView {
 // MARK: - ContactFormViewDelegate
 
 extension ContactFormDemoView: ContactFormViewDelegate {
-    public func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String) {
-        print("Name: \(name), email: \(email), phone number: \(phoneNumber)")
+    public func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String?) {
+        print("Name: \(name), email: \(email), phone number: \(phoneNumber ?? "-")")
     }
 }
 

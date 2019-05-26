@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol ContactFormViewDelegate: AnyObject {
-    func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String)
+    func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String?)
 }
 
 public final class ContactFormView: UIView {
@@ -193,9 +193,11 @@ public final class ContactFormView: UIView {
     }
 
     @objc private func submit() {
-        guard let name = nameTextField.text, let email = emailTextField.text, let phoneNumber = phoneNumberTextField.text else {
+        guard let name = nameTextField.text, let email = emailTextField.text else {
             return
         }
+
+        let phoneNumber = phoneNumberTextField.isHidden ? nil : phoneNumberTextField.text
 
         if isValid {
             delegate?.contactFormView(self, didSubmitWithName: name, email: email, phoneNumber: phoneNumber)
@@ -271,7 +273,9 @@ extension ContactFormView: ContactFormCheckboxDelegate {
         UIView.animate(withDuration: 0, animations: { [weak self] in
             self?.phoneNumberTextField.isHidden = !isSelected
         }, completion: { [weak self] _ in
-            self?.scrollToBottom(animated: true)
+            guard let self = self else { return }
+            self.submitButton.isEnabled = self.isValid
+            self.scrollToBottom(animated: true)
         })
     }
 }
