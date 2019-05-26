@@ -251,9 +251,6 @@ extension ContactFormView: TextFieldDelegate {
             emailTextField.textField.becomeFirstResponder()
         } else if textField == emailTextField, !phoneNumberTextField.isHidden {
             phoneNumberTextField.textField.becomeFirstResponder()
-        } else if textField == phoneNumberTextField, isValid {
-            textField.textField.resignFirstResponder()
-            submit()
         } else {
             textField.textField.resignFirstResponder()
         }
