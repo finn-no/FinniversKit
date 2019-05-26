@@ -6,8 +6,7 @@ import UIKit
 
 public class IconCollectionViewCell: UICollectionViewCell {
     private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         imageView.contentMode = .scaleAspectFit
