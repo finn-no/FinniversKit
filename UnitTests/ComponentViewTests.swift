@@ -150,4 +150,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testPhaseList() {
         snapshot(.phaseList)
     }
+
+    func testIconCollection() {
+        snapshot(.iconCollection)
+    }
 }
