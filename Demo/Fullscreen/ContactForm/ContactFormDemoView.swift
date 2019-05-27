@@ -51,4 +51,6 @@ private struct ViewModel: ContactFormViewModel {
     let showPhoneNumberAnswer = "Ja takk"
     let phoneNumberPlaceholder = "Telefonnummer"
     let submitButtonTitle = "Kjør på!"
+    var emailErrorHelpText = "Oppgi en gyldig e-postadresse."
+    var phoneNumberErrorHelpText = "Oppgi et gyldig telefonnummer"
 }

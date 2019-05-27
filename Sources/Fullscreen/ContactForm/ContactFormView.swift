@@ -10,8 +10,23 @@ public protocol ContactFormViewDelegate: AnyObject {
 
 public final class ContactFormView: UIView {
     public weak var delegate: ContactFormViewDelegate?
-    private let notificationCenter = NotificationCenter.default
 
+    public var isValid: Bool {
+        let isValidName = nameTextField.isValidAndNotEmpty
+        let isValidEmail = emailTextField.isValidAndNotEmpty
+        let isValidPhoneNumber = phoneNumberTextField.isHidden || phoneNumberTextField.isValidAndNotEmpty
+
+        return isValidName && isValidEmail && isValidPhoneNumber
+    }
+
+    public var phoneNumberRegEx: String {
+        get { return phoneNumberTextField.phoneNumberRegEx }
+        set { phoneNumberTextField.phoneNumberRegEx = newValue }
+    }
+
+    // MARK: - Private properties
+
+    private let notificationCenter = NotificationCenter.default
     private lazy var scrollView = UIScrollView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
 
@@ -43,6 +58,7 @@ public final class ContactFormView: UIView {
         let textField = TextField(inputType: .normal)
         textField.textField.returnKeyType = .next
         textField.textField.textContentType = .name
+        textField.textField.autocapitalizationType = .words
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         return textField
@@ -79,12 +95,16 @@ public final class ContactFormView: UIView {
         return button
     }()
 
-    public var isValid: Bool {
-        let isValidName = nameTextField.isValidAndNotEmpty
-        let isValidEmail = emailTextField.isValidAndNotEmpty
-        let isValidPhoneNumber = phoneNumberTextField.isHidden || phoneNumberTextField.isValidAndNotEmpty
-
-        return isValidName && isValidEmail && isValidPhoneNumber
+    private var currentTextField: TextField? {
+        if nameTextField.textField.isFirstResponder {
+            return nameTextField
+        } else if emailTextField.textField.isFirstResponder {
+            return emailTextField
+        } else if phoneNumberTextField.textField.isFirstResponder {
+            return phoneNumberTextField
+        } else {
+            return nil
+        }
     }
 
     // MARK: - Init
@@ -112,12 +132,17 @@ public final class ContactFormView: UIView {
         detailTextLabel.text = viewModel.detailText
         accessoryLabel.text = viewModel.accessoryText
         nameTextField.placeholderText = viewModel.namePlaceholder
+
         emailTextField.placeholderText = viewModel.emailPlaceholder
+        emailTextField.helpText = viewModel.emailErrorHelpText
+
         showPhoneNumberCheckbox.configure(
             question: viewModel.showPhoneNumberQuestion,
             answer: viewModel.showPhoneNumberAnswer
         )
         phoneNumberTextField.placeholderText = viewModel.phoneNumberPlaceholder
+        phoneNumberTextField.helpText = viewModel.phoneNumberErrorHelpText
+
         submitButton.setTitle(viewModel.submitButtonTitle, for: .normal)
     }
 
@@ -198,7 +223,8 @@ public final class ContactFormView: UIView {
             return
         }
 
-        let phoneNumber = phoneNumberTextField.isHidden ? nil : phoneNumberTextField.text
+        var phoneNumber = phoneNumberTextField.isHidden ? nil : phoneNumberTextField.text
+        phoneNumber = phoneNumber?.replacingOccurrences(of: " ", with: "")
 
         if isValid {
             delegate?.contactFormView(self, didSubmitWithName: name, email: email, phoneNumber: phoneNumber)
@@ -206,7 +232,12 @@ public final class ContactFormView: UIView {
     }
 
     private func scrollToBottom(animated: Bool) {
-        let yOffset = scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom
+        var yOffset = scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom
+
+        if let currentTextField = currentTextField, currentTextField != phoneNumberTextField {
+            yOffset = min(yOffset, currentTextField.frame.minY + .mediumLargeSpacing)
+        }
+
         if yOffset > 0 {
             scrollView.setContentOffset(CGPoint(x: 0, y: yOffset), animated: animated)
         }
@@ -235,7 +266,7 @@ public final class ContactFormView: UIView {
         if notification.name == UIResponder.keyboardWillHideNotification {
             scrollView.contentInset = .zero
             scrollView.contentOffset = .zero
-        } else {
+        } else if keyboardHeight > scrollView.contentInset.bottom {
             scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
             scrollToBottom(animated: false)
         }

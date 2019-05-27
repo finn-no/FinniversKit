@@ -14,4 +14,6 @@ public protocol ContactFormViewModel {
     var showPhoneNumberAnswer: String { get }
     var phoneNumberPlaceholder: String { get }
     var submitButtonTitle: String { get }
+    var emailErrorHelpText: String { get }
+    var phoneNumberErrorHelpText: String { get }
 }
