@@ -18,6 +18,8 @@ public class IconCollectionViewCell: UICollectionViewCell {
         label.font = .body
         label.textColor = .licorice
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.75
         return label
     }()
 
