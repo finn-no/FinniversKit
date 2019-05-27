@@ -5,10 +5,7 @@
 import UIKit
 
 public final class IconCollectionView: UIView {
-    public static let defaultHeight: CGFloat = 86
-
     private var viewModels = [IconCollectionViewModel]()
-    private var height = IconCollectionView.defaultHeight
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
@@ -21,7 +18,7 @@ public final class IconCollectionView: UIView {
     }()
 
     private lazy var collectionViewLayout: UICollectionViewLayout = {
-        let layout = MarketsGridViewFlowLayout()
+        let layout = IconCollectionViewFlowLayout()
         layout.sectionInset = .zero
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
@@ -42,10 +39,8 @@ public final class IconCollectionView: UIView {
 
     // MARK: - Setup
 
-    public func configure(with viewModels: [IconCollectionViewModel],
-                          height: CGFloat = IconCollectionView.defaultHeight) {
+    public func configure(with viewModels: [IconCollectionViewModel]) {
         self.viewModels = viewModels
-        self.height = height
         collectionView.reloadData()
     }
 
@@ -76,12 +71,12 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView,
                                layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if UIDevice.isIPad() {
-            let width = max(collectionView.frame.width / CGFloat(viewModels.count), height * 2)
-            return CGSize(width: width, height: height)
-        } else {
-            let width = collectionView.frame.width / 2
-            return CGSize(width: width, height: height)
-        }
+        let viewModel = viewModels[indexPath.item]
+        let width = UIDevice.isIPad()
+            ? max(collectionView.frame.width / CGFloat(viewModels.count), viewModel.image.size.width * 2)
+            : collectionView.frame.width / 2
+        let height = IconCollectionViewCell.height(for: viewModel, withWidth: width)
+
+        return CGSize(width: width, height: height)
     }
 }
