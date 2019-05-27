@@ -8,10 +8,12 @@ public final class IconCollectionView: UIView {
     private var viewModels = [IconCollectionViewModel]()
 
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        let collectionView = CollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.register(IconCollectionViewCell.self)
         collectionView.backgroundColor = .milk
         collectionView.allowsSelection = false
+        collectionView.isScrollEnabled = false
+        collectionView.bounces = false
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -20,7 +22,7 @@ public final class IconCollectionView: UIView {
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = IconCollectionViewFlowLayout()
         layout.sectionInset = .zero
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = .mediumSpacing
         layout.minimumInteritemSpacing = 0
         return layout
     }()
@@ -78,5 +80,21 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
         let height = IconCollectionViewCell.height(for: viewModel, withWidth: width)
 
         return CGSize(width: width, height: height)
+    }
+}
+
+// MARK: - Private types
+
+private final class CollectionView: UICollectionView {
+    override var intrinsicContentSize: CGSize {
+        return contentSize
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if bounds.size != intrinsicContentSize {
+            invalidateIntrinsicContentSize()
+        }
     }
 }
