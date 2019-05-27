@@ -197,6 +197,7 @@ public class TextField: UIView {
         textField.isSecureTextEntry = inputType.isSecureMode
         textField.keyboardType = inputType.keyBoardStyle
         textField.returnKeyType = inputType.returnKeyType
+        textField.textContentType = inputType.textContentType
 
         switch inputType {
         case .password:

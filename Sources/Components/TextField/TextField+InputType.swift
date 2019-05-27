@@ -33,5 +33,22 @@ extension TextField {
             case .normal, .phoneNumber, .password, .multiline: return .done
             }
         }
+
+        var textContentType: UITextContentType? {
+            switch self {
+            case .email:
+                return .emailAddress
+            case .phoneNumber:
+                return .telephoneNumber
+            case .password:
+                if #available(iOS 11.0, *) {
+                    return .password
+                } else {
+                    return nil
+                }
+            case .normal, .multiline:
+                return nil
+            }
+        }
     }
 }

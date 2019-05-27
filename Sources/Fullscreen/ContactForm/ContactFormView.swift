@@ -42,6 +42,7 @@ public final class ContactFormView: UIView {
     private lazy var nameTextField: TextField = {
         let textField = TextField(inputType: .normal)
         textField.textField.returnKeyType = .next
+        textField.textField.textContentType = .name
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         return textField
