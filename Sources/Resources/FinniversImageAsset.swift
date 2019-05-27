@@ -67,7 +67,7 @@ public enum FinniversImageAsset: String {
     case hide
     case home
     case iconRealestateApartments
-    case iconRealestateBebrooms
+    case iconRealestateBedrooms
     case iconRealestateOwner
     case iconRealestatePrice
     case important
@@ -185,7 +185,7 @@ public enum FinniversImageAsset: String {
             .hide,
             .home,
             .iconRealestateApartments,
-            .iconRealestateBebrooms,
+            .iconRealestateBedrooms,
             .iconRealestateOwner,
             .iconRealestatePrice,
             .important,

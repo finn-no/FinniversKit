@@ -56,7 +56,7 @@ extern NSString *const FinniversImageAssethelp;
 extern NSString *const FinniversImageAssethide;
 extern NSString *const FinniversImageAssethome;
 extern NSString *const FinniversImageAsseticonRealestateApartments;
-extern NSString *const FinniversImageAsseticonRealestateBebrooms;
+extern NSString *const FinniversImageAsseticonRealestateBedrooms;
 extern NSString *const FinniversImageAsseticonRealestateOwner;
 extern NSString *const FinniversImageAsseticonRealestatePrice;
 extern NSString *const FinniversImageAssetimportant;

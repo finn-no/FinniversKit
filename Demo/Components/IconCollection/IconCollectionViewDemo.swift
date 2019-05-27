@@ -32,7 +32,7 @@ public class IconCollectionDemoView: UIView {
         ])
 
         collectionView.configure(with: [
-            IconCollectionViewModel(title: "0-2 soverom", image: UIImage(named: .iconRealestateBebrooms)),
+            IconCollectionViewModel(title: "0-2 soverom", image: UIImage(named: .iconRealestateBedrooms)),
             IconCollectionViewModel(title: "Leiligheter", image: UIImage(named: .iconRealestateApartments)),
             IconCollectionViewModel(title: "Pris kommer", image: UIImage(named: .iconRealestatePrice)),
             IconCollectionViewModel(title: "Eier (Selveier)", image: UIImage(named: .iconRealestateOwner))
