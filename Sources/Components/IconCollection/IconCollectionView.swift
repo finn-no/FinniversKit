@@ -80,8 +80,8 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
             let width = max(collectionView.frame.width / CGFloat(viewModels.count), height * 2)
             return CGSize(width: width, height: height)
         } else {
-            let width = min(collectionView.frame.width, collectionView.frame.height)
-            return CGSize(width: width / 2, height: height)
+            let width = collectionView.frame.width / 2
+            return CGSize(width: width, height: height)
         }
     }
 }

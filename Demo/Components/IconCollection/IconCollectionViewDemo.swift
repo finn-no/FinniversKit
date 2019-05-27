@@ -27,13 +27,13 @@ public class IconCollectionDemoView: UIView {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
             collectionView.bottomAnchor.constraint(equalTo: safeLayoutGuide.bottomAnchor, constant: -.mediumLargeSpacing),
-            collectionView.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-            collectionView.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
+            collectionView.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor, constant: .mediumSpacing),
+            collectionView.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
         ])
 
         collectionView.configure(with: [
             IconCollectionViewModel(title: "0-2 soverom", image: UIImage(named: .iconRealestateBedrooms)),
-            IconCollectionViewModel(title: "Leiligheter", image: UIImage(named: .iconRealestateApartments)),
+            IconCollectionViewModel(title: "Leiligheter, Rekkehus", image: UIImage(named: .iconRealestateApartments)),
             IconCollectionViewModel(title: "Pris kommer", image: UIImage(named: .iconRealestatePrice)),
             IconCollectionViewModel(title: "Eier (Selveier)", image: UIImage(named: .iconRealestateOwner))
         ])
