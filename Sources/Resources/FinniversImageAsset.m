@@ -56,7 +56,7 @@ NSString *const FinniversImageAssethelp = @"help";
 NSString *const FinniversImageAssethide = @"hide";
 NSString *const FinniversImageAssethome = @"home";
 NSString *const FinniversImageAsseticonRealestateApartments = @"iconRealestateApartments";
-NSString *const FinniversImageAsseticonRealestateBebrooms = @"iconRealestateBebrooms";
+NSString *const FinniversImageAsseticonRealestateBedrooms = @"iconRealestateBedrooms";
 NSString *const FinniversImageAsseticonRealestateOwner = @"iconRealestateOwner";
 NSString *const FinniversImageAsseticonRealestatePrice = @"iconRealestatePrice";
 NSString *const FinniversImageAssetimportant = @"important";
@@ -175,7 +175,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssethide,
              FinniversImageAssethome,
              FinniversImageAsseticonRealestateApartments,
-             FinniversImageAsseticonRealestateBebrooms,
+             FinniversImageAsseticonRealestateBedrooms,
              FinniversImageAsseticonRealestateOwner,
              FinniversImageAsseticonRealestatePrice,
              FinniversImageAssetimportant,
