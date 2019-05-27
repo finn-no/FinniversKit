@@ -61,7 +61,6 @@ public class UserAdsListViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         label.backgroundColor = .clear
-        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
