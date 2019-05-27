@@ -134,6 +134,7 @@ public class TextField: UIView {
     }()
 
     public let inputType: InputType
+    public var phoneNumberRegEx = "^(?:\\s*\\d){8,11}$"
 
     public var placeholderText: String = "" {
         didSet {
@@ -144,7 +145,7 @@ public class TextField: UIView {
     }
 
     public var text: String? {
-        return textField.text
+        return textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     public var helpText: String? {
@@ -156,7 +157,7 @@ public class TextField: UIView {
     public weak var delegate: TextFieldDelegate?
 
     public var isValid: Bool {
-        guard let text = textField.text else {
+        guard let text = text else {
             return false
         }
 
@@ -165,9 +166,15 @@ public class TextField: UIView {
             return isValidPassword(text)
         case .email:
             return isValidEmail(text)
+        case .phoneNumber:
+            return isValidPhoneNumber(text)
         case .normal, .multiline:
             return true
         }
+    }
+
+    public var isValidAndNotEmpty: Bool {
+        return text?.isEmpty == false && isValid
     }
 
     // MARK: - Setup
@@ -191,6 +198,7 @@ public class TextField: UIView {
         textField.isSecureTextEntry = inputType.isSecureMode
         textField.keyboardType = inputType.keyBoardStyle
         textField.returnKeyType = inputType.returnKeyType
+        textField.textContentType = inputType.textContentType
 
         switch inputType {
         case .password:
@@ -206,7 +214,7 @@ public class TextField: UIView {
             textField.rightView = clearButton
         }
 
-        if case .email = inputType {
+        if inputType == .email || inputType == .phoneNumber {
             // Help text shows on error only.
             helpTextLabel.alpha = 0.0
         }
@@ -297,6 +305,10 @@ public class TextField: UIView {
         return evaluate("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", with: emailAdress)
     }
 
+    fileprivate func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
+        return evaluate(phoneNumberRegEx, with: phoneNumber)
+    }
+
     fileprivate func isValidPassword(_ password: String) -> Bool {
         return !password.isEmpty
     }
@@ -317,7 +329,7 @@ public class TextField: UIView {
         layoutIfNeeded()
         underlineHeightConstraint?.constant = state.underlineHeight
 
-        if inputType == .email {
+        if inputType == .email || inputType == .phoneNumber {
             if shouldDisplayErrorHelpText() {
                 helpTextLabelLeadingConstraint?.constant = errorIconImageView.frame.size.width + .smallSpacing
             } else {
@@ -332,7 +344,7 @@ public class TextField: UIView {
             self.typeLabel.textColor = state.accessoryLabelTextColor
             self.helpTextLabel.textColor = state.accessoryLabelTextColor
 
-            if self.inputType == .email {
+            if self.inputType == .email || self.inputType == .phoneNumber {
                 if self.shouldDisplayErrorHelpText() {
                     self.helpTextLabel.alpha = 1.0
                     self.errorIconImageView.alpha = 1.0
@@ -366,7 +378,7 @@ extension TextField: UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.textFieldDidEndEditing(self)
 
-        if let text = textField.text, !isValidEmail(text), !text.isEmpty, inputType == .email {
+        if let text = text, !text.isEmpty, !isValid {
             state = .error
         } else {
             state = .normal
