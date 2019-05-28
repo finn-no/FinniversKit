@@ -200,11 +200,7 @@ public class UserAdsListViewCell: UITableViewCell {
 
     public override func prepareForReuse() {
         super.prepareForReuse()
-        adImageView.image = nil
-        titleLabel.text = nil
-        priceLabel?.text = nil
-        detailLabel.text = nil
-        accessibilityLabel = nil
+        teardownView()
 
         if let model = model {
             dataSource?.userAdsListViewCell(self, cancelLoadingImageForModel: model, imageWidth: adImageView.frame.size.width)
