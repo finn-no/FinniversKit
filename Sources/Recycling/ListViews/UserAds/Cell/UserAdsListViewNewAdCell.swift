@@ -34,6 +34,8 @@ public class UserAdsListViewNewAdCell: UITableViewCell {
         setup()
     }
 
+    // MARK: - Private functions
+
     private func setup() {
         isAccessibilityElement = true
         backgroundColor = .milk
@@ -49,8 +51,6 @@ public class UserAdsListViewNewAdCell: UITableViewCell {
         ])
     }
 
-    // MARK: - Private functions
-
     @objc private func createNewAdButtonTapped(_ sender: Button) {
         delegate?.userAdsListViewNewAdCell(self, didTapCreateNewAdButton: sender)
     }
@@ -63,5 +63,15 @@ public class UserAdsListViewNewAdCell: UITableViewCell {
             createNewAdButton.setTitle(model.title, for: .normal)
             accessibilityLabel = model.accessibilityLabel
         }
+    }
+
+    // MARK: - Public functions
+
+    override public func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let verticalInset = CGFloat(24)
+        let horizontalInset = CGFloat(24)
+        let largerTouchArea = CGRect(x: bounds.origin.x - horizontalInset, y: bounds.origin.y - verticalInset,
+                                     width: bounds.size.width + (horizontalInset * 2), height: bounds.size.height + (verticalInset * 2))
+        return largerTouchArea.contains(point)
     }
 }
