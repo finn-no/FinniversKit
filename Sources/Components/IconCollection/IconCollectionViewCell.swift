@@ -5,9 +5,11 @@
 import UIKit
 
 public class IconCollectionViewCell: UICollectionViewCell {
+    private static let titleSideMargin = CGFloat.mediumSpacing
+
     static func height(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
         let titleRect = viewModel.title.boundingRect(
-            with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude),
+            with: CGSize(width: width - (2 * titleSideMargin), height: CGFloat.greatestFiniteMagnitude),
             options: .usesLineFragmentOrigin,
             attributes: [.font: UIFont.body],
             context: nil
@@ -78,8 +80,8 @@ public class IconCollectionViewCell: UICollectionViewCell {
             iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .smallSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: IconCollectionViewCell.titleSideMargin),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -IconCollectionViewCell.titleSideMargin)
         ])
     }
 }
