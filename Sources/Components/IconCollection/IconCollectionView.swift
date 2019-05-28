@@ -51,6 +51,22 @@ public final class IconCollectionView: UIView {
         addSubview(collectionView)
         collectionView.fillInSuperview()
     }
+    public override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        let targetWidth = targetSize.width
+        let cellWidths = viewModels.map { cellWidth(forWidth: targetWidth, viewModel: $0) }
+
+        let cellSizes = zip(viewModels, cellWidths).map { (viewModel, width) -> CGSize in
+            let height = IconCollectionViewCell.height(for: viewModel, withWidth: width)
+            return CGSize(width: width, height: height)
+        }
+
+        guard let firstItem = cellSizes.first else { return targetSize }
+        let numberOfCellsInRow = Int(floor(targetWidth / firstItem.width))
+        let cellRows = cellSizes.chunked(into: numberOfCellsInRow)
+        let totalHeight = cellRows.compactMap { $0.max(by: { $0.height < $1.height }) }.reduce(0, { $0 + $1.height })
+
+        return CGSize(width: targetWidth, height: totalHeight + .mediumLargeSpacing)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -100,6 +116,14 @@ private final class CollectionView: UICollectionView {
 
         if bounds.size != intrinsicContentSize {
             invalidateIntrinsicContentSize()
+        }
+    }
+}
+
+private extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
 }
