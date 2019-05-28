@@ -74,12 +74,17 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
                                layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
         let viewModel = viewModels[indexPath.item]
-        let width = UIDevice.isIPad()
-            ? max(collectionView.frame.width / CGFloat(viewModels.count), viewModel.image.size.width * 2)
-            : collectionView.frame.width / 2
+        let width = cellWidth(forWidth: collectionView.frame.width, viewModel: viewModel)
         let height = IconCollectionViewCell.height(for: viewModel, withWidth: width)
 
         return CGSize(width: width, height: height)
+    }
+
+    private func cellWidth(forWidth width: CGFloat, viewModel: IconCollectionViewModel) -> CGFloat {
+        let width = UIDevice.isIPad()
+            ? max(width / CGFloat(viewModels.count), viewModel.image.size.width * 2)
+            : width / 2
+        return width
     }
 }
 
