@@ -54,6 +54,8 @@ public enum ComponentViews: String, CaseIterable {
     case stepIndicator
     case nativeAdvert
     case callout
+    case phaseList
+    case iconCollection
 
     public var viewController: UIViewController {
         switch self {
@@ -121,6 +123,10 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<NativeAdvertDemoView>(withDismissButton: true)
         case .callout:
             return DemoViewController<CalloutDemoView>()
+        case .phaseList:
+            return DemoViewController<PhaseListDemoView>()
+        case .iconCollection:
+            return DemoViewController<IconCollectionDemoView>()
         }
     }
 }
@@ -178,6 +184,7 @@ public enum FullscreenViews: String, CaseIterable {
     case soldView
     case confirmationView
     case fullscreenGallery
+    case contactFormView
 
     public var viewController: UIViewController {
         switch self {
@@ -215,6 +222,8 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<ConfirmationViewDemoView>()
         case .fullscreenGallery:
             return FullscreenGalleryDemoViewController()
+        case .contactFormView:
+            return DemoViewController<ContactFormDemoView>()
         }
     }
 }
