@@ -51,6 +51,36 @@ public final class IconCollectionView: UIView {
         addSubview(collectionView)
         collectionView.fillInSuperview()
     }
+
+    // MARK: - Overrides
+
+    // This override exists because of how we calculate view sizes in our objectPage.
+    // The objectPage needs to know the size of this view before it's added to the view hierarchy, aka. before
+    // the collectionView itself knows it's own contentSize, so we need to calculate the total height of the view manually.
+    //
+    // All we're given to answer this question is the width attribute in `targetSize`.
+    //
+    // This implementation may not work for any place other than the objectPage, because:
+    //   - it assumes `targetSize` contains an accurate targetWidth for this view.
+    //   - it ignores any potential targetHeight.
+    //   - it ignores both horizontal and vertical fitting priority.
+    public override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        let targetWidth = targetSize.width
+        let cellWidths = viewModels.map { cellWidth(forWidth: targetWidth, viewModel: $0) }
+
+        let cellSizes = zip(viewModels, cellWidths).map { (viewModel, width) -> CGSize in
+            let height = IconCollectionViewCell.height(for: viewModel, withWidth: width)
+            return CGSize(width: width, height: height)
+        }
+
+        guard let firstItem = cellSizes.first else { return targetSize }
+        let numberOfCellsInRow = Int(floor(targetWidth / firstItem.width))
+        let cellRows = cellSizes.chunked(into: numberOfCellsInRow)
+        let totalHeight = cellRows.compactMap { $0.max(by: { $0.height < $1.height }) }.reduce(0, { $0 + $1.height })
+
+        let extraSpacing: CGFloat = .mediumSpacing * CGFloat(cellRows.count)
+        return CGSize(width: targetWidth, height: totalHeight + extraSpacing)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -74,12 +104,17 @@ extension IconCollectionView: UICollectionViewDelegateFlowLayout {
                                layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
         let viewModel = viewModels[indexPath.item]
-        let width = UIDevice.isIPad()
-            ? max(collectionView.frame.width / CGFloat(viewModels.count), viewModel.image.size.width * 2)
-            : collectionView.frame.width / 2
+        let width = cellWidth(forWidth: collectionView.frame.width, viewModel: viewModel)
         let height = IconCollectionViewCell.height(for: viewModel, withWidth: width)
 
         return CGSize(width: width, height: height)
+    }
+
+    private func cellWidth(forWidth width: CGFloat, viewModel: IconCollectionViewModel) -> CGFloat {
+        let width = UIDevice.isIPad()
+            ? max(width / CGFloat(viewModels.count), viewModel.image.size.width * 2)
+            : width / 2
+        return width
     }
 }
 
@@ -95,6 +130,14 @@ private final class CollectionView: UICollectionView {
 
         if bounds.size != intrinsicContentSize {
             invalidateIntrinsicContentSize()
+        }
+    }
+}
+
+private extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0 ..< Swift.min($0 + size, count)])
         }
     }
 }
