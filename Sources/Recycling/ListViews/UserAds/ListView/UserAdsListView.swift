@@ -35,13 +35,19 @@ public class UserAdsListView: UIView {
     }()
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.cellLayoutMarginsFollowReadableWidth = false
+        let tableView = UITableView(withAutoLayout: true)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UserAdsListViewNewAdCell.self)
+        tableView.register(UserAdsListViewCell.self)
+        tableView.register(UserAdsListViewSeeAllAdsCell.self)
+        tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.backgroundColor = .milk
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 120
+        tableView.estimatedSectionHeaderHeight = 48
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
+        tableView.refreshControl = refreshControl
         return tableView
     }()
 
@@ -55,12 +61,6 @@ public class UserAdsListView: UIView {
     private var lastSection: Int {
         return (dataSource?.numberOfSections(in: self) ?? 1) - 1
     }
-
-    private static let sectionHeaderHeight: CGFloat = 32
-    private static let buttonCellHeight: CGFloat = 72
-    private static let activeCellHeight: CGFloat = 120
-    private static let inactiveCellHeight: CGFloat = 80
-
     // MARK: - Public properties
 
     public var isEditing: Bool { return tableView.isEditing }
@@ -86,16 +86,8 @@ public class UserAdsListView: UIView {
     }
 
     private func setup() {
-        setupRefreshControl()
-        tableView.register(UserAdsListViewNewAdCell.self)
-        tableView.register(UserAdsListViewCell.self)
-        tableView.register(UserAdsListViewSeeAllAdsCell.self)
         addSubview(tableView)
         tableView.fillInSuperview()
-    }
-
-    private func setupRefreshControl() {
-        tableView.refreshControl = refreshControl
     }
 
     // MARK: - Public
@@ -181,17 +173,8 @@ extension UserAdsListView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         // Return 0.1 so we dont show a seperator if there's no section to show.
-        case firstSection, lastSection: return 0.1
-        default: return UserAdsListView.sectionHeaderHeight
-        }
-    }
-
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let isInactiveSection = dataSource?.userAdsListView(self, shouldDisplayInactiveSectionAt: indexPath) ?? false
-
-        switch indexPath.section {
-        case firstSection, lastSection: return UserAdsListView.buttonCellHeight
-        default: return isInactiveSection ? UserAdsListView.inactiveCellHeight : UserAdsListView.activeCellHeight
+        case firstSection, lastSection: return CGFloat.leastNonzeroMagnitude
+        default: return UITableView.automaticDimension
         }
     }
 
