@@ -5,6 +5,22 @@
 import UIKit
 
 public class IconCollectionViewCell: UICollectionViewCell {
+    private static let titleSideMargin = CGFloat.mediumSpacing
+
+    static func height(for viewModel: IconCollectionViewModel, withWidth width: CGFloat) -> CGFloat {
+        let titleRect = viewModel.title.boundingRect(
+            with: CGSize(width: width - (2 * titleSideMargin), height: CGFloat.greatestFiniteMagnitude),
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: UIFont.body],
+            context: nil
+        )
+
+        let titleHeight = titleRect.height
+        let imageHeight = viewModel.image.size.height
+
+        return titleHeight + imageHeight + .mediumSpacing
+    }
+
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
@@ -19,7 +35,7 @@ public class IconCollectionViewCell: UICollectionViewCell {
         label.textColor = .licorice
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.75
+        label.numberOfLines = 0
         return label
     }()
 
@@ -64,8 +80,8 @@ public class IconCollectionViewCell: UICollectionViewCell {
             iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: .smallSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: IconCollectionViewCell.titleSideMargin),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -IconCollectionViewCell.titleSideMargin)
         ])
     }
 }
