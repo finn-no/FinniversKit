@@ -31,13 +31,11 @@ public struct KeyboardNotificationInfo {
     /// will be between 0 and whatever intersection occurs. This is in case the user has
     /// an iPad with an external keyboard connected, which would've returned a negative value.
     public func keyboardFrameEndIntersectHeight(inView view: UIView) -> CGFloat {
-        guard let windowHeight = view.window?.frame.size.height, let frameEnd = frameEnd else { return 0 }
-        let keyboardHeight = frameEnd.size.height
+        guard let frameEnd = frameEnd else { return 0 }
         let frameInWindow = view.convert(view.bounds, to: nil)
+        let intersection = frameEnd.intersection(frameInWindow)
 
-        // Calculate the intersection between the keyboard and this view.
-        let intersection = keyboardHeight - (windowHeight - frameInWindow.origin.y - frameInWindow.size.height)
-        return max(0, intersection)
+        return max(0, intersection.height)
     }
 }
 
