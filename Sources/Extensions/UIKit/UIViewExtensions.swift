@@ -51,10 +51,10 @@ public extension UIView {
         let animationDuration = keyboardInfo.animationDuration
         let animationOptions = keyboardInfo.animationOptions
 
-        UIView.animate(withDuration: animationDuration, delay: 0, options: animationOptions, animations: animations, completion: completion)
+        animate(withDuration: animationDuration, delay: 0, options: animationOptions, animations: animations, completion: completion)
     }
 
     class func animateAlongsideKeyboard(keyboardInfo: KeyboardNotificationInfo, animations: @escaping () -> Void) {
-        UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo, animations: animations, completion: nil)
+        animateAlongsideKeyboard(keyboardInfo: keyboardInfo, animations: animations, completion: nil)
     }
 }
