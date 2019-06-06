@@ -43,3 +43,18 @@ public extension UIView {
         layer.rasterizationScale = UIScreen.main.scale
     }
 }
+
+// MARK: - Animate alongside keyboard
+
+public extension UIView {
+    class func animateAlongsideKeyboard(keyboardInfo: KeyboardNotificationInfo, animations: @escaping () -> Void, completion: ((Bool) -> Void)? = nil) {
+        let animationDuration = keyboardInfo.animationDuration
+        let animationOptions = keyboardInfo.animationOptions
+
+        animate(withDuration: animationDuration, delay: 0, options: animationOptions, animations: animations, completion: completion)
+    }
+
+    class func animateAlongsideKeyboard(keyboardInfo: KeyboardNotificationInfo, animations: @escaping () -> Void) {
+        animateAlongsideKeyboard(keyboardInfo: keyboardInfo, animations: animations, completion: nil)
+    }
+}

@@ -255,23 +255,38 @@ public final class ContactFormView: UIView {
     }
 
     @objc private func adjustScrollViewForKeyboard(_ notification: Notification) {
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
+        let keyboardHeight = keyboardInfo.keyboardFrameEndIntersectHeight(inView: self)
 
-        var keyboardHeight = convert(keyboardValue.cgRectValue, from: window).height
-
-        if #available(iOS 11.0, *) {
-            keyboardHeight -= window?.safeAreaInsets.bottom ?? 0
+        if keyboardInfo.action == .willShow {
+            UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo, animations: { [weak self] in
+                guard let self = self else { return }
+                self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+                self.scrollToBottom(animated: false)
+                self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset
+            }, completion: { _ in
+                // If iPad, compensate and recalculate intersection for potential changes to
+                // presentation thanks to `UIModalPresentationStyle.formSheet`.
+                if UIDevice.isIPad() {
+                    UIView.animate(withDuration: 0.1, animations: { [weak self] in
+                        guard let self = self else { return }
+                        let correctedKeyboardHeight = keyboardInfo.keyboardFrameEndIntersectHeight(inView: self)
+                        self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: correctedKeyboardHeight, right: 0)
+                        self.scrollToBottom(animated: false)
+                        self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset
+                    })
+                }
+            })
         }
 
-        if notification.name == UIResponder.keyboardWillHideNotification {
-            scrollView.contentInset = .zero
-            scrollView.contentOffset = .zero
-        } else if keyboardHeight > scrollView.contentInset.bottom {
-            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-            scrollToBottom(animated: false)
+        if keyboardInfo.action == .willHide {
+            UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
+                guard let self = self else { return }
+                self.scrollView.contentInset = .zero
+                self.scrollView.contentOffset = .zero
+                self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset
+            }
         }
-
-        scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
 }
 
