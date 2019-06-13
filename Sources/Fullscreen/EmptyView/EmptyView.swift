@@ -22,6 +22,7 @@ public class EmptyView: UIView {
     private let sizeOfCandyCane = CGSize(width: 30, height: 85.863)
 
     private var hasLayedOut = false
+    private var hasSetup = false
     private let isChristmasThemed: Bool
 
     // MARK: - Regular shapes
@@ -224,7 +225,7 @@ public class EmptyView: UIView {
         }
     }
 
-    // MARK: - Setup
+    // MARK: - Init
 
     public init(frame: CGRect, isChristmasThemed: Bool = false) {
         self.isChristmasThemed = isChristmasThemed
@@ -238,6 +239,39 @@ public class EmptyView: UIView {
         setup()
     }
 
+    // MARK: - Overrides
+
+    public override func didMoveToWindow() {
+        super.didMoveToWindow()
+
+        if window == nil {
+            stopMotionManager()
+            animator.removeAllBehaviors()
+        } else {
+            if hasLayedOut && animator.behaviors.isEmpty {
+                addAnimatorBehaviors()
+            }
+
+            if hasSetup {
+                startMotionManager()
+            }
+        }
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        // We only want to lay out once
+        guard hasLayedOut == false else {
+            return
+        }
+
+        resetSubviews()
+        hasLayedOut = true
+    }
+
+    // MARK: - Setup
+
     private func setup() {
         backgroundColor = .milk
 
@@ -249,7 +283,7 @@ public class EmptyView: UIView {
         addSubview(messageLabel)
         addSubview(actionButton)
 
-        getAccelerometerData()
+        startMotionManager()
 
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: .veryLargeSpacing),
@@ -264,16 +298,11 @@ public class EmptyView: UIView {
             actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing)
         ])
+
+        hasSetup = true
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-
-        // We only want to lay out once
-        guard hasLayedOut == false else {
-            return
-        }
-
+    private func resetSubviews() {
         let slice = frame.width / 8
 
         // We reposition the shapes after the EmptyView itself has layed out its frame.
@@ -297,11 +326,7 @@ public class EmptyView: UIView {
         }
 
         // We add the behaviors after laying out the subviews to avoid issues with initial positions of the shapes
-        animator.addBehavior(gravity)
-        animator.addBehavior(collision)
-        animator.addBehavior(itemBehavior)
-
-        hasLayedOut = true
+        addAnimatorBehaviors()
     }
 
     // MARK: - Actions
@@ -338,9 +363,9 @@ public class EmptyView: UIView {
 
     // MARK: - Accelerometer calculations
 
-    func getAccelerometerData() {
+    private func startMotionManager() {
         motionManager.startAccelerometerUpdates()
-        motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: { motion, error in
+        motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: { [weak self] motion, error in
             if error != nil {
                 return
             }
@@ -352,7 +377,7 @@ public class EmptyView: UIView {
             let gravity: CMAcceleration = motion.gravity
             var vector = CGVector(dx: CGFloat(gravity.x), dy: CGFloat(gravity.y))
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 // Correct for orientation
                 let orientation = UIApplication.shared.statusBarOrientation
 
@@ -368,8 +393,19 @@ public class EmptyView: UIView {
                 default: break
                 }
 
-                self.gravity.gravityDirection = vector
+                self?.gravity.gravityDirection = vector
             }
         })
+    }
+
+    private func stopMotionManager() {
+        motionManager.stopAccelerometerUpdates()
+        motionManager.stopDeviceMotionUpdates()
+    }
+
+    private func addAnimatorBehaviors() {
+        animator.addBehavior(gravity)
+        animator.addBehavior(collision)
+        animator.addBehavior(itemBehavior)
     }
 }
