@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FinniversKit'
-  s.version      = '0.6.0'
+  s.version      = '1.0.0'
   s.summary      = "FINN's iOS Components"
   s.author       = 'FINN.no'
   s.homepage     = 'https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system'
@@ -25,10 +25,9 @@ Pod::Spec.new do |s|
   }
 
   s.platform      = :ios, '10.0'
-  s.swift_version = '4.0'
+  s.swift_version = '5.0'
   s.source        = { :git => "https://github.com/finn-no/FinniversKit.git", :tag => s.version }
   s.requires_arc  = true
-  s.swift_version = '4.2'
 
   s.source_files = 'Sources/*.{h,m,swift}', 'Sources/**/*.{h,m,swift}', 'Sources/**/**/*.{h,m,swift}'
   s.resources    = 'Sources/Resources/Fonts/*.ttf', 'Sources/Resources/*.xcassets', 'Sources/Resources/Sounds/*.{mp3,wav,sf2}'
