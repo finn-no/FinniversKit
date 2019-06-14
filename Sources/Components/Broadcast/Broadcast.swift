@@ -192,7 +192,7 @@ extension Broadcast: BroadcastItemDelegate {
     }
 
     func broadcastItem(_ broadcastItem: BroadcastItem, didTapURL url: URL) {
-        let broadcastIndex = arrangedSubviews.index(of: broadcastItem) ?? 0
+        let broadcastIndex = arrangedSubviews.firstIndex(of: broadcastItem) ?? 0
         delegate?.broadcast(self, didTapURL: url, inItemAtIndex: broadcastIndex)
     }
 }

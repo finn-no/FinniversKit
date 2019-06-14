@@ -140,7 +140,11 @@ public class DialogueView: UIView {
         }
 
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = text.boundingRect(with: constraintRect, options: [.usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font: detail.font], context: nil)
+        let boundingBox = text.boundingRect(
+            with: constraintRect,
+            options: [.usesLineFragmentOrigin],
+            attributes: [NSAttributedString.Key.font: detail.font ?? .caption], context: nil
+        )
 
         var moreSpacing: CGFloat = 0
 

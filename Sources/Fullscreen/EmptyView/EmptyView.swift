@@ -156,10 +156,7 @@ public class EmptyView: UIView {
         return button
     }()
 
-    private lazy var animator: UIDynamicAnimator = {
-        let animator = UIDynamicAnimator(referenceView: self)
-        return animator
-    }()
+    private lazy var animator = UIDynamicAnimator(referenceView: self)
 
     private lazy var gravity: UIGravityBehavior = {
         let gravity = UIGravityBehavior(items: allShapes)
@@ -360,10 +357,12 @@ public class EmptyView: UIView {
     @objc private func performAction() {
         delegate?.emptyView(self, didSelectActionButton: actionButton)
     }
+}
 
-    // MARK: - Accelerometer calculations
+// MARK: - Accelerometer calculations
 
-    private func startMotionManager() {
+private extension EmptyView {
+    func startMotionManager() {
         motionManager.startAccelerometerUpdates()
         motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: { [weak self] motion, error in
             if error != nil {
@@ -398,12 +397,12 @@ public class EmptyView: UIView {
         })
     }
 
-    private func stopMotionManager() {
+    func stopMotionManager() {
         motionManager.stopAccelerometerUpdates()
         motionManager.stopDeviceMotionUpdates()
     }
 
-    private func addAnimatorBehaviors() {
+    func addAnimatorBehaviors() {
         animator.addBehavior(gravity)
         animator.addBehavior(collision)
         animator.addBehavior(itemBehavior)
