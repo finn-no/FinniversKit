@@ -66,7 +66,7 @@ class AdsGridViewLayout: UICollectionViewLayout {
     }
 
     private func indexOfLowestValue(in columns: [Int]) -> Int {
-        let shortestColumnIndex = columns.index(of: columns.min() ?? 0) ?? 0
+        let shortestColumnIndex = columns.firstIndex(of: columns.min() ?? 0) ?? 0
         return shortestColumnIndex
     }
 
