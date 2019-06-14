@@ -264,8 +264,6 @@
 		CF4A053B21FB2ACB000BB7DA /* PianoSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052E21FB2ACA000BB7DA /* PianoSliderView.swift */; };
 		CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052F21FB2ACA000BB7DA /* PianoEffectControl.swift */; };
 		CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A053021FB2ACA000BB7DA /* PianoKeyboardView.swift */; };
-		CF4A053E21FB2ACB000BB7DA /* AVAudioSession+Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4A053221FB2ACA000BB7DA /* AVAudioSession+Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CF4A054121FB2ACB000BB7DA /* AVAudioSession+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4A053521FB2ACA000BB7DA /* AVAudioSession+Swift.m */; };
 		CF4A054421FB2B4E000BB7DA /* Piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = CF4A054321FB2B4E000BB7DA /* Piano.sf2 */; };
 		CF4A054821FB58FA000BB7DA /* PianoDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A054721FB58FA000BB7DA /* PianoDemoView.swift */; };
 		CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C45FE22257A8A001FB92C /* EarthHourContentView.swift */; };
@@ -654,8 +652,6 @@
 		CF4A052E21FB2ACA000BB7DA /* PianoSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoSliderView.swift; sourceTree = "<group>"; };
 		CF4A052F21FB2ACA000BB7DA /* PianoEffectControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoEffectControl.swift; sourceTree = "<group>"; };
 		CF4A053021FB2ACA000BB7DA /* PianoKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKeyboardView.swift; sourceTree = "<group>"; };
-		CF4A053221FB2ACA000BB7DA /* AVAudioSession+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVAudioSession+Swift.h"; sourceTree = "<group>"; };
-		CF4A053521FB2ACA000BB7DA /* AVAudioSession+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVAudioSession+Swift.m"; sourceTree = "<group>"; };
 		CF4A054321FB2B4E000BB7DA /* Piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Piano.sf2; sourceTree = "<group>"; };
 		CF4A054721FB58FA000BB7DA /* PianoDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoDemoView.swift; sourceTree = "<group>"; };
 		CF7C45FE22257A8A001FB92C /* EarthHourContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourContentView.swift; sourceTree = "<group>"; };
@@ -1857,7 +1853,6 @@
 			isa = PBXGroup;
 			children = (
 				CF4A052821FB2ACA000BB7DA /* PianoView.swift */,
-				CF4A053121FB2ACA000BB7DA /* Extensions */,
 				CF4A052921FB2ACA000BB7DA /* Views */,
 			);
 			path = Piano;
@@ -1881,15 +1876,6 @@
 				CF4A052F21FB2ACA000BB7DA /* PianoEffectControl.swift */,
 			);
 			path = EffectControl;
-			sourceTree = "<group>";
-		};
-		CF4A053121FB2ACA000BB7DA /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				CF4A053221FB2ACA000BB7DA /* AVAudioSession+Swift.h */,
-				CF4A053521FB2ACA000BB7DA /* AVAudioSession+Swift.m */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CF4A054521FB2C5D000BB7DA /* Keyboard */ = {
@@ -2765,7 +2751,6 @@
 				4447F7021FDB2B110033DBC1 /* FinniversKit.h in Headers */,
 				44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */,
 				1430D440216E4DA10038AC84 /* Spacing.h in Headers */,
-				CF4A053E21FB2ACB000BB7DA /* AVAudioSession+Swift.h in Headers */,
 				144959DB2122C4400084549F /* FinniversImageAsset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2863,10 +2848,9 @@
 			};
 			buildConfigurationList = 25D04D761F583B1800EA317D /* Build configuration list for PBXProject "FinniversKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -3267,7 +3251,6 @@
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
 				444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */,
 				CF4A053B21FB2ACB000BB7DA /* PianoSliderView.swift in Sources */,
-				CF4A054121FB2ACB000BB7DA /* AVAudioSession+Swift.m in Sources */,
 				CF87A855229C0C5700DA8243 /* ContactFormViewModel.swift in Sources */,
 				CFB61376229ACB0C00DE283D /* IconCollectionViewModel.swift in Sources */,
 				DA93EFA821C2BA4F00207239 /* NewYearsView.swift in Sources */,
