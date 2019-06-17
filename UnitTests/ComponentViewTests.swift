@@ -154,4 +154,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testIconCollection() {
         snapshot(.iconCollection)
     }
+
+    func testDisclaimerView() {
+        snapshot(.disclaimerView)
+    }
 }
