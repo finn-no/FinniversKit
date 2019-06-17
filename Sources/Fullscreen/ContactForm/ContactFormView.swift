@@ -46,14 +46,6 @@ public final class ContactFormView: UIView {
         return label
     }()
 
-    private lazy var accessoryLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .detail
-        label.textColor = .licorice
-        label.numberOfLines = 0
-        return label
-    }()
-
     private lazy var nameTextField: TextField = {
         let textField = TextField(inputType: .normal)
         textField.textField.returnKeyType = .next
@@ -130,7 +122,6 @@ public final class ContactFormView: UIView {
     public func configure(with viewModel: ContactFormViewModel) {
         titleLabel.text = viewModel.title
         detailTextLabel.text = viewModel.detailText
-        accessoryLabel.text = viewModel.accessoryText
         nameTextField.placeholderText = viewModel.namePlaceholder
 
         emailTextField.placeholderText = viewModel.emailPlaceholder
@@ -157,7 +148,6 @@ public final class ContactFormView: UIView {
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(detailTextLabel)
-        contentView.addSubview(accessoryLabel)
         contentView.addSubview(nameTextField)
         contentView.addSubview(emailTextField)
         contentView.addSubview(showPhoneNumberCheckbox)
@@ -185,11 +175,6 @@ public final class ContactFormView: UIView {
             detailTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             detailTextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            accessoryLabel.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
-            nameTextField.topAnchor.constraint(equalTo: accessoryLabel.bottomAnchor, constant: .mediumLargeSpacing),
             nameTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             nameTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
