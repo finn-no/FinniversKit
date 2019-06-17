@@ -15,4 +15,6 @@ public protocol ContactFormViewModel {
     var submitButtonTitle: String { get }
     var emailErrorHelpText: String { get }
     var phoneNumberErrorHelpText: String { get }
+    var disclaimerText: String { get }
+    var disclaimerReadMoreButtonTitle: String { get }
 }

@@ -87,6 +87,11 @@ public final class ContactFormView: UIView {
         return button
     }()
 
+    private lazy var disclaimerView: DisclaimerView = {
+        let view = DisclaimerView(withAutoLayout: true)
+        return view
+    }()
+
     private var currentTextField: TextField? {
         if nameTextField.textField.isFirstResponder {
             return nameTextField
@@ -135,6 +140,9 @@ public final class ContactFormView: UIView {
         phoneNumberTextField.helpText = viewModel.phoneNumberErrorHelpText
 
         submitButton.setTitle(viewModel.submitButtonTitle, for: .normal)
+
+        let disclaimerViewModel = DisclaimerViewModel(disclaimerText: viewModel.disclaimerText, readMoreButtonTitle: viewModel.disclaimerReadMoreButtonTitle)
+        disclaimerView.configure(with: disclaimerViewModel)
     }
 
     private func setup() {
@@ -157,6 +165,7 @@ public final class ContactFormView: UIView {
         bottomStackView.axis = .vertical
 
         contentView.addSubview(bottomStackView)
+        contentView.addSubview(disclaimerView)
         contentView.addSubview(submitButton)
         scrollView.fillInSuperview()
 
@@ -175,6 +184,7 @@ public final class ContactFormView: UIView {
             detailTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             detailTextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
+            nameTextField.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: .mediumLargeSpacing),
             nameTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             nameTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
@@ -190,7 +200,11 @@ public final class ContactFormView: UIView {
             bottomStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bottomStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            submitButton.topAnchor.constraint(equalTo: bottomStackView.bottomAnchor, constant: .largeSpacing),
+            disclaimerView.topAnchor.constraint(equalTo: bottomStackView.bottomAnchor, constant: .mediumLargeSpacing),
+            disclaimerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            disclaimerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            submitButton.topAnchor.constraint(equalTo: disclaimerView.bottomAnchor, constant: .mediumLargeSpacing),
             submitButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             submitButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
             submitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),

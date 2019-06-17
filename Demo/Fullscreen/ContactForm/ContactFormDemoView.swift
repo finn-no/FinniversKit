@@ -52,4 +52,6 @@ private struct ViewModel: ContactFormViewModel {
     let submitButtonTitle = "Kjør på!"
     var emailErrorHelpText = "Oppgi en gyldig e-postadresse."
     var phoneNumberErrorHelpText = "Oppgi et gyldig telefonnummer"
+    var disclaimerText = "Ved å legge inn din e-postadresse og ditt telefonnummer samtykker du til å motta e-poster samt eventuell henvendelse på telefon om boligprosjektet. Megler/utbygger blir selvstendig behandlingsansvarlig for personinformasjonen de mottar."
+    var disclaimerReadMoreButtonTitle = "Les mer"
 }
