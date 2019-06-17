@@ -6,6 +6,7 @@ import UIKit
 
 public protocol ContactFormViewDelegate: AnyObject {
     func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String?)
+    func contactFormViewDidTapDisclaimerButton(_ view: ContactFormView)
 }
 
 public final class ContactFormView: UIView {
@@ -89,6 +90,7 @@ public final class ContactFormView: UIView {
 
     private lazy var disclaimerView: DisclaimerView = {
         let view = DisclaimerView(withAutoLayout: true)
+        view.delegate = self
         return view
     }()
 
@@ -322,5 +324,13 @@ extension ContactFormView: ContactFormCheckboxDelegate {
             self.submitButton.isEnabled = self.isValid
             self.scrollToBottom(animated: true)
         })
+    }
+}
+
+// MARK: - DisclaimerViewDelegate
+
+extension ContactFormView: DisclaimerViewDelegate {
+    public func disclaimerViewDidSelectReadMoreButton(_ disclaimerView: DisclaimerView) {
+        delegate?.contactFormViewDidTapDisclaimerButton(self)
     }
 }
