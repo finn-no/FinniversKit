@@ -24,7 +24,6 @@ public class DisclaimerDemoView: UIView {
 
         NSLayoutConstraint.activate([
             disclaimerView.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
-            disclaimerView.centerXAnchor.constraint(equalTo: centerXAnchor),
             disclaimerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             disclaimerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
         ])
