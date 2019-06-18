@@ -37,6 +37,8 @@ extension ContactFormDemoView: ContactFormViewDelegate {
     public func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String?) {
         print("Name: \(name), email: \(email), phone number: \(phoneNumber ?? "-")")
     }
+
+    public func contactFormViewDidTapDisclaimerButton(_ view: ContactFormView) {}
 }
 
 // MARK: - Private types
@@ -44,7 +46,6 @@ extension ContactFormDemoView: ContactFormViewDelegate {
 private struct ViewModel: ContactFormViewModel {
     let title = "Motta oppdateringer om Elveparken, Jessheim Sør"
     let detailText = "FINN.no videreformidler denne informasjonen til denne annonsens kontaktperson slik at de kan holde deg fortløpende orientert om prosjektet."
-    let accessoryText = "Annonsens kontaktperson blir selvstendig behandlingsansvarlig for informasjonen de mottar."
     let namePlaceholder = "Navn"
     let emailPlaceholder = "E-post"
     let showPhoneNumberQuestion = "Vil du også bli kontaktet på telefon?"
@@ -53,4 +54,6 @@ private struct ViewModel: ContactFormViewModel {
     let submitButtonTitle = "Kjør på!"
     var emailErrorHelpText = "Oppgi en gyldig e-postadresse."
     var phoneNumberErrorHelpText = "Oppgi et gyldig telefonnummer"
+    var disclaimerText = "Ved å legge inn din e-postadresse og ditt telefonnummer samtykker du til å motta e-poster samt eventuell henvendelse på telefon om boligprosjektet. Megler/utbygger blir selvstendig behandlingsansvarlig for personinformasjonen de mottar."
+    var disclaimerReadMoreButtonTitle = "Les mer"
 }

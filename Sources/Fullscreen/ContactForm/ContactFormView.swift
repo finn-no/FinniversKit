@@ -6,6 +6,7 @@ import UIKit
 
 public protocol ContactFormViewDelegate: AnyObject {
     func contactFormView(_ view: ContactFormView, didSubmitWithName name: String, email: String, phoneNumber: String?)
+    func contactFormViewDidTapDisclaimerButton(_ view: ContactFormView)
 }
 
 public final class ContactFormView: UIView {
@@ -41,14 +42,6 @@ public final class ContactFormView: UIView {
     private lazy var detailTextLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .licorice
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private lazy var accessoryLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .detail
         label.textColor = .licorice
         label.numberOfLines = 0
         return label
@@ -95,6 +88,12 @@ public final class ContactFormView: UIView {
         return button
     }()
 
+    private lazy var disclaimerView: DisclaimerView = {
+        let view = DisclaimerView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
+
     private var currentTextField: TextField? {
         if nameTextField.textField.isFirstResponder {
             return nameTextField
@@ -130,7 +129,6 @@ public final class ContactFormView: UIView {
     public func configure(with viewModel: ContactFormViewModel) {
         titleLabel.text = viewModel.title
         detailTextLabel.text = viewModel.detailText
-        accessoryLabel.text = viewModel.accessoryText
         nameTextField.placeholderText = viewModel.namePlaceholder
 
         emailTextField.placeholderText = viewModel.emailPlaceholder
@@ -144,6 +142,9 @@ public final class ContactFormView: UIView {
         phoneNumberTextField.helpText = viewModel.phoneNumberErrorHelpText
 
         submitButton.setTitle(viewModel.submitButtonTitle, for: .normal)
+
+        let disclaimerViewModel = DisclaimerViewModel(disclaimerText: viewModel.disclaimerText, readMoreButtonTitle: viewModel.disclaimerReadMoreButtonTitle)
+        disclaimerView.configure(with: disclaimerViewModel)
     }
 
     private func setup() {
@@ -157,7 +158,6 @@ public final class ContactFormView: UIView {
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(detailTextLabel)
-        contentView.addSubview(accessoryLabel)
         contentView.addSubview(nameTextField)
         contentView.addSubview(emailTextField)
         contentView.addSubview(showPhoneNumberCheckbox)
@@ -167,6 +167,7 @@ public final class ContactFormView: UIView {
         bottomStackView.axis = .vertical
 
         contentView.addSubview(bottomStackView)
+        contentView.addSubview(disclaimerView)
         contentView.addSubview(submitButton)
         scrollView.fillInSuperview()
 
@@ -185,11 +186,7 @@ public final class ContactFormView: UIView {
             detailTextLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             detailTextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            accessoryLabel.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: .mediumLargeSpacing),
-            accessoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            accessoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
-            nameTextField.topAnchor.constraint(equalTo: accessoryLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            nameTextField.topAnchor.constraint(equalTo: detailTextLabel.bottomAnchor, constant: .mediumLargeSpacing),
             nameTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             nameTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
@@ -205,7 +202,11 @@ public final class ContactFormView: UIView {
             bottomStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bottomStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            submitButton.topAnchor.constraint(equalTo: bottomStackView.bottomAnchor, constant: .largeSpacing),
+            disclaimerView.topAnchor.constraint(equalTo: bottomStackView.bottomAnchor, constant: .mediumLargeSpacing),
+            disclaimerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            disclaimerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            submitButton.topAnchor.constraint(equalTo: disclaimerView.bottomAnchor, constant: .mediumLargeSpacing),
             submitButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             submitButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
             submitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -323,5 +324,13 @@ extension ContactFormView: ContactFormCheckboxDelegate {
             self.submitButton.isEnabled = self.isValid
             self.scrollToBottom(animated: true)
         })
+    }
+}
+
+// MARK: - DisclaimerViewDelegate
+
+extension ContactFormView: DisclaimerViewDelegate {
+    public func disclaimerViewDidSelectReadMoreButton(_ disclaimerView: DisclaimerView) {
+        delegate?.contactFormViewDidTapDisclaimerButton(self)
     }
 }

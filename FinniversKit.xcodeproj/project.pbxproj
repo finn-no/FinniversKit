@@ -25,6 +25,9 @@
 		08796D9321CB982F0023A441 /* SelectableTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9221CB982F0023A441 /* SelectableTableViewCellViewModel.swift */; };
 		08796D9521CB984E0023A441 /* IconTitleTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08796D9421CB984E0023A441 /* IconTitleTableViewCellViewModel.swift */; };
 		087A5BB622A7D85500184640 /* KeyboardNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087A5BB522A7D85500184640 /* KeyboardNotificationInfo.swift */; };
+		0884C6C922B7B4580015474D /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0884C6C822B7B4580015474D /* DisclaimerView.swift */; };
+		0884C6CC22B7B5EA0015474D /* DisclaimerDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0884C6CB22B7B5EA0015474D /* DisclaimerDemoView.swift */; };
+		0884C6CE22B7BE360015474D /* DisclaimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0884C6CD22B7BE360015474D /* DisclaimerViewModel.swift */; };
 		089DF42321C13178008A8711 /* RectangleGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089DF42221C13178008A8711 /* RectangleGiftView.swift */; };
 		08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A0A21832546003E2222 /* BasicTableViewCell.swift */; };
 		08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */; };
@@ -411,6 +414,9 @@
 		08796D9221CB982F0023A441 /* SelectableTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		08796D9421CB984E0023A441 /* IconTitleTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTitleTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		087A5BB522A7D85500184640 /* KeyboardNotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationInfo.swift; sourceTree = "<group>"; };
+		0884C6C822B7B4580015474D /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
+		0884C6CB22B7B5EA0015474D /* DisclaimerDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerDemoView.swift; sourceTree = "<group>"; };
+		0884C6CD22B7BE360015474D /* DisclaimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerViewModel.swift; sourceTree = "<group>"; };
 		089DF42221C13178008A8711 /* RectangleGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleGiftView.swift; sourceTree = "<group>"; };
 		08D70A0A21832546003E2222 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
 		08D70A14218328C6003E2222 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
@@ -811,6 +817,23 @@
 				087A5BB522A7D85500184640 /* KeyboardNotificationInfo.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		0884C6C722B7B4360015474D /* Disclaimer */ = {
+			isa = PBXGroup;
+			children = (
+				0884C6C822B7B4580015474D /* DisclaimerView.swift */,
+				0884C6CD22B7BE360015474D /* DisclaimerViewModel.swift */,
+			);
+			path = Disclaimer;
+			sourceTree = "<group>";
+		};
+		0884C6CA22B7B5DA0015474D /* Disclaimer */ = {
+			isa = PBXGroup;
+			children = (
+				0884C6CB22B7B5EA0015474D /* DisclaimerDemoView.swift */,
+			);
+			path = Disclaimer;
 			sourceTree = "<group>";
 		};
 		089DF42121C13064008A8711 /* ChristmasViews */ = {
@@ -1253,6 +1276,7 @@
 				45B2E06B207E181C00C68B92 /* Consent */,
 				F2BE212E22819ED8004640F3 /* Control */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
+				0884C6C722B7B4360015474D /* Disclaimer */,
 				CF7C45FD22257A8A001FB92C /* EarthHour */,
 				9A37D8C01205DC426B502C5F /* Feedback */,
 				08F0D3F222259AB800968256 /* HappinessRating */,
@@ -2013,6 +2037,7 @@
 				CFCDDA5D22731D4D005E1F4A /* Callout */,
 				CF8F021821DCC624004C4042 /* Consent */,
 				AA7A854F22258A0B00AF5F42 /* Dialogue */,
+				0884C6CA22B7B5DA0015474D /* Disclaimer */,
 				CF7C460B22257AE1001FB92C /* EarthHour */,
 				9A37DBD671995665FDBC64C4 /* Feedback */,
 				08F0D3F5222691F000968256 /* HappinessRating */,
@@ -2978,6 +3003,7 @@
 				F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */,
 				444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				6266C0752208235000FB8004 /* AdManagementDemoView.swift in Sources */,
+				0884C6CC22B7B5EA0015474D /* DisclaimerDemoView.swift in Sources */,
 				44AFCE4A215839FB005984DB /* LoadingIndicatorViewDemoView.swift in Sources */,
 				432CE09E21131B4800F01EC5 /* RoundedImageViewDemoView.swift in Sources */,
 				CF4A054821FB58FA000BB7DA /* PianoDemoView.swift in Sources */,
@@ -3164,6 +3190,7 @@
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				DAB7FAAA21B690DD00BF8CC6 /* BottomSheetGestureController.swift in Sources */,
 				DAB7FAAE21B6924E00BF8CC6 /* SpringAnimator.swift in Sources */,
+				0884C6C922B7B4580015474D /* DisclaimerView.swift in Sources */,
 				89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */,
 				DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */,
 				441FE42C209A24E500B04EF1 /* MarketsGridViewLayoutConfiguration.swift in Sources */,
@@ -3225,6 +3252,7 @@
 				14DC127021593B0000326DC3 /* HorizontalSlideTransition.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
 				DAB7FAA921B690DD00BF8CC6 /* BottomSheetAnimationController.swift in Sources */,
+				0884C6CE22B7BE360015474D /* DisclaimerViewModel.swift in Sources */,
 				CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */,
 				CF4A053A21FB2ACB000BB7DA /* PianoEffectIndicatorsView.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
