@@ -24,7 +24,7 @@ public class DisclaimerView: UIView {
     }()
 
     private lazy var readMoreButton: Button = {
-        let button = Button(style: .flat, size: .small)
+        let button = Button(style: .link, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(readMoreButtonTapped), for: .touchUpInside)
         return button
@@ -53,8 +53,8 @@ public class DisclaimerView: UIView {
             disclaimerLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             disclaimerLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            readMoreButton.topAnchor.constraint(equalTo: disclaimerLabel.bottomAnchor, constant: .mediumSpacing),
-            readMoreButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            readMoreButton.topAnchor.constraint(equalTo: disclaimerLabel.bottomAnchor),
+            readMoreButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             readMoreButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
