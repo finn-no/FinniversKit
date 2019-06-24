@@ -85,6 +85,10 @@ extension MessageFormToolbar: UICollectionViewDelegateFlowLayout {
 
         return UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
     }
+
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
 }
 
 extension MessageFormToolbar: UICollectionViewDataSource {
@@ -117,17 +121,28 @@ extension MessageFormToolbar: UICollectionViewDataSource {
     }
 }
 
-// MARK: - MessageFormToolbarCell
+// MARK: - MessageFormTemplateCell
 
 private class MessageFormTemplateCell: UICollectionViewCell {
 
     // MARK: - UI properties
+
+    private lazy var button: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setBackgroundColor(color: .toothPaste, forState: .normal)
+        button.setBackgroundColor(color: .secondaryBlue, forState: .highlighted)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 4
+        button.clipsToBounds = true
+        return button
+    }()
 
     private lazy var label: Label = {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 3
         label.textAlignment = .center
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
 
@@ -144,10 +159,10 @@ private class MessageFormTemplateCell: UICollectionViewCell {
     }
 
     private func setup() {
-        contentView.layer.cornerRadius = 4
-        contentView.backgroundColor = .toothPaste
+        contentView.addSubview(button)
+        button.fillInSuperview()
 
-        contentView.addSubview(label)
+        button.addSubview(label)
         label.fillInSuperview(margin: .smallSpacing)
     }
 
@@ -166,8 +181,18 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
 
     // MARK: - UI properties
 
+    private lazy var button: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setBackgroundColor(color: .toothPaste, forState: .normal)
+        button.setBackgroundColor(color: .secondaryBlue, forState: .highlighted)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = MessageFormCustomizeCell.size.width / 2
+        button.clipsToBounds = true
+        return button
+    }()
+
     private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(image: .init(named: .plus))
+        let imageView = UIImageView(image: UIImage(named: .plus))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .clear
         return imageView
@@ -186,10 +211,28 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
     }
 
     private func setup() {
-        contentView.layer.cornerRadius = MessageFormCustomizeCell.size.width / 2
-        contentView.backgroundColor = .toothPaste
+        contentView.addSubview(button)
+        button.fillInSuperview()
 
-        contentView.addSubview(imageView)
+        button.addSubview(imageView)
         imageView.fillInSuperview()
+    }
+}
+
+// MARK: - Private extensions
+
+private extension UIButton {
+    func setBackgroundColor(color: UIColor, forState: UIControl.State) {
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        guard let context = UIGraphicsGetCurrentContext() else {
+            UIGraphicsEndImageContext()
+            return
+        }
+
+        context.setFillColor(color.cgColor)
+        context.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+        let colorImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.setBackgroundImage(colorImage, for: forState)
     }
 }
