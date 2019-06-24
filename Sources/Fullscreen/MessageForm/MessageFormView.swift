@@ -17,17 +17,23 @@ class MessageFormView: UIView {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.text = viewModel.transparencyText
         return label
     }()
 
     private lazy var transparencyLabelHeightConstraint = transparencyLabel.heightAnchor.constraint(equalToConstant: 0)
 
     private lazy var toolbar: MessageFormToolbar = {
-        let toolbar = MessageFormToolbar(withAutoLayout: true)
+        let toolbar = MessageFormToolbar(viewModel: viewModel)
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
         return toolbar
     }()
 
     private lazy var toolbarBottomConstraint = toolbar.bottomAnchor.constraint(equalTo: bottomAnchor)
+
+    // MARK: - Private properties
+
+    private let viewModel: MessageFormViewModel
 
     // MARK: - Init
 
@@ -35,8 +41,9 @@ class MessageFormView: UIView {
         fatalError()
     }
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    required init(viewModel: MessageFormViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
         setup()
     }
 
@@ -69,12 +76,6 @@ class MessageFormView: UIView {
 
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-
-        TEMPORARY_SETUP()
-    }
-
-    private func TEMPORARY_SETUP() {
-        transparencyLabel.text = "FINN.no forebeholder seg retten til å kontrollere meldinger og stoppe useriøs e-post."
     }
 
     // MARK: - Overrides

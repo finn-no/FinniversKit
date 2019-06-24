@@ -8,9 +8,13 @@ class MessageFormViewController: UIViewController {
 
     // MARK: - UI properties
 
-    private lazy var messageFormView = MessageFormView(withAutoLayout: true)
-    private lazy var cancelButton = UIBarButtonItem(title: "Avbryt", style: .plain, target: self, action: #selector(cancelButtonTapped))
-    private lazy var sendButton = UIBarButtonItem(title: "Send", style: .done, target: self, action: #selector(sendButtonTapped))
+    private lazy var messageFormView = MessageFormView(viewModel: viewModel)
+    private lazy var cancelButton = UIBarButtonItem(title: viewModel.cancelButtonText, style: .plain, target: self, action: #selector(cancelButtonTapped))
+    private lazy var sendButton = UIBarButtonItem(title: viewModel.sendButtonText, style: .done, target: self, action: #selector(sendButtonTapped))
+
+    // MARK: - Private properties
+
+    private let viewModel: MessageFormViewModel
 
     // MARK: - Init
 
@@ -18,14 +22,15 @@ class MessageFormViewController: UIViewController {
         fatalError()
     }
 
-    public required init() {
+    public required init(viewModel: MessageFormViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Send melding"
+        title = viewModel.titleText
         view.addSubview(messageFormView)
         messageFormView.fillInSuperview()
 

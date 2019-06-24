@@ -235,7 +235,7 @@ public enum FullscreenViews: String, CaseIterable {
         case .contactFormView:
             return DemoViewController<ContactFormDemoView>()
         case .messageFormView:
-            return MessageFormBottomSheet()
+            return MessageFormBottomSheet(viewModel: MessageFormDemoViewModel.default)
         }
     }
 }

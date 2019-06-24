@@ -8,8 +8,9 @@ public class MessageFormBottomSheet: BottomSheet {
 
     // MARK: - Private properties
 
-    private let messageFormViewController = MessageFormViewController()
+    private let messageFormViewController: MessageFormViewController!
     private let rootController: UINavigationController!
+    private let viewModel: MessageFormViewModel
 
     // MARK: - Init
 
@@ -17,7 +18,9 @@ public class MessageFormBottomSheet: BottomSheet {
         fatalError()
     }
 
-    public required init() {
+    public required init(viewModel: MessageFormViewModel) {
+        self.viewModel = viewModel
+        messageFormViewController = MessageFormViewController(viewModel: viewModel)
         rootController = UINavigationController(rootViewController: messageFormViewController)
         rootController.navigationBar.isTranslucent = false
 
