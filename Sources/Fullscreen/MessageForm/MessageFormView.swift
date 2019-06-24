@@ -39,7 +39,7 @@ class MessageFormView: UIView {
 
         // Adding a low-priority "infinite" height constraint to the TextView
         // makes sure it gets chosen to fill the available vertical space.
-        let textViewHeightConstraint = textView.heightAnchor.constraint(equalToConstant: 3000)
+        let textViewHeightConstraint = textView.heightAnchor.constraint(lessThanOrEqualToConstant: 3000)
         textViewHeightConstraint.priority = .defaultLow
 
         NSLayoutConstraint.activate([
