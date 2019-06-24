@@ -58,6 +58,11 @@ class MessageFormViewController: UIViewController {
         navigationItem.setRightBarButton(sendButton, animated: false)
     }
 
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        _ = messageFormView.becomeFirstResponder()
+    }
+
     // MARK: - Private methods
 
     @objc private func cancelButtonTapped() {

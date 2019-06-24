@@ -62,6 +62,12 @@ class MessageFormView: UIView {
         transparencyLabel.text = "FINN.no forebeholder seg retten til å kontrollere meldinger og stoppe useriøs e-post."
     }
 
+    // MARK: - Overrides
+
+    public override func becomeFirstResponder() -> Bool {
+        return textView.becomeFirstResponder()
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
 
