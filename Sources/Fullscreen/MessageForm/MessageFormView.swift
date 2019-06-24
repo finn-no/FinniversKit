@@ -22,6 +22,13 @@ class MessageFormView: UIView {
 
     private lazy var transparencyLabelHeightConstraint = transparencyLabel.heightAnchor.constraint(equalToConstant: 0)
 
+    private lazy var toolbar: MessageFormToolbar = {
+        let toolbar = MessageFormToolbar(withAutoLayout: true)
+        return toolbar
+    }()
+
+    private lazy var toolbarBottomConstraint = toolbar.bottomAnchor.constraint(equalTo: bottomAnchor)
+
     // MARK: - Init
 
     public required init?(coder aDecoder: NSCoder) {
@@ -36,6 +43,7 @@ class MessageFormView: UIView {
     private func setup() {
         addSubview(textView)
         addSubview(transparencyLabel)
+        addSubview(toolbar)
 
         // Adding a low-priority "infinite" height constraint to the TextView
         // makes sure it gets chosen to fill the available vertical space.
@@ -51,9 +59,16 @@ class MessageFormView: UIView {
 
             transparencyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             transparencyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            transparencyLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
-            transparencyLabelHeightConstraint
+            transparencyLabelHeightConstraint,
+
+            toolbar.leadingAnchor.constraint(equalTo: leadingAnchor),
+            toolbar.trailingAnchor.constraint(equalTo: trailingAnchor),
+            toolbar.topAnchor.constraint(equalTo: transparencyLabel.bottomAnchor, constant: .mediumSpacing),
+            toolbarBottomConstraint
         ])
+
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
 
         TEMPORARY_SETUP()
     }
@@ -75,6 +90,19 @@ class MessageFormView: UIView {
             let width = transparencyLabel.frame.width
             let height = text.height(withConstrainedWidth: width, font: transparencyLabel.font)
             transparencyLabelHeightConstraint.constant = height
+        }
+    }
+
+    // MARK: - Private methods
+
+    @objc func handleKeyboardNotification(_ notification: Notification) {
+        guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
+
+        let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: self)
+
+        UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
+            self?.toolbarBottomConstraint.constant = -keyboardIntersection
+            self?.layoutIfNeeded()
         }
     }
 }

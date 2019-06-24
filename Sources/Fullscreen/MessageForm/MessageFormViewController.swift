@@ -4,31 +4,6 @@
 
 import UIKit
 
-public class MessageFormBottomSheet: BottomSheet {
-
-    // MARK: - Private properties
-
-    private let messageFormViewController = MessageFormViewController()
-    private let rootController: UINavigationController!
-
-    // MARK: - Init
-
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
-
-    public required init() {
-        rootController = UINavigationController(rootViewController: messageFormViewController)
-        rootController.navigationBar.isTranslucent = false
-
-        super.init(rootViewController: rootController, draggableArea: .navigationBar)
-    }
-
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-}
-
 class MessageFormViewController: UIViewController {
 
     // MARK: - UI properties
