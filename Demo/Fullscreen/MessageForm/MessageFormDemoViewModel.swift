@@ -52,7 +52,7 @@ extension MessageFormDemoViewModel {
                                         titleText: "Send melding",
                                         sendButtonText: "Send",
                                         cancelButtonText: "Avbryt",
-                                        transparencyText: "FINN.no forebeholder seg retten til å kontrollere meldinger og stoppe useriøs e-post.",
+                                        transparencyText: "FINN.no forbeholder seg retten til å kontrollere meldinger og stoppe useriøs e-post.",
                                         messageTemplates: [
                                             "Det ser ut som du prøver å selge noe på FINN 📎",
                                             "Hei! Jeg er interessert hvis denne fortsatt er tilgjengelig 🙂",
