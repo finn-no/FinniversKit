@@ -5,6 +5,9 @@
 import Foundation
 
 public protocol MessageFormViewModel: AnyObject {
+    var showTemplateToolbar: Bool { get }
+    var showTemplateCustomizationButton: Bool { get }
+
     var titleText: String { get }
     var sendButtonText: String { get }
     var cancelButtonText: String { get }

@@ -8,13 +8,15 @@ class MessageFormViewController: UIViewController {
 
     // MARK: - UI properties
 
+    private lazy var wrapperView = UIView(withAutoLayout: true)
+    private lazy var wrapperBottomConstraint = wrapperView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+
     private lazy var messageFormView: MessageFormView = {
         let view = MessageFormView(viewModel: viewModel)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    private lazy var toolbarBottomConstraint = toolbar.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     private lazy var toolbar: MessageFormToolbar = {
         let toolbar = MessageFormToolbar(viewModel: viewModel)
         toolbar.translatesAutoresizingMaskIntoConstraints = false
@@ -49,28 +51,39 @@ class MessageFormViewController: UIViewController {
         navigationItem.setLeftBarButton(cancelButton, animated: false)
         navigationItem.setRightBarButton(sendButton, animated: false)
 
-        view.addSubview(messageFormView)
-        view.addSubview(toolbar)
+        view.addSubview(wrapperView)
+        wrapperView.addSubview(messageFormView)
+
+        let messageFormBottomConstraint: NSLayoutConstraint
+
+        if viewModel.showTemplateToolbar {
+            messageFormBottomConstraint = messageFormView.bottomAnchor.constraint(equalTo: toolbar.topAnchor, constant: -.mediumSpacing)
+
+            toolbar.showCustomizeButton = viewModel.showTemplateCustomizationButton
+            wrapperView.addSubview(toolbar)
+            NSLayoutConstraint.activate([
+                toolbar.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+                toolbar.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
+                toolbar.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
+            ])
+        } else {
+            messageFormBottomConstraint = messageFormView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -.mediumSpacing)
+        }
 
         NSLayoutConstraint.activate([
-            messageFormView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            messageFormView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            messageFormView.topAnchor.constraint(equalTo: view.topAnchor),
+            messageFormView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+            messageFormView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
+            messageFormView.topAnchor.constraint(equalTo: wrapperView.topAnchor),
+            messageFormBottomConstraint,
 
-            toolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            toolbar.topAnchor.constraint(equalTo: messageFormView.bottomAnchor, constant: .mediumSpacing),
-            toolbarBottomConstraint
+            wrapperView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            wrapperView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            wrapperView.topAnchor.constraint(equalTo: view.topAnchor),
+            wrapperBottomConstraint
         ])
 
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleKeyboardNotification(_:)),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleKeyboardNotification(_:)),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -94,7 +107,7 @@ class MessageFormViewController: UIViewController {
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: view)
 
         UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
-            self?.toolbarBottomConstraint.constant = -keyboardIntersection
+            self?.wrapperBottomConstraint.constant = -keyboardIntersection
             self?.view.layoutIfNeeded()
         }
     }

@@ -5,6 +5,9 @@
 import FinniversKit
 
 class MessageFormDemoViewModel: MessageFormViewModel {
+    let showTemplateToolbar: Bool
+    let showTemplateCustomizationButton: Bool
+
     let titleText: String
     let sendButtonText: String
     let cancelButtonText: String
@@ -16,7 +19,9 @@ class MessageFormDemoViewModel: MessageFormViewModel {
     let replaceAlertReplaceActionText: String
     let replaceAlertCancelActionText: String
 
-    init(titleText: String,
+    init(showTemplateToolbar: Bool,
+         showTemplateCustomizationButton: Bool,
+         titleText: String,
          sendButtonText: String,
          cancelButtonText: String,
          transparencyText: String,
@@ -26,6 +31,8 @@ class MessageFormDemoViewModel: MessageFormViewModel {
          replaceAlertReplaceActionText: String,
          replaceAlertCancelActionText: String
     ) {
+        self.showTemplateToolbar = showTemplateToolbar
+        self.showTemplateCustomizationButton = showTemplateCustomizationButton
         self.titleText = titleText
         self.sendButtonText = sendButtonText
         self.cancelButtonText = cancelButtonText
@@ -40,7 +47,9 @@ class MessageFormDemoViewModel: MessageFormViewModel {
 
 extension MessageFormDemoViewModel {
     static var `default`: MessageFormDemoViewModel {
-        return MessageFormDemoViewModel(titleText: "Send melding",
+        return MessageFormDemoViewModel(showTemplateToolbar: true,
+                                        showTemplateCustomizationButton: false,
+                                        titleText: "Send melding",
                                         sendButtonText: "Send",
                                         cancelButtonText: "Avbryt",
                                         transparencyText: "FINN.no forebeholder seg retten til å kontrollere meldinger og stoppe useriøs e-post.",
