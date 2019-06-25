@@ -4,12 +4,24 @@
 
 import FinniversKit
 
-struct MessageFormDemoViewModel: MessageFormViewModel {
+class MessageFormDemoViewModel: MessageFormViewModel {
     let titleText: String
     let sendButtonText: String
     let cancelButtonText: String
     let transparencyText: String
     let messageTemplates: [String]
+
+    init(titleText: String,
+         sendButtonText: String,
+         cancelButtonText: String,
+         transparencyText: String,
+         messageTemplates: [String]) {
+        self.titleText = titleText
+        self.sendButtonText = sendButtonText
+        self.cancelButtonText = cancelButtonText
+        self.transparencyText = transparencyText
+        self.messageTemplates = messageTemplates
+    }
 }
 
 extension MessageFormDemoViewModel {

@@ -4,7 +4,7 @@
 
 import Foundation
 
-public protocol MessageFormViewModel {
+public protocol MessageFormViewModel: AnyObject {
     var titleText: String { get }
     var sendButtonText: String { get }
     var cancelButtonText: String { get }

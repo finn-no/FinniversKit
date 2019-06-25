@@ -6,6 +6,13 @@ import Foundation
 
 class MessageFormView: UIView {
 
+    // MARK: - Internal properties
+
+    var text: String? {
+        get { return textView.text }
+        set { textView.text = newValue }
+    }
+
     // MARK: - UI properties
 
     private lazy var textView: TextView = {
@@ -22,14 +29,6 @@ class MessageFormView: UIView {
     }()
 
     private lazy var transparencyLabelHeightConstraint = transparencyLabel.heightAnchor.constraint(equalToConstant: 0)
-
-    private lazy var toolbar: MessageFormToolbar = {
-        let toolbar = MessageFormToolbar(viewModel: viewModel)
-        toolbar.translatesAutoresizingMaskIntoConstraints = false
-        return toolbar
-    }()
-
-    private lazy var toolbarBottomConstraint = toolbar.bottomAnchor.constraint(equalTo: bottomAnchor)
 
     // MARK: - Private properties
 
@@ -50,7 +49,6 @@ class MessageFormView: UIView {
     private func setup() {
         addSubview(textView)
         addSubview(transparencyLabel)
-        addSubview(toolbar)
 
         // Adding a low-priority "infinite" height constraint to the TextView
         // makes sure it gets chosen to fill the available vertical space.
@@ -66,16 +64,9 @@ class MessageFormView: UIView {
 
             transparencyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             transparencyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            transparencyLabelHeightConstraint,
-
-            toolbar.leadingAnchor.constraint(equalTo: leadingAnchor),
-            toolbar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            toolbar.topAnchor.constraint(equalTo: transparencyLabel.bottomAnchor, constant: .mediumSpacing),
-            toolbarBottomConstraint
+            transparencyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            transparencyLabelHeightConstraint
         ])
-
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 
     // MARK: - Overrides
@@ -91,19 +82,6 @@ class MessageFormView: UIView {
             let width = transparencyLabel.frame.width
             let height = text.height(withConstrainedWidth: width, font: transparencyLabel.font)
             transparencyLabelHeightConstraint.constant = height
-        }
-    }
-
-    // MARK: - Private methods
-
-    @objc func handleKeyboardNotification(_ notification: Notification) {
-        guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
-
-        let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: self)
-
-        UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
-            self?.toolbarBottomConstraint.constant = -keyboardIntersection
-            self?.layoutIfNeeded()
         }
     }
 }

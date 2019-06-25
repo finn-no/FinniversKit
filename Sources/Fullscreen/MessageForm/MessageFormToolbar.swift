@@ -4,6 +4,10 @@
 
 import Foundation
 
+protocol MessageFormToolbarDelegate: AnyObject {
+    func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: String)
+}
+
 class MessageFormToolbar: UIView {
 
     // MARK: - UI properties
@@ -23,6 +27,10 @@ class MessageFormToolbar: UIView {
         view.contentInset = UIEdgeInsets(top: 0, leading: .mediumLargeSpacing, bottom: 0, trailing: .smallSpacing)
         return view
     }()
+
+    // MARK: - Internal properties
+
+    weak var delegate: MessageFormToolbarDelegate?
 
     // MARK: - Private properties
 
@@ -113,7 +121,8 @@ extension MessageFormToolbar: UICollectionViewDataSource {
             return collectionView.dequeue(MessageFormCustomizeCell.self, for: indexPath)
         case 1:
             let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
-            cell.configure(withText: viewModel.messageTemplates[safe: indexPath.row] ?? "")
+            cell.configure(withText: viewModel.messageTemplates[safe: indexPath.row] ?? "", index: indexPath.row)
+            cell.delegate = self
             return cell
         default:
             fatalError("Unexpected section: \(indexPath.section)")
@@ -121,7 +130,21 @@ extension MessageFormToolbar: UICollectionViewDataSource {
     }
 }
 
+extension MessageFormToolbar: MessageFormTemplateCellDelegate {
+    fileprivate func messageFormTemplateCellWasTapped(_ cell: MessageFormTemplateCell) {
+        guard let messageTemplate = viewModel.messageTemplates[safe: cell.index] else {
+            return
+        }
+
+        delegate?.messageFormToolbar(self, didSelectMessageTemplate: messageTemplate)
+    }
+}
+
 // MARK: - MessageFormTemplateCell
+
+private protocol MessageFormTemplateCellDelegate: AnyObject {
+    func messageFormTemplateCellWasTapped(_ cell: MessageFormTemplateCell)
+}
 
 private class MessageFormTemplateCell: UICollectionViewCell {
 
@@ -134,6 +157,7 @@ private class MessageFormTemplateCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 4
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -145,6 +169,11 @@ private class MessageFormTemplateCell: UICollectionViewCell {
         label.lineBreakMode = .byWordWrapping
         return label
     }()
+
+    // MARK: - Internal properties
+
+    weak var delegate: MessageFormTemplateCellDelegate?
+    private(set) var index: Int = 0
 
     // MARK: - Init
 
@@ -168,8 +197,15 @@ private class MessageFormTemplateCell: UICollectionViewCell {
 
     // MARK: - Internal methods
 
-    func configure(withText text: String) {
+    func configure(withText text: String, index: Int) {
         label.text = text
+        self.index = index
+    }
+
+    // MARK: - Private methods
+
+    @objc private func buttonTapped() {
+        delegate?.messageFormTemplateCellWasTapped(self)
     }
 }
 
