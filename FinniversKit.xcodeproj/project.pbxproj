@@ -204,7 +204,7 @@
 		8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */; };
 		8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */; };
 		8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85922C0E5FF00ED671C /* MessageFormDemoViewModel.swift */; };
-		8908E85E22C21A2300ED671C /* MessageFormDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85B22C211D000ED671C /* MessageFormDelegate.swift */; };
+		8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */; };
 		895175902248CF79008003FB /* StepIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951758F2248CF79008003FB /* StepIndicator.swift */; };
 		895175932248CFD4008003FB /* StepIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895175922248CFD4008003FB /* StepIndicatorDemoView.swift */; };
 		895175952248D4D1008003FB /* StepDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895175942248D4D1008003FB /* StepDot.swift */; };
@@ -610,7 +610,7 @@
 		8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormBottomSheet.swift; sourceTree = "<group>"; };
 		8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewModel.swift; sourceTree = "<group>"; };
 		8908E85922C0E5FF00ED671C /* MessageFormDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormDemoViewModel.swift; sourceTree = "<group>"; };
-		8908E85B22C211D000ED671C /* MessageFormDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormDelegate.swift; sourceTree = "<group>"; };
+		8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormTemplateState.swift; sourceTree = "<group>"; };
 		8951758F2248CF79008003FB /* StepIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StepIndicator.swift; path = Sources/Components/Broadcast/StepIndicator.swift; sourceTree = SOURCE_ROOT; };
 		895175922248CFD4008003FB /* StepIndicatorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepIndicatorDemoView.swift; sourceTree = "<group>"; };
 		895175942248D4D1008003FB /* StepDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDot.swift; sourceTree = "<group>"; };
@@ -1669,7 +1669,7 @@
 				8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */,
 				8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */,
 				8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */,
-				8908E85B22C211D000ED671C /* MessageFormDelegate.swift */,
+				8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */,
 			);
 			path = MessageForm;
 			sourceTree = "<group>";
@@ -3376,7 +3376,7 @@
 				43BACE6A21117D430052114C /* ReviewView.swift in Sources */,
 				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
 				08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */,
-				8908E85E22C21A2300ED671C /* MessageFormDelegate.swift in Sources */,
+				8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */,

@@ -4,6 +4,11 @@
 
 import UIKit
 
+protocol MessageFormViewControllerDelegate: AnyObject {
+    func messageFormViewControllerDidCancel(_ viewController: MessageFormViewController)
+    func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, templateState: MessageFormTemplateState)
+}
+
 class MessageFormViewController: UIViewController {
 
     // MARK: - UI properties
@@ -30,7 +35,7 @@ class MessageFormViewController: UIViewController {
 
     // MARK: - Internal properties
 
-    weak var delegate: MessageFormDelegate?
+    weak var delegate: MessageFormViewControllerDelegate?
 
     // MARK: - Private properties
 
@@ -100,7 +105,7 @@ class MessageFormViewController: UIViewController {
     // MARK: - Private methods
 
     @objc private func cancelButtonTapped() {
-        delegate?.messageFormDidCancel()
+        delegate?.messageFormViewControllerDidCancel(self)
     }
 
     @objc private func sendButtonTapped() {
@@ -121,7 +126,7 @@ class MessageFormViewController: UIViewController {
             }
         }
 
-        delegate?.messageFormDidFinish(withText: messageText, templateState: templateState)
+        delegate?.messageFormViewController(self, didFinishWithText: messageText, templateState: templateState)
     }
 
     @objc func handleKeyboardNotification(_ notification: Notification) {

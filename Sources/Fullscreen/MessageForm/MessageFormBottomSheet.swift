@@ -4,11 +4,16 @@
 
 import Foundation
 
+public protocol MessageFormBottomSheetDelegate: AnyObject {
+    func messageFormBottomSheetDidCancel(_ form: MessageFormBottomSheet)
+    func messageFormBottomSheet(_ form: MessageFormBottomSheet, didFinishWithText text: String, templateState: MessageFormTemplateState)
+}
+
 public class MessageFormBottomSheet: BottomSheet {
 
     // MARK: - Public properties
 
-    public weak var messageFormDelegate: MessageFormDelegate?
+    public weak var messageFormDelegate: MessageFormBottomSheetDelegate?
 
     // MARK: - Private properties
 
@@ -32,13 +37,13 @@ public class MessageFormBottomSheet: BottomSheet {
     }
 }
 
-extension MessageFormBottomSheet: MessageFormDelegate {
-    public func messageFormDidCancel() {
-        messageFormDelegate?.messageFormDidCancel()
+extension MessageFormBottomSheet: MessageFormViewControllerDelegate {
+    func messageFormViewControllerDidCancel(_ viewController: MessageFormViewController) {
+        messageFormDelegate?.messageFormBottomSheetDidCancel(self)
     }
 
-    public func messageFormDidFinish(withText text: String, templateState: MessageFormTemplateState) {
-        messageFormDelegate?.messageFormDidFinish(withText: text, templateState: templateState)
+    func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, templateState: MessageFormTemplateState) {
+        messageFormDelegate?.messageFormBottomSheet(self, didFinishWithText: text, templateState: templateState)
     }
 }
 
