@@ -28,6 +28,7 @@ class MessageFormViewController: UIViewController {
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
+    private var lastEnteredTemplate: String?
 
     // MARK: - Init
 
@@ -101,6 +102,26 @@ class MessageFormViewController: UIViewController {
 
 extension MessageFormViewController: MessageFormToolbarDelegate {
     func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: String) {
-        messageFormView.text = template
+        let currentText = (messageFormView.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let lastTemplate = (lastEnteredTemplate ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if currentText == lastTemplate || currentText.count == 0 {
+            messageFormView.text = template
+            lastEnteredTemplate = template
+        } else {
+            let alertController = UIAlertController(title: viewModel.replaceAlertTitle,
+                                                    message: viewModel.replaceAlertMessage,
+                                                    preferredStyle: .actionSheet)
+
+            let cancelAction = UIAlertAction(title: viewModel.replaceAlertCancelActionText, style: .cancel)
+            let replaceAction = UIAlertAction(title: viewModel.replaceAlertReplaceActionText, style: .default, handler: { [weak self] _ in
+                self?.messageFormView.text = template
+                self?.lastEnteredTemplate = template
+            })
+
+            alertController.addAction(replaceAction)
+            alertController.addAction(cancelAction)
+            present(alertController, animated: true)
+        }
     }
 }

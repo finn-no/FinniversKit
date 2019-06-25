@@ -4,19 +4,17 @@
 
 import Foundation
 
+protocol MessageFormViewDelegate: AnyObject {
+    func messageFormView(_ view: MessageFormView, didEditText text: String?)
+}
+
 class MessageFormView: UIView {
-
-    // MARK: - Internal properties
-
-    var text: String? {
-        get { return textView.text }
-        set { textView.text = newValue }
-    }
 
     // MARK: - UI properties
 
     private lazy var textView: TextView = {
         let textView = TextView(withAutoLayout: true)
+        textView.delegate = self
         return textView
     }()
 
@@ -29,6 +27,15 @@ class MessageFormView: UIView {
     }()
 
     private lazy var transparencyLabelHeightConstraint = transparencyLabel.heightAnchor.constraint(equalToConstant: 0)
+
+    // MARK: - Internal properties
+
+    weak var delegate: MessageFormViewDelegate?
+
+    var text: String? {
+        get { return textView.text }
+        set { textView.text = newValue }
+    }
 
     // MARK: - Private properties
 
@@ -83,5 +90,11 @@ class MessageFormView: UIView {
             let height = text.height(withConstrainedWidth: width, font: transparencyLabel.font)
             transparencyLabelHeightConstraint.constant = height
         }
+    }
+}
+
+extension MessageFormView: TextViewDelegate {
+    func textViewDidChange(_ textView: TextView) {
+        // TODO: REMOVE?
     }
 }

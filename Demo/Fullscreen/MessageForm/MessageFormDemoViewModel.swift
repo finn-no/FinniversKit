@@ -11,16 +11,30 @@ class MessageFormDemoViewModel: MessageFormViewModel {
     let transparencyText: String
     let messageTemplates: [String]
 
+    let replaceAlertTitle: String
+    let replaceAlertMessage: String
+    let replaceAlertReplaceActionText: String
+    let replaceAlertCancelActionText: String
+
     init(titleText: String,
          sendButtonText: String,
          cancelButtonText: String,
          transparencyText: String,
-         messageTemplates: [String]) {
+         messageTemplates: [String],
+         replaceAlertTitle: String,
+         replaceAlertMessage: String,
+         replaceAlertReplaceActionText: String,
+         replaceAlertCancelActionText: String
+    ) {
         self.titleText = titleText
         self.sendButtonText = sendButtonText
         self.cancelButtonText = cancelButtonText
         self.transparencyText = transparencyText
         self.messageTemplates = messageTemplates
+        self.replaceAlertTitle = replaceAlertTitle
+        self.replaceAlertMessage = replaceAlertMessage
+        self.replaceAlertReplaceActionText = replaceAlertReplaceActionText
+        self.replaceAlertCancelActionText = replaceAlertCancelActionText
     }
 }
 
@@ -35,6 +49,11 @@ extension MessageFormDemoViewModel {
                                             "Hei! Jeg er interessert hvis denne fortsatt er tilgjengelig 🙂",
                                             "Hei! Er prisen diskuterbar? 💰",
                                             "Hei! Jeg kan hente denne i morgen hvis det passer for deg 🚛"
-                                        ])
+                                        ],
+                                        replaceAlertTitle: "Erstatte innhold",
+                                        replaceAlertMessage: "Vil du erstatte det du allerede har skrevet?",
+                                        replaceAlertReplaceActionText: "Erstatt",
+                                        replaceAlertCancelActionText: "Avbryt"
+        )
     }
 }
