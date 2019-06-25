@@ -24,13 +24,21 @@ class MessageFormToolbar: UIView {
         view.delegate = self
         view.backgroundColor = .clear
         view.showsHorizontalScrollIndicator = false
-        view.contentInset = UIEdgeInsets(top: 0, leading: .mediumLargeSpacing, bottom: 0, trailing: .smallSpacing)
+        view.contentInset = UIEdgeInsets(top: 0, leading: .mediumSpacing, bottom: 0, trailing: .mediumSpacing)
         return view
     }()
 
     // MARK: - Internal properties
 
     weak var delegate: MessageFormToolbarDelegate?
+
+    var showCustomizeButton: Bool = false {
+        didSet {
+            if showCustomizeButton != oldValue {
+                collectionView.reloadData()
+            }
+        }
+    }
 
     // MARK: - Private properties
 
@@ -88,7 +96,8 @@ extension MessageFormToolbar: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if section == 0 {
-            return UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: .mediumLargeSpacing)
+            let trailingMargin = showCustomizeButton ? CGFloat.mediumSpacing : 0
+            return UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: trailingMargin)
         }
 
         return UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
@@ -107,7 +116,7 @@ extension MessageFormToolbar: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 1
+            return showCustomizeButton ? 1 : 0
         case 1:
             return viewModel.messageTemplates.count
         default:
