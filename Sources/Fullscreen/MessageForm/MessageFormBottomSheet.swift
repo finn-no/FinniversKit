@@ -34,6 +34,8 @@ public class MessageFormBottomSheet: BottomSheet {
         rootController.navigationBar.isTranslucent = false
 
         super.init(rootViewController: rootController, height: .messageFormHeight, draggableArea: .navigationBar)
+
+        messageFormViewController.delegate = self
     }
 }
 
