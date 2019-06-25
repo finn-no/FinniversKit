@@ -14,6 +14,7 @@ class MessageFormViewController: UIViewController {
     private lazy var messageFormView: MessageFormView = {
         let view = MessageFormView(viewModel: viewModel)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
 
@@ -54,6 +55,7 @@ class MessageFormViewController: UIViewController {
 
         navigationItem.setLeftBarButton(cancelButton, animated: false)
         navigationItem.setRightBarButton(sendButton, animated: false)
+        sendButton.isEnabled = false
 
         view.addSubview(wrapperView)
         wrapperView.addSubview(messageFormView)
@@ -102,13 +104,9 @@ class MessageFormViewController: UIViewController {
     }
 
     @objc private func sendButtonTapped() {
-        let messageText = (messageFormView.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        guard messageText.count > 0 else {
-            return
-        }
-
-        let templateState: MessageFormTemplateState
+        let messageText = messageFormView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let lastTemplate = lastEnteredTemplate?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let templateState: MessageFormTemplateState
 
         switch lastTemplate {
         case messageText:
@@ -138,9 +136,15 @@ class MessageFormViewController: UIViewController {
     }
 }
 
+extension MessageFormViewController: MessageFormViewDelegate {
+    func messageFormView(_ view: MessageFormView, didEditMessageText text: String) {
+        sendButton.isEnabled = text.count > 0
+    }
+}
+
 extension MessageFormViewController: MessageFormToolbarDelegate {
     func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: String) {
-        let currentText = (messageFormView.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let currentText = messageFormView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let lastTemplate = (lastEnteredTemplate ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
 
         if currentText == lastTemplate || currentText.count == 0 {

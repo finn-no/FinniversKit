@@ -5,7 +5,7 @@
 import Foundation
 
 protocol MessageFormViewDelegate: AnyObject {
-    func messageFormView(_ view: MessageFormView, didEditText text: String?)
+    func messageFormView(_ view: MessageFormView, didEditMessageText text: String)
 }
 
 class MessageFormView: UIView {
@@ -32,9 +32,14 @@ class MessageFormView: UIView {
 
     weak var delegate: MessageFormViewDelegate?
 
-    var text: String? {
-        get { return textView.text }
-        set { textView.text = newValue }
+    var text: String {
+        get {
+            return textView.text ?? ""
+        }
+        set {
+            textView.text = newValue
+            delegate?.messageFormView(self, didEditMessageText: newValue)
+        }
     }
 
     // MARK: - Private properties
@@ -95,6 +100,6 @@ class MessageFormView: UIView {
 
 extension MessageFormView: TextViewDelegate {
     func textViewDidChange(_ textView: TextView) {
-        // TODO: REMOVE?
+        delegate?.messageFormView(self, didEditMessageText: text)
     }
 }
