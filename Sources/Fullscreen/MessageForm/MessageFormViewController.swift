@@ -27,6 +27,10 @@ class MessageFormViewController: UIViewController {
     private lazy var cancelButton = UIBarButtonItem(title: viewModel.cancelButtonText, style: .plain, target: self, action: #selector(cancelButtonTapped))
     private lazy var sendButton = UIBarButtonItem(title: viewModel.sendButtonText, style: .done, target: self, action: #selector(sendButtonTapped))
 
+    // MARK: - Internal properties
+
+    weak var delegate: MessageFormDelegate?
+
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
@@ -94,11 +98,32 @@ class MessageFormViewController: UIViewController {
     // MARK: - Private methods
 
     @objc private func cancelButtonTapped() {
-
+        delegate?.messageFormDidCancel()
     }
 
     @objc private func sendButtonTapped() {
+        let messageText = (messageFormView.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        guard messageText.count > 0 else {
+            return
+        }
 
+        let templateState: MessageFormTemplateState
+        let lastTemplate = lastEnteredTemplate?.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        switch lastTemplate {
+        case messageText:
+            templateState = .template
+        case .none:
+            templateState = .custom
+        case .some(let val):
+            if messageText.contains(val) {
+                templateState = .modifiedTemplate
+            } else {
+                templateState = .custom
+            }
+        }
+
+        delegate?.messageFormDidFinish(withText: messageText, templateState: templateState)
     }
 
     @objc func handleKeyboardNotification(_ notification: Notification) {

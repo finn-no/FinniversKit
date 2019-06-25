@@ -6,6 +6,10 @@ import Foundation
 
 public class MessageFormBottomSheet: BottomSheet {
 
+    // MARK: - Public properties
+
+    public weak var messageFormDelegate: MessageFormDelegate?
+
     // MARK: - Private properties
 
     private let messageFormViewController: MessageFormViewController!
@@ -26,9 +30,15 @@ public class MessageFormBottomSheet: BottomSheet {
 
         super.init(rootViewController: rootController, height: .messageFormHeight, draggableArea: .navigationBar)
     }
+}
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+extension MessageFormBottomSheet: MessageFormDelegate {
+    public func messageFormDidCancel() {
+        messageFormDelegate?.messageFormDidCancel()
+    }
+
+    public func messageFormDidFinish(withText text: String, templateState: MessageFormTemplateState) {
+        messageFormDelegate?.messageFormDidFinish(withText: text, templateState: templateState)
     }
 }
 
