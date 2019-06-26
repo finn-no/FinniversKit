@@ -5,8 +5,16 @@
 import UIKit
 
 public protocol BottomSheetDelegate: AnyObject {
+    /// Called by the BottomSheet *throughout* actions intended to dismiss the BottomSheet.
+    /// The action performed by the user may not end in dismissal. The delegate should
+    /// be consistent in the returned value.
     func bottomSheetCanDismiss(_ bottomSheet: BottomSheet) -> Bool
+
+    /// Called by the BottomSheet after the user has performed an action that would normally
+    /// cause the BottomSheet to be dismissed, but `bottomSheetCanDismiss(:)` prevented this
+    /// from happening.
     func bottomSheetDidAttemptToDismiss(_ bottomSheet: BottomSheet)
+
     func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction)
 }
 
