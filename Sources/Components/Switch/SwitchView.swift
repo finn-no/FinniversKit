@@ -65,6 +65,11 @@ public class SwitchView: UIView {
 
     public weak var delegate: SwitchDelegate?
 
+    public var isOn: Bool {
+        get { return mySwitch.isOn }
+        set { mySwitch.isOn = newValue }
+    }
+
     // MARK: - Setup
 
     public override init(frame: CGRect) {

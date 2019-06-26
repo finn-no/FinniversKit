@@ -7,3 +7,15 @@ public protocol SwitchViewModel {
     var onDescriptionText: String { get }
     var offDescriptionText: String { get }
 }
+
+public struct SwitchViewDefaultModel: SwitchViewModel {
+    public let headerText: String
+    public let onDescriptionText: String
+    public let offDescriptionText: String
+
+    public init(headerText: String, onDescriptionText: String, offDescriptionText: String) {
+        self.headerText = headerText
+        self.onDescriptionText = onDescriptionText
+        self.offDescriptionText = offDescriptionText
+    }
+}

@@ -5,6 +5,16 @@
 import UIKit
 
 public protocol BottomSheetDelegate: AnyObject {
+    /// Called by the BottomSheet *throughout* actions intended to dismiss the BottomSheet.
+    /// The action performed by the user may not end in dismissal. The delegate should
+    /// be consistent in the returned value.
+    func bottomSheetShouldDismiss(_ bottomSheet: BottomSheet) -> Bool
+
+    /// Called by the BottomSheet after the user has performed an action that would normally
+    /// cause the BottomSheet to be dismissed, but `bottomSheetShouldDismiss(:)` prevented this
+    /// from happening.
+    func bottomSheetDidCancelDismiss(_ bottomSheet: BottomSheet)
+
     func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction)
 }
 
@@ -162,6 +172,14 @@ public class BottomSheet: UIViewController {
 // MARK: - BottomSheetDismissalDelegate
 
 extension BottomSheet: BottomSheetPresentationControllerDelegate {
+    func bottomSheetPresentationControllerShouldDismiss(_ presentationController: BottomSheetPresentationController) -> Bool {
+        return delegate?.bottomSheetShouldDismiss(self) ?? true
+    }
+
+    func bottomSheetPresentationControllerDidCancelDismiss(_ presentationController: BottomSheetPresentationController) {
+        delegate?.bottomSheetDidCancelDismiss(self)
+    }
+
     func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction) {
         delegate?.bottomSheet(self, didDismissBy: action)
     }
