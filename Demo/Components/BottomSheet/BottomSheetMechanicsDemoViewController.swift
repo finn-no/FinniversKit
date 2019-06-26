@@ -264,9 +264,11 @@ extension BottomSheetMechanicsDemoViewController: BottomSheetDelegate {
     }
 
     func bottomSheetDidAttemptToDismiss(_ bottomSheet: BottomSheet) {
+        let alertStyle: UIAlertController.Style = UIDevice.isIPad() ? .alert : .actionSheet
+
         let alertController = UIAlertController(title: "Dismiss?",
                                                 message: "Confirmation required",
-                                                preferredStyle: .actionSheet)
+                                                preferredStyle: alertStyle)
         let cancelAction = UIAlertAction(title: "Don't dismiss", style: .cancel, handler: nil)
         let dismissAction = UIAlertAction(title: "Dismiss", style: .destructive, handler: { _ in
             bottomSheet.state = .dismissed
