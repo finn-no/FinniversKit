@@ -38,11 +38,43 @@ public class MessageFormBottomSheet: BottomSheet {
         messageFormViewController.delegate = self
         delegate = self
     }
+
+    // MARK: - Private methods
+
+    private func dismissWithConfirmationIfNeeded() {
+        if canDismissWithoutConfirmation() {
+            state = .dismissed
+        } else {
+            dismissWithConfirmation()
+        }
+    }
+
+    private func canDismissWithoutConfirmation() -> Bool {
+        return !messageFormViewController.hasUncommittedChanges
+    }
+
+    private func dismissWithConfirmation() {
+        let alertStyle: UIAlertController.Style = UIDevice.isIPad() ? .alert : .actionSheet
+
+        let alertController = UIAlertController(title: viewModel.cancelFormAlertTitle,
+                                                message: viewModel.cancelFormAlertMessage,
+                                                preferredStyle: alertStyle)
+
+        let cancelAction = UIAlertAction(title: viewModel.cancelFormAlertCancelText, style: .cancel, handler: nil)
+        let dismissAction = UIAlertAction(title: viewModel.cancelFormAlertActionText, style: .destructive, handler: { [weak self] _ in
+            self?.state = .dismissed
+        })
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(dismissAction)
+
+        present(alertController, animated: true)
+    }
 }
 
 extension MessageFormBottomSheet: MessageFormViewControllerDelegate {
     func messageFormViewControllerDidCancel(_ viewController: MessageFormViewController) {
-        messageFormDelegate?.messageFormBottomSheetDidCancel(self)
+        dismissWithConfirmationIfNeeded()
     }
 
     func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, templateState: MessageFormTemplateState) {
@@ -51,26 +83,12 @@ extension MessageFormBottomSheet: MessageFormViewControllerDelegate {
 }
 
 extension MessageFormBottomSheet: BottomSheetDelegate {
-    public func bottomSheetCanDismiss(_ bottomSheet: BottomSheet) -> Bool {
-        return !messageFormViewController.hasUncommittedChanges
+    public func bottomSheetShouldDismiss(_ bottomSheet: BottomSheet) -> Bool {
+        return canDismissWithoutConfirmation()
     }
 
-    public func bottomSheetDidAttemptToDismiss(_ bottomSheet: BottomSheet) {
-        let alertStyle: UIAlertController.Style = UIDevice.isIPad() ? .alert : .actionSheet
-
-        let alertController = UIAlertController(title: viewModel.cancelFormAlertTitle,
-                                                message: viewModel.cancelFormAlertMessage,
-                                                preferredStyle: alertStyle)
-
-        let cancelAction = UIAlertAction(title: viewModel.cancelFormAlertCancelText, style: .cancel, handler: nil)
-        let dismissAction = UIAlertAction(title: viewModel.cancelFormAlertActionText, style: .destructive, handler: { _ in
-            bottomSheet.state = .dismissed
-        })
-
-        alertController.addAction(cancelAction)
-        alertController.addAction(dismissAction)
-
-        bottomSheet.present(alertController, animated: true)
+    public func bottomSheetDidCancelDismiss(_ bottomSheet: BottomSheet) {
+        dismissWithConfirmation()
     }
 
     public func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction) {

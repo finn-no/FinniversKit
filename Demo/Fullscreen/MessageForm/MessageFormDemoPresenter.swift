@@ -9,9 +9,7 @@ class MessageFormDemoPresenter {
 }
 
 extension MessageFormDemoPresenter: MessageFormBottomSheetDelegate {
-    func messageFormBottomSheetDidCancel(_ form: MessageFormBottomSheet) {
-        form.state = .dismissed
-    }
+    func messageFormBottomSheetDidCancel(_ form: MessageFormBottomSheet) { }
 
     func messageFormBottomSheet(_ form: MessageFormBottomSheet, didFinishWithText text: String, templateState: MessageFormTemplateState) {
         let alertController = UIAlertController(title: "Message sent!", message: "templateState: \(templateState)\n\n\(text)", preferredStyle: .alert)
