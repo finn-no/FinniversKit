@@ -15,6 +15,8 @@ import UIKit
 **/
 
 protocol BottomSheetPresentationControllerDelegate: class {
+    func bottomSheetPresentationControllerCanDismiss(_ presentationController: BottomSheetPresentationController) -> Bool
+    func bottomSheetPresentationControllerDidAttemptToDismiss(_ presentationController: BottomSheetPresentationController)
     func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction)
     func bottomSheetPresentationControllerDidBeginDrag(_ presentationController: BottomSheetPresentationController)
 }
@@ -146,10 +148,15 @@ private extension BottomSheetPresentationController {
 
     @objc func handleTap() {
         guard stateController.state != .dismissed else { return }
-        stateController.state = .dismissed
-        gestureController?.velocity = .zero
-        dismissAction = .tap
-        presentedViewController.dismiss(animated: true)
+
+        if presentationControllerDelegate?.bottomSheetPresentationControllerCanDismiss(self) ?? true {
+            stateController.state = .dismissed
+            gestureController?.velocity = .zero
+            dismissAction = .tap
+            presentedViewController.dismiss(animated: true)
+        } else {
+            presentationControllerDelegate?.bottomSheetPresentationControllerDidAttemptToDismiss(self)
+        }
     }
 
     func animate(to position: CGPoint, initialVelocity: CGPoint = .zero) {
@@ -185,9 +192,11 @@ extension BottomSheetPresentationController: BottomSheetGestureControllerDelegat
             return
         }
 
+        let newPosition = stateAdjustedPosition(forGestureController: controller)
+
         hasReachExpandedPosition = false
-        dimView.alpha = alphaValue(for: controller.position)
-        constraint?.constant = controller.position.y
+        dimView.alpha = alphaValue(for: newPosition)
+        constraint?.constant = newPosition.y
     }
 
     func bottomSheetGestureControllerDidEndGesture(_ controller: BottomSheetGestureController) {
@@ -195,9 +204,28 @@ extension BottomSheetPresentationController: BottomSheetGestureControllerDelegat
         guard !hasReachExpandedPosition else { return }
 
         if stateController.state == .dismissed {
-            dismissAction = .drag
+            if presentationControllerDelegate?.bottomSheetPresentationControllerCanDismiss(self) ?? true {
+                dismissAction = .drag
+            } else {
+                stateController.state = .compact
+                presentationControllerDelegate?.bottomSheetPresentationControllerDidAttemptToDismiss(self)
+            }
         }
 
         animate(to: stateController.targetPosition, initialVelocity: -controller.velocity)
+    }
+
+    func stateAdjustedPosition(forGestureController controller: BottomSheetGestureController) -> CGPoint {
+        let canDismiss = presentationControllerDelegate?.bottomSheetPresentationControllerCanDismiss(self) ?? true
+        let thresholdPoint = stateController.frame.height - height.compact
+
+        let ycomponent: CGFloat
+        if !canDismiss, controller.position.y >= thresholdPoint {
+            ycomponent = thresholdPoint + (controller.position.y - thresholdPoint) * 0.33
+        } else {
+            ycomponent = controller.position.y
+        }
+
+        return CGPoint(x: controller.position.x, y: ycomponent)
     }
 }

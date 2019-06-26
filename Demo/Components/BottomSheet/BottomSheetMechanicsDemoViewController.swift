@@ -110,6 +110,14 @@ class RootViewController: UIViewController {
 }
 
 class BottomSheetMechanicsDemoViewController: UIViewController {
+    private lazy var requireConfirmationOnDragSwitch: SwitchView = {
+        let switchView = SwitchView(withAutoLayout: true)
+        switchView.model = SwitchViewDefaultModel(headerText: "Confirm Dismiss",
+                                                  onDescriptionText: "Bottom sheets require confirmation before they can be dismissed.",
+                                                  offDescriptionText: "Bottom sheets can be freely dismissed by dragging and tapping.")
+        switchView.isOn = false
+        return switchView
+    }()
 
     private lazy var presentAllDraggableButton: Button = {
         let button = Button(style: .callToAction)
@@ -148,27 +156,32 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .milk
+        view.addSubview(requireConfirmationOnDragSwitch)
         view.addSubview(presentAllDraggableButton)
         view.addSubview(presentNavBarDraggableButton)
         view.addSubview(presentTopAreaDraggableButton)
         view.addSubview(presentCustomDraggableButton)
 
         NSLayoutConstraint.activate([
+            requireConfirmationOnDragSwitch.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
+            requireConfirmationOnDragSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
+            requireConfirmationOnDragSwitch.bottomAnchor.constraint(equalTo: presentAllDraggableButton.topAnchor, constant: -.veryLargeSpacing),
+
             presentAllDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
             presentAllDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            presentAllDraggableButton.bottomAnchor.constraint(equalTo: presentNavBarDraggableButton.topAnchor, constant: -.veryLargeSpacing),
+            presentAllDraggableButton.bottomAnchor.constraint(equalTo: presentNavBarDraggableButton.topAnchor, constant: -.largeSpacing),
 
             presentNavBarDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
             presentNavBarDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            presentNavBarDraggableButton.bottomAnchor.constraint(equalTo: presentTopAreaDraggableButton.topAnchor, constant: -.veryLargeSpacing),
+            presentNavBarDraggableButton.bottomAnchor.constraint(equalTo: presentTopAreaDraggableButton.topAnchor, constant: -.largeSpacing),
 
             presentTopAreaDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
             presentTopAreaDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            presentTopAreaDraggableButton.bottomAnchor.constraint(equalTo: presentCustomDraggableButton.topAnchor, constant: -.veryLargeSpacing),
+            presentTopAreaDraggableButton.bottomAnchor.constraint(equalTo: presentCustomDraggableButton.topAnchor, constant: -.largeSpacing),
 
             presentCustomDraggableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .largeSpacing),
             presentCustomDraggableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.largeSpacing),
-            presentCustomDraggableButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.veryLargeSpacing)
+            presentCustomDraggableButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -.largeSpacing)
         ])
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
@@ -246,6 +259,25 @@ extension BottomSheetMechanicsDemoViewController: RootViewControllerDelegate {
 }
 
 extension BottomSheetMechanicsDemoViewController: BottomSheetDelegate {
+    func bottomSheetCanDismiss(_ bottomSheet: BottomSheet) -> Bool {
+        return !requireConfirmationOnDragSwitch.isOn
+    }
+
+    func bottomSheetDidAttemptToDismiss(_ bottomSheet: BottomSheet) {
+        let alertController = UIAlertController(title: "Dismiss?",
+                                                message: "Confirmation required",
+                                                preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Don't dismiss", style: .cancel, handler: nil)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .destructive, handler: { _ in
+            bottomSheet.state = .dismissed
+        })
+
+        alertController.addAction(dismissAction)
+        alertController.addAction(cancelAction)
+
+        bottomSheet.present(alertController, animated: true)
+    }
+
     func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction) {
         // BottomSheet dismissed.
     }

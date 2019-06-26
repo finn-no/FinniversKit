@@ -5,6 +5,8 @@
 import UIKit
 
 public protocol BottomSheetDelegate: AnyObject {
+    func bottomSheetCanDismiss(_ bottomSheet: BottomSheet) -> Bool
+    func bottomSheetDidAttemptToDismiss(_ bottomSheet: BottomSheet)
     func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction)
 }
 
@@ -162,6 +164,14 @@ public class BottomSheet: UIViewController {
 // MARK: - BottomSheetDismissalDelegate
 
 extension BottomSheet: BottomSheetPresentationControllerDelegate {
+    func bottomSheetPresentationControllerDidAttemptToDismiss(_ presentationController: BottomSheetPresentationController) {
+        delegate?.bottomSheetDidAttemptToDismiss(self)
+    }
+
+    func bottomSheetPresentationControllerCanDismiss(_ presentationController: BottomSheetPresentationController) -> Bool {
+        return delegate?.bottomSheetCanDismiss(self) ?? true
+    }
+
     func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction) {
         delegate?.bottomSheet(self, didDismissBy: action)
     }
