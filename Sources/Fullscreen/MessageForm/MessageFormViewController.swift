@@ -37,6 +37,10 @@ class MessageFormViewController: UIViewController {
 
     weak var delegate: MessageFormViewControllerDelegate?
 
+    var hasUncommittedChanges: Bool {
+        return messageFormView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
+    }
+
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
@@ -160,8 +164,8 @@ extension MessageFormViewController: MessageFormToolbarDelegate {
                                                     message: viewModel.replaceAlertMessage,
                                                     preferredStyle: .actionSheet)
 
-            let cancelAction = UIAlertAction(title: viewModel.replaceAlertCancelActionText, style: .cancel)
-            let replaceAction = UIAlertAction(title: viewModel.replaceAlertReplaceActionText, style: .default, handler: { [weak self] _ in
+            let cancelAction = UIAlertAction(title: viewModel.replaceAlertCancelText, style: .cancel)
+            let replaceAction = UIAlertAction(title: viewModel.replaceAlertActionText, style: .default, handler: { [weak self] _ in
                 self?.messageFormView.text = template
                 self?.lastEnteredTemplate = template
             })

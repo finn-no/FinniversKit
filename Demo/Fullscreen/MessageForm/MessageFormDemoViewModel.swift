@@ -21,6 +21,11 @@ class MessageFormDemoViewModel: MessageFormViewModel {
 
     let replaceAlertTitle = "Erstatte innhold"
     let replaceAlertMessage = "Vil du erstatte det du allerede har skrevet?"
-    let replaceAlertReplaceActionText = "Erstatt"
-    let replaceAlertCancelActionText = "Avbryt"
+    let replaceAlertActionText = "Erstatt"
+    let replaceAlertCancelText = "Avbryt"
+
+    let cancelFormAlertTitle = "Forkast melding"
+    let cancelFormAlertMessage = "Vil du forkaste meldingen du har skrevet?"
+    let cancelFormAlertActionText = "Forkast"
+    let cancelFormAlertCancelText = "Avbryt"
 }

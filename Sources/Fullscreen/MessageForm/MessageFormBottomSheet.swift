@@ -36,7 +36,7 @@ public class MessageFormBottomSheet: BottomSheet {
         super.init(rootViewController: rootController, height: .messageFormHeight, draggableArea: .navigationBar)
 
         messageFormViewController.delegate = self
-        dragDelegate = self
+        delegate = self
     }
 }
 
@@ -50,9 +50,31 @@ extension MessageFormBottomSheet: MessageFormViewControllerDelegate {
     }
 }
 
-extension MessageFormBottomSheet: BottomSheetDragDelegate {
-    public func bottomSheetDidBeginDrag(_ bottomSheet: BottomSheet) {
-        self.state = .expanded
+extension MessageFormBottomSheet: BottomSheetDelegate {
+    public func bottomSheetCanDismiss(_ bottomSheet: BottomSheet) -> Bool {
+        return !messageFormViewController.hasUncommittedChanges
+    }
+
+    public func bottomSheetDidAttemptToDismiss(_ bottomSheet: BottomSheet) {
+        let alertStyle: UIAlertController.Style = UIDevice.isIPad() ? .alert : .actionSheet
+
+        let alertController = UIAlertController(title: viewModel.cancelFormAlertTitle,
+                                                message: viewModel.cancelFormAlertMessage,
+                                                preferredStyle: alertStyle)
+
+        let cancelAction = UIAlertAction(title: viewModel.cancelFormAlertCancelText, style: .cancel, handler: nil)
+        let dismissAction = UIAlertAction(title: viewModel.cancelFormAlertActionText, style: .destructive, handler: { _ in
+            bottomSheet.state = .dismissed
+        })
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(dismissAction)
+
+        bottomSheet.present(alertController, animated: true)
+    }
+
+    public func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction) {
+
     }
 }
 
