@@ -259,11 +259,11 @@ extension BottomSheetMechanicsDemoViewController: RootViewControllerDelegate {
 }
 
 extension BottomSheetMechanicsDemoViewController: BottomSheetDelegate {
-    func bottomSheetCanDismiss(_ bottomSheet: BottomSheet) -> Bool {
+    func bottomSheetShouldDismiss(_ bottomSheet: BottomSheet) -> Bool {
         return !requireConfirmationOnDragSwitch.isOn
     }
 
-    func bottomSheetDidAttemptToDismiss(_ bottomSheet: BottomSheet) {
+    func bottomSheetDidCancelDismiss(_ bottomSheet: BottomSheet) {
         let alertStyle: UIAlertController.Style = UIDevice.isIPad() ? .alert : .actionSheet
 
         let alertController = UIAlertController(title: "Dismiss?",

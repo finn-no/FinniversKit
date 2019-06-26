@@ -15,8 +15,8 @@ import UIKit
 **/
 
 protocol BottomSheetPresentationControllerDelegate: class {
-    func bottomSheetPresentationControllerCanDismiss(_ presentationController: BottomSheetPresentationController) -> Bool
-    func bottomSheetPresentationControllerDidAttemptToDismiss(_ presentationController: BottomSheetPresentationController)
+    func bottomSheetPresentationControllerShouldDismiss(_ presentationController: BottomSheetPresentationController) -> Bool
+    func bottomSheetPresentationControllerDidCancelDismiss(_ presentationController: BottomSheetPresentationController)
     func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction)
     func bottomSheetPresentationControllerDidBeginDrag(_ presentationController: BottomSheetPresentationController)
 }
@@ -149,13 +149,13 @@ private extension BottomSheetPresentationController {
     @objc func handleTap() {
         guard stateController.state != .dismissed else { return }
 
-        if presentationControllerDelegate?.bottomSheetPresentationControllerCanDismiss(self) ?? true {
+        if presentationControllerDelegate?.bottomSheetPresentationControllerShouldDismiss(self) ?? true {
             stateController.state = .dismissed
             gestureController?.velocity = .zero
             dismissAction = .tap
             presentedViewController.dismiss(animated: true)
         } else {
-            presentationControllerDelegate?.bottomSheetPresentationControllerDidAttemptToDismiss(self)
+            presentationControllerDelegate?.bottomSheetPresentationControllerDidCancelDismiss(self)
         }
     }
 
@@ -204,11 +204,11 @@ extension BottomSheetPresentationController: BottomSheetGestureControllerDelegat
         guard !hasReachExpandedPosition else { return }
 
         if stateController.state == .dismissed {
-            if presentationControllerDelegate?.bottomSheetPresentationControllerCanDismiss(self) ?? true {
+            if presentationControllerDelegate?.bottomSheetPresentationControllerShouldDismiss(self) ?? true {
                 dismissAction = .drag
             } else {
                 stateController.state = .compact
-                presentationControllerDelegate?.bottomSheetPresentationControllerDidAttemptToDismiss(self)
+                presentationControllerDelegate?.bottomSheetPresentationControllerDidCancelDismiss(self)
             }
         }
 
@@ -216,7 +216,7 @@ extension BottomSheetPresentationController: BottomSheetGestureControllerDelegat
     }
 
     func stateAdjustedPosition(forGestureController controller: BottomSheetGestureController) -> CGPoint {
-        let canDismiss = presentationControllerDelegate?.bottomSheetPresentationControllerCanDismiss(self) ?? true
+        let canDismiss = presentationControllerDelegate?.bottomSheetPresentationControllerShouldDismiss(self) ?? true
         let thresholdPoint = stateController.frame.height - height.compact
 
         let ycomponent: CGFloat
