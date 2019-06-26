@@ -36,6 +36,7 @@ public class MessageFormBottomSheet: BottomSheet {
         super.init(rootViewController: rootController, height: .messageFormHeight, draggableArea: .navigationBar)
 
         messageFormViewController.delegate = self
+        dragDelegate = self
     }
 }
 
@@ -46,6 +47,12 @@ extension MessageFormBottomSheet: MessageFormViewControllerDelegate {
 
     func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, templateState: MessageFormTemplateState) {
         messageFormDelegate?.messageFormBottomSheet(self, didFinishWithText: text, templateState: templateState)
+    }
+}
+
+extension MessageFormBottomSheet: BottomSheetDragDelegate {
+    public func bottomSheetDidBeginDrag(_ bottomSheet: BottomSheet) {
+        self.state = .expanded
     }
 }
 
