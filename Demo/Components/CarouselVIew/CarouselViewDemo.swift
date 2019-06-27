@@ -44,6 +44,8 @@ extension CarouselViewDemoView: CarouselViewDelegate {
     func carouselView(_ carouselView: CarouselView, didSelectItemAt indexPath: IndexPath) {
         print("Did select item at: \(indexPath)")
     }
+
+    func carouselViewDidEndDecelerating(_ carouselView: CarouselView) {}
 }
 
 private extension CarouselViewDemoView {

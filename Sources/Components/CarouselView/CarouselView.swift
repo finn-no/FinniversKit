@@ -81,6 +81,13 @@ public class CarouselView: UIView {
 }
 
 public extension CarouselView {
+    var contentOffset: CGPoint {
+        return CGPoint(
+            x: collectionView.contentOffset.x - collectionView.bounds.height,
+            y: collectionView.contentOffset.y
+        )
+    }
+
     func register(_ cellClass: CarouselViewCell.Type) {
         collectionView.register(cellClass)
     }
