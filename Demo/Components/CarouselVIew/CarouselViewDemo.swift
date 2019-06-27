@@ -10,6 +10,7 @@ class CarouselViewDemoView: UIView {
 
     private lazy var carouselView: CarouselView = {
         let carouselView = CarouselView(frame: .zero)
+        carouselView.delegate = self
         carouselView.dataSource = self
         carouselView.backgroundColor = .white
         carouselView.register(CarouselViewDemoCell.self)
@@ -36,6 +37,12 @@ extension CarouselViewDemoView: CarouselViewDataSource {
         let cell = carouselView.dequeue(CarouselViewDemoCell.self, for: indexPath)
         cell.text = data[indexPath.item]
         return cell
+    }
+}
+
+extension CarouselViewDemoView: CarouselViewDelegate {
+    func carouselView(_ carouselView: CarouselView, didSelectItemAt indexPath: IndexPath) {
+        print("Did select item at: \(indexPath)")
     }
 }
 

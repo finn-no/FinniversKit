@@ -11,6 +11,11 @@ public protocol CarouselViewDataSource: AnyObject {
     func carouselView(_ carouselView: CarouselView, cellForItemAt indexPath: IndexPath) -> CarouselViewCell
 }
 
+public protocol CarouselViewDelegate: AnyObject {
+    func carouselView(_ carouselView: CarouselView, didSelectItemAt indexPath: IndexPath)
+    func carouselViewDidEndDecelerating(_ carouselView: CarouselView)
+}
+
 public class CarouselView: UIView {
 
     public weak var dataSource: CarouselViewDataSource? {
@@ -18,6 +23,8 @@ public class CarouselView: UIView {
             collectionView.reloadData()
         }
     }
+
+    public weak var delegate: CarouselViewDelegate?
 
     // MARK: - Private Properties
 
@@ -81,6 +88,10 @@ public extension CarouselView {
     func dequeue<T>(_ cellType: T.Type, for indexPath: IndexPath) -> T where T: CarouselViewCell {
         return collectionView.dequeue(cellType, for: indexPath)
     }
+
+    func scrollToItem(at indexPath: IndexPath, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool) {
+        collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
+    }
 }
 
 extension CarouselView: UICollectionViewDataSource {
@@ -105,9 +116,15 @@ extension CarouselView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return bounds.size
     }
-}
 
-extension CarouselView: UIScrollViewDelegate {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.carouselView(self, didSelectItemAt: self.indexPath(forItem: indexPath.item))
+    }
+
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        delegate?.carouselViewDidEndDecelerating(self)
+    }
+
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
 
