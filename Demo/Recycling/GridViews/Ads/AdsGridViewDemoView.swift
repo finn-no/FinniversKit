@@ -51,8 +51,8 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
         return dataSource.models.count
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
-        return dataSource.models[index]
+    public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel? {
+        return dataSource.models[safe: index]
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {

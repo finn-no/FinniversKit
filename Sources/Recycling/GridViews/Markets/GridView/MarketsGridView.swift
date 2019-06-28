@@ -10,7 +10,7 @@ public protocol MarketsGridViewDelegate: class {
 
 public protocol MarketsGridViewDataSource: class {
     func numberOfItems(inMarketsGridView marketsGridView: MarketsGridView) -> Int
-    func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel
+    func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel?
 }
 
 public class MarketsGridView: UIView {

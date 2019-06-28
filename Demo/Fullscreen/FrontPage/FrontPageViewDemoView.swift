@@ -74,8 +74,8 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         return min(ads.count, visibleItems)
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
-        return ads[index]
+    public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel? {
+        return ads[safe: index]
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {
@@ -115,7 +115,7 @@ extension FrontpageViewDemoView: MarketsGridViewDataSource {
         return markets.count
     }
 
-    public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
+    public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel? {
         return markets[index]
     }
 }

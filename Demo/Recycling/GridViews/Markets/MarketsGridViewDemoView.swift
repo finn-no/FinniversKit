@@ -34,8 +34,8 @@ extension MarketsGridViewDemoView: MarketsGridViewDataSource {
         return dataSource.models.count
     }
 
-    public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel {
-        return dataSource.models[index]
+    public func marketsGridView(_ marketsGridView: MarketsGridView, modelAtIndex index: Int) -> MarketsGridViewModel? {
+        return dataSource.models[safe: index]
     }
 }
 
