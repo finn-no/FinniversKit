@@ -73,6 +73,7 @@ public class CarouselView: UIView {
         guard initialLayout else { return }
         initialLayout = false
 
+        // Scroll to first item
         collectionView.contentOffset = CGPoint(
             x: bounds.width,
             y: collectionView.contentOffset.y
@@ -83,7 +84,7 @@ public class CarouselView: UIView {
 public extension CarouselView {
     var contentOffset: CGPoint {
         return CGPoint(
-            x: collectionView.contentOffset.x - collectionView.bounds.height,
+            x: collectionView.contentOffset.x - collectionView.bounds.width,
             y: collectionView.contentOffset.y
         )
     }
