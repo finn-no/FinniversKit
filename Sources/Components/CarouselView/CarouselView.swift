@@ -20,15 +20,27 @@ public class CarouselView: UIView {
 
     public weak var dataSource: CarouselViewDataSource? {
         didSet {
-            collectionView.reloadData()
+            if dataSource == nil {
+                collectionView.dataSource = nil
+            } else {
+                collectionView.dataSource = self
+            }
         }
     }
 
-    public weak var delegate: CarouselViewDelegate?
+    public weak var delegate: CarouselViewDelegate? {
+        didSet {
+            if delegate == nil {
+                collectionView.delegate = nil
+            } else {
+                collectionView.delegate = self
+            }
+        }
+    }
 
     // MARK: - Private Properties
 
-    private var initialLayout = true
+    private var shouldSetInitialLayout = true
 
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -40,8 +52,6 @@ public class CarouselView: UIView {
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -70,8 +80,8 @@ public class CarouselView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        guard initialLayout else { return }
-        initialLayout = false
+        guard shouldSetInitialLayout else { return }
+        shouldSetInitialLayout = false
 
         // Scroll to first item
         collectionView.contentOffset = CGPoint(
@@ -98,17 +108,25 @@ public extension CarouselView {
     }
 
     func scrollToItem(at indexPath: IndexPath, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool) {
+        guard indexPath.item + 1 < collectionView.numberOfItems(inSection: 0) else {
+            return
+        }
+
         collectionView.scrollToItem(at: IndexPath(item: indexPath.item + 1, section: 0), at: scrollPosition, animated: animated)
     }
 }
 
 extension CarouselView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let dataSource = dataSource else {
+        guard let numberOfItems = dataSource?.numberOfItems(in: self) else {
             return 0
         }
 
-        return dataSource.numberOfItems(in: self) + 2
+        if numberOfItems > 1 {
+            return numberOfItems + 2
+        } else {
+            return numberOfItems
+        }
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -134,34 +152,35 @@ extension CarouselView: UICollectionViewDelegateFlowLayout {
     }
 
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard scrollView.isPagingEnabled else {
+            return
+        }
+
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
+        let targetPage = Int(targetContentOffset.pointee.x / scrollView.bounds.width)
+        let deltaOffset = CGFloat(numberOfItems - 2) * scrollView.bounds.width
 
-        if scrollView.isPagingEnabled {
-            let targetPage = Int(targetContentOffset.pointee.x / scrollView.bounds.width)
-            let deltaOffset = CGFloat(numberOfItems - 2) * scrollView.bounds.width
+        if targetPage == 0 {
+            targetContentOffset.pointee = CGPoint(
+                x: deltaOffset,
+                y: targetContentOffset.pointee.y
+            )
 
-            if targetPage == 0 {
-                targetContentOffset.pointee = CGPoint(
-                    x: deltaOffset,
-                    y: targetContentOffset.pointee.y
-                )
+            scrollView.contentOffset = CGPoint(
+                x: scrollView.contentOffset.x + deltaOffset,
+                y: scrollView.contentOffset.y
+            )
 
-                scrollView.contentOffset = CGPoint(
-                    x: scrollView.contentOffset.x + deltaOffset,
-                    y: scrollView.contentOffset.y
-                )
+        } else if targetPage == numberOfItems - 1 {
+            targetContentOffset.pointee = CGPoint(
+                x: scrollView.bounds.width,
+                y: targetContentOffset.pointee.y
+            )
 
-            } else if targetPage == numberOfItems - 1 {
-                targetContentOffset.pointee = CGPoint(
-                    x: scrollView.bounds.width,
-                    y: targetContentOffset.pointee.y
-                )
-
-                scrollView.contentOffset = CGPoint(
-                    x: scrollView.contentOffset.x - deltaOffset,
-                    y: scrollView.contentOffset.y
-                )
-            }
+            scrollView.contentOffset = CGPoint(
+                x: scrollView.contentOffset.x - deltaOffset,
+                y: scrollView.contentOffset.y
+            )
         }
     }
 }
@@ -171,6 +190,11 @@ extension CarouselView: UICollectionViewDelegateFlowLayout {
 private extension CarouselView {
     func indexPath(forItem item: Int) -> IndexPath {
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
+
+        guard numberOfItems > 1 else {
+            return IndexPath(item: item, section: 0)
+        }
+
         let next: Int
 
         switch item {

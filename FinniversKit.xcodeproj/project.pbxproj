@@ -2041,7 +2041,7 @@
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
 				CFCDDA5D22731D4D005E1F4A /* Callout */,
-				DAE738C522C4C84C001C69E3 /* CarouselVIew */,
+				DAE738C522C4C84C001C69E3 /* CarouselView */,
 				CF8F021821DCC624004C4042 /* Consent */,
 				AA7A854F22258A0B00AF5F42 /* Dialogue */,
 				0884C6CA22B7B5DA0015474D /* Disclaimer */,
@@ -2692,13 +2692,13 @@
 			path = CarouselView;
 			sourceTree = "<group>";
 		};
-		DAE738C522C4C84C001C69E3 /* CarouselVIew */ = {
+		DAE738C522C4C84C001C69E3 /* CarouselView */ = {
 			isa = PBXGroup;
 			children = (
 				DAE738C622C4C85E001C69E3 /* CarouselViewDemo.swift */,
 				DAE738C822C4CB19001C69E3 /* CarouselViewDemoCell.swift */,
 			);
-			path = CarouselVIew;
+			path = CarouselView;
 			sourceTree = "<group>";
 		};
 		F22612D6225631FD00472D22 /* StatisticsView */ = {
