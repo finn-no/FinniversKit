@@ -14,7 +14,7 @@ public enum Market: MarketsGridViewModel {
     case nytte
     case reise
     case shopping
-    case smajobb
+    case economy
     case moteplassen
     case mittAnbud
 
@@ -29,7 +29,7 @@ public enum Market: MarketsGridViewModel {
         case .nytte: return "Nyttekjøretøy"
         case .reise: return "Reise"
         case .shopping: return "Shopping"
-        case .smajobb: return "Småjobber"
+        case .economy: return "Økonomi"
         case .moteplassen: return "Møteplassen"
         case .mittAnbud: return "Oppdrag"
         }
@@ -46,7 +46,7 @@ public enum Market: MarketsGridViewModel {
         case .nytte: return UIImage(named: .vehicles)
         case .reise: return UIImage(named: .travel)
         case .shopping: return UIImage(named: .shopping)
-        case .smajobb: return UIImage(named: .smalljobs)
+        case .economy: return UIImage(named: .okonomi)
         case .moteplassen: return UIImage(named: .moteplassen)
         case .mittAnbud: return UIImage(named: .mittanbud)
         }
@@ -63,7 +63,7 @@ public enum Market: MarketsGridViewModel {
         case .nytte: return false
         case .reise: return true
         case .shopping: return true
-        case .smajobb: return true
+        case .economy: return true
         case .moteplassen: return true
         case .mittAnbud: return true
         }
@@ -77,5 +77,5 @@ public enum Market: MarketsGridViewModel {
         }
     }
 
-    public static var allMarkets: [Market] = [.eiendom, .bil, .torget, .jobb, .mc, .boat, .nytte, .reise, .shopping, .smajobb, .moteplassen, .mittAnbud]
+    public static var allMarkets: [Market] = [.eiendom, .bil, .torget, .jobb, .mc, .boat, .nytte, .economy, .reise, .mittAnbud, .shopping, .moteplassen]
 }
