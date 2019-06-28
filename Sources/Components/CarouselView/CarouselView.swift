@@ -97,7 +97,7 @@ public extension CarouselView {
     }
 
     func scrollToItem(at indexPath: IndexPath, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool) {
-        collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
+        collectionView.scrollToItem(at: IndexPath(item: indexPath.item + 1, section: 0), at: scrollPosition, animated: animated)
     }
 }
 
