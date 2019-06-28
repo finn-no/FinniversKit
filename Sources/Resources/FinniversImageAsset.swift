@@ -90,6 +90,7 @@ public enum FinniversImageAsset: String {
     case moteplassen
     case noImage
     case notifications
+    case okonomi
     case ornamentCircleBlue
     case ornamentCircleRed
     case ornamentStar
@@ -115,7 +116,6 @@ public enum FinniversImageAsset: String {
     case settings
     case share
     case shopping
-    case smalljobs
     case snowflake
     case sold
     case spark
@@ -208,6 +208,7 @@ public enum FinniversImageAsset: String {
             .moteplassen,
             .noImage,
             .notifications,
+            .okonomi,
             .ornamentCircleBlue,
             .ornamentCircleRed,
             .ornamentStar,
@@ -233,7 +234,6 @@ public enum FinniversImageAsset: String {
             .settings,
             .share,
             .shopping,
-            .smalljobs,
             .snowflake,
             .sold,
             .spark,
