@@ -42,6 +42,8 @@ class MessageFormToolbar: UIView {
 
     // MARK: - Private properties
 
+    private static let backgroundColor = UIColor(r: 208, g: 212, b: 215)
+
     private let viewModel: MessageFormViewModel
 
     private let toolbarHeight: CGFloat = 68
@@ -69,7 +71,7 @@ class MessageFormToolbar: UIView {
     }
 
     private func setup() {
-        backgroundColor = UIColor(r: 208, g: 212, b: 215)
+        backgroundColor = MessageFormToolbar.backgroundColor
 
         addSubview(collectionView)
         collectionView.fillInSuperview(insets: UIEdgeInsets(top: toolbarTopPadding, leading: 0, bottom: -toolbarBottomPadding, trailing: 0))
