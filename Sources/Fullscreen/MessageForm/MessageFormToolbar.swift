@@ -44,9 +44,10 @@ class MessageFormToolbar: UIView {
 
     private let viewModel: MessageFormViewModel
 
-    private let toolbarHeight: CGFloat = 60
-    private let toolbarTopPadding: CGFloat = .smallSpacing
-    private var toolbarCellHeight: CGFloat { return toolbarHeight - toolbarTopPadding }
+    private let toolbarHeight: CGFloat = 68
+    private let toolbarTopPadding: CGFloat = .mediumSpacing
+    private let toolbarBottomPadding: CGFloat = .mediumSpacing
+    private var toolbarCellHeight: CGFloat { return toolbarHeight - toolbarTopPadding - toolbarBottomPadding }
     private var toolbarCellMaxWidth: CGFloat {
         if UIDevice.isIPad() {
             return 200
@@ -71,11 +72,23 @@ class MessageFormToolbar: UIView {
         backgroundColor = UIColor(r: 208, g: 212, b: 215)
 
         addSubview(collectionView)
-        collectionView.fillInSuperview(insets: UIEdgeInsets(top: toolbarTopPadding, leading: 0, bottom: 0, trailing: 0))
+        collectionView.fillInSuperview(insets: UIEdgeInsets(top: toolbarTopPadding, leading: 0, bottom: -toolbarBottomPadding, trailing: 0))
 
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: toolbarHeight)
         ])
+    }
+
+    // MARK: - Internal methods
+
+    func offsetForToolbar(withKeyboardVisible keyboardVisible: Bool) -> CGFloat {
+        /// The Toolbar view wants to hide its' bottom padding when the keyboard is visible,
+        /// as this padding is "embedded" in the top of the stock keyboard itself.
+        if keyboardVisible {
+            return -toolbarBottomPadding
+        } else {
+            return 0
+        }
     }
 }
 
@@ -105,6 +118,10 @@ extension MessageFormToolbar: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return false
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .mediumSpacing
     }
 }
 

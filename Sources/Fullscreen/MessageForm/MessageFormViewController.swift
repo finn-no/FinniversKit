@@ -136,10 +136,14 @@ class MessageFormViewController: UIViewController {
     @objc func handleKeyboardNotification(_ notification: Notification) {
         guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
 
+        let keyboardVisible = keyboardInfo.action == .willShow
+        let toolbarOffset = toolbar.offsetForToolbar(withKeyboardVisible: keyboardVisible)
+
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: view)
+        let offset = keyboardIntersection + toolbarOffset
 
         UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
-            self?.wrapperBottomConstraint.constant = -keyboardIntersection
+            self?.wrapperBottomConstraint.constant = -offset
             self?.view.layoutIfNeeded()
         }
     }
