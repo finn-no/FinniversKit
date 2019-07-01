@@ -18,27 +18,10 @@ public protocol CarouselViewDelegate: AnyObject {
 
 public class CarouselView: UIView {
 
-    public weak var dataSource: CarouselViewDataSource? {
-        didSet {
-            if dataSource == nil {
-                collectionView.dataSource = nil
-            } else {
-                collectionView.dataSource = self
-            }
-        }
-    }
-
-    public weak var delegate: CarouselViewDelegate? {
-        didSet {
-            if delegate == nil {
-                collectionView.delegate = nil
-            } else {
-                collectionView.delegate = self
-            }
-        }
-    }
-
     // MARK: - Private Properties
+
+    private weak var dataSource: CarouselViewDataSource?
+    private weak var delegate: CarouselViewDelegate?
 
     private var shouldSetInitialLayout = true
 
@@ -52,6 +35,8 @@ public class CarouselView: UIView {
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,8 +45,10 @@ public class CarouselView: UIView {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(dataSource: CarouselViewDataSource, delegate: CarouselViewDelegate) {
+        self.dataSource = dataSource
+        self.delegate = delegate
+        super.init(frame: .zero)
         setup()
     }
 

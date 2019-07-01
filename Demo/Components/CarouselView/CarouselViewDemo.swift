@@ -9,9 +9,7 @@ class CarouselViewDemoView: UIView {
     let data = (1 ... 3).map({ "\($0)" })
 
     private lazy var carouselView: CarouselView = {
-        let carouselView = CarouselView(frame: .zero)
-        carouselView.delegate = self
-        carouselView.dataSource = self
+        let carouselView = CarouselView(dataSource: self, delegate: self)
         carouselView.backgroundColor = .white
         carouselView.register(CarouselViewDemoCell.self)
         carouselView.translatesAutoresizingMaskIntoConstraints = false
