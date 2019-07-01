@@ -82,7 +82,6 @@ class MessageFormViewController: UIViewController {
         if viewModel.showTemplateToolbar {
             messageFormBottomConstraint = messageFormView.bottomAnchor.constraint(equalTo: toolbar.topAnchor)
 
-            toolbar.showCustomizeButton = viewModel.showTemplateCustomizationButton
             wrapperView.addSubview(toolbar)
             NSLayoutConstraint.activate([
                 toolbar.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
