@@ -76,7 +76,7 @@ class MessageFormView: UIView {
 
             transparencyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             transparencyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            transparencyLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            transparencyLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
             transparencyLabelHeightConstraint
         ])
     }

@@ -46,6 +46,14 @@ class MessageFormViewController: UIViewController {
     private let viewModel: MessageFormViewModel
     private var lastEnteredTemplate: String?
 
+    private lazy var safeAreaHeight: CGFloat = {
+        if #available(iOS 11.0, *) {
+            return UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        } else {
+            return 0
+        }
+    }()
+
     // MARK: - Init
 
     required init?(coder aDecoder: NSCoder) {
@@ -72,7 +80,7 @@ class MessageFormViewController: UIViewController {
         let messageFormBottomConstraint: NSLayoutConstraint
 
         if viewModel.showTemplateToolbar {
-            messageFormBottomConstraint = messageFormView.bottomAnchor.constraint(equalTo: toolbar.topAnchor, constant: -.mediumSpacing)
+            messageFormBottomConstraint = messageFormView.bottomAnchor.constraint(equalTo: toolbar.topAnchor)
 
             toolbar.showCustomizeButton = viewModel.showTemplateCustomizationButton
             wrapperView.addSubview(toolbar)
@@ -82,7 +90,7 @@ class MessageFormViewController: UIViewController {
                 toolbar.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
             ])
         } else {
-            messageFormBottomConstraint = messageFormView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -.mediumSpacing)
+            messageFormBottomConstraint = messageFormView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
         }
 
         NSLayoutConstraint.activate([
@@ -148,8 +156,14 @@ class MessageFormViewController: UIViewController {
     }
 
     private func updateWrapperViewConstraint(withKeyboardVisible keyboardVisible: Bool, keyboardOffset: CGFloat) {
-        let toolbarOffset = toolbar.offsetForToolbar(withKeyboardVisible: keyboardVisible)
-        let offset = keyboardOffset + toolbarOffset
+        var offset: CGFloat = keyboardOffset
+
+        if viewModel.showTemplateToolbar {
+            offset += toolbar.offsetForToolbar(withKeyboardVisible: keyboardVisible)
+        } else {
+            offset += safeAreaHeight
+        }
+
         wrapperBottomConstraint.constant = -offset
     }
 }
