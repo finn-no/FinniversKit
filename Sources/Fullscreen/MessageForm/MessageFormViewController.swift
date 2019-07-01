@@ -97,6 +97,8 @@ class MessageFormViewController: UIViewController {
             wrapperBottomConstraint
         ])
 
+        updateWrapperViewConstraint(withKeyboardVisible: false, keyboardOffset: 0)
+
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
@@ -137,15 +139,18 @@ class MessageFormViewController: UIViewController {
         guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
 
         let keyboardVisible = keyboardInfo.action == .willShow
-        let toolbarOffset = toolbar.offsetForToolbar(withKeyboardVisible: keyboardVisible)
-
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: view)
-        let offset = keyboardIntersection + toolbarOffset
 
         UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
-            self?.wrapperBottomConstraint.constant = -offset
+            self?.updateWrapperViewConstraint(withKeyboardVisible: keyboardVisible, keyboardOffset: keyboardIntersection)
             self?.view.layoutIfNeeded()
         }
+    }
+
+    private func updateWrapperViewConstraint(withKeyboardVisible keyboardVisible: Bool, keyboardOffset: CGFloat) {
+        let toolbarOffset = toolbar.offsetForToolbar(withKeyboardVisible: keyboardVisible)
+        let offset = keyboardOffset + toolbarOffset
+        wrapperBottomConstraint.constant = -offset
     }
 }
 

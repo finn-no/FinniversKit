@@ -28,6 +28,20 @@ class MessageFormToolbar: UIView {
         return view
     }()
 
+    private lazy var safeAreaHeight: CGFloat = {
+        if #available(iOS 11.0, *) {
+            return UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        } else {
+            return 0
+        }
+    }()
+
+    private lazy var safeAreaCoverView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = MessageFormToolbar.backgroundColor
+        return view
+    }()
+
     // MARK: - Internal properties
 
     weak var delegate: MessageFormToolbarDelegate?
@@ -74,10 +88,16 @@ class MessageFormToolbar: UIView {
         backgroundColor = MessageFormToolbar.backgroundColor
 
         addSubview(collectionView)
+        addSubview(safeAreaCoverView)
         collectionView.fillInSuperview(insets: UIEdgeInsets(top: toolbarTopPadding, leading: 0, bottom: -toolbarBottomPadding, trailing: 0))
 
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: toolbarHeight)
+            heightAnchor.constraint(equalToConstant: toolbarHeight),
+
+            safeAreaCoverView.heightAnchor.constraint(equalToConstant: safeAreaHeight),
+            safeAreaCoverView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            safeAreaCoverView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            safeAreaCoverView.topAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
@@ -87,9 +107,9 @@ class MessageFormToolbar: UIView {
         /// The Toolbar view wants to hide its' bottom padding when the keyboard is visible,
         /// as this padding is "embedded" in the top of the stock keyboard itself.
         if keyboardVisible {
-            return -toolbarBottomPadding
+            return safeAreaHeight - toolbarBottomPadding
         } else {
-            return 0
+            return safeAreaHeight
         }
     }
 }
