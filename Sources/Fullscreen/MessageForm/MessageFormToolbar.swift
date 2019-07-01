@@ -15,6 +15,7 @@ class MessageFormToolbar: UIView {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.estimatedItemSize = CGSize(width: toolbarCellMaxWidth, height: toolbarCellHeight)
 
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(MessageFormTemplateCell.self)
@@ -115,20 +116,6 @@ class MessageFormToolbar: UIView {
 }
 
 extension MessageFormToolbar: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch indexPath.section {
-        case 0:
-            return MessageFormCustomizeCell.size
-        case 1:
-            let text = viewModel.messageTemplates[safe: indexPath.row] ?? ""
-            let idealWidth = text.multiLineWidth(withConstrainedHeight: toolbarCellHeight, font: .detail, minimumWidth: 70)
-            let width = CGFloat.minimum(idealWidth + 2 * CGFloat.smallSpacing, toolbarCellMaxWidth)
-            return CGSize(width: width, height: toolbarCellHeight)
-        default:
-            fatalError("Unexpected section: \(indexPath.section)")
-        }
-    }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if section == 0 {
             let trailingMargin = showCustomizeButton ? CGFloat.mediumSpacing : 0
@@ -169,7 +156,8 @@ extension MessageFormToolbar: UICollectionViewDataSource {
             return collectionView.dequeue(MessageFormCustomizeCell.self, for: indexPath)
         case 1:
             let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
-            cell.configure(withText: viewModel.messageTemplates[safe: indexPath.row] ?? "", index: indexPath.row)
+            let text = viewModel.messageTemplates[safe: indexPath.row] ?? ""
+            cell.configure(withText: text, index: indexPath.row, maxWidth: toolbarCellMaxWidth, height: toolbarCellHeight)
             cell.delegate = self
             return cell
         default:
@@ -218,6 +206,9 @@ private class MessageFormTemplateCell: UICollectionViewCell {
         return label
     }()
 
+    private lazy var heightConstraint = contentView.heightAnchor.constraint(equalToConstant: 100)
+    private lazy var maxWidthConstraint = contentView.widthAnchor.constraint(lessThanOrEqualToConstant: 100)
+
     // MARK: - Internal properties
 
     weak var delegate: MessageFormTemplateCellDelegate?
@@ -245,9 +236,14 @@ private class MessageFormTemplateCell: UICollectionViewCell {
 
     // MARK: - Internal methods
 
-    func configure(withText text: String, index: Int) {
+    func configure(withText text: String, index: Int, maxWidth: CGFloat, height: CGFloat) {
         label.text = text
+        heightConstraint.constant = height
+        maxWidthConstraint.constant = maxWidth
         self.index = index
+
+        heightConstraint.isActive = true
+        maxWidthConstraint.isActive = true
     }
 
     // MARK: - Private methods
