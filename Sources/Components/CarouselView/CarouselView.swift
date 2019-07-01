@@ -121,7 +121,7 @@ extension CarouselView: UICollectionViewDataSource {
             preconditionFailure("Data source is not available")
         }
 
-        return dataSource.carouselView(self, cellForItemAt: self.indexPath(forItem: indexPath.item))
+        return dataSource.carouselView(self, cellForItemAt: translate(indexPath))
     }
 }
 
@@ -131,7 +131,7 @@ extension CarouselView: UICollectionViewDelegateFlowLayout {
     }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.carouselView(self, didSelectItemAt: self.indexPath(forItem: indexPath.item))
+        delegate?.carouselView(self, didSelectItemAt: translate(indexPath))
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -175,24 +175,24 @@ extension CarouselView: UICollectionViewDelegateFlowLayout {
 // MARK: - Private Functions
 
 private extension CarouselView {
-    func indexPath(forItem item: Int) -> IndexPath {
-        let numberOfItems = collectionView.numberOfItems(inSection: 0)
+    func translate(_ indexPath: IndexPath) -> IndexPath {
+        let numberOfItems = collectionView.numberOfItems(inSection: indexPath.section)
 
         guard numberOfItems > 1 else {
-            return IndexPath(item: item, section: 0)
+            return indexPath
         }
 
-        let next: Int
+        let translated: Int
 
-        switch item {
-        case 0: next = numberOfItems - 3
-        case numberOfItems - 1: next = 0
-        default: next = item - 1
+        switch indexPath.item {
+        case 0: translated = numberOfItems - 3
+        case numberOfItems - 1: translated = 0
+        default: translated = indexPath.item - 1
         }
 
         return IndexPath(
-            item: next,
-            section: 0
+            item: translated,
+            section: indexPath.section
         )
     }
 
