@@ -79,11 +79,30 @@ public class CarouselView: UIView {
 }
 
 public extension CarouselView {
+    var numberOfItems: Int {
+        let count = collectionView.numberOfItems(inSection: 0)
+
+        if count > 1 {
+            return count - 2
+        } else {
+            return count
+        }
+    }
+
     var contentOffset: CGPoint {
         return CGPoint(
             x: collectionView.contentOffset.x - collectionView.bounds.width,
             y: collectionView.contentOffset.y
         )
+    }
+
+    func invalidateLayout() {
+        layout.invalidateLayout()
+    }
+
+    func cellForItem(at indexPath: IndexPath) -> CarouselViewCell? {
+        let translated = IndexPath(item: indexPath.item + 1, section: indexPath.section)
+        return collectionView.cellForItem(at: translated)
     }
 
     func register(_ cellClass: CarouselViewCell.Type) {
