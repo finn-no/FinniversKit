@@ -92,7 +92,7 @@ extension MessageFormBottomSheet: BottomSheetDelegate {
     }
 
     public func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction) {
-
+        messageFormDelegate?.messageFormBottomSheetDidCancel(self)
     }
 }
 
