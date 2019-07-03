@@ -57,6 +57,7 @@ public enum ComponentViews: String, CaseIterable {
     case phaseList
     case iconCollection
     case disclaimerView
+    case questionnaireView
 
     public var viewController: UIViewController {
         switch self {
@@ -130,6 +131,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<IconCollectionDemoView>()
         case .disclaimerView:
             return DemoViewController<DisclaimerDemoView>()
+        case .questionnaireView:
+            return DemoViewController<QuestionnaireDemoView>()
         }
     }
 }
