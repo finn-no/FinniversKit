@@ -358,6 +358,11 @@
 		F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2772F4322803B310002D21F /* ReviewButtonView.swift */; };
 		F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */; };
 		F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */; };
+		F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */; };
+		F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */; };
+		F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */; };
+		F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E96222CB688800CED7E0 /* QuestionnaireDemoView.swift */; };
+		F2C3E96522CB69B100CED7E0 /* QuestionnaireDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E96422CB69B100CED7E0 /* QuestionnaireDefaultData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -753,6 +758,11 @@
 		F2772F4322803B310002D21F /* ReviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonView.swift; sourceTree = "<group>"; };
 		F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonViewDemoView.swift; sourceTree = "<group>"; };
 		F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonControl.swift; sourceTree = "<group>"; };
+		F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
+		F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewModel.swift; sourceTree = "<group>"; };
+		F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionnaireView+Style.swift"; sourceTree = "<group>"; };
+		F2C3E96222CB688800CED7E0 /* QuestionnaireDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireDemoView.swift; sourceTree = "<group>"; };
+		F2C3E96422CB69B100CED7E0 /* QuestionnaireDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireDefaultData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1305,6 +1315,7 @@
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				081F51BB222932C900026C84 /* TextView */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
+				F2C3E95A22CB634700CED7E0 /* QuestionnaireView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2065,6 +2076,7 @@
 				CF8F022421DCC6EE004C4042 /* TextField */,
 				081F51B8222930B400026C84 /* TextView */,
 				CF8F022521DCC6F8004C4042 /* Toast */,
+				F2C3E96122CB686F00CED7E0 /* QuestionnaireView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2791,6 +2803,25 @@
 			path = ReviewButtonControl;
 			sourceTree = "<group>";
 		};
+		F2C3E95A22CB634700CED7E0 /* QuestionnaireView */ = {
+			isa = PBXGroup;
+			children = (
+				F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */,
+				F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */,
+				F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */,
+			);
+			path = QuestionnaireView;
+			sourceTree = "<group>";
+		};
+		F2C3E96122CB686F00CED7E0 /* QuestionnaireView */ = {
+			isa = PBXGroup;
+			children = (
+				F2C3E96222CB688800CED7E0 /* QuestionnaireDemoView.swift */,
+				F2C3E96422CB69B100CED7E0 /* QuestionnaireDefaultData.swift */,
+			);
+			path = QuestionnaireView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -3078,6 +3109,7 @@
 				CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */,
 				4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */,
 				DAC65FBB21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift in Sources */,
+				F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
@@ -3098,6 +3130,7 @@
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
 				895175932248CFD4008003FB /* StepIndicatorDemoView.swift in Sources */,
+				F2C3E96522CB69B100CED7E0 /* QuestionnaireDefaultData.swift in Sources */,
 				447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */,
 				CF7C460F22257AE1001FB92C /* EarthHourDemoView.swift in Sources */,
 				DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */,
@@ -3152,6 +3185,7 @@
 				89A7A64A22536E200053D33B /* NativeContentSettingsButton.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
+				F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */,
 				DAC7DCAE2153866E004602A3 /* SettingsViewCell.swift in Sources */,
 				CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
@@ -3252,11 +3286,13 @@
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				AA7A854E22255AB200AF5F42 /* DialogueView.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,
+				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
 				620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */,
 				DAB7FAA621B690DD00BF8CC6 /* BottomSheet.swift in Sources */,
+				F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */,
 				08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */,
 				CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */,
 				CF7C460822257A8A001FB92C /* EarthHourView.swift in Sources */,
