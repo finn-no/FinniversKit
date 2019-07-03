@@ -158,4 +158,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testDisclaimerView() {
         snapshot(.disclaimerView)
     }
+
+    func testQuestionnaireView() {
+        snapshot(.questionnaireView)
+    }
 }
