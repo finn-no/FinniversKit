@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol RemoteImageTableViewCellViewModel: BasicTableViewCellViewModel {
-    var imageUrl: String? { get }
+    var imagePath: String? { get }
     var cornerRadius: CGFloat { get }
-    var imageSize: CGFloat { get }
+    var imageViewWidth: CGFloat { get }
 }

@@ -70,16 +70,16 @@ public final class RemoteImageTableViewCell: BasicTableViewCell {
         self.viewModel = viewModel
 
         selectionStyle = .default
-        separatorInset = .leadingInset(.mediumLargeSpacing * 2 + viewModel.imageSize)
+        separatorInset = .leadingInset(.mediumLargeSpacing * 2 + viewModel.imageViewWidth)
 
         remoteImageView.layer.cornerRadius = viewModel.cornerRadius
-        remoteImageWidthConstraint.constant = viewModel.imageSize
+        remoteImageWidthConstraint.constant = viewModel.imageViewWidth
 
         setNeedsLayout()
     }
 
     public func loadImage() {
-        guard let viewModel = viewModel, let dataSource = dataSource, viewModel.imageUrl != nil else {
+        guard let viewModel = viewModel, let dataSource = dataSource, viewModel.imagePath != nil else {
             loadingColor = .clear
             remoteImageView.image = defaultImage
             return

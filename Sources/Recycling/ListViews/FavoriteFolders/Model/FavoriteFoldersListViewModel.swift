@@ -7,7 +7,6 @@ import Foundation
 public protocol FavoriteFoldersListViewModel {
     var title: String { get }
     var detail: String { get }
-    var imageUrl: String { get }
     var accessibilityLabel: String { get }
 }
 
