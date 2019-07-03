@@ -15,6 +15,11 @@ public class MessageFormBottomSheet: BottomSheet {
 
     public weak var messageFormDelegate: MessageFormBottomSheetDelegate?
 
+    /// This view should be used if you wish to present a toast inside this view controller.
+    public var toastPresenterView: UIView {
+        return messageFormViewController.toastPresenterView
+    }
+
     // MARK: - Private properties
 
     private let messageFormViewController: MessageFormViewController!

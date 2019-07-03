@@ -41,6 +41,10 @@ class MessageFormViewController: UIViewController {
         return messageFormView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
     }
 
+    var toastPresenterView: UIView {
+        return messageFormView
+    }
+
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
