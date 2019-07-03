@@ -26,6 +26,8 @@ import UIKit
 
 private extension AddressView {
     private func setup() {
+        backgroundColor = .red
+
         NSLayoutConstraint.activate([
         ])
     }
