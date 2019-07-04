@@ -6,7 +6,10 @@ import Foundation
 
 public protocol MessageFormBottomSheetDelegate: AnyObject {
     func messageFormBottomSheetDidCancel(_ form: MessageFormBottomSheet)
-    func messageFormBottomSheet(_ form: MessageFormBottomSheet, didFinishWithText text: String, templateState: MessageFormTemplateState)
+    func messageFormBottomSheet(_ form: MessageFormBottomSheet,
+                                didFinishWithText text: String,
+                                templateState: MessageFormTemplateState,
+                                template: MessageFormTemplate?)
 }
 
 public class MessageFormBottomSheet: BottomSheet {
@@ -82,8 +85,8 @@ extension MessageFormBottomSheet: MessageFormViewControllerDelegate {
         dismissWithConfirmationIfNeeded()
     }
 
-    func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, templateState: MessageFormTemplateState) {
-        messageFormDelegate?.messageFormBottomSheet(self, didFinishWithText: text, templateState: templateState)
+    func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, templateState: MessageFormTemplateState, template: MessageFormTemplate?) {
+        messageFormDelegate?.messageFormBottomSheet(self, didFinishWithText: text, templateState: templateState, template: template)
     }
 }
 

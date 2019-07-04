@@ -5,7 +5,7 @@
 import Foundation
 
 protocol MessageFormToolbarDelegate: AnyObject {
-    func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: String)
+    func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: MessageFormTemplate)
 }
 
 class MessageFormToolbar: UIView {
@@ -156,7 +156,7 @@ extension MessageFormToolbar: UICollectionViewDataSource {
             return collectionView.dequeue(MessageFormCustomizeCell.self, for: indexPath)
         case 1:
             let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
-            let text = viewModel.messageTemplates[safe: indexPath.row] ?? ""
+            let text = viewModel.messageTemplates[safe: indexPath.row]?.text ?? ""
             cell.configure(withText: text, index: indexPath.row, maxWidth: toolbarCellMaxWidth, height: toolbarCellHeight)
             cell.delegate = self
             return cell

@@ -12,9 +12,9 @@ class MessageFormDemoViewModel: MessageFormViewModel {
     let cancelButtonText = "Avbryt"
     let transparencyText = "FINN.no forbeholder seg retten til å kontrollere meldinger og stoppe useriøs e-post."
     let messageTemplates = [
-        "Hei! Jeg er interessert, når passer det at jeg henter den?",
-        "Hei! Jeg er interessert, kan du sende den?",
-        "Hei! Jeg er interessert, er du villig til å diskutere prisen?",
+        MessageFormTemplate(text: "Hei! Jeg er interessert, når passer det at jeg henter den?", id: "1"),
+        MessageFormTemplate(text: "Hei! Jeg er interessert, kan du sende den?", id: "2"),
+        MessageFormTemplate(text: "Hei! Jeg er interessert, er du villig til å diskutere prisen?", id: "3"),
     ]
 
     let replaceAlertTitle = "Erstatte innhold"

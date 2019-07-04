@@ -6,7 +6,10 @@ import UIKit
 
 protocol MessageFormViewControllerDelegate: AnyObject {
     func messageFormViewControllerDidCancel(_ viewController: MessageFormViewController)
-    func messageFormViewController(_ viewController: MessageFormViewController, didFinishWithText text: String, templateState: MessageFormTemplateState)
+    func messageFormViewController(_ viewController: MessageFormViewController,
+                                   didFinishWithText text: String,
+                                   templateState: MessageFormTemplateState,
+                                   template: MessageFormTemplate?)
 }
 
 class MessageFormViewController: UIViewController {
@@ -48,7 +51,7 @@ class MessageFormViewController: UIViewController {
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
-    private var lastEnteredTemplate: String?
+    private var lastUsedTemplate: MessageFormTemplate?
 
     private lazy var safeAreaHeight: CGFloat = {
         if #available(iOS 11.0, *) {
@@ -127,23 +130,28 @@ class MessageFormViewController: UIViewController {
 
     @objc private func sendButtonTapped() {
         let messageText = messageFormView.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        let lastTemplate = lastEnteredTemplate?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let lastTemplateText = lastUsedTemplate?.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let templateState: MessageFormTemplateState
+        let usedTemplate: MessageFormTemplate?
 
-        switch lastTemplate {
+        switch lastTemplateText {
         case messageText:
             templateState = .template
+            usedTemplate = lastUsedTemplate
         case .none:
             templateState = .custom
+            usedTemplate = nil
         case .some(let val):
             if messageText.contains(val) {
                 templateState = .modifiedTemplate
+                usedTemplate = lastUsedTemplate
             } else {
                 templateState = .custom
+                usedTemplate = nil
             }
         }
 
-        delegate?.messageFormViewController(self, didFinishWithText: messageText, templateState: templateState)
+        delegate?.messageFormViewController(self, didFinishWithText: messageText, templateState: templateState, template: usedTemplate)
     }
 
     @objc func handleKeyboardNotification(_ notification: Notification) {
@@ -178,13 +186,13 @@ extension MessageFormViewController: MessageFormViewDelegate {
 }
 
 extension MessageFormViewController: MessageFormToolbarDelegate {
-    func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: String) {
+    func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: MessageFormTemplate) {
         let currentText = messageFormView.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        let lastTemplate = (lastEnteredTemplate ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let lastTemplateText = (lastUsedTemplate?.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
 
-        if currentText == lastTemplate || currentText.count == 0 {
-            messageFormView.text = template
-            lastEnteredTemplate = template
+        if currentText == lastTemplateText || currentText.count == 0 {
+            messageFormView.text = template.text
+            lastUsedTemplate = template
         } else {
             let alertController = UIAlertController(title: viewModel.replaceAlertTitle,
                                                     message: viewModel.replaceAlertMessage,
@@ -192,8 +200,8 @@ extension MessageFormViewController: MessageFormToolbarDelegate {
 
             let cancelAction = UIAlertAction(title: viewModel.replaceAlertCancelText, style: .cancel)
             let replaceAction = UIAlertAction(title: viewModel.replaceAlertActionText, style: .default, handler: { [weak self] _ in
-                self?.messageFormView.text = template
-                self?.lastEnteredTemplate = template
+                self?.messageFormView.text = template.text
+                self?.lastUsedTemplate = template
             })
 
             alertController.addAction(replaceAction)

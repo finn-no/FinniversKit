@@ -11,8 +11,14 @@ class MessageFormDemoPresenter {
 extension MessageFormDemoPresenter: MessageFormBottomSheetDelegate {
     func messageFormBottomSheetDidCancel(_ form: MessageFormBottomSheet) { }
 
-    func messageFormBottomSheet(_ form: MessageFormBottomSheet, didFinishWithText text: String, templateState: MessageFormTemplateState) {
-        let alertController = UIAlertController(title: "Message sent!", message: "templateState: \(templateState)\n\n\(text)", preferredStyle: .alert)
+    func messageFormBottomSheet(_ form: MessageFormBottomSheet, didFinishWithText text: String, templateState: MessageFormTemplateState, template: MessageFormTemplate?) {
+        var templateString = ""
+        if let template = template {
+            let id = template.id ?? "<nil>"
+            templateString = "\ntemplate ID: \(id)"
+        }
+
+        let alertController = UIAlertController(title: "Message sent!", message: "templateState: \(templateState)\(templateString)\n\n\(text)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         form.present(alertController, animated: true)

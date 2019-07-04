@@ -4,6 +4,16 @@
 
 import Foundation
 
+public struct MessageFormTemplate {
+    public let text: String
+    public let id: String?
+
+    public init(text: String, id: String? = nil) {
+        self.text = text
+        self.id = id
+    }
+}
+
 public protocol MessageFormViewModel: AnyObject {
     var showTemplateToolbar: Bool { get }
 
@@ -11,7 +21,7 @@ public protocol MessageFormViewModel: AnyObject {
     var sendButtonText: String { get }
     var cancelButtonText: String { get }
     var transparencyText: String { get }
-    var messageTemplates: [String] { get }
+    var messageTemplates: [MessageFormTemplate] { get }
 
     var replaceAlertTitle: String { get }
     var replaceAlertMessage: String { get }
