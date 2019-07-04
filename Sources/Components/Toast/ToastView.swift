@@ -32,7 +32,7 @@ public class ToastView: UIView {
     private let imageSizeAllowedMax = CGSize(width: 26, height: 26)
 
     private lazy var messageTitle: Label = {
-        let label = Label(style: .bodyStrong)
+        let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -42,6 +42,7 @@ public class ToastView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.primaryBlue, for: .normal)
+        button.titleLabel?.font = .bodyStrong
         button.layer.masksToBounds = true
         button.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: .horizontal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
