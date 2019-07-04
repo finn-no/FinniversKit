@@ -340,6 +340,9 @@
 		DAD0D492210737A30091DD4D /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D491210737A30091DD4D /* TextView.swift */; };
 		DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D493210739500091DD4D /* DescriptionView.swift */; };
 		DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6A55B21CA524B00837BFA /* CGPoint.swift */; };
+		DAE738C422C4BE44001C69E3 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE738C322C4BE44001C69E3 /* CarouselView.swift */; };
+		DAE738C722C4C85E001C69E3 /* CarouselViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE738C622C4C85E001C69E3 /* CarouselViewDemo.swift */; };
+		DAE738C922C4CB19001C69E3 /* CarouselViewDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE738C822C4CB19001C69E3 /* CarouselViewDemoCell.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
@@ -355,6 +358,11 @@
 		F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2772F4322803B310002D21F /* ReviewButtonView.swift */; };
 		F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */; };
 		F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */; };
+		F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */; };
+		F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */; };
+		F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */; };
+		F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E96222CB688800CED7E0 /* QuestionnaireDemoView.swift */; };
+		F2C3E96522CB69B100CED7E0 /* QuestionnaireDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E96422CB69B100CED7E0 /* QuestionnaireDefaultData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -732,6 +740,9 @@
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		DAE6A55B21CA524B00837BFA /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		DAE738C322C4BE44001C69E3 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		DAE738C622C4C85E001C69E3 /* CarouselViewDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewDemo.swift; sourceTree = "<group>"; };
+		DAE738C822C4CB19001C69E3 /* CarouselViewDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewDemoCell.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
 		F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsEmptyViewCell.swift; sourceTree = "<group>"; };
@@ -747,6 +758,11 @@
 		F2772F4322803B310002D21F /* ReviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonView.swift; sourceTree = "<group>"; };
 		F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonViewDemoView.swift; sourceTree = "<group>"; };
 		F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonControl.swift; sourceTree = "<group>"; };
+		F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
+		F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewModel.swift; sourceTree = "<group>"; };
+		F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionnaireView+Style.swift"; sourceTree = "<group>"; };
+		F2C3E96222CB688800CED7E0 /* QuestionnaireDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireDemoView.swift; sourceTree = "<group>"; };
+		F2C3E96422CB69B100CED7E0 /* QuestionnaireDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireDefaultData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1273,6 +1289,7 @@
 				AF91BB95202C7487003E6366 /* Broadcast */,
 				4447F6651FDB2B110033DBC1 /* Button */,
 				CFCDDA5A22730213005E1F4A /* Callout */,
+				DAE738C222C4BE2D001C69E3 /* CarouselView */,
 				45B2E06B207E181C00C68B92 /* Consent */,
 				F2BE212E22819ED8004640F3 /* Control */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
@@ -1298,6 +1315,7 @@
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				081F51BB222932C900026C84 /* TextView */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
+				F2C3E95A22CB634700CED7E0 /* QuestionnaireView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2030,11 +2048,11 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CFB61377229ACB6200DE283D /* IconCollection */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
 				CFCDDA5D22731D4D005E1F4A /* Callout */,
+				DAE738C522C4C84C001C69E3 /* CarouselView */,
 				CF8F021821DCC624004C4042 /* Consent */,
 				AA7A854F22258A0B00AF5F42 /* Dialogue */,
 				0884C6CA22B7B5DA0015474D /* Disclaimer */,
@@ -2042,6 +2060,7 @@
 				9A37DBD671995665FDBC64C4 /* Feedback */,
 				08F0D3F5222691F000968256 /* HappinessRating */,
 				CF8F021521DCC5DA004C4042 /* HorizontalSlide */,
+				CFB61377229ACB6200DE283D /* IconCollection */,
 				CF39ADFB22034E9C002FC43E /* Infobox */,
 				CF8F022221DCC6D5004C4042 /* Label */,
 				CF8F021621DCC5F6004C4042 /* LoadingIndicator */,
@@ -2057,6 +2076,7 @@
 				CF8F022421DCC6EE004C4042 /* TextField */,
 				081F51B8222930B400026C84 /* TextView */,
 				CF8F022521DCC6F8004C4042 /* Toast */,
+				F2C3E96122CB686F00CED7E0 /* QuestionnaireView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2676,6 +2696,23 @@
 			path = "Core Graphics";
 			sourceTree = "<group>";
 		};
+		DAE738C222C4BE2D001C69E3 /* CarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				DAE738C322C4BE44001C69E3 /* CarouselView.swift */,
+			);
+			path = CarouselView;
+			sourceTree = "<group>";
+		};
+		DAE738C522C4C84C001C69E3 /* CarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				DAE738C622C4C85E001C69E3 /* CarouselViewDemo.swift */,
+				DAE738C822C4CB19001C69E3 /* CarouselViewDemoCell.swift */,
+			);
+			path = CarouselView;
+			sourceTree = "<group>";
+		};
 		F22612D6225631FD00472D22 /* StatisticsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2764,6 +2801,25 @@
 				F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */,
 			);
 			path = ReviewButtonControl;
+			sourceTree = "<group>";
+		};
+		F2C3E95A22CB634700CED7E0 /* QuestionnaireView */ = {
+			isa = PBXGroup;
+			children = (
+				F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */,
+				F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */,
+				F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */,
+			);
+			path = QuestionnaireView;
+			sourceTree = "<group>";
+		};
+		F2C3E96122CB686F00CED7E0 /* QuestionnaireView */ = {
+			isa = PBXGroup;
+			children = (
+				F2C3E96222CB688800CED7E0 /* QuestionnaireDemoView.swift */,
+				F2C3E96422CB69B100CED7E0 /* QuestionnaireDefaultData.swift */,
+			);
+			path = QuestionnaireView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3000,6 +3056,7 @@
 				146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */,
 				14A873D4220879870029DEA8 /* ConfirmationViewDemoView.swift in Sources */,
 				44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */,
+				DAE738C922C4CB19001C69E3 /* CarouselViewDemoCell.swift in Sources */,
 				F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */,
 				444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				6266C0752208235000FB8004 /* AdManagementDemoView.swift in Sources */,
@@ -3052,6 +3109,7 @@
 				CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */,
 				4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */,
 				DAC65FBB21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift in Sources */,
+				F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
@@ -3072,12 +3130,14 @@
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
 				895175932248CFD4008003FB /* StepIndicatorDemoView.swift in Sources */,
+				F2C3E96522CB69B100CED7E0 /* QuestionnaireDefaultData.swift in Sources */,
 				447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */,
 				CF7C460F22257AE1001FB92C /* EarthHourDemoView.swift in Sources */,
 				DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */,
 				DA93EFAA21C2BB2900207239 /* NewYearsDemoView.swift in Sources */,
 				9A37DACD70E4383536D5312B /* FeedbackDemoView.swift in Sources */,
 				9F21365157F385AC63928150 /* FullscreenGalleryDemoViewController.swift in Sources */,
+				DAE738C722C4C85E001C69E3 /* CarouselViewDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3125,6 +3185,7 @@
 				89A7A64A22536E200053D33B /* NativeContentSettingsButton.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
+				F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */,
 				DAC7DCAE2153866E004602A3 /* SettingsViewCell.swift in Sources */,
 				CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
@@ -3157,6 +3218,7 @@
 				899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */,
 				444246032137D60400D42AB8 /* FavoriteFoldersListViewModel.swift in Sources */,
 				DAAAC8FD21C14FEE0071B028 /* FireworksView.swift in Sources */,
+				DAE738C422C4BE44001C69E3 /* CarouselView.swift in Sources */,
 				8951759A224902E4008003FB /* StepDotConnector.swift in Sources */,
 				6266C07022081EEA00FB8004 /* StatisticsItemModel.swift in Sources */,
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
@@ -3224,11 +3286,13 @@
 				4447F6ED1FDB2B110033DBC1 /* TextField.swift in Sources */,
 				AA7A854E22255AB200AF5F42 /* DialogueView.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,
+				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
 				620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */,
 				DAB7FAA621B690DD00BF8CC6 /* BottomSheet.swift in Sources */,
+				F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */,
 				08D70A15218328C6003E2222 /* CheckboxTableViewCell.swift in Sources */,
 				CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */,
 				CF7C460822257A8A001FB92C /* EarthHourView.swift in Sources */,
