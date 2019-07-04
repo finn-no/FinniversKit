@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol RemoteImageTableViewCellDataSource: class {
+public protocol RemoteImageTableViewCellDataSource: AnyObject {
     func remoteImageTableViewCell(
         _ cell: RemoteImageTableViewCell,
         loadImageForModel model: RemoteImageTableViewCellViewModel,
