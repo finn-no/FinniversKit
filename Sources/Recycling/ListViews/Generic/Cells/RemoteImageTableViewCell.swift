@@ -22,9 +22,7 @@ public final class RemoteImageTableViewCell: BasicTableViewCell {
     public weak var dataSource: RemoteImageTableViewCellDataSource?
     /// The loading color is used to fill the image view while we load the image.
     public var loadingColor: UIColor?
-
     private var viewModel: RemoteImageTableViewCellViewModel?
-    private lazy var remoteImageWidthConstraint = stackView.widthAnchor.constraint(equalToConstant: 40)
 
     private lazy var remoteImageView: UIImageView = {
         let imageView = UIImageView()
@@ -33,6 +31,8 @@ public final class RemoteImageTableViewCell: BasicTableViewCell {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+
+    private lazy var remoteImageWidthConstraint = remoteImageView.widthAnchor.constraint(equalToConstant: 40)
 
     private var defaultImage: UIImage? {
         return UIImage(named: .noImage)
@@ -66,7 +66,6 @@ public final class RemoteImageTableViewCell: BasicTableViewCell {
 
     public func configure(with viewModel: RemoteImageTableViewCellViewModel) {
         super.configure(with: viewModel)
-
         self.viewModel = viewModel
 
         selectionStyle = .default
@@ -103,12 +102,12 @@ public final class RemoteImageTableViewCell: BasicTableViewCell {
         stackViewLeadingAnchorConstraint.isActive = false
 
         NSLayoutConstraint.activate([
-            remoteImageView.widthAnchor.constraint(equalToConstant: 40),
+            remoteImageWidthConstraint,
             remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             remoteImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumSpacing)
+            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing)
         ])
     }
 }
