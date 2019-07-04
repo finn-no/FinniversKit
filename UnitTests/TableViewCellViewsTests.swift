@@ -50,4 +50,8 @@ class TableViewCellsViewTests: FBSnapshotTestCase {
     func testIconTitleCell() {
         snapshot(.iconTitleCell)
     }
+
+    func testRemoteImageCell() {
+        snapshot(.remoteImageCell)
+    }
 }
