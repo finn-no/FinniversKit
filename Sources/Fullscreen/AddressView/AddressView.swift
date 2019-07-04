@@ -5,6 +5,12 @@
 import UIKit
 
 @objc public class AddressView: UIView {
+    lazy var mapTypeSegmentControl: UISegmentedControl = {
+        let control = UISegmentedControl(items: ["Kart", "Flyfoto", "Hybrid"])
+        control.translatesAutoresizingMaskIntoConstraints = false
+        return control
+    }()
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -26,9 +32,11 @@ import UIKit
 
 private extension AddressView {
     private func setup() {
-        backgroundColor = .red
-
+        addSubview(mapTypeSegmentControl)
         NSLayoutConstraint.activate([
+            mapTypeSegmentControl.topAnchor.constraint(equalTo: topAnchor),
+            mapTypeSegmentControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            mapTypeSegmentControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 }
