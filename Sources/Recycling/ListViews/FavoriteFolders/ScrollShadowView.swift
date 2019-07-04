@@ -4,7 +4,7 @@
 
 import UIKit
 
-final class ScrollShadowView: UIView {
+final class ShadowView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

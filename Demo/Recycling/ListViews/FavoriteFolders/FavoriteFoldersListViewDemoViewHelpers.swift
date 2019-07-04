@@ -34,13 +34,17 @@ struct FavoriteFoldersFactory {
             "Privat slott",
             "Pent brukt bolig",
             "Enebolig i rolig strøk",
-            "Hus til slags"
+            "Hus til slags",
+            "Villa Villekulla 2",
+            "Privat slott 2",
+            "Pent brukt bolig 2",
+            "Enebolig i rolig strøk 2",
         ]
     }
 
     private static var imagePaths: [String?] {
         return [
-            "http://www.discoverydreamhomes.com/wp-content/uploads/Model-Features-Copper-House.jpg",
+            "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
             "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg",
             "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg",
             "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
@@ -49,6 +53,10 @@ struct FavoriteFoldersFactory {
             "https://www.younghouselove.com/wp-content/uploads//2017/04/Beach-House-Update-Three-Houses-One-Pink.jpg",
             nil,
             "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
+            "https://i.pinimg.com/736x/72/14/22/721422aa64cbb51ccb5f02eb29c22255--gray-houses-colored-doors-on-houses.jpg",
+            "https://i.pinimg.com/736x/38/f2/02/38f2028c5956cd6b33bfd16441a05961--victorian-homes-stone-victorian-house.jpg",
+            "https://www.younghouselove.com/wp-content/uploads//2017/04/Beach-House-Update-Three-Houses-One-Pink.jpg",
+            "https://www.younghouselove.com/wp-content/uploads//2017/04/Beach-House-Update-Three-Houses-One-Pink.jpg"
         ]
     }
 }

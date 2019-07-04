@@ -4,7 +4,6 @@
 
 import FinniversKit
 
-
 final class FavoriteFoldersListViewDemoView: UIView {
     private let favorites = FavoriteFoldersFactory.create()
 

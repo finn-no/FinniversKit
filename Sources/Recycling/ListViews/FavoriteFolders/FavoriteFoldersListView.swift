@@ -56,8 +56,18 @@ public class FavoriteFoldersListView: UIView {
         return tableView
     }()
 
-    private lazy var topShadowView = ScrollShadowView(withAutoLayout: true)
-    private lazy var bottomShadowView = ScrollShadowView(withAutoLayout: true)
+    private lazy var topShadowView = ShadowView(withAutoLayout: true)
+
+    private lazy var bottomShadowView: UIView = {
+        let view = FavoriteAddFolderView(withAutoLayout: true)
+        view.configure(withTitle: "Lag ny liste")
+        return view
+    }()
+
+    private lazy var bottomShadowViewTop = bottomShadowView.topAnchor.constraint(
+        equalTo: bottomAnchor,
+        constant: FavoriteFoldersListView.estimatedRowHeight
+    )
 
     // MARK: - Init
 
@@ -92,10 +102,10 @@ public class FavoriteFoldersListView: UIView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            bottomShadowView.topAnchor.constraint(equalTo: bottomAnchor),
+            bottomShadowViewTop,
             bottomShadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomShadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            bottomShadowView.heightAnchor.constraint(equalToConstant: FavoriteFoldersListView.estimatedRowHeight)
+            bottomShadowView.heightAnchor.constraint(equalToConstant: 56)
         ])
     }
 }
@@ -168,6 +178,13 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         topShadowView.update(with: scrollView)
+
+        let viewHeight = bottomShadowView.frame.height
+        let offsetY = scrollView.contentOffset.y
+
+        if offsetY >= 0 && offsetY <= viewHeight * 2 {
+            bottomShadowViewTop.constant = -offsetY + viewHeight
+        }
     }
 }
 
