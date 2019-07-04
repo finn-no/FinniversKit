@@ -34,6 +34,7 @@ public class FavoriteFoldersListView: UIView {
         tableView.rowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
+        tableView.tableFooterView = UIView()
         tableView.register(RemoteImageTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
