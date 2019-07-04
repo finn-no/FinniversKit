@@ -244,6 +244,7 @@ public enum TableViewCellViews: String, CaseIterable {
     case checkboxSubtitleCell
     case heartSubtitleCell
     case iconTitleCell
+    case remoteImageCell
 
     public var viewController: UIViewController {
         switch self {
@@ -259,6 +260,8 @@ public enum TableViewCellViews: String, CaseIterable {
             return DemoViewController<HeartSubtitleCellDemoView>(withDismissButton: true)
         case .iconTitleCell:
             return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
+        case .remoteImageCell:
+            return DemoViewController<RemoteImageCellDemoView>(withDismissButton: true)
         }
     }
 }
