@@ -18,6 +18,11 @@ public protocol FavoriteFoldersListViewDataSource: RemoteImageTableViewCellDataS
 }
 
 public class FavoriteFoldersListView: UIView {
+    private enum Section: Int, CaseIterable {
+        case addButton
+        case folder
+    }
+
     public static let estimatedRowHeight: CGFloat = 64.0
 
     // MARK: - Public properties
@@ -27,6 +32,15 @@ public class FavoriteFoldersListView: UIView {
 
     // MARK: - Private properties
 
+    private(set) lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar(withAutoLayout: true)
+        searchBar.searchBarStyle = .minimal
+        searchBar.backgroundColor = .milk
+        searchBar.placeholder = "Søk etter en av dine lister"
+        //searchBar.delegate = self
+        return searchBar
+    }()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,11 +49,15 @@ public class FavoriteFoldersListView: UIView {
         tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.tableFooterView = UIView()
+        tableView.register(FavoriteAddFolderViewCell.self)
         tableView.register(RemoteImageTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
     }()
+
+    private lazy var topShadowView = ScrollShadowView(withAutoLayout: true)
+    private lazy var bottomShadowView = ScrollShadowView(withAutoLayout: true)
 
     // MARK: - Init
 
@@ -55,7 +73,30 @@ public class FavoriteFoldersListView: UIView {
 
     private func setup() {
         addSubview(tableView)
-        tableView.fillInSuperview()
+        addSubview(topShadowView)
+        addSubview(searchBar)
+        addSubview(bottomShadowView)
+
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+
+            topShadowView.topAnchor.constraint(equalTo: topAnchor, constant: -44),
+            topShadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            topShadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            topShadowView.bottomAnchor.constraint(equalTo: searchBar.bottomAnchor),
+
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            bottomShadowView.topAnchor.constraint(equalTo: bottomAnchor),
+            bottomShadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            bottomShadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bottomShadowView.heightAnchor.constraint(equalToConstant: FavoriteFoldersListView.estimatedRowHeight)
+        ])
     }
 }
 
@@ -82,24 +123,76 @@ extension FavoriteFoldersListView: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 
 extension FavoriteFoldersListView: UITableViewDataSource {
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return Section.allCases.count
+    }
+
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0
+        guard let section = Section(rawValue: section) else { return 0 }
+
+        switch section {
+        case .addButton:
+            return 1
+        case .folder:
+            return dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0
+        }
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(RemoteImageTableViewCell.self, for: indexPath)
+        guard let section = Section(rawValue: indexPath.section) else { return UITableViewCell() }
 
-        // Show a pretty color while we load the image
-        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
-        let color = colors[indexPath.row % 4]
+        switch section {
+        case .addButton:
+            let cell = tableView.dequeue(FavoriteAddFolderViewCell.self, for: indexPath)
+            cell.configure(withTitle: "Lag ny liste")
+            return cell
+        case .folder:
+            let cell = tableView.dequeue(RemoteImageTableViewCell.self, for: indexPath)
 
-        cell.loadingColor = color
-        cell.dataSource = dataSource
+            // Show a pretty color while we load the image
+            let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+            let color = colors[indexPath.row % 4]
 
-        if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
-            cell.configure(with: viewModel)
+            cell.loadingColor = color
+            cell.dataSource = dataSource
+
+            if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
+                cell.configure(with: viewModel)
+            }
+
+            return cell
         }
-
-        return cell
     }
+}
+
+extension FavoriteFoldersListView: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        topShadowView.update(with: scrollView)
+    }
+}
+
+private class FreeTextFilterSearchBar: UISearchBar {
+    // Makes sure to setup appearance proxy one time and one time only
+//    private static let setupSearchQuerySearchBarAppereanceOnce: () = {
+//        let textFieldAppearance = UITextField.appearance(whenContainedInInstancesOf: [FreeTextFilterSearchBar.self])
+//        textFieldAppearance.adjustsFontForContentSizeCategory = true
+//        textFieldAppearance.defaultTextAttributes = [
+//            NSAttributedString.Key.foregroundColor: UIColor.licorice,
+//            NSAttributedString.Key.font: UIFont.bodyRegular,
+//        ]
+//
+//        let barButtondAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [FreeTextFilterSearchBar.self])
+//        barButtondAppearance.setTitleTextAttributes([.font: UIFont.bodyRegular])
+//        barButtondAppearance.title = "cancel".localized()
+//    }()
+//
+//    override init(frame: CGRect) {
+//        _ = FreeTextFilterSearchBar.setupSearchQuerySearchBarAppereanceOnce
+//        super.init(frame: frame)
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        _ = FreeTextFilterSearchBar.setupSearchQuerySearchBarAppereanceOnce
+//        super.init(coder: aDecoder)
+//    }
 }

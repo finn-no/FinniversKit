@@ -296,6 +296,8 @@
 		CFCED8D322CCEF940049A3A0 /* RemoteImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8D222CCEF940049A3A0 /* RemoteImageTableViewCell.swift */; };
 		CFCED8D522CCF0500049A3A0 /* RemoteImageTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8D422CCF0500049A3A0 /* RemoteImageTableViewCellViewModel.swift */; };
 		CFCED8D722CCFCE80049A3A0 /* RemoteImageCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8D622CCFCE80049A3A0 /* RemoteImageCellDemoView.swift */; };
+		CFCED8D922CE2BE90049A3A0 /* ScrollShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8D822CE2BE90049A3A0 /* ScrollShadowView.swift */; };
+		CFCED8DD22CE3EAA0049A3A0 /* FavoriteAddFolderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8DC22CE3EAA0049A3A0 /* FavoriteAddFolderViewCell.swift */; };
 		CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */; };
 		CFE43E52219B1B2900D3D5F7 /* FrontPageRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */; };
 		CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9726E21C3BA1D00C85238 /* BannerTransparencySectionView.swift */; };
@@ -697,6 +699,8 @@
 		CFCED8D222CCEF940049A3A0 /* RemoteImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageTableViewCell.swift; sourceTree = "<group>"; };
 		CFCED8D422CCF0500049A3A0 /* RemoteImageTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		CFCED8D622CCFCE80049A3A0 /* RemoteImageCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageCellDemoView.swift; sourceTree = "<group>"; };
+		CFCED8D822CE2BE90049A3A0 /* ScrollShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollShadowView.swift; sourceTree = "<group>"; };
+		CFCED8DC22CE3EAA0049A3A0 /* FavoriteAddFolderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAddFolderViewCell.swift; sourceTree = "<group>"; };
 		CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewDefaultData.swift; sourceTree = "<group>"; };
 		CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageRetryView.swift; sourceTree = "<group>"; };
 		CFF9726D21C3BA1D00C85238 /* BannerTransparencyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyDemoView.swift; sourceTree = "<group>"; };
@@ -1239,8 +1243,10 @@
 		444245FA2137D60400D42AB8 /* FavoriteFolders */ = {
 			isa = PBXGroup;
 			children = (
+				CFCED8DC22CE3EAA0049A3A0 /* FavoriteAddFolderViewCell.swift */,
 				444245FE2137D60400D42AB8 /* FavoriteFoldersListView.swift */,
 				444246002137D60400D42AB8 /* FavoriteFoldersListViewModel.swift */,
+				CFCED8D822CE2BE90049A3A0 /* ScrollShadowView.swift */,
 			);
 			path = FavoriteFolders;
 			sourceTree = "<group>";
@@ -3257,6 +3263,7 @@
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
 				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				625A220B221EB26500733101 /* AdManagementActionCellModel.swift in Sources */,
+				CFCED8D922CE2BE90049A3A0 /* ScrollShadowView.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
 				CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */,
 				CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */,
@@ -3298,6 +3305,7 @@
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
 				14DC127021593B0000326DC3 /* HorizontalSlideTransition.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
+				CFCED8DD22CE3EAA0049A3A0 /* FavoriteAddFolderViewCell.swift in Sources */,
 				DAB7FAA921B690DD00BF8CC6 /* BottomSheetAnimationController.swift in Sources */,
 				0884C6CE22B7BE360015474D /* DisclaimerViewModel.swift in Sources */,
 				CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */,
