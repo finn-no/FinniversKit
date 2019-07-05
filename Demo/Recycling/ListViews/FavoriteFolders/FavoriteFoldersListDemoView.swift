@@ -48,6 +48,7 @@ final class FavoriteFoldersListDemoView: UIView {
 
 extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
     func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didSelectItemAtIndex index: Int) {}
+    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView) {}
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String) {
         let items = searchText.isEmpty

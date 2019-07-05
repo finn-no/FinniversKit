@@ -6,6 +6,7 @@ import UIKit
 
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
+    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
     func favoriteFoldersListViewDidCancelSearch(_ view: FavoriteFoldersListView)
 }
@@ -27,7 +28,7 @@ public protocol FavoriteFoldersListViewDataSource: AnyObject {
 public class FavoriteFoldersListView: UIView {
     private enum Section: Int, CaseIterable {
         case addButton
-        case folder
+        case folders
     }
 
     public static let estimatedRowHeight: CGFloat = 64.0
@@ -65,7 +66,12 @@ public class FavoriteFoldersListView: UIView {
         return tableView
     }()
 
-    private lazy var footerView = FavoriteFoldersFooterView(withAutoLayout: true)
+    private lazy var footerView: FavoriteFoldersFooterView = {
+        let view = FavoriteFoldersFooterView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
+
     private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
 
     private lazy var footerHeight: CGFloat = {
@@ -125,8 +131,16 @@ public class FavoriteFoldersListView: UIView {
 
 extension FavoriteFoldersListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: false)
+
+        guard let section = Section(rawValue: indexPath.section) else { return }
+
+        switch section {
+        case .addButton:
+            delegate?.favoriteFoldersListViewDidSelectAddButton(self)
+        case .folders:
+            delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
+        }
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -157,7 +171,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
         switch section {
         case .addButton:
             return isSearchActive ? 0 : 1
-        case .folder:
+        case .folders:
             return dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0
         }
     }
@@ -170,7 +184,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             let cell = tableView.dequeue(AddFavoriteFolderViewCell.self, for: indexPath)
             cell.configure(withTitle: viewModel.addFolderText)
             return cell
-        case .folder:
+        case .folders:
             let cell = tableView.dequeue(RemoteImageTableViewCell.self, for: indexPath)
 
             // Show a pretty color while we load the image
@@ -188,6 +202,16 @@ extension FavoriteFoldersListView: UITableViewDataSource {
         }
     }
 }
+
+// MARK: - FavoriteFoldersFooterViewDelegate
+
+extension FavoriteFoldersListView: FavoriteFoldersFooterViewDelegate {
+    func favoriteFoldersFooterViewDidSelectButton(_ view: FavoriteFoldersFooterView) {
+        delegate?.favoriteFoldersListViewDidSelectAddButton(self)
+    }
+}
+
+// MARK: - RemoteImageTableViewCellDataSource
 
 extension FavoriteFoldersListView: RemoteImageTableViewCellDataSource {
     public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,

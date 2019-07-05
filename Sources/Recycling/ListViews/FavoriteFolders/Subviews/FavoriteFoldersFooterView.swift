@@ -4,10 +4,19 @@
 
 import UIKit
 
+protocol FavoriteFoldersFooterViewDelegate: AnyObject {
+    func favoriteFoldersFooterViewDidSelectButton(_ view: FavoriteFoldersFooterView)
+}
+
 final class FavoriteFoldersFooterView: UIView {
     private static let shadowRadius: CGFloat = 2
 
-    private(set) lazy var button = AddFavoriteFolderButton(withAutoLayout: true)
+    weak var delegate: FavoriteFoldersFooterViewDelegate?
+    private(set) lazy var button: UIButton = {
+        let button = AddFavoriteFolderButton(withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
+        return button
+    }()
 
     // MARK: - Init
 
@@ -51,5 +60,11 @@ final class FavoriteFoldersFooterView: UIView {
             button.leadingAnchor.constraint(equalTo: leadingAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+    }
+
+    // MARK: - Actions
+
+    @objc private func handleButtonTap() {
+        delegate?.favoriteFoldersFooterViewDidSelectButton(self)
     }
 }
