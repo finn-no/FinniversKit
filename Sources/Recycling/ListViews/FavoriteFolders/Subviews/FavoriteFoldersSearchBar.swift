@@ -35,6 +35,7 @@ final class FavoriteFoldersSearchBar: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        // Make shadow to be on bottom
         let radius = FavoriteFoldersSearchBar.maxShadowRadius
         let rect = CGRect(x: 0, y: bounds.maxY - radius, width: bounds.width, height: radius)
         layer.shadowPath = UIBezierPath(rect: rect).cgPath
@@ -62,6 +63,7 @@ final class FavoriteFoldersSearchBar: UIView {
 
     private func setup() {
         backgroundColor = .white
+
         layer.masksToBounds = false
         layer.shadowOpacity = 0.3
         layer.shadowRadius = 0

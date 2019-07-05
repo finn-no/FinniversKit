@@ -156,13 +156,7 @@ public enum RecyclingViews: String, CaseIterable {
         case .notificationsListView:
             return DemoViewController<NotificationsListViewDemoView>()
         case .favoriteFoldersListView:
-            let viewController = DemoViewController<FavoriteFoldersListDemoView>()
-            viewController.navigationItem.title = "Velg liste"
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(
-                title: "Avbryt", style: .done, target: nil, action: nil
-            )
-            let navigationController = UINavigationController(rootViewController: viewController)
-            return BottomSheet(rootViewController: navigationController)
+            return DemoViewController<FavoriteFoldersListDemoView>(constrainToBottomSafeArea: false)
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:

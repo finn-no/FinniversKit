@@ -59,10 +59,10 @@ public class FavoriteFoldersListView: UIView {
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.tableFooterView = UIView()
         tableView.contentInset.bottom = FavoriteFoldersListView.estimatedRowHeight
-        tableView.register(AddFavoriteFolderViewCell.self)
-        tableView.register(RemoteImageTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(AddFavoriteFolderViewCell.self)
+        tableView.register(RemoteImageTableViewCell.self)
         return tableView
     }()
 
@@ -96,7 +96,7 @@ public class FavoriteFoldersListView: UIView {
         tableView.reloadData()
     }
 
-    // MARK: - Init
+    // MARK: - Setup
 
     private func setup() {
         searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
@@ -124,37 +124,6 @@ public class FavoriteFoldersListView: UIView {
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             footerView.heightAnchor.constraint(equalToConstant: footerHeight)
         ])
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension FavoriteFoldersListView: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-
-        guard let section = Section(rawValue: indexPath.section) else { return }
-
-        switch section {
-        case .addButton:
-            delegate?.favoriteFoldersListViewDidSelectAddButton(self)
-        case .folders:
-            delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
-        }
-    }
-
-    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? RemoteImageTableViewCell else {
-            return
-        }
-
-        let isLastCell = indexPath.row == (self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1)
-
-        if isLastCell {
-            cell.separatorInset = .leadingInset(frame.width)
-        }
-
-        cell.loadImage()
     }
 }
 
@@ -203,6 +172,37 @@ extension FavoriteFoldersListView: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
+
+extension FavoriteFoldersListView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+
+        guard let section = Section(rawValue: indexPath.section) else { return }
+
+        switch section {
+        case .addButton:
+            delegate?.favoriteFoldersListViewDidSelectAddButton(self)
+        case .folders:
+            delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
+        }
+    }
+
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? RemoteImageTableViewCell else {
+            return
+        }
+
+        let isLastCell = indexPath.row == (self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1)
+
+        if isLastCell {
+            cell.separatorInset = .leadingInset(frame.width)
+        }
+
+        cell.loadImage()
+    }
+}
+
 // MARK: - FavoriteFoldersFooterViewDelegate
 
 extension FavoriteFoldersListView: FavoriteFoldersFooterViewDelegate {
@@ -235,7 +235,8 @@ extension FavoriteFoldersListView: RemoteImageTableViewCellDataSource {
         })
     }
 
-    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell, cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {
+    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
+                                         cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {
         dataSource?.favoriteFoldersListView(self, cancelLoadingImageForModel: model)
     }
 }
@@ -256,11 +257,14 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
         let maxOffset = minOffset + footerHeight
 
         if offset >= minOffset && offset <= maxOffset {
+            // Slide up the footer view while the first cell with "Add folder" button is disappearing during scrolling.
             footerViewTop.constant = -offset + minOffset
-        } else if offset <= footerHeight {
-            footerViewTop.constant = 0
         } else if offset > maxOffset {
+            // Stop sliding when the footer view appear in full height.
             footerViewTop.constant = -footerHeight
+        } else if offset <= footerHeight {
+            // Hide the footer view when the first cell with "Add folder" button is visible.
+            footerViewTop.constant = 0
         }
     }
 }

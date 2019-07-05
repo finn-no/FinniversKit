@@ -12,6 +12,7 @@ final class FavoriteFoldersFooterView: UIView {
     private static let shadowRadius: CGFloat = 2
 
     weak var delegate: FavoriteFoldersFooterViewDelegate?
+
     private(set) lazy var button: UIButton = {
         let button = AddFavoriteFolderButton(withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
@@ -33,6 +34,7 @@ final class FavoriteFoldersFooterView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        // Make shadow to be on top
         let rect = CGRect(x: 0, y: -layer.shadowRadius, width: bounds.width, height: layer.shadowRadius)
         layer.shadowPath = UIBezierPath(rect: rect).cgPath
     }

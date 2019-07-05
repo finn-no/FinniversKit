@@ -84,8 +84,7 @@ public final class RemoteImageTableViewCell: BasicTableViewCell {
 
     public func loadImage() {
         guard let viewModel = viewModel, let dataSource = dataSource, viewModel.imagePath != nil else {
-            loadingColor = .clear
-            remoteImageView.image = defaultImage
+            setImage(defaultImage, animated: false)
             return
         }
 
@@ -124,7 +123,7 @@ public final class RemoteImageTableViewCell: BasicTableViewCell {
 
         let performViewChanges = { [weak self] in
             self?.remoteImageView.alpha = 1.0
-            self?.backgroundColor = .clear
+            self?.remoteImageView.backgroundColor = .clear
         }
 
         if animated {
