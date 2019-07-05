@@ -4,26 +4,15 @@
 
 import UIKit
 
-// MARK: - View
-
 final class FavoriteAddFolderView: UIView {
     static let imageWidth: CGFloat = 40
+    private static let shadowRadius: CGFloat = 2
 
-    var isTopShadowHidden: Bool {
-        get { return shadowView.isHidden }
-        set { shadowView.isHidden = newValue }
+    var isTopShadowHidden: Bool = false {
+        didSet {
+            layer.shadowRadius = isTopShadowHidden ? 0 : FavoriteAddFolderView.shadowRadius
+        }
     }
-
-    private lazy var shadowView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.layer.masksToBounds = false
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowRadius = 3
-        //view.layer.shadowOffset = CGSize(width: 0, height: -10)
-        view.layer.shadowOffset = .zero
-        view.layer.shadowColor = UIColor.black.cgColor
-        return view
-    }()
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -52,6 +41,12 @@ final class FavoriteAddFolderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let rect = CGRect(x: 0, y: -layer.shadowRadius, width: bounds.width, height: layer.shadowRadius)
+        layer.shadowPath = UIBezierPath(rect: rect).cgPath
+    }
+
     // MARK: - Setup
 
     func configure(withTitle title: String) {
@@ -60,22 +55,19 @@ final class FavoriteAddFolderView: UIView {
     }
 
     private func setup() {
-        clipsToBounds = false
-        isAccessibilityElement = true
         backgroundColor = .milk
+        isAccessibilityElement = true
+
+        layer.masksToBounds = false
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = FavoriteAddFolderView.shadowRadius
+        layer.shadowOffset = .zero
+        layer.shadowColor = UIColor.black.cgColor
 
         addSubview(imageView)
         addSubview(titleLabel)
-        addSubview(shadowView)
-
-        shadowView.backgroundColor = .white
 
         NSLayoutConstraint.activate([
-            shadowView.topAnchor.constraint(equalTo: topAnchor),
-            shadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            shadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            shadowView.heightAnchor.constraint(equalToConstant: 1),
-
             imageView.widthAnchor.constraint(equalToConstant: FavoriteAddFolderView.imageWidth),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
@@ -85,26 +77,5 @@ final class FavoriteAddFolderView: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
-    }
-}
-
-// MARK: - Cell
-
-final class FavoriteAddFolderViewCell: UITableViewCell {
-    private lazy var addFolderView = FavoriteAddFolderView(withAutoLayout: true)
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addFolderView.isTopShadowHidden = true
-        contentView.addSubview(addFolderView)
-        addFolderView.fillInSuperview()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func configure(withTitle title: String) {
-        addFolderView.configure(withTitle: title)
     }
 }

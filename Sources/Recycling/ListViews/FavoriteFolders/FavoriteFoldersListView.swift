@@ -32,13 +32,10 @@ public class FavoriteFoldersListView: UIView {
 
     // MARK: - Private properties
 
-    private(set) lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar(withAutoLayout: true)
-        searchBar.searchBarStyle = .minimal
-        searchBar.backgroundColor = .milk
-        searchBar.placeholder = "Søk etter en av dine lister"
-        //searchBar.delegate = self
-        return searchBar
+    private(set) lazy var searchBar: FavoriteFoldersSearchBar = {
+        let view = FavoriteFoldersSearchBar(withAutoLayout: true)
+        view.delegate = self
+        return view
     }()
 
     private lazy var tableView: UITableView = {
@@ -55,8 +52,6 @@ public class FavoriteFoldersListView: UIView {
         tableView.dataSource = self
         return tableView
     }()
-
-    private lazy var topShadowView = ShadowView(withAutoLayout: true)
 
     private lazy var bottomShadowView: UIView = {
         let view = FavoriteAddFolderView(withAutoLayout: true)
@@ -83,19 +78,13 @@ public class FavoriteFoldersListView: UIView {
 
     private func setup() {
         addSubview(tableView)
-        addSubview(topShadowView)
         addSubview(searchBar)
         addSubview(bottomShadowView)
 
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-
-            topShadowView.topAnchor.constraint(equalTo: topAnchor, constant: -44),
-            topShadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            topShadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            topShadowView.bottomAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -177,7 +166,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
 extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        topShadowView.update(with: scrollView)
+        searchBar.updateShadow(using: scrollView)
 
         let viewHeight = bottomShadowView.frame.height
         let offsetY = scrollView.contentOffset.y
@@ -188,28 +177,8 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
     }
 }
 
-private class FreeTextFilterSearchBar: UISearchBar {
-    // Makes sure to setup appearance proxy one time and one time only
-//    private static let setupSearchQuerySearchBarAppereanceOnce: () = {
-//        let textFieldAppearance = UITextField.appearance(whenContainedInInstancesOf: [FreeTextFilterSearchBar.self])
-//        textFieldAppearance.adjustsFontForContentSizeCategory = true
-//        textFieldAppearance.defaultTextAttributes = [
-//            NSAttributedString.Key.foregroundColor: UIColor.licorice,
-//            NSAttributedString.Key.font: UIFont.bodyRegular,
-//        ]
-//
-//        let barButtondAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [FreeTextFilterSearchBar.self])
-//        barButtondAppearance.setTitleTextAttributes([.font: UIFont.bodyRegular])
-//        barButtondAppearance.title = "cancel".localized()
-//    }()
-//
-//    override init(frame: CGRect) {
-//        _ = FreeTextFilterSearchBar.setupSearchQuerySearchBarAppereanceOnce
-//        super.init(frame: frame)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        _ = FreeTextFilterSearchBar.setupSearchQuerySearchBarAppereanceOnce
-//        super.init(coder: aDecoder)
-//    }
+// MARK: - UISearchBarDelegate
+
+extension FavoriteFoldersListView: UISearchBarDelegate {
+
 }
