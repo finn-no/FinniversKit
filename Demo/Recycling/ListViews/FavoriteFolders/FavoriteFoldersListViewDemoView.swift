@@ -5,7 +5,8 @@
 import FinniversKit
 
 final class FavoriteFoldersListViewDemoView: UIView {
-    private let favorites = FavoriteFoldersFactory.create()
+    private let allFavorites = FavoriteFoldersFactory.create()
+    private var filteredFavorites = [FavoriteFolderViewModel]()
 
     private let viewModel = FavoriteFoldersListViewModel(
         searchBarPlaceholder: "Søk etter en av dine lister",
@@ -20,16 +21,26 @@ final class FavoriteFoldersListViewDemoView: UIView {
         return view
     }()
 
+    // MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+        filteredFavorites = allFavorites
         setup()
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
+    // MARK: - Setup
+
     private func setup() {
         addSubview(view)
         view.fillInSuperview()
+    }
+
+    private func reload(with items: [FavoriteFolderViewModel]) {
+        filteredFavorites = items
+        view.reloadData()
     }
 }
 
@@ -37,16 +48,27 @@ final class FavoriteFoldersListViewDemoView: UIView {
 
 extension FavoriteFoldersListViewDemoView: FavoriteFoldersListViewDelegate {
     func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didSelectItemAtIndex index: Int) {}
+
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String) {
+        let items = searchText.isEmpty ? allFavorites : allFavorites.filter({ $0.title.contains(searchText) })
+        reload(with: items)
+    }
+
+    func favoriteFoldersListViewDidCancelSearch(_ view: FavoriteFoldersListView) {
+        reload(with: allFavorites)
+    }
 }
+
+// MARK: - FavoriteFoldersListViewDataSource
 
 extension FavoriteFoldersListViewDemoView: FavoriteFoldersListViewDataSource {
     func numberOfItems(inFavoriteFoldersListView favoriteFoldersListView: FavoriteFoldersListView) -> Int {
-        return favorites.count
+        return filteredFavorites.count
     }
 
     func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView,
                                  viewModelAtIndex index: Int) -> FavoriteFolderViewModel {
-        return favorites[index]
+        return filteredFavorites[index]
     }
 
     public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,

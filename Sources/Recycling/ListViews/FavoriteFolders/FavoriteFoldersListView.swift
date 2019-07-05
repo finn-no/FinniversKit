@@ -6,15 +6,13 @@ import UIKit
 
 public protocol FavoriteFoldersListViewDelegate: class {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
+    func favoriteFoldersListViewDidCancelSearch(_ view: FavoriteFoldersListView)
 }
 
 public protocol FavoriteFoldersListViewDataSource: RemoteImageTableViewCellDataSource {
     func numberOfItems(inFavoriteFoldersListView view: FavoriteFoldersListView) -> Int
-
-    func favoriteFoldersListView(
-        _ view: FavoriteFoldersListView,
-        viewModelAtIndex index: Int
-    ) -> FavoriteFolderViewModel
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, viewModelAtIndex index: Int) -> FavoriteFolderViewModel
 }
 
 public class FavoriteFoldersListView: UIView {
@@ -33,6 +31,7 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Private properties
 
     private let viewModel: FavoriteFoldersListViewModel
+    private var isSearchActive = false
 
     private(set) lazy var searchBar: FavoriteFoldersSearchBar = {
         let view = FavoriteFoldersSearchBar(withAutoLayout: true)
@@ -72,6 +71,12 @@ public class FavoriteFoldersListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Reload
+
+    public func reloadData() {
+        tableView.reloadData()
+    }
+
     // MARK: - Init
 
     private func setup() {
@@ -107,6 +112,7 @@ public class FavoriteFoldersListView: UIView {
 
 extension FavoriteFoldersListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
     }
 
@@ -135,7 +141,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
         switch section {
         case .addButton:
-            return 1
+            return isSearchActive ? 0 : 1
         case .folder:
             return dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0
         }
@@ -168,6 +174,8 @@ extension FavoriteFoldersListView: UITableViewDataSource {
     }
 }
 
+// MARK: - UIScrollViewDelegate
+
 extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.updateShadow(using: scrollView)
@@ -185,5 +193,23 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
 // MARK: - UISearchBarDelegate
 
 extension FavoriteFoldersListView: UISearchBarDelegate {
+    public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearchActive = true
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
 
+    public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearchActive = false
+        searchBar.setShowsCancelButton(false, animated: true)
+        delegate?.favoriteFoldersListViewDidCancelSearch(self)
+    }
+
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.endEditing(false)
+    }
+
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        delegate?.favoriteFoldersListView(self, didChangeSearchText: searchText)
+    }
 }
