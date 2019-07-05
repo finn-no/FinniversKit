@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-struct FavoriteFolder: FavoriteFoldersListViewModel {
+struct FavoriteFolder: FavoriteFolderViewModel {
     let title: String
     let imagePath: String?
     let subtitle: String? = nil

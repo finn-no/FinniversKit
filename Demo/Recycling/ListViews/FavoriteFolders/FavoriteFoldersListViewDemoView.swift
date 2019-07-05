@@ -7,8 +7,14 @@ import FinniversKit
 final class FavoriteFoldersListViewDemoView: UIView {
     private let favorites = FavoriteFoldersFactory.create()
 
+    private let viewModel = FavoriteFoldersListViewModel(
+        searchBarPlaceholder: "Søk etter en av dine lister",
+        addFolderText: "Lag ny liste",
+        cancelButtonTitle: "Avbryt"
+    )
+
     private lazy var view: FavoriteFoldersListView = {
-        let view = FavoriteFoldersListView(withAutoLayout: true)
+        let view = FavoriteFoldersListView(viewModel: viewModel)
         view.dataSource = self
         view.delegate = self
         return view
@@ -39,7 +45,7 @@ extension FavoriteFoldersListViewDemoView: FavoriteFoldersListViewDataSource {
     }
 
     func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView,
-                                 viewModelAtIndex index: Int) -> FavoriteFoldersListViewModel {
+                                 viewModelAtIndex index: Int) -> FavoriteFolderViewModel {
         return favorites[index]
     }
 

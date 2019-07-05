@@ -111,7 +111,7 @@
 		443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */; };
 		443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */; };
 		444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444245FE2137D60400D42AB8 /* FavoriteFoldersListView.swift */; };
-		444246032137D60400D42AB8 /* FavoriteFoldersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246002137D60400D42AB8 /* FavoriteFoldersListViewModel.swift */; };
+		444246032137D60400D42AB8 /* FavoriteFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */; };
 		444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246052137D61100D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift */; };
 		444246082137D61200D42AB8 /* FavoriteFoldersListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246062137D61100D42AB8 /* FavoriteFoldersListViewDemoView.swift */; };
 		4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443F9B0209D5ECE00E35719 /* Helpers.swift */; };
@@ -299,6 +299,7 @@
 		CFCED8D922CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8D822CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift */; };
 		CFCED8DD22CE3EAA0049A3A0 /* FavoriteAddFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8DC22CE3EAA0049A3A0 /* FavoriteAddFolderView.swift */; };
 		CFCED8E122CF3A690049A3A0 /* FavoriteAddFolderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8E022CF3A690049A3A0 /* FavoriteAddFolderViewCell.swift */; };
+		CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8E222CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift */; };
 		CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */; };
 		CFE43E52219B1B2900D3D5F7 /* FrontPageRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */; };
 		CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9726E21C3BA1D00C85238 /* BannerTransparencySectionView.swift */; };
@@ -514,7 +515,7 @@
 		443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListHeaderView.swift; sourceTree = "<group>"; };
 		443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListFooterView.swift; sourceTree = "<group>"; };
 		444245FE2137D60400D42AB8 /* FavoriteFoldersListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListView.swift; sourceTree = "<group>"; };
-		444246002137D60400D42AB8 /* FavoriteFoldersListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewModel.swift; sourceTree = "<group>"; };
+		444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderViewModel.swift; sourceTree = "<group>"; };
 		444246052137D61100D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		444246062137D61100D42AB8 /* FavoriteFoldersListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewDemoView.swift; sourceTree = "<group>"; };
 		4443F9B0209D5ECE00E35719 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -703,6 +704,7 @@
 		CFCED8D822CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersSearchBar.swift; sourceTree = "<group>"; };
 		CFCED8DC22CE3EAA0049A3A0 /* FavoriteAddFolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAddFolderView.swift; sourceTree = "<group>"; };
 		CFCED8E022CF3A690049A3A0 /* FavoriteAddFolderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAddFolderViewCell.swift; sourceTree = "<group>"; };
+		CFCED8E222CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewModel.swift; sourceTree = "<group>"; };
 		CFE43E4D219B149100D3D5F7 /* FrontPageViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewDefaultData.swift; sourceTree = "<group>"; };
 		CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageRetryView.swift; sourceTree = "<group>"; };
 		CFF9726D21C3BA1D00C85238 /* BannerTransparencyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyDemoView.swift; sourceTree = "<group>"; };
@@ -1246,8 +1248,9 @@
 			isa = PBXGroup;
 			children = (
 				CFCED8DF22CF3A470049A3A0 /* Subviews */,
-				444246002137D60400D42AB8 /* FavoriteFoldersListViewModel.swift */,
+				444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */,
 				444245FE2137D60400D42AB8 /* FavoriteFoldersListView.swift */,
+				CFCED8E222CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift */,
 			);
 			path = FavoriteFolders;
 			sourceTree = "<group>";
@@ -3216,7 +3219,7 @@
 				F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */,
 				DA8EF1242164E7AF0028740C /* ConsentToggleView.swift in Sources */,
 				899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */,
-				444246032137D60400D42AB8 /* FavoriteFoldersListViewModel.swift in Sources */,
+				444246032137D60400D42AB8 /* FavoriteFolderViewModel.swift in Sources */,
 				DAAAC8FD21C14FEE0071B028 /* FireworksView.swift in Sources */,
 				DAE738C422C4BE44001C69E3 /* CarouselView.swift in Sources */,
 				8951759A224902E4008003FB /* StepDotConnector.swift in Sources */,
@@ -3277,6 +3280,7 @@
 				625A220B221EB26500733101 /* AdManagementActionCellModel.swift in Sources */,
 				CFCED8D922CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
+				CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */,
 				CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */,
 				CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */,
 				08796D9321CB982F0023A441 /* SelectableTableViewCellViewModel.swift in Sources */,

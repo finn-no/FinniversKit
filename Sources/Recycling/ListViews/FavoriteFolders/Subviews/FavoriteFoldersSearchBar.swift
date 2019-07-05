@@ -5,13 +5,13 @@
 import UIKit
 
 final class FavoriteFoldersSearchBar: UIView {
+    private static let maxShadowRadius: CGFloat = 3
+
     weak var delegate: UISearchBarDelegate? {
         didSet {
             searchBar.delegate = delegate
         }
     }
-
-    private let maxShadowRadius: CGFloat = 3
 
     private(set) lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(withAutoLayout: true)
@@ -35,13 +35,14 @@ final class FavoriteFoldersSearchBar: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let rect = CGRect(x: 0, y: bounds.maxY - maxShadowRadius, width: bounds.width, height: maxShadowRadius)
+        let radius = FavoriteFoldersSearchBar.maxShadowRadius
+        let rect = CGRect(x: 0, y: bounds.maxY - radius, width: bounds.width, height: radius)
         layer.shadowPath = UIBezierPath(rect: rect).cgPath
     }
 
     // MARK: - Setup
 
-    func configure(withPlaceholder placeholder: String) {
+    func configure(withPlaceholder placeholder: String?) {
         searchBar.placeholder = placeholder
     }
 
@@ -54,7 +55,7 @@ final class FavoriteFoldersSearchBar: UIView {
         )
 
         let intersection = contentFrame.intersection(frame)
-        layer.shadowRadius = min(intersection.height * 0.2, maxShadowRadius)
+        layer.shadowRadius = min(intersection.height * 0.2, FavoriteFoldersSearchBar.maxShadowRadius)
     }
 
     // MARK: - Setup

@@ -2,12 +2,16 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import Foundation
+public struct FavoriteFoldersListViewModel {
+    public let searchBarPlaceholder: String
+    public let addFolderText: String
+    public let cancelButtonTitle: String
 
-public protocol FavoriteFoldersListViewModel: RemoteImageTableViewCellViewModel {}
+    // MARK: - Init
 
-public extension FavoriteFoldersListViewModel {
-    var accessibilityLabel: String {
-        return title + (subtitle.map({ ". \($0)" }) ?? "")
+    public init(searchBarPlaceholder: String, addFolderText: String, cancelButtonTitle: String) {
+        self.searchBarPlaceholder = searchBarPlaceholder
+        self.addFolderText = addFolderText
+        self.cancelButtonTitle = cancelButtonTitle
     }
 }

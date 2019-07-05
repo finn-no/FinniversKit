@@ -14,7 +14,7 @@ public protocol FavoriteFoldersListViewDataSource: RemoteImageTableViewCellDataS
     func favoriteFoldersListView(
         _ view: FavoriteFoldersListView,
         viewModelAtIndex index: Int
-    ) -> FavoriteFoldersListViewModel
+    ) -> FavoriteFolderViewModel
 }
 
 public class FavoriteFoldersListView: UIView {
@@ -31,6 +31,8 @@ public class FavoriteFoldersListView: UIView {
     public weak var dataSource: FavoriteFoldersListViewDataSource?
 
     // MARK: - Private properties
+
+    private let viewModel: FavoriteFoldersListViewModel
 
     private(set) lazy var searchBar: FavoriteFoldersSearchBar = {
         let view = FavoriteFoldersSearchBar(withAutoLayout: true)
@@ -53,33 +55,35 @@ public class FavoriteFoldersListView: UIView {
         return tableView
     }()
 
-    private lazy var bottomShadowView: UIView = {
-        let view = FavoriteAddFolderView(withAutoLayout: true)
-        view.configure(withTitle: "Lag ny liste")
-        return view
-    }()
-
-    private lazy var bottomShadowViewTop = bottomShadowView.topAnchor.constraint(
-        equalTo: bottomAnchor,
-        constant: FavoriteFoldersListView.estimatedRowHeight
+    private lazy var footerView = FavoriteAddFolderView(withAutoLayout: true)
+    private lazy var footerViewTop = footerView.topAnchor.constraint(
+        equalTo: bottomAnchor, constant: FavoriteFoldersListView.estimatedRowHeight
     )
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public required init(viewModel: FavoriteFoldersListViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
         setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+        fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Init
+
     private func setup() {
+        searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
+        footerView.configure(withTitle: viewModel.addFolderText)
+
+        let barButtonAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [FavoriteFoldersSearchBar.self])
+        barButtonAppearance.title = viewModel.cancelButtonTitle
+
         addSubview(tableView)
         addSubview(searchBar)
-        addSubview(bottomShadowView)
+        addSubview(footerView)
 
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: topAnchor),
@@ -91,10 +95,10 @@ public class FavoriteFoldersListView: UIView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            bottomShadowViewTop,
-            bottomShadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            bottomShadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            bottomShadowView.heightAnchor.constraint(equalToConstant: 56)
+            footerViewTop,
+            footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            footerView.heightAnchor.constraint(equalToConstant: 56)
         ])
     }
 }
@@ -143,7 +147,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
         switch section {
         case .addButton:
             let cell = tableView.dequeue(FavoriteAddFolderViewCell.self, for: indexPath)
-            cell.configure(withTitle: "Lag ny liste")
+            cell.configure(withTitle: viewModel.addFolderText)
             return cell
         case .folder:
             let cell = tableView.dequeue(RemoteImageTableViewCell.self, for: indexPath)
@@ -168,11 +172,12 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.updateShadow(using: scrollView)
 
-        let viewHeight = bottomShadowView.frame.height
+        let viewHeight = footerView.frame.height
         let offsetY = scrollView.contentOffset.y
 
         if offsetY >= 0 && offsetY <= viewHeight * 2 {
-            bottomShadowViewTop.constant = -offsetY + viewHeight
+            footerViewTop.constant = -offsetY + viewHeight
+            tableView.contentInset.bottom = -footerViewTop.constant
         }
     }
 }

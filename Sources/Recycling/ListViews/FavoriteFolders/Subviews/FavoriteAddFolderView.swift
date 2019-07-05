@@ -49,7 +49,7 @@ final class FavoriteAddFolderView: UIView {
 
     // MARK: - Setup
 
-    func configure(withTitle title: String) {
+    func configure(withTitle title: String?) {
         imageView.image = UIImage(named: .favoritesPlus)
         titleLabel.text = title
     }
