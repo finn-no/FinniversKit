@@ -50,7 +50,9 @@ extension FavoriteFoldersListViewDemoView: FavoriteFoldersListViewDelegate {
     func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didSelectItemAtIndex index: Int) {}
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String) {
-        let items = searchText.isEmpty ? allFavorites : allFavorites.filter({ $0.title.contains(searchText) })
+        let items = searchText.isEmpty
+            ? allFavorites
+            : allFavorites.filter({ $0.title.lowercased().contains(searchText.lowercased()) })
         reload(with: items)
     }
 
