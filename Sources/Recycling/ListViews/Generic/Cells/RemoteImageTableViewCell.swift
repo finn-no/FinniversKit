@@ -7,6 +7,11 @@ import UIKit
 public protocol RemoteImageTableViewCellDataSource: AnyObject {
     func remoteImageTableViewCell(
         _ cell: RemoteImageTableViewCell,
+        cachedImageForModel model: RemoteImageTableViewCellViewModel
+    ) -> UIImage?
+
+    func remoteImageTableViewCell(
+        _ cell: RemoteImageTableViewCell,
         loadImageForModel model: RemoteImageTableViewCellViewModel,
         completion: @escaping ((UIImage?) -> Void)
     )
@@ -84,11 +89,14 @@ public final class RemoteImageTableViewCell: BasicTableViewCell {
             return
         }
 
-        remoteImageView.backgroundColor = loadingColor
+        if let cachedImage = dataSource.remoteImageTableViewCell(self, cachedImageForModel: viewModel) {
+            setImage(cachedImage, animated: false)
+        } else {
+            remoteImageView.backgroundColor = loadingColor
 
-        dataSource.remoteImageTableViewCell(self, loadImageForModel: viewModel) { [weak self] image in
-            self?.remoteImageView.backgroundColor = .clear
-            self?.remoteImageView.image = image ?? self?.defaultImage
+            dataSource.remoteImageTableViewCell(self, loadImageForModel: viewModel) { [weak self] image in
+                self?.setImage( image ?? self?.defaultImage, animated: false)
+            }
         }
     }
 
@@ -109,5 +117,21 @@ public final class RemoteImageTableViewCell: BasicTableViewCell {
 
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing)
         ])
+    }
+
+    private func setImage(_ image: UIImage?, animated: Bool) {
+        remoteImageView.image = image
+
+        let performViewChanges = { [weak self] in
+            self?.remoteImageView.alpha = 1.0
+            self?.backgroundColor = .clear
+        }
+
+        if animated {
+            remoteImageView.alpha = 0.0
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveEaseOut], animations: performViewChanges)
+        } else {
+            performViewChanges()
+        }
     }
 }

@@ -73,9 +73,9 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
         return filteredFavorites[index]
     }
 
-    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                         loadImageForModel model: RemoteImageTableViewCellViewModel,
-                                         completion: @escaping ((UIImage?) -> Void)) {
+    public func favoriteFoldersListView(_ view: FavoriteFoldersListView,
+                                        loadImageForModel model: RemoteImageTableViewCellViewModel,
+                                        completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
@@ -96,6 +96,6 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
         task.resume()
     }
 
-    func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                  cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {}
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView,
+                                 cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {}
 }

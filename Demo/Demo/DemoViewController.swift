@@ -58,7 +58,7 @@ public class DemoViewController<View: UIView>: UIViewController {
             playgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             playgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             playgroundView.topAnchor.constraint(equalTo: view.compatibleTopAnchor),
-            playgroundView.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor)
+            playgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
         if hasDismissButton {

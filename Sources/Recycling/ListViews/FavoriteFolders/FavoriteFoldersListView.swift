@@ -4,15 +4,24 @@
 
 import UIKit
 
-public protocol FavoriteFoldersListViewDelegate: class {
+public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
     func favoriteFoldersListViewDidCancelSearch(_ view: FavoriteFoldersListView)
 }
 
-public protocol FavoriteFoldersListViewDataSource: RemoteImageTableViewCellDataSource {
+public protocol FavoriteFoldersListViewDataSource: AnyObject {
     func numberOfItems(inFavoriteFoldersListView view: FavoriteFoldersListView) -> Int
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, viewModelAtIndex index: Int) -> FavoriteFolderViewModel
+    func favoriteFoldersListView(
+        _ view: FavoriteFoldersListView,
+        loadImageForModel model: RemoteImageTableViewCellViewModel,
+        completion: @escaping ((UIImage?) -> Void)
+    )
+    func favoriteFoldersListView(
+        _ view: FavoriteFoldersListView,
+        cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel
+    )
 }
 
 public class FavoriteFoldersListView: UIView {
@@ -32,6 +41,7 @@ public class FavoriteFoldersListView: UIView {
 
     private let viewModel: FavoriteFoldersListViewModel
     private var isSearchActive = false
+    private let imageCache = ImageMemoryCache()
 
     private(set) lazy var searchBar: FavoriteFoldersSearchBar = {
         let view = FavoriteFoldersSearchBar(withAutoLayout: true)
@@ -47,17 +57,20 @@ public class FavoriteFoldersListView: UIView {
         tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.tableFooterView = UIView()
-        tableView.register(FavoriteAddFolderViewCell.self)
+        tableView.contentInset.bottom = FavoriteFoldersListView.estimatedRowHeight
+        tableView.register(AddFavoriteFolderViewCell.self)
         tableView.register(RemoteImageTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
     }()
 
-    private lazy var footerView = FavoriteAddFolderView(withAutoLayout: true)
-    private lazy var footerViewTop = footerView.topAnchor.constraint(
-        equalTo: bottomAnchor, constant: FavoriteFoldersListView.estimatedRowHeight
-    )
+    private lazy var footerView = FavoriteFoldersFooterView(withAutoLayout: true)
+    private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
+
+    private lazy var footerHeight: CGFloat = {
+        return 56 + windowSafeAreaInsets.bottom
+    }()
 
     // MARK: - Init
 
@@ -103,7 +116,7 @@ public class FavoriteFoldersListView: UIView {
             footerViewTop,
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            footerView.heightAnchor.constraint(equalToConstant: 56)
+            footerView.heightAnchor.constraint(equalToConstant: footerHeight)
         ])
     }
 }
@@ -117,8 +130,8 @@ extension FavoriteFoldersListView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let cell = cell as? RemoteImageTableViewCell {
-            cell.loadImage()
+        guard let cell = cell as? RemoteImageTableViewCell else {
+            return
         }
 
         let isLastCell = indexPath.row == (self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1)
@@ -126,6 +139,8 @@ extension FavoriteFoldersListView: UITableViewDelegate {
         if isLastCell {
             cell.separatorInset = .leadingInset(frame.width)
         }
+
+        cell.loadImage()
     }
 }
 
@@ -152,7 +167,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
         switch section {
         case .addButton:
-            let cell = tableView.dequeue(FavoriteAddFolderViewCell.self, for: indexPath)
+            let cell = tableView.dequeue(AddFavoriteFolderViewCell.self, for: indexPath)
             cell.configure(withTitle: viewModel.addFolderText)
             return cell
         case .folder:
@@ -163,7 +178,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             let color = colors[indexPath.row % 4]
 
             cell.loadingColor = color
-            cell.dataSource = dataSource
+            cell.dataSource = self
 
             if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
                 cell.configure(with: viewModel)
@@ -174,18 +189,54 @@ extension FavoriteFoldersListView: UITableViewDataSource {
     }
 }
 
+extension FavoriteFoldersListView: RemoteImageTableViewCellDataSource {
+    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
+                                         cachedImageForModel model: RemoteImageTableViewCellViewModel) -> UIImage? {
+        guard let imagePath = model.imagePath else {
+            return nil
+        }
+
+        return imageCache.image(forKey: imagePath)
+    }
+
+    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
+                                         loadImageForModel model: RemoteImageTableViewCellViewModel,
+                                         completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.favoriteFoldersListView(self, loadImageForModel: model, completion: { [weak self] image in
+            if let image = image, let imagePath = model.imagePath {
+                self?.imageCache.add(image, forKey: imagePath)
+            }
+
+            completion(image)
+        })
+    }
+
+    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell, cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {
+        dataSource?.favoriteFoldersListView(self, cancelLoadingImageForModel: model)
+    }
+}
+
 // MARK: - UIScrollViewDelegate
 
 extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.updateShadow(using: scrollView)
 
-        let viewHeight = footerView.frame.height
-        let offsetY = scrollView.contentOffset.y
+        guard !isSearchActive else {
+            footerViewTop.constant = 0
+            return
+        }
 
-        if offsetY >= 0 && offsetY <= viewHeight * 2 {
-            footerViewTop.constant = -offsetY + viewHeight
-            tableView.contentInset.bottom = -footerViewTop.constant
+        let offset = scrollView.contentOffset.y
+        let minOffset = FavoriteFoldersListView.estimatedRowHeight
+        let maxOffset = minOffset + footerHeight
+
+        if offset >= minOffset && offset <= maxOffset {
+            footerViewTop.constant = -offset + minOffset
+        } else if offset <= footerHeight {
+            footerViewTop.constant = 0
+        } else if offset > maxOffset {
+            footerViewTop.constant = -footerHeight
         }
     }
 }
@@ -195,11 +246,13 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
 extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         isSearchActive = true
+        footerView.isHidden = true
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         isSearchActive = false
+        footerView.isHidden = false
         searchBar.setShowsCancelButton(false, animated: true)
         delegate?.favoriteFoldersListViewDidCancelSearch(self)
     }
