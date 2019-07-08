@@ -198,6 +198,14 @@
 		6266C07022081EEA00FB8004 /* StatisticsItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C06F22081EEA00FB8004 /* StatisticsItemModel.swift */; };
 		6266C07222081EF600FB8004 /* StatisticsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C07122081EF600FB8004 /* StatisticsItemView.swift */; };
 		6266C0752208235000FB8004 /* AdManagementDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C0742208235000FB8004 /* AdManagementDemoView.swift */; };
+		8908E83622BD0CA100ED671C /* MessageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E83522BD0CA100ED671C /* MessageFormView.swift */; };
+		8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84722C0C2F900ED671C /* MessageFormViewController.swift */; };
+		8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */; };
+		8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */; };
+		8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */; };
+		8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85922C0E5FF00ED671C /* MessageFormDemoViewModel.swift */; };
+		8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */; };
+		8908E86022C2373800ED671C /* MessageFormDemoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85F22C2373800ED671C /* MessageFormDemoPresenter.swift */; };
 		895175902248CF79008003FB /* StepIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951758F2248CF79008003FB /* StepIndicator.swift */; };
 		895175932248CFD4008003FB /* StepIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895175922248CFD4008003FB /* StepIndicatorDemoView.swift */; };
 		895175952248D4D1008003FB /* StepDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895175942248D4D1008003FB /* StepDot.swift */; };
@@ -597,6 +605,14 @@
 		6266C06F22081EEA00FB8004 /* StatisticsItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsItemModel.swift; sourceTree = "<group>"; };
 		6266C07122081EF600FB8004 /* StatisticsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsItemView.swift; sourceTree = "<group>"; };
 		6266C0742208235000FB8004 /* AdManagementDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManagementDemoView.swift; sourceTree = "<group>"; };
+		8908E83522BD0CA100ED671C /* MessageFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormView.swift; sourceTree = "<group>"; };
+		8908E84722C0C2F900ED671C /* MessageFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewController.swift; sourceTree = "<group>"; };
+		8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormToolbar.swift; sourceTree = "<group>"; };
+		8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormBottomSheet.swift; sourceTree = "<group>"; };
+		8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewModel.swift; sourceTree = "<group>"; };
+		8908E85922C0E5FF00ED671C /* MessageFormDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormDemoViewModel.swift; sourceTree = "<group>"; };
+		8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormTemplateState.swift; sourceTree = "<group>"; };
+		8908E85F22C2373800ED671C /* MessageFormDemoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormDemoPresenter.swift; sourceTree = "<group>"; };
 		8951758F2248CF79008003FB /* StepIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StepIndicator.swift; path = Sources/Components/Broadcast/StepIndicator.swift; sourceTree = SOURCE_ROOT; };
 		895175922248CFD4008003FB /* StepIndicatorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepIndicatorDemoView.swift; sourceTree = "<group>"; };
 		895175942248D4D1008003FB /* StepDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDot.swift; sourceTree = "<group>"; };
@@ -1517,6 +1533,7 @@
 				9F213E134EF7C0A184D133F5 /* FullscreenGallery */,
 				14EBA253215A633800613E5A /* LoadingView */,
 				44587010213FA344009187BE /* Login */,
+				8908E83422BD0C8700ED671C /* MessageForm */,
 				44D9124A2077AC8A00486848 /* Popup */,
 				44587013213FA344009187BE /* Register */,
 				43BACE6721117CF90052114C /* Review */,
@@ -1644,6 +1661,28 @@
 				6266C0742208235000FB8004 /* AdManagementDemoView.swift */,
 			);
 			path = AdManagement;
+			sourceTree = "<group>";
+		};
+		8908E83422BD0C8700ED671C /* MessageForm */ = {
+			isa = PBXGroup;
+			children = (
+				8908E83522BD0CA100ED671C /* MessageFormView.swift */,
+				8908E84722C0C2F900ED671C /* MessageFormViewController.swift */,
+				8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */,
+				8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */,
+				8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */,
+				8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */,
+			);
+			path = MessageForm;
+			sourceTree = "<group>";
+		};
+		8908E85822C0E5F000ED671C /* MessageForm */ = {
+			isa = PBXGroup;
+			children = (
+				8908E85922C0E5FF00ED671C /* MessageFormDemoViewModel.swift */,
+				8908E85F22C2373800ED671C /* MessageFormDemoPresenter.swift */,
+			);
+			path = MessageForm;
 			sourceTree = "<group>";
 		};
 		8951758E2248CF53008003FB /* StepIndicator */ = {
@@ -2256,6 +2295,7 @@
 				9F2139783BEC14AD02F9BF7A /* FullscreenGallery */,
 				CF8F022A21DCC746004C4042 /* LoadingView */,
 				CF8F022F21DCC788004C4042 /* Login */,
+				8908E85822C0E5F000ED671C /* MessageForm */,
 				CF8F023321DCC7B9004C4042 /* Popup */,
 				CF8F023021DCC793004C4042 /* Register */,
 				CF8F023421DCC7D2004C4042 /* Review */,
@@ -3111,6 +3151,7 @@
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
 				43BACE6F21117DD20052114C /* ReviewViewDemoView.swift in Sources */,
 				45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
+				8908E86022C2373800ED671C /* MessageFormDemoPresenter.swift in Sources */,
 				4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */,
 				CFB61379229ACB8600DE283D /* IconCollectionViewDemo.swift in Sources */,
 				14EBA25A215A634100613E5A /* LoadingViewDemoView.swift in Sources */,
@@ -3120,6 +3161,7 @@
 				4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */,
 				DAC65FBB21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift in Sources */,
 				F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */,
+				8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
@@ -3228,6 +3270,7 @@
 				DA8EF1242164E7AF0028740C /* ConsentToggleView.swift in Sources */,
 				899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */,
 				444246032137D60400D42AB8 /* FavoriteFoldersListViewModel.swift in Sources */,
+				8908E83622BD0CA100ED671C /* MessageFormView.swift in Sources */,
 				DAAAC8FD21C14FEE0071B028 /* FireworksView.swift in Sources */,
 				DAE738C422C4BE44001C69E3 /* CarouselView.swift in Sources */,
 				8951759A224902E4008003FB /* StepDotConnector.swift in Sources */,
@@ -3290,6 +3333,7 @@
 				CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */,
 				08796D9321CB982F0023A441 /* SelectableTableViewCellViewModel.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,
+				8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */,
 				55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */,
 				44D912612077AC8A00486848 /* RoundedRectangleView.swift in Sources */,
 				432CE09D2112DBC500F01EC5 /* ReviewTextHeader.swift in Sources */,
@@ -3298,8 +3342,10 @@
 				AA7A854E22255AB200AF5F42 /* DialogueView.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
+				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
+				8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
 				620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */,
 				DAB7FAA621B690DD00BF8CC6 /* BottomSheet.swift in Sources */,
@@ -3334,6 +3380,7 @@
 				43BACE6A21117D430052114C /* ReviewView.swift in Sources */,
 				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
 				08D70A0E21832546003E2222 /* BasicTableViewCell.swift in Sources */,
+				8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
 				0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */,
@@ -3389,6 +3436,7 @@
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
 				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
+				8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */,
 				9F21339B987A96DE48740F7B /* FullscreenGalleryPresenterTransition.swift in Sources */,
 				9F2133BB9A1CAA93633B406C /* FullscreenGalleryTransitionPresenterDelegate.swift in Sources */,
 				9F2130071B3637C7AD91066E /* FullscreenGalleryTransitionDestinationDelegate.swift in Sources */,
