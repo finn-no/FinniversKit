@@ -5,5 +5,10 @@
 import UIKit
 
 public protocol AddressViewModel {
-    var title: String { get }
+    var mapModes: [String] { get }
+    var selectedMapMode: Int { get }
+    var address: String { get }
+    var postalCode: String { get }
+    var secondaryActionTitle: String { get }
+    var primaryActionTitle: String { get }
 }

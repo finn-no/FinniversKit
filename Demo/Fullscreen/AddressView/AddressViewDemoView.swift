@@ -4,8 +4,21 @@
 
 import FinniversKit
 
+enum MapModes: String, CaseIterable {
+    case map = "Kart"
+    case satellite = "Flyfoto"
+    case hybrid = "Hybrid"
+}
+
 public struct AddressViewDefaultData: AddressViewModel {
-    public var title = "Hva gjelder det?"
+    public var mapModes: [String] {
+        return MapModes.allCases.map { $0.rawValue }
+    }
+    public var selectedMapMode = 0
+    public var address = "Vadmyrveien 18"
+    public var postalCode = "5172 Loddefjord"
+    public var secondaryActionTitle = "Kopier adresse"
+    public var primaryActionTitle = "Åpne veibeskrivelse"
 
     public init() {}
 }

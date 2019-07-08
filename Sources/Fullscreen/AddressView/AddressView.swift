@@ -7,7 +7,7 @@ import MapKit
 
 @objc public class AddressView: UIView {
     lazy var mapTypeSegmentControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: ["Kart", "Flyfoto", "Hybrid"])
+        let control = UISegmentedControl(items: [])
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
     }()
@@ -36,7 +36,16 @@ import MapKit
     public var model: AddressViewModel? {
         didSet {
             guard let model = model else { return }
-            print(model.title)
+
+            for (index, segment) in model.mapModes.enumerated() {
+                mapTypeSegmentControl.insertSegment(withTitle: segment, at: index, animated: false)
+            }
+            mapTypeSegmentControl.selectedSegmentIndex = model.selectedMapMode
+
+            addressCardView.addressLabel.text = model.address
+            addressCardView.postalCodeLabel.text = model.postalCode
+            addressCardView.secondaryButton.setTitle(model.secondaryActionTitle, for: .normal)
+            addressCardView.primaryButton.setTitle(model.primaryActionTitle, for: .normal)
         }
     }
 }
