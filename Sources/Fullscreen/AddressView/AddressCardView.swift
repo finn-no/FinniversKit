@@ -63,9 +63,9 @@ extension AddressCardView {
         NSLayoutConstraint.activate([
             columnStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
             columnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            columnStackView.trailingAnchor.constraint(lessThanOrEqualTo: secondaryButton.leadingAnchor, constant: .mediumLargeSpacing),
 
             secondaryButton.centerYAnchor.constraint(equalTo: columnStackView.centerYAnchor),
-            secondaryButton.leadingAnchor.constraint(equalTo: columnStackView.trailingAnchor, constant: .mediumLargeSpacing),
             secondaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
             primaryButton.topAnchor.constraint(equalTo: columnStackView.bottomAnchor, constant: .mediumLargeSpacing),
