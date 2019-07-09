@@ -94,6 +94,7 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Reload
 
     public func reloadData() {
+        tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
     }
 
