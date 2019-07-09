@@ -44,7 +44,11 @@ class MessageFormView: UIView {
     var inputEnabled: Bool = true {
         didSet {
             textView.isUserInteractionEnabled = inputEnabled
-            _ = inputEnabled ? becomeFirstResponder() : resignFirstResponder()
+            if inputEnabled {
+                becomeFirstResponder()
+            } else {
+                resignFirstResponder()
+            }
         }
     }
 
@@ -82,10 +86,12 @@ class MessageFormView: UIView {
 
     // MARK: - Overrides
 
+    @discardableResult
     public override func becomeFirstResponder() -> Bool {
         return textView.becomeFirstResponder()
     }
 
+    @discardableResult
     public override func resignFirstResponder() -> Bool {
         return textView.resignFirstResponder()
     }
