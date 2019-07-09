@@ -44,11 +44,7 @@ class MessageFormView: UIView {
     var inputEnabled: Bool = true {
         didSet {
             textView.isUserInteractionEnabled = inputEnabled
-            if inputEnabled {
-                _ = becomeFirstResponder()
-            } else {
-                _ = resignFirstResponder()
-            }
+            _ = inputEnabled ? becomeFirstResponder() : resignFirstResponder()
         }
     }
 
