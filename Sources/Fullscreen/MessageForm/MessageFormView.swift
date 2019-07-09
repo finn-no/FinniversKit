@@ -41,6 +41,17 @@ class MessageFormView: UIView {
         }
     }
 
+    var inputEnabled: Bool = true {
+        didSet {
+            textView.isUserInteractionEnabled = inputEnabled
+            if inputEnabled {
+                becomeFirstResponder()
+            } else {
+                resignFirstResponder()
+            }
+        }
+    }
+
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
@@ -75,8 +86,14 @@ class MessageFormView: UIView {
 
     // MARK: - Overrides
 
+    @discardableResult
     public override func becomeFirstResponder() -> Bool {
         return textView.becomeFirstResponder()
+    }
+
+    @discardableResult
+    public override func resignFirstResponder() -> Bool {
+        return textView.resignFirstResponder()
     }
 }
 

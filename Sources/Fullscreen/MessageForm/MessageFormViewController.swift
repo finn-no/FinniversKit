@@ -48,6 +48,11 @@ class MessageFormViewController: UIViewController {
         return messageFormView
     }
 
+    var inputEnabled: Bool {
+        get { return messageFormView.inputEnabled }
+        set { messageFormView.inputEnabled = newValue }
+    }
+
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
