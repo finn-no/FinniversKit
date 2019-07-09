@@ -288,6 +288,7 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
 
         searchBar.text = ""
         searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
 
         delegate?.favoriteFoldersListViewDidCancelSearch(self)
     }
