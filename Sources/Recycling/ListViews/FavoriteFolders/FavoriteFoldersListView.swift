@@ -61,6 +61,7 @@ public class FavoriteFoldersListView: UIView {
         tableView.contentInset.bottom = FavoriteFoldersListView.estimatedRowHeight
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.keyboardDismissMode = .onDrag
         tableView.register(AddFavoriteFolderViewCell.self)
         tableView.register(RemoteImageTableViewCell.self)
         return tableView
