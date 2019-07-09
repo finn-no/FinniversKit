@@ -287,6 +287,9 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
     }
 
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let showCancelButton = searchBar.isFirstResponder || !searchText.isEmpty
+        searchBar.setShowsCancelButton(showCancelButton, animated: true)
+        isSearchActive = !searchText.isEmpty
         delegate?.favoriteFoldersListView(self, didChangeSearchText: searchText)
     }
 }
