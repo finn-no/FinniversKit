@@ -41,6 +41,16 @@ class MessageFormView: UIView {
         }
     }
 
+    var inputEnabled: Bool = true {
+        didSet {
+            if inputEnabled {
+                _ = becomeFirstResponder()
+            } else {
+                _ = resignFirstResponder()
+            }
+        }
+    }
+
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
@@ -77,6 +87,10 @@ class MessageFormView: UIView {
 
     public override func becomeFirstResponder() -> Bool {
         return textView.becomeFirstResponder()
+    }
+
+    public override func resignFirstResponder() -> Bool {
+        return textView.resignFirstResponder()
     }
 }
 

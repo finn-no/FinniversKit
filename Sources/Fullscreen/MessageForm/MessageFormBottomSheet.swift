@@ -18,6 +18,11 @@ public class MessageFormBottomSheet: BottomSheet {
 
     public weak var messageFormDelegate: MessageFormBottomSheetDelegate?
 
+    public var inputEnabled: Bool {
+        get { return messageFormViewController.inputEnabled }
+        set { messageFormViewController.inputEnabled = newValue }
+    }
+
     /// This view should be used if you wish to present a toast inside this view controller.
     public var toastPresenterView: UIView {
         return messageFormViewController.toastPresenterView
