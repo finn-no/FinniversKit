@@ -280,15 +280,16 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
     }
 
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        isSearchActive = false
         footerView.isHidden = false
-        searchBar.setShowsCancelButton(false, animated: true)
-        delegate?.favoriteFoldersListViewDidCancelSearch(self)
     }
 
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearchActive = false
+
         searchBar.text = ""
-        searchBar.endEditing(false)
+        searchBar.setShowsCancelButton(false, animated: true)
+
+        delegate?.favoriteFoldersListViewDidCancelSearch(self)
     }
 
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
