@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol AddressViewModel {
-    var mapModes: [String] { get }
+    var mapTypes: [String] { get }
     var selectedMapMode: Int { get }
     var address: String { get }
     var postalCode: String { get }

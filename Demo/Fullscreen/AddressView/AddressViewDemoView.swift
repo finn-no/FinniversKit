@@ -4,15 +4,23 @@
 
 import FinniversKit
 
-enum MapModes: String, CaseIterable {
-    case map = "Kart"
-    case satellite = "Flyfoto"
-    case hybrid = "Hybrid"
+enum MapTypes: Int, CaseIterable {
+    case map
+    case satellite
+    case hybrid
+
+    var value: String {
+        switch self {
+        case .map: return "Kart"
+        case .satellite: return "Flyfoto"
+        case .hybrid: return "Hybrid"
+        }
+    }
 }
 
 public struct AddressViewDefaultData: AddressViewModel {
-    public var mapModes: [String] {
-        return MapModes.allCases.map { $0.rawValue }
+    public var mapTypes: [String] {
+        return MapTypes.allCases.map { $0.value }
     }
     public var selectedMapMode = 0
     public var address = "Vadmyrveien 18"
@@ -26,6 +34,7 @@ public struct AddressViewDefaultData: AddressViewModel {
 public class AddressViewDemoView: UIView {
     private lazy var addressView: AddressView = {
         let addressView = AddressView()
+        addressView.delegate = self
         addressView.translatesAutoresizingMaskIntoConstraints = false
         return addressView
     }()
@@ -49,5 +58,19 @@ public class AddressViewDemoView: UIView {
             addressView.leadingAnchor.constraint(equalTo: leadingAnchor),
             addressView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+    }
+}
+
+extension AddressViewDemoView: AddressViewDelegate {
+    public func addressViewDidSelectCopyButton(_ addressView: AddressView) {
+        print("addressViewDidSelectCopyButton")
+    }
+
+    public func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView) {
+        print("addressViewDidSelectGetDirectionsButton")
+    }
+
+    public func addressView(_ addressView: AddressView, didSelectMapTypeAtIndex index: Int) {
+        print("didSelectMapTypeAtIndex: \(MapTypes(rawValue: index)?.value ?? "None")")
     }
 }
