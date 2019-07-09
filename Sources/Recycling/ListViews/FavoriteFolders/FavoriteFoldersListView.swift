@@ -248,11 +248,6 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.updateShadow(using: scrollView)
 
-        guard !isSearchActive else {
-            footerViewTop.constant = 0
-            return
-        }
-
         let offset = scrollView.contentOffset.y
         let minOffset = FavoriteFoldersListView.estimatedRowHeight
         let maxOffset = minOffset + footerHeight
@@ -275,12 +270,10 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
 extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         isSearchActive = true
-        footerView.isHidden = true
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        footerView.isHidden = false
     }
 
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
