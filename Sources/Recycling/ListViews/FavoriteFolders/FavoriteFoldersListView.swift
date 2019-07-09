@@ -276,8 +276,12 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         // Hide the cancel button if the searchBar is empty.
         // This will happen if the user removes the text and dismisses the keyboard by dragging.
+        //
+        // Otherwise enable the cancel button.
         if searchBar.text?.isEmpty ?? true {
             searchBar.setShowsCancelButton(false, animated: true)
+        } else {
+            searchBar.enableCancelButton()
         }
     }
 
@@ -296,5 +300,26 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
         searchBar.setShowsCancelButton(showCancelButton, animated: true)
         isSearchActive = !searchText.isEmpty
         delegate?.favoriteFoldersListView(self, didChangeSearchText: searchText)
+    }
+}
+
+// MARK: - UISearchBar extension
+
+private extension UISearchBar {
+
+    /// The cancel button is automatically enabled/disabled based on the searchBar's firstResponder status.
+    /// We want to enable it when it's shown, no matter if the searchBar has focus or not.
+    func enableCancelButton() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.001, execute: { [weak self] in
+            guard let self = self else { return }
+            for view in self.subviews {
+                for subview in view.subviews {
+                    if let button = subview as? UIButton {
+                        button.isEnabled = true
+                        return
+                    }
+                }
+            }
+        })
     }
 }
