@@ -280,6 +280,7 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
         //
         // Otherwise enable the cancel button.
         if searchBar.text?.isEmpty ?? true {
+            isSearchActive = false
             searchBar.setShowsCancelButton(false, animated: true)
         } else {
             searchBar.enableCancelButton()
