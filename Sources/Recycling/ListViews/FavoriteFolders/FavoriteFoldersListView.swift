@@ -320,7 +320,7 @@ private extension UISearchBar {
     /// The cancel button is automatically enabled/disabled based on the searchBar's firstResponder status.
     /// We want to enable it when it's shown, no matter if the searchBar has focus or not.
     func enableCancelButton() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.001, execute: { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             for view in self.subviews {
                 for subview in view.subviews {
@@ -330,6 +330,6 @@ private extension UISearchBar {
                     }
                 }
             }
-        })
+        }
     }
 }
