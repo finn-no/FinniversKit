@@ -10,8 +10,7 @@ final class FavoriteFoldersListDemoView: UIView {
 
     private let viewModel = FavoriteFoldersListViewModel(
         searchBarPlaceholder: "Søk etter en av dine lister",
-        addFolderText: "Lag ny liste",
-        cancelButtonTitle: "Avbryt"
+        addFolderText: "Lag ny liste"
     )
 
     private lazy var view: FavoriteFoldersListView = {
