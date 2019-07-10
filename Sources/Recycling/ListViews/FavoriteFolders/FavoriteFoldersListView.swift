@@ -119,7 +119,7 @@ public class FavoriteFoldersListView: UIView {
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor),
 
             footerViewTop,
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -253,12 +253,12 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
         let minOffset = FavoriteFoldersListView.estimatedRowHeight
         let maxOffset = minOffset + footerHeight
 
-        if offset >= minOffset && offset <= maxOffset {
-            // Slide up the footer view while the first cell with "Add folder" button is disappearing during scrolling.
-            footerViewTop.constant = -offset + minOffset
-        } else if offset > maxOffset {
+        if offset > maxOffset || isSearchActive {
             // Stop sliding when the footer view appear in full height.
             footerViewTop.constant = -footerHeight
+        } else if offset >= minOffset && offset <= maxOffset {
+            // Slide up the footer view while the first cell with "Add folder" button is disappearing during scrolling.
+            footerViewTop.constant = -offset + minOffset
         } else if offset <= footerHeight {
             // Hide the footer view when the first cell with "Add folder" button is visible.
             footerViewTop.constant = 0
