@@ -151,3 +151,23 @@ extension TextView: UITextViewDelegate {
         delegate?.textViewDidEndEditing(self)
     }
 }
+
+// MARK: - First Responder
+
+extension TextView {
+    public override func becomeFirstResponder() -> Bool {
+        return textView.becomeFirstResponder()
+    }
+
+    public override func resignFirstResponder() -> Bool {
+        return textView.resignFirstResponder()
+    }
+
+    public override var canBecomeFirstResponder: Bool {
+        return textView.canBecomeFirstResponder
+    }
+
+    public override var canResignFirstResponder: Bool {
+        return textView.canResignFirstResponder
+    }
+}

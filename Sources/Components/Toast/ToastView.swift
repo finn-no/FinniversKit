@@ -32,7 +32,7 @@ public class ToastView: UIView {
     private let imageSizeAllowedMax = CGSize(width: 26, height: 26)
 
     private lazy var messageTitle: Label = {
-        let label = Label(style: .bodyStrong)
+        let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -42,6 +42,7 @@ public class ToastView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.primaryBlue, for: .normal)
+        button.titleLabel?.font = .bodyStrong
         button.layer.masksToBounds = true
         button.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: .horizontal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
@@ -55,6 +56,8 @@ public class ToastView: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+
+    private var safeAreaCoverView: UIView?
 
     // MARK: - External properties / Dependency injection
 
@@ -164,7 +167,8 @@ public class ToastView: UIView {
         setupToastConstraint(for: view)
 
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
-            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
+            let coverViewHeight = self.safeAreaCoverView?.frame.height ?? 0
+            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset + coverViewHeight))
         })
         if let timeOut = timeOut {
             dismissToast(after: timeOut)
@@ -177,6 +181,7 @@ public class ToastView: UIView {
             UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
                 self.transform = CGAffineTransform.identity
             }, completion: { _ in
+                self.removeSafeAreaCoverView()
                 self.removeFromSuperview()
             })
         }
@@ -190,9 +195,33 @@ public class ToastView: UIView {
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: view.leadingAnchor),
             trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topAnchor.constraint(equalTo: view.compatibleBottomAnchor)
+            topAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
+        setupSafeAreaCoverViewIfNeeded(for: view)
         view.layoutIfNeeded()
+    }
+
+    private func setupSafeAreaCoverViewIfNeeded(for view: UIView) {
+        if #available(iOS 11.0, *) {
+            let height = view.safeAreaInsets.bottom
+            if height > 0 {
+                let view = UIView(withAutoLayout: true)
+                view.backgroundColor = style.color
+                addSubview(view)
+                safeAreaCoverView = view
+
+                NSLayoutConstraint.activate([
+                    view.widthAnchor.constraint(equalTo: widthAnchor),
+                    view.heightAnchor.constraint(equalToConstant: height),
+                    view.topAnchor.constraint(equalTo: bottomAnchor)
+                ])
+            }
+        }
+    }
+
+    private func removeSafeAreaCoverView() {
+        safeAreaCoverView?.removeFromSuperview()
+        safeAreaCoverView = nil
     }
 }

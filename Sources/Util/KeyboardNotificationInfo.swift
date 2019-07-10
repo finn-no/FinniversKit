@@ -40,7 +40,11 @@ public struct KeyboardNotificationInfo {
             safeInsetBottom = view.safeAreaInsets.bottom
         }
 
-        return max(0, intersection.height - safeInsetBottom)
+        let viewMaxY = frameInWindow.origin.y + frameInWindow.height
+        let keyboardMaxY = frameEnd.origin.y + frameEnd.height
+        let outOfBoundsHeight = max(0, viewMaxY - keyboardMaxY)
+
+        return max(0, intersection.height + outOfBoundsHeight - safeInsetBottom)
     }
 }
 

@@ -31,4 +31,10 @@ public extension UIView {
 
         return constraints
     }
+
+    @discardableResult
+    func fillInSuperview(margin: CGFloat, isActive: Bool = true) -> [NSLayoutConstraint] {
+        let insets = UIEdgeInsets(top: margin, leading: margin, bottom: -margin, trailing: -margin)
+        return fillInSuperview(insets: insets, isActive: isActive)
+    }
 }
