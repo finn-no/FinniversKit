@@ -58,7 +58,6 @@ public class FavoriteFoldersListView: UIView {
         tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.tableFooterView = UIView()
-        tableView.contentInset.bottom = FavoriteFoldersListView.estimatedRowHeight
         tableView.delegate = self
         tableView.dataSource = self
         tableView.keyboardDismissMode = .onDrag
