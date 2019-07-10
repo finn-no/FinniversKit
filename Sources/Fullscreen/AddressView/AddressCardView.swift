@@ -50,7 +50,7 @@ class AddressCardView: UIView {
 }
 
 extension AddressCardView {
-    func setup() {
+    private func setup() {
         if #available(iOS 11.0, *) {
             clipsToBounds = true
             layer.cornerRadius = 16

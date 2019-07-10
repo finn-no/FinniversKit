@@ -14,14 +14,14 @@ public protocol AddressViewDelegate: class {
 @objc public class AddressView: UIView {
     public weak var delegate: AddressViewDelegate?
 
-    lazy var mapTypeSegmentControl: UISegmentedControl = {
+    private lazy var mapTypeSegmentControl: UISegmentedControl = {
         let control = UISegmentedControl(items: [])
         control.translatesAutoresizingMaskIntoConstraints = false
         control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
         return control
     }()
 
-    lazy var segmentContainer: UIView = {
+    private lazy var segmentContainer: UIView = {
         let segmentContainer = UIView()
         segmentContainer.translatesAutoresizingMaskIntoConstraints = false
         segmentContainer.backgroundColor = .white
@@ -42,13 +42,13 @@ public protocol AddressViewDelegate: class {
         return segmentContainer
     }()
 
-    lazy var mapView: MKMapView = {
+    public private(set) lazy var mapView: MKMapView = {
         let view = MKMapView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    lazy var addressCardView: AddressCardView = {
+    private lazy var addressCardView: AddressCardView = {
         let view = AddressCardView()
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
