@@ -6,9 +6,9 @@ import UIKit
 
 public protocol AddressViewModel {
     var mapTypes: [String] { get }
-    var selectedMapMode: Int { get }
-    var address: String { get }
-    var postalCode: String { get }
-    var secondaryActionTitle: String { get }
-    var primaryActionTitle: String { get }
+    var selectedMapType: Int { get }
+    var title: String { get }
+    var subtitle: String { get }
+    var copyButtonTitle: String { get }
+    var getDirectionsButtonTitle: String { get }
 }

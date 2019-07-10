@@ -71,12 +71,12 @@ public protocol AddressViewDelegate: class {
             for (index, segment) in model.mapTypes.enumerated() {
                 mapTypeSegmentControl.insertSegment(withTitle: segment, at: index, animated: false)
             }
-            mapTypeSegmentControl.selectedSegmentIndex = model.selectedMapMode
+            mapTypeSegmentControl.selectedSegmentIndex = model.selectedMapType
 
-            addressCardView.titleLabel.text = model.address
-            addressCardView.subtitleLabel.text = model.postalCode
-            addressCardView.copyButton.setTitle(model.secondaryActionTitle, for: .normal)
-            addressCardView.getDirectionsButton.setTitle(model.primaryActionTitle, for: .normal)
+            addressCardView.titleLabel.text = model.title
+            addressCardView.subtitleLabel.text = model.subtitle
+            addressCardView.copyButton.setTitle(model.copyButtonTitle, for: .normal)
+            addressCardView.getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
         }
     }
 }

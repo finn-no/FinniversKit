@@ -22,11 +22,11 @@ public struct AddressViewDefaultData: AddressViewModel {
     public var mapTypes: [String] {
         return MapTypes.allCases.map { $0.value }
     }
-    public var selectedMapMode = 0
-    public var address = "Vadmyrveien 18"
-    public var postalCode = "5172 Loddefjord"
-    public var secondaryActionTitle = "Kopier adresse"
-    public var primaryActionTitle = "Åpne veibeskrivelse"
+    public var selectedMapType = 0
+    public var title = "Vadmyrveien 18"
+    public var subtitle = "5172 Loddefjord"
+    public var copyButtonTitle = "Kopier adresse"
+    public var getDirectionsButtonTitle = "Åpne veibeskrivelse"
 
     public init() {}
 }
