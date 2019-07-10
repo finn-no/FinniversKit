@@ -8,6 +8,7 @@ import MapKit
 public protocol AddressViewDelegate: class {
     func addressViewDidSelectCopyButton(_ addressView: AddressView)
     func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView)
+    func addressViewDidSelectCenterMapButton(_ addressView: AddressView)
     func addressView(_ addressView: AddressView, didSelectMapTypeAtIndex index: Int)
 }
 
@@ -55,6 +56,24 @@ public protocol AddressViewDelegate: class {
         return view
     }()
 
+    private lazy var centerMapButton: UIButton = {
+        let button = UIButton(withAutoLayout: true)
+        button.backgroundColor = .milk
+        button.tintColor = .primaryBlue
+
+        button.layer.cornerRadius = 23
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 1)
+        button.layer.shadowRadius = 3
+        button.layer.shadowOpacity = 0.5
+
+        button.setImage(UIImage(named: .pin), for: .normal)
+        button.setImage(UIImage(named: .pin), for: .highlighted)
+        button.addTarget(self, action: #selector(centerMapButtonAction), for: .touchUpInside)
+
+        return button
+    }()
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -88,6 +107,7 @@ private extension AddressView {
         addSubview(segmentContainer)
         insertSubview(mapView, belowSubview: segmentContainer)
         addSubview(addressCardView)
+        addSubview(centerMapButton)
 
         NSLayoutConstraint.activate([
             segmentContainer.topAnchor.constraint(equalTo: topAnchor),
@@ -99,6 +119,11 @@ private extension AddressView {
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: addressCardView.topAnchor, constant: .mediumLargeSpacing),
 
+            centerMapButton.bottomAnchor.constraint(equalTo: addressCardView.topAnchor, constant: -.mediumSpacing),
+            centerMapButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            centerMapButton.widthAnchor.constraint(equalToConstant: 46),
+            centerMapButton.heightAnchor.constraint(equalTo: centerMapButton.widthAnchor),
+
             addressCardView.bottomAnchor.constraint(equalTo: bottomAnchor),
             addressCardView.leadingAnchor.constraint(equalTo: leadingAnchor),
             addressCardView.trailingAnchor.constraint(equalTo: trailingAnchor)
@@ -107,6 +132,10 @@ private extension AddressView {
 
     @objc func mapTypeChanged() {
         delegate?.addressView(self, didSelectMapTypeAtIndex: mapTypeSegmentControl.selectedSegmentIndex)
+    }
+
+    @objc func centerMapButtonAction() {
+        delegate?.addressViewDidSelectCenterMapButton(self)
     }
 }
 
