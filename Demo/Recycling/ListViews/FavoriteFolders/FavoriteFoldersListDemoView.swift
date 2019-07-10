@@ -55,6 +55,10 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
             : allFavorites.filter({ $0.title.lowercased().contains(searchText.lowercased()) })
         reload(with: items)
     }
+
+    func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView) {
+        // Set bottomSheet to expanded here, if needed.
+    }
 }
 
 // MARK: - FavoriteFoldersListViewDataSource

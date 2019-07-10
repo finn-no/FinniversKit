@@ -7,6 +7,7 @@ import UIKit
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView)
+    func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
 }
 
@@ -270,7 +271,7 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
 
 extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isSearchActive = true
+        delegate?.favoriteFoldersListViewDidFocusSearchBar(self)
     }
 
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
