@@ -286,6 +286,10 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
         }
     }
 
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearchActive = false
 
