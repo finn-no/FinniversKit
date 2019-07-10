@@ -8,7 +8,6 @@ public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
-    func favoriteFoldersListViewDidCancelSearch(_ view: FavoriteFoldersListView)
 }
 
 public protocol FavoriteFoldersListViewDataSource: AnyObject {
@@ -282,15 +281,6 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
 
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-    }
-
-    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearchActive = false
-
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-
-        delegate?.favoriteFoldersListViewDidCancelSearch(self)
     }
 
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
