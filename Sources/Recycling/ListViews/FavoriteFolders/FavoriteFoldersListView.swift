@@ -253,8 +253,8 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.updateShadow(using: scrollView)
 
-        let offset = scrollView.contentOffset.y
-        let minOffset = FavoriteFoldersListView.estimatedRowHeight
+        let offset = scrollView.contentOffset.y * 2
+        let minOffset = FavoriteFoldersListView.estimatedRowHeight * 2
         let maxOffset = minOffset + footerHeight
 
         if offset > maxOffset || isSearchActive {
