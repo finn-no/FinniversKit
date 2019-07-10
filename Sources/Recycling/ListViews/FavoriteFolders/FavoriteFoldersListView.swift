@@ -93,6 +93,11 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Reload
 
     public func reloadData() {
+        UIView.animate(withDuration: 0.35, animations: { [weak self] in
+            guard let self = self else { return }
+            self.footerViewTop.constant = self.isSearchActive ? -self.footerHeight : 0
+            self.layoutIfNeeded()
+        })
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
     }
