@@ -12,6 +12,11 @@ import UIKit
         case success
     }
 
+    public enum DisplayType {
+        case fullscreen
+        case boxed
+    }
+
     /// Allows the loading view to use a plain UIActivityIndicatorView,
     /// useful for a smooth transition between the old indicator and the new one,
     /// by using this flag we can avoid having multiple styles of showing progress in our app.
@@ -23,6 +28,8 @@ import UIKit
     private var state: State = .hidden
     private let loadingIndicatorInitialTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     private static let shared = LoadingView()
+
+    public var displayType = DisplayType.boxed
 
     private lazy var newLoadingIndicator: LoadingIndicatorView = {
         let view = LoadingIndicatorView()
@@ -119,7 +126,7 @@ import UIKit
 
 private extension LoadingView {
     private func setup() {
-        backgroundColor = UIColor.milk.withAlphaComponent(0.8)
+        backgroundColor = UIColor.black.withAlphaComponent(0.8)
 
         let loadingIndicator = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
         addSubview(loadingIndicator)
@@ -144,8 +151,20 @@ private extension LoadingView {
 
     private func startAnimating(withMessage message: String? = nil) {
         if superview == nil {
-            defaultWindow?.addSubview(self)
-            fillInSuperview()
+            guard let window = defaultWindow else { return }
+            window.addSubview(self)
+
+            switch displayType {
+            case .fullscreen:
+                fillInSuperview()
+            case .boxed:
+                NSLayoutConstraint.activate([
+                    heightAnchor.constraint(equalToConstant: 120),
+                    widthAnchor.constraint(equalToConstant: 120),
+                    centerXAnchor.constraint(equalTo: window.centerXAnchor),
+                    centerYAnchor.constraint(equalTo: window.centerYAnchor)
+                    ])
+            }
         }
 
         var loadingIndicator: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
@@ -161,8 +180,20 @@ private extension LoadingView {
 
     private func showSuccess(withMessage message: String? = nil) {
         if superview == nil {
-            defaultWindow?.addSubview(self)
-            fillInSuperview()
+            guard let window = defaultWindow else { return }
+            window.addSubview(self)
+
+            switch displayType {
+            case .fullscreen:
+                fillInSuperview()
+            case .boxed:
+                NSLayoutConstraint.activate([
+                    heightAnchor.constraint(equalToConstant: 120),
+                    widthAnchor.constraint(equalToConstant: 120),
+                    centerXAnchor.constraint(equalTo: window.centerXAnchor),
+                    centerYAnchor.constraint(equalTo: window.centerYAnchor)
+                    ])
+            }
         }
 
         var loadingIndicator: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
