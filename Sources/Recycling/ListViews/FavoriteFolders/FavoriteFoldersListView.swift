@@ -253,9 +253,13 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
         let offset = scrollView.contentOffset.y * 2
         let minOffset = FavoriteFoldersListView.estimatedRowHeight * 2
         let maxOffset = minOffset + footerHeight
+        let hasShortContent = scrollView.contentSize.height <= (scrollView.frame.height + minOffset / 2)
 
-        if offset > maxOffset || isSearchActive {
-            // Stop sliding when the footer view appear in full height.
+        if hasShortContent && !isSearchActive {
+            // Hide the footerView when there are few cells and a search isn't active.
+            footerViewTop.constant = 0
+        } else if offset > maxOffset || isSearchActive {
+            // Stop sliding when the footer view appear in full height or when a search is active.
             footerViewTop.constant = -footerHeight
         } else if offset >= minOffset && offset <= maxOffset {
             // Slide up the footer view while the first cell with "Add folder" button is disappearing during scrolling.
