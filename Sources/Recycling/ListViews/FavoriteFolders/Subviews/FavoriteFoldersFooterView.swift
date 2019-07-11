@@ -9,7 +9,7 @@ protocol FavoriteFoldersFooterViewDelegate: AnyObject {
 }
 
 final class FavoriteFoldersFooterView: UIView {
-    private static let shadowRadius: CGFloat = 2
+    private static let shadowRadius: CGFloat = 3
 
     weak var delegate: FavoriteFoldersFooterViewDelegate?
 
@@ -35,7 +35,7 @@ final class FavoriteFoldersFooterView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         // Make shadow to be on top
-        let rect = CGRect(x: 0, y: -layer.shadowRadius, width: bounds.width, height: layer.shadowRadius)
+        let rect = CGRect(x: 0, y: 0, width: bounds.width, height: layer.shadowRadius)
         layer.shadowPath = UIBezierPath(rect: rect).cgPath
     }
 
