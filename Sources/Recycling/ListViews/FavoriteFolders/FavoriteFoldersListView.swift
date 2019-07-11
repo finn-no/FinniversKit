@@ -250,10 +250,10 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.updateShadow(using: scrollView)
 
-        let offset = scrollView.contentOffset.y * 2
-        let minOffset = FavoriteFoldersListView.estimatedRowHeight * 2
+        let offset = scrollView.contentOffset.y * 1.5
+        let minOffset = FavoriteFoldersListView.estimatedRowHeight * 1.5
         let maxOffset = minOffset + footerHeight
-        let hasShortContent = scrollView.contentSize.height <= (scrollView.frame.height + minOffset / 2)
+        let hasShortContent = scrollView.contentSize.height <= (scrollView.frame.height + FavoriteFoldersListView.estimatedRowHeight)
 
         if hasShortContent && !isSearchActive {
             // Hide the footerView when there are few cells and a search isn't active.
