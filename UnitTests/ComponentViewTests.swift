@@ -165,5 +165,5 @@ class ComponentViewTests: FBSnapshotTestCase {
 
     func testQuestionnaireView() {
       snapshot(.questionnaireView)
-    } 
+    }
 }
