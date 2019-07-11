@@ -195,6 +195,7 @@ public enum FullscreenViews: String, CaseIterable {
     case fullscreenGallery
     case contactFormView
     case messageFormView
+    case receiptView
 
     public var viewController: UIViewController {
         switch self {
@@ -238,6 +239,8 @@ public enum FullscreenViews: String, CaseIterable {
             let bottomSheet = MessageFormBottomSheet(viewModel: MessageFormDemoViewModel())
             bottomSheet.messageFormDelegate = MessageFormDemoPresenter.shared
             return bottomSheet
+        case .receiptView:
+            return DemoViewController<ReceiptViewDemoView>()
         }
     }
 }

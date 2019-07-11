@@ -368,6 +368,10 @@
 		F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */; };
 		F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */; };
 		F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2772F4322803B310002D21F /* ReviewButtonView.swift */; };
+		F2B1A19222D503DC00713FC2 /* ReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1A19122D503DC00713FC2 /* ReceiptView.swift */; };
+		F2B1A19422D503E700713FC2 /* ReceiptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1A19322D503E700713FC2 /* ReceiptViewModel.swift */; };
+		F2B1A19722D5054600713FC2 /* ReceiptViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1A19622D5054600713FC2 /* ReceiptViewDemoView.swift */; };
+		F2B1A19922D5056500713FC2 /* ReceiptViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1A19822D5056500713FC2 /* ReceiptViewDefaultData.swift */; };
 		F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */; };
 		F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */; };
 		F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */; };
@@ -780,6 +784,10 @@
 		F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewNewAdCell.swift; sourceTree = "<group>"; };
 		F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewSeeAllAdsCell.swift; sourceTree = "<group>"; };
 		F2772F4322803B310002D21F /* ReviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonView.swift; sourceTree = "<group>"; };
+		F2B1A19122D503DC00713FC2 /* ReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
+		F2B1A19322D503E700713FC2 /* ReceiptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewModel.swift; sourceTree = "<group>"; };
+		F2B1A19622D5054600713FC2 /* ReceiptViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewDemoView.swift; sourceTree = "<group>"; };
+		F2B1A19822D5056500713FC2 /* ReceiptViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewDefaultData.swift; sourceTree = "<group>"; };
 		F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonViewDemoView.swift; sourceTree = "<group>"; };
 		F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonControl.swift; sourceTree = "<group>"; };
 		F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
@@ -1539,6 +1547,7 @@
 				8908E83422BD0C8700ED671C /* MessageForm */,
 				44D9124A2077AC8A00486848 /* Popup */,
 				44587013213FA344009187BE /* Register */,
+				F2B1A19022D503BE00713FC2 /* Receipt */,
 				43BACE6721117CF90052114C /* Review */,
 				43EA978021941E63003A548A /* SoldView */,
 			);
@@ -2309,6 +2318,7 @@
 				8908E85822C0E5F000ED671C /* MessageForm */,
 				CF8F023321DCC7B9004C4042 /* Popup */,
 				CF8F023021DCC793004C4042 /* Register */,
+				F2B1A19522D5051000713FC2 /* Receipt */,
 				CF8F023421DCC7D2004C4042 /* Review */,
 				CF8F023621DCC830004C4042 /* SoldView */,
 			);
@@ -2421,8 +2431,8 @@
 		CF8F023421DCC7D2004C4042 /* Review */ = {
 			isa = PBXGroup;
 			children = (
-				431875C221118CE200D71723 /* ReviewViewDefaultData.swift */,
 				43BACE6D21117DC70052114C /* ReviewViewDemoView.swift */,
+				431875C221118CE200D71723 /* ReviewViewDefaultData.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -2847,6 +2857,24 @@
 			path = ReviewButtonView;
 			sourceTree = "<group>";
 		};
+		F2B1A19022D503BE00713FC2 /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				F2B1A19122D503DC00713FC2 /* ReceiptView.swift */,
+				F2B1A19322D503E700713FC2 /* ReceiptViewModel.swift */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
+		F2B1A19522D5051000713FC2 /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				F2B1A19622D5054600713FC2 /* ReceiptViewDemoView.swift */,
+				F2B1A19822D5056500713FC2 /* ReceiptViewDefaultData.swift */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
 		F2BE212E22819ED8004640F3 /* Control */ = {
 			isa = PBXGroup;
 			children = (
@@ -3108,6 +3136,7 @@
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
 				F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */,
+				F2B1A19722D5054600713FC2 /* ReceiptViewDemoView.swift in Sources */,
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
@@ -3145,6 +3174,7 @@
 				CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
+				F2B1A19922D5056500713FC2 /* ReceiptViewDefaultData.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
 				08012BF02187319A00A04F43 /* BasicCellVariationsDemoView.swift in Sources */,
@@ -3409,6 +3439,7 @@
 				CF3D5EEC215A6741006E4D08 /* DrumMachineView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */,
+				F2B1A19222D503DC00713FC2 /* ReceiptView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
 				444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */,
@@ -3455,6 +3486,7 @@
 				9F21325E45E1BB6A5F076211 /* FullscreenGalleryDismissalTransition.swift in Sources */,
 				CF87A856229C0C5700DA8243 /* ContactFormCheckbox.swift in Sources */,
 				9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */,
+				F2B1A19422D503E700713FC2 /* ReceiptViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
