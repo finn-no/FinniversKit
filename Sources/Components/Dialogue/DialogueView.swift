@@ -131,7 +131,7 @@ public class DialogueView: UIView {
             link.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumSpacing),
             link.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             link.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
-            ])
+        ])
     }
 
     func heightWithConstrained(width: CGFloat) -> CGFloat {
