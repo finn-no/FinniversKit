@@ -44,7 +44,7 @@ public class AdsGridView: UIView {
 
     private weak var delegate: AdsGridViewDelegate?
     private weak var dataSource: AdsGridViewDataSource?
-    private let imageCache = AdsGridImageCache()
+    private let imageCache = ImageMemoryCache()
 
     // MARK: - External properties
 

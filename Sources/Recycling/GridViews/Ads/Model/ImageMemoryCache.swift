@@ -12,7 +12,7 @@ private class WeakImage {
     }
 }
 
-class AdsGridImageCache {
+class ImageMemoryCache {
     private var cache: [String: WeakImage] = [:]
 
     func add(_ image: UIImage, forKey key: String) {

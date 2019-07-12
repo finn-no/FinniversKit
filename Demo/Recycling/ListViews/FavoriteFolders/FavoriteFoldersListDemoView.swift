@@ -10,8 +10,7 @@ final class FavoriteFoldersListDemoView: UIView {
 
     private let viewModel = FavoriteFoldersListViewModel(
         searchBarPlaceholder: "Søk etter en av dine lister",
-        addFolderText: "Lag ny liste",
-        cancelButtonTitle: "Avbryt"
+        addFolderText: "Lag ny liste"
     )
 
     private lazy var view: FavoriteFoldersListView = {
@@ -48,6 +47,7 @@ final class FavoriteFoldersListDemoView: UIView {
 
 extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
     func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didSelectItemAtIndex index: Int) {}
+    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView) {}
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String) {
         let items = searchText.isEmpty
@@ -56,8 +56,8 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
         reload(with: items)
     }
 
-    func favoriteFoldersListViewDidCancelSearch(_ view: FavoriteFoldersListView) {
-        reload(with: allFavorites)
+    func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView) {
+        // Set bottomSheet to expanded here, if needed.
     }
 }
 
@@ -73,9 +73,9 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
         return filteredFavorites[index]
     }
 
-    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                         loadImageForModel model: RemoteImageTableViewCellViewModel,
-                                         completion: @escaping ((UIImage?) -> Void)) {
+    public func favoriteFoldersListView(_ view: FavoriteFoldersListView,
+                                        loadImageForModel model: RemoteImageTableViewCellViewModel,
+                                        completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {
             completion(nil)
             return
@@ -96,6 +96,6 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
         task.resume()
     }
 
-    func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                  cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {}
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView,
+                                 cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {}
 }

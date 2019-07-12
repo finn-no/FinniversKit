@@ -42,6 +42,14 @@ public extension UIView {
         layer.shadowRadius = radius
         layer.rasterizationScale = UIScreen.main.scale
     }
+
+    var windowSafeAreaInsets: UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            return UIApplication.shared.keyWindow?.safeAreaInsets ?? .zero
+        } else {
+            return .zero
+        }
+    }
 }
 
 // MARK: - Animate alongside keyboard
