@@ -34,9 +34,8 @@ public class LoginEntryView: UIView {
     // MARK: - Private properties
 
     private lazy var loginDialogue: LoginEntryDialogueView = {
-        let view = LoginEntryDialogueView()
+        let view = LoginEntryDialogueView(withAutoLayout: true)
         view.backgroundColor = .milk
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.dropShadow(color: .sardine, opacity: 0.3, offset: CGSize(width: 10, height: 0), radius: 24)
 
         return view

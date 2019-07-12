@@ -20,8 +20,7 @@ public class LoginEntryDialogueView: UIView {
     // MARK: - Private properties
 
     private lazy var logo: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .finnLogo)
         imageView.contentMode = .scaleAspectFit
 

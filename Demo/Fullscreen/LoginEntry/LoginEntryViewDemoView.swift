@@ -6,8 +6,7 @@ import FinniversKit
 
 public class LoginEntryViewDemoView: UIView {
     private lazy var loginEntryView: LoginEntryView = {
-        let loginEntryView = LoginEntryView()
-        loginEntryView.translatesAutoresizingMaskIntoConstraints = false
+        let loginEntryView = LoginEntryView(withAutoLayout: true)
         loginEntryView.model = LoginEntryDemoData()
 
         return loginEntryView
