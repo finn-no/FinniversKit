@@ -24,30 +24,27 @@ import UIKit
 
     private let animationDuration: TimeInterval = 0.3
     private let loadingIndicatorSize: CGFloat = 40
+    private let boxedSize: CGFloat = 120
+
     /// Used for throttling
     private var state: State = .hidden
     private let loadingIndicatorInitialTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     private static let shared = LoadingView()
 
+    private var successImageViewCenterY: NSLayoutConstraint?
+    private var loadingIndicatorCenterY: NSLayoutConstraint?
+
     public var displayType = DisplayType.boxed
 
-    private lazy var newLoadingIndicator: LoadingIndicatorView = {
+    private lazy var loadingIndicator: LoadingIndicatorView = {
         let view = LoadingIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.transform = loadingIndicatorInitialTransform
         return view
     }()
 
-    private lazy var oldLoadingIndicator: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(style: .whiteLarge)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.transform = loadingIndicatorInitialTransform
-        view.color = .primaryBlue
-        return view
-    }()
-
     private lazy var messageLabel: UILabel = {
-        let label = Label(style: .body)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -126,79 +123,96 @@ import UIKit
 
 private extension LoadingView {
     private func setup() {
-        backgroundColor = UIColor.black.withAlphaComponent(0.8)
-
-        let loadingIndicator = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
+        addSubview(successImageView)
         addSubview(loadingIndicator)
         addSubview(messageLabel)
-        addSubview(successImageView)
+
         NSLayoutConstraint.activate([
             successImageView.widthAnchor.constraint(equalToConstant: loadingIndicatorSize),
             successImageView.heightAnchor.constraint(equalToConstant: loadingIndicatorSize),
             successImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            successImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing),
 
             loadingIndicator.widthAnchor.constraint(equalToConstant: loadingIndicatorSize),
             loadingIndicator.heightAnchor.constraint(equalToConstant: loadingIndicatorSize),
             loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing),
 
-            messageLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: .mediumLargeSpacing),
-            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .veryLargeSpacing),
-            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.veryLargeSpacing)
+            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
+            messageLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: .mediumSpacing)
         ])
     }
 
-    private func startAnimating(withMessage message: String? = nil) {
+    private func addHUD() {
         if superview == nil {
             guard let window = defaultWindow else { return }
             window.addSubview(self)
 
             switch displayType {
             case .fullscreen:
+                successImageView.tintColor = .secondaryBlue
+                messageLabel.textColor = .licorice
+                backgroundColor = UIColor.white.withAlphaComponent(0.8)
+                layer.cornerRadius = 0
+
                 fillInSuperview()
             case .boxed:
+                successImageView.tintColor = .milk
+                messageLabel.textColor = .milk
+                backgroundColor = UIColor.black.withAlphaComponent(0.8)
+                layer.cornerRadius = 16
+
                 NSLayoutConstraint.activate([
-                    heightAnchor.constraint(equalToConstant: 120),
-                    widthAnchor.constraint(equalToConstant: 120),
+                    heightAnchor.constraint(equalToConstant: boxedSize),
+                    widthAnchor.constraint(equalToConstant: boxedSize),
                     centerXAnchor.constraint(equalTo: window.centerXAnchor),
                     centerYAnchor.constraint(equalTo: window.centerYAnchor)
                     ])
             }
         }
+    }
 
-        var loadingIndicator: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
-        loadingIndicator.startAnimating()
+    func setupForMessage(message: String?) {
+        if let message = message, message.count > 0 {
+            messageLabel.text = message
+            successImageViewCenterY?.isActive = false
+            successImageViewCenterY = successImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing)
+            successImageViewCenterY?.isActive = true
+
+            loadingIndicatorCenterY?.isActive = false
+            loadingIndicatorCenterY = loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing)
+            loadingIndicatorCenterY?.isActive = true
+        } else {
+            successImageViewCenterY?.isActive = false
+            successImageViewCenterY = successImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            successImageViewCenterY?.isActive = true
+
+            loadingIndicatorCenterY?.isActive = false
+            loadingIndicatorCenterY = loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
+            loadingIndicatorCenterY?.isActive = true
+        }
+    }
+
+    private func startAnimating(withMessage message: String? = nil) {
+        addHUD()
         messageLabel.text = message
+        setupForMessage(message: message)
         successImageView.alpha = 0
+        loadingIndicator.startAnimating()
+
         UIView.animate(withDuration: animationDuration) {
             self.alpha = 1
-            loadingIndicator.alpha = 1
-            loadingIndicator.transform = .identity
+            self.loadingIndicator.alpha = 1
+            self.loadingIndicator.transform = .identity
         }
     }
 
     private func showSuccess(withMessage message: String? = nil) {
-        if superview == nil {
-            guard let window = defaultWindow else { return }
-            window.addSubview(self)
+        addHUD()
 
-            switch displayType {
-            case .fullscreen:
-                fillInSuperview()
-            case .boxed:
-                NSLayoutConstraint.activate([
-                    heightAnchor.constraint(equalToConstant: 120),
-                    widthAnchor.constraint(equalToConstant: 120),
-                    centerXAnchor.constraint(equalTo: window.centerXAnchor),
-                    centerYAnchor.constraint(equalTo: window.centerYAnchor)
-                    ])
-            }
-        }
-
-        var loadingIndicator: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
         loadingIndicator.alpha = 0
         messageLabel.text = message
+        setupForMessage(message: message)
+
         UIView.animate(withDuration: animationDuration) {
             self.alpha = 1
             self.successImageView.alpha = 1
@@ -208,14 +222,13 @@ private extension LoadingView {
 
     private func stopAnimating() {
         if defaultWindow != nil {
-            var loadingIndicator: LoadingViewAnimatable = LoadingView.shouldUseOldIndicator ? oldLoadingIndicator : newLoadingIndicator
             UIView.animate(withDuration: animationDuration, animations: {
                 self.alpha = 0
-                loadingIndicator.transform = self.loadingIndicatorInitialTransform
+                self.loadingIndicator.transform = self.loadingIndicatorInitialTransform
                 self.successImageView.transform = self.loadingIndicatorInitialTransform
             }, completion: { _ in
                 self.messageLabel.text = nil
-                loadingIndicator.stopAnimating()
+                self.loadingIndicator.stopAnimating()
                 self.removeFromSuperview()
             })
         }

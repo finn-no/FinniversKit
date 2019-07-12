@@ -1,16 +1,7 @@
 import UIKit
 
-public protocol LoadingViewAnimatable {
-    var alpha: CGFloat { get set }
-    var transform: CGAffineTransform { get set }
-    func startAnimating()
-    func stopAnimating()
-}
-
-extension UIActivityIndicatorView: LoadingViewAnimatable {}
-
 /// Branded replacement for UIActivityIndicatorView.
-public class LoadingIndicatorView: UIView, LoadingViewAnimatable {
+public class LoadingIndicatorView: UIView {
     private let backgroundLayer = CAShapeLayer()
     private let animatedLayer = CAShapeLayer()
     private let duration: CGFloat = 2.5
