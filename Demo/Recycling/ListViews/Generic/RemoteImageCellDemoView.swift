@@ -71,6 +71,11 @@ extension RemoteImageCellDemoView: UITableViewDataSource {
 
 extension RemoteImageCellDemoView: RemoteImageTableViewCellDataSource {
     func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
+                                  cachedImageForModel model: RemoteImageTableViewCellViewModel) -> UIImage? {
+        return nil
+    }
+
+    func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
                                   loadImageForModel model: RemoteImageTableViewCellViewModel,
                                   completion: @escaping ((UIImage?) -> Void)) {
         guard let path = model.imagePath, let url = URL(string: path) else {

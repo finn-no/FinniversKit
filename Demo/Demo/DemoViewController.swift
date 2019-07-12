@@ -25,6 +25,7 @@ public class DemoViewController<View: UIView>: UIViewController {
     var hasDismissButton: Bool = false
     var usingDoubleTapToDismiss: Bool = false
     private var preferredInterfaceOrientation: UIInterfaceOrientationMask = .all
+    private let constrainToBottomSafeArea: Bool
 
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return preferredInterfaceOrientation
@@ -32,15 +33,18 @@ public class DemoViewController<View: UIView>: UIViewController {
 
     // Normal behaviour
     public init(usingDoubleTapToDismiss: Bool = true,
-                supportedInterfaceOrientations: UIInterfaceOrientationMask = .all) {
+                supportedInterfaceOrientations: UIInterfaceOrientationMask = .all,
+                constrainToBottomSafeArea: Bool = true) {
         self.usingDoubleTapToDismiss = usingDoubleTapToDismiss
         self.preferredInterfaceOrientation = supportedInterfaceOrientations
+        self.constrainToBottomSafeArea = constrainToBottomSafeArea
         super.init(nibName: nil, bundle: nil)
     }
 
     // Instantiate the view controller with a dismiss button
-    public init(withDismissButton hasDismissButton: Bool) {
+    public init(withDismissButton hasDismissButton: Bool, constrainToBottomSafeArea: Bool = true) {
         self.hasDismissButton = hasDismissButton
+        self.constrainToBottomSafeArea = constrainToBottomSafeArea
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -54,11 +58,13 @@ public class DemoViewController<View: UIView>: UIViewController {
         view.addSubview(playgroundView)
         view.backgroundColor = .milk
 
+        let bottomAnchor = constrainToBottomSafeArea ? view.compatibleBottomAnchor : view.bottomAnchor
+
         NSLayoutConstraint.activate([
             playgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             playgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             playgroundView.topAnchor.constraint(equalTo: view.compatibleTopAnchor),
-            playgroundView.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor)
+            playgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
         if hasDismissButton {
