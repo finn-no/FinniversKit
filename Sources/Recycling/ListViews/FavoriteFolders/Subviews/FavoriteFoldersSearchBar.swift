@@ -73,10 +73,11 @@ final class FavoriteFoldersSearchBar: UIView {
         addSubview(searchBar)
 
         NSLayoutConstraint.activate([
+            searchBar.heightAnchor.constraint(equalToConstant: 36),
             searchBar.topAnchor.constraint(equalTo: topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            searchBar.bottomAnchor.constraint(equalTo: bottomAnchor)
+            searchBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
         ])
     }
 }

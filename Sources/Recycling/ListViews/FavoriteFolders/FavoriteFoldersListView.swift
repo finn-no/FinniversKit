@@ -7,8 +7,8 @@ import UIKit
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView)
+    func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
-    func favoriteFoldersListViewDidCancelSearch(_ view: FavoriteFoldersListView)
 }
 
 public protocol FavoriteFoldersListViewDataSource: AnyObject {
@@ -58,9 +58,9 @@ public class FavoriteFoldersListView: UIView {
         tableView.estimatedRowHeight = FavoriteFoldersListView.estimatedRowHeight
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.tableFooterView = UIView()
-        tableView.contentInset.bottom = FavoriteFoldersListView.estimatedRowHeight
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.keyboardDismissMode = .onDrag
         tableView.register(AddFavoriteFolderViewCell.self)
         tableView.register(RemoteImageTableViewCell.self)
         return tableView
@@ -93,6 +93,12 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Reload
 
     public func reloadData() {
+        UIView.animate(withDuration: 0.35, animations: { [weak self] in
+            guard let self = self else { return }
+            self.footerViewTop.constant = self.isSearchActive ? -self.footerHeight : 0
+            self.layoutIfNeeded()
+        })
+        tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
     }
 
@@ -101,9 +107,6 @@ public class FavoriteFoldersListView: UIView {
     private func setup() {
         searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
         footerView.configure(withTitle: viewModel.addFolderText)
-
-        let barButtonAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [FavoriteFoldersSearchBar.self])
-        barButtonAppearance.title = viewModel.cancelButtonTitle
 
         addSubview(tableView)
         addSubview(searchBar)
@@ -117,7 +120,7 @@ public class FavoriteFoldersListView: UIView {
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor),
 
             footerViewTop,
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -247,21 +250,20 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.updateShadow(using: scrollView)
 
-        guard !isSearchActive else {
-            footerViewTop.constant = 0
-            return
-        }
-
-        let offset = scrollView.contentOffset.y
-        let minOffset = FavoriteFoldersListView.estimatedRowHeight
+        let offset = scrollView.contentOffset.y * 1.5
+        let minOffset = FavoriteFoldersListView.estimatedRowHeight * 1.5
         let maxOffset = minOffset + footerHeight
+        let hasShortContent = scrollView.contentSize.height <= (scrollView.frame.height + FavoriteFoldersListView.estimatedRowHeight)
 
-        if offset >= minOffset && offset <= maxOffset {
+        if hasShortContent && !isSearchActive {
+            // Hide the footerView when there are few cells and a search isn't active.
+            footerViewTop.constant = 0
+        } else if offset > maxOffset || isSearchActive {
+            // Stop sliding when the footer view appear in full height or when a search is active.
+            footerViewTop.constant = -footerHeight
+        } else if offset >= minOffset && offset <= maxOffset {
             // Slide up the footer view while the first cell with "Add folder" button is disappearing during scrolling.
             footerViewTop.constant = -offset + minOffset
-        } else if offset > maxOffset {
-            // Stop sliding when the footer view appear in full height.
-            footerViewTop.constant = -footerHeight
         } else if offset <= footerHeight {
             // Hide the footer view when the first cell with "Add folder" button is visible.
             footerViewTop.constant = 0
@@ -273,24 +275,21 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
 
 extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isSearchActive = true
-        footerView.isHidden = true
-        searchBar.setShowsCancelButton(true, animated: true)
+        delegate?.favoriteFoldersListViewDidFocusSearchBar(self)
     }
 
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        isSearchActive = false
-        footerView.isHidden = false
-        searchBar.setShowsCancelButton(false, animated: true)
-        delegate?.favoriteFoldersListViewDidCancelSearch(self)
+        if searchBar.text?.isEmpty ?? true {
+            isSearchActive = false
+        }
     }
 
-    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.endEditing(false)
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isSearchActive = !searchText.isEmpty
         delegate?.favoriteFoldersListView(self, didChangeSearchText: searchText)
     }
 }

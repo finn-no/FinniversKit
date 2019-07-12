@@ -10,8 +10,7 @@ final class FavoriteFoldersListDemoView: UIView {
 
     private let viewModel = FavoriteFoldersListViewModel(
         searchBarPlaceholder: "Søk etter en av dine lister",
-        addFolderText: "Lag ny liste",
-        cancelButtonTitle: "Avbryt"
+        addFolderText: "Lag ny liste"
     )
 
     private lazy var view: FavoriteFoldersListView = {
@@ -57,8 +56,8 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
         reload(with: items)
     }
 
-    func favoriteFoldersListViewDidCancelSearch(_ view: FavoriteFoldersListView) {
-        reload(with: allFavorites)
+    func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView) {
+        // Set bottomSheet to expanded here, if needed.
     }
 }
 
