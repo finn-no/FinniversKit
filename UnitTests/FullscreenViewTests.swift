@@ -97,4 +97,8 @@ class FullscreenViewTests: FBSnapshotTestCase {
     func testContactFormView() {
         snapshot(.contactFormView)
     }
+
+    func testMessageFormView() {
+        snapshot(.messageFormView)
+    }
 }
