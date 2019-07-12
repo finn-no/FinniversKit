@@ -12,6 +12,11 @@ import UIKit
         case success
     }
 
+
+    /// Decides whether the loading view displays as a full screen overlay or as a translucent HUD.
+    ///
+    /// - fullscreen: Covers the entire screen with an overlaying blocking UI elements from being accessed.
+    /// - boxed: Displays a translucent HUD that will keep things selectable beneath.
     public enum DisplayType {
         case fullscreen
         case boxed
@@ -34,7 +39,7 @@ import UIKit
     private var successImageViewCenterY: NSLayoutConstraint?
     private var loadingIndicatorCenterY: NSLayoutConstraint?
 
-    public var displayType = DisplayType.boxed
+    public var displayType = DisplayType.fullscreen
 
     private lazy var loadingIndicator: LoadingIndicatorView = {
         let view = LoadingIndicatorView()
@@ -174,19 +179,15 @@ private extension LoadingView {
     func setupForMessage(message: String?) {
         if let message = message, message.count > 0 {
             messageLabel.text = message
-            successImageViewCenterY?.isActive = false
             successImageViewCenterY = successImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing)
             successImageViewCenterY?.isActive = true
 
-            loadingIndicatorCenterY?.isActive = false
             loadingIndicatorCenterY = loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing)
             loadingIndicatorCenterY?.isActive = true
         } else {
-            successImageViewCenterY?.isActive = false
             successImageViewCenterY = successImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
             successImageViewCenterY?.isActive = true
 
-            loadingIndicatorCenterY?.isActive = false
             loadingIndicatorCenterY = loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
             loadingIndicatorCenterY?.isActive = true
         }
