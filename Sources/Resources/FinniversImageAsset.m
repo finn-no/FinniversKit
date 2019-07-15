@@ -64,6 +64,7 @@ NSString *const FinniversImageAssetimportant = @"important";
 NSString *const FinniversImageAssetinfo = @"info";
 NSString *const FinniversImageAssetjobs = @"jobs";
 NSString *const FinniversImageAssetlistView = @"listView";
+NSString *const FinniversImageAssetmagnifyingGlass = @"magnifyingGlass";
 NSString *const FinniversImageAssetmapDirections = @"mapDirections";
 NSString *const FinniversImageAssetmapDrawarea = @"mapDrawarea";
 NSString *const FinniversImageAssetmapMyposition = @"mapMyposition";
@@ -87,6 +88,7 @@ NSString *const FinniversImageAssetornamentStar = @"ornamentStar";
 NSString *const FinniversImageAssetpencilPaper = @"pencilPaper";
 NSString *const FinniversImageAssetpin = @"pin";
 NSString *const FinniversImageAssetplus = @"plus";
+NSString *const FinniversImageAssetplusMini = @"plusMini";
 NSString *const FinniversImageAssetprofile = @"profile";
 NSString *const FinniversImageAssetrate = @"rate";
 NSString *const FinniversImageAssetrated = @"rated";
@@ -184,6 +186,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetinfo,
              FinniversImageAssetjobs,
              FinniversImageAssetlistView,
+             FinniversImageAssetmagnifyingGlass,
              FinniversImageAssetmapDirections,
              FinniversImageAssetmapDrawarea,
              FinniversImageAssetmapMyposition,
@@ -207,6 +210,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetpencilPaper,
              FinniversImageAssetpin,
              FinniversImageAssetplus,
+             FinniversImageAssetplusMini,
              FinniversImageAssetprofile,
              FinniversImageAssetrate,
              FinniversImageAssetrated,

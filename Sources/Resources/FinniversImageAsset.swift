@@ -75,6 +75,7 @@ public enum FinniversImageAsset: String {
     case info
     case jobs
     case listView
+    case magnifyingGlass
     case mapDirections
     case mapDrawarea
     case mapMyposition
@@ -98,6 +99,7 @@ public enum FinniversImageAsset: String {
     case pencilPaper
     case pin
     case plus
+    case plusMini
     case profile
     case rate
     case rated
@@ -194,6 +196,7 @@ public enum FinniversImageAsset: String {
             .info,
             .jobs,
             .listView,
+            .magnifyingGlass,
             .mapDirections,
             .mapDrawarea,
             .mapMyposition,
@@ -217,6 +220,7 @@ public enum FinniversImageAsset: String {
             .pencilPaper,
             .pin,
             .plus,
+            .plusMini,
             .profile,
             .rate,
             .rated,
