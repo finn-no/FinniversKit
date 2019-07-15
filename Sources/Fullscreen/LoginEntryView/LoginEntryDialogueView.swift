@@ -4,10 +4,10 @@
 
 import UIKit
 
-public class LoginEntryDialogueView: UIView {
-    // MARK: - Public properties
+class LoginEntryDialogueView: UIView {
+    // MARK: - Internal properties
 
-    public var model: LoginEntryViewModel? {
+    var model: LoginEntryViewModel? {
         didSet {
             titleLabel.text = model?.title
             detailLabel.text = model?.detail
@@ -15,7 +15,7 @@ public class LoginEntryDialogueView: UIView {
             registerButton.setTitle(model?.registerButtonTitle, for: .normal)
         }
     }
-    public weak var delegate: LoginEntryViewDelegate?
+    weak var delegate: LoginEntryViewDelegate?
 
     // MARK: - Private properties
 
@@ -70,12 +70,12 @@ public class LoginEntryDialogueView: UIView {
 
     // MARK: - Initializers
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
