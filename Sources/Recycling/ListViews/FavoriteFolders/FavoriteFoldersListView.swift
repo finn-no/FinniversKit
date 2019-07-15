@@ -7,6 +7,7 @@ import UIKit
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView)
+    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String)
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
 }
@@ -72,6 +73,13 @@ public class FavoriteFoldersListView: UIView {
         return view
     }()
 
+    private lazy var emptyView: FavoriteFoldersEmptyView = {
+        let emptyView = FavoriteFoldersEmptyView(withAutoLayout: true)
+        emptyView.delegate = self
+        emptyView.isHidden = true
+        return emptyView
+    }()
+
     private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
 
     private lazy var footerHeight: CGFloat = {
@@ -93,6 +101,7 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Reload
 
     public func reloadData() {
+        showEmptyViewIfNeeded()
         UIView.animate(withDuration: 0.35, animations: { [weak self] in
             guard let self = self else { return }
             self.footerViewTop.constant = self.isSearchActive ? -self.footerHeight : 0
@@ -105,12 +114,14 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        emptyView.configure(withButtonTitle: viewModel.addFolderText, bodyTextPrefix: viewModel.emptyViewBodyPrefix)
         searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
         footerView.configure(withTitle: viewModel.addFolderText)
 
         addSubview(tableView)
         addSubview(searchBar)
         addSubview(footerView)
+        addSubview(emptyView)
 
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: topAnchor),
@@ -125,8 +136,20 @@ public class FavoriteFoldersListView: UIView {
             footerViewTop,
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            footerView.heightAnchor.constraint(equalToConstant: footerHeight)
+            footerView.heightAnchor.constraint(equalToConstant: footerHeight),
+
+            emptyView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            emptyView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            emptyView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            emptyView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    // MARK: - Private methods
+
+    private func showEmptyViewIfNeeded() {
+        let shouldShowEmptyView = (dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0) == 0
+        emptyView.isHidden = !shouldShowEmptyView
     }
 }
 
@@ -289,7 +312,18 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
     }
 
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         isSearchActive = !searchText.isEmpty
         delegate?.favoriteFoldersListView(self, didChangeSearchText: searchText)
+        emptyView.configure(withSearchTerm: searchText)
+    }
+}
+
+// MARK: - FavoriteFoldersEmptyViewDelegate
+
+extension FavoriteFoldersListView: FavoriteFoldersEmptyViewDelegate {
+    func favoriteFoldersEmptyViewDidSelectAddFolderButton(_: FavoriteFoldersEmptyView) {
+        guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        delegate?.favoriteFoldersListViewDidSelectAddButton(self, withSearchText: searchText)
     }
 }
