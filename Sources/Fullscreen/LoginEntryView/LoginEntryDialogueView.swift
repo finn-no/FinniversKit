@@ -9,8 +9,8 @@ public class LoginEntryDialogueView: UIView {
 
     public var model: LoginEntryViewModel? {
         didSet {
-            title.text = model?.title
-            detail.text = model?.detail
+            titleLabel.text = model?.title
+            detailLabel.text = model?.detail
             loginButton.setTitle(model?.loginButtonTitle, for: .normal)
             registerButton.setTitle(model?.registerButtonTitle, for: .normal)
         }
@@ -19,7 +19,7 @@ public class LoginEntryDialogueView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var logo: UIImageView = {
+    private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .finnLogo)
         imageView.contentMode = .scaleAspectFit
@@ -27,7 +27,7 @@ public class LoginEntryDialogueView: UIView {
         return imageView
     }()
 
-    private lazy var title: UILabel = {
+    private lazy var titleLabel: UILabel = {
         // overriding the font to get the title2 strong without affecting
         // the design system itself for now
         let title2StrongFont = UIFont(name: FontType.medium.rawValue, size: 28.0)!
@@ -42,7 +42,7 @@ public class LoginEntryDialogueView: UIView {
         return label
     }()
 
-    private lazy var detail: UILabel = {
+    private lazy var detailLabel: UILabel = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -63,6 +63,7 @@ public class LoginEntryDialogueView: UIView {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleRegisterButtonTap), for: .touchUpInside)
+        button.titleLabel?.numberOfLines = 0
 
         return button
     }()
@@ -85,29 +86,29 @@ public class LoginEntryDialogueView: UIView {
         layer.cornerRadius = 33
         layoutMargins = UIEdgeInsets(all: .largeSpacing)
 
-        addSubview(logo)
-        addSubview(title)
-        addSubview(detail)
+        addSubview(logoImageView)
+        addSubview(titleLabel)
+        addSubview(detailLabel)
         addSubview(loginButton)
         addSubview(registerButton)
 
         let margin = layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            logo.topAnchor.constraint(equalTo: margin.topAnchor, constant: .largeSpacing),
-            logo.leadingAnchor.constraint(equalTo: margin.leadingAnchor),
-            logo.trailingAnchor.constraint(equalTo: margin.trailingAnchor),
-            logo.heightAnchor.constraint(equalToConstant: 56),
+            logoImageView.topAnchor.constraint(equalTo: margin.topAnchor, constant: .largeSpacing),
+            logoImageView.leadingAnchor.constraint(equalTo: margin.leadingAnchor),
+            logoImageView.trailingAnchor.constraint(equalTo: margin.trailingAnchor),
+            logoImageView.heightAnchor.constraint(equalToConstant: 56),
 
-            title.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: .largeSpacing),
-            title.leadingAnchor.constraint(equalTo: margin.leadingAnchor),
-            title.trailingAnchor.constraint(equalTo: margin.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: .largeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: margin.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: margin.trailingAnchor),
 
-            detail.topAnchor.constraint(equalTo: title.bottomAnchor, constant: .mediumSpacing),
-            detail.leadingAnchor.constraint(equalTo: margin.leadingAnchor, constant: .mediumSpacing),
-            detail.trailingAnchor.constraint(equalTo: margin.trailingAnchor, constant: -.mediumSpacing),
+            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+            detailLabel.leadingAnchor.constraint(equalTo: margin.leadingAnchor, constant: .mediumSpacing),
+            detailLabel.trailingAnchor.constraint(equalTo: margin.trailingAnchor, constant: -.mediumSpacing),
 
-            loginButton.topAnchor.constraint(equalTo: detail.bottomAnchor, constant: .largeSpacing),
+            loginButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .largeSpacing),
             loginButton.leadingAnchor.constraint(equalTo: margin.leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: margin.trailingAnchor),
 
