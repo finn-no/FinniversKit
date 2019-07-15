@@ -101,4 +101,8 @@ class FullscreenViewTests: FBSnapshotTestCase {
     func testMessageFormView() {
         snapshot(.messageFormView)
     }
+
+    func testLoginEntryView() {
+        snapshot(.loginEntryView)
+    }
 }
