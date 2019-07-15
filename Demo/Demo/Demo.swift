@@ -183,6 +183,7 @@ public enum FullscreenViews: String, CaseIterable {
     case reportAdView
     case reviewView
     case registerView
+    case loginEntryView
     case loginView
     case consentToggleView
     case consentActionView
@@ -212,6 +213,8 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<ReviewViewDemoView>()
         case .registerView:
             return DemoViewController<RegisterViewDemoView>()
+        case .loginEntryView:
+            return DemoViewController<LoginEntryViewDemoView>()
         case .loginView:
             return DemoViewController<LoginViewDemoView>()
         case .consentToggleView:

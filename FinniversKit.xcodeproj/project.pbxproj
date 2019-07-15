@@ -220,7 +220,12 @@
 		89A7A64A22536E200053D33B /* NativeContentSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A64922536E200053D33B /* NativeContentSettingsButton.swift */; };
 		9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D9749A60B9BFD125F483 /* FeedbackView.swift */; };
 		9A37DACD70E4383536D5312B /* FeedbackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */; };
+		9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */; };
 		9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */; };
+		9BC33DE322D71986007CCD65 /* LoginEntryViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE222D71986007CCD65 /* LoginEntryViewDemoView.swift */; };
+		9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */; };
+		9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */; };
+		9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */; };
 		9F2130071B3637C7AD91066E /* FullscreenGalleryTransitionDestinationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21396E3BBAE40481AB6380 /* FullscreenGalleryTransitionDestinationDelegate.swift */; };
 		9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2134FB742B5E38B8428113 /* FullscreenGalleryTransitioningController.swift */; };
 		9F21325E45E1BB6A5F076211 /* FullscreenGalleryDismissalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2133592F1C81B96801F10C /* FullscreenGalleryDismissalTransition.swift */; };
@@ -632,7 +637,12 @@
 		89A7A64922536E200053D33B /* NativeContentSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContentSettingsButton.swift; sourceTree = "<group>"; };
 		9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
 		9A37D9749A60B9BFD125F483 /* FeedbackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchorExtensions.swift; sourceTree = "<group>"; };
 		9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoboxView+Style.swift"; sourceTree = "<group>"; };
+		9BC33DE222D71986007CCD65 /* LoginEntryViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryViewDemoView.swift; sourceTree = "<group>"; };
+		9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
+		9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDialogueView.swift; sourceTree = "<group>"; };
+		9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoData.swift; sourceTree = "<group>"; };
 		9F2133592F1C81B96801F10C /* FullscreenGalleryDismissalTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryDismissalTransition.swift; sourceTree = "<group>"; };
 		9F2133D2324BEE366DBA2134 /* FullscreenGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryViewController.swift; sourceTree = "<group>"; };
 		9F2133F39A730EF3068C7DDA /* FullscreenGalleryDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryDemoViewController.swift; sourceTree = "<group>"; };
@@ -1461,6 +1471,7 @@
 				44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */,
 				08D70A1A21832901003E2222 /* UIEdgeInsetsExtensions.swift */,
 				AADED71B223FE25500647C50 /* UIDevice.swift */,
+				9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1510,6 +1521,7 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				9BC33DE422D7219F007CCD65 /* LoginEntryView */,
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
 				DA24BA272164C0AF006E2E5E /* ConsentActionView */,
 				DAC7DCA021538511004602A3 /* ConsentToggleView */,
@@ -1725,6 +1737,24 @@
 				9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */,
 			);
 			path = Feedback;
+			sourceTree = "<group>";
+		};
+		9BC33DE122D7192F007CCD65 /* LoginEntry */ = {
+			isa = PBXGroup;
+			children = (
+				9BC33DE222D71986007CCD65 /* LoginEntryViewDemoView.swift */,
+				9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */,
+			);
+			path = LoginEntry;
+			sourceTree = "<group>";
+		};
+		9BC33DE422D7219F007CCD65 /* LoginEntryView */ = {
+			isa = PBXGroup;
+			children = (
+				9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */,
+				9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */,
+			);
+			path = LoginEntryView;
 			sourceTree = "<group>";
 		};
 		9F21329CE426868FFF041217 /* Transition */ = {
@@ -2279,17 +2309,18 @@
 		CF8F022721DCC721004C4042 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
-				CF87A858229C0C6600DA8243 /* ContactForm */,
 				CF8F023121DCC7A0004C4042 /* AdReporter */,
 				14A873D2220879870029DEA8 /* ConfirmationView */,
 				CF8F022821DCC72B004C4042 /* ConsentActionView */,
 				CF8F022921DCC736004C4042 /* ConsentToggleView */,
+				CF87A858229C0C6600DA8243 /* ContactForm */,
 				CF8F022B21DCC74F004C4042 /* EasterEggs */,
 				CF8F023521DCC81E004C4042 /* EmptyView */,
 				CF8F023221DCC7AE004C4042 /* FrontPage */,
 				9F2139783BEC14AD02F9BF7A /* FullscreenGallery */,
 				CF8F022A21DCC746004C4042 /* LoadingView */,
 				CF8F022F21DCC788004C4042 /* Login */,
+				9BC33DE122D7192F007CCD65 /* LoginEntry */,
 				8908E85822C0E5F000ED671C /* MessageForm */,
 				CF8F023321DCC7B9004C4042 /* Popup */,
 				CF8F023021DCC793004C4042 /* Register */,
@@ -3160,6 +3191,7 @@
 				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
 				14C6F7DA212324D600A7230C /* FavoritesListViewDemoViewHelpers.swift in Sources */,
 				DA8EF1202164E2090028740C /* ConsentActionViewDemoView.swift in Sources */,
+				9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */,
 				CFCED8D722CCFCE80049A3A0 /* RemoteImageCellDemoView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				08D70A23218329ED003E2222 /* CheckboxCellDemoView.swift in Sources */,
@@ -3179,6 +3211,7 @@
 				8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
+				9BC33DE322D71986007CCD65 /* LoginEntryViewDemoView.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
 				F26852DF21F755B6000978C8 /* UserAdsListViewDemoView.swift in Sources */,
 				43EA9793219965F3003A548A /* SoldViewDemoView.swift in Sources */,
@@ -3279,6 +3312,7 @@
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
+				9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
 				625A220D221EB30700733101 /* UserAdManagementUserActionCell.swift in Sources */,
 				F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */,
@@ -3320,6 +3354,7 @@
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				CF13D6D12292D50C0087DA37 /* PhaseView.swift in Sources */,
 				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
+				9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				DAB7FAAA21B690DD00BF8CC6 /* BottomSheetGestureController.swift in Sources */,
 				DAB7FAAE21B6924E00BF8CC6 /* SpringAnimator.swift in Sources */,
@@ -3416,6 +3451,7 @@
 				CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */,
 				AADED71C223FE25500647C50 /* UIDevice.swift in Sources */,
 				CF3D5EEC215A6741006E4D08 /* DrumMachineView.swift in Sources */,
+				9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */,
 				44D912642077AC8A00486848 /* RectangleView.swift in Sources */,
 				CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
