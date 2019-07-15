@@ -33,6 +33,14 @@ public class LoginEntryView: UIView {
 
     // MARK: - Private properties
 
+    private lazy var scrollView = UIScrollView(withAutoLayout: true)
+
+    private lazy var contentView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .marble
+        return view
+    }()
+
     private lazy var loginDialogue: LoginEntryDialogueView = {
         let view = LoginEntryDialogueView(withAutoLayout: true)
         view.backgroundColor = .milk
@@ -56,21 +64,36 @@ public class LoginEntryView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .marble
-        addSubview(loginDialogue)
+        addSubview(scrollView)
+        scrollView.fillInSuperview()
+
+        scrollView.addSubview(contentView)
+        contentView.addSubview(loginDialogue)
+
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.heightAnchor.constraint(
+                equalTo: loginDialogue.widthAnchor, constant: .largeSpacing, priority: .defaultLow
+            ),
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
+        ])
 
         let dialogueConstraints: [NSLayoutConstraint]
         if UIDevice.isIPad() {
             dialogueConstraints = [
-                loginDialogue.centerXAnchor.constraint(equalTo: centerXAnchor),
-                loginDialogue.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.45),
-                loginDialogue.centerYAnchor.constraint(equalTo: centerYAnchor),
+                loginDialogue.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+                loginDialogue.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                loginDialogue.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.45),
             ]
         } else {
             dialogueConstraints = [
-                loginDialogue.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-                loginDialogue.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-                loginDialogue.centerYAnchor.constraint(equalTo: centerYAnchor),
+                loginDialogue.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+                loginDialogue.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+                loginDialogue.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             ]
         }
 
