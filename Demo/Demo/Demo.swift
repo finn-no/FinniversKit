@@ -156,7 +156,7 @@ public enum RecyclingViews: String, CaseIterable {
         case .notificationsListView:
             return DemoViewController<NotificationsListViewDemoView>()
         case .favoriteFoldersListView:
-            return DemoViewController<FavoriteFoldersListViewDemoView>()
+            return DemoViewController<FavoriteFoldersListDemoView>(constrainToBottomSafeArea: false)
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:

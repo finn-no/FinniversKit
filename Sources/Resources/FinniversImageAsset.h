@@ -41,6 +41,7 @@ extern NSString *const FinniversImageAsseteditBig;
 extern NSString *const FinniversImageAsseterror;
 extern NSString *const FinniversImageAsseteyeHide;
 extern NSString *const FinniversImageAssetfavoriteAdd;
+extern NSString *const FinniversImageAssetfavoritesPlus;
 extern NSString *const FinniversImageAssetfavouriteAddImg;
 extern NSString *const FinniversImageAssetfavouriteAdded;
 extern NSString *const FinniversImageAssetfavouriteAddedImg;
