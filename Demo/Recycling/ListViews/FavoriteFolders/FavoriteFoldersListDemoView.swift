@@ -5,12 +5,16 @@
 import FinniversKit
 
 final class FavoriteFoldersListDemoView: UIView {
+
+    // MARK: - Private properties
+
     private let allFavorites = FavoriteFoldersFactory.create()
     private var filteredFavorites = [FavoriteFolderViewModel]()
 
     private let viewModel = FavoriteFoldersListViewModel(
         searchBarPlaceholder: "Søk etter en av dine lister",
-        addFolderText: "Lag ny liste"
+        addFolderText: "Lag ny liste",
+        emptyViewBodyPrefix: "Du har ingen lister med navnet"
     )
 
     private lazy var view: FavoriteFoldersListView = {
@@ -48,6 +52,7 @@ final class FavoriteFoldersListDemoView: UIView {
 extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
     func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didSelectItemAtIndex index: Int) {}
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView) {}
+    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String) {}
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String) {
         let items = searchText.isEmpty
