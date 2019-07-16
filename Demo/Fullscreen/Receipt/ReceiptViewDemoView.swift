@@ -40,11 +40,11 @@ class ReceiptViewDemoView: UIView {
 
 extension ReceiptViewDemoView: ReceiptViewDelegate {
     func receipt(_ : ReceiptView, didTapNavigateToAd button: Button) {
-        print("didTapCreateNewAd")
+        print("didTapNavigateToAd")
     }
 
     func receipt(_ : ReceiptView, didTapNavigateToMyAds button: Button) {
-        print("didTapCreateNewAd")
+        print("didTapNavigateToMyAds")
     }
 
     func receipt(_ : ReceiptView, didTapCreateNewAd button: Button) {
