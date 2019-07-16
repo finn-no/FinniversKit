@@ -28,10 +28,7 @@ class ReceiptViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        isUserInteractionEnabled = false
-
         addSubview(receiptView)
-
         NSLayoutConstraint.activate([
             receiptView.topAnchor.constraint(equalTo: topAnchor),
             receiptView.bottomAnchor.constraint(equalTo: bottomAnchor),
