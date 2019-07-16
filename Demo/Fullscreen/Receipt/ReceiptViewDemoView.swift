@@ -62,6 +62,8 @@ extension ReceiptViewDemoView: QuestionnaireViewDelegate {
     }
 
     func questionnaireViewDidSelectCancelButton(_ view: QuestionnaireView) {
+        print("questionnaireViewDidSelectCancelButton")
+
         UIView.animate(withDuration: 0.25) {
             self.questionnaireView.alpha = 0.0
         }
