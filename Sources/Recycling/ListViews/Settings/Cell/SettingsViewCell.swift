@@ -86,6 +86,8 @@ private extension SettingsViewCell {
 
             arrowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             arrowView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            arrowView.heightAnchor.constraint(equalToConstant: 13),
+            arrowView.widthAnchor.constraint(equalToConstant: 8),
 
             hairline.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             hairline.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
