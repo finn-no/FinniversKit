@@ -19,6 +19,7 @@ public protocol AddressViewDelegate: class {
         let control = UISegmentedControl(items: [])
         control.translatesAutoresizingMaskIntoConstraints = false
         control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
+        control.tintColor = .primaryBlue
         return control
     }()
 
@@ -146,5 +147,19 @@ extension AddressView: AddressCardViewDelegate {
 
     func addressCardViewDidSelectGetDirectionsButton(_ addressCardView: AddressCardView) {
         delegate?.addressViewDidSelectGetDirectionsButton(self)
+    }
+}
+
+extension AddressView: MKMapViewDelegate {
+    public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKCircle {
+            let circle = MKCircleRenderer(overlay: overlay)
+            circle.strokeColor = UIColor.primaryBlue
+            circle.fillColor = UIColor.secondaryBlue.withAlphaComponent(0.5)
+            circle.lineWidth = 1
+            return circle
+        } else {
+            return MKPolylineRenderer()
+        }
     }
 }

@@ -49,15 +49,8 @@ public class AddressViewDemoView: UIView {
 
     private func setup() {
         addressView.model = AddressViewDefaultData()
-
         addSubview(addressView)
-
-        NSLayoutConstraint.activate([
-            addressView.topAnchor.constraint(equalTo: topAnchor),
-            addressView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            addressView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            addressView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        addressView.fillInSuperview()
     }
 }
 
@@ -68,6 +61,10 @@ extension AddressViewDemoView: AddressViewDelegate {
 
     public func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView) {
         print("addressViewDidSelectGetDirectionsButton")
+    }
+
+    public func addressViewDidSelectCenterMapButton(_ addressView: AddressView) {
+        print("addressViewDidSelectCenterMapButton")
     }
 
     public func addressView(_ addressView: AddressView, didSelectMapTypeAtIndex index: Int) {
