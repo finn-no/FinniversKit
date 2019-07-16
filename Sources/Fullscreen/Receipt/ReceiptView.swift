@@ -180,10 +180,6 @@ public class ReceiptView: UIView {
         ])
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-
     @objc func navigateToAdButtonTapped(_ sender: Button) {
         delegate?.receipt(self, didTapNavigateToAd: sender)
     }
