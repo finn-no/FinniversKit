@@ -38,8 +38,6 @@ import UIKit
     private var successImageViewCenterY: NSLayoutConstraint?
     private var loadingIndicatorCenterY: NSLayoutConstraint?
 
-    private var loadingConstraints = [NSLayoutConstraint]()
-
     private lazy var loadingIndicator: LoadingIndicatorView = {
         let view = LoadingIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -169,7 +167,8 @@ private extension LoadingView {
                     widthAnchor.constraint(equalToConstant: boxedSize),
                     centerXAnchor.constraint(equalTo: window.centerXAnchor),
                     centerYAnchor.constraint(equalTo: window.centerYAnchor)
-                    ])            }
+                    ])                
+            }
         }
     }
 
