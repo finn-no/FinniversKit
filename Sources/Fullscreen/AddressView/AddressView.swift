@@ -47,6 +47,7 @@ public protocol AddressViewDelegate: class {
     public private(set) lazy var mapView: MKMapView = {
         let view = MKMapView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
 
