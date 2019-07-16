@@ -18,20 +18,44 @@ enum MapTypes: Int, CaseIterable {
     }
 }
 
-public struct AddressViewDefaultData: AddressViewModel {
+public struct AddressViewData: AddressViewModel {
     public var mapTypes: [String] {
         return MapTypes.allCases.map { $0.value }
     }
+    public var title: String
+    public var subtitle: String
+    public var copyButtonTitle: String
     public var selectedMapType = 0
-    public var title = "Vadmyrveien 18"
-    public var subtitle = "5172 Loddefjord"
-    public var copyButtonTitle = "Kopier adresse"
     public var getDirectionsButtonTitle = "Åpne veibeskrivelse"
 
-    public init() {}
+    public init(title: String, subtitle: String, copyButtonTitle: String) {
+        self.title = title
+        self.subtitle = subtitle
+        self.copyButtonTitle = copyButtonTitle
+    }
 }
 
-public class AddressViewDemoView: UIView {
+public class AddressViewDemoView: UIView, Tweakable {
+    weak var presentingViewController: UIViewController?
+
+    let defaultAddressData = AddressViewData(title: "Vadmyrveien 18", subtitle: "5172 Loddefjord", copyButtonTitle: "Kopier adresse")
+
+    lazy var tweakingOptions: [TweakingOption] = {
+        var options = [TweakingOption]()
+
+        options.append(TweakingOption(title: "Address data", description: nil, action: { parentViewController in
+            self.addressView.model = self.defaultAddressData
+            parentViewController?.dismiss(animated: true, completion: nil)
+        }))
+
+        options.append(TweakingOption(title: "Postalcode data", description: nil, action: { parentViewController in
+            self.addressView.model = AddressViewData(title: "0563", subtitle: "Oslo", copyButtonTitle: "Kopier postnummer")
+            parentViewController?.dismiss(animated: true, completion: nil)
+        }))
+
+        return options
+    }()
+
     private lazy var addressView: AddressView = {
         let addressView = AddressView()
         addressView.delegate = self
@@ -48,7 +72,7 @@ public class AddressViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        addressView.model = AddressViewDefaultData()
+        addressView.model = defaultAddressData
         addSubview(addressView)
         addressView.fillInSuperview()
     }

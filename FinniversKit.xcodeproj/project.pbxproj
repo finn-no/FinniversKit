@@ -115,7 +115,6 @@
 		4441F9F322CCF76300DCFD2F /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4441F9F122CCF75D00DCFD2F /* AddressView.swift */; };
 		4441F9F722CCF8C500DCFD2F /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4441F9F622CCF8C500DCFD2F /* AddressViewModel.swift */; };
 		4441F9F922CF81F700DCFD2F /* AddressCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4441F9F822CF81F700DCFD2F /* AddressCardView.swift */; };
-		444246012137D60400D42AB8 /* FavoriteFoldersListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444245FC2137D60400D42AB8 /* FavoriteFoldersListViewCell.swift */; };
 		444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444245FE2137D60400D42AB8 /* FavoriteFoldersListView.swift */; };
 		444246032137D60400D42AB8 /* FavoriteFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */; };
 		444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246052137D61100D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift */; };
@@ -176,6 +175,7 @@
 		44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912682077AD0200486848 /* PopupViewDefaultData.swift */; };
 		44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912692077AD0200486848 /* PopupViewDemoView.swift */; };
 		44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912722077AD1200486848 /* EmptyViewDemoView.swift */; };
+		44DA5EE022DE115200F2B0B9 /* TweakingOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DA5EDF22DE115200F2B0B9 /* TweakingOptionsTableViewController.swift */; };
 		44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */; };
 		4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */; };
 		45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B2E069207CF5C100C68B92 /* StringExtensions.swift */; };
@@ -544,7 +544,6 @@
 		4441F9F122CCF75D00DCFD2F /* AddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		4441F9F622CCF8C500DCFD2F /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
 		4441F9F822CF81F700DCFD2F /* AddressCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCardView.swift; sourceTree = "<group>"; };
-		444245FC2137D60400D42AB8 /* FavoriteFoldersListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewCell.swift; sourceTree = "<group>"; };
 		444245FE2137D60400D42AB8 /* FavoriteFoldersListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListView.swift; sourceTree = "<group>"; };
 		444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderViewModel.swift; sourceTree = "<group>"; };
 		444246052137D61100D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
@@ -603,6 +602,7 @@
 		44D912682077AD0200486848 /* PopupViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDefaultData.swift; sourceTree = "<group>"; };
 		44D912692077AD0200486848 /* PopupViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDemoView.swift; sourceTree = "<group>"; };
 		44D912722077AD1200486848 /* EmptyViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoView.swift; sourceTree = "<group>"; };
+		44DA5EDF22DE115200F2B0B9 /* TweakingOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakingOptionsTableViewController.swift; sourceTree = "<group>"; };
 		44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewsTableViewController.swift; sourceTree = "<group>"; };
 		45B2E069207CF5C100C68B92 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -1884,6 +1884,7 @@
 				4443F9B0209D5ECE00E35719 /* Helpers.swift */,
 				4412FDCC20A433550037A2FC /* SplitViewController.swift */,
 				4423F226209CB24500B81D68 /* MiniToastView.swift */,
+				44DA5EDF22DE115200F2B0B9 /* TweakingOptionsTableViewController.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -2350,7 +2351,6 @@
 			isa = PBXGroup;
 			children = (
 				4441F9ED22CCF72F00DCFD2F /* AddressView */,
-				CF87A858229C0C6600DA8243 /* ContactForm */,
 				CF8F023121DCC7A0004C4042 /* AdReporter */,
 				14A873D2220879870029DEA8 /* ConfirmationView */,
 				CF8F022821DCC72B004C4042 /* ConsentActionView */,
@@ -3296,6 +3296,7 @@
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
 				895175932248CFD4008003FB /* StepIndicatorDemoView.swift in Sources */,
 				F2C3E96522CB69B100CED7E0 /* QuestionnaireDefaultData.swift in Sources */,
+				44DA5EE022DE115200F2B0B9 /* TweakingOptionsTableViewController.swift in Sources */,
 				447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */,
 				CF7C460F22257AE1001FB92C /* EarthHourDemoView.swift in Sources */,
 				DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */,

@@ -89,6 +89,7 @@ public protocol AddressViewDelegate: class {
         didSet {
             guard let model = model else { return }
 
+            mapTypeSegmentControl.removeAllSegments()
             for (index, segment) in model.mapTypes.enumerated() {
                 mapTypeSegmentControl.insertSegment(withTitle: segment, at: index, animated: false)
             }

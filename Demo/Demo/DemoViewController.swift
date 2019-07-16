@@ -82,6 +82,10 @@ public class DemoViewController<View: UIView>: UIViewController {
             doubleTap.numberOfTapsRequired = 2
             view.addGestureRecognizer(doubleTap)
         }
+
+        if playgroundView is Tweakable {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Tweak", style: .plain, target: self, action: #selector(presentTweakingOptions))
+        }
     }
 
     @objc func didDoubleTap() {
@@ -95,6 +99,14 @@ public class DemoViewController<View: UIView>: UIViewController {
         if State.shouldShowDismissInstructions {
             miniToastView.show(in: view)
             State.shouldShowDismissInstructions = false
+        }
+    }
+
+    @objc func presentTweakingOptions() {
+        if let tweakablePlaygroundView = playgroundView as? Tweakable {
+            let tweakingController = TweakingOptionsTableViewController(options: tweakablePlaygroundView.tweakingOptions)
+            let navigationController = UINavigationController(rootViewController: tweakingController)
+            present(navigationController, animated: true, completion: nil)
         }
     }
 }
