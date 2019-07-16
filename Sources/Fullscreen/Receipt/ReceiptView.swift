@@ -11,7 +11,6 @@ public protocol ReceiptViewDelegate: class {
     func receipt(_ : ReceiptView, didTapNavigateToMyAds button: Button)
     func receipt(_ : ReceiptView, didTapCreateNewAd button: Button)
     func receiptInsertViewBelowDetailText(_ : ReceiptView) -> UIView?
-    func receiptHeightForView(_ : ReceiptView) -> CGFloat?
 }
 
 public class ReceiptView: UIView {
@@ -19,6 +18,8 @@ public class ReceiptView: UIView {
 
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(withAutoLayout: true)
+        view.showsVerticalScrollIndicator = false
+        view.showsHorizontalScrollIndicator = false
         return view
     }()
 
@@ -34,8 +35,8 @@ public class ReceiptView: UIView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3)
-        label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 1
         return label
     }()
 
@@ -48,6 +49,7 @@ public class ReceiptView: UIView {
     private lazy var bodyLabel: Label = {
         let view = Label(style: .body)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.textAlignment = .left
         view.numberOfLines = 0
         return view
     }()
@@ -88,12 +90,13 @@ public class ReceiptView: UIView {
 
     // MARK: - External properties
 
-    public weak var delegate: ReceiptViewDelegate?
+    private weak var delegate: ReceiptViewDelegate?
 
     // MARK: - Setup
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(delegate: ReceiptViewDelegate?) {
+        super.init(frame: .zero)
+        self.delegate = delegate
         setup()
     }
 
@@ -111,16 +114,16 @@ public class ReceiptView: UIView {
         contentView.addSubview(bodyLabel)
 
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: centerYAnchor, constant: .veryLargeSpacing),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.widthAnchor.constraint(equalTo: widthAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
@@ -137,15 +140,31 @@ public class ReceiptView: UIView {
             bodyLabel.trailingAnchor.constraint(equalTo: hairlineView.trailingAnchor),
         ])
 
-        addSubview(buttonContentView)
+        if let view = delegate?.receiptInsertViewBelowDetailText(self) {
+            view.translatesAutoresizingMaskIntoConstraints = false
+            contentView.addSubview(view)
+
+            NSLayoutConstraint.activate([
+                view.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .largeSpacing),
+                view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+                view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+                view.heightAnchor.constraint(equalToConstant: 160),
+            ])
+        }
+
+        contentView.addSubview(buttonContentView)
         buttonContentView.addSubview(navigateToAdButton)
         buttonContentView.addSubview(navigateToMyAdsButton)
         buttonContentView.addSubview(createNewAdButton)
 
+        let insertedViewOrBodyLabel =  delegate?.receiptInsertViewBelowDetailText(self) ?? bodyLabel
+
         NSLayoutConstraint.activate([
-            buttonContentView.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: .mediumSpacing),
-            buttonContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            buttonContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            buttonContentView.topAnchor.constraint(equalTo: insertedViewOrBodyLabel.bottomAnchor, constant: .mediumSpacing),
+            buttonContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            buttonContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            buttonContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            buttonContentView.heightAnchor.constraint(equalToConstant: 200),
 
             navigateToAdButton.topAnchor.constraint(equalTo: buttonContentView.topAnchor, constant: .mediumSpacing),
             navigateToAdButton.leadingAnchor.constraint(equalTo: buttonContentView.leadingAnchor, constant: .mediumSpacing),
@@ -163,19 +182,6 @@ public class ReceiptView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-
-        if let view = delegate?.receiptInsertViewBelowDetailText(self) {
-            view.translatesAutoresizingMaskIntoConstraints = false
-            contentView.addSubview(view)
-
-            NSLayoutConstraint.activate([
-                view.topAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -.mediumSpacing),
-                view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-                view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-                view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-                view.heightAnchor.constraint(equalToConstant: delegate?.receiptHeightForView(self) ?? (UIScreen.main.bounds.height * 0.33)),
-            ])
-        }
     }
 
     @objc func navigateToAdButtonTapped(_ sender: Button) {

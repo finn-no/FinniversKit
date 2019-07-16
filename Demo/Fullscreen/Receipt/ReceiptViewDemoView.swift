@@ -6,9 +6,8 @@ import FinniversKit
 
 class ReceiptViewDemoView: UIView {
     private lazy var receiptView: ReceiptView = {
-        let receiptView = ReceiptView()
+        let receiptView = ReceiptView(delegate: self)
         receiptView.translatesAutoresizingMaskIntoConstraints = false
-        receiptView.delegate = self
         receiptView.model = ReceiptViewDefaultData()
         return receiptView
     }()
@@ -57,10 +56,6 @@ extension ReceiptViewDemoView: ReceiptViewDelegate {
 
     func receiptInsertViewBelowDetailText(_ : ReceiptView) -> UIView? {
         return questionnaireView
-    }
-
-    func receiptHeightForView(_: ReceiptView) -> CGFloat? {
-        return 200
     }
 }
 
