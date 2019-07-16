@@ -118,8 +118,8 @@ public class QuestionnaireView: UIView {
             primaryButton.addSubview(primaryButtonImageView)
             let imageWidth: CGFloat = 18
             constraints.append(contentsOf: [
-                primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
-                primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
+                primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+                primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
                 primaryButtonImageView.widthAnchor.constraint(equalToConstant: imageWidth),
                 primaryButtonImageView.heightAnchor.constraint(equalToConstant: imageWidth),
                 primaryButtonImageView.centerYAnchor.constraint(equalTo: primaryButton.centerYAnchor),
