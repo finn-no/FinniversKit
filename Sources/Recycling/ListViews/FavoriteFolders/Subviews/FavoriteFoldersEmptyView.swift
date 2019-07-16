@@ -51,8 +51,8 @@ class FavoriteFoldersEmptyView: UIView {
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .highlighted)
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .selected)
         button.addTarget(self, action: #selector(handleAddFolderButtonTap), for: .touchUpInside)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -.mediumSpacing, bottom: 0, right: .mediumSpacing)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: .mediumSpacing, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -.smallSpacing, bottom: 0, right: .smallSpacing)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: .smallSpacing, bottom: 0, right: 0)
         return button
     }()
 
@@ -135,7 +135,6 @@ class FavoriteFoldersEmptyView: UIView {
 
     func configure(withButtonTitle buttonTitle: String, bodyTextPrefix: String) {
         addFolderButton.setTitle(buttonTitle, for: .normal)
-        addFolderButton.sizeToFit()
         self.bodyTextPrefix = bodyTextPrefix
         updateBodyLabel()
     }
