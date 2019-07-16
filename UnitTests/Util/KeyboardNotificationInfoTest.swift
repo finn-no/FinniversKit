@@ -16,8 +16,8 @@ class KeyboardNotificationInfoTest: XCTestCase {
         return view
     }
 
-    private func rect(y: CGFloat, height: CGFloat) -> CGRect {
-        return CGRect(x: 0, y: y, width: 1000, height: height)
+    private func rect(yPos: CGFloat, height: CGFloat) -> CGRect {
+        return CGRect(x: 0, y: yPos, width: 1000, height: height)
     }
 
     private func createKeyboardInfo(frameEnd: CGRect) -> KeyboardNotificationInfo {
@@ -35,24 +35,24 @@ class KeyboardNotificationInfoTest: XCTestCase {
     }
 
     func testKeyboardIntersectionZeroWhenNotOverlappingView() {
-        let view = createView(withFrame: rect(y: 100, height: 400))
-        let info = createKeyboardInfo(frameEnd: rect(y: 600, height: 400))
+        let view = createView(withFrame: rect(yPos: 100, height: 400))
+        let info = createKeyboardInfo(frameEnd: rect(yPos: 600, height: 400))
 
         let intersection = info.keyboardFrameEndIntersectHeight(inView: view)
         XCTAssertEqual(0, intersection)
     }
 
     func testKeyboardIntersectionNonZeroWhenOverlappingView() {
-        let view = createView(withFrame: rect(y: 100, height: 600))
-        let info = createKeyboardInfo(frameEnd: rect(y: 600, height: 400))
+        let view = createView(withFrame: rect(yPos: 100, height: 600))
+        let info = createKeyboardInfo(frameEnd: rect(yPos: 600, height: 400))
 
         let intersection = info.keyboardFrameEndIntersectHeight(inView: view)
         XCTAssertEqual(100, intersection)
     }
 
     func testKeyboardIntersectionWhenOutOfScreenBounds() {
-        let view = createView(withFrame: rect(y: 0, height: 1500))
-        let info = createKeyboardInfo(frameEnd: rect(y: 500, height: 500))
+        let view = createView(withFrame: rect(yPos: 0, height: 1500))
+        let info = createKeyboardInfo(frameEnd: rect(yPos: 500, height: 500))
 
         let intersection = info.keyboardFrameEndIntersectHeight(inView: view)
         XCTAssertEqual(1000, intersection)

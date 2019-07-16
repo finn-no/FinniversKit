@@ -20,6 +20,10 @@ final class FavoriteFoldersSearchBar: UIView {
         return searchBar
     }()
 
+    var text: String? {
+        return searchBar.text
+    }
+
     // MARK: - Init
 
     override init(frame: CGRect) {
