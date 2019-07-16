@@ -46,7 +46,7 @@ public class SettingsViewCell: UITableViewCell {
         didSet { set(model: model) }
     }
 
-    public var labelInset: CGFloat = 14
+    public var labelInset: CGFloat = 15
 
     // MARK: - Setup
 
@@ -92,7 +92,8 @@ private extension SettingsViewCell {
             hairline.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairline.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
-            contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: labelInset)
+            contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: labelInset),
+            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 52)
         ])
     }
 }
