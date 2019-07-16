@@ -37,7 +37,7 @@ class TweakingOptionsTableViewController: UIViewController {
     private func setup() {
         view.addSubview(tableView)
         tableView.fillInSuperview()
-        tableView.register(TweakingOptionCell.self)
+        tableView.register(OptionCell.self)
     }
 }
 
@@ -49,7 +49,7 @@ extension TweakingOptionsTableViewController: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(TweakingOptionCell.self, for: indexPath)
+        let cell = tableView.dequeue(OptionCell.self, for: indexPath)
         let option = options[indexPath.row]
         cell.option = option
         return cell
@@ -68,7 +68,7 @@ extension TweakingOptionsTableViewController: UITableViewDelegate {
 
 // MARK: - OptionCell
 
-private class TweakingOptionCell: UITableViewCell {
+private class OptionCell: UITableViewCell {
 
     var option: TweakingOption? {
         didSet {
