@@ -160,7 +160,7 @@ public class ReceiptView: UIView {
         let insertedViewOrBodyLabel =  delegate?.receiptInsertViewBelowDetailText(self) ?? bodyLabel
 
         NSLayoutConstraint.activate([
-            buttonContentView.topAnchor.constraint(equalTo: insertedViewOrBodyLabel.bottomAnchor, constant: .mediumSpacing),
+            buttonContentView.topAnchor.constraint(equalTo: insertedViewOrBodyLabel.bottomAnchor, constant: .largeSpacing),
             buttonContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             buttonContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             buttonContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
