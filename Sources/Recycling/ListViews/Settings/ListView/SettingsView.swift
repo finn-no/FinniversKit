@@ -23,7 +23,7 @@ public class SettingsView: UIView {
         view.separatorStyle = .none
         if #available(iOS 11, *) {
         } else {
-            view.estimatedRowHeight = 52
+            view.estimatedRowHeight = SettingsViewCell.estimatedRowHeight
             view.estimatedSectionHeaderHeight = 48
         }
         view.dataSource = self

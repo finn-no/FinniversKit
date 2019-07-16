@@ -40,6 +40,8 @@ public class SettingsViewCell: UITableViewCell {
         return line
     }()
 
+    static let estimatedRowHeight: CGFloat = 52
+
     // MARK: - Public properties
 
     public var model: SettingsViewCellModel? {
@@ -95,7 +97,7 @@ private extension SettingsViewCell {
             hairline.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
             contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: labelInset),
-            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 52)
+            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: SettingsViewCell.estimatedRowHeight)
         ])
     }
 }
