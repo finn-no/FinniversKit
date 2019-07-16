@@ -4,6 +4,15 @@
 
 import FinniversKit
 
+extension LoadingView.DisplayType {
+    var title: String {
+        switch self {
+        case .fullscreen: return "Fullscreen"
+        case .boxed: return "Boxed"
+        }
+    }
+}
+
 private struct Option {
     var title: String
     var description: String
@@ -11,77 +20,81 @@ private struct Option {
 }
 
 public class LoadingViewDemoView: UIView {
+    var currentDisplayType: LoadingView.DisplayType {
+        return LoadingView.DisplayType(rawValue: displayTypeSegment.selectedSegmentIndex) ?? .fullscreen
+    }
+
     private lazy var options: [Option] = {
         var options = [Option]()
 
         options.append(Option(title: "Simple show", description: "(shows after 0.5s, hides after a second)", action: {
-            LoadingView.show()
+            LoadingView.show(displayType: self.currentDisplayType)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 LoadingView.hide()
             })
         }))
 
         options.append(Option(title: "Simple show", description: "(shows immediately, hides after a second)", action: {
-            LoadingView.show(afterDelay: 0)
+            LoadingView.show(afterDelay: 0, displayType: self.currentDisplayType)
             LoadingView.hide(afterDelay: 1.0)
         }))
 
         options.append(Option(title: "Show with message", description: "shows after 0.5s, hides after a second", action: {
-            LoadingView.show(withMessage: "Hi there!")
+            LoadingView.show(withMessage: "Hi there!", displayType: self.currentDisplayType)
             LoadingView.hide(afterDelay: 1.0)
         }))
 
         options.append(Option(title: "Show with message", description: "shows immediately, hides after a second", action: {
-            LoadingView.show(withMessage: "Hi there!", afterDelay: 0)
+            LoadingView.show(withMessage: "Hi there!", afterDelay: 0, displayType: self.currentDisplayType)
             LoadingView.hide(afterDelay: 1.0)
         }))
 
         options.append(Option(title: "Show success", description: "shows after 0.5s, hides after a second", action: {
-            LoadingView.showSuccess()
+            LoadingView.showSuccess(displayType: self.currentDisplayType)
             LoadingView.hide(afterDelay: 1.0)
         }))
 
         options.append(Option(title: "Show success", description: "shows immediately, hides after a second", action: {
-            LoadingView.showSuccess(afterDelay: 0)
+            LoadingView.showSuccess(afterDelay: 0, displayType: self.currentDisplayType)
             LoadingView.hide(afterDelay: 1.0)
         }))
 
         options.append(Option(title: "Show success with message", description: "shows after 0.5s, hides after a second", action: {
-            LoadingView.showSuccess(withMessage: "Hi there!")
+            LoadingView.showSuccess(withMessage: "Hi there!", displayType: self.currentDisplayType)
             LoadingView.hide(afterDelay: 1.0)
         }))
 
         options.append(Option(title: "Show success with message", description: "shows immediately, hides after a second", action: {
-            LoadingView.showSuccess(withMessage: "Hi there!", afterDelay: 0)
+            LoadingView.showSuccess(withMessage: "Hi there!", afterDelay: 0, displayType: self.currentDisplayType)
             LoadingView.hide(afterDelay: 1.0)
         }))
 
         options.append(Option(title: "Full: Shows w/ message, Success, Hides", description: "shows after 0.5s, hides after 2s", action: {
-            LoadingView.show(withMessage: "Hi there!")
+            LoadingView.show(withMessage: "Hi there!", displayType: self.currentDisplayType)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                LoadingView.showSuccess(withMessage: "It worked!")
+                LoadingView.showSuccess(withMessage: "It worked!", displayType: self.currentDisplayType)
                 LoadingView.hide(afterDelay: 1.0)
             })
         }))
 
         options.append(Option(title: "Full: Show w/ message, Success, Hides", description: "shows immediately, hides after 2s", action: {
-            LoadingView.show(withMessage: "Hi there!", afterDelay: 0)
+            LoadingView.show(withMessage: "Hi there!", afterDelay: 0, displayType: self.currentDisplayType)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                LoadingView.showSuccess(withMessage: "It worked!", afterDelay: 0)
+                LoadingView.showSuccess(withMessage: "It worked!", afterDelay: 0, displayType: self.currentDisplayType)
                 LoadingView.hide(afterDelay: 1.0)
             })
         }))
 
         options.append(Option(title: "throttling: show and hide right after", description: "should not be visible at all", action: {
-            LoadingView.show(withMessage: "Hi there!")
+            LoadingView.show(withMessage: "Hi there!", displayType: self.currentDisplayType)
             LoadingView.hide()
         }))
 
         options.append(Option(title: "Racy scheduling", description: "Show only show the success-view", action: {
-            LoadingView.show(withMessage: "Should not be visible", afterDelay: 0.2)
+            LoadingView.show(withMessage: "Should not be visible", afterDelay: 0.2, displayType: self.currentDisplayType)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                LoadingView.showSuccess(withMessage: "Success", afterDelay: 0)
+                LoadingView.showSuccess(withMessage: "Success", afterDelay: 0, displayType: self.currentDisplayType)
                 LoadingView.hide(afterDelay: 0.5)
             })
         }))
@@ -97,6 +110,13 @@ public class LoadingViewDemoView: UIView {
         return view
     }()
 
+    private lazy var displayTypeSegment: UISegmentedControl = {
+        let view = UISegmentedControl(items: LoadingView.DisplayType.allCases.map { $0.title })
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.selectedSegmentIndex = 0
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -107,7 +127,19 @@ public class LoadingViewDemoView: UIView {
 
     private func setup() {
         addSubview(tableView)
-        tableView.fillInSuperview()
+        addSubview(displayTypeSegment)
+
+        NSLayoutConstraint.activate([
+            displayTypeSegment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            displayTypeSegment.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            displayTypeSegment.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: displayTypeSegment.topAnchor, constant: -.mediumLargeSpacing),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            ])
+
         tableView.register(OptionCell.self)
     }
 }

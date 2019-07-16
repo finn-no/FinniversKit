@@ -12,12 +12,11 @@ import UIKit
         case success
     }
 
-
     /// Decides whether the loading view displays as a full screen overlay or as a translucent HUD.
     ///
     /// - fullscreen: Covers the entire screen with an overlaying blocking UI elements from being accessed.
     /// - boxed: Displays a translucent HUD that will keep things selectable beneath.
-    public enum DisplayType {
+    @objc public enum DisplayType: Int, CaseIterable {
         case fullscreen
         case boxed
     }
@@ -39,7 +38,7 @@ import UIKit
     private var successImageViewCenterY: NSLayoutConstraint?
     private var loadingIndicatorCenterY: NSLayoutConstraint?
 
-    public var displayType = DisplayType.fullscreen
+    private var loadingConstraints = [NSLayoutConstraint]()
 
     private lazy var loadingIndicator: LoadingIndicatorView = {
         let view = LoadingIndicatorView()
@@ -84,12 +83,12 @@ import UIKit
     ///
     /// - Parameter message: The message to be displayed (optional)
     /// - Parameter afterDelay: The delay time (in seconds) before the loading view will be shown (optional, defaults to 0.5s)
-    @objc public class func show(withMessage message: String? = nil, afterDelay delay: Double = 0.5) {
+    @objc public class func show(withMessage message: String? = nil, afterDelay delay: Double = 0.5, displayType: DisplayType = .fullscreen) {
         LoadingView.shared.state = .message
 
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
             if LoadingView.shared.state == .message {
-                LoadingView.shared.startAnimating(withMessage: message)
+                LoadingView.shared.startAnimating(withMessage: message, displayType: displayType)
             }
         })
     }
@@ -98,12 +97,12 @@ import UIKit
     ///
     /// - Parameter message: The message to be displayed (optional)
     /// - Parameter afterDelay: The delay time (in seconds) before the success view will be shown (optional, defaults to 0.5s)
-    @objc public class func showSuccess(withMessage message: String? = nil, afterDelay delay: Double = 0.5) {
+    @objc public class func showSuccess(withMessage message: String? = nil, afterDelay delay: Double = 0.5, displayType: DisplayType = .fullscreen) {
         LoadingView.shared.state = .success
 
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
             if LoadingView.shared.state == .success {
-                LoadingView.shared.showSuccess(withMessage: message)
+                LoadingView.shared.showSuccess(withMessage: message, displayType: displayType)
             }
         })
     }
@@ -147,7 +146,7 @@ private extension LoadingView {
         ])
     }
 
-    private func addHUD() {
+    private func addHUD(displayType: DisplayType) {
         if superview == nil {
             guard let window = defaultWindow else { return }
             window.addSubview(self)
@@ -158,7 +157,6 @@ private extension LoadingView {
                 messageLabel.textColor = .licorice
                 backgroundColor = UIColor.white.withAlphaComponent(0.8)
                 layer.cornerRadius = 0
-
                 fillInSuperview()
             case .boxed:
                 successImageView.tintColor = .milk
@@ -171,30 +169,33 @@ private extension LoadingView {
                     widthAnchor.constraint(equalToConstant: boxedSize),
                     centerXAnchor.constraint(equalTo: window.centerXAnchor),
                     centerYAnchor.constraint(equalTo: window.centerYAnchor)
-                    ])
-            }
+                    ])            }
         }
     }
 
     func setupForMessage(message: String?) {
         if let message = message, message.count > 0 {
             messageLabel.text = message
+            successImageViewCenterY?.isActive = false
             successImageViewCenterY = successImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing)
             successImageViewCenterY?.isActive = true
 
+            loadingIndicatorCenterY?.isActive = false
             loadingIndicatorCenterY = loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -.mediumSpacing)
             loadingIndicatorCenterY?.isActive = true
         } else {
+            successImageViewCenterY?.isActive = false
             successImageViewCenterY = successImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
             successImageViewCenterY?.isActive = true
 
+            loadingIndicatorCenterY?.isActive = false
             loadingIndicatorCenterY = loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
             loadingIndicatorCenterY?.isActive = true
         }
     }
 
-    private func startAnimating(withMessage message: String? = nil) {
-        addHUD()
+    private func startAnimating(withMessage message: String? = nil, displayType: DisplayType) {
+        addHUD(displayType: displayType)
         messageLabel.text = message
         setupForMessage(message: message)
         successImageView.alpha = 0
@@ -207,9 +208,8 @@ private extension LoadingView {
         }
     }
 
-    private func showSuccess(withMessage message: String? = nil) {
-        addHUD()
-
+    private func showSuccess(withMessage message: String? = nil, displayType: DisplayType) {
+        addHUD(displayType: displayType)
         loadingIndicator.alpha = 0
         messageLabel.text = message
         setupForMessage(message: message)
