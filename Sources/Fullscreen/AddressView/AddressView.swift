@@ -156,7 +156,7 @@ extension AddressView: MKMapViewDelegate {
         if overlay is MKCircle {
             let circle = MKCircleRenderer(overlay: overlay)
             circle.strokeColor = UIColor.primaryBlue
-            circle.fillColor = UIColor.primaryBlue.withAlphaComponent(0.5)
+            circle.fillColor = UIColor.primaryBlue.withAlphaComponent(0.3)
             circle.lineWidth = 2
             return circle
         } else {
