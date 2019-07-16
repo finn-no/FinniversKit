@@ -4,7 +4,7 @@
 
 import UIKit
 
-// MARK: - LoginViewDelegatew
+// MARK: - ReceiptViewDelegate
 
 public protocol ReceiptViewDelegate: class {
     func receipt(_ : ReceiptView, didTapNavigateToAd button: Button)
@@ -23,15 +23,8 @@ public class ReceiptView: UIView {
         return view
     }()
 
-    private lazy var contentView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        return view
-    }()
-
-    private lazy var buttonContentView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        return view
-    }()
+    private lazy var contentView: UIView = UIView(withAutoLayout: true)
+    private lazy var buttonContentView: UIView = UIView(withAutoLayout: true)
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3)
@@ -106,8 +99,9 @@ public class ReceiptView: UIView {
     }
 
     private func setup() {
-        scrollView.addSubview(contentView)
         addSubview(scrollView)
+        scrollView.fillInSuperview()
+        scrollView.addSubview(contentView)
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(hairlineView)
@@ -119,11 +113,6 @@ public class ReceiptView: UIView {
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
@@ -157,7 +146,7 @@ public class ReceiptView: UIView {
         buttonContentView.addSubview(navigateToMyAdsButton)
         buttonContentView.addSubview(createNewAdButton)
 
-        let insertedViewOrBodyLabel =  delegate?.receiptInsertViewBelowDetailText(self) ?? bodyLabel
+        let insertedViewOrBodyLabel = delegate?.receiptInsertViewBelowDetailText(self) ?? bodyLabel
 
         NSLayoutConstraint.activate([
             buttonContentView.topAnchor.constraint(equalTo: insertedViewOrBodyLabel.bottomAnchor, constant: .largeSpacing),
@@ -180,15 +169,15 @@ public class ReceiptView: UIView {
         ])
     }
 
-    @objc func navigateToAdButtonTapped(_ sender: Button) {
+    @objc private func navigateToAdButtonTapped(_ sender: Button) {
         delegate?.receipt(self, didTapNavigateToAd: sender)
     }
 
-    @objc func navigateToMyAdsButtonTapped(_ sender: Button) {
+    @objc private func navigateToMyAdsButtonTapped(_ sender: Button) {
         delegate?.receipt(self, didTapNavigateToMyAds: sender)
     }
 
-    @objc func createNewAdButtonTapped(_ sender: Button) {
+    @objc private func createNewAdButtonTapped(_ sender: Button) {
         delegate?.receipt(self, didTapCreateNewAd: sender)
     }
 }

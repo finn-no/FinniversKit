@@ -29,12 +29,7 @@ class ReceiptViewDemoView: UIView {
 
     private func setup() {
         addSubview(receiptView)
-        NSLayoutConstraint.activate([
-            receiptView.topAnchor.constraint(equalTo: topAnchor),
-            receiptView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            receiptView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            receiptView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        receiptView.fillInSuperview()
     }
 }
 
