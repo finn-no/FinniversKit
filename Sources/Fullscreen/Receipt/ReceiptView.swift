@@ -39,7 +39,7 @@ public class ReceiptView: UIView {
         return view
     }()
 
-    private lazy var bodyLabel: Label = {
+    private lazy var detailLabel: Label = {
         let view = Label(style: .body)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textAlignment = .left
@@ -74,7 +74,7 @@ public class ReceiptView: UIView {
         didSet {
             guard let model = model else { return }
             titleLabel.text = model.title
-            bodyLabel.text = model.body
+            detailLabel.text = model.detail
             navigateToAdButton.setTitle(model.navigateToAdButtonText, for: .normal)
             navigateToMyAdsButton.setTitle(model.navigateToMyAdsButtonText, for: .normal)
             createNewAdButton.setTitle(model.createNewAdButtonText, for: .normal)
@@ -105,7 +105,7 @@ public class ReceiptView: UIView {
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(hairlineView)
-        contentView.addSubview(bodyLabel)
+        contentView.addSubview(detailLabel)
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -124,9 +124,9 @@ public class ReceiptView: UIView {
             hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
             hairlineView.heightAnchor.constraint(equalToConstant: (1.0 / UIScreen.main.scale)),
 
-            bodyLabel.topAnchor.constraint(equalTo: hairlineView.topAnchor, constant: .mediumLargeSpacing),
-            bodyLabel.leadingAnchor.constraint(equalTo: hairlineView.leadingAnchor),
-            bodyLabel.trailingAnchor.constraint(equalTo: hairlineView.trailingAnchor),
+            detailLabel.topAnchor.constraint(equalTo: hairlineView.topAnchor, constant: .mediumLargeSpacing),
+            detailLabel.leadingAnchor.constraint(equalTo: hairlineView.leadingAnchor),
+            detailLabel.trailingAnchor.constraint(equalTo: hairlineView.trailingAnchor),
         ])
 
         if let view = delegate?.receiptInsertViewBelowDetailText(self) {
@@ -134,7 +134,7 @@ public class ReceiptView: UIView {
             contentView.addSubview(view)
 
             NSLayoutConstraint.activate([
-                view.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .largeSpacing),
+                view.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .largeSpacing),
                 view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
                 view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
                 view.heightAnchor.constraint(equalToConstant: 160),
@@ -146,7 +146,7 @@ public class ReceiptView: UIView {
         buttonContentView.addSubview(navigateToMyAdsButton)
         buttonContentView.addSubview(createNewAdButton)
 
-        let insertedViewOrBodyLabel = delegate?.receiptInsertViewBelowDetailText(self) ?? bodyLabel
+        let insertedViewOrBodyLabel = delegate?.receiptInsertViewBelowDetailText(self) ?? detailLabel
 
         NSLayoutConstraint.activate([
             buttonContentView.topAnchor.constraint(equalTo: insertedViewOrBodyLabel.bottomAnchor, constant: .largeSpacing),

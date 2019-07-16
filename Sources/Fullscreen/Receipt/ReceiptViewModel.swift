@@ -6,7 +6,7 @@ import Foundation
 
 public protocol ReceiptViewModel {
     var title: String { get }
-    var body: String { get }
+    var detail: String { get }
     var navigateToAdButtonText: String { get }
     var navigateToMyAdsButtonText: String { get }
     var createNewAdButtonText: String { get }
@@ -14,6 +14,6 @@ public protocol ReceiptViewModel {
 
 public extension ReceiptViewModel {
     var accessibilityLabel: String {
-        return [title, body].joined(separator: ". ")
+        return [title, detail].joined(separator: ". ")
     }
 }
