@@ -167,7 +167,7 @@ private extension LoadingView {
                     widthAnchor.constraint(equalToConstant: boxedSize),
                     centerXAnchor.constraint(equalTo: window.centerXAnchor),
                     centerYAnchor.constraint(equalTo: window.centerYAnchor)
-                    ])                
+                    ])
             }
         }
     }

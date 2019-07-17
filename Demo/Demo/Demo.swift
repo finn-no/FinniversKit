@@ -246,7 +246,7 @@ public enum FullscreenViews: String, CaseIterable {
         case .receiptView:
             return DemoViewController<ReceiptViewDemoView>()
         case .addressView:
-            return DemoViewController<AddressViewDemoView>()            
+            return DemoViewController<AddressViewDemoView>()
         }
     }
 }
