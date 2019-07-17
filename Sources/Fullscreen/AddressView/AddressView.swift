@@ -101,6 +101,26 @@ public protocol AddressViewDelegate: class {
             addressCardView.getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
         }
     }
+
+    public func centerMap(location: CLLocationCoordinate2D, regionDistance: Double, animated: Bool) {
+        let meters: CLLocationDistance = regionDistance
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: meters, longitudinalMeters: meters)
+        mapView.setRegion(region, animated: animated)
+    }
+
+    public func addRadiusArea(location: CLLocationCoordinate2D, regionDistance: Double) {
+        let circle = MKCircle(center: location, radius: regionDistance)
+        mapView.addOverlay(circle)
+    }
+
+    public func addAnnotation(location: CLLocationCoordinate2D, title: String) {
+        let annotation = AddressAnnotation(title: title, location: location)
+        mapView.addAnnotation(annotation)
+    }
+
+    public func changeMapType(mapType: MKMapType) {
+        mapView.mapType = mapType
+    }
 }
 
 // MARK: - Private methods
@@ -163,5 +183,15 @@ extension AddressView: MKMapViewDelegate {
         } else {
             return MKPolylineRenderer()
         }
+    }
+}
+
+private class AddressAnnotation: NSObject, MKAnnotation {
+    var coordinate: CLLocationCoordinate2D
+    var title: String?
+
+    init(title: String, location: CLLocationCoordinate2D) {
+        self.title = title
+        self.coordinate = location
     }
 }

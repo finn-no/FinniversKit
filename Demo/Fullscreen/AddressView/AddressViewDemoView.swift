@@ -3,15 +3,16 @@
 //
 
 import FinniversKit
+import MapKit
 
 enum MapTypes: Int, CaseIterable {
-    case map
+    case standard
     case satellite
     case hybrid
 
     var value: String {
         switch self {
-        case .map: return "Kart"
+        case .standard: return "Kart"
         case .satellite: return "Flyfoto"
         case .hybrid: return "Hybrid"
         }
@@ -38,18 +39,24 @@ public struct AddressViewData: AddressViewModel {
 public class AddressViewDemoView: UIView, Tweakable {
     weak var presentingViewController: UIViewController?
 
-    let defaultAddressData = AddressViewData(title: "Vadmyrveien 18", subtitle: "5172 Loddefjord", copyButtonTitle: "Kopier adresse")
+    let defaultAddressData = AddressViewData(title: "Møllerøya 32", subtitle: "7982 Bindalseidet", copyButtonTitle: "Kopier adresse")
 
     lazy var tweakingOptions: [TweakingOption] = {
         var options = [TweakingOption]()
 
         options.append(TweakingOption(title: "Address data", description: nil, action: { parentViewController in
             self.addressView.model = self.defaultAddressData
+            let location = CLLocationCoordinate2D(latitude: 65.10915470111108, longitude: 11.984673996759456)
+            self.addressView.addAnnotation(location: location, title: "Møllerøya 32, 7982 Bindalseidet")
+            self.addressView.centerMap(location: location, regionDistance: 500, animated: false)
             parentViewController?.dismiss(animated: true, completion: nil)
         }))
 
         options.append(TweakingOption(title: "Postalcode data", description: nil, action: { parentViewController in
-            self.addressView.model = AddressViewData(title: "0563", subtitle: "Oslo", copyButtonTitle: "Kopier postnummer")
+            let location = CLLocationCoordinate2D(latitude: 59.925504072875661, longitude: 10.452107618894244)
+            self.addressView.model = AddressViewData(title: "1340", subtitle: "Skui", copyButtonTitle: "Kopier postnummer")
+            self.addressView.addRadiusArea(location: location, regionDistance: 500)
+            self.addressView.centerMap(location: location, regionDistance: 1200, animated: false)
             parentViewController?.dismiss(animated: true, completion: nil)
         }))
 
@@ -72,7 +79,7 @@ public class AddressViewDemoView: UIView, Tweakable {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        addressView.model = defaultAddressData
+        tweakingOptions.first?.action(nil)
         addSubview(addressView)
         addressView.fillInSuperview()
     }
@@ -92,6 +99,14 @@ extension AddressViewDemoView: AddressViewDelegate {
     }
 
     public func addressView(_ addressView: AddressView, didSelectMapTypeAtIndex index: Int) {
-        print("didSelectMapTypeAtIndex: \(MapTypes(rawValue: index)?.value ?? "None")")
+        guard let mapType = MapTypes(rawValue: index) else { return }
+        switch mapType {
+        case .standard:
+            addressView.changeMapType(mapType: .standard)
+        case .satellite:
+            addressView.changeMapType(mapType: .satellite)
+        case .hybrid:
+            addressView.changeMapType(mapType: .hybrid)
+        }
     }
 }
