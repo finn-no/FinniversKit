@@ -40,13 +40,15 @@ public class SettingsViewCell: UITableViewCell {
         return line
     }()
 
+    static let estimatedRowHeight: CGFloat = 52
+
     // MARK: - Public properties
 
     public var model: SettingsViewCellModel? {
         didSet { set(model: model) }
     }
 
-    public var labelInset: CGFloat = 14
+    public var labelInset: CGFloat = 15
 
     // MARK: - Setup
 
@@ -86,13 +88,16 @@ private extension SettingsViewCell {
 
             arrowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             arrowView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            arrowView.heightAnchor.constraint(equalToConstant: 13),
+            arrowView.widthAnchor.constraint(equalToConstant: 8),
 
             hairline.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             hairline.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             hairline.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairline.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
-            contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: labelInset)
+            contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: labelInset),
+            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: SettingsViewCell.estimatedRowHeight)
         ])
     }
 }
