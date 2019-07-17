@@ -18,6 +18,7 @@ public class ReceiptView: UIView {
 
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(withAutoLayout: true)
+        view.backgroundColor = .milk
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
         return view
