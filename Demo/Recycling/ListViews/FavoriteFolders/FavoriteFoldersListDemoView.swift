@@ -8,8 +8,9 @@ final class FavoriteFoldersListDemoView: UIView {
 
     // MARK: - Private properties
 
-    private let allFavorites = FavoriteFoldersFactory.create()
-    private var filteredFavorites = [FavoriteFolderViewModel]()
+    private var allFavorites = FavoriteFoldersFactory.create() { didSet { filterFoldersAndReload() } }
+    private var filteredFavorites = [FavoriteFolder]()
+    private var filterString = "" { didSet { filterFoldersAndReload() } }
 
     private let viewModel = FavoriteFoldersListViewModel(
         searchBarPlaceholder: "Søk etter en av dine lister",
@@ -41,8 +42,10 @@ final class FavoriteFoldersListDemoView: UIView {
         view.fillInSuperview()
     }
 
-    private func reload(with items: [FavoriteFolderViewModel]) {
-        filteredFavorites = items
+    private func filterFoldersAndReload() {
+        filteredFavorites = filterString.isEmpty
+            ? allFavorites
+            : allFavorites.filter({ $0.title.lowercased().contains(filterString) })
         view.reloadData()
     }
 }
@@ -50,15 +53,16 @@ final class FavoriteFoldersListDemoView: UIView {
 // MARK: - FavoriteFoldersListViewDelegate
 
 extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
-    func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didSelectItemAtIndex index: Int) {}
+    func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didSelectItemAtIndex index: Int) {
+        let folderId = filteredFavorites[index].id
+        guard let folderIndex = allFavorites.firstIndex(where: { $0.id == folderId }) else { return }
+        allFavorites[folderIndex].isSelected.toggle()
+    }
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView) {}
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String) {}
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String) {
-        let items = searchText.isEmpty
-            ? allFavorites
-            : allFavorites.filter({ $0.title.lowercased().contains(searchText.lowercased()) })
-        reload(with: items)
+        filterString = searchText.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }
 
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView) {
