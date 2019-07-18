@@ -22,7 +22,7 @@ public protocol RemoteImageTableViewCellDataSource: AnyObject {
     )
 }
 
-public final class RemoteImageTableViewCell: BasicTableViewCell {
+public class RemoteImageTableViewCell: BasicTableViewCell {
     /// A data source for the loading of the image
     public weak var dataSource: RemoteImageTableViewCellDataSource?
     /// The loading color is used to fill the image view while we load the image.
