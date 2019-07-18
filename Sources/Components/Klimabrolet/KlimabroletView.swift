@@ -4,8 +4,17 @@
 
 import UIKit
 
+public protocol KlimabroletViewDelegate: AnyObject {
+    func klimabroletViewDidSelectReadMore(_ view: KlimabroletView)
+    func klimabroletViewDidSelectAccept(_ view: KlimabroletView)
+    func klimabroletViewDidSelectDecline(_ view: KlimabroletView)
+    func klimabroletViewDidSelectClose(_ view: KlimabroletView)
+}
+
 public class KlimabroletView: UIView {
     // MARK: - Public properties
+
+    public var delegate: KlimabroletViewDelegate?
 
     public var model: KlimabroletViewModel? {
         didSet {
@@ -28,6 +37,7 @@ public class KlimabroletView: UIView {
         button.setImage(UIImage(named: .newClose), for: .normal)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         button.contentEdgeInsets = UIEdgeInsets(all: 6)
+        button.addTarget(self, action: #selector(handleTapOnCloseButton), for: .touchUpInside)
 
         return button
     }()
@@ -42,13 +52,14 @@ public class KlimabroletView: UIView {
 
     private lazy var contentView: KlimabroletContentView = {
         let view = KlimabroletContentView(withAutoLayout: true)
+        view.delegate = self
         return view
     }()
 
     private lazy var actionsView: KlimabroletActionsView = {
         let view = KlimabroletActionsView(withAutoLayout: true)
         view.layer.shadowOffset = .zero
-
+        view.delegate = self
         return view
     }()
 
@@ -109,6 +120,10 @@ public class KlimabroletView: UIView {
             actionsView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
+
+    @objc private func handleTapOnCloseButton() {
+        delegate?.klimabroletViewDidSelectClose(self)
+    }
 }
 
 // MARK: - KlimabroletView UIScrollViewDelegate
@@ -130,5 +145,23 @@ extension KlimabroletView: UIScrollViewDelegate {
         animation.duration = duration
         actionsView.layer.add(animation, forKey: nil)
         actionsView.layer.shadowOpacity = to
+    }
+}
+
+// MARK: - KlimabroletView KlimabroletActionsViewDelegate
+extension KlimabroletView: KlimabroletActionsViewDelegate {
+    func klimabroletViewDidSelectPrimaryButton(_ view: KlimabroletActionsView) {
+        delegate?.klimabroletViewDidSelectAccept(self)
+    }
+
+    func klimabroletViewDidSelectSecondaryButton(_ view: KlimabroletActionsView) {
+        delegate?.klimabroletViewDidSelectDecline(self)
+    }
+}
+
+// MARK: - KlimabroletView KlimabroletContentViewDelegate
+extension KlimabroletView: KlimabroletContentViewDelegate {
+    func klimabroletViewDidSelectReadMore(_ view: KlimabroletContentView) {
+        delegate?.klimabroletViewDidSelectReadMore(self)
     }
 }

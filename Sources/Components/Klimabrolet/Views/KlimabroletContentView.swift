@@ -4,7 +4,13 @@
 
 import UIKit
 
+protocol KlimabroletContentViewDelegate: AnyObject {
+    func klimabroletViewDidSelectReadMore(_ view: KlimabroletContentView)
+}
+
 class KlimabroletContentView: UIView {
+    var delegate: KlimabroletContentViewDelegate?
+
     private lazy var bannerImageView: UIView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .klimaboletBanner)
@@ -36,6 +42,7 @@ class KlimabroletContentView: UIView {
         let button = Button(style: .link, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.numberOfLines = 0
+        button.addTarget(self, action: #selector(handleTapOnAccessoryButton), for: .touchUpInside)
         return button
     }()
 
@@ -82,5 +89,9 @@ class KlimabroletContentView: UIView {
             accessoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
             accessoryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .mediumLargeSpacing),
         ])
+    }
+
+    @objc private func handleTapOnAccessoryButton() {
+        delegate?.klimabroletViewDidSelectReadMore(self)
     }
 }
