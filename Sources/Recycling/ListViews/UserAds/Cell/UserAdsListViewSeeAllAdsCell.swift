@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol UserAdsListViewSeeAllAdsCellDelegate: class {
+public protocol UserAdsListViewSeeAllAdsCellDelegate: AnyObject {
     func userAdsListViewSeeAllAdsCell(_ userAdsListViewSeeAllAdsCell: UserAdsListViewSeeAllAdsCell, didTapSeeAllAdsButton button: Button)
 }
 

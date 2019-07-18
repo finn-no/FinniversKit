@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol ConsentActionViewDelegate: class {
+public protocol ConsentActionViewDelegate: AnyObject {
     func consentActionViewDidPressButton(_ consentActionView: ConsentActionView)
 }
 

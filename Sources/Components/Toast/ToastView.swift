@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol ToastViewDelegate: class {
+public protocol ToastViewDelegate: AnyObject {
     func didTapActionButton(button: UIButton, in toastView: ToastView)
     func didTap(toastView: ToastView)
     func didSwipeDown(on toastView: ToastView)

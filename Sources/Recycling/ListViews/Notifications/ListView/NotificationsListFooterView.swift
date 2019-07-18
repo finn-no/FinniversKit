@@ -4,7 +4,7 @@
 
 import UIKit
 
-protocol NotificationsListFooterViewDelegate: class {
+protocol NotificationsListFooterViewDelegate: AnyObject {
     func notificationsListFooterView(_ notificationsListFooterView: NotificationsListFooterView, didSelectFooterViewAtSection section: Int)
 }
 

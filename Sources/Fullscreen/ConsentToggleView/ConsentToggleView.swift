@@ -3,7 +3,7 @@
 //
 import UIKit
 
-public protocol ConsentToggleViewDelegate: class {
+public protocol ConsentToggleViewDelegate: AnyObject {
     func consentToggleView(_ consentToggleView: ConsentToggleView, didToggleSwitch position: Bool)
     func consentToggleViewDidPressButton(_ consentToggleView: ConsentToggleView)
 }
