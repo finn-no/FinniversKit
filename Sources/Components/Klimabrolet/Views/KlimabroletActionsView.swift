@@ -33,18 +33,26 @@ class KlimabroletActionsView: UIView {
     // MARK: - Private methods
 
     private func setup() {
+        layoutMargins = UIEdgeInsets(
+            top: .mediumSpacing,
+            leading: .mediumLargeSpacing,
+            bottom: .mediumLargeSpacing,
+            trailing: .mediumLargeSpacing
+        )
+        backgroundColor = .milk
+
         addSubview(primaryButton)
         addSubview(secondaryButton)
 
         NSLayoutConstraint.activate([
-            primaryButton.topAnchor.constraint(equalTo: topAnchor),
-            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            primaryButton.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            primaryButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            primaryButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
 
             secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor),
-            secondaryButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-            secondaryButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            secondaryButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            secondaryButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            secondaryButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            secondaryButton.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
         ])
     }
 }

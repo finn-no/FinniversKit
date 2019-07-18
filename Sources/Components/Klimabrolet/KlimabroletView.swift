@@ -6,6 +6,7 @@ import UIKit
 
 public class KlimabroletView: UIView {
     // MARK: - Public properties
+
     public var model: KlimabroletViewModel? {
         didSet {
             contentView.titleLabel.text = model?.title
@@ -19,6 +20,8 @@ public class KlimabroletView: UIView {
 
     // MARK: - Private properties
 
+    private var shadowAnimationDuration = 0.12
+
     private(set) lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
         button.tintColor = .milk
@@ -31,8 +34,9 @@ public class KlimabroletView: UIView {
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
-        scrollView.bounces = false
+        scrollView.bounces = true
         scrollView.contentInset = UIEdgeInsets(bottom: .largeSpacing)
+        scrollView.delegate = self
         return scrollView
     }()
 
@@ -41,9 +45,15 @@ public class KlimabroletView: UIView {
         return view
     }()
 
-    private lazy var actionsView = KlimabroletActionsView(withAutoLayout: true)
+    private lazy var actionsView: KlimabroletActionsView = {
+        let view = KlimabroletActionsView(withAutoLayout: true)
+        view.layer.shadowOffset = .zero
+
+        return view
+    }()
 
     // MARK: - Initializers
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -55,14 +65,19 @@ public class KlimabroletView: UIView {
     }
 
     public override func layoutSubviews() {
+        if scrollView.contentSize.height < actionsView.frame.minY {
+            actionsView.layer.shadowOpacity = 0.2
+        }
+
         super.layoutSubviews()
+
         closeButton.layer.cornerRadius = closeButton.bounds.width / 2.0
     }
 
     // MARK: - Private methods
+
     private func setup() {
         backgroundColor = .milk
-        layoutMargins = UIEdgeInsets(all: .mediumLargeSpacing)
         layer.cornerRadius = 20
         clipsToBounds = true
 
@@ -89,9 +104,31 @@ public class KlimabroletView: UIView {
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: actionsView.topAnchor),
 
-            actionsView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            actionsView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            actionsView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
+            actionsView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            actionsView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            actionsView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+}
+
+// MARK: - KlimabroletView UIScrollViewDelegate
+
+extension KlimabroletView: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y + scrollView.frame.height < contentView.intrinsicContentSize.height {
+            animateShadow(fromValue: 0.2, toValue: 0, duration: shadowAnimationDuration)
+        } else {
+            animateShadow(fromValue: 0, toValue: 0.2, duration: shadowAnimationDuration)
+        }
+    }
+
+    func animateShadow(fromValue from: Float, toValue to: Float, duration: Double) {
+        guard actionsView.layer.shadowOpacity != to else { return }
+        let animation = CABasicAnimation(keyPath: "shadowOpacity")
+        animation.fromValue = from
+        animation.toValue = to
+        animation.duration = duration
+        actionsView.layer.add(animation, forKey: nil)
+        actionsView.layer.shadowOpacity = to
     }
 }
