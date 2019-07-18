@@ -13,26 +13,26 @@ protocol AddressCardViewDelegate: class {
 class AddressCardView: UIView {
     weak var delegate: AddressCardViewDelegate?
 
-    lazy var titleLabel: Label = {
+    private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    lazy var subtitleLabel: Label = {
+    private lazy var subtitleLabel: Label = {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    lazy var copyButton: Button = {
+    private lazy var copyButton: Button = {
         let button = Button(style: .default, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(copyAction), for: .touchUpInside)
         return button
     }()
 
-    lazy var getDirectionsButton: Button = {
+    private lazy var getDirectionsButton: Button = {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(getDirectionsAction), for: .touchUpInside)
@@ -46,6 +46,17 @@ class AddressCardView: UIView {
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError()
+    }
+
+    var model: AddressViewModel? {
+        didSet {
+            guard let model = model else { return }
+
+            titleLabel.text = model.title
+            subtitleLabel.text = model.subtitle
+            copyButton.setTitle(model.copyButtonTitle, for: .normal)
+            getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
+        }
     }
 }
 
@@ -93,11 +104,11 @@ extension AddressCardView {
             ])
     }
 
-    @objc func getDirectionsAction() {
+    @objc private func getDirectionsAction() {
         delegate?.addressCardViewDidSelectGetDirectionsButton(self)
     }
 
-    @objc func copyAction() {
+    @objc private func copyAction() {
         delegate?.addressCardViewDidSelectCopyButton(self)
     }
 }

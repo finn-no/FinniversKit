@@ -104,11 +104,7 @@ public protocol AddressViewDelegate: class {
                 mapTypeSegmentControl.insertSegment(withTitle: segment, at: index, animated: false)
             }
             mapTypeSegmentControl.selectedSegmentIndex = model.selectedMapType
-
-            addressCardView.titleLabel.text = model.title
-            addressCardView.subtitleLabel.text = model.subtitle
-            addressCardView.copyButton.setTitle(model.copyButtonTitle, for: .normal)
-            addressCardView.getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
+            addressCardView.model = model
         }
     }
 
@@ -178,11 +174,11 @@ private extension AddressView {
         }
     }
 
-    @objc func mapTypeChanged() {
+    @objc private func mapTypeChanged() {
         delegate?.addressView(self, didSelectMapTypeAtIndex: mapTypeSegmentControl.selectedSegmentIndex)
     }
 
-    @objc func centerMapButtonAction() {
+    @objc private func centerMapButtonAction() {
         delegate?.addressViewDidSelectCenterMapButton(self)
     }
 }
