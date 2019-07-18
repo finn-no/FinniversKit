@@ -43,6 +43,16 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         checkmarkImageView.isHidden = true
     }
 
+    public override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        checkmarkImageView.backgroundColor = .primaryBlue
+    }
+
+    public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        checkmarkImageView.backgroundColor = .primaryBlue
+    }
+
     // MARK: - Public
 
     public func configure(with viewModel: FavoriteFolderViewModel) {
