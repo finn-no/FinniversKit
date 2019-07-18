@@ -74,6 +74,7 @@ public enum FinniversImageAsset: String {
     case important
     case info
     case jobs
+    case klimaboletBanner
     case listView
     case magnifyingGlass
     case mapDirections
@@ -90,6 +91,7 @@ public enum FinniversImageAsset: String {
     case more
     case moreImg
     case moteplassen
+    case newClose
     case noImage
     case notifications
     case okonomi
@@ -196,6 +198,7 @@ public enum FinniversImageAsset: String {
             .important,
             .info,
             .jobs,
+            .klimaboletBanner,
             .listView,
             .magnifyingGlass,
             .mapDirections,
@@ -212,6 +215,7 @@ public enum FinniversImageAsset: String {
             .more,
             .moreImg,
             .moteplassen,
+            .newClose,
             .noImage,
             .notifications,
             .okonomi,

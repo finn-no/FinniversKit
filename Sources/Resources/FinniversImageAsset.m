@@ -63,6 +63,7 @@ NSString *const FinniversImageAsseticonRealestatePrice = @"iconRealestatePrice";
 NSString *const FinniversImageAssetimportant = @"important";
 NSString *const FinniversImageAssetinfo = @"info";
 NSString *const FinniversImageAssetjobs = @"jobs";
+NSString *const FinniversImageAssetklimaboletBanner = @"klimaboletBanner";
 NSString *const FinniversImageAssetlistView = @"listView";
 NSString *const FinniversImageAssetmagnifyingGlass = @"magnifyingGlass";
 NSString *const FinniversImageAssetmapDirections = @"mapDirections";
@@ -79,6 +80,7 @@ NSString *const FinniversImageAssetmittanbud = @"mittanbud";
 NSString *const FinniversImageAssetmore = @"more";
 NSString *const FinniversImageAssetmoreImg = @"moreImg";
 NSString *const FinniversImageAssetmoteplassen = @"moteplassen";
+NSString *const FinniversImageAssetnewClose = @"newClose";
 NSString *const FinniversImageAssetnoImage = @"noImage";
 NSString *const FinniversImageAssetnotifications = @"notifications";
 NSString *const FinniversImageAssetokonomi = @"okonomi";
@@ -186,6 +188,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetimportant,
              FinniversImageAssetinfo,
              FinniversImageAssetjobs,
+             FinniversImageAssetklimaboletBanner,
              FinniversImageAssetlistView,
              FinniversImageAssetmagnifyingGlass,
              FinniversImageAssetmapDirections,
@@ -202,6 +205,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetmore,
              FinniversImageAssetmoreImg,
              FinniversImageAssetmoteplassen,
+             FinniversImageAssetnewClose,
              FinniversImageAssetnoImage,
              FinniversImageAssetnotifications,
              FinniversImageAssetokonomi,
