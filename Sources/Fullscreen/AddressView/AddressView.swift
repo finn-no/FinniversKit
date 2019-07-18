@@ -54,7 +54,7 @@ public protocol AddressViewDelegate: class {
         return segmentContainer
     }()
 
-    public private(set) lazy var mapView: MKMapView = {
+    private lazy var mapView: MKMapView = {
         let view = MKMapView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
