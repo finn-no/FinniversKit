@@ -19,7 +19,9 @@ private struct Option {
     var action: (() -> Void)
 }
 
-public class LoadingViewDemoView: UIView {
+public class LoadingViewDemoView: UIView, Tweakable {
+    var tweakingOptions: [TweakingOption] = [TweakingOption]()
+
     var currentDisplayType: LoadingView.DisplayType {
         return LoadingView.DisplayType(rawValue: displayTypeSegment.selectedSegmentIndex) ?? .fullscreen
     }

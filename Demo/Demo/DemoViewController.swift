@@ -82,6 +82,19 @@ public class DemoViewController<View: UIView>: UIViewController {
             doubleTap.numberOfTapsRequired = 2
             view.addGestureRecognizer(doubleTap)
         }
+
+        if playgroundView is Tweakable {
+            guard let window = UIApplication.shared.keyWindow else { return }
+            let button = EasterEggButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            window.addSubview(button)
+            NSLayoutConstraint.activate([
+                button.bottomAnchor.constraint(equalTo: window.compatibleBottomAnchor, constant: -.largeSpacing),
+                button.trailingAnchor.constraint(equalTo: window.trailingAnchor, constant: -.largeSpacing),
+                button.widthAnchor.constraint(equalToConstant: .veryLargeSpacing),
+                button.heightAnchor.constraint(equalToConstant: .veryLargeSpacing)
+                ])
+        }
     }
 
     @objc func didDoubleTap() {
