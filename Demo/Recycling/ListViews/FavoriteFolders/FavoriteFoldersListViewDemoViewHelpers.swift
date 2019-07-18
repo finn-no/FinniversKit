@@ -12,13 +12,17 @@ struct FavoriteFolder: FavoriteFolderViewModel {
     let cornerRadius: CGFloat = 12
     let imageViewWidth: CGFloat = 40
     let hasChevron = false
+    var isSelected: Bool
 }
 
 struct FavoriteFoldersFactory {
     static func create() -> [FavoriteFolder] {
         var favorites = [FavoriteFolder]()
+        favorites.append(FavoriteFolder(title: "Mine funn", imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg", isSelected: true))
+        favorites.append(FavoriteFolder(title: "We accept up to 50 characters for a folder's name", imagePath: "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg", isSelected: true))
+
         for (title, imagePath) in zip(titles, imagePaths) {
-            favorites.append(FavoriteFolder(title: title, imagePath: imagePath))
+            favorites.append(FavoriteFolder(title: title, imagePath: imagePath, isSelected: false))
         }
 
         return favorites
@@ -26,8 +30,6 @@ struct FavoriteFoldersFactory {
 
     private static var titles: [String] {
         return [
-            "Mine Funn",
-            "Hjemmekjært",
             "Mansion",
             "Villa Medusa",
             "Villa Villekulla",
@@ -44,8 +46,6 @@ struct FavoriteFoldersFactory {
 
     private static var imagePaths: [String?] {
         return [
-            "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
-            "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg",
             "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg",
             "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
             "https://i.pinimg.com/736x/72/14/22/721422aa64cbb51ccb5f02eb29c22255--gray-houses-colored-doors-on-houses.jpg",
