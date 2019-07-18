@@ -63,7 +63,7 @@ public class FavoriteFoldersListView: UIView {
         tableView.dataSource = self
         tableView.keyboardDismissMode = .onDrag
         tableView.register(AddFavoriteFolderViewCell.self)
-        tableView.register(RemoteImageTableViewCell.self)
+        tableView.register(FavoriteFolderSelectableViewCell.self)
         return tableView
     }()
 
@@ -180,7 +180,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             cell.configure(withTitle: viewModel.addFolderText)
             return cell
         case .folders:
-            let cell = tableView.dequeue(RemoteImageTableViewCell.self, for: indexPath)
+            let cell = tableView.dequeue(FavoriteFolderSelectableViewCell.self, for: indexPath)
 
             // Show a pretty color while we load the image
             let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
