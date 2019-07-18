@@ -31,10 +31,24 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         setup()
     }
 
+    // MARK: - Overrides
+
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+
+        checkmarkImageView.isHidden = true
+    }
+
     // MARK: - Public
 
     public func configure(with viewModel: FavoriteFolderViewModel) {
         super.configure(with: viewModel)
+        stackViewTrailingAnchorConstraint.isActive = false
+
+        if viewModel.isSelected {
+            checkmarkImageView.isHidden = false
+        }
+        setNeedsLayout()
     }
 
     // MARK: - Private methods
@@ -47,6 +61,8 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             checkmarkImageView.widthAnchor.constraint(equalToConstant: .mediumLargeSpacing),
             checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+
+            stackView.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 }
