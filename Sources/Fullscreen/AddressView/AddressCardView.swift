@@ -14,7 +14,7 @@ class AddressCardView: UIView {
     weak var delegate: AddressCardViewDelegate?
 
     lazy var titleLabel: Label = {
-        let label = Label(style: .title3)
+        let label = Label(style: .title3Strong)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -72,24 +72,24 @@ extension AddressCardView {
         columnStackView.translatesAutoresizingMaskIntoConstraints = false
         columnStackView.axis = .vertical
         columnStackView.distribution = .equalCentering
-        columnStackView.spacing = .mediumSpacing
+        columnStackView.spacing = .smallSpacing
 
         addSubview(columnStackView)
         addSubview(copyButton)
         addSubview(getDirectionsButton)
 
         NSLayoutConstraint.activate([
-            columnStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            columnStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing + .mediumSpacing),
             columnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             columnStackView.trailingAnchor.constraint(lessThanOrEqualTo: copyButton.leadingAnchor, constant: .mediumLargeSpacing),
 
             copyButton.centerYAnchor.constraint(equalTo: columnStackView.centerYAnchor),
             copyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            getDirectionsButton.topAnchor.constraint(equalTo: columnStackView.bottomAnchor, constant: .mediumLargeSpacing),
+            getDirectionsButton.topAnchor.constraint(equalTo: columnStackView.bottomAnchor, constant: .mediumLargeSpacing + .mediumSpacing),
             getDirectionsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             getDirectionsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            getDirectionsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+            getDirectionsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing + -.mediumSpacing)
             ])
     }
 
