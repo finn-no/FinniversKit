@@ -5,7 +5,7 @@
 import UIKit
 import MapKit
 
-public protocol AddressViewDelegate: class {
+public protocol AddressViewDelegate: AnyObject {
     func addressViewDidSelectCopyButton(_ addressView: AddressView)
     func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView)
     func addressViewDidSelectCenterMapButton(_ addressView: AddressView)
