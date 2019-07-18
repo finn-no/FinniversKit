@@ -36,32 +36,10 @@ public struct AddressViewData: AddressViewModel {
     }
 }
 
-public class AddressViewDemoView: UIView, Tweakable {
+public class AddressViewDemoView: UIView {
     weak var presentingViewController: UIViewController?
 
     let defaultAddressData = AddressViewData(title: "Møllerøya 32", subtitle: "7982 Bindalseidet", copyButtonTitle: "Kopier adresse")
-
-    lazy var tweakingOptions: [TweakingOption] = {
-        var options = [TweakingOption]()
-
-        options.append(TweakingOption(title: "Address data", description: nil, action: { parentViewController in
-            self.addressView.model = self.defaultAddressData
-            let location = CLLocationCoordinate2D(latitude: 65.10915470111108, longitude: 11.984673996759456)
-            self.addressView.addAnnotation(location: location, title: "Møllerøya 32, 7982 Bindalseidet")
-            self.addressView.centerMap(location: location, regionDistance: 500, animated: false)
-            parentViewController?.dismiss(animated: true, completion: nil)
-        }))
-
-        options.append(TweakingOption(title: "Postalcode data", description: nil, action: { parentViewController in
-            let location = CLLocationCoordinate2D(latitude: 59.925504072875661, longitude: 10.452107618894244)
-            self.addressView.model = AddressViewData(title: "1340", subtitle: "Skui", copyButtonTitle: "Kopier postnummer")
-            self.addressView.addRadiusArea(location: location, regionDistance: 500)
-            self.addressView.centerMap(location: location, regionDistance: 1200, animated: false)
-            parentViewController?.dismiss(animated: true, completion: nil)
-        }))
-
-        return options
-    }()
 
     private lazy var addressView: AddressView = {
         let addressView = AddressView()
@@ -79,9 +57,13 @@ public class AddressViewDemoView: UIView, Tweakable {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        tweakingOptions.first?.action(nil)
         addSubview(addressView)
         addressView.fillInSuperview()
+
+        self.addressView.model = self.defaultAddressData
+        let location = CLLocationCoordinate2D(latitude: 65.10915470111108, longitude: 11.984673996759456)
+        self.addressView.addAnnotation(location: location, title: "Møllerøya 32, 7982 Bindalseidet")
+        self.addressView.centerMap(location: location, regionDistance: 500, animated: false)
     }
 }
 
