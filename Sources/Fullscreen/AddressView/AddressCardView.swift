@@ -54,7 +54,10 @@ extension AddressCardView {
         if #available(iOS 11.0, *) {
             clipsToBounds = true
             layer.cornerRadius = 16
-            layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+
+            if UIDevice.isIPhone() {
+                layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+            }
         }
 
         layer.masksToBounds = false

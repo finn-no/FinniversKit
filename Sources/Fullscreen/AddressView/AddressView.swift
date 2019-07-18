@@ -34,10 +34,20 @@ public protocol AddressViewDelegate: class {
         segmentContainer.layer.shadowOffset = .zero
         segmentContainer.layer.shadowColor = UIColor.black.cgColor
 
+        if UIDevice.isIPad() {
+            NSLayoutConstraint.activate([
+                mapTypeSegmentControl.widthAnchor.constraint(equalToConstant: 350),
+                mapTypeSegmentControl.centerXAnchor.constraint(equalTo: segmentContainer.centerXAnchor)
+                ])
+        } else {
+            NSLayoutConstraint.activate([
+                mapTypeSegmentControl.leadingAnchor.constraint(equalTo: segmentContainer.leadingAnchor, constant: .mediumLargeSpacing),
+                mapTypeSegmentControl.trailingAnchor.constraint(equalTo: segmentContainer.trailingAnchor, constant: -.mediumLargeSpacing)
+                ])
+        }
+
         NSLayoutConstraint.activate([
             mapTypeSegmentControl.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: .mediumLargeSpacing),
-            mapTypeSegmentControl.leadingAnchor.constraint(equalTo: segmentContainer.leadingAnchor, constant: .mediumLargeSpacing),
-            mapTypeSegmentControl.trailingAnchor.constraint(equalTo: segmentContainer.trailingAnchor, constant: -.mediumLargeSpacing),
             mapTypeSegmentControl.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: -.mediumLargeSpacing)
             ])
 
@@ -109,11 +119,13 @@ public protocol AddressViewDelegate: class {
     }
 
     public func addRadiusArea(location: CLLocationCoordinate2D, regionDistance: Double) {
+        mapView.removeOverlays(mapView.overlays)
         let circle = MKCircle(center: location, radius: regionDistance)
         mapView.addOverlay(circle)
     }
 
     public func addAnnotation(location: CLLocationCoordinate2D, title: String) {
+        mapView.removeAnnotations(mapView.annotations)
         let annotation = AddressAnnotation(title: title, location: location)
         mapView.addAnnotation(annotation)
     }
@@ -140,17 +152,30 @@ private extension AddressView {
             mapView.topAnchor.constraint(equalTo: segmentContainer.bottomAnchor),
             mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mapView.bottomAnchor.constraint(equalTo: addressCardView.topAnchor, constant: .mediumLargeSpacing),
 
-            centerMapButton.bottomAnchor.constraint(equalTo: addressCardView.topAnchor, constant: -.mediumSpacing),
-            centerMapButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            centerMapButton.topAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: .mediumLargeSpacing),
+            centerMapButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             centerMapButton.widthAnchor.constraint(equalToConstant: 46),
-            centerMapButton.heightAnchor.constraint(equalTo: centerMapButton.widthAnchor),
-
-            addressCardView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            addressCardView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            addressCardView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            centerMapButton.heightAnchor.constraint(equalTo: centerMapButton.widthAnchor)
             ])
+
+        if UIDevice.isIPad() {
+            NSLayoutConstraint.activate([
+                mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+                addressCardView.widthAnchor.constraint(equalToConstant: 350),
+                addressCardView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+                addressCardView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+                ])
+        } else {
+            NSLayoutConstraint.activate([
+                mapView.bottomAnchor.constraint(equalTo: addressCardView.topAnchor, constant: .mediumLargeSpacing),
+
+                addressCardView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                addressCardView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                addressCardView.bottomAnchor.constraint(equalTo: bottomAnchor)
+                ])
+        }
     }
 
     @objc func mapTypeChanged() {
