@@ -8,6 +8,9 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     // MARK: - Private properties
 
+    private let titleLabelDefaultFont: UIFont = .body
+    private let titleLabelSelectedFont: UIFont = .bodyStrong
+
     private lazy var checkmarkImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.cornerRadius = 8
@@ -36,6 +39,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     public override func prepareForReuse() {
         super.prepareForReuse()
 
+        titleLabel.font = titleLabelDefaultFont
         checkmarkImageView.isHidden = true
     }
 
@@ -46,6 +50,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         stackViewTrailingAnchorConstraint.isActive = false
 
         if viewModel.isSelected {
+            titleLabel.font = titleLabelSelectedFont
             checkmarkImageView.isHidden = false
         }
         setNeedsLayout()
