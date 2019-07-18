@@ -12,20 +12,16 @@ public protocol AddressViewDelegate: class {
     func addressView(_ addressView: AddressView, didSelectMapTypeAtIndex index: Int)
 }
 
-@objc public class AddressView: UIView {
-    public weak var delegate: AddressViewDelegate?
-
+public class AddressView: UIView {
     private lazy var mapTypeSegmentControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: [])
-        control.translatesAutoresizingMaskIntoConstraints = false
+        let control = UISegmentedControl(withAutoLayout: true)
         control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
         control.tintColor = .primaryBlue
         return control
     }()
 
     private lazy var segmentContainer: UIView = {
-        let segmentContainer = UIView()
-        segmentContainer.translatesAutoresizingMaskIntoConstraints = false
+        let segmentContainer = UIView(withAutoLayout: true)
         segmentContainer.backgroundColor = .white
         segmentContainer.addSubview(mapTypeSegmentControl)
         segmentContainer.layer.masksToBounds = false
@@ -55,16 +51,14 @@ public protocol AddressViewDelegate: class {
     }()
 
     private lazy var mapView: MKMapView = {
-        let view = MKMapView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = MKMapView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
 
     private lazy var addressCardView: AddressCardView = {
-        let view = AddressCardView()
+        let view = AddressCardView(withAutoLayout: true)
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -94,6 +88,8 @@ public protocol AddressViewDelegate: class {
     public required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
+
+    public weak var delegate: AddressViewDelegate?
 
     public var model: AddressViewModel? {
         didSet {
@@ -134,7 +130,7 @@ public protocol AddressViewDelegate: class {
 // MARK: - Private methods
 
 private extension AddressView {
-    private func setup() {
+    func setup() {
         addSubview(segmentContainer)
         insertSubview(mapView, belowSubview: segmentContainer)
         addSubview(addressCardView)
@@ -174,11 +170,11 @@ private extension AddressView {
         }
     }
 
-    @objc private func mapTypeChanged() {
+    @objc func mapTypeChanged() {
         delegate?.addressView(self, didSelectMapTypeAtIndex: mapTypeSegmentControl.selectedSegmentIndex)
     }
 
-    @objc private func centerMapButtonAction() {
+    @objc func centerMapButtonAction() {
         delegate?.addressViewDidSelectCenterMapButton(self)
     }
 }

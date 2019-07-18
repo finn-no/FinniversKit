@@ -42,9 +42,8 @@ public class AddressViewDemoView: UIView {
     let defaultAddressData = AddressViewData(title: "Møllerøya 32", subtitle: "7982 Bindalseidet", copyButtonTitle: "Kopier adresse")
 
     private lazy var addressView: AddressView = {
-        let addressView = AddressView()
+        let addressView = AddressView(withAutoLayout: true)
         addressView.delegate = self
-        addressView.translatesAutoresizingMaskIntoConstraints = false
         return addressView
     }()
 
