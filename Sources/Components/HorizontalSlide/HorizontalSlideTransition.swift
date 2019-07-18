@@ -1,6 +1,6 @@
 import UIKit
 
-@objc public protocol HorizontalSlideTransitionDelegate: class {
+@objc public protocol HorizontalSlideTransitionDelegate: AnyObject {
     @objc func horizontalSlideTransitionDidDismiss(_ horizontalSlideTransition: HorizontalSlideTransition)
 }
 

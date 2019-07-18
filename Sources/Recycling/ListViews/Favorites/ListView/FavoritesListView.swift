@@ -4,13 +4,13 @@
 
 import UIKit
 
-public protocol FavoritesListViewDelegate: class {
+public protocol FavoritesListViewDelegate: AnyObject {
     func favoritesListView(_ favoritesListView: FavoritesListView, didSelectItemAtIndex index: Int)
     func favoritesListView(_ favoritesListView: FavoritesListView, willDisplayItemAtIndex index: Int)
     func favoritesListView(_ favoritesListView: FavoritesListView, didScrollInScrollView scrollView: UIScrollView)
 }
 
-public protocol FavoritesListViewDataSource: class {
+public protocol FavoritesListViewDataSource: AnyObject {
     func numberOfItems(inFavoritesListView favoritesListView: FavoritesListView) -> Int
     func favoritesListView(_ favoritesListView: FavoritesListView, modelAtIndex index: Int) -> FavoritesListViewModel
     func favoritesListView(_ favoritesListView: FavoritesListView, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))

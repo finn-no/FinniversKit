@@ -18,7 +18,7 @@ public enum UserAdStatus: String {
     case unknown = "Venter på status"
 }
 
-public protocol UserAdsListViewCellDataSource: class {
+public protocol UserAdsListViewCellDataSource: AnyObject {
     func userAdsListViewCellShouldDisplayAsInactive(_ userAdsListViewCell: UserAdsListViewCell) -> Bool
     func userAdsListViewCell(_ userAdsListViewCell: UserAdsListViewCell, loadImageForModel model: UserAdsListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func userAdsListViewCell(_ userAdsListViewCell: UserAdsListViewCell, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat)

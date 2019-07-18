@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol AdsGridViewDelegate: class {
+public protocol AdsGridViewDelegate: AnyObject {
     func adsGridViewDidStartRefreshing(_ adsGridView: AdsGridView)
     func adsGridView(_ adsGridView: AdsGridView, didSelectItemAtIndex index: Int)
     func adsGridView(_ adsGridView: AdsGridView, willDisplayItemAtIndex index: Int)
@@ -12,7 +12,7 @@ public protocol AdsGridViewDelegate: class {
     func adsGridView(_ adsGridView: AdsGridView, didSelectFavoriteButton button: UIButton, on cell: AdsGridViewCell, at index: Int)
 }
 
-public protocol AdsGridViewDataSource: class {
+public protocol AdsGridViewDataSource: AnyObject {
     func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int
     func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel
     func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void))

@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol UserAdsListViewNewAdCellDelegate: class {
+public protocol UserAdsListViewNewAdCellDelegate: AnyObject {
     func userAdsListViewNewAdCell(_ userAdsListViewNewAdCell: UserAdsListViewNewAdCell, didTapCreateNewAdButton button: Button)
 }
 

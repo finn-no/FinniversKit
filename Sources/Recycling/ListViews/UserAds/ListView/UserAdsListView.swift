@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol UserAdsListViewDelegate: class {
+public protocol UserAdsListViewDelegate: AnyObject {
     func userAdsListViewDidStartRefreshing(_ userAdsListView: UserAdsListView)
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
@@ -15,7 +15,7 @@ public protocol UserAdsListViewDelegate: class {
     func userAdsListView(_ userAdsListView: UserAdsListView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
 }
 
-public protocol UserAdsListViewDataSource: class {
+public protocol UserAdsListViewDataSource: AnyObject {
     func numberOfSections(in userAdsListView: UserAdsListView) -> Int
     func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool
     func userAdsListView(_ userAdsListView: UserAdsListView, numberOfRowsInSection section: Int) -> Int

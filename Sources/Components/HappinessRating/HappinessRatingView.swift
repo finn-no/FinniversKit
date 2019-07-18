@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol HappinessRatingViewDelegate: class {
+public protocol HappinessRatingViewDelegate: AnyObject {
     func happinessRatingView(_ happinessRatingView: HappinessRatingView, didSelectRating rating: HappinessRating)
 }
 

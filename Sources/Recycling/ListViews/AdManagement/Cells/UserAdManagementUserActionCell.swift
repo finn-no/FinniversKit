@@ -217,6 +217,6 @@ public class UserAdManagementUserActionCell: UITableViewCell {
     }
 }
 
-public protocol UserAdManagementActionCellDelegate: class {
+public protocol UserAdManagementActionCellDelegate: AnyObject {
     func userAdManagementActionCell(_ cell: UserAdManagementUserActionCell, switchChangedState switchIsOn: Bool)
 }
