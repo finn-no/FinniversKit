@@ -19,12 +19,12 @@ public class SettingsView: UIView {
         let view = UITableView(frame: .zero, style: .grouped)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentInset = UIEdgeInsets(top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0)
-        view.backgroundColor = .milk
+        view.backgroundColor = .marble
         view.separatorStyle = .none
         if #available(iOS 11, *) {
         } else {
-            view.estimatedRowHeight = 44
-            view.estimatedSectionHeaderHeight = 44
+            view.estimatedRowHeight = SettingsViewCell.estimatedRowHeight
+            view.estimatedSectionHeaderHeight = 48
         }
         view.dataSource = self
         view.delegate = self

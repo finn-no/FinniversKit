@@ -18,6 +18,7 @@ public class ReceiptView: UIView {
 
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(withAutoLayout: true)
+        view.backgroundColor = .milk
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
         return view
@@ -139,17 +140,20 @@ public class ReceiptView: UIView {
                 view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
                 view.heightAnchor.constraint(equalToConstant: 160),
             ])
+            setupButtonContentView(below: view)
+        } else {
+            setupButtonContentView(below: detailLabel)
         }
+    }
 
+    private func setupButtonContentView(below view: UIView) {
         contentView.addSubview(buttonContentView)
         buttonContentView.addSubview(navigateToAdButton)
         buttonContentView.addSubview(navigateToMyAdsButton)
         buttonContentView.addSubview(createNewAdButton)
 
-        let insertedViewOrBodyLabel = delegate?.receiptInsertViewBelowDetailText(self) ?? detailLabel
-
         NSLayoutConstraint.activate([
-            buttonContentView.topAnchor.constraint(equalTo: insertedViewOrBodyLabel.bottomAnchor, constant: .largeSpacing),
+            buttonContentView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: .largeSpacing),
             buttonContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             buttonContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             buttonContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

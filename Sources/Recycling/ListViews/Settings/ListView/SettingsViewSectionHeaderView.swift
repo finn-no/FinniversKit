@@ -6,13 +6,16 @@ import UIKit
 
 class SettingsViewSectionHeaderView: UITableViewHeaderFooterView {
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3)
+        let label = Label(style: .detailStrong)
+        label.textColor = .stone
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     public var title: String? {
-        didSet { titleLabel.text = title }
+        didSet {
+            titleLabel.text = title?.uppercased()
+        }
     }
 
     override init(reuseIdentifier: String?) {

@@ -12,14 +12,6 @@ class ReceiptViewDemoView: UIView {
         return receiptView
     }()
 
-    private lazy var questionnaireView: QuestionnaireView = {
-        let questionnaireView = QuestionnaireView(style: .normal(backgroundColor: .ice, primaryButtonIcon: UIImage(named: .webview)))
-        questionnaireView.translatesAutoresizingMaskIntoConstraints = false
-        questionnaireView.delegate = self
-        questionnaireView.model = QuestionnaireDemoData()
-        return questionnaireView
-    }()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -47,6 +39,10 @@ extension ReceiptViewDemoView: ReceiptViewDelegate {
     }
 
     func receiptInsertViewBelowDetailText(_ : ReceiptView) -> UIView? {
+        let questionnaireView = QuestionnaireView(style: .normal(backgroundColor: .ice, primaryButtonIcon: UIImage(named: .webview)))
+        questionnaireView.translatesAutoresizingMaskIntoConstraints = false
+        questionnaireView.delegate = self
+        questionnaireView.model = QuestionnaireDemoData()
         return questionnaireView
     }
 }
@@ -60,7 +56,7 @@ extension ReceiptViewDemoView: QuestionnaireViewDelegate {
         print("questionnaireViewDidSelectCancelButton")
 
         UIView.animate(withDuration: 0.25) {
-            self.questionnaireView.alpha = 0.0
+            view.alpha = 0.0
         }
     }
 }
