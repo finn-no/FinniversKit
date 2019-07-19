@@ -14,7 +14,7 @@ public protocol KlimabroletViewDelegate: AnyObject {
 public class KlimabroletView: UIView {
     // MARK: - Public properties
 
-    public var delegate: KlimabroletViewDelegate?
+    public weak var delegate: KlimabroletViewDelegate?
 
     public var model: KlimabroletViewModel? {
         didSet {

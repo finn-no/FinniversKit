@@ -28,7 +28,7 @@ class KlimabroletEventsDemoViewController: UITableViewController {
         Event(title: "Klimabrølet Svalbard"),
     ]
 
-    var delegate: KlimabroletEventsDemoViewControllerDelegate?
+    weak var delegate: KlimabroletEventsDemoViewControllerDelegate?
 
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .custom)

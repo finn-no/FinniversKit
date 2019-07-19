@@ -9,7 +9,7 @@ protocol KlimabroletContentViewDelegate: AnyObject {
 }
 
 class KlimabroletContentView: UIView {
-    var delegate: KlimabroletContentViewDelegate?
+    weak var delegate: KlimabroletContentViewDelegate?
 
     private lazy var bannerImageView: UIView = {
         let imageView = UIImageView(withAutoLayout: true)
