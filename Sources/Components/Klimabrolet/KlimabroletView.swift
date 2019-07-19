@@ -30,6 +30,7 @@ public class KlimabroletView: UIView {
     // MARK: - Private properties
 
     private var shadowAnimationDuration = 0.12
+    private var contentSizeObservation: NSKeyValueObservation?
 
     private(set) lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
@@ -76,12 +77,7 @@ public class KlimabroletView: UIView {
     }
 
     public override func layoutSubviews() {
-        if scrollView.contentSize.height < actionsView.frame.minY {
-            actionsView.layer.shadowOpacity = 0.2
-        }
-
         super.layoutSubviews()
-
         closeButton.layer.cornerRadius = closeButton.bounds.width / 2.0
     }
 
@@ -119,10 +115,24 @@ public class KlimabroletView: UIView {
             actionsView.trailingAnchor.constraint(equalTo: trailingAnchor),
             actionsView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+
+        contentSizeObservation = scrollView.observe(
+            \UIScrollView.contentSize, options: [.old, .new], changeHandler: contentSizeDidChange(_:change:)
+        )
     }
 
     @objc private func handleTapOnCloseButton() {
         delegate?.klimabroletViewDidSelectClose(self)
+    }
+
+    private func contentSizeDidChange(_ scrollView: UIScrollView, change: NSKeyValueObservedChange<CGSize>) {
+        guard let contentSize = change.newValue else {
+            return
+        }
+
+        if scrollView.contentOffset.y + scrollView.frame.height < contentSize.height {
+            actionsView.layer.shadowOpacity = 0.2
+        }
     }
 }
 
