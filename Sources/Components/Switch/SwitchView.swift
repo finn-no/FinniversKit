@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol SwitchDelegate: class {
+public protocol SwitchDelegate: AnyObject {
     func switchView(_ switchView: SwitchView, didChangeValueFor switch: UISwitch)
 }
 

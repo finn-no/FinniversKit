@@ -6,7 +6,7 @@ import UIKit
 
 // MARK: - TextFieldDelegate
 
-public protocol TextFieldDelegate: class {
+public protocol TextFieldDelegate: AnyObject {
     func textFieldDidBeginEditing(_ textField: TextField)
     func textFieldDidEndEditing(_ textField: TextField)
     func textFieldShouldReturn(_ textField: TextField) -> Bool

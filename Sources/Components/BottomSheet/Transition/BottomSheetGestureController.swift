@@ -4,7 +4,7 @@
 
 import UIKit
 
-protocol BottomSheetGestureControllerDelegate: class {
+protocol BottomSheetGestureControllerDelegate: AnyObject {
     // Expects to get the current position of the bottom sheet
     func bottomSheetGestureControllerDidBeginGesture(_ controller: BottomSheetGestureController) -> CGPoint
     func bottomSheetGestureControllerDidChangeGesture(_ controller: BottomSheetGestureController)

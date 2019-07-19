@@ -6,7 +6,7 @@ import UIKit
 
 // MARK: - LoginViewDelegatew
 
-public protocol LoginViewDelegate: class {
+public protocol LoginViewDelegate: AnyObject {
     func loginView(_ loginView: LoginView, didSelectForgetPasswordButton button: Button)
     func loginView(_ loginView: LoginView, didSelectLoginButton button: Button, with email: String, and password: String)
     func loginView(_ loginView: LoginView, didSelectNewUserButton button: Button, with email: String)

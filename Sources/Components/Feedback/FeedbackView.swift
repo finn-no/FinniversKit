@@ -6,7 +6,7 @@ import UIKit
 
 // MARK: - FeedbackViewDelegate
 
-public protocol FeedbackViewDelegate: class {
+public protocol FeedbackViewDelegate: AnyObject {
     func feedbackView(_ feedbackView: FeedbackView, didSelectButtonOfType buttonType: FeedbackView.ButtonType, forState state: FeedbackView.State)
 }
 
