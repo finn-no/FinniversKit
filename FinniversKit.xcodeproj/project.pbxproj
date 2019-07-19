@@ -112,6 +112,10 @@
 		4423F227209CB24500B81D68 /* MiniToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4423F226209CB24500B81D68 /* MiniToastView.swift */; };
 		443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */; };
 		443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */; };
+		4441F9EF22CCF72F00DCFD2F /* AddressViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4441F9EE22CCF72F00DCFD2F /* AddressViewDemoView.swift */; };
+		4441F9F322CCF76300DCFD2F /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4441F9F122CCF75D00DCFD2F /* AddressView.swift */; };
+		4441F9F722CCF8C500DCFD2F /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4441F9F622CCF8C500DCFD2F /* AddressViewModel.swift */; };
+		4441F9F922CF81F700DCFD2F /* AddressCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4441F9F822CF81F700DCFD2F /* AddressCardView.swift */; };
 		444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444245FE2137D60400D42AB8 /* FavoriteFoldersListView.swift */; };
 		444246032137D60400D42AB8 /* FavoriteFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */; };
 		444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246052137D61100D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift */; };
@@ -537,6 +541,10 @@
 		4423F226209CB24500B81D68 /* MiniToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniToastView.swift; sourceTree = "<group>"; };
 		443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListHeaderView.swift; sourceTree = "<group>"; };
 		443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListFooterView.swift; sourceTree = "<group>"; };
+		4441F9EE22CCF72F00DCFD2F /* AddressViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewDemoView.swift; sourceTree = "<group>"; };
+		4441F9F122CCF75D00DCFD2F /* AddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		4441F9F622CCF8C500DCFD2F /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
+		4441F9F822CF81F700DCFD2F /* AddressCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCardView.swift; sourceTree = "<group>"; };
 		444245FE2137D60400D42AB8 /* FavoriteFoldersListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListView.swift; sourceTree = "<group>"; };
 		444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderViewModel.swift; sourceTree = "<group>"; };
 		444246052137D61100D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
@@ -1287,6 +1295,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		4441F9ED22CCF72F00DCFD2F /* AddressView */ = {
+			isa = PBXGroup;
+			children = (
+				4441F9EE22CCF72F00DCFD2F /* AddressViewDemoView.swift */,
+			);
+			path = AddressView;
+			sourceTree = "<group>";
+		};
+		4441F9F022CCF75D00DCFD2F /* AddressView */ = {
+			isa = PBXGroup;
+			children = (
+				4441F9F122CCF75D00DCFD2F /* AddressView.swift */,
+				4441F9F622CCF8C500DCFD2F /* AddressViewModel.swift */,
+				4441F9F822CF81F700DCFD2F /* AddressCardView.swift */,
+			);
+			path = AddressView;
+			sourceTree = "<group>";
+		};
 		444245FA2137D60400D42AB8 /* FavoriteFolders */ = {
 			isa = PBXGroup;
 			children = (
@@ -1533,6 +1559,7 @@
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				4441F9F022CCF75D00DCFD2F /* AddressView */,
 				9BC33DE422D7219F007CCD65 /* LoginEntryView */,
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
 				DA24BA272164C0AF006E2E5E /* ConsentActionView */,
@@ -2322,6 +2349,7 @@
 		CF8F022721DCC721004C4042 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
+				4441F9ED22CCF72F00DCFD2F /* AddressView */,
 				CF8F023121DCC7A0004C4042 /* AdReporter */,
 				14A873D2220879870029DEA8 /* ConfirmationView */,
 				CF8F022821DCC72B004C4042 /* ConsentActionView */,
@@ -3204,6 +3232,7 @@
 				CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */,
 				AA864B37222D6F3F00BAE95A /* DialogueViewController.swift in Sources */,
 				441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */,
+				4441F9EF22CCF72F00DCFD2F /* AddressViewDemoView.swift in Sources */,
 				CF7C460E22257AE1001FB92C /* EarthHourDefaultData.swift in Sources */,
 				082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */,
 				45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */,
@@ -3324,6 +3353,7 @@
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */,
 				DAC7DCAE2153866E004602A3 /* SettingsViewCell.swift in Sources */,
+				4441F9F922CF81F700DCFD2F /* AddressCardView.swift in Sources */,
 				CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
 				DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */,
@@ -3334,6 +3364,7 @@
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */,
 				082D80CD21C13D5300831BDE /* TriangleGiftView.swift in Sources */,
+				4441F9F722CCF8C500DCFD2F /* AddressViewModel.swift in Sources */,
 				CF7C460622257A8A001FB92C /* EarthHourHeaderView.swift in Sources */,
 				DAC7DCAA21538608004602A3 /* SettingsView.swift in Sources */,
 				CF7C460922257A8A001FB92C /* EarthHourViewModel.swift in Sources */,
@@ -3506,6 +3537,7 @@
 				08796D9521CB984E0023A441 /* IconTitleTableViewCellViewModel.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
 				CF3D5EE4215A65D7006E4D08 /* Instrument.swift in Sources */,
+				4441F9F322CCF76300DCFD2F /* AddressView.swift in Sources */,
 				DA8EF1222164E46E0028740C /* ConsentActionViewModel.swift in Sources */,
 				44587017213FA344009187BE /* LoginView.swift in Sources */,
 				CFCED8D522CCF0500049A3A0 /* RemoteImageTableViewCellViewModel.swift in Sources */,

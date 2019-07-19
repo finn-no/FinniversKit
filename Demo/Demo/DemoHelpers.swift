@@ -48,6 +48,8 @@ public struct ContainmentOptions: OptionSet {
                 self = [.navigationController, .tabBarController]
             case .consentActionView:
                 self = [.navigationController, .tabBarController]
+            case .addressView:
+                self = [.navigationController, .tabBarController]
             default: return nil
             }
         case .components:
