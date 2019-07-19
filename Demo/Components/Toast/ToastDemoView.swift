@@ -66,12 +66,6 @@ public class ToastDemoView: UIView {
         successButtonToast.delegate = delegate
         errorButtonToast.delegate = delegate
 
-        successToast.translatesAutoresizingMaskIntoConstraints = false
-        imageToast.translatesAutoresizingMaskIntoConstraints = false
-        errorToast.translatesAutoresizingMaskIntoConstraints = false
-        successButtonToast.translatesAutoresizingMaskIntoConstraints = false
-        errorButtonToast.translatesAutoresizingMaskIntoConstraints = false
-
         addSubview(successToast)
         addSubview(imageToast)
         addSubview(errorToast)

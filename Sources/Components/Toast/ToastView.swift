@@ -103,6 +103,7 @@ public class ToastView: UIView {
         self.style = style
         self.buttonStyle = buttonStyle
         super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
         setup()
     }
 
