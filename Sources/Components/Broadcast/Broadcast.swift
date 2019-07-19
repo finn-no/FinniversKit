@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol BroadcastDelegate: class {
+public protocol BroadcastDelegate: AnyObject {
     func broadcast(_ broadcast: Broadcast, didDismiss message: BroadcastMessage)
     func broadcast(_ broadcast: Broadcast, didTapURL url: URL, inItemAtIndex index: Int)
 }

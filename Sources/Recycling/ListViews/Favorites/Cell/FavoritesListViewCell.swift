@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol FavoritesListViewCellDataSource: class {
+public protocol FavoritesListViewCellDataSource: AnyObject {
     func favoritesListViewCell(_ favoritesListViewCell: FavoritesListViewCell, loadImageForModel model: FavoritesListViewModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func favoritesListViewCell(_ favoritesListViewCell: FavoritesListViewCell, cancelLoadingImageForModel model: FavoritesListViewModel, imageWidth: CGFloat)
 }

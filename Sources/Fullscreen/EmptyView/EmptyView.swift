@@ -5,7 +5,7 @@
 import CoreMotion
 import UIKit
 
-public protocol EmptyViewDelegate: class {
+public protocol EmptyViewDelegate: AnyObject {
     func emptyView(_ emptyView: EmptyView, didSelectActionButton button: Button)
     func emptyView(_ emptyView: EmptyView, didMoveObjectView view: UIView)
 }

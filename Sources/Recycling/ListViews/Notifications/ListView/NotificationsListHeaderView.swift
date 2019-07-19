@@ -4,7 +4,7 @@
 
 import UIKit
 
-protocol NotificationsListHeaderViewDelegate: class {
+protocol NotificationsListHeaderViewDelegate: AnyObject {
     func notificationsListHeaderView(_ notificationsListHeaderView: NotificationsListHeaderView, didSelectHeaderViewAtSection section: Int)
 }
 

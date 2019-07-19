@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol UserAdsListHeaderViewDelegate: class {
+public protocol UserAdsListHeaderViewDelegate: AnyObject {
     func userAdsListHeaderView(_ userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
 }
 

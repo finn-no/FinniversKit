@@ -3,13 +3,13 @@
 //
 import UIKit
 
-public protocol SettingsViewDataSource: class {
+public protocol SettingsViewDataSource: AnyObject {
     func numberOfSections(in settingsView: SettingsView) -> Int
     func settingsView(_ settingsView: SettingsView, numberOfRowsInSection section: Int) -> Int
     func settingsView(_ settingsView: SettingsView, modelForItemAt indexPath: IndexPath) -> SettingsViewCellModel
 }
 
-public protocol SettingsViewDelegate: class {
+public protocol SettingsViewDelegate: AnyObject {
     func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String?
     func settingsView(_ settingsView: SettingsView, didSelectRowAt indexPath: IndexPath)
 }

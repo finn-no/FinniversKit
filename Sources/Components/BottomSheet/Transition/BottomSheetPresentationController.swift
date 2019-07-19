@@ -14,7 +14,7 @@ import UIKit
  At this point, only the presenting transition is made interactive because the presentation is it self an interactive way of dismissing the bottom sheet.
 **/
 
-protocol BottomSheetPresentationControllerDelegate: class {
+protocol BottomSheetPresentationControllerDelegate: AnyObject {
     func bottomSheetPresentationControllerShouldDismiss(_ presentationController: BottomSheetPresentationController) -> Bool
     func bottomSheetPresentationControllerDidCancelDismiss(_ presentationController: BottomSheetPresentationController)
     func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction)

@@ -4,7 +4,7 @@
 
 import UIKit
 
-protocol ReviewProfileCellDelegate: class {
+protocol ReviewProfileCellDelegate: AnyObject {
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
     func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat)
 }

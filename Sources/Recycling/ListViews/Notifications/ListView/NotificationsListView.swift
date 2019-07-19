@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol NotificationsListViewDelegate: class {
+public protocol NotificationsListViewDelegate: AnyObject {
     func notificationsListView(_ notificationsListView: NotificationsListView, didSelectItemAtIndexPath indexPath: IndexPath)
     func notificationsListView(_ notificationsListView: NotificationsListView, willDisplayItemAtIndexPath indexPath: IndexPath)
     func notificationsListView(_ notificationsListView: NotificationsListView, didScrollInScrollView scrollView: UIScrollView)
@@ -12,7 +12,7 @@ public protocol NotificationsListViewDelegate: class {
     func notificationsListView(_ notificationsListView: NotificationsListView, didSelectFooterAtSection section: Int)
 }
 
-public protocol NotificationsListViewDataSource: class {
+public protocol NotificationsListViewDataSource: AnyObject {
     func numberOfSections(inNotificationsListView notificationsListView: NotificationsListView) -> Int
     func notificationsListView(_ notificationsListView: NotificationsListView, numberOfItemsInSection section: Int) -> Int
     func notificationsListView(_ notificationsListView: NotificationsListView, groupModelAtSection section: Int) -> NotificationsGroupListViewModel

@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-protocol RootViewControllerDelegate: class {
+protocol RootViewControllerDelegate: AnyObject {
     func rootViewControllerDidPressExpandButton(_ controller: RootViewController)
     func rootViewControllerDidPressCompactButton(_ controller: RootViewController)
     func rootViewControllerDidPressDismissButton(_ controller: RootViewController)
