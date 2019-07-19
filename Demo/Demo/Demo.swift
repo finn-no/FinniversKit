@@ -131,7 +131,7 @@ public enum ComponentViews: String, CaseIterable {
         case .earthHour:
             return DemoViewController<EarthHourDemoView>()
         case .klimabrolet:
-            return DemoViewController<KlimabroletDemoView>()
+            return KlimabroletDemoViewController(usingDoubleTapToDismiss: false)
         case .stepIndicator:
             return DemoViewController<StepIndicatorDemoView>(withDismissButton: true)
         case .nativeAdvert:
