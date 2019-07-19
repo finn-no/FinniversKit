@@ -83,7 +83,7 @@ public class DemoViewController<View: UIView>: UIViewController {
             view.addGestureRecognizer(doubleTap)
         }
 
-        if playgroundView is Tweakable {
+        if !TestCheck.isTesting && playgroundView is Tweakable {
             let overlayView = CornerAnchoringView(withAutoLayout: true)
             overlayView.delegate = self
             view.addSubview(overlayView)
