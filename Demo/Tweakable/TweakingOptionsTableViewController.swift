@@ -4,8 +4,7 @@ class TweakingOptionsTableViewController: UIViewController {
     let options: [TweakingOption]
 
     private lazy var tableView: UITableView = {
-        let view = UITableView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UITableView(withAutoLayout: true)
         view.dataSource = self
         view.delegate = self
         return view

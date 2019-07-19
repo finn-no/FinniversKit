@@ -124,6 +124,7 @@ NSString *const FinniversImageAssetvehicles = @"vehicles";
 NSString *const FinniversImageAssetverified = @"verified";
 NSString *const FinniversImageAssetview = @"view";
 NSString *const FinniversImageAssetwebview = @"webview";
+NSString *const FinniversImageAssetwrench = @"wrench";
 NSString *const FinniversImageAssetyourads = @"yourads";
 @implementation UIImage (FinniversKit)
 
@@ -246,6 +247,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetverified,
              FinniversImageAssetview,
              FinniversImageAssetwebview,
+             FinniversImageAssetwrench,
              FinniversImageAssetyourads,
              ];
 }

@@ -84,16 +84,10 @@ public class DemoViewController<View: UIView>: UIViewController {
         }
 
         if playgroundView is Tweakable {
-            guard let window = UIApplication.shared.keyWindow else { return }
-            let button = EasterEggButton()
-            button.translatesAutoresizingMaskIntoConstraints = false
-            window.addSubview(button)
-            NSLayoutConstraint.activate([
-                button.bottomAnchor.constraint(equalTo: window.compatibleBottomAnchor, constant: -.largeSpacing),
-                button.trailingAnchor.constraint(equalTo: window.trailingAnchor, constant: -.largeSpacing),
-                button.widthAnchor.constraint(equalToConstant: .veryLargeSpacing),
-                button.heightAnchor.constraint(equalToConstant: .veryLargeSpacing)
-                ])
+            let overlayView = CornerAnchoringView(withAutoLayout: true)
+            overlayView.delegate = self
+            view.addSubview(overlayView)
+            overlayView.fillInSuperview()
         }
     }
 
@@ -108,6 +102,16 @@ public class DemoViewController<View: UIView>: UIViewController {
         if State.shouldShowDismissInstructions {
             miniToastView.show(in: view)
             State.shouldShowDismissInstructions = false
+        }
+    }
+}
+
+extension DemoViewController: CornerAnchoringViewDelegate {
+    func cornerAnchoringViewDidSelectTweakButton(_ cornerAnchoringView: CornerAnchoringView) {
+        if let tweakablePlaygroundView = playgroundView as? Tweakable {
+            let tweakingController = TweakingOptionsTableViewController(options: tweakablePlaygroundView.tweakingOptions)
+            let bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
+            present(bottomSheet, animated: true)
         }
     }
 }

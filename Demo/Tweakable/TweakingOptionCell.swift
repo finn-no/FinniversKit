@@ -5,6 +5,11 @@ class TweakingOptionCell: UITableViewCell {
         didSet {
             titleLabel.text = option?.title
             descriptionLabel.text = option?.description
+
+            if descriptionLabel.text == nil {
+                descriptionLabelBottomAnchor?.isActive = false
+                titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing).isActive = true
+            }
         }
     }
 
@@ -30,19 +35,23 @@ class TweakingOptionCell: UITableViewCell {
         setup()
     }
 
+    var descriptionLabelBottomAnchor: NSLayoutConstraint?
+
     private func setup() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
-            descriptionLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
+            descriptionLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             ])
+
+        descriptionLabelBottomAnchor = descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing)
+        descriptionLabelBottomAnchor?.isActive = true
     }
 }
