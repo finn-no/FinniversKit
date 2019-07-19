@@ -136,7 +136,7 @@ public class KlimabroletView: UIView {
     }
 }
 
-// MARK: - KlimabroletView UIScrollViewDelegate
+// MARK: - UIScrollViewDelegate
 
 extension KlimabroletView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -158,7 +158,8 @@ extension KlimabroletView: UIScrollViewDelegate {
     }
 }
 
-// MARK: - KlimabroletView KlimabroletActionsViewDelegate
+// MARK: - KlimabroletActionsViewDelegate
+
 extension KlimabroletView: KlimabroletActionsViewDelegate {
     func klimabroletViewDidSelectPrimaryButton(_ view: KlimabroletActionsView) {
         delegate?.klimabroletViewDidSelectAccept(self)
@@ -169,7 +170,8 @@ extension KlimabroletView: KlimabroletActionsViewDelegate {
     }
 }
 
-// MARK: - KlimabroletView KlimabroletContentViewDelegate
+// MARK: - KlimabroletContentViewDelegate
+
 extension KlimabroletView: KlimabroletContentViewDelegate {
     func klimabroletViewDidSelectReadMore(_ view: KlimabroletContentView) {
         delegate?.klimabroletViewDidSelectReadMore(self)
