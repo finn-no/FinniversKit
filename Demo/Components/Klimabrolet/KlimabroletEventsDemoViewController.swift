@@ -32,7 +32,7 @@ class KlimabroletEventsDemoViewController: UITableViewController {
 
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: .newClose).withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(UIImage(named: .cross).withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = .stone
         button.addTarget(self, action: #selector(handleCloseButtonTap), for: .touchUpInside)
         return button

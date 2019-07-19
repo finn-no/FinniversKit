@@ -35,7 +35,7 @@ public class KlimabroletView: UIView {
     private(set) lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
         button.tintColor = .milk
-        button.setImage(UIImage(named: .newClose), for: .normal)
+        button.setImage(UIImage(named: .cross), for: .normal)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         button.contentEdgeInsets = UIEdgeInsets(all: 6)
         button.addTarget(self, action: #selector(handleTapOnCloseButton), for: .touchUpInside)
