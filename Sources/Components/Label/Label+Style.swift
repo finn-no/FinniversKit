@@ -9,6 +9,7 @@ public extension Label {
         case title1
         case title2
         case title3
+        case title3Strong
         case bodyStrong
         case detailStrong
         case body
@@ -28,6 +29,7 @@ public extension Label {
             case .title1: return UIFont.title1
             case .title2: return UIFont.title2
             case .title3: return UIFont.title3
+            case .title3Strong: return UIFont.title3Strong
             case .bodyStrong, .title4: return UIFont.bodyStrong
             case .detailStrong, .title5: return UIFont.detailStrong
             case .body: return UIFont.body
@@ -46,6 +48,7 @@ public extension Label {
             case .title1: return font.pointSize * 0.5
             case .title2: return font.pointSize * 0.5
             case .title3: return font.pointSize * 0.5
+            case .title3Strong: return font.pointSize * 0.5
             default: return 0
             }
         }

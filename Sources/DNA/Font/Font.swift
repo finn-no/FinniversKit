@@ -40,6 +40,18 @@ enum FontType: String {
         return font.scaledFont(forTextStyle: .title1)
     }
 
+    /// FINNTypeWebStrippet-Medium with a size of 22 scaled for UIFontTextStyle.title3Strong
+    ///
+    /// ## Usage:
+    /// - If a T2 have more sublevels, you can use T3.
+    /// - This always has the weight Medium.
+    static var title3Strong: UIFont {
+        registerCustomFonts()
+
+        let font = UIFont(name: FontType.medium.rawValue, size: 22)!
+        return font.scaledFont(forTextStyle: .title2)
+    }
+
     /// FINNTypeWebStrippet-Light with a size of 22 scaled for UIFontTextStyle.title3
     ///
     /// ## Usage:
