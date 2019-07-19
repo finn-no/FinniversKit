@@ -17,9 +17,9 @@ class KlimabroletContentView: UIView {
         return imageView
     }()
 
-    private(set) lazy var subtitleTagView = EarthHourTagView(withAutoLayout: true)
+    private lazy var subtitleTagView = EarthHourTagView(withAutoLayout: true)
 
-    private(set) lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         let font = UIFont(name: FontType.bold.rawValue, size: 22)?
             .scaledFont(forTextStyle: .title2)
@@ -30,7 +30,7 @@ class KlimabroletContentView: UIView {
         return label
     }()
 
-    private(set) lazy var bodyTextLabel: UILabel = {
+    private lazy var bodyTextLabel: UILabel = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -38,7 +38,7 @@ class KlimabroletContentView: UIView {
         return label
     }()
 
-    private(set) lazy var accessoryButton: UIButton = {
+    private lazy var accessoryButton: UIButton = {
         let button = Button(style: .link, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.numberOfLines = 0
@@ -57,9 +57,18 @@ class KlimabroletContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup
+    // MARK: - Internal methods
 
-    func setup() {
+    func configure(with viewModel: KlimabroletViewModel) {
+        titleLabel.text = viewModel.title
+        subtitleTagView.titleLabel.text = viewModel.subtitle
+        bodyTextLabel.text = viewModel.bodyText
+        accessoryButton.setTitle(viewModel.readMoreButtonTitle, for: .normal)
+    }
+
+    // MARK: - Private methods
+
+    private func setup() {
         backgroundColor = .milk
 
         addSubview(bannerImageView)

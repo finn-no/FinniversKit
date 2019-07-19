@@ -40,6 +40,13 @@ class KlimabroletActionsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Internal methods
+
+    func configure(primaryButtonTitle: String, secondaryButtonTitle: String) {
+        primaryButton.setTitle(primaryButtonTitle, for: .normal)
+        secondaryButton.setTitle(secondaryButtonTitle, for: .normal)
+    }
+
     // MARK: - Private methods
 
     private func setup() {

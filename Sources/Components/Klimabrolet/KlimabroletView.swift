@@ -73,12 +73,11 @@ public class KlimabroletView: UIView {
     // MARK: - Public methods
 
     public func configure(with viewModel: KlimabroletViewModel) {
-        contentView.titleLabel.text = viewModel.title
-        contentView.subtitleTagView.titleLabel.text = viewModel.subtitle
-        contentView.bodyTextLabel.text = viewModel.bodyText
-        contentView.accessoryButton.setTitle(viewModel.readMoreButtonTitle, for: .normal)
-        actionsView.primaryButton.setTitle(viewModel.acceptButtonTitle, for: .normal)
-        actionsView.secondaryButton.setTitle(viewModel.declineButtonTitle, for: .normal)
+        contentView.configure(with: viewModel)
+        actionsView.configure(
+            primaryButtonTitle: viewModel.acceptButtonTitle,
+            secondaryButtonTitle: viewModel.declineButtonTitle
+        )
     }
 
     // MARK: - Private methods
