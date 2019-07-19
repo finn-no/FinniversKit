@@ -45,13 +45,8 @@ public class ToastView: UIView {
         return label
     }()
 
-    private lazy var actionButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.primaryBlue, for: .normal)
-        button.titleLabel?.font = .bodyStrong
-        button.layer.masksToBounds = true
-        button.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 751), for: .horizontal)
+    private lazy var actionButton: ToastButton = {
+        let button = ToastButton(toastStyle: style, buttonStyle: buttonStyle)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
@@ -104,7 +99,6 @@ public class ToastView: UIView {
 
     // MARK: - Setup
 
-    public init(style: Style) {
     public init(style: Style, buttonStyle: ButtonStyle = .normal) {
         self.style = style
         self.buttonStyle = buttonStyle
