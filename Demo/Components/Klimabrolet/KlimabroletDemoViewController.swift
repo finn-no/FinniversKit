@@ -16,7 +16,7 @@ struct DemoKlimabroletViewModel: KlimabroletViewModel {
 class KlimabroletDemoViewController: DemoViewController<UIView> {
     private lazy var klimabroletView: KlimabroletView = {
         let view = KlimabroletView(withAutoLayout: true)
-        view.model = DemoKlimabroletViewModel()
+        view.configure(with: DemoKlimabroletViewModel())
         view.delegate = self
         return view
     }()

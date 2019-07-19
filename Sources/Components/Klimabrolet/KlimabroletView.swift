@@ -16,17 +16,6 @@ public class KlimabroletView: UIView {
 
     public weak var delegate: KlimabroletViewDelegate?
 
-    public var model: KlimabroletViewModel? {
-        didSet {
-            contentView.titleLabel.text = model?.title
-            contentView.subtitleTagView.titleLabel.text = model?.subtitle
-            contentView.bodyTextLabel.text = model?.bodyText
-            contentView.accessoryButton.setTitle(model?.readMoreButtonTitle, for: .normal)
-            actionsView.primaryButton.setTitle(model?.acceptButtonTitle, for: .normal)
-            actionsView.secondaryButton.setTitle(model?.declineButtonTitle, for: .normal)
-        }
-    }
-
     // MARK: - Private properties
 
     private var shadowAnimationDuration = 0.12
@@ -79,6 +68,17 @@ public class KlimabroletView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         closeButton.layer.cornerRadius = closeButton.bounds.width / 2.0
+    }
+
+    // MARK: - Public methods
+
+    public func configure(with viewModel: KlimabroletViewModel) {
+        contentView.titleLabel.text = viewModel.title
+        contentView.subtitleTagView.titleLabel.text = viewModel.subtitle
+        contentView.bodyTextLabel.text = viewModel.bodyText
+        contentView.accessoryButton.setTitle(viewModel.readMoreButtonTitle, for: .normal)
+        actionsView.primaryButton.setTitle(viewModel.acceptButtonTitle, for: .normal)
+        actionsView.secondaryButton.setTitle(viewModel.declineButtonTitle, for: .normal)
     }
 
     // MARK: - Private methods
