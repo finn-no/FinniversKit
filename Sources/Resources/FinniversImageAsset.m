@@ -28,6 +28,7 @@ NSString *const FinniversImageAssetcheckCircle = @"checkCircle";
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
 NSString *const FinniversImageAssetclassifieds = @"classifieds";
 NSString *const FinniversImageAssetclose = @"close";
+NSString *const FinniversImageAssetcross = @"cross";
 NSString *const FinniversImageAssetdistance = @"distance";
 NSString *const FinniversImageAssetdownload = @"download";
 NSString *const FinniversImageAssetearthHourClock = @"earthHourClock";
@@ -80,7 +81,6 @@ NSString *const FinniversImageAssetmittanbud = @"mittanbud";
 NSString *const FinniversImageAssetmore = @"more";
 NSString *const FinniversImageAssetmoreImg = @"moreImg";
 NSString *const FinniversImageAssetmoteplassen = @"moteplassen";
-NSString *const FinniversImageAssetnewClose = @"newClose";
 NSString *const FinniversImageAssetnoImage = @"noImage";
 NSString *const FinniversImageAssetnotifications = @"notifications";
 NSString *const FinniversImageAssetokonomi = @"okonomi";
@@ -153,6 +153,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetcheckmarkBig,
              FinniversImageAssetclassifieds,
              FinniversImageAssetclose,
+             FinniversImageAssetcross,
              FinniversImageAssetdistance,
              FinniversImageAssetdownload,
              FinniversImageAssetearthHourClock,
@@ -205,7 +206,6 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetmore,
              FinniversImageAssetmoreImg,
              FinniversImageAssetmoteplassen,
-             FinniversImageAssetnewClose,
              FinniversImageAssetnoImage,
              FinniversImageAssetnotifications,
              FinniversImageAssetokonomi,
