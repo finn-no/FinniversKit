@@ -98,7 +98,7 @@ extension KlimabroletDemoViewController: UINavigationControllerDelegate {
     func navigationController(
         _ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool
     ) {
-        let isKlima = viewController == klimabroletViewController
-        innerNavigationController.setNavigationBarHidden(isKlima, animated: true)
+        let needsNavigationBarHidden = viewController == klimabroletViewController
+        innerNavigationController.setNavigationBarHidden(needsNavigationBarHidden, animated: true)
     }
 }
