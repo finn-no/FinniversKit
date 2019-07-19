@@ -10,7 +10,7 @@ protocol KlimabroletActionsViewDelegate: AnyObject {
 }
 
 class KlimabroletActionsView: UIView {
-    public var delegate: KlimabroletActionsViewDelegate?
+    weak var delegate: KlimabroletActionsViewDelegate?
 
     // MARK: - Private subviews
 
@@ -66,11 +66,11 @@ class KlimabroletActionsView: UIView {
         ])
     }
 
-    @objc func handleTapOnPrimaryButton() {
+    @objc private func handleTapOnPrimaryButton() {
         delegate?.klimabroletViewDidSelectPrimaryButton(self)
     }
 
-    @objc func handleTapOnSecondaryButton() {
+    @objc private func handleTapOnSecondaryButton() {
         delegate?.klimabroletViewDidSelectSecondaryButton(self)
     }
 }

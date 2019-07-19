@@ -32,7 +32,7 @@ public class KlimabroletView: UIView {
     private var shadowAnimationDuration = 0.12
     private var contentSizeObservation: NSKeyValueObservation?
 
-    private(set) lazy var closeButton: UIButton = {
+    private lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
         button.tintColor = .milk
         button.setImage(UIImage(named: .cross), for: .normal)
