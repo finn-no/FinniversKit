@@ -1,7 +1,7 @@
 import FinniversKit
 
 class TweakingOptionsTableViewController: UIViewController {
-    let options: [TweakingOption]
+    private let options: [TweakingOption]
 
     private lazy var tableView: UITableView = {
         let view = UITableView(withAutoLayout: true)
@@ -39,7 +39,7 @@ extension TweakingOptionsTableViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(TweakingOptionCell.self, for: indexPath)
         let option = options[indexPath.row]
-        cell.option = option
+        cell.configure(withOption: option)
         return cell
     }
 }

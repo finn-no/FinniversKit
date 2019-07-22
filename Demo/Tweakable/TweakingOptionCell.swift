@@ -1,17 +1,7 @@
 import FinniversKit
 
 class TweakingOptionCell: UITableViewCell {
-    var option: TweakingOption? {
-        didSet {
-            titleLabel.text = option?.title
-            descriptionLabel.text = option?.description
-
-            if descriptionLabel.text == nil {
-                descriptionLabelBottomAnchor?.isActive = false
-                titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing).isActive = true
-            }
-        }
-    }
+    private var descriptionLabelBottomAnchor: NSLayoutConstraint?
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong)
@@ -35,8 +25,18 @@ class TweakingOptionCell: UITableViewCell {
         setup()
     }
 
-    var descriptionLabelBottomAnchor: NSLayoutConstraint?
+    func configure(withOption option: TweakingOption) {
+        titleLabel.text = option.title
+        descriptionLabel.text = option.description
 
+        if descriptionLabel.text == nil {
+            descriptionLabelBottomAnchor?.isActive = false
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing).isActive = true
+        }
+    }
+}
+
+extension TweakingOptionCell {
     private func setup() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)

@@ -8,11 +8,9 @@ class CornerAnchoringView: UIView {
     weak var delegate: CornerAnchoringViewDelegate?
 
     private lazy var anchoredView: EasterEggButton = {
-        let button = EasterEggButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = EasterEggButton(withAutoLayout: true)
         button.tintColor = .primaryBlue
         button.setImage(UIImage(named: .wrench).withRenderingMode(.alwaysTemplate), for: .normal)
-        button.isUserInteractionEnabled = true
         button.addTarget(self, action: #selector(tweakButtonAction), for: .touchUpInside)
         return button
     }()
@@ -70,10 +68,9 @@ class CornerAnchoringView: UIView {
     }
 
     private func addAnchorAreaView() -> UIView {
-        let view = UIView()
+        let view = UIView(withAutoLayout: true)
         addSubview(view)
         anchorAreaViews.append(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.widthAnchor.constraint(equalToConstant: .veryLargeSpacing).isActive = true
         view.heightAnchor.constraint(equalToConstant: .veryLargeSpacing).isActive = true
         return view

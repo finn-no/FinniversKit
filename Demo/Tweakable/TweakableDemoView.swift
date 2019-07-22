@@ -8,13 +8,13 @@ public class TweakableDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = {
         var options = [TweakingOption]()
 
-        options.append(TweakingOption(title: "Option 1", description: nil, action: { parentViewController in
-            self.titleLabel.text = "Choosen Option 1!\n\nYou can drag the button too :D"
+        options.append(TweakingOption(title: "Option 1", description: nil, action: { [weak self] parentViewController in
+            self?.titleLabel.text = "Choosen Option 1!\n\nYou can drag the button too :D"
             parentViewController?.dismiss(animated: true)
         }))
 
-        options.append(TweakingOption(title: "Option 2", description: nil, action: { parentViewController in
-            self.titleLabel.text = "Choosen Option 2!\n\nYou can drag the button too :D"
+        options.append(TweakingOption(title: "Option 2", description: nil, action: { [weak self] parentViewController in
+            self?.titleLabel.text = "Choosen Option 2!\n\nYou can drag the button too :D"
             parentViewController?.dismiss(animated: true)
         }))
 
