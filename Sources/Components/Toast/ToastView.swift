@@ -71,6 +71,13 @@ public class ToastView: UIView {
         }
     }
 
+    public var attributedText: NSAttributedString? {
+        didSet {
+            messageTitle.attributedText = attributedText
+            accessibilityLabel = attributedText?.string ?? ""
+        }
+    }
+
     public var image: UIImage? {
         get {
             guard let image = imageView.image else {
