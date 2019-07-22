@@ -26,6 +26,7 @@ public class DemoViewController<View: UIView>: UIViewController {
     var usingDoubleTapToDismiss: Bool = false
     private var preferredInterfaceOrientation: UIInterfaceOrientationMask = .all
     private let constrainToBottomSafeArea: Bool
+    private var bottomSheet: BottomSheet?
 
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return preferredInterfaceOrientation
@@ -110,8 +111,17 @@ extension DemoViewController: CornerAnchoringViewDelegate {
     func cornerAnchoringViewDidSelectTweakButton(_ cornerAnchoringView: CornerAnchoringView) {
         if let tweakablePlaygroundView = playgroundView as? Tweakable {
             let tweakingController = TweakingOptionsTableViewController(options: tweakablePlaygroundView.tweakingOptions)
-            let bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
-            present(bottomSheet, animated: true)
+            tweakingController.delegate = self
+            bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
+            if let controller = bottomSheet {
+                present(controller, animated: true)
+            }
         }
+    }
+}
+
+extension DemoViewController: TweakingOptionsTableViewControllerDelegate {
+    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController) {
+        bottomSheet?.state = .dismissed
     }
 }

@@ -1,6 +1,11 @@
 import FinniversKit
 
+protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
+    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController)
+}
+
 class TweakingOptionsTableViewController: UIViewController {
+    weak var delegate: TweakingOptionsTableViewControllerDelegate?
     private let options: [TweakingOption]
 
     private lazy var tableView: UITableView = {
@@ -51,6 +56,6 @@ extension TweakingOptionsTableViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let option = options[indexPath.row]
         option.action()
-        parent?.dismiss(animated: true)
+        delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
     }
 }
