@@ -50,8 +50,7 @@ extension TweakingOptionsTableViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let option = options[indexPath.row]
-        option.action {
-            parent?.dismiss(animated: true)
-        }
+        option.action()
+        parent?.dismiss(animated: true)
     }
 }
