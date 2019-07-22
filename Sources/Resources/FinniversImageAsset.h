@@ -124,6 +124,7 @@ extern NSString *const FinniversImageAssetvehicles;
 extern NSString *const FinniversImageAssetverified;
 extern NSString *const FinniversImageAssetview;
 extern NSString *const FinniversImageAssetwebview;
+extern NSString *const FinniversImageAssetwrench;
 extern NSString *const FinniversImageAssetyourads;
 
 

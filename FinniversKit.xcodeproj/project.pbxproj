@@ -157,6 +157,9 @@
 		44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */; };
 		44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */; };
 		44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */; };
+		44A0F0AB22E1FB6800BCCF4C /* CornerAnchoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A0F0AA22E1FB6800BCCF4C /* CornerAnchoringViewController.swift */; };
+		44A0F0B022E20D2F00BCCF4C /* TweakableDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A0F0AF22E20D2F00BCCF4C /* TweakableDemoView.swift */; };
+		44A0F0B222E20FBF00BCCF4C /* TestCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A0F0B122E20FBF00BCCF4C /* TestCheck.swift */; };
 		44A149EB21377C7B0053D5F7 /* SavedSearchesListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149E621377C7B0053D5F7 /* SavedSearchesListViewCell.swift */; };
 		44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149E821377C7B0053D5F7 /* SavedSearchesListView.swift */; };
 		44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149EA21377C7B0053D5F7 /* SavedSearchesListViewModel.swift */; };
@@ -164,6 +167,10 @@
 		44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A149F02137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift */; };
 		44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */; };
 		44AFCE4A215839FB005984DB /* LoadingIndicatorViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFCE46215839F6005984DB /* LoadingIndicatorViewDemoView.swift */; };
+		44B94FE522E0AB420078A23C /* TweakingOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FE422E0AB420078A23C /* TweakingOptionsTableViewController.swift */; };
+		44B94FE722E0AB6C0078A23C /* TweakingOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FE622E0AB6C0078A23C /* TweakingOptionCell.swift */; };
+		44B94FE922E0AB820078A23C /* TweakingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FE822E0AB820078A23C /* TweakingOption.swift */; };
+		44B94FEB22E0ABC50078A23C /* Tweakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FEA22E0ABC50078A23C /* Tweakable.swift */; };
 		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
@@ -588,6 +595,9 @@
 		44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		44A0F0AA22E1FB6800BCCF4C /* CornerAnchoringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerAnchoringViewController.swift; sourceTree = "<group>"; };
+		44A0F0AF22E20D2F00BCCF4C /* TweakableDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakableDemoView.swift; sourceTree = "<group>"; };
+		44A0F0B122E20FBF00BCCF4C /* TestCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCheck.swift; sourceTree = "<group>"; };
 		44A149E621377C7B0053D5F7 /* SavedSearchesListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewCell.swift; sourceTree = "<group>"; };
 		44A149E821377C7B0053D5F7 /* SavedSearchesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListView.swift; sourceTree = "<group>"; };
 		44A149EA21377C7B0053D5F7 /* SavedSearchesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewModel.swift; sourceTree = "<group>"; };
@@ -595,6 +605,10 @@
 		44A149F02137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSearchesListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		44AFCE46215839F6005984DB /* LoadingIndicatorViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorViewDemoView.swift; sourceTree = "<group>"; };
 		44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
+		44B94FE422E0AB420078A23C /* TweakingOptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakingOptionsTableViewController.swift; sourceTree = "<group>"; };
+		44B94FE622E0AB6C0078A23C /* TweakingOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakingOptionCell.swift; sourceTree = "<group>"; };
+		44B94FE822E0AB820078A23C /* TweakingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakingOption.swift; sourceTree = "<group>"; };
+		44B94FEA22E0ABC50078A23C /* Tweakable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweakable.swift; sourceTree = "<group>"; };
 		44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversImageAsset.swift; sourceTree = "<group>"; };
 		44D912512077AC8A00486848 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		44D912532077AC8A00486848 /* AttachableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachableView.swift; sourceTree = "<group>"; };
@@ -971,6 +985,7 @@
 		14405C521FAFBBF000D03E04 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				44B94FE322E0AB420078A23C /* Tweakable */,
 				CF8F021421DCC5B2004C4042 /* Components */,
 				AAF7C95D222432EC003110DB /* Demo */,
 				CF8F021021DCC4D7004C4042 /* DNA */,
@@ -1559,6 +1574,19 @@
 			path = LoadingIndicator;
 			sourceTree = "<group>";
 		};
+		44B94FE322E0AB420078A23C /* Tweakable */ = {
+			isa = PBXGroup;
+			children = (
+				44A0F0AA22E1FB6800BCCF4C /* CornerAnchoringViewController.swift */,
+				44B94FEA22E0ABC50078A23C /* Tweakable.swift */,
+				44B94FE422E0AB420078A23C /* TweakingOptionsTableViewController.swift */,
+				44B94FE622E0AB6C0078A23C /* TweakingOptionCell.swift */,
+				44B94FE822E0AB820078A23C /* TweakingOption.swift */,
+				44A0F0AF22E20D2F00BCCF4C /* TweakableDemoView.swift */,
+			);
+			path = Tweakable;
+			sourceTree = "<group>";
+		};
 		44D912492077AC8A00486848 /* Fullscreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1864,6 +1892,7 @@
 		AA864B4A22329DF700BAE95A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				44A0F0B122E20FBF00BCCF4C /* TestCheck.swift */,
 				AA864B4B22329E4F00BAE95A /* UIKit */,
 			);
 			path = Extensions;
@@ -3201,17 +3230,21 @@
 				44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */,
 				4423F227209CB24500B81D68 /* MiniToastView.swift in Sources */,
 				55C5B27E203EB9DA007D7277 /* BroadcastDemoView.swift in Sources */,
+				44B94FE522E0AB420078A23C /* TweakingOptionsTableViewController.swift in Sources */,
 				08D70A25218329FE003E2222 /* CheckboxSubtitleCellDemoView.swift in Sources */,
 				44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */,
 				08D70A2721832A0C003E2222 /* IconTitleCellDemoView.swift in Sources */,
+				44B94FE722E0AB6C0078A23C /* TweakingOptionCell.swift in Sources */,
 				CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
+				44B94FE922E0AB820078A23C /* TweakingOption.swift in Sources */,
 				F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */,
 				F2B1A19722D5054600713FC2 /* ReceiptViewDemoView.swift in Sources */,
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
+				44A0F0B022E20D2F00BCCF4C /* TweakableDemoView.swift in Sources */,
 				44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
 				4458701D213FA353009187BE /* RegisterViewDefaultData.swift in Sources */,
 				146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */,
@@ -3220,6 +3253,7 @@
 				DAE738C922C4CB19001C69E3 /* CarouselViewDemoCell.swift in Sources */,
 				F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */,
 				444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
+				44B94FEB22E0ABC50078A23C /* Tweakable.swift in Sources */,
 				6266C0752208235000FB8004 /* AdManagementDemoView.swift in Sources */,
 				0884C6CC22B7B5EA0015474D /* DisclaimerDemoView.swift in Sources */,
 				44AFCE4A215839FB005984DB /* LoadingIndicatorViewDemoView.swift in Sources */,
@@ -3253,6 +3287,7 @@
 				08012BF02187319A00A04F43 /* BasicCellVariationsDemoView.swift in Sources */,
 				08D70A21218329D1003E2222 /* BasicCellDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
+				44A0F0AB22E1FB6800BCCF4C /* CornerAnchoringViewController.swift in Sources */,
 				CF9AC8BC21BECE13005A0D2F /* SnowGlobeDemoView.swift in Sources */,
 				CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */,
 				44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */,
@@ -3302,6 +3337,7 @@
 				447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */,
 				CF7C460F22257AE1001FB92C /* EarthHourDemoView.swift in Sources */,
 				DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */,
+				44A0F0B222E20FBF00BCCF4C /* TestCheck.swift in Sources */,
 				DA93EFAA21C2BB2900207239 /* NewYearsDemoView.swift in Sources */,
 				9A37DACD70E4383536D5312B /* FeedbackDemoView.swift in Sources */,
 				9F21365157F385AC63928150 /* FullscreenGalleryDemoViewController.swift in Sources */,

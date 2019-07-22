@@ -135,6 +135,7 @@ public enum FinniversImageAsset: String {
     case verified
     case view
     case webview
+    case wrench
     case yourads
 
     public static var imageNames: [FinniversImageAsset] {
@@ -256,6 +257,7 @@ public enum FinniversImageAsset: String {
             .verified,
             .view,
             .webview,
+            .wrench,
             .yourads,
     ]
   }

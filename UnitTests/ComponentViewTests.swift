@@ -166,4 +166,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testQuestionnaireView() {
       snapshot(.questionnaireView)
     }
+
+    func testTweakable() {
+        snapshot(.tweakable)
+    }
 }
