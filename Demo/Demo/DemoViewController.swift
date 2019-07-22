@@ -26,6 +26,7 @@ public class DemoViewController<View: UIView>: UIViewController {
     var usingDoubleTapToDismiss: Bool = false
     private var preferredInterfaceOrientation: UIInterfaceOrientationMask = .all
     private let constrainToBottomSafeArea: Bool
+    private var bottomSheet: BottomSheet?
 
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return preferredInterfaceOrientation
@@ -82,6 +83,13 @@ public class DemoViewController<View: UIView>: UIViewController {
             doubleTap.numberOfTapsRequired = 2
             view.addGestureRecognizer(doubleTap)
         }
+
+        if !TestCheck.isTesting && playgroundView is Tweakable {
+            let overlayView = CornerAnchoringView(withAutoLayout: true)
+            overlayView.delegate = self
+            view.addSubview(overlayView)
+            overlayView.fillInSuperview()
+        }
     }
 
     @objc func didDoubleTap() {
@@ -96,5 +104,24 @@ public class DemoViewController<View: UIView>: UIViewController {
             miniToastView.show(in: view)
             State.shouldShowDismissInstructions = false
         }
+    }
+}
+
+extension DemoViewController: CornerAnchoringViewDelegate {
+    func cornerAnchoringViewDidSelectTweakButton(_ cornerAnchoringView: CornerAnchoringView) {
+        if let tweakablePlaygroundView = playgroundView as? Tweakable {
+            let tweakingController = TweakingOptionsTableViewController(options: tweakablePlaygroundView.tweakingOptions)
+            tweakingController.delegate = self
+            bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
+            if let controller = bottomSheet {
+                present(controller, animated: true)
+            }
+        }
+    }
+}
+
+extension DemoViewController: TweakingOptionsTableViewControllerDelegate {
+    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController) {
+        bottomSheet?.state = .dismissed
     }
 }
