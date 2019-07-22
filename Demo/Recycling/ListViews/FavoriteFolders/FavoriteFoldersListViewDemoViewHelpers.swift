@@ -5,6 +5,7 @@
 import FinniversKit
 
 struct FavoriteFolder: FavoriteFolderViewModel {
+    let id: Int
     let title: String
     let imagePath: String?
     let subtitle: String? = nil
@@ -12,13 +13,16 @@ struct FavoriteFolder: FavoriteFolderViewModel {
     let cornerRadius: CGFloat = 12
     let imageViewWidth: CGFloat = 40
     let hasChevron = false
+    var isSelected: Bool
 }
 
 struct FavoriteFoldersFactory {
     static func create() -> [FavoriteFolder] {
         var favorites = [FavoriteFolder]()
-        for (title, imagePath) in zip(titles, imagePaths) {
-            favorites.append(FavoriteFolder(title: title, imagePath: imagePath))
+
+        for (index, (title, imagePath)) in zip(titles, imagePaths).enumerated() {
+            let isSelected = [0,1].contains(index)
+            favorites.append(FavoriteFolder(id: index, title: title, imagePath: imagePath, isSelected: isSelected))
         }
 
         return favorites
@@ -26,8 +30,8 @@ struct FavoriteFoldersFactory {
 
     private static var titles: [String] {
         return [
-            "Mine Funn",
-            "Hjemmekjært",
+            "Mine funn",
+            "We accept up to 50 characters for a folder's name",
             "Mansion",
             "Villa Medusa",
             "Villa Villekulla",

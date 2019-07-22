@@ -6,7 +6,7 @@ import UIKit
 
 // MARK: - ReceiptViewDelegate
 
-public protocol ReceiptViewDelegate: class {
+public protocol ReceiptViewDelegate: AnyObject {
     func receipt(_ : ReceiptView, didTapNavigateToAd button: Button)
     func receipt(_ : ReceiptView, didTapNavigateToMyAds button: Button)
     func receipt(_ : ReceiptView, didTapCreateNewAd button: Button)

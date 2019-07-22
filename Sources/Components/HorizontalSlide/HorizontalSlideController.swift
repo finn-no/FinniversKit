@@ -1,6 +1,6 @@
 import UIKit
 
-protocol HorizontalSlideControllerDelegate: class {
+protocol HorizontalSlideControllerDelegate: AnyObject {
     func horizontalSlideControllerDidDismiss(_ horizontalSlideController: HorizontalSlideController)
 }
 

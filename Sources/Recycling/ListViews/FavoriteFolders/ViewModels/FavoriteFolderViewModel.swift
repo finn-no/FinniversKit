@@ -4,7 +4,9 @@
 
 import Foundation
 
-public protocol FavoriteFolderViewModel: RemoteImageTableViewCellViewModel {}
+public protocol FavoriteFolderViewModel: RemoteImageTableViewCellViewModel {
+    var isSelected: Bool { get }
+}
 
 public extension FavoriteFolderViewModel {
     var accessibilityLabel: String {

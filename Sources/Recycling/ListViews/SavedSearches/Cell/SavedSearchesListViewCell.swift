@@ -1,6 +1,6 @@
 import UIKit
 
-@objc protocol SavedSearchesListViewCellDelegate: class {
+@objc protocol SavedSearchesListViewCellDelegate: AnyObject {
     func savedSearchesListViewCell(_ savedSearchesListViewCell: SavedSearchesListViewCell, didPressSettingsButton button: UIButton)
 }
 

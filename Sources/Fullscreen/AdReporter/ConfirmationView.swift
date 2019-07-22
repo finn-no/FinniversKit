@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol ConfirmationViewDelegate: class {
+public protocol ConfirmationViewDelegate: AnyObject {
     func confirmationViewDidPressDismissButton(_ confirmationView: ConfirmationView)
 }
 

@@ -6,7 +6,7 @@ import UIKit
 
 // MARK: - LoginViewDelegatew
 
-public protocol RegisterViewDelegate: class {
+public protocol RegisterViewDelegate: AnyObject {
     func registerView(_ registerView: RegisterView, didSelectLoginButton button: Button, with email: String)
     func registerView(_ registerView: RegisterView, didSelectRegisterButton button: Button, with email: String, and password: String)
     func registerView(_ registerView: RegisterView, didSelectUserTermsButton button: Button)

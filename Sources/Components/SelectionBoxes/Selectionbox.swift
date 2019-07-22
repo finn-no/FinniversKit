@@ -6,7 +6,7 @@ import UIKit
 
 /* Selection box for selecting a single item */
 
-public protocol RadioButtonDelegate: class {
+public protocol RadioButtonDelegate: AnyObject {
     func radioButton(_ radioButton: RadioButton, didSelectItem item: RadioButtonItem)
     func radioButton(_ radioButton: RadioButton, didUnselectItem item: RadioButtonItem)
 }
@@ -42,7 +42,7 @@ public class RadioButton: Selectionbox {
 
 /* Selection box for selecting multiple items */
 
-public protocol CheckboxDelegate: class {
+public protocol CheckboxDelegate: AnyObject {
     func checkbox(_ checkbox: Checkbox, didSelectItem item: CheckboxItem)
     func checkbox(_ checkbox: Checkbox, didUnselectItem item: CheckboxItem)
 }

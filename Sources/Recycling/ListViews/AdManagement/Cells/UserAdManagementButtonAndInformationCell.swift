@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS. All rights reserved.
 //
 
-public protocol UserAdManagementButtonAndInformationCellDelegate: class {
+public protocol UserAdManagementButtonAndInformationCellDelegate: AnyObject {
     func buttonAndInformationCellButtonWasTapped(_ sender: UserAdManagementButtonAndInformationCell)
 }
 

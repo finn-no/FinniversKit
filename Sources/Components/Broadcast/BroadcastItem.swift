@@ -3,7 +3,7 @@
 //
 import UIKit
 
-protocol BroadcastItemDelegate: class {
+protocol BroadcastItemDelegate: AnyObject {
     func broadcastItemDismissButtonTapped(_ broadcastItem: BroadcastItem)
     func broadcastItem(_ broadcastItem: BroadcastItem, didTapURL url: URL)
 }
