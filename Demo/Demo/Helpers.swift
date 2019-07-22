@@ -13,6 +13,7 @@ extension String {
 struct State {
     private static let lastSelectedIndexPathRowKey = "lastSelectedIndexPathRowKey"
     private static let lastSelectedIndexPathSectionKey = "lastSelectedIndexPathSectionKey"
+    private static let lastCornerForTweakingButtonKey = "lastCornerForTweakingButtonKey"
 
     static var lastSelectedIndexPath: IndexPath? {
         get {
@@ -44,6 +45,16 @@ struct State {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: shouldShowDismissInstructionsKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
+
+    static var lastCornerForTweakingButton: Int? {
+        get {
+            return UserDefaults.standard.object(forKey: lastCornerForTweakingButtonKey) as? Int
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: lastCornerForTweakingButtonKey)
             UserDefaults.standard.synchronize()
         }
     }

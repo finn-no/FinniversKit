@@ -16,14 +16,12 @@ class CornerAnchoringView: UIView {
     }()
 
     private var anchorAreaViews = [UIView]()
-
     private let panRecognizer = UIPanGestureRecognizer()
+    private var initialOffset: CGPoint = .zero
 
     private var anchorPositions: [CGPoint] {
         return anchorAreaViews.map { $0.center }
     }
-
-    private var initialOffset: CGPoint = .zero
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,7 +62,11 @@ class CornerAnchoringView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        anchoredView.center = anchorPositions.last ?? .zero
+        if let index = State.lastCornerForTweakingButton {
+            anchoredView.center = anchorPositions[index]
+        } else {
+            anchoredView.center = anchorPositions.last ?? .zero
+        }
     }
 
     private func addAnchorAreaView() -> UIView {
@@ -90,11 +92,12 @@ class CornerAnchoringView: UIView {
                 x: anchoredView.center.x + project(initialVelocity: velocity.x, decelerationRate: decelerationRate),
                 y: anchoredView.center.y + project(initialVelocity: velocity.y, decelerationRate: decelerationRate)
             )
-            let nearestCornerPosition = nearestCorner(to: projectedPosition)
+            let (index, nearestCornerPosition) = nearestCorner(to: projectedPosition)
             let relativeInitialVelocity = CGVector(
                 dx: relativeVelocity(forVelocity: velocity.x, from: anchoredView.center.x, to: nearestCornerPosition.x),
                 dy: relativeVelocity(forVelocity: velocity.y, from: anchoredView.center.y, to: nearestCornerPosition.y)
             )
+            State.lastCornerForTweakingButton = index
             let timingParameters = UISpringTimingParameters(damping: 1, response: 0.4, initialVelocity: relativeInitialVelocity)
             let animator = UIViewPropertyAnimator(duration: 0, timingParameters: timingParameters)
             animator.addAnimations {
@@ -111,17 +114,19 @@ class CornerAnchoringView: UIView {
     }
 
     /// Finds the position of the nearest corner to the given point.
-    private func nearestCorner(to point: CGPoint) -> CGPoint {
+    private func nearestCorner(to point: CGPoint) -> (Int, CGPoint) {
         var minDistance = CGFloat.greatestFiniteMagnitude
         var closestPosition = CGPoint.zero
-        for position in anchorPositions {
+        var arrayIndex = 0
+        for (index, position) in anchorPositions.enumerated() {
             let distance = point.distance(to: position)
             if distance < minDistance {
                 closestPosition = position
+                arrayIndex = index
                 minDistance = distance
             }
         }
-        return closestPosition
+        return (arrayIndex, closestPosition)
     }
 
     /// Calculates the relative velocity needed for the initial velocity of the animation.
