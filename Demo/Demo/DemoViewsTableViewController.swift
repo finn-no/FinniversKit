@@ -41,6 +41,9 @@ class DemoViewsTableViewController: UITableViewController {
         tableView.backgroundColor = UIColor.secondaryBlue
         tableView.delegate = self
         tableView.separatorStyle = .none
+        let titleView = SelectorTitleView(withAutoLayout: true)
+        titleView.update(title: "DADA")
+        navigationItem.titleView = titleView
     }
 }
 

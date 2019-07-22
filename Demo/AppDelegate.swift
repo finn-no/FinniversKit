@@ -10,7 +10,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = DemoViewsTableViewController()
+        let navigationController = UINavigationController(rootViewController: DemoViewsTableViewController())
+        navigationController.navigationBar.barStyle = .blackOpaque
+        navigationController.navigationBar.barTintColor = .red
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
         return true
