@@ -50,7 +50,7 @@ class DemoViewsTableViewController: UITableViewController {
 
     private func setup() {
         tableView.register(UITableViewCell.self)
-        tableView.backgroundColor = UIColor.midnightBackground
+        tableView.backgroundColor = .milk
         tableView.delegate = self
         tableView.separatorStyle = .none
         navigationItem.titleView = selectorTitleView
@@ -71,7 +71,7 @@ extension DemoViewsTableViewController {
         let realIndexPath = IndexPath(row: indexPath.row, section: State.lastSelectedSection)
         cell.textLabel?.text = Sections.formattedName(for: realIndexPath)
         cell.textLabel?.font = .bodyRegular
-        cell.textLabel?.textColor = .milk
+        cell.textLabel?.textColor = .licorice
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
         return cell
@@ -85,21 +85,6 @@ extension DemoViewsTableViewController {
             present(viewController, animated: true)
         }
     }
-
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 50
-//    }
-//
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return Sections.formattedName(for: State.lastSelectedSection)
-//    }
-//
-//    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        if let headerView = view as? UITableViewHeaderFooterView {
-//            headerView.textLabel?.textColor = .midnightSectionHeader
-//            headerView.textLabel?.font = UIFont.detail
-//        }
-//    }
 }
 
 extension DemoViewsTableViewController: SelectorTitleViewDelegate {
