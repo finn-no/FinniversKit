@@ -7,6 +7,7 @@ protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
 class TweakingOptionsTableViewController: UIViewController {
     weak var delegate: TweakingOptionsTableViewControllerDelegate?
     private let options: [TweakingOption]
+    var selectedIndexPath: IndexPath?
 
     private lazy var tableView: UITableView = {
         let view = UITableView(withAutoLayout: true)
@@ -44,7 +45,8 @@ extension TweakingOptionsTableViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(TweakingOptionCell.self, for: indexPath)
         let option = options[indexPath.row]
-        cell.configure(withOption: option)
+        let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
+        cell.configure(withOption: option, isSelected: isSelected)
         return cell
     }
 }

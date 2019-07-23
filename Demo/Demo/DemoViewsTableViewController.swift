@@ -70,11 +70,10 @@ extension DemoViewsTableViewController {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
         let realIndexPath = IndexPath(row: indexPath.row, section: State.lastSelectedSection)
         cell.textLabel?.text = Sections.formattedName(for: realIndexPath)
-        cell.textLabel?.font = UIFont.bodyRegular
-        cell.textLabel?.textColor = UIColor.milk
+        cell.textLabel?.font = .bodyRegular
+        cell.textLabel?.textColor = .milk
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-
         return cell
     }
 
@@ -82,7 +81,6 @@ extension DemoViewsTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let realIndexPath = IndexPath(row: indexPath.row, section: State.lastSelectedSection)
         State.lastSelectedIndexPath = realIndexPath
-
         if let viewController = Sections.viewController(for: realIndexPath) {
             present(viewController, animated: true)
         }
@@ -109,6 +107,7 @@ extension DemoViewsTableViewController: SelectorTitleViewDelegate {
         let sections = Sections.allCases.map { $0.rawValue.uppercased() }
         let options = sections.map { TweakingOption(title: $0) }
         let tweakingController = TweakingOptionsTableViewController(options: options)
+        tweakingController.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
         tweakingController.delegate = self
         bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
         if let controller = bottomSheet {

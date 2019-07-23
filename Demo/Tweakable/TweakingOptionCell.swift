@@ -25,7 +25,7 @@ class TweakingOptionCell: UITableViewCell {
         setup()
     }
 
-    func configure(withOption option: TweakingOption) {
+    func configure(withOption option: TweakingOption, isSelected: Bool) {
         titleLabel.text = option.title
         descriptionLabel.text = option.description
 
@@ -33,6 +33,8 @@ class TweakingOptionCell: UITableViewCell {
             descriptionLabelBottomAnchor?.isActive = false
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing).isActive = true
         }
+
+        titleLabel.textColor = isSelected ? UIColor.primaryBlue : UIColor.licorice
     }
 }
 
