@@ -39,19 +39,6 @@ public struct ContainmentOptions: OptionSet {
             switch screens {
             default: return nil
             }
-        case .fullscreen:
-            guard let screens = FullscreenViews.allCases[safe: indexPath.row] else {
-                return nil
-            }
-            switch screens {
-            case .consentToggleView:
-                self = [.navigationController, .tabBarController]
-            case .consentActionView:
-                self = [.navigationController, .tabBarController]
-            case .addressView:
-                self = [.navigationController, .tabBarController]
-            default: return nil
-            }
         case .components:
             guard let screens = ComponentViews.allCases[safe: indexPath.row] else {
                 return nil
@@ -59,6 +46,13 @@ public struct ContainmentOptions: OptionSet {
             switch screens {
             case .bannerTransparency:
                 self = .bottomSheet
+            default: return nil
+            }
+        case .tableViewCells:
+            guard let screens = TableViewCellViews.allCases[safe: indexPath.row] else {
+                return nil
+            }
+            switch screens {
             default: return nil
             }
         case .recycling:
@@ -70,11 +64,17 @@ public struct ContainmentOptions: OptionSet {
                 self = .bottomSheet
             default: return nil
             }
-        case .tableViewCells:
-            guard let screens = TableViewCellViews.allCases[safe: indexPath.row] else {
+        case .fullscreen:
+            guard let screens = FullscreenViews.allCases[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
+            case .consentToggleView:
+                self = [.navigationController, .tabBarController]
+            case .consentActionView:
+                self = [.navigationController, .tabBarController]
+            case .addressView:
+                self = [.navigationController, .tabBarController]
             default: return nil
             }
         }
@@ -94,12 +94,12 @@ enum Sections: String, CaseIterable {
             return DnaViews.allCases.count
         case .components:
             return ComponentViews.allCases.count
+        case .tableViewCells:
+            return TableViewCellViews.allCases.count
         case .recycling:
             return RecyclingViews.allCases.count
         case .fullscreen:
             return FullscreenViews.allCases.count
-        case .tableViewCells:
-            return TableViewCellViews.allCases.count
         }
     }
 
@@ -117,12 +117,12 @@ enum Sections: String, CaseIterable {
             rawClassName = DnaViews.allCases[indexPath.row].rawValue
         case .components:
             rawClassName = ComponentViews.allCases[indexPath.row].rawValue
+        case .tableViewCells:
+            rawClassName = TableViewCellViews.allCases[indexPath.row].rawValue
         case .recycling:
             rawClassName = RecyclingViews.allCases[indexPath.row].rawValue
         case .fullscreen:
             rawClassName = FullscreenViews.allCases[indexPath.row].rawValue
-        case .tableViewCells:
-            rawClassName = TableViewCellViews.allCases[indexPath.row].rawValue
         }
 
         return rawClassName.capitalizingFirstLetter
@@ -145,14 +145,14 @@ enum Sections: String, CaseIterable {
         case .components:
             let selectedView = ComponentViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
+        case .tableViewCells:
+            let selectedView = TableViewCellViews.allCases[safe: indexPath.row]
+            viewController = selectedView?.viewController
         case .recycling:
             let selectedView = RecyclingViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .fullscreen:
             let selectedView = FullscreenViews.allCases[safe: indexPath.row]
-            viewController = selectedView?.viewController
-        case .tableViewCells:
-            let selectedView = TableViewCellViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         }
 

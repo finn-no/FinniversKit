@@ -143,6 +143,35 @@ public enum ComponentViews: String, CaseIterable {
     }
 }
 
+public enum TableViewCellViews: String, CaseIterable {
+    case basicCell
+    case basicCellVariations
+    case checkboxCell
+    case checkboxSubtitleCell
+    case heartSubtitleCell
+    case iconTitleCell
+    case remoteImageCell
+
+    public var viewController: UIViewController {
+        switch self {
+        case .basicCell:
+            return DemoViewController<BasicCellDemoView>(withDismissButton: true)
+        case .basicCellVariations:
+            return DemoViewController<BasicCellVariationsDemoView>(withDismissButton: true)
+        case .checkboxCell:
+            return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
+        case .checkboxSubtitleCell:
+            return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
+        case .heartSubtitleCell:
+            return DemoViewController<HeartSubtitleCellDemoView>(withDismissButton: true)
+        case .iconTitleCell:
+            return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
+        case .remoteImageCell:
+            return DemoViewController<RemoteImageCellDemoView>(withDismissButton: true)
+        }
+    }
+}
+
 public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
@@ -250,35 +279,6 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<ReceiptViewDemoView>()
         case .addressView:
             return DemoViewController<AddressViewDemoView>()
-        }
-    }
-}
-
-public enum TableViewCellViews: String, CaseIterable {
-    case basicCell
-    case basicCellVariations
-    case checkboxCell
-    case checkboxSubtitleCell
-    case heartSubtitleCell
-    case iconTitleCell
-    case remoteImageCell
-
-    public var viewController: UIViewController {
-        switch self {
-        case .basicCell:
-            return DemoViewController<BasicCellDemoView>(withDismissButton: true)
-        case .basicCellVariations:
-            return DemoViewController<BasicCellVariationsDemoView>(withDismissButton: true)
-        case .checkboxCell:
-            return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
-        case .checkboxSubtitleCell:
-            return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
-        case .heartSubtitleCell:
-            return DemoViewController<HeartSubtitleCellDemoView>(withDismissButton: true)
-        case .iconTitleCell:
-            return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
-        case .remoteImageCell:
-            return DemoViewController<RemoteImageCellDemoView>(withDismissButton: true)
         }
     }
 }
