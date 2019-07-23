@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController(rootViewController: DemoViewsTableViewController())
         navigationController.navigationBar.barTintColor = .milk
         navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.barStyle = .black
         navigationController.navigationBar.setBottomBorderColor(color: .sardine, height: 0.5)
 
         window?.rootViewController = navigationController

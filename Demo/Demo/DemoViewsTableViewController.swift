@@ -22,7 +22,7 @@ class DemoViewsTableViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) { fatalError("") }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -31,6 +31,7 @@ class DemoViewsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         setup()
     }
 
