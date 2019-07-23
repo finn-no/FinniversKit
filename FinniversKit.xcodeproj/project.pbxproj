@@ -141,6 +141,7 @@
 		44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587020213FA361009187BE /* LoginViewDefaultData.swift */; };
 		44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587022213FA361009187BE /* LoginViewDemoView.swift */; };
 		447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */; };
+		44849D2B22E7312100BB4454 /* SelectorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BE10B422E5F3A5002BB2E7 /* SelectorTitleView.swift */; };
 		44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */; };
 		44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */; };
 		44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */; };
@@ -174,7 +175,6 @@
 		44B94FE722E0AB6C0078A23C /* TweakingOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FE622E0AB6C0078A23C /* TweakingOptionCell.swift */; };
 		44B94FE922E0AB820078A23C /* TweakingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FE822E0AB820078A23C /* TweakingOption.swift */; };
 		44B94FEB22E0ABC50078A23C /* Tweakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FEA22E0ABC50078A23C /* Tweakable.swift */; };
-		44BE10B522E5F3A5002BB2E7 /* SelectorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BE10B422E5F3A5002BB2E7 /* SelectorTitleView.swift */; };
 		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
@@ -3145,7 +3145,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
 					14405C691FAFBD1800D03E04 = {
@@ -3347,9 +3347,7 @@
 				14C6F7DA212324D600A7230C /* FavoritesListViewDemoViewHelpers.swift in Sources */,
 				DA8EF1202164E2090028740C /* ConsentActionViewDemoView.swift in Sources */,
 				9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */,
-				CFCED8D722CCFCE80049A3A0 /* RemoteImageCellDemoView.swift in Sources */,
-				44BE10B522E5F3A5002BB2E7 /* SelectorTitleView.swift in Sources */,
-				44BE10B522E5F3A5002BB2E7 /* SelectorTitleView.swift in Sources */,
+				44849D2B22E7312100BB4454 /* SelectorTitleView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
 				43BACE6F21117DD20052114C /* ReviewViewDemoView.swift in Sources */,

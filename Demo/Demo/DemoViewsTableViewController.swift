@@ -61,18 +61,15 @@ class DemoViewsTableViewController: UITableViewController {
 // MARK: - UITableViewDelegate
 
 extension DemoViewsTableViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return Sections.allCases.count
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = Sections.allCases[section]
+        let section = Sections.allCases[State.lastSelectedSection]
         return section.numberOfItems
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
-        cell.textLabel?.text = Sections.formattedName(for: indexPath)
+        let realIndexPath = IndexPath(row: indexPath.row, section: State.lastSelectedSection)
+        cell.textLabel?.text = Sections.formattedName(for: realIndexPath)
         cell.textLabel?.font = UIFont.bodyRegular
         cell.textLabel?.textColor = UIColor.milk
         cell.selectionStyle = .none
@@ -83,36 +80,48 @@ extension DemoViewsTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        State.lastSelectedIndexPath = indexPath
+        let realIndexPath = IndexPath(row: indexPath.row, section: State.lastSelectedSection)
+        State.lastSelectedIndexPath = realIndexPath
 
-        if let viewController = Sections.viewController(for: indexPath) {
+        if let viewController = Sections.viewController(for: realIndexPath) {
             present(viewController, animated: true)
         }
     }
 
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Sections.formattedName(for: section)
-    }
-
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.textLabel?.textColor = .midnightSectionHeader
-            headerView.textLabel?.font = UIFont.detail
-        }
-    }
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 50
+//    }
+//
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return Sections.formattedName(for: State.lastSelectedSection)
+//    }
+//
+//    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        if let headerView = view as? UITableViewHeaderFooterView {
+//            headerView.textLabel?.textColor = .midnightSectionHeader
+//            headerView.textLabel?.font = UIFont.detail
+//        }
+//    }
 }
 
 extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
-        let tweakingController = TweakingOptionsTableViewController(options: tweakablePlaygroundView.tweakingOptions)
+        let sections = Sections.allCases.map { $0.rawValue.uppercased() }
+        let options = sections.map { TweakingOption(title: $0) }
+        let tweakingController = TweakingOptionsTableViewController(options: options)
         tweakingController.delegate = self
         bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
         if let controller = bottomSheet {
             present(controller, animated: true)
         }
+    }
+}
+
+extension DemoViewsTableViewController: TweakingOptionsTableViewControllerDelegate {
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath) {
+        bottomSheet?.state = .dismissed
+        State.lastSelectedSection = indexPath.row
+        selectorTitleView.update(title: Sections.formattedName(for: State.lastSelectedSection).uppercased())
+        tableView.reloadData()
     }
 }

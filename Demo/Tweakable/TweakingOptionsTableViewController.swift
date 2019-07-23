@@ -1,7 +1,7 @@
 import FinniversKit
 
 protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
-    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController)
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath)
 }
 
 class TweakingOptionsTableViewController: UIViewController {
@@ -55,7 +55,11 @@ extension TweakingOptionsTableViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let option = options[indexPath.row]
-        option.action()
-        delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
+        option.action?()
+        delegate?.tweakingOptionsTableViewController(self, didDismissWithIndexPath: indexPath)
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
 }
