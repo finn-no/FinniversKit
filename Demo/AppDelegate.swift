@@ -11,11 +11,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController(rootViewController: DemoViewsTableViewController())
-        navigationController.navigationBar.barStyle = .blackOpaque
-        navigationController.navigationBar.barTintColor = .red
+        navigationController.navigationBar.barTintColor = .midnightBackground
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.barStyle = .black
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-
         return true
     }
 }

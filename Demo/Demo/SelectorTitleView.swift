@@ -12,13 +12,14 @@ class SelectorTitleView: UIView {
         button.titleLabel?.font = UIFont.bodyStrong.withSize(17).scaledFont(forTextStyle: .footnote)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
 
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.callToActionButtonHighlightedBodyColor, for: .highlighted)
-        button.setTitleColor(.callToActionButtonHighlightedBodyColor, for: .selected)
-        button.setTitleColor(UIColor.primaryBlue.withAlphaComponent(0.5), for: .disabled)
+        button.setTitleColor(.secondaryBlue, for: .normal)
+        button.setTitleColor(UIColor.secondaryBlue.withAlphaComponent(0.5), for: .highlighted)
+        button.setTitleColor(UIColor.secondaryBlue.withAlphaComponent(0.5), for: .selected)
+        button.setTitleColor(UIColor.secondaryBlue.withAlphaComponent(0.5), for: .disabled)
 
         let spacing = .smallSpacing / 2
 
+        button.tintColor = .secondaryBlue
         button.semanticContentAttribute = .forceRightToLeft
         button.imageEdgeInsets = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: -spacing)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, leading: -spacing, bottom: 0, trailing: spacing)

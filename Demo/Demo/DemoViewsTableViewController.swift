@@ -7,11 +7,23 @@ import FinniversKit
 // MARK: - DemoViewsTableViewController
 
 class DemoViewsTableViewController: UITableViewController {
+    lazy var selectorTitleView: SelectorTitleView = {
+        let titleView = SelectorTitleView(withAutoLayout: true)
+        titleView.delegate = self
+        return titleView
+    }()
+
+    private var bottomSheet: BottomSheet?
+
     init() {
         super.init(style: .grouped)
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("") }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -38,12 +50,11 @@ class DemoViewsTableViewController: UITableViewController {
 
     private func setup() {
         tableView.register(UITableViewCell.self)
-        tableView.backgroundColor = UIColor.secondaryBlue
+        tableView.backgroundColor = UIColor.midnightBackground
         tableView.delegate = self
         tableView.separatorStyle = .none
-        let titleView = SelectorTitleView(withAutoLayout: true)
-        titleView.update(title: "DADA")
-        navigationItem.titleView = titleView
+        navigationItem.titleView = selectorTitleView
+        selectorTitleView.update(title: Sections.formattedName(for: State.lastSelectedSection).uppercased())
     }
 }
 
@@ -62,7 +73,7 @@ extension DemoViewsTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
         cell.textLabel?.text = Sections.formattedName(for: indexPath)
-        cell.textLabel?.font = UIFont.title3
+        cell.textLabel?.font = UIFont.bodyRegular
         cell.textLabel?.textColor = UIColor.milk
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
@@ -85,5 +96,23 @@ extension DemoViewsTableViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return Sections.formattedName(for: section)
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textColor = .midnightSectionHeader
+            headerView.textLabel?.font = UIFont.detail
+        }
+    }
+}
+
+extension DemoViewsTableViewController: SelectorTitleViewDelegate {
+    func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
+        let tweakingController = TweakingOptionsTableViewController(options: tweakablePlaygroundView.tweakingOptions)
+        tweakingController.delegate = self
+        bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
+        if let controller = bottomSheet {
+            present(controller, animated: true)
+        }
     }
 }

@@ -14,6 +14,7 @@ struct State {
     private static let lastSelectedIndexPathRowKey = "lastSelectedIndexPathRowKey"
     private static let lastSelectedIndexPathSectionKey = "lastSelectedIndexPathSectionKey"
     private static let lastCornerForTweakingButtonKey = "lastCornerForTweakingButtonKey"
+    private static let lastSelectedSectionKey = "lastSelectedSectionKey"
 
     static var lastSelectedIndexPath: IndexPath? {
         get {
@@ -55,6 +56,16 @@ struct State {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: lastCornerForTweakingButtonKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
+
+    static var lastSelectedSection: Int {
+        get {
+            return UserDefaults.standard.object(forKey: lastSelectedSectionKey) as? Int ?? 0
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: lastSelectedSectionKey)
             UserDefaults.standard.synchronize()
         }
     }
