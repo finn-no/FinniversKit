@@ -49,7 +49,7 @@ public struct ContainmentOptions: OptionSet {
             default: return nil
             }
         case .tableViewCells:
-            guard let screens = TableViewCellViews.allCases[safe: indexPath.row] else {
+            guard let screens = Cells.allCases[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
@@ -95,7 +95,7 @@ enum Sections: String, CaseIterable {
         case .components:
             return ComponentViews.allCases.count
         case .tableViewCells:
-            return TableViewCellViews.allCases.count
+            return Cells.allCases.count
         case .recycling:
             return RecyclingViews.allCases.count
         case .fullscreen:
@@ -118,7 +118,7 @@ enum Sections: String, CaseIterable {
         case .components:
             rawClassName = ComponentViews.allCases[indexPath.row].rawValue
         case .tableViewCells:
-            rawClassName = TableViewCellViews.allCases[indexPath.row].rawValue
+            rawClassName = Cells.allCases[indexPath.row].rawValue
         case .recycling:
             rawClassName = RecyclingViews.allCases[indexPath.row].rawValue
         case .fullscreen:
@@ -146,7 +146,7 @@ enum Sections: String, CaseIterable {
             let selectedView = ComponentViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .tableViewCells:
-            let selectedView = TableViewCellViews.allCases[safe: indexPath.row]
+            let selectedView = Cells.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .recycling:
             let selectedView = RecyclingViews.allCases[safe: indexPath.row]

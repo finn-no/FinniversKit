@@ -143,7 +143,7 @@ public enum ComponentViews: String, CaseIterable {
     }
 }
 
-public enum TableViewCellViews: String, CaseIterable {
+public enum Cells: String, CaseIterable {
     case basicCell
     case basicCellVariations
     case checkboxCell

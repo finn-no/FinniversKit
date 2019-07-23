@@ -7,7 +7,7 @@ import FinniversKit
 import Demo
 
 class TableViewCellsViewTests: FBSnapshotTestCase {
-    static var allViews = TableViewCellViews.allCases
+    static var allViews = Cells.allCases
 
     override func setUp() {
         super.setUp()
@@ -22,7 +22,7 @@ class TableViewCellsViewTests: FBSnapshotTestCase {
         }
     }
 
-    func snapshot(_ component: TableViewCellViews) {
+    func snapshot(_ component: Cells) {
         FBSnapshotVerifyView(component.viewController.view)
         TableViewCellsViewTests.allViews = TableViewCellsViewTests.allViews.filter { $0 != component }
     }
