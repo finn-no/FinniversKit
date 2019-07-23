@@ -15,6 +15,7 @@ class MessageFormView: UIView {
     private lazy var textView: TextView = {
         let textView = TextView(withAutoLayout: true)
         textView.delegate = self
+        textView.isScrollEnabled = true
         return textView
     }()
 

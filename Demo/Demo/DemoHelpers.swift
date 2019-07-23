@@ -39,6 +39,31 @@ public struct ContainmentOptions: OptionSet {
             switch screens {
             default: return nil
             }
+        case .components:
+            guard let screens = ComponentViews.allCases[safe: indexPath.row] else {
+                return nil
+            }
+            switch screens {
+            case .bannerTransparency:
+                self = .bottomSheet
+            default: return nil
+            }
+        case .cells:
+            guard let screens = Cells.allCases[safe: indexPath.row] else {
+                return nil
+            }
+            switch screens {
+            default: return nil
+            }
+        case .recycling:
+            guard let screens = RecyclingViews.allCases[safe: indexPath.row] else {
+                return nil
+            }
+            switch screens {
+            case .favoriteFoldersListView:
+                self = .bottomSheet
+            default: return nil
+            }
         case .fullscreen:
             guard let screens = FullscreenViews.allCases[safe: indexPath.row] else {
                 return nil
@@ -52,31 +77,6 @@ public struct ContainmentOptions: OptionSet {
                 self = [.navigationController, .tabBarController]
             default: return nil
             }
-        case .components:
-            guard let screens = ComponentViews.allCases[safe: indexPath.row] else {
-                return nil
-            }
-            switch screens {
-            case .bannerTransparency:
-                self = .bottomSheet
-            default: return nil
-            }
-        case .recycling:
-            guard let screens = RecyclingViews.allCases[safe: indexPath.row] else {
-                return nil
-            }
-            switch screens {
-            case .favoriteFoldersListView:
-                self = .bottomSheet
-            default: return nil
-            }
-        case .tableViewCells:
-            guard let screens = TableViewCellViews.allCases[safe: indexPath.row] else {
-                return nil
-            }
-            switch screens {
-            default: return nil
-            }
         }
     }
 }
@@ -84,9 +84,9 @@ public struct ContainmentOptions: OptionSet {
 enum Sections: String, CaseIterable {
     case dna
     case components
+    case cells
     case recycling
     case fullscreen
-    case tableViewCells
 
     var numberOfItems: Int {
         switch self {
@@ -94,12 +94,12 @@ enum Sections: String, CaseIterable {
             return DnaViews.allCases.count
         case .components:
             return ComponentViews.allCases.count
+        case .cells:
+            return Cells.allCases.count
         case .recycling:
             return RecyclingViews.allCases.count
         case .fullscreen:
             return FullscreenViews.allCases.count
-        case .tableViewCells:
-            return TableViewCellViews.allCases.count
         }
     }
 
@@ -117,12 +117,12 @@ enum Sections: String, CaseIterable {
             rawClassName = DnaViews.allCases[indexPath.row].rawValue
         case .components:
             rawClassName = ComponentViews.allCases[indexPath.row].rawValue
+        case .cells:
+            rawClassName = Cells.allCases[indexPath.row].rawValue
         case .recycling:
             rawClassName = RecyclingViews.allCases[indexPath.row].rawValue
         case .fullscreen:
             rawClassName = FullscreenViews.allCases[indexPath.row].rawValue
-        case .tableViewCells:
-            rawClassName = TableViewCellViews.allCases[indexPath.row].rawValue
         }
 
         return rawClassName.capitalizingFirstLetter
@@ -145,14 +145,14 @@ enum Sections: String, CaseIterable {
         case .components:
             let selectedView = ComponentViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
+        case .cells:
+            let selectedView = Cells.allCases[safe: indexPath.row]
+            viewController = selectedView?.viewController
         case .recycling:
             let selectedView = RecyclingViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .fullscreen:
             let selectedView = FullscreenViews.allCases[safe: indexPath.row]
-            viewController = selectedView?.viewController
-        case .tableViewCells:
-            let selectedView = TableViewCellViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         }
 
@@ -204,7 +204,7 @@ enum Sections: String, CaseIterable {
 
     var tabletDisplayMode: TabletDisplayMode {
         switch self {
-        case .dna, .components, .fullscreen, .tableViewCells:
+        case .dna, .components, .fullscreen, .cells:
             return .fullscreen
         case .recycling:
             return .fullscreen
