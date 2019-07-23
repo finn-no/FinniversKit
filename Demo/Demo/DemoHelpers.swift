@@ -48,7 +48,7 @@ public struct ContainmentOptions: OptionSet {
                 self = .bottomSheet
             default: return nil
             }
-        case .tableViewCells:
+        case .cells:
             guard let screens = Cells.allCases[safe: indexPath.row] else {
                 return nil
             }
@@ -84,9 +84,9 @@ public struct ContainmentOptions: OptionSet {
 enum Sections: String, CaseIterable {
     case dna
     case components
+    case cells
     case recycling
     case fullscreen
-    case tableViewCells
 
     var numberOfItems: Int {
         switch self {
@@ -94,7 +94,7 @@ enum Sections: String, CaseIterable {
             return DnaViews.allCases.count
         case .components:
             return ComponentViews.allCases.count
-        case .tableViewCells:
+        case .cells:
             return Cells.allCases.count
         case .recycling:
             return RecyclingViews.allCases.count
@@ -117,7 +117,7 @@ enum Sections: String, CaseIterable {
             rawClassName = DnaViews.allCases[indexPath.row].rawValue
         case .components:
             rawClassName = ComponentViews.allCases[indexPath.row].rawValue
-        case .tableViewCells:
+        case .cells:
             rawClassName = Cells.allCases[indexPath.row].rawValue
         case .recycling:
             rawClassName = RecyclingViews.allCases[indexPath.row].rawValue
@@ -145,7 +145,7 @@ enum Sections: String, CaseIterable {
         case .components:
             let selectedView = ComponentViews.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
-        case .tableViewCells:
+        case .cells:
             let selectedView = Cells.allCases[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .recycling:
@@ -204,7 +204,7 @@ enum Sections: String, CaseIterable {
 
     var tabletDisplayMode: TabletDisplayMode {
         switch self {
-        case .dna, .components, .fullscreen, .tableViewCells:
+        case .dna, .components, .fullscreen, .cells:
             return .fullscreen
         case .recycling:
             return .fullscreen
