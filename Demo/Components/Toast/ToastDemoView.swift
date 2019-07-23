@@ -39,6 +39,13 @@ public class ToastDemoView: UIView {
         return button
     }()
 
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        stackView.spacing = .mediumLargeSpacing
+        return stackView
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -50,78 +57,64 @@ public class ToastDemoView: UIView {
 
     private func setup() {
         let successToast = ToastView(style: .success)
-        let imageToast = ToastView(style: .sucesssWithImage)
-        let errorToast = ToastView(style: .error)
-        let successButtonToast = ToastView(style: .successButton)
-        let errorButtonToast = ToastView(style: .errorButton)
-        let successPromotedButtonToast = ToastView(style: .successButton, buttonStyle: .promoted)
-        let errorPromotedButtonToast = ToastView(style: .errorButton, buttonStyle: .promoted)
-
         successToast.text = "Success"
+
+        let attributedTextSuccessToast = ToastView(style: .success)
+        attributedTextSuccessToast.attributedText = {
+            let attributedString = NSMutableAttributedString(string: "What do we want? ", attributes: [.font: UIFont.body, .foregroundColor: UIColor.licorice])
+            attributedString.append(NSAttributedString(string: "Attributed strings!", attributes: [.font: UIFont.bodyStrong, .foregroundColor: UIColor.licorice]))
+            return attributedString
+        }()
+
+        let imageToast = ToastView(style: .sucesssWithImage)
         imageToast.text = "Image success"
+
+        let errorToast = ToastView(style: .error)
         errorToast.text = "Error"
 
+        let successButtonToast = ToastView(style: .successButton)
         successButtonToast.text = "Action success"
         successButtonToast.buttonText = "Action"
+        successButtonToast.delegate = delegate
 
-        successPromotedButtonToast.text = "Action success"
-        successPromotedButtonToast.buttonText = "Action"
-
+        let errorButtonToast = ToastView(style: .errorButton)
         errorButtonToast.text = "Action error"
         errorButtonToast.buttonText = "Undo"
+        errorButtonToast.delegate = delegate
 
+        let successPromotedButtonToast = ToastView(style: .successButton, buttonStyle: .promoted)
+        successPromotedButtonToast.text = "Action success"
+        successPromotedButtonToast.buttonText = "Action"
+        successPromotedButtonToast.delegate = delegate
+
+        let errorPromotedButtonToast = ToastView(style: .errorButton, buttonStyle: .promoted)
         errorPromotedButtonToast.text = "Action error"
         errorPromotedButtonToast.buttonText = "Undo"
-
-        successButtonToast.delegate = delegate
-        successPromotedButtonToast.delegate = delegate
-        errorButtonToast.delegate = delegate
         errorPromotedButtonToast.delegate = delegate
 
-        addSubview(successToast)
-        addSubview(imageToast)
-        addSubview(errorToast)
-        addSubview(successButtonToast)
-        addSubview(successPromotedButtonToast)
-        addSubview(errorButtonToast)
-        addSubview(errorPromotedButtonToast)
+        stackView.addArrangedSubview(successToast)
+        stackView.addArrangedSubview(attributedTextSuccessToast)
+        stackView.addArrangedSubview(imageToast)
+        stackView.addArrangedSubview(errorToast)
+        stackView.addArrangedSubview(successButtonToast)
+        stackView.addArrangedSubview(errorButtonToast)
+        stackView.addArrangedSubview(successPromotedButtonToast)
+        stackView.addArrangedSubview(errorPromotedButtonToast)
+
+        addSubview(stackView)
         addSubview(bottomToastButton)
 
         addSubview(containerView)
         containerView.addSubview(containedToastButton)
 
         NSLayoutConstraint.activate([
-            successToast.leadingAnchor.constraint(equalTo: leadingAnchor),
-            successToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            successToast.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-
-            imageToast.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageToast.topAnchor.constraint(equalTo: successToast.bottomAnchor, constant: .mediumLargeSpacing),
-
-            errorToast.leadingAnchor.constraint(equalTo: leadingAnchor),
-            errorToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            errorToast.topAnchor.constraint(equalTo: imageToast.bottomAnchor, constant: .mediumLargeSpacing),
-
-            successButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor),
-            successButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            successButtonToast.topAnchor.constraint(equalTo: errorToast.bottomAnchor, constant: .mediumLargeSpacing),
-
-            successPromotedButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor),
-            successPromotedButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            successPromotedButtonToast.topAnchor.constraint(equalTo: successButtonToast.bottomAnchor, constant: .mediumLargeSpacing),
-
-            errorButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor),
-            errorButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            errorButtonToast.topAnchor.constraint(equalTo: successPromotedButtonToast.bottomAnchor, constant: .mediumLargeSpacing),
-
-            errorPromotedButtonToast.leadingAnchor.constraint(equalTo: leadingAnchor),
-            errorPromotedButtonToast.trailingAnchor.constraint(equalTo: trailingAnchor),
-            errorPromotedButtonToast.topAnchor.constraint(equalTo: errorButtonToast.bottomAnchor, constant: .mediumLargeSpacing),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             bottomToastButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             bottomToastButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            bottomToastButton.topAnchor.constraint(equalTo: errorPromotedButtonToast.bottomAnchor, constant: .mediumLargeSpacing),
+            bottomToastButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumLargeSpacing),
 
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),

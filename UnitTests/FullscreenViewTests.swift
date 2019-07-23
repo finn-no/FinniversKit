@@ -109,4 +109,8 @@ class FullscreenViewTests: FBSnapshotTestCase {
     func testReceiptView() {
         snapshot(.receiptView)
     }
+
+    func testAddressView() {
+        snapshot(.addressView)
+    }
 }
