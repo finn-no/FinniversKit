@@ -21,7 +21,7 @@ struct FavoriteFoldersFactory {
         var favorites = [FavoriteFolder]()
 
         for (index, (title, imagePath)) in zip(titles, imagePaths).enumerated() {
-            let isSelected = [0,1].contains(index)
+            let isSelected = [0, 1].contains(index)
             favorites.append(FavoriteFolder(id: index, title: title, imagePath: imagePath, isSelected: isSelected))
         }
 
