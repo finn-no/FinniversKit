@@ -20,6 +20,12 @@ class TweakingOptionsTableViewController: UIViewController {
         self.options = options
         super.init(nibName: nil, bundle: nil)
         setup()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .DidChangeUserInterfaceStyle, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .DidChangeUserInterfaceStyle, object: nil)
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -32,6 +38,27 @@ class TweakingOptionsTableViewController: UIViewController {
         view.addSubview(tableView)
         tableView.fillInSuperview()
         tableView.register(TweakingOptionCell.self)
+        updateColors()
+    }
+
+    @objc private func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
+        updateColors()
+        tableView.reloadData()
+    }
+
+    private func updateColors() {
+        let interfaceBackgroundColor: UIColor
+        let separatorColor: UIColor
+        switch State.currentUserInterfaceStyle {
+        case .light:
+            interfaceBackgroundColor = .milk
+            separatorColor = .sardine
+        case .dark:
+            interfaceBackgroundColor = .midnightBackground
+            separatorColor = .midnightSectionSeparator
+        }
+        tableView.separatorColor = separatorColor
+        tableView.backgroundColor = interfaceBackgroundColor
     }
 }
 
