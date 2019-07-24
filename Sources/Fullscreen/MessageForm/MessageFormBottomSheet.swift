@@ -5,11 +5,14 @@
 import Foundation
 
 public protocol MessageFormBottomSheetDelegate: AnyObject {
-    func messageFormBottomSheetDidCancel(_ form: MessageFormBottomSheet)
+    /// Called when the "send"-button was tapped
     func messageFormBottomSheet(_ form: MessageFormBottomSheet,
                                 didFinishWithText text: String,
                                 templateState: MessageFormTemplateState,
                                 template: MessageFormTemplate?)
+
+    /// Called after the MessageFormBottomSheet disappeared from view
+    func messageFormBottomSheetDidDismiss(_ form: MessageFormBottomSheet)
 }
 
 public class MessageFormBottomSheet: BottomSheet {
@@ -105,7 +108,7 @@ extension MessageFormBottomSheet: BottomSheetDelegate {
     }
 
     public func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction) {
-        messageFormDelegate?.messageFormBottomSheetDidCancel(self)
+        messageFormDelegate?.messageFormBottomSheetDidDismiss(self)
     }
 }
 
