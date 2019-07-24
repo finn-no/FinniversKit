@@ -9,7 +9,7 @@ class MessageFormDemoPresenter {
 }
 
 extension MessageFormDemoPresenter: MessageFormBottomSheetDelegate {
-    func messageFormBottomSheetDidCancel(_ form: MessageFormBottomSheet) { }
+    func messageFormBottomSheetDidDismiss(_ form: MessageFormBottomSheet) { }
 
     func messageFormBottomSheet(_ form: MessageFormBottomSheet, didFinishWithText text: String, templateState: MessageFormTemplateState, template: MessageFormTemplate?) {
         var templateString = ""
