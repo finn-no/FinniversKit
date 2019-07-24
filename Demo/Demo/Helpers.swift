@@ -63,7 +63,7 @@ struct State {
 
     static var lastSelectedSection: Int {
         get {
-            return UserDefaults.standard.object(forKey: lastSelectedSectionKey) as? Int ?? 0
+            return UserDefaults.standard.integer(forKey: lastSelectedSectionKey)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: lastSelectedSectionKey)
