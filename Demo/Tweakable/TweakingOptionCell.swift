@@ -29,6 +29,7 @@ class TweakingOptionCell: UITableViewCell {
         titleLabel.text = option.title
         descriptionLabel.text = option.description
         backgroundColor = .clear
+        selectionStyle = .none
 
         if descriptionLabel.text == nil {
             descriptionLabelBottomAnchor?.isActive = false
