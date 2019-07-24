@@ -14,10 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController(rootViewController: DemoViewsTableViewController())
         navigationController.navigationBar.isTranslucent = false
         navigationController.navigationBar.setBottomBorderColor(color: .sardine, height: 0.5)
-        updateColors()
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
+        updateColors()
         NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .DidChangeUserInterfaceStyle, object: nil)
 
         return true
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tintColor = .secondaryBlue
             barStyle = .black
         }
-        
+
         if let navigationController = window?.rootViewController as? UINavigationController {
             navigationController.navigationBar.barTintColor = barTintColor
             navigationController.navigationBar.tintColor = tintColor

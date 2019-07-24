@@ -73,7 +73,7 @@ struct State {
 
     static var currentUserInterfaceStyle: UserInterfaceStyle {
         get {
-            let styleRawValue = UserDefaults.standard.object(forKey: currentUserInterfaceStyleKey) as? Int ?? 0
+            let styleRawValue = UserDefaults.standard.integer(forKey: currentUserInterfaceStyleKey)
             return UserInterfaceStyle(rawValue: styleRawValue) ?? .light
         }
         set {
