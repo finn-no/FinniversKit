@@ -17,21 +17,18 @@ class DemoViewsTableViewController: UITableViewController {
 
     init() {
         super.init(style: .grouped)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .DidChangeUserInterfaceStyle, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .DidChangeUserInterfaceStyle, object: nil)
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("") }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNeedsStatusBarAppearanceUpdate()
         setup()
     }
 
@@ -49,13 +46,41 @@ class DemoViewsTableViewController: UITableViewController {
         }
     }
 
+    @objc func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
+        updateColors()
+        tableView.reloadData()
+    }
+
     private func setup() {
         tableView.register(UITableViewCell.self)
-        tableView.backgroundColor = .milk
         tableView.delegate = self
         tableView.separatorStyle = .none
         navigationItem.titleView = selectorTitleView
-        selectorTitleView.update(title: Sections.formattedName(for: State.lastSelectedSection).uppercased())
+        selectorTitleView.title = Sections.formattedName(for: State.lastSelectedSection).uppercased()
+        updateColors()
+    }
+
+    private func updateMoonButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle.image, style: .done, target: self, action: #selector(moonTapped))
+    }
+
+    @objc private func moonTapped() {
+        State.currentUserInterfaceStyle = State.currentUserInterfaceStyle == .light ? .dark : .light
+        NotificationCenter.default.post(name: .DidChangeUserInterfaceStyle, object: nil)
+    }
+
+    private func updateColors() {
+        let interfaceBackgroundColor: UIColor
+        switch State.currentUserInterfaceStyle {
+        case .light:
+            interfaceBackgroundColor = .milk
+        case .dark:
+            interfaceBackgroundColor = .midnightBackground
+        }
+        tableView.backgroundColor = interfaceBackgroundColor
+        selectorTitleView.updateColors()
+        updateMoonButton()
+        setNeedsStatusBarAppearanceUpdate()
     }
 }
 
@@ -72,9 +97,18 @@ extension DemoViewsTableViewController {
         let realIndexPath = IndexPath(row: indexPath.row, section: State.lastSelectedSection)
         cell.textLabel?.text = Sections.formattedName(for: realIndexPath)
         cell.textLabel?.font = .bodyRegular
-        cell.textLabel?.textColor = .licorice
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
+
+        let cellTextColor: UIColor
+        switch State.currentUserInterfaceStyle {
+        case .light:
+            cellTextColor = .licorice
+        case .dark:
+            cellTextColor = .milk
+        }
+        cell.textLabel?.textColor = cellTextColor
+
         return cell
     }
 
@@ -106,7 +140,7 @@ extension DemoViewsTableViewController: TweakingOptionsTableViewControllerDelega
     func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath) {
         bottomSheet?.state = .dismissed
         State.lastSelectedSection = indexPath.row
-        selectorTitleView.update(title: Sections.formattedName(for: State.lastSelectedSection).uppercased())
+        selectorTitleView.title = Sections.formattedName(for: State.lastSelectedSection).uppercased()
         tableView.reloadData()
     }
 }

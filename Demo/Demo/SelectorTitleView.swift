@@ -12,14 +12,8 @@ class SelectorTitleView: UIView {
         button.titleLabel?.font = UIFont.bodyStrong.withSize(17).scaledFont(forTextStyle: .footnote)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
 
-        button.setTitleColor(.primaryBlue, for: .normal)
-        button.setTitleColor(UIColor.primaryBlue.withAlphaComponent(0.5), for: .highlighted)
-        button.setTitleColor(UIColor.primaryBlue.withAlphaComponent(0.5), for: .selected)
-        button.setTitleColor(UIColor.primaryBlue.withAlphaComponent(0.5), for: .disabled)
-
         let spacing = .smallSpacing / 2
 
-        button.tintColor = .primaryBlue
         button.semanticContentAttribute = .forceRightToLeft
         button.imageEdgeInsets = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: -spacing)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, leading: -spacing, bottom: 0, trailing: spacing)
@@ -44,11 +38,33 @@ class SelectorTitleView: UIView {
         button.fillInSuperview()
     }
 
-    public func update(title: String) {
-        button.setTitle(title, for: .normal)
+    var title: String? {
+        didSet {
+            button.setTitle(title, for: .normal)
+        }
     }
 
     @objc private func handleButtonTap() {
         delegate?.selectorTitleViewDidSelectButton(self)
+    }
+
+    func updateColors() {
+        let buttonColor: UIColor
+        let interfaceBackgroundColor: UIColor
+        switch State.currentUserInterfaceStyle {
+        case .light:
+            buttonColor = .primaryBlue
+            interfaceBackgroundColor = .milk
+        case .dark:
+            buttonColor = .secondaryBlue
+            interfaceBackgroundColor = .midnightBackground
+        }
+
+        button.setTitleColor(buttonColor, for: .normal)
+        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
+        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)
+        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .disabled)
+        button.tintColor = buttonColor
+        backgroundColor = interfaceBackgroundColor
     }
 }
