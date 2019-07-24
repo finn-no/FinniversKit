@@ -5,11 +5,17 @@
 import UIKit
 
 public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
+    public enum Style {
+        case regular
+        case edit
+        case disabled
+    }
 
     // MARK: - Private properties
 
     private let titleLabelDefaultFont: UIFont = .body
     private let titleLabelSelectedFont: UIFont = .bodyStrong
+    private var previousSeparatorInset: CGFloat = 0
 
     private lazy var checkmarkImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -46,6 +52,15 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         checkmarkImageView.backgroundColor = .primaryBlue
+
+        let selectedBackgroundView = UIView()
+        self.selectedBackgroundView = selectedBackgroundView
+
+        if self.isEditing {
+            selectedBackgroundView.backgroundColor = .clear
+        } else {
+            selectedBackgroundView.backgroundColor = .defaultCellSelectedBackgroundColor
+        }
     }
 
     public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
@@ -55,14 +70,34 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     // MARK: - Public
 
-    public func configure(with viewModel: FavoriteFolderViewModel) {
+    public func configure(with viewModel: FavoriteFolderViewModel, style: Style) {
         super.configure(with: viewModel)
         stackViewTrailingAnchorConstraint.isActive = false
 
-        if viewModel.isSelected {
-            titleLabel.font = titleLabelSelectedFont
-            checkmarkImageView.isHidden = false
+        let editSeparateInset = UIEdgeInsets.leadingInset((.largeSpacing + .smallSpacing) * 2 + viewModel.imageViewWidth)
+
+        switch style {
+        case .regular:
+            contentView.alpha = 1
+            separatorInset = .leadingInset(.mediumLargeSpacing * 2 + viewModel.imageViewWidth)
+            remoteImageLeadingConstraint.constant = .mediumLargeSpacing
+
+            if viewModel.isSelected {
+                titleLabel.font = titleLabelSelectedFont
+                checkmarkImageView.isHidden = false
+            }
+        case .edit:
+            contentView.alpha = 1
+            separatorInset = editSeparateInset
+            remoteImageLeadingConstraint.constant = .mediumLargeSpacing
+            checkmarkImageView.isHidden = true
+        case .disabled:
+            contentView.alpha = 0.5
+            separatorInset = editSeparateInset
+            remoteImageLeadingConstraint.constant = 54
+            checkmarkImageView.isHidden = true
         }
+
         setNeedsLayout()
     }
 

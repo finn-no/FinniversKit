@@ -62,6 +62,7 @@ public class FavoriteFoldersListView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.keyboardDismissMode = .onDrag
+        tableView.allowsMultipleSelectionDuringEditing = true
         tableView.register(AddFavoriteFolderViewCell.self)
         tableView.register(FavoriteFolderSelectableViewCell.self)
         return tableView
@@ -80,6 +81,7 @@ public class FavoriteFoldersListView: UIView {
         return emptyView
     }()
 
+    private lazy var searchBarTop = searchBar.topAnchor.constraint(equalTo: topAnchor)
     private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
 
     private lazy var footerHeight: CGFloat = {
@@ -124,7 +126,7 @@ public class FavoriteFoldersListView: UIView {
         addSubview(emptyView)
 
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: topAnchor),
+            searchBarTop,
             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
 
@@ -165,7 +167,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
         switch section {
         case .addButton:
-            return isSearchActive ? 0 : 1
+            return isSearchActive || tableView.isEditing ? 0 : 1
         case .folders:
             return dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0
         }
@@ -190,7 +192,16 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             cell.dataSource = self
 
             if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
-                cell.configure(with: viewModel)
+
+                let style: FavoriteFolderSelectableViewCell.Style
+
+                if tableView.isEditing {
+                    style = indexPath.row == 0 ? .disabled : .edit
+                } else {
+                    style = .regular
+                }
+
+                cell.configure(with: viewModel, style: style)
             }
 
             return cell
@@ -202,12 +213,26 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
 extension FavoriteFoldersListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !tableView.isEditing else {
+            return
+        }
+
         tableView.deselectRow(at: indexPath, animated: false)
 
         guard let section = Section(rawValue: indexPath.section) else { return }
 
         switch section {
         case .addButton:
+            footerViewTop.constant = 0
+            searchBarTop.constant = -self.searchBar.frame.height
+
+            UIView.animate(withDuration: 0.3, animations: {
+                self.layoutIfNeeded()
+            }, completion: { _ in
+                self.tableView.setEditing(true, animated: true)
+                self.tableView.reloadData()
+            })
+
             delegate?.favoriteFoldersListViewDidSelectAddButton(self)
         case .folders:
             delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
@@ -226,6 +251,17 @@ extension FavoriteFoldersListView: UITableViewDelegate {
         }
 
         cell.loadImage()
+    }
+
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard let section = Section(rawValue: indexPath.section) else { return false }
+
+        switch section {
+        case .addButton:
+            return false
+        case .folders:
+            return indexPath.row != 0
+        }
     }
 }
 
@@ -271,6 +307,10 @@ extension FavoriteFoldersListView: RemoteImageTableViewCellDataSource {
 
 extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard !tableView.isEditing else {
+            return
+        }
+
         searchBar.updateShadow(using: scrollView)
 
         let offset = scrollView.contentOffset.y * 1.5
