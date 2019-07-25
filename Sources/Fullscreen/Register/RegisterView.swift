@@ -154,10 +154,6 @@ public class RegisterView: UIView {
 
     // MARK: - Setup
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -206,7 +202,6 @@ public class RegisterView: UIView {
     fileprivate func adjustKeyboardDown() {
         scrollView.contentInset = .zero
         scrollView.contentOffset = CGPoint(x: 0, y: 0)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     private func setup() {
