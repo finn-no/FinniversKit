@@ -84,7 +84,7 @@ class DemoViewsTableViewController: UITableViewController {
 
 extension DemoViewsTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = Sections.allCases[State.lastSelectedSection]
+        let section = Sections.items[State.lastSelectedSection]
         return section.numberOfItems
     }
 
@@ -120,7 +120,7 @@ extension DemoViewsTableViewController {
 
 extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
-        let sections = Sections.allCases.map { $0.rawValue.uppercased() }
+        let sections = Sections.items.map { $0.rawValue.uppercased() }
         let options = sections.map { TweakingOption(title: $0) }
         let tweakingController = TweakingOptionsTableViewController(options: options)
         tweakingController.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
