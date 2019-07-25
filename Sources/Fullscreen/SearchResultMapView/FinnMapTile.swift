@@ -12,10 +12,10 @@ enum FinnMapType: String, CaseIterable {
 
 public class FinnMapTile: MKTileOverlay {
 
-    private static let baseUrl = "http://maptiles.finn.no"
+    private static let baseUrl = "https://tile.openstreetmap.org/"
 
     private static func templateUrl(forMapType mapType: FinnMapType) -> String {
-        return "\(FinnMapTile.baseUrl)/tileService/1.0.3/\(mapType.rawValue)/{z}/{x}/{y}"
+        return "\(FinnMapTile.baseUrl)/{z}/{x}/{y}.png"
     }
 
     convenience init(withMapType mapType: FinnMapType = .map) {

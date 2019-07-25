@@ -209,7 +209,7 @@ public enum FullscreenViews: String, CaseIterable {
     public var viewController: UIViewController {
         switch self {
         case .searchResultMapView:
-            return DemoViewController<SearchResultMapViewDemoView>()
+            return SearchResultMapViewDemoViewController()
         case .frontPageView:
             return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:

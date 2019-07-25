@@ -4,17 +4,15 @@
 
 import MapKit
 
+public protocol SearchResultMapViewDelegate: AnyObject {
+    func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView)
+}
+
 public final class SearchResultMapView: UIView {
 
     private var didSetupView = false
 
-    public var model: SearchResultMapViewModel? {
-        didSet {
-            if let region = model?.defaultRegion {
-                mapView.setRegion(region, animated: false)
-            }
-        }
-    }
+    public weak var delegate: SearchResultMapViewDelegate?
 
     private lazy var mapView: MKMapView = {
         let view = MKMapView()
@@ -45,6 +43,10 @@ public final class SearchResultMapView: UIView {
             didSetupView = true
         }
     }
+    
+    public func configure(withDefaultRegion region: MKCoordinateRegion) {
+        mapView.setRegion(region, animated: false)
+    }
 
     // MARK: - Setup
 
@@ -67,7 +69,7 @@ public final class SearchResultMapView: UIView {
 
 extension SearchResultMapView: MapSettingsButtonDelegate {
     public func mapSettingsButtonDidSelectChangeMapTypeButton(_ view: MapSettingsButton) {
-
+        delegate?.searchResultMapViewDidSelectChangeMapTypeButton(self)
     }
 
     public func mapSettingsButtonDidSelectCenterMapButton(_ view: MapSettingsButton) {
