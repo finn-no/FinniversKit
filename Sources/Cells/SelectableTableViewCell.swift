@@ -13,6 +13,8 @@ open class SelectableTableViewCell: UITableViewCell {
         setup()
     }
 
+    required public init?(coder aDecoder: NSCoder) { fatalError() }
+
     // MARK: - Setup
 
     private func setup() {
