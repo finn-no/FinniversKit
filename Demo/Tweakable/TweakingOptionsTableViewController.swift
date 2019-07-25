@@ -13,6 +13,7 @@ class TweakingOptionsTableViewController: UIViewController {
         let view = UITableView(withAutoLayout: true)
         view.dataSource = self
         view.delegate = self
+        view.separatorColor = .clear
         return view
     }()
 
@@ -44,16 +45,12 @@ class TweakingOptionsTableViewController: UIViewController {
 
     private func updateColors() {
         let interfaceBackgroundColor: UIColor
-        let separatorColor: UIColor
         switch State.currentUserInterfaceStyle {
         case .light:
             interfaceBackgroundColor = .milk
-            separatorColor = .sardine
         case .dark:
             interfaceBackgroundColor = .midnightBackground
-            separatorColor = .midnightSectionSeparator
         }
-        tableView.separatorColor = separatorColor
         tableView.backgroundColor = interfaceBackgroundColor
     }
 }
