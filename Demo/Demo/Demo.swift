@@ -28,6 +28,7 @@ public enum ComponentViews: String, CaseIterable {
     case dialogue
     case easterEggButton
     case cogWheelButton
+    case mapSettingsButton
     case label
     case ribbon
     case textField
@@ -73,6 +74,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<ReviewButtonViewDemoView>()
         case .cogWheelButton:
             return DemoViewController<CogWheelButtonDemoView>()
+        case .mapSettingsButton:
+            return DemoViewController<MapSettingsButtonDemoView>()
         case .label:
             return DemoViewController<LabelDemoView>()
         case .ribbon:

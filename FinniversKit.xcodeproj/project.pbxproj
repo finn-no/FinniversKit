@@ -235,6 +235,8 @@
 		91846C4A22E735D80001410F /* SearchResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4922E735D80001410F /* SearchResultMapView.swift */; };
 		91846C4D22E736BF0001410F /* SearchResultViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4C22E736BF0001410F /* SearchResultViewDemoView.swift */; };
 		91846C5022E7426B0001410F /* FinnMapTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4E22E73E220001410F /* FinnMapTile.swift */; };
+		91846C5A22E856D50001410F /* MapSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C5922E856D50001410F /* MapSettingsButton.swift */; };
+		91846C5D22E858150001410F /* MapSettingsButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C5C22E858150001410F /* MapSettingsButtonDemoView.swift */; };
 		9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D9749A60B9BFD125F483 /* FeedbackView.swift */; };
 		9A37DACD70E4383536D5312B /* FeedbackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */; };
 		9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */; };
@@ -673,6 +675,8 @@
 		91846C4922E735D80001410F /* SearchResultMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapView.swift; sourceTree = "<group>"; };
 		91846C4C22E736BF0001410F /* SearchResultViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewDemoView.swift; sourceTree = "<group>"; };
 		91846C4E22E73E220001410F /* FinnMapTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinnMapTile.swift; sourceTree = "<group>"; };
+		91846C5922E856D50001410F /* MapSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsButton.swift; sourceTree = "<group>"; };
+		91846C5C22E858150001410F /* MapSettingsButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsButtonDemoView.swift; sourceTree = "<group>"; };
 		9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
 		9A37D9749A60B9BFD125F483 /* FeedbackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchorExtensions.swift; sourceTree = "<group>"; };
@@ -1405,6 +1409,7 @@
 		4447F6651FDB2B110033DBC1 /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				91846C5822E856AE0001410F /* MapSettings */,
 				CF848C2A21C7E0780086530E /* CogWheel */,
 				CF15D9AF215B93B8004F5F02 /* EasterEggButton */,
 				CF848C2921C7E0690086530E /* Button */,
@@ -1815,6 +1820,22 @@
 				91846C4C22E736BF0001410F /* SearchResultViewDemoView.swift */,
 			);
 			path = SearchResultMapView;
+			sourceTree = "<group>";
+		};
+		91846C5822E856AE0001410F /* MapSettings */ = {
+			isa = PBXGroup;
+			children = (
+				91846C5922E856D50001410F /* MapSettingsButton.swift */,
+			);
+			path = MapSettings;
+			sourceTree = "<group>";
+		};
+		91846C5B22E858020001410F /* MapSettings */ = {
+			isa = PBXGroup;
+			children = (
+				91846C5C22E858150001410F /* MapSettingsButtonDemoView.swift */,
+			);
+			path = MapSettings;
 			sourceTree = "<group>";
 		};
 		9A37D8C01205DC426B502C5F /* Feedback */ = {
@@ -2331,6 +2352,7 @@
 		CF8F021E21DCC6A0004C4042 /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				91846C5B22E858020001410F /* MapSettings */,
 				CF8F022121DCC6C4004C4042 /* Button */,
 				CF8F021F21DCC6AD004C4042 /* CogWheel */,
 				CF8F022021DCC6BB004C4042 /* EasterEggButton */,
@@ -3303,6 +3325,7 @@
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
 				CF8F024821DE3813004C4042 /* RefreshControlDemo.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
+				91846C5D22E858150001410F /* MapSettingsButtonDemoView.swift in Sources */,
 				DAC7DCB0215386E7004602A3 /* ConsentToggleViewDemoView.swift in Sources */,
 				CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
@@ -3508,6 +3531,7 @@
 				F26852F321FEFA9C000978C8 /* UserAdsListHeaderViewModel.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
 				89A7A63F2253387A0053D33B /* NativeAdvertView.swift in Sources */,
+				91846C5A22E856D50001410F /* MapSettingsButton.swift in Sources */,
 				CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */,
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
