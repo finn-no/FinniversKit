@@ -107,10 +107,28 @@ enum Sections: String, CaseIterable {
         }
     }
 
-    static func formattedName(for section: Int) -> String {
+    static func title(for section: Int) -> String {
         let section = Sections.items[section]
         let rawClassName = section.rawValue
         return rawClassName
+    }
+
+    static func formattedNames(for section: Int) -> [String] {
+        let section = Sections.items[section]
+        let names: [String]
+        switch section {
+        case .dna:
+            names = DnaViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        case .components:
+            names = ComponentViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        case .cells:
+            names = Cells.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        case .recycling:
+            names = RecyclingViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        case .fullscreen:
+            names = FullscreenViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        }
+        return names
     }
 
     static func formattedName(for indexPath: IndexPath) -> String {

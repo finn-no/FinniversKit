@@ -15,6 +15,8 @@ class DemoViewsTableViewController: UITableViewController {
 
     private var bottomSheet: BottomSheet?
 
+    private var indexAndValues = [String: [String]]()
+
     init() {
         super.init(style: .grouped)
 
@@ -26,6 +28,7 @@ class DemoViewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        evaluateIndexAndValues()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,12 +50,23 @@ class DemoViewsTableViewController: UITableViewController {
         tableView.reloadData()
     }
 
+    private func evaluateIndexAndValues() {
+        for name in Sections.formattedNames(for: State.lastSelectedSection) {
+            let firstLetter = String(name.prefix(1))
+            var values = [String]()
+            if let existingValues = indexAndValues[firstLetter] {
+                values = existingValues
+            }
+            indexAndValues[firstLetter] = values
+        }
+    }
+
     private func setup() {
         tableView.register(UITableViewCell.self)
         tableView.delegate = self
         tableView.separatorStyle = .none
         navigationItem.titleView = selectorTitleView
-        selectorTitleView.title = Sections.formattedName(for: State.lastSelectedSection).uppercased()
+        selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
         updateColors()
     }
 
@@ -116,6 +130,10 @@ extension DemoViewsTableViewController {
             present(viewController, animated: true)
         }
     }
+
+//    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+//
+//    }
 }
 
 extension DemoViewsTableViewController: SelectorTitleViewDelegate {
@@ -136,7 +154,7 @@ extension DemoViewsTableViewController: TweakingOptionsTableViewControllerDelega
     func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath) {
         bottomSheet?.state = .dismissed
         State.lastSelectedSection = indexPath.row
-        selectorTitleView.title = Sections.formattedName(for: State.lastSelectedSection).uppercased()
+        selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
         tableView.reloadData()
     }
 }
