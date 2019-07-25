@@ -151,6 +151,7 @@ public enum Cells: String, CaseIterable {
     case heartSubtitleCell
     case iconTitleCell
     case remoteImageCell
+    case selectableCell
 
     public var viewController: UIViewController {
         switch self {
@@ -168,6 +169,8 @@ public enum Cells: String, CaseIterable {
             return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
         case .remoteImageCell:
             return DemoViewController<RemoteImageCellDemoView>(withDismissButton: true)
+        case .selectableCell:
+            return DemoViewController<SelectableCellDemoView>(withDismissButton: true)
         }
     }
 }
