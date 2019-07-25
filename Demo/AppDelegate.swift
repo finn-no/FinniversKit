@@ -7,13 +7,13 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    var hairlineView: UIView?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         let navigationController = UINavigationController(rootViewController: DemoViewsTableViewController())
         navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.setBottomBorderColor(color: .sardine, height: 0.5)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
@@ -22,45 +22,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+}
 
-    @objc func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
+extension AppDelegate {
+    @objc private func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
         updateColors()
     }
 
-    func updateColors() {
+    private func updateColors() {
+        let separatorColor: UIColor
         let barTintColor: UIColor
         let tintColor: UIColor
         let barStyle: UIBarStyle
         switch State.currentUserInterfaceStyle {
         case .light:
+            separatorColor = .sardine
             barTintColor = .milk
             tintColor = .primaryBlue
             barStyle = .default
         case .dark:
+            separatorColor = .midnightSectionSeparator
             barTintColor = .midnightBackground
             tintColor = .secondaryBlue
             barStyle = .black
         }
 
         if let navigationController = window?.rootViewController as? UINavigationController {
+            setBottomBorderColor(navigationBar: navigationController.navigationBar, color: separatorColor, height: 0.5)
             navigationController.navigationBar.barTintColor = barTintColor
             navigationController.navigationBar.tintColor = tintColor
             navigationController.navigationBar.barStyle = barStyle
         }
+    }
+
+    private func setBottomBorderColor(navigationBar: UINavigationBar, color: UIColor, height: CGFloat) {
+        if hairlineView == nil {
+            let bottomBorderRect = CGRect(x: 0, y: navigationBar.frame.height, width: navigationBar.frame.width, height: height)
+            let view = UIView(frame: bottomBorderRect)
+            navigationBar.addSubview(view)
+            hairlineView = view
+        }
+
+        hairlineView?.backgroundColor = color
     }
 }
 
 public extension Bundle {
     static var playgroundBundle: Bundle {
         return Bundle(for: AppDelegate.self)
-    }
-}
-
-extension UINavigationBar {
-    func setBottomBorderColor(color: UIColor, height: CGFloat) {
-        let bottomBorderRect = CGRect(x: 0, y: frame.height, width: frame.width, height: height)
-        let bottomBorderView = UIView(frame: bottomBorderRect)
-        bottomBorderView.backgroundColor = color
-        addSubview(bottomBorderView)
     }
 }
