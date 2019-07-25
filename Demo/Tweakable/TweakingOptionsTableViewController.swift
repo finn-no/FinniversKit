@@ -24,10 +24,6 @@ class TweakingOptionsTableViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .DidChangeUserInterfaceStyle, object: nil)
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .DidChangeUserInterfaceStyle, object: nil)
-    }
-
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         fatalError()
     }

@@ -21,10 +21,6 @@ class DemoViewsTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .DidChangeUserInterfaceStyle, object: nil)
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .DidChangeUserInterfaceStyle, object: nil)
-    }
-
     required init?(coder aDecoder: NSCoder) { fatalError("") }
 
     override func viewDidLoad() {
