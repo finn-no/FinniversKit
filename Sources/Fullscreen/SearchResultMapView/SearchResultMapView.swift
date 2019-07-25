@@ -6,6 +6,8 @@ import MapKit
 
 public protocol SearchResultMapViewDelegate: AnyObject {
     func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView)
+    func searchResultMapViewWillRenderAnnotation(_ view: SearchResultMapView, annotation: MKAnnotation) -> MKAnnotationView?
+    func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView)
 }
 
 public final class SearchResultMapView: UIView {
@@ -45,12 +47,26 @@ public final class SearchResultMapView: UIView {
         mapView.setRegion(region, animated: false)
     }
 
-    public func setMapOverlay(overlay newOverlay: MKTileOverlay) {
+    public func setMapOverlay(_ newOverlay: MKTileOverlay) {
         mapView.addOverlay(newOverlay)
     }
 
-    public func clearMapOverlay(overlay: MKTileOverlay) {
+    public func clearMapOverlay(_ overlay: MKTileOverlay) {
         mapView.removeOverlay(overlay)
+    }
+
+    public func addAnnotation(_ annotation: MKAnnotation) {
+        mapView.addAnnotation(annotation)
+    }
+
+    public func clearAnnotations() {
+        mapView.removeAnnotations(mapView.annotations)
+    }
+
+    public func centerMap(location: CLLocationCoordinate2D, regionDistance: Double, animated: Bool) {
+        let meters: CLLocationDistance = regionDistance
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: meters, longitudinalMeters: meters)
+        mapView.setRegion(region, animated: animated)
     }
 
     // MARK: - Setup
@@ -80,7 +96,7 @@ extension SearchResultMapView: MapSettingsButtonDelegate {
     }
 
     public func mapSettingsButtonDidSelectCenterMapButton(_ view: MapSettingsButton) {
-
+        centerMap(location: mapView.userLocation.coordinate, regionDistance: 1000, animated: true)
     }
 }
 
@@ -92,6 +108,16 @@ extension SearchResultMapView: MKMapViewDelegate {
         }
 
         return MKOverlayRenderer(overlay: overlay)
+    }
+
+    public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else { return nil }
+
+        return delegate?.searchResultMapViewWillRenderAnnotation(self, annotation: annotation)
+    }
+
+    public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        delegate?.searchResultMapViewDidSelectAnnotationView(self, annotationView: view)
     }
 
 }

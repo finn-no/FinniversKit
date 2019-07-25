@@ -7,7 +7,10 @@ import MapKit
 
 public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
-    private var didSetupView = false
+    private let demoAnnotations = [
+        SearchResultMapViewDemoAnnotation(coordinate: CLLocationCoordinate2D(latitude: 59.9458, longitude: 10.7800), isCluster: true),
+        SearchResultMapViewDemoAnnotation(coordinate: CLLocationCoordinate2D(latitude: 59.9458, longitude: 10.7850), isCluster: false),
+    ]
 
     private lazy var demoTile: MKTileOverlay = {
         let tile = MKTileOverlay(urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png")
@@ -23,10 +26,11 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
     private lazy var searchResultMapView: SearchResultMapView = {
         let view = SearchResultMapView(withAutoLayout: true)
-        view.configure(withDefaultRegion: defaultRegion, andOverlay: demoTile)
         view.delegate = self
         return view
     }()
+
+    private var didSetupView = false
 
     // MARK: - Setup
 
@@ -38,6 +42,11 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
     private func setup() {
         view.backgroundColor = .milk
         view.addSubview(searchResultMapView)
+
+        let location = CLLocationCoordinate2D(latitude: 59.9458, longitude: 10.7800)
+        searchResultMapView.configure(withDefaultRegion: defaultRegion, andOverlay: demoTile)
+        searchResultMapView.centerMap(location: location, regionDistance: 1000, animated: true)
+        demoAnnotations.forEach { searchResultMapView.addAnnotation($0) }
 
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
@@ -52,11 +61,11 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
     // MARK: - Private
 
     private func addMapOverlay() {
-        searchResultMapView.setMapOverlay(overlay: demoTile)
+        searchResultMapView.setMapOverlay(demoTile)
     }
 
     private func clearMapOverlay() {
-        searchResultMapView.clearMapOverlay(overlay: demoTile)
+        searchResultMapView.clearMapOverlay(demoTile)
     }
 
 }
@@ -82,4 +91,31 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
         present(alert, animated: true, completion: nil)
     }
+
+    public func searchResultMapViewWillRenderAnnotation(_ view: SearchResultMapView, annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? SearchResultMapViewDemoAnnotation {
+            var marker: MKAnnotationView
+
+            if annotation.isCluster {
+                marker = MKAnnotationView(annotation: annotation, reuseIdentifier: "clusterPOI")
+                marker.image = UIImage(named: .verified)
+            } else {
+                marker = MKAnnotationView(annotation: annotation, reuseIdentifier: "POI")
+                marker.image = UIImage(named: .pin)
+
+            }
+
+            marker.centerOffset = CGPoint(x: 0.5, y: 1.0)
+            return marker
+        } else {
+            return nil
+        }
+    }
+
+    public func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView) {
+        if let view = annotationView.annotation as? SearchResultMapViewDemoAnnotation {
+            print("Did press annotation: \(view.id)")
+        }
+    }
+
 }
