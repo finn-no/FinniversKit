@@ -220,7 +220,7 @@ extension Array {
 }
 
 extension Foundation.Notification.Name {
-    static let DidChangeUserInterfaceStyle = Foundation.Notification.Name("DidChangeUserInterfaceStyle")
+    static let didChangeUserInterfaceStyle = Foundation.Notification.Name("didChangeUserInterfaceStyle")
 }
 
 @objc enum UserInterfaceStyle: Int {

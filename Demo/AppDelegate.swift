@@ -7,7 +7,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var hairlineView: UIView?
+    private var hairlineView: UIView?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -18,18 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         updateColors()
-        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .DidChangeUserInterfaceStyle, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .didChangeUserInterfaceStyle, object: nil)
 
         return true
     }
 }
 
-extension AppDelegate {
-    @objc private func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
+private extension AppDelegate {
+    @objc func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
         updateColors()
     }
 
-    private func updateColors() {
+    func updateColors() {
         let separatorColor: UIColor
         let barTintColor: UIColor
         let tintColor: UIColor
@@ -55,7 +55,7 @@ extension AppDelegate {
         }
     }
 
-    private func setBottomBorderColor(navigationBar: UINavigationBar, color: UIColor, height: CGFloat) {
+    func setBottomBorderColor(navigationBar: UINavigationBar, color: UIColor, height: CGFloat) {
         if hairlineView == nil {
             let bottomBorderRect = CGRect(x: 0, y: navigationBar.frame.height, width: navigationBar.frame.width, height: height)
             let view = UIView(frame: bottomBorderRect)
