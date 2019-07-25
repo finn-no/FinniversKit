@@ -31,10 +31,6 @@ public class AdReporterDemoView: UIView {
         setupSubviews()
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
     private func setupSubviews() {
         addSubview(adReporterView)
         NSLayoutConstraint.activate([
