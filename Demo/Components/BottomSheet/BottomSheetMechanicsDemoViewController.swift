@@ -186,7 +186,6 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
         tapGesture.numberOfTapsRequired = 2
-        tapGesture.numberOfTouchesRequired = 2
         view.addGestureRecognizer(tapGesture)
     }
 
