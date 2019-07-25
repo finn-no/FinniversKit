@@ -4,12 +4,13 @@
 
 import FinniversKit
 
-public class SearchResultDemoView: UIView {
+public class SearchResultMapViewDemoView: UIView {
 
     private var didSetupView = false
 
     private lazy var searchResultMapView: SearchResultMapView = {
         let view = SearchResultMapView()
+        view.model = SearchResultMapViewDefaultData()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -28,8 +29,6 @@ public class SearchResultDemoView: UIView {
     private func setup() {
         addSubview(searchResultMapView)
         searchResultMapView.fillInSuperview()
-//        frontPageView.fillInSuperview()
-//        frontPageView.reloadData()
     }
 
 }

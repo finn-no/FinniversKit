@@ -8,17 +8,24 @@ public final class SearchResultMapView: UIView {
 
     private var didSetupView = false
 
-    private var regionOfNorway = MKCoordinateRegion.init(
-        center: CLLocationCoordinate2D.init(latitude: 66.149068058495473, longitude: 17.653576306638673),
-        span: MKCoordinateSpan.init(latitudeDelta: 19.853012316209828, longitudeDelta: 28.124998591005721)
-    )
+    public var model: SearchResultMapViewModel? {
+        didSet {
+            if let region = model?.defaultRegion {
+                mapView.setRegion(region, animated: false)
+            }
+        }
+    }
 
     private lazy var mapView: MKMapView = {
         let view = MKMapView()
         view.delegate = self
+        view.isRotateEnabled = false
+        view.isPitchEnabled = false
+        view.showsUserLocation = true
+
         // TOOD: Set theese with open func configure
         view.addOverlay(FinnMapTile(withMapType: .map), level: .aboveLabels)
-        view.setRegion(regionOfNorway, animated: false)
+
         return view
     }()
 
