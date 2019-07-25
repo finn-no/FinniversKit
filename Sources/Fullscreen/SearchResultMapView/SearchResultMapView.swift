@@ -68,6 +68,8 @@ public final class SearchResultMapView: UIView {
             ])
     }
 
+    // MARK: - Private
+
 }
 
 // MARK: - Extensions
@@ -78,7 +80,7 @@ extension SearchResultMapView: MapSettingsButtonDelegate {
     }
 
     public func mapSettingsButtonDidSelectCenterMapButton(_ view: MapSettingsButton) {
-        
+
     }
 }
 

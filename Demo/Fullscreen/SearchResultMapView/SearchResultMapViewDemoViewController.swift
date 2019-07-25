@@ -5,7 +5,7 @@
 import FinniversKit
 import MapKit
 
-public class SearchResultMapViewDemoViewController: UIViewController {
+public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
     private var didSetupView = false
 
@@ -30,7 +30,7 @@ public class SearchResultMapViewDemoViewController: UIViewController {
 
     // MARK: - Setup
 
-    public override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
@@ -48,7 +48,7 @@ public class SearchResultMapViewDemoViewController: UIViewController {
                 ])
         }
     }
-    
+
     // MARK: - Private
 
     private func addMapOverlay() {
