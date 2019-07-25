@@ -54,4 +54,8 @@ class TableViewCellsViewTests: FBSnapshotTestCase {
     func testRemoteImageCell() {
         snapshot(.remoteImageCell)
     }
+
+    func testSelectableCell() {
+        snapshot(.selectableCell)
+    }
 }
