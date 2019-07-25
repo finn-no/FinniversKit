@@ -4,7 +4,7 @@
 
 import UIKit
 
-open class BasicTableViewCell: UITableViewCell {
+open class BasicTableViewCell: SelectableTableViewCell {
 
     // MARK: - Public properties
 
@@ -105,10 +105,6 @@ open class BasicTableViewCell: UITableViewCell {
     // MARK: - Private methods
 
     private func setup() {
-        let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = .defaultCellSelectedBackgroundColor
-        self.selectedBackgroundView = selectedBackgroundView
-
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
 
