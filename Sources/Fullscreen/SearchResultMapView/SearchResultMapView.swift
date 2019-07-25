@@ -20,10 +20,6 @@ public final class SearchResultMapView: UIView {
         view.isRotateEnabled = false
         view.isPitchEnabled = false
         view.showsUserLocation = true
-
-        // TOOD: Set theese with open func configure
-        view.addOverlay(FinnMapTile(withMapType: .map), level: .aboveLabels)
-
         return view
     }()
 
@@ -43,9 +39,18 @@ public final class SearchResultMapView: UIView {
             didSetupView = true
         }
     }
-    
-    public func configure(withDefaultRegion region: MKCoordinateRegion) {
+
+    public func configure(withDefaultRegion region: MKCoordinateRegion, andOverlay overlay: MKTileOverlay) {
+        mapView.addOverlay(overlay)
         mapView.setRegion(region, animated: false)
+    }
+
+    public func setMapOverlay(overlay newOverlay: MKTileOverlay) {
+        mapView.addOverlay(newOverlay)
+    }
+
+    public func clearMapOverlay(overlay: MKTileOverlay) {
+        mapView.removeOverlay(overlay)
     }
 
     // MARK: - Setup
@@ -73,7 +78,7 @@ extension SearchResultMapView: MapSettingsButtonDelegate {
     }
 
     public func mapSettingsButtonDidSelectCenterMapButton(_ view: MapSettingsButton) {
-
+        
     }
 }
 

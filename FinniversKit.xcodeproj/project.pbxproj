@@ -234,7 +234,6 @@
 		89A7A64A22536E200053D33B /* NativeContentSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A64922536E200053D33B /* NativeContentSettingsButton.swift */; };
 		91846C4A22E735D80001410F /* SearchResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4922E735D80001410F /* SearchResultMapView.swift */; };
 		91846C4D22E736BF0001410F /* SearchResultMapViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4C22E736BF0001410F /* SearchResultMapViewDemoViewController.swift */; };
-		91846C5022E7426B0001410F /* FinnMapTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4E22E73E220001410F /* FinnMapTile.swift */; };
 		91846C5A22E856D50001410F /* MapSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C5922E856D50001410F /* MapSettingsButton.swift */; };
 		91846C5D22E858150001410F /* MapSettingsButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C5C22E858150001410F /* MapSettingsButtonDemoView.swift */; };
 		9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D9749A60B9BFD125F483 /* FeedbackView.swift */; };
@@ -674,7 +673,6 @@
 		89A7A64922536E200053D33B /* NativeContentSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContentSettingsButton.swift; sourceTree = "<group>"; };
 		91846C4922E735D80001410F /* SearchResultMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapView.swift; sourceTree = "<group>"; };
 		91846C4C22E736BF0001410F /* SearchResultMapViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewController.swift; sourceTree = "<group>"; };
-		91846C4E22E73E220001410F /* FinnMapTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinnMapTile.swift; sourceTree = "<group>"; };
 		91846C5922E856D50001410F /* MapSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsButton.swift; sourceTree = "<group>"; };
 		91846C5C22E858150001410F /* MapSettingsButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsButtonDemoView.swift; sourceTree = "<group>"; };
 		9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
@@ -1809,7 +1807,6 @@
 			isa = PBXGroup;
 			children = (
 				91846C4922E735D80001410F /* SearchResultMapView.swift */,
-				91846C4E22E73E220001410F /* FinnMapTile.swift */,
 			);
 			path = SearchResultMapView;
 			sourceTree = "<group>";
@@ -3547,7 +3544,6 @@
 				08796D9321CB982F0023A441 /* SelectableTableViewCellViewModel.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,
 				8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */,
-				91846C5022E7426B0001410F /* FinnMapTile.swift in Sources */,
 				55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */,
 				44D912612077AC8A00486848 /* RoundedRectangleView.swift in Sources */,
 				432CE09D2112DBC500F01EC5 /* ReviewTextHeader.swift in Sources */,
