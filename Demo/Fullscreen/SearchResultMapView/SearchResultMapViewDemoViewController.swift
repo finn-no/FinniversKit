@@ -93,23 +93,7 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
     }
 
     public func searchResultMapViewWillRenderAnnotation(_ view: SearchResultMapView, annotation: MKAnnotation) -> MKAnnotationView? {
-        if let annotation = annotation as? SearchResultMapViewDemoAnnotation {
-            var marker: MKAnnotationView
-
-            if annotation.isCluster {
-                marker = MKAnnotationView(annotation: annotation, reuseIdentifier: "clusterPOI")
-                marker.image = UIImage(named: .verified)
-            } else {
-                marker = MKAnnotationView(annotation: annotation, reuseIdentifier: "POI")
-                marker.image = UIImage(named: .pin)
-
-            }
-
-            marker.centerOffset = CGPoint(x: 0.5, y: 1.0)
-            return marker
-        } else {
-            return nil
-        }
+        return nil
     }
 
     public func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView) {
@@ -117,5 +101,10 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
             print("Did press annotation: \(view.id)")
         }
     }
+
+    public func searchResultMapViewRegionDidChange(_ view: SearchResultMapView) {
+        
+    }
+
 
 }

@@ -8,6 +8,7 @@ public protocol SearchResultMapViewDelegate: AnyObject {
     func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView)
     func searchResultMapViewWillRenderAnnotation(_ view: SearchResultMapView, annotation: MKAnnotation) -> MKAnnotationView?
     func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView)
+    func searchResultMapViewRegionDidChange(_ view: SearchResultMapView)
 }
 
 public final class SearchResultMapView: UIView {
@@ -118,6 +119,10 @@ extension SearchResultMapView: MKMapViewDelegate {
 
     public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         delegate?.searchResultMapViewDidSelectAnnotationView(self, annotationView: view)
+    }
+
+    public func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        delegate?.searchResultMapViewRegionDidChange(self)
     }
 
 }
