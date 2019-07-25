@@ -17,12 +17,12 @@ public protocol FavoriteFoldersListViewDataSource: AnyObject {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, viewModelAtIndex index: Int) -> FavoriteFolderViewModel
     func favoriteFoldersListView(
         _ view: FavoriteFoldersListView,
-        loadImageForModel model: RemoteImageTableViewCellViewModel,
+        loadImageWithPath imagePath: String,
         completion: @escaping ((UIImage?) -> Void)
     )
     func favoriteFoldersListView(
         _ view: FavoriteFoldersListView,
-        cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel
+        cancelLoadingImageWithPath imagePath: String
     )
 }
 
