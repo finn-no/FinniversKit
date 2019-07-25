@@ -7,7 +7,7 @@ import FinniversKit
 // MARK: - DemoViewsTableViewController
 
 class DemoViewsTableViewController: UITableViewController {
-    lazy var selectorTitleView: SelectorTitleView = {
+    private lazy var selectorTitleView: SelectorTitleView = {
         let titleView = SelectorTitleView(withAutoLayout: true)
         titleView.delegate = self
         return titleView
@@ -20,7 +20,7 @@ class DemoViewsTableViewController: UITableViewController {
     init() {
         super.init(style: .grouped)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .DidChangeUserInterfaceStyle, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .didChangeUserInterfaceStyle, object: nil)
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("") }
@@ -45,7 +45,7 @@ class DemoViewsTableViewController: UITableViewController {
         }
     }
 
-    @objc func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
+    @objc private func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
         updateColors()
         evaluateIndexAndValues()
         tableView.reloadData()
@@ -66,7 +66,7 @@ class DemoViewsTableViewController: UITableViewController {
 
     @objc private func moonTapped() {
         State.currentUserInterfaceStyle = State.currentUserInterfaceStyle == .light ? .dark : .light
-        NotificationCenter.default.post(name: .DidChangeUserInterfaceStyle, object: nil)
+        NotificationCenter.default.post(name: .didChangeUserInterfaceStyle, object: nil)
     }
 
     private func updateColors() {
