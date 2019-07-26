@@ -5,6 +5,10 @@
 import UIKit
 import MapKit
 
+public protocol MapOverlayDataSource: AnyObject {
+    var mapTileOverlay: MKTileOverlay? { get }
+}
+
 public protocol AddressViewDelegate: AnyObject {
     func addressViewDidSelectCopyButton(_ addressView: AddressView)
     func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView)
@@ -13,6 +17,14 @@ public protocol AddressViewDelegate: AnyObject {
 }
 
 public class AddressView: UIView {
+    weak public var mapDataSource: MapOverlayDataSource? {
+        didSet {
+            if let mapTileOverlay = mapDataSource?.mapTileOverlay {
+                mapView.addOverlay(mapTileOverlay, level: .aboveLabels)
+            }
+        }
+    }
+
     private lazy var mapTypeSegmentControl: UISegmentedControl = {
         let control = UISegmentedControl(withAutoLayout: true)
         control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
