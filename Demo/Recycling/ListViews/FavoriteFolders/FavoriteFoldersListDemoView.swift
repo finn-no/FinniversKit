@@ -22,19 +22,16 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
     }()
 
     lazy var tweakingOptions: [TweakingOption] = {
-        var options = [TweakingOption]()
-
-        options.append(TweakingOption(title: "Toggle mode", description: nil) { [weak self] in
-            self?.allFavorites = FavoriteFoldersFactory.create()
-            self?.view.setEditing(false)
-        })
-
-        options.append(TweakingOption(title: "Edit mode", description: nil) { [weak self] in
-            self?.allFavorites = FavoriteFoldersFactory.create(withSelectedItems: false)
-            self?.view.setEditing(true)
-        })
-
-        return options
+        return [
+            TweakingOption(title: "Toggle mode", description: nil) { [weak self] in
+                self?.allFavorites = FavoriteFoldersFactory.create()
+                self?.view.setEditing(false)
+            },
+            TweakingOption(title: "Edit mode", description: nil) { [weak self] in
+                self?.allFavorites = FavoriteFoldersFactory.create(withSelectedItems: false)
+                self?.view.setEditing(true)
+            }
+        ]
     }()
 
     // MARK: - Init
