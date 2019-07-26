@@ -118,7 +118,14 @@ public class FavoriteFoldersListView: UIView {
     }
 
     public func reloadRow(at index: Int, with animation: UITableView.RowAnimation = .none) {
-        let indexPath = IndexPath(row: index, section: Section.folders.rawValue)
+        let section = Section.folders.rawValue
+
+        guard index >= 0 && index < tableView(tableView, numberOfRowsInSection: section) else {
+            assertionFailure("Trying to reload cell at invalid index path")
+            return
+        }
+
+        let indexPath = IndexPath(row: index, section: section)
         tableView.reloadRows(at: [indexPath], with: animation)
     }
 
