@@ -106,11 +106,18 @@ public class FavoriteFoldersListView: UIView {
         showEmptyViewIfNeeded()
         UIView.animate(withDuration: 0.35, animations: { [weak self] in
             guard let self = self else { return }
-            self.footerViewTop.constant = self.isSearchActive ? -self.footerHeight : 0
-            self.layoutIfNeeded()
+            if !self.tableView.isEditing {
+                self.footerViewTop.constant = self.isSearchActive ? -self.footerHeight : 0
+                self.layoutIfNeeded()
+            }
         })
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
+    }
+
+    public func reloadRow(at index: Int, with animation: UITableView.RowAnimation = .none) {
+        let indexPath = IndexPath(row: index, section: Section.folders.rawValue)
+        tableView.reloadRows(at: [indexPath], with: animation)
     }
 
     public func setEditing(_ editing: Bool) {
@@ -119,7 +126,6 @@ public class FavoriteFoldersListView: UIView {
         }
 
         tableView.setEditing(editing, animated: true)
-
         footerViewTop.constant = 0
         searchBarTop.constant = editing ? -searchBar.frame.height : 0
 

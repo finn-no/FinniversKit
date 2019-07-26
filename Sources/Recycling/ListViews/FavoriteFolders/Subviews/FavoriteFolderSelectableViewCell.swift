@@ -59,6 +59,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     public override func willTransition(to state: UITableViewCell.StateMask) {
         super.willTransition(to: state)
+
         bringSubviewToFront(editModeView)
         leftCheckmarkView.isHidden = true
         rightCheckmarkView.isHidden = true

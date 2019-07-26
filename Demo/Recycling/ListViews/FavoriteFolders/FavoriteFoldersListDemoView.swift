@@ -4,9 +4,8 @@
 
 import FinniversKit
 
-class FavoriteFoldersListDemoView: UIView, Tweakable {
+final class FavoriteFoldersListDemoView: UIView, Tweakable {
     private var allFavorites = FavoriteFoldersFactory.create() { didSet { filterFolders() } }
-
     private var filteredFavorites = [FavoriteFolder]()
     private var filterString = ""
     private let viewModel = FavoriteFoldersListViewModel(
@@ -72,8 +71,9 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
         let folderId = filteredFavorites[index].id
         guard let folderIndex = allFavorites.firstIndex(where: { $0.id == folderId }) else { return }
         allFavorites[folderIndex].isSelected.toggle()
-        view.reloadData()
+        view.reloadRow(at: index)
     }
+
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView) {}
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String) {}
 
