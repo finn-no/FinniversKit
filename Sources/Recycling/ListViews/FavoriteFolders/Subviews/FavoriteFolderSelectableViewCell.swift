@@ -42,11 +42,13 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         editModeView.backgroundColor = selected ? .defaultCellSelectedBackgroundColor : .milk
+        updateCheckmarks()
     }
 
     public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
         editModeView.backgroundColor = highlighted ? .defaultCellSelectedBackgroundColor : .milk
+        updateCheckmarks()
     }
 
     public override func prepareForReuse() {
@@ -59,15 +61,12 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     public override func willTransition(to state: UITableViewCell.StateMask) {
         super.willTransition(to: state)
-
         bringSubviewToFront(editModeView)
-        leftCheckmarkView.isHidden = true
-        rightCheckmarkView.isHidden = true
     }
 
     // MARK: - Public
 
-    public func configure(with viewModel: FavoriteFolderViewModel, isEditable: Bool) {
+    public func configure(with viewModel: FavoriteFolderViewModel, isEditing: Bool, isEditable: Bool) {
         super.configure(with: viewModel)
 
         stackViewTrailingAnchorConstraint.isActive = false
@@ -78,10 +77,8 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             titleLabel.font = titleLabelSelectedFont
         }
 
-        leftCheckmarkView.isSelected = viewModel.isSelected
+        selectCheckmarks(viewModel.isSelected)
         leftCheckmarkView.isHidden = !isEditing || !isEditable
-
-        rightCheckmarkView.isSelected = viewModel.isSelected
         rightCheckmarkView.isHidden = isEditing
 
         contentView.alpha = isEditing && !isEditable ? 0.5 : 1
@@ -114,6 +111,16 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             leftCheckmarkView.centerYAnchor.constraint(equalTo: editModeView.centerYAnchor),
         ])
     }
+
+    private func selectCheckmarks( _ selected: Bool) {
+        leftCheckmarkView.isSelected = selected
+        rightCheckmarkView.isSelected = selected
+    }
+
+    private func updateCheckmarks() {
+        leftCheckmarkView.updateSelectionStyles()
+        rightCheckmarkView.updateSelectionStyles()
+    }
 }
 
 // MARK: - Private types
@@ -135,8 +142,7 @@ private final class CheckmarkView: UIView {
 
     var isSelected: Bool = false {
         didSet {
-            backgroundColor = isSelected ? .primaryBlue : .milk
-            layer.borderWidth = isBordered && !isSelected ? 1 : 0
+            updateSelectionStyles()
         }
     }
 
@@ -161,5 +167,11 @@ private final class CheckmarkView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.width / 2
+    }
+
+    func updateSelectionStyles() {
+        backgroundColor = isSelected ? .primaryBlue : .clear
+        layer.borderWidth = isBordered && !isSelected ? 1 : 0
+        imageView.isHidden = !isSelected
     }
 }

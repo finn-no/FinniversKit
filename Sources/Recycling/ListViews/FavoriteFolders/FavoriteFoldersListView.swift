@@ -237,7 +237,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             cell.dataSource = self
 
             if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
-                cell.configure(with: viewModel, isEditable: indexPath.row != 0)
+                cell.configure(with: viewModel, isEditing: tableView.isEditing, isEditable: indexPath.row != 0)
             }
 
             return cell

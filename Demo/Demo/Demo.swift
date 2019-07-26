@@ -205,9 +205,12 @@ public enum RecyclingViews: String, CaseIterable {
             return DemoViewController<NotificationsListViewDemoView>()
         case .favoriteFoldersListView:
             let viewController = DemoViewController<FavoriteFoldersListDemoView>(constrainToBottomSafeArea: false)
+            viewController.title = "Favoritter"
+
             let navigationController = UINavigationController(rootViewController: viewController)
             navigationController.navigationBar.barTintColor = .milk
             navigationController.navigationBar.shadowImage = UIImage()
+
             return navigationController
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
