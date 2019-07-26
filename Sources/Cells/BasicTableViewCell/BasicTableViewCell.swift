@@ -105,6 +105,8 @@ open class BasicTableViewCell: UITableViewCell {
     // MARK: - Private methods
 
     private func setup() {
+        setDefaultSelectedBackgound()
+
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)
 
