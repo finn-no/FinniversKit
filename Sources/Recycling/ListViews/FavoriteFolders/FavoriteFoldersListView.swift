@@ -114,14 +114,18 @@ public class FavoriteFoldersListView: UIView {
     }
 
     public func setEditing(_ editing: Bool) {
+        guard tableView.isEditing != editing else {
+            return
+        }
+
+        tableView.setEditing(editing, animated: true)
+
         footerViewTop.constant = 0
         searchBarTop.constant = editing ? -searchBar.frame.height : 0
 
         UIView.animate(withDuration: 0.1) { [weak self] in
             self?.layoutIfNeeded()
         }
-
-        tableView.setEditing(editing, animated: true)
 
         if #available(iOS 11.0, *) {
             tableView.performBatchUpdates({ [weak self] in
@@ -236,12 +240,6 @@ extension FavoriteFoldersListView: UITableViewDelegate {
 
         switch section {
         case .addButton:
-            setEditing(true)
-
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
-                self.setEditing(false)
-            }
-
             delegate?.favoriteFoldersListViewDidSelectAddButton(self)
         case .folders:
             delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
@@ -317,11 +315,11 @@ extension FavoriteFoldersListView: RemoteImageTableViewCellDataSource {
 
 extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.updateShadow(using: scrollView)
+
         guard !tableView.isEditing else {
             return
         }
-
-        searchBar.updateShadow(using: scrollView)
 
         let offset = scrollView.contentOffset.y * 1.5
         let minOffset = FavoriteFoldersListView.estimatedRowHeight * 1.5

@@ -4,25 +4,40 @@
 
 import FinniversKit
 
-final class FavoriteFoldersListDemoView: UIView {
+class FavoriteFoldersListDemoView: UIView, Tweakable {
+    private var allFavorites = FavoriteFoldersFactory.create() { didSet { filterFolders() } }
 
-    // MARK: - Private properties
-
-    private var allFavorites = FavoriteFoldersFactory.create() { didSet { filterFoldersAndReload() } }
     private var filteredFavorites = [FavoriteFolder]()
-    private var filterString = "" { didSet { filterFoldersAndReload() } }
-
+    private var filterString = ""
     private let viewModel = FavoriteFoldersListViewModel(
         searchBarPlaceholder: "Søk etter en av dine lister",
         addFolderText: "Lag ny liste",
         emptyViewBodyPrefix: "Du har ingen lister med navnet"
     )
 
-    private lazy var view: FavoriteFoldersListView = {
+    private(set) lazy var view: FavoriteFoldersListView = {
         let view = FavoriteFoldersListView(viewModel: viewModel)
         view.dataSource = self
         view.delegate = self
         return view
+    }()
+
+    lazy var tweakingOptions: [TweakingOption] = {
+        var options = [TweakingOption]()
+
+        options.append(TweakingOption(title: "Toggle mode", description: nil) { [weak self] in
+            self?.filterString = ""
+            self?.allFavorites = FavoriteFoldersFactory.create()
+            self?.view.setEditing(false)
+        })
+
+        options.append(TweakingOption(title: "Edit mode", description: nil) { [weak self] in
+            self?.filterString = ""
+            self?.allFavorites = FavoriteFoldersFactory.create(withSelectedItems: false)
+            self?.view.setEditing(true)
+        })
+
+        return options
     }()
 
     // MARK: - Init
@@ -42,27 +57,30 @@ final class FavoriteFoldersListDemoView: UIView {
         view.fillInSuperview()
     }
 
-    private func filterFoldersAndReload() {
+    private func filterFolders() {
         filteredFavorites = filterString.isEmpty
             ? allFavorites
             : allFavorites.filter({ $0.title.lowercased().contains(filterString) })
-        view.reloadData()
     }
 }
 
 // MARK: - FavoriteFoldersListViewDelegate
 
 extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
-    func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didSelectItemAtIndex index: Int) {
+    func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView,
+                                 didSelectItemAtIndex index: Int) {
         let folderId = filteredFavorites[index].id
         guard let folderIndex = allFavorites.firstIndex(where: { $0.id == folderId }) else { return }
         allFavorites[folderIndex].isSelected.toggle()
+        view.reloadData()
     }
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView) {}
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String) {}
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String) {
         filterString = searchText.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        filterFolders()
+        view.reloadData()
     }
 
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView) {

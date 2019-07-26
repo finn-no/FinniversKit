@@ -5,7 +5,7 @@
 import UIKit
 
 final class FavoriteFoldersSearchBar: UIView {
-    private static let maxShadowRadius: CGFloat = 3
+    static let maxShadowRadius: CGFloat = 3
 
     weak var delegate: UISearchBarDelegate? {
         didSet {
