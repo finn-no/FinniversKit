@@ -4,7 +4,7 @@
 
 import UIKit
 
-open class BasicTableViewCell: SelectableTableViewCell {
+open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Public properties
 
