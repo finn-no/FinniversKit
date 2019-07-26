@@ -9,6 +9,10 @@ public enum DnaViews: String, CaseIterable {
     case spacing
     case assets
 
+    public static var items: [DnaViews] {
+        return allCases.sorted { $0.rawValue < $1.rawValue }
+    }
+
     public var viewController: UIViewController {
         switch self {
         case .color:
@@ -60,6 +64,10 @@ public enum ComponentViews: String, CaseIterable {
     case carouselView
     case questionnaireView
     case tweakable
+
+    public static var items: [ComponentViews] {
+        return allCases.sorted { $0.rawValue < $1.rawValue }
+    }
 
     public var viewController: UIViewController {
         switch self {
@@ -152,6 +160,10 @@ public enum Cells: String, CaseIterable {
     case iconTitleCell
     case remoteImageCell
 
+    public static var items: [Cells] {
+        return allCases.sorted { $0.rawValue < $1.rawValue }
+    }
+
     public var viewController: UIViewController {
         switch self {
         case .basicCell:
@@ -182,6 +194,10 @@ public enum RecyclingViews: String, CaseIterable {
     case settingsView
     case userAds
     case adManagementView
+
+    public static var items: [RecyclingViews] {
+        return allCases.sorted { $0.rawValue < $1.rawValue }
+    }
 
     public var viewController: UIViewController {
         switch self {
@@ -230,6 +246,10 @@ public enum FullscreenViews: String, CaseIterable {
     case addressView
     case messageFormView
     case receiptView
+
+    public static var items: [FullscreenViews] {
+        return allCases.sorted { $0.rawValue < $1.rawValue }
+    }
 
     public var viewController: UIViewController {
         switch self {

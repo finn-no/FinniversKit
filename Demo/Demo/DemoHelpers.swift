@@ -25,7 +25,7 @@ public struct ContainmentOptions: OptionSet {
 
     /// Attaches a navigation bar, a tab bar or both depending on what is returned here.
     /// If you return nil the screen will have no containers.
-    /// Or replace `return nil` with `self = .allCases`, `self = .navigationController` or `self = .tabBarController`
+    /// Or replace `return nil` with `self = .items`, `self = .navigationController` or `self = .tabBarController`
     ///
     /// - Parameter indexPath: The component's index path
     // swiftlint:disable:next cyclomatic_complexity
@@ -33,14 +33,14 @@ public struct ContainmentOptions: OptionSet {
         let sectionType = Sections.for(indexPath)
         switch sectionType {
         case .dna:
-            guard let screens = DnaViews.allCases[safe: indexPath.row] else {
+            guard let screens = DnaViews.items[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
             default: return nil
             }
         case .components:
-            guard let screens = ComponentViews.allCases[safe: indexPath.row] else {
+            guard let screens = ComponentViews.items[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
@@ -49,14 +49,14 @@ public struct ContainmentOptions: OptionSet {
             default: return nil
             }
         case .cells:
-            guard let screens = Cells.allCases[safe: indexPath.row] else {
+            guard let screens = Cells.items[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
             default: return nil
             }
         case .recycling:
-            guard let screens = RecyclingViews.allCases[safe: indexPath.row] else {
+            guard let screens = RecyclingViews.items[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
@@ -65,7 +65,7 @@ public struct ContainmentOptions: OptionSet {
             default: return nil
             }
         case .fullscreen:
-            guard let screens = FullscreenViews.allCases[safe: indexPath.row] else {
+            guard let screens = FullscreenViews.items[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
@@ -88,71 +88,98 @@ enum Sections: String, CaseIterable {
     case recycling
     case fullscreen
 
+    static var items: [Sections] {
+        return allCases
+    }
+
     var numberOfItems: Int {
         switch self {
         case .dna:
-            return DnaViews.allCases.count
+            return DnaViews.items.count
         case .components:
-            return ComponentViews.allCases.count
+            return ComponentViews.items.count
         case .cells:
-            return Cells.allCases.count
+            return Cells.items.count
         case .recycling:
-            return RecyclingViews.allCases.count
+            return RecyclingViews.items.count
         case .fullscreen:
-            return FullscreenViews.allCases.count
+            return FullscreenViews.items.count
         }
     }
 
-    static func formattedName(for section: Int) -> String {
-        let section = Sections.allCases[section]
+    static func title(for section: Int) -> String {
+        let section = Sections.items[section]
         let rawClassName = section.rawValue
         return rawClassName
     }
 
+    static func formattedNames(for section: Int) -> [String] {
+        let section = Sections.items[section]
+        let names: [String]
+        switch section {
+        case .dna:
+            names = DnaViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        case .components:
+            names = ComponentViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        case .cells:
+            names = Cells.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        case .recycling:
+            names = RecyclingViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        case .fullscreen:
+            names = FullscreenViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        }
+        return names
+    }
+
     static func formattedName(for indexPath: IndexPath) -> String {
-        let section = Sections.allCases[indexPath.section]
+        let section = Sections.items[indexPath.section]
         var rawClassName: String
         switch section {
         case .dna:
-            rawClassName = DnaViews.allCases[indexPath.row].rawValue
+            let names = DnaViews.items.sorted { $0.rawValue < $1.rawValue }
+            rawClassName = names[indexPath.row].rawValue
         case .components:
-            rawClassName = ComponentViews.allCases[indexPath.row].rawValue
+            let names = ComponentViews.items.sorted { $0.rawValue < $1.rawValue }
+            rawClassName = names[indexPath.row].rawValue
         case .cells:
-            rawClassName = Cells.allCases[indexPath.row].rawValue
+            let names = Cells.items.sorted { $0.rawValue < $1.rawValue }
+            rawClassName = names[indexPath.row].rawValue
         case .recycling:
-            rawClassName = RecyclingViews.allCases[indexPath.row].rawValue
+            let names = RecyclingViews.items.sorted { $0.rawValue < $1.rawValue }
+            rawClassName = names[indexPath.row].rawValue
         case .fullscreen:
-            rawClassName = FullscreenViews.allCases[indexPath.row].rawValue
+            let names = FullscreenViews.items.sorted { $0.rawValue < $1.rawValue }
+            rawClassName = names[indexPath.row].rawValue
         }
 
         return rawClassName.capitalizingFirstLetter
     }
 
     static func `for`(_ indexPath: IndexPath) -> Sections {
-        return Sections.allCases[indexPath.section]
+        return Sections.items[indexPath.section]
     }
 
     // swiftlint:disable:next cyclomatic_complexity
     static func viewController(for indexPath: IndexPath) -> UIViewController? {
-        guard let section = Sections.allCases[safe: indexPath.section] else {
+        guard let section = Sections.items[safe: indexPath.section] else {
             return nil
         }
         var viewController: UIViewController?
         switch section {
         case .dna:
-            let selectedView = DnaViews.allCases[safe: indexPath.row]
+            let selectedView = DnaViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .components:
-            let selectedView = ComponentViews.allCases[safe: indexPath.row]
+            let selectedView = ComponentViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .cells:
-            let selectedView = Cells.allCases[safe: indexPath.row]
+            let selectedView = Cells.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .recycling:
-            let selectedView = RecyclingViews.allCases[safe: indexPath.row]
+            let selectedView = RecyclingViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .fullscreen:
-            let selectedView = FullscreenViews.allCases[safe: indexPath.row]
+            let selectedView = FullscreenViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         }
 
@@ -216,5 +243,23 @@ extension Array {
     /// Returns nil if index < count
     subscript(safe index: Int) -> Element? {
         return indices.contains(index) ? self[index] : .none
+    }
+}
+
+extension Foundation.Notification.Name {
+    static let didChangeUserInterfaceStyle = Foundation.Notification.Name("didChangeUserInterfaceStyle")
+}
+
+@objc enum UserInterfaceStyle: Int {
+    case light
+    case dark
+
+    var image: UIImage {
+        switch self {
+        case .light:
+            return UIImage(named: "emptyMoon")!
+        case .dark:
+            return UIImage(named: "filledMoon")!
+        }
     }
 }

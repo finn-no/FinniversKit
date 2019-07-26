@@ -75,6 +75,17 @@ enum FontType: String {
         return font.scaledFont(forTextStyle: .headline)
     }
 
+    /// FINNTypeWebStrippet-Regular with a size of 16 scaled for UIFontTextStyle.headline
+    ///
+    /// ## Usage:
+    /// - This have the same size as the body text, but is always semibolded (Regular) to differenciate them.
+    static var bodyRegular: UIFont {
+        registerCustomFonts()
+
+        let font = UIFont(name: FontType.regular.rawValue, size: 16.0)!
+        return font.scaledFont(forTextStyle: .headline)
+    }
+
     /// FINNTypeWebStrippet-Light with a size of 16 scaled for UIFontTextStyle.body
     ///
     /// ## Usage:

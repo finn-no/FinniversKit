@@ -141,6 +141,7 @@
 		44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587020213FA361009187BE /* LoginViewDefaultData.swift */; };
 		44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587022213FA361009187BE /* LoginViewDemoView.swift */; };
 		447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */; };
+		44849D2B22E7312100BB4454 /* SelectorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BE10B422E5F3A5002BB2E7 /* SelectorTitleView.swift */; };
 		44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */; };
 		44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */; };
 		44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */; };
@@ -612,6 +613,7 @@
 		44B94FE622E0AB6C0078A23C /* TweakingOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakingOptionCell.swift; sourceTree = "<group>"; };
 		44B94FE822E0AB820078A23C /* TweakingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakingOption.swift; sourceTree = "<group>"; };
 		44B94FEA22E0ABC50078A23C /* Tweakable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweakable.swift; sourceTree = "<group>"; };
+		44BE10B422E5F3A5002BB2E7 /* SelectorTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTitleView.swift; sourceTree = "<group>"; };
 		44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversImageAsset.swift; sourceTree = "<group>"; };
 		44D912512077AC8A00486848 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		44D912532077AC8A00486848 /* AttachableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachableView.swift; sourceTree = "<group>"; };
@@ -1979,6 +1981,7 @@
 				4443F9B0209D5ECE00E35719 /* Helpers.swift */,
 				4412FDCC20A433550037A2FC /* SplitViewController.swift */,
 				4423F226209CB24500B81D68 /* MiniToastView.swift */,
+				44BE10B422E5F3A5002BB2E7 /* SelectorTitleView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -3142,7 +3145,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
 					14405C691FAFBD1800D03E04 = {
@@ -3344,6 +3347,7 @@
 				14C6F7DA212324D600A7230C /* FavoritesListViewDemoViewHelpers.swift in Sources */,
 				DA8EF1202164E2090028740C /* ConsentActionViewDemoView.swift in Sources */,
 				9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */,
+				44849D2B22E7312100BB4454 /* SelectorTitleView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
 				43BACE6F21117DD20052114C /* ReviewViewDemoView.swift in Sources */,

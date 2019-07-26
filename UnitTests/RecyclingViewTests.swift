@@ -7,7 +7,7 @@ import FBSnapshotTestCase
 import FinniversKit
 
 class RecyclingViewTests: FBSnapshotTestCase {
-    static var allViews = RecyclingViews.allCases
+    static var allViews = RecyclingViews.items
 
     override func setUp() {
         super.setUp()

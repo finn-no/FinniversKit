@@ -30,7 +30,6 @@ class FullscreenImageView: UIScrollView {
     private lazy var doubleTapRecognizer: UITapGestureRecognizer = {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap))
         recognizer.numberOfTapsRequired = 2
-        recognizer.numberOfTouchesRequired = 1
         return recognizer
     }()
 

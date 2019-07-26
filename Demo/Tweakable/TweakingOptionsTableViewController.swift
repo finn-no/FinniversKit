@@ -1,17 +1,19 @@
 import FinniversKit
 
 protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
-    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController)
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath)
 }
 
 class TweakingOptionsTableViewController: UIViewController {
     weak var delegate: TweakingOptionsTableViewControllerDelegate?
     private let options: [TweakingOption]
+    var selectedIndexPath: IndexPath?
 
     private lazy var tableView: UITableView = {
         let view = UITableView(withAutoLayout: true)
         view.dataSource = self
         view.delegate = self
+        view.separatorColor = .clear
         return view
     }()
 
@@ -19,6 +21,8 @@ class TweakingOptionsTableViewController: UIViewController {
         self.options = options
         super.init(nibName: nil, bundle: nil)
         setup()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .didChangeUserInterfaceStyle, object: nil)
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -31,6 +35,23 @@ class TweakingOptionsTableViewController: UIViewController {
         view.addSubview(tableView)
         tableView.fillInSuperview()
         tableView.register(TweakingOptionCell.self)
+        updateColors()
+    }
+
+    @objc private func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
+        updateColors()
+        tableView.reloadData()
+    }
+
+    private func updateColors() {
+        let interfaceBackgroundColor: UIColor
+        switch State.currentUserInterfaceStyle {
+        case .light:
+            interfaceBackgroundColor = .milk
+        case .dark:
+            interfaceBackgroundColor = .midnightBackground
+        }
+        tableView.backgroundColor = interfaceBackgroundColor
     }
 }
 
@@ -44,7 +65,8 @@ extension TweakingOptionsTableViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(TweakingOptionCell.self, for: indexPath)
         let option = options[indexPath.row]
-        cell.configure(withOption: option)
+        let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
+        cell.configure(withOption: option, isSelected: isSelected)
         return cell
     }
 }
@@ -55,7 +77,11 @@ extension TweakingOptionsTableViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let option = options[indexPath.row]
-        option.action()
-        delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
+        option.action?()
+        delegate?.tweakingOptionsTableViewController(self, didDismissWithIndexPath: indexPath)
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
 }
