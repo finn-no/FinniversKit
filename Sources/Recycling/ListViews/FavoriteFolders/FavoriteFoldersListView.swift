@@ -125,6 +125,14 @@ public class FavoriteFoldersListView: UIView {
             return
         }
 
+        if isSearchActive {
+            searchBar.text = ""
+            searchBar.resignFirstResponder()
+        }
+
+        let numberOfItems = self.tableView(tableView, numberOfRowsInSection: Section.addButton.rawValue)
+        let performBatchUpdates = editing && numberOfItems == 1 || !editing && numberOfItems == 0
+
         tableView.setEditing(editing, animated: true)
         footerViewTop.constant = 0
         searchBarTop.constant = editing ? -searchBar.frame.height : 0
@@ -133,9 +141,10 @@ public class FavoriteFoldersListView: UIView {
             self?.layoutIfNeeded()
         }
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, *), performBatchUpdates {
             tableView.performBatchUpdates({ [weak self] in
                 let indexPaths = [IndexPath(row: 0, section: 0)]
+
                 if editing {
                     self?.tableView.deleteRows(at: indexPaths, with: .top)
                 } else {
