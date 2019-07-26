@@ -37,11 +37,6 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
         return imageView
     }()
 
-    public lazy var remoteImageLeadingConstraint = remoteImageView.leadingAnchor.constraint(
-        equalTo: contentView.leadingAnchor,
-        constant: .mediumLargeSpacing
-    )
-
     private lazy var remoteImageWidthConstraint = remoteImageView.widthAnchor.constraint(equalToConstant: 40)
 
     private var defaultImage: UIImage? {
@@ -114,9 +109,9 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
         stackViewLeadingAnchorConstraint.isActive = false
 
         NSLayoutConstraint.activate([
-            remoteImageLeadingConstraint,
             remoteImageWidthConstraint,
             remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
+            remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             remoteImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing)

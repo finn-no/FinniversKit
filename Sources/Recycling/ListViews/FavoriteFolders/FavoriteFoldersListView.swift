@@ -113,6 +113,32 @@ public class FavoriteFoldersListView: UIView {
         tableView.reloadData()
     }
 
+    public func setEditing(_ editing: Bool) {
+        footerViewTop.constant = 0
+        searchBarTop.constant = editing ? -searchBar.frame.height : 0
+
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.layoutIfNeeded()
+        }
+
+        tableView.setEditing(editing, animated: true)
+
+        if #available(iOS 11.0, *) {
+            tableView.performBatchUpdates({ [weak self] in
+                let indexPaths = [IndexPath(row: 0, section: 0)]
+                if editing {
+                    self?.tableView.deleteRows(at: indexPaths, with: .top)
+                } else {
+                    self?.tableView.insertRows(at: indexPaths, with: .top)
+                }
+            }, completion: { [weak self] _ in
+                self?.tableView.reloadData()
+            })
+        } else {
+            tableView.reloadData()
+        }
+    }
+
     // MARK: - Setup
 
     private func setup() {
@@ -192,16 +218,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             cell.dataSource = self
 
             if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
-
-                let style: FavoriteFolderSelectableViewCell.Style
-
-                if tableView.isEditing {
-                    style = indexPath.row == 0 ? .disabled : .edit
-                } else {
-                    style = .regular
-                }
-
-                cell.configure(with: viewModel, style: style)
+                cell.configure(with: viewModel, isEditable: indexPath.row != 0)
             }
 
             return cell
@@ -213,25 +230,17 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
 extension FavoriteFoldersListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard !tableView.isEditing else {
-            return
-        }
-
         tableView.deselectRow(at: indexPath, animated: false)
 
         guard let section = Section(rawValue: indexPath.section) else { return }
 
         switch section {
         case .addButton:
-            footerViewTop.constant = 0
-            searchBarTop.constant = -self.searchBar.frame.height
+            setEditing(true)
 
-            UIView.animate(withDuration: 0.3, animations: {
-                self.layoutIfNeeded()
-            }, completion: { _ in
-                self.tableView.setEditing(true, animated: true)
-                self.tableView.reloadData()
-            })
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+                self.setEditing(false)
+            }
 
             delegate?.favoriteFoldersListViewDidSelectAddButton(self)
         case .folders:
@@ -253,7 +262,8 @@ extension FavoriteFoldersListView: UITableViewDelegate {
         cell.loadImage()
     }
 
-    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        guard tableView.isEditing else { return true }
         guard let section = Section(rawValue: indexPath.section) else { return false }
 
         switch section {
