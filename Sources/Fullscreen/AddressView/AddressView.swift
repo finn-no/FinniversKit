@@ -112,7 +112,7 @@ public class AddressView: UIView {
 
     private var tileOverlay: MKTileOverlay?
 
-    public func addTileOverlay(tileOverlay: MKTileOverlay) {
+    public func configureTileOverlay(_ tileOverlay: MKTileOverlay) {
         if let oldOverlay = self.tileOverlay {
             mapView.removeOverlay(oldOverlay)
         }
@@ -122,18 +122,18 @@ public class AddressView: UIView {
 
     private var circle: MKCircle?
 
-    public func addRadiusArea(location: CLLocationCoordinate2D, regionDistance: Double) {
+    public func configureRadiusArea(_ radius: Double, location: CLLocationCoordinate2D) {
         if let oldCircle = circle {
             mapView.removeOverlay(oldCircle)
         }
-        let newCircle = MKCircle(center: location, radius: regionDistance)
+        let newCircle = MKCircle(center: location, radius: radius)
         mapView.addOverlay(newCircle)
         circle = newCircle
     }
 
     private var annotation: MKAnnotation?
 
-    public func addAnnotation(location: CLLocationCoordinate2D, title: String) {
+    public func configureAnnotation(title: String, location: CLLocationCoordinate2D) {
         if let oldAnnotation = annotation {
             mapView.removeAnnotation(oldAnnotation)
         }
@@ -142,7 +142,7 @@ public class AddressView: UIView {
         annotation = newAnnotation
     }
 
-    public func changeMapType(mapType: MKMapType) {
+    public func changeMapType(_ mapType: MKMapType) {
         mapView.mapType = mapType
     }
 }
