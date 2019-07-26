@@ -159,7 +159,6 @@ public enum Cells: String, CaseIterable {
     case heartSubtitleCell
     case iconTitleCell
     case remoteImageCell
-    case selectableCell
 
     public static var items: [Cells] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -181,8 +180,6 @@ public enum Cells: String, CaseIterable {
             return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
         case .remoteImageCell:
             return DemoViewController<RemoteImageCellDemoView>(withDismissButton: true)
-        case .selectableCell:
-            return DemoViewController<SelectableCellDemoView>(withDismissButton: true)
         }
     }
 }
