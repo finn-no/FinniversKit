@@ -5,10 +5,6 @@
 import UIKit
 import MapKit
 
-public protocol MapOverlayDataSource: AnyObject {
-    var mapTileOverlay: MKTileOverlay? { get }
-}
-
 public protocol AddressViewDelegate: AnyObject {
     func addressViewDidSelectCopyButton(_ addressView: AddressView)
     func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView)
@@ -17,14 +13,6 @@ public protocol AddressViewDelegate: AnyObject {
 }
 
 public class AddressView: UIView {
-    weak public var mapDataSource: MapOverlayDataSource? {
-        didSet {
-            if let mapTileOverlay = mapDataSource?.mapTileOverlay {
-                mapView.addOverlay(mapTileOverlay, level: .aboveLabels)
-            }
-        }
-    }
-
     private lazy var mapTypeSegmentControl: UISegmentedControl = {
         let control = UISegmentedControl(withAutoLayout: true)
         control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
@@ -120,6 +108,16 @@ public class AddressView: UIView {
         let meters: CLLocationDistance = regionDistance
         let region = MKCoordinateRegion(center: location, latitudinalMeters: meters, longitudinalMeters: meters)
         mapView.setRegion(region, animated: animated)
+    }
+
+    private var tileOverlay: MKTileOverlay?
+
+    public func addTileOverlay(tileOverlay: MKTileOverlay) {
+        if let oldOverlay = self.tileOverlay {
+            mapView.removeOverlay(oldOverlay)
+        }
+        mapView.addOverlay(tileOverlay, level: .aboveLabels)
+        self.tileOverlay = tileOverlay
     }
 
     private var circle: MKCircle?
