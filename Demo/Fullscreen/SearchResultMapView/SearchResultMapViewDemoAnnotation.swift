@@ -3,17 +3,20 @@
 //
 
 import MapKit
+import FinniversKit
 
-public class SearchResultMapViewDemoAnnotation: NSObject, MKAnnotation {
+public class SearchResultMapViewDemoAnnotation: NSObject, SearchResultMapAnnotation {
 
-    let isCluster: Bool
-    let id = Int.random(in: 0 ..< 100)
+    public var isCluster: Bool
+
+    public var image: UIImage
 
     public var coordinate: CLLocationCoordinate2D
 
-    init(coordinate: CLLocationCoordinate2D, isCluster: Bool) {
+    init(coordinate: CLLocationCoordinate2D, image: UIImage, isCluster: Bool) {
         self.coordinate = coordinate
         self.isCluster = isCluster
+        self.image = image
     }
 
 }

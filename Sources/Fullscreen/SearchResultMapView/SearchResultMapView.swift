@@ -4,11 +4,17 @@
 
 import MapKit
 
+public protocol SearchResultMapAnnotation: MKAnnotation {
+    var isCluster: Bool { get }
+    var image: UIImage { get }
+}
+
 public protocol SearchResultMapViewDelegate: AnyObject {
     func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView)
-    func searchResultMapViewWillRenderAnnotation(_ view: SearchResultMapView, annotation: MKAnnotation) -> MKAnnotationView?
     func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView)
-    func searchResultMapViewRegionDidChange(_ view: SearchResultMapView)
+    func searchResultMapViewRegionWillChangeDueToUserInteraction(_ view: SearchResultMapView)
+    func searchResultMapViewRegionDidChange(_ view: SearchResultMapView, toVisibleMapRect visibleMapRect: MKMapRect)
+    func searchResultMapViewDidUpdateUserLocation(_ view: SearchResultMapView, userLocation: MKUserLocation)
 }
 
 public final class SearchResultMapView: UIView {
@@ -43,12 +49,19 @@ public final class SearchResultMapView: UIView {
         }
     }
 
-    public func configure(withDefaultRegion region: MKCoordinateRegion, andOverlay overlay: MKTileOverlay) {
-        mapView.addOverlay(overlay)
-        mapView.setRegion(region, animated: false)
+    public func configure(withDefaultRegion region: MKCoordinateRegion) {
+        setRegion(region, animated: false)
+    }
+
+    public func setRegion(_ region: MKCoordinateRegion, animated: Bool) {
+        mapView.setRegion(region, animated: animated)
     }
 
     public func setMapOverlay(_ newOverlay: MKTileOverlay) {
+        if let lastOverlay = mapView.overlays.last {
+            mapView.removeOverlay(lastOverlay)
+        }
+
         mapView.addOverlay(newOverlay)
     }
 
@@ -114,15 +127,37 @@ extension SearchResultMapView: MKMapViewDelegate {
     public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
 
-        return delegate?.searchResultMapViewWillRenderAnnotation(self, annotation: annotation)
+        if let annotation = annotation as? SearchResultMapAnnotation {
+            let marker = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.isCluster ? "clusterPOI" : "POI")
+            marker.image = annotation.image
+            marker.accessibilityIdentifier = "annotationPOI"
+            marker.centerOffset = CGPoint(x: 0.5, y: 1.0)
+            return marker
+        }
+
+        return nil
     }
 
     public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         delegate?.searchResultMapViewDidSelectAnnotationView(self, annotationView: view)
     }
 
+    public func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        if let view = mapView.subviews.first {
+            let isDueToUserInteraction = view.gestureRecognizers?.first(where: { $0.state == .began || $0.state == .ended })
+
+            if isDueToUserInteraction != nil {
+                delegate?.searchResultMapViewRegionWillChangeDueToUserInteraction(self)
+            }
+        }
+    }
+
     public func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        delegate?.searchResultMapViewRegionDidChange(self)
+        delegate?.searchResultMapViewRegionDidChange(self, toVisibleMapRect: mapView.visibleMapRect)
+    }
+
+    public func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        delegate?.searchResultMapViewDidUpdateUserLocation(self, userLocation: userLocation)
     }
 
 }
