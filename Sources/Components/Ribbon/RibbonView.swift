@@ -5,6 +5,21 @@
 import UIKit
 
 public class RibbonView: UIView {
+
+    // MARK: - Public properties
+
+    public var title: String = "" {
+        didSet {
+            update(title)
+        }
+    }
+
+    public var style: Style {
+        didSet {
+            backgroundColor = style.color
+        }
+    }
+
     // MARK: - Internal properties
 
     private lazy var titleLabel: Label = {
@@ -14,23 +29,13 @@ public class RibbonView: UIView {
         return label
     }()
 
-    let horisontalMargin: CGFloat = 8
-    let verticalMargin: CGFloat = 2
-    let cornerRadius: CGFloat = 8
+    private let horisontalMargin: CGFloat = 8
+    private let verticalMargin: CGFloat = 2
+    private let cornerRadius: CGFloat = 8
 
-    // MARK: - External properties
+    // MARK: - Init
 
-    public var title: String = "" {
-        didSet {
-            update(title)
-        }
-    }
-
-    public let style: Style
-
-    // MARK: - Setup
-
-    public init(style: Style) {
+    public init(style: Style = .default) {
         self.style = style
         super.init(frame: .zero)
         setup()
@@ -47,6 +52,8 @@ public class RibbonView: UIView {
     public required convenience init?(coder aDecoder: NSCoder) {
         self.init(style: .default)
     }
+
+    // MARK: - Private methods
 
     private func setup() {
         layer.cornerRadius = cornerRadius
