@@ -70,7 +70,7 @@ extension RemoteImageCellDemoView: UITableViewDataSource {
 // MARK: - RemoteImageTableViewCellDataSource
 
 extension RemoteImageCellDemoView: RemoteImageViewDataSource {
-    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)
             return
@@ -91,9 +91,9 @@ extension RemoteImageCellDemoView: RemoteImageViewDataSource {
         task.resume()
     }
 
-    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String) {}
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String) -> UIImage? {
+    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
         return nil
     }
 }
