@@ -68,7 +68,7 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
             return
         }
 
-        remoteImageView.loadImage(for: imagePath, loadingColor: loadingColor, fallbackImage: fallbackImage)
+        remoteImageView.loadImage(for: imagePath, imageWidth: viewModel.imageViewWidth, loadingColor: loadingColor, fallbackImage: fallbackImage)
     }
 
     // MARK: - Private
