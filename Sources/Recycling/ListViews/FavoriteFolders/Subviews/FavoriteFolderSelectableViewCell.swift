@@ -21,7 +21,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     private lazy var editModeView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .white
+        view.backgroundColor = .milk
         return view
     }()
 
