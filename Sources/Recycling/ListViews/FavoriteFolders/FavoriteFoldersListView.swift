@@ -17,12 +17,12 @@ public protocol FavoriteFoldersListViewDataSource: AnyObject {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, viewModelAtIndex index: Int) -> FavoriteFolderViewModel
     func favoriteFoldersListView(
         _ view: FavoriteFoldersListView,
-        loadImageForModel model: RemoteImageTableViewCellViewModel,
+        loadImageWithPath imagePath: String,
         completion: @escaping ((UIImage?) -> Void)
     )
     func favoriteFoldersListView(
         _ view: FavoriteFoldersListView,
-        cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel
+        cancelLoadingImageWithPath imagePath: String
     )
 }
 
@@ -237,23 +237,16 @@ extension FavoriteFoldersListView: FavoriteFoldersFooterViewDelegate {
     }
 }
 
-// MARK: - RemoteImageTableViewCellDataSource
+// MARK: - RemoteImageViewDataSource
 
-extension FavoriteFoldersListView: RemoteImageTableViewCellDataSource {
-    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                         cachedImageForModel model: RemoteImageTableViewCellViewModel) -> UIImage? {
-        guard let imagePath = model.imagePath else {
-            return nil
-        }
-
+extension FavoriteFoldersListView: RemoteImageViewDataSource {
+    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String) -> UIImage? {
         return imageCache.image(forKey: imagePath)
     }
 
-    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                         loadImageForModel model: RemoteImageTableViewCellViewModel,
-                                         completion: @escaping ((UIImage?) -> Void)) {
-        dataSource?.favoriteFoldersListView(self, loadImageForModel: model, completion: { [weak self] image in
-            if let image = image, let imagePath = model.imagePath {
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.favoriteFoldersListView(self, loadImageWithPath: imagePath, completion: { [weak self] image in
+            if let image = image {
                 self?.imageCache.add(image, forKey: imagePath)
             }
 
@@ -261,9 +254,8 @@ extension FavoriteFoldersListView: RemoteImageTableViewCellDataSource {
         })
     }
 
-    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                         cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {
-        dataSource?.favoriteFoldersListView(self, cancelLoadingImageForModel: model)
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String) {
+        dataSource?.favoriteFoldersListView(self, cancelLoadingImageWithPath: imagePath)
     }
 }
 

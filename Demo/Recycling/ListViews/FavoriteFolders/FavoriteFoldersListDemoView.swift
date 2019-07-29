@@ -83,9 +83,9 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
     }
 
     public func favoriteFoldersListView(_ view: FavoriteFoldersListView,
-                                        loadImageForModel model: RemoteImageTableViewCellViewModel,
+                                        loadImageWithPath imagePath: String,
                                         completion: @escaping ((UIImage?) -> Void)) {
-        guard let path = model.imagePath, let url = URL(string: path) else {
+        guard let url = URL(string: imagePath) else {
             completion(nil)
             return
         }
@@ -105,6 +105,5 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
         task.resume()
     }
 
-    func favoriteFoldersListView(_ view: FavoriteFoldersListView,
-                                 cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {}
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, cancelLoadingImageWithPath iamgePath: String) {}
 }
