@@ -32,6 +32,7 @@ class KlimabroletEventsDemoViewController: UITableViewController {
 
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: .cross).withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = .stone
         button.addTarget(self, action: #selector(handleCloseButtonTap), for: .touchUpInside)
@@ -50,6 +51,10 @@ class KlimabroletEventsDemoViewController: UITableViewController {
         title = "Velg arrangement"
         setupNavigationBar()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 12),
+            closeButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 12),
+        ])
         tableView.register(BasicTableViewCell.self)
     }
 
