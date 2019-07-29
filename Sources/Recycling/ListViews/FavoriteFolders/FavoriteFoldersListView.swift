@@ -18,11 +18,13 @@ public protocol FavoriteFoldersListViewDataSource: AnyObject {
     func favoriteFoldersListView(
         _ view: FavoriteFoldersListView,
         loadImageWithPath imagePath: String,
+        imageWidth: CGFloat,
         completion: @escaping ((UIImage?) -> Void)
     )
     func favoriteFoldersListView(
         _ view: FavoriteFoldersListView,
-        cancelLoadingImageWithPath imagePath: String
+        cancelLoadingImageWithPath imagePath: String,
+        imageWidth: CGFloat
     )
 }
 
@@ -308,12 +310,12 @@ extension FavoriteFoldersListView: FavoriteFoldersFooterViewDelegate {
 // MARK: - RemoteImageViewDataSource
 
 extension FavoriteFoldersListView: RemoteImageViewDataSource {
-    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String) -> UIImage? {
+    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
         return imageCache.image(forKey: imagePath)
     }
 
-    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, completion: @escaping ((UIImage?) -> Void)) {
-        dataSource?.favoriteFoldersListView(self, loadImageWithPath: imagePath, completion: { [weak self] image in
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.favoriteFoldersListView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] image in
             if let image = image {
                 self?.imageCache.add(image, forKey: imagePath)
             }
@@ -322,8 +324,8 @@ extension FavoriteFoldersListView: RemoteImageViewDataSource {
         })
     }
 
-    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String) {
-        dataSource?.favoriteFoldersListView(self, cancelLoadingImageWithPath: imagePath)
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
+        dataSource?.favoriteFoldersListView(self, cancelLoadingImageWithPath: imagePath, imageWidth: imageWidth)
     }
 }
 
