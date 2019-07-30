@@ -4,9 +4,15 @@
 
 import UIKit
 
+public protocol FavoriteAdTableViewCellDelegate: AnyObject {
+    func favoriteAdTableViewCellDidSelectMoreButton(_ cell: FavoriteAdTableViewCell)
+}
+
 public class FavoriteAdTableViewCell: UITableViewCell {
 
     // MARK: - Public properties
+
+    public weak var delegate: FavoriteAdTableViewCellDelegate?
 
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
         didSet {
@@ -205,5 +211,6 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     // MARK: - Private methods
 
     @objc private func moreButtonTapped() {
+        delegate?.favoriteAdTableViewCellDidSelectMoreButton(self)
     }
 }
