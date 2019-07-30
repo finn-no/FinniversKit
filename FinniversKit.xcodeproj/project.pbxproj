@@ -236,7 +236,9 @@
 		89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A643225352180053D33B /* NativeAdvertDelegates.swift */; };
 		89A7A648225352A30053D33B /* NativeContentAdvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A6462253524E0053D33B /* NativeContentAdvertView.swift */; };
 		89A7A64A22536E200053D33B /* NativeContentSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A64922536E200053D33B /* NativeContentSettingsButton.swift */; };
+		9A37D015952CBD1FEF4F0E20 /* FavoriteAdTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdTableViewCellViewModel.swift */; };
 		9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */; };
+		9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */; };
 		9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D9749A60B9BFD125F483 /* FeedbackView.swift */; };
 		9A37DACD70E4383536D5312B /* FeedbackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */; };
 		9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */; };
@@ -674,9 +676,11 @@
 		89A7A643225352180053D33B /* NativeAdvertDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDelegates.swift; sourceTree = "<group>"; };
 		89A7A6462253524E0053D33B /* NativeContentAdvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContentAdvertView.swift; sourceTree = "<group>"; };
 		89A7A64922536E200053D33B /* NativeContentSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContentSettingsButton.swift; sourceTree = "<group>"; };
+		9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdTableViewCell.swift; sourceTree = "<group>"; };
 		9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
 		9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		9A37D9749A60B9BFD125F483 /* FeedbackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtensions.swift; sourceTree = "<group>"; };
 		9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchorExtensions.swift; sourceTree = "<group>"; };
 		9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoboxView+Style.swift"; sourceTree = "<group>"; };
@@ -1550,6 +1554,7 @@
 				44A557B022E72187001667AE /* SelectableTableViewCell */,
 				44A557A322E720A3001667AE /* IconTitleTableViewCell */,
 				44A557AB22E7211E001667AE /* RemoteImageTableViewCell */,
+				9A37DACFD214880B29DEBFA9 /* FavoriteAdTableViewCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1879,6 +1884,15 @@
 				08F0D3F022202DC900968256 /* FeedbackViewModel.swift */,
 			);
 			path = Feedback;
+			sourceTree = "<group>";
+		};
+		9A37DACFD214880B29DEBFA9 /* FavoriteAdTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */,
+				9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdTableViewCellViewModel.swift */,
+			);
+			path = FavoriteAdTableViewCell;
 			sourceTree = "<group>";
 		};
 		9A37DBD671995665FDBC64C4 /* Feedback */ = {
@@ -3679,6 +3693,8 @@
 				F2B1A19422D503E700713FC2 /* ReceiptViewModel.swift in Sources */,
 				9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */,
 				9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */,
+				9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */,
+				9A37D015952CBD1FEF4F0E20 /* FavoriteAdTableViewCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
