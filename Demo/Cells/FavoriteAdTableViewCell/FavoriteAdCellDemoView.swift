@@ -65,12 +65,12 @@ extension FavoriteAdCellDemoView: UITableViewDelegate {
 
 extension FavoriteAdCellDemoView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModels.count * 2
+        return viewModels.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(FavoriteAdTableViewCell.self, for: indexPath)
-        cell.configure(with: viewModels[indexPath.row % viewModels.count])
+        cell.configure(with: viewModels[indexPath.row])
         cell.remoteImageViewDataSource = self
 
         // Show a pretty color while we load the image
