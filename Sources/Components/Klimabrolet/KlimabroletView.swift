@@ -37,6 +37,7 @@ public class KlimabroletView: UIView {
         scrollView.bounces = true
         scrollView.contentInset = UIEdgeInsets(bottom: .largeSpacing)
         scrollView.delegate = self
+        scrollView.delaysContentTouches = false
         return scrollView
     }()
 
