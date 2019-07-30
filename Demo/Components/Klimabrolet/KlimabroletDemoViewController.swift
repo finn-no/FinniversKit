@@ -4,19 +4,10 @@
 
 import FinniversKit
 
-struct DemoKlimabroletViewModel: KlimabroletViewModel {
-    let title: String = "Bli med og BRØØØL!"
-    let subtitle: String = "30 August kl. 15.00"
-    let bodyText: String = "Barn og unge over hele verden har samlet seg i gatene til støtte for miljøet. Ikke la dem stå alene. Bli med og brøl for klimaet!"
-    let readMoreButtonTitle: String = "Les mer om Klimabrølet"
-    let acceptButtonTitle: String = "Bli med på Klimabrølet!"
-    let declineButtonTitle: String = "Nei takk"
-}
-
 class KlimabroletDemoViewController: DemoViewController<UIView> {
     private lazy var klimabroletView: KlimabroletView = {
         let view = KlimabroletView(withAutoLayout: true)
-        view.configure(with: DemoKlimabroletViewModel())
+        view.configure(with: KlimabroletData.ViewModel())
         view.delegate = self
         return view
     }()
@@ -70,7 +61,13 @@ class KlimabroletDemoViewController: DemoViewController<UIView> {
 }
 
 extension KlimabroletDemoViewController: KlimabroletViewDelegate {
-    func klimabroletViewDidSelectReadMore(_ view: KlimabroletView) {}
+    func klimabroletViewDidSelectReadMore(_ view: KlimabroletView) {
+        guard let url = KlimabroletData.campaignURL else {
+            return
+        }
+
+        UIApplication.shared.open(url)
+    }
 
     func klimabroletViewDidSelectAccept(_ view: KlimabroletView) {
         innerNavigationController.pushViewController(eventListViewController, animated: true)
@@ -86,7 +83,12 @@ extension KlimabroletDemoViewController: KlimabroletViewDelegate {
 }
 
 extension KlimabroletDemoViewController: KlimabroletEventsDemoViewControllerDelegate {
-    func eventList(_ eventListViewController: KlimabroletEventsDemoViewController, didSelect event: Event) {
+    func eventList(_ eventListViewController: KlimabroletEventsDemoViewController, didSelect event: KlimabroletData.Event) {
+        guard let url = event.url else {
+            return
+        }
+
+        UIApplication.shared.open(url)
     }
 
     func eventListDidSelectClose(_ eventListViewController: KlimabroletEventsDemoViewController) {

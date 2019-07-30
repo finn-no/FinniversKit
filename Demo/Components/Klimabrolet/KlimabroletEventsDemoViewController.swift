@@ -4,29 +4,13 @@
 
 import FinniversKit
 
-struct Event: BasicTableViewCellViewModel {
-    let title: String
-    let subtitle: String? = nil
-    let detailText: String? = nil
-    let hasChevron: Bool = false
-}
-
 protocol KlimabroletEventsDemoViewControllerDelegate: AnyObject {
-    func eventList(_ eventListViewController: KlimabroletEventsDemoViewController, didSelect event: Event)
+    func eventList(_ eventListViewController: KlimabroletEventsDemoViewController, didSelect event: KlimabroletData.Event)
     func eventListDidSelectClose(_ eventListViewController: KlimabroletEventsDemoViewController)
 }
 
 class KlimabroletEventsDemoViewController: UITableViewController {
-    let events: [Event] = [
-        Event(title: "Klimabrølet Oslo"),
-        Event(title: "Klimabrølet Tønsberg"),
-        Event(title: "Klimabrølet Stavanger"),
-        Event(title: "Klimabrølet Bergen"),
-        Event(title: "Klimabrølet Røros"),
-        Event(title: "Klimabrølet Trondheim"),
-        Event(title: "Klimabrølet Henningsvær"),
-        Event(title: "Klimabrølet Svalbard"),
-    ]
+    let events: [KlimabroletData.Event] = KlimabroletData.events
 
     weak var delegate: KlimabroletEventsDemoViewControllerDelegate?
 
