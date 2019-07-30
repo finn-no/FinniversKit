@@ -134,21 +134,23 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
 
-            statusRibbon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            statusRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            statusRibbon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            statusRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
 
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
-            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: 16),
+            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
             stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -40),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
 
-            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -8)
+            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing)
         ])
     }
 
     // MARK: - Public methods
 
     public func configure(with viewModel: FavoriteAdTableViewCellViewModel) {
+        separatorInset = .leadingInset(.mediumLargeSpacing * 2 + adImageWidth)
+
         self.viewModel = viewModel
 
         statusRibbon.style = viewModel.ribbonStyle
