@@ -96,7 +96,8 @@ class KlimabroletContentView: UIView {
             accessoryButton.topAnchor.constraint(equalTo: bodyTextLabel.bottomAnchor, constant: .mediumLargeSpacing),
             accessoryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             accessoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            accessoryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .mediumLargeSpacing),
+            accessoryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: .largeSpacing),
+            accessoryButton.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 
