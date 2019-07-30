@@ -23,7 +23,7 @@ final class EarthHourTagView: UIView {
         stackView.axis = .horizontal
         stackView.spacing = .smallSpacing
         stackView.distribution = .fillProportionally
-        stackView.alignment = .fill
+        stackView.alignment = .center
 
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(titleLabel)
