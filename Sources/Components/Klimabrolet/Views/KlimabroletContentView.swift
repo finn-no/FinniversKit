@@ -17,7 +17,11 @@ class KlimabroletContentView: UIView {
         return imageView
     }()
 
-    private lazy var subtitleTagView = EarthHourTagView(withAutoLayout: true)
+    private lazy var subtitleTagView: EarthHourTagView = {
+        let view = EarthHourTagView(withAutoLayout: true)
+        view.stackView.alignment = .center
+        return view
+    }()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
