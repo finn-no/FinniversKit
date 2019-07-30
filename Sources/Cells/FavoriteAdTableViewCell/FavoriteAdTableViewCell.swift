@@ -55,11 +55,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         return button
     }()
 
-    private lazy var statusRibbon: RibbonView = {
-        let ribbon = RibbonView()
-        ribbon.translatesAutoresizingMaskIntoConstraints = false
-        return ribbon
-    }()
+    private let statusRibbon = RibbonView(withAutoLayout: true)
 
     private var viewModel: FavoriteAdTableViewCellViewModel?
     private let fallbackImage: UIImage = UIImage(named: .noImage)

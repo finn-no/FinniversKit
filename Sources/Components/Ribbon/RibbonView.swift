@@ -14,7 +14,7 @@ public class RibbonView: UIView {
         }
     }
 
-    public var style: Style {
+    public var style: Style = .default {
         didSet {
             backgroundColor = style.color
         }
@@ -35,7 +35,12 @@ public class RibbonView: UIView {
 
     // MARK: - Init
 
-    public init(style: Style = .default) {
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    public init(style: Style) {
         self.style = style
         super.init(frame: .zero)
         setup()
