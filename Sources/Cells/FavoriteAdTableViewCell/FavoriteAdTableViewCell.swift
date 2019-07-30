@@ -126,7 +126,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
             moreButton.widthAnchor.constraint(equalToConstant: 40),
             moreButton.heightAnchor.constraint(equalToConstant: 44),
-            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             moreButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
