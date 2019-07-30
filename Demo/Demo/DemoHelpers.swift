@@ -60,8 +60,6 @@ public struct ContainmentOptions: OptionSet {
                 return nil
             }
             switch screens {
-            case .favoriteFoldersListView:
-                self = .bottomSheet
             default: return nil
             }
         case .fullscreen:

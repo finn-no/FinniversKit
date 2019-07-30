@@ -110,19 +110,39 @@ public class AddressView: UIView {
         mapView.setRegion(region, animated: animated)
     }
 
-    public func addRadiusArea(location: CLLocationCoordinate2D, regionDistance: Double) {
-        mapView.removeOverlays(mapView.overlays)
-        let circle = MKCircle(center: location, radius: regionDistance)
-        mapView.addOverlay(circle)
+    private var tileOverlay: MKTileOverlay?
+
+    public func configureTileOverlay(_ tileOverlay: MKTileOverlay) {
+        if let oldOverlay = self.tileOverlay {
+            mapView.removeOverlay(oldOverlay)
+        }
+        mapView.addOverlay(tileOverlay, level: .aboveLabels)
+        self.tileOverlay = tileOverlay
     }
 
-    public func addAnnotation(location: CLLocationCoordinate2D, title: String) {
-        mapView.removeAnnotations(mapView.annotations)
-        let annotation = AddressAnnotation(title: title, location: location)
-        mapView.addAnnotation(annotation)
+    private var circle: MKCircle?
+
+    public func configureRadiusArea(_ radius: Double, location: CLLocationCoordinate2D) {
+        if let oldCircle = circle {
+            mapView.removeOverlay(oldCircle)
+        }
+        let newCircle = MKCircle(center: location, radius: radius)
+        mapView.addOverlay(newCircle)
+        circle = newCircle
     }
 
-    public func changeMapType(mapType: MKMapType) {
+    private var annotation: MKAnnotation?
+
+    public func configureAnnotation(title: String, location: CLLocationCoordinate2D) {
+        if let oldAnnotation = annotation {
+            mapView.removeAnnotation(oldAnnotation)
+        }
+        let newAnnotation = AddressAnnotation(title: title, location: location)
+        mapView.addAnnotation(newAnnotation)
+        annotation = newAnnotation
+    }
+
+    public func changeMapType(_ mapType: MKMapType) {
         mapView.mapType = mapType
     }
 }
@@ -197,8 +217,10 @@ extension AddressView: MKMapViewDelegate {
             circle.fillColor = UIColor.primaryBlue.withAlphaComponent(0.3)
             circle.lineWidth = 2
             return circle
+        } else if let tileOverlay = overlay as? MKTileOverlay {
+            return MKTileOverlayRenderer(tileOverlay: tileOverlay)
         } else {
-            return MKPolylineRenderer()
+            return MKOverlayRenderer(overlay: overlay)
         }
     }
 }

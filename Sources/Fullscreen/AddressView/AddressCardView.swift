@@ -15,6 +15,7 @@ class AddressCardView: UIView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -92,7 +93,7 @@ extension AddressCardView {
         NSLayoutConstraint.activate([
             columnStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing + .mediumSpacing),
             columnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            columnStackView.trailingAnchor.constraint(lessThanOrEqualTo: copyButton.leadingAnchor, constant: .mediumLargeSpacing),
+            columnStackView.trailingAnchor.constraint(lessThanOrEqualTo: copyButton.leadingAnchor, constant: -.mediumLargeSpacing),
 
             copyButton.centerYAnchor.constraint(equalTo: columnStackView.centerYAnchor),
             copyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),

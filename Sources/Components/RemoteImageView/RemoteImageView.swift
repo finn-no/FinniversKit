@@ -5,9 +5,9 @@
 import UIKit
 
 public protocol RemoteImageViewDataSource: AnyObject {
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String) -> UIImage?
-    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, completion: @escaping ((UIImage?) -> Void))
-    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String)
+    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage?
+    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat)
 }
 
 public class RemoteImageView: UIImageView {
@@ -19,30 +19,32 @@ public class RemoteImageView: UIImageView {
     // MARK: - Private properties
 
     private var imagePath: String?
+    private var imageWidth: CGFloat?
 
     // MARK: - Public methods
 
-    public func loadImage(for imagePath: String, loadingColor: UIColor? = nil, fallbackImage: UIImage? = nil) {
+    public func loadImage(for imagePath: String, imageWidth: CGFloat, loadingColor: UIColor? = nil, fallbackImage: UIImage? = nil) {
         cancelLoading()
         self.imagePath = imagePath
+        self.imageWidth = imageWidth
         guard let dataSource = dataSource else {
             setImage(fallbackImage, animated: false)
             return
         }
 
-        if let cachedImage = dataSource.remoteImageView(self, cachedImageWithPath: imagePath) {
+        if let cachedImage = dataSource.remoteImageView(self, cachedImageWithPath: imagePath, imageWidth: imageWidth) {
             setImage(cachedImage, animated: false)
         } else {
             backgroundColor = loadingColor
-            dataSource.remoteImageView(self, loadImageWithPath: imagePath, completion: { [weak self] fetchedImage in
+            dataSource.remoteImageView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] fetchedImage in
                 self?.setImage(fetchedImage ?? fallbackImage, animated: false)
             })
         }
     }
 
     public func cancelLoading() {
-        guard let currentImagePath = self.imagePath else { return }
-        dataSource?.remoteImageView(self, cancelLoadingImageWithPath: currentImagePath)
+        guard let currentImagePath = self.imagePath, let imageWidth = imageWidth else { return }
+        dataSource?.remoteImageView(self, cancelLoadingImageWithPath: currentImagePath, imageWidth: imageWidth)
     }
 
     public func setImage(_ image: UIImage?, animated: Bool) {
