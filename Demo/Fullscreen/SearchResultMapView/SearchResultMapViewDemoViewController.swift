@@ -113,8 +113,8 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
     }
 
-    public func searchResultMapViewRegionDidChange(_ view: SearchResultMapView) {
-
+    public func searchResultMapViewRegionDidChange(_ view: SearchResultMapView, toVisibleMapRect visibleMapRect: MKMapRect) {
+        
     }
 
     public func searchResultMapViewDidUpdateUserLocation(_ view: SearchResultMapView, userLocation: MKUserLocation) {

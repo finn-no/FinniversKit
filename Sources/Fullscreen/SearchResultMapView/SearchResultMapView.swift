@@ -77,6 +77,11 @@ public final class SearchResultMapView: UIView {
         mapView.removeAnnotations(mapView.annotations)
     }
 
+    public func showAnnotations() {
+        let annotationsToShow = mapView.annotations.filter { $0 is SearchResultMapAnnotation }
+        mapView.showAnnotations(annotationsToShow, animated: true)
+    }
+
     public func centerMap(location: CLLocationCoordinate2D, regionDistance: Double, animated: Bool) {
         let meters: CLLocationDistance = regionDistance
         let region = MKCoordinateRegion(center: location, latitudinalMeters: meters, longitudinalMeters: meters)
