@@ -29,6 +29,7 @@ extern NSString *const FinniversImageAssetcheckmarkBig;
 extern NSString *const FinniversImageAssetclassifieds;
 extern NSString *const FinniversImageAssetclose;
 extern NSString *const FinniversImageAssetdistance;
+extern NSString *const FinniversImageAssetdistanceOutlined;
 extern NSString *const FinniversImageAssetdownload;
 extern NSString *const FinniversImageAssetearthHourClock;
 extern NSString *const FinniversImageAssetearthHourEarth;

@@ -40,6 +40,7 @@ public enum FinniversImageAsset: String {
     case classifieds
     case close
     case distance
+    case distanceOutlined
     case download
     case earthHourClock
     case earthHourEarth
@@ -162,6 +163,7 @@ public enum FinniversImageAsset: String {
             .classifieds,
             .close,
             .distance,
+            .distanceOutlined,
             .download,
             .earthHourClock,
             .earthHourEarth,

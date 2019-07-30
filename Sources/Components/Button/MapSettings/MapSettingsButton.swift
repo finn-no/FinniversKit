@@ -23,8 +23,7 @@ public final class MapSettingsButton: UIView {
 
     private lazy var centerMapButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
-        button.setImage(UIImage(named: .distance), for: .normal)
-        button.tintColor = .primaryBlue
+        button.setImage(UIImage(named: .distanceOutlined), for: .normal)
         button.addTarget(self, action: #selector(centerMapButtonTapped), for: .touchUpInside)
         return button
     }()
