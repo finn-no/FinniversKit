@@ -7,7 +7,7 @@ import FBSnapshotTestCase
 import FinniversKit
 
 class FullscreenViewTests: FBSnapshotTestCase {
-    static var allViews = FullscreenViews.allCases
+    static var allViews = FullscreenViews.items
     private let excludedComponents: [FullscreenViews] = [.piano]
 
     override func setUp() {
@@ -108,5 +108,9 @@ class FullscreenViewTests: FBSnapshotTestCase {
 
     func testReceiptView() {
         snapshot(.receiptView)
+    }
+
+    func testAddressView() {
+        snapshot(.addressView)
     }
 }

@@ -17,11 +17,11 @@ struct FavoriteFolder: FavoriteFolderViewModel {
 }
 
 struct FavoriteFoldersFactory {
-    static func create() -> [FavoriteFolder] {
+    static func create(withSelectedItems: Bool = true) -> [FavoriteFolder] {
         var favorites = [FavoriteFolder]()
 
         for (index, (title, imagePath)) in zip(titles, imagePaths).enumerated() {
-            let isSelected = [0,1].contains(index)
+            let isSelected = withSelectedItems ? [0, 1].contains(index) : false
             favorites.append(FavoriteFolder(id: index, title: title, imagePath: imagePath, isSelected: isSelected))
         }
 

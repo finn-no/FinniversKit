@@ -21,7 +21,11 @@ final class FavoriteFoldersSearchBar: UIView {
     }()
 
     var text: String? {
-        return searchBar.text
+        get { return searchBar.text }
+        set {
+            searchBar.text = newValue
+            delegate?.searchBar?(searchBar, textDidChange: newValue ?? "")
+        }
     }
 
     // MARK: - Init

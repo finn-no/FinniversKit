@@ -9,6 +9,10 @@ public enum DnaViews: String, CaseIterable {
     case spacing
     case assets
 
+    public static var items: [DnaViews] {
+        return allCases.sorted { $0.rawValue < $1.rawValue }
+    }
+
     public var viewController: UIViewController {
         switch self {
         case .color:
@@ -61,6 +65,10 @@ public enum ComponentViews: String, CaseIterable {
     case carouselView
     case questionnaireView
     case tweakable
+
+    public static var items: [ComponentViews] {
+        return allCases.sorted { $0.rawValue < $1.rawValue }
+    }
 
     public var viewController: UIViewController {
         switch self {
@@ -146,6 +154,39 @@ public enum ComponentViews: String, CaseIterable {
     }
 }
 
+public enum Cells: String, CaseIterable {
+    case basicCell
+    case basicCellVariations
+    case checkboxCell
+    case checkboxSubtitleCell
+    case heartSubtitleCell
+    case iconTitleCell
+    case remoteImageCell
+
+    public static var items: [Cells] {
+        return allCases.sorted { $0.rawValue < $1.rawValue }
+    }
+
+    public var viewController: UIViewController {
+        switch self {
+        case .basicCell:
+            return DemoViewController<BasicCellDemoView>(withDismissButton: true)
+        case .basicCellVariations:
+            return DemoViewController<BasicCellVariationsDemoView>(withDismissButton: true)
+        case .checkboxCell:
+            return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
+        case .checkboxSubtitleCell:
+            return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
+        case .heartSubtitleCell:
+            return DemoViewController<HeartSubtitleCellDemoView>(withDismissButton: true)
+        case .iconTitleCell:
+            return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
+        case .remoteImageCell:
+            return DemoViewController<RemoteImageCellDemoView>(withDismissButton: true)
+        }
+    }
+}
+
 public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
@@ -157,12 +198,23 @@ public enum RecyclingViews: String, CaseIterable {
     case userAds
     case adManagementView
 
+    public static var items: [RecyclingViews] {
+        return allCases.sorted { $0.rawValue < $1.rawValue }
+    }
+
     public var viewController: UIViewController {
         switch self {
         case .notificationsListView:
             return DemoViewController<NotificationsListViewDemoView>()
         case .favoriteFoldersListView:
-            return DemoViewController<FavoriteFoldersListDemoView>(constrainToBottomSafeArea: false)
+            let viewController = DemoViewController<FavoriteFoldersListDemoView>(constrainToBottomSafeArea: false)
+            viewController.title = "Favoritter"
+
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.navigationBar.barTintColor = .milk
+            navigationController.navigationBar.shadowImage = UIImage()
+
+            return navigationController
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:
@@ -205,6 +257,10 @@ public enum FullscreenViews: String, CaseIterable {
     case addressView
     case messageFormView
     case receiptView
+
+    public static var items: [FullscreenViews] {
+        return allCases.sorted { $0.rawValue < $1.rawValue }
+    }
 
     public var viewController: UIViewController {
         switch self {
@@ -256,35 +312,6 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<ReceiptViewDemoView>()
         case .addressView:
             return DemoViewController<AddressViewDemoView>()
-        }
-    }
-}
-
-public enum TableViewCellViews: String, CaseIterable {
-    case basicCell
-    case basicCellVariations
-    case checkboxCell
-    case checkboxSubtitleCell
-    case heartSubtitleCell
-    case iconTitleCell
-    case remoteImageCell
-
-    public var viewController: UIViewController {
-        switch self {
-        case .basicCell:
-            return DemoViewController<BasicCellDemoView>(withDismissButton: true)
-        case .basicCellVariations:
-            return DemoViewController<BasicCellVariationsDemoView>(withDismissButton: true)
-        case .checkboxCell:
-            return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
-        case .checkboxSubtitleCell:
-            return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
-        case .heartSubtitleCell:
-            return DemoViewController<HeartSubtitleCellDemoView>(withDismissButton: true)
-        case .iconTitleCell:
-            return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
-        case .remoteImageCell:
-            return DemoViewController<RemoteImageCellDemoView>(withDismissButton: true)
         }
     }
 }

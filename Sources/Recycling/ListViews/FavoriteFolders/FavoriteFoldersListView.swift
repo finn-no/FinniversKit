@@ -17,12 +17,14 @@ public protocol FavoriteFoldersListViewDataSource: AnyObject {
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, viewModelAtIndex index: Int) -> FavoriteFolderViewModel
     func favoriteFoldersListView(
         _ view: FavoriteFoldersListView,
-        loadImageForModel model: RemoteImageTableViewCellViewModel,
+        loadImageWithPath imagePath: String,
+        imageWidth: CGFloat,
         completion: @escaping ((UIImage?) -> Void)
     )
     func favoriteFoldersListView(
         _ view: FavoriteFoldersListView,
-        cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel
+        cancelLoadingImageWithPath imagePath: String,
+        imageWidth: CGFloat
     )
 }
 
@@ -62,6 +64,7 @@ public class FavoriteFoldersListView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.keyboardDismissMode = .onDrag
+        tableView.allowsMultipleSelectionDuringEditing = true
         tableView.register(AddFavoriteFolderViewCell.self)
         tableView.register(FavoriteFolderSelectableViewCell.self)
         return tableView
@@ -80,6 +83,7 @@ public class FavoriteFoldersListView: UIView {
         return emptyView
     }()
 
+    private lazy var searchBarTop = searchBar.topAnchor.constraint(equalTo: topAnchor)
     private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
 
     private lazy var footerHeight: CGFloat = {
@@ -102,13 +106,67 @@ public class FavoriteFoldersListView: UIView {
 
     public func reloadData() {
         showEmptyViewIfNeeded()
-        UIView.animate(withDuration: 0.35, animations: { [weak self] in
-            guard let self = self else { return }
-            self.footerViewTop.constant = self.isSearchActive ? -self.footerHeight : 0
-            self.layoutIfNeeded()
-        })
+
+        if !tableView.isEditing {
+            UIView.animate(withDuration: 0.35, animations: { [weak self] in
+                guard let self = self else { return }
+                self.footerViewTop.constant = self.isSearchActive ? -self.footerHeight : 0
+                self.layoutIfNeeded()
+            })
+        }
+
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
+    }
+
+    public func reloadRow(at index: Int, with animation: UITableView.RowAnimation = .none) {
+        let section = Section.folders.rawValue
+
+        guard index >= 0 && index < tableView(tableView, numberOfRowsInSection: section) else {
+            assertionFailure("Trying to reload cell at invalid index path")
+            return
+        }
+
+        let indexPath = IndexPath(row: index, section: section)
+        tableView.reloadRows(at: [indexPath], with: animation)
+    }
+
+    public func setEditing(_ editing: Bool) {
+        guard tableView.isEditing != editing else {
+            return
+        }
+
+        if isSearchActive {
+            searchBar.text = ""
+            searchBar.resignFirstResponder()
+        }
+
+        let numberOfItems = self.tableView(tableView, numberOfRowsInSection: Section.addButton.rawValue)
+        let performBatchUpdates = editing && numberOfItems == 1 || !editing && numberOfItems == 0
+
+        tableView.setEditing(editing, animated: true)
+        footerViewTop.constant = 0
+        searchBarTop.constant = editing ? -searchBar.frame.height : 0
+
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.layoutIfNeeded()
+        }
+
+        if #available(iOS 11.0, *), performBatchUpdates {
+            tableView.performBatchUpdates({ [weak self] in
+                let indexPaths = [IndexPath(row: 0, section: 0)]
+
+                if editing {
+                    self?.tableView.deleteRows(at: indexPaths, with: .top)
+                } else {
+                    self?.tableView.insertRows(at: indexPaths, with: .top)
+                }
+            }, completion: { [weak self] _ in
+                self?.tableView.reloadData()
+            })
+        } else {
+            tableView.reloadData()
+        }
     }
 
     // MARK: - Setup
@@ -124,7 +182,7 @@ public class FavoriteFoldersListView: UIView {
         addSubview(emptyView)
 
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: topAnchor),
+            searchBarTop,
             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
 
@@ -165,7 +223,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
         switch section {
         case .addButton:
-            return isSearchActive ? 0 : 1
+            return isSearchActive || tableView.isEditing ? 0 : 1
         case .folders:
             return dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0
         }
@@ -190,7 +248,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             cell.dataSource = self
 
             if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
-                cell.configure(with: viewModel)
+                cell.configure(with: viewModel, isEditing: tableView.isEditing, isEditable: indexPath.row != 0)
             }
 
             return cell
@@ -227,6 +285,18 @@ extension FavoriteFoldersListView: UITableViewDelegate {
 
         cell.loadImage()
     }
+
+    public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        guard tableView.isEditing else { return true }
+        guard let section = Section(rawValue: indexPath.section) else { return false }
+
+        switch section {
+        case .addButton:
+            return false
+        case .folders:
+            return indexPath.row != 0
+        }
+    }
 }
 
 // MARK: - FavoriteFoldersFooterViewDelegate
@@ -237,23 +307,16 @@ extension FavoriteFoldersListView: FavoriteFoldersFooterViewDelegate {
     }
 }
 
-// MARK: - RemoteImageTableViewCellDataSource
+// MARK: - RemoteImageViewDataSource
 
-extension FavoriteFoldersListView: RemoteImageTableViewCellDataSource {
-    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                         cachedImageForModel model: RemoteImageTableViewCellViewModel) -> UIImage? {
-        guard let imagePath = model.imagePath else {
-            return nil
-        }
-
+extension FavoriteFoldersListView: RemoteImageViewDataSource {
+    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
         return imageCache.image(forKey: imagePath)
     }
 
-    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                         loadImageForModel model: RemoteImageTableViewCellViewModel,
-                                         completion: @escaping ((UIImage?) -> Void)) {
-        dataSource?.favoriteFoldersListView(self, loadImageForModel: model, completion: { [weak self] image in
-            if let image = image, let imagePath = model.imagePath {
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.favoriteFoldersListView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] image in
+            if let image = image {
                 self?.imageCache.add(image, forKey: imagePath)
             }
 
@@ -261,9 +324,8 @@ extension FavoriteFoldersListView: RemoteImageTableViewCellDataSource {
         })
     }
 
-    public func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                         cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {
-        dataSource?.favoriteFoldersListView(self, cancelLoadingImageForModel: model)
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
+        dataSource?.favoriteFoldersListView(self, cancelLoadingImageWithPath: imagePath, imageWidth: imageWidth)
     }
 }
 
@@ -272,6 +334,10 @@ extension FavoriteFoldersListView: RemoteImageTableViewCellDataSource {
 extension FavoriteFoldersListView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.updateShadow(using: scrollView)
+
+        guard !tableView.isEditing else {
+            return
+        }
 
         let offset = scrollView.contentOffset.y * 1.5
         let minOffset = FavoriteFoldersListView.estimatedRowHeight * 1.5

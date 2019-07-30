@@ -65,9 +65,41 @@ import UIKit
         return UIColor(r: 246, g: 248, b: 251)!
     }
 
+    public class var midnightBackground: UIColor {
+        return UIColor(hex: "1D1D26")
+    }
+
+    public class var midnightSectionHeader: UIColor {
+        return UIColor(hex: "585E8A")
+    }
+
+    public class var midnightSectionSeparator: UIColor {
+        return UIColor(hex: "34343E")
+    }
+
     // swiftlint:disable:next identifier_name
     convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
+    }
+
+    /// Base initializer, it creates an instance of `UIColor` using an HEX string.
+    ///
+    /// - Parameter hex: The base HEX string to create the color.
+    convenience init(hex: String) {
+        let noHashString = hex.replacingOccurrences(of: "#", with: "")
+        let scanner = Scanner(string: noHashString)
+        scanner.charactersToBeSkipped = CharacterSet.symbols
+
+        var hexInt: UInt32 = 0
+        if scanner.scanHexInt32(&hexInt) {
+            let red = (hexInt >> 16) & 0xFF
+            let green = (hexInt >> 8) & 0xFF
+            let blue = (hexInt) & 0xFF
+
+            self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+        } else {
+            self.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        }
     }
 }
 

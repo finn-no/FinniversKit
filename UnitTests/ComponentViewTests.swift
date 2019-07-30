@@ -7,7 +7,7 @@ import FBSnapshotTestCase
 import FinniversKit
 
 class ComponentViewTests: FBSnapshotTestCase {
-    static var allViews = ComponentViews.allCases
+    static var allViews = ComponentViews.items
 
     override func setUp() {
         super.setUp()

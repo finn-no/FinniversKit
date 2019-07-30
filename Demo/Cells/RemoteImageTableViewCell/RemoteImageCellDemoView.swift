@@ -69,16 +69,9 @@ extension RemoteImageCellDemoView: UITableViewDataSource {
 
 // MARK: - RemoteImageTableViewCellDataSource
 
-extension RemoteImageCellDemoView: RemoteImageTableViewCellDataSource {
-    func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                  cachedImageForModel model: RemoteImageTableViewCellViewModel) -> UIImage? {
-        return nil
-    }
-
-    func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell,
-                                  loadImageForModel model: RemoteImageTableViewCellViewModel,
-                                  completion: @escaping ((UIImage?) -> Void)) {
-        guard let path = model.imagePath, let url = URL(string: path) else {
+extension RemoteImageCellDemoView: RemoteImageViewDataSource {
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        guard let url = URL(string: imagePath) else {
             completion(nil)
             return
         }
@@ -98,7 +91,11 @@ extension RemoteImageCellDemoView: RemoteImageTableViewCellDataSource {
         task.resume()
     }
 
-    func remoteImageTableViewCell(_ cell: RemoteImageTableViewCell, cancelLoadingImageForModel model: RemoteImageTableViewCellViewModel) {}
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+
+    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+        return nil
+    }
 }
 
 // MARK: - Private
