@@ -24,6 +24,11 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
+    private lazy var addressLabel = label(withFont: .detail, textColor: .stone, numberOfLines: 2)
+    private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2)
+    private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .licorice, numberOfLines: 0)
+    private lazy var descriptionSecondaryLabel = label(withFont: .detailStrong, textColor: .licorice, numberOfLines: 0)
+
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
@@ -38,38 +43,6 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         imageView.layer.cornerRadius = 16
         imageView.layer.masksToBounds = true
         return imageView
-    }()
-
-    private lazy var addressLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .detail
-        label.numberOfLines = 2
-        label.textColor = .stone
-        return label
-    }()
-
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .caption
-        label.textColor = .licorice
-        label.numberOfLines = 2
-        return label
-    }()
-
-    private lazy var descriptionPrimaryLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .bodyStrong
-        label.textColor = .licorice
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private lazy var descriptionSecondaryLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .detailStrong
-        label.textColor = .licorice
-        label.numberOfLines = 0
-        return label
     }()
 
     private lazy var moreButton: UIButton = {
@@ -212,5 +185,13 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     @objc private func moreButtonTapped() {
         delegate?.favoriteAdTableViewCellDidSelectMoreButton(self)
+    }
+
+    private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int) -> UILabel {
+        let label = UILabel(withAutoLayout: true)
+        label.font = font
+        label.textColor = textColor
+        label.numberOfLines = numberOfLines
+        return label
     }
 }
