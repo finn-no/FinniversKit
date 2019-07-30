@@ -66,6 +66,16 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         return label
     }()
 
+    private lazy var moreButton: UIButton = {
+        let button = UIButton(withAutoLayout: true)
+        let image = UIImage(named: .more).withRenderingMode(.alwaysTemplate)
+        button.setImage(image, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.tintColor = .stone
+        button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
     private lazy var statusRibbon: RibbonView = {
         let ribbon = RibbonView()
         ribbon.translatesAutoresizingMaskIntoConstraints = false
@@ -126,6 +136,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
         contentView.addSubview(remoteImageView)
         contentView.addSubview(statusRibbon)
+        contentView.addSubview(moreButton)
         contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
@@ -137,9 +148,14 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             statusRibbon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             statusRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
 
+            moreButton.widthAnchor.constraint(equalToConstant: 24),
+            moreButton.heightAnchor.constraint(equalToConstant: 24),
+            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            moreButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -40),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor, constant: -.mediumSpacing),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
 
             addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing)
@@ -184,5 +200,10 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         }
 
         remoteImageView.loadImage(for: imagePath, imageWidth: adImageWidth, loadingColor: loadingColor, fallbackImage: fallbackImage)
+    }
+
+    // MARK: - Private methods
+
+    @objc private func moreButtonTapped() {
     }
 }
