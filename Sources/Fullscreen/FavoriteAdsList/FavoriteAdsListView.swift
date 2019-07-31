@@ -32,9 +32,22 @@ public class FavoriteAdsListView: UIView {
     public weak var delegate: FavoriteAdsListViewDelegate?
     public weak var dataSource: FavoriteAdsListViewDataSource?
 
+    public var title: String = "" {
+        didSet { tableHeaderView.title = title }
+    }
+
+    public var subtitle: String = "" {
+        didSet { tableHeaderView.subtitle = subtitle }
+    }
+
+    public var searchBarPlaceholder: String = "" {
+        didSet { tableHeaderView.searchBarPlaceholder = searchBarPlaceholder }
+    }
+
     // MARK: - Private properties
 
     private let imageCache = ImageMemoryCache()
+    private var didSetTableHeader = false
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
@@ -43,6 +56,11 @@ public class FavoriteAdsListView: UIView {
         tableView.dataSource = self
         tableView.separatorInset = .leadingInset(frame.width)
         return tableView
+    }()
+
+    private lazy var tableHeaderView: FavoriteAdsListTableHeader = {
+        let tableHeader = FavoriteAdsListTableHeader(withAutoLayout: true)
+        return tableHeader
     }()
 
     // MARK: - Init
@@ -59,6 +77,27 @@ public class FavoriteAdsListView: UIView {
     private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
+    }
+
+    // MARK: - Overrides
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if !didSetTableHeader {
+            tableView.tableHeaderView = tableHeaderView
+
+            NSLayoutConstraint.activate([
+                tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: .mediumSpacing),
+                tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+                tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor, constant: -(.mediumSpacing * 2))
+            ])
+
+            tableView.tableHeaderView?.layoutIfNeeded()
+            tableView.tableHeaderView = tableView.tableHeaderView
+
+            didSetTableHeader = true
+        }
     }
 }
 
