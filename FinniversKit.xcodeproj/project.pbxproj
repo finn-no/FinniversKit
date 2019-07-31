@@ -243,6 +243,7 @@
 		9A37DACD70E4383536D5312B /* FeedbackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */; };
 		9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */; };
 		9A37DDB3353F56739B23D22B /* FavoriteAdCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DECC59A6DBC8F54A7614 /* FavoriteAdCellDemoView.swift */; };
+		9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD79F67FC522D64A127E /* FavoriteAdsListView.swift */; };
 		9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */; };
 		9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */; };
 		9BC33DE322D71986007CCD65 /* LoginEntryViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE222D71986007CCD65 /* LoginEntryViewDemoView.swift */; };
@@ -682,6 +683,7 @@
 		9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		9A37D9749A60B9BFD125F483 /* FeedbackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdViewModel.swift; sourceTree = "<group>"; };
+		9A37DD79F67FC522D64A127E /* FavoriteAdsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListView.swift; sourceTree = "<group>"; };
 		9A37DECC59A6DBC8F54A7614 /* FavoriteAdCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdCellDemoView.swift; sourceTree = "<group>"; };
 		9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtensions.swift; sourceTree = "<group>"; };
 		9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchorExtensions.swift; sourceTree = "<group>"; };
@@ -1687,6 +1689,7 @@
 				F2B1A19022D503BE00713FC2 /* Receipt */,
 				43BACE6721117CF90052114C /* Review */,
 				43EA978021941E63003A548A /* SoldView */,
+				9A37D4A128C47173977AAE19 /* FavoriteAdsList */,
 			);
 			path = Fullscreen;
 			sourceTree = "<group>";
@@ -1870,6 +1873,14 @@
 				89A7A641225344600053D33B /* NativeAdvertDemoView.swift */,
 			);
 			path = NativeAdvert;
+			sourceTree = "<group>";
+		};
+		9A37D4A128C47173977AAE19 /* FavoriteAdsList */ = {
+			isa = PBXGroup;
+			children = (
+				9A37DD79F67FC522D64A127E /* FavoriteAdsListView.swift */,
+			);
+			path = FavoriteAdsList;
 			sourceTree = "<group>";
 		};
 		9A37D8B81C3158FE1373F3E4 /* RemoteImageView */ = {
@@ -3707,6 +3718,7 @@
 				9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */,
 				9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */,
 				9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */,
+				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
