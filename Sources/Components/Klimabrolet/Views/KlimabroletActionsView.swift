@@ -14,7 +14,7 @@ class KlimabroletActionsView: UIView {
 
     // MARK: - Private subviews
 
-    private(set) lazy var primaryButton: UIButton = {
+    private lazy var primaryButton: UIButton = {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.numberOfLines = 0
@@ -22,7 +22,7 @@ class KlimabroletActionsView: UIView {
         return button
     }()
 
-    private(set) lazy var secondaryButton: UIButton = {
+    private lazy var secondaryButton: UIButton = {
         let button = Button(style: .flat)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleTapOnSecondaryButton), for: .touchUpInside)
