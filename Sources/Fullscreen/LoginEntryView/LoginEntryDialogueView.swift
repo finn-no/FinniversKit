@@ -7,14 +7,6 @@ import UIKit
 class LoginEntryDialogueView: UIView {
     // MARK: - Internal properties
 
-    var model: LoginEntryViewModel? {
-        didSet {
-            titleLabel.text = model?.title
-            detailLabel.text = model?.detail
-            loginButton.setTitle(model?.loginButtonTitle, for: .normal)
-            registerButton.setTitle(model?.registerButtonTitle, for: .normal)
-        }
-    }
     weak var delegate: LoginEntryViewDelegate?
 
     // MARK: - Private properties
@@ -78,6 +70,15 @@ class LoginEntryDialogueView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+
+    // MARK: - Internal methods
+
+    func configure(with model: LoginEntryViewModel) {
+        titleLabel.text = model.title
+        detailLabel.text = model.detail
+        loginButton.setTitle(model.loginButtonTitle, for: .normal)
+        registerButton.setTitle(model.registerButtonTitle, for: .normal)
     }
 
     // MARK: - Private methods

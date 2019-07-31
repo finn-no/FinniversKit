@@ -19,12 +19,6 @@ public protocol LoginEntryViewDelegate: AnyObject {
 public class LoginEntryView: UIView {
     // MARK: - Public properties
 
-    public var model: LoginEntryViewModel? {
-        didSet {
-            loginDialogue.model = model
-        }
-    }
-
     public weak var delegate: LoginEntryViewDelegate? {
         didSet {
             loginDialogue.delegate = delegate
@@ -59,6 +53,12 @@ public class LoginEntryView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+
+    // MARK: - Public methods
+
+    public func configure(with model: LoginEntryViewModel) {
+        loginDialogue.configure(with: model)
     }
 
     // MARK: - Private methods
