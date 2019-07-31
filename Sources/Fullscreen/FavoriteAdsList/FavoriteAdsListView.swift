@@ -7,6 +7,7 @@ import UIKit
 public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAtIndex index: Int)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAtIndex index: Int)
+    func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
 }
 
 public protocol FavoriteAdsListViewDataSource: AnyObject {
@@ -44,6 +45,10 @@ public class FavoriteAdsListView: UIView {
         didSet { tableHeaderView.searchBarPlaceholder = searchBarPlaceholder }
     }
 
+    public var sortingTitle: String = "" {
+        didSet { tableHeaderView.sortingTitle = sortingTitle }
+    }
+
     // MARK: - Private properties
 
     private let imageCache = ImageMemoryCache()
@@ -60,6 +65,7 @@ public class FavoriteAdsListView: UIView {
 
     private lazy var tableHeaderView: FavoriteAdsListTableHeader = {
         let tableHeader = FavoriteAdsListTableHeader(withAutoLayout: true)
+        tableHeader.delegate = self
         return tableHeader
     }()
 
@@ -167,5 +173,13 @@ extension FavoriteAdsListView: RemoteImageViewDataSource {
 
     public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
         dataSource?.favoriteAdsListView(self, cancelLoadingImageWithPath: imagePath, imageWidth: imageWidth)
+    }
+}
+
+// MARK: - FavoriteAdsListTableHeaderDelegate
+
+extension FavoriteAdsListView: FavoriteAdsListTableHeaderDelegate {
+    func favoriteAdsListTableHeaderDidSelectSortingView(_ tableHeader: FavoriteAdsListTableHeader) {
+        delegate?.favoriteAdsListViewDidSelectSortButton(self)
     }
 }
