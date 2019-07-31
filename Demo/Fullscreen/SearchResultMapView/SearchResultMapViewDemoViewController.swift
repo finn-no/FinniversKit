@@ -81,7 +81,7 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
 extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
-    public func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView) {
+    public func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView, mapSettingsButtonView: MapSettingsButton) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
         let cancel = UIAlertAction(title: "Avbryt", style: .cancel, handler: nil)

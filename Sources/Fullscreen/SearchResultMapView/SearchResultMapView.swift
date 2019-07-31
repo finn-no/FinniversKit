@@ -10,7 +10,7 @@ public protocol SearchResultMapAnnotation: MKAnnotation {
 }
 
 public protocol SearchResultMapViewDelegate: AnyObject {
-    func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView)
+    func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView, mapSettingsButtonView: MapSettingsButton)
     func searchResultMapViewDidSelectCenterMapButton(_ view: SearchResultMapView)
     func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView)
     func searchResultMapViewRegionWillChangeDueToUserInteraction(_ view: SearchResultMapView)
@@ -120,7 +120,7 @@ public final class SearchResultMapView: UIView {
 
 extension SearchResultMapView: MapSettingsButtonDelegate {
     public func mapSettingsButtonDidSelectChangeMapTypeButton(_ view: MapSettingsButton) {
-        delegate?.searchResultMapViewDidSelectChangeMapTypeButton(self)
+        delegate?.searchResultMapViewDidSelectChangeMapTypeButton(self, mapSettingsButtonView: view)
     }
 
     public func mapSettingsButtonDidSelectCenterMapButton(_ view: MapSettingsButton) {
