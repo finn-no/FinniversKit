@@ -87,7 +87,7 @@ public class FavoriteFoldersListView: UIView {
     private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
 
     private lazy var footerHeight: CGFloat = {
-        return 56 + (viewModel.useSafeAreaInsets ? windowSafeAreaInsets.bottom : 0)
+        return 56 + (viewModel.addBottomSafeAreaInset ? windowSafeAreaInsets.bottom : 0)
     }()
 
     // MARK: - Init

@@ -6,7 +6,7 @@ public struct FavoriteFoldersListViewModel {
     public let searchBarPlaceholder: String
     public let addFolderText: String
     public let emptyViewBodyPrefix: String
-    public let useSafeAreaInsets: Bool
+    public let addBottomSafeAreaInset: Bool
 
     // MARK: - Init
 
@@ -14,11 +14,11 @@ public struct FavoriteFoldersListViewModel {
         searchBarPlaceholder: String,
         addFolderText: String,
         emptyViewBodyPrefix: String,
-        useSafeAreaInsets: Bool = true
+        addBottomSafeAreaInset: Bool = true
     ) {
         self.searchBarPlaceholder = searchBarPlaceholder
         self.addFolderText = addFolderText
         self.emptyViewBodyPrefix = emptyViewBodyPrefix
-        self.useSafeAreaInsets = useSafeAreaInsets
+        self.addBottomSafeAreaInset = addBottomSafeAreaInset
     }
 }
