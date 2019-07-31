@@ -18,7 +18,7 @@ final class EarthHourTagView: UIView {
         return imageView
     }()
 
-    private lazy var stackView: UIStackView = {
+    private(set) lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
         stackView.spacing = .smallSpacing
