@@ -14,6 +14,7 @@ public protocol LoginEntryViewModel {
 public protocol LoginEntryViewDelegate: AnyObject {
     func loginEntryViewDidSelectLoginButton()
     func loginEntryViewDidSelectRegisterButton()
+    func loginEntryViewDidSelectSettingsButton()
 }
 
 public class LoginEntryView: UIView {
@@ -33,6 +34,17 @@ public class LoginEntryView: UIView {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .marble
         return view
+    }()
+
+    private lazy var settingsButton: UIButton = {
+        let button = UIButton(withAutoLayout: true)
+        button.setImage(UIImage(named: FinniversImageAsset.settings).withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .stone
+        button.isHidden = true
+        button.addTarget(self, action: #selector(handleTapOnSettingsButton), for: .touchUpInside)
+        button.contentEdgeInsets = UIEdgeInsets(all: .mediumLargeSpacing)
+
+        return button
     }()
 
     private lazy var loginDialogue: LoginEntryDialogueView = {
@@ -65,10 +77,24 @@ public class LoginEntryView: UIView {
 
     private func setup() {
         addSubview(scrollView)
+        addSubview(settingsButton)
+
         scrollView.fillInSuperview()
 
         scrollView.addSubview(contentView)
         contentView.addSubview(loginDialogue)
+
+        if #available(iOS 11.0, *) {
+            NSLayoutConstraint.activate([
+                settingsButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                settingsButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                settingsButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+                settingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+            ])
+        }
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -98,5 +124,9 @@ public class LoginEntryView: UIView {
         }
 
         NSLayoutConstraint.activate(dialogueConstraints)
+    }
+
+    @objc private func handleTapOnSettingsButton() {
+        delegate?.loginEntryViewDidSelectSettingsButton()
     }
 }
