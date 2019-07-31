@@ -18,7 +18,7 @@ struct KlimabroletData {
 
     struct Event {
         let name: String
-        let url: URL? = URL(string: "https://klimabrolet.no/faq/")
+        let url: URL? = URL(string: "https://klimabrolet.no/faq")
     }
 
     static let events: [Event] = [
