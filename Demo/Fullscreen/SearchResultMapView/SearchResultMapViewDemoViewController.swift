@@ -50,9 +50,9 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
         view.addSubview(searchResultMapView)
 
         let location = CLLocationCoordinate2D(latitude: 59.9458, longitude: 10.7800)
-        searchResultMapView.configure(withDefaultRegion: defaultRegion)
+        searchResultMapView.configure(withInitialRegion: defaultRegion, andShowingUserLocation: true)
         searchResultMapView.setMapOverlay(demoTileOverlay)
-        searchResultMapView.centerMap(location: location, regionDistance: 1000, animated: true)
+        searchResultMapView.centerMapOnLocation(location, regionDistance: 1000, animated: true)
         demoAnnotations.forEach { searchResultMapView.addAnnotation($0) }
 
         if #available(iOS 11.0, *) {
@@ -99,8 +99,8 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
         present(alert, animated: true, completion: nil)
     }
 
-    public func searchResultMapViewWillRenderAnnotation(_ view: SearchResultMapView, annotation: MKAnnotation) -> MKAnnotationView? {
-        return nil
+    public func searchResultMapViewDidSelectCenterMapButton(_ view: SearchResultMapView) {
+        view.centerMapOnUserLocation(regionDistance: 1000, animated: true)
     }
 
     public func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView) {
@@ -114,7 +114,7 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
     }
 
     public func searchResultMapViewRegionDidChange(_ view: SearchResultMapView, toVisibleMapRect visibleMapRect: MKMapRect) {
-        
+
     }
 
     public func searchResultMapViewDidUpdateUserLocation(_ view: SearchResultMapView, userLocation: MKUserLocation) {
