@@ -52,6 +52,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         button.imageView?.contentMode = .scaleAspectFit
         button.tintColor = .stone
         button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
+        button.contentEdgeInsets = UIEdgeInsets(vertical: 10, horizontal: 8)
         return button
     }()
 
@@ -123,14 +124,14 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             statusRibbon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             statusRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
 
-            moreButton.widthAnchor.constraint(equalToConstant: 24),
-            moreButton.heightAnchor.constraint(equalToConstant: 24),
-            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            moreButton.widthAnchor.constraint(equalToConstant: 40),
+            moreButton.heightAnchor.constraint(equalToConstant: 44),
+            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             moreButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor, constant: -.mediumSpacing),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
 
             addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing)
