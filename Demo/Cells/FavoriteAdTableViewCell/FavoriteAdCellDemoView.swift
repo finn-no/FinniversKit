@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-private struct ViewModel: FavoriteAdTableViewCellViewModel {
+private struct ViewModel: FavoriteAdViewModel {
     let addressText: String?
     let titleText: String?
     let descriptionPrimaryText: String?

@@ -58,7 +58,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     private let statusRibbon = RibbonView(withAutoLayout: true)
 
-    private var viewModel: FavoriteAdTableViewCellViewModel?
+    private var viewModel: FavoriteAdViewModel?
     private let fallbackImage: UIImage = UIImage(named: .noImage)
     private let adImageWidth: CGFloat = 80
 
@@ -140,7 +140,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: FavoriteAdTableViewCellViewModel) {
+    public func configure(with viewModel: FavoriteAdViewModel) {
         separatorInset = .leadingInset(.mediumLargeSpacing * 2 + adImageWidth)
 
         self.viewModel = viewModel
