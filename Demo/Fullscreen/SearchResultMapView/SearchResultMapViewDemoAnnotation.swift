@@ -5,7 +5,7 @@
 import MapKit
 import FinniversKit
 
-public class SearchResultMapViewDemoAnnotation: NSObject, SearchResultMapAnnotation {
+public class SearchResultMapViewDemoAnnotation: NSObject, SearchResultMapViewAnnotation {
 
     public var isCluster: Bool
 

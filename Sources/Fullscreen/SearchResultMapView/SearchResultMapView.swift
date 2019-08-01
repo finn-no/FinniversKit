@@ -92,7 +92,7 @@ public final class SearchResultMapView: UIView {
         mapView.removeOverlay(overlay)
     }
 
-    public func addAnnotation(_ annotation: SearchResultMapAnnotation) {
+    public func addAnnotation(_ annotation: SearchResultMapViewAnnotation) {
         mapView.addAnnotation(annotation)
     }
 
@@ -101,7 +101,7 @@ public final class SearchResultMapView: UIView {
     }
 
     public func focusAnnotations() {
-        let annotationsToShow = mapView.annotations.filter { $0 is SearchResultMapAnnotation }
+        let annotationsToShow = mapView.annotations.filter { $0 is SearchResultMapViewAnnotation }
         mapView.showAnnotations(annotationsToShow, animated: true)
     }
 
@@ -150,7 +150,7 @@ extension SearchResultMapView: MKMapViewDelegate {
     public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
 
-        if let annotation = annotation as? SearchResultMapAnnotation {
+        if let annotation = annotation as? SearchResultMapViewAnnotation {
             let marker = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.isCluster ? "clusterPOI" : "POI")
             marker.image = annotation.image
             marker.accessibilityIdentifier = "annotationPOI"

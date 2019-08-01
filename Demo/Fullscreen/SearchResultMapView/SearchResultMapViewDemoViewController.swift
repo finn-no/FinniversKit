@@ -102,7 +102,7 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
     }
 
     public func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView) {
-        if (annotationView.annotation as? SearchResultMapAnnotation) != nil {
+        if (annotationView.annotation as? SearchResultMapViewAnnotation) != nil {
             print("Did press a SearchResultMapAnnotation")
         }
     }

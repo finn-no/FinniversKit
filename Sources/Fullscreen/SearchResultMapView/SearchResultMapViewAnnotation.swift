@@ -4,7 +4,7 @@
 
 import MapKit
 
-public protocol SearchResultMapAnnotation: MKAnnotation {
+public protocol SearchResultMapViewAnnotation: MKAnnotation {
     var isCluster: Bool { get }
     var image: UIImage { get }
 }
