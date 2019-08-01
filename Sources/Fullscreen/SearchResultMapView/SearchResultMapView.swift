@@ -4,11 +4,6 @@
 
 import MapKit
 
-public protocol SearchResultMapAnnotation: MKAnnotation {
-    var isCluster: Bool { get }
-    var image: UIImage { get }
-}
-
 public protocol SearchResultMapViewDelegate: AnyObject {
     func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView, mapSettingsButtonView: MapSettingsButton)
     func searchResultMapViewDidSelectCenterMapButton(_ view: SearchResultMapView)
@@ -116,6 +111,7 @@ public final class SearchResultMapView: UIView {
         backgroundColor = .milk
 
         addSubview(mapView)
+
         mapView.fillInSuperview()
         mapView.addSubview(mapSettingsButton)
 
@@ -130,6 +126,7 @@ public final class SearchResultMapView: UIView {
 // MARK: - Extensions
 
 extension SearchResultMapView: MapSettingsButtonDelegate {
+
     public func mapSettingsButtonDidSelectChangeMapTypeButton(_ view: MapSettingsButton) {
         delegate?.searchResultMapViewDidSelectChangeMapTypeButton(self, mapSettingsButtonView: view)
     }
@@ -137,6 +134,7 @@ extension SearchResultMapView: MapSettingsButtonDelegate {
     public func mapSettingsButtonDidSelectCenterMapButton(_ view: MapSettingsButton) {
         delegate?.searchResultMapViewDidSelectCenterMapButton(self)
     }
+
 }
 
 extension SearchResultMapView: MKMapViewDelegate {

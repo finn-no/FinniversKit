@@ -49,6 +49,7 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
         searchResultMapView.configure(withInitialRegion: region, andShowingUserLocation: true)
         searchResultMapView.setMapOverlay(demoTileOverlay)
+
         demoAnnotations.forEach { searchResultMapView.addAnnotation($0) }
 
         if #available(iOS 11.0, *) {
@@ -101,8 +102,8 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
     }
 
     public func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView) {
-        if (annotationView.annotation as? SearchResultMapViewDemoAnnotation) != nil {
-            print("Did press annotation")
+        if (annotationView.annotation as? SearchResultMapAnnotation) != nil {
+            print("Did press a SearchResultMapAnnotation")
         }
     }
 
