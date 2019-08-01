@@ -74,7 +74,7 @@ public final class SearchResultMapView: UIView {
         mapView.removeOverlay(overlay)
     }
 
-    public func addAnnotation(_ annotation: MKAnnotation) {
+    public func addAnnotation(_ annotation: SearchResultMapAnnotation) {
         mapView.addAnnotation(annotation)
     }
 
