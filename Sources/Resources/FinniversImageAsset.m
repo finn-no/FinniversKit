@@ -29,6 +29,7 @@ NSString *const FinniversImageAssetcheckCircleFilledMini = @"checkCircleFilledMi
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
 NSString *const FinniversImageAssetclassifieds = @"classifieds";
 NSString *const FinniversImageAssetclose = @"close";
+NSString *const FinniversImageAssetcross = @"cross";
 NSString *const FinniversImageAssetdistance = @"distance";
 NSString *const FinniversImageAssetdownload = @"download";
 NSString *const FinniversImageAssetearthHourClock = @"earthHourClock";
@@ -64,6 +65,7 @@ NSString *const FinniversImageAsseticonRealestatePrice = @"iconRealestatePrice";
 NSString *const FinniversImageAssetimportant = @"important";
 NSString *const FinniversImageAssetinfo = @"info";
 NSString *const FinniversImageAssetjobs = @"jobs";
+NSString *const FinniversImageAssetklimaboletBanner = @"klimaboletBanner";
 NSString *const FinniversImageAssetlistView = @"listView";
 NSString *const FinniversImageAssetmagnifyingGlass = @"magnifyingGlass";
 NSString *const FinniversImageAssetmapDirections = @"mapDirections";
@@ -154,6 +156,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetcheckmarkBig,
              FinniversImageAssetclassifieds,
              FinniversImageAssetclose,
+             FinniversImageAssetcross,
              FinniversImageAssetdistance,
              FinniversImageAssetdownload,
              FinniversImageAssetearthHourClock,
@@ -189,6 +192,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetimportant,
              FinniversImageAssetinfo,
              FinniversImageAssetjobs,
+             FinniversImageAssetklimaboletBanner,
              FinniversImageAssetlistView,
              FinniversImageAssetmagnifyingGlass,
              FinniversImageAssetmapDirections,

@@ -55,6 +55,7 @@ public enum ComponentViews: String, CaseIterable {
     case feedbackView
     case happinessRating
     case earthHour
+    case klimabrolet
     case stepIndicator
     case nativeAdvert
     case callout
@@ -129,6 +130,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<HappinessRatingDemoView>(withDismissButton: true)
         case .earthHour:
             return DemoViewController<EarthHourDemoView>()
+        case .klimabrolet:
+            return KlimabroletDemoViewController(usingDoubleTapToDismiss: false)
         case .stepIndicator:
             return DemoViewController<StepIndicatorDemoView>(withDismissButton: true)
         case .nativeAdvert:
@@ -159,6 +162,7 @@ public enum Cells: String, CaseIterable {
     case heartSubtitleCell
     case iconTitleCell
     case remoteImageCell
+    case favoriteAdCell
 
     public static var items: [Cells] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -180,6 +184,8 @@ public enum Cells: String, CaseIterable {
             return DemoViewController<IconTitleCellDemoView>(withDismissButton: true)
         case .remoteImageCell:
             return DemoViewController<RemoteImageCellDemoView>(withDismissButton: true)
+        case .favoriteAdCell:
+            return DemoViewController<FavoriteAdCellDemoView>(withDismissButton: true)
         }
     }
 }
