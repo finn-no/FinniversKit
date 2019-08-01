@@ -26,9 +26,14 @@ class LoginEntryDemoPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.addSubview(loginEntryView)
-        loginEntryView.fillInSuperview()
+
+        NSLayoutConstraint.activate([
+            loginEntryView.topAnchor.constraint(equalTo: view.topAnchor),
+            loginEntryView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loginEntryView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loginEntryView.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor),
+        ])
     }
 
     func setup() {

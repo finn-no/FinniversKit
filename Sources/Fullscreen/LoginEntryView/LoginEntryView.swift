@@ -94,7 +94,7 @@ public class LoginEntryView: UIView {
         } else {
             NSLayoutConstraint.activate([
                 settingsButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-                settingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing)
+                settingsButton.trailingAnchor.constraint(equalTo: trailingAnchor)
             ])
         }
 
