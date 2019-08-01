@@ -7,9 +7,15 @@ import FinniversKit
 struct LoginEntryDemoData: LoginEntryViewModel {
     let title: String
     let detail: String
+    let includeSettings: Bool
     let loginButtonTitle: String = "Logg inn"
     let registerButtonTitle: String = "Opprett en konto"
 
+    init(title: String, detail: String, includeSettings: Bool = false) {
+        self.title = title
+        self.detail = detail
+        self.includeSettings = includeSettings
+    }
 }
 
 extension LoginEntryDemoData {

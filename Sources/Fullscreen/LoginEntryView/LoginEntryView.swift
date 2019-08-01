@@ -7,6 +7,7 @@ import UIKit
 public protocol LoginEntryViewModel {
     var title: String { get }
     var detail: String { get }
+    var includeSettings: Bool { get }
     var loginButtonTitle: String { get }
     var registerButtonTitle: String { get }
 }
@@ -71,6 +72,7 @@ public class LoginEntryView: UIView {
 
     public func configure(with model: LoginEntryViewModel) {
         loginDialogue.configure(with: model)
+        settingsButton.isHidden = !model.includeSettings
     }
 
     // MARK: - Private methods
