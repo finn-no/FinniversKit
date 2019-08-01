@@ -13,8 +13,10 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
 }
 
 public protocol FavoriteAdsListViewDataSource: AnyObject {
-    func numberOfItems(inFavoriteAdsListView view: FavoriteAdsListView) -> Int
-    func favoriteAdsListView(_ view: FavoriteAdsListView, viewModelAtIndex index: Int) -> FavoriteAdViewModel
+    func numberOfSections(inFavoriteAdsListView view: FavoriteAdsListView) -> Int
+    func numberOfItems(inFavoriteAdsListView view: FavoriteAdsListView, forSection section: Int) -> Int
+    func favoriteAdsListView(_ view: FavoriteAdsListView, titleForHeaderInSection section: Int) -> String?
+    func favoriteAdsListView(_ view: FavoriteAdsListView, viewModelFor indexPath: IndexPath) -> FavoriteAdViewModel
     func favoriteAdsListView(_ view: FavoriteAdsListView,
                              loadImageWithPath imagePath: String,
                              imageWidth: CGFloat,
@@ -57,6 +59,7 @@ public class FavoriteAdsListView: UIView {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
         tableView.register(FavoriteAdTableViewCell.self)
+        tableView.register(FavoriteAdsSectionHeaderView.self)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = .leadingInset(frame.width)
@@ -107,18 +110,19 @@ public class FavoriteAdsListView: UIView {
             didSetTableHeader = true
         }
     }
+
+    // MARK: - Reload
+
+    public func reloadData() {
+        tableView.setContentOffset(.zero, animated: false)
+        tableView.reloadData()
+    }
 }
 
 // MARK: - UITableViewDelegate
 
 extension FavoriteAdsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let isLastCell = indexPath.row + 1 == dataSource?.numberOfItems(inFavoriteAdsListView: self)
-
-        if isLastCell {
-            cell.separatorInset = .leadingInset(frame.width)
-        }
-
         if let cell = cell as? FavoriteAdTableViewCell {
             cell.loadImage()
         }
@@ -127,13 +131,25 @@ extension FavoriteAdsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let sectionTitle = dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) else { return nil }
+
+        let headerView = tableView.dequeue(FavoriteAdsSectionHeaderView.self)
+        headerView.configure(title: sectionTitle)
+        return headerView
+    }
 }
 
 // MARK: - UITableViewDataSource
 
 extension FavoriteAdsListView: UITableViewDataSource {
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return dataSource?.numberOfSections(inFavoriteAdsListView: self) ?? 0
+    }
+
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inFavoriteAdsListView: self) ?? 0
+        return dataSource?.numberOfItems(inFavoriteAdsListView: self, forSection: section) ?? 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -145,7 +161,7 @@ extension FavoriteAdsListView: UITableViewDataSource {
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
         cell.loadingColor = colors[indexPath.row % colors.count]
 
-        if let viewModel = dataSource?.favoriteAdsListView(self, viewModelAtIndex: indexPath.row) {
+        if let viewModel = dataSource?.favoriteAdsListView(self, viewModelFor: indexPath) {
             cell.configure(with: viewModel)
         }
         return cell

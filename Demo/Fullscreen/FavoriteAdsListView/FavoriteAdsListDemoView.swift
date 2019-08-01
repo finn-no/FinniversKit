@@ -21,7 +21,7 @@ class FavoriteAdsListDemoView: UIView {
         view.title = "Mine funn"
         view.subtitle = "\(viewModels.count) favoritter"
         view.searchBarPlaceholder = "Søk etter en av dine favoritter"
-        view.sortingTitle = "Sist lagt til"
+        view.sortingTitle = currentSorting.rawValue
         return view
     }()
 
@@ -55,6 +55,7 @@ extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
         }
         view.sortingTitle = currentSorting.rawValue
         sectionDataSource.sort(ads: viewModels, by: currentSorting)
+        view.reloadData()
     }
 
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView) {}
@@ -65,12 +66,23 @@ extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
 // MARK: - FavoriteAdsListViewDataSource
 
 extension FavoriteAdsListDemoView: FavoriteAdsListViewDataSource {
-    func numberOfItems(inFavoriteAdsListView view: FavoriteAdsListView) -> Int {
-        return viewModels.count
+    func favoriteAdsListView(_ view: FavoriteAdsListView, titleForHeaderInSection section: Int) -> String? {
+        let section = sectionDataSource.sections[section]
+        return section.sectionTitle
     }
 
-    func favoriteAdsListView(_ view: FavoriteAdsListView, viewModelAtIndex index: Int) -> FavoriteAdViewModel {
-        return viewModels[index]
+    func numberOfSections(inFavoriteAdsListView view: FavoriteAdsListView) -> Int {
+        return sectionDataSource.sections.count
+    }
+
+    func numberOfItems(inFavoriteAdsListView view: FavoriteAdsListView, forSection section: Int) -> Int {
+        let section = sectionDataSource.sections[section]
+        return section.ads.count
+    }
+
+    func favoriteAdsListView(_ view: FavoriteAdsListView, viewModelFor indexPath: IndexPath) -> FavoriteAdViewModel {
+        let section = sectionDataSource.sections[indexPath.section]
+        return section.ads[indexPath.row]
     }
 
     func favoriteAdsListView(_ view: FavoriteAdsListView,
