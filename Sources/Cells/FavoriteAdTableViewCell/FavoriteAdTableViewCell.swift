@@ -157,10 +157,8 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             addressLabel.isHidden = false
         }
 
-        if let titleText = viewModel.titleText {
-            titleLabel.text = titleText
-            titleLabel.isHidden = false
-        }
+        titleLabel.text = viewModel.titleText
+        titleLabel.isHidden = false
 
         if let descriptionPrimaryText = viewModel.descriptionPrimaryText {
             descriptionPrimaryLabel.text = descriptionPrimaryText

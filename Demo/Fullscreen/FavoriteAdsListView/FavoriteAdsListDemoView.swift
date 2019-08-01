@@ -4,8 +4,15 @@
 
 import FinniversKit
 
+enum AdsSorting: String {
+    case lastAdded = "Sist lagt til"
+    case alphabetically = "Alfabetisk"
+}
+
 class FavoriteAdsListDemoView: UIView {
     private let viewModels = FavoriteAdsFactory.create()
+    private let sectionDataSource = FavoriteAdsDemoDataSource()
+    private var currentSorting: AdsSorting = .lastAdded
 
     private lazy var favoritesListView: FavoriteAdsListView = {
         let view = FavoriteAdsListView(withAutoLayout: true)
@@ -26,6 +33,7 @@ class FavoriteAdsListDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
+        sectionDataSource.sort(ads: viewModels, by: currentSorting)
         addSubview(favoritesListView)
         favoritesListView.fillInSuperview()
     }
@@ -39,7 +47,14 @@ extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAtIndex index: Int) {}
 
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView) {
-        view.sortingTitle = ["Sist lagt til", "Nærmest meg", "Sist oppdatert av selger", "Annonsestatus"].randomElement() ?? ""
+        switch currentSorting {
+        case .lastAdded:
+            currentSorting = .alphabetically
+        case .alphabetically:
+            currentSorting = .lastAdded
+        }
+        view.sortingTitle = currentSorting.rawValue
+        sectionDataSource.sort(ads: viewModels, by: currentSorting)
     }
 
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView) {}

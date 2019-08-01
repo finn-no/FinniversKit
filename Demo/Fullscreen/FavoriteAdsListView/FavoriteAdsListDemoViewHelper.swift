@@ -6,27 +6,28 @@ import FinniversKit
 
 struct FavoriteAd: FavoriteAdViewModel {
     let addressText: String?
-    let titleText: String?
+    let titleText: String
     let descriptionPrimaryText: String?
     let descriptionSecondaryText: String?
     let imagePath: String?
     let ribbonStyle: RibbonView.Style
     let ribbonTitle: String
+    let addedToFolderDate: Date
 }
 
 struct FavoriteAdsFactory {
     static func create() -> [FavoriteAd] {
         var favorites = [FavoriteAd]()
         for (index, title) in titles.enumerated() {
-            favorites.append(
-                FavoriteAd(addressText: addresses[index],
-                           titleText: title,
-                           descriptionPrimaryText: primaryDescriptions[index],
-                           descriptionSecondaryText: secondaryDescriptions[index],
-                           imagePath: imagePaths[index],
-                           ribbonStyle: ribbonStyles[index].style,
-                           ribbonTitle: ribbonStyles[index].title)
-            )
+            let ad = FavoriteAd(addressText: addresses[index],
+                                titleText: title,
+                                descriptionPrimaryText: primaryDescriptions[index],
+                                descriptionSecondaryText: secondaryDescriptions[index],
+                                imagePath: imagePaths[index],
+                                ribbonStyle: ribbonStyles[index].style,
+                                ribbonTitle: ribbonStyles[index].title,
+                                addedToFolderDate: addedToFolderDates[index])
+            favorites.append(ad)
         }
         return favorites
     }
@@ -100,6 +101,22 @@ struct FavoriteAdsFactory {
             (style: .success, title: "Aktiv"),
             (style: .disabled, title: "Deaktivert"),
             (style: .warning, title: "Solgt")
+        ]
+    }
+
+    private static var addedToFolderDates: [Date] {
+        let referenceDate = Date(timeIntervalSince1970: 1564653600) // 2019-08-01T12:00:00+0200
+        let oneDay: Double = 86400
+        let oneWeek: Double = 86400 * 7
+        let oneYear: Double = oneDay * 365
+        return [
+            referenceDate,
+            referenceDate.addingTimeInterval(-oneDay),
+            referenceDate.addingTimeInterval(-oneWeek),
+            referenceDate.addingTimeInterval(-(oneWeek * 4)),
+            referenceDate.addingTimeInterval(-(oneWeek * 26)),
+            referenceDate.addingTimeInterval(-(oneYear)),
+            referenceDate.addingTimeInterval(-(oneYear + oneWeek * 4)),
         ]
     }
 }
