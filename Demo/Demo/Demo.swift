@@ -285,7 +285,7 @@ public enum FullscreenViews: String, CaseIterable {
         case .registerView:
             return DemoViewController<RegisterViewDemoView>()
         case .loginEntryView:
-            return DemoViewController<LoginEntryViewDemoView>()
+            return LoginEntryViewDemoViewController(constrainToBottomSafeArea: false)
         case .loginView:
             return DemoViewController<LoginViewDemoView>()
         case .consentToggleView:

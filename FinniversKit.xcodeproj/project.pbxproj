@@ -252,12 +252,13 @@
 		9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */; };
 		9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */; };
 		9B239E1122E093E800A4E9D0 /* KlimabroletContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */; };
+		9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */; };
 		9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */; };
 		9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */; };
 		9B9287AB22F0593700FC7B69 /* KlimabroletData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */; };
 		9B9F8C1722F07B2100298CDB /* FeedbackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */; };
 		9BBC8AE122DF50E5003453B6 /* KlimabroletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC8AE022DF50E5003453B6 /* KlimabroletView.swift */; };
-		9BC33DE322D71986007CCD65 /* LoginEntryViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE222D71986007CCD65 /* LoginEntryViewDemoView.swift */; };
+		9BC33DE322D71986007CCD65 /* LoginEntryViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE222D71986007CCD65 /* LoginEntryViewDemoViewController.swift */; };
 		9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */; };
 		9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */; };
 		9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */; };
@@ -712,12 +713,13 @@
 		9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchorExtensions.swift; sourceTree = "<group>"; };
 		9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoboxView+Style.swift"; sourceTree = "<group>"; };
 		9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletContentView.swift; sourceTree = "<group>"; };
+		9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoPageViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletDemoViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
 		9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletData.swift; sourceTree = "<group>"; };
 		9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
 		9BBC8AE022DF50E5003453B6 /* KlimabroletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletView.swift; sourceTree = "<group>"; };
-		9BC33DE222D71986007CCD65 /* LoginEntryViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryViewDemoView.swift; sourceTree = "<group>"; };
+		9BC33DE222D71986007CCD65 /* LoginEntryViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryViewDemoViewController.swift; sourceTree = "<group>"; };
 		9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDialogueView.swift; sourceTree = "<group>"; };
 		9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoData.swift; sourceTree = "<group>"; };
@@ -2015,8 +2017,9 @@
 		9BC33DE122D7192F007CCD65 /* LoginEntry */ = {
 			isa = PBXGroup;
 			children = (
-				9BC33DE222D71986007CCD65 /* LoginEntryViewDemoView.swift */,
 				9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */,
+				9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */,
+				9BC33DE222D71986007CCD65 /* LoginEntryViewDemoViewController.swift */,
 			);
 			path = LoginEntry;
 			sourceTree = "<group>";
@@ -3445,6 +3448,7 @@
 				44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */,
 				44B94FE722E0AB6C0078A23C /* TweakingOptionCell.swift in Sources */,
 				9B9287AB22F0593700FC7B69 /* KlimabroletData.swift in Sources */,
+				9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */,
 				CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
@@ -3529,7 +3533,7 @@
 				8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
-				9BC33DE322D71986007CCD65 /* LoginEntryViewDemoView.swift in Sources */,
+				9BC33DE322D71986007CCD65 /* LoginEntryViewDemoViewController.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
 				F26852DF21F755B6000978C8 /* UserAdsListViewDemoView.swift in Sources */,
 				43EA9793219965F3003A548A /* SoldViewDemoView.swift in Sources */,
