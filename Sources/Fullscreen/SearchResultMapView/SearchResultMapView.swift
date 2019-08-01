@@ -14,7 +14,7 @@ public protocol SearchResultMapViewDelegate: AnyObject {
     func searchResultMapViewDidSelectCenterMapButton(_ view: SearchResultMapView)
     func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView)
     func searchResultMapViewRegionWillChangeDueToUserInteraction(_ view: SearchResultMapView)
-    func searchResultMapViewRegionDidChange(_ view: SearchResultMapView, toVisibleMapRect visibleMapRect: MKMapRect, withCenterCoordinate centerCoordinate: CLLocationCoordinate2D)
+    func searchResultMapViewRegionDidChange(_ view: SearchResultMapView)
     func searchResultMapViewDidUpdateUserLocation(_ view: SearchResultMapView, userLocation: MKUserLocation)
 }
 
@@ -26,6 +26,14 @@ public final class SearchResultMapView: UIView {
 
     public var zoomLevel: Double {
         return mapView.zoomLevel
+    }
+
+    public var centerCoordinate: CLLocationCoordinate2D {
+        return mapView.centerCoordinate
+    }
+
+    public var visibleMapRect: MKMapRect {
+        return mapView.visibleMapRect
     }
 
     private lazy var mapView: MKMapView = {
@@ -66,13 +74,14 @@ public final class SearchResultMapView: UIView {
         mapView.setRegion(region, animated: animated)
     }
 
-    public func setCenter(_ coordinate: CLLocationCoordinate2D, zoomLevel: Double, animated: Bool) {
-        mapView.setCenter(coordinate: coordinate, zoomLevel: zoomLevel, animated: animated)
+    public func setCenter(_ coordinate: CLLocationCoordinate2D, regionDistance: CLLocationDegrees, animated: Bool) {
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+        mapView.setRegion(region, animated: animated)
     }
 
-    public func setCenterOnUserLocation(zoomLevel: Double, animated: Bool) {
+    public func setCenterOnUserLocation(regionDistance: CLLocationDegrees, animated: Bool) {
         if mapView.userLocation.location != nil {
-            setCenter(mapView.userLocation.coordinate, zoomLevel: zoomLevel, animated: animated)
+            setCenter(mapView.userLocation.coordinate, regionDistance: regionDistance, animated: animated)
         }
     }
 
@@ -99,18 +108,6 @@ public final class SearchResultMapView: UIView {
     public func focusAnnotations() {
         let annotationsToShow = mapView.annotations.filter { $0 is SearchResultMapAnnotation }
         mapView.showAnnotations(annotationsToShow, animated: true)
-    }
-
-    public func mapViewCenterCoordinateIsSame(as coordinate: CLLocationCoordinate2D) -> Bool {
-        if coordinate.latitude != mapView.centerCoordinate.latitude {
-            return false
-        }
-
-        if coordinate.longitude != mapView.centerCoordinate.longitude {
-            return false
-        }
-
-        return true
     }
 
     // MARK: - Setup
@@ -181,7 +178,7 @@ extension SearchResultMapView: MKMapViewDelegate {
     }
 
     public func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        delegate?.searchResultMapViewRegionDidChange(self, toVisibleMapRect: mapView.visibleMapRect, withCenterCoordinate: mapView.centerCoordinate)
+        delegate?.searchResultMapViewRegionDidChange(self)
     }
 
     public func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {

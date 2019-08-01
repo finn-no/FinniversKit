@@ -97,7 +97,7 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
     public func searchResultMapViewDidSelectCenterMapButton(_ view: SearchResultMapView) {
         let location = CLLocationCoordinate2D(latitude: 59.9458, longitude: 10.7800)
-        view.setCenter(location, zoomLevel: 14, animated: true)
+        view.setCenter(location, regionDistance: 1000, animated: false)
     }
 
     public func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView) {
@@ -110,7 +110,7 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
     }
 
-    public func searchResultMapViewRegionDidChange(_ view: SearchResultMapView, toVisibleMapRect visibleMapRect: MKMapRect, withCenterCoordinate centerCoordinate: CLLocationCoordinate2D) {
+    public func searchResultMapViewRegionDidChange(_ view: SearchResultMapView) {
 
     }
 
