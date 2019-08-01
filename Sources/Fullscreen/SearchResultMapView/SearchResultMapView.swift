@@ -24,6 +24,10 @@ public final class SearchResultMapView: UIView {
 
     public weak var delegate: SearchResultMapViewDelegate?
 
+    public var zoomLevel: Double {
+        return mapView.zoomLevel
+    }
+
     private lazy var mapView: MKMapView = {
         let view = MKMapView()
         view.delegate = self
@@ -62,6 +66,16 @@ public final class SearchResultMapView: UIView {
         mapView.setRegion(region, animated: animated)
     }
 
+    public func setCenter(_ coordinate: CLLocationCoordinate2D, zoomLevel: Double, animated: Bool) {
+        mapView.setCenter(coordinate: coordinate, zoomLevel: zoomLevel, animated: animated)
+    }
+
+    public func setCenterOnUserLocation(zoomLevel: Double, animated: Bool) {
+        if mapView.userLocation.location != nil {
+            setCenter(mapView.userLocation.coordinate, zoomLevel: zoomLevel, animated: animated)
+        }
+    }
+
     public func setMapOverlay(_ newOverlay: MKTileOverlay) {
         if let lastOverlay = mapView.overlays.last {
             mapView.removeOverlay(lastOverlay)
@@ -97,22 +111,6 @@ public final class SearchResultMapView: UIView {
         }
 
         return true
-    }
-
-    public func getCurrentZoomLevel() -> Double {
-        return mapView.getCurrentZoomLevel()
-    }
-
-    public func centerMapOnLocation(_ location: CLLocationCoordinate2D, regionDistance: Double, animated: Bool) {
-        let meters: CLLocationDistance = regionDistance
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: meters, longitudinalMeters: meters)
-        mapView.setRegion(region, animated: animated)
-    }
-
-    public func centerMapOnUserLocation(regionDistance: Double, animated: Bool) {
-        if mapView.userLocation.location != nil {
-            centerMapOnLocation(mapView.userLocation.coordinate, regionDistance: regionDistance, animated: animated)
-        }
     }
 
     // MARK: - Setup

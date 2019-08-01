@@ -25,11 +25,6 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
     }()
 
-    private let defaultRegion = MKCoordinateRegion.init(
-        center: CLLocationCoordinate2D.init(latitude: 66.149068058495473, longitude: 17.653576306638673),
-        span: MKCoordinateSpan.init(latitudeDelta: 19.853012316209828, longitudeDelta: 28.124998591005721)
-    )
-
     private lazy var searchResultMapView: SearchResultMapView = {
         let view = SearchResultMapView(withAutoLayout: true)
         view.delegate = self
@@ -50,9 +45,10 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
         view.addSubview(searchResultMapView)
 
         let location = CLLocationCoordinate2D(latitude: 59.9458, longitude: 10.7800)
-        searchResultMapView.configure(withInitialRegion: defaultRegion, andShowingUserLocation: true)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 1000, longitudinalMeters: 1000)
+
+        searchResultMapView.configure(withInitialRegion: region, andShowingUserLocation: true)
         searchResultMapView.setMapOverlay(demoTileOverlay)
-        searchResultMapView.centerMapOnLocation(location, regionDistance: 1000, animated: true)
         demoAnnotations.forEach { searchResultMapView.addAnnotation($0) }
 
         if #available(iOS 11.0, *) {
@@ -100,7 +96,8 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
     }
 
     public func searchResultMapViewDidSelectCenterMapButton(_ view: SearchResultMapView) {
-        view.centerMapOnUserLocation(regionDistance: 1000, animated: true)
+        let location = CLLocationCoordinate2D(latitude: 59.9458, longitude: 10.7800)
+        view.setCenter(location, zoomLevel: 14, animated: true)
     }
 
     public func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView) {
