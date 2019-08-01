@@ -15,16 +15,14 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
 public protocol FavoriteAdsListViewDataSource: AnyObject {
     func numberOfItems(inFavoriteAdsListView view: FavoriteAdsListView) -> Int
     func favoriteAdsListView(_ view: FavoriteAdsListView, viewModelAtIndex index: Int) -> FavoriteAdViewModel
-    func favoriteAdsListView(
-        _ view: FavoriteAdsListView,
-        loadImageWithPath imagePath: String,
-        imageWidth: CGFloat,
-        completion: @escaping ((UIImage?) -> Void)
+    func favoriteAdsListView(_ view: FavoriteAdsListView,
+                             loadImageWithPath imagePath: String,
+                             imageWidth: CGFloat,
+                             completion: @escaping ((UIImage?) -> Void)
     )
-    func favoriteAdsListView(
-        _ view: FavoriteAdsListView,
-        cancelLoadingImageWithPath imagePath: String,
-        imageWidth: CGFloat
+    func favoriteAdsListView(_ view: FavoriteAdsListView,
+                             cancelLoadingImageWithPath imagePath: String,
+                             imageWidth: CGFloat
     )
 }
 
@@ -166,11 +164,16 @@ extension FavoriteAdsListView: FavoriteAdTableViewCellDelegate {
 // MARK: - RemoteImageViewDataSource
 
 extension FavoriteAdsListView: RemoteImageViewDataSource {
-    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+    public func remoteImageView(_ view: RemoteImageView,
+                                cachedImageWithPath imagePath: String,
+                                imageWidth: CGFloat) -> UIImage? {
         return imageCache.image(forKey: imagePath)
     }
 
-    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    public func remoteImageView(_ view: RemoteImageView,
+                                loadImageWithPath imagePath: String,
+                                imageWidth: CGFloat,
+                                completion: @escaping ((UIImage?) -> Void)) {
         dataSource?.favoriteAdsListView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] image in
             if let image = image {
                 self?.imageCache.add(image, forKey: imagePath)
@@ -180,7 +183,9 @@ extension FavoriteAdsListView: RemoteImageViewDataSource {
         })
     }
 
-    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
+    public func remoteImageView(_ view: RemoteImageView,
+                                cancelLoadingImageWithPath imagePath: String,
+                                imageWidth: CGFloat) {
         dataSource?.favoriteAdsListView(self, cancelLoadingImageWithPath: imagePath, imageWidth: imageWidth)
     }
 }

@@ -35,11 +35,15 @@ class FavoriteAdsListDemoView: UIView {
 
 extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAtIndex index: Int) {}
+
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAtIndex index: Int) {}
+
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView) {
         view.sortingTitle = ["Sist lagt til", "Nærmest meg", "Sist oppdatert av selger", "Annonsestatus"].randomElement() ?? ""
     }
+
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView) {}
+
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String) {}
 }
 
@@ -54,7 +58,10 @@ extension FavoriteAdsListDemoView: FavoriteAdsListViewDataSource {
         return viewModels[index]
     }
 
-    func favoriteAdsListView(_ view: FavoriteAdsListView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+    func favoriteAdsListView(_ view: FavoriteAdsListView,
+                             loadImageWithPath imagePath: String,
+                             imageWidth: CGFloat,
+                             completion: @escaping ((UIImage?) -> Void)) {
         guard let url = URL(string: imagePath) else {
             completion(nil)
             return

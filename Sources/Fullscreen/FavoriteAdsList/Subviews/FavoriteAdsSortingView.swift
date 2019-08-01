@@ -11,7 +11,7 @@ class FavoriteAdsSortingView: UIView {
     internal var title: String = "" {
         didSet { sortingLabel.text = title.uppercased() }
     }
-    
+
     // MARK: - Private properties
 
     private lazy var sortingLabel: UILabel = {
