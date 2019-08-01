@@ -142,6 +142,11 @@ extension FavoriteAdsListView: UITableViewDataSource {
         let cell = tableView.dequeue(FavoriteAdTableViewCell.self, for: indexPath)
         cell.remoteImageViewDataSource = self
         cell.delegate = self
+
+        // Show a pretty color while we load the image
+        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+        cell.loadingColor = colors[indexPath.row % colors.count]
+
         if let viewModel = dataSource?.favoriteAdsListView(self, viewModelAtIndex: indexPath.row) {
             cell.configure(with: viewModel)
         }
