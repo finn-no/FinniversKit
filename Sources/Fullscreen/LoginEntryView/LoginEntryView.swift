@@ -29,7 +29,13 @@ public class LoginEntryView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var scrollView = UIScrollView(withAutoLayout: true)
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(withAutoLayout: true)
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        }
+        return scrollView
+    }()
 
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
