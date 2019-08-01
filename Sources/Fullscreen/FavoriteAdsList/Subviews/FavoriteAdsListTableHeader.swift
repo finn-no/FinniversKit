@@ -13,6 +13,9 @@ class FavoriteAdsListTableHeader: UIView {
     // MARK: - Internal properties
 
     weak var delegate: FavoriteAdsListTableHeaderDelegate?
+    weak var searchBarDelegate: UISearchBarDelegate? {
+        didSet { searchBar.delegate = searchBarDelegate }
+    }
 
     internal var searchBarPlaceholder: String = "" {
         didSet { searchBar.placeholder = searchBarPlaceholder }

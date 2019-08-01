@@ -16,7 +16,7 @@ private struct ViewModel: FavoriteAdViewModel {
 
 class FavoriteAdsListDemoView: UIView {
     private let viewModels = ViewModelFactory.create()
-//
+
     private lazy var favoritesListView: FavoriteAdsListView = {
         let view = FavoriteAdsListView(withAutoLayout: true)
         view.dataSource = self
@@ -49,6 +49,8 @@ extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView) {
         view.sortingTitle = ["Sist lagt til", "Nærmest meg", "Sist oppdatert av selger", "Annonsestatus"].randomElement() ?? ""
     }
+    func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView) {}
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String) {}
 }
 
 // MARK: - FavoriteAdsListViewDataSource

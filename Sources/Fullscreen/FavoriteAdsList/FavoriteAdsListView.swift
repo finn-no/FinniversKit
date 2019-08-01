@@ -8,6 +8,8 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAtIndex index: Int)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAtIndex index: Int)
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
+    func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
 }
 
 public protocol FavoriteAdsListViewDataSource: AnyObject {
@@ -60,12 +62,14 @@ public class FavoriteAdsListView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = .leadingInset(frame.width)
+        tableView.keyboardDismissMode = .onDrag
         return tableView
     }()
 
     private lazy var tableHeaderView: FavoriteAdsListTableHeader = {
         let tableHeader = FavoriteAdsListTableHeader(withAutoLayout: true)
         tableHeader.delegate = self
+        tableHeader.searchBarDelegate = self
         return tableHeader
     }()
 
@@ -181,5 +185,22 @@ extension FavoriteAdsListView: RemoteImageViewDataSource {
 extension FavoriteAdsListView: FavoriteAdsListTableHeaderDelegate {
     func favoriteAdsListTableHeaderDidSelectSortingView(_ tableHeader: FavoriteAdsListTableHeader) {
         delegate?.favoriteAdsListViewDidSelectSortButton(self)
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension FavoriteAdsListView: UISearchBarDelegate {
+    public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        delegate?.favoriteAdsListViewDidFocusSearchBar(self)
+    }
+
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        delegate?.favoriteAdsListView(self, didChangeSearchText: searchText)
     }
 }
