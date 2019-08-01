@@ -113,7 +113,7 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
     }
 
-    public func searchResultMapViewRegionDidChange(_ view: SearchResultMapView, toVisibleMapRect visibleMapRect: MKMapRect) {
+    public func searchResultMapViewRegionDidChange(_ view: SearchResultMapView, toVisibleMapRect visibleMapRect: MKMapRect, withCenterCoordinate centerCoordinate: CLLocationCoordinate2D) {
 
     }
 

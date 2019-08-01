@@ -14,7 +14,7 @@ public protocol SearchResultMapViewDelegate: AnyObject {
     func searchResultMapViewDidSelectCenterMapButton(_ view: SearchResultMapView)
     func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView)
     func searchResultMapViewRegionWillChangeDueToUserInteraction(_ view: SearchResultMapView)
-    func searchResultMapViewRegionDidChange(_ view: SearchResultMapView, toVisibleMapRect visibleMapRect: MKMapRect)
+    func searchResultMapViewRegionDidChange(_ view: SearchResultMapView, toVisibleMapRect visibleMapRect: MKMapRect, withCenterCoordinate centerCoordinate: CLLocationCoordinate2D)
     func searchResultMapViewDidUpdateUserLocation(_ view: SearchResultMapView, userLocation: MKUserLocation)
 }
 
@@ -85,6 +85,22 @@ public final class SearchResultMapView: UIView {
     public func focusAnnotations() {
         let annotationsToShow = mapView.annotations.filter { $0 is SearchResultMapAnnotation }
         mapView.showAnnotations(annotationsToShow, animated: true)
+    }
+
+    public func mapViewCenterCoordinateIsSame(as coordinate: CLLocationCoordinate2D) -> Bool {
+        if coordinate.latitude != mapView.centerCoordinate.latitude {
+            return false
+        }
+
+        if coordinate.longitude != mapView.centerCoordinate.longitude {
+            return false
+        }
+
+        return true
+    }
+
+    public func getCurrentZoomLevel() -> Double {
+        return mapView.getCurrentZoomLevel()
     }
 
     public func centerMapOnLocation(_ location: CLLocationCoordinate2D, regionDistance: Double, animated: Bool) {
@@ -167,7 +183,7 @@ extension SearchResultMapView: MKMapViewDelegate {
     }
 
     public func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        delegate?.searchResultMapViewRegionDidChange(self, toVisibleMapRect: mapView.visibleMapRect)
+        delegate?.searchResultMapViewRegionDidChange(self, toVisibleMapRect: mapView.visibleMapRect, withCenterCoordinate: mapView.centerCoordinate)
     }
 
     public func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
