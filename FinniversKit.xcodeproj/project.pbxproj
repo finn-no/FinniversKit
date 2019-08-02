@@ -1707,6 +1707,7 @@
 				CF87A851229C0C5700DA8243 /* ContactForm */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44D912502077AC8A00486848 /* EmptyView */,
+				9A37D4A128C47173977AAE19 /* FavoriteAdsList */,
 				447AFC0E20984B63000F793E /* FrontPage */,
 				9F213E134EF7C0A184D133F5 /* FullscreenGallery */,
 				14EBA253215A633800613E5A /* LoadingView */,
@@ -1717,7 +1718,6 @@
 				F2B1A19022D503BE00713FC2 /* Receipt */,
 				43BACE6721117CF90052114C /* Review */,
 				43EA978021941E63003A548A /* SoldView */,
-				9A37D4A128C47173977AAE19 /* FavoriteAdsList */,
 			);
 			path = Fullscreen;
 			sourceTree = "<group>";
@@ -1948,6 +1948,16 @@
 			path = FavoriteAdsListView;
 			sourceTree = "<group>";
 		};
+		9A37DC15387F0A2DC34714C0 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */,
+				9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */,
+				9A37D4FCB2C97A70AB625A9C /* FavoriteAdsSectionHeaderView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		9A37DFB4ED453062D0BED7A9 /* FavoriteAdTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1971,16 +1981,6 @@
 				9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */,
 			);
 			path = Feedback;
-			sourceTree = "<group>";
-		};
-		9A37DC15387F0A2DC34714C0 /* Subviews */ = {
-			isa = PBXGroup;
-			children = (
-				9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */,
-				9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */,
-				9A37D4FCB2C97A70AB625A9C /* FavoriteAdsSectionHeaderView.swift */,
-			);
-			path = Subviews;
 			sourceTree = "<group>";
 		};
 		9BBC8ADC22DF4CA2003453B6 /* Klimabrolet */ = {
@@ -2585,6 +2585,7 @@
 				CF87A858229C0C6600DA8243 /* ContactForm */,
 				CF8F022B21DCC74F004C4042 /* EasterEggs */,
 				CF8F023521DCC81E004C4042 /* EmptyView */,
+				9A37DB96525D383D10C6A008 /* FavoriteAdsListView */,
 				CF8F023221DCC7AE004C4042 /* FrontPage */,
 				9F2139783BEC14AD02F9BF7A /* FullscreenGallery */,
 				CF8F022A21DCC746004C4042 /* LoadingView */,
@@ -2596,7 +2597,6 @@
 				F2B1A19522D5051000713FC2 /* Receipt */,
 				CF8F023421DCC7D2004C4042 /* Review */,
 				CF8F023621DCC830004C4042 /* SoldView */,
-				9A37DB96525D383D10C6A008 /* FavoriteAdsListView */,
 			);
 			path = Fullscreen;
 			sourceTree = "<group>";
