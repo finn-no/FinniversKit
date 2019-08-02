@@ -34,6 +34,11 @@ public class FavoriteFoldersListView: UIView {
         case folders
     }
 
+    public struct UpdateContext {
+        public let tableView: UITableView
+        public let section: Int
+    }
+
     public static let estimatedRowHeight: CGFloat = 64.0
 
     // MARK: - Public properties
@@ -117,6 +122,11 @@ public class FavoriteFoldersListView: UIView {
 
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
+    }
+
+    /// Perform necessary updates using an instance of UITableView and folders section
+    public func performUpdates(using closure: (UpdateContext) -> Void) {
+        closure(UpdateContext(tableView: tableView, section: Section.folders.rawValue))
     }
 
     public func reloadRow(at index: Int, with animation: UITableView.RowAnimation = .none) {
