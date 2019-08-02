@@ -55,13 +55,13 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         super.prepareForReuse()
 
         titleLabel.font = titleLabelDefaultFont
-        leftCheckmarkView.isHidden = true
-        rightCheckmarkView.isHidden = true
+        hideCheckmarks()
     }
 
     public override func willTransition(to state: UITableViewCell.StateMask) {
         super.willTransition(to: state)
         bringSubviewToFront(editModeView)
+        hideCheckmarks()
     }
 
     // MARK: - Public
@@ -115,6 +115,11 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     private func selectCheckmarks( _ selected: Bool) {
         leftCheckmarkView.isSelected = selected
         rightCheckmarkView.isSelected = selected
+    }
+
+    private func hideCheckmarks() {
+        leftCheckmarkView.isHidden = true
+        rightCheckmarkView.isHidden = true
     }
 
     private func updateCheckmarks() {
