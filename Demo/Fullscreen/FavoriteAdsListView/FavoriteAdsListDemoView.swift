@@ -33,7 +33,7 @@ class FavoriteAdsListDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        sectionDataSource.section(ads: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
+        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
         addSubview(favoritesListView)
         favoritesListView.fillInSuperview()
     }
@@ -54,14 +54,14 @@ extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
             currentSorting = .lastAdded
         }
         view.sortingTitle = currentSorting.rawValue
-        sectionDataSource.section(ads: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
+        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
         view.reloadData()
     }
 
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView) {}
 
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String) {
-        sectionDataSource.section(ads: viewModels, withSort: currentSorting, filterQuery: view.searchBarText)
+        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: view.searchBarText)
         view.reloadData()
     }
 }

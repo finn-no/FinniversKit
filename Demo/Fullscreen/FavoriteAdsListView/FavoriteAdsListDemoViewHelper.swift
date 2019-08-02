@@ -17,19 +17,16 @@ struct FavoriteAd: FavoriteAdViewModel {
 
 struct FavoriteAdsFactory {
     static func create() -> [FavoriteAd] {
-        var favorites = [FavoriteAd]()
-        for (index, title) in titles.enumerated() {
-            let ad = FavoriteAd(addressText: addresses[index],
-                                titleText: title,
-                                descriptionPrimaryText: primaryDescriptions[index],
-                                descriptionSecondaryText: secondaryDescriptions[index],
-                                imagePath: imagePaths[index],
-                                ribbonStyle: ribbonStyles[index].style,
-                                ribbonTitle: ribbonStyles[index].title,
-                                addedToFolderDate: addedToFolderDates[index])
-            favorites.append(ad)
+        return titles.enumerated().map { (index, title) in
+            FavoriteAd(addressText: addresses[index],
+                       titleText: title,
+                       descriptionPrimaryText: primaryDescriptions[index],
+                       descriptionSecondaryText: secondaryDescriptions[index],
+                       imagePath: imagePaths[index],
+                       ribbonStyle: ribbonStyles[index].style,
+                       ribbonTitle: ribbonStyles[index].title,
+                       addedToFolderDate: addedToFolderDates[index])
         }
-        return favorites
     }
 
     private static var addresses: [String] {

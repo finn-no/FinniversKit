@@ -8,7 +8,7 @@ class FavoriteAdsSortingView: UIView {
 
     // MARK: - Internal properties
 
-    internal var title: String = "" {
+    var title: String = "" {
         didSet { sortingLabel.text = title.uppercased() }
     }
 

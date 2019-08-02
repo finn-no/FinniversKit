@@ -17,24 +17,24 @@ class FavoriteAdsListTableHeader: UIView {
         didSet { searchBar.delegate = searchBarDelegate }
     }
 
-    internal var searchBarPlaceholder: String = "" {
+    var searchBarPlaceholder: String = "" {
         didSet { searchBar.placeholder = searchBarPlaceholder }
     }
 
-    internal var searchBarText: String {
+    var searchBarText: String {
         get { return searchBar.text ?? "" }
         set { searchBar.text = searchBarText }
     }
 
-    internal var title: String = "" {
+    var title: String = "" {
         didSet { titleLabel.text = title }
     }
 
-    internal var subtitle: String = "" {
+    var subtitle: String = "" {
         didSet { subtitleLabel.text = subtitle }
     }
 
-    internal var sortingTitle: String = "" {
+    var sortingTitle: String = "" {
         didSet { sortingView.title = sortingTitle }
     }
 

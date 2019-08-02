@@ -4,20 +4,20 @@
 
 import FinniversKit
 
-struct AdsSection {
+struct FavoriteAdsSection {
     let sectionTitle: String?
     let ads: [FavoriteAd]
 }
 
 class FavoriteAdsDemoDataSource {
-    private(set) var sections = [AdsSection]()
-    private var dateFormatter: DateFormatter = {
+    private(set) var sections = [FavoriteAdsSection]()
+    private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "nb_NO")
         return formatter
     }()
 
-    func section(ads: [FavoriteAd], withSort sort: AdsSorting, filterQuery: String) {
+    func configureSection(forAds ads: [FavoriteAd], withSort sort: AdsSorting, filterQuery: String) {
         let filteredAds = filterQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
                           ? ads
                           : ads.filter { $0.titleText.lowercased().contains(filterQuery.lowercased()) }
@@ -29,12 +29,12 @@ class FavoriteAdsDemoDataSource {
         }
     }
 
-    private func sortAlphabetically(_ ads: [FavoriteAd]) -> [AdsSection] {
+    private func sortAlphabetically(_ ads: [FavoriteAd]) -> [FavoriteAdsSection] {
         let sorted = ads.sorted(by: { $0.titleText < $1.titleText })
-        return [AdsSection(sectionTitle: nil, ads: sorted)]
+        return [FavoriteAdsSection(sectionTitle: nil, ads: sorted)]
     }
 
-    private func groupByMonth(_ ads: [FavoriteAd]) -> [AdsSection] {
+    private func groupByMonth(_ ads: [FavoriteAd]) -> [FavoriteAdsSection] {
         let grouped = ads.reduce(into: [Date: [FavoriteAd]]()) { accumulated, ad in
             let components = Calendar.current.dateComponents([.year, .month], from: ad.addedToFolderDate)
             guard let date = Calendar.current.date(from: components) else { return }
@@ -47,7 +47,7 @@ class FavoriteAdsDemoDataSource {
         return sortedMonths.map { month in
             let title = sectionTitle(for: month)
             let ads = grouped[month] ?? []
-            return AdsSection(sectionTitle: title, ads: ads)
+            return FavoriteAdsSection(sectionTitle: title, ads: ads)
         }
     }
 
@@ -56,11 +56,11 @@ class FavoriteAdsDemoDataSource {
         let year = Calendar.current.component(.year, from: date)
 
         if year == currentYear {
-            dateFormatter.dateFormat = "MMMM"
+            FavoriteAdsDemoDataSource.dateFormatter.dateFormat = "MMMM"
         } else {
-            dateFormatter.dateFormat = "MMMM YYYY"
+            FavoriteAdsDemoDataSource.dateFormatter.dateFormat = "MMMM YYYY"
         }
 
-        return dateFormatter.string(from: date)
+        return FavoriteAdsDemoDataSource.dateFormatter.string(from: date)
     }
 }

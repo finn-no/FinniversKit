@@ -29,8 +29,7 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     private func setup() {
         addSubview(titleLabel)
 
-        NSLayoutConstraint.activate(
-        [
+        NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
