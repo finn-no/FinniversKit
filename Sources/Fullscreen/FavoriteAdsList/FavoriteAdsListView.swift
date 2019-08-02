@@ -47,6 +47,11 @@ public class FavoriteAdsListView: UIView {
         didSet { tableHeaderView.searchBarPlaceholder = searchBarPlaceholder }
     }
 
+    public var searchBarText: String {
+        get { return tableHeaderView.searchBarText }
+        set { tableHeaderView.searchBarText = searchBarText }
+    }
+
     public var sortingTitle: String = "" {
         didSet { tableHeaderView.sortingTitle = sortingTitle }
     }

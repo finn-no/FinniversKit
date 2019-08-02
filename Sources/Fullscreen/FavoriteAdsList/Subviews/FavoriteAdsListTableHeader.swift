@@ -21,6 +21,11 @@ class FavoriteAdsListTableHeader: UIView {
         didSet { searchBar.placeholder = searchBarPlaceholder }
     }
 
+    internal var searchBarText: String {
+        get { return searchBar.text ?? "" }
+        set { searchBar.text = searchBarText }
+    }
+
     internal var title: String = "" {
         didSet { titleLabel.text = title }
     }

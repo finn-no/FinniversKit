@@ -17,12 +17,15 @@ class FavoriteAdsDemoDataSource {
         return formatter
     }()
 
-    func sort(ads: [FavoriteAd], by sort: AdsSorting) {
+    func section(ads: [FavoriteAd], withSort sort: AdsSorting, filterQuery: String) {
+        let filteredAds = filterQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                          ? ads
+                          : ads.filter { $0.titleText.lowercased().contains(filterQuery.lowercased()) }
         switch sort {
         case .alphabetically:
-            sections = sortAlphabetically(ads)
+            sections = sortAlphabetically(filteredAds)
         case .lastAdded:
-            sections = groupByMonth(ads)
+            sections = groupByMonth(filteredAds)
         }
     }
 
