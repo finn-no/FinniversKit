@@ -136,8 +136,7 @@ public class FavoriteFoldersListView: UIView {
         let indices = indices.filter({ $0 >= 0 && $0 < tableView(tableView, numberOfRowsInSection: section) })
         let indexPaths = indices.map({ IndexPath(row: $0, section: section) })
 
-        guard indexPaths.count > 0 else {
-            assertionFailure("Trying to delete cells at invalid index paths")
+        guard !indexPaths.isEmpty else {
             return
         }
 
