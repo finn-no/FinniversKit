@@ -5,8 +5,8 @@
 import UIKit
 
 public protocol FavoriteAdsListViewDelegate: AnyObject {
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAtIndex index: Int)
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAtIndex index: Int)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath)
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
@@ -135,6 +135,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        delegate?.favoriteAdsListView(self, didSelectItemAt: indexPath)
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -183,7 +184,7 @@ extension FavoriteAdsListView: UITableViewDataSource {
 extension FavoriteAdsListView: FavoriteAdTableViewCellDelegate {
     public func favoriteAdTableViewCellDidSelectMoreButton(_ cell: FavoriteAdTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        delegate?.favoriteAdsListView(self, didSelectMoreButtonForItemAtIndex: indexPath.row)
+        delegate?.favoriteAdsListView(self, didSelectMoreButtonForItemAt: indexPath)
     }
 }
 

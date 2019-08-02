@@ -42,9 +42,9 @@ class FavoriteAdsListDemoView: UIView {
 // MARK: - FavoriteAdsListViewDelegate
 
 extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAtIndex index: Int) {}
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath) {}
 
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAtIndex index: Int) {}
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath) {}
 
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView) {
         switch currentSorting {
