@@ -73,7 +73,6 @@ public class FavoriteFoldersListView: UIView {
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.register(AddFavoriteFolderViewCell.self)
         tableView.register(FavoriteFolderSelectableViewCell.self)
-        tableView.refreshControl = refreshControl
         return tableView
     }()
 
@@ -109,6 +108,7 @@ public class FavoriteFoldersListView: UIView {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setup()
+        showRefreshControl(true)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -158,6 +158,8 @@ public class FavoriteFoldersListView: UIView {
         guard tableView.isEditing != editing else {
             return
         }
+
+        showRefreshControl(!editing)
 
         if isSearchActive {
             searchBar.text = ""
@@ -231,6 +233,10 @@ public class FavoriteFoldersListView: UIView {
     private func showEmptyViewIfNeeded() {
         let shouldShowEmptyView = (dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0) == 0
         emptyView.isHidden = !shouldShowEmptyView
+    }
+
+    private func showRefreshControl(_ show: Bool) {
+        tableView.refreshControl = show ? refreshControl : nil
     }
 }
 
@@ -395,12 +401,14 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
 
 extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        showRefreshControl(false)
         delegate?.favoriteFoldersListViewDidFocusSearchBar(self)
     }
 
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if searchBar.text?.isEmpty ?? true {
             isSearchActive = false
+            showRefreshControl(true)
         }
     }
 
