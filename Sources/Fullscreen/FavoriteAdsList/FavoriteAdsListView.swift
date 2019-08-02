@@ -134,6 +134,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableHeaderView.endEditing(true)
         tableView.deselectRow(at: indexPath, animated: true)
         delegate?.favoriteAdsListView(self, didSelectItemAt: indexPath)
     }
@@ -183,6 +184,7 @@ extension FavoriteAdsListView: UITableViewDataSource {
 
 extension FavoriteAdsListView: FavoriteAdTableViewCellDelegate {
     public func favoriteAdTableViewCellDidSelectMoreButton(_ cell: FavoriteAdTableViewCell) {
+        tableHeaderView.endEditing(true)
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         delegate?.favoriteAdsListView(self, didSelectMoreButtonForItemAt: indexPath)
     }

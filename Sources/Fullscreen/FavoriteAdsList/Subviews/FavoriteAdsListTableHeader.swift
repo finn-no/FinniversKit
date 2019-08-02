@@ -40,6 +40,8 @@ class FavoriteAdsListTableHeader: UIView {
 
     // MARK: - Private properties
 
+    private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = UIFont(name: FontType.bold.rawValue, size: 28)?.scaledFont(forTextStyle: .title2)
@@ -83,6 +85,8 @@ class FavoriteAdsListTableHeader: UIView {
     // MARK: - Setup
 
     private func setup() {
+        addGestureRecognizer(tapRecognizer)
+
         addSubview(titleLabel)
         addSubview(subtitleLabel)
         addSubview(searchBar)
@@ -109,6 +113,11 @@ class FavoriteAdsListTableHeader: UIView {
     }
 
     @objc private func handleSortingViewTap() {
+        searchBar.resignFirstResponder()
         delegate?.favoriteAdsListTableHeaderDidSelectSortingView(self)
+    }
+
+    @objc private func handleViewTap() {
+        searchBar.resignFirstResponder()
     }
 }
