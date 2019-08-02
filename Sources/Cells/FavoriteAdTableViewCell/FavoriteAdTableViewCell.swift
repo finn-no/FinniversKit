@@ -58,7 +58,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     private let statusRibbon = RibbonView(withAutoLayout: true)
 
-    private var viewModel: FavoriteAdTableViewCellViewModel?
+    private var viewModel: FavoriteAdViewModel?
     private let fallbackImage: UIImage = UIImage(named: .noImage)
     private let adImageWidth: CGFloat = 80
 
@@ -86,14 +86,18 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         let ribbonBackgroundColor = statusRibbon.backgroundColor
+        let remoteImageViewBackgroundColor = remoteImageView.backgroundColor
         super.setSelected(selected, animated: animated)
         statusRibbon.backgroundColor = ribbonBackgroundColor
+        remoteImageView.backgroundColor = remoteImageView.image == nil ? remoteImageViewBackgroundColor : .clear
     }
 
     public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         let ribbonBackgroundColor = statusRibbon.backgroundColor
+        let remoteImageViewBackgroundColor = remoteImageView.backgroundColor
         super.setHighlighted(highlighted, animated: animated)
         statusRibbon.backgroundColor = ribbonBackgroundColor
+        remoteImageView.backgroundColor = remoteImageView.image == nil ? remoteImageViewBackgroundColor : .clear
     }
 
     // MARK: - Setup
@@ -140,7 +144,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    public func configure(with viewModel: FavoriteAdTableViewCellViewModel) {
+    public func configure(with viewModel: FavoriteAdViewModel) {
         separatorInset = .leadingInset(.mediumLargeSpacing * 2 + adImageWidth)
 
         self.viewModel = viewModel
@@ -153,10 +157,8 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             addressLabel.isHidden = false
         }
 
-        if let titleText = viewModel.titleText {
-            titleLabel.text = titleText
-            titleLabel.isHidden = false
-        }
+        titleLabel.text = viewModel.titleText
+        titleLabel.isHidden = false
 
         if let descriptionPrimaryText = viewModel.descriptionPrimaryText {
             descriptionPrimaryLabel.text = descriptionPrimaryText
