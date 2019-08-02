@@ -65,6 +65,7 @@ public class FavoriteAdsListView: UIView {
         let tableView = UITableView(withAutoLayout: true)
         tableView.register(FavoriteAdTableViewCell.self)
         tableView.register(FavoriteAdsSectionHeaderView.self)
+        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = .leadingInset(frame.width)
