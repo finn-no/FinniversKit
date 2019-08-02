@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
+    func favoriteFoldersListViewDidBeginRefreshing(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String)
@@ -72,7 +73,14 @@ public class FavoriteFoldersListView: UIView {
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.register(AddFavoriteFolderViewCell.self)
         tableView.register(FavoriteFolderSelectableViewCell.self)
+        tableView.refreshControl = refreshControl
         return tableView
+    }()
+
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = RefreshControl(frame: .zero)
+        refreshControl.delegate = self
+        return refreshControl
     }()
 
     private lazy var footerView: FavoriteFoldersFooterView = {
@@ -110,6 +118,7 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Reload
 
     public func reloadData() {
+        endRefreshing()
         showEmptyViewIfNeeded()
 
         if !tableView.isEditing {
@@ -127,6 +136,10 @@ public class FavoriteFoldersListView: UIView {
     /// Perform necessary updates using an instance of UITableView and folders section
     public func performUpdates(using closure: (UpdateContext) -> Void) {
         closure(UpdateContext(tableView: tableView, section: Section.folders.rawValue))
+    }
+
+    public func endRefreshing() {
+        refreshControl.endRefreshing()
     }
 
     public func reloadRow(at index: Int, with animation: UITableView.RowAnimation = .none) {
@@ -306,6 +319,14 @@ extension FavoriteFoldersListView: UITableViewDelegate {
         case .folders:
             return indexPath.row != 0
         }
+    }
+}
+
+// MARK: - RefreshControlDelegate
+
+extension FavoriteFoldersListView: RefreshControlDelegate {
+    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        delegate?.favoriteFoldersListViewDidBeginRefreshing(self)
     }
 }
 
