@@ -139,6 +139,11 @@ extension FavoriteAdsListView: UITableViewDelegate {
         headerView.configure(title: sectionTitle)
         return headerView
     }
+
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let _ = dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) else { return .leastNonzeroMagnitude }
+        return 32
+    }
 }
 
 // MARK: - UITableViewDataSource
