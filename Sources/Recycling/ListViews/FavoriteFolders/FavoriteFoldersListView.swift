@@ -131,6 +131,19 @@ public class FavoriteFoldersListView: UIView {
         tableView.reloadRows(at: [indexPath], with: animation)
     }
 
+    public func deleteRows(at indices: [Int], with animation: UITableView.RowAnimation = .automatic) {
+        let section = Section.folders.rawValue
+        let indices = indices.filter({ $0 >= 0 && $0 < tableView(tableView, numberOfRowsInSection: section) })
+        let indexPaths = indices.map({ IndexPath(row: $0, section: section) })
+
+        guard indexPaths.count > 0 else {
+            assertionFailure("Trying to delete cells at invalid index paths")
+            return
+        }
+
+        tableView.deleteRows(at: indexPaths, with: animation)
+    }
+
     public func setEditing(_ editing: Bool) {
         guard tableView.isEditing != editing else {
             return
