@@ -259,6 +259,7 @@ public enum FullscreenViews: String, CaseIterable {
     case addressView
     case messageFormView
     case receiptView
+    case favoriteAdsList
 
     public static var items: [FullscreenViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -312,6 +313,8 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<ReceiptViewDemoView>()
         case .addressView:
             return DemoViewController<AddressViewDemoView>()
+        case .favoriteAdsList:
+            return DemoViewController<FavoriteAdsListDemoView>(withDismissButton: true)
         }
     }
 }
