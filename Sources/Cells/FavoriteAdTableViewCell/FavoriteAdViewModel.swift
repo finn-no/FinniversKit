@@ -4,9 +4,9 @@
 
 import UIKit
 
-public protocol FavoriteAdTableViewCellViewModel {
+public protocol FavoriteAdViewModel {
     var addressText: String? { get }
-    var titleText: String? { get }
+    var titleText: String { get }
     var descriptionPrimaryText: String? { get }
     var descriptionSecondaryText: String? { get }
     var imagePath: String? { get }
