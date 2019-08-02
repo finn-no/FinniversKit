@@ -170,4 +170,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testTweakable() {
         snapshot(.tweakable)
     }
+
+    func testKlimabroletView() {
+        snapshot(.klimabrolet)
+    }
 }
