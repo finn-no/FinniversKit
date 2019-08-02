@@ -34,6 +34,11 @@ public class FavoriteFoldersListView: UIView {
         case folders
     }
 
+    public struct UpdateContext {
+        public let tableView: UITableView
+        public let section: Int
+    }
+
     public static let estimatedRowHeight: CGFloat = 64.0
 
     // MARK: - Public properties
@@ -119,6 +124,11 @@ public class FavoriteFoldersListView: UIView {
         tableView.reloadData()
     }
 
+    /// Perform necessary updates using an instance of UITableView and folders section
+    public func performUpdates(using closure: (UpdateContext) -> Void) {
+        closure(UpdateContext(tableView: tableView, section: Section.folders.rawValue))
+    }
+
     public func reloadRow(at index: Int, with animation: UITableView.RowAnimation = .none) {
         let section = Section.folders.rawValue
 
@@ -129,18 +139,6 @@ public class FavoriteFoldersListView: UIView {
 
         let indexPath = IndexPath(row: index, section: section)
         tableView.reloadRows(at: [indexPath], with: animation)
-    }
-
-    public func deleteRows(at indices: [Int], with animation: UITableView.RowAnimation = .automatic) {
-        let section = Section.folders.rawValue
-        let indices = indices.filter({ $0 >= 0 && $0 < tableView(tableView, numberOfRowsInSection: section) })
-        let indexPaths = indices.map({ IndexPath(row: $0, section: section) })
-
-        guard !indexPaths.isEmpty else {
-            return
-        }
-
-        tableView.deleteRows(at: indexPaths, with: animation)
     }
 
     public func setEditing(_ editing: Bool) {
