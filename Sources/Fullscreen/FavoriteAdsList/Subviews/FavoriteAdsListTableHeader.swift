@@ -84,7 +84,7 @@ class FavoriteAdsListTableHeader: UIView {
         addSubview(sortingView)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -94,11 +94,11 @@ class FavoriteAdsListTableHeader: UIView {
 
             searchBar.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 24),
             searchBar.heightAnchor.constraint(equalToConstant: 36),
-            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
             sortingView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 37),
-            sortingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            sortingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             sortingView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
         ])
     }

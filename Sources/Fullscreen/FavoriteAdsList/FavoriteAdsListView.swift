@@ -99,9 +99,9 @@ public class FavoriteAdsListView: UIView {
             tableView.tableHeaderView = tableHeaderView
 
             NSLayoutConstraint.activate([
-                tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: .mediumSpacing),
+                tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
                 tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-                tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor, constant: -(.mediumSpacing * 2))
+                tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
             ])
 
             tableView.tableHeaderView?.layoutIfNeeded()
