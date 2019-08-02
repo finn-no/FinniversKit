@@ -149,7 +149,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let _ = dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) else { return .leastNonzeroMagnitude }
+        guard dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) != nil else { return .leastNonzeroMagnitude }
         return 32
     }
 }
