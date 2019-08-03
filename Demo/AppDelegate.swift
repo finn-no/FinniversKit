@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
-        updateColors()
+        updateColors(animated: false)
         NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .didChangeUserInterfaceStyle, object: nil)
 
         return true
@@ -26,32 +26,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 private extension AppDelegate {
     @objc func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
-        updateColors()
+        updateColors(animated: true)
     }
 
-    func updateColors() {
-        let separatorColor: UIColor
-        let barTintColor: UIColor
-        let tintColor: UIColor
-        let barStyle: UIBarStyle
-        switch State.currentUserInterfaceStyle {
-        case .light:
-            separatorColor = .sardine
-            barTintColor = .milk
-            tintColor = .primaryBlue
-            barStyle = .default
-        case .dark:
-            separatorColor = .midnightSectionSeparator
-            barTintColor = .midnightBackground
-            tintColor = .secondaryBlue
-            barStyle = .black
-        }
+    func updateColors(animated: Bool) {
+        UIView.animate(withDuration: animated ? 0.3 : 0) {
+            let separatorColor: UIColor
+            let barTintColor: UIColor
+            let tintColor: UIColor
+            let barStyle: UIBarStyle
+            switch State.currentUserInterfaceStyle {
+            case .light:
+                separatorColor = .sardine
+                barTintColor = .milk
+                tintColor = .primaryBlue
+                barStyle = .default
+            case .dark:
+                separatorColor = .midnightSectionSeparator
+                barTintColor = .midnightBackground
+                tintColor = .secondaryBlue
+                barStyle = .black
+            }
 
-        if let navigationController = window?.rootViewController as? UINavigationController {
-            setBottomBorderColor(navigationBar: navigationController.navigationBar, color: separatorColor, height: 0.5)
-            navigationController.navigationBar.barTintColor = barTintColor
-            navigationController.navigationBar.tintColor = tintColor
-            navigationController.navigationBar.barStyle = barStyle
+            if let navigationController = self.window?.rootViewController as? UINavigationController {
+                self.setBottomBorderColor(navigationBar: navigationController.navigationBar, color: separatorColor, height: 0.5)
+                navigationController.navigationBar.barTintColor = barTintColor
+                navigationController.navigationBar.tintColor = tintColor
+                navigationController.navigationBar.barStyle = barStyle
+                navigationController.navigationBar.layoutIfNeeded()
+            }
         }
     }
 
