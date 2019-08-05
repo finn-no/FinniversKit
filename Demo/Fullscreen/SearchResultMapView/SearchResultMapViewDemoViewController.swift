@@ -71,8 +71,8 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
 extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
-    public func searchResultMapView(_ view: SearchResultMapView, didSelect mapSettingsAction: MapSettingsButton.Actions, in button: MapSettingsButton) {
-        switch mapSettingsAction {
+    public func searchResultMapView(_ view: SearchResultMapView, didSelect action: MapSettingsButton.Action, in button: MapSettingsButton) {
+        switch action {
         case .centerMap:
             view.setCenter(SearchResultMapViewAnnotationFactory.centerLocation, regionDistance: 1000, animated: true)
         case .changeMapType:

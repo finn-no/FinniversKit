@@ -5,12 +5,12 @@
 import UIKit
 
 public protocol MapSettingsButtonDelegate: AnyObject {
-    func mapSettingsButton(_ button: MapSettingsButton, didSelect action: MapSettingsButton.Actions)
+    func mapSettingsButton(_ button: MapSettingsButton, didSelect action: MapSettingsButton.Action)
 }
 
 public final class MapSettingsButton: UIView {
 
-    public enum Actions {
+    public enum Action {
         case changeMapType
         case centerMap
     }
