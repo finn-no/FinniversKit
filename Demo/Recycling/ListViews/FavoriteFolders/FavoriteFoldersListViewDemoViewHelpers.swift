@@ -8,6 +8,7 @@ struct FavoriteFolder: FavoriteFolderViewModel {
     let id: Int
     let title: String
     let imagePath: String?
+    let isDefault: Bool
     let subtitle: String? = nil
     let detailText: String? = nil
     let cornerRadius: CGFloat = 12
@@ -22,7 +23,15 @@ struct FavoriteFoldersFactory {
 
         for (index, (title, imagePath)) in zip(titles, imagePaths).enumerated() {
             let isSelected = withSelectedItems ? [0, 1].contains(index) : false
-            favorites.append(FavoriteFolder(id: index, title: title, imagePath: imagePath, isSelected: isSelected))
+            let folder = FavoriteFolder(
+                id: index,
+                title: title,
+                imagePath: imagePath,
+                isDefault: index == 0,
+                isSelected: isSelected
+            )
+
+            favorites.append(folder)
         }
 
         return favorites
