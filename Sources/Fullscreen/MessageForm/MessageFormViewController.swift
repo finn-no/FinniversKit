@@ -215,4 +215,9 @@ extension MessageFormViewController: MessageFormToolbarDelegate {
             present(alertController, animated: true)
         }
     }
+
+    func messageFormToolbarTappedCustomizeButton(_ toolbar: MessageFormToolbar) {
+        let vc = MessageTemplateEditViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

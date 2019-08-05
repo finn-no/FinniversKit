@@ -6,6 +6,7 @@ import Foundation
 
 protocol MessageFormToolbarDelegate: AnyObject {
     func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: MessageFormTemplate)
+    func messageFormToolbarTappedCustomizeButton(_ toolbar: MessageFormToolbar)
 }
 
 class MessageFormToolbar: UIView {
@@ -154,7 +155,9 @@ extension MessageFormToolbar: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            return collectionView.dequeue(MessageFormCustomizeCell.self, for: indexPath)
+            let cell = collectionView.dequeue(MessageFormCustomizeCell.self, for: indexPath)
+            cell.delegate = self
+            return cell
         case 1:
             let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
             let text = viewModel.messageTemplates[safe: indexPath.row]?.text ?? ""
@@ -174,6 +177,12 @@ extension MessageFormToolbar: MessageFormTemplateCellDelegate {
         }
 
         delegate?.messageFormToolbar(self, didSelectMessageTemplate: messageTemplate)
+    }
+}
+
+extension MessageFormToolbar: MessageFormCustomizeCellDelegate {
+    fileprivate func messageFormCustomizeCellWasTapped(_ cell: MessageFormCustomizeCell) {
+        delegate?.messageFormToolbarTappedCustomizeButton(self)
     }
 }
 
@@ -256,6 +265,10 @@ private class MessageFormTemplateCell: UICollectionViewCell {
 
 // MARK: - MessageFormCustomizeCell
 
+private protocol MessageFormCustomizeCellDelegate: AnyObject {
+    func messageFormCustomizeCellWasTapped(_ cell: MessageFormCustomizeCell)
+}
+
 private class MessageFormCustomizeCell: UICollectionViewCell {
 
     static let size = CGSize(width: 25, height: 25)
@@ -269,6 +282,7 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = MessageFormCustomizeCell.size.width / 2
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -278,6 +292,10 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
         imageView.backgroundColor = .clear
         return imageView
     }()
+
+    // MARK: - Internal properties
+
+    weak var delegate: MessageFormCustomizeCellDelegate?
 
     // MARK: - Init
 
@@ -297,6 +315,12 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
 
         button.addSubview(imageView)
         imageView.fillInSuperview()
+    }
+
+    // MARK: - Private methods
+
+    @objc private func buttonTapped() {
+        delegate?.messageFormCustomizeCellWasTapped(self)
     }
 }
 
