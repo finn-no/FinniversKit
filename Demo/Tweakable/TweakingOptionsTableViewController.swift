@@ -51,6 +51,7 @@ class TweakingOptionsTableViewController: UIViewController {
         case .dark:
             interfaceBackgroundColor = .midnightBackground
         }
+        view.backgroundColor = interfaceBackgroundColor
         tableView.backgroundColor = interfaceBackgroundColor
     }
 }
