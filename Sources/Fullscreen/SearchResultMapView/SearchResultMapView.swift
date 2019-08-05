@@ -111,9 +111,9 @@ public final class SearchResultMapView: UIView {
         backgroundColor = .milk
 
         addSubview(mapView)
+        addSubview(mapSettingsButton)
 
         mapView.fillInSuperview()
-        mapView.addSubview(mapSettingsButton)
 
         NSLayoutConstraint.activate([
             mapSettingsButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 8),

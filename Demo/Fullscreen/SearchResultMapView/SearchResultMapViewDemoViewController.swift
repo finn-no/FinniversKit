@@ -13,13 +13,25 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
         return view
     }()
 
-    private var didSetupView = false
-
     // MARK: - Setup
 
     override public func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+
+    override public func viewDidLayoutSubviews() {
+        // Place a nice looking view in front of the mapView to prevent the UI tests from failing.
+        for subview in searchResultMapView.subviews {
+            guard let mapView = subview as? MKMapView else { continue }
+            let colorfulView = UIView(withAutoLayout: true)
+            colorfulView.backgroundColor = .mint
+            mapView.addSubview(colorfulView)
+            colorfulView.fillInSuperview()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak colorfulView] in
+                colorfulView?.removeFromSuperview()
+            })
+        }
     }
 
     private func setup() {
