@@ -71,32 +71,37 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
 extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
-    public func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView, mapSettingsButtonView: MapSettingsButton) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    public func searchResultMapView(_ view: SearchResultMapView, didSelect mapSettingsAction: MapSettingsButton.Actions, in button: MapSettingsButton) {
+        switch mapSettingsAction {
+        case .centerMap:
+            view.setCenter(SearchResultMapViewAnnotationFactory.centerLocation, regionDistance: 1000, animated: true)
+        case .changeMapType:
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        alert.addAction(UIAlertAction(title: "Avbryt", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Kart fra OSM", style: .default, handler: { _ in
-            self.addMapOverlay()
-        }))
-        alert.addAction(UIAlertAction(title: "Standard kart", style: .default, handler: { _ in
-            self.clearMapOverlay()
-        }))
+            alert.addAction(UIAlertAction(title: "Avbryt", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Kart fra OSM", style: .default, handler: { _ in
+                self.addMapOverlay()
+            }))
+            alert.addAction(UIAlertAction(title: "Standard kart", style: .default, handler: { _ in
+                self.clearMapOverlay()
+            }))
 
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.sourceView = mapSettingsButtonView
-            popoverController.sourceRect = mapSettingsButtonView.bounds.offsetBy(dx: -8, dy: -20)
-            popoverController.permittedArrowDirections = [.right]
+            if let popoverController = alert.popoverPresentationController {
+                popoverController.sourceView = button
+                popoverController.sourceRect = button.bounds.offsetBy(dx: -8, dy: -20)
+                popoverController.permittedArrowDirections = [.right]
+            }
+
+            present(alert, animated: true, completion: nil)
         }
-
-        present(alert, animated: true, completion: nil)
     }
 
-    public func searchResultMapViewDidSelectCenterMapButton(_ view: SearchResultMapView) {
-        view.setCenter(SearchResultMapViewAnnotationFactory.centerLocation, regionDistance: 1000, animated: true)
-    }
-
-    public func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView) {
+    public func searchResultMapView(_ view: SearchResultMapView, didSelect annotationView: MKAnnotationView) {
         print("didSelectAnnotationView of type: \(String(describing: annotationView.annotation))")
+    }
+
+    public func searchResultMapView(_ view: SearchResultMapView, didUpdate userLocation: MKUserLocation) {
+        print("MKMapView(:didUpdateUserLocation)")
     }
 
     public func searchResultMapViewRegionWillChangeDueToUserInteraction(_ view: SearchResultMapView) {
@@ -105,10 +110,6 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
     public func searchResultMapViewRegionDidChange(_ view: SearchResultMapView) {
         print("MKMapView(:regionDidChangeAnimated)")
-    }
-
-    public func searchResultMapViewDidUpdateUserLocation(_ view: SearchResultMapView, userLocation: MKUserLocation) {
-        print("MKMapView(:didUpdateUserLocation)")
     }
 
 }

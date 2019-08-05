@@ -5,11 +5,15 @@
 import UIKit
 
 public protocol MapSettingsButtonDelegate: AnyObject {
-    func mapSettingsButtonDidSelectChangeMapTypeButton(_ view: MapSettingsButton)
-    func mapSettingsButtonDidSelectCenterMapButton(_ view: MapSettingsButton)
+    func mapSettingsButton(_ button: MapSettingsButton, didSelect action: MapSettingsButton.Actions)
 }
 
 public final class MapSettingsButton: UIView {
+
+    public enum Actions {
+        case changeMapType
+        case centerMap
+    }
 
     public weak var delegate: MapSettingsButtonDelegate?
 
@@ -17,7 +21,7 @@ public final class MapSettingsButton: UIView {
         let button = UIButton(withAutoLayout: true)
         button.setImage(UIImage(named: .info), for: .normal)
         button.tintColor = .primaryBlue
-        button.addTarget(self, action: #selector(mapTypeButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(changeMapTypeButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -88,12 +92,12 @@ public final class MapSettingsButton: UIView {
 
     // MARK: - Actions
 
-    @objc func mapTypeButtonTapped() {
-        delegate?.mapSettingsButtonDidSelectChangeMapTypeButton(self)
+    @objc private func changeMapTypeButtonTapped() {
+        delegate?.mapSettingsButton(self, didSelect: .changeMapType)
     }
 
-    @objc func centerMapButtonTapped() {
-        delegate?.mapSettingsButtonDidSelectCenterMapButton(self)
+    @objc private func centerMapButtonTapped() {
+        delegate?.mapSettingsButton(self, didSelect: .centerMap)
 
     }
 

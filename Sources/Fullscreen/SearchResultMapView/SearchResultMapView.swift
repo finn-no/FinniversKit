@@ -5,12 +5,11 @@
 import MapKit
 
 public protocol SearchResultMapViewDelegate: AnyObject {
-    func searchResultMapViewDidSelectChangeMapTypeButton(_ view: SearchResultMapView, mapSettingsButtonView: MapSettingsButton)
-    func searchResultMapViewDidSelectCenterMapButton(_ view: SearchResultMapView)
-    func searchResultMapViewDidSelectAnnotationView(_ view: SearchResultMapView, annotationView: MKAnnotationView)
+    func searchResultMapView(_ view: SearchResultMapView, didSelect mapSettingsAction: MapSettingsButton.Actions, in button: MapSettingsButton)
+    func searchResultMapView(_ view: SearchResultMapView, didSelect annotationView: MKAnnotationView)
+    func searchResultMapView(_ view: SearchResultMapView, didUpdate userLocation: MKUserLocation)
     func searchResultMapViewRegionWillChangeDueToUserInteraction(_ view: SearchResultMapView)
     func searchResultMapViewRegionDidChange(_ view: SearchResultMapView)
-    func searchResultMapViewDidUpdateUserLocation(_ view: SearchResultMapView, userLocation: MKUserLocation)
 }
 
 public final class SearchResultMapView: UIView {
@@ -127,12 +126,8 @@ public final class SearchResultMapView: UIView {
 
 extension SearchResultMapView: MapSettingsButtonDelegate {
 
-    public func mapSettingsButtonDidSelectChangeMapTypeButton(_ view: MapSettingsButton) {
-        delegate?.searchResultMapViewDidSelectChangeMapTypeButton(self, mapSettingsButtonView: view)
-    }
-
-    public func mapSettingsButtonDidSelectCenterMapButton(_ view: MapSettingsButton) {
-        delegate?.searchResultMapViewDidSelectCenterMapButton(self)
+    public func mapSettingsButton(_ button: MapSettingsButton, didSelect action: MapSettingsButton.Actions) {
+        delegate?.searchResultMapView(self, didSelect: action, in: button)
     }
 
 }
@@ -162,7 +157,7 @@ extension SearchResultMapView: MKMapViewDelegate {
     }
 
     public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        delegate?.searchResultMapViewDidSelectAnnotationView(self, annotationView: view)
+        delegate?.searchResultMapView(self, didSelect: view)
     }
 
     public func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
@@ -180,7 +175,7 @@ extension SearchResultMapView: MKMapViewDelegate {
     }
 
     public func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        delegate?.searchResultMapViewDidUpdateUserLocation(self, userLocation: userLocation)
+        delegate?.searchResultMapView(self, didUpdate: userLocation)
     }
 
 }
