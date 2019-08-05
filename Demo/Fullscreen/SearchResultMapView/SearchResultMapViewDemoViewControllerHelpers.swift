@@ -31,7 +31,7 @@ public struct SearchResultMapViewAnnotationFactory {
 
     public static func create(numberOfAnnotations: Int) -> [SearchResultMapViewDemoAnnotation] {
         return (0 ..< numberOfAnnotations).map { _ in
-            let isCluster = Double.random(in: 0...1) >= 0.8
+            let isCluster = Double.random(in: 0...1) < 0.2
             let image = UIImage(named: isCluster ? .distance : .pin)
             let latitude = SearchResultMapViewAnnotationFactory.centerLocation.latitude + Double.random(in: 0...0.0065)
             let longitude = SearchResultMapViewAnnotationFactory.centerLocation.longitude + Double.random(in: 0...0.0045)
