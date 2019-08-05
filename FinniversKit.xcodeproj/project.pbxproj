@@ -2936,9 +2936,9 @@
 		CFFDF89522F311E300FE68EA /* NeighborhoodProfile */ = {
 			isa = PBXGroup;
 			children = (
+				CF5CA71122F85A94007C4124 /* NeighborhoodProfileHeaderView.swift */,
 				CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */,
 				CF5CA70F22F82D43007C4124 /* NeighborhoodProfileViewCell.swift */,
-				CF5CA71122F85A94007C4124 /* NeighborhoodProfileHeaderView.swift */,
 			);
 			path = NeighborhoodProfile;
 			sourceTree = "<group>";

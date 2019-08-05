@@ -4,11 +4,17 @@
 
 import UIKit
 
+public protocol NeighborhoodProfileViewDelegate: AnyObject {
+    func neighborhoodProfileViewDidSelectExplore(_ view: NeighborhoodProfileView)
+}
+
 public final class NeighborhoodProfileView: UIView {
     private static let cellWidth: CGFloat = 204
     private static var minimumCellHeight: CGFloat { return cellWidth }
 
     // MARK: - Public properties
+
+    public weak var delegate: NeighborhoodProfileViewDelegate?
 
     public var title = "" {
         didSet {
@@ -24,7 +30,11 @@ public final class NeighborhoodProfileView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var headerView = NeighborhoodProfileHeaderView(withAutoLayout: true)
+    private lazy var headerView: NeighborhoodProfileHeaderView = {
+        let view = NeighborhoodProfileHeaderView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
@@ -32,7 +42,6 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.backgroundColor = .ice
         collectionView.contentInset = UIEdgeInsets(top: 0, left: .mediumSpacing, bottom: .mediumSpacing, right: .mediumSpacing)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.allowsSelection = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(NeighborhoodProfileViewCell.self)
@@ -83,7 +92,6 @@ public final class NeighborhoodProfileView: UIView {
             headerView.topAnchor.constraint(equalTo: topAnchor, constant: verticalSpacing),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            headerView.heightAnchor.constraint(equalToConstant: 34),
 
             collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: verticalSpacing),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -99,7 +107,7 @@ public final class NeighborhoodProfileView: UIView {
 
 extension NeighborhoodProfileView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 7
     }
 
     public func collectionView(_ collectionView: UICollectionView,
@@ -116,5 +124,13 @@ extension NeighborhoodProfileView: UICollectionViewDelegateFlowLayout {
                                layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: NeighborhoodProfileView.cellWidth, height: NeighborhoodProfileView.minimumCellHeight)
+    }
+}
+
+// MARK: - NeighborhoodProfileHeaderViewDelegate
+
+extension NeighborhoodProfileView: NeighborhoodProfileHeaderViewDelegate {
+    func neighborhoodProfileHeaderViewDidSelectButton(_ view: NeighborhoodProfileHeaderView) {
+        delegate?.neighborhoodProfileViewDidSelectExplore(self)
     }
 }

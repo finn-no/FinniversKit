@@ -60,6 +60,7 @@ final class NeighborhoodProfileHeaderView: UIView {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             button.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: .mediumLargeSpacing),
             button.centerYAnchor.constraint(equalTo: centerYAnchor),

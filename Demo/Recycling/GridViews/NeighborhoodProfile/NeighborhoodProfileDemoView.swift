@@ -5,9 +5,10 @@
 import UIKit
 import FinniversKit
 
-public final class NeighborhoodProfileDemoView: UIView {
+final class NeighborhoodProfileDemoView: UIView {
     private lazy var view: NeighborhoodProfileView = {
         let view = NeighborhoodProfileView(withAutoLayout: true)
+        view.delegate = self
         view.title = "Om nabolaget"
         view.buttonTitle = "Utforsk"
         return view
@@ -33,5 +34,13 @@ public final class NeighborhoodProfileDemoView: UIView {
             view.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor),
             view.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor)
         ])
+    }
+}
+
+// MARK: - NeighborhoodProfileViewDelegate
+
+extension NeighborhoodProfileDemoView: NeighborhoodProfileViewDelegate {
+    func neighborhoodProfileViewDidSelectExplore(_ view: NeighborhoodProfileView) {
+        print("Explore button selected")
     }
 }
