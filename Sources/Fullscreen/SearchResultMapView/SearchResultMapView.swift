@@ -14,6 +14,11 @@ public protocol SearchResultMapViewDelegate: AnyObject {
 
 public final class SearchResultMapView: UIView {
 
+    private enum AnnotationIdentifier: String {
+        case cluster = "clusterPOI"
+        case poi = "POI"
+    }
+
     public weak var delegate: SearchResultMapViewDelegate?
 
     public var zoomLevel: Double {
@@ -146,9 +151,8 @@ extension SearchResultMapView: MKMapViewDelegate {
         guard !(annotation is MKUserLocation) else { return nil }
 
         if let annotation = annotation as? SearchResultMapViewAnnotation {
-            let marker = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.isCluster ? "clusterPOI" : "POI")
+            let marker = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.isCluster ? AnnotationIdentifier.cluster.rawValue : AnnotationIdentifier.poi.rawValue)
             marker.image = annotation.image
-            marker.accessibilityIdentifier = "annotationPOI"
             marker.centerOffset = CGPoint(x: 0.5, y: 1.0)
             return marker
         }
