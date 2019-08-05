@@ -7,9 +7,9 @@ import FinniversKit
 
 public class SearchResultMapViewDemoAnnotation: NSObject, SearchResultMapViewAnnotation {
 
-    public var isCluster: Bool
-    public var image: UIImage
-    public var coordinate: CLLocationCoordinate2D
+    public let isCluster: Bool
+    public let image: UIImage
+    public let coordinate: CLLocationCoordinate2D
 
     init(coordinate: CLLocationCoordinate2D, image: UIImage, isCluster: Bool) {
         self.coordinate = coordinate

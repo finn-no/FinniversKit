@@ -6,9 +6,7 @@ import FinniversKit
 
 public class MapSettingsButtonDemoView: UIView {
 
-    private lazy var mapSettingsButton: MapSettingsButton = {
-        return MapSettingsButton(withAutoLayout: true)
-    }()
+    private lazy var mapSettingsButton: MapSettingsButton = MapSettingsButton(withAutoLayout: true)
 
     // MARK: - Init
 

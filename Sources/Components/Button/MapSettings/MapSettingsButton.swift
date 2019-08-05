@@ -69,9 +69,9 @@ public final class MapSettingsButton: UIView {
         addSubview(centerMapButton)
 
         NSLayoutConstraint.activate([
-            mapTypeButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            mapTypeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             mapTypeButton.widthAnchor.constraint(equalToConstant: 42),
-            mapTypeButton.heightAnchor.constraint(equalToConstant: 32),
+            mapTypeButton.heightAnchor.constraint(equalToConstant: .largeSpacing),
             mapTypeButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             mapTypeButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             mapTypeButton.bottomAnchor.constraint(equalTo: divider.topAnchor, constant: -4),
@@ -82,11 +82,11 @@ public final class MapSettingsButton: UIView {
             divider.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             centerMapButton.topAnchor.constraint(equalTo: divider.bottomAnchor, constant: 4),
-            centerMapButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            centerMapButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
             centerMapButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             centerMapButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             centerMapButton.widthAnchor.constraint(equalToConstant: 42),
-            centerMapButton.heightAnchor.constraint(equalToConstant: 32),
+            centerMapButton.heightAnchor.constraint(equalToConstant: .largeSpacing),
             ])
     }
 
