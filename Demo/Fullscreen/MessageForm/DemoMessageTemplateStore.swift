@@ -11,18 +11,21 @@ class DemoMessageTemplateStore: MessageTemplateStoreProtocol {
         addTemplate(withText: "Kan du kjøre den hjem til meg gratis?")
     }
 
-    func addTemplate(withText text: String) -> Bool {
+    func addTemplate(withText text: String, completionHandler: @escaping (Bool) -> Void) {
+        addTemplate(withText: text)
+        completionHandler(true)
+    }
+
+    func removeTemplate(_ template: MessageFormTemplate, completionHandler: @escaping (Bool) -> Void) {
+        customTemplates.removeAll(where: { $0.id == template.id })
+        completionHandler(true)
+    }
+
+    private func addTemplate(withText text: String) {
         let id = "custom_template_\(nextCustomId)"
         nextCustomId += 1
 
         let template = MessageFormTemplate(text: text, id: id)
         customTemplates.insert(template, at: 0)
-
-        return true
-    }
-
-    func removeTemplate(_ template: MessageFormTemplate) -> Bool {
-        customTemplates.removeAll(where: { $0.id == template.id })
-        return true
     }
 }
