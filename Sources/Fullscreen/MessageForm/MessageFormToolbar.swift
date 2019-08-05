@@ -74,6 +74,10 @@ class MessageFormToolbar: UIView {
         }
     }
 
+    private var customTemplates: [MessageFormTemplate] {
+        return viewModel.messageTemplateStore?.customTemplates ?? []
+    }
+
     // MARK: - Init
 
     required init?(coder aDecoder: NSCoder) {
@@ -115,6 +119,10 @@ class MessageFormToolbar: UIView {
             return safeAreaHeight
         }
     }
+
+    func reloadData() {
+        collectionView.reloadData()
+    }
 }
 
 extension MessageFormToolbar: UICollectionViewDelegateFlowLayout {
@@ -146,7 +154,7 @@ extension MessageFormToolbar: UICollectionViewDataSource {
         case 0:
             return showCustomizeButton ? 1 : 0
         case 1:
-            return viewModel.defaultMessageTemplates.count
+            return customTemplates.count + viewModel.defaultMessageTemplates.count
         default:
             return 0
         }
@@ -159,8 +167,16 @@ extension MessageFormToolbar: UICollectionViewDataSource {
             cell.delegate = self
             return cell
         case 1:
+            let template: MessageFormTemplate?
+            if indexPath.row < customTemplates.count {
+                template = customTemplates[safe: indexPath.row]
+            } else {
+                let index = indexPath.row - customTemplates.count
+                template = viewModel.defaultMessageTemplates[safe: index]
+            }
+
             let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
-            let text = viewModel.defaultMessageTemplates[safe: indexPath.row]?.text ?? ""
+            let text = template?.text ?? ""
             cell.configure(withText: text, index: indexPath.row, maxWidth: toolbarCellMaxWidth, height: toolbarCellHeight)
             cell.delegate = self
             return cell
