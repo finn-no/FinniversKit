@@ -46,7 +46,7 @@ class DemoViewsTableViewController: UITableViewController {
     }
 
     @objc private func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
-        updateColors()
+        updateColors(animated: true)
         evaluateIndexAndValues()
         tableView.reloadData()
     }
@@ -57,7 +57,7 @@ class DemoViewsTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         navigationItem.titleView = selectorTitleView
         selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
-        updateColors()
+        updateColors(animated: false)
     }
 
     private func updateMoonButton() {
@@ -69,23 +69,25 @@ class DemoViewsTableViewController: UITableViewController {
         NotificationCenter.default.post(name: .didChangeUserInterfaceStyle, object: nil)
     }
 
-    private func updateColors() {
-        let interfaceBackgroundColor: UIColor
-        let sectionIndexColor: UIColor
-        switch State.currentUserInterfaceStyle {
-        case .light:
-            interfaceBackgroundColor = .milk
-            sectionIndexColor = .primaryBlue
-        case .dark:
-            interfaceBackgroundColor = .midnightBackground
-            sectionIndexColor = .secondaryBlue
-        }
+    private func updateColors(animated: Bool) {
+        UIView.animate(withDuration: animated ? 0.3 : 0) {
+            let interfaceBackgroundColor: UIColor
+            let sectionIndexColor: UIColor
+            switch State.currentUserInterfaceStyle {
+            case .light:
+                interfaceBackgroundColor = .milk
+                sectionIndexColor = .primaryBlue
+            case .dark:
+                interfaceBackgroundColor = .midnightBackground
+                sectionIndexColor = .secondaryBlue
+            }
 
-        tableView.sectionIndexColor = sectionIndexColor
-        tableView.backgroundColor = interfaceBackgroundColor
-        selectorTitleView.updateColors()
-        updateMoonButton()
-        setNeedsStatusBarAppearanceUpdate()
+            self.tableView.sectionIndexColor = sectionIndexColor
+            self.tableView.backgroundColor = interfaceBackgroundColor
+            self.selectorTitleView.updateColors()
+            self.updateMoonButton()
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
     }
 
     private func evaluateIndexAndValues() {
