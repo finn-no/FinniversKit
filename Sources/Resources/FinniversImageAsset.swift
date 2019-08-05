@@ -36,9 +36,11 @@ public enum FinniversImageAsset: String {
     case car
     case check
     case checkCircle
+    case checkCircleFilledMini
     case checkmarkBig
     case classifieds
     case close
+    case cross
     case distance
     case distanceOutlined
     case download
@@ -75,6 +77,7 @@ public enum FinniversImageAsset: String {
     case important
     case info
     case jobs
+    case klimaboletBanner
     case listView
     case magnifyingGlass
     case mapDirections
@@ -83,6 +86,7 @@ public enum FinniversImageAsset: String {
     case mc
     case messages
     case minus
+    case minusCircleFilledMini
     case miscCross
     case miscLike
     case miscLiked
@@ -159,9 +163,11 @@ public enum FinniversImageAsset: String {
             .car,
             .check,
             .checkCircle,
+            .checkCircleFilledMini,
             .checkmarkBig,
             .classifieds,
             .close,
+            .cross,
             .distance,
             .distanceOutlined,
             .download,
@@ -198,6 +204,7 @@ public enum FinniversImageAsset: String {
             .important,
             .info,
             .jobs,
+            .klimaboletBanner,
             .listView,
             .magnifyingGlass,
             .mapDirections,
@@ -206,6 +213,7 @@ public enum FinniversImageAsset: String {
             .mc,
             .messages,
             .minus,
+            .minusCircleFilledMini,
             .miscCross,
             .miscLike,
             .miscLiked,

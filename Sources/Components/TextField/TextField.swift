@@ -47,10 +47,10 @@ public class TextField: UIView {
     private let eyeImage = UIImage(named: .view).withRenderingMode(.alwaysTemplate)
     private let clearTextIcon = UIImage(named: .remove).withRenderingMode(.alwaysTemplate)
     private let multilineDisclosureIcon = UIImage(named: .remove).withRenderingMode(.alwaysTemplate)
-    private let errorImage = UIImage(named: .error)
+    private let errorImage = UIImage(named: .minusCircleFilledMini)
     private let rightViewSize = CGSize(width: 40, height: 40)
     private let animationDuration: Double = 0.3
-    private let errorIconWidth: CGFloat = 18
+    private let errorIconWidth: CGFloat = 16
 
     private var underlineHeightConstraint: NSLayoutConstraint?
     private var helpTextLabelLeadingConstraint: NSLayoutConstraint?

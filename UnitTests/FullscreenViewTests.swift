@@ -113,4 +113,8 @@ class FullscreenViewTests: FBSnapshotTestCase {
     func testAddressView() {
         snapshot(.addressView)
     }
+
+    func testFavoriteAdsList() {
+        snapshot(.favoriteAdsList)
+    }
 }

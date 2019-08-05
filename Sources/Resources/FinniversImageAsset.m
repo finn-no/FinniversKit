@@ -25,9 +25,11 @@ NSString *const FinniversImageAssetcandyCane = @"candyCane";
 NSString *const FinniversImageAssetcar = @"car";
 NSString *const FinniversImageAssetcheck = @"check";
 NSString *const FinniversImageAssetcheckCircle = @"checkCircle";
+NSString *const FinniversImageAssetcheckCircleFilledMini = @"checkCircleFilledMini";
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
 NSString *const FinniversImageAssetclassifieds = @"classifieds";
 NSString *const FinniversImageAssetclose = @"close";
+NSString *const FinniversImageAssetcross = @"cross";
 NSString *const FinniversImageAssetdistance = @"distance";
 NSString *const FinniversImageAssetdistanceOutlined = @"distanceOutlined";
 NSString *const FinniversImageAssetdownload = @"download";
@@ -64,6 +66,7 @@ NSString *const FinniversImageAsseticonRealestatePrice = @"iconRealestatePrice";
 NSString *const FinniversImageAssetimportant = @"important";
 NSString *const FinniversImageAssetinfo = @"info";
 NSString *const FinniversImageAssetjobs = @"jobs";
+NSString *const FinniversImageAssetklimaboletBanner = @"klimaboletBanner";
 NSString *const FinniversImageAssetlistView = @"listView";
 NSString *const FinniversImageAssetmagnifyingGlass = @"magnifyingGlass";
 NSString *const FinniversImageAssetmapDirections = @"mapDirections";
@@ -72,6 +75,7 @@ NSString *const FinniversImageAssetmapMyposition = @"mapMyposition";
 NSString *const FinniversImageAssetmc = @"mc";
 NSString *const FinniversImageAssetmessages = @"messages";
 NSString *const FinniversImageAssetminus = @"minus";
+NSString *const FinniversImageAssetminusCircleFilledMini = @"minusCircleFilledMini";
 NSString *const FinniversImageAssetmiscCross = @"miscCross";
 NSString *const FinniversImageAssetmiscLike = @"miscLike";
 NSString *const FinniversImageAssetmiscLiked = @"miscLiked";
@@ -149,9 +153,11 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetcar,
              FinniversImageAssetcheck,
              FinniversImageAssetcheckCircle,
+             FinniversImageAssetcheckCircleFilledMini,
              FinniversImageAssetcheckmarkBig,
              FinniversImageAssetclassifieds,
              FinniversImageAssetclose,
+             FinniversImageAssetcross,
              FinniversImageAssetdistance,
              FinniversImageAssetdistanceOutlined,
              FinniversImageAssetdownload,
@@ -188,6 +194,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetimportant,
              FinniversImageAssetinfo,
              FinniversImageAssetjobs,
+             FinniversImageAssetklimaboletBanner,
              FinniversImageAssetlistView,
              FinniversImageAssetmagnifyingGlass,
              FinniversImageAssetmapDirections,
@@ -196,6 +203,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetmc,
              FinniversImageAssetmessages,
              FinniversImageAssetminus,
+             FinniversImageAssetminusCircleFilledMini,
              FinniversImageAssetmiscCross,
              FinniversImageAssetmiscLike,
              FinniversImageAssetmiscLiked,
