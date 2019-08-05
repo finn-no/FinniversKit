@@ -15,8 +15,6 @@ public protocol SearchResultMapViewDelegate: AnyObject {
 
 public final class SearchResultMapView: UIView {
 
-    private var didSetupView = false
-
     public weak var delegate: SearchResultMapViewDelegate?
 
     public var zoomLevel: Double {
@@ -45,16 +43,18 @@ public final class SearchResultMapView: UIView {
         return mapSettingsButton
     }()
 
-    // MARK: - Public
+    // MARK: - Init
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-
-        if !didSetupView {
-            setup()
-            didSetupView = true
-        }
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Public
 
     public func configure(withInitialRegion region: MKCoordinateRegion, andShowingUserLocation showingUserLocation: Bool) {
         setRegion(region, animated: false)
