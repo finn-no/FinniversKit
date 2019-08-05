@@ -61,6 +61,12 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
 // MARK: - FavoriteFoldersListViewDelegate
 
 extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
+    func favoriteFoldersListViewDidBeginRefreshing(_ view: FavoriteFoldersListView) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak view] in
+            view?.reloadData()
+        })
+    }
+
     func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView,
                                  didSelectItemAtIndex index: Int) {
         let folderId = filteredFavorites[index].id

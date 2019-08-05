@@ -5,6 +5,7 @@
 import UIKit
 
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
+    func favoriteFoldersListViewDidBeginRefreshing(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView)
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String)
@@ -32,6 +33,11 @@ public class FavoriteFoldersListView: UIView {
     private enum Section: Int, CaseIterable {
         case addButton
         case folders
+    }
+
+    public struct UpdateContext {
+        public let tableView: UITableView
+        public let section: Int
     }
 
     public static let estimatedRowHeight: CGFloat = 64.0
@@ -70,6 +76,12 @@ public class FavoriteFoldersListView: UIView {
         return tableView
     }()
 
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = RefreshControl(frame: .zero)
+        refreshControl.delegate = self
+        return refreshControl
+    }()
+
     private lazy var footerView: FavoriteFoldersFooterView = {
         let view = FavoriteFoldersFooterView(withAutoLayout: true)
         view.delegate = self
@@ -96,6 +108,7 @@ public class FavoriteFoldersListView: UIView {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setup()
+        showRefreshControl(true)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -115,8 +128,21 @@ public class FavoriteFoldersListView: UIView {
             })
         }
 
-        tableView.setContentOffset(.zero, animated: false)
+        if !refreshControl.isRefreshing && tableView.isEditing {
+            tableView.setContentOffset(.zero, animated: false)
+        }
+
+        endRefreshing()
         tableView.reloadData()
+    }
+
+    /// Perform necessary updates using an instance of UITableView and folders section
+    public func performUpdates(using closure: (UpdateContext) -> Void) {
+        closure(UpdateContext(tableView: tableView, section: Section.folders.rawValue))
+    }
+
+    public func endRefreshing() {
+        refreshControl.endRefreshing()
     }
 
     public func reloadRow(at index: Int, with animation: UITableView.RowAnimation = .none) {
@@ -135,6 +161,8 @@ public class FavoriteFoldersListView: UIView {
         guard tableView.isEditing != editing else {
             return
         }
+
+        showRefreshControl(!editing)
 
         if isSearchActive {
             searchBar.text = ""
@@ -209,6 +237,10 @@ public class FavoriteFoldersListView: UIView {
         let shouldShowEmptyView = (dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0) == 0
         emptyView.isHidden = !shouldShowEmptyView
     }
+
+    private func showRefreshControl(_ show: Bool) {
+        tableView.refreshControl = show ? refreshControl : nil
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -248,7 +280,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             cell.dataSource = self
 
             if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
-                cell.configure(with: viewModel, isEditing: tableView.isEditing, isEditable: indexPath.row != 0)
+                cell.configure(with: viewModel, isEditing: tableView.isEditing, isEditable: !viewModel.isDefault)
             }
 
             return cell
@@ -289,13 +321,24 @@ extension FavoriteFoldersListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         guard tableView.isEditing else { return true }
         guard let section = Section(rawValue: indexPath.section) else { return false }
+        guard let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) else {
+            return false
+        }
 
         switch section {
         case .addButton:
             return false
         case .folders:
-            return indexPath.row != 0
+            return !viewModel.isDefault
         }
+    }
+}
+
+// MARK: - RefreshControlDelegate
+
+extension FavoriteFoldersListView: RefreshControlDelegate {
+    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        delegate?.favoriteFoldersListViewDidBeginRefreshing(self)
     }
 }
 
@@ -364,12 +407,14 @@ extension FavoriteFoldersListView: UIScrollViewDelegate {
 
 extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        showRefreshControl(false)
         delegate?.favoriteFoldersListViewDidFocusSearchBar(self)
     }
 
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if searchBar.text?.isEmpty ?? true {
             isSearchActive = false
+            showRefreshControl(true)
         }
     }
 
