@@ -6,6 +6,7 @@ import FinniversKit
 
 class MessageFormDemoViewModel: MessageFormViewModel {
     let showTemplateToolbar = true
+    let showCustomizeButton = true
 
     let titleText = "Send melding"
     let sendButtonText = "Send"
