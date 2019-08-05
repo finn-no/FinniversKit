@@ -9,7 +9,7 @@ class MessageTemplateEditViewController: UIViewController {
     // MARK: - UI properties
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -32,12 +32,14 @@ class MessageTemplateEditViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.addSubview(tableView)
-        tableView.fillInSuperview()
+        title = "Meldingsmaler"
 
         let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItem = addItem
+
+        view.backgroundColor = .milk
+        view.addSubview(tableView)
+        tableView.fillInSuperview()
     }
 
     // MARK: - Private methods
@@ -108,6 +110,10 @@ extension MessageTemplateEditViewController: UITableViewDataSource {
                 }
             })
         }
+    }
+
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Dine meldingsmaler"
     }
 }
 
