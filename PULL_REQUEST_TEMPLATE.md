@@ -10,10 +10,13 @@ _A summary of what has changed and if there's anything in special that you would
 
 _If the change concerns UI, a transition or an animation, providing an image, a gif, or a video is encouraged to help us reviewing your PR._
 
-### Before
+| Before | After |
+| --- | --- |
+| _Before image/gif_ | _After image/gif_ |
 
-_...._
+_Alternatively_
 
-### After
-
-_...._
+| | Feature A | Feature B |
+| --- | --- | --- |
+| **iPhone** | _Some image/gif_ | _Some image/gif_ |
+| **iPad** | _Some image/gif_ | _Some image/gif_ |
