@@ -34,7 +34,7 @@ public class ToastView: UIView {
     // MARK: - Internal properties
 
     private let animationDuration: Double = 0.3
-    private let imageSizeAllowedMin = CGSize(width: 18, height: 18)
+    private let imageSizeAllowedMin = CGSize(width: 16, height: 16)
     private let imageSizeAllowedMax = CGSize(width: 26, height: 26)
     private let buttonStyle: ButtonStyle
 
@@ -82,9 +82,9 @@ public class ToastView: UIView {
         get {
             guard let image = imageView.image else {
                 switch style {
-                case .error, .errorButton: return UIImage(named: .error)
+                case .error, .errorButton: return UIImage(named: .minusCircleFilledMini)
                 case .sucesssWithImage: return UIImage(named: .noImage)
-                default: return UIImage(named: .success)
+                default: return UIImage(named: .checkCircleFilledMini)
                 }
             }
             return image
