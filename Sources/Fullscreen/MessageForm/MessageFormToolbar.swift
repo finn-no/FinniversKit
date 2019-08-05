@@ -88,7 +88,7 @@ class MessageFormToolbar: UIView {
 
     private func setup() {
         backgroundColor = MessageFormToolbar.backgroundColor
-        showCustomizeButton = viewModel.showCustomizeButton
+        showCustomizeButton = viewModel.showCustomizeButton && viewModel.messageTemplateStore != nil
 
         addSubview(collectionView)
         addSubview(safeAreaCoverView)

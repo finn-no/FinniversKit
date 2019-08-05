@@ -2,6 +2,10 @@ import Foundation
 
 class MessageTemplateEditViewController: UIViewController {
 
+    // MARK: - Private properties
+
+    private let templateStore: MessageTemplateStoreProtocol
+
     // MARK: - UI properties
 
     private lazy var tableView: UITableView = {
@@ -20,8 +24,13 @@ class MessageTemplateEditViewController: UIViewController {
         fatalError()
     }
 
-    public required init() {
+    public required init(templateStore: MessageTemplateStoreProtocol) {
+        self.templateStore = templateStore
         super.init(nibName: nil, bundle: nil)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         view.addSubview(tableView)
         tableView.fillInSuperview()
@@ -30,20 +39,12 @@ class MessageTemplateEditViewController: UIViewController {
 
 extension MessageTemplateEditViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return templateStore.customTemplates.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let templates = [
-            "Er den fortsatt tilgjengelig? :)\n\nHilsen Joakim",
-            "Jeg har skikkelig lyst på denne, kan du sende den til Alnagata 20B?",
-            "500kr",
-            "Følger dama med?",
-            "Hvorfor selger du den så dyrt? Jeg gir halvparten."
-        ]
-
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = templates[indexPath.row]
+        cell.textLabel?.text = templateStore.customTemplates[indexPath.row].text
         cell.textLabel?.numberOfLines = 0
         return cell
     }
