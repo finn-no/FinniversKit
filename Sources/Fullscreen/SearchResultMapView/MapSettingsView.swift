@@ -4,18 +4,18 @@
 
 import UIKit
 
-public protocol MapSettingsButtonDelegate: AnyObject {
-    func mapSettingsButton(_ button: MapSettingsButton, didSelect action: MapSettingsButton.Action)
+public protocol MapSettingsViewDelegate: AnyObject {
+    func mapSettingsView(_ view: MapSettingsView, didSelect action: MapSettingsView.Action)
 }
 
-public final class MapSettingsButton: UIView {
+public final class MapSettingsView: UIView {
 
     public enum Action {
         case changeMapType
         case centerMap
     }
 
-    public weak var delegate: MapSettingsButtonDelegate?
+    public weak var delegate: MapSettingsViewDelegate?
 
     private lazy var mapTypeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
@@ -93,11 +93,11 @@ public final class MapSettingsButton: UIView {
     // MARK: - Actions
 
     @objc private func changeMapTypeButtonTapped() {
-        delegate?.mapSettingsButton(self, didSelect: .changeMapType)
+        delegate?.mapSettingsView(self, didSelect: .changeMapType)
     }
 
     @objc private func centerMapButtonTapped() {
-        delegate?.mapSettingsButton(self, didSelect: .centerMap)
+        delegate?.mapSettingsView(self, didSelect: .centerMap)
 
     }
 

@@ -71,7 +71,7 @@ public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
 extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
 
-    public func searchResultMapView(_ view: SearchResultMapView, didSelect action: MapSettingsButton.Action, in button: MapSettingsButton) {
+    public func searchResultMapView(_ view: SearchResultMapView, didSelect action: MapSettingsView.Action, in mapSettingsView: MapSettingsView) {
         switch action {
         case .centerMap:
             view.setCenter(SearchResultMapViewAnnotationFactory.centerLocation, regionDistance: 1000, animated: true)
@@ -87,8 +87,8 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
             }))
 
             if let popoverController = alert.popoverPresentationController {
-                popoverController.sourceView = button
-                popoverController.sourceRect = button.bounds.offsetBy(dx: -.mediumSpacing, dy: -20)
+                popoverController.sourceView = mapSettingsView
+                popoverController.sourceRect = mapSettingsView.bounds.offsetBy(dx: -.mediumSpacing, dy: -20)
                 popoverController.permittedArrowDirections = [.right]
             }
 

@@ -175,8 +175,4 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.klimabrolet)
     }
 
-    func testMapSettingsButton() {
-        snapshot(.mapSettingsButton)
-    }
-
 }
