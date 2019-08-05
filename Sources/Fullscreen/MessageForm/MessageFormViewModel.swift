@@ -22,7 +22,7 @@ public protocol MessageFormViewModel: AnyObject {
     var sendButtonText: String { get }
     var cancelButtonText: String { get }
     var transparencyText: String { get }
-    var messageTemplates: [MessageFormTemplate] { get }
+    var defaultMessageTemplates: [MessageFormTemplate] { get }
 
     var replaceAlertTitle: String { get }
     var replaceAlertMessage: String { get }

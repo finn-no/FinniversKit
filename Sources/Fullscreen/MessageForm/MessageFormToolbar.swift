@@ -146,7 +146,7 @@ extension MessageFormToolbar: UICollectionViewDataSource {
         case 0:
             return showCustomizeButton ? 1 : 0
         case 1:
-            return viewModel.messageTemplates.count
+            return viewModel.defaultMessageTemplates.count
         default:
             return 0
         }
@@ -160,7 +160,7 @@ extension MessageFormToolbar: UICollectionViewDataSource {
             return cell
         case 1:
             let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
-            let text = viewModel.messageTemplates[safe: indexPath.row]?.text ?? ""
+            let text = viewModel.defaultMessageTemplates[safe: indexPath.row]?.text ?? ""
             cell.configure(withText: text, index: indexPath.row, maxWidth: toolbarCellMaxWidth, height: toolbarCellHeight)
             cell.delegate = self
             return cell
@@ -172,7 +172,7 @@ extension MessageFormToolbar: UICollectionViewDataSource {
 
 extension MessageFormToolbar: MessageFormTemplateCellDelegate {
     fileprivate func messageFormTemplateCellWasTapped(_ cell: MessageFormTemplateCell) {
-        guard let messageTemplate = viewModel.messageTemplates[safe: cell.index] else {
+        guard let messageTemplate = viewModel.defaultMessageTemplates[safe: cell.index] else {
             return
         }
 
