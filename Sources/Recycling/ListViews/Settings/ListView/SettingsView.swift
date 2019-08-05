@@ -12,6 +12,7 @@ public protocol SettingsViewDataSource: AnyObject {
 public protocol SettingsViewDelegate: AnyObject {
     func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String?
     func settingsView(_ settingsView: SettingsView, didSelectRowAt indexPath: IndexPath)
+    func settingsView(_ settingsView: SettingsView, viewForFooterInSection section: Int) -> UIView?
 }
 
 public class SettingsView: UIView {
@@ -89,5 +90,9 @@ extension SettingsView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.settingsView(self, didSelectRowAt: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return delegate?.settingsView(self, viewForFooterInSection: section)
     }
 }
