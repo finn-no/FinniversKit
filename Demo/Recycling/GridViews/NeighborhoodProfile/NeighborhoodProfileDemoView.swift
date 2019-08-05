@@ -21,6 +21,12 @@ public final class NeighborhoodProfileDemoView: UIView {
 
     private func setup() {
         addSubview(view)
-        view.fillInSuperview()
+
+        NSLayoutConstraint.activate([
+            view.centerYAnchor.constraint(equalTo: centerYAnchor),
+            view.centerXAnchor.constraint(equalTo: centerXAnchor),
+            view.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor)
+        ])
     }
 }
