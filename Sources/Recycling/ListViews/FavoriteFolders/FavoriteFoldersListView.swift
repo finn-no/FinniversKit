@@ -118,7 +118,6 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Reload
 
     public func reloadData() {
-        endRefreshing()
         showEmptyViewIfNeeded()
 
         if !tableView.isEditing {
@@ -129,7 +128,11 @@ public class FavoriteFoldersListView: UIView {
             })
         }
 
-        tableView.setContentOffset(.zero, animated: false)
+        if !refreshControl.isRefreshing && tableView.isEditing {
+            tableView.setContentOffset(.zero, animated: false)
+        }
+
+        endRefreshing()
         tableView.reloadData()
     }
 
@@ -277,7 +280,7 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             cell.dataSource = self
 
             if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) {
-                cell.configure(with: viewModel, isEditing: tableView.isEditing, isEditable: indexPath.row != 0)
+                cell.configure(with: viewModel, isEditing: tableView.isEditing, isEditable: !viewModel.isDefault)
             }
 
             return cell
@@ -318,12 +321,15 @@ extension FavoriteFoldersListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         guard tableView.isEditing else { return true }
         guard let section = Section(rawValue: indexPath.section) else { return false }
+        guard let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) else {
+            return false
+        }
 
         switch section {
         case .addButton:
             return false
         case .folders:
-            return indexPath.row != 0
+            return !viewModel.isDefault
         }
     }
 }
