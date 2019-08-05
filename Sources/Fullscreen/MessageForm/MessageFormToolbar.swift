@@ -290,7 +290,8 @@ private protocol MessageFormCustomizeCellDelegate: AnyObject {
 
 private class MessageFormCustomizeCell: UICollectionViewCell {
 
-    static let size = CGSize(width: 25, height: 25)
+    static let cellSize = CGSize(width: 30, height: 30)
+    static let imageSize = CGSize(width: 25, height: 25)
 
     // MARK: - UI properties
 
@@ -299,7 +300,7 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
         button.setBackgroundColor(color: .toothPaste, forState: .normal)
         button.setBackgroundColor(color: .secondaryBlue, forState: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = MessageFormCustomizeCell.size.width / 2
+        button.layer.cornerRadius = MessageFormCustomizeCell.cellSize.width / 2
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
@@ -330,10 +331,19 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
 
     private func setup() {
         contentView.addSubview(button)
+        button.addSubview(imageView)
+
         button.fillInSuperview()
 
-        button.addSubview(imageView)
-        imageView.fillInSuperview()
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.imageSize.width),
+            imageView.heightAnchor.constraint(equalToConstant: MessageFormCustomizeCell.imageSize.height),
+
+            contentView.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.width),
+            contentView.heightAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.height)
+        ])
     }
 
     // MARK: - Private methods
