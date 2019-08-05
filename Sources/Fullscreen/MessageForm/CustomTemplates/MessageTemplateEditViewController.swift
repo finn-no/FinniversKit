@@ -16,6 +16,7 @@ class MessageTemplateEditViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(CustomMessageTemplateCell.self)
+        tableView.allowsSelection = false
         return tableView
     }()
 
