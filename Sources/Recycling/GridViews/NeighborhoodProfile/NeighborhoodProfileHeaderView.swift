@@ -12,15 +12,11 @@ final class NeighborhoodProfileHeaderView: UIView {
     weak var delegate: NeighborhoodProfileHeaderViewDelegate?
 
     var title = "" {
-        didSet {
-            titleLabel.text = title
-        }
+        didSet { titleLabel.text = title }
     }
 
     var buttonTitle = "" {
-        didSet {
-            button.setTitle(buttonTitle, for: .normal)
-        }
+        didSet { button.setTitle(buttonTitle, for: .normal) }
     }
 
     // MARK: - Private properties
