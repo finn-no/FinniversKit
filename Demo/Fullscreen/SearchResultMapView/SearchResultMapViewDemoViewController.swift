@@ -5,7 +5,7 @@
 import FinniversKit
 import MapKit
 
-public class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
+class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
     private lazy var searchResultMapView: SearchResultMapView = {
         let view = SearchResultMapView(withAutoLayout: true)
