@@ -68,7 +68,14 @@ extension SettingsView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(SettingsViewCell.self, for: indexPath)
-        cell.model = dataSource?.settingsView(self, modelForItemAt: indexPath)
+        let model = dataSource?.settingsView(self, modelForItemAt: indexPath)
+
+        guard let numberOfItems = dataSource?.settingsView(self, numberOfRowsInSection: indexPath.section) else {
+            fatalError("There must be items to populate the cell")
+        }
+        let isLastItem = indexPath.row == numberOfItems - 1
+        cell.configure(with: model, isLastItem: isLastItem)
+
         return cell
     }
 }
