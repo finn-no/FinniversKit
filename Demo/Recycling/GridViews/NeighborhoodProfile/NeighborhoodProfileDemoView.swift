@@ -6,7 +6,12 @@ import UIKit
 import FinniversKit
 
 public final class NeighborhoodProfileDemoView: UIView {
-    private lazy var view = NeighborhoodProfileView(withAutoLayout: true)
+    private lazy var view: NeighborhoodProfileView = {
+        let view = NeighborhoodProfileView(withAutoLayout: true)
+        view.title = "Om nabolaget"
+        view.buttonTitle = "Utforsk"
+        return view
+    }()
 
     // MARK: - Init
 

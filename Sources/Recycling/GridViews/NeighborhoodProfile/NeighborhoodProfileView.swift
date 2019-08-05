@@ -8,16 +8,30 @@ public final class NeighborhoodProfileView: UIView {
     private static let cellWidth: CGFloat = 204
     private static var minimumCellHeight: CGFloat { return cellWidth }
 
+    // MARK: - Public properties
+
+    public var title = "" {
+        didSet {
+            headerView.title = title
+        }
+    }
+
+    public var buttonTitle = "" {
+        didSet {
+            headerView.buttonTitle = buttonTitle
+        }
+    }
+
+    // MARK: - Private properties
+
+    private lazy var headerView = NeighborhoodProfileHeaderView(withAutoLayout: true)
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.contentInset = UIEdgeInsets(
-            top: .mediumSpacing,
-            left: .mediumSpacing,
-            bottom: .mediumSpacing,
-            right: .mediumSpacing
-        )
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .milk
+        collectionView.backgroundColor = .ice
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: .mediumSpacing, bottom: .mediumSpacing, right: .mediumSpacing)
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.allowsSelection = false
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -42,7 +56,6 @@ public final class NeighborhoodProfileView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        reloadData()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -60,14 +73,24 @@ public final class NeighborhoodProfileView: UIView {
 
     private func setup() {
         backgroundColor = .ice
+
+        addSubview(headerView)
         addSubview(collectionView)
 
+        let verticalSpacing: CGFloat = 20
+
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            headerView.topAnchor.constraint(equalTo: topAnchor, constant: verticalSpacing),
+            headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            headerView.heightAnchor.constraint(equalToConstant: 34),
+
+            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: verticalSpacing),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeight,
-            heightAnchor.constraint(equalTo: collectionView.heightAnchor),
+
+            bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: verticalSpacing),
         ])
     }
 }
