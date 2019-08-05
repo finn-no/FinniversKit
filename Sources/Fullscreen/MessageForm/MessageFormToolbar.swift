@@ -167,17 +167,20 @@ extension MessageFormToolbar: UICollectionViewDataSource {
             cell.delegate = self
             return cell
         case 1:
-            let template: MessageFormTemplate?
+            let maybeTemplate: MessageFormTemplate?
             if indexPath.row < customTemplates.count {
-                template = customTemplates[safe: indexPath.row]
+                maybeTemplate = customTemplates[safe: indexPath.row]
             } else {
                 let index = indexPath.row - customTemplates.count
-                template = viewModel.defaultMessageTemplates[safe: index]
+                maybeTemplate = viewModel.defaultMessageTemplates[safe: index]
+            }
+
+            guard let template = maybeTemplate else {
+                return UICollectionViewCell()
             }
 
             let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
-            let text = template?.text ?? ""
-            cell.configure(withText: text, index: indexPath.row, maxWidth: toolbarCellMaxWidth, height: toolbarCellHeight)
+            cell.configure(withTemplate: template, maxWidth: toolbarCellMaxWidth, height: toolbarCellHeight)
             cell.delegate = self
             return cell
         default:
@@ -188,7 +191,7 @@ extension MessageFormToolbar: UICollectionViewDataSource {
 
 extension MessageFormToolbar: MessageFormTemplateCellDelegate {
     fileprivate func messageFormTemplateCellWasTapped(_ cell: MessageFormTemplateCell) {
-        guard let messageTemplate = viewModel.defaultMessageTemplates[safe: cell.index] else {
+        guard let messageTemplate = cell.template else {
             return
         }
 
@@ -233,12 +236,12 @@ private class MessageFormTemplateCell: UICollectionViewCell {
     }()
 
     private lazy var heightConstraint = contentView.heightAnchor.constraint(equalToConstant: 100)
-    private lazy var maxWidthConstraint = contentView.widthAnchor.constraint(lessThanOrEqualToConstant: 100)
+    private lazy var widthConstraint = contentView.widthAnchor.constraint(equalToConstant: 100)
 
     // MARK: - Internal properties
 
     weak var delegate: MessageFormTemplateCellDelegate?
-    private(set) var index: Int = 0
+    private(set) var template: MessageFormTemplate?
 
     // MARK: - Init
 
@@ -262,14 +265,14 @@ private class MessageFormTemplateCell: UICollectionViewCell {
 
     // MARK: - Internal methods
 
-    func configure(withText text: String, index: Int, maxWidth: CGFloat, height: CGFloat) {
-        label.text = text
+    func configure(withTemplate template: MessageFormTemplate, maxWidth: CGFloat, height: CGFloat) {
+        self.template = template
+        label.text = template.text
         heightConstraint.constant = height
-        maxWidthConstraint.constant = maxWidth
-        self.index = index
+        widthConstraint.constant = maxWidth
 
         heightConstraint.isActive = true
-        maxWidthConstraint.isActive = true
+        widthConstraint.isActive = true
     }
 
     // MARK: - Private methods
