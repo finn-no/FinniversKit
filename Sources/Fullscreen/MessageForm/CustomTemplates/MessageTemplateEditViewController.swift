@@ -35,6 +35,44 @@ class MessageTemplateEditViewController: UIViewController {
 
         view.addSubview(tableView)
         tableView.fillInSuperview()
+
+        let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addItem
+    }
+
+    // MARK: - Private methods
+
+    @objc private func addButtonTapped() {
+        let title = "Ny meldingsmal"
+        let subtitle = "Legg til en mal for en melding du sender ofte."
+        let inputPlaceholder = "Meldingsmal"
+        let actionTitle = "Lagre"
+        let cancelTitle = "Avbryt"
+
+        let textView = UITextView(frame: .zero)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        alert.addTextField { (textField:UITextField) in
+            textField.placeholder = inputPlaceholder
+        }
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { [weak self] _ in
+            guard
+                let textField = alert.textFields?.first,
+                let text = textField.text,
+                text.count > 0 else {
+                return
+            }
+
+            self?.templateStore.addTemplate(withText: text, completionHandler: { [weak self] success in
+                // Reload regardless of success. In case of failure, we should assume we are out of sync
+                // with the template store.
+                self?.tableView.reloadData()
+            })
+        }))
+
+        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
