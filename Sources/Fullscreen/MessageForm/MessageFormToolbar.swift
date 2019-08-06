@@ -26,7 +26,6 @@ class MessageFormToolbar: UIView {
         view.delegate = self
         view.backgroundColor = .clear
         view.showsHorizontalScrollIndicator = false
-        view.contentInset = UIEdgeInsets(top: 0, leading: .mediumSpacing, bottom: 0, trailing: .mediumSpacing)
         return view
     }()
 
@@ -128,19 +127,15 @@ class MessageFormToolbar: UIView {
 extension MessageFormToolbar: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if section == 0 {
-            let trailingMargin = showCustomizeButton ? CGFloat.mediumSpacing : 0
-            return UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: trailingMargin)
+            let leadingMargin = showCustomizeButton ? CGFloat.mediumSpacing : 0
+            return UIEdgeInsets(top: 0, leading: leadingMargin, bottom: 0, trailing: 0)
         }
 
-        return UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        return UIEdgeInsets(top: 0, leading: .mediumSpacing, bottom: 0, trailing: .mediumSpacing)
     }
 
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return false
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return .mediumSpacing
     }
 }
 
