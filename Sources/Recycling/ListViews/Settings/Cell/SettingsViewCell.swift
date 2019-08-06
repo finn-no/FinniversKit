@@ -51,6 +51,7 @@ public class SettingsViewCell: UITableViewCell {
     func configure(with viewModel: SettingsViewCellModel?, isLastItem: Bool) {
         titleLabel.text = viewModel?.title
         stateLabel.text = viewModel?.status
+        arrowView.isHidden = !(viewModel?.hasChevron ?? true)
         hairline.isHidden = isLastItem
     }
 

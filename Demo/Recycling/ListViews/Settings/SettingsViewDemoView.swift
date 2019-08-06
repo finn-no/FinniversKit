@@ -11,6 +11,7 @@ struct SettingsSection {
 struct SettingsItem: SettingsViewCellModel {
     let title: String
     var status: String?
+    let hasChevron: Bool = true
 
     init(title: String, status: String? = nil) {
         self.title = title
