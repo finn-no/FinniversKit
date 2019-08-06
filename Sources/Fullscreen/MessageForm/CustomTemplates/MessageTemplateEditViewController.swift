@@ -79,7 +79,6 @@ class MessageTemplateEditViewController: UIViewController {
                 self?.tableView.reloadData()
             })
         })
-
     }
 
     private func showEditDialog(withTitle title: String, subtitle: String? = nil, textFieldText: String? = nil, completion: @escaping (String) -> Void) {
@@ -132,6 +131,14 @@ extension MessageTemplateEditViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Dine meldingsmaler"
+    }
+
+    public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        guard templateStore.customTemplates.count == 0 else {
+            return nil
+        }
+
+        return "Du har ingen meldingsmaler."
     }
 }
 
