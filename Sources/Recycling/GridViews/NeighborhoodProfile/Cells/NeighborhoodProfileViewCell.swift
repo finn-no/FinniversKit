@@ -5,8 +5,6 @@
 import UIKit
 
 class NeighborhoodProfileViewCell: UICollectionViewCell {
-    // MARK: - Init
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

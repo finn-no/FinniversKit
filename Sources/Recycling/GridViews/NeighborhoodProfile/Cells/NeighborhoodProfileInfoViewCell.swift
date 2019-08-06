@@ -52,6 +52,7 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
     func configure(withContent content: Content, rows: [Row]) {
         titleLabel.text = content.title
         linkButton.setTitle(content.title, for: .normal)
+        iconImageView.image = content.icon
 
         for oldSubview in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(oldSubview)

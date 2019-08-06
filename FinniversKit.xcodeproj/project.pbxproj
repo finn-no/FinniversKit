@@ -323,6 +323,7 @@
 		CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71122F85A94007C4124 /* NeighborhoodProfileHeaderView.swift */; };
 		CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71322F87729007C4124 /* NeighborhoodProfileViewModel.swift */; };
 		CF5CA71722F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71622F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift */; };
+		CF5CA71922F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71822F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift */; };
 		CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C45FE22257A8A001FB92C /* EarthHourContentView.swift */; };
 		CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C45FF22257A8A001FB92C /* EarthHourSignUpView.swift */; };
 		CF7C460622257A8A001FB92C /* EarthHourHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C460022257A8A001FB92C /* EarthHourHeaderView.swift */; };
@@ -788,6 +789,7 @@
 		CF5CA71122F85A94007C4124 /* NeighborhoodProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileHeaderView.swift; sourceTree = "<group>"; };
 		CF5CA71322F87729007C4124 /* NeighborhoodProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileViewModel.swift; sourceTree = "<group>"; };
 		CF5CA71622F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileInfoViewCell.swift; sourceTree = "<group>"; };
+		CF5CA71822F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileButtonViewCell.swift; sourceTree = "<group>"; };
 		CF7C45FE22257A8A001FB92C /* EarthHourContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourContentView.swift; sourceTree = "<group>"; };
 		CF7C45FF22257A8A001FB92C /* EarthHourSignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourSignUpView.swift; sourceTree = "<group>"; };
 		CF7C460022257A8A001FB92C /* EarthHourHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourHeaderView.swift; sourceTree = "<group>"; };
@@ -2291,8 +2293,9 @@
 		CF5CA71522F87AD2007C4124 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				CF5CA70F22F82D43007C4124 /* NeighborhoodProfileViewCell.swift */,
+				CF5CA71822F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift */,
 				CF5CA71622F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift */,
+				CF5CA70F22F82D43007C4124 /* NeighborhoodProfileViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -3756,6 +3759,7 @@
 				DAB7FAA621B690DD00BF8CC6 /* BottomSheet.swift in Sources */,
 				F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */,
 				CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */,
+				CF5CA71922F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift in Sources */,
 				CF7C460822257A8A001FB92C /* EarthHourView.swift in Sources */,
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */,
