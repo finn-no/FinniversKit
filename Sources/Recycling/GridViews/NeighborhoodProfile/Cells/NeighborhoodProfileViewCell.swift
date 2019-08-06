@@ -4,8 +4,10 @@
 
 import UIKit
 
-public final class NeighborhoodProfileViewCell: UICollectionViewCell {
-    public override init(frame: CGRect) {
+class NeighborhoodProfileViewCell: UICollectionViewCell {
+    // MARK: - Init
+
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -14,6 +16,8 @@ public final class NeighborhoodProfileViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         setup()
     }
+
+    // MARK: - Setup
 
     private func setup() {
         backgroundColor = .clear
@@ -24,5 +28,17 @@ public final class NeighborhoodProfileViewCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.sardine.withAlphaComponent(0.5).cgColor
 
         contentView.dropShadow(color: UIColor.black.withAlphaComponent(0.5), offset: CGSize(width: 0, height: 3), radius: 3)
+    }
+}
+
+// MARK: - Extensions
+
+extension NeighborhoodProfileViewCell {
+    func makeTitleLabel() -> UILabel {
+        let label = UILabel(withAutoLayout: true)
+        label.font = .bodyStrong
+        label.textColor = .licorice
+        label.numberOfLines = 0
+        return label
     }
 }
