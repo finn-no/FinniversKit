@@ -142,7 +142,7 @@ public class BottomSheet: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = rootViewController.view.backgroundColor ?? .milk
         view.clipsToBounds = true
         if #available(iOS 11.0, *) {
             view.layer.cornerRadius = cornerRadius

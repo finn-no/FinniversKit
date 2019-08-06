@@ -12,6 +12,7 @@ public protocol SettingsViewDataSource: AnyObject {
 public protocol SettingsViewDelegate: AnyObject {
     func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String?
     func settingsView(_ settingsView: SettingsView, didSelectRowAt indexPath: IndexPath)
+    func settingsView(_ settingsView: SettingsView, viewForFooterInSection section: Int) -> UIView?
 }
 
 public class SettingsView: UIView {
@@ -68,7 +69,14 @@ extension SettingsView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(SettingsViewCell.self, for: indexPath)
-        cell.model = dataSource?.settingsView(self, modelForItemAt: indexPath)
+        let model = dataSource?.settingsView(self, modelForItemAt: indexPath)
+
+        guard let numberOfItems = dataSource?.settingsView(self, numberOfRowsInSection: indexPath.section) else {
+            fatalError("There must be items to populate the cell")
+        }
+        let isLastItem = indexPath.row == numberOfItems - 1
+        cell.configure(with: model, isLastItem: isLastItem)
+
         return cell
     }
 }
@@ -82,5 +90,9 @@ extension SettingsView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.settingsView(self, didSelectRowAt: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return delegate?.settingsView(self, viewForFooterInSection: section)
     }
 }

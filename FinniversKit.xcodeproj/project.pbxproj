@@ -258,12 +258,13 @@
 		9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */; };
 		9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */; };
 		9B239E1122E093E800A4E9D0 /* KlimabroletContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */; };
+		9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */; };
 		9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */; };
 		9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */; };
 		9B9287AB22F0593700FC7B69 /* KlimabroletData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */; };
 		9B9F8C1722F07B2100298CDB /* FeedbackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */; };
 		9BBC8AE122DF50E5003453B6 /* KlimabroletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC8AE022DF50E5003453B6 /* KlimabroletView.swift */; };
-		9BC33DE322D71986007CCD65 /* LoginEntryViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE222D71986007CCD65 /* LoginEntryViewDemoView.swift */; };
+		9BC33DE322D71986007CCD65 /* LoginEntryViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE222D71986007CCD65 /* LoginEntryViewDemoViewController.swift */; };
 		9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */; };
 		9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */; };
 		9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */; };
@@ -325,6 +326,8 @@
 		CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A053021FB2ACA000BB7DA /* PianoKeyboardView.swift */; };
 		CF4A054421FB2B4E000BB7DA /* Piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = CF4A054321FB2B4E000BB7DA /* Piano.sf2 */; };
 		CF4A054821FB58FA000BB7DA /* PianoDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A054721FB58FA000BB7DA /* PianoDemoView.swift */; };
+		CF5CA71022F82D43007C4124 /* NeighborhoodProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA70F22F82D43007C4124 /* NeighborhoodProfileViewCell.swift */; };
+		CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71122F85A94007C4124 /* NeighborhoodProfileHeaderView.swift */; };
 		CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C45FE22257A8A001FB92C /* EarthHourContentView.swift */; };
 		CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C45FF22257A8A001FB92C /* EarthHourSignUpView.swift */; };
 		CF7C460622257A8A001FB92C /* EarthHourHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C460022257A8A001FB92C /* EarthHourHeaderView.swift */; };
@@ -362,6 +365,8 @@
 		CFF9727321C3BA2200C85238 /* BannerTransparencyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9726D21C3BA1D00C85238 /* BannerTransparencyDemoView.swift */; };
 		CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9727421C3E92700C85238 /* BannerTransparencyViewModel.swift */; };
 		CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9727821C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift */; };
+		CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */; };
+		CFFDF89922F313A500FE68EA /* NeighborhoodProfileDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDF89822F313A500FE68EA /* NeighborhoodProfileDemoView.swift */; };
 		DA24BA292164C0BE006E2E5E /* ConsentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA24BA282164C0BE006E2E5E /* ConsentActionView.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
@@ -720,12 +725,13 @@
 		9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchorExtensions.swift; sourceTree = "<group>"; };
 		9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoboxView+Style.swift"; sourceTree = "<group>"; };
 		9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletContentView.swift; sourceTree = "<group>"; };
+		9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoPageViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletDemoViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
 		9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletData.swift; sourceTree = "<group>"; };
 		9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
 		9BBC8AE022DF50E5003453B6 /* KlimabroletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletView.swift; sourceTree = "<group>"; };
-		9BC33DE222D71986007CCD65 /* LoginEntryViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryViewDemoView.swift; sourceTree = "<group>"; };
+		9BC33DE222D71986007CCD65 /* LoginEntryViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryViewDemoViewController.swift; sourceTree = "<group>"; };
 		9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDialogueView.swift; sourceTree = "<group>"; };
 		9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoData.swift; sourceTree = "<group>"; };
@@ -790,6 +796,8 @@
 		CF4A053021FB2ACA000BB7DA /* PianoKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKeyboardView.swift; sourceTree = "<group>"; };
 		CF4A054321FB2B4E000BB7DA /* Piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Piano.sf2; sourceTree = "<group>"; };
 		CF4A054721FB58FA000BB7DA /* PianoDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoDemoView.swift; sourceTree = "<group>"; };
+		CF5CA70F22F82D43007C4124 /* NeighborhoodProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileViewCell.swift; sourceTree = "<group>"; };
+		CF5CA71122F85A94007C4124 /* NeighborhoodProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileHeaderView.swift; sourceTree = "<group>"; };
 		CF7C45FE22257A8A001FB92C /* EarthHourContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourContentView.swift; sourceTree = "<group>"; };
 		CF7C45FF22257A8A001FB92C /* EarthHourSignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourSignUpView.swift; sourceTree = "<group>"; };
 		CF7C460022257A8A001FB92C /* EarthHourHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourHeaderView.swift; sourceTree = "<group>"; };
@@ -827,6 +835,8 @@
 		CFF9726F21C3BA1D00C85238 /* BannerTransparencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyView.swift; sourceTree = "<group>"; };
 		CFF9727421C3E92700C85238 /* BannerTransparencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTransparencyViewModel.swift; sourceTree = "<group>"; };
 		CFF9727821C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
+		CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileView.swift; sourceTree = "<group>"; };
+		CFFDF89822F313A500FE68EA /* NeighborhoodProfileDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileDemoView.swift; sourceTree = "<group>"; };
 		DA24BA282164C0BE006E2E5E /* ConsentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentActionView.swift; sourceTree = "<group>"; };
 		DA24BA2A2164C1A8006E2E5E /* ConsentActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentActionViewModel.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
@@ -1203,6 +1213,7 @@
 		441FE415209A24E500B04EF1 /* GridViews */ = {
 			isa = PBXGroup;
 			children = (
+				CFFDF89522F311E300FE68EA /* NeighborhoodProfile */,
 				441FE416209A24E500B04EF1 /* Markets */,
 				441FE41F209A24E500B04EF1 /* Ads */,
 			);
@@ -2047,8 +2058,9 @@
 		9BC33DE122D7192F007CCD65 /* LoginEntry */ = {
 			isa = PBXGroup;
 			children = (
-				9BC33DE222D71986007CCD65 /* LoginEntryViewDemoView.swift */,
 				9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */,
+				9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */,
+				9BC33DE222D71986007CCD65 /* LoginEntryViewDemoViewController.swift */,
 			);
 			path = LoginEntry;
 			sourceTree = "<group>";
@@ -2798,6 +2810,7 @@
 		CF8F023921DCD487004C4042 /* GridViews */ = {
 			isa = PBXGroup;
 			children = (
+				CFFDF89422F3117500FE68EA /* NeighborhoodProfile */,
 				CF8F024121DCD5A5004C4042 /* Ads */,
 				CF8F024021DCD59E004C4042 /* Markets */,
 			);
@@ -2955,6 +2968,24 @@
 				CFF9727421C3E92700C85238 /* BannerTransparencyViewModel.swift */,
 			);
 			path = BannerTransparency;
+			sourceTree = "<group>";
+		};
+		CFFDF89422F3117500FE68EA /* NeighborhoodProfile */ = {
+			isa = PBXGroup;
+			children = (
+				CFFDF89822F313A500FE68EA /* NeighborhoodProfileDemoView.swift */,
+			);
+			path = NeighborhoodProfile;
+			sourceTree = "<group>";
+		};
+		CFFDF89522F311E300FE68EA /* NeighborhoodProfile */ = {
+			isa = PBXGroup;
+			children = (
+				CF5CA71122F85A94007C4124 /* NeighborhoodProfileHeaderView.swift */,
+				CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */,
+				CF5CA70F22F82D43007C4124 /* NeighborhoodProfileViewCell.swift */,
+			);
+			path = NeighborhoodProfile;
 			sourceTree = "<group>";
 		};
 		DA24BA272164C0AF006E2E5E /* ConsentActionView */ = {
@@ -3459,6 +3490,7 @@
 				44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */,
 				44B94FE722E0AB6C0078A23C /* TweakingOptionCell.swift in Sources */,
 				9B9287AB22F0593700FC7B69 /* KlimabroletData.swift in Sources */,
+				9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */,
 				CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
@@ -3488,6 +3520,7 @@
 				432CE09E21131B4800F01EC5 /* RoundedImageViewDemoView.swift in Sources */,
 				CF4A054821FB58FA000BB7DA /* PianoDemoView.swift in Sources */,
 				444246082137D61200D42AB8 /* FavoriteFoldersListDemoView.swift in Sources */,
+				CFFDF89922F313A500FE68EA /* NeighborhoodProfileDemoView.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				AA864B392231589B00BAE95A /* DialogueDemoView.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
@@ -3543,7 +3576,7 @@
 				8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
-				9BC33DE322D71986007CCD65 /* LoginEntryViewDemoView.swift in Sources */,
+				9BC33DE322D71986007CCD65 /* LoginEntryViewDemoViewController.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
 				F26852DF21F755B6000978C8 /* UserAdsListViewDemoView.swift in Sources */,
 				43EA9793219965F3003A548A /* SoldViewDemoView.swift in Sources */,
@@ -3774,6 +3807,7 @@
 				44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */,
 				44587019213FA344009187BE /* RegisterViewModel.swift in Sources */,
 				CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */,
+				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
 				91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */,
@@ -3790,6 +3824,7 @@
 				8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
+				CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */,
 				44A557AF22E7211E001667AE /* RemoteImageTableViewCellViewModel.swift in Sources */,
 				0817FFCF21831045001BD9C4 /* AnimatedCheckboxView.swift in Sources */,
 				44D912632077AC8A00486848 /* TriangleView.swift in Sources */,
@@ -3854,6 +3889,7 @@
 				9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */,
 				F2B1A19422D503E700713FC2 /* ReceiptViewModel.swift in Sources */,
 				9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */,
+				CF5CA71022F82D43007C4124 /* NeighborhoodProfileViewCell.swift in Sources */,
 				9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */,
 				9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */,
 				9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */,

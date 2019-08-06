@@ -7,5 +7,4 @@ import Foundation
 public protocol SettingsViewCellModel {
     var title: String { get }
     var status: String? { get set }
-    var isLastItem: Bool { get }
 }

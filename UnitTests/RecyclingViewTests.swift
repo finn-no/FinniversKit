@@ -62,4 +62,8 @@ class RecyclingViewTests: FBSnapshotTestCase {
     func testAdManagementView() {
         snapshot(.adManagementView)
     }
+
+    func testNeighborhoodProfileView() {
+        snapshot(.neighborhoodProfileView)
+    }
 }
