@@ -174,4 +174,5 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testKlimabroletView() {
         snapshot(.klimabrolet)
     }
+
 }
