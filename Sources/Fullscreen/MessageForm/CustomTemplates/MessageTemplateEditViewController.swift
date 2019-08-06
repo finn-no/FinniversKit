@@ -11,9 +11,7 @@ class MessageTemplateEditViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(CustomMessageTemplateCell.self)
         tableView.allowsSelection = false
@@ -118,13 +116,11 @@ extension MessageTemplateEditViewController: UITableViewDataSource {
     }
 }
 
-extension MessageTemplateEditViewController: UITableViewDelegate {
-
-}
-
 // MARK: - CustomMessageTemplateCell
 
 private class CustomMessageTemplateCell: UITableViewCell {
+
+    // MARK: - Internal properties
 
     var template: MessageFormTemplate? {
         didSet {
@@ -142,6 +138,7 @@ private class CustomMessageTemplateCell: UITableViewCell {
     }()
 
     // MARK: - Init
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
