@@ -21,6 +21,18 @@ class DemoMessageTemplateStore: MessageTemplateStoreProtocol {
         completionHandler(true)
     }
 
+    func updateTemplate(_ template: MessageFormTemplate, withText text: String, completionHandler: @escaping (Bool) -> Void) {
+        guard let index = customTemplates.firstIndex(where: { $0.id == template.id }) else {
+            completionHandler(false)
+            return
+        }
+
+        customTemplates.remove(at: index)
+        let newTemplate = MessageFormTemplate(text: text, id: template.id)
+        customTemplates.insert(newTemplate, at: index)
+        completionHandler(true)
+    }
+
     private func addTemplate(withText text: String) {
         let id = "custom_template_\(nextCustomId)"
         nextCustomId += 1

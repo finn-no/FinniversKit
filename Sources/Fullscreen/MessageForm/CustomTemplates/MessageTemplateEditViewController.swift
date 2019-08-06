@@ -12,6 +12,7 @@ class MessageTemplateEditViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(CustomMessageTemplateCell.self)
         tableView.allowsSelection = false
@@ -43,9 +44,45 @@ class MessageTemplateEditViewController: UIViewController {
 
     // MARK: - Private methods
 
+    private func deleteTemplate(at indexPath: IndexPath) {
+        guard let template = templateStore.customTemplates[safe: indexPath.row] else { return }
+
+        templateStore.removeTemplate(template, completionHandler: { [weak self] success in
+            if success {
+                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+            } else {
+                // Assume we're out of sync with the template store
+                self?.tableView.reloadData()
+            }
+        })
+    }
+
+    private func editTemplate(at indexPath: IndexPath) {
+        guard let template = templateStore.customTemplates[safe: indexPath.row] else { return }
+        let title = "Endre meldingsmal"
+
+        showEditDialog(withTitle: title, textFieldText: template.text, completion: { [weak self] text in
+            self?.templateStore.updateTemplate(template, withText: text, completionHandler: { [weak self] _ in
+                self?.tableView.reloadData()
+            })
+        })
+    }
+
     @objc private func addButtonTapped() {
         let title = "Ny meldingsmal"
         let subtitle = "Legg til en mal for en melding du sender ofte."
+
+        showEditDialog(withTitle: title, subtitle: subtitle, completion: { [weak self] text in
+            self?.templateStore.addTemplate(withText: text, completionHandler: { [weak self] _ in
+                // Reload regardless of success.
+                // In case of failure, we should assume we are out of sync with the template store.
+                self?.tableView.reloadData()
+            })
+        })
+
+    }
+
+    private func showEditDialog(withTitle title: String, subtitle: String? = nil, textFieldText: String? = nil, completion: @escaping (String) -> Void) {
         let inputPlaceholder = "Meldingsmal"
         let actionTitle = "Lagre"
         let cancelTitle = "Avbryt"
@@ -56,6 +93,7 @@ class MessageTemplateEditViewController: UIViewController {
         let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
         alert.addTextField { (textField:UITextField) in
             textField.placeholder = inputPlaceholder
+            textField.text = textFieldText
         }
         alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { [weak self] _ in
             guard
@@ -65,11 +103,7 @@ class MessageTemplateEditViewController: UIViewController {
                 return
             }
 
-            self?.templateStore.addTemplate(withText: text, completionHandler: { [weak self] success in
-                // Reload regardless of success. In case of failure, we should assume we are out of sync
-                // with the template store.
-                self?.tableView.reloadData()
-            })
+            completion(text)
         }))
 
         alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
@@ -96,23 +130,22 @@ extension MessageTemplateEditViewController: UITableViewDataSource {
         return true
     }
 
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            guard let template = templateStore.customTemplates[safe: indexPath.row] else { return }
-
-            templateStore.removeTemplate(template, completionHandler: { success in
-                if success {
-                    tableView.deleteRows(at: [indexPath], with: .automatic)
-                } else {
-                    // Assume we're out of sync with the template store
-                    tableView.reloadData()
-                }
-            })
-        }
-    }
-
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Dine meldingsmaler"
+    }
+}
+
+extension MessageTemplateEditViewController: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Slett", handler: { [weak self] _, selectedIndex in
+            self?.deleteTemplate(at: selectedIndex)
+        })
+
+        let editAction = UITableViewRowAction(style: .normal, title: "Endre", handler: { [weak self] _, selectedIndex in 
+            self?.editTemplate(at: selectedIndex)
+        })
+
+        return [deleteAction, editAction]
     }
 }
 
