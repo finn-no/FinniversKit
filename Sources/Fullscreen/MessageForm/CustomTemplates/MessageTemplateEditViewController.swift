@@ -32,7 +32,7 @@ class MessageTemplateEditViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Meldingsmaler"
+        title = "Dine meldingsmaler"
 
         let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItem = addItem
