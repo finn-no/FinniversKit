@@ -354,8 +354,6 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
         wrapperView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            wrapperView.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.width),
-
             button.centerXAnchor.constraint(equalTo: wrapperView.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor),
             button.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.width),
