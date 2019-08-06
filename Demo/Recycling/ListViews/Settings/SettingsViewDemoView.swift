@@ -11,24 +11,22 @@ struct SettingsSection {
 struct SettingsItem: SettingsViewCellModel {
     let title: String
     var status: String?
-    let isLastItem: Bool
 
-    init(title: String, status: String? = nil, isLastItem: Bool = false) {
+    init(title: String, status: String? = nil) {
         self.title = title
         self.status = status
-        self.isLastItem = isLastItem
     }
 }
 
 class SettingsViewDemoView: UIView {
-    private let sections = [SettingsSection(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget", isLastItem: true)]),
+    private let sections = [SettingsSection(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget")]),
 
                             SettingsSection(title: "Personvern", items: [SettingsItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
                                                                          SettingsItem(title: "Personlin tilpasset FINN", status: "På"),
                                                                          SettingsItem(title: "Motta viktig informasjon fra FINN", status: "På"),
                                                                          SettingsItem(title: "Smart reklame"),
                                                                          SettingsItem(title: "Last ned dine data"),
-                                                                         SettingsItem(title: "Slett meg som bruker", isLastItem: true)])]
+                                                                         SettingsItem(title: "Slett meg som bruker")])]
 
     private lazy var settingsView: SettingsView = {
         let view = SettingsView(frame: .zero)
@@ -69,6 +67,10 @@ extension SettingsViewDemoView: SettingsViewDelegate {
 
     func settingsView(_ settingsView: SettingsView, didSelectRowAt indexPath: IndexPath) {
         print("did select")
+    }
+
+    func settingsView(_ settingsView: SettingsView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
     }
 }
 
