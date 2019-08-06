@@ -267,7 +267,7 @@ private class MessageFormTemplateCell: UICollectionViewCell {
 
     func configure(withTemplate template: MessageFormTemplate, maxWidth: CGFloat, height: CGFloat) {
         self.template = template
-        label.text = template.text
+        label.text = template.text.condenseWhitespace()
         heightConstraint.constant = height
         widthConstraint.constant = maxWidth
 
@@ -370,3 +370,11 @@ private extension UIButton {
         self.setBackgroundImage(colorImage, for: forState)
     }
 }
+
+private extension String {
+    func condenseWhitespace() -> String {
+        let components = self.components(separatedBy: .whitespacesAndNewlines)
+        return components.filter { !$0.isEmpty }.joined(separator: " ")
+    }
+}
+

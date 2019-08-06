@@ -62,7 +62,7 @@ class MessageTemplateEditViewController: UIViewController {
         alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { [weak self] _ in
             guard
                 let textField = alert.textFields?.first,
-                let text = textField.text,
+                let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
                 text.count > 0 else {
                 return
             }

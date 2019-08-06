@@ -6,7 +6,7 @@ class DemoMessageTemplateStore: MessageTemplateStoreProtocol {
     private var nextCustomId: Int = 0
 
     init() {
-        addTemplate(withText: "This is a custom template. There are many like it, but this one is mine.")
+        addTemplate(withText: "multi\n\nline\n\n\ntemplate")
         addTemplate(withText: "Jeg husker ikke hvor jeg la lommeboka mi, kan jeg ikke bare få den gratis?\n\nMvh, Stian Kurk")
         addTemplate(withText: "Kan du kjøre den hjem til meg gratis?")
     }
