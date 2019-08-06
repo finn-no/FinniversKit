@@ -12,6 +12,7 @@ final class NeighborhoodProfileButtonViewCell: NeighborhoodProfileViewCell {
     typealias Content = NeighborhoodProfileViewModel.Content
 
     weak var delegate: NeighborhoodProfileButtonViewCellDelegate?
+    private(set) var linkButtonUrl: URL?
 
     private lazy var titleLabel: UILabel = makeTitleLabel()
     private lazy var iconImageView = UIImageView(withAutoLayout: true)
@@ -40,6 +41,7 @@ final class NeighborhoodProfileButtonViewCell: NeighborhoodProfileViewCell {
     func configure(withContent content: Content) {
         titleLabel.text = content.title
         linkButton.setTitle(content.title, for: .normal)
+        linkButtonUrl = content.link?.url
         iconImageView.image = content.icon
     }
 

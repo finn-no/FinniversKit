@@ -40,7 +40,7 @@ final class NeighborhoodProfileDemoView: UIView {
 // MARK: - NeighborhoodProfileViewDelegate
 
 extension NeighborhoodProfileDemoView: NeighborhoodProfileViewDelegate {
-    func neighborhoodProfileViewDidSelectExplore(_ view: NeighborhoodProfileView) {
-        print("Explore button selected")
+    func neighborhoodProfileView(_ view: NeighborhoodProfileView, didSelectUrl url: URL?) {
+        print("\(String(describing: url)) selected")
     }
 }

@@ -13,6 +13,7 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
     typealias Row = NeighborhoodProfileViewModel.Row
 
     weak var delegate: NeighborhoodProfileInfoViewCellDelegate?
+    private(set) var linkButtonUrl: URL?
 
     private lazy var titleLabel: UILabel = makeTitleLabel()
 
@@ -30,6 +31,14 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         stackView.spacing = .smallSpacing
         stackView.distribution = .fillProportionally
         stackView.alignment = .fill
+        stackView.isLayoutMarginsRelativeArrangement = true
+
+        if #available(iOS 11.0, *) {
+            stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0)
+        } else {
+            stackView.layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing, left: 0, bottom: 0, right: 0)
+        }
+
         return stackView
     }()
 
@@ -52,6 +61,7 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
     func configure(withContent content: Content, rows: [Row]) {
         titleLabel.text = content.title
         linkButton.setTitle(content.title, for: .normal)
+        linkButtonUrl = content.link?.url
         iconImageView.image = content.icon
 
         for oldSubview in stackView.arrangedSubviews {

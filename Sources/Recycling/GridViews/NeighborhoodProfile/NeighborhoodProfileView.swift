@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol NeighborhoodProfileViewDelegate: AnyObject {
-    func neighborhoodProfileViewDidSelectExplore(_ view: NeighborhoodProfileView)
+    func neighborhoodProfileView(_ view: NeighborhoodProfileView, didSelectUrl: URL?)
 }
 
 public final class NeighborhoodProfileView: UIView {
@@ -26,6 +26,8 @@ public final class NeighborhoodProfileView: UIView {
 
     // MARK: - Private properties
 
+    private var viewModel = NeighborhoodProfileViewModel(title: "", readMoreLink: nil, cards: [])
+
     private lazy var headerView: NeighborhoodProfileHeaderView = {
         let view = NeighborhoodProfileHeaderView(withAutoLayout: true)
         view.delegate = self
@@ -40,7 +42,8 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(NeighborhoodProfileViewCell.self)
+        collectionView.register(NeighborhoodProfileInfoViewCell.self)
+        collectionView.register(NeighborhoodProfileButtonViewCell.self)
         return collectionView
     }()
 
@@ -103,13 +106,28 @@ public final class NeighborhoodProfileView: UIView {
 
 extension NeighborhoodProfileView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return viewModel.cards.count
     }
 
     public func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(NeighborhoodProfileViewCell.self, for: indexPath)
-        return cell
+        let reusableCell: UICollectionViewCell
+        let card = viewModel.cards[indexPath.item]
+
+        switch card {
+        case let .list(content, rows):
+            let cell = collectionView.dequeue(NeighborhoodProfileInfoViewCell.self, for: indexPath)
+            cell.delegate = self
+            cell.configure(withContent: content, rows: rows)
+            reusableCell = cell
+        case let .button(content):
+            let cell = collectionView.dequeue(NeighborhoodProfileButtonViewCell.self, for: indexPath)
+            cell.delegate = self
+            cell.configure(withContent: content)
+            reusableCell = cell
+        }
+
+        return reusableCell
     }
 }
 
@@ -127,6 +145,18 @@ extension NeighborhoodProfileView: UICollectionViewDelegateFlowLayout {
 
 extension NeighborhoodProfileView: NeighborhoodProfileHeaderViewDelegate {
     func neighborhoodProfileHeaderViewDidSelectButton(_ view: NeighborhoodProfileHeaderView) {
-        delegate?.neighborhoodProfileViewDidSelectExplore(self)
+        delegate?.neighborhoodProfileView(self, didSelectUrl: viewModel.readMoreLink?.url)
+    }
+}
+
+extension NeighborhoodProfileView: NeighborhoodProfileInfoViewCellDelegate {
+    func neighborhoodProfileInfoViewCellDidSelectLinkButton(_ view: NeighborhoodProfileInfoViewCell) {
+        delegate?.neighborhoodProfileView(self, didSelectUrl: view.linkButtonUrl)
+    }
+}
+
+extension NeighborhoodProfileView: NeighborhoodProfileButtonViewCellDelegate {
+    func neighborhoodProfileButtonViewCellDidSelectLinkButton(_ view: NeighborhoodProfileButtonViewCell) {
+        delegate?.neighborhoodProfileView(self, didSelectUrl: view.linkButtonUrl)
     }
 }
