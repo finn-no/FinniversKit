@@ -16,7 +16,7 @@ class MessageFormToolbar: UIView {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.estimatedItemSize = CGSize(width: toolbarCellMaxWidth, height: toolbarCellHeight)
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(MessageFormTemplateCell.self)
@@ -165,6 +165,7 @@ extension MessageFormToolbar: UICollectionViewDataSource {
         case 0:
             let cell = collectionView.dequeue(MessageFormCustomizeCell.self, for: indexPath)
             cell.delegate = self
+            cell.configure(withMaxWidth: toolbarCellMaxWidth, maxHeight: toolbarCellHeight)
             return cell
         case 1:
             let maybeTemplate: MessageFormTemplate?
@@ -180,7 +181,7 @@ extension MessageFormToolbar: UICollectionViewDataSource {
             }
 
             let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
-            cell.configure(withTemplate: template, maxWidth: toolbarCellMaxWidth, height: toolbarCellHeight)
+            cell.configure(withTemplate: template, maxWidth: toolbarCellMaxWidth, maxHeight: toolbarCellHeight)
             cell.delegate = self
             return cell
         default:
@@ -217,6 +218,7 @@ private class MessageFormTemplateCell: UICollectionViewCell {
 
     private lazy var button: UIButton = {
         let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundColor(color: .toothPaste, forState: .normal)
         button.setBackgroundColor(color: .secondaryBlue, forState: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -235,8 +237,8 @@ private class MessageFormTemplateCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var heightConstraint = contentView.heightAnchor.constraint(equalToConstant: 100)
-    private lazy var widthConstraint = contentView.widthAnchor.constraint(equalToConstant: 100)
+    private var maxWidth: CGFloat = 0
+    private var maxHeight: CGFloat = 0
 
     // MARK: - Internal properties
 
@@ -263,16 +265,23 @@ private class MessageFormTemplateCell: UICollectionViewCell {
         label.fillInSuperview(margin: .smallSpacing)
     }
 
+    // MARK: - Overrides
+
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        var frame = layoutAttributes.frame
+        frame.size.width = maxWidth
+        frame.size.height = maxHeight
+        layoutAttributes.frame = frame
+        return layoutAttributes
+    }
+
     // MARK: - Internal methods
 
-    func configure(withTemplate template: MessageFormTemplate, maxWidth: CGFloat, height: CGFloat) {
+    func configure(withTemplate template: MessageFormTemplate, maxWidth: CGFloat, maxHeight: CGFloat) {
         self.template = template
         label.text = template.text.condenseWhitespace()
-        heightConstraint.constant = height
-        widthConstraint.constant = maxWidth
-
-        heightConstraint.isActive = true
-        widthConstraint.isActive = true
+        self.maxWidth = maxWidth
+        self.maxHeight = maxHeight
     }
 
     // MARK: - Private methods
@@ -290,13 +299,18 @@ private protocol MessageFormCustomizeCellDelegate: AnyObject {
 
 private class MessageFormCustomizeCell: UICollectionViewCell {
 
+    // MARK: - Static properties
+
     static let cellSize = CGSize(width: 30, height: 30)
     static let imageSize = CGSize(width: 25, height: 25)
 
     // MARK: - UI properties
 
+    private lazy var wrapperView: UIView = UIView(withAutoLayout: true)
+
     private lazy var button: UIButton = {
         let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundColor(color: .toothPaste, forState: .normal)
         button.setBackgroundColor(color: .secondaryBlue, forState: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -312,6 +326,9 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
         imageView.backgroundColor = .clear
         return imageView
     }()
+
+    private var maxWidth: CGFloat = 0
+    private var maxHeight: CGFloat = 0
 
     // MARK: - Internal properties
 
@@ -330,20 +347,42 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
     }
 
     private func setup() {
-        contentView.addSubview(button)
+        contentView.addSubview(wrapperView)
+        wrapperView.addSubview(button)
         button.addSubview(imageView)
 
-        button.fillInSuperview()
+        wrapperView.fillInSuperview()
 
         NSLayoutConstraint.activate([
+            wrapperView.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.width),
+
+            button.centerXAnchor.constraint(equalTo: wrapperView.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor),
+            button.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.width),
+            button.heightAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.height),
+
             imageView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
             imageView.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.imageSize.width),
             imageView.heightAnchor.constraint(equalToConstant: MessageFormCustomizeCell.imageSize.height),
-
-            contentView.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.width),
-            contentView.heightAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.height)
         ])
+    }
+
+    // MARK: - Overrides
+
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        var frame = layoutAttributes.frame
+        frame.size.width = MessageFormCustomizeCell.cellSize.width
+        frame.size.height = maxHeight
+        layoutAttributes.frame = frame
+        return layoutAttributes
+    }
+
+    // MARK: - Internal methods
+
+    func configure(withMaxWidth maxWidth: CGFloat, maxHeight: CGFloat) {
+        self.maxWidth = maxWidth
+        self.maxHeight = maxHeight
     }
 
     // MARK: - Private methods
