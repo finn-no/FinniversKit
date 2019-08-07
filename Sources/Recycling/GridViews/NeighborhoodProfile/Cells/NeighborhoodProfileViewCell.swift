@@ -39,7 +39,7 @@ extension NeighborhoodProfileViewCell {
         label.font = NeighborhoodProfileViewCell.titleFont
         label.textColor = .licorice
         label.numberOfLines = 0
-        label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }
 }

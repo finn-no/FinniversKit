@@ -34,15 +34,6 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
         stackView.isLayoutMarginsRelativeArrangement = true
-
-        if #available(iOS 11.0, *) {
-            stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
-                top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0
-            )
-        } else {
-            stackView.layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing, left: 0, bottom: 0, right: 0)
-        }
-
         return stackView
     }()
 
@@ -50,6 +41,18 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
         return imageView
+    }()
+
+    private lazy var stackViewTopConstraint: NSLayoutConstraint = {
+        return stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing)
+    }()
+
+    private lazy var linkButtonToStackViewConstraint: NSLayoutConstraint = {
+        return linkButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumSpacing)
+    }()
+
+    private lazy var linkButtonToTitleLabelConstraint: NSLayoutConstraint = {
+        return linkButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing)
     }()
 
     // MARK: - Init
@@ -64,18 +67,33 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         setup()
     }
 
+    // MARK: - Overrides
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        titleLabel.text = nil
+        linkButton.setTitle(nil, for: .normal)
+        linkButtonUrl = nil
+        iconImageView.image = nil
+        stackView.removeArrangedSubviews()
+    }
+
     // MARK: - Setup
 
     func configure(withContent content: Content, rows: [Row]) {
         titleLabel.text = content.title
+
         linkButton.setTitle(content.link?.title, for: .normal)
         linkButtonUrl = content.link?.url
-        iconImageView.image = content.icon
+        linkButtonToStackViewConstraint.isActive = !rows.isEmpty
+        linkButtonToTitleLabelConstraint.isActive = rows.isEmpty
 
-        for oldSubview in stackView.arrangedSubviews {
-            stackView.removeArrangedSubview(oldSubview)
-            oldSubview.removeFromSuperview()
-        }
+        iconImageView.image = rows.count <= NeighborhoodProfileInfoViewCell.maxRowsWithIcon ? content.icon : nil
+
+        stackView.removeArrangedSubviews()
+        stackView.isHidden = rows.isEmpty
+        stackViewTopConstraint.constant = rows.isEmpty ? 0 : .mediumLargeSpacing
 
         for row in rows {
             let rowView = InfoRowView()
@@ -95,15 +113,14 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            stackViewTopConstraint,
             stackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
-            linkButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumLargeSpacing),
+            linkButtonToStackViewConstraint,
             linkButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            linkButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            linkButton.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor),
 
-            iconImageView.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .smallSpacing),
             iconImageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: NeighborhoodProfileInfoViewCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
@@ -123,6 +140,7 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
 extension NeighborhoodProfileInfoViewCell {
     private static let linkButtonFont = UIFont.captionStrong
     private static let iconSize: CGFloat = 54
+    private static let maxRowsWithIcon = 3
 
     static func height(forContent content: Content, rows: [Row], width: CGFloat) -> CGFloat {
         let width = width - .mediumLargeSpacing * 2
@@ -133,17 +151,17 @@ extension NeighborhoodProfileInfoViewCell {
 
         // Stack view
         if !rows.isEmpty {
-            height += InfoRowView.height * CGFloat(rows.count) + .mediumLargeSpacing
+            height += InfoRowView.height * CGFloat(rows.count) + .largeSpacing
         }
 
         // Link button
         if let link = content.link {
-            height += link.title.height(withConstrainedWidth: width, font: linkButtonFont)
+            height += link.title.height(withConstrainedWidth: width, font: linkButtonFont) + .mediumSpacing
         }
 
         // Icon image view
-        if content.icon != nil {
-            height += iconSize + .smallSpacing
+        if content.icon != nil && rows.count <= maxRowsWithIcon {
+            height += iconSize
         }
 
         height += .mediumLargeSpacing
@@ -206,5 +224,16 @@ private final class InfoRowView: UIView {
         label.font = .caption
         label.textColor = .stone
         return label
+    }
+}
+
+// MARK: - Private extensions
+
+private extension UIStackView {
+    func removeArrangedSubviews() {
+        for oldSubview in arrangedSubviews {
+            removeArrangedSubview(oldSubview)
+            oldSubview.removeFromSuperview()
+        }
     }
 }
