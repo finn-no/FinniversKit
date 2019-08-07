@@ -19,8 +19,8 @@ class MessageFormViewController: UIViewController {
     private lazy var wrapperView = UIView(withAutoLayout: true)
     private lazy var wrapperBottomConstraint = wrapperView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 
-    private lazy var messageFormView: MessageFormView = {
-        let view = MessageFormView(viewModel: viewModel)
+    private lazy var messageInputTextView: MessageInputTextView = {
+        let view = MessageInputTextView(additionalInfoText: viewModel.transparencyText)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
@@ -41,16 +41,16 @@ class MessageFormViewController: UIViewController {
     weak var delegate: MessageFormViewControllerDelegate?
 
     var hasUncommittedChanges: Bool {
-        return messageFormView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
+        return messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
     }
 
     var toastPresenterView: UIView {
-        return messageFormView
+        return messageInputTextView
     }
 
     var inputEnabled: Bool {
-        get { return messageFormView.inputEnabled }
-        set { messageFormView.inputEnabled = newValue }
+        get { return messageInputTextView.inputEnabled }
+        set { messageInputTextView.inputEnabled = newValue }
     }
 
     // MARK: - Private properties
@@ -87,12 +87,12 @@ class MessageFormViewController: UIViewController {
         sendButton.isEnabled = false
 
         view.addSubview(wrapperView)
-        wrapperView.addSubview(messageFormView)
+        wrapperView.addSubview(messageInputTextView)
 
         let messageFormBottomConstraint: NSLayoutConstraint
 
         if viewModel.showTemplateToolbar {
-            messageFormBottomConstraint = messageFormView.bottomAnchor.constraint(equalTo: toolbar.topAnchor)
+            messageFormBottomConstraint = messageInputTextView.bottomAnchor.constraint(equalTo: toolbar.topAnchor)
 
             wrapperView.addSubview(toolbar)
             NSLayoutConstraint.activate([
@@ -101,13 +101,13 @@ class MessageFormViewController: UIViewController {
                 toolbar.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
             ])
         } else {
-            messageFormBottomConstraint = messageFormView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
+            messageFormBottomConstraint = messageInputTextView.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
         }
 
         NSLayoutConstraint.activate([
-            messageFormView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
-            messageFormView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
-            messageFormView.topAnchor.constraint(equalTo: wrapperView.topAnchor),
+            messageInputTextView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+            messageInputTextView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
+            messageInputTextView.topAnchor.constraint(equalTo: wrapperView.topAnchor),
             messageFormBottomConstraint,
 
             wrapperView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -129,7 +129,7 @@ class MessageFormViewController: UIViewController {
 
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _ = messageFormView.becomeFirstResponder()
+        _ = messageInputTextView.becomeFirstResponder()
     }
 
     // MARK: - Private methods
@@ -139,7 +139,7 @@ class MessageFormViewController: UIViewController {
     }
 
     @objc private func sendButtonTapped() {
-        let messageText = messageFormView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let messageText = messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let lastTemplateText = lastUsedTemplate?.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let templateState: MessageFormTemplateState
         let usedTemplate: MessageFormTemplate?
@@ -189,19 +189,19 @@ class MessageFormViewController: UIViewController {
     }
 }
 
-extension MessageFormViewController: MessageFormViewDelegate {
-    func messageFormView(_ view: MessageFormView, didEditMessageText text: String) {
+extension MessageFormViewController: MessageInputTextViewDelegate {
+    func messageFormView(_ view: MessageInputTextView, didEditMessageText text: String) {
         sendButton.isEnabled = text.count > 0
     }
 }
 
 extension MessageFormViewController: MessageFormToolbarDelegate {
     func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: MessageFormTemplate) {
-        let currentText = messageFormView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let currentText = messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let lastTemplateText = (lastUsedTemplate?.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
 
         if currentText == lastTemplateText || currentText.count == 0 {
-            messageFormView.text = template.text
+            messageInputTextView.text = template.text
             lastUsedTemplate = template
         } else {
             let alertStyle: UIAlertController.Style = UIDevice.isIPad() ? .alert : .actionSheet
@@ -211,7 +211,7 @@ extension MessageFormViewController: MessageFormToolbarDelegate {
 
             let cancelAction = UIAlertAction(title: viewModel.replaceAlertCancelText, style: .cancel)
             let replaceAction = UIAlertAction(title: viewModel.replaceAlertActionText, style: .default, handler: { [weak self] _ in
-                self?.messageFormView.text = template.text
+                self?.messageInputTextView.text = template.text
                 self?.lastUsedTemplate = template
             })
 
@@ -224,7 +224,7 @@ extension MessageFormViewController: MessageFormToolbarDelegate {
     func messageFormToolbarTappedCustomizeButton(_ toolbar: MessageFormToolbar) {
         guard let templateStore = viewModel.messageTemplateStore else { return }
 
-        messageFormView.resignFirstResponder()
+        messageInputTextView.resignFirstResponder()
 
         let vc = MessageTemplateOverviewViewController(templateStore: templateStore)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)

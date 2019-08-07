@@ -76,41 +76,12 @@ class MessageTemplateOverviewViewController: UIViewController {
 
     private func editTemplate(at indexPath: IndexPath) {
         guard let template = templateStore.customTemplates[safe: indexPath.row] else { return }
-        let title = "Endre meldingsmal"
 
-        showEditDialog(withTitle: title, textFieldText: template.text, completion: { [weak self] text in
-            self?.templateStore.updateTemplate(template, withText: text, completionHandler: { [weak self] _ in
-                self?.tableView.reloadData()
-            })
-        })
-    }
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Avbryt", style: .plain, target: nil, action: nil)
 
-    private func showEditDialog(withTitle title: String, subtitle: String? = nil, textFieldText: String? = nil, completion: @escaping (String) -> Void) {
-        let inputPlaceholder = "Meldingsmal"
-        let actionTitle = "Lagre"
-        let cancelTitle = "Avbryt"
-
-        let textView = UITextView(frame: .zero)
-        textView.translatesAutoresizingMaskIntoConstraints = false
-
-        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
-        alert.addTextField { (textField:UITextField) in
-            textField.placeholder = inputPlaceholder
-            textField.text = textFieldText
-        }
-        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { [weak self] _ in
-            guard
-                let textField = alert.textFields?.first,
-                let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-                text.count > 0 else {
-                return
-            }
-
-            completion(text)
-        }))
-
-        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        let viewModel = TemplateEditViewModel(title: "Endre mal", saveButtonTitle: "Lagre", existingTemplate: template)
+        let vc = MessageTemplateEditViewController(viewModel: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
