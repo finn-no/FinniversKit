@@ -207,11 +207,12 @@ private final class InfoRowView: UIView {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: iconImageView.leadingAnchor, constant: -.smallSpacing),
 
             detailTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailTextLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-            iconImageView.trailingAnchor.constraint(equalTo: detailTextLabel.leadingAnchor, constant: -.mediumSpacing),
+            iconImageView.trailingAnchor.constraint(equalTo: detailTextLabel.leadingAnchor, constant: -.smallSpacing),
             iconImageView.topAnchor.constraint(equalTo: topAnchor),
             iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: InfoRowView.height),

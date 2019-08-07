@@ -5,7 +5,7 @@
 import UIKit
 
 class NeighborhoodProfileViewCell: UICollectionViewCell {
-    static let titleFont = UIFont.bodyStrong.withSize(14)
+    static let titleFont = UIFont.captionStrong
 
     // MARK: - Init
 

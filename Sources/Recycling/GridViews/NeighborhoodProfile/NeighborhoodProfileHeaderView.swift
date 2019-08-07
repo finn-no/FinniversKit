@@ -29,8 +29,7 @@ final class NeighborhoodProfileHeaderView: UIView {
     }()
 
     private lazy var button: UIButton = {
-        let button = Button(style: .link)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = ArrowButton(withAutoLayout: true)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         return button
     }()
@@ -55,12 +54,12 @@ final class NeighborhoodProfileHeaderView: UIView {
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: button.leadingAnchor, constant: -.mediumLargeSpacing),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            button.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: .mediumLargeSpacing),
             button.centerYAnchor.constraint(equalTo: centerYAnchor),
-            button.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor)
+            button.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
@@ -68,5 +67,47 @@ final class NeighborhoodProfileHeaderView: UIView {
 
     @objc private func handleButtonTap() {
         delegate?.neighborhoodProfileHeaderViewDidSelectButton(self)
+    }
+}
+
+// MARK: - Private types
+
+private final class ArrowButton: UIButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    public override var isHighlighted: Bool {
+        didSet {
+            tintColor = isHighlighted ? .linkButtonHighlightedTextColor : .primaryBlue
+        }
+    }
+
+    public override var isSelected: Bool {
+        didSet {
+            tintColor = isSelected ? .linkButtonHighlightedTextColor : .primaryBlue
+        }
+    }
+
+    private func setup() {
+        let spacing: CGFloat = .smallSpacing
+
+        tintColor = .primaryBlue
+        semanticContentAttribute = .forceRightToLeft
+
+        titleLabel?.font = .captionStrong
+        setTitleColor(.primaryBlue, for: .normal)
+        setTitleColor(.linkButtonHighlightedTextColor, for: .highlighted)
+
+        setImage(UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate), for: .normal)
+        imageEdgeInsets = UIEdgeInsets(top: 3, leading: spacing, bottom: 3, trailing: -spacing)
+        imageView?.contentMode = .scaleAspectFit
+        adjustsImageWhenHighlighted = false
     }
 }
