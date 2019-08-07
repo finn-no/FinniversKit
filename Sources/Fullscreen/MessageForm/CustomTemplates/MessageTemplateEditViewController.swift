@@ -151,7 +151,7 @@ extension MessageTemplateEditViewController: UITableViewDelegate {
         return [deleteAction]
     }
 
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         editTemplate(at: indexPath)
     }
 
