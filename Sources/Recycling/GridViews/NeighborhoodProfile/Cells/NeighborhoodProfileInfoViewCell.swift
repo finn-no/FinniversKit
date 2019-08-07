@@ -20,7 +20,7 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
     private lazy var linkButton: Button = {
         let button = Button(style: .link)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = .captionStrong
+        button.titleLabel?.font = NeighborhoodProfileInfoViewCell.linkButtonFont
         button.titleLabel?.numberOfLines = 0
         button.contentHorizontalAlignment = .left
         button.addTarget(self, action: #selector(handleLinkButtonTap), for: .touchUpInside)
@@ -36,7 +36,9 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         stackView.isLayoutMarginsRelativeArrangement = true
 
         if #available(iOS 11.0, *) {
-            stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0)
+            stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
+                top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0
+            )
         } else {
             stackView.layoutMargins = UIEdgeInsets(top: .mediumLargeSpacing, left: 0, bottom: 0, right: 0)
         }
@@ -103,9 +105,9 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
 
             iconImageView.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .smallSpacing),
             iconImageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
-            iconImageView.widthAnchor.constraint(equalToConstant: 54),
+            iconImageView.widthAnchor.constraint(equalToConstant: NeighborhoodProfileInfoViewCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
+            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 
@@ -116,9 +118,45 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
     }
 }
 
+// MARK: - Static
+
+extension NeighborhoodProfileInfoViewCell {
+    private static let linkButtonFont = UIFont.captionStrong
+    private static let iconSize: CGFloat = 54
+
+    static func height(forContent content: Content, rows: [Row], width: CGFloat) -> CGFloat {
+        let width = width - .mediumLargeSpacing * 2
+        var height = CGFloat.mediumLargeSpacing
+
+        // Title label
+        height += content.title.height(withConstrainedWidth: width, font: titleFont)
+
+        // Stack view
+        if !rows.isEmpty {
+            height += InfoRowView.height * CGFloat(rows.count) + .mediumLargeSpacing
+        }
+
+        // Link button
+        if let link = content.link {
+            height += link.title.height(withConstrainedWidth: width, font: linkButtonFont)
+        }
+
+        // Icon image view
+        if content.icon != nil {
+            height += iconSize + .smallSpacing
+        }
+
+        height += .mediumLargeSpacing
+
+        return height
+    }
+}
+
 // MARK: - Private types
 
 private final class InfoRowView: UIView {
+    static let height: CGFloat = 18
+
     private lazy var titleLabel: UILabel = makeLabel()
     private lazy var detailTextLabel = makeLabel()
     private lazy var iconImageView: UIImageView = {
@@ -158,7 +196,7 @@ private final class InfoRowView: UIView {
             iconImageView.trailingAnchor.constraint(equalTo: detailTextLabel.leadingAnchor, constant: -.mediumSpacing),
             iconImageView.topAnchor.constraint(equalTo: topAnchor),
             iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: 18),
+            iconImageView.widthAnchor.constraint(equalToConstant: InfoRowView.height),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
         ])
     }

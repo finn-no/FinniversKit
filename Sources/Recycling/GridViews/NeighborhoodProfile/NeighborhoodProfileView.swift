@@ -10,7 +10,7 @@ public protocol NeighborhoodProfileViewDelegate: AnyObject {
 
 public final class NeighborhoodProfileView: UIView {
     private static let cellWidth: CGFloat = 204
-    private static var minimumCellHeight: CGFloat { return 218 }
+    private static var minimumCellHeight: CGFloat { return cellWidth }
 
     // MARK: - Public properties
 
@@ -40,18 +40,21 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.backgroundColor = .ice
         collectionView.contentInset = UIEdgeInsets(top: 0, left: .mediumSpacing, bottom: .mediumSpacing, right: .mediumSpacing)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(NeighborhoodProfileInfoViewCell.self)
         collectionView.register(NeighborhoodProfileButtonViewCell.self)
         return collectionView
     }()
 
-    private lazy var collectionViewLayout: UICollectionViewLayout = {
+    private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = .zero
         layout.minimumLineSpacing = 10
+        layout.itemSize = CGSize(
+            width: NeighborhoodProfileView.cellWidth,
+            height: NeighborhoodProfileView.minimumCellHeight
+        )
         return layout
     }()
 
@@ -75,6 +78,17 @@ public final class NeighborhoodProfileView: UIView {
 
     public func configure(with viewModel: NeighborhoodProfileViewModel) {
         self.viewModel = viewModel
+
+        let cellWidth = NeighborhoodProfileView.cellWidth
+        let cellHeights = viewModel.cards.map({
+            height(forCard: $0, width: cellWidth)
+        })
+        let maxCellHeight = cellHeights.max() ?? NeighborhoodProfileView.minimumCellHeight
+
+        collectionViewLayout.itemSize = CGSize(width: cellWidth, height: maxCellHeight)
+        collectionViewHeight.constant = maxCellHeight + .mediumLargeSpacing
+
+        collectionViewLayout.invalidateLayout()
         collectionView.reloadData()
     }
 
@@ -100,6 +114,15 @@ public final class NeighborhoodProfileView: UIView {
 
             bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: verticalSpacing),
         ])
+    }
+
+    private func height(forCard card: NeighborhoodProfileViewModel.Card, width: CGFloat) -> CGFloat {
+        switch card {
+        case let .list(content, rows):
+            return NeighborhoodProfileInfoViewCell.height(forContent: content, rows: rows, width: width)
+        case let .button(content):
+            return NeighborhoodProfileButtonViewCell.height(forContent: content, width: width)
+        }
     }
 }
 
@@ -132,16 +155,6 @@ extension NeighborhoodProfileView: UICollectionViewDataSource {
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension NeighborhoodProfileView: UICollectionViewDelegateFlowLayout {
-    public func collectionView(_ collectionView: UICollectionView,
-                               layout collectionViewLayout: UICollectionViewLayout,
-                               sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: NeighborhoodProfileView.cellWidth, height: NeighborhoodProfileView.minimumCellHeight)
-    }
-}
-
 // MARK: - NeighborhoodProfileHeaderViewDelegate
 
 extension NeighborhoodProfileView: NeighborhoodProfileHeaderViewDelegate {
@@ -150,11 +163,15 @@ extension NeighborhoodProfileView: NeighborhoodProfileHeaderViewDelegate {
     }
 }
 
+// MARK: - NeighborhoodProfileInfoViewCellDelegate
+
 extension NeighborhoodProfileView: NeighborhoodProfileInfoViewCellDelegate {
     func neighborhoodProfileInfoViewCellDidSelectLinkButton(_ view: NeighborhoodProfileInfoViewCell) {
         delegate?.neighborhoodProfileView(self, didSelectUrl: view.linkButtonUrl)
     }
 }
+
+// MARK: - NeighborhoodProfileButtonViewCellDelegate
 
 extension NeighborhoodProfileView: NeighborhoodProfileButtonViewCellDelegate {
     func neighborhoodProfileButtonViewCellDidSelectLinkButton(_ view: NeighborhoodProfileButtonViewCell) {

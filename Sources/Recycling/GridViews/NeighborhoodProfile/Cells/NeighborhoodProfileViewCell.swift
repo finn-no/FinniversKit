@@ -32,9 +32,11 @@ class NeighborhoodProfileViewCell: UICollectionViewCell {
 // MARK: - Extensions
 
 extension NeighborhoodProfileViewCell {
+    static let titleFont = UIFont.bodyStrong.withSize(14)
+
     func makeTitleLabel() -> UILabel {
         let label = UILabel(withAutoLayout: true)
-        label.font = UIFont.bodyStrong.withSize(14)
+        label.font = NeighborhoodProfileViewCell.titleFont
         label.textColor = .licorice
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
