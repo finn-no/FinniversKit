@@ -226,7 +226,7 @@ extension MessageFormViewController: MessageFormToolbarDelegate {
 
         messageFormView.resignFirstResponder()
 
-        let vc = MessageTemplateEditViewController(templateStore: templateStore)
+        let vc = MessageTemplateOverviewViewController(templateStore: templateStore)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
         navigationController?.pushViewController(vc, animated: true)
     }

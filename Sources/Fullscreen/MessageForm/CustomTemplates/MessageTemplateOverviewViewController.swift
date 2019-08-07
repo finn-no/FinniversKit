@@ -1,6 +1,6 @@
 import Foundation
 
-class MessageTemplateEditViewController: UIViewController {
+class MessageTemplateOverviewViewController: UIViewController {
 
     // MARK: - Private properties
 
@@ -114,7 +114,7 @@ class MessageTemplateEditViewController: UIViewController {
     }
 }
 
-extension MessageTemplateEditViewController: UITableViewDataSource {
+extension MessageTemplateOverviewViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return templateStore.customTemplates.count
     }
@@ -142,7 +142,7 @@ extension MessageTemplateEditViewController: UITableViewDataSource {
     }
 }
 
-extension MessageTemplateEditViewController: UITableViewDelegate {
+extension MessageTemplateOverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Slett", handler: { [weak self] _, selectedIndex in
             self?.deleteTemplate(at: selectedIndex)
