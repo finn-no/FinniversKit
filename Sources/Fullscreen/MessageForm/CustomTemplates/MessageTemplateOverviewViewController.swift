@@ -79,8 +79,9 @@ class MessageTemplateOverviewViewController: UIViewController {
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Avbryt", style: .plain, target: nil, action: nil)
 
-        let viewModel = TemplateEditViewModel(title: "Endre mal", saveButtonTitle: "Lagre", existingTemplate: template)
+        let viewModel = TemplateEditViewModel(title: "Endre mal", saveButtonTitle: "Lagre", helpText: nil, existingTemplate: template)
         let vc = MessageTemplateEditViewController(viewModel: viewModel)
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -128,6 +129,20 @@ extension MessageTemplateOverviewViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         editTemplate(at: indexPath)
+    }
+}
+
+extension MessageTemplateOverviewViewController: MessageTemplateEditViewControllerDelegate {
+    func messageTemplateEditViewController(_ vc: MessageTemplateEditViewController, finishedWithText text: String, existingTemplate: MessageFormTemplate?) {
+        if let existingTemplate = existingTemplate {
+            templateStore.updateTemplate(existingTemplate, withText: text, completionHandler: { [weak self] _ in
+                self?.tableView.reloadData()
+            })
+        } else {
+            templateStore.addTemplate(withText: text, completionHandler: { [weak self] _ in
+                self?.tableView.reloadData()
+            })
+        }
     }
 }
 
