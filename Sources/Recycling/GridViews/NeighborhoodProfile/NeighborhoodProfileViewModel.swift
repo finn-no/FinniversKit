@@ -18,8 +18,8 @@ public struct NeighborhoodProfileViewModel {
 
 extension NeighborhoodProfileViewModel {
     public enum Card {
-        case list(Content, [Row])
-        case button(Content)
+        case list(content: Content, rows: [Row])
+        case button(content: Content)
     }
 
     public struct Content {
@@ -49,5 +49,10 @@ extension NeighborhoodProfileViewModel {
     public struct Link {
         public let title: String
         public let url: URL?
+
+        public init(title: String, url: URL?) {
+            self.title = title
+            self.url = url
+        }
     }
 }

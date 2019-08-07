@@ -10,7 +10,7 @@ public protocol NeighborhoodProfileViewDelegate: AnyObject {
 
 public final class NeighborhoodProfileView: UIView {
     private static let cellWidth: CGFloat = 204
-    private static var minimumCellHeight: CGFloat { return cellWidth }
+    private static var minimumCellHeight: CGFloat { return 218 }
 
     // MARK: - Public properties
 
@@ -73,7 +73,8 @@ public final class NeighborhoodProfileView: UIView {
 
     // MARK: - Public
 
-    public func reloadData() {
+    public func configure(with viewModel: NeighborhoodProfileViewModel) {
+        self.viewModel = viewModel
         collectionView.reloadData()
     }
 
