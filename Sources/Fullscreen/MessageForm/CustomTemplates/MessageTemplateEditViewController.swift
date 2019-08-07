@@ -15,7 +15,6 @@ class MessageTemplateEditViewController: UIViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(CustomMessageTemplateCell.self)
-        tableView.allowsSelection = false
         return tableView
     }()
 
@@ -40,6 +39,14 @@ class MessageTemplateEditViewController: UIViewController {
 
         let editItem = UIBarButtonItem(title: "Rediger", style: .plain, target: self, action: #selector(editButtonTapped))
         navigationItem.rightBarButtonItem = editItem
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 
     // MARK: - Private methods
@@ -143,6 +150,14 @@ extension MessageTemplateEditViewController: UITableViewDelegate {
 
         return [deleteAction]
     }
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        editTemplate(at: indexPath)
+    }
+
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        editTemplate(at: indexPath)
+    }
 }
 
 // MARK: - CustomMessageTemplateCell
@@ -181,7 +196,7 @@ private class CustomMessageTemplateCell: UITableViewCell {
     }
 
     private func setup() {
-        accessoryType = .disclosureButton
+        accessoryType = .disclosureIndicator
 
         contentView.addSubview(wrapperView)
         wrapperView.fillInSuperview()
