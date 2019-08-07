@@ -21,6 +21,8 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         let button = Button(style: .link)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = .captionStrong
+        button.titleLabel?.numberOfLines = 0
+        button.contentHorizontalAlignment = .left
         button.addTarget(self, action: #selector(handleLinkButtonTap), for: .touchUpInside)
         return button
     }()
@@ -29,7 +31,7 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.spacing = .smallSpacing
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.alignment = .fill
         stackView.isLayoutMarginsRelativeArrangement = true
 
@@ -42,7 +44,11 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         return stackView
     }()
 
-    private lazy var iconImageView = UIImageView(withAutoLayout: true)
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     // MARK: - Init
 
@@ -60,7 +66,7 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
 
     func configure(withContent content: Content, rows: [Row]) {
         titleLabel.text = content.title
-        linkButton.setTitle(content.title, for: .normal)
+        linkButton.setTitle(content.link?.title, for: .normal)
         linkButtonUrl = content.link?.url
         iconImageView.image = content.icon
 
@@ -93,11 +99,13 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
 
             linkButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumLargeSpacing),
             linkButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            linkButton.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor, constant: -.mediumSpacing),
+            linkButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
             iconImageView.topAnchor.constraint(equalTo: linkButton.bottomAnchor, constant: .smallSpacing),
             iconImageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .mediumLargeSpacing)
+            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            iconImageView.widthAnchor.constraint(equalToConstant: 54),
+            iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
         ])
     }
 
@@ -113,20 +121,26 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
 private final class InfoRowView: UIView {
     private lazy var titleLabel: UILabel = makeLabel()
     private lazy var detailTextLabel = makeLabel()
-    private lazy var iconImageView = UIImageView(withAutoLayout: true)
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.tintColor = .stone
+        return imageView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        setup()
     }
 
     func configure(withTitle title: String, detailText: String?, icon: UIImage?) {
         titleLabel.text = title
         detailTextLabel.text = detailText
-        iconImageView.image = icon
+        iconImageView.image = icon?.withRenderingMode(.alwaysTemplate)
     }
 
     private func setup() {
@@ -142,7 +156,10 @@ private final class InfoRowView: UIView {
             detailTextLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             iconImageView.trailingAnchor.constraint(equalTo: detailTextLabel.leadingAnchor, constant: -.mediumSpacing),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            iconImageView.topAnchor.constraint(equalTo: topAnchor),
+            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            iconImageView.widthAnchor.constraint(equalToConstant: 18),
+            iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
         ])
     }
 

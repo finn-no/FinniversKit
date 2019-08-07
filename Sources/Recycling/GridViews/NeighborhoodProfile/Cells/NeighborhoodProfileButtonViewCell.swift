@@ -15,7 +15,12 @@ final class NeighborhoodProfileButtonViewCell: NeighborhoodProfileViewCell {
     private(set) var linkButtonUrl: URL?
 
     private lazy var titleLabel: UILabel = makeTitleLabel()
-    private lazy var iconImageView = UIImageView(withAutoLayout: true)
+
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     private lazy var linkButton: Button = {
         let button = Button(style: .default)
@@ -40,7 +45,7 @@ final class NeighborhoodProfileButtonViewCell: NeighborhoodProfileViewCell {
 
     func configure(withContent content: Content) {
         titleLabel.text = content.title
-        linkButton.setTitle(content.title, for: .normal)
+        linkButton.setTitle(content.link?.title, for: .normal)
         linkButtonUrl = content.link?.url
         iconImageView.image = content.icon
     }
@@ -58,8 +63,10 @@ final class NeighborhoodProfileButtonViewCell: NeighborhoodProfileViewCell {
             iconImageView.topAnchor.constraint(greaterThanOrEqualTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing),
             iconImageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             iconImageView.bottomAnchor.constraint(equalTo: linkButton.topAnchor, constant: -.mediumLargeSpacing),
+            iconImageView.widthAnchor.constraint(equalToConstant: 80),
+            iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
-            linkButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: .mediumLargeSpacing),
+            linkButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
             linkButton.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
             linkButton.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.8)
         ])
