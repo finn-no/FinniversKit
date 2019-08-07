@@ -58,7 +58,7 @@ public final class NeighborhoodProfileView: UIView {
         return layout
     }()
 
-    private lazy var collectionViewHeight = collectionView.heightAnchor.constraint(
+    private lazy var collectionViewHeightConstraint = collectionView.heightAnchor.constraint(
         equalToConstant: NeighborhoodProfileView.minimumCellHeight + .mediumLargeSpacing
     )
 
@@ -86,9 +86,8 @@ public final class NeighborhoodProfileView: UIView {
         let maxCellHeight = cellHeights.max() ?? NeighborhoodProfileView.minimumCellHeight
 
         collectionViewLayout.itemSize = CGSize(width: cellWidth, height: maxCellHeight)
-        collectionViewHeight.constant = maxCellHeight + .mediumLargeSpacing
+        collectionViewHeightConstraint.constant = maxCellHeight + .mediumLargeSpacing
 
-        collectionViewLayout.invalidateLayout()
         collectionView.reloadData()
     }
 
@@ -110,7 +109,7 @@ public final class NeighborhoodProfileView: UIView {
             collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: verticalSpacing),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionViewHeight,
+            collectionViewHeightConstraint,
 
             bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: verticalSpacing),
         ])

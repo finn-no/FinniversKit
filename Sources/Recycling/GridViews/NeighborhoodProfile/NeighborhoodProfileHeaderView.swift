@@ -96,8 +96,6 @@ private final class ArrowButton: UIButton {
     }
 
     private func setup() {
-        let spacing: CGFloat = .smallSpacing
-
         tintColor = .primaryBlue
         semanticContentAttribute = .forceRightToLeft
 
@@ -106,7 +104,7 @@ private final class ArrowButton: UIButton {
         setTitleColor(.linkButtonHighlightedTextColor, for: .highlighted)
 
         setImage(UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate), for: .normal)
-        imageEdgeInsets = UIEdgeInsets(top: 3, leading: spacing, bottom: 3, trailing: -spacing)
+        imageEdgeInsets = UIEdgeInsets(top: 3, leading: .smallSpacing, bottom: 3, trailing: -.smallSpacing)
         imageView?.contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
     }
