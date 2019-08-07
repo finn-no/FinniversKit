@@ -181,10 +181,12 @@ private class CustomMessageTemplateCell: UITableViewCell {
     }
 
     private func setup() {
-        contentView.addSubview(wrapperView)
-        wrapperView.addSubview(label)
+        accessoryType = .disclosureButton
 
+        contentView.addSubview(wrapperView)
         wrapperView.fillInSuperview()
+
+        wrapperView.addSubview(label)
         label.fillInSuperview(margin: .mediumSpacing)
 
         NSLayoutConstraint.activate([
