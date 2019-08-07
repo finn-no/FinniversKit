@@ -118,7 +118,7 @@ public final class NeighborhoodProfileView: UIView {
 
     private func height(forCard card: NeighborhoodProfileViewModel.Card, width: CGFloat) -> CGFloat {
         switch card {
-        case let .list(content, rows):
+        case let .info(content, rows):
             return NeighborhoodProfileInfoViewCell.height(forContent: content, rows: rows, width: width)
         case let .button(content):
             return NeighborhoodProfileButtonViewCell.height(forContent: content, width: width)
@@ -139,7 +139,7 @@ extension NeighborhoodProfileView: UICollectionViewDataSource {
         let card = viewModel.cards[indexPath.item]
 
         switch card {
-        case let .list(content, rows):
+        case let .info(content, rows):
             let cell = collectionView.dequeue(NeighborhoodProfileInfoViewCell.self, for: indexPath)
             cell.delegate = self
             cell.configure(withContent: content, rows: rows)

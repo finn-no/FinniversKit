@@ -5,6 +5,10 @@
 import UIKit
 
 class NeighborhoodProfileViewCell: UICollectionViewCell {
+    static let titleFont = UIFont.bodyStrong.withSize(14)
+
+    // MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -17,6 +21,15 @@ class NeighborhoodProfileViewCell: UICollectionViewCell {
 
     // MARK: - Setup
 
+    func makeTitleLabel() -> UILabel {
+        let label = UILabel(withAutoLayout: true)
+        label.font = NeighborhoodProfileViewCell.titleFont
+        label.textColor = .licorice
+        label.numberOfLines = 0
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        return label
+    }
+
     private func setup() {
         backgroundColor = .clear
         contentView.backgroundColor = .milk
@@ -26,20 +39,5 @@ class NeighborhoodProfileViewCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.sardine.withAlphaComponent(0.5).cgColor
 
         contentView.dropShadow(color: UIColor.black.withAlphaComponent(0.5), offset: CGSize(width: 0, height: 3), radius: 3)
-    }
-}
-
-// MARK: - Extensions
-
-extension NeighborhoodProfileViewCell {
-    static let titleFont = UIFont.bodyStrong.withSize(14)
-
-    func makeTitleLabel() -> UILabel {
-        let label = UILabel(withAutoLayout: true)
-        label.font = NeighborhoodProfileViewCell.titleFont
-        label.textColor = .licorice
-        label.numberOfLines = 0
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return label
     }
 }

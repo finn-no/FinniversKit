@@ -18,7 +18,7 @@ public struct NeighborhoodProfileViewModel {
 
 extension NeighborhoodProfileViewModel {
     public enum Card {
-        case list(content: Content, rows: [Row])
+        case info(content: Content, rows: [Row])
         case button(content: Content)
     }
 
