@@ -170,6 +170,8 @@ private class CustomMessageTemplateCell: UITableViewCell {
 
     // MARK: - UI properties
 
+    private lazy var wrapperView: UIView = UIView(withAutoLayout: true)
+
     private lazy var label: Label = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -190,7 +192,14 @@ private class CustomMessageTemplateCell: UITableViewCell {
     }
 
     private func setup() {
-        contentView.addSubview(label)
+        contentView.addSubview(wrapperView)
+        wrapperView.addSubview(label)
+
+        wrapperView.fillInSuperview()
         label.fillInSuperview(margin: .mediumSpacing)
+
+        NSLayoutConstraint.activate([
+            wrapperView.heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
+        ])
     }
 }
