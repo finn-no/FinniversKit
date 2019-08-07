@@ -34,12 +34,12 @@ class MessageTemplateEditViewController: UIViewController {
         super.viewDidLoad()
         title = "Dine meldingsmaler"
 
-        let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        navigationItem.rightBarButtonItem = addItem
-
         view.backgroundColor = .milk
         view.addSubview(tableView)
         tableView.fillInSuperview()
+
+        let editItem = UIBarButtonItem(title: "Rediger", style: .plain, target: self, action: #selector(editButtonTapped))
+        navigationItem.rightBarButtonItem = editItem
     }
 
     // MARK: - Private methods
@@ -68,17 +68,14 @@ class MessageTemplateEditViewController: UIViewController {
         })
     }
 
-    @objc private func addButtonTapped() {
-        let title = "Ny meldingsmal"
-        let subtitle = "Legg til en mal for en melding du sender ofte."
-
-        showEditDialog(withTitle: title, subtitle: subtitle, completion: { [weak self] text in
-            self?.templateStore.addTemplate(withText: text, completionHandler: { [weak self] _ in
-                // Reload regardless of success.
-                // In case of failure, we should assume we are out of sync with the template store.
-                self?.tableView.reloadData()
-            })
-        })
+    @objc private func editButtonTapped() {
+        if tableView.isEditing {
+            tableView.setEditing(false, animated: true)
+            navigationItem.rightBarButtonItem?.title = "Rediger"
+        } else {
+            tableView.setEditing(true, animated: true)
+            navigationItem.rightBarButtonItem?.title = "Ferdig"
+        }
     }
 
     private func showEditDialog(withTitle title: String, subtitle: String? = nil, textFieldText: String? = nil, completion: @escaping (String) -> Void) {
@@ -129,10 +126,6 @@ extension MessageTemplateEditViewController: UITableViewDataSource {
         return true
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Dine meldingsmaler"
-    }
-
     public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         guard templateStore.customTemplates.count == 0 else {
             return nil
@@ -148,11 +141,7 @@ extension MessageTemplateEditViewController: UITableViewDelegate {
             self?.deleteTemplate(at: selectedIndex)
         })
 
-        let editAction = UITableViewRowAction(style: .normal, title: "Endre", handler: { [weak self] _, selectedIndex in 
-            self?.editTemplate(at: selectedIndex)
-        })
-
-        return [deleteAction, editAction]
+        return [deleteAction]
     }
 }
 
