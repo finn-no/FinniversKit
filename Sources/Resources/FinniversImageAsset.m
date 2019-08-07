@@ -31,6 +31,7 @@ NSString *const FinniversImageAssetclassifieds = @"classifieds";
 NSString *const FinniversImageAssetclose = @"close";
 NSString *const FinniversImageAssetcross = @"cross";
 NSString *const FinniversImageAssetdistance = @"distance";
+NSString *const FinniversImageAssetdistanceOutlined = @"distanceOutlined";
 NSString *const FinniversImageAssetdownload = @"download";
 NSString *const FinniversImageAssetearthHourClock = @"earthHourClock";
 NSString *const FinniversImageAssetearthHourEarth = @"earthHourEarth";
@@ -158,6 +159,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetclose,
              FinniversImageAssetcross,
              FinniversImageAssetdistance,
+             FinniversImageAssetdistanceOutlined,
              FinniversImageAssetdownload,
              FinniversImageAssetearthHourClock,
              FinniversImageAssetearthHourEarth,

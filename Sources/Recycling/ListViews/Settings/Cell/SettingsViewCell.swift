@@ -44,11 +44,16 @@ public class SettingsViewCell: UITableViewCell {
 
     // MARK: - Public properties
 
-    public var model: SettingsViewCellModel? {
-        didSet { set(model: model) }
-    }
-
     public var labelInset: CGFloat = 15
+
+    // MARK: - Public Methods
+
+    func configure(with viewModel: SettingsViewCellModel?, isLastItem: Bool) {
+        titleLabel.text = viewModel?.title
+        stateLabel.text = viewModel?.status
+        arrowView.isHidden = !(viewModel?.hasChevron ?? true)
+        hairline.isHidden = isLastItem
+    }
 
     // MARK: - Setup
 
@@ -66,12 +71,6 @@ public class SettingsViewCell: UITableViewCell {
 // MARK: - Private methods
 
 private extension SettingsViewCell {
-    func set(model: SettingsViewCellModel?) {
-        titleLabel.text = model?.title
-        stateLabel.text = model?.status
-        hairline.isHidden = model?.isLastItem ?? false
-    }
-
     func setup() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(stateLabel)

@@ -7,6 +7,7 @@ import UIKit
 public protocol LoginEntryViewModel {
     var title: String { get }
     var detail: String { get }
+    var includeSettings: Bool { get }
     var loginButtonTitle: String { get }
     var registerButtonTitle: String { get }
 }
@@ -14,16 +15,11 @@ public protocol LoginEntryViewModel {
 public protocol LoginEntryViewDelegate: AnyObject {
     func loginEntryViewDidSelectLoginButton()
     func loginEntryViewDidSelectRegisterButton()
+    func loginEntryViewDidSelectSettingsButton()
 }
 
 public class LoginEntryView: UIView {
     // MARK: - Public properties
-
-    public var model: LoginEntryViewModel? {
-        didSet {
-            loginDialogue.model = model
-        }
-    }
 
     public weak var delegate: LoginEntryViewDelegate? {
         didSet {
@@ -33,12 +29,29 @@ public class LoginEntryView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var scrollView = UIScrollView(withAutoLayout: true)
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(withAutoLayout: true)
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        }
+        return scrollView
+    }()
 
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .marble
         return view
+    }()
+
+    private lazy var settingsButton: UIButton = {
+        let button = UIButton(withAutoLayout: true)
+        button.setImage(UIImage(named: FinniversImageAsset.settings).withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .stone
+        button.isHidden = true
+        button.addTarget(self, action: #selector(handleTapOnSettingsButton), for: .touchUpInside)
+        button.contentEdgeInsets = UIEdgeInsets(all: .mediumLargeSpacing)
+
+        return button
     }()
 
     private lazy var loginDialogue: LoginEntryDialogueView = {
@@ -61,14 +74,35 @@ public class LoginEntryView: UIView {
         setup()
     }
 
+    // MARK: - Public methods
+
+    public func configure(with model: LoginEntryViewModel) {
+        loginDialogue.configure(with: model)
+        settingsButton.isHidden = !model.includeSettings
+    }
+
     // MARK: - Private methods
 
     private func setup() {
         addSubview(scrollView)
+        addSubview(settingsButton)
+
         scrollView.fillInSuperview()
 
         scrollView.addSubview(contentView)
         contentView.addSubview(loginDialogue)
+
+        if #available(iOS 11.0, *) {
+            NSLayoutConstraint.activate([
+                settingsButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                settingsButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                settingsButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+                settingsButton.trailingAnchor.constraint(equalTo: trailingAnchor)
+            ])
+        }
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -98,5 +132,9 @@ public class LoginEntryView: UIView {
         }
 
         NSLayoutConstraint.activate(dialogueConstraints)
+    }
+
+    @objc private func handleTapOnSettingsButton() {
+        delegate?.loginEntryViewDidSelectSettingsButton()
     }
 }
