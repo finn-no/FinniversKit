@@ -51,6 +51,16 @@ class MessageTemplateEditViewController: UIViewController {
 
     // MARK: - Private methods
 
+    @objc private func editButtonTapped() {
+        if tableView.isEditing {
+            tableView.setEditing(false, animated: true)
+            navigationItem.rightBarButtonItem?.title = "Rediger"
+        } else {
+            tableView.setEditing(true, animated: true)
+            navigationItem.rightBarButtonItem?.title = "Ferdig"
+        }
+    }
+
     private func deleteTemplate(at indexPath: IndexPath) {
         guard let template = templateStore.customTemplates[safe: indexPath.row] else { return }
 
@@ -73,16 +83,6 @@ class MessageTemplateEditViewController: UIViewController {
                 self?.tableView.reloadData()
             })
         })
-    }
-
-    @objc private func editButtonTapped() {
-        if tableView.isEditing {
-            tableView.setEditing(false, animated: true)
-            navigationItem.rightBarButtonItem?.title = "Rediger"
-        } else {
-            tableView.setEditing(true, animated: true)
-            navigationItem.rightBarButtonItem?.title = "Ferdig"
-        }
     }
 
     private func showEditDialog(withTitle title: String, subtitle: String? = nil, textFieldText: String? = nil, completion: @escaping (String) -> Void) {
