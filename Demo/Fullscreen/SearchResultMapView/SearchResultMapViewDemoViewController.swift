@@ -100,6 +100,10 @@ extension SearchResultMapViewDemoViewController: SearchResultMapViewDelegate {
         print("didSelectAnnotationView of type: \(String(describing: annotationView.annotation))")
     }
 
+    public func searchResultMapView(_ view: SearchResultMapView, didDeselect annotationView: MKAnnotationView) {
+        print("didDeselectAnnotationView of type: \(String(describing: annotationView.annotation))")
+    }
+
     public func searchResultMapView(_ view: SearchResultMapView, didUpdate userLocation: MKUserLocation) {
         print("MKMapView(:didUpdateUserLocation)")
     }
