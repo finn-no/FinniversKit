@@ -157,9 +157,7 @@ public final class NeighborhoodProfileView: UIView {
 
     private func calculateItemSize() -> CGSize {
         let cellWidth = NeighborhoodProfileView.cellWidth
-        let cellHeights = viewModel.cards.map({
-            height(forCard: $0, width: cellWidth)
-        })
+        let cellHeights = viewModel.cards.map({ height(forCard: $0, width: cellWidth) })
 
         return CGSize(
             width: cellWidth,
@@ -247,6 +245,7 @@ extension NeighborhoodProfileView: NeighborhoodProfileButtonViewCellDelegate {
 // MARK: - UICollectionViewFlowLayout
 
 private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
+    /// Returns the centered content offset to use after an animated layout update or change.
     override func targetContentOffset(
         forProposedContentOffset proposedContentOffset: CGPoint,
         withScrollingVelocity velocity: CGPoint
@@ -259,16 +258,12 @@ private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
         let proposedContentOffsetCenterX = proposedContentOffset.x + halfWidth
         var targetContentOffset = proposedContentOffset
 
-        for (index, attributes) in layoutAttributes.enumerated() where attributes.representedElementCategory == .cell {
-            if index == 0 {
-                targetContentOffset.x = attributes.center.x
-            } else {
-                let currentX = attributes.center.x - proposedContentOffsetCenterX
-                let targetX = targetContentOffset.x - proposedContentOffsetCenterX
+        for attributes in layoutAttributes where attributes.representedElementCategory == .cell {
+            let currentX = attributes.center.x - proposedContentOffsetCenterX
+            let targetX = targetContentOffset.x - proposedContentOffsetCenterX
 
-                if abs(currentX) < abs(targetX) {
-                    targetContentOffset.x = attributes.center.x
-                }
+            if abs(currentX) < abs(targetX) {
+                targetContentOffset.x = attributes.center.x
             }
         }
 
