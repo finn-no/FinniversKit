@@ -53,7 +53,7 @@ public final class NeighborhoodProfileView: UIView {
     }()
 
     private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = CollectionViewLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = .zero
         layout.minimumLineSpacing = 10
@@ -183,5 +183,39 @@ extension NeighborhoodProfileView: NeighborhoodProfileInfoViewCellDelegate {
 extension NeighborhoodProfileView: NeighborhoodProfileButtonViewCellDelegate {
     func neighborhoodProfileButtonViewCellDidSelectLinkButton(_ view: NeighborhoodProfileButtonViewCell) {
         delegate?.neighborhoodProfileView(self, didSelectUrl: view.linkButtonUrl)
+    }
+}
+
+// MARK: - UICollectionViewFlowLayout
+
+private final class CollectionViewLayout: UICollectionViewFlowLayout {
+    override func targetContentOffset(
+        forProposedContentOffset proposedContentOffset: CGPoint,
+        withScrollingVelocity velocity: CGPoint
+    ) -> CGPoint {
+        guard let bounds = collectionView?.bounds, let layoutAttributes = layoutAttributesForElements(in: bounds) else {
+            return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
+        }
+
+        let halfWidth = bounds.size.width / 2
+        let proposedContentOffsetCenterX = proposedContentOffset.x + halfWidth
+        var targetContentOffset = proposedContentOffset
+
+        for (index, attributes) in layoutAttributes.enumerated() where attributes.representedElementCategory == .cell {
+            if index == 0 {
+                targetContentOffset.x = attributes.center.x
+            } else {
+                let currentX = attributes.center.x - proposedContentOffsetCenterX
+                let targetX = targetContentOffset.x - proposedContentOffsetCenterX
+
+                if abs(currentX) < abs(targetX) {
+                    targetContentOffset.x = attributes.center.x
+                }
+            }
+        }
+
+        targetContentOffset.x -= halfWidth
+
+        return targetContentOffset
     }
 }
