@@ -15,6 +15,7 @@ class MessageTemplateOverviewViewController: UIViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(CustomMessageTemplateCell.self)
+        tableView.register(AddNewTemplateCell.self)
         return tableView
     }()
 
@@ -87,25 +88,50 @@ class MessageTemplateOverviewViewController: UIViewController {
 }
 
 extension MessageTemplateOverviewViewController: UITableViewDataSource {
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return templateStore.customTemplates.count
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return templateStore.customTemplates.count
+        default:
+            return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let template = templateStore.customTemplates[safe: indexPath.row] else {
+
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeue(AddNewTemplateCell.self, for: indexPath)
+            cell.label.text = "Legg til ny mal"
+            return cell
+        case 1:
+            guard let template = templateStore.customTemplates[safe: indexPath.row] else {
+                return UITableViewCell()
+            }
+
+            let cell = tableView.dequeue(CustomMessageTemplateCell.self, for: indexPath)
+            cell.template = template
+            return cell
+        default:
             return UITableViewCell()
         }
-
-        let cell = tableView.dequeue(CustomMessageTemplateCell.self, for: indexPath)
-        cell.template = template
-        return cell
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return indexPath.section == 1
     }
 
     public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        guard section == 1 else {
+            return nil
+        }
+
         guard templateStore.customTemplates.count == 0 else {
             return nil
         }
@@ -116,6 +142,10 @@ extension MessageTemplateOverviewViewController: UITableViewDataSource {
 
 extension MessageTemplateOverviewViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        guard indexPath.section == 1 else {
+            return []
+        }
+
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Slett", handler: { [weak self] _, selectedIndex in
             self?.deleteTemplate(at: selectedIndex)
         })
@@ -124,10 +154,12 @@ extension MessageTemplateOverviewViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == 1 else { return }
         editTemplate(at: indexPath)
     }
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        guard indexPath.section == 1 else { return }
         editTemplate(at: indexPath)
     }
 }
@@ -143,6 +175,60 @@ extension MessageTemplateOverviewViewController: MessageTemplateEditViewControll
                 self?.tableView.reloadData()
             })
         }
+    }
+}
+
+// MARK: - AddNewTemplateCell
+
+private class AddNewTemplateCell: UITableViewCell {
+
+    // MARK: - Static properties
+
+    private static let imageSize = CGSize(width: 25, height: 25)
+
+    // MARK: - UI properties
+
+    lazy var label: Label = {
+        let label = Label(style: .bodyStrong)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private lazy var plusImageView: UIImageView = {
+        let view = UIImageView(image: UIImage(named: .plusMini))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    // MARK: - Init
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    override init(style: CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
+
+    private func setup() {
+        contentView.addSubview(label)
+        contentView.addSubview(plusImageView)
+
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            label.trailingAnchor.constraint(equalTo: plusImageView.leadingAnchor, constant: -.mediumSpacing),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+
+            plusImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            plusImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            plusImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+
+            plusImageView.widthAnchor.constraint(equalToConstant: AddNewTemplateCell.imageSize.width),
+            plusImageView.heightAnchor.constraint(equalToConstant: AddNewTemplateCell.imageSize.height)
+        ])
     }
 }
 
