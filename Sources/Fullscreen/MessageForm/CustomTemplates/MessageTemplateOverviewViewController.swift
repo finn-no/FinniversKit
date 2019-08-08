@@ -85,6 +85,15 @@ class MessageTemplateOverviewViewController: UIViewController {
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
+
+    private func addNewTemplate() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Avbryt", style: .plain, target: nil, action: nil)
+
+        let viewModel = TemplateEditViewModel(title: "Ny mal", saveButtonTitle: "Lagre", helpText: nil, existingTemplate: nil)
+        let vc = MessageTemplateEditViewController(viewModel: viewModel)
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension MessageTemplateOverviewViewController: UITableViewDataSource {
@@ -104,7 +113,6 @@ extension MessageTemplateOverviewViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeue(AddNewTemplateCell.self, for: indexPath)
@@ -154,8 +162,14 @@ extension MessageTemplateOverviewViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.section == 1 else { return }
-        editTemplate(at: indexPath)
+        switch indexPath.section {
+        case 0:
+            addNewTemplate()
+        case 1:
+            editTemplate(at: indexPath)
+        default:
+            break
+        }
     }
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
