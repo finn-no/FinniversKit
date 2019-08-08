@@ -209,8 +209,12 @@ extension NeighborhoodProfileView: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension NeighborhoodProfileView: UICollectionViewDelegate {
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let center = CGPoint(x: scrollView.contentOffset.x + scrollView.frame.midX, y: scrollView.frame.midY)
+    public func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ) {
+        let center = CGPoint(x: targetContentOffset.pointee.x + scrollView.frame.midX, y: scrollView.frame.midY)
 
         if let indexPath = collectionView.indexPathForItem(at: center) {
             pageControl.currentPage = indexPath.row
