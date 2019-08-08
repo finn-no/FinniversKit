@@ -54,7 +54,7 @@ public final class NeighborhoodProfileView: UIView {
     }()
 
     private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
-        let layout = CollectionViewLayout()
+        let layout = isPagingEnabled ? CollectionViewLayout() : UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = .zero
         layout.minimumLineSpacing = 10
