@@ -48,9 +48,20 @@ class MessageTemplateOverviewViewController: UIViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: true)
         }
+
+        updateEditButtonEnabled()
     }
 
     // MARK: - Private methods
+
+    private func reloadData() {
+        updateEditButtonEnabled()
+        tableView.reloadData()
+    }
+
+    private func updateEditButtonEnabled() {
+        navigationItem.rightBarButtonItem?.isEnabled = !templateStore.customTemplates.isEmpty
+    }
 
     @objc private func editButtonTapped() {
         if tableView.isEditing {
@@ -68,9 +79,10 @@ class MessageTemplateOverviewViewController: UIViewController {
         templateStore.removeTemplate(template, completionHandler: { [weak self] success in
             if success {
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self?.updateEditButtonEnabled()
             } else {
                 // Assume we're out of sync with the template store
-                self?.tableView.reloadData()
+                self?.reloadData()
             }
         })
     }
@@ -182,11 +194,11 @@ extension MessageTemplateOverviewViewController: MessageTemplateEditViewControll
     func messageTemplateEditViewController(_ vc: MessageTemplateEditViewController, finishedWithText text: String, existingTemplate: MessageFormTemplate?) {
         if let existingTemplate = existingTemplate {
             templateStore.updateTemplate(existingTemplate, withText: text, completionHandler: { [weak self] _ in
-                self?.tableView.reloadData()
+                self?.reloadData()
             })
         } else {
             templateStore.addTemplate(withText: text, completionHandler: { [weak self] _ in
-                self?.tableView.reloadData()
+                self?.reloadData()
             })
         }
     }
