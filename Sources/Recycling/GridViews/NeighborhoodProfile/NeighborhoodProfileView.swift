@@ -80,7 +80,7 @@ public final class NeighborhoodProfileView: UIView {
         return collectionViewLayout.itemSize.height + collectionView.verticalContentInsets
     }
 
-    private var shouldShowPageControl: Bool {
+    private var isPagingEnabled: Bool {
         return UIDevice.isIPhone()
     }
 
@@ -114,7 +114,7 @@ public final class NeighborhoodProfileView: UIView {
         addSubview(headerView)
         addSubview(collectionView)
 
-        if shouldShowPageControl {
+        if isPagingEnabled {
             addSubview(pageControl)
         }
 
@@ -129,7 +129,7 @@ public final class NeighborhoodProfileView: UIView {
             collectionViewHeightConstraint,
         ]
 
-        if shouldShowPageControl {
+        if isPagingEnabled {
             constraints.append(contentsOf: [
                 pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
                 pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -147,7 +147,7 @@ public final class NeighborhoodProfileView: UIView {
     private func resetPageControl() {
         pageControl.numberOfPages = viewModel.cards.count
         pageControl.currentPage = 0
-        pageControl.isHidden = !shouldShowPageControl || viewModel.cards.isEmpty
+        pageControl.isHidden = !isPagingEnabled || viewModel.cards.isEmpty
     }
 
     private func resetCollectionViewLayout() {
