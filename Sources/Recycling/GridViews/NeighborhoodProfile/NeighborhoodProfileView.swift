@@ -38,8 +38,14 @@ public final class NeighborhoodProfileView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .ice
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: .mediumSpacing, bottom: .mediumSpacing, right: .mediumSpacing)
+        collectionView.contentInset = UIEdgeInsets(
+            top: 0,
+            left: .mediumLargeSpacing,
+            bottom: .mediumSpacing,
+            right: .mediumLargeSpacing
+        )
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = false
         collectionView.dataSource = self
         collectionView.register(NeighborhoodProfileInfoViewCell.self)
         collectionView.register(NeighborhoodProfileButtonViewCell.self)
@@ -132,8 +138,10 @@ extension NeighborhoodProfileView: UICollectionViewDataSource {
         return viewModel.cards.count
     }
 
-    public func collectionView(_ collectionView: UICollectionView,
-                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let reusableCell: UICollectionViewCell
         let card = viewModel.cards[indexPath.item]
 
