@@ -37,6 +37,15 @@ public class SettingsView: UIView {
     public weak var dataSource: SettingsViewDataSource?
     public weak var delegate: SettingsViewDelegate?
 
+    public var contentInset: UIEdgeInsets {
+        get {
+            return tableView.contentInset
+        }
+        set {
+            tableView.contentInset = newValue
+        }
+    }
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

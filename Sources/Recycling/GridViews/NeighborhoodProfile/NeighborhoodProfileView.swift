@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol NeighborhoodProfileViewDelegate: AnyObject {
-    func neighborhoodProfileViewDidSelectExplore(_ view: NeighborhoodProfileView)
+    func neighborhoodProfileView(_ view: NeighborhoodProfileView, didSelectUrl: URL?)
 }
 
 public final class NeighborhoodProfileView: UIView {
@@ -17,18 +17,16 @@ public final class NeighborhoodProfileView: UIView {
     public weak var delegate: NeighborhoodProfileViewDelegate?
 
     public var title = "" {
-        didSet {
-            headerView.title = title
-        }
+        didSet { headerView.title = title }
     }
 
     public var buttonTitle = "" {
-        didSet {
-            headerView.buttonTitle = buttonTitle
-        }
+        didSet { headerView.buttonTitle = buttonTitle }
     }
 
     // MARK: - Private properties
+
+    private var viewModel = NeighborhoodProfileViewModel(title: "", readMoreLink: nil, cards: [])
 
     private lazy var headerView: NeighborhoodProfileHeaderView = {
         let view = NeighborhoodProfileHeaderView(withAutoLayout: true)
@@ -42,21 +40,25 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.backgroundColor = .ice
         collectionView.contentInset = UIEdgeInsets(top: 0, left: .mediumSpacing, bottom: .mediumSpacing, right: .mediumSpacing)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(NeighborhoodProfileViewCell.self)
+        collectionView.register(NeighborhoodProfileInfoViewCell.self)
+        collectionView.register(NeighborhoodProfileButtonViewCell.self)
         return collectionView
     }()
 
-    private lazy var collectionViewLayout: UICollectionViewLayout = {
+    private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = .zero
         layout.minimumLineSpacing = 10
+        layout.itemSize = CGSize(
+            width: NeighborhoodProfileView.cellWidth,
+            height: NeighborhoodProfileView.minimumCellHeight
+        )
         return layout
     }()
 
-    private lazy var collectionViewHeight = collectionView.heightAnchor.constraint(
+    private lazy var collectionViewHeightConstraint = collectionView.heightAnchor.constraint(
         equalToConstant: NeighborhoodProfileView.minimumCellHeight + .mediumLargeSpacing
     )
 
@@ -74,7 +76,18 @@ public final class NeighborhoodProfileView: UIView {
 
     // MARK: - Public
 
-    public func reloadData() {
+    public func configure(with viewModel: NeighborhoodProfileViewModel) {
+        self.viewModel = viewModel
+
+        let cellWidth = NeighborhoodProfileView.cellWidth
+        let cellHeights = viewModel.cards.map({
+            height(forCard: $0, width: cellWidth)
+        })
+        let maxCellHeight = cellHeights.max() ?? NeighborhoodProfileView.minimumCellHeight
+
+        collectionViewLayout.itemSize = CGSize(width: cellWidth, height: maxCellHeight)
+        collectionViewHeightConstraint.constant = maxCellHeight + .mediumLargeSpacing
+
         collectionView.reloadData()
     }
 
@@ -96,10 +109,19 @@ public final class NeighborhoodProfileView: UIView {
             collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: verticalSpacing),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionViewHeight,
+            collectionViewHeightConstraint,
 
             bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: verticalSpacing),
         ])
+    }
+
+    private func height(forCard card: NeighborhoodProfileViewModel.Card, width: CGFloat) -> CGFloat {
+        switch card {
+        case let .info(content, rows):
+            return NeighborhoodProfileInfoViewCell.height(forContent: content, rows: rows, width: width)
+        case let .button(content):
+            return NeighborhoodProfileButtonViewCell.height(forContent: content, width: width)
+        }
     }
 }
 
@@ -107,23 +129,28 @@ public final class NeighborhoodProfileView: UIView {
 
 extension NeighborhoodProfileView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return viewModel.cards.count
     }
 
     public func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(NeighborhoodProfileViewCell.self, for: indexPath)
-        return cell
-    }
-}
+        let reusableCell: UICollectionViewCell
+        let card = viewModel.cards[indexPath.item]
 
-// MARK: - UICollectionViewDelegateFlowLayout
+        switch card {
+        case let .info(content, rows):
+            let cell = collectionView.dequeue(NeighborhoodProfileInfoViewCell.self, for: indexPath)
+            cell.delegate = self
+            cell.configure(withContent: content, rows: rows)
+            reusableCell = cell
+        case let .button(content):
+            let cell = collectionView.dequeue(NeighborhoodProfileButtonViewCell.self, for: indexPath)
+            cell.delegate = self
+            cell.configure(withContent: content)
+            reusableCell = cell
+        }
 
-extension NeighborhoodProfileView: UICollectionViewDelegateFlowLayout {
-    public func collectionView(_ collectionView: UICollectionView,
-                               layout collectionViewLayout: UICollectionViewLayout,
-                               sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: NeighborhoodProfileView.cellWidth, height: NeighborhoodProfileView.minimumCellHeight)
+        return reusableCell
     }
 }
 
@@ -131,6 +158,22 @@ extension NeighborhoodProfileView: UICollectionViewDelegateFlowLayout {
 
 extension NeighborhoodProfileView: NeighborhoodProfileHeaderViewDelegate {
     func neighborhoodProfileHeaderViewDidSelectButton(_ view: NeighborhoodProfileHeaderView) {
-        delegate?.neighborhoodProfileViewDidSelectExplore(self)
+        delegate?.neighborhoodProfileView(self, didSelectUrl: viewModel.readMoreLink?.url)
+    }
+}
+
+// MARK: - NeighborhoodProfileInfoViewCellDelegate
+
+extension NeighborhoodProfileView: NeighborhoodProfileInfoViewCellDelegate {
+    func neighborhoodProfileInfoViewCellDidSelectLinkButton(_ view: NeighborhoodProfileInfoViewCell) {
+        delegate?.neighborhoodProfileView(self, didSelectUrl: view.linkButtonUrl)
+    }
+}
+
+// MARK: - NeighborhoodProfileButtonViewCellDelegate
+
+extension NeighborhoodProfileView: NeighborhoodProfileButtonViewCellDelegate {
+    func neighborhoodProfileButtonViewCellDidSelectLinkButton(_ view: NeighborhoodProfileButtonViewCell) {
+        delegate?.neighborhoodProfileView(self, didSelectUrl: view.linkButtonUrl)
     }
 }
