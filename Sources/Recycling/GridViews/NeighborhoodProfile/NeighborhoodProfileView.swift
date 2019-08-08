@@ -39,7 +39,7 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .ice
         collectionView.contentInset = UIEdgeInsets(
-            top: 0,
+            top: .mediumSpacing,
             left: .mediumLargeSpacing,
             bottom: .mediumSpacing,
             right: .mediumLargeSpacing
@@ -47,6 +47,7 @@ public final class NeighborhoodProfileView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = false
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(NeighborhoodProfileInfoViewCell.self)
         collectionView.register(NeighborhoodProfileButtonViewCell.self)
         return collectionView
@@ -64,9 +65,24 @@ public final class NeighborhoodProfileView: UIView {
         return layout
     }()
 
-    private lazy var collectionViewHeightConstraint = collectionView.heightAnchor.constraint(
-        equalToConstant: NeighborhoodProfileView.minimumCellHeight + .mediumLargeSpacing
-    )
+    private lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl(withAutoLayout: true)
+        pageControl.pageIndicatorTintColor = UIColor.primaryBlue.withAlphaComponent(0.2)
+        pageControl.currentPageIndicatorTintColor = .primaryBlue
+        return pageControl
+    }()
+
+    private lazy var collectionViewHeightConstraint: NSLayoutConstraint = {
+        return collectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight)
+    }()
+
+    private var collectionViewHeight: CGFloat {
+        return collectionViewLayout.itemSize.height + collectionView.verticalContentInsets
+    }
+
+    private var shouldShowPageControl: Bool {
+        return UIDevice.isIPhone()
+    }
 
     // MARK: - Init
 
@@ -85,15 +101,8 @@ public final class NeighborhoodProfileView: UIView {
     public func configure(with viewModel: NeighborhoodProfileViewModel) {
         self.viewModel = viewModel
 
-        let cellWidth = NeighborhoodProfileView.cellWidth
-        let cellHeights = viewModel.cards.map({
-            height(forCard: $0, width: cellWidth)
-        })
-        let maxCellHeight = cellHeights.max() ?? NeighborhoodProfileView.minimumCellHeight
-
-        collectionViewLayout.itemSize = CGSize(width: cellWidth, height: maxCellHeight)
-        collectionViewHeightConstraint.constant = maxCellHeight + .mediumLargeSpacing
-
+        resetPageControl()
+        resetCollectionViewLayout()
         collectionView.reloadData()
     }
 
@@ -105,20 +114,57 @@ public final class NeighborhoodProfileView: UIView {
         addSubview(headerView)
         addSubview(collectionView)
 
-        let verticalSpacing: CGFloat = 20
+        if shouldShowPageControl {
+            addSubview(pageControl)
+        }
 
-        NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: topAnchor, constant: verticalSpacing),
+        var constraints = [
+            headerView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: verticalSpacing),
+            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .mediumSpacing),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionViewHeightConstraint,
+        ]
 
-            bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: verticalSpacing),
-        ])
+        if shouldShowPageControl {
+            constraints.append(contentsOf: [
+                pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+                pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
+                bottomAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: .mediumSpacing)
+            ])
+        } else {
+            constraints.append(
+                bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .mediumLargeSpacing)
+            )
+        }
+
+        NSLayoutConstraint.activate(constraints)
+    }
+
+    private func resetPageControl() {
+        pageControl.numberOfPages = viewModel.cards.count
+        pageControl.currentPage = 0
+        pageControl.isHidden = !shouldShowPageControl || viewModel.cards.isEmpty
+    }
+
+    private func resetCollectionViewLayout() {
+        collectionViewLayout.itemSize = calculateItemSize()
+        collectionViewHeightConstraint.constant = collectionViewHeight
+    }
+
+    private func calculateItemSize() -> CGSize {
+        let cellWidth = NeighborhoodProfileView.cellWidth
+        let cellHeights = viewModel.cards.map({
+            height(forCard: $0, width: cellWidth)
+        })
+
+        return CGSize(
+            width: cellWidth,
+            height: cellHeights.max() ?? NeighborhoodProfileView.minimumCellHeight
+        )
     }
 
     private func height(forCard card: NeighborhoodProfileViewModel.Card, width: CGFloat) -> CGFloat {
@@ -160,6 +206,12 @@ extension NeighborhoodProfileView: UICollectionViewDataSource {
 
         return reusableCell
     }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension NeighborhoodProfileView: UICollectionViewDelegate {
+
 }
 
 // MARK: - NeighborhoodProfileHeaderViewDelegate
@@ -217,5 +269,13 @@ private final class CollectionViewLayout: UICollectionViewFlowLayout {
         targetContentOffset.x -= halfWidth
 
         return targetContentOffset
+    }
+}
+
+// MARK: - Private extensions
+
+private extension UICollectionView {
+    var verticalContentInsets: CGFloat {
+        return contentInset.top + contentInset.bottom
     }
 }
