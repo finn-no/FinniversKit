@@ -7,7 +7,7 @@ import MapKit
 
 protocol AddressCardViewDelegate: AnyObject {
     func addressCardViewDidSelectCopyButton(_ addressCardView: AddressCardView)
-    func addressCardViewDidSelectGetDirectionsButton(_ addressCardView: AddressCardView)
+    func addressCardViewDidSelectGetDirectionsButton(_ addressCardView: AddressCardView, sender: UIView)
 }
 
 class AddressCardView: UIView {
@@ -106,7 +106,7 @@ extension AddressCardView {
     }
 
     @objc private func getDirectionsAction() {
-        delegate?.addressCardViewDidSelectGetDirectionsButton(self)
+        delegate?.addressCardViewDidSelectGetDirectionsButton(self, sender: getDirectionsButton)
     }
 
     @objc private func copyAction() {

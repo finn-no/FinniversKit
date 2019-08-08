@@ -95,7 +95,7 @@ extension AddressViewDemoView: AddressViewDelegate {
         print("addressViewDidSelectCopyButton")
     }
 
-    public func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView) {
+    public func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView, sender: UIView) {
         print("addressViewDidSelectGetDirectionsButton")
     }
 
