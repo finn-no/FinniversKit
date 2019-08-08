@@ -54,7 +54,7 @@ public final class NeighborhoodProfileView: UIView {
     }()
 
     private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
-        let layout = isPagingEnabled ? CollectionViewLayout() : UICollectionViewFlowLayout()
+        let layout = isPagingEnabled ? PagingCollectionViewLayout() : UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = .zero
         layout.minimumLineSpacing = 10
@@ -246,7 +246,7 @@ extension NeighborhoodProfileView: NeighborhoodProfileButtonViewCellDelegate {
 
 // MARK: - UICollectionViewFlowLayout
 
-private final class CollectionViewLayout: UICollectionViewFlowLayout {
+private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(
         forProposedContentOffset proposedContentOffset: CGPoint,
         withScrollingVelocity velocity: CGPoint
