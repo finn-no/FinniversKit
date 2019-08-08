@@ -32,6 +32,8 @@ class MessageTemplateEditViewController: UIViewController {
         return view
     }()
 
+    private lazy var messageInputBottomConstraint = messageInputTextView.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor)
+
     // MARK: - Init
 
     required init?(coder aDecoder: NSCoder) {
@@ -45,6 +47,12 @@ class MessageTemplateEditViewController: UIViewController {
 
     override func viewDidLoad() {
         setup()
+        registerForNotifications()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        messageInputTextView.becomeFirstResponder()
     }
 
     private func setup() {
@@ -52,7 +60,12 @@ class MessageTemplateEditViewController: UIViewController {
         navigationItem.title = viewModel.title
 
         view.addSubview(messageInputTextView)
-        messageInputTextView.fillInSuperview()
+        NSLayoutConstraint.activate([
+            messageInputTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            messageInputTextView.topAnchor.constraint(equalTo: view.topAnchor),
+            messageInputTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            messageInputBottomConstraint
+        ])
 
         let saveButton = UIBarButtonItem(title: viewModel.saveButtonTitle, style: .done, target: self, action: #selector(saveButtonTapped))
         saveButton.isEnabled = false
@@ -61,6 +74,11 @@ class MessageTemplateEditViewController: UIViewController {
         if let existingTemplate = viewModel.existingTemplate {
             messageInputTextView.text = existingTemplate.text
         }
+    }
+
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 
     // MARK: - Private methods
@@ -72,6 +90,18 @@ class MessageTemplateEditViewController: UIViewController {
             existingTemplate: viewModel.existingTemplate)
 
         navigationController?.popViewController(animated: true)
+    }
+
+    @objc private func handleKeyboardNotification(_ notification: Notification) {
+        guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
+
+        let keyboardVisible = keyboardInfo.action == .willShow
+        let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: messageInputTextView)
+
+        UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
+            self?.messageInputBottomConstraint.constant = -keyboardIntersection
+            self?.view.layoutIfNeeded()
+        }
     }
 }
 
