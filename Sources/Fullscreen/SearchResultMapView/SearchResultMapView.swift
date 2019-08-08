@@ -7,6 +7,7 @@ import MapKit
 public protocol SearchResultMapViewDelegate: AnyObject {
     func searchResultMapView(_ view: SearchResultMapView, didSelect action: MapSettingsView.Action, in mapSettingsView: MapSettingsView)
     func searchResultMapView(_ view: SearchResultMapView, didSelect annotationView: MKAnnotationView)
+    func searchResultMapView(_ view: SearchResultMapView, didDeselect annotationView: MKAnnotationView)
     func searchResultMapView(_ view: SearchResultMapView, didUpdate userLocation: MKUserLocation)
     func searchResultMapViewRegionWillChangeDueToUserInteraction(_ view: SearchResultMapView)
     func searchResultMapViewRegionDidChange(_ view: SearchResultMapView)
@@ -162,6 +163,10 @@ extension SearchResultMapView: MKMapViewDelegate {
 
     public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         delegate?.searchResultMapView(self, didSelect: view)
+    }
+
+    public func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        delegate?.searchResultMapView(self, didDeselect: view)
     }
 
     public func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
