@@ -23,7 +23,7 @@ class FavoriteAdsListTableHeader: UIView {
 
     var searchBarText: String {
         get { return searchBar.text ?? "" }
-        set { searchBar.text = searchBarText }
+        set { searchBar.text = newValue }
     }
 
     var title: String = "" {
