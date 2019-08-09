@@ -49,7 +49,7 @@ public class FavoriteAdsListView: UIView {
 
     public var searchBarText: String {
         get { return tableHeaderView.searchBarText }
-        set { tableHeaderView.searchBarText = searchBarText }
+        set { tableHeaderView.searchBarText = newValue }
     }
 
     public var sortingTitle: String = "" {
