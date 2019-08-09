@@ -77,7 +77,7 @@ public final class NeighborhoodProfileView: UIView {
     }()
 
     private var collectionViewHeight: CGFloat {
-        return collectionViewLayout.itemSize.height + collectionView.verticalContentInsets
+        return collectionViewHeight(forItemHeight: collectionViewLayout.itemSize.height)
     }
 
     private var isPagingEnabled: Bool {
@@ -104,6 +104,29 @@ public final class NeighborhoodProfileView: UIView {
         resetPageControl()
         resetCollectionViewLayout()
         collectionView.reloadData()
+    }
+
+    // MARK: - Overrides
+
+    // This override exists because of how we calculate view sizes in our objectPage.
+    // The objectPage needs to know the size of this view before it's added to the view hierarchy, aka. before
+    // the collectionView itself knows it's own contentSize, so we need to calculate the total height of the view manually.
+    //
+    // All we're given to answer this question is the width attribute in `targetSize`.
+    //
+    // This implementation may not work for any place other than the objectPage, because:
+    //   - it assumes `targetSize` contains an accurate targetWidth for this view.
+    //   - it ignores any potential targetHeight.
+    //   - it ignores both horizontal and vertical fitting priority.
+    public override func systemLayoutSizeFitting(
+        _ targetSize: CGSize,
+        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+        verticalFittingPriority: UILayoutPriority
+    ) -> CGSize {
+        return CGSize(
+            width: targetSize.width,
+            height: collectionViewHeight(forItemHeight: calculateItemSize().height)
+        )
     }
 
     // MARK: - Setup
@@ -163,6 +186,10 @@ public final class NeighborhoodProfileView: UIView {
             width: cellWidth,
             height: cellHeights.max() ?? NeighborhoodProfileView.minimumCellHeight
         )
+    }
+
+    private func collectionViewHeight(forItemHeight itemHeight: CGFloat) -> CGFloat {
+        return itemHeight + collectionView.verticalContentInsets
     }
 
     private func height(forCard card: NeighborhoodProfileViewModel.Card, width: CGFloat) -> CGFloat {
