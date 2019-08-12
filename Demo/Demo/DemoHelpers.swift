@@ -248,16 +248,11 @@ extension Foundation.Notification.Name {
     static let didChangeUserInterfaceStyle = Foundation.Notification.Name("didChangeUserInterfaceStyle")
 }
 
-@objc enum UserInterfaceStyle: Int {
-    case light
-    case dark
-
-    var image: UIImage {
+extension UserInterfaceStyle {
+    public var tableViewIndexColor: UIColor {
         switch self {
-        case .light:
-            return UIImage(named: "emptyMoon")!
-        case .dark:
-            return UIImage(named: "filledMoon")!
+        case .light: return .milk
+        case .dark: return .midnightBackground
         }
     }
 }

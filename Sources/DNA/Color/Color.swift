@@ -224,3 +224,26 @@ extension CGColor {
         return UIColor.defaultCellSelectedBackgroundColor.cgColor
     }
 }
+
+// MARK: - Semantic colors
+
+@objc public enum UserInterfaceStyle: Int {
+    case light
+    case dark
+}
+
+extension UserInterfaceStyle {
+    public var foregroundColor: UIColor {
+        switch self {
+        case .light: return .milk
+        case .dark: return .midnightBackground
+        }
+    }
+
+    public var linkLabelColor: UIColor {
+        switch self {
+        case .light: return .primaryBlue
+        case .dark: return .secondaryBlue
+        }
+    }
+}

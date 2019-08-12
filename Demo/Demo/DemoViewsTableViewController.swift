@@ -74,7 +74,14 @@ class DemoViewsTableViewController: UITableViewController {
 
     private func updateMoonButton() {
         guard #available(iOS 13.0, *) else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped))
+            let image: UIImage
+            switch State.currentUserInterfaceStyle(for: traitCollection) {
+            case .light:
+                image = UIImage(named: "emptyMoon")!
+            case .dark:
+                image = UIImage(named: "filledMoon")!
+            }
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(moonTapped))
             return
         }
     }
@@ -86,19 +93,9 @@ class DemoViewsTableViewController: UITableViewController {
 
     private func updateColors(animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let interfaceBackgroundColor: UIColor
-            let sectionIndexColor: UIColor
-            switch State.currentUserInterfaceStyle(for: self.traitCollection) {
-            case .light:
-                interfaceBackgroundColor = .milk
-                sectionIndexColor = .primaryBlue
-            case .dark:
-                interfaceBackgroundColor = .midnightBackground
-                sectionIndexColor = .secondaryBlue
-            }
-
-            self.tableView.sectionIndexColor = sectionIndexColor
-            self.tableView.backgroundColor = interfaceBackgroundColor
+            let userInterfaceStyle = State.currentUserInterfaceStyle(for: self.traitCollection)
+            self.tableView.sectionIndexColor = userInterfaceStyle.tableViewIndexColor
+            self.tableView.backgroundColor = userInterfaceStyle.foregroundColor
             self.selectorTitleView.updateColors(for: self.traitCollection)
             self.updateMoonButton()
             self.setNeedsStatusBarAppearanceUpdate()
