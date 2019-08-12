@@ -20,7 +20,7 @@ class DemoViewsTableViewController: UITableViewController {
     init() {
         super.init(style: .grouped)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .didChangeUserInterfaceStyle, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange), name: .didChangeUserInterfaceStyle, object: nil)
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("") }
@@ -45,7 +45,17 @@ class DemoViewsTableViewController: UITableViewController {
         }
     }
 
-    @objc private func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) {
+            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                userInterfaceStyleDidChange()
+            }
+        }
+    }
+
+    @objc private func userInterfaceStyleDidChange() {
         updateColors(animated: true)
         evaluateIndexAndValues()
         tableView.reloadData()
@@ -61,11 +71,11 @@ class DemoViewsTableViewController: UITableViewController {
     }
 
     private func updateMoonButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle.image, style: .done, target: self, action: #selector(moonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped))
     }
 
     @objc private func moonTapped() {
-        State.currentUserInterfaceStyle = State.currentUserInterfaceStyle == .light ? .dark : .light
+        State.setCurrentUserInterfaceStyle(userInterfaceStyle: State.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light)
         NotificationCenter.default.post(name: .didChangeUserInterfaceStyle, object: nil)
     }
 
@@ -73,7 +83,7 @@ class DemoViewsTableViewController: UITableViewController {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
             let interfaceBackgroundColor: UIColor
             let sectionIndexColor: UIColor
-            switch State.currentUserInterfaceStyle {
+            switch State.currentUserInterfaceStyle(for: self.traitCollection) {
             case .light:
                 interfaceBackgroundColor = .milk
                 sectionIndexColor = .primaryBlue
@@ -84,7 +94,7 @@ class DemoViewsTableViewController: UITableViewController {
 
             self.tableView.sectionIndexColor = sectionIndexColor
             self.tableView.backgroundColor = interfaceBackgroundColor
-            self.selectorTitleView.updateColors()
+            self.selectorTitleView.updateColors(for: self.traitCollection)
             self.updateMoonButton()
             self.setNeedsStatusBarAppearanceUpdate()
         }
@@ -153,7 +163,7 @@ extension DemoViewsTableViewController {
         cell.backgroundColor = .clear
 
         let cellTextColor: UIColor
-        switch State.currentUserInterfaceStyle {
+        switch State.currentUserInterfaceStyle(for: self.traitCollection) {
         case .light:
             cellTextColor = .licorice
         case .dark:

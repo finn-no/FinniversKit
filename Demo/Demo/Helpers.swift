@@ -71,14 +71,17 @@ struct State {
         }
     }
 
-    static var currentUserInterfaceStyle: UserInterfaceStyle {
-        get {
+    static func setCurrentUserInterfaceStyle(userInterfaceStyle: UserInterfaceStyle) {
+        UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
+        UserDefaults.standard.synchronize()
+    }
+
+    static func currentUserInterfaceStyle(for traitCollection: UITraitCollection) -> UserInterfaceStyle {
+        if #available(iOS 13.0, *) {
+            return traitCollection.userInterfaceStyle == .dark ? .dark : .light
+        } else {
             let styleRawValue = UserDefaults.standard.integer(forKey: currentUserInterfaceStyleKey)
             return UserInterfaceStyle(rawValue: styleRawValue) ?? .light
-        }
-        set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: currentUserInterfaceStyleKey)
-            UserDefaults.standard.synchronize()
         }
     }
 }

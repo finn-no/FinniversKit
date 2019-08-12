@@ -9,15 +9,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private var hairlineView: UIView?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-
+    lazy var navigationController: UINavigationController = {
         let navigationController = UINavigationController(rootViewController: DemoViewsTableViewController())
         navigationController.navigationBar.isTranslucent = false
+        return navigationController
+    }()
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
-        updateColors(animated: false)
+        updateColors(for: navigationController.traitCollection, animated: false)
         NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .didChangeUserInterfaceStyle, object: nil)
 
         return true
@@ -26,16 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 private extension AppDelegate {
     @objc func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
-        updateColors(animated: true)
+        updateColors(for: navigationController.traitCollection, animated: true)
     }
 
-    func updateColors(animated: Bool) {
+    func updateColors(for traitCollection: UITraitCollection, animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
             let separatorColor: UIColor
             let barTintColor: UIColor
             let tintColor: UIColor
             let barStyle: UIBarStyle
-            switch State.currentUserInterfaceStyle {
+            switch State.currentUserInterfaceStyle(for: traitCollection) {
             case .light:
                 separatorColor = .sardine
                 barTintColor = .milk

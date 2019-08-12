@@ -45,7 +45,7 @@ class TweakingOptionsTableViewController: UIViewController {
 
     private func updateColors() {
         let interfaceBackgroundColor: UIColor
-        switch State.currentUserInterfaceStyle {
+        switch State.currentUserInterfaceStyle(for: traitCollection) {
         case .light:
             interfaceBackgroundColor = .milk
         case .dark:
@@ -66,7 +66,7 @@ extension TweakingOptionsTableViewController: UITableViewDataSource {
         let cell = tableView.dequeue(TweakingOptionCell.self, for: indexPath)
         let option = options[indexPath.row]
         let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
-        cell.configure(withOption: option, isSelected: isSelected)
+        cell.configure(withOption: option, isSelected: isSelected, for: traitCollection)
         return cell
     }
 }
