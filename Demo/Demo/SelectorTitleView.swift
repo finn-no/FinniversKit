@@ -48,10 +48,10 @@ class SelectorTitleView: UIView {
         delegate?.selectorTitleViewDidSelectButton(self)
     }
 
-    func updateColors() {
+    func updateColors(for traitCollection: UITraitCollection) {
         let buttonColor: UIColor
         let interfaceBackgroundColor: UIColor
-        switch State.currentUserInterfaceStyle {
+        switch State.currentUserInterfaceStyle(for: traitCollection) {
         case .light:
             buttonColor = .primaryBlue
             interfaceBackgroundColor = .milk
