@@ -25,7 +25,7 @@ class TweakingOptionCell: UITableViewCell {
         setup()
     }
 
-    func configure(withOption option: TweakingOption, isSelected: Bool) {
+    func configure(withOption option: TweakingOption, isSelected: Bool, for traitCollection: UITraitCollection) {
         titleLabel.text = option.title
         descriptionLabel.text = option.description
         backgroundColor = .clear
@@ -35,12 +35,12 @@ class TweakingOptionCell: UITableViewCell {
             descriptionLabelBottomAnchor?.isActive = false
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing).isActive = true
         }
-        updateColors(isSelected: isSelected)
+        updateColors(for: traitCollection, isSelected: isSelected)
     }
 
-    private func updateColors(isSelected: Bool) {
+    private func updateColors(for traitCollection: UITraitCollection, isSelected: Bool) {
         let cellTextColor: UIColor
-        switch State.currentUserInterfaceStyle {
+        switch State.currentUserInterfaceStyle(for: traitCollection) {
         case .light:
             cellTextColor = isSelected ? .primaryBlue : .licorice
         case .dark:

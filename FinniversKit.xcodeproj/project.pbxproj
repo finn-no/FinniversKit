@@ -132,6 +132,7 @@
 		4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F69E1FDB2B110033DBC1 /* RibbonDemoView.swift */; };
 		4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6A51FDB2B110033DBC1 /* TextFieldDemoView.swift */; };
 		4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AA1FDB2B110033DBC1 /* ToastDemoView.swift */; };
+		4451BEC6230163AA00879B7F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4451BEC5230163AA00879B7F /* NavigationController.swift */; };
 		44587016213FA344009187BE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587011213FA344009187BE /* LoginViewModel.swift */; };
 		44587017213FA344009187BE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587012213FA344009187BE /* LoginView.swift */; };
 		44587018213FA344009187BE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587014213FA344009187BE /* RegisterView.swift */; };
@@ -604,6 +605,7 @@
 		4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
 		4447F6C51FDB2B110033DBC1 /* FinniversKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinniversKit.h; sourceTree = "<group>"; };
 		4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversKit.swift; sourceTree = "<group>"; };
+		4451BEC5230163AA00879B7F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		44587011213FA344009187BE /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		44587012213FA344009187BE /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		44587014213FA344009187BE /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -2169,6 +2171,7 @@
 				4412FDCC20A433550037A2FC /* SplitViewController.swift */,
 				4423F226209CB24500B81D68 /* MiniToastView.swift */,
 				44BE10B422E5F3A5002BB2E7 /* SelectorTitleView.swift */,
+				4451BEC5230163AA00879B7F /* NavigationController.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -3544,6 +3547,7 @@
 				081F51BA222930C500026C84 /* TextViewDemoView.swift in Sources */,
 				CF13D6D42292E3030087DA37 /* PhaseListViewDemo.swift in Sources */,
 				9B9F8C1722F07B2100298CDB /* FeedbackDemoView.swift in Sources */,
+				4451BEC6230163AA00879B7F /* NavigationController.swift in Sources */,
 				CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */,
 				AA864B37222D6F3F00BAE95A /* DialogueViewController.swift in Sources */,
 				44AEFC2422E722FC00D3C307 /* BasicCellDemoView.swift in Sources */,
