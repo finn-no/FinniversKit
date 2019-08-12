@@ -200,6 +200,7 @@ public enum RecyclingViews: String, CaseIterable {
     case settingsView
     case userAds
     case adManagementView
+    case neighborhoodProfileView
 
     public static var items: [RecyclingViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -232,11 +233,14 @@ public enum RecyclingViews: String, CaseIterable {
             return DemoViewController<UserAdsListViewDemoView>()
         case .adManagementView:
             return DemoViewController<AdManagementDemoView>()
+        case .neighborhoodProfileView:
+            return DemoViewController<NeighborhoodProfileDemoView>()
         }
     }
 }
 
 public enum FullscreenViews: String, CaseIterable {
+    case searchResultMapView
     case frontPageView
     case popupView
     case emptyView
@@ -267,6 +271,8 @@ public enum FullscreenViews: String, CaseIterable {
 
     public var viewController: UIViewController {
         switch self {
+        case .searchResultMapView:
+            return SearchResultMapViewDemoViewController(usingDoubleTapToDismiss: true)
         case .frontPageView:
             return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:
@@ -282,7 +288,7 @@ public enum FullscreenViews: String, CaseIterable {
         case .registerView:
             return DemoViewController<RegisterViewDemoView>()
         case .loginEntryView:
-            return DemoViewController<LoginEntryViewDemoView>()
+            return LoginEntryViewDemoViewController(constrainToBottomSafeArea: false)
         case .loginView:
             return DemoViewController<LoginViewDemoView>()
         case .consentToggleView:

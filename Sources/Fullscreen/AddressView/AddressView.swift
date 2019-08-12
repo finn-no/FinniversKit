@@ -7,7 +7,7 @@ import MapKit
 
 public protocol AddressViewDelegate: AnyObject {
     func addressViewDidSelectCopyButton(_ addressView: AddressView)
-    func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView)
+    func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView, sender: UIView)
     func addressViewDidSelectCenterMapButton(_ addressView: AddressView)
     func addressView(_ addressView: AddressView, didSelectMapTypeAtIndex index: Int)
 }
@@ -52,6 +52,8 @@ public class AddressView: UIView {
 
     private lazy var mapView: MKMapView = {
         let view = MKMapView(withAutoLayout: true)
+        view.isRotateEnabled = false
+        view.isPitchEnabled = false
         view.delegate = self
         return view
     }()
@@ -204,8 +206,8 @@ extension AddressView: AddressCardViewDelegate {
         delegate?.addressViewDidSelectCopyButton(self)
     }
 
-    func addressCardViewDidSelectGetDirectionsButton(_ addressCardView: AddressCardView) {
-        delegate?.addressViewDidSelectGetDirectionsButton(self)
+    func addressCardViewDidSelectGetDirectionsButton(_ addressCardView: AddressCardView, sender: UIView) {
+        delegate?.addressViewDidSelectGetDirectionsButton(self, sender: sender)
     }
 }
 
