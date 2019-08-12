@@ -52,6 +52,8 @@ public class AddressView: UIView {
 
     private lazy var mapView: MKMapView = {
         let view = MKMapView(withAutoLayout: true)
+        view.isRotateEnabled = false
+        view.isPitchEnabled = false
         view.delegate = self
         return view
     }()
