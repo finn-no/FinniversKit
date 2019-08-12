@@ -17,14 +17,6 @@ public final class NeighborhoodProfileView: UIView {
 
     public weak var delegate: NeighborhoodProfileViewDelegate?
 
-    public var title = "" {
-        didSet { headerView.title = title }
-    }
-
-    public var buttonTitle = "" {
-        didSet { headerView.buttonTitle = buttonTitle }
-    }
-
     // MARK: - Private properties
 
     private var viewModel = NeighborhoodProfileViewModel(title: "", readMoreLink: nil, cards: [])
@@ -101,6 +93,9 @@ public final class NeighborhoodProfileView: UIView {
 
     public func configure(with viewModel: NeighborhoodProfileViewModel) {
         self.viewModel = viewModel
+
+        headerView.title = viewModel.title
+        headerView.buttonTitle = viewModel.readMoreLink?.title ?? ""
 
         resetPageControl()
         resetCollectionViewLayout()
