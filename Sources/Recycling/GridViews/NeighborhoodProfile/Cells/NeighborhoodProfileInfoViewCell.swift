@@ -33,7 +33,6 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
         stackView.spacing = .smallSpacing
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
-        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
 
@@ -82,6 +81,9 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
     // MARK: - Setup
 
     func configure(withContent content: Content, rows: [Row]) {
+        setNeedsLayout()
+        layoutIfNeeded()
+
         titleLabel.text = content.title
 
         linkButton.setTitle(content.link?.title, for: .normal)
@@ -119,12 +121,12 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
 
             linkButtonToStackViewConstraint,
             linkButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            linkButton.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor),
+            linkButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
 
             iconImageView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: NeighborhoodProfileInfoViewCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
-            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+            iconImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 
@@ -151,7 +153,7 @@ extension NeighborhoodProfileInfoViewCell {
 
         // Stack view
         if !rows.isEmpty {
-            height += InfoRowView.height * CGFloat(rows.count) + .largeSpacing
+            height += InfoRowView.height() * CGFloat(rows.count) + .largeSpacing
         }
 
         // Link button
@@ -173,7 +175,11 @@ extension NeighborhoodProfileInfoViewCell {
 // MARK: - Private types
 
 private final class InfoRowView: UIView {
-    static let height: CGFloat = 18
+    private static let labelFont = UIFont.caption
+
+    static func height() -> CGFloat {
+        return "T".height(withConstrainedWidth: .mediumSpacing, font: labelFont)
+    }
 
     private lazy var titleLabel: UILabel = makeLabel()
     private lazy var detailTextLabel = makeLabel()
@@ -204,25 +210,27 @@ private final class InfoRowView: UIView {
         addSubview(iconImageView)
         addSubview(detailTextLabel)
 
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: iconImageView.leadingAnchor, constant: -.smallSpacing),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             detailTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailTextLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
 
             iconImageView.trailingAnchor.constraint(equalTo: detailTextLabel.leadingAnchor, constant: -.smallSpacing),
-            iconImageView.topAnchor.constraint(equalTo: topAnchor),
-            iconImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: InfoRowView.height),
+            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconImageView.widthAnchor.constraint(equalToConstant: 18),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
         ])
     }
 
     private func makeLabel() -> UILabel {
         let label = UILabel(withAutoLayout: true)
-        label.font = .caption
+        label.font = InfoRowView.labelFont
         label.textColor = .stone
         return label
     }
