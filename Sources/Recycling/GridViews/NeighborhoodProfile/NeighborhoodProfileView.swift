@@ -9,6 +9,7 @@ public protocol NeighborhoodProfileViewDelegate: AnyObject {
 }
 
 public final class NeighborhoodProfileView: UIView {
+    private static let headerSpacingTop: CGFloat = 24
     private static let cellWidth: CGFloat = 204
     private static var minimumCellHeight: CGFloat { return cellWidth }
 
@@ -123,9 +124,19 @@ public final class NeighborhoodProfileView: UIView {
         withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
         verticalFittingPriority: UILayoutPriority
     ) -> CGSize {
+        var height = NeighborhoodProfileView.headerSpacingTop
+        height += NeighborhoodProfileHeaderView.height(forTitle: viewModel.title, width: targetSize.width)
+        height += .mediumSpacing + collectionViewHeight(forItemHeight: calculateItemSize().height)
+
+        if isPagingEnabled {
+            height += pageControl.intrinsicContentSize.height + .mediumSpacing
+        } else {
+            height += .mediumLargeSpacing
+        }
+
         return CGSize(
             width: targetSize.width,
-            height: collectionViewHeight(forItemHeight: calculateItemSize().height)
+            height: height
         )
     }
 
@@ -142,7 +153,7 @@ public final class NeighborhoodProfileView: UIView {
         }
 
         var constraints = [
-            headerView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
+            headerView.topAnchor.constraint(equalTo: topAnchor, constant: NeighborhoodProfileView.headerSpacingTop),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
