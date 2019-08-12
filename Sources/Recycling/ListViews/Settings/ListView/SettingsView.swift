@@ -58,6 +58,10 @@ public class SettingsView: UIView {
     public func reloadData() {
         tableView.reloadData()
     }
+
+    public func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
+        return tableView.cellForRow(at: indexPath)
+    }
 }
 
 private extension SettingsView {
