@@ -15,9 +15,11 @@ class NavigationController: UINavigationController {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if #available(iOS 13.0, *) {
+            #if swift(>=5.1)
             if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
                 userInterfaceStyleDidChange()
             }
+            #endif
         }
     }
 
