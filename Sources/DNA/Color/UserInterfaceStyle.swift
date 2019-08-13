@@ -24,8 +24,16 @@ public class Theme {
         }
     }
 
+    /// Needs to be called from main thread on iOS 13
     public static func setCurrentUserInterfaceStyle(_ userInterfaceStyle: UserInterfaceStyle) {
-        UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
-        UserDefaults.standard.synchronize()
+        if #available(iOS 13.0, *) {
+            // Untested, this might change mode live (but not remember the setting)
+            let uiUserInterfaceStyle: UIUserInterfaceStyle = userInterfaceStyle == .dark ? .dark : .light
+            let updatedTraits = UITraitCollection(traitsFrom: [UITraitCollection.current, UITraitCollection(userInterfaceStyle: uiUserInterfaceStyle)])
+            UITraitCollection.current = updatedTraits
+        } else {
+            UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
+            UserDefaults.standard.synchronize()
+        }
     }
 }

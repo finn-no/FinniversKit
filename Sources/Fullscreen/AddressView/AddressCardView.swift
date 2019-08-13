@@ -104,7 +104,7 @@ extension AddressCardView {
 
         backgroundColor = .foregroundColor
         titleLabel.textColor = .primaryLabelColor
-        subtitleLabel.textColor = .secondaryLabelColor
+        subtitleLabel.textColor = .secondaryLabelTextColor
     }
 
     @objc private func getDirectionsAction() {

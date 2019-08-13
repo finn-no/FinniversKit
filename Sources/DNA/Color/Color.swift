@@ -224,10 +224,19 @@ extension CGColor {
     }
 }
 
-// MARK: - Semantic colors
-
+// MARK: - Semantic colors that will support dark and light mode
 @objc extension UIColor {
     public class var foregroundColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor(dynamicProvider: { (traitCollection) -> UIColor in
+                switch traitCollection.userInterfaceStyle {
+                case .dark:
+                    return .charcoal
+                default:
+                    return .milk
+                }
+            })
+        }
         switch Theme.currentStyle {
         case .light: return .milk
         case .dark: return .charcoal
@@ -235,6 +244,16 @@ extension CGColor {
     }
 
     public class var foregroundTintColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor(dynamicProvider: { (traitCollection) -> UIColor in
+                switch traitCollection.userInterfaceStyle {
+                case .dark:
+                    return .secondaryBlue
+                default:
+                    return .primaryBlue
+                }
+            })
+        }
         switch Theme.currentStyle {
         case .light: return .primaryBlue
         case .dark: return .secondaryBlue
@@ -242,13 +261,33 @@ extension CGColor {
     }
 
     public class var primaryLabelColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor(dynamicProvider: { (traitCollection) -> UIColor in
+                switch traitCollection.userInterfaceStyle {
+                case .dark:
+                    return .milk
+                default:
+                    return .licorice
+                }
+            })
+        }
         switch Theme.currentStyle {
         case .light: return .licorice
         case .dark: return .milk
         }
     }
 
-    public class var secondaryLabelColor: UIColor {
+    public class var secondaryLabelTextColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor(dynamicProvider: { (traitCollection) -> UIColor in
+                switch traitCollection.userInterfaceStyle {
+                case .dark:
+                    return .milk
+                default:
+                    return .licorice
+                }
+            })
+        }
         switch Theme.currentStyle {
         case .light: return .licorice
         case .dark: return .milk
