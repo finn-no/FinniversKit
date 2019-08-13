@@ -251,8 +251,8 @@ extension Foundation.Notification.Name {
 extension UserInterfaceStyle {
     public var tableViewIndexColor: UIColor {
         switch self {
-        case .light: return .milk
-        case .dark: return .charcoal
+        case .light: return .primaryBlue
+        case .dark: return .secondaryBlue
         }
     }
 
