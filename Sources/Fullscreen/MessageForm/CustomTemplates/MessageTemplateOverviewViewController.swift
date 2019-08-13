@@ -158,15 +158,11 @@ extension MessageTemplateOverviewViewController: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        guard section == 1 else {
+        if section == 0 && templateStore.customTemplates.count == 0 {
+            return viewModel.noCustomTemplatesText
+        } else {
             return nil
         }
-
-        guard templateStore.customTemplates.count == 0 else {
-            return nil
-        }
-
-        return viewModel.noCustomTemplatesText
     }
 }
 

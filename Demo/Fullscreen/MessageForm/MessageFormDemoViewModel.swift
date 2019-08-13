@@ -37,5 +37,5 @@ class MessageFormDemoViewModel: MessageFormViewModel {
     var customTemplateEditText = "Endre meldingsmal"
     var customTemplateNewText = "Ny meldingsmal"
     var newCustomTemplatePromptText = "Legg til meldingsmal"
-    var noCustomTemplatesText = "Du har ingen meldingsmaler"
+    var noCustomTemplatesText = "Har du en melding du sender ofte? Legg den til her!"
 }
