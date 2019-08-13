@@ -13,40 +13,25 @@ public class ButtonDemoView: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    var normalButton: Button!
-    var smallNormalButton: Button!
-
-    var callToActionButton: Button!
-    var destructiveButton: Button!
-    var flatButton: Button!
-    var linkButton: Button!
-
-    var button1: Button!
-    var button2: Button!
-
-    var disabledNormalButton: Button!
-    var disabledCallToActionButton: Button!
-    var disabledDestructiveButton: Button!
-    var disabledFlatButton: Button!
-    var disabledLinkButton: Button!
-
     private func setup() {
-        normalButton = Button(style: .default)
-        smallNormalButton = Button(style: .default, size: .small)
+        backgroundColor = .foregroundColor
 
-        callToActionButton = Button(style: .callToAction)
-        destructiveButton = Button(style: .destructive)
-        flatButton = Button(style: .flat)
-        linkButton = Button(style: .link)
+        let normalButton = Button(style: .default)
+        let smallNormalButton = Button(style: .default, size: .small)
 
-        button1 = Button(style: .callToAction)
-        button2 = Button(style: .default)
+        let callToActionButton = Button(style: .callToAction)
+        let destructiveButton = Button(style: .destructive)
+        let flatButton = Button(style: .flat)
+        let linkButton = Button(style: .link)
 
-        disabledNormalButton = Button(style: .default)
-        disabledCallToActionButton = Button(style: .callToAction)
-        disabledDestructiveButton = Button(style: .destructive)
-        disabledFlatButton = Button(style: .flat)
-        disabledLinkButton = Button(style: .link)
+        let button1 = Button(style: .callToAction)
+        let button2 = Button(style: .default)
+
+        let disabledNormalButton = Button(style: .default)
+        let disabledCallToActionButton = Button(style: .callToAction)
+        let disabledDestructiveButton = Button(style: .destructive)
+        let disabledFlatButton = Button(style: .flat)
+        let disabledLinkButton = Button(style: .link)
 
         normalButton.setTitle("Default button", for: .normal)
         smallNormalButton.setTitle("Small default button", for: .normal)
@@ -154,8 +139,6 @@ public class ButtonDemoView: UIView {
 
             disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .mediumSpacing),
             disabledLinkButton.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-
-        backgroundColor = .foregroundColor
+            ])
     }
 }
