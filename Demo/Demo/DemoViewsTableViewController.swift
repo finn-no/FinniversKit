@@ -88,6 +88,7 @@ class DemoViewsTableViewController: UITableViewController {
         }
     }
 
+    // Moon is used to trigger dark mode in iOS 12 and bellow, in iOS 13 the moon is hidden.
     @objc private func moonTapped() {
         let newUserInterfaceStyle: UserInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection) == .light ? .dark : .light
         UserInterfaceStyle.setCurrentUserInterfaceStyle(newUserInterfaceStyle)
