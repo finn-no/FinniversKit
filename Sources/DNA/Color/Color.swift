@@ -223,11 +223,6 @@ extension CGColor {
 
 // MARK: - Semantic colors
 
-@objc public enum UserInterfaceStyle: Int {
-    case light
-    case dark
-}
-
 extension UserInterfaceStyle {
     public var foregroundColor: UIColor {
         switch self {

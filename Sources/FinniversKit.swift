@@ -11,6 +11,8 @@ import Foundation
     }
 
     @objc public static var isDynamicTypeEnabled: Bool = true
+
+    @objc public static var isDarkModeSupported: Bool = true
 }
 
 @objc public extension Bundle {

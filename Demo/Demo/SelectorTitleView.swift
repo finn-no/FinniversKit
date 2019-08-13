@@ -49,7 +49,7 @@ class SelectorTitleView: UIView {
     }
 
     func updateColors(for traitCollection: UITraitCollection) {
-        let userInterfaceStyle = State.currentUserInterfaceStyle(for: traitCollection)
+        let userInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection)
         let buttonColor = userInterfaceStyle.linkLabelColor
         button.setTitleColor(buttonColor, for: .normal)
         button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)

@@ -15,7 +15,6 @@ struct State {
     private static let lastSelectedIndexPathSectionKey = "lastSelectedIndexPathSectionKey"
     private static let lastCornerForTweakingButtonKey = "lastCornerForTweakingButtonKey"
     private static let lastSelectedSectionKey = "lastSelectedSectionKey"
-    private static let currentUserInterfaceStyleKey = "currentUserInterfaceStyleKey"
 
     static var lastSelectedIndexPath: IndexPath? {
         get {
@@ -68,20 +67,6 @@ struct State {
         set {
             UserDefaults.standard.set(newValue, forKey: lastSelectedSectionKey)
             UserDefaults.standard.synchronize()
-        }
-    }
-
-    static func setCurrentUserInterfaceStyle(userInterfaceStyle: UserInterfaceStyle) {
-        UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
-        UserDefaults.standard.synchronize()
-    }
-
-    static func currentUserInterfaceStyle(for traitCollection: UITraitCollection) -> UserInterfaceStyle {
-        if #available(iOS 13.0, *) {
-            return traitCollection.userInterfaceStyle == .dark ? .dark : .light
-        } else {
-            let styleRawValue = UserDefaults.standard.integer(forKey: currentUserInterfaceStyleKey)
-            return UserInterfaceStyle(rawValue: styleRawValue) ?? .light
         }
     }
 }

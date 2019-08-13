@@ -123,7 +123,7 @@ public class DemoViewController<View: UIView>: UIViewController {
 
     @objc private func userInterfaceStyleDidChange() {
         if let view = playgroundView as? UserInterfaceUpdatable {
-            let userInterfaceStyle = State.currentUserInterfaceStyle(for: traitCollection)
+            let userInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection)
             view.updateColors(userInterfaceStyle: userInterfaceStyle, animated: false)
         }
     }

@@ -75,7 +75,7 @@ class DemoViewsTableViewController: UITableViewController {
     private func updateMoonButton() {
         guard #available(iOS 13.0, *) else {
             let image: UIImage
-            switch State.currentUserInterfaceStyle(for: traitCollection) {
+            switch UserInterfaceStyle(traitCollection: traitCollection) {
             case .light:
                 image = UIImage(named: "emptyMoon")!
             case .dark:
@@ -87,13 +87,14 @@ class DemoViewsTableViewController: UITableViewController {
     }
 
     @objc private func moonTapped() {
-        State.setCurrentUserInterfaceStyle(userInterfaceStyle: State.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light)
+        let newUserInterfaceStyle: UserInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection) == .light ? .dark : .light
+        UserInterfaceStyle.setCurrentUserInterfaceStyle(newUserInterfaceStyle)
         NotificationCenter.default.post(name: .didChangeUserInterfaceStyle, object: nil)
     }
 
     private func updateColors(animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let userInterfaceStyle = State.currentUserInterfaceStyle(for: self.traitCollection)
+            let userInterfaceStyle = UserInterfaceStyle(traitCollection: self.traitCollection)
             self.tableView.sectionIndexColor = userInterfaceStyle.tableViewIndexColor
             self.tableView.backgroundColor = userInterfaceStyle.foregroundColor
             self.selectorTitleView.updateColors(for: self.traitCollection)
@@ -165,7 +166,7 @@ extension DemoViewsTableViewController {
         cell.backgroundColor = .clear
 
         let cellTextColor: UIColor
-        switch State.currentUserInterfaceStyle(for: self.traitCollection) {
+        switch UserInterfaceStyle(traitCollection: traitCollection) {
         case .light:
             cellTextColor = .licorice
         case .dark:

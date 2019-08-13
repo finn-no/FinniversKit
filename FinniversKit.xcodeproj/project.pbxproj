@@ -142,6 +142,7 @@
 		44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587020213FA361009187BE /* LoginViewDefaultData.swift */; };
 		44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587022213FA361009187BE /* LoginViewDemoView.swift */; };
 		447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */; };
+		4481B6262302DDF2006A0A87 /* UserInterfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4481B6252302DDF2006A0A87 /* UserInterfaceStyle.swift */; };
 		44849D2B22E7312100BB4454 /* SelectorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BE10B422E5F3A5002BB2E7 /* SelectorTitleView.swift */; };
 		44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */; };
 		44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */; };
@@ -617,6 +618,7 @@
 		44587020213FA361009187BE /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
 		44587022213FA361009187BE /* LoginViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDemoView.swift; sourceTree = "<group>"; };
 		447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageViewDemoView.swift; sourceTree = "<group>"; };
+		4481B6252302DDF2006A0A87 /* UserInterfaceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStyle.swift; sourceTree = "<group>"; };
 		44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
@@ -1191,6 +1193,7 @@
 			isa = PBXGroup;
 			children = (
 				4408A69E2027AC41008C0BD9 /* Color.swift */,
+				4481B6252302DDF2006A0A87 /* UserInterfaceStyle.swift */,
 			);
 			path = Color;
 			sourceTree = "<group>";
@@ -3732,6 +3735,7 @@
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */,
+				4481B6262302DDF2006A0A87 /* UserInterfaceStyle.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */,
 				45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */,

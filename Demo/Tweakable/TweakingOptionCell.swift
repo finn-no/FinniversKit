@@ -40,7 +40,7 @@ class TweakingOptionCell: UITableViewCell {
 
     private func updateColors(for traitCollection: UITraitCollection, isSelected: Bool) {
         let cellTextColor: UIColor
-        switch State.currentUserInterfaceStyle(for: traitCollection) {
+        switch UserInterfaceStyle(traitCollection: traitCollection) {
         case .light:
             cellTextColor = isSelected ? .primaryBlue : .licorice
         case .dark:

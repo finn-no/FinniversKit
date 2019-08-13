@@ -1,4 +1,4 @@
-import UIKit
+import FinniversKit
 
 class TabBarController: UITabBarController {
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class TabBarController: UITabBarController {
 
     func updateColors(for traitCollection: UITraitCollection, animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let style = State.currentUserInterfaceStyle(for: traitCollection)
+            let style = UserInterfaceStyle(traitCollection: traitCollection)
             self.tabBar.tintColor = style.foregroundColor
             self.tabBar.barTintColor = style.foregroundColor
         }

@@ -1,4 +1,4 @@
-import UIKit
+import FinniversKit
 
 class NavigationController: UINavigationController {
     private var hairlineView: UIView?
@@ -29,7 +29,7 @@ class NavigationController: UINavigationController {
 
     func updateColors(for traitCollection: UITraitCollection, animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let userInterfaceStyle = State.currentUserInterfaceStyle(for: traitCollection)
+            let userInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection)
             let separatorColor = userInterfaceStyle.navigationHairlineColor
             let barTintColor = userInterfaceStyle.barTintColor
             let tintColor = userInterfaceStyle.navigationItemTintColor

@@ -44,7 +44,7 @@ class TweakingOptionsTableViewController: UIViewController {
     }
 
     private func updateColors() {
-        let userInterfaceStyle = State.currentUserInterfaceStyle(for: traitCollection)
+        let userInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection)
         view.backgroundColor = userInterfaceStyle.foregroundColor
         tableView.backgroundColor = userInterfaceStyle.foregroundColor
     }
