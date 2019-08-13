@@ -11,7 +11,11 @@ class MessageFormDemoViewModel: MessageFormViewModel {
 
     let titleText = "Send melding"
     let sendButtonText = "Send"
+    var editButtonText = "Rediger"
+    var doneButtonText = "Ferdig"
+    var saveButtonText = "Lagre"
     let cancelButtonText = "Avbryt"
+    var deleteActionText = "Slett"
     let transparencyText = "FINN.no forbeholder seg retten til å kontrollere meldinger og stoppe useriøs e-post."
     let defaultMessageTemplates = [
         MessageFormTemplate(text: "Hei! Jeg er interessert, når passer det at jeg henter den?", id: "1"),
@@ -28,4 +32,10 @@ class MessageFormDemoViewModel: MessageFormViewModel {
     let cancelFormAlertMessage = "Vil du forkaste meldingen du har skrevet?"
     let cancelFormAlertActionText = "Forkast"
     let cancelFormAlertCancelText = "Avbryt"
+
+    var customTemplatesTitleText = "Dine meldingsmaler"
+    var customTemplateEditText = "Endre meldingsmal"
+    var customTemplateNewText = "Ny meldingsmal"
+    var newCustomTemplatePromptText = "Legg til meldingsmal"
+    var noCustomTemplatesText = "Du har ingen meldingsmaler"
 }

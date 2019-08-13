@@ -5,6 +5,7 @@ class MessageTemplateOverviewViewController: UIViewController {
     // MARK: - Private properties
 
     private let templateStore: MessageTemplateStoreProtocol
+    private let viewModel: MessageFormViewModel
 
     // MARK: - UI properties
 
@@ -25,20 +26,21 @@ class MessageTemplateOverviewViewController: UIViewController {
         fatalError()
     }
 
-    public required init(templateStore: MessageTemplateStoreProtocol) {
+    public required init(templateStore: MessageTemplateStoreProtocol, viewModel: MessageFormViewModel) {
         self.templateStore = templateStore
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Dine meldingsmaler"
+        title = viewModel.customTemplatesTitleText
 
         view.backgroundColor = .milk
         view.addSubview(tableView)
         tableView.fillInSuperview()
 
-        let editItem = UIBarButtonItem(title: "Rediger", style: .plain, target: self, action: #selector(editButtonTapped))
+        let editItem = UIBarButtonItem(title: viewModel.editButtonText, style: .plain, target: self, action: #selector(editButtonTapped))
         navigationItem.rightBarButtonItem = editItem
     }
 
@@ -67,9 +69,9 @@ class MessageTemplateOverviewViewController: UIViewController {
         tableView.setEditing(editing, animated: true)
 
         if editing {
-            navigationItem.rightBarButtonItem?.title = "Ferdig"
+            navigationItem.rightBarButtonItem?.title = viewModel.doneButtonText
         } else {
-            navigationItem.rightBarButtonItem?.title = "Rediger"
+            navigationItem.rightBarButtonItem?.title = viewModel.editButtonText
         }
     }
 
@@ -97,19 +99,19 @@ class MessageTemplateOverviewViewController: UIViewController {
     private func editTemplate(at indexPath: IndexPath) {
         guard let template = templateStore.customTemplates[safe: indexPath.row] else { return }
 
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Avbryt", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: viewModel.cancelButtonText, style: .plain, target: nil, action: nil)
 
-        let viewModel = TemplateEditViewModel(title: "Endre mal", saveButtonTitle: "Lagre", helpText: nil, existingTemplate: template)
-        let vc = MessageTemplateEditViewController(viewModel: viewModel)
+        let editModel = TemplateEditViewModel(title: viewModel.customTemplateEditText, saveButtonTitle: viewModel.saveButtonText, helpText: nil, existingTemplate: template)
+        let vc = MessageTemplateEditViewController(viewModel: editModel)
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
 
     private func addNewTemplate() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Avbryt", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: viewModel.cancelButtonText, style: .plain, target: nil, action: nil)
 
-        let viewModel = TemplateEditViewModel(title: "Ny mal", saveButtonTitle: "Lagre", helpText: nil, existingTemplate: nil)
-        let vc = MessageTemplateEditViewController(viewModel: viewModel)
+        let editModel = TemplateEditViewModel(title: viewModel.customTemplateNewText, saveButtonTitle: viewModel.saveButtonText, helpText: nil, existingTemplate: nil)
+        let vc = MessageTemplateEditViewController(viewModel: editModel)
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -135,7 +137,7 @@ extension MessageTemplateOverviewViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeue(AddNewTemplateCell.self, for: indexPath)
-            cell.label.text = "Legg til ny mal"
+            cell.label.text = viewModel.newCustomTemplatePromptText
             return cell
         case 1:
             guard let template = templateStore.customTemplates[safe: indexPath.row] else {
@@ -163,7 +165,7 @@ extension MessageTemplateOverviewViewController: UITableViewDataSource {
             return nil
         }
 
-        return "Du har ingen meldingsmaler."
+        return viewModel.noCustomTemplatesText
     }
 }
 
@@ -173,7 +175,7 @@ extension MessageTemplateOverviewViewController: UITableViewDelegate {
             return []
         }
 
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Slett", handler: { [weak self] _, selectedIndex in
+        let deleteAction = UITableViewRowAction(style: .destructive, title: viewModel.deleteActionText, handler: { [weak self] _, selectedIndex in
             self?.deleteTemplate(at: selectedIndex)
         })
 

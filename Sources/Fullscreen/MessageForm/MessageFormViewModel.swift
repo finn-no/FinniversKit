@@ -21,7 +21,11 @@ public protocol MessageFormViewModel: AnyObject {
 
     var titleText: String { get }
     var sendButtonText: String { get }
+    var editButtonText: String { get }
+    var doneButtonText: String { get }
+    var saveButtonText: String { get }
     var cancelButtonText: String { get }
+    var deleteActionText: String { get }
     var transparencyText: String { get }
     var defaultMessageTemplates: [MessageFormTemplate] { get }
 
@@ -34,4 +38,10 @@ public protocol MessageFormViewModel: AnyObject {
     var cancelFormAlertMessage: String { get }
     var cancelFormAlertActionText: String { get }
     var cancelFormAlertCancelText: String { get }
+
+    var customTemplatesTitleText: String { get }
+    var customTemplateEditText: String { get }
+    var customTemplateNewText: String { get }
+    var newCustomTemplatePromptText: String { get }
+    var noCustomTemplatesText: String { get }
 }
