@@ -105,9 +105,22 @@ public final class SearchResultMapView: UIView {
         mapView.removeAnnotations(mapView.annotations)
     }
 
-    public func focusAnnotations() {
+    /// Set the visible region so that the map focuses all annotations of the type SearchResultMapViewAnnotation
+    ///
+    /// - Parameter animated: optionaly present animated
+    public func focusVisibleAnnotations(_ animated: Bool) {
         let annotationsToShow = mapView.annotations.filter { $0 is SearchResultMapViewAnnotation }
-        mapView.showAnnotations(annotationsToShow, animated: true)
+        mapView.showAnnotations(annotationsToShow, animated: animated)
+    }
+
+    /// Set the visible region to a MKMapRect that fits the passed region
+    ///
+    /// - Parameters:
+    ///   - mapRect: MKMapRect to fit and focus
+    ///   - animated: optinaly present animated
+    public func focusMapRect(_ mapRect: MKMapRect, animated: Bool) {
+        let fittedMapRect = mapView.mapRectThatFits(mapRect)
+        mapView.setVisibleMapRect(fittedMapRect, animated: animated)
     }
 
     // MARK: - Setup
