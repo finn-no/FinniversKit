@@ -105,10 +105,10 @@ final class NeighborhoodProfileInfoViewCell: NeighborhoodProfileViewCell {
     }
 
     private func setup() {
-        addSubview(titleLabel)
-        addSubview(stackView)
-        addSubview(linkButton)
-        addSubview(iconImageView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(stackView)
+        contentView.addSubview(linkButton)
+        contentView.addSubview(iconImageView)
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
