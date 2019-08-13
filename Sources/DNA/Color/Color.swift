@@ -238,14 +238,6 @@ extension UserInterfaceStyle {
         }
     }
 
-    public var linkLabelColor: UIColor {
-        return foregroundTintColor
-    }
-
-    public var navigationItemTintColor: UIColor {
-        return foregroundTintColor
-    }
-
     public var primaryLabelColor: UIColor {
         switch self {
         case .light: return .licorice

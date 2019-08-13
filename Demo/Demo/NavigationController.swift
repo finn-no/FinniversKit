@@ -32,7 +32,7 @@ class NavigationController: UINavigationController {
             let userInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection)
             let separatorColor = userInterfaceStyle.navigationHairlineColor
             let barTintColor = userInterfaceStyle.barTintColor
-            let tintColor = userInterfaceStyle.navigationItemTintColor
+            let tintColor = userInterfaceStyle.foregroundTintColor
             let barStyle: UIBarStyle
             switch userInterfaceStyle {
             case .light:
