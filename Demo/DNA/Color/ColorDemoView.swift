@@ -39,7 +39,10 @@ public class ColorDemoView: UIView {
             ColorItem(color: .banana, title: "banana"),
             ColorItem(color: .cherry, title: "cherry"),
             ColorItem(color: .watermelon, title: "watermelon"),
-            ColorItem(color: .pea, title: "pea")
+            ColorItem(color: .pea, title: "pea"),
+            ColorItem(color: .marble, title: "marble"),
+            ColorItem(color: .charcoal, title: "charcoal"),
+            ColorItem(color: .blueberry, title: "blueberry"),
         ]
     }()
 
