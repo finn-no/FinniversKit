@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-public class ButtonDemoView: UIView {
+public class ButtonDemoView: UIView, UserInterfaceUpdatable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -13,23 +13,40 @@ public class ButtonDemoView: UIView {
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
+    var normalButton: Button!
+    var smallNormalButton: Button!
+
+    var callToActionButton: Button!
+    var destructiveButton: Button!
+    var flatButton: Button!
+    var linkButton: Button!
+
+    var button1: Button!
+    var button2: Button!
+
+    var disabledNormalButton: Button!
+    var disabledCallToActionButton: Button!
+    var disabledDestructiveButton: Button!
+    var disabledFlatButton: Button!
+    var disabledLinkButton: Button!
+
     private func setup() {
-        let normalButton = Button(style: .default)
-        let smallNormalButton = Button(style: .default, size: .small)
+        normalButton = Button(style: .default)
+        smallNormalButton = Button(style: .default, size: .small)
 
-        let callToActionButton = Button(style: .callToAction)
-        let destructiveButton = Button(style: .destructive)
-        let flatButton = Button(style: .flat)
-        let linkButton = Button(style: .link)
+        callToActionButton = Button(style: .callToAction)
+        destructiveButton = Button(style: .destructive)
+        flatButton = Button(style: .flat)
+        linkButton = Button(style: .link)
 
-        let button1 = Button(style: .callToAction)
-        let button2 = Button(style: .default)
+        button1 = Button(style: .callToAction)
+        button2 = Button(style: .default)
 
-        let disabledNormalButton = Button(style: .default)
-        let disabledCallToActionButton = Button(style: .callToAction)
-        let disabledDestructiveButton = Button(style: .destructive)
-        let disabledFlatButton = Button(style: .flat)
-        let disabledLinkButton = Button(style: .link)
+        disabledNormalButton = Button(style: .default)
+        disabledCallToActionButton = Button(style: .callToAction)
+        disabledDestructiveButton = Button(style: .destructive)
+        disabledFlatButton = Button(style: .flat)
+        disabledLinkButton = Button(style: .link)
 
         normalButton.setTitle("Default button", for: .normal)
         smallNormalButton.setTitle("Small default button", for: .normal)
@@ -138,5 +155,26 @@ public class ButtonDemoView: UIView {
             disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .mediumSpacing),
             disabledLinkButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
+    }
+
+    public func updateColors(userInterfaceStyle: UserInterfaceStyle, animated: Bool) {
+        backgroundColor = userInterfaceStyle.foregroundColor
+
+        normalButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        smallNormalButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+
+        callToActionButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        destructiveButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        flatButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        linkButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+
+        button1.updateColors(userInterfaceStyle: userInterfaceStyle)
+        button2.updateColors(userInterfaceStyle: userInterfaceStyle)
+
+        disabledNormalButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        disabledCallToActionButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        disabledDestructiveButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        disabledFlatButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        disabledLinkButton.updateColors(userInterfaceStyle: userInterfaceStyle)
     }
 }

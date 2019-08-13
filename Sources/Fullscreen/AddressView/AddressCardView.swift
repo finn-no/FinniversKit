@@ -64,6 +64,8 @@ class AddressCardView: UIView {
         backgroundColor = userInterfaceStyle.foregroundColor
         titleLabel.textColor = userInterfaceStyle.primaryLabelColor
         subtitleLabel.textColor = userInterfaceStyle.secondaryLabelColor
+        copyButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        getDirectionsButton.updateColors(userInterfaceStyle: userInterfaceStyle)
     }
 }
 

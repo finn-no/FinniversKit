@@ -10,6 +10,7 @@ public class Button: UIButton {
     private let cornerRadius: CGFloat = 8.0
     private var titleHeight: CGFloat?
     private var titleWidth: CGFloat?
+    var userInterfaceStyle: UserInterfaceStyle?
 
     // MARK: - External properties
 
@@ -78,15 +79,15 @@ public class Button: UIButton {
 
     public override var isHighlighted: Bool {
         didSet {
-            backgroundColor = style.backgroundColor(forState: state)
-            layer.borderColor = style.borderColor(forState: state)
+            backgroundColor = style.backgroundColor(forState: state, userInterfaceStyle: userInterfaceStyle)
+            layer.borderColor = style.borderColor(forState: state, userInterfaceStyle: userInterfaceStyle)
         }
     }
 
     public override var isEnabled: Bool {
         didSet {
-            backgroundColor = style.backgroundColor(forState: state)
-            layer.borderColor = style.borderColor(forState: state)
+            backgroundColor = style.backgroundColor(forState: state, userInterfaceStyle: userInterfaceStyle)
+            layer.borderColor = style.borderColor(forState: state, userInterfaceStyle: userInterfaceStyle)
         }
     }
 
@@ -121,5 +122,17 @@ public class Button: UIButton {
         super.setAttributedTitle(attributedTitle, for: .normal)
         super.setAttributedTitle(underlinedAttributedTitle, for: .highlighted)
         super.setAttributedTitle(disabledAttributedTitle, for: .disabled)
+    }
+
+    public func updateColors(userInterfaceStyle: UserInterfaceStyle) {
+        self.userInterfaceStyle = userInterfaceStyle
+
+        switch style {
+        case .default:
+            backgroundColor = style.bodyColor(userInterfaceStyle: userInterfaceStyle)
+
+            super.setTitleColor(style.textColor(userInterfaceStyle: userInterfaceStyle), for: .normal)
+        default: break
+        }
     }
 }
