@@ -5,11 +5,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         tabBar.isTranslucent = false
-        updateColors(for: traitCollection)
-    }
-
-    func updateColors(for traitCollection: UITraitCollection) {
-        self.tabBar.tintColor = .foregroundColor
-        self.tabBar.barTintColor = .foregroundColor
+        tabBar.tintColor = .foregroundColor
+        tabBar.barTintColor = .foregroundColor
     }
 }
