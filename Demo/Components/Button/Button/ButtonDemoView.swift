@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-public class ButtonDemoView: UIView, UserInterfaceUpdatable {
+public class ButtonDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -155,26 +155,7 @@ public class ButtonDemoView: UIView, UserInterfaceUpdatable {
             disabledLinkButton.topAnchor.constraint(equalTo: disabledFlatButton.bottomAnchor, constant: .mediumSpacing),
             disabledLinkButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
-    }
 
-    public func updateColors() {
         backgroundColor = .foregroundColor
-
-        normalButton.updateColors()
-        smallNormalButton.updateColors()
-
-        callToActionButton.updateColors()
-        destructiveButton.updateColors()
-        flatButton.updateColors()
-        linkButton.updateColors()
-
-        button1.updateColors()
-        button2.updateColors()
-
-        disabledNormalButton.updateColors()
-        disabledCallToActionButton.updateColors()
-        disabledDestructiveButton.updateColors()
-        disabledFlatButton.updateColors()
-        disabledLinkButton.updateColors()
     }
 }

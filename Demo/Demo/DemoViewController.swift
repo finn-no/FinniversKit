@@ -68,8 +68,6 @@ public class DemoViewController<View: UIView>: UIViewController {
             playgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
-        userInterfaceStyleDidChange()
-
         if hasDismissButton {
             let button = Button(style: .callToAction)
             button.setTitle("Dismiss", for: .normal)
@@ -105,12 +103,6 @@ public class DemoViewController<View: UIView>: UIViewController {
         if State.shouldShowDismissInstructions {
             miniToastView.show(in: view)
             State.shouldShowDismissInstructions = false
-        }
-    }
-
-    @objc private func userInterfaceStyleDidChange() {
-        if let view = playgroundView as? UserInterfaceUpdatable {
-            view.updateColors()
         }
     }
 }

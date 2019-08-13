@@ -49,6 +49,13 @@ public class Button: UIButton {
         super.setTitleColor(style.textColor, for: .normal)
         super.setTitleColor(style.highlightedTextColor, for: .highlighted)
         super.setTitleColor(style.disabledTextColor, for: .disabled)
+
+        switch style {
+        case .default:
+            backgroundColor = style.bodyColor
+            super.setTitleColor(style.textColor, for: .normal)
+        default: break
+        }
     }
 
     // MARK: - Superclass Overrides
@@ -121,14 +128,5 @@ public class Button: UIButton {
         super.setAttributedTitle(attributedTitle, for: .normal)
         super.setAttributedTitle(underlinedAttributedTitle, for: .highlighted)
         super.setAttributedTitle(disabledAttributedTitle, for: .disabled)
-    }
-
-    public func updateColors() {
-        switch style {
-        case .default:
-            backgroundColor = style.bodyColor
-            super.setTitleColor(style.textColor, for: .normal)
-        default: break
-        }
     }
 }

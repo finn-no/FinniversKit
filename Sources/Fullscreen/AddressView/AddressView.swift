@@ -12,7 +12,7 @@ public protocol AddressViewDelegate: AnyObject {
     func addressView(_ addressView: AddressView, didSelectMapTypeAtIndex index: Int)
 }
 
-public class AddressView: UIView, UserInterfaceUpdatable {
+public class AddressView: UIView {
     private lazy var mapTypeSegmentControl: UISegmentedControl = {
         let control = UISegmentedControl(withAutoLayout: true)
         control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
@@ -102,14 +102,6 @@ public class AddressView: UIView, UserInterfaceUpdatable {
         }
     }
 
-    public func updateColors() {
-        self.segmentContainer.backgroundColor = .foregroundColor
-        self.mapTypeSegmentControl.tintColor = .foregroundTintColor
-        self.addressCardView.updateColors()
-        self.centerMapButton.tintColor = .foregroundTintColor
-        self.centerMapButton.backgroundColor = .foregroundColor
-    }
-
     public func centerMap(location: CLLocationCoordinate2D, regionDistance: Double, animated: Bool) {
         let meters: CLLocationDistance = regionDistance
         let region = MKCoordinateRegion(center: location, latitudinalMeters: meters, longitudinalMeters: meters)
@@ -194,6 +186,11 @@ private extension AddressView {
                 addressCardView.bottomAnchor.constraint(equalTo: bottomAnchor)
                 ])
         }
+
+        segmentContainer.backgroundColor = .foregroundColor
+        mapTypeSegmentControl.tintColor = .foregroundTintColor
+        centerMapButton.tintColor = .foregroundTintColor
+        centerMapButton.backgroundColor = .foregroundColor
     }
 
     @objc func mapTypeChanged() {

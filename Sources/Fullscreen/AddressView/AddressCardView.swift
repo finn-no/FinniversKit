@@ -59,14 +59,6 @@ class AddressCardView: UIView {
             getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
         }
     }
-
-    func updateColors() {
-        backgroundColor = .foregroundColor
-        titleLabel.textColor = .primaryLabelColor
-        subtitleLabel.textColor = .secondaryLabelColor
-        copyButton.updateColors()
-        getDirectionsButton.updateColors()
-    }
 }
 
 extension AddressCardView {
@@ -109,6 +101,10 @@ extension AddressCardView {
             getDirectionsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             getDirectionsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing + -.mediumSpacing)
             ])
+
+        backgroundColor = .foregroundColor
+        titleLabel.textColor = .primaryLabelColor
+        subtitleLabel.textColor = .secondaryLabelColor
     }
 
     @objc private func getDirectionsAction() {
