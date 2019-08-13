@@ -220,13 +220,14 @@ private class AddNewTemplateCell: UITableViewCell {
 
     // MARK: - Static properties
 
-    private static let imageSize = CGSize(width: 25, height: 25)
+    private static let imageSize = CGSize(width: 16, height: 16)
 
     // MARK: - UI properties
 
     lazy var label: Label = {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .primaryBlue
         return label
     }()
 
@@ -253,18 +254,18 @@ private class AddNewTemplateCell: UITableViewCell {
         contentView.addSubview(plusImageView)
 
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing + .mediumLargeSpacing),
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
-            label.trailingAnchor.constraint(equalTo: plusImageView.leadingAnchor, constant: -.mediumLargeSpacing),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
-
             plusImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .mediumSpacing),
-            plusImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
+            plusImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing + .mediumLargeSpacing),
             plusImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.mediumSpacing),
             plusImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             plusImageView.widthAnchor.constraint(equalToConstant: AddNewTemplateCell.imageSize.width),
-            plusImageView.heightAnchor.constraint(equalToConstant: AddNewTemplateCell.imageSize.height)
+            plusImageView.heightAnchor.constraint(equalToConstant: AddNewTemplateCell.imageSize.height),
+
+            label.leadingAnchor.constraint(equalTo: plusImageView.trailingAnchor, constant: .mediumSpacing),
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 }
