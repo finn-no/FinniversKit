@@ -6,10 +6,12 @@ import Foundation
 
 public struct MessageFormTemplate {
     public let text: String
+    public let isUserDefined: Bool
     public let id: String?
 
-    public init(text: String, id: String? = nil) {
+    public init(text: String, isUserDefined: Bool, id: String? = nil) {
         self.text = text
+        self.isUserDefined = isUserDefined
         self.id = id
     }
 }

@@ -28,7 +28,7 @@ class DemoMessageTemplateStore: MessageTemplateStoreProtocol {
         }
 
         customTemplates.remove(at: index)
-        let newTemplate = MessageFormTemplate(text: text, id: template.id)
+        let newTemplate = MessageFormTemplate(text: text, isUserDefined: true, id: template.id)
         customTemplates.insert(newTemplate, at: index)
         completionHandler(true)
     }
@@ -37,7 +37,7 @@ class DemoMessageTemplateStore: MessageTemplateStoreProtocol {
         let id = "custom_template_\(nextCustomId)"
         nextCustomId += 1
 
-        let template = MessageFormTemplate(text: text, id: id)
+        let template = MessageFormTemplate(text: text, isUserDefined: true, id: id)
         customTemplates.insert(template, at: 0)
     }
 }
