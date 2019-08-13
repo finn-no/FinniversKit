@@ -60,12 +60,12 @@ class AddressCardView: UIView {
         }
     }
 
-    func updateColors(userInterfaceStyle: UserInterfaceStyle) {
-        backgroundColor = userInterfaceStyle.foregroundColor
-        titleLabel.textColor = userInterfaceStyle.primaryLabelColor
-        subtitleLabel.textColor = userInterfaceStyle.secondaryLabelColor
-        copyButton.updateColors(userInterfaceStyle: userInterfaceStyle)
-        getDirectionsButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+    func updateColors() {
+        backgroundColor = .foregroundColor
+        titleLabel.textColor = .primaryLabelColor
+        subtitleLabel.textColor = .secondaryLabelColor
+        copyButton.updateColors()
+        getDirectionsButton.updateColors()
     }
 }
 

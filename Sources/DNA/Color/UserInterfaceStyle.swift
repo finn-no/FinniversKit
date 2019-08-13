@@ -1,5 +1,9 @@
 import UIKit
 
+public class Theme {
+    public static var currentStyle: UserInterfaceStyle = .light
+}
+
 @objc public enum UserInterfaceStyle: Int {
     private static let currentUserInterfaceStyleKey = "currentUserInterfaceStyleKey"
 

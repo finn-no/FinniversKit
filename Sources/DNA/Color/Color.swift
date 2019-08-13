@@ -173,7 +173,10 @@ extension CGColor {
     }
 
     public class var defaultButtonHighlightedBodyColor: UIColor {
-        return UIColor(r: 241, g: 249, b: 255)!
+        switch Theme.currentStyle {
+        case .light: return UIColor(r: 241, g: 249, b: 255)!
+        case .dark: return UIColor(r: 241, g: 249, b: 255)!.withAlphaComponent(0.1)
+        }
     }
 
     public class var linkButtonHighlightedTextColor: UIColor {
@@ -223,30 +226,30 @@ extension CGColor {
 
 // MARK: - Semantic colors
 
-extension UserInterfaceStyle {
-    public var foregroundColor: UIColor {
-        switch self {
+@objc extension UIColor {
+    public class var foregroundColor: UIColor {
+        switch Theme.currentStyle {
         case .light: return .milk
         case .dark: return .charcoal
         }
     }
 
-    public var foregroundTintColor: UIColor {
-        switch self {
+    public class var foregroundTintColor: UIColor {
+        switch Theme.currentStyle {
         case .light: return .primaryBlue
         case .dark: return .secondaryBlue
         }
     }
 
-    public var primaryLabelColor: UIColor {
-        switch self {
+    public class var primaryLabelColor: UIColor {
+        switch Theme.currentStyle {
         case .light: return .licorice
         case .dark: return .milk
         }
     }
 
-    public var secondaryLabelColor: UIColor {
-        switch self {
+    public class var secondaryLabelColor: UIColor {
+        switch Theme.currentStyle {
         case .light: return .licorice
         case .dark: return .milk
         }

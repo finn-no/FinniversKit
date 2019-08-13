@@ -21,8 +21,6 @@ class TweakingOptionsTableViewController: UIViewController {
         self.options = options
         super.init(nibName: nil, bundle: nil)
         setup()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange(_:)), name: .didChangeUserInterfaceStyle, object: nil)
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -38,15 +36,9 @@ class TweakingOptionsTableViewController: UIViewController {
         updateColors()
     }
 
-    @objc private func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
-        updateColors()
-        tableView.reloadData()
-    }
-
     private func updateColors() {
-        let userInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection)
-        view.backgroundColor = userInterfaceStyle.foregroundColor
-        tableView.backgroundColor = userInterfaceStyle.foregroundColor
+        view.backgroundColor = .foregroundColor
+        tableView.backgroundColor = .foregroundColor
     }
 }
 

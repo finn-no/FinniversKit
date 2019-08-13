@@ -7,8 +7,7 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
 
         navigationBar.isTranslucent = false
-        updateColors(for: traitCollection, animated: false)
-        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange), name: .didChangeUserInterfaceStyle, object: nil)
+        updateColors()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -17,35 +16,25 @@ class NavigationController: UINavigationController {
         if #available(iOS 13.0, *) {
             #if swift(>=5.1)
             if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                userInterfaceStyleDidChange()
+                updateColors()
             }
             #endif
         }
     }
 
-    @objc func userInterfaceStyleDidChange() {
-        updateColors(for: traitCollection, animated: true)
-    }
-
-    func updateColors(for traitCollection: UITraitCollection, animated: Bool) {
-        UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let userInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection)
-            let separatorColor = userInterfaceStyle.navigationHairlineColor
-            let barTintColor = userInterfaceStyle.barTintColor
-            let tintColor = userInterfaceStyle.foregroundTintColor
-            let barStyle: UIBarStyle
-            switch userInterfaceStyle {
-            case .light:
-                barStyle = .default
-            case .dark:
-                barStyle = .black
-            }
-            self.setBottomBorderColor(navigationBar: self.navigationBar, color: separatorColor, height: 0.5)
-            self.navigationBar.barTintColor = barTintColor
-            self.navigationBar.tintColor = tintColor
-            self.navigationBar.barStyle = barStyle
-            self.navigationBar.layoutIfNeeded()
+    func updateColors() {
+        let barStyle: UIBarStyle
+        switch Theme.currentStyle {
+        case .light:
+            barStyle = .default
+        case .dark:
+            barStyle = .black
         }
+        self.setBottomBorderColor(navigationBar: self.navigationBar, color: .navigationHairlineColor, height: 0.5)
+        self.navigationBar.barTintColor = .barTintColor
+        self.navigationBar.tintColor = .foregroundTintColor
+        self.navigationBar.barStyle = barStyle
+        self.navigationBar.layoutIfNeeded()
     }
 
     func setBottomBorderColor(navigationBar: UINavigationBar, color: UIColor, height: CGFloat) {

@@ -111,10 +111,6 @@ final class NativeContentSettingsButton: UIButton {
 // MARK: - Private extensions
 
 private extension UIColor {
-    static var foregroundColor: UIColor? {
-        return .milk
-    }
-
     static var buttonBackgroundColor: UIColor? {
         return UIColor(white: 0, alpha: 0.4)
     }

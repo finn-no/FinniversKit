@@ -248,17 +248,17 @@ extension Foundation.Notification.Name {
     static let didChangeUserInterfaceStyle = Foundation.Notification.Name("didChangeUserInterfaceStyle")
 }
 
-extension UserInterfaceStyle {
-    public var tableViewIndexColor: UIColor {
-        return foregroundTintColor
+@objc extension UIColor {
+    public class var tableViewIndexColor: UIColor {
+        return .foregroundTintColor
     }
 
-    public var barTintColor: UIColor {
-        return foregroundColor
+    public class var barTintColor: UIColor {
+        return .foregroundColor
     }
 
-    public var navigationHairlineColor: UIColor {
-        switch self {
+    public class var navigationHairlineColor: UIColor {
+        switch Theme.currentStyle {
         case .light: return .sardine
         case .dark: return UIColor.sardine.withAlphaComponent(0.1)
         }

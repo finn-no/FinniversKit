@@ -48,14 +48,13 @@ class SelectorTitleView: UIView {
         delegate?.selectorTitleViewDidSelectButton(self)
     }
 
-    func updateColors(for traitCollection: UITraitCollection) {
-        let userInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection)
-        let buttonColor = userInterfaceStyle.foregroundTintColor
+    func updateColors() {
+        let buttonColor: UIColor = .foregroundTintColor
         button.setTitleColor(buttonColor, for: .normal)
         button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
         button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)
         button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .disabled)
         button.tintColor = buttonColor
-        backgroundColor = userInterfaceStyle.foregroundColor
+        backgroundColor = .foregroundColor
     }
 }

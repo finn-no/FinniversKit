@@ -19,16 +19,7 @@ public extension Button {
 
         var bodyColor: UIColor {
             switch self {
-            case .default: return .milk
-            case .link, .flat: return .clear
-            case .callToAction: return .primaryBlue
-            case .destructive: return .cherry
-            }
-        }
-
-        func bodyColor(userInterfaceStyle: UserInterfaceStyle) -> UIColor {
-            switch self {
-            case .default: return userInterfaceStyle.foregroundColor
+            case .default: return .foregroundColor
             case .link, .flat: return .clear
             case .callToAction: return .primaryBlue
             case .destructive: return .cherry
@@ -51,14 +42,7 @@ public extension Button {
 
         var textColor: UIColor {
             switch self {
-            case .default, .link, .flat: return .primaryBlue
-            default: return .milk
-            }
-        }
-
-        func textColor(userInterfaceStyle: UserInterfaceStyle) -> UIColor {
-            switch self {
-            case .default: return userInterfaceStyle.foregroundTintColor
+            case .default: return .foregroundTintColor
             case .link, .flat: return .primaryBlue
             default: return .milk
             }
@@ -73,29 +57,9 @@ public extension Button {
             }
         }
 
-        func highlightedBodyColor(userInterfaceStyle: UserInterfaceStyle) -> UIColor? {
-            switch self {
-            case .callToAction: return .callToActionButtonHighlightedBodyColor
-            case .destructive: return .destructiveButtonHighlightedBodyColor
-            case .default:
-                switch userInterfaceStyle {
-                case .light: return .defaultButtonHighlightedBodyColor
-                case .dark: return UIColor.defaultButtonHighlightedBodyColor.withAlphaComponent(0.1)
-                }
-            default: return nil
-            }
-        }
-
         var highlightedBorderColor: UIColor? {
             switch self {
-            case .default: return .primaryBlue
-            default: return nil
-            }
-        }
-
-        func highlightedBorderColor(userInterfaceStyle: UserInterfaceStyle) -> UIColor? {
-            switch self {
-            case .default: return userInterfaceStyle.foregroundTintColor
+            case .default: return .foregroundTintColor
             default: return nil
             }
         }
@@ -158,33 +122,21 @@ public extension Button {
             }
         }
 
-        func backgroundColor(forState state: State, userInterfaceStyle: UserInterfaceStyle?) -> UIColor? {
+        func backgroundColor(forState state: State) -> UIColor? {
             switch state {
             case .highlighted:
-                if let style = userInterfaceStyle {
-                    return highlightedBodyColor(userInterfaceStyle: style)
-                } else {
-                    return highlightedBodyColor
-                }
+                return highlightedBodyColor
             case .disabled:
                 return disabledBodyColor
             default:
-                if let style = userInterfaceStyle {
-                    return bodyColor(userInterfaceStyle: style)
-                } else {
-                    return bodyColor
-                }
+                return bodyColor
             }
         }
 
-        func borderColor(forState state: State, userInterfaceStyle: UserInterfaceStyle?) -> CGColor? {
+        func borderColor(forState state: State) -> CGColor? {
             switch state {
             case .highlighted:
-                if let style = userInterfaceStyle {
-                    return highlightedBorderColor(userInterfaceStyle: style)?.cgColor
-                } else {
-                    return highlightedBorderColor?.cgColor
-                }
+                return highlightedBorderColor?.cgColor
             case .disabled:
                 return disabledBorderColor?.cgColor
             default:

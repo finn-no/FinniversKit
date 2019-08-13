@@ -158,24 +158,23 @@ public class ButtonDemoView: UIView, UserInterfaceUpdatable {
     }
 
     public func updateColors() {
-        let userInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection)
-        backgroundColor = userInterfaceStyle.foregroundColor
+        backgroundColor = .foregroundColor
 
-        normalButton.updateColors(userInterfaceStyle: userInterfaceStyle)
-        smallNormalButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        normalButton.updateColors()
+        smallNormalButton.updateColors()
 
-        callToActionButton.updateColors(userInterfaceStyle: userInterfaceStyle)
-        destructiveButton.updateColors(userInterfaceStyle: userInterfaceStyle)
-        flatButton.updateColors(userInterfaceStyle: userInterfaceStyle)
-        linkButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        callToActionButton.updateColors()
+        destructiveButton.updateColors()
+        flatButton.updateColors()
+        linkButton.updateColors()
 
-        button1.updateColors(userInterfaceStyle: userInterfaceStyle)
-        button2.updateColors(userInterfaceStyle: userInterfaceStyle)
+        button1.updateColors()
+        button2.updateColors()
 
-        disabledNormalButton.updateColors(userInterfaceStyle: userInterfaceStyle)
-        disabledCallToActionButton.updateColors(userInterfaceStyle: userInterfaceStyle)
-        disabledDestructiveButton.updateColors(userInterfaceStyle: userInterfaceStyle)
-        disabledFlatButton.updateColors(userInterfaceStyle: userInterfaceStyle)
-        disabledLinkButton.updateColors(userInterfaceStyle: userInterfaceStyle)
+        disabledNormalButton.updateColors()
+        disabledCallToActionButton.updateColors()
+        disabledDestructiveButton.updateColors()
+        disabledFlatButton.updateColors()
+        disabledLinkButton.updateColors()
     }
 }

@@ -19,8 +19,6 @@ class DemoViewsTableViewController: UITableViewController {
 
     init() {
         super.init(style: .grouped)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange), name: .didChangeUserInterfaceStyle, object: nil)
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("") }
@@ -43,24 +41,6 @@ class DemoViewsTableViewController: UITableViewController {
                 }
             }
         }
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        if #available(iOS 13.0, *) {
-            #if swift(>=5.1)
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                userInterfaceStyleDidChange()
-            }
-            #endif
-        }
-    }
-
-    @objc private func userInterfaceStyleDidChange() {
-        updateColors(animated: true)
-        evaluateIndexAndValues()
-        tableView.reloadData()
     }
 
     private func setup() {
@@ -92,15 +72,16 @@ class DemoViewsTableViewController: UITableViewController {
     @objc private func moonTapped() {
         let newUserInterfaceStyle: UserInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection) == .light ? .dark : .light
         UserInterfaceStyle.setCurrentUserInterfaceStyle(newUserInterfaceStyle)
-        NotificationCenter.default.post(name: .didChangeUserInterfaceStyle, object: nil)
+
+        let alertView = UIAlertController(title: "Updated style!", message: "Restart app to apply", preferredStyle: .alert)
+        present(alertView, animated: true, completion: nil)
     }
 
     private func updateColors(animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let userInterfaceStyle = UserInterfaceStyle(traitCollection: self.traitCollection)
-            self.tableView.sectionIndexColor = userInterfaceStyle.tableViewIndexColor
-            self.tableView.backgroundColor = userInterfaceStyle.foregroundColor
-            self.selectorTitleView.updateColors(for: self.traitCollection)
+            self.tableView.sectionIndexColor = .tableViewIndexColor
+            self.tableView.backgroundColor = .foregroundColor
+            self.selectorTitleView.updateColors()
             self.updateMoonButton()
             self.setNeedsStatusBarAppearanceUpdate()
         }
