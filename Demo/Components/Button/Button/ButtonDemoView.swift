@@ -157,7 +157,7 @@ public class ButtonDemoView: UIView, UserInterfaceUpdatable {
         ])
     }
 
-    public func updateColors(userInterfaceStyle: UserInterfaceStyle, animated: Bool) {
+    public func updateColors(userInterfaceStyle: UserInterfaceStyle) {
         backgroundColor = userInterfaceStyle.foregroundColor
 
         normalButton.updateColors(userInterfaceStyle: userInterfaceStyle)

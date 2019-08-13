@@ -89,8 +89,8 @@ public class AddressViewDemoView: UIView, Tweakable, UserInterfaceUpdatable {
         }
     }
 
-    public func updateColors(userInterfaceStyle: UserInterfaceStyle, animated: Bool) {
-        self.addressView.updateColors(userInterfaceStyle: userInterfaceStyle, animated: animated)
+    public func updateColors(userInterfaceStyle: UserInterfaceStyle) {
+        self.addressView.updateColors(userInterfaceStyle: userInterfaceStyle)
     }
 }
 

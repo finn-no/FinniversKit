@@ -102,14 +102,12 @@ public class AddressView: UIView, UserInterfaceUpdatable {
         }
     }
 
-    public func updateColors(userInterfaceStyle: UserInterfaceStyle, animated: Bool) {
-        UIView.animate(withDuration: animated ? 0.3 : 0) {
-            self.segmentContainer.backgroundColor = userInterfaceStyle.foregroundColor
-            self.mapTypeSegmentControl.tintColor = userInterfaceStyle.foregroundTintColor
-            self.addressCardView.updateColors(userInterfaceStyle: userInterfaceStyle)
-            self.centerMapButton.tintColor = userInterfaceStyle.foregroundTintColor
-            self.centerMapButton.backgroundColor = userInterfaceStyle.foregroundColor
-        }
+    public func updateColors(userInterfaceStyle: UserInterfaceStyle) {
+        self.segmentContainer.backgroundColor = userInterfaceStyle.foregroundColor
+        self.mapTypeSegmentControl.tintColor = userInterfaceStyle.foregroundTintColor
+        self.addressCardView.updateColors(userInterfaceStyle: userInterfaceStyle)
+        self.centerMapButton.tintColor = userInterfaceStyle.foregroundTintColor
+        self.centerMapButton.backgroundColor = userInterfaceStyle.foregroundColor
     }
 
     public func centerMap(location: CLLocationCoordinate2D, regionDistance: Double, animated: Bool) {
