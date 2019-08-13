@@ -148,16 +148,7 @@ extension DemoViewsTableViewController {
         cell.textLabel?.font = .bodyRegular
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-
-        let cellTextColor: UIColor
-        switch UserInterfaceStyle(traitCollection: traitCollection) {
-        case .light:
-            cellTextColor = .licorice
-        case .dark:
-            cellTextColor = .milk
-        }
-        cell.textLabel?.textColor = cellTextColor
-
+        cell.textLabel?.textColor = .primaryLabelColor
         return cell
     }
 
