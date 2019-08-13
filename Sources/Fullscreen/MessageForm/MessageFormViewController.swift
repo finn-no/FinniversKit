@@ -118,13 +118,12 @@ class MessageFormViewController: UIViewController {
 
         updateWrapperViewConstraint(withKeyboardVisible: false, keyboardOffset: 0)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         toolbar.reloadData()
+        registerForKeyboardNotifications()
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -132,7 +131,24 @@ class MessageFormViewController: UIViewController {
         _ = messageInputTextView.becomeFirstResponder()
     }
 
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        // We need to unregister the keyboard listeners, as we would otherwise get notified
+        // and we'd wrongly adjust when the keyboard appears in pushed view controllers
+        unregisterKeyboardNotifications()
+    }
+
     // MARK: - Private methods
+
+    private func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+
+    private func unregisterKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
 
     @objc private func cancelButtonTapped() {
         delegate?.messageFormViewControllerDidCancel(self)
