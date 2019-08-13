@@ -17,6 +17,7 @@ class MessageTemplateOverviewViewController: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(CustomMessageTemplateCell.self)
         tableView.register(AddNewTemplateCell.self)
+        tableView.separatorInset = UIEdgeInsets(leading: .mediumSpacing + .mediumLargeSpacing)
         return tableView
     }()
 
@@ -252,14 +253,15 @@ private class AddNewTemplateCell: UITableViewCell {
         contentView.addSubview(plusImageView)
 
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            label.trailingAnchor.constraint(equalTo: plusImageView.leadingAnchor, constant: -.mediumSpacing),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing + .mediumLargeSpacing),
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            label.trailingAnchor.constraint(equalTo: plusImageView.leadingAnchor, constant: -.mediumLargeSpacing),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
 
-            plusImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            plusImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .mediumSpacing),
             plusImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-            plusImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+            plusImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -.mediumSpacing),
+            plusImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             plusImageView.widthAnchor.constraint(equalToConstant: AddNewTemplateCell.imageSize.width),
             plusImageView.heightAnchor.constraint(equalToConstant: AddNewTemplateCell.imageSize.height)
@@ -284,7 +286,7 @@ private class CustomMessageTemplateCell: UITableViewCell {
     private lazy var wrapperView: UIView = UIView(withAutoLayout: true)
 
     private lazy var label: Label = {
-        let label = Label(style: .body)
+        let label = Label(style: .bodyRegular)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -309,10 +311,12 @@ private class CustomMessageTemplateCell: UITableViewCell {
         wrapperView.fillInSuperview()
 
         wrapperView.addSubview(label)
-        label.fillInSuperview(margin: .mediumSpacing)
 
         NSLayoutConstraint.activate([
-            wrapperView.heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
+            label.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: .mediumSpacing + .mediumLargeSpacing),
+            label.topAnchor.constraint(equalTo: wrapperView.topAnchor, constant: .mediumLargeSpacing),
+            label.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -.mediumLargeSpacing),
+            label.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }
