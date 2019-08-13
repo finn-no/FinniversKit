@@ -10,18 +10,6 @@ class NavigationController: UINavigationController {
         updateColors()
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        if #available(iOS 13.0, *) {
-            #if swift(>=5.1)
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                updateColors()
-            }
-            #endif
-        }
-    }
-
     func updateColors() {
         let barStyle: UIBarStyle
         switch Theme.currentStyle {
