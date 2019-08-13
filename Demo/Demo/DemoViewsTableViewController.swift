@@ -73,7 +73,10 @@ class DemoViewsTableViewController: UITableViewController {
     }
 
     private func updateMoonButton() {
-        guard #available(iOS 13.0, *) else {
+        if #available(iOS 13.0, *) {
+        } else {
+            guard FinniversKit.isDarkModeSupported else { return }
+
             let image: UIImage
             switch UserInterfaceStyle(traitCollection: traitCollection) {
             case .light:
@@ -82,7 +85,6 @@ class DemoViewsTableViewController: UITableViewController {
                 image = UIImage(named: "filledMoon")!
             }
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(moonTapped))
-            return
         }
     }
 
