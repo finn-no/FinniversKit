@@ -5,7 +5,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         tabBar.isTranslucent = false
-        updateColors(for: traitCollection, animated: false)
+        updateColors(for: traitCollection)
         NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange), name: .didChangeUserInterfaceStyle, object: nil)
     }
 
@@ -22,14 +22,12 @@ class TabBarController: UITabBarController {
     }
 
     @objc func userInterfaceStyleDidChange() {
-        updateColors(for: traitCollection, animated: true)
+        updateColors(for: traitCollection)
     }
 
-    func updateColors(for traitCollection: UITraitCollection, animated: Bool) {
-        UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let style = UserInterfaceStyle(traitCollection: traitCollection)
-            self.tabBar.tintColor = style.foregroundColor
-            self.tabBar.barTintColor = style.foregroundColor
-        }
+    func updateColors(for traitCollection: UITraitCollection) {
+        let style = UserInterfaceStyle(traitCollection: traitCollection)
+        self.tabBar.tintColor = style.foregroundColor
+        self.tabBar.barTintColor = style.foregroundColor
     }
 }
