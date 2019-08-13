@@ -9,6 +9,14 @@ protocol NeighborhoodProfileHeaderViewDelegate: AnyObject {
 }
 
 final class NeighborhoodProfileHeaderView: UIView {
+    static func height(forTitle title: String, width: CGFloat) -> CGFloat {
+        return title.height(withConstrainedWidth: width, font: titleFont)
+    }
+
+    private static let titleFont = UIFont.title3
+
+    // MARK: - Internal properties
+
     weak var delegate: NeighborhoodProfileHeaderViewDelegate?
 
     var title = "" {
@@ -23,7 +31,8 @@ final class NeighborhoodProfileHeaderView: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = .title3
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        label.font = NeighborhoodProfileHeaderView.titleFont
         label.textColor = .licorice
         return label
     }()

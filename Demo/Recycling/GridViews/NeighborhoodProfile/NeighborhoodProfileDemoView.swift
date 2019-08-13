@@ -9,8 +9,6 @@ final class NeighborhoodProfileDemoView: UIView {
     private lazy var view: NeighborhoodProfileView = {
         let view = NeighborhoodProfileView(withAutoLayout: true)
         view.delegate = self
-        view.title = "Om nabolaget"
-        view.buttonTitle = "Utforsk"
         view.configure(with: .demo)
         return view
     }()
