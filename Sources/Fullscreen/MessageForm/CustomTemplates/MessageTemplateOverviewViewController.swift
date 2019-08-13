@@ -59,18 +59,22 @@ class MessageTemplateOverviewViewController: UIViewController {
         tableView.reloadData()
     }
 
-    private func updateEditButtonEnabled() {
-        navigationItem.rightBarButtonItem?.isEnabled = !templateStore.customTemplates.isEmpty
+    @objc private func editButtonTapped() {
+        setEditState(editing: !tableView.isEditing)
     }
 
-    @objc private func editButtonTapped() {
-        if tableView.isEditing {
-            tableView.setEditing(false, animated: true)
-            navigationItem.rightBarButtonItem?.title = "Rediger"
-        } else {
-            tableView.setEditing(true, animated: true)
+    private func setEditState(editing: Bool) {
+        tableView.setEditing(editing, animated: true)
+
+        if editing {
             navigationItem.rightBarButtonItem?.title = "Ferdig"
+        } else {
+            navigationItem.rightBarButtonItem?.title = "Rediger"
         }
+    }
+
+    private func updateEditButtonEnabled() {
+        navigationItem.rightBarButtonItem?.isEnabled = !templateStore.customTemplates.isEmpty
     }
 
     private func deleteTemplate(at indexPath: IndexPath) {
@@ -80,6 +84,9 @@ class MessageTemplateOverviewViewController: UIViewController {
             if success {
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
                 self?.updateEditButtonEnabled()
+                if self?.templateStore.customTemplates.isEmpty ?? false {
+                    self?.setEditState(editing: false)
+                }
             } else {
                 // Assume we're out of sync with the template store
                 self?.reloadData()
