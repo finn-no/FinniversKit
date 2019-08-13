@@ -65,16 +65,12 @@ import UIKit
         return UIColor(r: 246, g: 248, b: 251)!
     }
 
-    public class var midnightBackground: UIColor {
+    public class var charcoal: UIColor {
         return UIColor(hex: "1D1D26")
     }
 
-    public class var midnightSectionHeader: UIColor {
+    public class var blueberry: UIColor {
         return UIColor(hex: "585E8A")
-    }
-
-    public class var midnightSectionSeparator: UIColor {
-        return UIColor(hex: "34343E")
     }
 
     // swiftlint:disable:next identifier_name
@@ -236,11 +232,18 @@ extension UserInterfaceStyle {
     public var foregroundColor: UIColor {
         switch self {
         case .light: return .milk
-        case .dark: return .midnightBackground
+        case .dark: return .charcoal
         }
     }
 
     public var linkLabelColor: UIColor {
+        switch self {
+        case .light: return .primaryBlue
+        case .dark: return .secondaryBlue
+        }
+    }
+
+    public var navigationItemTintColor: UIColor {
         switch self {
         case .light: return .primaryBlue
         case .dark: return .secondaryBlue

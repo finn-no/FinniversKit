@@ -252,7 +252,18 @@ extension UserInterfaceStyle {
     public var tableViewIndexColor: UIColor {
         switch self {
         case .light: return .milk
-        case .dark: return .midnightBackground
+        case .dark: return .charcoal
+        }
+    }
+
+    public var barTintColor: UIColor {
+        return foregroundColor
+    }
+
+    public var navigationHairlineColor: UIColor {
+        switch self {
+        case .light: return .sardine
+        case .dark: return UIColor.sardine.withAlphaComponent(0.1)
         }
     }
 }
