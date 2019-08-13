@@ -39,12 +39,8 @@ final class NeighborhoodProfileDemoView: UIView {
 // MARK: - NeighborhoodProfileViewDelegate
 
 extension NeighborhoodProfileDemoView: NeighborhoodProfileViewDelegate {
-    func neighborhoodProfileViewDidScroll(_ view: NeighborhoodProfileView) {
-        print("Start")
-    }
-
-    func neighborhoodProfileViewDidScrollToEnd(_ view: NeighborhoodProfileView) {
-        print("End")
+    func neighborhoodProfileViewDidScroll(_ view: NeighborhoodProfileView, reachedEnd: Bool) {
+        print("Did scroll, reached end: \(reachedEnd)")
     }
 
     func neighborhoodProfileView(_ view: NeighborhoodProfileView, didSelectUrl url: URL?) {
