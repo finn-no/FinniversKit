@@ -203,13 +203,13 @@ enum Sections: String, CaseIterable {
         let shouldIncludeNavigationController = ContainmentOptions(indexPath: indexPath)?.contains(.navigationController) ?? false
         if shouldIncludeNavigationController {
             if let unwrappedViewController = viewController {
-                viewController = UINavigationController(rootViewController: unwrappedViewController)
+                viewController = NavigationController(rootViewController: unwrappedViewController)
             }
         }
 
         let shouldIncludeTabBarController = ContainmentOptions(indexPath: indexPath)?.contains(.tabBarController) ?? false
         if shouldIncludeTabBarController {
-            let tabBarController = UITabBarController()
+            let tabBarController = TabBarController()
             if let unwrappedViewController = viewController {
                 tabBarController.viewControllers = [unwrappedViewController]
                 viewController = tabBarController

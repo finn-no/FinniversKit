@@ -68,6 +68,9 @@ public class DemoViewController<View: UIView>: UIViewController {
             playgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
+        NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange), name: .didChangeUserInterfaceStyle, object: nil)
+        userInterfaceStyleDidChange()
+
         if hasDismissButton {
             let button = Button(style: .callToAction)
             button.setTitle("Dismiss", for: .normal)
@@ -103,6 +106,25 @@ public class DemoViewController<View: UIView>: UIViewController {
         if State.shouldShowDismissInstructions {
             miniToastView.show(in: view)
             State.shouldShowDismissInstructions = false
+        }
+    }
+
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) {
+            #if swift(>=5.1)
+            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                userInterfaceStyleDidChange()
+            }
+            #endif
+        }
+    }
+
+    @objc private func userInterfaceStyleDidChange() {
+        if let view = playgroundView as? UserInterfaceUpdatable {
+            let userInterfaceStyle = State.currentUserInterfaceStyle(for: traitCollection)
+            view.updateColors(userInterfaceStyle: userInterfaceStyle, animated: false)
         }
     }
 }

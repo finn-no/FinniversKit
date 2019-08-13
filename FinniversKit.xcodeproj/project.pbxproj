@@ -176,6 +176,8 @@
 		44B94FE722E0AB6C0078A23C /* TweakingOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FE622E0AB6C0078A23C /* TweakingOptionCell.swift */; };
 		44B94FE922E0AB820078A23C /* TweakingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FE822E0AB820078A23C /* TweakingOption.swift */; };
 		44B94FEB22E0ABC50078A23C /* Tweakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FEA22E0ABC50078A23C /* Tweakable.swift */; };
+		44BC4F942302AD6300DE7F22 /* UserInterfaceUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BC4F932302AD6300DE7F22 /* UserInterfaceUpdatable.swift */; };
+		44BC4F962302B4A900DE7F22 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BC4F952302B4A900DE7F22 /* TabBarController.swift */; };
 		44C4E8DE1FFBA714000B014D /* FinniversKit.swift in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44C6CE44209CABFE00929269 /* FinniversImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
@@ -648,6 +650,8 @@
 		44B94FE622E0AB6C0078A23C /* TweakingOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakingOptionCell.swift; sourceTree = "<group>"; };
 		44B94FE822E0AB820078A23C /* TweakingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakingOption.swift; sourceTree = "<group>"; };
 		44B94FEA22E0ABC50078A23C /* Tweakable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweakable.swift; sourceTree = "<group>"; };
+		44BC4F932302AD6300DE7F22 /* UserInterfaceUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceUpdatable.swift; sourceTree = "<group>"; };
+		44BC4F952302B4A900DE7F22 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		44BE10B422E5F3A5002BB2E7 /* SelectorTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTitleView.swift; sourceTree = "<group>"; };
 		44C6CE43209CABFE00929269 /* FinniversImageAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversImageAsset.swift; sourceTree = "<group>"; };
 		44D912512077AC8A00486848 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -1491,6 +1495,7 @@
 			isa = PBXGroup;
 			children = (
 				4447F6B71FDB2B110033DBC1 /* Identifiable.swift */,
+				44BC4F932302AD6300DE7F22 /* UserInterfaceUpdatable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2172,6 +2177,7 @@
 				4423F226209CB24500B81D68 /* MiniToastView.swift */,
 				44BE10B422E5F3A5002BB2E7 /* SelectorTitleView.swift */,
 				4451BEC5230163AA00879B7F /* NavigationController.swift */,
+				44BC4F952302B4A900DE7F22 /* TabBarController.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -3554,6 +3560,7 @@
 				441FE43E209A254900B04EF1 /* MarketsGridViewDemoView.swift in Sources */,
 				44AEFC2522E722FC00D3C307 /* BasicCellVariationsDemoView.swift in Sources */,
 				4441F9EF22CCF72F00DCFD2F /* AddressViewDemoView.swift in Sources */,
+				44BC4F962302B4A900DE7F22 /* TabBarController.swift in Sources */,
 				9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */,
 				CF7C460E22257AE1001FB92C /* EarthHourDefaultData.swift in Sources */,
 				082D80D321C1440D00831BDE /* EmptyChristmasViewDemoView.swift in Sources */,
@@ -3743,6 +3750,7 @@
 				441FE431209A24E500B04EF1 /* AdsGridHeaderView.swift in Sources */,
 				0881432A22E1B974008CB5DA /* ToastButton.swift in Sources */,
 				443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */,
+				44BC4F942302AD6300DE7F22 /* UserInterfaceUpdatable.swift in Sources */,
 				DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */,
 				89A7A648225352A30053D33B /* NativeContentAdvertView.swift in Sources */,
 				4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */,

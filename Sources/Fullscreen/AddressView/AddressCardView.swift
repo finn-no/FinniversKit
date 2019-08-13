@@ -59,6 +59,12 @@ class AddressCardView: UIView {
             getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
         }
     }
+
+    func updateColors(userInterfaceStyle: UserInterfaceStyle) {
+        backgroundColor = userInterfaceStyle.foregroundColor
+        titleLabel.textColor = userInterfaceStyle.primaryLabelColor
+        subtitleLabel.textColor = userInterfaceStyle.secondaryLabelColor
+    }
 }
 
 extension AddressCardView {
@@ -77,8 +83,6 @@ extension AddressCardView {
         layer.shadowRadius = 3
         layer.shadowOffset = .zero
         layer.shadowColor = UIColor.black.cgColor
-
-        backgroundColor = .white
 
         let columnStackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         columnStackView.translatesAutoresizingMaskIntoConstraints = false

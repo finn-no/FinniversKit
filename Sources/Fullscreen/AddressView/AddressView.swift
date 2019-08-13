@@ -12,17 +12,15 @@ public protocol AddressViewDelegate: AnyObject {
     func addressView(_ addressView: AddressView, didSelectMapTypeAtIndex index: Int)
 }
 
-public class AddressView: UIView {
+public class AddressView: UIView, UserInterfaceUpdatable {
     private lazy var mapTypeSegmentControl: UISegmentedControl = {
         let control = UISegmentedControl(withAutoLayout: true)
         control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
-        control.tintColor = .primaryBlue
         return control
     }()
 
     private lazy var segmentContainer: UIView = {
         let segmentContainer = UIView(withAutoLayout: true)
-        segmentContainer.backgroundColor = .white
         segmentContainer.addSubview(mapTypeSegmentControl)
         segmentContainer.layer.masksToBounds = false
         segmentContainer.layer.shadowOpacity = 0.3
@@ -66,8 +64,6 @@ public class AddressView: UIView {
 
     private lazy var centerMapButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
-        button.backgroundColor = .milk
-        button.tintColor = .primaryBlue
 
         button.layer.cornerRadius = 23
         button.layer.shadowColor = UIColor.black.cgColor
@@ -103,6 +99,16 @@ public class AddressView: UIView {
             }
             mapTypeSegmentControl.selectedSegmentIndex = model.selectedMapType
             addressCardView.model = model
+        }
+    }
+
+    public func updateColors(userInterfaceStyle: UserInterfaceStyle, animated: Bool) {
+        UIView.animate(withDuration: animated ? 0.3 : 0) {
+            self.segmentContainer.backgroundColor = userInterfaceStyle.foregroundColor
+            self.mapTypeSegmentControl.tintColor = userInterfaceStyle.foregroundTintColor
+            self.addressCardView.updateColors(userInterfaceStyle: userInterfaceStyle)
+            self.centerMapButton.tintColor = userInterfaceStyle.foregroundTintColor
+            self.centerMapButton.backgroundColor = userInterfaceStyle.foregroundColor
         }
     }
 

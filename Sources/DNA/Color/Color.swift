@@ -236,17 +236,32 @@ extension UserInterfaceStyle {
         }
     }
 
-    public var linkLabelColor: UIColor {
+    public var foregroundTintColor: UIColor {
         switch self {
         case .light: return .primaryBlue
         case .dark: return .secondaryBlue
         }
     }
 
+    public var linkLabelColor: UIColor {
+        return foregroundTintColor
+    }
+
     public var navigationItemTintColor: UIColor {
+        return foregroundTintColor
+    }
+
+    public var primaryLabelColor: UIColor {
         switch self {
-        case .light: return .primaryBlue
-        case .dark: return .secondaryBlue
+        case .light: return .licorice
+        case .dark: return .milk
+        }
+    }
+
+    public var secondaryLabelColor: UIColor {
+        switch self {
+        case .light: return .licorice
+        case .dark: return .milk
         }
     }
 }
