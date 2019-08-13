@@ -297,7 +297,7 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
     // MARK: - Static properties
 
     static let cellSize = CGSize(width: 30, height: 30)
-    static let imageSize = CGSize(width: 25, height: 25)
+    static let imageSize = CGSize(width: 16, height: 16)
 
     // MARK: - UI properties
 
