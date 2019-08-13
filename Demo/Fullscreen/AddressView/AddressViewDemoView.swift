@@ -36,7 +36,7 @@ public struct AddressViewData: AddressViewModel {
     }
 }
 
-public class AddressViewDemoView: UIView, Tweakable, UserInterfaceUpdatable {
+public class AddressViewDemoView: UIView, UserInterfaceUpdatable {
     lazy var tweakingOptions: [TweakingOption] = {
         var options = [TweakingOption]()
 
@@ -89,8 +89,8 @@ public class AddressViewDemoView: UIView, Tweakable, UserInterfaceUpdatable {
         }
     }
 
-    public func updateColors(userInterfaceStyle: UserInterfaceStyle) {
-        self.addressView.updateColors(userInterfaceStyle: userInterfaceStyle)
+    public func updateColors() {
+        self.addressView.updateColors()
     }
 }
 

@@ -102,7 +102,8 @@ public class AddressView: UIView, UserInterfaceUpdatable {
         }
     }
 
-    public func updateColors(userInterfaceStyle: UserInterfaceStyle) {
+    public func updateColors() {
+        let userInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection)
         self.segmentContainer.backgroundColor = userInterfaceStyle.foregroundColor
         self.mapTypeSegmentControl.tintColor = userInterfaceStyle.foregroundTintColor
         self.addressCardView.updateColors(userInterfaceStyle: userInterfaceStyle)
