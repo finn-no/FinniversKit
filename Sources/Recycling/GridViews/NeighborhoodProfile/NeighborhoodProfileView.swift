@@ -6,6 +6,8 @@ import UIKit
 
 public protocol NeighborhoodProfileViewDelegate: AnyObject {
     func neighborhoodProfileView(_ view: NeighborhoodProfileView, didSelectUrl: URL?)
+    func neighborhoodProfileViewDidScroll(_ view: NeighborhoodProfileView)
+    func neighborhoodProfileViewDidScrollToEnd(_ view: NeighborhoodProfileView)
 }
 
 public final class NeighborhoodProfileView: UIView {
@@ -251,6 +253,14 @@ extension NeighborhoodProfileView: UICollectionViewDelegate {
 
         if let indexPath = collectionView.indexPathForItem(at: center) {
             pageControl.currentPage = indexPath.row
+        }
+
+        delegate?.neighborhoodProfileViewDidScroll(self)
+
+        if scrollView.panGestureRecognizer.translation(in: self).x < 0 {
+            if collectionView.indexPathsForVisibleItems.contains(IndexPath(item: viewModel.cards.count - 1, section: 0)) {
+                delegate?.neighborhoodProfileViewDidScrollToEnd(self)
+            }
         }
     }
 }
