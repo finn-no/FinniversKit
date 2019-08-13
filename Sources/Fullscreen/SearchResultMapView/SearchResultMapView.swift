@@ -113,7 +113,7 @@ public final class SearchResultMapView: UIView {
         mapView.showAnnotations(annotationsToShow, animated: animated)
     }
 
-    /// Set the visible region to a MKMapRect that fitts the passed region
+    /// Set the visible region to a MKMapRect that fits the passed region
     ///
     /// - Parameters:
     ///   - mapRect: MKMapRect to fit and focus
