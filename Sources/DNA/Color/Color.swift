@@ -227,70 +227,42 @@ extension CGColor {
 // MARK: - Semantic colors that will support dark and light mode
 @objc extension UIColor {
     public class var foregroundColor: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor(dynamicProvider: { (traitCollection) -> UIColor in
-                switch traitCollection.userInterfaceStyle {
-                case .dark:
-                    return .charcoal
-                default:
-                    return .milk
-                }
-            })
-        }
-        switch Theme.currentStyle {
-        case .light: return .milk
-        case .dark: return .charcoal
-        }
+        return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .charcoal)
     }
 
     public class var foregroundTintColor: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor(dynamicProvider: { (traitCollection) -> UIColor in
-                switch traitCollection.userInterfaceStyle {
-                case .dark:
-                    return .secondaryBlue
-                default:
-                    return .primaryBlue
-                }
-            })
-        }
-        switch Theme.currentStyle {
-        case .light: return .primaryBlue
-        case .dark: return .secondaryBlue
-        }
+        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: .secondaryBlue)
     }
 
     public class var primaryLabelColor: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor(dynamicProvider: { (traitCollection) -> UIColor in
-                switch traitCollection.userInterfaceStyle {
-                case .dark:
-                    return .milk
-                default:
-                    return .licorice
-                }
-            })
-        }
-        switch Theme.currentStyle {
-        case .light: return .licorice
-        case .dark: return .milk
-        }
+        return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: .milk)
     }
 
     public class var secondaryLabelTextColor: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: .milk)
+    }
+
+
+}
+
+// MARK: - Private helper for creating dynamic color
+extension UIColor {
+    private class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
         if #available(iOS 13.0, *) {
+            #if swift(>=5.1)
             return UIColor(dynamicProvider: { (traitCollection) -> UIColor in
                 switch traitCollection.userInterfaceStyle {
                 case .dark:
-                    return .milk
+                    return darkModeColor
                 default:
-                    return .licorice
+                    return defaultColor
                 }
             })
+            #endif
         }
         switch Theme.currentStyle {
-        case .light: return .licorice
-        case .dark: return .milk
+        case .light: return defaultColor
+        case .dark: return darkModeColor
         }
     }
 }
