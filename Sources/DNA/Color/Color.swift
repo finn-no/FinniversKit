@@ -234,15 +234,13 @@ extension CGColor {
         return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: .secondaryBlue)
     }
 
-    public class var primaryLabelColor: UIColor {
+    public class var primaryLabelTextColor: UIColor {
         return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: .milk)
     }
 
     public class var secondaryLabelTextColor: UIColor {
         return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: .milk)
     }
-
-
 }
 
 // MARK: - Private helper for creating dynamic color
@@ -250,14 +248,14 @@ extension UIColor {
     private class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
         if #available(iOS 13.0, *) {
             #if swift(>=5.1)
-            return UIColor(dynamicProvider: { (traitCollection) -> UIColor in
+            return UIColor { traitCollection -> UIColor in
                 switch traitCollection.userInterfaceStyle {
                 case .dark:
                     return darkModeColor
                 default:
                     return defaultColor
                 }
-            })
+            }
             #endif
         }
         switch Theme.currentStyle {

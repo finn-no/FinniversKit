@@ -103,7 +103,7 @@ extension AddressCardView {
             ])
 
         backgroundColor = .foregroundColor
-        titleLabel.textColor = .primaryLabelColor
+        titleLabel.textColor = .primaryLabelTextColor
         subtitleLabel.textColor = .secondaryLabelTextColor
     }
 

@@ -148,7 +148,7 @@ extension DemoViewsTableViewController {
         cell.textLabel?.font = .bodyRegular
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-        cell.textLabel?.textColor = .primaryLabelColor
+        cell.textLabel?.textColor = .primaryLabelTextColor
         return cell
     }
 
