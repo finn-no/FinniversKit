@@ -40,10 +40,6 @@ class MessageFormViewController: UIViewController {
 
     weak var delegate: MessageFormViewControllerDelegate?
 
-    var hasUncommittedChanges: Bool {
-        return messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
-    }
-
     var toastPresenterView: UIView {
         return messageInputTextView
     }
@@ -202,6 +198,12 @@ class MessageFormViewController: UIViewController {
         }
 
         wrapperBottomConstraint.constant = -offset
+    }
+}
+
+extension MessageFormViewController: MessageFormCommittableViewController {
+    var hasUncommittedChanges: Bool {
+        return messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
     }
 }
 

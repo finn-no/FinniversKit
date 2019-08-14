@@ -105,6 +105,16 @@ class MessageTemplateEditViewController: UIViewController {
     }
 }
 
+extension MessageTemplateEditViewController: MessageFormCommittableViewController {
+    var hasUncommittedChanges: Bool {
+        guard let initialText = viewModel.existingTemplate?.text else {
+            return messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
+        }
+
+        return messageInputTextView.text != initialText
+    }
+}
+
 extension MessageTemplateEditViewController: MessageInputTextViewDelegate {
     func messageFormView(_ view: MessageInputTextView, didEditMessageText text: String) {
         navigationItem.rightBarButtonItem?.isEnabled = text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0

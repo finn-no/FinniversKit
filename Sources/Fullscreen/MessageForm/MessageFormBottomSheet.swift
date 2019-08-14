@@ -66,7 +66,15 @@ public class MessageFormBottomSheet: BottomSheet {
     }
 
     private func canDismissWithoutConfirmation() -> Bool {
-        return !messageFormViewController.hasUncommittedChanges
+        for viewController in rootController.viewControllers {
+            if let committableViewController = viewController as? MessageFormCommittableViewController {
+                if committableViewController.hasUncommittedChanges {
+                    return false
+                }
+            }
+        }
+
+        return true
     }
 
     private func dismissWithConfirmation() {

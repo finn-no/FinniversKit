@@ -281,6 +281,7 @@
 		9F213438F5413991D1B3D7CD /* FullscreenGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2135C4606E66A98D140AAC /* FullscreenGalleryViewModel.swift */; };
 		9F21365157F385AC63928150 /* FullscreenGalleryDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2133F39A730EF3068C7DDA /* FullscreenGalleryDemoViewController.swift */; };
 		9F21378DC6344A2A442409D7 /* MessageTemplateStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2139CC642304991AAE6532 /* MessageTemplateStoreProtocol.swift */; };
+		9F2137B2A50DBB7C72673850 /* MessageFormCommittableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21352871D6FC083000FDC8 /* MessageFormCommittableViewController.swift */; };
 		9F213830B2F4E5DFE596431F /* KeyboardNotificationInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F213CB3556A74594DB59E93 /* KeyboardNotificationInfoTest.swift */; };
 		9F2138937E903BEA8F7A8C7C /* FullscreenGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2133D2324BEE366DBA2134 /* FullscreenGalleryViewController.swift */; };
 		9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21399D933575F69DB9DDCE /* GalleryPreviewCell.swift */; };
@@ -751,6 +752,7 @@
 		9F2133F39A730EF3068C7DDA /* FullscreenGalleryDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryDemoViewController.swift; sourceTree = "<group>"; };
 		9F2134185F7E7E3FC59E0EA4 /* DemoMessageTemplateStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoMessageTemplateStore.swift; sourceTree = "<group>"; };
 		9F2134FB742B5E38B8428113 /* FullscreenGalleryTransitioningController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryTransitioningController.swift; sourceTree = "<group>"; };
+		9F21352871D6FC083000FDC8 /* MessageFormCommittableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFormCommittableViewController.swift; sourceTree = "<group>"; };
 		9F21354AF1CEB17C6CD55DCE /* FullscreenGalleryTransitionAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryTransitionAware.swift; sourceTree = "<group>"; };
 		9F213561E8B39C18C22AE15D /* FullscreenGalleryPresenterTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryPresenterTransition.swift; sourceTree = "<group>"; };
 		9F213568D13E929BBB70CF2F /* FullscreenImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenImageView.swift; sourceTree = "<group>"; };
@@ -1894,6 +1896,7 @@
 				8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */,
 				8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */,
 				9F2138CF750E6D2B210C4E5C /* CustomTemplates */,
+				9F21352871D6FC083000FDC8 /* MessageFormCommittableViewController.swift */,
 			);
 			path = MessageForm;
 			sourceTree = "<group>";
@@ -3945,6 +3948,7 @@
 				9F2131318060F45D01428A63 /* MessageTemplateOverviewViewController.swift in Sources */,
 				9F21378DC6344A2A442409D7 /* MessageTemplateStoreProtocol.swift in Sources */,
 				9F213EA2450DB4E095A0607E /* MessageTemplateEditViewController.swift in Sources */,
+				9F2137B2A50DBB7C72673850 /* MessageFormCommittableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
