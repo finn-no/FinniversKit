@@ -255,9 +255,8 @@ extension NeighborhoodProfileView: UICollectionViewDelegate {
             pageControl.currentPage = indexPath.row
         }
 
-        //let isRightScrollDirection = scrollView.panGestureRecognizer.velocity(in: self).x < 0
         let rightOffset = scrollView.horizontalRightOffset - .mediumLargeSpacing
-        let reachedEnd = targetOffsetX >= rightOffset// && isRightScrollDirection
+        let reachedEnd = targetOffsetX >= rightOffset
 
         delegate?.neighborhoodProfileViewDidScroll(self, reachedEnd: reachedEnd)
     }
