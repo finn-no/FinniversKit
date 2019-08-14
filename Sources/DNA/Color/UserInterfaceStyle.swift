@@ -25,13 +25,13 @@ public class Theme {
     }
 
     /// Needs to be called from main thread on iOS 13
-    public static func setCurrentUserInterfaceStyle(_ userInterfaceStyle: UserInterfaceStyle) {
+    public static func setCurrentUserInterfaceStyle(_ userInterfaceStyle: UserInterfaceStyle, in window: UIWindow?) {
         if #available(iOS 13.0, *) {
             #if swift(>=5.1)
-            // Untested, this might change mode live
             let uiUserInterfaceStyle: UIUserInterfaceStyle = userInterfaceStyle == .dark ? .dark : .light
             let updatedTraits = UITraitCollection(traitsFrom: [UITraitCollection.current, UITraitCollection(userInterfaceStyle: uiUserInterfaceStyle)])
             UITraitCollection.current = updatedTraits
+            window?.overrideUserInterfaceStyle = uiUserInterfaceStyle
             #endif
         }
         UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)

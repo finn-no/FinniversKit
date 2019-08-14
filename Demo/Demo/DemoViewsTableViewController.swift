@@ -53,28 +53,28 @@ class DemoViewsTableViewController: UITableViewController {
     }
 
     private func updateMoonButton() {
-        if #available(iOS 13.0, *) {
-        } else {
-            guard FinniversKit.isDarkModeSupported else { return }
+        guard FinniversKit.isDarkModeSupported else { return }
 
-            let image: UIImage
-            switch UserInterfaceStyle(traitCollection: traitCollection) {
-            case .light:
-                image = UIImage(named: "emptyMoon")!
-            case .dark:
-                image = UIImage(named: "filledMoon")!
-            }
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(moonTapped))
+        let image: UIImage
+        switch UserInterfaceStyle(traitCollection: traitCollection) {
+        case .light:
+            image = UIImage(named: "emptyMoon")!
+        case .dark:
+            image = UIImage(named: "filledMoon")!
         }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(moonTapped))
     }
 
     // Moon is used to trigger dark mode in iOS 12 and bellow, in iOS 13 the moon is hidden.
     @objc private func moonTapped() {
         let newUserInterfaceStyle: UserInterfaceStyle = UserInterfaceStyle(traitCollection: traitCollection) == .light ? .dark : .light
-        UserInterfaceStyle.setCurrentUserInterfaceStyle(newUserInterfaceStyle)
+        UserInterfaceStyle.setCurrentUserInterfaceStyle(newUserInterfaceStyle, in: self.view.window)
 
-        let alertView = UIAlertController(title: "Updated style!", message: "Restart app to apply", preferredStyle: .alert)
-        present(alertView, animated: true, completion: nil)
+        if #available(iOS 13.0, *) {
+        } else {
+            let alertView = UIAlertController(title: "Updated style!", message: "Restart app to apply", preferredStyle: .alert)
+            present(alertView, animated: true, completion: nil)
+        }
     }
 
     private func updateColors(animated: Bool) {
