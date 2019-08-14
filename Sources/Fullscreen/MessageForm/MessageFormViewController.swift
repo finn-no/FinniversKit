@@ -199,9 +199,10 @@ extension MessageFormViewController: MessageFormToolbarDelegate {
             messageFormView.text = template.text
             lastUsedTemplate = template
         } else {
+            let alertStyle: UIAlertController.Style = UIDevice.isIPad() ? .alert : .actionSheet
             let alertController = UIAlertController(title: viewModel.replaceAlertTitle,
                                                     message: viewModel.replaceAlertMessage,
-                                                    preferredStyle: .actionSheet)
+                                                    preferredStyle: alertStyle)
 
             let cancelAction = UIAlertAction(title: viewModel.replaceAlertCancelText, style: .cancel)
             let replaceAction = UIAlertAction(title: viewModel.replaceAlertActionText, style: .default, handler: { [weak self] _ in
