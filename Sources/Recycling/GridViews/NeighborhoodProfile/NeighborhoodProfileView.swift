@@ -6,6 +6,7 @@ import UIKit
 
 public protocol NeighborhoodProfileViewDelegate: AnyObject {
     func neighborhoodProfileView(_ view: NeighborhoodProfileView, didSelectUrl: URL?)
+    func neighborhoodProfileViewDidScroll(_ view: NeighborhoodProfileView, reachedEnd: Bool)
 }
 
 public final class NeighborhoodProfileView: UIView {
@@ -247,11 +248,17 @@ extension NeighborhoodProfileView: UICollectionViewDelegate {
         withVelocity velocity: CGPoint,
         targetContentOffset: UnsafeMutablePointer<CGPoint>
     ) {
-        let center = CGPoint(x: targetContentOffset.pointee.x + scrollView.frame.midX, y: scrollView.frame.midY)
+        let targetOffsetX = targetContentOffset.pointee.x
+        let center = CGPoint(x: targetOffsetX + scrollView.frame.midX, y: scrollView.frame.midY)
 
         if let indexPath = collectionView.indexPathForItem(at: center) {
             pageControl.currentPage = indexPath.row
         }
+
+        let rightOffset = scrollView.horizontalRightOffset - .mediumLargeSpacing
+        let reachedEnd = targetOffsetX >= rightOffset
+
+        delegate?.neighborhoodProfileViewDidScroll(self, reachedEnd: reachedEnd)
     }
 }
 
@@ -315,5 +322,11 @@ private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
 private extension UICollectionView {
     var verticalContentInsets: CGFloat {
         return contentInset.top + contentInset.bottom
+    }
+}
+
+private extension UIScrollView {
+    var horizontalRightOffset: CGFloat {
+        return contentSize.width - bounds.width
     }
 }
