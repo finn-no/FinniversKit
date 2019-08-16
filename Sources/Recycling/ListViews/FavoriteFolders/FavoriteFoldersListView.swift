@@ -176,7 +176,7 @@ public class FavoriteFoldersListView: UIView {
         footerViewTop.constant = 0
         searchBarTop.constant = editing ? -searchBar.frame.height : 0
 
-        UIView.animate(withDuration: 0.1) { [weak self] in
+        UIView.animate(withDuration: editing ? 0.05 : 0.5) { [weak self] in
             self?.layoutIfNeeded()
         }
 
@@ -292,7 +292,9 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
 extension FavoriteFoldersListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        if !tableView.isEditing {
+            tableView.deselectRow(at: indexPath, animated: false)
+        }
 
         guard let section = Section(rawValue: indexPath.section) else { return }
 
@@ -307,6 +309,10 @@ extension FavoriteFoldersListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? RemoteImageTableViewCell else {
             return
+        }
+
+        if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row), viewModel.isSelected, tableView.isEditing {
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
 
         let isLastCell = indexPath.row == (self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1)
@@ -330,6 +336,16 @@ extension FavoriteFoldersListView: UITableViewDelegate {
             return false
         case .folders:
             return !viewModel.isDefault
+        }
+    }
+
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard let section = Section(rawValue: indexPath.section) else { return false }
+        switch section {
+        case .addButton:
+            return false
+        case .folders:
+            return true
         }
     }
 }
