@@ -82,7 +82,6 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         super.configure(with: viewModel)
 
         self.isEditable = isEditable
-
         let showDetailLabel = viewModel.detailText != nil
 
         stackViewToCheckmarkConstraint.isActive = !showDetailLabel
