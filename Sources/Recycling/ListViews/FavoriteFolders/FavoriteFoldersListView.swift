@@ -7,8 +7,8 @@ import UIKit
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListViewDidBeginRefreshing(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didSelectItemAtIndex index: Int)
-    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView)
-    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String)
+    func favoriteFoldersListView(_ view: FavoriteFoldersListView, didDeleteItemAtIndex index: Int)
+    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String?)
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
 }
@@ -161,18 +161,23 @@ public class FavoriteFoldersListView: UIView {
         tableView.reloadRows(at: [indexPath], with: animation)
     }
 
-    public func selectAllRows(animated: Bool) {
+    public func selectAllRows(_ selected: Bool, animated: Bool) {
         let section = Section.folders.rawValue
         let numberOfRows = tableView.numberOfRows(inSection: section)
 
         for row in 0..<numberOfRows {
             let indexPath = IndexPath(row: row, section: section)
-            tableView.selectRow(at: indexPath, animated: animated, scrollPosition: .none)
+
+            if selected {
+                tableView.selectRow(at: indexPath, animated: animated, scrollPosition: .none)
+            } else {
+                tableView.deselectRow(at: indexPath, animated: animated)
+            }
         }
     }
 
     public func setEditing(_ editing: Bool) {
-        guard tableView.isEditing != editing else {
+        guard tableView.isEditing != editing, viewModel.isEditable else {
             return
         }
 
@@ -255,6 +260,11 @@ public class FavoriteFoldersListView: UIView {
     private func showRefreshControl(_ show: Bool) {
         tableView.refreshControl = show ? refreshControl : nil
     }
+
+    private func canEditRow(at indexPath: IndexPath) -> Bool {
+        guard Section(rawValue: indexPath.section) == .folders else { return false }
+        return dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row).isDefault == false
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -300,25 +310,16 @@ extension FavoriteFoldersListView: UITableViewDataSource {
             return cell
         }
     }
+
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        delegate?.favoriteFoldersListView(self, didDeleteItemAtIndex: indexPath.row)
+    }
 }
 
 // MARK: - UITableViewDelegate
 
 extension FavoriteFoldersListView: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard !tableView.isEditing else { return }
-        guard let section = Section(rawValue: indexPath.section) else { return }
-
-        tableView.deselectRow(at: indexPath, animated: false)
-
-        switch section {
-        case .addButton:
-            delegate?.favoriteFoldersListViewDidSelectAddButton(self)
-        case .folders:
-            delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
-        }
-    }
-
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? RemoteImageTableViewCell else {
             return
@@ -335,26 +336,33 @@ extension FavoriteFoldersListView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         guard tableView.isEditing else { return true }
-        guard let section = Section(rawValue: indexPath.section) else { return false }
-        guard let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row) else {
-            return false
-        }
-
-        switch section {
-        case .addButton:
-            return false
-        case .folders:
-            return !viewModel.isDefault
-        }
+        return canEditRow(at: indexPath)
     }
 
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        guard let section = Section(rawValue: indexPath.section) else { return false }
+        if tableView.isEditing {
+            return Section(rawValue: indexPath.section) == .folders
+        } else {
+            return canEditRow(at: indexPath)
+        }
+    }
+
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return viewModel.isEditable ? .delete : .none
+    }
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section) else { return }
+
+        if !tableView.isEditing {
+            tableView.deselectRow(at: indexPath, animated: false)
+        }
+
         switch section {
         case .addButton:
-            return false
+            delegate?.favoriteFoldersListViewDidSelectAddButton(self, withSearchText: nil)
         case .folders:
-            return true
+            delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
         }
     }
 }
@@ -371,7 +379,7 @@ extension FavoriteFoldersListView: RefreshControlDelegate {
 
 extension FavoriteFoldersListView: FavoriteFoldersFooterViewDelegate {
     func favoriteFoldersFooterViewDidSelectButton(_ view: FavoriteFoldersFooterView) {
-        delegate?.favoriteFoldersListViewDidSelectAddButton(self)
+        delegate?.favoriteFoldersListViewDidSelectAddButton(self, withSearchText: nil)
     }
 }
 
