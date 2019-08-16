@@ -232,6 +232,7 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
         currentImageIndex = currentVC.imageIndex
         galleryDelegate?.fullscreenGalleryViewController(self, didSelectImageAtIndex: currentImageIndex)
         overlayView.scrollToImage(atIndex: currentImageIndex, animated: true)
+        previousVC.resetZoom()
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
