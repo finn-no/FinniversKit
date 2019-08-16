@@ -7,7 +7,6 @@ import UIKit
 public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     private let titleLabelDefaultFont: UIFont = .body
     private let titleLabelSelectedFont: UIFont = .bodyStrong
-    private var previousSeparatorInset: CGFloat = 0
     private var isEditable = true
 
     private lazy var checkmarkImageView: UIImageView = {
@@ -27,6 +26,11 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         view.isHidden = true
         return view
     }()
+
+    private lazy var stackViewToCheckmarkConstraint = stackView.trailingAnchor.constraint(
+        equalTo: checkmarkImageView.leadingAnchor,
+        constant: -.mediumLargeSpacing
+    )
 
     // MARK: - Init
 
@@ -78,7 +82,11 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         super.configure(with: viewModel)
 
         self.isEditable = isEditable
-        stackViewTrailingAnchorConstraint.isActive = false
+
+        let showDetailLabel = viewModel.detailText != nil
+
+        stackViewToCheckmarkConstraint.isActive = !showDetailLabel
+        stackViewTrailingAnchorConstraint.isActive = !stackViewToCheckmarkConstraint.isActive
 
         if isEditing {
             separatorInset = UIEdgeInsets.leadingInset((.largeSpacing + .smallSpacing) * 2 + viewModel.imageViewWidth)
@@ -86,7 +94,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             titleLabel.font = titleLabelSelectedFont
         }
 
-        checkmarkImageView.isHidden = !viewModel.isSelected || isEditing
+        checkmarkImageView.isHidden = !viewModel.isSelected || isEditing || showDetailLabel
         setNeedsLayout()
     }
 
@@ -104,7 +112,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
             checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            stackView.trailingAnchor.constraint(equalTo: checkmarkImageView.leadingAnchor, constant: -.mediumLargeSpacing),
+            stackViewToCheckmarkConstraint,
 
             editModeView.leadingAnchor.constraint(equalTo: leadingAnchor),
             editModeView.trailingAnchor.constraint(equalTo: contentView.leadingAnchor),
