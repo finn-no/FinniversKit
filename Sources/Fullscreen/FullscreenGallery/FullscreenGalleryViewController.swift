@@ -182,6 +182,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         return viewControllers?.first as? FullscreenImageViewController
     }
 
+    // Find remainder of both positiv and negative numbers
     private func remainder(_ number: Int, divider: Int) -> Int {
         return (number % divider + divider) % divider
     }
