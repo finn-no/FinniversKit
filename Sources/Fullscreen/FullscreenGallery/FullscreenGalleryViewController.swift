@@ -32,6 +32,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private let viewModel: FullscreenGalleryViewModel
     private let previewViewInitiallyVisible: Bool
 
+    private var currentPage: Int
     private var currentImageIndex: Int
     private var previewViewWasVisibleBeforePanning = false
     private var hasPerformedInitialPreviewScroll = false
@@ -78,6 +79,7 @@ public class FullscreenGalleryViewController: UIPageViewController {
         self.previewViewInitiallyVisible = previewVisible
         self.viewModel = viewModel
         self.currentImageIndex = viewModel.selectedIndex
+        self.currentPage = viewModel.selectedIndex
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [.interPageSpacing: CGFloat.largeSpacing])
 
         modalPresentationStyle = .overCurrentContext
@@ -179,24 +181,22 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private func currentImageViewController() -> FullscreenImageViewController? {
         return viewControllers?.first as? FullscreenImageViewController
     }
+
+    private func remainder(_ number: Int, divider: Int) -> Int {
+        return (number % divider + divider) % divider
+    }
 }
 
 // MARK: - UIPageViewControllerDataSource
 extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if let imageController = viewController as? FullscreenImageViewController {
-            return imageViewController(forIndex: imageController.imageIndex - 1)
-        }
-
-        return nil
+        let index = remainder(currentPage - 1, divider: viewModel.imageUrls.count)
+        return imageViewController(forIndex: index)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if let imageController = viewController as? FullscreenImageViewController {
-            return imageViewController(forIndex: imageController.imageIndex + 1)
-        }
-
-        return nil
+        let index = remainder(currentPage + 1, divider: viewModel.imageUrls.count)
+        return imageViewController(forIndex: index)
     }
 
     private func imageViewController(forIndex index: Int) -> FullscreenImageViewController? {
@@ -215,11 +215,21 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
 // MARK: - UIPageViewControllerDelegate
 extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
     public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard let imageVc = pageViewController.viewControllers?.first as? FullscreenImageViewController else {
+        guard let currentVC = pageViewController.viewControllers?.first as? FullscreenImageViewController else {
             return
         }
 
-        currentImageIndex = imageVc.imageIndex
+        guard let previousVC = previousViewControllers.first as? FullscreenImageViewController else {
+            return
+        }
+
+        guard completed else {
+            return
+        }
+
+        let increment = currentVC.imageIndex - previousVC.imageIndex
+        currentPage += increment
+        currentImageIndex = currentVC.imageIndex
         galleryDelegate?.fullscreenGalleryViewController(self, didSelectImageAtIndex: currentImageIndex)
         overlayView.scrollToImage(atIndex: currentImageIndex, animated: true)
     }
