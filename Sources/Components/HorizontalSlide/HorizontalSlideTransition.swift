@@ -5,10 +5,24 @@ import UIKit
 }
 
 public class HorizontalSlideTransition: NSObject, UIViewControllerTransitioningDelegate {
+
     @objc public weak var delegate: HorizontalSlideTransitionDelegate?
+    private var containerPercentage: CGFloat?
+
+    public convenience init(containerPercentage: CGFloat) {
+        self.init()
+        self.containerPercentage = containerPercentage
+    }
 
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        let presentationController = HorizontalSlideController(presentedViewController: presented, presenting: presenting)
+        var presentationController: HorizontalSlideController
+
+        if let containerPercentage = containerPercentage {
+            presentationController = HorizontalSlideController(presentedViewController: presented, presenting: presenting, containerPercentage: containerPercentage)
+        } else {
+            presentationController = HorizontalSlideController(presentedViewController: presented, presenting: presenting)
+        }
+
         presentationController.dismissalDelegate = self
         return presentationController
     }
