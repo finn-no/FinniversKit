@@ -52,7 +52,7 @@ public class ReviewView: UIView {
     }()
 
     private lazy var label: Label = {
-        let label = Label(style: Label.Style.detail)
+        let label = Label(style: Label.Style.caption)
         label.textAlignment = .center
         label.isEnabled = false
         return label
