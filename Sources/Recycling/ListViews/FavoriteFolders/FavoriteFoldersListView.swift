@@ -168,6 +168,8 @@ public class FavoriteFoldersListView: UIView {
         for row in 0..<numberOfRows {
             let indexPath = IndexPath(row: row, section: section)
 
+            guard canEditRow(at: indexPath) else { continue }
+
             if selected {
                 tableView.selectRow(at: indexPath, animated: animated, scrollPosition: .none)
             } else {
