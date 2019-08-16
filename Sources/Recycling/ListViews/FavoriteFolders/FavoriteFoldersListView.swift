@@ -47,6 +47,10 @@ public class FavoriteFoldersListView: UIView {
     public weak var delegate: FavoriteFoldersListViewDelegate?
     public weak var dataSource: FavoriteFoldersListViewDataSource?
 
+    public var selectedIndices: [Int] {
+        return tableView.indexPathsForSelectedRows?.map({ $0.row }) ?? []
+    }
+
     // MARK: - Private properties
 
     private let viewModel: FavoriteFoldersListViewModel
@@ -155,6 +159,16 @@ public class FavoriteFoldersListView: UIView {
 
         let indexPath = IndexPath(row: index, section: section)
         tableView.reloadRows(at: [indexPath], with: animation)
+    }
+
+    public func selectAllRows(animated: Bool) {
+        let section = Section.folders.rawValue
+        let numberOfRows = tableView.numberOfRows(inSection: section)
+
+        for row in 0..<numberOfRows {
+            let indexPath = IndexPath(row: row, section: section)
+            tableView.selectRow(at: indexPath, animated: animated, scrollPosition: .none)
+        }
     }
 
     public func setEditing(_ editing: Bool) {
@@ -292,11 +306,10 @@ extension FavoriteFoldersListView: UITableViewDataSource {
 
 extension FavoriteFoldersListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !tableView.isEditing {
-            tableView.deselectRow(at: indexPath, animated: false)
-        }
-
+        guard !tableView.isEditing else { return }
         guard let section = Section(rawValue: indexPath.section) else { return }
+
+        tableView.deselectRow(at: indexPath, animated: false)
 
         switch section {
         case .addButton:
@@ -309,10 +322,6 @@ extension FavoriteFoldersListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? RemoteImageTableViewCell else {
             return
-        }
-
-        if let viewModel = dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row), viewModel.isSelected, tableView.isEditing {
-            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
 
         let isLastCell = indexPath.row == (self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1)

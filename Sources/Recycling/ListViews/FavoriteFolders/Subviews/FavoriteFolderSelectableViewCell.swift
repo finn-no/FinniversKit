@@ -77,27 +77,23 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         super.configure(with: viewModel)
 
         self.isEditable = isEditable
-        tintColor = .primaryBlue
-
         stackViewTrailingAnchorConstraint.isActive = false
 
         if isEditing {
             separatorInset = UIEdgeInsets.leadingInset((.largeSpacing + .smallSpacing) * 2 + viewModel.imageViewWidth)
-            if viewModel.isSelected {
-                setSelected(true, animated: false)
-            }
         } else if viewModel.isSelected {
             titleLabel.font = titleLabelSelectedFont
         }
 
         checkmarkImageView.isHidden = !viewModel.isSelected || isEditing
-
         setNeedsLayout()
     }
 
     // MARK: - Private methods
 
     private func setup() {
+        tintColor = .primaryBlue
+
         contentView.addSubview(checkmarkImageView)
         addSubview(editModeView)
 
