@@ -41,11 +41,6 @@ class HorizontalSlideController: UIPresentationController {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
 
-    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
-        self.containerPercentage = UIDevice.current.userInterfaceIdiom == .pad ? 0.60 : 0.85
-        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-    }
-
     // MARK: - Overrides
 
     override var frameOfPresentedViewInContainerView: CGRect {

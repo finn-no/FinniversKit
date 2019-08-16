@@ -7,22 +7,25 @@ import UIKit
 public class HorizontalSlideTransition: NSObject, UIViewControllerTransitioningDelegate {
 
     @objc public weak var delegate: HorizontalSlideTransitionDelegate?
-    private var containerPercentage: CGFloat?
 
-    public convenience init(containerPercentage: CGFloat) {
-        self.init()
+    private let containerPercentage: CGFloat
+
+    // MARK: - Init
+
+    public init(containerPercentage: CGFloat) {
         self.containerPercentage = containerPercentage
+        super.init()
     }
 
+    public override init() {
+        self.containerPercentage = UIDevice.current.userInterfaceIdiom == .pad ? 0.60 : 0.85
+        super.init()
+    }
+
+    // MARK: - UIViewControllerTransitioningDelegate
+
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        var presentationController: HorizontalSlideController
-
-        if let containerPercentage = containerPercentage {
-            presentationController = HorizontalSlideController(presentedViewController: presented, presenting: presenting, containerPercentage: containerPercentage)
-        } else {
-            presentationController = HorizontalSlideController(presentedViewController: presented, presenting: presenting)
-        }
-
+        let presentationController = HorizontalSlideController(presentedViewController: presented, presenting: presenting, containerPercentage: containerPercentage)
         presentationController.dismissalDelegate = self
         return presentationController
     }
