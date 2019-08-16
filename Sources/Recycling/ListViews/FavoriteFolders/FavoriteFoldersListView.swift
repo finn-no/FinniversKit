@@ -47,10 +47,6 @@ public class FavoriteFoldersListView: UIView {
     public weak var delegate: FavoriteFoldersListViewDelegate?
     public weak var dataSource: FavoriteFoldersListViewDataSource?
 
-    public var selectedIndices: [Int] {
-        return tableView.indexPathsForSelectedRows?.map({ $0.row }) ?? []
-    }
-
     // MARK: - Private properties
 
     private let viewModel: FavoriteFoldersListViewModel
