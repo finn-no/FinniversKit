@@ -61,10 +61,11 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     public override func willTransition(to state: UITableViewCell.StateMask) {
         super.willTransition(to: state)
         bringSubviewToFront(editModeView)
+
+        contentView.alpha = state == .showingEditControl && !isEditable ? 0.5 : 1
         editModeView.isHidden = isEditable
         titleLabel.font = titleLabelDefaultFont
         checkmarkImageView.isHidden = true
-        contentView.alpha = state == .showingEditControl && !isEditable ? 0.5 : 1
     }
 
     public override func didTransition(to state: UITableViewCell.StateMask) {
