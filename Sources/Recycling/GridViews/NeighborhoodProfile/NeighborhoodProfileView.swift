@@ -6,23 +6,17 @@ import UIKit
 
 public protocol NeighborhoodProfileViewDelegate: AnyObject {
     func neighborhoodProfileView(_ view: NeighborhoodProfileView, didSelectUrl: URL?)
+    func neighborhoodProfileViewDidScroll(_ view: NeighborhoodProfileView, reachedEnd: Bool)
 }
 
 public final class NeighborhoodProfileView: UIView {
+    private static let headerSpacingTop: CGFloat = 24
     private static let cellWidth: CGFloat = 204
     private static var minimumCellHeight: CGFloat { return cellWidth }
 
     // MARK: - Public properties
 
     public weak var delegate: NeighborhoodProfileViewDelegate?
-
-    public var title = "" {
-        didSet { headerView.title = title }
-    }
-
-    public var buttonTitle = "" {
-        didSet { headerView.buttonTitle = buttonTitle }
-    }
 
     // MARK: - Private properties
 
@@ -101,6 +95,9 @@ public final class NeighborhoodProfileView: UIView {
     public func configure(with viewModel: NeighborhoodProfileViewModel) {
         self.viewModel = viewModel
 
+        headerView.title = viewModel.title
+        headerView.buttonTitle = viewModel.readMoreLink?.title ?? ""
+
         resetPageControl()
         resetCollectionViewLayout()
         collectionView.reloadData()
@@ -123,9 +120,19 @@ public final class NeighborhoodProfileView: UIView {
         withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
         verticalFittingPriority: UILayoutPriority
     ) -> CGSize {
+        var height = NeighborhoodProfileView.headerSpacingTop
+        height += NeighborhoodProfileHeaderView.height(forTitle: viewModel.title, width: targetSize.width)
+        height += .mediumSpacing + collectionViewHeight(forItemHeight: calculateItemSize().height)
+
+        if isPagingEnabled {
+            height += pageControl.intrinsicContentSize.height + .mediumSpacing
+        } else {
+            height += .mediumLargeSpacing
+        }
+
         return CGSize(
             width: targetSize.width,
-            height: collectionViewHeight(forItemHeight: calculateItemSize().height)
+            height: height
         )
     }
 
@@ -142,7 +149,7 @@ public final class NeighborhoodProfileView: UIView {
         }
 
         var constraints = [
-            headerView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
+            headerView.topAnchor.constraint(equalTo: topAnchor, constant: NeighborhoodProfileView.headerSpacingTop),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
@@ -241,11 +248,17 @@ extension NeighborhoodProfileView: UICollectionViewDelegate {
         withVelocity velocity: CGPoint,
         targetContentOffset: UnsafeMutablePointer<CGPoint>
     ) {
-        let center = CGPoint(x: targetContentOffset.pointee.x + scrollView.frame.midX, y: scrollView.frame.midY)
+        let targetOffsetX = targetContentOffset.pointee.x
+        let center = CGPoint(x: targetOffsetX + scrollView.frame.midX, y: scrollView.frame.midY)
 
         if let indexPath = collectionView.indexPathForItem(at: center) {
             pageControl.currentPage = indexPath.row
         }
+
+        let rightOffset = scrollView.horizontalRightOffset - .mediumLargeSpacing
+        let reachedEnd = targetOffsetX >= rightOffset
+
+        delegate?.neighborhoodProfileViewDidScroll(self, reachedEnd: reachedEnd)
     }
 }
 
@@ -309,5 +322,11 @@ private final class PagingCollectionViewLayout: UICollectionViewFlowLayout {
 private extension UICollectionView {
     var verticalContentInsets: CGFloat {
         return contentInset.top + contentInset.bottom
+    }
+}
+
+private extension UIScrollView {
+    var horizontalRightOffset: CGFloat {
+        return contentSize.width - bounds.width
     }
 }

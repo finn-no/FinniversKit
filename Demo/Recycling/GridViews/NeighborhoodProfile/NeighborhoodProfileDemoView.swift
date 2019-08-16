@@ -9,8 +9,6 @@ final class NeighborhoodProfileDemoView: UIView {
     private lazy var view: NeighborhoodProfileView = {
         let view = NeighborhoodProfileView(withAutoLayout: true)
         view.delegate = self
-        view.title = "Om nabolaget"
-        view.buttonTitle = "Utforsk"
         view.configure(with: .demo)
         return view
     }()
@@ -41,6 +39,10 @@ final class NeighborhoodProfileDemoView: UIView {
 // MARK: - NeighborhoodProfileViewDelegate
 
 extension NeighborhoodProfileDemoView: NeighborhoodProfileViewDelegate {
+    func neighborhoodProfileViewDidScroll(_ view: NeighborhoodProfileView, reachedEnd: Bool) {
+        print("Did scroll, reached end: \(reachedEnd)")
+    }
+
     func neighborhoodProfileView(_ view: NeighborhoodProfileView, didSelectUrl url: URL?) {
         print("\(String(describing: url)) selected")
     }
