@@ -62,6 +62,9 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         super.willTransition(to: state)
         bringSubviewToFront(editModeView)
         editModeView.isHidden = isEditable
+        titleLabel.font = titleLabelDefaultFont
+        checkmarkImageView.isHidden = true
+        contentView.alpha = state == .showingEditControl && !isEditable ? 0.5 : 1
     }
 
     public override func didTransition(to state: UITableViewCell.StateMask) {
@@ -74,6 +77,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         super.configure(with: viewModel)
 
         self.isEditable = isEditable
+        tintColor = .primaryBlue
 
         stackViewTrailingAnchorConstraint.isActive = false
 
@@ -88,7 +92,6 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
         checkmarkImageView.isHidden = !viewModel.isSelected || isEditing
 
-        contentView.alpha = isEditing && !isEditable ? 0.5 : 1
         setNeedsLayout()
     }
 

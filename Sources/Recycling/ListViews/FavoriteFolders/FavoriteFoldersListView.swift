@@ -176,7 +176,7 @@ public class FavoriteFoldersListView: UIView {
         footerViewTop.constant = 0
         searchBarTop.constant = editing ? -searchBar.frame.height : 0
 
-        UIView.animate(withDuration: editing ? 0.05 : 0.5) { [weak self] in
+        UIView.animate(withDuration: 0.3) { [weak self] in
             self?.layoutIfNeeded()
         }
 
