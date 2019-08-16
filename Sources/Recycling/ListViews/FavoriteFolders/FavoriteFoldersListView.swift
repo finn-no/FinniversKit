@@ -263,6 +263,17 @@ public class FavoriteFoldersListView: UIView {
         guard Section(rawValue: indexPath.section) == .folders else { return false }
         return dataSource?.favoriteFoldersListView(self, viewModelAtIndex: indexPath.row).isDefault == false
     }
+
+    private func selectRow(at indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section) else { return }
+
+        switch section {
+        case .addButton:
+            delegate?.favoriteFoldersListViewDidSelectAddButton(self, withSearchText: nil)
+        case .folders:
+            delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -350,18 +361,15 @@ extension FavoriteFoldersListView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let section = Section(rawValue: indexPath.section) else { return }
-
         if !tableView.isEditing {
             tableView.deselectRow(at: indexPath, animated: false)
         }
 
-        switch section {
-        case .addButton:
-            delegate?.favoriteFoldersListViewDidSelectAddButton(self, withSearchText: nil)
-        case .folders:
-            delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
-        }
+        selectRow(at: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        selectRow(at: indexPath)
     }
 }
 
