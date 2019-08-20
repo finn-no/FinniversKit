@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol FavoriteActionsListViewDelegate: AnyObject {
-    func favoriteFoldersListView(_ view: FavoriteActionsListView, didSelectItemAtIndex index: Int)
+    func favoriteActionsListView(_ view: FavoriteActionsListView, didSelectItemAtIndex index: Int)
 }
 
 public protocol FavoriteActionsListViewDataSource: AnyObject {
@@ -46,6 +46,20 @@ public final class FavoriteActionsListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Data
+
+    public func reloadData() {
+        tableView.reloadData()
+    }
+
+    public func insertRow(at index: Int) {
+        tableView.insertRows(at: [IndexPath(index: index)], with: .automatic)
+    }
+
+    public func deleteRow(at index: Int) {
+        tableView.deleteRows(at: [IndexPath(index: index)], with: .automatic)
+    }
+
     // MARK: - Setup
 
     private func setup() {
@@ -64,7 +78,7 @@ extension FavoriteActionsListView: UITableViewDataSource {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
 
         if let viewModel = dataSource?.favoriteActionsListView(self, viewModelAtIndex: indexPath.row) {
-            
+
         }
 
         return cell
@@ -75,6 +89,6 @@ extension FavoriteActionsListView: UITableViewDataSource {
 
 extension FavoriteActionsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        delegate?.favoriteActionsListView(self, didSelectItemAtIndex: indexPath.row)
     }
 }

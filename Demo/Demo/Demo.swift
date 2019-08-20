@@ -193,6 +193,7 @@ public enum Cells: String, CaseIterable {
 public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
+    case favoriteActionsListView
     case favoritesListView
     case savedSearchesListView
     case marketsGridView
@@ -219,6 +220,8 @@ public enum RecyclingViews: String, CaseIterable {
             navigationController.navigationBar.shadowImage = UIImage()
 
             return navigationController
+        case .favoriteActionsListView:
+            return DemoViewController<FavoriteActionsListDemoView>()
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:
