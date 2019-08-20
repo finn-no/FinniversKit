@@ -35,7 +35,7 @@ public class HorizontalSlideTransition: NSObject, UIViewControllerTransitioningD
 
     // MARK: - Init
 
-    public init(size containerSize: ContainerSize) {
+    public init(containerSize: ContainerSize) {
         self.containerSize = containerSize
         super.init()
     }
