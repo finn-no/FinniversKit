@@ -8,10 +8,12 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
     private var allFavorites = FavoriteFoldersFactory.create() { didSet { filterFolders() } }
     private var filteredFavorites = [FavoriteFolder]()
     private var filterString = ""
+    private var isEditing = false
     private let viewModel = FavoriteFoldersListViewModel(
         searchBarPlaceholder: "Søk etter en av dine lister",
         addFolderText: "Lag ny liste",
-        emptyViewBodyPrefix: "Du har ingen lister med navnet"
+        emptyViewBodyPrefix: "Du har ingen lister med navnet",
+        isEditable: true
     )
 
     private(set) lazy var view: FavoriteFoldersListView = {
@@ -24,10 +26,12 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = {
         return [
             TweakingOption(title: "Toggle mode", description: nil) { [weak self] in
+                self?.isEditing = false
                 self?.allFavorites = FavoriteFoldersFactory.create()
                 self?.view.setEditing(false)
             },
             TweakingOption(title: "Edit mode", description: nil) { [weak self] in
+                self?.isEditing = true
                 self?.allFavorites = FavoriteFoldersFactory.create(withSelectedItems: false)
                 self?.view.setEditing(true)
             }
@@ -67,22 +71,26 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
         })
     }
 
-    func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView,
-                                 didSelectItemAtIndex index: Int) {
+    func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didSelectItemAtIndex index: Int) {
+        guard !isEditing else {
+            return
+        }
+
         let folderId = filteredFavorites[index].id
         guard let folderIndex = allFavorites.firstIndex(where: { $0.id == folderId }) else { return }
+
         allFavorites[folderIndex].isSelected.toggle()
         view.reloadRow(at: index)
     }
-
-    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView) {}
-    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String) {}
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String) {
         filterString = searchText.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         filterFolders()
         view.reloadData()
     }
+
+    func favoriteFoldersListView(_ favoriteFoldersListView: FavoriteFoldersListView, didDeleteItemAtIndex index: Int) {}
+    func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String?) {}
 
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView) {
         // Set bottomSheet to expanded here, if needed.
