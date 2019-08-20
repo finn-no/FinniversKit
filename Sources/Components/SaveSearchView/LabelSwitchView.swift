@@ -4,7 +4,12 @@
 
 class LabelSwitchView: UIView {
     var isOn: Bool {
-        return uiSwitch.isOn
+        get {
+            return uiSwitch.isOn
+        }
+        set {
+            uiSwitch.isOn = newValue
+        }
     }
 
     // MARK: - Private properties

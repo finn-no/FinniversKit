@@ -14,15 +14,30 @@ public class SaveSearchView: UIView {
     public weak var delegate: SaveSearchViewDelegate?
 
     public var isPushOn: Bool {
-        return pushSwitchView.isOn
+        get {
+            return pushSwitchView.isOn
+        }
+        set {
+            pushSwitchView.isOn = newValue
+        }
     }
 
     public var isEmailOn: Bool {
-        return emailSwitchView.isOn
+        get {
+            return emailSwitchView.isOn
+        }
+        set {
+            emailSwitchView.isOn = newValue
+        }
     }
 
     public var searchNameText: String? {
-        return searchNameTextField.text
+        get {
+            return searchNameTextField.text
+        }
+        set {
+            searchNameTextField.textField.text = newValue
+        }
     }
 
     // MARK: - Private properties
