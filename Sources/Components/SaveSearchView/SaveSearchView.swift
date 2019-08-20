@@ -97,12 +97,12 @@ public class SaveSearchView: UIView {
         )
     }
 
-    public override func becomeFirstResponder() -> Bool {
-        return searchNameTextField.becomeFirstResponder()
+    @discardableResult public override func becomeFirstResponder() -> Bool {
+        return searchNameTextField.textField.becomeFirstResponder()
     }
 
-    public override func resignFirstResponder() -> Bool {
-        return searchNameTextField.resignFirstResponder()
+    @discardableResult public override func resignFirstResponder() -> Bool {
+        return searchNameTextField.textField.resignFirstResponder()
     }
 
     // MARK: - Private methods
