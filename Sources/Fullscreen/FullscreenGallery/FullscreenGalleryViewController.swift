@@ -184,6 +184,10 @@ public class FullscreenGalleryViewController: UIPageViewController {
 
     // Find remainder of both positiv and negative numbers
     private func remainder(_ number: Int, divider: Int) -> Int {
+        guard divider > 0 else {
+            return number
+        }
+
         return (number % divider + divider) % divider
     }
 }
@@ -191,12 +195,22 @@ public class FullscreenGalleryViewController: UIPageViewController {
 // MARK: - UIPageViewControllerDataSource
 extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let index = remainder(currentPage - 1, divider: viewModel.imageUrls.count)
+        var index = currentPage - 1
+
+        if viewModel.imageUrls.count > 1 {
+            index = remainder(currentPage - 1, divider: viewModel.imageUrls.count)
+        }
+
         return imageViewController(forIndex: index)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let index = remainder(currentPage + 1, divider: viewModel.imageUrls.count)
+        var index = currentPage + 1
+
+        if viewModel.imageUrls.count > 1 {
+            index = remainder(currentPage + 1, divider: viewModel.imageUrls.count)
+        }
+
         return imageViewController(forIndex: index)
     }
 
