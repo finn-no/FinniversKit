@@ -72,10 +72,6 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
         checkmarkImageView.isHidden = true
     }
 
-    public override func didTransition(to state: UITableViewCell.StateMask) {
-        super.didTransition(to: state)
-    }
-
     // MARK: - Public
 
     public func configure(with viewModel: FavoriteFolderViewModel, isEditing: Bool, isEditable: Bool) {
