@@ -345,6 +345,8 @@
 		CF7C460922257A8A001FB92C /* EarthHourViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C460322257A8A001FB92C /* EarthHourViewModel.swift */; };
 		CF7C460E22257AE1001FB92C /* EarthHourDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C460C22257AE1001FB92C /* EarthHourDefaultData.swift */; };
 		CF7C460F22257AE1001FB92C /* EarthHourDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C460D22257AE1001FB92C /* EarthHourDemoView.swift */; };
+		CF7E7B51230C2876001D514E /* FavoriteActionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B50230C2876001D514E /* FavoriteActionsListView.swift */; };
+		CF7E7B53230C2A7A001D514E /* FavoriteActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B52230C2A7A001D514E /* FavoriteActionViewModel.swift */; };
 		CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF848C2B21C7E0860086530E /* CogWheelButton.swift */; };
 		CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF848C2E21C7E3010086530E /* CogWheelButtonDemoView.swift */; };
 		CF87A855229C0C5700DA8243 /* ContactFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87A852229C0C5700DA8243 /* ContactFormViewModel.swift */; };
@@ -824,6 +826,8 @@
 		CF7C460322257A8A001FB92C /* EarthHourViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourViewModel.swift; sourceTree = "<group>"; };
 		CF7C460C22257AE1001FB92C /* EarthHourDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDefaultData.swift; sourceTree = "<group>"; };
 		CF7C460D22257AE1001FB92C /* EarthHourDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDemoView.swift; sourceTree = "<group>"; };
+		CF7E7B50230C2876001D514E /* FavoriteActionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionsListView.swift; sourceTree = "<group>"; };
+		CF7E7B52230C2A7A001D514E /* FavoriteActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionViewModel.swift; sourceTree = "<group>"; };
 		CF848C2B21C7E0860086530E /* CogWheelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CogWheelButton.swift; sourceTree = "<group>"; };
 		CF848C2E21C7E3010086530E /* CogWheelButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CogWheelButtonDemoView.swift; sourceTree = "<group>"; };
 		CF87A852229C0C5700DA8243 /* ContactFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormViewModel.swift; sourceTree = "<group>"; };
@@ -1316,11 +1320,12 @@
 			isa = PBXGroup;
 			children = (
 				6266C06A22081B9200FB8004 /* AdManagement */,
-				DAC7DCA12153852D004602A3 /* Settings */,
-				14C6F7CC212324C900A7230C /* Favorites */,
 				444245FA2137D60400D42AB8 /* FavoriteFolders */,
-				44A149E421377C7B0053D5F7 /* SavedSearches */,
+				14C6F7CC212324C900A7230C /* Favorites */,
+				CF7E7B4F230C27F8001D514E /* FavoritesActions */,
 				441FE441209A2F2C00B04EF1 /* Notifications */,
+				44A149E421377C7B0053D5F7 /* SavedSearches */,
+				DAC7DCA12153852D004602A3 /* Settings */,
 				F26852D121F7525B000978C8 /* UserAds */,
 			);
 			path = ListViews;
@@ -2398,6 +2403,15 @@
 				CF7C460D22257AE1001FB92C /* EarthHourDemoView.swift */,
 			);
 			path = EarthHour;
+			sourceTree = "<group>";
+		};
+		CF7E7B4F230C27F8001D514E /* FavoritesActions */ = {
+			isa = PBXGroup;
+			children = (
+				CF7E7B50230C2876001D514E /* FavoriteActionsListView.swift */,
+				CF7E7B52230C2A7A001D514E /* FavoriteActionViewModel.swift */,
+			);
+			path = FavoritesActions;
 			sourceTree = "<group>";
 		};
 		CF848C2921C7E0690086530E /* Button */ = {
@@ -3706,6 +3720,7 @@
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */,
 				DAC7DCAE2153866E004602A3 /* SettingsViewCell.swift in Sources */,
+				CF7E7B51230C2876001D514E /* FavoriteActionsListView.swift in Sources */,
 				4441F9F922CF81F700DCFD2F /* AddressCardView.swift in Sources */,
 				CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
@@ -3741,6 +3756,7 @@
 				DA8EF1242164E7AF0028740C /* ConsentToggleView.swift in Sources */,
 				899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */,
 				444246032137D60400D42AB8 /* FavoriteFolderViewModel.swift in Sources */,
+				CF7E7B53230C2A7A001D514E /* FavoriteActionViewModel.swift in Sources */,
 				8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */,
 				DAAAC8FD21C14FEE0071B028 /* FireworksView.swift in Sources */,
 				DAE738C422C4BE44001C69E3 /* CarouselView.swift in Sources */,
