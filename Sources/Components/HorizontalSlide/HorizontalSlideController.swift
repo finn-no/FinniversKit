@@ -10,7 +10,8 @@ class HorizontalSlideController: UIPresentationController {
 
     // MARK: - Properties
 
-    private let containerPercentage: CGFloat
+    private var containerPercentage: CGFloat
+    private var containerPercentageSupplier: () -> CGFloat
 
     private lazy var dimmingView: UIView = {
         let dimmingView = UIView()
@@ -36,9 +37,16 @@ class HorizontalSlideController: UIPresentationController {
     ///   - presentedViewController: The view controller being presented modally.
     ///   - presentingViewController: The view controller whose content represents the starting point of the transition.
     ///   - containerPercentage: The width of the container for the view controller being presented modally
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, containerPercentage: CGFloat) {
-        self.containerPercentage = containerPercentage
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, containerPercentageSupplier: @escaping () -> CGFloat) {
+        self.containerPercentage = containerPercentageSupplier()
+        self.containerPercentageSupplier = containerPercentageSupplier
+
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.containerPercentage = self.containerPercentageSupplier()
     }
 
     // MARK: - Overrides
