@@ -119,7 +119,7 @@ public class SaveSearchView: UIView {
 
         NSLayoutConstraint.activate([
             searchNameContainer.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor),
-            searchNameContainer.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumSpacing),
+            searchNameContainer.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
             searchNameContainer.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor),
             searchNameContainer.heightAnchor.constraint(equalToConstant: 65.0),
 
