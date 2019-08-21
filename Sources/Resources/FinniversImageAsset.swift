@@ -17,6 +17,7 @@ public extension UIImage {
     }
 }
 
+//swiftlint:disable type_body_length
 public enum FinniversImageAsset: String {
     case adManagementShare
     case adManagementTrashcan
