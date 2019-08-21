@@ -2,7 +2,13 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
+protocol LabelSwitchViewDelegate: AnyObject {
+    func labelSwitchViewValueChanged(_ labelSwitchView: LabelSwitchView)
+}
+
 class LabelSwitchView: UIView {
+    weak var delegate: LabelSwitchViewDelegate?
+
     var isOn: Bool {
         get {
             return uiSwitch.isOn
@@ -32,6 +38,7 @@ class LabelSwitchView: UIView {
     private lazy var uiSwitch: UISwitch = {
         let uiSwitch = UISwitch(withAutoLayout: true)
         uiSwitch.onTintColor = .primaryBlue
+        uiSwitch.addTarget(self, action: #selector(swichValueChanged), for: .valueChanged)
         return uiSwitch
     }()
 
@@ -72,6 +79,10 @@ class LabelSwitchView: UIView {
             uiSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             uiSwitch.centerYAnchor.constraint(equalTo: centerYAnchor),
             uiSwitch.widthAnchor.constraint(equalToConstant: 49.0)
-            ])
+        ])
+    }
+
+    @objc private func swichValueChanged() {
+        delegate?.labelSwitchViewValueChanged(self)
     }
 }

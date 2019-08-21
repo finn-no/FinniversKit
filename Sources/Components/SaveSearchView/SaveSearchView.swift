@@ -6,6 +6,8 @@ import UIKit
 
 public protocol SaveSearchViewDelegate: AnyObject {
     func saveSearchViewTextFieldWillReturn(_ saveSearchView: SaveSearchView)
+    func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsPushOn: Bool)
+    func saveSearchView(_ saveSearchView: SaveSearchView, didUpdateIsEmailOn: Bool)
 }
 
 public class SaveSearchView: UIView {
@@ -19,6 +21,7 @@ public class SaveSearchView: UIView {
         }
         set {
             pushSwitchView.isOn = newValue
+            delegate?.saveSearchView(self, didUpdateIsPushOn: newValue)
         }
     }
 
@@ -28,6 +31,7 @@ public class SaveSearchView: UIView {
         }
         set {
             emailSwitchView.isOn = newValue
+            delegate?.saveSearchView(self, didUpdateIsEmailOn: newValue)
         }
     }
 
@@ -54,11 +58,13 @@ public class SaveSearchView: UIView {
 
     private lazy var pushSwitchView: LabelSwitchView = {
         let view = LabelSwitchView(withAutoLayout: true)
+        view.delegate = self
         return view
     }()
 
     private lazy var emailSwitchView: LabelSwitchView = {
         let view = LabelSwitchView(withAutoLayout: true)
+        view.delegate = self
         return view
     }()
 
@@ -147,5 +153,17 @@ extension SaveSearchView: TextFieldDelegate {
     public func textFieldShouldReturn(_ textField: TextField) -> Bool {
         delegate?.saveSearchViewTextFieldWillReturn(self)
         return true
+    }
+}
+
+extension SaveSearchView: LabelSwitchViewDelegate {
+    func labelSwitchViewValueChanged(_ labelSwitchView: LabelSwitchView) {
+        if labelSwitchView == pushSwitchView {
+            delegate?.saveSearchView(self, didUpdateIsPushOn: isPushOn)
+        }
+
+        if labelSwitchView == emailSwitchView {
+            delegate?.saveSearchView(self, didUpdateIsEmailOn: isEmailOn)
+        }
     }
 }
