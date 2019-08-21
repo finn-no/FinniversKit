@@ -120,15 +120,13 @@ public class FavoriteFoldersListView: UIView {
     public func reloadData() {
         showEmptyViewIfNeeded()
 
-        if !tableView.isEditing {
+        if isSearchActive {
             UIView.animate(withDuration: 0.35, animations: { [weak self] in
                 guard let self = self else { return }
-                self.footerViewTop.constant = self.isSearchActive ? -self.footerHeight : 0
+                self.footerViewTop.constant = -self.footerHeight
                 self.layoutIfNeeded()
             })
-        }
 
-        if !refreshControl.isRefreshing && tableView.isEditing {
             tableView.setContentOffset(.zero, animated: false)
         }
 
