@@ -13,6 +13,6 @@ import UIKit
 ///
 /// If any one of the MessageFormCommittableViewController has uncommitted changes, the dismissal
 /// will be interrupted.
-protocol MessageFormCommittableViewController where Self : UIViewController {
+protocol MessageFormCommittableViewController where Self: UIViewController {
     var hasUncommittedChanges: Bool { get }
 }

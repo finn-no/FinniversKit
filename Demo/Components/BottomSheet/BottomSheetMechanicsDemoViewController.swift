@@ -112,9 +112,13 @@ class RootViewController: UIViewController {
 class BottomSheetMechanicsDemoViewController: UIViewController {
     private lazy var requireConfirmationOnDragSwitch: SwitchView = {
         let switchView = SwitchView(withAutoLayout: true)
-        switchView.model = SwitchViewDefaultModel(headerText: "Confirm Dismiss",
-                                                  onDescriptionText: "Bottom sheets require confirmation before they can be dismissed.",
-                                                  offDescriptionText: "Bottom sheets can be freely dismissed by dragging and tapping.")
+        switchView.configure(with:
+            SwitchViewDefaultModel(
+                title: "Confirm Dismiss",
+                detail: "Set if bottom sheets require confirmation before they can be dismissed.",
+                initialSwitchValue: true
+            )
+        )
         switchView.isOn = false
         return switchView
     }()
