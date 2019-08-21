@@ -39,7 +39,6 @@ final class FavoriteActionViewCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        separatorInset = .leadingInset(FavoriteActionViewCell.separatorLeadingInset)
         setDefaultSelectedBackgound()
 
         contentView.addSubview(iconImageView)

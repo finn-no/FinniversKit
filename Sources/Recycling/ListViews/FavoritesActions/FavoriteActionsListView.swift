@@ -80,12 +80,17 @@ public final class FavoriteActionsListView: UIView {
             return
         }
 
-        let indexPaths = [IndexPath(row: index + 1, section: 0)]
+        let shareIndexPath = IndexPath(row: index, section: 0)
+        let copyLinkIndexPath = IndexPath(row: index + 1, section: 0)
 
         if show {
-            tableView.insertRows(at: indexPaths, with: .automatic)
+            tableView.insertRows(at: [copyLinkIndexPath], with: .automatic)
         } else {
-            tableView.deleteRows(at: indexPaths, with: .automatic)
+            tableView.deleteRows(at: [copyLinkIndexPath], with: .automatic)
+        }
+
+        if let cell = tableView.cellForRow(at: shareIndexPath) {
+            cell.hideSepatator(show)
         }
     }
 }
@@ -133,6 +138,14 @@ extension FavoriteActionsListView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension FavoriteActionsListView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let action = actions[indexPath.row]
+        let isLastCell = indexPath.row == actions.count - 1
+        let hideSeparator = isLastCell || (action == .share && isShared) || action == .copyLink
+
+        cell.hideSepatator(hideSeparator)
+    }
+
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let action = actions[indexPath.row]
 
@@ -173,5 +186,12 @@ private final class TableView: UITableView {
         if bounds.size != intrinsicContentSize {
             invalidateIntrinsicContentSize()
         }
+    }
+}
+
+private extension UITableViewCell {
+    func hideSepatator(_ hide: Bool) {
+        let inset = hide ? frame.width : FavoriteActionViewCell.separatorLeadingInset
+        separatorInset = .leadingInset(inset)
     }
 }

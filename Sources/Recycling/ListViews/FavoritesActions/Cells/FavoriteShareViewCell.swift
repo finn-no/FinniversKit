@@ -49,7 +49,6 @@ final class FavoriteShareViewCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        separatorInset = .leadingInset(FavoriteActionViewCell.separatorLeadingInset)
         selectionStyle = .none
 
         contentView.addSubview(iconImageView)
