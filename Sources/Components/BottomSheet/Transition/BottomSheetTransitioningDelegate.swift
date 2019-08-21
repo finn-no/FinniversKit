@@ -9,9 +9,14 @@ class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningD
     var presentationController: BottomSheetPresentationController?
     weak var presentationControllerDelegate: BottomSheetPresentationControllerDelegate?
 
-    private let height: BottomSheet.Height
     private let interactionController: BottomSheetInteractionController
     private let animationController: BottomSheetAnimationController
+
+    var height: BottomSheet.Height {
+        didSet {
+            presentationController?.height = height
+        }
+    }
 
     init(height: BottomSheet.Height) {
         self.height = height
