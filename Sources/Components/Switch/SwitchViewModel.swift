@@ -3,19 +3,19 @@
 //
 
 public protocol SwitchViewModel {
-    var headerText: String { get }
-    var onDescriptionText: String { get }
-    var offDescriptionText: String { get }
+    var title: String { get }
+    var detail: String { get }
+    var initialSwitchValue: Bool { get }
 }
 
 public struct SwitchViewDefaultModel: SwitchViewModel {
-    public let headerText: String
-    public let onDescriptionText: String
-    public let offDescriptionText: String
+    public let title: String
+    public let detail: String
+    public let initialSwitchValue: Bool
 
-    public init(headerText: String, onDescriptionText: String, offDescriptionText: String) {
-        self.headerText = headerText
-        self.onDescriptionText = onDescriptionText
-        self.offDescriptionText = offDescriptionText
+    public init(title: String, detail: String, initialSwitchValue: Bool) {
+        self.title = title
+        self.detail = detail
+        self.initialSwitchValue = initialSwitchValue
     }
 }

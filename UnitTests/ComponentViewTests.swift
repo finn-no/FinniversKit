@@ -175,4 +175,7 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.klimabrolet)
     }
 
+    func testSaveSearchView() {
+        snapshot(.saveSearchView)
+    }
 }
