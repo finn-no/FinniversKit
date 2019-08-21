@@ -34,10 +34,17 @@ public final class FavoriteActionsListView: UIView {
 
     public static let estimatedRowHeight: CGFloat = 48.0
 
-    // MARK: - Properties
+    // MARK: - Public properties
 
     public weak var delegate: FavoriteActionsListViewDelegate?
-    public private(set) var isShared = false
+    public var isShared = false {
+        didSet {
+            toggleSharing()
+        }
+    }
+
+    // MARK: - Private properties
+
     private let viewModel: FavoriteActionsListViewModel
 
     private lazy var tableView: UITableView = {
@@ -49,6 +56,8 @@ public final class FavoriteActionsListView: UIView {
         tableView.rowHeight = FavoriteActionsListView.estimatedRowHeight
         tableView.estimatedRowHeight = FavoriteActionsListView.estimatedRowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.register(FavoriteActionViewCell.self)
+        tableView.register(FavoriteCopyLinkViewCell.self)
         return tableView
     }()
 
@@ -66,8 +75,7 @@ public final class FavoriteActionsListView: UIView {
 
     // MARK: - Data
 
-    public func toggleSharing() {
-        isShared.toggle()
+    private func toggleSharing() {
         tableView.reloadData()
     }
 

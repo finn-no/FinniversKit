@@ -35,7 +35,7 @@ extension FavoriteActionsListDemoView: FavoriteActionsListViewDelegate {
     func favoriteActionsListView(_ view: FavoriteActionsListView, didSelectAction action: FavoriteActionsListView.Action) {
         switch action {
         case .share:
-            view.toggleSharing()
+            view.isShared.toggle()
         default:
             break
         }

@@ -348,6 +348,8 @@
 		CF7E7B51230C2876001D514E /* FavoriteActionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B50230C2876001D514E /* FavoriteActionsListView.swift */; };
 		CF7E7B53230C2A7A001D514E /* FavoriteActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B52230C2A7A001D514E /* FavoriteActionViewModel.swift */; };
 		CF7E7B56230C365E001D514E /* FavoriteActionsListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B55230C365E001D514E /* FavoriteActionsListDemoView.swift */; };
+		CF7E7B5D230D3F12001D514E /* FavoriteActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B58230D3CE6001D514E /* FavoriteActionViewCell.swift */; };
+		CF7E7B5E230D3F16001D514E /* FavoriteCopyLinkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B5A230D3D3E001D514E /* FavoriteCopyLinkViewCell.swift */; };
 		CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF848C2B21C7E0860086530E /* CogWheelButton.swift */; };
 		CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF848C2E21C7E3010086530E /* CogWheelButtonDemoView.swift */; };
 		CF87A855229C0C5700DA8243 /* ContactFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87A852229C0C5700DA8243 /* ContactFormViewModel.swift */; };
@@ -830,6 +832,8 @@
 		CF7E7B50230C2876001D514E /* FavoriteActionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionsListView.swift; sourceTree = "<group>"; };
 		CF7E7B52230C2A7A001D514E /* FavoriteActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionViewModel.swift; sourceTree = "<group>"; };
 		CF7E7B55230C365E001D514E /* FavoriteActionsListDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionsListDemoView.swift; sourceTree = "<group>"; };
+		CF7E7B58230D3CE6001D514E /* FavoriteActionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionViewCell.swift; sourceTree = "<group>"; };
+		CF7E7B5A230D3D3E001D514E /* FavoriteCopyLinkViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCopyLinkViewCell.swift; sourceTree = "<group>"; };
 		CF848C2B21C7E0860086530E /* CogWheelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CogWheelButton.swift; sourceTree = "<group>"; };
 		CF848C2E21C7E3010086530E /* CogWheelButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CogWheelButtonDemoView.swift; sourceTree = "<group>"; };
 		CF87A852229C0C5700DA8243 /* ContactFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFormViewModel.swift; sourceTree = "<group>"; };
@@ -2410,6 +2414,7 @@
 		CF7E7B4F230C27F8001D514E /* FavoritesActions */ = {
 			isa = PBXGroup;
 			children = (
+				CF7E7B57230D3CC1001D514E /* Cells */,
 				CF7E7B50230C2876001D514E /* FavoriteActionsListView.swift */,
 				CF7E7B52230C2A7A001D514E /* FavoriteActionViewModel.swift */,
 			);
@@ -2422,6 +2427,15 @@
 				CF7E7B55230C365E001D514E /* FavoriteActionsListDemoView.swift */,
 			);
 			path = FavoriteActions;
+			sourceTree = "<group>";
+		};
+		CF7E7B57230D3CC1001D514E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CF7E7B58230D3CE6001D514E /* FavoriteActionViewCell.swift */,
+				CF7E7B5A230D3D3E001D514E /* FavoriteCopyLinkViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		CF848C2921C7E0690086530E /* Button */ = {
@@ -3748,6 +3762,7 @@
 				4441F9F722CCF8C500DCFD2F /* AddressViewModel.swift in Sources */,
 				CF7C460622257A8A001FB92C /* EarthHourHeaderView.swift in Sources */,
 				DAC7DCAA21538608004602A3 /* SettingsView.swift in Sources */,
+				CF7E7B5E230D3F16001D514E /* FavoriteCopyLinkViewCell.swift in Sources */,
 				91846C4A22E735D80001410F /* SearchResultMapView.swift in Sources */,
 				CF7C460922257A8A001FB92C /* EarthHourViewModel.swift in Sources */,
 				08796D8821CB89400023A441 /* AnimatedHeartView.swift in Sources */,
@@ -3958,6 +3973,7 @@
 				CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */,
 				8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */,
 				9F21339B987A96DE48740F7B /* FullscreenGalleryPresenterTransition.swift in Sources */,
+				CF7E7B5D230D3F12001D514E /* FavoriteActionViewCell.swift in Sources */,
 				9F2133BB9A1CAA93633B406C /* FullscreenGalleryTransitionPresenterDelegate.swift in Sources */,
 				9F2130071B3637C7AD91066E /* FullscreenGalleryTransitionDestinationDelegate.swift in Sources */,
 				9F21325E45E1BB6A5F076211 /* FullscreenGalleryDismissalTransition.swift in Sources */,
