@@ -33,6 +33,8 @@ final class FavoriteActionsListDemoView: UIView {
 
 extension FavoriteActionsListDemoView: FavoriteActionsListViewDelegate {
     func favoriteActionsListView(_ view: FavoriteActionsListView, didSelectAction action: FavoriteActionsListView.Action) {
+        print("\(action) selected")
+
         switch action {
         case .share:
             view.isShared.toggle()

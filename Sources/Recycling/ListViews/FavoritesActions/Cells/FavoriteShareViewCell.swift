@@ -5,7 +5,7 @@
 import UIKit
 
 protocol FavoriteShareViewCellDelegate: AnyObject {
-    func favoriteShareViewCellDidToggleSwitchValue(_ cell: FavoriteShareViewCell)
+    func favoriteShareViewCell(_ cell: FavoriteShareViewCell, didChangeValueFor switchControl: UISwitch)
 }
 
 final class FavoriteShareViewCell: UITableViewCell {
@@ -15,7 +15,7 @@ final class FavoriteShareViewCell: UITableViewCell {
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .share).withRenderingMode(.alwaysTemplate)
+        imageView.image = UIImage(named: .favoritesShare).withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .licorice
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -23,7 +23,7 @@ final class FavoriteShareViewCell: UITableViewCell {
 
     private lazy var switchControl: UISwitch = {
         let control = UISwitch(withAutoLayout: true)
-        control.tintColor = .primaryBlue
+        control.onTintColor = .primaryBlue
         control.addTarget(self, action: #selector(handleSwitchValueChange), for: .valueChanged)
         return control
     }()
@@ -49,7 +49,7 @@ final class FavoriteShareViewCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        separatorInset = .leadingInset(.mediumLargeSpacing)
+        separatorInset = .leadingInset(FavoriteActionViewCell.separatorLeadingInset)
         selectionStyle = .none
 
         contentView.addSubview(iconImageView)
@@ -59,12 +59,14 @@ final class FavoriteShareViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionViewCell.iconSize),
+            iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: switchControl.leadingAnchor, constant: -.mediumLargeSpacing),
 
-            switchControl.centerYAnchor.constraint(equalTo: centerYAnchor),
+            switchControl.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             switchControl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
         ])
     }
@@ -72,6 +74,6 @@ final class FavoriteShareViewCell: UITableViewCell {
     // MARK: - Action
 
     @objc private func handleSwitchValueChange() {
-        delegate?.favoriteShareViewCellDidToggleSwitchValue(self)
+        delegate?.favoriteShareViewCell(self, didChangeValueFor: switchControl)
     }
 }

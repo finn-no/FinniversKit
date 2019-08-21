@@ -13,7 +13,7 @@ final class FavoriteCopyLinkViewCell: UITableViewCell {
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .favoritesShareLink).withRenderingMode(.alwaysTemplate)
+        imageView.image = UIImage(named: .favoritesCopyLink).withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .licorice
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -28,6 +28,8 @@ final class FavoriteCopyLinkViewCell: UITableViewCell {
 
     private lazy var button: UIButton = {
         let button = Button(style: .flat)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         return button
     }()
@@ -63,13 +65,15 @@ final class FavoriteCopyLinkViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionViewCell.iconSize),
+            iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             descriptionLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            descriptionLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -.mediumLargeSpacing),
+            descriptionLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -.mediumSpacing),
 
             button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
+            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
 

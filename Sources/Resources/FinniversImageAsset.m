@@ -44,9 +44,11 @@ NSString *const FinniversImageAsseteditBig = @"editBig";
 NSString *const FinniversImageAsseterror = @"error";
 NSString *const FinniversImageAsseteyeHide = @"eyeHide";
 NSString *const FinniversImageAssetfavoriteAdd = @"favoriteAdd";
+NSString *const FinniversImageAssetfavoritesCopyLink = @"favoritesCopyLink";
+NSString *const FinniversImageAssetfavoritesDelete = @"favoritesDelete";
 NSString *const FinniversImageAssetfavoritesEdit = @"favoritesEdit";
 NSString *const FinniversImageAssetfavoritesPlus = @"favoritesPlus";
-NSString *const FinniversImageAssetfavoritesShareLink = @"favoritesShareLink";
+NSString *const FinniversImageAssetfavoritesShare = @"favoritesShare";
 NSString *const FinniversImageAssetfavoritesSortAdStatus = @"favoritesSortAdStatus";
 NSString *const FinniversImageAssetfavoritesSortLastAdded = @"favoritesSortLastAdded";
 NSString *const FinniversImageAssetfavouriteAddImg = @"favouriteAddImg";
@@ -176,9 +178,11 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAsseterror,
              FinniversImageAsseteyeHide,
              FinniversImageAssetfavoriteAdd,
+             FinniversImageAssetfavoritesCopyLink,
+             FinniversImageAssetfavoritesDelete,
              FinniversImageAssetfavoritesEdit,
              FinniversImageAssetfavoritesPlus,
-             FinniversImageAssetfavoritesShareLink,
+             FinniversImageAssetfavoritesShare,
              FinniversImageAssetfavoritesSortAdStatus,
              FinniversImageAssetfavoritesSortLastAdded,
              FinniversImageAssetfavouriteAddImg,

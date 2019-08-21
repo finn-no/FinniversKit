@@ -5,6 +5,9 @@
 import UIKit
 
 final class FavoriteActionViewCell: UITableViewCell {
+    static let iconSize: CGFloat = 24
+    static let separatorLeadingInset = .mediumLargeSpacing * 2 + FavoriteActionViewCell.iconSize
+
     private lazy var titleLabel = FavoriteActionViewCell.makeTitleLabel()
 
     private lazy var iconImageView: UIImageView = {
@@ -29,13 +32,15 @@ final class FavoriteActionViewCell: UITableViewCell {
 
     public func configure(withTitle title: String, icon: FinniversImageAsset, tintColor: UIColor = .licorice) {
         titleLabel.text = title
+        titleLabel.textColor = tintColor
         iconImageView.image = UIImage(named: icon).withRenderingMode(.alwaysTemplate)
         iconImageView.tintColor = tintColor
     }
 
     private func setup() {
         isAccessibilityElement = true
-        separatorInset = .leadingInset(.mediumLargeSpacing)
+        separatorInset = .leadingInset(FavoriteActionViewCell.separatorLeadingInset)
+        setDefaultSelectedBackgound()
 
         contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
@@ -43,6 +48,8 @@ final class FavoriteActionViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionViewCell.iconSize),
+            iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),

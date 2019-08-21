@@ -47,6 +47,7 @@ public final class FavoriteActionsListView: UIView {
         tableView.rowHeight = FavoriteActionsListView.estimatedRowHeight
         tableView.estimatedRowHeight = FavoriteActionsListView.estimatedRowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.tableFooterView = UIView()
         tableView.register(FavoriteActionViewCell.self)
         tableView.register(FavoriteShareViewCell.self)
         tableView.register(FavoriteCopyLinkViewCell.self)
@@ -113,7 +114,7 @@ extension FavoriteActionsListView: UITableViewDataSource {
             return cell
         case .delete:
             let cell = tableView.dequeue(FavoriteActionViewCell.self, for: indexPath)
-            cell.configure(withTitle: viewModel.deleteText, icon: .trashcan)
+            cell.configure(withTitle: viewModel.deleteText, icon: .favoritesDelete, tintColor: .cherry)
             return cell
         }
     }
@@ -131,7 +132,7 @@ extension FavoriteActionsListView: UITableViewDelegate {
 // MARK: - FavoriteShareViewCellDelegate
 
 extension FavoriteActionsListView: FavoriteShareViewCellDelegate {
-    func favoriteShareViewCellDidToggleSwitchValue(_ cell: FavoriteShareViewCell) {
+    func favoriteShareViewCell(_ cell: FavoriteShareViewCell, didChangeValueFor switchControl: UISwitch) {
         delegate?.favoriteActionsListView(self, didSelectAction: .share)
     }
 }
