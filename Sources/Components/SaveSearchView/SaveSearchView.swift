@@ -56,14 +56,14 @@ public class SaveSearchView: UIView {
         return textField
     }()
 
-    private lazy var pushSwitchView: LabelSwitchView = {
-        let view = LabelSwitchView(withAutoLayout: true)
+    private lazy var pushSwitchView: SwitchView = {
+        let view = SwitchView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
 
-    private lazy var emailSwitchView: LabelSwitchView = {
-        let view = LabelSwitchView(withAutoLayout: true)
+    private lazy var emailSwitchView: SwitchView = {
+        let view = SwitchView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
@@ -91,16 +91,8 @@ public class SaveSearchView: UIView {
 
     public func configure(with viewModel: SaveSearchViewModel) {
         searchNameTextField.placeholderText = viewModel.searchPlaceholderText
-        pushSwitchView.configureWith(
-            title: viewModel.pushTitle,
-            detail: viewModel.pushDetail,
-            isOn: viewModel.pushIsOn
-        )
-        emailSwitchView.configureWith(
-            title: viewModel.emailTitle,
-            detail: viewModel.emailDetail,
-            isOn: viewModel.emailIsOn
-        )
+        pushSwitchView.configure(with: viewModel.pushSwitchViewModel)
+        emailSwitchView.configure(with: viewModel.emailSwitchViewModel)
     }
 
     @discardableResult public override func becomeFirstResponder() -> Bool {
@@ -156,13 +148,13 @@ extension SaveSearchView: TextFieldDelegate {
     }
 }
 
-extension SaveSearchView: LabelSwitchViewDelegate {
-    func labelSwitchViewValueChanged(_ labelSwitchView: LabelSwitchView) {
-        if labelSwitchView == pushSwitchView {
+extension SaveSearchView: SwitchViewDelegate {
+    public func switchView(_ switchView: SwitchView, didChangeValueFor switch: UISwitch) {
+        if switchView == pushSwitchView {
             delegate?.saveSearchView(self, didUpdateIsPushOn: isPushOn)
         }
 
-        if labelSwitchView == emailSwitchView {
+        if switchView == emailSwitchView {
             delegate?.saveSearchView(self, didUpdateIsEmailOn: isEmailOn)
         }
     }

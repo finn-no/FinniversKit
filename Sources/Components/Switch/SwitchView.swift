@@ -2,76 +2,49 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
-
-public protocol SwitchDelegate: AnyObject {
+public protocol SwitchViewDelegate: AnyObject {
     func switchView(_ switchView: SwitchView, didChangeValueFor switch: UISwitch)
 }
 
 public class SwitchView: UIView {
-    // MARK: - Internal properties
+    // MARK: - Public properties
 
-    private let animationDuration: Double = 0.4
+    public weak var delegate: SwitchViewDelegate?
 
-    private lazy var headerLabel: Label = {
-        let label = Label(style: .title3)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private lazy var descriptionLabel: Label = {
-        let label = Label(style: .detail)
-        label.textColor = .stone
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private lazy var mySwitch: UISwitch = {
-        let mySwitch = UISwitch()
-        mySwitch.onTintColor = .primaryBlue
-        mySwitch.addTarget(self, action: #selector(switchChangedState), for: .valueChanged)
-        return mySwitch
-    }()
-
-    private lazy var stackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [headerLabel, mySwitch])
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .horizontal
-        view.distribution = .fill
-        view.spacing = .mediumLargeSpacing
-        return view
-    }()
-
-    // MARK: - Dependency injection
-
-    public var model: SwitchViewModel? {
-        didSet {
-            guard let model = model else {
-                return
-            }
-
-            headerLabel.text = model.headerText
-
-            if mySwitch.isOn {
-                descriptionLabel.text = model.onDescriptionText
-            } else {
-                descriptionLabel.text = model.offDescriptionText
-            }
+    public var isOn: Bool {
+        get {
+            return uiSwitch.isOn
+        }
+        set {
+            uiSwitch.isOn = newValue
         }
     }
 
-    // MARK: - External properties
+    // MARK: - Private properties
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .bodyStrong)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textColor = .stone
+        return label
+    }()
 
-    public weak var delegate: SwitchDelegate?
+    private lazy var detailLabel: Label = {
+        let label = Label(style: .detail)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textColor = .stone
+        return label
+    }()
 
-    public var isOn: Bool {
-        get { return mySwitch.isOn }
-        set { mySwitch.isOn = newValue }
-    }
+    private lazy var uiSwitch: UISwitch = {
+        let uiSwitch = UISwitch(withAutoLayout: true)
+        uiSwitch.onTintColor = .primaryBlue
+        uiSwitch.addTarget(self, action: #selector(swichValueChanged), for: .valueChanged)
+        return uiSwitch
+    }()
 
-    // MARK: - Setup
-
+    // MARK: - Initializers
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -82,38 +55,36 @@ public class SwitchView: UIView {
         setup()
     }
 
+    // MARK: - Public methods
+
+    public func configure(with model: SwitchViewModel) {
+        titleLabel.text = model.title
+        detailLabel.text = model.detail
+        uiSwitch.isOn = model.initialSwitchValue
+    }
+
+    // MARK: - Private methods
     private func setup() {
-        addSubview(stackView)
-        addSubview(descriptionLabel)
+        addSubview(titleLabel)
+        addSubview(detailLabel)
+        addSubview(uiSwitch)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
 
-            descriptionLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .smallSpacing),
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            descriptionLabel.widthAnchor.constraint(equalTo: headerLabel.widthAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .verySmallSpacing),
+            detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
+
+            uiSwitch.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: .mediumSpacing),
+            uiSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            uiSwitch.centerYAnchor.constraint(equalTo: centerYAnchor),
+            uiSwitch.widthAnchor.constraint(equalToConstant: 49.0)
         ])
     }
 
-    // MARK: - Private actions
-
-    @objc func switchChangedState(_ sender: UISwitch) {
-        delegate?.switchView(self, didChangeValueFor: sender)
-
-        guard let model = model else {
-            return
-        }
-
-        UIView.transition(with: descriptionLabel, duration: animationDuration, options: .transitionCrossDissolve, animations: { [weak self] in
-            if sender.isOn {
-                self?.descriptionLabel.text = model.onDescriptionText
-            } else {
-                self?.descriptionLabel.text = model.offDescriptionText
-            }
-        }, completion: nil)
+    @objc private func swichValueChanged() {
+        delegate?.switchView(self, didChangeValueFor: uiSwitch)
     }
 }
