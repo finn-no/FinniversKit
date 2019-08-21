@@ -309,6 +309,8 @@
 		CF13D6D42292E3030087DA37 /* PhaseListViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6D32292E3030087DA37 /* PhaseListViewDemo.swift */; };
 		CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */; };
 		CF164CE1230D4D9300250822 /* FavoriteShareViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CE0230D4D9300250822 /* FavoriteShareViewCell.swift */; };
+		CF164CE3230D78C900250822 /* FavoriteActionsBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CE2230D78C900250822 /* FavoriteActionsBottomSheet.swift */; };
+		CF164CE5230D8CE900250822 /* FavoriteActionsListViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CE4230D8CE900250822 /* FavoriteActionsListViewModel+Demo.swift */; };
 		CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */; };
 		CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */; };
 		CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */; };
@@ -348,7 +350,7 @@
 		CF7C460F22257AE1001FB92C /* EarthHourDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C460D22257AE1001FB92C /* EarthHourDemoView.swift */; };
 		CF7E7B51230C2876001D514E /* FavoriteActionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B50230C2876001D514E /* FavoriteActionsListView.swift */; };
 		CF7E7B53230C2A7A001D514E /* FavoriteActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B52230C2A7A001D514E /* FavoriteActionViewModel.swift */; };
-		CF7E7B56230C365E001D514E /* FavoriteActionsListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B55230C365E001D514E /* FavoriteActionsListDemoView.swift */; };
+		CF7E7B56230C365E001D514E /* FavoriteActionsListDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B55230C365E001D514E /* FavoriteActionsListDemoDelegate.swift */; };
 		CF7E7B5D230D3F12001D514E /* FavoriteActionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B58230D3CE6001D514E /* FavoriteActionViewCell.swift */; };
 		CF7E7B5E230D3F16001D514E /* FavoriteCopyLinkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E7B5A230D3D3E001D514E /* FavoriteCopyLinkViewCell.swift */; };
 		CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF848C2B21C7E0860086530E /* CogWheelButton.swift */; };
@@ -793,6 +795,8 @@
 		CF13D6D32292E3030087DA37 /* PhaseListViewDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseListViewDemo.swift; sourceTree = "<group>"; };
 		CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggButtonDemoView.swift; sourceTree = "<group>"; };
 		CF164CE0230D4D9300250822 /* FavoriteShareViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteShareViewCell.swift; sourceTree = "<group>"; };
+		CF164CE2230D78C900250822 /* FavoriteActionsBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionsBottomSheet.swift; sourceTree = "<group>"; };
+		CF164CE4230D8CE900250822 /* FavoriteActionsListViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteActionsListViewModel+Demo.swift"; sourceTree = "<group>"; };
 		CF29845D229566E8008CD832 /* ContactFormCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormCheckbox.swift; sourceTree = "<group>"; };
 		CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDefaultData.swift; sourceTree = "<group>"; };
@@ -833,7 +837,7 @@
 		CF7C460D22257AE1001FB92C /* EarthHourDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourDemoView.swift; sourceTree = "<group>"; };
 		CF7E7B50230C2876001D514E /* FavoriteActionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionsListView.swift; sourceTree = "<group>"; };
 		CF7E7B52230C2A7A001D514E /* FavoriteActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionViewModel.swift; sourceTree = "<group>"; };
-		CF7E7B55230C365E001D514E /* FavoriteActionsListDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionsListDemoView.swift; sourceTree = "<group>"; };
+		CF7E7B55230C365E001D514E /* FavoriteActionsListDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionsListDemoDelegate.swift; sourceTree = "<group>"; };
 		CF7E7B58230D3CE6001D514E /* FavoriteActionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionViewCell.swift; sourceTree = "<group>"; };
 		CF7E7B5A230D3D3E001D514E /* FavoriteCopyLinkViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCopyLinkViewCell.swift; sourceTree = "<group>"; };
 		CF848C2B21C7E0860086530E /* CogWheelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CogWheelButton.swift; sourceTree = "<group>"; };
@@ -2419,6 +2423,7 @@
 				CF7E7B57230D3CC1001D514E /* Cells */,
 				CF7E7B50230C2876001D514E /* FavoriteActionsListView.swift */,
 				CF7E7B52230C2A7A001D514E /* FavoriteActionViewModel.swift */,
+				CF164CE2230D78C900250822 /* FavoriteActionsBottomSheet.swift */,
 			);
 			path = FavoritesActions;
 			sourceTree = "<group>";
@@ -2426,7 +2431,8 @@
 		CF7E7B54230C363D001D514E /* FavoriteActions */ = {
 			isa = PBXGroup;
 			children = (
-				CF7E7B55230C365E001D514E /* FavoriteActionsListDemoView.swift */,
+				CF7E7B55230C365E001D514E /* FavoriteActionsListDemoDelegate.swift */,
+				CF164CE4230D8CE900250822 /* FavoriteActionsListViewModel+Demo.swift */,
 			);
 			path = FavoriteActions;
 			sourceTree = "<group>";
@@ -3673,6 +3679,7 @@
 				CFCDDA5F22731D60005E1F4A /* CalloutDemoView.swift in Sources */,
 				44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */,
 				CFF9727321C3BA2200C85238 /* BannerTransparencyDemoView.swift in Sources */,
+				CF164CE5230D8CE900250822 /* FavoriteActionsListViewModel+Demo.swift in Sources */,
 				91D2A55A22F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */,
 				9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */,
 				DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */,
@@ -3691,7 +3698,7 @@
 				DA93EFAA21C2BB2900207239 /* NewYearsDemoView.swift in Sources */,
 				9F21365157F385AC63928150 /* FullscreenGalleryDemoViewController.swift in Sources */,
 				DAE738C722C4C85E001C69E3 /* CarouselViewDemo.swift in Sources */,
-				CF7E7B56230C365E001D514E /* FavoriteActionsListDemoView.swift in Sources */,
+				CF7E7B56230C365E001D514E /* FavoriteActionsListDemoDelegate.swift in Sources */,
 				9A37DDB3353F56739B23D22B /* FavoriteAdCellDemoView.swift in Sources */,
 				9A37DDB47621DC5763EF5559 /* FavoriteAdsListDemoView.swift in Sources */,
 				9A37DEDAA1E4DB20D8F38B08 /* FavoriteAdsListDemoViewHelper.swift in Sources */,
@@ -3846,6 +3853,7 @@
 				F26852F221FEFA97000978C8 /* UserAdsListViewModel.swift in Sources */,
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
 				F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */,
+				CF164CE3230D78C900250822 /* FavoriteActionsBottomSheet.swift in Sources */,
 				44A557A722E720BB001667AE /* IconTitleTableViewCellViewModel.swift in Sources */,
 				F26852F321FEFA9C000978C8 /* UserAdsListHeaderViewModel.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,

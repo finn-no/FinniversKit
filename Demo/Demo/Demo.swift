@@ -221,7 +221,9 @@ public enum RecyclingViews: String, CaseIterable {
 
             return navigationController
         case .favoriteActionsListView:
-            return DemoViewController<FavoriteActionsListDemoView>()
+            let bottomSheet = FavoriteActionsBottomSheet(viewModel: .default)
+            bottomSheet.actionsDelegate = FavoriteActionsListDemoDelegate.shared
+            return bottomSheet
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:

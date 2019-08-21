@@ -1,9 +1,16 @@
 //
-//  FavoriteActionsListViewModel+Demo.swift
-//  Demo
-//
-//  Created by Markov, Vadym on 21/08/2019.
-//  Copyright © 2019 FINN AS. All rights reserved.
+//  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import Foundation
+import FinniversKit
+
+extension FavoriteActionsListViewModel {
+    static let `default` = FavoriteActionsListViewModel(
+        editText: "Rediger listen",
+        changeNameText: "Endre navn på listen",
+        shareText: "Deling av listen",
+        copyLinkButtonTitle: "Kopier lenke",
+        copyLinkButtonDescription: "Alle med lenken kan se listen",
+        deleteText: "Slett listen"
+    )
+}

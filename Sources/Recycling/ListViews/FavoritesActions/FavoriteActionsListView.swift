@@ -15,9 +15,15 @@ public final class FavoriteActionsListView: UIView {
         case share
         case copyLink
         case delete
+
+        static func cases(whenIsShared isShared: Bool) -> [Action] {
+            return isShared ? allCases : allCases.filter({ $0 != .copyLink })
+        }
     }
 
     public static let estimatedRowHeight: CGFloat = 48.0
+    public static let compactHeight = estimatedRowHeight * CGFloat(Action.cases(whenIsShared: false).count)
+    public static let expandedHeight = estimatedRowHeight * CGFloat(Action.cases(whenIsShared: true).count)
 
     // MARK: - Public properties
 
@@ -72,7 +78,7 @@ public final class FavoriteActionsListView: UIView {
     }
 
     private func updateActions() {
-        actions = isShared ? Action.allCases : Action.allCases.filter({ $0 != .copyLink })
+        actions = Action.cases(whenIsShared: isShared)
     }
 
     private func showCopyLink(_ show: Bool) {
