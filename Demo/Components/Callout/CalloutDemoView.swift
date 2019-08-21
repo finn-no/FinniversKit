@@ -5,7 +5,24 @@
 import FinniversKit
 
 public class CalloutDemoView: UIView {
-    private lazy var calloutView = CalloutView(withAutoLayout: true)
+
+    private lazy var calloutViews: [CalloutView] = {
+        CalloutView.Direction.allCases.map { (direction) -> CalloutView in
+            let view = CalloutView(direction: direction)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }
+    }()
+
+    private lazy var stackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: calloutViews)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.distribution = .fillEqually
+        view.alignment = .center
+        view.spacing = .largeSpacing
+        return view
+    }()
 
     // MARK: - Init
 
@@ -21,16 +38,21 @@ public class CalloutDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(calloutView)
-        calloutView.hide()
+        addSubview(stackView)
 
         let text = "Trykk her i toppen for å se andre typer eiendommer som bolig til leie, fritidsboliger, tomter etc."
-        calloutView.show(withText: text, duration: 0)
+
+        stackView.arrangedSubviews.forEach {
+            guard let calloutView = $0 as? CalloutView else { return }
+            
+            calloutView.hide()
+            calloutView.show(withText: text, duration: 0)
+        }
 
         NSLayoutConstraint.activate([
-            calloutView.widthAnchor.constraint(equalToConstant: 320),
-            calloutView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            calloutView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            stackView.widthAnchor.constraint(equalToConstant: 320),
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }

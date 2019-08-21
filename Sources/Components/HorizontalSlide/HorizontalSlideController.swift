@@ -6,11 +6,12 @@ protocol HorizontalSlideControllerDelegate: AnyObject {
 
 /// Used by the HorizontalSlideTransition when using `modalPresentationStyle = .custom`.
 class HorizontalSlideController: UIPresentationController {
+
     weak var dismissalDelegate: HorizontalSlideControllerDelegate?
 
     // MARK: - Properties
 
-    private let containerPercentage: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 0.60 : 0.85
+    private let containerSize: HorizontalSlideTransition.ContainerSize
 
     private lazy var dimmingView: UIView = {
         let dimmingView = UIView()
@@ -28,6 +29,19 @@ class HorizontalSlideController: UIPresentationController {
         return dimmingView
     }()
 
+    // MARK: - Init
+
+    /// Initializes and returns a presentation controller for transitioning between the specified view controllers with a width percentage for the container.
+    ///
+    /// - Parameters:
+    ///   - presentedViewController: The view controller being presented modally.
+    ///   - presentingViewController: The view controller whose content represents the starting point of the transition.
+    ///   - containerPercentage: The width of the container for the view controller being presented modally
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, containerSize: HorizontalSlideTransition.ContainerSize) {
+        self.containerSize = containerSize
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+    }
+
     // MARK: - Overrides
 
     override var frameOfPresentedViewInContainerView: CGRect {
@@ -35,7 +49,7 @@ class HorizontalSlideController: UIPresentationController {
 
         var frame = CGRect.zero
         frame.size = size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView.bounds.size)
-        frame.origin.x = containerView.frame.width * (1.0 - containerPercentage)
+        frame.origin.x = containerView.frame.width * (1.0 - containerSize.percentage)
         return frame
     }
 
@@ -75,7 +89,7 @@ class HorizontalSlideController: UIPresentationController {
     }
 
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
-        return CGSize(width: parentSize.width * containerPercentage, height: parentSize.height)
+        return CGSize(width: parentSize.width * containerSize.percentage, height: parentSize.height)
     }
 
     // MARK: - Private
