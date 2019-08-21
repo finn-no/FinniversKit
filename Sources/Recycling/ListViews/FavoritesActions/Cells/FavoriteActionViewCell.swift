@@ -4,8 +4,16 @@
 
 import UIKit
 
-public class FavoriteActionViewCell: UITableViewCell {
-    // MARK: - Setup
+final class FavoriteActionViewCell: UITableViewCell {
+    private lazy var titleLabel = FavoriteActionViewCell.makeTitleLabel()
+
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
+    // MARK: - Init
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -17,11 +25,39 @@ public class FavoriteActionViewCell: UITableViewCell {
         setup()
     }
 
-    private func setup() {
-        isAccessibilityElement = true
+    // MARK: - Setup
+
+    public func configure(withTitle title: String, icon: FinniversImageAsset, tintColor: UIColor = .licorice) {
+        titleLabel.text = title
+        iconImageView.image = UIImage(named: icon).withRenderingMode(.alwaysTemplate)
+        iconImageView.tintColor = tintColor
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
+    private func setup() {
+        isAccessibilityElement = true
+        separatorInset = .leadingInset(.mediumLargeSpacing)
+
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(titleLabel)
+
+        NSLayoutConstraint.activate([
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+
+            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
+        ])
+    }
+}
+
+// MARK: - Factory
+
+extension FavoriteActionViewCell {
+    static func makeTitleLabel() -> UILabel {
+        let label = UILabel(withAutoLayout: true)
+        label.font = .bodyStrong
+        label.textColor = .licorice
+        return label
     }
 }

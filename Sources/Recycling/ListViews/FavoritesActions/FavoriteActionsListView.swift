@@ -15,21 +15,6 @@ public final class FavoriteActionsListView: UIView {
         case share
         case copyLink
         case delete
-
-//        var icon: UIImage? {
-//            switch self {
-//            case .edit:
-//                return UIImage(named: .favoritesEdit)
-//            case .changeName:
-//                return UIImage(named: .pencilPaper)
-//            case .share:
-//                return UIImage(named: .share)
-//            case .copyLink:
-//                return UIImage(named: .share)
-//            case .delete:
-//                return UIImage(named: .trashcan)
-//            }
-//        }
     }
 
     public static let estimatedRowHeight: CGFloat = 48.0
@@ -57,6 +42,7 @@ public final class FavoriteActionsListView: UIView {
         tableView.estimatedRowHeight = FavoriteActionsListView.estimatedRowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.register(FavoriteActionViewCell.self)
+        tableView.register(FavoriteShareViewCell.self)
         tableView.register(FavoriteCopyLinkViewCell.self)
         return tableView
     }()
@@ -95,9 +81,35 @@ extension FavoriteActionsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
         let action = Action.allCases[indexPath.row]
-        return cell
+
+        switch action {
+        case .edit:
+            let cell = tableView.dequeue(FavoriteActionViewCell.self, for: indexPath)
+            cell.configure(withTitle: viewModel.editText, icon: .favoritesEdit)
+            return cell
+        case .changeName:
+            let cell = tableView.dequeue(FavoriteActionViewCell.self, for: indexPath)
+            cell.configure(withTitle: viewModel.changeNameText, icon: .pencilPaper)
+            return cell
+        case .share:
+            let cell = tableView.dequeue(FavoriteShareViewCell.self, for: indexPath)
+            cell.delegate = self
+            cell.configure(withTitle: viewModel.shareText, switchOn: isShared)
+            return cell
+        case .copyLink:
+            let cell = tableView.dequeue(FavoriteCopyLinkViewCell.self, for: indexPath)
+            cell.delegate = self
+            cell.configure(
+                withButtonTitle: viewModel.copyLinkButtonTitle,
+                description: viewModel.copyLinkButtonDescription
+            )
+            return cell
+        case .delete:
+            let cell = tableView.dequeue(FavoriteActionViewCell.self, for: indexPath)
+            cell.configure(withTitle: viewModel.deleteText, icon: .trashcan)
+            return cell
+        }
     }
 }
 
@@ -107,5 +119,21 @@ extension FavoriteActionsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let action = Action.allCases[indexPath.row]
         delegate?.favoriteActionsListView(self, didSelectAction: action)
+    }
+}
+
+// MARK: - FavoriteShareViewCellDelegate
+
+extension FavoriteActionsListView: FavoriteShareViewCellDelegate {
+    func favoriteShareViewCell(_ cell: FavoriteShareViewCell, didChangeSwitchValue value: Bool) {
+
+    }
+}
+
+// MARK: - FavoriteCopyLinkViewCellDelegate
+
+extension FavoriteActionsListView: FavoriteCopyLinkViewCellDelegate {
+    func favoriteCopyLinkViewCellDidSelectButton(_ cell: FavoriteCopyLinkViewCell) {
+
     }
 }

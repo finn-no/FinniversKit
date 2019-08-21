@@ -4,8 +4,35 @@
 
 import UIKit
 
-public class FavoriteCopyLinkViewCell: UITableViewCell {
-    // MARK: - Setup
+protocol FavoriteCopyLinkViewCellDelegate: AnyObject {
+    func favoriteCopyLinkViewCellDidSelectButton(_ cell: FavoriteCopyLinkViewCell)
+}
+
+final class FavoriteCopyLinkViewCell: UITableViewCell {
+    weak var delegate: FavoriteCopyLinkViewCellDelegate?
+
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.image = UIImage(named: .favoritesShareLink).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .licorice
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel(withAutoLayout: true)
+        label.font = .caption
+        label.textColor = .licorice
+        return label
+    }()
+
+    private lazy var button: UIButton = {
+        let button = Button(style: .flat)
+        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
+        return button
+    }()
+
+    // MARK: - Init
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -17,11 +44,38 @@ public class FavoriteCopyLinkViewCell: UITableViewCell {
         setup()
     }
 
-    private func setup() {
-        isAccessibilityElement = true
+    // MARK: - Setup
+
+    public func configure(withButtonTitle buttonTitle: String, description: String) {
+        descriptionLabel.text = description
+        button.setTitle(buttonTitle, for: .normal)
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
+    private func setup() {
+        isAccessibilityElement = true
+        backgroundColor = .ice
+        selectionStyle = .none
+
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(button)
+
+        NSLayoutConstraint.activate([
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+
+            descriptionLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            descriptionLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -.mediumLargeSpacing),
+
+            button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
+        ])
+    }
+
+    // MARK: - Action
+
+    @objc private func handleButtonTap() {
+        delegate?.favoriteCopyLinkViewCellDidSelectButton(self)
     }
 }
