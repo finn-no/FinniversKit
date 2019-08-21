@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
     LICENSE
   }
 
-  s.platform      = :ios, '10.0'
+  s.platform      = :ios, '11.2'
   s.swift_version = '5.0'
   s.source        = { :git => "https://github.com/finn-no/FinniversKit.git", :tag => s.version }
   s.requires_arc  = true
