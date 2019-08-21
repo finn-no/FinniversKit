@@ -4,25 +4,27 @@
 
 import Foundation
 
-public enum FavoriteActionViewModel: Equatable, Hashable {
-    case edit(title: String)
-    case changeName(title: String)
-    case share(title: String, selected: Bool)
-    case copyLink(title: String, buttonTitle: String)
-    case delete(title: String)
+public struct FavoriteActionsListViewModel {
+    public let editText: String
+    public let changeNameText: String
+    public let shareText: String
+    public let copyLinkButtonTitle: String
+    public let copyLinkButtonDescription: String
+    public let deleteText: String
 
-    var icon: UIImage? {
-        switch self {
-        case .edit:
-            return UIImage(named: .favoritesEdit)
-        case .changeName:
-            return UIImage(named: .pencilPaper)
-        case .share:
-            return UIImage(named: .share)
-        case .copyLink:
-            return UIImage(named: .share)
-        case .delete:
-            return UIImage(named: .trashcan)
-        }
+    public init(
+        editText: String,
+        changeNameText: String,
+        shareText: String,
+        copyLinkButtonTitle: String,
+        copyLinkButtonDescription: String,
+        deleteText: String
+    ) {
+        self.editText = editText
+        self.changeNameText = changeNameText
+        self.shareText = shareText
+        self.copyLinkButtonTitle = copyLinkButtonTitle
+        self.copyLinkButtonDescription = copyLinkButtonDescription
+        self.deleteText = deleteText
     }
 }

@@ -5,21 +5,9 @@
 import FinniversKit
 
 final class FavoriteActionsListDemoView: UIView {
-    private var viewModels: [FavoriteActionViewModel] = [
-        .edit(title: "Rediger listen"),
-        .changeName(title: "Endre navn på listen"),
-        .share(title: "Deling av listen", selected: false),
-        .delete(title: "Slett listen")
-    ]
-
-    private let copyLink = FavoriteActionViewModel.copyLink(
-        title: "Alle med lenken kan se listen",
-        buttonTitle: "Kopier lenke"
-    )
-
     private(set) lazy var view: FavoriteActionsListView = {
-        let view = FavoriteActionsListView(withAutoLayout: true)
-        view.dataSource = self
+        let view = FavoriteActionsListView(viewModel: .default)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
     }()
@@ -44,32 +32,25 @@ final class FavoriteActionsListDemoView: UIView {
 // MARK: - FavoriteFoldersListViewDelegate
 
 extension FavoriteActionsListDemoView: FavoriteActionsListViewDelegate {
-    func favoriteActionsListView(_ favoriteActionsListView: FavoriteActionsListView, didSelectItemAtIndex index: Int) {
-        let viewModel = viewModels[index]
-
-        switch viewModel {
-        case .share(_, let selected):
-            if selected {
-                viewModels.insert(copyLink, at: index + 1)
-            } else {
-                viewModels.remove(at: index + 1)
-            }
-
-            view.reloadData()
+    func favoriteActionsListView(_ view: FavoriteActionsListView, didSelectAction action: FavoriteActionsListView.Action) {
+        switch action {
+        case .share:
+            view.toggleSharing()
         default:
             break
         }
     }
 }
 
-// MARK: - FavoriteFoldersListViewDataSource
+// MARK: - Private extensions
 
-extension FavoriteActionsListDemoView: FavoriteActionsListViewDataSource {
-    func numberOfItems(inFavoriteActionsListView view: FavoriteActionsListView) -> Int {
-        return viewModels.count
-    }
-
-    func favoriteActionsListView(_ view: FavoriteActionsListView, viewModelAtIndex index: Int) -> FavoriteActionViewModel {
-        return viewModels[index]
-    }
+private extension FavoriteActionsListViewModel {
+    static let `default` = FavoriteActionsListViewModel(
+        editText: "Rediger listen",
+        changeNameText: "Endre navn på listen",
+        shareText: "Deling av listen",
+        copyLinkButtonTitle: "Kopier lenke",
+        copyLinkButtonDescription: "Alle med lenken kan se listen",
+        deleteText: "Slett listen"
+    )
 }

@@ -5,23 +5,40 @@
 import UIKit
 
 public protocol FavoriteActionsListViewDelegate: AnyObject {
-    func favoriteActionsListView(_ view: FavoriteActionsListView, didSelectItemAtIndex index: Int)
-}
-
-public protocol FavoriteActionsListViewDataSource: AnyObject {
-    func numberOfItems(inFavoriteActionsListView view: FavoriteActionsListView) -> Int
-    func favoriteActionsListView(_ view: FavoriteActionsListView, viewModelAtIndex index: Int) -> FavoriteActionViewModel
+    func favoriteActionsListView(_ view: FavoriteActionsListView, didSelectAction action: FavoriteActionsListView.Action)
 }
 
 public final class FavoriteActionsListView: UIView {
+    public enum Action: Equatable, Hashable, CaseIterable {
+        case edit
+        case changeName
+        case share
+        case copyLink
+        case delete
+
+//        var icon: UIImage? {
+//            switch self {
+//            case .edit:
+//                return UIImage(named: .favoritesEdit)
+//            case .changeName:
+//                return UIImage(named: .pencilPaper)
+//            case .share:
+//                return UIImage(named: .share)
+//            case .copyLink:
+//                return UIImage(named: .share)
+//            case .delete:
+//                return UIImage(named: .trashcan)
+//            }
+//        }
+    }
+
     public static let estimatedRowHeight: CGFloat = 48.0
 
-    // MARK: - Public properties
+    // MARK: - Properties
 
     public weak var delegate: FavoriteActionsListViewDelegate?
-    public weak var dataSource: FavoriteActionsListViewDataSource?
-
-    // MARK: - Private properties
+    public private(set) var isShared = false
+    private let viewModel: FavoriteActionsListViewModel
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -37,8 +54,9 @@ public final class FavoriteActionsListView: UIView {
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(viewModel: FavoriteActionsListViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
         setup()
     }
 
@@ -48,22 +66,16 @@ public final class FavoriteActionsListView: UIView {
 
     // MARK: - Data
 
-    public func reloadData() {
+    public func toggleSharing() {
+        isShared.toggle()
         tableView.reloadData()
-    }
-
-    public func insertRow(at index: Int) {
-        tableView.insertRows(at: [IndexPath(index: index)], with: .automatic)
-    }
-
-    public func deleteRow(at index: Int) {
-        tableView.deleteRows(at: [IndexPath(index: index)], with: .automatic)
     }
 
     // MARK: - Setup
 
     private func setup() {
         addSubview(tableView)
+        tableView.fillInSuperview()
     }
 }
 
@@ -71,16 +83,12 @@ public final class FavoriteActionsListView: UIView {
 
 extension FavoriteActionsListView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.numberOfItems(inFavoriteActionsListView: self) ?? 0
+        return Action.allCases.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
-
-        if let viewModel = dataSource?.favoriteActionsListView(self, viewModelAtIndex: indexPath.row) {
-
-        }
-
+        let action = Action.allCases[indexPath.row]
         return cell
     }
 }
@@ -89,6 +97,7 @@ extension FavoriteActionsListView: UITableViewDataSource {
 
 extension FavoriteActionsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.favoriteActionsListView(self, didSelectItemAtIndex: indexPath.row)
+        let action = Action.allCases[indexPath.row]
+        delegate?.favoriteActionsListView(self, didSelectAction: action)
     }
 }
