@@ -136,6 +136,8 @@ extension FavoriteActionsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let action = actions[indexPath.row]
 
+        tableView.deselectRow(at: indexPath, animated: true)
+
         if Set<Action>([.edit, .changeName, .delete]).contains(action) {
             delegate?.favoriteActionsListView(self, didSelectAction: action)
         }
