@@ -11,7 +11,7 @@ public protocol FavoriteFolderActionSheetDelegate: AnyObject {
 public final class FavoriteFolderActionSheet: BottomSheet {
     public weak var actionDelegate: FavoriteFolderActionSheetDelegate?
 
-    public var isCopyLinkHidden = false {
+    public var isCopyLinkHidden = true {
         didSet {
             height = isCopyLinkHidden ? .compact : .expanded
             viewController?.actionsListView.isCopyLinkHidden = isCopyLinkHidden

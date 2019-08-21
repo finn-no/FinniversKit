@@ -17,7 +17,7 @@ public final class FavoriteFolderActionsListView: UIView {
 
     public weak var delegate: FavoriteFolderActionsListViewDelegate?
 
-    public var isCopyLinkHidden = false {
+    public var isCopyLinkHidden = true {
         didSet {
             updateActions()
             hideCopyLink(isCopyLinkHidden)
