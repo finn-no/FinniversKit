@@ -15,10 +15,6 @@ public final class FavoriteActionsListView: UIView {
         case share
         case copyLink
         case delete
-
-        static var allCasesExcludingCopyLink: [Action] {
-            return allCases.filter({ $0 != .copyLink })
-        }
     }
 
     public static let estimatedRowHeight: CGFloat = 48.0
@@ -29,7 +25,8 @@ public final class FavoriteActionsListView: UIView {
 
     public var isShared = false {
         didSet {
-            reloadData()
+            updateActions()
+            showCopyLink(isShared)
         }
     }
 
@@ -71,12 +68,25 @@ public final class FavoriteActionsListView: UIView {
     private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
-        reloadData()
+        updateActions()
     }
 
-    private func reloadData() {
-        actions = isShared ? Action.allCases : Action.allCasesExcludingCopyLink
-        tableView.reloadData()
+    private func updateActions() {
+        actions = isShared ? Action.allCases : Action.allCases.filter({ $0 != .copyLink })
+    }
+
+    private func showCopyLink(_ show: Bool) {
+        guard let index = actions.firstIndex(of: .share) else {
+            return
+        }
+
+        let indexPaths = [IndexPath(row: index + 1, section: 0)]
+
+        if show {
+            tableView.insertRows(at: indexPaths, with: .automatic)
+        } else {
+            tableView.deleteRows(at: indexPaths, with: .automatic)
+        }
     }
 }
 
@@ -125,7 +135,10 @@ extension FavoriteActionsListView: UITableViewDataSource {
 extension FavoriteActionsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let action = actions[indexPath.row]
-        delegate?.favoriteActionsListView(self, didSelectAction: action)
+
+        if Set<Action>([.edit, .changeName, .delete]).contains(action) {
+            delegate?.favoriteActionsListView(self, didSelectAction: action)
+        }
     }
 }
 

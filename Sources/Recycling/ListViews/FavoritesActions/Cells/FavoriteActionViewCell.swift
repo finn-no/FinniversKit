@@ -18,19 +18,19 @@ final class FavoriteActionViewCell: UITableViewCell {
 
     // MARK: - Init
 
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
 
     // MARK: - Setup
 
-    public func configure(withTitle title: String, icon: FinniversImageAsset, tintColor: UIColor = .licorice) {
+    func configure(withTitle title: String, icon: FinniversImageAsset, tintColor: UIColor = .licorice) {
         titleLabel.text = title
         titleLabel.textColor = tintColor
         iconImageView.image = UIImage(named: icon).withRenderingMode(.alwaysTemplate)

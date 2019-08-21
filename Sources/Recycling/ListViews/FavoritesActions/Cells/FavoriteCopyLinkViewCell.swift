@@ -36,19 +36,19 @@ final class FavoriteCopyLinkViewCell: UITableViewCell {
 
     // MARK: - Init
 
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
 
     // MARK: - Setup
 
-    public func configure(withButtonTitle buttonTitle: String, description: String) {
+    func configure(withButtonTitle buttonTitle: String, description: String) {
         descriptionLabel.text = description
         button.setTitle(buttonTitle, for: .normal)
     }
