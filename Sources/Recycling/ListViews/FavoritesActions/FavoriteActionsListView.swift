@@ -15,6 +15,10 @@ public final class FavoriteActionsListView: UIView {
         case share
         case copyLink
         case delete
+
+        static var allCasesExcludingCopyLink: [Action] {
+            return allCases.filter({ $0 != .copyLink })
+        }
     }
 
     public static let estimatedRowHeight: CGFloat = 48.0
@@ -22,18 +26,20 @@ public final class FavoriteActionsListView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: FavoriteActionsListViewDelegate?
+
     public var isShared = false {
         didSet {
-            toggleSharing()
+            reloadData()
         }
     }
 
     // MARK: - Private properties
 
     private let viewModel: FavoriteActionsListViewModel
+    private var actions = [Action]()
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = TableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -59,17 +65,17 @@ public final class FavoriteActionsListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Data
-
-    private func toggleSharing() {
-        tableView.reloadData()
-    }
-
     // MARK: - Setup
 
     private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
+        reloadData()
+    }
+
+    private func reloadData() {
+        actions = isShared ? Action.allCases : Action.allCasesExcludingCopyLink
+        tableView.reloadData()
     }
 }
 
@@ -77,11 +83,11 @@ public final class FavoriteActionsListView: UIView {
 
 extension FavoriteActionsListView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Action.allCases.count
+        return actions.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let action = Action.allCases[indexPath.row]
+        let action = actions[indexPath.row]
 
         switch action {
         case .edit:
@@ -117,7 +123,7 @@ extension FavoriteActionsListView: UITableViewDataSource {
 
 extension FavoriteActionsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let action = Action.allCases[indexPath.row]
+        let action = actions[indexPath.row]
         delegate?.favoriteActionsListView(self, didSelectAction: action)
     }
 }
@@ -125,8 +131,8 @@ extension FavoriteActionsListView: UITableViewDelegate {
 // MARK: - FavoriteShareViewCellDelegate
 
 extension FavoriteActionsListView: FavoriteShareViewCellDelegate {
-    func favoriteShareViewCell(_ cell: FavoriteShareViewCell, didChangeSwitchValue value: Bool) {
-
+    func favoriteShareViewCellDidToggleSwitchValue(_ cell: FavoriteShareViewCell) {
+        delegate?.favoriteActionsListView(self, didSelectAction: .share)
     }
 }
 
@@ -134,6 +140,22 @@ extension FavoriteActionsListView: FavoriteShareViewCellDelegate {
 
 extension FavoriteActionsListView: FavoriteCopyLinkViewCellDelegate {
     func favoriteCopyLinkViewCellDidSelectButton(_ cell: FavoriteCopyLinkViewCell) {
+        delegate?.favoriteActionsListView(self, didSelectAction: .copyLink)
+    }
+}
 
+// MARK: - Private types
+
+private final class TableView: UITableView {
+    override var intrinsicContentSize: CGSize {
+        return contentSize
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if bounds.size != intrinsicContentSize {
+            invalidateIntrinsicContentSize()
+        }
     }
 }

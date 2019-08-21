@@ -5,7 +5,7 @@
 import UIKit
 
 protocol FavoriteShareViewCellDelegate: AnyObject {
-    func favoriteShareViewCell(_ cell: FavoriteShareViewCell, didChangeSwitchValue value: Bool)
+    func favoriteShareViewCellDidToggleSwitchValue(_ cell: FavoriteShareViewCell)
 }
 
 final class FavoriteShareViewCell: UITableViewCell {
@@ -72,6 +72,6 @@ final class FavoriteShareViewCell: UITableViewCell {
     // MARK: - Action
 
     @objc private func handleSwitchValueChange() {
-        delegate?.favoriteShareViewCell(self, didChangeSwitchValue: switchControl.isOn)
+        delegate?.favoriteShareViewCellDidToggleSwitchValue(self)
     }
 }
