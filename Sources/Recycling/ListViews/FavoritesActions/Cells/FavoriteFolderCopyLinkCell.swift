@@ -4,12 +4,12 @@
 
 import UIKit
 
-protocol FavoriteCopyLinkViewCellDelegate: AnyObject {
-    func favoriteCopyLinkViewCellDidSelectButton(_ cell: FavoriteCopyLinkViewCell)
+protocol FavoriteFolderCopyLinkCellDelegate: AnyObject {
+    func favoriteFolderCopyLinkCellDidSelectButton(_ cell: FavoriteFolderCopyLinkCell)
 }
 
-final class FavoriteCopyLinkViewCell: UITableViewCell {
-    weak var delegate: FavoriteCopyLinkViewCellDelegate?
+final class FavoriteFolderCopyLinkCell: UITableViewCell {
+    weak var delegate: FavoriteFolderCopyLinkCellDelegate?
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -65,7 +65,7 @@ final class FavoriteCopyLinkViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionViewCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteFolderActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             descriptionLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -80,6 +80,6 @@ final class FavoriteCopyLinkViewCell: UITableViewCell {
     // MARK: - Action
 
     @objc private func handleButtonTap() {
-        delegate?.favoriteCopyLinkViewCellDidSelectButton(self)
+        delegate?.favoriteFolderCopyLinkCellDidSelectButton(self)
     }
 }

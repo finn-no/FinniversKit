@@ -4,39 +4,50 @@
 
 import Foundation
 
-public protocol FavoriteActionsBottomSheetDelegate: AnyObject {
-    func favoriteActionsBottomSheet(_ bottomSheet: FavoriteActionsBottomSheet, didSelectAction action: FavoriteActionsListView.Action)
+public protocol FavoriteFolderActionSheetDelegate: AnyObject {
+    func favoriteFolderActionSheet(_ actionSheet: FavoriteFolderActionSheet, didSelectAction action: FavoriteFolderAction)
 }
 
-public final class FavoriteActionsBottomSheet: BottomSheet {
-    public weak var actionsDelegate: FavoriteActionsBottomSheetDelegate?
-    private let viewController: ActionListViewController
+public final class FavoriteFolderActionSheet: BottomSheet {
+    public weak var actionDelegate: FavoriteFolderActionSheetDelegate?
 
-    public var isShared = false {
+    public var isCopyLinkHidden = false {
         didSet {
-            height = isShared ? .expanded : .compact
-            viewController.actionsListView.isShared = isShared
+            height = isCopyLinkHidden ? .compact : .expanded
+            viewController?.actionsListView.isCopyLinkHidden = isCopyLinkHidden
         }
     }
+
+    private weak var viewController: ActionListViewController?
 
     // MARK: - Init
 
     public required init(viewModel: FavoriteActionsListViewModel) {
-        self.viewController = ActionListViewController(viewModel: viewModel)
+        let viewController = ActionListViewController(viewModel: viewModel)
         super.init(rootViewController: viewController, height: .compact)
-        viewController.delegate = self
+        self.viewController = viewController
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
+
+    // MARK: - Lifecycle
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        viewController?.actionsListView.delegate = self
+    }
 }
 
 // MARK: - FavoriteActionsListViewDelegate
 
-extension FavoriteActionsBottomSheet: FavoriteActionsListViewDelegate {
-    public func favoriteActionsListView(_ view: FavoriteActionsListView, didSelectAction action: FavoriteActionsListView.Action) {
-        actionsDelegate?.favoriteActionsBottomSheet(self, didSelectAction: action)
+extension FavoriteFolderActionSheet: FavoriteFolderActionsListViewDelegate {
+    public func favoriteFolderActionsListView(
+        _ view: FavoriteFolderActionsListView,
+        didSelectAction action: FavoriteFolderAction
+    ) {
+        actionDelegate?.favoriteFolderActionSheet(self, didSelectAction: action)
     }
 }
 
@@ -44,12 +55,10 @@ extension FavoriteActionsBottomSheet: FavoriteActionsListViewDelegate {
 
 private final class ActionListViewController: UIViewController {
     private let viewModel: FavoriteActionsListViewModel
-    weak var delegate: FavoriteActionsListViewDelegate?
 
-    private(set) lazy var actionsListView: FavoriteActionsListView = {
-        let view = FavoriteActionsListView(viewModel: viewModel)
+    private(set) lazy var actionsListView: FavoriteFolderActionsListView = {
+        let view = FavoriteFolderActionsListView(viewModel: viewModel)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.delegate = delegate
         return view
     }()
 
@@ -73,12 +82,12 @@ private final class ActionListViewController: UIViewController {
 
 private extension BottomSheet.Height {
     static var compact: BottomSheet.Height {
-        let height = FavoriteActionsListView.compactHeight + bottomInset
+        let height = FavoriteFolderActionsListView.compactHeight + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }
 
     static var expanded: BottomSheet.Height {
-        let height = FavoriteActionsListView.expandedHeight + bottomInset
+        let height = FavoriteFolderActionsListView.expandedHeight + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }
 

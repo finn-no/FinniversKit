@@ -4,11 +4,11 @@
 
 import UIKit
 
-final class FavoriteActionViewCell: UITableViewCell {
+final class FavoriteFolderActionCell: UITableViewCell {
     static let iconSize: CGFloat = 24
-    static let separatorLeadingInset = .mediumLargeSpacing * 2 + FavoriteActionViewCell.iconSize
+    static let separatorLeadingInset = .mediumLargeSpacing * 2 + FavoriteFolderActionCell.iconSize
 
-    private lazy var titleLabel = FavoriteActionViewCell.makeTitleLabel()
+    private lazy var titleLabel = FavoriteFolderActionCell.makeTitleLabel()
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -47,7 +47,7 @@ final class FavoriteActionViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionViewCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteFolderActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -59,7 +59,7 @@ final class FavoriteActionViewCell: UITableViewCell {
 
 // MARK: - Factory
 
-extension FavoriteActionViewCell {
+extension FavoriteFolderActionCell {
     static func makeTitleLabel() -> UILabel {
         let label = UILabel(withAutoLayout: true)
         label.font = .bodyStrong

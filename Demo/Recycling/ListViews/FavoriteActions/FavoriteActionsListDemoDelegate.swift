@@ -4,15 +4,15 @@
 
 import FinniversKit
 
-final class FavoriteActionsListDemoDelegate: FavoriteActionsBottomSheetDelegate {
-    static let shared = FavoriteActionsListDemoDelegate()
+final class FavoriteFolderActionSheetDemoDelegate: FavoriteFolderActionSheetDelegate {
+    static let shared = FavoriteFolderActionSheetDemoDelegate()
 
-    func favoriteActionsBottomSheet(_ bottomSheet: FavoriteActionsBottomSheet, didSelectAction action: FavoriteActionsListView.Action) {
+    func favoriteFolderActionSheet(_ actionSheet: FavoriteFolderActionSheet, didSelectAction action: FavoriteFolderAction) {
         print("\(action) selected")
 
         switch action {
         case .share:
-            bottomSheet.isShared.toggle()
+            actionSheet.isCopyLinkHidden.toggle()
         default:
             break
         }

@@ -4,14 +4,14 @@
 
 import UIKit
 
-protocol FavoriteShareViewCellDelegate: AnyObject {
-    func favoriteShareViewCell(_ cell: FavoriteShareViewCell, didChangeValueFor switchControl: UISwitch)
+protocol FavoriteFolderShareCellDelegate: AnyObject {
+    func favoriteFolderShareCell(_ cell: FavoriteFolderShareCell, didChangeValueFor switchControl: UISwitch)
 }
 
-final class FavoriteShareViewCell: UITableViewCell {
-    weak var delegate: FavoriteShareViewCellDelegate?
+final class FavoriteFolderShareCell: UITableViewCell {
+    weak var delegate: FavoriteFolderShareCellDelegate?
 
-    private lazy var titleLabel = FavoriteActionViewCell.makeTitleLabel()
+    private lazy var titleLabel = FavoriteFolderActionCell.makeTitleLabel()
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -58,7 +58,7 @@ final class FavoriteShareViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionViewCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteFolderActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -73,6 +73,6 @@ final class FavoriteShareViewCell: UITableViewCell {
     // MARK: - Action
 
     @objc private func handleSwitchValueChange() {
-        delegate?.favoriteShareViewCell(self, didChangeValueFor: switchControl)
+        delegate?.favoriteFolderShareCell(self, didChangeValueFor: switchControl)
     }
 }

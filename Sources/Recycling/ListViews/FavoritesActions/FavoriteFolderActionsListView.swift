@@ -4,42 +4,30 @@
 
 import UIKit
 
-public protocol FavoriteActionsListViewDelegate: AnyObject {
-    func favoriteActionsListView(_ view: FavoriteActionsListView, didSelectAction action: FavoriteActionsListView.Action)
+public protocol FavoriteFolderActionsListViewDelegate: AnyObject {
+    func favoriteFolderActionsListView(_ view: FavoriteFolderActionsListView, didSelectAction action: FavoriteFolderAction)
 }
 
-public final class FavoriteActionsListView: UIView {
-    public enum Action: Equatable, Hashable, CaseIterable {
-        case edit
-        case changeName
-        case share
-        case copyLink
-        case delete
-
-        static func cases(whenIsShared isShared: Bool) -> [Action] {
-            return isShared ? allCases : allCases.filter({ $0 != .copyLink })
-        }
-    }
-
-    public static let estimatedRowHeight: CGFloat = 48.0
-    public static let compactHeight = estimatedRowHeight * CGFloat(Action.cases(whenIsShared: false).count)
-    public static let expandedHeight = estimatedRowHeight * CGFloat(Action.cases(whenIsShared: true).count)
+public final class FavoriteFolderActionsListView: UIView {
+    public static let rowHeight: CGFloat = 48.0
+    public static let compactHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withCopyLink: false).count)
+    public static let expandedHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withCopyLink: true).count)
 
     // MARK: - Public properties
 
-    public weak var delegate: FavoriteActionsListViewDelegate?
+    public weak var delegate: FavoriteFolderActionsListViewDelegate?
 
-    public var isShared = false {
+    public var isCopyLinkHidden = false {
         didSet {
             updateActions()
-            showCopyLink(isShared)
+            hideCopyLink(isCopyLinkHidden)
         }
     }
 
     // MARK: - Private properties
 
     private let viewModel: FavoriteActionsListViewModel
-    private var actions = [Action]()
+    private var actions = [FavoriteFolderAction]()
 
     private lazy var tableView: UITableView = {
         let tableView = TableView(frame: .zero, style: .plain)
@@ -47,13 +35,13 @@ public final class FavoriteActionsListView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .milk
-        tableView.rowHeight = FavoriteActionsListView.estimatedRowHeight
-        tableView.estimatedRowHeight = FavoriteActionsListView.estimatedRowHeight
+        tableView.rowHeight = FavoriteFolderActionsListView.rowHeight
+        tableView.estimatedRowHeight = FavoriteFolderActionsListView.rowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
-        tableView.register(FavoriteActionViewCell.self)
-        tableView.register(FavoriteShareViewCell.self)
-        tableView.register(FavoriteCopyLinkViewCell.self)
+        tableView.register(FavoriteFolderActionCell.self)
+        tableView.register(FavoriteFolderShareCell.self)
+        tableView.register(FavoriteFolderCopyLinkCell.self)
         return tableView
     }()
 
@@ -78,10 +66,10 @@ public final class FavoriteActionsListView: UIView {
     }
 
     private func updateActions() {
-        actions = Action.cases(whenIsShared: isShared)
+        actions = FavoriteFolderAction.cases(withCopyLink: !isCopyLinkHidden)
     }
 
-    private func showCopyLink(_ show: Bool) {
+    private func hideCopyLink(_ hide: Bool) {
         guard let index = actions.firstIndex(of: .share) else {
             return
         }
@@ -89,21 +77,21 @@ public final class FavoriteActionsListView: UIView {
         let shareIndexPath = IndexPath(row: index, section: 0)
         let copyLinkIndexPath = IndexPath(row: index + 1, section: 0)
 
-        if show {
-            tableView.insertRows(at: [copyLinkIndexPath], with: .automatic)
-        } else {
+        if hide {
             tableView.deleteRows(at: [copyLinkIndexPath], with: .automatic)
+        } else {
+            tableView.insertRows(at: [copyLinkIndexPath], with: .automatic)
         }
 
         if let cell = tableView.cellForRow(at: shareIndexPath) {
-            cell.hideSepatator(show)
+            cell.hideSepatator(!hide)
         }
     }
 }
 
 // MARK: - UITableViewDataSource
 
-extension FavoriteActionsListView: UITableViewDataSource {
+extension FavoriteFolderActionsListView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return actions.count
     }
@@ -113,20 +101,20 @@ extension FavoriteActionsListView: UITableViewDataSource {
 
         switch action {
         case .edit:
-            let cell = tableView.dequeue(FavoriteActionViewCell.self, for: indexPath)
+            let cell = tableView.dequeue(FavoriteFolderActionCell.self, for: indexPath)
             cell.configure(withTitle: viewModel.editText, icon: .favoritesEdit)
             return cell
         case .changeName:
-            let cell = tableView.dequeue(FavoriteActionViewCell.self, for: indexPath)
+            let cell = tableView.dequeue(FavoriteFolderActionCell.self, for: indexPath)
             cell.configure(withTitle: viewModel.changeNameText, icon: .pencilPaper)
             return cell
         case .share:
-            let cell = tableView.dequeue(FavoriteShareViewCell.self, for: indexPath)
+            let cell = tableView.dequeue(FavoriteFolderShareCell.self, for: indexPath)
             cell.delegate = self
-            cell.configure(withTitle: viewModel.shareText, switchOn: isShared)
+            cell.configure(withTitle: viewModel.shareText, switchOn: !isCopyLinkHidden)
             return cell
         case .copyLink:
-            let cell = tableView.dequeue(FavoriteCopyLinkViewCell.self, for: indexPath)
+            let cell = tableView.dequeue(FavoriteFolderCopyLinkCell.self, for: indexPath)
             cell.delegate = self
             cell.configure(
                 withButtonTitle: viewModel.copyLinkButtonTitle,
@@ -134,7 +122,7 @@ extension FavoriteActionsListView: UITableViewDataSource {
             )
             return cell
         case .delete:
-            let cell = tableView.dequeue(FavoriteActionViewCell.self, for: indexPath)
+            let cell = tableView.dequeue(FavoriteFolderActionCell.self, for: indexPath)
             cell.configure(withTitle: viewModel.deleteText, icon: .favoritesDelete, tintColor: .cherry)
             return cell
         }
@@ -143,11 +131,11 @@ extension FavoriteActionsListView: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension FavoriteActionsListView: UITableViewDelegate {
+extension FavoriteFolderActionsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let action = actions[indexPath.row]
         let isLastCell = indexPath.row == actions.count - 1
-        let hideSeparator = isLastCell || (action == .share && isShared) || action == .copyLink
+        let hideSeparator = isLastCell || (action == .share && !isCopyLinkHidden) || action == .copyLink
 
         cell.hideSepatator(hideSeparator)
     }
@@ -157,25 +145,25 @@ extension FavoriteActionsListView: UITableViewDelegate {
 
         tableView.deselectRow(at: indexPath, animated: true)
 
-        if Set<Action>([.edit, .changeName, .delete]).contains(action) {
-            delegate?.favoriteActionsListView(self, didSelectAction: action)
+        if Set<FavoriteFolderAction>([.edit, .changeName, .delete]).contains(action) {
+            delegate?.favoriteFolderActionsListView(self, didSelectAction: action)
         }
     }
 }
 
 // MARK: - FavoriteShareViewCellDelegate
 
-extension FavoriteActionsListView: FavoriteShareViewCellDelegate {
-    func favoriteShareViewCell(_ cell: FavoriteShareViewCell, didChangeValueFor switchControl: UISwitch) {
-        delegate?.favoriteActionsListView(self, didSelectAction: .share)
+extension FavoriteFolderActionsListView: FavoriteFolderShareCellDelegate {
+    func favoriteFolderShareCell(_ cell: FavoriteFolderShareCell, didChangeValueFor switchControl: UISwitch) {
+        delegate?.favoriteFolderActionsListView(self, didSelectAction: .share)
     }
 }
 
 // MARK: - FavoriteCopyLinkViewCellDelegate
 
-extension FavoriteActionsListView: FavoriteCopyLinkViewCellDelegate {
-    func favoriteCopyLinkViewCellDidSelectButton(_ cell: FavoriteCopyLinkViewCell) {
-        delegate?.favoriteActionsListView(self, didSelectAction: .copyLink)
+extension FavoriteFolderActionsListView: FavoriteFolderCopyLinkCellDelegate {
+    func favoriteFolderCopyLinkCellDidSelectButton(_ cell: FavoriteFolderCopyLinkCell) {
+        delegate?.favoriteFolderActionsListView(self, didSelectAction: .copyLink)
     }
 }
 
@@ -197,7 +185,7 @@ private final class TableView: UITableView {
 
 private extension UITableViewCell {
     func hideSepatator(_ hide: Bool) {
-        let inset = hide ? frame.width : FavoriteActionViewCell.separatorLeadingInset
+        let inset = hide ? frame.width : FavoriteFolderActionCell.separatorLeadingInset
         separatorInset = .leadingInset(inset)
     }
 }
