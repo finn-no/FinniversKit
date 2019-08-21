@@ -13,10 +13,10 @@ public final class CalloutView: UIView {
 
     private let direction: Direction
 
-    private var arrowRotationTransformation: CGAffineTransform {
+    private var arrowRotationTransformation: CGAffineTransform? {
         switch direction {
         case .up:
-            return CGAffineTransform(rotationAngle: 0)
+            return nil
         case .down:
             return CGAffineTransform(rotationAngle: CGFloat.pi)
         }
@@ -90,7 +90,9 @@ public final class CalloutView: UIView {
         addSubview(arrowView)
         addSubview(textLabel)
 
-        arrowView.transform = arrowRotationTransformation
+        if let arrowRotationTransformation = arrowRotationTransformation {
+            arrowView.transform = arrowRotationTransformation
+        }
 
         let defaultConstraints = [
             arrowView.widthAnchor.constraint(equalToConstant: 20),
