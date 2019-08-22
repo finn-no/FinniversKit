@@ -85,6 +85,9 @@ class LoginEntryDialogueView: UIView {
 
     private func setup() {
         layer.cornerRadius = 33
+        layoutMargins = UIEdgeInsets(
+            top: .veryLargeSpacing, leading: .largeSpacing, bottom: .largeSpacing, trailing: .largeSpacing
+        )
 
         addSubview(logoImageView)
         addSubview(titleLabel)
@@ -92,28 +95,29 @@ class LoginEntryDialogueView: UIView {
         addSubview(loginButton)
         addSubview(registerButton)
 
+        let margins = layoutMarginsGuide
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: topAnchor, constant: .veryLargeSpacing),
-            logoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            logoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            logoImageView.topAnchor.constraint(equalTo: margins.topAnchor),
+            logoImageView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            logoImageView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 56),
 
             titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: .largeSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
             detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
-            detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing + .largeSpacing),
-            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing - .largeSpacing),
+            detailLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: .mediumSpacing),
+            detailLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -.mediumSpacing),
 
             loginButton.topAnchor.constraint(equalTo: detailLabel.bottomAnchor, constant: .largeSpacing),
-            loginButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            loginButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            loginButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
 
             registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: .mediumLargeSpacing),
-            registerButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            registerButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
-            registerButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.largeSpacing),
+            registerButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            registerButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            registerButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
         ])
     }
 
