@@ -200,10 +200,14 @@ extension ProfileSummaryView {
     private func breakdownView(for model: ProfileSummaryBreakdownModel) -> UIView {
         let root = UIView(withAutoLayout: true)
 
+        let imageWrapper = UIView(withAutoLayout: true)
+        root.addSubview(imageWrapper)
+
         let imageView = UIImageView(image: model.icon)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .stone
         imageView.contentMode = .scaleAspectFit
-        root.addSubview(imageView)
+        imageWrapper.addSubview(imageView)
 
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -212,12 +216,17 @@ extension ProfileSummaryView {
         root.addSubview(label)
 
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: reviewScoreSize),
-            imageView.heightAnchor.constraint(equalToConstant: 24),
-            imageView.centerYAnchor.constraint(equalTo: root.centerYAnchor),
-            imageView.leadingAnchor.constraint(equalTo: root.leadingAnchor),
+            imageWrapper.leadingAnchor.constraint(equalTo: root.leadingAnchor),
+            imageWrapper.topAnchor.constraint(equalTo: root.topAnchor),
+            imageWrapper.bottomAnchor.constraint(equalTo: root.bottomAnchor),
+            imageWrapper.widthAnchor.constraint(equalToConstant: reviewScoreSize),
 
-            label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
+            imageView.widthAnchor.constraint(equalToConstant: 18),
+            imageView.heightAnchor.constraint(equalToConstant: 18),
+            imageView.centerYAnchor.constraint(equalTo: imageWrapper.centerYAnchor),
+            imageView.centerXAnchor.constraint(equalTo: imageWrapper.centerXAnchor),
+
+            label.leadingAnchor.constraint(equalTo: imageWrapper.trailingAnchor, constant: .mediumSpacing),
             label.topAnchor.constraint(equalTo: root.topAnchor),
             label.bottomAnchor.constraint(equalTo: root.bottomAnchor),
             label.trailingAnchor.constraint(equalTo: root.trailingAnchor, constant: -.mediumSpacing),

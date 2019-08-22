@@ -62,10 +62,10 @@ fileprivate struct ViewModel: ProfileSummaryViewModel {
     let subtitle: String = "22 vurderinger"
     let score: Float = 0.84
     let categoryBreakdowns: [ProfileSummaryBreakdownModel] = [
-        BreakdownModel(icon: UIImage(named: .verified), title: "Veldig bra kommunikasjon"),
-        BreakdownModel(icon: UIImage(named: .verified), title: "Problemfri overlevering"),
-        BreakdownModel(icon: UIImage(named: .verified), title: "Nøyaktig beskrivelse"),
-        BreakdownModel(icon: UIImage(named: .verified), title: "Problemfri betaling")
+        BreakdownModel(icon: UIImage(named: .speechbubbleSmiley), title: "Veldig bra kommunikasjon"),
+        BreakdownModel(icon: UIImage(named: .handshake), title: "Problemfri overlevering"),
+        BreakdownModel(icon: UIImage(named: .document), title: "Nøyaktig beskrivelse"),
+        BreakdownModel(icon: UIImage(named: .creditcard), title: "Problemfri betaling")
     ]
 
     let collapseBreakdown: Bool
