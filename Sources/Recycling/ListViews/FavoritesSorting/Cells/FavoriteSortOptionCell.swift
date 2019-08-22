@@ -58,9 +58,9 @@ final class FavoriteSortOptionCell: UITableViewCell {
 
     // MARK: - Public
 
-    func configure(withTitle title: String, icon: UIImage?) {
+    func configure(withTitle title: String, icon: FinniversImageAsset) {
         titleLabel.text = title
-        iconImageView.image = icon?.withRenderingMode(.alwaysTemplate)
+        iconImageView.image = UIImage(named: icon).withRenderingMode(.alwaysTemplate)
     }
 
     // MARK: - Private methods

@@ -47,6 +47,7 @@ NSString *const FinniversImageAssetfavoriteAdd = @"favoriteAdd";
 NSString *const FinniversImageAssetfavoritesCopyLink = @"favoritesCopyLink";
 NSString *const FinniversImageAssetfavoritesDelete = @"favoritesDelete";
 NSString *const FinniversImageAssetfavoritesEdit = @"favoritesEdit";
+NSString *const FinniversImageAssetfavoritesNote = @"favoritesNote";
 NSString *const FinniversImageAssetfavoritesPlus = @"favoritesPlus";
 NSString *const FinniversImageAssetfavoritesShare = @"favoritesShare";
 NSString *const FinniversImageAssetfavoritesSortAdStatus = @"favoritesSortAdStatus";
@@ -182,6 +183,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetfavoritesCopyLink,
              FinniversImageAssetfavoritesDelete,
              FinniversImageAssetfavoritesEdit,
+             FinniversImageAssetfavoritesNote,
              FinniversImageAssetfavoritesPlus,
              FinniversImageAssetfavoritesShare,
              FinniversImageAssetfavoritesSortAdStatus,

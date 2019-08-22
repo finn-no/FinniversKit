@@ -23,32 +23,4 @@ public struct FavoriteSortingViewModel {
         self.lastUpdatedText = lastUpdatedText
         self.distanceText = distanceText
     }
-
-    // MARK: - Content
-
-    func title(for option: FavoriteSortOption) -> String {
-        switch option {
-        case .lastAdded:
-            return lastAddedText
-        case .status:
-            return statusText
-        case .lastUpdated:
-            return lastUpdatedText
-        case .distance:
-            return distanceText
-        }
-    }
-
-    func icon(for option: FavoriteSortOption) -> UIImage? {
-        switch option {
-        case .lastAdded:
-            return UIImage(named: .favoritesSortLastAdded)
-        case .status:
-            return UIImage(named: .favoritesSortAdStatus)
-        case .lastUpdated:
-            return UIImage(named: .republish)
-        case .distance:
-            return UIImage(named: .favoritesSortDistance)
-        }
-    }
 }

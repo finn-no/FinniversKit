@@ -47,6 +47,7 @@ extern NSString *const FinniversImageAssetfavoriteAdd;
 extern NSString *const FinniversImageAssetfavoritesCopyLink;
 extern NSString *const FinniversImageAssetfavoritesDelete;
 extern NSString *const FinniversImageAssetfavoritesEdit;
+extern NSString *const FinniversImageAssetfavoritesNote;
 extern NSString *const FinniversImageAssetfavoritesPlus;
 extern NSString *const FinniversImageAssetfavoritesShare;
 extern NSString *const FinniversImageAssetfavoritesSortAdStatus;

@@ -69,8 +69,20 @@ extension FavoriteSortingView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let option = options[indexPath.row]
         let cell = tableView.dequeue(FavoriteSortOptionCell.self, for: indexPath)
-        cell.configure(withTitle: viewModel.title(for: option), icon: viewModel.icon(for: option))
+
+        switch option {
+        case .lastAdded:
+            cell.configure(withTitle: viewModel.lastAddedText, icon: .favoritesSortLastAdded)
+        case .status:
+            cell.configure(withTitle: viewModel.statusText, icon: .favoritesSortAdStatus)
+        case .lastUpdated:
+            cell.configure(withTitle: viewModel.lastUpdatedText, icon: .republish)
+        case .distance:
+            cell.configure(withTitle: viewModel.distanceText, icon: .favoritesSortDistance)
+        }
+
         cell.isCheckmarkHidden = option != selectedSortOption
+
         return cell
     }
 }
