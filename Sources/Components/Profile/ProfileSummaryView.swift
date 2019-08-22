@@ -222,8 +222,9 @@ extension ProfileSummaryView {
 
         NSLayoutConstraint.activate([
             imageWrapper.leadingAnchor.constraint(equalTo: root.leadingAnchor),
-            imageWrapper.topAnchor.constraint(equalTo: root.topAnchor),
-            imageWrapper.bottomAnchor.constraint(equalTo: root.bottomAnchor),
+            imageWrapper.topAnchor.constraint(greaterThanOrEqualTo: root.topAnchor),
+            imageWrapper.bottomAnchor.constraint(lessThanOrEqualTo: root.bottomAnchor),
+            imageWrapper.centerYAnchor.constraint(equalTo: root.centerYAnchor),
             imageWrapper.widthAnchor.constraint(equalToConstant: reviewScoreSize),
 
             imageView.widthAnchor.constraint(equalToConstant: 24),
