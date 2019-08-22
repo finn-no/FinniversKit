@@ -23,7 +23,7 @@ public final class FavoriteSortingView: UIView {
     private var selectedSortOption: FavoriteSortOption
 
     private lazy var tableView: UITableView = {
-        let tableView = TableView(frame: .zero, style: .plain)
+        let tableView = FullSizeTableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -84,21 +84,5 @@ extension FavoriteSortingView: UITableViewDelegate {
         selectedSortOption = options[indexPath.row]
         tableView.reloadData()
         delegate?.favoriteSortingView(self, didSelectOption: selectedSortOption)
-    }
-}
-
-// MARK: - Private types
-
-private final class TableView: UITableView {
-    override var intrinsicContentSize: CGSize {
-        return contentSize
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        if bounds.size != intrinsicContentSize {
-            invalidateIntrinsicContentSize()
-        }
     }
 }
