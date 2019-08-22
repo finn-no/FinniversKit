@@ -79,9 +79,9 @@ extension FavoriteSortingView: UITableViewDataSource {
 
 extension FavoriteSortingView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-
         selectedSortOption = options[indexPath.row]
+
+        tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
         delegate?.favoriteSortingView(self, didSelectSortOption: selectedSortOption)
     }

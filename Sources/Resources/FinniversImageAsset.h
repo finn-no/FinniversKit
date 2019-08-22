@@ -50,6 +50,7 @@ extern NSString *const FinniversImageAssetfavoritesEdit;
 extern NSString *const FinniversImageAssetfavoritesPlus;
 extern NSString *const FinniversImageAssetfavoritesShare;
 extern NSString *const FinniversImageAssetfavoritesSortAdStatus;
+extern NSString *const FinniversImageAssetfavoritesSortDistance;
 extern NSString *const FinniversImageAssetfavoritesSortLastAdded;
 extern NSString *const FinniversImageAssetfavouriteAddImg;
 extern NSString *const FinniversImageAssetfavouriteAdded;

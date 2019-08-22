@@ -62,6 +62,7 @@ public enum FinniversImageAsset: String {
     case favoritesPlus
     case favoritesShare
     case favoritesSortAdStatus
+    case favoritesSortDistance
     case favoritesSortLastAdded
     case favouriteAddImg
     case favouriteAdded
@@ -195,6 +196,7 @@ public enum FinniversImageAsset: String {
             .favoritesPlus,
             .favoritesShare,
             .favoritesSortAdStatus,
+            .favoritesSortDistance,
             .favoritesSortLastAdded,
             .favouriteAddImg,
             .favouriteAdded,

@@ -48,7 +48,7 @@ public struct FavoriteSortingViewModel {
         case .lastUpdated:
             return UIImage(named: .republish)
         case .distance:
-            return UIImage(named: .pin)
+            return UIImage(named: .favoritesSortDistance)
         }
     }
 }

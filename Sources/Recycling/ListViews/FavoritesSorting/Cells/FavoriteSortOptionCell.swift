@@ -5,6 +5,8 @@
 import UIKit
 
 final class FavoriteSortOptionCell: UITableViewCell {
+    static let iconSize: CGFloat = 24
+
     var isCheckmarkHidden = true {
         didSet {
             hideCheckmark(isCheckmarkHidden)
@@ -75,7 +77,7 @@ final class FavoriteSortOptionCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteFolderActionCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteSortOptionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

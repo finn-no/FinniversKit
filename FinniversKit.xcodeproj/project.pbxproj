@@ -2343,20 +2343,20 @@
 		CF164CF1230E8F8800250822 /* FavoritesSorting */ = {
 			isa = PBXGroup;
 			children = (
-				CF164CF9230EAD2200250822 /* Cells */,
-				CF164CF6230E966400250822 /* ViewModel */,
 				CF164CF4230E93AE00250822 /* FavoriteSortingView.swift */,
+				CF164CF9230EAD2200250822 /* Cells */,
+				CF164CF6230E966400250822 /* ViewModels */,
 			);
 			path = FavoritesSorting;
 			sourceTree = "<group>";
 		};
-		CF164CF6230E966400250822 /* ViewModel */ = {
+		CF164CF6230E966400250822 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				CF164CF7230E968000250822 /* FavoriteSortingViewModel.swift */,
 				CF164CF2230E8FB900250822 /* FavoriteSortOption.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		CF164CF9230EAD2200250822 /* Cells */ = {
