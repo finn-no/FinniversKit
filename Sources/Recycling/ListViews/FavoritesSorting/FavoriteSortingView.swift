@@ -70,7 +70,7 @@ extension FavoriteSortingView: UITableViewDataSource {
         let option = options[indexPath.row]
         let cell = tableView.dequeue(FavoriteSortOptionCell.self, for: indexPath)
         cell.configure(withTitle: viewModel.title(for: option), icon: viewModel.icon(for: option))
-        cell.isCheckmarkHidden = option == selectedSortOption
+        cell.isCheckmarkHidden = option != selectedSortOption
         return cell
     }
 }

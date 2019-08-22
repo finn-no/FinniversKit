@@ -7,7 +7,7 @@ import UIKit
 final class FavoriteSortOptionCell: UITableViewCell {
     var isCheckmarkHidden = true {
         didSet {
-            hideCheckmark(true)
+            hideCheckmark(isCheckmarkHidden)
         }
     }
 
