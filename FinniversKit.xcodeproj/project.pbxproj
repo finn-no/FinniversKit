@@ -263,7 +263,7 @@
 		9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */; };
 		9B9287AB22F0593700FC7B69 /* KlimabroletData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */; };
 		9B9F8C1722F07B2100298CDB /* FeedbackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */; };
-		9BAB37D7230BE3E100E861D4 /* SaveSearchViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoView.swift */; };
+		9BAB37D7230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift */; };
 		9BAB37DC230BEA5700E861D4 /* SaveSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */; };
 		9BAB37E0230C070400E861D4 /* SaveSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */; };
 		9BBC8AE122DF50E5003453B6 /* KlimabroletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC8AE022DF50E5003453B6 /* KlimabroletView.swift */; };
@@ -761,7 +761,7 @@
 		9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
 		9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletData.swift; sourceTree = "<group>"; };
 		9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
-		9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchViewDemoView.swift; sourceTree = "<group>"; };
+		9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchViewDemoViewController.swift; sourceTree = "<group>"; };
 		9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchView.swift; sourceTree = "<group>"; };
 		9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchViewModel.swift; sourceTree = "<group>"; };
 		9BBC8AE022DF50E5003453B6 /* KlimabroletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletView.swift; sourceTree = "<group>"; };
@@ -2109,7 +2109,7 @@
 		9BAB37D5230BE3C600E861D4 /* SaveSearch */ = {
 			isa = PBXGroup;
 			children = (
-				9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoView.swift */,
+				9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift */,
 			);
 			path = SaveSearch;
 			sourceTree = "<group>";
@@ -3837,7 +3837,7 @@
 				9A37DEDAA1E4DB20D8F38B08 /* FavoriteAdsListDemoViewHelper.swift in Sources */,
 				9A37D770DA2B07DC0F543B33 /* FavoriteAdsDemoDataSource.swift in Sources */,
 				9F213EFC959CEF2D2FE70FAF /* DemoMessageTemplateStore.swift in Sources */,
-				9BAB37D7230BE3E100E861D4 /* SaveSearchViewDemoView.swift in Sources */,
+				9BAB37D7230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
