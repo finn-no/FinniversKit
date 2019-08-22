@@ -42,10 +42,6 @@ class FullscreenViewTests: FBSnapshotTestCase {
         snapshot(.emptyView)
     }
 
-    func testEmptyChristmasView() {
-        snapshot(.emptyChristmasView)
-    }
-
     func testReportAdView() {
         snapshot(.reportAdView)
     }
