@@ -18,10 +18,29 @@ public protocol ProfileSummaryViewModel {
 }
 
 public protocol ProfileSummaryBreakdownModel {
-    var icon: UIImage { get }
+    var category: ProfileSummaryBreakdownCategory { get }
     var title: String { get }
 }
 
+public enum ProfileSummaryBreakdownCategory {
+    case communication
+    case payment
+    case transaction
+    case description
+
+    fileprivate var icon: UIImage {
+        switch self {
+        case .communication:
+            return UIImage(named: .speechbubbleSmiley)
+        case .payment:
+            return UIImage(named: .creditcard)
+        case .transaction:
+            return UIImage(named: .handshake)
+        case .description:
+            return UIImage(named: .document)
+        }
+    }
+}
 
 // MARK: - ProfileSummaryView
 
@@ -208,7 +227,7 @@ extension ProfileSummaryView {
         let imageWrapper = UIView(withAutoLayout: true)
         root.addSubview(imageWrapper)
 
-        let imageView = UIImageView(image: model.icon)
+        let imageView = UIImageView(image: model.category.icon)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .stone
         imageView.contentMode = .scaleAspectFit
