@@ -78,7 +78,14 @@ public class ProfileSummaryView: UIView {
         return view
     }()
 
-    private lazy var breakdownWrapper = UIView(withAutoLayout: true)
+    private lazy var breakdownWrapper: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.spacing = .mediumLargeSpacing
+        view.distribution = .equalSpacing
+        return view
+    }()
 
     private lazy var showBreakdownConstraint = breakdownWrapper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
 
@@ -111,6 +118,7 @@ public class ProfileSummaryView: UIView {
         self.isCollapsed = viewModel.collapseBreakdown
         super.init(frame: .zero)
         setup()
+        addBreakdownViews()
     }
 
     private func setup() {
@@ -176,9 +184,45 @@ extension ProfileSummaryView {
             self.collapseImage.image = newImage
         })
 
-        self.showBreakdownConstraint.isActive = !self.isCollapsed
+        showBreakdownConstraint.isActive = !isCollapsed
         UIView.animate(withDuration: 0.3, animations: {
             self.superview?.layoutIfNeeded()
         })
+    }
+
+    private func addBreakdownViews() {
+        viewModel.categoryBreakdowns.forEach { model in
+            let view = breakdownView(for: model)
+            breakdownWrapper.addArrangedSubview(view)
+        }
+    }
+
+    private func breakdownView(for model: ProfileSummaryBreakdownModel) -> UIView {
+        let root = UIView(withAutoLayout: true)
+
+        let imageView = UIImageView(image: model.icon)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        root.addSubview(imageView)
+
+        let label = Label(style: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.text = model.title
+        root.addSubview(label)
+
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: reviewScoreSize),
+            imageView.heightAnchor.constraint(equalToConstant: 24),
+            imageView.centerYAnchor.constraint(equalTo: root.centerYAnchor),
+            imageView.leadingAnchor.constraint(equalTo: root.leadingAnchor),
+
+            label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
+            label.topAnchor.constraint(equalTo: root.topAnchor),
+            label.bottomAnchor.constraint(equalTo: root.bottomAnchor),
+            label.trailingAnchor.constraint(equalTo: root.trailingAnchor, constant: -.mediumSpacing),
+        ])
+
+        return root
     }
 }
