@@ -78,6 +78,10 @@ public class ProfileSummaryView: UIView {
         return view
     }()
 
+    private lazy var breakdownWrapper = UIView(withAutoLayout: true)
+
+    private lazy var showBreakdownConstraint = breakdownWrapper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+
     // MARK: - Private properties
 
     private var isCollapsed: Bool
@@ -112,6 +116,7 @@ public class ProfileSummaryView: UIView {
     private func setup() {
         layer.cornerRadius = 8
         backgroundColor = .ice
+        clipsToBounds = true
 
         addSubview(scoreBackgroundView)
         scoreBackgroundView.addSubview(scoreLabel)
@@ -121,9 +126,10 @@ public class ProfileSummaryView: UIView {
         addSubview(collapseWrapper)
         collapseWrapper.addSubview(collapseImage)
 
-        if !viewModel.collapseBreakdown {
-            collapseWrapper.isHidden = true
-        }
+        addSubview(breakdownWrapper)
+
+        collapseWrapper.isHidden = !viewModel.collapseBreakdown || viewModel.categoryBreakdowns.isEmpty
+        showBreakdownConstraint.isActive = !viewModel.collapseBreakdown && !viewModel.categoryBreakdowns.isEmpty
 
         NSLayoutConstraint.activate([
             scoreBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
@@ -150,17 +156,29 @@ public class ProfileSummaryView: UIView {
 
             collapseImage.centerXAnchor.constraint(equalTo: collapseWrapper.centerXAnchor),
             collapseImage.centerYAnchor.constraint(equalTo: collapseWrapper.centerYAnchor),
+
+            breakdownWrapper.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            breakdownWrapper.topAnchor.constraint(greaterThanOrEqualTo: scoreBackgroundView.bottomAnchor, constant: .mediumLargeSpacing),
+            breakdownWrapper.topAnchor.constraint(greaterThanOrEqualTo: subtitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            breakdownWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
+}
 
-    // MARK: - Private methods
+// MARK: - Breakdown & Collapse Handling
 
+extension ProfileSummaryView {
     @objc private func collapseButtonTapped() {
         isCollapsed.toggle()
 
         let newImage = UIImage(named: isCollapsed ? .arrowDown : .arrowUp)
         UIView.transition(with: collapseImage, duration: 0.1, options: [.transitionCrossDissolve], animations: {
             self.collapseImage.image = newImage
+        })
+
+        self.showBreakdownConstraint.isActive = !self.isCollapsed
+        UIView.animate(withDuration: 0.3, animations: {
+            self.superview?.layoutIfNeeded()
         })
     }
 }
