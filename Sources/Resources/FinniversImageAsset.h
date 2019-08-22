@@ -133,6 +133,7 @@ extern NSString *const FinniversImageAssetsold;
 extern NSString *const FinniversImageAssetspark;
 extern NSString *const FinniversImageAssetspeechbubbleSmiley;
 extern NSString *const FinniversImageAssetspidLogo;
+extern NSString *const FinniversImageAssetstarOutline;
 extern NSString *const FinniversImageAssetstatsEmpty;
 extern NSString *const FinniversImageAssetstatsEnvelope;
 extern NSString *const FinniversImageAssetstatsEye;

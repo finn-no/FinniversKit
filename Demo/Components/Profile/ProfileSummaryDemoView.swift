@@ -60,7 +60,7 @@ class ProfileSummaryDemoView: UIView {
 fileprivate struct ViewModel: ProfileSummaryViewModel {
     let title: String = "Veldig bra"
     let subtitle: String = "22 vurderinger"
-    let score: Float = 0.84
+    let score: Float = 0.843419429
     let categoryBreakdowns: [ProfileSummaryBreakdownModel] = [
         BreakdownModel(icon: UIImage(named: .speechbubbleSmiley), title: "Veldig bra kommunikasjon"),
         BreakdownModel(icon: UIImage(named: .handshake), title: "Problemfri overlevering"),
