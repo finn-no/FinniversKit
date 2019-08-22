@@ -62,6 +62,22 @@ public class ProfileSummaryView: UIView {
         return label
     }()
 
+    private lazy var collapseWrapper: UIView = {
+        let view = UIView(withAutoLayout: true)
+
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(collapseButtonTapped))
+        view.addGestureRecognizer(gestureRecognizer)
+
+        return view
+    }()
+
+    private lazy var collapseImage: UIImageView = {
+        let view = UIImageView(image: UIImage(named: .arrowDown))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.tintColor = .stone
+        return view
+    }()
+
     // MARK: - Public properties
 
     public let viewModel: ProfileSummaryViewModel
@@ -97,6 +113,13 @@ public class ProfileSummaryView: UIView {
         addSubview(titleLabel)
         addSubview(subtitleLabel)
 
+        addSubview(collapseWrapper)
+        collapseWrapper.addSubview(collapseImage)
+
+        if !viewModel.collapseBreakdown {
+            collapseWrapper.isHidden = true
+        }
+
         NSLayoutConstraint.activate([
             scoreBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             scoreBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
@@ -109,12 +132,25 @@ public class ProfileSummaryView: UIView {
 
             titleLabel.leadingAnchor.constraint(equalTo: scoreBackgroundView.trailingAnchor, constant: .mediumSpacing),
             titleLabel.topAnchor.constraint(equalTo: scoreBackgroundView.topAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: collapseWrapper.leadingAnchor, constant: -.mediumLargeSpacing),
 
             subtitleLabel.leadingAnchor.constraint(equalTo: scoreBackgroundView.trailingAnchor, constant: .mediumSpacing),
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .verySmallSpacing),
-            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            subtitleLabel.trailingAnchor.constraint(equalTo: collapseWrapper.leadingAnchor, constant: -.mediumLargeSpacing),
+
+            collapseWrapper.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            collapseWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            collapseWrapper.widthAnchor.constraint(equalToConstant: reviewScoreSize),
+            collapseWrapper.heightAnchor.constraint(equalToConstant: reviewScoreSize),
+
+            collapseImage.centerXAnchor.constraint(equalTo: collapseWrapper.centerXAnchor),
+            collapseImage.centerYAnchor.constraint(equalTo: collapseWrapper.centerYAnchor),
         ])
     }
 
     // MARK: - Private methods
+
+    @objc private func collapseButtonTapped() {
+
+    }
 }
