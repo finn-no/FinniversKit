@@ -17,6 +17,7 @@ public extension UIImage {
     }
 }
 
+//swiftlint:disable type_body_length
 public enum FinniversImageAsset: String {
     case adManagementShare
     case adManagementTrashcan
@@ -55,7 +56,13 @@ public enum FinniversImageAsset: String {
     case error
     case eyeHide
     case favoriteAdd
+    case favoritesCopyLink
+    case favoritesDelete
+    case favoritesEdit
     case favoritesPlus
+    case favoritesShare
+    case favoritesSortAdStatus
+    case favoritesSortLastAdded
     case favouriteAddImg
     case favouriteAdded
     case favouriteAddedImg
@@ -182,7 +189,13 @@ public enum FinniversImageAsset: String {
             .error,
             .eyeHide,
             .favoriteAdd,
+            .favoritesCopyLink,
+            .favoritesDelete,
+            .favoritesEdit,
             .favoritesPlus,
+            .favoritesShare,
+            .favoritesSortAdStatus,
+            .favoritesSortLastAdded,
             .favouriteAddImg,
             .favouriteAdded,
             .favouriteAddedImg,

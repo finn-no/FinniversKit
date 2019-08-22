@@ -44,7 +44,7 @@ public class CalloutDemoView: UIView {
 
         stackView.arrangedSubviews.forEach {
             guard let calloutView = $0 as? CalloutView else { return }
-            
+
             calloutView.hide()
             calloutView.show(withText: text, duration: 0)
         }

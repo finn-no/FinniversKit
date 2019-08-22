@@ -23,7 +23,7 @@ public protocol BottomSheetDragDelegate: AnyObject {
 }
 
 extension BottomSheet {
-    public struct Height {
+    public struct Height: Equatable {
         public let compact: CGFloat
         public let expanded: CGFloat
 
@@ -76,6 +76,11 @@ public class BottomSheet: UIViewController {
     public var state: State {
         get { return transitionDelegate.presentationController?.state ?? .dismissed }
         set { transitionDelegate.presentationController?.state = newValue }
+    }
+
+    public var height: Height {
+        get { return transitionDelegate.height }
+        set { transitionDelegate.height = newValue }
     }
 
     var draggableRect: CGRect? {

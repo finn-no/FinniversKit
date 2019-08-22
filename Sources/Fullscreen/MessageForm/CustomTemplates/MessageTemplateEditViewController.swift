@@ -95,7 +95,6 @@ class MessageTemplateEditViewController: UIViewController {
     @objc private func handleKeyboardNotification(_ notification: Notification) {
         guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
 
-        let keyboardVisible = keyboardInfo.action == .willShow
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: messageInputTextView)
 
         UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in

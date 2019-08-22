@@ -34,7 +34,16 @@ class BottomSheetPresentationController: UIPresentationController {
 
     // MARK: - Private properties
 
-    private let height: BottomSheet.Height
+    var height: BottomSheet.Height {
+        didSet {
+            guard height != stateController.height else { return }
+
+            stateController.height = height
+            stateController.state = state
+            animate(to: stateController.targetPosition)
+        }
+    }
+
     private let interactionController: BottomSheetInteractionController
     private var constraint: NSLayoutConstraint? // Constraint is used to set the y position of the bottom sheet
     private var gestureController: BottomSheetGestureController?
