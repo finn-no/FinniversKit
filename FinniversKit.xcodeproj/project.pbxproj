@@ -1340,9 +1340,9 @@
 			isa = PBXGroup;
 			children = (
 				6266C06A22081B9200FB8004 /* AdManagement */,
+				CF7E7B4F230C27F8001D514E /* FavoriteFolderActions */,
 				444245FA2137D60400D42AB8 /* FavoriteFolders */,
 				14C6F7CC212324C900A7230C /* Favorites */,
-				CF7E7B4F230C27F8001D514E /* FavoritesActions */,
 				441FE441209A2F2C00B04EF1 /* Notifications */,
 				44A149E421377C7B0053D5F7 /* SavedSearches */,
 				DAC7DCA12153852D004602A3 /* Settings */,
@@ -2452,7 +2452,7 @@
 			path = EarthHour;
 			sourceTree = "<group>";
 		};
-		CF7E7B4F230C27F8001D514E /* FavoritesActions */ = {
+		CF7E7B4F230C27F8001D514E /* FavoriteFolderActions */ = {
 			isa = PBXGroup;
 			children = (
 				CF164CEA230D8E5000250822 /* FavoriteFolderActionSheet.swift */,
@@ -2460,7 +2460,7 @@
 				CF7E7B57230D3CC1001D514E /* Cells */,
 				CF164CE9230D8DBC00250822 /* ViewModels */,
 			);
-			path = FavoritesActions;
+			path = FavoriteFolderActions;
 			sourceTree = "<group>";
 		};
 		CF7E7B54230C363D001D514E /* FavoriteActions */ = {
