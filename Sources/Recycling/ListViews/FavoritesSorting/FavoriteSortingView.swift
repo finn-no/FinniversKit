@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol FavoriteSortingViewDelegate: AnyObject {
-    func favoriteSortingView(_ view: FavoriteSortingView, didSelectOption option: FavoriteSortOption)
+    func favoriteSortingView(_ view: FavoriteSortingView, didSelectSortOption option: FavoriteSortOption)
 }
 
 public final class FavoriteSortingView: UIView {
@@ -83,6 +83,6 @@ extension FavoriteSortingView: UITableViewDelegate {
 
         selectedSortOption = options[indexPath.row]
         tableView.reloadData()
-        delegate?.favoriteSortingView(self, didSelectOption: selectedSortOption)
+        delegate?.favoriteSortingView(self, didSelectSortOption: selectedSortOption)
     }
 }
