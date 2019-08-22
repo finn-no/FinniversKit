@@ -30,7 +30,7 @@ public class EmptyViewDemoView: UIView, Tweakable {
             self.setupEmptyView(
                 header: "Vi gir deg beskjed når det kommer noe nytt!",
                 message: "Søk på noe du har lyst på og trykk “Lagre søk”. Da varsler FINN deg når det dukker opp nye annonser.\n\nSmart hva?",
-                image: UIImage(named: "emptyStateMyFindings"),
+                image: UIImage(named: "emptyStateSaveSearch"),
                 shapeType: .none)
         })
 
