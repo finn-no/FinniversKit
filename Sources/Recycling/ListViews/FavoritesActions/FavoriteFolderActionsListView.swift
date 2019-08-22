@@ -39,6 +39,7 @@ public final class FavoriteFolderActionsListView: UIView {
         tableView.estimatedRowHeight = FavoriteFolderActionsListView.rowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
+        tableView.isScrollEnabled = false
         tableView.register(FavoriteFolderActionCell.self)
         tableView.register(FavoriteFolderShareCell.self)
         tableView.register(FavoriteFolderCopyLinkCell.self)
