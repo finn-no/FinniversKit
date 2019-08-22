@@ -4,7 +4,7 @@
 
 import Foundation
 
-final class FullSizeTableView: UITableView {
+final class ContentSizedTableView: UITableView {
     override var intrinsicContentSize: CGSize {
         return contentSize
     }

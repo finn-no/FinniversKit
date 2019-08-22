@@ -23,7 +23,7 @@ public final class FavoriteSortingView: UIView {
     private var selectedSortOption: FavoriteSortOption
 
     private lazy var tableView: UITableView = {
-        let tableView = FullSizeTableView(frame: .zero, style: .plain)
+        let tableView = ContentSizedTableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self

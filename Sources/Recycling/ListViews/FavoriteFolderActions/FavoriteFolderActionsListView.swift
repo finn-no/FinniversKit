@@ -30,7 +30,7 @@ public final class FavoriteFolderActionsListView: UIView {
     private var actions = [FavoriteFolderAction]()
 
     private lazy var tableView: UITableView = {
-        let tableView = FullSizeTableView(frame: .zero, style: .plain)
+        let tableView = ContentSizedTableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
