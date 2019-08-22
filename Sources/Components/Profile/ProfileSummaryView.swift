@@ -78,6 +78,10 @@ public class ProfileSummaryView: UIView {
         return view
     }()
 
+    // MARK: - Private properties
+
+    private var isCollapsed: Bool
+
     // MARK: - Public properties
 
     public let viewModel: ProfileSummaryViewModel
@@ -100,6 +104,7 @@ public class ProfileSummaryView: UIView {
 
     public init(viewModel: ProfileSummaryViewModel) {
         self.viewModel = viewModel
+        self.isCollapsed = viewModel.collapseBreakdown
         super.init(frame: .zero)
         setup()
     }
@@ -151,6 +156,11 @@ public class ProfileSummaryView: UIView {
     // MARK: - Private methods
 
     @objc private func collapseButtonTapped() {
+        isCollapsed.toggle()
 
+        let newImage = UIImage(named: isCollapsed ? .arrowDown : .arrowUp)
+        UIView.transition(with: collapseImage, duration: 0.1, options: [.transitionCrossDissolve], animations: {
+            self.collapseImage.image = newImage
+        })
     }
 }
