@@ -143,6 +143,7 @@ class MessageFormViewController: UIViewController {
     }
 
     private func unregisterKeyboardNotifications() {
+        //swiftlint:disable notification_center_detachment
         NotificationCenter.default.removeObserver(self)
     }
 
