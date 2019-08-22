@@ -4,6 +4,8 @@
 
 import UIKit
 
+// MARK: - View Models
+
 public protocol ProfileSummaryViewModel {
     var title: String { get }
     var subtitle: String { get }
@@ -19,6 +21,9 @@ public protocol ProfileSummaryBreakdownModel {
     var icon: UIImage { get }
     var title: String { get }
 }
+
+
+// MARK: - ProfileSummaryView
 
 public protocol ProfileSummaryViewDelegate: AnyObject {
     func profileSummaryViewWasTapped(_ profileSummaryView: ProfileSummaryView)
@@ -221,8 +226,11 @@ extension ProfileSummaryView {
             imageWrapper.bottomAnchor.constraint(equalTo: root.bottomAnchor),
             imageWrapper.widthAnchor.constraint(equalToConstant: reviewScoreSize),
 
-            imageView.widthAnchor.constraint(equalToConstant: 18),
-            imageView.heightAnchor.constraint(equalToConstant: 18),
+            imageView.widthAnchor.constraint(equalToConstant: 24),
+            imageView.heightAnchor.constraint(equalToConstant: 24),
+            imageView.topAnchor.constraint(equalTo: imageWrapper.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: imageWrapper.bottomAnchor),
+
             imageView.centerYAnchor.constraint(equalTo: imageWrapper.centerYAnchor),
             imageView.centerXAnchor.constraint(equalTo: imageWrapper.centerXAnchor),
 
