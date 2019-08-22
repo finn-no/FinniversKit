@@ -18,7 +18,7 @@ final class FavoriteSortingDemoView: UIView {
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 
     // MARK: - Setup
 
