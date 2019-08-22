@@ -65,6 +65,7 @@ public enum ComponentViews: String, CaseIterable {
     case carouselView
     case questionnaireView
     case tweakable
+    case saveSearchView
 
     public static var items: [ComponentViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -150,6 +151,8 @@ public enum ComponentViews: String, CaseIterable {
           return DemoViewController<QuestionnaireDemoView>()
         case .tweakable:
             return DemoViewController<TweakableDemoView>()
+        case .saveSearchView:
+            return DemoViewController<SaveSearchViewDemoView>()
         }
     }
 }

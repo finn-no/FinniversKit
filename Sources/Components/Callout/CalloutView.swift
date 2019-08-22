@@ -5,6 +5,23 @@
 import UIKit
 
 public final class CalloutView: UIView {
+
+    public enum Direction: CaseIterable {
+        case up
+        case down
+    }
+
+    private let direction: Direction
+
+    private var arrowRotationTransformation: CGAffineTransform {
+        switch direction {
+        case .up:
+            return .identity
+        case .down:
+            return CGAffineTransform(rotationAngle: CGFloat.pi)
+        }
+    }
+
     private lazy var boxView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .mint
@@ -31,7 +48,14 @@ public final class CalloutView: UIView {
     // MARK: - Init
 
     public override init(frame: CGRect) {
+        direction = .up
         super.init(frame: frame)
+        setup()
+    }
+
+    public init(direction: CalloutView.Direction) {
+        self.direction = direction
+        super.init(frame: .zero)
         setup()
     }
 
@@ -66,28 +90,51 @@ public final class CalloutView: UIView {
         addSubview(arrowView)
         addSubview(textLabel)
 
-        NSLayoutConstraint.activate([
-            arrowView.topAnchor.constraint(equalTo: topAnchor),
-            arrowView.centerXAnchor.constraint(equalTo: centerXAnchor),
+        arrowView.transform = arrowRotationTransformation
+
+        let defaultConstraints = [
             arrowView.widthAnchor.constraint(equalToConstant: 20),
             arrowView.heightAnchor.constraint(equalToConstant: 12),
-
-            boxView.topAnchor.constraint(equalTo: arrowView.bottomAnchor, constant: -boxView.layer.borderWidth - 1),
-            boxView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            boxView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            boxView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            arrowView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: .mediumLargeSpacing),
             textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: .mediumLargeSpacing),
             textLabel.trailingAnchor.constraint(equalTo: boxView.trailingAnchor, constant: -.mediumLargeSpacing),
             textLabel.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -.mediumLargeSpacing)
-        ])
+        ]
+
+        NSLayoutConstraint.activate(defaultConstraints + directionConstraints())
     }
+
+    private func directionConstraints() -> [NSLayoutConstraint] {
+        switch direction {
+        case .up:
+            return [
+                arrowView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                arrowView.topAnchor.constraint(equalTo: topAnchor),
+                boxView.topAnchor.constraint(equalTo: arrowView.bottomAnchor, constant: -boxView.layer.borderWidth - 1),
+                boxView.bottomAnchor.constraint(equalTo: bottomAnchor),
+                boxView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                boxView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            ]
+        case .down:
+            return [
+                arrowView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                arrowView.bottomAnchor.constraint(equalTo: bottomAnchor),
+                boxView.topAnchor.constraint(equalTo: topAnchor),
+                boxView.bottomAnchor.constraint(equalTo: arrowView.topAnchor, constant: boxView.layer.borderWidth + 1),
+                boxView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                boxView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            ]
+        }
+    }
+
 }
 
 // MARK: - Private types
 
 private final class ArrowView: UIView {
+
     private lazy var triangleLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.lineWidth = 2

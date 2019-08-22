@@ -26,8 +26,8 @@ public class SwitchViewDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        recommendationsSwitchView.model = SwitchDefaultData1()
-        commercialSwitchView.model = SwitchDefaultData2()
+        recommendationsSwitchView.configure(with: SwitchDefaultData1())
+        commercialSwitchView.configure(with: SwitchDefaultData2())
 
         addSubview(recommendationsSwitchView)
         addSubview(commercialSwitchView)
