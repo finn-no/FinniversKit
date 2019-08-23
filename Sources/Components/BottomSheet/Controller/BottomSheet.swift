@@ -108,9 +108,6 @@ public class BottomSheet: UIViewController {
     private let notch = Notch(withAutoLayout: true)
     private let cornerRadius: CGFloat = 16
 
-    // Only necessary if iOS < 11.0
-    private let maskLayer = CAShapeLayer()
-
     // MARK: - Setup
 
     public init(rootViewController: UIViewController,
@@ -129,30 +126,12 @@ public class BottomSheet: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // Only necessary if iOS < 11.0
-    // ------------
-    public override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if #available(iOS 11.0, *) {
-            return
-        } else {
-            let path = UIBezierPath(roundedRect: view.bounds,
-                                    byRoundingCorners: [.topLeft, .topRight],
-                                    cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
-            maskLayer.path = path
-            view.layer.mask = maskLayer
-        }
-    }
-    // ------------
-
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = rootViewController.view.backgroundColor ?? .milk
         view.clipsToBounds = true
-        if #available(iOS 11.0, *) {
-            view.layer.cornerRadius = cornerRadius
-            view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        }
+        view.layer.cornerRadius = cornerRadius
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.addSubview(notch)
 
         addChild(rootViewController)
@@ -230,6 +209,6 @@ private class Notch: UIView {
             notch.centerYAnchor.constraint(equalTo: centerYAnchor),
             notch.heightAnchor.constraint(equalToConstant: notchSize.height),
             notch.widthAnchor.constraint(equalToConstant: notchSize.width)
-            ])
+        ])
     }
 }

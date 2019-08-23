@@ -195,7 +195,7 @@ public class FavoriteFoldersListView: UIView {
             self?.layoutIfNeeded()
         }
 
-        if #available(iOS 11.0, *), performBatchUpdates {
+        if performBatchUpdates {
             tableView.performBatchUpdates({ [weak self] in
                 let indexPaths = [IndexPath(row: 0, section: 0)]
 

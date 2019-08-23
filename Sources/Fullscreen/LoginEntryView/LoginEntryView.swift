@@ -31,9 +31,7 @@ public class LoginEntryView: UIView {
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
-        if #available(iOS 11.0, *) {
-            scrollView.contentInsetAdjustmentBehavior = .never
-        }
+        scrollView.contentInsetAdjustmentBehavior = .never
         return scrollView
     }()
 
@@ -92,17 +90,10 @@ public class LoginEntryView: UIView {
         scrollView.addSubview(contentView)
         contentView.addSubview(loginDialogue)
 
-        if #available(iOS 11.0, *) {
-            NSLayoutConstraint.activate([
-                settingsButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-                settingsButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                settingsButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-                settingsButton.trailingAnchor.constraint(equalTo: trailingAnchor)
-            ])
-        }
+        NSLayoutConstraint.activate([
+            settingsButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            settingsButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+        ])
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),

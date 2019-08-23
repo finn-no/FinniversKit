@@ -30,8 +30,8 @@ final class NeighborhoodProfileDemoView: UIView {
         NSLayoutConstraint.activate([
             view.centerYAnchor.constraint(equalTo: centerYAnchor),
             view.centerXAnchor.constraint(equalTo: centerXAnchor),
-            view.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor)
+            view.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
         ])
     }
 }

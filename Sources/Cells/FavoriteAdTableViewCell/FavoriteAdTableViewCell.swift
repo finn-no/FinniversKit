@@ -110,9 +110,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         stackView.addArrangedSubview(descriptionPrimaryLabel)
         stackView.addArrangedSubview(descriptionSecondaryLabel)
 
-        if #available(iOS 11.0, *) {
-            stackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
-        }
+        stackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
 
         contentView.addSubview(remoteImageView)
         contentView.addSubview(statusRibbon)

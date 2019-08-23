@@ -59,12 +59,12 @@ public class DemoViewController<View: UIView>: UIViewController {
         view.addSubview(playgroundView)
         view.backgroundColor = .milk
 
-        let bottomAnchor = constrainToBottomSafeArea ? view.compatibleBottomAnchor : view.bottomAnchor
+        let bottomAnchor = constrainToBottomSafeArea ? view.safeAreaLayoutGuide.bottomAnchor : view.bottomAnchor
 
         NSLayoutConstraint.activate([
             playgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             playgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            playgroundView.topAnchor.constraint(equalTo: view.compatibleTopAnchor),
+            playgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             playgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
@@ -76,7 +76,7 @@ public class DemoViewController<View: UIView>: UIViewController {
             view.addSubview(button)
             NSLayoutConstraint.activate([
                 button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                button.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor, constant: -.veryLargeSpacing)
+                button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.veryLargeSpacing)
             ])
         } else if usingDoubleTapToDismiss {
             let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))

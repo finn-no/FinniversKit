@@ -32,7 +32,7 @@ class LoginEntryDemoPageViewController: UIViewController {
             loginEntryView.topAnchor.constraint(equalTo: view.topAnchor),
             loginEntryView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             loginEntryView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            loginEntryView.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor),
+            loginEntryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 
