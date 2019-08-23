@@ -16,7 +16,7 @@ public final class FavoriteActionSheet: BottomSheet {
 
     public required init(viewModel: FavoriteActionViewModel) {
         let viewController = ActionViewController(viewModel: viewModel)
-        super.init(rootViewController: viewController, height: .compact)
+        super.init(rootViewController: viewController, height: .height(for: viewModel))
         self.viewController = viewController
     }
 
@@ -70,10 +70,9 @@ private final class ActionViewController: UIViewController {
 // MARK: - Private extensions
 
 private extension BottomSheet.Height {
-    static var compact: BottomSheet.Height {
-        let height = FavoriteFolderActionView.compactHeight + bottomInset
+    static func height(for viewModel: FavoriteActionViewModel) -> BottomSheet.Height {
+        let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
+        let height = FavoriteActionView.totalHeight(for: viewModel, width: UIScreen.main.bounds.width) + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }
-
-    static let bottomInset = UIView.windowSafeAreaInsets.bottom + .mediumLargeSpacing
 }

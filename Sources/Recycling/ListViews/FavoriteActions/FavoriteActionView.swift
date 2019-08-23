@@ -9,11 +9,6 @@ public protocol FavoriteActionViewDelegate: AnyObject {
 }
 
 public final class FavoriteActionView: UIView {
-    public static let rowHeight: CGFloat = 48.0
-    public static let totalHeight = rowHeight * CGFloat(FavoriteSortOption.allCases.count)
-
-    // MARK: - Public properties
-
     public weak var delegate: FavoriteActionViewDelegate?
 
     // MARK: - Private properties
@@ -85,7 +80,6 @@ extension FavoriteActionView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(FavoriteActionCell.self, for: indexPath)
-        cell.separatorInset = .leadingInset(FavoriteActionCell.separatorLeadingInset)
 
         switch actions[indexPath.row] {
         case .addNote:
@@ -101,8 +95,31 @@ extension FavoriteActionView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension FavoriteActionView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let isLastCell = indexPath.row == actions.count - 1
+        let inset = isLastCell ? frame.width : FavoriteActionCell.separatorLeadingInset
+        cell.separatorInset = .leadingInset(inset)
+    }
+
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         delegate?.favoriteActionView(self, didSelectAction: actions[indexPath.row])
+    }
+}
+
+// MARK: - Static
+
+public extension FavoriteActionView {
+    static let rowHeight: CGFloat = 48.0
+
+    static func totalHeight(for viewModel: FavoriteActionViewModel, width: CGFloat) -> CGFloat {
+        let headerViewHeight = FavoriteActionHeaderView.height(
+            forDetailText: viewModel.headerDetailText,
+            accessoryText: viewModel.headerAccessoryText,
+            width: width
+        )
+        let tableViewHeight = rowHeight * CGFloat(FavoriteAction.allCases.count)
+
+        return headerViewHeight + tableViewHeight
     }
 }

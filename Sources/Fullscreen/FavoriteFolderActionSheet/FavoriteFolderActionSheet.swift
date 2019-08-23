@@ -91,5 +91,5 @@ private extension BottomSheet.Height {
         return BottomSheet.Height(compact: height, expanded: height)
     }
 
-    static let bottomInset = UIView.windowSafeAreaInsets.bottom + .mediumLargeSpacing
+    private static let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
 }
