@@ -5,8 +5,8 @@
 import FinniversKit
 
 final class FavoriteFolderActionDemoView: UIView {
-    private(set) lazy var view: FavoriteFolderActionsListView = {
-        let view = FavoriteFolderActionsListView(viewModel: .default)
+    private(set) lazy var view: FavoriteFolderActionView = {
+        let view = FavoriteFolderActionView(viewModel: .default)
         view.delegate = self
         return view
     }()
@@ -30,8 +30,8 @@ final class FavoriteFolderActionDemoView: UIView {
 
 // MARK: - FavoriteFoldersListViewDelegate
 
-extension FavoriteFolderActionDemoView: FavoriteFolderActionsListViewDelegate {
-    func favoriteFolderActionsListView(_ view: FavoriteFolderActionsListView, didSelectAction action: FavoriteFolderAction) {
+extension FavoriteFolderActionDemoView: FavoriteFolderActionViewDelegate {
+    func favoriteFolderActionView(_ view: FavoriteFolderActionView, didSelectAction action: FavoriteFolderAction) {
         print("\(action) selected")
 
         switch action {
