@@ -32,7 +32,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private let viewModel: FullscreenGalleryViewModel
     private let previewViewInitiallyVisible: Bool
 
-    private var currentPage: Int
     private var currentImageIndex: Int
     private var previewViewWasVisibleBeforePanning = false
     private var hasPerformedInitialPreviewScroll = false
@@ -79,7 +78,6 @@ public class FullscreenGalleryViewController: UIPageViewController {
         self.previewViewInitiallyVisible = previewVisible
         self.viewModel = viewModel
         self.currentImageIndex = viewModel.selectedIndex
-        self.currentPage = viewModel.selectedIndex
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [.interPageSpacing: CGFloat.largeSpacing])
 
         modalPresentationStyle = .overCurrentContext
@@ -181,45 +179,35 @@ public class FullscreenGalleryViewController: UIPageViewController {
     private func currentImageViewController() -> FullscreenImageViewController? {
         return viewControllers?.first as? FullscreenImageViewController
     }
-
-    // Find remainder of both positiv and negative numbers
-    private func remainder(_ number: Int, divider: Int) -> Int {
-        guard divider > 0 else {
-            return number
-        }
-
-        return (number % divider + divider) % divider
-    }
 }
 
 // MARK: - UIPageViewControllerDataSource
 extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        var index = currentPage - 1
-
-        if viewModel.imageUrls.count > 1 {
-            index = remainder(currentPage - 1, divider: viewModel.imageUrls.count)
-        }
-
-        return imageViewController(forIndex: index)
+        return imageViewController(forIndex: currentImageIndex - 1)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        var index = currentPage + 1
-
-        if viewModel.imageUrls.count > 1 {
-            index = remainder(currentPage + 1, divider: viewModel.imageUrls.count)
-        }
-
-        return imageViewController(forIndex: index)
+        return imageViewController(forIndex: currentImageIndex + 1)
     }
 
     private func imageViewController(forIndex index: Int) -> FullscreenImageViewController? {
-        if index < 0 || index >= viewModel.imageUrls.count {
+        let translatedindex: Int
+
+        switch index {
+        case -1:
+            translatedindex = viewModel.imageUrls.count - 1
+        case viewModel.imageUrls.count:
+            translatedindex = 0
+        default:
+            translatedindex = index
+        }
+
+        guard (0 ..< viewModel.imageUrls.count).contains(translatedindex) else {
             return nil
         }
 
-        let vc = FullscreenImageViewController(imageIndex: index)
+        let vc = FullscreenImageViewController(imageIndex: translatedindex)
         vc.delegate = self
         vc.dataSource = self
         vc.updateLayout(withPreviewViewVisible: overlayView.previewViewVisible)
@@ -234,20 +222,9 @@ extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
             return
         }
 
-        guard let previousVC = previousViewControllers.first as? FullscreenImageViewController else {
-            return
-        }
-
-        guard completed else {
-            return
-        }
-
-        let increment = currentVC.imageIndex - previousVC.imageIndex
-        currentPage += increment
         currentImageIndex = currentVC.imageIndex
         galleryDelegate?.fullscreenGalleryViewController(self, didSelectImageAtIndex: currentImageIndex)
         overlayView.scrollToImage(atIndex: currentImageIndex, animated: true)
-        previousVC.resetZoom()
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {

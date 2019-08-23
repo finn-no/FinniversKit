@@ -109,10 +109,6 @@ class FullscreenImageViewController: UIViewController {
 
     // MARK: - Public methods
 
-    func resetZoom() {
-        fullscreenImageView.zoomScale = fullscreenImageView.minimumZoomScale
-    }
-
     func updateLayout(withPreviewViewVisible previewViewVisible: Bool) {
         self.previewViewVisible = previewViewVisible
         fullscreenImageView.frame = calculateImageFrame()
