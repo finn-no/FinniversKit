@@ -80,12 +80,8 @@ class FavoriteFoldersEmptyView: UIView {
         stackView.addArrangedSubview(bodyLabel)
         stackView.addArrangedSubview(addFolderButton)
 
-        if #available(iOS 11.0, *) {
-            stackView.setCustomSpacing(.mediumSpacing, after: magnifyingGlassImageView)
-            stackView.setCustomSpacing(.mediumLargeSpacing, after: bodyLabel)
-        } else {
-            stackView.spacing = .mediumSpacing
-        }
+        stackView.setCustomSpacing(.mediumSpacing, after: magnifyingGlassImageView)
+        stackView.setCustomSpacing(.mediumLargeSpacing, after: bodyLabel)
 
         wrapperView.addSubview(stackView)
         addSubview(wrapperView)

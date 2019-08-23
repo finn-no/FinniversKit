@@ -32,7 +32,7 @@ class MessageTemplateEditViewController: UIViewController {
         return view
     }()
 
-    private lazy var messageInputBottomConstraint = messageInputTextView.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor)
+    private lazy var messageInputBottomConstraint = messageInputTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 
     // MARK: - Init
 

@@ -79,10 +79,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         view.alpha = 1.0
         view.layer.cornerRadius = AdsGridViewCell.cornerRadius
         view.layer.masksToBounds = true
-
-        if #available(iOS 11.0, *) {
-            view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
-        }
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
 
         return view
     }()

@@ -116,27 +116,27 @@ public class SaveSearchView: UIView {
         addSubview(emailSwitchView)
 
         NSLayoutConstraint.activate([
-            searchNameContainer.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor),
-            searchNameContainer.topAnchor.constraint(equalTo: safeLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
-            searchNameContainer.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor),
+            searchNameContainer.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            searchNameContainer.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
+            searchNameContainer.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             searchNameContainer.heightAnchor.constraint(equalToConstant: 65.0),
 
             searchNameTextField.leadingAnchor.constraint(equalTo: searchNameContainer.leadingAnchor, constant: .mediumLargeSpacing),
             searchNameTextField.trailingAnchor.constraint(equalTo: searchNameContainer.trailingAnchor, constant: -.mediumLargeSpacing),
             searchNameTextField.centerYAnchor.constraint(equalTo: searchNameContainer.centerYAnchor),
 
-            pushSwitchView.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor),
+            pushSwitchView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             pushSwitchView.topAnchor.constraint(equalTo: searchNameContainer.bottomAnchor, constant: .mediumLargeSpacing),
-            pushSwitchView.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor),
+            pushSwitchView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
 
-            hairline.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-            hairline.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor),
+            hairline.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+            hairline.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             hairline.topAnchor.constraint(equalTo: pushSwitchView.bottomAnchor),
             hairline.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
-            emailSwitchView.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor),
+            emailSwitchView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             emailSwitchView.topAnchor.constraint(equalTo: hairline.bottomAnchor),
-            emailSwitchView.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor),
+            emailSwitchView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
         ])
     }
 }
