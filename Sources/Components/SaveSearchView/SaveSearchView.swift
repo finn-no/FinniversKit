@@ -75,6 +75,19 @@ public class SaveSearchView: UIView {
         return line
     }()
 
+    private lazy var contentView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        return view
+    }()
+
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(withAutoLayout: true)
+        scrollView.contentInsetAdjustmentBehavior = .always
+        return scrollView
+    }()
+
+    private var heightConstraint: NSLayoutConstraint!
+
     // MARK: - Initializers
 
     public override init(frame: CGRect) {
@@ -85,6 +98,10 @@ public class SaveSearchView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Public methods
@@ -108,36 +125,71 @@ public class SaveSearchView: UIView {
     private func setup() {
         backgroundColor = .milk
 
-        addSubview(searchNameContainer)
+        scrollView.addSubview(contentView)
+        addSubview(scrollView)
+
+        contentView.addSubview(searchNameContainer)
         searchNameContainer.addSubview(searchNameTextField)
 
-        addSubview(pushSwitchView)
-        addSubview(hairline)
-        addSubview(emailSwitchView)
+        contentView.addSubview(pushSwitchView)
+        contentView.addSubview(hairline)
+        contentView.addSubview(emailSwitchView)
+
+        scrollView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            searchNameContainer.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            searchNameContainer.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
-            searchNameContainer.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: widthAnchor),
+
+            searchNameContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            searchNameContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            searchNameContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             searchNameContainer.heightAnchor.constraint(equalToConstant: 65.0),
 
             searchNameTextField.leadingAnchor.constraint(equalTo: searchNameContainer.leadingAnchor, constant: .mediumLargeSpacing),
             searchNameTextField.trailingAnchor.constraint(equalTo: searchNameContainer.trailingAnchor, constant: -.mediumLargeSpacing),
             searchNameTextField.centerYAnchor.constraint(equalTo: searchNameContainer.centerYAnchor),
 
-            pushSwitchView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            pushSwitchView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             pushSwitchView.topAnchor.constraint(equalTo: searchNameContainer.bottomAnchor, constant: .mediumLargeSpacing),
-            pushSwitchView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            pushSwitchView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            hairline.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
-            hairline.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            hairline.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            hairline.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             hairline.topAnchor.constraint(equalTo: pushSwitchView.bottomAnchor),
             hairline.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
-            emailSwitchView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            emailSwitchView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             emailSwitchView.topAnchor.constraint(equalTo: hairline.bottomAnchor),
-            emailSwitchView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            emailSwitchView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            emailSwitchView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(
+            self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil
+        )
+        notificationCenter.addObserver(
+            self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil
+        )
+    }
+
+    @objc private func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = scrollView.convert(keyboardScreenEndFrame, from: window)
+
+        let contentSize = contentView.frame.size
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            scrollView.contentSize = contentSize
+        } else {
+            scrollView.contentSize = CGSize(
+                width: contentSize.width,
+                height: contentSize.height + keyboardViewEndFrame.height
+            )
+        }
+
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
 }
 
