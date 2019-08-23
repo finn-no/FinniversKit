@@ -11,9 +11,9 @@ public protocol FavoriteFolderActionSheetDelegate: AnyObject {
 public final class FavoriteFolderActionSheet: BottomSheet {
     public weak var actionDelegate: FavoriteFolderActionSheetDelegate?
 
-    public var isCopyLinkHidden = true {
+    public var isCopyLinkHidden: Bool {
         didSet {
-            height = isCopyLinkHidden ? .compact : .expanded
+            height = .makeHeight(isCopyLinkHidden: isCopyLinkHidden)
             viewController?.actionView.isCopyLinkHidden = isCopyLinkHidden
         }
     }
@@ -22,9 +22,10 @@ public final class FavoriteFolderActionSheet: BottomSheet {
 
     // MARK: - Init
 
-    public required init(viewModel: FavoriteFolderActionViewModel) {
-        let viewController = FolderActionViewController(viewModel: viewModel)
-        super.init(rootViewController: viewController, height: .compact)
+    public required init(viewModel: FavoriteFolderActionViewModel, isCopyLinkHidden: Bool = true) {
+        self.isCopyLinkHidden = isCopyLinkHidden
+        let viewController = FolderActionViewController(viewModel: viewModel, isCopyLinkHidden: isCopyLinkHidden)
+        super.init(rootViewController: viewController, height: .makeHeight(isCopyLinkHidden: isCopyLinkHidden))
         self.viewController = viewController
     }
 
@@ -55,15 +56,17 @@ extension FavoriteFolderActionSheet: FavoriteFolderActionViewDelegate {
 
 private final class FolderActionViewController: UIViewController {
     private let viewModel: FavoriteFolderActionViewModel
+    private let isCopyLinkHidden: Bool
 
     private(set) lazy var actionView: FavoriteFolderActionView = {
-        let view = FavoriteFolderActionView(viewModel: viewModel)
+        let view = FavoriteFolderActionView(viewModel: viewModel, isCopyLinkHidden: isCopyLinkHidden)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    init(viewModel: FavoriteFolderActionViewModel) {
+    init(viewModel: FavoriteFolderActionViewModel, isCopyLinkHidden: Bool) {
         self.viewModel = viewModel
+        self.isCopyLinkHidden = isCopyLinkHidden
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -81,15 +84,19 @@ private final class FolderActionViewController: UIViewController {
 // MARK: - Private extensions
 
 private extension BottomSheet.Height {
-    static var compact: BottomSheet.Height {
+    static func makeHeight(isCopyLinkHidden: Bool) -> BottomSheet.Height {
+        return isCopyLinkHidden ? .compact : .expanded
+    }
+
+    private static var compact: BottomSheet.Height {
         let height = FavoriteFolderActionView.compactHeight + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }
 
-    static var expanded: BottomSheet.Height {
+    private static var expanded: BottomSheet.Height {
         let height = FavoriteFolderActionView.expandedHeight + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }
 
-    static let bottomInset = UIView.windowSafeAreaInsets.bottom + .mediumLargeSpacing
+    private static let bottomInset = UIView.windowSafeAreaInsets.bottom + .mediumLargeSpacing
 }
