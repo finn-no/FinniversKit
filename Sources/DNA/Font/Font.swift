@@ -21,10 +21,7 @@ enum FontType: String {
         registerCustomFonts()
 
         let font = UIFont(name: FontType.medium.rawValue, size: 34.0)!
-        if #available(iOS 11.0, *) {
-            return font.scaledFont(forTextStyle: .largeTitle)
-        }
-        return font.scaledFont(forTextStyle: .title1)
+        return font.scaledFont(forTextStyle: .largeTitle)
     }
 
     /// FINNTypeWebStrippet-Light with a size of 28 scaled for UIFontTextStyle.title2
@@ -148,13 +145,9 @@ enum FontType: String {
     }
 
     func scaledFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
-        if #available(iOS 11.0, *) {
-            if FinniversKit.isDynamicTypeEnabled {
-                let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
-                return fontMetrics.scaledFont(for: self)
-            } else {
-                return self
-            }
+        if FinniversKit.isDynamicTypeEnabled {
+            let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
+            return fontMetrics.scaledFont(for: self)
         } else {
             return self
         }

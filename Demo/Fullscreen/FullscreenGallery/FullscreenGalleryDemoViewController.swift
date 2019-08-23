@@ -244,7 +244,7 @@ class FullscreenGalleryDemoViewController: DemoViewController<UIView>, UICollect
 
             helpLabel.leadingAnchor.constraint(equalTo: playgroundView.leadingAnchor, constant: .mediumLargeSpacing),
             helpLabel.trailingAnchor.constraint(equalTo: playgroundView.trailingAnchor, constant: -.mediumLargeSpacing),
-            helpLabel.topAnchor.constraint(equalTo: playgroundView.safeLayoutGuide.topAnchor, constant: .largeSpacing)
+            helpLabel.topAnchor.constraint(equalTo: playgroundView.safeAreaLayoutGuide.topAnchor, constant: .largeSpacing)
         ])
     }
 

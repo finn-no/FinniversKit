@@ -258,11 +258,7 @@ extension FullscreenGalleryViewController: FullscreenImageViewControllerDataSour
     func heightForPreviewView(forImageViewController vc: FullscreenImageViewController) -> CGFloat {
         let spacing: CGFloat = .mediumSpacing
         let previewHeight = overlayView.previewViewFrame.height
-        var bottomInset: CGFloat = 0.0
-
-        if #available(iOS 11.0, *) {
-            bottomInset = view.safeAreaInsets.bottom
-        }
+        let bottomInset: CGFloat = view.safeAreaInsets.bottom
 
         return previewHeight + bottomInset + spacing
     }

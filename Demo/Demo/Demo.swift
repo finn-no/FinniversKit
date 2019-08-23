@@ -196,7 +196,8 @@ public enum Cells: String, CaseIterable {
 public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
-    case favoriteFolderActions
+    case favoriteFolderActionView
+    case favoriteSortingView
     case favoritesListView
     case savedSearchesListView
     case marketsGridView
@@ -223,10 +224,10 @@ public enum RecyclingViews: String, CaseIterable {
             navigationController.navigationBar.shadowImage = UIImage()
 
             return navigationController
-        case .favoriteFolderActions:
-            let bottomSheet = FavoriteFolderActionSheet(viewModel: .default)
-            bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
-            return bottomSheet
+        case .favoriteFolderActionView:
+            return DemoViewController<FavoriteFolderActionDemoView>()
+        case .favoriteSortingView:
+            return DemoViewController<FavoriteSortingDemoView>()
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:
@@ -252,7 +253,6 @@ public enum FullscreenViews: String, CaseIterable {
     case frontPageView
     case popupView
     case emptyView
-    case emptyChristmasView
     case reportAdView
     case reviewView
     case registerView
@@ -272,6 +272,8 @@ public enum FullscreenViews: String, CaseIterable {
     case messageFormView
     case receiptView
     case favoriteAdsList
+    case favoriteFolderActionSheet
+    case favoriteSortingSheet
 
     public static var items: [FullscreenViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -285,8 +287,6 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:
             return DemoViewController<EmptyViewDemoView>()
-        case .emptyChristmasView:
-            return DemoViewController<EmptyChristmasViewDemoView>()
         case .popupView:
             return DemoViewController<PopupViewDemoView>()
         case .reportAdView:
@@ -329,6 +329,14 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<AddressViewDemoView>()
         case .favoriteAdsList:
             return DemoViewController<FavoriteAdsListDemoView>(withDismissButton: true)
+        case .favoriteFolderActionSheet:
+            let bottomSheet = FavoriteFolderActionSheet(viewModel: .default)
+            bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
+            return bottomSheet
+        case .favoriteSortingSheet:
+            let bottomSheet = FavoriteSortingSheet(viewModel: .default, selectedSortOption: .lastAdded)
+            bottomSheet.sortingDelegate = FavoriteSortingSheetDemoDelegate.shared
+            return bottomSheet
         }
     }
 }

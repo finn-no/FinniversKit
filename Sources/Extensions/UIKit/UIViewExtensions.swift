@@ -10,30 +10,6 @@ public extension UIView {
         translatesAutoresizingMaskIntoConstraints = !autoLayout
     }
 
-    var compatibleTopAnchor: NSLayoutYAxisAnchor {
-        if #available(iOS 11.0, *) {
-            return safeAreaLayoutGuide.topAnchor
-        } else {
-            return topAnchor
-        }
-    }
-
-    var compatibleBottomAnchor: NSLayoutYAxisAnchor {
-        if #available(iOS 11.0, *) {
-            return safeAreaLayoutGuide.bottomAnchor
-        } else {
-            return bottomAnchor
-        }
-    }
-
-    var safeLayoutGuide: UILayoutGuide {
-        if #available(iOS 11.0, *) {
-            return safeAreaLayoutGuide
-        } else {
-            return layoutMarginsGuide
-        }
-    }
-
     func dropShadow(color: UIColor, opacity: Float = 0.5, offset: CGSize = CGSize.zero, radius: CGFloat = 10.0) {
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor
@@ -48,11 +24,7 @@ public extension UIView {
     }
 
     static var windowSafeAreaInsets: UIEdgeInsets {
-        if #available(iOS 11.0, *) {
-            return UIApplication.shared.keyWindow?.safeAreaInsets ?? .zero
-        } else {
-            return .zero
-        }
+        return UIApplication.shared.keyWindow?.safeAreaInsets ?? .zero
     }
 }
 

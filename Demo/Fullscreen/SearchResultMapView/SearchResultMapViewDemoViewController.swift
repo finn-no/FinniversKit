@@ -45,14 +45,12 @@ class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
 
         SearchResultMapViewAnnotationFactory.create(numberOfAnnotations: 10).forEach { searchResultMapView.addAnnotation($0) }
 
-        if #available(iOS 11.0, *) {
-            NSLayoutConstraint.activate([
-                searchResultMapView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 1.0),
-                searchResultMapView.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 1.0),
-                searchResultMapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                searchResultMapView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-                ])
-        }
+        NSLayoutConstraint.activate([
+            searchResultMapView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 1.0),
+            searchResultMapView.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 1.0),
+            searchResultMapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchResultMapView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 
     // MARK: - Private
