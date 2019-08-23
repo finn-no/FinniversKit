@@ -108,9 +108,6 @@ public class BottomSheet: UIViewController {
     private let notch = Notch(withAutoLayout: true)
     private let cornerRadius: CGFloat = 16
 
-    // Only necessary if iOS < 11.0
-    private let maskLayer = CAShapeLayer()
-
     // MARK: - Setup
 
     public init(rootViewController: UIViewController,
@@ -212,6 +209,6 @@ private class Notch: UIView {
             notch.centerYAnchor.constraint(equalTo: centerYAnchor),
             notch.heightAnchor.constraint(equalToConstant: notchSize.height),
             notch.widthAnchor.constraint(equalToConstant: notchSize.width)
-            ])
+        ])
     }
 }
