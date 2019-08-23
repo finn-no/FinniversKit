@@ -263,6 +263,7 @@
 		9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */; };
 		9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */; };
 		9B9287AB22F0593700FC7B69 /* KlimabroletData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */; };
+		9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */; };
 		9B9F8C1722F07B2100298CDB /* FeedbackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */; };
 		9BAB37D7230BE3E100E861D4 /* SaveSearchViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoView.swift */; };
 		9BAB37DC230BEA5700E861D4 /* SaveSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */; };
@@ -751,6 +752,7 @@
 		9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletDemoViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
 		9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletData.swift; sourceTree = "<group>"; };
+		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
 		9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchViewDemoView.swift; sourceTree = "<group>"; };
 		9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchView.swift; sourceTree = "<group>"; };
@@ -1598,17 +1600,18 @@
 		44898D5A1FE5B9C200F6017B /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				DAE6A55A21CA523A00837BFA /* Core Graphics */,
 				441D699A1FEA947600CD919A /* Layout.swift */,
 				441D69991FEA947500CD919A /* LayoutHelpers.swift */,
-				441D69981FEA947500CD919A /* UIViewExtensions.swift */,
-				44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */,
-				44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */,
-				44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */,
-				08D70A1A21832901003E2222 /* UIEdgeInsetsExtensions.swift */,
-				AADED71B223FE25500647C50 /* UIDevice.swift */,
+				9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */,
 				9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */,
+				44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */,
+				AADED71B223FE25500647C50 /* UIDevice.swift */,
+				08D70A1A21832901003E2222 /* UIEdgeInsetsExtensions.swift */,
+				44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */,
 				9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */,
+				44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */,
+				441D69981FEA947500CD919A /* UIViewExtensions.swift */,
+				DAE6A55A21CA523A00837BFA /* Core Graphics */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -3891,6 +3894,7 @@
 				08D70A1B21832901003E2222 /* UIEdgeInsetsExtensions.swift in Sources */,
 				F26852F221FEFA97000978C8 /* UserAdsListViewModel.swift in Sources */,
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
+				9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */,
 				F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */,
 				44A557A722E720BB001667AE /* IconTitleTableViewCellViewModel.swift in Sources */,
 				F26852F321FEFA9C000978C8 /* UserAdsListHeaderViewModel.swift in Sources */,
