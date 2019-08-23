@@ -22,11 +22,6 @@ public class SettingsView: UIView {
         view.contentInset = UIEdgeInsets(top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0)
         view.backgroundColor = .marble
         view.separatorStyle = .none
-        if #available(iOS 11, *) {
-        } else {
-            view.estimatedRowHeight = SettingsViewCell.estimatedRowHeight
-            view.estimatedSectionHeaderHeight = 48
-        }
         view.dataSource = self
         view.delegate = self
         view.register(SettingsViewCell.self)

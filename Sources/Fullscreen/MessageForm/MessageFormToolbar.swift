@@ -30,11 +30,7 @@ class MessageFormToolbar: UIView {
     }()
 
     private lazy var safeAreaHeight: CGFloat = {
-        if #available(iOS 11.0, *) {
-            return UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
-        } else {
-            return 0
-        }
+        return UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
     }()
 
     private lazy var safeAreaCoverView: UIView = {

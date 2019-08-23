@@ -29,7 +29,7 @@ class MiniToastView: UIView {
         alpha = 0
         transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         NSLayoutConstraint.activate([
-            self.bottomAnchor.constraint(equalTo: view.compatibleBottomAnchor, constant: -.largeSpacing),
+            self.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.largeSpacing),
             self.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
