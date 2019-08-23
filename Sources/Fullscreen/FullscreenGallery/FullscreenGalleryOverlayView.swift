@@ -232,6 +232,7 @@ extension FullscreenGalleryOverlayView: GalleryPreviewViewDataSource {
 extension FullscreenGalleryOverlayView: GalleryPreviewViewDelegate {
     func galleryPreviewView(_ previewView: GalleryPreviewView, selectedImageAtIndex index: Int) {
         delegate?.fullscreenGalleryOverlayView(self, selectedImageAtIndex: index)
+        setCaptionLabel(index: index)
         previewView.scrollToItem(atIndex: index, animated: true)
     }
 }
