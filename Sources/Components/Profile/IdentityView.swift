@@ -5,7 +5,8 @@
 import UIKit
 
 public protocol IdentityViewModel {
-    var profileImage: UIImage { get }
+    var defaultProfileImage: UIImage { get }
+    var profileImageUrl: URL? { get }
     var displayName: String { get }
     var subtitle: String { get }
     var description: String? { get }
@@ -16,13 +17,18 @@ public protocol IdentityViewModel {
 
 public protocol IdentityViewDelegate: AnyObject {
     func identityViewWasTapped(_ identityView: IdentityView)
+    func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void)
 }
 
 public class IdentityView : UIView {
 
     // MARK: - Public properties
 
-    public weak var delegate: IdentityViewDelegate?
+    public weak var delegate: IdentityViewDelegate? {
+        didSet {
+            loadProfileImage()
+        }
+    }
 
     public let viewModel: IdentityViewModel
 
@@ -31,9 +37,10 @@ public class IdentityView : UIView {
     private let profileImageSize: CGFloat = 40.0
 
     private lazy var profileImageView: UIImageView = {
-        let imageView = UIImageView(image: viewModel.profileImage)
+        let imageView = UIImageView(image: viewModel.defaultProfileImage)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = profileImageSize / 2
+        imageView.layer.masksToBounds = true
         return imageView
     }()
 
@@ -145,6 +152,23 @@ public class IdentityView : UIView {
     }
 
     // MARK: - Private methods
+
+    private func loadProfileImage() {
+        guard let url = viewModel.profileImageUrl else { return }
+
+        delegate?.identityView(self, loadImageWithUrl: url, completionHandler: { [weak self] image in
+            guard let self = self else { return }
+            if let image = image {
+                DispatchQueue.main.async(execute: {
+                    UIView.transition(with: self.profileImageView, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                        self.profileImageView.image = image
+                    })
+                })
+            } else {
+                self.profileImageView.image = self.viewModel.defaultProfileImage
+            }
+        })
+    }
 
     @objc private func viewWasTapped() {
         delegate?.identityViewWasTapped(self)

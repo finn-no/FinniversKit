@@ -54,12 +54,29 @@ extension IdentityDemoView: IdentityViewDelegate {
     func identityViewWasTapped(_ identityView: IdentityView) {
         print("Identity view of '\(identityView.viewModel.displayName)' was tapped")
     }
+
+    public func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            guard let data = data else {
+                completionHandler(nil)
+                return
+            }
+
+            usleep(100_000)
+
+            let image = UIImage(data: data)
+            completionHandler(image)
+        }
+
+        task.resume()
+    }
 }
 
 // MARK: - View model
 
 fileprivate struct ViewModel: IdentityViewModel {
-    let profileImage: UIImage = UIImage(named: .ratingCat)
+    let defaultProfileImage: UIImage = UIImage(named: .profile)
+    let profileImageUrl: URL? = URL(string: "https://images.finncdn.no/dynamic/220x220c/2019/7/profilbilde/05/8/214/710/286/8_352525950.jpg")
     let displayName: String = "Finn Nordmann"
     let subtitle: String = "Har vært på FINN siden 1952"
 
