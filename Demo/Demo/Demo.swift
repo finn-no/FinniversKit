@@ -198,6 +198,7 @@ public enum RecyclingViews: String, CaseIterable {
     case favoriteFoldersListView
     case favoriteFolderActionView
     case favoriteSortingView
+    case favoriteActionView
     case favoritesListView
     case savedSearchesListView
     case marketsGridView
@@ -228,6 +229,8 @@ public enum RecyclingViews: String, CaseIterable {
             return DemoViewController<FavoriteFolderActionDemoView>()
         case .favoriteSortingView:
             return DemoViewController<FavoriteSortingDemoView>()
+        case .favoriteActionView:
+            return DemoViewController<FavoriteActionDemoView>()
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:
