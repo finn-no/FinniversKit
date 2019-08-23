@@ -40,7 +40,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
     }
 }
 
-// MARK: - FavoriteActionsListViewDelegate
+// MARK: - FavoriteFolderActionViewDelegate
 
 extension FavoriteFolderActionSheet: FavoriteFolderActionViewDelegate {
     public func favoriteFolderActionView(
