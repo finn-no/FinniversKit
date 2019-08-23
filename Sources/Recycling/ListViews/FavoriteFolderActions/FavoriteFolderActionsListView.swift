@@ -30,7 +30,7 @@ public final class FavoriteFolderActionsListView: UIView {
     private var actions = [FavoriteFolderAction]()
 
     private lazy var tableView: UITableView = {
-        let tableView = TableView(frame: .zero, style: .plain)
+        let tableView = ContentSizedTableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -169,20 +169,6 @@ extension FavoriteFolderActionsListView: FavoriteFolderCopyLinkCellDelegate {
 }
 
 // MARK: - Private types
-
-private final class TableView: UITableView {
-    override var intrinsicContentSize: CGSize {
-        return contentSize
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        if bounds.size != intrinsicContentSize {
-            invalidateIntrinsicContentSize()
-        }
-    }
-}
 
 private extension UITableViewCell {
     func hideSepatator(_ hide: Bool) {
