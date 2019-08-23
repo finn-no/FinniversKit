@@ -32,7 +32,7 @@ public final class FavoriteActionView: UIView {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
-        tableView.register(FavoriteFolderActionCell.self)
+        tableView.register(FavoriteActionCell.self)
         return tableView
     }()
 
@@ -64,7 +64,8 @@ extension FavoriteActionView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(FavoriteFolderActionCell.self, for: indexPath)
+        let cell = tableView.dequeue(FavoriteActionCell.self, for: indexPath)
+        cell.separatorInset = .leadingInset(FavoriteActionCell.separatorLeadingInset)
 
         switch actions[indexPath.row] {
         case .addNote:
