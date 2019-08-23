@@ -82,6 +82,7 @@ public extension UIImage {
     }
 }
 
+//swiftlint:disable type_body_length
 public enum FinniversImageAsset: String {
 EOS
   names.each do |name|

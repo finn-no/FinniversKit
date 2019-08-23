@@ -6,6 +6,7 @@ import Foundation
 
 protocol MessageFormToolbarDelegate: AnyObject {
     func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: MessageFormTemplate)
+    func messageFormToolbarTappedCustomizeButton(_ toolbar: MessageFormToolbar)
 }
 
 class MessageFormToolbar: UIView {
@@ -15,7 +16,7 @@ class MessageFormToolbar: UIView {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.estimatedItemSize = CGSize(width: toolbarCellMaxWidth, height: toolbarCellHeight)
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(MessageFormTemplateCell.self)
@@ -25,7 +26,6 @@ class MessageFormToolbar: UIView {
         view.delegate = self
         view.backgroundColor = .clear
         view.showsHorizontalScrollIndicator = false
-        view.contentInset = UIEdgeInsets(top: 0, leading: .mediumSpacing, bottom: 0, trailing: .mediumSpacing)
         return view
     }()
 
@@ -73,6 +73,10 @@ class MessageFormToolbar: UIView {
         }
     }
 
+    private var customTemplates: [MessageFormTemplate] {
+        return viewModel.messageTemplateStore?.customTemplates ?? []
+    }
+
     // MARK: - Init
 
     required init?(coder aDecoder: NSCoder) {
@@ -87,6 +91,7 @@ class MessageFormToolbar: UIView {
 
     private func setup() {
         backgroundColor = MessageFormToolbar.backgroundColor
+        showCustomizeButton = viewModel.showCustomizeButton && viewModel.messageTemplateStore != nil
 
         addSubview(collectionView)
         addSubview(safeAreaCoverView)
@@ -113,24 +118,24 @@ class MessageFormToolbar: UIView {
             return safeAreaHeight
         }
     }
+
+    func reloadData() {
+        collectionView.reloadData()
+    }
 }
 
 extension MessageFormToolbar: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if section == 0 {
-            let trailingMargin = showCustomizeButton ? CGFloat.mediumSpacing : 0
-            return UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: trailingMargin)
+            let leadingMargin = showCustomizeButton ? CGFloat.mediumSpacing : 0
+            return UIEdgeInsets(top: 0, leading: leadingMargin, bottom: 0, trailing: 0)
         }
 
-        return UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        return UIEdgeInsets(top: 0, leading: .mediumSpacing, bottom: 0, trailing: .mediumSpacing)
     }
 
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return false
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return .mediumSpacing
     }
 }
 
@@ -144,7 +149,7 @@ extension MessageFormToolbar: UICollectionViewDataSource {
         case 0:
             return showCustomizeButton ? 1 : 0
         case 1:
-            return viewModel.messageTemplates.count
+            return customTemplates.count + viewModel.defaultMessageTemplates.count
         default:
             return 0
         }
@@ -153,11 +158,25 @@ extension MessageFormToolbar: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            return collectionView.dequeue(MessageFormCustomizeCell.self, for: indexPath)
+            let cell = collectionView.dequeue(MessageFormCustomizeCell.self, for: indexPath)
+            cell.delegate = self
+            cell.configure(withMaxWidth: toolbarCellMaxWidth, maxHeight: toolbarCellHeight)
+            return cell
         case 1:
+            let maybeTemplate: MessageFormTemplate?
+            if indexPath.row < customTemplates.count {
+                maybeTemplate = customTemplates[safe: indexPath.row]
+            } else {
+                let index = indexPath.row - customTemplates.count
+                maybeTemplate = viewModel.defaultMessageTemplates[safe: index]
+            }
+
+            guard let template = maybeTemplate else {
+                return UICollectionViewCell()
+            }
+
             let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
-            let text = viewModel.messageTemplates[safe: indexPath.row]?.text ?? ""
-            cell.configure(withText: text, index: indexPath.row, maxWidth: toolbarCellMaxWidth, height: toolbarCellHeight)
+            cell.configure(withTemplate: template, maxWidth: toolbarCellMaxWidth, maxHeight: toolbarCellHeight)
             cell.delegate = self
             return cell
         default:
@@ -168,11 +187,17 @@ extension MessageFormToolbar: UICollectionViewDataSource {
 
 extension MessageFormToolbar: MessageFormTemplateCellDelegate {
     fileprivate func messageFormTemplateCellWasTapped(_ cell: MessageFormTemplateCell) {
-        guard let messageTemplate = viewModel.messageTemplates[safe: cell.index] else {
+        guard let messageTemplate = cell.template else {
             return
         }
 
         delegate?.messageFormToolbar(self, didSelectMessageTemplate: messageTemplate)
+    }
+}
+
+extension MessageFormToolbar: MessageFormCustomizeCellDelegate {
+    fileprivate func messageFormCustomizeCellWasTapped(_ cell: MessageFormCustomizeCell) {
+        delegate?.messageFormToolbarTappedCustomizeButton(self)
     }
 }
 
@@ -188,6 +213,7 @@ private class MessageFormTemplateCell: UICollectionViewCell {
 
     private lazy var button: UIButton = {
         let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundColor(color: .toothPaste, forState: .normal)
         button.setBackgroundColor(color: .secondaryBlue, forState: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -202,17 +228,17 @@ private class MessageFormTemplateCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 3
         label.textAlignment = .center
-        label.lineBreakMode = .byWordWrapping
+        label.lineBreakMode = .byTruncatingTail
         return label
     }()
 
-    private lazy var heightConstraint = contentView.heightAnchor.constraint(equalToConstant: 100)
-    private lazy var maxWidthConstraint = contentView.widthAnchor.constraint(lessThanOrEqualToConstant: 100)
+    private var maxWidth: CGFloat = 0
+    private var maxHeight: CGFloat = 0
 
     // MARK: - Internal properties
 
     weak var delegate: MessageFormTemplateCellDelegate?
-    private(set) var index: Int = 0
+    private(set) var template: MessageFormTemplate?
 
     // MARK: - Init
 
@@ -234,16 +260,23 @@ private class MessageFormTemplateCell: UICollectionViewCell {
         label.fillInSuperview(margin: .smallSpacing)
     }
 
+    // MARK: - Overrides
+
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        var frame = layoutAttributes.frame
+        frame.size.width = maxWidth
+        frame.size.height = maxHeight
+        layoutAttributes.frame = frame
+        return layoutAttributes
+    }
+
     // MARK: - Internal methods
 
-    func configure(withText text: String, index: Int, maxWidth: CGFloat, height: CGFloat) {
-        label.text = text
-        heightConstraint.constant = height
-        maxWidthConstraint.constant = maxWidth
-        self.index = index
-
-        heightConstraint.isActive = true
-        maxWidthConstraint.isActive = true
+    func configure(withTemplate template: MessageFormTemplate, maxWidth: CGFloat, maxHeight: CGFloat) {
+        self.template = template
+        label.text = template.text.condenseWhitespace()
+        self.maxWidth = maxWidth
+        self.maxHeight = maxHeight
     }
 
     // MARK: - Private methods
@@ -255,19 +288,30 @@ private class MessageFormTemplateCell: UICollectionViewCell {
 
 // MARK: - MessageFormCustomizeCell
 
+private protocol MessageFormCustomizeCellDelegate: AnyObject {
+    func messageFormCustomizeCellWasTapped(_ cell: MessageFormCustomizeCell)
+}
+
 private class MessageFormCustomizeCell: UICollectionViewCell {
 
-    static let size = CGSize(width: 25, height: 25)
+    // MARK: - Static properties
+
+    static let cellSize = CGSize(width: 30, height: 30)
+    static let imageSize = CGSize(width: 16, height: 16)
 
     // MARK: - UI properties
 
+    private lazy var wrapperView: UIView = UIView(withAutoLayout: true)
+
     private lazy var button: UIButton = {
         let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundColor(color: .toothPaste, forState: .normal)
         button.setBackgroundColor(color: .secondaryBlue, forState: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = MessageFormCustomizeCell.size.width / 2
+        button.layer.cornerRadius = MessageFormCustomizeCell.cellSize.width / 2
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -277,6 +321,13 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
         imageView.backgroundColor = .clear
         return imageView
     }()
+
+    private var maxWidth: CGFloat = 0
+    private var maxHeight: CGFloat = 0
+
+    // MARK: - Internal properties
+
+    weak var delegate: MessageFormCustomizeCellDelegate?
 
     // MARK: - Init
 
@@ -291,11 +342,46 @@ private class MessageFormCustomizeCell: UICollectionViewCell {
     }
 
     private func setup() {
-        contentView.addSubview(button)
-        button.fillInSuperview()
-
+        contentView.addSubview(wrapperView)
+        wrapperView.addSubview(button)
         button.addSubview(imageView)
-        imageView.fillInSuperview()
+
+        wrapperView.fillInSuperview()
+
+        NSLayoutConstraint.activate([
+            button.centerXAnchor.constraint(equalTo: wrapperView.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor),
+            button.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.width),
+            button.heightAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.height),
+
+            imageView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.imageSize.width),
+            imageView.heightAnchor.constraint(equalToConstant: MessageFormCustomizeCell.imageSize.height),
+        ])
+    }
+
+    // MARK: - Overrides
+
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        var frame = layoutAttributes.frame
+        frame.size.width = MessageFormCustomizeCell.cellSize.width
+        frame.size.height = maxHeight
+        layoutAttributes.frame = frame
+        return layoutAttributes
+    }
+
+    // MARK: - Internal methods
+
+    func configure(withMaxWidth maxWidth: CGFloat, maxHeight: CGFloat) {
+        self.maxWidth = maxWidth
+        self.maxHeight = maxHeight
+    }
+
+    // MARK: - Private methods
+
+    @objc private func buttonTapped() {
+        delegate?.messageFormCustomizeCellWasTapped(self)
     }
 }
 
@@ -314,5 +400,12 @@ private extension UIButton {
         let colorImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.setBackgroundImage(colorImage, for: forState)
+    }
+}
+
+private extension String {
+    func condenseWhitespace() -> String {
+        let components = self.components(separatedBy: .whitespacesAndNewlines)
+        return components.filter { !$0.isEmpty }.joined(separator: " ")
     }
 }

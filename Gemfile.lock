@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    pr_changelog (0.4.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  pr_changelog (~> 0.4.0)
+
+BUNDLED WITH
+   2.0.2

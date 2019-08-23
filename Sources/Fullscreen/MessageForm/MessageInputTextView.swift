@@ -4,11 +4,11 @@
 
 import Foundation
 
-protocol MessageFormViewDelegate: AnyObject {
-    func messageFormView(_ view: MessageFormView, didEditMessageText text: String)
+protocol MessageInputTextViewDelegate: AnyObject {
+    func messageFormView(_ view: MessageInputTextView, didEditMessageText text: String)
 }
 
-class MessageFormView: UIView {
+class MessageInputTextView: UIView {
 
     // MARK: - UI properties
 
@@ -19,18 +19,17 @@ class MessageFormView: UIView {
         return textView
     }()
 
-    private lazy var transparencyLabel: Label = {
+    private lazy var additionalInfoLabel: Label = {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = viewModel.transparencyText
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
 
     // MARK: - Internal properties
 
-    weak var delegate: MessageFormViewDelegate?
+    weak var delegate: MessageInputTextViewDelegate?
 
     var text: String {
         get {
@@ -53,35 +52,32 @@ class MessageFormView: UIView {
         }
     }
 
-    // MARK: - Private properties
-
-    private let viewModel: MessageFormViewModel
-
     // MARK: - Init
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
 
-    required init(viewModel: MessageFormViewModel) {
-        self.viewModel = viewModel
+    required init(additionalInfoText: String) {
         super.init(frame: .zero)
+
         setup()
+        additionalInfoLabel.text = additionalInfoText
     }
 
     private func setup() {
         addSubview(textView)
-        addSubview(transparencyLabel)
+        addSubview(additionalInfoLabel)
 
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            textView.bottomAnchor.constraint(equalTo: transparencyLabel.topAnchor, constant: -.mediumSpacing),
+            textView.bottomAnchor.constraint(equalTo: additionalInfoLabel.topAnchor, constant: -.mediumSpacing),
 
-            transparencyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            transparencyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            transparencyLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
+            additionalInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+            additionalInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            additionalInfoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
         ])
     }
 
@@ -98,7 +94,7 @@ class MessageFormView: UIView {
     }
 }
 
-extension MessageFormView: TextViewDelegate {
+extension MessageInputTextView: TextViewDelegate {
     func textViewDidChange(_ textView: TextView) {
         delegate?.messageFormView(self, didEditMessageText: text)
     }

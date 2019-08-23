@@ -65,6 +65,7 @@ public enum ComponentViews: String, CaseIterable {
     case carouselView
     case questionnaireView
     case tweakable
+    case saveSearchView
 
     public static var items: [ComponentViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -150,6 +151,8 @@ public enum ComponentViews: String, CaseIterable {
           return DemoViewController<QuestionnaireDemoView>()
         case .tweakable:
             return DemoViewController<TweakableDemoView>()
+        case .saveSearchView:
+            return DemoViewController<SaveSearchViewDemoView>()
         }
     }
 }
@@ -193,6 +196,7 @@ public enum Cells: String, CaseIterable {
 public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
+    case favoriteFolderActions
     case favoritesListView
     case savedSearchesListView
     case marketsGridView
@@ -219,6 +223,10 @@ public enum RecyclingViews: String, CaseIterable {
             navigationController.navigationBar.shadowImage = UIImage()
 
             return navigationController
+        case .favoriteFolderActions:
+            let bottomSheet = FavoriteFolderActionSheet(viewModel: .default)
+            bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
+            return bottomSheet
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:

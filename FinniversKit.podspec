@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FinniversKit'
-  s.version      = '1.15.0'
+  s.version      = '3.2.0'
   s.summary      = "FINN's iOS Components"
   s.author       = 'FINN.no'
   s.homepage     = 'https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system'
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
     LICENSE
   }
 
-  s.platform      = :ios, '10.0'
+  s.platform      = :ios, '11.2'
   s.swift_version = '5.0'
   s.source        = { :git => "https://github.com/finn-no/FinniversKit.git", :tag => s.version }
   s.requires_arc  = true

@@ -43,6 +43,24 @@ If the view isn't recyclable then we use ViewModels. There are tradeoffs when yo
 
 Our Demo project has been setup in a way that every component is isolated, we initally started by using Xcode's playgrounds but we quickly outgrew it's capacitiy, reloading times weren't quicker than making the change and running the project again, also it wasn't possible to debug and set breakpoint on things and we couldn't use many of Xcode's useful utilities such as View herarchy inspector. Finally, the fact that we had to rebuild the project after making any change in the framework meant that we weren't as efficient as using plain Xcode projects (where rebuilding isn't necesary after making a change).
 
+### Changelogs
+
+This project has a `Gemfile` that specify some development dependencies, one of those is `pr_changelog` which is a tool that helps you to generate changelogs from the Git history of the repo. You install this by running `bundle install`.
+
+To get the changes that have not been released yet just run:
+
+```
+$ pr_changelog
+```
+
+If you want to see what changes were released in the last version, run:
+
+```
+$ pr_changelog --last-release
+```
+
+You can always run the command with the `--help` flag when needed.
+
 ### Accessibility
 
 Everything we do we aim it to be accessible, our two main areas of focus have been VoiceOver and Dynamic Type.
