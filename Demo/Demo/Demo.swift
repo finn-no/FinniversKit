@@ -66,10 +66,7 @@ public enum ComponentViews: String, CaseIterable {
     case tweakable
     case saveSearchView
     case identityView
-    case profileSummaryView
-    case stepSlider
-    case verificationView
-    case panel
+    case reputationView
 
     public static var items: [ComponentViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -157,8 +154,8 @@ public enum ComponentViews: String, CaseIterable {
             return SaveSearchViewDemoViewController()
         case .identityView:
             return DemoViewController<IdentityDemoView>()
-        case .profileSummaryView:
-            return DemoViewController<ProfileSummaryDemoView>()
+        case .reputationView:
+            return DemoViewController<ReputationDemoView>()
         }
     }
 }

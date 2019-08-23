@@ -6,23 +6,23 @@ import UIKit
 
 // MARK: - View Models
 
-public protocol ProfileSummaryViewModel {
+public protocol ReputationViewModel {
     var title: String { get }
     var subtitle: String { get }
 
     /// Expected to be in the range [0 ... 1]
     var score: Float { get }
 
-    var categoryBreakdowns: [ProfileSummaryBreakdownModel] { get }
+    var categoryBreakdowns: [ReputationBreakdownModel] { get }
     var collapseBreakdown: Bool { get }
 }
 
-public protocol ProfileSummaryBreakdownModel {
-    var category: ProfileSummaryBreakdownCategory { get }
+public protocol ReputationBreakdownModel {
+    var category: ReputationBreakdownCategory { get }
     var title: String { get }
 }
 
-public enum ProfileSummaryBreakdownCategory {
+public enum ReputationBreakdownCategory {
     case communication
     case payment
     case transaction
@@ -44,11 +44,11 @@ public enum ProfileSummaryBreakdownCategory {
 
 // MARK: - ProfileSummaryView
 
-public protocol ProfileSummaryViewDelegate: AnyObject {
-    func profileSummaryViewWasTapped(_ profileSummaryView: ProfileSummaryView)
+public protocol ReputationViewDelegate: AnyObject {
+    func reputationViewWasTapped(_ reputationView: ReputationView)
 }
 
-public class ProfileSummaryView: UIView {
+public class ReputationView: UIView {
 
     // MARK: - UI properties
 
@@ -119,7 +119,7 @@ public class ProfileSummaryView: UIView {
 
     // MARK: - Public properties
 
-    public let viewModel: ProfileSummaryViewModel
+    public let viewModel: ReputationViewModel
 
     // MARK: - Private properties
 
@@ -137,7 +137,7 @@ public class ProfileSummaryView: UIView {
         fatalError("\(#function) not implemented")
     }
 
-    public init(viewModel: ProfileSummaryViewModel) {
+    public init(viewModel: ReputationViewModel) {
         self.viewModel = viewModel
         self.isCollapsed = viewModel.collapseBreakdown
         super.init(frame: .zero)
@@ -199,7 +199,7 @@ public class ProfileSummaryView: UIView {
 
 // MARK: - Breakdown & Collapse Handling
 
-extension ProfileSummaryView {
+extension ReputationView {
     @objc private func collapseButtonTapped() {
         isCollapsed.toggle()
 
@@ -221,7 +221,7 @@ extension ProfileSummaryView {
         }
     }
 
-    private func breakdownView(for model: ProfileSummaryBreakdownModel) -> UIView {
+    private func breakdownView(for model: ReputationBreakdownModel) -> UIView {
         let root = UIView(withAutoLayout: true)
 
         let imageWrapper = UIView(withAutoLayout: true)
