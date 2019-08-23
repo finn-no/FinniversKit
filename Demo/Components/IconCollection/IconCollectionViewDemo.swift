@@ -27,8 +27,8 @@ public class IconCollectionDemoView: UIView {
         NSLayoutConstraint.activate([
             collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
             collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: safeLayoutGuide.leadingAnchor, constant: .mediumSpacing),
-            collectionView.trailingAnchor.constraint(equalTo: safeLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumSpacing),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
         ])
 
         collectionView.configure(with: [
