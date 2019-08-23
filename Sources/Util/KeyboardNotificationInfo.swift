@@ -34,11 +34,7 @@ public struct KeyboardNotificationInfo {
         guard let frameEnd = frameEnd else { return 0 }
         let frameInWindow = view.convert(view.bounds, to: nil)
         let intersection = frameEnd.intersection(frameInWindow)
-        var safeInsetBottom: CGFloat = 0
-
-        if #available(iOS 11.0, *) {
-            safeInsetBottom = view.safeAreaInsets.bottom
-        }
+        let safeInsetBottom: CGFloat = view.safeAreaInsets.bottom
 
         let viewMaxY = frameInWindow.origin.y + frameInWindow.height
         let keyboardMaxY = frameEnd.origin.y + frameEnd.height

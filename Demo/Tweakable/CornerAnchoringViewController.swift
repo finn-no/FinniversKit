@@ -36,19 +36,19 @@ class CornerAnchoringView: UIView {
     func setup() {
         let topLeftView = addAnchorAreaView()
         topLeftView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing).isActive = true
-        topLeftView.topAnchor.constraint(equalTo: compatibleTopAnchor, constant: .mediumLargeSpacing).isActive = true
+        topLeftView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing).isActive = true
 
         let topRightView = addAnchorAreaView()
         topRightView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing).isActive = true
-        topRightView.topAnchor.constraint(equalTo: compatibleTopAnchor, constant: .mediumLargeSpacing).isActive = true
+        topRightView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing).isActive = true
 
         let bottomLeftView = addAnchorAreaView()
         bottomLeftView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing).isActive = true
-        bottomLeftView.bottomAnchor.constraint(equalTo: compatibleBottomAnchor, constant: -.mediumLargeSpacing).isActive = true
+        bottomLeftView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.mediumLargeSpacing).isActive = true
 
         let bottomRightView = addAnchorAreaView()
         bottomRightView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing).isActive = true
-        bottomRightView.bottomAnchor.constraint(equalTo: compatibleBottomAnchor, constant: -.mediumLargeSpacing).isActive = true
+        bottomRightView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.mediumLargeSpacing).isActive = true
 
         addSubview(anchoredView)
         anchoredView.widthAnchor.constraint(equalToConstant: .veryLargeSpacing).isActive = true

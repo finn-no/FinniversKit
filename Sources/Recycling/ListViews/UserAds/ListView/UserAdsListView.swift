@@ -122,11 +122,7 @@ public class UserAdsListView: UIView {
     }
 
     public func scrollToTop() {
-        if #available(iOS 11.0, *) {
-            tableView.setContentOffset(CGPoint(x: 0, y: -tableView.adjustedContentInset.top), animated: true)
-        } else {
-            tableView.setContentOffset(CGPoint(x: 0, y: -tableView.contentInset.top), animated: true)
-        }
+        tableView.setContentOffset(CGPoint(x: 0, y: -tableView.adjustedContentInset.top), animated: true)
     }
 }
 

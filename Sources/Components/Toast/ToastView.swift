@@ -214,20 +214,18 @@ public class ToastView: UIView {
     }
 
     private func setupSafeAreaCoverViewIfNeeded(for view: UIView) {
-        if #available(iOS 11.0, *) {
-            let height = view.safeAreaInsets.bottom
-            if height > 0 {
-                let view = UIView(withAutoLayout: true)
-                view.backgroundColor = style.color
-                addSubview(view)
-                safeAreaCoverView = view
+        let height = view.safeAreaInsets.bottom
+        if height > 0 {
+            let view = UIView(withAutoLayout: true)
+            view.backgroundColor = style.color
+            addSubview(view)
+            safeAreaCoverView = view
 
-                NSLayoutConstraint.activate([
-                    view.widthAnchor.constraint(equalTo: widthAnchor),
-                    view.heightAnchor.constraint(equalToConstant: height),
-                    view.topAnchor.constraint(equalTo: bottomAnchor)
+            NSLayoutConstraint.activate([
+                view.widthAnchor.constraint(equalTo: widthAnchor),
+                view.heightAnchor.constraint(equalToConstant: height),
+                view.topAnchor.constraint(equalTo: bottomAnchor)
                 ])
-            }
         }
     }
 

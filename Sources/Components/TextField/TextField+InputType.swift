@@ -41,11 +41,7 @@ extension TextField {
             case .phoneNumber:
                 return .telephoneNumber
             case .password:
-                if #available(iOS 11.0, *) {
-                    return .password
-                } else {
-                    return nil
-                }
+                return .password
             case .normal, .multiline:
                 return nil
             }
