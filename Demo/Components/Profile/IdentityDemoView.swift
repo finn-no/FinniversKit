@@ -62,8 +62,6 @@ extension IdentityDemoView: IdentityViewDelegate {
                 return
             }
 
-            usleep(100_000)
-
             let image = UIImage(data: data)
             completionHandler(image)
         }

@@ -37,7 +37,7 @@ public class IdentityView : UIView {
     private let profileImageSize: CGFloat = 40.0
 
     private lazy var profileImageView: UIImageView = {
-        let imageView = UIImageView(image: viewModel.defaultProfileImage)
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = profileImageSize / 2
         imageView.layer.masksToBounds = true
@@ -100,6 +100,7 @@ public class IdentityView : UIView {
         super.init(frame: .zero)
         setupSubviews()
         addTapListener()
+        setupDefaultProfileImage()
     }
 
     private func setupSubviews() {
@@ -151,6 +152,22 @@ public class IdentityView : UIView {
         }
     }
 
+    private func setupDefaultProfileImage() {
+        /// If we don't have a URL, set the default image immediately. Otherwise, give the download-task a bit
+        /// of time to download the actual profile image before setting the default to avoid flickering.
+        if viewModel.profileImageUrl == nil {
+            profileImageView.image = viewModel.defaultProfileImage
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                if self.profileImageView.image == nil {
+                    UIView.transition(with: self.profileImageView, duration: 0.1, options: .transitionCrossDissolve, animations: {
+                        self.profileImageView.image = self.viewModel.defaultProfileImage
+                    })
+                }
+            })
+        }
+    }
+
     // MARK: - Private methods
 
     private func loadProfileImage() {
@@ -160,7 +177,7 @@ public class IdentityView : UIView {
             guard let self = self else { return }
             if let image = image {
                 DispatchQueue.main.async(execute: {
-                    UIView.transition(with: self.profileImageView, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                    UIView.transition(with: self.profileImageView, duration: 0.1, options: .transitionCrossDissolve, animations: {
                         self.profileImageView.image = image
                     })
                 })
