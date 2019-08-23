@@ -85,7 +85,7 @@ class LoginEntryDialogueView: UIView {
 
     private func setup() {
         layer.cornerRadius = 33
-        layoutMargins = UIEdgeInsets(
+        directionalLayoutMargins = NSDirectionalEdgeInsets(
             top: .veryLargeSpacing, leading: .largeSpacing, bottom: .largeSpacing, trailing: .largeSpacing
         )
 
