@@ -10,6 +10,12 @@ public protocol EmptyViewDelegate: AnyObject {
     func emptyView(_ emptyView: EmptyView, didMoveObjectView view: UIView)
 }
 
+public enum EmptyViewShapeType {
+    case `default`
+    case christmas
+    case none
+}
+
 public class EmptyView: UIView {
 
     // MARK: - Internal properties
@@ -23,7 +29,7 @@ public class EmptyView: UIView {
 
     private var hasLayedOut = false
     private var hasSetup = false
-    private let isChristmasThemed: Bool
+    private let shapeType: EmptyViewShapeType
 
     // MARK: - Regular shapes
 
@@ -135,7 +141,7 @@ public class EmptyView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isAccessibilityElement = true
         label.textAlignment = .center
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
 
@@ -146,6 +152,12 @@ public class EmptyView: UIView {
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
+    }()
+
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
 
     private lazy var actionButton: Button = {
@@ -189,10 +201,13 @@ public class EmptyView: UIView {
     private lazy var motionQueue = OperationQueue()
 
     private lazy var allShapes: [UIView] = {
-        if isChristmasThemed {
-            return [smallPinkGift, smallStarOrnament, triangleGift, candyCane, roundedSquareGift, blueOrnament, redOrnament, bigStarOrnament, bigYellowGift]
-        } else {
+        switch shapeType {
+        case .default:
             return [rectangle, triangle, roundedSquare, circle, square]
+        case .christmas:
+            return [smallPinkGift, smallStarOrnament, triangleGift, candyCane, roundedSquareGift, blueOrnament, redOrnament, bigStarOrnament, bigYellowGift]
+        case .none:
+            return [UIView]()
         }
     }()
 
@@ -214,6 +229,12 @@ public class EmptyView: UIView {
         }
     }
 
+    public var image: UIImage? {
+        didSet {
+            imageView.image = image
+        }
+    }
+
     public var actionButtonTitle: String = "" {
         didSet {
             actionButton.setTitle(actionButtonTitle, for: .normal)
@@ -224,14 +245,15 @@ public class EmptyView: UIView {
 
     // MARK: - Init
 
-    public init(frame: CGRect, isChristmasThemed: Bool = false) {
-        self.isChristmasThemed = isChristmasThemed
-        super.init(frame: frame)
+    public init(shapeType: EmptyViewShapeType = .default) {
+        self.shapeType = shapeType
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
         setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        self.isChristmasThemed = false
+        self.shapeType = .default
         super.init(coder: aDecoder)
         setup()
     }
@@ -278,6 +300,7 @@ public class EmptyView: UIView {
 
         addSubview(headerLabel)
         addSubview(messageLabel)
+        addSubview(imageView)
         addSubview(actionButton)
 
         startMotionManager()
@@ -291,7 +314,11 @@ public class EmptyView: UIView {
             messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
-            actionButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .largeSpacing),
+            imageView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: .largeSpacing),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+
+            actionButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .largeSpacing),
             actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing)
         ])
@@ -304,7 +331,14 @@ public class EmptyView: UIView {
 
         // We reposition the shapes after the EmptyView itself has layed out its frame.
         // At this point we will have its size even if we use constraints to lay it out.
-        if isChristmasThemed {
+        switch shapeType {
+        case .default:
+            triangle.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
+            circle.center = CGPoint(x: slice * 2, y: frame.height - (sizeOfCircle.height / 2))
+            square.center = CGPoint(x: slice * 3, y: frame.height - (sizeOfSquare.height / 2))
+            roundedSquare.center = CGPoint(x: slice * 5, y: frame.height - (sizeOfRoundedSquare.height / 2))
+            rectangle.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfRectangle.height / 2))
+        case .christmas:
             triangleGift.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
             bigStarOrnament.center = CGPoint(x: slice, y: frame.height - (sizeOfCircle.height * 1.5))
             blueOrnament.center = CGPoint(x: slice * 2.3, y: frame.height - sizeOfCircle.height)
@@ -314,12 +348,8 @@ public class EmptyView: UIView {
             smallStarOrnament.center = CGPoint(x: slice * 5.5, y: frame.height - (sizeOfSquare.height * 2))
             candyCane.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfCandyCane.height / 2 + sizeOfRectangle.height))
             bigYellowGift.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfRectangle.height / 2))
-        } else {
-            triangle.center = CGPoint(x: slice, y: frame.height - (sizeOfTriangle.height / 2))
-            circle.center = CGPoint(x: slice * 2, y: frame.height - (sizeOfCircle.height / 2))
-            square.center = CGPoint(x: slice * 3, y: frame.height - (sizeOfSquare.height / 2))
-            roundedSquare.center = CGPoint(x: slice * 5, y: frame.height - (sizeOfRoundedSquare.height / 2))
-            rectangle.center = CGPoint(x: slice * 7, y: frame.height - (sizeOfRectangle.height / 2))
+        case .none:
+            break
         }
 
         // We add the behaviors after laying out the subviews to avoid issues with initial positions of the shapes

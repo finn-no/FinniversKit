@@ -63,6 +63,7 @@ public final class NeighborhoodProfileView: UIView {
         let pageControl = UIPageControl(withAutoLayout: true)
         pageControl.pageIndicatorTintColor = UIColor.primaryBlue.withAlphaComponent(0.2)
         pageControl.currentPageIndicatorTintColor = .primaryBlue
+        pageControl.addTarget(self, action: #selector(handlePageControlValueChange), for: .valueChanged)
         return pageControl
     }()
 
@@ -206,6 +207,16 @@ public final class NeighborhoodProfileView: UIView {
         case let .button(content):
             return NeighborhoodProfileButtonViewCell.height(forContent: content, width: width)
         }
+    }
+
+    // MARK: - Actions
+
+    @objc private func handlePageControlValueChange() {
+        let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
+        let reachedEnd = pageControl.currentPage == viewModel.cards.count - 1
+
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        delegate?.neighborhoodProfileViewDidScroll(self, reachedEnd: reachedEnd)
     }
 }
 
