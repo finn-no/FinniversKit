@@ -21,15 +21,24 @@ public final class FavoriteActionView: UIView {
     private let viewModel: FavoriteActionViewModel
     private let actions = FavoriteAction.allCases
 
+    private lazy var headerView: FavoriteActionHeaderView = {
+        let view = FavoriteActionHeaderView(withAutoLayout: true)
+        view.configure(
+            withImage: viewModel.headerImage,
+            detailText: viewModel.headerDetailText,
+            accessoryText: viewModel.headerAccessoryText
+        )
+        return view
+    }()
+
     private lazy var tableView: UITableView = {
         let tableView = ContentSizedTableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .milk
-        tableView.rowHeight = FavoriteSortingView.rowHeight
-        tableView.estimatedRowHeight = FavoriteSortingView.rowHeight
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.rowHeight = FavoriteActionView.rowHeight
+        tableView.estimatedRowHeight = FavoriteActionView.rowHeight
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
         tableView.register(FavoriteActionCell.self)
@@ -51,8 +60,19 @@ public final class FavoriteActionView: UIView {
     // MARK: - Setup
 
     private func setup() {
+        addSubview(headerView)
         addSubview(tableView)
-        tableView.fillInSuperview()
+
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
 
@@ -82,7 +102,7 @@ extension FavoriteActionView: UITableViewDataSource {
 
 extension FavoriteActionView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let action = actions[indexPath.row]
-        delegate?.favoriteActionView(self, didSelectAction: action)
+        tableView.deselectRow(at: indexPath, animated: true)
+        delegate?.favoriteActionView(self, didSelectAction: actions[indexPath.row])
     }
 }

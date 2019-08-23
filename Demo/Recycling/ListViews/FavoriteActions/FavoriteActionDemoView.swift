@@ -7,6 +7,7 @@ import FinniversKit
 final class FavoriteActionDemoView: UIView {
     private(set) lazy var view: FavoriteActionView = {
         let view = FavoriteActionView(viewModel: .default)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
     }()
@@ -24,7 +25,12 @@ final class FavoriteActionDemoView: UIView {
 
     private func setup() {
         addSubview(view)
-        view.fillInSuperview()
+
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: topAnchor),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
 }
 
