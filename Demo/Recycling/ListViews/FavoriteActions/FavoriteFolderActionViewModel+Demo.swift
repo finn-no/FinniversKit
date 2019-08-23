@@ -4,8 +4,8 @@
 
 import FinniversKit
 
-extension FavoriteActionsListViewModel {
-    static let `default` = FavoriteActionsListViewModel(
+extension FavoriteFolderActionViewModel {
+    static let `default` = FavoriteFolderActionViewModel(
         editText: "Rediger listen",
         changeNameText: "Endre navn på listen",
         shareText: "Deling av listen",

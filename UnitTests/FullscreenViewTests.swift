@@ -118,6 +118,10 @@ class FullscreenViewTests: FBSnapshotTestCase {
         snapshot(.searchResultMapView)
     }
 
+    func testFavoriteFolderActionSheet() {
+        snapshot(.favoriteFolderActionSheet)
+    }
+
     func testFavoriteSortingSheet() {
         snapshot(.favoriteSortingSheet)
     }

@@ -4,18 +4,18 @@
 
 import UIKit
 
-public protocol FavoriteFolderActionsListViewDelegate: AnyObject {
-    func favoriteFolderActionsListView(_ view: FavoriteFolderActionsListView, didSelectAction action: FavoriteFolderAction)
+public protocol FavoriteFolderActionViewDelegate: AnyObject {
+    func favoriteFolderActionView(_ view: FavoriteFolderActionView, didSelectAction action: FavoriteFolderAction)
 }
 
-public final class FavoriteFolderActionsListView: UIView {
+public final class FavoriteFolderActionView: UIView {
     public static let rowHeight: CGFloat = 48.0
     public static let compactHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withCopyLink: false).count)
     public static let expandedHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withCopyLink: true).count)
 
     // MARK: - Public properties
 
-    public weak var delegate: FavoriteFolderActionsListViewDelegate?
+    public weak var delegate: FavoriteFolderActionViewDelegate?
 
     public var isCopyLinkHidden = true {
         didSet {
@@ -26,7 +26,7 @@ public final class FavoriteFolderActionsListView: UIView {
 
     // MARK: - Private properties
 
-    private let viewModel: FavoriteActionsListViewModel
+    private let viewModel: FavoriteFolderActionViewModel
     private var actions = [FavoriteFolderAction]()
 
     private lazy var tableView: UITableView = {
@@ -35,8 +35,8 @@ public final class FavoriteFolderActionsListView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .milk
-        tableView.rowHeight = FavoriteFolderActionsListView.rowHeight
-        tableView.estimatedRowHeight = FavoriteFolderActionsListView.rowHeight
+        tableView.rowHeight = FavoriteFolderActionView.rowHeight
+        tableView.estimatedRowHeight = FavoriteFolderActionView.rowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
@@ -48,7 +48,7 @@ public final class FavoriteFolderActionsListView: UIView {
 
     // MARK: - Init
 
-    public init(viewModel: FavoriteActionsListViewModel) {
+    public init(viewModel: FavoriteFolderActionViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setup()
@@ -92,7 +92,7 @@ public final class FavoriteFolderActionsListView: UIView {
 
 // MARK: - UITableViewDataSource
 
-extension FavoriteFolderActionsListView: UITableViewDataSource {
+extension FavoriteFolderActionView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return actions.count
     }
@@ -132,7 +132,7 @@ extension FavoriteFolderActionsListView: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension FavoriteFolderActionsListView: UITableViewDelegate {
+extension FavoriteFolderActionView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let action = actions[indexPath.row]
         let isLastCell = indexPath.row == actions.count - 1
@@ -147,24 +147,24 @@ extension FavoriteFolderActionsListView: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
 
         if Set<FavoriteFolderAction>([.edit, .changeName, .delete]).contains(action) {
-            delegate?.favoriteFolderActionsListView(self, didSelectAction: action)
+            delegate?.favoriteFolderActionView(self, didSelectAction: action)
         }
     }
 }
 
 // MARK: - FavoriteShareViewCellDelegate
 
-extension FavoriteFolderActionsListView: FavoriteFolderShareCellDelegate {
+extension FavoriteFolderActionView: FavoriteFolderShareCellDelegate {
     func favoriteFolderShareCell(_ cell: FavoriteFolderShareCell, didChangeValueFor switchControl: UISwitch) {
-        delegate?.favoriteFolderActionsListView(self, didSelectAction: .share)
+        delegate?.favoriteFolderActionView(self, didSelectAction: .share)
     }
 }
 
 // MARK: - FavoriteCopyLinkViewCellDelegate
 
-extension FavoriteFolderActionsListView: FavoriteFolderCopyLinkCellDelegate {
+extension FavoriteFolderActionView: FavoriteFolderCopyLinkCellDelegate {
     func favoriteFolderCopyLinkCellDidSelectButton(_ cell: FavoriteFolderCopyLinkCell) {
-        delegate?.favoriteFolderActionsListView(self, didSelectAction: .copyLink)
+        delegate?.favoriteFolderActionView(self, didSelectAction: .copyLink)
     }
 }
 

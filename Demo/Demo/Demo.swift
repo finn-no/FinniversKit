@@ -196,7 +196,7 @@ public enum Cells: String, CaseIterable {
 public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
-    case favoriteFolderActions
+    case favoriteFolderActionView
     case favoriteSortingView
     case favoritesListView
     case savedSearchesListView
@@ -224,10 +224,8 @@ public enum RecyclingViews: String, CaseIterable {
             navigationController.navigationBar.shadowImage = UIImage()
 
             return navigationController
-        case .favoriteFolderActions:
-            let bottomSheet = FavoriteFolderActionSheet(viewModel: .default)
-            bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
-            return bottomSheet
+        case .favoriteFolderActionView:
+            return DemoViewController<FavoriteFolderActionDemoView>()
         case .favoriteSortingView:
             return DemoViewController<FavoriteSortingDemoView>()
         case .favoritesListView:
@@ -274,6 +272,7 @@ public enum FullscreenViews: String, CaseIterable {
     case messageFormView
     case receiptView
     case favoriteAdsList
+    case favoriteFolderActionSheet
     case favoriteSortingSheet
 
     public static var items: [FullscreenViews] {
@@ -330,6 +329,10 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<AddressViewDemoView>()
         case .favoriteAdsList:
             return DemoViewController<FavoriteAdsListDemoView>(withDismissButton: true)
+        case .favoriteFolderActionSheet:
+            let bottomSheet = FavoriteFolderActionSheet(viewModel: .default)
+            bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
+            return bottomSheet
         case .favoriteSortingSheet:
             let bottomSheet = FavoriteSortingSheet(viewModel: .default, selectedSortOption: .lastAdded)
             bottomSheet.sortingDelegate = FavoriteSortingSheetDemoDelegate.shared

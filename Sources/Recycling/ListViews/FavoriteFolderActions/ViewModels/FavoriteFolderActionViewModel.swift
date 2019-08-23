@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct FavoriteActionsListViewModel {
+public struct FavoriteFolderActionViewModel {
     public let editText: String
     public let changeNameText: String
     public let shareText: String
