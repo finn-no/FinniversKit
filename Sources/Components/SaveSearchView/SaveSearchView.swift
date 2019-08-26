@@ -75,10 +75,7 @@ public class SaveSearchView: UIView {
         return line
     }()
 
-    private lazy var contentView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        return view
-    }()
+    private lazy var contentView = UIView(withAutoLayout: true)
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
