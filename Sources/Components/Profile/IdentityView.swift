@@ -33,6 +33,7 @@ public class IdentityView : UIView {
     public var viewModel: IdentityViewModel? {
         didSet {
             viewModelChanged()
+            loadProfileImage()
         }
     }
 

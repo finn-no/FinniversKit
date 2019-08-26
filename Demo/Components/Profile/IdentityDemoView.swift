@@ -4,9 +4,25 @@
 
 import FinniversKit
 
-class IdentityDemoView: UIView {
+class IdentityDemoView: UIView, Tweakable {
 
     // MARK: - UI properties
+
+    private var identityViews: [(IdentityView,IdentityViewModel)] = []
+
+    // MARK: - Private properties
+
+    lazy var tweakingOptions: [TweakingOption] = {
+        let options = [
+            TweakingOption(title: "nil out view models", action: {
+                self.identityViews.forEach { $0.0.viewModel = nil  }
+            }),
+            TweakingOption(title: "assign view models", action: {
+                self.identityViews.forEach { $0.0.viewModel = $0.1 }
+            }),
+        ]
+        return options
+    }()
 
     // MARK: - Setup
 
@@ -20,15 +36,22 @@ class IdentityDemoView: UIView {
     }
 
     private func setup() {
-        let identityViews = [
-            identityView(withDescription: "Er bare på FINN når jeg ikke finner det jeg vil ha på Letgo. Så jeg er her mye.\n\n#🔥", tappable: true, verified: true),
-            identityView(withDescription: nil, tappable: true, verified: false),
-            identityView(withDescription: nil, tappable: false, verified: true),
-            identityView(withDescription: "Hei sveis!", tappable: false, verified: false),
+        let viewModels = [
+            ViewModel(description: "Er bare på FINN når jeg ikke finner det jeg vil ha på Letgo. Så jeg er her mye.\n\n#🔥", isTappable: true, isVerified: true),
+            ViewModel(description: nil, isTappable: true, isVerified: false),
+            ViewModel(description: nil, isTappable: false, isVerified: true),
+            ViewModel(description: "Hei sveis!", isTappable: false, isVerified: false),
         ]
 
+        identityViews = viewModels.map { model in
+            let view = IdentityView(viewModel: model)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.delegate = self
+            return (view, model)
+        }
+
         var nextAnchor: NSLayoutYAxisAnchor = topAnchor
-        identityViews.forEach { view in
+        identityViews.forEach { (view, _) in
             addSubview(view)
             NSLayoutConstraint.activate([
                 view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
@@ -52,7 +75,7 @@ class IdentityDemoView: UIView {
 
 extension IdentityDemoView: IdentityViewDelegate {
     func identityViewWasTapped(_ identityView: IdentityView) {
-        print("Identity view of '\(identityView.viewModel.displayName)' was tapped")
+        print("Identity view of '\(identityView.viewModel?.displayName ?? "<nil>")' was tapped")
     }
 
     public func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
