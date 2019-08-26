@@ -44,9 +44,10 @@ public struct ContainmentOptions: OptionSet {
                 return nil
             }
             switch screens {
-            case .bannerTransparency,
-                 .saveSearchView:
+            case .bannerTransparency:
                 self = .bottomSheet
+            case .saveSearchView:
+                self = [.bottomSheet, .navigationController]
             default: return nil
             }
         case .cells:

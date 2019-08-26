@@ -184,27 +184,30 @@ public class FullscreenGalleryViewController: UIPageViewController {
 // MARK: - UIPageViewControllerDataSource
 extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if let imageController = viewController as? FullscreenImageViewController {
-            return imageViewController(forIndex: imageController.imageIndex - 1)
-        }
-
-        return nil
+        return imageViewController(forIndex: currentImageIndex - 1)
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if let imageController = viewController as? FullscreenImageViewController {
-            return imageViewController(forIndex: imageController.imageIndex + 1)
-        }
-
-        return nil
+        return imageViewController(forIndex: currentImageIndex + 1)
     }
 
     private func imageViewController(forIndex index: Int) -> FullscreenImageViewController? {
-        if index < 0 || index >= viewModel.imageUrls.count {
+        let translatedindex: Int
+
+        switch index {
+        case -1:
+            translatedindex = viewModel.imageUrls.count - 1
+        case viewModel.imageUrls.count:
+            translatedindex = 0
+        default:
+            translatedindex = index
+        }
+
+        guard (0 ..< viewModel.imageUrls.count).contains(translatedindex) else {
             return nil
         }
 
-        let vc = FullscreenImageViewController(imageIndex: index)
+        let vc = FullscreenImageViewController(imageIndex: translatedindex)
         vc.delegate = self
         vc.dataSource = self
         vc.updateLayout(withPreviewViewVisible: overlayView.previewViewVisible)
@@ -215,11 +218,11 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
 // MARK: - UIPageViewControllerDelegate
 extension FullscreenGalleryViewController: UIPageViewControllerDelegate {
     public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard let imageVc = pageViewController.viewControllers?.first as? FullscreenImageViewController else {
+        guard let currentVC = pageViewController.viewControllers?.first as? FullscreenImageViewController else {
             return
         }
 
-        currentImageIndex = imageVc.imageIndex
+        currentImageIndex = currentVC.imageIndex
         galleryDelegate?.fullscreenGalleryViewController(self, didSelectImageAtIndex: currentImageIndex)
         overlayView.scrollToImage(atIndex: currentImageIndex, animated: true)
     }

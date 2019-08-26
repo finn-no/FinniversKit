@@ -14,24 +14,23 @@ struct SampleSaveSearchViewModel: SaveSearchViewModel {
     let emailIsOn: Bool = true
 }
 
-class SaveSearchViewDemoView: UIView {
+class SaveSearchViewDemoViewController: DemoViewController<UIView> {
     private lazy var saveSearchView = SaveSearchView(withAutoLayout: true)
 
-    // MARK: - Init
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
+        title = "Lagre søk"
 
-    required init?(coder aDecoder: NSCoder) { fatalError() }
-
-    // MARK: - Setup
-
-    private func setup() {
         saveSearchView.configure(with: SampleSaveSearchViewModel())
 
-        addSubview(saveSearchView)
+        view.addSubview(saveSearchView)
         saveSearchView.fillInSuperview()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        saveSearchView.becomeFirstResponder()
     }
 }
