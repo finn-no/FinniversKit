@@ -13,6 +13,7 @@ extern NSString *const FinniversImageAssetarrowDown;
 extern NSString *const FinniversImageAssetarrowRight;
 extern NSString *const FinniversImageAssetarrowUp;
 extern NSString *const FinniversImageAssetattachment;
+extern NSString *const FinniversImageAssetavatar;
 extern NSString *const FinniversImageAssetballoon0;
 extern NSString *const FinniversImageAssetballoon1;
 extern NSString *const FinniversImageAssetballoon2;
