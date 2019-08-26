@@ -5,7 +5,6 @@
 import UIKit
 
 public protocol IdentityViewModel {
-    var defaultProfileImage: UIImage { get }
     var profileImageUrl: URL? { get }
     var displayName: String { get }
     var subtitle: String { get }
@@ -40,6 +39,7 @@ public class IdentityView : UIView {
     // MARK: - UI properties
 
     private let profileImageSize: CGFloat = 40.0
+    private lazy var defaultProfileImage = UIImage(named: FinniversImageAsset.avatar)
 
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -139,14 +139,13 @@ public class IdentityView : UIView {
     private func setupDefaultProfileImage() {
         /// If we don't have a URL, set the default image immediately. Otherwise, give the download-task a bit
         /// of time to download the actual profile image before setting the default to avoid flickering.
-        guard let defaultProfileImage = viewModel?.defaultProfileImage else { return }
         if viewModel?.profileImageUrl == nil {
             profileImageView.image = defaultProfileImage
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                 if self.profileImageView.image == nil {
                     UIView.transition(with: self.profileImageView, duration: 0.1, options: .transitionCrossDissolve, animations: {
-                        self.profileImageView.image = defaultProfileImage
+                        self.profileImageView.image = self.defaultProfileImage
                     })
                 }
             })
@@ -173,8 +172,6 @@ public class IdentityView : UIView {
     }
 
     private func populateViews(with viewModel: IdentityViewModel) {
-        profileImageView.image = viewModel.defaultProfileImage
-
         profileNameLabel.text = viewModel.displayName
         profileNameLabel.font = viewModel.isTappable ? .body : .bodyStrong
         profileNameLabel.textColor = viewModel.isTappable ? .primaryBlue : .licorice
@@ -203,7 +200,7 @@ public class IdentityView : UIView {
                     })
                 })
             } else {
-                self.profileImageView.image = self.viewModel?.defaultProfileImage
+                self.profileImageView.image = self.defaultProfileImage
             }
         })
     }

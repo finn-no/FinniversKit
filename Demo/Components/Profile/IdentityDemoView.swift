@@ -14,10 +14,10 @@ class IdentityDemoView: UIView, Tweakable {
 
     lazy var tweakingOptions: [TweakingOption] = {
         let options = [
-            TweakingOption(title: "nil out view models", action: {
+            TweakingOption(title: "Nil out view models", action: {
                 self.identityViews.forEach { $0.0.viewModel = nil  }
             }),
-            TweakingOption(title: "assign view models", action: {
+            TweakingOption(title: "Assign view models", action: {
                 self.identityViews.forEach { $0.0.viewModel = $0.1 }
             }),
         ]
@@ -96,7 +96,6 @@ extension IdentityDemoView: IdentityViewDelegate {
 // MARK: - View model
 
 fileprivate struct ViewModel: IdentityViewModel {
-    let defaultProfileImage: UIImage = UIImage(named: .profile)
     let profileImageUrl: URL? = URL(string: "https://images.finncdn.no/dynamic/220x220c/2019/7/profilbilde/05/8/214/710/286/8_352525950.jpg")
     let displayName: String = "Finn Nordmann"
     let subtitle: String = "Har vært på FINN siden 1952"
