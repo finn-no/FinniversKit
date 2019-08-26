@@ -17,7 +17,7 @@ public final class FavoriteFolderActionView: UIView {
 
     public weak var delegate: FavoriteFolderActionViewDelegate?
 
-    public var isCopyLinkHidden = true {
+    public var isCopyLinkHidden: Bool {
         didSet {
             updateActions()
             hideCopyLink(isCopyLinkHidden)
@@ -48,8 +48,9 @@ public final class FavoriteFolderActionView: UIView {
 
     // MARK: - Init
 
-    public init(viewModel: FavoriteFolderActionViewModel) {
+    public init(viewModel: FavoriteFolderActionViewModel, isCopyLinkHidden: Bool = true) {
         self.viewModel = viewModel
+        self.isCopyLinkHidden = isCopyLinkHidden
         super.init(frame: .zero)
         setup()
     }

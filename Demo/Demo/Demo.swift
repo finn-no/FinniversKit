@@ -152,7 +152,7 @@ public enum ComponentViews: String, CaseIterable {
         case .tweakable:
             return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
-            return DemoViewController<SaveSearchViewDemoView>()
+            return SaveSearchViewDemoViewController()
         }
     }
 }
