@@ -74,4 +74,8 @@ class RecyclingViewTests: FBSnapshotTestCase {
     func testFavoriteSortingView() {
         snapshot(.favoriteSortingView)
     }
+
+    func testFavoriteActionView() {
+        snapshot(.favoriteActionView)
+    }
 }

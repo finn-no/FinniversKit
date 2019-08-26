@@ -11,7 +11,7 @@ protocol FavoriteFolderShareCellDelegate: AnyObject {
 final class FavoriteFolderShareCell: UITableViewCell {
     weak var delegate: FavoriteFolderShareCellDelegate?
 
-    private lazy var titleLabel = FavoriteFolderActionCell.makeTitleLabel()
+    private lazy var titleLabel = FavoriteActionCell.makeTitleLabel()
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
@@ -58,7 +58,7 @@ final class FavoriteFolderShareCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteFolderActionCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

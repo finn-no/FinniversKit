@@ -41,7 +41,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
     }
 }
 
-// MARK: - FavoriteActionsListViewDelegate
+// MARK: - FavoriteFolderActionViewDelegate
 
 extension FavoriteFolderActionSheet: FavoriteFolderActionViewDelegate {
     public func favoriteFolderActionView(
@@ -98,5 +98,5 @@ private extension BottomSheet.Height {
         return BottomSheet.Height(compact: height, expanded: height)
     }
 
-    private static let bottomInset = UIView.windowSafeAreaInsets.bottom + .mediumLargeSpacing
+    private static let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
 }
