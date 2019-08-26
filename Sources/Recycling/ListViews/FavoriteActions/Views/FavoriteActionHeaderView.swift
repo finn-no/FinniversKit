@@ -5,6 +5,8 @@
 import UIKit
 
 final class FavoriteActionHeaderView: UIView {
+    private lazy var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
@@ -60,14 +62,15 @@ final class FavoriteActionHeaderView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .milk
-
+        addSubview(blurView)
         addSubview(imageView)
         addSubview(detailTextLabel)
         addSubview(accessoryLabel)
         addSubview(hairlineView)
 
         layoutMargins = FavoriteActionHeaderView.layoutMargins
+
+        blurView.fillInSuperview()
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),

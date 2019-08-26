@@ -28,6 +28,11 @@ public final class FavoriteActionSheet: BottomSheet {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
+        notch.insertSubview(blurView, at: 0)
+        blurView.fillInSuperview()
+
         viewController?.actionView.delegate = self
     }
 }
