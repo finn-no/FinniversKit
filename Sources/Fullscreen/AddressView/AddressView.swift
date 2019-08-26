@@ -125,9 +125,7 @@ public class AddressView: UIView {
     private var circle: MKCircle?
 
     public func configureRadiusArea(_ radius: Double, location: CLLocationCoordinate2D) {
-        if let oldCircle = circle {
-            mapView.removeOverlay(oldCircle)
-        }
+        removeCurrentAnnotationAndShapeOverlays()
         let newCircle = MKCircle(center: location, radius: radius)
         mapView.addOverlay(newCircle)
         circle = newCircle
@@ -136,12 +134,31 @@ public class AddressView: UIView {
     private var annotation: MKAnnotation?
 
     public func configureAnnotation(title: String, location: CLLocationCoordinate2D) {
-        if let oldAnnotation = annotation {
-            mapView.removeAnnotation(oldAnnotation)
-        }
+        removeCurrentAnnotationAndShapeOverlays()
         let newAnnotation = AddressAnnotation(title: title, location: location)
         mapView.addAnnotation(newAnnotation)
         annotation = newAnnotation
+    }
+
+    private var polygon: MKPolygon?
+
+    public func makePolygonOverlayVisible() {
+        guard let polygon = polygon else {
+            return
+        }
+
+        let bottomInset = UIDevice.isIPad() ? 16 : 16 + .mediumLargeSpacing
+        mapView.setVisibleMapRect(polygon.boundingMapRect, edgePadding: UIEdgeInsets(top: 16, left: 16, bottom: bottomInset, right: 16), animated: false)
+    }
+
+    public func configurePolygon(_ points: [CLLocationCoordinate2D]) {
+        removeCurrentAnnotationAndShapeOverlays()
+        let newPolygon = MKPolygon(coordinates: points, count: points.count)
+        mapView.addOverlay(newPolygon)
+        polygon = newPolygon
+
+        let bottomInset = UIDevice.isIPad() ? 16 : 16 + .mediumLargeSpacing
+        mapView.setVisibleMapRect(newPolygon.boundingMapRect, edgePadding: UIEdgeInsets(top: 16, left: 16, bottom: bottomInset, right: 16), animated: false)
     }
 
     public func changeMapType(_ mapType: MKMapType) {
@@ -199,6 +216,18 @@ private extension AddressView {
     @objc func centerMapButtonAction() {
         delegate?.addressViewDidSelectCenterMapButton(self)
     }
+
+    func removeCurrentAnnotationAndShapeOverlays() {
+        if let oldAnnotation = annotation {
+            mapView.removeAnnotation(oldAnnotation)
+        }
+        if let oldCircle = circle {
+            mapView.removeOverlay(oldCircle)
+        }
+        if let oldCircle = polygon {
+            mapView.removeOverlay(oldCircle)
+        }
+    }
 }
 
 extension AddressView: AddressCardViewDelegate {
@@ -219,6 +248,12 @@ extension AddressView: MKMapViewDelegate {
             circle.fillColor = UIColor.primaryBlue.withAlphaComponent(0.3)
             circle.lineWidth = 2
             return circle
+        } else if overlay is MKPolygon {
+            let polygon = MKPolygonRenderer(overlay: overlay)
+            polygon.strokeColor = UIColor.primaryBlue
+            polygon.fillColor = UIColor.primaryBlue.withAlphaComponent(0.3)
+            polygon.lineWidth = 2
+            return polygon
         } else if let tileOverlay = overlay as? MKTileOverlay {
             return MKTileOverlayRenderer(tileOverlay: tileOverlay)
         } else {
