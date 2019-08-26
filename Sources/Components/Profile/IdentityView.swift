@@ -30,7 +30,11 @@ public class IdentityView : UIView {
         }
     }
 
-    public let viewModel: IdentityViewModel
+    public var viewModel: IdentityViewModel? {
+        didSet {
+            viewModelChanged()
+        }
+    }
 
     // MARK: - UI properties
 
@@ -45,25 +49,15 @@ public class IdentityView : UIView {
     }()
 
     private lazy var profileNameLabel: Label = {
-        let isTappable = viewModel.isTappable
-        let labelStyle: Label.Style = isTappable ? .body: .bodyStrong
-
-        let label = Label(style: labelStyle)
+        let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = viewModel.displayName
-
-        if isTappable {
-            label.textColor = .primaryBlue
-        }
-
         return label
     }()
 
     private lazy var verifiedBadge: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: .verified))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.isHidden = !viewModel.isVerified
         return imageView
     }()
 
@@ -71,7 +65,6 @@ public class IdentityView : UIView {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = viewModel.subtitle
         return label
     }()
 
@@ -79,15 +72,16 @@ public class IdentityView : UIView {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-
-        if let description = viewModel.description?.trimmingCharacters(in: .whitespacesAndNewlines), !description.isEmpty {
-            label.text = description
-        } else {
-            label.isHidden = true
-        }
-
         return label
     }()
+
+    private lazy var descriptionLabelConstraints: [NSLayoutConstraint] = [
+        descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor, constant: .mediumLargeSpacing),
+        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: subtitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
+        descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+        descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+    ]
 
     // MARK: - Setup
 
@@ -95,12 +89,13 @@ public class IdentityView : UIView {
         fatalError("\(#function) not implemented")
     }
 
-    public required init(viewModel: IdentityViewModel) {
+    public required init(viewModel: IdentityViewModel?) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setupSubviews()
         addTapListener()
         setupDefaultProfileImage()
+        viewModelChanged()
     }
 
     private func setupSubviews() {
@@ -111,6 +106,7 @@ public class IdentityView : UIView {
         addSubview(profileNameLabel)
         addSubview(verifiedBadge)
         addSubview(subtitleLabel)
+        addSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
@@ -132,46 +128,70 @@ public class IdentityView : UIView {
             subtitleLabel.topAnchor.constraint(equalTo: profileNameLabel.bottomAnchor, constant: .verySmallSpacing),
             subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
-
-        if !descriptionLabel.isHidden {
-            addSubview(descriptionLabel)
-            NSLayoutConstraint.activate([
-                descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-                descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor, constant: .mediumLargeSpacing),
-                descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: subtitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
-                descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-                descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
-            ])
-        }
     }
 
     private func addTapListener() {
-        if viewModel.isTappable {
-            let recognizer = UITapGestureRecognizer(target: self, action: #selector(viewWasTapped))
-            addGestureRecognizer(recognizer)
-        }
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(viewWasTapped))
+        addGestureRecognizer(recognizer)
     }
 
     private func setupDefaultProfileImage() {
         /// If we don't have a URL, set the default image immediately. Otherwise, give the download-task a bit
         /// of time to download the actual profile image before setting the default to avoid flickering.
-        if viewModel.profileImageUrl == nil {
-            profileImageView.image = viewModel.defaultProfileImage
+        guard let defaultProfileImage = viewModel?.defaultProfileImage else { return }
+        if viewModel?.profileImageUrl == nil {
+            profileImageView.image = defaultProfileImage
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                 if self.profileImageView.image == nil {
                     UIView.transition(with: self.profileImageView, duration: 0.1, options: .transitionCrossDissolve, animations: {
-                        self.profileImageView.image = self.viewModel.defaultProfileImage
+                        self.profileImageView.image = defaultProfileImage
                     })
                 }
             })
         }
     }
 
+    // MARK: - Updating view model
+
+    private func viewModelChanged() {
+        if let viewModel = viewModel {
+            populateViews(with: viewModel)
+        } else {
+            resetViews()
+        }
+    }
+
+    private func resetViews() {
+        profileImageView.image = nil
+        profileNameLabel.text = nil
+        verifiedBadge.isHidden = true
+        subtitleLabel.text = nil
+        descriptionLabel.isHidden = true
+        descriptionLabelConstraints.forEach { $0.isActive = false }
+    }
+
+    private func populateViews(with viewModel: IdentityViewModel) {
+        profileImageView.image = viewModel.defaultProfileImage
+
+        profileNameLabel.text = viewModel.displayName
+        profileNameLabel.font = viewModel.isTappable ? .body : .bodyStrong
+        profileNameLabel.textColor = viewModel.isTappable ? .primaryBlue : .licorice
+
+        verifiedBadge.isHidden = !viewModel.isVerified
+
+        subtitleLabel.text = viewModel.subtitle
+
+        let showDescription = viewModel.description != nil
+        descriptionLabel.isHidden = !showDescription
+        descriptionLabel.text = viewModel.description
+        descriptionLabelConstraints.forEach { $0.isActive = showDescription }
+    }
+
     // MARK: - Private methods
 
     private func loadProfileImage() {
-        guard let url = viewModel.profileImageUrl else { return }
+        guard let url = viewModel?.profileImageUrl else { return }
 
         delegate?.identityView(self, loadImageWithUrl: url, completionHandler: { [weak self] image in
             guard let self = self else { return }
@@ -182,12 +202,14 @@ public class IdentityView : UIView {
                     })
                 })
             } else {
-                self.profileImageView.image = self.viewModel.defaultProfileImage
+                self.profileImageView.image = self.viewModel?.defaultProfileImage
             }
         })
     }
 
     @objc private func viewWasTapped() {
-        delegate?.identityViewWasTapped(self)
+        if viewModel?.isTappable ?? false {
+            delegate?.identityViewWasTapped(self)
+        }
     }
 }
