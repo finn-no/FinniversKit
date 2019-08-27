@@ -6,7 +6,7 @@ import FinniversKit
 
 struct FavoriteAdsSection {
     let sectionTitle: String?
-    let ads: [FavoriteAd]
+    let ads: [FavoriteAdViewModel]
 }
 
 class FavoriteAdsDemoDataSource {
@@ -17,7 +17,7 @@ class FavoriteAdsDemoDataSource {
         return formatter
     }()
 
-    func configureSection(forAds ads: [FavoriteAd], withSort sort: AdsSorting, filterQuery: String) {
+    func configureSection(forAds ads: [FavoriteAdViewModel], withSort sort: AdsSorting, filterQuery: String) {
         let filteredAds = filterQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
                           ? ads
                           : ads.filter { $0.titleText.lowercased().contains(filterQuery.lowercased()) }
@@ -29,13 +29,13 @@ class FavoriteAdsDemoDataSource {
         }
     }
 
-    private func sortAlphabetically(_ ads: [FavoriteAd]) -> [FavoriteAdsSection] {
+    private func sortAlphabetically(_ ads: [FavoriteAdViewModel]) -> [FavoriteAdsSection] {
         let sorted = ads.sorted(by: { $0.titleText < $1.titleText })
         return [FavoriteAdsSection(sectionTitle: nil, ads: sorted)]
     }
 
-    private func groupByMonth(_ ads: [FavoriteAd]) -> [FavoriteAdsSection] {
-        let grouped = ads.reduce(into: [Date: [FavoriteAd]]()) { accumulated, ad in
+    private func groupByMonth(_ ads: [FavoriteAdViewModel]) -> [FavoriteAdsSection] {
+        let grouped = ads.reduce(into: [Date: [FavoriteAdViewModel]]()) { accumulated, ad in
             let components = Calendar.current.dateComponents([.year, .month], from: ad.addedToFolderDate)
             guard let date = Calendar.current.date(from: components) else { return }
 
