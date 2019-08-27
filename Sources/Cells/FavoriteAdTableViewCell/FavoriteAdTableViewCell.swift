@@ -28,6 +28,10 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2)
     private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .licorice, numberOfLines: 0)
     private lazy var descriptionSecondaryLabel = label(withFont: .detailStrong, textColor: .licorice, numberOfLines: 0)
+    private let statusRibbon = RibbonView(withAutoLayout: true)
+    private var viewModel: FavoriteAdViewModel?
+    private let fallbackImage: UIImage = UIImage(named: .noImage)
+    private let adImageWidth: CGFloat = 80
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -56,16 +60,12 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         return button
     }()
 
-    private let statusRibbon = RibbonView(withAutoLayout: true)
     private lazy var stackViewBottomConstraint: NSLayoutConstraint = {
         let constraint = stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24)
         constraint.priority = .defaultLow
         return constraint
     }()
 
-    private var viewModel: FavoriteAdViewModel?
-    private let fallbackImage: UIImage = UIImage(named: .noImage)
-    private let adImageWidth: CGFloat = 80
     private lazy var remoteImageViewBottomConstraint: NSLayoutConstraint = {
         let constraint = remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24)
         constraint.priority = .defaultLow
