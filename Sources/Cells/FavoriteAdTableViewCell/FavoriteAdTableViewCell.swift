@@ -27,7 +27,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     private lazy var addressLabel = label(withFont: .detail, textColor: .stone, numberOfLines: 2)
     private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2, isHidden: false)
     private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .licorice, numberOfLines: 0)
-    private lazy var descriptionSecondaryLabel = label(withFont: .detailStrong, textColor: .licorice, numberOfLines: 0)
+    private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .licorice, numberOfLines: 0)
     private let statusRibbon = RibbonView(withAutoLayout: true)
     private var viewModel: FavoriteAdViewModel?
     private let fallbackImage: UIImage = UIImage(named: .noImage)
