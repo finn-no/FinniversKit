@@ -451,6 +451,10 @@
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
 		F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */; };
+		F253C50E2313F9F5008175FD /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C50D2313F9F5008175FD /* VerificationView.swift */; };
+		F253C5112313FA6E008175FD /* VerificationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C5102313FA6E008175FD /* VerificationDemoView.swift */; };
+		F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C5122313FEFC008175FD /* VerificationViewModel.swift */; };
+		F253C51A23151830008175FD /* VerificationDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253C51923151830008175FD /* VerificationDefaultData.swift */; };
 		F26852D621F7530A000978C8 /* UserAdsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D521F7530A000978C8 /* UserAdsListView.swift */; };
 		F26852D821F753A5000978C8 /* UserAdsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D721F753A5000978C8 /* UserAdsListHeaderView.swift */; };
 		F26852DA21F75435000978C8 /* UserAdsListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852D921F75435000978C8 /* UserAdsListViewCell.swift */; };
@@ -961,6 +965,10 @@
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
 		F22612DE225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsEmptyViewCell.swift; sourceTree = "<group>"; };
+		F253C50D2313F9F5008175FD /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
+		F253C5102313FA6E008175FD /* VerificationDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationDemoView.swift; sourceTree = "<group>"; };
+		F253C5122313FEFC008175FD /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
+		F253C51923151830008175FD /* VerificationDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationDefaultData.swift; sourceTree = "<group>"; };
 		F26852D521F7530A000978C8 /* UserAdsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListView.swift; sourceTree = "<group>"; };
 		F26852D721F753A5000978C8 /* UserAdsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListHeaderView.swift; sourceTree = "<group>"; };
 		F26852D921F75435000978C8 /* UserAdsListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewCell.swift; sourceTree = "<group>"; };
@@ -1510,6 +1518,7 @@
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				081F51BB222932C900026C84 /* TextView */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
+				F253C50C2313F96F008175FD /* VerificationView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2756,6 +2765,7 @@
 				CF8F022421DCC6EE004C4042 /* TextField */,
 				081F51B8222930B400026C84 /* TextView */,
 				CF8F022521DCC6F8004C4042 /* Toast */,
+				F253C50B2313F948008175FD /* VerificationView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -3443,6 +3453,24 @@
 			path = StatisticsView;
 			sourceTree = "<group>";
 		};
+		F253C50B2313F948008175FD /* VerificationView */ = {
+			isa = PBXGroup;
+			children = (
+				F253C51923151830008175FD /* VerificationDefaultData.swift */,
+				F253C5102313FA6E008175FD /* VerificationDemoView.swift */,
+			);
+			path = VerificationView;
+			sourceTree = "<group>";
+		};
+		F253C50C2313F96F008175FD /* VerificationView */ = {
+			isa = PBXGroup;
+			children = (
+				F253C50D2313F9F5008175FD /* VerificationView.swift */,
+				F253C5122313FEFC008175FD /* VerificationViewModel.swift */,
+			);
+			path = VerificationView;
+			sourceTree = "<group>";
+		};
 		F26852D121F7525B000978C8 /* UserAds */ = {
 			isa = PBXGroup;
 			children = (
@@ -3786,6 +3814,7 @@
 				9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */,
 				CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
+				F253C5112313FA6E008175FD /* VerificationDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
 				91846C4D22E736BF0001410F /* SearchResultMapViewDemoViewController.swift in Sources */,
 				44AEFC2622E722FC00D3C307 /* IconTitleCellDemoView.swift in Sources */,
@@ -3870,6 +3899,7 @@
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
 				CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */,
 				4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */,
+				F253C51A23151830008175FD /* VerificationDefaultData.swift in Sources */,
 				DAC65FBB21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift in Sources */,
 				F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */,
 				8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */,
@@ -3980,6 +4010,7 @@
 				F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */,
 				44A149ED21377C7B0053D5F7 /* SavedSearchesListViewModel.swift in Sources */,
 				CF164CF0230E7FF100250822 /* FavoriteFolderShareCell.swift in Sources */,
+				F253C5142314015C008175FD /* VerificationViewModel.swift in Sources */,
 				DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */,
 				4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */,
 				DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */,
@@ -4215,6 +4246,7 @@
 				CF87A856229C0C5700DA8243 /* ContactFormCheckbox.swift in Sources */,
 				9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */,
 				CF164D17230FFDEB00250822 /* FavoriteAction.swift in Sources */,
+				F253C50E2313F9F5008175FD /* VerificationView.swift in Sources */,
 				F2B1A19422D503E700713FC2 /* ReceiptViewModel.swift in Sources */,
 				9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */,
 				CF5CA71022F82D43007C4124 /* NeighborhoodProfileViewCell.swift in Sources */,
