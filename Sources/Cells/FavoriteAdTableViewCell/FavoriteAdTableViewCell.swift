@@ -157,6 +157,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         }
 
         titleLabel.text = viewModel.titleText
+        titleLabel.textColor = viewModel.titleColor
         titleLabel.isHidden = false
 
         if let descriptionPrimaryText = viewModel.descriptionPrimaryText {
