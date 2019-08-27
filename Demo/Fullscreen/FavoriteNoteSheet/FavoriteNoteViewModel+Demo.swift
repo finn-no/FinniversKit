@@ -5,5 +5,10 @@
 import FinniversKit
 
 extension FavoriteNoteViewModel {
-    static let `default` = FavoriteNoteViewModel(note: nil, cancelButtonText: "Avbryt", saveButtonText: "Lagre")
+    static let `default` = FavoriteNoteViewModel(
+        title: "Skriv notat",
+        note: nil,
+        cancelButtonText: "Avbryt",
+        saveButtonText: "Lagre"
+    )
 }

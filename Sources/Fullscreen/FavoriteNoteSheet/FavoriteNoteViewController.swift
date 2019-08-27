@@ -28,6 +28,11 @@ final class FavoriteNoteViewController: UIViewController {
         action: #selector(handleSaveButtonTap)
     )
 
+    private lazy var adView: FavoriteAdTableViewCell = {
+        let view = FavoriteAdTableViewCell(withAutoLayout: true)
+        return view
+    }()
+
     // MARK: - Init
 
     init(noteViewModel: FavoriteNoteViewModel, adViewModel: FavoriteAdViewModel) {
@@ -45,6 +50,7 @@ final class FavoriteNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = noteViewModel.title
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = saveButton
 
@@ -55,7 +61,15 @@ final class FavoriteNoteViewController: UIViewController {
     // MARK: - Setup
 
     private func setup() {
+        view.addSubview(adView.contentView)
 
+        NSLayoutConstraint.activate([
+            adView.contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: .mediumSpacing),
+            adView.contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            adView.contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+
+        adView.configure(with: adViewModel)
     }
 
     // MARK: - Actions

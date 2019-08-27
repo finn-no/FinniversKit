@@ -12,14 +12,15 @@ public protocol FavoriteNoteSheetDelegate: AnyObject {
 public final class FavoriteNoteSheet: BottomSheet {
     public weak var noteDelegate: FavoriteNoteSheetDelegate?
 
-    private weak var viewController: FavoriteNoteViewController?
-
     // MARK: - Init
 
     public required init(noteViewModel: FavoriteNoteViewModel, adViewModel: FavoriteAdViewModel) {
         let viewController = FavoriteNoteViewController(noteViewModel: noteViewModel, adViewModel: adViewModel)
-        super.init(rootViewController: viewController, height: .default)
-        self.viewController = viewController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.isTranslucent = false
+
+        super.init(rootViewController: navigationController, height: .default)
+        viewController.delegate = self
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -30,7 +31,6 @@ public final class FavoriteNoteSheet: BottomSheet {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        viewController?.delegate = self
     }
 }
 
