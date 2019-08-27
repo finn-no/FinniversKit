@@ -248,13 +248,13 @@ extension AddressView: MKMapViewDelegate {
         if overlay is MKCircle {
             let circle = MKCircleRenderer(overlay: overlay)
             circle.strokeColor = UIColor.primaryBlue
-            circle.fillColor = UIColor.primaryBlue.withAlphaComponent(0.3)
+            circle.fillColor = UIColor.primaryBlue.withAlphaComponent(0.15)
             circle.lineWidth = 2
             return circle
         } else if overlay is MKPolygon {
             let polygon = MKPolygonRenderer(overlay: overlay)
             polygon.strokeColor = UIColor.primaryBlue
-            polygon.fillColor = UIColor.primaryBlue.withAlphaComponent(0.3)
+            polygon.fillColor = UIColor.primaryBlue.withAlphaComponent(0.15)
             polygon.lineWidth = 2
             return polygon
         } else if let tileOverlay = overlay as? MKTileOverlay {
