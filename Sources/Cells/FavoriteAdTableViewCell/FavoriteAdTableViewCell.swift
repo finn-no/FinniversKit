@@ -57,10 +57,20 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     }()
 
     private let statusRibbon = RibbonView(withAutoLayout: true)
+    private lazy var stackViewBottomConstraint: NSLayoutConstraint = {
+        let constraint = stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24)
+        constraint.priority = .defaultLow
+        return constraint
+    }()
 
     private var viewModel: FavoriteAdViewModel?
     private let fallbackImage: UIImage = UIImage(named: .noImage)
     private let adImageWidth: CGFloat = 80
+    private lazy var remoteImageViewBottomConstraint: NSLayoutConstraint = {
+        let constraint = remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24)
+        constraint.priority = .defaultLow
+        return constraint
+    }()
 
     // MARK: - Init
 
@@ -122,7 +132,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
             remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24),
+            remoteImageViewBottomConstraint,
 
             statusRibbon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             statusRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
@@ -135,7 +145,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
             stackView.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
+            stackViewBottomConstraint,
 
             addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing)
         ])
