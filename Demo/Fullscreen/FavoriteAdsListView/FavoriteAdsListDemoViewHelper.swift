@@ -4,28 +4,22 @@
 
 import FinniversKit
 
-struct FavoriteAd: FavoriteAdViewModel {
-    let addressText: String?
-    let titleText: String
-    let descriptionPrimaryText: String?
-    let descriptionSecondaryText: String?
-    let imagePath: String?
-    let ribbonStyle: RibbonView.Style
-    let ribbonTitle: String
-    let addedToFolderDate: Date
+extension FavoriteAdViewModel {
 }
 
 struct FavoriteAdsFactory {
-    static func create() -> [FavoriteAd] {
+    static func create() -> [FavoriteAdViewModel] {
         return titles.enumerated().map { (index, title) in
-            FavoriteAd(addressText: addresses[index],
-                       titleText: title,
-                       descriptionPrimaryText: primaryDescriptions[index],
-                       descriptionSecondaryText: secondaryDescriptions[index],
-                       imagePath: imagePaths[index],
-                       ribbonStyle: ribbonStyles[index].style,
-                       ribbonTitle: ribbonStyles[index].title,
-                       addedToFolderDate: addedToFolderDates[index])
+            return FavoriteAdViewModel(addressText: addresses[index],
+                                       titleText: title,
+                                       titleColor: .licorice,
+                                       descriptionPrimaryText: primaryDescriptions[index],
+                                       descriptionSecondaryText: secondaryDescriptions[index],
+                                       imagePath: imagePaths[index],
+                                       ribbonStyle: ribbonStyles[index].style,
+                                       ribbonTitle: ribbonStyles[index].title,
+                                       addedToFolderDate: addedToFolderDates[index],
+                                       lastUpdated: nil)
         }
     }
 
