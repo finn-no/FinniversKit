@@ -140,25 +140,29 @@ public class AddressView: UIView {
         annotation = newAnnotation
     }
 
-    private var polygon: MKPolygon?
+    private var polygons = [MKPolygon]()
 
     public func makePolygonOverlayVisible() {
-        guard let polygon = polygon else {
+        guard let firstPolygon = polygons.first else {
             return
         }
+        let mapRect = polygons.dropFirst().reduce(firstPolygon.boundingMapRect, { (mapRect, polygon) -> MKMapRect in
+            return polygon.boundingMapRect.union(mapRect)
+        })
 
         let bottomInset = UIDevice.isIPad() ? 16 : 16 + .mediumLargeSpacing
-        mapView.setVisibleMapRect(polygon.boundingMapRect, edgePadding: UIEdgeInsets(top: 16, left: 16, bottom: bottomInset, right: 16), animated: false)
+        mapView.setVisibleMapRect(mapRect, edgePadding: UIEdgeInsets(top: 16, left: 16, bottom: bottomInset, right: 16), animated: false)
     }
 
-    public func configurePolygon(_ points: [CLLocationCoordinate2D]) {
+    public func configurePolygons(_ polygonPoints: [[CLLocationCoordinate2D]]) {
         removeCurrentAnnotationAndShapeOverlays()
-        let newPolygon = MKPolygon(coordinates: points, count: points.count)
-        mapView.addOverlay(newPolygon)
-        polygon = newPolygon
+        polygonPoints.forEach { points in
+            let newPolygon = MKPolygon(coordinates: points, count: points.count)
+            mapView.addOverlay(newPolygon)
+            polygons.append(newPolygon)
+        }
 
-        let bottomInset = UIDevice.isIPad() ? 16 : 16 + .mediumLargeSpacing
-        mapView.setVisibleMapRect(newPolygon.boundingMapRect, edgePadding: UIEdgeInsets(top: 16, left: 16, bottom: bottomInset, right: 16), animated: false)
+        makePolygonOverlayVisible()
     }
 
     public func changeMapType(_ mapType: MKMapType) {
@@ -224,9 +228,8 @@ private extension AddressView {
         if let oldCircle = circle {
             mapView.removeOverlay(oldCircle)
         }
-        if let oldCircle = polygon {
-            mapView.removeOverlay(oldCircle)
-        }
+        polygons.forEach({ mapView.removeOverlay($0) })
+        polygons.removeAll()
     }
 }
 
