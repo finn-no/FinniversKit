@@ -5,11 +5,28 @@
 import FinniversKit
 
 extension FavoriteAdViewModel {
+    static func deletedAd(addedToFolderDate: Date, ribbonStyle: RibbonView.Style, ribbonTitle: String) -> FavoriteAdViewModel {
+        return self.init(addressText: nil,
+                         titleText: "Annonsen er slettet",
+                         titleColor: .stone,
+                         descriptionPrimaryText: nil,
+                         descriptionSecondaryText: nil,
+                         imagePath: nil,
+                         ribbonStyle: ribbonStyle,
+                         ribbonTitle: ribbonTitle,
+                         addedToFolderDate: addedToFolderDate,
+                         lastUpdated: nil)
+    }
 }
 
 struct FavoriteAdsFactory {
     static func create() -> [FavoriteAdViewModel] {
         return titles.enumerated().map { (index, title) in
+            guard let title = title else {
+                return FavoriteAdViewModel.deletedAd(addedToFolderDate: addedToFolderDates[index],
+                                            ribbonStyle: ribbonStyles[index].style,
+                                            ribbonTitle: ribbonStyles[index].title)
+            }
             return FavoriteAdViewModel(addressText: addresses[index],
                                        titleText: title,
                                        titleColor: .licorice,
@@ -36,11 +53,11 @@ struct FavoriteAdsFactory {
         ]
     }
 
-    private static var titles: [String] {
+    private static var titles: [String?] {
         return [
             "Påhengsmotor",
             "Kategoriansvarlig teknisk innkjøp",
-            "",
+            nil,
             "Godt brukt Sofa - pris kan diskuteres mot rask henting.",
             "Worcestershire bøll terrier valper. Leveringsklare fra 21. August 2019",
             "Nesten ny bil / Panorama - Se utstyr! Innbytte mulig 2014, 69 700 km, kr 999 500,-",
