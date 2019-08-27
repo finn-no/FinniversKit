@@ -122,6 +122,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
             remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24),
 
             statusRibbon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             statusRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
