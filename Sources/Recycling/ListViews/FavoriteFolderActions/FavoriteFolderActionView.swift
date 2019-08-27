@@ -17,7 +17,7 @@ public final class FavoriteFolderActionView: UIView {
 
     public weak var delegate: FavoriteFolderActionViewDelegate?
 
-    public var isCopyLinkHidden = true {
+    public var isCopyLinkHidden: Bool {
         didSet {
             updateActions()
             hideCopyLink(isCopyLinkHidden)
@@ -40,7 +40,7 @@ public final class FavoriteFolderActionView: UIView {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
-        tableView.register(FavoriteFolderActionCell.self)
+        tableView.register(FavoriteActionCell.self)
         tableView.register(FavoriteFolderShareCell.self)
         tableView.register(FavoriteFolderCopyLinkCell.self)
         return tableView
@@ -48,8 +48,9 @@ public final class FavoriteFolderActionView: UIView {
 
     // MARK: - Init
 
-    public init(viewModel: FavoriteFolderActionViewModel) {
+    public init(viewModel: FavoriteFolderActionViewModel, isCopyLinkHidden: Bool = true) {
         self.viewModel = viewModel
+        self.isCopyLinkHidden = isCopyLinkHidden
         super.init(frame: .zero)
         setup()
     }
@@ -102,11 +103,11 @@ extension FavoriteFolderActionView: UITableViewDataSource {
 
         switch action {
         case .edit:
-            let cell = tableView.dequeue(FavoriteFolderActionCell.self, for: indexPath)
+            let cell = tableView.dequeue(FavoriteActionCell.self, for: indexPath)
             cell.configure(withTitle: viewModel.editText, icon: .favoritesEdit)
             return cell
         case .changeName:
-            let cell = tableView.dequeue(FavoriteFolderActionCell.self, for: indexPath)
+            let cell = tableView.dequeue(FavoriteActionCell.self, for: indexPath)
             cell.configure(withTitle: viewModel.changeNameText, icon: .pencilPaper)
             return cell
         case .share:
@@ -123,7 +124,7 @@ extension FavoriteFolderActionView: UITableViewDataSource {
             )
             return cell
         case .delete:
-            let cell = tableView.dequeue(FavoriteFolderActionCell.self, for: indexPath)
+            let cell = tableView.dequeue(FavoriteActionCell.self, for: indexPath)
             cell.configure(withTitle: viewModel.deleteText, icon: .favoritesDelete, tintColor: .cherry)
             return cell
         }
@@ -172,7 +173,7 @@ extension FavoriteFolderActionView: FavoriteFolderCopyLinkCellDelegate {
 
 private extension UITableViewCell {
     func hideSepatator(_ hide: Bool) {
-        let inset = hide ? frame.width : FavoriteFolderActionCell.separatorLeadingInset
+        let inset = hide ? frame.width : FavoriteActionCell.separatorLeadingInset
         separatorInset = .leadingInset(inset)
     }
 }

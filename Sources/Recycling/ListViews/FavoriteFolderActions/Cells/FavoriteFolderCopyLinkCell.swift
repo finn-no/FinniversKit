@@ -65,7 +65,7 @@ final class FavoriteFolderCopyLinkCell: UITableViewCell {
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteFolderActionCell.iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
             descriptionLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

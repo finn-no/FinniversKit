@@ -73,7 +73,7 @@ private final class SortingViewController: UIViewController {
 
 private extension BottomSheet.Height {
     static var `default`: BottomSheet.Height {
-        let bottomInset = UIView.windowSafeAreaInsets.bottom + .mediumLargeSpacing
+        let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
         let height = FavoriteSortingView.totalHeight + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }

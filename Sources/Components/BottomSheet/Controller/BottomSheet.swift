@@ -83,6 +83,8 @@ public class BottomSheet: UIViewController {
         set { transitionDelegate.height = newValue }
     }
 
+    let notch: UIView = Notch(withAutoLayout: true)
+
     var draggableRect: CGRect? {
         switch draggableArea {
         case .everything:
@@ -105,7 +107,6 @@ public class BottomSheet: UIViewController {
     private let transitionDelegate: BottomSheetTransitioningDelegate
     private let draggableArea: DraggableArea
     private let notchHeight: CGFloat = 20
-    private let notch = Notch(withAutoLayout: true)
     private let cornerRadius: CGFloat = 16
 
     // MARK: - Setup
