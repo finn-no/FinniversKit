@@ -24,8 +24,8 @@ struct FavoriteAdsFactory {
         return titles.enumerated().map { (index, title) in
             guard let title = title else {
                 return FavoriteAdViewModel.deletedAd(addedToFolderDate: addedToFolderDates[index],
-                                            ribbonStyle: ribbonStyles[index].style,
-                                            ribbonTitle: ribbonStyles[index].title)
+                                                     ribbonStyle: ribbonStyles[index].style,
+                                                     ribbonTitle: ribbonStyles[index].title)
             }
             return FavoriteAdViewModel(addressText: addresses[index],
                                        titleText: title,
