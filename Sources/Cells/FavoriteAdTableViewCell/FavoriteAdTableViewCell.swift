@@ -25,7 +25,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     // MARK: - Private properties
 
     private lazy var addressLabel = label(withFont: .detail, textColor: .stone, numberOfLines: 2)
-    private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2)
+    private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2, isHidden: false)
     private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .licorice, numberOfLines: 0)
     private lazy var descriptionSecondaryLabel = label(withFont: .detailStrong, textColor: .licorice, numberOfLines: 0)
     private let statusRibbon = RibbonView(withAutoLayout: true)
@@ -88,7 +88,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
         remoteImageView.cancelLoading()
         remoteImageView.setImage(nil, animated: false)
-        [addressLabel, titleLabel, descriptionPrimaryLabel, descriptionSecondaryLabel].forEach {
+        [addressLabel, descriptionPrimaryLabel, descriptionSecondaryLabel].forEach {
             $0.text = nil
             $0.isHidden = true
         }
@@ -168,7 +168,6 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
         titleLabel.text = viewModel.titleText
         titleLabel.textColor = viewModel.titleColor
-        titleLabel.isHidden = false
 
         if let descriptionPrimaryText = viewModel.descriptionPrimaryText {
             descriptionPrimaryLabel.text = descriptionPrimaryText
@@ -196,11 +195,12 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         delegate?.favoriteAdTableViewCellDidSelectMoreButton(self)
     }
 
-    private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int) -> UILabel {
+    private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {
         let label = UILabel(withAutoLayout: true)
         label.font = font
         label.textColor = textColor
         label.numberOfLines = numberOfLines
+        label.isHidden = isHidden
         return label
     }
 }
