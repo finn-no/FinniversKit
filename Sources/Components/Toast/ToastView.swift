@@ -89,6 +89,7 @@ public class ToastView: UIView {
     public var action: ToastAction? {
         didSet {
             actionButton.setTitle(action?.title, for: .normal)
+            accessibilityHint = action?.title
         }
     }
 
@@ -108,6 +109,9 @@ public class ToastView: UIView {
 
     private func setup() {
         isAccessibilityElement = true
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
+        swipeGesture.direction = .down
+        addGestureRecognizer(swipeGesture)
 
         backgroundColor = style.color
         imageView.backgroundColor = style.imageBackgroundColor
@@ -145,6 +149,10 @@ public class ToastView: UIView {
     }
 
     // MARK: - Actions
+
+    @objc private func swipeAction() {
+        dismissToast()
+    }
 
     @objc private func buttonAction() {
         action?.action()
