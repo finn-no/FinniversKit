@@ -4,9 +4,14 @@
 
 import UIKit
 
+protocol FavoriteAdViewDelegate: AnyObject {
+    func favoriteAdViewDidSelectMoreButton(_ view: FavoriteAdView)
+}
+
 final class FavoriteAdView: UIView {
     static let adImageWidth: CGFloat = 80
 
+    weak var delegate: FavoriteAdViewDelegate?
     weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
         didSet {
             remoteImageView.dataSource = remoteImageViewDataSource
@@ -14,6 +19,11 @@ final class FavoriteAdView: UIView {
     }
 
     var loadingColor: UIColor?
+
+    var isMoreButtonHidden: Bool {
+        get { return moreButton.isHidden }
+        set { moreButton.isHidden = newValue }
+    }
 
     // MARK: - Private properties
 
@@ -40,6 +50,17 @@ final class FavoriteAdView: UIView {
         imageView.layer.cornerRadius = 16
         imageView.layer.masksToBounds = true
         return imageView
+    }()
+
+    private lazy var moreButton: UIButton = {
+        let button = UIButton(withAutoLayout: true)
+        let image = UIImage(named: .more).withRenderingMode(.alwaysTemplate)
+        button.setImage(image, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.tintColor = .stone
+        button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
+        button.contentEdgeInsets = UIEdgeInsets(vertical: 10, horizontal: 8)
+        return button
     }()
 
     private lazy var stackViewBottomConstraint: NSLayoutConstraint = {
@@ -115,11 +136,11 @@ final class FavoriteAdView: UIView {
     }
 
     func resetBackgroundColors() {
-        let ribbonBackgroundColor = statusRibbon.backgroundColor
-        let remoteImageViewBackgroundColor = remoteImageView.backgroundColor
+        remoteImageView.backgroundColor = remoteImageView.image == nil ? loadingColor : .clear
 
-        statusRibbon.backgroundColor = ribbonBackgroundColor
-        remoteImageView.backgroundColor = remoteImageView.image == nil ? remoteImageViewBackgroundColor : .clear
+        if let ribbonStyle = viewModel?.ribbonStyle {
+            statusRibbon.style = ribbonStyle
+        }
     }
 
     // MARK: - Setup
@@ -136,6 +157,7 @@ final class FavoriteAdView: UIView {
 
         addSubview(remoteImageView)
         addSubview(statusRibbon)
+        addSubview(moreButton)
         addSubview(stackView)
 
         NSLayoutConstraint.activate([
@@ -148,9 +170,14 @@ final class FavoriteAdView: UIView {
             statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
 
+            moreButton.widthAnchor.constraint(equalToConstant: 40),
+            moreButton.heightAnchor.constraint(equalToConstant: 44),
+            moreButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            moreButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor),
             stackViewBottomConstraint,
 
             addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing)
@@ -158,6 +185,10 @@ final class FavoriteAdView: UIView {
     }
 
     // MARK: - Private methods
+
+    @objc private func moreButtonTapped() {
+        delegate?.favoriteAdViewDidSelectMoreButton(self)
+    }
 
     private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {
         let label = UILabel(withAutoLayout: true)

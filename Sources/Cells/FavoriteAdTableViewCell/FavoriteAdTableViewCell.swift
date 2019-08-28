@@ -16,7 +16,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
         didSet {
-            remoteImageView.dataSource = remoteImageViewDataSource
+            adView.remoteImageViewDataSource = remoteImageViewDataSource
         }
     }
 
@@ -24,52 +24,10 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var addressLabel = label(withFont: .detail, textColor: .stone, numberOfLines: 2)
-    private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2, isHidden: false)
-    private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .licorice, numberOfLines: 0)
-    private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .licorice, numberOfLines: 0)
-    private let statusRibbon = RibbonView(withAutoLayout: true)
-    private var viewModel: FavoriteAdViewModel?
-    private let fallbackImage: UIImage = UIImage(named: .noImage)
-    private let adImageWidth: CGFloat = 80
-
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.spacing = 0
-        stackView.alignment = .leading
-        return stackView
-    }()
-
-    private lazy var remoteImageView: RemoteImageView = {
-        let imageView = RemoteImageView(withAutoLayout: true)
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 16
-        imageView.layer.masksToBounds = true
-        return imageView
-    }()
-
-    private lazy var moreButton: UIButton = {
-        let button = UIButton(withAutoLayout: true)
-        let image = UIImage(named: .more).withRenderingMode(.alwaysTemplate)
-        button.setImage(image, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.tintColor = .stone
-        button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
-        button.contentEdgeInsets = UIEdgeInsets(vertical: 10, horizontal: 8)
-        return button
-    }()
-
-    private lazy var stackViewBottomConstraint: NSLayoutConstraint = {
-        let constraint = stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24)
-        constraint.priority = .defaultLow
-        return constraint
-    }()
-
-    private lazy var remoteImageViewBottomConstraint: NSLayoutConstraint = {
-        let constraint = remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24)
-        constraint.priority = .defaultLow
-        return constraint
+    private lazy var adView: FavoriteAdView = {
+        let view = FavoriteAdView(withAutoLayout: true)
+        view.delegate = self
+        return view
     }()
 
     // MARK: - Init
@@ -85,124 +43,43 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public override func prepareForReuse() {
         super.prepareForReuse()
-
-        remoteImageView.cancelLoading()
-        remoteImageView.setImage(nil, animated: false)
-        [addressLabel, descriptionPrimaryLabel, descriptionSecondaryLabel].forEach {
-            $0.text = nil
-            $0.isHidden = true
-        }
+        adView.resetContent()
     }
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
-        let ribbonBackgroundColor = statusRibbon.backgroundColor
-        let remoteImageViewBackgroundColor = remoteImageView.backgroundColor
         super.setSelected(selected, animated: animated)
-        statusRibbon.backgroundColor = ribbonBackgroundColor
-        remoteImageView.backgroundColor = remoteImageView.image == nil ? remoteImageViewBackgroundColor : .clear
+        adView.resetBackgroundColors()
     }
 
     public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        let ribbonBackgroundColor = statusRibbon.backgroundColor
-        let remoteImageViewBackgroundColor = remoteImageView.backgroundColor
         super.setHighlighted(highlighted, animated: animated)
-        statusRibbon.backgroundColor = ribbonBackgroundColor
-        remoteImageView.backgroundColor = remoteImageView.image == nil ? remoteImageViewBackgroundColor : .clear
+        adView.resetBackgroundColors()
+    }
+
+    // MARK: - Public methods
+
+    public func configure(with viewModel: FavoriteAdViewModel) {
+        separatorInset = .leadingInset(.mediumLargeSpacing * 2 + FavoriteAdView.adImageWidth)
+        adView.configure(with: viewModel)
+    }
+
+    public func loadImage() {
+        adView.loadImage()
     }
 
     // MARK: - Setup
 
     private func setup() {
         setDefaultSelectedBackgound()
-
-        stackView.addArrangedSubview(addressLabel)
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(descriptionPrimaryLabel)
-        stackView.addArrangedSubview(descriptionSecondaryLabel)
-
-        stackView.setCustomSpacing(.verySmallSpacing, after: addressLabel)
-        stackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
-        stackView.setCustomSpacing(.smallSpacing, after: descriptionPrimaryLabel)
-
-        contentView.addSubview(remoteImageView)
-        contentView.addSubview(statusRibbon)
-        contentView.addSubview(moreButton)
-        contentView.addSubview(stackView)
-
-        NSLayoutConstraint.activate([
-            remoteImageView.heightAnchor.constraint(equalToConstant: adImageWidth),
-            remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
-            remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
-            remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            remoteImageViewBottomConstraint,
-
-            statusRibbon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            statusRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-
-            moreButton.widthAnchor.constraint(equalToConstant: 40),
-            moreButton.heightAnchor.constraint(equalToConstant: 44),
-            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            moreButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
-            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor),
-            stackViewBottomConstraint,
-
-            addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing)
-        ])
+        contentView.addSubview(adView)
+        adView.fillInSuperview()
     }
+}
 
-    // MARK: - Public methods
+// MARK: - FavoriteAdViewDelegate
 
-    public func configure(with viewModel: FavoriteAdViewModel) {
-        separatorInset = .leadingInset(.mediumLargeSpacing * 2 + adImageWidth)
-
-        self.viewModel = viewModel
-
-        statusRibbon.style = viewModel.ribbonStyle
-        statusRibbon.title = viewModel.ribbonTitle
-
-        if let addressText = viewModel.addressText {
-            addressLabel.text = addressText
-            addressLabel.isHidden = false
-        }
-
-        titleLabel.text = viewModel.titleText
-        titleLabel.textColor = viewModel.titleColor
-
-        if let descriptionPrimaryText = viewModel.descriptionPrimaryText {
-            descriptionPrimaryLabel.text = descriptionPrimaryText
-            descriptionPrimaryLabel.isHidden = false
-        }
-
-        if let descriptionSecondaryText = viewModel.descriptionSecondaryText {
-            descriptionSecondaryLabel.text = descriptionSecondaryText
-            descriptionSecondaryLabel.isHidden = false
-        }
-    }
-
-    public func loadImage() {
-        guard let viewModel = viewModel, let imagePath = viewModel.imagePath else {
-            remoteImageView.setImage(fallbackImage, animated: false)
-            return
-        }
-
-        remoteImageView.loadImage(for: imagePath, imageWidth: adImageWidth, loadingColor: loadingColor, fallbackImage: fallbackImage)
-    }
-
-    // MARK: - Private methods
-
-    @objc private func moreButtonTapped() {
+extension FavoriteAdTableViewCell: FavoriteAdViewDelegate {
+    func favoriteAdViewDidSelectMoreButton(_ view: FavoriteAdView) {
         delegate?.favoriteAdTableViewCellDidSelectMoreButton(self)
-    }
-
-    private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {
-        let label = UILabel(withAutoLayout: true)
-        label.font = font
-        label.textColor = textColor
-        label.numberOfLines = numberOfLines
-        label.isHidden = isHidden
-        return label
     }
 }
