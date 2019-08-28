@@ -42,10 +42,6 @@ class FullscreenViewTests: FBSnapshotTestCase {
         snapshot(.emptyView)
     }
 
-    func testEmptyChristmasView() {
-        snapshot(.emptyChristmasView)
-    }
-
     func testReportAdView() {
         snapshot(.reportAdView)
     }
@@ -122,4 +118,15 @@ class FullscreenViewTests: FBSnapshotTestCase {
         snapshot(.searchResultMapView)
     }
 
+    func testFavoriteFolderActionSheet() {
+        snapshot(.favoriteFolderActionSheet)
+    }
+
+    func testFavoriteSortingSheet() {
+        snapshot(.favoriteSortingSheet)
+    }
+
+    func testFavoriteActionSheet() {
+        snapshot(.favoriteActionSheet)
+    }
 }

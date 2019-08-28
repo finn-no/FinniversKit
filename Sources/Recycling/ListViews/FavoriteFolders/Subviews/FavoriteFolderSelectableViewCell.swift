@@ -10,12 +10,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     private var isEditable = true
 
     private lazy var checkmarkImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
-        imageView.layer.cornerRadius = 8
-        imageView.backgroundColor = .primaryBlue
-        imageView.image = UIImage(named: .check)
-        imageView.tintColor = .milk
-        imageView.contentMode = .scaleAspectFit
+        let imageView = UIImageView.checkmarkImageView
         imageView.isHidden = true
         return imageView
     }()

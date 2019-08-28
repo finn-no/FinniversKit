@@ -34,7 +34,7 @@ import UIKit
     }
 
     public class var salmon: UIColor {
-        return UIColor(r: 255, g: 227, b: 229)!
+        return UIColor(r: 255, g: 239, b: 239)!
     }
 
     public class var mint: UIColor {
@@ -50,7 +50,7 @@ import UIKit
     }
 
     public class var cherry: UIColor {
-        return UIColor(r: 228, g: 41, b: 10)!
+        return UIColor(r: 217, g: 39, b: 10)!
     }
 
     public class var watermelon: UIColor {

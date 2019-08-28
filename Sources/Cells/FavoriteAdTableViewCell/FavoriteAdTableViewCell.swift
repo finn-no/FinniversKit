@@ -25,9 +25,13 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     // MARK: - Private properties
 
     private lazy var addressLabel = label(withFont: .detail, textColor: .stone, numberOfLines: 2)
-    private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2)
+    private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2, isHidden: false)
     private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .licorice, numberOfLines: 0)
-    private lazy var descriptionSecondaryLabel = label(withFont: .detailStrong, textColor: .licorice, numberOfLines: 0)
+    private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .licorice, numberOfLines: 0)
+    private let statusRibbon = RibbonView(withAutoLayout: true)
+    private var viewModel: FavoriteAdViewModel?
+    private let fallbackImage: UIImage = UIImage(named: .noImage)
+    private let adImageWidth: CGFloat = 80
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -56,11 +60,17 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         return button
     }()
 
-    private let statusRibbon = RibbonView(withAutoLayout: true)
+    private lazy var stackViewBottomConstraint: NSLayoutConstraint = {
+        let constraint = stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24)
+        constraint.priority = .defaultLow
+        return constraint
+    }()
 
-    private var viewModel: FavoriteAdViewModel?
-    private let fallbackImage: UIImage = UIImage(named: .noImage)
-    private let adImageWidth: CGFloat = 80
+    private lazy var remoteImageViewBottomConstraint: NSLayoutConstraint = {
+        let constraint = remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -24)
+        constraint.priority = .defaultLow
+        return constraint
+    }()
 
     // MARK: - Init
 
@@ -78,7 +88,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
         remoteImageView.cancelLoading()
         remoteImageView.setImage(nil, animated: false)
-        [addressLabel, titleLabel, descriptionPrimaryLabel, descriptionSecondaryLabel].forEach {
+        [addressLabel, descriptionPrimaryLabel, descriptionSecondaryLabel].forEach {
             $0.text = nil
             $0.isHidden = true
         }
@@ -110,7 +120,9 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         stackView.addArrangedSubview(descriptionPrimaryLabel)
         stackView.addArrangedSubview(descriptionSecondaryLabel)
 
+        stackView.setCustomSpacing(.verySmallSpacing, after: addressLabel)
         stackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
+        stackView.setCustomSpacing(.smallSpacing, after: descriptionPrimaryLabel)
 
         contentView.addSubview(remoteImageView)
         contentView.addSubview(statusRibbon)
@@ -122,6 +134,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
             remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            remoteImageViewBottomConstraint,
 
             statusRibbon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
             statusRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
@@ -134,7 +147,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
             stackView.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
+            stackViewBottomConstraint,
 
             addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing)
         ])
@@ -156,7 +169,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         }
 
         titleLabel.text = viewModel.titleText
-        titleLabel.isHidden = false
+        titleLabel.textColor = viewModel.titleColor
 
         if let descriptionPrimaryText = viewModel.descriptionPrimaryText {
             descriptionPrimaryLabel.text = descriptionPrimaryText
@@ -184,11 +197,12 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         delegate?.favoriteAdTableViewCellDidSelectMoreButton(self)
     }
 
-    private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int) -> UILabel {
+    private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {
         let label = UILabel(withAutoLayout: true)
         label.font = font
         label.textColor = textColor
         label.numberOfLines = numberOfLines
+        label.isHidden = isHidden
         return label
     }
 }
