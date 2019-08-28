@@ -31,6 +31,9 @@ final class FavoriteNoteViewController: UIViewController {
         action: #selector(handleSaveButtonTap)
     )
 
+    private lazy var scrollView = UIScrollView(withAutoLayout: true)
+    private lazy var contentView = UIView(withAutoLayout: true)
+
     private lazy var adView: FavoriteAdView = {
         let view = FavoriteAdView(withAutoLayout: true)
         view.isMoreButtonHidden = true
@@ -49,7 +52,7 @@ final class FavoriteNoteViewController: UIViewController {
         return textView
     }()
 
-    private lazy var textViewBottomConstraint = textView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    private lazy var scrollViewBottomConstraint = scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 
     // MARK: - Init
 
@@ -104,25 +107,33 @@ final class FavoriteNoteViewController: UIViewController {
     // MARK: - Setup
 
     private func setup() {
-        view.addSubview(adView)
-        view.addSubview(textView)
-
-        let textViewHeight = textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 86)
-        textViewHeight.priority = .defaultHigh
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(adView)
+        contentView.addSubview(textView)
+        contentView.fillInSuperview()
 
         NSLayoutConstraint.activate([
-            adView.topAnchor.constraint(equalTo: view.topAnchor, constant: .mediumSpacing),
-            adView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            adView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollViewBottomConstraint,
+
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+
+            adView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            adView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            adView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             textView.topAnchor.constraint(equalTo: adView.bottomAnchor, constant: .mediumSpacing),
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .mediumLargeSpacing),
-            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.mediumLargeSpacing),
-            textViewHeight,
-            textViewBottomConstraint
+            textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 86),
+            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing)
         ])
 
-        updateTextViewConstraint(withKeyboardVisible: false, keyboardOffset: 0)
+        updateScrollViewConstraint(withKeyboardVisible: false, keyboardOffset: 0)
     }
 
     // MARK: - Keyboard
@@ -134,14 +145,14 @@ final class FavoriteNoteViewController: UIViewController {
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: view)
 
         UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
-            self?.updateTextViewConstraint(withKeyboardVisible: keyboardVisible, keyboardOffset: keyboardIntersection)
+            self?.updateScrollViewConstraint(withKeyboardVisible: keyboardVisible, keyboardOffset: keyboardIntersection)
             self?.view.layoutIfNeeded()
         }
     }
 
-    private func updateTextViewConstraint(withKeyboardVisible keyboardVisible: Bool, keyboardOffset: CGFloat) {
-        let offset = keyboardOffset + view.windowSafeAreaInsets.bottom + .mediumLargeSpacing
-        textViewBottomConstraint.constant = -offset
+    private func updateScrollViewConstraint(withKeyboardVisible keyboardVisible: Bool, keyboardOffset: CGFloat) {
+        let offset = keyboardOffset + view.windowSafeAreaInsets.bottom
+        scrollViewBottomConstraint.constant = -offset
     }
 
     // MARK: - Actions
@@ -159,6 +170,7 @@ final class FavoriteNoteViewController: UIViewController {
 
 extension FavoriteNoteViewController: TextViewDelegate {
     func textViewDidChange(_ textView: TextView) {
-
+        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
+        scrollView.setContentOffset(bottomOffset, animated: true)
     }
 }
