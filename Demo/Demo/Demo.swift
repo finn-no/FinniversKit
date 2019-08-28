@@ -66,7 +66,6 @@ public enum ComponentViews: String, CaseIterable {
     case questionnaireView
     case tweakable
     case saveSearchView
-    case verificationView
 
     public static var items: [ComponentViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -154,8 +153,6 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
             return SaveSearchViewDemoViewController()
-        case .verificationView:
-            return DemoViewController<VerificationDemoView>()
         }
     }
 }
@@ -281,6 +278,7 @@ public enum FullscreenViews: String, CaseIterable {
     case favoriteFolderActionSheet
     case favoriteSortingSheet
     case favoriteActionSheet
+    case verificationView
 
     public static var items: [FullscreenViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -348,6 +346,8 @@ public enum FullscreenViews: String, CaseIterable {
             let bottomSheet = FavoriteActionSheet(viewModel: .default)
             bottomSheet.actionDelegate = FavoriteActionSheetDemoDelegate.shared
             return bottomSheet
+        case .verificationView:
+            return DemoViewController<VerificationDemoView>()
         }
     }
 }

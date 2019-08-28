@@ -8,7 +8,7 @@ public class VerificationDemoView: UIView {
     private lazy var verificationView: VerificationView = {
         let view = VerificationView(withAutoLayout: true)
         view.delegate = self
-        view.model = VerificationDefaultData()
+        view.model = VerificationViewDefaultData()
         return view
     }()
 
@@ -25,17 +25,12 @@ public class VerificationDemoView: UIView {
 private extension VerificationDemoView {
     func setup() {
         addSubview(verificationView)
-        NSLayoutConstraint.activate([
-            verificationView.heightAnchor.constraint(equalToConstant: frame.height * 0.5),
-            verificationView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            verificationView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            verificationView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        ])
+        verificationView.fillInSuperview()
+        verificationView.show()
     }
 }
 
 extension VerificationDemoView: VerificationViewDelegate {
-    public func didTapVerificationButton(_: VerificationView) {
-        print("didSelectVerificationButton")
-    }
+    public func didTapVerificationButton(_: VerificationView) {}
+    public func didDismissVerificationView(_: VerificationView) {}
 }

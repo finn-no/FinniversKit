@@ -2,12 +2,12 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-public protocol VerificationViewDelegate: AnyObject {
-    func didTapVerificationButton(_ : VerificationView)
+public protocol VerificationCardViewDelegate: AnyObject {
+    func didTapVerificationButton(_ : VerificationCardView)
 }
 
-public class VerificationView: UIView {
-    private lazy var bankVerificationImageView: UIImageView = {
+public class VerificationCardView: UIView {
+    private lazy var verificationImageView: UIImageView = {
         let image = UIImage(named: .noImage)
         let imageView = UIImageView(image: image)
         imageView.clipsToBounds = true
@@ -42,7 +42,7 @@ public class VerificationView: UIView {
         return imageView
     }()
 
-    public weak var delegate: VerificationViewDelegate?
+    public weak var delegate: VerificationCardViewDelegate?
 
     public var model: VerificationViewModel? {
         didSet {
@@ -60,13 +60,9 @@ public class VerificationView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
-
-    @objc private func didTapVerificationButton() {
-        delegate?.didTapVerificationButton(self)
-    }
 }
 
-private extension VerificationView {
+private extension VerificationCardView {
     func setup() {
         clipsToBounds = true
         layer.cornerRadius = 16
@@ -83,16 +79,16 @@ private extension VerificationView {
 
         backgroundColor = .white
 
-        addSubview(bankVerificationImageView)
+        addSubview(verificationImageView)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
         addSubview(verificationButton)
         addSubview(verificationButtonImageView)
 
         let insets = UIEdgeInsets(
-            top: .mediumSpacing,
+            top: 0,
             leading: .largeSpacing,
-            bottom: .mediumSpacing,
+            bottom: .largeSpacing,
             trailing: .largeSpacing
         )
 
@@ -103,18 +99,20 @@ private extension VerificationView {
                                                           trailing: verificationButton.titleEdgeInsets.trailing + .mediumLargeSpacing + imageWidth)
 
         NSLayoutConstraint.activate([
-            bankVerificationImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            bankVerificationImageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            verificationImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            verificationImageView.widthAnchor.constraint(equalToConstant: 120),
+            verificationImageView.heightAnchor.constraint(equalToConstant: 120),
+            verificationImageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: bankVerificationImageView.bottomAnchor),
+            titleLabel.topAnchor.constraint(equalTo: verificationImageView.bottomAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 48),
             titleLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
 
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: insets.top),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: insets.leading),
             descriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -insets.trailing),
 
             verificationButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: insets.bottom),
-            verificationButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom),
             verificationButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: insets.leading),
             verificationButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -insets.trailing),
 
@@ -123,5 +121,9 @@ private extension VerificationView {
             verificationButtonImageView.centerYAnchor.constraint(equalTo: verificationButton.centerYAnchor),
             verificationButtonImageView.trailingAnchor.constraint(equalTo: verificationButton.trailingAnchor, constant: -.mediumLargeSpacing),
         ])
+    }
+
+    @objc func didTapVerificationButton() {
+        delegate?.didTapVerificationButton(self)
     }
 }
