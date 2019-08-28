@@ -31,8 +31,14 @@ final class FavoriteNoteViewController: UIViewController {
         action: #selector(handleSaveButtonTap)
     )
 
-    private lazy var scrollView = UIScrollView(withAutoLayout: true)
+    private lazy var shadowView = BottomShadowView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
+
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView(withAutoLayout: true)
+        view.delegate = self
+        return view
+    }()
 
     private lazy var adView: FavoriteAdView = {
         let view = FavoriteAdView(withAutoLayout: true)
@@ -108,16 +114,25 @@ final class FavoriteNoteViewController: UIViewController {
 
     private func setup() {
         view.addSubview(scrollView)
+        view.addSubview(shadowView)
+
         scrollView.addSubview(contentView)
         contentView.addSubview(adView)
         contentView.addSubview(textView)
         contentView.fillInSuperview()
+
+        let shadowViewHeight = navigationController?.navigationBar.frame.height ?? 0
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollViewBottomConstraint,
+
+            shadowView.topAnchor.constraint(equalTo: view.topAnchor, constant: -shadowViewHeight),
+            shadowView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            shadowView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shadowView.heightAnchor.constraint(equalToConstant: shadowViewHeight),
 
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -172,5 +187,13 @@ extension FavoriteNoteViewController: TextViewDelegate {
     func textViewDidChange(_ textView: TextView) {
         let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
         scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension FavoriteNoteViewController: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        shadowView.updateShadow(using: scrollView)
     }
 }
