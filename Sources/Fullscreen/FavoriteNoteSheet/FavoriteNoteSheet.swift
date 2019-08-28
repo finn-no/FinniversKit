@@ -11,13 +11,23 @@ public protocol FavoriteNoteSheetDelegate: AnyObject {
 
 public final class FavoriteNoteSheet: BottomSheet {
     public weak var noteDelegate: FavoriteNoteSheetDelegate?
+    private let viewController: FavoriteNoteViewController
 
     // MARK: - Init
 
-    public required init(noteViewModel: FavoriteNoteViewModel, adViewModel: FavoriteAdViewModel) {
-        let viewController = FavoriteNoteViewController(noteViewModel: noteViewModel, adViewModel: adViewModel)
+    public required init(
+        noteViewModel: FavoriteNoteViewModel,
+        adViewModel: FavoriteAdViewModel,
+        remoteImageViewDataSource: RemoteImageViewDataSource
+    ) {
+        viewController = FavoriteNoteViewController(
+            noteViewModel: noteViewModel,
+            adViewModel: adViewModel,
+            remoteImageViewDataSource: remoteImageViewDataSource
+        )
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.shadowImage = UIImage()
 
         super.init(rootViewController: navigationController, height: .default)
         viewController.delegate = self

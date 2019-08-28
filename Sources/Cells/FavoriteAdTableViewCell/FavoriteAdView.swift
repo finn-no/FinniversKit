@@ -25,6 +25,11 @@ final class FavoriteAdView: UIView {
         set { moreButton.isHidden = newValue }
     }
 
+    override var intrinsicContentSize: CGSize {
+        let height = max(stackView.frame.maxY, remoteImageView.frame.maxY) + 24
+        return CGSize(width: frame.width, height: height)
+    }
+
     // MARK: - Private properties
 
     private var viewModel: FavoriteAdViewModel?
@@ -64,14 +69,14 @@ final class FavoriteAdView: UIView {
     }()
 
     private lazy var stackViewBottomConstraint: NSLayoutConstraint = {
-        let constraint = stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -24)
-        constraint.priority = .defaultLow
+        let constraint = stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
+        constraint.priority = .defaultHigh
         return constraint
     }()
 
     private lazy var remoteImageViewBottomConstraint: NSLayoutConstraint = {
         let constraint = remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -24)
-        constraint.priority = .defaultLow
+        constraint.priority = .defaultHigh
         return constraint
     }()
 
