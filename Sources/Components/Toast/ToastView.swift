@@ -4,23 +4,13 @@
 
 import UIKit
 
-public protocol ToastViewDelegate: AnyObject {
-    func didTapActionButton(button: UIButton, in toastView: ToastView)
-    func didTap(toastView: ToastView)
-    func didSwipeDown(on toastView: ToastView)
-}
+public class ToastAction: NSObject {
+    public private(set) var title: String
+    public private(set) var action: (() -> Void)
 
-public extension ToastViewDelegate {
-    func didTapActionButton(button: UIButton, in toastView: ToastView) {
-        // Default nothing happens
-    }
-
-    func didTap(toastView: ToastView) {
-        // Default nothing happens
-    }
-
-    func didSwipeDown(on toastView: ToastView) {
-        toastView.dismissToast()
+    public init(title: String, action: @escaping (() -> Void)) {
+        self.title = title
+        self.action = action
     }
 }
 
@@ -96,13 +86,12 @@ public class ToastView: UIView {
         }
     }
 
-    public var buttonText: String = "" {
+    public var action: ToastAction? {
         didSet {
-            actionButton.setTitle(buttonText, for: .normal)
+            actionButton.setTitle(action?.title, for: .normal)
+            accessibilityHint = action?.title
         }
     }
-
-    public weak var delegate: ToastViewDelegate?
 
     // MARK: - Setup
 
@@ -120,10 +109,9 @@ public class ToastView: UIView {
 
     private func setup() {
         isAccessibilityElement = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
         swipeGesture.direction = .down
-        gestureRecognizers = [tapGesture, swipeGesture]
+        addGestureRecognizer(swipeGesture)
 
         backgroundColor = style.color
         imageView.backgroundColor = style.imageBackgroundColor
@@ -162,16 +150,13 @@ public class ToastView: UIView {
 
     // MARK: - Actions
 
-    @objc private func buttonAction() {
-        delegate?.didTapActionButton(button: actionButton, in: self)
-    }
-
-    @objc private func tapAction() {
-        delegate?.didTap(toastView: self)
-    }
-
     @objc private func swipeAction() {
-        delegate?.didSwipeDown(on: self)
+        dismissToast()
+    }
+
+    @objc private func buttonAction() {
+        action?.action()
+        dismissToast()
     }
 
     public func presentFromBottom(view: UIView, animateOffset: CGFloat, timeOut: Double? = nil) {
