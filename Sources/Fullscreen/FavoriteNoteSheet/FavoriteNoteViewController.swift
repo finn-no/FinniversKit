@@ -35,7 +35,7 @@ final class FavoriteNoteViewController: UIViewController {
     private lazy var contentView = UIView(withAutoLayout: true)
 
     private lazy var scrollView: UIScrollView = {
-        let view = UIScrollView(withAutoLayout: true)
+        let view = ScrollView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
@@ -45,16 +45,15 @@ final class FavoriteNoteViewController: UIViewController {
         view.isMoreButtonHidden = true
         view.configure(with: adViewModel)
         view.remoteImageViewDataSource = remoteImageViewDataSource
-        view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return view
     }()
 
     private lazy var textView: TextView = {
         let textView = TextView(withAutoLayout: true)
+        textView.text = noteViewModel.note
         textView.placeholderText = noteViewModel.notePlaceholder
         textView.isScrollEnabled = false
         textView.delegate = self
-        textView.setContentHuggingPriority(.defaultLow, for: .vertical)
         return textView
     }()
 
@@ -110,6 +109,11 @@ final class FavoriteNoteViewController: UIViewController {
         _ = textView.becomeFirstResponder()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        _ = textView.resignFirstResponder()
+    }
+
     // MARK: - Setup
 
     private func setup() {
@@ -137,11 +141,11 @@ final class FavoriteNoteViewController: UIViewController {
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            adView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            adView.topAnchor.constraint(equalTo: contentView.topAnchor),
             adView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             adView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            textView.topAnchor.constraint(equalTo: adView.bottomAnchor, constant: .mediumSpacing),
+            textView.topAnchor.constraint(equalTo: adView.bottomAnchor),
             textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 86),
@@ -159,10 +163,10 @@ final class FavoriteNoteViewController: UIViewController {
         let keyboardVisible = keyboardInfo.action == .willShow
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: view)
 
-        UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
+        UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo, animations: { [weak self] in
             self?.updateScrollViewConstraint(withKeyboardVisible: keyboardVisible, keyboardOffset: keyboardIntersection)
             self?.view.layoutIfNeeded()
-        }
+        })
     }
 
     private func updateScrollViewConstraint(withKeyboardVisible keyboardVisible: Bool, keyboardOffset: CGFloat) {
@@ -181,19 +185,33 @@ final class FavoriteNoteViewController: UIViewController {
     }
 }
 
-// MARK: - TextViewDelegate
-
-extension FavoriteNoteViewController: TextViewDelegate {
-    func textViewDidChange(_ textView: TextView) {
-        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
-        scrollView.setContentOffset(bottomOffset, animated: true)
-    }
-}
-
 // MARK: - UIScrollViewDelegate
 
 extension FavoriteNoteViewController: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         shadowView.updateShadow(using: scrollView)
+    }
+}
+
+// MARK: - TextViewDelegate
+
+extension FavoriteNoteViewController: TextViewDelegate {
+    func textViewDidChange(_ textView: TextView) {
+        saveButton.isEnabled = textView.text != noteViewModel.note
+    }
+}
+
+// MARK: - Private extensions
+
+private final class ScrollView: UIScrollView {
+    override var contentSize: CGSize {
+        didSet {
+            scrollToBottom()
+        }
+    }
+
+    private func scrollToBottom() {
+        let yOffset = contentSize.height - bounds.size.height + contentInset.bottom
+        setContentOffset(CGPoint(x: 0, y: yOffset), animated: false)
     }
 }

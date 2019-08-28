@@ -68,12 +68,6 @@ final class FavoriteAdView: UIView {
         return button
     }()
 
-    private lazy var stackViewBottomConstraint: NSLayoutConstraint = {
-        let constraint = stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
-        constraint.priority = .defaultHigh
-        return constraint
-    }()
-
     private lazy var remoteImageViewBottomConstraint: NSLayoutConstraint = {
         let constraint = remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -24)
         constraint.priority = .defaultHigh
@@ -183,7 +177,7 @@ final class FavoriteAdView: UIView {
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
             stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
             stackView.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor),
-            stackViewBottomConstraint,
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
 
             addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing)
         ])
@@ -197,6 +191,7 @@ final class FavoriteAdView: UIView {
 
     private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {
         let label = UILabel(withAutoLayout: true)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.font = font
         label.textColor = textColor
         label.numberOfLines = numberOfLines
