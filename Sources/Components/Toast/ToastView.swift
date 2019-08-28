@@ -156,6 +156,7 @@ public class ToastView: UIView {
 
     @objc private func buttonAction() {
         action?.action()
+        dismissToast()
     }
 
     public func presentFromBottom(view: UIView, animateOffset: CGFloat, timeOut: Double? = nil) {
