@@ -166,8 +166,11 @@ final class FavoriteNoteViewController: UIViewController {
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: view)
 
         UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo, animations: { [weak self] in
-            self?.updateScrollViewConstraint(withKeyboardVisible: keyboardVisible, keyboardOffset: keyboardIntersection)
-            self?.view.layoutIfNeeded()
+            guard let self = self else { return }
+
+            self.updateScrollViewConstraint(withKeyboardVisible: keyboardVisible, keyboardOffset: keyboardIntersection)
+            self.view.layoutIfNeeded()
+            self.shadowView.updateShadow(using: self.scrollView)
         })
     }
 
