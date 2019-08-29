@@ -25,6 +25,7 @@ public enum FinniversImageAsset: String {
     case arrowRight
     case arrowUp
     case attachment
+    case avatar
     case balloon0
     case balloon1
     case balloon2
@@ -160,6 +161,7 @@ public enum FinniversImageAsset: String {
             .arrowRight,
             .arrowUp,
             .attachment,
+            .avatar,
             .balloon0,
             .balloon1,
             .balloon2,
