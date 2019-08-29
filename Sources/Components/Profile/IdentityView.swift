@@ -42,8 +42,7 @@ public class IdentityView : UIView {
     private lazy var defaultProfileImage = UIImage(named: FinniversImageAsset.avatar)
 
     private lazy var profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.cornerRadius = profileImageSize / 2
         imageView.layer.masksToBounds = true
         return imageView
@@ -93,6 +92,10 @@ public class IdentityView : UIView {
     public required init(viewModel: IdentityViewModel?) {
         self.viewModel = viewModel
         super.init(frame: .zero)
+        setup()
+    }
+
+    private func setup() {
         setupSubviews()
         addTapListener()
         setupDefaultProfileImage()

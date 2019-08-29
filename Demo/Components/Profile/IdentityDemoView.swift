@@ -79,17 +79,19 @@ extension IdentityDemoView: IdentityViewDelegate {
     }
 
     public func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let data = data else {
-                completionHandler(nil)
-                return
+        DispatchQueue.global(priority: .background).asyncAfter(deadline: .now() + 0.5, execute: {
+            let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+                guard let data = data else {
+                    completionHandler(nil)
+                    return
+                }
+
+                let image = UIImage(data: data)
+                completionHandler(image)
             }
 
-            let image = UIImage(data: data)
-            completionHandler(image)
-        }
-
-        task.resume()
+            task.resume()
+        })
     }
 }
 
