@@ -4,12 +4,12 @@
 
 import UIKit
 
-class BottomShadowView: UIView {
+public class BottomShadowView: UIView {
     static let maxShadowRadius: CGFloat = 3
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -21,7 +21,7 @@ class BottomShadowView: UIView {
 
     // MARK: - Overrides
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         // Make shadow to be on bottom
         let radius = BottomShadowView.maxShadowRadius
@@ -31,7 +31,7 @@ class BottomShadowView: UIView {
 
     // MARK: - Shadow
 
-    func updateShadow(using scrollView: UIScrollView) {
+    public func updateShadow(using scrollView: UIScrollView) {
         let contentFrame = CGRect(
             x: -scrollView.contentOffset.x,
             y: scrollView.frame.minY - scrollView.contentOffset.y - scrollView.contentInset.top,

@@ -10,6 +10,7 @@ protocol FavoriteAdViewDelegate: AnyObject {
 
 final class FavoriteAdView: UIView {
     static let adImageWidth: CGFloat = 80
+    static let verticalPadding: CGFloat = 24
 
     weak var delegate: FavoriteAdViewDelegate?
     weak var remoteImageViewDataSource: RemoteImageViewDataSource? {
@@ -74,7 +75,7 @@ final class FavoriteAdView: UIView {
     // MARK: - Overrides
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: bounds.width, height: stackView.frame.maxY + 24)
+        return CGSize(width: bounds.width, height: stackView.frame.maxY + FavoriteAdView.verticalPadding)
     }
 
     // MARK: - Init
@@ -164,8 +165,9 @@ final class FavoriteAdView: UIView {
         addSubview(statusRibbon)
         addSubview(moreButton)
 
-        let stackViewTopConstraint = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24)
-        let stackViewBottomConstraint = stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
+        let padding = FavoriteAdView.verticalPadding
+        let stackViewTopConstraint = stackView.topAnchor.constraint(equalTo: topAnchor, constant: padding)
+        let stackViewBottomConstraint = stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding)
 
         [stackViewTopConstraint, stackViewBottomConstraint].forEach { $0.priority = UILayoutPriority(rawValue: 999) }
 
