@@ -43,3 +43,6 @@ FinniversKit.framework.zip
 # Snapshot tests
 FailureDiffs/
 
+# Bundler
+bin/
+bundler/

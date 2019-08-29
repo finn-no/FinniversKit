@@ -4,16 +4,6 @@
 
 import FinniversKit
 
-class ToastClass: NSObject, ToastViewDelegate {
-    func didTapActionButton(button: UIButton, in toastView: ToastView) {
-        print("Button tapped \(toastView.style)")
-    }
-
-    func didTap(toastView: ToastView) {
-        print("Toast view tapped \(toastView.style)")
-    }
-}
-
 public class ToastDemoView: UIView {
     private lazy var bottomToastButton: Button = {
         let button = Button(style: .callToAction)
@@ -53,7 +43,6 @@ public class ToastDemoView: UIView {
     }
 
     public required init?(coder aDecoder: NSCoder) { fatalError() }
-    let delegate = ToastClass()
 
     private func setup() {
         let successToast = ToastView(style: .success)
@@ -74,23 +63,27 @@ public class ToastDemoView: UIView {
 
         let successButtonToast = ToastView(style: .successButton)
         successButtonToast.text = "Action success"
-        successButtonToast.buttonText = "Action"
-        successButtonToast.delegate = delegate
+        successButtonToast.action = ToastAction(title: "Action") {
+            print("Action button tapped")
+        }
 
         let errorButtonToast = ToastView(style: .errorButton)
         errorButtonToast.text = "Action error"
-        errorButtonToast.buttonText = "Undo"
-        errorButtonToast.delegate = delegate
+        errorButtonToast.action = ToastAction(title: "Undo") {
+            print("Undo button tapped")
+        }
 
         let successPromotedButtonToast = ToastView(style: .successButton, buttonStyle: .promoted)
         successPromotedButtonToast.text = "Action success"
-        successPromotedButtonToast.buttonText = "Action"
-        successPromotedButtonToast.delegate = delegate
+        successPromotedButtonToast.action = ToastAction(title: "Action") {
+            print("Promoted action button tapped")
+        }
 
         let errorPromotedButtonToast = ToastView(style: .errorButton, buttonStyle: .promoted)
         errorPromotedButtonToast.text = "Action error"
-        errorPromotedButtonToast.buttonText = "Undo"
-        errorPromotedButtonToast.delegate = delegate
+        errorPromotedButtonToast.action = ToastAction(title: "Undo") {
+            print("Promoted undo button tapped")
+        }
 
         stackView.addArrangedSubview(successToast)
         stackView.addArrangedSubview(attributedTextSuccessToast)
@@ -141,7 +134,6 @@ public class ToastDemoView: UIView {
     private func animateSuccess(in toastPresenterView: UIView) {
         let animatedToast = ToastView(style: .success)
         animatedToast.text = "Animated success"
-        animatedToast.delegate = delegate
         animatedToast.presentFromBottom(view: toastPresenterView, animateOffset: 0, timeOut: 5)
     }
 }
