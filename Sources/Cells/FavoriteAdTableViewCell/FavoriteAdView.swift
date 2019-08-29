@@ -25,11 +25,6 @@ final class FavoriteAdView: UIView {
         set { moreButton.isHidden = newValue }
     }
 
-    override var intrinsicContentSize: CGSize {
-        let height = max(stackView.frame.maxY, remoteImageView.frame.maxY) + 24
-        return CGSize(width: frame.width, height: height)
-    }
-
     // MARK: - Private properties
 
     private var viewModel: FavoriteAdViewModel?
@@ -41,10 +36,20 @@ final class FavoriteAdView: UIView {
     private lazy var statusRibbon = RibbonView(withAutoLayout: true)
     private lazy var fallbackImage: UIImage = UIImage(named: .noImage)
 
-    private lazy var stackView: UIStackView = {
+    private lazy var textStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.spacing = 0
+        stackView.alignment = .leading
+        return stackView
+    }()
+
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.layoutMargins = UIEdgeInsets(top: 24, leading: 0, bottom: 0, trailing: 0)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.axis = .horizontal
+        stackView.spacing = .mediumLargeSpacing
         stackView.alignment = .leading
         return stackView
     }()
@@ -66,12 +71,6 @@ final class FavoriteAdView: UIView {
         button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         button.contentEdgeInsets = UIEdgeInsets(vertical: 10, horizontal: 8)
         return button
-    }()
-
-    private lazy var remoteImageViewBottomConstraint: NSLayoutConstraint = {
-        let constraint = remoteImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -24)
-        constraint.priority = .defaultHigh
-        return constraint
     }()
 
     // MARK: - Init
@@ -145,26 +144,30 @@ final class FavoriteAdView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        stackView.addArrangedSubview(addressLabel)
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(descriptionPrimaryLabel)
-        stackView.addArrangedSubview(descriptionSecondaryLabel)
+        stackView.addArrangedSubview(remoteImageView)
+        stackView.addArrangedSubview(textStackView)
 
-        stackView.setCustomSpacing(.verySmallSpacing, after: addressLabel)
-        stackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
-        stackView.setCustomSpacing(.smallSpacing, after: descriptionPrimaryLabel)
+        textStackView.addArrangedSubview(addressLabel)
+        textStackView.addArrangedSubview(titleLabel)
+        textStackView.addArrangedSubview(descriptionPrimaryLabel)
+        textStackView.addArrangedSubview(descriptionSecondaryLabel)
 
-        addSubview(remoteImageView)
+        textStackView.setCustomSpacing(.verySmallSpacing, after: addressLabel)
+        textStackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
+        textStackView.setCustomSpacing(.smallSpacing, after: descriptionPrimaryLabel)
+
+        addSubview(stackView)
         addSubview(statusRibbon)
         addSubview(moreButton)
-        addSubview(stackView)
 
         NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stackView.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor),
+
             remoteImageView.widthAnchor.constraint(equalToConstant: FavoriteAdView.adImageWidth),
             remoteImageView.heightAnchor.constraint(equalTo: remoteImageView.widthAnchor),
-            remoteImageView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
-            remoteImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            remoteImageViewBottomConstraint,
 
             statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
@@ -173,11 +176,6 @@ final class FavoriteAdView: UIView {
             moreButton.heightAnchor.constraint(equalToConstant: 44),
             moreButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             moreButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
-            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
 
             addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing)
         ])
@@ -191,7 +189,7 @@ final class FavoriteAdView: UIView {
 
     private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {
         let label = UILabel(withAutoLayout: true)
-        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        //label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.font = font
         label.textColor = textColor
         label.numberOfLines = numberOfLines
