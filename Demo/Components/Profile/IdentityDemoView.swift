@@ -20,6 +20,9 @@ class IdentityDemoView: UIView, Tweakable {
             TweakingOption(title: "Assign view models", action: {
                 self.identityViews.forEach { $0.0.viewModel = $0.1 }
             }),
+            TweakingOption(title: "Toggle descriptions", action: {
+                self.identityViews.forEach { $0.0.hideDescription.toggle() }
+            })
         ]
         return options
     }()

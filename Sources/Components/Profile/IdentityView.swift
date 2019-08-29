@@ -36,6 +36,12 @@ public class IdentityView: UIView {
         }
     }
 
+    public var hideDescription: Bool = false {
+        didSet {
+            viewModelChanged()
+        }
+    }
+
     // MARK: - UI properties
 
     private let profileImageSize: CGFloat = 40.0
@@ -183,7 +189,7 @@ public class IdentityView: UIView {
 
         subtitleLabel.text = viewModel.subtitle
 
-        let showDescription = viewModel.description != nil
+        let showDescription = viewModel.description != nil && !hideDescription
         descriptionLabel.isHidden = !showDescription
         descriptionLabel.text = viewModel.description
         descriptionLabelConstraints.forEach { $0.isActive = showDescription }
