@@ -346,7 +346,7 @@ public enum FullscreenViews: String, CaseIterable {
         case .favoriteNoteSheet:
             let bottomSheet = FavoriteNoteSheet(
                 noteViewModel: .default,
-                adViewModel: FavoriteAdsFactory.create()[0],
+                adViewModel: FavoriteAdsFactory.create().last!,
                 remoteImageViewDataSource: FavoriteNoteSheetDemoDelegate.shared
             )
             bottomSheet.noteDelegate = FavoriteNoteSheetDemoDelegate.shared

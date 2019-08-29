@@ -45,6 +45,7 @@ final class FavoriteNoteViewController: UIViewController {
         view.isMoreButtonHidden = true
         view.configure(with: adViewModel)
         view.remoteImageViewDataSource = remoteImageViewDataSource
+        view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return view
     }()
 
@@ -54,6 +55,7 @@ final class FavoriteNoteViewController: UIViewController {
         textView.placeholderText = noteViewModel.notePlaceholder
         textView.isScrollEnabled = false
         textView.delegate = self
+        textView.setContentHuggingPriority(.defaultLow, for: .vertical)
         return textView
     }()
 

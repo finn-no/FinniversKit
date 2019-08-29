@@ -46,8 +46,6 @@ final class FavoriteAdView: UIView {
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
-        stackView.layoutMargins = UIEdgeInsets(top: 24, leading: 0, bottom: 0, trailing: 0)
-        stackView.isLayoutMarginsRelativeArrangement = true
         stackView.axis = .horizontal
         stackView.spacing = .mediumLargeSpacing
         stackView.alignment = .leading
@@ -72,6 +70,12 @@ final class FavoriteAdView: UIView {
         button.contentEdgeInsets = UIEdgeInsets(vertical: 10, horizontal: 8)
         return button
     }()
+
+    // MARK: - Overrides
+
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: bounds.width, height: stackView.frame.maxY + 24)
+    }
 
     // MARK: - Init
 
@@ -160,10 +164,15 @@ final class FavoriteAdView: UIView {
         addSubview(statusRibbon)
         addSubview(moreButton)
 
+        let stackViewTopConstraint = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24)
+        let stackViewBottomConstraint = stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
+
+        [stackViewTopConstraint, stackViewBottomConstraint].forEach { $0.priority = UILayoutPriority(rawValue: 999) }
+
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackViewTopConstraint,
+            stackViewBottomConstraint,
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             stackView.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor),
 
             remoteImageView.widthAnchor.constraint(equalToConstant: FavoriteAdView.adImageWidth),
@@ -189,7 +198,7 @@ final class FavoriteAdView: UIView {
 
     private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {
         let label = UILabel(withAutoLayout: true)
-        //label.setContentCompressionResistancePriority(.required, for: .vertical)
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.font = font
         label.textColor = textColor
         label.numberOfLines = numberOfLines
