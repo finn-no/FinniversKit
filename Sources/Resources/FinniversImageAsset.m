@@ -13,6 +13,7 @@ NSString *const FinniversImageAssetarrowDown = @"arrowDown";
 NSString *const FinniversImageAssetarrowRight = @"arrowRight";
 NSString *const FinniversImageAssetarrowUp = @"arrowUp";
 NSString *const FinniversImageAssetattachment = @"attachment";
+NSString *const FinniversImageAssetavatar = @"avatar";
 NSString *const FinniversImageAssetballoon0 = @"balloon0";
 NSString *const FinniversImageAssetballoon1 = @"balloon1";
 NSString *const FinniversImageAssetballoon2 = @"balloon2";
@@ -149,6 +150,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetarrowRight,
              FinniversImageAssetarrowUp,
              FinniversImageAssetattachment,
+             FinniversImageAssetavatar,
              FinniversImageAssetballoon0,
              FinniversImageAssetballoon1,
              FinniversImageAssetballoon2,
