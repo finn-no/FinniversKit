@@ -166,13 +166,11 @@ final class FavoriteAdView: UIView {
         addSubview(moreButton)
 
         let padding = FavoriteAdView.verticalPadding
-        let stackViewTopConstraint = stackView.topAnchor.constraint(equalTo: topAnchor, constant: padding)
         let stackViewBottomConstraint = stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding)
-
-        [stackViewTopConstraint, stackViewBottomConstraint].forEach { $0.priority = UILayoutPriority(rawValue: 999) }
+        stackViewBottomConstraint.priority = UILayoutPriority(rawValue: 999)
 
         NSLayoutConstraint.activate([
-            stackViewTopConstraint,
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
             stackViewBottomConstraint,
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             stackView.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor),
