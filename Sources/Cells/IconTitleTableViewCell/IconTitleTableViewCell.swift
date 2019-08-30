@@ -16,7 +16,11 @@ open class IconTitleTableViewCell: BasicTableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var stackViewToIconConstraint = stackView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumSpacing)
+    let iconSize: CGFloat = 24
+
+    private lazy var stackViewToIconConstraint = stackView.leadingAnchor.constraint(
+        equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing
+    )
 
     // MARK: - Setup
 
@@ -48,12 +52,15 @@ open class IconTitleTableViewCell: BasicTableViewCell {
             }
             stackViewLeadingAnchorConstraint.isActive = false
             stackViewToIconConstraint.isActive = true
+
+            // align it with the text, considering the size of the icon
+            separatorInset = .leadingInset(.mediumLargeSpacing + iconSize + .mediumLargeSpacing)
         } else {
             stackViewToIconConstraint.isActive = false
             stackViewLeadingAnchorConstraint.isActive = true
-        }
 
-        separatorInset = .leadingInset(.mediumLargeSpacing)
+            separatorInset = .leadingInset(.mediumLargeSpacing)
+        }
 
         setNeedsLayout()
     }
@@ -63,8 +70,8 @@ open class IconTitleTableViewCell: BasicTableViewCell {
     private func setup() {
         contentView.addSubview(iconImageView)
         NSLayoutConstraint.activate([
-            iconImageView.heightAnchor.constraint(equalToConstant: 28),
-            iconImageView.widthAnchor.constraint(equalToConstant: 28),
+            iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
+            iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
             iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
