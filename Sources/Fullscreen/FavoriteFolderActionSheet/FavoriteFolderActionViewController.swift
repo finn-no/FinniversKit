@@ -33,7 +33,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
     private let bottomActions: [FavoriteFolderAction] = [.copyLink, .delete]
 
     private lazy var topTableView: UITableView = {
-        let tableView = makeTableView()
+        let tableView = UITableView.default
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(FavoriteActionCell.self)
@@ -42,26 +42,13 @@ public final class FavoriteFolderActionViewController: UIViewController {
     }()
 
     private lazy var bottomTableView: UITableView = {
-        let tableView = makeTableView()
+        let tableView = UITableView.default
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(FavoriteActionCell.self)
         tableView.register(FavoriteFolderCopyLinkCell.self)
         return tableView
     }()
-
-    private func makeTableView() -> UITableView {
-        let tableView = ContentSizedTableView(frame: .zero, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .milk
-        tableView.rowHeight = FavoriteFolderActionViewController.rowHeight
-        tableView.estimatedRowHeight = FavoriteFolderActionViewController.rowHeight
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.tableFooterView = UIView()
-        tableView.isScrollEnabled = false
-        tableView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return tableView
-    }
 
     // MARK: - Init
 
@@ -74,6 +61,8 @@ public final class FavoriteFolderActionViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Lifecycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -202,7 +191,22 @@ extension FavoriteFolderActionViewController: FavoriteFolderCopyLinkCellDelegate
     }
 }
 
-// MARK: - Private types
+// MARK: - Private extensions
+
+private extension UITableView {
+    static var `default`: UITableView {
+        let tableView = ContentSizedTableView(frame: .zero, style: .plain)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .milk
+        tableView.rowHeight = FavoriteFolderActionViewController.rowHeight
+        tableView.estimatedRowHeight = FavoriteFolderActionViewController.rowHeight
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.tableFooterView = UIView()
+        tableView.isScrollEnabled = false
+        tableView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        return tableView
+    }
+}
 
 private extension UITableViewCell {
     func hideSepatator(_ hide: Bool) {
