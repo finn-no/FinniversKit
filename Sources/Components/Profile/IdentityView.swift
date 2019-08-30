@@ -209,7 +209,10 @@ public class IdentityView: UIView {
             return
         }
 
-        guard let url = viewModel?.profileImageUrl else { return }
+        guard let url = viewModel?.profileImageUrl else {
+            profileImageView.image = defaultProfileImage
+            return
+        }
 
         delegate?.identityView(self, loadImageWithUrl: url, completionHandler: { [weak self] image in
             guard let self = self else { return }
