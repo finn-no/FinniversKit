@@ -4,7 +4,7 @@
 
 import Foundation
 
-extension Array where Element == Int {
+public extension Array where Element == Int {
     func closestStep(for value: Int) -> Step {
         if let index = firstIndex(where: { $0 >= value }) {
             let previousIndex = index - 1

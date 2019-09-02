@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol StepSliderDelegate: AnyObject {
-    func stepSlider(_ stepSlider: StepSlider, didChangeValue value: Float)
+    func stepSlider(_ stepSlider: StepSlider, didChangeRawValue value: Float)
     func stepSlider(_ stepSlider: StepSlider, canChangeToStep step: Step) -> Bool
     func stepSlider(_ stepSlider: StepSlider, didChangeStep step: Step)
     func stepSlider(_ stepSlider: StepSlider, didEndSlideInteraction step: Step)
@@ -166,7 +166,7 @@ public final class StepSlider: UISlider {
     }
 
     private func updateActiveTrackRange() {
-        if frame == .zero {
+        guard frame != .zero && showTrackViews else {
             return
         }
 
@@ -206,7 +206,7 @@ public final class StepSlider: UISlider {
         if valueChanged {
             updateAccessibilityValue()
             updateActiveTrackRange()
-            delegate?.stepSlider(self, didChangeValue: value)
+            delegate?.stepSlider(self, didChangeRawValue: value)
         }
 
         if slideEnded {
