@@ -360,6 +360,8 @@
 		CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */; };
 		CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */; };
 		CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F85BE229C29B3003A6748 /* IconCollectionViewFlowLayout.swift */; };
+		CF45AF05231D24E300BE8B39 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45AF04231D24E300BE8B39 /* Step.swift */; };
+		CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45AF88231D3A3000BE8B39 /* StepSlider.swift */; };
 		CF4A053721FB2ACB000BB7DA /* PianoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052821FB2ACA000BB7DA /* PianoView.swift */; };
 		CF4A053821FB2ACB000BB7DA /* PianoKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052A21FB2ACA000BB7DA /* PianoKeyView.swift */; };
 		CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052C21FB2ACA000BB7DA /* PianoEffectView.swift */; };
@@ -875,6 +877,8 @@
 		CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentTests.swift; sourceTree = "<group>"; };
 		CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageView.swift; sourceTree = "<group>"; };
 		CF3F85BE229C29B3003A6748 /* IconCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		CF45AF04231D24E300BE8B39 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		CF45AF88231D3A3000BE8B39 /* StepSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSlider.swift; sourceTree = "<group>"; };
 		CF4A052821FB2ACA000BB7DA /* PianoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoView.swift; sourceTree = "<group>"; };
 		CF4A052A21FB2ACA000BB7DA /* PianoKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKeyView.swift; sourceTree = "<group>"; };
 		CF4A052C21FB2ACA000BB7DA /* PianoEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoEffectView.swift; sourceTree = "<group>"; };
@@ -1518,6 +1522,7 @@
 				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
 				F22612D6225631FD00472D22 /* StatisticsView */,
 				8951758E2248CF53008003FB /* StepIndicator */,
+				CF45AF03231D24A500BE8B39 /* StepSlider */,
 				45D7C569204949B7000E788F /* Switch */,
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				081F51BB222932C900026C84 /* TextView */,
@@ -2581,6 +2586,15 @@
 				CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */,
 			);
 			path = DrumMachine;
+			sourceTree = "<group>";
+		};
+		CF45AF03231D24A500BE8B39 /* StepSlider */ = {
+			isa = PBXGroup;
+			children = (
+				CF45AF04231D24E300BE8B39 /* Step.swift */,
+				CF45AF88231D3A3000BE8B39 /* StepSlider.swift */,
+			);
+			path = StepSlider;
 			sourceTree = "<group>";
 		};
 		CF4A052721FB2ACA000BB7DA /* Piano */ = {
@@ -4082,6 +4096,7 @@
 				DAB7FAA721B690DD00BF8CC6 /* BottomSheetPresentationController.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
+				CF45AF05231D24E300BE8B39 /* Step.swift in Sources */,
 				08D70A1B21832901003E2222 /* UIEdgeInsetsExtensions.swift in Sources */,
 				F26852F221FEFA97000978C8 /* UserAdsListViewModel.swift in Sources */,
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
@@ -4094,6 +4109,7 @@
 				91846C5A22E856D50001410F /* MapSettingsView.swift in Sources */,
 				CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */,
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
+				CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */,
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,

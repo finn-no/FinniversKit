@@ -122,6 +122,8 @@ extern NSString *const FinniversImageAssetsend;
 extern NSString *const FinniversImageAssetsettings;
 extern NSString *const FinniversImageAssetshare;
 extern NSString *const FinniversImageAssetshopping;
+extern NSString *const FinniversImageAssetsliderThumb;
+extern NSString *const FinniversImageAssetsliderThumbActive;
 extern NSString *const FinniversImageAssetsnowflake;
 extern NSString *const FinniversImageAssetsold;
 extern NSString *const FinniversImageAssetspark;
