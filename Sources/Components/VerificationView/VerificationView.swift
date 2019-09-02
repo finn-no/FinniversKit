@@ -2,11 +2,11 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-public protocol VerificationCardViewDelegate: AnyObject {
-    func didTapVerificationButton(_ : VerificationCardView)
+public protocol VerificationViewDelegate: AnyObject {
+    func didTapVerificationButton(_ : VerificationView)
 }
 
-public class VerificationCardView: UIView {
+public class VerificationView: UIView {
     private lazy var verificationImageView: UIImageView = {
         let image = UIImage(named: .noImage)
         let imageView = UIImageView(image: image)
@@ -16,8 +16,9 @@ public class VerificationCardView: UIView {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = . center
         label.numberOfLines = 1
         return label
     }()
@@ -25,6 +26,7 @@ public class VerificationCardView: UIView {
     private lazy var descriptionLabel: Label = {
         let label = Label(style: .caption)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()
@@ -42,15 +44,15 @@ public class VerificationCardView: UIView {
         return imageView
     }()
 
-    public weak var delegate: VerificationCardViewDelegate?
-
-    public var model: VerificationViewModel? {
+    public var viewModel: VerificationViewModel? {
         didSet {
-            titleLabel.text = model?.title
-            descriptionLabel.text = model?.description
-            verificationButton.setTitle(model?.buttonTitle, for: .normal)
+            titleLabel.text = viewModel?.title
+            descriptionLabel.text = viewModel?.description
+            verificationButton.setTitle(viewModel?.buttonTitle, for: .normal)
         }
     }
+
+    public weak var delegate: VerificationViewDelegate?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,21 +64,8 @@ public class VerificationCardView: UIView {
     }
 }
 
-private extension VerificationCardView {
+private extension VerificationView {
     func setup() {
-        clipsToBounds = true
-        layer.cornerRadius = 16
-
-        if UIDevice.isIPhone() {
-            layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        }
-
-        layer.masksToBounds = false
-        layer.shadowOpacity = 0.3
-        layer.shadowRadius = 3
-        layer.shadowOffset = .zero
-        layer.shadowColor = UIColor.black.cgColor
-
         backgroundColor = .white
 
         addSubview(verificationImageView)
@@ -86,9 +75,9 @@ private extension VerificationCardView {
         addSubview(verificationButtonImageView)
 
         let insets = UIEdgeInsets(
-            top: 0,
+            top: .mediumSpacing,
             leading: .largeSpacing,
-            bottom: .largeSpacing,
+            bottom: .mediumLargeSpacing,
             trailing: .largeSpacing
         )
 
@@ -100,15 +89,15 @@ private extension VerificationCardView {
 
         NSLayoutConstraint.activate([
             verificationImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            verificationImageView.widthAnchor.constraint(equalToConstant: 120),
-            verificationImageView.heightAnchor.constraint(equalToConstant: 120),
+            verificationImageView.widthAnchor.constraint(equalToConstant: 80),
+            verificationImageView.heightAnchor.constraint(equalToConstant: 80),
             verificationImageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: verificationImageView.bottomAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 48),
-            titleLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: verificationImageView.bottomAnchor, constant: insets.top),
+            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: insets.leading),
+            titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -insets.trailing),
 
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: insets.top),
             descriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: insets.leading),
             descriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -insets.trailing),
 

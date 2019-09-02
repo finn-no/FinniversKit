@@ -7,8 +7,8 @@ import FinniversKit
 public class VerificationDemoView: UIView {
     private lazy var verificationView: VerificationView = {
         let view = VerificationView(withAutoLayout: true)
+        view.viewModel = VerificationViewDefaultData()
         view.delegate = self
-        view.model = VerificationViewDefaultData()
         return view
     }()
 
@@ -26,11 +26,9 @@ private extension VerificationDemoView {
     func setup() {
         addSubview(verificationView)
         verificationView.fillInSuperview()
-        verificationView.show()
     }
 }
 
 extension VerificationDemoView: VerificationViewDelegate {
     public func didTapVerificationButton(_: VerificationView) {}
-    public func didDismissVerificationView(_: VerificationView) {}
 }
