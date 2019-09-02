@@ -178,4 +178,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testSaveSearchView() {
         snapshot(.saveSearchView)
     }
+
+    func testStepSlider() {
+        snapshot(.stepSlider)
+    }
 }
