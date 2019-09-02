@@ -4,7 +4,7 @@
 
 import UIKit
 
-protocol StepSliderDelegate: AnyObject {
+public protocol StepSliderDelegate: AnyObject {
     func stepSlider(_ stepSlider: StepSlider, didChangeValue value: Float)
     func stepSlider(_ stepSlider: StepSlider, canChangeToStep step: Step) -> Bool
     func stepSlider(_ stepSlider: StepSlider, didChangeStep step: Step)
@@ -12,26 +12,26 @@ protocol StepSliderDelegate: AnyObject {
     func stepSlider(_ stepSlider: StepSlider, accessibilityValueForStep step: Step) -> String
 }
 
-final class StepSlider: UISlider {
-    weak var delegate: StepSliderDelegate?
-    var generatesHapticFeedbackOnValueChange = true
+public final class StepSlider: UISlider {
+    public weak var delegate: StepSliderDelegate?
+    public var generatesHapticFeedbackOnValueChange = true
 
-    private(set) var step: Step
+    public private(set) var step: Step
     private var previousValue: Float = 0
     private let maximumValueWithoutOffset: Float
     private let leftOffset: Float
 
-    var currentTrackRect: CGRect {
+    public var currentTrackRect: CGRect {
         return trackRect(forBounds: bounds)
     }
 
-    var currentThumbRect: CGRect {
+    public var currentThumbRect: CGRect {
         return thumbRect(forBounds: bounds, trackRect: currentTrackRect, value: value)
     }
 
     // MARK: - Init
 
-    init(numberOfSteps: Int, hasLeftOffset: Bool = false, hasRightOffset: Bool = false) {
+    public init(numberOfSteps: Int, hasLeftOffset: Bool = false, hasRightOffset: Bool = false) {
         maximumValueWithoutOffset = Float(numberOfSteps)
         step = hasLeftOffset ? .lowerBound : .value(index: 0, rounded: false)
 
@@ -46,19 +46,19 @@ final class StepSlider: UISlider {
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Accessibility
 
-    override func accessibilityDecrement() {
+    public override func accessibilityDecrement() {
         let decrement = value == maximumValue && leftOffset > 0 ? leftOffset : 1
         setValueForSlider(value - decrement, animated: false)
         sendActions(for: .valueChanged)
     }
 
-    override func accessibilityIncrement() {
+    public override func accessibilityIncrement() {
         let increment = value == minimumValue && leftOffset > 0 ? leftOffset : 1
         setValueForSlider(value + increment, animated: false)
         sendActions(for: .valueChanged)
@@ -82,12 +82,12 @@ final class StepSlider: UISlider {
 
     // MARK: - Slider
 
-    func setStep(_ step: Step, animated: Bool) {
+    public func setStep(_ step: Step, animated: Bool) {
         self.step = step
         setValueForSlider(value(from: step), animated: animated)
     }
 
-    func value(from step: Step) -> Float {
+    public func value(from step: Step) -> Float {
         switch step {
         case let .value(index, rounded):
             return Float(index) + leftOffset + (rounded ? 0.5 : 0)
