@@ -8,7 +8,7 @@ class IdentityDemoView: UIView, Tweakable {
 
     // MARK: - UI properties
 
-    private var identityViews: [(IdentityView,IdentityViewModel)] = []
+    private var identityViews: [(IdentityView, IdentityViewModel)] = []
 
     // MARK: - Private properties
 
@@ -79,7 +79,7 @@ extension IdentityDemoView: IdentityViewDelegate {
     }
 
     public func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
-        DispatchQueue.global(priority: .background).asyncAfter(deadline: .now() + 0.5, execute: {
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.5, execute: {
             let task = URLSession.shared.dataTask(with: url) { data, _, _ in
                 guard let data = data else {
                     completionHandler(nil)
@@ -97,7 +97,7 @@ extension IdentityDemoView: IdentityViewDelegate {
 
 // MARK: - View model
 
-fileprivate struct ViewModel: IdentityViewModel {
+private struct ViewModel: IdentityViewModel {
     let profileImageUrl: URL? = URL(string: "https://images.finncdn.no/dynamic/220x220c/2019/7/profilbilde/05/8/214/710/286/8_352525950.jpg")
     let displayName: String = "Finn Nordmann"
     let subtitle: String = "Har vært på FINN siden 1952"

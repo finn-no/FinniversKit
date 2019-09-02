@@ -19,7 +19,7 @@ public protocol IdentityViewDelegate: AnyObject {
     func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void)
 }
 
-public class IdentityView : UIView {
+public class IdentityView: UIView {
 
     // MARK: - Public properties
 
