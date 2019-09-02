@@ -345,6 +345,7 @@
 		CF164DDC231579D600250822 /* FavoriteNoteViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DDB231579D600250822 /* FavoriteNoteViewModel+Demo.swift */; };
 		CF2E46EF231958300085A591 /* FavoriteFolderActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */; };
 		CF2E46F22319685C0085A591 /* FavoriteActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46F12319685C0085A591 /* FavoriteActionView.swift */; };
+		CF376C16231D3D9400ED2B24 /* StepSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C15231D3D9400ED2B24 /* StepSliderDemoView.swift */; };
 		CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */; };
 		CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */; };
 		CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */; };
@@ -862,6 +863,7 @@
 		CF29845D229566E8008CD832 /* ContactFormCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormCheckbox.swift; sourceTree = "<group>"; };
 		CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionViewController.swift; sourceTree = "<group>"; };
 		CF2E46F12319685C0085A591 /* FavoriteActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteActionView.swift; sourceTree = "<group>"; };
+		CF376C15231D3D9400ED2B24 /* StepSliderDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSliderDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDefaultData.swift; sourceTree = "<group>"; };
 		CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectorView.swift; sourceTree = "<group>"; };
@@ -2539,6 +2541,14 @@
 			path = FavoriteActions;
 			sourceTree = "<group>";
 		};
+		CF376C14231D3D8500ED2B24 /* StepSlider */ = {
+			isa = PBXGroup;
+			children = (
+				CF376C15231D3D9400ED2B24 /* StepSliderDemoView.swift */,
+			);
+			path = StepSlider;
+			sourceTree = "<group>";
+		};
 		CF39ADFB22034E9C002FC43E /* Infobox */ = {
 			isa = PBXGroup;
 			children = (
@@ -2774,6 +2784,7 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CF376C14231D3D8500ED2B24 /* StepSlider */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
@@ -3828,6 +3839,7 @@
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
+				CF376C16231D3D9400ED2B24 /* StepSliderDemoView.swift in Sources */,
 				44A0F0B022E20D2F00BCCF4C /* TweakableDemoView.swift in Sources */,
 				44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
 				4458701D213FA353009187BE /* RegisterViewDefaultData.swift in Sources */,

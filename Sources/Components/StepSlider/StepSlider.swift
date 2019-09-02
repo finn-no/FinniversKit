@@ -15,11 +15,7 @@ public protocol StepSliderDelegate: AnyObject {
 public final class StepSlider: UISlider {
     public weak var delegate: StepSliderDelegate?
     public var generatesHapticFeedbackOnValueChange = true
-
     public private(set) var step: Step
-    private var previousValue: Float = 0
-    private let maximumValueWithoutOffset: Float
-    private let leftOffset: Float
 
     public var currentTrackRect: CGRect {
         return trackRect(forBounds: bounds)
@@ -29,9 +25,36 @@ public final class StepSlider: UISlider {
         return thumbRect(forBounds: bounds, trackRect: currentTrackRect, value: value)
     }
 
+    // MARK: - Private properties
+
+    private let showTrackViews: Bool
+    private let maximumValueWithoutOffset: Float
+    private let leftOffset: Float
+    private var previousValue: Float = 0
+
+    private lazy var trackView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .sardine
+        view.layer.cornerRadius = 1.0
+        return view
+    }()
+
+    private lazy var activeRangeTrackView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .primaryBlue
+        return view
+    }()
+
+    private lazy var activeTrackViewTrailingConstraint = activeRangeTrackView.trailingAnchor.constraint(
+        equalTo: trackView.trailingAnchor
+    )
+
     // MARK: - Init
 
-    public init(numberOfSteps: Int, hasLeftOffset: Bool = false, hasRightOffset: Bool = false) {
+    public init(numberOfSteps: Int, hasLeftOffset: Bool = false, hasRightOffset: Bool = false, showTrackViews: Bool = false) {
+        self.showTrackViews = showTrackViews
         maximumValueWithoutOffset = Float(numberOfSteps)
         step = hasLeftOffset ? .lowerBound : .value(index: 0, rounded: false)
 
@@ -50,6 +73,13 @@ public final class StepSlider: UISlider {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Overrides
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        updateActiveTrackRange()
+    }
+
     // MARK: - Accessibility
 
     public override func accessibilityDecrement() {
@@ -66,18 +96,6 @@ public final class StepSlider: UISlider {
 
     private func updateAccessibilityValue() {
         accessibilityValue = delegate?.stepSlider(self, accessibilityValueForStep: step)
-    }
-
-    // MARK: - Setup
-
-    private func setup() {
-        minimumTrackTintColor = .clear
-        maximumTrackTintColor = .clear
-
-        setThumbImage(UIImage(named: .sliderThumb), for: .normal)
-        setThumbImage(UIImage(named: .sliderThumbActive), for: .highlighted)
-
-        addTarget(self, action: #selector(sliderValueChanged(sender:event:)), for: .valueChanged)
     }
 
     // MARK: - Slider
@@ -114,6 +132,49 @@ public final class StepSlider: UISlider {
     private func setValueForSlider(_ value: Float, animated: Bool) {
         setValue(value, animated: animated)
         updateAccessibilityValue()
+        updateActiveTrackRange()
+    }
+
+    // MARK: - Setup
+
+    private func setup() {
+        minimumTrackTintColor = .clear
+        maximumTrackTintColor = .clear
+
+        setThumbImage(UIImage(named: .sliderThumb), for: .normal)
+        setThumbImage(UIImage(named: .sliderThumbActive), for: .highlighted)
+
+        addTarget(self, action: #selector(sliderValueChanged(sender:event:)), for: .valueChanged)
+
+        trackView.isHidden = !showTrackViews
+        activeRangeTrackView.isHidden = true
+
+        addSubview(trackView)
+        addSubview(activeRangeTrackView)
+
+        NSLayoutConstraint.activate([
+            trackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .verySmallSpacing),
+            trackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.verySmallSpacing),
+            trackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            trackView.heightAnchor.constraint(equalToConstant: 3),
+
+            activeRangeTrackView.leadingAnchor.constraint(equalTo: trackView.leadingAnchor),
+            activeTrackViewTrailingConstraint,
+            activeRangeTrackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            activeRangeTrackView.heightAnchor.constraint(equalToConstant: 6)
+        ])
+    }
+
+    private func updateActiveTrackRange() {
+        if frame == .zero {
+            return
+        }
+
+        let trailingConstant = currentThumbRect.midX - trackView.bounds.width
+        activeTrackViewTrailingConstraint.constant = trailingConstant
+
+        activeRangeTrackView.layoutIfNeeded()
+        activeRangeTrackView.isHidden = false
     }
 
     // MARK: - Actions
@@ -144,6 +205,7 @@ public final class StepSlider: UISlider {
 
         if valueChanged {
             updateAccessibilityValue()
+            updateActiveTrackRange()
             delegate?.stepSlider(self, didChangeValue: value)
         }
 
