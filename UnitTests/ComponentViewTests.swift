@@ -174,4 +174,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testSaveSearchView() {
         snapshot(.saveSearchView)
     }
+
+    func testVerificationView() {
+        snapshot(.verificationView)
+    }
 }
