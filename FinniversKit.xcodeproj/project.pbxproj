@@ -345,6 +345,10 @@
 		CF164DDC231579D600250822 /* FavoriteNoteViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DDB231579D600250822 /* FavoriteNoteViewModel+Demo.swift */; };
 		CF2E46EF231958300085A591 /* FavoriteFolderActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */; };
 		CF2E46F22319685C0085A591 /* FavoriteActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46F12319685C0085A591 /* FavoriteActionView.swift */; };
+		CF376C16231D3D9400ED2B24 /* StepSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C15231D3D9400ED2B24 /* StepSliderDemoView.swift */; };
+		CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C17231D452100ED2B24 /* Array+Step.swift */; };
+		CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C1A231D458200ED2B24 /* ArrayStepTests.swift */; };
+		CF376C1D231D459900ED2B24 /* StepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C1C231D459900ED2B24 /* StepTests.swift */; };
 		CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */; };
 		CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */; };
 		CF3D5EE2215A6525006E4D08 /* InstrumentSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */; };
@@ -360,6 +364,8 @@
 		CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */; };
 		CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */; };
 		CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F85BE229C29B3003A6748 /* IconCollectionViewFlowLayout.swift */; };
+		CF45AF05231D24E300BE8B39 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45AF04231D24E300BE8B39 /* Step.swift */; };
+		CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45AF88231D3A3000BE8B39 /* StepSlider.swift */; };
 		CF4A053721FB2ACB000BB7DA /* PianoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052821FB2ACA000BB7DA /* PianoView.swift */; };
 		CF4A053821FB2ACB000BB7DA /* PianoKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052A21FB2ACA000BB7DA /* PianoKeyView.swift */; };
 		CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A052C21FB2ACA000BB7DA /* PianoEffectView.swift */; };
@@ -860,6 +866,10 @@
 		CF29845D229566E8008CD832 /* ContactFormCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormCheckbox.swift; sourceTree = "<group>"; };
 		CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionViewController.swift; sourceTree = "<group>"; };
 		CF2E46F12319685C0085A591 /* FavoriteActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteActionView.swift; sourceTree = "<group>"; };
+		CF376C15231D3D9400ED2B24 /* StepSliderDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSliderDemoView.swift; sourceTree = "<group>"; };
+		CF376C17231D452100ED2B24 /* Array+Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Step.swift"; sourceTree = "<group>"; };
+		CF376C1A231D458200ED2B24 /* ArrayStepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayStepTests.swift; sourceTree = "<group>"; };
+		CF376C1C231D459900ED2B24 /* StepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTests.swift; sourceTree = "<group>"; };
 		CF39ADFC22034F70002FC43E /* InfoboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDemoView.swift; sourceTree = "<group>"; };
 		CF39ADFE22034F9B002FC43E /* InfoboxDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxDefaultData.swift; sourceTree = "<group>"; };
 		CF3D5EE1215A6525006E4D08 /* InstrumentSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectorView.swift; sourceTree = "<group>"; };
@@ -875,6 +885,8 @@
 		CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentTests.swift; sourceTree = "<group>"; };
 		CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageView.swift; sourceTree = "<group>"; };
 		CF3F85BE229C29B3003A6748 /* IconCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		CF45AF04231D24E300BE8B39 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		CF45AF88231D3A3000BE8B39 /* StepSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSlider.swift; sourceTree = "<group>"; };
 		CF4A052821FB2ACA000BB7DA /* PianoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoView.swift; sourceTree = "<group>"; };
 		CF4A052A21FB2ACA000BB7DA /* PianoKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKeyView.swift; sourceTree = "<group>"; };
 		CF4A052C21FB2ACA000BB7DA /* PianoEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoEffectView.swift; sourceTree = "<group>"; };
@@ -1195,6 +1207,7 @@
 		14F4F1BA1FD6CEA800E9CECA /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				CF376C19231D455900ED2B24 /* StepSlider */,
 				CF3D5EFD215A759A006E4D08 /* EasterEggs */,
 				14F4F1BD1FD6CEA800E9CECA /* Info.plist */,
 				559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */,
@@ -1518,6 +1531,7 @@
 				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
 				F22612D6225631FD00472D22 /* StatisticsView */,
 				8951758E2248CF53008003FB /* StepIndicator */,
+				CF45AF03231D24A500BE8B39 /* StepSlider */,
 				45D7C569204949B7000E788F /* Switch */,
 				4447F6A31FDB2B110033DBC1 /* TextField */,
 				081F51BB222932C900026C84 /* TextView */,
@@ -2534,6 +2548,23 @@
 			path = FavoriteActions;
 			sourceTree = "<group>";
 		};
+		CF376C14231D3D8500ED2B24 /* StepSlider */ = {
+			isa = PBXGroup;
+			children = (
+				CF376C15231D3D9400ED2B24 /* StepSliderDemoView.swift */,
+			);
+			path = StepSlider;
+			sourceTree = "<group>";
+		};
+		CF376C19231D455900ED2B24 /* StepSlider */ = {
+			isa = PBXGroup;
+			children = (
+				CF376C1A231D458200ED2B24 /* ArrayStepTests.swift */,
+				CF376C1C231D459900ED2B24 /* StepTests.swift */,
+			);
+			path = StepSlider;
+			sourceTree = "<group>";
+		};
 		CF39ADFB22034E9C002FC43E /* Infobox */ = {
 			isa = PBXGroup;
 			children = (
@@ -2581,6 +2612,16 @@
 				CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */,
 			);
 			path = DrumMachine;
+			sourceTree = "<group>";
+		};
+		CF45AF03231D24A500BE8B39 /* StepSlider */ = {
+			isa = PBXGroup;
+			children = (
+				CF45AF04231D24E300BE8B39 /* Step.swift */,
+				CF45AF88231D3A3000BE8B39 /* StepSlider.swift */,
+				CF376C17231D452100ED2B24 /* Array+Step.swift */,
+			);
+			path = StepSlider;
 			sourceTree = "<group>";
 		};
 		CF4A052721FB2ACA000BB7DA /* Piano */ = {
@@ -2760,6 +2801,7 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CF376C14231D3D8500ED2B24 /* StepSlider */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
@@ -3814,6 +3856,7 @@
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
+				CF376C16231D3D9400ED2B24 /* StepSliderDemoView.swift in Sources */,
 				44A0F0B022E20D2F00BCCF4C /* TweakableDemoView.swift in Sources */,
 				44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
 				4458701D213FA353009187BE /* RegisterViewDefaultData.swift in Sources */,
@@ -3941,7 +3984,9 @@
 				CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */,
 				14193AAD21380DC800EC7FC0 /* ComponentViewTests.swift in Sources */,
 				08012BE521832C2E00A04F43 /* TableViewCellViewsTests.swift in Sources */,
+				CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */,
 				559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */,
+				CF376C1D231D459900ED2B24 /* StepTests.swift in Sources */,
 				14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */,
 				14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */,
 				14193AB021380DC800EC7FC0 /* RecyclingViewTests.swift in Sources */,
@@ -3961,6 +4006,7 @@
 				08F0D3F422259AD100968256 /* HappinessRatingView.swift in Sources */,
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
 				44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */,
+				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */,
 				CF164D15230FFB7400250822 /* FavoriteActionViewModel.swift in Sources */,
@@ -4082,6 +4128,7 @@
 				DAB7FAA721B690DD00BF8CC6 /* BottomSheetPresentationController.swift in Sources */,
 				44D912602077AC8A00486848 /* AttachableView.swift in Sources */,
 				4447F6EA1FDB2B110033DBC1 /* RibbonView.swift in Sources */,
+				CF45AF05231D24E300BE8B39 /* Step.swift in Sources */,
 				08D70A1B21832901003E2222 /* UIEdgeInsetsExtensions.swift in Sources */,
 				F26852F221FEFA97000978C8 /* UserAdsListViewModel.swift in Sources */,
 				14DC127121593B0000326DC3 /* HorizontalSlideTransitionAnimator.swift in Sources */,
@@ -4094,6 +4141,7 @@
 				91846C5A22E856D50001410F /* MapSettingsView.swift in Sources */,
 				CF3F85BF229C29B3003A6748 /* IconCollectionViewFlowLayout.swift in Sources */,
 				CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */,
+				CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */,
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
