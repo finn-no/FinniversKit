@@ -7,8 +7,9 @@ import UIKit
 public class Label: UILabel {
     // MARK: - Setup
 
-    public init(style: Style) {
+    public init(style: Style, withAutoLayout: Bool = false) {
         super.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         self.style = style
         setup()
     }

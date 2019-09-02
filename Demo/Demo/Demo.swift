@@ -65,6 +65,8 @@ public enum ComponentViews: String, CaseIterable {
     case questionnaireView
     case tweakable
     case saveSearchView
+    case identityView
+    case stepSlider
     case verificationView
 
     public static var items: [ComponentViews] {
@@ -151,6 +153,10 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
             return SaveSearchViewDemoViewController()
+        case .identityView:
+            return DemoViewController<IdentityDemoView>()
+        case .stepSlider:
+            return DemoViewController<StepSliderDemoView>()
         case .verificationView:
             return DemoViewController<VerificationDemoView>()
         }
@@ -196,7 +202,6 @@ public enum Cells: String, CaseIterable {
 public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
-    case favoriteFolderActionView
     case favoriteSortingView
     case favoriteActionView
     case favoritesListView
@@ -225,8 +230,6 @@ public enum RecyclingViews: String, CaseIterable {
             navigationController.navigationBar.shadowImage = UIImage()
 
             return navigationController
-        case .favoriteFolderActionView:
-            return DemoViewController<FavoriteFolderActionDemoView>()
         case .favoriteSortingView:
             return DemoViewController<FavoriteSortingDemoView>()
         case .favoriteActionView:
@@ -278,6 +281,7 @@ public enum FullscreenViews: String, CaseIterable {
     case favoriteFolderActionSheet
     case favoriteSortingSheet
     case favoriteActionSheet
+    case favoriteNoteSheet
     case verificatioActionSheet
 
     public static var items: [FullscreenViews] {
@@ -345,6 +349,14 @@ public enum FullscreenViews: String, CaseIterable {
         case .favoriteActionSheet:
             let bottomSheet = FavoriteActionSheet(viewModel: .default)
             bottomSheet.actionDelegate = FavoriteActionSheetDemoDelegate.shared
+            return bottomSheet
+        case .favoriteNoteSheet:
+            let bottomSheet = FavoriteNoteSheet(
+                noteViewModel: .default,
+                adViewModel: FavoriteAdsFactory.create().last!,
+                remoteImageViewDataSource: FavoriteNoteSheetDemoDelegate.shared
+            )
+            bottomSheet.noteDelegate = FavoriteNoteSheetDemoDelegate.shared
             return bottomSheet
         case .verificatioActionSheet:
             let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())

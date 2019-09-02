@@ -155,6 +155,10 @@ class ComponentViewTests: FBSnapshotTestCase {
         snapshot(.iconCollection)
     }
 
+    func testIdentityView() {
+        snapshot(.identityView)
+    }
+
     func testDisclaimerView() {
         snapshot(.disclaimerView)
     }
@@ -173,6 +177,10 @@ class ComponentViewTests: FBSnapshotTestCase {
 
     func testSaveSearchView() {
         snapshot(.saveSearchView)
+    }
+
+    func testStepSlider() {
+        snapshot(.stepSlider)
     }
 
     func testVerificationView() {

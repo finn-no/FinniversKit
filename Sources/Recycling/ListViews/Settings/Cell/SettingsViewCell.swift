@@ -7,8 +7,7 @@ public class SettingsViewCell: UITableViewCell {
     // MARK: - Private properties
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .body)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: .body, withAutoLayout: true)
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -16,8 +15,7 @@ public class SettingsViewCell: UITableViewCell {
     }()
 
     private lazy var stateLabel: Label = {
-        let label = Label(style: .body)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: .body, withAutoLayout: true)
         label.textColor = .stone
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -40,11 +38,7 @@ public class SettingsViewCell: UITableViewCell {
         return line
     }()
 
-    static let estimatedRowHeight: CGFloat = 52
-
-    // MARK: - Public properties
-
-    public var labelInset: CGFloat = 15
+    static let estimatedRowHeight: CGFloat = 48
 
     // MARK: - Public Methods
 
@@ -77,15 +71,19 @@ private extension SettingsViewCell {
         contentView.addSubview(arrowView)
         contentView.addSubview(hairline)
 
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: labelInset),
-            titleLabel.trailingAnchor.constraint(equalTo: stateLabel.leadingAnchor, constant: -.smallSpacing),
+        contentView.directionalLayoutMargins = NSDirectionalEdgeInsets(vertical: 0, horizontal: .mediumLargeSpacing)
+        let contentMargin = contentView.layoutMarginsGuide
 
-            stateLabel.trailingAnchor.constraint(equalTo: arrowView.leadingAnchor, constant: -.mediumLargeSpacing),
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: contentMargin.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: contentMargin.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: stateLabel.leadingAnchor, constant: -.smallSpacing),
+            titleLabel.bottomAnchor.constraint(equalTo: contentMargin.bottomAnchor),
+
+            stateLabel.trailingAnchor.constraint(equalTo: arrowView.leadingAnchor, constant: -.mediumSpacing),
             stateLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            arrowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            arrowView.trailingAnchor.constraint(equalTo: contentMargin.trailingAnchor),
             arrowView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             arrowView.heightAnchor.constraint(equalToConstant: 13),
             arrowView.widthAnchor.constraint(equalToConstant: 8),
@@ -95,7 +93,6 @@ private extension SettingsViewCell {
             hairline.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairline.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
 
-            contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: labelInset),
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: SettingsViewCell.estimatedRowHeight)
         ])
     }

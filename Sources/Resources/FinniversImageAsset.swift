@@ -25,6 +25,7 @@ public enum FinniversImageAsset: String {
     case arrowRight
     case arrowUp
     case attachment
+    case avatar
     case balloon0
     case balloon1
     case balloon2
@@ -133,6 +134,8 @@ public enum FinniversImageAsset: String {
     case settings
     case share
     case shopping
+    case sliderThumb
+    case sliderThumbActive
     case snowflake
     case sold
     case spark
@@ -160,6 +163,7 @@ public enum FinniversImageAsset: String {
             .arrowRight,
             .arrowUp,
             .attachment,
+            .avatar,
             .balloon0,
             .balloon1,
             .balloon2,
@@ -268,6 +272,8 @@ public enum FinniversImageAsset: String {
             .settings,
             .share,
             .shopping,
+            .sliderThumb,
+            .sliderThumbActive,
             .snowflake,
             .sold,
             .spark,

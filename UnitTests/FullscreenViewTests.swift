@@ -130,6 +130,10 @@ class FullscreenViewTests: FBSnapshotTestCase {
         snapshot(.favoriteActionSheet)
     }
 
+    func testFavoriteNoteSheet() {
+        snapshot(.favoriteNoteSheet)
+    }
+
     func testVerificationActionSheet() {
         snapshot(.verificatioActionSheet)
     }
