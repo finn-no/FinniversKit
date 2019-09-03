@@ -9,7 +9,7 @@ final class StepSliderDemoView: UIView {
 
     private lazy var slider: StepSlider = {
         let slider = StepSlider(
-            numberOfSteps: values.count - 1,
+            numberOfSteps: values.count,
             hasLeftOffset: false,
             hasRightOffset: false,
             showTrackViews: true
