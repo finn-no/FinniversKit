@@ -53,11 +53,11 @@ public class LoanCalculatorView: UIView {
                 loanValuesView.widthAnchor.constraint(equalTo: headerView.widthAnchor),
 
                 headerView.topAnchor.constraint(equalTo: margins.topAnchor),
-                headerView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: .largeSpacing),
+                headerView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: .veryLargeSpacing),
                 headerView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
                 headerView.bottomAnchor.constraint(equalTo: applyView.topAnchor, constant: -.largeSpacing),
 
-                applyView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: .largeSpacing),
+                applyView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: .veryLargeSpacing),
                 applyView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
                 applyView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
             ])
