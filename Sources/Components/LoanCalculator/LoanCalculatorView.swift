@@ -44,20 +44,39 @@ public class LoanCalculatorView: UIView {
         addSubview(applyView)
 
         let margins = layoutMarginsGuide
-        NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: margins.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            headerView.bottomAnchor.constraint(equalTo: loanValuesView.topAnchor, constant: -.largeSpacing),
 
-            loanValuesView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            loanValuesView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            loanValuesView.bottomAnchor.constraint(equalTo: applyView.topAnchor, constant: -.largeSpacing),
+        if UIDevice.isIPad() {
+            NSLayoutConstraint.activate([
+                loanValuesView.topAnchor.constraint(equalTo: margins.topAnchor),
+                loanValuesView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+                loanValuesView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
+                loanValuesView.widthAnchor.constraint(equalTo: headerView.widthAnchor),
 
-            applyView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            applyView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            applyView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
-        ])
+                headerView.topAnchor.constraint(equalTo: margins.topAnchor),
+                headerView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: .largeSpacing),
+                headerView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                headerView.bottomAnchor.constraint(equalTo: applyView.topAnchor, constant: -.largeSpacing),
+
+                applyView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: .largeSpacing),
+                applyView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                applyView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                headerView.topAnchor.constraint(equalTo: margins.topAnchor),
+                headerView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+                headerView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                headerView.bottomAnchor.constraint(equalTo: loanValuesView.topAnchor, constant: -.largeSpacing),
+
+                loanValuesView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+                loanValuesView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                loanValuesView.bottomAnchor.constraint(equalTo: applyView.topAnchor, constant: -.largeSpacing),
+
+                applyView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+                applyView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                applyView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
+            ])
+        }
     }
 }
 
