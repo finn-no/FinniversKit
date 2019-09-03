@@ -280,6 +280,7 @@
 		9BEB287D231D486100D28BAD /* LoanValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB287C231D486100D28BAD /* LoanValuesView.swift */; };
 		9BEB287F231D488000D28BAD /* TitleValueSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB287E231D488000D28BAD /* TitleValueSliderView.swift */; };
 		9BEB2881231D489F00D28BAD /* LoanApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB2880231D489F00D28BAD /* LoanApplyView.swift */; };
+		9BEB2905231E4A9500D28BAD /* IntegerNumberSuffixFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB2904231E4A9500D28BAD /* IntegerNumberSuffixFormatter.swift */; };
 		9F2130071B3637C7AD91066E /* FullscreenGalleryTransitionDestinationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21396E3BBAE40481AB6380 /* FullscreenGalleryTransitionDestinationDelegate.swift */; };
 		9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2134FB742B5E38B8428113 /* FullscreenGalleryTransitioningController.swift */; };
 		9F2131318060F45D01428A63 /* MessageTemplateOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F213A7786A35390C1207FAF /* MessageTemplateOverviewViewController.swift */; };
@@ -804,6 +805,7 @@
 		9BEB287C231D486100D28BAD /* LoanValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanValuesView.swift; sourceTree = "<group>"; };
 		9BEB287E231D488000D28BAD /* TitleValueSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueSliderView.swift; sourceTree = "<group>"; };
 		9BEB2880231D489F00D28BAD /* LoanApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanApplyView.swift; sourceTree = "<group>"; };
+		9BEB2904231E4A9500D28BAD /* IntegerNumberSuffixFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerNumberSuffixFormatter.swift; sourceTree = "<group>"; };
 		9F21314635A3AEFBA402B9DC /* IdentityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityView.swift; sourceTree = "<group>"; };
 		9F2133592F1C81B96801F10C /* FullscreenGalleryDismissalTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryDismissalTransition.swift; sourceTree = "<group>"; };
 		9F2133D2324BEE366DBA2134 /* FullscreenGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryViewController.swift; sourceTree = "<group>"; };
@@ -2226,6 +2228,7 @@
 			isa = PBXGroup;
 			children = (
 				9BEB2873231D233D00D28BAD /* LoanCalculatorDemoView.swift */,
+				9BEB2904231E4A9500D28BAD /* IntegerNumberSuffixFormatter.swift */,
 			);
 			path = LoanCalculator;
 			sourceTree = "<group>";
@@ -4004,6 +4007,7 @@
 				9A37DDB3353F56739B23D22B /* FavoriteAdCellDemoView.swift in Sources */,
 				9A37DDB47621DC5763EF5559 /* FavoriteAdsListDemoView.swift in Sources */,
 				CF164DDC231579D600250822 /* FavoriteNoteViewModel+Demo.swift in Sources */,
+				9BEB2905231E4A9500D28BAD /* IntegerNumberSuffixFormatter.swift in Sources */,
 				9A37DEDAA1E4DB20D8F38B08 /* FavoriteAdsListDemoViewHelper.swift in Sources */,
 				9A37D770DA2B07DC0F543B33 /* FavoriteAdsDemoDataSource.swift in Sources */,
 				9F213EFC959CEF2D2FE70FAF /* DemoMessageTemplateStore.swift in Sources */,
