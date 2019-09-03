@@ -2,7 +2,7 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-protocol LoanApplyViewModel {
+public protocol LoanApplyViewModel {
     var conditionsText: String { get }
     var applyText: String { get }
 }

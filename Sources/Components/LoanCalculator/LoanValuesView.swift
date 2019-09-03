@@ -4,13 +4,25 @@
 
 import Foundation
 
+public protocol LoanValuesViewModel {
+    var price: TitleValueSliderViewModel { get }
+    var ownedAmount: TitleValueSliderViewModel { get }
+    var paymentYears: TitleValueSliderViewModel { get }
+}
+
+protocol LoanValuesViewDataSource: AnyObject {
+    func loanValuesView(_ view: LoanValuesView, formattedCurrencyValue: Float) -> String?
+    func loanValuesView(_ view: LoanValuesView, formattedYearsValue: Int) -> String?
+}
+
 protocol LoanValuesViewDelegate: AnyObject {
-    func loadValuesView(_ view: LoanValuesView, didChangePrice: Double)
-    func loadValuesView(_ view: LoanValuesView, didChangeOwnedAmount: Double)
-    func loadValuesView(_ view: LoanValuesView, didChangePaymentYears: Int)
+    func loanValuesView(_ view: LoanValuesView, didChangePrice: Float)
+    func loanValuesView(_ view: LoanValuesView, didChangeOwnedAmount: Float)
+    func loanValuesView(_ view: LoanValuesView, didChangePaymentYears: Int)
 }
 
 class LoanValuesView: UIView {
+    weak var dataSource: LoanValuesViewDataSource?
     weak var delegate: LoanValuesViewDelegate?
 
     // MARK: - Private subviews
@@ -22,33 +34,24 @@ class LoanValuesView: UIView {
     }()
 
     private lazy var priceView: TitleValueSlider = {
-        let view = TitleValueSlider(numberFormatter: currencyFormatter, withAutoLayout: true)
+        let view = TitleValueSlider(withAutoLayout: true)
+        view.dataSource = self
         view.delegate = self
         return view
     }()
 
     private lazy var ownedAmountView: TitleValueSlider = {
-        let view = TitleValueSlider(numberFormatter: currencyFormatter, withAutoLayout: true)
+        let view = TitleValueSlider(withAutoLayout: true)
+        view.dataSource = self
         view.delegate = self
         return view
     }()
 
     private lazy var paymentYearsView: TitleValueSlider = {
-        let view = TitleValueSlider(numberFormatter: yearAmountFormatter, withAutoLayout: true)
+        let view = TitleValueSlider(withAutoLayout: true)
+        view.dataSource = self
         view.delegate = self
         return view
-    }()
-
-    private lazy var currencyFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.groupingSeparator = " "
-        return formatter
-    }()
-
-    private lazy var yearAmountFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        return formatter
     }()
 
     // MARK: - Initializers
@@ -61,12 +64,15 @@ class LoanValuesView: UIView {
         fatalError()
     }
 
-    // MARK: - Private functions
-    private func setup() {
-        priceView.configure(with: DefaultTitleValueSliderViewModel.price)
-        ownedAmountView.configure(with: DefaultTitleValueSliderViewModel.ownedAmount)
-        paymentYearsView.configure(with: DefaultTitleValueSliderViewModel.paymentYears)
+    // MARK: - Internal methods
+    func configure(with model: LoanValuesViewModel) {
+        priceView.configure(with: model.price)
+        ownedAmountView.configure(with: model.ownedAmount)
+        paymentYearsView.configure(with: model.paymentYears)
+    }
 
+    // MARK: - Private methods
+    private func setup() {
         stackView.addArrangedSubview(priceView)
         stackView.addArrangedSubview(ownedAmountView)
         stackView.addArrangedSubview(paymentYearsView)
@@ -75,15 +81,28 @@ class LoanValuesView: UIView {
     }
 }
 
+extension LoanValuesView: TitleValueSliderDataSource {
+    func titleValueSlider(_ view: TitleValueSlider, titleForValue value: Float) -> String? {
+        switch view {
+        case priceView, ownedAmountView:
+            return dataSource?.loanValuesView(self, formattedCurrencyValue: value)
+        case paymentYearsView:
+            return dataSource?.loanValuesView(self, formattedYearsValue: Int(value))
+        default:
+            return nil
+        }
+    }
+}
+
 extension LoanValuesView: TitleValueSliderDelegate {
     func titleValueSlider(_ view: TitleValueSlider, didChangeValue value: Float) {
         switch view {
         case priceView:
-            delegate?.loadValuesView(self, didChangePrice: Double(value))
+            delegate?.loanValuesView(self, didChangePrice: value)
         case ownedAmountView:
-            delegate?.loadValuesView(self, didChangeOwnedAmount: Double(value))
+            delegate?.loanValuesView(self, didChangeOwnedAmount: value)
         case paymentYearsView:
-            delegate?.loadValuesView(self, didChangePaymentYears: Int(value))
+            delegate?.loanValuesView(self, didChangePaymentYears: Int(value))
         default:
             break
         }

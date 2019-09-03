@@ -4,7 +4,17 @@
 
 import UIKit
 
+public protocol LoanCalculatorViewModel: LoanHeaderViewModel, LoanValuesViewModel, LoanApplyViewModel {}
+
+public protocol LoanCalculatorDataSource: AnyObject {
+    func loanCalculatorView(_ view: LoanCalculatorView, formattedCurrencyValue: Float) -> String?
+    func loanCalculatorView(_ view: LoanCalculatorView, formattedYearsValue: Int) -> String?
+}
+
 public class LoanCalculatorView: UIView {
+    // MARK: - Public properties
+    public weak var dataSource: LoanCalculatorDataSource?
+
     // MARK: - Private subviews
     private lazy var headerView: LoanHeaderView = {
         let view = LoanHeaderView(withAutoLayout: true)
@@ -13,6 +23,7 @@ public class LoanCalculatorView: UIView {
 
     private lazy var loanValuesView: LoanValuesView = {
         let view = LoanValuesView(withAutoLayout: true)
+        view.dataSource = self
         return view
     }()
 
@@ -31,13 +42,17 @@ public class LoanCalculatorView: UIView {
         fatalError()
     }
 
-    // MARK: - Private functions
+    // MARK: - Public methods
+    public func configure(with model: LoanCalculatorViewModel) {
+        headerView.configure(with: model)
+        loanValuesView.configure(with: model)
+        applyView.configure(with: model)
+    }
+
+    // MARK: - Private methods
     private func setup() {
         backgroundColor = .marble
         directionalLayoutMargins = .init(all: .mediumLargeSpacing * 1.5)
-
-        headerView.configure(with: DefaultLoanHeaderViewModel.test)
-        applyView.configure(with: DefaultLoanApplyViewModel.test)
 
         addSubview(headerView)
         addSubview(loanValuesView)
@@ -80,53 +95,12 @@ public class LoanCalculatorView: UIView {
     }
 }
 
-struct DefaultLoanHeaderViewModel: LoanHeaderViewModel {
-    let title: String
-    let rentText: String
-    let pricePerMonth: String
-    let loanAmountText: String
-    let logo: UIImage?
-}
+extension LoanCalculatorView: LoanValuesViewDataSource {
+    func loanValuesView(_ view: LoanValuesView, formattedCurrencyValue value: Float) -> String? {
+        return dataSource?.loanCalculatorView(self, formattedCurrencyValue: value)
+    }
 
-extension DefaultLoanHeaderViewModel {
-    static let test = DefaultLoanHeaderViewModel(
-        title: "Estimert pr. måned",
-        rentText: "2,65 % eff. / 2,55 % nom. rente",
-        pricePerMonth: "16 656 kr",
-        loanAmountText: "Lånesum: 3 675 000 kr",
-        logo: UIImage(named: .home)
-    )
-}
-
-struct DefaultTitleValueSliderViewModel: TitleValueSliderViewModel {
-    let title: String
-    let minimumValue: Int
-    let maximumValue: Int
-    let initialValue: Int
-}
-
-extension DefaultTitleValueSliderViewModel {
-    static let price = DefaultTitleValueSliderViewModel(
-        title: "Kjøpesum:", minimumValue: 0, maximumValue: 5600000, initialValue: 5600000
-    )
-
-    static let ownedAmount = DefaultTitleValueSliderViewModel(
-        title: "Egenkapital:", minimumValue: 0, maximumValue: 5600000, initialValue: Int(5600000 * 0.35)
-    )
-
-    static let paymentYears = DefaultTitleValueSliderViewModel(
-        title: "Nedbetalingstid:", minimumValue: 0, maximumValue: 35, initialValue: 25
-    )
-}
-
-struct DefaultLoanApplyViewModel: LoanApplyViewModel {
-    let conditionsText: String
-    let applyText: String
-}
-
-extension DefaultLoanApplyViewModel {
-    static let test = DefaultLoanApplyViewModel(
-        conditionsText: "Eff.rente 2,62 %. Etableringsgebyr. 2 500 kr. 4 433 000 kr o/25 år. Kostnad: 1 589 500 kr. Totalt: 6 022 500 kr.",
-        applyText: "Søk boliglån"
-    )
+    func loanValuesView(_ view: LoanValuesView, formattedYearsValue value: Int) -> String? {
+        return dataSource?.loanCalculatorView(self, formattedYearsValue: value)
+    }
 }

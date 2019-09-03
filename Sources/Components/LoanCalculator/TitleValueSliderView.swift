@@ -2,11 +2,15 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-protocol TitleValueSliderViewModel {
+public protocol TitleValueSliderViewModel {
     var title: String { get }
     var minimumValue: Int { get }
     var maximumValue: Int { get }
     var initialValue: Int { get }
+}
+
+protocol TitleValueSliderDataSource: AnyObject {
+    func titleValueSlider(_ view: TitleValueSlider, titleForValue: Float) -> String?
 }
 
 protocol TitleValueSliderDelegate: AnyObject {
@@ -14,6 +18,7 @@ protocol TitleValueSliderDelegate: AnyObject {
 }
 
 class TitleValueSlider: UIView {
+    weak var dataSource: TitleValueSliderDataSource?
     weak var delegate: TitleValueSliderDelegate?
 
     // MARK: - Private subviews
@@ -35,14 +40,10 @@ class TitleValueSlider: UIView {
         return slider
     }()
 
-    private let numberFormatter: IntegerNumberSuffixFormatter
-
     // MARK: - Initializers
 
-    init(numberFormatter: IntegerNumberSuffixFormatter, withAutoLayout: Bool = false) {
-        self.numberFormatter = numberFormatter
-        super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
     }
 
@@ -82,7 +83,7 @@ class TitleValueSlider: UIView {
     }
 
     private func sliderValueChanged() {
-        valueLabel.text = numberFormatter.string(for: slider.value)
+        valueLabel.text = dataSource?.titleValueSlider(self, titleForValue: slider.value)
     }
 }
 

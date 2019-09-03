@@ -4,7 +4,7 @@
 
 import UIKit
 
-protocol LoanHeaderViewModel {
+public protocol LoanHeaderViewModel {
     var title: String { get }
     var rentText: String { get }
     var pricePerMonth: String { get }
