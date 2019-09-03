@@ -71,7 +71,7 @@ struct DefaultLoanHeaderViewModel: LoanHeaderViewModel {
 
 extension DefaultLoanHeaderViewModel {
     static let test = DefaultLoanHeaderViewModel(
-        title: "Estimert pr måned",
+        title: "Estimert pr. måned",
         rentText: "2,65 % eff. / 2,55 % nom. rente",
         pricePerMonth: "16 656 kr",
         loanAmountText: "Lånesum: 3 675 000 kr",
