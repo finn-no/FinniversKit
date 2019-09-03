@@ -17,32 +17,32 @@ public protocol AdsGridViewCellDelegate: AnyObject {
 public class AdsGridViewCell: UICollectionViewCell {
     // MARK: - Internal properties
 
-    private static let titleHeight: CGFloat = 20.0
-    private static let titleTopMargin: CGFloat = 3.0
-    private static let bottomMargin: CGFloat = 15.0
-    private static let subtitleHeight: CGFloat = 17.0
-    private static let subtitleTopMargin: CGFloat = 6.0
-    private static let accessoryHeight: CGFloat = 14.0
-    private static let margin: CGFloat = 8.0
-    private static let cornerRadius: CGFloat = 8.0
-    private static let imageDescriptionHeight: CGFloat = 35.0
-    private static let iconSize: CGFloat = 23.0
+    public static let titleHeight: CGFloat = 20.0
+    public static let titleTopMargin: CGFloat = 3.0
+    public static let bottomMargin: CGFloat = 15.0
+    public static let subtitleHeight: CGFloat = 17.0
+    public static let subtitleTopMargin: CGFloat = 6.0
+    public static let accessoryHeight: CGFloat = 14.0
+    public static let margin: CGFloat = 8.0
+    public static let cornerRadius: CGFloat = 8.0
+    public static let imageDescriptionHeight: CGFloat = 35.0
+    public static let iconSize: CGFloat = 23.0
 
-    private lazy var imageBackgroundView: UIView = {
+    public private(set) lazy var imageBackgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.layer.cornerRadius = AdsGridViewCell.cornerRadius
         view.layer.masksToBounds = true
         return view
     }()
 
-    private lazy var imageView: UIImageView = {
+    public private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
-    private lazy var iconImageView: UIImageView = {
+    public private(set) lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
@@ -50,14 +50,14 @@ public class AdsGridViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    private lazy var titleLabel: Label = {
+    public private(set) lazy var titleLabel: Label = {
         let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
     }()
 
-    private lazy var subtitleLabel: Label = {
+    public private(set) lazy var subtitleLabel: Label = {
         let label = Label(style: .detail)
         label.textColor = .stone
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var accessoryLabel: Label = {
+    public private(set) lazy var accessoryLabel: Label = {
         let label = Label(style: .detailStrong)
         label.textColor = .licorice
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +73,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var imageDescriptionView: UIView = {
+    public private(set) lazy var imageDescriptionView: UIView = {
         let view = UILabel(withAutoLayout: true)
         view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
         view.alpha = 1.0
@@ -84,7 +84,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         return view
     }()
 
-    private lazy var imageTextLabel: Label = {
+    public private(set) lazy var imageTextLabel: Label = {
         let label = Label(style: .bodyStrong)
         label.textColor = .milk
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -92,8 +92,8 @@ public class AdsGridViewCell: UICollectionViewCell {
         return label
     }()
 
-    private lazy var favoriteButton: FavoriteButton = {
-        let button = FavoriteButton(withAutoLayout: true)
+    public private(set) lazy var favoriteButton: FrontPageFavoriteButton = {
+        let button = FrontPageFavoriteButton(withAutoLayout: true)
         button.addTarget(self, action: #selector(handleFavoriteButtonTap(_:)), for: .touchUpInside)
         return button
     }()
@@ -138,7 +138,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         setup()
     }
 
-    private func setup() {
+    open func setup() {
         isAccessibilityElement = true
 
         addSubview(imageBackgroundView)
@@ -303,7 +303,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
 // MARK: - Private types
 
-private final class FavoriteButton: UIButton {
+public class FrontPageFavoriteButton: UIButton {
     var isFavorite = false {
         didSet {
             let image = isFavorite ? UIImage(named: .favouriteAddedImg) : UIImage(named: .favouriteAddImg)
@@ -316,11 +316,11 @@ private final class FavoriteButton: UIButton {
         adjustsImageWhenHighlighted = false
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override var isHighlighted: Bool {
+    override open var isHighlighted: Bool {
         didSet {
             alpha = isHighlighted ? 0.8 : 1
         }
