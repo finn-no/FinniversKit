@@ -28,17 +28,18 @@ class TitleValueSlider: UIView {
         return label
     }()
 
-    private lazy var slider: UISlider = {
-        let slider = UISlider(withAutoLayout: true)
-        slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+    private lazy var slider: StepSlider = {
+        let slider = StepSlider(numberOfSteps: 10_000_000, showTrackViews: true)
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.delegate = self
         return slider
     }()
 
-    private let numberFormatter: NumberFormatter
+    private let numberFormatter: IntegerNumberSuffixFormatter
 
     // MARK: - Initializers
 
-    init(numberFormatter: NumberFormatter, withAutoLayout: Bool = false) {
+    init(numberFormatter: IntegerNumberSuffixFormatter, withAutoLayout: Bool = false) {
         self.numberFormatter = numberFormatter
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
@@ -80,8 +81,28 @@ class TitleValueSlider: UIView {
         ])
     }
 
-    @objc private func sliderValueChanged() {
+    private func sliderValueChanged() {
         valueLabel.text = numberFormatter.string(for: slider.value)
+    }
+}
+
+extension TitleValueSlider: StepSliderDelegate {
+    func stepSlider(_ stepSlider: StepSlider, didChangeStep step: Step) {
+        sliderValueChanged()
         delegate?.titleValueSlider(self, didChangeValue: slider.value)
+    }
+
+    func stepSlider(_ stepSlider: StepSlider, didChangeRawValue value: Float) {
+    }
+
+    func stepSlider(_ stepSlider: StepSlider, canChangeToStep step: Step) -> Bool {
+        return true
+    }
+
+    func stepSlider(_ stepSlider: StepSlider, didEndSlideInteraction step: Step) {
+    }
+
+    func stepSlider(_ stepSlider: StepSlider, accessibilityValueForStep step: Step) -> String {
+        return ""
     }
 }
