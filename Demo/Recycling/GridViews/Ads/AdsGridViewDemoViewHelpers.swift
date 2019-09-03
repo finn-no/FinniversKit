@@ -66,10 +66,10 @@ public struct AdFactory {
 
     private static var titles: [String] {
         return [
-            "Home Sweet Home",
-            "Hjemmekjært",
-            "Mansion",
-            "Villa Medusa",
+            "VISNING 7/9 - Rålekker selveier med mulighet for rask overtagelse. Kort vei til togstasjon. Må ses!",
+            "Praktfullt beliggende enebolig med fantastisk utsikt over Hardangerfjorden garasje, bassengrom. Mulighet for båtplass!",
+            "Innholdsrik familiebolig med 2 stuer, 3 sover., 2 bad, dobb. garasje. Barnevennlig med lettstelt hage og mye naturtomt.",
+            "NY PRIS! VISNING TIRSDAG 10/9 - Arkitekttegnet part av tomannsbolig med frittstående garasje!",
             "Villa Villekulla",
             "Privat slott",
             "Pent brukt bolig",

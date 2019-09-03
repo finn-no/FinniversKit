@@ -12,6 +12,7 @@ public class AdsGridPromotedViewCell: AdsGridViewCell {
         imageView.contentMode = .scaleAspectFill
         subtitleLabel.textColor = .milk
         titleLabel.textColor = .milk
+        titleLabel.numberOfLines = 2
         accessoryLabel.textColor = .milk
         imageDescriptionView.backgroundColor = .clear
         addSubview(imageBackgroundView)
@@ -61,13 +62,12 @@ public class AdsGridPromotedViewCell: AdsGridViewCell {
 
             subtitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: AdsGridViewCell.subtitleTopMargin),
             subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             subtitleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.subtitleHeight),
 
             titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: AdsGridViewCell.titleTopMargin),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.titleHeight),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
 
             iconImageView.leadingAnchor.constraint(equalTo: imageDescriptionView.leadingAnchor),
             iconImageView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.iconSize),
