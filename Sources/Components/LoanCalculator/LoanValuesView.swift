@@ -34,21 +34,21 @@ class LoanValuesView: UIView {
     }()
 
     private lazy var priceView: TitleValueSlider = {
-        let view = TitleValueSlider(withAutoLayout: true)
+        let view = TitleValueSlider(numberOfSteps: 280, withAutoLayout: true)
         view.dataSource = self
         view.delegate = self
         return view
     }()
 
     private lazy var ownedAmountView: TitleValueSlider = {
-        let view = TitleValueSlider(withAutoLayout: true)
+        let view = TitleValueSlider(numberOfSteps: 280, withAutoLayout: true)
         view.dataSource = self
         view.delegate = self
         return view
     }()
 
     private lazy var paymentYearsView: TitleValueSlider = {
-        let view = TitleValueSlider(withAutoLayout: true)
+        let view = TitleValueSlider(numberOfSteps: 25, withAutoLayout: true)
         view.dataSource = self
         view.delegate = self
         return view
@@ -81,6 +81,7 @@ class LoanValuesView: UIView {
     }
 }
 
+// MARK: - TitleValueSliderDataSource
 extension LoanValuesView: TitleValueSliderDataSource {
     func titleValueSlider(_ view: TitleValueSlider, titleForValue value: Float) -> String? {
         switch view {
@@ -94,6 +95,7 @@ extension LoanValuesView: TitleValueSliderDataSource {
     }
 }
 
+// MARK: - TitleValueSliderDelegate
 extension LoanValuesView: TitleValueSliderDelegate {
     func titleValueSlider(_ view: TitleValueSlider, didChangeValue value: Float) {
         switch view {

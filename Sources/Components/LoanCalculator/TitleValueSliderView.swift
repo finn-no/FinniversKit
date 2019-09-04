@@ -24,6 +24,7 @@ class TitleValueSlider: UIView {
     // MARK: - Private subviews
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return label
     }()
 
@@ -34,16 +35,22 @@ class TitleValueSlider: UIView {
     }()
 
     private lazy var slider: StepSlider = {
-        let slider = StepSlider(numberOfSteps: 10_000_000, showTrackViews: true)
+        let slider = StepSlider(numberOfSteps: numberOfSteps, showTrackViews: true)
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.delegate = self
         return slider
     }()
 
+    private var values: [Int] = []
+
+    private let numberOfSteps: Int
+
     // MARK: - Initializers
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(numberOfSteps: Int, withAutoLayout: Bool = false) {
+        self.numberOfSteps = numberOfSteps
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 
@@ -54,9 +61,19 @@ class TitleValueSlider: UIView {
     // MARK: - Internal functions
     func configure(with model: TitleValueSliderViewModel) {
         titleLabel.text = model.title
-        slider.minimumValue = Float(model.minimumValue)
-        slider.maximumValue = Float(model.maximumValue)
-        slider.value = Float(model.initialValue)
+
+        let increment: Int
+        if (model.maximumValue - model.minimumValue) / numberOfSteps != 1 {
+            increment = findIncrement(forModel: model)
+        } else {
+            increment = 1
+        }
+
+        values = (0...numberOfSteps).map { stepIndex in
+            return min(model.maximumValue, max(model.minimumValue, stepIndex * increment + model.minimumValue))
+        }
+
+        slider.setStep(values.closestStep(for: model.initialValue), animated: true)
         sliderValueChanged()
     }
 
@@ -83,27 +100,51 @@ class TitleValueSlider: UIView {
     }
 
     private func sliderValueChanged() {
-        valueLabel.text = dataSource?.titleValueSlider(self, titleForValue: slider.value)
+        if let value = values.value(for: slider.step) {
+            valueLabel.text = dataSource?.titleValueSlider(self, titleForValue: Float(value))
+        }
+    }
+
+    /// Finds the biggest increment possible that will partition the values in the `numberOfStep` range values
+    private func findIncrement(forModel model: TitleValueSliderViewModel) -> Int {
+        let exactDivision = (model.maximumValue - model.minimumValue) / numberOfSteps
+        if exactDivision.isMultiple(of: 1_000) {
+            return exactDivision
+        }
+
+        for index in 1...100_000 {
+            let proposedIncrement = 1_000 * index
+            let proposedNumberOfSteps = ((model.maximumValue - model.minimumValue) / proposedIncrement)
+            if proposedNumberOfSteps <= numberOfSteps {
+                return proposedIncrement
+            }
+        }
+        return 1
     }
 }
 
 extension TitleValueSlider: StepSliderDelegate {
     func stepSlider(_ stepSlider: StepSlider, didChangeStep step: Step) {
-        sliderValueChanged()
-        delegate?.titleValueSlider(self, didChangeValue: slider.value)
+        if let value = values.value(for: step) {
+            sliderValueChanged()
+            delegate?.titleValueSlider(self, didChangeValue: Float(value))
+        }
     }
 
-    func stepSlider(_ stepSlider: StepSlider, didChangeRawValue value: Float) {
-    }
+    func stepSlider(_ stepSlider: StepSlider, didChangeRawValue value: Float) {}
 
     func stepSlider(_ stepSlider: StepSlider, canChangeToStep step: Step) -> Bool {
         return true
     }
 
     func stepSlider(_ stepSlider: StepSlider, didEndSlideInteraction step: Step) {
+        if let value = values.value(for: step) {
+            sliderValueChanged()
+            delegate?.titleValueSlider(self, didChangeValue: Float(value))
+        }
     }
 
     func stepSlider(_ stepSlider: StepSlider, accessibilityValueForStep step: Step) -> String {
-        return ""
+        return "\(values.value(for: step) ?? 0)"
     }
 }
