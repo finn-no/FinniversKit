@@ -234,6 +234,14 @@ extension AdsGridView: AdsGridViewCellDelegate {
 // MARK: - AdsGridViewLayoutDelegate
 
 extension AdsGridView: AdsGridViewLayoutDelegate {
+    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, itemIsVipAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> Bool {
+        guard let model = dataSource?.adsGridView(self, modelAtIndex: indexPath.row) else {
+            return false
+        }
+
+        return model.isVIP
+    }
+
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat? {
         return headerView?.frame.size.height
     }
