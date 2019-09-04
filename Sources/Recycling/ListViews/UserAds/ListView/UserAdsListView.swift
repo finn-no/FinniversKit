@@ -17,6 +17,7 @@ public protocol UserAdsListViewDelegate: AnyObject {
 
 public protocol UserAdsListViewDataSource: AnyObject {
     func numberOfSections(in userAdsListView: UserAdsListView) -> Int
+    func sectionNumberForEmphasizedAction(in userAdsListView: UserAdsListView) -> Int?
     func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool
     func userAdsListView(_ userAdsListView: UserAdsListView, numberOfRowsInSection section: Int) -> Int
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex section: Int) -> UserAdsListHeaderViewModel
