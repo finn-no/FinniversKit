@@ -245,6 +245,8 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
         }
 
         if model.isVIP {
+            // We want VIP ads to show in a more prominent way, hence the
+            // change in image height ratio
             return model.imageSize.height * 1.8 / model.imageSize.width
         } else {
             return model.imageSize.height / model.imageSize.width
