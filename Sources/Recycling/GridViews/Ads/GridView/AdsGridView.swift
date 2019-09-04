@@ -245,7 +245,7 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
         }
 
         if model.isVIP {
-            return model.imageSize.height * 2 / model.imageSize.width
+            return model.imageSize.height * 1.8 / model.imageSize.width
         } else {
             return model.imageSize.height / model.imageSize.width
         }
