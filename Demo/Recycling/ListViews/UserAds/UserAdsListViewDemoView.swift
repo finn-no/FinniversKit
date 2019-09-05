@@ -10,7 +10,7 @@ class UserAdsListDataSource: NSObject {
 
 class UserAdsListViewDemoView: UIView {
     private lazy var dataSource = UserAdsListDataSource()
-    var emphasizedActionHasBeenCollapsed = false
+    private(set) var emphasizedActionHasBeenCollapsed = false
 
     // MARK: - Init
 
@@ -53,6 +53,9 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
         }
 
         return [deleteAction]
+    }
+    func userAdsListViewDidCollapseEmphasizedAction(_ userAdsListView: UserAdsListView) {
+        emphasizedActionHasBeenCollapsed = true
     }
 
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button) {}

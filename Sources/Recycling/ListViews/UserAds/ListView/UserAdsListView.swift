@@ -6,6 +6,7 @@ import UIKit
 
 public protocol UserAdsListViewDelegate: AnyObject {
     func userAdsListViewDidStartRefreshing(_ userAdsListView: UserAdsListView)
+    func userAdsListViewDidCollapseEmphasizedAction(_ userAdsListView: UserAdsListView)
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button)
@@ -16,8 +17,7 @@ public protocol UserAdsListViewDelegate: AnyObject {
 }
 
 public protocol UserAdsListViewDataSource: AnyObject {
-    var emphasizedActionHasBeenCollapsed: Bool { get set }
-
+    var emphasizedActionHasBeenCollapsed: Bool { get }
     func numberOfSections(in userAdsListView: UserAdsListView) -> Int
     func sectionNumberForEmphasizedAction(in userAdsListView: UserAdsListView) -> Int?
     func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool
@@ -301,7 +301,7 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
     
     func doTheSameThing(cell: UserAdsListEmphasizedActionCell) {
         guard let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
-        dataSource?.emphasizedActionHasBeenCollapsed = true
+        delegate?.userAdsListViewDidCollapseEmphasizedAction(self)
         tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
     }
 }
