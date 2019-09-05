@@ -7,7 +7,13 @@ public protocol LoanApplyViewModel {
     var applyText: String { get }
 }
 
+protocol LoanApplyViewDelegate: AnyObject {
+    func loanApplyViewDidSelectApply(_ view: LoanApplyView)
+}
+
 class LoanApplyView: UIView {
+    weak var delegate: LoanApplyViewDelegate?
+
     // MARK: - Private subviews
     private lazy var conditionsText: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
@@ -18,6 +24,7 @@ class LoanApplyView: UIView {
 
     private lazy var applyButton: Button = {
         let button = Button(style: .callToAction, withAutoLayout: true)
+        button.addTarget(self, action: #selector(handleApplyButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -25,7 +32,6 @@ class LoanApplyView: UIView {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
         stackView.spacing = .mediumLargeSpacing
-
         return stackView
     }()
 
@@ -51,5 +57,9 @@ class LoanApplyView: UIView {
         stackView.addArrangedSubview(applyButton)
         addSubview(stackView)
         stackView.fillInSuperview()
+    }
+
+    @objc private func handleApplyButtonTap() {
+        delegate?.loanApplyViewDidSelectApply(self)
     }
 }
