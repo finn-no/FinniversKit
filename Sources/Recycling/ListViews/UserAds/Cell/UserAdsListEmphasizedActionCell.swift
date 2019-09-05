@@ -68,7 +68,8 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     
     private lazy var actionWrapper: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .yellow
+        view.backgroundColor = .clear
+        view.clipsToBounds = true
         return view
     }()
     
@@ -98,6 +99,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         return button
     }()
     
+    private var actionWrapperHideConstraint = NSLayoutConstraint()
     private var actionWrapperHeightConstraint = NSLayoutConstraint()
     
     // MARK: - Setup
@@ -118,11 +120,12 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         actionWrapper.addSubview(actionTitleLabel)
         actionWrapper.addSubview(actionDescriptionLabel)
         actionWrapper.addSubview(button)
-        actionWrapperHeightConstraint = NSLayoutConstraint(item: actionWrapper, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 160)
+        actionWrapperHideConstraint = NSLayoutConstraint(item: actionWrapper, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant:0)
+        actionWrapperHeightConstraint = NSLayoutConstraint(item: actionWrapper, attribute: .bottomMargin, relatedBy: .equal, toItem: button, attribute: .bottomMargin, multiplier: 1, constant: .largeSpacing)
         
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 120),
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: actionWrapper.bottomAnchor, constant: .mediumSpacing),
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: actionWrapper.bottomAnchor),
             
             adWrapperView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
             adWrapperView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -247,6 +250,10 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
  */
     }
     
+    public override func didMoveToSuperview() {
+        // collapseActionWrapper()
+    }
+    
     // MARK: - Dependency injection
     
     public var model: UserAdsListViewModel? {
@@ -279,7 +286,8 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     }
     
     public func collapseActionWrapper() {
-        actionWrapperHeightConstraint.constant = 0
+        actionWrapperHeightConstraint.isActive = false
+        actionWrapperHideConstraint.isActive = true
     }
     
     /// Loads a given image provided that the imagePath in the `model` is valid.
