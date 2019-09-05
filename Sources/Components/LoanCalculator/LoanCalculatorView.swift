@@ -81,6 +81,10 @@ public class LoanCalculatorView: UIView {
         applyView.configure(with: model)
     }
 
+    public func showErrorText(_ show: Bool) {
+        headerView.showErrorText(show)
+    }
+
     // MARK: - Private methods
     private func setup() {
         backgroundColor = .marble

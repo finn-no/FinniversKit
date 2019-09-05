@@ -10,6 +10,7 @@ public protocol LoanHeaderViewModel {
     var pricePerMonth: String { get }
     var loanAmountText: String { get }
     var logoUrl: String? { get }
+    var errorText: String { get }
 }
 
 class LoanHeaderView: UIView {
@@ -23,6 +24,7 @@ class LoanHeaderView: UIView {
     private let logoSize = CGSize(width: 70, height: 50)
 
     // MARK: - Private subviews
+
     private lazy var textStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
@@ -39,23 +41,15 @@ class LoanHeaderView: UIView {
         return stackView
     }()
 
-    private lazy var titleLabel: Label = {
+    private lazy var titleLabel = Label(style: .body, withAutoLayout: true)
+    private lazy var valueLabel = Label(style: .title2, withAutoLayout: true)
+    private lazy var rentLabel = Label(style: .detailStrong, withAutoLayout: true)
+    private lazy var loanTotalLabel = Label(style: .detail, withAutoLayout: true)
+
+    private lazy var errorLabel: UILabel = {
         let label = Label(style: .body, withAutoLayout: true)
-        return label
-    }()
-
-    private lazy var valueLabel: Label = {
-        let label = Label(style: .title2, withAutoLayout: true)
-        return label
-    }()
-
-    private lazy var rentLabel: Label = {
-        let label = Label(style: .detailStrong, withAutoLayout: true)
-        return label
-    }()
-
-    private lazy var loanTotalLabel: Label = {
-        let label = Label(style: .detail, withAutoLayout: true)
+        label.numberOfLines = 4
+        label.isHidden = true
         return label
     }()
 
@@ -84,6 +78,7 @@ class LoanHeaderView: UIView {
         valueLabel.text = model.pricePerMonth
         rentLabel.text = model.rentText
         loanTotalLabel.text = model.loanAmountText
+        errorLabel.text = model.errorText
 
         if let logoUrl = model.logoUrl {
             logoImageView.loadImage(for: logoUrl, imageWidth: logoSize.width, fallbackImage: fallbackImage)
@@ -92,12 +87,21 @@ class LoanHeaderView: UIView {
         }
     }
 
+    func showErrorText(_ show: Bool) {
+        errorLabel.isHidden = !show
+        titleLabel.isHidden = show
+        valueLabel.isHidden = show
+        rentLabel.isHidden = show
+        loanTotalLabel.isHidden = show
+    }
+
     // MARK: - Private functions
     private func setup() {
         textStackView.addArrangedSubview(titleLabel)
         textStackView.addArrangedSubview(valueLabel)
         textStackView.addArrangedSubview(rentLabel)
         textStackView.addArrangedSubview(loanTotalLabel)
+        textStackView.addArrangedSubview(errorLabel)
 
         outerStackView.addArrangedSubview(textStackView)
         outerStackView.addArrangedSubview(logoImageView)

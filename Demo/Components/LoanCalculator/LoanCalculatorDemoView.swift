@@ -100,6 +100,7 @@ extension LoanCalculatorDemoView: LoanCalculatorDelegate {
     private func finishLoading() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) { [weak self] in
             self?.loanCalculatorView.isLoading = false
+            self?.loanCalculatorView.showErrorText(Bool.random())
         }
     }
 }
@@ -110,6 +111,7 @@ struct DefaultLoanCalculatorViewModel: LoanCalculatorViewModel {
     let pricePerMonth: String
     let loanAmountText: String
     let logoUrl: String?
+    let errorText: String
     let conditionsText: String
     let applyText: String
     var price: TitleValueSliderViewModel
@@ -124,6 +126,7 @@ extension DefaultLoanCalculatorViewModel {
         pricePerMonth: "16 656 kr",
         loanAmountText: "Lånesum: 3 675 000 kr",
         logoUrl: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png",
+        errorText: "Verdiene er utenfor banks prisliste. Renten vil dermed settes på individuell basis",
         conditionsText: "Eff.rente 2,62 %. Etableringsgebyr. 2 500 kr. 4 433 000 kr o/25 år. Kostnad: 1 589 500 kr. Totalt: 6 022 500 kr.",
         applyText: "Søk boliglån",
         price: DefaultTitleValueSliderViewModel.price,
