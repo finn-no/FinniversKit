@@ -7,6 +7,8 @@ import UIKit
 public protocol UserAdsListViewDelegate: AnyObject {
     func userAdsListViewDidStartRefreshing(_ userAdsListView: UserAdsListView)
     func userAdsListViewDidCollapseEmphasizedAction(_ userAdsListView: UserAdsListView)
+    func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView)
+    func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView)
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button)
