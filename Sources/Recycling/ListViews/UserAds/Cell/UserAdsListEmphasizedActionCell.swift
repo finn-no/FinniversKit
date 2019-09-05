@@ -144,7 +144,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             adWrapperView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
             adWrapperView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             adWrapperView.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -.largeSpacing),
-            adWrapperView.heightAnchor.constraint(greaterThanOrEqualToConstant: 112),
+            adWrapperView.heightAnchor.constraint(greaterThanOrEqualToConstant: 120),
             
             adImageView.heightAnchor.constraint(equalToConstant: UserAdsListEmphasizedActionCell.imageSize),
             adImageView.widthAnchor.constraint(equalToConstant: UserAdsListEmphasizedActionCell.imageSize),
