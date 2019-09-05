@@ -23,6 +23,9 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     public weak var dataSource: UserAdsListViewCellDataSource? // <- Bør denne protokollen være noe litt mer generisk?
     
     public weak var delegate: UserAdsListEmphasizedActionCellDelegate?
+
+    /// Informs the cell whether it should display the available action or not
+    public var shouldShowAction = true
     
     // MARK: - Internal properties
     
@@ -133,7 +136,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         actionWrapper.addSubview(button)
         actionWrapperHideConstraint = NSLayoutConstraint(item: actionWrapper, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant:0)
         actionWrapperHeightConstraint = NSLayoutConstraint(item: actionWrapper, attribute: .bottomMargin, relatedBy: .equal, toItem: button, attribute: .bottomMargin, multiplier: 1, constant: .largeSpacing)
-        
+
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 120),
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: actionWrapper.bottomAnchor),
@@ -158,7 +161,6 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             actionWrapper.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             actionWrapper.topAnchor.constraint(equalTo: adWrapperView.bottomAnchor, constant: .mediumLargeSpacing),
             actionWrapper.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            actionWrapperHeightConstraint,
             
             actionTitleLabel.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
             actionTitleLabel.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor, constant: -.mediumLargeSpacing),
@@ -171,6 +173,12 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             button.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
             button.topAnchor.constraint(equalTo: actionDescriptionLabel.bottomAnchor, constant: 24)
             ])
+        
+        if shouldShowAction {
+            actionWrapperHeightConstraint.isActive = true
+        } else {
+            actionWrapperHideConstraint.isActive = true
+        }
         
         // If price is not provided
         // then the detailLabel should be centered with the ribbonView
@@ -294,11 +302,6 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         if let model = model {
             loadImage(model)
         }
-    }
-    
-    public func collapseActionWrapper() {
-        actionWrapperHeightConstraint.isActive = false
-        actionWrapperHideConstraint.isActive = true
     }
     
     /// Loads a given image provided that the imagePath in the `model` is valid.

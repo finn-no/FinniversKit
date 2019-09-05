@@ -16,6 +16,8 @@ public protocol UserAdsListViewDelegate: AnyObject {
 }
 
 public protocol UserAdsListViewDataSource: AnyObject {
+    var emphasizedActionHasBeenCollapsed: Bool { get set }
+
     func numberOfSections(in userAdsListView: UserAdsListView) -> Int
     func sectionNumberForEmphasizedAction(in userAdsListView: UserAdsListView) -> Int?
     func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool
@@ -209,10 +211,12 @@ extension UserAdsListView: UITableViewDataSource {
                 cell.loadingColor = color
                 cell.dataSource = self
                 cell.delegate = self
+                // TODO: Fix up this crap
+                cell.shouldShowAction = !(dataSource?.emphasizedActionHasBeenCollapsed ?? false)
                 if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
                     cell.model = model
                 }
-                cell.layoutIfNeeded()
+
                 return cell
             }
             
@@ -297,8 +301,7 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
     
     func doTheSameThing(cell: UserAdsListEmphasizedActionCell) {
         guard let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
-        cell.collapseActionWrapper()
-        self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
-
+        dataSource?.emphasizedActionHasBeenCollapsed = true
+        tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
     }
 }

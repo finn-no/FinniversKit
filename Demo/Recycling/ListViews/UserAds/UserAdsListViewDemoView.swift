@@ -10,6 +10,7 @@ class UserAdsListDataSource: NSObject {
 
 class UserAdsListViewDemoView: UIView {
     private lazy var dataSource = UserAdsListDataSource()
+    var emphasizedActionHasBeenCollapsed = false
 
     // MARK: - Init
 
