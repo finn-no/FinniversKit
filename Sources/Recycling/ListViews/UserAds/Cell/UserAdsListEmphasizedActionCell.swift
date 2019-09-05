@@ -20,7 +20,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     
     /// A data source for the loading of the image
     
-    public weak var dataSource: UserAdsListViewCellDataSource? // <- Bør denne protokollen være noe litt mer generisk?
+    public weak var dataSource: UserAdsListViewCellDataSource?
     
     public weak var delegate: UserAdsListEmphasizedActionCellDelegate?
 
@@ -301,9 +301,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         }
         
         adImageView.backgroundColor = loadingColor
-   
-        // TODO: Load Image....
-        
+           
         let unusedCell = UserAdsListViewCell()
         dataSource.userAdsListViewCell(unusedCell, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
             self?.adImageView.backgroundColor = .clear

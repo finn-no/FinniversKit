@@ -207,14 +207,14 @@ extension UserAdsListView: UITableViewDataSource {
             }
             return seeAllAdsCell
         default:
-            // TODO: Force unwrap(!)
             if let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self), indexPath.section == emphasizedSection {
-                let cell = tableView.dequeue(UserAdsListEmphasizedActionCell.self, for: indexPath) as! UserAdsListEmphasizedActionCell
+                let cell = tableView.dequeue(UserAdsListEmphasizedActionCell.self, for: indexPath)
                 cell.loadingColor = color
                 cell.dataSource = self
                 cell.delegate = self
-                // TODO: Fix up this crap
-                cell.shouldShowAction = !(dataSource?.emphasizedActionHasBeenCollapsed ?? false)
+
+                let actionHasBeenCollapsed = dataSource?.emphasizedActionHasBeenCollapsed ?? false
+                cell.shouldShowAction = !actionHasBeenCollapsed
                 if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
                     cell.model = model
                 }
@@ -222,7 +222,7 @@ extension UserAdsListView: UITableViewDataSource {
                 return cell
             }
             
-            let cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath) as! UserAdsListViewCell
+            let cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath)
             cell.loadingColor = color
             cell.dataSource = self
             if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
