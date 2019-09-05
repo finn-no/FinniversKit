@@ -255,7 +255,7 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
         var height = model.imageSize.height
         // We want large ads to show in a more prominent way,
         // hence the change in image height ratio.
-        if model.isLargeAd && UIDevice.isIPhone() {
+        if model.isLargeAd {
             height *= 1.8
         }
         return model.imageSize.height / model.imageSize.width
