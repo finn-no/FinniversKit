@@ -9,10 +9,19 @@ public protocol LoanHeaderViewModel {
     var rentText: String { get }
     var pricePerMonth: String { get }
     var loanAmountText: String { get }
-    var logo: UIImage? { get }
+    var logoUrl: String? { get }
 }
 
 class LoanHeaderView: UIView {
+    weak var dataSource: RemoteImageViewDataSource? {
+        didSet {
+            logoImageView.dataSource = dataSource
+        }
+    }
+
+    // MARK: - Private properties
+    private let logoSize = CGSize(width: 70, height: 50)
+
     // MARK: - Private subviews
     private lazy var textStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -50,13 +59,15 @@ class LoanHeaderView: UIView {
         return label
     }()
 
-    private lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
+    private lazy var logoImageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
         imageView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return imageView
     }()
+
+    private lazy var fallbackImage = UIImage(named: .noImage)
 
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -73,7 +84,12 @@ class LoanHeaderView: UIView {
         valueLabel.text = model.pricePerMonth
         rentLabel.text = model.rentText
         loanTotalLabel.text = model.loanAmountText
-        logoImageView.image = model.logo
+
+        if let logoUrl = model.logoUrl {
+            logoImageView.loadImage(for: logoUrl, imageWidth: logoSize.width, fallbackImage: fallbackImage)
+        } else {
+            logoImageView.setImage(fallbackImage, animated: false)
+        }
     }
 
     // MARK: - Private functions
@@ -85,6 +101,11 @@ class LoanHeaderView: UIView {
 
         outerStackView.addArrangedSubview(textStackView)
         outerStackView.addArrangedSubview(logoImageView)
+
+        NSLayoutConstraint.activate([
+            logoImageView.widthAnchor.constraint(equalToConstant: logoSize.width),
+            logoImageView.heightAnchor.constraint(equalToConstant: logoSize.height)
+        ])
 
         addSubview(outerStackView)
         outerStackView.fillInSuperview()

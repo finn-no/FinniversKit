@@ -35,6 +35,8 @@ class LoanCalculatorDemoView: UIView {
     }
 }
 
+// MARK: - LoanCalculatorDataSource
+
 extension LoanCalculatorDemoView: LoanCalculatorDataSource {
     func loanCalculatorView(_ view: LoanCalculatorView, formattedCurrencyValue value: Float) -> String? {
         return currencyFormatter.string(for: value)
@@ -43,7 +45,37 @@ extension LoanCalculatorDemoView: LoanCalculatorDataSource {
     func loanCalculatorView(_ view: LoanCalculatorView, formattedYearsValue value: Int) -> String? {
         return yearsFormatter.string(for: Float(value))
     }
+
+    func loanCalculatorView(
+        _ view: LoanCalculatorView,
+        loadImageWithPath imagePath: String,
+        imageWidth: CGFloat,
+        completion: @escaping ((UIImage?) -> Void)
+    ) {
+        guard let url = URL(string: imagePath) else {
+            completion(nil)
+            return
+        }
+
+        // Demo code only.
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            usleep(50_000)
+            DispatchQueue.main.async {
+                if let data = data, let image = UIImage(data: data) {
+                    completion(image)
+                } else {
+                    completion(nil)
+                }
+            }
+        }
+
+        task.resume()
+    }
+
+    func loanCalculatorView(_ view: LoanCalculatorView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
+
+// MARK: - LoanCalculatorDelegate
 
 extension LoanCalculatorDemoView: LoanCalculatorDelegate {
     func loanValuesView(_ view: LoanCalculatorView, didChangePrice price: Float) {
@@ -68,7 +100,7 @@ struct DefaultLoanCalculatorViewModel: LoanCalculatorViewModel {
     let rentText: String
     let pricePerMonth: String
     let loanAmountText: String
-    let logo: UIImage?
+    let logoUrl: String?
     let conditionsText: String
     let applyText: String
     var price: TitleValueSliderViewModel
@@ -82,7 +114,7 @@ extension DefaultLoanCalculatorViewModel {
         rentText: "2,65 % eff. / 2,55 % nom. rente",
         pricePerMonth: "16 656 kr",
         loanAmountText: "Lånesum: 3 675 000 kr",
-        logo: UIImage(named: .home),
+        logoUrl: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png",
         conditionsText: "Eff.rente 2,62 %. Etableringsgebyr. 2 500 kr. 4 433 000 kr o/25 år. Kostnad: 1 589 500 kr. Totalt: 6 022 500 kr.",
         applyText: "Søk boliglån",
         price: DefaultTitleValueSliderViewModel.price,

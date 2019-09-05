@@ -9,6 +9,17 @@ public protocol LoanCalculatorViewModel: LoanHeaderViewModel, LoanValuesViewMode
 public protocol LoanCalculatorDataSource: AnyObject {
     func loanCalculatorView(_ view: LoanCalculatorView, formattedCurrencyValue: Float) -> String?
     func loanCalculatorView(_ view: LoanCalculatorView, formattedYearsValue: Int) -> String?
+    func loanCalculatorView(
+        _ view: LoanCalculatorView,
+        loadImageWithPath imagePath: String,
+        imageWidth: CGFloat,
+        completion: @escaping ((UIImage?) -> Void)
+    )
+    func loanCalculatorView(
+        _ view: LoanCalculatorView,
+        cancelLoadingImageWithPath imagePath: String,
+        imageWidth: CGFloat
+    )
 }
 
 public protocol LoanCalculatorDelegate: AnyObject {
@@ -23,8 +34,15 @@ public class LoanCalculatorView: UIView {
     public weak var dataSource: LoanCalculatorDataSource?
     public weak var delegate: LoanCalculatorDelegate?
 
+    // MARK: - Private properties
+    private let imageCache = ImageMemoryCache()
+
     // MARK: - Private subviews
-    private lazy var headerView = LoanHeaderView(withAutoLayout: true)
+    private lazy var headerView: LoanHeaderView = {
+        let view = LoanHeaderView(withAutoLayout: true)
+        view.dataSource = self
+        return view
+    }()
 
     private lazy var loanValuesView: LoanValuesView = {
         let view = LoanValuesView(withAutoLayout: true)
@@ -99,6 +117,40 @@ public class LoanCalculatorView: UIView {
                 applyView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
             ])
         }
+    }
+}
+
+// MARK: - RemoteImageViewDataSource
+
+extension LoanCalculatorView: RemoteImageViewDataSource {
+    public func remoteImageView(
+        _ view: RemoteImageView,
+        cachedImageWithPath imagePath: String,
+        imageWidth: CGFloat
+    ) -> UIImage? {
+        return imageCache.image(forKey: imagePath)
+    }
+
+    public func remoteImageView(
+        _ view: RemoteImageView,
+        loadImageWithPath imagePath: String,
+        imageWidth: CGFloat,
+        completion: @escaping ((UIImage?) -> Void)
+    ) {
+        dataSource?.loanCalculatorView(
+            self,
+            loadImageWithPath: imagePath,
+            imageWidth: imageWidth,
+            completion: { [weak self] image in
+                if let image = image {
+                    self?.imageCache.add(image, forKey: imagePath)
+                }
+                completion(image)
+        })
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
+        dataSource?.loanCalculatorView(self, cancelLoadingImageWithPath: imagePath, imageWidth: imageWidth)
     }
 }
 
