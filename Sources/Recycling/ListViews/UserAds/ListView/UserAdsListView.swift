@@ -171,9 +171,10 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) ?? firstSection
         switch section {
         // Return 0.1 so we dont show a seperator if there's no section to show.
-        case firstSection, lastSection: return CGFloat.leastNonzeroMagnitude
+        case firstSection, lastSection, emphasizedSection: return CGFloat.leastNonzeroMagnitude
         default: return UITableView.automaticDimension
         }
     }
