@@ -26,7 +26,7 @@ public class AdsGridPromotedViewCell: AdsGridViewCell {
             UIColor.black.withAlphaComponent(0.65).cgColor,
             UIColor.clear.cgColor
         ]
-        topGradient.locations = [0, 0.3]
+        topGradient.locations = [0, 0.4]
         let topGradientImageView = UIImageView(withAutoLayout: true)
         topGradientImageView.image = topGradient.toImage()
         imageBackgroundView.addSubview(topGradientImageView)
@@ -37,7 +37,7 @@ public class AdsGridPromotedViewCell: AdsGridViewCell {
             UIColor.clear.cgColor,
             UIColor.black.withAlphaComponent(0.65).cgColor
         ]
-        bottomGradient.locations = [0.8, 1]
+        bottomGradient.locations = [0.7, 1]
         let bottomGradientImageView = UIImageView(withAutoLayout: true)
         bottomGradientImageView.image = bottomGradient.toImage()
         imageBackgroundView.addSubview(bottomGradientImageView)
