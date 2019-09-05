@@ -32,7 +32,7 @@ class AdsGridViewLayout: UICollectionViewLayout {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private var itemWidth: CGFloat {
+    private func calculateItemWidth() -> CGFloat {
         guard let collectionView = collectionView else {
             return 50.0
         }
@@ -67,8 +67,13 @@ class AdsGridViewLayout: UICollectionViewLayout {
     }
 
     private func indexOfLowestValue(in columns: [Int]) -> Int {
-        let shortestColumnIndex = columns.firstIndex(of: columns.min() ?? 0) ?? 0
-        return shortestColumnIndex
+        let index = columns.firstIndex(of: columns.min() ?? 0) ?? 0
+        return index
+    }
+
+    private func indexOfHighestValue(in columns: [Int]) -> Int {
+        let index = columns.firstIndex(of: columns.max() ?? 0) ?? 0
+        return index
     }
 
     private func xOffsetForItemInColumn(itemWidth: CGFloat, columnIndex: Int) -> CGFloat {
@@ -90,69 +95,60 @@ class AdsGridViewLayout: UICollectionViewLayout {
 
         var columns = columnsRange.map { _ in 0 }
         var attributesCollection = [UICollectionViewLayoutAttributes]()
-        var yOffset = configuration.topOffset
+        var initialYOffset = configuration.topOffset
 
         if let height = delegate.adsGridViewLayout(self, heightForHeaderViewInCollectionView: collectionView) {
             let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: IndexPath(item: 0, section: 0))
             attributes.frame = CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: height)
             attributesCollection.append(attributes)
 
-            yOffset += height
+            initialYOffset += height
         }
 
-        var previousItemWasVIP = false
+        var previousItemWasLargeAd = false
         for index in 0 ..< numberOfItems {
             let indexPath = IndexPath(item: index, section: 0)
-            let isVIP = delegate.adsGridViewLayout(self, itemIsVipAtIndexPath: indexPath, inCollectionView: collectionView)
+            let isLargeAd = delegate.adsGridViewLayout(self, itemIsVipAtIndexPath: indexPath, inCollectionView: collectionView)
 
-            if isVIP {
-                let imageHeightRatio = delegate.adsGridViewLayout(self, imageHeightRatioForItemAtIndexPath: indexPath, inCollectionView: collectionView)
-                let itemNonImageHeight = delegate.adsGridViewLayout(self, itemNonImageHeightForItemAtIndexPath: indexPath, inCollectionView: collectionView)
-                let itemHeight = (imageHeightRatio * itemWidth) + itemNonImageHeight
+            let imageHeightRatio = delegate.adsGridViewLayout(self, imageHeightRatioForItemAtIndexPath: indexPath, inCollectionView: collectionView)
+            let itemNonImageHeight = delegate.adsGridViewLayout(self, itemNonImageHeightForItemAtIndexPath: indexPath, inCollectionView: collectionView)
+            let itemHeight = (imageHeightRatio * calculateItemWidth()) + itemNonImageHeight
 
-                let topPadding = index == 0 ? yOffset : 0.0
+            let xOffset: CGFloat
+            let itemWidth: CGFloat
+            let yOffset: CGFloat
 
-                var previousOffset = columns[0]
-                if columns[1] >= previousOffset {
-                    previousOffset = columns[1]
+            if isLargeAd {
+                let columnIndex = indexOfHighestValue(in: columns)
+                xOffset = configuration.sidePadding
+
+                let isFirstItem = index == 0
+                let topPadding = isFirstItem ? initialYOffset : 0.0
+                yOffset = CGFloat(columns[columnIndex]) + topPadding
+
+                itemWidth = collectionView.frame.size.width - configuration.sidePadding * 2
+
+                for columnIndex in columns.indices {
+                    columns[columnIndex] = Int(yOffset + itemHeight + configuration.columnSpacing)
                 }
-                let verticalOffset = CGFloat(previousOffset) + topPadding
-
-                let itemWidth = collectionView.frame.size.width - configuration.sidePadding * 2
-
-                let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                attributes.frame = CGRect(x: configuration.sidePadding, y: verticalOffset, width: itemWidth, height: itemHeight)
-                attributesCollection.append(attributes)
-
-                columns[0] = Int(verticalOffset + itemHeight + configuration.columnSpacing)
-                columns[1] = Int(verticalOffset + itemHeight + configuration.columnSpacing)
-                previousItemWasVIP = true
+                previousItemWasLargeAd = true
             } else {
                 let columnIndex = indexOfLowestValue(in: columns)
+                xOffset = xOffsetForItemInColumn(itemWidth: calculateItemWidth(), columnIndex: columnIndex)
 
-                let xOffset = xOffsetForItemInColumn(itemWidth: itemWidth, columnIndex: columnIndex)
-                var topPadding: CGFloat = 0.0
-                if previousItemWasVIP {
-                    topPadding = 0
-                    previousItemWasVIP = false
-                } else if configuration.numberOfColumns > index {
-                    topPadding = yOffset
-                } else {
-                    topPadding = 0
-                }
-                let verticalOffset = CGFloat(columns[columnIndex]) + topPadding
+                let isFirstRow = configuration.numberOfColumns > index
+                let topPadding = isFirstRow && !previousItemWasLargeAd ? initialYOffset : 0.0
+                yOffset = CGFloat(columns[columnIndex]) + topPadding
 
-                let imageHeightRatio = delegate.adsGridViewLayout(self, imageHeightRatioForItemAtIndexPath: indexPath, inCollectionView: collectionView)
-                let itemNonImageHeight = delegate.adsGridViewLayout(self, itemNonImageHeightForItemAtIndexPath: indexPath, inCollectionView: collectionView)
+                itemWidth = calculateItemWidth()
 
-                let itemHeight = (imageHeightRatio * itemWidth) + itemNonImageHeight
-
-                columns[columnIndex] = Int(verticalOffset + itemHeight + configuration.columnSpacing)
-
-                let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                attributes.frame = CGRect(x: xOffset, y: verticalOffset, width: itemWidth, height: itemHeight)
-                attributesCollection.append(attributes)
+                columns[columnIndex] = Int(yOffset + itemHeight + configuration.columnSpacing)
+                previousItemWasLargeAd = false
             }
+
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+            attributes.frame = CGRect(x: xOffset, y: yOffset, width: itemWidth, height: itemHeight)
+            attributesCollection.append(attributes)
         }
 
         itemAttributes.append(contentsOf: attributesCollection)

@@ -14,7 +14,7 @@ public struct Ad: AdsGridViewModel {
     public var accessory: String?
     public let imageText: String?
     public var isFavorite = false
-    public var isVIP = false
+    public var isLargeAd = false
 
     public var accessibilityLabel: String {
         var message = title
@@ -59,7 +59,7 @@ public struct AdFactory {
                 accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
                 imageText: price,
                 isFavorite: false,
-                isVIP: Int.random(in: 1..<10) == 5,
+                isLargeAd: Int.random(in: 1..<10) == 5,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
     }

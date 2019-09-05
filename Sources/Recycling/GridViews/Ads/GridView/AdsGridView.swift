@@ -148,7 +148,7 @@ extension AdsGridView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        if model.isVIP {
+        if model.isLargeAd {
             let cell = collectionView.dequeue(AdsGridPromotedViewCell.self, for: indexPath)
             // Show a pretty color while we load the image
             let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
@@ -239,7 +239,7 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
             return false
         }
 
-        return model.isVIP
+        return model.isLargeAd
     }
 
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat? {
@@ -252,8 +252,8 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
             return defaultImageSize.height / defaultImageSize.width
         }
 
-        if model.isVIP {
-            // We want VIP ads to show in a more prominent way, hence the
+        if model.isLargeAd {
+            // We want LargeAd ads to show in a more prominent way, hence the
             // change in image height ratio
             return model.imageSize.height * 1.8 / model.imageSize.width
         } else {

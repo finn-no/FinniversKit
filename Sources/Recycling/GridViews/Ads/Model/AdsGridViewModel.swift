@@ -15,7 +15,7 @@ public protocol AdsGridViewModel {
     var accessibilityLabel: String { get }
     var isFavorite: Bool { get }
     var favoriteButtonAccessibilityLabel: String { get }
-    var isVIP: Bool { get }
+    var isLargeAd: Bool { get }
 }
 
 public extension AdsGridViewModel {
