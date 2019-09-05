@@ -148,32 +148,24 @@ extension AdsGridView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
+        let cell: AdsGridViewCell
         if model.isLargeAd {
-            let cell = collectionView.dequeue(AdsGridPromotedViewCell.self, for: indexPath)
-            // Show a pretty color while we load the image
-            let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
-            let color = colors[indexPath.row % 4]
-
-            cell.index = indexPath.row
-            cell.loadingColor = color
-            cell.dataSource = self
-            cell.delegate = self
-            cell.model = model
-
-            return cell        } else {
-            let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
-            // Show a pretty color while we load the image
-            let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
-            let color = colors[indexPath.row % 4]
-
-            cell.index = indexPath.row
-            cell.loadingColor = color
-            cell.dataSource = self
-            cell.delegate = self
-            cell.model = model
-
-            return cell
+            cell = collectionView.dequeue(AdsGridPromotedViewCell.self, for: indexPath)
+        } else {
+            cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
         }
+
+        // Show a pretty color while we load the image
+        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+        let color = colors[indexPath.row % 4]
+
+        cell.index = indexPath.row
+        cell.loadingColor = color
+        cell.dataSource = self
+        cell.delegate = self
+        cell.model = model
+
+        return cell
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
