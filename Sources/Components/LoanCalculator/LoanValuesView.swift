@@ -6,7 +6,7 @@ import Foundation
 
 public protocol LoanValuesViewModel {
     var price: TitleValueSliderViewModel { get }
-    var ownedAmount: TitleValueSliderViewModel { get }
+    var equity: TitleValueSliderViewModel { get }
     var paymentYears: TitleValueSliderViewModel { get }
 }
 
@@ -17,7 +17,7 @@ protocol LoanValuesViewDataSource: AnyObject {
 
 protocol LoanValuesViewDelegate: AnyObject {
     func loanValuesView(_ view: LoanValuesView, didChangePrice: Float)
-    func loanValuesView(_ view: LoanValuesView, didChangeOwnedAmount: Float)
+    func loanValuesView(_ view: LoanValuesView, didChangeEquity: Float)
     func loanValuesView(_ view: LoanValuesView, didChangePaymentYears: Int)
 }
 
@@ -40,7 +40,7 @@ class LoanValuesView: UIView {
         return view
     }()
 
-    private lazy var ownedAmountView: TitleValueSlider = {
+    private lazy var equityView: TitleValueSlider = {
         let view = TitleValueSlider(numberOfSteps: 280, withAutoLayout: true)
         view.dataSource = self
         view.delegate = self
@@ -67,14 +67,14 @@ class LoanValuesView: UIView {
     // MARK: - Internal methods
     func configure(with model: LoanValuesViewModel) {
         priceView.configure(with: model.price)
-        ownedAmountView.configure(with: model.ownedAmount)
+        equityView.configure(with: model.equity)
         paymentYearsView.configure(with: model.paymentYears)
     }
 
     // MARK: - Private methods
     private func setup() {
         stackView.addArrangedSubview(priceView)
-        stackView.addArrangedSubview(ownedAmountView)
+        stackView.addArrangedSubview(equityView)
         stackView.addArrangedSubview(paymentYearsView)
         addSubview(stackView)
         stackView.fillInSuperview()
@@ -85,7 +85,7 @@ class LoanValuesView: UIView {
 extension LoanValuesView: TitleValueSliderDataSource {
     func titleValueSlider(_ view: TitleValueSlider, titleForValue value: Float) -> String? {
         switch view {
-        case priceView, ownedAmountView:
+        case priceView, equityView:
             return dataSource?.loanValuesView(self, formattedCurrencyValue: value)
         case paymentYearsView:
             return dataSource?.loanValuesView(self, formattedYearsValue: Int(value))
@@ -101,8 +101,8 @@ extension LoanValuesView: TitleValueSliderDelegate {
         switch view {
         case priceView:
             delegate?.loanValuesView(self, didChangePrice: value)
-        case ownedAmountView:
-            delegate?.loanValuesView(self, didChangeOwnedAmount: value)
+        case equityView:
+            delegate?.loanValuesView(self, didChangeEquity: value)
         case paymentYearsView:
             delegate?.loanValuesView(self, didChangePaymentYears: Int(value))
         default:

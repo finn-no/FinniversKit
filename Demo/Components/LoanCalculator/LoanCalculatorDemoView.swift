@@ -8,6 +8,7 @@ class LoanCalculatorDemoView: UIView {
     private lazy var loanCalculatorView: LoanCalculatorView = {
         let view = LoanCalculatorView(withAutoLayout: true)
         view.dataSource = self
+        view.delegate = self
         view.layer.cornerRadius = .mediumSpacing
         return view
     }()
@@ -44,6 +45,24 @@ extension LoanCalculatorDemoView: LoanCalculatorDataSource {
     }
 }
 
+extension LoanCalculatorDemoView: LoanCalculatorDelegate {
+    func loanValuesView(_ view: LoanCalculatorView, didChangePrice price: Float) {
+        print("Price changes: \(price)")
+    }
+
+    func loanValuesView(_ view: LoanCalculatorView, didChangeEquity equity: Float) {
+        print("Equity changed: \(equity)")
+    }
+
+    func loanValuesView(_ view: LoanCalculatorView, didChangePaymentYears years: Int) {
+        print("Payment years changed: \(years)")
+    }
+
+    func loanValuesViewDidSelectApply(_ view: LoanCalculatorView) {
+        print("Applu button selected")
+    }
+}
+
 struct DefaultLoanCalculatorViewModel: LoanCalculatorViewModel {
     let title: String
     let rentText: String
@@ -53,7 +72,7 @@ struct DefaultLoanCalculatorViewModel: LoanCalculatorViewModel {
     let conditionsText: String
     let applyText: String
     var price: TitleValueSliderViewModel
-    var ownedAmount: TitleValueSliderViewModel
+    var equity: TitleValueSliderViewModel
     var paymentYears: TitleValueSliderViewModel
 }
 
@@ -67,7 +86,7 @@ extension DefaultLoanCalculatorViewModel {
         conditionsText: "Eff.rente 2,62 %. Etableringsgebyr. 2 500 kr. 4 433 000 kr o/25 år. Kostnad: 1 589 500 kr. Totalt: 6 022 500 kr.",
         applyText: "Søk boliglån",
         price: DefaultTitleValueSliderViewModel.price,
-        ownedAmount: DefaultTitleValueSliderViewModel.ownedAmount,
+        equity: DefaultTitleValueSliderViewModel.equity,
         paymentYears: DefaultTitleValueSliderViewModel.paymentYears
     )
 }
@@ -84,7 +103,7 @@ extension DefaultTitleValueSliderViewModel {
         title: "Kjøpesum:", minimumValue: 0, maximumValue: 5600000, initialValue: 5600000
     )
 
-    static let ownedAmount = DefaultTitleValueSliderViewModel(
+    static let equity = DefaultTitleValueSliderViewModel(
         title: "Egenkapital:", minimumValue: 0, maximumValue: 5600000 - 10000, initialValue: Int((5600000 - 10000) * 0.35)
     )
 

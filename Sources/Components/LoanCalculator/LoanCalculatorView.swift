@@ -13,7 +13,7 @@ public protocol LoanCalculatorDataSource: AnyObject {
 
 public protocol LoanCalculatorDelegate: AnyObject {
     func loanValuesView(_ view: LoanCalculatorView, didChangePrice price: Float)
-    func loanValuesView(_ view: LoanCalculatorView, didChangeOwnedAmount amount: Float)
+    func loanValuesView(_ view: LoanCalculatorView, didChangeEquity equity: Float)
     func loanValuesView(_ view: LoanCalculatorView, didChangePaymentYears years: Int)
     func loanValuesViewDidSelectApply(_ view: LoanCalculatorView)
 }
@@ -121,8 +121,8 @@ extension LoanCalculatorView: LoanValuesViewDelegate {
         delegate?.loanValuesView(self, didChangePrice: price)
     }
 
-    func loanValuesView(_ view: LoanValuesView, didChangeOwnedAmount amount: Float) {
-        delegate?.loanValuesView(self, didChangeOwnedAmount: amount)
+    func loanValuesView(_ view: LoanValuesView, didChangeEquity equity: Float) {
+        delegate?.loanValuesView(self, didChangeEquity: equity)
     }
 
     func loanValuesView(_ view: LoanValuesView, didChangePaymentYears years: Int) {
