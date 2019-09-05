@@ -15,6 +15,7 @@ protocol TitleValueSliderDataSource: AnyObject {
 
 protocol TitleValueSliderDelegate: AnyObject {
     func titleValueSlider(_ view: TitleValueSlider, didChangeValue: Float)
+    func titleValueSlider(_ view: TitleValueSlider, didEndSlideInteractionWithValue: Float)
 }
 
 class TitleValueSlider: UIView {
@@ -124,8 +125,12 @@ class TitleValueSlider: UIView {
 }
 
 extension TitleValueSlider: StepSliderDelegate {
-    func stepSlider(_ stepSlider: StepSlider, didChangeStep step: Step) {}
-    func stepSlider(_ stepSlider: StepSlider, didChangeRawValue value: Float) {}
+    func stepSlider(_ stepSlider: StepSlider, didChangeStep step: Step) {
+        if let value = values.value(for: step) {
+            sliderValueChanged()
+            delegate?.titleValueSlider(self, didChangeValue: Float(value))
+        }
+    }
 
     func stepSlider(_ stepSlider: StepSlider, canChangeToStep step: Step) -> Bool {
         return true
@@ -134,11 +139,13 @@ extension TitleValueSlider: StepSliderDelegate {
     func stepSlider(_ stepSlider: StepSlider, didEndSlideInteraction step: Step) {
         if let value = values.value(for: step) {
             sliderValueChanged()
-            delegate?.titleValueSlider(self, didChangeValue: Float(value))
+            delegate?.titleValueSlider(self, didEndSlideInteractionWithValue: Float(value))
         }
     }
 
     func stepSlider(_ stepSlider: StepSlider, accessibilityValueForStep step: Step) -> String {
         return "\(values.value(for: step) ?? 0)"
     }
+
+    func stepSlider(_ stepSlider: StepSlider, didChangeRawValue value: Float) {}
 }

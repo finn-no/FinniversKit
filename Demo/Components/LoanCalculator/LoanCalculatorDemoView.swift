@@ -80,18 +80,27 @@ extension LoanCalculatorDemoView: LoanCalculatorDataSource {
 extension LoanCalculatorDemoView: LoanCalculatorDelegate {
     func loanValuesView(_ view: LoanCalculatorView, didChangePrice price: Float) {
         print("Price changes: \(price)")
+        finishLoading()
     }
 
     func loanValuesView(_ view: LoanCalculatorView, didChangeEquity equity: Float) {
         print("Equity changed: \(equity)")
+        finishLoading()
     }
 
     func loanValuesView(_ view: LoanCalculatorView, didChangePaymentYears years: Int) {
         print("Payment years changed: \(years)")
+        finishLoading()
     }
 
     func loanValuesViewDidSelectApply(_ view: LoanCalculatorView) {
         print("Apply button selected")
+    }
+
+    private func finishLoading() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) { [weak self] in
+            self?.loanCalculatorView.isLoading = false
+        }
     }
 }
 

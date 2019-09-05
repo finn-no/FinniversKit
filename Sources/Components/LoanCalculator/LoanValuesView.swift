@@ -16,6 +16,7 @@ protocol LoanValuesViewDataSource: AnyObject {
 }
 
 protocol LoanValuesViewDelegate: AnyObject {
+    func loanValuesViewDidChangeValue(_ view: LoanValuesView)
     func loanValuesView(_ view: LoanValuesView, didChangePrice: Float)
     func loanValuesView(_ view: LoanValuesView, didChangeEquity: Float)
     func loanValuesView(_ view: LoanValuesView, didChangePaymentYears: Int)
@@ -98,6 +99,10 @@ extension LoanValuesView: TitleValueSliderDataSource {
 // MARK: - TitleValueSliderDelegate
 extension LoanValuesView: TitleValueSliderDelegate {
     func titleValueSlider(_ view: TitleValueSlider, didChangeValue value: Float) {
+        delegate?.loanValuesViewDidChangeValue(self)
+    }
+
+    func titleValueSlider(_ view: TitleValueSlider, didEndSlideInteractionWithValue value: Float) {
         switch view {
         case priceView:
             delegate?.loanValuesView(self, didChangePrice: value)

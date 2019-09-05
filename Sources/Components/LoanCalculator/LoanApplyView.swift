@@ -14,6 +14,12 @@ protocol LoanApplyViewDelegate: AnyObject {
 class LoanApplyView: UIView {
     weak var delegate: LoanApplyViewDelegate?
 
+    var isEnabled = true {
+        didSet {
+            applyButton.isEnabled = isEnabled
+        }
+    }
+
     // MARK: - Private subviews
     private lazy var conditionsText: Label = {
         let label = Label(style: .detail, withAutoLayout: true)

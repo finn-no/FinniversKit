@@ -34,6 +34,13 @@ public class LoanCalculatorView: UIView {
     public weak var dataSource: LoanCalculatorDataSource?
     public weak var delegate: LoanCalculatorDelegate?
 
+    public var isLoading = false {
+        didSet {
+            headerView.alpha = isLoading ? 0.4 : 1
+            applyView.isEnabled = !isLoading
+        }
+    }
+
     // MARK: - Private properties
     private let imageCache = ImageMemoryCache()
 
@@ -169,6 +176,10 @@ extension LoanCalculatorView: LoanValuesViewDataSource {
 // MARK: - LoanValuesViewDelegate
 
 extension LoanCalculatorView: LoanValuesViewDelegate {
+    func loanValuesViewDidChangeValue(_ view: LoanValuesView) {
+        isLoading = true
+    }
+
     func loanValuesView(_ view: LoanValuesView, didChangePrice price: Float) {
         delegate?.loanValuesView(self, didChangePrice: price)
     }
