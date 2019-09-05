@@ -54,18 +54,21 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
 
         return [deleteAction]
     }
-    func userAdsListViewDidCollapseEmphasizedAction(_ userAdsListView: UserAdsListView) {
+
+    func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView) {
         emphasizedActionHasBeenCollapsed = true
     }
-
+    func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView) {
+        emphasizedActionHasBeenCollapsed = true
+    }
+    
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didSelectItemAtIndex indexPath: IndexPath) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, willDisplayItemAtIndex indexPath: IndexPath) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didScrollInScrollView scrollView: UIScrollView) {}
-    func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView) {}
-    func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView) {}
+
 }
 
 extension UserAdsListViewDemoView: UserAdsListViewDataSource {

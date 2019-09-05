@@ -6,7 +6,6 @@ import UIKit
 
 public protocol UserAdsListViewDelegate: AnyObject {
     func userAdsListViewDidStartRefreshing(_ userAdsListView: UserAdsListView)
-    func userAdsListViewDidCollapseEmphasizedAction(_ userAdsListView: UserAdsListView)
     func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView)
     func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView)
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
@@ -297,16 +296,14 @@ extension UserAdsListView: RefreshControlDelegate {
 
 extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
     public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, buttonWasTapped: Button) {
-        doTheSameThing(cell: cell)
+        guard let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
+        delegate?.userAdsListViewEmphasizedActionWasTapped(self)
+        tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
     }
     
     public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button) {
-        doTheSameThing(cell: cell)
-    }
-    
-    func doTheSameThing(cell: UserAdsListEmphasizedActionCell) {
         guard let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
-        delegate?.userAdsListViewDidCollapseEmphasizedAction(self)
+        delegate?.userAdsListViewEmphasizedActionWasCancelled(self)
         tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
     }
 }
