@@ -63,6 +63,10 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
 }
 
 extension UserAdsListViewDemoView: UserAdsListViewDataSource {
+    func sectionNumberForEmphasizedAction(in userAdsListView: UserAdsListView) -> Int? {
+        return 1
+    }
+    
     func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool {
         return false
     }

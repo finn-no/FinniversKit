@@ -27,6 +27,7 @@ public struct UserAdCell: UserAdsListViewModel {
     public let price: String?
     public let detail: String
     public let status: String
+    public let actionModel: UserAdsListActionModel?
 
     public var accessibilityLabel: String {
         let message = [title, (price ?? ""), detail, status].joined(separator: ". ")
@@ -34,14 +35,22 @@ public struct UserAdCell: UserAdsListViewModel {
     }
 
     public init(imagePath: String? = nil, imageSize: CGSize = CGSize(width: 0, height: 0),
-                title: String = "", price: String? = nil, detail: String = "", status: String = "") {
+                title: String = "", price: String? = nil, detail: String = "", status: String = "", actionModel: UserAdsListActionModel? = nil)  {
         self.imagePath = imagePath
         self.imageSize = imageSize
         self.title = title
         self.price = price
         self.detail = detail
         self.status = status
+        self.actionModel = actionModel
     }
+}
+
+public struct UserAdCellAction: UserAdsListActionModel {
+    public let title: String?
+    public let description: String
+    public let buttonTitle: String
+    public let cancelButtonTitle: String?
 }
 
 public struct UserAdsFactory {
@@ -52,17 +61,26 @@ public struct UserAdsFactory {
 
     public static func createAds() -> [(header: UserAdHeaderCell, ads: [UserAdCell])] {
         let newAd = createNewAd()
+        let emphasizedAds = createEmphasizedAds()
         let ongoingAds = createOngoingAds()
         let activeAds = createActiveAds()
         let inactiveAds = createInactiveAds()
         let seeAllAds = createSeeAllAds()
-        return [newAd, ongoingAds, activeAds, inactiveAds, seeAllAds]
+        return [newAd, emphasizedAds, ongoingAds, activeAds, inactiveAds, seeAllAds]
     }
 
     private static func createNewAd() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
         let header = UserAdHeaderCell()
         let ads: [UserAdCell] =  [UserAdCell(title: "Lag ny annonse")]
         return (header: header, ads: ads)
+    }
+    
+    private static func createEmphasizedAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
+        let imageSource = imageSources[4]
+        let action = UserAdCellAction(title: "Her går det unna!", description: "Nå er det mange som selger Rancho Cuccamonga! For 89 kr kan du løfte annonsen din øverst i resultatlista, akkurat som da den var ny", buttonTitle: "Løft annonsen", cancelButtonTitle: "Nei takk!")
+        let adCell = UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: "Rancho Cuccamonga", price: nil, detail: "Schmorget - Huh?!", status: "active", actionModel: action)
+        let header = UserAdHeaderCell()
+        return (header: header, ads: [adCell])
     }
 
     private static func createOngoingAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {

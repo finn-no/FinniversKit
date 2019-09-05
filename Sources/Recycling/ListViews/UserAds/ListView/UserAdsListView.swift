@@ -42,6 +42,7 @@ public class UserAdsListView: UIView {
         tableView.register(UserAdsListViewNewAdCell.self)
         tableView.register(UserAdsListViewCell.self)
         tableView.register(UserAdsListViewSeeAllAdsCell.self)
+        tableView.register(UserAdsListEmphasizedActionCell.self)
         tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.backgroundColor = .milk
         tableView.rowHeight = UITableView.automaticDimension
@@ -183,8 +184,6 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UserAdsListViewCell()
-
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
         let color = colors[indexPath.row % 4]
 
@@ -204,7 +203,18 @@ extension UserAdsListView: UITableViewDataSource {
             }
             return seeAllAdsCell
         default:
-            cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath)
+            // TODO: Force unwrap(!)
+            if let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self), indexPath.section == emphasizedSection {
+                let cell = tableView.dequeue(UserAdsListEmphasizedActionCell.self, for: indexPath) as! UserAdsListEmphasizedActionCell
+                cell.loadingColor = color
+                cell.dataSource = self
+                if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
+                    cell.model = model
+                }
+                return cell
+            }
+            
+            let cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath) as! UserAdsListViewCell
             cell.loadingColor = color
             cell.dataSource = self
             if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {

@@ -209,6 +209,7 @@
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
 		55C5B27E203EB9DA007D7277 /* BroadcastDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B27B203DC458007D7277 /* BroadcastDemoView.swift */; };
 		620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620AEE33221175970087C150 /* UserAdManagementButtonAndInformationCell.swift */; };
+		62432106231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62432105231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift */; };
 		625A220B221EB26500733101 /* AdManagementActionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625A220A221EB26500733101 /* AdManagementActionCellModel.swift */; };
 		625A220D221EB30700733101 /* UserAdManagementUserActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625A220C221EB30700733101 /* UserAdManagementUserActionCell.swift */; };
 		6266C06E22081ED900FB8004 /* UserAdManagementStatisticsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6266C06D22081ED900FB8004 /* UserAdManagementStatisticsCell.swift */; };
@@ -726,6 +727,7 @@
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
 		55C5B27B203DC458007D7277 /* BroadcastDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastDemoView.swift; sourceTree = "<group>"; };
 		620AEE33221175970087C150 /* UserAdManagementButtonAndInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementButtonAndInformationCell.swift; sourceTree = "<group>"; };
+		62432105231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListEmphasizedActionCell.swift; sourceTree = "<group>"; };
 		625A220A221EB26500733101 /* AdManagementActionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManagementActionCellModel.swift; sourceTree = "<group>"; };
 		625A220C221EB30700733101 /* UserAdManagementUserActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdManagementUserActionCell.swift; sourceTree = "<group>"; };
 		6266C06D22081ED900FB8004 /* UserAdManagementStatisticsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAdManagementStatisticsCell.swift; sourceTree = "<group>"; };
@@ -3518,6 +3520,7 @@
 			children = (
 				F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */,
 				F26852D921F75435000978C8 /* UserAdsListViewCell.swift */,
+				62432105231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift */,
 				F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */,
 			);
 			path = Cell;
@@ -4165,6 +4168,7 @@
 				CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,
 				CF2E46F22319685C0085A591 /* FavoriteActionView.swift in Sources */,
+				62432106231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
 				CF2E46EF231958300085A591 /* FavoriteFolderActionViewController.swift in Sources */,
 				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
