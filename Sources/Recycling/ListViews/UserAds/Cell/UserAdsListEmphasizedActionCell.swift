@@ -4,6 +4,13 @@
 
 import UIKit
 
+/// Delegate to handle interaction happening inside the cell
+public protocol UserAdsListEmphasizedActionCellDelegate: class {
+    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, buttonWasTapped: Button)
+    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button)
+}
+
+
 public class UserAdsListEmphasizedActionCell: UITableViewCell {
     // MARK: - External properties
     
@@ -14,6 +21,8 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     /// A data source for the loading of the image
     
     public weak var dataSource: UserAdsListViewCellDataSource? // <- Bør denne protokollen være noe litt mer generisk?
+    
+    public weak var delegate: UserAdsListEmphasizedActionCellDelegate?
     
     // MARK: - Internal properties
     
@@ -90,12 +99,14 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     private lazy var button: Button = {
         let button = Button(style: .default, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         return button
     }()
     
     private lazy var cancelButton: Button = {
         let button = Button(style: .flat, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -310,5 +321,13 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             self?.adImageView.image = image ?? self?.defaultImage
         }
  */
+    }
+    
+    @objc private func buttonTapped(_ sender: Button) {
+        delegate?.userAdsListEmphasizedActionCell(self, buttonWasTapped: sender)
+    }
+    
+    @objc private func cancelButtonTapped(_ sender: Button) {
+        delegate?.userAdsListEmphasizedActionCell(self, cancelButtonWasTapped: sender)
     }
 }
