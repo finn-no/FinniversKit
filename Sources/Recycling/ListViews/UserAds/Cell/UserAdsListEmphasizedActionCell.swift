@@ -260,17 +260,11 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         super.prepareForReuse()
         teardownView()
         
-        // TODO:
+        let unusedCell = UserAdsListViewCell()
         
-        /*
         if let model = model {
-            dataSource?.userAdsListViewCell(self, cancelLoadingImageForModel: model, imageWidth: adImageView.frame.size.width)
+            dataSource?.userAdsListViewCell(unusedCell, cancelLoadingImageForModel: model, imageWidth: adImageView.frame.size.width)
         }
- */
-    }
-    
-    public override func didMoveToSuperview() {
-        // collapseActionWrapper()
     }
     
     // MARK: - Dependency injection
@@ -297,13 +291,6 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     }
     
     // MARK: - Public
-    
-    public func loadImage() {
-        if let model = model {
-            loadImage(model)
-        }
-    }
-    
     /// Loads a given image provided that the imagePath in the `model` is valid.
     
     private func loadImage(_ model: UserAdsListViewModel) {
@@ -317,13 +304,12 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
    
         // TODO: Load Image....
         
-        
-        /*
-        dataSource.userAdsListViewCell(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
+        let unusedCell = UserAdsListViewCell()
+        dataSource.userAdsListViewCell(unusedCell, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
             self?.adImageView.backgroundColor = .clear
             self?.adImageView.image = image ?? self?.defaultImage
         }
- */
+ 
     }
     
     @objc private func buttonTapped(_ sender: Button) {
@@ -332,5 +318,13 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     
     @objc private func cancelButtonTapped(_ sender: Button) {
         delegate?.userAdsListEmphasizedActionCell(self, cancelButtonWasTapped: sender)
+    }
+}
+
+extension UserAdsListEmphasizedActionCell: ImageLoading {
+    public func loadImage() {
+        if let model = model {
+            loadImage(model)
+        }
     }
 }

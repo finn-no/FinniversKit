@@ -231,7 +231,9 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let cell = cell as? UserAdsListViewCell { cell.loadImage() }
+        if let imageLoadingCell = cell as? ImageLoading {
+            imageLoadingCell.loadImage()
+        }
         delegate?.userAdsListView(self, willDisplayItemAtIndex: indexPath)
     }
 

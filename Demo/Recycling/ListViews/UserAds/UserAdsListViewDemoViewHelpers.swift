@@ -76,7 +76,7 @@ public struct UserAdsFactory {
     }
     
     private static func createEmphasizedAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
-        let imageSource = imageSources[4]
+        let imageSource = imageSources[0]
         let action = UserAdCellAction(title: "Her går det unna!", description: "Nå er det mange som selger Rancho Cuccamonga! For 89 kr kan du løfte annonsen din øverst i resultatlista, akkurat som da den var ny", buttonTitle: "Løft annonsen", cancelButtonTitle: "Nei takk!")
         let adCell = UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: "Rancho Cuccamonga", price: nil, detail: "Schmorget - Huh?!", status: "active", actionModel: action)
         let header = UserAdHeaderCell()
