@@ -36,8 +36,8 @@ public class LoanCalculatorView: UIView {
 
     public var isLoading = false {
         didSet {
-            headerView.alpha = isLoading ? 0.4 : 1
-            applyView.isEnabled = !isLoading
+            guard isLoading != oldValue else { return }
+            animateLoading()
         }
     }
 
@@ -124,6 +124,13 @@ public class LoanCalculatorView: UIView {
                 applyView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
             ])
         }
+    }
+
+    private func animateLoading() {
+        UIView.animate(withDuration: 0.1, delay: 0, options: .beginFromCurrentState, animations: {
+            self.headerView.alpha = self.isLoading ? 0.4 : 1
+            self.applyView.isEnabled = !self.isLoading
+        }, completion: nil)
     }
 }
 
