@@ -59,7 +59,7 @@ extension LoanCalculatorDemoView: LoanCalculatorDelegate {
     }
 
     func loanValuesViewDidSelectApply(_ view: LoanCalculatorView) {
-        print("Applu button selected")
+        print("Apply button selected")
     }
 }
 
