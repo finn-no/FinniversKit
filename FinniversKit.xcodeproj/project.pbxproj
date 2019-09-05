@@ -140,6 +140,7 @@
 		4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458701C213FA353009187BE /* RegisterViewDemoView.swift */; };
 		44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587020213FA361009187BE /* LoginViewDefaultData.swift */; };
 		44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587022213FA361009187BE /* LoginViewDemoView.swift */; };
+		4466ED952320E0E200CF2646 /* CALayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466ED942320E0E200CF2646 /* CALayerExtensions.swift */; };
 		447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */; };
 		44849D2B22E7312100BB4454 /* SelectorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BE10B422E5F3A5002BB2E7 /* SelectorTitleView.swift */; };
 		44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */; };
@@ -647,6 +648,7 @@
 		4458701C213FA353009187BE /* RegisterViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewDemoView.swift; sourceTree = "<group>"; };
 		44587020213FA361009187BE /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
 		44587022213FA361009187BE /* LoginViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDemoView.swift; sourceTree = "<group>"; };
+		4466ED942320E0E200CF2646 /* CALayerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtensions.swift; sourceTree = "<group>"; };
 		447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageViewDemoView.swift; sourceTree = "<group>"; };
 		44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
@@ -1613,6 +1615,14 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		4466ED932320E0DC00CF2646 /* Core Animation */ = {
+			isa = PBXGroup;
+			children = (
+				4466ED942320E0E200CF2646 /* CALayerExtensions.swift */,
+			);
+			path = "Core Animation";
+			sourceTree = "<group>";
+		};
 		447AFC0E20984B63000F793E /* FrontPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1646,6 +1656,7 @@
 				9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */,
 				44898D5E1FE5B9C200F6017B /* UITableViewExtensions.swift */,
 				441D69981FEA947500CD919A /* UIViewExtensions.swift */,
+				4466ED932320E0DC00CF2646 /* Core Animation */,
 				DAE6A55A21CA523A00837BFA /* Core Graphics */,
 			);
 			path = UIKit;
@@ -3999,6 +4010,7 @@
 				431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */,
+				4466ED952320E0E200CF2646 /* CALayerExtensions.swift in Sources */,
 				45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */,
 				44587016213FA344009187BE /* LoginViewModel.swift in Sources */,
 				DAC1EC4E21C1297500F4FEC4 /* BalloonView.swift in Sources */,

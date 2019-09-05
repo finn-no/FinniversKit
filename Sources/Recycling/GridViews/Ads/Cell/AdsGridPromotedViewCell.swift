@@ -28,7 +28,7 @@ public class AdsGridPromotedViewCell: AdsGridViewCell {
         ]
         topGradient.locations = [0, 0.3]
         let topGradientImageView = UIImageView(withAutoLayout: true)
-        topGradientImageView.image = UIImage.imageWithLayer(layer: topGradient)
+        topGradientImageView.image = topGradient.toImage()
         imageBackgroundView.addSubview(topGradientImageView)
 
         let bottomGradient = CAGradientLayer()
@@ -39,7 +39,7 @@ public class AdsGridPromotedViewCell: AdsGridViewCell {
         ]
         bottomGradient.locations = [0.8, 1]
         let bottomGradientImageView = UIImageView(withAutoLayout: true)
-        bottomGradientImageView.image = UIImage.imageWithLayer(layer: bottomGradient)
+        bottomGradientImageView.image = bottomGradient.toImage()
         imageBackgroundView.addSubview(bottomGradientImageView)
 
         addSubview(subtitleLabel)
@@ -92,15 +92,5 @@ public class AdsGridPromotedViewCell: AdsGridViewCell {
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
             ])
-    }
-}
-
-extension UIImage {
-    class func imageWithLayer(layer: CALayer) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(layer.bounds.size, layer.isOpaque, UIScreen.main.scale)
-        layer.render(in: UIGraphicsGetCurrentContext()!)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return img!
     }
 }
