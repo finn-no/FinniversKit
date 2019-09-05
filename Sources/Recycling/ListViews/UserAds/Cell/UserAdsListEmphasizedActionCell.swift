@@ -68,9 +68,37 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     
     private lazy var actionWrapper: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .purple
+        view.backgroundColor = .yellow
         return view
     }()
+    
+    private lazy var actionTitleLabel: Label = {
+        let label = Label(style: .bodyStrong)
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var actionDescriptionLabel: Label = {
+        let label = Label(style: .caption) // .body
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var button: Button = {
+        let button = Button(style: .default, size: .small)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var cancelButton: Button = {
+        let button = Button(style: .flat, size: .small)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private var actionWrapperHeightConstraint = NSLayoutConstraint()
     
     // MARK: - Setup
     
@@ -79,22 +107,27 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         contentView.backgroundColor = .marble
         accessoryType = .none
         selectionStyle = .none
+        separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListEmphasizedActionCell.imageSize + .mediumSpacing), bottom: 0, right: 0)
         
         contentView.addSubview(adWrapperView)
-        contentView.addSubview(actionWrapper)
-        
         adWrapperView.addSubview(adImageView)
         adWrapperView.addSubview(titleLabel)
-        
-        separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListEmphasizedActionCell.imageSize + .mediumSpacing), bottom: 0, right: 0)
         adWrapperView.addSubview(detailLabel)
+        
+        contentView.addSubview(actionWrapper)
+        actionWrapper.addSubview(actionTitleLabel)
+        actionWrapper.addSubview(actionDescriptionLabel)
+        actionWrapper.addSubview(button)
+        actionWrapperHeightConstraint = NSLayoutConstraint(item: actionWrapper, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 160)
         
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 120),
-            adWrapperView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: actionWrapper.bottomAnchor, constant: .mediumSpacing),
+            
+            adWrapperView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
             adWrapperView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             adWrapperView.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -.largeSpacing),
-            adWrapperView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
+            adWrapperView.heightAnchor.constraint(greaterThanOrEqualToConstant: 112),
             
             adImageView.heightAnchor.constraint(equalToConstant: UserAdsListEmphasizedActionCell.imageSize),
             adImageView.widthAnchor.constraint(equalToConstant: UserAdsListEmphasizedActionCell.imageSize),
@@ -107,6 +140,22 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: adWrapperView.trailingAnchor),
             
             detailLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumSpacing),
+            
+            actionWrapper.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            actionWrapper.topAnchor.constraint(equalTo: adWrapperView.bottomAnchor, constant: .mediumLargeSpacing),
+            actionWrapper.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            actionWrapperHeightConstraint,
+            
+            actionTitleLabel.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
+            actionTitleLabel.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor, constant: -.mediumLargeSpacing),
+            actionTitleLabel.topAnchor.constraint(equalTo: actionWrapper.topAnchor),
+            
+            actionDescriptionLabel.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
+            actionDescriptionLabel.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor, constant: -.mediumLargeSpacing),
+            actionDescriptionLabel.topAnchor.constraint(equalTo: actionTitleLabel.bottomAnchor, constant: .mediumSpacing),
+            
+            button.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
+            button.topAnchor.constraint(equalTo: actionDescriptionLabel.bottomAnchor, constant: 24)
             ])
         
         // If price is not provided
@@ -127,6 +176,14 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
                 
                 detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
                 detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                ])
+        }
+        
+        if model?.actionModel?.cancelButtonTitle != nil {
+            actionWrapper.addSubview(cancelButton)
+            NSLayoutConstraint.activate([
+                cancelButton.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+                cancelButton.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: .smallSpacing)
                 ])
         }
     }
@@ -203,6 +260,11 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             userAdStatus = UserAdStatus(rawValue: model.status) ?? .unknown
             accessibilityLabel = model.accessibilityLabel
             
+            actionTitleLabel.text = model.actionModel?.title
+            actionDescriptionLabel.text = model.actionModel?.description
+            button.setTitle(model.actionModel?.buttonTitle, for: .normal)
+            cancelButton.setTitle(model.actionModel?.cancelButtonTitle, for: .normal)
+            
             setupRibbonView(with: userAdStatus)
             setupView()
         }
@@ -214,6 +276,10 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         if let model = model {
             loadImage(model)
         }
+    }
+    
+    public func collapseActionWrapper() {
+        actionWrapperHeightConstraint.constant = 0
     }
     
     /// Loads a given image provided that the imagePath in the `model` is valid.
