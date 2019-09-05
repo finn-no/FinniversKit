@@ -59,7 +59,7 @@ public struct AdFactory {
                 accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
                 imageText: price,
                 isFavorite: false,
-                isLargeAd: Int.random(in: 1..<10) == 5,
+                isLargeAd: index > 5 && Int.random(in: 1..<10) == 5,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
     }

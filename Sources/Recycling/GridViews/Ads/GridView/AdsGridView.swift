@@ -252,13 +252,13 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
             return defaultImageSize.height / defaultImageSize.width
         }
 
-        if model.isLargeAd {
-            // We want LargeAd ads to show in a more prominent way, hence the
-            // change in image height ratio
-            return model.imageSize.height * 1.8 / model.imageSize.width
-        } else {
-            return model.imageSize.height / model.imageSize.width
+        var height = model.imageSize.height
+        // We want large ads to show in a more prominent way,
+        // hence the change in image height ratio.
+        if model.isLargeAd && UIDevice.isIPhone() {
+            height *= 1.8
         }
+        return model.imageSize.height / model.imageSize.width
     }
 
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {

@@ -118,7 +118,7 @@ class AdsGridViewLayout: UICollectionViewLayout {
             let itemWidth: CGFloat
             let yOffset: CGFloat
 
-            if isLargeAd {
+            if isLargeAd && UIDevice.isIPhone() {
                 let columnIndex = indexOfHighestValue(in: columns)
                 xOffset = configuration.sidePadding
 
