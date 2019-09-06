@@ -74,7 +74,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     private lazy var adWrapperView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .milk
-        view.layer.cornerRadius = 12.0
+        view.layer.cornerRadius = UserAdsListEmphasizedActionCell.cornerRadius
         return view
     }()
     
@@ -93,7 +93,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     }()
     
     private lazy var actionDescriptionLabel: Label = {
-        let label = Label(style: .caption) // .body
+        let label = Label(style: .caption)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

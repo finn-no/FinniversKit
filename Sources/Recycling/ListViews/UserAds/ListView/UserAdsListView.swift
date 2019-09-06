@@ -174,7 +174,7 @@ extension UserAdsListView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) ?? firstSection
         switch section {
-        // Return 0.1 so we dont show a seperator if there's no section to show.
+        // We don't want to show the sectionHeader for the new-ad-button, all-ads-button, and emphasizedAd-action-ad
         case firstSection, lastSection, emphasizedSection: return CGFloat.leastNonzeroMagnitude
         default: return UITableView.automaticDimension
         }
@@ -233,9 +233,7 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let imageLoadingCell = cell as? ImageLoading {
-            imageLoadingCell.loadImage()
-        }
+        if let imageLoadingCell = cell as? ImageLoading { imageLoadingCell.loadImage() }
         delegate?.userAdsListView(self, willDisplayItemAtIndex: indexPath)
     }
 
