@@ -47,15 +47,9 @@ extension LoanCalculatorDemoView: LoanCalculatorDataSource {
 
     func loanCalculatorView(
         _ view: LoanCalculatorView,
-        loadImageWithPath imagePath: String,
-        imageWidth: CGFloat,
+        loadImageWithUrl url: URL,
         completion: @escaping ((UIImage?) -> Void)
     ) {
-        guard let url = URL(string: imagePath) else {
-            completion(nil)
-            return
-        }
-
         // Demo code only.
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             usleep(50_000)
@@ -71,7 +65,7 @@ extension LoanCalculatorDemoView: LoanCalculatorDataSource {
         task.resume()
     }
 
-    func loanCalculatorView(_ view: LoanCalculatorView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+    func loanCalculatorView(_ view: LoanCalculatorView, cancelLoadingImageWithUrl: URL) {}
 }
 
 // MARK: - LoanCalculatorDelegate
@@ -117,7 +111,7 @@ private struct DefaultLoanCalculatorViewModel: LoanCalculatorViewModel {
     let rentText: String?
     let pricePerMonth: String?
     let loanAmountText: String?
-    let logoUrl: String?
+    let logoUrl: URL?
     let conditionsText: String
     let applyText: String
     var price: TitleValueSliderViewModel
@@ -141,7 +135,7 @@ extension DefaultLoanCalculatorViewModel {
             rentText: hasConditions ? "2,65 % eff. / 2,55 % nom. rente" : nil,
             pricePerMonth: hasConditions ? "16 656 kr" : nil,
             loanAmountText: hasConditions ? "Lånesum: 3 675 000 kr": nil,
-            logoUrl: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png",
+            logoUrl: URL(string: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png"),
             conditionsText: conditionsText,
             applyText: "Søk boliglån",
             price: DefaultTitleValueSliderViewModel.makePrice(withInitialValue: price),

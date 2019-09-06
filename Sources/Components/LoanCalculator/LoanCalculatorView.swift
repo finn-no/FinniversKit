@@ -9,17 +9,8 @@ public protocol LoanCalculatorViewModel: LoanHeaderViewModel, LoanValuesViewMode
 public protocol LoanCalculatorDataSource: AnyObject {
     func loanCalculatorView(_ view: LoanCalculatorView, formattedCurrencyValue: Float) -> String?
     func loanCalculatorView(_ view: LoanCalculatorView, formattedYearsValue: Int) -> String?
-    func loanCalculatorView(
-        _ view: LoanCalculatorView,
-        loadImageWithPath imagePath: String,
-        imageWidth: CGFloat,
-        completion: @escaping ((UIImage?) -> Void)
-    )
-    func loanCalculatorView(
-        _ view: LoanCalculatorView,
-        cancelLoadingImageWithPath imagePath: String,
-        imageWidth: CGFloat
-    )
+    func loanCalculatorView(_ view: LoanCalculatorView, loadImageWithUrl: URL, completion: @escaping ((UIImage?) -> Void))
+    func loanCalculatorView(_ view: LoanCalculatorView, cancelLoadingImageWithUrl: URL)
 }
 
 public protocol LoanCalculatorDelegate: AnyObject {
@@ -155,20 +146,22 @@ extension LoanCalculatorView: RemoteImageViewDataSource {
         imageWidth: CGFloat,
         completion: @escaping ((UIImage?) -> Void)
     ) {
-        dataSource?.loanCalculatorView(
-            self,
-            loadImageWithPath: imagePath,
-            imageWidth: imageWidth,
-            completion: { [weak self] image in
-                if let image = image {
-                    self?.imageCache.add(image, forKey: imagePath)
-                }
-                completion(image)
+        guard let url = URL(string: imagePath) else {
+            completion(nil)
+            return
+        }
+
+        dataSource?.loanCalculatorView(self, loadImageWithUrl: url, completion: { [weak self] image in
+            if let image = image {
+                self?.imageCache.add(image, forKey: imagePath)
+            }
+            completion(image)
         })
     }
 
     public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
-        dataSource?.loanCalculatorView(self, cancelLoadingImageWithPath: imagePath, imageWidth: imageWidth)
+        guard let url = URL(string: imagePath) else { return }
+        dataSource?.loanCalculatorView(self, cancelLoadingImageWithUrl: url)
     }
 }
 

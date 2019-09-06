@@ -9,7 +9,7 @@ public protocol LoanHeaderViewModel {
     var rentText: String? { get }
     var pricePerMonth: String? { get }
     var loanAmountText: String? { get }
-    var logoUrl: String? { get }
+    var logoUrl: URL? { get }
 }
 
 class LoanHeaderView: UIView {
@@ -71,7 +71,7 @@ class LoanHeaderView: UIView {
         rentLabel.text = model.rentText
         loanTotalLabel.text = model.loanAmountText
 
-        if let logoUrl = model.logoUrl {
+        if let logoUrl = model.logoUrl?.absoluteString {
             logoImageView.loadImage(for: logoUrl, imageWidth: logoSize.width, fallbackImage: fallbackImage)
         } else {
             logoImageView.setImage(fallbackImage, animated: false)
