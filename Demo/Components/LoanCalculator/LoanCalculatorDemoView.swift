@@ -9,7 +9,6 @@ class LoanCalculatorDemoView: UIView {
         let view = LoanCalculatorView(withAutoLayout: true)
         view.dataSource = self
         view.delegate = self
-        view.layer.cornerRadius = .mediumSpacing
         return view
     }()
 
