@@ -81,10 +81,6 @@ public class LoanCalculatorView: UIView {
         applyView.configure(with: model)
     }
 
-    public func showErrorText(_ show: Bool) {
-        headerView.showErrorText(show)
-    }
-
     // MARK: - Private methods
     private func setup() {
         backgroundColor = .marble
@@ -95,6 +91,7 @@ public class LoanCalculatorView: UIView {
         addSubview(applyView)
 
         let margins = layoutMarginsGuide
+        let headerHeight = headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 106)
 
         if UIDevice.isIPad() {
             NSLayoutConstraint.activate([
@@ -107,6 +104,7 @@ public class LoanCalculatorView: UIView {
                 headerView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: .veryLargeSpacing),
                 headerView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
                 headerView.bottomAnchor.constraint(equalTo: applyView.topAnchor, constant: -.largeSpacing),
+                headerHeight,
 
                 applyView.leadingAnchor.constraint(equalTo: loanValuesView.trailingAnchor, constant: .veryLargeSpacing),
                 applyView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
@@ -118,6 +116,7 @@ public class LoanCalculatorView: UIView {
                 headerView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 headerView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
                 headerView.bottomAnchor.constraint(equalTo: loanValuesView.topAnchor, constant: -.largeSpacing),
+                headerHeight,
 
                 loanValuesView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
                 loanValuesView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),

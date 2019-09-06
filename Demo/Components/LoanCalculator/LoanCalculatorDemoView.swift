@@ -24,10 +24,10 @@ class LoanCalculatorDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        loanCalculatorView.configure(with: DefaultLoanCalculatorViewModel.test)
+        loanCalculatorView.configure(with: DefaultLoanCalculatorViewModel.makeViewModel())
         addSubview(loanCalculatorView)
         NSLayoutConstraint.activate([
-            loanCalculatorView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 1, constant: -.largeSpacing),
+            loanCalculatorView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1, constant: -.largeSpacing),
             loanCalculatorView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: 1, constant: -.largeSpacing),
             loanCalculatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             loanCalculatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -80,38 +80,45 @@ extension LoanCalculatorDemoView: LoanCalculatorDataSource {
 extension LoanCalculatorDemoView: LoanCalculatorDelegate {
     func loanValuesView(_ view: LoanCalculatorView, didChangePrice price: Float) {
         print("Price changes: \(price)")
-        finishLoading()
+
+        let viewModel = DefaultLoanCalculatorViewModel.makeViewModel(price: Int(price), hasConditions: Bool.random())
+        finishLoading(with: viewModel)
     }
 
     func loanValuesView(_ view: LoanCalculatorView, didChangeEquity equity: Float) {
         print("Equity changed: \(equity)")
-        finishLoading()
+
+        let viewModel = DefaultLoanCalculatorViewModel.makeViewModel(equity: Int(equity))
+        finishLoading(with: viewModel)
     }
 
     func loanValuesView(_ view: LoanCalculatorView, didChangePaymentYears years: Int) {
         print("Payment years changed: \(years)")
-        finishLoading()
+
+        let viewModel = DefaultLoanCalculatorViewModel.makeViewModel(equity: Int(years))
+        finishLoading(with: viewModel)
     }
 
     func loanValuesViewDidSelectApply(_ view: LoanCalculatorView) {
         print("Apply button selected")
     }
 
-    private func finishLoading() {
+    private func finishLoading(with viewModel: LoanCalculatorViewModel) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) { [weak self] in
             self?.loanCalculatorView.isLoading = false
-            self?.loanCalculatorView.showErrorText(Bool.random())
+            self?.loanCalculatorView.configure(with: viewModel)
         }
     }
 }
 
-struct DefaultLoanCalculatorViewModel: LoanCalculatorViewModel {
-    let title: String
-    let rentText: String
-    let pricePerMonth: String
-    let loanAmountText: String
+// MARK: - Private types
+
+private struct DefaultLoanCalculatorViewModel: LoanCalculatorViewModel {
+    let title: String?
+    let rentText: String?
+    let pricePerMonth: String?
+    let loanAmountText: String?
     let logoUrl: String?
-    let errorText: String
     let conditionsText: String
     let applyText: String
     var price: TitleValueSliderViewModel
@@ -120,19 +127,29 @@ struct DefaultLoanCalculatorViewModel: LoanCalculatorViewModel {
 }
 
 extension DefaultLoanCalculatorViewModel {
-    static let test = DefaultLoanCalculatorViewModel(
-        title: "Estimert pr. måned",
-        rentText: "2,65 % eff. / 2,55 % nom. rente",
-        pricePerMonth: "16 656 kr",
-        loanAmountText: "Lånesum: 3 675 000 kr",
-        logoUrl: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png",
-        errorText: "Verdiene er utenfor banks prisliste. Renten vil dermed settes på individuell basis",
-        conditionsText: "Eff.rente 2,62 %. Etableringsgebyr. 2 500 kr. 4 433 000 kr o/25 år. Kostnad: 1 589 500 kr. Totalt: 6 022 500 kr.",
-        applyText: "Søk boliglån",
-        price: DefaultTitleValueSliderViewModel.price,
-        equity: DefaultTitleValueSliderViewModel.equity,
-        paymentYears: DefaultTitleValueSliderViewModel.paymentYears
-    )
+    static func makeViewModel(
+        price: Int = 5600000,
+        equity: Int = Int((5600000 - 10000) * 0.35),
+        paymentYears: Int = 25,
+        hasConditions: Bool = true
+    ) -> DefaultLoanCalculatorViewModel {
+        let conditionsText = hasConditions
+            ? "Eff.rente 2,62 %. Etableringsgebyr. 2 500 kr. 4 433 000 kr o/25 år. Kostnad: 1 589 500 kr. Totalt: 6 022 500 kr."
+            :"Verdiene er utenfor banks prisliste. Renten vil dermed settes på individuell basis"
+
+        return DefaultLoanCalculatorViewModel(
+            title: hasConditions ? "Estimert pr. måned" : nil,
+            rentText: hasConditions ? "2,65 % eff. / 2,55 % nom. rente" : nil,
+            pricePerMonth: hasConditions ? "16 656 kr" : nil,
+            loanAmountText: hasConditions ? "Lånesum: 3 675 000 kr": nil,
+            logoUrl: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png",
+            conditionsText: conditionsText,
+            applyText: "Søk boliglån",
+            price: DefaultTitleValueSliderViewModel.makePrice(withInitialValue: price),
+            equity: DefaultTitleValueSliderViewModel.makeEquity(withInitialValue: equity),
+            paymentYears: DefaultTitleValueSliderViewModel.makePaymentYears(withInitialValue: paymentYears)
+        )
+    }
 }
 
 struct DefaultTitleValueSliderViewModel: TitleValueSliderViewModel {
@@ -143,15 +160,30 @@ struct DefaultTitleValueSliderViewModel: TitleValueSliderViewModel {
 }
 
 extension DefaultTitleValueSliderViewModel {
-    static let price = DefaultTitleValueSliderViewModel(
-        title: "Kjøpesum:", minimumValue: 0, maximumValue: 5600000, initialValue: 5600000
-    )
+    static func makePrice(withInitialValue value: Int) -> DefaultTitleValueSliderViewModel {
+        return DefaultTitleValueSliderViewModel(
+            title: "Kjøpesum:",
+            minimumValue: 0,
+            maximumValue: 5600000,
+            initialValue: value
+        )
+    }
 
-    static let equity = DefaultTitleValueSliderViewModel(
-        title: "Egenkapital:", minimumValue: 0, maximumValue: 5600000 - 10000, initialValue: Int((5600000 - 10000) * 0.35)
-    )
+    static func makeEquity(withInitialValue value: Int) -> DefaultTitleValueSliderViewModel {
+        return DefaultTitleValueSliderViewModel(
+            title: "Egenkapital:",
+            minimumValue: 0,
+            maximumValue: 5600000 - 10000,
+            initialValue: value
+        )
+    }
 
-    static let paymentYears = DefaultTitleValueSliderViewModel(
-        title: "Nedbetalingstid:", minimumValue: 5, maximumValue: 30, initialValue: 25
-    )
+    static func makePaymentYears(withInitialValue value: Int) -> DefaultTitleValueSliderViewModel {
+        return DefaultTitleValueSliderViewModel(
+            title: "Nedbetalingstid:",
+            minimumValue: 5,
+            maximumValue: 30,
+            initialValue: value
+        )
+    }
 }

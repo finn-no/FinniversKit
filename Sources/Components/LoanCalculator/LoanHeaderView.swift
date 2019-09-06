@@ -5,12 +5,11 @@
 import UIKit
 
 public protocol LoanHeaderViewModel {
-    var title: String { get }
-    var rentText: String { get }
-    var pricePerMonth: String { get }
-    var loanAmountText: String { get }
+    var title: String? { get }
+    var rentText: String? { get }
+    var pricePerMonth: String? { get }
+    var loanAmountText: String? { get }
     var logoUrl: String? { get }
-    var errorText: String { get }
 }
 
 class LoanHeaderView: UIView {
@@ -46,13 +45,6 @@ class LoanHeaderView: UIView {
     private lazy var rentLabel = Label(style: .detailStrong, withAutoLayout: true)
     private lazy var loanTotalLabel = Label(style: .detail, withAutoLayout: true)
 
-    private lazy var errorLabel: UILabel = {
-        let label = Label(style: .body, withAutoLayout: true)
-        label.numberOfLines = 4
-        label.isHidden = true
-        return label
-    }()
-
     private lazy var logoImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
@@ -78,7 +70,6 @@ class LoanHeaderView: UIView {
         valueLabel.text = model.pricePerMonth
         rentLabel.text = model.rentText
         loanTotalLabel.text = model.loanAmountText
-        errorLabel.text = model.errorText
 
         if let logoUrl = model.logoUrl {
             logoImageView.loadImage(for: logoUrl, imageWidth: logoSize.width, fallbackImage: fallbackImage)
@@ -87,21 +78,12 @@ class LoanHeaderView: UIView {
         }
     }
 
-    func showErrorText(_ show: Bool) {
-        errorLabel.isHidden = !show
-        titleLabel.isHidden = show
-        valueLabel.isHidden = show
-        rentLabel.isHidden = show
-        loanTotalLabel.isHidden = show
-    }
-
     // MARK: - Private functions
     private func setup() {
         textStackView.addArrangedSubview(titleLabel)
         textStackView.addArrangedSubview(valueLabel)
         textStackView.addArrangedSubview(rentLabel)
         textStackView.addArrangedSubview(loanTotalLabel)
-        textStackView.addArrangedSubview(errorLabel)
 
         outerStackView.addArrangedSubview(textStackView)
         outerStackView.addArrangedSubview(logoImageView)
