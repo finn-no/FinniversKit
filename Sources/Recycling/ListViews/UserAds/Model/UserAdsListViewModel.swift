@@ -12,6 +12,7 @@ public protocol UserAdsListViewModel {
     var detail: String { get }
     var status: String { get }
     var accessibilityLabel: String { get }
+    var actionModel: UserAdsListActionModel? { get }
 }
 
 public extension UserAdsListViewModel {
@@ -22,4 +23,11 @@ public extension UserAdsListViewModel {
         message += ". " + detail
         return message
     }
+}
+
+public protocol UserAdsListActionModel {
+    var title: String? { get }
+    var description: String { get }
+    var buttonTitle: String { get }
+    var cancelButtonTitle: String? { get }
 }
