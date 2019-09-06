@@ -10,6 +10,7 @@ class UserAdsListDataSource: NSObject {
 
 class UserAdsListViewDemoView: UIView {
     private lazy var dataSource = UserAdsListDataSource()
+    private(set) var emphasizedActionHasBeenCollapsed = false
 
     // MARK: - Init
 
@@ -54,15 +55,28 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
         return [deleteAction]
     }
 
+    func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView) {
+        emphasizedActionHasBeenCollapsed = true
+    }
+    
+    func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView) {
+        emphasizedActionHasBeenCollapsed = true
+    }
+    
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didSelectItemAtIndex indexPath: IndexPath) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, willDisplayItemAtIndex indexPath: IndexPath) {}
     func userAdsListView(_ userAdsListView: UserAdsListView, didScrollInScrollView scrollView: UIScrollView) {}
+
 }
 
 extension UserAdsListViewDemoView: UserAdsListViewDataSource {
+    func sectionNumberForEmphasizedAction(in userAdsListView: UserAdsListView) -> Int? {
+        return 1
+    }
+    
     func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool {
         return false
     }
