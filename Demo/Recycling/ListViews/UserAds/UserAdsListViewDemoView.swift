@@ -58,6 +58,7 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
     func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView) {
         emphasizedActionHasBeenCollapsed = true
     }
+    
     func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView) {
         emphasizedActionHasBeenCollapsed = true
     }
