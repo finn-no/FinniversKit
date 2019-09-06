@@ -107,7 +107,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     }()
     
     private lazy var cancelButton: Button = {
-        let button = Button(style: .flat, size: .small)
+        let button = Button(style: .default, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
         return button
