@@ -55,7 +55,7 @@ public class VerificationView: UIView {
     public weak var delegate: VerificationViewDelegate?
 
     public override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: .zero)
         setup()
     }
 
