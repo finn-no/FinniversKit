@@ -5,7 +5,13 @@
 import UIKit
 
 public protocol IdentityViewModel {
+    /// If defined, `profileImage` will take precedense over the image located at `profileImageUrl`.
+    var profileImage: UIImage? { get }
+
+    /// If `profileImage` is not defined, the `delegate` will be queried to download the image
+    /// located at this URL.
     var profileImageUrl: URL? { get }
+
     var displayName: String { get }
     var subtitle: String { get }
     var description: String? { get }
@@ -36,14 +42,20 @@ public class IdentityView: UIView {
         }
     }
 
+    public var hideDescription: Bool = false {
+        didSet {
+            viewModelChanged()
+        }
+    }
+
     // MARK: - UI properties
 
-    private let profileImageSize: CGFloat = 40.0
+    public static let profileImageSize: CGFloat = 40.0
     private lazy var defaultProfileImage = UIImage(named: FinniversImageAsset.avatar)
 
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.layer.cornerRadius = profileImageSize / 2
+        imageView.layer.cornerRadius = IdentityView.profileImageSize / 2
         imageView.layer.masksToBounds = true
         return imageView
     }()
@@ -116,8 +128,8 @@ public class IdentityView: UIView {
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
             profileImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.mediumLargeSpacing),
-            profileImageView.widthAnchor.constraint(equalToConstant: profileImageSize),
-            profileImageView.heightAnchor.constraint(equalToConstant: profileImageSize),
+            profileImageView.widthAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
+            profileImageView.heightAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
 
             profileNameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .mediumSpacing),
             profileNameLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor),
@@ -183,7 +195,7 @@ public class IdentityView: UIView {
 
         subtitleLabel.text = viewModel.subtitle
 
-        let showDescription = viewModel.description != nil
+        let showDescription = viewModel.description != nil && !hideDescription
         descriptionLabel.isHidden = !showDescription
         descriptionLabel.text = viewModel.description
         descriptionLabelConstraints.forEach { $0.isActive = showDescription }
@@ -192,7 +204,15 @@ public class IdentityView: UIView {
     // MARK: - Private methods
 
     private func loadProfileImage() {
-        guard let url = viewModel?.profileImageUrl else { return }
+        if let profileImage = viewModel?.profileImage {
+            profileImageView.image = profileImage
+            return
+        }
+
+        guard let url = viewModel?.profileImageUrl else {
+            profileImageView.image = defaultProfileImage
+            return
+        }
 
         delegate?.identityView(self, loadImageWithUrl: url, completionHandler: { [weak self] image in
             guard let self = self else { return }
