@@ -18,11 +18,7 @@ public final class FavoriteActionView: UIView {
 
     private lazy var headerView: FavoriteActionHeaderView = {
         let view = FavoriteActionHeaderView(withAutoLayout: true)
-        view.configure(
-            withImage: viewModel.headerImage,
-            detailText: viewModel.headerDetailText,
-            accessoryText: viewModel.headerAccessoryText
-        )
+        view.configure(withImage: viewModel.headerImage, title: viewModel.headerTitle)
         return view
     }()
 
@@ -113,11 +109,7 @@ public extension FavoriteActionView {
     static let rowHeight: CGFloat = 48.0
 
     static func totalHeight(for viewModel: FavoriteActionViewModel, width: CGFloat) -> CGFloat {
-        let headerViewHeight = FavoriteActionHeaderView.height(
-            forDetailText: viewModel.headerDetailText,
-            accessoryText: viewModel.headerAccessoryText,
-            width: width
-        )
+        let headerViewHeight = FavoriteActionHeaderView.height(forTitle: viewModel.headerTitle, width: width)
         let tableViewHeight = rowHeight * CGFloat(FavoriteAction.allCases.count)
 
         return headerViewHeight + tableViewHeight
