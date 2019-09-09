@@ -320,32 +320,32 @@
 		CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CE7230D8D9700250822 /* FavoriteFolderAction.swift */; };
 		CF164CED230D916000250822 /* FavoriteFolderCopyLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CEC230D916000250822 /* FavoriteFolderCopyLinkCell.swift */; };
 		CF164CF0230E7FF100250822 /* FavoriteFolderShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CEE230D91DE00250822 /* FavoriteFolderShareCell.swift */; };
-		CF164CF3230E8FB900250822 /* FavoriteSortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CF2230E8FB900250822 /* FavoriteSortOption.swift */; };
-		CF164CF5230E93AE00250822 /* FavoriteSortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CF4230E93AE00250822 /* FavoriteSortingView.swift */; };
-		CF164CF8230E968000250822 /* FavoriteSortingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CF7230E968000250822 /* FavoriteSortingViewModel.swift */; };
-		CF164CFB230EAD3700250822 /* FavoriteSortOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CFA230EAD3700250822 /* FavoriteSortOptionCell.swift */; };
+		CF164CF3230E8FB900250822 /* FavoriteAdSortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CF2230E8FB900250822 /* FavoriteAdSortOption.swift */; };
+		CF164CF5230E93AE00250822 /* FavoriteAdSortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CF4230E93AE00250822 /* FavoriteAdSortingView.swift */; };
+		CF164CF8230E968000250822 /* FavoriteAdSortingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CF7230E968000250822 /* FavoriteAdSortingViewModel.swift */; };
+		CF164CFB230EAD3700250822 /* FavoriteAdSortOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CFA230EAD3700250822 /* FavoriteAdSortOptionCell.swift */; };
 		CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CFC230EB0F900250822 /* CheckmarkImageView.swift */; };
 		CF164CFF230EB3D100250822 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */; };
-		CF164D01230EB4EC00250822 /* FavoriteSortingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D00230EB4EC00250822 /* FavoriteSortingSheet.swift */; };
-		CF164D04230EB80900250822 /* FavoriteSortingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D03230EB80900250822 /* FavoriteSortingDemoView.swift */; };
-		CF164D06230EB82F00250822 /* FavoriteSortingViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D05230EB82F00250822 /* FavoriteSortingViewModel+Demo.swift */; };
+		CF164D01230EB4EC00250822 /* FavoriteAdSortingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D00230EB4EC00250822 /* FavoriteAdSortingSheet.swift */; };
+		CF164D04230EB80900250822 /* FavoriteAdSortingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D03230EB80900250822 /* FavoriteAdSortingDemoView.swift */; };
+		CF164D06230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D05230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift */; };
 		CF164D0A230EBA2300250822 /* FavoriteSortingSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D09230EBA2300250822 /* FavoriteSortingSheetDemoDelegate.swift */; };
-		CF164D15230FFB7400250822 /* FavoriteActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D14230FFB7400250822 /* FavoriteActionViewModel.swift */; };
-		CF164D17230FFDEB00250822 /* FavoriteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D16230FFDEB00250822 /* FavoriteAction.swift */; };
+		CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D14230FFB7400250822 /* FavoriteAdActionViewModel.swift */; };
+		CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */; };
 		CF164D1A230FFEBA00250822 /* FavoriteActionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */; };
 		CF164D1C230FFEF400250822 /* FavoriteActionViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D1B230FFEF400250822 /* FavoriteActionViewModel+Demo.swift */; };
-		CF164D212310138900250822 /* FavoriteActionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D1F2310031700250822 /* FavoriteActionHeaderView.swift */; };
-		CF164D2723101E5500250822 /* FavoriteActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2523101E5100250822 /* FavoriteActionSheet.swift */; };
+		CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */; };
+		CF164D2723101E5500250822 /* FavoriteAdActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2523101E5100250822 /* FavoriteAdActionSheet.swift */; };
 		CF164D2823101F2000250822 /* FavoriteFolderActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2323101E4400250822 /* FavoriteFolderActionSheet.swift */; };
 		CF164D2B23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2A23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift */; };
-		CF164D2D23101F6B00250822 /* FavoriteActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2C23101F6B00250822 /* FavoriteActionSheetDemoDelegate.swift */; };
-		CF164DD3231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD2231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift */; };
-		CF164DD62315740500250822 /* FavoriteNoteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD52315740500250822 /* FavoriteNoteSheet.swift */; };
-		CF164DD82315749500250822 /* FavoriteNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD72315749500250822 /* FavoriteNoteViewController.swift */; };
-		CF164DDA2315776E00250822 /* FavoriteNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD92315776E00250822 /* FavoriteNoteViewModel.swift */; };
+		CF164D2D23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2C23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift */; };
+		CF164DD3231573CF00250822 /* FavoriteAdNoteSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD2231573CF00250822 /* FavoriteAdNoteSheetDemoDelegate.swift */; };
+		CF164DD62315740500250822 /* FavoriteAdNoteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD52315740500250822 /* FavoriteAdNoteSheet.swift */; };
+		CF164DD82315749500250822 /* FavoriteAdNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD72315749500250822 /* FavoriteAdNoteViewController.swift */; };
+		CF164DDA2315776E00250822 /* FavoriteAdNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD92315776E00250822 /* FavoriteAdNoteViewModel.swift */; };
 		CF164DDC231579D600250822 /* FavoriteNoteViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DDB231579D600250822 /* FavoriteNoteViewModel+Demo.swift */; };
 		CF2E46EF231958300085A591 /* FavoriteFolderActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */; };
-		CF2E46F22319685C0085A591 /* FavoriteActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46F12319685C0085A591 /* FavoriteActionView.swift */; };
+		CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46F12319685C0085A591 /* FavoriteAdActionView.swift */; };
 		CF376C16231D3D9400ED2B24 /* StepSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C15231D3D9400ED2B24 /* StepSliderDemoView.swift */; };
 		CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C17231D452100ED2B24 /* Array+Step.swift */; };
 		CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C1A231D458200ED2B24 /* ArrayStepTests.swift */; };
@@ -841,33 +841,33 @@
 		CF164CE7230D8D9700250822 /* FavoriteFolderAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderAction.swift; sourceTree = "<group>"; };
 		CF164CEC230D916000250822 /* FavoriteFolderCopyLinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderCopyLinkCell.swift; sourceTree = "<group>"; };
 		CF164CEE230D91DE00250822 /* FavoriteFolderShareCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderShareCell.swift; sourceTree = "<group>"; };
-		CF164CF2230E8FB900250822 /* FavoriteSortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSortOption.swift; sourceTree = "<group>"; };
-		CF164CF4230E93AE00250822 /* FavoriteSortingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSortingView.swift; sourceTree = "<group>"; };
-		CF164CF7230E968000250822 /* FavoriteSortingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSortingViewModel.swift; sourceTree = "<group>"; };
-		CF164CFA230EAD3700250822 /* FavoriteSortOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSortOptionCell.swift; sourceTree = "<group>"; };
+		CF164CF2230E8FB900250822 /* FavoriteAdSortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortOption.swift; sourceTree = "<group>"; };
+		CF164CF4230E93AE00250822 /* FavoriteAdSortingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortingView.swift; sourceTree = "<group>"; };
+		CF164CF7230E968000250822 /* FavoriteAdSortingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortingViewModel.swift; sourceTree = "<group>"; };
+		CF164CFA230EAD3700250822 /* FavoriteAdSortOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortOptionCell.swift; sourceTree = "<group>"; };
 		CF164CFC230EB0F900250822 /* CheckmarkImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkImageView.swift; sourceTree = "<group>"; };
 		CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
-		CF164D00230EB4EC00250822 /* FavoriteSortingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSortingSheet.swift; sourceTree = "<group>"; };
-		CF164D03230EB80900250822 /* FavoriteSortingDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSortingDemoView.swift; sourceTree = "<group>"; };
-		CF164D05230EB82F00250822 /* FavoriteSortingViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteSortingViewModel+Demo.swift"; sourceTree = "<group>"; };
+		CF164D00230EB4EC00250822 /* FavoriteAdSortingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortingSheet.swift; sourceTree = "<group>"; };
+		CF164D03230EB80900250822 /* FavoriteAdSortingDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortingDemoView.swift; sourceTree = "<group>"; };
+		CF164D05230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteAdSortingViewModel+Demo.swift"; sourceTree = "<group>"; };
 		CF164D09230EBA2300250822 /* FavoriteSortingSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSortingSheetDemoDelegate.swift; sourceTree = "<group>"; };
-		CF164D14230FFB7400250822 /* FavoriteActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionViewModel.swift; sourceTree = "<group>"; };
-		CF164D16230FFDEB00250822 /* FavoriteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAction.swift; sourceTree = "<group>"; };
+		CF164D14230FFB7400250822 /* FavoriteAdActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionViewModel.swift; sourceTree = "<group>"; };
+		CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdAction.swift; sourceTree = "<group>"; };
 		CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionDemoView.swift; sourceTree = "<group>"; };
 		CF164D1B230FFEF400250822 /* FavoriteActionViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteActionViewModel+Demo.swift"; sourceTree = "<group>"; };
-		CF164D1F2310031700250822 /* FavoriteActionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionHeaderView.swift; sourceTree = "<group>"; };
+		CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionHeaderView.swift; sourceTree = "<group>"; };
 		CF164D2323101E4400250822 /* FavoriteFolderActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionSheet.swift; sourceTree = "<group>"; };
-		CF164D2523101E5100250822 /* FavoriteActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionSheet.swift; sourceTree = "<group>"; };
+		CF164D2523101E5100250822 /* FavoriteAdActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionSheet.swift; sourceTree = "<group>"; };
 		CF164D2A23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
-		CF164D2C23101F6B00250822 /* FavoriteActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
-		CF164DD2231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteSheetDemoDelegate.swift; sourceTree = "<group>"; };
-		CF164DD52315740500250822 /* FavoriteNoteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteSheet.swift; sourceTree = "<group>"; };
-		CF164DD72315749500250822 /* FavoriteNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteViewController.swift; sourceTree = "<group>"; };
-		CF164DD92315776E00250822 /* FavoriteNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteViewModel.swift; sourceTree = "<group>"; };
+		CF164D2C23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
+		CF164DD2231573CF00250822 /* FavoriteAdNoteSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdNoteSheetDemoDelegate.swift; sourceTree = "<group>"; };
+		CF164DD52315740500250822 /* FavoriteAdNoteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdNoteSheet.swift; sourceTree = "<group>"; };
+		CF164DD72315749500250822 /* FavoriteAdNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdNoteViewController.swift; sourceTree = "<group>"; };
+		CF164DD92315776E00250822 /* FavoriteAdNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdNoteViewModel.swift; sourceTree = "<group>"; };
 		CF164DDB231579D600250822 /* FavoriteNoteViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteNoteViewModel+Demo.swift"; sourceTree = "<group>"; };
 		CF29845D229566E8008CD832 /* ContactFormCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormCheckbox.swift; sourceTree = "<group>"; };
 		CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionViewController.swift; sourceTree = "<group>"; };
-		CF2E46F12319685C0085A591 /* FavoriteActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteActionView.swift; sourceTree = "<group>"; };
+		CF2E46F12319685C0085A591 /* FavoriteAdActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionView.swift; sourceTree = "<group>"; };
 		CF376C15231D3D9400ED2B24 /* StepSliderDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSliderDemoView.swift; sourceTree = "<group>"; };
 		CF376C17231D452100ED2B24 /* Array+Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Step.swift"; sourceTree = "<group>"; };
 		CF376C1A231D458200ED2B24 /* ArrayStepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayStepTests.swift; sourceTree = "<group>"; };
@@ -1404,11 +1404,11 @@
 		441FE440209A2F2C00B04EF1 /* ListViews */ = {
 			isa = PBXGroup;
 			children = (
-				CF2E46F0231968320085A591 /* FavoriteActions */,
 				6266C06A22081B9200FB8004 /* AdManagement */,
+				CF2E46F0231968320085A591 /* FavoriteAdActions */,
+				CF164CF1230E8F8800250822 /* FavoriteAdSorting */,
 				444245FA2137D60400D42AB8 /* FavoriteFolders */,
 				14C6F7CC212324C900A7230C /* Favorites */,
-				CF164CF1230E8F8800250822 /* FavoritesSorting */,
 				441FE441209A2F2C00B04EF1 /* Notifications */,
 				44A149E421377C7B0053D5F7 /* SavedSearches */,
 				DAC7DCA12153852D004602A3 /* Settings */,
@@ -1842,11 +1842,11 @@
 				CF87A851229C0C5700DA8243 /* ContactForm */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44D912502077AC8A00486848 /* EmptyView */,
-				CF164D2223101D8E00250822 /* FavoriteActionSheet */,
+				CF164D2223101D8E00250822 /* FavoriteAdActionSheet */,
+				CF164DD4231573F100250822 /* FavoriteAdNoteSheet */,
 				9A37D4A128C47173977AAE19 /* FavoriteAdsList */,
+				CF164D07230EB9C100250822 /* FavoriteAdSortingSheet */,
 				CF164D0B230FF44D00250822 /* FavoriteFolderActionSheet */,
-				CF164DD4231573F100250822 /* FavoriteNoteSheet */,
-				CF164D07230EB9C100250822 /* FavoriteSortingSheet */,
 				447AFC0E20984B63000F793E /* FrontPage */,
 				9F213E134EF7C0A184D133F5 /* FullscreenGallery */,
 				14EBA253215A633800613E5A /* LoadingView */,
@@ -2406,21 +2406,21 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		CF164CF1230E8F8800250822 /* FavoritesSorting */ = {
+		CF164CF1230E8F8800250822 /* FavoriteAdSorting */ = {
 			isa = PBXGroup;
 			children = (
-				CF164CF4230E93AE00250822 /* FavoriteSortingView.swift */,
+				CF164CF4230E93AE00250822 /* FavoriteAdSortingView.swift */,
 				CF164CF9230EAD2200250822 /* Cells */,
 				CF164CF6230E966400250822 /* ViewModels */,
 			);
-			path = FavoritesSorting;
+			path = FavoriteAdSorting;
 			sourceTree = "<group>";
 		};
 		CF164CF6230E966400250822 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				CF164CF7230E968000250822 /* FavoriteSortingViewModel.swift */,
-				CF164CF2230E8FB900250822 /* FavoriteSortOption.swift */,
+				CF164CF7230E968000250822 /* FavoriteAdSortingViewModel.swift */,
+				CF164CF2230E8FB900250822 /* FavoriteAdSortOption.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -2428,34 +2428,34 @@
 		CF164CF9230EAD2200250822 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				CF164CFA230EAD3700250822 /* FavoriteSortOptionCell.swift */,
+				CF164CFA230EAD3700250822 /* FavoriteAdSortOptionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		CF164D02230EB79100250822 /* FavoriteSorting */ = {
+		CF164D02230EB79100250822 /* FavoriteAdSorting */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D03230EB80900250822 /* FavoriteSortingDemoView.swift */,
-				CF164D05230EB82F00250822 /* FavoriteSortingViewModel+Demo.swift */,
+				CF164D03230EB80900250822 /* FavoriteAdSortingDemoView.swift */,
+				CF164D05230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift */,
 			);
-			path = FavoriteSorting;
+			path = FavoriteAdSorting;
 			sourceTree = "<group>";
 		};
-		CF164D07230EB9C100250822 /* FavoriteSortingSheet */ = {
+		CF164D07230EB9C100250822 /* FavoriteAdSortingSheet */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D00230EB4EC00250822 /* FavoriteSortingSheet.swift */,
+				CF164D00230EB4EC00250822 /* FavoriteAdSortingSheet.swift */,
 			);
-			path = FavoriteSortingSheet;
+			path = FavoriteAdSortingSheet;
 			sourceTree = "<group>";
 		};
-		CF164D08230EB9F100250822 /* FavoriteSortingSheet */ = {
+		CF164D08230EB9F100250822 /* FavoriteAdSortingSheet */ = {
 			isa = PBXGroup;
 			children = (
 				CF164D09230EBA2300250822 /* FavoriteSortingSheetDemoDelegate.swift */,
 			);
-			path = FavoriteSortingSheet;
+			path = FavoriteAdSortingSheet;
 			sourceTree = "<group>";
 		};
 		CF164D0B230FF44D00250822 /* FavoriteFolderActionSheet */ = {
@@ -2478,13 +2478,13 @@
 			path = FavoriteFolderActionSheet;
 			sourceTree = "<group>";
 		};
-		CF164D18230FFEA800250822 /* FavoriteActions */ = {
+		CF164D18230FFEA800250822 /* FavoriteAdActions */ = {
 			isa = PBXGroup;
 			children = (
 				CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */,
 				CF164D1B230FFEF400250822 /* FavoriteActionViewModel+Demo.swift */,
 			);
-			path = FavoriteActions;
+			path = FavoriteAdActions;
 			sourceTree = "<group>";
 		};
 		CF164D1D2310026500250822 /* Cells */ = {
@@ -2498,56 +2498,56 @@
 		CF164D1E2310030100250822 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D1F2310031700250822 /* FavoriteActionHeaderView.swift */,
+				CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		CF164D2223101D8E00250822 /* FavoriteActionSheet */ = {
+		CF164D2223101D8E00250822 /* FavoriteAdActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D2523101E5100250822 /* FavoriteActionSheet.swift */,
+				CF164D2523101E5100250822 /* FavoriteAdActionSheet.swift */,
 			);
-			path = FavoriteActionSheet;
+			path = FavoriteAdActionSheet;
 			sourceTree = "<group>";
 		};
-		CF164D2923101F4500250822 /* FavoriteActionSheet */ = {
+		CF164D2923101F4500250822 /* FavoriteAdActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D2C23101F6B00250822 /* FavoriteActionSheetDemoDelegate.swift */,
+				CF164D2C23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift */,
 			);
-			path = FavoriteActionSheet;
+			path = FavoriteAdActionSheet;
 			sourceTree = "<group>";
 		};
-		CF164DD12315738800250822 /* FavoriteNoteSheet */ = {
+		CF164DD12315738800250822 /* FavoriteAdNoteSheet */ = {
 			isa = PBXGroup;
 			children = (
-				CF164DD2231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift */,
+				CF164DD2231573CF00250822 /* FavoriteAdNoteSheetDemoDelegate.swift */,
 				CF164DDB231579D600250822 /* FavoriteNoteViewModel+Demo.swift */,
 			);
-			path = FavoriteNoteSheet;
+			path = FavoriteAdNoteSheet;
 			sourceTree = "<group>";
 		};
-		CF164DD4231573F100250822 /* FavoriteNoteSheet */ = {
+		CF164DD4231573F100250822 /* FavoriteAdNoteSheet */ = {
 			isa = PBXGroup;
 			children = (
-				CF164DD52315740500250822 /* FavoriteNoteSheet.swift */,
-				CF164DD72315749500250822 /* FavoriteNoteViewController.swift */,
-				CF164DD92315776E00250822 /* FavoriteNoteViewModel.swift */,
+				CF164DD52315740500250822 /* FavoriteAdNoteSheet.swift */,
+				CF164DD72315749500250822 /* FavoriteAdNoteViewController.swift */,
+				CF164DD92315776E00250822 /* FavoriteAdNoteViewModel.swift */,
 			);
-			path = FavoriteNoteSheet;
+			path = FavoriteAdNoteSheet;
 			sourceTree = "<group>";
 		};
-		CF2E46F0231968320085A591 /* FavoriteActions */ = {
+		CF2E46F0231968320085A591 /* FavoriteAdActions */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D16230FFDEB00250822 /* FavoriteAction.swift */,
-				CF2E46F12319685C0085A591 /* FavoriteActionView.swift */,
-				CF164D14230FFB7400250822 /* FavoriteActionViewModel.swift */,
+				CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */,
+				CF2E46F12319685C0085A591 /* FavoriteAdActionView.swift */,
+				CF164D14230FFB7400250822 /* FavoriteAdActionViewModel.swift */,
 				CF164D1D2310026500250822 /* Cells */,
 				CF164D1E2310030100250822 /* Views */,
 			);
-			path = FavoriteActions;
+			path = FavoriteAdActions;
 			sourceTree = "<group>";
 		};
 		CF376C14231D3D8500ED2B24 /* StepSlider */ = {
@@ -3003,11 +3003,11 @@
 				CF87A858229C0C6600DA8243 /* ContactForm */,
 				CF8F022B21DCC74F004C4042 /* EasterEggs */,
 				CF8F023521DCC81E004C4042 /* EmptyView */,
-				CF164D2923101F4500250822 /* FavoriteActionSheet */,
+				CF164D2923101F4500250822 /* FavoriteAdActionSheet */,
+				CF164DD12315738800250822 /* FavoriteAdNoteSheet */,
 				9A37DB96525D383D10C6A008 /* FavoriteAdsListView */,
+				CF164D08230EB9F100250822 /* FavoriteAdSortingSheet */,
 				CF164D0C230FF4CB00250822 /* FavoriteFolderActionSheet */,
-				CF164DD12315738800250822 /* FavoriteNoteSheet */,
-				CF164D08230EB9F100250822 /* FavoriteSortingSheet */,
 				CF8F023221DCC7AE004C4042 /* FrontPage */,
 				9F2139783BEC14AD02F9BF7A /* FullscreenGallery */,
 				CF8F022A21DCC746004C4042 /* LoadingView */,
@@ -3165,10 +3165,10 @@
 			isa = PBXGroup;
 			children = (
 				6266C073220820FC00FB8004 /* AdManagement */,
-				CF164D18230FFEA800250822 /* FavoriteActions */,
+				CF164D18230FFEA800250822 /* FavoriteAdActions */,
+				CF164D02230EB79100250822 /* FavoriteAdSorting */,
 				CF8F023D21DCD510004C4042 /* FavoriteFolders */,
 				CF8F023C21DCD4E6004C4042 /* Favorites */,
-				CF164D02230EB79100250822 /* FavoriteSorting */,
 				CF8F023F21DCD567004C4042 /* Notifications */,
 				CF8F023E21DCD539004C4042 /* SavedSearches */,
 				CF8F023B21DCD4D4004C4042 /* Settings */,
@@ -3852,7 +3852,7 @@
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
 				91846C4D22E736BF0001410F /* SearchResultMapViewDemoViewController.swift in Sources */,
 				44AEFC2622E722FC00D3C307 /* IconTitleCellDemoView.swift in Sources */,
-				CF164DD3231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift in Sources */,
+				CF164DD3231573CF00250822 /* FavoriteAdNoteSheetDemoDelegate.swift in Sources */,
 				44B94FE922E0AB820078A23C /* TweakingOption.swift in Sources */,
 				F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */,
 				F2B1A19722D5054600713FC2 /* ReceiptViewDemoView.swift in Sources */,
@@ -3879,7 +3879,7 @@
 				CF4A054821FB58FA000BB7DA /* PianoDemoView.swift in Sources */,
 				444246082137D61200D42AB8 /* FavoriteFoldersListDemoView.swift in Sources */,
 				CFFDF89922F313A500FE68EA /* NeighborhoodProfileDemoView.swift in Sources */,
-				CF164D06230EB82F00250822 /* FavoriteSortingViewModel+Demo.swift in Sources */,
+				CF164D06230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				AA864B392231589B00BAE95A /* DialogueDemoView.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
@@ -3906,7 +3906,7 @@
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				F2B1A19922D5056500713FC2 /* ReceiptViewDefaultData.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
-				CF164D2D23101F6B00250822 /* FavoriteActionSheetDemoDelegate.swift in Sources */,
+				CF164D2D23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
 				44A0F0AB22E1FB6800BCCF4C /* CornerAnchoringViewController.swift in Sources */,
@@ -3967,7 +3967,7 @@
 				DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */,
 				44A0F0B222E20FBF00BCCF4C /* TestCheck.swift in Sources */,
 				DA93EFAA21C2BB2900207239 /* NewYearsDemoView.swift in Sources */,
-				CF164D04230EB80900250822 /* FavoriteSortingDemoView.swift in Sources */,
+				CF164D04230EB80900250822 /* FavoriteAdSortingDemoView.swift in Sources */,
 				9F21365157F385AC63928150 /* FullscreenGalleryDemoViewController.swift in Sources */,
 				9A37DDB3353F56739B23D22B /* FavoriteAdCellDemoView.swift in Sources */,
 				9A37DDB47621DC5763EF5559 /* FavoriteAdsListDemoView.swift in Sources */,
@@ -4012,7 +4012,7 @@
 				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */,
-				CF164D15230FFB7400250822 /* FavoriteActionViewModel.swift in Sources */,
+				CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */,
 				CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
@@ -4025,13 +4025,13 @@
 				9BBC8AE122DF50E5003453B6 /* KlimabroletView.swift in Sources */,
 				F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */,
 				082D80CB21C13C7B00831BDE /* RoundedRectangleGiftView.swift in Sources */,
-				CF164CF8230E968000250822 /* FavoriteSortingViewModel.swift in Sources */,
+				CF164CF8230E968000250822 /* FavoriteAdSortingViewModel.swift in Sources */,
 				443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */,
 				F26852D821F753A5000978C8 /* UserAdsListHeaderView.swift in Sources */,
 				441FE44E209A2F2C00B04EF1 /* NotificationsListView.swift in Sources */,
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
-				CF164CFB230EAD3700250822 /* FavoriteSortOptionCell.swift in Sources */,
+				CF164CFB230EAD3700250822 /* FavoriteAdSortOptionCell.swift in Sources */,
 				89A7A64A22536E200053D33B /* NativeContentSettingsButton.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
@@ -4066,17 +4066,17 @@
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
-				CF164DD82315749500250822 /* FavoriteNoteViewController.swift in Sources */,
+				CF164DD82315749500250822 /* FavoriteAdNoteViewController.swift in Sources */,
 				9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */,
 				CF164CED230D916000250822 /* FavoriteFolderCopyLinkCell.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
 				625A220D221EB30700733101 /* UserAdManagementUserActionCell.swift in Sources */,
-				CF164D2723101E5500250822 /* FavoriteActionSheet.swift in Sources */,
+				CF164D2723101E5500250822 /* FavoriteAdActionSheet.swift in Sources */,
 				F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */,
 				DA8EF1242164E7AF0028740C /* ConsentToggleView.swift in Sources */,
 				899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */,
 				444246032137D60400D42AB8 /* FavoriteFolderViewModel.swift in Sources */,
-				CF164CF3230E8FB900250822 /* FavoriteSortOption.swift in Sources */,
+				CF164CF3230E8FB900250822 /* FavoriteAdSortOption.swift in Sources */,
 				CF7E7B53230C2A7A001D514E /* FavoriteFolderActionViewModel.swift in Sources */,
 				8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */,
 				DAAAC8FD21C14FEE0071B028 /* FireworksView.swift in Sources */,
@@ -4153,7 +4153,7 @@
 				625A220B221EB26500733101 /* AdManagementActionCellModel.swift in Sources */,
 				CFCED8D922CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
-				CF164CF5230E93AE00250822 /* FavoriteSortingView.swift in Sources */,
+				CF164CF5230E93AE00250822 /* FavoriteAdSortingView.swift in Sources */,
 				CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */,
 				CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */,
 				CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */,
@@ -4167,14 +4167,14 @@
 				AA7A854E22255AB200AF5F42 /* DialogueView.swift in Sources */,
 				CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,
-				CF2E46F22319685C0085A591 /* FavoriteActionView.swift in Sources */,
+				CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */,
 				62432106231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
 				CF2E46EF231958300085A591 /* FavoriteFolderActionViewController.swift in Sources */,
 				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
-				CF164DD62315740500250822 /* FavoriteNoteSheet.swift in Sources */,
+				CF164DD62315740500250822 /* FavoriteAdNoteSheet.swift in Sources */,
 				8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */,
 				44A5579E22E71FEB001667AE /* BasicTableViewCellViewModel.swift in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
@@ -4246,7 +4246,7 @@
 				44587018213FA344009187BE /* RegisterView.swift in Sources */,
 				082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */,
 				9BAB37E0230C070400E861D4 /* SaveSearchViewModel.swift in Sources */,
-				CF164D212310138900250822 /* FavoriteActionHeaderView.swift in Sources */,
+				CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */,
 				DAB1F6D3216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift in Sources */,
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
@@ -4257,12 +4257,12 @@
 				DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */,
 				43BACE6C21117D530052114C /* ReviewViewModel.swift in Sources */,
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
-				CF164D01230EB4EC00250822 /* FavoriteSortingSheet.swift in Sources */,
+				CF164D01230EB4EC00250822 /* FavoriteAdSortingSheet.swift in Sources */,
 				895175952248D4D1008003FB /* StepDot.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
 				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
 				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
-				CF164DDA2315776E00250822 /* FavoriteNoteViewModel.swift in Sources */,
+				CF164DDA2315776E00250822 /* FavoriteAdNoteViewModel.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
 				DA9BF915215E66980072584C /* SettingsViewCellModel.swift in Sources */,
 				B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */,
@@ -4289,7 +4289,7 @@
 				9F21325E45E1BB6A5F076211 /* FullscreenGalleryDismissalTransition.swift in Sources */,
 				CF87A856229C0C5700DA8243 /* ContactFormCheckbox.swift in Sources */,
 				9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */,
-				CF164D17230FFDEB00250822 /* FavoriteAction.swift in Sources */,
+				CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */,
 				F2B1A19422D503E700713FC2 /* ReceiptViewModel.swift in Sources */,
 				9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */,
 				CF5CA71022F82D43007C4124 /* NeighborhoodProfileViewCell.swift in Sources */,
