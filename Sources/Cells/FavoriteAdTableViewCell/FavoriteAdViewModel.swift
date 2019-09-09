@@ -10,6 +10,7 @@ public struct FavoriteAdViewModel {
     public let titleColor: UIColor
     public let descriptionPrimaryText: String?
     public let descriptionSecondaryText: String?
+    public let descriptionTertiaryText: String?
     public let imagePath: String?
     public let ribbonStyle: RibbonView.Style
     public let ribbonTitle: String
@@ -21,6 +22,7 @@ public struct FavoriteAdViewModel {
                 titleColor: UIColor,
                 descriptionPrimaryText: String?,
                 descriptionSecondaryText: String?,
+                descriptionTertiaryText: String?,
                 imagePath: String?,
                 ribbonStyle: RibbonView.Style,
                 ribbonTitle: String,
@@ -31,6 +33,7 @@ public struct FavoriteAdViewModel {
         self.titleColor = titleColor
         self.descriptionPrimaryText = descriptionPrimaryText
         self.descriptionSecondaryText = descriptionSecondaryText
+        self.descriptionTertiaryText = descriptionTertiaryText
         self.imagePath = imagePath
         self.ribbonStyle = ribbonStyle
         self.ribbonTitle = ribbonTitle

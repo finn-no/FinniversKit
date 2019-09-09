@@ -34,6 +34,7 @@ final class FavoriteAdView: UIView {
     private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2, isHidden: false)
     private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .licorice, numberOfLines: 0)
     private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .licorice, numberOfLines: 0)
+    private lazy var descriptionTertiaryLabel = label(withFont: .detailStrong, textColor: .licorice, numberOfLines: 0)
     private lazy var statusRibbon = RibbonView(withAutoLayout: true)
     private lazy var fallbackImage: UIImage = UIImage(named: .noImage)
 
@@ -112,6 +113,11 @@ final class FavoriteAdView: UIView {
             descriptionSecondaryLabel.text = descriptionSecondaryText
             descriptionSecondaryLabel.isHidden = false
         }
+
+        if let descriptionTertiaryText = viewModel.descriptionTertiaryText {
+            descriptionTertiaryLabel.text = descriptionTertiaryText
+            descriptionTertiaryLabel.isHidden = false
+        }
     }
 
     func loadImage() {
@@ -132,7 +138,7 @@ final class FavoriteAdView: UIView {
         remoteImageView.cancelLoading()
         remoteImageView.setImage(nil, animated: false)
 
-        [addressLabel, descriptionPrimaryLabel, descriptionSecondaryLabel].forEach {
+        [addressLabel, descriptionPrimaryLabel, descriptionSecondaryLabel, descriptionTertiaryLabel].forEach {
             $0.text = nil
             $0.isHidden = true
         }
@@ -156,10 +162,12 @@ final class FavoriteAdView: UIView {
         textStackView.addArrangedSubview(titleLabel)
         textStackView.addArrangedSubview(descriptionPrimaryLabel)
         textStackView.addArrangedSubview(descriptionSecondaryLabel)
+        textStackView.addArrangedSubview(descriptionTertiaryLabel)
 
         textStackView.setCustomSpacing(.verySmallSpacing, after: addressLabel)
         textStackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
         textStackView.setCustomSpacing(.smallSpacing, after: descriptionPrimaryLabel)
+        textStackView.setCustomSpacing(.mediumSpacing, after: descriptionSecondaryLabel)
 
         addSubview(stackView)
         addSubview(statusRibbon)
