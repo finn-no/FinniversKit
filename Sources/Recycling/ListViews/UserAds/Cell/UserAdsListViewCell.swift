@@ -30,7 +30,7 @@ public protocol ImageLoading {
 
 public class UserAdsListViewCell: UITableViewCell {
     // MARK: - External properties
-    
+
     /// The loading color is used to fill the image view while we load the image.
 
     public var loadingColor: UIColor?
