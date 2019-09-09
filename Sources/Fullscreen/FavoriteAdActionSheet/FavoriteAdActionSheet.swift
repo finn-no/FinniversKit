@@ -10,14 +10,20 @@ public protocol FavoriteAdActionSheetDelegate: AnyObject {
 
 public final class FavoriteAdActionSheet: BottomSheet {
     public weak var actionDelegate: FavoriteAdActionSheetDelegate?
-    private weak var viewController: ActionViewController?
+    private let viewModel: FavoriteAdActionViewModel
+
+    private(set) lazy var actionView: FavoriteAdActionView = {
+        let view = FavoriteAdActionView(viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
+        return view
+    }()
 
     // MARK: - Init
 
     public required init(viewModel: FavoriteAdActionViewModel) {
-        let viewController = ActionViewController(viewModel: viewModel)
-        super.init(rootViewController: viewController, height: .height(for: viewModel))
-        self.viewController = viewController
+        self.viewModel = viewModel
+        super.init(rootViewController: UIViewController(), height: .height(for: viewModel))
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -33,7 +39,8 @@ public final class FavoriteAdActionSheet: BottomSheet {
         notch.insertSubview(blurView, at: 0)
         blurView.fillInSuperview()
 
-        viewController?.actionView.delegate = self
+        rootViewController.view.addSubview(actionView)
+        actionView.fillInSuperview()
     }
 }
 
@@ -42,33 +49,6 @@ public final class FavoriteAdActionSheet: BottomSheet {
 extension FavoriteAdActionSheet: FavoriteAdActionViewDelegate {
     public func favoriteAdActionView(_ view: FavoriteAdActionView, didSelectAction action: FavoriteAdAction) {
         actionDelegate?.favoriteAdActionSheet(self, didSelectAction: action)
-    }
-}
-
-// MARK: - Private types
-
-private final class ActionViewController: UIViewController {
-    private let viewModel: FavoriteAdActionViewModel
-
-    private(set) lazy var actionView: FavoriteAdActionView = {
-        let view = FavoriteAdActionView(viewModel: viewModel)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    init(viewModel: FavoriteAdActionViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(actionView)
-        actionView.fillInSuperview()
     }
 }
 
