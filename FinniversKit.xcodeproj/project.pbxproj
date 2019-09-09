@@ -339,10 +339,10 @@
 		CF164D2823101F2000250822 /* FavoriteFolderActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2323101E4400250822 /* FavoriteFolderActionSheet.swift */; };
 		CF164D2B23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2A23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift */; };
 		CF164D2D23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2C23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift */; };
-		CF164DD3231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD2231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift */; };
-		CF164DD62315740500250822 /* FavoriteNoteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD52315740500250822 /* FavoriteNoteSheet.swift */; };
-		CF164DD82315749500250822 /* FavoriteNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD72315749500250822 /* FavoriteNoteViewController.swift */; };
-		CF164DDA2315776E00250822 /* FavoriteNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD92315776E00250822 /* FavoriteNoteViewModel.swift */; };
+		CF164DD3231573CF00250822 /* FavoriteAdNoteSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD2231573CF00250822 /* FavoriteAdNoteSheetDemoDelegate.swift */; };
+		CF164DD62315740500250822 /* FavoriteAdNoteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD52315740500250822 /* FavoriteAdNoteSheet.swift */; };
+		CF164DD82315749500250822 /* FavoriteAdNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD72315749500250822 /* FavoriteAdNoteViewController.swift */; };
+		CF164DDA2315776E00250822 /* FavoriteAdNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD92315776E00250822 /* FavoriteAdNoteViewModel.swift */; };
 		CF164DDC231579D600250822 /* FavoriteNoteViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DDB231579D600250822 /* FavoriteNoteViewModel+Demo.swift */; };
 		CF2E46EF231958300085A591 /* FavoriteFolderActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */; };
 		CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46F12319685C0085A591 /* FavoriteAdActionView.swift */; };
@@ -860,10 +860,10 @@
 		CF164D2523101E5100250822 /* FavoriteAdActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionSheet.swift; sourceTree = "<group>"; };
 		CF164D2A23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
 		CF164D2C23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
-		CF164DD2231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteSheetDemoDelegate.swift; sourceTree = "<group>"; };
-		CF164DD52315740500250822 /* FavoriteNoteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteSheet.swift; sourceTree = "<group>"; };
-		CF164DD72315749500250822 /* FavoriteNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteViewController.swift; sourceTree = "<group>"; };
-		CF164DD92315776E00250822 /* FavoriteNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteViewModel.swift; sourceTree = "<group>"; };
+		CF164DD2231573CF00250822 /* FavoriteAdNoteSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdNoteSheetDemoDelegate.swift; sourceTree = "<group>"; };
+		CF164DD52315740500250822 /* FavoriteAdNoteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdNoteSheet.swift; sourceTree = "<group>"; };
+		CF164DD72315749500250822 /* FavoriteAdNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdNoteViewController.swift; sourceTree = "<group>"; };
+		CF164DD92315776E00250822 /* FavoriteAdNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdNoteViewModel.swift; sourceTree = "<group>"; };
 		CF164DDB231579D600250822 /* FavoriteNoteViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteNoteViewModel+Demo.swift"; sourceTree = "<group>"; };
 		CF29845D229566E8008CD832 /* ContactFormCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormCheckbox.swift; sourceTree = "<group>"; };
 		CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionViewController.swift; sourceTree = "<group>"; };
@@ -1404,11 +1404,11 @@
 		441FE440209A2F2C00B04EF1 /* ListViews */ = {
 			isa = PBXGroup;
 			children = (
-				CF2E46F0231968320085A591 /* FavoriteActions */,
 				6266C06A22081B9200FB8004 /* AdManagement */,
+				CF2E46F0231968320085A591 /* FavoriteAdActions */,
+				CF164CF1230E8F8800250822 /* FavoriteAdSorting */,
 				444245FA2137D60400D42AB8 /* FavoriteFolders */,
 				14C6F7CC212324C900A7230C /* Favorites */,
-				CF164CF1230E8F8800250822 /* FavoriteAdSorting */,
 				441FE441209A2F2C00B04EF1 /* Notifications */,
 				44A149E421377C7B0053D5F7 /* SavedSearches */,
 				DAC7DCA12153852D004602A3 /* Settings */,
@@ -1842,11 +1842,11 @@
 				CF87A851229C0C5700DA8243 /* ContactForm */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44D912502077AC8A00486848 /* EmptyView */,
-				CF164D2223101D8E00250822 /* FavoriteActionSheet */,
+				CF164D2223101D8E00250822 /* FavoriteAdActionSheet */,
+				CF164DD4231573F100250822 /* FavoriteAdNoteSheet */,
 				9A37D4A128C47173977AAE19 /* FavoriteAdsList */,
-				CF164D0B230FF44D00250822 /* FavoriteFolderActionSheet */,
-				CF164DD4231573F100250822 /* FavoriteNoteSheet */,
 				CF164D07230EB9C100250822 /* FavoriteAdSortingSheet */,
+				CF164D0B230FF44D00250822 /* FavoriteFolderActionSheet */,
 				447AFC0E20984B63000F793E /* FrontPage */,
 				9F213E134EF7C0A184D133F5 /* FullscreenGallery */,
 				14EBA253215A633800613E5A /* LoadingView */,
@@ -2478,13 +2478,13 @@
 			path = FavoriteFolderActionSheet;
 			sourceTree = "<group>";
 		};
-		CF164D18230FFEA800250822 /* FavoriteActions */ = {
+		CF164D18230FFEA800250822 /* FavoriteAdActions */ = {
 			isa = PBXGroup;
 			children = (
 				CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */,
 				CF164D1B230FFEF400250822 /* FavoriteActionViewModel+Demo.swift */,
 			);
-			path = FavoriteActions;
+			path = FavoriteAdActions;
 			sourceTree = "<group>";
 		};
 		CF164D1D2310026500250822 /* Cells */ = {
@@ -2503,42 +2503,42 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		CF164D2223101D8E00250822 /* FavoriteActionSheet */ = {
+		CF164D2223101D8E00250822 /* FavoriteAdActionSheet */ = {
 			isa = PBXGroup;
 			children = (
 				CF164D2523101E5100250822 /* FavoriteAdActionSheet.swift */,
 			);
-			path = FavoriteActionSheet;
+			path = FavoriteAdActionSheet;
 			sourceTree = "<group>";
 		};
-		CF164D2923101F4500250822 /* FavoriteActionSheet */ = {
+		CF164D2923101F4500250822 /* FavoriteAdActionSheet */ = {
 			isa = PBXGroup;
 			children = (
 				CF164D2C23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift */,
 			);
-			path = FavoriteActionSheet;
+			path = FavoriteAdActionSheet;
 			sourceTree = "<group>";
 		};
-		CF164DD12315738800250822 /* FavoriteNoteSheet */ = {
+		CF164DD12315738800250822 /* FavoriteAdNoteSheet */ = {
 			isa = PBXGroup;
 			children = (
-				CF164DD2231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift */,
+				CF164DD2231573CF00250822 /* FavoriteAdNoteSheetDemoDelegate.swift */,
 				CF164DDB231579D600250822 /* FavoriteNoteViewModel+Demo.swift */,
 			);
-			path = FavoriteNoteSheet;
+			path = FavoriteAdNoteSheet;
 			sourceTree = "<group>";
 		};
-		CF164DD4231573F100250822 /* FavoriteNoteSheet */ = {
+		CF164DD4231573F100250822 /* FavoriteAdNoteSheet */ = {
 			isa = PBXGroup;
 			children = (
-				CF164DD52315740500250822 /* FavoriteNoteSheet.swift */,
-				CF164DD72315749500250822 /* FavoriteNoteViewController.swift */,
-				CF164DD92315776E00250822 /* FavoriteNoteViewModel.swift */,
+				CF164DD52315740500250822 /* FavoriteAdNoteSheet.swift */,
+				CF164DD72315749500250822 /* FavoriteAdNoteViewController.swift */,
+				CF164DD92315776E00250822 /* FavoriteAdNoteViewModel.swift */,
 			);
-			path = FavoriteNoteSheet;
+			path = FavoriteAdNoteSheet;
 			sourceTree = "<group>";
 		};
-		CF2E46F0231968320085A591 /* FavoriteActions */ = {
+		CF2E46F0231968320085A591 /* FavoriteAdActions */ = {
 			isa = PBXGroup;
 			children = (
 				CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */,
@@ -2547,7 +2547,7 @@
 				CF164D1D2310026500250822 /* Cells */,
 				CF164D1E2310030100250822 /* Views */,
 			);
-			path = FavoriteActions;
+			path = FavoriteAdActions;
 			sourceTree = "<group>";
 		};
 		CF376C14231D3D8500ED2B24 /* StepSlider */ = {
@@ -3003,11 +3003,11 @@
 				CF87A858229C0C6600DA8243 /* ContactForm */,
 				CF8F022B21DCC74F004C4042 /* EasterEggs */,
 				CF8F023521DCC81E004C4042 /* EmptyView */,
-				CF164D2923101F4500250822 /* FavoriteActionSheet */,
+				CF164D2923101F4500250822 /* FavoriteAdActionSheet */,
+				CF164DD12315738800250822 /* FavoriteAdNoteSheet */,
 				9A37DB96525D383D10C6A008 /* FavoriteAdsListView */,
 				CF164D08230EB9F100250822 /* FavoriteAdSortingSheet */,
 				CF164D0C230FF4CB00250822 /* FavoriteFolderActionSheet */,
-				CF164DD12315738800250822 /* FavoriteNoteSheet */,
 				CF8F023221DCC7AE004C4042 /* FrontPage */,
 				9F2139783BEC14AD02F9BF7A /* FullscreenGallery */,
 				CF8F022A21DCC746004C4042 /* LoadingView */,
@@ -3165,10 +3165,10 @@
 			isa = PBXGroup;
 			children = (
 				6266C073220820FC00FB8004 /* AdManagement */,
-				CF164D18230FFEA800250822 /* FavoriteActions */,
+				CF164D18230FFEA800250822 /* FavoriteAdActions */,
+				CF164D02230EB79100250822 /* FavoriteAdSorting */,
 				CF8F023D21DCD510004C4042 /* FavoriteFolders */,
 				CF8F023C21DCD4E6004C4042 /* Favorites */,
-				CF164D02230EB79100250822 /* FavoriteAdSorting */,
 				CF8F023F21DCD567004C4042 /* Notifications */,
 				CF8F023E21DCD539004C4042 /* SavedSearches */,
 				CF8F023B21DCD4D4004C4042 /* Settings */,
@@ -3852,7 +3852,7 @@
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
 				91846C4D22E736BF0001410F /* SearchResultMapViewDemoViewController.swift in Sources */,
 				44AEFC2622E722FC00D3C307 /* IconTitleCellDemoView.swift in Sources */,
-				CF164DD3231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift in Sources */,
+				CF164DD3231573CF00250822 /* FavoriteAdNoteSheetDemoDelegate.swift in Sources */,
 				44B94FE922E0AB820078A23C /* TweakingOption.swift in Sources */,
 				F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */,
 				F2B1A19722D5054600713FC2 /* ReceiptViewDemoView.swift in Sources */,
@@ -4066,7 +4066,7 @@
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
-				CF164DD82315749500250822 /* FavoriteNoteViewController.swift in Sources */,
+				CF164DD82315749500250822 /* FavoriteAdNoteViewController.swift in Sources */,
 				9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */,
 				CF164CED230D916000250822 /* FavoriteFolderCopyLinkCell.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
@@ -4174,7 +4174,7 @@
 				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
-				CF164DD62315740500250822 /* FavoriteNoteSheet.swift in Sources */,
+				CF164DD62315740500250822 /* FavoriteAdNoteSheet.swift in Sources */,
 				8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */,
 				44A5579E22E71FEB001667AE /* BasicTableViewCellViewModel.swift in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
@@ -4262,7 +4262,7 @@
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
 				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
 				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
-				CF164DDA2315776E00250822 /* FavoriteNoteViewModel.swift in Sources */,
+				CF164DDA2315776E00250822 /* FavoriteAdNoteViewModel.swift in Sources */,
 				44898D651FE5B9C200F6017B /* UITableViewExtensions.swift in Sources */,
 				DA9BF915215E66980072584C /* SettingsViewCellModel.swift in Sources */,
 				B01D70BABC86CE9552C07C2A /* RoundedImageView.swift in Sources */,

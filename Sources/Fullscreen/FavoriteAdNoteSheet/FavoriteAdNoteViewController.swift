@@ -4,16 +4,16 @@
 
 import UIKit
 
-protocol FavoriteNoteViewControllerDelegate: AnyObject {
-    func favoriteNoteViewControllerDidSelectCancel(_ viewController: FavoriteNoteViewController)
-    func favoriteNoteViewController(_ viewController: FavoriteNoteViewController, didSelectSaveWithText text: String?)
+protocol FavoriteAdNoteViewControllerDelegate: AnyObject {
+    func favoriteAdNoteViewControllerDidSelectCancel(_ viewController: FavoriteAdNoteViewController)
+    func favoriteAdNoteViewController(_ viewController: FavoriteAdNoteViewController, didSelectSaveWithText text: String?)
 }
 
-final class FavoriteNoteViewController: UIViewController {
-    weak var delegate: FavoriteNoteViewControllerDelegate?
+final class FavoriteAdNoteViewController: UIViewController {
+    weak var delegate: FavoriteAdNoteViewControllerDelegate?
 
     private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
-    private let noteViewModel: FavoriteNoteViewModel
+    private let noteViewModel: FavoriteAdNoteViewModel
     private let adViewModel: FavoriteAdViewModel
     private let notificationCenter: NotificationCenter
 
@@ -64,7 +64,7 @@ final class FavoriteNoteViewController: UIViewController {
     // MARK: - Init
 
     init(
-        noteViewModel: FavoriteNoteViewModel,
+        noteViewModel: FavoriteAdNoteViewModel,
         adViewModel: FavoriteAdViewModel,
         remoteImageViewDataSource: RemoteImageViewDataSource,
         notificationCenter: NotificationCenter = .default
@@ -182,17 +182,17 @@ final class FavoriteNoteViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func handleCancelButtonTap() {
-        delegate?.favoriteNoteViewControllerDidSelectCancel(self)
+        delegate?.favoriteAdNoteViewControllerDidSelectCancel(self)
     }
 
     @objc private func handleSaveButtonTap() {
-        delegate?.favoriteNoteViewController(self, didSelectSaveWithText: "")
+        delegate?.favoriteAdNoteViewController(self, didSelectSaveWithText: "")
     }
 }
 
 // MARK: - UIScrollViewDelegate
 
-extension FavoriteNoteViewController: UIScrollViewDelegate {
+extension FavoriteAdNoteViewController: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         shadowView.updateShadow(using: scrollView)
     }
@@ -200,7 +200,7 @@ extension FavoriteNoteViewController: UIScrollViewDelegate {
 
 // MARK: - TextViewDelegate
 
-extension FavoriteNoteViewController: TextViewDelegate {
+extension FavoriteAdNoteViewController: TextViewDelegate {
     func textViewDidChange(_ textView: TextView) {
         saveButton.isEnabled = textView.text != noteViewModel.note
     }

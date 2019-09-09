@@ -278,7 +278,7 @@ public enum FullscreenViews: String, CaseIterable {
     case favoriteFolderActionSheet
     case favoriteAdSortingSheet
     case favoriteAdActionSheet
-    case favoriteNoteSheet
+    case favoriteAdNoteSheet
 
     public static var items: [FullscreenViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -346,13 +346,13 @@ public enum FullscreenViews: String, CaseIterable {
             let bottomSheet = FavoriteAdActionSheet(viewModel: .default)
             bottomSheet.actionDelegate = FavoriteAdActionSheetDemoDelegate.shared
             return bottomSheet
-        case .favoriteNoteSheet:
-            let bottomSheet = FavoriteNoteSheet(
+        case .favoriteAdNoteSheet:
+            let bottomSheet = FavoriteAdNoteSheet(
                 noteViewModel: .default,
                 adViewModel: FavoriteAdsFactory.create().last!,
-                remoteImageViewDataSource: FavoriteNoteSheetDemoDelegate.shared
+                remoteImageViewDataSource: FavoriteAdNoteSheetDemoDelegate.shared
             )
-            bottomSheet.noteDelegate = FavoriteNoteSheetDemoDelegate.shared
+            bottomSheet.noteDelegate = FavoriteAdNoteSheetDemoDelegate.shared
             return bottomSheet
         }
     }

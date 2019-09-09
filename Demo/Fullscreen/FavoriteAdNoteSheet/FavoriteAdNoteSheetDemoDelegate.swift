@@ -4,25 +4,25 @@
 
 import FinniversKit
 
-final class FavoriteNoteSheetDemoDelegate {
-    static let shared = FavoriteNoteSheetDemoDelegate()
+final class FavoriteAdNoteSheetDemoDelegate {
+    static let shared = FavoriteAdNoteSheetDemoDelegate()
 }
 
-// MARK: - FavoriteNoteSheetDelegate
+// MARK: - FavoriteAdNoteSheetDelegate
 
-extension FavoriteNoteSheetDemoDelegate: FavoriteNoteSheetDelegate {
-    func favoriteNoteSheetDidSelectCancel(_ sheet: FavoriteNoteSheet) {
+extension FavoriteAdNoteSheetDemoDelegate: FavoriteAdNoteSheetDelegate {
+    func favoriteAdNoteSheetDidSelectCancel(_ sheet: FavoriteAdNoteSheet) {
         sheet.state = .dismissed
     }
 
-    func favoriteNoteSheet(_ sheet: FavoriteNoteSheet, didSelectSaveWithText text: String?) {
+    func favoriteAdNoteSheet(_ sheet: FavoriteAdNoteSheet, didSelectSaveWithText text: String?) {
         sheet.state = .dismissed
     }
 }
 
 // MARK: - RemoteImageViewDataSource
 
-extension FavoriteNoteSheetDemoDelegate: RemoteImageViewDataSource {
+extension FavoriteAdNoteSheetDemoDelegate: RemoteImageViewDataSource {
     func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
         return nil
     }

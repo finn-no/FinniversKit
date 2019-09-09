@@ -4,23 +4,23 @@
 
 import Foundation
 
-public protocol FavoriteNoteSheetDelegate: AnyObject {
-    func favoriteNoteSheetDidSelectCancel(_ sheet: FavoriteNoteSheet)
-    func favoriteNoteSheet(_ sheet: FavoriteNoteSheet, didSelectSaveWithText text: String?)
+public protocol FavoriteAdNoteSheetDelegate: AnyObject {
+    func favoriteAdNoteSheetDidSelectCancel(_ sheet: FavoriteAdNoteSheet)
+    func favoriteAdNoteSheet(_ sheet: FavoriteAdNoteSheet, didSelectSaveWithText text: String?)
 }
 
-public final class FavoriteNoteSheet: BottomSheet {
-    public weak var noteDelegate: FavoriteNoteSheetDelegate?
-    private let viewController: FavoriteNoteViewController
+public final class FavoriteAdNoteSheet: BottomSheet {
+    public weak var noteDelegate: FavoriteAdNoteSheetDelegate?
+    private let viewController: FavoriteAdNoteViewController
 
     // MARK: - Init
 
     public required init(
-        noteViewModel: FavoriteNoteViewModel,
+        noteViewModel: FavoriteAdNoteViewModel,
         adViewModel: FavoriteAdViewModel,
         remoteImageViewDataSource: RemoteImageViewDataSource
     ) {
-        viewController = FavoriteNoteViewController(
+        viewController = FavoriteAdNoteViewController(
             noteViewModel: noteViewModel,
             adViewModel: adViewModel,
             remoteImageViewDataSource: remoteImageViewDataSource
@@ -44,15 +44,15 @@ public final class FavoriteNoteSheet: BottomSheet {
     }
 }
 
-// MARK: - FavoriteNoteViewControllerDelegate
+// MARK: - FavoriteAdNoteViewControllerDelegate
 
-extension FavoriteNoteSheet: FavoriteNoteViewControllerDelegate {
-    func favoriteNoteViewControllerDidSelectCancel(_ viewController: FavoriteNoteViewController) {
-        noteDelegate?.favoriteNoteSheetDidSelectCancel(self)
+extension FavoriteAdNoteSheet: FavoriteAdNoteViewControllerDelegate {
+    func favoriteAdNoteViewControllerDidSelectCancel(_ viewController: FavoriteAdNoteViewController) {
+        noteDelegate?.favoriteAdNoteSheetDidSelectCancel(self)
     }
 
-    func favoriteNoteViewController(_ viewController: FavoriteNoteViewController, didSelectSaveWithText text: String?) {
-        noteDelegate?.favoriteNoteSheet(self, didSelectSaveWithText: text)
+    func favoriteAdNoteViewController(_ viewController: FavoriteAdNoteViewController, didSelectSaveWithText text: String?) {
+        noteDelegate?.favoriteAdNoteSheet(self, didSelectSaveWithText: text)
     }
 }
 

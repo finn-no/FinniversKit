@@ -2,7 +2,7 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-public struct FavoriteNoteViewModel {
+public struct FavoriteAdNoteViewModel {
     public let title: String?
     public let note: String
     public let notePlaceholder: String?
