@@ -4,23 +4,23 @@
 
 import UIKit
 
-public protocol FavoriteSortingViewDelegate: AnyObject {
-    func favoriteSortingView(_ view: FavoriteSortingView, didSelectSortOption option: FavoriteSortOption)
+public protocol FavoriteAdSortingViewDelegate: AnyObject {
+    func favoriteAdSortingView(_ view: FavoriteAdSortingView, didSelectSortOption option: FavoriteAdSortOption)
 }
 
-public final class FavoriteSortingView: UIView {
+public final class FavoriteAdSortingView: UIView {
     public static let rowHeight: CGFloat = 48.0
-    public static let totalHeight = rowHeight * CGFloat(FavoriteSortOption.allCases.count)
+    public static let totalHeight = rowHeight * CGFloat(FavoriteAdSortOption.allCases.count)
 
     // MARK: - Public properties
 
-    public weak var delegate: FavoriteSortingViewDelegate?
+    public weak var delegate: FavoriteAdSortingViewDelegate?
 
     // MARK: - Private properties
 
-    private let viewModel: FavoriteSortingViewModel
-    private let options = FavoriteSortOption.allCases
-    private var selectedSortOption: FavoriteSortOption
+    private let viewModel: FavoriteAdSortingViewModel
+    private let options = FavoriteAdSortOption.allCases
+    private var selectedSortOption: FavoriteAdSortOption
 
     private lazy var tableView: UITableView = {
         let tableView = ContentSizedTableView(frame: .zero, style: .plain)
@@ -28,19 +28,19 @@ public final class FavoriteSortingView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .milk
-        tableView.rowHeight = FavoriteSortingView.rowHeight
-        tableView.estimatedRowHeight = FavoriteSortingView.rowHeight
+        tableView.rowHeight = FavoriteAdSortingView.rowHeight
+        tableView.estimatedRowHeight = FavoriteAdSortingView.rowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
         tableView.separatorColor = .clear
-        tableView.register(FavoriteSortOptionCell.self)
+        tableView.register(FavoriteAdSortOptionCell.self)
         return tableView
     }()
 
     // MARK: - Init
 
-    public init(viewModel: FavoriteSortingViewModel, selectedSortOption: FavoriteSortOption) {
+    public init(viewModel: FavoriteAdSortingViewModel, selectedSortOption: FavoriteAdSortOption) {
         self.viewModel = viewModel
         self.selectedSortOption = selectedSortOption
         super.init(frame: .zero)
@@ -61,14 +61,14 @@ public final class FavoriteSortingView: UIView {
 
 // MARK: - UITableViewDataSource
 
-extension FavoriteSortingView: UITableViewDataSource {
+extension FavoriteAdSortingView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let option = options[indexPath.row]
-        let cell = tableView.dequeue(FavoriteSortOptionCell.self, for: indexPath)
+        let cell = tableView.dequeue(FavoriteAdSortOptionCell.self, for: indexPath)
 
         switch option {
         case .lastAdded:
@@ -89,12 +89,12 @@ extension FavoriteSortingView: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension FavoriteSortingView: UITableViewDelegate {
+extension FavoriteAdSortingView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSortOption = options[indexPath.row]
 
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
-        delegate?.favoriteSortingView(self, didSelectSortOption: selectedSortOption)
+        delegate?.favoriteAdSortingView(self, didSelectSortOption: selectedSortOption)
     }
 }

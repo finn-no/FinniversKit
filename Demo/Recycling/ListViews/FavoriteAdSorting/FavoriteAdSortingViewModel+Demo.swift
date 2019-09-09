@@ -4,8 +4,8 @@
 
 import FinniversKit
 
-extension FavoriteSortingViewModel {
-    static let `default` = FavoriteSortingViewModel(
+extension FavoriteAdSortingViewModel {
+    static let `default` = FavoriteAdSortingViewModel(
         lastAddedText: "Sist lagt til",
         statusText: "Annonsestatus",
         lastUpdatedText: "Sist oppdatert av selger",

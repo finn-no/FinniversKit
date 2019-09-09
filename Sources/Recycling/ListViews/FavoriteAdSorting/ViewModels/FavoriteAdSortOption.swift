@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum FavoriteSortOption: Equatable, Hashable, CaseIterable {
+public enum FavoriteAdSortOption: Equatable, Hashable, CaseIterable {
     case lastAdded
     case status
     case lastUpdated

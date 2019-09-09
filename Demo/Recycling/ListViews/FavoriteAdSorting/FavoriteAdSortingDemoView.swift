@@ -4,9 +4,9 @@
 
 import FinniversKit
 
-final class FavoriteSortingDemoView: UIView {
-    private(set) lazy var view: FavoriteSortingView = {
-        let view = FavoriteSortingView(viewModel: .default, selectedSortOption: .lastAdded)
+final class FavoriteAdSortingDemoView: UIView {
+    private(set) lazy var view: FavoriteAdSortingView = {
+        let view = FavoriteAdSortingView(viewModel: .default, selectedSortOption: .lastAdded)
         view.delegate = self
         return view
     }()
@@ -28,10 +28,10 @@ final class FavoriteSortingDemoView: UIView {
     }
 }
 
-// MARK: - FavoriteFoldersListViewDelegate
+// MARK: - FavoriteAdSortingViewDelegate
 
-extension FavoriteSortingDemoView: FavoriteSortingViewDelegate {
-    func favoriteSortingView(_ view: FavoriteSortingView, didSelectSortOption option: FavoriteSortOption) {
+extension FavoriteAdSortingDemoView: FavoriteAdSortingViewDelegate {
+    func favoriteAdSortingView(_ view: FavoriteAdSortingView, didSelectSortOption option: FavoriteAdSortOption) {
         print("\(option) selected")
     }
 }

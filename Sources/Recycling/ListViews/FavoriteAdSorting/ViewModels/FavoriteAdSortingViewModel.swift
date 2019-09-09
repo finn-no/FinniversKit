@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct FavoriteSortingViewModel {
+public struct FavoriteAdSortingViewModel {
     public let lastAddedText: String
     public let statusText: String
     public let lastUpdatedText: String
