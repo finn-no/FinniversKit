@@ -221,7 +221,7 @@ extension UserAdsListView: UITableViewDataSource {
 
                 return cell
             }
-            
+
             let cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath)
             cell.loadingColor = color
             cell.dataSource = self
@@ -298,7 +298,7 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
         delegate?.userAdsListViewEmphasizedActionWasTapped(self)
         tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
     }
-    
+
     public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button) {
         guard let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
         delegate?.userAdsListViewEmphasizedActionWasCancelled(self)
