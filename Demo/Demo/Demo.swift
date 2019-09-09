@@ -282,7 +282,7 @@ public enum FullscreenViews: String, CaseIterable {
     case favoriteSortingSheet
     case favoriteActionSheet
     case favoriteNoteSheet
-    case verificatioActionSheet
+    case verificationActionSheet
 
     public static var items: [FullscreenViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -358,7 +358,7 @@ public enum FullscreenViews: String, CaseIterable {
             )
             bottomSheet.noteDelegate = FavoriteNoteSheetDemoDelegate.shared
             return bottomSheet
-        case .verificatioActionSheet:
+        case .verificationActionSheet:
             let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())
             bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
