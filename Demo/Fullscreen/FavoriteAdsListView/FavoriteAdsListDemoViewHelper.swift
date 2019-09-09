@@ -11,6 +11,7 @@ extension FavoriteAdViewModel {
                          titleColor: .stone,
                          descriptionPrimaryText: nil,
                          descriptionSecondaryText: nil,
+                         descriptionTertiaryText: nil,
                          imagePath: nil,
                          ribbonStyle: ribbonStyle,
                          ribbonTitle: ribbonTitle,
@@ -32,6 +33,7 @@ struct FavoriteAdsFactory {
                                        titleColor: .licorice,
                                        descriptionPrimaryText: primaryDescriptions[index],
                                        descriptionSecondaryText: secondaryDescriptions[index],
+                                       descriptionTertiaryText: tertiaryDescriptions[index],
                                        imagePath: imagePaths[index],
                                        ribbonStyle: ribbonStyles[index].style,
                                        ribbonTitle: ribbonStyles[index].title,
@@ -89,6 +91,19 @@ struct FavoriteAdsFactory {
             "Bruktbil・Bil・Bensin",
             "Bolig til salgs・Eier (Selveier)・Tomannsbolig",
             "Bolig til salgs・1 989,- pr mnd・Eier (Selveier)・Andre・1 soverom"
+        ]
+    }
+
+    private static var tertiaryDescriptions: [String?] {
+        return [
+            nil,
+            nil,
+            nil,
+            nil,
+            nil,
+            nil,
+            "Visning mandag 9. september kl. 14:00-16:00",
+            "Visning mandag 9. september kl. 14:00-16:00",
         ]
     }
 
