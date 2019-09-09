@@ -2,11 +2,18 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-public protocol TitleValueSliderViewModel {
-    var title: String { get }
-    var minimumValue: Int { get }
-    var maximumValue: Int { get }
-    var initialValue: Int { get }
+public struct TitleValueSliderViewModel {
+    public let title: String
+    public let minimumValue: Int
+    public let maximumValue: Int
+    public let initialValue: Int
+
+    public init(title: String, minimumValue: Int, maximumValue: Int, initialValue: Int) {
+        self.title = title
+        self.minimumValue = minimumValue
+        self.maximumValue = maximumValue
+        self.initialValue = initialValue
+    }
 }
 
 protocol TitleValueSliderDataSource: AnyObject {
