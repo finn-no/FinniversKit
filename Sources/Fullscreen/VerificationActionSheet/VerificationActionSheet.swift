@@ -56,13 +56,14 @@ private final class ActionViewController: UIViewController {
 
     private(set) lazy var verificationView: VerificationView = {
         let view = VerificationView(withAutoLayout: true)
-        view.viewModel = viewModel
         return view
     }()
 
     init(viewModel: VerificationViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+
+        verificationView.viewModel = viewModel
     }
 
     required init?(coder aDecoder: NSCoder) {
