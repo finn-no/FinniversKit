@@ -330,22 +330,22 @@
 		CF164D04230EB80900250822 /* FavoriteAdSortingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D03230EB80900250822 /* FavoriteAdSortingDemoView.swift */; };
 		CF164D06230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D05230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift */; };
 		CF164D0A230EBA2300250822 /* FavoriteSortingSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D09230EBA2300250822 /* FavoriteSortingSheetDemoDelegate.swift */; };
-		CF164D15230FFB7400250822 /* FavoriteActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D14230FFB7400250822 /* FavoriteActionViewModel.swift */; };
-		CF164D17230FFDEB00250822 /* FavoriteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D16230FFDEB00250822 /* FavoriteAction.swift */; };
+		CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D14230FFB7400250822 /* FavoriteAdActionViewModel.swift */; };
+		CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */; };
 		CF164D1A230FFEBA00250822 /* FavoriteActionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */; };
 		CF164D1C230FFEF400250822 /* FavoriteActionViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D1B230FFEF400250822 /* FavoriteActionViewModel+Demo.swift */; };
-		CF164D212310138900250822 /* FavoriteActionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D1F2310031700250822 /* FavoriteActionHeaderView.swift */; };
-		CF164D2723101E5500250822 /* FavoriteActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2523101E5100250822 /* FavoriteActionSheet.swift */; };
+		CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */; };
+		CF164D2723101E5500250822 /* FavoriteAdActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2523101E5100250822 /* FavoriteAdActionSheet.swift */; };
 		CF164D2823101F2000250822 /* FavoriteFolderActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2323101E4400250822 /* FavoriteFolderActionSheet.swift */; };
 		CF164D2B23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2A23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift */; };
-		CF164D2D23101F6B00250822 /* FavoriteActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2C23101F6B00250822 /* FavoriteActionSheetDemoDelegate.swift */; };
+		CF164D2D23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D2C23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift */; };
 		CF164DD3231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD2231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift */; };
 		CF164DD62315740500250822 /* FavoriteNoteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD52315740500250822 /* FavoriteNoteSheet.swift */; };
 		CF164DD82315749500250822 /* FavoriteNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD72315749500250822 /* FavoriteNoteViewController.swift */; };
 		CF164DDA2315776E00250822 /* FavoriteNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD92315776E00250822 /* FavoriteNoteViewModel.swift */; };
 		CF164DDC231579D600250822 /* FavoriteNoteViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DDB231579D600250822 /* FavoriteNoteViewModel+Demo.swift */; };
 		CF2E46EF231958300085A591 /* FavoriteFolderActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */; };
-		CF2E46F22319685C0085A591 /* FavoriteActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46F12319685C0085A591 /* FavoriteActionView.swift */; };
+		CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46F12319685C0085A591 /* FavoriteAdActionView.swift */; };
 		CF376C16231D3D9400ED2B24 /* StepSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C15231D3D9400ED2B24 /* StepSliderDemoView.swift */; };
 		CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C17231D452100ED2B24 /* Array+Step.swift */; };
 		CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF376C1A231D458200ED2B24 /* ArrayStepTests.swift */; };
@@ -851,15 +851,15 @@
 		CF164D03230EB80900250822 /* FavoriteAdSortingDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortingDemoView.swift; sourceTree = "<group>"; };
 		CF164D05230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteAdSortingViewModel+Demo.swift"; sourceTree = "<group>"; };
 		CF164D09230EBA2300250822 /* FavoriteSortingSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSortingSheetDemoDelegate.swift; sourceTree = "<group>"; };
-		CF164D14230FFB7400250822 /* FavoriteActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionViewModel.swift; sourceTree = "<group>"; };
-		CF164D16230FFDEB00250822 /* FavoriteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAction.swift; sourceTree = "<group>"; };
+		CF164D14230FFB7400250822 /* FavoriteAdActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionViewModel.swift; sourceTree = "<group>"; };
+		CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdAction.swift; sourceTree = "<group>"; };
 		CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionDemoView.swift; sourceTree = "<group>"; };
 		CF164D1B230FFEF400250822 /* FavoriteActionViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteActionViewModel+Demo.swift"; sourceTree = "<group>"; };
-		CF164D1F2310031700250822 /* FavoriteActionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionHeaderView.swift; sourceTree = "<group>"; };
+		CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionHeaderView.swift; sourceTree = "<group>"; };
 		CF164D2323101E4400250822 /* FavoriteFolderActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionSheet.swift; sourceTree = "<group>"; };
-		CF164D2523101E5100250822 /* FavoriteActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionSheet.swift; sourceTree = "<group>"; };
+		CF164D2523101E5100250822 /* FavoriteAdActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionSheet.swift; sourceTree = "<group>"; };
 		CF164D2A23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
-		CF164D2C23101F6B00250822 /* FavoriteActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
+		CF164D2C23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionSheetDemoDelegate.swift; sourceTree = "<group>"; };
 		CF164DD2231573CF00250822 /* FavoriteNoteSheetDemoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteSheetDemoDelegate.swift; sourceTree = "<group>"; };
 		CF164DD52315740500250822 /* FavoriteNoteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteSheet.swift; sourceTree = "<group>"; };
 		CF164DD72315749500250822 /* FavoriteNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoteViewController.swift; sourceTree = "<group>"; };
@@ -867,7 +867,7 @@
 		CF164DDB231579D600250822 /* FavoriteNoteViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteNoteViewModel+Demo.swift"; sourceTree = "<group>"; };
 		CF29845D229566E8008CD832 /* ContactFormCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormCheckbox.swift; sourceTree = "<group>"; };
 		CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionViewController.swift; sourceTree = "<group>"; };
-		CF2E46F12319685C0085A591 /* FavoriteActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteActionView.swift; sourceTree = "<group>"; };
+		CF2E46F12319685C0085A591 /* FavoriteAdActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionView.swift; sourceTree = "<group>"; };
 		CF376C15231D3D9400ED2B24 /* StepSliderDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSliderDemoView.swift; sourceTree = "<group>"; };
 		CF376C17231D452100ED2B24 /* Array+Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Step.swift"; sourceTree = "<group>"; };
 		CF376C1A231D458200ED2B24 /* ArrayStepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayStepTests.swift; sourceTree = "<group>"; };
@@ -2498,7 +2498,7 @@
 		CF164D1E2310030100250822 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D1F2310031700250822 /* FavoriteActionHeaderView.swift */,
+				CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2506,7 +2506,7 @@
 		CF164D2223101D8E00250822 /* FavoriteActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D2523101E5100250822 /* FavoriteActionSheet.swift */,
+				CF164D2523101E5100250822 /* FavoriteAdActionSheet.swift */,
 			);
 			path = FavoriteActionSheet;
 			sourceTree = "<group>";
@@ -2514,7 +2514,7 @@
 		CF164D2923101F4500250822 /* FavoriteActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D2C23101F6B00250822 /* FavoriteActionSheetDemoDelegate.swift */,
+				CF164D2C23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift */,
 			);
 			path = FavoriteActionSheet;
 			sourceTree = "<group>";
@@ -2541,9 +2541,9 @@
 		CF2E46F0231968320085A591 /* FavoriteActions */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D16230FFDEB00250822 /* FavoriteAction.swift */,
-				CF2E46F12319685C0085A591 /* FavoriteActionView.swift */,
-				CF164D14230FFB7400250822 /* FavoriteActionViewModel.swift */,
+				CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */,
+				CF2E46F12319685C0085A591 /* FavoriteAdActionView.swift */,
+				CF164D14230FFB7400250822 /* FavoriteAdActionViewModel.swift */,
 				CF164D1D2310026500250822 /* Cells */,
 				CF164D1E2310030100250822 /* Views */,
 			);
@@ -3005,9 +3005,9 @@
 				CF8F023521DCC81E004C4042 /* EmptyView */,
 				CF164D2923101F4500250822 /* FavoriteActionSheet */,
 				9A37DB96525D383D10C6A008 /* FavoriteAdsListView */,
+				CF164D08230EB9F100250822 /* FavoriteAdSortingSheet */,
 				CF164D0C230FF4CB00250822 /* FavoriteFolderActionSheet */,
 				CF164DD12315738800250822 /* FavoriteNoteSheet */,
-				CF164D08230EB9F100250822 /* FavoriteAdSortingSheet */,
 				CF8F023221DCC7AE004C4042 /* FrontPage */,
 				9F2139783BEC14AD02F9BF7A /* FullscreenGallery */,
 				CF8F022A21DCC746004C4042 /* LoadingView */,
@@ -3906,7 +3906,7 @@
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
 				F2B1A19922D5056500713FC2 /* ReceiptViewDefaultData.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
-				CF164D2D23101F6B00250822 /* FavoriteActionSheetDemoDelegate.swift in Sources */,
+				CF164D2D23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
 				14DC127221593B0500326DC3 /* HorizontalSlideDemoViewController.swift in Sources */,
 				44A0F0AB22E1FB6800BCCF4C /* CornerAnchoringViewController.swift in Sources */,
@@ -4012,7 +4012,7 @@
 				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
 				CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */,
-				CF164D15230FFB7400250822 /* FavoriteActionViewModel.swift in Sources */,
+				CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */,
 				CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */,
 				4447F6D21FDB2B110033DBC1 /* Label.swift in Sources */,
 				AF91BBA1202C8B72003E6366 /* Broadcast+Style.swift in Sources */,
@@ -4071,7 +4071,7 @@
 				CF164CED230D916000250822 /* FavoriteFolderCopyLinkCell.swift in Sources */,
 				DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */,
 				625A220D221EB30700733101 /* UserAdManagementUserActionCell.swift in Sources */,
-				CF164D2723101E5500250822 /* FavoriteActionSheet.swift in Sources */,
+				CF164D2723101E5500250822 /* FavoriteAdActionSheet.swift in Sources */,
 				F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */,
 				DA8EF1242164E7AF0028740C /* ConsentToggleView.swift in Sources */,
 				899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */,
@@ -4167,7 +4167,7 @@
 				AA7A854E22255AB200AF5F42 /* DialogueView.swift in Sources */,
 				CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */,
 				082D80D121C1411700831BDE /* StarView.swift in Sources */,
-				CF2E46F22319685C0085A591 /* FavoriteActionView.swift in Sources */,
+				CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */,
 				62432106231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
 				CF2E46EF231958300085A591 /* FavoriteFolderActionViewController.swift in Sources */,
@@ -4246,7 +4246,7 @@
 				44587018213FA344009187BE /* RegisterView.swift in Sources */,
 				082D80CF21C13E8B00831BDE /* ChristmasOrnamentView.swift in Sources */,
 				9BAB37E0230C070400E861D4 /* SaveSearchViewModel.swift in Sources */,
-				CF164D212310138900250822 /* FavoriteActionHeaderView.swift in Sources */,
+				CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */,
 				DAB1F6D3216BA58C003F7F53 /* SettingsViewSectionHeaderView.swift in Sources */,
 				45B2E06A207CF5C100C68B92 /* StringExtensions.swift in Sources */,
 				4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */,
@@ -4289,7 +4289,7 @@
 				9F21325E45E1BB6A5F076211 /* FullscreenGalleryDismissalTransition.swift in Sources */,
 				CF87A856229C0C5700DA8243 /* ContactFormCheckbox.swift in Sources */,
 				9F213D4043DC51660E6EF81B /* FullscreenGalleryTransitionAware.swift in Sources */,
-				CF164D17230FFDEB00250822 /* FavoriteAction.swift in Sources */,
+				CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */,
 				F2B1A19422D503E700713FC2 /* ReceiptViewModel.swift in Sources */,
 				9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */,
 				CF5CA71022F82D43007C4124 /* NeighborhoodProfileViewCell.swift in Sources */,

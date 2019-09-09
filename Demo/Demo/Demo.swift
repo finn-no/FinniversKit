@@ -200,7 +200,7 @@ public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
     case favoriteAdSortingView
-    case favoriteActionView
+    case favoriteAdActionView
     case favoritesListView
     case savedSearchesListView
     case marketsGridView
@@ -229,8 +229,8 @@ public enum RecyclingViews: String, CaseIterable {
             return navigationController
         case .favoriteAdSortingView:
             return DemoViewController<FavoriteAdSortingDemoView>()
-        case .favoriteActionView:
-            return DemoViewController<FavoriteActionDemoView>()
+        case .favoriteAdActionView:
+            return DemoViewController<FavoriteAdActionDemoView>()
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:
@@ -277,7 +277,7 @@ public enum FullscreenViews: String, CaseIterable {
     case favoriteAdsList
     case favoriteFolderActionSheet
     case favoriteAdSortingSheet
-    case favoriteActionSheet
+    case favoriteAdActionSheet
     case favoriteNoteSheet
 
     public static var items: [FullscreenViews] {
@@ -342,9 +342,9 @@ public enum FullscreenViews: String, CaseIterable {
             let bottomSheet = FavoriteAdSortingSheet(viewModel: .default, selectedSortOption: .lastAdded)
             bottomSheet.sortingDelegate = FavoriteAdSortingSheetDemoDelegate.shared
             return bottomSheet
-        case .favoriteActionSheet:
-            let bottomSheet = FavoriteActionSheet(viewModel: .default)
-            bottomSheet.actionDelegate = FavoriteActionSheetDemoDelegate.shared
+        case .favoriteAdActionSheet:
+            let bottomSheet = FavoriteAdActionSheet(viewModel: .default)
+            bottomSheet.actionDelegate = FavoriteAdActionSheetDemoDelegate.shared
             return bottomSheet
         case .favoriteNoteSheet:
             let bottomSheet = FavoriteNoteSheet(

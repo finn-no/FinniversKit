@@ -4,7 +4,7 @@
 
 import UIKit
 
-final class FavoriteActionHeaderView: UIView {
+final class FavoriteAdActionHeaderView: UIView {
     private lazy var blurView = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
 
     private lazy var imageView: UIImageView = {
@@ -17,7 +17,7 @@ final class FavoriteActionHeaderView: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = FavoriteActionHeaderView.titleLabelFont
+        label.font = FavoriteAdActionHeaderView.titleLabelFont
         label.textColor = .licorice
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -56,14 +56,14 @@ final class FavoriteActionHeaderView: UIView {
         addSubview(titleLabel)
         addSubview(hairlineView)
 
-        layoutMargins = FavoriteActionHeaderView.layoutMargins
+        layoutMargins = FavoriteAdActionHeaderView.layoutMargins
 
         blurView.fillInSuperview()
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             imageView.centerXAnchor.constraint(equalTo: layoutMarginsGuide.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: FavoriteActionHeaderView.imageViewSize),
+            imageView.widthAnchor.constraint(equalToConstant: FavoriteAdActionHeaderView.imageViewSize),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .titleLabelTopSpacing),
@@ -81,7 +81,7 @@ final class FavoriteActionHeaderView: UIView {
 
 // MARK: - Static
 
-extension FavoriteActionHeaderView {
+extension FavoriteAdActionHeaderView {
     private static let layoutMargins = UIEdgeInsets(
         top: .mediumSpacing,
         left: .mediumLargeSpacing,

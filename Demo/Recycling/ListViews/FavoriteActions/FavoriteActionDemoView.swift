@@ -4,9 +4,9 @@
 
 import FinniversKit
 
-final class FavoriteActionDemoView: UIView {
-    private(set) lazy var view: FavoriteActionView = {
-        let view = FavoriteActionView(viewModel: .default)
+final class FavoriteAdActionDemoView: UIView {
+    private(set) lazy var view: FavoriteAdActionView = {
+        let view = FavoriteAdActionView(viewModel: .default)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
@@ -34,10 +34,10 @@ final class FavoriteActionDemoView: UIView {
     }
 }
 
-// MARK: - FavoriteFoldersListViewDelegate
+// MARK: - FavoriteAdActionViewDelegate
 
-extension FavoriteActionDemoView: FavoriteActionViewDelegate {
-    func favoriteActionView(_ view: FavoriteActionView, didSelectAction action: FavoriteAction) {
+extension FavoriteAdActionDemoView: FavoriteAdActionViewDelegate {
+    func favoriteAdActionView(_ view: FavoriteAdActionView, didSelectAction action: FavoriteAdAction) {
         print("\(action) selected")
     }
 }

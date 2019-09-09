@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-public struct FavoriteActionViewModel {
+public struct FavoriteAdActionViewModel {
     public let headerImage: UIImage?
     public let headerTitle: String
     public let addNoteText: String

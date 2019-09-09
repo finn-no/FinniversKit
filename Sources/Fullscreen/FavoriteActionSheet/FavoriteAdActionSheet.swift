@@ -4,17 +4,17 @@
 
 import Foundation
 
-public protocol FavoriteActionSheetDelegate: AnyObject {
-    func favoriteActionSheet(_ actionSheet: FavoriteActionSheet, didSelectAction action: FavoriteAction)
+public protocol FavoriteAdActionSheetDelegate: AnyObject {
+    func favoriteAdActionSheet(_ sheet: FavoriteAdActionSheet, didSelectAction action: FavoriteAdAction)
 }
 
-public final class FavoriteActionSheet: BottomSheet {
-    public weak var actionDelegate: FavoriteActionSheetDelegate?
+public final class FavoriteAdActionSheet: BottomSheet {
+    public weak var actionDelegate: FavoriteAdActionSheetDelegate?
     private weak var viewController: ActionViewController?
 
     // MARK: - Init
 
-    public required init(viewModel: FavoriteActionViewModel) {
+    public required init(viewModel: FavoriteAdActionViewModel) {
         let viewController = ActionViewController(viewModel: viewModel)
         super.init(rootViewController: viewController, height: .height(for: viewModel))
         self.viewController = viewController
@@ -39,24 +39,24 @@ public final class FavoriteActionSheet: BottomSheet {
 
 // MARK: - FavoriteActionsListViewDelegate
 
-extension FavoriteActionSheet: FavoriteActionViewDelegate {
-    public func favoriteActionView(_ view: FavoriteActionView, didSelectAction action: FavoriteAction) {
-        actionDelegate?.favoriteActionSheet(self, didSelectAction: action)
+extension FavoriteAdActionSheet: FavoriteAdActionViewDelegate {
+    public func favoriteAdActionView(_ view: FavoriteAdActionView, didSelectAction action: FavoriteAdAction) {
+        actionDelegate?.favoriteAdActionSheet(self, didSelectAction: action)
     }
 }
 
 // MARK: - Private types
 
 private final class ActionViewController: UIViewController {
-    private let viewModel: FavoriteActionViewModel
+    private let viewModel: FavoriteAdActionViewModel
 
-    private(set) lazy var actionView: FavoriteActionView = {
-        let view = FavoriteActionView(viewModel: viewModel)
+    private(set) lazy var actionView: FavoriteAdActionView = {
+        let view = FavoriteAdActionView(viewModel: viewModel)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    init(viewModel: FavoriteActionViewModel) {
+    init(viewModel: FavoriteAdActionViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -75,9 +75,9 @@ private final class ActionViewController: UIViewController {
 // MARK: - Private extensions
 
 private extension BottomSheet.Height {
-    static func height(for viewModel: FavoriteActionViewModel) -> BottomSheet.Height {
+    static func height(for viewModel: FavoriteAdActionViewModel) -> BottomSheet.Height {
         let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
-        let height = FavoriteActionView.totalHeight(for: viewModel, width: UIScreen.main.bounds.width) + bottomInset
+        let height = FavoriteAdActionView.totalHeight(for: viewModel, width: UIScreen.main.bounds.width) + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }
 }

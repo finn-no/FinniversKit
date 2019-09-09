@@ -4,20 +4,20 @@
 
 import UIKit
 
-public protocol FavoriteActionViewDelegate: AnyObject {
-    func favoriteActionView(_ view: FavoriteActionView, didSelectAction action: FavoriteAction)
+public protocol FavoriteAdActionViewDelegate: AnyObject {
+    func favoriteAdActionView(_ view: FavoriteAdActionView, didSelectAction action: FavoriteAdAction)
 }
 
-public final class FavoriteActionView: UIView {
-    public weak var delegate: FavoriteActionViewDelegate?
+public final class FavoriteAdActionView: UIView {
+    public weak var delegate: FavoriteAdActionViewDelegate?
 
     // MARK: - Private properties
 
-    private let viewModel: FavoriteActionViewModel
-    private let actions = FavoriteAction.allCases
+    private let viewModel: FavoriteAdActionViewModel
+    private let actions = FavoriteAdAction.allCases
 
-    private lazy var headerView: FavoriteActionHeaderView = {
-        let view = FavoriteActionHeaderView(withAutoLayout: true)
+    private lazy var headerView: FavoriteAdActionHeaderView = {
+        let view = FavoriteAdActionHeaderView(withAutoLayout: true)
         view.configure(withImage: viewModel.headerImage, title: viewModel.headerTitle)
         return view
     }()
@@ -28,8 +28,8 @@ public final class FavoriteActionView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .milk
-        tableView.rowHeight = FavoriteActionView.rowHeight
-        tableView.estimatedRowHeight = FavoriteActionView.rowHeight
+        tableView.rowHeight = FavoriteAdActionView.rowHeight
+        tableView.estimatedRowHeight = FavoriteAdActionView.rowHeight
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
         tableView.register(FavoriteActionCell.self)
@@ -38,7 +38,7 @@ public final class FavoriteActionView: UIView {
 
     // MARK: - Init
 
-    public init(viewModel: FavoriteActionViewModel) {
+    public init(viewModel: FavoriteAdActionViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setup()
@@ -69,7 +69,7 @@ public final class FavoriteActionView: UIView {
 
 // MARK: - UITableViewDataSource
 
-extension FavoriteActionView: UITableViewDataSource {
+extension FavoriteAdActionView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return actions.count
     }
@@ -90,7 +90,7 @@ extension FavoriteActionView: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension FavoriteActionView: UITableViewDelegate {
+extension FavoriteAdActionView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let isLastCell = indexPath.row == actions.count - 1
         let inset = isLastCell ? frame.width : FavoriteActionCell.separatorLeadingInset
@@ -99,18 +99,18 @@ extension FavoriteActionView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.favoriteActionView(self, didSelectAction: actions[indexPath.row])
+        delegate?.favoriteAdActionView(self, didSelectAction: actions[indexPath.row])
     }
 }
 
 // MARK: - Static
 
-public extension FavoriteActionView {
+public extension FavoriteAdActionView {
     static let rowHeight: CGFloat = 48.0
 
-    static func totalHeight(for viewModel: FavoriteActionViewModel, width: CGFloat) -> CGFloat {
-        let headerViewHeight = FavoriteActionHeaderView.height(forTitle: viewModel.headerTitle, width: width)
-        let tableViewHeight = rowHeight * CGFloat(FavoriteAction.allCases.count)
+    static func totalHeight(for viewModel: FavoriteAdActionViewModel, width: CGFloat) -> CGFloat {
+        let headerViewHeight = FavoriteAdActionHeaderView.height(forTitle: viewModel.headerTitle, width: width)
+        let tableViewHeight = rowHeight * CGFloat(FavoriteAdAction.allCases.count)
 
         return headerViewHeight + tableViewHeight
     }
