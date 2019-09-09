@@ -8,7 +8,7 @@ class IdentityDemoView: UIView, Tweakable {
 
     // MARK: - UI properties
 
-    private var identityViews: [(IdentityView,ViewModel)] = []
+    private var identityViews: [(IdentityView, ViewModel)] = []
 
     // MARK: - Private properties
 
@@ -103,8 +103,8 @@ extension IdentityDemoView: IdentityViewDelegate {
 
 // MARK: - View model
 
-fileprivate class ViewModel: IdentityViewModel {
-    var profileImage: UIImage? = nil
+private class ViewModel: IdentityViewModel {
+    var profileImage: UIImage?
     let profileImageUrl: URL? = URL(string: "https://images.finncdn.no/dynamic/220x220c/2019/7/profilbilde/05/8/214/710/286/8_352525950.jpg")
 
     let displayName: String = "Finn Nordmann"
