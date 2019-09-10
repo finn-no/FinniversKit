@@ -4,6 +4,8 @@
 
 import UIKit
 
+
+
 public protocol IdentityViewModel {
     /// If defined, `profileImage` will take precedense over the image located at `profileImageUrl`.
     var profileImage: UIImage? { get }
@@ -190,7 +192,6 @@ public class IdentityView: UIView {
 
     private func populateViews(with viewModel: IdentityViewModel) {
         profileNameLabel.text = viewModel.displayName
-        profileNameLabel.font = viewModel.isTappable ? .body : .bodyStrong
         profileNameLabel.textColor = viewModel.isTappable ? .primaryBlue : .licorice
 
         verifiedBadge.isHidden = !viewModel.isVerified
