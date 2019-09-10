@@ -87,24 +87,24 @@ public class IdentityView: UIView {
     }()
 
     private lazy var profileNameWrapperView: UIView = {
-        let view = UIView(withAutoLayout: true)
+        let wrapperView = UIView(withAutoLayout: true)
 
-        view.addSubview(profileNameLabel)
-        view.addSubview(verifiedBadge)
+        wrapperView.addSubview(profileNameLabel)
+        wrapperView.addSubview(verifiedBadge)
 
         NSLayoutConstraint.activate([
-            profileNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            profileNameLabel.topAnchor.constraint(equalTo: view.topAnchor),
-            profileNameLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            profileNameLabel.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+            profileNameLabel.topAnchor.constraint(equalTo: wrapperView.topAnchor),
+            profileNameLabel.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor),
 
             verifiedBadge.leadingAnchor.constraint(equalTo: profileNameLabel.trailingAnchor, constant: .smallSpacing),
             verifiedBadge.centerYAnchor.constraint(equalTo: profileNameLabel.centerYAnchor),
-            verifiedBadge.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            verifiedBadge.trailingAnchor.constraint(lessThanOrEqualTo: wrapperView.trailingAnchor),
             verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
             verifiedBadge.heightAnchor.constraint(equalToConstant: 18)
         ])
 
-        return view
+        return wrapperView
     }()
 
     private lazy var subtitleLabel: Label = {
