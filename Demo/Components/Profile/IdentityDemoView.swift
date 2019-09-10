@@ -125,8 +125,8 @@ private class ViewModel: IdentityViewModel {
     var profileImage: UIImage?
     let profileImageUrl: URL? = URL(string: "https://images.finncdn.no/dynamic/220x220c/2019/7/profilbilde/05/8/214/710/286/8_352525950.jpg")
 
-    let displayName: String = "Finn Nordmann og et skikkelig langt navn som vi heter dette heter vi hele tiden"
-    let subtitle: String = "Har vært på FINN siden 1952 og det har vært en turbulent reise, men vi har nå i alle fall kommet fram! :) Ingenting er vel bedre enn det?"
+    let displayName: String = "Finn Nordmann"
+    let subtitle: String = "Har vært på FINN siden 1952"
 
     let description: String?
     let isVerified: Bool

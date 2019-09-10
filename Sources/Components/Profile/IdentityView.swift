@@ -57,6 +57,7 @@ public class IdentityView: UIView {
     public var hideDescription: Bool = false {
         didSet {
             viewModelChanged()
+            loadProfileImage()
         }
     }
 
@@ -79,6 +80,33 @@ public class IdentityView: UIView {
         return label
     }()
 
+    private lazy var verifiedBadge: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: .verified))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    private lazy var profileNameWrapperView: UIView = {
+        let view = UIView(withAutoLayout: true)
+
+        view.addSubview(profileNameLabel)
+        view.addSubview(verifiedBadge)
+
+        NSLayoutConstraint.activate([
+            profileNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            profileNameLabel.topAnchor.constraint(equalTo: view.topAnchor),
+            profileNameLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            verifiedBadge.leadingAnchor.constraint(equalTo: profileNameLabel.trailingAnchor, constant: .smallSpacing),
+            verifiedBadge.centerYAnchor.constraint(equalTo: profileNameLabel.centerYAnchor),
+            verifiedBadge.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
+            verifiedBadge.heightAnchor.constraint(equalToConstant: 18)
+        ])
+
+        return view
+    }()
+
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -92,12 +120,6 @@ public class IdentityView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         return stackView
-    }()
-
-    private lazy var verifiedBadge: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: .verified))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
     }()
 
     private lazy var descriptionLabel: Label = {
@@ -140,10 +162,9 @@ public class IdentityView: UIView {
 
         addSubview(stackView)
         addSubview(profileImageView)
-        addSubview(verifiedBadge)
         addSubview(descriptionLabel)
 
-        stackView.addArrangedSubview(profileNameLabel)
+        stackView.addArrangedSubview(profileNameWrapperView)
         stackView.addArrangedSubview(subtitleLabel)
 
         NSLayoutConstraint.activate([
@@ -157,12 +178,7 @@ public class IdentityView: UIView {
             stackView.topAnchor.constraint(equalTo: profileImageView.topAnchor),
             stackView.bottomAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor),
             stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.mediumLargeSpacing),
-
-            verifiedBadge.leadingAnchor.constraint(equalTo: profileNameLabel.trailingAnchor, constant: .smallSpacing),
-            verifiedBadge.centerYAnchor.constraint(equalTo: profileNameLabel.centerYAnchor),
-            verifiedBadge.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumSpacing),
-            verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
-            verifiedBadge.heightAnchor.constraint(equalToConstant: 18),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumSpacing),
         ])
     }
 
