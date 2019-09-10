@@ -4,8 +4,6 @@
 
 import UIKit
 
-
-
 public protocol IdentityViewModel {
     /// If defined, `profileImage` will take precedense over the image located at `profileImageUrl`.
     var profileImage: UIImage? { get }
@@ -19,7 +17,7 @@ public protocol IdentityViewModel {
     var description: String? { get }
 
     var isVerified: Bool { get }
-    var isTappable: Bool { get }
+    var displayMode: IdentityView.DisplayMode { get }
 }
 
 public protocol IdentityViewDelegate: AnyObject {
@@ -28,6 +26,16 @@ public protocol IdentityViewDelegate: AnyObject {
 }
 
 public class IdentityView: UIView {
+    public enum DisplayMode {
+        /// Subtitle visible, profile name blue
+        case interactible
+
+        /// Subtitle visible, profile name black
+        case nonInteractible
+
+        /// Subtitle hidden, description hidden, profile name black
+        case anonymous
+    }
 
     private var lastLoadedImageUrl: URL?
 
@@ -99,6 +107,12 @@ public class IdentityView: UIView {
         descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
     ]
 
+    private lazy var subtitleLabelConstraints: [NSLayoutConstraint] = [
+        subtitleLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .mediumSpacing),
+        subtitleLabel.topAnchor.constraint(equalTo: profileNameLabel.bottomAnchor, constant: .verySmallSpacing),
+        subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
+    ]
+
     // MARK: - Setup
 
     public required init?(coder aDecoder: NSCoder) {
@@ -143,10 +157,6 @@ public class IdentityView: UIView {
             verifiedBadge.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumSpacing),
             verifiedBadge.widthAnchor.constraint(equalToConstant: 18),
             verifiedBadge.heightAnchor.constraint(equalToConstant: 18),
-
-            subtitleLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .mediumSpacing),
-            subtitleLabel.topAnchor.constraint(equalTo: profileNameLabel.bottomAnchor, constant: .verySmallSpacing),
-            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 
@@ -174,10 +184,9 @@ public class IdentityView: UIView {
     // MARK: - Updating view model
 
     private func viewModelChanged() {
+        resetViews()
         if let viewModel = viewModel {
             populateViews(with: viewModel)
-        } else {
-            resetViews()
         }
     }
 
@@ -185,23 +194,34 @@ public class IdentityView: UIView {
         profileImageView.image = nil
         profileNameLabel.text = nil
         verifiedBadge.isHidden = true
+
         subtitleLabel.text = nil
+        subtitleLabel.isHidden = true
+        subtitleLabelConstraints.forEach { $0.isActive = false }
+
         descriptionLabel.isHidden = true
         descriptionLabelConstraints.forEach { $0.isActive = false }
     }
 
     private func populateViews(with viewModel: IdentityViewModel) {
         profileNameLabel.text = viewModel.displayName
-        profileNameLabel.textColor = viewModel.isTappable ? .primaryBlue : .licorice
+        profileNameLabel.textColor = viewModel.displayMode == .interactible ? .primaryBlue : .licorice
 
         verifiedBadge.isHidden = !viewModel.isVerified
 
-        subtitleLabel.text = viewModel.subtitle
+        if viewModel.displayMode == .anonymous {
+            subtitleLabel.isHidden = true
+            subtitleLabelConstraints.forEach { $0.isActive = false }
+        } else {
+            subtitleLabel.isHidden = false
+            subtitleLabel.text = viewModel.subtitle
+            subtitleLabelConstraints.forEach { $0.isActive = true }
 
-        let showDescription = viewModel.description != nil && !hideDescription
-        descriptionLabel.isHidden = !showDescription
-        descriptionLabel.text = viewModel.description
-        descriptionLabelConstraints.forEach { $0.isActive = showDescription }
+            let showDescription = viewModel.description != nil && !hideDescription
+            descriptionLabel.isHidden = !showDescription
+            descriptionLabel.text = viewModel.description
+            descriptionLabelConstraints.forEach { $0.isActive = showDescription }
+        }
     }
 
     // MARK: - Private methods
@@ -237,8 +257,6 @@ public class IdentityView: UIView {
     }
 
     @objc private func viewWasTapped() {
-        if viewModel?.isTappable ?? false {
-            delegate?.identityViewWasTapped(self)
-        }
+        delegate?.identityViewWasTapped(self)
     }
 }
