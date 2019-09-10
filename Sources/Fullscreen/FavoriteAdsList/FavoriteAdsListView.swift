@@ -62,7 +62,7 @@ public class FavoriteAdsListView: UIView {
     private var didSetTableHeader = false
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(withAutoLayout: true)
+        let tableView = TableView(withAutoLayout: true)
         tableView.register(FavoriteAdTableViewCell.self)
         tableView.register(FavoriteAdsSectionHeaderView.self)
         tableView.tableFooterView = UIView()
@@ -252,5 +252,15 @@ extension FavoriteAdsListView: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         delegate?.favoriteAdsListView(self, didChangeSearchText: searchText)
+    }
+}
+
+// MARK: - TableView
+
+private class TableView: UITableView {
+    /// Overridden so cells are resized after entering/exiting edit mode.
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        performBatchUpdates(nil)
     }
 }
