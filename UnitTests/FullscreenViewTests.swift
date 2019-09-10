@@ -133,4 +133,8 @@ class FullscreenViewTests: FBSnapshotTestCase {
     func testFavoriteAdNoteSheet() {
         snapshot(.favoriteAdNoteSheet)
     }
+
+    func testVerificationActionSheet() {
+        snapshot(.verificationActionSheet)
+    }
 }

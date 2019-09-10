@@ -182,4 +182,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testStepSlider() {
         snapshot(.stepSlider)
     }
+
+    func testVerificationView() {
+        snapshot(.verificationView)
+    }
 }
