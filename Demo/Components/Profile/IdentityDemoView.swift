@@ -34,6 +34,24 @@ class IdentityDemoView: UIView, Tweakable {
                     $0.1.profileImage = nil
                     $0.0.viewModel = $0.1
                 }
+            }),
+            TweakingOption(title: "DisplayMode.interactible", action: {
+                self.identityViews.forEach {
+                    $0.1.displayMode = .interactible
+                    $0.0.viewModel = $0.1
+                }
+            }),
+            TweakingOption(title: "DisplayMode.nonInteractible", action: {
+                self.identityViews.forEach {
+                    $0.1.displayMode = .nonInteractible
+                    $0.0.viewModel = $0.1
+                }
+            }),
+            TweakingOption(title: "DisplayMode.anonymous", action: {
+                self.identityViews.forEach {
+                    $0.1.displayMode = .anonymous
+                    $0.0.viewModel = $0.1
+                }
             })
         ]
         return options
@@ -111,12 +129,11 @@ private class ViewModel: IdentityViewModel {
     let subtitle: String = "Har vært på FINN siden 1952"
 
     let description: String?
-    let isTappable: Bool
     let isVerified: Bool
+    var displayMode: IdentityView.DisplayMode = .interactible
 
     init(description: String?, isTappable: Bool, isVerified: Bool) {
         self.description = description
-        self.isTappable = isTappable
         self.isVerified = isVerified
     }
 }
