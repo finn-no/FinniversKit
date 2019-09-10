@@ -70,6 +70,7 @@ public class FavoriteAdsListView: UIView {
         tableView.dataSource = self
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.keyboardDismissMode = .onDrag
+        tableView.allowsMultipleSelectionDuringEditing = true
         return tableView
     }()
 
@@ -123,6 +124,13 @@ public class FavoriteAdsListView: UIView {
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
     }
+
+    // MARK: - Public methods
+
+    public func setEditing(_ editing: Bool) {
+        guard editing != tableView.isEditing else { return }
+        tableView.setEditing(editing, animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -136,8 +144,10 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableHeaderView.endEditing(true)
-        tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.favoriteAdsListView(self, didSelectItemAt: indexPath)
+        if !tableView.isEditing {
+            tableView.deselectRow(at: indexPath, animated: true)
+            delegate?.favoriteAdsListView(self, didSelectItemAt: indexPath)
+        }
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

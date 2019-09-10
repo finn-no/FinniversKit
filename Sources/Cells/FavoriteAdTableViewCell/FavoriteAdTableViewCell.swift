@@ -56,6 +56,13 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         adView.resetBackgroundColors()
     }
 
+    public override func didTransition(to state: StateMask) {
+        super.didTransition(to: state)
+        let isEditing = state.contains(.showingEditControl)
+
+        adView.isMoreButtonHidden = isEditing
+    }
+
     // MARK: - Public methods
 
     public func configure(with viewModel: FavoriteAdViewModel) {
