@@ -27,6 +27,8 @@ public protocol IdentityViewDelegate: AnyObject {
 
 public class IdentityView: UIView {
 
+    private var lastLoadedImageUrl: URL?
+
     // MARK: - Public properties
 
     public weak var delegate: IdentityViewDelegate? {
@@ -214,9 +216,12 @@ public class IdentityView: UIView {
             return
         }
 
+        guard lastLoadedImageUrl != url else { return }
+        lastLoadedImageUrl = url
+
         delegate?.identityView(self, loadImageWithUrl: url, completionHandler: { [weak self] image in
             guard let self = self else { return }
-            if let image = image {
+            if let image = image, self.lastLoadedImageUrl == url {
                 DispatchQueue.main.async(execute: {
                     UIView.transition(with: self.profileImageView, duration: 0.1, options: .transitionCrossDissolve, animations: {
                         self.profileImageView.image = image
@@ -225,6 +230,8 @@ public class IdentityView: UIView {
             } else {
                 self.profileImageView.image = self.defaultProfileImage
             }
+
+            self.lastLoadedImageUrl = nil
         })
     }
 
