@@ -20,7 +20,7 @@ public class Panel: UIView {
 
     public init(style: Panel.Style) {
         self.style = style
-        super.init(frame: CGRect(x: 0, y: 0, width: 320, height: 20))
+        super.init(frame: .zero)
         setup()
     }
 
@@ -51,6 +51,6 @@ public class Panel: UIView {
         }
 
         addSubview(textLabel)
-        textLabel.fillInSuperview(margin: .mediumSpacing)
+        textLabel.fillInSuperview(margin: .mediumLargeSpacing)
     }
 }

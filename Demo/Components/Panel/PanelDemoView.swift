@@ -23,7 +23,7 @@ class PanelDemoView: UIView {
         stackView.fillInSuperview(margin: .mediumSpacing)
 
         let demoCases: [(Panel.Style, PanelViewModel)] = [
-            (.plain, PanelViewModel(text: "Plain panel. Are you sure a normal Label isn't a beter fit?")),
+            (.plain, PanelViewModel(text: "Plain panel. Are you sure a normal Label isn't a better fit?")),
             (.info, PanelViewModel(text: "Info panel. Use info when you have information that should be highligtet, grouped or separated slightly from the content.")),
             (.info, PanelViewModel(cornerRadius: 16, text: "Info panel with custom (16) corners. Custom corners should normally not be used.")),
             (.tips, PanelViewModel(text: "Tip panel. Tips is information we want to emphasize to the user. This box has to stand out more than the info box.")),
