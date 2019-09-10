@@ -123,6 +123,12 @@ public class FavoriteAdsListView: UIView {
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
     }
+
+    // MARK: - Images
+
+    public func cachedImage(forPath path: String) -> UIImage? {
+        return imageCache.image(forKey: path)
+    }
 }
 
 // MARK: - UITableViewDelegate
