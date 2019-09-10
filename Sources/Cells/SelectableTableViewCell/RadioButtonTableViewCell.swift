@@ -1,5 +1,5 @@
-//  Created by Larsen, Truls Benjamin on 10/09/2019.
-//  Copyright © 2019 FINN AS. All rights reserved.
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
 import Foundation

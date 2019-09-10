@@ -35,7 +35,7 @@ public struct UserAdCell: UserAdsListViewModel {
     }
 
     public init(imagePath: String? = nil, imageSize: CGSize = CGSize(width: 0, height: 0),
-                title: String = "", price: String? = nil, detail: String = "", status: String = "", actionModel: UserAdsListActionModel? = nil)  {
+                title: String = "", price: String? = nil, detail: String = "", status: String = "", actionModel: UserAdsListActionModel? = nil) {
         self.imagePath = imagePath
         self.imageSize = imageSize
         self.title = title
@@ -74,7 +74,7 @@ public struct UserAdsFactory {
         let ads: [UserAdCell] =  [UserAdCell(title: "Lag ny annonse")]
         return (header: header, ads: ads)
     }
-    
+
     private static func createEmphasizedAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
         let imageSource = imageSources[0]
         let action = UserAdCellAction(title: "Her går det unna!", description: "Nå er det mange som selger Rancho Cuccamonga! For 89 kr kan du løfte annonsen din øverst i resultatlista, akkurat som da den var ny", buttonTitle: "Løft annonsen", cancelButtonTitle: "Nei takk!")
