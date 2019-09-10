@@ -33,7 +33,7 @@ public class IdentityView: UIView {
         /// Subtitle visible, profile name black
         case nonInteractible
 
-        /// Subtitle hidden, description hidden, profile name black
+        /// Subtitle hidden, profile name black
         case anonymous
     }
 
@@ -79,17 +79,25 @@ public class IdentityView: UIView {
         return label
     }()
 
-    private lazy var verifiedBadge: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: .verified))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
+    }()
+
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.spacing = .verySmallSpacing
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        return stackView
+    }()
+
+    private lazy var verifiedBadge: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: .verified))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
 
     private lazy var descriptionLabel: Label = {
@@ -102,15 +110,9 @@ public class IdentityView: UIView {
     private lazy var descriptionLabelConstraints: [NSLayoutConstraint] = [
         descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
         descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor, constant: .mediumLargeSpacing),
-        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: subtitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
+        descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: stackView.bottomAnchor, constant: .mediumLargeSpacing),
         descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
-    ]
-
-    private lazy var subtitleLabelConstraints: [NSLayoutConstraint] = [
-        subtitleLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .mediumSpacing),
-        subtitleLabel.topAnchor.constraint(equalTo: profileNameLabel.bottomAnchor, constant: .verySmallSpacing),
-        subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
     ]
 
     // MARK: - Setup
@@ -136,11 +138,13 @@ public class IdentityView: UIView {
         layer.cornerRadius = 8
         backgroundColor = .ice
 
+        addSubview(stackView)
         addSubview(profileImageView)
-        addSubview(profileNameLabel)
         addSubview(verifiedBadge)
-        addSubview(subtitleLabel)
         addSubview(descriptionLabel)
+
+        stackView.addArrangedSubview(profileNameLabel)
+        stackView.addArrangedSubview(subtitleLabel)
 
         NSLayoutConstraint.activate([
             profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
@@ -149,8 +153,10 @@ public class IdentityView: UIView {
             profileImageView.widthAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
             profileImageView.heightAnchor.constraint(equalToConstant: IdentityView.profileImageSize),
 
-            profileNameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .mediumSpacing),
-            profileNameLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .mediumSpacing),
+            stackView.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            stackView.bottomAnchor.constraint(greaterThanOrEqualTo: profileImageView.bottomAnchor),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.mediumLargeSpacing),
 
             verifiedBadge.leadingAnchor.constraint(equalTo: profileNameLabel.trailingAnchor, constant: .smallSpacing),
             verifiedBadge.centerYAnchor.constraint(equalTo: profileNameLabel.centerYAnchor),
@@ -197,7 +203,6 @@ public class IdentityView: UIView {
 
         subtitleLabel.text = nil
         subtitleLabel.isHidden = true
-        subtitleLabelConstraints.forEach { $0.isActive = false }
 
         descriptionLabel.isHidden = true
         descriptionLabelConstraints.forEach { $0.isActive = false }
@@ -211,17 +216,15 @@ public class IdentityView: UIView {
 
         if viewModel.displayMode == .anonymous {
             subtitleLabel.isHidden = true
-            subtitleLabelConstraints.forEach { $0.isActive = false }
         } else {
             subtitleLabel.isHidden = false
             subtitleLabel.text = viewModel.subtitle
-            subtitleLabelConstraints.forEach { $0.isActive = true }
-
-            let showDescription = viewModel.description != nil && !hideDescription
-            descriptionLabel.isHidden = !showDescription
-            descriptionLabel.text = viewModel.description
-            descriptionLabelConstraints.forEach { $0.isActive = showDescription }
         }
+
+        let showDescription = viewModel.description != nil && !hideDescription
+        descriptionLabel.isHidden = !showDescription
+        descriptionLabel.text = viewModel.description
+        descriptionLabelConstraints.forEach { $0.isActive = showDescription }
     }
 
     // MARK: - Private methods
