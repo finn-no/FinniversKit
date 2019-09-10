@@ -186,4 +186,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testVerificationView() {
         snapshot(.verificationView)
     }
+
+    func testPanel() {
+        snapshot(.panel)
+    }
 }

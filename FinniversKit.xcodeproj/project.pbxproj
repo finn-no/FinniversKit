@@ -259,6 +259,10 @@
 		9B23769122DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */; };
 		9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */; };
 		9B239E1122E093E800A4E9D0 /* KlimabroletContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */; };
+		9B28DE8023266C5000D69C15 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B28DE7F23266C5000D69C15 /* Panel.swift */; };
+		9B28DE8223266CD100D69C15 /* Panel+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B28DE8123266CD100D69C15 /* Panel+Style.swift */; };
+		9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B28DE832326732F00D69C15 /* PanelViewModel.swift */; };
+		9B28DE872326756E00D69C15 /* PanelDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B28DE862326756E00D69C15 /* PanelDemoView.swift */; };
 		9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */; };
 		9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */; };
 		9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */; };
@@ -784,6 +788,10 @@
 		9B23769022DC6CEF00FCA381 /* NSLayoutAnchorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutAnchorExtensions.swift; sourceTree = "<group>"; };
 		9B238F01225B95F600B0E0C2 /* InfoboxView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoboxView+Style.swift"; sourceTree = "<group>"; };
 		9B239E1022E093E800A4E9D0 /* KlimabroletContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletContentView.swift; sourceTree = "<group>"; };
+		9B28DE7F23266C5000D69C15 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		9B28DE8123266CD100D69C15 /* Panel+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel+Style.swift"; sourceTree = "<group>"; };
+		9B28DE832326732F00D69C15 /* PanelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelViewModel.swift; sourceTree = "<group>"; };
+		9B28DE862326756E00D69C15 /* PanelDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelDemoView.swift; sourceTree = "<group>"; };
 		9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoPageViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletDemoViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
@@ -1533,6 +1541,7 @@
 				4447F6741FDB2B110033DBC1 /* Label */,
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
+				9B28DE7E23266C2500D69C15 /* Panel */,
 				CF13D6CB2292D2100087DA37 /* Phases */,
 				9F2134A9A3ACDA8FA1566B1A /* Profile */,
 				F2C3E95A22CB634700CED7E0 /* QuestionnaireView */,
@@ -2159,6 +2168,24 @@
 				9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9B28DE7E23266C2500D69C15 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				9B28DE7F23266C5000D69C15 /* Panel.swift */,
+				9B28DE8123266CD100D69C15 /* Panel+Style.swift */,
+				9B28DE832326732F00D69C15 /* PanelViewModel.swift */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
+		9B28DE852326754C00D69C15 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				9B28DE862326756E00D69C15 /* PanelDemoView.swift */,
+			);
+			path = Panel;
 			sourceTree = "<group>";
 		};
 		9B9F8C1322F079F600298CDB /* Feedback */ = {
@@ -2817,7 +2844,6 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CF376C14231D3D8500ED2B24 /* StepSlider */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
@@ -2835,6 +2861,7 @@
 				CF8F022221DCC6D5004C4042 /* Label */,
 				CF8F021621DCC5F6004C4042 /* LoadingIndicator */,
 				89A7A640225344470053D33B /* NativeAdvert */,
+				9B28DE852326754C00D69C15 /* Panel */,
 				CF13D6D22292E2DD0087DA37 /* Phases */,
 				9F213D0057F4D4312C8FF359 /* Profile */,
 				F2C3E96122CB686F00CED7E0 /* QuestionnaireView */,
@@ -2845,6 +2872,7 @@
 				9BAB37D5230BE3C600E861D4 /* SaveSearch */,
 				CF8F021721DCC60E004C4042 /* SelectionBoxes */,
 				895175912248CFC2008003FB /* StepIndicator */,
+				CF376C14231D3D8500ED2B24 /* StepSlider */,
 				CF8F021C21DCC685004C4042 /* Switch */,
 				CF8F022421DCC6EE004C4042 /* TextField */,
 				081F51B8222930B400026C84 /* TextView */,
@@ -4009,6 +4037,7 @@
 				4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */,
 				CF87A85A229C0C6600DA8243 /* ContactFormDemoView.swift in Sources */,
 				AA864B4D22329E7100BAE95A /* UIDevice.swift in Sources */,
+				9B28DE872326756E00D69C15 /* PanelDemoView.swift in Sources */,
 				4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */,
 				AAC1AFB42021058000C71B7C /* Demo.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
@@ -4156,6 +4185,7 @@
 				4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */,
 				441FE431209A24E500B04EF1 /* AdsGridHeaderView.swift in Sources */,
 				0881432A22E1B974008CB5DA /* ToastButton.swift in Sources */,
+				9B28DE8023266C5000D69C15 /* Panel.swift in Sources */,
 				443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */,
 				DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */,
 				89A7A648225352A30053D33B /* NativeContentAdvertView.swift in Sources */,
@@ -4235,6 +4265,7 @@
 				620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */,
 				DAB7FAA621B690DD00BF8CC6 /* BottomSheet.swift in Sources */,
 				F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */,
+				9B28DE8223266CD100D69C15 /* Panel+Style.swift in Sources */,
 				CF4A053D21FB2ACB000BB7DA /* PianoKeyboardView.swift in Sources */,
 				CF5CA71922F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift in Sources */,
 				CF7C460822257A8A001FB92C /* EarthHourView.swift in Sources */,
@@ -4271,6 +4302,7 @@
 				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
 				8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */,
 				F2CBE8AC23277557005FAD14 /* ReceiptViewModel.swift in Sources */,
+				9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */,
 				CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */,
 				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				4408A6A42027AC41008C0BD9 /* Spacing.swift in Sources */,
