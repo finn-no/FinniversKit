@@ -202,8 +202,8 @@ public enum Cells: String, CaseIterable {
 public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
-    case favoriteSortingView
-    case favoriteActionView
+    case favoriteAdSortingView
+    case favoriteAdActionView
     case favoritesListView
     case savedSearchesListView
     case marketsGridView
@@ -230,10 +230,10 @@ public enum RecyclingViews: String, CaseIterable {
             navigationController.navigationBar.shadowImage = UIImage()
 
             return navigationController
-        case .favoriteSortingView:
-            return DemoViewController<FavoriteSortingDemoView>()
-        case .favoriteActionView:
-            return DemoViewController<FavoriteActionDemoView>()
+        case .favoriteAdSortingView:
+            return DemoViewController<FavoriteAdSortingDemoView>()
+        case .favoriteAdActionView:
+            return DemoViewController<FavoriteAdActionDemoView>()
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:
@@ -279,9 +279,9 @@ public enum FullscreenViews: String, CaseIterable {
     case receiptView
     case favoriteAdsList
     case favoriteFolderActionSheet
-    case favoriteSortingSheet
-    case favoriteActionSheet
-    case favoriteNoteSheet
+    case favoriteAdSortingSheet
+    case favoriteAdActionSheet
+    case favoriteAdNoteSheet
     case verificationActionSheet
 
     public static var items: [FullscreenViews] {
@@ -342,21 +342,21 @@ public enum FullscreenViews: String, CaseIterable {
             let bottomSheet = FavoriteFolderActionSheet(viewModel: .default)
             bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
             return bottomSheet
-        case .favoriteSortingSheet:
-            let bottomSheet = FavoriteSortingSheet(viewModel: .default, selectedSortOption: .lastAdded)
-            bottomSheet.sortingDelegate = FavoriteSortingSheetDemoDelegate.shared
+        case .favoriteAdSortingSheet:
+            let bottomSheet = FavoriteAdSortingSheet(viewModel: .default, selectedSortOption: .lastAdded)
+            bottomSheet.sortingDelegate = FavoriteAdSortingSheetDemoDelegate.shared
             return bottomSheet
-        case .favoriteActionSheet:
-            let bottomSheet = FavoriteActionSheet(viewModel: .default)
-            bottomSheet.actionDelegate = FavoriteActionSheetDemoDelegate.shared
+        case .favoriteAdActionSheet:
+            let bottomSheet = FavoriteAdActionSheet(viewModel: .default)
+            bottomSheet.actionDelegate = FavoriteAdActionSheetDemoDelegate.shared
             return bottomSheet
-        case .favoriteNoteSheet:
-            let bottomSheet = FavoriteNoteSheet(
+        case .favoriteAdNoteSheet:
+            let bottomSheet = FavoriteAdNoteSheet(
                 noteViewModel: .default,
                 adViewModel: FavoriteAdsFactory.create().last!,
-                remoteImageViewDataSource: FavoriteNoteSheetDemoDelegate.shared
+                remoteImageViewDataSource: FavoriteAdNoteSheetDemoDelegate.shared
             )
-            bottomSheet.noteDelegate = FavoriteNoteSheetDemoDelegate.shared
+            bottomSheet.noteDelegate = FavoriteAdNoteSheetDemoDelegate.shared
             return bottomSheet
         case .verificationActionSheet:
             let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())
