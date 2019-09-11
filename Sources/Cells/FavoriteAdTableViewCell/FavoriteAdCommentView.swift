@@ -7,7 +7,8 @@ import UIKit
 final class FavoriteAdCommentView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .favoritesComment)
+        imageView.image = UIImage(named: .favoritesComment).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .highlight
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -39,6 +40,15 @@ final class FavoriteAdCommentView: UIView {
     }
 
     private func setup() {
+        isAccessibilityElement = true
+
+        clipsToBounds = true
+        backgroundColor = .watermelon
+
+        layer.cornerRadius = 4
+        layer.borderColor = UIColor.highlight?.cgColor
+        layer.borderWidth = 2.0 / UIScreen.main.scale
+
         addSubview(imageView)
         addSubview(label)
 
@@ -57,5 +67,13 @@ final class FavoriteAdCommentView: UIView {
             label.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
             label.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
         ])
+    }
+}
+
+// MARK: - Private extensions
+
+private extension UIColor {
+    class var highlight: UIColor? {
+        return UIColor(r: 255, g: 204, b: 0)
     }
 }
