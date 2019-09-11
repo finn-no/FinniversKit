@@ -14,7 +14,7 @@ final class FavoriteAdCommentView: UIView {
     }()
 
     private lazy var label: UILabel = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        let label = Label(style: .captionStrong, withAutoLayout: true)
         label.textColor = .licorice
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -43,11 +43,11 @@ final class FavoriteAdCommentView: UIView {
         isAccessibilityElement = true
 
         clipsToBounds = true
-        backgroundColor = .watermelon
+        backgroundColor = .banana
 
         layer.cornerRadius = 4
         layer.borderColor = UIColor.highlight?.cgColor
-        layer.borderWidth = 2.0 / UIScreen.main.scale
+        layer.borderWidth = 4.0 / UIScreen.main.scale
 
         addSubview(imageView)
         addSubview(label)
