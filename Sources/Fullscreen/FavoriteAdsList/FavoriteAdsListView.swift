@@ -132,6 +132,10 @@ public class FavoriteAdsListView: UIView {
         tableView.deleteRows(at: [indexPath], with: animation)
     }
 
+    public func deleteSection(at index: Int, with animation: UITableView.RowAnimation = .automatic) {
+        tableView.deleteSections(IndexSet(integer: index), with: animation)
+    }
+
     // MARK: - Images
 
     public func cachedImage(forPath path: String) -> UIImage? {
