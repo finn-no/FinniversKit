@@ -4,11 +4,10 @@
 
 import FinniversKit
 
-extension FavoriteAdNoteViewModel {
-    static let `default` = FavoriteAdNoteViewModel(
+extension FavoriteAdCommentViewModel {
+    static let `default` = FavoriteAdCommentViewModel(
         title: "Skriv notat",
-        note: "",
-        notePlaceholder: "Skriv notat til deg selv",
+        placeholder: "Skriv notat til deg selv",
         cancelButtonText: "Avbryt",
         saveButtonText: "Lagre"
     )
