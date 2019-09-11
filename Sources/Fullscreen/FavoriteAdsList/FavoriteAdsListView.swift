@@ -124,6 +124,14 @@ public class FavoriteAdsListView: UIView {
         tableView.reloadData()
     }
 
+    public func reloadRow(at indexPath: IndexPath, with animation: UITableView.RowAnimation = .automatic) {
+        tableView.reloadRows(at: [indexPath], with: animation)
+    }
+
+    public func deleteRow(at indexPath: IndexPath, with animation: UITableView.RowAnimation = .automatic) {
+        tableView.deleteRows(at: [indexPath], with: animation)
+    }
+
     // MARK: - Images
 
     public func cachedImage(forPath path: String) -> UIImage? {
