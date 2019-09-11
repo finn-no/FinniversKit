@@ -14,7 +14,8 @@ public protocol AdsGridViewDelegate: AnyObject {
 
 public protocol AdsGridViewDataSource: AnyObject {
     func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int
-    func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel
+    func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat
+    func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void))
     func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
 }
@@ -143,22 +144,27 @@ extension AdsGridView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
-
-        // Show a pretty color while we load the image
-        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
-        let color = colors[indexPath.row % 4]
-
-        cell.index = indexPath.row
-        cell.loadingColor = color
-        cell.dataSource = self
-        cell.delegate = self
-
-        if let model = dataSource?.adsGridView(self, modelAtIndex: indexPath.row) {
-            cell.model = model
+        guard let cell = dataSource?.adsGridView(self, collectionView: collectionView, cellForItemAt: indexPath) else {
+            preconditionFailure("Data source not configured correctly")
         }
 
         return cell
+//        let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
+//
+//        // Show a pretty color while we load the image
+//        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+//        let color = colors[indexPath.row % 4]
+//
+//        cell.index = indexPath.row
+//        cell.loadingColor = color
+//        cell.dataSource = self
+//        cell.delegate = self
+//
+//        if let model = dataSource?.adsGridView(self, modelAtIndex: indexPath.row) {
+//            cell.model = model
+//        }
+//
+//        return cell
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -223,21 +229,8 @@ extension AdsGridView: AdsGridViewLayoutDelegate {
         return headerView?.frame.size.height
     }
 
-    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, imageHeightRatioForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        guard let model = dataSource?.adsGridView(self, modelAtIndex: indexPath.row), model.imageSize != .zero, model.imagePath != nil else {
-            let defaultImageSize = CGSize(width: 104, height: 78)
-            return defaultImageSize.height / defaultImageSize.width
-        }
-
-        return model.imageSize.height / model.imageSize.width
-    }
-
-    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat {
-        if let model = dataSource?.adsGridView(self, modelAtIndex: indexPath.row), model.accessory?.isEmpty == false {
-            return AdsGridViewCell.nonImageWithAccessoryHeight
-        } else {
-            return AdsGridViewCell.nonImageHeight
-        }
+    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
+        return dataSource?.adsGridView(self, heightForItemWithWidth: width, at: indexPath) ?? 0
     }
 }
 

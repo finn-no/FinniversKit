@@ -51,8 +51,31 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
         return dataSource.models.count
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
-        return dataSource.models[index]
+    public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
+        let model = dataSource.models[indexPath.item]
+        let imageRatio = model.imageSize.height / model.imageSize.width
+        let imageHeight = width * imageRatio
+
+        if model.accessory != nil {
+            return imageHeight + AdsGridViewCell.nonImageWithAccessoryHeight
+        } else {
+            return imageHeight + AdsGridViewCell.nonImageHeight
+        }
+    }
+
+    public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
+        // Show a pretty color while we load the image
+        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+        let color = colors[indexPath.row % 4]
+
+        cell.index = indexPath.row
+        cell.loadingColor = color
+        cell.dataSource = adsGridView
+        cell.delegate = adsGridView
+        cell.model = dataSource.models[indexPath.item]
+
+        return cell
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {
