@@ -26,6 +26,11 @@ final class FavoriteAdView: UIView {
         set { moreButton.isHidden = newValue }
     }
 
+    var isCommentViewHidden: Bool {
+        get { return commentView.isHidden }
+        set { commentView.isHidden = newValue }
+    }
+
     // MARK: - Private properties
 
     private var viewModel: FavoriteAdViewModel?
@@ -36,6 +41,7 @@ final class FavoriteAdView: UIView {
     private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .licorice, numberOfLines: 0)
     private lazy var descriptionTertiaryLabel = label(withFont: .detailStrong, textColor: .licorice, numberOfLines: 0)
     private lazy var statusRibbon = RibbonView(withAutoLayout: true)
+    private lazy var commentView = UIView(withAutoLayout: true)
     private lazy var fallbackImage: UIImage = UIImage(named: .noImage)
 
     private lazy var textStackView: UIStackView = {
