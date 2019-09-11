@@ -36,12 +36,6 @@ public final class FavoriteAdCommentSheet: BottomSheet {
     public required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
-
-    // MARK: - Lifecycle
-
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }
 
 // MARK: - FavoriteAdCommentViewControllerDelegate

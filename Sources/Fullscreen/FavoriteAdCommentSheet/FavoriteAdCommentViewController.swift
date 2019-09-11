@@ -43,6 +43,7 @@ final class FavoriteAdCommentViewController: UIViewController {
     private lazy var adView: FavoriteAdView = {
         let view = FavoriteAdView(withAutoLayout: true)
         view.isMoreButtonHidden = true
+        view.isCommentViewHidden = true
         view.configure(with: adViewModel)
         view.remoteImageViewDataSource = remoteImageViewDataSource
         view.setContentHuggingPriority(.defaultHigh, for: .vertical)
