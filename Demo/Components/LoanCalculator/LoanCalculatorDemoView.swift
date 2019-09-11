@@ -4,6 +4,19 @@
 
 import FinniversKit
 
+struct LoanCalculatorDemoViewModel: LoanCalculatorViewModel {
+    var title: String?
+    var rentText: String?
+    var pricePerMonth: String?
+    var loanAmountText: String?
+    var logoUrl: URL?
+    var conditionsText: String
+    var applyText: String
+    var price: TitleValueSliderViewModel
+    var equity: TitleValueSliderViewModel
+    var paymentYears: TitleValueSliderViewModel
+}
+
 class LoanCalculatorDemoView: UIView {
     private lazy var loanCalculatorView: LoanCalculatorView = {
         let view = LoanCalculatorView(withAutoLayout: true)
@@ -23,7 +36,7 @@ class LoanCalculatorDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        loanCalculatorView.configure(with: LoanCalculatorViewModel.makeViewModel())
+        loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel())
         addSubview(loanCalculatorView)
         NSLayoutConstraint.activate([
             loanCalculatorView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1, constant: -.largeSpacing),
@@ -74,21 +87,21 @@ extension LoanCalculatorDemoView: LoanCalculatorDelegate {
     func loanValuesView(_ view: LoanCalculatorView, didChangePrice price: Float) {
         print("Price changes: \(price)")
 
-        let viewModel = LoanCalculatorViewModel.makeViewModel(price: Int(price), hasConditions: Bool.random())
+        let viewModel = LoanCalculatorDemoViewModel.makeViewModel(price: Int(price), hasConditions: Bool.random())
         finishLoading(with: viewModel)
     }
 
     func loanValuesView(_ view: LoanCalculatorView, didChangeEquity equity: Float) {
         print("Equity changed: \(equity)")
 
-        let viewModel = LoanCalculatorViewModel.makeViewModel(equity: Int(equity))
+        let viewModel = LoanCalculatorDemoViewModel.makeViewModel(equity: Int(equity))
         finishLoading(with: viewModel)
     }
 
     func loanValuesView(_ view: LoanCalculatorView, didChangePaymentYears years: Int) {
         print("Payment years changed: \(years)")
 
-        let viewModel = LoanCalculatorViewModel.makeViewModel(equity: Int(years))
+        let viewModel = LoanCalculatorDemoViewModel.makeViewModel(equity: Int(years))
         finishLoading(with: viewModel)
     }
 
@@ -106,18 +119,18 @@ extension LoanCalculatorDemoView: LoanCalculatorDelegate {
 
 // MARK: - Private extensions
 
-extension LoanCalculatorViewModel {
+extension LoanCalculatorDemoViewModel {
     static func makeViewModel(
         price: Int = 5600000,
         equity: Int = Int((5600000 - 10000) * 0.35),
         paymentYears: Int = 25,
         hasConditions: Bool = true
-    ) -> LoanCalculatorViewModel {
+    ) -> LoanCalculatorDemoViewModel {
         let conditionsText = hasConditions
             ? "Eff.rente 2,62 %. Etableringsgebyr. 2 500 kr. 4 433 000 kr o/25 år. Kostnad: 1 589 500 kr. Totalt: 6 022 500 kr."
             :"Verdiene er utenfor banks prisliste. Renten vil dermed settes på individuell basis"
 
-        return LoanCalculatorViewModel(
+        return LoanCalculatorDemoViewModel(
             title: hasConditions ? "Estimert pr. måned" : nil,
             rentText: hasConditions ? "2,65 % eff. / 2,55 % nom. rente" : nil,
             pricePerMonth: hasConditions ? "16 656 kr" : nil,

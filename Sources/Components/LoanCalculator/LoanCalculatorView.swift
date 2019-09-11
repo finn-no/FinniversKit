@@ -4,32 +4,7 @@
 
 import UIKit
 
-public struct LoanCalculatorViewModel: LoanHeaderViewModel, LoanValuesViewModel, LoanApplyViewModel {
-
-    public let title: String?
-    public let rentText: String?
-    public let pricePerMonth: String?
-    public let loanAmountText: String?
-    public let logoUrl: URL?
-    public let conditionsText: String
-    public let applyText: String
-    public var price: TitleValueSliderViewModel
-    public var equity: TitleValueSliderViewModel
-    public var paymentYears: TitleValueSliderViewModel
-
-    public init(title: String?, rentText: String?, pricePerMonth: String?, loanAmountText: String?, logoUrl: URL?, conditionsText: String, applyText: String, price: TitleValueSliderViewModel, equity: TitleValueSliderViewModel, paymentYears: TitleValueSliderViewModel) {
-        self.title = title
-        self.rentText = rentText
-        self.pricePerMonth = pricePerMonth
-        self.loanAmountText = loanAmountText
-        self.logoUrl = logoUrl
-        self.conditionsText = conditionsText
-        self.applyText = applyText
-        self.price = price
-        self.equity = equity
-        self.paymentYears = paymentYears
-    }
-}
+public protocol LoanCalculatorViewModel: LoanHeaderViewModel, LoanValuesViewModel, LoanApplyViewModel {}
 
 public protocol LoanCalculatorDataSource: AnyObject {
     func loanCalculatorView(_ view: LoanCalculatorView, formattedCurrencyValue: Float) -> String?
