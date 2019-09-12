@@ -3,7 +3,6 @@
 //
 
 public protocol LoanApplyViewModel {
-    var errorText: String? { get }
     var conditionsText: String? { get }
     var applyText: String { get }
 }
@@ -22,12 +21,6 @@ class LoanApplyView: UIView {
     }
 
     // MARK: - Private subviews
-    private lazy var errorText: Label = {
-        let label = Label(style: .body, withAutoLayout: true)
-        label.textColor = .stone
-        label.numberOfLines = 0
-        return label
-    }()
 
     private lazy var conditionsText: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
@@ -61,8 +54,6 @@ class LoanApplyView: UIView {
 
     // MARK: - Internal functions
     func configure(with model: LoanApplyViewModel) {
-        errorText.isHidden = model.errorText == nil
-        errorText.text = model.errorText
         conditionsText.text = model.conditionsText
         conditionsText.isHidden = model.conditionsText == nil
         applyButton.setTitle(model.applyText, for: .normal)
@@ -70,7 +61,6 @@ class LoanApplyView: UIView {
 
     // MARK: - Private functions
     private func setup() {
-        stackView.addArrangedSubview(errorText)
         stackView.addArrangedSubview(conditionsText)
         stackView.addArrangedSubview(applyButton)
         addSubview(stackView)

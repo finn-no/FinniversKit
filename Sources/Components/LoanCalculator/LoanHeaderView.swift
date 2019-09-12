@@ -10,6 +10,7 @@ public protocol LoanHeaderViewModel {
     var pricePerMonth: String? { get }
     var loanAmountText: String? { get }
     var logoUrl: URL? { get }
+    var errorText: String? { get }
 }
 
 class LoanHeaderView: UIView {
@@ -24,6 +25,12 @@ class LoanHeaderView: UIView {
 
     // MARK: - Private subviews
 
+    private lazy var errorText: Label = {
+        let label = Label(style: .body, withAutoLayout: true)
+        label.numberOfLines = 0
+        return label
+    }()
+
     private lazy var textStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .vertical
@@ -31,11 +38,19 @@ class LoanHeaderView: UIView {
         return stackView
     }()
 
-    private lazy var outerStackView: UIStackView = {
+    private lazy var valuesStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
         stackView.alignment = .top
         stackView.spacing = .mediumSpacing
+
+        return stackView
+    }()
+
+    private lazy var outerStackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        stackView.spacing = .mediumLargeSpacing
 
         return stackView
     }()
@@ -71,6 +86,9 @@ class LoanHeaderView: UIView {
         rentLabel.text = model.rentText
         loanTotalLabel.text = model.loanAmountText
 
+        errorText.isHidden = model.errorText == nil
+        errorText.text = model.errorText
+
         if let logoUrl = model.logoUrl?.absoluteString {
             logoImageView.loadImage(for: logoUrl, imageWidth: logoSize.width, fallbackImage: fallbackImage)
         } else {
@@ -85,8 +103,11 @@ class LoanHeaderView: UIView {
         textStackView.addArrangedSubview(rentLabel)
         textStackView.addArrangedSubview(loanTotalLabel)
 
-        outerStackView.addArrangedSubview(textStackView)
-        outerStackView.addArrangedSubview(logoImageView)
+        valuesStackView.addArrangedSubview(textStackView)
+        valuesStackView.addArrangedSubview(logoImageView)
+
+        outerStackView.addArrangedSubview(valuesStackView)
+        outerStackView.addArrangedSubview(errorText)
 
         NSLayoutConstraint.activate([
             logoImageView.widthAnchor.constraint(equalToConstant: logoSize.width),
