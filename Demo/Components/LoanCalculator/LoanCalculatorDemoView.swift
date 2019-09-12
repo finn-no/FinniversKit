@@ -10,7 +10,8 @@ struct LoanCalculatorDemoViewModel: LoanCalculatorViewModel {
     var pricePerMonth: String?
     var loanAmountText: String?
     var logoUrl: URL?
-    var conditionsText: String
+    var conditionsText: String?
+    var errorText: String?
     var applyText: String
     var price: TitleValueSliderViewModel
     var equity: TitleValueSliderViewModel
@@ -136,7 +137,8 @@ extension LoanCalculatorDemoViewModel {
             pricePerMonth: hasConditions ? "16 656 kr" : nil,
             loanAmountText: hasConditions ? "Lånesum: 3 675 000 kr": nil,
             logoUrl: URL(string: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png"),
-            conditionsText: conditionsText,
+            conditionsText: hasConditions ? conditionsText : nil,
+            errorText: hasConditions ? nil : conditionsText,
             applyText: "Søk boliglån",
             price: .makePrice(withInitialValue: price),
             equity: .makeEquity(withInitialValue: equity),
