@@ -67,13 +67,11 @@ extension RadioButtonCellDemoView: UITableViewDataSource {
 extension RadioButtonCellDemoView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentIndex = indexPath.row
-        let model = viewModels[currentIndex]
-        guard model.isSelected == false else { return }
 
         for (index, model) in viewModels.enumerated() {
             var updatedModel = model
-            updatedModel.isSelected = index == currentIndex
-            let indexPath = IndexPath(row: index, section: 0)
+            updatedModel.isSelected = index == currentIndex && !model.isSelected
+            let indexPath = IndexPath(row: index, section: indexPath.section)
             if let cell = tableView.cellForRow(at: indexPath) as? RadioButtonTableViewCell, updatedModel.isSelected != model.isSelected {
                 cell.animateSelection(isSelected: updatedModel.isSelected)
                 viewModels[index] = updatedModel
