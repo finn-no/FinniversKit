@@ -8,7 +8,7 @@ extension FavoriteAdActionViewModel {
     static let `default` = FavoriteAdActionViewModel(
         headerImage: createImage(),
         headerTitle: "Ærverdig herskapelig villa, med praktfull beliggende strandtomt (6500 kvm), helt i vannkanten. Perle, finnes ikke maken!",
-        addNoteText: "Legg til notat",
+        commentText: "Legg til notat",
         deleteText: "Slett favoritten fra listen"
     )
 

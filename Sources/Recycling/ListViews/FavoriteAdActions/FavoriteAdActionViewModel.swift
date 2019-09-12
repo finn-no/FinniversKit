@@ -5,18 +5,18 @@
 public struct FavoriteAdActionViewModel {
     public let headerImage: UIImage?
     public let headerTitle: String
-    public let addNoteText: String
+    public let commentText: String
     public let deleteText: String
 
     public init(
         headerImage: UIImage?,
         headerTitle: String,
-        addNoteText: String,
+        commentText: String,
         deleteText: String
     ) {
         self.headerImage = headerImage
         self.headerTitle = headerTitle
-        self.addNoteText = addNoteText
+        self.commentText = commentText
         self.deleteText = deleteText
     }
 }
