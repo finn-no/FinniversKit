@@ -83,7 +83,7 @@ public class LoanCalculatorView: UIView {
         addSubview(applyView)
 
         let margins = layoutMarginsGuide
-        let headerHeight = headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 106)
+        let headerHeight = headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 70)
 
         if UIDevice.isIPad() {
             NSLayoutConstraint.activate([
