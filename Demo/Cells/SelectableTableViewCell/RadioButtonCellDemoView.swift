@@ -4,8 +4,16 @@
 
 import FinniversKit
 
-private struct ViewModel {
-    var title: String?
+private struct ViewModel: SelectableTableViewCellViewModel {
+
+    init(title: String, isSelected: Bool) {
+        self.title = title
+        self.isSelected = isSelected
+    }
+    var title: String
+    var subtitle: String?
+    var detailText: String?
+    var hasChevron: Bool = false
     var isSelected: Bool
 }
 
@@ -21,6 +29,8 @@ class RadioButtonCellDemoView: UIView {
         let tableView = UITableView(withAutoLayout: true)
         tableView.register(RadioButtonTableViewCell.self)
         tableView.rowHeight = 48
+        tableView.tableFooterView = UIView()
+        tableView.dataSource = self
         return tableView
     }()
 
@@ -48,8 +58,7 @@ extension RadioButtonCellDemoView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(RadioButtonTableViewCell.self, for: indexPath)
         let model = viewModels[indexPath.row]
-        cell.animateSelection(isSelected: model.isSelected)
-        cell.textLabel?.text = model.title
+        cell.configure(with: model)
         return cell
     }
 

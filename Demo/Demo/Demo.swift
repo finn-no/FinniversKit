@@ -165,6 +165,7 @@ public enum Cells: String, CaseIterable {
     case basicCellVariations
     case checkboxCell
     case checkboxSubtitleCell
+    case radioButtonCell
     case heartSubtitleCell
     case iconTitleCell
     case remoteImageCell
@@ -184,6 +185,8 @@ public enum Cells: String, CaseIterable {
             return DemoViewController<CheckboxCellDemoView>(withDismissButton: true)
         case .checkboxSubtitleCell:
             return DemoViewController<CheckboxSubtitleCellDemoView>(withDismissButton: true)
+        case .radioButtonCell:
+            return DemoViewController<RadioButtonCellDemoView>(withDismissButton: true)
         case .heartSubtitleCell:
             return DemoViewController<HeartSubtitleCellDemoView>(withDismissButton: true)
         case .iconTitleCell:
