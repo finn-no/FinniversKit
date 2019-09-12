@@ -6,7 +6,10 @@ import UIKit
 
 protocol FavoriteAdCommentViewControllerDelegate: AnyObject {
     func favoriteAdCommentViewControllerDidSelectCancel(_ viewController: FavoriteAdCommentViewController)
-    func favoriteAdCommentViewController(_ viewController: FavoriteAdCommentViewController, didSelectSaveWithText text: String?)
+    func favoriteAdCommentViewController(
+        _ viewController: FavoriteAdCommentViewController,
+        didSelectSaveComment comment: String?
+    )
 }
 
 final class FavoriteAdCommentViewController: UIViewController {
@@ -188,7 +191,7 @@ final class FavoriteAdCommentViewController: UIViewController {
     }
 
     @objc private func handleSaveButtonTap() {
-        delegate?.favoriteAdCommentViewController(self, didSelectSaveWithText: "")
+        delegate?.favoriteAdCommentViewController(self, didSelectSaveComment: textView.text)
     }
 }
 

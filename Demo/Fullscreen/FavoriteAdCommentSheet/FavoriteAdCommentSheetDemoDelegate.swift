@@ -15,7 +15,8 @@ extension FavoriteAdCommentSheetDemoDelegate: FavoriteAdCommentSheetDelegate {
         sheet.state = .dismissed
     }
 
-    func favoriteAdCommentSheet(_ sheet: FavoriteAdCommentSheet, didSelectSaveWithText text: String?) {
+    func favoriteAdCommentSheet(_ sheet: FavoriteAdCommentSheet, didSelectSaveComment comment: String?) {
+        print(comment ?? "")
         sheet.state = .dismissed
     }
 }
