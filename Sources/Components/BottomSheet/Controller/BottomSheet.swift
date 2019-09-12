@@ -83,6 +83,8 @@ public class BottomSheet: UIViewController {
         set { transitionDelegate.height = newValue }
     }
 
+    public let dimView: UIView
+
     let notch: UIView = Notch(withAutoLayout: true)
 
     var draggableRect: CGRect? {
@@ -116,6 +118,7 @@ public class BottomSheet: UIViewController {
                 draggableArea: DraggableArea = .everything) {
         self.rootViewController = rootViewController
         self.transitionDelegate = BottomSheetTransitioningDelegate(height: height)
+        self.dimView = transitionDelegate.dimView
         self.draggableArea = draggableArea
         super.init(nibName: nil, bundle: nil)
         transitionDelegate.presentationControllerDelegate = self
