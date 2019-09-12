@@ -14,6 +14,7 @@ public protocol AdsGridViewDelegate: AnyObject {
 
 public protocol AdsGridViewDataSource: AnyObject {
     func numberOfItems(inAdsGridView adsGridView: AdsGridView) -> Int
+    func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type]
     func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat
     func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void))
@@ -83,7 +84,12 @@ public class AdsGridView: UIView {
     }
 
     private func setup() {
-        collectionView.register(AdsGridViewCell.self)
+        let cellClasses = dataSource?.adsGridView(self, cellClassesIn: collectionView) ?? []
+
+        cellClasses.forEach { cellClass in
+            collectionView.register(cellClass)
+        }
+
         collectionView.register(AdsGridHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         addSubview(collectionView)
         collectionView.fillInSuperview()
@@ -149,22 +155,6 @@ extension AdsGridView: UICollectionViewDataSource {
         }
 
         return cell
-//        let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
-//
-//        // Show a pretty color while we load the image
-//        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
-//        let color = colors[indexPath.row % 4]
-//
-//        cell.index = indexPath.row
-//        cell.loadingColor = color
-//        cell.dataSource = self
-//        cell.delegate = self
-//
-//        if let model = dataSource?.adsGridView(self, modelAtIndex: indexPath.row) {
-//            cell.model = model
-//        }
-//
-//        return cell
     }
 
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

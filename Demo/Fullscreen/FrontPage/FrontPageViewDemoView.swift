@@ -74,6 +74,12 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         return min(ads.count, visibleItems)
     }
 
+    public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
+        return [
+            AdsGridViewCell.self
+        ]
+    }
+
     public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         let model = ads[indexPath.item]
         let imageRatio = model.imageSize.height / model.imageSize.width

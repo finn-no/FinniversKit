@@ -51,6 +51,12 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
         return dataSource.models.count
     }
 
+    public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
+        return [
+            AdsGridViewCell.self
+        ]
+    }
+
     public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
         let model = dataSource.models[indexPath.item]
         let imageRatio = model.imageSize.height / model.imageSize.width
