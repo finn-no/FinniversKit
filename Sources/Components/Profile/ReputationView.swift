@@ -6,6 +6,12 @@ import UIKit
 
 // MARK: - View Models
 
+public enum ReputationBreakdownMode {
+    case compact
+    case collapsedByDefault
+    case alwaysExpanded
+}
+
 public protocol ReputationViewModel {
     var title: String { get }
     var subtitle: String { get }
@@ -14,7 +20,7 @@ public protocol ReputationViewModel {
     var score: Float { get }
 
     var categoryBreakdowns: [ReputationBreakdownModel] { get }
-    var collapseBreakdown: Bool { get }
+    var breakdownMode: ReputationBreakdownMode { get }
 }
 
 public protocol ReputationBreakdownModel {
@@ -139,7 +145,7 @@ public class ReputationView: UIView {
 
     public init(viewModel: ReputationViewModel) {
         self.viewModel = viewModel
-        self.isCollapsed = viewModel.collapseBreakdown
+        self.isCollapsed = viewModel.breakdownMode != .alwaysExpanded
         super.init(frame: .zero)
         setup()
         addBreakdownViews()
@@ -160,8 +166,13 @@ public class ReputationView: UIView {
 
         addSubview(breakdownWrapper)
 
-        collapseWrapper.isHidden = !viewModel.collapseBreakdown || viewModel.categoryBreakdowns.isEmpty
-        showBreakdownConstraint.isActive = !viewModel.collapseBreakdown && !viewModel.categoryBreakdowns.isEmpty
+        if viewModel.categoryBreakdowns.isEmpty {
+            collapseWrapper.isHidden = true
+            showBreakdownConstraint.isActive = false
+        } else {
+            collapseWrapper.isHidden = viewModel.breakdownMode != .collapsedByDefault
+            showBreakdownConstraint.isActive = viewModel.breakdownMode == .alwaysExpanded
+        }
 
         NSLayoutConstraint.activate([
             scoreBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),

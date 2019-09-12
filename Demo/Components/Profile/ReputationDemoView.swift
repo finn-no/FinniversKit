@@ -19,10 +19,12 @@ class ReputationDemoView: UIView {
 
     private func setup() {
         var views = [
-            headerLabel(withText: "Collapsible Summary"),
-            summaryView(collapsible: true),
-            headerLabel(withText: "Uncollapsible Summary"),
-            summaryView(collapsible: false),
+            headerLabel(withText: "Compact"),
+            summaryView(breakdownMode: .compact),
+            headerLabel(withText: "Collapsed by Default"),
+            summaryView(breakdownMode: .collapsedByDefault),
+            headerLabel(withText: "Always Expanded"),
+            summaryView(breakdownMode: .alwaysExpanded),
         ]
 
         var anchor = topAnchor
@@ -32,8 +34,8 @@ class ReputationDemoView: UIView {
         }
     }
 
-    private func summaryView(collapsible: Bool) -> ReputationView {
-        let viewModel = ViewModel(collapseBreakdown: collapsible)
+    private func summaryView(breakdownMode: ReputationBreakdownMode) -> ReputationView {
+        let viewModel = ViewModel(breakdownMode: breakdownMode)
         let view = ReputationView(viewModel: viewModel)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -68,7 +70,7 @@ fileprivate struct ViewModel: ReputationViewModel {
         BreakdownModel(category: .payment, title: "Problemfri betaling")
     ]
 
-    let collapseBreakdown: Bool
+    let breakdownMode: ReputationBreakdownMode
 }
 
 fileprivate struct BreakdownModel: ReputationBreakdownModel {
