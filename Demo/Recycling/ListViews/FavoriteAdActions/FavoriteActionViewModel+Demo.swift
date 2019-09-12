@@ -12,7 +12,7 @@ extension FavoriteAdActionViewModel {
         deleteText: "Slett favoritten fra listen"
     )
 
-    private static func createImage() -> UIImage? {
+    static func createImage() -> UIImage? {
         let urlString = "https://i.pinimg.com/736x/72/14/22/721422aa64cbb51ccb5f02eb29c22255--gray-houses-colored-doors-on-houses.jpg"
 
         guard let url = URL(string: urlString) else { return nil }

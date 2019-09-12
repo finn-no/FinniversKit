@@ -15,15 +15,11 @@ public final class FavoriteAdCommentSheet: BottomSheet {
 
     // MARK: - Init
 
-    public required init(
-        commentViewModel: FavoriteAdCommentViewModel,
-        adViewModel: FavoriteAdViewModel,
-        remoteImageViewDataSource: RemoteImageViewDataSource
-    ) {
+    public required init(commentViewModel: FavoriteAdCommentViewModel, adViewModel: FavoriteAdViewModel, adImage: UIImage?) {
         viewController = FavoriteAdCommentViewController(
             commentViewModel: commentViewModel,
             adViewModel: adViewModel,
-            remoteImageViewDataSource: remoteImageViewDataSource
+            adImage: adImage
         )
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.isTranslucent = false
