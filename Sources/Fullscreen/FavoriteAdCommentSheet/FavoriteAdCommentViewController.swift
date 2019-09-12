@@ -15,6 +15,7 @@ final class FavoriteAdCommentViewController: UIViewController {
     private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
     private let commentViewModel: FavoriteAdCommentViewModel
     private let adViewModel: FavoriteAdViewModel
+    private let adImage: UIImage?
     private let notificationCenter: NotificationCenter
 
     private lazy var cancelButton = UIBarButtonItem(
@@ -45,7 +46,7 @@ final class FavoriteAdCommentViewController: UIViewController {
         view.isMoreButtonHidden = true
         view.isCommentViewHidden = true
         view.configure(with: adViewModel)
-        view.remoteImageViewDataSource = remoteImageViewDataSource
+        view.remoteImageViewDataSource = self
         view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return view
     }()
@@ -67,12 +68,12 @@ final class FavoriteAdCommentViewController: UIViewController {
     init(
         commentViewModel: FavoriteAdCommentViewModel,
         adViewModel: FavoriteAdViewModel,
-        remoteImageViewDataSource: RemoteImageViewDataSource,
+        adImage: UIImage?,
         notificationCenter: NotificationCenter = .default
     ) {
-        self.remoteImageViewDataSource = remoteImageViewDataSource
         self.commentViewModel = commentViewModel
         self.adViewModel = adViewModel
+        self.adImage = adImage
         self.notificationCenter = notificationCenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -189,6 +190,25 @@ final class FavoriteAdCommentViewController: UIViewController {
     @objc private func handleSaveButtonTap() {
         delegate?.favoriteAdCommentViewController(self, didSelectSaveWithText: "")
     }
+}
+
+// MARK: - RemoteImageViewDataSource
+
+extension FavoriteAdCommentViewController: RemoteImageViewDataSource {
+    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+        return adImage
+    }
+
+    func remoteImageView(
+        _ view: RemoteImageView,
+        loadImageWithPath imagePath: String,
+        imageWidth: CGFloat,
+        completion: @escaping ((UIImage?) -> Void)
+    ) {
+        completion(adImage)
+    }
+
+    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - UIScrollViewDelegate
