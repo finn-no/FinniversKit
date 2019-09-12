@@ -4,9 +4,9 @@
 
 import Foundation
 
-public class RadioButtonTableViewCell: UITableViewCell {
+open class RadioButtonTableViewCell: BasicTableViewCell {
 
-    lazy var radioButton: AnimatedRadioButtonView = {
+    lazy private var radioButton: AnimatedRadioButtonView = {
         let radioButton = AnimatedRadioButtonView(frame: .zero)
         radioButton.translatesAutoresizingMaskIntoConstraints = false
         return radioButton
@@ -18,6 +18,7 @@ public class RadioButtonTableViewCell: UITableViewCell {
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         setup()
     }
 
@@ -27,10 +28,18 @@ public class RadioButtonTableViewCell: UITableViewCell {
 
     private func setup() {
         contentView.addSubview(radioButton)
+        stackViewLeadingAnchorConstraint.isActive = false
 
         NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: radioButton.trailingAnchor, constant: .mediumLargeSpacing),
             radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             radioButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
             ])
+    }
+
+    open func configure(with viewModel: SelectableTableViewCellViewModel) {
+        super.configure(with: viewModel)
+        separatorInset = .leadingInset(56)
+        radioButton.animateSelection(selected: viewModel.isSelected)
     }
 }
