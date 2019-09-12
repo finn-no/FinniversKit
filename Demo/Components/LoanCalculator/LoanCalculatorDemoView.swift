@@ -18,7 +18,19 @@ struct LoanCalculatorDemoViewModel: LoanCalculatorViewModel {
     var paymentYears: TitleValueSliderViewModel
 }
 
-class LoanCalculatorDemoView: UIView {
+class LoanCalculatorDemoView: UIView, Tweakable {
+    lazy var tweakingOptions: [TweakingOption] = {
+        let options = [
+            TweakingOption(title: "Normal view model", action: {
+                self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel())
+            }),
+            TweakingOption(title: "Nominal Rate missing error", action: {
+                self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel(hasConditions: false))
+            }),
+        ]
+        return options
+    }()
+
     private lazy var loanCalculatorView: LoanCalculatorView = {
         let view = LoanCalculatorView(withAutoLayout: true)
         view.dataSource = self
