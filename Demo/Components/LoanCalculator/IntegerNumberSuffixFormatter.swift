@@ -31,7 +31,7 @@ final class IntegerNumberSuffixFormatter: NumberFormatter {
 // MARK: - Extensions
 
 private extension NumberFormatter {
-    @objc func string(from value: Float) -> String? {
+    func string(from value: Float) -> String? {
         return string(from: NSNumber(value: value))
     }
 }
