@@ -39,6 +39,7 @@ public class TextView: UIView {
     public var placeholderText: String? {
         didSet {
             placeholderLabel.text = placeholderText
+            updatePlaceholderAppearance()
         }
     }
 
