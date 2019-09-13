@@ -38,8 +38,8 @@ class LoanCalculatorDemoView: UIView, Tweakable {
         return view
     }()
 
-    private lazy var currencyFormatter: IntegerNumberSuffixFormatter = IntegerNumberSuffixFormatter(suffix: "kr")
-    private lazy var yearsFormatter: IntegerNumberSuffixFormatter = IntegerNumberSuffixFormatter(suffix: "år")
+    private lazy var currencyFormatter = IntegerNumberSuffixFormatter(suffix: "kr")
+    private lazy var yearsFormatter = IntegerNumberSuffixFormatter(suffix: "år")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,8 +52,8 @@ class LoanCalculatorDemoView: UIView, Tweakable {
         loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel())
         addSubview(loanCalculatorView)
         NSLayoutConstraint.activate([
-            loanCalculatorView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1, constant: -.largeSpacing),
-            loanCalculatorView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: 1, constant: -.largeSpacing),
+            loanCalculatorView.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
+            loanCalculatorView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, constant: -.largeSpacing),
             loanCalculatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             loanCalculatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
