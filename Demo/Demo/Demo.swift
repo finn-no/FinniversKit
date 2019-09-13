@@ -67,6 +67,7 @@ public enum ComponentViews: String, CaseIterable {
     case saveSearchView
     case identityView
     case stepSlider
+    case loanCalculatorView
     case verificationView
     case panel
     case reputationView
@@ -161,6 +162,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<StepSliderDemoView>()
         case .verificationView:
             return DemoViewController<VerificationDemoView>()
+        case .loanCalculatorView:
+            return DemoViewController<LoanCalculatorDemoView>()
         case .panel:
             return DemoViewController<PanelDemoView>()
         case .reputationView:
