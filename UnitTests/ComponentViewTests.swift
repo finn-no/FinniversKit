@@ -194,4 +194,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testLoanCalculatorView() {
         snapshot(.loanCalculatorView)
     }
+
+    func testReputationView() {
+        snapshot(.reputationView)
+    }
 }
