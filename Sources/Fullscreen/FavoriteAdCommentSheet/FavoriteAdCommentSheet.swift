@@ -6,7 +6,7 @@ import Foundation
 
 public protocol FavoriteAdCommentSheetDelegate: AnyObject {
     func favoriteAdCommentSheetDidSelectCancel(_ sheet: FavoriteAdCommentSheet)
-    func favoriteAdCommentSheet(_ sheet: FavoriteAdCommentSheet, didSelectSaveWithText text: String?)
+    func favoriteAdCommentSheet(_ sheet: FavoriteAdCommentSheet, didSelectSaveComment comment: String?)
 }
 
 public final class FavoriteAdCommentSheet: BottomSheet {
@@ -41,8 +41,11 @@ extension FavoriteAdCommentSheet: FavoriteAdCommentViewControllerDelegate {
         commentDelegate?.favoriteAdCommentSheetDidSelectCancel(self)
     }
 
-    func favoriteAdCommentViewController(_ viewController: FavoriteAdCommentViewController, didSelectSaveWithText text: String?) {
-        commentDelegate?.favoriteAdCommentSheet(self, didSelectSaveWithText: text)
+    func favoriteAdCommentViewController(
+        _ viewController: FavoriteAdCommentViewController,
+        didSelectSaveComment comment: String?
+    ) {
+        commentDelegate?.favoriteAdCommentSheet(self, didSelectSaveComment: comment)
     }
 }
 
