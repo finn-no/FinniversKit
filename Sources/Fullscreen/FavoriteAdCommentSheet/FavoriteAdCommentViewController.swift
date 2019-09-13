@@ -28,12 +28,18 @@ final class FavoriteAdCommentViewController: UIViewController {
         action: #selector(handleCancelButtonTap)
     )
 
-    private lazy var saveButton = UIBarButtonItem(
-        title: commentViewModel.saveButtonText,
-        style: .done,
-        target: self,
-        action: #selector(handleSaveButtonTap)
-    )
+    private lazy var saveButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            title: commentViewModel.saveButtonText,
+            style: .done,
+            target: self,
+            action: #selector(handleSaveButtonTap)
+        )
+
+        button.setTitleTextAttributes([.font: UIFont.bodyStrong])
+
+        return button
+    }()
 
     private lazy var shadowView = BottomShadowView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
@@ -56,8 +62,8 @@ final class FavoriteAdCommentViewController: UIViewController {
 
     private lazy var textView: TextView = {
         let textView = TextView(withAutoLayout: true)
-        textView.text = adViewModel.comment
         textView.placeholderText = commentViewModel.placeholder
+        textView.text = adViewModel.comment
         textView.isScrollEnabled = false
         textView.delegate = self
         textView.setContentHuggingPriority(.defaultLow, for: .vertical)
