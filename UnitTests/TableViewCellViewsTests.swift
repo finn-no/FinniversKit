@@ -27,6 +27,14 @@ class TableViewCellsViewTests: FBSnapshotTestCase {
         TableViewCellsViewTests.allViews = TableViewCellsViewTests.allViews.filter { $0 != component }
     }
 
+    // MARK: - Tests
+
+    func testMissingSnapshotTests() {
+        for element in elementWithoutTests(for: Cells.self) {
+            XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
+        }
+    }
+
     func testBasicCell() {
         snapshot(.basicCell)
     }

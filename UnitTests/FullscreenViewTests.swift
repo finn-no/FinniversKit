@@ -8,7 +8,7 @@ import FinniversKit
 
 class FullscreenViewTests: FBSnapshotTestCase {
     static var allViews = FullscreenViews.items
-    private let excludedComponents: [FullscreenViews] = [.piano]
+    private let excludedComponents: [FullscreenViews] = [.pianoView]
 
     override func setUp() {
         super.setUp()
@@ -27,6 +27,14 @@ class FullscreenViewTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(component.viewController.view)
         FullscreenViewTests.allViews = FullscreenViewTests.allViews.filter {
             $0 != component && !excludedComponents.contains($0)
+        }
+    }
+
+    // MARK: - Tests
+
+    func testMissingSnapshotTests() {
+        for element in elementWithoutTests(for: FullscreenViews.self) where element != .pianoView {
+            XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
         }
     }
 
@@ -59,11 +67,11 @@ class FullscreenViewTests: FBSnapshotTestCase {
     }
 
     func testDrumMachineView() {
-        snapshot(.drumMachine)
+        snapshot(.drumMachineView)
     }
 
     func testSnowGlobeView() {
-        snapshot(.snowGlobe)
+        snapshot(.snowGlobeView)
     }
 
     func testLoadingView() {

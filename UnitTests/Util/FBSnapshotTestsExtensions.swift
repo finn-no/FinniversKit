@@ -6,12 +6,15 @@ import FBSnapshotTestCase
 import Foundation
 
 extension FBSnapshotTestCase {
-    func assertMissingTests<T>(for caseIterable: T.Type) where T: CaseIterable, T: RawRepresentable, T.RawValue == String {
+    func elementWithoutTests<T>(
+        for caseIterable: T.Type,
+        testMethodPrefix: String = "test"
+    ) -> [T] where T: CaseIterable, T: RawRepresentable, T.RawValue == String {
+        let testMethodPrefix = testMethodPrefix.lowercased()
         var methodCount: UInt32 = 0
 
         guard let methodList = class_copyMethodList(type(of: self), &methodCount) else {
-            XCTFail("Cannot copy method list to assert missing tests")
-            return
+            return []
         }
 
         let testMethods = (0..<Int(methodCount))
@@ -19,12 +22,10 @@ extension FBSnapshotTestCase {
                 let selName = sel_getName(method_getName(methodList[index]))
                 return String(cString: selName, encoding: .utf8)!.lowercased()
             })
-            .filter({ $0.starts(with: "test") })
+            .filter({ $0.starts(with: testMethodPrefix) })
 
-        for element in caseIterable.allCases {
-            if !testMethods.contains("test\(element.rawValue)".lowercased()) {
-                XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
-            }
-        }
+        return caseIterable.allCases.filter({
+            !testMethods.contains("\(testMethodPrefix)\($0.rawValue)".lowercased())
+        })
     }
 }

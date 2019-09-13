@@ -27,6 +27,14 @@ class RecyclingViewTests: FBSnapshotTestCase {
         RecyclingViewTests.allViews = RecyclingViewTests.allViews.filter { $0 != component }
     }
 
+    // MARK: - Tests
+
+    func testMissingSnapshotTests() {
+        for element in elementWithoutTests(for: RecyclingViews.self) {
+            XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
+        }
+    }
+
     func testNotificationsListView() {
         snapshot(.notificationsListView)
     }

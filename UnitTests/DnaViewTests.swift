@@ -22,9 +22,17 @@ class DnaViewTests: FBSnapshotTestCase {
         }
     }
 
-    func snapshot(_ component: DnaViews) {
+    private func snapshot(_ component: DnaViews) {
         FBSnapshotVerifyView(component.viewController.view)
         DnaViewTests.allViews = DnaViewTests.allViews.filter { $0 != component }
+    }
+
+    // MARK: - Tests
+
+    func testMissingSnapshotTests() {
+        for element in elementWithoutTests(for: DnaViews.self, testMethodPrefix: "testDnaViews") {
+            XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
+        }
     }
 
     func testDnaViewsColor() {
