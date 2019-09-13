@@ -73,15 +73,29 @@ class DemoViewsTableViewController: UITableViewController {
     }
 
     private func updateMoonButton() {
-        guard #available(iOS 13.0, *) else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped))
-            return
-        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped(sender:forEvent:)))
+        return
     }
 
-    @objc private func moonTapped() {
-        State.setCurrentUserInterfaceStyle(userInterfaceStyle: State.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light)
+    @objc private func moonTapped(sender: AnyObject, forEvent event: UIEvent) {
+        if event.allTouches?.first?.tapCount == 0 {
+            // Long press
+            State.setCurrentUserInterfaceStyle(nil, in: view.window)
+        } else {
+            State.setCurrentUserInterfaceStyle(State.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light, in: view.window)
+        }
         NotificationCenter.default.post(name: .didChangeUserInterfaceStyle, object: nil)
+
+        if #available(iOS 13.0, *) {
+        } else {
+            //Need to shutdown the app to make this work before dynamic colors were available
+            let alertController = UIAlertController(title: "Restart", message: "This requires a restart of the app", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                exit(0)
+            }))
+            alertController.addAction(UIAlertAction(title: "Later", style: .cancel, handler: nil))
+            present(alertController, animated: true)
+        }
     }
 
     private func updateColors(animated: Bool) {

@@ -71,8 +71,26 @@ struct State {
         }
     }
 
-    static func setCurrentUserInterfaceStyle(userInterfaceStyle: UserInterfaceStyle) {
-        UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
+    /// Needs to be called from main thread on iOS 13
+    static func setCurrentUserInterfaceStyle(_ userInterfaceStyle: UserInterfaceStyle?, in window: UIWindow?) {
+        if #available(iOS 13.0, *) {
+            #if swift(>=5.1)
+            let uiUserInterfaceStyle: UIUserInterfaceStyle
+            if let userInterfaceStyle = userInterfaceStyle {
+                uiUserInterfaceStyle = userInterfaceStyle == .dark ? .dark : .light
+            } else {
+                uiUserInterfaceStyle = .unspecified
+            }
+            let updatedTraits = UITraitCollection(traitsFrom: [UITraitCollection.current, UITraitCollection(userInterfaceStyle: uiUserInterfaceStyle)])
+            UITraitCollection.current = updatedTraits
+            window?.overrideUserInterfaceStyle = uiUserInterfaceStyle
+            #endif
+        }
+        if let userInterfaceStyle = userInterfaceStyle {
+            UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
+        } else {
+            UserDefaults.standard.removeObject(forKey: currentUserInterfaceStyleKey)
+        }
         UserDefaults.standard.synchronize()
     }
 
