@@ -4,7 +4,7 @@
 
 import UIKit
 
-extension UIBarButtonItem {
+public extension UIBarButtonItem {
     func setTitleTextAttributes(_ attributes: [NSAttributedString.Key: Any]?) {
         let states: [UIControl.State] = [.normal, .highlighted, .focused, .disabled]
 
