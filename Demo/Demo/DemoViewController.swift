@@ -7,7 +7,7 @@ public class DemoViewController<View: UIView>: UIViewController {
     lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
-        playgroundView.backgroundColor = .milk
+        playgroundView.backgroundColor = .bgPrimary
         return playgroundView
     }()
 
@@ -57,7 +57,7 @@ public class DemoViewController<View: UIView>: UIViewController {
         super.viewDidLoad()
 
         view.addSubview(playgroundView)
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
 
         let bottomAnchor = constrainToBottomSafeArea ? view.safeAreaLayoutGuide.bottomAnchor : view.bottomAnchor
 

@@ -100,19 +100,9 @@ class DemoViewsTableViewController: UITableViewController {
 
     private func updateColors(animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let interfaceBackgroundColor: UIColor
-            let sectionIndexColor: UIColor
-            switch State.currentUserInterfaceStyle(for: self.traitCollection) {
-            case .light:
-                interfaceBackgroundColor = .milk
-                sectionIndexColor = .primaryBlue
-            case .dark:
-                interfaceBackgroundColor = .midnightBackground
-                sectionIndexColor = .secondaryBlue
-            }
-
+            let sectionIndexColor: UIColor = .primaryBlue //DARK
             self.tableView.sectionIndexColor = sectionIndexColor
-            self.tableView.backgroundColor = interfaceBackgroundColor
+            self.tableView.backgroundColor = .bgPrimary
             self.selectorTitleView.updateColors(for: self.traitCollection)
             self.updateMoonButton()
             self.setNeedsStatusBarAppearanceUpdate()
@@ -181,13 +171,7 @@ extension DemoViewsTableViewController {
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
 
-        let cellTextColor: UIColor
-        switch State.currentUserInterfaceStyle(for: self.traitCollection) {
-        case .light:
-            cellTextColor = .licorice
-        case .dark:
-            cellTextColor = .milk
-        }
+        let cellTextColor: UIColor = .textPrimary
         cell.textLabel?.textColor = cellTextColor
 
         return cell
@@ -212,7 +196,7 @@ extension DemoViewsTableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.textLabel?.textColor = .midnightSectionHeader
+            headerView.textLabel?.textColor = .textDisabled //DARK
             headerView.textLabel?.font = UIFont.captionStrong
         }
     }

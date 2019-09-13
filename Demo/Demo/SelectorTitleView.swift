@@ -49,21 +49,13 @@ class SelectorTitleView: UIView {
     }
 
     func updateColors(for traitCollection: UITraitCollection) {
-        let buttonColor: UIColor
-        let interfaceBackgroundColor: UIColor
-        switch State.currentUserInterfaceStyle(for: traitCollection) {
-        case .light:
-            buttonColor = .primaryBlue
-            interfaceBackgroundColor = .milk
-        case .dark:
-            buttonColor = .secondaryBlue
-            interfaceBackgroundColor = .midnightBackground
-        }
+        let buttonColor: UIColor = .textAction
+        let interfaceBackgroundColor: UIColor = .bgPrimary
 
         button.setTitleColor(buttonColor, for: .normal)
         button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
         button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)
-        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .disabled)
+        button.setTitleColor(.textDisabled, for: .disabled)
         button.tintColor = buttonColor
         backgroundColor = interfaceBackgroundColor
     }
