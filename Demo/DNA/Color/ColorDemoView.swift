@@ -20,7 +20,7 @@ public class ColorDemoView: UIView {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.separatorStyle = .none
-        view.rowHeight = 60
+        view.rowHeight = 18
         return view
     }()
 
@@ -39,7 +39,29 @@ public class ColorDemoView: UIView {
             ColorItem(color: .banana, title: "banana"),
             ColorItem(color: .cherry, title: "cherry"),
             ColorItem(color: .watermelon, title: "watermelon"),
-            ColorItem(color: .pea, title: "pea")
+            ColorItem(color: .pea, title: "pea"),
+
+            ColorItem(color: .bgPrimary, title: "bgPrimary"),
+            ColorItem(color: .bgSecondary, title: "bgSecondary"),
+            ColorItem(color: .bgTertiary, title: "bgTertiary"),
+            ColorItem(color: .bgAlert, title: "bgAlert"),
+            ColorItem(color: .bgSuccess, title: "bgSuccess"),
+            ColorItem(color: .bgCritical, title: "bgCritical"),
+
+            ColorItem(color: .btnPrimary, title: "btnPrimary"),
+            ColorItem(color: .btnDisabled, title: "btnDisabled"),
+            ColorItem(color: .btnCritical, title: "btnCritical"),
+            ColorItem(color: .textPrimary, title: "textPrimary"),
+            ColorItem(color: .textSecondary, title: "textSecondary"),
+            ColorItem(color: .textTertiary, title: "textTertiary"),
+            ColorItem(color: .textAction, title: "textAction"),
+            ColorItem(color: .textDisabled, title: "textDisabled"),
+            ColorItem(color: .textCritical, title: "textCritical"),
+            ColorItem(color: .accentSecondaryBlue, title: "accentSecondaryBlue"),
+            ColorItem(color: .accentPea, title: "accentPea"),
+            ColorItem(color: .accentToothpaste, title: "accentToothpaste"),
+            ColorItem(color: .textCTADisabled, title: "textCTADisabled"),
+            ColorItem(color: .textToast, title: "textToast"),
         ]
     }()
 
@@ -68,10 +90,14 @@ extension ColorDemoView: UITableViewDataSource {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
         let item = items[indexPath.row]
         cell.backgroundColor = item.color
-        cell.textLabel?.text = item.title.capitalized
-
-        cell.textLabel?.font = UIFont.bodyStrong
-        cell.textLabel?.textColor = UIColor.black
+        let title = item.title.capitalizingFirstLetter + "  "
+        let attributedTitle = NSMutableAttributedString(string: title)
+        attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.licorice, range: NSRange(location: 0, length: title.count))
+        let whiteTitle = NSMutableAttributedString(string: title)
+        whiteTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.milk, range: NSRange(location: 0, length: title.count))
+        attributedTitle.append(whiteTitle)
+        cell.textLabel?.attributedText = attributedTitle
+        cell.textLabel?.font = UIFont.detail
         cell.selectionStyle = .none
 
         return cell

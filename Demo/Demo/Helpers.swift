@@ -15,7 +15,7 @@ struct State {
     private static let lastSelectedIndexPathSectionKey = "lastSelectedIndexPathSectionKey"
     private static let lastCornerForTweakingButtonKey = "lastCornerForTweakingButtonKey"
     private static let lastSelectedSectionKey = "lastSelectedSectionKey"
-    private static let currentUserInterfaceStyleKey = "currentUserInterfaceStyleKey"
+    static let currentUserInterfaceStyleKey = "currentUserInterfaceStyleKey"
 
     static var lastSelectedIndexPath: IndexPath? {
         get {
