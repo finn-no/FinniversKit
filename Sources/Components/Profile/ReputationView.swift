@@ -48,7 +48,7 @@ public enum ReputationBreakdownCategory {
     }
 }
 
-// MARK: - ProfileSummaryView
+// MARK: - ReputationView
 
 public protocol ReputationViewDelegate: AnyObject {
     func reputationViewWasTapped(_ reputationView: ReputationView)
@@ -125,6 +125,7 @@ public class ReputationView: UIView {
     public var viewModel: ReputationViewModel? {
         didSet { viewModelChanged() }
     }
+    public weak var delegate: ReputationViewDelegate?
 
     // MARK: - Private properties
 
@@ -160,6 +161,8 @@ public class ReputationView: UIView {
     }
 
     private func setup() {
+        setupGestureRecognizer()
+
         layer.cornerRadius = 8
         backgroundColor = .ice
         clipsToBounds = true
@@ -207,6 +210,11 @@ public class ReputationView: UIView {
         ])
     }
 
+    private func setupGestureRecognizer() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
+        addGestureRecognizer(gesture)
+    }
+
     // MARK: - Private methods
 
     private func viewModelChanged() {
@@ -244,6 +252,10 @@ public class ReputationView: UIView {
             collapseWrapper.isHidden = viewModel.breakdownMode != .collapsedByDefault
             showBreakdownConstraint.isActive = viewModel.breakdownMode == .alwaysExpanded
         }
+    }
+
+    @objc private func onTap() {
+        delegate?.reputationViewWasTapped(self)
     }
 }
 
