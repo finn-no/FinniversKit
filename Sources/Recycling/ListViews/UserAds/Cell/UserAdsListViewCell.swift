@@ -24,6 +24,10 @@ public protocol UserAdsListViewCellDataSource: AnyObject {
     func userAdsListViewCell(_ userAdsListViewCell: UserAdsListViewCell, cancelLoadingImageForModel model: UserAdsListViewModel, imageWidth: CGFloat)
 }
 
+public protocol ImageLoading {
+    func loadImage()
+}
+
 public class UserAdsListViewCell: UITableViewCell {
     // MARK: - External properties
 
@@ -227,12 +231,6 @@ public class UserAdsListViewCell: UITableViewCell {
 
     // MARK: - Public
 
-    public func loadImage() {
-        if let model = model {
-            loadImage(model)
-        }
-    }
-
     /// Loads a given image provided that the imagePath in the `model` is valid.
 
     private func loadImage(_ model: UserAdsListViewModel) {
@@ -247,6 +245,14 @@ public class UserAdsListViewCell: UITableViewCell {
         dataSource.userAdsListViewCell(self, loadImageForModel: model, imageWidth: frame.size.width) { [weak self] image in
             self?.adImageView.backgroundColor = .clear
             self?.adImageView.image = image ?? self?.defaultImage
+        }
+    }
+}
+
+extension UserAdsListViewCell: ImageLoading {
+    public func loadImage() {
+        if let model = model {
+            loadImage(model)
         }
     }
 }

@@ -8,7 +8,7 @@ class IdentityDemoView: UIView, Tweakable {
 
     // MARK: - UI properties
 
-    private var identityViews: [(IdentityView, IdentityViewModel)] = []
+    private var identityViews: [(IdentityView, ViewModel)] = []
 
     // MARK: - Private properties
 
@@ -20,6 +20,39 @@ class IdentityDemoView: UIView, Tweakable {
             TweakingOption(title: "Assign view models", action: {
                 self.identityViews.forEach { $0.0.viewModel = $0.1 }
             }),
+            TweakingOption(title: "Toggle descriptions", action: {
+                self.identityViews.forEach { $0.0.hideDescription.toggle() }
+            }),
+            TweakingOption(title: "Use profile image from memory", action: {
+                self.identityViews.forEach {
+                    $0.1.profileImage = UIImage(named: .ratingCat)
+                    $0.0.viewModel = $0.1
+                }
+            }),
+            TweakingOption(title: "Use profile image from URL", action: {
+                self.identityViews.forEach {
+                    $0.1.profileImage = nil
+                    $0.0.viewModel = $0.1
+                }
+            }),
+            TweakingOption(title: "DisplayMode.interactible", action: {
+                self.identityViews.forEach {
+                    $0.1.displayMode = .interactible
+                    $0.0.viewModel = $0.1
+                }
+            }),
+            TweakingOption(title: "DisplayMode.nonInteractible", action: {
+                self.identityViews.forEach {
+                    $0.1.displayMode = .nonInteractible
+                    $0.0.viewModel = $0.1
+                }
+            }),
+            TweakingOption(title: "DisplayMode.anonymous", action: {
+                self.identityViews.forEach {
+                    $0.1.displayMode = .anonymous
+                    $0.0.viewModel = $0.1
+                }
+            })
         ]
         return options
     }()
@@ -62,15 +95,6 @@ class IdentityDemoView: UIView, Tweakable {
             nextAnchor = view.bottomAnchor
         }
     }
-
-    // MARK: - Private methods
-
-    private func identityView(withDescription desc: String?, tappable: Bool, verified: Bool) -> UIView {
-        let view = IdentityView(viewModel: ViewModel(description: desc, isTappable: tappable, isVerified: verified))
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.delegate = self
-        return view
-    }
 }
 
 extension IdentityDemoView: IdentityViewDelegate {
@@ -97,12 +121,19 @@ extension IdentityDemoView: IdentityViewDelegate {
 
 // MARK: - View model
 
-private struct ViewModel: IdentityViewModel {
+private class ViewModel: IdentityViewModel {
+    var profileImage: UIImage?
     let profileImageUrl: URL? = URL(string: "https://images.finncdn.no/dynamic/220x220c/2019/7/profilbilde/05/8/214/710/286/8_352525950.jpg")
+
     let displayName: String = "Finn Nordmann"
     let subtitle: String = "Har vært på FINN siden 1952"
 
     let description: String?
-    let isTappable: Bool
     let isVerified: Bool
+    var displayMode: IdentityView.DisplayMode = .interactible
+
+    init(description: String?, isTappable: Bool, isVerified: Bool) {
+        self.description = description
+        self.isVerified = isVerified
+    }
 }

@@ -6,6 +6,8 @@ import UIKit
 
 public protocol UserAdsListViewDelegate: AnyObject {
     func userAdsListViewDidStartRefreshing(_ userAdsListView: UserAdsListView)
+    func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView)
+    func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView)
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button)
@@ -16,7 +18,9 @@ public protocol UserAdsListViewDelegate: AnyObject {
 }
 
 public protocol UserAdsListViewDataSource: AnyObject {
+    var emphasizedActionHasBeenCollapsed: Bool { get }
     func numberOfSections(in userAdsListView: UserAdsListView) -> Int
+    func sectionNumberForEmphasizedAction(in userAdsListView: UserAdsListView) -> Int?
     func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool
     func userAdsListView(_ userAdsListView: UserAdsListView, numberOfRowsInSection section: Int) -> Int
     func userAdsListView(_ userAdsListView: UserAdsListView, modelAtIndex section: Int) -> UserAdsListHeaderViewModel
@@ -41,6 +45,7 @@ public class UserAdsListView: UIView {
         tableView.register(UserAdsListViewNewAdCell.self)
         tableView.register(UserAdsListViewCell.self)
         tableView.register(UserAdsListViewSeeAllAdsCell.self)
+        tableView.register(UserAdsListEmphasizedActionCell.self)
         tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.backgroundColor = .milk
         tableView.rowHeight = UITableView.automaticDimension
@@ -167,9 +172,10 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) ?? firstSection
         switch section {
-        // Return 0.1 so we dont show a seperator if there's no section to show.
-        case firstSection, lastSection: return CGFloat.leastNonzeroMagnitude
+        // We don't want to show the sectionHeader for the new-ad-button, all-ads-button, and emphasizedAd-action-ad
+        case firstSection, lastSection, emphasizedSection: return CGFloat.leastNonzeroMagnitude
         default: return UITableView.automaticDimension
         }
     }
@@ -182,8 +188,6 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UserAdsListViewCell()
-
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
         let color = colors[indexPath.row % 4]
 
@@ -203,7 +207,22 @@ extension UserAdsListView: UITableViewDataSource {
             }
             return seeAllAdsCell
         default:
-            cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath)
+            if let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self), indexPath.section == emphasizedSection {
+                let cell = tableView.dequeue(UserAdsListEmphasizedActionCell.self, for: indexPath)
+                cell.loadingColor = color
+                cell.dataSource = self
+                cell.delegate = self
+
+                let actionHasBeenCollapsed = dataSource?.emphasizedActionHasBeenCollapsed ?? false
+                cell.shouldShowAction = !actionHasBeenCollapsed
+                if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
+                    cell.model = model
+                }
+
+                return cell
+            }
+
+            let cell = tableView.dequeue(UserAdsListViewCell.self, for: indexPath)
             cell.loadingColor = color
             cell.dataSource = self
             if let model = dataSource?.userAdsListView(self, modelAtIndex: indexPath) {
@@ -214,7 +233,7 @@ extension UserAdsListView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let cell = cell as? UserAdsListViewCell { cell.loadImage() }
+        if let imageLoadingCell = cell as? ImageLoading { imageLoadingCell.loadImage() }
         delegate?.userAdsListView(self, willDisplayItemAtIndex: indexPath)
     }
 
@@ -270,5 +289,19 @@ extension UserAdsListView: UserAdsListViewSeeAllAdsCellDelegate {
 extension UserAdsListView: RefreshControlDelegate {
     public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
         delegate?.userAdsListViewDidStartRefreshing(self)
+    }
+}
+
+extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
+    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, buttonWasTapped: Button) {
+        guard let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
+        delegate?.userAdsListViewEmphasizedActionWasTapped(self)
+        tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
+    }
+
+    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button) {
+        guard let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
+        delegate?.userAdsListViewEmphasizedActionWasCancelled(self)
+        tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
     }
 }
