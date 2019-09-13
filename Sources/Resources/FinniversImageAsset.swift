@@ -42,9 +42,11 @@ public enum FinniversImageAsset: String {
     case checkmarkBig
     case classifieds
     case close
+    case creditcard
     case cross
     case distance
     case distanceOutlined
+    case document
     case download
     case earthHourClock
     case earthHourEarth
@@ -78,6 +80,7 @@ public enum FinniversImageAsset: String {
     case giftSquareYellow
     case giftTriangleGreen
     case gridView
+    case handshake
     case help
     case hide
     case home
@@ -140,7 +143,9 @@ public enum FinniversImageAsset: String {
     case snowflake
     case sold
     case spark
+    case speechbubbleSmiley
     case spidLogo
+    case starOutline
     case statsEmpty
     case statsEnvelope
     case statsEye
@@ -181,9 +186,11 @@ public enum FinniversImageAsset: String {
             .checkmarkBig,
             .classifieds,
             .close,
+            .creditcard,
             .cross,
             .distance,
             .distanceOutlined,
+            .document,
             .download,
             .earthHourClock,
             .earthHourEarth,
@@ -217,6 +224,7 @@ public enum FinniversImageAsset: String {
             .giftSquareYellow,
             .giftTriangleGreen,
             .gridView,
+            .handshake,
             .help,
             .hide,
             .home,
@@ -279,7 +287,9 @@ public enum FinniversImageAsset: String {
             .snowflake,
             .sold,
             .spark,
+            .speechbubbleSmiley,
             .spidLogo,
+            .starOutline,
             .statsEmpty,
             .statsEnvelope,
             .statsEye,
