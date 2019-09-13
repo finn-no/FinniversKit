@@ -136,7 +136,7 @@ final class FavoriteAdView: UIView {
             descriptionTertiaryLabel.isHidden = false
         }
 
-        if let comment = viewModel.comment, !isCommentViewHidden {
+        if let comment = viewModel.comment, !comment.isEmpty, !isCommentViewHidden {
             commentView.configure(withText: comment)
             commentView.isHidden = false
         } else {
