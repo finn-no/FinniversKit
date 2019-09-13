@@ -4,7 +4,23 @@
 
 import FinniversKit
 
-class ReputationDemoView: UIView {
+class ReputationDemoView: UIView, Tweakable {
+
+    // MARK: - Private properties
+
+    lazy var tweakingOptions: [TweakingOption] = {
+        let options = [
+            TweakingOption(title: "Nil out view models", action: {
+                self.reputationViews.forEach { $0.0.viewModel = nil }
+            }),
+            TweakingOption(title: "Assign view models", action: {
+                self.reputationViews.forEach { $0.0.viewModel = $0.1 }
+            })
+        ]
+        return options
+    }()
+
+    private var reputationViews: [(ReputationView, ReputationViewModel)] = []
 
     // MARK: - Setup
 
@@ -18,7 +34,7 @@ class ReputationDemoView: UIView {
     }
 
     private func setup() {
-        var views = [
+        let views = [
             headerLabel(withText: "Compact"),
             summaryView(breakdownMode: .compact),
             headerLabel(withText: "Collapsed by Default"),
@@ -38,6 +54,9 @@ class ReputationDemoView: UIView {
         let viewModel = ViewModel(breakdownMode: breakdownMode)
         let view = ReputationView(viewModel: viewModel)
         view.translatesAutoresizingMaskIntoConstraints = false
+
+        reputationViews += [(view, viewModel)]
+
         return view
     }
 
@@ -59,7 +78,7 @@ class ReputationDemoView: UIView {
     }
 }
 
-fileprivate struct ViewModel: ReputationViewModel {
+private struct ViewModel: ReputationViewModel {
     let title: String = "Veldig bra"
     let subtitle: String = "22 vurderinger"
     let score: Float = 0.843419429
@@ -73,7 +92,7 @@ fileprivate struct ViewModel: ReputationViewModel {
     let breakdownMode: ReputationBreakdownMode
 }
 
-fileprivate struct BreakdownModel: ReputationBreakdownModel {
+private struct BreakdownModel: ReputationBreakdownModel {
     let category: ReputationBreakdownCategory
     let title: String
 }

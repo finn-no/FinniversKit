@@ -70,7 +70,6 @@ public class ReputationView: UIView {
     private lazy var scoreLabel: Label = {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = formattedScore
         label.textColor = .milk
         return label
     }()
@@ -79,7 +78,6 @@ public class ReputationView: UIView {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = viewModel.title
         return label
     }()
 
@@ -87,7 +85,6 @@ public class ReputationView: UIView {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = viewModel.subtitle
         label.textColor = .primaryBlue
         return label
     }()
@@ -125,11 +122,15 @@ public class ReputationView: UIView {
 
     // MARK: - Public properties
 
-    public let viewModel: ReputationViewModel
+    public var viewModel: ReputationViewModel? {
+        didSet { viewModelChanged() }
+    }
 
     // MARK: - Private properties
 
     private var formattedScore: String {
+        guard let viewModel = viewModel else { return "" }
+
         let nf = NumberFormatter()
         nf.numberStyle = .decimal
         nf.maximumSignificantDigits = 2
@@ -148,7 +149,14 @@ public class ReputationView: UIView {
         self.isCollapsed = viewModel.breakdownMode != .alwaysExpanded
         super.init(frame: .zero)
         setup()
-        addBreakdownViews()
+        viewModelChanged()
+    }
+
+    public init() {
+        self.isCollapsed = true
+        super.init(frame: .zero)
+        setup()
+        viewModelChanged()
     }
 
     private func setup() {
@@ -165,14 +173,6 @@ public class ReputationView: UIView {
         collapseWrapper.addSubview(collapseImage)
 
         addSubview(breakdownWrapper)
-
-        if viewModel.categoryBreakdowns.isEmpty {
-            collapseWrapper.isHidden = true
-            showBreakdownConstraint.isActive = false
-        } else {
-            collapseWrapper.isHidden = viewModel.breakdownMode != .collapsedByDefault
-            showBreakdownConstraint.isActive = viewModel.breakdownMode == .alwaysExpanded
-        }
 
         NSLayoutConstraint.activate([
             scoreBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
@@ -206,6 +206,45 @@ public class ReputationView: UIView {
             breakdownWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
+
+    // MARK: - Private methods
+
+    private func viewModelChanged() {
+        reset()
+
+        if let viewModel = viewModel {
+            populateViews(with: viewModel)
+        }
+    }
+
+    private func reset() {
+        removeAllBreakdownViews()
+        collapseWrapper.isHidden = true
+        showBreakdownConstraint.isActive = false
+
+        isCollapsed = true
+        collapseImage.image = UIImage(named: .arrowDown)
+
+        titleLabel.text = nil
+        subtitleLabel.text = nil
+        scoreLabel.text = nil
+    }
+
+    private func populateViews(with viewModel: ReputationViewModel) {
+        addBreakdownViews()
+
+        titleLabel.text = viewModel.title
+        subtitleLabel.text = viewModel.subtitle
+        scoreLabel.text = formattedScore
+
+        if viewModel.categoryBreakdowns.isEmpty {
+            collapseWrapper.isHidden = true
+            showBreakdownConstraint.isActive = false
+        } else {
+            collapseWrapper.isHidden = viewModel.breakdownMode != .collapsedByDefault
+            showBreakdownConstraint.isActive = viewModel.breakdownMode == .alwaysExpanded
+        }
+    }
 }
 
 // MARK: - Breakdown & Collapse Handling
@@ -225,8 +264,18 @@ extension ReputationView {
         })
     }
 
+    private func removeAllBreakdownViews() {
+        let removedSubviews = breakdownWrapper.arrangedSubviews.reduce([]) { (allSubviews, subview) -> [UIView] in
+            self.breakdownWrapper.removeArrangedSubview(subview)
+            return allSubviews + [subview]
+        }
+
+        NSLayoutConstraint.deactivate(removedSubviews.flatMap({ $0.constraints }))
+        removedSubviews.forEach({ $0.removeFromSuperview() })
+    }
+
     private func addBreakdownViews() {
-        viewModel.categoryBreakdowns.forEach { model in
+        viewModel?.categoryBreakdowns.forEach { model in
             let view = breakdownView(for: model)
             breakdownWrapper.addArrangedSubview(view)
         }
