@@ -7,24 +7,13 @@ import FBSnapshotTestCase
 import FinniversKit
 
 class ComponentViewTests: FBSnapshotTestCase {
-    static var allViews = ComponentViews.items
-
     override func setUp() {
         super.setUp()
         recordMode = false
     }
 
-    override class func tearDown() {
-        super.tearDown()
-
-        if ComponentViewTests.allViews.count > 0 {
-            fatalError("Not all elements were implemented, missing: \(ComponentViewTests.allViews.map { $0.rawValue }.joined(separator: ", "))")
-        }
-    }
-
     private func snapshot(_ component: ComponentViews) {
         FBSnapshotVerifyView(component.viewController.view)
-        ComponentViewTests.allViews = ComponentViewTests.allViews.filter { $0 != component }
     }
 
     // MARK: - Tests
