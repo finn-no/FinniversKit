@@ -70,6 +70,7 @@ public enum ComponentViews: String, CaseIterable {
     case loanCalculatorView
     case verificationView
     case panel
+    case reputationView
 
     public static var items: [ComponentViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -165,6 +166,8 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<LoanCalculatorDemoView>()
         case .panel:
             return DemoViewController<PanelDemoView>()
+        case .reputationView:
+            return DemoViewController<ReputationDemoView>()
         }
     }
 }

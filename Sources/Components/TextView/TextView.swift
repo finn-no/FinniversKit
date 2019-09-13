@@ -30,12 +30,16 @@ public class TextView: UIView {
 
     public var text: String! {
         get { return textView.text }
-        set { textView.text = newValue }
+        set {
+            textView.text = newValue
+            updatePlaceholderAppearance()
+        }
     }
 
     public var placeholderText: String? {
         didSet {
             placeholderLabel.text = placeholderText
+            updatePlaceholderAppearance()
         }
     }
 
@@ -128,6 +132,14 @@ public class TextView: UIView {
             bottomAnchor.constraint(equalTo: underLine.bottomAnchor)
         ])
     }
+
+    private func updatePlaceholderAppearance() {
+        if textView.text.isEmpty {
+            placeholderLabel.isHidden = false
+        } else {
+            placeholderLabel.isHidden = true
+        }
+    }
 }
 
 // MARK: - UITextViewDelegate
@@ -139,12 +151,7 @@ extension TextView: UITextViewDelegate {
 
     public func textViewDidChange(_ textView: UITextView) {
         delegate?.textViewDidChange(self)
-
-        if textView.text.isEmpty {
-            placeholderLabel.isHidden = false
-        } else {
-            placeholderLabel.isHidden = true
-        }
+        updatePlaceholderAppearance()
     }
 
     public func textViewDidEndEditing(_ textView: UITextView) {
