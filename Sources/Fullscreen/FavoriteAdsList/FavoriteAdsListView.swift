@@ -7,6 +7,8 @@ import UIKit
 public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath)
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
@@ -181,8 +183,9 @@ extension FavoriteAdsListView: UITableViewDelegate {
         let commentAction = UIContextualAction(
             style: .normal,
             title: commentActionTitle,
-            handler: { (action, view, completionHandler) in
-
+            handler: { [weak self] _, _, completionHandler in
+                guard let self = self else { return }
+                self.delegate?.favoriteAdsListView(self, didSelectCommentForItemAt: indexPath)
                 completionHandler(true)
             })
 
@@ -192,8 +195,9 @@ extension FavoriteAdsListView: UITableViewDelegate {
         let deleteAction = UIContextualAction(
             style: .normal,
             title: deleteActionTitle,
-            handler: { (action, view, completionHandler) in
-
+            handler: { [weak self] _, _, completionHandler in
+                guard let self = self else { return }
+                self.delegate?.favoriteAdsListView(self, didSelectDeleteItemAt: indexPath)
                 completionHandler(true)
             })
 

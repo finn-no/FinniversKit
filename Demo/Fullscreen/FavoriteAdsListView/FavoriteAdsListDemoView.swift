@@ -22,6 +22,8 @@ class FavoriteAdsListDemoView: UIView {
         view.subtitle = "\(viewModels.count) favoritter"
         view.searchBarPlaceholder = "Søk etter en av dine favoritter"
         view.sortingTitle = currentSorting.rawValue
+        view.commentActionTitle = "Notere"
+        view.deleteActionTitle = "Slett"
         return view
     }()
 
@@ -43,8 +45,15 @@ class FavoriteAdsListDemoView: UIView {
 
 extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath) {}
-
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath) {}
+
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath) {
+        print("Delete button selected")
+    }
+
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath) {
+        print("Comment button selected")
+    }
 
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView) {
         switch currentSorting {
