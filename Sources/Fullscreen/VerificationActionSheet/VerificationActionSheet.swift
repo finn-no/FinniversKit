@@ -7,7 +7,7 @@ public protocol VerificationActionSheetDelegate: AnyObject {
 }
 
 public class VerificationActionSheet: BottomSheet {
-    private(set) let viewModel: VerificationViewModel
+    public private(set) var viewModel: VerificationViewModel
 
     private let verificationActionSheetHeight: CGFloat = 280
     private weak var viewController: ActionViewController?
