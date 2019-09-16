@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import FinniversKit
 
 extension String {
     var capitalizingFirstLetter: String {
@@ -74,22 +75,14 @@ struct State {
     /// Needs to be called from main thread on iOS 13
     static func setCurrentUserInterfaceStyle(_ userInterfaceStyle: UserInterfaceStyle?, in window: UIWindow?) {
         if #available(iOS 13.0, *) {
-            #if swift(>=5.1)
-            let uiUserInterfaceStyle: UIUserInterfaceStyle
-            if let userInterfaceStyle = userInterfaceStyle {
-                uiUserInterfaceStyle = userInterfaceStyle == .dark ? .dark : .light
-            } else {
-                uiUserInterfaceStyle = .unspecified
-            }
-            let updatedTraits = UITraitCollection(traitsFrom: [UITraitCollection.current, UITraitCollection(userInterfaceStyle: uiUserInterfaceStyle)])
-            UITraitCollection.current = updatedTraits
-            window?.overrideUserInterfaceStyle = uiUserInterfaceStyle
-            #endif
+            window?.setWindowUserInterfaceStyle(userInterfaceStyle)
         }
         if let userInterfaceStyle = userInterfaceStyle {
             UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
+            FinniversKit.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
         } else {
             UserDefaults.standard.removeObject(forKey: currentUserInterfaceStyleKey)
+            FinniversKit.userInterfaceStyleSupport = .forceLight
         }
         UserDefaults.standard.synchronize()
     }
@@ -101,5 +94,22 @@ struct State {
             let styleRawValue = UserDefaults.standard.integer(forKey: currentUserInterfaceStyleKey)
             return UserInterfaceStyle(rawValue: styleRawValue) ?? .light
         }
+    }
+}
+
+extension UIWindow {
+    @available(iOS 13.0, *)
+    func setWindowUserInterfaceStyle(_ userInterfaceStyle: UserInterfaceStyle?) {
+        #if swift(>=5.1)
+        let uiUserInterfaceStyle: UIUserInterfaceStyle
+        if let userInterfaceStyle = userInterfaceStyle {
+            uiUserInterfaceStyle = userInterfaceStyle == .dark ? .dark : .light
+        } else {
+            uiUserInterfaceStyle = .unspecified
+        }
+        let updatedTraits = UITraitCollection(traitsFrom: [UITraitCollection.current, UITraitCollection(userInterfaceStyle: uiUserInterfaceStyle)])
+        UITraitCollection.current = updatedTraits
+        overrideUserInterfaceStyle = uiUserInterfaceStyle
+        #endif
     }
 }
