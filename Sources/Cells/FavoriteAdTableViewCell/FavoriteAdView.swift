@@ -209,6 +209,8 @@ final class FavoriteAdView: UIView {
         rootStackViewBottomConstraint.priority = UILayoutPriority(rawValue: 999)
 
         NSLayoutConstraint.activate([
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
             rootStackView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
             rootStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             rootStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
