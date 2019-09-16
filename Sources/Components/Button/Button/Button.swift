@@ -23,10 +23,11 @@ public class Button: UIButton {
 
     // MARK: - Setup
 
-    public init(style: Style, size: Size = .normal) {
+    public init(style: Style, size: Size = .normal, withAutoLayout: Bool = false) {
         self.style = style
         self.size = size
         super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         setup()
     }
 

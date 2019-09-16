@@ -6,16 +6,20 @@ import FinniversKit
 
 extension FavoriteAdViewModel {
     static func deletedAd(addedToFolderDate: Date, ribbonStyle: RibbonView.Style, ribbonTitle: String) -> FavoriteAdViewModel {
-        return self.init(addressText: nil,
-                         titleText: "Annonsen er slettet",
-                         titleColor: .stone,
-                         descriptionPrimaryText: nil,
-                         descriptionSecondaryText: nil,
-                         imagePath: nil,
-                         ribbonStyle: ribbonStyle,
-                         ribbonTitle: ribbonTitle,
-                         addedToFolderDate: addedToFolderDate,
-                         lastUpdated: nil)
+        return self.init(
+            addressText: nil,
+            titleText: "Annonsen er slettet",
+            titleColor: .stone,
+            descriptionPrimaryText: nil,
+            descriptionSecondaryText: nil,
+            descriptionTertiaryText: nil,
+            imagePath: nil,
+            ribbonStyle: ribbonStyle,
+            ribbonTitle: ribbonTitle,
+            addedToFolderDate: addedToFolderDate,
+            lastUpdated: nil,
+            comment: nil
+        )
     }
 }
 
@@ -23,20 +27,26 @@ struct FavoriteAdsFactory {
     static func create() -> [FavoriteAdViewModel] {
         return titles.enumerated().map { (index, title) in
             guard let title = title else {
-                return FavoriteAdViewModel.deletedAd(addedToFolderDate: addedToFolderDates[index],
-                                                     ribbonStyle: ribbonStyles[index].style,
-                                                     ribbonTitle: ribbonStyles[index].title)
+                return FavoriteAdViewModel.deletedAd(
+                    addedToFolderDate: addedToFolderDates[index],
+                    ribbonStyle: ribbonStyles[index].style,
+                    ribbonTitle: ribbonStyles[index].title
+                )
             }
-            return FavoriteAdViewModel(addressText: addresses[index],
-                                       titleText: title,
-                                       titleColor: .licorice,
-                                       descriptionPrimaryText: primaryDescriptions[index],
-                                       descriptionSecondaryText: secondaryDescriptions[index],
-                                       imagePath: imagePaths[index],
-                                       ribbonStyle: ribbonStyles[index].style,
-                                       ribbonTitle: ribbonStyles[index].title,
-                                       addedToFolderDate: addedToFolderDates[index],
-                                       lastUpdated: nil)
+            return FavoriteAdViewModel(
+                addressText: addresses[index],
+                titleText: title,
+                titleColor: .licorice,
+                descriptionPrimaryText: primaryDescriptions[index],
+                descriptionSecondaryText: secondaryDescriptions[index],
+                descriptionTertiaryText: tertiaryDescriptions[index],
+                imagePath: imagePaths[index],
+                ribbonStyle: ribbonStyles[index].style,
+                ribbonTitle: ribbonStyles[index].title,
+                addedToFolderDate: addedToFolderDates[index],
+                lastUpdated: nil,
+                comment: comments[index]
+            )
         }
     }
 
@@ -92,6 +102,19 @@ struct FavoriteAdsFactory {
         ]
     }
 
+    private static var tertiaryDescriptions: [String?] {
+        return [
+            nil,
+            nil,
+            nil,
+            nil,
+            nil,
+            nil,
+            "Visning mandag 9. september kl. 14:00-16:00",
+            "Visning mandag 9. september kl. 14:00-16:00",
+        ]
+    }
+
     private static var imagePaths: [String?] {
         return [
             "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
@@ -102,6 +125,19 @@ struct FavoriteAdsFactory {
             "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg",
             "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg",
             "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg"
+        ]
+    }
+
+    private static var comments: [String?] {
+        return [
+            nil,
+            nil,
+            nil,
+            nil,
+            nil,
+            nil,
+            "Kjekk villa som kunne ha imponert venner og bekjente. Fantastisk hage for grillfester og sammenkomster. Trekker litt ned for gamle soilrør. Oppgradert i 1965.",
+            nil
         ]
     }
 

@@ -123,6 +123,24 @@ public class FavoriteAdsListView: UIView {
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
     }
+
+    public func reloadRow(at indexPath: IndexPath, with animation: UITableView.RowAnimation = .automatic) {
+        tableView.reloadRows(at: [indexPath], with: animation)
+    }
+
+    public func deleteRow(at indexPath: IndexPath, with animation: UITableView.RowAnimation = .automatic) {
+        tableView.deleteRows(at: [indexPath], with: animation)
+    }
+
+    public func deleteSection(at index: Int, with animation: UITableView.RowAnimation = .automatic) {
+        tableView.deleteSections(IndexSet(integer: index), with: animation)
+    }
+
+    // MARK: - Images
+
+    public func cachedImage(forPath path: String) -> UIImage? {
+        return imageCache.image(forKey: path)
+    }
 }
 
 // MARK: - UITableViewDelegate

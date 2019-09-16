@@ -42,7 +42,7 @@ public enum ComponentViews: String, CaseIterable {
     case inlineConsent
     case inlineConsentV2
     case consentTransparencyInfo
-    case bannerTransparency
+    case bannerTransparencyView
     case checkbox
     case radioButton
     case roundedImageView
@@ -54,10 +54,10 @@ public enum ComponentViews: String, CaseIterable {
     case bottomSheetMechanics
     case feedbackView
     case happinessRating
-    case earthHour
-    case klimabrolet
-    case stepIndicator
-    case nativeAdvert
+    case earthHourView
+    case klimabroletView
+    case stepIndicatorView
+    case nativeAdverts
     case callout
     case phaseList
     case iconCollection
@@ -67,6 +67,10 @@ public enum ComponentViews: String, CaseIterable {
     case saveSearchView
     case identityView
     case stepSlider
+    case loanCalculatorView
+    case verificationView
+    case panel
+    case reputationView
 
     public static var items: [ComponentViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -104,7 +108,7 @@ public enum ComponentViews: String, CaseIterable {
             return InlineConsentDemoViewController()
         case .consentTransparencyInfo:
             return DemoViewController<ConsentTransparencyInfoDemoView>()
-        case .bannerTransparency:
+        case .bannerTransparencyView:
             return DemoViewController<BannerTransparencyDemoView>()
         case .checkbox:
             return DemoViewController<CheckboxDemoView>(withDismissButton: true)
@@ -130,13 +134,13 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<FeedbackDemoView>(withDismissButton: true)
         case .happinessRating:
             return DemoViewController<HappinessRatingDemoView>(withDismissButton: true)
-        case .earthHour:
+        case .earthHourView:
             return DemoViewController<EarthHourDemoView>()
-        case .klimabrolet:
+        case .klimabroletView:
             return KlimabroletDemoViewController(usingDoubleTapToDismiss: false)
-        case .stepIndicator:
+        case .stepIndicatorView:
             return DemoViewController<StepIndicatorDemoView>(withDismissButton: true)
-        case .nativeAdvert:
+        case .nativeAdverts:
             return DemoViewController<NativeAdvertDemoView>(withDismissButton: true)
         case .callout:
             return DemoViewController<CalloutDemoView>()
@@ -156,6 +160,14 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<IdentityDemoView>()
         case .stepSlider:
             return DemoViewController<StepSliderDemoView>()
+        case .verificationView:
+            return DemoViewController<VerificationDemoView>()
+        case .loanCalculatorView:
+            return DemoViewController<LoanCalculatorDemoView>()
+        case .panel:
+            return DemoViewController<PanelDemoView>()
+        case .reputationView:
+            return DemoViewController<ReputationDemoView>()
         }
     }
 }
@@ -202,8 +214,8 @@ public enum Cells: String, CaseIterable {
 public enum RecyclingViews: String, CaseIterable {
     case notificationsListView
     case favoriteFoldersListView
-    case favoriteSortingView
-    case favoriteActionView
+    case favoriteAdSortingView
+    case favoriteAdActionView
     case favoritesListView
     case savedSearchesListView
     case marketsGridView
@@ -230,10 +242,10 @@ public enum RecyclingViews: String, CaseIterable {
             navigationController.navigationBar.shadowImage = UIImage()
 
             return navigationController
-        case .favoriteSortingView:
-            return DemoViewController<FavoriteSortingDemoView>()
-        case .favoriteActionView:
-            return DemoViewController<FavoriteActionDemoView>()
+        case .favoriteAdSortingView:
+            return DemoViewController<FavoriteAdSortingDemoView>()
+        case .favoriteAdActionView:
+            return DemoViewController<FavoriteAdActionDemoView>()
         case .favoritesListView:
             return DemoViewController<FavoritesListViewDemoView>()
         case .savedSearchesListView:
@@ -267,9 +279,9 @@ public enum FullscreenViews: String, CaseIterable {
     case consentToggleView
     case consentActionView
     case loadingView
-    case drumMachine
-    case piano
-    case snowGlobe
+    case drumMachineView
+    case pianoView
+    case snowGlobeView
     case soldView
     case confirmationView
     case fullscreenGallery
@@ -279,9 +291,10 @@ public enum FullscreenViews: String, CaseIterable {
     case receiptView
     case favoriteAdsList
     case favoriteFolderActionSheet
-    case favoriteSortingSheet
-    case favoriteActionSheet
-    case favoriteNoteSheet
+    case favoriteAdSortingSheet
+    case favoriteAdActionSheet
+    case favoriteAdCommentSheet
+    case verificationActionSheet
 
     public static var items: [FullscreenViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -313,11 +326,11 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<ConsentActionViewDemoView>()
         case .loadingView:
             return DemoViewController<LoadingViewDemoView>()
-        case .drumMachine:
+        case .drumMachineView:
             return DemoViewController<DrumMachineDemoView>()
-        case .piano:
+        case .pianoView:
             return DemoViewController<PianoDemoView>(supportedInterfaceOrientations: .landscape)
-        case .snowGlobe:
+        case .snowGlobeView:
             return DemoViewController<SnowGlobeDemoView>()
         case .soldView:
             return DemoViewController<SoldViewDemoView>()
@@ -341,21 +354,25 @@ public enum FullscreenViews: String, CaseIterable {
             let bottomSheet = FavoriteFolderActionSheet(viewModel: .default)
             bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
             return bottomSheet
-        case .favoriteSortingSheet:
-            let bottomSheet = FavoriteSortingSheet(viewModel: .default, selectedSortOption: .lastAdded)
-            bottomSheet.sortingDelegate = FavoriteSortingSheetDemoDelegate.shared
+        case .favoriteAdSortingSheet:
+            let bottomSheet = FavoriteAdSortingSheet(viewModel: .default, selectedSortOption: .lastAdded)
+            bottomSheet.sortingDelegate = FavoriteAdSortingSheetDemoDelegate.shared
             return bottomSheet
-        case .favoriteActionSheet:
-            let bottomSheet = FavoriteActionSheet(viewModel: .default)
-            bottomSheet.actionDelegate = FavoriteActionSheetDemoDelegate.shared
+        case .favoriteAdActionSheet:
+            let bottomSheet = FavoriteAdActionSheet(viewModel: .default)
+            bottomSheet.actionDelegate = FavoriteAdActionSheetDemoDelegate.shared
             return bottomSheet
-        case .favoriteNoteSheet:
-            let bottomSheet = FavoriteNoteSheet(
-                noteViewModel: .default,
+        case .favoriteAdCommentSheet:
+            let bottomSheet = FavoriteAdCommentSheet(
+                commentViewModel: .default,
                 adViewModel: FavoriteAdsFactory.create().last!,
-                remoteImageViewDataSource: FavoriteNoteSheetDemoDelegate.shared
+                adImage: FavoriteAdActionViewModel.createImage()
             )
-            bottomSheet.noteDelegate = FavoriteNoteSheetDemoDelegate.shared
+            bottomSheet.commentDelegate = FavoriteAdCommentSheetDemoDelegate.shared
+            return bottomSheet
+        case .verificationActionSheet:
+            let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())
+            bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
         }
     }
