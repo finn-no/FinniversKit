@@ -6,7 +6,14 @@ import FinniversKit
 
 /// For use with AdsGridView.
 public class AdDataSource: NSObject {
-    let models = AdFactory.create(numberOfModels: 9)
+    let models: [Ad] = {
+        var ads = AdFactory.create(numberOfModels: 9)
+        ads.insert(
+            AdFactory.googleDemoAd,
+            at: 4
+        )
+        return ads
+    }()
 }
 
 public class AdsGridViewDemoView: UIView {
@@ -53,30 +60,46 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
 
     public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [
-            AdsGridViewCell.self
+            AdsGridViewCell.self,
+            BannerAdDemoCell.self
         ]
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
-        return AdsGridViewCell.height(
-            for: dataSource.models[indexPath.item],
-            width: width
-        )
+        let model = dataSource.models[indexPath.item]
+
+        switch model.adType {
+        case .google:
+            return 300
+        default:
+            return AdsGridViewCell.height(
+                for: model,
+                width: width
+            )
+        }
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
-        // Show a pretty color while we load the image
-        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
-        let color = colors[indexPath.row % 4]
+        let model = dataSource.models[indexPath.item]
 
-        cell.index = indexPath.row
-        cell.loadingColor = color
-        cell.dataSource = adsGridView
-        cell.delegate = adsGridView
-        cell.model = dataSource.models[indexPath.item]
+        switch model.adType {
+        case .google:
+            return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
 
-        return cell
+        default:
+            let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
+            // Show a pretty color while we load the image
+            let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+            let color = colors[indexPath.row % 4]
+
+            cell.index = indexPath.row
+            cell.loadingColor = color
+            cell.dataSource = adsGridView
+            cell.delegate = adsGridView
+            cell.model = model
+
+            return cell
+        }
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {
