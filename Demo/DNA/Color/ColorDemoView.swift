@@ -20,7 +20,7 @@ public class ColorDemoView: UIView {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.separatorStyle = .none
-        view.rowHeight = 18
+        view.rowHeight = 21
         return view
     }()
 
