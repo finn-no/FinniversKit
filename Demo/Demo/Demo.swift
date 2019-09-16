@@ -42,7 +42,7 @@ public enum ComponentViews: String, CaseIterable {
     case inlineConsent
     case inlineConsentV2
     case consentTransparencyInfo
-    case bannerTransparency
+    case bannerTransparencyView
     case checkbox
     case radioButton
     case roundedImageView
@@ -54,10 +54,10 @@ public enum ComponentViews: String, CaseIterable {
     case bottomSheetMechanics
     case feedbackView
     case happinessRating
-    case earthHour
-    case klimabrolet
-    case stepIndicator
-    case nativeAdvert
+    case earthHourView
+    case klimabroletView
+    case stepIndicatorView
+    case nativeAdverts
     case callout
     case phaseList
     case iconCollection
@@ -108,7 +108,7 @@ public enum ComponentViews: String, CaseIterable {
             return InlineConsentDemoViewController()
         case .consentTransparencyInfo:
             return DemoViewController<ConsentTransparencyInfoDemoView>()
-        case .bannerTransparency:
+        case .bannerTransparencyView:
             return DemoViewController<BannerTransparencyDemoView>()
         case .checkbox:
             return DemoViewController<CheckboxDemoView>(withDismissButton: true)
@@ -134,13 +134,13 @@ public enum ComponentViews: String, CaseIterable {
             return DemoViewController<FeedbackDemoView>(withDismissButton: true)
         case .happinessRating:
             return DemoViewController<HappinessRatingDemoView>(withDismissButton: true)
-        case .earthHour:
+        case .earthHourView:
             return DemoViewController<EarthHourDemoView>()
-        case .klimabrolet:
+        case .klimabroletView:
             return KlimabroletDemoViewController(usingDoubleTapToDismiss: false)
-        case .stepIndicator:
+        case .stepIndicatorView:
             return DemoViewController<StepIndicatorDemoView>(withDismissButton: true)
-        case .nativeAdvert:
+        case .nativeAdverts:
             return DemoViewController<NativeAdvertDemoView>(withDismissButton: true)
         case .callout:
             return DemoViewController<CalloutDemoView>()
@@ -276,9 +276,9 @@ public enum FullscreenViews: String, CaseIterable {
     case consentToggleView
     case consentActionView
     case loadingView
-    case drumMachine
-    case piano
-    case snowGlobe
+    case drumMachineView
+    case pianoView
+    case snowGlobeView
     case soldView
     case confirmationView
     case fullscreenGallery
@@ -323,11 +323,11 @@ public enum FullscreenViews: String, CaseIterable {
             return DemoViewController<ConsentActionViewDemoView>()
         case .loadingView:
             return DemoViewController<LoadingViewDemoView>()
-        case .drumMachine:
+        case .drumMachineView:
             return DemoViewController<DrumMachineDemoView>()
-        case .piano:
+        case .pianoView:
             return DemoViewController<PianoDemoView>(supportedInterfaceOrientations: .landscape)
-        case .snowGlobe:
+        case .snowGlobeView:
             return DemoViewController<SnowGlobeDemoView>()
         case .soldView:
             return DemoViewController<SoldViewDemoView>()

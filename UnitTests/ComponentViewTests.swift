@@ -7,24 +7,21 @@ import FBSnapshotTestCase
 import FinniversKit
 
 class ComponentViewTests: FBSnapshotTestCase {
-    static var allViews = ComponentViews.items
-
     override func setUp() {
         super.setUp()
         recordMode = false
     }
 
-    override class func tearDown() {
-        super.tearDown()
-
-        if ComponentViewTests.allViews.count > 0 {
-            fatalError("Not all elements were implemented, missing: \(ComponentViewTests.allViews.map { $0.rawValue }.joined(separator: ", "))")
-        }
+    private func snapshot(_ component: ComponentViews) {
+        FBSnapshotVerifyView(component.viewController.view)
     }
 
-    func snapshot(_ component: ComponentViews) {
-        FBSnapshotVerifyView(component.viewController.view)
-        ComponentViewTests.allViews = ComponentViewTests.allViews.filter { $0 != component }
+    // MARK: - Tests
+
+    func testMissingSnapshotTests() {
+        for element in elementWithoutTests(for: ComponentViews.self) {
+            XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
+        }
     }
 
     func testButton() {
@@ -112,7 +109,7 @@ class ComponentViewTests: FBSnapshotTestCase {
     }
 
     func testBannerTransparencyView() {
-        snapshot(.bannerTransparency)
+        snapshot(.bannerTransparencyView)
     }
 
     func testBottomSheetMechanics() {
@@ -132,15 +129,15 @@ class ComponentViewTests: FBSnapshotTestCase {
     }
 
     func testEarthHourView() {
-        snapshot(.earthHour)
+        snapshot(.earthHourView)
     }
 
     func testStepIndicatorView() {
-        snapshot(.stepIndicator)
+        snapshot(.stepIndicatorView)
     }
 
     func testNativeAdverts() {
-        snapshot(.nativeAdvert)
+        snapshot(.nativeAdverts)
     }
 
     func testCallout() {
@@ -172,7 +169,7 @@ class ComponentViewTests: FBSnapshotTestCase {
     }
 
     func testKlimabroletView() {
-        snapshot(.klimabrolet)
+        snapshot(.klimabroletView)
     }
 
     func testSaveSearchView() {
