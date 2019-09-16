@@ -78,8 +78,8 @@ extension FavoriteAdActionView: UITableViewDataSource {
         let cell = tableView.dequeue(FavoriteActionCell.self, for: indexPath)
 
         switch actions[indexPath.row] {
-        case .addNote:
-            cell.configure(withTitle: viewModel.addNoteText, icon: .favoritesNote)
+        case .comment:
+            cell.configure(withTitle: viewModel.commentText, icon: .favoritesNote)
         case .delete:
             cell.configure(withTitle: viewModel.deleteText, icon: .favoritesDelete, tintColor: .cherry)
         }

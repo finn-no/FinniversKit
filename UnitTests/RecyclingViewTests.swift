@@ -7,24 +7,21 @@ import FBSnapshotTestCase
 import FinniversKit
 
 class RecyclingViewTests: FBSnapshotTestCase {
-    static var allViews = RecyclingViews.items
-
     override func setUp() {
         super.setUp()
         recordMode = false
     }
 
-    override class func tearDown() {
-        super.tearDown()
-
-        if RecyclingViewTests.allViews.count > 0 {
-            fatalError("Not all elements were implemented, missing: \(RecyclingViewTests.allViews.map { $0.rawValue }.joined(separator: ", "))")
-        }
-    }
-
     func snapshot(_ component: RecyclingViews) {
         FBSnapshotVerifyView(component.viewController.view)
-        RecyclingViewTests.allViews = RecyclingViewTests.allViews.filter { $0 != component }
+    }
+
+    // MARK: - Tests
+
+    func testMissingSnapshotTests() {
+        for element in elementWithoutTests(for: RecyclingViews.self) {
+            XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
+        }
     }
 
     func testNotificationsListView() {
