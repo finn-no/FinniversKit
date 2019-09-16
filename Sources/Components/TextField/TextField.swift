@@ -70,7 +70,7 @@ public class TextField: UIView {
     private lazy var clearButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: clearTextIcon.size.width, height: clearTextIcon.size.height))
         button.setImage(clearTextIcon, for: .normal)
-        button.imageView?.tintColor = .stone
+        button.imageView?.tintColor = .textSecondary //DARK
         button.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
         return button
     }()
@@ -78,7 +78,7 @@ public class TextField: UIView {
     private lazy var showPasswordButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: eyeImage.size.width, height: eyeImage.size.width))
         button.setImage(eyeImage, for: .normal)
-        button.imageView?.tintColor = .stone
+        button.imageView?.tintColor = .textSecondary //DARK
         button.addTarget(self, action: #selector(showHidePassword), for: .touchUpInside)
         return button
     }()
@@ -86,21 +86,21 @@ public class TextField: UIView {
     private lazy var multilineDisclosureButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: eyeImage.size.width, height: eyeImage.size.width))
         button.setImage(multilineDisclosureIcon, for: .normal)
-        button.imageView?.tintColor = .stone
+        button.imageView?.tintColor = .textSecondary //DARK
         button.addTarget(self, action: #selector(multilineDisclusureTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var textFieldBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .ice
+        view.backgroundColor = .bgSecondary
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private lazy var underline: UIView = {
         let view = UIView()
-        view.backgroundColor = .stone
+        view.backgroundColor = .textSecondary //DARK
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -123,8 +123,8 @@ public class TextField: UIView {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.body
-        textField.textColor = .licorice
-        textField.tintColor = .secondaryBlue
+        textField.textColor = .textPrimary
+        textField.tintColor = .accentSecondaryBlue //DARK
         textField.delegate = self
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
@@ -267,10 +267,10 @@ public class TextField: UIView {
         sender.isSelected = !sender.isSelected
 
         if sender.isSelected {
-            sender.imageView?.tintColor = .secondaryBlue
+            sender.imageView?.tintColor = .accentSecondaryBlue //DARK
             textField.isSecureTextEntry = false
         } else {
-            sender.imageView?.tintColor = .stone
+            sender.imageView?.tintColor = .textSecondary //DARK
             textField.isSecureTextEntry = true
         }
 
