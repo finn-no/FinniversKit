@@ -52,6 +52,7 @@ public class LabelDemoView: UIView {
         label3.translatesAutoresizingMaskIntoConstraints = false
         labelWide.translatesAutoresizingMaskIntoConstraints = false
         labelWide.backgroundColor = .bgSuccess
+        labelWide.textColor = .textToast
         labelWide.textAlignment = .center
 
         addSubview(labelT1)
