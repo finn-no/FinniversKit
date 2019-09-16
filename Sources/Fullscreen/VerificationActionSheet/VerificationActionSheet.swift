@@ -3,7 +3,7 @@
 //
 
 public protocol VerificationActionSheetDelegate: AnyObject {
-    func didTapVerificationActionSheetButton(_ : VerificationActionSheet)
+    func didTapVerificationActionSheetButton(_ sheet: VerificationActionSheet)
 }
 
 public class VerificationActionSheet: BottomSheet {
