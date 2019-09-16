@@ -58,15 +58,10 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
-        let model = dataSource.models[indexPath.item]
-        let imageRatio = model.imageSize.height / model.imageSize.width
-        let imageHeight = width * imageRatio
-
-        if model.accessory != nil {
-            return imageHeight + AdsGridViewCell.nonImageWithAccessoryHeight
-        } else {
-            return imageHeight + AdsGridViewCell.nonImageHeight
-        }
+        return AdsGridViewCell.height(
+            for: dataSource.models[indexPath.item],
+            width: width
+        )
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

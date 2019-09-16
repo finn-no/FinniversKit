@@ -220,6 +220,17 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
+    public static func height(for model: AdsGridViewModel, width: CGFloat) -> CGFloat {
+        let imageRatio = model.imageSize.height / model.imageSize.width
+        let imageHeight = width * imageRatio
+
+        if model.accessory != nil {
+            return imageHeight + nonImageWithAccessoryHeight
+        } else {
+            return imageHeight + nonImageHeight
+        }
+    }
+
     public var model: AdsGridViewModel? {
         didSet {
             if let model = model {
