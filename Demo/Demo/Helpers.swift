@@ -107,8 +107,6 @@ extension UIWindow {
         } else {
             uiUserInterfaceStyle = .unspecified
         }
-        let updatedTraits = UITraitCollection(traitsFrom: [UITraitCollection.current, UITraitCollection(userInterfaceStyle: uiUserInterfaceStyle)])
-        UITraitCollection.current = updatedTraits
         overrideUserInterfaceStyle = uiUserInterfaceStyle
         #endif
     }
