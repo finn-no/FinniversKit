@@ -35,15 +35,15 @@ public class FavoriteAdsListView: UIView {
     public weak var delegate: FavoriteAdsListViewDelegate?
     public weak var dataSource: FavoriteAdsListViewDataSource?
 
-    public var title: String = "" {
+    public var title = "" {
         didSet { tableHeaderView.title = title }
     }
 
-    public var subtitle: String = "" {
+    public var subtitle = "" {
         didSet { tableHeaderView.subtitle = subtitle }
     }
 
-    public var searchBarPlaceholder: String = "" {
+    public var searchBarPlaceholder = "" {
         didSet { tableHeaderView.searchBarPlaceholder = searchBarPlaceholder }
     }
 
@@ -55,6 +55,9 @@ public class FavoriteAdsListView: UIView {
     public var sortingTitle: String = "" {
         didSet { tableHeaderView.sortingTitle = sortingTitle }
     }
+
+    public var commentActionTitle = ""
+    public var deleteActionTitle = ""
 
     // MARK: - Private properties
 
@@ -169,6 +172,35 @@ extension FavoriteAdsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) != nil else { return .leastNonzeroMagnitude }
         return 32
+    }
+
+    public func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        let commentAction = UIContextualAction(
+            style: .normal,
+            title: commentActionTitle,
+            handler: { (action, view, completionHandler) in
+
+                completionHandler(true)
+            })
+
+        commentAction.image = UIImage(named: .favoritesNote)
+        commentAction.backgroundColor = .licorice
+
+        let deleteAction = UIContextualAction(
+            style: .normal,
+            title: deleteActionTitle,
+            handler: { (action, view, completionHandler) in
+
+                completionHandler(true)
+            })
+
+        deleteAction.image = UIImage(named: .favoritesDelete)
+        deleteAction.backgroundColor = .cherry
+
+        return UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
     }
 }
 
