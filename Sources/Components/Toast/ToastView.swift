@@ -161,12 +161,32 @@ public class ToastView: UIView {
         dismissToast()
     }
 
+    /// Presents toast from the safe area top
+    ///
+    /// - Parameters:
+    ///   - view: the container for the toast view
+    ///   - animateOffset: extra offset to animate the vertical position of the toast view
+    ///   - timeOut: time in seconds to automatically dismiss the toast view after presenting it
+    public func presentFromTop(view: UIView, animateOffset: CGFloat, timeOut: Double? = nil) {
+        setupToastConstraint(for: view, fromBottom: false)
+
+        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+            self.transform = self.transform.translatedBy(x: 0, y: self.frame.height + animateOffset)
+        })
+
+        // Dismissal animation
+        if let timeOut = timeOut {
+            dismissToast(after: timeOut)
+        }
+    }
+
     public func presentFromBottom(view: UIView, animateOffset: CGFloat, timeOut: Double? = nil) {
         setupToastConstraint(for: view)
 
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
         })
+
         if let timeOut = timeOut {
             dismissToast(after: timeOut)
         }
@@ -183,15 +203,22 @@ public class ToastView: UIView {
         }
     }
 
-    private func setupToastConstraint(for view: UIView) {
+    private func setupToastConstraint(for view: UIView, fromBottom: Bool = true) {
         view.addSubview(self)
 
         translatesAutoresizingMaskIntoConstraints = false
 
+        let verticalPositionConstraint: NSLayoutConstraint
+        if fromBottom {
+            verticalPositionConstraint = topAnchor.constraint(equalTo: view.bottomAnchor)
+        } else {
+            verticalPositionConstraint = bottomAnchor.constraint(equalTo: view.topAnchor)
+        }
+
         NSLayoutConstraint.activate([
+            verticalPositionConstraint,
             leadingAnchor.constraint(equalTo: view.leadingAnchor),
             trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
         view.layoutIfNeeded()
