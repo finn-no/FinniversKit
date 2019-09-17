@@ -251,8 +251,8 @@ extension Foundation.Notification.Name {
 }
 
 @objc enum UserInterfaceStyle: Int {
-    case light
-    case dark
+    case light = 1
+    case dark = 2
 
     var image: UIImage {
         switch self {
