@@ -351,7 +351,7 @@ public enum FullscreenViews: String, CaseIterable {
         case .favoriteAdsList:
             return DemoViewController<FavoriteAdsListDemoView>(withDismissButton: true)
         case .favoriteFolderActionSheet:
-            let bottomSheet = FavoriteFolderActionSheet(viewModel: .default)
+            let bottomSheet = FavoriteFolderActionSheet(viewModel: .default, isCopyLinkHidden: false)
             bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
             return bottomSheet
         case .favoriteAdSortingSheet:

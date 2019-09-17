@@ -29,8 +29,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
     // MARK: - Private properties
 
     private let viewModel: FavoriteFolderActionViewModel
-    private let topActions: [FavoriteFolderAction] = [.edit, .changeName, .share]
-    private let bottomActions: [FavoriteFolderAction] = [.copyLink, .delete]
+    private let topActions: [FavoriteFolderAction] = [.edit, .changeName, .share, .copyLink, .delete]
 
     private lazy var topTableView: UITableView = {
         let tableView = UITableView.default
@@ -38,17 +37,19 @@ public final class FavoriteFolderActionViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(FavoriteActionCell.self)
         tableView.register(FavoriteFolderShareCell.self)
-        return tableView
-    }()
-
-    private lazy var bottomTableView: UITableView = {
-        let tableView = UITableView.default
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.register(FavoriteActionCell.self)
         tableView.register(FavoriteFolderCopyLinkCell.self)
         return tableView
     }()
+
+//    private lazy var bottomTableView: UITableView = {
+//        let tableView = UITableView.default
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.register(FavoriteActionCell.self)
+//        tableView.register(FavoriteFolderCopyLinkCell.self)
+//        return tableView
+//    }()
 
     // MARK: - Init
 
@@ -72,45 +73,52 @@ public final class FavoriteFolderActionViewController: UIViewController {
     // MARK: - Setup
 
     private func setup() {
-        view.addSubview(bottomTableView)
+        //view.addSubview(bottomTableView)
         view.addSubview(topTableView)
 
-        let bottomOffset = view.windowSafeAreaInsets.bottom + .mediumSpacing + .smallSpacing
+        //let bottomOffset = view.windowSafeAreaInsets.bottom + .mediumSpacing + .smallSpacing
 
         NSLayoutConstraint.activate([
             topTableView.topAnchor.constraint(equalTo: view.topAnchor),
             topTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             topTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            bottomTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset),
-            bottomTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bottomTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            bottomTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset),
+//            bottomTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            bottomTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
 
     private func reloadData() {
         guard let shareIndex = topActions.firstIndex(of: .share) else { return }
-        guard let copyLinkIndex = bottomActions.firstIndex(of: .copyLink) else { return }
-        guard let cell = bottomTableView.cellForRow(at: IndexPath(row: copyLinkIndex, section: 0)) else { return }
+        guard let copyLinkIndex = topActions.firstIndex(of: .copyLink) else { return }
+        guard let deleteIndex = topActions.firstIndex(of: .delete) else { return }
+        guard let cell = topTableView.cellForRow(at: IndexPath(row: copyLinkIndex, section: 0)) else { return }
+        guard let deleteCell = topTableView.cellForRow(at: IndexPath(row: deleteIndex, section: 0)) else { return }
 
         // Hide separator on the share cell
         topTableView.cellForRow(at: IndexPath(row: shareIndex, section: 0))?.hideSepatator(!isCopyLinkHidden)
 
         // Animate copy link cell appearance
         let transform = CGAffineTransform(translationX: 0, y: .mediumLargeSpacing)
+        let transform2 = CGAffineTransform(translationX: 0, y: -FavoriteFolderActionViewController.rowHeight)
 
-        bottomTableView.sendSubviewToBack(cell)
-        cell.alpha = isCopyLinkHidden ? 1 : 0.2
+
+        topTableView.sendSubviewToBack(cell)
+        cell.alpha = isCopyLinkHidden ? 1 : 0
         cell.transform = isCopyLinkHidden ? .identity : transform
 
-        UIView.animate(withDuration: 0.2) {
-            cell.alpha = self.isCopyLinkHidden ? 0.2 : 1
+        deleteCell.transform = isCopyLinkHidden ? .identity : transform2
+
+        UIView.animate(withDuration: 0.19) {
+            cell.alpha = self.isCopyLinkHidden ? 0 : 1
             cell.transform = self.isCopyLinkHidden ? transform : .identity
+            deleteCell.transform = self.isCopyLinkHidden ? transform2 : .identity
         }
     }
 
     private func actions(for tableView: UITableView) -> [FavoriteFolderAction] {
-        return tableView == topTableView ? topActions : bottomActions
+        return topActions
     }
 }
 
