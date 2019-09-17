@@ -8,12 +8,6 @@ import FinniversKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    let defaultUserInterfaceStyleSupport: FinniversKit.UserInterfaceStyleSupport = {
-        if #available(iOS 13.0, *) {
-            return .dynamic
-        }
-        return .forceLight
-    }()
 
     lazy var navigationController: NavigationController = {
         let navigationController = NavigationController(rootViewController: DemoViewsTableViewController())
@@ -25,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let userInterfaceStyle = userInterfaceStyle {
             FinniversKit.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
         } else {
-            FinniversKit.userInterfaceStyleSupport = defaultUserInterfaceStyleSupport
+            FinniversKit.userInterfaceStyleSupport = State.defaultUserInterfaceStyleSupport
         }
         window = UIWindow(frame: UIScreen.main.bounds)
         if #available(iOS 13.0, *) {

@@ -18,6 +18,13 @@ struct State {
     private static let lastSelectedSectionKey = "lastSelectedSectionKey"
     static let currentUserInterfaceStyleKey = "currentUserInterfaceStyleKey"
 
+    static let defaultUserInterfaceStyleSupport: FinniversKit.UserInterfaceStyleSupport = {
+        if #available(iOS 13.0, *) {
+            return .dynamic
+        }
+        return .forceLight
+    }()
+
     static var lastSelectedIndexPath: IndexPath? {
         get {
             guard let row = UserDefaults.standard.object(forKey: lastSelectedIndexPathRowKey) as? Int else { return nil }
@@ -82,7 +89,7 @@ struct State {
             FinniversKit.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
         } else {
             UserDefaults.standard.removeObject(forKey: currentUserInterfaceStyleKey)
-            FinniversKit.userInterfaceStyleSupport = .forceLight
+            FinniversKit.userInterfaceStyleSupport = defaultUserInterfaceStyleSupport
         }
         UserDefaults.standard.synchronize()
     }
