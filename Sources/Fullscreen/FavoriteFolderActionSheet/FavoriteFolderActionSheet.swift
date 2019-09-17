@@ -14,6 +14,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
     public var isCopyLinkHidden: Bool {
         didSet {
             viewController?.isCopyLinkHidden = isCopyLinkHidden
+            shouldAnimate = true
             height = .makeHeight(isCopyLinkHidden: isCopyLinkHidden)
         }
     }
@@ -35,9 +36,31 @@ public final class FavoriteFolderActionSheet: BottomSheet {
 
     // MARK: - Lifecycle
 
+    private var originYObservationToken: NSKeyValueObservation?
+    private var animationOffset: CGFloat = 0
+    private var maxAnimationOffset = FavoriteFolderActionViewController.expandedHeight - FavoriteFolderActionViewController.compactHeight
+    private var shouldAnimate = false
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         viewController?.delegate = self
+
+        let animationOffsetMultiplier: CGFloat = isCopyLinkHidden ? 2 : 1
+
+        originYObservationToken = view.layer.observe(\.position, options: [.new, .old]) { [weak self] _, change in
+            guard let self = self, self.shouldAnimate else { return }
+            guard let newValue = change.newValue?.y, let oldValue = change.oldValue?.y else { return }
+
+            let offset = animationOffsetMultiplier * (newValue - oldValue)
+            self.animationOffset += offset
+
+            if abs(self.animationOffset) <= self.maxAnimationOffset {
+                self.viewController?.animateCells(with: -offset)
+            } else {
+                self.shouldAnimate = false
+                self.animationOffset = 0
+            }
+        }
     }
 }
 

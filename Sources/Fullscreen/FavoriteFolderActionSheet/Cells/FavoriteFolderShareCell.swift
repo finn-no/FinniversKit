@@ -4,12 +4,12 @@
 
 import UIKit
 
-protocol FavoriteFolderShareCellDelegate: AnyObject {
-    func favoriteFolderShareCell(_ cell: FavoriteFolderShareCell, didChangeValueFor switchControl: UISwitch)
+protocol FavoriteFolderShareViewDelegate: AnyObject {
+    func favoriteFolderShareView(_ view: FavoriteFolderShareView, didChangeValueFor switchControl: UISwitch)
 }
 
-final class FavoriteFolderShareCell: UITableViewCell {
-    weak var delegate: FavoriteFolderShareCellDelegate?
+final class FavoriteFolderShareView: UIView {
+    weak var delegate: FavoriteFolderShareViewDelegate?
 
     private lazy var titleLabel = FavoriteActionCell.makeTitleLabel()
 
@@ -30,8 +30,8 @@ final class FavoriteFolderShareCell: UITableViewCell {
 
     // MARK: - Init
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
     }
 
@@ -49,30 +49,30 @@ final class FavoriteFolderShareCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        selectionStyle = .none
+        backgroundColor = .milk
 
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(switchControl)
+        addSubview(iconImageView)
+        addSubview(titleLabel)
+        addSubview(switchControl)
 
         NSLayoutConstraint.activate([
-            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: switchControl.leadingAnchor, constant: -.mediumLargeSpacing),
 
-            switchControl.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            switchControl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing)
+            switchControl.centerYAnchor.constraint(equalTo: centerYAnchor),
+            switchControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 
     // MARK: - Action
 
     @objc private func handleSwitchValueChange() {
-        delegate?.favoriteFolderShareCell(self, didChangeValueFor: switchControl)
+        delegate?.favoriteFolderShareView(self, didChangeValueFor: switchControl)
     }
 }
