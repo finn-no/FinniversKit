@@ -6,16 +6,14 @@ import FinniversKit
 
 public class ToastDemoView: UIView {
     private lazy var topToastButton: Button = {
-        let button = Button(style: .callToAction)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .callToAction, withAutoLayout: true)
         button.setTitle("Animate From Top", for: .normal)
         button.addTarget(self, action: #selector(animateFromTop), for: .touchUpInside)
         return button
     }()
 
     private lazy var bottomToastButton: Button = {
-        let button = Button(style: .callToAction)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .callToAction, withAutoLayout: true)
         button.setTitle("Animate From Bottom", for: .normal)
         button.addTarget(self, action: #selector(animateFromBottom), for: .touchUpInside)
         return button
@@ -30,8 +28,7 @@ public class ToastDemoView: UIView {
     }()
 
     private lazy var containedToastButton: Button = {
-        let button = Button(style: .callToAction)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(style: .callToAction, withAutoLayout: true)
         button.setTitle("Animate In Container", for: .normal)
         button.addTarget(self, action: #selector(animateInContainer), for: .touchUpInside)
         return button
@@ -109,7 +106,6 @@ public class ToastDemoView: UIView {
         containerView.addSubview(containedToastButton)
 
         directionalLayoutMargins = NSDirectionalEdgeInsets(all: .mediumLargeSpacing)
-
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
