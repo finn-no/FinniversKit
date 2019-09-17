@@ -45,10 +45,6 @@ public class FavoriteAdsListView: UIView {
         didSet { tableHeaderView.subtitle = subtitle }
     }
 
-    public var searchBarPlaceholder = "" {
-        didSet { tableHeaderView.searchBarPlaceholder = searchBarPlaceholder }
-    }
-
     public var searchBarText: String {
         get { return tableHeaderView.searchBarText }
         set { tableHeaderView.searchBarText = newValue }
@@ -58,11 +54,9 @@ public class FavoriteAdsListView: UIView {
         didSet { tableHeaderView.sortingTitle = sortingTitle }
     }
 
-    public var commentActionTitle = ""
-    public var deleteActionTitle = ""
-
     // MARK: - Private properties
 
+    private let viewModel: FavoriteAdsListViewModel
     private let imageCache = ImageMemoryCache()
     private var didSetTableHeader = false
 
@@ -87,8 +81,9 @@ public class FavoriteAdsListView: UIView {
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(viewModel: FavoriteAdsListViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
         setup()
     }
 
@@ -99,6 +94,8 @@ public class FavoriteAdsListView: UIView {
     private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
+
+        tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
     }
 
     // MARK: - Overrides
@@ -180,9 +177,11 @@ extension FavoriteAdsListView: UITableViewDelegate {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
+        let comment = dataSource?.favoriteAdsListView(self, viewModelFor: indexPath).comment
+
         let commentAction = UIContextualAction(
             style: .normal,
-            title: commentActionTitle,
+            title: comment == nil ? viewModel.addCommentActionTitle : viewModel.editCommentActionTitle,
             handler: { [weak self] _, _, completionHandler in
                 guard let self = self else { return }
                 self.delegate?.favoriteAdsListView(self, didSelectCommentForItemAt: indexPath)
@@ -194,7 +193,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
         let deleteAction = UIContextualAction(
             style: .normal,
-            title: deleteActionTitle,
+            title: viewModel.deleteAdActionTitle,
             handler: { [weak self] _, _, completionHandler in
                 guard let self = self else { return }
                 self.delegate?.favoriteAdsListView(self, didSelectDeleteItemAt: indexPath)
