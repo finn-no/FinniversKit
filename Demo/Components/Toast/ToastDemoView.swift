@@ -5,6 +5,14 @@
 import FinniversKit
 
 public class ToastDemoView: UIView {
+    private lazy var topToastButton: Button = {
+        let button = Button(style: .callToAction)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Animate From Top", for: .normal)
+        button.addTarget(self, action: #selector(animateFromTop), for: .touchUpInside)
+        return button
+    }()
+
     private lazy var bottomToastButton: Button = {
         let button = Button(style: .callToAction)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -89,28 +97,35 @@ public class ToastDemoView: UIView {
         stackView.addArrangedSubview(attributedTextSuccessToast)
         stackView.addArrangedSubview(imageToast)
         stackView.addArrangedSubview(errorToast)
-        stackView.addArrangedSubview(successButtonToast)
         stackView.addArrangedSubview(errorButtonToast)
         stackView.addArrangedSubview(successPromotedButtonToast)
         stackView.addArrangedSubview(errorPromotedButtonToast)
 
         addSubview(stackView)
+        addSubview(topToastButton)
         addSubview(bottomToastButton)
 
         addSubview(containerView)
         containerView.addSubview(containedToastButton)
 
+        directionalLayoutMargins = NSDirectionalEdgeInsets(all: .mediumLargeSpacing)
+
+
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            bottomToastButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            bottomToastButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            bottomToastButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumLargeSpacing),
+            topToastButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            topToastButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            topToastButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumLargeSpacing),
 
-            containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            bottomToastButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            bottomToastButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            bottomToastButton.topAnchor.constraint(equalTo: topToastButton.bottomAnchor, constant: .mediumLargeSpacing),
+
+            containerView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             containerView.topAnchor.constraint(equalTo: bottomToastButton.bottomAnchor, constant: .mediumLargeSpacing),
 
             containedToastButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .mediumLargeSpacing),
@@ -118,6 +133,13 @@ public class ToastDemoView: UIView {
             containedToastButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: .mediumLargeSpacing),
             containedToastButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -.veryLargeSpacing)
         ])
+    }
+
+    @objc private func animateFromTop() {
+        // Because the demo views only fill the view controller's safe area, we need to display the toast
+        // in the superview (the view controller) to make the toast fill the safe area inset.
+        guard let superview = superview else { return }
+        animateSuccess(in: superview, fromBottom: false)
     }
 
     @objc private func animateFromBottom() {
@@ -131,9 +153,13 @@ public class ToastDemoView: UIView {
         animateSuccess(in: containerView)
     }
 
-    private func animateSuccess(in toastPresenterView: UIView) {
+    private func animateSuccess(in toastPresenterView: UIView, fromBottom: Bool = true) {
         let animatedToast = ToastView(style: .success)
         animatedToast.text = "Animated success"
-        animatedToast.presentFromBottom(view: toastPresenterView, animateOffset: 0, timeOut: 5)
+        if fromBottom {
+            animatedToast.presentFromBottom(view: toastPresenterView, animateOffset: 0, timeOut: 3)
+        } else {
+            animatedToast.presentFromTop(view: toastPresenterView, animateOffset: 0, timeOut: 3)
+        }
     }
 }
