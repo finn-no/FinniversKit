@@ -123,15 +123,15 @@ public class ToastView: UIView {
 
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageView.centerYAnchor.constraint(equalTo: messageTitle.centerYAnchor),
             imageView.widthAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.width),
             imageView.heightAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.height),
             imageView.widthAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.width),
             imageView.heightAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.height),
 
             messageTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
-            messageTitle.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            messageTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+            messageTitle.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
+            messageTitle.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.mediumLargeSpacing)
         ])
 
         if style == .successButton || style == .errorButton {
@@ -140,7 +140,7 @@ public class ToastView: UIView {
             NSLayoutConstraint.activate([
                 messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -.mediumLargeSpacing),
                 actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-                actionButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+                actionButton.centerYAnchor.constraint(equalTo: messageTitle.centerYAnchor)
             ])
         } else {
             actionButton.isHidden = true
@@ -163,8 +163,7 @@ public class ToastView: UIView {
         setupToastConstraint(for: view)
 
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
-            let coverViewHeight = self.safeAreaCoverView?.frame.height ?? 0
-            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset + coverViewHeight))
+            self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
         })
         if let timeOut = timeOut {
             dismissToast(after: timeOut)
@@ -177,7 +176,6 @@ public class ToastView: UIView {
             UIView.animate(withDuration: self.animationDuration, delay: 0, options: .curveEaseInOut, animations: {
                 self.transform = CGAffineTransform.identity
             }, completion: { _ in
-                self.removeSafeAreaCoverView()
                 self.removeFromSuperview()
             })
         }
@@ -194,28 +192,6 @@ public class ToastView: UIView {
             topAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
-        setupSafeAreaCoverViewIfNeeded(for: view)
         view.layoutIfNeeded()
-    }
-
-    private func setupSafeAreaCoverViewIfNeeded(for view: UIView) {
-        let height = view.safeAreaInsets.bottom
-        if height > 0 {
-            let view = UIView(withAutoLayout: true)
-            view.backgroundColor = style.color
-            addSubview(view)
-            safeAreaCoverView = view
-
-            NSLayoutConstraint.activate([
-                view.widthAnchor.constraint(equalTo: widthAnchor),
-                view.heightAnchor.constraint(equalToConstant: height),
-                view.topAnchor.constraint(equalTo: bottomAnchor)
-                ])
-        }
-    }
-
-    private func removeSafeAreaCoverView() {
-        safeAreaCoverView?.removeFromSuperview()
-        safeAreaCoverView = nil
     }
 }
