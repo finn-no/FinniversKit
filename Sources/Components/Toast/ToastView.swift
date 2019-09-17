@@ -121,8 +121,10 @@ public class ToastView: UIView {
         addSubview(messageTitle)
         addSubview(actionButton)
 
+        directionalLayoutMargins = NSDirectionalEdgeInsets(all: .mediumLargeSpacing)
+
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            imageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             imageView.centerYAnchor.constraint(equalTo: messageTitle.centerYAnchor),
             imageView.widthAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.width),
             imageView.heightAnchor.constraint(lessThanOrEqualToConstant: imageSizeAllowedMax.height),
@@ -130,8 +132,8 @@ public class ToastView: UIView {
             imageView.heightAnchor.constraint(greaterThanOrEqualToConstant: imageSizeAllowedMin.height),
 
             messageTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
-            messageTitle.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumLargeSpacing),
-            messageTitle.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.mediumLargeSpacing)
+            messageTitle.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            messageTitle.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
         ])
 
         if style == .successButton || style == .errorButton {
@@ -139,12 +141,12 @@ public class ToastView: UIView {
 
             NSLayoutConstraint.activate([
                 messageTitle.trailingAnchor.constraint(lessThanOrEqualTo: actionButton.leadingAnchor, constant: -.mediumLargeSpacing),
-                actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+                actionButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
                 actionButton.centerYAnchor.constraint(equalTo: messageTitle.centerYAnchor)
             ])
         } else {
             actionButton.isHidden = true
-            messageTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing).isActive = true
+            messageTitle.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
         }
     }
 
