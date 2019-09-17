@@ -15,12 +15,12 @@ class FavoriteAdsListDemoView: UIView {
     private var currentSorting: AdsSorting = .lastAdded
 
     private lazy var favoritesListView: FavoriteAdsListView = {
-        let view = FavoriteAdsListView(withAutoLayout: true)
+        let view = FavoriteAdsListView(viewModel: .default)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.dataSource = self
         view.delegate = self
         view.title = "Mine funn"
         view.subtitle = "\(viewModels.count) favoritter"
-        view.searchBarPlaceholder = "Søk etter en av dine favoritter"
         view.sortingTitle = currentSorting.rawValue
         return view
     }()
@@ -43,8 +43,15 @@ class FavoriteAdsListDemoView: UIView {
 
 extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath) {}
-
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath) {}
+
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath) {
+        print("Delete button selected")
+    }
+
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath) {
+        print("Comment button selected")
+    }
 
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView) {
         switch currentSorting {
@@ -113,4 +120,15 @@ extension FavoriteAdsListDemoView: FavoriteAdsListViewDataSource {
     }
 
     func favoriteAdsListView(_ view: FavoriteAdsListView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+}
+
+// MARK: - Private
+
+extension FavoriteAdsListViewModel {
+    static let `default` = FavoriteAdsListViewModel(
+        searchBarPlaceholder: "Søk etter en av dine favoritter",
+        addCommentActionTitle: "Skriv\nnotat",
+        editCommentActionTitle: "Rediger\nnotat",
+        deleteAdActionTitle: "Slett"
+    )
 }
