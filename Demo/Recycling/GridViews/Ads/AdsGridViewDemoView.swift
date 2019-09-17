@@ -88,16 +88,9 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
 
         default:
             let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
-            // Show a pretty color while we load the image
-            let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
-            let color = colors[indexPath.row % 4]
-
-            cell.index = indexPath.row
-            cell.loadingColor = color
             cell.dataSource = adsGridView
             cell.delegate = adsGridView
-            cell.model = model
-
+            cell.configure(with: model, atIndex: indexPath.item)
             return cell
         }
     }
