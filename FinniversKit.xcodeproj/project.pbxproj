@@ -2587,10 +2587,10 @@
 		CF164D0B230FF44D00250822 /* FavoriteFolderActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */,
 				CF164D2323101E4400250822 /* FavoriteFolderActionSheet.swift */,
-				CF7E7B57230D3CC1001D514E /* Views */,
+				CF2E46EE231958300085A591 /* FavoriteFolderActionViewController.swift */,
 				CF164CE9230D8DBC00250822 /* ViewModels */,
+				CF7E7B57230D3CC1001D514E /* Views */,
 			);
 			path = FavoriteFolderActionSheet;
 			sourceTree = "<group>";
