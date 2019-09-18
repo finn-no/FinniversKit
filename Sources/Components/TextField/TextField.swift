@@ -140,7 +140,7 @@ public class TextField: UIView {
         didSet {
             typeLabel.text = placeholderText
             accessibilityLabel = placeholderText
-            textField.placeholder = placeholderText
+            textField.placeholder = placeholderText //DARK could use attributedPlaceholder to set custom color of placeholder text
         }
     }
 
