@@ -10,6 +10,11 @@ protocol FavoriteFolderShareViewDelegate: AnyObject {
 
 final class FavoriteFolderShareView: UIView {
     weak var delegate: FavoriteFolderShareViewDelegate?
+    var isSeparatorHidden = true {
+        didSet {
+            separatorView.isHidden = isSeparatorHidden
+        }
+    }
 
     private lazy var titleLabel = FavoriteActionCell.makeTitleLabel()
 
@@ -26,6 +31,13 @@ final class FavoriteFolderShareView: UIView {
         control.onTintColor = .primaryBlue
         control.addTarget(self, action: #selector(handleSwitchValueChange), for: .valueChanged)
         return control
+    }()
+
+    private lazy var separatorView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .sardine
+        view.isHidden = isSeparatorHidden
+        return view
     }()
 
     // MARK: - Init
@@ -54,6 +66,7 @@ final class FavoriteFolderShareView: UIView {
         addSubview(iconImageView)
         addSubview(titleLabel)
         addSubview(switchControl)
+        addSubview(separatorView)
 
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -66,7 +79,12 @@ final class FavoriteFolderShareView: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: switchControl.leadingAnchor, constant: -.mediumLargeSpacing),
 
             switchControl.centerYAnchor.constraint(equalTo: centerYAnchor),
-            switchControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing)
+            switchControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            separatorView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
         ])
     }
 

@@ -55,7 +55,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
             self.animationOffset += offset
 
             if abs(self.animationOffset) <= self.maxAnimationOffset {
-                self.viewController?.animateCells(with: -offset)
+                self.viewController?.animateRows(with: -offset)
             } else {
                 self.shouldAnimate = false
                 self.animationOffset = 0

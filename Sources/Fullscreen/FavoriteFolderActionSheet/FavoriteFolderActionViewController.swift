@@ -22,18 +22,22 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     public var isCopyLinkHidden: Bool {
         didSet {
-           //reloadData()
+           updateSeparators()
         }
     }
 
     // MARK: - Private properties
 
     private let viewModel: FavoriteFolderActionViewModel
-    private let topActions: [FavoriteFolderAction] = [.edit, .changeName, .share, .copyLink, .delete]
 
-    private lazy var editButton = makeButton(withTitle: viewModel.editText, icon: .favoritesEdit)
-    private lazy var changeNameButton = makeButton(withTitle: viewModel.changeNameText, icon: .pencilPaper)
-    private lazy var deleteButton: UIButton = makeButton(withTitle: viewModel.deleteText, icon: .favoritesDelete)
+    private lazy var editButton = FavoriteFolderActionButton(title: viewModel.editText, icon: .favoritesEdit)
+    private lazy var changeNameButton = FavoriteFolderActionButton(title: viewModel.changeNameText, icon: .pencilPaper)
+
+    private lazy var deleteButton = FavoriteFolderActionButton(
+        title: viewModel.deleteText,
+        icon: .favoritesDelete,
+        tintColor: .cherry
+    )
 
     private lazy var shareView: FavoriteFolderShareView = {
         let view = FavoriteFolderShareView(withAutoLayout: true)
@@ -61,15 +65,6 @@ public final class FavoriteFolderActionViewController: UIViewController {
         return FavoriteFolderActionViewController.rowHeight
     }
 
-    private func makeButton(withTitle title: String, icon: FinniversImageAsset) -> UIButton {
-        let button = UIButton(withAutoLayout: true)
-        button.setTitleColor(.licorice, for: .normal)
-        button.backgroundColor = .red
-        button.setTitle(title, for: .normal)
-        button.setImage(UIImage(named: icon), for: .normal)
-        return button
-    }
-
     // MARK: - Init
 
     public init(viewModel: FavoriteFolderActionViewModel, isCopyLinkHidden: Bool = true) {
@@ -87,6 +82,13 @@ public final class FavoriteFolderActionViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        updateSeparators()
+    }
+
+    // MARK: - Animation
+
+    func animateRows(with offsetY: CGFloat) {
+        deleteButtonTopConstraint.constant += offsetY
     }
 
     // MARK: - Setup
@@ -126,8 +128,10 @@ public final class FavoriteFolderActionViewController: UIViewController {
         ])
     }
 
-    func animateCells(with offsetY: CGFloat) {
-        deleteButtonTopConstraint.constant += offsetY
+    private func updateSeparators() {
+        editButton.isSeparatorHidden = false
+        changeNameButton.isSeparatorHidden = false
+        shareView.isSeparatorHidden = !isCopyLinkHidden
     }
 }
 
