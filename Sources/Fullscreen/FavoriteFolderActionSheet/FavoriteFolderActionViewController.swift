@@ -23,13 +23,6 @@ public final class FavoriteFolderActionViewController: UIViewController {
     public var isCopyLinkHidden: Bool {
         didSet {
             updateSeparators()
-
-            if !isCopyLinkHidden {
-                copyLinkView.alpha = 0
-                copyLinkBottomConstraint.constant = copyLinkMaxBottomConstant
-            } else {
-                copyLinkBottomConstraint.constant = 0
-            }
         }
     }
 
@@ -37,10 +30,16 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     private let viewModel: FavoriteFolderActionViewModel
 
-    private lazy var editButton = FavoriteFolderActionButton(title: viewModel.editText, icon: .favoritesEdit)
-    private lazy var changeNameButton = FavoriteFolderActionButton(title: viewModel.changeNameText, icon: .pencilPaper)
+    private lazy var editButton = makeButton(withAction: .edit, title: viewModel.editText, icon: .favoritesEdit)
 
-    private lazy var deleteButton = FavoriteFolderActionButton(
+    private lazy var changeNameButton = makeButton(
+        withAction: .changeName,
+        title: viewModel.changeNameText,
+        icon: .pencilPaper
+    )
+
+    private lazy var deleteButton = makeButton(
+        withAction: .delete,
         title: viewModel.deleteText,
         icon: .favoritesDelete,
         tintColor: .cherry
@@ -105,6 +104,18 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     // MARK: - Setup
 
+    private func makeButton(
+        withAction action: FavoriteFolderAction,
+        title: String,
+        icon: FinniversImageAsset,
+        tintColor: UIColor = .licorice
+    ) -> FavoriteFolderActionButton {
+        let button = FavoriteFolderActionButton(action: action, title: title, icon: icon, tintColor: tintColor)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleActionButtonTap(_:)), for: .touchUpInside)
+        return button
+    }
+
     private func setup() {
         view.addSubview(editButton)
         view.addSubview(changeNameButton)
@@ -144,6 +155,12 @@ public final class FavoriteFolderActionViewController: UIViewController {
         editButton.isSeparatorHidden = false
         changeNameButton.isSeparatorHidden = false
         shareView.isSeparatorHidden = !isCopyLinkHidden
+    }
+
+    // MARK: - Actions
+
+    @objc private func handleActionButtonTap(_ button: FavoriteFolderActionButton) {
+        delegate?.favoriteFolderActionViewController(self, didSelectAction: button.action)
     }
 }
 

@@ -5,6 +5,8 @@
 import UIKit
 
 final class FavoriteFolderActionButton: UIButton {
+    let action: FavoriteFolderAction
+
     var isSeparatorHidden = true {
         didSet {
             separatorView.isHidden = isSeparatorHidden
@@ -20,10 +22,10 @@ final class FavoriteFolderActionButton: UIButton {
 
     // MARK: - Init
 
-    init(title: String, icon: FinniversImageAsset, tintColor: UIColor = .licorice) {
+    init(action: FavoriteFolderAction, title: String, icon: FinniversImageAsset, tintColor: UIColor = .licorice) {
+        self.action = action
         super.init(frame: .zero)
 
-        translatesAutoresizingMaskIntoConstraints = false
         titleLabel?.font = .bodyStrong
         setTitleColor(tintColor, for: .normal)
         setTitle(title, for: .normal)

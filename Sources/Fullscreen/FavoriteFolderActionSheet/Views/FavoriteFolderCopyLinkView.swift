@@ -23,6 +23,7 @@ final class FavoriteFolderCopyLinkView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
         label.textColor = .licorice
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
 
@@ -69,7 +70,7 @@ final class FavoriteFolderCopyLinkView: UIView {
 
             descriptionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            descriptionLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -.mediumSpacing),
+            descriptionLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor),
 
             button.centerYAnchor.constraint(equalTo: centerYAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor)
