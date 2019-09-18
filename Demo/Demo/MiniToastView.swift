@@ -7,7 +7,7 @@ import FinniversKit
 class MiniToastView: UIView {
     lazy var titleLabel: UILabel = {
         let label = Label(style: .body)
-        label.textColor = .milk
+        label.textColor = .textToast
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
@@ -18,7 +18,7 @@ class MiniToastView: UIView {
 
         addSubview(titleLabel)
         titleLabel.fillInSuperview(insets: UIEdgeInsets(top: .mediumSpacing, leading: .mediumLargeSpacing, bottom: -.mediumSpacing, trailing: -.mediumLargeSpacing))
-        backgroundColor = UIColor.licorice.withAlphaComponent(0.8)
+        backgroundColor = .bgAlert
         layer.cornerRadius = .mediumLargeSpacing
     }
 

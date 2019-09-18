@@ -33,14 +33,14 @@ public struct ContainmentOptions: OptionSet {
         let sectionType = Sections.for(indexPath)
         switch sectionType {
         case .dna:
-            guard let screens = DnaViews.items[safe: indexPath.row] else {
+            guard let screens = DnaDemoViews.items[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
             default: return nil
             }
         case .components:
-            guard let screens = ComponentViews.items[safe: indexPath.row] else {
+            guard let screens = ComponentDemoViews.items[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
@@ -51,21 +51,21 @@ public struct ContainmentOptions: OptionSet {
             default: return nil
             }
         case .cells:
-            guard let screens = Cells.items[safe: indexPath.row] else {
+            guard let screens = CellsDemoViews.items[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
             default: return nil
             }
         case .recycling:
-            guard let screens = RecyclingViews.items[safe: indexPath.row] else {
+            guard let screens = RecyclingDemoViews.items[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
             default: return nil
             }
         case .fullscreen:
-            guard let screens = FullscreenViews.items[safe: indexPath.row] else {
+            guard let screens = FullscreenDemoViews.items[safe: indexPath.row] else {
                 return nil
             }
             switch screens {
@@ -95,15 +95,15 @@ enum Sections: String, CaseIterable {
     var numberOfItems: Int {
         switch self {
         case .dna:
-            return DnaViews.items.count
+            return DnaDemoViews.items.count
         case .components:
-            return ComponentViews.items.count
+            return ComponentDemoViews.items.count
         case .cells:
-            return Cells.items.count
+            return CellsDemoViews.items.count
         case .recycling:
-            return RecyclingViews.items.count
+            return RecyclingDemoViews.items.count
         case .fullscreen:
-            return FullscreenViews.items.count
+            return FullscreenDemoViews.items.count
         }
     }
 
@@ -118,15 +118,15 @@ enum Sections: String, CaseIterable {
         let names: [String]
         switch section {
         case .dna:
-            names = DnaViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+            names = DnaDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
         case .components:
-            names = ComponentViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+            names = ComponentDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
         case .cells:
-            names = Cells.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+            names = CellsDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
         case .recycling:
-            names = RecyclingViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+            names = RecyclingDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
         case .fullscreen:
-            names = FullscreenViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+            names = FullscreenDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
         }
         return names
     }
@@ -136,19 +136,19 @@ enum Sections: String, CaseIterable {
         var rawClassName: String
         switch section {
         case .dna:
-            let names = DnaViews.items.sorted { $0.rawValue < $1.rawValue }
+            let names = DnaDemoViews.items.sorted { $0.rawValue < $1.rawValue }
             rawClassName = names[indexPath.row].rawValue
         case .components:
-            let names = ComponentViews.items.sorted { $0.rawValue < $1.rawValue }
+            let names = ComponentDemoViews.items.sorted { $0.rawValue < $1.rawValue }
             rawClassName = names[indexPath.row].rawValue
         case .cells:
-            let names = Cells.items.sorted { $0.rawValue < $1.rawValue }
+            let names = CellsDemoViews.items.sorted { $0.rawValue < $1.rawValue }
             rawClassName = names[indexPath.row].rawValue
         case .recycling:
-            let names = RecyclingViews.items.sorted { $0.rawValue < $1.rawValue }
+            let names = RecyclingDemoViews.items.sorted { $0.rawValue < $1.rawValue }
             rawClassName = names[indexPath.row].rawValue
         case .fullscreen:
-            let names = FullscreenViews.items.sorted { $0.rawValue < $1.rawValue }
+            let names = FullscreenDemoViews.items.sorted { $0.rawValue < $1.rawValue }
             rawClassName = names[indexPath.row].rawValue
         }
 
@@ -167,19 +167,19 @@ enum Sections: String, CaseIterable {
         var viewController: UIViewController?
         switch section {
         case .dna:
-            let selectedView = DnaViews.items[safe: indexPath.row]
+            let selectedView = DnaDemoViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .components:
-            let selectedView = ComponentViews.items[safe: indexPath.row]
+            let selectedView = ComponentDemoViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .cells:
-            let selectedView = Cells.items[safe: indexPath.row]
+            let selectedView = CellsDemoViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .recycling:
-            let selectedView = RecyclingViews.items[safe: indexPath.row]
+            let selectedView = RecyclingDemoViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         case .fullscreen:
-            let selectedView = FullscreenViews.items[safe: indexPath.row]
+            let selectedView = FullscreenDemoViews.items[safe: indexPath.row]
             viewController = selectedView?.viewController
         }
 
@@ -251,8 +251,8 @@ extension Foundation.Notification.Name {
 }
 
 @objc enum UserInterfaceStyle: Int {
-    case light
-    case dark
+    case light = 1
+    case dark = 2
 
     var image: UIImage {
         switch self {
