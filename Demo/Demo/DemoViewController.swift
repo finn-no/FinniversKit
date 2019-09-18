@@ -8,6 +8,9 @@ public class DemoViewController<View: UIView>: UIViewController {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
         playgroundView.backgroundColor = .milk
+        playgroundView.backgroundColor = .milk
+        playgroundView.backgroundColor = .milk
+        playgroundView.backgroundColor = .milk
         return playgroundView
     }()
 
