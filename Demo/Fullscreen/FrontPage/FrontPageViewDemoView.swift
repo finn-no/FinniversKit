@@ -11,10 +11,7 @@ public class FrontpageViewDemoView: UIView {
 
     private let ads: [Ad] = {
         var ads = AdFactory.create(numberOfModels: 120)
-        ads.insert(
-            AdFactory.googleDemoAd,
-            at: 4
-        )
+        ads.insert(AdFactory.googleDemoAd, at: 4)
         return ads
     }()
 

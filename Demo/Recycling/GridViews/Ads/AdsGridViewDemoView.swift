@@ -8,10 +8,7 @@ import FinniversKit
 public class AdDataSource: NSObject {
     let models: [Ad] = {
         var ads = AdFactory.create(numberOfModels: 9)
-        ads.insert(
-            AdFactory.googleDemoAd,
-            at: 4
-        )
+        ads.insert(AdFactory.googleDemoAd, at: 4)
         return ads
     }()
 }
