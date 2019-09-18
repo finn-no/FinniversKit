@@ -31,9 +31,9 @@ public final class FavoriteFolderActionViewController: UIViewController {
     private let viewModel: FavoriteFolderActionViewModel
     private let topActions: [FavoriteFolderAction] = [.edit, .changeName, .share, .copyLink, .delete]
 
-    private lazy var editButton = makeButton(withTitle: viewModel.editText)
-    private lazy var changeNameButton = makeButton(withTitle: viewModel.changeNameText)
-    private lazy var deleteButton: UIButton = makeButton(withTitle: viewModel.deleteText)
+    private lazy var editButton = makeButton(withTitle: viewModel.editText, icon: .favoritesEdit)
+    private lazy var changeNameButton = makeButton(withTitle: viewModel.changeNameText, icon: .pencilPaper)
+    private lazy var deleteButton: UIButton = makeButton(withTitle: viewModel.deleteText, icon: .favoritesDelete)
 
     private lazy var shareView: FavoriteFolderShareView = {
         let view = FavoriteFolderShareView(withAutoLayout: true)
@@ -61,11 +61,12 @@ public final class FavoriteFolderActionViewController: UIViewController {
         return FavoriteFolderActionViewController.rowHeight
     }
 
-    private func makeButton(withTitle title: String) -> UIButton {
+    private func makeButton(withTitle title: String, icon: FinniversImageAsset) -> UIButton {
         let button = UIButton(withAutoLayout: true)
         button.setTitleColor(.licorice, for: .normal)
         button.backgroundColor = .red
         button.setTitle(title, for: .normal)
+        button.setImage(UIImage(named: icon), for: .normal)
         return button
     }
 
