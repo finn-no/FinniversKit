@@ -18,7 +18,7 @@ public class AssetsDemoView: UIView {
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         return view
     }()
 

@@ -22,7 +22,7 @@ public class CheckboxDemoView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        backgroundColor = .white
+        backgroundColor = .bgPrimary
         addSubview(checkbox)
 
         NSLayoutConstraint.activate([

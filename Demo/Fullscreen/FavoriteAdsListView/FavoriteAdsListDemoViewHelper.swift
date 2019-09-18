@@ -9,7 +9,7 @@ extension FavoriteAdViewModel {
         return self.init(
             addressText: nil,
             titleText: "Annonsen er slettet",
-            titleColor: .stone,
+            titleColor: .textSecondary,
             descriptionPrimaryText: nil,
             descriptionSecondaryText: nil,
             descriptionTertiaryText: nil,
@@ -36,7 +36,7 @@ struct FavoriteAdsFactory {
             return FavoriteAdViewModel(
                 addressText: addresses[index],
                 titleText: title,
-                titleColor: .licorice,
+                titleColor: .textPrimary,
                 descriptionPrimaryText: primaryDescriptions[index],
                 descriptionSecondaryText: secondaryDescriptions[index],
                 descriptionTertiaryText: tertiaryDescriptions[index],

@@ -14,7 +14,7 @@ class HorizontalSlideDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
 
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestureRecognizerAction))
         swipeGestureRecognizer.direction = .right

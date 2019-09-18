@@ -21,7 +21,7 @@ public class IconCollectionDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         addSubview(collectionView)
 
         NSLayoutConstraint.activate([

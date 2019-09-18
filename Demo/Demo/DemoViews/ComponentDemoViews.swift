@@ -98,7 +98,7 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<RefreshControlDemoView>()
         case .horizontalSlide:
             let presentedViewController = HorizontalSlideDemoViewController()
-            let secondViewController = UINavigationController(rootViewController: presentedViewController)
+            let secondViewController = NavigationController(rootViewController: presentedViewController)
             secondViewController.transitioningDelegate = presentedViewController.transition
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
