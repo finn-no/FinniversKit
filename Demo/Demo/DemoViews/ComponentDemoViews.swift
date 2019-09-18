@@ -85,7 +85,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .consentTransparencyInfo:
             return DemoViewController<ConsentTransparencyInfoDemoView>()
         case .bannerTransparencyView:
-            return DemoViewController<BannerTransparencyDemoView>()
+            return DemoViewController<BannerTransparencyDemoView>(containmentOptions: .bottomSheet)
         case .checkbox:
             return DemoViewController<CheckboxDemoView>(dismissType: .dismissButton)
         case .radioButton:
@@ -131,7 +131,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .tweakable:
             return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
-            return SaveSearchViewDemoViewController()
+            return SaveSearchViewDemoViewController(containmentOptions: [.bottomSheet, .navigationController])
         case .identityView:
             return DemoViewController<IdentityDemoView>()
         case .stepSlider:
