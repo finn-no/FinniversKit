@@ -273,6 +273,7 @@
 		9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */; };
 		9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */; };
 		9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */; };
+		9B84289A232FA60900D9406A /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B842899232FA60900D9406A /* TestConfig.swift */; };
 		9B9287AB22F0593700FC7B69 /* KlimabroletData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */; };
 		9B93F210230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */; };
 		9B9F8C1722F07B2100298CDB /* FeedbackDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */; };
@@ -821,6 +822,7 @@
 		9B2F2B3822F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoPageViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletDemoViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
+		9B842899232FA60900D9406A /* TestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
 		9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletData.swift; sourceTree = "<group>"; };
 		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
@@ -1277,6 +1279,7 @@
 				14193AAC21380DC800EC7FC0 /* RecyclingViewTests.swift */,
 				14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */,
 				9F213D8A2542DC1D6D998B43 /* Util */,
+				9B842899232FA60900D9406A /* TestConfig.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -4161,6 +4164,7 @@
 				CF376C1B231D458200ED2B24 /* ArrayStepTests.swift in Sources */,
 				559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */,
 				CF376C1D231D459900ED2B24 /* StepTests.swift in Sources */,
+				9B84289A232FA60900D9406A /* TestConfig.swift in Sources */,
 				14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */,
 				14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */,
 				CFEB2221232BD9240039421C /* FBSnapshotTestsExtensions.swift in Sources */,

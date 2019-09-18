@@ -19,10 +19,10 @@ public extension Button {
 
         var bodyColor: UIColor {
             switch self {
-            case .default: return .milk
+            case .default: return .bgPrimary
             case .link, .flat: return .clear
-            case .callToAction: return .primaryBlue
-            case .destructive: return .cherry
+            case .callToAction: return .btnPrimary
+            case .destructive: return .btnCritical
             }
         }
 
@@ -35,14 +35,14 @@ public extension Button {
 
         var borderColor: UIColor? {
             switch self {
-            case .default: return .secondaryBlue
+            case .default: return .accentSecondaryBlue
             default: return nil
             }
         }
 
         var textColor: UIColor {
             switch self {
-            case .default, .link, .flat: return .primaryBlue
+            case .default, .link, .flat: return .textAction
             default: return .milk
             }
         }
@@ -58,7 +58,7 @@ public extension Button {
 
         var highlightedBorderColor: UIColor? {
             switch self {
-            case .default: return .primaryBlue
+            case .default: return .primaryBlue //DARK
             default: return nil
             }
         }
@@ -74,13 +74,13 @@ public extension Button {
         var disabledBodyColor: UIColor? {
             switch self {
             case .default, .link, .flat: return nil
-            default: return .sardine
+            default: return .btnDisabled
             }
         }
 
         var disabledBorderColor: UIColor? {
             switch self {
-            case .default: return .sardine
+            case .default: return .btnDisabled
             default: return nil
             }
         }
@@ -88,7 +88,7 @@ public extension Button {
         var disabledTextColor: UIColor? {
             switch self {
             case .callToAction, .destructive: return nil
-            default: return .sardine
+            default: return .textDisabled
             }
         }
 
