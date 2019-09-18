@@ -12,14 +12,14 @@ class DnaViewTests: FBSnapshotTestCase {
         recordMode = false
     }
 
-    private func snapshot(_ component: DnaViews) {
+    private func snapshot(_ component: DnaDemoViews) {
         FBSnapshotVerifyView(component.viewController.view)
     }
 
     // MARK: - Tests
 
     func testMissingSnapshotTests() {
-        for element in elementWithoutTests(for: DnaViews.self, testMethodPrefix: "testDnaViews") {
+        for element in elementWithoutTests(for: DnaDemoViews.self, testMethodPrefix: "testDnaViews") {
             XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
         }
     }
