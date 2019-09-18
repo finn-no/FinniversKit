@@ -4,8 +4,6 @@
 
 import FinniversKit
 
-// MARK: - DemoViewsTableViewController
-
 class DemoViewsTableViewController: UITableViewController {
     private lazy var selectorTitleView: SelectorTitleView = {
         let titleView = SelectorTitleView(withAutoLayout: true)
