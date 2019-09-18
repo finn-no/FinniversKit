@@ -12,14 +12,14 @@ class TableViewCellsViewTests: FBSnapshotTestCase {
         recordMode = false
     }
 
-    func snapshot(_ component: Cells) {
+    func snapshot(_ component: CellsDemoViews) {
         FBSnapshotVerifyView(component.viewController.view)
     }
 
     // MARK: - Tests
 
     func testMissingSnapshotTests() {
-        for element in elementWithoutTests(for: Cells.self) {
+        for element in elementWithoutTests(for: CellsDemoViews.self) {
             XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
         }
     }

@@ -19,24 +19,24 @@ class DnaViewTests: FBSnapshotTestCase {
     // MARK: - Tests
 
     func testMissingSnapshotTests() {
-        for element in elementWithoutTests(for: DnaDemoViews.self, testMethodPrefix: "testDnaDemoViews") {
+        for element in elementWithoutTests(for: DnaDemoViews.self, testMethodPrefix: "testDnaViews") {
             XCTFail("Not all elements were implemented, missing: \(element.rawValue)")
         }
     }
 
-    func testDnaDemoViewsColor() {
+    func testDnaViewsColor() {
         snapshot(.color)
     }
 
-    func testDnaDemoViewsFont() {
+    func testDnaViewsFont() {
         snapshot(.font)
     }
 
-    func testDnaDemoViewsSpacing() {
+    func testDnaViewsSpacing() {
         snapshot(.spacing)
     }
 
-    func testDnaDemoViewsAssets() {
+    func testDnaViewsAssets() {
         snapshot(.assets)
     }
 }
