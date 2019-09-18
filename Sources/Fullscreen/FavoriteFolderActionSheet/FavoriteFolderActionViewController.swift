@@ -95,7 +95,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     // MARK: - Animation
 
-    func animateRows(with offsetY: CGFloat) {
+    func animate(with offsetY: CGFloat) {
         deleteButtonTopConstraint.constant = min(
             deleteButtonTopConstraint.constant + offsetY,
             deleteButtonMaxTopConstant
