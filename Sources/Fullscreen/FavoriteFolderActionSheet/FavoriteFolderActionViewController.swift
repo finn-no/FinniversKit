@@ -22,7 +22,14 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     public var isCopyLinkHidden: Bool {
         didSet {
-           updateSeparators()
+            updateSeparators()
+
+            if !isCopyLinkHidden {
+                copyLinkView.alpha = 0
+                copyLinkBottomConstraint.constant = copyLinkMaxBottomConstant
+            } else {
+                copyLinkBottomConstraint.constant = 0
+            }
         }
     }
 
@@ -56,14 +63,16 @@ public final class FavoriteFolderActionViewController: UIViewController {
         return view
     }()
 
-    private lazy var deleteButtonTopConstraint: NSLayoutConstraint = {
-        let constant = isCopyLinkHidden ? 0 : rowHeight
-        return deleteButton.topAnchor.constraint(equalTo: shareView.bottomAnchor, constant: constant)
-    }()
+    private lazy var deleteButtonTopConstraint = deleteButton.topAnchor.constraint(
+        equalTo: shareView.bottomAnchor,
+        constant: isCopyLinkHidden ? 0 : deleteButtonMaxTopConstant
+    )
 
     private var rowHeight: CGFloat {
         return FavoriteFolderActionViewController.rowHeight
     }
+
+    private let deleteButtonMaxTopConstant = rowHeight
 
     // MARK: - Init
 
@@ -88,7 +97,10 @@ public final class FavoriteFolderActionViewController: UIViewController {
     // MARK: - Animation
 
     func animateRows(with offsetY: CGFloat) {
-        deleteButtonTopConstraint.constant += offsetY
+        deleteButtonTopConstraint.constant = min(
+            deleteButtonTopConstraint.constant + offsetY,
+            deleteButtonMaxTopConstant
+        )
     }
 
     // MARK: - Setup

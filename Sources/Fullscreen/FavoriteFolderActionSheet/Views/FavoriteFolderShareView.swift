@@ -91,6 +91,9 @@ final class FavoriteFolderShareView: UIView {
     // MARK: - Action
 
     @objc private func handleSwitchValueChange() {
-        delegate?.favoriteFolderShareView(self, didChangeValueFor: switchControl)
+        CATransaction.setCompletionBlock { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.favoriteFolderShareView(self, didChangeValueFor: self.switchControl)
+        }
     }
 }
