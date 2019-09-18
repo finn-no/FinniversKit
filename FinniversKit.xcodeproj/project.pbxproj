@@ -1370,9 +1370,9 @@
 		441FE415209A24E500B04EF1 /* GridViews */ = {
 			isa = PBXGroup;
 			children = (
-				CFFDF89522F311E300FE68EA /* NeighborhoodProfile */,
-				441FE416209A24E500B04EF1 /* Markets */,
 				441FE41F209A24E500B04EF1 /* Ads */,
+				441FE416209A24E500B04EF1 /* Markets */,
+				CFFDF89522F311E300FE68EA /* NeighborhoodProfile */,
 			);
 			path = GridViews;
 			sourceTree = "<group>";
@@ -1773,10 +1773,10 @@
 			isa = PBXGroup;
 			children = (
 				44A5579B22E71FEB001667AE /* BasicTableViewCell */,
-				44A557B022E72187001667AE /* SelectableTableViewCell */,
+				9A37DACFD214880B29DEBFA9 /* FavoriteAdTableViewCell */,
 				44A557A322E720A3001667AE /* IconTitleTableViewCell */,
 				44A557AB22E7211E001667AE /* RemoteImageTableViewCell */,
-				9A37DACFD214880B29DEBFA9 /* FavoriteAdTableViewCell */,
+				44A557B022E72187001667AE /* SelectableTableViewCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1822,11 +1822,11 @@
 		44AEFC1722E722FC00D3C307 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				44AEFC1822E722FC00D3C307 /* RemoteImageTableViewCell */,
 				44AEFC1A22E722FC00D3C307 /* BasicTableViewCell */,
-				44AEFC1D22E722FC00D3C307 /* IconTitleTableViewCell */,
-				44AEFC1F22E722FC00D3C307 /* SelectableTableViewCell */,
 				9A37DFB4ED453062D0BED7A9 /* FavoriteAdTableViewCell */,
+				44AEFC1D22E722FC00D3C307 /* IconTitleTableViewCell */,
+				44AEFC1822E722FC00D3C307 /* RemoteImageTableViewCell */,
+				44AEFC1F22E722FC00D3C307 /* SelectableTableViewCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -3285,9 +3285,9 @@
 		CF8F023921DCD487004C4042 /* GridViews */ = {
 			isa = PBXGroup;
 			children = (
-				CFFDF89422F3117500FE68EA /* NeighborhoodProfile */,
 				CF8F024121DCD5A5004C4042 /* Ads */,
 				CF8F024021DCD59E004C4042 /* Markets */,
+				CFFDF89422F3117500FE68EA /* NeighborhoodProfile */,
 			);
 			path = GridViews;
 			sourceTree = "<group>";
