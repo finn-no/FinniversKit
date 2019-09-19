@@ -55,7 +55,7 @@ class RootViewController: UIViewController {
         label.textAlignment = .center
         label.font = UIFont.title2
         label.text = "👆😎👇"
-        label.backgroundColor = .salmon
+        label.backgroundColor = .bgCritical
         return label
     }()
 
@@ -72,7 +72,7 @@ class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         view.addSubview(expandButton)
         view.addSubview(compactButton)
         view.addSubview(dismissButton)
@@ -159,7 +159,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         view.addSubview(requireConfirmationOnDragSwitch)
         view.addSubview(presentAllDraggableButton)
         view.addSubview(presentNavBarDraggableButton)
@@ -212,7 +212,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
         rootController.delegate = self
         rootController.title = "👆😎👇"
 
-        let navigationController = UINavigationController(rootViewController: rootController)
+        let navigationController = NavigationController(rootViewController: rootController)
         navigationController.navigationBar.isTranslucent = false
 
         let bottomSheet = BottomSheet(rootViewController: navigationController, draggableArea: .navigationBar)
@@ -226,7 +226,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
         rootController.delegate = self
         rootController.title = "👆😎👇"
 
-        let navigationController = UINavigationController(rootViewController: rootController)
+        let navigationController = NavigationController(rootViewController: rootController)
         navigationController.navigationBar.isTranslucent = false
 
         // Set draggable height to height of navBar.

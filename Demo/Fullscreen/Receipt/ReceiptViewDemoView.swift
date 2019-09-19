@@ -39,7 +39,7 @@ extension ReceiptViewDemoView: ReceiptViewDelegate {
     }
 
     func receiptInsertViewBelowDetailText(_ : ReceiptView) -> UIView? {
-        let questionnaireView = QuestionnaireView(style: .normal(backgroundColor: .ice, primaryButtonIcon: UIImage(named: .webview)))
+        let questionnaireView = QuestionnaireView(style: .normal(backgroundColor: .bgSecondary, primaryButtonIcon: UIImage(named: .webview)))
         questionnaireView.translatesAutoresizingMaskIntoConstraints = false
         questionnaireView.delegate = self
         questionnaireView.model = QuestionnaireDemoData()

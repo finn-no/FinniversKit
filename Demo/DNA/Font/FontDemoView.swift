@@ -65,7 +65,7 @@ extension FontDemoView: UITableViewDataSource {
         let item = items[indexPath.row]
         cell.textLabel?.text = item.title.capitalized
         cell.textLabel?.font = item.font
-        cell.textLabel?.textColor = .licorice
+        cell.textLabel?.textColor = .textPrimary
         cell.selectionStyle = .none
 
         return cell
