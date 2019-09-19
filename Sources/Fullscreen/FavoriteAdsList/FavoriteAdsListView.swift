@@ -201,7 +201,10 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
         deleteAction.backgroundColor = .cherry
 
-        return UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
+        configuration.performsFirstActionWithFullSwipe = false
+
+        return configuration
     }
 }
 
