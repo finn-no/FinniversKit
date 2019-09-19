@@ -188,7 +188,6 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        commentAction.image = UIImage(named: .favoritesNote)
         commentAction.backgroundColor = .licorice
 
         let deleteAction = UIContextualAction(
@@ -200,10 +199,12 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        deleteAction.image = UIImage(named: .favoritesDelete)
         deleteAction.backgroundColor = .cherry
 
-        return UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
+        configuration.performsFirstActionWithFullSwipe = false
+
+        return configuration
     }
 }
 

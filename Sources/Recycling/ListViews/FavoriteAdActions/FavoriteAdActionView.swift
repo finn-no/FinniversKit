@@ -80,6 +80,8 @@ extension FavoriteAdActionView: UITableViewDataSource {
         switch actions[indexPath.row] {
         case .comment:
             cell.configure(withTitle: viewModel.commentText, icon: .favoritesNote)
+        case .share:
+            cell.configure(withTitle: viewModel.shareText, icon: .favoritesShare)
         case .delete:
             cell.configure(withTitle: viewModel.deleteText, icon: .favoritesDelete, tintColor: .cherry)
         }

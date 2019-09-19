@@ -6,7 +6,11 @@ import FinniversKit
 
 /// For use with AdsGridView.
 public class AdDataSource: NSObject {
-    let models = AdFactory.create(numberOfModels: 9)
+    let models: [Ad] = {
+        var ads = AdFactory.create(numberOfModels: 9)
+        ads.insert(AdFactory.googleDemoAd, at: 4)
+        return ads
+    }()
 }
 
 public class AdsGridViewDemoView: UIView {
@@ -51,8 +55,41 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
         return dataSource.models.count
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
-        return dataSource.models[index]
+    public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
+        return [
+            AdsGridViewCell.self,
+            BannerAdDemoCell.self
+        ]
+    }
+
+    public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
+        let model = dataSource.models[indexPath.item]
+
+        switch model.adType {
+        case .google:
+            return 300
+        default:
+            return AdsGridViewCell.height(
+                for: model,
+                width: width
+            )
+        }
+    }
+
+    public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let model = dataSource.models[indexPath.item]
+
+        switch model.adType {
+        case .google:
+            return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
+
+        default:
+            let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
+            cell.dataSource = adsGridView
+            cell.delegate = adsGridView
+            cell.configure(with: model, atIndex: indexPath.item)
+            return cell
+        }
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {

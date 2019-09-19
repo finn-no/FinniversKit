@@ -4,5 +4,6 @@
 
 public enum FavoriteAdAction: Equatable, Hashable, CaseIterable {
     case comment
+    case share
     case delete
 }

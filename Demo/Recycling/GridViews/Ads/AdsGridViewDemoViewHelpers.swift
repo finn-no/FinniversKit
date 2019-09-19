@@ -6,6 +6,11 @@ import FinniversKit
 
 /// A model confirming to the AdsGridViewModel protocol for showcasing AdsGridViewCell in playground.
 public struct Ad: AdsGridViewModel {
+    public enum AdType {
+        case google
+        case normal
+    }
+
     public let imagePath: String?
     public let imageSize: CGSize
     public var iconImage: UIImage?
@@ -14,6 +19,7 @@ public struct Ad: AdsGridViewModel {
     public var accessory: String?
     public let imageText: String?
     public var isFavorite = false
+    public var adType: AdType
 
     public var accessibilityLabel: String {
         var message = title
@@ -41,6 +47,19 @@ public struct AdFactory {
 
     private static var minimumDataItemsCount = { return min(titles.count, min(imageSources.count, min(prices.count, subtitles.count))) }()
 
+    public static let googleDemoAd = Ad(
+        imagePath: nil,
+        imageSize: .zero,
+        iconImage: nil,
+        title: "Google Ad",
+        subtitle: nil,
+        accessory: nil,
+        imageText: nil,
+        isFavorite: false,
+        adType: .google,
+        favoriteButtonAccessibilityLabel: ""
+    )
+
     public static func create(numberOfModels: Int) -> [Ad] {
         return (0 ..< numberOfModels).map { index in
             let dataIndex = index % minimumDataItemsCount
@@ -58,6 +77,7 @@ public struct AdFactory {
                 accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
                 imageText: price,
                 isFavorite: false,
+                adType: .normal,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
     }
