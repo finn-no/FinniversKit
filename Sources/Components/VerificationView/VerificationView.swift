@@ -8,7 +8,7 @@ public protocol VerificationViewDelegate: AnyObject {
 
 public class VerificationView: UIView {
     private lazy var verificationImageView: UIImageView = {
-        let image = UIImage(named: .spidLogo)
+        let image = UIImage(named: .bankID)
         let imageView = UIImageView(image: image)
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,8 +89,8 @@ private extension VerificationView {
 
         NSLayoutConstraint.activate([
             verificationImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: insets.top),
-            verificationImageView.widthAnchor.constraint(equalToConstant: 64),
             verificationImageView.heightAnchor.constraint(equalToConstant: 32),
+            verificationImageView.widthAnchor.constraint(equalToConstant: 136),
             verificationImageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: verificationImageView.bottomAnchor, constant: insets.top),
