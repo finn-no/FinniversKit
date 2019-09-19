@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class QuestionnaireDemoView: UIView {
-    private lazy var questionnaireView = QuestionnaireView(style: .normal(backgroundColor: .ice, primaryButtonIcon: UIImage(named: .webview)))
+    private lazy var questionnaireView = QuestionnaireView(style: .normal(backgroundColor: .bgSecondary, primaryButtonIcon: UIImage(named: .webview)))
 
     // MARK: - Init
 

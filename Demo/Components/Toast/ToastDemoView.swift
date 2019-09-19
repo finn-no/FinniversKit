@@ -15,7 +15,7 @@ public class ToastDemoView: UIView {
 
     private lazy var containerView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .toothPaste
+        view.backgroundColor = .bgSecondary
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
@@ -50,8 +50,8 @@ public class ToastDemoView: UIView {
 
         let attributedTextSuccessToast = ToastView(style: .success)
         attributedTextSuccessToast.attributedText = {
-            let attributedString = NSMutableAttributedString(string: "What do we want? ", attributes: [.font: UIFont.body, .foregroundColor: UIColor.licorice])
-            attributedString.append(NSAttributedString(string: "Attributed strings!", attributes: [.font: UIFont.bodyStrong, .foregroundColor: UIColor.licorice]))
+            let attributedString = NSMutableAttributedString(string: "What do we want? ", attributes: [.font: UIFont.body, .foregroundColor: UIColor.textToast])
+            attributedString.append(NSAttributedString(string: "Attributed strings!", attributes: [.font: UIFont.bodyStrong, .foregroundColor: UIColor.textToast]))
             return attributedString
         }()
 

@@ -132,7 +132,7 @@ public class BottomSheet: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = rootViewController.view.backgroundColor ?? .milk
+        view.backgroundColor = rootViewController.view.backgroundColor ?? .bgPrimary
         view.clipsToBounds = true
         view.layer.cornerRadius = cornerRadius
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -186,7 +186,7 @@ private class Notch: UIView {
     private let notchSize = CGSize(width: 25, height: 4)
     private let notch: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled //DARK
         view.layer.cornerRadius = 2
         return view
     }()
