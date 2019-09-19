@@ -4,32 +4,42 @@
 
 import UIKit
 
-protocol FavoriteAdNoteViewControllerDelegate: AnyObject {
-    func favoriteAdNoteViewControllerDidSelectCancel(_ viewController: FavoriteAdNoteViewController)
-    func favoriteAdNoteViewController(_ viewController: FavoriteAdNoteViewController, didSelectSaveWithText text: String?)
+protocol FavoriteAdCommentViewControllerDelegate: AnyObject {
+    func favoriteAdCommentViewControllerDidSelectCancel(_ viewController: FavoriteAdCommentViewController)
+    func favoriteAdCommentViewController(
+        _ viewController: FavoriteAdCommentViewController,
+        didSelectSaveComment comment: String?
+    )
 }
 
-final class FavoriteAdNoteViewController: UIViewController {
-    weak var delegate: FavoriteAdNoteViewControllerDelegate?
+final class FavoriteAdCommentViewController: UIViewController {
+    weak var delegate: FavoriteAdCommentViewControllerDelegate?
 
     private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
-    private let noteViewModel: FavoriteAdNoteViewModel
+    private let commentViewModel: FavoriteAdCommentViewModel
     private let adViewModel: FavoriteAdViewModel
+    private let adImage: UIImage?
     private let notificationCenter: NotificationCenter
 
     private lazy var cancelButton = UIBarButtonItem(
-        title: noteViewModel.cancelButtonText,
+        title: commentViewModel.cancelButtonText,
         style: .plain,
         target: self,
         action: #selector(handleCancelButtonTap)
     )
 
-    private lazy var saveButton = UIBarButtonItem(
-        title: noteViewModel.saveButtonText,
-        style: .done,
-        target: self,
-        action: #selector(handleSaveButtonTap)
-    )
+    private lazy var saveButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            title: commentViewModel.saveButtonText,
+            style: .done,
+            target: self,
+            action: #selector(handleSaveButtonTap)
+        )
+
+        button.setTitleTextAttributes([.font: UIFont.bodyStrong])
+
+        return button
+    }()
 
     private lazy var shadowView = BottomShadowView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
@@ -43,16 +53,17 @@ final class FavoriteAdNoteViewController: UIViewController {
     private lazy var adView: FavoriteAdView = {
         let view = FavoriteAdView(withAutoLayout: true)
         view.isMoreButtonHidden = true
+        view.isCommentViewHidden = true
         view.configure(with: adViewModel)
-        view.remoteImageViewDataSource = remoteImageViewDataSource
+        view.remoteImageViewDataSource = self
         view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return view
     }()
 
     private lazy var textView: TextView = {
         let textView = TextView(withAutoLayout: true)
-        textView.text = noteViewModel.note
-        textView.placeholderText = noteViewModel.notePlaceholder
+        textView.placeholderText = commentViewModel.placeholder
+        textView.text = adViewModel.comment
         textView.isScrollEnabled = false
         textView.delegate = self
         textView.setContentHuggingPriority(.defaultLow, for: .vertical)
@@ -64,14 +75,14 @@ final class FavoriteAdNoteViewController: UIViewController {
     // MARK: - Init
 
     init(
-        noteViewModel: FavoriteAdNoteViewModel,
+        commentViewModel: FavoriteAdCommentViewModel,
         adViewModel: FavoriteAdViewModel,
-        remoteImageViewDataSource: RemoteImageViewDataSource,
+        adImage: UIImage?,
         notificationCenter: NotificationCenter = .default
     ) {
-        self.remoteImageViewDataSource = remoteImageViewDataSource
-        self.noteViewModel = noteViewModel
+        self.commentViewModel = commentViewModel
         self.adViewModel = adViewModel
+        self.adImage = adImage
         self.notificationCenter = notificationCenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -89,7 +100,7 @@ final class FavoriteAdNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = noteViewModel.title
+        title = commentViewModel.title
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = saveButton
 
@@ -182,17 +193,36 @@ final class FavoriteAdNoteViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func handleCancelButtonTap() {
-        delegate?.favoriteAdNoteViewControllerDidSelectCancel(self)
+        delegate?.favoriteAdCommentViewControllerDidSelectCancel(self)
     }
 
     @objc private func handleSaveButtonTap() {
-        delegate?.favoriteAdNoteViewController(self, didSelectSaveWithText: "")
+        delegate?.favoriteAdCommentViewController(self, didSelectSaveComment: textView.text)
     }
+}
+
+// MARK: - RemoteImageViewDataSource
+
+extension FavoriteAdCommentViewController: RemoteImageViewDataSource {
+    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+        return adImage
+    }
+
+    func remoteImageView(
+        _ view: RemoteImageView,
+        loadImageWithPath imagePath: String,
+        imageWidth: CGFloat,
+        completion: @escaping ((UIImage?) -> Void)
+    ) {
+        completion(adImage)
+    }
+
+    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - UIScrollViewDelegate
 
-extension FavoriteAdNoteViewController: UIScrollViewDelegate {
+extension FavoriteAdCommentViewController: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         shadowView.updateShadow(using: scrollView)
     }
@@ -200,9 +230,9 @@ extension FavoriteAdNoteViewController: UIScrollViewDelegate {
 
 // MARK: - TextViewDelegate
 
-extension FavoriteAdNoteViewController: TextViewDelegate {
+extension FavoriteAdCommentViewController: TextViewDelegate {
     func textViewDidChange(_ textView: TextView) {
-        saveButton.isEnabled = textView.text != noteViewModel.note
+        saveButton.isEnabled = textView.text != adViewModel.comment
     }
 }
 

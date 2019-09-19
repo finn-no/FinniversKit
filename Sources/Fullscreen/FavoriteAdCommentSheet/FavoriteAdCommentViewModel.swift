@@ -2,19 +2,17 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-public struct FavoriteAdNoteViewModel {
+public struct FavoriteAdCommentViewModel {
     public let title: String?
-    public let note: String
-    public let notePlaceholder: String?
+    public let placeholder: String?
     public let cancelButtonText: String
     public let saveButtonText: String
 
     // MARK: - Init
 
-    public init(title: String, note: String, notePlaceholder: String?, cancelButtonText: String, saveButtonText: String) {
+    public init(title: String, placeholder: String?, cancelButtonText: String, saveButtonText: String) {
         self.title = title
-        self.note = note
-        self.notePlaceholder = notePlaceholder
+        self.placeholder = placeholder
         self.cancelButtonText = cancelButtonText
         self.saveButtonText = saveButtonText
     }

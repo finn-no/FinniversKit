@@ -30,12 +30,16 @@ public class TextView: UIView {
 
     public var text: String! {
         get { return textView.text }
-        set { textView.text = newValue }
+        set {
+            textView.text = newValue
+            updatePlaceholderAppearance()
+        }
     }
 
     public var placeholderText: String? {
         didSet {
             placeholderLabel.text = placeholderText
+            updatePlaceholderAppearance()
         }
     }
 
@@ -63,8 +67,8 @@ public class TextView: UIView {
     private lazy var textView: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = .body
-        view.textColor = .licorice
-        view.backgroundColor = .ice
+        view.textColor = .textPrimary
+        view.backgroundColor = .bgSecondary
         view.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         view.isScrollEnabled = false
         view.delegate = self
@@ -74,14 +78,14 @@ public class TextView: UIView {
 
     private lazy var underLine: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .secondaryBlue
+        view.backgroundColor = .accentSecondaryBlue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private lazy var placeholderLabel: UILabel = {
         let label = Label(style: .body)
-        label.textColor = .sardine
+        label.textColor = .textDisabled
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -128,6 +132,14 @@ public class TextView: UIView {
             bottomAnchor.constraint(equalTo: underLine.bottomAnchor)
         ])
     }
+
+    private func updatePlaceholderAppearance() {
+        if textView.text.isEmpty {
+            placeholderLabel.isHidden = false
+        } else {
+            placeholderLabel.isHidden = true
+        }
+    }
 }
 
 // MARK: - UITextViewDelegate
@@ -139,12 +151,7 @@ extension TextView: UITextViewDelegate {
 
     public func textViewDidChange(_ textView: UITextView) {
         delegate?.textViewDidChange(self)
-
-        if textView.text.isEmpty {
-            placeholderLabel.isHidden = false
-        } else {
-            placeholderLabel.isHidden = true
-        }
+        updatePlaceholderAppearance()
     }
 
     public func textViewDidEndEditing(_ textView: UITextView) {

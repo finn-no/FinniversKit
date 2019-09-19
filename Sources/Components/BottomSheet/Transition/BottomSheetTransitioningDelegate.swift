@@ -12,6 +12,13 @@ class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningD
     private let interactionController: BottomSheetInteractionController
     private let animationController: BottomSheetAnimationController
 
+    private(set) lazy var dimView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        view.alpha = 0
+        return view
+    }()
+
     var height: BottomSheet.Height {
         didSet {
             presentationController?.height = height
@@ -28,7 +35,8 @@ class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningD
         presentationController = BottomSheetPresentationController(presentedViewController: presented,
                                                                    presenting: presenting,
                                                                    height: height,
-                                                                   interactionController: interactionController)
+                                                                   interactionController: interactionController,
+                                                                   dimView: dimView)
         presentationController?.presentationControllerDelegate = presentationControllerDelegate
         return presentationController
     }

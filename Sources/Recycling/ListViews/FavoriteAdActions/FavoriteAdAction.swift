@@ -3,6 +3,7 @@
 //
 
 public enum FavoriteAdAction: Equatable, Hashable, CaseIterable {
-    case addNote
+    case comment
+    case share
     case delete
 }

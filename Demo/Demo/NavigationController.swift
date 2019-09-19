@@ -29,22 +29,10 @@ class NavigationController: UINavigationController {
 
     func updateColors(for traitCollection: UITraitCollection, animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let separatorColor: UIColor
-            let barTintColor: UIColor
-            let tintColor: UIColor
-            let barStyle: UIBarStyle
-            switch State.currentUserInterfaceStyle(for: traitCollection) {
-            case .light:
-                separatorColor = .sardine
-                barTintColor = .milk
-                tintColor = .primaryBlue
-                barStyle = .default
-            case .dark:
-                separatorColor = .midnightSectionSeparator
-                barTintColor = .midnightBackground
-                tintColor = .secondaryBlue
-                barStyle = .black
-            }
+            let separatorColor: UIColor = .sardine //DARK
+            let barTintColor: UIColor = .bgPrimary
+            let tintColor: UIColor = .textAction
+            let barStyle: UIBarStyle = .default //DARK
 
             self.setBottomBorderColor(navigationBar: self.navigationBar, color: separatorColor, height: 0.5)
             self.navigationBar.barTintColor = barTintColor
