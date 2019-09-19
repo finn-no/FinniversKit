@@ -67,8 +67,8 @@ public class TextView: UIView {
     private lazy var textView: UITextView = {
         let view = UITextView(frame: .zero, textContainer: nil)
         view.font = .body
-        view.textColor = .licorice
-        view.backgroundColor = .ice
+        view.textColor = .textPrimary
+        view.backgroundColor = .bgSecondary
         view.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         view.isScrollEnabled = false
         view.delegate = self
@@ -78,14 +78,14 @@ public class TextView: UIView {
 
     private lazy var underLine: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .secondaryBlue
+        view.backgroundColor = .accentSecondaryBlue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private lazy var placeholderLabel: UILabel = {
         let label = Label(style: .body)
-        label.textColor = .sardine
+        label.textColor = .textDisabled
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

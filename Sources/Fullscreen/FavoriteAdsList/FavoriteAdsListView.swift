@@ -7,6 +7,8 @@ import UIKit
 public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath)
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
@@ -35,16 +37,12 @@ public class FavoriteAdsListView: UIView {
     public weak var delegate: FavoriteAdsListViewDelegate?
     public weak var dataSource: FavoriteAdsListViewDataSource?
 
-    public var title: String = "" {
+    public var title = "" {
         didSet { tableHeaderView.title = title }
     }
 
-    public var subtitle: String = "" {
+    public var subtitle = "" {
         didSet { tableHeaderView.subtitle = subtitle }
-    }
-
-    public var searchBarPlaceholder: String = "" {
-        didSet { tableHeaderView.searchBarPlaceholder = searchBarPlaceholder }
     }
 
     public var searchBarText: String {
@@ -58,6 +56,7 @@ public class FavoriteAdsListView: UIView {
 
     // MARK: - Private properties
 
+    private let viewModel: FavoriteAdsListViewModel
     private let imageCache = ImageMemoryCache()
     private var didSetTableHeader = false
 
@@ -82,8 +81,9 @@ public class FavoriteAdsListView: UIView {
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(viewModel: FavoriteAdsListViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
         setup()
     }
 
@@ -94,6 +94,8 @@ public class FavoriteAdsListView: UIView {
     private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
+
+        tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
     }
 
     // MARK: - Overrides
@@ -169,6 +171,40 @@ extension FavoriteAdsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) != nil else { return .leastNonzeroMagnitude }
         return 32
+    }
+
+    public func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        let comment = dataSource?.favoriteAdsListView(self, viewModelFor: indexPath).comment
+
+        let commentAction = UIContextualAction(
+            style: .normal,
+            title: comment == nil ? viewModel.addCommentActionTitle : viewModel.editCommentActionTitle,
+            handler: { [weak self] _, _, completionHandler in
+                guard let self = self else { return }
+                self.delegate?.favoriteAdsListView(self, didSelectCommentForItemAt: indexPath)
+                completionHandler(true)
+            })
+
+        commentAction.backgroundColor = .licorice
+
+        let deleteAction = UIContextualAction(
+            style: .normal,
+            title: viewModel.deleteAdActionTitle,
+            handler: { [weak self] _, _, completionHandler in
+                guard let self = self else { return }
+                self.delegate?.favoriteAdsListView(self, didSelectDeleteItemAt: indexPath)
+                completionHandler(true)
+            })
+
+        deleteAction.backgroundColor = .cherry
+
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
+        configuration.performsFirstActionWithFullSwipe = false
+
+        return configuration
     }
 }
 

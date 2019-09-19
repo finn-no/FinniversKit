@@ -7,7 +7,7 @@ import UIKit
 class SplitViewController: UISplitViewController {
     lazy var alternativeViewController: UIViewController = {
         let viewController = UIViewController()
-        viewController.view.backgroundColor = .milk
+        viewController.view.backgroundColor = .bgPrimary
 
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
         doubleTap.numberOfTapsRequired = 2

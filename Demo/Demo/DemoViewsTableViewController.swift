@@ -4,8 +4,6 @@
 
 import FinniversKit
 
-// MARK: - DemoViewsTableViewController
-
 class DemoViewsTableViewController: UITableViewController {
     private lazy var selectorTitleView: SelectorTitleView = {
         let titleView = SelectorTitleView(withAutoLayout: true)
@@ -73,32 +71,36 @@ class DemoViewsTableViewController: UITableViewController {
     }
 
     private func updateMoonButton() {
-        guard #available(iOS 13.0, *) else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped))
-            return
-        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped(sender:forEvent:)))
+        return
     }
 
-    @objc private func moonTapped() {
-        State.setCurrentUserInterfaceStyle(userInterfaceStyle: State.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light)
+    @objc private func moonTapped(sender: AnyObject, forEvent event: UIEvent) {
+        if event.allTouches?.first?.tapCount == 0 {
+            // Long press
+            State.setCurrentUserInterfaceStyle(nil, in: view.window)
+        } else {
+            State.setCurrentUserInterfaceStyle(State.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light, in: view.window)
+        }
         NotificationCenter.default.post(name: .didChangeUserInterfaceStyle, object: nil)
+
+        if #available(iOS 13.0, *) {
+        } else {
+            //Need to shutdown the app to make this work before dynamic colors were available
+            let alertController = UIAlertController(title: "Restart", message: "This requires a restart of the app", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                exit(0)
+            }))
+            alertController.addAction(UIAlertAction(title: "Later", style: .cancel, handler: nil))
+            present(alertController, animated: true)
+        }
     }
 
     private func updateColors(animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let interfaceBackgroundColor: UIColor
-            let sectionIndexColor: UIColor
-            switch State.currentUserInterfaceStyle(for: self.traitCollection) {
-            case .light:
-                interfaceBackgroundColor = .milk
-                sectionIndexColor = .primaryBlue
-            case .dark:
-                interfaceBackgroundColor = .midnightBackground
-                sectionIndexColor = .secondaryBlue
-            }
-
+            let sectionIndexColor: UIColor = .primaryBlue //DARK
             self.tableView.sectionIndexColor = sectionIndexColor
-            self.tableView.backgroundColor = interfaceBackgroundColor
+            self.tableView.backgroundColor = .bgPrimary
             self.selectorTitleView.updateColors(for: self.traitCollection)
             self.updateMoonButton()
             self.setNeedsStatusBarAppearanceUpdate()
@@ -167,13 +169,7 @@ extension DemoViewsTableViewController {
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
 
-        let cellTextColor: UIColor
-        switch State.currentUserInterfaceStyle(for: self.traitCollection) {
-        case .light:
-            cellTextColor = .licorice
-        case .dark:
-            cellTextColor = .milk
-        }
+        let cellTextColor: UIColor = .textPrimary
         cell.textLabel?.textColor = cellTextColor
 
         return cell
@@ -198,7 +194,7 @@ extension DemoViewsTableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.textLabel?.textColor = .midnightSectionHeader
+            headerView.textLabel?.textColor = .textDisabled //DARK
             headerView.textLabel?.font = UIFont.captionStrong
         }
     }

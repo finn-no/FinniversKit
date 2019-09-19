@@ -49,7 +49,7 @@ public class DialogueView: UIView {
         let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 
@@ -57,7 +57,7 @@ public class DialogueView: UIView {
         let label = Label(style: .caption)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -108,7 +108,7 @@ public class DialogueView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         layer.cornerRadius = 8
 
         addSubview(title)

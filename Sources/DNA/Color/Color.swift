@@ -4,6 +4,116 @@
 
 import UIKit
 
+// Semantic colors, dark mode compatible
+@objc extension UIColor {
+    public class var bgPrimary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: UIColor(hex: "#1B1B24"))
+    }
+
+    public class var bgSecondary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .ice, darkModeColor: UIColor(hex: "#262633"))
+    }
+
+    public class var bgTertiary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
+    }
+
+    public class var bgAlert: UIColor {
+        return .banana
+    }
+
+    public class var bgSuccess: UIColor {
+        return .mint
+    }
+
+    public class var bgCritical: UIColor {
+        return .salmon
+    }
+
+    public class var btnPrimary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#006DFB"))
+    }
+
+    public class var btnDisabled: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#2F333F"))
+    }
+
+    public class var btnCritical: UIColor {
+        return .cherry
+    }
+
+    public class var textPrimary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: .milk)
+    }
+
+    public class var textSecondary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .stone, darkModeColor: UIColor(hex: "#828699"))
+    }
+
+    public class var textTertiary: UIColor {
+        return .milk
+    }
+
+    public class var textAction: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
+    }
+
+    public class var textDisabled: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#2F333F"))
+    }
+
+    public class var textCritical: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .cherry, darkModeColor: .watermelon)
+    }
+
+    public class var accentSecondaryBlue: UIColor {
+        return .secondaryBlue
+    }
+
+    public class var accentPea: UIColor {
+        return .pea
+    }
+
+    public class var accentToothpaste: UIColor {
+        return .toothPaste
+    }
+
+    public class var textCTADisabled: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: UIColor(hex: "#828699"))
+    }
+
+    public class var textToast: UIColor {
+        return .licorice
+    }
+}
+
+// MARK: - Private helper for creating dynamic color
+extension UIColor {
+    private class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
+        switch FinniversKit.userInterfaceStyleSupport {
+        case .forceDark:
+            return darkModeColor
+        case .forceLight:
+            return defaultColor
+        case .dynamic:
+            if #available(iOS 13.0, *) {
+                #if swift(>=5.1)
+                return UIColor { traitCollection -> UIColor in
+                    switch traitCollection.userInterfaceStyle {
+                    case .dark:
+                        return darkModeColor
+                    default:
+                        return defaultColor
+                    }
+                }
+                #endif
+            }
+            return defaultColor
+        }
+    }
+}
+
+// FINN colors
 @objc extension UIColor {
     public class var ice: UIColor {
         return UIColor(r: 241, g: 249, b: 255)!
@@ -85,7 +195,7 @@ import UIKit
     /// Base initializer, it creates an instance of `UIColor` using an HEX string.
     ///
     /// - Parameter hex: The base HEX string to create the color.
-    convenience init(hex: String) {
+    private convenience init(hex: String) {
         let noHashString = hex.replacingOccurrences(of: "#", with: "")
         let scanner = Scanner(string: noHashString)
         scanner.charactersToBeSkipped = CharacterSet.symbols
@@ -169,23 +279,23 @@ extension CGColor {
 
 @objc extension UIColor {
     public class var callToActionButtonHighlightedBodyColor: UIColor {
-        return primaryBlue.withAlphaComponent(0.8)
+        return btnPrimary.withAlphaComponent(0.8)
     }
 
     public class var destructiveButtonHighlightedBodyColor: UIColor {
-        return cherry.withAlphaComponent(0.8)
+        return btnCritical.withAlphaComponent(0.8)
     }
 
     public class var defaultButtonHighlightedBodyColor: UIColor {
-        return UIColor(r: 241, g: 249, b: 255)!
+        return UIColor(r: 241, g: 249, b: 255)! //DARK btnTertiary?
     }
 
     public class var linkButtonHighlightedTextColor: UIColor {
-        return primaryBlue.withAlphaComponent(0.8)
+        return textAction.withAlphaComponent(0.8)
     }
 
     public class var flatButtonHighlightedTextColor: UIColor {
-        return primaryBlue.withAlphaComponent(0.8)
+        return textAction.withAlphaComponent(0.8)
     }
 }
 
@@ -215,7 +325,7 @@ extension CGColor {
 
 @objc extension UIColor {
     public class var defaultCellSelectedBackgroundColor: UIColor {
-        return UIColor(r: 230, g: 235, b: 242)!
+        return UIColor(r: 230, g: 235, b: 242)! //DARK
     }
 }
 
