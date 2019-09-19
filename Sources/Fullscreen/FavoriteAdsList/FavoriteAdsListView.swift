@@ -139,20 +139,16 @@ public class FavoriteAdsListView: UIView {
         let tableHeaderHeight = tableHeaderView.bounds.height
         let hasScrolledPastTableHeader = tableView.contentOffset.y >= tableHeaderHeight
 
+        if !editing {
+            setTableHeader()
+            tableView.contentOffset.y += tableHeaderHeight
+        }
+
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             guard let self = self else { return }
             self.tableHeaderView.alpha = editing ? 0 : 1
-            if editing {
-                if !hasScrolledPastTableHeader {
-                    self.tableView.contentOffset.y = tableHeaderHeight
-                }
-            } else {
-                self.setTableHeader()
-                if hasScrolledPastTableHeader {
-                    self.tableView.contentOffset.y += tableHeaderHeight
-                } else {
-                    self.tableView.contentOffset.y -= tableHeaderHeight
-                }
+            if !hasScrolledPastTableHeader {
+                self.tableView.contentOffset.y = editing ? tableHeaderHeight : 0
             }
         }, completion: { [weak self] _ in
             guard let self = self else { return }
