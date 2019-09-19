@@ -5,10 +5,15 @@
 import FinniversKit
 
 public class FrontpageViewDemoView: UIView {
-    private let ads = AdFactory.create(numberOfModels: 120)
     private let markets = Market.allMarkets
     private var didSetupView = false
     private var visibleItems = 20
+
+    private let ads: [Ad] = {
+        var ads = AdFactory.create(numberOfModels: 120)
+        ads.insert(AdFactory.googleDemoAd, at: 4)
+        return ads
+    }()
 
     private lazy var frontPageView: FrontPageView = {
         let view = FrontPageView(delegate: self)
@@ -74,8 +79,41 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         return min(ads.count, visibleItems)
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, modelAtIndex index: Int) -> AdsGridViewModel {
-        return ads[index]
+    public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
+        return [
+            AdsGridViewCell.self,
+            BannerAdDemoCell.self
+        ]
+    }
+
+    public func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat {
+        let model = ads[indexPath.item]
+
+        switch model.adType {
+        case .google:
+            return 300
+        default:
+            return AdsGridViewCell.height(
+                for: model,
+                width: width
+            )
+        }
+    }
+
+    public func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let model = ads[indexPath.item]
+
+        switch model.adType {
+        case .google:
+            return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
+
+        default:
+            let cell = collectionView.dequeue(AdsGridViewCell.self, for: indexPath)
+            cell.dataSource = adsGridView
+            cell.delegate = adsGridView
+            cell.configure(with: model, atIndex: indexPath.item)
+            return cell
+        }
     }
 
     public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {
