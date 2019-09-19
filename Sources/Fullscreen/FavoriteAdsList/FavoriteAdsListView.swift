@@ -121,6 +121,7 @@ public class FavoriteAdsListView: UIView {
 
         tableView.tableHeaderView?.layoutIfNeeded()
         tableView.tableHeaderView = tableView.tableHeaderView
+        tableView.sendSubviewToBack(tableHeaderView)
     }
 
     // MARK: - Reload
