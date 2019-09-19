@@ -71,6 +71,7 @@ public class FavoriteAdsListView: UIView {
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.keyboardDismissMode = .onDrag
         tableView.estimatedRowHeight = 130
+        tableView.estimatedSectionHeaderHeight = 32
         tableView.allowsMultipleSelectionDuringEditing = true
         return tableView
     }()
