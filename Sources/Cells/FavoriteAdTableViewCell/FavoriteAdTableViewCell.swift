@@ -66,7 +66,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
     // MARK: - Public methods
 
     public func configure(with viewModel: FavoriteAdViewModel) {
-        separatorInset = .leadingInset(.mediumLargeSpacing * 2 + FavoriteAdView.adImageWidth)
+        separatorInset = .leadingInset(.largeSpacing + FavoriteAdView.adImageWidth)
         adView.configure(with: viewModel)
     }
 
