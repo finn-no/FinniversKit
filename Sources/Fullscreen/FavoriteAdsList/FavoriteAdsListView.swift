@@ -165,6 +165,10 @@ public class FavoriteAdsListView: UIView {
 // MARK: - UITableViewDelegate
 
 extension FavoriteAdsListView: UITableViewDelegate {
+    private func selectRow(at indexPath: IndexPath) {
+        delegate?.favoriteAdsListView(self, didSelectItemAt: indexPath)
+    }
+
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? FavoriteAdTableViewCell {
             cell.loadImage()
@@ -175,8 +179,12 @@ extension FavoriteAdsListView: UITableViewDelegate {
         tableHeaderView.endEditing(true)
         if !tableView.isEditing {
             tableView.deselectRow(at: indexPath, animated: true)
-            delegate?.favoriteAdsListView(self, didSelectItemAt: indexPath)
         }
+        selectRow(at: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        selectRow(at: indexPath)
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
