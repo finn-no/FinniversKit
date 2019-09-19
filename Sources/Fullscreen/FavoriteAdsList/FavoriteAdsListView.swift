@@ -104,19 +104,22 @@ public class FavoriteAdsListView: UIView {
         super.layoutSubviews()
 
         if !didSetTableHeader {
-            tableView.tableHeaderView = tableHeaderView
-
-            NSLayoutConstraint.activate([
-                tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
-                tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-                tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
-            ])
-
-            tableView.tableHeaderView?.layoutIfNeeded()
-            tableView.tableHeaderView = tableView.tableHeaderView
-
+            setTableHeader()
             didSetTableHeader = true
         }
+    }
+
+    private func setTableHeader() {
+        tableView.tableHeaderView = tableHeaderView
+
+        NSLayoutConstraint.activate([
+            tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
+            tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+        ])
+
+        tableView.tableHeaderView?.layoutIfNeeded()
+        tableView.tableHeaderView = tableView.tableHeaderView
     }
 
     // MARK: - Reload
