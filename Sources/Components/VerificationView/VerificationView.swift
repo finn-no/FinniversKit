@@ -10,7 +10,7 @@ public class VerificationView: UIView {
     private lazy var verificationImageView: UIImageView = {
         let image = UIImage(named: .bankID)
         let imageView = UIImageView(image: image)
-        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
