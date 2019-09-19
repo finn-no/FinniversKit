@@ -89,7 +89,7 @@ private extension VerificationView {
 
         NSLayoutConstraint.activate([
             verificationImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: insets.top),
-            verificationImageView.heightAnchor.constraint(equalToConstant: 32),
+            verificationImageView.heightAnchor.constraint(equalToConstant: 48),
             verificationImageView.widthAnchor.constraint(equalToConstant: 136),
             verificationImageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
 
