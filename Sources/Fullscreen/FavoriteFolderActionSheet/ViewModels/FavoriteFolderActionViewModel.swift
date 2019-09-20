@@ -19,7 +19,7 @@ public struct FavoriteFolderActionViewModel {
     public let deleteText: String
 
     public init(
-        appearance: Appearance = .minimal,
+        appearance: Appearance = .full,
         editText: String,
         renameText: String,
         shareToggleText: String,
