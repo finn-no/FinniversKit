@@ -15,11 +15,11 @@ public final class FavoriteFolderActionViewController: UIViewController {
     public static let rowHeight: CGFloat = 48.0
 
     public static func compactHeight(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
-        return rowHeight * CGFloat(viewModel.kind.actions.subtracting([.shareLink]).count)
+        return rowHeight * CGFloat(viewModel.appearance.actions.subtracting([.shareLink]).count)
     }
 
     public static func expandedHeight(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
-        return rowHeight * CGFloat(viewModel.kind.actions.count)
+        return rowHeight * CGFloat(viewModel.appearance.actions.count)
     }
 
     // MARK: - Public properties
@@ -71,7 +71,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
     private lazy var animatingConstraint: NSLayoutConstraint = {
         let constant = isShared ? rowHeight : 0
 
-        switch self.viewModel.kind {
+        switch self.viewModel.appearance {
         case .full:
             return deleteButton.topAnchor.constraint(equalTo: shareView.bottomAnchor, constant: constant)
         case .minimal:
@@ -146,7 +146,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
             copyLinkView.heightAnchor.constraint(equalToConstant: rowHeight)
         ]
 
-        switch viewModel.kind {
+        switch viewModel.appearance {
         case .full:
             view.addSubview(changeNameButton)
             view.addSubview(deleteButton)
@@ -177,7 +177,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
     private func updateSeparators() {
         editButton.isSeparatorHidden = false
         changeNameButton.isSeparatorHidden = false
-        shareView.isSeparatorHidden = viewModel.kind == .minimal || isShared
+        shareView.isSeparatorHidden = viewModel.appearance == .minimal || isShared
     }
 
     // MARK: - Actions
@@ -205,7 +205,7 @@ extension FavoriteFolderActionViewController: FavoriteFolderShareLinkViewDelegat
 
 // MARK: - Private extensions
 
-private extension FavoriteFolderActionViewModel.Kind {
+private extension FavoriteFolderActionViewModel.Appearance {
     var actions: Set<FavoriteFolderAction> {
         switch self {
         case .full:

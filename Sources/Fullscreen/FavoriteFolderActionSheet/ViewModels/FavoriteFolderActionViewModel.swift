@@ -5,12 +5,12 @@
 import Foundation
 
 public struct FavoriteFolderActionViewModel {
-    public enum Kind {
+    public enum Appearance {
         case full
         case minimal
     }
 
-    public let kind: Kind
+    public let appearance: Appearance
     public let editText: String
     public let renameText: String
     public let shareToggleText: String
@@ -19,7 +19,7 @@ public struct FavoriteFolderActionViewModel {
     public let deleteText: String
 
     public init(
-        kind: Kind = .minimal,
+        appearance: Appearance = .minimal,
         editText: String,
         renameText: String,
         shareToggleText: String,
@@ -27,7 +27,7 @@ public struct FavoriteFolderActionViewModel {
         shareLinkButtonDescription: String,
         deleteText: String
     ) {
-        self.kind = kind
+        self.appearance = appearance
         self.editText = editText
         self.renameText = renameText
         self.shareToggleText = shareToggleText
