@@ -172,6 +172,7 @@ final class FavoriteAdView: UIView {
 
     func resetBackgroundColors() {
         remoteImageView.backgroundColor = remoteImageView.image == nil ? loadingColor : .clear
+        commentView.backgroundColor = FavoriteAdCommentView.defaultBackgroundColor
 
         if let ribbonStyle = viewModel?.ribbonStyle {
             statusRibbon.style = ribbonStyle
