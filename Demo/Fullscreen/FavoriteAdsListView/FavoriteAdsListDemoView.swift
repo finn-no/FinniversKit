@@ -32,9 +32,15 @@ class FavoriteAdsListDemoView: UIView, Tweakable {
                 self?.isEditing = false
                 self?.favoritesListView.setEditing(false)
             },
-            TweakingOption(title: "Edit mode", description: nil) { [weak self] in
+            TweakingOption(title: "Edit mode, none selected", description: nil) { [weak self] in
                 self?.isEditing = true
                 self?.favoritesListView.setEditing(true)
+                self?.favoritesListView.selectAllRows(false, animated: false)
+            },
+            TweakingOption(title: "Edit mode, all selected", description: nil) { [weak self] in
+                self?.isEditing = true
+                self?.favoritesListView.setEditing(true)
+                self?.favoritesListView.selectAllRows(true, animated: false)
             }
         ]
     }()
