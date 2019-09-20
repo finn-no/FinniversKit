@@ -9,10 +9,11 @@ enum AdsSorting: String {
     case alphabetically = "Alfabetisk"
 }
 
-class FavoriteAdsListDemoView: UIView {
+class FavoriteAdsListDemoView: UIView, Tweakable {
     private let viewModels = FavoriteAdsFactory.create()
     private let sectionDataSource = FavoriteAdsDemoDataSource()
     private var currentSorting: AdsSorting = .lastAdded
+    private var isEditing = false
 
     private lazy var favoritesListView: FavoriteAdsListView = {
         let view = FavoriteAdsListView(viewModel: .default)
@@ -23,6 +24,19 @@ class FavoriteAdsListDemoView: UIView {
         view.subtitle = "\(viewModels.count) favoritter"
         view.sortingTitle = currentSorting.rawValue
         return view
+    }()
+
+    lazy var tweakingOptions: [TweakingOption] = {
+        return [
+            TweakingOption(title: "Selection mode", description: nil) { [weak self] in
+                self?.isEditing = false
+                self?.favoritesListView.setEditing(false)
+            },
+            TweakingOption(title: "Edit mode", description: nil) { [weak self] in
+                self?.isEditing = true
+                self?.favoritesListView.setEditing(true)
+            }
+        ]
     }()
 
     override init(frame: CGRect) {
