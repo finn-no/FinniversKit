@@ -163,6 +163,20 @@ public class FavoriteAdsListView: UIView {
         tableView.setEditing(editing, animated: true)
     }
 
+    public func selectAllRows(_ selected: Bool, animated: Bool) {
+        for section in 0..<tableView.numberOfSections {
+            for row in 0..<tableView.numberOfRows(inSection: section) {
+                let indexPath = IndexPath(row: row, section: section)
+
+                if selected {
+                    tableView.selectRow(at: indexPath, animated: animated, scrollPosition: .none)
+                } else {
+                    tableView.deselectRow(at: indexPath, animated: animated)
+                }
+            }
+        }
+    }
+
     public func reloadRow(at indexPath: IndexPath, with animation: UITableView.RowAnimation = .automatic) {
         tableView.reloadRows(at: [indexPath], with: animation)
     }
