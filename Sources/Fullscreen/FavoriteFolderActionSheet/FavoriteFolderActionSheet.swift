@@ -11,11 +11,11 @@ public protocol FavoriteFolderActionSheetDelegate: AnyObject {
 public final class FavoriteFolderActionSheet: BottomSheet {
     public weak var actionDelegate: FavoriteFolderActionSheetDelegate?
 
-    public var isCopyLinkHidden: Bool {
+    public var isShared: Bool {
         didSet {
-            viewController?.isCopyLinkHidden = isCopyLinkHidden
+            viewController?.isShared = isShared
             shouldAnimate = true
-            height = .makeHeight(isCopyLinkHidden: isCopyLinkHidden)
+            height = .makeHeight(isShared: isShared)
         }
     }
 
@@ -26,10 +26,10 @@ public final class FavoriteFolderActionSheet: BottomSheet {
 
     // MARK: - Init
 
-    public required init(viewModel: FavoriteFolderActionViewModel, isCopyLinkHidden: Bool = true) {
-        self.isCopyLinkHidden = isCopyLinkHidden
-        let viewController = FavoriteFolderActionViewController(viewModel: viewModel, isCopyLinkHidden: isCopyLinkHidden)
-        super.init(rootViewController: viewController, height: .makeHeight(isCopyLinkHidden: isCopyLinkHidden))
+    public required init(viewModel: FavoriteFolderActionViewModel, isShared: Bool = true) {
+        self.isShared = isShared
+        let viewController = FavoriteFolderActionViewController(viewModel: viewModel, isShared: isShared)
+        super.init(rootViewController: viewController, height: .makeHeight(isShared: isShared))
         self.viewController = viewController
     }
 
@@ -47,7 +47,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
         super.viewDidLoad()
         viewController?.delegate = self
 
-        let animationOffsetMultiplier: CGFloat = isCopyLinkHidden ? 2 : 1
+        let animationOffsetMultiplier: CGFloat = isShared ? 1 : 2
         let maxTransitionOffset = Height.transitionOffset
 
         positionObservationToken = view.layer.observe(\.position, options: [.new, .old]) { [weak self] _, change in
@@ -81,21 +81,21 @@ extension FavoriteFolderActionSheet: FavoriteFolderActionViewControllerDelegate 
 // MARK: - Private extensions
 
 private extension BottomSheet.Height {
-    static func makeHeight(isCopyLinkHidden: Bool) -> BottomSheet.Height {
-        return isCopyLinkHidden ? .withoutCopyLink : .withCopyLink
+    static func makeHeight(isShared: Bool) -> BottomSheet.Height {
+        return isShared ? .shared : .notShared
     }
 
     static var transitionOffset: CGFloat {
-        return withCopyLink.compact - withoutCopyLink.compact
+        return shared.compact - notShared.compact
     }
 
-    private static var withoutCopyLink: BottomSheet.Height {
-        let height = FavoriteFolderActionViewController.compactHeight + bottomInset
+    private static var shared: BottomSheet.Height {
+        let height = FavoriteFolderActionViewController.expandedHeight + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }
 
-    private static var withCopyLink: BottomSheet.Height {
-        let height = FavoriteFolderActionViewController.expandedHeight + bottomInset
+    private static var notShared: BottomSheet.Height {
+        let height = FavoriteFolderActionViewController.compactHeight + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }
 

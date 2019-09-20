@@ -13,14 +13,14 @@ public protocol FavoriteFolderActionViewControllerDelegate: AnyObject {
 
 public final class FavoriteFolderActionViewController: UIViewController {
     public static let rowHeight: CGFloat = 48.0
-    public static let compactHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withCopyLink: false).count)
-    public static let expandedHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withCopyLink: true).count)
+    public static let compactHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withShareLink: false).count)
+    public static let expandedHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withShareLink: true).count)
 
     // MARK: - Public properties
 
     public weak var delegate: FavoriteFolderActionViewControllerDelegate?
 
-    public var isCopyLinkHidden: Bool {
+    public var isShared: Bool {
         didSet {
             updateSeparators()
         }
@@ -33,7 +33,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
     private lazy var editButton = makeButton(withAction: .edit, title: viewModel.editText, icon: .favoritesEdit)
 
     private lazy var changeNameButton = makeButton(
-        withAction: .changeName,
+        withAction: .rename,
         title: viewModel.changeNameText,
         icon: .pencilPaper
     )
@@ -47,7 +47,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     private lazy var shareView: FavoriteFolderShareView = {
         let view = FavoriteFolderShareView(withAutoLayout: true)
-        view.configure(withTitle: viewModel.shareText, switchOn: !isCopyLinkHidden)
+        view.configure(withTitle: viewModel.shareText, switchOn: isShared)
         view.delegate = self
         return view
     }()
@@ -64,7 +64,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     private lazy var deleteButtonTopConstraint = deleteButton.topAnchor.constraint(
         equalTo: shareView.bottomAnchor,
-        constant: isCopyLinkHidden ? 0 : deleteButtonMaxTopConstant
+        constant: isShared ? deleteButtonMaxTopConstant : 0
     )
 
     private var rowHeight: CGFloat {
@@ -75,9 +75,9 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     // MARK: - Init
 
-    public init(viewModel: FavoriteFolderActionViewModel, isCopyLinkHidden: Bool = true) {
+    public init(viewModel: FavoriteFolderActionViewModel, isShared: Bool = false) {
         self.viewModel = viewModel
-        self.isCopyLinkHidden = isCopyLinkHidden
+        self.isShared = isShared
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -154,7 +154,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
     private func updateSeparators() {
         editButton.isSeparatorHidden = false
         changeNameButton.isSeparatorHidden = false
-        shareView.isSeparatorHidden = !isCopyLinkHidden
+        shareView.isSeparatorHidden = isShared
     }
 
     // MARK: - Actions
@@ -168,7 +168,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
 extension FavoriteFolderActionViewController: FavoriteFolderShareViewDelegate {
     func favoriteFolderShareView(_ view: FavoriteFolderShareView, didChangeValueFor switchControl: UISwitch) {
-        delegate?.favoriteFolderActionViewController(self, didSelectAction: .share)
+        delegate?.favoriteFolderActionViewController(self, didSelectAction: .toggleSharing)
     }
 }
 
@@ -176,6 +176,6 @@ extension FavoriteFolderActionViewController: FavoriteFolderShareViewDelegate {
 
 extension FavoriteFolderActionViewController: FavoriteFolderCopyLinkViewDelegate {
     func favoriteFolderCopyLinkViewDidSelectButton(_ view: FavoriteFolderCopyLinkView) {
-        delegate?.favoriteFolderActionViewController(self, didSelectAction: .copyLink)
+        delegate?.favoriteFolderActionViewController(self, didSelectAction: .shareLink)
     }
 }

@@ -11,8 +11,8 @@ final class FavoriteFolderActionSheetDemoDelegate: FavoriteFolderActionSheetDele
         print("\(action) selected")
 
         switch action {
-        case .share:
-            actionSheet.isCopyLinkHidden.toggle()
+        case .toggleSharing:
+            actionSheet.isShared.toggle()
         default:
             break
         }
