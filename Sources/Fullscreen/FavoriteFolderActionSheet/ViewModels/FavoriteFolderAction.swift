@@ -10,8 +10,4 @@ public enum FavoriteFolderAction: Equatable, Hashable, CaseIterable {
     case toggleSharing
     case shareLink
     case delete
-
-    static func cases(withShareLink: Bool) -> [FavoriteFolderAction] {
-        return withShareLink ? allCases : allCases.filter({ $0 != .shareLink })
-    }
 }

@@ -7,10 +7,10 @@ import FinniversKit
 extension FavoriteFolderActionViewModel {
     static let `default` = FavoriteFolderActionViewModel(
         editText: "Rediger listen",
-        changeNameText: "Endre navn på listen",
-        shareText: "Deling av listen",
-        copyLinkButtonTitle: "Kopier lenke",
-        copyLinkButtonDescription: "Alle med lenken kan se listen",
+        renameText: "Endre navn på listen",
+        shareToggleText: "Deling av listen",
+        shareLinkButtonTitle: "Kopier lenke",
+        shareLinkButtonDescription: "Alle med lenken kan se listen",
         deleteText: "Slett listen"
     )
 }

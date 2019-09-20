@@ -5,26 +5,34 @@
 import Foundation
 
 public struct FavoriteFolderActionViewModel {
+    public enum Kind {
+        case full
+        case minimal
+    }
+
+    public let kind: Kind
     public let editText: String
-    public let changeNameText: String
-    public let shareText: String
-    public let copyLinkButtonTitle: String
-    public let copyLinkButtonDescription: String
+    public let renameText: String
+    public let shareToggleText: String
+    public let shareLinkButtonTitle: String
+    public let shareLinkButtonDescription: String
     public let deleteText: String
 
     public init(
+        kind: Kind = .minimal,
         editText: String,
-        changeNameText: String,
-        shareText: String,
-        copyLinkButtonTitle: String,
-        copyLinkButtonDescription: String,
+        renameText: String,
+        shareToggleText: String,
+        shareLinkButtonTitle: String,
+        shareLinkButtonDescription: String,
         deleteText: String
     ) {
+        self.kind = kind
         self.editText = editText
-        self.changeNameText = changeNameText
-        self.shareText = shareText
-        self.copyLinkButtonTitle = copyLinkButtonTitle
-        self.copyLinkButtonDescription = copyLinkButtonDescription
+        self.renameText = renameText
+        self.shareToggleText = shareToggleText
+        self.shareLinkButtonTitle = shareLinkButtonTitle
+        self.shareLinkButtonDescription = shareLinkButtonDescription
         self.deleteText = deleteText
     }
 }

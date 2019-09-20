@@ -13,8 +13,14 @@ public protocol FavoriteFolderActionViewControllerDelegate: AnyObject {
 
 public final class FavoriteFolderActionViewController: UIViewController {
     public static let rowHeight: CGFloat = 48.0
-    public static let compactHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withShareLink: false).count)
-    public static let expandedHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withShareLink: true).count)
+
+    public static func compactHeight(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
+        return rowHeight * CGFloat(viewModel.kind.actions.subtracting([.shareLink]).count)
+    }
+
+    public static func expandedHeight(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
+        return rowHeight * CGFloat(viewModel.kind.actions.count)
+    }
 
     // MARK: - Public properties
 
@@ -34,7 +40,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     private lazy var changeNameButton = makeButton(
         withAction: .rename,
-        title: viewModel.changeNameText,
+        title: viewModel.renameText,
         icon: .pencilPaper
     )
 
@@ -45,33 +51,37 @@ public final class FavoriteFolderActionViewController: UIViewController {
         tintColor: .cherry
     )
 
-    private lazy var shareView: FavoriteFolderShareView = {
-        let view = FavoriteFolderShareView(withAutoLayout: true)
-        view.configure(withTitle: viewModel.shareText, switchOn: isShared)
+    private lazy var shareView: FavoriteFolderShareToggleView = {
+        let view = FavoriteFolderShareToggleView(withAutoLayout: true)
+        view.configure(withTitle: viewModel.shareToggleText, switchOn: isShared)
         view.delegate = self
         return view
     }()
 
-    private lazy var copyLinkView: FavoriteFolderCopyLinkView = {
-        let view = FavoriteFolderCopyLinkView(withAutoLayout: true)
+    private lazy var copyLinkView: FavoriteFolderShareLinkView = {
+        let view = FavoriteFolderShareLinkView(withAutoLayout: true)
         view.configure(
-            withButtonTitle: viewModel.copyLinkButtonTitle,
-            description: viewModel.copyLinkButtonDescription
+            withButtonTitle: viewModel.shareLinkButtonTitle,
+            description: viewModel.shareLinkButtonDescription
         )
         view.delegate = self
         return view
     }()
 
-    private lazy var deleteButtonTopConstraint = deleteButton.topAnchor.constraint(
-        equalTo: shareView.bottomAnchor,
-        constant: isShared ? deleteButtonMaxTopConstant : 0
-    )
+    private lazy var animatingConstraint: NSLayoutConstraint = {
+        let constant = isShared ? rowHeight : 0
+
+        switch self.viewModel.kind {
+        case .full:
+            return deleteButton.topAnchor.constraint(equalTo: shareView.bottomAnchor, constant: constant)
+        case .minimal:
+            return copyLinkView.topAnchor.constraint(equalTo: shareView.topAnchor, constant: constant)
+        }
+    }()
 
     private var rowHeight: CGFloat {
         return FavoriteFolderActionViewController.rowHeight
     }
-
-    private let deleteButtonMaxTopConstant = rowHeight
 
     // MARK: - Init
 
@@ -96,9 +106,9 @@ public final class FavoriteFolderActionViewController: UIViewController {
     // MARK: - Animation
 
     func animate(with offsetY: CGFloat) {
-        deleteButtonTopConstraint.constant = min(
-            deleteButtonTopConstraint.constant + offsetY,
-            deleteButtonMaxTopConstant
+        animatingConstraint.constant = min(
+            animatingConstraint.constant + offsetY,
+            rowHeight
         )
     }
 
@@ -118,43 +128,56 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     private func setup() {
         view.addSubview(editButton)
-        view.addSubview(changeNameButton)
         view.addSubview(copyLinkView)
         view.addSubview(shareView)
-        view.addSubview(deleteButton)
 
-        NSLayoutConstraint.activate([
+        var constraints = [
             editButton.topAnchor.constraint(equalTo: view.topAnchor),
             editButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             editButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             editButton.heightAnchor.constraint(equalToConstant: rowHeight),
 
-            changeNameButton.topAnchor.constraint(equalTo: editButton.bottomAnchor),
-            changeNameButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            changeNameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            changeNameButton.heightAnchor.constraint(equalToConstant: rowHeight),
-
-            shareView.topAnchor.constraint(equalTo: changeNameButton.bottomAnchor),
             shareView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             shareView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             shareView.heightAnchor.constraint(equalToConstant: rowHeight),
 
-            copyLinkView.bottomAnchor.constraint(equalTo: deleteButton.topAnchor),
             copyLinkView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             copyLinkView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            copyLinkView.heightAnchor.constraint(equalToConstant: rowHeight),
+            copyLinkView.heightAnchor.constraint(equalToConstant: rowHeight)
+        ]
 
-            deleteButtonTopConstraint,
-            deleteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            deleteButton.heightAnchor.constraint(equalToConstant: rowHeight)
-        ])
+        switch viewModel.kind {
+        case .full:
+            view.addSubview(changeNameButton)
+            view.addSubview(deleteButton)
+
+            constraints.append(contentsOf: [
+                changeNameButton.topAnchor.constraint(equalTo: editButton.bottomAnchor),
+                changeNameButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                changeNameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                changeNameButton.heightAnchor.constraint(equalToConstant: rowHeight),
+
+                shareView.topAnchor.constraint(equalTo: changeNameButton.bottomAnchor),
+                copyLinkView.bottomAnchor.constraint(equalTo: deleteButton.topAnchor),
+
+                deleteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                deleteButton.heightAnchor.constraint(equalToConstant: rowHeight)
+            ])
+        case .minimal:
+            constraints.append(contentsOf: [
+                shareView.topAnchor.constraint(equalTo: editButton.bottomAnchor)
+            ])
+        }
+
+        constraints.append(animatingConstraint)
+        NSLayoutConstraint.activate(constraints)
     }
 
     private func updateSeparators() {
         editButton.isSeparatorHidden = false
         changeNameButton.isSeparatorHidden = false
-        shareView.isSeparatorHidden = isShared
+        shareView.isSeparatorHidden = viewModel.kind == .minimal || isShared
     }
 
     // MARK: - Actions
@@ -164,18 +187,31 @@ public final class FavoriteFolderActionViewController: UIViewController {
     }
 }
 
-// MARK: - FavoriteShareViewCellDelegate
+// MARK: - FavoriteFolderShareToggleViewDelegate
 
-extension FavoriteFolderActionViewController: FavoriteFolderShareViewDelegate {
-    func favoriteFolderShareView(_ view: FavoriteFolderShareView, didChangeValueFor switchControl: UISwitch) {
+extension FavoriteFolderActionViewController: FavoriteFolderShareToggleViewDelegate {
+    func favoriteFolderShareToggleView(_ view: FavoriteFolderShareToggleView, didChangeValueFor switchControl: UISwitch) {
         delegate?.favoriteFolderActionViewController(self, didSelectAction: .toggleSharing)
     }
 }
 
-// MARK: - FavoriteCopyLinkViewCellDelegate
+// MARK: - FavoriteFolderShareLinkViewDelegate
 
-extension FavoriteFolderActionViewController: FavoriteFolderCopyLinkViewDelegate {
-    func favoriteFolderCopyLinkViewDidSelectButton(_ view: FavoriteFolderCopyLinkView) {
+extension FavoriteFolderActionViewController: FavoriteFolderShareLinkViewDelegate {
+    func favoriteFolderShareLinkViewDidSelectButton(_ view: FavoriteFolderShareLinkView) {
         delegate?.favoriteFolderActionViewController(self, didSelectAction: .shareLink)
+    }
+}
+
+// MARK: - Private extensions
+
+private extension FavoriteFolderActionViewModel.Kind {
+    var actions: Set<FavoriteFolderAction> {
+        switch self {
+        case .full:
+            return Set(FavoriteFolderAction.allCases)
+        case .minimal:
+            return Set([.edit, .toggleSharing, .shareLink])
+        }
     }
 }

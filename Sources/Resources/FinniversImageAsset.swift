@@ -61,12 +61,12 @@ public enum FinniversImageAsset: String {
     case eyeHide
     case favoriteAdd
     case favoritesComment
-    case favoritesCopyLink
     case favoritesDelete
     case favoritesEdit
     case favoritesNote
     case favoritesPlus
     case favoritesShare
+    case favoritesShareLink
     case favoritesSortAdStatus
     case favoritesSortDistance
     case favoritesSortLastAdded
@@ -206,12 +206,12 @@ public enum FinniversImageAsset: String {
             .eyeHide,
             .favoriteAdd,
             .favoritesComment,
-            .favoritesCopyLink,
             .favoritesDelete,
             .favoritesEdit,
             .favoritesNote,
             .favoritesPlus,
             .favoritesShare,
+            .favoritesShareLink,
             .favoritesSortAdStatus,
             .favoritesSortDistance,
             .favoritesSortLastAdded,
