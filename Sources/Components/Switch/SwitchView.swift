@@ -33,13 +33,13 @@ public class SwitchView: UIView {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .stone
+        label.textColor = .textSecondary
         return label
     }()
 
     private lazy var uiSwitch: UISwitch = {
         let uiSwitch = UISwitch(withAutoLayout: true)
-        uiSwitch.onTintColor = .primaryBlue
+        uiSwitch.onTintColor = .btnPrimary //DARK
         uiSwitch.addTarget(self, action: #selector(swichValueChanged), for: .valueChanged)
         return uiSwitch
     }()

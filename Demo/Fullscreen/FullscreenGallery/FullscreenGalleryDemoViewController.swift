@@ -172,7 +172,7 @@ class FullscreenGalleryDemoViewController: DemoViewController<UIView>, UICollect
 
     private lazy var thumbnailSwitch: UISwitch = {
         let switchView = UISwitch(withAutoLayout: true)
-        switchView.onTintColor = .primaryBlue
+        switchView.onTintColor = .btnPrimary
         switchView.isSelected = false
         return switchView
     }()
@@ -188,7 +188,7 @@ class FullscreenGalleryDemoViewController: DemoViewController<UIView>, UICollect
 
     private lazy var simulateLoadingSwitch: UISwitch = {
         let switchView = UISwitch(withAutoLayout: true)
-        switchView.onTintColor = .primaryBlue
+        switchView.onTintColor = .btnPrimary
         switchView.isSelected = false
         switchView.addTarget(self, action: #selector(loadSimulationSwitchToggled), for: .valueChanged)
         return switchView

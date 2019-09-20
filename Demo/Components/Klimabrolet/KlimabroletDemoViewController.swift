@@ -28,7 +28,7 @@ class KlimabroletDemoViewController: DemoViewController<UIView> {
     }()
 
     private lazy var innerNavigationController: UINavigationController = {
-        let navigation = UINavigationController(rootViewController: klimabroletViewController)
+        let navigation = NavigationController(rootViewController: klimabroletViewController)
         navigation.view.translatesAutoresizingMaskIntoConstraints = false
         navigation.setNavigationBarHidden(true, animated: false)
         navigation.view.layer.cornerRadius = 20

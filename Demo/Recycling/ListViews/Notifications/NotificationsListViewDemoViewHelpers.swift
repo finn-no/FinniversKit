@@ -51,7 +51,7 @@ public struct NotificationFactory {
             let groupTitle = groupTitles[groupsIndex]
             let stringValue = "Nye treff i \"\(groupTitle)\""
             let attributedString = NSMutableAttributedString(string: stringValue)
-            attributedString.setColor(color: .primaryBlue, forText: "\"\(groupTitle)\"")
+            attributedString.setColor(color: .textAction, forText: "\"\(groupTitle)\"")
 
             let footerAction = "Viser 100 av \(notifications.count) nye annonser"
             let group = NotificationGroup(attributedTitle: attributedString, timeAgo: "\(groupsIndex + 10) m siden", footerAction: footerAction, notifications: notifications)

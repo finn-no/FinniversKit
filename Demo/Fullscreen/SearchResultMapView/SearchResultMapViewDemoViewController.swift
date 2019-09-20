@@ -35,7 +35,7 @@ class SearchResultMapViewDemoViewController: DemoViewController<UIView> {
     }
 
     private func setup() {
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         view.addSubview(searchResultMapView)
 
         let region = MKCoordinateRegion(center: SearchResultMapViewAnnotationFactory.centerLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
