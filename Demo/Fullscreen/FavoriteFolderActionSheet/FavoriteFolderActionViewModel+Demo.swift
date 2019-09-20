@@ -9,7 +9,7 @@ extension FavoriteFolderActionViewModel {
         editText: "Rediger listen",
         renameText: "Endre navn på listen",
         shareToggleText: "Deling av listen",
-        shareLinkButtonTitle: "Kopier lenke",
+        shareLinkButtonTitle: "Del listen",
         shareLinkButtonDescription: "Alle med lenken kan se listen",
         deleteText: "Slett listen"
     )
