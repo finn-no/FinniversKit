@@ -5,6 +5,13 @@
 import UIKit
 
 final class FavoriteAdCommentView: UIView {
+
+    // MARK: - Public properties
+
+    static let defaultBackgroundColor = UIColor.banana
+
+    // MARK: - Private properties
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .favoritesComment).withRenderingMode(.alwaysTemplate)
@@ -43,7 +50,7 @@ final class FavoriteAdCommentView: UIView {
         isAccessibilityElement = true
 
         clipsToBounds = true
-        backgroundColor = .banana
+        backgroundColor = FavoriteAdCommentView.defaultBackgroundColor
 
         layer.cornerRadius = 4
         layer.borderColor = UIColor.highlight?.cgColor
