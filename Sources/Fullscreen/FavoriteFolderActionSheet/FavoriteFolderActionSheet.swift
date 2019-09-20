@@ -27,7 +27,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
 
     // MARK: - Init
 
-    public required init(viewModel: FavoriteFolderActionViewModel, isShared: Bool = true) {
+    public required init(viewModel: FavoriteFolderActionViewModel, isShared: Bool = false) {
         self.isShared = isShared
         self.viewModel = viewModel
         let viewController = FavoriteFolderActionViewController(viewModel: viewModel, isShared: isShared)
