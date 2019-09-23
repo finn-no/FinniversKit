@@ -103,7 +103,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
             let bottomSheet = FavoriteAdCommentSheet(
                 commentViewModel: .default,
                 adViewModel: FavoriteAdsFactory.create().last!,
-                adImage: FavoriteAdActionViewModel.createImage()
+                remoteImageViewDataSource: FavoriteAdCommentSheetDemoDelegate.shared
             )
             bottomSheet.commentDelegate = FavoriteAdCommentSheetDemoDelegate.shared
             return bottomSheet
