@@ -4,16 +4,16 @@
 
 import UIKit
 
-protocol FavoriteFolderCopyLinkViewDelegate: AnyObject {
-    func favoriteFolderCopyLinkViewDidSelectButton(_ view: FavoriteFolderCopyLinkView)
+protocol FavoriteFolderShareLinkViewDelegate: AnyObject {
+    func favoriteFolderShareLinkViewDidSelectButton(_ view: FavoriteFolderShareLinkView)
 }
 
-final class FavoriteFolderCopyLinkView: UIView {
-    weak var delegate: FavoriteFolderCopyLinkViewDelegate?
+final class FavoriteFolderShareLinkView: UIView {
+    weak var delegate: FavoriteFolderShareLinkViewDelegate?
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .favoritesCopyLink).withRenderingMode(.alwaysTemplate)
+        imageView.image = UIImage(named: .favoritesShareLink).withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .licorice
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -80,6 +80,6 @@ final class FavoriteFolderCopyLinkView: UIView {
     // MARK: - Action
 
     @objc private func handleButtonTap() {
-        delegate?.favoriteFolderCopyLinkViewDidSelectButton(self)
+        delegate?.favoriteFolderShareLinkViewDidSelectButton(self)
     }
 }

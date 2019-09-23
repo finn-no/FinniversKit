@@ -4,12 +4,13 @@
 
 import UIKit
 
-protocol FavoriteFolderShareViewDelegate: AnyObject {
-    func favoriteFolderShareView(_ view: FavoriteFolderShareView, didChangeValueFor switchControl: UISwitch)
+protocol FavoriteFolderShareToggleViewDelegate: AnyObject {
+    func favoriteFolderShareToggleView(_ view: FavoriteFolderShareToggleView, didChangeValueFor switchControl: UISwitch)
 }
 
-final class FavoriteFolderShareView: UIView {
-    weak var delegate: FavoriteFolderShareViewDelegate?
+final class FavoriteFolderShareToggleView: UIView {
+    weak var delegate: FavoriteFolderShareToggleViewDelegate?
+
     var isSeparatorHidden = true {
         didSet {
             separatorView.isHidden = isSeparatorHidden
@@ -93,7 +94,7 @@ final class FavoriteFolderShareView: UIView {
     @objc private func handleSwitchValueChange() {
         CATransaction.setCompletionBlock { [weak self] in
             guard let self = self else { return }
-            self.delegate?.favoriteFolderShareView(self, didChangeValueFor: self.switchControl)
+            self.delegate?.favoriteFolderShareToggleView(self, didChangeValueFor: self.switchControl)
         }
     }
 }
