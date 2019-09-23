@@ -68,6 +68,7 @@ public class IdentityView: UIView {
 
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = IdentityView.profileImageSize / 2
         imageView.layer.masksToBounds = true
         return imageView
