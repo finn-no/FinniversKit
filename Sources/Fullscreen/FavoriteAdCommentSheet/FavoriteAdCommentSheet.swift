@@ -32,6 +32,16 @@ public final class FavoriteAdCommentSheet: BottomSheet {
     public required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
+
+    // MARK: - Public methods
+
+    public func startLoading() {
+        viewController.startLoading()
+    }
+
+    public func stopLoading() {
+        viewController.stopLoading()
+    }
 }
 
 // MARK: - FavoriteAdCommentViewControllerDelegate
