@@ -199,6 +199,7 @@ final class FavoriteAdCommentViewController: UIViewController {
     }
 
     @objc private func handleSaveButtonTap() {
+        textView.endEditing(true)
         delegate?.favoriteAdCommentViewController(self, didSelectSaveComment: textView.text)
     }
 
