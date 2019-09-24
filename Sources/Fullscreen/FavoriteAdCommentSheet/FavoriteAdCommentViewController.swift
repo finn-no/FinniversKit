@@ -19,6 +19,8 @@ final class FavoriteAdCommentViewController: UIViewController {
     private let commentViewModel: FavoriteAdCommentViewModel
     private let adViewModel: FavoriteAdViewModel
     private let notificationCenter: NotificationCenter
+    private lazy var loadingView = LoadingIndicatorView(frame: CGRect(origin: .zero, size: CGSize(width: 24, height: 24)))
+    private lazy var loadingBarButton = UIBarButtonItem(customView: loadingView)
 
     private lazy var cancelButton = UIBarButtonItem(
         title: commentViewModel.cancelButtonText,
@@ -197,7 +199,22 @@ final class FavoriteAdCommentViewController: UIViewController {
     }
 
     @objc private func handleSaveButtonTap() {
+        textView.endEditing(true)
         delegate?.favoriteAdCommentViewController(self, didSelectSaveComment: textView.text)
+    }
+
+    // MARK: - Public methods
+
+    public func startLoading() {
+        loadingView.startAnimating()
+        navigationItem.setRightBarButton(loadingBarButton, animated: true)
+        cancelButton.isEnabled = false
+    }
+
+    public func stopLoading() {
+        loadingView.stopAnimating()
+        navigationItem.setRightBarButton(saveButton, animated: true)
+        cancelButton.isEnabled = true
     }
 }
 
