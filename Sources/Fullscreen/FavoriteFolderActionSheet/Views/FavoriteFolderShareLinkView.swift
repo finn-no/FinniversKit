@@ -4,16 +4,16 @@
 
 import UIKit
 
-protocol FavoriteFolderCopyLinkCellDelegate: AnyObject {
-    func favoriteFolderCopyLinkCellDidSelectButton(_ cell: FavoriteFolderCopyLinkCell)
+protocol FavoriteFolderShareLinkViewDelegate: AnyObject {
+    func favoriteFolderShareLinkViewDidSelectButton(_ view: FavoriteFolderShareLinkView)
 }
 
-final class FavoriteFolderCopyLinkCell: UITableViewCell {
-    weak var delegate: FavoriteFolderCopyLinkCellDelegate?
+final class FavoriteFolderShareLinkView: UIView {
+    weak var delegate: FavoriteFolderShareLinkViewDelegate?
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .favoritesCopyLink).withRenderingMode(.alwaysTemplate)
+        imageView.image = UIImage(named: .favoritesShareLink).withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .licorice
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -23,6 +23,7 @@ final class FavoriteFolderCopyLinkCell: UITableViewCell {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
         label.textColor = .licorice
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
 
@@ -36,8 +37,8 @@ final class FavoriteFolderCopyLinkCell: UITableViewCell {
 
     // MARK: - Init
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
     }
 
@@ -56,30 +57,29 @@ final class FavoriteFolderCopyLinkCell: UITableViewCell {
     private func setup() {
         isAccessibilityElement = true
         backgroundColor = .ice
-        selectionStyle = .none
 
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(descriptionLabel)
-        contentView.addSubview(button)
+        addSubview(iconImageView)
+        addSubview(descriptionLabel)
+        addSubview(button)
 
         NSLayoutConstraint.activate([
-            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             iconImageView.widthAnchor.constraint(equalToConstant: FavoriteActionCell.iconSize),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
 
-            descriptionLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            descriptionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            descriptionLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -.mediumSpacing),
+            descriptionLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor),
 
-            button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            button.centerYAnchor.constraint(equalTo: centerYAnchor),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
     // MARK: - Action
 
     @objc private func handleButtonTap() {
-        delegate?.favoriteFolderCopyLinkCellDidSelectButton(self)
+        delegate?.favoriteFolderShareLinkViewDidSelectButton(self)
     }
 }

@@ -9,7 +9,7 @@ class CornerAnchoringView: UIView {
 
     private lazy var anchoredView: EasterEggButton = {
         let button = EasterEggButton(withAutoLayout: true)
-        button.tintColor = .primaryBlue
+        button.tintColor = .btnPrimary
         button.setImage(UIImage(named: .wrench).withRenderingMode(.alwaysTemplate), for: .normal)
         button.addTarget(self, action: #selector(tweakButtonAction), for: .touchUpInside)
         return button

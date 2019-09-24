@@ -114,7 +114,12 @@ public class ReputationView: UIView {
         return view
     }()
 
-    private lazy var showBreakdownConstraint = breakdownWrapper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+    private lazy var expandedConstraint: NSLayoutConstraint = {
+        let constraint = breakdownWrapper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+        constraint.priority = .defaultHigh
+        constraint.isActive = false
+        return constraint
+    }()
 
     // MARK: - Private properties
 
@@ -177,10 +182,13 @@ public class ReputationView: UIView {
 
         addSubview(breakdownWrapper)
 
+        let collapsedConstraint = scoreBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
+        collapsedConstraint.priority = .defaultLow
+
         NSLayoutConstraint.activate([
             scoreBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             scoreBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            scoreBackgroundView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.mediumLargeSpacing),
+            collapsedConstraint,
             scoreBackgroundView.widthAnchor.constraint(equalToConstant: reviewScoreSize),
             scoreBackgroundView.heightAnchor.constraint(equalToConstant: reviewScoreSize),
 
@@ -228,7 +236,6 @@ public class ReputationView: UIView {
     private func reset() {
         removeAllBreakdownViews()
         collapseWrapper.isHidden = true
-        showBreakdownConstraint.isActive = false
 
         isCollapsed = true
         collapseImage.image = UIImage(named: .arrowDown)
@@ -236,6 +243,9 @@ public class ReputationView: UIView {
         titleLabel.text = nil
         subtitleLabel.text = nil
         scoreLabel.text = nil
+
+        expandedConstraint.isActive = false
+        breakdownWrapper.isHidden = true
     }
 
     private func populateViews(with viewModel: ReputationViewModel) {
@@ -244,13 +254,16 @@ public class ReputationView: UIView {
         titleLabel.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
         scoreLabel.text = formattedScore
+        isCollapsed = viewModel.breakdownMode != .alwaysExpanded
 
         if viewModel.categoryBreakdowns.isEmpty {
             collapseWrapper.isHidden = true
-            showBreakdownConstraint.isActive = false
+            expandedConstraint.isActive = false
+            breakdownWrapper.isHidden = true
         } else {
             collapseWrapper.isHidden = viewModel.breakdownMode != .collapsedByDefault
-            showBreakdownConstraint.isActive = viewModel.breakdownMode == .alwaysExpanded
+            expandedConstraint.isActive = !isCollapsed
+            breakdownWrapper.isHidden = isCollapsed
         }
     }
 
@@ -264,15 +277,23 @@ public class ReputationView: UIView {
 extension ReputationView {
     @objc private func collapseButtonTapped() {
         isCollapsed.toggle()
+        expandedConstraint.isActive = !isCollapsed
+
+        if !isCollapsed {
+            breakdownWrapper.isHidden = false
+        }
 
         let newImage = UIImage(named: isCollapsed ? .arrowDown : .arrowUp)
         UIView.transition(with: collapseImage, duration: 0.1, options: [.transitionCrossDissolve], animations: {
             self.collapseImage.image = newImage
         })
 
-        showBreakdownConstraint.isActive = !isCollapsed
         UIView.animate(withDuration: 0.3, animations: {
             self.superview?.layoutIfNeeded()
+        }, completion: { _ in
+            if self.isCollapsed {
+                self.breakdownWrapper.isHidden = true
+            }
         })
     }
 

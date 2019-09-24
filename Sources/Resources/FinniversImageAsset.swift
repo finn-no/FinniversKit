@@ -30,6 +30,7 @@ public enum FinniversImageAsset: String {
     case balloon1
     case balloon2
     case balloon9
+    case bankID
     case blockUser
     case boat
     case calendar
@@ -60,12 +61,12 @@ public enum FinniversImageAsset: String {
     case eyeHide
     case favoriteAdd
     case favoritesComment
-    case favoritesCopyLink
     case favoritesDelete
     case favoritesEdit
     case favoritesNote
     case favoritesPlus
     case favoritesShare
+    case favoritesShareLink
     case favoritesSortAdStatus
     case favoritesSortDistance
     case favoritesSortLastAdded
@@ -174,6 +175,7 @@ public enum FinniversImageAsset: String {
             .balloon1,
             .balloon2,
             .balloon9,
+            .bankID,
             .blockUser,
             .boat,
             .calendar,
@@ -204,12 +206,12 @@ public enum FinniversImageAsset: String {
             .eyeHide,
             .favoriteAdd,
             .favoritesComment,
-            .favoritesCopyLink,
             .favoritesDelete,
             .favoritesEdit,
             .favoritesNote,
             .favoritesPlus,
             .favoritesShare,
+            .favoritesShareLink,
             .favoritesSortAdStatus,
             .favoritesSortDistance,
             .favoritesSortLastAdded,

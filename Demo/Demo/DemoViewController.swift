@@ -3,15 +3,31 @@
 //
 import FinniversKit
 
+/// Defines the way the demo controller will be dismissed
+///
+/// - dismissButton: Adds a floating dismiss button
+/// - doubleTap: Double tapping dismisses the demo controller
+/// - none: Lets you to define your own dismissing logic
+public enum DismissType {
+    case dismissButton
+    case doubleTap
+    case none
+}
+
+///  Container class for components. Wraps the UIView in a container to be displayed.
+///  If the view conforms to the `Tweakable` protocol it will display a control to show additional options.
+///  Usage: `DemoViewController<DrumMachineDemoView>()`
 public class DemoViewController<View: UIView>: UIViewController {
-    lazy var playgroundView: View = {
+
+    public private(set) lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
-        playgroundView.backgroundColor = .milk
+        playgroundView.backgroundColor = .bgPrimary
         return playgroundView
     }()
 
-    lazy var miniToastView: MiniToastView = {
+    /// Toast used to display information about how to dismiss a component demo
+    private lazy var miniToastView: MiniToastView = {
         let view = MiniToastView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.titleLabel.text = "Double tap to dismiss"
@@ -22,8 +38,7 @@ public class DemoViewController<View: UIView>: UIViewController {
         return true
     }
 
-    var hasDismissButton: Bool = false
-    var usingDoubleTapToDismiss: Bool = false
+    private var dismissType: DismissType
     private var preferredInterfaceOrientation: UIInterfaceOrientationMask = .all
     private let constrainToBottomSafeArea: Bool
     private var bottomSheet: BottomSheet?
@@ -32,19 +47,11 @@ public class DemoViewController<View: UIView>: UIViewController {
         return preferredInterfaceOrientation
     }
 
-    // Normal behaviour
-    public init(usingDoubleTapToDismiss: Bool = true,
+    public init(dismissType: DismissType = .doubleTap,
                 supportedInterfaceOrientations: UIInterfaceOrientationMask = .all,
                 constrainToBottomSafeArea: Bool = true) {
-        self.usingDoubleTapToDismiss = usingDoubleTapToDismiss
+        self.dismissType = dismissType
         self.preferredInterfaceOrientation = supportedInterfaceOrientations
-        self.constrainToBottomSafeArea = constrainToBottomSafeArea
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    // Instantiate the view controller with a dismiss button
-    public init(withDismissButton hasDismissButton: Bool, constrainToBottomSafeArea: Bool = true) {
-        self.hasDismissButton = hasDismissButton
         self.constrainToBottomSafeArea = constrainToBottomSafeArea
         super.init(nibName: nil, bundle: nil)
     }
@@ -57,7 +64,7 @@ public class DemoViewController<View: UIView>: UIViewController {
         super.viewDidLoad()
 
         view.addSubview(playgroundView)
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
 
         let bottomAnchor = constrainToBottomSafeArea ? view.safeAreaLayoutGuide.bottomAnchor : view.bottomAnchor
 
@@ -68,7 +75,8 @@ public class DemoViewController<View: UIView>: UIViewController {
             playgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
-        if hasDismissButton {
+        switch dismissType {
+        case .dismissButton:
             let button = Button(style: .callToAction)
             button.setTitle("Dismiss", for: .normal)
             button.addTarget(self, action: #selector(didDoubleTap), for: .touchUpInside)
@@ -77,11 +85,13 @@ public class DemoViewController<View: UIView>: UIViewController {
             NSLayoutConstraint.activate([
                 button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.veryLargeSpacing)
-            ])
-        } else if usingDoubleTapToDismiss {
+                ])
+        case .doubleTap:
             let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
             doubleTap.numberOfTapsRequired = 2
             view.addGestureRecognizer(doubleTap)
+        case .none:
+            break
         }
 
         if !TestCheck.isTesting && playgroundView is Tweakable {
@@ -92,7 +102,7 @@ public class DemoViewController<View: UIView>: UIViewController {
         }
     }
 
-    @objc func didDoubleTap() {
+    @objc private func didDoubleTap() {
         State.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }

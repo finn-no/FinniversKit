@@ -61,7 +61,7 @@ public class FavoriteAdsListView: UIView {
     private var didSetTableHeader = false
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(withAutoLayout: true)
+        let tableView = TableView(withAutoLayout: true)
         tableView.register(FavoriteAdTableViewCell.self)
         tableView.register(FavoriteAdsSectionHeaderView.self)
         tableView.tableFooterView = UIView()
@@ -69,6 +69,9 @@ public class FavoriteAdsListView: UIView {
         tableView.dataSource = self
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.keyboardDismissMode = .onDrag
+        tableView.estimatedRowHeight = 130
+        tableView.estimatedSectionHeaderHeight = 32
+        tableView.allowsMultipleSelectionDuringEditing = true
         return tableView
     }()
 
@@ -104,19 +107,23 @@ public class FavoriteAdsListView: UIView {
         super.layoutSubviews()
 
         if !didSetTableHeader {
-            tableView.tableHeaderView = tableHeaderView
-
-            NSLayoutConstraint.activate([
-                tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
-                tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-                tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
-            ])
-
-            tableView.tableHeaderView?.layoutIfNeeded()
-            tableView.tableHeaderView = tableView.tableHeaderView
-
+            setTableHeader()
             didSetTableHeader = true
         }
+    }
+
+    private func setTableHeader() {
+        tableView.tableHeaderView = tableHeaderView
+
+        NSLayoutConstraint.activate([
+            tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
+            tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+        ])
+
+        tableView.tableHeaderView?.layoutIfNeeded()
+        tableView.tableHeaderView = tableView.tableHeaderView
+        tableView.sendSubviewToBack(tableHeaderView)
     }
 
     // MARK: - Reload
@@ -124,6 +131,50 @@ public class FavoriteAdsListView: UIView {
     public func reloadData() {
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
+    }
+
+    // MARK: - Public methods
+
+    public func setEditing(_ editing: Bool) {
+        guard editing != tableView.isEditing else { return }
+
+        let tableHeaderHeight = tableHeaderView.bounds.height
+        let hasScrolledPastTableHeader = tableView.contentOffset.y >= tableHeaderHeight
+
+        if !editing {
+            setTableHeader()
+            tableView.contentOffset.y += tableHeaderHeight
+        }
+
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            guard let self = self else { return }
+            self.tableHeaderView.alpha = editing ? 0 : 1
+            if !hasScrolledPastTableHeader {
+                self.tableView.contentOffset.y = editing ? tableHeaderHeight : 0
+            }
+        }, completion: { [weak self] _ in
+            guard let self = self else { return }
+            if editing {
+                self.tableView.contentOffset.y -= tableHeaderHeight
+                self.tableView.tableHeaderView = nil
+            }
+        })
+
+        tableView.setEditing(editing, animated: true)
+    }
+
+    public func selectAllRows(_ selected: Bool, animated: Bool) {
+        for section in 0..<tableView.numberOfSections {
+            for row in 0..<tableView.numberOfRows(inSection: section) {
+                let indexPath = IndexPath(row: row, section: section)
+
+                if selected {
+                    tableView.selectRow(at: indexPath, animated: animated, scrollPosition: .none)
+                } else {
+                    tableView.deselectRow(at: indexPath, animated: animated)
+                }
+            }
+        }
     }
 
     public func reloadRow(at indexPath: IndexPath, with animation: UITableView.RowAnimation = .automatic) {
@@ -156,7 +207,13 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableHeaderView.endEditing(true)
-        tableView.deselectRow(at: indexPath, animated: true)
+        if !tableView.isEditing {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        delegate?.favoriteAdsListView(self, didSelectItemAt: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         delegate?.favoriteAdsListView(self, didSelectItemAt: indexPath)
     }
 
@@ -188,7 +245,6 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        commentAction.image = UIImage(named: .favoritesNote)
         commentAction.backgroundColor = .licorice
 
         let deleteAction = UIContextualAction(
@@ -200,10 +256,12 @@ extension FavoriteAdsListView: UITableViewDelegate {
                 completionHandler(true)
             })
 
-        deleteAction.image = UIImage(named: .favoritesDelete)
         deleteAction.backgroundColor = .cherry
 
-        return UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
+        configuration.performsFirstActionWithFullSwipe = false
+
+        return configuration
     }
 }
 
@@ -295,5 +353,15 @@ extension FavoriteAdsListView: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         delegate?.favoriteAdsListView(self, didChangeSearchText: searchText)
+    }
+}
+
+// MARK: - TableView
+
+private class TableView: UITableView {
+    /// Overridden so cells are resized after entering/exiting edit mode.
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        performBatchUpdates(nil)
     }
 }

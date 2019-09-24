@@ -13,48 +13,81 @@ public protocol FavoriteFolderActionViewControllerDelegate: AnyObject {
 
 public final class FavoriteFolderActionViewController: UIViewController {
     public static let rowHeight: CGFloat = 48.0
-    public static let compactHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withCopyLink: false).count)
-    public static let expandedHeight = rowHeight * CGFloat(FavoriteFolderAction.cases(withCopyLink: true).count)
+
+    public static func compactHeight(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
+        return rowHeight * CGFloat(viewModel.appearance.actions.subtracting([.shareLink]).count)
+    }
+
+    public static func expandedHeight(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
+        return rowHeight * CGFloat(viewModel.appearance.actions.count)
+    }
 
     // MARK: - Public properties
 
     public weak var delegate: FavoriteFolderActionViewControllerDelegate?
 
-    public var isCopyLinkHidden: Bool {
+    public var isShared: Bool {
         didSet {
-           reloadData()
+            updateSeparators()
         }
     }
 
     // MARK: - Private properties
 
     private let viewModel: FavoriteFolderActionViewModel
-    private let topActions: [FavoriteFolderAction] = [.edit, .changeName, .share]
-    private let bottomActions: [FavoriteFolderAction] = [.copyLink, .delete]
 
-    private lazy var topTableView: UITableView = {
-        let tableView = UITableView.default
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(FavoriteActionCell.self)
-        tableView.register(FavoriteFolderShareCell.self)
-        return tableView
+    private lazy var editButton = makeButton(withAction: .edit, title: viewModel.editText, icon: .favoritesEdit)
+
+    private lazy var changeNameButton = makeButton(
+        withAction: .rename,
+        title: viewModel.renameText,
+        icon: .pencilPaper
+    )
+
+    private lazy var deleteButton = makeButton(
+        withAction: .delete,
+        title: viewModel.deleteText,
+        icon: .favoritesDelete,
+        tintColor: .cherry
+    )
+
+    private lazy var shareToggleView: FavoriteFolderShareToggleView = {
+        let view = FavoriteFolderShareToggleView(withAutoLayout: true)
+        view.configure(withTitle: viewModel.shareToggleText, switchOn: isShared)
+        view.delegate = self
+        return view
     }()
 
-    private lazy var bottomTableView: UITableView = {
-        let tableView = UITableView.default
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(FavoriteActionCell.self)
-        tableView.register(FavoriteFolderCopyLinkCell.self)
-        return tableView
+    private lazy var shareLinkView: FavoriteFolderShareLinkView = {
+        let view = FavoriteFolderShareLinkView(withAutoLayout: true)
+        view.configure(
+            withButtonTitle: viewModel.shareLinkButtonTitle,
+            description: viewModel.shareLinkButtonDescription
+        )
+        view.delegate = self
+        return view
     }()
+
+    private lazy var animatingConstraint: NSLayoutConstraint = {
+        let constant = isShared ? rowHeight : 0
+
+        switch self.viewModel.appearance {
+        case .full:
+            return deleteButton.topAnchor.constraint(equalTo: shareToggleView.bottomAnchor, constant: constant)
+        case .minimal:
+            return shareLinkView.topAnchor.constraint(equalTo: shareToggleView.topAnchor, constant: constant)
+        }
+    }()
+
+    private var rowHeight: CGFloat {
+        return FavoriteFolderActionViewController.rowHeight
+    }
 
     // MARK: - Init
 
-    public init(viewModel: FavoriteFolderActionViewModel, isCopyLinkHidden: Bool = true) {
+    public init(viewModel: FavoriteFolderActionViewModel, isShared: Bool = false) {
         self.viewModel = viewModel
-        self.isCopyLinkHidden = isCopyLinkHidden
+        self.isShared = isShared
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -67,150 +100,118 @@ public final class FavoriteFolderActionViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        updateSeparators()
+    }
+
+    // MARK: - Animation
+
+    func animate(with offsetY: CGFloat) {
+        animatingConstraint.constant = min(
+            animatingConstraint.constant + offsetY,
+            rowHeight
+        )
     }
 
     // MARK: - Setup
 
+    private func makeButton(
+        withAction action: FavoriteFolderAction,
+        title: String,
+        icon: FinniversImageAsset,
+        tintColor: UIColor = .licorice
+    ) -> FavoriteFolderActionButton {
+        let button = FavoriteFolderActionButton(action: action, title: title, icon: icon, tintColor: tintColor)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleActionButtonTap(_:)), for: .touchUpInside)
+        return button
+    }
+
     private func setup() {
-        view.addSubview(bottomTableView)
-        view.addSubview(topTableView)
+        view.addSubview(editButton)
+        view.addSubview(shareLinkView)
+        view.addSubview(shareToggleView)
 
-        let bottomOffset = view.windowSafeAreaInsets.bottom + .mediumSpacing + .smallSpacing
+        var constraints = [
+            editButton.topAnchor.constraint(equalTo: view.topAnchor),
+            editButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            editButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            editButton.heightAnchor.constraint(equalToConstant: rowHeight),
 
-        NSLayoutConstraint.activate([
-            topTableView.topAnchor.constraint(equalTo: view.topAnchor),
-            topTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            topTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shareToggleView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            shareToggleView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shareToggleView.heightAnchor.constraint(equalToConstant: rowHeight),
 
-            bottomTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset),
-            bottomTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bottomTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        ])
-    }
+            shareLinkView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            shareLinkView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shareLinkView.heightAnchor.constraint(equalToConstant: rowHeight)
+        ]
 
-    private func reloadData() {
-        guard let shareIndex = topActions.firstIndex(of: .share) else { return }
-        guard let copyLinkIndex = bottomActions.firstIndex(of: .copyLink) else { return }
-        guard let cell = bottomTableView.cellForRow(at: IndexPath(row: copyLinkIndex, section: 0)) else { return }
+        switch viewModel.appearance {
+        case .full:
+            view.addSubview(changeNameButton)
+            view.addSubview(deleteButton)
 
-        // Hide separator on the share cell
-        topTableView.cellForRow(at: IndexPath(row: shareIndex, section: 0))?.hideSepatator(!isCopyLinkHidden)
+            constraints.append(contentsOf: [
+                changeNameButton.topAnchor.constraint(equalTo: editButton.bottomAnchor),
+                changeNameButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                changeNameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                changeNameButton.heightAnchor.constraint(equalToConstant: rowHeight),
 
-        // Animate copy link cell appearance
-        let transform = CGAffineTransform(translationX: 0, y: .mediumLargeSpacing)
+                shareToggleView.topAnchor.constraint(equalTo: changeNameButton.bottomAnchor),
+                shareLinkView.bottomAnchor.constraint(equalTo: deleteButton.topAnchor),
 
-        bottomTableView.sendSubviewToBack(cell)
-        cell.alpha = isCopyLinkHidden ? 1 : 0.2
-        cell.transform = isCopyLinkHidden ? .identity : transform
-
-        UIView.animate(withDuration: 0.2) {
-            cell.alpha = self.isCopyLinkHidden ? 0.2 : 1
-            cell.transform = self.isCopyLinkHidden ? transform : .identity
+                deleteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                deleteButton.heightAnchor.constraint(equalToConstant: rowHeight)
+            ])
+        case .minimal:
+            constraints.append(contentsOf: [
+                shareToggleView.topAnchor.constraint(equalTo: editButton.bottomAnchor)
+            ])
         }
+
+        constraints.append(animatingConstraint)
+        NSLayoutConstraint.activate(constraints)
     }
 
-    private func actions(for tableView: UITableView) -> [FavoriteFolderAction] {
-        return tableView == topTableView ? topActions : bottomActions
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension FavoriteFolderActionViewController: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actions(for: tableView).count
+    private func updateSeparators() {
+        editButton.isSeparatorHidden = false
+        changeNameButton.isSeparatorHidden = false
+        shareToggleView.isSeparatorHidden = viewModel.appearance == .minimal || isShared
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let action = actions(for: tableView)[indexPath.row]
+    // MARK: - Actions
 
-        switch action {
-        case .edit:
-            let cell = tableView.dequeue(FavoriteActionCell.self, for: indexPath)
-            cell.configure(withTitle: viewModel.editText, icon: .favoritesEdit)
-            return cell
-        case .changeName:
-            let cell = tableView.dequeue(FavoriteActionCell.self, for: indexPath)
-            cell.configure(withTitle: viewModel.changeNameText, icon: .pencilPaper)
-            return cell
-        case .share:
-            let cell = tableView.dequeue(FavoriteFolderShareCell.self, for: indexPath)
-            cell.delegate = self
-            cell.configure(withTitle: viewModel.shareText, switchOn: !isCopyLinkHidden)
-            return cell
-        case .copyLink:
-            let cell = tableView.dequeue(FavoriteFolderCopyLinkCell.self, for: indexPath)
-            cell.delegate = self
-            cell.configure(
-                withButtonTitle: viewModel.copyLinkButtonTitle,
-                description: viewModel.copyLinkButtonDescription
-            )
-            return cell
-        case .delete:
-            let cell = tableView.dequeue(FavoriteActionCell.self, for: indexPath)
-            cell.configure(withTitle: viewModel.deleteText, icon: .favoritesDelete, tintColor: .cherry)
-            return cell
-        }
+    @objc private func handleActionButtonTap(_ button: FavoriteFolderActionButton) {
+        delegate?.favoriteFolderActionViewController(self, didSelectAction: button.action)
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - FavoriteFolderShareToggleViewDelegate
 
-extension FavoriteFolderActionViewController: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let action = actions(for: tableView)[indexPath.row]
-        let hideSeparator = (action == .share && !isCopyLinkHidden) || action == .copyLink || action == .delete
-
-        cell.hideSepatator(hideSeparator)
-    }
-
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let action = actions(for: tableView)[indexPath.row]
-
-        tableView.deselectRow(at: indexPath, animated: true)
-
-        if Set<FavoriteFolderAction>([.edit, .changeName, .delete]).contains(action) {
-            delegate?.favoriteFolderActionViewController(self, didSelectAction: action)
-        }
+extension FavoriteFolderActionViewController: FavoriteFolderShareToggleViewDelegate {
+    func favoriteFolderShareToggleView(_ view: FavoriteFolderShareToggleView, didChangeValueFor switchControl: UISwitch) {
+        delegate?.favoriteFolderActionViewController(self, didSelectAction: .toggleSharing)
     }
 }
 
-// MARK: - FavoriteShareViewCellDelegate
+// MARK: - FavoriteFolderShareLinkViewDelegate
 
-extension FavoriteFolderActionViewController: FavoriteFolderShareCellDelegate {
-    func favoriteFolderShareCell(_ cell: FavoriteFolderShareCell, didChangeValueFor switchControl: UISwitch) {
-        delegate?.favoriteFolderActionViewController(self, didSelectAction: .share)
-    }
-}
-
-// MARK: - FavoriteCopyLinkViewCellDelegate
-
-extension FavoriteFolderActionViewController: FavoriteFolderCopyLinkCellDelegate {
-    func favoriteFolderCopyLinkCellDidSelectButton(_ cell: FavoriteFolderCopyLinkCell) {
-        delegate?.favoriteFolderActionViewController(self, didSelectAction: .copyLink)
+extension FavoriteFolderActionViewController: FavoriteFolderShareLinkViewDelegate {
+    func favoriteFolderShareLinkViewDidSelectButton(_ view: FavoriteFolderShareLinkView) {
+        delegate?.favoriteFolderActionViewController(self, didSelectAction: .shareLink)
     }
 }
 
 // MARK: - Private extensions
 
-private extension UITableView {
-    static var `default`: UITableView {
-        let tableView = ContentSizedTableView(frame: .zero, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .milk
-        tableView.rowHeight = FavoriteFolderActionViewController.rowHeight
-        tableView.estimatedRowHeight = FavoriteFolderActionViewController.rowHeight
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.tableFooterView = UIView()
-        tableView.isScrollEnabled = false
-        tableView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return tableView
-    }
-}
-
-private extension UITableViewCell {
-    func hideSepatator(_ hide: Bool) {
-        let inset = hide ? frame.width : FavoriteActionCell.separatorLeadingInset
-        separatorInset = .leadingInset(inset)
+private extension FavoriteFolderActionViewModel.Appearance {
+    var actions: Set<FavoriteFolderAction> {
+        switch self {
+        case .full:
+            return Set(FavoriteFolderAction.allCases)
+        case .minimal:
+            return Set([.edit, .toggleSharing, .shareLink])
+        }
     }
 }

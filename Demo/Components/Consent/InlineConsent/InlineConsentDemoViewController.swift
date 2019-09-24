@@ -24,19 +24,19 @@ class InlineConsentDemoViewController: UIViewController {
 
     private lazy var top: UIView = {
         let top = UIView(withAutoLayout: true)
-        top.backgroundColor = .milk
+        top.backgroundColor = .bgPrimary
         return top
     }()
 
     private lazy var bottom: UIView = {
         let bottom = UIView(withAutoLayout: true)
-        bottom.backgroundColor = .toothPaste
+        bottom.backgroundColor = .toothPaste //DARK
         return bottom
     }()
 
     private lazy var bottomDialogue: UIView = {
         let bottomDialogue = UIView(withAutoLayout: true)
-        bottomDialogue.backgroundColor = .toothPaste
+        bottomDialogue.backgroundColor = .toothPaste //DARK
         return bottomDialogue
     }()
 

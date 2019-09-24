@@ -25,7 +25,7 @@ class NativeAdvertDemoView: UIView {
         let view = NativeAdvertView(viewModel: advertModel, imageDelegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         return view
     }()
 
@@ -33,7 +33,7 @@ class NativeAdvertDemoView: UIView {
         let view = NativeContentAdvertView(viewModel: contentModel, imageDelegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         return view
     }()
 
@@ -79,7 +79,7 @@ class NativeAdvertDemoView: UIView {
 
     private func createHairlineView() -> UIView {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .lightGray //DARK
 
         NSLayoutConstraint.activate([
             view.heightAnchor.constraint(equalToConstant: 0.5)

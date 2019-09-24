@@ -9,6 +9,7 @@ extension FavoriteAdActionViewModel {
         headerImage: createImage(),
         headerTitle: "Ærverdig herskapelig villa, med praktfull beliggende strandtomt (6500 kvm), helt i vannkanten. Perle, finnes ikke maken!",
         commentText: "Legg til notat",
+        shareText: "Del annonsen",
         deleteText: "Slett favoritten fra listen"
     )
 

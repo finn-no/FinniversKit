@@ -18,7 +18,7 @@ class KlimabroletEventsDemoViewController: UITableViewController {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: .cross).withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = .stone
+        button.tintColor = .textSecondary
         button.addTarget(self, action: #selector(handleCloseButtonTap), for: .touchUpInside)
         return button
     }()
@@ -60,7 +60,7 @@ class KlimabroletEventsDemoViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         return view
     }
 

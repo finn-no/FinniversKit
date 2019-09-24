@@ -11,21 +11,27 @@ public protocol FavoriteFolderActionSheetDelegate: AnyObject {
 public final class FavoriteFolderActionSheet: BottomSheet {
     public weak var actionDelegate: FavoriteFolderActionSheetDelegate?
 
-    public var isCopyLinkHidden: Bool {
+    public var isShared: Bool {
         didSet {
-            viewController?.isCopyLinkHidden = isCopyLinkHidden
-            height = .makeHeight(isCopyLinkHidden: isCopyLinkHidden)
+            viewController?.isShared = isShared
+            shouldAnimate = true
+            height = .makeHeight(for: viewModel, isShared: isShared)
         }
     }
 
     private weak var viewController: FavoriteFolderActionViewController?
+    private let viewModel: FavoriteFolderActionViewModel
+    private var positionObservationToken: NSKeyValueObservation?
+    private var animationOffset: CGFloat = 0
+    private var shouldAnimate = false
 
     // MARK: - Init
 
-    public required init(viewModel: FavoriteFolderActionViewModel, isCopyLinkHidden: Bool = true) {
-        self.isCopyLinkHidden = isCopyLinkHidden
-        let viewController = FavoriteFolderActionViewController(viewModel: viewModel, isCopyLinkHidden: isCopyLinkHidden)
-        super.init(rootViewController: viewController, height: .makeHeight(isCopyLinkHidden: isCopyLinkHidden))
+    public required init(viewModel: FavoriteFolderActionViewModel, isShared: Bool = false) {
+        self.isShared = isShared
+        self.viewModel = viewModel
+        let viewController = FavoriteFolderActionViewController(viewModel: viewModel, isShared: isShared)
+        super.init(rootViewController: viewController, height: .makeHeight(for: viewModel, isShared: isShared))
         self.viewController = viewController
     }
 
@@ -33,11 +39,33 @@ public final class FavoriteFolderActionSheet: BottomSheet {
         fatalError()
     }
 
+    deinit {
+        positionObservationToken?.invalidate()
+    }
+
     // MARK: - Lifecycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
         viewController?.delegate = self
+
+        let animationOffsetMultiplier: CGFloat = isShared ? 1 : 2
+        let maxTransitionOffset = Height.transitionOffset(for: viewModel)
+
+        positionObservationToken = view.layer.observe(\.position, options: [.new, .old]) { [weak self] _, change in
+            guard let self = self, self.shouldAnimate else { return }
+            guard let newValue = change.newValue?.y, let oldValue = change.oldValue?.y else { return }
+
+            let offset = animationOffsetMultiplier * (newValue - oldValue)
+            self.animationOffset += offset
+
+            if abs(self.animationOffset) <= maxTransitionOffset {
+                self.viewController?.animate(with: -offset)
+            } else {
+                self.shouldAnimate = false
+                self.animationOffset = 0
+            }
+        }
     }
 }
 
@@ -55,19 +83,18 @@ extension FavoriteFolderActionSheet: FavoriteFolderActionViewControllerDelegate 
 // MARK: - Private extensions
 
 private extension BottomSheet.Height {
-    static func makeHeight(isCopyLinkHidden: Bool) -> BottomSheet.Height {
-        return isCopyLinkHidden ? .compact : .expanded
+    static func makeHeight(for viewModel: FavoriteFolderActionViewModel, isShared: Bool) -> BottomSheet.Height {
+        let controllerHeight = isShared
+            ? FavoriteFolderActionViewController.expandedHeight(for: viewModel)
+            : FavoriteFolderActionViewController.compactHeight(for: viewModel)
+        let totalHeight = controllerHeight + bottomInset
+
+        return BottomSheet.Height(compact: totalHeight, expanded: totalHeight)
     }
 
-    private static var compact: BottomSheet.Height {
-        let height = FavoriteFolderActionViewController.compactHeight + bottomInset
-        return BottomSheet.Height(compact: height, expanded: height)
+    static func transitionOffset(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
+        return makeHeight(for: viewModel, isShared: true).compact - makeHeight(for: viewModel, isShared: false).compact
     }
 
-    private static var expanded: BottomSheet.Height {
-        let height = FavoriteFolderActionViewController.expandedHeight + bottomInset
-        return BottomSheet.Height(compact: height, expanded: height)
-    }
-
-    static let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
+    private static let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
 }
