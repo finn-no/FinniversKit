@@ -10,7 +10,6 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath)
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
-    func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
 }
 
@@ -59,6 +58,8 @@ public class FavoriteAdsListView: UIView {
     private let viewModel: FavoriteAdsListViewModel
     private let imageCache = ImageMemoryCache()
     private var didSetTableHeader = false
+    private var tableViewConstraints = [NSLayoutConstraint]()
+    private var emptyViewConstraints = [NSLayoutConstraint]()
 
     private lazy var tableView: UITableView = {
         let tableView = TableView(withAutoLayout: true)
@@ -82,6 +83,12 @@ public class FavoriteAdsListView: UIView {
         return tableHeader
     }()
 
+    private lazy var emptyView: FavoriteEmptyView = {
+        let emptyView = FavoriteEmptyView(withAutoLayout: true)
+        emptyView.isHidden = true
+        return emptyView
+    }()
+
     // MARK: - Init
 
     public init(viewModel: FavoriteAdsListViewModel) {
@@ -96,9 +103,17 @@ public class FavoriteAdsListView: UIView {
 
     private func setup() {
         addSubview(tableView)
-        tableView.fillInSuperview()
+        addSubview(emptyView)
 
+        tableView.fillInSuperview()
         tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
+        emptyView.configure(withText: viewModel.emptyViewText, buttonTitle: nil)
+
+        NSLayoutConstraint.activate([
+            emptyView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            emptyView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            emptyView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 
     // MARK: - Overrides
@@ -112,23 +127,11 @@ public class FavoriteAdsListView: UIView {
         }
     }
 
-    private func setTableHeader() {
-        tableView.tableHeaderView = tableHeaderView
-
-        NSLayoutConstraint.activate([
-            tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
-            tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
-        ])
-
-        tableView.tableHeaderView?.layoutIfNeeded()
-        tableView.tableHeaderView = tableView.tableHeaderView
-        tableView.sendSubviewToBack(tableHeaderView)
-    }
-
     // MARK: - Reload
 
     public func reloadData() {
+        showEmptyViewIfNeeded()
+
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
     }
@@ -144,6 +147,12 @@ public class FavoriteAdsListView: UIView {
         if !editing {
             setTableHeader()
             tableView.contentOffset.y += tableHeaderHeight
+        } else {
+            emptyView.removeConstraints(emptyViewConstraints)
+            NSLayoutConstraint.deactivate(emptyViewConstraints)
+
+            emptyViewConstraints = [emptyView.topAnchor.constraint(equalTo: topAnchor)]
+            NSLayoutConstraint.activate(emptyViewConstraints)
         }
 
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
@@ -193,6 +202,38 @@ public class FavoriteAdsListView: UIView {
 
     public func cachedImage(forPath path: String) -> UIImage? {
         return imageCache.image(forKey: path)
+    }
+
+    // MARK: - Private
+
+    private func setTableHeader() {
+        tableView.tableHeaderView = tableHeaderView
+
+        NSLayoutConstraint.deactivate(tableViewConstraints + emptyViewConstraints)
+        tableHeaderView.removeConstraints(tableViewConstraints)
+        emptyView.removeConstraints(emptyViewConstraints)
+
+        tableViewConstraints = [
+            tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
+            tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+        ]
+
+        emptyViewConstraints = [
+            emptyView.topAnchor.constraint(equalTo: tableHeaderView.bottomAnchor, constant: -48)
+        ]
+
+        NSLayoutConstraint.activate(tableViewConstraints + emptyViewConstraints)
+
+        tableView.tableHeaderView?.layoutIfNeeded()
+        tableView.tableHeaderView = tableView.tableHeaderView
+        tableView.sendSubviewToBack(tableHeaderView)
+    }
+
+    private func showEmptyViewIfNeeded() {
+        let shouldShowEmptyView = numberOfSections(in: tableView) == 0
+        emptyView.isHidden = !shouldShowEmptyView
+        tableHeaderView.isSortingViewHidden = shouldShowEmptyView
     }
 }
 
@@ -342,10 +383,6 @@ extension FavoriteAdsListView: FavoriteAdsListTableHeaderDelegate {
 // MARK: - UISearchBarDelegate
 
 extension FavoriteAdsListView: UISearchBarDelegate {
-    public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        delegate?.favoriteAdsListViewDidFocusSearchBar(self)
-    }
-
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }

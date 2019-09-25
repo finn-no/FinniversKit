@@ -4,20 +4,17 @@
 
 import UIKit
 
-protocol FavoriteFoldersEmptyViewDelegate: AnyObject {
-    func favoriteFoldersEmptyViewDidSelectAddFolderButton(_: FavoriteFoldersEmptyView)
+protocol FavoriteEmptyViewDelegate: AnyObject {
+    func favoriteEmptyViewDidSelectButton(_: FavoriteEmptyView)
 }
 
-class FavoriteFoldersEmptyView: UIView {
+final class FavoriteEmptyView: UIView {
 
     // MARK: - Public properties
 
-    weak var delegate: FavoriteFoldersEmptyViewDelegate?
+    weak var delegate: FavoriteEmptyViewDelegate?
 
     // MARK: - Private properties
-
-    private var bodyTextPrefix = ""
-    private var searchTerm = ""
 
     private lazy var wrapperView = UIView(withAutoLayout: true)
     private lazy var wrapperViewBottomConstraint = wrapperView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -windowSafeAreaInsets.bottom)
@@ -104,7 +101,7 @@ class FavoriteFoldersEmptyView: UIView {
     // MARK: - Private methods
 
     @objc private func handleAddFolderButtonTap() {
-        delegate?.favoriteFoldersEmptyViewDidSelectAddFolderButton(self)
+        delegate?.favoriteEmptyViewDidSelectButton(self)
     }
 
     @objc private func handleKeyboardNotification(_ notification: Notification) {
@@ -119,20 +116,12 @@ class FavoriteFoldersEmptyView: UIView {
         }
     }
 
-    private func updateBodyLabel() {
-        bodyLabel.text = "\(bodyTextPrefix) \"\(searchTerm)\""
-    }
-
     // MARK: - Public methods
 
-    func configure(withButtonTitle buttonTitle: String, bodyTextPrefix: String) {
+    func configure(withText text: String, buttonTitle: String?) {
         addFolderButton.setTitle(buttonTitle, for: .normal)
-        self.bodyTextPrefix = bodyTextPrefix
-        updateBodyLabel()
-    }
+        addFolderButton.isHidden = buttonTitle == nil
 
-    func configure(withSearchTerm searchTerm: String) {
-        self.searchTerm = searchTerm
-        updateBodyLabel()
+        bodyLabel.text = text
     }
 }

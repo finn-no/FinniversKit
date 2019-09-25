@@ -149,6 +149,7 @@ extension FavoriteAdsListViewModel {
         searchBarPlaceholder: "Søk etter en av dine favoritter",
         addCommentActionTitle: "Skriv\nnotat",
         editCommentActionTitle: "Rediger\nnotat",
-        deleteAdActionTitle: "Slett"
+        deleteAdActionTitle: "Slett",
+        emptyViewText: "Vi fant visst ingen favoritter for stoll"
     )
 }
