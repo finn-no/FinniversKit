@@ -88,8 +88,8 @@ public class FavoriteFoldersListView: UIView {
         return view
     }()
 
-    private lazy var emptyView: FavoriteNoResultsView = {
-        let emptyView = FavoriteNoResultsView(withAutoLayout: true)
+    private lazy var emptyView: FavoriteEmptyView = {
+        let emptyView = FavoriteEmptyView(withAutoLayout: true)
         emptyView.delegate = self
         emptyView.isHidden = true
         return emptyView
@@ -469,10 +469,10 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
     }
 }
 
-// MARK: - FavoriteFoldersEmptyViewDelegate
+// MARK: - FavoriteEmptyViewDelegate
 
-extension FavoriteFoldersListView: FavoritesNoResultsViewDelegate {
-    func favoritesNoResultsViewDidSelectButton(_: FavoriteNoResultsView) {
+extension FavoriteFoldersListView: FavoriteEmptyViewDelegate {
+    func favoriteEmptyViewDidSelectButton(_: FavoriteEmptyView) {
         guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         delegate?.favoriteFoldersListViewDidSelectAddButton(self, withSearchText: searchText)
     }

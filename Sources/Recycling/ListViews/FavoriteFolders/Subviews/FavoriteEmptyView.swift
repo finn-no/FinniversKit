@@ -4,15 +4,15 @@
 
 import UIKit
 
-protocol FavoritesNoResultsViewDelegate: AnyObject {
-    func favoritesNoResultsViewDidSelectButton(_: FavoriteNoResultsView)
+protocol FavoriteEmptyViewDelegate: AnyObject {
+    func favoriteEmptyViewDidSelectButton(_: FavoriteEmptyView)
 }
 
-final class FavoriteNoResultsView: UIView {
+final class FavoriteEmptyView: UIView {
 
     // MARK: - Public properties
 
-    weak var delegate: FavoritesNoResultsViewDelegate?
+    weak var delegate: FavoriteEmptyViewDelegate?
 
     // MARK: - Private properties
 
@@ -101,7 +101,7 @@ final class FavoriteNoResultsView: UIView {
     // MARK: - Private methods
 
     @objc private func handleAddFolderButtonTap() {
-        delegate?.favoritesNoResultsViewDidSelectButton(self)
+        delegate?.favoriteEmptyViewDidSelectButton(self)
     }
 
     @objc private func handleKeyboardNotification(_ notification: Notification) {
