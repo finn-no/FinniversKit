@@ -49,6 +49,10 @@ class MessageFormViewController: UIViewController {
         set { messageInputTextView.inputEnabled = newValue }
     }
 
+    var hasUncommittedChanges: Bool {
+        return messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
+    }
+
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
@@ -195,12 +199,6 @@ class MessageFormViewController: UIViewController {
         }
 
         wrapperBottomConstraint.constant = -offset
-    }
-}
-
-extension MessageFormViewController: MessageFormCommittableViewController {
-    var hasUncommittedChanges: Bool {
-        return messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
     }
 }
 
