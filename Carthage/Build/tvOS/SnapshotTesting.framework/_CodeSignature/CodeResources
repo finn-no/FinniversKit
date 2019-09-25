@@ -6,19 +6,27 @@
 	<dict>
 		<key>Headers/SnapshotTesting-Swift.h</key>
 		<data>
-		5F+sYg2sGpu/DhC3SLmC5Uqs45c=
+		ad3UCVKsd8SqRWIFkzpvc8+i4eA=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		H/FoA95WNIv3SfcRJILdrYMiLeI=
+		iwXNLAfojxnkJLK+f6JXZ8fMq5U=
+		</data>
+		<key>Modules/SnapshotTesting.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
+		<data>
+		y3Y8NSREM3lZbu9f+0SIhSY5jmE=
+		</data>
+		<key>Modules/SnapshotTesting.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
+		<data>
+		vtbAjFgiZqlU61dKOe9EOE0Dmew=
 		</data>
 		<key>Modules/SnapshotTesting.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		dxiql97XJIuWlq9Lqug/b6ZPiiY=
+		y3Y8NSREM3lZbu9f+0SIhSY5jmE=
 		</data>
 		<key>Modules/SnapshotTesting.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		GhcB0E4kPb4a4CxQA/mBe5667i4=
+		vtbAjFgiZqlU61dKOe9EOE0Dmew=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -31,33 +39,55 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5F+sYg2sGpu/DhC3SLmC5Uqs45c=
+			ad3UCVKsd8SqRWIFkzpvc8+i4eA=
 			</data>
 			<key>hash2</key>
 			<data>
-			Cht23Q1lHTYV6n74eq1pWhH3Or6UOa17jRoyc/tmiR8=
+			jard0vtmh/isocEH2Issdd3iuWfmEqZyFwG3TtEfM0g=
+			</data>
+		</dict>
+		<key>Modules/SnapshotTesting.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			y3Y8NSREM3lZbu9f+0SIhSY5jmE=
+			</data>
+			<key>hash2</key>
+			<data>
+			UQr0TEII6MpyoPh9G0oz+gpgj5faIq5n4FIL4n2yJhQ=
+			</data>
+		</dict>
+		<key>Modules/SnapshotTesting.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vtbAjFgiZqlU61dKOe9EOE0Dmew=
+			</data>
+			<key>hash2</key>
+			<data>
+			MVZsYdY4k5XKD2jLgHiQ8Ya399o19IQhJd1l4DjazWI=
 			</data>
 		</dict>
 		<key>Modules/SnapshotTesting.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dxiql97XJIuWlq9Lqug/b6ZPiiY=
+			y3Y8NSREM3lZbu9f+0SIhSY5jmE=
 			</data>
 			<key>hash2</key>
 			<data>
-			didHGYaGmUksJUmlpBKmNmZVlUwRVhs1fnatAwSffTs=
+			UQr0TEII6MpyoPh9G0oz+gpgj5faIq5n4FIL4n2yJhQ=
 			</data>
 		</dict>
 		<key>Modules/SnapshotTesting.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			GhcB0E4kPb4a4CxQA/mBe5667i4=
+			vtbAjFgiZqlU61dKOe9EOE0Dmew=
 			</data>
 			<key>hash2</key>
 			<data>
-			De5cjO8Vxdq6bYsAJsMZP8R4NxAwdJbrwQqk61SXeaY=
+			MVZsYdY4k5XKD2jLgHiQ8Ya399o19IQhJd1l4DjazWI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
