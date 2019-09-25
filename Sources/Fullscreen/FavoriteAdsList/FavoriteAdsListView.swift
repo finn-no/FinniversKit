@@ -226,6 +226,7 @@ public class FavoriteAdsListView: UIView {
     private func showEmptyViewIfNeeded() {
         let shouldShowEmptyView = numberOfSections(in: tableView) == 0
         emptyView.isHidden = !shouldShowEmptyView
+        tableHeaderView.isSortingViewHidden = shouldShowEmptyView
     }
 }
 
