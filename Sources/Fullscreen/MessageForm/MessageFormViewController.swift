@@ -235,14 +235,4 @@ extension MessageFormViewController: MessageFormToolbarDelegate {
             present(alertController, animated: true)
         }
     }
-
-    func messageFormToolbarTappedCustomizeButton(_ toolbar: MessageFormToolbar) {
-        guard let templateStore = viewModel.messageTemplateStore else { return }
-
-        messageInputTextView.resignFirstResponder()
-
-        let vc = MessageTemplateOverviewViewController(templateStore: templateStore, viewModel: viewModel)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
