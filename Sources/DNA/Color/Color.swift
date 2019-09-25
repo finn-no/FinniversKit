@@ -35,7 +35,7 @@ import UIKit
     }
 
     public class var btnDisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#2F333F"))
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#434359"))
     }
 
     public class var btnCritical: UIColor {
@@ -59,7 +59,7 @@ import UIKit
     }
 
     public class var textDisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#2F333F"))
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#434359"))
     }
 
     public class var textCritical: UIColor {
