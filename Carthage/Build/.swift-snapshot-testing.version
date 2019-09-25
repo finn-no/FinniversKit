@@ -2,7 +2,7 @@
   "Mac" : [
     {
       "name" : "SnapshotTesting",
-      "hash" : "612e224d20d6b3797830b215f1fd0f4d4219534ae57ea190f3e8f2229dbc7b5e",
+      "hash" : "836aba2b30454260298b69211a6d370246e93d9d1c39781001cd336f15fdd551",
       "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
     }
   ],
@@ -12,15 +12,15 @@
   "tvOS" : [
     {
       "name" : "SnapshotTesting",
-      "hash" : "9001aac54c8e5f360ebe5592fd04011af6c8a564cb29b971159f4e53a5a42dbb",
+      "hash" : "1036b2d5f78da3e41f9d7bc284ff60d597dc2692b311aabe35c220dc6af204dd",
       "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
     }
   ],
-  "commitish" : "1.5.0",
+  "commitish" : "174a2d276d17b4328cdccd719399d5052e2840f7",
   "iOS" : [
     {
       "name" : "SnapshotTesting",
-      "hash" : "bdd7f67c87b3791a1412069a300664f2aa9071e44cc8f3d83b53a3766cc75515",
+      "hash" : "4b541e6b26e2772d982c282b40ff43146c4831a733b22fce30174868d356e274",
       "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
     }
   ]

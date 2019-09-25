@@ -1,2 +1,2 @@
 # Snapshot Testing
-github "pointfreeco/swift-snapshot-testing" ~> 1.5
+github "fespinoza/swift-snapshot-testing" "dark-mode-support"

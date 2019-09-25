@@ -14,11 +14,11 @@
 		</data>
 		<key>Modules/SnapshotTesting.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		mLjfXTAy0/0vgdLoOFWb547E0hk=
+		dxiql97XJIuWlq9Lqug/b6ZPiiY=
 		</data>
 		<key>Modules/SnapshotTesting.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		NbAfcO4n/AXZ3ouuEiWozEIEF/o=
+		GhcB0E4kPb4a4CxQA/mBe5667i4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -42,22 +42,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mLjfXTAy0/0vgdLoOFWb547E0hk=
+			dxiql97XJIuWlq9Lqug/b6ZPiiY=
 			</data>
 			<key>hash2</key>
 			<data>
-			JrcS6d/hRoHU9CISTcsMmpexMTnhS9LfPQFPBxDQfBc=
+			didHGYaGmUksJUmlpBKmNmZVlUwRVhs1fnatAwSffTs=
 			</data>
 		</dict>
 		<key>Modules/SnapshotTesting.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NbAfcO4n/AXZ3ouuEiWozEIEF/o=
+			GhcB0E4kPb4a4CxQA/mBe5667i4=
 			</data>
 			<key>hash2</key>
 			<data>
-			2v8DgfILIJxL3rQ8q4hKhKQgnCGjPKsUxnbcWozaP/U=
+			De5cjO8Vxdq6bYsAJsMZP8R4NxAwdJbrwQqk61SXeaY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
