@@ -1,0 +1,2 @@
+# Snapshot Testing
+github "pointfreeco/swift-snapshot-testing" ~> 1.5
