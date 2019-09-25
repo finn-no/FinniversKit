@@ -3,17 +3,12 @@
 //
 
 import Demo
-import FBSnapshotTestCase
+import XCTest
 import FinniversKit
 
-class RecyclingViewTests: FBSnapshotTestCase {
-    override func setUp() {
-        super.setUp()
-        recordMode = false
-    }
-
+class RecyclingViewTests: XCTestCase {
     func snapshot(_ component: RecyclingDemoViews) {
-        FBSnapshotVerifyView(component.viewController.view)
+//        FBSnapshotVerifyView(component.viewController.view)
     }
 
     // MARK: - Tests

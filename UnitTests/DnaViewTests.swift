@@ -3,17 +3,12 @@
 //
 
 import Demo
-import FBSnapshotTestCase
+import XCTest
 import FinniversKit
 
-class DnaViewTests: FBSnapshotTestCase {
-    override func setUp() {
-        super.setUp()
-        recordMode = false
-    }
-
+class DnaViewTests: XCTestCase {
     private func snapshot(_ component: DnaDemoViews) {
-        FBSnapshotVerifyView(component.viewController.view)
+//        FBSnapshotVerifyView(component.viewController.view)
     }
 
     // MARK: - Tests

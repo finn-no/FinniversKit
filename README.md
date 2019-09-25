@@ -69,7 +69,7 @@ Everything we do we aim it to be accessible, our two main areas of focus have be
 
 When making UI changes it's quite common that we would request an screenshot of the before and after, adding Snapshot testing made this trivial, if there was UI changes you would get a failure when building through the CI.
 
-**FinniversKit** uses [Uber's snapshot test cases](https://github.com/uber/ios-snapshot-test-case) to compare the contents of a UIView against a reference image.
+**FinniversKit** uses TODO to compare the contents of a UIView against a reference image.
 
 When you run the tests **FinniversKit** will take snapshot of all the components and will look for differences. If a difference is caught you'll be informed in the form of a failed test. Running the tests locally will generate a diff between the old and the new images so you can see what caused the test to fail.
 

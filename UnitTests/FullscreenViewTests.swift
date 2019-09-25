@@ -3,19 +3,14 @@
 //
 
 import Demo
-import FBSnapshotTestCase
+import XCTest
 import FinniversKit
 
-class FullscreenViewTests: FBSnapshotTestCase {
+class FullscreenViewTests: XCTestCase {
     private let excludedComponents: [FullscreenDemoViews] = [.pianoView]
 
-    override func setUp() {
-        super.setUp()
-        recordMode = false
-    }
-
     func snapshot(_ component: FullscreenDemoViews) {
-        FBSnapshotVerifyView(component.viewController.view)
+//        FBSnapshotVerifyView(component.viewController.view)
     }
 
     // MARK: - Tests
