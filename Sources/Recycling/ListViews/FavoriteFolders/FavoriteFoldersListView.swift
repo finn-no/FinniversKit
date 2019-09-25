@@ -88,8 +88,8 @@ public class FavoriteFoldersListView: UIView {
         return view
     }()
 
-    private lazy var emptyView: FavoriteFoldersEmptyView = {
-        let emptyView = FavoriteFoldersEmptyView(withAutoLayout: true)
+    private lazy var emptyView: FavoriteNoResultsView = {
+        let emptyView = FavoriteNoResultsView(withAutoLayout: true)
         emptyView.delegate = self
         emptyView.isHidden = true
         return emptyView
@@ -215,7 +215,7 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        emptyView.configure(withButtonTitle: viewModel.addFolderText, bodyTextPrefix: viewModel.emptyViewBodyPrefix)
+        emptyView.configure(withText: viewModel.emptyViewBodyPrefix, buttonTitle: viewModel.addFolderText)
         searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
         footerView.configure(withTitle: viewModel.addFolderText)
 
@@ -250,6 +250,10 @@ public class FavoriteFoldersListView: UIView {
 
     private func showEmptyViewIfNeeded() {
         let shouldShowEmptyView = (dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0) == 0
+        let searchTerm = searchBar.text ?? ""
+        let emptyViewText = "\(viewModel.emptyViewBodyPrefix) \"\(searchTerm)\""
+
+        emptyView.configure(withText: emptyViewText, buttonTitle: viewModel.addFolderText)
         emptyView.isHidden = !shouldShowEmptyView
     }
 
@@ -463,14 +467,13 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
         let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         isSearchActive = !searchText.isEmpty
         delegate?.favoriteFoldersListView(self, didChangeSearchText: searchText)
-        emptyView.configure(withSearchTerm: searchText)
     }
 }
 
 // MARK: - FavoriteFoldersEmptyViewDelegate
 
-extension FavoriteFoldersListView: FavoriteFoldersEmptyViewDelegate {
-    func favoriteFoldersEmptyViewDidSelectAddFolderButton(_: FavoriteFoldersEmptyView) {
+extension FavoriteFoldersListView: FavoritesNoResultsViewDelegate {
+    func favoritesNoResultsViewDidSelectButton(_: FavoriteNoResultsView) {
         guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         delegate?.favoriteFoldersListViewDidSelectAddButton(self, withSearchText: searchText)
     }
