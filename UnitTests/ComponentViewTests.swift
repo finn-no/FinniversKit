@@ -4,11 +4,12 @@
 
 import Demo
 import XCTest
+import SnapshotTesting
 import FinniversKit
 
 class ComponentViewTests: XCTestCase {
-    private func snapshot(_ component: ComponentDemoViews) {
-//        FBSnapshotVerifyView(component.viewController.view)
+    private func snapshot(_ component: ComponentDemoViews, testName: String = #function) {
+        assertSnapshot(matching: component.viewController, as: .image(on: .iPhoneX), named: "iPhone", testName: testName)
     }
 
     // MARK: - Tests

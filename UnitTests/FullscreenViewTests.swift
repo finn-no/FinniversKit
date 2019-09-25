@@ -4,13 +4,14 @@
 
 import Demo
 import XCTest
+import SnapshotTesting
 import FinniversKit
 
 class FullscreenViewTests: XCTestCase {
     private let excludedComponents: [FullscreenDemoViews] = [.pianoView]
 
-    func snapshot(_ component: FullscreenDemoViews) {
-//        FBSnapshotVerifyView(component.viewController.view)
+    private func snapshot(_ component: FullscreenDemoViews, testName: String = #function) {
+        assertSnapshot(matching: component.viewController, as: .image(on: .iPhoneX), named: "iPhone", testName: testName)
     }
 
     // MARK: - Tests

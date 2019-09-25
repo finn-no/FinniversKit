@@ -4,11 +4,12 @@
 
 import Demo
 import XCTest
+import SnapshotTesting
 import FinniversKit
 
 class RecyclingViewTests: XCTestCase {
-    func snapshot(_ component: RecyclingDemoViews) {
-//        FBSnapshotVerifyView(component.viewController.view)
+    private func snapshot(_ component: RecyclingDemoViews, testName: String = #function) {
+        assertSnapshot(matching: component.viewController, as: .image(on: .iPhoneX), named: "iPhone", testName: testName)
     }
 
     // MARK: - Tests

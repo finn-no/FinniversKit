@@ -4,11 +4,12 @@
 
 import FinniversKit
 import XCTest
+import SnapshotTesting
 import Demo
 
 class TableViewCellsViewTests: XCTestCase {
-    func snapshot(_ component: CellsDemoViews) {
-//        FBSnapshotVerifyView(component.viewController.view)
+    private func snapshot(_ component: CellsDemoViews, testName: String = #function) {
+        assertSnapshot(matching: component.viewController, as: .image(on: .iPhoneX), named: "iPhone", testName: testName)
     }
 
     // MARK: - Tests
