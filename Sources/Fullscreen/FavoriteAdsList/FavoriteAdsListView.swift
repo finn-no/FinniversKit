@@ -58,7 +58,8 @@ public class FavoriteAdsListView: UIView {
     private let viewModel: FavoriteAdsListViewModel
     private let imageCache = ImageMemoryCache()
     private var didSetTableHeader = false
-    private var emptyViewTopConstraint: NSLayoutConstraint?
+    private var tableViewConstraints = [NSLayoutConstraint]()
+    private var emptyViewConstraints = [NSLayoutConstraint]()
 
     private lazy var tableView: UITableView = {
         let tableView = TableView(withAutoLayout: true)
@@ -146,6 +147,12 @@ public class FavoriteAdsListView: UIView {
         if !editing {
             setTableHeader()
             tableView.contentOffset.y += tableHeaderHeight
+        } else {
+            emptyView.removeConstraints(emptyViewConstraints)
+            NSLayoutConstraint.deactivate(emptyViewConstraints)
+
+            emptyViewConstraints = [emptyView.topAnchor.constraint(equalTo: topAnchor)]
+            NSLayoutConstraint.activate(emptyViewConstraints)
         }
 
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
@@ -202,20 +209,21 @@ public class FavoriteAdsListView: UIView {
     private func setTableHeader() {
         tableView.tableHeaderView = tableHeaderView
 
-        if let emptyViewTopConstraint = emptyViewTopConstraint {
-            emptyViewTopConstraint.isActive = false
-            emptyView.removeConstraint(emptyViewTopConstraint)
-        }
+        NSLayoutConstraint.deactivate(tableViewConstraints + emptyViewConstraints)
+        tableHeaderView.removeConstraints(tableViewConstraints)
+        emptyView.removeConstraints(emptyViewConstraints)
 
-        let emptyViewTopConstraint = emptyView.topAnchor.constraint(equalTo: tableHeaderView.bottomAnchor)
-        self.emptyViewTopConstraint = emptyViewTopConstraint
-
-        NSLayoutConstraint.activate([
+        tableViewConstraints = [
             tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
             tableHeaderView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor),
-            emptyViewTopConstraint
-        ])
+            tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+        ]
+
+        emptyViewConstraints = [
+            emptyView.topAnchor.constraint(equalTo: tableHeaderView.bottomAnchor, constant: -48)
+        ]
+
+        NSLayoutConstraint.activate(tableViewConstraints + emptyViewConstraints)
 
         tableView.tableHeaderView?.layoutIfNeeded()
         tableView.tableHeaderView = tableView.tableHeaderView
