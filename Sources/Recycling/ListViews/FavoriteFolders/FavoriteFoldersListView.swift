@@ -215,7 +215,6 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        emptyView.configure(withText: viewModel.emptyViewBodyPrefix, buttonTitle: viewModel.addFolderText)
         searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
         footerView.configure(withTitle: viewModel.addFolderText)
 
@@ -250,10 +249,6 @@ public class FavoriteFoldersListView: UIView {
 
     private func showEmptyViewIfNeeded() {
         let shouldShowEmptyView = (dataSource?.numberOfItems(inFavoriteFoldersListView: self) ?? 0) == 0
-        let searchTerm = searchBar.text ?? ""
-        let emptyViewText = "\(viewModel.emptyViewBodyPrefix) \"\(searchTerm)\""
-
-        emptyView.configure(withText: emptyViewText, buttonTitle: viewModel.addFolderText)
         emptyView.isHidden = !shouldShowEmptyView
     }
 
@@ -466,7 +461,11 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         isSearchActive = !searchText.isEmpty
+
         delegate?.favoriteFoldersListView(self, didChangeSearchText: searchText)
+
+        let emptyViewText = "\(viewModel.emptyViewBodyPrefix) \"\(searchText)\""
+        emptyView.configure(withText: emptyViewText, buttonTitle: viewModel.addFolderText)
     }
 }
 
