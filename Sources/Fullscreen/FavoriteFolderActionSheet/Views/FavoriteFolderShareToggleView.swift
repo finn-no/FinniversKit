@@ -17,6 +17,14 @@ final class FavoriteFolderShareToggleView: UIView {
         }
     }
 
+    var isEnabled = true {
+        didSet {
+            titleLabel.textColor = isEnabled ? .licorice : .sardine
+            iconImageView.tintColor = isEnabled ? .licorice : .sardine
+            switchControl.isEnabled = isEnabled
+        }
+    }
+
     private lazy var titleLabel = FavoriteActionCell.makeTitleLabel()
 
     private lazy var iconImageView: UIImageView = {
