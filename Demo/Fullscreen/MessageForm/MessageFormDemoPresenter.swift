@@ -15,7 +15,7 @@ extension MessageFormDemoPresenter: MessageFormBottomSheetDelegate {
         var templateString = ""
         if let template = template {
             let id = template.id ?? "<nil>"
-            templateString = "\ntemplate ID: \(id)\nuserDefined: \(template.isUserDefined)\n"
+            templateString = "\ntemplate ID: \(id)\n"
         }
 
         let alertController = UIAlertController(title: "Message sent!", message: "templateState: \(templateState)\(templateString)\n\n\(text)", preferredStyle: .alert)

@@ -6,7 +6,6 @@ import Foundation
 
 protocol MessageFormToolbarDelegate: AnyObject {
     func messageFormToolbar(_ toolbar: MessageFormToolbar, didSelectMessageTemplate template: MessageFormTemplate)
-    func messageFormToolbarTappedCustomizeButton(_ toolbar: MessageFormToolbar)
 }
 
 class MessageFormToolbar: UIView {
@@ -20,7 +19,6 @@ class MessageFormToolbar: UIView {
 
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(MessageFormTemplateCell.self)
-        view.register(MessageFormCustomizeCell.self)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.dataSource = self
         view.delegate = self
@@ -43,14 +41,6 @@ class MessageFormToolbar: UIView {
 
     weak var delegate: MessageFormToolbarDelegate?
 
-    var showCustomizeButton: Bool = false {
-        didSet {
-            if showCustomizeButton != oldValue {
-                collectionView.reloadData()
-            }
-        }
-    }
-
     // MARK: - Private properties
 
     private static let backgroundColor = UIColor(r: 208, g: 212, b: 215)
@@ -69,10 +59,6 @@ class MessageFormToolbar: UIView {
         }
     }
 
-    private var customTemplates: [MessageFormTemplate] {
-        return viewModel.messageTemplateStore?.customTemplates ?? []
-    }
-
     // MARK: - Init
 
     required init?(coder aDecoder: NSCoder) {
@@ -87,7 +73,6 @@ class MessageFormToolbar: UIView {
 
     private func setup() {
         backgroundColor = MessageFormToolbar.backgroundColor
-        showCustomizeButton = viewModel.showCustomizeButton && viewModel.messageTemplateStore != nil
 
         addSubview(collectionView)
         addSubview(safeAreaCoverView)
@@ -122,11 +107,6 @@ class MessageFormToolbar: UIView {
 
 extension MessageFormToolbar: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if section == 0 {
-            let leadingMargin = showCustomizeButton ? CGFloat.mediumSpacing : 0
-            return UIEdgeInsets(top: 0, leading: leadingMargin, bottom: 0, trailing: 0)
-        }
-
         return UIEdgeInsets(top: 0, leading: .mediumSpacing, bottom: 0, trailing: .mediumSpacing)
     }
 
@@ -137,47 +117,22 @@ extension MessageFormToolbar: UICollectionViewDelegateFlowLayout {
 
 extension MessageFormToolbar: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return showCustomizeButton ? 1 : 0
-        case 1:
-            return customTemplates.count + viewModel.defaultMessageTemplates.count
-        default:
-            return 0
-        }
+        return viewModel.messageTemplates.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            let cell = collectionView.dequeue(MessageFormCustomizeCell.self, for: indexPath)
-            cell.delegate = self
-            cell.configure(withMaxWidth: toolbarCellMaxWidth, maxHeight: toolbarCellHeight)
-            return cell
-        case 1:
-            let maybeTemplate: MessageFormTemplate?
-            if indexPath.row < customTemplates.count {
-                maybeTemplate = customTemplates[safe: indexPath.row]
-            } else {
-                let index = indexPath.row - customTemplates.count
-                maybeTemplate = viewModel.defaultMessageTemplates[safe: index]
-            }
-
-            guard let template = maybeTemplate else {
-                return UICollectionViewCell()
-            }
-
-            let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
-            cell.configure(withTemplate: template, maxWidth: toolbarCellMaxWidth, maxHeight: toolbarCellHeight)
-            cell.delegate = self
-            return cell
-        default:
-            fatalError("Unexpected section: \(indexPath.section)")
+        guard let template = viewModel.messageTemplates[safe: indexPath.row] else {
+            return UICollectionViewCell()
         }
+
+        let cell = collectionView.dequeue(MessageFormTemplateCell.self, for: indexPath)
+        cell.configure(withTemplate: template, maxWidth: toolbarCellMaxWidth, maxHeight: toolbarCellHeight)
+        cell.delegate = self
+        return cell
     }
 }
 
@@ -188,12 +143,6 @@ extension MessageFormToolbar: MessageFormTemplateCellDelegate {
         }
 
         delegate?.messageFormToolbar(self, didSelectMessageTemplate: messageTemplate)
-    }
-}
-
-extension MessageFormToolbar: MessageFormCustomizeCellDelegate {
-    fileprivate func messageFormCustomizeCellWasTapped(_ cell: MessageFormCustomizeCell) {
-        delegate?.messageFormToolbarTappedCustomizeButton(self)
     }
 }
 
@@ -279,105 +228,6 @@ private class MessageFormTemplateCell: UICollectionViewCell {
 
     @objc private func buttonTapped() {
         delegate?.messageFormTemplateCellWasTapped(self)
-    }
-}
-
-// MARK: - MessageFormCustomizeCell
-
-private protocol MessageFormCustomizeCellDelegate: AnyObject {
-    func messageFormCustomizeCellWasTapped(_ cell: MessageFormCustomizeCell)
-}
-
-private class MessageFormCustomizeCell: UICollectionViewCell {
-
-    // MARK: - Static properties
-
-    static let cellSize = CGSize(width: 30, height: 30)
-    static let imageSize = CGSize(width: 16, height: 16)
-
-    // MARK: - UI properties
-
-    private lazy var wrapperView: UIView = UIView(withAutoLayout: true)
-
-    private lazy var button: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundColor(color: .toothPaste, forState: .normal)
-        button.setBackgroundColor(color: .secondaryBlue, forState: .highlighted)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = MessageFormCustomizeCell.cellSize.width / 2
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        return button
-    }()
-
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: .plus))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .clear
-        return imageView
-    }()
-
-    private var maxWidth: CGFloat = 0
-    private var maxHeight: CGFloat = 0
-
-    // MARK: - Internal properties
-
-    weak var delegate: MessageFormCustomizeCellDelegate?
-
-    // MARK: - Init
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    private func setup() {
-        contentView.addSubview(wrapperView)
-        wrapperView.addSubview(button)
-        button.addSubview(imageView)
-
-        wrapperView.fillInSuperview()
-
-        NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: wrapperView.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor),
-            button.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.width),
-            button.heightAnchor.constraint(equalToConstant: MessageFormCustomizeCell.cellSize.height),
-
-            imageView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: MessageFormCustomizeCell.imageSize.width),
-            imageView.heightAnchor.constraint(equalToConstant: MessageFormCustomizeCell.imageSize.height),
-        ])
-    }
-
-    // MARK: - Overrides
-
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        var frame = layoutAttributes.frame
-        frame.size.width = MessageFormCustomizeCell.cellSize.width
-        frame.size.height = maxHeight
-        layoutAttributes.frame = frame
-        return layoutAttributes
-    }
-
-    // MARK: - Internal methods
-
-    func configure(withMaxWidth maxWidth: CGFloat, maxHeight: CGFloat) {
-        self.maxWidth = maxWidth
-        self.maxHeight = maxHeight
-    }
-
-    // MARK: - Private methods
-
-    @objc private func buttonTapped() {
-        delegate?.messageFormCustomizeCellWasTapped(self)
     }
 }
 
