@@ -11,6 +11,7 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath)
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility percentVisible: CGFloat)
 }
 
 public protocol FavoriteAdsListViewDataSource: AnyObject {
@@ -303,6 +304,22 @@ extension FavoriteAdsListView: UITableViewDelegate {
         configuration.performsFirstActionWithFullSwipe = false
 
         return configuration
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if sendScrollUpdates {
+            let percentVisible = titleLabelVisiblePercent(scrollView: scrollView)
+            delegate?.favoriteAdsListView(self, didUpdateTitleLabelVisibility: percentVisible)
+        }
+    }
+
+    private func titleLabelVisiblePercent(scrollView: UIScrollView) -> CGFloat {
+        let scrollOffset = scrollView.contentOffset.y
+        let labelStart = tableHeaderView.titleLabelFrame.minY
+        let labelEnd = tableHeaderView.titleLabelFrame.maxY
+
+        let percentVisible = 1 - (scrollOffset-labelStart)/(labelEnd-labelStart)
+        return min(1, max(percentVisible, 0))
     }
 }
 
