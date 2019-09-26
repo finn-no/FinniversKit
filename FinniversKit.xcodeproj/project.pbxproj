@@ -1582,6 +1582,7 @@
 				9BEB2875231D23F500D28BAD /* LoanCalculator */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
 				9B28DE7E23266C2500D69C15 /* Panel */,
+				9A37D3CFB91812A2A64DA5F3 /* PercentageDrivenTitleView */,
 				CF13D6CB2292D2100087DA37 /* Phases */,
 				9F2134A9A3ACDA8FA1566B1A /* Profile */,
 				F2C3E95A22CB634700CED7E0 /* QuestionnaireView */,
@@ -1600,7 +1601,6 @@
 				081F51BB222932C900026C84 /* TextView */,
 				4447F6A81FDB2B110033DBC1 /* Toast */,
 				F2597C73231D1A0B00BE74EC /* VerificationView */,
-				9A37D3CFB91812A2A64DA5F3 /* PercentageDrivenTitleView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2949,6 +2949,7 @@
 				9BEB2872231D232400D28BAD /* LoanCalculator */,
 				89A7A640225344470053D33B /* NativeAdvert */,
 				9B28DE852326754C00D69C15 /* Panel */,
+				9A37DF6ECC72C010B59AD6A1 /* PercentageDrivenTitleView */,
 				CF13D6D22292E2DD0087DA37 /* Phases */,
 				9F213D0057F4D4312C8FF359 /* Profile */,
 				F2C3E96122CB686F00CED7E0 /* QuestionnaireView */,
@@ -2965,7 +2966,6 @@
 				081F51B8222930B400026C84 /* TextView */,
 				CF8F022521DCC6F8004C4042 /* Toast */,
 				F2597C74231D3DF700BE74EC /* VerificationView */,
-				9A37DF6ECC72C010B59AD6A1 /* PercentageDrivenTitleView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
