@@ -192,10 +192,12 @@ public class FavoriteAdsListView: UIView {
 
     public func deleteRow(at indexPath: IndexPath, with animation: UITableView.RowAnimation = .automatic) {
         tableView.deleteRows(at: [indexPath], with: animation)
+        showEmptyViewIfNeeded()
     }
 
     public func deleteSection(at index: Int, with animation: UITableView.RowAnimation = .automatic) {
         tableView.deleteSections(IndexSet(integer: index), with: animation)
+        showEmptyViewIfNeeded()
     }
 
     // MARK: - Images
