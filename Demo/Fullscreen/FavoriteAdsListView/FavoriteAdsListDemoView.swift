@@ -150,6 +150,6 @@ extension FavoriteAdsListViewModel {
         addCommentActionTitle: "Skriv\nnotat",
         editCommentActionTitle: "Rediger\nnotat",
         deleteAdActionTitle: "Slett",
-        emptyViewText: "Vi fant visst ingen favoritter for stoll"
+        emptyViewBodyPrefix: "Vi fant visst ingen favoritter for"
     )
 }
