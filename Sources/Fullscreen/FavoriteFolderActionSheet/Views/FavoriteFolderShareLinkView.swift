@@ -11,6 +11,14 @@ protocol FavoriteFolderShareLinkViewDelegate: AnyObject {
 final class FavoriteFolderShareLinkView: UIView {
     weak var delegate: FavoriteFolderShareLinkViewDelegate?
 
+    var isEnabled = true {
+        didSet {
+            iconImageView.tintColor = isEnabled ? .licorice : .sardine
+            descriptionLabel.textColor = isEnabled ? .licorice : .sardine
+            button.isEnabled = isEnabled
+        }
+    }
+
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .favoritesShareLink).withRenderingMode(.alwaysTemplate)

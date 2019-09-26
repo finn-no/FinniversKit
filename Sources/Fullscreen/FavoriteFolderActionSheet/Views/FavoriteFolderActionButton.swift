@@ -6,12 +6,7 @@ import UIKit
 
 final class FavoriteFolderActionButton: UIButton {
     let action: FavoriteFolderAction
-
-    var isSeparatorHidden = true {
-        didSet {
-            separatorView.isHidden = isSeparatorHidden
-        }
-    }
+    private let enabledTintColor: UIColor
 
     private lazy var separatorView: UIView = {
         let view = UIView()
@@ -20,19 +15,28 @@ final class FavoriteFolderActionButton: UIButton {
         return view
     }()
 
+    var isSeparatorHidden = true {
+        didSet {
+            separatorView.isHidden = isSeparatorHidden
+        }
+    }
+
     // MARK: - Init
 
     init(action: FavoriteFolderAction, title: String, icon: FinniversImageAsset, tintColor: UIColor = .licorice) {
         self.action = action
+        self.enabledTintColor = tintColor
         super.init(frame: .zero)
 
         titleLabel?.font = .bodyStrong
         setTitleColor(tintColor, for: .normal)
+        setTitleColor(.sardine, for: .disabled)
         setTitle(title, for: .normal)
 
         imageView?.tintColor = tintColor
         adjustsImageWhenHighlighted = false
         setImage(UIImage(named: icon).withRenderingMode(.alwaysTemplate), for: .normal)
+        setImage(UIImage(named: icon).withRenderingMode(.alwaysTemplate), for: .disabled)
 
         addSubview(separatorView)
     }
@@ -52,6 +56,12 @@ final class FavoriteFolderActionButton: UIButton {
     override var isSelected: Bool {
         didSet {
             updateBackground()
+        }
+    }
+
+    override var isEnabled: Bool {
+        didSet {
+            imageView?.tintColor = isEnabled ? enabledTintColor : .sardine
         }
     }
 
