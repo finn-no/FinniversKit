@@ -48,6 +48,10 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
     }
 
     private func setup() {
+        // Insert favoritesListView below dismiss button & tweakable overlay.
+        view.insertSubview(favoritesListView, at: view.subviews.count - 2)
+        favoritesListView.fillInSuperview()
+
         sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
     }
 }
