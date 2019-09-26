@@ -7,16 +7,19 @@ public struct FavoriteAdsListViewModel {
     public let addCommentActionTitle: String
     public let editCommentActionTitle: String
     public let deleteAdActionTitle: String
+    public let emptyViewText: String
 
     public init(
         searchBarPlaceholder: String,
         addCommentActionTitle: String,
         editCommentActionTitle: String,
-        deleteAdActionTitle: String
+        deleteAdActionTitle: String,
+        emptyViewText: String
     ) {
         self.searchBarPlaceholder = searchBarPlaceholder
         self.addCommentActionTitle = addCommentActionTitle
         self.editCommentActionTitle = editCommentActionTitle
         self.deleteAdActionTitle = deleteAdActionTitle
+        self.emptyViewText = emptyViewText
     }
 }

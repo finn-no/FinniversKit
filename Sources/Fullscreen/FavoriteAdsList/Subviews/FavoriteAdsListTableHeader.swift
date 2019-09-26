@@ -73,6 +73,11 @@ class FavoriteAdsListTableHeader: UIView {
         return sortingView
     }()
 
+    var isSortingViewHidden: Bool {
+        get { return sortingView.isHidden }
+        set { sortingView.isHidden = newValue }
+    }
+
     // MARK: - Init
 
     override init(frame: CGRect) {
