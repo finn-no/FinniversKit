@@ -67,6 +67,12 @@ public final class FavoriteFolderActionSheet: BottomSheet {
             }
         }
     }
+
+    // MARK: - Public
+
+    public func setAction(_ action: FavoriteFolderAction, enabled: Bool) {
+        viewController?.setAction(action, enabled: enabled)
+    }
 }
 
 // MARK: - FavoriteFolderActionViewDelegate

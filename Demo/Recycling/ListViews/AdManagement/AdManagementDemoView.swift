@@ -38,6 +38,9 @@ public class AdManagementDemoView: UIView {
         [
             AdManagementActionCellModel(actionType: .start, title: "Vis annonsen i søkeresultater"),
             AdManagementActionCellModel(actionType: .undispose, title: "Fjern solgtmarkering")
+        ],
+        [
+            AdManagementActionCellModel(actionType: .review, title: "Gi en vurdering")
         ]
     ]
 
