@@ -4,6 +4,11 @@
 
 import FinniversKit
 
+enum AdsSorting: String {
+    case lastAdded = "Sist lagt til"
+    case alphabetically = "Alfabetisk"
+}
+
 class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
 
     // MARK: - Private properties
