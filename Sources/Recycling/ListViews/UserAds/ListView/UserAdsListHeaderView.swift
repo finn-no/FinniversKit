@@ -20,8 +20,9 @@ public class UserAdsListHeaderView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .detailStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
+        label.textColor = .stone
         label.backgroundColor = .clear
+        label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
@@ -51,7 +52,7 @@ public class UserAdsListHeaderView: UIView {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .sardine
+        backgroundColor = .marble
 
         addSubview(titleLabel)
         addSubview(moreButton)
@@ -75,7 +76,7 @@ public class UserAdsListHeaderView: UIView {
     public var model: UserAdsListHeaderViewModel? {
         didSet {
             guard let model = model else { return }
-            titleLabel.text = model.title
+            titleLabel.text = model.title.uppercased()
             moreButton.setTitle(model.buttonTitle, for: .normal)
         }
     }
