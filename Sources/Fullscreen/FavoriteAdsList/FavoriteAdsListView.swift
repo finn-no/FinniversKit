@@ -109,7 +109,6 @@ public class FavoriteAdsListView: UIView {
 
         tableView.fillInSuperview()
         tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
-        emptyView.configure(withText: viewModel.emptyViewText, buttonTitle: nil)
 
         NSLayoutConstraint.activate([
             emptyView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -412,6 +411,9 @@ extension FavoriteAdsListView: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         delegate?.favoriteAdsListView(self, didChangeSearchText: searchText)
+
+        let emptyViewText = "\(viewModel.emptyViewBodyPrefix) \"\(searchText)\""
+        emptyView.configure(withText: emptyViewText, buttonTitle: nil)
     }
 }
 
