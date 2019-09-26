@@ -2,16 +2,35 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import FinniversKit
+import UIKit
 
-class TitleView: UIView {
+public class PercentageDrivenTitleView: UIView {
 
     // MARK: - Public properties
 
-    var title: String = "" {
+    public var title: String = "" {
         didSet {
             label.text = title
             setNeedsLayout()
+        }
+    }
+
+    public var font: UIFont = .bodyStrong {
+        didSet {
+            label.font = font
+            setNeedsLayout()
+        }
+    }
+
+    public var textColor: UIColor = .licorice {
+        didSet {
+            label.textColor = textColor
+        }
+    }
+
+    public var numberOfLines: Int = 1 {
+        didSet {
+            label.numberOfLines = numberOfLines
         }
     }
 
@@ -32,8 +51,7 @@ class TitleView: UIView {
     }
 
     // MARK: - Init
-
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(label)
         clipsToBounds = true
@@ -43,15 +61,15 @@ class TitleView: UIView {
 
     // MARK: - Overrides
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
-        label.frame = frame
+        label.frame = bounds
         label.frame.origin.y = yPositionAdjusted(from: percentVisible)
     }
 
     // MARK: - Public methods
 
-    func setPercentageVisible(_ percent: CGFloat) {
+    public func setPercentageVisible(_ percent: CGFloat) {
         percentVisible = max(0, min(percent, 1))
     }
 
