@@ -254,6 +254,7 @@
 		9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */; };
 		9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */; };
 		9A37D770DA2B07DC0F543B33 /* FavoriteAdsDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */; };
+		9A37D7D830637B2E4D701BF8 /* PercentageDrivenTitleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D089E4A62A520279C398 /* PercentageDrivenTitleDemoView.swift */; };
 		9A37D8ED813B53854DA04D20 /* PercentageDrivenTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D8D373E3C5F3363CDECE /* PercentageDrivenTitleView.swift */; };
 		9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */; };
 		9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D9749A60B9BFD125F483 /* FeedbackView.swift */; };
@@ -795,6 +796,7 @@
 		91846C5922E856D50001410F /* MapSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsView.swift; sourceTree = "<group>"; };
 		91D2A55322F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewAnnotation.swift; sourceTree = "<group>"; };
 		91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewControllerHelpers.swift; sourceTree = "<group>"; };
+		9A37D089E4A62A520279C398 /* PercentageDrivenTitleDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentageDrivenTitleDemoView.swift; sourceTree = "<group>"; };
 		9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdTableViewCell.swift; sourceTree = "<group>"; };
 		9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
 		9A37D34E21B0FF57F07BE7E0 /* FavoriteAdsListDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewController.swift; sourceTree = "<group>"; };
@@ -2212,6 +2214,14 @@
 				9A37D4FCB2C97A70AB625A9C /* FavoriteAdsSectionHeaderView.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		9A37DF6ECC72C010B59AD6A1 /* PercentageDrivenTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				9A37D089E4A62A520279C398 /* PercentageDrivenTitleDemoView.swift */,
+			);
+			path = PercentageDrivenTitleView;
 			sourceTree = "<group>";
 		};
 		9A37DFB4ED453062D0BED7A9 /* FavoriteAdTableViewCell */ = {
@@ -4146,6 +4156,7 @@
 				9F2139B00A990D8D389CE357 /* IdentityDemoView.swift in Sources */,
 				9F213B112A5063350DBDAD13 /* ReputationDemoView.swift in Sources */,
 				9A37DD173CA22505F6C8694B /* FavoriteAdsListDemoViewController.swift in Sources */,
+				9A37D7D830637B2E4D701BF8 /* PercentageDrivenTitleDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

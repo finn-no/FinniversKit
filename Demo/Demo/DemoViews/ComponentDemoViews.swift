@@ -47,6 +47,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case verificationView
     case panel
     case reputationView
+    case percentageDrivenTitleView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -144,6 +145,8 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<PanelDemoView>()
         case .reputationView:
             return DemoViewController<ReputationDemoView>()
+        case .percentageDrivenTitleView:
+            return DemoViewController<PercentageDrivenTitleDemoView>(dismissType: .dismissButton)
         }
     }
 }
