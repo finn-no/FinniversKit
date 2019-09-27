@@ -47,8 +47,8 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
                 self?.favoritesListView.selectAllRows(true, animated: false)
             },
             TweakingOption(title: "Read only", description: nil) { [weak self] in
-                self?.favoritesListView.setEditing(false)
                 self?.setReadOnly(true)
+                self?.favoritesListView.setEditing(false)
             }
         ]
     }()

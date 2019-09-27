@@ -22,9 +22,10 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public var loadingColor: UIColor?
 
-    var isMoreButtonHidden: Bool {
-        get { return adView.isMoreButtonHidden }
-        set { adView.isMoreButtonHidden = newValue }
+    var isMoreButtonHidden = false {
+        didSet {
+            adView.isMoreButtonHidden = isMoreButtonHidden
+        }
     }
 
     // MARK: - Private properties
@@ -65,7 +66,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         super.didTransition(to: state)
         let isEditing = state.contains(.showingEditControl)
 
-        adView.isMoreButtonHidden = isEditing
+        adView.isMoreButtonHidden = isEditing || isMoreButtonHidden
     }
 
     // MARK: - Public methods
