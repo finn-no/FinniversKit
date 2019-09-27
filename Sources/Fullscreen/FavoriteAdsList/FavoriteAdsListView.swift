@@ -37,6 +37,18 @@ public class FavoriteAdsListView: UIView {
     public weak var delegate: FavoriteAdsListViewDelegate?
     public weak var dataSource: FavoriteAdsListViewDataSource?
 
+    public var isReadOnly: Bool {
+        didSet { reloadData() }
+    }
+
+    public var isSearchBarHidden: Bool {
+        get { return tableHeaderView.isSearchBarHidden }
+        set {
+            tableHeaderView.isSearchBarHidden = newValue
+            setTableHeader()
+        }
+    }
+
     public var title = "" {
         didSet { tableHeaderView.title = title }
     }
@@ -93,8 +105,9 @@ public class FavoriteAdsListView: UIView {
 
     // MARK: - Init
 
-    public init(viewModel: FavoriteAdsListViewModel) {
+    public init(viewModel: FavoriteAdsListViewModel, isReadOnly: Bool = false) {
         self.viewModel = viewModel
+        self.isReadOnly = isReadOnly
         super.init(frame: .zero)
         setup()
     }
@@ -276,10 +289,18 @@ extension FavoriteAdsListView: UITableViewDelegate {
         return 32
     }
 
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return !isReadOnly
+    }
+
     public func tableView(
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
+        guard !isReadOnly else {
+            return nil
+        }
+
         let comment = dataSource?.favoriteAdsListView(self, viewModelFor: indexPath).comment
 
         let commentAction = UIContextualAction(
@@ -346,10 +367,12 @@ extension FavoriteAdsListView: UITableViewDataSource {
         // Show a pretty color while we load the image
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
         cell.loadingColor = colors[indexPath.row % colors.count]
+        cell.isMoreButtonHidden = isReadOnly
 
         if let viewModel = dataSource?.favoriteAdsListView(self, viewModelFor: indexPath) {
             cell.configure(with: viewModel)
         }
+
         return cell
     }
 }

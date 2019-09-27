@@ -33,15 +33,22 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = {
         [
             TweakingOption(title: "Selection mode", description: nil) { [weak self] in
+                self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(false)
             },
             TweakingOption(title: "Edit mode, none selected", description: nil) { [weak self] in
+                self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(false, animated: false)
             },
             TweakingOption(title: "Edit mode, all selected", description: nil) { [weak self] in
+                self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(true, animated: false)
+            },
+            TweakingOption(title: "Read only", description: nil) { [weak self] in
+                self?.setReadOnly(true)
+                self?.favoritesListView.setEditing(false)
             }
         ]
     }()
@@ -61,6 +68,15 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
 
         navigationTitleView.title = folderTitle
         navigationItem.titleView = navigationTitleView
+    }
+
+    private func setReadOnly(_ isReadOnly: Bool) {
+        guard favoritesListView.isReadOnly != isReadOnly else {
+            return
+        }
+
+        favoritesListView.isReadOnly = isReadOnly
+        favoritesListView.isSearchBarHidden = isReadOnly
     }
 }
 

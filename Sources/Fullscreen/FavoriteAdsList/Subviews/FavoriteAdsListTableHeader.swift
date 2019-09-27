@@ -17,6 +17,12 @@ class FavoriteAdsListTableHeader: UIView {
         didSet { searchBar.delegate = searchBarDelegate }
     }
 
+    var isSearchBarHidden = false {
+        didSet {
+            searchBar.isHidden = isSearchBarHidden
+        }
+    }
+
     var searchBarPlaceholder: String = "" {
         didSet { searchBar.placeholder = searchBarPlaceholder }
     }
@@ -96,28 +102,22 @@ class FavoriteAdsListTableHeader: UIView {
     private func setup() {
         addGestureRecognizer(tapRecognizer)
 
-        addSubview(titleLabel)
-        addSubview(subtitleLabel)
-        addSubview(searchBar)
-        addSubview(sortingView)
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel, searchBar, sortingView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.setCustomSpacing(.smallSpacing, after: titleLabel)
+        stackView.setCustomSpacing(24, after: subtitleLabel)
+        stackView.setCustomSpacing(37, after: searchBar)
+
+        addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
 
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
-            subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-
-            searchBar.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 24),
-            searchBar.heightAnchor.constraint(equalToConstant: 36),
-            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-
-            sortingView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 37),
-            sortingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            sortingView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            searchBar.heightAnchor.constraint(equalToConstant: 36)
         ])
     }
 
