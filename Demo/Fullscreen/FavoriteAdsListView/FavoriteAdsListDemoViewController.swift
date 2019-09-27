@@ -9,59 +9,64 @@ enum AdsSorting: String {
     case alphabetically = "Alfabetisk"
 }
 
-class FavoriteAdsListDemoView: UIView, Tweakable {
+class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
+
+    // MARK: - Private properties
+
     private let viewModels = FavoriteAdsFactory.create()
     private let sectionDataSource = FavoriteAdsDemoDataSource()
     private var currentSorting: AdsSorting = .lastAdded
-    private var isEditing = false
+    private var folderTitle = "Mine funn"
+    private lazy var navigationTitleView = PercentageDrivenTitleView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 44)))
 
     private lazy var favoritesListView: FavoriteAdsListView = {
         let view = FavoriteAdsListView(viewModel: .default)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.dataSource = self
         view.delegate = self
-        view.title = "Mine funn"
+        view.title = folderTitle
         view.subtitle = "\(viewModels.count) favoritter"
         view.sortingTitle = currentSorting.rawValue
         return view
     }()
 
     lazy var tweakingOptions: [TweakingOption] = {
-        return [
+        [
             TweakingOption(title: "Selection mode", description: nil) { [weak self] in
-                self?.isEditing = false
                 self?.favoritesListView.setEditing(false)
             },
             TweakingOption(title: "Edit mode, none selected", description: nil) { [weak self] in
-                self?.isEditing = true
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(false, animated: false)
             },
             TweakingOption(title: "Edit mode, all selected", description: nil) { [weak self] in
-                self?.isEditing = true
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(true, animated: false)
             }
         ]
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    // MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) { fatalError() }
-
     private func setup() {
-        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
-        addSubview(favoritesListView)
+        view.addSubview(favoritesListView)
         favoritesListView.fillInSuperview()
+
+        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
+
+        navigationTitleView.title = folderTitle
+        navigationItem.titleView = navigationTitleView
     }
 }
 
 // MARK: - FavoriteAdsListViewDelegate
 
-extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
+extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDelegate {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath) {}
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath) {}
 
@@ -91,11 +96,16 @@ extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
         sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: view.searchBarText)
         view.reloadData()
     }
+
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility percentVisible: CGFloat) {
+        let titleViewPercentVisible = 1 - percentVisible
+        navigationTitleView.setPercentageVisible(titleViewPercentVisible)
+    }
 }
 
 // MARK: - FavoriteAdsListViewDataSource
 
-extension FavoriteAdsListDemoView: FavoriteAdsListViewDataSource {
+extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDataSource {
     func favoriteAdsListView(_ view: FavoriteAdsListView, titleForHeaderInSection section: Int) -> String? {
         let section = sectionDataSource.sections[section]
         return section.sectionTitle

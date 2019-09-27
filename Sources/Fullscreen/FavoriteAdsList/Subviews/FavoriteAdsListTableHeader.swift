@@ -38,6 +38,10 @@ class FavoriteAdsListTableHeader: UIView {
         didSet { sortingView.title = sortingTitle }
     }
 
+    var titleLabelFrame: CGRect {
+        return titleLabel.frame
+    }
+
     // MARK: - Private properties
 
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))

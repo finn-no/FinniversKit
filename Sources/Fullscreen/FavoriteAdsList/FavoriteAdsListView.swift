@@ -11,6 +11,7 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath)
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility percentVisible: CGFloat)
 }
 
 public protocol FavoriteAdsListViewDataSource: AnyObject {
@@ -58,6 +59,7 @@ public class FavoriteAdsListView: UIView {
     private let viewModel: FavoriteAdsListViewModel
     private let imageCache = ImageMemoryCache()
     private var didSetTableHeader = false
+    private var sendScrollUpdates: Bool = true
     private var tableViewConstraints = [NSLayoutConstraint]()
     private var emptyViewConstraints = [NSLayoutConstraint]()
 
@@ -144,6 +146,7 @@ public class FavoriteAdsListView: UIView {
         let hasScrolledPastTableHeader = tableView.contentOffset.y >= tableHeaderHeight
 
         if !editing {
+            sendScrollUpdates = true
             setTableHeader()
             tableView.contentOffset.y += tableHeaderHeight
         } else {
@@ -163,6 +166,7 @@ public class FavoriteAdsListView: UIView {
         }, completion: { [weak self] _ in
             guard let self = self else { return }
             if editing {
+                self.sendScrollUpdates = false
                 self.tableView.contentOffset.y -= tableHeaderHeight
                 self.tableView.tableHeaderView = nil
             }
@@ -304,6 +308,22 @@ extension FavoriteAdsListView: UITableViewDelegate {
         configuration.performsFirstActionWithFullSwipe = false
 
         return configuration
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if sendScrollUpdates {
+            let percentVisible = titleLabelVisiblePercent(scrollView: scrollView)
+            delegate?.favoriteAdsListView(self, didUpdateTitleLabelVisibility: percentVisible)
+        }
+    }
+
+    private func titleLabelVisiblePercent(scrollView: UIScrollView) -> CGFloat {
+        let scrollOffset = scrollView.contentOffset.y
+        let labelStart = tableHeaderView.titleLabelFrame.minY
+        let labelEnd = tableHeaderView.titleLabelFrame.maxY
+
+        let percentVisible = 1 - (scrollOffset-labelStart)/(labelEnd-labelStart)
+        return min(1, max(percentVisible, 0))
     }
 }
 

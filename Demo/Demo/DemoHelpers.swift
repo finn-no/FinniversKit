@@ -75,6 +75,8 @@ public struct ContainmentOptions: OptionSet {
                 self = [.navigationController, .tabBarController]
             case .addressView:
                 self = [.navigationController, .tabBarController]
+            case .favoriteAdsList:
+                self = [.navigationController]
             default: return nil
             }
         }

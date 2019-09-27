@@ -74,37 +74,43 @@ public class DemoViewController<View: UIView>: UIViewController {
             playgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             playgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-
-        switch dismissType {
-        case .dismissButton:
-            let button = Button(style: .callToAction)
-            button.setTitle("Dismiss", for: .normal)
-            button.addTarget(self, action: #selector(didDoubleTap), for: .touchUpInside)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(button)
-            NSLayoutConstraint.activate([
-                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.veryLargeSpacing)
-                ])
-        case .doubleTap:
-            let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
-            doubleTap.numberOfTapsRequired = 2
-            view.addGestureRecognizer(doubleTap)
-        case .none:
-            break
-        }
-
-        if !TestCheck.isTesting && playgroundView is Tweakable {
-            let overlayView = CornerAnchoringView(withAutoLayout: true)
-            overlayView.delegate = self
-            view.addSubview(overlayView)
-            overlayView.fillInSuperview()
-        }
     }
 
     @objc private func didDoubleTap() {
         State.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if !TestCheck.isTesting {
+            switch dismissType {
+            case .dismissButton:
+                let button = Button(style: .callToAction)
+                button.setTitle("Dismiss", for: .normal)
+                button.addTarget(self, action: #selector(didDoubleTap), for: .touchUpInside)
+                button.translatesAutoresizingMaskIntoConstraints = false
+                view.addSubview(button)
+                NSLayoutConstraint.activate([
+                    button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.veryLargeSpacing)
+                ])
+            case .doubleTap:
+                let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
+                doubleTap.numberOfTapsRequired = 2
+                view.addGestureRecognizer(doubleTap)
+            case .none:
+                break
+            }
+        }
+
+        if !TestCheck.isTesting && (playgroundView is Tweakable || self is Tweakable) {
+            let overlayView = CornerAnchoringView(withAutoLayout: true)
+            overlayView.delegate = self
+            view.addSubview(overlayView)
+            overlayView.fillInSuperview()
+        }
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -119,7 +125,7 @@ public class DemoViewController<View: UIView>: UIViewController {
 
 extension DemoViewController: CornerAnchoringViewDelegate {
     func cornerAnchoringViewDidSelectTweakButton(_ cornerAnchoringView: CornerAnchoringView) {
-        if let tweakablePlaygroundView = playgroundView as? Tweakable {
+        if let tweakablePlaygroundView = (playgroundView as? Tweakable) ?? (self as? Tweakable) {
             let tweakingController = TweakingOptionsTableViewController(options: tweakablePlaygroundView.tweakingOptions)
             tweakingController.delegate = self
             bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
