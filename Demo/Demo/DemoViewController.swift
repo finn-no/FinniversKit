@@ -84,23 +84,25 @@ public class DemoViewController<View: UIView>: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        switch dismissType {
-        case .dismissButton:
-            let button = Button(style: .callToAction)
-            button.setTitle("Dismiss", for: .normal)
-            button.addTarget(self, action: #selector(didDoubleTap), for: .touchUpInside)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(button)
-            NSLayoutConstraint.activate([
-                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.veryLargeSpacing)
+        if !TestCheck.isTesting {
+            switch dismissType {
+            case .dismissButton:
+                let button = Button(style: .callToAction)
+                button.setTitle("Dismiss", for: .normal)
+                button.addTarget(self, action: #selector(didDoubleTap), for: .touchUpInside)
+                button.translatesAutoresizingMaskIntoConstraints = false
+                view.addSubview(button)
+                NSLayoutConstraint.activate([
+                    button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.veryLargeSpacing)
                 ])
-        case .doubleTap:
-            let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
-            doubleTap.numberOfTapsRequired = 2
-            view.addGestureRecognizer(doubleTap)
-        case .none:
-            break
+            case .doubleTap:
+                let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
+                doubleTap.numberOfTapsRequired = 2
+                view.addGestureRecognizer(doubleTap)
+            case .none:
+                break
+            }
         }
 
         if !TestCheck.isTesting && (playgroundView is Tweakable || self is Tweakable) {
