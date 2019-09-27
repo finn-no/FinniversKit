@@ -36,6 +36,7 @@ final class FavoriteAdView: UIView {
 
     private var viewModel: FavoriteAdViewModel?
 
+    private lazy var sortingDetailLabel = label(withFont: .detailStrong, textColor: .primaryBlue, numberOfLines: 2)
     private lazy var addressLabel = label(withFont: .detail, textColor: .stone, numberOfLines: 2, isHidden: false)
     private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2, isHidden: false)
     private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .licorice, numberOfLines: 0)
@@ -118,6 +119,11 @@ final class FavoriteAdView: UIView {
         titleLabel.text = viewModel.titleText
         titleLabel.textColor = viewModel.titleColor
 
+        if let sortingDetailText = viewModel.sortingDetailText {
+            sortingDetailLabel.text = sortingDetailText
+            sortingDetailLabel.isHidden = false
+        }
+
         if let descriptionPrimaryText = viewModel.descriptionPrimaryText {
             descriptionPrimaryLabel.text = descriptionPrimaryText
             descriptionPrimaryLabel.isHidden = false
@@ -160,7 +166,7 @@ final class FavoriteAdView: UIView {
         remoteImageView.setImage(nil, animated: false)
 
         addressLabel.text = nil
-        [descriptionPrimaryLabel, descriptionSecondaryLabel, descriptionTertiaryLabel].forEach {
+        [sortingDetailLabel, descriptionPrimaryLabel, descriptionSecondaryLabel, descriptionTertiaryLabel].forEach {
             $0.text = nil
             $0.isHidden = true
         }
@@ -183,12 +189,14 @@ final class FavoriteAdView: UIView {
         infoStackView.addArrangedSubview(remoteImageView)
         infoStackView.addArrangedSubview(textStackView)
 
+        textStackView.addArrangedSubview(sortingDetailLabel)
         textStackView.addArrangedSubview(addressLabel)
         textStackView.addArrangedSubview(titleLabel)
         textStackView.addArrangedSubview(descriptionPrimaryLabel)
         textStackView.addArrangedSubview(descriptionSecondaryLabel)
         textStackView.addArrangedSubview(descriptionTertiaryLabel)
 
+        textStackView.setCustomSpacing(.verySmallSpacing, after: sortingDetailLabel)
         textStackView.setCustomSpacing(.verySmallSpacing, after: addressLabel)
         textStackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
         textStackView.setCustomSpacing(.smallSpacing, after: descriptionPrimaryLabel)
@@ -231,6 +239,7 @@ final class FavoriteAdView: UIView {
             statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
 
+            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing),
             addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing),
 
             commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -.mediumLargeSpacing)
