@@ -22,6 +22,11 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public var loadingColor: UIColor?
 
+    var isMoreButtonHidden: Bool {
+        get { return adView.isMoreButtonHidden }
+        set { adView.isMoreButtonHidden = newValue }
+    }
+
     // MARK: - Private properties
 
     private lazy var adView: FavoriteAdView = {
