@@ -74,6 +74,15 @@ public class DemoViewController<View: UIView>: UIViewController {
             playgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             playgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    @objc private func didDoubleTap() {
+        State.lastSelectedIndexPath = nil
+        dismiss(animated: true, completion: nil)
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         switch dismissType {
         case .dismissButton:
@@ -100,11 +109,6 @@ public class DemoViewController<View: UIView>: UIViewController {
             view.addSubview(overlayView)
             overlayView.fillInSuperview()
         }
-    }
-
-    @objc private func didDoubleTap() {
-        State.lastSelectedIndexPath = nil
-        dismiss(animated: true, completion: nil)
     }
 
     public override func viewDidAppear(_ animated: Bool) {
