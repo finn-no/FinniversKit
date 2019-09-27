@@ -38,7 +38,11 @@ public class FavoriteAdsListView: UIView {
     public weak var dataSource: FavoriteAdsListViewDataSource?
 
     public var isReadOnly: Bool {
-        didSet { reloadData() }
+        didSet {
+            if didSetTableHeader {
+                reloadData()
+            }
+        }
     }
 
     public var isSearchBarHidden: Bool {
