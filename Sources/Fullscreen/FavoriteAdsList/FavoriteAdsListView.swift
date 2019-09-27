@@ -41,6 +41,14 @@ public class FavoriteAdsListView: UIView {
         didSet { reloadData() }
     }
 
+    public var isSearchBarHidden: Bool {
+        get { return tableHeaderView.isSearchBarHidden }
+        set {
+            tableHeaderView.isSearchBarHidden = newValue
+            setTableHeader()
+        }
+    }
+
     public var title = "" {
         didSet { tableHeaderView.title = title }
     }
