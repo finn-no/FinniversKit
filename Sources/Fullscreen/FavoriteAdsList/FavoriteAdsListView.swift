@@ -36,6 +36,7 @@ public class FavoriteAdsListView: UIView {
 
     public weak var delegate: FavoriteAdsListViewDelegate?
     public weak var dataSource: FavoriteAdsListViewDataSource?
+    public var isReadOnly = false
 
     public var title = "" {
         didSet { tableHeaderView.title = title }
@@ -280,6 +281,10 @@ extension FavoriteAdsListView: UITableViewDelegate {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
+        guard !isReadOnly else {
+            return nil
+        }
+
         let comment = dataSource?.favoriteAdsListView(self, viewModelFor: indexPath).comment
 
         let commentAction = UIContextualAction(
