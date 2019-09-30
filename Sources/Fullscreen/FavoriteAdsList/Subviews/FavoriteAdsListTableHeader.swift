@@ -45,7 +45,7 @@ class FavoriteAdsListTableHeader: UIView {
     }
 
     var titleLabelFrame: CGRect {
-        return titleLabel.frame
+        return CGRect(origin: contentStackView.frame.origin, size: titleLabel.frame.size)
     }
 
     // MARK: - Private properties
