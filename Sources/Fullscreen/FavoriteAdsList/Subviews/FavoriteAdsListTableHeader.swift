@@ -45,12 +45,22 @@ class FavoriteAdsListTableHeader: UIView {
     }
 
     var titleLabelFrame: CGRect {
-        return titleLabel.frame
+        return CGRect(origin: contentStackView.frame.origin, size: titleLabel.frame.size)
     }
 
     // MARK: - Private properties
 
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
+
+    private lazy var contentStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel, searchBar, sortingView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.setCustomSpacing(.smallSpacing, after: titleLabel)
+        stackView.setCustomSpacing(24, after: subtitleLabel)
+        stackView.setCustomSpacing(37, after: searchBar)
+        return stackView
+    }()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
@@ -103,20 +113,13 @@ class FavoriteAdsListTableHeader: UIView {
     private func setup() {
         addGestureRecognizer(tapRecognizer)
 
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel, searchBar, sortingView])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.setCustomSpacing(.smallSpacing, after: titleLabel)
-        stackView.setCustomSpacing(24, after: subtitleLabel)
-        stackView.setCustomSpacing(37, after: searchBar)
-
-        addSubview(stackView)
+        addSubview(contentStackView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
 
             searchBar.heightAnchor.constraint(equalToConstant: 36)
         ])

@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class PercentageDrivenTitleView: UIView {
+public class VisibilityDrivenTitleView: UIView {
 
     // MARK: - Public properties
 
@@ -34,23 +34,33 @@ public class PercentageDrivenTitleView: UIView {
         }
     }
 
+    public var minimumScaleFactor: CGFloat = 0 {
+        didSet {
+            label.minimumScaleFactor = minimumScaleFactor
+        }
+    }
+
     // MARK: - Private properties
 
     private lazy var label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .licorice
-        label.font = UIFont.bodyStrong.withSize(20)
+        label.textColor = textColor
+        label.font = font
+        label.numberOfLines = numberOfLines
+        label.minimumScaleFactor = minimumScaleFactor
         return label
     }()
 
-    private var percentVisible: CGFloat = 0 {
+    private var isVisible = false {
         didSet {
-            label.frame.origin.y = yPositionAdjusted(from: percentVisible)
+            guard isVisible != oldValue else { return }
+            animateVisibility()
         }
     }
 
     // MARK: - Init
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(label)
@@ -64,19 +74,21 @@ public class PercentageDrivenTitleView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         label.frame = bounds
-        label.frame.origin.y = yPositionAdjusted(from: percentVisible)
+        label.alpha = isVisible ? 1 : 0
     }
 
     // MARK: - Public methods
 
-    public func setPercentageVisible(_ percent: CGFloat) {
-        percentVisible = max(0, min(percent, 1))
+    public func setIsVisible(_ isVisible: Bool) {
+        self.isVisible = isVisible
     }
 
     // MARK: - Private methods
 
-    private func yPositionAdjusted(from percentVisible: CGFloat) -> CGFloat {
-        let labelHeight = label.bounds.height
-        return labelHeight - (labelHeight * percentVisible)
+    private func animateVisibility() {
+        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+            guard let self = self else { return }
+            self.label.alpha = self.isVisible ? 1 : 0
+        })
     }
 }

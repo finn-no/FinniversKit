@@ -17,7 +17,7 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
     private let sectionDataSource = FavoriteAdsDemoDataSource()
     private var currentSorting: AdsSorting = .lastAdded
     private var folderTitle = "Mine funn"
-    private lazy var navigationTitleView = PercentageDrivenTitleView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 44)))
+    private lazy var navigationTitleView = VisibilityDrivenTitleView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 44)))
 
     private lazy var favoritesListView: FavoriteAdsListView = {
         let view = FavoriteAdsListView(viewModel: .default)
@@ -113,9 +113,8 @@ extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDelegate {
         view.reloadData()
     }
 
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility percentVisible: CGFloat) {
-        let titleViewPercentVisible = 1 - percentVisible
-        navigationTitleView.setPercentageVisible(titleViewPercentVisible)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool) {
+        navigationTitleView.setIsVisible(!isVisible)
     }
 }
 
