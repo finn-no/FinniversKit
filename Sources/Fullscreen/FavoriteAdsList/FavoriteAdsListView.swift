@@ -11,7 +11,7 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath)
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility percentVisible: CGFloat)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool)
 }
 
 public protocol FavoriteAdsListViewDataSource: AnyObject {
@@ -337,8 +337,8 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if sendScrollUpdates {
-            let percentVisible = titleLabelVisiblePercent(scrollView: scrollView)
-            delegate?.favoriteAdsListView(self, didUpdateTitleLabelVisibility: percentVisible)
+            let isTitleViewVisible = scrollView.bounds.intersects(tableHeaderView.titleLabelFrame)
+            delegate?.favoriteAdsListView(self, didUpdateTitleLabelVisibility: isTitleViewVisible)
         }
     }
 
