@@ -32,6 +32,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case favoriteAdActionSheet
     case favoriteAdCommentSheet
     case verificationActionSheet
+    case splashView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -111,6 +112,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())
             bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
+        case .splashView:
+            return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
         }
     }
 }
