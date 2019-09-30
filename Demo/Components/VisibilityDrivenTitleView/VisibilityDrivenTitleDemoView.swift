@@ -56,4 +56,3 @@ class VisibilityDrivenTitleDemoView: UIView {
         titleView.setIsVisible(visibilitySwitch.isOn)
     }
 }
-
