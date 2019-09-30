@@ -33,6 +33,7 @@ public enum ReputationBreakdownCategory {
     case payment
     case transaction
     case description
+    case legacyGood
 
     fileprivate var icon: UIImage {
         switch self {
@@ -44,6 +45,8 @@ public enum ReputationBreakdownCategory {
             return UIImage(named: .handshake)
         case .description:
             return UIImage(named: .document)
+        case .legacyGood:
+            return UIImage(named: .starOutline)
         }
     }
 }
