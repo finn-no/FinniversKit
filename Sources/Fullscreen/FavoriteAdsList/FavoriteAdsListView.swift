@@ -56,7 +56,9 @@ public class FavoriteAdsListView: UIView {
     public var title = "" {
         didSet {
             tableHeaderView.title = title
-            setTableHeader()
+            if !tableView.isEditing {
+                setTableHeader()
+            }
         }
     }
 
@@ -232,7 +234,6 @@ public class FavoriteAdsListView: UIView {
     // MARK: - Private
 
     private func setTableHeader() {
-        guard !tableView.isEditing else { return }
         tableView.tableHeaderView = tableHeaderView
 
         NSLayoutConstraint.deactivate(tableViewConstraints + emptyViewConstraints)
