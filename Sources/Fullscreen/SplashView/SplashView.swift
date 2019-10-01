@@ -32,7 +32,6 @@ public final class SplashView: UIView {
         }
     }()
 
-    private lazy var leftLogoViewCenterXConstraint = leftLogoView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -25)
     private lazy var rightLogoViewWidthConstraint = rightLogoView.widthAnchor.constraint(equalToConstant: 50)
 
     // MARK: - Init
@@ -58,13 +57,13 @@ public final class SplashView: UIView {
         letterViews.forEach({ addSubview($0) })
 
         NSLayoutConstraint.activate([
-            leftLogoViewCenterXConstraint,
+            leftLogoView.trailingAnchor.constraint(equalTo: rightLogoView.leadingAnchor, constant: 1),
             leftLogoView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-            rightLogoView.leadingAnchor.constraint(equalTo: leftLogoView.trailingAnchor, constant: -1),
+            rightLogoView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 23),
             rightLogoView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            rightLogoViewWidthConstraint,
             rightLogoView.heightAnchor.constraint(equalToConstant: 50),
+            rightLogoViewWidthConstraint,
 
             letterViews[0].leadingAnchor.constraint(equalTo: centerXAnchor, constant: -8),
             letterViews[0].bottomAnchor.constraint(equalTo: rightLogoView.bottomAnchor),
@@ -81,25 +80,37 @@ public final class SplashView: UIView {
     }
 
     public func animate() {
-        leftLogoViewCenterXConstraint.constant = -47
-        rightLogoViewWidthConstraint.constant = 96
+        rightLogoViewWidthConstraint.constant = 100
 
-        UIView.animate(withDuration: 0.6, delay: 0, options: [.curveEaseInOut], animations: {
-            self.layoutIfNeeded()
-        }, completion: nil)
+        animateConstraints(withDuration: 0.225, completion: {
+            self.rightLogoViewWidthConstraint.constant = 95
 
-        var delay: TimeInterval = 0.1
+            self.animateConstraints(withDuration: 0.05, completion: {
+                self.rightLogoViewWidthConstraint.constant = 96
+                self.animateConstraints(withDuration: 0.025)
+            })
+        })
+
+        var delay: TimeInterval = 0.05
 
         for letterView in letterViews {
             letterView.layer.add(makeLetterAnimation(withDelay: delay), forKey: nil)
-            delay += 0.1
+            delay += 0.05
         }
+    }
+
+    private func animateConstraints(withDuration duration: TimeInterval, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut], animations: {
+            self.layoutIfNeeded()
+        }, completion: { _ in
+            completion?()
+        })
     }
 
     private func makeLetterAnimation(withDelay delay: TimeInterval) -> CAAnimationGroup {
         let transform = CABasicAnimation(keyPath: "transform.translation.y")
         transform.toValue = -15
-        transform.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        transform.timingFunction = CAMediaTimingFunction(controlPoints: 0.5, 1.8, 1, 1)
 
         let alpha = CABasicAnimation(keyPath: "opacity")
         alpha.toValue = 1
@@ -107,7 +118,6 @@ public final class SplashView: UIView {
         let group = CAAnimationGroup()
         group.animations = [alpha, transform]
         group.beginTime = CACurrentMediaTime() + delay
-        group.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         group.duration = 0.3
         group.fillMode = .forwards
         group.isRemovedOnCompletion = false
