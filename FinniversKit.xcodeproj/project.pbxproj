@@ -400,6 +400,8 @@
 		CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71322F87729007C4124 /* NeighborhoodProfileViewModel.swift */; };
 		CF5CA71722F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71622F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift */; };
 		CF5CA71922F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71822F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift */; };
+		CF70B95223421E3400B8A285 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70B95123421E3400B8A285 /* SplashView.swift */; };
+		CF70B95523421E9B00B8A285 /* SplashDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70B95423421E9B00B8A285 /* SplashDemoView.swift */; };
 		CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C45FE22257A8A001FB92C /* EarthHourContentView.swift */; };
 		CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C45FF22257A8A001FB92C /* EarthHourSignUpView.swift */; };
 		CF7C460622257A8A001FB92C /* EarthHourHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C460022257A8A001FB92C /* EarthHourHeaderView.swift */; };
@@ -951,6 +953,8 @@
 		CF5CA71322F87729007C4124 /* NeighborhoodProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileViewModel.swift; sourceTree = "<group>"; };
 		CF5CA71622F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileInfoViewCell.swift; sourceTree = "<group>"; };
 		CF5CA71822F9B818007C4124 /* NeighborhoodProfileButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileButtonViewCell.swift; sourceTree = "<group>"; };
+		CF70B95123421E3400B8A285 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		CF70B95423421E9B00B8A285 /* SplashDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashDemoView.swift; sourceTree = "<group>"; };
 		CF7C45FE22257A8A001FB92C /* EarthHourContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourContentView.swift; sourceTree = "<group>"; };
 		CF7C45FF22257A8A001FB92C /* EarthHourSignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourSignUpView.swift; sourceTree = "<group>"; };
 		CF7C460022257A8A001FB92C /* EarthHourHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthHourHeaderView.swift; sourceTree = "<group>"; };
@@ -1933,6 +1937,7 @@
 				43BACE6721117CF90052114C /* Review */,
 				91846C4822E735B60001410F /* SearchResultMapView */,
 				43EA978021941E63003A548A /* SoldView */,
+				CF70B95023421E1B00B8A285 /* SplashView */,
 				F2597C72231D19B900BE74EC /* VerificationActionSheet */,
 			);
 			path = Fullscreen;
@@ -2808,6 +2813,22 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		CF70B95023421E1B00B8A285 /* SplashView */ = {
+			isa = PBXGroup;
+			children = (
+				CF70B95123421E3400B8A285 /* SplashView.swift */,
+			);
+			path = SplashView;
+			sourceTree = "<group>";
+		};
+		CF70B95323421E8800B8A285 /* SplashView */ = {
+			isa = PBXGroup;
+			children = (
+				CF70B95423421E9B00B8A285 /* SplashDemoView.swift */,
+			);
+			path = SplashView;
+			sourceTree = "<group>";
+		};
 		CF7C45FD22257A8A001FB92C /* EarthHour */ = {
 			isa = PBXGroup;
 			children = (
@@ -3151,6 +3172,7 @@
 				CF8F023421DCC7D2004C4042 /* Review */,
 				91846C4B22E736750001410F /* SearchResultMapView */,
 				CF8F023621DCC830004C4042 /* SoldView */,
+				CF70B95323421E8800B8A285 /* SplashView */,
 				F253C50B2313F948008175FD /* VerificationView */,
 			);
 			path = Fullscreen;
@@ -4054,6 +4076,7 @@
 				081F51BA222930C500026C84 /* TextViewDemoView.swift in Sources */,
 				44FEBC1123322D4C009AC5E4 /* CellsDemoViews.swift in Sources */,
 				CF13D6D42292E3030087DA37 /* PhaseListViewDemo.swift in Sources */,
+				CF70B95523421E9B00B8A285 /* SplashDemoView.swift in Sources */,
 				9B9F8C1722F07B2100298CDB /* FeedbackDemoView.swift in Sources */,
 				4451BEC6230163AA00879B7F /* NavigationController.swift in Sources */,
 				CFE43E50219B150D00D3D5F7 /* FrontPageViewDefaultData.swift in Sources */,
@@ -4470,6 +4493,7 @@
 				CF164CFF230EB3D100250822 /* ContentSizedTableView.swift in Sources */,
 				CFB6137C229AD43400DE283D /* IconCollectionViewCell.swift in Sources */,
 				9F2133BEBE174152BD809417 /* GalleryPreviewView.swift in Sources */,
+				CF70B95223421E3400B8A285 /* SplashView.swift in Sources */,
 				9F213ABAE416284A53AC6BA5 /* GalleryPreviewCell.swift in Sources */,
 				9F213EA8026933194D7483E0 /* FullscreenImageView.swift in Sources */,
 				9F213036DE161042F54529B0 /* FullscreenGalleryTransitioningController.swift in Sources */,
