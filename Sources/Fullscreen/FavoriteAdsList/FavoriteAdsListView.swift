@@ -54,7 +54,12 @@ public class FavoriteAdsListView: UIView {
     }
 
     public var title = "" {
-        didSet { tableHeaderView.title = title }
+        didSet {
+            tableHeaderView.title = title
+            if !tableView.isEditing {
+                setTableHeader()
+            }
+        }
     }
 
     public var subtitle = "" {
