@@ -37,7 +37,6 @@ public protocol Containable {
 ///  If the view conforms to the `Tweakable` protocol it will display a control to show additional options.
 ///  Usage: `DemoViewController<DrumMachineDemoView>()`
 public class DemoViewController<View: UIView>: UIViewController, Containable {
-
     public private(set) lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false

@@ -43,7 +43,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .searchResultMapView:
             return SearchResultMapViewDemoViewController()
         case .frontPageView:
-            return DemoViewController<FrontpageViewDemoView>()
+            return DemoViewControllerContainer<FrontpageViewDemoView>()
         case .emptyView:
             return DemoViewController<EmptyViewDemoView>()
         case .popupView:
@@ -65,7 +65,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .loadingView:
             return DemoViewController<LoadingViewDemoView>()
         case .drumMachineView:
-            return DemoViewController<DrumMachineDemoView>()
+            return DemoViewControllerContainer<DrumMachineDemoView>()
         case .pianoView:
             return DemoViewController<PianoDemoView>(supportedInterfaceOrientations: .landscape)
         case .snowGlobeView:
@@ -85,7 +85,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .receiptView:
             return DemoViewController<ReceiptViewDemoView>()
         case .addressView:
-            return DemoViewController<AddressViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
+            return DemoViewControllerContainer<AddressViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .favoriteAdsList:
             return FavoriteAdsListDemoViewController(dismissType: .dismissButton, containmentOptions: .navigationController)
         case .favoriteFolderActionSheet:
