@@ -41,6 +41,7 @@ public class DemoViewController<View: UIView>: UIViewController {
     private var dismissType: DismissType
     private var preferredInterfaceOrientation: UIInterfaceOrientationMask = .all
     private let constrainToBottomSafeArea: Bool
+    private let constrainToTopSafeArea: Bool
     private var bottomSheet: BottomSheet?
 
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -49,10 +50,12 @@ public class DemoViewController<View: UIView>: UIViewController {
 
     public init(dismissType: DismissType = .doubleTap,
                 supportedInterfaceOrientations: UIInterfaceOrientationMask = .all,
+                constrainToTopSafeArea: Bool = true,
                 constrainToBottomSafeArea: Bool = true) {
         self.dismissType = dismissType
         self.preferredInterfaceOrientation = supportedInterfaceOrientations
         self.constrainToBottomSafeArea = constrainToBottomSafeArea
+        self.constrainToTopSafeArea = constrainToTopSafeArea
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -66,12 +69,13 @@ public class DemoViewController<View: UIView>: UIViewController {
         view.addSubview(playgroundView)
         view.backgroundColor = .bgPrimary
 
+        let topAnchor = constrainToTopSafeArea ? view.safeAreaLayoutGuide.topAnchor : view.topAnchor
         let bottomAnchor = constrainToBottomSafeArea ? view.safeAreaLayoutGuide.bottomAnchor : view.bottomAnchor
 
         NSLayoutConstraint.activate([
             playgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             playgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            playgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            playgroundView.topAnchor.constraint(equalTo: topAnchor),
             playgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
