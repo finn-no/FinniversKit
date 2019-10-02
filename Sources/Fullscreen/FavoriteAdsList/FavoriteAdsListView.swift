@@ -10,6 +10,7 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath)
     func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
+    func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool)
 }
@@ -436,6 +437,10 @@ extension FavoriteAdsListView: FavoriteAdsListTableHeaderDelegate {
 // MARK: - UISearchBarDelegate
 
 extension FavoriteAdsListView: UISearchBarDelegate {
+    public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        delegate?.favoriteAdsListViewDidFocusSearchBar(self)
+    }
+
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
