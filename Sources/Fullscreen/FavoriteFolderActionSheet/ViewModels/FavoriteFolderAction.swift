@@ -6,12 +6,8 @@ import Foundation
 
 public enum FavoriteFolderAction: Equatable, Hashable, CaseIterable {
     case edit
-    case changeName
-    case share
-    case copyLink
+    case rename
+    case toggleSharing
+    case shareLink
     case delete
-
-    static func cases(withCopyLink: Bool) -> [FavoriteFolderAction] {
-        return withCopyLink ? allCases : allCases.filter({ $0 != .copyLink })
-    }
 }

@@ -5,9 +5,8 @@
 import UIKit
 
 protocol AdsGridViewLayoutDelegate: AnyObject {
-    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, imageHeightRatioForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
-    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, itemNonImageHeightForItemAtIndexPath indexPath: IndexPath, inCollectionView collectionView: UICollectionView) -> CGFloat
     func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForHeaderViewInCollectionView collectionView: UICollectionView) -> CGFloat?
+    func adsGridViewLayout(_ adsGridViewLayout: AdsGridViewLayout, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat
 }
 
 class AdsGridViewLayout: UICollectionViewLayout {
@@ -107,10 +106,7 @@ class AdsGridViewLayout: UICollectionViewLayout {
             let verticalOffset = CGFloat(columns[columnIndex]) + topPadding
 
             let indexPath = IndexPath(item: index, section: 0)
-            let imageHeightRatio = delegate.adsGridViewLayout(self, imageHeightRatioForItemAtIndexPath: indexPath, inCollectionView: collectionView)
-            let itemNonImageHeight = delegate.adsGridViewLayout(self, itemNonImageHeightForItemAtIndexPath: indexPath, inCollectionView: collectionView)
-
-            let itemHeight = (imageHeightRatio * itemWidth) + itemNonImageHeight
+            let itemHeight = delegate.adsGridViewLayout(self, heightForItemWithWidth: itemWidth, at: indexPath)
 
             columns[columnIndex] = Int(verticalOffset + itemHeight + configuration.columnSpacing)
 

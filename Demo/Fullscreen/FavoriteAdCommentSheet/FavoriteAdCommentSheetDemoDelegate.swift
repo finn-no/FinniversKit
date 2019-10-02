@@ -17,7 +17,10 @@ extension FavoriteAdCommentSheetDemoDelegate: FavoriteAdCommentSheetDelegate {
 
     func favoriteAdCommentSheet(_ sheet: FavoriteAdCommentSheet, didSelectSaveComment comment: String?) {
         print(comment ?? "")
-        sheet.state = .dismissed
+        sheet.startLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            sheet.state = .dismissed
+        })
     }
 }
 

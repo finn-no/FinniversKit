@@ -35,7 +35,7 @@ import UIKit
     }
 
     public class var btnDisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#2F333F"))
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#434359"))
     }
 
     public class var btnCritical: UIColor {
@@ -59,7 +59,7 @@ import UIKit
     }
 
     public class var textDisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#2F333F"))
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#434359"))
     }
 
     public class var textCritical: UIColor {
@@ -84,32 +84,6 @@ import UIKit
 
     public class var textToast: UIColor {
         return .licorice
-    }
-}
-
-// MARK: - Private helper for creating dynamic color
-extension UIColor {
-    private class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        switch FinniversKit.userInterfaceStyleSupport {
-        case .forceDark:
-            return darkModeColor
-        case .forceLight:
-            return defaultColor
-        case .dynamic:
-            if #available(iOS 13.0, *) {
-                #if swift(>=5.1)
-                return UIColor { traitCollection -> UIColor in
-                    switch traitCollection.userInterfaceStyle {
-                    case .dark:
-                        return darkModeColor
-                    default:
-                        return defaultColor
-                    }
-                }
-                #endif
-            }
-            return defaultColor
-        }
     }
 }
 
@@ -297,6 +271,10 @@ extension CGColor {
     public class var flatButtonHighlightedTextColor: UIColor {
         return textAction.withAlphaComponent(0.8)
     }
+
+    public class var dimmingColor: UIColor {
+        return UIColor.black.withAlphaComponent(0.4) //DARK
+    }
 }
 
 extension CGColor {
@@ -332,5 +310,31 @@ extension CGColor {
 extension CGColor {
     public class var defaultCellSelectedBackgroundColor: CGColor {
         return UIColor.defaultCellSelectedBackgroundColor.cgColor
+    }
+}
+
+// MARK: - Private helper for creating dynamic color
+extension UIColor {
+    private class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
+        switch FinniversKit.userInterfaceStyleSupport {
+        case .forceDark:
+            return darkModeColor
+        case .forceLight:
+            return defaultColor
+        case .dynamic:
+            if #available(iOS 13.0, *) {
+                #if swift(>=5.1)
+                return UIColor { traitCollection -> UIColor in
+                    switch traitCollection.userInterfaceStyle {
+                    case .dark:
+                        return darkModeColor
+                    default:
+                        return defaultColor
+                    }
+                }
+                #endif
+            }
+            return defaultColor
+        }
     }
 }

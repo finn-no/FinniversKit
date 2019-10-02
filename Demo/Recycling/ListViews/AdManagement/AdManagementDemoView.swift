@@ -16,7 +16,7 @@ public class AdManagementDemoView: UIView {
         tableView.register(UserAdManagementButtonAndInformationCell.self)
         tableView.register(UserAdManagementUserActionCell.self)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .ice
+        tableView.backgroundColor = .bgSecondary
         tableView.estimatedRowHeight = estimatedRowHeight
         tableView.rowHeight = UITableView.automaticDimension
         return tableView
@@ -38,6 +38,9 @@ public class AdManagementDemoView: UIView {
         [
             AdManagementActionCellModel(actionType: .start, title: "Vis annonsen i søkeresultater"),
             AdManagementActionCellModel(actionType: .undispose, title: "Fjern solgtmarkering")
+        ],
+        [
+            AdManagementActionCellModel(actionType: .review, title: "Gi en vurdering")
         ]
     ]
 

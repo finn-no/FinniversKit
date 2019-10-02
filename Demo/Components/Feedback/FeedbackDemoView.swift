@@ -49,7 +49,7 @@ class FeedbackDemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        backgroundColor = .white
+        backgroundColor = .bgPrimary
         addSubview(switchViewsButton)
         addSubview(listFeedbackStackView)
         addSubview(gridFeedbackStackView)

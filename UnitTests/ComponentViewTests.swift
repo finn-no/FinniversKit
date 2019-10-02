@@ -195,4 +195,8 @@ class ComponentViewTests: FBSnapshotTestCase {
     func testReputationView() {
         snapshot(.reputationView)
     }
+
+    func testVisibilityDrivenTitleView() {
+        snapshot(.visibilityDrivenTitleView)
+    }
 }

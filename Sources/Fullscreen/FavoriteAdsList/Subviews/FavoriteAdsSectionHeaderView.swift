@@ -27,12 +27,13 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(titleLabel)
+        contentView.backgroundColor = .bgTertiary
+        contentView.addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing)
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
         ])
     }
 

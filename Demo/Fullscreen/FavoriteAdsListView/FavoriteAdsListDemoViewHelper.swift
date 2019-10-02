@@ -9,13 +9,14 @@ extension FavoriteAdViewModel {
         return self.init(
             addressText: nil,
             titleText: "Annonsen er slettet",
-            titleColor: .stone,
+            titleColor: .textSecondary,
             descriptionPrimaryText: nil,
             descriptionSecondaryText: nil,
             descriptionTertiaryText: nil,
             imagePath: nil,
             ribbonStyle: ribbonStyle,
             ribbonTitle: ribbonTitle,
+            sortingDetailText: nil,
             addedToFolderDate: addedToFolderDate,
             lastUpdated: nil,
             comment: nil
@@ -36,18 +37,32 @@ struct FavoriteAdsFactory {
             return FavoriteAdViewModel(
                 addressText: addresses[index],
                 titleText: title,
-                titleColor: .licorice,
+                titleColor: .textPrimary,
                 descriptionPrimaryText: primaryDescriptions[index],
                 descriptionSecondaryText: secondaryDescriptions[index],
                 descriptionTertiaryText: tertiaryDescriptions[index],
                 imagePath: imagePaths[index],
                 ribbonStyle: ribbonStyles[index].style,
                 ribbonTitle: ribbonStyles[index].title,
+                sortingDetailText: sortingDetails[index],
                 addedToFolderDate: addedToFolderDates[index],
                 lastUpdated: nil,
                 comment: comments[index]
             )
         }
+    }
+
+    private static var sortingDetails: [String?] {
+        return [
+            "Avtand: 8,8 km",
+            nil,
+            nil,
+            "Oppdatert: 28. desember 2019",
+            nil,
+            nil,
+            nil,
+            nil
+        ]
     }
 
     private static var addresses: [String?] {

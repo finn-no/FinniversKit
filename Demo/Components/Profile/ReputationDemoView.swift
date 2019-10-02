@@ -41,6 +41,8 @@ class ReputationDemoView: UIView, Tweakable {
             summaryView(breakdownMode: .collapsedByDefault),
             headerLabel(withText: "Always Expanded"),
             summaryView(breakdownMode: .alwaysExpanded),
+            headerLabel(withText: "Legacy Reviews"),
+            legacySummaryView(breakdownMode: .alwaysExpanded)
         ]
 
         var anchor = topAnchor
@@ -54,9 +56,16 @@ class ReputationDemoView: UIView, Tweakable {
         let viewModel = ViewModel(breakdownMode: breakdownMode)
         let view = ReputationView(viewModel: viewModel)
         view.translatesAutoresizingMaskIntoConstraints = false
-
         reputationViews += [(view, viewModel)]
+        return view
+    }
 
+    private func legacySummaryView(breakdownMode: ReputationBreakdownMode) -> ReputationView {
+        let breakdownModel = BreakdownModel(category: .legacyGood, title: "Gode tilbakemeldinger")
+        let viewModel = ViewModel(categoryBreakdowns: [breakdownModel], breakdownMode: breakdownMode)
+        let view = ReputationView(viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        reputationViews += [(view, viewModel)]
         return view
     }
 
@@ -82,14 +91,25 @@ private struct ViewModel: ReputationViewModel {
     let title: String = "Veldig bra"
     let subtitle: String = "22 vurderinger"
     let score: Float = 0.843419429
-    let categoryBreakdowns: [ReputationBreakdownModel] = [
-        BreakdownModel(category: .communication, title: "Veldig bra kommunikasjon"),
-        BreakdownModel(category: .transaction, title: "Problemfri overlevering"),
-        BreakdownModel(category: .description, title: "Nøyaktig beskrivelse"),
-        BreakdownModel(category: .payment, title: "Problemfri betaling")
-    ]
 
+    let categoryBreakdowns: [ReputationBreakdownModel]
     let breakdownMode: ReputationBreakdownMode
+
+    init(breakdownMode: ReputationBreakdownMode) {
+        self.breakdownMode = breakdownMode
+
+        self.categoryBreakdowns = [
+            BreakdownModel(category: .communication, title: "Veldig bra kommunikasjon"),
+            BreakdownModel(category: .transaction, title: "Problemfri overlevering"),
+            BreakdownModel(category: .description, title: "Nøyaktig beskrivelse"),
+            BreakdownModel(category: .payment, title: "Problemfri betaling")
+        ]
+    }
+
+    init(categoryBreakdowns: [ReputationBreakdownModel], breakdownMode: ReputationBreakdownMode) {
+        self.categoryBreakdowns = categoryBreakdowns
+        self.breakdownMode = breakdownMode
+    }
 }
 
 private struct BreakdownModel: ReputationBreakdownModel {

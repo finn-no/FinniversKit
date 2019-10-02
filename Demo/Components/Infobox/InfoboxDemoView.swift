@@ -9,21 +9,21 @@ public class InfoboxDemoView: UIView {
         let label = Label(style: .caption)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.text = "Style: .small(backgroundColor: .ice):"
-        label.textColor = .stone
+        label.text = "Style: .small(backgroundColor: .bgSecondary):"
+        label.textColor = .textSecondary
         return label
     }()
-    private lazy var smallInfoboxView = InfoboxView(style: .small(backgroundColor: .ice))
+    private lazy var smallInfoboxView = InfoboxView(style: .small(backgroundColor: .bgSecondary))
     private lazy var normalInfoboxLabel: Label = {
         let label = Label(style: .caption)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.text = "Style: .normal(backgroundColor: .white, primaryButtonIcon: UIImage(named: .webview):"
+        label.text = "Style: .normal(backgroundColor: .bgPrimary, primaryButtonIcon: UIImage(named: .webview):"
         label.numberOfLines = 2
-        label.textColor = .stone
+        label.textColor = .textSecondary
         return label
     }()
-    private lazy var normalInfoboxView = InfoboxView(style: .normal(backgroundColor: .white, primaryButtonIcon: UIImage(named: .webview)))
+    private lazy var normalInfoboxView = InfoboxView(style: .normal(backgroundColor: .bgPrimary, primaryButtonIcon: UIImage(named: .webview)))
 
     // MARK: - Init
 

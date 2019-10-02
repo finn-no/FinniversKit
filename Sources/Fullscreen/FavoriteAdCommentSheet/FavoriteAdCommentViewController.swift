@@ -18,8 +18,9 @@ final class FavoriteAdCommentViewController: UIViewController {
     private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
     private let commentViewModel: FavoriteAdCommentViewModel
     private let adViewModel: FavoriteAdViewModel
-    private let adImage: UIImage?
     private let notificationCenter: NotificationCenter
+    private lazy var loadingView = LoadingIndicatorView(frame: CGRect(origin: .zero, size: CGSize(width: 24, height: 24)))
+    private lazy var loadingBarButton = UIBarButtonItem(customView: loadingView)
 
     private lazy var cancelButton = UIBarButtonItem(
         title: commentViewModel.cancelButtonText,
@@ -55,7 +56,7 @@ final class FavoriteAdCommentViewController: UIViewController {
         view.isMoreButtonHidden = true
         view.isCommentViewHidden = true
         view.configure(with: adViewModel)
-        view.remoteImageViewDataSource = self
+        view.remoteImageViewDataSource = remoteImageViewDataSource
         view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return view
     }()
@@ -77,12 +78,12 @@ final class FavoriteAdCommentViewController: UIViewController {
     init(
         commentViewModel: FavoriteAdCommentViewModel,
         adViewModel: FavoriteAdViewModel,
-        adImage: UIImage?,
+        remoteImageViewDataSource: RemoteImageViewDataSource?,
         notificationCenter: NotificationCenter = .default
     ) {
         self.commentViewModel = commentViewModel
         self.adViewModel = adViewModel
-        self.adImage = adImage
+        self.remoteImageViewDataSource = remoteImageViewDataSource
         self.notificationCenter = notificationCenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -125,6 +126,7 @@ final class FavoriteAdCommentViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         _ = textView.resignFirstResponder()
+        adView.resetContent()
     }
 
     // MARK: - Setup
@@ -197,27 +199,23 @@ final class FavoriteAdCommentViewController: UIViewController {
     }
 
     @objc private func handleSaveButtonTap() {
+        textView.endEditing(true)
         delegate?.favoriteAdCommentViewController(self, didSelectSaveComment: textView.text)
     }
-}
 
-// MARK: - RemoteImageViewDataSource
+    // MARK: - Public methods
 
-extension FavoriteAdCommentViewController: RemoteImageViewDataSource {
-    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
-        return adImage
+    public func startLoading() {
+        loadingView.startAnimating()
+        navigationItem.setRightBarButton(loadingBarButton, animated: true)
+        cancelButton.isEnabled = false
     }
 
-    func remoteImageView(
-        _ view: RemoteImageView,
-        loadImageWithPath imagePath: String,
-        imageWidth: CGFloat,
-        completion: @escaping ((UIImage?) -> Void)
-    ) {
-        completion(adImage)
+    public func stopLoading() {
+        loadingView.stopAnimating()
+        navigationItem.setRightBarButton(saveButton, animated: true)
+        cancelButton.isEnabled = true
     }
-
-    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - UIScrollViewDelegate

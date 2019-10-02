@@ -22,6 +22,12 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public var loadingColor: UIColor?
 
+    var isMoreButtonHidden = false {
+        didSet {
+            adView.isMoreButtonHidden = isMoreButtonHidden
+        }
+    }
+
     // MARK: - Private properties
 
     private lazy var adView: FavoriteAdView = {
@@ -56,10 +62,17 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         adView.resetBackgroundColors()
     }
 
+    public override func didTransition(to state: StateMask) {
+        super.didTransition(to: state)
+        let isEditing = state.contains(.showingEditControl)
+
+        adView.isMoreButtonHidden = isEditing || isMoreButtonHidden
+    }
+
     // MARK: - Public methods
 
     public func configure(with viewModel: FavoriteAdViewModel) {
-        separatorInset = .leadingInset(.mediumLargeSpacing * 2 + FavoriteAdView.adImageWidth)
+        separatorInset = .leadingInset(.largeSpacing + FavoriteAdView.adImageWidth)
         adView.configure(with: viewModel)
     }
 

@@ -17,7 +17,7 @@ public class PopupViewDemoView: UIView {
     private lazy var consentView: PopupView = {
         let view = PopupView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         view.layer.cornerRadius = 8
         return view
     }()

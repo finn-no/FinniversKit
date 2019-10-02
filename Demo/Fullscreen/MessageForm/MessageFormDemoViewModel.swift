@@ -6,8 +6,6 @@ import FinniversKit
 
 class MessageFormDemoViewModel: MessageFormViewModel {
     let showTemplateToolbar = true
-    let showCustomizeButton = true
-    let messageTemplateStore: MessageTemplateStoreProtocol? = DemoMessageTemplateStore()
 
     let titleText = "Send melding"
     let sendButtonText = "Send"
@@ -17,10 +15,10 @@ class MessageFormDemoViewModel: MessageFormViewModel {
     let cancelButtonText = "Avbryt"
     var deleteActionText = "Slett"
     let transparencyText = "FINN.no forbeholder seg retten til å kontrollere meldinger og stoppe useriøs e-post."
-    let defaultMessageTemplates = [
-        MessageFormTemplate(text: "Hei! Jeg er interessert, når passer det at jeg henter den?", isUserDefined: false, id: "1"),
-        MessageFormTemplate(text: "Hei! Jeg er interessert, kan du sende den?", isUserDefined: false, id: "2"),
-        MessageFormTemplate(text: "Hei! Jeg er interessert, er du villig til å diskutere prisen?", isUserDefined: false, id: "3"),
+    let messageTemplates = [
+        MessageFormTemplate(text: "Hei! Jeg er interessert, når passer det at jeg henter den?", id: "1"),
+        MessageFormTemplate(text: "Hei! Jeg er interessert, kan du sende den?", id: "2"),
+        MessageFormTemplate(text: "Hei! Jeg er interessert, er du villig til å diskutere prisen?", id: "3"),
     ]
 
     let replaceAlertTitle = "Erstatte innhold"
@@ -32,10 +30,4 @@ class MessageFormDemoViewModel: MessageFormViewModel {
     let cancelFormAlertMessage = "Vil du forkaste meldingen du har skrevet?"
     let cancelFormAlertActionText = "Forkast"
     let cancelFormAlertCancelText = "Avbryt"
-
-    var customTemplatesTitleText = "Dine meldingsmaler"
-    var customTemplateEditText = "Endre meldingsmal"
-    var customTemplateNewText = "Ny meldingsmal"
-    var newCustomTemplatePromptText = "Legg til meldingsmal"
-    var noCustomTemplatesText = "Har du en melding du sender ofte? Legg den til her!"
 }

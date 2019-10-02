@@ -15,11 +15,11 @@ public final class FavoriteAdCommentSheet: BottomSheet {
 
     // MARK: - Init
 
-    public required init(commentViewModel: FavoriteAdCommentViewModel, adViewModel: FavoriteAdViewModel, adImage: UIImage?) {
+    public required init(commentViewModel: FavoriteAdCommentViewModel, adViewModel: FavoriteAdViewModel, remoteImageViewDataSource: RemoteImageViewDataSource?) {
         viewController = FavoriteAdCommentViewController(
             commentViewModel: commentViewModel,
             adViewModel: adViewModel,
-            adImage: adImage
+            remoteImageViewDataSource: remoteImageViewDataSource
         )
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.isTranslucent = false
@@ -31,6 +31,16 @@ public final class FavoriteAdCommentSheet: BottomSheet {
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError()
+    }
+
+    // MARK: - Public methods
+
+    public func startLoading() {
+        viewController.startLoading()
+    }
+
+    public func stopLoading() {
+        viewController.stopLoading()
     }
 }
 

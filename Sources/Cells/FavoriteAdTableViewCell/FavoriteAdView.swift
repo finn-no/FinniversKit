@@ -36,7 +36,8 @@ final class FavoriteAdView: UIView {
 
     private var viewModel: FavoriteAdViewModel?
 
-    private lazy var addressLabel = label(withFont: .detail, textColor: .stone, numberOfLines: 2)
+    private lazy var sortingDetailLabel = label(withFont: .detailStrong, textColor: .primaryBlue, numberOfLines: 2)
+    private lazy var addressLabel = label(withFont: .detail, textColor: .stone, numberOfLines: 2, isHidden: false)
     private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2, isHidden: false)
     private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .licorice, numberOfLines: 0)
     private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .licorice, numberOfLines: 0)
@@ -113,13 +114,15 @@ final class FavoriteAdView: UIView {
         statusRibbon.style = viewModel.ribbonStyle
         statusRibbon.title = viewModel.ribbonTitle
 
-        if let addressText = viewModel.addressText {
-            addressLabel.text = addressText
-            addressLabel.isHidden = false
-        }
+        addressLabel.text = viewModel.addressText ?? " "
 
         titleLabel.text = viewModel.titleText
         titleLabel.textColor = viewModel.titleColor
+
+        if let sortingDetailText = viewModel.sortingDetailText {
+            sortingDetailLabel.text = sortingDetailText
+            sortingDetailLabel.isHidden = false
+        }
 
         if let descriptionPrimaryText = viewModel.descriptionPrimaryText {
             descriptionPrimaryLabel.text = descriptionPrimaryText
@@ -162,7 +165,8 @@ final class FavoriteAdView: UIView {
         remoteImageView.cancelLoading()
         remoteImageView.setImage(nil, animated: false)
 
-        [addressLabel, descriptionPrimaryLabel, descriptionSecondaryLabel, descriptionTertiaryLabel].forEach {
+        addressLabel.text = nil
+        [sortingDetailLabel, descriptionPrimaryLabel, descriptionSecondaryLabel, descriptionTertiaryLabel].forEach {
             $0.text = nil
             $0.isHidden = true
         }
@@ -172,6 +176,7 @@ final class FavoriteAdView: UIView {
 
     func resetBackgroundColors() {
         remoteImageView.backgroundColor = remoteImageView.image == nil ? loadingColor : .clear
+        commentView.backgroundColor = FavoriteAdCommentView.defaultBackgroundColor
 
         if let ribbonStyle = viewModel?.ribbonStyle {
             statusRibbon.style = ribbonStyle
@@ -184,12 +189,14 @@ final class FavoriteAdView: UIView {
         infoStackView.addArrangedSubview(remoteImageView)
         infoStackView.addArrangedSubview(textStackView)
 
+        textStackView.addArrangedSubview(sortingDetailLabel)
         textStackView.addArrangedSubview(addressLabel)
         textStackView.addArrangedSubview(titleLabel)
         textStackView.addArrangedSubview(descriptionPrimaryLabel)
         textStackView.addArrangedSubview(descriptionSecondaryLabel)
         textStackView.addArrangedSubview(descriptionTertiaryLabel)
 
+        textStackView.setCustomSpacing(.verySmallSpacing, after: sortingDetailLabel)
         textStackView.setCustomSpacing(.verySmallSpacing, after: addressLabel)
         textStackView.setCustomSpacing(.mediumSpacing, after: titleLabel)
         textStackView.setCustomSpacing(.smallSpacing, after: descriptionPrimaryLabel)
@@ -232,6 +239,7 @@ final class FavoriteAdView: UIView {
             statusRibbon.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             statusRibbon.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
 
+            sortingDetailLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing),
             addressLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusRibbon.leadingAnchor, constant: -.mediumSpacing),
 
             commentView.trailingAnchor.constraint(equalTo: rootStackView.trailingAnchor, constant: -.mediumLargeSpacing)

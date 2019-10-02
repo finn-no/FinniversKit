@@ -47,6 +47,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case verificationView
     case panel
     case reputationView
+    case visibilityDrivenTitleView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -98,7 +99,7 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<RefreshControlDemoView>()
         case .horizontalSlide:
             let presentedViewController = HorizontalSlideDemoViewController()
-            let secondViewController = UINavigationController(rootViewController: presentedViewController)
+            let secondViewController = NavigationController(rootViewController: presentedViewController)
             secondViewController.transitioningDelegate = presentedViewController.transition
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
@@ -144,6 +145,8 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<PanelDemoView>()
         case .reputationView:
             return DemoViewController<ReputationDemoView>()
+        case .visibilityDrivenTitleView:
+            return DemoViewController<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
         }
     }
 }

@@ -32,6 +32,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case favoriteAdActionSheet
     case favoriteAdCommentSheet
     case verificationActionSheet
+    case splashView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -86,9 +87,9 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .addressView:
             return DemoViewController<AddressViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .favoriteAdsList:
-            return DemoViewController<FavoriteAdsListDemoView>(dismissType: .dismissButton)
+            return FavoriteAdsListDemoViewController(dismissType: .dismissButton)
         case .favoriteFolderActionSheet:
-            let bottomSheet = FavoriteFolderActionSheet(viewModel: .default)
+            let bottomSheet = FavoriteFolderActionSheet(viewModel: .default, isShared: true)
             bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
             return bottomSheet
         case .favoriteAdSortingSheet:
@@ -103,7 +104,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
             let bottomSheet = FavoriteAdCommentSheet(
                 commentViewModel: .default,
                 adViewModel: FavoriteAdsFactory.create().last!,
-                adImage: FavoriteAdActionViewModel.createImage()
+                remoteImageViewDataSource: FavoriteAdCommentSheetDemoDelegate.shared
             )
             bottomSheet.commentDelegate = FavoriteAdCommentSheetDemoDelegate.shared
             return bottomSheet
@@ -111,6 +112,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())
             bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
+        case .splashView:
+            return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
         }
     }
 }

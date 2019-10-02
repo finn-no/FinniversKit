@@ -133,4 +133,8 @@ class FullscreenViewTests: FBSnapshotTestCase {
     func testVerificationActionSheet() {
         snapshot(.verificationActionSheet)
     }
+
+    func testSplashView() {
+        snapshot(.splashView)
+    }
 }

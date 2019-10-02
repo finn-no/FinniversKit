@@ -98,6 +98,8 @@ public class AdsGridViewCell: UICollectionViewCell {
         return button
     }()
 
+    private var model: AdsGridViewModel?
+
     // MARK: - External properties
 
     /// The loading color is used to fill the image view while we load the image.
@@ -115,16 +117,6 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     /// Optional index of the cell
     public var index: Int?
-
-    /// Height in cell that is not image
-    public static var nonImageHeight: CGFloat {
-        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
-    }
-
-    /// Height in cell that is not image including the height of accessory label
-    public static var nonImageWithAccessoryHeight: CGFloat {
-        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + accessoryHeight + bottomMargin
-    }
 
     // MARK: - Setup
 
@@ -220,19 +212,23 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     // MARK: - Dependency injection
 
-    public var model: AdsGridViewModel? {
-        didSet {
-            if let model = model {
-                iconImageView.image = model.iconImage?.withRenderingMode(.alwaysTemplate)
-                titleLabel.text = model.title
-                subtitleLabel.text = model.subtitle
-                accessoryLabel.text = model.accessory
-                imageTextLabel.text = model.imageText
-                accessibilityLabel = model.accessibilityLabel
-                favoriteButton.accessibilityLabel = model.favoriteButtonAccessibilityLabel
-                isFavorite = model.isFavorite
-            }
-        }
+    public func configure(with model: AdsGridViewModel?, atIndex index: Int) {
+        self.model = model
+        self.index = index
+
+        iconImageView.image = model?.iconImage?.withRenderingMode(.alwaysTemplate)
+        titleLabel.text = model?.title
+        subtitleLabel.text = model?.subtitle
+        accessoryLabel.text = model?.accessory
+        imageTextLabel.text = model?.imageText
+        accessibilityLabel = model?.accessibilityLabel
+        favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
+        isFavorite = model?.isFavorite ?? false
+
+        // Show a pretty color while we load the image
+        let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
+        let color = colors[index % 4]
+        loadingColor = color
     }
 
     public var isFavorite = false {
@@ -242,6 +238,27 @@ public class AdsGridViewCell: UICollectionViewCell {
     }
 
     // MARK: - Public
+
+    /// Height in cell that is not image
+    private static var nonImageHeight: CGFloat {
+        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
+    }
+
+    /// Height in cell that is not image including the height of accessory label
+    private static var nonImageWithAccessoryHeight: CGFloat {
+        return subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + accessoryHeight + bottomMargin
+    }
+
+    public static func height(for model: AdsGridViewModel, width: CGFloat) -> CGFloat {
+        let imageRatio = model.imageSize.height / model.imageSize.width
+        let imageHeight = width * imageRatio
+
+        if model.accessory != nil {
+            return imageHeight + nonImageWithAccessoryHeight
+        } else {
+            return imageHeight + nonImageHeight
+        }
+    }
 
     public func loadImage() {
         guard imageView.image == nil else {

@@ -18,6 +18,7 @@ NSString *const FinniversImageAssetballoon0 = @"balloon0";
 NSString *const FinniversImageAssetballoon1 = @"balloon1";
 NSString *const FinniversImageAssetballoon2 = @"balloon2";
 NSString *const FinniversImageAssetballoon9 = @"balloon9";
+NSString *const FinniversImageAssetbankID = @"bankID";
 NSString *const FinniversImageAssetblockUser = @"blockUser";
 NSString *const FinniversImageAssetboat = @"boat";
 NSString *const FinniversImageAssetcalendar = @"calendar";
@@ -48,12 +49,12 @@ NSString *const FinniversImageAsseterror = @"error";
 NSString *const FinniversImageAsseteyeHide = @"eyeHide";
 NSString *const FinniversImageAssetfavoriteAdd = @"favoriteAdd";
 NSString *const FinniversImageAssetfavoritesComment = @"favoritesComment";
-NSString *const FinniversImageAssetfavoritesCopyLink = @"favoritesCopyLink";
 NSString *const FinniversImageAssetfavoritesDelete = @"favoritesDelete";
 NSString *const FinniversImageAssetfavoritesEdit = @"favoritesEdit";
 NSString *const FinniversImageAssetfavoritesNote = @"favoritesNote";
 NSString *const FinniversImageAssetfavoritesPlus = @"favoritesPlus";
 NSString *const FinniversImageAssetfavoritesShare = @"favoritesShare";
+NSString *const FinniversImageAssetfavoritesShareLink = @"favoritesShareLink";
 NSString *const FinniversImageAssetfavoritesSortAdStatus = @"favoritesSortAdStatus";
 NSString *const FinniversImageAssetfavoritesSortDistance = @"favoritesSortDistance";
 NSString *const FinniversImageAssetfavoritesSortLastAdded = @"favoritesSortLastAdded";
@@ -133,6 +134,11 @@ NSString *const FinniversImageAssetsold = @"sold";
 NSString *const FinniversImageAssetspark = @"spark";
 NSString *const FinniversImageAssetspeechbubbleSmiley = @"speechbubbleSmiley";
 NSString *const FinniversImageAssetspidLogo = @"spidLogo";
+NSString *const FinniversImageAssetsplashLetters1 = @"splashLetters1";
+NSString *const FinniversImageAssetsplashLetters2 = @"splashLetters2";
+NSString *const FinniversImageAssetsplashLetters3 = @"splashLetters3";
+NSString *const FinniversImageAssetsplashLetters4 = @"splashLetters4";
+NSString *const FinniversImageAssetsplashLogo = @"splashLogo";
 NSString *const FinniversImageAssetstarOutline = @"starOutline";
 NSString *const FinniversImageAssetstatsEmpty = @"statsEmpty";
 NSString *const FinniversImageAssetstatsEnvelope = @"statsEnvelope";
@@ -163,6 +169,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetballoon1,
              FinniversImageAssetballoon2,
              FinniversImageAssetballoon9,
+             FinniversImageAssetbankID,
              FinniversImageAssetblockUser,
              FinniversImageAssetboat,
              FinniversImageAssetcalendar,
@@ -193,12 +200,12 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAsseteyeHide,
              FinniversImageAssetfavoriteAdd,
              FinniversImageAssetfavoritesComment,
-             FinniversImageAssetfavoritesCopyLink,
              FinniversImageAssetfavoritesDelete,
              FinniversImageAssetfavoritesEdit,
              FinniversImageAssetfavoritesNote,
              FinniversImageAssetfavoritesPlus,
              FinniversImageAssetfavoritesShare,
+             FinniversImageAssetfavoritesShareLink,
              FinniversImageAssetfavoritesSortAdStatus,
              FinniversImageAssetfavoritesSortDistance,
              FinniversImageAssetfavoritesSortLastAdded,
@@ -278,6 +285,11 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetspark,
              FinniversImageAssetspeechbubbleSmiley,
              FinniversImageAssetspidLogo,
+             FinniversImageAssetsplashLetters1,
+             FinniversImageAssetsplashLetters2,
+             FinniversImageAssetsplashLetters3,
+             FinniversImageAssetsplashLetters4,
+             FinniversImageAssetsplashLogo,
              FinniversImageAssetstarOutline,
              FinniversImageAssetstatsEmpty,
              FinniversImageAssetstatsEnvelope,

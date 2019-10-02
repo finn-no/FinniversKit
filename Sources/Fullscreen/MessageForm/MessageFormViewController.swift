@@ -49,6 +49,10 @@ class MessageFormViewController: UIViewController {
         set { messageInputTextView.inputEnabled = newValue }
     }
 
+    var hasUncommittedChanges: Bool {
+        return messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
+    }
+
     // MARK: - Private properties
 
     private let viewModel: MessageFormViewModel
@@ -198,12 +202,6 @@ class MessageFormViewController: UIViewController {
     }
 }
 
-extension MessageFormViewController: MessageFormCommittableViewController {
-    var hasUncommittedChanges: Bool {
-        return messageInputTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).count > 0
-    }
-}
-
 extension MessageFormViewController: MessageInputTextViewDelegate {
     func messageFormView(_ view: MessageInputTextView, didEditMessageText text: String) {
         sendButton.isEnabled = text.count > 0
@@ -234,15 +232,5 @@ extension MessageFormViewController: MessageFormToolbarDelegate {
             alertController.addAction(cancelAction)
             present(alertController, animated: true)
         }
-    }
-
-    func messageFormToolbarTappedCustomizeButton(_ toolbar: MessageFormToolbar) {
-        guard let templateStore = viewModel.messageTemplateStore else { return }
-
-        messageInputTextView.resignFirstResponder()
-
-        let vc = MessageTemplateOverviewViewController(templateStore: templateStore, viewModel: viewModel)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
-        navigationController?.pushViewController(vc, animated: true)
     }
 }

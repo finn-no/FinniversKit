@@ -135,7 +135,7 @@ enum Sections: String, CaseIterable {
         let shouldIncludeNavigationController = containmentOptions.contains(.navigationController)
         if shouldIncludeNavigationController {
             if let unwrappedViewController = viewController {
-                viewController = UINavigationController(rootViewController: unwrappedViewController)
+                viewController = NavigationController(rootViewController: unwrappedViewController)
             }
         }
 

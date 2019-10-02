@@ -8,7 +8,7 @@ class NewYearsDemoView: UIView {
     private lazy var label: Label = {
         let label = Label(style: .title2)
         label.text = "Tap to start animation"
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
