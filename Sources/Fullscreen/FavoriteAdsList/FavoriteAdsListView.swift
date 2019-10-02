@@ -206,6 +206,7 @@ public class FavoriteAdsListView: UIView {
                 if !isContentTallEnoughForAnimatingOffset {
                     self.tableViewTopConstraint.constant = 0
                     self.layoutIfNeeded()
+                    self.delegate?.favoriteAdsListView(self, didUpdateTitleLabelVisibility: false)
                 }
             }
         })
