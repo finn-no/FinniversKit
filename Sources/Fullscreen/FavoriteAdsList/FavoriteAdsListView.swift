@@ -248,7 +248,7 @@ public class FavoriteAdsListView: UIView {
         ]
 
         emptyViewConstraints = [
-            emptyView.topAnchor.constraint(equalTo: tableHeaderView.bottomAnchor, constant: -48)
+            emptyView.topAnchor.constraint(equalTo: tableHeaderView.bottomAnchor)
         ]
 
         NSLayoutConstraint.activate(tableViewConstraints + emptyViewConstraints)
