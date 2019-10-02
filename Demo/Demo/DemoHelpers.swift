@@ -10,77 +10,6 @@ enum TabletDisplayMode {
     case fullscreen
 }
 
-public struct ContainmentOptions: OptionSet {
-    public let rawValue: Int
-
-    public init(rawValue: Int) {
-        self.rawValue = rawValue
-    }
-
-    public static let navigationController = ContainmentOptions(rawValue: 2 << 0)
-    public static let tabBarController = ContainmentOptions(rawValue: 2 << 1)
-    public static let bottomSheet = ContainmentOptions(rawValue: 2 << 2)
-    public static let all: ContainmentOptions = [.navigationController, .tabBarController, .bottomSheet]
-    public static let none = ContainmentOptions(rawValue: 2 << 3)
-
-    /// Attaches a navigation bar, a tab bar or both depending on what is returned here.
-    /// If you return nil the screen will have no containers.
-    /// Or replace `return nil` with `self = .items`, `self = .navigationController` or `self = .tabBarController`
-    ///
-    /// - Parameter indexPath: The component's index path
-    // swiftlint:disable:next cyclomatic_complexity
-    init?(indexPath: IndexPath) {
-        let sectionType = Sections.for(indexPath)
-        switch sectionType {
-        case .dna:
-            guard let screens = DnaDemoViews.items[safe: indexPath.row] else {
-                return nil
-            }
-            switch screens {
-            default: return nil
-            }
-        case .components:
-            guard let screens = ComponentDemoViews.items[safe: indexPath.row] else {
-                return nil
-            }
-            switch screens {
-            case .bannerTransparencyView:
-                self = .bottomSheet
-            case .saveSearchView:
-                self = [.bottomSheet, .navigationController]
-            default: return nil
-            }
-        case .cells:
-            guard let screens = CellsDemoViews.items[safe: indexPath.row] else {
-                return nil
-            }
-            switch screens {
-            default: return nil
-            }
-        case .recycling:
-            guard let screens = RecyclingDemoViews.items[safe: indexPath.row] else {
-                return nil
-            }
-            switch screens {
-            default: return nil
-            }
-        case .fullscreen:
-            guard let screens = FullscreenDemoViews.items[safe: indexPath.row] else {
-                return nil
-            }
-            switch screens {
-            case .consentToggleView:
-                self = [.navigationController, .tabBarController]
-            case .consentActionView:
-                self = [.navigationController, .tabBarController]
-            case .addressView:
-                self = [.navigationController, .tabBarController]
-            default: return nil
-            }
-        }
-    }
-}
-
 enum Sections: String, CaseIterable {
     case dna
     case components
@@ -202,14 +131,15 @@ enum Sections: String, CaseIterable {
             break
         }
 
-        let shouldIncludeNavigationController = ContainmentOptions(indexPath: indexPath)?.contains(.navigationController) ?? false
+        let containmentOptions = (viewController as? Containable)?.containmentOptions ?? .none
+        let shouldIncludeNavigationController = containmentOptions.contains(.navigationController)
         if shouldIncludeNavigationController {
             if let unwrappedViewController = viewController {
                 viewController = NavigationController(rootViewController: unwrappedViewController)
             }
         }
 
-        let shouldIncludeTabBarController = ContainmentOptions(indexPath: indexPath)?.contains(.tabBarController) ?? false
+        let shouldIncludeTabBarController = containmentOptions.contains(.tabBarController)
         if shouldIncludeTabBarController {
             let tabBarController = UITabBarController()
             if let unwrappedViewController = viewController {
@@ -218,7 +148,7 @@ enum Sections: String, CaseIterable {
             }
         }
 
-        let shouldPresentInBottomSheet = ContainmentOptions(indexPath: indexPath)?.contains(.bottomSheet) ?? false
+        let shouldPresentInBottomSheet = containmentOptions.contains(.bottomSheet)
         if shouldPresentInBottomSheet {
             if let unwrappedViewController = viewController {
                 let bottomSheet = BottomSheet(rootViewController: unwrappedViewController)

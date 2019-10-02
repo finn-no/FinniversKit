@@ -27,6 +27,7 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     // MARK: - Setup
 
     private func setup() {
+        contentView.backgroundColor = .bgTertiary
         contentView.addSubview(titleLabel)
 
         NSLayoutConstraint.activate([

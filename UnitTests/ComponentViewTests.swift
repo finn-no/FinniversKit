@@ -197,4 +197,8 @@ class ComponentViewTests: XCTestCase {
     func testReputationView() {
         snapshot(.reputationView)
     }
+
+    func testVisibilityDrivenTitleView() {
+        snapshot(.visibilityDrivenTitleView)
+    }
 }

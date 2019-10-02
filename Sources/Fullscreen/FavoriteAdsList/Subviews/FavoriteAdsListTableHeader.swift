@@ -17,6 +17,12 @@ class FavoriteAdsListTableHeader: UIView {
         didSet { searchBar.delegate = searchBarDelegate }
     }
 
+    var isSearchBarHidden = false {
+        didSet {
+            searchBar.isHidden = isSearchBarHidden
+        }
+    }
+
     var searchBarPlaceholder: String = "" {
         didSet { searchBar.placeholder = searchBarPlaceholder }
     }
@@ -38,15 +44,30 @@ class FavoriteAdsListTableHeader: UIView {
         didSet { sortingView.title = sortingTitle }
     }
 
+    var titleLabelFrame: CGRect {
+        return CGRect(origin: contentStackView.frame.origin, size: titleLabel.frame.size)
+    }
+
     // MARK: - Private properties
 
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
+
+    private lazy var contentStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel, searchBar, sortingView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.setCustomSpacing(.smallSpacing, after: titleLabel)
+        stackView.setCustomSpacing(24, after: subtitleLabel)
+        stackView.setCustomSpacing(37, after: searchBar)
+        return stackView
+    }()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = UIFont(name: FontType.bold.rawValue, size: 28)?.scaledFont(forTextStyle: .title2)
         label.textAlignment = .center
         label.textColor = .licorice
+        label.numberOfLines = 3
         return label
     }()
 
@@ -73,6 +94,11 @@ class FavoriteAdsListTableHeader: UIView {
         return sortingView
     }()
 
+    var isSortingViewHidden: Bool {
+        get { return sortingView.isHidden }
+        set { sortingView.isHidden = newValue }
+    }
+
     // MARK: - Init
 
     override init(frame: CGRect) {
@@ -87,28 +113,15 @@ class FavoriteAdsListTableHeader: UIView {
     private func setup() {
         addGestureRecognizer(tapRecognizer)
 
-        addSubview(titleLabel)
-        addSubview(subtitleLabel)
-        addSubview(searchBar)
-        addSubview(sortingView)
+        addSubview(contentStackView)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
 
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
-            subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-
-            searchBar.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 24),
-            searchBar.heightAnchor.constraint(equalToConstant: 36),
-            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-
-            sortingView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 37),
-            sortingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            sortingView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            searchBar.heightAnchor.constraint(equalToConstant: 36)
         ])
     }
 

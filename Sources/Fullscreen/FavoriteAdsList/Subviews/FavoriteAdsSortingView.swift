@@ -51,7 +51,6 @@ class FavoriteAdsSortingView: UIView {
             sortingLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             arrowImage.leadingAnchor.constraint(equalTo: sortingLabel.trailingAnchor, constant: 1),
-            arrowImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             arrowImage.heightAnchor.constraint(equalToConstant: 12),
             arrowImage.widthAnchor.constraint(equalToConstant: 12),
             arrowImage.centerYAnchor.constraint(equalTo: centerYAnchor)

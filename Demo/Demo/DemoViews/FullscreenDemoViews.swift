@@ -32,6 +32,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case favoriteAdActionSheet
     case favoriteAdCommentSheet
     case verificationActionSheet
+    case splashView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -58,9 +59,9 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .loginView:
             return DemoViewController<LoginViewDemoView>()
         case .consentToggleView:
-            return DemoViewController<ConsentToggleViewDemoView>()
+            return DemoViewController<ConsentToggleViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .consentActionView:
-            return DemoViewController<ConsentActionViewDemoView>()
+            return DemoViewController<ConsentActionViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .loadingView:
             return DemoViewController<LoadingViewDemoView>()
         case .drumMachineView:
@@ -84,9 +85,9 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .receiptView:
             return DemoViewController<ReceiptViewDemoView>()
         case .addressView:
-            return DemoViewController<AddressViewDemoView>()
+            return DemoViewController<AddressViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .favoriteAdsList:
-            return DemoViewController<FavoriteAdsListDemoView>(dismissType: .dismissButton)
+            return FavoriteAdsListDemoViewController(dismissType: .dismissButton, containmentOptions: .navigationController)
         case .favoriteFolderActionSheet:
             let bottomSheet = FavoriteFolderActionSheet(viewModel: .default, isShared: true)
             bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
@@ -111,6 +112,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())
             bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
+        case .splashView:
+            return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
         }
     }
 }

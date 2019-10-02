@@ -22,6 +22,12 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 
     public var loadingColor: UIColor?
 
+    var isMoreButtonHidden = false {
+        didSet {
+            adView.isMoreButtonHidden = isMoreButtonHidden
+        }
+    }
+
     // MARK: - Private properties
 
     private lazy var adView: FavoriteAdView = {
@@ -60,7 +66,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
         super.didTransition(to: state)
         let isEditing = state.contains(.showingEditControl)
 
-        adView.isMoreButtonHidden = isEditing
+        adView.isMoreButtonHidden = isEditing || isMoreButtonHidden
     }
 
     // MARK: - Public methods

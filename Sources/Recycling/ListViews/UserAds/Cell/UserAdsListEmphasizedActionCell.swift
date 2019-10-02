@@ -98,7 +98,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         return label
     }()
 
-    private lazy var button: Button = {
+    private lazy var actionButton: Button = {
         let button = Button(style: .default, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
@@ -110,6 +110,20 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
         return button
+    }()
+
+    private lazy var gradientWrapper: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .marble
+        return view
+    }()
+
+    private lazy var gradientLayer: CALayer = {
+        let layer = CAGradientLayer()
+        let color = UIColor.white.withAlphaComponent(0.75)
+        layer.colors = [UIColor.marble.cgColor, color.cgColor]
+        layer.locations = [0.1, 1.0]
+        return layer
     }()
 
     private var actionWrapperHideConstraint = NSLayoutConstraint()
@@ -132,9 +146,13 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         contentView.addSubview(actionWrapper)
         actionWrapper.addSubview(actionTitleLabel)
         actionWrapper.addSubview(actionDescriptionLabel)
-        actionWrapper.addSubview(button)
+        actionWrapper.addSubview(actionButton)
+
+        actionWrapper.addSubview(gradientWrapper)
+        gradientWrapper.layer.addSublayer(gradientLayer)
+
         actionWrapperHideConstraint = NSLayoutConstraint(item: actionWrapper, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 0)
-        actionWrapperHeightConstraint = NSLayoutConstraint(item: actionWrapper, attribute: .bottomMargin, relatedBy: .equal, toItem: button, attribute: .bottomMargin, multiplier: 1, constant: .largeSpacing)
+        actionWrapperHeightConstraint = NSLayoutConstraint(item: actionWrapper, attribute: .bottomMargin, relatedBy: .equal, toItem: actionButton, attribute: .bottomMargin, multiplier: 1, constant: .largeSpacing)
 
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 120),
@@ -169,8 +187,13 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             actionDescriptionLabel.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor, constant: -.mediumLargeSpacing),
             actionDescriptionLabel.topAnchor.constraint(equalTo: actionTitleLabel.bottomAnchor, constant: .mediumSpacing),
 
-            button.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
-            button.topAnchor.constraint(equalTo: actionDescriptionLabel.bottomAnchor, constant: 24)
+            actionButton.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
+            actionButton.topAnchor.constraint(equalTo: actionDescriptionLabel.bottomAnchor, constant: 24),
+
+            gradientWrapper.topAnchor.constraint(equalTo: actionButton.bottomAnchor, constant: .mediumSpacing),
+            gradientWrapper.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor),
+            gradientWrapper.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor),
+            gradientWrapper.bottomAnchor.constraint(equalTo: actionWrapper.bottomAnchor)
             ])
 
         if shouldShowAction {
@@ -203,8 +226,8 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         if model?.actionModel?.cancelButtonTitle != nil {
             actionWrapper.addSubview(cancelButton)
             NSLayoutConstraint.activate([
-                cancelButton.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-                cancelButton.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: .smallSpacing)
+                cancelButton.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor),
+                cancelButton.leadingAnchor.constraint(equalTo: actionButton.trailingAnchor, constant: .smallSpacing)
                 ])
         }
     }
@@ -255,6 +278,11 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
 
     // MARK: - Superclass Overrides
 
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = gradientWrapper.bounds
+    }
+
     public override func prepareForReuse() {
         super.prepareForReuse()
         teardownView()
@@ -281,7 +309,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
 
             actionTitleLabel.text = model.actionModel?.title
             actionDescriptionLabel.text = model.actionModel?.description
-            button.setTitle(model.actionModel?.buttonTitle, for: .normal)
+            actionButton.setTitle(model.actionModel?.buttonTitle, for: .normal)
             cancelButton.setTitle(model.actionModel?.cancelButtonTitle, for: .normal)
 
             setupRibbonView(with: userAdStatus)

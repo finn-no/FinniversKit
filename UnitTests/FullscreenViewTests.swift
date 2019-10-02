@@ -129,4 +129,8 @@ class FullscreenViewTests: XCTestCase {
     func testVerificationActionSheet() {
         snapshot(.verificationActionSheet)
     }
+
+    func testSplashView() {
+        snapshot(.splashView)
+    }
 }

@@ -47,6 +47,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case verificationView
     case panel
     case reputationView
+    case visibilityDrivenTitleView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -85,7 +86,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .consentTransparencyInfo:
             return DemoViewController<ConsentTransparencyInfoDemoView>()
         case .bannerTransparencyView:
-            return DemoViewController<BannerTransparencyDemoView>()
+            return DemoViewController<BannerTransparencyDemoView>(containmentOptions: .bottomSheet)
         case .checkbox:
             return DemoViewController<CheckboxDemoView>(dismissType: .dismissButton)
         case .radioButton:
@@ -131,7 +132,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .tweakable:
             return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
-            return SaveSearchViewDemoViewController()
+            return SaveSearchViewDemoViewController(containmentOptions: [.bottomSheet, .navigationController])
         case .identityView:
             return DemoViewController<IdentityDemoView>()
         case .stepSlider:
@@ -144,6 +145,8 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<PanelDemoView>()
         case .reputationView:
             return DemoViewController<ReputationDemoView>()
+        case .visibilityDrivenTitleView:
+            return DemoViewController<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
         }
     }
 }

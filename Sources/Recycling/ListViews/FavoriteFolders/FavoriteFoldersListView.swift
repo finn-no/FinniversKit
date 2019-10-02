@@ -88,8 +88,8 @@ public class FavoriteFoldersListView: UIView {
         return view
     }()
 
-    private lazy var emptyView: FavoriteFoldersEmptyView = {
-        let emptyView = FavoriteFoldersEmptyView(withAutoLayout: true)
+    private lazy var emptyView: FavoriteEmptyView = {
+        let emptyView = FavoriteEmptyView(withAutoLayout: true)
         emptyView.delegate = self
         emptyView.isHidden = true
         return emptyView
@@ -215,7 +215,6 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        emptyView.configure(withButtonTitle: viewModel.addFolderText, bodyTextPrefix: viewModel.emptyViewBodyPrefix)
         searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
         footerView.configure(withTitle: viewModel.addFolderText)
 
@@ -462,15 +461,18 @@ extension FavoriteFoldersListView: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         isSearchActive = !searchText.isEmpty
+
         delegate?.favoriteFoldersListView(self, didChangeSearchText: searchText)
-        emptyView.configure(withSearchTerm: searchText)
+
+        let emptyViewText = "\(viewModel.emptyViewBodyPrefix) \"\(searchText)\""
+        emptyView.configure(withText: emptyViewText, buttonTitle: viewModel.addFolderText)
     }
 }
 
-// MARK: - FavoriteFoldersEmptyViewDelegate
+// MARK: - FavoriteEmptyViewDelegate
 
-extension FavoriteFoldersListView: FavoriteFoldersEmptyViewDelegate {
-    func favoriteFoldersEmptyViewDidSelectAddFolderButton(_: FavoriteFoldersEmptyView) {
+extension FavoriteFoldersListView: FavoriteEmptyViewDelegate {
+    func favoriteEmptyViewDidSelectButton(_: FavoriteEmptyView) {
         guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         delegate?.favoriteFoldersListViewDidSelectAddButton(self, withSearchText: searchText)
     }

@@ -103,6 +103,23 @@ public final class FavoriteFolderActionViewController: UIViewController {
         updateSeparators()
     }
 
+    // MARK: - Public
+
+    public func setAction(_ action: FavoriteFolderAction, enabled: Bool) {
+        switch action {
+        case .edit:
+            editButton.isEnabled = enabled
+        case .rename:
+            changeNameButton.isEnabled = enabled
+        case .toggleSharing:
+            shareToggleView.isEnabled = enabled
+        case .shareLink:
+            shareLinkView.isEnabled = enabled
+        case .delete:
+            deleteButton.isEnabled = enabled
+        }
+    }
+
     // MARK: - Animation
 
     func animate(with offsetY: CGFloat) {
