@@ -67,7 +67,6 @@ final class FavoriteEmptyView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
 
         clipsToBounds = true
@@ -89,7 +88,7 @@ final class FavoriteEmptyView: UIView {
             wrapperView.trailingAnchor.constraint(equalTo: trailingAnchor),
             wrapperViewBottomConstraint,
 
-            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor),
+            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor, constant: -.mediumSpacing),
             stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: .veryLargeSpacing),
             stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -.veryLargeSpacing),
 
