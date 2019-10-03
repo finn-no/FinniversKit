@@ -67,7 +67,12 @@ final class FavoriteEmptyView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeyboardNotification),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
 
         clipsToBounds = true
         backgroundColor = .milk
@@ -104,13 +109,17 @@ final class FavoriteEmptyView: UIView {
     }
 
     @objc private func handleKeyboardNotification(_ notification: Notification) {
+        //swiftlint:disable notification_center_detachment
+        NotificationCenter.default.removeObserver(self)
+
         guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
 
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: wrapperView)
         let wrapperBottomOffset = keyboardIntersection + windowSafeAreaInsets.bottom
 
+        wrapperViewBottomConstraint.constant = -wrapperBottomOffset
+
         UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
-            self?.wrapperViewBottomConstraint.constant = -wrapperBottomOffset
             self?.layoutIfNeeded()
         }
     }
