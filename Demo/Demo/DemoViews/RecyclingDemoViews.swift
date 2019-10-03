@@ -24,7 +24,7 @@ public enum RecyclingDemoViews: String, CaseIterable {
     public var viewController: UIViewController {
         switch self {
         case .notificationsListView:
-            return DemoViewController<NotificationsListViewDemoView>()
+            return DemoViewControllerContainer<NotificationsListViewDemoView>()
         case .favoriteFoldersListView:
             let viewController = DemoViewController<FavoriteFoldersListDemoView>(constrainToBottomSafeArea: false)
             viewController.title = "Favoritter"
@@ -35,25 +35,25 @@ public enum RecyclingDemoViews: String, CaseIterable {
 
             return navigationController
         case .favoriteAdSortingView:
-            return DemoViewController<FavoriteAdSortingDemoView>()
+            return DemoViewControllerContainer<FavoriteAdSortingDemoView>()
         case .favoriteAdActionView:
-            return DemoViewController<FavoriteAdActionDemoView>()
+            return DemoViewControllerContainer<FavoriteAdActionDemoView>()
         case .favoritesListView:
-            return DemoViewController<FavoritesListViewDemoView>()
+            return DemoViewControllerContainer<FavoritesListViewDemoView>()
         case .savedSearchesListView:
-            return DemoViewController<SavedSearchesListViewDemoView>()
+            return DemoViewControllerContainer<SavedSearchesListViewDemoView>()
         case .marketsGridView:
-            return DemoViewController<MarketsGridViewDemoView>()
+            return DemoViewControllerContainer<MarketsGridViewDemoView>()
         case .adsGridView:
-            return DemoViewController<AdsGridViewDemoView>()
+            return DemoViewControllerContainer<AdsGridViewDemoView>()
         case .settingsView:
-            return DemoViewController<SettingsViewDemoView>()
+            return DemoViewControllerContainer<SettingsViewDemoView>()
         case .userAds:
-            return DemoViewController<UserAdsListViewDemoView>()
+            return DemoViewControllerContainer<UserAdsListViewDemoView>()
         case .adManagementView:
-            return DemoViewController<AdManagementDemoView>()
+            return DemoViewControllerContainer<AdManagementDemoView>()
         case .neighborhoodProfileView:
-            return DemoViewController<NeighborhoodProfileDemoView>()
+            return DemoViewControllerContainer<NeighborhoodProfileDemoView>()
         }
     }
 }

@@ -45,45 +45,45 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .frontPageView:
             return DemoViewControllerContainer<FrontpageViewDemoView>()
         case .emptyView:
-            return DemoViewController<EmptyViewDemoView>()
+            return DemoViewControllerContainer<EmptyViewDemoView>()
         case .popupView:
-            return DemoViewController<PopupViewDemoView>()
+            return DemoViewControllerContainer<PopupViewDemoView>()
         case .reportAdView:
-            return DemoViewController<AdReporterDemoView>(dismissType: .dismissButton)
+            return DemoViewControllerContainer<AdReporterDemoView>(dismissType: .dismissButton)
         case .reviewView:
-            return DemoViewController<ReviewViewDemoView>()
+            return DemoViewControllerContainer<ReviewViewDemoView>()
         case .registerView:
-            return DemoViewController<RegisterViewDemoView>()
+            return DemoViewControllerContainer<RegisterViewDemoView>()
         case .loginEntryView:
             return LoginEntryViewDemoViewController(constrainToBottomSafeArea: false)
         case .loginView:
-            return DemoViewController<LoginViewDemoView>()
+            return DemoViewControllerContainer<LoginViewDemoView>()
         case .consentToggleView:
-            return DemoViewController<ConsentToggleViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
+            return DemoViewControllerContainer<ConsentToggleViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .consentActionView:
-            return DemoViewController<ConsentActionViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
+            return DemoViewControllerContainer<ConsentActionViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .loadingView:
-            return DemoViewController<LoadingViewDemoView>()
+            return DemoViewControllerContainer<LoadingViewDemoView>()
         case .drumMachineView:
             return DemoViewControllerContainer<DrumMachineDemoView>()
         case .pianoView:
-            return DemoViewController<PianoDemoView>(supportedInterfaceOrientations: .landscape)
+            return DemoViewControllerContainer<PianoDemoView>(supportedInterfaceOrientations: .landscape)
         case .snowGlobeView:
-            return DemoViewController<SnowGlobeDemoView>()
+            return DemoViewControllerContainer<SnowGlobeDemoView>()
         case .soldView:
-            return DemoViewController<SoldViewDemoView>()
+            return DemoViewControllerContainer<SoldViewDemoView>()
         case .confirmationView:
-            return DemoViewController<ConfirmationViewDemoView>()
+            return DemoViewControllerContainer<ConfirmationViewDemoView>()
         case .fullscreenGallery:
             return FullscreenGalleryDemoViewController()
         case .contactFormView:
-            return DemoViewController<ContactFormDemoView>()
+            return DemoViewControllerContainer<ContactFormDemoView>()
         case .messageFormView:
             let bottomSheet = MessageFormBottomSheet(viewModel: MessageFormDemoViewModel())
             bottomSheet.messageFormDelegate = MessageFormDemoPresenter.shared
             return bottomSheet
         case .receiptView:
-            return DemoViewController<ReceiptViewDemoView>()
+            return DemoViewControllerContainer<ReceiptViewDemoView>()
         case .addressView:
             return DemoViewControllerContainer<AddressViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .favoriteAdsList:
@@ -113,7 +113,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
             bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
         case .splashView:
-            return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
+            return DemoViewControllerContainer<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
         }
     }
 }
