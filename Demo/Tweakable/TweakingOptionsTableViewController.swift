@@ -62,6 +62,8 @@ class TweakingOptionsTableViewController: ScrollViewController {
 
         if let deviceIndex = State.lastSelectedDevice {
             selectorTitleView.title = Device.all[deviceIndex].rawValue
+        } else {
+            selectorTitleView.title = "Choose a device"
         }
     }
 

@@ -23,6 +23,7 @@ enum Device: String {
     // swiftlint:disable:next identifier_name
     case pad12_9inch = "iPad (12.9-inch)"
 
+    // swiftlint:disable:next cyclomatic_complexity
     func dimensions(orientation: Orientation) -> (traits: UITraitCollection, frame: CGRect) {
         let size: CGSize
         let horizontalSizeClass: UIUserInterfaceSizeClass
