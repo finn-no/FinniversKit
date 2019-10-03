@@ -69,7 +69,7 @@ Everything we do we aim it to be accessible, our two main areas of focus have be
 
 When making UI changes it's quite common that we would request an screenshot of the before and after, adding Snapshot testing made this trivial, if there was UI changes you would get a failure when building through the CI.
 
-**FinniversKit** uses [Uber's snapshot test cases](https://github.com/uber/ios-snapshot-test-case) to compare the contents of a UIView against a reference image.
+**FinniversKit** uses [SnapshotTesting](https://github.com/pointfreeco/swift-snapshot-testing) to compare the contents of a UIView against a reference image.
 
 When you run the tests **FinniversKit** will take snapshot of all the components and will look for differences. If a difference is caught you'll be informed in the form of a failed test. Running the tests locally will generate a diff between the old and the new images so you can see what caused the test to fail.
 
@@ -83,7 +83,23 @@ func testRegisterView() {
 }
 ```
 
-Note that the `snapshot` method is a helper method that will call `FBSnapshotVerifyView` under the hood.
+Note that the `snapshot` method is a helper method that will call `SnapshotTesting` under the hood.
+
+#### Snapshot failures on Circle CI
+
+There can be instances where the snapshot test pass on your machine but don't on circle ci, when that happens, circle CI will fail and inform the presence of the test results in a `.xctestresult` file. To debug this, re-run the workflow with ssh access, then you will get a command to connect through ssh to circle ci, like:
+
+```
+ssh -p PORT IP
+```
+
+Then given the path of the results file circle ci reported, you can run the following command to copy it to your machine, so you will be able to inspect the failed snapshots
+
+```
+scp -v -r -P PORT -i PATH_TO_SSH_KEY distiller@IP:"/Users/distiller/Library/Developer/Xcode/DerivedData/FinniversKit-fblxjfyrnvejgxdktracnzlelvsi/Logs/Test/Run-Demo-2019.10.03_00-14-16--0700.xcresult" .
+```
+
+Make sure to replace the file path correctly to the one that circle ci reported.
 
 #### Verifying changes for an existing component
 
