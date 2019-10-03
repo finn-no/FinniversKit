@@ -109,18 +109,18 @@ final class FavoriteEmptyView: UIView {
     }
 
     @objc private func handleKeyboardNotification(_ notification: Notification) {
-        //swiftlint:disable notification_center_detachment
-        NotificationCenter.default.removeObserver(self)
-
         guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
 
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: wrapperView)
-        let wrapperBottomOffset = keyboardIntersection + windowSafeAreaInsets.bottom
 
-        wrapperViewBottomConstraint.constant = -wrapperBottomOffset
+        if keyboardIntersection > 0 {
+            let wrapperBottomOffset = keyboardIntersection + windowSafeAreaInsets.bottom
 
-        UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
-            self?.layoutIfNeeded()
+            wrapperViewBottomConstraint.constant = -wrapperBottomOffset
+
+            UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
+                self?.layoutIfNeeded()
+            }
         }
     }
 
