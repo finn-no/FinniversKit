@@ -1,4 +1,4 @@
-import UIKit
+import FinniversKit
 
 class DemoViewControllerContainer<View: UIView>: UIViewController {
 
@@ -7,6 +7,7 @@ class DemoViewControllerContainer<View: UIView>: UIViewController {
     private var preferredInterfaceOrientation: UIInterfaceOrientationMask = .all
     private let constrainToBottomSafeArea: Bool
     private let constrainToTopSafeArea: Bool
+    private var bottomSheet: BottomSheet?
 
     public init(dismissType: DismissType = .doubleTap,
                 containmentOptions: ContainmentOptions = .none,
@@ -25,19 +26,22 @@ class DemoViewControllerContainer<View: UIView>: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    var childViewController: DemoViewController<View>?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .black
         let viewController = DemoViewController<View>(
             dismissType: dismissType,
             containmentOptions: containmentOptions,
             supportedInterfaceOrientations: supportedInterfaceOrientations,
             constrainToTopSafeArea: constrainToTopSafeArea,
             constrainToBottomSafeArea: constrainToBottomSafeArea)
-        viewController.delegate = self
         addChild(viewController)
         view.addSubview(viewController.view)
         viewController.didMove(toParent: self)
+        childViewController = viewController
 
         if let deviceIndex = State.lastSelectedDevice {
             let device = Device.all[deviceIndex]
@@ -56,11 +60,33 @@ class DemoViewControllerContainer<View: UIView>: UIViewController {
             viewController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             viewController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+
+        if !TestCheck.isTesting {
+            let overlayView = CornerAnchoringView(withAutoLayout: true)
+            overlayView.delegate = self
+            view.addSubview(overlayView)
+            overlayView.fillInSuperview()
+        }
     }
 }
 
-extension DemoViewControllerContainer: DemoViewControllerDelegate {
-    func demoViewControllerDidChangeDevice(device: Device) {
+extension DemoViewControllerContainer: CornerAnchoringViewDelegate {
+    func cornerAnchoringViewDidSelectTweakButton(_ cornerAnchoringView: CornerAnchoringView) {
+        let tweakablePlaygroundView = (childViewController?.playgroundView as? Tweakable) ?? (self as? Tweakable)
+        let options = tweakablePlaygroundView?.tweakingOptions ?? [TweakingOption]()
+        let tweakingController = TweakingOptionsTableViewController(options: options)
+        tweakingController.delegate = self
+        let navigationController = NavigationController(rootViewController: tweakingController)
+        navigationController.hairlineIsHidden = true
+        bottomSheet = BottomSheet(rootViewController: navigationController, draggableArea: .everything)
+        if let controller = bottomSheet {
+            present(controller, animated: true)
+        }
+    }
+}
+
+extension DemoViewControllerContainer: TweakingOptionsTableViewControllerDelegate {
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectDevice device: Device) {
         let dimensions = device.dimensions(orientation: .portrait)
         for child in children {
             UIView.animate(withDuration: 0.3) {
@@ -68,5 +94,9 @@ extension DemoViewControllerContainer: DemoViewControllerDelegate {
                 self.setOverrideTraitCollection(dimensions.traits, forChild: child)
             }
         }
+    }
+
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath?) {
+        bottomSheet?.state = .dismissed
     }
 }

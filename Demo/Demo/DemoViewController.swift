@@ -33,16 +33,10 @@ public protocol Containable {
     var containmentOptions: ContainmentOptions { get }
 }
 
-protocol DemoViewControllerDelegate: NSObject {
-    func demoViewControllerDidChangeDevice(device: Device)
-}
-
 ///  Container class for components. Wraps the UIView in a container to be displayed.
 ///  If the view conforms to the `Tweakable` protocol it will display a control to show additional options.
 ///  Usage: `DemoViewController<DrumMachineDemoView>()`
 public class DemoViewController<View: UIView>: UIViewController, Containable {
-    weak var delegate: DemoViewControllerDelegate?
-
     public private(set) lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +61,6 @@ public class DemoViewController<View: UIView>: UIViewController, Containable {
     private var preferredInterfaceOrientation: UIInterfaceOrientationMask = .all
     private let constrainToBottomSafeArea: Bool
     private let constrainToTopSafeArea: Bool
-    private var bottomSheet: BottomSheet?
 
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return preferredInterfaceOrientation
@@ -135,13 +128,6 @@ public class DemoViewController<View: UIView>: UIViewController, Containable {
                 break
             }
         }
-
-        if !TestCheck.isTesting {
-            let overlayView = CornerAnchoringView(withAutoLayout: true)
-            overlayView.delegate = self
-            view.addSubview(overlayView)
-            overlayView.fillInSuperview()
-        }
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -151,30 +137,5 @@ public class DemoViewController<View: UIView>: UIViewController, Containable {
             miniToastView.show(in: view)
             State.shouldShowDismissInstructions = false
         }
-    }
-}
-
-extension DemoViewController: CornerAnchoringViewDelegate {
-    func cornerAnchoringViewDidSelectTweakButton(_ cornerAnchoringView: CornerAnchoringView) {
-        if let tweakablePlaygroundView = (playgroundView as? Tweakable) ?? (self as? Tweakable) {
-            let tweakingController = TweakingOptionsTableViewController(options: tweakablePlaygroundView.tweakingOptions)
-            tweakingController.delegate = self
-            let navigationController = NavigationController(rootViewController: tweakingController)
-            navigationController.hairlineIsHidden = true
-            bottomSheet = BottomSheet(rootViewController: navigationController, draggableArea: .everything)
-            if let controller = bottomSheet {
-                present(controller, animated: true)
-            }
-        }
-    }
-}
-
-extension DemoViewController: TweakingOptionsTableViewControllerDelegate {
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectDevice device: Device) {
-        delegate?.demoViewControllerDidChangeDevice(device: device)
-    }
-
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath?) {
-        bottomSheet?.state = .dismissed
     }
 }

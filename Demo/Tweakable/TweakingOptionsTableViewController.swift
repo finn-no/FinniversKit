@@ -27,7 +27,7 @@ class TweakingOptionsTableViewController: ScrollViewController {
     }()
 
     private lazy var selectorTitleView: SelectorTitleView = {
-        let titleView = SelectorTitleView(heading: "Device type")
+        let titleView = SelectorTitleView(heading: "Device")
         titleView.delegate = self
         return titleView
     }()
