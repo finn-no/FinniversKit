@@ -129,7 +129,6 @@ public class FavoriteAdsListView: UIView {
 
     private func setup() {
         addSubview(tableView)
-
         addSubview(emptyView)
 
         tableView.fillInSuperview()
