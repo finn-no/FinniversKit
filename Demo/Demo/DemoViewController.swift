@@ -33,10 +33,16 @@ public protocol Containable {
     var containmentOptions: ContainmentOptions { get }
 }
 
+protocol DemoViewControllerDelegate: NSObject {
+    func demoViewControllerDidChangeDevice(device: Device)
+}
+
 ///  Container class for components. Wraps the UIView in a container to be displayed.
 ///  If the view conforms to the `Tweakable` protocol it will display a control to show additional options.
 ///  Usage: `DemoViewController<DrumMachineDemoView>()`
 public class DemoViewController<View: UIView>: UIViewController, Containable {
+    weak var delegate: DemoViewControllerDelegate?
+
     public private(set) lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -164,7 +170,11 @@ extension DemoViewController: CornerAnchoringViewDelegate {
 }
 
 extension DemoViewController: TweakingOptionsTableViewControllerDelegate {
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath) {
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectDevice device: Device) {
+        delegate?.demoViewControllerDidChangeDevice(device: device)
+    }
+
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath?) {
         bottomSheet?.state = .dismissed
     }
 }

@@ -1,7 +1,9 @@
 import FinniversKit
 
 protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath)
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath?)
+
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectDevice device: Device)
 }
 
 class TweakingOptionsTableViewController: ScrollViewController {
@@ -18,7 +20,8 @@ class TweakingOptionsTableViewController: ScrollViewController {
     }()
 
     private lazy var devicesViewController: DevicesViewController = {
-        let viewController = DevicesViewController()
+        let viewModels = Device.all.map { DeviceViewModel(title: $0.rawValue) }
+        let viewController = DevicesViewController(viewModels: viewModels)
         viewController.delegate = self
         return viewController
     }()
@@ -56,7 +59,10 @@ class TweakingOptionsTableViewController: ScrollViewController {
         tableView.register(TweakingOptionCell.self)
         updateColors()
         navigationItem.titleView = selectorTitleView
-        selectorTitleView.title = "iPhone 11"
+
+        if let deviceIndex = State.lastSelectedDevice {
+            selectorTitleView.title = Device.all[deviceIndex].rawValue
+        }
     }
 
     @objc private func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
@@ -84,7 +90,6 @@ class TweakingOptionsTableViewController: ScrollViewController {
         view.addSubview(devicesViewController.view)
         devicesViewController.didMove(toParent: self)
 
-        devicesViewController.viewModels = [DevicesViewModel(title: "uno"), DevicesViewModel(title: "dos")]
         devicesViewController.view.alpha = 0.6
         devicesViewController.view.frame.origin.y = -.largeSpacing
 
@@ -170,6 +175,14 @@ extension TweakingOptionsTableViewController: SelectorTitleViewDelegate {
 }
 
 extension TweakingOptionsTableViewController: DevicesViewControllerDelegate {
-    func devicesViewController(_: DevicesViewController, didSelectVerticalAtIndex index: Int) {
+    func devicesViewController(_: DevicesViewController, didSelectDeviceAtIndex index: Int) {
+        let device = Device.all[index]
+        selectorTitleView.title = device.rawValue
+        hideDevicesViewController()
+        State.lastSelectedDevice = index
+        self.delegate?.tweakingOptionsTableViewController(self, didSelectDevice: device)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.delegate?.tweakingOptionsTableViewController(self, didDismissWithIndexPath: nil)
+        }
     }
 }

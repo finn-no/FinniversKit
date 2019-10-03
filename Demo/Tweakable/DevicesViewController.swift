@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-struct DevicesViewModel: BasicTableViewCellViewModel {
+struct DeviceViewModel: BasicTableViewCellViewModel {
     var title: String
     let subtitle: String? = nil
     let detailText: String? = nil
@@ -12,7 +12,7 @@ struct DevicesViewModel: BasicTableViewCellViewModel {
 }
 
 protocol DevicesViewControllerDelegate: AnyObject {
-    func devicesViewController(_: DevicesViewController, didSelectVerticalAtIndex index: Int)
+    func devicesViewController(_: DevicesViewController, didSelectDeviceAtIndex index: Int)
 }
 
 final class DevicesViewController: ScrollViewController {
@@ -31,10 +31,15 @@ final class DevicesViewController: ScrollViewController {
 
     weak var delegate: DevicesViewControllerDelegate?
 
-    var viewModels: [DevicesViewModel] = [] {
-        didSet {
-            tableView.reloadData()
-        }
+    private let viewModels: [DeviceViewModel]
+
+    init(viewModels: [DeviceViewModel]) {
+        self.viewModels = viewModels
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
     }
 
     // MARK: - Lifecycle
@@ -94,7 +99,7 @@ extension DevicesViewController: UITableViewDataSource {
 
 extension DevicesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.devicesViewController(self, didSelectVerticalAtIndex: indexPath.item)
+        delegate?.devicesViewController(self, didSelectDeviceAtIndex: indexPath.item)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

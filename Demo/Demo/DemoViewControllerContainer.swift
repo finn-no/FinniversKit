@@ -34,9 +34,19 @@ class DemoViewControllerContainer<View: UIView>: UIViewController {
             supportedInterfaceOrientations: supportedInterfaceOrientations,
             constrainToTopSafeArea: constrainToTopSafeArea,
             constrainToBottomSafeArea: constrainToBottomSafeArea)
+        viewController.delegate = self
         addChild(viewController)
         view.addSubview(viewController.view)
         viewController.didMove(toParent: self)
+
+        if let deviceIndex = State.lastSelectedDevice {
+            let device = Device.all[deviceIndex]
+            let dimensions = device.dimensions(orientation: .portrait)
+            viewController.view.frame = dimensions.frame
+            for child in children {
+                setOverrideTraitCollection(dimensions.traits, forChild: child)
+            }
+        }
 
         NSLayoutConstraint.activate([
             viewController.view.topAnchor.constraint(equalTo: view.topAnchor),
@@ -46,29 +56,16 @@ class DemoViewControllerContainer<View: UIView>: UIViewController {
             viewController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             viewController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-
-        let tapGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(tapped))
-        viewController.view.addGestureRecognizer(tapGestureRecognizer)
     }
+}
 
-    @objc func tapped() {
+extension DemoViewControllerContainer: DemoViewControllerDelegate {
+    func demoViewControllerDidChangeDevice(device: Device) {
+        let dimensions = device.dimensions(orientation: .portrait)
         for child in children {
-            let traits = UITraitCollection(traitsFrom: [
-                .init(horizontalSizeClass: .compact),
-                .init(verticalSizeClass: .regular),
-                .init(userInterfaceIdiom: .phone)
-            ])
-
-            let width: CGFloat = 320
-            let height: CGFloat = 568
-            // swiftlint:disable:next identifier_name
-            let x: CGFloat = (UIScreen.main.bounds.width - width) / 2
-            // swiftlint:disable:next identifier_name
-            let y: CGFloat = (UIScreen.main.bounds.height - height) / 2
-
             UIView.animate(withDuration: 0.3) {
-                self.view.frame = .init(x: x, y: y, width: width, height: height)
-                self.setOverrideTraitCollection(traits, forChild: child)
+                child.view.frame = dimensions.frame
+                self.setOverrideTraitCollection(dimensions.traits, forChild: child)
             }
         }
     }
