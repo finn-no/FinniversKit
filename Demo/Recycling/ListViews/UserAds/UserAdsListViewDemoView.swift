@@ -68,6 +68,7 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
 
     func userAdsListViewEmphasized(_ userAdsListView: UserAdsListView, didSelectRating rating: HappinessRating) {
         emphasizedActionHasBeenCollapsed = true
+        userAdsListView.showToastView(type: .success, placement: .bottom, text: "Takk for tilbakemelding!", timeOut: 3)
         print("Did give rating \(rating)")
     }
 
