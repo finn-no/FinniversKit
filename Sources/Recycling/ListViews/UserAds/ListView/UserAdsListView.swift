@@ -72,6 +72,16 @@ public class UserAdsListView: UIView {
 
     // MARK: - Public properties
 
+    public enum ToastType: Equatable {
+        case success
+        case error
+    }
+
+    public enum ToastPlacement: Equatable {
+        case top
+        case bottom
+    }
+
     public var isEditing: Bool { return tableView.isEditing }
     public var isEmpty: Bool { return (dataSource?.userAdsListView(self, numberOfRowsInSection: 1) ?? 0 ) == 0}
     public private(set) var hasGivenRating = false
@@ -98,6 +108,30 @@ public class UserAdsListView: UIView {
     private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
+    }
+
+    public func showToastView(type: ToastType, placement: ToastPlacement, text: String, timeOut: Double, toastAction: ToastAction? = nil) {
+        let successToastView = ToastView(style: .success, buttonStyle: .normal)
+        successToastView.action = toastAction
+
+        let errorToastView = ToastView(style: .error, buttonStyle: .normal)
+        errorToastView.action = toastAction
+
+        switch (type, placement) {
+        case (.success, .top):
+            successToastView.text = text
+            successToastView.presentFromTop(view: self, animateOffset: 0, timeOut: timeOut)
+        case (.success, .bottom):
+            successToastView.text = text
+            successToastView.presentFromBottom(view: self, animateOffset: 0, timeOut: timeOut)
+
+        case (.error, .top):
+            errorToastView.text = text
+            errorToastView.presentFromTop(view: self, animateOffset: 0, timeOut: timeOut)
+        case (.error, .bottom):
+            errorToastView.text = text
+            errorToastView.presentFromBottom(view: self, animateOffset: 0, timeOut: timeOut)
+        }
     }
 
     // MARK: - Public

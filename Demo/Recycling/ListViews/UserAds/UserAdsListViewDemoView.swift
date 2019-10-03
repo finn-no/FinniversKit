@@ -58,15 +58,17 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
 
     func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView) {
         emphasizedActionHasBeenCollapsed = true
+        print("Did tap emphasized action")
     }
 
     func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView) {
         emphasizedActionHasBeenCollapsed = true
+        print("Did cancel emphasized action")
     }
 
     func userAdsListViewEmphasized(_ userAdsListView: UserAdsListView, didSelectRating rating: HappinessRating) {
         emphasizedActionHasBeenCollapsed = true
-        print("User gave rating \(rating)")
+        print("Did give rating \(rating)")
     }
 
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button) {}
