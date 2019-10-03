@@ -29,25 +29,45 @@ enum Device: String {
         let verticalSizeClass: UIUserInterfaceSizeClass
         let userInterfaceIdiom: UIUserInterfaceIdiom
         switch (self, orientation) {
-        case (.phone4inch, _):
+        case (.phone4inch, .portrait):
             size = .init(width: 320, height: 568)
             horizontalSizeClass = .compact
             verticalSizeClass = .regular
             userInterfaceIdiom = .phone
-        case (.phone4_7inch, _):
+        case (.phone4inch, .landscape):
+            size = .init(width: 568, height: 320)
+            horizontalSizeClass = .compact
+            verticalSizeClass = .compact
+            userInterfaceIdiom = .phone
+        case (.phone4_7inch, .portrait):
             size = .init(width: 375, height: 667)
             horizontalSizeClass = .compact
             verticalSizeClass = .regular
             userInterfaceIdiom = .phone
-        case (.phone5_5inch, _):
+        case (.phone4_7inch, .landscape):
+            size = .init(width: 667, height: 375)
+            horizontalSizeClass = .compact
+            verticalSizeClass = .compact
+            userInterfaceIdiom = .phone
+        case (.phone5_5inch, .portrait):
             size = .init(width: 414, height: 736)
             horizontalSizeClass = .compact
             verticalSizeClass = .regular
             userInterfaceIdiom = .phone
-        case (.phone5_8inch, _):
+        case (.phone5_5inch, .landscape):
+            size = .init(width: 736, height: 414)
+            horizontalSizeClass = .regular
+            verticalSizeClass = .compact
+            userInterfaceIdiom = .phone
+        case (.phone5_8inch, .portrait):
             size = .init(width: 375, height: 812)
             horizontalSizeClass = .compact
             verticalSizeClass = .regular
+            userInterfaceIdiom = .phone
+        case (.phone5_8inch, .landscape):
+            size = .init(width: 812, height: 375)
+            horizontalSizeClass = .compact
+            verticalSizeClass = .compact
             userInterfaceIdiom = .phone
         case (.pad10_5, .portrait):
             size = .init(width: 768, height: 1_024)
@@ -90,7 +110,6 @@ enum Device: String {
         return [.phone4inch,
                 .phone4_7inch,
                 .phone5_5inch,
-                .phone5_8inch,
                 .pad10_5,
                 .pad12_9inch]
     }
