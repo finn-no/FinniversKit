@@ -105,13 +105,7 @@ class ComponentViewTests: XCTestCase {
     }
 
     func testBannerTransparencyView() {
-        // This test pass locally, but for some reason fails on Circle CI, It's a bit difficult to debug
-        // why this doesn't work on Circle CI specifically, I will skip this one for the time being
-//        guard !ProcessInfo.processInfo.environment.keys.contains("CIRCLECI") else {
-//            return
-//        }
-
-//        snapshot(.bannerTransparencyView)
+        snapshot(.bannerTransparencyView)
     }
 
     func testBottomSheetMechanics() {
