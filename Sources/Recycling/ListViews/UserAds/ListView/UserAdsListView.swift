@@ -8,6 +8,7 @@ public protocol UserAdsListViewDelegate: AnyObject {
     func userAdsListViewDidStartRefreshing(_ userAdsListView: UserAdsListView)
     func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView)
     func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView)
+    func userAdsListViewEmphasized(_ userAdsListView: UserAdsListView, didSelectRating rating: HappinessRating)
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button)
@@ -19,6 +20,8 @@ public protocol UserAdsListViewDelegate: AnyObject {
 
 public protocol UserAdsListViewDataSource: AnyObject {
     var emphasizedActionHasBeenCollapsed: Bool { get }
+    var emphasizedActionShowRatingView: Bool { get }
+
     func numberOfSections(in userAdsListView: UserAdsListView) -> Int
     func sectionNumberForEmphasizedAction(in userAdsListView: UserAdsListView) -> Int?
     func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool
@@ -66,10 +69,12 @@ public class UserAdsListView: UIView {
     private var lastSection: Int {
         return (dataSource?.numberOfSections(in: self) ?? 1) - 1
     }
+
     // MARK: - Public properties
 
     public var isEditing: Bool { return tableView.isEditing }
     public var isEmpty: Bool { return (dataSource?.userAdsListView(self, numberOfRowsInSection: 1) ?? 0 ) == 0}
+    public private(set) var hasGivenRating = false
 
     // MARK: - Setup
 
@@ -300,8 +305,33 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
     }
 
     public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button) {
+        let showRatingView = dataSource?.emphasizedActionShowRatingView ?? false
+        guard showRatingView != false && hasGivenRating != false else {
+            cell.showRatingView(true)
+            return
+        }
+
         guard let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
         delegate?.userAdsListViewEmphasizedActionWasCancelled(self)
         tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
+    }
+
+    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, closeButtonWasTapped: UIButton) {
+        delegate?.userAdsListViewEmphasizedActionWasCancelled(self)
+
+        cell.showRatingView(false, completion: {
+            guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
+            self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
+        })
+    }
+
+    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, didSelectRating rating: HappinessRating) {
+        hasGivenRating = true
+        delegate?.userAdsListViewEmphasized(self, didSelectRating: rating)
+
+        cell.showRatingView(false, completion: {
+            guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
+            self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
+        })
     }
 }

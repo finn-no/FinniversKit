@@ -12,7 +12,8 @@ public protocol UserAdsListViewModel {
     var detail: String { get }
     var status: String { get }
     var accessibilityLabel: String { get }
-    var actionModel: UserAdsListActionModel? { get }
+    var actionViewModel: UserAdsListActionViewModel? { get }
+    var ratingViewModel: UserAdsListRatingViewModel? { get }
 }
 
 public extension UserAdsListViewModel {
@@ -25,9 +26,13 @@ public extension UserAdsListViewModel {
     }
 }
 
-public protocol UserAdsListActionModel {
+public protocol UserAdsListActionViewModel {
     var title: String? { get }
     var description: String { get }
     var buttonTitle: String { get }
     var cancelButtonTitle: String? { get }
+}
+
+public protocol UserAdsListRatingViewModel {
+    var title: String { get }
 }

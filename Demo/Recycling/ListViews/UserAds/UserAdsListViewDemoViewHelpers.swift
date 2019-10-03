@@ -27,7 +27,8 @@ public struct UserAdCell: UserAdsListViewModel {
     public let price: String?
     public let detail: String
     public let status: String
-    public let actionModel: UserAdsListActionModel?
+    public let actionViewModel: UserAdsListActionViewModel?
+    public let ratingViewModel: UserAdsListRatingViewModel?
 
     public var accessibilityLabel: String {
         let message = [title, (price ?? ""), detail, status].joined(separator: ". ")
@@ -35,22 +36,27 @@ public struct UserAdCell: UserAdsListViewModel {
     }
 
     public init(imagePath: String? = nil, imageSize: CGSize = CGSize(width: 0, height: 0),
-                title: String = "", price: String? = nil, detail: String = "", status: String = "", actionModel: UserAdsListActionModel? = nil) {
+                title: String = "", price: String? = nil, detail: String = "", status: String = "", actionViewModel: UserAdsListActionViewModel? = nil, ratingViewModel: UserAdsListRatingViewModel? = nil) {
         self.imagePath = imagePath
         self.imageSize = imageSize
         self.title = title
         self.price = price
         self.detail = detail
         self.status = status
-        self.actionModel = actionModel
+        self.actionViewModel = actionViewModel
+        self.ratingViewModel = ratingViewModel
     }
 }
 
-public struct UserAdCellAction: UserAdsListActionModel {
+public struct UserAdCellAction: UserAdsListActionViewModel {
     public let title: String?
     public let description: String
     public let buttonTitle: String
     public let cancelButtonTitle: String?
+}
+
+public struct UserAdCellRatingAction: UserAdsListRatingViewModel {
+    public var title: String
 }
 
 public struct UserAdsFactory {
@@ -77,8 +83,9 @@ public struct UserAdsFactory {
 
     private static func createEmphasizedAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
         let imageSource = imageSources[0]
-        let action = UserAdCellAction(title: "Her går det unna!", description: "Nå er det mange som selger Rancho Cuccamonga! For 89 kr kan du løfte annonsen din øverst i resultatlista, akkurat som da den var ny", buttonTitle: "Løft annonsen", cancelButtonTitle: "Nei takk!")
-        let adCell = UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: "Rancho Cuccamonga", price: nil, detail: "Schmorget - Huh?!", status: "active", actionModel: action)
+        let action = UserAdCellAction(title: "Her går det unna!", description: "Nå er det mange som selger Rancho Cuccamonga! For 89 kr kan du løfte annonsen din øverst i resultatlista, akkurat som da den var ny", buttonTitle: "Legg annonsen min øverst", cancelButtonTitle: "Nei takk")
+        let rating = UserAdCellRatingAction(title: "Hva synes du om å få oppsalg på dine annonser på denne måten?")
+        let adCell = UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: "Rancho Cuccamonga", price: nil, detail: "Schmorget - Huh?!", status: "active", actionViewModel: action, ratingViewModel: rating)
         let header = UserAdHeaderCell()
         return (header: header, ads: [adCell])
     }
