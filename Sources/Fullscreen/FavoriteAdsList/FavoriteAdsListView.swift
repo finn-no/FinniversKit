@@ -110,6 +110,7 @@ public class FavoriteAdsListView: UIView {
     private lazy var emptyView: FavoriteEmptyView = {
         let emptyView = FavoriteEmptyView(withAutoLayout: true)
         emptyView.isHidden = true
+        emptyView.isUserInteractionEnabled = false
         return emptyView
     }()
 
@@ -262,7 +263,6 @@ public class FavoriteAdsListView: UIView {
         let shouldShowEmptyView = numberOfSections(in: tableView) == 0
         emptyView.isHidden = !shouldShowEmptyView
         tableHeaderView.isSortingViewHidden = shouldShowEmptyView
-        tableView.alwaysBounceVertical = !shouldShowEmptyView
         setTableHeader()
     }
 }
