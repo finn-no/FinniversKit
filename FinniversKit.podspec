@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FinniversKit'
-  s.version      = '14.0.2'
+  s.version      = '14.1.0'
   s.summary      = "FINN's iOS Components"
   s.author       = 'FINN.no'
   s.homepage     = 'https://schibsted.frontify.com/d/oCLrx0cypXJM/design-system'
