@@ -132,6 +132,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         let ratingView = UserAdsRatingView(withAutoLayout: true)
         ratingView.delegate = self
         ratingView.alpha = 0
+        ratingView.transform = CGAffineTransform(translationX: bounds.maxX, y: 0)
         return ratingView
     }()
 
@@ -373,9 +374,8 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
                 // The ratingView starts as translucent and first perform the rightSlideTransform.
                 self.adWrapperView.transform = leftSlideTransform
                 self.actionWrapper.transform = leftSlideTransform
-                self.ratingView.transform = rightSlideTransform
-            }, completion: { _ in
-                UIView.animate(withDuration: 0.3, animations: {
+
+                UIView.animate(withDuration: 0.1, animations: {
                     self.ratingView.transform = .identity
                     self.ratingView.alpha = 1
                 }, completion: { _ in
@@ -385,11 +385,11 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         } else {
             UIView.animate(withDuration: 0.3, animations: {
                 self.ratingView.transform = rightSlideTransform
-                self.ratingView.alpha = 0
-            }, completion: { _ in
-                UIView.animate(withDuration: 0.3, animations: {
+
+                UIView.animate(withDuration: 0.1, animations: {
                     self.adWrapperView.transform = .identity
                     self.actionWrapper.transform = .identity
+                    self.ratingView.alpha = 0
                 }, completion: { _ in
                     completion?()
                 })
