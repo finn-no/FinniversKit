@@ -85,6 +85,22 @@ func testRegisterView() {
 
 Note that the `snapshot` method is a helper method that will call `SnapshotTesting` under the hood.
 
+#### Snapshot failures on Circle CI
+
+There can be instances where the snapshot test pass on your machine but don't on circle ci, when that happens, circle CI will fail and inform the presence of the test results in a `.xctestresult` file. To debug this, re-run the workflow with ssh access, then you will get a command to connect through ssh to circle ci, like:
+
+```
+ssh -p PORT IP
+```
+
+Then given the path of the results file circle ci reported, you can run the following command to copy it to your machine, so you will be able to inspect the failed snapshots
+
+```
+scp -v -r -P PORT -i PATH_TO_SSH_KEY distiller@IP:"/Users/distiller/Library/Developer/Xcode/DerivedData/FinniversKit-fblxjfyrnvejgxdktracnzlelvsi/Logs/Test/Run-Demo-2019.10.03_00-14-16--0700.xcresult" .
+```
+
+Make sure to replace the file path correctly to the one that circle ci reported.
+
 #### Verifying changes for an existing component
 
 If you make changes to any components you'll have to run the test for that component after changing `recordMode` to `true`. Doing this will generate a new reference image that will be used later to verify for changes that affect your component. After you've generated the reference image change `recordMode` back to `false`.
