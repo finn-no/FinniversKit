@@ -84,12 +84,12 @@ final class FavoriteEmptyView: UIView {
         addSubview(wrapperView)
 
         NSLayoutConstraint.activate([
-            wrapperView.topAnchor.constraint(equalTo: topAnchor, constant: 44),
+            wrapperView.topAnchor.constraint(equalTo: topAnchor),
             wrapperView.leadingAnchor.constraint(equalTo: leadingAnchor),
             wrapperView.trailingAnchor.constraint(equalTo: trailingAnchor),
             wrapperViewBottomConstraint,
 
-            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor, constant: -.mediumSpacing),
+            stackView.centerYAnchor.constraint(equalTo: wrapperView.centerYAnchor),
             stackView.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor, constant: .veryLargeSpacing),
             stackView.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor, constant: -.veryLargeSpacing),
 
