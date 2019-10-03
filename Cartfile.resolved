@@ -1,1 +1,1 @@
-github "uber/ios-snapshot-test-case" "6.0.3"
+github "pointfreeco/swift-snapshot-testing" "1.6.0"
