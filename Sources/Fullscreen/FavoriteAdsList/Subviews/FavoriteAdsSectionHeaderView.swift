@@ -18,7 +18,7 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
     private lazy var detailLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detailStrong
-        label.textColor = .stone
+        label.textColor = .licorice
         label.textAlignment = .right
         return label
     }()
