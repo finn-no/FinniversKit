@@ -32,6 +32,14 @@ class FavoriteAdsSectionHeaderView: UITableViewHeaderFooterView {
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
+    // MARK: - Overrides
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        detailLabel.text = nil
+    }
+
     // MARK: - Setup
 
     private func setup() {
