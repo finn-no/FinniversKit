@@ -2,18 +2,14 @@
 //  Copyright © 2018 FINN AS. All rights reserved.
 //
 
-import FBSnapshotTestCase
 import FinniversKit
+import XCTest
+import SnapshotTesting
 import Demo
 
-class TableViewCellsViewTests: FBSnapshotTestCase {
-    override func setUp() {
-        super.setUp()
-        recordMode = false
-    }
-
-    func snapshot(_ component: CellsDemoViews) {
-        FBSnapshotVerifyView(component.viewController.view)
+class TableViewCellsViewTests: XCTestCase {
+    private func snapshot(_ component: CellsDemoViews, testName: String = #function) {
+        assertSnapshot(matching: component.viewController, as: .image(on: .iPhoneX), named: "iPhone", testName: testName)
     }
 
     // MARK: - Tests
