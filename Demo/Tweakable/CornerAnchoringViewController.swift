@@ -23,6 +23,12 @@ class CornerAnchoringView: UIView {
         return anchorAreaViews.map { $0.center }
     }
 
+    public var itemsCount: Int = 0 {
+        didSet {
+            anchoredView.itemsCount = itemsCount
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

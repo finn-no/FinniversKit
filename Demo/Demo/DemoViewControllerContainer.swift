@@ -45,11 +45,10 @@ class DemoViewControllerContainer<View: UIView>: UIViewController {
 
         if let deviceIndex = State.lastSelectedDevice {
             let device = Device.all[deviceIndex]
-            let dimensions = device.dimensions(orientation: .portrait)
+            let dimensions = device.dimensions(currentTraitCollection: traitCollection)
             viewController.view.frame = dimensions.frame
-            for child in children {
-                setOverrideTraitCollection(dimensions.traits, forChild: child)
-            }
+            viewController.view.autoresizingMask = dimensions.autoresizingMask
+            setOverrideTraitCollection(dimensions.traits, forChild: viewController)
         }
 
         NSLayoutConstraint.activate([
@@ -62,7 +61,10 @@ class DemoViewControllerContainer<View: UIView>: UIViewController {
         ])
 
         if !TestCheck.isTesting {
+            let tweakablePlaygroundView = (childViewController?.playgroundView as? Tweakable) ?? (self as? Tweakable)
+            let options = tweakablePlaygroundView?.tweakingOptions ?? [TweakingOption]()
             let overlayView = CornerAnchoringView(withAutoLayout: true)
+            overlayView.itemsCount = options.count
             overlayView.delegate = self
             view.addSubview(overlayView)
             overlayView.fillInSuperview()
@@ -87,10 +89,11 @@ extension DemoViewControllerContainer: CornerAnchoringViewDelegate {
 
 extension DemoViewControllerContainer: TweakingOptionsTableViewControllerDelegate {
     func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectDevice device: Device) {
-        let dimensions = device.dimensions(orientation: .portrait)
+        let dimensions = device.dimensions(currentTraitCollection: traitCollection)
         for child in children {
             UIView.animate(withDuration: 0.3) {
                 child.view.frame = dimensions.frame
+                child.view.autoresizingMask = dimensions.autoresizingMask
                 self.setOverrideTraitCollection(dimensions.traits, forChild: child)
             }
         }

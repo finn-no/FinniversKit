@@ -23,73 +23,41 @@ enum Device: String {
     // swiftlint:disable:next identifier_name
     case pad12_9inch = "iPad (12.9-inch)"
 
-    // swiftlint:disable:next cyclomatic_complexity
-    func dimensions(orientation: Orientation) -> (traits: UITraitCollection, frame: CGRect) {
+    // swiftlint:disable:next large_tuple
+    func dimensions(currentTraitCollection: UITraitCollection) -> (traits: UITraitCollection, frame: CGRect, autoresizingMask: UIView.AutoresizingMask) {
         let size: CGSize
         let horizontalSizeClass: UIUserInterfaceSizeClass
         let verticalSizeClass: UIUserInterfaceSizeClass
         let userInterfaceIdiom: UIUserInterfaceIdiom
-        switch (self, orientation) {
-        case (.phone4inch, .portrait):
+        let autoresizingMask: UIView.AutoresizingMask
+        let isPortrait = UIDevice.current.orientation == .portrait || UIDevice.current.orientation == .portraitUpsideDown
+
+        switch self {
+        case .phone4inch, .phone4_7inch, .phone5_5inch, .phone5_8inch:
+            horizontalSizeClass = .compact
+            verticalSizeClass = .regular
+            userInterfaceIdiom = .phone
+            autoresizingMask = [.flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin, .flexibleBottomMargin]
+        case .pad10_5, .pad12_9inch:
+            horizontalSizeClass = .regular
+            verticalSizeClass = .regular
+            userInterfaceIdiom = .pad
+            autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        }
+
+        switch self {
+        case .phone4inch:
             size = .init(width: 320, height: 568)
-            horizontalSizeClass = .compact
-            verticalSizeClass = .regular
-            userInterfaceIdiom = .phone
-        case (.phone4inch, .landscape):
-            size = .init(width: 568, height: 320)
-            horizontalSizeClass = .compact
-            verticalSizeClass = .compact
-            userInterfaceIdiom = .phone
-        case (.phone4_7inch, .portrait):
+        case .phone4_7inch:
             size = .init(width: 375, height: 667)
-            horizontalSizeClass = .compact
-            verticalSizeClass = .regular
-            userInterfaceIdiom = .phone
-        case (.phone4_7inch, .landscape):
-            size = .init(width: 667, height: 375)
-            horizontalSizeClass = .compact
-            verticalSizeClass = .compact
-            userInterfaceIdiom = .phone
-        case (.phone5_5inch, .portrait):
+        case .phone5_5inch:
             size = .init(width: 414, height: 736)
-            horizontalSizeClass = .compact
-            verticalSizeClass = .regular
-            userInterfaceIdiom = .phone
-        case (.phone5_5inch, .landscape):
-            size = .init(width: 736, height: 414)
-            horizontalSizeClass = .regular
-            verticalSizeClass = .compact
-            userInterfaceIdiom = .phone
-        case (.phone5_8inch, .portrait):
+        case .phone5_8inch:
             size = .init(width: 375, height: 812)
-            horizontalSizeClass = .compact
-            verticalSizeClass = .regular
-            userInterfaceIdiom = .phone
-        case (.phone5_8inch, .landscape):
-            size = .init(width: 812, height: 375)
-            horizontalSizeClass = .compact
-            verticalSizeClass = .compact
-            userInterfaceIdiom = .phone
-        case (.pad10_5, .portrait):
-            size = .init(width: 768, height: 1_024)
-            horizontalSizeClass = .regular
-            verticalSizeClass = .regular
-            userInterfaceIdiom = .pad
-        case (.pad10_5, .landscape):
-            size = .init(width: 1_024, height: 768)
-            horizontalSizeClass = .regular
-            verticalSizeClass = .regular
-            userInterfaceIdiom = .pad
-        case (.pad12_9inch, .portrait):
-            size = .init(width: 1_024, height: 1_366)
-            horizontalSizeClass = .regular
-            verticalSizeClass = .regular
-            userInterfaceIdiom = .pad
-        case (.pad12_9inch, .landscape):
-            size = .init(width: 1_366, height: 1_024)
-            horizontalSizeClass = .regular
-            verticalSizeClass = .regular
-            userInterfaceIdiom = .pad
+        case .pad10_5:
+            size = isPortrait ? .init(width: 768, height: 1_024) : .init(width: 1_024, height: 768)
+        case .pad12_9inch:
+            size = isPortrait ? .init(width: 1_024, height: 1_366) : .init(width: 1_366, height: 1_024)
         }
 
         // swiftlint:disable:next identifier_name
@@ -104,13 +72,14 @@ enum Device: String {
             .init(userInterfaceIdiom: userInterfaceIdiom)
             ])
 
-        return (traits, CGRect(x: x, y: y, width: size.width, height: size.height))
+        return (traits, CGRect(x: x, y: y, width: size.width, height: size.height), autoresizingMask: autoresizingMask)
     }
 
     static var all: [Device] {
         return [.phone4inch,
                 .phone4_7inch,
                 .phone5_5inch,
+                .phone5_8inch,
                 .pad10_5,
                 .pad12_9inch]
     }
