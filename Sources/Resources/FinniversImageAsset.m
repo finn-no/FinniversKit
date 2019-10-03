@@ -10,8 +10,10 @@
 NSString *const FinniversImageAssetadManagementShare = @"adManagementShare";
 NSString *const FinniversImageAssetadManagementTrashcan = @"adManagementTrashcan";
 NSString *const FinniversImageAssetarrowDown = @"arrowDown";
+NSString *const FinniversImageAssetarrowDownSmall = @"arrowDownSmall";
 NSString *const FinniversImageAssetarrowRight = @"arrowRight";
 NSString *const FinniversImageAssetarrowUp = @"arrowUp";
+NSString *const FinniversImageAssetarrowUpSmall = @"arrowUpSmall";
 NSString *const FinniversImageAssetattachment = @"attachment";
 NSString *const FinniversImageAssetavatar = @"avatar";
 NSString *const FinniversImageAssetballoon0 = @"balloon0";
@@ -161,8 +163,10 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetadManagementShare,
              FinniversImageAssetadManagementTrashcan,
              FinniversImageAssetarrowDown,
+             FinniversImageAssetarrowDownSmall,
              FinniversImageAssetarrowRight,
              FinniversImageAssetarrowUp,
+             FinniversImageAssetarrowUpSmall,
              FinniversImageAssetattachment,
              FinniversImageAssetavatar,
              FinniversImageAssetballoon0,

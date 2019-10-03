@@ -11,7 +11,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()

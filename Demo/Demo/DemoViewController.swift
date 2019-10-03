@@ -130,7 +130,7 @@ public class DemoViewController<View: UIView>: UIViewController, Containable {
             }
         }
 
-        if !TestCheck.isTesting && (playgroundView is Tweakable || self is Tweakable) {
+        if !TestCheck.isTesting {
             let overlayView = CornerAnchoringView(withAutoLayout: true)
             overlayView.delegate = self
             view.addSubview(overlayView)
@@ -153,7 +153,9 @@ extension DemoViewController: CornerAnchoringViewDelegate {
         if let tweakablePlaygroundView = (playgroundView as? Tweakable) ?? (self as? Tweakable) {
             let tweakingController = TweakingOptionsTableViewController(options: tweakablePlaygroundView.tweakingOptions)
             tweakingController.delegate = self
-            bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
+            let navigationController = NavigationController(rootViewController: tweakingController)
+            navigationController.hairlineIsHidden = true
+            bottomSheet = BottomSheet(rootViewController: navigationController, draggableArea: .everything)
             if let controller = bottomSheet {
                 present(controller, animated: true)
             }

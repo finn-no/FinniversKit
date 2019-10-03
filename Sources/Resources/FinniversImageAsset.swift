@@ -22,8 +22,10 @@ public enum FinniversImageAsset: String {
     case adManagementShare
     case adManagementTrashcan
     case arrowDown
+    case arrowDownSmall
     case arrowRight
     case arrowUp
+    case arrowUpSmall
     case attachment
     case avatar
     case balloon0
@@ -172,8 +174,10 @@ public enum FinniversImageAsset: String {
             .adManagementShare,
             .adManagementTrashcan,
             .arrowDown,
+            .arrowDownSmall,
             .arrowRight,
             .arrowUp,
+            .arrowUpSmall,
             .attachment,
             .avatar,
             .balloon0,

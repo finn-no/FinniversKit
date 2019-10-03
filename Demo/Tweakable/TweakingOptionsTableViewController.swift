@@ -4,7 +4,7 @@ protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
     func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath)
 }
 
-class TweakingOptionsTableViewController: UIViewController {
+class TweakingOptionsTableViewController: ScrollViewController {
     weak var delegate: TweakingOptionsTableViewControllerDelegate?
     private let options: [TweakingOption]
     var selectedIndexPath: IndexPath?
@@ -15,6 +15,18 @@ class TweakingOptionsTableViewController: UIViewController {
         view.delegate = self
         view.separatorColor = .clear
         return view
+    }()
+
+    private lazy var devicesViewController: DevicesViewController = {
+        let viewController = DevicesViewController()
+        viewController.delegate = self
+        return viewController
+    }()
+
+    private lazy var selectorTitleView: SelectorTitleView = {
+        let titleView = SelectorTitleView(heading: "Device type")
+        titleView.delegate = self
+        return titleView
     }()
 
     init(options: [TweakingOption]) {
@@ -32,10 +44,19 @@ class TweakingOptionsTableViewController: UIViewController {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        view.addSubview(tableView)
-        tableView.fillInSuperview()
+        view.insertSubview(tableView, belowSubview: topShadowView)
+        NSLayoutConstraint.activate([
+            topShadowView.bottomAnchor.constraint(equalTo: view.topAnchor),
+
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
         tableView.register(TweakingOptionCell.self)
         updateColors()
+        navigationItem.titleView = selectorTitleView
+        selectorTitleView.title = "iPhone 11"
     }
 
     @objc private func userInterfaceStyleDidChange(_ userInterfaceStyle: UserInterfaceStyle) {
@@ -47,6 +68,61 @@ class TweakingOptionsTableViewController: UIViewController {
         let interfaceBackgroundColor: UIColor = .bgPrimary
         view.backgroundColor = interfaceBackgroundColor
         tableView.backgroundColor = interfaceBackgroundColor
+        devicesViewController.backgroundColor = interfaceBackgroundColor
+    }
+
+    private func showDevicesViewController() {
+        //guard let verticals = filterContainer.verticals else { return }
+
+        selectorTitleView.arrowDirection = .up
+
+        guard devicesViewController.parent == nil else { return }
+
+        addChild(devicesViewController)
+        devicesViewController.view.frame = view.bounds
+        devicesViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(devicesViewController.view)
+        devicesViewController.didMove(toParent: self)
+
+        devicesViewController.viewModels = [DevicesViewModel(title: "uno"), DevicesViewModel(title: "dos")]
+        devicesViewController.view.alpha = 0.6
+        devicesViewController.view.frame.origin.y = -.largeSpacing
+
+        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+            self?.devicesViewController.view.alpha = 1
+        })
+
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 1,
+            options: [],
+            animations: { [weak self] in
+                self?.devicesViewController.view.frame.origin.y = 0
+            }
+        )
+    }
+
+    private func hideDevicesViewController() {
+        selectorTitleView.arrowDirection = .down
+
+        tableView.alpha = 0
+
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: ({ [weak self] in
+            self?.devicesViewController.view.frame.origin.y = -.veryLargeSpacing
+            self?.devicesViewController.view.alpha = 0
+        }), completion: ({ [weak self] _ in
+            guard self?.devicesViewController.parent != nil else { return }
+
+            self?.devicesViewController.willMove(toParent: nil)
+            self?.devicesViewController.removeFromParent()
+            self?.devicesViewController.view.removeFromSuperview()
+        }))
+
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.tableView.alpha = 1
+        })
     }
 }
 
@@ -78,5 +154,22 @@ extension TweakingOptionsTableViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
+    }
+}
+
+extension TweakingOptionsTableViewController: SelectorTitleViewDelegate {
+    func selectorTitleViewDidSelectButton(_ view: SelectorTitleView) {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+
+        if view.arrowDirection == .up {
+            hideDevicesViewController()
+        } else {
+            showDevicesViewController()
+        }
+    }
+}
+
+extension TweakingOptionsTableViewController: DevicesViewControllerDelegate {
+    func devicesViewController(_: DevicesViewController, didSelectVerticalAtIndex index: Int) {
     }
 }
