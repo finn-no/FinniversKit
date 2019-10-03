@@ -15,7 +15,7 @@ enum Device: String {
     case phone5_5inch = "iPhone 6 Plus (5.5-inch)"
 
     // swiftlint:disable:next identifier_name
-    case pad10_5 = "iPad (10.7-inch)"
+    case pad10_5 = "iPad (10.5-inch)"
 
     // swiftlint:disable:next identifier_name
     case pad12_9inch = "iPad (12.9-inch)"
