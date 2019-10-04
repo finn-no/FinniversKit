@@ -288,11 +288,11 @@ public class FavoriteAdsListView: UIView {
     }
 
     private func layoutEmptyViews() {
-        [emptySearchView, emptyListView].forEach { view in
-            view.frame = tableView.bounds
-            view.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
-            view.frame.size.height -= view.frame.origin.y
-        }
+        emptySearchView.frame = tableView.bounds
+        emptySearchView.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
+        emptySearchView.frame.size.height -= emptySearchView.frame.origin.y
+
+        emptyListView.frame = isReadOnly ? tableView.bounds : emptySearchView.frame
     }
 }
 
