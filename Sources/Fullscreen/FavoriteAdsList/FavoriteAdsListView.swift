@@ -176,6 +176,13 @@ public class FavoriteAdsListView: UIView {
 
     // MARK: - Public methods
 
+    public func setListIsEmpty(_ isEmpty: Bool) {
+        emptyListView.isHidden = !isEmpty
+        tableHeaderView.isSearchBarHidden = isEmpty
+        tableHeaderView.isSortingViewHidden = isEmpty
+        setTableHeader()
+    }
+
     public func setEditing(_ editing: Bool) {
         guard editing != tableView.isEditing else { return }
 
