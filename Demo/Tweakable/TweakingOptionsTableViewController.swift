@@ -1,7 +1,9 @@
 import FinniversKit
 
 protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath?)
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectOptionWithIndexPath indexPath: IndexPath)
+
+    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController)
 
     func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectDevice device: Device)
 }
@@ -155,7 +157,8 @@ extension TweakingOptionsTableViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let option = options[indexPath.row]
         option.action?()
-        delegate?.tweakingOptionsTableViewController(self, didDismissWithIndexPath: indexPath)
+        delegate?.tweakingOptionsTableViewController(self, didSelectOptionWithIndexPath: indexPath)
+        delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -183,7 +186,7 @@ extension TweakingOptionsTableViewController: DevicesViewControllerDelegate {
         State.lastSelectedDevice = index
         self.delegate?.tweakingOptionsTableViewController(self, didSelectDevice: device)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.delegate?.tweakingOptionsTableViewController(self, didDismissWithIndexPath: nil)
+            self.delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
         }
     }
 }

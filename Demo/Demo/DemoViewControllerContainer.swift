@@ -97,7 +97,10 @@ extension DemoViewControllerContainer: TweakingOptionsTableViewControllerDelegat
         }
     }
 
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath?) {
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectOptionWithIndexPath indexPath: IndexPath) {
+    }
+
+    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController) {
         bottomSheet?.state = .dismissed
     }
 }

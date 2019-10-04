@@ -218,14 +218,15 @@ extension DemoViewsTableViewController: SelectorTitleViewDelegate {
 }
 
 extension DemoViewsTableViewController: TweakingOptionsTableViewControllerDelegate {
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath?) {
-        if let row = indexPath?.row {
-            State.lastSelectedSection = row
-        }
-        bottomSheet?.state = .dismissed
+    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectOptionWithIndexPath indexPath: IndexPath) {
+        State.lastSelectedSection = indexPath.row
         selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
         evaluateIndexAndValues()
         tableView.reloadData()
+    }
+
+    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController) {
+        bottomSheet?.state = .dismissed
     }
 
     func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectDevice device: Device) {
