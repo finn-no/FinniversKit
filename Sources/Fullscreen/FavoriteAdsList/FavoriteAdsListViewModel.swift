@@ -7,19 +7,28 @@ public struct FavoriteAdsListViewModel {
     public let addCommentActionTitle: String
     public let editCommentActionTitle: String
     public let deleteAdActionTitle: String
-    public let emptyViewBodyPrefix: String
+    public let emptySearchViewBodyPrefix: String
+    public let emptyListViewTitle: String
+    public let emptyListViewBody: String
+    public let emptyListViewImage: UIImage
 
     public init(
         searchBarPlaceholder: String,
         addCommentActionTitle: String,
         editCommentActionTitle: String,
         deleteAdActionTitle: String,
-        emptyViewBodyPrefix: String
+        emptySearchViewBodyPrefix: String,
+        emptyListViewTitle: String,
+        emptyListViewBody: String,
+        emptyListViewImage: UIImage
     ) {
         self.searchBarPlaceholder = searchBarPlaceholder
         self.addCommentActionTitle = addCommentActionTitle
         self.editCommentActionTitle = editCommentActionTitle
         self.deleteAdActionTitle = deleteAdActionTitle
-        self.emptyViewBodyPrefix = emptyViewBodyPrefix
+        self.emptySearchViewBodyPrefix = emptySearchViewBodyPrefix
+        self.emptyListViewTitle = emptyListViewTitle
+        self.emptyListViewBody = emptyListViewBody
+        self.emptyListViewImage = emptyListViewImage
     }
 }
