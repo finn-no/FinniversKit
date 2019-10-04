@@ -11,7 +11,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -19,7 +19,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var subtitleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -27,7 +27,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var detailLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detail
-        label.textColor = .stone
+        label.textColor = .textSecondary
         return label
     }()
 
@@ -93,7 +93,7 @@ open class BasicTableViewCell: UITableViewCell {
             stackViewTrailingAnchorConstraint.constant = -.mediumLargeSpacing
         }
 
-        separatorInset = .leadingInset(.mediumLargeSpacing)
+        separatorInset = .leadingInset(.mediumLargeSpacing)        
     }
 
     open override func prepareForReuse() {
@@ -106,6 +106,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     private func setup() {
         setDefaultSelectedBackgound()
+        backgroundColor = .bgPrimary
 
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)

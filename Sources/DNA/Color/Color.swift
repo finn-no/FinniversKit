@@ -85,6 +85,10 @@ import UIKit
     public class var textToast: UIColor {
         return .licorice
     }
+
+    public class var tableViewSeparator: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor.sardine.withAlphaComponent(0.3))
+    }
 }
 
 // FINN colors
@@ -303,7 +307,8 @@ extension CGColor {
 
 @objc extension UIColor {
     public class var defaultCellSelectedBackgroundColor: UIColor {
-        return UIColor(r: 230, g: 235, b: 242)! //DARK
+        let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)!
+        return dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.4))
     }
 }
 

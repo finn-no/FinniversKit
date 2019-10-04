@@ -27,6 +27,8 @@ class BasicCellDemoView: UIView {
         tableView.rowHeight = 48
         tableView.register(BasicTableViewCell.self)
         tableView.separatorInset = .leadingInset(frame.width)
+        tableView.backgroundColor = .bgPrimary
+        tableView.separatorColor = .tableViewSeparator
         return tableView
     }()
 
