@@ -79,8 +79,6 @@ class TweakingOptionsTableViewController: ScrollViewController {
     }
 
     private func showDevicesViewController() {
-        //guard let verticals = filterContainer.verticals else { return }
-
         selectorTitleView.arrowDirection = .up
 
         guard devicesViewController.parent == nil else { return }
