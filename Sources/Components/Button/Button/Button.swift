@@ -41,6 +41,7 @@ public class Button: UIButton {
         titleEdgeInsets = style.paddings(forSize: size)
         contentEdgeInsets = style.margins
         titleLabel?.font = style.font(forSize: size)
+        titleLabel?.adjustsFontForContentSizeCategory = true
         layer.cornerRadius = cornerRadius
         layer.borderWidth = style.borderWidth
         layer.borderColor = style.borderColor?.cgColor

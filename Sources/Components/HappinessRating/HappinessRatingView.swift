@@ -6,6 +6,7 @@ import UIKit
 
 public protocol HappinessRatingViewDelegate: AnyObject {
     func happinessRatingView(_ happinessRatingView: HappinessRatingView, didSelectRating rating: HappinessRating)
+    func happinessRatingView(_ happinessRatingView: HappinessRatingView, textFor rating: HappinessRating) -> String?
 }
 
 public class HappinessRatingView: UIView {
@@ -13,6 +14,7 @@ public class HappinessRatingView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: HappinessRatingViewDelegate?
+
     public private(set) var selectedRating: HappinessRating? {
         didSet {
             guard let selectedRating = selectedRating else { return }
@@ -23,13 +25,14 @@ public class HappinessRatingView: UIView {
     // MARK: - Private properties
 
     private lazy var ratingImageViews: [RatingImageView] = {
-        let ratingImageViews = HappinessRating.allCases.map { RatingImageView(rating: $0) }
+        let ratingImageViews = HappinessRating.allCases.map { RatingImageView(rating: $0, delegate: self) }
         ratingImageViews.forEach {
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ratingImageViewTapped(_:)))
             $0.addGestureRecognizer(tapGestureRecognizer)
         }
         return ratingImageViews
     }()
+
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.distribution = .equalSpacing
@@ -37,12 +40,14 @@ public class HappinessRatingView: UIView {
         stackView.addGestureRecognizer(panRecognizer)
         return stackView
     }()
+
     private lazy var panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureHandler(_:)))
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
+    public init(frame: CGRect = .zero, delegate: HappinessRatingViewDelegate?) {
         super.init(frame: frame)
+        self.delegate = delegate
         setup()
     }
 
@@ -106,27 +111,78 @@ public class HappinessRatingView: UIView {
     }
 }
 
+extension HappinessRatingView: RatingImageViewDelegate {
+    func ratingImageViewText(for rating: HappinessRating) -> String? {
+        switch rating {
+        case .angry:
+            return delegate?.happinessRatingView(self, textFor: rating)
+        case .dissatisfied:
+            return delegate?.happinessRatingView(self, textFor: rating)
+        case .neutral:
+            return delegate?.happinessRatingView(self, textFor: rating)
+        case .happy:
+            return delegate?.happinessRatingView(self, textFor: rating)
+        case .love:
+            return delegate?.happinessRatingView(self, textFor: rating)
+        }
+    }
+}
+
 // MARK: - RatingImageView
+
+private protocol RatingImageViewDelegate: AnyObject {
+    func ratingImageViewText(for rating: HappinessRating) -> String?
+}
 
 private class RatingImageView: UIImageView {
 
     // MARK: - Public properties
 
     public let rating: HappinessRating
+    public weak var delegate: RatingImageViewDelegate?
 
     // MARK: - Init
 
-    init(rating: HappinessRating) {
+    init(rating: HappinessRating, delegate: RatingImageViewDelegate? = nil) {
         self.rating = rating
+        self.delegate = delegate
+
         super.init(frame: .zero)
+
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
         image = rating.image
         contentMode = .scaleAspectFit
         tintColor = .primaryBlue
+
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setup() {
+        if delegate != nil {
+            guard let text = delegate?.ratingImageViewText(for: rating) else { return }
+            let label = textLabel(text: text)
+            addSubview(label)
+
+            let paddingToFitTwoLongWords: CGFloat = 3 // e.g: Veldig irriterende
+
+            NSLayoutConstraint.activate([
+                label.topAnchor.constraint(equalTo: bottomAnchor, constant: .smallSpacing),
+                label.leadingAnchor.constraint(equalTo: leadingAnchor),
+                label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: paddingToFitTwoLongWords)
+            ])
+        }
+    }
+
+    func textLabel(text: String) -> Label {
+        let label = Label(style: .detail, withAutoLayout: true)
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.text = text
+        return label
     }
 }
