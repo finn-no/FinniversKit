@@ -45,8 +45,8 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
                 self?.setTitle("Veldig langt navn, ganske nøyaktig 50 tegn faktisk")
             },
             TweakingOption(title: "Empty folder", description: "A folder with no favorites") { [weak self] in
-                self?.setViewModels([])
                 self?.setReadOnly(false)
+                self?.setViewModels([])
                 self?.favoritesListView.setEditing(false)
                 self?.resetTitle()
             },
@@ -74,7 +74,7 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
                 self?.setViewModels([])
                 self?.setReadOnly(true)
                 self?.favoritesListView.setEditing(false)
-                self?.setTitle("")
+                self?.resetTitle()
             }
         ]
     }()
@@ -90,6 +90,7 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
         view.addSubview(favoritesListView)
         favoritesListView.fillInSuperview()
 
+        navigationItem.titleView = navigationTitleView
         resetViewModels()
         resetTitle()
     }
