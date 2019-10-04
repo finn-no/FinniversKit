@@ -6,6 +6,11 @@ import UIKit
 
 public protocol HappinessRatingViewDelegate: AnyObject {
     func happinessRatingView(_ happinessRatingView: HappinessRatingView, didSelectRating rating: HappinessRating)
+    func happinessRatingView(_ happinessRatingView: HappinessRatingView, textFor: HappinessRating) -> String?
+}
+
+extension HappinessRatingViewDelegate {
+    func happinessRatingView(_ happinessRatingView: HappinessRatingView, textFor: HappinessRating) -> String? { return nil }
 }
 
 public class HappinessRatingView: UIView {
@@ -13,6 +18,7 @@ public class HappinessRatingView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: HappinessRatingViewDelegate?
+
     public private(set) var selectedRating: HappinessRating? {
         didSet {
             guard let selectedRating = selectedRating else { return }
@@ -23,13 +29,14 @@ public class HappinessRatingView: UIView {
     // MARK: - Private properties
 
     private lazy var ratingImageViews: [RatingImageView] = {
-        let ratingImageViews = HappinessRating.allCases.map { RatingImageView(rating: $0) }
+        let ratingImageViews = HappinessRating.allCases.map { RatingImageView(rating: $0, showTextLabel: true, delegate: self) }
         ratingImageViews.forEach {
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ratingImageViewTapped(_:)))
             $0.addGestureRecognizer(tapGestureRecognizer)
         }
         return ratingImageViews
     }()
+
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.distribution = .equalSpacing
@@ -37,6 +44,7 @@ public class HappinessRatingView: UIView {
         stackView.addGestureRecognizer(panRecognizer)
         return stackView
     }()
+
     private lazy var panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureHandler(_:)))
 
     // MARK: - Init
@@ -106,24 +114,69 @@ public class HappinessRatingView: UIView {
     }
 }
 
+extension HappinessRatingView: RatingImageViewDelegate {
+    func ratingImageViewText(for rating: HappinessRating) -> String? {
+        switch rating {
+        case .angry:
+            return "Veldig irriterende"
+        case .dissatisfied:
+            return nil
+        case .neutral:
+            return "Nøytral"
+        case .happy:
+            return nil
+        case .love:
+            return "Veldig nyttig"
+        }
+    }
+}
+
 // MARK: - RatingImageView
+
+protocol RatingImageViewDelegate: AnyObject {
+    func ratingImageViewText(for rating: HappinessRating) -> String?
+}
 
 private class RatingImageView: UIImageView {
 
     // MARK: - Public properties
 
     public let rating: HappinessRating
+    public let showTextLabel: Bool
+    public weak var delegate: RatingImageViewDelegate?
 
     // MARK: - Init
 
-    init(rating: HappinessRating) {
+    init(rating: HappinessRating, showTextLabel: Bool = false, delegate: RatingImageViewDelegate? = nil) {
         self.rating = rating
+        self.showTextLabel = showTextLabel
+        self.delegate = delegate
+
         super.init(frame: .zero)
+
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
         image = rating.image
         contentMode = .scaleAspectFit
         tintColor = .primaryBlue
+
+        setup()
+    }
+
+    func setup() {
+        if showTextLabel {
+            guard let text = delegate?.ratingImageViewText(for: rating) else { return }
+            let textLabel = rating.textLabel(text: text)
+            addSubview(textLabel)
+
+            let paddingToFitTwoLongWords: CGFloat = 3 // e.g: Veldig irriterende
+
+            NSLayoutConstraint.activate([
+                textLabel.topAnchor.constraint(equalTo: bottomAnchor, constant: .smallSpacing),
+                textLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+                textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: paddingToFitTwoLongWords)
+            ])
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

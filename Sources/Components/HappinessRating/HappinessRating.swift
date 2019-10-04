@@ -25,4 +25,12 @@ public enum HappinessRating: Int, CaseIterable {
             return UIImage(named: .ratingFaceLove)
         }
     }
+
+    func textLabel(text: String) -> Label {
+        let label = Label(style: .detail, withAutoLayout: true)
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.text = text
+        return label
+    }
 }
