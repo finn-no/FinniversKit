@@ -108,8 +108,14 @@ public class FavoriteAdsListView: UIView {
         return tableHeader
     }()
 
-    private lazy var emptyView: FavoriteSearchEmptyView = {
+    private lazy var emptySearchView: FavoriteSearchEmptyView = {
         let emptyView = FavoriteSearchEmptyView()
+        emptyView.isHidden = true
+        return emptyView
+    }()
+
+    private lazy var emptyListView: FavoriteAdsListEmptyView = {
+        let emptyView = FavoriteAdsListEmptyView()
         emptyView.isHidden = true
         return emptyView
     }()
@@ -129,7 +135,8 @@ public class FavoriteAdsListView: UIView {
 
     private func setup() {
         addSubview(tableView)
-        tableView.addSubview(emptyView)
+        tableView.addSubview(emptySearchView)
+        tableView.addSubview(emptyListView)
 
         NSLayoutConstraint.activate([
             tableViewTopConstraint,
@@ -150,14 +157,14 @@ public class FavoriteAdsListView: UIView {
             setTableHeader()
             didSetTableHeader = true
         } else {
-            layoutEmptyView()
+            layoutEmptyViews()
         }
     }
 
     // MARK: - Reload
 
     public func reloadData() {
-        showEmptyViewIfNeeded()
+        showEmptySearchViewIfNeeded()
 
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
@@ -225,12 +232,12 @@ public class FavoriteAdsListView: UIView {
 
     public func deleteRow(at indexPath: IndexPath, with animation: UITableView.RowAnimation = .automatic) {
         tableView.deleteRows(at: [indexPath], with: animation)
-        showEmptyViewIfNeeded()
+        showEmptySearchViewIfNeeded()
     }
 
     public func deleteSection(at index: Int, with animation: UITableView.RowAnimation = .automatic) {
         tableView.deleteSections(IndexSet(integer: index), with: animation)
-        showEmptyViewIfNeeded()
+        showEmptySearchViewIfNeeded()
     }
 
     // MARK: - Images
@@ -259,20 +266,22 @@ public class FavoriteAdsListView: UIView {
         tableView.tableHeaderView = tableView.tableHeaderView
         tableView.sendSubviewToBack(tableHeaderView)
 
-        layoutEmptyView()
+        layoutEmptyViews()
     }
 
-    private func showEmptyViewIfNeeded() {
-        let shouldShowEmptyView = numberOfSections(in: tableView) == 0
-        emptyView.isHidden = !shouldShowEmptyView
-        tableHeaderView.isSortingViewHidden = shouldShowEmptyView
+    private func showEmptySearchViewIfNeeded() {
+        let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0
+        emptySearchView.isHidden = !shouldShowEmptySearchView
+        tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView
         setTableHeader()
     }
 
-    private func layoutEmptyView() {
-        emptyView.frame = tableView.bounds
-        emptyView.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
-        emptyView.frame.size.height -= emptyView.frame.origin.y
+    private func layoutEmptyViews() {
+        [emptySearchView, emptyListView].forEach { view in
+            view.frame = tableView.bounds
+            view.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
+            view.frame.size.height -= view.frame.origin.y
+        }
     }
 }
 
@@ -461,8 +470,8 @@ extension FavoriteAdsListView: UISearchBarDelegate {
         let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         delegate?.favoriteAdsListView(self, didChangeSearchText: searchText)
 
-        let emptyViewText = "\(viewModel.emptyViewBodyPrefix) \"\(searchText)\""
-        emptyView.configure(withText: emptyViewText, buttonTitle: nil)
+        let emptyViewText = "\(viewModel.emptySearchViewBodyPrefix) \"\(searchText)\""
+        emptySearchView.configure(withText: emptyViewText, buttonTitle: nil)
     }
 }
 
