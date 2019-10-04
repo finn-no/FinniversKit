@@ -6,6 +6,8 @@ import UIKit
 
 public protocol HappinessRatingViewDelegate: AnyObject {
     func happinessRatingView(_ happinessRatingView: HappinessRatingView, didSelectRating rating: HappinessRating)
+
+    // MARK: - Optional
     func happinessRatingView(_ happinessRatingView: HappinessRatingView, textFor: HappinessRating) -> String?
 }
 
