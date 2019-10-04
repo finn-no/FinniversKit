@@ -67,8 +67,12 @@ final class FavoriteEmptyView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleKeyboardNotification),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
 
         clipsToBounds = true
         backgroundColor = .milk
@@ -84,7 +88,7 @@ final class FavoriteEmptyView: UIView {
         addSubview(wrapperView)
 
         NSLayoutConstraint.activate([
-            wrapperView.topAnchor.constraint(equalTo: topAnchor, constant: 44),
+            wrapperView.topAnchor.constraint(equalTo: topAnchor),
             wrapperView.leadingAnchor.constraint(equalTo: leadingAnchor),
             wrapperView.trailingAnchor.constraint(equalTo: trailingAnchor),
             wrapperViewBottomConstraint,
@@ -108,11 +112,15 @@ final class FavoriteEmptyView: UIView {
         guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
 
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: wrapperView)
-        let wrapperBottomOffset = keyboardIntersection + windowSafeAreaInsets.bottom
 
-        UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
-            self?.wrapperViewBottomConstraint.constant = -wrapperBottomOffset
-            self?.layoutIfNeeded()
+        if keyboardIntersection > 0 {
+            let wrapperBottomOffset = keyboardIntersection + windowSafeAreaInsets.bottom
+
+            wrapperViewBottomConstraint.constant = -wrapperBottomOffset
+
+            UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo) { [weak self] in
+                self?.layoutIfNeeded()
+            }
         }
     }
 
