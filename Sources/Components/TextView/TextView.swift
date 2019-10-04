@@ -73,6 +73,7 @@ public class TextView: UIView {
         view.isScrollEnabled = false
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
+
         if FinniversKit.isDynamicTypeEnabled {
             view.adjustsFontForContentSizeCategory = true
         }
