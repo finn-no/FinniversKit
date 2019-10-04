@@ -59,7 +59,7 @@ class TweakingOptionsTableViewController: ScrollViewController {
         updateColors()
         navigationItem.titleView = selectorTitleView
 
-        if let deviceIndex = State.lastSelectedDevice {
+        if let deviceIndex = State.lastSelectedDevice, deviceIndex < Device.all.count {
             selectorTitleView.title = Device.all[deviceIndex].title
         } else {
             selectorTitleView.title = "Choose a device"

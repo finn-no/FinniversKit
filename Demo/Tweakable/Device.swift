@@ -120,7 +120,7 @@ struct Device {
             Device(type: .phone5_8inch)
         ]
 
-        let isPortrait = UIDevice.current.orientation == .portrait || UIDevice.current.orientation == .portraitUpsideDown
+        let isPortrait = UIDevice.current.userInterfaceIdiom == .pad && UIScreen.main.bounds.size.height > UIScreen.main.bounds.size.width
         if isPortrait {
             devices.append(contentsOf: [Device(type: .padPortraitOneThird),
                                         Device(type: .padPortraitTwoThirds),

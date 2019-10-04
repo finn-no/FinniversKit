@@ -43,7 +43,7 @@ class DemoViewControllerContainer<View: UIView>: UIViewController {
         viewController.didMove(toParent: self)
         childViewController = viewController
 
-        if let deviceIndex = State.lastSelectedDevice {
+        if let deviceIndex = State.lastSelectedDevice, deviceIndex < Device.all.count {
             let device = Device.all[deviceIndex]
             viewController.view.frame = device.frame
             viewController.view.autoresizingMask = device.autoresizingMask
