@@ -13,7 +13,7 @@ public final class FloatingButton: UIButton {
         }
     }
 
-    lazy var badgeView: UIView = {
+    private lazy var badgeView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .primaryBlue
         view.layer.cornerRadius = badgeSize / 2
