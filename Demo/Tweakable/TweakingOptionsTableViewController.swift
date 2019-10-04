@@ -1,8 +1,6 @@
 import FinniversKit
 
 protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectOptionWithIndexPath indexPath: IndexPath)
-
     func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController)
 
     func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectDevice device: Device)
@@ -157,7 +155,6 @@ extension TweakingOptionsTableViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let option = options[indexPath.row]
         option.action?()
-        delegate?.tweakingOptionsTableViewController(self, didSelectOptionWithIndexPath: indexPath)
         delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
     }
 
