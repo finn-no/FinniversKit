@@ -59,9 +59,9 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .loginView:
             return DemoViewController<LoginViewDemoView>()
         case .consentToggleView:
-            return DemoViewController<ConsentToggleViewDemoView>()
+            return DemoViewController<ConsentToggleViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .consentActionView:
-            return DemoViewController<ConsentActionViewDemoView>()
+            return DemoViewController<ConsentActionViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .loadingView:
             return DemoViewController<LoadingViewDemoView>()
         case .drumMachineView:
@@ -85,9 +85,9 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .receiptView:
             return DemoViewController<ReceiptViewDemoView>()
         case .addressView:
-            return DemoViewController<AddressViewDemoView>()
+            return DemoViewController<AddressViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .favoriteAdsList:
-            return FavoriteAdsListDemoViewController(dismissType: .dismissButton)
+            return FavoriteAdsListDemoViewController(dismissType: .dismissButton, containmentOptions: .navigationController)
         case .favoriteFolderActionSheet:
             let bottomSheet = FavoriteFolderActionSheet(viewModel: .default, isShared: true)
             bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared

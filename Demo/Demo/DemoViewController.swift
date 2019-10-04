@@ -14,10 +14,29 @@ public enum DismissType {
     case none
 }
 
+public struct ContainmentOptions: OptionSet {
+    public let rawValue: Int
+
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+
+    public static let navigationController = ContainmentOptions(rawValue: 2 << 0)
+    public static let tabBarController = ContainmentOptions(rawValue: 2 << 1)
+    public static let bottomSheet = ContainmentOptions(rawValue: 2 << 2)
+    public static let all: ContainmentOptions = [.navigationController, .tabBarController, .bottomSheet]
+    public static let none = ContainmentOptions(rawValue: 2 << 3)
+}
+
+/// Defines the container or containers to be used when presenting the demo view controller.
+public protocol Containable {
+    var containmentOptions: ContainmentOptions { get }
+}
+
 ///  Container class for components. Wraps the UIView in a container to be displayed.
 ///  If the view conforms to the `Tweakable` protocol it will display a control to show additional options.
 ///  Usage: `DemoViewController<DrumMachineDemoView>()`
-public class DemoViewController<View: UIView>: UIViewController {
+public class DemoViewController<View: UIView>: UIViewController, Containable {
 
     public private(set) lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
@@ -38,6 +57,7 @@ public class DemoViewController<View: UIView>: UIViewController {
         return true
     }
 
+    public private(set) var containmentOptions: ContainmentOptions
     private var dismissType: DismissType
     private var preferredInterfaceOrientation: UIInterfaceOrientationMask = .all
     private let constrainToBottomSafeArea: Bool
@@ -49,10 +69,12 @@ public class DemoViewController<View: UIView>: UIViewController {
     }
 
     public init(dismissType: DismissType = .doubleTap,
+                containmentOptions: ContainmentOptions = .none,
                 supportedInterfaceOrientations: UIInterfaceOrientationMask = .all,
                 constrainToTopSafeArea: Bool = true,
                 constrainToBottomSafeArea: Bool = true) {
         self.dismissType = dismissType
+        self.containmentOptions = containmentOptions
         self.preferredInterfaceOrientation = supportedInterfaceOrientations
         self.constrainToBottomSafeArea = constrainToBottomSafeArea
         self.constrainToTopSafeArea = constrainToTopSafeArea

@@ -19,6 +19,7 @@ public protocol FavoriteAdsListViewDataSource: AnyObject {
     func numberOfSections(inFavoriteAdsListView view: FavoriteAdsListView) -> Int
     func numberOfItems(inFavoriteAdsListView view: FavoriteAdsListView, forSection section: Int) -> Int
     func favoriteAdsListView(_ view: FavoriteAdsListView, titleForHeaderInSection section: Int) -> String?
+    func favoriteAdsListView(_ view: FavoriteAdsListView, detailForHeaderInSection section: Int) -> String?
     func favoriteAdsListView(_ view: FavoriteAdsListView, viewModelFor indexPath: IndexPath) -> FavoriteAdViewModel
     func favoriteAdsListView(_ view: FavoriteAdsListView,
                              loadImageWithPath imagePath: String,
@@ -111,6 +112,7 @@ public class FavoriteAdsListView: UIView {
     private lazy var emptyView: FavoriteEmptyView = {
         let emptyView = FavoriteEmptyView(withAutoLayout: true)
         emptyView.isHidden = true
+        emptyView.isUserInteractionEnabled = false
         return emptyView
     }()
 
@@ -279,7 +281,6 @@ public class FavoriteAdsListView: UIView {
         let shouldShowEmptyView = numberOfSections(in: tableView) == 0
         emptyView.isHidden = !shouldShowEmptyView
         tableHeaderView.isSortingViewHidden = shouldShowEmptyView
-        tableView.alwaysBounceVertical = !shouldShowEmptyView
         setTableHeader()
     }
 }
@@ -307,9 +308,10 @@ extension FavoriteAdsListView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionTitle = dataSource?.favoriteAdsListView(self, titleForHeaderInSection: section) else { return nil }
+        let sectionDetail = dataSource?.favoriteAdsListView(self, detailForHeaderInSection: section)
 
         let headerView = tableView.dequeue(FavoriteAdsSectionHeaderView.self)
-        headerView.configure(title: sectionTitle)
+        headerView.configure(title: sectionTitle, detail: sectionDetail)
         return headerView
     }
 

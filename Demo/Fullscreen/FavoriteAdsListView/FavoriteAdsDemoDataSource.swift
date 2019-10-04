@@ -6,6 +6,7 @@ import FinniversKit
 
 struct FavoriteAdsSection {
     let sectionTitle: String?
+    let sectionDetail: String?
     let ads: [FavoriteAdViewModel]
 }
 
@@ -18,20 +19,34 @@ class FavoriteAdsDemoDataSource {
     }()
 
     func configureSection(forAds ads: [FavoriteAdViewModel], withSort sort: AdsSorting, filterQuery: String) {
-        let filteredAds = filterQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        let isQueryEmpty = filterQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        let filteredAds = isQueryEmpty
                           ? ads
                           : ads.filter { $0.titleText.lowercased().contains(filterQuery.lowercased()) }
+
+        guard !filteredAds.isEmpty else {
+            sections = []
+            return
+        }
+
         switch sort {
         case .alphabetically:
-            sections = sortAlphabetically(filteredAds)
+            sections = sortAlphabetically(filteredAds, isSearch: !isQueryEmpty)
         case .lastAdded:
-            sections = groupByMonth(filteredAds)
+            sections = isQueryEmpty ? groupByMonth(filteredAds) : sortByDate(filteredAds)
         }
     }
 
-    private func sortAlphabetically(_ ads: [FavoriteAdViewModel]) -> [FavoriteAdsSection] {
+    private func sortAlphabetically(_ ads: [FavoriteAdViewModel], isSearch: Bool) -> [FavoriteAdsSection] {
         let sorted = ads.sorted(by: { $0.titleText < $1.titleText })
-        return [FavoriteAdsSection(sectionTitle: nil, ads: sorted)]
+        let sectionTitle = isSearch ? "Resultat" : nil
+        let sectionDetail = isSearch ? "\(sorted.count) annonser" : nil
+        return [FavoriteAdsSection(sectionTitle: sectionTitle, sectionDetail: sectionDetail, ads: sorted)]
+    }
+
+    private func sortByDate(_ ads: [FavoriteAdViewModel]) -> [FavoriteAdsSection] {
+        let sorted = ads.sorted(by: { $0.addedToFolderDate > $1.addedToFolderDate })
+        return [FavoriteAdsSection(sectionTitle: "Resultat", sectionDetail: "\(sorted.count) annonser", ads: ads)]
     }
 
     private func groupByMonth(_ ads: [FavoriteAdViewModel]) -> [FavoriteAdsSection] {
@@ -47,7 +62,7 @@ class FavoriteAdsDemoDataSource {
         return sortedMonths.map { month in
             let title = sectionTitle(for: month)
             let ads = grouped[month] ?? []
-            return FavoriteAdsSection(sectionTitle: title, ads: ads)
+            return FavoriteAdsSection(sectionTitle: title, sectionDetail: nil, ads: ads)
         }
     }
 

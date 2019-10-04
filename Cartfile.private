@@ -1,2 +1,2 @@
-# FBSnapshotTestCase
-github "uber/ios-snapshot-test-case" ~> 6.0
+# Snapshot Testing
+github "pointfreeco/swift-snapshot-testing" ~> 1.6
