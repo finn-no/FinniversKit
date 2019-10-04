@@ -33,28 +33,39 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = {
         [
             TweakingOption(title: "Selection mode", description: nil) { [weak self] in
+                self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(false)
                 self?.resetTableHeaderTitle()
             },
             TweakingOption(title: "Selection mode - Long title", description: nil) { [weak self] in
+                self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(false)
                 self?.favoritesListView.title = "Veldig langt navn, ganske nøyaktig 50 tegn faktisk"
             },
             TweakingOption(title: "Edit mode, none selected", description: nil) { [weak self] in
+                self?.setViewModels([])
+                self?.setReadOnly(false)
+                self?.favoritesListView.setEditing(false)
+                self?.resetTableHeaderTitle()
+            },
+            TweakingOption(title: "Edit mode", description: "None selected") { [weak self] in
+                self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(false, animated: false)
                 self?.resetTableHeaderTitle()
             },
             TweakingOption(title: "Edit mode, all selected", description: nil) { [weak self] in
+                self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(true, animated: false)
                 self?.resetTableHeaderTitle()
             },
             TweakingOption(title: "Read only", description: nil) { [weak self] in
+                self?.resetViewModels()
                 self?.setReadOnly(true)
                 self?.favoritesListView.setEditing(false)
                 self?.resetTableHeaderTitle()
@@ -90,6 +101,16 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
 
     private func resetTableHeaderTitle() {
         favoritesListView.title = folderTitle
+    }
+
+    private func resetViewModels() {
+        setViewModels(viewModels)
+    }
+
+    private func setViewModels(_ viewModels: [FavoriteAdViewModel]) {
+        favoritesListView.setListIsEmpty(viewModels.isEmpty)
+        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: "")
+        favoritesListView.reloadData()
     }
 }
 
@@ -193,6 +214,9 @@ extension FavoriteAdsListViewModel {
         addCommentActionTitle: "Skriv\nnotat",
         editCommentActionTitle: "Rediger\nnotat",
         deleteAdActionTitle: "Slett",
-        emptyViewBodyPrefix: "Vi fant visst ingen favoritter for"
+        emptySearchViewBodyPrefix: "Vi fant visst ingen favoritter for",
+        emptyListViewTitle: "Her var det stille gitt...",
+        emptyListViewBody: "Det er ikke lagt til noen favoritter i denne listen enda.",
+        emptyListViewImage: UIImage(named: .magnifyingGlass)
     )
 }
