@@ -50,6 +50,10 @@ public class Button: UIButton {
         super.setTitleColor(style.textColor, for: .normal)
         super.setTitleColor(style.highlightedTextColor, for: .highlighted)
         super.setTitleColor(style.disabledTextColor, for: .disabled)
+
+        if FinniversKit.isDynamicTypeEnabled {
+            titleLabel?.adjustsFontForContentSizeCategory = true
+        }
     }
 
     // MARK: - Superclass Overrides

@@ -130,6 +130,10 @@ public class TextField: UIView {
         textField.autocorrectionType = .no
         textField.enablesReturnKeyAutomatically = true
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+
+        if FinniversKit.isDynamicTypeEnabled {
+            textField.adjustsFontForContentSizeCategory = true
+        }
         return textField
     }()
 

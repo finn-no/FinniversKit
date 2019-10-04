@@ -30,6 +30,10 @@ public class Label: UILabel {
         accessibilityLabel = text
         font = style?.font
         textColor = .textPrimary
+
+        if FinniversKit.isDynamicTypeEnabled {
+            adjustsFontForContentSizeCategory = true
+        }
     }
 
     // MARK: - Dependency injection
