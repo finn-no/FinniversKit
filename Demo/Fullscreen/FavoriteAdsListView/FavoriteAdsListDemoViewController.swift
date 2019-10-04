@@ -90,10 +90,8 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
         view.addSubview(favoritesListView)
         favoritesListView.fillInSuperview()
 
-        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
-
-        navigationTitleView.title = folderTitle
-        navigationItem.titleView = navigationTitleView
+        resetViewModels()
+        resetTitle()
     }
 
     private func setReadOnly(_ isReadOnly: Bool) {
@@ -106,8 +104,7 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
     }
 
     private func resetTitle() {
-        favoritesListView.title = folderTitle
-        navigationTitleView.title = folderTitle
+        setTitle(folderTitle)
     }
 
     private func setTitle(_ title: String) {
@@ -121,7 +118,8 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
 
     private func setViewModels(_ viewModels: [FavoriteAdViewModel]) {
         favoritesListView.setListIsEmpty(viewModels.isEmpty)
-        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: "")
+        favoritesListView.subtitle = "\(viewModels.count) favoritter"
+        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
         favoritesListView.reloadData()
     }
 }
@@ -229,6 +227,6 @@ extension FavoriteAdsListViewModel {
         emptySearchViewBodyPrefix: "Vi fant visst ingen favoritter for",
         emptyListViewTitle: "Her var det stille gitt...",
         emptyListViewBody: "Det er ikke lagt til noen favoritter i denne listen enda.",
-        emptyListViewImage: UIImage(named: .magnifyingGlass)
+        emptyListViewImage: UIImage(named: .heartEmpty)
     )
 }
