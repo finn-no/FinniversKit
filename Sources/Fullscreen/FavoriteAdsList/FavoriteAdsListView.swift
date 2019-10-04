@@ -292,7 +292,7 @@ public class FavoriteAdsListView: UIView {
         emptySearchView.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
         emptySearchView.frame.size.height -= emptySearchView.frame.origin.y
 
-        emptyListView.frame = isReadOnly ? tableView.bounds : emptySearchView.frame
+        emptyListView.frame = emptySearchView.frame
     }
 }
 
