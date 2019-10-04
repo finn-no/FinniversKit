@@ -163,23 +163,31 @@ private class RatingImageView: UIImageView {
         setup()
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     func setup() {
         if delegate != nil {
             guard let text = delegate?.ratingImageViewText(for: rating) else { return }
-            let textLabel = rating.textLabel(text: text)
-            addSubview(textLabel)
+            let label = textLabel(text: text)
+            addSubview(label)
 
             let paddingToFitTwoLongWords: CGFloat = 3 // e.g: Veldig irriterende
 
             NSLayoutConstraint.activate([
-                textLabel.topAnchor.constraint(equalTo: bottomAnchor, constant: .smallSpacing),
-                textLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-                textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: paddingToFitTwoLongWords)
+                label.topAnchor.constraint(equalTo: bottomAnchor, constant: .smallSpacing),
+                label.leadingAnchor.constraint(equalTo: leadingAnchor),
+                label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: paddingToFitTwoLongWords)
             ])
         }
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func textLabel(text: String) -> Label {
+        let label = Label(style: .detail, withAutoLayout: true)
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.text = text
+        return label
     }
 }
