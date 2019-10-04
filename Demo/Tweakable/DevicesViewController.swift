@@ -31,10 +31,10 @@ final class DevicesViewController: ScrollViewController {
 
     weak var delegate: DevicesViewControllerDelegate?
 
-    private let viewModels: [DeviceViewModel]
+    private let devices: [Device]
 
-    init(viewModels: [DeviceViewModel]) {
-        self.viewModels = viewModels
+    init(devices: [Device]) {
+        self.devices = devices
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -81,14 +81,15 @@ final class DevicesViewController: ScrollViewController {
 
 extension DevicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModels.count
+        return devices.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(BasicTableViewCell.self, for: indexPath)
 
-        if let viewModel = viewModels[safe: indexPath.row] {
-            cell.configure(with: viewModel)
+        if let device = devices[safe: indexPath.row] {
+            cell.configure(with: DeviceViewModel(title: device.title))
+            cell.titleLabel.isEnabled = device.isEnabled
         }
 
         return cell
@@ -99,7 +100,10 @@ extension DevicesViewController: UITableViewDataSource {
 
 extension DevicesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.devicesViewController(self, didSelectDeviceAtIndex: indexPath.item)
+        let device = devices[indexPath.row]
+        if device.isEnabled {
+            delegate?.devicesViewController(self, didSelectDeviceAtIndex: indexPath.item)
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

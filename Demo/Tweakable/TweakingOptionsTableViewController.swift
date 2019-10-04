@@ -20,8 +20,7 @@ class TweakingOptionsTableViewController: ScrollViewController {
     }()
 
     private lazy var devicesViewController: DevicesViewController = {
-        let viewModels = Device.all.map { DeviceViewModel(title: $0.rawValue) }
-        let viewController = DevicesViewController(viewModels: viewModels)
+        let viewController = DevicesViewController(devices: Device.all)
         viewController.delegate = self
         return viewController
     }()
@@ -61,7 +60,7 @@ class TweakingOptionsTableViewController: ScrollViewController {
         navigationItem.titleView = selectorTitleView
 
         if let deviceIndex = State.lastSelectedDevice {
-            selectorTitleView.title = Device.all[deviceIndex].rawValue
+            selectorTitleView.title = Device.all[deviceIndex].title
         } else {
             selectorTitleView.title = "Choose a device"
         }
@@ -179,11 +178,11 @@ extension TweakingOptionsTableViewController: SelectorTitleViewDelegate {
 extension TweakingOptionsTableViewController: DevicesViewControllerDelegate {
     func devicesViewController(_: DevicesViewController, didSelectDeviceAtIndex index: Int) {
         let device = Device.all[index]
-        selectorTitleView.title = device.rawValue
+        selectorTitleView.title = device.title
         hideDevicesViewController()
         State.lastSelectedDevice = index
         self.delegate?.tweakingOptionsTableViewController(self, didSelectDevice: device)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.delegate?.tweakingOptionsTableViewController(self, didDismissWithIndexPath: nil)
         }
     }

@@ -45,10 +45,9 @@ class DemoViewControllerContainer<View: UIView>: UIViewController {
 
         if let deviceIndex = State.lastSelectedDevice {
             let device = Device.all[deviceIndex]
-            let dimensions = device.dimensions(currentTraitCollection: traitCollection)
-            viewController.view.frame = dimensions.frame
-            viewController.view.autoresizingMask = dimensions.autoresizingMask
-            setOverrideTraitCollection(dimensions.traits, forChild: viewController)
+            viewController.view.frame = device.frame
+            viewController.view.autoresizingMask = device.autoresizingMask
+            setOverrideTraitCollection(device.traits, forChild: viewController)
         }
 
         NSLayoutConstraint.activate([
@@ -89,12 +88,11 @@ extension DemoViewControllerContainer: CornerAnchoringViewDelegate {
 
 extension DemoViewControllerContainer: TweakingOptionsTableViewControllerDelegate {
     func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectDevice device: Device) {
-        let dimensions = device.dimensions(currentTraitCollection: traitCollection)
         for child in children {
             UIView.animate(withDuration: 0.3) {
-                child.view.frame = dimensions.frame
-                child.view.autoresizingMask = dimensions.autoresizingMask
-                self.setOverrideTraitCollection(dimensions.traits, forChild: child)
+                child.view.frame = device.frame
+                child.view.autoresizingMask = device.autoresizingMask
+                self.setOverrideTraitCollection(device.traits, forChild: child)
             }
         }
     }
