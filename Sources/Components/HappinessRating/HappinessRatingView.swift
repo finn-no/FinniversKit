@@ -31,7 +31,7 @@ public class HappinessRatingView: UIView {
     // MARK: - Private properties
 
     private lazy var ratingImageViews: [RatingImageView] = {
-        let ratingImageViews = HappinessRating.allCases.map { RatingImageView(rating: $0, showTextLabel: true, delegate: self) }
+        let ratingImageViews = HappinessRating.allCases.map { RatingImageView(rating: $0, delegate: self) }
         ratingImageViews.forEach {
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ratingImageViewTapped(_:)))
             $0.addGestureRecognizer(tapGestureRecognizer)
@@ -144,14 +144,12 @@ private class RatingImageView: UIImageView {
     // MARK: - Public properties
 
     public let rating: HappinessRating
-    public let showTextLabel: Bool
     public weak var delegate: RatingImageViewDelegate?
 
     // MARK: - Init
 
-    init(rating: HappinessRating, showTextLabel: Bool = false, delegate: RatingImageViewDelegate? = nil) {
+    init(rating: HappinessRating, delegate: RatingImageViewDelegate? = nil) {
         self.rating = rating
-        self.showTextLabel = showTextLabel
         self.delegate = delegate
 
         super.init(frame: .zero)
@@ -166,7 +164,7 @@ private class RatingImageView: UIImageView {
     }
 
     func setup() {
-        if showTextLabel {
+        if delegate != nil {
             guard let text = delegate?.ratingImageViewText(for: rating) else { return }
             let textLabel = rating.textLabel(text: text)
             addSubview(textLabel)
