@@ -366,6 +366,7 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
         cell.showRatingView(false, completion: {
             guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
             self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
+            self.showToastView(type: .success, placement: .bottom, text: "Takk for tilbakemeldingen", timeOut: 2)
         })
     }
 }
