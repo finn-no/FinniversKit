@@ -84,7 +84,7 @@ public class FavoriteAdsListView: UIView {
     private var didSetTableHeader = false
     private var sendScrollUpdates: Bool = true
     private var tableViewConstraints = [NSLayoutConstraint]()
-    private var emptyViewConstraints = [NSLayoutConstraint]()
+    private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
 
     private lazy var tableView: UITableView = {
         let tableView = TableView(withAutoLayout: true)
@@ -109,9 +109,8 @@ public class FavoriteAdsListView: UIView {
     }()
 
     private lazy var emptyView: FavoriteEmptyView = {
-        let emptyView = FavoriteEmptyView(withAutoLayout: true)
+        let emptyView = FavoriteEmptyView()
         emptyView.isHidden = true
-        emptyView.isUserInteractionEnabled = false
         return emptyView
     }()
 
@@ -130,16 +129,16 @@ public class FavoriteAdsListView: UIView {
 
     private func setup() {
         addSubview(tableView)
-        addSubview(emptyView)
-
-        tableView.fillInSuperview()
-        tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
+        tableView.addSubview(emptyView)
 
         NSLayoutConstraint.activate([
-            emptyView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            emptyView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            emptyView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableViewTopConstraint,
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+
+        tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
     }
 
     // MARK: - Overrides
@@ -150,6 +149,8 @@ public class FavoriteAdsListView: UIView {
         if !didSetTableHeader {
             setTableHeader()
             didSetTableHeader = true
+        } else {
+            layoutEmptyView()
         }
     }
 
@@ -169,23 +170,21 @@ public class FavoriteAdsListView: UIView {
 
         let tableHeaderHeight = tableHeaderView.bounds.height
         let hasScrolledPastTableHeader = tableView.contentOffset.y >= tableHeaderHeight
+        let isContentTallEnoughForAnimatingOffset = tableView.contentSize.height > bounds.height + tableHeaderHeight
 
         if !editing {
             sendScrollUpdates = true
             setTableHeader()
             tableView.contentOffset.y += tableHeaderHeight
-        } else {
-            emptyView.removeConstraints(emptyViewConstraints)
-            NSLayoutConstraint.deactivate(emptyViewConstraints)
-
-            emptyViewConstraints = [emptyView.topAnchor.constraint(equalTo: topAnchor)]
-            NSLayoutConstraint.activate(emptyViewConstraints)
         }
 
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             guard let self = self else { return }
             self.tableHeaderView.alpha = editing ? 0 : 1
-            if !hasScrolledPastTableHeader {
+            if editing && !isContentTallEnoughForAnimatingOffset {
+                self.tableViewTopConstraint.constant = -tableHeaderHeight
+                self.layoutIfNeeded()
+            } else if !hasScrolledPastTableHeader {
                 self.tableView.contentOffset.y = editing ? tableHeaderHeight : 0
             }
         }, completion: { [weak self] _ in
@@ -194,6 +193,12 @@ public class FavoriteAdsListView: UIView {
                 self.sendScrollUpdates = false
                 self.tableView.contentOffset.y -= tableHeaderHeight
                 self.tableView.tableHeaderView = nil
+
+                if !isContentTallEnoughForAnimatingOffset {
+                    self.tableViewTopConstraint.constant = 0
+                    self.layoutIfNeeded()
+                    self.delegate?.favoriteAdsListView(self, didUpdateTitleLabelVisibility: false)
+                }
             }
         })
 
@@ -239,9 +244,8 @@ public class FavoriteAdsListView: UIView {
     private func setTableHeader() {
         tableView.tableHeaderView = tableHeaderView
 
-        NSLayoutConstraint.deactivate(tableViewConstraints + emptyViewConstraints)
+        NSLayoutConstraint.deactivate(tableViewConstraints)
         tableHeaderView.removeConstraints(tableViewConstraints)
-        emptyView.removeConstraints(emptyViewConstraints)
 
         tableViewConstraints = [
             tableHeaderView.topAnchor.constraint(equalTo: tableView.topAnchor),
@@ -249,15 +253,13 @@ public class FavoriteAdsListView: UIView {
             tableHeaderView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
         ]
 
-        emptyViewConstraints = [
-            emptyView.topAnchor.constraint(equalTo: tableHeaderView.bottomAnchor)
-        ]
-
-        NSLayoutConstraint.activate(tableViewConstraints + emptyViewConstraints)
+        NSLayoutConstraint.activate(tableViewConstraints)
 
         tableView.tableHeaderView?.layoutIfNeeded()
         tableView.tableHeaderView = tableView.tableHeaderView
         tableView.sendSubviewToBack(tableHeaderView)
+
+        layoutEmptyView()
     }
 
     private func showEmptyViewIfNeeded() {
@@ -265,6 +267,12 @@ public class FavoriteAdsListView: UIView {
         emptyView.isHidden = !shouldShowEmptyView
         tableHeaderView.isSortingViewHidden = shouldShowEmptyView
         setTableHeader()
+    }
+
+    private func layoutEmptyView() {
+        emptyView.frame = tableView.bounds
+        emptyView.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
+        emptyView.frame.size.height -= emptyView.frame.origin.y
     }
 }
 
