@@ -36,39 +36,45 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
                 self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(false)
-                self?.resetTableHeaderTitle()
+                self?.resetTitle()
             },
             TweakingOption(title: "Selection mode", description: "Title with 50 characters") { [weak self] in
                 self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(false)
-                self?.favoritesListView.title = "Veldig langt navn, ganske nøyaktig 50 tegn faktisk"
+                self?.setTitle("Veldig langt navn, ganske nøyaktig 50 tegn faktisk")
             },
             TweakingOption(title: "Empty folder", description: "A folder with no favorites") { [weak self] in
                 self?.setViewModels([])
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(false)
-                self?.resetTableHeaderTitle()
+                self?.resetTitle()
             },
             TweakingOption(title: "Edit mode", description: "None selected") { [weak self] in
                 self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(false, animated: false)
-                self?.resetTableHeaderTitle()
+                self?.resetTitle()
             },
             TweakingOption(title: "Edit mode", description: "All selected") { [weak self] in
                 self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(true, animated: false)
-                self?.resetTableHeaderTitle()
+                self?.resetTitle()
             },
             TweakingOption(title: "Shared folder", description: "Default models") { [weak self] in
                 self?.resetViewModels()
                 self?.setReadOnly(true)
                 self?.favoritesListView.setEditing(false)
-                self?.resetTableHeaderTitle()
+                self?.resetTitle()
+            },
+            TweakingOption(title: "Shared folder", description: "No favorites") { [weak self] in
+                self?.setViewModels([])
+                self?.setReadOnly(true)
+                self?.favoritesListView.setEditing(false)
+                self?.setTitle("")
             }
         ]
     }()
@@ -99,8 +105,14 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
         favoritesListView.isSearchBarHidden = isReadOnly
     }
 
-    private func resetTableHeaderTitle() {
+    private func resetTitle() {
         favoritesListView.title = folderTitle
+        navigationTitleView.title = folderTitle
+    }
+
+    private func setTitle(_ title: String) {
+        favoritesListView.title = title
+        navigationTitleView.title = title
     }
 
     private func resetViewModels() {
