@@ -252,6 +252,7 @@
 		9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */; };
 		9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */; };
 		9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */; };
+		9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD4DA48E4BA2D5C25B1D /* FavoriteAdsListEmptyView.swift */; };
 		9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */; };
 		9A37D770DA2B07DC0F543B33 /* FavoriteAdsDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */; };
 		9A37D84E5603C39844DA83C5 /* VisibilityDrivenTitleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6A0C42E36E51F034413 /* VisibilityDrivenTitleDemoView.swift */; };
@@ -822,6 +823,7 @@
 		9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdViewModel.swift; sourceTree = "<group>"; };
 		9A37DAD39379A11C6213043C /* VisibilityDrivenTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisibilityDrivenTitleView.swift; sourceTree = "<group>"; };
 		9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsDemoDataSource.swift; sourceTree = "<group>"; };
+		9A37DD4DA48E4BA2D5C25B1D /* FavoriteAdsListEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListEmptyView.swift; sourceTree = "<group>"; };
 		9A37DD79F67FC522D64A127E /* FavoriteAdsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListView.swift; sourceTree = "<group>"; };
 		9A37DECC59A6DBC8F54A7614 /* FavoriteAdCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdCellDemoView.swift; sourceTree = "<group>"; };
 		9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtensions.swift; sourceTree = "<group>"; };
@@ -2236,6 +2238,7 @@
 				9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */,
 				9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */,
 				9A37D4FCB2C97A70AB625A9C /* FavoriteAdsSectionHeaderView.swift */,
+				9A37DD4DA48E4BA2D5C25B1D /* FavoriteAdsListEmptyView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -4537,6 +4540,7 @@
 				9F213E38A1CEE430AAD26AEC /* IdentityView.swift in Sources */,
 				9F213689DC33B4D26DDB5337 /* ReputationView.swift in Sources */,
 				9A37DCEF8B61CDA7813AFB16 /* VisibilityDrivenTitleView.swift in Sources */,
+				9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
