@@ -4,15 +4,15 @@
 
 import UIKit
 
-protocol FavoriteEmptyViewDelegate: AnyObject {
-    func favoriteEmptyViewDidSelectButton(_: FavoriteEmptyView)
+protocol FavoriteSearchEmptyViewDelegate: AnyObject {
+    func favoriteSearchEmptyViewDidSelectButton(_: FavoriteSearchEmptyView)
 }
 
-final class FavoriteEmptyView: UIView {
+final class FavoriteSearchEmptyView: UIView {
 
     // MARK: - Public properties
 
-    weak var delegate: FavoriteEmptyViewDelegate?
+    weak var delegate: FavoriteSearchEmptyViewDelegate?
 
     // MARK: - Private properties
 
@@ -105,7 +105,7 @@ final class FavoriteEmptyView: UIView {
     // MARK: - Private methods
 
     @objc private func handleAddFolderButtonTap() {
-        delegate?.favoriteEmptyViewDidSelectButton(self)
+        delegate?.favoriteSearchEmptyViewDidSelectButton(self)
     }
 
     @objc private func handleKeyboardNotification(_ notification: Notification) {

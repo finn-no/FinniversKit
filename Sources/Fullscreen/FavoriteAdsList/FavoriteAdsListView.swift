@@ -108,8 +108,8 @@ public class FavoriteAdsListView: UIView {
         return tableHeader
     }()
 
-    private lazy var emptyView: FavoriteEmptyView = {
-        let emptyView = FavoriteEmptyView()
+    private lazy var emptyView: FavoriteSearchEmptyView = {
+        let emptyView = FavoriteSearchEmptyView()
         emptyView.isHidden = true
         return emptyView
     }()
