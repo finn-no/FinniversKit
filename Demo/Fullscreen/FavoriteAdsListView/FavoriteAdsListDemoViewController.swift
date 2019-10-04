@@ -139,6 +139,11 @@ extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDataSource {
         return section.sectionTitle
     }
 
+    func favoriteAdsListView(_ view: FavoriteAdsListView, detailForHeaderInSection section: Int) -> String? {
+        let section = sectionDataSource.sections[section]
+        return section.sectionDetail
+    }
+
     func numberOfSections(inFavoriteAdsListView view: FavoriteAdsListView) -> Int {
         return sectionDataSource.sections.count
     }

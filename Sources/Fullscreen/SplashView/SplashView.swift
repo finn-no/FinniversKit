@@ -4,7 +4,13 @@
 
 import UIKit
 
+public protocol SplashViewDelegate: AnyObject {
+    func splashViewDidFinishAnimating(_ view: SplashView)
+}
+
 public final class SplashView: UIView {
+    public weak var delegate: SplashViewDelegate?
+
     private lazy var leftLogoView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = UIImage(named: .splashLogo)
@@ -95,8 +101,9 @@ public final class SplashView: UIView {
 
         var delay: TimeInterval = 0.05
 
-        for letterView in letterViews {
-            letterView.layer.add(makeLetterAnimation(withDelay: delay), forKey: nil)
+        for (index, letterView) in letterViews.enumerated() {
+            let withDelegate = index == letterViews.count - 1
+            letterView.layer.add(makeLetterAnimation(withDelay: delay, withDelegate: withDelegate), forKey: nil)
             delay += 0.05
         }
     }
@@ -109,7 +116,7 @@ public final class SplashView: UIView {
         })
     }
 
-    private func makeLetterAnimation(withDelay delay: TimeInterval) -> CAAnimationGroup {
+    private func makeLetterAnimation(withDelay delay: TimeInterval, withDelegate: Bool = false) -> CAAnimationGroup {
         let transform = CABasicAnimation(keyPath: "transform.translation.y")
         transform.toValue = -15
         transform.timingFunction = CAMediaTimingFunction(controlPoints: 0.5, 1.8, 1, 1)
@@ -122,8 +129,15 @@ public final class SplashView: UIView {
         group.beginTime = CACurrentMediaTime() + delay
         group.duration = 0.3
         group.fillMode = .forwards
+        group.delegate = withDelegate ? self : nil
         group.isRemovedOnCompletion = false
 
         return group
+    }
+}
+
+extension SplashView: CAAnimationDelegate {
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        delegate?.splashViewDidFinishAnimating(self)
     }
 }
