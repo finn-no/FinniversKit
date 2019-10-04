@@ -41,6 +41,7 @@ public class Button: UIButton {
         titleEdgeInsets = style.paddings(forSize: size)
         contentEdgeInsets = style.margins
         titleLabel?.font = style.font(forSize: size)
+        titleLabel?.adjustsFontForContentSizeCategory = true
         layer.cornerRadius = cornerRadius
         layer.borderWidth = style.borderWidth
         layer.borderColor = style.borderColor?.cgColor
@@ -50,10 +51,6 @@ public class Button: UIButton {
         super.setTitleColor(style.textColor, for: .normal)
         super.setTitleColor(style.highlightedTextColor, for: .highlighted)
         super.setTitleColor(style.disabledTextColor, for: .disabled)
-
-        if !TestCheck.isTesting {
-            titleLabel?.adjustsFontForContentSizeCategory = true
-        }
     }
 
     // MARK: - Superclass Overrides

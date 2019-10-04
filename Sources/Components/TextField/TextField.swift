@@ -130,10 +130,8 @@ public class TextField: UIView {
         textField.autocorrectionType = .no
         textField.enablesReturnKeyAutomatically = true
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        textField.adjustsFontForContentSizeCategory = true
 
-        if !TestCheck.isTesting {
-            textField.adjustsFontForContentSizeCategory = true
-        }
         return textField
     }()
 

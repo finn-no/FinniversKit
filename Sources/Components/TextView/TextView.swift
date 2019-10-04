@@ -73,10 +73,8 @@ public class TextView: UIView {
         view.isScrollEnabled = false
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.adjustsFontForContentSizeCategory = true
 
-        if !TestCheck.isTesting {
-            view.adjustsFontForContentSizeCategory = true
-        }
         return view
     }()
 
