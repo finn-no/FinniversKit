@@ -336,7 +336,7 @@
 		CF13D6CF2292D40F0087DA37 /* PhaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */; };
 		CF13D6D12292D50C0087DA37 /* PhaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6D02292D50C0087DA37 /* PhaseView.swift */; };
 		CF13D6D42292E3030087DA37 /* PhaseListViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6D32292E3030087DA37 /* PhaseListViewDemo.swift */; };
-		CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */; };
+		CF15D9B3215B94FC004F5F02 /* FloatingButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D9B2215B94FC004F5F02 /* FloatingButtonDemoView.swift */; };
 		CF164CE5230D8CE900250822 /* FavoriteFolderActionViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CE4230D8CE900250822 /* FavoriteFolderActionViewModel+Demo.swift */; };
 		CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CE7230D8D9700250822 /* FavoriteFolderAction.swift */; };
 		CF164CED230D916000250822 /* FavoriteFolderShareLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CEC230D916000250822 /* FavoriteFolderShareLinkView.swift */; };
@@ -381,7 +381,7 @@
 		CF3D5EF5215A6D9E006E4D08 /* pusefinn.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */; };
 		CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF2215A6D9E006E4D08 /* kick.wav */; };
 		CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = CF3D5EF3215A6D9E006E4D08 /* snare.wav */; };
-		CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EF8215A6F3B006E4D08 /* EasterEggButton.swift */; };
+		CF3D5EF9215A6F3B006E4D08 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EF8215A6F3B006E4D08 /* FloatingButton.swift */; };
 		CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */; };
 		CF3D5F00215A75BF006E4D08 /* InstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */; };
 		CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */; };
@@ -898,7 +898,7 @@
 		CF13D6CE2292D40F0087DA37 /* PhaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseViewModel.swift; sourceTree = "<group>"; };
 		CF13D6D02292D50C0087DA37 /* PhaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseView.swift; sourceTree = "<group>"; };
 		CF13D6D32292E3030087DA37 /* PhaseListViewDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseListViewDemo.swift; sourceTree = "<group>"; };
-		CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggButtonDemoView.swift; sourceTree = "<group>"; };
+		CF15D9B2215B94FC004F5F02 /* FloatingButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonDemoView.swift; sourceTree = "<group>"; };
 		CF164CE4230D8CE900250822 /* FavoriteFolderActionViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteFolderActionViewModel+Demo.swift"; sourceTree = "<group>"; };
 		CF164CE7230D8D9700250822 /* FavoriteFolderAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderAction.swift; sourceTree = "<group>"; };
 		CF164CEC230D916000250822 /* FavoriteFolderShareLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderShareLinkView.swift; sourceTree = "<group>"; };
@@ -944,7 +944,7 @@
 		CF3D5EF1215A6D9E006E4D08 /* pusefinn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pusefinn.wav; sourceTree = "<group>"; };
 		CF3D5EF2215A6D9E006E4D08 /* kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kick.wav; sourceTree = "<group>"; };
 		CF3D5EF3215A6D9E006E4D08 /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
-		CF3D5EF8215A6F3B006E4D08 /* EasterEggButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggButton.swift; sourceTree = "<group>"; };
+		CF3D5EF8215A6F3B006E4D08 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		CF3D5EFB215A7215006E4D08 /* DrumMachineDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumMachineDemoView.swift; sourceTree = "<group>"; };
 		CF3D5EFF215A75BF006E4D08 /* InstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentTests.swift; sourceTree = "<group>"; };
 		CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageView.swift; sourceTree = "<group>"; };
@@ -1632,7 +1632,7 @@
 			isa = PBXGroup;
 			children = (
 				CF848C2A21C7E0780086530E /* CogWheel */,
-				CF15D9AF215B93B8004F5F02 /* EasterEggButton */,
+				CF15D9AF215B93B8004F5F02 /* FloatingButton */,
 				CF848C2921C7E0690086530E /* Button */,
 			);
 			path = Button;
@@ -2520,12 +2520,12 @@
 			path = Phases;
 			sourceTree = "<group>";
 		};
-		CF15D9AF215B93B8004F5F02 /* EasterEggButton */ = {
+		CF15D9AF215B93B8004F5F02 /* FloatingButton */ = {
 			isa = PBXGroup;
 			children = (
-				CF3D5EF8215A6F3B006E4D08 /* EasterEggButton.swift */,
+				CF3D5EF8215A6F3B006E4D08 /* FloatingButton.swift */,
 			);
-			path = EasterEggButton;
+			path = FloatingButton;
 			sourceTree = "<group>";
 		};
 		CF15D9B0215B9453004F5F02 /* EasterEggs */ = {
@@ -3086,7 +3086,7 @@
 			children = (
 				CF8F022121DCC6C4004C4042 /* Button */,
 				CF8F021F21DCC6AD004C4042 /* CogWheel */,
-				CF8F022021DCC6BB004C4042 /* EasterEggButton */,
+				CF8F022021DCC6BB004C4042 /* FloatingButton */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -3099,12 +3099,12 @@
 			path = CogWheel;
 			sourceTree = "<group>";
 		};
-		CF8F022021DCC6BB004C4042 /* EasterEggButton */ = {
+		CF8F022021DCC6BB004C4042 /* FloatingButton */ = {
 			isa = PBXGroup;
 			children = (
-				CF15D9B2215B94FC004F5F02 /* EasterEggButtonDemoView.swift */,
+				CF15D9B2215B94FC004F5F02 /* FloatingButtonDemoView.swift */,
 			);
-			path = EasterEggButton;
+			path = FloatingButton;
 			sourceTree = "<group>";
 		};
 		CF8F022121DCC6C4004C4042 /* Button */ = {
@@ -4153,7 +4153,7 @@
 				F26852DF21F755B6000978C8 /* UserAdsListViewDemoView.swift in Sources */,
 				43EA9793219965F3003A548A /* SoldViewDemoView.swift in Sources */,
 				8961C687225748C70007A8DC /* NativeAdvertDemoView.swift in Sources */,
-				CF15D9B3215B94FC004F5F02 /* EasterEggButtonDemoView.swift in Sources */,
+				CF15D9B3215B94FC004F5F02 /* FloatingButtonDemoView.swift in Sources */,
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
 				DAC7DCAF215386E4004602A3 /* SettingsViewDemoView.swift in Sources */,
 				CFCDDA5F22731D60005E1F4A /* CalloutDemoView.swift in Sources */,
@@ -4377,7 +4377,7 @@
 				CF164CF5230E93AE00250822 /* FavoriteAdSortingView.swift in Sources */,
 				CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */,
 				CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */,
-				CF3D5EF9215A6F3B006E4D08 /* EasterEggButton.swift in Sources */,
+				CF3D5EF9215A6F3B006E4D08 /* FloatingButton.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,
 				8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */,
 				55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */,

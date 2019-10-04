@@ -28,8 +28,8 @@ class ComponentViewTests: XCTestCase {
         snapshot(.dialogue)
     }
 
-    func testEasterEggButton() {
-        snapshot(.easterEggButton)
+    func testFloatingButton() {
+        snapshot(.floatingButton)
     }
 
     func testCogWheelButton() {
