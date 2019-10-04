@@ -89,7 +89,7 @@ public class FavoriteFoldersListView: UIView {
     }()
 
     private lazy var emptyView: FavoriteEmptyView = {
-        let emptyView = FavoriteEmptyView(withAutoLayout: true)
+        let emptyView = FavoriteEmptyView()
         emptyView.delegate = self
         emptyView.isHidden = true
         return emptyView
@@ -221,7 +221,8 @@ public class FavoriteFoldersListView: UIView {
         addSubview(tableView)
         addSubview(searchBar)
         addSubview(footerView)
-        addSubview(emptyView)
+
+        tableView.addSubview(emptyView)
 
         NSLayoutConstraint.activate([
             searchBarTop,
@@ -237,12 +238,12 @@ public class FavoriteFoldersListView: UIView {
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             footerView.heightAnchor.constraint(equalToConstant: footerHeight),
-
-            emptyView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
-            emptyView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            emptyView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            emptyView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        emptyView.frame = tableView.bounds
     }
 
     // MARK: - Private methods

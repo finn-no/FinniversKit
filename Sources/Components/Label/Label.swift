@@ -30,6 +30,7 @@ public class Label: UILabel {
         accessibilityLabel = text
         font = style?.font
         textColor = .textPrimary
+        adjustsFontForContentSizeCategory = true
     }
 
     // MARK: - Dependency injection
