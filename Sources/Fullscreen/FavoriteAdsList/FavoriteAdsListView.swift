@@ -84,6 +84,7 @@ public class FavoriteAdsListView: UIView {
     private var didSetTableHeader = false
     private var sendScrollUpdates: Bool = true
     private var tableViewConstraints = [NSLayoutConstraint]()
+    private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
 
     private lazy var tableView: UITableView = {
         let tableView = TableView(withAutoLayout: true)
@@ -130,7 +131,13 @@ public class FavoriteAdsListView: UIView {
         addSubview(tableView)
         tableView.addSubview(emptyView)
 
-        tableView.fillInSuperview()
+        NSLayoutConstraint.activate([
+            tableViewTopConstraint,
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+
         tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
     }
 
@@ -163,6 +170,7 @@ public class FavoriteAdsListView: UIView {
 
         let tableHeaderHeight = tableHeaderView.bounds.height
         let hasScrolledPastTableHeader = tableView.contentOffset.y >= tableHeaderHeight
+        let isContentTallEnoughForAnimatingOffset = tableView.contentSize.height > bounds.height + tableHeaderHeight
 
         if !editing {
             sendScrollUpdates = true
@@ -173,7 +181,10 @@ public class FavoriteAdsListView: UIView {
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             guard let self = self else { return }
             self.tableHeaderView.alpha = editing ? 0 : 1
-            if !hasScrolledPastTableHeader {
+            if editing && !isContentTallEnoughForAnimatingOffset {
+                self.tableViewTopConstraint.constant = -tableHeaderHeight
+                self.layoutIfNeeded()
+            } else if !hasScrolledPastTableHeader {
                 self.tableView.contentOffset.y = editing ? tableHeaderHeight : 0
             }
         }, completion: { [weak self] _ in
@@ -182,6 +193,12 @@ public class FavoriteAdsListView: UIView {
                 self.sendScrollUpdates = false
                 self.tableView.contentOffset.y -= tableHeaderHeight
                 self.tableView.tableHeaderView = nil
+
+                if !isContentTallEnoughForAnimatingOffset {
+                    self.tableViewTopConstraint.constant = 0
+                    self.layoutIfNeeded()
+                    self.delegate?.favoriteAdsListView(self, didUpdateTitleLabelVisibility: false)
+                }
             }
         })
 
