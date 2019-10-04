@@ -6,13 +6,7 @@ import UIKit
 
 public protocol HappinessRatingViewDelegate: AnyObject {
     func happinessRatingView(_ happinessRatingView: HappinessRatingView, didSelectRating rating: HappinessRating)
-
-    // MARK: - Optional
-    func happinessRatingView(_ happinessRatingView: HappinessRatingView, textFor: HappinessRating) -> String?
-}
-
-extension HappinessRatingViewDelegate {
-    func happinessRatingView(_ happinessRatingView: HappinessRatingView, textFor: HappinessRating) -> String? { return nil }
+    func happinessRatingView(_ happinessRatingView: HappinessRatingView, textFor rating: HappinessRating) -> String?
 }
 
 public class HappinessRatingView: UIView {
@@ -51,8 +45,9 @@ public class HappinessRatingView: UIView {
 
     // MARK: - Init
 
-    public override init(frame: CGRect) {
+    public init(frame: CGRect = .zero, delegate: HappinessRatingViewDelegate?) {
         super.init(frame: frame)
+        self.delegate = delegate
         setup()
     }
 
@@ -120,22 +115,22 @@ extension HappinessRatingView: RatingImageViewDelegate {
     func ratingImageViewText(for rating: HappinessRating) -> String? {
         switch rating {
         case .angry:
-            return "Veldig irriterende"
+            return delegate?.happinessRatingView(self, textFor: rating)
         case .dissatisfied:
-            return nil
+            return delegate?.happinessRatingView(self, textFor: rating)
         case .neutral:
-            return "Nøytral"
+            return delegate?.happinessRatingView(self, textFor: rating)
         case .happy:
-            return nil
+            return delegate?.happinessRatingView(self, textFor: rating)
         case .love:
-            return "Veldig nyttig"
+            return delegate?.happinessRatingView(self, textFor: rating)
         }
     }
 }
 
 // MARK: - RatingImageView
 
-protocol RatingImageViewDelegate: AnyObject {
+private protocol RatingImageViewDelegate: AnyObject {
     func ratingImageViewText(for rating: HappinessRating) -> String?
 }
 

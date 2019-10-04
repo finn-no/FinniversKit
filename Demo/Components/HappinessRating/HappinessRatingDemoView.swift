@@ -8,7 +8,11 @@ class HappinessRatingDemoView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var happinessRatingView = HappinessRatingView(withAutoLayout: true)
+    private lazy var happinessRatingView: HappinessRatingView = {
+        let view = HappinessRatingView(delegate: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     // MARK: - Init
 
@@ -32,5 +36,24 @@ class HappinessRatingDemoView: UIView {
             happinessRatingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             happinessRatingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing)
         ])
+    }
+}
+
+extension HappinessRatingDemoView: HappinessRatingViewDelegate {
+    func happinessRatingView(_ happinessRatingView: HappinessRatingView, didSelectRating rating: HappinessRating) {}
+
+    func happinessRatingView(_ happinessRatingView: HappinessRatingView, textFor rating: HappinessRating) -> String? {
+        switch rating {
+        case .angry:
+            return "Veldig irriterende"
+        case .dissatisfied:
+            return nil
+        case .neutral:
+            return "Nøytral"
+        case .happy:
+            return nil
+        case .love:
+            return "Veldig nyttig"
+        }
     }
 }
