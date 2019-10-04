@@ -165,6 +165,7 @@
 		44A557B422E72187001667AE /* SelectableTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B122E72187001667AE /* SelectableTableViewCellViewModel.swift */; };
 		44A557B522E72187001667AE /* HeartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B222E72187001667AE /* HeartTableViewCell.swift */; };
 		44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B322E72187001667AE /* CheckboxTableViewCell.swift */; };
+		44A771592347862600BEC958 /* SectionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A771582347862600BEC958 /* SectionsTableViewController.swift */; };
 		44AEFC2322E722FC00D3C307 /* RemoteImageCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEFC1922E722FC00D3C307 /* RemoteImageCellDemoView.swift */; };
 		44AEFC2422E722FC00D3C307 /* BasicCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEFC1B22E722FC00D3C307 /* BasicCellDemoView.swift */; };
 		44AEFC2522E722FC00D3C307 /* BasicCellVariationsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEFC1C22E722FC00D3C307 /* BasicCellVariationsDemoView.swift */; };
@@ -733,6 +734,7 @@
 		44A557B122E72187001667AE /* SelectableTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		44A557B222E72187001667AE /* HeartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartTableViewCell.swift; sourceTree = "<group>"; };
 		44A557B322E72187001667AE /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
+		44A771582347862600BEC958 /* SectionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsTableViewController.swift; sourceTree = "<group>"; };
 		44AEFC1922E722FC00D3C307 /* RemoteImageCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageCellDemoView.swift; sourceTree = "<group>"; };
 		44AEFC1B22E722FC00D3C307 /* BasicCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCellDemoView.swift; sourceTree = "<group>"; };
 		44AEFC1C22E722FC00D3C307 /* BasicCellVariationsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCellVariationsDemoView.swift; sourceTree = "<group>"; };
@@ -2492,6 +2494,7 @@
 				4412FDCC20A433550037A2FC /* SplitViewController.swift */,
 				4423F226209CB24500B81D68 /* MiniToastView.swift */,
 				4451BEC5230163AA00879B7F /* NavigationController.swift */,
+				44A771582347862600BEC958 /* SectionsTableViewController.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -4212,6 +4215,7 @@
 				CF164DDC231579D600250822 /* FavoriteAdCommentViewModel+Demo.swift in Sources */,
 				9BEB2905231E4A9500D28BAD /* IntegerNumberSuffixFormatter.swift in Sources */,
 				9A37DEDAA1E4DB20D8F38B08 /* FavoriteAdsListDemoViewHelper.swift in Sources */,
+				44A771592347862600BEC958 /* SectionsTableViewController.swift in Sources */,
 				9A37D770DA2B07DC0F543B33 /* FavoriteAdsDemoDataSource.swift in Sources */,
 				9BAB37D7230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift in Sources */,
 				44FEBC1023322D4C009AC5E4 /* FullscreenDemoViews.swift in Sources */,

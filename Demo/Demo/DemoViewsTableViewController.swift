@@ -206,29 +206,22 @@ extension DemoViewsTableViewController {
 extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
         let sections = Sections.items.map { $0.rawValue.uppercased() }
-        let options = sections.map { TweakingOption(title: $0) }
-        let tweakingController = TweakingOptionsTableViewController(options: options)
-        tweakingController.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
-        tweakingController.delegate = self
-        bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
+        let sectionsTableViewController = SectionsTableViewController(options: sections)
+        sectionsTableViewController.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
+        sectionsTableViewController.delegate = self
+        bottomSheet = BottomSheet(rootViewController: sectionsTableViewController, draggableArea: .everything)
         if let controller = bottomSheet {
             present(controller, animated: true)
         }
     }
 }
 
-extension DemoViewsTableViewController: TweakingOptionsTableViewControllerDelegate {
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectOptionWithIndexPath indexPath: IndexPath) {
+extension DemoViewsTableViewController: SectionsTableViewControllerDelegate {
+    func sectionsTableViewController(_ sectionsTableViewController: SectionsTableViewController, didSelectOptionWithIndexPath indexPath: IndexPath) {
         State.lastSelectedSection = indexPath.row
         selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
         evaluateIndexAndValues()
         tableView.reloadData()
-    }
-
-    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController) {
         bottomSheet?.state = .dismissed
-    }
-
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didSelectDevice device: Device) {
     }
 }
