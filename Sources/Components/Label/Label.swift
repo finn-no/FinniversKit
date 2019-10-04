@@ -31,7 +31,7 @@ public class Label: UILabel {
         font = style?.font
         textColor = .textPrimary
 
-        if FinniversKit.isDynamicTypeEnabled {
+        if !TestCheck.isTesting {
             adjustsFontForContentSizeCategory = true
         }
     }

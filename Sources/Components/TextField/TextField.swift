@@ -131,7 +131,7 @@ public class TextField: UIView {
         textField.enablesReturnKeyAutomatically = true
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
 
-        if FinniversKit.isDynamicTypeEnabled {
+        if !TestCheck.isTesting {
             textField.adjustsFontForContentSizeCategory = true
         }
         return textField

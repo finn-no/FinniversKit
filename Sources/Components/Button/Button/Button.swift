@@ -51,7 +51,7 @@ public class Button: UIButton {
         super.setTitleColor(style.highlightedTextColor, for: .highlighted)
         super.setTitleColor(style.disabledTextColor, for: .disabled)
 
-        if FinniversKit.isDynamicTypeEnabled {
+        if !TestCheck.isTesting {
             titleLabel?.adjustsFontForContentSizeCategory = true
         }
     }
