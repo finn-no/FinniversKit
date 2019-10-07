@@ -70,6 +70,8 @@ extern NSString *const FinniversImageAssetgiftSquareYellow;
 extern NSString *const FinniversImageAssetgiftTriangleGreen;
 extern NSString *const FinniversImageAssetgridView;
 extern NSString *const FinniversImageAssethandshake;
+extern NSString *const FinniversImageAssetheartEmpty;
+extern NSString *const FinniversImageAssetheartEmptyDashed;
 extern NSString *const FinniversImageAssethelp;
 extern NSString *const FinniversImageAssethide;
 extern NSString *const FinniversImageAssethome;
