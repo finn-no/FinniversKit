@@ -5,7 +5,7 @@
 import UIKit
 
 protocol FavoriteAdsListTableHeaderDelegate: AnyObject {
-    func favoriteAdsListTableHeaderDidSelectSortingView(_ tableHeader: FavoriteAdsListTableHeader)
+    func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectSortingView view: UIView)
 }
 
 class FavoriteAdsListTableHeader: UIView {
@@ -127,7 +127,7 @@ class FavoriteAdsListTableHeader: UIView {
 
     @objc private func handleSortingViewTap() {
         searchBar.resignFirstResponder()
-        delegate?.favoriteAdsListTableHeaderDidSelectSortingView(self)
+        delegate?.favoriteAdsListTableHeader(self, didSelectSortingView: sortingView)
     }
 
     @objc private func handleViewTap() {
