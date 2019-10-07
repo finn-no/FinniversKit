@@ -35,7 +35,7 @@ import UIKit
     }
 
     public class var btnDisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#434359"))
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
     public class var btnCritical: UIColor {
@@ -59,7 +59,7 @@ import UIKit
     }
 
     public class var textDisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor(hex: "#434359"))
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
     public class var textCritical: UIColor {
@@ -87,7 +87,7 @@ import UIKit
     }
 
     public class var tableViewSeparator: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: UIColor.sardine.withAlphaComponent(0.3))
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 }
 
@@ -119,6 +119,10 @@ import UIKit
 
     public class var sardine: UIColor {
         return UIColor(r: 195, g: 204, b: 217)!
+    }
+
+    public class var darkSardine: UIColor {
+        return UIColor(hex: "434359")
     }
 
     public class var salmon: UIColor {
