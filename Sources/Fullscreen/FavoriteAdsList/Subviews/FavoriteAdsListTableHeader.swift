@@ -58,7 +58,7 @@ class FavoriteAdsListTableHeader: UIView {
         stackView.axis = .vertical
         stackView.setCustomSpacing(.smallSpacing, after: titleLabel)
         stackView.setCustomSpacing(24, after: subtitleLabel)
-        stackView.setCustomSpacing(37, after: searchBar)
+        stackView.setCustomSpacing(28, after: searchBar)
         return stackView
     }()
 
