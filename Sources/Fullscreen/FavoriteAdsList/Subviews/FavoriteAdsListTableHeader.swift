@@ -119,7 +119,7 @@ class FavoriteAdsListTableHeader: UIView {
             contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
             contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             searchBar.heightAnchor.constraint(equalToConstant: 36)
         ])
