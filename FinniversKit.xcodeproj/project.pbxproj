@@ -140,7 +140,6 @@
 		44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587020213FA361009187BE /* LoginViewDefaultData.swift */; };
 		44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587022213FA361009187BE /* LoginViewDemoView.swift */; };
 		446EE15C2345A6AA00010818 /* SelectorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446EE15B2345A6AA00010818 /* SelectorTitleView.swift */; };
-		446EE15E2345B01700010818 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446EE15D2345B01700010818 /* DevicesViewController.swift */; };
 		4474BC0F2344E10800AA38A0 /* DemoViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474BC0E2344E10800AA38A0 /* DemoViewControllerContainer.swift */; };
 		447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */; };
 		4483F978234B26C300D726F1 /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483F977234B26C300D726F1 /* BasicTableView.swift */; };
@@ -710,7 +709,6 @@
 		44587020213FA361009187BE /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
 		44587022213FA361009187BE /* LoginViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDemoView.swift; sourceTree = "<group>"; };
 		446EE15B2345A6AA00010818 /* SelectorTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorTitleView.swift; sourceTree = "<group>"; };
-		446EE15D2345B01700010818 /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		4474BC0E2344E10800AA38A0 /* DemoViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewControllerContainer.swift; sourceTree = "<group>"; };
 		447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageViewDemoView.swift; sourceTree = "<group>"; };
 		4483F977234B26C300D726F1 /* BasicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
@@ -1952,7 +1950,6 @@
 				44B94FE622E0AB6C0078A23C /* TweakingOptionCell.swift */,
 				44B94FE822E0AB820078A23C /* TweakingOption.swift */,
 				44A0F0AF22E20D2F00BCCF4C /* TweakableDemoView.swift */,
-				446EE15D2345B01700010818 /* DevicesViewController.swift */,
 				44877452234616C30096B510 /* Device.swift */,
 			);
 			path = Tweakable;
@@ -4208,7 +4205,6 @@
 				AA864B4D22329E7100BAE95A /* UIDevice.swift in Sources */,
 				9B28DE872326756E00D69C15 /* PanelDemoView.swift in Sources */,
 				4447F7111FDB2B8C0033DBC1 /* ToastDemoView.swift in Sources */,
-				446EE15E2345B01700010818 /* DevicesViewController.swift in Sources */,
 				144351C41FBE2FA2007B2229 /* AppDelegate.swift in Sources */,
 				44FEBC0F23322D4C009AC5E4 /* DnaDemoViews.swift in Sources */,
 				895175932248CFD4008003FB /* StepIndicatorDemoView.swift in Sources */,

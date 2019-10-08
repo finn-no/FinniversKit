@@ -19,10 +19,17 @@ class TweakingOptionsTableViewController: ScrollViewController {
         return view
     }()
 
-    private lazy var devicesViewController: DevicesViewController = {
-        let viewController = DevicesViewController(devices: Device.all)
-        viewController.delegate = self
-        return viewController
+    private lazy var devicesTableView: BasicTableView = {
+        var items = [BasicTableViewItem]()
+        Device.all.forEach { device in
+            var item = BasicTableViewItem(title: device.title)
+            item.isEnabled = device.isEnabled
+            items.append(item)
+        }
+
+        let tableView = BasicTableView(items: items)
+        tableView.delegate = self
+        return tableView
     }()
 
     private lazy var selectorTitleView: SelectorTitleView = {
@@ -75,25 +82,21 @@ class TweakingOptionsTableViewController: ScrollViewController {
         let interfaceBackgroundColor: UIColor = .bgPrimary
         view.backgroundColor = interfaceBackgroundColor
         tableView.backgroundColor = interfaceBackgroundColor
-        devicesViewController.backgroundColor = interfaceBackgroundColor
+        devicesTableView.backgroundColor = interfaceBackgroundColor
     }
 
     private func showDevicesViewController() {
         selectorTitleView.arrowDirection = .up
 
-        guard devicesViewController.parent == nil else { return }
+        guard devicesTableView.superview == nil else { return }
 
-        addChild(devicesViewController)
-        devicesViewController.view.frame = view.bounds
-        devicesViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(devicesViewController.view)
-        devicesViewController.didMove(toParent: self)
-
-        devicesViewController.view.alpha = 0.6
-        devicesViewController.view.frame.origin.y = -.largeSpacing
+        view.addSubview(devicesTableView)
+        devicesTableView.fillInSuperview()
+        devicesTableView.alpha = 0.6
+        devicesTableView.frame.origin.y = -.largeSpacing
 
         UIView.animate(withDuration: 0.1, animations: { [weak self] in
-            self?.devicesViewController.view.alpha = 1
+            self?.devicesTableView.alpha = 1
         })
 
         UIView.animate(
@@ -103,7 +106,7 @@ class TweakingOptionsTableViewController: ScrollViewController {
             initialSpringVelocity: 1,
             options: [],
             animations: { [weak self] in
-                self?.devicesViewController.view.frame.origin.y = 0
+                self?.devicesTableView.frame.origin.y = 0
             }
         )
     }
@@ -114,14 +117,12 @@ class TweakingOptionsTableViewController: ScrollViewController {
         tableView.alpha = 0
 
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: ({ [weak self] in
-            self?.devicesViewController.view.frame.origin.y = -.veryLargeSpacing
-            self?.devicesViewController.view.alpha = 0
+            self?.devicesTableView.frame.origin.y = -.veryLargeSpacing
+            self?.devicesTableView.alpha = 0
         }), completion: ({ [weak self] _ in
-            guard self?.devicesViewController.parent != nil else { return }
+            guard self?.devicesTableView.superview != nil else { return }
 
-            self?.devicesViewController.willMove(toParent: nil)
-            self?.devicesViewController.removeFromParent()
-            self?.devicesViewController.view.removeFromSuperview()
+            self?.devicesTableView.removeFromSuperview()
         }))
 
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
@@ -173,8 +174,8 @@ extension TweakingOptionsTableViewController: SelectorTitleViewDelegate {
     }
 }
 
-extension TweakingOptionsTableViewController: DevicesViewControllerDelegate {
-    func devicesViewController(_: DevicesViewController, didSelectDeviceAtIndex index: Int) {
+extension TweakingOptionsTableViewController: BasicTableViewDelegate {
+    func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
         let device = Device.all[index]
         selectorTitleView.title = device.title
         hideDevicesViewController()
