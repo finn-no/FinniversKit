@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import UIKit
+import FinniversKit
 
 public class ScrollViewController: UIViewController, UIScrollViewDelegate {
     private(set) lazy var topShadowView = ShadowView()

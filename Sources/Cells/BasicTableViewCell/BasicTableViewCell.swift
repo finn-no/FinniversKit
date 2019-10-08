@@ -8,6 +8,9 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Public properties
 
+    open var selectedIndexPath: IndexPath?
+    open var isEnabled: Bool = true
+
     open lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
@@ -19,7 +22,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var subtitleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -27,7 +30,7 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var detailLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detail
-        label.textColor = .stone
+        label.textColor = .textSecondary
         return label
     }()
 
@@ -62,8 +65,13 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    open func configure(with viewModel: BasicTableViewCellViewModel) {
+    open func configure(with viewModel: BasicTableViewCellViewModel, indexPath: IndexPath? = nil) {
         titleLabel.text = viewModel.title
+
+        let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
+        titleLabel.textColor = isSelected ? .textAction : .textPrimary
+
+        titleLabel.isEnabled = isEnabled
 
         if let subtitle = viewModel.subtitle {
             subtitleLabel.text = subtitle
@@ -106,6 +114,7 @@ open class BasicTableViewCell: UITableViewCell {
 
     private func setup() {
         setDefaultSelectedBackgound()
+        backgroundColor = .bgPrimary
 
         contentView.addSubview(stackView)
         contentView.addSubview(detailLabel)

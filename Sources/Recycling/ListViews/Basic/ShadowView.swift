@@ -4,8 +4,8 @@
 
 import UIKit
 
-class ShadowView: UIView {
-    init() {
+public class ShadowView: UIView {
+    public init() {
         super.init(frame: .zero)
         backgroundColor = .bgPrimary
         layer.masksToBounds = false
@@ -20,7 +20,7 @@ class ShadowView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func update(with scrollView: UIScrollView) {
+    public func update(with scrollView: UIScrollView) {
         let contentFrame = CGRect(x: -scrollView.contentOffset.x,
                                   y: scrollView.frame.minY - scrollView.contentOffset.y - scrollView.contentInset.top,
                                   width: scrollView.contentSize.width,

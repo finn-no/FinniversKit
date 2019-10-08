@@ -205,20 +205,20 @@ extension DemoViewsTableViewController {
 
 extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
-        let sections = Sections.items.map { $0.rawValue.uppercased() }
-        let sectionsTableViewController = SectionsTableViewController(options: sections)
-        sectionsTableViewController.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
-        sectionsTableViewController.delegate = self
-        bottomSheet = BottomSheet(rootViewController: sectionsTableViewController, draggableArea: .everything)
+        let items = Sections.items.map { BasicTableViewItem(title: $0.rawValue.uppercased()) }
+        let sectionsTableView = BasicTableView(items: items)
+        sectionsTableView.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
+        sectionsTableView.delegate = self
+        bottomSheet = BottomSheet(view: sectionsTableView, draggableArea: .everything)
         if let controller = bottomSheet {
             present(controller, animated: true)
         }
     }
 }
 
-extension DemoViewsTableViewController: SectionsTableViewControllerDelegate {
-    func sectionsTableViewController(_ sectionsTableViewController: SectionsTableViewController, didSelectOptionWithIndexPath indexPath: IndexPath) {
-        State.lastSelectedSection = indexPath.row
+extension DemoViewsTableViewController: BasicTableViewDelegate {
+    func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
+        State.lastSelectedSection = index
         selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
         evaluateIndexAndValues()
         tableView.reloadData()
