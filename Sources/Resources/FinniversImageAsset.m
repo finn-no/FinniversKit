@@ -70,6 +70,8 @@ NSString *const FinniversImageAssetgiftSquareYellow = @"giftSquareYellow";
 NSString *const FinniversImageAssetgiftTriangleGreen = @"giftTriangleGreen";
 NSString *const FinniversImageAssetgridView = @"gridView";
 NSString *const FinniversImageAssethandshake = @"handshake";
+NSString *const FinniversImageAssetheartEmpty = @"heartEmpty";
+NSString *const FinniversImageAssetheartEmptyDashed = @"heartEmptyDashed";
 NSString *const FinniversImageAssethelp = @"help";
 NSString *const FinniversImageAssethide = @"hide";
 NSString *const FinniversImageAssethome = @"home";
@@ -221,6 +223,8 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetgiftTriangleGreen,
              FinniversImageAssetgridView,
              FinniversImageAssethandshake,
+             FinniversImageAssetheartEmpty,
+             FinniversImageAssetheartEmptyDashed,
              FinniversImageAssethelp,
              FinniversImageAssethide,
              FinniversImageAssethome,
