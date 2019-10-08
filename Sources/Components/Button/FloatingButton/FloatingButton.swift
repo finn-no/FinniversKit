@@ -4,16 +4,41 @@
 
 import UIKit
 
-public final class EasterEggButton: UIButton {
+public final class FloatingButton: UIButton {
+    private let badgeSize: CGFloat = 30
+
     public override var isHighlighted: Bool {
         didSet {
             backgroundColor = isHighlighted ? .ice : .milk
         }
     }
 
+    private lazy var badgeView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .primaryBlue
+        view.layer.cornerRadius = badgeSize / 2
+        view.isHidden = true
+        return view
+    }()
+
+    private lazy var badgeLabel: UILabel = {
+        let label = Label(style: .captionStrong)
+        label.textColor = .milk
+        label.text = "12"
+        label.textAlignment = .center
+        return label
+    }()
+
     public override var isSelected: Bool {
         didSet {
             backgroundColor = isSelected ? .ice : .milk
+        }
+    }
+
+    public var itemsCount: Int = 0 {
+        didSet {
+            badgeLabel.text = "\(itemsCount)"
+            badgeView.isHidden = itemsCount == 0
         }
     }
 
@@ -59,5 +84,16 @@ public final class EasterEggButton: UIButton {
 
         adjustsImageWhenHighlighted = false
         setImage(UIImage(named: .easterEgg), for: .normal)
+
+        addSubview(badgeView)
+        badgeView.addSubview(badgeLabel)
+        badgeLabel.fillInSuperview()
+
+        NSLayoutConstraint.activate([
+            badgeView.widthAnchor.constraint(equalToConstant: badgeSize),
+            badgeView.heightAnchor.constraint(equalToConstant: badgeSize),
+            badgeView.topAnchor.constraint(equalTo: topAnchor, constant: -.smallSpacing),
+            badgeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .smallSpacing),
+            ])
     }
 }
