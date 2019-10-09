@@ -5,7 +5,7 @@
 import UIKit
 
 protocol FavoriteAdsListTableHeaderDelegate: AnyObject {
-    func favoriteAdsListTableHeaderDidSelectSortingView(_ tableHeader: FavoriteAdsListTableHeader)
+    func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectSortingView view: UIView)
     func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectShareButton button: UIButton)
 }
 
@@ -66,7 +66,7 @@ class FavoriteAdsListTableHeader: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.setCustomSpacing(.smallSpacing, after: titleLabel)
-        stackView.setCustomSpacing(24, after: subtitleLabel)
+        stackView.setCustomSpacing(24, after: subtitleStackView)
         stackView.setCustomSpacing(28, after: searchBar)
         return stackView
     }()
@@ -83,6 +83,8 @@ class FavoriteAdsListTableHeader: UIView {
     private lazy var subtitleStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [subtitleLabel, shareButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
         stackView.axis = .horizontal
         stackView.spacing = 0
         return stackView
@@ -97,8 +99,12 @@ class FavoriteAdsListTableHeader: UIView {
     }()
 
     private lazy var shareButton: UIButton = {
-        let button = Button(style: .flat)
+        let button = UIButton()
         button.isHidden = true
+        button.titleLabel?.font = .bodyStrong
+        button.setTitleColor(.primaryBlue, for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.contentEdgeInsets.left = .smallSpacing
         button.addTarget(self, action: #selector(handleShareButtonTap), for: .touchUpInside)
         return button
     }()
@@ -152,14 +158,16 @@ class FavoriteAdsListTableHeader: UIView {
     private func updateSubtitle() {
         if !subtitle.isEmpty && !shareButtonTitle.isEmpty {
             subtitleLabel.text = "\(subtitle) • "
+            subtitleLabel.textAlignment = .right
         } else {
             subtitleLabel.text = subtitle
+            subtitleLabel.textAlignment = .center
         }
     }
 
     @objc private func handleSortingViewTap() {
         searchBar.resignFirstResponder()
-        delegate?.favoriteAdsListTableHeaderDidSelectSortingView(self)
+        delegate?.favoriteAdsListTableHeader(self, didSelectSortingView: sortingView)
     }
 
     @objc private func handleViewTap() {

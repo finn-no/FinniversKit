@@ -5,7 +5,7 @@
 import UIKit
 
 protocol FavoriteAdViewDelegate: AnyObject {
-    func favoriteAdViewDidSelectMoreButton(_ view: FavoriteAdView)
+    func favoriteAdView(_ view: FavoriteAdView, didSelectMoreButton button: UIButton)
 }
 
 final class FavoriteAdView: UIView {
@@ -249,7 +249,7 @@ final class FavoriteAdView: UIView {
     // MARK: - Private methods
 
     @objc private func moreButtonTapped() {
-        delegate?.favoriteAdViewDidSelectMoreButton(self)
+        delegate?.favoriteAdView(self, didSelectMoreButton: moreButton)
     }
 
     private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {

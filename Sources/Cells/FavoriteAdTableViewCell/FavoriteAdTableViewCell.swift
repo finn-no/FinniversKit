@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol FavoriteAdTableViewCellDelegate: AnyObject {
-    func favoriteAdTableViewCellDidSelectMoreButton(_ cell: FavoriteAdTableViewCell)
+    func favoriteAdTableViewCell(_ cell: FavoriteAdTableViewCell, didSelectMoreButton button: UIButton)
 }
 
 public class FavoriteAdTableViewCell: UITableViewCell {
@@ -92,7 +92,7 @@ public class FavoriteAdTableViewCell: UITableViewCell {
 // MARK: - FavoriteAdViewDelegate
 
 extension FavoriteAdTableViewCell: FavoriteAdViewDelegate {
-    func favoriteAdViewDidSelectMoreButton(_ view: FavoriteAdView) {
-        delegate?.favoriteAdTableViewCellDidSelectMoreButton(self)
+    func favoriteAdView(_ view: FavoriteAdView, didSelectMoreButton button: UIButton) {
+        delegate?.favoriteAdTableViewCell(self, didSelectMoreButton: button)
     }
 }
