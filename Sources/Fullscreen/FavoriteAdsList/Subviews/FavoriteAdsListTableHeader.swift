@@ -6,6 +6,7 @@ import UIKit
 
 protocol FavoriteAdsListTableHeaderDelegate: AnyObject {
     func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectSortingView view: UIView)
+    func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectShareButton button: UIButton)
 }
 
 class FavoriteAdsListTableHeader: UIView {
@@ -32,15 +33,19 @@ class FavoriteAdsListTableHeader: UIView {
         set { searchBar.text = newValue }
     }
 
-    var title: String = "" {
+    var title = "" {
         didSet { titleLabel.text = title }
     }
 
-    var subtitle: String = "" {
-        didSet { subtitleLabel.text = subtitle }
+    var subtitle = "" {
+        didSet { updateSubtitle() }
     }
 
-    var sortingTitle: String = "" {
+    var shareButtonTitle = "" {
+        didSet { updateSubtitle() }
+    }
+
+    var sortingTitle = "" {
         didSet { sortingView.title = sortingTitle }
     }
 
@@ -53,11 +58,11 @@ class FavoriteAdsListTableHeader: UIView {
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
 
     private lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel, searchBar, sortingView])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleView, searchBar, sortingContainerView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.setCustomSpacing(.smallSpacing, after: titleLabel)
-        stackView.setCustomSpacing(24, after: subtitleLabel)
+        stackView.setCustomSpacing(24, after: subtitleView)
         stackView.setCustomSpacing(28, after: searchBar)
         return stackView
     }()
@@ -71,12 +76,10 @@ class FavoriteAdsListTableHeader: UIView {
         return label
     }()
 
-    private lazy var subtitleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .caption
-        label.textAlignment = .center
-        label.textColor = .licorice
-        return label
+    private lazy var subtitleView: SubtitleView = {
+        let view = SubtitleView()
+        view.delegate = self
+        return view
     }()
 
     private lazy var searchBar: UISearchBar = {
@@ -93,6 +96,8 @@ class FavoriteAdsListTableHeader: UIView {
         sortingView.addGestureRecognizer(tapGestureRecognizer)
         return sortingView
     }()
+
+    private lazy var sortingContainerView = UIView()
 
     var isSortingViewHidden: Bool {
         get { return sortingView.isHidden }
@@ -114,6 +119,7 @@ class FavoriteAdsListTableHeader: UIView {
         addGestureRecognizer(tapRecognizer)
 
         addSubview(contentStackView)
+        sortingContainerView.addSubview(sortingView)
 
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
@@ -121,8 +127,16 @@ class FavoriteAdsListTableHeader: UIView {
             contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            searchBar.heightAnchor.constraint(equalToConstant: 36)
+            sortingView.leadingAnchor.constraint(equalTo: sortingContainerView.leadingAnchor),
+            sortingView.topAnchor.constraint(equalTo: sortingContainerView.topAnchor),
+            sortingView.bottomAnchor.constraint(equalTo: sortingContainerView.bottomAnchor),
+
+            searchBar.heightAnchor.constraint(equalToConstant: 36),
         ])
+    }
+
+    private func updateSubtitle() {
+        subtitleView.configure(withText: subtitle, buttonTitle: shareButtonTitle)
     }
 
     @objc private func handleSortingViewTap() {
@@ -132,5 +146,13 @@ class FavoriteAdsListTableHeader: UIView {
 
     @objc private func handleViewTap() {
         searchBar.resignFirstResponder()
+    }
+}
+
+// MARK: - SubtitleViewDelegate
+
+extension FavoriteAdsListTableHeader: SubtitleViewDelegate {
+    func subtitleView(_ view: SubtitleView, didSelectButton button: UIButton) {
+        delegate?.favoriteAdsListTableHeader(self, didSelectShareButton: button)
     }
 }
