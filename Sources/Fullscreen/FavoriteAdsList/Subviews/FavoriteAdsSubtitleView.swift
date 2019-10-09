@@ -22,6 +22,8 @@ final class SubtitleView: UIView {
         button.isHidden = true
         button.titleLabel?.font = .captionStrong
         button.setTitleColor(.primaryBlue, for: .normal)
+        button.setTitleColor(.linkButtonHighlightedTextColor, for: .highlighted)
+        button.setTitleColor(.linkButtonHighlightedTextColor, for: .selected)
         button.addTarget(self, action: #selector(handleShareButtonTap), for: .touchUpInside)
         return button
     }()
