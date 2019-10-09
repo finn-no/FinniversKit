@@ -42,11 +42,7 @@ class FavoriteAdsListTableHeader: UIView {
     }
 
     var shareButtonTitle = "" {
-        didSet {
-            shareButton.isHidden = shareButtonTitle.isEmpty
-            shareButton.setTitle(shareButtonTitle, for: .normal)
-            updateSubtitle()
-        }
+        didSet { updateSubtitle() }
     }
 
     var sortingTitle = "" {
@@ -62,11 +58,11 @@ class FavoriteAdsListTableHeader: UIView {
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
 
     private lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleStackView, searchBar, sortingView])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleView, searchBar, sortingContainerView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.setCustomSpacing(.smallSpacing, after: titleLabel)
-        stackView.setCustomSpacing(24, after: subtitleStackView)
+        stackView.setCustomSpacing(24, after: subtitleView)
         stackView.setCustomSpacing(28, after: searchBar)
         return stackView
     }()
@@ -80,33 +76,10 @@ class FavoriteAdsListTableHeader: UIView {
         return label
     }()
 
-    private lazy var subtitleStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [subtitleLabel, shareButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
-        stackView.spacing = 0
-        return stackView
-    }()
-
-    private lazy var subtitleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .caption
-        label.textAlignment = .center
-        label.textColor = .licorice
-        return label
-    }()
-
-    private lazy var shareButton: UIButton = {
-        let button = UIButton()
-        button.isHidden = true
-        button.titleLabel?.font = .bodyStrong
-        button.setTitleColor(.primaryBlue, for: .normal)
-        button.contentHorizontalAlignment = .left
-        button.contentEdgeInsets.left = .smallSpacing
-        button.addTarget(self, action: #selector(handleShareButtonTap), for: .touchUpInside)
-        return button
+    private lazy var subtitleView: SubtitleView = {
+        let view = SubtitleView()
+        view.delegate = self
+        return view
     }()
 
     private lazy var searchBar: UISearchBar = {
@@ -123,6 +96,8 @@ class FavoriteAdsListTableHeader: UIView {
         sortingView.addGestureRecognizer(tapGestureRecognizer)
         return sortingView
     }()
+
+    private lazy var sortingContainerView = UIView()
 
     var isSortingViewHidden: Bool {
         get { return sortingView.isHidden }
@@ -144,6 +119,7 @@ class FavoriteAdsListTableHeader: UIView {
         addGestureRecognizer(tapRecognizer)
 
         addSubview(contentStackView)
+        sortingContainerView.addSubview(sortingView)
 
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
@@ -151,18 +127,16 @@ class FavoriteAdsListTableHeader: UIView {
             contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            searchBar.heightAnchor.constraint(equalToConstant: 36)
+            sortingView.leadingAnchor.constraint(equalTo: sortingContainerView.leadingAnchor),
+            sortingView.topAnchor.constraint(equalTo: sortingContainerView.topAnchor),
+            sortingView.bottomAnchor.constraint(equalTo: sortingContainerView.bottomAnchor),
+
+            searchBar.heightAnchor.constraint(equalToConstant: 36),
         ])
     }
 
     private func updateSubtitle() {
-        if !subtitle.isEmpty && !shareButtonTitle.isEmpty {
-            subtitleLabel.text = "\(subtitle) • "
-            subtitleLabel.textAlignment = .right
-        } else {
-            subtitleLabel.text = subtitle
-            subtitleLabel.textAlignment = .center
-        }
+        subtitleView.configure(withText: subtitle, buttonTitle: shareButtonTitle)
     }
 
     @objc private func handleSortingViewTap() {
@@ -173,8 +147,12 @@ class FavoriteAdsListTableHeader: UIView {
     @objc private func handleViewTap() {
         searchBar.resignFirstResponder()
     }
+}
 
-    @objc private func handleShareButtonTap() {
-        delegate?.favoriteAdsListTableHeader(self, didSelectShareButton: shareButton)
+// MARK: - SubtitleViewDelegate
+
+extension FavoriteAdsListTableHeader: SubtitleViewDelegate {
+    func subtitleView(_ view: SubtitleView, didSelectButton button: UIButton) {
+        delegate?.favoriteAdsListTableHeader(self, didSelectShareButton: button)
     }
 }

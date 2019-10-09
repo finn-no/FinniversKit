@@ -10,7 +10,7 @@ struct FavoriteFolder: FavoriteFolderViewModel {
     let subtitle: String?
     let imagePath: String?
     let isDefault: Bool
-    let detailText: String? = nil
+    let detailText: String? = "23 annonser"
     let cornerRadius: CGFloat = 12
     let imageViewWidth: CGFloat = 40
     let hasChevron = false
