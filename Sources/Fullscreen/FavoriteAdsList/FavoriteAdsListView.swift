@@ -77,6 +77,12 @@ public class FavoriteAdsListView: UIView {
         didSet { tableHeaderView.sortingTitle = sortingTitle }
     }
 
+    public var isShared: Bool {
+        didSet {
+            tableHeaderView.shareButtonTitle = isShared ? viewModel.shareButtonTitle : ""
+        }
+    }
+
     // MARK: - Private properties
 
     private let viewModel: FavoriteAdsListViewModel
@@ -461,6 +467,10 @@ extension FavoriteAdsListView: RemoteImageViewDataSource {
 // MARK: - FavoriteAdsListTableHeaderDelegate
 
 extension FavoriteAdsListView: FavoriteAdsListTableHeaderDelegate {
+    func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectShareButton button: UIButton) {
+
+    }
+
     func favoriteAdsListTableHeaderDidSelectSortingView(_ tableHeader: FavoriteAdsListTableHeader) {
         delegate?.favoriteAdsListViewDidSelectSortButton(self)
     }

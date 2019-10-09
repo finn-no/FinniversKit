@@ -6,6 +6,7 @@ import UIKit
 
 protocol FavoriteAdsListTableHeaderDelegate: AnyObject {
     func favoriteAdsListTableHeaderDidSelectSortingView(_ tableHeader: FavoriteAdsListTableHeader)
+    func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectShareButton button: UIButton)
 }
 
 class FavoriteAdsListTableHeader: UIView {
@@ -32,15 +33,23 @@ class FavoriteAdsListTableHeader: UIView {
         set { searchBar.text = newValue }
     }
 
-    var title: String = "" {
+    var title = "" {
         didSet { titleLabel.text = title }
     }
 
-    var subtitle: String = "" {
-        didSet { subtitleLabel.text = subtitle }
+    var subtitle = "" {
+        didSet { updateSubtitle() }
     }
 
-    var sortingTitle: String = "" {
+    var shareButtonTitle = "" {
+        didSet {
+            shareButton.isHidden = shareButtonTitle.isEmpty
+            shareButton.setTitle(shareButtonTitle, for: .normal)
+            updateSubtitle()
+        }
+    }
+
+    var sortingTitle = "" {
         didSet { sortingView.title = sortingTitle }
     }
 
@@ -53,7 +62,7 @@ class FavoriteAdsListTableHeader: UIView {
     private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleViewTap))
 
     private lazy var contentStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel, searchBar, sortingView])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleStackView, searchBar, sortingView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.setCustomSpacing(.smallSpacing, after: titleLabel)
@@ -71,12 +80,27 @@ class FavoriteAdsListTableHeader: UIView {
         return label
     }()
 
+    private lazy var subtitleStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [subtitleLabel, shareButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = 0
+        return stackView
+    }()
+
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
         label.textAlignment = .center
         label.textColor = .licorice
         return label
+    }()
+
+    private lazy var shareButton: UIButton = {
+        let button = Button(style: .flat)
+        button.isHidden = true
+        button.addTarget(self, action: #selector(handleShareButtonTap), for: .touchUpInside)
+        return button
     }()
 
     private lazy var searchBar: UISearchBar = {
@@ -125,6 +149,14 @@ class FavoriteAdsListTableHeader: UIView {
         ])
     }
 
+    private func updateSubtitle() {
+        if !subtitle.isEmpty && !shareButtonTitle.isEmpty {
+            subtitleLabel.text = "\(subtitle) • "
+        } else {
+            subtitleLabel.text = subtitle
+        }
+    }
+
     @objc private func handleSortingViewTap() {
         searchBar.resignFirstResponder()
         delegate?.favoriteAdsListTableHeaderDidSelectSortingView(self)
@@ -132,5 +164,9 @@ class FavoriteAdsListTableHeader: UIView {
 
     @objc private func handleViewTap() {
         searchBar.resignFirstResponder()
+    }
+
+    @objc private func handleShareButtonTap() {
+        delegate?.favoriteAdsListTableHeader(self, didSelectShareButton: shareButton)
     }
 }
