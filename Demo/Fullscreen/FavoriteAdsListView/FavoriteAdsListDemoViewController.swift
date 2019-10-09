@@ -139,6 +139,7 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
 extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDelegate {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath) {}
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButton button: UIButton, at indexPath: IndexPath) {}
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareButton button: UIButton) {}
 
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView) {
         print("Delete button selected")

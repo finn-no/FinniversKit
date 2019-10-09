@@ -10,6 +10,7 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath, sender: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectSortingView sortingView: UIView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareButton button: UIButton)
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool)
@@ -472,7 +473,7 @@ extension FavoriteAdsListView: FavoriteAdsListTableHeaderDelegate {
     }
 
     func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectShareButton button: UIButton) {
-
+        delegate?.favoriteAdsListView(self, didSelectShareButton: button)
     }
 }
 
