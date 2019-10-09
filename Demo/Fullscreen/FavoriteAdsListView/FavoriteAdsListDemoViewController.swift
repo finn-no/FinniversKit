@@ -129,17 +129,17 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
 
 extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDelegate {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath) {}
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath) {}
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButton button: UIButton, at indexPath: IndexPath) {}
 
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath) {
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView) {
         print("Delete button selected")
     }
 
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath) {
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath, sender: UIView) {
         print("Comment button selected")
     }
 
-    func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView) {
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectSortingView sortingView: UIView) {
         switch currentSorting {
         case .lastAdded:
             currentSorting = .alphabetically
