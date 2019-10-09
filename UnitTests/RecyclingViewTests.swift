@@ -67,4 +67,8 @@ class RecyclingViewTests: XCTestCase {
     func testFavoriteAdActionView() {
         snapshot(.favoriteAdActionView)
     }
+
+    func testBasicTableView() {
+        snapshot(.basic)
+    }
 }
