@@ -8,6 +8,9 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Public properties
 
+    open var selectedIndexPath: IndexPath?
+    open var isEnabled: Bool = true
+
     open lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
@@ -62,8 +65,13 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    open func configure(with viewModel: BasicTableViewCellViewModel) {
+    open func configure(with viewModel: BasicTableViewCellViewModel, indexPath: IndexPath? = nil) {
         titleLabel.text = viewModel.title
+
+        let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
+        titleLabel.textColor = isSelected ? .textAction : .textPrimary
+
+        titleLabel.isEnabled = isEnabled
 
         if let subtitle = viewModel.subtitle {
             subtitleLabel.text = subtitle
@@ -93,7 +101,7 @@ open class BasicTableViewCell: UITableViewCell {
             stackViewTrailingAnchorConstraint.constant = -.mediumLargeSpacing
         }
 
-        separatorInset = .leadingInset(.mediumLargeSpacing)  
+        separatorInset = .leadingInset(.mediumLargeSpacing)
     }
 
     open override func prepareForReuse() {
@@ -119,6 +127,6 @@ open class BasicTableViewCell: UITableViewCell {
 
             detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             detailLabelTrailingConstraint
-        ])
+            ])
     }
 }
