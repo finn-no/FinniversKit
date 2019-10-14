@@ -84,7 +84,7 @@ class FavoriteAdsListTableHeader: UIView {
 
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(withAutoLayout: true)
-        searchBar.backgroundColor = .milk
+        searchBar.backgroundColor = .bgPrimary
         searchBar.searchBarStyle = .minimal
         return searchBar
     }()

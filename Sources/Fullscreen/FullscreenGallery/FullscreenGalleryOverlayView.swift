@@ -51,7 +51,7 @@ class FullscreenGalleryOverlayView: UIView {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .milk
+        label.textColor = .bgPrimary
         label.textAlignment = .center
         label.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         label.shadowOffset = CGSize(width: 1.0, height: 1.0)

@@ -84,6 +84,6 @@ final class FavoriteFolderActionButton: UIButton {
     // MARK: - Private
 
     private func updateBackground() {
-        backgroundColor = (isHighlighted || isSelected) ? .defaultCellSelectedBackgroundColor : .milk
+        backgroundColor = (isHighlighted || isSelected) ? .defaultCellSelectedBackgroundColor : .bgPrimary
     }
 }

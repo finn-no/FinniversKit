@@ -151,7 +151,7 @@ public final class ContactFormView: UIView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
 
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(scrollView)
         scrollView.addSubview(contentView)

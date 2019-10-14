@@ -157,8 +157,8 @@ private extension LoadingView {
                 layer.cornerRadius = 0
                 fillInSuperview()
             case .boxed:
-                successImageView.tintColor = .milk
-                messageLabel.textColor = .milk
+                successImageView.tintColor = .bgPrimary
+                messageLabel.textColor = .bgPrimary
                 backgroundColor = UIColor.black.withAlphaComponent(0.8)
                 layer.cornerRadius = 16
 

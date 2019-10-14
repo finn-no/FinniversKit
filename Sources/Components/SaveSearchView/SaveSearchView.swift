@@ -120,7 +120,7 @@ public class SaveSearchView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         scrollView.addSubview(contentView)
         addSubview(scrollView)

@@ -292,7 +292,7 @@ public class EmptyView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         for shape in allShapes {
             addSubview(shape)

@@ -72,7 +72,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
 
     private lazy var adWrapperView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         view.layer.cornerRadius = UserAdsListEmphasizedActionCell.cornerRadius
         return view
     }()
