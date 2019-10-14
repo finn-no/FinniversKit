@@ -37,7 +37,7 @@ public class LoginEntryView: UIView {
 
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .marble
+        view.backgroundColor = .bgTertiary
         return view
     }()
 
