@@ -96,11 +96,11 @@ private extension UserAdsRatingView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
-            happinessRating.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .largeSpacing),
+            happinessRating.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
             happinessRating.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             happinessRating.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            gradientWrapper.topAnchor.constraint(equalTo: happinessRating.bottomAnchor, constant: .largeSpacing),
+            gradientWrapper.topAnchor.constraint(equalTo: happinessRating.bottomAnchor, constant: 40),
             gradientWrapper.leadingAnchor.constraint(equalTo: leadingAnchor),
             gradientWrapper.trailingAnchor.constraint(equalTo: trailingAnchor),
             gradientWrapper.bottomAnchor.constraint(equalTo: bottomAnchor)
