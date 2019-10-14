@@ -5,10 +5,11 @@
 import UIKit
 
 /// Delegate to handle interaction happening inside the cell
-public protocol UserAdsListEmphasizedActionCellDelegate: class {
+public protocol UserAdsListEmphasizedActionCellDelegate: AnyObject {
     func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, buttonWasTapped: Button)
     func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button)
     func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, closeButtonWasTapped: UIButton)
+    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, textFor rating: HappinessRating) -> String?
     func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, didSelectRating rating: HappinessRating)
 }
 
@@ -129,8 +130,8 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     }()
 
     private lazy var ratingView: UserAdsRatingView = {
-        let ratingView = UserAdsRatingView(withAutoLayout: true)
-        ratingView.delegate = self
+        let ratingView = UserAdsRatingView(delegate: self)
+        ratingView.translatesAutoresizingMaskIntoConstraints = false
         ratingView.alpha = 0
         ratingView.transform = CGAffineTransform(translationX: bounds.maxX, y: 0)
         return ratingView
@@ -408,10 +409,14 @@ extension UserAdsListEmphasizedActionCell: ImageLoading {
 
 extension UserAdsListEmphasizedActionCell: UserAdsRatingViewDelegate {
     public func ratingView(_ userAdsRatingView: UserAdsRatingView, didTapCloseButton button: UIButton) {
-        self.delegate?.userAdsListEmphasizedActionCell(self, closeButtonWasTapped: button)
+        delegate?.userAdsListEmphasizedActionCell(self, closeButtonWasTapped: button)
     }
 
     public func ratingView(_ userAdsRatingView: UserAdsRatingView, didSelectRating rating: HappinessRating) {
-        self.delegate?.userAdsListEmphasizedActionCell(self, didSelectRating: rating)
+        delegate?.userAdsListEmphasizedActionCell(self, didSelectRating: rating)
+    }
+
+    public func ratingView(_ userAdsRatingView: UserAdsRatingView, textFor rating: HappinessRating) -> String? {
+        return delegate?.userAdsListEmphasizedActionCell(self, textFor: rating)
     }
 }

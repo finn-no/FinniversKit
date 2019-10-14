@@ -2,6 +2,7 @@ import UIKit
 
 public protocol UserAdsRatingViewDelegate: AnyObject {
     func ratingView(_ userAdsRatingView: UserAdsRatingView, didTapCloseButton button: UIButton)
+    func ratingView(_ userAdsRatingView: UserAdsRatingView, textFor rating: HappinessRating) -> String?
     func ratingView(_ userAdsRatingView: UserAdsRatingView, didSelectRating rating: HappinessRating)
 }
 
@@ -24,8 +25,8 @@ public class UserAdsRatingView: UIView {
     }()
 
     private lazy var happinessRating: HappinessRatingView = {
-        let view = HappinessRatingView(withAutoLayout: true)
-        view.delegate = self
+        let view = HappinessRatingView(delegate: self)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -54,8 +55,9 @@ public class UserAdsRatingView: UIView {
 
     // MARK: - Superclass Overrides
 
-    public override init(frame: CGRect) {
+    public init(frame: CGRect = .zero, delegate: UserAdsRatingViewDelegate?) {
         super.init(frame: frame)
+        self.delegate = delegate
         setup()
     }
 
@@ -90,15 +92,15 @@ private extension UserAdsRatingView {
             closeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
             closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            happinessRating.centerYAnchor.constraint(equalTo: centerYAnchor, constant: .largeSpacing),
-            happinessRating.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            happinessRating.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
-
-            titleLabel.bottomAnchor.constraint(equalTo: happinessRating.topAnchor, constant: -24),
+            titleLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 40),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
-            gradientWrapper.topAnchor.constraint(equalTo: happinessRating.bottomAnchor, constant: .mediumSpacing),
+            happinessRating.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .largeSpacing),
+            happinessRating.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            happinessRating.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            gradientWrapper.topAnchor.constraint(equalTo: happinessRating.bottomAnchor, constant: .largeSpacing),
             gradientWrapper.leadingAnchor.constraint(equalTo: leadingAnchor),
             gradientWrapper.trailingAnchor.constraint(equalTo: trailingAnchor),
             gradientWrapper.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -107,6 +109,10 @@ private extension UserAdsRatingView {
 }
 
 extension UserAdsRatingView: HappinessRatingViewDelegate {
+    public func happinessRatingView(_ happinessRatingView: HappinessRatingView, textFor rating: HappinessRating) -> String? {
+        return delegate?.ratingView(self, textFor: rating)
+    }
+
     public func happinessRatingView(_ happinessRatingView: HappinessRatingView, didSelectRating rating: HappinessRating) {
         delegate?.ratingView(self, didSelectRating: rating)
     }

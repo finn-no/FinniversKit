@@ -57,6 +57,7 @@ public struct UserAdCellAction: UserAdsListActionViewModel {
 
 public struct UserAdCellRatingAction: UserAdsListRatingViewModel {
     public var title: String
+    public var feedbackText: String
 }
 
 public struct UserAdsFactory {
@@ -84,7 +85,7 @@ public struct UserAdsFactory {
     private static func createEmphasizedAds() -> (header: UserAdHeaderCell, ads: [UserAdCell]) {
         let imageSource = imageSources[0]
         let action = UserAdCellAction(title: "Her går det unna!", description: "Nå er det mange som selger Rancho Cuccamonga! For 89 kr kan du løfte annonsen din øverst i resultatlista, akkurat som da den var ny", buttonTitle: "Legg annonsen min øverst", cancelButtonTitle: "Nei takk")
-        let rating = UserAdCellRatingAction(title: "Hva synes du om å få oppsalg på dine annonser på denne måten?")
+        let rating = UserAdCellRatingAction(title: "Hva synes du om å få tips om produktkjøp til dine annonser på denne måten?", feedbackText: "Takk for tilbakemeldingen")
         let adCell = UserAdCell(imagePath: imageSource.path, imageSize: imageSource.size, title: "Rancho Cuccamonga", price: nil, detail: "Schmorget - Huh?!", status: "active", actionViewModel: action, ratingViewModel: rating)
         let header = UserAdHeaderCell()
         return (header: header, ads: [adCell])

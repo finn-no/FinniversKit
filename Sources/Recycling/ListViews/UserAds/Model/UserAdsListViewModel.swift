@@ -35,4 +35,5 @@ public protocol UserAdsListActionViewModel {
 
 public protocol UserAdsListRatingViewModel {
     var title: String { get }
+    var feedbackText: String { get }
 }

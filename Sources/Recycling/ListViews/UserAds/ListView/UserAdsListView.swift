@@ -8,7 +8,9 @@ public protocol UserAdsListViewDelegate: AnyObject {
     func userAdsListViewDidStartRefreshing(_ userAdsListView: UserAdsListView)
     func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView)
     func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView)
+    func userAdsListViewEmphasized(_ userAdsListView: UserAdsListView, textFor rating: HappinessRating) -> String?
     func userAdsListViewEmphasized(_ userAdsListView: UserAdsListView, didSelectRating rating: HappinessRating)
+
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button)
@@ -359,6 +361,10 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
         })
     }
 
+    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, textFor rating: HappinessRating) -> String? {
+        return delegate?.userAdsListViewEmphasized(self, textFor: rating)
+    }
+
     public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, didSelectRating rating: HappinessRating) {
         hasGivenRating = true
         delegate?.userAdsListViewEmphasized(self, didSelectRating: rating)
@@ -366,7 +372,10 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
         cell.showRatingView(false, completion: {
             guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
             self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
-            self.showToastView(type: .success, placement: .bottom, text: "Takk for tilbakemeldingen", timeOut: 2)
+
+            if let feedbackText = cell.model?.ratingViewModel?.feedbackText {
+                self.showToastView(type: .success, placement: .bottom, text: feedbackText, timeOut: 2)
+            }
         })
     }
 }

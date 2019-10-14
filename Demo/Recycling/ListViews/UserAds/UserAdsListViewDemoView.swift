@@ -66,6 +66,21 @@ extension UserAdsListViewDemoView: UserAdsListViewDelegate {
         print("Did cancel emphasized action")
     }
 
+    func userAdsListViewEmphasized(_ userAdsListView: UserAdsListView, textFor rating: HappinessRating) -> String? {
+        switch rating {
+        case .angry:
+            return "Veldig irriterende"
+        case .dissatisfied:
+            return nil
+        case .neutral:
+            return "Vet ikke"
+        case .happy:
+            return nil
+        case .love:
+            return "Veldig nyttig"
+        }
+    }
+
     func userAdsListViewEmphasized(_ userAdsListView: UserAdsListView, didSelectRating rating: HappinessRating) {
         emphasizedActionHasBeenCollapsed = true
         print("Did give rating \(rating)")
