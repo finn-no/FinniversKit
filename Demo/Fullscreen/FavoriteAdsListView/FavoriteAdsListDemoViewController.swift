@@ -236,9 +236,6 @@ extension FavoriteAdsListViewModel {
         addCommentActionTitle: "Skriv\nnotat",
         editCommentActionTitle: "Rediger\nnotat",
         deleteAdActionTitle: "Slett",
-        emptySearchViewBodyPrefix: "Vi fant visst ingen favoritter for",
-        emptyListViewTitle: "Her var det stille gitt...",
-        emptyListViewBody: "Det er ikke lagt til noen favoritter i denne listen enda.",
-        emptyListViewImage: UIImage(named: .heartEmpty)
+        emptySearchViewBodyPrefix: "Vi fant visst ingen favoritter for"
     )
 }

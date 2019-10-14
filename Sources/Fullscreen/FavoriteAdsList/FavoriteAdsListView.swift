@@ -153,10 +153,6 @@ public class FavoriteAdsListView: UIView {
         ])
 
         tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
-
-        emptyListView.configure(withImage: viewModel.emptyListViewImage,
-                                title: viewModel.emptyListViewTitle,
-                                body: viewModel.emptyListViewBody)
     }
 
     // MARK: - Overrides
