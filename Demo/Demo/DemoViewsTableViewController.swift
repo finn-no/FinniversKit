@@ -144,6 +144,13 @@ class DemoViewsTableViewController: UITableViewController {
     private var sections: [String] {
         return Array(indexAndValues.keys.sorted(by: <))
     }
+
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
+        if viewControllerToPresent.modalPresentationStyle == .pageSheet {
+            viewControllerToPresent.modalPresentationStyle = .fullScreen
+        }
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
+    }
 }
 
 // MARK: - UITableViewDelegate
