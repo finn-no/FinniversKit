@@ -93,7 +93,7 @@ open class BasicTableViewCell: UITableViewCell {
             stackViewTrailingAnchorConstraint.constant = -.mediumLargeSpacing
         }
 
-        separatorInset = .leadingInset(.mediumLargeSpacing)  
+        separatorInset = .leadingInset(.mediumLargeSpacing)
     }
 
     open override func prepareForReuse() {

@@ -7,10 +7,10 @@ import FinniversKit
 struct FavoriteFolder: FavoriteFolderViewModel {
     let id: Int
     let title: String
+    let subtitle: String?
     let imagePath: String?
     let isDefault: Bool
-    let subtitle: String? = nil
-    let detailText: String? = nil
+    let detailText: String? = "23 annonser"
     let cornerRadius: CGFloat = 12
     let imageViewWidth: CGFloat = 40
     let hasChevron = false
@@ -26,6 +26,7 @@ struct FavoriteFoldersFactory {
             let folder = FavoriteFolder(
                 id: index,
                 title: title,
+                subtitle: index == 2 ? "Delt liste" : nil,
                 imagePath: imagePath,
                 isDefault: index == 0,
                 isSelected: isSelected

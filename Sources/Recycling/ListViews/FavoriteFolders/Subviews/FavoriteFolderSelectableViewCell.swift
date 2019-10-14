@@ -5,7 +5,7 @@
 import UIKit
 
 public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
-    private let titleLabelDefaultFont: UIFont = .body
+    private let titleLabelDefaultFont: UIFont = .bodyRegular
     private let titleLabelSelectedFont: UIFont = .bodyStrong
     private var isEditable = true
 
@@ -92,6 +92,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     private func setup() {
         tintColor = .primaryBlue
+        subtitleLabel.textColor = .stone
 
         contentView.addSubview(checkmarkImageView)
         addSubview(editModeView)
