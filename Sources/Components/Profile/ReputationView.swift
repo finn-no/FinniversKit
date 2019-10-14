@@ -172,7 +172,7 @@ public class ReputationView: UIView {
         setupGestureRecognizer()
 
         layer.cornerRadius = 8
-        backgroundColor = .ice
+        backgroundColor = .bgSecondary
         clipsToBounds = true
 
         addSubview(scoreBackgroundView)

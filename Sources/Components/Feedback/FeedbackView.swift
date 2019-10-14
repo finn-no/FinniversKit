@@ -89,7 +89,7 @@ public class FeedbackView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .ice
+        backgroundColor = .bgSecondary
 
         layer.borderWidth = 1
         layer.borderColor = .sardine
