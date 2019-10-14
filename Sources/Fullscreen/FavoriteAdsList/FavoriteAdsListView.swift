@@ -179,6 +179,12 @@ public class FavoriteAdsListView: UIView {
 
     // MARK: - Public methods
 
+    public func configureEmptyList(withImage image: UIImage, title: String, body: String) {
+        emptyListView.configure(withImage: image,
+                                title: title,
+                                body: body)
+    }
+
     public func setListIsEmpty(_ isEmpty: Bool) {
         emptyListView.isHidden = !isEmpty
         tableHeaderView.isSearchBarHidden = isEmpty
