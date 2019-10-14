@@ -4,7 +4,7 @@
 
 import UIKit
 
-class FavoriteAdsListEmptyView: UIView {
+public class FavoriteAdsListEmptyView: UIView {
 
     // MARK: - Private properties
 
@@ -40,7 +40,7 @@ class FavoriteAdsListEmptyView: UIView {
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -72,7 +72,7 @@ class FavoriteAdsListEmptyView: UIView {
 
     // MARK: - Public methods
 
-    func configure(withImage image: UIImage, title: String, body: String) {
+    public func configure(withImage image: UIImage, title: String, body: String) {
         iconImageView.image = image
         titleLabel.text = title
         bodyLabel.text = body
