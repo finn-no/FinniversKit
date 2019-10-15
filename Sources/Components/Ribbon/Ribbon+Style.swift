@@ -16,7 +16,7 @@ public extension RibbonView {
         var color: UIColor {
             switch self {
             case .default: return .bgSecondary
-            case .success: return .mint
+            case .success: return .bgSuccess
             case .warning: return .bgAlert
             case .error: return .salmon
             case .disabled: return .sardine

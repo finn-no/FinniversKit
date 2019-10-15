@@ -17,8 +17,8 @@ extension Panel {
             case .plain: return .bgPrimary
             case .info: return .bgSecondary
             case .tips: return .toothPaste
-            case .newFunctionality: return .mint
-            case .success: return .mint
+            case .newFunctionality: return .bgSuccess
+            case .success: return .bgSuccess
             case .warning: return .bgAlert
             case .error: return .salmon
             }
