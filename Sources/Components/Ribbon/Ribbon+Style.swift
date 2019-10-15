@@ -23,5 +23,12 @@ public extension RibbonView {
             case .sponsored: return .accentToothpaste
             }
         }
+
+        var textColor: UIColor {
+            switch self {
+            case .default, .disabled: return .textPrimary
+            default: return .textToast
+            }
+        }
     }
 }
