@@ -44,7 +44,7 @@ internal class ToastButton: UIButton {
         case (.errorButton, .promoted):
             backgroundColor = .watermelon
         case (.successButton, .promoted):
-            backgroundColor = .pea
+            backgroundColor = .accentPea
         default: break
         }
     }

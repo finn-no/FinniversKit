@@ -26,7 +26,7 @@ extension Panel {
 
         var borderColor: UIColor? {
             switch self {
-            case .newFunctionality: return .pea
+            case .newFunctionality: return .accentPea
             default: return nil
             }
         }
