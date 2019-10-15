@@ -16,7 +16,7 @@ extension Panel {
             switch self {
             case .plain: return .bgPrimary
             case .info: return .bgSecondary
-            case .tips: return .toothPaste
+            case .tips: return .accentToothpaste
             case .newFunctionality: return .bgSuccess
             case .success: return .bgSuccess
             case .warning: return .bgAlert

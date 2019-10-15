@@ -159,7 +159,7 @@ private class MessageFormTemplateCell: UICollectionViewCell {
     private lazy var button: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundColor(color: .toothPaste, forState: .normal)
+        button.setBackgroundColor(color: .accentToothpaste, forState: .normal)
         button.setBackgroundColor(color: .accentSecondaryBlue, forState: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 4

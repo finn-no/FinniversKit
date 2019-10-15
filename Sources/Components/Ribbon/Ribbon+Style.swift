@@ -20,7 +20,7 @@ public extension RibbonView {
             case .warning: return .bgAlert
             case .error: return .bgCritical
             case .disabled: return .sardine
-            case .sponsored: return .toothPaste
+            case .sponsored: return .accentToothpaste
             }
         }
     }
