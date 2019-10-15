@@ -52,7 +52,7 @@ public class UserAdsListView: UIView {
         tableView.register(UserAdsListViewSeeAllAdsCell.self)
         tableView.register(UserAdsListEmphasizedActionCell.self)
         tableView.cellLayoutMarginsFollowReadableWidth = false
-        tableView.backgroundColor = .milk
+        tableView.backgroundColor = .bgPrimary
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 120
         tableView.estimatedSectionHeaderHeight = 48

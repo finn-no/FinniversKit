@@ -73,7 +73,7 @@ public class ReputationView: UIView {
     private lazy var scoreLabel: Label = {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .milk
+        label.textColor = .bgPrimary
         return label
     }()
 
@@ -172,7 +172,7 @@ public class ReputationView: UIView {
         setupGestureRecognizer()
 
         layer.cornerRadius = 8
-        backgroundColor = .ice
+        backgroundColor = .bgSecondary
         clipsToBounds = true
 
         addSubview(scoreBackgroundView)

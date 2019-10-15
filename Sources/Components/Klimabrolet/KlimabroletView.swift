@@ -23,7 +23,7 @@ public class KlimabroletView: UIView {
 
     private lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
-        button.tintColor = .milk
+        button.tintColor = .bgPrimary
         button.setImage(UIImage(named: .cross), for: .normal)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         button.contentEdgeInsets = UIEdgeInsets(all: 6)
@@ -84,7 +84,7 @@ public class KlimabroletView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         layer.cornerRadius = 20
         clipsToBounds = true
 

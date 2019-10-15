@@ -23,7 +23,7 @@ public class SavedSearchesListView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .milk
+        tableView.backgroundColor = .bgPrimary
         tableView.rowHeight = SavedSearchesListView.estimatedRowHeight
         tableView.estimatedRowHeight = SavedSearchesListView.estimatedRowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

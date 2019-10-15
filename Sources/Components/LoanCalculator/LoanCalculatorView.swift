@@ -74,7 +74,7 @@ public class LoanCalculatorView: UIView {
 
     // MARK: - Private methods
     private func setup() {
-        backgroundColor = .marble
+        backgroundColor = .bgTertiary
         layer.cornerRadius = .mediumSpacing
         directionalLayoutMargins = .init(all: .mediumLargeSpacing * 1.5)
 

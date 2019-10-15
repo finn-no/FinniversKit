@@ -75,7 +75,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
 
     private lazy var adWrapperView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         view.layer.cornerRadius = UserAdsListEmphasizedActionCell.cornerRadius
         return view
     }()
@@ -117,14 +117,14 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
 
     private lazy var gradientWrapper: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .marble
+        view.backgroundColor = .bgTertiary
         return view
     }()
 
     private lazy var gradientLayer: CALayer = {
         let layer = CAGradientLayer()
         let color = UIColor.white.withAlphaComponent(0.75)
-        layer.colors = [UIColor.marble.cgColor, color.cgColor]
+        layer.colors = [UIColor.bgTertiary.cgColor, color.cgColor]
         layer.locations = [0.1, 1.0]
         return layer
     }()
@@ -144,7 +144,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
 
     private func setupView() {
         isAccessibilityElement = true
-        contentView.backgroundColor = .marble
+        contentView.backgroundColor = .bgTertiary
         accessoryType = .none
         selectionStyle = .none
         separatorInset = UIEdgeInsets(top: 0, left: (UserAdsListEmphasizedActionCell.imageSize + .mediumSpacing), bottom: 0, right: 0)

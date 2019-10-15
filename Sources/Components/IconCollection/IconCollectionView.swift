@@ -10,7 +10,7 @@ public final class IconCollectionView: UIView {
     private lazy var collectionView: UICollectionView = {
         let collectionView = CollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.register(IconCollectionViewCell.self)
-        collectionView.backgroundColor = .milk
+        collectionView.backgroundColor = .bgPrimary
         collectionView.allowsSelection = false
         collectionView.isScrollEnabled = false
         collectionView.bounces = false
@@ -47,7 +47,7 @@ public final class IconCollectionView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         addSubview(collectionView)
         collectionView.fillInSuperview()
     }

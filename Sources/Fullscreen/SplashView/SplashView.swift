@@ -21,7 +21,7 @@ public final class SplashView: UIView {
         let view = UIView(withAutoLayout: true)
         view.clipsToBounds = true
         view.backgroundColor = .secondaryBlue
-        view.layer.borderColor = .milk
+        view.layer.borderColor = .bgPrimary
         view.layer.borderWidth = 3
         view.layer.cornerRadius = 4
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
