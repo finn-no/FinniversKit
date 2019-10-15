@@ -28,7 +28,7 @@ public class ConsentToggleView: UIView {
 
     private var backgroundView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .ice
+        view.backgroundColor = .bgSecondary
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

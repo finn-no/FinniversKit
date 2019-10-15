@@ -36,7 +36,7 @@ public class UserAdsListViewSeeAllAdsCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         selectionStyle = .none
         separatorInset = UIEdgeInsets(top: 0, left: frame.width, bottom: 0, right: 0)
 

@@ -32,7 +32,7 @@ class NeighborhoodProfileViewCell: UICollectionViewCell {
 
     private func setup() {
         backgroundColor = .clear
-        contentView.backgroundColor = .milk
+        contentView.backgroundColor = .bgPrimary
 
         contentView.layer.cornerRadius = .mediumSpacing
         contentView.layer.borderWidth = 1

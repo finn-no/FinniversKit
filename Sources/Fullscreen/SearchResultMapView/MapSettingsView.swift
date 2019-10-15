@@ -60,7 +60,7 @@ public final class MapSettingsView: UIView {
         layer.shadowOpacity = 0.4
 
         layer.cornerRadius = .mediumSpacing
-        layer.backgroundColor = UIColor.milk.withAlphaComponent(0.8).cgColor
+        layer.backgroundColor = UIColor.bgPrimary.withAlphaComponent(0.8).cgColor
     }
 
     private func setup() {

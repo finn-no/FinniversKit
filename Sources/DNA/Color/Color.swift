@@ -255,6 +255,14 @@ extension CGColor {
     public class var marble: CGColor {
         return UIColor.marble.cgColor
     }
+
+    public class var bgPrimary: CGColor {
+        return UIColor.bgPrimary.cgColor
+    }
+
+    public class var bgSecondary: CGColor {
+        return UIColor.bgSecondary.cgColor
+    }
 }
 
 // MARK: - Button

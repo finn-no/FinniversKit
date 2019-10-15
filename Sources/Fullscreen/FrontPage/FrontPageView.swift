@@ -163,7 +163,7 @@ public final class FrontPageView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(adsGridView)
 

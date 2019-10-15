@@ -73,7 +73,7 @@ class KlimabroletContentView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(bannerImageView)
         addSubview(titleLabel)

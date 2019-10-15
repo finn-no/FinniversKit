@@ -48,7 +48,7 @@ public final class PhaseListView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .ice
+        backgroundColor = .bgSecondary
         layer.cornerRadius = .mediumSpacing
 
         addSubview(stackView)
