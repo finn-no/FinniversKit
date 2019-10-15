@@ -91,7 +91,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     // MARK: - Private methods
 
     private func setup() {
-        tintColor = .primaryBlue
+        tintColor = .btnPrimary
         subtitleLabel.textColor = .stone
 
         contentView.addSubview(checkmarkImageView)

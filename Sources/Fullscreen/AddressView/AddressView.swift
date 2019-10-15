@@ -16,7 +16,7 @@ public class AddressView: UIView {
     private lazy var mapTypeSegmentControl: UISegmentedControl = {
         let control = UISegmentedControl(withAutoLayout: true)
         control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
-        control.tintColor = .primaryBlue
+        control.tintColor = .btnPrimary
         return control
     }()
 
@@ -67,7 +67,7 @@ public class AddressView: UIView {
     private lazy var centerMapButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
         button.backgroundColor = .bgPrimary
-        button.tintColor = .primaryBlue
+        button.tintColor = .btnPrimary
 
         button.layer.cornerRadius = 23
         button.layer.shadowColor = UIColor.black.cgColor
@@ -247,14 +247,14 @@ extension AddressView: MKMapViewDelegate {
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKCircle {
             let circle = MKCircleRenderer(overlay: overlay)
-            circle.strokeColor = UIColor.primaryBlue
-            circle.fillColor = UIColor.primaryBlue.withAlphaComponent(0.15)
+            circle.strokeColor = UIColor.btnPrimary
+            circle.fillColor = UIColor.btnPrimary.withAlphaComponent(0.15)
             circle.lineWidth = 2
             return circle
         } else if overlay is MKPolygon {
             let polygon = MKPolygonRenderer(overlay: overlay)
-            polygon.strokeColor = UIColor.primaryBlue
-            polygon.fillColor = UIColor.primaryBlue.withAlphaComponent(0.15)
+            polygon.strokeColor = UIColor.btnPrimary
+            polygon.fillColor = UIColor.btnPrimary.withAlphaComponent(0.15)
             polygon.lineWidth = 2
             return polygon
         } else if let tileOverlay = overlay as? MKTileOverlay {

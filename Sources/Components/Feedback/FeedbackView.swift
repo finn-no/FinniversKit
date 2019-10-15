@@ -261,7 +261,7 @@ private class ButtonView: UIView {
         button.titleLabel?.font = .detailStrong
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
-        button.layer.borderColor = .primaryBlue
+        button.layer.borderColor = .btnPrimary
         return button
     }()
 

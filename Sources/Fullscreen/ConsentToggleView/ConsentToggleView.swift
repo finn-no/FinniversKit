@@ -21,7 +21,7 @@ public class ConsentToggleView: UIView {
 
     private var toggle: UISwitch = {
         let toggle = UISwitch(withAutoLayout: true)
-        toggle.onTintColor = .primaryBlue
+        toggle.onTintColor = .btnPrimary
         toggle.addTarget(self, action: #selector(switchDidToogle(sender:)), for: .valueChanged)
         return toggle
     }()

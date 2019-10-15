@@ -70,7 +70,7 @@ final class AddFavoriteFolderButton: UIButton {
         setImage(UIImage(named: .favoritesPlus), for: .normal)
 
         titleLabel?.font = .bodyStrong
-        setTitleColor(.primaryBlue, for: .normal)
+        setTitleColor(.btnPrimary, for: .normal)
     }
 
     private func updateAlpha(isHighlighted: Bool) {

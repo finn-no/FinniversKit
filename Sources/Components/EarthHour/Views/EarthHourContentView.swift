@@ -22,7 +22,7 @@ class EarthHourContentView: UIView {
 
     private(set) lazy var accessoryButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
-        button.setTitleColor(.primaryBlue, for: .normal)
+        button.setTitleColor(.btnPrimary, for: .normal)
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .highlighted)
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .selected)
         button.titleLabel?.font = UIFont(name: FontType.regular.rawValue, size: 14)

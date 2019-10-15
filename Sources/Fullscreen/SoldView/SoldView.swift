@@ -35,7 +35,7 @@ public class SoldView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .primaryBlue
+        imageView.tintColor = .btnPrimary
         return imageView
     }()
 

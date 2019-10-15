@@ -70,7 +70,7 @@ public final class FloatingButton: UIButton {
 
     private func setupStyles() {
         backgroundColor = .milk
-        tintColor = .primaryBlue
+        tintColor = .btnPrimary
 
         contentMode = .center
 

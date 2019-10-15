@@ -29,8 +29,8 @@ public class UserAdsListHeaderView: UIView {
 
     private lazy var moreButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
-        button.tintColor = .primaryBlue
-        button.setTitleColor(.primaryBlue, for: .normal)
+        button.tintColor = .btnPrimary
+        button.setTitleColor(.btnPrimary, for: .normal)
         button.titleLabel?.font = .detailStrong
         button.backgroundColor = .clear
         button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)

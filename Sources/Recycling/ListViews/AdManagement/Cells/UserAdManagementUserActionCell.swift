@@ -51,7 +51,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
 
     private lazy var toggle: UISwitch = {
         let toggle = UISwitch(withAutoLayout: true)
-        toggle.onTintColor = .primaryBlue
+        toggle.onTintColor = .btnPrimary
         toggle.addTarget(self, action: #selector(toggleTapped(_:)), for: .touchUpInside)
         return toggle
     }()
