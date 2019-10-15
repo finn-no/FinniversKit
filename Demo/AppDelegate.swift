@@ -9,10 +9,7 @@ import FinniversKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    lazy var navigationController: NavigationController = {
-        let navigationController = NavigationController(rootViewController: DemoViewsTableViewController())
-        return navigationController
-    }()
+    lazy var navigationController = NavigationController(rootViewController: DemoViewsTableViewController())
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let userInterfaceStyle = UserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: State.currentUserInterfaceStyleKey))

@@ -38,7 +38,7 @@ public class UserAdsListViewNewAdCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         selectionStyle = .none
 
         addSubview(createNewAdButton)

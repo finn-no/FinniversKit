@@ -91,7 +91,7 @@ public class UserAdsListViewCell: UITableViewCell {
 
     private func setupView() {
         isAccessibilityElement = true
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         accessoryType = .disclosureIndicator
         selectionStyle = .none
 

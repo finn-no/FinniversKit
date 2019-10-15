@@ -14,8 +14,8 @@ extension Panel {
 
         var backgroundColor: UIColor {
             switch self {
-            case .plain: return .milk
-            case .info: return .ice
+            case .plain: return .bgPrimary
+            case .info: return .bgSecondary
             case .tips: return .toothPaste
             case .newFunctionality: return .mint
             case .success: return .mint

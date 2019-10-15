@@ -47,7 +47,7 @@ class StepDot: UIView {
 
         shapeLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: radius).cgPath
         shapeLayer.frame = frame
-        shapeLayer.fillColor = UIColor.milk.cgColor
+        shapeLayer.fillColor = UIColor.bgPrimary.cgColor
         return shapeLayer
     }()
 

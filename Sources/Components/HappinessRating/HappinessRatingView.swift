@@ -171,7 +171,7 @@ private class RatingImageView: UIImageView {
             let paddingToFitTwoLongWords: CGFloat = 3 // e.g: Veldig irriterende
 
             NSLayoutConstraint.activate([
-                label.topAnchor.constraint(equalTo: bottomAnchor, constant: .smallSpacing),
+                label.topAnchor.constraint(equalTo: bottomAnchor, constant: .mediumSpacing),
                 label.leadingAnchor.constraint(equalTo: leadingAnchor),
                 label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: paddingToFitTwoLongWords)
             ])

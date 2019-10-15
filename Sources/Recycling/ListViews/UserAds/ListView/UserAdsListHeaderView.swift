@@ -52,7 +52,7 @@ public class UserAdsListHeaderView: UIView {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .marble
+        backgroundColor = .bgTertiary
 
         addSubview(titleLabel)
         addSubview(moreButton)

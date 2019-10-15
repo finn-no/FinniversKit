@@ -75,7 +75,7 @@ final class FavoriteSearchEmptyView: UIView {
         )
 
         clipsToBounds = true
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         stackView.addArrangedSubview(magnifyingGlassImageView)
         stackView.addArrangedSubview(bodyLabel)

@@ -69,7 +69,7 @@ public class IconCollectionViewCell: UICollectionViewCell {
     }
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         isAccessibilityElement = true
 
         addSubview(iconImageView)

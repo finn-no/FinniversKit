@@ -70,13 +70,13 @@ public class QuestionnaireView: UIView {
     // MARK: - Init
 
     public override init(frame: CGRect) {
-        style = .normal(backgroundColor: .ice, primaryButtonIcon: nil)
+        style = .normal(backgroundColor: .bgSecondary, primaryButtonIcon: nil)
         super.init(frame: frame)
         setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        style = .normal(backgroundColor: .ice, primaryButtonIcon: nil)
+        style = .normal(backgroundColor: .bgSecondary, primaryButtonIcon: nil)
         super.init(coder: aDecoder)
         setup()
     }
