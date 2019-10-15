@@ -135,7 +135,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
         withAction action: FavoriteFolderAction,
         title: String,
         icon: FinniversImageAsset,
-        tintColor: UIColor = .licorice
+        tintColor: UIColor = .textPrimary
     ) -> FavoriteFolderActionButton {
         let button = FavoriteFolderActionButton(action: action, title: title, icon: icon, tintColor: tintColor)
         button.translatesAutoresizingMaskIntoConstraints = false

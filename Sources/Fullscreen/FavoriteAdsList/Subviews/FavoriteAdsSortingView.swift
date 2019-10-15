@@ -25,7 +25,7 @@ class FavoriteAdsSortingView: UIView {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .licorice
+        imageView.tintColor = .iconPrimary
         imageView.image = UIImage(named: .arrowDown).withRenderingMode(.alwaysTemplate)
         return imageView
     }()

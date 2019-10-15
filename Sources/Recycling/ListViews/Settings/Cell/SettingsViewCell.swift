@@ -25,7 +25,7 @@ public class SettingsViewCell: UITableViewCell {
     private lazy var arrowView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .sardine
+        imageView.tintColor = .decorationSubtle
         imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return imageView

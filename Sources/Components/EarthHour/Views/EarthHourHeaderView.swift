@@ -81,7 +81,7 @@ final class EarthHourHeaderView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .white
+        backgroundColor = .bgPrimary
         backgroundView.backgroundColor = fillColor
 
         bottomCurveView.backgroundColor = .clear

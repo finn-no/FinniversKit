@@ -23,7 +23,7 @@ final class FavoriteFolderActionButton: UIButton {
 
     // MARK: - Init
 
-    init(action: FavoriteFolderAction, title: String, icon: FinniversImageAsset, tintColor: UIColor = .licorice) {
+    init(action: FavoriteFolderAction, title: String, icon: FinniversImageAsset, tintColor: UIColor = .iconPrimary) {
         self.action = action
         self.enabledTintColor = tintColor
         super.init(frame: .zero)

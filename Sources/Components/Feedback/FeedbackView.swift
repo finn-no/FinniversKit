@@ -92,7 +92,7 @@ public class FeedbackView: UIView {
         backgroundColor = .bgSecondary
 
         layer.borderWidth = 1
-        layer.borderColor = .sardine
+        layer.borderColor = .decorationSubtle
         layer.cornerRadius = 8
         layer.masksToBounds = true
 

@@ -89,6 +89,14 @@ import UIKit
     public class var tableViewSeparator: UIColor {
         return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
+
+    public class var decorationSubtle: UIColor {
+        return .btnDisabled
+    }
+
+    public class var iconPrimary: UIColor {
+        return .textPrimary
+    }
 }
 
 // MARK: - FINN UIColors
@@ -342,6 +350,10 @@ extension CGColor {
 
     public class var tableViewSeparator: CGColor {
         return UIColor.tableViewSeparator.cgColor
+    }
+
+    public class var decorationSubtle: CGColor {
+        return UIColor.decorationSubtle.cgColor
     }
 }
 

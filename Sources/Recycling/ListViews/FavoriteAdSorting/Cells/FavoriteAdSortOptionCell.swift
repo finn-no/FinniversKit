@@ -92,7 +92,7 @@ final class FavoriteAdSortOptionCell: UITableViewCell {
     }
 
     private func hideCheckmark(_ hide: Bool) {
-        iconImageView.tintColor = hide ? .licorice : .btnPrimary
+        iconImageView.tintColor = hide ? .iconPrimary : .btnPrimary
 
         titleLabel.font = hide ? .body : .bodyStrong
         titleLabel.textColor = iconImageView.tintColor

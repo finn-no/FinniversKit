@@ -35,7 +35,7 @@ public final class StepSlider: UISlider {
     private lazy var trackView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .sardine
+        view.backgroundColor = .decorationSubtle
         view.layer.cornerRadius = 1.0
         return view
     }()

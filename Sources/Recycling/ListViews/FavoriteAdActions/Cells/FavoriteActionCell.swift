@@ -30,7 +30,7 @@ final class FavoriteActionCell: UITableViewCell {
 
     // MARK: - Setup
 
-    func configure(withTitle title: String, icon: FinniversImageAsset, tintColor: UIColor = .licorice) {
+    func configure(withTitle title: String, icon: FinniversImageAsset, tintColor: UIColor = .textPrimary) {
         titleLabel.text = title
         titleLabel.textColor = tintColor
         iconImageView.image = UIImage(named: icon).withRenderingMode(.alwaysTemplate)

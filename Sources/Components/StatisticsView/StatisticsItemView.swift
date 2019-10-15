@@ -12,7 +12,7 @@ public class StatisticsItemView: UIView {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
-        view.tintColor = .licorice
+        view.tintColor = .iconPrimary
         return view
     }()
 

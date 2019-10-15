@@ -17,7 +17,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
     private lazy var iconView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .licorice
+        imageView.tintColor = .iconPrimary
         return imageView
     }()
 
