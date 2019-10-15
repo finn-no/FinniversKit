@@ -256,6 +256,7 @@ extension CGColor {
     public class var marble: CGColor {
         return UIColor.marble.cgColor
     }
+}
 
 // MARK: - Semantic CGColors
 extension CGColor {
@@ -266,8 +267,83 @@ extension CGColor {
     public class var bgSecondary: CGColor {
         return UIColor.bgSecondary.cgColor
     }
-}
 
+    public class var bgTertiary: CGColor {
+        return UIColor.bgTertiary.cgColor
+    }
+
+    public class var bgAlert: CGColor {
+        return UIColor.bgAlert.cgColor
+    }
+
+    public class var bgSuccess: CGColor {
+        return UIColor.bgSuccess.cgColor
+    }
+
+    public class var bgCritical: CGColor {
+        return UIColor.bgCritical.cgColor
+    }
+
+    public class var btnPrimary: CGColor {
+        return UIColor.btnPrimary.cgColor
+    }
+
+    public class var btnDisabled: CGColor {
+        return UIColor.btnDisabled.cgColor
+    }
+
+    public class var btnCritical: CGColor {
+        return UIColor.btnCritical.cgColor
+    }
+
+    public class var textPrimary: CGColor {
+        return UIColor.textPrimary.cgColor
+    }
+
+    public class var textSecondary: CGColor {
+        return UIColor.textSecondary.cgColor
+    }
+
+    public class var textTertiary: CGColor {
+        return UIColor.textTertiary.cgColor
+    }
+
+    public class var textAction: CGColor {
+        return UIColor.textAction.cgColor
+    }
+
+    public class var textDisabled: CGColor {
+        return UIColor.textDisabled.cgColor
+    }
+
+    public class var textCritical: CGColor {
+        return UIColor.textCritical.cgColor
+    }
+
+    public class var accentSecondaryBlue: CGColor {
+        return UIColor.accentSecondaryBlue.cgColor
+    }
+
+    public class var accentPea: CGColor {
+        return UIColor.accentPea.cgColor
+    }
+
+    public class var accentToothpaste: CGColor {
+        return UIColor.accentToothpaste.cgColor
+    }
+
+    public class var textCTADisabled: CGColor {
+        return UIColor.textCTADisabled.cgColor
+    }
+
+    public class var textToast: CGColor {
+        return UIColor.textToast.cgColor
+    }
+
+    public class var tableViewSeparator: CGColor {
+        return UIColor.tableViewSeparator.cgColor
+    }
+}
 
 // MARK: - Button UIColors
 @objc extension UIColor {
