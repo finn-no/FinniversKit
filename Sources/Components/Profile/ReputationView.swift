@@ -88,7 +88,7 @@ public class ReputationView: UIView {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .primaryBlue
+        label.textColor = .textAction
         return label
     }()
 

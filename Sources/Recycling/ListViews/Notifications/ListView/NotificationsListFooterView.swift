@@ -14,7 +14,7 @@ public class NotificationsListFooterView: UITableViewHeaderFooterView {
 
     lazy var titleLabel: UILabel = {
         let label = Label(style: .detail)
-        label.textColor = .primaryBlue
+        label.textColor = .textAction
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
