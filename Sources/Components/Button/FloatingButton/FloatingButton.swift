@@ -9,7 +9,7 @@ public final class FloatingButton: UIButton {
 
     public override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? .bgSecondary : .milk
+            backgroundColor = isHighlighted ? .bgSecondary : .bgPrimary
         }
     }
 
@@ -23,7 +23,7 @@ public final class FloatingButton: UIButton {
 
     private lazy var badgeLabel: UILabel = {
         let label = Label(style: .captionStrong)
-        label.textColor = .milk
+        label.textColor = .textPrimary
         label.text = "12"
         label.textAlignment = .center
         return label
@@ -31,7 +31,7 @@ public final class FloatingButton: UIButton {
 
     public override var isSelected: Bool {
         didSet {
-            backgroundColor = isSelected ? .bgSecondary : .milk
+            backgroundColor = isSelected ? .bgSecondary : .bgPrimary
         }
     }
 
@@ -69,7 +69,7 @@ public final class FloatingButton: UIButton {
     }
 
     private func setupStyles() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         tintColor = .btnPrimary
 
         contentMode = .center

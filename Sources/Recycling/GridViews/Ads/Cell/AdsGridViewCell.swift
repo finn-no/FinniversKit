@@ -46,7 +46,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .milk
+        imageView.tintColor = .bgPrimary
         return imageView
     }()
 
@@ -86,7 +86,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var imageTextLabel: Label = {
         let label = Label(style: .bodyStrong)
-        label.textColor = .milk
+        label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label

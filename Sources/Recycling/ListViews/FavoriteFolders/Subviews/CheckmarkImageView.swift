@@ -10,7 +10,7 @@ extension UIImageView {
         imageView.layer.cornerRadius = 8
         imageView.backgroundColor = .btnPrimary
         imageView.image = UIImage(named: .check)
-        imageView.tintColor = .milk
+        imageView.tintColor = .bgPrimary
         imageView.contentMode = .scaleAspectFit
         return imageView
     }

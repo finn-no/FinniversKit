@@ -114,7 +114,7 @@ public class Button: UIButton {
         attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: style.textColor, range: textRange)
         let underlinedAttributedTitle = NSMutableAttributedString(string: title)
         let disabledAttributedTitle = NSMutableAttributedString(string: title)
-        disabledAttributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: style.disabledTextColor ?? UIColor.milk, range: textRange)
+        disabledAttributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: style.disabledTextColor ?? UIColor.textTertiary, range: textRange)
         let underlineAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
             NSAttributedString.Key.foregroundColor: style.highlightedTextColor ?? style.textColor

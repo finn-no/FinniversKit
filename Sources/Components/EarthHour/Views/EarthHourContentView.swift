@@ -43,7 +43,7 @@ class EarthHourContentView: UIView {
     // MARK: - Setup
 
     func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(titleLabel)
         addSubview(bodyTextLabel)
