@@ -75,7 +75,7 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         contentView.addSubview(remoteImageView)
 
         stackViewLeadingAnchorConstraint.isActive = false

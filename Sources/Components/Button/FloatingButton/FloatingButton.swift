@@ -9,7 +9,7 @@ public final class FloatingButton: UIButton {
 
     public override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? .ice : .milk
+            backgroundColor = isHighlighted ? .bgSecondary : .milk
         }
     }
 
@@ -31,7 +31,7 @@ public final class FloatingButton: UIButton {
 
     public override var isSelected: Bool {
         didSet {
-            backgroundColor = isSelected ? .ice : .milk
+            backgroundColor = isSelected ? .bgSecondary : .milk
         }
     }
 

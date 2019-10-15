@@ -159,7 +159,7 @@ public class IdentityView: UIView {
 
     private func setupSubviews() {
         layer.cornerRadius = 8
-        backgroundColor = .ice
+        backgroundColor = .bgSecondary
 
         addSubview(stackView)
         addSubview(profileImageView)

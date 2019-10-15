@@ -76,7 +76,7 @@ public class NotificationsListViewCell: UITableViewCell {
         addSubview(titleLabel)
         addSubview(priceLabel)
 
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         NSLayoutConstraint.activate([
             adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),

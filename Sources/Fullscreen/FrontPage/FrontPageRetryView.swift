@@ -68,7 +68,7 @@ final class FrontPageRetryView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(label)
         addSubview(button)

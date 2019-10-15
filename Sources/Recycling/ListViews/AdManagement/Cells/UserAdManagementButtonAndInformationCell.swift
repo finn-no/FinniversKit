@@ -44,7 +44,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
     private lazy var button: UIButton = {
         let button = UIButton(frame: .zero)
         button.titleLabel?.font = .detailStrong
-        button.titleLabel?.textColor = .milk
+        button.titleLabel?.textColor = .bgPrimary
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .primaryBlue
         button.layer.cornerRadius = 8
