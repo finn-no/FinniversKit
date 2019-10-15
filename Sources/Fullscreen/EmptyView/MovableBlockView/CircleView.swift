@@ -18,7 +18,7 @@ class CircleView: UIView, AttachableView {
     }
 
     private func setup() {
-        backgroundColor = .secondaryBlue
+        backgroundColor = .accentSecondaryBlue
         layer.cornerRadius = frame.width / 2
         clipsToBounds = true
     }
