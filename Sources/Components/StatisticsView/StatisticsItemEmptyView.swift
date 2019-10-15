@@ -10,7 +10,7 @@ public class StatisticsItemEmptyView: UIView {
 
     private lazy var hairlineView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         return view
     }()
 

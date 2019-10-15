@@ -10,7 +10,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
 
     private lazy var separator: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         return view
     }()
 

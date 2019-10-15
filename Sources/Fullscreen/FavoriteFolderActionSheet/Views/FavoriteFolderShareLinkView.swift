@@ -14,7 +14,7 @@ final class FavoriteFolderShareLinkView: UIView {
     var isEnabled = true {
         didSet {
             iconImageView.tintColor = isEnabled ? .licorice : .sardine
-            descriptionLabel.textColor = isEnabled ? .licorice : .sardine
+            descriptionLabel.textColor = isEnabled ? .licorice : .textDisabled
             button.isEnabled = isEnabled
         }
     }

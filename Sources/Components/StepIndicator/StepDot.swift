@@ -31,7 +31,7 @@ class StepDot: UIView {
         let shapeLayer = CAShapeLayer()
         let radius = diameter / 2.0
         shapeLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: radius).cgPath
-        shapeLayer.fillColor = UIColor.sardine.cgColor
+        shapeLayer.fillColor = UIColor.textDisabled.cgColor
         shapeLayer.frame = CGRect(x: 0, y: 0, width: diameter, height: diameter)
         return shapeLayer
     }()

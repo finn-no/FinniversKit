@@ -39,13 +39,13 @@ public class StatisticsItemView: UIView {
 
     private lazy var leftSeparator: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         return view
     }()
 
     private lazy var rightSeparator: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         return view
     }()
 

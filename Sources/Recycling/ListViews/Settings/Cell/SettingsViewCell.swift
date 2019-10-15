@@ -34,7 +34,7 @@ public class SettingsViewCell: UITableViewCell {
     private lazy var hairline: UIView = {
         let line = UIView(frame: .zero)
         line.translatesAutoresizingMaskIntoConstraints = false
-        line.backgroundColor = .sardine
+        line.backgroundColor = .textDisabled
         return line
     }()
 

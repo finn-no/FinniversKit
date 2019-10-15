@@ -10,7 +10,7 @@ final class FavoriteFolderActionButton: UIButton {
 
     private lazy var separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         view.isHidden = isSeparatorHidden
         return view
     }()
@@ -30,7 +30,7 @@ final class FavoriteFolderActionButton: UIButton {
 
         titleLabel?.font = .bodyStrong
         setTitleColor(tintColor, for: .normal)
-        setTitleColor(.sardine, for: .disabled)
+        setTitleColor(.btnDisabled, for: .disabled)
         setTitle(title, for: .normal)
 
         imageView?.tintColor = tintColor
@@ -61,7 +61,7 @@ final class FavoriteFolderActionButton: UIButton {
 
     override var isEnabled: Bool {
         didSet {
-            imageView?.tintColor = isEnabled ? enabledTintColor : .sardine
+            imageView?.tintColor = isEnabled ? enabledTintColor : .btnDisabled
         }
     }
 
