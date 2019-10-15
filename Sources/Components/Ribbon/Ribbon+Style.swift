@@ -17,7 +17,7 @@ public extension RibbonView {
             switch self {
             case .default: return .bgSecondary
             case .success: return .mint
-            case .warning: return .banana
+            case .warning: return .bgAlert
             case .error: return .salmon
             case .disabled: return .sardine
             case .sponsored: return .toothPaste

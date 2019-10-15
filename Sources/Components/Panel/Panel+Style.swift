@@ -19,7 +19,7 @@ extension Panel {
             case .tips: return .toothPaste
             case .newFunctionality: return .mint
             case .success: return .mint
-            case .warning: return .banana
+            case .warning: return .bgAlert
             case .error: return .salmon
             }
         }

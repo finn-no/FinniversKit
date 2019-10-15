@@ -67,7 +67,7 @@ public final class NativeAdvertView: UIView {
 
     private lazy var sponsoredByBackgroundView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .banana
+        view.backgroundColor = .bgAlert
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

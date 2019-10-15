@@ -8,7 +8,7 @@ final class FavoriteAdCommentView: UIView {
 
     // MARK: - Public properties
 
-    static let defaultBackgroundColor = UIColor.banana
+    static let defaultBackgroundColor = UIColor.bgAlert
 
     // MARK: - Private properties
 
