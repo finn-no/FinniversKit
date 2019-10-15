@@ -4,7 +4,7 @@
 
 import UIKit
 
-// Semantic colors, dark mode compatible
+// MARK: - Semantic colors, dark mode compatible
 @objc extension UIColor {
     public class var bgPrimary: UIColor {
         return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: UIColor(hex: "#1B1B24"))
@@ -91,7 +91,7 @@ import UIKit
     }
 }
 
-// FINN colors
+// MARK: - FINN UIColors
 @objc extension UIColor {
     public class var ice: UIColor {
         return UIColor(r: 241, g: 249, b: 255)!
@@ -195,6 +195,7 @@ import UIKit
     }
 }
 
+// MARK: - FINN CGColors
 extension CGColor {
     public class var ice: CGColor {
         return UIColor.ice.cgColor
@@ -256,6 +257,8 @@ extension CGColor {
         return UIColor.marble.cgColor
     }
 
+// MARK: - Semantic CGColors
+extension CGColor {
     public class var bgPrimary: CGColor {
         return UIColor.bgPrimary.cgColor
     }
@@ -265,8 +268,8 @@ extension CGColor {
     }
 }
 
-// MARK: - Button
 
+// MARK: - Button UIColors
 @objc extension UIColor {
     public class var callToActionButtonHighlightedBodyColor: UIColor {
         return btnPrimary.withAlphaComponent(0.8)
@@ -293,6 +296,7 @@ extension CGColor {
     }
 }
 
+// MARK: - Highlighted buttons CGColors
 extension CGColor {
     public class var callToActionButtonHighlightedBodyColor: CGColor {
         return UIColor.callToActionButtonHighlightedBodyColor.cgColor
@@ -315,7 +319,7 @@ extension CGColor {
     }
 }
 
-// MARK: - Cell
+// MARK: - Cell UIColors
 
 @objc extension UIColor {
     public class var defaultCellSelectedBackgroundColor: UIColor {
