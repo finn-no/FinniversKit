@@ -86,7 +86,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var imageTextLabel: Label = {
         let label = Label(style: .bodyStrong)
-        label.textColor = .textPrimary
+        label.textColor = .textTertiary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label

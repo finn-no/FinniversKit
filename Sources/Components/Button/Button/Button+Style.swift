@@ -43,7 +43,7 @@ public extension Button {
         var textColor: UIColor {
             switch self {
             case .default, .link, .flat: return .textAction
-            default: return .textPrimary
+            default: return .textTertiary
             }
         }
 
