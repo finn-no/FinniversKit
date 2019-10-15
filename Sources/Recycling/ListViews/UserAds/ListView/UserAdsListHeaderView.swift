@@ -20,7 +20,7 @@ public class UserAdsListHeaderView: UIView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .detailStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.backgroundColor = .clear
         label.numberOfLines = 0
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)

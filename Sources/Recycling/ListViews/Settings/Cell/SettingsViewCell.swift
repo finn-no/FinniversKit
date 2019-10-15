@@ -16,7 +16,7 @@ public class SettingsViewCell: UITableViewCell {
 
     private lazy var stateLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return label

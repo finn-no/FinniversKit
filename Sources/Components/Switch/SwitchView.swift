@@ -25,7 +25,7 @@ public class SwitchView: UIView {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .stone
+        label.textColor = .textSecondary
         return label
     }()
 

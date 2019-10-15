@@ -7,7 +7,7 @@ import UIKit
 class SettingsViewSectionHeaderView: UITableViewHeaderFooterView {
     private lazy var titleLabel: Label = {
         let label = Label(style: .detailStrong)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

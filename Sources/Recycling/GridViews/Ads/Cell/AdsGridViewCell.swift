@@ -59,7 +59,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
