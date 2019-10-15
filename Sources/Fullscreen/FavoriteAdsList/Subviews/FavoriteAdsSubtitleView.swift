@@ -13,7 +13,7 @@ final class SubtitleView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 

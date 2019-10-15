@@ -63,7 +63,7 @@ extension FavoriteActionCell {
     static func makeTitleLabel() -> UILabel {
         let label = UILabel(withAutoLayout: true)
         label.font = .bodyStrong
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }
 }

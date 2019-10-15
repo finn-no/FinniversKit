@@ -26,7 +26,7 @@ public class StatisticsItemEmptyView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.numberOfLines = 0
         label.font = UIFont.bodyStrong
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.textAlignment = .center
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
@@ -36,7 +36,7 @@ public class StatisticsItemEmptyView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.numberOfLines = 0
         label.font = UIFont.caption
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.textAlignment = .center
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label

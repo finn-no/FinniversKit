@@ -67,7 +67,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var accessoryLabel: Label = {
         let label = Label(style: .detailStrong)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label

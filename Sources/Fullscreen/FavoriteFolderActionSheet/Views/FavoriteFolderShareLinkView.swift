@@ -14,7 +14,7 @@ final class FavoriteFolderShareLinkView: UIView {
     var isEnabled = true {
         didSet {
             iconImageView.tintColor = isEnabled ? .licorice : .sardine
-            descriptionLabel.textColor = isEnabled ? .licorice : .textDisabled
+            descriptionLabel.textColor = isEnabled ? .textPrimary : .textDisabled
             button.isEnabled = isEnabled
         }
     }
@@ -30,7 +30,7 @@ final class FavoriteFolderShareLinkView: UIView {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.adjustsFontSizeToFitWidth = true
         return label
     }()

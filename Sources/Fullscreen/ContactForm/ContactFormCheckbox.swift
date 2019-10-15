@@ -14,7 +14,7 @@ final class ContactFormCheckbox: UIView {
     private lazy var questionLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -29,7 +29,7 @@ final class ContactFormCheckbox: UIView {
     private lazy var answerLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 

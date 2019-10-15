@@ -33,7 +33,7 @@ final class NeighborhoodProfileHeaderView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.font = NeighborhoodProfileHeaderView.titleFont
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 

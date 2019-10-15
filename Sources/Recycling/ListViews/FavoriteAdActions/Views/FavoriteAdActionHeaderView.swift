@@ -18,7 +18,7 @@ final class FavoriteAdActionHeaderView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = FavoriteAdActionHeaderView.titleLabelFont
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.textAlignment = .center
         label.numberOfLines = 0
         label.setContentHuggingPriority(.required, for: .vertical)

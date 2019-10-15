@@ -25,7 +25,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
         label.font = UIFont.bodyStrong
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -35,7 +35,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
         label.font = UIFont.detail
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

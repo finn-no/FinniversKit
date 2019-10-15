@@ -17,7 +17,7 @@ class FavoriteAdsSortingView: UIView {
     private lazy var sortingLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .detailStrong
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 
