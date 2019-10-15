@@ -34,7 +34,7 @@ public class FavoritesListViewCell: UITableViewCell {
 
     private lazy var detailLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label

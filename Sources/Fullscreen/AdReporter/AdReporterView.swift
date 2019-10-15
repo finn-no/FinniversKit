@@ -19,7 +19,7 @@ public class AdReporterView: UIScrollView {
 
     private lazy var hairlineView: UIView = {
         let line = UIView(frame: .zero)
-        line.backgroundColor = .sardine
+        line.backgroundColor = .textDisabled
         line.translatesAutoresizingMaskIntoConstraints = false
         return line
     }()

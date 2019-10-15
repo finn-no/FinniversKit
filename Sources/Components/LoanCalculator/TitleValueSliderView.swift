@@ -38,7 +38,7 @@ class TitleValueSlider: UIView {
 
     private lazy var valueLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.textColor = .primaryBlue
+        label.textColor = .textAction
         return label
     }()
 

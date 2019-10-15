@@ -65,7 +65,7 @@ public class EmptyView: UIView {
         let view = RectangleView(frame: CGRect(x: 0, y: 0, width: sizeOfSquare.width, height: sizeOfSquare.height))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
-        view.backgroundColor = .salmon
+        view.backgroundColor = .bgCritical
         return view
     }()
 

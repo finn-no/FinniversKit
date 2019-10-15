@@ -25,7 +25,7 @@ public final class ReviewButtonView: UIView {
 
     private lazy var hairlineSeperator: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         return view
     }()
 

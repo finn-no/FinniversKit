@@ -24,7 +24,7 @@ public final class BannerTransparencyView: UIView {
     private lazy var headerLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .caption
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 

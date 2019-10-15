@@ -12,7 +12,7 @@ final class EarthHourHeaderView: UIView {
 
     private(set) lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
-        button.tintColor = .milk
+        button.tintColor = .textPrimary
         button.setImage(UIImage(named: .close), for: .normal)
         return button
     }()
@@ -81,7 +81,7 @@ final class EarthHourHeaderView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .white
+        backgroundColor = .bgPrimary
         backgroundView.backgroundColor = fillColor
 
         bottomCurveView.backgroundColor = .clear

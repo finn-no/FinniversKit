@@ -65,7 +65,7 @@ public class ReputationView: UIView {
 
     private lazy var scoreBackgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .primaryBlue
+        view.backgroundColor = .btnPrimary
         view.layer.cornerRadius = reviewScoreSize / 2.0
         return view
     }()
@@ -88,7 +88,7 @@ public class ReputationView: UIView {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .primaryBlue
+        label.textColor = .textAction
         return label
     }()
 

@@ -9,20 +9,20 @@ class EarthHourContentView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.font = UIFont(name: FontType.bold.rawValue, size: 22)
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 
     private(set) lazy var bodyTextLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
 
     private(set) lazy var accessoryButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
-        button.setTitleColor(.primaryBlue, for: .normal)
+        button.setTitleColor(.btnPrimary, for: .normal)
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .highlighted)
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .selected)
         button.titleLabel?.font = UIFont(name: FontType.regular.rawValue, size: 14)
@@ -43,7 +43,7 @@ class EarthHourContentView: UIView {
     // MARK: - Setup
 
     func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(titleLabel)
         addSubview(bodyTextLabel)

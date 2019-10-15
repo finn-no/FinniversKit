@@ -54,7 +54,7 @@ public final class DrumMachineView: UIView {
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.minimumValue = 80
         slider.maximumValue = 160
-        slider.tintColor = .pea
+        slider.tintColor = .accentPea
         return slider
     }()
 

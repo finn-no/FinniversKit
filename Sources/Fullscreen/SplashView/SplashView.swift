@@ -20,7 +20,7 @@ public final class SplashView: UIView {
     private lazy var rightLogoView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.clipsToBounds = true
-        view.backgroundColor = .secondaryBlue
+        view.backgroundColor = .accentSecondaryBlue
         view.layer.borderColor = .bgPrimary
         view.layer.borderWidth = 3
         view.layer.cornerRadius = 4
@@ -55,7 +55,7 @@ public final class SplashView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .secondaryBlue
+        backgroundColor = .accentSecondaryBlue
 
         addSubview(leftLogoView)
         addSubview(rightLogoView)

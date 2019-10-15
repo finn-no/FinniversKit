@@ -31,7 +31,7 @@ public class RegisterView: UIView {
 
     private lazy var infoLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -97,7 +97,7 @@ public class RegisterView: UIView {
 
     private lazy var userTermsIntroLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

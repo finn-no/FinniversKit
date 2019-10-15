@@ -71,7 +71,7 @@ public final class ReviewButtonControl: UIControl {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 8
-        backgroundColor = .primaryBlue
+        backgroundColor = .btnPrimary
 
         addSubview(titleLabel)
         addSubview(imageView)

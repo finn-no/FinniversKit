@@ -96,7 +96,7 @@ public final class EarthHourView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         layer.masksToBounds = true
         layer.cornerRadius = 24
 
