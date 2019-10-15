@@ -98,7 +98,7 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
         view.addSubview(favoritesListView)
         favoritesListView.fillInSuperview()
 
-        favoritesListView.configureEmptyList(withImage: UIImage(named: .heartEmpty),
+        favoritesListView.configureEmptyListView(withImage: UIImage(named: .heartEmpty),
                                              title: "Her var det stille gitt...",
                                              body: "Det er ikke lagt til noen favoritter i denne listen enda.")
 

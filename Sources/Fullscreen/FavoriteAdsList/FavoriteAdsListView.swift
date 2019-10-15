@@ -179,7 +179,7 @@ public class FavoriteAdsListView: UIView {
 
     // MARK: - Public methods
 
-    public func configureEmptyList(withImage image: UIImage, title: String, body: String) {
+    public func configureEmptyListView(withImage image: UIImage, title: String, body: String) {
         emptyListView.configure(withImage: image,
                                 title: title,
                                 body: body)
