@@ -9,13 +9,13 @@ class EarthHourContentView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.font = UIFont(name: FontType.bold.rawValue, size: 22)
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 
     private(set) lazy var bodyTextLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()

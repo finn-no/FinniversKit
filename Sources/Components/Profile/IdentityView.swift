@@ -227,7 +227,7 @@ public class IdentityView: UIView {
 
     private func populateViews(with viewModel: IdentityViewModel) {
         profileNameLabel.text = viewModel.displayName
-        profileNameLabel.textColor = viewModel.displayMode == .interactible ? .primaryBlue : .licorice
+        profileNameLabel.textColor = viewModel.displayMode == .interactible ? .primaryBlue : .textPrimary
 
         verifiedBadge.isHidden = !viewModel.isVerified
 

@@ -33,7 +33,7 @@ extension Panel {
 
         var textColor: UIColor {
             switch self {
-            default: return .licorice
+            default: return .textPrimary
             }
         }
     }
