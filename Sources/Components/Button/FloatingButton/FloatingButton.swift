@@ -15,7 +15,7 @@ public final class FloatingButton: UIButton {
 
     private lazy var badgeView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .primaryBlue
+        view.backgroundColor = .btnPrimary
         view.layer.cornerRadius = badgeSize / 2
         view.isHidden = true
         return view

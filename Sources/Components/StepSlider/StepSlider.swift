@@ -43,7 +43,7 @@ public final class StepSlider: UISlider {
     private lazy var activeRangeTrackView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .primaryBlue
+        view.backgroundColor = .btnPrimary
         return view
     }()
 
