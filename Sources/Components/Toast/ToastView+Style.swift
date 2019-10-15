@@ -14,7 +14,7 @@ extension ToastView {
 
         var color: UIColor {
             switch self {
-            case .error, .errorButton: return .salmon
+            case .error, .errorButton: return .bgCritical
             default: return .bgSuccess
             }
         }

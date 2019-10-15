@@ -18,7 +18,7 @@ public extension RibbonView {
             case .default: return .bgSecondary
             case .success: return .bgSuccess
             case .warning: return .bgAlert
-            case .error: return .salmon
+            case .error: return .bgCritical
             case .disabled: return .sardine
             case .sponsored: return .toothPaste
             }

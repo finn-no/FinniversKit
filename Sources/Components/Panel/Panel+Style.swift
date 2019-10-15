@@ -20,7 +20,7 @@ extension Panel {
             case .newFunctionality: return .bgSuccess
             case .success: return .bgSuccess
             case .warning: return .bgAlert
-            case .error: return .salmon
+            case .error: return .bgCritical
             }
         }
 
