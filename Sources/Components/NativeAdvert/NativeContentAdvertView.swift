@@ -50,6 +50,7 @@ public final class NativeContentAdvertView: UIView {
         label.numberOfLines = 0
         label.minimumScaleFactor = 0.5
         label.adjustsFontSizeToFitWidth = true
+        label.textColor = .textToast
         return label
     }()
 

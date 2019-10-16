@@ -44,6 +44,7 @@ public final class NativeAdvertView: UIView {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .iconPrimary
         return imageView
     }()
 
@@ -58,7 +59,7 @@ public final class NativeAdvertView: UIView {
     private lazy var sponsoredByLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 1
-        label.textColor = .textPrimary
+        label.textColor = .textToast
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .horizontal)
