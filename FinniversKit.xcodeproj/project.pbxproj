@@ -293,7 +293,7 @@
 		9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */; };
 		9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */; };
 		9BCDFC7622E09E3C00A80D7F /* KlimabroletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7522E09E3C00A80D7F /* KlimabroletViewModel.swift */; };
-		9BD13F7023570AF000CAA6BB /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F6F23570AF000CAA6BB /* SnapshotTesting */; };
+		9BD13F7323572BA300CAA6BB /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F7223572BA300CAA6BB /* SnapshotTesting */; };
 		9BEAA36D233B729500240F3D /* XCTestCastExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAA36C233B729500240F3D /* XCTestCastExtensions.swift */; };
 		9BEB2874231D233D00D28BAD /* LoanCalculatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB2873231D233D00D28BAD /* LoanCalculatorDemoView.swift */; };
 		9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB2876231D240100D28BAD /* LoanCalculatorView.swift */; };
@@ -1098,7 +1098,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */,
-				9BD13F7023570AF000CAA6BB /* SnapshotTesting in Frameworks */,
+				9BD13F7323572BA300CAA6BB /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3897,7 +3897,7 @@
 			);
 			name = UnitTests;
 			packageProductDependencies = (
-				9BD13F6F23570AF000CAA6BB /* SnapshotTesting */,
+				9BD13F7223572BA300CAA6BB /* SnapshotTesting */,
 			);
 			productName = UnitTests;
 			productReference = 14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */;
@@ -3962,7 +3962,7 @@
 			);
 			mainGroup = 25D04D721F583B1800EA317D;
 			packageReferences = (
-				9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				9BD13F7123572BA300CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 25D04D7C1F583B1800EA317D /* Products */;
 			projectDirPath = "";
@@ -4926,20 +4926,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+		9BD13F7123572BA300CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			repositoryURL = "https://github.com/fespinoza/swift-snapshot-testing.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.6.0;
+				branch = "dark-mode-support-with-xcode-11";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9BD13F6F23570AF000CAA6BB /* SnapshotTesting */ = {
+		9BD13F7223572BA300CAA6BB /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			package = 9BD13F7123572BA300CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
