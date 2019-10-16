@@ -3866,6 +3866,8 @@
 				DAD475A321149386009449DF /* PBXTargetDependency */,
 			);
 			name = UnitTests;
+			packageProductDependencies = (
+			);
 			productName = UnitTests;
 			productReference = 14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -3928,6 +3930,8 @@
 				Base,
 			);
 			mainGroup = 25D04D721F583B1800EA317D;
+			packageReferences = (
+			);
 			productRefGroup = 25D04D7C1F583B1800EA317D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -4599,10 +4603,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = D34XZHQLE3;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = UnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
@@ -4626,10 +4626,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = D34XZHQLE3;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = UnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
