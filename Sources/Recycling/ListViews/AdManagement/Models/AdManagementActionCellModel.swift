@@ -32,8 +32,8 @@ public struct AdManagementActionCellModel {
         let typesRequiringChevron: [AdManagementActionType] = [.edit, .review, .republish]
         let imagesForTypes: [AdManagementActionType: UIImage] = [.delete: UIImage(named: .adManagementTrashcan),
                                                                  .edit: UIImage(named: .pencilPaper),
-                                                                 .stop: UIImage(named: .eyeHide),
-                                                                 .start: UIImage(named: .statsEye),
+                                                                 .stop: UIImage(named: .hide),
+                                                                 .start: UIImage(named: .view),
                                                                  .republish: UIImage(named: .republish),
                                                                  .dispose: UIImage(named: .checkCircle),
                                                                  .undispose: UIImage(named: .uncheckCircle),
