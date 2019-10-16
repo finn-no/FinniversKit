@@ -290,8 +290,6 @@
 		9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */; };
 		9BCDFC7622E09E3C00A80D7F /* KlimabroletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7522E09E3C00A80D7F /* KlimabroletViewModel.swift */; };
 		9BEAA36D233B729500240F3D /* XCTestCastExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAA36C233B729500240F3D /* XCTestCastExtensions.swift */; };
-		9BEAA36F233B76E900240F3D /* SnapshotTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEAA36E233B76E900240F3D /* SnapshotTesting.framework */; };
-		9BEAA371233B772F00240F3D /* SnapshotTesting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BEAA36E233B76E900240F3D /* SnapshotTesting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9BEB2874231D233D00D28BAD /* LoanCalculatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB2873231D233D00D28BAD /* LoanCalculatorDemoView.swift */; };
 		9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB2876231D240100D28BAD /* LoanCalculatorView.swift */; };
 		9BEB287B231D484B00D28BAD /* LoanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB2879231D482F00D28BAD /* LoanHeaderView.swift */; };
@@ -555,16 +553,6 @@
 				44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9BEAA370233B770E00240F3D /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				9BEAA371233B772F00240F3D /* SnapshotTesting.framework in CopyFiles */,
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -1100,7 +1088,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BEAA36F233B76E900240F3D /* SnapshotTesting.framework in Frameworks */,
 				14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3871,8 +3858,6 @@
 				14F4F1B51FD6CEA800E9CECA /* Sources */,
 				14F4F1B61FD6CEA800E9CECA /* Frameworks */,
 				14F4F1B71FD6CEA800E9CECA /* Resources */,
-				DAA14BC4211475CE00F47E8C /* ShellScript */,
-				9BEAA370233B770E00240F3D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -4022,20 +4007,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "ruby \"${SRCROOT}/Scripts/generate_image_assets_symbols\" FinniversImageAsset\n";
-		};
-		DAA14BC4211475CE00F47E8C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SnapshotTesting.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
