@@ -31,7 +31,6 @@ public class BasicTableViewDemoView: UIView {
     private func setup() {
         let view = BasicTableView(items: items)
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         view.fillInSuperview()
     }

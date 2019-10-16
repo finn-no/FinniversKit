@@ -29,18 +29,15 @@ open class BasicTableView: ShadowScrollView {
     // MARK: - Internal properties
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        let tableView = UITableView(withAutoLayout: true)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .bgPrimary
-        tableView.rowHeight = BasicTableView.estimatedRowHeight
         tableView.estimatedRowHeight = BasicTableView.estimatedRowHeight
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.separatorColor = .tableViewSeparator
         tableView.separatorInset = .leadingInset(frame.width)
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 48
+        tableView.estimatedRowHeight = BasicTableView.estimatedRowHeight
         return tableView
     }()
 
@@ -76,19 +73,12 @@ open class BasicTableView: ShadowScrollView {
 
         if usingShadowWhenScrolling {
             insertSubview(tableView, belowSubview: topShadowView)
-
-            NSLayoutConstraint.activate([
-                topShadowView.bottomAnchor.constraint(equalTo: topAnchor),
-
-                tableView.topAnchor.constraint(equalTo: topAnchor),
-                tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-                tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                ])
+            let anchor = topShadowView.bottomAnchor.constraint(equalTo: topAnchor)
+            anchor.isActive = true
         } else {
             addSubview(tableView)
-            tableView.fillInSuperview()
         }
+        tableView.fillInSuperview()
     }
 }
 
