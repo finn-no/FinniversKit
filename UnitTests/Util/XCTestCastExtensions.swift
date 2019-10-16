@@ -20,13 +20,6 @@ extension XCTestCase {
             file: file, testName: testName, line: line
         )
 
-//        if includeDarkMode {
-//            assertSnapshot(
-//                matching: viewController, as: .image(on: .iPhoneX(.portrait, .dark)), named: "iPhone-Dark",
-//                file: file, testName: testName, line: line
-//            )
-//        }
-
         if includeIPad {
             assertSnapshot(
                 matching: viewController, as: .image(on: .iPadPro11), named: "iPad",
