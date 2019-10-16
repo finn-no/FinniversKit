@@ -21,7 +21,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
 
     private lazy var separatorView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         return view
     }()
 

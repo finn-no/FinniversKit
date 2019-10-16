@@ -27,7 +27,7 @@ public final class FavoriteAdSortingView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .milk
+        tableView.backgroundColor = .bgPrimary
         tableView.rowHeight = FavoriteAdSortingView.rowHeight
         tableView.estimatedRowHeight = FavoriteAdSortingView.rowHeight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

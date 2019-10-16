@@ -24,8 +24,8 @@ public final class CalloutView: UIView {
 
     private lazy var boxView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .mint
-        view.layer.borderColor = .pea
+        view.backgroundColor = .bgSuccess
+        view.layer.borderColor = .accentPea
         view.layer.borderWidth = 2
         view.layer.cornerRadius = .mediumSpacing
         return view
@@ -40,7 +40,7 @@ public final class CalloutView: UIView {
     private lazy var textLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = UIFont(name: FontType.bold.rawValue, size: 16.0)?.scaledFont(forTextStyle: .callout)
-        label.textColor = .licorice
+        label.textColor = .textToast
         label.numberOfLines = 0
         return label
     }()
@@ -138,14 +138,14 @@ private final class ArrowView: UIView {
     private lazy var triangleLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.lineWidth = 2
-        layer.fillColor = .mint
-        layer.strokeColor = .pea
+        layer.fillColor = .bgSuccess
+        layer.strokeColor = .accentPea
         return layer
     }()
 
     private lazy var bottomBorderLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.backgroundColor = .mint
+        layer.backgroundColor = .bgSuccess
         return layer
     }()
 

@@ -28,7 +28,7 @@ class ReviewProfileCell: UITableViewCell {
     lazy var hairlineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .ice
+        view.backgroundColor = .bgSecondary
         return view
     }()
 

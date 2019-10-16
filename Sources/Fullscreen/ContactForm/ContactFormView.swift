@@ -34,7 +34,7 @@ public final class ContactFormView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .title3
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -42,7 +42,7 @@ public final class ContactFormView: UIView {
     private lazy var detailTextLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -151,7 +151,7 @@ public final class ContactFormView: UIView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
 
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(scrollView)
         scrollView.addSubview(contentView)

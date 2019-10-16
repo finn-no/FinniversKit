@@ -12,7 +12,7 @@ public class StatisticsItemView: UIView {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
-        view.tintColor = .licorice
+        view.tintColor = .iconPrimary
         return view
     }()
 
@@ -21,7 +21,7 @@ public class StatisticsItemView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.font = UIFont.title2 // subject to change medium/26 seems closer to the sketches
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.textAlignment = .center
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
@@ -32,20 +32,20 @@ public class StatisticsItemView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.font = UIFont.caption
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.textAlignment = .center
         return label
     }()
 
     private lazy var leftSeparator: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         return view
     }()
 
     private lazy var rightSeparator: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         return view
     }()
 

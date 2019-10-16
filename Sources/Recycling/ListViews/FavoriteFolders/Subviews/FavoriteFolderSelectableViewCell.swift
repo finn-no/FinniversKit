@@ -5,7 +5,7 @@
 import UIKit
 
 public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
-    private let titleLabelDefaultFont: UIFont = .body
+    private let titleLabelDefaultFont: UIFont = .bodyRegular
     private let titleLabelSelectedFont: UIFont = .bodyStrong
     private var isEditable = true
 
@@ -17,7 +17,7 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     private lazy var editModeView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         view.isHidden = true
         return view
     }()
@@ -43,12 +43,12 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
 
     public override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        checkmarkImageView.backgroundColor = .primaryBlue
+        checkmarkImageView.backgroundColor = .btnPrimary
     }
 
     public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
-        checkmarkImageView.backgroundColor = .primaryBlue
+        checkmarkImageView.backgroundColor = .btnPrimary
     }
 
     public override func prepareForReuse() {
@@ -91,7 +91,8 @@ public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     // MARK: - Private methods
 
     private func setup() {
-        tintColor = .primaryBlue
+        tintColor = .btnPrimary
+        subtitleLabel.textColor = .textSecondary
 
         contentView.addSubview(checkmarkImageView)
         addSubview(editModeView)

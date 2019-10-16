@@ -13,7 +13,7 @@ public class ConsentToggleView: UIView {
 
     private var titleLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -21,21 +21,21 @@ public class ConsentToggleView: UIView {
 
     private var toggle: UISwitch = {
         let toggle = UISwitch(withAutoLayout: true)
-        toggle.onTintColor = .primaryBlue
+        toggle.onTintColor = .btnPrimary
         toggle.addTarget(self, action: #selector(switchDidToogle(sender:)), for: .valueChanged)
         return toggle
     }()
 
     private var backgroundView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .ice
+        view.backgroundColor = .bgSecondary
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private lazy var textLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

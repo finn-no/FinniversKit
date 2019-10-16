@@ -5,7 +5,7 @@
 import UIKit
 
 protocol FavoriteAdViewDelegate: AnyObject {
-    func favoriteAdViewDidSelectMoreButton(_ view: FavoriteAdView)
+    func favoriteAdView(_ view: FavoriteAdView, didSelectMoreButton button: UIButton)
 }
 
 final class FavoriteAdView: UIView {
@@ -36,12 +36,12 @@ final class FavoriteAdView: UIView {
 
     private var viewModel: FavoriteAdViewModel?
 
-    private lazy var sortingDetailLabel = label(withFont: .detailStrong, textColor: .primaryBlue, numberOfLines: 2)
-    private lazy var addressLabel = label(withFont: .detail, textColor: .stone, numberOfLines: 2, isHidden: false)
-    private lazy var titleLabel = label(withFont: .caption, textColor: .licorice, numberOfLines: 2, isHidden: false)
-    private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .licorice, numberOfLines: 0)
-    private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .licorice, numberOfLines: 0)
-    private lazy var descriptionTertiaryLabel = label(withFont: .detailStrong, textColor: .licorice, numberOfLines: 0)
+    private lazy var sortingDetailLabel = label(withFont: .detailStrong, textColor: .textAction, numberOfLines: 2)
+    private lazy var addressLabel = label(withFont: .detail, textColor: .textSecondary, numberOfLines: 2, isHidden: false)
+    private lazy var titleLabel = label(withFont: .caption, textColor: .textPrimary, numberOfLines: 2, isHidden: false)
+    private lazy var descriptionPrimaryLabel = label(withFont: .bodyStrong, textColor: .textPrimary, numberOfLines: 0)
+    private lazy var descriptionSecondaryLabel = label(withFont: .detail, textColor: .textPrimary, numberOfLines: 0)
+    private lazy var descriptionTertiaryLabel = label(withFont: .detailStrong, textColor: .textPrimary, numberOfLines: 0)
     private lazy var statusRibbon = RibbonView(withAutoLayout: true)
     private lazy var commentView = FavoriteAdCommentView(withAutoLayout: true)
     private lazy var fallbackImage: UIImage = UIImage(named: .noImage)
@@ -249,7 +249,7 @@ final class FavoriteAdView: UIView {
     // MARK: - Private methods
 
     @objc private func moreButtonTapped() {
-        delegate?.favoriteAdViewDidSelectMoreButton(self)
+        delegate?.favoriteAdView(self, didSelectMoreButton: moreButton)
     }
 
     private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {

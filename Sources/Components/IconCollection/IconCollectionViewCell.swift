@@ -32,7 +32,7 @@ public class IconCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.font = .body
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
@@ -69,7 +69,7 @@ public class IconCollectionViewCell: UICollectionViewCell {
     }
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
         isAccessibilityElement = true
 
         addSubview(iconImageView)

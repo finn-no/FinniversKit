@@ -14,26 +14,26 @@ extension Panel {
 
         var backgroundColor: UIColor {
             switch self {
-            case .plain: return .milk
-            case .info: return .ice
-            case .tips: return .toothPaste
-            case .newFunctionality: return .mint
-            case .success: return .mint
-            case .warning: return .banana
-            case .error: return .salmon
+            case .plain: return .bgPrimary
+            case .info: return .bgSecondary
+            case .tips: return .accentToothpaste
+            case .newFunctionality: return .bgSuccess
+            case .success: return .bgSuccess
+            case .warning: return .bgAlert
+            case .error: return .bgCritical
             }
         }
 
         var borderColor: UIColor? {
             switch self {
-            case .newFunctionality: return .pea
+            case .newFunctionality: return .accentPea
             default: return nil
             }
         }
 
         var textColor: UIColor {
             switch self {
-            default: return .licorice
+            default: return .textPrimary
             }
         }
     }

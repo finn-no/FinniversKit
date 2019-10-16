@@ -46,7 +46,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .milk
+        imageView.tintColor = .bgPrimary
         return imageView
     }()
 
@@ -59,7 +59,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var subtitleLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -67,7 +67,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var accessoryLabel: Label = {
         let label = Label(style: .detailStrong)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -86,7 +86,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
     private lazy var imageTextLabel: Label = {
         let label = Label(style: .bodyStrong)
-        label.textColor = .milk
+        label.textColor = .textTertiary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -146,7 +146,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         imageDescriptionView.addSubview(iconImageView)
         imageDescriptionView.addSubview(imageTextLabel)
 
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         NSLayoutConstraint.activate([
             imageBackgroundView.topAnchor.constraint(equalTo: topAnchor),

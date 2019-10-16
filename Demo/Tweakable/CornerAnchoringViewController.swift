@@ -7,8 +7,8 @@ protocol CornerAnchoringViewDelegate: AnyObject {
 class CornerAnchoringView: UIView {
     weak var delegate: CornerAnchoringViewDelegate?
 
-    private lazy var anchoredView: EasterEggButton = {
-        let button = EasterEggButton(withAutoLayout: true)
+    private lazy var anchoredView: FloatingButton = {
+        let button = FloatingButton(withAutoLayout: true)
         button.tintColor = .btnPrimary
         button.setImage(UIImage(named: .wrench).withRenderingMode(.alwaysTemplate), for: .normal)
         button.addTarget(self, action: #selector(tweakButtonAction), for: .touchUpInside)

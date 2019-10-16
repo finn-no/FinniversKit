@@ -84,6 +84,8 @@ public enum FinniversImageAsset: String {
     case giftTriangleGreen
     case gridView
     case handshake
+    case heartEmpty
+    case heartEmptyDashed
     case help
     case hide
     case home
@@ -112,6 +114,7 @@ public enum FinniversImageAsset: String {
     case more
     case moreImg
     case moteplassen
+    case navigation
     case noImage
     case notifications
     case okonomi
@@ -236,6 +239,8 @@ public enum FinniversImageAsset: String {
             .giftTriangleGreen,
             .gridView,
             .handshake,
+            .heartEmpty,
+            .heartEmptyDashed,
             .help,
             .hide,
             .home,
@@ -264,6 +269,7 @@ public enum FinniversImageAsset: String {
             .more,
             .moreImg,
             .moteplassen,
+            .navigation,
             .noImage,
             .notifications,
             .okonomi,

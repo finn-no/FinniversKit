@@ -71,7 +71,7 @@ public class SaveSearchView: UIView {
     private lazy var hairline: UIView = {
         let line = UIView(frame: .zero)
         line.translatesAutoresizingMaskIntoConstraints = false
-        line.backgroundColor = .sardine
+        line.backgroundColor = .textDisabled
         return line
     }()
 
@@ -120,7 +120,7 @@ public class SaveSearchView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         scrollView.addSubview(contentView)
         addSubview(scrollView)

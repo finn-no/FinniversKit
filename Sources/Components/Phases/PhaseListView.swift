@@ -48,7 +48,7 @@ public final class PhaseListView: UIView {
     }
 
     private func setup() {
-        backgroundColor = .ice
+        backgroundColor = .bgSecondary
         layer.cornerRadius = .mediumSpacing
 
         addSubview(stackView)
@@ -65,7 +65,7 @@ public final class PhaseListView: UIView {
 
     private func addLineView(from viewA: UIView, to viewB: UIView) {
         let lineView = UIView(withAutoLayout: true)
-        lineView.backgroundColor = .sardine
+        lineView.backgroundColor = .textDisabled
         insertSubview(lineView, belowSubview: stackView)
 
         NSLayoutConstraint.activate([

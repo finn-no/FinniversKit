@@ -10,14 +10,14 @@ public class UserAdManagementUserActionCell: UITableViewCell {
 
     private lazy var separator: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         return view
     }()
 
     private lazy var iconView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .licorice
+        imageView.tintColor = .iconPrimary
         return imageView
     }()
 
@@ -25,7 +25,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
         label.font = UIFont.bodyStrong
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -35,7 +35,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
         label.font = UIFont.detail
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -51,7 +51,7 @@ public class UserAdManagementUserActionCell: UITableViewCell {
 
     private lazy var toggle: UISwitch = {
         let toggle = UISwitch(withAutoLayout: true)
-        toggle.onTintColor = .primaryBlue
+        toggle.onTintColor = .btnPrimary
         toggle.addTarget(self, action: #selector(toggleTapped(_:)), for: .touchUpInside)
         return toggle
     }()

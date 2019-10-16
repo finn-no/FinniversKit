@@ -231,7 +231,7 @@ private final class InfoRowView: UIView {
     private func makeLabel() -> UILabel {
         let label = UILabel(withAutoLayout: true)
         label.font = InfoRowView.labelFont
-        label.textColor = .stone
+        label.textColor = .textSecondary
         return label
     }
 }

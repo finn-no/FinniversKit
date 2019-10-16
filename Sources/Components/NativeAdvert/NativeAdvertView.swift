@@ -58,7 +58,7 @@ public final class NativeAdvertView: UIView {
     private lazy var sponsoredByLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 1
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .horizontal)
@@ -67,7 +67,7 @@ public final class NativeAdvertView: UIView {
 
     private lazy var sponsoredByBackgroundView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .banana
+        view.backgroundColor = .bgAlert
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -76,7 +76,7 @@ public final class NativeAdvertView: UIView {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingTail
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label

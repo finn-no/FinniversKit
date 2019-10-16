@@ -29,7 +29,7 @@ class KlimabroletContentView: UIView {
             .scaledFont(forTextStyle: .title2)
         label.font = font
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -73,7 +73,7 @@ class KlimabroletContentView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(bannerImageView)
         addSubview(titleLabel)

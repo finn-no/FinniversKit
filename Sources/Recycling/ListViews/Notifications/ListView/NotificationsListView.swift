@@ -34,7 +34,7 @@ public class NotificationsListView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .milk
+        tableView.backgroundColor = .bgPrimary
         tableView.rowHeight = NotificationsListView.estimatedRowHeight
         tableView.estimatedRowHeight = NotificationsListView.estimatedRowHeight
         tableView.estimatedSectionHeaderHeight = NotificationsListView.estimatedSectionHeaderHeight

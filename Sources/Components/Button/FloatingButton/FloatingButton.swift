@@ -4,26 +4,26 @@
 
 import UIKit
 
-public final class EasterEggButton: UIButton {
+public final class FloatingButton: UIButton {
     private let badgeSize: CGFloat = 30
 
     public override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? .ice : .milk
+            backgroundColor = isHighlighted ? .bgSecondary : .bgPrimary
         }
     }
 
-    lazy var badgeView: UIView = {
+    private lazy var badgeView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .primaryBlue
+        view.backgroundColor = .btnPrimary
         view.layer.cornerRadius = badgeSize / 2
         view.isHidden = true
         return view
     }()
 
-    lazy var badgeLabel: UILabel = {
+    private lazy var badgeLabel: UILabel = {
         let label = Label(style: .captionStrong)
-        label.textColor = .milk
+        label.textColor = .textPrimary
         label.text = "12"
         label.textAlignment = .center
         return label
@@ -31,7 +31,7 @@ public final class EasterEggButton: UIButton {
 
     public override var isSelected: Bool {
         didSet {
-            backgroundColor = isSelected ? .ice : .milk
+            backgroundColor = isSelected ? .bgSecondary : .bgPrimary
         }
     }
 
@@ -69,8 +69,8 @@ public final class EasterEggButton: UIButton {
     }
 
     private func setupStyles() {
-        backgroundColor = .milk
-        tintColor = .primaryBlue
+        backgroundColor = .bgPrimary
+        tintColor = .btnPrimary
 
         contentMode = .center
 

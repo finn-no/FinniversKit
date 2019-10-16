@@ -6,7 +6,7 @@ import FinniversKit
 public enum ComponentDemoViews: String, CaseIterable {
     case button
     case dialogue
-    case easterEggButton
+    case floatingButton
     case cogWheelButton
     case label
     case ribbon
@@ -58,9 +58,9 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .button:
             return DemoViewControllerContainer<ButtonDemoView>()
         case .dialogue:
-            return DemoViewControllerContainer<DialogueDemoView>()
-        case .easterEggButton:
-            return DemoViewControllerContainer<EasterEggButtonDemoView>()
+            return DemoViewController<DialogueDemoView>()
+        case .floatingButton:
+            return DemoViewController<FloatingButtonDemoView>()
         case .reviewButtonView:
             return DemoViewControllerContainer<ReviewButtonViewDemoView>()
         case .cogWheelButton:

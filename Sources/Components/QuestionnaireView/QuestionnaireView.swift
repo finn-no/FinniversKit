@@ -28,7 +28,7 @@ public class QuestionnaireView: UIView {
         let label = Label(style: style.titleStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 
@@ -36,7 +36,7 @@ public class QuestionnaireView: UIView {
         let label = Label(style: style.detailStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -70,13 +70,13 @@ public class QuestionnaireView: UIView {
     // MARK: - Init
 
     public override init(frame: CGRect) {
-        style = .normal(backgroundColor: .ice, primaryButtonIcon: nil)
+        style = .normal(backgroundColor: .bgSecondary, primaryButtonIcon: nil)
         super.init(frame: frame)
         setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        style = .normal(backgroundColor: .ice, primaryButtonIcon: nil)
+        style = .normal(backgroundColor: .bgSecondary, primaryButtonIcon: nil)
         super.init(coder: aDecoder)
         setup()
     }

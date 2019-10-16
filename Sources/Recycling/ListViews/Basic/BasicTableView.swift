@@ -29,23 +29,24 @@ open class BasicTableView: ShadowScrollView {
     // MARK: - Internal properties
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        let tableView = UITableView(withAutoLayout: true)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .bgPrimary
-        tableView.rowHeight = BasicTableView.estimatedRowHeight
         tableView.estimatedRowHeight = BasicTableView.estimatedRowHeight
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        //tableView.separatorColor = .tableViewSeparator
+        tableView.separatorColor = .tableViewSeparator
+        tableView.separatorInset = .leadingInset(frame.width)
         return tableView
     }()
+
+    private var usingShadowWhenScrolling: Bool = false
 
     public weak var delegate: BasicTableViewDelegate?
 
     // MARK: - Setup
 
-    public init(items: [BasicTableViewItem]) {
+    public init(items: [BasicTableViewItem], usingShadowWhenScrolling: Bool = false) {
+        self.usingShadowWhenScrolling = usingShadowWhenScrolling
         self.items = items
         super.init(frame: .zero)
         setup()
@@ -68,16 +69,14 @@ open class BasicTableView: ShadowScrollView {
         backgroundColor = .bgPrimary
         tableView.register(BasicTableViewCell.self)
 
-        insertSubview(tableView, belowSubview: topShadowView)
-
-        NSLayoutConstraint.activate([
-            topShadowView.bottomAnchor.constraint(equalTo: topAnchor),
-
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            ])
+        if usingShadowWhenScrolling {
+            insertSubview(tableView, belowSubview: topShadowView)
+            let anchor = topShadowView.bottomAnchor.constraint(equalTo: topAnchor)
+            anchor.isActive = true
+        } else {
+            addSubview(tableView)
+        }
+        tableView.fillInSuperview()
     }
 }
 

@@ -127,6 +127,6 @@ open class BasicTableViewCell: UITableViewCell {
 
             detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             detailLabelTrailingConstraint
-        ])
+            ])
     }
 }

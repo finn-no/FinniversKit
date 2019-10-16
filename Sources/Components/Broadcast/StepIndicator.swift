@@ -24,7 +24,7 @@ public class StepIndicator: UIView {
 
     static let animationDuration = 0.25
     static let activeColor = UIColor(r: 82, g: 188, b: 245)!
-    static let inactiveColor = UIColor.sardine
+    static let inactiveColor = UIColor.decorationSubtle
 
     // MARK: - Private properties
 

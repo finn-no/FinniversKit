@@ -6,10 +6,11 @@ import UIKit
 
 public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath)
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath)
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath)
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath)
-    func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButton button: UIButton, at indexPath: IndexPath)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath, sender: UIView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectSortingView sortingView: UIView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareButton button: UIButton)
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool)
@@ -73,8 +74,14 @@ public class FavoriteAdsListView: UIView {
         set { tableHeaderView.searchBarText = newValue }
     }
 
-    public var sortingTitle: String = "" {
+    public var sortingTitle = "" {
         didSet { tableHeaderView.sortingTitle = sortingTitle }
+    }
+
+    public var isShared = false {
+        didSet {
+            tableHeaderView.shareButtonTitle = isShared ? viewModel.shareButtonTitle : ""
+        }
     }
 
     // MARK: - Private properties
@@ -108,8 +115,14 @@ public class FavoriteAdsListView: UIView {
         return tableHeader
     }()
 
-    private lazy var emptyView: FavoriteEmptyView = {
-        let emptyView = FavoriteEmptyView()
+    private lazy var emptySearchView: FavoriteSearchEmptyView = {
+        let emptyView = FavoriteSearchEmptyView()
+        emptyView.isHidden = true
+        return emptyView
+    }()
+
+    private lazy var emptyListView: FavoriteAdsListEmptyView = {
+        let emptyView = FavoriteAdsListEmptyView()
         emptyView.isHidden = true
         return emptyView
     }()
@@ -129,7 +142,8 @@ public class FavoriteAdsListView: UIView {
 
     private func setup() {
         addSubview(tableView)
-        tableView.addSubview(emptyView)
+        tableView.addSubview(emptySearchView)
+        tableView.addSubview(emptyListView)
 
         NSLayoutConstraint.activate([
             tableViewTopConstraint,
@@ -139,6 +153,10 @@ public class FavoriteAdsListView: UIView {
         ])
 
         tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
+
+        emptyListView.configure(withImage: viewModel.emptyListViewImage,
+                                title: viewModel.emptyListViewTitle,
+                                body: viewModel.emptyListViewBody)
     }
 
     // MARK: - Overrides
@@ -150,20 +168,27 @@ public class FavoriteAdsListView: UIView {
             setTableHeader()
             didSetTableHeader = true
         } else {
-            layoutEmptyView()
+            layoutEmptyViews()
         }
     }
 
     // MARK: - Reload
 
     public func reloadData() {
-        showEmptyViewIfNeeded()
+        showEmptySearchViewIfNeeded()
 
         tableView.setContentOffset(.zero, animated: false)
         tableView.reloadData()
     }
 
     // MARK: - Public methods
+
+    public func setListIsEmpty(_ isEmpty: Bool) {
+        emptyListView.isHidden = !isEmpty
+        tableHeaderView.isSearchBarHidden = isEmpty
+        tableHeaderView.isSortingViewHidden = isEmpty
+        setTableHeader()
+    }
 
     public func setEditing(_ editing: Bool) {
         guard editing != tableView.isEditing else { return }
@@ -225,12 +250,12 @@ public class FavoriteAdsListView: UIView {
 
     public func deleteRow(at indexPath: IndexPath, with animation: UITableView.RowAnimation = .automatic) {
         tableView.deleteRows(at: [indexPath], with: animation)
-        showEmptyViewIfNeeded()
+        showEmptySearchViewIfNeeded()
     }
 
     public func deleteSection(at index: Int, with animation: UITableView.RowAnimation = .automatic) {
         tableView.deleteSections(IndexSet(integer: index), with: animation)
-        showEmptyViewIfNeeded()
+        showEmptySearchViewIfNeeded()
     }
 
     // MARK: - Images
@@ -259,20 +284,22 @@ public class FavoriteAdsListView: UIView {
         tableView.tableHeaderView = tableView.tableHeaderView
         tableView.sendSubviewToBack(tableHeaderView)
 
-        layoutEmptyView()
+        layoutEmptyViews()
     }
 
-    private func showEmptyViewIfNeeded() {
-        let shouldShowEmptyView = numberOfSections(in: tableView) == 0
-        emptyView.isHidden = !shouldShowEmptyView
-        tableHeaderView.isSortingViewHidden = shouldShowEmptyView
+    private func showEmptySearchViewIfNeeded() {
+        let shouldShowEmptySearchView = numberOfSections(in: tableView) == 0
+        emptySearchView.isHidden = !shouldShowEmptySearchView
+        tableHeaderView.isSortingViewHidden = shouldShowEmptySearchView
         setTableHeader()
     }
 
-    private func layoutEmptyView() {
-        emptyView.frame = tableView.bounds
-        emptyView.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
-        emptyView.frame.size.height -= emptyView.frame.origin.y
+    private func layoutEmptyViews() {
+        emptySearchView.frame = tableView.bounds
+        emptySearchView.frame.origin.y = tableView.tableHeaderView?.frame.height ?? 0
+        emptySearchView.frame.size.height -= emptySearchView.frame.origin.y
+
+        emptyListView.frame = emptySearchView.frame
     }
 }
 
@@ -328,9 +355,9 @@ extension FavoriteAdsListView: UITableViewDelegate {
         let commentAction = UIContextualAction(
             style: .normal,
             title: comment == nil ? viewModel.addCommentActionTitle : viewModel.editCommentActionTitle,
-            handler: { [weak self] _, _, completionHandler in
+            handler: { [weak self] _, sender, completionHandler in
                 guard let self = self else { return }
-                self.delegate?.favoriteAdsListView(self, didSelectCommentForItemAt: indexPath)
+                self.delegate?.favoriteAdsListView(self, didSelectCommentForItemAt: indexPath, sender: sender)
                 completionHandler(true)
             })
 
@@ -339,13 +366,13 @@ extension FavoriteAdsListView: UITableViewDelegate {
         let deleteAction = UIContextualAction(
             style: .normal,
             title: viewModel.deleteAdActionTitle,
-            handler: { [weak self] _, _, completionHandler in
+            handler: { [weak self] _, sender, completionHandler in
                 guard let self = self else { return }
-                self.delegate?.favoriteAdsListView(self, didSelectDeleteItemAt: indexPath)
+                self.delegate?.favoriteAdsListView(self, didSelectDeleteItemAt: indexPath, sender: sender)
                 completionHandler(true)
             })
 
-        deleteAction.backgroundColor = .cherry
+        deleteAction.backgroundColor = .btnCritical
 
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
         configuration.performsFirstActionWithFullSwipe = false
@@ -402,10 +429,10 @@ extension FavoriteAdsListView: UITableViewDataSource {
 // MARK: - FavoriteAdTableViewCellDelegate
 
 extension FavoriteAdsListView: FavoriteAdTableViewCellDelegate {
-    public func favoriteAdTableViewCellDidSelectMoreButton(_ cell: FavoriteAdTableViewCell) {
+    public func favoriteAdTableViewCell(_ cell: FavoriteAdTableViewCell, didSelectMoreButton button: UIButton) {
         tableHeaderView.endEditing(true)
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        delegate?.favoriteAdsListView(self, didSelectMoreButtonForItemAt: indexPath)
+        delegate?.favoriteAdsListView(self, didSelectMoreButton: button, at: indexPath)
     }
 }
 
@@ -441,8 +468,12 @@ extension FavoriteAdsListView: RemoteImageViewDataSource {
 // MARK: - FavoriteAdsListTableHeaderDelegate
 
 extension FavoriteAdsListView: FavoriteAdsListTableHeaderDelegate {
-    func favoriteAdsListTableHeaderDidSelectSortingView(_ tableHeader: FavoriteAdsListTableHeader) {
-        delegate?.favoriteAdsListViewDidSelectSortButton(self)
+    func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectSortingView view: UIView) {
+        delegate?.favoriteAdsListView(self, didSelectSortingView: view)
+    }
+
+    func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectShareButton button: UIButton) {
+        delegate?.favoriteAdsListView(self, didSelectShareButton: button)
     }
 }
 
@@ -461,8 +492,8 @@ extension FavoriteAdsListView: UISearchBarDelegate {
         let searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         delegate?.favoriteAdsListView(self, didChangeSearchText: searchText)
 
-        let emptyViewText = "\(viewModel.emptyViewBodyPrefix) \"\(searchText)\""
-        emptyView.configure(withText: emptyViewText, buttonTitle: nil)
+        let emptyViewText = "\(viewModel.emptySearchViewBodyPrefix) \"\(searchText)\""
+        emptySearchView.configure(withText: emptyViewText, buttonTitle: nil)
     }
 }
 

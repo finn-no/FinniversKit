@@ -66,7 +66,7 @@ public class VerificationView: UIView {
 
 private extension VerificationView {
     func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(verificationImageView)
         addSubview(titleLabel)

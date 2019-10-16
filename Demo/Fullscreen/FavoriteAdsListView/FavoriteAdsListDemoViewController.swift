@@ -33,31 +33,56 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = {
         [
             TweakingOption(title: "Selection mode", description: nil) { [weak self] in
+                self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(false)
-                self?.resetTableHeaderTitle()
+                self?.resetHeader()
             },
-            TweakingOption(title: "Selection mode - Long title", description: nil) { [weak self] in
+            TweakingOption(title: "Selection mode", description: "Title with 50 characters") { [weak self] in
+                self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(false)
-                self?.favoritesListView.title = "Veldig langt navn, ganske nøyaktig 50 tegn faktisk"
+                self?.resetHeader()
+                self?.setTitle("Veldig langt navn, ganske nøyaktig 50 tegn faktisk")
             },
-            TweakingOption(title: "Edit mode, none selected", description: nil) { [weak self] in
+            TweakingOption(title: "Empty folder", description: "A folder with no favorites") { [weak self] in
+                self?.setReadOnly(false)
+                self?.setViewModels([])
+                self?.favoritesListView.setEditing(false)
+                self?.resetHeader()
+            },
+            TweakingOption(title: "Edit mode", description: "None selected") { [weak self] in
+                self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(false, animated: false)
-                self?.resetTableHeaderTitle()
+                self?.resetHeader()
             },
-            TweakingOption(title: "Edit mode, all selected", description: nil) { [weak self] in
+            TweakingOption(title: "Edit mode", description: "All selected") { [weak self] in
+                self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(true, animated: false)
-                self?.resetTableHeaderTitle()
+                self?.resetHeader()
             },
-            TweakingOption(title: "Read only", description: nil) { [weak self] in
+            TweakingOption(title: "Shared folder", description: "Personal shared folder") { [weak self] in
+                self?.resetViewModels()
+                self?.setReadOnly(false)
+                self?.favoritesListView.setEditing(false)
+                self?.resetHeader()
+                self?.favoritesListView.isShared = true
+            },
+            TweakingOption(title: "Read-only folder", description: "Default models") { [weak self] in
+                self?.resetViewModels()
                 self?.setReadOnly(true)
                 self?.favoritesListView.setEditing(false)
-                self?.resetTableHeaderTitle()
+                self?.resetHeader()
+            },
+            TweakingOption(title: "Read-only folder", description: "No favorites") { [weak self] in
+                self?.setViewModels([])
+                self?.setReadOnly(true)
+                self?.favoritesListView.setEditing(false)
+                self?.resetHeader()
             }
         ]
     }()
@@ -73,10 +98,9 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
         view.addSubview(favoritesListView)
         favoritesListView.fillInSuperview()
 
-        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
-
-        navigationTitleView.title = folderTitle
         navigationItem.titleView = navigationTitleView
+        resetViewModels()
+        resetHeader()
     }
 
     private func setReadOnly(_ isReadOnly: Bool) {
@@ -88,8 +112,25 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
         favoritesListView.isSearchBarHidden = isReadOnly
     }
 
-    private func resetTableHeaderTitle() {
-        favoritesListView.title = folderTitle
+    private func resetHeader() {
+        favoritesListView.isShared = false
+        setTitle(folderTitle)
+    }
+
+    private func setTitle(_ title: String) {
+        favoritesListView.title = title
+        navigationTitleView.title = title
+    }
+
+    private func resetViewModels() {
+        setViewModels(viewModels)
+    }
+
+    private func setViewModels(_ viewModels: [FavoriteAdViewModel]) {
+        favoritesListView.setListIsEmpty(viewModels.isEmpty)
+        favoritesListView.subtitle = "\(viewModels.count) favoritter"
+        sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
+        favoritesListView.reloadData()
     }
 }
 
@@ -97,17 +138,18 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
 
 extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDelegate {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath) {}
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath) {}
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButton button: UIButton, at indexPath: IndexPath) {}
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareButton button: UIButton) {}
 
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath) {
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView) {
         print("Delete button selected")
     }
 
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath) {
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath, sender: UIView) {
         print("Comment button selected")
     }
 
-    func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView) {
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectSortingView sortingView: UIView) {
         switch currentSorting {
         case .lastAdded:
             currentSorting = .alphabetically
@@ -190,9 +232,13 @@ extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDataSource {
 extension FavoriteAdsListViewModel {
     static let `default` = FavoriteAdsListViewModel(
         searchBarPlaceholder: "Søk etter en av dine favoritter",
+        shareButtonTitle: "Delt liste",
         addCommentActionTitle: "Skriv\nnotat",
         editCommentActionTitle: "Rediger\nnotat",
         deleteAdActionTitle: "Slett",
-        emptyViewBodyPrefix: "Vi fant visst ingen favoritter for"
+        emptySearchViewBodyPrefix: "Vi fant visst ingen favoritter for",
+        emptyListViewTitle: "Her var det stille gitt...",
+        emptyListViewBody: "Det er ikke lagt til noen favoritter i denne listen enda.",
+        emptyListViewImage: UIImage(named: .heartEmpty)
     )
 }

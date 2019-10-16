@@ -14,13 +14,13 @@ enum Instrument: String {
     var color: UIColor {
         switch self {
         case .kick:
-            return .pea
+            return .accentPea
         case .snare:
             return .yellow
         case .hats:
             return .watermelon
         case .cat:
-            return .secondaryBlue
+            return .accentSecondaryBlue
         }
     }
 

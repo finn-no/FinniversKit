@@ -8,7 +8,7 @@ final class FavoriteAdCommentView: UIView {
 
     // MARK: - Public properties
 
-    static let defaultBackgroundColor = UIColor.banana
+    static let defaultBackgroundColor = UIColor.bgAlert
 
     // MARK: - Private properties
 
@@ -22,7 +22,7 @@ final class FavoriteAdCommentView: UIView {
 
     private lazy var label: UILabel = {
         let label = Label(style: .captionStrong, withAutoLayout: true)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         label.textAlignment = .left
         return label

@@ -14,7 +14,7 @@ final class FavoriteFoldersSearchBar: BottomShadowView {
     private(set) lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(withAutoLayout: true)
         searchBar.searchBarStyle = .minimal
-        searchBar.backgroundColor = .milk
+        searchBar.backgroundColor = .bgPrimary
         return searchBar
     }()
 
@@ -46,6 +46,7 @@ final class FavoriteFoldersSearchBar: BottomShadowView {
     // MARK: - Setup
 
     private func setup() {
+        backgroundColor = .bgPrimary
         addSubview(searchBar)
 
         NSLayoutConstraint.activate([

@@ -20,7 +20,7 @@ public class SettingsView: UIView {
         let view = UITableView(frame: .zero, style: .grouped)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentInset = UIEdgeInsets(top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0)
-        view.backgroundColor = .marble
+        view.backgroundColor = .bgTertiary
         view.separatorStyle = .none
         view.dataSource = self
         view.delegate = self
