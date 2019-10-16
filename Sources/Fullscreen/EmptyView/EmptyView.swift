@@ -65,7 +65,7 @@ public class EmptyView: UIView {
         let view = RectangleView(frame: CGRect(x: 0, y: 0, width: sizeOfSquare.width, height: sizeOfSquare.height))
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         view.addGestureRecognizer(pan)
-        view.backgroundColor = .salmon
+        view.backgroundColor = .bgCritical
         return view
     }()
 
@@ -292,7 +292,7 @@ public class EmptyView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         for shape in allShapes {
             addSubview(shape)

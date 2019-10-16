@@ -159,7 +159,7 @@ public class IdentityView: UIView {
 
     private func setupSubviews() {
         layer.cornerRadius = 8
-        backgroundColor = .ice
+        backgroundColor = .bgSecondary
 
         addSubview(stackView)
         addSubview(profileImageView)
@@ -227,7 +227,7 @@ public class IdentityView: UIView {
 
     private func populateViews(with viewModel: IdentityViewModel) {
         profileNameLabel.text = viewModel.displayName
-        profileNameLabel.textColor = viewModel.displayMode == .interactible ? .primaryBlue : .licorice
+        profileNameLabel.textColor = viewModel.displayMode == .interactible ? .textAction : .textPrimary
 
         verifiedBadge.isHidden = !viewModel.isVerified
 

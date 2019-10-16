@@ -37,7 +37,7 @@ public class LoginEntryView: UIView {
 
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .marble
+        view.backgroundColor = .bgTertiary
         return view
     }()
 
@@ -54,8 +54,8 @@ public class LoginEntryView: UIView {
 
     private lazy var loginDialogue: LoginEntryDialogueView = {
         let view = LoginEntryDialogueView(withAutoLayout: true)
-        view.backgroundColor = .milk
-        view.dropShadow(color: .sardine, opacity: 0.3, offset: CGSize(width: 10, height: 0), radius: 24)
+        view.backgroundColor = .bgPrimary
+        view.dropShadow(color: .decorationSubtle, opacity: 0.3, offset: CGSize(width: 10, height: 0), radius: 24)
 
         return view
     }()

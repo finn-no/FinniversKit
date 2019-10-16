@@ -34,7 +34,7 @@ public class NotificationsListViewCell: UITableViewCell {
 
     private lazy var detailLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -50,7 +50,7 @@ public class NotificationsListViewCell: UITableViewCell {
 
     private lazy var priceLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -76,7 +76,7 @@ public class NotificationsListViewCell: UITableViewCell {
         addSubview(titleLabel)
         addSubview(priceLabel)
 
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         NSLayoutConstraint.activate([
             adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),

@@ -126,7 +126,7 @@ public final class SearchResultMapView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(mapView)
         addSubview(mapSettingsButton)

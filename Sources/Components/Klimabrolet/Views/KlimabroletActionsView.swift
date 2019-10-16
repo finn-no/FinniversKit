@@ -50,7 +50,7 @@ class KlimabroletActionsView: UIView {
     // MARK: - Private methods
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(primaryButton)
         addSubview(secondaryButton)

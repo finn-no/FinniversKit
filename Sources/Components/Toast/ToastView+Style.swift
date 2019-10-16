@@ -14,14 +14,14 @@ extension ToastView {
 
         var color: UIColor {
             switch self {
-            case .error, .errorButton: return .salmon
-            default: return .mint
+            case .error, .errorButton: return .bgCritical
+            default: return .bgSuccess
             }
         }
 
         var imageBackgroundColor: UIColor {
             switch self {
-            case .sucesssWithImage: return .milk
+            case .sucesssWithImage: return .bgPrimary
             default: return .clear
             }
         }

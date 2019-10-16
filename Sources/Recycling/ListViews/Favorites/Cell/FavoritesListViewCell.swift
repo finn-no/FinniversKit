@@ -34,7 +34,7 @@ public class FavoritesListViewCell: UITableViewCell {
 
     private lazy var detailLabel: Label = {
         let label = Label(style: .detail)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
@@ -67,7 +67,7 @@ public class FavoritesListViewCell: UITableViewCell {
         addSubview(detailLabel)
         addSubview(titleLabel)
 
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         NSLayoutConstraint.activate([
             adImageView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),

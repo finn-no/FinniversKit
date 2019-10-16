@@ -42,7 +42,7 @@ public final class FrontPageView: UIView {
 
     private lazy var inlineConsentDialogue: DialogueView = {
         let dialogueView = DialogueView()
-        dialogueView.dropShadow(color: .licorice)
+        dialogueView.dropShadow(color: .iconPrimary)
         dialogueView.isHidden = true
         return dialogueView
     }()
@@ -163,7 +163,7 @@ public final class FrontPageView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         addSubview(adsGridView)
 

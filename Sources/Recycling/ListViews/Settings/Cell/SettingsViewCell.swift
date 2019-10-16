@@ -16,7 +16,7 @@ public class SettingsViewCell: UITableViewCell {
 
     private lazy var stateLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return label
@@ -25,7 +25,7 @@ public class SettingsViewCell: UITableViewCell {
     private lazy var arrowView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .sardine
+        imageView.tintColor = .decorationSubtle
         imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return imageView
@@ -34,7 +34,7 @@ public class SettingsViewCell: UITableViewCell {
     private lazy var hairline: UIView = {
         let line = UIView(frame: .zero)
         line.translatesAutoresizingMaskIntoConstraints = false
-        line.backgroundColor = .sardine
+        line.backgroundColor = .textDisabled
         return line
     }()
 

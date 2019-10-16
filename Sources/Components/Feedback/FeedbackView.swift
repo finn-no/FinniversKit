@@ -89,10 +89,10 @@ public class FeedbackView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .ice
+        backgroundColor = .bgSecondary
 
         layer.borderWidth = 1
-        layer.borderColor = .sardine
+        layer.borderColor = .decorationSubtle
         layer.cornerRadius = 8
         layer.masksToBounds = true
 
@@ -261,7 +261,7 @@ private class ButtonView: UIView {
         button.titleLabel?.font = .detailStrong
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
-        button.layer.borderColor = .primaryBlue
+        button.layer.borderColor = .btnPrimary
         return button
     }()
 

@@ -13,7 +13,7 @@ public class ConsentActionView: UIView {
 
     private lazy var textLabel: Label = {
         let label = Label(style: .body)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -28,7 +28,7 @@ public class ConsentActionView: UIView {
 
     private var buttonBackgroundView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         view.layer.shadowOffset = .zero
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

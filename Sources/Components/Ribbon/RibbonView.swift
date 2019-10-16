@@ -17,6 +17,7 @@ public class RibbonView: UIView {
     public var style: Style = .default {
         didSet {
             backgroundColor = style.color
+            titleLabel.textColor = style.textColor
         }
     }
 
@@ -64,6 +65,7 @@ public class RibbonView: UIView {
         layer.cornerRadius = cornerRadius
         isAccessibilityElement = true
         backgroundColor = style.color
+        titleLabel.textColor = style.textColor
 
         addSubview(titleLabel)
 

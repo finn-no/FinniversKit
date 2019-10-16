@@ -6,10 +6,11 @@ import UIKit
 
 public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath)
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButtonForItemAt indexPath: IndexPath)
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath)
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath)
-    func favoriteAdsListViewDidSelectSortButton(_ view: FavoriteAdsListView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButton button: UIButton, at indexPath: IndexPath)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath, sender: UIView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectSortingView sortingView: UIView)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareButton button: UIButton)
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool)
@@ -73,8 +74,14 @@ public class FavoriteAdsListView: UIView {
         set { tableHeaderView.searchBarText = newValue }
     }
 
-    public var sortingTitle: String = "" {
+    public var sortingTitle = "" {
         didSet { tableHeaderView.sortingTitle = sortingTitle }
+    }
+
+    public var isShared = false {
+        didSet {
+            tableHeaderView.shareButtonTitle = isShared ? viewModel.shareButtonTitle : ""
+        }
     }
 
     // MARK: - Private properties
@@ -348,9 +355,9 @@ extension FavoriteAdsListView: UITableViewDelegate {
         let commentAction = UIContextualAction(
             style: .normal,
             title: comment == nil ? viewModel.addCommentActionTitle : viewModel.editCommentActionTitle,
-            handler: { [weak self] _, _, completionHandler in
+            handler: { [weak self] _, sender, completionHandler in
                 guard let self = self else { return }
-                self.delegate?.favoriteAdsListView(self, didSelectCommentForItemAt: indexPath)
+                self.delegate?.favoriteAdsListView(self, didSelectCommentForItemAt: indexPath, sender: sender)
                 completionHandler(true)
             })
 
@@ -359,13 +366,13 @@ extension FavoriteAdsListView: UITableViewDelegate {
         let deleteAction = UIContextualAction(
             style: .normal,
             title: viewModel.deleteAdActionTitle,
-            handler: { [weak self] _, _, completionHandler in
+            handler: { [weak self] _, sender, completionHandler in
                 guard let self = self else { return }
-                self.delegate?.favoriteAdsListView(self, didSelectDeleteItemAt: indexPath)
+                self.delegate?.favoriteAdsListView(self, didSelectDeleteItemAt: indexPath, sender: sender)
                 completionHandler(true)
             })
 
-        deleteAction.backgroundColor = .cherry
+        deleteAction.backgroundColor = .btnCritical
 
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction, commentAction])
         configuration.performsFirstActionWithFullSwipe = false
@@ -422,10 +429,10 @@ extension FavoriteAdsListView: UITableViewDataSource {
 // MARK: - FavoriteAdTableViewCellDelegate
 
 extension FavoriteAdsListView: FavoriteAdTableViewCellDelegate {
-    public func favoriteAdTableViewCellDidSelectMoreButton(_ cell: FavoriteAdTableViewCell) {
+    public func favoriteAdTableViewCell(_ cell: FavoriteAdTableViewCell, didSelectMoreButton button: UIButton) {
         tableHeaderView.endEditing(true)
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        delegate?.favoriteAdsListView(self, didSelectMoreButtonForItemAt: indexPath)
+        delegate?.favoriteAdsListView(self, didSelectMoreButton: button, at: indexPath)
     }
 }
 
@@ -461,8 +468,12 @@ extension FavoriteAdsListView: RemoteImageViewDataSource {
 // MARK: - FavoriteAdsListTableHeaderDelegate
 
 extension FavoriteAdsListView: FavoriteAdsListTableHeaderDelegate {
-    func favoriteAdsListTableHeaderDidSelectSortingView(_ tableHeader: FavoriteAdsListTableHeader) {
-        delegate?.favoriteAdsListViewDidSelectSortButton(self)
+    func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectSortingView view: UIView) {
+        delegate?.favoriteAdsListView(self, didSelectSortingView: view)
+    }
+
+    func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectShareButton button: UIButton) {
+        delegate?.favoriteAdsListView(self, didSelectShareButton: button)
     }
 }
 

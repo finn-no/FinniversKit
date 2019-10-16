@@ -27,7 +27,7 @@ public final class FavoriteAdActionView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .milk
+        tableView.backgroundColor = .bgPrimary
         tableView.rowHeight = FavoriteAdActionView.rowHeight
         tableView.estimatedRowHeight = FavoriteAdActionView.rowHeight
         tableView.tableFooterView = UIView()
@@ -83,7 +83,7 @@ extension FavoriteAdActionView: UITableViewDataSource {
         case .share:
             cell.configure(withTitle: viewModel.shareText, icon: .favoritesShare)
         case .delete:
-            cell.configure(withTitle: viewModel.deleteText, icon: .favoritesDelete, tintColor: .cherry)
+            cell.configure(withTitle: viewModel.deleteText, icon: .favoritesDelete, tintColor: .textCritical)
         }
 
         return cell

@@ -96,9 +96,9 @@ public class HappinessRatingView: UIView {
 
         let nonSelectedViews = ratingImageViews.filter { $0.rating != ratingImageView.rating }
         UIView.animate(withDuration: animationDuration, animations: {
-            ratingImageView.tintColor = .primaryBlue
+            ratingImageView.tintColor = .btnPrimary
             nonSelectedViews.forEach {
-                $0.tintColor = UIColor.primaryBlue.withAlphaComponent(0.6)
+                $0.tintColor = UIColor.btnPrimary.withAlphaComponent(0.6)
                 $0.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }
         })
@@ -153,7 +153,7 @@ private class RatingImageView: UIImageView {
         isUserInteractionEnabled = true
         image = rating.image
         contentMode = .scaleAspectFit
-        tintColor = .primaryBlue
+        tintColor = .btnPrimary
 
         setup()
     }
@@ -171,7 +171,7 @@ private class RatingImageView: UIImageView {
             let paddingToFitTwoLongWords: CGFloat = 3 // e.g: Veldig irriterende
 
             NSLayoutConstraint.activate([
-                label.topAnchor.constraint(equalTo: bottomAnchor, constant: .smallSpacing),
+                label.topAnchor.constraint(equalTo: bottomAnchor, constant: .mediumSpacing),
                 label.leadingAnchor.constraint(equalTo: leadingAnchor),
                 label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: paddingToFitTwoLongWords)
             ])

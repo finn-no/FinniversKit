@@ -4,7 +4,7 @@
 
 import UIKit
 
-class FavoriteAdsListEmptyView: UIView {
+public class FavoriteAdsListEmptyView: UIView {
 
     // MARK: - Private properties
 
@@ -23,7 +23,7 @@ class FavoriteAdsListEmptyView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.font = .title3Strong
         label.numberOfLines = 0
         return label
@@ -32,7 +32,7 @@ class FavoriteAdsListEmptyView: UIView {
     private lazy var bodyLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.font = .bodyStrong
         label.numberOfLines = 0
         return label
@@ -40,7 +40,7 @@ class FavoriteAdsListEmptyView: UIView {
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -50,7 +50,7 @@ class FavoriteAdsListEmptyView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         stackView.addArrangedSubview(iconImageView)
         stackView.addArrangedSubview(titleLabel)
@@ -72,7 +72,7 @@ class FavoriteAdsListEmptyView: UIView {
 
     // MARK: - Public methods
 
-    func configure(withImage image: UIImage, title: String, body: String) {
+    public func configure(withImage image: UIImage, title: String, body: String) {
         iconImageView.image = image
         titleLabel.text = title
         bodyLabel.text = body

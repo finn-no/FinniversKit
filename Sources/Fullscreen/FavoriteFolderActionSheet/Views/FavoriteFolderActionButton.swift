@@ -10,7 +10,7 @@ final class FavoriteFolderActionButton: UIButton {
 
     private lazy var separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         view.isHidden = isSeparatorHidden
         return view
     }()
@@ -23,14 +23,14 @@ final class FavoriteFolderActionButton: UIButton {
 
     // MARK: - Init
 
-    init(action: FavoriteFolderAction, title: String, icon: FinniversImageAsset, tintColor: UIColor = .licorice) {
+    init(action: FavoriteFolderAction, title: String, icon: FinniversImageAsset, tintColor: UIColor = .iconPrimary) {
         self.action = action
         self.enabledTintColor = tintColor
         super.init(frame: .zero)
 
         titleLabel?.font = .bodyStrong
         setTitleColor(tintColor, for: .normal)
-        setTitleColor(.sardine, for: .disabled)
+        setTitleColor(.btnDisabled, for: .disabled)
         setTitle(title, for: .normal)
 
         imageView?.tintColor = tintColor
@@ -61,7 +61,7 @@ final class FavoriteFolderActionButton: UIButton {
 
     override var isEnabled: Bool {
         didSet {
-            imageView?.tintColor = isEnabled ? enabledTintColor : .sardine
+            imageView?.tintColor = isEnabled ? enabledTintColor : .btnDisabled
         }
     }
 
@@ -84,6 +84,6 @@ final class FavoriteFolderActionButton: UIButton {
     // MARK: - Private
 
     private func updateBackground() {
-        backgroundColor = (isHighlighted || isSelected) ? .defaultCellSelectedBackgroundColor : .milk
+        backgroundColor = (isHighlighted || isSelected) ? .defaultCellSelectedBackgroundColor : .bgPrimary
     }
 }

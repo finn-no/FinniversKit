@@ -22,7 +22,7 @@ public class VisibilityDrivenTitleView: UIView {
         }
     }
 
-    public var textColor: UIColor = .licorice {
+    public var textColor: UIColor = .textPrimary {
         didSet {
             label.textColor = textColor
         }

@@ -44,7 +44,7 @@ final class FavoriteSearchEmptyView: UIView {
         let button = UIButton(type: .system)
         button.titleLabel?.font = .bodyStrong
         button.setImage(UIImage(named: .plusMini), for: .normal)
-        button.setTitleColor(.primaryBlue, for: .normal)
+        button.setTitleColor(.btnPrimary, for: .normal)
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .highlighted)
         button.setTitleColor(.flatButtonHighlightedTextColor, for: .selected)
         button.addTarget(self, action: #selector(handleAddFolderButtonTap), for: .touchUpInside)
@@ -75,7 +75,7 @@ final class FavoriteSearchEmptyView: UIView {
         )
 
         clipsToBounds = true
-        backgroundColor = .milk
+        backgroundColor = .bgPrimary
 
         stackView.addArrangedSubview(magnifyingGlassImageView)
         stackView.addArrangedSubview(bodyLabel)

@@ -31,7 +31,7 @@ public final class NeighborhoodProfileView: UIView {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .ice
+        collectionView.backgroundColor = .bgSecondary
         collectionView.contentInset = UIEdgeInsets(
             top: .mediumSpacing,
             left: .mediumLargeSpacing,
@@ -61,8 +61,8 @@ public final class NeighborhoodProfileView: UIView {
 
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl(withAutoLayout: true)
-        pageControl.pageIndicatorTintColor = UIColor.primaryBlue.withAlphaComponent(0.2)
-        pageControl.currentPageIndicatorTintColor = .primaryBlue
+        pageControl.pageIndicatorTintColor = UIColor.btnPrimary.withAlphaComponent(0.2)
+        pageControl.currentPageIndicatorTintColor = .btnPrimary
         pageControl.addTarget(self, action: #selector(handlePageControlValueChange), for: .valueChanged)
         return pageControl
     }()
@@ -140,7 +140,7 @@ public final class NeighborhoodProfileView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .ice
+        backgroundColor = .bgSecondary
 
         addSubview(headerView)
         addSubview(collectionView)

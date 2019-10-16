@@ -18,7 +18,7 @@ public class ReceiptView: UIView {
 
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(withAutoLayout: true)
-        view.backgroundColor = .milk
+        view.backgroundColor = .bgPrimary
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
         return view
@@ -36,7 +36,7 @@ public class ReceiptView: UIView {
 
     private lazy var hairlineView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .sardine
+        view.backgroundColor = .textDisabled
         return view
     }()
 

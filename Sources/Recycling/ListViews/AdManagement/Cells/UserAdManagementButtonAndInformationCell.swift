@@ -36,7 +36,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.font = .detailStrong
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.textAlignment = .left
         return label
     }()
@@ -44,9 +44,9 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
     private lazy var button: UIButton = {
         let button = UIButton(frame: .zero)
         button.titleLabel?.font = .detailStrong
-        button.titleLabel?.textColor = .milk
+        button.titleLabel?.textColor = .bgPrimary
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .primaryBlue
+        button.backgroundColor = .btnPrimary
         button.layer.cornerRadius = 8
         button.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -73,7 +73,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         delegate?.buttonAndInformationCellButtonWasTapped(self)
 
         UIView.animate(withDuration: 0.1, delay: 0, options: .beginFromCurrentState, animations: {
-            sender.backgroundColor = .primaryBlue
+            sender.backgroundColor = .btnPrimary
         }, completion: nil)
     }
 
