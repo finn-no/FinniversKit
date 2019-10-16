@@ -3,7 +3,7 @@
 //
 
 import XCTest
-//import SnapshotTesting
+import SnapshotTesting
 import Foundation
 
 extension XCTestCase {
@@ -15,25 +15,24 @@ extension XCTestCase {
         testName: String = #function,
         line: UInt = #line
     ) {
-        XCTFail("no snapshots")
-//        assertSnapshot(
-//            matching: viewController, as: .image(on: .iPhoneX), named: "iPhone",
-//            file: file, testName: testName, line: line
-//        )
-//
+        assertSnapshot(
+            matching: viewController, as: .image(on: .iPhoneX), named: "iPhone",
+            file: file, testName: testName, line: line
+        )
+
 //        if includeDarkMode {
 //            assertSnapshot(
 //                matching: viewController, as: .image(on: .iPhoneX(.portrait, .dark)), named: "iPhone-Dark",
 //                file: file, testName: testName, line: line
 //            )
 //        }
-//
-//        if includeIPad {
-//            assertSnapshot(
-//                matching: viewController, as: .image(on: .iPadPro11), named: "iPad",
-//                file: file, testName: testName, line: line
-//            )
-//        }
+
+        if includeIPad {
+            assertSnapshot(
+                matching: viewController, as: .image(on: .iPadPro11), named: "iPad",
+                file: file, testName: testName, line: line
+            )
+        }
     }
 
     func elementWithoutTests<T>(
