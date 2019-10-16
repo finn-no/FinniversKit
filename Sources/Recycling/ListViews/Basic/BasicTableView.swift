@@ -36,7 +36,6 @@ open class BasicTableView: ShadowScrollView {
         tableView.estimatedRowHeight = BasicTableView.estimatedRowHeight
         tableView.separatorColor = .tableViewSeparator
         tableView.separatorInset = .leadingInset(frame.width)
-        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = BasicTableView.estimatedRowHeight
         return tableView
     }()
