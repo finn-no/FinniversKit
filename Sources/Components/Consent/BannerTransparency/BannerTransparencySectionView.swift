@@ -22,7 +22,7 @@ final class BannerTransparencySectionView: UIView {
         let label = UILabel(withAutoLayout: true)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .caption
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()

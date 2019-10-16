@@ -16,11 +16,18 @@ public extension RibbonView {
         var color: UIColor {
             switch self {
             case .default: return .bgSecondary
-            case .success: return .mint
-            case .warning: return .banana
-            case .error: return .salmon
-            case .disabled: return .sardine
-            case .sponsored: return .toothPaste
+            case .success: return .bgSuccess
+            case .warning: return .bgAlert
+            case .error: return .bgCritical
+            case .disabled: return .decorationSubtle
+            case .sponsored: return .accentToothpaste
+            }
+        }
+
+        var textColor: UIColor {
+            switch self {
+            case .default, .disabled: return .textPrimary
+            default: return .textToast
             }
         }
     }

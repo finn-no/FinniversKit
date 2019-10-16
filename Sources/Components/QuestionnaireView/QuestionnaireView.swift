@@ -28,7 +28,7 @@ public class QuestionnaireView: UIView {
         let label = Label(style: style.titleStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         return label
     }()
 
@@ -36,7 +36,7 @@ public class QuestionnaireView: UIView {
         let label = Label(style: style.detailStyle)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()

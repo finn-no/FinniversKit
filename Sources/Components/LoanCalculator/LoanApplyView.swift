@@ -24,7 +24,7 @@ class LoanApplyView: UIView {
 
     private lazy var conditionsText: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.numberOfLines = 0
         return label
     }()

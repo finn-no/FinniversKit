@@ -24,7 +24,7 @@ class NeighborhoodProfileViewCell: UICollectionViewCell {
     func makeTitleLabel() -> UILabel {
         let label = UILabel(withAutoLayout: true)
         label.font = NeighborhoodProfileViewCell.titleFont
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
@@ -36,7 +36,7 @@ class NeighborhoodProfileViewCell: UICollectionViewCell {
 
         contentView.layer.cornerRadius = .mediumSpacing
         contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.sardine.withAlphaComponent(0.1).cgColor
+        contentView.layer.borderColor = UIColor.decorationSubtle.withAlphaComponent(0.1).cgColor
 
         contentView.dropShadow(color: UIColor.black.withAlphaComponent(0.2), offset: CGSize(width: 0, height: 2), radius: 5)
     }

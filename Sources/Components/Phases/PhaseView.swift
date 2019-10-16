@@ -16,7 +16,7 @@ final class PhaseView: UIView {
 
     private lazy var textLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.textColor = .licorice
+        label.textColor = .textPrimary
         label.numberOfLines = 0
         return label
     }()
@@ -41,8 +41,8 @@ final class PhaseView: UIView {
     func configure(with viewModel: PhaseViewModel) {
         let dotWidth = viewModel.isHighlighted ? PhaseView.highlightedDotSize : PhaseView.regularDotSize
 
-        dotView.backgroundColor = viewModel.isHighlighted ? .secondaryBlue : .sardine
-        dotView.layer.borderColor = viewModel.isHighlighted ? .secondaryBlue : nil
+        dotView.backgroundColor = viewModel.isHighlighted ? .accentSecondaryBlue : .decorationSubtle
+        dotView.layer.borderColor = viewModel.isHighlighted ? .accentSecondaryBlue : nil
         dotView.layer.borderWidth = viewModel.isHighlighted ? 3 : 0
         dotView.layer.cornerRadius = dotWidth / 2
         dotViewWidthConstraint.constant = dotWidth

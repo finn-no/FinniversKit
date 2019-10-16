@@ -4,7 +4,7 @@
 
 import UIKit
 
-// Semantic colors, dark mode compatible
+// MARK: - Semantic colors, dark mode compatible
 @objc extension UIColor {
     public class var bgPrimary: UIColor {
         return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: UIColor(hex: "#1B1B24"))
@@ -89,9 +89,17 @@ import UIKit
     public class var tableViewSeparator: UIColor {
         return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
+
+    public class var decorationSubtle: UIColor {
+        return .btnDisabled
+    }
+
+    public class var iconPrimary: UIColor {
+        return .textPrimary
+    }
 }
 
-// FINN colors
+// MARK: - FINN UIColors
 @objc extension UIColor {
     public class var ice: UIColor {
         return UIColor(r: 241, g: 249, b: 255)!
@@ -195,6 +203,7 @@ import UIKit
     }
 }
 
+// MARK: - FINN CGColors
 extension CGColor {
     public class var ice: CGColor {
         return UIColor.ice.cgColor
@@ -255,7 +264,10 @@ extension CGColor {
     public class var marble: CGColor {
         return UIColor.marble.cgColor
     }
+}
 
+// MARK: - Semantic CGColors
+extension CGColor {
     public class var bgPrimary: CGColor {
         return UIColor.bgPrimary.cgColor
     }
@@ -263,10 +275,89 @@ extension CGColor {
     public class var bgSecondary: CGColor {
         return UIColor.bgSecondary.cgColor
     }
+
+    public class var bgTertiary: CGColor {
+        return UIColor.bgTertiary.cgColor
+    }
+
+    public class var bgAlert: CGColor {
+        return UIColor.bgAlert.cgColor
+    }
+
+    public class var bgSuccess: CGColor {
+        return UIColor.bgSuccess.cgColor
+    }
+
+    public class var bgCritical: CGColor {
+        return UIColor.bgCritical.cgColor
+    }
+
+    public class var btnPrimary: CGColor {
+        return UIColor.btnPrimary.cgColor
+    }
+
+    public class var btnDisabled: CGColor {
+        return UIColor.btnDisabled.cgColor
+    }
+
+    public class var btnCritical: CGColor {
+        return UIColor.btnCritical.cgColor
+    }
+
+    public class var textPrimary: CGColor {
+        return UIColor.textPrimary.cgColor
+    }
+
+    public class var textSecondary: CGColor {
+        return UIColor.textSecondary.cgColor
+    }
+
+    public class var textTertiary: CGColor {
+        return UIColor.textTertiary.cgColor
+    }
+
+    public class var textAction: CGColor {
+        return UIColor.textAction.cgColor
+    }
+
+    public class var textDisabled: CGColor {
+        return UIColor.textDisabled.cgColor
+    }
+
+    public class var textCritical: CGColor {
+        return UIColor.textCritical.cgColor
+    }
+
+    public class var accentSecondaryBlue: CGColor {
+        return UIColor.accentSecondaryBlue.cgColor
+    }
+
+    public class var accentPea: CGColor {
+        return UIColor.accentPea.cgColor
+    }
+
+    public class var accentToothpaste: CGColor {
+        return UIColor.accentToothpaste.cgColor
+    }
+
+    public class var textCTADisabled: CGColor {
+        return UIColor.textCTADisabled.cgColor
+    }
+
+    public class var textToast: CGColor {
+        return UIColor.textToast.cgColor
+    }
+
+    public class var tableViewSeparator: CGColor {
+        return UIColor.tableViewSeparator.cgColor
+    }
+
+    public class var decorationSubtle: CGColor {
+        return UIColor.decorationSubtle.cgColor
+    }
 }
 
-// MARK: - Button
-
+// MARK: - Button UIColors
 @objc extension UIColor {
     public class var callToActionButtonHighlightedBodyColor: UIColor {
         return btnPrimary.withAlphaComponent(0.8)
@@ -293,6 +384,7 @@ extension CGColor {
     }
 }
 
+// MARK: - Highlighted buttons CGColors
 extension CGColor {
     public class var callToActionButtonHighlightedBodyColor: CGColor {
         return UIColor.callToActionButtonHighlightedBodyColor.cgColor
@@ -315,7 +407,7 @@ extension CGColor {
     }
 }
 
-// MARK: - Cell
+// MARK: - Cell UIColors
 
 @objc extension UIColor {
     public class var defaultCellSelectedBackgroundColor: UIColor {

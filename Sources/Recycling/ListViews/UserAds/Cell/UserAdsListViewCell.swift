@@ -79,7 +79,7 @@ public class UserAdsListViewCell: UITableViewCell {
     private lazy var detailLabel: Label = {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .stone
+        label.textColor = .textSecondary
         label.backgroundColor = .clear
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label

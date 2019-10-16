@@ -20,7 +20,7 @@ public final class MapSettingsView: UIView {
     private lazy var mapTypeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
         button.setImage(UIImage(named: .info), for: .normal)
-        button.tintColor = .primaryBlue
+        button.tintColor = .btnPrimary
         button.addTarget(self, action: #selector(changeMapTypeButtonTapped), for: .touchUpInside)
         return button
     }()
