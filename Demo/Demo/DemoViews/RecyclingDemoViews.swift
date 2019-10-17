@@ -4,6 +4,7 @@
 import FinniversKit
 
 public enum RecyclingDemoViews: String, CaseIterable {
+    case basicTableView
     case notificationsListView
     case favoriteFoldersListView
     case favoriteAdSortingView
@@ -23,6 +24,8 @@ public enum RecyclingDemoViews: String, CaseIterable {
 
     public var viewController: UIViewController {
         switch self {
+        case .basicTableView:
+            return DemoViewController<BasicTableViewDemoView>()
         case .notificationsListView:
             return DemoViewController<NotificationsListViewDemoView>()
         case .favoriteFoldersListView:
