@@ -23,17 +23,29 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
         return view
     }()
 
+    private lazy var xmasView = FavoriteFolderXmasView(withAutoLayout: true)
+
     lazy var tweakingOptions: [TweakingOption] = {
         return [
             TweakingOption(title: "Toggle mode", description: nil) { [weak self] in
                 self?.isEditing = false
                 self?.allFavorites = FavoriteFoldersFactory.create()
                 self?.view.setEditing(false)
+                self?.xmasView.isHidden = true
             },
             TweakingOption(title: "Edit mode", description: nil) { [weak self] in
                 self?.isEditing = true
                 self?.allFavorites = FavoriteFoldersFactory.create(withSelectedItems: false)
                 self?.view.setEditing(true)
+                self?.xmasView.isHidden = true
+            },
+            TweakingOption(title: "Xmass overlay", description: nil) { [weak self] in
+                self?.isEditing = false
+                self?.allFavorites = FavoriteFoldersFactory.create()
+                self?.view.setEditing(false)
+                self?.xmasView.isHidden = false
+                self?.xmasView.mode = .button
+                self?.xmasView.calloutText = "Tips! Nå kan du endelig opprette og dele din egen juleønskeliste! Her er i såfall knappen for å gjøre det! God jul!"
             }
         ]
     }()
@@ -52,7 +64,11 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
 
     private func setup() {
         addSubview(view)
+        addSubview(xmasView)
+
         view.fillInSuperview()
+        xmasView.fillInSuperview()
+        xmasView.isHidden = true
     }
 
     private func filterFolders() {
