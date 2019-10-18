@@ -48,7 +48,6 @@ NSString *const FinniversImageAsseteditBig = @"editBig";
 NSString *const FinniversImageAsseterror = @"error";
 NSString *const FinniversImageAsseteyeHide = @"eyeHide";
 NSString *const FinniversImageAssetfavoriteAdd = @"favoriteAdd";
-NSString *const FinniversImageAssetfavoriteXmas = @"favoriteXmas";
 NSString *const FinniversImageAssetfavoritesComment = @"favoritesComment";
 NSString *const FinniversImageAssetfavoritesDelete = @"favoritesDelete";
 NSString *const FinniversImageAssetfavoritesEdit = @"favoritesEdit";
@@ -59,6 +58,8 @@ NSString *const FinniversImageAssetfavoritesShareLink = @"favoritesShareLink";
 NSString *const FinniversImageAssetfavoritesSortAdStatus = @"favoritesSortAdStatus";
 NSString *const FinniversImageAssetfavoritesSortDistance = @"favoritesSortDistance";
 NSString *const FinniversImageAssetfavoritesSortLastAdded = @"favoritesSortLastAdded";
+NSString *const FinniversImageAssetfavoritesXmasButton = @"favoritesXmasButton";
+NSString *const FinniversImageAssetfavoritesXmasFolder = @"favoritesXmasFolder";
 NSString *const FinniversImageAssetfavouriteAddImg = @"favouriteAddImg";
 NSString *const FinniversImageAssetfavouriteAdded = @"favouriteAdded";
 NSString *const FinniversImageAssetfavouriteAddedImg = @"favouriteAddedImg";
@@ -203,7 +204,6 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAsseterror,
              FinniversImageAsseteyeHide,
              FinniversImageAssetfavoriteAdd,
-             FinniversImageAssetfavoriteXmas,
              FinniversImageAssetfavoritesComment,
              FinniversImageAssetfavoritesDelete,
              FinniversImageAssetfavoritesEdit,
@@ -214,6 +214,8 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetfavoritesSortAdStatus,
              FinniversImageAssetfavoritesSortDistance,
              FinniversImageAssetfavoritesSortLastAdded,
+             FinniversImageAssetfavoritesXmasButton,
+             FinniversImageAssetfavoritesXmasFolder,
              FinniversImageAssetfavouriteAddImg,
              FinniversImageAssetfavouriteAdded,
              FinniversImageAssetfavouriteAddedImg,

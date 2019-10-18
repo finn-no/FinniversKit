@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol FavoriteFolderXmasViewDelegate: AnyObject {
-    func favoriteFolderXmasViewDidSelectButton(_ view: FavoriteFolderXmasView)
+    func favoriteFolderXmasViewDidTap(_ view: FavoriteFolderXmasView)
 }
 
 public final class FavoriteFolderXmasView: UIView {
@@ -18,7 +18,11 @@ public final class FavoriteFolderXmasView: UIView {
         }
     }
 
-    private lazy var button = FloatingButton.favoritesXmasButton(withTarget: self, action: #selector(handleButtonTap))
+    private lazy var button: FloatingButton = {
+        let button = FloatingButton.favoritesXmasButton()
+        button.isUserInteractionEnabled = false
+        return button
+    }()
 
     private lazy var calloutView: CalloutView = {
         let view = CalloutView(direction: .down, arrowAlignment: .right(.veryLargeSpacing / 2 - .mediumSpacing))
@@ -41,6 +45,9 @@ public final class FavoriteFolderXmasView: UIView {
 
     private func setup() {
         backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        isUserInteractionEnabled = true
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+
         addSubview(button)
         addSubview(calloutView)
 
@@ -58,7 +65,7 @@ public final class FavoriteFolderXmasView: UIView {
 
     // MARK: - Actions
 
-    @objc private func handleButtonTap() {
-        delegate?.favoriteFolderXmasViewDidSelectButton(self)
+    @objc private func handleTap() {
+        delegate?.favoriteFolderXmasViewDidTap(self)
     }
 }
