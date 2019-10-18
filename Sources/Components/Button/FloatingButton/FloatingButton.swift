@@ -5,11 +5,15 @@
 import UIKit
 
 public final class FloatingButton: UIButton {
-    private let badgeSize: CGFloat = 30
+    public var primaryBackgroundColor: UIColor = .bgPrimary { didSet { updateBackgroundColor() }}
+    public var highlightedBackgroundColor: UIColor = .bgSecondary { didSet { updateBackgroundColor() }}
+    public override var isHighlighted: Bool { didSet { updateBackgroundColor() }}
+    public override var isSelected: Bool { didSet { updateBackgroundColor() }}
 
-    public override var isHighlighted: Bool {
+    public var itemsCount: Int = 0 {
         didSet {
-            backgroundColor = isHighlighted ? .bgSecondary : .bgPrimary
+            badgeLabel.text = "\(itemsCount)"
+            badgeView.isHidden = itemsCount == 0
         }
     }
 
@@ -29,18 +33,7 @@ public final class FloatingButton: UIButton {
         return label
     }()
 
-    public override var isSelected: Bool {
-        didSet {
-            backgroundColor = isSelected ? .bgSecondary : .bgPrimary
-        }
-    }
-
-    public var itemsCount: Int = 0 {
-        didSet {
-            badgeLabel.text = "\(itemsCount)"
-            badgeView.isHidden = itemsCount == 0
-        }
-    }
+    private let badgeSize: CGFloat = 30
 
     // MARK: - Init
 
@@ -69,7 +62,7 @@ public final class FloatingButton: UIButton {
     }
 
     private func setupStyles() {
-        backgroundColor = .bgPrimary
+        updateBackgroundColor()
         tintColor = .btnPrimary
 
         contentMode = .center
@@ -94,6 +87,10 @@ public final class FloatingButton: UIButton {
             badgeView.heightAnchor.constraint(equalToConstant: badgeSize),
             badgeView.topAnchor.constraint(equalTo: topAnchor, constant: -.smallSpacing),
             badgeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .smallSpacing),
-            ])
+        ])
+    }
+
+    private func updateBackgroundColor() {
+        backgroundColor = isSelected || isHighlighted ? highlightedBackgroundColor : primaryBackgroundColor
     }
 }

@@ -23,7 +23,12 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
         return view
     }()
 
-    private lazy var xmasView = FavoriteFolderXmasView(withAutoLayout: true)
+    private lazy var xmasView: FavoriteFolderXmasView = {
+        let view = FavoriteFolderXmasView(withAutoLayout: true)
+        view.delegate = self
+        view.calloutText = "Tips! Nå kan du endelig opprette og dele din egen juleønskeliste! Her er i såfall knappen for å gjøre det! God jul!"
+        return view
+    }()
 
     lazy var tweakingOptions: [TweakingOption] = {
         return [
@@ -40,12 +45,7 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
                 self?.xmasView.isHidden = true
             },
             TweakingOption(title: "Xmass overlay", description: nil) { [weak self] in
-                self?.isEditing = false
-                self?.allFavorites = FavoriteFoldersFactory.create()
-                self?.view.setEditing(false)
                 self?.xmasView.isHidden = false
-                self?.xmasView.mode = .button
-                self?.xmasView.calloutText = "Tips! Nå kan du endelig opprette og dele din egen juleønskeliste! Her er i såfall knappen for å gjøre det! God jul!"
             }
         ]
     }()
@@ -150,4 +150,12 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
     }
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+}
+
+// MARK: - FavoriteFolderXmasViewDelegate
+
+extension FavoriteFoldersListDemoView: FavoriteFolderXmasViewDelegate {
+    func favoriteFolderXmasViewDidTap(_ view: FavoriteFolderXmasView) {
+        print("Xmas view tapped")
+    }
 }
