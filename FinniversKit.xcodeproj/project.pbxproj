@@ -142,10 +142,7 @@
 		446EE15C2345A6AA00010818 /* SelectorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446EE15B2345A6AA00010818 /* SelectorTitleView.swift */; };
 		4474BC0F2344E10800AA38A0 /* DemoViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474BC0E2344E10800AA38A0 /* DemoViewControllerContainer.swift */; };
 		447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */; };
-		4483F978234B26C300D726F1 /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483F977234B26C300D726F1 /* BasicTableView.swift */; };
-		4483F97A234B3BC500D726F1 /* ShadowScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483F979234B3BC500D726F1 /* ShadowScrollView.swift */; };
 		4483F97C234B3BFF00D726F1 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483F97B234B3BFF00D726F1 /* ScrollViewController.swift */; };
-		4483F97F234B3C2700D726F1 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483F97D234B3C2400D726F1 /* ShadowView.swift */; };
 		44877453234616C30096B510 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44877452234616C30096B510 /* Device.swift */; };
 		44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5B1FE5B9C200F6017B /* UIImageExtensions.swift */; };
 		44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44898D5D1FE5B9C200F6017B /* UICollectionViewExtensions.swift */; };
@@ -717,7 +714,6 @@
 		446EE15B2345A6AA00010818 /* SelectorTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorTitleView.swift; sourceTree = "<group>"; };
 		4474BC0E2344E10800AA38A0 /* DemoViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewControllerContainer.swift; sourceTree = "<group>"; };
 		447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageViewDemoView.swift; sourceTree = "<group>"; };
-		4483F977234B26C300D726F1 /* BasicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
 		4483F979234B3BC500D726F1 /* ShadowScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowScrollView.swift; sourceTree = "<group>"; };
 		4483F97B234B3BFF00D726F1 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		4483F97D234B3C2400D726F1 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
@@ -1770,16 +1766,6 @@
 				CF3DEDB3219465F300DB3E5A /* FrontPageView.swift */,
 			);
 			path = FrontPage;
-			sourceTree = "<group>";
-		};
-		4483F976234B26C300D726F1 /* Basic */ = {
-			isa = PBXGroup;
-			children = (
-				4483F977234B26C300D726F1 /* BasicTableView.swift */,
-				4483F979234B3BC500D726F1 /* ShadowScrollView.swift */,
-				4483F97D234B3C2400D726F1 /* ShadowView.swift */,
-			);
-			path = Basic;
 			sourceTree = "<group>";
 		};
 		44898D591FE5B9C200F6017B /* Extensions */ = {
@@ -2968,6 +2954,8 @@
 			children = (
 				CF29845D229566E8008CD832 /* ContactFormCheckbox.swift */,
 				9A37D31AFA28AABED492E588 /* FeedbackDemoView.swift */,
+				4483F979234B3BC500D726F1 /* ShadowScrollView.swift */,
+				4483F97D234B3C2400D726F1 /* ShadowView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -4319,7 +4307,6 @@
 				4447F6EF1FDB2B110033DBC1 /* ToastView+Style.swift in Sources */,
 				CF4A053C21FB2ACB000BB7DA /* PianoEffectControl.swift in Sources */,
 				CF164CFB230EAD3700250822 /* FavoriteAdSortOptionCell.swift in Sources */,
-				4483F97A234B3BC500D726F1 /* ShadowScrollView.swift in Sources */,
 				89A7A64A22536E200053D33B /* NativeContentSettingsButton.swift in Sources */,
 				441FE42E209A24E500B04EF1 /* MarketsGridViewModel.swift in Sources */,
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
@@ -4611,7 +4598,6 @@
 				9A37DB2BD626D2CA592D303E /* FavoriteAdsSectionHeaderView.swift in Sources */,
 				9F213E38A1CEE430AAD26AEC /* IdentityView.swift in Sources */,
 				9F213689DC33B4D26DDB5337 /* ReputationView.swift in Sources */,
-				4483F97F234B3C2700D726F1 /* ShadowView.swift in Sources */,
 				9A37DCEF8B61CDA7813AFB16 /* VisibilityDrivenTitleView.swift in Sources */,
 				449C60B5234DD85C00C51A63 /* ShadowView.swift in Sources */,
 				9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */,
