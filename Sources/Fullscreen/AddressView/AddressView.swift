@@ -21,18 +21,8 @@ public class AddressView: UIView {
             control.selectedSegmentTintColor = .bgTertiary
             control.backgroundColor = .btnPrimary
             control.setTitleTextAttributes([.foregroundColor: UIColor.textTertiary], for: .normal)
-<<<<<<< HEAD
-<<<<<<< HEAD
+            control.setTitleTextAttributes([.foregroundColor: UIColor.textTertiary], for: .highlighted)
             control.setTitleTextAttributes([.foregroundColor: UIColor.textAction], for: .selected)
-            control.setTitleTextAttributes([.foregroundColor: UIColor.textAction], for: .highlighted)
-=======
-            control.setTitleTextAttributes([.foregroundColor: UIColor.textPrimary], for: .selected)
-            control.setTitleTextAttributes([.foregroundColor: UIColor.textPrimary], for: .highlighted)
->>>>>>> 004bfef4... Fix the style for the UISegmentedControls used
-=======
-            control.setTitleTextAttributes([.foregroundColor: UIColor.textAction], for: .selected)
-            control.setTitleTextAttributes([.foregroundColor: UIColor.textAction], for: .highlighted)
->>>>>>> b3b225b3... Update the selected segment text as textAction color
         } else {
             control.tintColor = .btnPrimary
         }
