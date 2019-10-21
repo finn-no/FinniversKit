@@ -97,6 +97,10 @@ import UIKit
     public class var iconPrimary: UIColor {
         return .textPrimary
     }
+
+    public class var iconSecondary: UIColor {
+        return .textTertiary
+    }
 }
 
 // MARK: - FINN UIColors

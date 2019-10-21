@@ -46,7 +46,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .iconPrimary
+        imageView.tintColor = .iconSecondary
         return imageView
     }()
 
