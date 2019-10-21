@@ -36,14 +36,14 @@ final class NativeContentSettingsButton: UIButton {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.isUserInteractionEnabled = false
         imageView.image = UIImage(named: .settings).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .foregroundColor
+        imageView.tintColor = .iconSecondary
         return imageView
     }()
 
     private lazy var label: Label = {
         let label = Label(style: .detailStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .foregroundColor
+        label.textColor = .textTertiary
         return label
     }()
 

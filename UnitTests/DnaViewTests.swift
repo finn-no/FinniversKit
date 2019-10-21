@@ -4,12 +4,11 @@
 
 import Demo
 import XCTest
-import SnapshotTesting
 import FinniversKit
 
 class DnaViewTests: XCTestCase {
-    private func snapshot(_ component: DnaDemoViews, testName: String = #function) {
-        assertSnapshot(matching: component.viewController, as: .image(on: .iPhoneX), named: "iPhone", testName: testName)
+    private func snapshot(_ component: DnaDemoViews, includeIPad: Bool = false, testName: String = #function) {
+        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, testName: testName)
     }
 
     // MARK: - Tests

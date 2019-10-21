@@ -22,10 +22,16 @@ final class InstrumentSelectorView: UIView {
     }()
 
     private lazy var segmentedControl: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: self.instruments.map({ $0.rawValue }))
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.tintColor = .white
-        return segmentedControl
+        let control = UISegmentedControl(items: self.instruments.map({ $0.rawValue }))
+        control.translatesAutoresizingMaskIntoConstraints = false
+
+        if #available(iOS 13.0, *) {
+            control.selectedSegmentTintColor = .bgTertiary
+            control.backgroundColor = .bgSecondary
+        } else {
+            control.tintColor = .white
+        }
+        return control
     }()
 
     // MARK: - Init
