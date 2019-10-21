@@ -74,13 +74,18 @@ public class BottomSheet: UIViewController {
     public weak var dragDelegate: BottomSheetDragDelegate?
 
     public var state: State {
-        get { return transitionDelegate.presentationController?.state ?? .dismissed }
+        get { transitionDelegate.presentationController?.state ?? .dismissed }
         set { transitionDelegate.presentationController?.state = newValue }
     }
 
     public var height: Height {
-        get { return transitionDelegate.height }
+        get { transitionDelegate.height }
         set { transitionDelegate.height = newValue }
+    }
+
+    public var isNotchHidden: Bool {
+        get { notch.isHidden }
+        set { notch.isHidden = newValue }
     }
 
     public let dimView: UIView
