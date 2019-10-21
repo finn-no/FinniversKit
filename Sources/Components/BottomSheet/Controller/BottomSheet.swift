@@ -75,7 +75,13 @@ public class BottomSheet: UIViewController {
 
     public var state: State {
         get { transitionDelegate.presentationController?.state ?? .dismissed }
-        set { transitionDelegate.presentationController?.state = newValue }
+        set {
+            transitionDelegate.presentationController?.state = newValue
+            if isPopover {
+                delegate?.bottomSheet(self, didDismissBy: .none)
+                dismiss(animated: true, completion: nil)
+            }
+        }
     }
 
     public var height: Height {
@@ -108,6 +114,8 @@ public class BottomSheet: UIViewController {
             return CGRect(origin: CGPoint(x: customRect.minX, y: customRect.minY + notchHeight), size: customRect.size)
         }
     }
+
+    var isPopover: Bool { modalPresentationStyle == .popover }
 
     // MARK: - Private properties
 
