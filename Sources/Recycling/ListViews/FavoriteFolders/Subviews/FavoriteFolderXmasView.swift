@@ -25,7 +25,7 @@ public final class FavoriteFolderXmasView: UIView {
     }()
 
     private lazy var calloutView: CalloutView = {
-        let view = CalloutView(direction: .down, arrowAlignment: .right(.veryLargeSpacing / 2 - .mediumSpacing))
+        let view = CalloutView(direction: .down, arrowAlignment: .right(24))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
