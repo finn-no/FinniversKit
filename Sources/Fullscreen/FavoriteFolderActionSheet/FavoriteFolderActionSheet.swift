@@ -80,7 +80,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
 
     private func updatePreferredContentSize() {
         UIView.performWithoutAnimation {
-            preferredContentSize.height = height.compact - BottomSheet.Height.bottomInset + .mediumLargeSpacing
+            preferredContentSize.height = height.compact - BottomSheet.Height.bottomInset + notchHeight
         }
     }
 }
