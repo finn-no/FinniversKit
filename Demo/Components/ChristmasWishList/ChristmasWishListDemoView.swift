@@ -5,7 +5,7 @@
 import FinniversKit
 
 class ChristmasWishListDemoView: UIView {
-    private lazy var backgrounView = UIView()
+    private lazy var backgroundView = UIView()
     private lazy var christmasWishListView = ChristmasWishListView(withAutoLayout: true)
     let viewModel = ChristmasWishListViewModel()
 
@@ -23,15 +23,15 @@ class ChristmasWishListDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgrounView.backgroundColor = .bgSecondary
+        backgroundView.backgroundColor = .bgSecondary
         christmasWishListView.configure(with: viewModel)
 
-        addSubview(backgrounView)
+        addSubview(backgroundView)
         addSubview(christmasWishListView)
 
         christmasWishListView.dropShadow(color: .black, opacity: 0.5, offset: CGSize(width: 5, height: 5), radius: 30)
 
-        backgrounView.fillInSuperview()
+        backgroundView.fillInSuperview()
 
         NSLayoutConstraint.activate([
             christmasWishListView.widthAnchor.constraint(equalToConstant: 337),

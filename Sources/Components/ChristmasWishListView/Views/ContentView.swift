@@ -26,8 +26,7 @@ extension ChristmasWishListView {
         }()
 
         private lazy var bodyTextLabel: UILabel = {
-            let label = Label(style: .body)
-            label.translatesAutoresizingMaskIntoConstraints = false
+            let label = Label(style: .body, withAutoLayout: true)
             label.numberOfLines = 0
             label.textAlignment = .center
             label.setContentHuggingPriority(.defaultHigh, for: .vertical)
@@ -36,8 +35,7 @@ extension ChristmasWishListView {
         }()
 
         private lazy var accessoryButton: UIButton = {
-            let button = Button(style: .link, size: .small)
-            button.translatesAutoresizingMaskIntoConstraints = false
+            let button = Button(style: .link, size: .small, withAutoLayout: true)
             button.titleLabel?.numberOfLines = 0
             button.titleLabel?.adjustsFontForContentSizeCategory = true
             button.addTarget(self, action: #selector(handleTapOnAccessoryButton), for: .touchUpInside)
