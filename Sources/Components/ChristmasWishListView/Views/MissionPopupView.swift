@@ -18,7 +18,6 @@ public class MissionPopupView: UIView {
 
     private var shadowAnimationDuration = 0.12
     private var shadowOpacityLevel: Float = 0.2
-    private var contentSizeObservation: NSKeyValueObservation?
 
     private lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
@@ -110,24 +109,10 @@ public class MissionPopupView: UIView {
             actionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             actionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
-
-        contentSizeObservation = scrollView.observe(
-            \UIScrollView.contentSize, options: [.old, .new], changeHandler: contentSizeDidChange(_:change:)
-        )
     }
 
     @objc private func handleTapOnCloseButton() {
         delegate?.missionPopupViewDidSelectClose(self)
-    }
-
-    private func contentSizeDidChange(_ scrollView: UIScrollView, change: NSKeyValueObservedChange<CGSize>) {
-        guard let contentSize = change.newValue else {
-            return
-        }
-
-        if scrollView.contentOffset.y + scrollView.frame.height < contentSize.height {
-            actionView.layer.shadowOpacity = shadowOpacityLevel
-        }
     }
 }
 
