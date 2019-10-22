@@ -137,10 +137,10 @@ public class ChristmasWishListView: UIView {
     @objc private func firstPageButtonTap() {
         UIView.animate(withDuration: 0.3) {
             self.firstPageButton.transform = CGAffineTransform(translationX: -self.bounds.width, y: 0)
-            self.secondPageButton.transform = CGAffineTransform.identity
+            self.secondPageButton.transform = .identity
 
             self.firstPageView.transform = CGAffineTransform(translationX: -self.bounds.width, y: 0)
-            self.secondPageView.transform = CGAffineTransform.identity
+            self.secondPageView.transform = .identity
         }
         delegate?.christmasWishListViewDidSelectCreateWishList(self)
     }

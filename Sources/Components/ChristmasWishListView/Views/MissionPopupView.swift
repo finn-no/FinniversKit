@@ -9,7 +9,7 @@ public protocol MissionPopupViewDelegate: AnyObject {
 /// An attempt to create a generic pop-up like container to create views like the klimabrølet pop up
 public class MissionPopupView: UIView {
     // MARK: - Public properties
-    weak var delegate: MissionPopupViewDelegate?
+    public weak var delegate: MissionPopupViewDelegate?
 
     // MARK: - Private properties
     private var headerView: UIView
