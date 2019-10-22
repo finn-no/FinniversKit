@@ -16,6 +16,10 @@ public class MissionPopupView: UIView {
     private var contentView: UIView
     private var actionView: UIView
 
+    private var shadowAnimationDuration = 0.12
+    private var shadowOpacityLevel: Float = 0.2
+    private var contentSizeObservation: NSKeyValueObservation?
+
     private lazy var closeButton: UIButton = {
         let button = UIButton(withAutoLayout: true)
         button.tintColor = .bgPrimary
@@ -32,6 +36,7 @@ public class MissionPopupView: UIView {
         scrollView.bounces = true
         scrollView.contentInset = UIEdgeInsets(bottom: .largeSpacing)
         scrollView.delaysContentTouches = false
+        scrollView.delegate = self
         return scrollView
     }()
 
@@ -77,6 +82,7 @@ public class MissionPopupView: UIView {
         addSubview(closeButton)
 
         actionView.setContentHuggingPriority(.required, for: .vertical)
+        actionView.backgroundColor = backgroundColor
         scrollableContentView.fillInSuperview()
 
         NSLayoutConstraint.activate([
@@ -104,9 +110,44 @@ public class MissionPopupView: UIView {
             actionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             actionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+
+        contentSizeObservation = scrollView.observe(
+            \UIScrollView.contentSize, options: [.old, .new], changeHandler: contentSizeDidChange(_:change:)
+        )
     }
 
     @objc private func handleTapOnCloseButton() {
         delegate?.missionPopupViewDidSelectClose(self)
+    }
+
+    private func contentSizeDidChange(_ scrollView: UIScrollView, change: NSKeyValueObservedChange<CGSize>) {
+        guard let contentSize = change.newValue else {
+            return
+        }
+
+        if scrollView.contentOffset.y + scrollView.frame.height < contentSize.height {
+            actionView.layer.shadowOpacity = shadowOpacityLevel
+        }
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension MissionPopupView: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y + scrollView.frame.height < scrollableContentView.intrinsicContentSize.height {
+            animateShadow(fromValue: shadowOpacityLevel, toValue: 0, duration: shadowAnimationDuration)
+        } else {
+            animateShadow(fromValue: 0, toValue: shadowOpacityLevel, duration: shadowAnimationDuration)
+        }
+    }
+
+    func animateShadow(fromValue from: Float, toValue to: Float, duration: Double) {
+        guard actionView.layer.shadowOpacity != to else { return }
+        let animation = CABasicAnimation(keyPath: "shadowOpacity")
+        animation.fromValue = from
+        animation.toValue = to
+        animation.duration = duration
+        actionView.layer.add(animation, forKey: nil)
+        actionView.layer.shadowOpacity = to
     }
 }

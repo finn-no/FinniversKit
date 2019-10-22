@@ -69,7 +69,8 @@ extension ChristmasWishListView {
 
         private func setup() {
             backgroundColor = .bgPrimary
-            layoutMargins = UIEdgeInsets(all: .mediumLargeSpacing * 1.5)
+            let spacing = .mediumLargeSpacing * 1.5
+            layoutMargins = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: spacing)
 
             addSubview(titleLabel)
             addSubview(bodyTextLabel)
