@@ -11,7 +11,14 @@ public final class CalloutView: UIView {
         case down
     }
 
+    public enum ArrowAlignment {
+        case center
+        case left(CGFloat)
+        case right(CGFloat)
+    }
+
     private let direction: Direction
+    private let arrowAlignment: ArrowAlignment
 
     private var arrowRotationTransformation: CGAffineTransform {
         switch direction {
@@ -49,12 +56,14 @@ public final class CalloutView: UIView {
 
     public override init(frame: CGRect) {
         direction = .up
+        arrowAlignment = .center
         super.init(frame: frame)
         setup()
     }
 
-    public init(direction: CalloutView.Direction) {
+    public init(direction: CalloutView.Direction, arrowAlignment: ArrowAlignment = .center) {
         self.direction = direction
+        self.arrowAlignment = arrowAlignment
         super.init(frame: .zero)
         setup()
     }
@@ -92,10 +101,21 @@ public final class CalloutView: UIView {
 
         arrowView.transform = arrowRotationTransformation
 
+        let arrowConstraint: NSLayoutConstraint
+
+        switch arrowAlignment {
+        case .center:
+            arrowConstraint = arrowView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        case .left(let value):
+            arrowConstraint = arrowView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: value)
+        case .right(let value):
+            arrowConstraint = arrowView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -value)
+        }
+
         let defaultConstraints = [
             arrowView.widthAnchor.constraint(equalToConstant: 20),
             arrowView.heightAnchor.constraint(equalToConstant: 12),
-            arrowView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            arrowConstraint,
 
             textLabel.topAnchor.constraint(equalTo: boxView.topAnchor, constant: .mediumLargeSpacing),
             textLabel.leadingAnchor.constraint(equalTo: boxView.leadingAnchor, constant: .mediumLargeSpacing),
@@ -110,7 +130,6 @@ public final class CalloutView: UIView {
         switch direction {
         case .up:
             return [
-                arrowView.centerXAnchor.constraint(equalTo: centerXAnchor),
                 arrowView.topAnchor.constraint(equalTo: topAnchor),
                 boxView.topAnchor.constraint(equalTo: arrowView.bottomAnchor, constant: -boxView.layer.borderWidth - 1),
                 boxView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -119,7 +138,6 @@ public final class CalloutView: UIView {
             ]
         case .down:
             return [
-                arrowView.centerXAnchor.constraint(equalTo: centerXAnchor),
                 arrowView.bottomAnchor.constraint(equalTo: bottomAnchor),
                 boxView.topAnchor.constraint(equalTo: topAnchor),
                 boxView.bottomAnchor.constraint(equalTo: arrowView.topAnchor, constant: boxView.layer.borderWidth + 1),

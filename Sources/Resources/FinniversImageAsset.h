@@ -60,6 +60,8 @@ extern NSString *const FinniversImageAssetfavoritesShareLink;
 extern NSString *const FinniversImageAssetfavoritesSortAdStatus;
 extern NSString *const FinniversImageAssetfavoritesSortDistance;
 extern NSString *const FinniversImageAssetfavoritesSortLastAdded;
+extern NSString *const FinniversImageAssetfavoritesXmasButton;
+extern NSString *const FinniversImageAssetfavoritesXmasFolder;
 extern NSString *const FinniversImageAssetfavouriteAddImg;
 extern NSString *const FinniversImageAssetfavouriteAdded;
 extern NSString *const FinniversImageAssetfavouriteAddedImg;
