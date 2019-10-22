@@ -440,6 +440,8 @@
 		CFB61376229ACB0C00DE283D /* IconCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */; };
 		CFB61379229ACB8600DE283D /* IconCollectionViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61378229ACB8600DE283D /* IconCollectionViewDemo.swift */; };
 		CFB6137C229AD43400DE283D /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6137A229AD41600DE283D /* IconCollectionViewCell.swift */; };
+		CFB775F02359B8420097C0ED /* FavoriteFolderXmasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB775EF2359B8420097C0ED /* FavoriteFolderXmasView.swift */; };
+		CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB775F12359D8360097C0ED /* FloatingButton+Favorites.swift */; };
 		CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDDA5B2273022A005E1F4A /* CalloutView.swift */; };
 		CFCDDA5F22731D60005E1F4A /* CalloutDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDDA5E22731D60005E1F4A /* CalloutDemoView.swift */; };
 		CFCED8D922CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCED8D822CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift */; };
@@ -1005,6 +1007,8 @@
 		CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewModel.swift; sourceTree = "<group>"; };
 		CFB61378229ACB8600DE283D /* IconCollectionViewDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewDemo.swift; sourceTree = "<group>"; };
 		CFB6137A229AD41600DE283D /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
+		CFB775EF2359B8420097C0ED /* FavoriteFolderXmasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderXmasView.swift; sourceTree = "<group>"; };
+		CFB775F12359D8360097C0ED /* FloatingButton+Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingButton+Favorites.swift"; sourceTree = "<group>"; };
 		CFCDDA5B2273022A005E1F4A /* CalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
 		CFCDDA5E22731D60005E1F4A /* CalloutDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutDemoView.swift; sourceTree = "<group>"; };
 		CFCED8D822CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersSearchBar.swift; sourceTree = "<group>"; };
@@ -3545,10 +3549,12 @@
 				CFCED8DC22CE3EAA0049A3A0 /* AddFavoriteFolderButton.swift */,
 				CFCED8E022CF3A690049A3A0 /* AddFavoriteFolderViewCell.swift */,
 				CF164CFC230EB0F900250822 /* CheckmarkImageView.swift */,
-				CF05BA01233B78BC003A7F1C /* FavoriteSearchEmptyView.swift */,
 				0881432722E05391008CB5DA /* FavoriteFolderSelectableViewCell.swift */,
 				CFCED8E422CF71AC0049A3A0 /* FavoriteFoldersFooterView.swift */,
 				CFCED8D822CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift */,
+				CFB775EF2359B8420097C0ED /* FavoriteFolderXmasView.swift */,
+				CF05BA01233B78BC003A7F1C /* FavoriteSearchEmptyView.swift */,
+				CFB775F12359D8360097C0ED /* FloatingButton+Favorites.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -4366,6 +4372,7 @@
 				441D699D1FEA947600CD919A /* Layout.swift in Sources */,
 				44898D621FE5B9C200F6017B /* UIImageExtensions.swift in Sources */,
 				431875C321118CE200D71723 /* ReviewViewDefaultData.swift in Sources */,
+				CFB775F22359D8360097C0ED /* FloatingButton+Favorites.swift in Sources */,
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */,
 				45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */,
@@ -4436,6 +4443,7 @@
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
 				CF164CF5230E93AE00250822 /* FavoriteAdSortingView.swift in Sources */,
 				CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */,
+				CFB775F02359B8420097C0ED /* FavoriteFolderXmasView.swift in Sources */,
 				CFCDDA5C2273022A005E1F4A /* CalloutView.swift in Sources */,
 				CF3D5EF9215A6F3B006E4D08 /* FloatingButton.swift in Sources */,
 				44D912622077AC8A00486848 /* CircleView.swift in Sources */,

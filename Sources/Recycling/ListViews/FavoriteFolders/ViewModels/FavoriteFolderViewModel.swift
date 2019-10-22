@@ -7,6 +7,7 @@ import Foundation
 public protocol FavoriteFolderViewModel: RemoteImageTableViewCellViewModel {
     var isSelected: Bool { get }
     var isDefault: Bool { get }
+    var isXmas: Bool { get }
 }
 
 public extension FavoriteFolderViewModel {
