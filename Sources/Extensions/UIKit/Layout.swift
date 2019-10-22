@@ -37,4 +37,22 @@ public extension UIView {
         let insets = UIEdgeInsets(top: margin, leading: margin, bottom: -margin, trailing: -margin)
         return fillInSuperview(insets: insets, isActive: isActive)
     }
+
+    @discardableResult
+    func fillInSuperviewLayoutMargins() -> [NSLayoutConstraint] {
+        guard let superview = superview else {
+            return []
+        }
+
+        let constrains: [NSLayoutConstraint] = [
+            topAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor),
+            leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.leadingAnchor),
+            trailingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor),
+            bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor),
+        ]
+
+        NSLayoutConstraint.activate(constrains)
+
+        return constrains
+    }
 }
