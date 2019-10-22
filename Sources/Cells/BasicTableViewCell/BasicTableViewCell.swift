@@ -92,8 +92,13 @@ open class BasicTableViewCell: UITableViewCell {
         if viewModel.hasChevron {
             accessoryType = .disclosureIndicator
             selectionStyle = .default
-            detailLabelTrailingConstraint.constant = 0
-            stackViewTrailingAnchorConstraint.constant = 0
+            if #available(iOS 13.0, *) {
+                detailLabelTrailingConstraint.constant = -.mediumSpacing
+                stackViewTrailingAnchorConstraint.constant = -.mediumSpacing
+            } else {
+                detailLabelTrailingConstraint.constant = 0
+                stackViewTrailingAnchorConstraint.constant = 0
+            }
         } else {
             accessoryType = .none
             selectionStyle = .none
