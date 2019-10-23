@@ -41,6 +41,7 @@ public class BottomShadowView: UIView {
 
         let intersection = contentFrame.intersection(frame)
         layer.shadowRadius = min(intersection.height * 0.2, BottomShadowView.maxShadowRadius)
+        print(layer.shadowRadius)
     }
 
     // MARK: - Setup

@@ -26,13 +26,7 @@ public class PrimingDemoView: UIView {
 
     private func setup() {
         addSubview(view)
-
-        NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(greaterThanOrEqualToConstant: 320),
-            view.widthAnchor.constraint(lessThanOrEqualToConstant: 337),
-            view.centerXAnchor.constraint(equalTo: centerXAnchor),
-            view.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
+        view.fillInSuperview()
     }
 }
 
@@ -49,13 +43,13 @@ extension PrimingViewModel {
                 ),
                 PrimingViewModel.Row(
                     icon: UIImage(named: .primingFavoritesComments),
-                    title: "Søk og sorter",
-                    detailText: "Finn frem ved å søke eller sortere dine favoritter."
+                    title: "Notater",
+                    detailText: "Legg til små huskelapper på favorittene dine."
                 ),
                 PrimingViewModel.Row(
                     icon: UIImage(named: .primingFavoritesSharing),
-                    title: "Søk og sorter",
-                    detailText: "Finn frem ved å søke eller sortere dine favoritter."
+                    title: "Deling",
+                    detailText: "Del dine favorittlister slik at andre kan se og følge med på listene."
                 )
             ]
         )

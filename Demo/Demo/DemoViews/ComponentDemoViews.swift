@@ -152,7 +152,10 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .visibilityDrivenTitleView:
             return DemoViewController<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
         case .priming:
-            return DemoViewController<PrimingDemoView>()//(containmentOptions: .bottomSheet)
+            return DemoViewController<PrimingDemoView>(
+                containmentOptions: .bottomSheet,
+                constrainToBottomSafeArea: false
+            )
         }
     }
 }
