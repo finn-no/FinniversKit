@@ -11,11 +11,10 @@ class TweakingOptionsTableViewController: ScrollViewController {
     private let options: [TweakingOption]
     var selectedIndexPath: IndexPath?
 
-    private lazy var tableView: UITableView = {
-        let view = UITableView(withAutoLayout: true)
-        view.dataSource = self
+    private lazy var tableView: BasicTableView = {
+        var items = options.map { BasicTableViewItem(title: $0.title) }
+        let view = BasicTableView(items: items)
         view.delegate = self
-        view.separatorColor = .clear
         return view
     }()
 
@@ -62,7 +61,6 @@ class TweakingOptionsTableViewController: ScrollViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
-        tableView.register(TweakingOptionCell.self)
         updateColors()
         navigationItem.titleView = selectorTitleView
 
@@ -131,37 +129,6 @@ class TweakingOptionsTableViewController: ScrollViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
-
-extension TweakingOptionsTableViewController: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return options.count
-    }
-
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(TweakingOptionCell.self, for: indexPath)
-        let option = options[indexPath.row]
-        let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
-        cell.configure(withOption: option, isSelected: isSelected, for: traitCollection)
-        return cell
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension TweakingOptionsTableViewController: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let option = options[indexPath.row]
-        option.action?()
-        delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
-    }
-
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
-    }
-}
-
 extension TweakingOptionsTableViewController: SelectorTitleViewDelegate {
     func selectorTitleViewDidSelectButton(_ view: SelectorTitleView) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -176,13 +143,19 @@ extension TweakingOptionsTableViewController: SelectorTitleViewDelegate {
 
 extension TweakingOptionsTableViewController: BasicTableViewDelegate {
     func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
-        let device = Device.all[index]
-        selectorTitleView.title = device.title
-        hideDevicesViewController()
-        State.lastSelectedDevice = index
-        self.delegate?.tweakingOptionsTableViewController(self, didSelectDevice: device)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
+        if basicTableView == devicesTableView {
+            let device = Device.all[index]
+            selectorTitleView.title = device.title
+            hideDevicesViewController()
+            State.lastSelectedDevice = index
+            self.delegate?.tweakingOptionsTableViewController(self, didSelectDevice: device)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
+            }
+        } else {
+            let option = options[index]
+            option.action?()
+            delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
         }
     }
 }
