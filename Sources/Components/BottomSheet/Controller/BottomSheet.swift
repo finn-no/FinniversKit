@@ -74,18 +74,29 @@ public class BottomSheet: UIViewController {
     public weak var dragDelegate: BottomSheetDragDelegate?
 
     public var state: State {
-        get { return transitionDelegate.presentationController?.state ?? .dismissed }
-        set { transitionDelegate.presentationController?.state = newValue }
+        get { transitionDelegate.presentationController?.state ?? .dismissed }
+        set {
+            transitionDelegate.presentationController?.state = newValue
+            if isPopover {
+                delegate?.bottomSheet(self, didDismissBy: .none)
+                dismiss(animated: true, completion: nil)
+            }
+        }
     }
 
     public var height: Height {
-        get { return transitionDelegate.height }
+        get { transitionDelegate.height }
         set { transitionDelegate.height = newValue }
+    }
+
+    public var isNotchHidden: Bool {
+        get { notch.isHandleHidden }
+        set { notch.isHandleHidden = newValue }
     }
 
     public let dimView: UIView
 
-    let notch: UIView = Notch(withAutoLayout: true)
+    let notch = Notch(withAutoLayout: true)
 
     var draggableRect: CGRect? {
         switch draggableArea {
@@ -104,11 +115,14 @@ public class BottomSheet: UIViewController {
         }
     }
 
+    let notchHeight: CGFloat = 20
+    var isPopover: Bool { modalPresentationStyle == .popover }
+
     // MARK: - Private properties
 
     private let transitionDelegate: BottomSheetTransitioningDelegate
     private let draggableArea: DraggableArea
-    private let notchHeight: CGFloat = 20
+
     private let cornerRadius: CGFloat = 16
 
     // MARK: - Setup
@@ -179,12 +193,16 @@ extension BottomSheet: BottomSheetPresentationControllerDelegate {
 
 // MARK: - Notch
 
-private class Notch: UIView {
+final class Notch: UIView {
+    var isHandleHidden: Bool {
+        get { handle.isHidden }
+        set { handle.isHidden = newValue }
+    }
 
     // MARK: - private properties
 
     private let notchSize = CGSize(width: 25, height: 4)
-    private let notch: UIView = {
+    private let handle: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .textDisabled //DARK
         view.layer.cornerRadius = 2
@@ -206,13 +224,13 @@ private class Notch: UIView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(notch)
+        addSubview(handle)
 
         NSLayoutConstraint.activate([
-            notch.centerXAnchor.constraint(equalTo: centerXAnchor),
-            notch.centerYAnchor.constraint(equalTo: centerYAnchor),
-            notch.heightAnchor.constraint(equalToConstant: notchSize.height),
-            notch.widthAnchor.constraint(equalToConstant: notchSize.width)
+            handle.centerXAnchor.constraint(equalTo: centerXAnchor),
+            handle.centerYAnchor.constraint(equalTo: centerYAnchor),
+            handle.heightAnchor.constraint(equalToConstant: notchSize.height),
+            handle.widthAnchor.constraint(equalToConstant: notchSize.width)
         ])
     }
 }

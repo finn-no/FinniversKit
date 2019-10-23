@@ -33,6 +33,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case favoriteAdCommentSheet
     case verificationActionSheet
     case splashView
+    case popovers
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -114,6 +115,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return bottomSheet
         case .splashView:
             return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
+        case .popovers:
+            return PopoversDemoViewController()
         }
     }
 }

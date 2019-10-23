@@ -132,4 +132,8 @@ class FullscreenViewTests: XCTestCase {
     func testSplashView() {
         snapshot(.splashView)
     }
+
+    func testPopovers() {
+        snapshot(.popovers)
+    }
 }

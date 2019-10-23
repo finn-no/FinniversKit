@@ -16,6 +16,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
             viewController?.isShared = isShared
             shouldAnimate = true
             height = .makeHeight(for: viewModel, isShared: isShared)
+            updatePreferredContentSize()
         }
     }
 
@@ -33,6 +34,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
         let viewController = FavoriteFolderActionViewController(viewModel: viewModel, isShared: isShared)
         super.init(rootViewController: viewController, height: .makeHeight(for: viewModel, isShared: isShared))
         self.viewController = viewController
+        updatePreferredContentSize()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -49,7 +51,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
         super.viewDidLoad()
         viewController?.delegate = self
 
-        let animationOffsetMultiplier: CGFloat = isShared ? 1 : 2
+        let animationOffsetMultiplier: CGFloat = isPopover ? -2 : (isShared ? 1 : 2)
         let maxTransitionOffset = Height.transitionOffset(for: viewModel)
 
         positionObservationToken = view.layer.observe(\.position, options: [.new, .old]) { [weak self] _, change in
@@ -72,6 +74,14 @@ public final class FavoriteFolderActionSheet: BottomSheet {
 
     public func setAction(_ action: FavoriteFolderAction, enabled: Bool) {
         viewController?.setAction(action, enabled: enabled)
+    }
+
+    // MARK: - Private
+
+    private func updatePreferredContentSize() {
+        UIView.performWithoutAnimation {
+            preferredContentSize.height = height.compact - BottomSheet.Height.bottomInset + notchHeight
+        }
     }
 }
 
@@ -102,5 +112,5 @@ private extension BottomSheet.Height {
         return makeHeight(for: viewModel, isShared: true).compact - makeHeight(for: viewModel, isShared: false).compact
     }
 
-    private static let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
+    static let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
 }
