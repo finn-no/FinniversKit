@@ -20,8 +20,7 @@ public class SelectorTitleView: UIView {
 
     public var arrowDirection: ArrowDirection = .down {
         didSet {
-            let asset: FinniversImageAsset = arrowDirection == .up ? .arrowUpSmall : .arrowDownSmall
-            button.setImage(UIImage(named: asset), for: .normal)
+            updateArrowDirection()
         }
     }
 
@@ -95,8 +94,7 @@ public class SelectorTitleView: UIView {
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
-        arrowDirection = .down
-        isEnabled = true
+        updateArrowDirection()
 
         backgroundColor = .bgPrimary
 
@@ -130,4 +128,12 @@ public class SelectorTitleView: UIView {
         button.setTitleColor(buttonDisabledColor, for: .disabled)
         button.tintColor = buttonColor
     }
+
+    // MARK: - Private
+
+    private func updateArrowDirection() {
+        let asset: FinniversImageAsset = arrowDirection == .up ? .arrowUpSmall : .arrowDownSmall
+        button.setImage(UIImage(named: asset), for: .normal)
+    }
+
 }
