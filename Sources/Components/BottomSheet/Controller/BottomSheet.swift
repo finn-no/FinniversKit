@@ -140,6 +140,17 @@ public class BottomSheet: UIViewController {
         modalPresentationStyle = .custom
     }
 
+    public convenience init(view: UIView,
+                            height: Height = .defaultFilterHeight,
+                            draggableArea: DraggableArea = .everything) {
+        let rootViewController = UIViewController()
+        rootViewController.view.backgroundColor = .bgPrimary
+        rootViewController.view.addSubview(view)
+        view.fillInSuperview()
+
+        self.init(rootViewController: rootViewController, height: height, draggableArea: draggableArea)
+    }
+
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

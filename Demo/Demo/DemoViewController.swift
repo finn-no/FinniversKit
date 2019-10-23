@@ -163,7 +163,7 @@ extension DemoViewController: CornerAnchoringViewDelegate {
 }
 
 extension DemoViewController: TweakingOptionsTableViewControllerDelegate {
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath) {
+    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController) {
         bottomSheet?.state = .dismissed
     }
 }

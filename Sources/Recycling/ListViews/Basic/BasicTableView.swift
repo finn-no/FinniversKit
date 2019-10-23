@@ -64,6 +64,10 @@ open class BasicTableView: ShadowScrollView {
         setup()
     }
 
+    public func reloadData() {
+        tableView.reloadData()
+    }
+
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .bgPrimary
