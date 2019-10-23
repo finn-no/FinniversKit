@@ -25,7 +25,7 @@ public enum RecyclingDemoViews: String, CaseIterable {
     public var viewController: UIViewController {
         switch self {
         case .basicTableView:
-            return DemoViewController<BasicTableViewDemoView>()
+            return DemoViewControllerContainer<BasicTableViewDemoView>()
         case .notificationsListView:
             return DemoViewControllerContainer<NotificationsListViewDemoView>()
         case .favoriteFoldersListView:

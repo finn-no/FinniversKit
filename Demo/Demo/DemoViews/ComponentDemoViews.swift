@@ -60,9 +60,9 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .button:
             return DemoViewControllerContainer<ButtonDemoView>()
         case .dialogue:
-            return DemoViewController<DialogueDemoView>()
+            return DemoViewControllerContainer<DialogueDemoView>()
         case .floatingButton:
-            return DemoViewController<FloatingButtonDemoView>()
+            return DemoViewControllerContainer<FloatingButtonDemoView>()
         case .reviewButtonView:
             return DemoViewControllerContainer<ReviewButtonViewDemoView>()
         case .cogWheelButton:
@@ -118,7 +118,7 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .klimabroletView:
             return KlimabroletDemoViewController(dismissType: .none)
         case .christmasWishListView:
-            return DemoViewController<ChristmasWishListDemoView>()
+            return DemoViewControllerContainer<ChristmasWishListDemoView>()
         case .stepIndicatorView:
             return DemoViewControllerContainer<StepIndicatorDemoView>(dismissType: .dismissButton)
         case .nativeAdverts:
@@ -150,9 +150,9 @@ public enum ComponentDemoViews: String, CaseIterable {
         case .reputationView:
             return DemoViewControllerContainer<ReputationDemoView>()
         case .visibilityDrivenTitleView:
-            return DemoViewController<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
+            return DemoViewControllerContainer<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
         case .selectorTitleView:
-            return DemoViewController<SelectorTitleViewDemoView>()
+            return DemoViewControllerContainer<SelectorTitleViewDemoView>()
         }
     }
 }
