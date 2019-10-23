@@ -96,6 +96,8 @@
 		441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE452209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift */; };
 		441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */; };
 		4423F227209CB24500B81D68 /* MiniToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4423F226209CB24500B81D68 /* MiniToastView.swift */; };
+		443795F9236043F200D05917 /* SelectorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443795F8236043F200D05917 /* SelectorTitleView.swift */; };
+		443795FC2360444200D05917 /* SelectorTitleViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443795FB2360444200D05917 /* SelectorTitleViewDemoView.swift */; };
 		443A641E209A503A006BFB38 /* NotificationsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */; };
 		443A6420209A5044006BFB38 /* NotificationsListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */; };
 		4441F9EF22CCF72F00DCFD2F /* AddressViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4441F9EE22CCF72F00DCFD2F /* AddressViewDemoView.swift */; };
@@ -456,6 +458,7 @@
 		CFE43E52219B1B2900D3D5F7 /* FrontPageRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */; };
 		CFEB220F232B96550039421C /* UIBarButtonItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB220E232B96550039421C /* UIBarButtonItemExtensions.swift */; };
 		CFEB22252330D1420039421C /* FavoriteAdsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB22242330D1420039421C /* FavoriteAdsListViewModel.swift */; };
+		CFEF962F235F3BAE00B6AA7B /* PopoversDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEF962E235F3BAE00B6AA7B /* PopoversDemoViewController.swift */; };
 		CFF54E2E234E192A008E18BE /* FavoriteAdsSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF54E2D234E192A008E18BE /* FavoriteAdsSubtitleView.swift */; };
 		CFF9727121C3BA1D00C85238 /* BannerTransparencySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9726E21C3BA1D00C85238 /* BannerTransparencySectionView.swift */; };
 		CFF9727221C3BA1D00C85238 /* BannerTransparencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9726F21C3BA1D00C85238 /* BannerTransparencyView.swift */; };
@@ -664,6 +667,8 @@
 		441FE452209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoView.swift; sourceTree = "<group>"; };
 		441FE453209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		4423F226209CB24500B81D68 /* MiniToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniToastView.swift; sourceTree = "<group>"; };
+		443795F8236043F200D05917 /* SelectorTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorTitleView.swift; sourceTree = "<group>"; };
+		443795FB2360444200D05917 /* SelectorTitleViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTitleViewDemoView.swift; sourceTree = "<group>"; };
 		443A641D209A503A006BFB38 /* NotificationsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListHeaderView.swift; sourceTree = "<group>"; };
 		443A641F209A5044006BFB38 /* NotificationsListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsListFooterView.swift; sourceTree = "<group>"; };
 		4441F9EE22CCF72F00DCFD2F /* AddressViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewDemoView.swift; sourceTree = "<group>"; };
@@ -1028,6 +1033,7 @@
 		CFE43E51219B1B2900D3D5F7 /* FrontPageRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageRetryView.swift; sourceTree = "<group>"; };
 		CFEB220E232B96550039421C /* UIBarButtonItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtensions.swift; sourceTree = "<group>"; };
 		CFEB22242330D1420039421C /* FavoriteAdsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListViewModel.swift; sourceTree = "<group>"; };
+		CFEF962E235F3BAE00B6AA7B /* PopoversDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoversDemoViewController.swift; sourceTree = "<group>"; };
 		CFF54E2D234E192A008E18BE /* FavoriteAdsSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdsSubtitleView.swift; sourceTree = "<group>"; };
 		CFF9726D21C3BA1D00C85238 /* BannerTransparencyDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencyDemoView.swift; sourceTree = "<group>"; };
 		CFF9726E21C3BA1D00C85238 /* BannerTransparencySectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerTransparencySectionView.swift; sourceTree = "<group>"; };
@@ -1559,6 +1565,22 @@
 				441FE44A209A2F2C00B04EF1 /* NotificationsListViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		443795F7236043F200D05917 /* SelectorTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				443795F8236043F200D05917 /* SelectorTitleView.swift */,
+			);
+			path = SelectorTitleView;
+			sourceTree = "<group>";
+		};
+		443795FA2360443700D05917 /* SelectorTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				443795FB2360444200D05917 /* SelectorTitleViewDemoView.swift */,
+			);
+			path = SelectorTitleView;
 			sourceTree = "<group>";
 		};
 		4441F9ED22CCF72F00DCFD2F /* AddressView */ = {
@@ -3050,6 +3072,7 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				443795FA2360443700D05917 /* SelectorTitleView */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
@@ -3266,6 +3289,7 @@
 				CF8F022F21DCC788004C4042 /* Login */,
 				9BC33DE122D7192F007CCD65 /* LoginEntry */,
 				8908E85822C0E5F000ED671C /* MessageForm */,
+				CFEF962D235F3B8E00B6AA7B /* Popovers */,
 				CF8F023321DCC7B9004C4042 /* Popup */,
 				F2B1A19522D5051000713FC2 /* Receipt */,
 				CF8F023021DCC793004C4042 /* Register */,
@@ -3587,6 +3611,14 @@
 				444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CFEF962D235F3B8E00B6AA7B /* Popovers */ = {
+			isa = PBXGroup;
+			children = (
+				CFEF962E235F3BAE00B6AA7B /* PopoversDemoViewController.swift */,
+			);
+			path = Popovers;
 			sourceTree = "<group>";
 		};
 		CFF9726B21C3BA1D00C85238 /* BannerTransparency */ = {
@@ -3999,7 +4031,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
 					14405C691FAFBD1800D03E04 = {
@@ -4131,6 +4163,7 @@
 				44B94FE722E0AB6C0078A23C /* TweakingOptionCell.swift in Sources */,
 				9B9287AB22F0593700FC7B69 /* KlimabroletData.swift in Sources */,
 				9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */,
+				443795FC2360444200D05917 /* SelectorTitleViewDemoView.swift in Sources */,
 				CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				F253C5112313FA6E008175FD /* VerificationDemoView.swift in Sources */,
@@ -4167,6 +4200,7 @@
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				AA864B392231589B00BAE95A /* DialogueDemoView.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
+				CFEF962F235F3BAE00B6AA7B /* PopoversDemoViewController.swift in Sources */,
 				44FEBC1323322D4C009AC5E4 /* RecyclingDemoViews.swift in Sources */,
 				081F51BA222930C500026C84 /* TextViewDemoView.swift in Sources */,
 				44FEBC1123322D4C009AC5E4 /* CellsDemoViews.swift in Sources */,
@@ -4517,6 +4551,7 @@
 				CF7C460422257A8A001FB92C /* EarthHourContentView.swift in Sources */,
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
+				443795F9236043F200D05917 /* SelectorTitleView.swift in Sources */,
 				F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */,
 				CFEB220F232B96550039421C /* UIBarButtonItemExtensions.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
@@ -4893,7 +4928,7 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -4935,7 +4970,7 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;

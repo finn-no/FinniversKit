@@ -9,6 +9,8 @@ public protocol SelectorTitleViewDelegate: AnyObject {
 }
 
 public class SelectorTitleView: UIView {
+    // MARK: - Public
+
     public enum ArrowDirection {
         case up
         case down
@@ -18,10 +20,17 @@ public class SelectorTitleView: UIView {
 
     public var arrowDirection: ArrowDirection = .down {
         didSet {
-            let asset: FinniversImageAsset = arrowDirection == .up ? .arrowUpSmall : .arrowDownSmall
-            button.setImage(UIImage(named: asset), for: .normal)
+            updateArrowDirection()
         }
     }
+
+    public var title: String? {
+        didSet {
+            button.setTitle(title, for: .normal)
+        }
+    }
+
+    // MARK: - Private
 
     private var isEnabled: Bool = true {
         didSet {
@@ -44,20 +53,11 @@ public class SelectorTitleView: UIView {
         button.titleLabel?.font = UIFont.bodyStrong.withSize(17).scaledFont(forTextStyle: .footnote)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
 
-        let spacing = .smallSpacing / 2
-
+        let spacing: CGFloat = .verySmallSpacing
         button.semanticContentAttribute = .forceRightToLeft
         button.imageEdgeInsets = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: -spacing)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, leading: -spacing, bottom: 0, trailing: spacing)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
-
-        let buttonColor: UIColor = .btnPrimary
-        let interfaceBackgroundColor: UIColor = .bgPrimary
-        button.setTitleColor(buttonColor, for: .normal)
-        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
-        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)
-        button.setTitleColor(.btnDisabled, for: .disabled)
-        button.tintColor = buttonColor
 
         if heading != nil {
             button.contentEdgeInsets = UIEdgeInsets(
@@ -92,18 +92,14 @@ public class SelectorTitleView: UIView {
 
     // MARK: - Setup
 
-    public var title: String? {
-        didSet {
-            button.setTitle(title, for: .normal)
-        }
-    }
-
     private func setup() {
-        arrowDirection = .down
-        isEnabled = true
-        backgroundColor = .bgPrimary
-        addSubview(button)
+        translatesAutoresizingMaskIntoConstraints = false
+        updateArrowDirection()
 
+        backgroundColor = .bgPrimary
+
+        updateButtonColor()
+        addSubview(button)
         button.fillInSuperview()
 
         if heading != nil {
@@ -122,4 +118,22 @@ public class SelectorTitleView: UIView {
     @objc private func handleButtonTap() {
         delegate?.selectorTitleViewDidSelectButton(self)
     }
+
+    // MARK: - Public
+
+    public func updateButtonColor(_ buttonColor: UIColor = .btnPrimary, buttonDisabledColor: UIColor = .btnDisabled) {
+        button.setTitleColor(buttonColor, for: .normal)
+        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
+        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)
+        button.setTitleColor(buttonDisabledColor, for: .disabled)
+        button.tintColor = buttonColor
+    }
+
+    // MARK: - Private
+
+    private func updateArrowDirection() {
+        let asset: FinniversImageAsset = arrowDirection == .up ? .arrowUpSmall : .arrowDownSmall
+        button.setImage(UIImage(named: asset), for: .normal)
+    }
+
 }

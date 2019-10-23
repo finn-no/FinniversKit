@@ -198,4 +198,8 @@ class ComponentViewTests: XCTestCase {
     func testChristmasWishListView() {
         snapshot(.christmasWishListView)
     }
+
+    func testSelectorTitleView() {
+        snapshot(.selectorTitleView)
+    }
 }
