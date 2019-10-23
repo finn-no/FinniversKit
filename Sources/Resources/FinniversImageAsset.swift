@@ -41,6 +41,7 @@ public enum FinniversImageAsset: String {
     case checkCircle
     case checkCircleFilledMini
     case checkmarkBig
+    case christmasWishListBanner
     case classifieds
     case close
     case creditcard
@@ -78,6 +79,7 @@ public enum FinniversImageAsset: String {
     case favourites
     case finnLogo
     case gallery
+    case gift
     case giftRoundedRectRed
     case giftSquarePink
     case giftSquareYellow
@@ -196,6 +198,7 @@ public enum FinniversImageAsset: String {
             .checkCircle,
             .checkCircleFilledMini,
             .checkmarkBig,
+            .christmasWishListBanner,
             .classifieds,
             .close,
             .creditcard,
@@ -233,6 +236,7 @@ public enum FinniversImageAsset: String {
             .favourites,
             .finnLogo,
             .gallery,
+            .gift,
             .giftRoundedRectRed,
             .giftSquarePink,
             .giftSquareYellow,
