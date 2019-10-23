@@ -120,7 +120,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
 
     private lazy var gradientLayer: CALayer = {
         let layer = CAGradientLayer()
-        let color = UIColor.white.withAlphaComponent(0.75)
+        let color = UIColor.bgPrimary.withAlphaComponent(0.75)
         layer.colors = [UIColor.bgTertiary.cgColor, color.cgColor]
         layer.locations = [0.1, 1.0]
         return layer
