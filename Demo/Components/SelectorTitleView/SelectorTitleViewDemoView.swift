@@ -1,10 +1,7 @@
 import FinniversKit
 
 class SelectorTitleViewDemoView: UIView {
-    lazy var selectorTitleView: SelectorTitleView = {
-        let selectorTitleView = SelectorTitleView()
-        return selectorTitleView
-    }()
+    lazy var selectorTitleView = SelectorTitleView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,7 +15,8 @@ class SelectorTitleViewDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        selectorTitleView.title = "Hei!"
+        backgroundColor = .red
+        selectorTitleView.title = "Arrow is down"
         selectorTitleView.delegate = self
 
         addSubview(selectorTitleView)
@@ -26,13 +24,15 @@ class SelectorTitleViewDemoView: UIView {
             selectorTitleView.leadingAnchor.constraint(equalTo: leadingAnchor),
             selectorTitleView.trailingAnchor.constraint(equalTo: trailingAnchor),
             selectorTitleView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            selectorTitleView.heightAnchor.constraint(equalToConstant: 60)
+            selectorTitleView.heightAnchor.constraint(greaterThanOrEqualToConstant: 60)
         ])
     }
 }
 
 extension SelectorTitleViewDemoView: SelectorTitleViewDelegate {
     func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
-        print(":D")
+        let arrowIsUp = selectorTitleView.arrowDirection == .up
+        selectorTitleView.arrowDirection = arrowIsUp ? .down : .up
+        selectorTitleView.title = arrowIsUp ? "Arrow is down" : "Arrow is up"
     }
 }

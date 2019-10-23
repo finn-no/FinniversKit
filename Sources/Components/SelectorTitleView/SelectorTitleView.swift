@@ -99,6 +99,7 @@ public class SelectorTitleView: UIView {
     }
 
     private func setup() {
+        translatesAutoresizingMaskIntoConstraints = false
         arrowDirection = .down
         isEnabled = true
         backgroundColor = .bgPrimary
