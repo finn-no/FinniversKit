@@ -101,7 +101,6 @@ class DemoViewsTableViewController: UITableViewController {
             let sectionIndexColor: UIColor = .primaryBlue //DARK
             self.tableView.sectionIndexColor = sectionIndexColor
             self.tableView.backgroundColor = .bgPrimary
-            self.selectorTitleView.updateColors(for: self.traitCollection)
             self.updateMoonButton()
             self.setNeedsStatusBarAppearanceUpdate()
         }

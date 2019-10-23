@@ -37,6 +37,7 @@ public class SelectorTitleView: UIView {
         button.setImage(UIImage(named: .arrowDown), for: .normal)
         addSubview(button)
         button.fillInSuperview()
+        updateColors()
     }
 
     public var title: String? {
@@ -49,7 +50,7 @@ public class SelectorTitleView: UIView {
         delegate?.selectorTitleViewDidSelectButton(self)
     }
 
-    private func updateColors(for traitCollection: UITraitCollection) {
+    private func updateColors() {
         let buttonColor: UIColor = .textAction
         let interfaceBackgroundColor: UIColor = .bgPrimary
 
