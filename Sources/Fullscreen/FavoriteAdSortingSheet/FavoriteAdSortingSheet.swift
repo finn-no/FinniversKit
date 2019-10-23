@@ -38,6 +38,7 @@ public final class FavoriteAdSortingSheet: BottomSheet {
         super.viewDidLoad()
         rootViewController.view.addSubview(sortingView)
         sortingView.fillInSuperview()
+        preferredContentSize.height = height.compact - BottomSheet.Height.bottomInset + notchHeight * 2
     }
 }
 
@@ -53,8 +54,9 @@ extension FavoriteAdSortingSheet: FavoriteAdSortingViewDelegate {
 
 private extension BottomSheet.Height {
     static var `default`: BottomSheet.Height {
-        let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
         let height = FavoriteAdSortingView.totalHeight + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }
+
+    static let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
 }

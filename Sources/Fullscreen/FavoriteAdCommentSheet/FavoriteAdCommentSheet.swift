@@ -27,6 +27,7 @@ public final class FavoriteAdCommentSheet: BottomSheet {
 
         super.init(rootViewController: navigationController, height: .default)
         viewController.delegate = self
+        preferredContentSize.width = 400
     }
 
     public required init?(coder aDecoder: NSCoder) {
