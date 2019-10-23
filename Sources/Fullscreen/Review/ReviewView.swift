@@ -30,7 +30,7 @@ public class ReviewView: UIView {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .bgPrimary
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.register(ReviewTextHeader.self)
