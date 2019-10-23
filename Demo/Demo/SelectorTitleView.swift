@@ -1,11 +1,11 @@
 import FinniversKit
 
-protocol SelectorTitleViewDelegate: AnyObject {
+public protocol SelectorTitleViewDelegate: AnyObject {
     func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView)
 }
 
-class SelectorTitleView: UIView {
-    weak var delegate: SelectorTitleViewDelegate?
+public class SelectorTitleView: UIView {
+    public weak var delegate: SelectorTitleViewDelegate?
 
     private lazy var button: UIButton = {
         let button = UIButton(withAutoLayout: true)
@@ -32,13 +32,14 @@ class SelectorTitleView: UIView {
         setup()
     }
 
-    func setup() {
+    private func setup() {
+        translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: .arrowDown), for: .normal)
         addSubview(button)
         button.fillInSuperview()
     }
 
-    var title: String? {
+    public var title: String? {
         didSet {
             button.setTitle(title, for: .normal)
         }
@@ -48,7 +49,7 @@ class SelectorTitleView: UIView {
         delegate?.selectorTitleViewDidSelectButton(self)
     }
 
-    func updateColors(for traitCollection: UITraitCollection) {
+    private func updateColors(for traitCollection: UITraitCollection) {
         let buttonColor: UIColor = .textAction
         let interfaceBackgroundColor: UIColor = .bgPrimary
 
