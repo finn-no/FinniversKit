@@ -1,7 +1,7 @@
 import FinniversKit
 
 protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath)
+    func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController)
 }
 
 class TweakingOptionsTableViewController: UIViewController {
@@ -9,11 +9,10 @@ class TweakingOptionsTableViewController: UIViewController {
     private let options: [TweakingOption]
     var selectedIndexPath: IndexPath?
 
-    private lazy var tableView: UITableView = {
-        let view = UITableView(withAutoLayout: true)
-        view.dataSource = self
+    private lazy var tableView: BasicTableView = {
+        var items = options.map { BasicTableViewItem(title: $0.title) }
+        let view = BasicTableView(items: items)
         view.delegate = self
-        view.separatorColor = .clear
         return view
     }()
 
@@ -34,7 +33,6 @@ class TweakingOptionsTableViewController: UIViewController {
     private func setup() {
         view.addSubview(tableView)
         tableView.fillInSuperview()
-        tableView.register(TweakingOptionCell.self)
         updateColors()
     }
 
@@ -50,33 +48,12 @@ class TweakingOptionsTableViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - BasicTableViewDelegate
 
-extension TweakingOptionsTableViewController: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return options.count
-    }
-
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(TweakingOptionCell.self, for: indexPath)
-        let option = options[indexPath.row]
-        let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
-        cell.configure(withOption: option, isSelected: isSelected, for: traitCollection)
-        return cell
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension TweakingOptionsTableViewController: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let option = options[indexPath.row]
+extension TweakingOptionsTableViewController: BasicTableViewDelegate {
+    func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
+        let option = options[index]
         option.action?()
-        delegate?.tweakingOptionsTableViewController(self, didDismissWithIndexPath: indexPath)
-    }
-
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+        delegate?.tweakingOptionsTableViewControllerDidDismiss(self)
     }
 }
