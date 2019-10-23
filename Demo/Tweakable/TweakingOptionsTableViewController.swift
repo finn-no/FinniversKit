@@ -9,7 +9,6 @@ protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
 class TweakingOptionsTableViewController: ScrollViewController {
     weak var delegate: TweakingOptionsTableViewControllerDelegate?
     private let options: [TweakingOption]
-    var selectedIndexPath: IndexPath?
 
     private lazy var tableView: BasicTableView = {
         var items = options.map { BasicTableViewItem(title: $0.title) }
