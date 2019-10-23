@@ -9,6 +9,8 @@ public protocol SelectorTitleViewDelegate: AnyObject {
 }
 
 public class SelectorTitleView: UIView {
+    // MARK: - Public
+
     public enum ArrowDirection {
         case up
         case down
@@ -22,6 +24,14 @@ public class SelectorTitleView: UIView {
             button.setImage(UIImage(named: asset), for: .normal)
         }
     }
+
+    public var title: String? {
+        didSet {
+            button.setTitle(title, for: .normal)
+        }
+    }
+
+    // MARK: - Private
 
     private var isEnabled: Bool = true {
         didSet {
@@ -81,22 +91,6 @@ public class SelectorTitleView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Public
-
-    public var title: String? {
-        didSet {
-            button.setTitle(title, for: .normal)
-        }
-    }
-
-    public func updateButtonColor(_ buttonColor: UIColor = .btnPrimary, buttonDisabledColor: UIColor = .btnDisabled) {
-        button.setTitleColor(buttonColor, for: .normal)
-        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
-        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)
-        button.setTitleColor(buttonDisabledColor, for: .disabled)
-        button.tintColor = buttonColor
-    }
-
     // MARK: - Setup
 
     private func setup() {
@@ -125,5 +119,15 @@ public class SelectorTitleView: UIView {
 
     @objc private func handleButtonTap() {
         delegate?.selectorTitleViewDidSelectButton(self)
+    }
+
+    // MARK: - Public
+
+    public func updateButtonColor(_ buttonColor: UIColor = .btnPrimary, buttonDisabledColor: UIColor = .btnDisabled) {
+        button.setTitleColor(buttonColor, for: .normal)
+        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
+        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)
+        button.setTitleColor(buttonDisabledColor, for: .disabled)
+        button.tintColor = buttonColor
     }
 }
