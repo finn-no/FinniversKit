@@ -31,6 +31,7 @@ NSString *const FinniversImageAssetcheck = @"check";
 NSString *const FinniversImageAssetcheckCircle = @"checkCircle";
 NSString *const FinniversImageAssetcheckCircleFilledMini = @"checkCircleFilledMini";
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
+NSString *const FinniversImageAssetchristmasWishListBanner = @"christmasWishListBanner";
 NSString *const FinniversImageAssetclassifieds = @"classifieds";
 NSString *const FinniversImageAssetclose = @"close";
 NSString *const FinniversImageAssetcreditcard = @"creditcard";
@@ -68,6 +69,7 @@ NSString *const FinniversImageAssetfavouriteAddedImg = @"favouriteAddedImg";
 NSString *const FinniversImageAssetfavourites = @"favourites";
 NSString *const FinniversImageAssetfinnLogo = @"finnLogo";
 NSString *const FinniversImageAssetgallery = @"gallery";
+NSString *const FinniversImageAssetgift = @"gift";
 NSString *const FinniversImageAssetgiftRoundedRectRed = @"giftRoundedRectRed";
 NSString *const FinniversImageAssetgiftSquarePink = @"giftSquarePink";
 NSString *const FinniversImageAssetgiftSquareYellow = @"giftSquareYellow";
@@ -189,6 +191,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetcheckCircle,
              FinniversImageAssetcheckCircleFilledMini,
              FinniversImageAssetcheckmarkBig,
+             FinniversImageAssetchristmasWishListBanner,
              FinniversImageAssetclassifieds,
              FinniversImageAssetclose,
              FinniversImageAssetcreditcard,
@@ -226,6 +229,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetfavourites,
              FinniversImageAssetfinnLogo,
              FinniversImageAssetgallery,
+             FinniversImageAssetgift,
              FinniversImageAssetgiftRoundedRectRed,
              FinniversImageAssetgiftSquarePink,
              FinniversImageAssetgiftSquareYellow,

@@ -194,4 +194,8 @@ class ComponentViewTests: XCTestCase {
     func testVisibilityDrivenTitleView() {
         snapshot(.visibilityDrivenTitleView)
     }
+
+    func testChristmasWishListView() {
+        snapshot(.christmasWishListView)
+    }
 }

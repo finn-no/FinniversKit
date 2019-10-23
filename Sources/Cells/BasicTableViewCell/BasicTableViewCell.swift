@@ -46,10 +46,10 @@ open class BasicTableViewCell: UITableViewCell {
     open lazy var stackViewTrailingAnchorConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor)
     open lazy var stackViewBottomAnchorConstraint = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13)
     open lazy var stackViewTopAnchorConstraint = stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13)
+    open lazy var detailLabelTrailingConstraint = detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
 
     // MARK: - Private properties
 
-    private lazy var detailLabelTrailingConstraint = detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
     private lazy var stackViewToDetailLabelConstraint = stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.smallSpacing)
 
     // MARK: - Setup
@@ -92,8 +92,13 @@ open class BasicTableViewCell: UITableViewCell {
         if viewModel.hasChevron {
             accessoryType = .disclosureIndicator
             selectionStyle = .default
-            detailLabelTrailingConstraint.constant = 0
-            stackViewTrailingAnchorConstraint.constant = 0
+            if #available(iOS 13.0, *) {
+                detailLabelTrailingConstraint.constant = -.mediumSpacing
+                stackViewTrailingAnchorConstraint.constant = -.mediumSpacing
+            } else {
+                detailLabelTrailingConstraint.constant = 0
+                stackViewTrailingAnchorConstraint.constant = 0
+            }
         } else {
             accessoryType = .none
             selectionStyle = .none
