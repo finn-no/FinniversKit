@@ -44,20 +44,11 @@ public class SelectorTitleView: UIView {
         button.titleLabel?.font = UIFont.bodyStrong.withSize(17).scaledFont(forTextStyle: .footnote)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
 
-        let spacing = .smallSpacing / 2
-
+        let spacing: CGFloat = .verySmallSpacing
         button.semanticContentAttribute = .forceRightToLeft
         button.imageEdgeInsets = UIEdgeInsets(top: spacing, leading: spacing, bottom: 0, trailing: -spacing)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, leading: -spacing, bottom: 0, trailing: spacing)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
-
-        let buttonColor: UIColor = .btnPrimary
-        let interfaceBackgroundColor: UIColor = .bgPrimary
-        button.setTitleColor(buttonColor, for: .normal)
-        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
-        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)
-        button.setTitleColor(.btnDisabled, for: .disabled)
-        button.tintColor = buttonColor
 
         if heading != nil {
             button.contentEdgeInsets = UIEdgeInsets(
@@ -90,7 +81,7 @@ public class SelectorTitleView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup
+    // MARK: - Public
 
     public var title: String? {
         didSet {
@@ -98,13 +89,25 @@ public class SelectorTitleView: UIView {
         }
     }
 
+    public func updateButtonColor(_ buttonColor: UIColor = .btnPrimary, buttonDisabledColor: UIColor = .btnDisabled) {
+        button.setTitleColor(buttonColor, for: .normal)
+        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
+        button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)
+        button.setTitleColor(buttonDisabledColor, for: .disabled)
+        button.tintColor = buttonColor
+    }
+
+    // MARK: - Setup
+
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         arrowDirection = .down
         isEnabled = true
-        backgroundColor = .bgPrimary
-        addSubview(button)
 
+        backgroundColor = .bgPrimary
+
+        updateButtonColor()
+        addSubview(button)
         button.fillInSuperview()
 
         if heading != nil {
