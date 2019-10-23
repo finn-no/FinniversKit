@@ -62,3 +62,46 @@ extension ChristmasWishListViewModel {
         )
     }
 }
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+
+struct ChristmasWishListDemoWrapperView: UIViewRepresentable {
+    func updateUIView(_ uiView: ChristmasWishListDemoView, context: Context) {
+    }
+
+    func makeUIView(context: Context) -> ChristmasWishListDemoView {
+        return ChristmasWishListDemoView()
+    }
+}
+
+@available(iOS 13.0, *)
+struct ChristmasWishListDemoView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ChristmasWishListDemoWrapperView()
+
+            ChristmasWishListDemoWrapperView()
+                .environment(\.colorScheme, ColorScheme.dark)
+                .previewDisplayName("Dark")
+
+            ChristmasWishListDemoWrapperView()
+                .previewDevice(PreviewDevice.init(stringLiteral: "iPhone SE"))
+                .previewDisplayName("iPhone SE")
+
+            ChristmasWishListDemoWrapperView()
+                .previewDevice(PreviewDevice.init(stringLiteral: "iPhone 8"))
+                .previewDisplayName("iPhone 8")
+
+            ChristmasWishListDemoWrapperView()
+                .previewDevice(PreviewDevice.init(stringLiteral: "iPad Pro (11-inch)"))
+                .previewDisplayName("iPad Pro")
+
+            ChristmasWishListDemoWrapperView()
+                .previewDevice(PreviewDevice.init(stringLiteral: "iPad Pro (11-inch)"))
+                .environment(\.colorScheme, ColorScheme.dark)
+                .previewDisplayName("iPad Pro Dark")
+        }
+    }
+}
+#endif
