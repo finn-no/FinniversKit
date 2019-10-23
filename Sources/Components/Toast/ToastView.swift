@@ -110,9 +110,6 @@ public class ToastView: UIView {
 
     private func setup() {
         isAccessibilityElement = true
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
-        swipeGesture.direction = .down
-        addGestureRecognizer(swipeGesture)
 
         backgroundColor = style.color
         imageView.backgroundColor = style.imageBackgroundColor
@@ -162,6 +159,8 @@ public class ToastView: UIView {
         dismissToast()
     }
 
+    // MARK: - Public methods
+
     /// Presents toast from the safe area top
     ///
     /// - Parameters:
@@ -170,6 +169,8 @@ public class ToastView: UIView {
     ///   - timeOut: time in seconds to automatically dismiss the toast view after presenting it
     public func presentFromTop(view: UIView, animateOffset: CGFloat, timeOut: Double? = nil) {
         setupToastConstraint(for: view, fromBottom: false)
+
+        addSwipeGestureRecognizer(direction: .up)
 
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             self.transform = self.transform.translatedBy(x: 0, y: self.frame.height + animateOffset)
@@ -183,6 +184,8 @@ public class ToastView: UIView {
 
     public func presentFromBottom(view: UIView, animateOffset: CGFloat, timeOut: Double? = nil) {
         setupToastConstraint(for: view)
+
+        addSwipeGestureRecognizer(direction: .down)
 
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             self.transform = self.transform.translatedBy(x: 0, y: -(self.frame.height + animateOffset))
@@ -204,6 +207,8 @@ public class ToastView: UIView {
         }
     }
 
+    // MARK: - Private methods
+
     private func setupToastConstraint(for view: UIView, fromBottom: Bool = true) {
         view.addSubview(self)
 
@@ -223,5 +228,11 @@ public class ToastView: UIView {
         ])
 
         view.layoutIfNeeded()
+    }
+
+    private func addSwipeGestureRecognizer(direction: UISwipeGestureRecognizer.Direction) {
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
+        swipeGesture.direction = direction
+        addGestureRecognizer(swipeGesture)
     }
 }
