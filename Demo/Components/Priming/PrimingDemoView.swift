@@ -5,7 +5,11 @@
 import FinniversKit
 
 public class PrimingDemoView: UIView {
-    private lazy var view = UIView(withAutoLayout: true)
+    private let view: PrimingView = {
+        let view = PrimingView(withAutoLayout: true)
+        view.configure(with: PrimingViewModel())
+        return view
+    }()
 
     // MARK: - Init
 
@@ -29,5 +33,31 @@ public class PrimingDemoView: UIView {
             view.centerXAnchor.constraint(equalTo: centerXAnchor),
             view.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+}
+
+extension PrimingViewModel {
+    init() {
+        self.init(
+            heading: "Dette er nytt i FINN",
+            buttonTitle: "Fortsett",
+            rows: [
+                PrimingViewModel.Row(
+                    icon: UIImage(named: .primingFavoritesSearch),
+                    title: "Søk og sorter",
+                    detailText: "Finn frem ved å søke eller sortere dine favoritter."
+                ),
+                PrimingViewModel.Row(
+                    icon: UIImage(named: .primingFavoritesComments),
+                    title: "Søk og sorter",
+                    detailText: "Finn frem ved å søke eller sortere dine favoritter."
+                ),
+                PrimingViewModel.Row(
+                    icon: UIImage(named: .primingFavoritesSharing),
+                    title: "Søk og sorter",
+                    detailText: "Finn frem ved å søke eller sortere dine favoritter."
+                )
+            ]
+        )
     }
 }

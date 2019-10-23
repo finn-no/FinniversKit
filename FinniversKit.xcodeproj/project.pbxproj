@@ -341,6 +341,8 @@
 		CF0B101823167EA9001E7A57 /* FavoriteAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B101723167EA9001E7A57 /* FavoriteAdView.swift */; };
 		CF0B10982316AC0D001E7A57 /* BottomShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B10972316AC0D001E7A57 /* BottomShadowView.swift */; };
 		CF0F6B8F236065EA00CA62FD /* PrimingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0F6B8E236065E900CA62FD /* PrimingDemoView.swift */; };
+		CF0F6B922360683400CA62FD /* PrimingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0F6B912360683400CA62FD /* PrimingView.swift */; };
+		CF0F6B942360685100CA62FD /* PrimingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0F6B932360685100CA62FD /* PrimingViewModel.swift */; };
 		CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF136ACC2203211100247B30 /* InfoboxView.swift */; };
 		CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF136ACE220327F500247B30 /* InfoboxViewModel.swift */; };
 		CF13D6CD2292D2300087DA37 /* PhaseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6CC2292D2300087DA37 /* PhaseListView.swift */; };
@@ -909,6 +911,8 @@
 		CF0B101723167EA9001E7A57 /* FavoriteAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdView.swift; sourceTree = "<group>"; };
 		CF0B10972316AC0D001E7A57 /* BottomShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomShadowView.swift; sourceTree = "<group>"; };
 		CF0F6B8E236065E900CA62FD /* PrimingDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimingDemoView.swift; sourceTree = "<group>"; };
+		CF0F6B912360683400CA62FD /* PrimingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimingView.swift; sourceTree = "<group>"; };
+		CF0F6B932360685100CA62FD /* PrimingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimingViewModel.swift; sourceTree = "<group>"; };
 		CF136ACC2203211100247B30 /* InfoboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxView.swift; sourceTree = "<group>"; };
 		CF136ACE220327F500247B30 /* InfoboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoboxViewModel.swift; sourceTree = "<group>"; };
 		CF13D6CC2292D2300087DA37 /* PhaseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseListView.swift; sourceTree = "<group>"; };
@@ -1629,6 +1633,7 @@
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
 				9B28DE7E23266C2500D69C15 /* Panel */,
 				CF13D6CB2292D2100087DA37 /* Phases */,
+				CF0F6B902360682100CA62FD /* Priming */,
 				9F2134A9A3ACDA8FA1566B1A /* Profile */,
 				F2C3E95A22CB634700CED7E0 /* QuestionnaireView */,
 				CF8F024321DE0FF9004C4042 /* RefreshControl */,
@@ -2567,6 +2572,15 @@
 			isa = PBXGroup;
 			children = (
 				CF0F6B8E236065E900CA62FD /* PrimingDemoView.swift */,
+			);
+			path = Priming;
+			sourceTree = "<group>";
+		};
+		CF0F6B902360682100CA62FD /* Priming */ = {
+			isa = PBXGroup;
+			children = (
+				CF0F6B912360683400CA62FD /* PrimingView.swift */,
+				CF0F6B932360685100CA62FD /* PrimingViewModel.swift */,
 			);
 			path = Priming;
 			sourceTree = "<group>";
@@ -4204,11 +4218,13 @@
 				CF9AC8BC21BECE13005A0D2F /* SnowGlobeDemoView.swift in Sources */,
 				CF3D5EFC215A7215006E4D08 /* DrumMachineDemoView.swift in Sources */,
 				44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */,
+				CF0F6B942360685100CA62FD /* PrimingViewModel.swift in Sources */,
 				4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */,
 				14C6F7DA212324D600A7230C /* FavoritesListViewDemoViewHelpers.swift in Sources */,
 				DA8EF1202164E2090028740C /* ConsentActionViewDemoView.swift in Sources */,
 				9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */,
 				44849D2B22E7312100BB4454 /* SelectorTitleView.swift in Sources */,
+				CF0F6B922360683400CA62FD /* PrimingView.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
 				43BACE6F21117DD20052114C /* ReviewViewDemoView.swift in Sources */,

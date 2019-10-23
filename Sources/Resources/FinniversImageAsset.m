@@ -115,6 +115,9 @@ NSString *const FinniversImageAssetpencilPaper = @"pencilPaper";
 NSString *const FinniversImageAssetpin = @"pin";
 NSString *const FinniversImageAssetplus = @"plus";
 NSString *const FinniversImageAssetplusMini = @"plusMini";
+NSString *const FinniversImageAssetprimingFavoritesComments = @"primingFavoritesComments";
+NSString *const FinniversImageAssetprimingFavoritesSearch = @"primingFavoritesSearch";
+NSString *const FinniversImageAssetprimingFavoritesSharing = @"primingFavoritesSharing";
 NSString *const FinniversImageAssetprofile = @"profile";
 NSString *const FinniversImageAssetrate = @"rate";
 NSString *const FinniversImageAssetrated = @"rated";
@@ -273,6 +276,9 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetpin,
              FinniversImageAssetplus,
              FinniversImageAssetplusMini,
+             FinniversImageAssetprimingFavoritesComments,
+             FinniversImageAssetprimingFavoritesSearch,
+             FinniversImageAssetprimingFavoritesSharing,
              FinniversImageAssetprofile,
              FinniversImageAssetrate,
              FinniversImageAssetrated,

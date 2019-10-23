@@ -127,6 +127,9 @@ public enum FinniversImageAsset: String {
     case pin
     case plus
     case plusMini
+    case primingFavoritesComments
+    case primingFavoritesSearch
+    case primingFavoritesSharing
     case profile
     case rate
     case rated
@@ -284,6 +287,9 @@ public enum FinniversImageAsset: String {
             .pin,
             .plus,
             .plusMini,
+            .primingFavoritesComments,
+            .primingFavoritesSearch,
+            .primingFavoritesSharing,
             .profile,
             .rate,
             .rated,
