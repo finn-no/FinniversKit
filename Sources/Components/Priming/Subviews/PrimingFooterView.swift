@@ -49,6 +49,7 @@ final class PrimingFooterView: BottomShadowView {
     // MARK: - Setup
 
     private func setup() {
+        backgroundColor = .bgPrimary
         addSubview(button)
 
         let insets = UIEdgeInsets(

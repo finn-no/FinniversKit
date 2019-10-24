@@ -17,6 +17,8 @@ final class PrimingHeaderView: BottomShadowView {
     private let headingLabel: UILabel = {
         let label = Label(style: .title1, withAutoLayout: true)
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         return label
     }()
 
@@ -34,6 +36,7 @@ final class PrimingHeaderView: BottomShadowView {
     // MARK: - Setup
 
     private func setup() {
+        backgroundColor = .bgPrimary
         addSubview(headingLabel)
 
         let verticalSpacing = .mediumLargeSpacing + .mediumSpacing
