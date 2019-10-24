@@ -26,10 +26,11 @@ public final class PrimingView: UIView {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        tableView.alwaysBounceVertical = false
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.alwaysBounceVertical = false
         tableView.register(PrimingTableViewCell.self)
         return tableView
     }()

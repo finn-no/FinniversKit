@@ -58,7 +58,7 @@ final class PrimingTableViewCell: UITableViewCell {
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: .mediumLargeSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
 
             detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
