@@ -7,6 +7,13 @@ import UIKit
 public class BottomShadowView: UIView {
     static let maxShadowRadius: CGFloat = 3
 
+    // MARK: - Public properties
+
+    public var isShadowHidden: Bool {
+        get { layer.shadowRadius != 0 }
+        set { layer.shadowRadius = newValue ? 0 : BottomShadowView.maxShadowRadius }
+    }
+
     // MARK: - Init
 
     public override init(frame: CGRect) {

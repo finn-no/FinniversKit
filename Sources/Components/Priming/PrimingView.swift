@@ -60,6 +60,7 @@ public final class PrimingView: UIView {
         headerView.heading = viewModel.heading
         footerView.buttonTitle = viewModel.buttonTitle
         tableView.reloadData()
+        footerView.isShadowHidden = tableView.contentSize.height <= tableView.frame.height
     }
 
     private func setup() {
@@ -83,6 +84,11 @@ public final class PrimingView: UIView {
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+    }
+
+    private func updateShadow() {
+        headerView.updateShadow(using: tableView)
+        footerView.updateShadow(using: tableView)
     }
 }
 
@@ -113,7 +119,6 @@ extension PrimingView: UITableViewDataSource {
 
 extension PrimingView: UITableViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        headerView.updateShadow(using: scrollView)
-        footerView.updateShadow(using: scrollView)
+        updateShadow()
     }
 }
