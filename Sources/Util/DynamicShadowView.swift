@@ -7,13 +7,6 @@ import UIKit
 public class DynamicShadowView: UIView {
     static let maxShadowRadius: CGFloat = 3
 
-    // MARK: - Public properties
-
-    public var isShadowHidden: Bool {
-        get { layer.shadowRadius != 0 }
-        set { layer.shadowRadius = newValue ? 0 : DynamicShadowView.maxShadowRadius }
-    }
-
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -38,7 +31,6 @@ public class DynamicShadowView: UIView {
 
         let intersection = contentFrame.intersection(frame)
         layer.shadowRadius = min(intersection.height * 0.2, DynamicShadowView.maxShadowRadius)
-        print(layer.shadowRadius)
     }
 
     // MARK: - Setup

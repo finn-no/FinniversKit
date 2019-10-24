@@ -53,6 +53,11 @@ public final class PrimingView: UIView {
         setup()
     }
 
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        updateShadow()
+    }
+
     // MARK: - Setup
 
     public func configure(with viewModel: PrimingViewModel) {
@@ -60,7 +65,6 @@ public final class PrimingView: UIView {
         headerView.heading = viewModel.heading
         footerView.buttonTitle = viewModel.buttonTitle
         tableView.reloadData()
-        footerView.isShadowHidden = tableView.contentSize.height <= tableView.frame.height
     }
 
     private func setup() {
