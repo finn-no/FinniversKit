@@ -48,6 +48,7 @@ public class MessageFormBottomSheet: BottomSheet {
         messageFormViewController = MessageFormViewController(viewModel: viewModel)
         rootController = UINavigationController(rootViewController: messageFormViewController)
         rootController.navigationBar.isTranslucent = false
+        rootController.navigationBar.barTintColor = .bgPrimary
 
         super.init(rootViewController: rootController, height: .messageFormHeight, draggableArea: .navigationBar)
 

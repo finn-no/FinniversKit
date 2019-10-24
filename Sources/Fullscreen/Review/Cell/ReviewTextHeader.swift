@@ -16,7 +16,7 @@ class ReviewTextHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .bgPrimary
         contentView.addSubview(title)
 
         let inset = UIEdgeInsets(top: .mediumLargeSpacing,

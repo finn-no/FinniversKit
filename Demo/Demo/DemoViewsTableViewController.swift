@@ -101,7 +101,6 @@ class DemoViewsTableViewController: UITableViewController {
             let sectionIndexColor: UIColor = .primaryBlue //DARK
             self.tableView.sectionIndexColor = sectionIndexColor
             self.tableView.backgroundColor = .bgPrimary
-            self.selectorTitleView.updateColors(for: self.traitCollection)
             self.updateMoonButton()
             self.setNeedsStatusBarAppearanceUpdate()
         }
@@ -213,24 +212,23 @@ extension DemoViewsTableViewController {
 
 extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
-        let sections = Sections.items.map { $0.rawValue.uppercased() }
-        let options = sections.map { TweakingOption(title: $0) }
-        let tweakingController = TweakingOptionsTableViewController(options: options)
-        tweakingController.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
-        tweakingController.delegate = self
-        bottomSheet = BottomSheet(rootViewController: tweakingController, draggableArea: .everything)
+        let items = Sections.items.map { BasicTableViewItem(title: $0.rawValue.uppercased()) }
+        let sectionsTableView = BasicTableView(items: items)
+        sectionsTableView.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
+        sectionsTableView.delegate = self
+        bottomSheet = BottomSheet(view: sectionsTableView, draggableArea: .everything)
         if let controller = bottomSheet {
             present(controller, animated: true)
         }
     }
 }
 
-extension DemoViewsTableViewController: TweakingOptionsTableViewControllerDelegate {
-    func tweakingOptionsTableViewController(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController, didDismissWithIndexPath indexPath: IndexPath) {
-        bottomSheet?.state = .dismissed
-        State.lastSelectedSection = indexPath.row
+extension DemoViewsTableViewController: BasicTableViewDelegate {
+    func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
+        State.lastSelectedSection = index
         selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
         evaluateIndexAndValues()
         tableView.reloadData()
+        bottomSheet?.state = .dismissed
     }
 }

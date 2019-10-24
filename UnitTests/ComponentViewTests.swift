@@ -202,4 +202,8 @@ class ComponentViewTests: XCTestCase {
     func testPriming() {
         snapshot(.priming)
     }
+
+    func testSelectorTitleView() {
+        snapshot(.selectorTitleView)
+    }
 }

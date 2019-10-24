@@ -31,7 +31,7 @@ public class AddressView: UIView {
 
     private lazy var segmentContainer: UIView = {
         let segmentContainer = UIView(withAutoLayout: true)
-        segmentContainer.backgroundColor = .white
+        segmentContainer.backgroundColor = .bgPrimary
         segmentContainer.addSubview(mapTypeSegmentControl)
         segmentContainer.layer.masksToBounds = false
         segmentContainer.layer.shadowOpacity = 0.3

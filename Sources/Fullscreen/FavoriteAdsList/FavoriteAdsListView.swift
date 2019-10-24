@@ -105,6 +105,7 @@ public class FavoriteAdsListView: UIView {
         tableView.estimatedRowHeight = 130
         tableView.estimatedSectionHeaderHeight = 32
         tableView.allowsMultipleSelectionDuringEditing = true
+        tableView.backgroundColor = .bgPrimary
         return tableView
     }()
 
