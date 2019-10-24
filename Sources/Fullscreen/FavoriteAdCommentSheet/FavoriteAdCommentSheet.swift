@@ -23,6 +23,7 @@ public final class FavoriteAdCommentSheet: BottomSheet {
         )
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.barTintColor = .bgPrimary
         navigationController.navigationBar.shadowImage = UIImage()
 
         super.init(rootViewController: navigationController, height: .default)

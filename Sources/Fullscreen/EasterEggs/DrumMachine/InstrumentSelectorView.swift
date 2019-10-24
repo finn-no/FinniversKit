@@ -17,7 +17,7 @@ final class InstrumentSelectorView: UIView {
         let label = UILabel()
         label.font = .title2
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .bgPrimary
+        label.textColor = .textTertiary
         return label
     }()
 
