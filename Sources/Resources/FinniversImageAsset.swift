@@ -22,8 +22,10 @@ public enum FinniversImageAsset: String {
     case adManagementShare
     case adManagementTrashcan
     case arrowDown
+    case arrowDownSmall
     case arrowRight
     case arrowUp
+    case arrowUpSmall
     case attachment
     case avatar
     case balloon0
@@ -41,6 +43,7 @@ public enum FinniversImageAsset: String {
     case checkCircle
     case checkCircleFilledMini
     case checkmarkBig
+    case christmasWishListBanner
     case classifieds
     case close
     case creditcard
@@ -70,12 +73,15 @@ public enum FinniversImageAsset: String {
     case favoritesSortAdStatus
     case favoritesSortDistance
     case favoritesSortLastAdded
+    case favoritesXmasButton
+    case favoritesXmasFolder
     case favouriteAddImg
     case favouriteAdded
     case favouriteAddedImg
     case favourites
     case finnLogo
     case gallery
+    case gift
     case giftRoundedRectRed
     case giftSquarePink
     case giftSquareYellow
@@ -175,8 +181,10 @@ public enum FinniversImageAsset: String {
             .adManagementShare,
             .adManagementTrashcan,
             .arrowDown,
+            .arrowDownSmall,
             .arrowRight,
             .arrowUp,
+            .arrowUpSmall,
             .attachment,
             .avatar,
             .balloon0,
@@ -194,6 +202,7 @@ public enum FinniversImageAsset: String {
             .checkCircle,
             .checkCircleFilledMini,
             .checkmarkBig,
+            .christmasWishListBanner,
             .classifieds,
             .close,
             .creditcard,
@@ -223,12 +232,15 @@ public enum FinniversImageAsset: String {
             .favoritesSortAdStatus,
             .favoritesSortDistance,
             .favoritesSortLastAdded,
+            .favoritesXmasButton,
+            .favoritesXmasFolder,
             .favouriteAddImg,
             .favouriteAdded,
             .favouriteAddedImg,
             .favourites,
             .finnLogo,
             .gallery,
+            .gift,
             .giftRoundedRectRed,
             .giftSquarePink,
             .giftSquareYellow,

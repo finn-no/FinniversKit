@@ -35,6 +35,10 @@ public final class FavoriteAdActionSheet: BottomSheet {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        let width: CGFloat = 335
+        let height = FavoriteAdActionView.totalHeight(for: viewModel, width: width)
+        preferredContentSize = CGSize(width: width, height: height + notchHeight)
+
         let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
         notch.insertSubview(blurView, at: 0)
         blurView.fillInSuperview()
@@ -56,8 +60,9 @@ extension FavoriteAdActionSheet: FavoriteAdActionViewDelegate {
 
 private extension BottomSheet.Height {
     static func height(for viewModel: FavoriteAdActionViewModel) -> BottomSheet.Height {
-        let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
         let height = FavoriteAdActionView.totalHeight(for: viewModel, width: UIScreen.main.bounds.width) + bottomInset
         return BottomSheet.Height(compact: height, expanded: height)
     }
+
+    static let bottomInset = UIView.windowSafeAreaInsets.bottom + .largeSpacing
 }

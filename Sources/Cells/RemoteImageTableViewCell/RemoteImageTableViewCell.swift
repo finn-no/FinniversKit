@@ -13,9 +13,12 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
     }
     /// The loading color is used to fill the image view while we load the image.
     public var loadingColor: UIColor?
+    public var isLoadingEnabled = true
+    public var fallbackImage: UIImage = UIImage(named: .noImage)
+
     private var viewModel: RemoteImageTableViewCellViewModel?
 
-    private lazy var remoteImageView: RemoteImageView = {
+    private(set) lazy var remoteImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -23,7 +26,6 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
     }()
 
     private lazy var remoteImageWidthConstraint = remoteImageView.widthAnchor.constraint(equalToConstant: 40)
-    private var fallbackImage: UIImage = UIImage(named: .noImage)
 
     // MARK: - Init
 
@@ -63,7 +65,7 @@ public class RemoteImageTableViewCell: BasicTableViewCell {
     }
 
     public func loadImage() {
-        guard let viewModel = viewModel, let imagePath = viewModel.imagePath else {
+        guard let viewModel = viewModel, let imagePath = viewModel.imagePath, isLoadingEnabled else {
             remoteImageView.setImage(fallbackImage, animated: false)
             return
         }

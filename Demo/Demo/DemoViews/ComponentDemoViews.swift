@@ -32,6 +32,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case happinessRating
     case earthHourView
     case klimabroletView
+    case christmasWishListView
     case stepIndicatorView
     case nativeAdverts
     case callout
@@ -48,6 +49,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case panel
     case reputationView
     case visibilityDrivenTitleView
+    case selectorTitleView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -115,6 +117,8 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<EarthHourDemoView>()
         case .klimabroletView:
             return KlimabroletDemoViewController(dismissType: .none)
+        case .christmasWishListView:
+            return DemoViewController<ChristmasWishListDemoView>()
         case .stepIndicatorView:
             return DemoViewController<StepIndicatorDemoView>(dismissType: .dismissButton)
         case .nativeAdverts:
@@ -147,6 +151,8 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<ReputationDemoView>()
         case .visibilityDrivenTitleView:
             return DemoViewController<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
+        case .selectorTitleView:
+            return DemoViewController<SelectorTitleViewDemoView>()
         }
     }
 }

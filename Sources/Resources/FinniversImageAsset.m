@@ -10,8 +10,10 @@
 NSString *const FinniversImageAssetadManagementShare = @"adManagementShare";
 NSString *const FinniversImageAssetadManagementTrashcan = @"adManagementTrashcan";
 NSString *const FinniversImageAssetarrowDown = @"arrowDown";
+NSString *const FinniversImageAssetarrowDownSmall = @"arrowDownSmall";
 NSString *const FinniversImageAssetarrowRight = @"arrowRight";
 NSString *const FinniversImageAssetarrowUp = @"arrowUp";
+NSString *const FinniversImageAssetarrowUpSmall = @"arrowUpSmall";
 NSString *const FinniversImageAssetattachment = @"attachment";
 NSString *const FinniversImageAssetavatar = @"avatar";
 NSString *const FinniversImageAssetballoon0 = @"balloon0";
@@ -29,6 +31,7 @@ NSString *const FinniversImageAssetcheck = @"check";
 NSString *const FinniversImageAssetcheckCircle = @"checkCircle";
 NSString *const FinniversImageAssetcheckCircleFilledMini = @"checkCircleFilledMini";
 NSString *const FinniversImageAssetcheckmarkBig = @"checkmarkBig";
+NSString *const FinniversImageAssetchristmasWishListBanner = @"christmasWishListBanner";
 NSString *const FinniversImageAssetclassifieds = @"classifieds";
 NSString *const FinniversImageAssetclose = @"close";
 NSString *const FinniversImageAssetcreditcard = @"creditcard";
@@ -58,12 +61,15 @@ NSString *const FinniversImageAssetfavoritesShareLink = @"favoritesShareLink";
 NSString *const FinniversImageAssetfavoritesSortAdStatus = @"favoritesSortAdStatus";
 NSString *const FinniversImageAssetfavoritesSortDistance = @"favoritesSortDistance";
 NSString *const FinniversImageAssetfavoritesSortLastAdded = @"favoritesSortLastAdded";
+NSString *const FinniversImageAssetfavoritesXmasButton = @"favoritesXmasButton";
+NSString *const FinniversImageAssetfavoritesXmasFolder = @"favoritesXmasFolder";
 NSString *const FinniversImageAssetfavouriteAddImg = @"favouriteAddImg";
 NSString *const FinniversImageAssetfavouriteAdded = @"favouriteAdded";
 NSString *const FinniversImageAssetfavouriteAddedImg = @"favouriteAddedImg";
 NSString *const FinniversImageAssetfavourites = @"favourites";
 NSString *const FinniversImageAssetfinnLogo = @"finnLogo";
 NSString *const FinniversImageAssetgallery = @"gallery";
+NSString *const FinniversImageAssetgift = @"gift";
 NSString *const FinniversImageAssetgiftRoundedRectRed = @"giftRoundedRectRed";
 NSString *const FinniversImageAssetgiftSquarePink = @"giftSquarePink";
 NSString *const FinniversImageAssetgiftSquareYellow = @"giftSquareYellow";
@@ -164,8 +170,10 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetadManagementShare,
              FinniversImageAssetadManagementTrashcan,
              FinniversImageAssetarrowDown,
+             FinniversImageAssetarrowDownSmall,
              FinniversImageAssetarrowRight,
              FinniversImageAssetarrowUp,
+             FinniversImageAssetarrowUpSmall,
              FinniversImageAssetattachment,
              FinniversImageAssetavatar,
              FinniversImageAssetballoon0,
@@ -183,6 +191,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetcheckCircle,
              FinniversImageAssetcheckCircleFilledMini,
              FinniversImageAssetcheckmarkBig,
+             FinniversImageAssetchristmasWishListBanner,
              FinniversImageAssetclassifieds,
              FinniversImageAssetclose,
              FinniversImageAssetcreditcard,
@@ -212,12 +221,15 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetfavoritesSortAdStatus,
              FinniversImageAssetfavoritesSortDistance,
              FinniversImageAssetfavoritesSortLastAdded,
+             FinniversImageAssetfavoritesXmasButton,
+             FinniversImageAssetfavoritesXmasFolder,
              FinniversImageAssetfavouriteAddImg,
              FinniversImageAssetfavouriteAdded,
              FinniversImageAssetfavouriteAddedImg,
              FinniversImageAssetfavourites,
              FinniversImageAssetfinnLogo,
              FinniversImageAssetgallery,
+             FinniversImageAssetgift,
              FinniversImageAssetgiftRoundedRectRed,
              FinniversImageAssetgiftSquarePink,
              FinniversImageAssetgiftSquareYellow,

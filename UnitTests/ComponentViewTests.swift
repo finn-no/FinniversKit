@@ -4,12 +4,11 @@
 
 import Demo
 import XCTest
-import SnapshotTesting
 import FinniversKit
 
 class ComponentViewTests: XCTestCase {
-    private func snapshot(_ component: ComponentDemoViews, testName: String = #function) {
-        assertSnapshot(matching: component.viewController, as: .image(on: .iPhoneX), named: "iPhone", testName: testName)
+    private func snapshot(_ component: ComponentDemoViews, includeIPad: Bool = false, testName: String = #function) {
+        assertSnapshots(matching: component.viewController, includeDarkMode: true, includeIPad: includeIPad, testName: testName)
     }
 
     // MARK: - Tests
@@ -194,5 +193,13 @@ class ComponentViewTests: XCTestCase {
 
     func testVisibilityDrivenTitleView() {
         snapshot(.visibilityDrivenTitleView)
+    }
+
+    func testChristmasWishListView() {
+        snapshot(.christmasWishListView)
+    }
+
+    func testSelectorTitleView() {
+        snapshot(.selectorTitleView)
     }
 }

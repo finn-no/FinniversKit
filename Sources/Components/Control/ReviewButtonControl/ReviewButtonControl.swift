@@ -26,7 +26,7 @@ public final class ReviewButtonControl: UIControl {
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .clear
-        imageView.tintColor = .bgPrimary
+        imageView.tintColor = .iconSecondary
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -35,7 +35,7 @@ public final class ReviewButtonControl: UIControl {
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .bgPrimary
+        label.textColor = .textTertiary
         label.textAlignment = .center
         return label
     }()

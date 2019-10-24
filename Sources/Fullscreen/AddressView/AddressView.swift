@@ -16,7 +16,16 @@ public class AddressView: UIView {
     private lazy var mapTypeSegmentControl: UISegmentedControl = {
         let control = UISegmentedControl(withAutoLayout: true)
         control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
-        control.tintColor = .btnPrimary
+
+        if #available(iOS 13.0, *) {
+            control.selectedSegmentTintColor = .bgTertiary
+            control.backgroundColor = .btnPrimary
+            control.setTitleTextAttributes([.foregroundColor: UIColor.textTertiary], for: .normal)
+            control.setTitleTextAttributes([.foregroundColor: UIColor.textTertiary], for: .highlighted)
+            control.setTitleTextAttributes([.foregroundColor: UIColor.textAction], for: .selected)
+        } else {
+            control.tintColor = .btnPrimary
+        }
         return control
     }()
 
