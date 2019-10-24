@@ -50,6 +50,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case reputationView
     case visibilityDrivenTitleView
     case selectorTitleView
+    case priming
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -153,6 +154,11 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
         case .selectorTitleView:
             return DemoViewController<SelectorTitleViewDemoView>()
+        case .priming:
+            return DemoViewController<PrimingDemoView>(
+                containmentOptions: .bottomSheet,
+                constrainToBottomSafeArea: false
+            )
         }
     }
 }
