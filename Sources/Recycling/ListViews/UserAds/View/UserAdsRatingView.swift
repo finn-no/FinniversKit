@@ -11,7 +11,7 @@ public class UserAdsRatingView: UIView {
         let button = UIButton(withAutoLayout: true)
         let image = UIImage(named: .close).withRenderingMode(.alwaysTemplate)
         let imageView = UIImageView(image: image)
-        imageView.tintColor = .primaryBlue
+        imageView.tintColor = .btnPrimary
         button.setImage(imageView.image, for: .normal)
         button.addTarget(self, action: #selector(didTapCloseButton(_:)), for: .touchUpInside)
         return button
@@ -32,14 +32,14 @@ public class UserAdsRatingView: UIView {
 
     private lazy var gradientWrapper: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .marble
+        view.backgroundColor = .bgTertiary
         return view
     }()
 
     private lazy var gradientLayer: CALayer = {
         let layer = CAGradientLayer()
-        let color = UIColor.white.withAlphaComponent(0.75)
-        layer.colors = [UIColor.marble.cgColor, UIColor.marble.cgColor, color.cgColor]
+        let color = UIColor.bgPrimary.withAlphaComponent(0.75)
+        layer.colors = [UIColor.bgTertiary.cgColor, UIColor.bgTertiary.cgColor, color.cgColor]
         layer.locations = [0.1, 0.5, 1.0]
         return layer
     }()
@@ -79,7 +79,7 @@ public class UserAdsRatingView: UIView {
 
 private extension UserAdsRatingView {
     func setup() {
-        backgroundColor = .marble
+        backgroundColor = .bgTertiary
 
         addSubview(closeButton)
         addSubview(titleLabel)
