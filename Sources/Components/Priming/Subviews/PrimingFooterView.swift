@@ -8,7 +8,7 @@ protocol PrimingFooterViewDelegate: AnyObject {
     func primingFooterViewDidSelectButton(_ view: PrimingFooterView)
 }
 
-final class PrimingFooterView: BottomShadowView {
+final class PrimingFooterView: DynamicShadowView {
     // MARK: - Internal properties
 
     weak var delegate: PrimingFooterViewDelegate?
@@ -36,14 +36,6 @@ final class PrimingFooterView: BottomShadowView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Overrides
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        // Make shadow to be on top
-        layer.shadowPath = nil
     }
 
     // MARK: - Setup
