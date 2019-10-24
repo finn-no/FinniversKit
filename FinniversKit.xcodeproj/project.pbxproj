@@ -2917,9 +2917,9 @@
 		CF5012482360909E00138A36 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				CF5012422360905000138A36 /* PrimingTableViewCell.swift */,
-				CF5012442360909200138A36 /* PrimingHeaderView.swift */,
 				CF5012462360909B00138A36 /* PrimingFooterView.swift */,
+				CF5012442360909200138A36 /* PrimingHeaderView.swift */,
+				CF5012422360905000138A36 /* PrimingTableViewCell.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";

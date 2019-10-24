@@ -5,6 +5,8 @@
 import UIKit
 
 final class PrimingTableViewCell: UITableViewCell {
+    // MARK: - Private properties
+
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.tintColor = .btnPrimary
@@ -32,7 +34,8 @@ final class PrimingTableViewCell: UITableViewCell {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        setup()
     }
 
     // MARK: - Setup
@@ -44,26 +47,24 @@ final class PrimingTableViewCell: UITableViewCell {
     }
 
     private func setup() {
-        addSubview(iconImageView)
-        addSubview(titleLabel)
-        addSubview(detailLabel)
-
-        layoutMargins = UIEdgeInsets(top: 13, leading: 34, bottom: 13, trailing: 40)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(detailLabel)
 
         NSLayoutConstraint.activate([
             iconImageView.widthAnchor.constraint(equalToConstant: 56),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22),
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
 
             detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             detailLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             detailLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing)
         ])
     }
 }

@@ -9,6 +9,8 @@ protocol PrimingFooterViewDelegate: AnyObject {
 }
 
 final class PrimingFooterView: BottomShadowView {
+    // MARK: - Internal properties
+
     weak var delegate: PrimingFooterViewDelegate?
 
     var buttonTitle: String? {

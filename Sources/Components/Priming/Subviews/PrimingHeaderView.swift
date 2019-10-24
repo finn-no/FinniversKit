@@ -5,10 +5,14 @@
 import UIKit
 
 final class PrimingHeaderView: BottomShadowView {
+    // MARK: - Internal properties
+
     var heading: String? {
         get { headingLabel.text }
         set { headingLabel.text = newValue }
     }
+
+    // MARK: - Private properties
 
     private let headingLabel: UILabel = {
         let label = Label(style: .title1, withAutoLayout: true)
@@ -31,7 +35,16 @@ final class PrimingHeaderView: BottomShadowView {
 
     private func setup() {
         addSubview(headingLabel)
-        layoutMargins = UIEdgeInsets(all: .mediumLargeSpacing)
+
+        let verticalSpacing = .mediumLargeSpacing + .mediumSpacing
+
+        layoutMargins = UIEdgeInsets(
+            top: verticalSpacing,
+            left: .mediumLargeSpacing,
+            bottom: verticalSpacing,
+            right: .mediumLargeSpacing
+        )
+
         headingLabel.fillInSuperviewLayoutMargins()
     }
 }
