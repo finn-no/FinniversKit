@@ -21,7 +21,6 @@ public final class PrimingView: UIView {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(withAutoLayout: true)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .bgPrimary
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80

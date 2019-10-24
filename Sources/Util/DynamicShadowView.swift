@@ -36,7 +36,7 @@ public class DynamicShadowView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .white
+        backgroundColor = .bgPrimary
 
         layer.masksToBounds = false
         layer.shadowOpacity = 0.3
