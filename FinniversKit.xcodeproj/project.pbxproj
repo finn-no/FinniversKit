@@ -2585,9 +2585,9 @@
 		CF0F6B902360682100CA62FD /* Priming */ = {
 			isa = PBXGroup;
 			children = (
-				CF5012482360909E00138A36 /* Subviews */,
 				CF0F6B912360683400CA62FD /* PrimingView.swift */,
 				CF0F6B932360685100CA62FD /* PrimingViewModel.swift */,
+				CF5012482360909E00138A36 /* Subviews */,
 			);
 			path = Priming;
 			sourceTree = "<group>";

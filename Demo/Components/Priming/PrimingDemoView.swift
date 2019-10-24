@@ -5,9 +5,10 @@
 import FinniversKit
 
 public class PrimingDemoView: UIView {
-    private let view: PrimingView = {
+    private lazy var view: PrimingView = {
         let view = PrimingView(withAutoLayout: true)
         view.configure(with: PrimingViewModel())
+        view.delegate = self
         return view
     }()
 
@@ -29,6 +30,16 @@ public class PrimingDemoView: UIView {
         view.fillInSuperview()
     }
 }
+
+// MARK: - PrimingViewDelegate
+
+extension PrimingDemoView: PrimingViewDelegate {
+    public func primingViewDidSelectButton(_ view: PrimingView) {
+        print("Priming button selected")
+    }
+}
+
+// MARK: - Private extensions
 
 extension PrimingViewModel {
     init() {
