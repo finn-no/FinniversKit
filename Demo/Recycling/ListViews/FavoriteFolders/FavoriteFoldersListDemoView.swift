@@ -66,6 +66,12 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
             ? allFavorites
             : allFavorites.filter({ $0.title.lowercased().contains(filterString) })
     }
+
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        let text = "Tips! Nå kan du endelig opprette og dele din egen juleønskeliste! Her er i såfall knappen for å gjøre det! God jul!"
+        view.showXmasButton(withCalloutText: text)
+    }
 }
 
 // MARK: - FavoriteFoldersListViewDelegate

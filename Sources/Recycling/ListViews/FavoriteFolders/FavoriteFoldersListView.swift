@@ -129,7 +129,7 @@ public class FavoriteFoldersListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Public
+    // MARK: - Data
 
     public func reloadData() {
         showEmptyViewIfNeeded()
@@ -186,6 +186,8 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
+    // MARK: - Editing
+
     public func setEditing(_ editing: Bool) {
         guard tableView.isEditing != editing, viewModel.isEditable else {
             return
@@ -226,20 +228,48 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
-    public func showXmasButton(withCalloutText text: String?) {
-        xmasButton.isHidden = false
+    // MARK: - Xmas button
 
-        if let text = text {
-            xmasCalloutView.isHidden = false
-            xmasCalloutView.show(withText: text)
-        } else {
-            xmasCalloutView.isHidden = true
-        }
+    public func showXmasButton(withCalloutText text: String?) {
+        setXmasButtonHidden(false, completion: {
+            if let text = text {
+                self.xmasCalloutView.isHidden = false
+                self.xmasCalloutView.show(withText: text)
+            } else {
+                self.xmasCalloutView.isHidden = true
+            }
+        })
     }
 
     public func hideXmasButton() {
-        xmasButton.isHidden = true
         xmasCalloutView.hide()
+
+        setXmasButtonHidden(true, completion: {
+            self.xmasCalloutView.isHidden = true
+        })
+    }
+
+    private func setXmasButtonHidden(_ hidden: Bool, completion: @escaping () -> Void) {
+        let customTransform = CGAffineTransform.identity.rotated(by: -1/2 * .pi).scaledBy(x: 0.001, y: 0.001)
+        xmasButton.isHidden = false
+        xmasButton.alpha = hidden ? 1 : 0
+        xmasButton.transform = hidden ? .identity : customTransform
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 5,
+            options: .curveEaseInOut,
+            animations: {
+                self.xmasButton.alpha = hidden ? 0 : 1
+                self.xmasButton.transform = hidden ? customTransform : .identity
+            },
+            completion: { _ in
+                self.xmasButton.isHidden = hidden
+                completion()
+            }
+        )
     }
 
     // MARK: - Setup
