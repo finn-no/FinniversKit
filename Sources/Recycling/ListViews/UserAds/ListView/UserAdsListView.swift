@@ -369,7 +369,7 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
         hasGivenRating = true
         delegate?.userAdsListViewEmphasized(self, didSelectRating: rating)
 
-        cell.showRatingView(completion: {
+        cell.hideRatingView(completion: {
             guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
             self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
 
