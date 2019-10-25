@@ -95,6 +95,20 @@ public class FavoriteFoldersListView: UIView {
         return emptyView
     }()
 
+    private lazy var xmasButton: FloatingButton = {
+        let button = FloatingButton.favoritesXmasButton()
+        button.isUserInteractionEnabled = false
+        button.isHidden = true
+        return button
+    }()
+
+    private lazy var xmasCalloutView: CalloutView = {
+        let view = CalloutView(direction: .down, arrowAlignment: .right(24))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+
     private lazy var searchBarTop = searchBar.topAnchor.constraint(equalTo: topAnchor)
     private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
 
@@ -115,7 +129,7 @@ public class FavoriteFoldersListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Reload
+    // MARK: - Public
 
     public func reloadData() {
         showEmptyViewIfNeeded()
@@ -212,6 +226,22 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
+    public func showXmasButton(withCalloutText text: String?) {
+        xmasButton.isHidden = false
+
+        if let text = text {
+            xmasCalloutView.isHidden = false
+            xmasCalloutView.show(withText: text)
+        } else {
+            xmasCalloutView.isHidden = true
+        }
+    }
+
+    public func hideXmasButton() {
+        xmasButton.isHidden = true
+        xmasCalloutView.hide()
+    }
+
     // MARK: - Setup
 
     private func setup() {
@@ -221,6 +251,8 @@ public class FavoriteFoldersListView: UIView {
         addSubview(tableView)
         addSubview(searchBar)
         addSubview(footerView)
+        addSubview(xmasButton)
+        addSubview(xmasCalloutView)
 
         tableView.addSubview(emptyView)
 
@@ -238,6 +270,15 @@ public class FavoriteFoldersListView: UIView {
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             footerView.heightAnchor.constraint(equalToConstant: footerHeight),
+
+            xmasButton.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: -46),
+            xmasButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            xmasButton.widthAnchor.constraint(equalToConstant: .veryLargeSpacing),
+            xmasButton.heightAnchor.constraint(equalTo: xmasButton.widthAnchor),
+
+            xmasCalloutView.bottomAnchor.constraint(equalTo: xmasButton.topAnchor, constant: -.mediumSpacing),
+            xmasCalloutView.trailingAnchor.constraint(equalTo: xmasButton.trailingAnchor),
+            xmasCalloutView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7)
         ])
     }
 
