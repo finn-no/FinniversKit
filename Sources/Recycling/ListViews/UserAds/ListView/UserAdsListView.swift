@@ -343,7 +343,7 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
     public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button) {
         let showRatingView = dataSource?.emphasizedActionShowRatingView ?? false
         guard showRatingView != false && hasGivenRating != false else {
-            cell.showRatingView(true)
+            cell.showRatingView()
             return
         }
 
@@ -355,7 +355,7 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
     public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, closeButtonWasTapped: UIButton) {
         delegate?.userAdsListViewEmphasizedActionWasCancelled(self)
 
-        cell.showRatingView(false, completion: {
+        cell.hideRatingView(completion: {
             guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
             self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
         })
@@ -369,7 +369,7 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
         hasGivenRating = true
         delegate?.userAdsListViewEmphasized(self, didSelectRating: rating)
 
-        cell.showRatingView(false, completion: {
+        cell.showRatingView(completion: {
             guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
             self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
 

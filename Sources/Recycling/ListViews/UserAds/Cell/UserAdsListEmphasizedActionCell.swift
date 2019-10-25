@@ -365,37 +365,39 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
 
     // MARK: - Public
 
-    public func showRatingView(_ show: Bool, completion: (() -> Void)? = nil) {
+    public func showRatingView(completion: (() -> Void)? = nil) {
         let leftSlideTransform = CGAffineTransform(translationX: -bounds.maxX, y: 0)
-        let rightSlideTransform = CGAffineTransform(translationX: bounds.maxX, y: 0)
 
-        if show {
             UIView.animate(withDuration: 0.2, animations: {
-                // The ratingView covers bounds of the cell
-                // The ratingView starts as translucent and first perform the rightSlideTransform.
                 self.adWrapperView.transform = leftSlideTransform
                 self.actionWrapper.transform = leftSlideTransform
 
                 UIView.animate(withDuration: 0.1, animations: {
+                    // In the initalization of the RatingView
+                    // it performs a X-axis translation equal to bounds.maxX
+                    // Hence calling .identity here
                     self.ratingView.transform = .identity
                     self.ratingView.alpha = 1
                 }, completion: { _ in
                     completion?()
-                })
             })
-        } else {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.ratingView.transform = rightSlideTransform
+        })
+    }
 
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.adWrapperView.transform = .identity
-                    self.actionWrapper.transform = .identity
-                    self.ratingView.alpha = 0
-                }, completion: { _ in
-                    completion?()
-                })
+    public func hideRatingView(completion: (() -> Void)? = nil) {
+        let rightSlideTransform = CGAffineTransform(translationX: bounds.maxX, y: 0)
+
+        UIView.animate(withDuration: 0.2, animations: {
+            self.ratingView.transform = rightSlideTransform
+
+            UIView.animate(withDuration: 0.1, animations: {
+                self.adWrapperView.transform = .identity
+                self.actionWrapper.transform = .identity
+                self.ratingView.alpha = 0
+            }, completion: { _ in
+                completion?()
             })
-        }
+        })
     }
 }
 
