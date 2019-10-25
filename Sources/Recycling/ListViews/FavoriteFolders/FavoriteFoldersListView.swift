@@ -278,7 +278,7 @@ public class FavoriteFoldersListView: UIView {
 
             xmasCalloutView.bottomAnchor.constraint(equalTo: xmasButton.topAnchor, constant: -.mediumSpacing),
             xmasCalloutView.trailingAnchor.constraint(equalTo: xmasButton.trailingAnchor),
-            xmasCalloutView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7)
+            xmasCalloutView.widthAnchor.constraint(equalToConstant: 256)
         ])
     }
 
