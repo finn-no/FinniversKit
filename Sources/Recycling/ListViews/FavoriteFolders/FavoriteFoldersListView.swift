@@ -11,6 +11,7 @@ public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String?)
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
+    func favoriteFoldersListViewDidSelectXmasButton(_ view: FavoriteFoldersListView)
 }
 
 public protocol FavoriteFoldersListViewDataSource: AnyObject {
@@ -97,8 +98,8 @@ public class FavoriteFoldersListView: UIView {
 
     private lazy var xmasButton: FloatingButton = {
         let button = FloatingButton.favoritesXmasButton()
-        button.isUserInteractionEnabled = false
         button.isHidden = true
+        button.addTarget(self, action: #selector(handleXmasButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -127,6 +128,13 @@ public class FavoriteFoldersListView: UIView {
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Overrides
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        emptyView.frame = tableView.bounds
     }
 
     // MARK: - Data
@@ -316,11 +324,6 @@ public class FavoriteFoldersListView: UIView {
         ])
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        emptyView.frame = tableView.bounds
-    }
-
     // MARK: - Private methods
 
     private func showEmptyViewIfNeeded() {
@@ -346,6 +349,10 @@ public class FavoriteFoldersListView: UIView {
         case .folders:
             delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
         }
+    }
+
+    @objc private func handleXmasButtonTap() {
+        delegate?.favoriteFoldersListViewDidSelectXmasButton(self)
     }
 }
 
