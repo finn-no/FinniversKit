@@ -77,7 +77,7 @@ public class BottomSheet: UIViewController {
         get { transitionDelegate.presentationController?.state ?? .dismissed }
         set {
             transitionDelegate.presentationController?.state = newValue
-            if isPopover {
+            if !isDefaultPresentationStyle && newValue == .dismissed {
                 delegate?.bottomSheet(self, didDismissBy: .none)
                 dismiss(animated: true, completion: nil)
             }
@@ -116,7 +116,7 @@ public class BottomSheet: UIViewController {
     }
 
     let notchHeight: CGFloat = 20
-    var isPopover: Bool { modalPresentationStyle == .popover }
+    var isDefaultPresentationStyle: Bool { modalPresentationStyle == .custom }
 
     // MARK: - Private properties
 
