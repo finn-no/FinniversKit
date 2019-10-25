@@ -118,7 +118,6 @@ public class BottomSheet: UIViewController {
     let notchHeight: CGFloat = 20
     var isDefaultPresentationStyle: Bool { modalPresentationStyle == .custom }
 
-
     // MARK: - Private properties
 
     private let transitionDelegate: BottomSheetTransitioningDelegate
