@@ -248,6 +248,10 @@ public class FavoriteFoldersListView: UIView {
         searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
         footerView.configure(withTitle: viewModel.addFolderText)
 
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: nil)
+        tapGestureRecognizer.delegate = self
+        addGestureRecognizer(tapGestureRecognizer)
+
         addSubview(tableView)
         addSubview(searchBar)
         addSubview(footerView)
@@ -517,5 +521,16 @@ extension FavoriteFoldersListView: FavoriteSearchEmptyViewDelegate {
     func favoriteSearchEmptyViewDidSelectButton(_: FavoriteSearchEmptyView) {
         guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         delegate?.favoriteFoldersListViewDidSelectAddButton(self, withSearchText: searchText)
+    }
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension FavoriteFoldersListView: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if !xmasCalloutView.isHidden && xmasCalloutView.alpha == 1 {
+            xmasCalloutView.hide()
+        }
+        return false
     }
 }

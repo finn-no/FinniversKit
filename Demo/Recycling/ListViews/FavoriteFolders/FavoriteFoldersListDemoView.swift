@@ -141,11 +141,3 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
-
-// MARK: - FavoriteFolderXmasViewDelegate
-
-extension FavoriteFoldersListDemoView: FavoriteFolderXmasViewDelegate {
-    func favoriteFolderXmasViewDidTap(_ view: FavoriteFolderXmasView) {
-        print("Xmas view tapped")
-    }
-}
