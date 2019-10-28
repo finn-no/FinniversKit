@@ -238,36 +238,37 @@ public class FavoriteFoldersListView: UIView {
 
     // MARK: - Xmas button
 
-    public func showXmasButton(withCalloutText text: String?) {
-        setXmasButtonHidden(false, completion: {
+    public func showXmasButton(withCalloutText text: String?, delay: TimeInterval = 1) {
+        setXmasButtonHidden(false, delay: delay, completion: {
             if let text = text {
                 self.xmasCalloutView.isHidden = false
                 self.xmasCalloutView.show(withText: text)
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             } else {
                 self.xmasCalloutView.isHidden = true
             }
         })
     }
 
-    public func hideXmasButton() {
+    public func hideXmasButton(delay: TimeInterval = 0) {
         xmasCalloutView.hide()
 
-        setXmasButtonHidden(true, completion: {
+        setXmasButtonHidden(true, delay: delay, completion: {
             self.xmasCalloutView.isHidden = true
         })
     }
 
-    private func setXmasButtonHidden(_ hidden: Bool, completion: @escaping () -> Void) {
+    private func setXmasButtonHidden(_ hidden: Bool, delay: TimeInterval = 0, completion: @escaping () -> Void) {
         let customTransform = CGAffineTransform.identity.rotated(by: -1/2 * .pi).scaledBy(x: 0.001, y: 0.001)
         xmasButton.isHidden = false
         xmasButton.alpha = hidden ? 1 : 0
         xmasButton.transform = hidden ? .identity : customTransform
 
         UIView.animate(
-            withDuration: 0.5,
-            delay: 0,
+            withDuration: 0.7,
+            delay: delay,
             usingSpringWithDamping: 0.4,
-            initialSpringVelocity: 5,
+            initialSpringVelocity: 7,
             options: .curveEaseInOut,
             animations: {
                 self.xmasButton.alpha = hidden ? 0 : 1
@@ -298,6 +299,8 @@ public class FavoriteFoldersListView: UIView {
 
         tableView.addSubview(emptyView)
 
+        let xmasButtonButtom: CGFloat = max(20, 12 + windowSafeAreaInsets.bottom)
+
         NSLayoutConstraint.activate([
             searchBarTop,
             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -313,7 +316,7 @@ public class FavoriteFoldersListView: UIView {
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             footerView.heightAnchor.constraint(equalToConstant: footerHeight),
 
-            xmasButton.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: -46),
+            xmasButton.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: -xmasButtonButtom),
             xmasButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             xmasButton.widthAnchor.constraint(equalToConstant: .veryLargeSpacing),
             xmasButton.heightAnchor.constraint(equalTo: xmasButton.widthAnchor),
