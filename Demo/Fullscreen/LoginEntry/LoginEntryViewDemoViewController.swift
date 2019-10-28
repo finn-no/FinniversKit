@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-class LoginEntryViewDemoViewController: DemoViewController<UIView> {
+class LoginEntryViewDemoViewController: BaseDemoViewController<UIView> {
     override var prefersStatusBarHidden: Bool {
         return false
     }

@@ -109,7 +109,7 @@ private class ImageDownloader: FullscreenGalleryViewControllerDataSource {
 
 // MARK: - Demo view
 
-class FullscreenGalleryDemoViewController: DemoViewController<UIView>, UICollectionViewDelegate, UICollectionViewDataSource {
+class FullscreenGalleryDemoViewController: BaseDemoViewController<UIView>, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: - Private properties
 

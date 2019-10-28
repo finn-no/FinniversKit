@@ -16,6 +16,7 @@ struct State {
     private static let lastSelectedIndexPathSectionKey = "lastSelectedIndexPathSectionKey"
     private static let lastCornerForTweakingButtonKey = "lastCornerForTweakingButtonKey"
     private static let lastSelectedSectionKey = "lastSelectedSectionKey"
+    private static let lastSelectedDeviceKey = "lastSelectedDeviceKey"
     static let currentUserInterfaceStyleKey = "currentUserInterfaceStyleKey"
 
     static let defaultUserInterfaceStyleSupport: FinniversKit.UserInterfaceStyleSupport = {
@@ -79,6 +80,16 @@ struct State {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: lastSelectedSectionKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
+
+    static var lastSelectedDevice: Int? {
+        get {
+            return UserDefaults.standard.value(forKey: lastSelectedDeviceKey) as? Int
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: lastSelectedDeviceKey)
             UserDefaults.standard.synchronize()
         }
     }

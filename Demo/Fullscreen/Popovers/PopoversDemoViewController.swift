@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-final class PopoversDemoViewController: DemoViewController<UIView> {
+final class PopoversDemoViewController: BaseDemoViewController<UIView> {
     private let demoViews: [FullscreenDemoViews] = [
         .favoriteFolderActionSheet,
         .favoriteAdSortingSheet,

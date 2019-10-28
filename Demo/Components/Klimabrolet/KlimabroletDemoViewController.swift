@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-class KlimabroletDemoViewController: DemoViewController<UIView> {
+class KlimabroletDemoViewController: BaseDemoViewController<UIView> {
     private lazy var klimabroletView: KlimabroletView = {
         let view = KlimabroletView(withAutoLayout: true)
         view.configure(with: KlimabroletData.ViewModel())
