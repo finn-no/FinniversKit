@@ -14,7 +14,7 @@ struct SampleSaveSearchViewModel: SaveSearchViewModel {
     let emailIsOn: Bool = true
 }
 
-class SaveSearchViewDemoViewController: DemoViewController<UIView> {
+class SaveSearchViewDemoViewController: BaseDemoViewController<UIView> {
     private lazy var saveSearchView = SaveSearchView(withAutoLayout: true)
 
     override func viewDidLoad() {
