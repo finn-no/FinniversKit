@@ -23,29 +23,23 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
         return view
     }()
 
-    private lazy var xmasView: FavoriteFolderXmasView = {
-        let view = FavoriteFolderXmasView(withAutoLayout: true)
-        view.delegate = self
-        view.calloutText = "Tips! Nå kan du endelig opprette og dele din egen juleønskeliste! Her er i såfall knappen for å gjøre det! God jul!"
-        return view
-    }()
-
     lazy var tweakingOptions: [TweakingOption] = {
         return [
             TweakingOption(title: "Toggle mode", description: nil) { [weak self] in
                 self?.isEditing = false
                 self?.allFavorites = FavoriteFoldersFactory.create()
                 self?.view.setEditing(false)
-                self?.xmasView.isHidden = true
+                self?.view.hideXmasButton()
             },
             TweakingOption(title: "Edit mode", description: nil) { [weak self] in
                 self?.isEditing = true
                 self?.allFavorites = FavoriteFoldersFactory.create(withSelectedItems: false)
                 self?.view.setEditing(true)
-                self?.xmasView.isHidden = true
+                self?.view.hideXmasButton()
             },
             TweakingOption(title: "Xmass overlay", description: nil) { [weak self] in
-                self?.xmasView.isHidden = false
+                let text = "Tips! Nå kan du endelig opprette og dele din egen juleønskeliste! Her er i såfall knappen for å gjøre det! God jul!"
+                self?.view.showXmasButton(withCalloutText: text)
             }
         ]
     }()
@@ -64,11 +58,7 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
 
     private func setup() {
         addSubview(view)
-        addSubview(xmasView)
-
         view.fillInSuperview()
-        xmasView.fillInSuperview()
-        xmasView.isHidden = true
     }
 
     private func filterFolders() {
@@ -111,6 +101,10 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDelegate {
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView) {
         // Set bottomSheet to expanded here, if needed.
     }
+
+    func favoriteFoldersListViewDidSelectXmasButton(_ view: FavoriteFoldersListView) {
+        view.hideXmasButton()
+    }
 }
 
 // MARK: - FavoriteFoldersListViewDataSource
@@ -150,12 +144,4 @@ extension FavoriteFoldersListDemoView: FavoriteFoldersListViewDataSource {
     }
 
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
-}
-
-// MARK: - FavoriteFolderXmasViewDelegate
-
-extension FavoriteFoldersListDemoView: FavoriteFolderXmasViewDelegate {
-    func favoriteFolderXmasViewDidTap(_ view: FavoriteFolderXmasView) {
-        print("Xmas view tapped")
-    }
 }

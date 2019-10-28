@@ -11,6 +11,7 @@ public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListViewDidSelectAddButton(_ view: FavoriteFoldersListView, withSearchText searchText: String?)
     func favoriteFoldersListViewDidFocusSearchBar(_ view: FavoriteFoldersListView)
     func favoriteFoldersListView(_ view: FavoriteFoldersListView, didChangeSearchText searchText: String)
+    func favoriteFoldersListViewDidSelectXmasButton(_ view: FavoriteFoldersListView)
 }
 
 public protocol FavoriteFoldersListViewDataSource: AnyObject {
@@ -95,6 +96,20 @@ public class FavoriteFoldersListView: UIView {
         return emptyView
     }()
 
+    private lazy var xmasButton: FloatingButton = {
+        let button = FloatingButton.favoritesXmasButton()
+        button.isHidden = true
+        button.addTarget(self, action: #selector(handleXmasButtonTap), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var xmasCalloutView: CalloutView = {
+        let view = CalloutView(direction: .down, arrowAlignment: .right(24))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+
     private lazy var searchBarTop = searchBar.topAnchor.constraint(equalTo: topAnchor)
     private lazy var footerViewTop = footerView.topAnchor.constraint(equalTo: bottomAnchor)
 
@@ -115,7 +130,14 @@ public class FavoriteFoldersListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Reload
+    // MARK: - Overrides
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        emptyView.frame = tableView.bounds
+    }
+
+    // MARK: - Data
 
     public func reloadData() {
         showEmptyViewIfNeeded()
@@ -172,6 +194,8 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
+    // MARK: - Editing
+
     public func setEditing(_ editing: Bool) {
         guard tableView.isEditing != editing, viewModel.isEditable else {
             return
@@ -212,17 +236,71 @@ public class FavoriteFoldersListView: UIView {
         }
     }
 
+    // MARK: - Xmas button
+
+    public func showXmasButton(withCalloutText text: String?, delay: TimeInterval = 1) {
+        setXmasButtonHidden(false, delay: delay, completion: {
+            if let text = text {
+                self.xmasCalloutView.isHidden = false
+                self.xmasCalloutView.alpha = 0
+                self.xmasCalloutView.show(withText: text)
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            } else {
+                self.xmasCalloutView.isHidden = true
+            }
+        })
+    }
+
+    public func hideXmasButton(delay: TimeInterval = 0) {
+        xmasCalloutView.hide()
+
+        setXmasButtonHidden(true, delay: delay, completion: {
+            self.xmasCalloutView.isHidden = true
+        })
+    }
+
+    private func setXmasButtonHidden(_ hidden: Bool, delay: TimeInterval = 0, completion: @escaping () -> Void) {
+        let customTransform = CGAffineTransform.identity.rotated(by: -1/2 * .pi).scaledBy(x: 0.001, y: 0.001)
+        xmasButton.isHidden = false
+        xmasButton.alpha = hidden ? 1 : 0
+        xmasButton.transform = hidden ? .identity : customTransform
+
+        UIView.animate(
+            withDuration: 0.7,
+            delay: delay,
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 7,
+            options: .curveEaseInOut,
+            animations: {
+                self.xmasButton.alpha = hidden ? 0 : 1
+                self.xmasButton.transform = hidden ? customTransform : .identity
+            },
+            completion: { _ in
+                self.xmasButton.isHidden = hidden
+                completion()
+            }
+        )
+    }
+
     // MARK: - Setup
 
     private func setup() {
         searchBar.configure(withPlaceholder: viewModel.searchBarPlaceholder)
         footerView.configure(withTitle: viewModel.addFolderText)
 
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: nil)
+        tapGestureRecognizer.delegate = self
+        addGestureRecognizer(tapGestureRecognizer)
+
         addSubview(tableView)
         addSubview(searchBar)
         addSubview(footerView)
+        addSubview(xmasButton)
+        addSubview(xmasCalloutView)
 
         tableView.addSubview(emptyView)
+
+        let xmasButtonButtom: CGFloat = max(20, 12 + windowSafeAreaInsets.bottom)
 
         NSLayoutConstraint.activate([
             searchBarTop,
@@ -238,12 +316,16 @@ public class FavoriteFoldersListView: UIView {
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             footerView.heightAnchor.constraint(equalToConstant: footerHeight),
-        ])
-    }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        emptyView.frame = tableView.bounds
+            xmasButton.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: -xmasButtonButtom),
+            xmasButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            xmasButton.widthAnchor.constraint(equalToConstant: .veryLargeSpacing),
+            xmasButton.heightAnchor.constraint(equalTo: xmasButton.widthAnchor),
+
+            xmasCalloutView.bottomAnchor.constraint(equalTo: xmasButton.topAnchor, constant: -.mediumSpacing),
+            xmasCalloutView.trailingAnchor.constraint(equalTo: xmasButton.trailingAnchor),
+            xmasCalloutView.widthAnchor.constraint(equalToConstant: 256)
+        ])
     }
 
     // MARK: - Private methods
@@ -271,6 +353,10 @@ public class FavoriteFoldersListView: UIView {
         case .folders:
             delegate?.favoriteFoldersListView(self, didSelectItemAtIndex: indexPath.row)
         }
+    }
+
+    @objc private func handleXmasButtonTap() {
+        delegate?.favoriteFoldersListViewDidSelectXmasButton(self)
     }
 }
 
@@ -476,5 +562,16 @@ extension FavoriteFoldersListView: FavoriteSearchEmptyViewDelegate {
     func favoriteSearchEmptyViewDidSelectButton(_: FavoriteSearchEmptyView) {
         guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         delegate?.favoriteFoldersListViewDidSelectAddButton(self, withSearchText: searchText)
+    }
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension FavoriteFoldersListView: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if !xmasCalloutView.isHidden && xmasCalloutView.alpha == 1 {
+            xmasCalloutView.hide()
+        }
+        return false
     }
 }

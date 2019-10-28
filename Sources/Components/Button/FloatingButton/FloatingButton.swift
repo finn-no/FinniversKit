@@ -50,7 +50,10 @@ public final class FloatingButton: UIButton {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        layer.cornerRadius = frame.height / 2
+
+        if transform == .identity {
+            layer.cornerRadius = frame.height / 2
+        }
 
         guard let imageView = imageView, let titleLabel = titleLabel else { return }
 
