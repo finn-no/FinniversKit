@@ -1,7 +1,7 @@
 import UIKit
 
 struct Device {
-    enum `Type`: String {
+    enum Kind: String {
         case phone4inch = "iPhone 5S (4-inch)"
 
         // swiftlint:disable:next identifier_name
@@ -28,15 +28,15 @@ struct Device {
         case padLandscapeFull = "iPad Landscape Full"
     }
 
-    var type: Type
+    var kind: Kind
     var traits: UITraitCollection
     var frame: CGRect
     var autoresizingMask: UIView.AutoresizingMask
     var title: String {
-        return type.rawValue
+        return kind.rawValue
     }
     var isEnabled: Bool {
-        switch type {
+        switch kind {
         case .phone4inch, .phone4_7inch, .phone5_5inch, .phone5_8inch:
             let currentSize = UIScreen.main.bounds.size
             return frame.width <= currentSize.width && frame.height <= currentSize.height
@@ -46,14 +46,14 @@ struct Device {
     }
 
     // swiftlint:disable:next cyclomatic_complexity
-    init(type: Type) {
+    init(kind: Kind) {
         let size: CGSize
         let horizontalSizeClass: UIUserInterfaceSizeClass
         let verticalSizeClass = UIUserInterfaceSizeClass.regular
         let userInterfaceIdiom: UIUserInterfaceIdiom
         let autoresizingMask: UIView.AutoresizingMask
 
-        switch type {
+        switch kind {
         case .phone4inch:
             size = .init(width: 320, height: 568)
         case .phone4_7inch:
@@ -83,7 +83,7 @@ struct Device {
         // swiftlint:disable:next identifier_name
         let y: CGFloat = (UIScreen.main.bounds.height - size.height) / 2
 
-        switch type {
+        switch kind {
         case .phone4inch, .phone4_7inch, .phone5_5inch, .phone5_8inch:
             horizontalSizeClass = .compact
             userInterfaceIdiom = .phone
@@ -106,7 +106,7 @@ struct Device {
             .init(userInterfaceIdiom: userInterfaceIdiom)
             ])
 
-        self.type = type
+        self.kind = kind
         self.traits = traits
         self.frame = CGRect(x: x, y: y, width: size.width, height: size.height)
         self.autoresizingMask = autoresizingMask
@@ -114,22 +114,22 @@ struct Device {
 
     static var all: [Device] {
         var devices: [Device] = [
-            Device(type: .phone4inch),
-            Device(type: .phone4_7inch),
-            Device(type: .phone5_5inch),
-            Device(type: .phone5_8inch)
+            Device(kind: .phone4inch),
+            Device(kind: .phone4_7inch),
+            Device(kind: .phone5_5inch),
+            Device(kind: .phone5_8inch)
         ]
 
         let isPortrait = UIDevice.current.userInterfaceIdiom == .pad && UIScreen.main.bounds.size.height > UIScreen.main.bounds.size.width
         if isPortrait {
-            devices.append(contentsOf: [Device(type: .padPortraitOneThird),
-                                        Device(type: .padPortraitTwoThirds),
-                                        Device(type: .padPortraitFull)])
+            devices.append(contentsOf: [Device(kind: .padPortraitOneThird),
+                                        Device(kind: .padPortraitTwoThirds),
+                                        Device(kind: .padPortraitFull)])
         } else {
-            devices.append(contentsOf: [Device(type: .padLandscapeOneThird),
-                                        Device(type: .padLandscapeOneHalf),
-                                        Device(type: .padLandscapeTwoThirds),
-                                        Device(type: .padLandscapeFull)])
+            devices.append(contentsOf: [Device(kind: .padLandscapeOneThird),
+                                        Device(kind: .padLandscapeOneHalf),
+                                        Device(kind: .padLandscapeTwoThirds),
+                                        Device(kind: .padLandscapeFull)])
         }
         return devices
     }
