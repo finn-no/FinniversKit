@@ -242,6 +242,7 @@ public class FavoriteFoldersListView: UIView {
         setXmasButtonHidden(false, delay: delay, completion: {
             if let text = text {
                 self.xmasCalloutView.isHidden = false
+                self.xmasCalloutView.alpha = 0
                 self.xmasCalloutView.show(withText: text)
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             } else {
