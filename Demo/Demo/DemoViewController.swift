@@ -54,14 +54,7 @@ class DemoViewController<View: UIView>: UIViewController {
             setOverrideTraitCollection(device.traits, forChild: viewController)
         }
 
-        NSLayoutConstraint.activate([
-            viewController.view.topAnchor.constraint(equalTo: view.topAnchor),
-            viewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            viewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            viewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            viewController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            viewController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        view.fillInSuperview()
 
         if !TestCheck.isTesting {
             let tweakablePlaygroundView = (childViewController?.playgroundView as? Tweakable) ?? (self as? Tweakable)
