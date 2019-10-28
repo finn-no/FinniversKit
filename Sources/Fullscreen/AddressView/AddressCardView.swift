@@ -76,7 +76,7 @@ extension AddressCardView {
         layer.shadowOffset = .zero
         layer.shadowColor = UIColor.black.cgColor
 
-        backgroundColor = .white
+        backgroundColor = .bgPrimary
 
         let columnStackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         columnStackView.translatesAutoresizingMaskIntoConstraints = false

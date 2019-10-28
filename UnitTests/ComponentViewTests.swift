@@ -199,6 +199,10 @@ class ComponentViewTests: XCTestCase {
         snapshot(.christmasWishListView)
     }
 
+    func testPriming() {
+        snapshot(.priming)
+    }
+
     func testSelectorTitleView() {
         snapshot(.selectorTitleView)
     }

@@ -51,7 +51,7 @@ public final class FavoriteFolderActionSheet: BottomSheet {
         super.viewDidLoad()
         viewController?.delegate = self
 
-        let animationOffsetMultiplier: CGFloat = isPopover ? -2 : (isShared ? 1 : 2)
+        let animationOffsetMultiplier: CGFloat = !isDefaultPresentationStyle ? -2 : (isShared ? 1 : 2)
         let maxTransitionOffset = Height.transitionOffset(for: viewModel)
 
         positionObservationToken = view.layer.observe(\.position, options: [.new, .old]) { [weak self] _, change in

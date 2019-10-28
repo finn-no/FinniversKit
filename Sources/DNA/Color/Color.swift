@@ -359,6 +359,14 @@ extension CGColor {
     public class var decorationSubtle: CGColor {
         return UIColor.decorationSubtle.cgColor
     }
+
+    public class var iconPrimary: CGColor {
+        return UIColor.iconPrimary.cgColor
+    }
+
+    public class var iconSecondary: CGColor {
+        return UIColor.iconSecondary.cgColor
+    }
 }
 
 // MARK: - Button UIColors

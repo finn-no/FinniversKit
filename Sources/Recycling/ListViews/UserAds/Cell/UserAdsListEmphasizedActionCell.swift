@@ -5,9 +5,12 @@
 import UIKit
 
 /// Delegate to handle interaction happening inside the cell
-public protocol UserAdsListEmphasizedActionCellDelegate: class {
+public protocol UserAdsListEmphasizedActionCellDelegate: AnyObject {
     func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, buttonWasTapped: Button)
     func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button)
+    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, closeButtonWasTapped: UIButton)
+    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, textFor rating: HappinessRating) -> String?
+    func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, didSelectRating rating: HappinessRating)
 }
 
 public class UserAdsListEmphasizedActionCell: UITableViewCell {
@@ -106,7 +109,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     }()
 
     private lazy var cancelButton: Button = {
-        let button = Button(style: .default, size: .small)
+        let button = Button(style: .flat, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
         return button
@@ -124,6 +127,14 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         layer.colors = [UIColor.bgTertiary.cgColor, color.cgColor]
         layer.locations = [0.1, 1.0]
         return layer
+    }()
+
+    private lazy var ratingView: UserAdsRatingView = {
+        let ratingView = UserAdsRatingView(delegate: self)
+        ratingView.translatesAutoresizingMaskIntoConstraints = false
+        ratingView.alpha = 0
+        ratingView.transform = CGAffineTransform(translationX: bounds.maxX, y: 0)
+        return ratingView
     }()
 
     private var actionWrapperHideConstraint = NSLayoutConstraint()
@@ -144,6 +155,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
         adWrapperView.addSubview(detailLabel)
 
         contentView.addSubview(actionWrapper)
+        contentView.addSubview(ratingView)
         actionWrapper.addSubview(actionTitleLabel)
         actionWrapper.addSubview(actionDescriptionLabel)
         actionWrapper.addSubview(actionButton)
@@ -179,6 +191,10 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             actionWrapper.topAnchor.constraint(equalTo: adWrapperView.bottomAnchor, constant: .mediumLargeSpacing),
             actionWrapper.widthAnchor.constraint(equalTo: contentView.widthAnchor),
 
+            ratingView.topAnchor.constraint(equalTo: topAnchor),
+            ratingView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            ratingView.widthAnchor.constraint(equalTo: actionWrapper.widthAnchor),
+
             actionTitleLabel.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor, constant: .mediumLargeSpacing),
             actionTitleLabel.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor, constant: -.mediumLargeSpacing),
             actionTitleLabel.topAnchor.constraint(equalTo: actionWrapper.topAnchor),
@@ -194,7 +210,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             gradientWrapper.leadingAnchor.constraint(equalTo: actionWrapper.leadingAnchor),
             gradientWrapper.trailingAnchor.constraint(equalTo: actionWrapper.trailingAnchor),
             gradientWrapper.bottomAnchor.constraint(equalTo: actionWrapper.bottomAnchor)
-            ])
+        ])
 
         if shouldShowAction {
             actionWrapperHeightConstraint.isActive = true
@@ -209,7 +225,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             NSLayoutConstraint.activate([
                 detailLabel.centerYAnchor.constraint(equalTo: (ribbonView?.centerYAnchor ?? centerYAnchor)),
                 detailLabel.trailingAnchor.constraint(lessThanOrEqualTo: ribbonView?.leadingAnchor ?? trailingAnchor),
-                ])
+            ])
         } else {
             guard let priceLabel = priceLabel else { return }
             contentView.addSubview(priceLabel)
@@ -220,15 +236,15 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
 
                 detailLabel.topAnchor.constraint(equalTo: (ribbonView?.bottomAnchor ?? titleLabel.bottomAnchor), constant: .smallSpacing),
                 detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                ])
+            ])
         }
 
-        if model?.actionModel?.cancelButtonTitle != nil {
+        if model?.actionViewModel?.cancelButtonTitle != nil {
             actionWrapper.addSubview(cancelButton)
             NSLayoutConstraint.activate([
                 cancelButton.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor),
                 cancelButton.leadingAnchor.constraint(equalTo: actionButton.trailingAnchor, constant: .smallSpacing)
-                ])
+            ])
         }
     }
 
@@ -272,7 +288,7 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             NSLayoutConstraint.activate([
                 ribbon.trailingAnchor.constraint(equalTo: adWrapperView.trailingAnchor, constant: -.mediumSpacing),
                 ribbon.centerYAnchor.constraint(equalTo: adWrapperView.centerYAnchor),
-                ])
+            ])
         }
     }
 
@@ -307,18 +323,19 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             userAdStatus = UserAdStatus(rawValue: model.status) ?? .unknown
             accessibilityLabel = model.accessibilityLabel
 
-            actionTitleLabel.text = model.actionModel?.title
-            actionDescriptionLabel.text = model.actionModel?.description
-            actionButton.setTitle(model.actionModel?.buttonTitle, for: .normal)
-            cancelButton.setTitle(model.actionModel?.cancelButtonTitle, for: .normal)
+            actionTitleLabel.text = model.actionViewModel?.title
+            actionDescriptionLabel.text = model.actionViewModel?.description
+            actionButton.setTitle(model.actionViewModel?.buttonTitle, for: .normal)
+            cancelButton.setTitle(model.actionViewModel?.cancelButtonTitle, for: .normal)
+
+            ratingView.model = model.ratingViewModel
 
             setupRibbonView(with: userAdStatus)
             setupView()
         }
     }
 
-    // MARK: - Public
-    /// Loads a given image provided that the imagePath in the `model` is valid.
+    // MARK: - Private
 
     private func loadImage(_ model: UserAdsListViewModel) {
         guard let dataSource = dataSource, model.imagePath != nil else {
@@ -334,8 +351,9 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
             self?.adImageView.backgroundColor = .clear
             self?.adImageView.image = image ?? self?.defaultImage
         }
-
     }
+
+    // MARK: - Selectors
 
     @objc private func buttonTapped(_ sender: Button) {
         delegate?.userAdsListEmphasizedActionCell(self, buttonWasTapped: sender)
@@ -344,6 +362,43 @@ public class UserAdsListEmphasizedActionCell: UITableViewCell {
     @objc private func cancelButtonTapped(_ sender: Button) {
         delegate?.userAdsListEmphasizedActionCell(self, cancelButtonWasTapped: sender)
     }
+
+    // MARK: - Public
+
+    public func showRatingView(completion: (() -> Void)? = nil) {
+        let leftSlideTransform = CGAffineTransform(translationX: -bounds.maxX, y: 0)
+
+            UIView.animate(withDuration: 0.2, animations: {
+                self.adWrapperView.transform = leftSlideTransform
+                self.actionWrapper.transform = leftSlideTransform
+
+                UIView.animate(withDuration: 0.1, animations: {
+                    // In the initalization of the RatingView
+                    // it performs a X-axis translation equal to bounds.maxX
+                    // Hence calling .identity here
+                    self.ratingView.transform = .identity
+                    self.ratingView.alpha = 1
+                }, completion: { _ in
+                    completion?()
+            })
+        })
+    }
+
+    public func hideRatingView(completion: (() -> Void)? = nil) {
+        let rightSlideTransform = CGAffineTransform(translationX: bounds.maxX, y: 0)
+
+        UIView.animate(withDuration: 0.2, animations: {
+            self.ratingView.transform = rightSlideTransform
+
+            UIView.animate(withDuration: 0.1, animations: {
+                self.adWrapperView.transform = .identity
+                self.actionWrapper.transform = .identity
+                self.ratingView.alpha = 0
+            }, completion: { _ in
+                completion?()
+            })
+        })
+    }
 }
 
 extension UserAdsListEmphasizedActionCell: ImageLoading {
@@ -351,5 +406,19 @@ extension UserAdsListEmphasizedActionCell: ImageLoading {
         if let model = model {
             loadImage(model)
         }
+    }
+}
+
+extension UserAdsListEmphasizedActionCell: UserAdsRatingViewDelegate {
+    public func ratingView(_ userAdsRatingView: UserAdsRatingView, didTapCloseButton button: UIButton) {
+        delegate?.userAdsListEmphasizedActionCell(self, closeButtonWasTapped: button)
+    }
+
+    public func ratingView(_ userAdsRatingView: UserAdsRatingView, didSelectRating rating: HappinessRating) {
+        delegate?.userAdsListEmphasizedActionCell(self, didSelectRating: rating)
+    }
+
+    public func ratingView(_ userAdsRatingView: UserAdsRatingView, textFor rating: HappinessRating) -> String? {
+        return delegate?.userAdsListEmphasizedActionCell(self, textFor: rating)
     }
 }

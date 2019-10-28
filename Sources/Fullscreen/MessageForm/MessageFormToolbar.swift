@@ -174,6 +174,7 @@ private class MessageFormTemplateCell: UICollectionViewCell {
         label.numberOfLines = 3
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
+        label.textColor = .textToast
         return label
     }()
 

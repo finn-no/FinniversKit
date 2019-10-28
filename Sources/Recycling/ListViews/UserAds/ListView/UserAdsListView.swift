@@ -8,6 +8,9 @@ public protocol UserAdsListViewDelegate: AnyObject {
     func userAdsListViewDidStartRefreshing(_ userAdsListView: UserAdsListView)
     func userAdsListViewEmphasizedActionWasTapped(_ userAdsListView: UserAdsListView)
     func userAdsListViewEmphasizedActionWasCancelled(_ userAdsListView: UserAdsListView)
+    func userAdsListViewEmphasized(_ userAdsListView: UserAdsListView, textFor rating: HappinessRating) -> String?
+    func userAdsListViewEmphasized(_ userAdsListView: UserAdsListView, didSelectRating rating: HappinessRating)
+
     func userAdsListView(_ userAdsListView: UserAdsListView, userAdsListHeaderView: UserAdsListHeaderView, didTapSeeMoreButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapCreateNewAdButton button: Button)
     func userAdsListView(_ userAdsListView: UserAdsListView, didTapSeeAllAdsButton button: Button)
@@ -19,6 +22,8 @@ public protocol UserAdsListViewDelegate: AnyObject {
 
 public protocol UserAdsListViewDataSource: AnyObject {
     var emphasizedActionHasBeenCollapsed: Bool { get }
+    var emphasizedActionShowRatingView: Bool { get }
+
     func numberOfSections(in userAdsListView: UserAdsListView) -> Int
     func sectionNumberForEmphasizedAction(in userAdsListView: UserAdsListView) -> Int?
     func userAdsListView(_ userAdsListView: UserAdsListView, shouldDisplayInactiveSectionAt indexPath: IndexPath) -> Bool
@@ -66,10 +71,22 @@ public class UserAdsListView: UIView {
     private var lastSection: Int {
         return (dataSource?.numberOfSections(in: self) ?? 1) - 1
     }
+
     // MARK: - Public properties
+
+    public enum ToastType: Equatable {
+        case success
+        case error
+    }
+
+    public enum ToastPlacement: Equatable {
+        case top
+        case bottom
+    }
 
     public var isEditing: Bool { return tableView.isEditing }
     public var isEmpty: Bool { return (dataSource?.userAdsListView(self, numberOfRowsInSection: 1) ?? 0 ) == 0}
+    public private(set) var hasGivenRating = false
 
     // MARK: - Setup
 
@@ -93,6 +110,30 @@ public class UserAdsListView: UIView {
     private func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
+    }
+
+    public func showToastView(type: ToastType, placement: ToastPlacement, text: String, timeOut: Double, toastAction: ToastAction? = nil) {
+        let successToastView = ToastView(style: .success, buttonStyle: .normal)
+        successToastView.action = toastAction
+
+        let errorToastView = ToastView(style: .error, buttonStyle: .normal)
+        errorToastView.action = toastAction
+
+        switch (type, placement) {
+        case (.success, .top):
+            successToastView.text = text
+            successToastView.presentFromTop(view: self, animateOffset: 0, timeOut: timeOut)
+        case (.success, .bottom):
+            successToastView.text = text
+            successToastView.presentFromBottom(view: self, animateOffset: 0, timeOut: timeOut)
+
+        case (.error, .top):
+            errorToastView.text = text
+            errorToastView.presentFromTop(view: self, animateOffset: 0, timeOut: timeOut)
+        case (.error, .bottom):
+            errorToastView.text = text
+            errorToastView.presentFromBottom(view: self, animateOffset: 0, timeOut: timeOut)
+        }
     }
 
     // MARK: - Public
@@ -300,8 +341,41 @@ extension UserAdsListView: UserAdsListEmphasizedActionCellDelegate {
     }
 
     public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, cancelButtonWasTapped: Button) {
+        let showRatingView = dataSource?.emphasizedActionShowRatingView ?? false
+        guard showRatingView != false && hasGivenRating != false else {
+            cell.showRatingView()
+            return
+        }
+
         guard let emphasizedSection = dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
         delegate?.userAdsListViewEmphasizedActionWasCancelled(self)
         tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
+    }
+
+    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, closeButtonWasTapped: UIButton) {
+        delegate?.userAdsListViewEmphasizedActionWasCancelled(self)
+
+        cell.hideRatingView(completion: {
+            guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
+            self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
+        })
+    }
+
+    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, textFor rating: HappinessRating) -> String? {
+        return delegate?.userAdsListViewEmphasized(self, textFor: rating)
+    }
+
+    public func userAdsListEmphasizedActionCell(_ cell: UserAdsListEmphasizedActionCell, didSelectRating rating: HappinessRating) {
+        hasGivenRating = true
+        delegate?.userAdsListViewEmphasized(self, didSelectRating: rating)
+
+        cell.hideRatingView(completion: {
+            guard let emphasizedSection = self.dataSource?.sectionNumberForEmphasizedAction(in: self) else { return }
+            self.tableView.reloadSections(IndexSet(integer: emphasizedSection), with: .automatic)
+
+            if let feedbackText = cell.model?.ratingViewModel?.feedbackText {
+                self.showToastView(type: .success, placement: .bottom, text: feedbackText, timeOut: 2)
+            }
+        })
     }
 }
