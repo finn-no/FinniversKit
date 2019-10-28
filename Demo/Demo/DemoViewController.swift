@@ -28,6 +28,10 @@ class DemoViewController<View: UIView>: UIViewController {
 
     var childViewController: BaseDemoViewController<View>?
 
+    var playgroundView: View? {
+        return childViewController?.playgroundView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

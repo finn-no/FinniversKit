@@ -38,7 +38,7 @@ public protocol Containable {
 ///  Usage: `BaseDemoViewController<DrumMachineDemoView>()`
 public class BaseDemoViewController<View: UIView>: UIViewController, Containable {
 
-    public private(set) lazy var playgroundView: View = {
+    private(set) lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
         playgroundView.backgroundColor = .bgPrimary
