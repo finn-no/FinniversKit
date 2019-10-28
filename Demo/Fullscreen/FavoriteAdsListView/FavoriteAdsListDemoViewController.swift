@@ -9,7 +9,7 @@ enum AdsSorting: String {
     case alphabetically = "Alfabetisk"
 }
 
-class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
+class FavoriteAdsListDemoViewController: BaseDemoViewController<UIView>, Tweakable {
 
     // MARK: - Private properties
 

@@ -13,13 +13,13 @@ public enum DnaDemoViews: String, CaseIterable {
     public var viewController: UIViewController {
         switch self {
         case .color:
-            return DemoViewControllerContainer<ColorDemoView>()
+            return DemoViewController<ColorDemoView>()
         case .font:
-            return DemoViewControllerContainer<FontDemoView>()
+            return DemoViewController<FontDemoView>()
         case .spacing:
-            return DemoViewControllerContainer<SpacingDemoView>()
+            return DemoViewController<SpacingDemoView>()
         case .assets:
-            return DemoViewControllerContainer<AssetsDemoView>()
+            return DemoViewController<AssetsDemoView>()
         }
     }
 }

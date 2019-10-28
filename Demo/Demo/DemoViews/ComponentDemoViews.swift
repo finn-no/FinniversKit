@@ -59,47 +59,47 @@ public enum ComponentDemoViews: String, CaseIterable {
     public var viewController: UIViewController {
         switch self {
         case .button:
-            return DemoViewControllerContainer<ButtonDemoView>()
+            return DemoViewController<ButtonDemoView>()
         case .dialogue:
-            return DemoViewControllerContainer<DialogueDemoView>()
+            return DemoViewController<DialogueDemoView>()
         case .floatingButton:
-            return DemoViewControllerContainer<FloatingButtonDemoView>()
+            return DemoViewController<FloatingButtonDemoView>()
         case .reviewButtonView:
-            return DemoViewControllerContainer<ReviewButtonViewDemoView>()
+            return DemoViewController<ReviewButtonViewDemoView>()
         case .cogWheelButton:
-            return DemoViewControllerContainer<CogWheelButtonDemoView>()
+            return DemoViewController<CogWheelButtonDemoView>()
         case .label:
-            return DemoViewControllerContainer<LabelDemoView>()
+            return DemoViewController<LabelDemoView>()
         case .ribbon:
-            return DemoViewControllerContainer<RibbonDemoView>()
+            return DemoViewController<RibbonDemoView>()
         case .textField:
-            return DemoViewControllerContainer<TextFieldDemoView>()
+            return DemoViewController<TextFieldDemoView>()
         case .textView:
-            return DemoViewControllerContainer<TextViewDemoView>()
+            return DemoViewController<TextViewDemoView>()
         case .toast:
-            return DemoViewControllerContainer<ToastDemoView>()
+            return DemoViewController<ToastDemoView>()
         case .switchView:
-            return DemoViewControllerContainer<SwitchViewDemoView>()
+            return DemoViewController<SwitchViewDemoView>()
         case .infobox:
-            return DemoViewControllerContainer<InfoboxDemoView>()
+            return DemoViewController<InfoboxDemoView>()
         case .inlineConsent:
-            return DemoViewControllerContainer<InlineConsentDemoView>()
+            return DemoViewController<InlineConsentDemoView>()
         case .inlineConsentV2:
             return InlineConsentDemoViewController()
         case .consentTransparencyInfo:
-            return DemoViewControllerContainer<ConsentTransparencyInfoDemoView>()
+            return DemoViewController<ConsentTransparencyInfoDemoView>()
         case .bannerTransparencyView:
-            return DemoViewControllerContainer<BannerTransparencyDemoView>(containmentOptions: .bottomSheet)
+            return DemoViewController<BannerTransparencyDemoView>(containmentOptions: .bottomSheet)
         case .checkbox:
-            return DemoViewControllerContainer<CheckboxDemoView>(dismissType: .dismissButton)
+            return DemoViewController<CheckboxDemoView>(dismissType: .dismissButton)
         case .radioButton:
-            return DemoViewControllerContainer<RadioButtonDemoView>(dismissType: .dismissButton)
+            return DemoViewController<RadioButtonDemoView>(dismissType: .dismissButton)
         case .roundedImageView:
-            return DemoViewControllerContainer<RoundedImageViewDemoView>()
+            return DemoViewController<RoundedImageViewDemoView>()
         case .loadingIndicator:
-            return DemoViewControllerContainer<LoadingIndicatorViewDemoView>()
+            return DemoViewController<LoadingIndicatorViewDemoView>()
         case .refreshControl:
-            return DemoViewControllerContainer<RefreshControlDemoView>()
+            return DemoViewController<RefreshControlDemoView>()
         case .horizontalSlide:
             let presentedViewController = HorizontalSlideDemoViewController()
             let secondViewController = NavigationController(rootViewController: presentedViewController)
@@ -107,55 +107,55 @@ public enum ComponentDemoViews: String, CaseIterable {
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
         case .newYearsView:
-            return DemoViewControllerContainer<NewYearsDemoView>()
+            return DemoViewController<NewYearsDemoView>()
         case .bottomSheetMechanics:
             return BottomSheetMechanicsDemoViewController()
         case .feedbackView:
-            return DemoViewControllerContainer<FeedbackDemoView>(dismissType: .dismissButton)
+            return DemoViewController<FeedbackDemoView>(dismissType: .dismissButton)
         case .happinessRating:
-            return DemoViewControllerContainer<HappinessRatingDemoView>(dismissType: .dismissButton)
+            return DemoViewController<HappinessRatingDemoView>(dismissType: .dismissButton)
         case .earthHourView:
-            return DemoViewControllerContainer<EarthHourDemoView>()
+            return DemoViewController<EarthHourDemoView>()
         case .klimabroletView:
             return KlimabroletDemoViewController(dismissType: .none)
         case .christmasWishListView:
-            return DemoViewControllerContainer<ChristmasWishListDemoView>()
+            return DemoViewController<ChristmasWishListDemoView>()
         case .stepIndicatorView:
-            return DemoViewControllerContainer<StepIndicatorDemoView>(dismissType: .dismissButton)
+            return DemoViewController<StepIndicatorDemoView>(dismissType: .dismissButton)
         case .nativeAdverts:
-            return DemoViewControllerContainer<NativeAdvertDemoView>(dismissType: .dismissButton)
+            return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
         case .callout:
-            return DemoViewControllerContainer<CalloutDemoView>()
+            return DemoViewController<CalloutDemoView>()
         case .phaseList:
-            return DemoViewControllerContainer<PhaseListDemoView>()
+            return DemoViewController<PhaseListDemoView>()
         case .iconCollection:
-            return DemoViewControllerContainer<IconCollectionDemoView>()
+            return DemoViewController<IconCollectionDemoView>()
         case .disclaimerView:
-            return DemoViewControllerContainer<DisclaimerDemoView>()
+            return DemoViewController<DisclaimerDemoView>()
         case .questionnaireView:
-            return DemoViewControllerContainer<QuestionnaireDemoView>()
+            return DemoViewController<QuestionnaireDemoView>()
         case .tweakable:
-            return DemoViewControllerContainer<TweakableDemoView>()
+            return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
             return SaveSearchViewDemoViewController(containmentOptions: [.bottomSheet, .navigationController])
         case .identityView:
-            return DemoViewControllerContainer<IdentityDemoView>()
+            return DemoViewController<IdentityDemoView>()
         case .stepSlider:
-            return DemoViewControllerContainer<StepSliderDemoView>()
+            return DemoViewController<StepSliderDemoView>()
         case .verificationView:
-            return DemoViewControllerContainer<VerificationDemoView>()
+            return DemoViewController<VerificationDemoView>()
         case .loanCalculatorView:
-            return DemoViewControllerContainer<LoanCalculatorDemoView>()
+            return DemoViewController<LoanCalculatorDemoView>()
         case .panel:
-            return DemoViewControllerContainer<PanelDemoView>()
+            return DemoViewController<PanelDemoView>()
         case .reputationView:
-            return DemoViewControllerContainer<ReputationDemoView>()
+            return DemoViewController<ReputationDemoView>()
         case .visibilityDrivenTitleView:
-            return DemoViewControllerContainer<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
+            return DemoViewController<VisibilityDrivenTitleDemoView>(dismissType: .dismissButton)
         case .selectorTitleView:
-            return DemoViewControllerContainer<SelectorTitleViewDemoView>()
+            return DemoViewController<SelectorTitleViewDemoView>()
         case .priming:
-            return DemoViewControllerContainer<PrimingDemoView>(
+            return DemoViewController<PrimingDemoView>(
                 containmentOptions: .bottomSheet,
                 constrainToBottomSafeArea: false
             )

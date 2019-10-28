@@ -44,49 +44,49 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .searchResultMapView:
             return SearchResultMapViewDemoViewController()
         case .frontPageView:
-            return DemoViewControllerContainer<FrontpageViewDemoView>()
+            return DemoViewController<FrontpageViewDemoView>()
         case .emptyView:
-            return DemoViewControllerContainer<EmptyViewDemoView>()
+            return DemoViewController<EmptyViewDemoView>()
         case .popupView:
-            return DemoViewControllerContainer<PopupViewDemoView>()
+            return DemoViewController<PopupViewDemoView>()
         case .reportAdView:
-            return DemoViewControllerContainer<AdReporterDemoView>(dismissType: .dismissButton)
+            return DemoViewController<AdReporterDemoView>(dismissType: .dismissButton)
         case .reviewView:
-            return DemoViewControllerContainer<ReviewViewDemoView>()
+            return DemoViewController<ReviewViewDemoView>()
         case .registerView:
-            return DemoViewControllerContainer<RegisterViewDemoView>()
+            return DemoViewController<RegisterViewDemoView>()
         case .loginEntryView:
             return LoginEntryViewDemoViewController(constrainToBottomSafeArea: false)
         case .loginView:
-            return DemoViewControllerContainer<LoginViewDemoView>()
+            return DemoViewController<LoginViewDemoView>()
         case .consentToggleView:
-            return DemoViewControllerContainer<ConsentToggleViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
+            return DemoViewController<ConsentToggleViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .consentActionView:
-            return DemoViewControllerContainer<ConsentActionViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
+            return DemoViewController<ConsentActionViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .loadingView:
-            return DemoViewControllerContainer<LoadingViewDemoView>()
+            return DemoViewController<LoadingViewDemoView>()
         case .drumMachineView:
-            return DemoViewControllerContainer<DrumMachineDemoView>()
+            return DemoViewController<DrumMachineDemoView>()
         case .pianoView:
-            return DemoViewControllerContainer<PianoDemoView>(supportedInterfaceOrientations: .landscape)
+            return DemoViewController<PianoDemoView>(supportedInterfaceOrientations: .landscape)
         case .snowGlobeView:
-            return DemoViewControllerContainer<SnowGlobeDemoView>()
+            return DemoViewController<SnowGlobeDemoView>()
         case .soldView:
-            return DemoViewControllerContainer<SoldViewDemoView>()
+            return DemoViewController<SoldViewDemoView>()
         case .confirmationView:
-            return DemoViewControllerContainer<ConfirmationViewDemoView>()
+            return DemoViewController<ConfirmationViewDemoView>()
         case .fullscreenGallery:
             return FullscreenGalleryDemoViewController()
         case .contactFormView:
-            return DemoViewControllerContainer<ContactFormDemoView>()
+            return DemoViewController<ContactFormDemoView>()
         case .messageFormView:
             let bottomSheet = MessageFormBottomSheet(viewModel: MessageFormDemoViewModel())
             bottomSheet.messageFormDelegate = MessageFormDemoPresenter.shared
             return bottomSheet
         case .receiptView:
-            return DemoViewControllerContainer<ReceiptViewDemoView>()
+            return DemoViewController<ReceiptViewDemoView>()
         case .addressView:
-            return DemoViewControllerContainer<AddressViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
+            return DemoViewController<AddressViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .favoriteAdsList:
             return FavoriteAdsListDemoViewController(dismissType: .dismissButton, containmentOptions: .navigationController)
         case .favoriteFolderActionSheet:
@@ -114,7 +114,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
             bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
         case .splashView:
-            return DemoViewControllerContainer<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
+            return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
         case .popovers:
             return PopoversDemoViewController()
         }

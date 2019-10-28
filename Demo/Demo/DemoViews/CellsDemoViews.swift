@@ -21,23 +21,23 @@ public enum CellsDemoViews: String, CaseIterable {
     public var viewController: UIViewController {
         switch self {
         case .basicCell:
-            return DemoViewControllerContainer<BasicCellDemoView>(dismissType: .dismissButton)
+            return DemoViewController<BasicCellDemoView>(dismissType: .dismissButton)
         case .basicCellVariations:
-            return DemoViewControllerContainer<BasicCellVariationsDemoView>(dismissType: .dismissButton)
+            return DemoViewController<BasicCellVariationsDemoView>(dismissType: .dismissButton)
         case .checkboxCell:
-            return DemoViewControllerContainer<CheckboxCellDemoView>(dismissType: .dismissButton)
+            return DemoViewController<CheckboxCellDemoView>(dismissType: .dismissButton)
         case .checkboxSubtitleCell:
-            return DemoViewControllerContainer<CheckboxSubtitleCellDemoView>(dismissType: .dismissButton)
+            return DemoViewController<CheckboxSubtitleCellDemoView>(dismissType: .dismissButton)
         case .radioButtonCell:
-            return DemoViewControllerContainer<RadioButtonCellDemoView>(dismissType: .dismissButton)
+            return DemoViewController<RadioButtonCellDemoView>(dismissType: .dismissButton)
         case .heartSubtitleCell:
-            return DemoViewControllerContainer<HeartSubtitleCellDemoView>(dismissType: .dismissButton)
+            return DemoViewController<HeartSubtitleCellDemoView>(dismissType: .dismissButton)
         case .iconTitleCell:
-            return DemoViewControllerContainer<IconTitleCellDemoView>(dismissType: .dismissButton)
+            return DemoViewController<IconTitleCellDemoView>(dismissType: .dismissButton)
         case .remoteImageCell:
-            return DemoViewControllerContainer<RemoteImageCellDemoView>(dismissType: .dismissButton)
+            return DemoViewController<RemoteImageCellDemoView>(dismissType: .dismissButton)
         case .favoriteAdCell:
-            return DemoViewControllerContainer<FavoriteAdCellDemoView>(dismissType: .dismissButton)
+            return DemoViewController<FavoriteAdCellDemoView>(dismissType: .dismissButton)
         }
     }
 }

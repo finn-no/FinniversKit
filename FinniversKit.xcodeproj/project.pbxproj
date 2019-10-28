@@ -42,7 +42,7 @@
 		144959DB2122C4400084549F /* FinniversImageAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = 144959D92122C4400084549F /* FinniversImageAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		144959DC2122C4400084549F /* FinniversImageAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 144959DA2122C4400084549F /* FinniversImageAsset.m */; };
 		144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144959DF2122D8C20084549F /* AssetsDemoView.swift */; };
-		146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* DemoViewController.swift */; };
+		146D3C401FBE466D00124B76 /* BaseDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D3C3F1FBE466D00124B76 /* BaseDemoViewController.swift */; };
 		14A873D4220879870029DEA8 /* ConfirmationViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A873D3220879870029DEA8 /* ConfirmationViewDemoView.swift */; };
 		14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7CE212324C900A7230C /* FavoritesListViewCell.swift */; };
 		14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C6F7D0212324C900A7230C /* FavoritesListView.swift */; };
@@ -141,7 +141,7 @@
 		44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587020213FA361009187BE /* LoginViewDefaultData.swift */; };
 		44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44587022213FA361009187BE /* LoginViewDemoView.swift */; };
 		446EE15C2345A6AA00010818 /* SelectorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446EE15B2345A6AA00010818 /* SelectorTitleView.swift */; };
-		4474BC0F2344E10800AA38A0 /* DemoViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474BC0E2344E10800AA38A0 /* DemoViewControllerContainer.swift */; };
+		4474BC0F2344E10800AA38A0 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474BC0E2344E10800AA38A0 /* DemoViewController.swift */; };
 		447AFC1120984B6E000F793E /* FrontPageViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */; };
 		4483F97C234B3BFF00D726F1 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483F97B234B3BFF00D726F1 /* ScrollViewController.swift */; };
 		44877453234616C30096B510 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44877452234616C30096B510 /* Device.swift */; };
@@ -619,7 +619,7 @@
 		144959D92122C4400084549F /* FinniversImageAsset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinniversImageAsset.h; sourceTree = "<group>"; };
 		144959DA2122C4400084549F /* FinniversImageAsset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinniversImageAsset.m; sourceTree = "<group>"; };
 		144959DF2122D8C20084549F /* AssetsDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsDemoView.swift; sourceTree = "<group>"; };
-		146D3C3F1FBE466D00124B76 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		146D3C3F1FBE466D00124B76 /* BaseDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDemoViewController.swift; sourceTree = "<group>"; };
 		14A873D3220879870029DEA8 /* ConfirmationViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewDemoView.swift; sourceTree = "<group>"; };
 		14C6F7CE212324C900A7230C /* FavoritesListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListViewCell.swift; sourceTree = "<group>"; };
 		14C6F7D0212324C900A7230C /* FavoritesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesListView.swift; sourceTree = "<group>"; };
@@ -720,7 +720,7 @@
 		44587020213FA361009187BE /* LoginViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDefaultData.swift; sourceTree = "<group>"; };
 		44587022213FA361009187BE /* LoginViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewDemoView.swift; sourceTree = "<group>"; };
 		446EE15B2345A6AA00010818 /* SelectorTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorTitleView.swift; sourceTree = "<group>"; };
-		4474BC0E2344E10800AA38A0 /* DemoViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewControllerContainer.swift; sourceTree = "<group>"; };
+		4474BC0E2344E10800AA38A0 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		447AFC1020984B6E000F793E /* FrontPageViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontPageViewDemoView.swift; sourceTree = "<group>"; };
 		4483F979234B3BC500D726F1 /* ShadowScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowScrollView.swift; sourceTree = "<group>"; };
 		4483F97B234B3BFF00D726F1 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
@@ -2575,8 +2575,8 @@
 			isa = PBXGroup;
 			children = (
 				44FEBC0923322D4C009AC5E4 /* DemoViews */,
-				146D3C3F1FBE466D00124B76 /* DemoViewController.swift */,
-				4474BC0E2344E10800AA38A0 /* DemoViewControllerContainer.swift */,
+				146D3C3F1FBE466D00124B76 /* BaseDemoViewController.swift */,
+				4474BC0E2344E10800AA38A0 /* DemoViewController.swift */,
 				4577F61D201F3D54009CBAE8 /* DemoViewsTableViewController.swift */,
 				141F08C52123110B001DB145 /* DemoHelpers.swift */,
 				4443F9B0209D5ECE00E35719 /* Helpers.swift */,
@@ -4224,7 +4224,7 @@
 				44A0F0B022E20D2F00BCCF4C /* TweakableDemoView.swift in Sources */,
 				44A149F22137805C0053D5F7 /* SavedSearchesListViewDemoViewHelpers.swift in Sources */,
 				4458701D213FA353009187BE /* RegisterViewDefaultData.swift in Sources */,
-				146D3C401FBE466D00124B76 /* DemoViewController.swift in Sources */,
+				146D3C401FBE466D00124B76 /* BaseDemoViewController.swift in Sources */,
 				14A873D4220879870029DEA8 /* ConfirmationViewDemoView.swift in Sources */,
 				44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */,
 				F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */,
@@ -4262,7 +4262,7 @@
 				9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */,
 				44FEBC1223322D4C009AC5E4 /* ComponentDemoViews.swift in Sources */,
 				CF7C460E22257AE1001FB92C /* EarthHourDefaultData.swift in Sources */,
-				4474BC0F2344E10800AA38A0 /* DemoViewControllerContainer.swift in Sources */,
+				4474BC0F2344E10800AA38A0 /* DemoViewController.swift in Sources */,
 				45D7C57120494F77000E788F /* SwitchViewDemoView.swift in Sources */,
 				45B2E074207E184D00C68B92 /* InlineConsentDemoView.swift in Sources */,
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
