@@ -29,7 +29,7 @@ public enum RecyclingDemoViews: String, CaseIterable {
         case .notificationsListView:
             return DemoViewController<NotificationsListViewDemoView>()
         case .favoriteFoldersListView:
-            let viewController = BaseDemoViewController<FavoriteFoldersListDemoView>(constrainToBottomSafeArea: false)
+            let viewController = DemoViewController<FavoriteFoldersListDemoView>(constrainToBottomSafeArea: false)
             viewController.title = "Favoritter"
 
             let navigationController = NavigationController(rootViewController: viewController)
