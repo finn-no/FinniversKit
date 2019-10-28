@@ -40,7 +40,7 @@ class KlimabroletDemoViewController: BaseDemoViewController<UIView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        playgroundView?.backgroundColor = .black
+        playgroundView.backgroundColor = .black
 
         addChild(innerNavigationController)
         innerNavigationController.didMove(toParent: self)
