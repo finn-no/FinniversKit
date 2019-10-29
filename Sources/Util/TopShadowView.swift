@@ -5,7 +5,7 @@
 import UIKit
 
 public class TopShadowView: UIView {
-    static let maxShadowRadius: CGFloat = 3
+    public static let maxShadowRadius: CGFloat = 3
 
     // MARK: - Init
 
