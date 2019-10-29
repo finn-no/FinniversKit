@@ -1,9 +1,46 @@
 //
-//  AdConfirmationView.swift
-//  FinniversKit
-//
-//  Created by Saleh-Jan, Robin on 29/10/2019.
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class AdConfirmationView: UIView {
+    private lazy var confirmationObjectView: AdConfirmationObjectView = {
+        let view = AdConfirmationObjectView(withAutoLayout: true)
+        return view
+    }()
+
+    private lazy var confirmationSummaryView: AdConfirmationSummaryView? = {
+        let view = AdConfirmationSummaryView(withAutoLayout: true)
+        return view
+    }()
+
+    private lazy var actionButton: Button = {
+        let actionButton = Button(style: .callToAction, size: .normal, withAutoLayout: true)
+        return actionButton
+    }()
+
+    public var model: AdConfirmationViewModel? {
+        didSet {
+            confirmationObjectView.model = model?.objectViewModel
+            confirmationSummaryView?.model = model?.summaryViewModel
+            actionButton.setTitle(model?.completeActionLabel, for: .normal)
+        }
+    }
+
+    override init(frame: CGRect = .zero) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension AdConfirmationView {
+    func setup() {
+        addSubview(confirmationObjectView)
+        confirmationObjectView.fillInSuperview()
+    }
+}

@@ -1,9 +1,11 @@
 //
-//  AdConfirmationSummaryViewModel.swift
-//  FinniversKit
-//
-//  Created by Saleh-Jan, Robin on 29/10/2019.
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-import Foundation
+public protocol AdConfirmationSummaryViewModel {
+    var title: String? { get set }
+    var orderLines: [String] { get set }
+    var priceLabel: String { get set }
+    var priceText: String? { get set }
+    var priceValue: Int { get set }
+}
