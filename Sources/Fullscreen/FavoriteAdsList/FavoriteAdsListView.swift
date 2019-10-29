@@ -10,7 +10,8 @@ public protocol FavoriteAdsListViewDelegate: AnyObject {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectDeleteItemAt indexPath: IndexPath, sender: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectCommentForItemAt indexPath: IndexPath, sender: UIView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectSortingView sortingView: UIView)
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectShareButton button: UIButton)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectHeaderShareButton button: UIButton)
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectFooterShareButton button: UIButton)
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String)
     func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool)
@@ -80,7 +81,15 @@ public class FavoriteAdsListView: UIView {
 
     public var isShared = false {
         didSet {
-            tableHeaderView.shareButtonTitle = isShared ? viewModel.shareButtonTitle : ""
+            tableHeaderView.shareButtonTitle = isShared ? viewModel.headerShareButtonTitle : ""
+        }
+    }
+
+    public var isFooterShareButtonHidden = true {
+        didSet {
+            footerView.isHidden = isFooterShareButtonHidden
+            tableViewBottomConstraint.isActive = isFooterShareButtonHidden
+            tableViewFooterBottomConstraint.isActive = !isFooterShareButtonHidden
         }
     }
 
@@ -92,6 +101,8 @@ public class FavoriteAdsListView: UIView {
     private var sendScrollUpdates: Bool = true
     private var tableViewConstraints = [NSLayoutConstraint]()
     private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
+    private lazy var tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    private lazy var tableViewFooterBottomConstraint = tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor)
 
     private lazy var tableView: UITableView = {
         let tableView = TableView(withAutoLayout: true)
@@ -128,6 +139,14 @@ public class FavoriteAdsListView: UIView {
         return emptyView
     }()
 
+    private lazy var footerView: FooterButtonView = {
+        let view = FooterButtonView(withAutoLayout: true)
+        view.buttonTitle = viewModel.footerShareButtonTitle
+        view.isHidden = true
+        view.delegate = self
+        return view
+    }()
+
     // MARK: - Init
 
     public init(viewModel: FavoriteAdsListViewModel, isReadOnly: Bool = false) {
@@ -143,6 +162,8 @@ public class FavoriteAdsListView: UIView {
 
     private func setup() {
         addSubview(tableView)
+        addSubview(footerView)
+
         tableView.addSubview(emptySearchView)
         tableView.addSubview(emptyListView)
 
@@ -150,7 +171,11 @@ public class FavoriteAdsListView: UIView {
             tableViewTopConstraint,
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableViewBottomConstraint,
+
+            footerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            footerView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
 
         tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
@@ -164,6 +189,8 @@ public class FavoriteAdsListView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
+
+        footerView.updateShadow(using: tableView)
 
         if !didSetTableHeader {
             setTableHeader()
@@ -382,6 +409,8 @@ extension FavoriteAdsListView: UITableViewDelegate {
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        footerView.updateShadow(using: scrollView)
+
         if sendScrollUpdates {
             let isTitleViewVisible = scrollView.bounds.intersects(tableHeaderView.titleLabelFrame)
             delegate?.favoriteAdsListView(self, didUpdateTitleLabelVisibility: isTitleViewVisible)
@@ -474,7 +503,7 @@ extension FavoriteAdsListView: FavoriteAdsListTableHeaderDelegate {
     }
 
     func favoriteAdsListTableHeader(_ tableHeader: FavoriteAdsListTableHeader, didSelectShareButton button: UIButton) {
-        delegate?.favoriteAdsListView(self, didSelectShareButton: button)
+        delegate?.favoriteAdsListView(self, didSelectHeaderShareButton: button)
     }
 }
 
@@ -495,6 +524,14 @@ extension FavoriteAdsListView: UISearchBarDelegate {
 
         let emptyViewText = "\(viewModel.emptySearchViewBodyPrefix) \"\(searchText)\""
         emptySearchView.configure(withText: emptyViewText, buttonTitle: nil)
+    }
+}
+
+// MARK: - FooterButtonViewDelegate
+
+extension FavoriteAdsListView: FooterButtonViewDelegate {
+    public func footerButtonView(_ view: FooterButtonView, didSelectButton button: UIButton) {
+        delegate?.favoriteAdsListView(self, didSelectFooterShareButton: button)
     }
 }
 
