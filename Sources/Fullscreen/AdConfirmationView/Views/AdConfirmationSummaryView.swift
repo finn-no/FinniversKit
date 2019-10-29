@@ -2,7 +2,7 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-class AdConfirmationSummaryView: UIView {
+public class AdConfirmationSummaryView: UIView {
     private lazy var summaryWrapper: UIView = {
         let summaryWrapper = UIView(withAutoLayout: true)
         summaryWrapper.backgroundColor = .marble

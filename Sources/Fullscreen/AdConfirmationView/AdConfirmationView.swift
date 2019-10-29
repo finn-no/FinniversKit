@@ -4,7 +4,7 @@
 
 import UIKit
 
-class AdConfirmationView: UIView {
+public class AdConfirmationView: UIView {
     private lazy var confirmationObjectView: AdConfirmationObjectView = {
         let view = AdConfirmationObjectView(withAutoLayout: true)
         return view

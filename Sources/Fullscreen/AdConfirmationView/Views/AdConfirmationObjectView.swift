@@ -2,7 +2,7 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-class AdConfirmationObjectView: UIView {
+public class AdConfirmationObjectView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         return imageView
