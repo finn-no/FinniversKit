@@ -8,7 +8,7 @@ protocol PrimingFooterViewDelegate: AnyObject {
     func primingFooterViewDidSelectButton(_ view: PrimingFooterView)
 }
 
-final class PrimingFooterView: DynamicShadowView {
+final class PrimingFooterView: TopShadowView {
     // MARK: - Internal properties
 
     weak var delegate: PrimingFooterViewDelegate?

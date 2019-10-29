@@ -9,7 +9,7 @@ enum AdsSorting: String {
     case alphabetically = "Alfabetisk"
 }
 
-class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
+class FavoriteAdsListDemoView: UIView, Tweakable {
 
     // MARK: - Private properties
 
@@ -17,7 +17,6 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
     private let sectionDataSource = FavoriteAdsDemoDataSource()
     private var currentSorting: AdsSorting = .lastAdded
     private var folderTitle = "Mine funn"
-    private lazy var navigationTitleView = VisibilityDrivenTitleView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 44)))
 
     private lazy var favoritesListView: FavoriteAdsListView = {
         let view = FavoriteAdsListView(viewModel: .default)
@@ -27,7 +26,7 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
         view.title = folderTitle
         view.subtitle = "\(viewModels.count) favoritter"
         view.sortingTitle = currentSorting.rawValue
-        view.isFooterShareButtonHidden = true
+        view.isFooterShareButtonHidden = false
         return view
     }()
 
@@ -105,16 +104,21 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
 
     // MARK: - Lifecycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
     }
 
-    private func setup() {
-        view.addSubview(favoritesListView)
-        favoritesListView.fillInSuperview()
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
 
-        navigationItem.titleView = navigationTitleView
+    // MARK: - Private
+
+    private func setup() {
+        addSubview(favoritesListView)
+        favoritesListView.fillInSuperview()
         resetViewModels()
         resetHeader()
     }
@@ -135,7 +139,6 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
 
     private func setTitle(_ title: String) {
         favoritesListView.title = title
-        navigationTitleView.title = title
     }
 
     private func resetViewModels() {
@@ -152,7 +155,7 @@ class FavoriteAdsListDemoViewController: DemoViewController<UIView>, Tweakable {
 
 // MARK: - FavoriteAdsListViewDelegate
 
-extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDelegate {
+extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectItemAt indexPath: IndexPath) {}
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectMoreButton button: UIButton, at indexPath: IndexPath) {}
     func favoriteAdsListView(_ view: FavoriteAdsListView, didSelectHeaderShareButton button: UIButton) {}
@@ -185,14 +188,12 @@ extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDelegate {
         view.reloadData()
     }
 
-    func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool) {
-        navigationTitleView.setIsVisible(!isVisible)
-    }
+    func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool) {}
 }
 
 // MARK: - FavoriteAdsListViewDataSource
 
-extension FavoriteAdsListDemoViewController: FavoriteAdsListViewDataSource {
+extension FavoriteAdsListDemoView: FavoriteAdsListViewDataSource {
     func favoriteAdsListView(_ view: FavoriteAdsListView, titleForHeaderInSection section: Int) -> String? {
         let section = sectionDataSource.sections[section]
         return section.sectionTitle

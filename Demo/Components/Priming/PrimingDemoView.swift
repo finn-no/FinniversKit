@@ -61,6 +61,21 @@ extension PrimingViewModel {
                     icon: UIImage(named: .primingFavoritesSharing),
                     title: "Deling",
                     detailText: "Del dine favorittlister slik at andre kan se og følge med på listene."
+                ),
+                PrimingViewModel.Row(
+                    icon: UIImage(named: .primingFavoritesSearch),
+                    title: "Søk og sorter",
+                    detailText: "Finn frem ved å søke eller sortere dine favoritter."
+                ),
+                PrimingViewModel.Row(
+                    icon: UIImage(named: .primingFavoritesComments),
+                    title: "Notater",
+                    detailText: "Legg til små huskelapper på favorittene dine."
+                ),
+                PrimingViewModel.Row(
+                    icon: UIImage(named: .primingFavoritesSharing),
+                    title: "Deling",
+                    detailText: "Del dine favorittlister slik at andre kan se og følge med på listene."
                 )
             ]
         )
