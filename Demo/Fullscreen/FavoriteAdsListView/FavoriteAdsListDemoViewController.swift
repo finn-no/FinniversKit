@@ -26,7 +26,7 @@ class FavoriteAdsListDemoView: UIView, Tweakable {
         view.title = folderTitle
         view.subtitle = "\(viewModels.count) favoritter"
         view.sortingTitle = currentSorting.rawValue
-        view.isFooterShareButtonHidden = false
+        view.isFooterShareButtonHidden = true
         return view
     }()
 
@@ -37,7 +37,7 @@ class FavoriteAdsListDemoView: UIView, Tweakable {
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(false)
                 self?.resetHeader()
-                //self?.favoritesListView.isFooterShareButtonHidden = true
+                self?.favoritesListView.isFooterShareButtonHidden = true
             },
             TweakingOption(title: "Selection mode", description: "Title with 50 characters") { [weak self] in
                 self?.resetViewModels()
@@ -45,14 +45,14 @@ class FavoriteAdsListDemoView: UIView, Tweakable {
                 self?.favoritesListView.setEditing(false)
                 self?.resetHeader()
                 self?.setTitle("Veldig langt navn, ganske nøyaktig 50 tegn faktisk")
-                //self?.favoritesListView.isFooterShareButtonHidden = true
+                self?.favoritesListView.isFooterShareButtonHidden = true
             },
             TweakingOption(title: "Empty folder", description: "A folder with no favorites") { [weak self] in
                 self?.setReadOnly(false)
                 self?.setViewModels([])
                 self?.favoritesListView.setEditing(false)
                 self?.resetHeader()
-                //self?.favoritesListView.isFooterShareButtonHidden = true
+                self?.favoritesListView.isFooterShareButtonHidden = true
             },
             TweakingOption(title: "Edit mode", description: "None selected") { [weak self] in
                 self?.resetViewModels()
@@ -60,7 +60,7 @@ class FavoriteAdsListDemoView: UIView, Tweakable {
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(false, animated: false)
                 self?.resetHeader()
-                //self?.favoritesListView.isFooterShareButtonHidden = true
+                self?.favoritesListView.isFooterShareButtonHidden = true
             },
             TweakingOption(title: "Edit mode", description: "All selected") { [weak self] in
                 self?.resetViewModels()
@@ -68,7 +68,7 @@ class FavoriteAdsListDemoView: UIView, Tweakable {
                 self?.favoritesListView.setEditing(true)
                 self?.favoritesListView.selectAllRows(true, animated: false)
                 self?.resetHeader()
-                //self?.favoritesListView.isFooterShareButtonHidden = true
+                self?.favoritesListView.isFooterShareButtonHidden = true
             },
             TweakingOption(title: "Shared folder", description: "Personal shared folder") { [weak self] in
                 self?.resetViewModels()
@@ -76,28 +76,28 @@ class FavoriteAdsListDemoView: UIView, Tweakable {
                 self?.favoritesListView.setEditing(false)
                 self?.resetHeader()
                 self?.favoritesListView.isShared = true
-                //self?.favoritesListView.isFooterShareButtonHidden = true
+                self?.favoritesListView.isFooterShareButtonHidden = true
             },
             TweakingOption(title: "Read-only folder", description: "Default models") { [weak self] in
                 self?.resetViewModels()
                 self?.setReadOnly(true)
                 self?.favoritesListView.setEditing(false)
                 self?.resetHeader()
-                //self?.favoritesListView.isFooterShareButtonHidden = true
+                self?.favoritesListView.isFooterShareButtonHidden = true
             },
             TweakingOption(title: "Read-only folder", description: "No favorites") { [weak self] in
                 self?.setViewModels([])
                 self?.setReadOnly(true)
                 self?.favoritesListView.setEditing(false)
                 self?.resetHeader()
-                //self?.favoritesListView.isFooterShareButtonHidden = true
+                self?.favoritesListView.isFooterShareButtonHidden = true
             },
             TweakingOption(title: "Footer share button", description: "") { [weak self] in
                 self?.resetViewModels()
                 self?.setReadOnly(false)
                 self?.favoritesListView.setEditing(false)
                 self?.resetHeader()
-                //self?.favoritesListView.isFooterShareButtonHidden = true
+                self?.favoritesListView.isFooterShareButtonHidden = false
             }
         ]
     }()
