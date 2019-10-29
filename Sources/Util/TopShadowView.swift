@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class DynamicShadowView: UIView {
+public class TopShadowView: UIView {
     static let maxShadowRadius: CGFloat = 3
 
     // MARK: - Init
@@ -19,6 +19,16 @@ public class DynamicShadowView: UIView {
         setup()
     }
 
+    // MARK: - Overrides
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        // Make shadow to be on top
+        let radius = TopShadowView.maxShadowRadius
+        let rect = CGRect(x: 0, y: 0, width: bounds.width, height: radius)
+        layer.shadowPath = UIBezierPath(rect: rect).cgPath
+    }
+
     // MARK: - Shadow
 
     public func updateShadow(using scrollView: UIScrollView) {
@@ -30,7 +40,7 @@ public class DynamicShadowView: UIView {
         )
 
         let intersection = contentFrame.intersection(frame)
-        layer.shadowRadius = min(intersection.height * 0.2, DynamicShadowView.maxShadowRadius)
+        layer.shadowRadius = min(intersection.height * 0.2, TopShadowView.maxShadowRadius)
     }
 
     // MARK: - Setup

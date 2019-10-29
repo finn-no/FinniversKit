@@ -8,7 +8,7 @@ public protocol FooterButtonViewDelegate: AnyObject {
     func footerButtonView(_ view: FooterButtonView, didSelectButton button: UIButton)
 }
 
-public final class FooterButtonView: DynamicShadowView {
+public final class FooterButtonView: TopShadowView {
     // MARK: - Internal properties
 
     public weak var delegate: FooterButtonViewDelegate?
