@@ -239,6 +239,10 @@ public class FavoriteFoldersListView: UIView {
     // MARK: - Xmas button
 
     public func showXmasButton(withCalloutText text: String?, delay: TimeInterval = 1) {
+        guard xmasButton.isHidden else {
+            return
+        }
+
         setXmasButtonHidden(false, delay: delay, completion: {
             if let text = text {
                 self.xmasCalloutView.isHidden = false
@@ -252,11 +256,15 @@ public class FavoriteFoldersListView: UIView {
     }
 
     public func hideXmasButton(delay: TimeInterval = 0) {
-        xmasCalloutView.hide()
+        if !xmasCalloutView.isHidden {
+            xmasCalloutView.hide()
+        }
 
-        setXmasButtonHidden(true, delay: delay, completion: {
-            self.xmasCalloutView.isHidden = true
-        })
+        if !xmasButton.isHidden {
+            setXmasButtonHidden(true, delay: delay, completion: {
+                self.xmasCalloutView.isHidden = true
+            })
+        }
     }
 
     private func setXmasButtonHidden(_ hidden: Bool, delay: TimeInterval = 0, completion: @escaping () -> Void) {
