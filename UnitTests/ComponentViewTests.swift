@@ -206,4 +206,8 @@ class ComponentViewTests: XCTestCase {
     func testSelectorTitleView() {
         snapshot(.selectorTitleView)
     }
+
+    func testFooterButtonView() {
+        snapshot(.footerButtonView)
+    }
 }

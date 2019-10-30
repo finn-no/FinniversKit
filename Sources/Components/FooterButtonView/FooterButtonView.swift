@@ -4,16 +4,16 @@
 
 import UIKit
 
-protocol PrimingFooterViewDelegate: AnyObject {
-    func primingFooterViewDidSelectButton(_ view: PrimingFooterView)
+public protocol FooterButtonViewDelegate: AnyObject {
+    func footerButtonView(_ view: FooterButtonView, didSelectButton button: UIButton)
 }
 
-final class PrimingFooterView: DynamicShadowView {
+public final class FooterButtonView: TopShadowView {
     // MARK: - Internal properties
 
-    weak var delegate: PrimingFooterViewDelegate?
+    public weak var delegate: FooterButtonViewDelegate?
 
-    var buttonTitle: String? {
+    public var buttonTitle: String? {
         didSet {
             button.setTitle(buttonTitle, for: .normal)
         }
@@ -29,13 +29,14 @@ final class PrimingFooterView: DynamicShadowView {
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
     }
 
     // MARK: - Setup
@@ -57,6 +58,6 @@ final class PrimingFooterView: DynamicShadowView {
     // MARK: - Actions
 
     @objc private func handleButtonTap() {
-        delegate?.primingFooterViewDidSelectButton(self)
+        delegate?.footerButtonView(self, didSelectButton: button)
     }
 }
