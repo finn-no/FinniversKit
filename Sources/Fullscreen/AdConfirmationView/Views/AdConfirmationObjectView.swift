@@ -3,18 +3,16 @@
 //
 
 public class AdConfirmationObjectView: UIView {
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
+    private lazy var imageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
+        imageView.dataSource = self
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 8.0
         return imageView
     }()
 
-    private lazy var checkmarkView: RoundedImageView = {
-        let checkmarkView = RoundedImageView(withAutoLayout: true)
-        return checkmarkView
-    }()
-
     private lazy var titleLabel: Label = {
-        let titleLabel = Label(style: .title3Strong, withAutoLayout: true)
+        let titleLabel = Label(style: .title2, withAutoLayout: true)
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         return titleLabel
@@ -27,8 +25,13 @@ public class AdConfirmationObjectView: UIView {
         return bodyLabel
     }()
 
+    private let imageWidth: CGFloat = 72.0
+    private let fallbackImageWidth: CGFloat = 88.0
+
     public var model: AdConfirmationObjectViewModel? {
         didSet {
+            imageView.loadImage(for: model?.imageUrl?.absoluteString ?? "", imageWidth: imageWidth)
+
             titleLabel.text = model?.title
             bodyLabel.text = model?.body
         }
@@ -48,17 +51,14 @@ public class AdConfirmationObjectView: UIView {
 private extension AdConfirmationObjectView {
     func setup() {
         addSubview(imageView)
-        addSubview(checkmarkView)
         addSubview(titleLabel)
         addSubview(bodyLabel)
 
         NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
-            imageView.widthAnchor.constraint(equalToConstant: 72),
-            imageView.heightAnchor.constraint(equalToConstant: 72),
-
-            checkmarkView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor, constant: 56),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: imageWidth),
+            imageView.heightAnchor.constraint(equalToConstant: imageWidth),
 
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumLargeSpacing),
@@ -68,5 +68,55 @@ private extension AdConfirmationObjectView {
             bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
             bodyLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
         ])
+    }
+
+    func setupCheckmarkView() {
+        let checkmarkView: RoundedImageView = RoundedImageView(withAutoLayout: true)
+        checkmarkView.image = UIImage(named: .checkCircleFilledMini)
+        addSubview(checkmarkView)
+
+        NSLayoutConstraint.activate([
+            checkmarkView.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: 24),
+            checkmarkView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -.mediumLargeSpacing),
+            checkmarkView.widthAnchor.constraint(equalToConstant: 40),
+            checkmarkView.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+
+    func fallbackImageView() {
+        imageView.image = UIImage(named: .checkCircleFilledMini)
+
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: fallbackImageWidth),
+            imageView.heightAnchor.constraint(equalToConstant: fallbackImageWidth),
+        ])
+    }
+}
+
+extension AdConfirmationObjectView: RemoteImageViewDataSource {
+    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? { return nil }
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
+
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        guard let url = URL(string: imagePath) else {
+            completion(nil)
+            self.fallbackImageView()
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            DispatchQueue.main.async {
+                if let data = data, let image = UIImage(data: data) {
+                    completion(image)
+                    self.setupCheckmarkView()
+                } else {
+                    completion(nil)
+                    self.fallbackImageView()
+                }
+            }
+        }
+
+        task.resume()
+
     }
 }
