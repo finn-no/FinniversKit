@@ -6,7 +6,7 @@ import Foundation
 
 public struct FavoriteFolderActionViewModel {
     public enum Appearance {
-        case standard
+        case regular
         case defaultFolder
         case xmasFolder
     }
@@ -20,7 +20,7 @@ public struct FavoriteFolderActionViewModel {
     public let deleteText: String
 
     public init(
-        appearance: Appearance = .xmasFolder,
+        appearance: Appearance = .regular,
         editText: String,
         renameText: String,
         shareToggleText: String,
