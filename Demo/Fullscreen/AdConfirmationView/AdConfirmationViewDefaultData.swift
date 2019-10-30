@@ -8,7 +8,7 @@ import Foundation
 struct AdConfirmationViewDefaultData: AdConfirmationViewModel {
     var objectViewModel: AdConfirmationObjectViewModel = AdConfirmationObjectViewModelDefaultData()
     var summaryViewModel: AdConfirmationSummaryViewModel? = AdConfirmationSummaryViewModelDefaultData()
-    var feedbackViewModel: AdConfirmationFeedbackViewModel? = AdConfirmationFeedbackModelDefaultData()
+    var feedbackViewModel: AdConfirmationFeedbackViewModel?
     var completeActionLabel = "Gå til mine annonser"
 }
 
@@ -24,10 +24,4 @@ struct AdConfirmationSummaryViewModelDefaultData: AdConfirmationSummaryViewModel
     var priceLabel: String = "priceLabel"
     var priceText: String? = "priceText"
     var priceValue: Int = 0
-}
-
-struct AdConfirmationFeedbackModelDefaultData: AdConfirmationFeedbackViewModel {
-    var title = "title"
-    var url: URL = URL(string: "https://www.finn.no")!
-    var ratingParameterKey = "ratingParameterKey"
 }
