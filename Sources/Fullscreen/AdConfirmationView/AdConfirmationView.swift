@@ -41,6 +41,17 @@ public class AdConfirmationView: UIView {
 private extension AdConfirmationView {
     func setup() {
         addSubview(confirmationObjectView)
-        confirmationObjectView.fillInSuperview()
+        addSubview(actionButton)
+
+        NSLayoutConstraint.activate([
+            confirmationObjectView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            confirmationObjectView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3),
+            confirmationObjectView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            confirmationObjectView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+
+            actionButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.largeSpacing),
+            actionButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+            actionButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
+        ])
     }
 }
