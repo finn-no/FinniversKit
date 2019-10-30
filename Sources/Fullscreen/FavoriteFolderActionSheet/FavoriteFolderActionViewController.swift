@@ -72,9 +72,9 @@ public final class FavoriteFolderActionViewController: UIViewController {
         let constant = isShared ? rowHeight : 0
 
         switch self.viewModel.appearance {
-        case .full:
+        case .regular, .xmasFolder:
             return deleteButton.topAnchor.constraint(equalTo: shareToggleView.bottomAnchor, constant: constant)
-        case .minimal:
+        case .defaultFolder:
             return shareLinkView.topAnchor.constraint(equalTo: shareToggleView.topAnchor, constant: constant)
         }
     }()
@@ -163,8 +163,14 @@ public final class FavoriteFolderActionViewController: UIViewController {
             shareLinkView.heightAnchor.constraint(equalToConstant: rowHeight)
         ]
 
+        let deleteButtonConstraints = [
+            deleteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            deleteButton.heightAnchor.constraint(equalToConstant: rowHeight)
+        ]
+
         switch viewModel.appearance {
-        case .full:
+        case .regular:
             view.addSubview(changeNameButton)
             view.addSubview(deleteButton)
 
@@ -175,16 +181,19 @@ public final class FavoriteFolderActionViewController: UIViewController {
                 changeNameButton.heightAnchor.constraint(equalToConstant: rowHeight),
 
                 shareToggleView.topAnchor.constraint(equalTo: changeNameButton.bottomAnchor),
-                shareLinkView.bottomAnchor.constraint(equalTo: deleteButton.topAnchor),
-
-                deleteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                deleteButton.heightAnchor.constraint(equalToConstant: rowHeight)
-            ])
-        case .minimal:
+                shareLinkView.bottomAnchor.constraint(equalTo: deleteButton.topAnchor)
+            ] + deleteButtonConstraints)
+        case .defaultFolder:
             constraints.append(contentsOf: [
                 shareToggleView.topAnchor.constraint(equalTo: editButton.bottomAnchor)
             ])
+        case .xmasFolder:
+            view.addSubview(deleteButton)
+
+            constraints.append(contentsOf: [
+                shareToggleView.topAnchor.constraint(equalTo: editButton.bottomAnchor),
+                shareLinkView.bottomAnchor.constraint(equalTo: deleteButton.topAnchor)
+            ] + deleteButtonConstraints)
         }
 
         constraints.append(animatingConstraint)
@@ -194,7 +203,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
     private func updateSeparators() {
         editButton.isSeparatorHidden = false
         changeNameButton.isSeparatorHidden = false
-        shareToggleView.isSeparatorHidden = viewModel.appearance == .minimal || isShared
+        shareToggleView.isSeparatorHidden = viewModel.appearance == .defaultFolder || isShared
     }
 
     // MARK: - Actions
@@ -225,10 +234,12 @@ extension FavoriteFolderActionViewController: FavoriteFolderShareLinkViewDelegat
 private extension FavoriteFolderActionViewModel.Appearance {
     var actions: Set<FavoriteFolderAction> {
         switch self {
-        case .full:
+        case .regular:
             return Set(FavoriteFolderAction.allCases)
-        case .minimal:
+        case .defaultFolder:
             return Set([.edit, .toggleSharing, .shareLink])
+        case .xmasFolder:
+            return Set([.edit, .toggleSharing, .shareLink, .delete])
         }
     }
 }
