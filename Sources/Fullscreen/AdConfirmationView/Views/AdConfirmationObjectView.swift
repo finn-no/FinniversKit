@@ -39,7 +39,6 @@ public class AdConfirmationObjectView: UIView {
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
-        backgroundColor = .bgPrimary
         setup()
     }
 
