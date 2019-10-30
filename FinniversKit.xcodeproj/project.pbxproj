@@ -499,7 +499,6 @@
 		DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */; };
 		DAC1EC4E21C1297500F4FEC4 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1EC4D21C1297500F4FEC4 /* BalloonView.swift */; };
 		DAC65FBB21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC65FBA21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift */; };
-		DAC7DCAF215386E4004602A3 /* SettingsViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA521538590004602A3 /* SettingsViewDemoView.swift */; };
 		DAC7DCB0215386E7004602A3 /* ConsentToggleViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7DCA7215385A8004602A3 /* ConsentToggleViewDemoView.swift */; };
 		DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */; };
 		DAD0D48F210735060091DD4D /* RadiobuttonAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */; };
@@ -1087,7 +1086,6 @@
 		DAC1EC4D21C1297500F4FEC4 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		DAC1EC5021C1322900F4FEC4 /* NewYearsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearsView.swift; sourceTree = "<group>"; };
 		DAC65FBA21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetMechanicsDemoViewController.swift; sourceTree = "<group>"; };
-		DAC7DCA521538590004602A3 /* SettingsViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewDemoView.swift; sourceTree = "<group>"; };
 		DAC7DCA7215385A8004602A3 /* ConsentToggleViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentToggleViewDemoView.swift; sourceTree = "<group>"; };
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -3494,7 +3492,6 @@
 				CF8F023C21DCD4E6004C4042 /* Favorites */,
 				CF8F023F21DCD567004C4042 /* Notifications */,
 				CF8F023E21DCD539004C4042 /* SavedSearches */,
-				CF8F023B21DCD4D4004C4042 /* Settings */,
 				F26852DD21F754A0000978C8 /* UserAds */,
 			);
 			path = ListViews;
@@ -3508,14 +3505,6 @@
 				CFFDF89422F3117500FE68EA /* NeighborhoodProfile */,
 			);
 			path = GridViews;
-			sourceTree = "<group>";
-		};
-		CF8F023B21DCD4D4004C4042 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				DAC7DCA521538590004602A3 /* SettingsViewDemoView.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		CF8F023C21DCD4E6004C4042 /* Favorites */ = {
@@ -4329,7 +4318,6 @@
 				8961C687225748C70007A8DC /* NativeAdvertDemoView.swift in Sources */,
 				CF15D9B3215B94FC004F5F02 /* FloatingButtonDemoView.swift in Sources */,
 				144959E02122D8C20084549F /* AssetsDemoView.swift in Sources */,
-				DAC7DCAF215386E4004602A3 /* SettingsViewDemoView.swift in Sources */,
 				CFCDDA5F22731D60005E1F4A /* CalloutDemoView.swift in Sources */,
 				44A149F12137805C0053D5F7 /* SavedSearchesListViewDemoView.swift in Sources */,
 				62AAB23C2327901D007766E6 /* RadioButtonCellDemoView.swift in Sources */,
