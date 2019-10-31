@@ -351,6 +351,12 @@ public class FavoriteAdsListView: UIView {
 
 extension FavoriteAdsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let isLastCell = indexPath.row == (self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1)
+
+        if isLastCell {
+            cell.separatorInset = .leadingInset(.greatestFiniteMagnitude)
+        }
+
         if let cell = cell as? FavoriteAdTableViewCell {
             cell.loadImage()
         }
