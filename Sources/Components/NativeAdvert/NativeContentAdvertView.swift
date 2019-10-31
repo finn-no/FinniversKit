@@ -114,9 +114,9 @@ private extension NativeContentAdvertView {
             logoImageView.heightAnchor.constraint(equalToConstant: logoImageSize),
 
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: logoImageView.leadingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: logoImageView.leadingAnchor, constant: -.mediumLargeSpacing),
             titleLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: .mediumSpacing),
-            titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor, constant: -.mediumSpacing)
+            titleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -.mediumSpacing)
         ])
     }
 

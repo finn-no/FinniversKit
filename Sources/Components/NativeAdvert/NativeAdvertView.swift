@@ -20,65 +20,60 @@ public final class NativeAdvertView: UIView {
     private let sponsoredByPaddingTop: CGFloat = 5
     private let sponsoredByInset: CGFloat = 3
 
+    // See specification on:
+    // https://annonseweb.schibsted.no/nb-no/product/finn-native-ads-16031
+    private let imageAspectRatio: CGFloat = (1200.0 / 627)
+
     // MARK: - UI properties
 
     private lazy var contentView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(withAutoLayout: true)
         view.setContentHuggingPriority(.required, for: .horizontal)
         view.setContentHuggingPriority(.required, for: .vertical)
         return view
     }()
 
     private lazy var mainImageView: UIImageView = {
-        let imageView = ResizeableImageView(frame: .zero)
-        imageView.delegate = self
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
         return imageView
     }()
 
-    private var imageViewAspectRatioConstraint: NSLayoutConstraint?
-
     private lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
+        let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .iconPrimary
         return imageView
     }()
 
     private lazy var bottomContainerView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(withAutoLayout: true)
         view.setContentCompressionResistancePriority(.required, for: .vertical)
         view.setContentHuggingPriority(.required, for: .horizontal)
         return view
     }()
 
     private lazy var sponsoredByLabel: UILabel = {
-        let label = UILabel(frame: .zero)
+        let label = UILabel(withAutoLayout: true)
         label.numberOfLines = 1
         label.textColor = .textToast
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         label.setContentHuggingPriority(.required, for: .horizontal)
         return label
     }()
 
     private lazy var sponsoredByBackgroundView: UIView = {
-        let view = UIView(frame: .zero)
+        let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgAlert
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private lazy var titleLabel: UILabel = {
-        let label = UILabel(frame: .zero)
+        let label = UILabel(withAutoLayout: true)
         label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingTail
         label.textColor = .textPrimary
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
@@ -136,22 +131,22 @@ private extension NativeAdvertView {
         bottomContainerView.addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
-            contentView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
-            contentView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            contentView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
             contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
             contentView.widthAnchor.constraint(lessThanOrEqualToConstant: containerMaxWidth),
-            contentView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
 
             mainImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: containerMargin),
-            mainImageView.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: containerMargin),
-            mainImageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -containerMargin),
-            mainImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: containerMargin),
+            mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -containerMargin),
+            mainImageView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: -sponsoredByPaddingTop),
+            mainImageView.heightAnchor.constraint(equalTo: mainImageView.widthAnchor, multiplier: 1.0 / imageAspectRatio),
 
             settingsButton.topAnchor.constraint(equalTo: mainImageView.topAnchor),
             settingsButton.leadingAnchor.constraint(equalTo: mainImageView.leadingAnchor),
 
-            mainImageView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: -sponsoredByPaddingTop),
             bottomContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: containerMargin),
             bottomContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -containerMargin),
             bottomContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -containerMargin),
@@ -216,30 +211,5 @@ private extension NativeAdvertView {
 
     func sponsoredByFont(withSize size: CGFloat) -> UIFont {
         return UIFont.body.withSize(size)
-    }
-}
-
-extension NativeAdvertView: ResizeableImageViewDelegate {
-    fileprivate func resizeableImageView(_ imageView: ResizeableImageView, didChangeImage image: UIImage?) {
-        guard let image = image, imageViewAspectRatioConstraint == nil else {
-            return
-        }
-        let widthConstraint = imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: image.size.width / image.size.height)
-        NSLayoutConstraint.activate([widthConstraint])
-        imageViewAspectRatioConstraint = widthConstraint
-    }
-}
-
-private protocol ResizeableImageViewDelegate: AnyObject {
-    func resizeableImageView(_ imageView: ResizeableImageView, didChangeImage image: UIImage?)
-}
-
-private class ResizeableImageView: UIImageView {
-    weak var delegate: ResizeableImageViewDelegate?
-
-    override var image: UIImage? {
-        didSet {
-            delegate?.resizeableImageView(self, didChangeImage: image)
-        }
     }
 }
