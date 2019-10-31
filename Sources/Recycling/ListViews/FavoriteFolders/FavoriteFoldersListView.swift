@@ -308,7 +308,7 @@ public class FavoriteFoldersListView: UIView {
 
         tableView.addSubview(emptyView)
 
-        let xmasButtonButtom: CGFloat = max(20, 12 + windowSafeAreaInsets.bottom)
+        let xmasButtonButtom: CGFloat = max(20, windowSafeAreaInsets.bottom)
 
         NSLayoutConstraint.activate([
             searchBarTop,
