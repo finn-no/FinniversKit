@@ -101,7 +101,7 @@ public class FavoriteAdsListView: UIView {
     private var tableViewConstraints = [NSLayoutConstraint]()
     private var contentSizeObserver: NSKeyValueObservation?
     private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
-    private lazy var tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+    private lazy var tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
     private lazy var tableViewFooterBottomConstraint = tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor)
 
     private lazy var tableView: UITableView = {
