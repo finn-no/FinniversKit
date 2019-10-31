@@ -83,7 +83,7 @@ public final class PrimingView: UIView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor),
 
-            footerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            footerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -windowSafeAreaInsets.bottom),
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])

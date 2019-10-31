@@ -35,7 +35,7 @@ final class FooterButtonDemoView: UIView {
         NSLayoutConstraint.activate([
             view.leadingAnchor.constraint(equalTo: leadingAnchor),
             view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: bottomAnchor)
+            view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
