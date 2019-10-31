@@ -100,7 +100,7 @@ public class FavoriteAdsListView: UIView {
     private var sendScrollUpdates: Bool = true
     private var tableViewConstraints = [NSLayoutConstraint]()
     private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
-    private lazy var tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    private lazy var tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
     private lazy var tableViewFooterBottomConstraint = tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor)
 
     private lazy var tableView: UITableView = {
@@ -172,7 +172,7 @@ public class FavoriteAdsListView: UIView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableViewBottomConstraint,
 
-            footerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            footerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
