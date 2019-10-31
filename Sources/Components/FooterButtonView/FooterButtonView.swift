@@ -48,7 +48,7 @@ public final class FooterButtonView: TopShadowView {
         let insets = UIEdgeInsets(
             top: .mediumLargeSpacing,
             leading: .mediumLargeSpacing,
-            bottom: -.largeSpacing - windowSafeAreaInsets.bottom,
+            bottom: -.mediumLargeSpacing,
             trailing: -.mediumLargeSpacing
         )
 
