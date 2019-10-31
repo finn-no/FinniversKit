@@ -99,6 +99,7 @@ public class FavoriteAdsListView: UIView {
     private var didSetTableHeader = false
     private var sendScrollUpdates: Bool = true
     private var tableViewConstraints = [NSLayoutConstraint]()
+    private var contentSizeObserver: NSKeyValueObservation?
     private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
     private lazy var tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
     private lazy var tableViewFooterBottomConstraint = tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor)
@@ -157,6 +158,11 @@ public class FavoriteAdsListView: UIView {
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
+    deinit {
+        contentSizeObserver?.invalidate()
+        contentSizeObserver = nil
+    }
+
     // MARK: - Setup
 
     private func setup() {
@@ -182,14 +188,16 @@ public class FavoriteAdsListView: UIView {
         emptyListView.configure(withImage: viewModel.emptyListViewImage,
                                 title: viewModel.emptyListViewTitle,
                                 body: viewModel.emptyListViewBody)
+
+        contentSizeObserver = tableView.observe(\UITableView.contentSize, options: [.new], changeHandler: { [weak self] tableView, _ in
+            self?.footerView.updateShadow(using: tableView)
+        })
     }
 
     // MARK: - Overrides
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-
-        footerView.updateShadow(using: tableView)
 
         if !didSetTableHeader {
             setTableHeader()
