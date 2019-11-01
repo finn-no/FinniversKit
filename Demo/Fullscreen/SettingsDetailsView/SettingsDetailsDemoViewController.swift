@@ -54,34 +54,28 @@ final class SettingsDetailsDemoViewController: UIViewController {
         return detailsView
     }()
 
-    lazy var bottomSheet: BottomSheet = {
-        view.layoutIfNeeded()
-        let contentHeight = settingsDetailsView.contentSize.height + 20
-
-        let bottomSheet = BottomSheet(
-            rootViewController: self,
-            height: .init(
-                compact: contentHeight,
-                expanded: contentHeight
-            )
-        )
-
-        return bottomSheet
-    }()
+    weak var bottomSheet: BottomSheet?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(settingsDetailsView)
         settingsDetailsView.fillInSuperview()
     }
+
+    var contentSize: CGSize {
+        CGSize(
+            width: settingsDetailsView.contentSize.width,
+            height: settingsDetailsView.contentSize.height + 20
+        )
+    }
 }
 
 extension SettingsDetailsDemoViewController: SettingsDetailsViewDelegate {
     func settingsDetailsView(_ detailsView: SettingsDetailsView, didChangeTo state: SettingsDetailsView.State, with model: SettingsDetailsViewModel) {
         view.layoutIfNeeded()
-        let contentHeight = settingsDetailsView.contentSize.height + 20
+        let contentHeight = contentSize.height
         let height = min(contentHeight, BottomSheet.Height.defaultFilterHeight.expanded)
-        bottomSheet.height = .init(compact: height, expanded: height)
+        bottomSheet?.height = .init(compact: height, expanded: height)
     }
 
     func settingsDetailsView(_ detailsView: SettingsDetailsView, didTapPrimaryButtonWith model: SettingsDetailsViewModel) {

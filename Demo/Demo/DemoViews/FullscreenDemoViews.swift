@@ -113,8 +113,20 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .popovers:
             return PopoversDemoViewController()
         case .settingsDetails:
-            let container = SettingsDetailsDemoViewController()
-            return container.bottomSheet
+            let viewController = SettingsDetailsDemoViewController()
+            viewController.view.layoutIfNeeded()
+            let contentHeight = viewController.contentSize.height
+
+            let bottomSheet = BottomSheet(
+                rootViewController: viewController,
+                height: .init(
+                    compact: contentHeight,
+                    expanded: contentHeight
+                )
+            )
+
+            viewController.bottomSheet = bottomSheet
+            return bottomSheet
         }
     }
 }
