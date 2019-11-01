@@ -4,8 +4,18 @@
 
 import Foundation
 
-public protocol SettingsViewCellModel {
-    var title: String { get }
-    var status: String? { get set }
-    var hasChevron: Bool { get }
+public protocol SettingsViewCellModel: BasicTableViewCellViewModel {}
+
+extension SettingsViewCellModel {
+    public var subtitle: String? {
+        return nil
+    }
+
+    public var detailText: String? {
+        return nil
+    }
+
+    public var hasChevron: Bool {
+        return true
+    }
 }
