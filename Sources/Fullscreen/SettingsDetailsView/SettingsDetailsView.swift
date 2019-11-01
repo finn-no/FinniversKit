@@ -84,7 +84,7 @@ public class SettingsDetailsView: UIView {
         scrollView.contentInset = UIEdgeInsets(
             top: 0,
             left: 0,
-            bottom: bottomInset + 44 + .largeSpacing,
+            bottom: scrollViewBottomInset,
             right: 0
         )
 
@@ -115,18 +115,18 @@ public class SettingsDetailsView: UIView {
 public extension SettingsDetailsView {
     func configure(with model: SettingsDetailsViewModel, animated: Bool = false) {
         self.model = model
+        iconView.image = model.icon
+        titleLabel.text = model.title
+        primaryButton.setTitle(model.primaryButtonTitle, for: .normal)
+        primaryButton.style = model.primaryButtonStyle
+        secondaryButton.isHidden = model.secondaryButtonTitle(for: state) == nil
+        secondaryButton.setTitle(model.secondaryButtonTitle(for: state), for: .normal)
 
         UIView.transition(
-            with: self,
-            duration: animated ? 0.3 : 0,
+            with: textLabel,
+            duration: animated ? 0.2 : 0,
             options: .transitionCrossDissolve,
             animations: {
-                self.iconView.image = model.icon
-                self.titleLabel.text = model.title
-                self.primaryButton.setTitle(model.primaryButtonTitle, for: .normal)
-                self.primaryButton.style = model.primaryButtonStyle
-                self.secondaryButton.isHidden = model.secondaryButtonTitle(for: self.state) == nil
-                self.secondaryButton.setTitle(model.secondaryButtonTitle(for: self.state), for: .normal)
                 self.textLabel.text = model.text(for: self.state)
                 self.textLabel.textAlignment = model.textAlignment(for: self.state)
             }
@@ -136,7 +136,7 @@ public extension SettingsDetailsView {
     var contentSize: CGSize {
         CGSize(
             width: scrollView.contentSize.width,
-            height: scrollView.contentSize.height + bottomInset + 44
+            height: scrollView.contentSize.height + scrollViewBottomInset
         )
     }
 }
@@ -149,6 +149,10 @@ extension SettingsDetailsView: UIScrollViewDelegate {
 
 // MARK: - Private methods
 private extension SettingsDetailsView {
+    var scrollViewBottomInset: CGFloat {
+        bottomInset + 44 + .largeSpacing
+    }
+
     var bottomInset: CGFloat {
         UIView.windowSafeAreaInsets.bottom + .mediumLargeSpacing
     }
@@ -164,7 +168,7 @@ private extension SettingsDetailsView {
         configure(with: model, animated: true)
         delegate?.settingsDetailsView(self, didChangeTo: state, with: model)
 
-        superview?.layoutIfNeeded()
+        layoutIfNeeded()
         shadowView.updateShadow(using: scrollView)
     }
 

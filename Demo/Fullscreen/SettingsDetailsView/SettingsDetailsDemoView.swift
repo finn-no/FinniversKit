@@ -45,31 +45,43 @@ private struct DemoViewModel: SettingsDetailsViewModel {
     }
 }
 
-class SettingsDetailsDemoView: UIView {
+final class SettingsDetailsDemoViewController: UIViewController {
 
     private lazy var settingsDetailsView: SettingsDetailsView = {
         let detailsView = SettingsDetailsView(withAutoLayout: true)
+        detailsView.configure(with: DemoViewModel())
         detailsView.delegate = self
         return detailsView
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    lazy var bottomSheet: BottomSheet = {
+        view.layoutIfNeeded()
+        let contentHeight = settingsDetailsView.contentSize.height + 20
 
-        addSubview(settingsDetailsView)
+        let bottomSheet = BottomSheet(
+            rootViewController: self,
+            height: Self(
+                compact: contentHeight,
+                expanded: contentHeight
+            )
+        )
+
+        return bottomSheet
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(settingsDetailsView)
         settingsDetailsView.fillInSuperview()
-        settingsDetailsView.configure(with: DemoViewModel())
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
-extension SettingsDetailsDemoView: SettingsDetailsViewDelegate {
+extension SettingsDetailsDemoViewController: SettingsDetailsViewDelegate {
     func settingsDetailsView(_ detailsView: SettingsDetailsView, didChangeTo state: SettingsDetailsView.State, with model: SettingsDetailsViewModel) {
-        print("Did change to state:\n\t- \(state)\nwith model:\n\t- \(model)")
-        detailsView.configure(with: model)
+        view.layoutIfNeeded()
+        let contentHeight = settingsDetailsView.contentSize.height + 20
+        let height = min(contentHeight, BottomSheet.Height.defaultFilterHeight.expanded)
+        bottomSheet.height = .init(compact: height, expanded: height)
     }
 
     func settingsDetailsView(_ detailsView: SettingsDetailsView, didTapPrimaryButtonWith model: SettingsDetailsViewModel) {

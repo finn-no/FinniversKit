@@ -113,7 +113,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .popovers:
             return PopoversDemoViewController()
         case .settingsDetails:
-            return DemoViewController<SettingsDetailsDemoView>()
+            let container = SettingsDetailsDemoViewController()
+            return container.bottomSheet
         }
     }
 }
