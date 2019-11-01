@@ -60,7 +60,7 @@ final class SettingsDetailsDemoViewController: UIViewController {
 
         let bottomSheet = BottomSheet(
             rootViewController: self,
-            height: Self(
+            height: .init(
                 compact: contentHeight,
                 expanded: contentHeight
             )
