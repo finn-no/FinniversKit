@@ -20,7 +20,7 @@ class SettingsViewToggleCell: SettingsViewCell {
 
     private lazy var uiswitch: UISwitch = {
         let toggle = UISwitch(withAutoLayout: true)
-        toggle.onTintColor = .primaryBlue
+        toggle.onTintColor = .btnPrimary
         toggle.addTarget(self, action: #selector(handleValueChanged(toggle:)), for: .valueChanged)
         return toggle
     }()
