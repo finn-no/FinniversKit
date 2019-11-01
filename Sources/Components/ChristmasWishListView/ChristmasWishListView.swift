@@ -106,8 +106,10 @@ public class ChristmasWishListView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        secondPageView.transform = CGAffineTransform(translationX: bounds.width, y: 0)
-        secondPageButton.transform = CGAffineTransform(translationX: bounds.width, y: 0)
+        if firstPageView.transform == .identity {
+            secondPageView.transform = CGAffineTransform(translationX: bounds.width, y: 0)
+            secondPageButton.transform = CGAffineTransform(translationX: bounds.width, y: 0)
+        }
     }
 
     // MARK: - Public methods

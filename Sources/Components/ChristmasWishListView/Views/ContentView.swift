@@ -36,6 +36,7 @@ extension ChristmasWishListView {
 
         private lazy var accessoryButton: UIButton = {
             let button = Button(style: .link, size: .small, withAutoLayout: true)
+            button.titleLabel?.font = .captionStrong
             button.titleLabel?.numberOfLines = 0
             button.titleLabel?.adjustsFontForContentSizeCategory = true
             button.addTarget(self, action: #selector(handleTapOnAccessoryButton), for: .touchUpInside)
