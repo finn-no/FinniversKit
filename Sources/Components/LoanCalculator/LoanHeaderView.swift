@@ -62,7 +62,8 @@ class LoanHeaderView: UIView {
 
     private lazy var logoImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
         imageView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return imageView

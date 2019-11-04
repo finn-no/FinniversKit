@@ -15,8 +15,9 @@ open class BasicTableViewItem: BasicTableViewCellViewModel {
     open var hasChevron: Bool
     open var isEnabled: Bool = true
 
-    public init(title: String) {
+    public init(title: String, subtitle: String? = nil) {
         self.title = title
+        self.subtitle = subtitle
         self.hasChevron = false
     }
 }
