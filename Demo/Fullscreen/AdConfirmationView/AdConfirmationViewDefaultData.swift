@@ -15,13 +15,14 @@ struct AdConfirmationViewDefaultData: AdConfirmationViewModel {
 struct AdConfirmationObjectViewModelDefaultData: AdConfirmationObjectViewModel {
     var imageUrl: URL? = URL(string: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg")
     var title: String = "Fiks ferdig!"
-    var body: String? = "Om ett til to minutter er annosnen synlig på FINN"
+    var body: String? = "Om ett til to minutter er annonsen synlig på FINN"
 }
 
 struct AdConfirmationSummaryViewModelDefaultData: AdConfirmationSummaryViewModel {
     var title: String? = "Ditt kjøp"
-    var orderLines: [String] = ["Torgetannonse"]
-    var priceLabel: String = "Totalsum"
+    var orderLines: [String] = ["Torget annonse", "Bil annonse", "Annonse", "Tan med meg bro"]
+//    var orderLines: [String] = ["Torget annonse", "test"]
+    var priceLabel: String = "Total"
     var priceText: String? = "Gratis"
     var priceValue: Int = 100000
 }

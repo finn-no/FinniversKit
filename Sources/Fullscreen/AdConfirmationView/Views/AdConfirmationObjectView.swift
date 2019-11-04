@@ -25,12 +25,15 @@ public class AdConfirmationObjectView: UIView {
         return bodyLabel
     }()
 
-    private let imageWidth: CGFloat = 72.0
-    private let fallbackImageWidth: CGFloat = 88.0
+    private let imageSize: CGFloat = 72.0
+    private let fallbackImageSize: CGFloat = 88.0
+
+    private var imageWidthConstraint: NSLayoutConstraint?
+    private var imageHeightConstraint: NSLayoutConstraint?
 
     public var model: AdConfirmationObjectViewModel? {
         didSet {
-            imageView.loadImage(for: model?.imageUrl?.absoluteString ?? "", imageWidth: imageWidth)
+            imageView.loadImage(for: model?.imageUrl?.absoluteString ?? "", imageWidth: imageSize)
 
             titleLabel.text = model?.title
             bodyLabel.text = model?.body
@@ -53,11 +56,15 @@ private extension AdConfirmationObjectView {
         addSubview(titleLabel)
         addSubview(bodyLabel)
 
+        imageWidthConstraint = imageView.widthAnchor.constraint(equalToConstant: imageSize)
+        imageHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageSize)
+        guard let imageWidth = imageWidthConstraint, let imageHeight = imageHeightConstraint else { return }
+
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: imageWidth),
-            imageView.heightAnchor.constraint(equalToConstant: imageWidth),
+            imageWidth,
+            imageHeight,
 
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumLargeSpacing),
@@ -84,11 +91,8 @@ private extension AdConfirmationObjectView {
 
     func fallbackImageView() {
         imageView.image = UIImage(named: .checkCircleFilledMini)
-
-        NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: fallbackImageWidth),
-            imageView.heightAnchor.constraint(equalToConstant: fallbackImageWidth),
-        ])
+        imageWidthConstraint?.constant = fallbackImageSize
+        imageHeightConstraint?.constant = fallbackImageSize
     }
 }
 

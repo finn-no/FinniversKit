@@ -11,10 +11,7 @@ public class CheckmarkTitleView: UIView {
         return imageView
     }()
 
-    private lazy var titleLabel: Label = {
-        let label = Label(style: .body, withAutoLayout: true)
-        return label
-    }()
+    private lazy var titleLabel: Label = Label(style: .body, withAutoLayout: true)
 
     public init(title: String, withAutoLayout: Bool = false) {
         super.init(frame: .zero)
