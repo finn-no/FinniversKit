@@ -179,7 +179,7 @@ class FullscreenGalleryOverlayView: UIView {
     private func setCaptionLabel(index: Int) {
         var caption = viewModel?.imageCaptions[safe: index] ?? ""
 
-        if let count = viewModel?.imageUrls.count, count > 1 {
+        if let count = viewModel?.imageUrls.count {
             caption += " (\(index + 1)/\(count))"
         }
 
