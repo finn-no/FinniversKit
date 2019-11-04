@@ -171,6 +171,7 @@ final class FavoriteAdView: UIView {
             $0.isHidden = true
         }
 
+        commentView.configure(withText: nil)
         commentView.isHidden = true
     }
 
