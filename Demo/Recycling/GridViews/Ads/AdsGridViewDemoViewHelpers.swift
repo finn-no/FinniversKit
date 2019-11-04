@@ -14,6 +14,7 @@ public struct Ad: AdsGridViewModel {
     public let imagePath: String?
     public let imageSize: CGSize
     public var iconImage: UIImage?
+    public var ribbonTitle: String?
     public let title: String
     public let subtitle: String?
     public var accessory: String?
@@ -51,6 +52,7 @@ public struct AdFactory {
         imagePath: nil,
         imageSize: .zero,
         iconImage: nil,
+        ribbonTitle: nil,
         title: "Google Ad",
         subtitle: nil,
         accessory: nil,
@@ -72,6 +74,7 @@ public struct AdFactory {
                 imagePath: imageSource.path,
                 imageSize: imageSource.size,
                 iconImage: icon,
+                ribbonTitle: index % 3 == 0 ? "Betalt plassering" : nil,
                 title: title,
                 subtitle: subtitle,
                 accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,

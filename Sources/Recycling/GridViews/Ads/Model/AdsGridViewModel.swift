@@ -8,6 +8,7 @@ public protocol AdsGridViewModel {
     var imagePath: String? { get }
     var imageSize: CGSize { get }
     var iconImage: UIImage? { get }
+    var ribbonTitle: String? { get }
     var title: String { get }
     var subtitle: String? { get }
     var accessory: String? { get }
