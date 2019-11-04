@@ -8,6 +8,7 @@ final class AddFavoriteFolderViewCell: BasicTableViewCell {
     private lazy var button: UIButton = {
         let button = AddFavoriteFolderButton(withAutoLayout: true)
         button.isUserInteractionEnabled = false
+        button.backgroundColor = .clear
         return button
     }()
 

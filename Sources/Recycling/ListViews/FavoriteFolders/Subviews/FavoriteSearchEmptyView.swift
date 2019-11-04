@@ -28,7 +28,8 @@ final class FavoriteSearchEmptyView: UIView {
 
     private lazy var magnifyingGlassImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: .magnifyingGlass)
+        imageView.image = UIImage(named: .magnifyingGlass).withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .sardine
         return imageView
     }()
 

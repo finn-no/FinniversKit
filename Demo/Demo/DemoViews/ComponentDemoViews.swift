@@ -51,6 +51,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case visibilityDrivenTitleView
     case selectorTitleView
     case priming
+    case footerButtonView
     case checkmarkTitleView
 
     public static var items: [ComponentDemoViews] {
@@ -160,6 +161,8 @@ public enum ComponentDemoViews: String, CaseIterable {
                 containmentOptions: .bottomSheet,
                 constrainToBottomSafeArea: false
             )
+        case .footerButtonView:
+            return DemoViewController<FooterButtonDemoView>(constrainToBottomSafeArea: false)
         case .checkmarkTitleView:
             return DemoViewController<CheckmarkTitleViewDemoView>()
         }
