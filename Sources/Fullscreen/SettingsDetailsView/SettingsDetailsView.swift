@@ -80,14 +80,7 @@ public class SettingsDetailsView: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(withAutoLayout: true)
         scrollView.delegate = self
-
-        scrollView.contentInset = UIEdgeInsets(
-            top: 0,
-            left: 0,
-            bottom: scrollViewBottomInset,
-            right: 0
-        )
-
+        scrollView.contentInset = UIEdgeInsets(bottom: scrollViewBottomInset)
         return scrollView
     }()
 
@@ -186,12 +179,9 @@ private extension SettingsDetailsView {
         addSubview(shadowView)
         addSubview(primaryButton)
 
-        NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        scrollView.fillInSuperview()
 
+        NSLayoutConstraint.activate([
             iconView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: .mediumSpacing + .mediumLargeSpacing),
             iconView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 
