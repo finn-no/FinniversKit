@@ -13,8 +13,6 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case registerView
     case loginEntryView
     case loginView
-    case consentToggleView
-    case consentActionView
     case loadingView
     case drumMachineView
     case pianoView
@@ -34,6 +32,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case verificationActionSheet
     case splashView
     case popovers
+    case settingsDetails
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -59,10 +58,6 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return LoginEntryViewDemoViewController(constrainToBottomSafeArea: false)
         case .loginView:
             return DemoViewController<LoginViewDemoView>()
-        case .consentToggleView:
-            return DemoViewController<ConsentToggleViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
-        case .consentActionView:
-            return DemoViewController<ConsentActionViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .loadingView:
             return DemoViewController<LoadingViewDemoView>()
         case .drumMachineView:
@@ -117,6 +112,21 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
         case .popovers:
             return PopoversDemoViewController()
+        case .settingsDetails:
+            let viewController = SettingsDetailsDemoViewController()
+            viewController.view.layoutIfNeeded()
+            let contentHeight = viewController.contentSize.height
+
+            let bottomSheet = BottomSheet(
+                rootViewController: viewController,
+                height: .init(
+                    compact: contentHeight,
+                    expanded: contentHeight
+                )
+            )
+
+            viewController.bottomSheet = bottomSheet
+            return bottomSheet
         }
     }
 }
