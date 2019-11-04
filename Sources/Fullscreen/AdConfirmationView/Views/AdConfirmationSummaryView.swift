@@ -79,6 +79,7 @@ private extension AdConfirmationSummaryView {
 //                view.label.text = line
 //                summaryStackView.addArrangedSubview(view)
             }
+            let checkmarkView = CheckmarkTitleView(title: line, withAutoLayout: true)
         }
         summaryStackView.addArrangedSubview(separator)
 

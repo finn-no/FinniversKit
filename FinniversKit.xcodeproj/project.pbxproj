@@ -544,6 +544,8 @@
 		F2BE6BFF236849990085A05A /* AdConfirmationSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE6BFB236849740085A05A /* AdConfirmationSummaryView.swift */; };
 		F2BE6C01236863BC0085A05A /* AdConfirmationObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE6C00236863BC0085A05A /* AdConfirmationObjectView.swift */; };
 		F2BE6C03236864320085A05A /* AdConfirmationObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE6C02236864320085A05A /* AdConfirmationObjectViewModel.swift */; };
+		F2BE6C09236AD24B0085A05A /* CheckmarkTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE6C08236AD24B0085A05A /* CheckmarkTitleView.swift */; };
+		F2BE6C0D236C49150085A05A /* CheckmarkTitleViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE6C0C236C49150085A05A /* CheckmarkTitleViewDemoView.swift */; };
 		F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */; };
 		F2C3E95E22CB63A200CED7E0 /* QuestionnaireViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */; };
 		F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */; };
@@ -1136,6 +1138,8 @@
 		F2BE6BFB236849740085A05A /* AdConfirmationSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConfirmationSummaryView.swift; sourceTree = "<group>"; };
 		F2BE6C00236863BC0085A05A /* AdConfirmationObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConfirmationObjectView.swift; sourceTree = "<group>"; };
 		F2BE6C02236864320085A05A /* AdConfirmationObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConfirmationObjectViewModel.swift; sourceTree = "<group>"; };
+		F2BE6C08236AD24B0085A05A /* CheckmarkTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkTitleView.swift; sourceTree = "<group>"; };
+		F2BE6C0C236C49150085A05A /* CheckmarkTitleViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkTitleViewDemoView.swift; sourceTree = "<group>"; };
 		F2C3E95B22CB639200CED7E0 /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
 		F2C3E95D22CB63A200CED7E0 /* QuestionnaireViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewModel.swift; sourceTree = "<group>"; };
 		F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionnaireView+Style.swift"; sourceTree = "<group>"; };
@@ -1663,6 +1667,7 @@
 				9BD8ABBE2359B1CE001078CA /* ChristmasWishListView */,
 				45B2E06B207E181C00C68B92 /* Consent */,
 				F2BE212E22819ED8004640F3 /* Control */,
+				F2BE6C0A236C29BA0085A05A /* CheckmarkTitleView */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
 				0884C6C722B7B4360015474D /* Disclaimer */,
 				CF7C45FD22257A8A001FB92C /* EarthHour */,
@@ -3124,6 +3129,7 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F2BE6C0B236C29F80085A05A /* CheckmarkTitleView */,
 				443795FA2360443700D05917 /* SelectorTitleView */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
@@ -4028,6 +4034,22 @@
 			path = AdConfirmationView;
 			sourceTree = "<group>";
 		};
+		F2BE6C0A236C29BA0085A05A /* CheckmarkTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				F2BE6C08236AD24B0085A05A /* CheckmarkTitleView.swift */,
+			);
+			path = CheckmarkTitleView;
+			sourceTree = "<group>";
+		};
+		F2BE6C0B236C29F80085A05A /* CheckmarkTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				F2BE6C0C236C49150085A05A /* CheckmarkTitleViewDemoView.swift */,
+			);
+			path = CheckmarkTitleView;
+			sourceTree = "<group>";
+		};
 		F2C3E95A22CB634700CED7E0 /* QuestionnaireView */ = {
 			isa = PBXGroup;
 			children = (
@@ -4325,6 +4347,7 @@
 				441FE454209A2F3A00B04EF1 /* NotificationsListViewDemoView.swift in Sources */,
 				CF8F024821DE3813004C4042 /* RefreshControlDemo.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
+				F2BE6C0D236C49150085A05A /* CheckmarkTitleViewDemoView.swift in Sources */,
 				DAC7DCB0215386E7004602A3 /* ConsentToggleViewDemoView.swift in Sources */,
 				CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
@@ -4674,6 +4697,7 @@
 				DAB7FAA921B690DD00BF8CC6 /* BottomSheetAnimationController.swift in Sources */,
 				9B057AAE235EEBE9007B1CF0 /* MissionPopupView.swift in Sources */,
 				0884C6CE22B7BE360015474D /* DisclaimerViewModel.swift in Sources */,
+				F2BE6C09236AD24B0085A05A /* CheckmarkTitleView.swift in Sources */,
 				CF3DEDB4219465F300DB3E5A /* FrontPageView.swift in Sources */,
 				CF4A053A21FB2ACB000BB7DA /* PianoEffectIndicatorsView.swift in Sources */,
 				45D7C56B204949E2000E788F /* SwitchView.swift in Sources */,
