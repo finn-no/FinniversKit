@@ -28,7 +28,7 @@ final class FavoriteAdView: UIView {
 
     var isCommentViewHidden = false {
         didSet {
-            commentView.isHidden = true
+            configureCommentView()
         }
     }
 
@@ -111,6 +111,8 @@ final class FavoriteAdView: UIView {
     func configure(with viewModel: FavoriteAdViewModel) {
         self.viewModel = viewModel
 
+        configureCommentView()
+
         statusRibbon.style = viewModel.ribbonStyle
         statusRibbon.title = viewModel.ribbonTitle
 
@@ -137,13 +139,6 @@ final class FavoriteAdView: UIView {
         if let descriptionTertiaryText = viewModel.descriptionTertiaryText {
             descriptionTertiaryLabel.text = descriptionTertiaryText
             descriptionTertiaryLabel.isHidden = false
-        }
-
-        if let comment = viewModel.comment, !comment.isEmpty, !isCommentViewHidden {
-            commentView.configure(withText: comment)
-            commentView.isHidden = false
-        } else {
-            commentView.isHidden = true
         }
     }
 
@@ -251,6 +246,15 @@ final class FavoriteAdView: UIView {
 
     @objc private func moreButtonTapped() {
         delegate?.favoriteAdView(self, didSelectMoreButton: moreButton)
+    }
+
+    private func configureCommentView() {
+        if let comment = viewModel?.comment, !comment.isEmpty, !isCommentViewHidden {
+            commentView.configure(withText: comment)
+            commentView.isHidden = false
+        } else {
+            commentView.isHidden = true
+        }
     }
 
     private func label(withFont font: UIFont, textColor: UIColor, numberOfLines: Int, isHidden: Bool = true) -> UILabel {
