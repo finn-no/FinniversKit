@@ -13,8 +13,16 @@ class GalleryPreviewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .clear
         imageView.clipsToBounds = true
+        imageView.layer.borderColor = .milk
+        imageView.layer.borderWidth = 0.0
         return imageView
     }()
+
+    override var isSelected: Bool {
+        didSet {
+            imageView.layer.borderWidth = isSelected ? 2.0 : 0.0
+        }
+    }
 
     // MARK: - Init
 

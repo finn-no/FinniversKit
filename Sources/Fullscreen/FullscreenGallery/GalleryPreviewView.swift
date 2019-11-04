@@ -31,6 +31,7 @@ class GalleryPreviewView: UIView {
 
     private var images = [UIImage?]()
     private var newSuperviewSize: CGSize?
+    private var selectedRow: Int?
 
     private lazy var cellSize: CGSize = {
         switch UIDevice.current.userInterfaceIdiom {
@@ -93,6 +94,7 @@ class GalleryPreviewView: UIView {
     }
 
     public func scrollToItem(atIndex index: Int, animated: Bool) {
+        selectImage(atRow: index)
         collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: animated)
     }
 
@@ -116,6 +118,14 @@ class GalleryPreviewView: UIView {
             })
         }
     }
+
+    private func selectImage(atRow row: Int) {
+        if let selectedRow = selectedRow {
+            collectionView.cellForItem(at: IndexPath(row: selectedRow, section: 0))?.isSelected = false
+        }
+        selectedRow = row
+        collectionView.cellForItem(at: IndexPath(row: row, section: 0))?.isSelected = true
+    }
 }
 
 extension GalleryPreviewView: UICollectionViewDataSource {
@@ -127,6 +137,10 @@ extension GalleryPreviewView: UICollectionViewDataSource {
         let cell = collectionView.dequeue(GalleryPreviewCell.self, for: indexPath)
         let image = images[safe: indexPath.row]
 
+        if indexPath.row == selectedRow {
+            cell.isSelected = true
+        }
+
         cell.configure(withImage: image)
 
         return cell
@@ -135,6 +149,7 @@ extension GalleryPreviewView: UICollectionViewDataSource {
 
 extension GalleryPreviewView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectImage(atRow: indexPath.row)
         delegate?.galleryPreviewView(self, selectedImageAtIndex: indexPath.row)
     }
 
