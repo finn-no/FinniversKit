@@ -14,13 +14,13 @@ public struct Ad: AdsGridViewModel {
     public let imagePath: String?
     public let imageSize: CGSize
     public var iconImage: UIImage?
-    public var ribbonTitle: String?
     public let title: String
     public let subtitle: String?
     public var accessory: String?
     public let imageText: String?
     public var isFavorite = false
     public var adType: AdType
+    public var sponsoredAdData: SponsoredAdData?
 
     public var accessibilityLabel: String {
         var message = title
@@ -52,17 +52,22 @@ public struct AdFactory {
         imagePath: nil,
         imageSize: .zero,
         iconImage: nil,
-        ribbonTitle: nil,
         title: "Google Ad",
         subtitle: nil,
         accessory: nil,
         imageText: nil,
         isFavorite: false,
         adType: .google,
+        sponsoredAdData: nil,
         favoriteButtonAccessibilityLabel: ""
     )
 
     public static func create(numberOfModels: Int) -> [Ad] {
+        let sponsoredAdData = SponsoredAdData(
+            ribbonTitle: "Betalt plassering",
+            logoImagePath: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png"
+        )
+
         return (0 ..< numberOfModels).map { index in
             let dataIndex = index % minimumDataItemsCount
             let imageSource = imageSources[dataIndex]
@@ -74,13 +79,13 @@ public struct AdFactory {
                 imagePath: imageSource.path,
                 imageSize: imageSource.size,
                 iconImage: icon,
-                ribbonTitle: index % 3 == 0 ? "Betalt plassering" : nil,
                 title: title,
                 subtitle: subtitle,
                 accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
                 imageText: price,
                 isFavorite: false,
                 adType: .normal,
+                sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
     }
