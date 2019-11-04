@@ -211,7 +211,7 @@ class ComponentViewTests: XCTestCase {
         snapshot(.footerButtonView)
     }
 
-    func testBroadcastView() {
+    func testBroadcast() {
         snapshot(.broadcast)
     }
 }
