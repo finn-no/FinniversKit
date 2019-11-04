@@ -73,7 +73,7 @@ public class SettingsDetailsView: UIView {
         return button
     }()
 
-    private lazy var shadowView = DynamicShadowView(
+    private lazy var shadowView = TopShadowView(
         withAutoLayout: true
     )
 
