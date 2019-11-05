@@ -17,7 +17,7 @@ public class AdConfirmationSummaryView: UIView {
     }()
 
     private lazy var priceLabel: Label = {
-        let label = Label(style: .caption)
+        let label = Label(style: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -25,7 +25,7 @@ public class AdConfirmationSummaryView: UIView {
     }()
 
     private lazy var totalLabel: Label = {
-        let label = Label(style: .captionStrong)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .right
         label.numberOfLines = 0
@@ -50,7 +50,7 @@ public class AdConfirmationSummaryView: UIView {
         super.init(frame: .zero)
 
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
-        backgroundColor = .ice
+        backgroundColor = .bgSecondary
         layer.cornerRadius = 8
         clipsToBounds = true
 
@@ -63,9 +63,9 @@ public class AdConfirmationSummaryView: UIView {
         let line = CAShapeLayer()
         line.path = UIBezierPath(roundedRect: dashedSeperator.bounds, cornerRadius: 0).cgPath
         line.frame = dashedSeperator.bounds
-        line.strokeColor = UIColor.sardine.cgColor
+        line.strokeColor = UIColor.stone.cgColor
         line.fillColor = UIColor.clear.cgColor
-        line.lineWidth = 0.5
+        line.lineWidth = 0.25
         line.lineDashPattern = [5, 5]
 
         dashedSeperator.layer.addSublayer(line)
@@ -111,7 +111,7 @@ private extension AdConfirmationSummaryView {
         NSLayoutConstraint.activate([
             priceStackView.topAnchor.constraint(equalTo: dashedSeperator.bottomAnchor, constant: .mediumLargeSpacing),
             priceStackView.leadingAnchor.constraint(equalTo: summaryView.leadingAnchor),
-            priceStackView.trailingAnchor.constraint(equalTo: summaryView.trailingAnchor)
+            priceStackView.trailingAnchor.constraint(equalTo: summaryView.trailingAnchor),
         ])
     }
 }
