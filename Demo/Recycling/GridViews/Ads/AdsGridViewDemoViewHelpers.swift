@@ -20,6 +20,7 @@ public struct Ad: AdsGridViewModel {
     public let imageText: String?
     public var isFavorite = false
     public var adType: AdType
+    public var sponsoredAdData: SponsoredAdData?
 
     public var accessibilityLabel: String {
         var message = title
@@ -57,10 +58,16 @@ public struct AdFactory {
         imageText: nil,
         isFavorite: false,
         adType: .google,
+        sponsoredAdData: nil,
         favoriteButtonAccessibilityLabel: ""
     )
 
     public static func create(numberOfModels: Int) -> [Ad] {
+        let sponsoredAdData = SponsoredAdData(
+            ribbonTitle: "Betalt plassering",
+            logoImagePath: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png"
+        )
+
         return (0 ..< numberOfModels).map { index in
             let dataIndex = index % minimumDataItemsCount
             let imageSource = imageSources[dataIndex]
@@ -78,6 +85,7 @@ public struct AdFactory {
                 imageText: price,
                 isFavorite: false,
                 adType: .normal,
+                sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
     }

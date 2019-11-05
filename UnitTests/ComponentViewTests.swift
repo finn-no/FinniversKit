@@ -211,6 +211,10 @@ class ComponentViewTests: XCTestCase {
         snapshot(.footerButtonView)
     }
 
+    func testBroadcast() {
+        snapshot(.broadcast)
+    }
+
     func testCheckmarkTitleView() {
         snapshot(.checkmarkTitleView)
     }
