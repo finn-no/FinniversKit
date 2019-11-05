@@ -17,8 +17,8 @@ public protocol AdsGridViewDataSource: AnyObject {
     func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type]
     func adsGridView(_ adsGridView: AdsGridView, heightForItemWithWidth width: CGFloat, at indexPath: IndexPath) -> CGFloat
     func adsGridView(_ adsGridView: AdsGridView, collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void))
-    func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
+    func adsGridView(_ adsGridView: AdsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat)
 }
 
 public class AdsGridView: UIView {
@@ -179,27 +179,23 @@ extension AdsGridView: UICollectionViewDataSource {
 
 // MARK: - AdsGridViewCellDataSource
 
-extension AdsGridView: AdsGridViewCellDataSource {
-    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cachedImageForModel model: AdsGridViewModel) -> UIImage? {
-        guard let imagePath = model.imagePath else {
-            return nil
-        }
-
+extension AdsGridView: RemoteImageViewDataSource {
+    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
         return imageCache.image(forKey: imagePath)
     }
 
-    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {
-        dataSource?.adsGridView(self, loadImageForModel: model, imageWidth: imageWidth, completion: { [weak self] model, image in
-            if let image = image, let imagePath = model.imagePath {
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.adsGridView(self, loadImageWithPath: imagePath, imageWidth: imageWidth, completion: { [weak self] image in
+            if let image = image {
                 self?.imageCache.add(image, forKey: imagePath)
             }
 
-            completion(model, image)
+            completion(image)
         })
     }
 
-    public func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat) {
-        dataSource?.adsGridView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
+        dataSource?.adsGridView(self, cancelLoadingImageWithPath: imagePath, imageWidth: imageWidth)
     }
 }
 
