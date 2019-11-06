@@ -71,6 +71,7 @@ class BottomSheetPresentationController: UIPresentationController {
         self.interactionController = interactionController
         self.dimView = dimView
         super.init(presentedViewController: presentedViewController, presenting: presenting)
+        interactionController.delegate = self
     }
 
     // MARK: - Overrides
@@ -232,5 +233,11 @@ extension BottomSheetPresentationController: BottomSheetGestureControllerDelegat
         }
 
         return CGPoint(x: controller.position.x, y: ycomponent)
+    }
+}
+
+extension BottomSheetPresentationController: BottomSheetInteractionControllerDelegate {
+    func bottomSheetInteractionControllerWillCancelPresentationTransition(_ interactionController: BottomSheetInteractionController) {
+        presentationControllerDelegate?.bottomSheetPresentationController(self, willDismissPresentedViewController: presentedViewController, by: .drag)
     }
 }

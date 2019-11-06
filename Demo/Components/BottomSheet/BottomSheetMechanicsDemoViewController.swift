@@ -284,7 +284,7 @@ extension BottomSheetMechanicsDemoViewController: BottomSheetDelegate {
     }
 
     func bottomSheet(_ bottomSheet: BottomSheet, willDismissBy action: BottomSheet.DismissAction) {
-        return
+        print("Bottom sheet will dismiss")
     }
 
     func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction) {
