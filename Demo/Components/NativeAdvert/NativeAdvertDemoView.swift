@@ -53,6 +53,7 @@ class NativeAdvertDemoView: UIView {
     }
 
     private func setup() {
+        
         addSubview(advertView)
         addSubview(contentAdvertView)
 

@@ -28,8 +28,6 @@ public final class NativeAdvertView: UIView {
 
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.setContentHuggingPriority(.required, for: .horizontal)
-        view.setContentHuggingPriority(.required, for: .vertical)
         return view
     }()
 
@@ -139,10 +137,10 @@ private extension NativeAdvertView {
             contentView.widthAnchor.constraint(lessThanOrEqualToConstant: containerMaxWidth),
 
             mainImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: containerMargin),
-            mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: containerMargin),
-            mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -containerMargin),
+            mainImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             mainImageView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: -sponsoredByPaddingTop),
             mainImageView.heightAnchor.constraint(equalTo: mainImageView.widthAnchor, multiplier: 1.0 / imageAspectRatio),
+            mainImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
 
             settingsButton.topAnchor.constraint(equalTo: mainImageView.topAnchor),
             settingsButton.leadingAnchor.constraint(equalTo: mainImageView.leadingAnchor),
