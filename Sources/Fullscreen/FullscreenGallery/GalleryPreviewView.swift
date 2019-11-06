@@ -94,8 +94,25 @@ class GalleryPreviewView: UIView {
     }
 
     public func scrollToItem(atIndex index: Int, animated: Bool) {
-        selectImage(atRow: index)
         collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: animated)
+    }
+
+    public func addBorderToItem(atIndex index: Int) {
+        if let previouslySelectedRow = selectedRow {
+            guard let previouslySelectedCell = collectionView.cellForItem(at: IndexPath(row: previouslySelectedRow, section: 0)) as? GalleryPreviewCell else {
+                selectedRow = index
+                collectionView.reloadData()
+                return
+            }
+            previouslySelectedCell.border(isVisible: false)
+        }
+
+        selectedRow = index
+        guard let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? GalleryPreviewCell else {
+            collectionView.reloadData()
+            return
+        }
+        cell.border(isVisible: true)
     }
 
     // MARK: - Private methods
@@ -118,14 +135,6 @@ class GalleryPreviewView: UIView {
             })
         }
     }
-
-    private func selectImage(atRow row: Int) {
-        if let selectedRow = selectedRow {
-            collectionView.cellForItem(at: IndexPath(row: selectedRow, section: 0))?.isSelected = false
-        }
-        selectedRow = row
-        collectionView.cellForItem(at: IndexPath(row: row, section: 0))?.isSelected = true
-    }
 }
 
 extension GalleryPreviewView: UICollectionViewDataSource {
@@ -138,7 +147,9 @@ extension GalleryPreviewView: UICollectionViewDataSource {
         let image = images[safe: indexPath.row]
 
         if indexPath.row == selectedRow {
-            cell.isSelected = true
+            cell.border(isVisible: true)
+        } else {
+            cell.border(isVisible: false)
         }
 
         cell.configure(withImage: image)
@@ -149,7 +160,6 @@ extension GalleryPreviewView: UICollectionViewDataSource {
 
 extension GalleryPreviewView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectImage(atRow: indexPath.row)
         delegate?.galleryPreviewView(self, selectedImageAtIndex: indexPath.row)
     }
 

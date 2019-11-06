@@ -135,6 +135,7 @@ class FullscreenGalleryOverlayView: UIView {
 
     func scrollToImage(atIndex index: Int, animated: Bool) {
         previewView.scrollToItem(atIndex: index, animated: animated)
+        previewView.addBorderToItem(atIndex: index)
         setCaptionLabel(index: index)
     }
 
@@ -234,5 +235,6 @@ extension FullscreenGalleryOverlayView: GalleryPreviewViewDelegate {
         delegate?.fullscreenGalleryOverlayView(self, selectedImageAtIndex: index)
         setCaptionLabel(index: index)
         previewView.scrollToItem(atIndex: index, animated: true)
+        previewView.addBorderToItem(atIndex: index)
     }
 }

@@ -18,12 +18,6 @@ class GalleryPreviewCell: UICollectionViewCell {
         return imageView
     }()
 
-    override var isSelected: Bool {
-        didSet {
-            imageView.layer.borderWidth = isSelected ? 2.0 : 0.0
-        }
-    }
-
     // MARK: - Init
 
     override init(frame: CGRect) {
@@ -64,11 +58,16 @@ class GalleryPreviewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
+        imageView.layer.borderWidth = 0.0
     }
 
     // MARK: - Public methods
 
     func configure(withImage image: UIImage?) {
         imageView.image = image
+    }
+
+    func border(isVisible: Bool) {
+        imageView.layer.borderWidth = isVisible ? 2.0 : 0.0
     }
 }
