@@ -57,8 +57,16 @@ public class SettingsView: UIView {
 
 // MARK: - Public methods
 public extension SettingsView {
-    func reloadItems(at indexPaths: [IndexPath], animated: Bool = true) {
+    func reloadRows(at indexPaths: [IndexPath], animated: Bool = true) {
         tableView.reloadRows(at: indexPaths, with: animated ? .automatic : .none)
+    }
+
+    func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
+        return tableView.cellForRow(at: indexPath)
+    }
+
+    var indexPathForSelectedRow: IndexPath? {
+        return tableView.indexPathForSelectedRow
     }
 }
 
