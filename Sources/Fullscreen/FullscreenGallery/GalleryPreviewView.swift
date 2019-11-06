@@ -146,12 +146,7 @@ extension GalleryPreviewView: UICollectionViewDataSource {
         let cell = collectionView.dequeue(GalleryPreviewCell.self, for: indexPath)
         let image = images[safe: indexPath.row]
 
-        if indexPath.row == selectedRow {
-            cell.border(isVisible: true)
-        } else {
-            cell.border(isVisible: false)
-        }
-
+        cell.border(isVisible: indexPath.row == selectedRow)
         cell.configure(withImage: image)
 
         return cell
