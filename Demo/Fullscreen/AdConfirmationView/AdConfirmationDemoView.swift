@@ -7,6 +7,7 @@ import FinniversKit
 class AdConfirmationDemoView: UIView {
     private lazy var confirmationView: AdConfirmationView = {
         let view = AdConfirmationView(withAutoLayout: true)
+        view.delegate = self
         view.model = AdConfirmationViewDefaultData()
         return view
     }()
@@ -21,5 +22,11 @@ class AdConfirmationDemoView: UIView {
     private func setup() {
         addSubview(confirmationView)
         confirmationView.fillInSuperview()
+    }
+}
+
+extension AdConfirmationDemoView: AdConfirmationViewDelegate {
+    func adConfirmationView( _ : AdConfirmationView, didTapActionButton button: Button) {
+        print("Did tap action button:\(button)")
     }
 }

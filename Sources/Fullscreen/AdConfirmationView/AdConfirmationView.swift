@@ -4,6 +4,10 @@
 
 import UIKit
 
+public protocol AdConfirmationViewDelegate: AnyObject {
+    func adConfirmationView( _ : AdConfirmationView, didTapActionButton button: Button)
+}
+
 public class AdConfirmationView: UIView {
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(withAutoLayout: true)
@@ -15,8 +19,13 @@ public class AdConfirmationView: UIView {
 
     private lazy var contentView: UIView = UIView(withAutoLayout: true)
     private lazy var confirmationObjectView: AdConfirmationObjectView = AdConfirmationObjectView(withAutoLayout: true)
-    private lazy var actionButton: Button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
-    private lazy var contentSize: CGFloat = 0.0
+    private lazy var actionButton: Button = {
+        let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
+        button.addTarget(self, action: #selector(didTapActionButton(_:)), for: .touchUpInside)
+        return button
+    }()
+
+    public weak var delegate: AdConfirmationViewDelegate?
 
     public var model: AdConfirmationViewModel? {
         didSet {
@@ -34,6 +43,10 @@ public class AdConfirmationView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc func didTapActionButton(_ sender: Button) {
+        delegate?.adConfirmationView(self, didTapActionButton: sender)
     }
 }
 
@@ -56,7 +69,7 @@ private extension AdConfirmationView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
 
             confirmationObjectView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            confirmationObjectView.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: 200),
+            confirmationObjectView.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: 216),
             confirmationObjectView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             confirmationObjectView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
@@ -76,7 +89,7 @@ private extension AdConfirmationView {
             let summaryViewHeightConstant = CGFloat(heightForTitleLabel + heightForOrderLinesView + heightForPriceStackView)
 
             NSLayoutConstraint.activate([
-                summaryView.topAnchor.constraint(equalTo: confirmationObjectView.bottomAnchor, constant: .mediumSpacing),
+                summaryView.topAnchor.constraint(equalTo: confirmationObjectView.bottomAnchor, constant: .smallSpacing),
                 summaryView.heightAnchor.constraint(equalToConstant: summaryViewHeightConstant),
                 summaryView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
                 summaryView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
