@@ -100,9 +100,12 @@ public class FavoriteAdsListView: UIView {
     private var sendScrollUpdates: Bool = true
     private var tableViewConstraints = [NSLayoutConstraint]()
     private var contentSizeObserver: NSKeyValueObservation?
+    private lazy var scrollShadowView = BottomShadowView(withAutoLayout: true)
     private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
     private lazy var tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
     private lazy var tableViewFooterBottomConstraint = tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor)
+    private lazy var scrollShadowViewTopConstraint = scrollShadowView.topAnchor.constraint(equalTo: topAnchor, constant: 0)
+    private lazy var scrollShadowViewHeightConstraint = scrollShadowView.heightAnchor.constraint(equalToConstant: 0)
 
     private lazy var tableView: UITableView = {
         let tableView = TableView(withAutoLayout: true)
@@ -168,6 +171,7 @@ public class FavoriteAdsListView: UIView {
     private func setup() {
         addSubview(tableView)
         addSubview(footerView)
+        addSubview(scrollShadowView)
 
         tableView.addSubview(emptySearchView)
         tableView.addSubview(emptyListView)
@@ -180,7 +184,12 @@ public class FavoriteAdsListView: UIView {
 
             footerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            footerView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            scrollShadowViewTopConstraint,
+            scrollShadowViewHeightConstraint,
+            scrollShadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollShadowView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
 
         tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
@@ -217,6 +226,12 @@ public class FavoriteAdsListView: UIView {
     }
 
     // MARK: - Public methods
+
+    public func configure(scrollShadowHeight: CGFloat) {
+        scrollShadowViewTopConstraint.constant = -scrollShadowHeight
+        scrollShadowViewHeightConstraint.constant = scrollShadowHeight
+        layoutIfNeeded()
+    }
 
     public func setListIsEmpty(_ isEmpty: Bool) {
         emptyListView.isHidden = !isEmpty
@@ -431,6 +446,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollShadowView.updateShadow(using: scrollView)
         footerView.updateShadow(using: scrollView)
 
         if sendScrollUpdates {

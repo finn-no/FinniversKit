@@ -135,6 +135,7 @@ class FullscreenGalleryOverlayView: UIView {
 
     func scrollToImage(atIndex index: Int, animated: Bool) {
         previewView.scrollToItem(atIndex: index, animated: animated)
+        previewView.addBorderToItem(atIndex: index)
         setCaptionLabel(index: index)
     }
 
@@ -179,7 +180,7 @@ class FullscreenGalleryOverlayView: UIView {
     private func setCaptionLabel(index: Int) {
         var caption = viewModel?.imageCaptions[safe: index] ?? ""
 
-        if let count = viewModel?.imageUrls.count, count > 1 {
+        if let count = viewModel?.imageUrls.count {
             caption += " (\(index + 1)/\(count))"
         }
 
@@ -234,5 +235,6 @@ extension FullscreenGalleryOverlayView: GalleryPreviewViewDelegate {
         delegate?.fullscreenGalleryOverlayView(self, selectedImageAtIndex: index)
         setCaptionLabel(index: index)
         previewView.scrollToItem(atIndex: index, animated: true)
+        previewView.addBorderToItem(atIndex: index)
     }
 }
