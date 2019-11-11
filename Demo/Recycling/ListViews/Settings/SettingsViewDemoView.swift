@@ -42,7 +42,7 @@ class SettingsViewDemoView: UIView {
                title: "Personvern",
                items: [
                    SettingsConsentItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
-                   SettingsConsentItem(title: "Personlin tilpasset FINN", status: "På"),
+                   SettingsConsentItem(title: "Personlig tilpasset FINN", status: "På"),
                    SettingsConsentItem(title: "Motta viktig informasjon fra FINN", status: "På"),
                    SettingsItem(title: "Smart reklame"),
                    SettingsItem(title: "Last ned dine data"),
