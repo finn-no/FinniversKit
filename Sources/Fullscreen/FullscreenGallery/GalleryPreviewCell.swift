@@ -67,8 +67,8 @@ class GalleryPreviewCell: UICollectionViewCell {
         imageView.image = image
     }
 
-    func border(isVisible: Bool) {
-        imageView.layer.borderWidth = isVisible ? 2.0 : 0.0
+    func showBorder(_ show: Bool) {
+        imageView.layer.borderWidth = show ? 2.0 : 0.0
     }
 }
 

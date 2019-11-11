@@ -99,12 +99,12 @@ class GalleryPreviewView: UIView {
 
     public func addBorderToItem(atIndex index: Int) {
         if let previouslySelectedRow = selectedRow {
-            guard let previouslySelectedCell = collectionView.cellForItem(at: IndexPath(row: previouslySelectedRow, section: 0)) as? GalleryPreviewCell else {
+            guard let previousCell = collectionView.cellForItem(at: IndexPath(row: previouslySelectedRow, section: 0)) as? GalleryPreviewCell else {
                 selectedRow = index
                 collectionView.reloadData()
                 return
             }
-            previouslySelectedCell.border(isVisible: false)
+            previousCell.showBorder(false)
         }
 
         selectedRow = index
@@ -112,7 +112,7 @@ class GalleryPreviewView: UIView {
             collectionView.reloadData()
             return
         }
-        cell.border(isVisible: true)
+        cell.showBorder(true)
     }
 
     // MARK: - Private methods
@@ -146,7 +146,7 @@ extension GalleryPreviewView: UICollectionViewDataSource {
         let cell = collectionView.dequeue(GalleryPreviewCell.self, for: indexPath)
         let image = images[safe: indexPath.row]
 
-        cell.border(isVisible: indexPath.row == selectedRow)
+        cell.showBorder(indexPath.row == selectedRow)
         cell.configure(withImage: image)
 
         return cell
