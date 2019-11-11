@@ -192,6 +192,12 @@ extension FullscreenGalleryViewController: UIPageViewControllerDataSource {
     }
 
     private func imageViewController(forIndex index: Int) -> FullscreenImageViewController? {
+
+        if viewModel.imageUrls.count == 1 && index != 0 {
+            // disable swiping in gallery with only one image
+            return nil
+        }
+
         let translatedindex: Int
 
         switch index {
