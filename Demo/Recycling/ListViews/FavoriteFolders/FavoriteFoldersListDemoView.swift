@@ -37,7 +37,7 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
                 self?.view.setEditing(true)
                 self?.view.hideXmasButton()
             },
-            TweakingOption(title: "Xmass overlay", description: nil) { [weak self] in
+            TweakingOption(title: "Xmas button", description: nil) { [weak self] in
                 let text = "Tips! Nå kan du endelig opprette og dele din egen juleønskeliste! Her er i såfall knappen for å gjøre det! God jul!"
                 self?.view.showXmasButton(withCalloutText: text)
             }
