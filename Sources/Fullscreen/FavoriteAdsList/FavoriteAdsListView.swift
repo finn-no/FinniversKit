@@ -104,6 +104,8 @@ public class FavoriteAdsListView: UIView {
     private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
     private lazy var tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
     private lazy var tableViewFooterBottomConstraint = tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor)
+    private lazy var scrollShadowViewTopConstraint = scrollShadowView.topAnchor.constraint(equalTo: topAnchor, constant: 0)
+    private lazy var scrollShadowViewHeightConstraint = scrollShadowView.heightAnchor.constraint(equalToConstant: 0)
 
     private lazy var tableView: UITableView = {
         let tableView = TableView(withAutoLayout: true)
@@ -184,8 +186,8 @@ public class FavoriteAdsListView: UIView {
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            scrollShadowView.topAnchor.constraint(equalTo: topAnchor, constant: -44),
-            scrollShadowView.heightAnchor.constraint(equalToConstant: 44),
+            scrollShadowViewTopConstraint,
+            scrollShadowViewHeightConstraint,
             scrollShadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollShadowView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
