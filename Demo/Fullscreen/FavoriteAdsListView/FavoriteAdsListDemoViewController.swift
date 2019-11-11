@@ -27,6 +27,7 @@ class FavoriteAdsListDemoView: UIView, Tweakable {
         view.subtitle = "\(viewModels.count) favoritter"
         view.sortingTitle = currentSorting.rawValue
         view.isFooterShareButtonHidden = true
+        view.configure(scrollShadowHeight: 44)
         return view
     }()
 

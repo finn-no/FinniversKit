@@ -4,12 +4,6 @@
 
 import UIKit
 
-public protocol AdsGridViewCellDataSource: AnyObject {
-    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cachedImageForModel model: AdsGridViewModel) -> UIImage?
-    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void))
-    func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat)
-}
-
 public protocol AdsGridViewCellDelegate: AnyObject {
     func adsGridViewCell(_ adsGridViewCell: AdsGridViewCell, didSelectFavoriteButton button: UIButton)
 }
@@ -21,6 +15,8 @@ public class AdsGridViewCell: UICollectionViewCell {
     private static let titleTopMargin: CGFloat = 3.0
     private static let bottomMargin: CGFloat = 15.0
     private static let subtitleHeight: CGFloat = 17.0
+    private static let ribbonTopMargin: CGFloat = 6.0
+    private static let ribbonHeight: CGFloat = 19.0
     private static let subtitleTopMargin: CGFloat = 6.0
     private static let accessoryHeight: CGFloat = 14.0
     private static let margin: CGFloat = 8.0
@@ -35,8 +31,8 @@ public class AdsGridViewCell: UICollectionViewCell {
         return view
     }()
 
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
+    private lazy var imageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -47,6 +43,14 @@ public class AdsGridViewCell: UICollectionViewCell {
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .iconSecondary
+        return imageView
+    }()
+
+    private lazy var ribbonView = RibbonView(withAutoLayout: true)
+
+    private lazy var logoImageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
@@ -98,6 +102,16 @@ public class AdsGridViewCell: UICollectionViewCell {
         return button
     }()
 
+    private lazy var subtitleToImageConstraint = subtitleLabel.topAnchor.constraint(
+        equalTo: imageBackgroundView.bottomAnchor,
+        constant: AdsGridViewCell.subtitleTopMargin
+    )
+
+    private lazy var subtitleToRibbonConstraint = subtitleLabel.topAnchor.constraint(
+        equalTo: ribbonView.bottomAnchor,
+        constant: AdsGridViewCell.subtitleTopMargin
+    )
+
     private var model: AdsGridViewModel?
 
     // MARK: - External properties
@@ -110,7 +124,12 @@ public class AdsGridViewCell: UICollectionViewCell {
     }
 
     /// A data source for the loading of the image
-    public weak var dataSource: AdsGridViewCellDataSource?
+    public weak var dataSource: RemoteImageViewDataSource? {
+        didSet {
+            imageView.dataSource = dataSource
+            logoImageView.dataSource = dataSource
+        }
+    }
 
     /// A delegate for actions triggered from the cell
     public weak var delegate: AdsGridViewCellDelegate?
@@ -137,6 +156,8 @@ public class AdsGridViewCell: UICollectionViewCell {
         imageBackgroundView.addSubview(imageView)
         imageView.fillInSuperview()
 
+        addSubview(ribbonView)
+        addSubview(logoImageView)
         addSubview(subtitleLabel)
         addSubview(titleLabel)
         addSubview(imageDescriptionView)
@@ -153,7 +174,15 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            subtitleLabel.topAnchor.constraint(equalTo: imageBackgroundView.bottomAnchor, constant: AdsGridViewCell.subtitleTopMargin),
+            ribbonView.topAnchor.constraint(equalTo: imageBackgroundView.bottomAnchor, constant: AdsGridViewCell.ribbonTopMargin),
+            ribbonView.leadingAnchor.constraint(equalTo: leadingAnchor),
+
+            logoImageView.topAnchor.constraint(equalTo: imageBackgroundView.bottomAnchor, constant: .mediumSpacing),
+            logoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            logoImageView.widthAnchor.constraint(equalToConstant: 50),
+            logoImageView.heightAnchor.constraint(equalToConstant: 30),
+
+            subtitleToImageConstraint,
             subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             subtitleLabel.heightAnchor.constraint(equalToConstant: AdsGridViewCell.subtitleHeight),
@@ -186,7 +215,7 @@ public class AdsGridViewCell: UICollectionViewCell {
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
             favoriteButton.widthAnchor.constraint(equalToConstant: 34),
             favoriteButton.heightAnchor.constraint(equalTo: favoriteButton.heightAnchor)
-            ])
+        ])
     }
 
     // MARK: - Superclass Overrides
@@ -204,10 +233,8 @@ public class AdsGridViewCell: UICollectionViewCell {
         accessibilityLabel = ""
         favoriteButton.accessibilityLabel = ""
         favoriteButton.setImage(nil, for: .normal)
-
-        if let model = model {
-            dataSource?.adsGridViewCell(self, cancelLoadingImageForModel: model, imageWidth: imageView.frame.size.width)
-        }
+        imageView.cancelLoading()
+        logoImageView.cancelLoading()
     }
 
     // MARK: - Dependency injection
@@ -224,6 +251,13 @@ public class AdsGridViewCell: UICollectionViewCell {
         accessibilityLabel = model?.accessibilityLabel
         favoriteButton.accessibilityLabel = model?.favoriteButtonAccessibilityLabel
         isFavorite = model?.isFavorite ?? false
+
+        ribbonView.style = .sponsored
+        ribbonView.title = model?.sponsoredAdData?.ribbonTitle ?? ""
+        ribbonView.isHidden = ribbonView.title.isEmpty
+
+        NSLayoutConstraint.deactivate([subtitleToImageConstraint, subtitleToRibbonConstraint])
+        NSLayoutConstraint.activate([ribbonView.title.isEmpty ? subtitleToImageConstraint : subtitleToRibbonConstraint])
 
         // Show a pretty color while we load the image
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
@@ -252,36 +286,34 @@ public class AdsGridViewCell: UICollectionViewCell {
     public static func height(for model: AdsGridViewModel, width: CGFloat) -> CGFloat {
         let imageRatio = model.imageSize.height / model.imageSize.width
         let imageHeight = width * imageRatio
+        var contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
 
         if model.accessory != nil {
-            return imageHeight + nonImageWithAccessoryHeight
-        } else {
-            return imageHeight + nonImageHeight
+            contentHeight += accessoryHeight
         }
+
+        if model.sponsoredAdData?.ribbonTitle != nil {
+            contentHeight += ribbonTopMargin + ribbonHeight
+        }
+
+        return imageHeight + contentHeight
     }
 
     public func loadImage() {
-        guard imageView.image == nil else {
-            return
+        if imageView.image == nil {
+            if let imagePath = model?.imagePath {
+                imageView.loadImage(for: imagePath, imageWidth: frame.size.width, fallbackImage: defaultImage)
+            } else {
+                setDefaultImage()
+            }
         }
 
-        guard let viewModel = model, let dataSource = dataSource, viewModel.imagePath != nil else {
-            setDefaultImage()
-            return
-        }
-
-        if let cachedImage = dataSource.adsGridViewCell(self, cachedImageForModel: viewModel) {
-            setImage(cachedImage, animated: false)
-        } else {
-            dataSource.adsGridViewCell(self, loadImageForModel: viewModel, imageWidth: frame.size.width) { [weak self] (fetchedModel, image) in
-                guard let model = self?.model else { return }
-                guard fetchedModel.imagePath == model.imagePath else { return }
-
-                if let displayImage = image {
-                    self?.setImage(displayImage, animated: true)
-                } else {
-                    self?.setDefaultImage()
-                }
+        if logoImageView.image == nil {
+            if let imagePath = model?.sponsoredAdData?.logoImagePath {
+                logoImageView.isHidden = false
+                logoImageView.loadImage(for: imagePath, imageWidth: frame.size.width / 3, fallbackImage: defaultImage)
+            } else {
+                logoImageView.isHidden = true
             }
         }
     }
