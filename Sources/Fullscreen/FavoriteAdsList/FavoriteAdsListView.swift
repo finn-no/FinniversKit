@@ -100,6 +100,7 @@ public class FavoriteAdsListView: UIView {
     private var sendScrollUpdates: Bool = true
     private var tableViewConstraints = [NSLayoutConstraint]()
     private var contentSizeObserver: NSKeyValueObservation?
+    private lazy var scrollShadowView = BottomShadowView(withAutoLayout: true)
     private lazy var tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: topAnchor)
     private lazy var tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
     private lazy var tableViewFooterBottomConstraint = tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor)
@@ -168,6 +169,7 @@ public class FavoriteAdsListView: UIView {
     private func setup() {
         addSubview(tableView)
         addSubview(footerView)
+        addSubview(scrollShadowView)
 
         tableView.addSubview(emptySearchView)
         tableView.addSubview(emptyListView)
@@ -180,7 +182,12 @@ public class FavoriteAdsListView: UIView {
 
             footerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            footerView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            footerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            scrollShadowView.topAnchor.constraint(equalTo: topAnchor, constant: -44),
+            scrollShadowView.heightAnchor.constraint(equalToConstant: 44),
+            scrollShadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollShadowView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
 
         tableHeaderView.searchBarPlaceholder = viewModel.searchBarPlaceholder
@@ -431,6 +438,7 @@ extension FavoriteAdsListView: UITableViewDelegate {
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollShadowView.updateShadow(using: scrollView)
         footerView.updateShadow(using: scrollView)
 
         if sendScrollUpdates {
