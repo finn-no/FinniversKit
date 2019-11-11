@@ -227,6 +227,12 @@ public class FavoriteAdsListView: UIView {
 
     // MARK: - Public methods
 
+    public func configure(scrollShadowHeight: CGFloat) {
+        scrollShadowViewTopConstraint.constant = -scrollShadowHeight
+        scrollShadowViewHeightConstraint.constant = scrollShadowHeight
+        layoutIfNeeded()
+    }
+
     public func setListIsEmpty(_ isEmpty: Bool) {
         emptyListView.isHidden = !isEmpty
         tableHeaderView.isSearchBarHidden = isEmpty
