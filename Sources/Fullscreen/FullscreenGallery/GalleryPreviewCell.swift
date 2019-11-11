@@ -13,7 +13,7 @@ class GalleryPreviewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .clear
         imageView.clipsToBounds = true
-        imageView.layer.borderColor = .milk
+        imageView.layer.borderColor = .selectedImageBorder
         imageView.layer.borderWidth = 0.0
         return imageView
     }()
@@ -69,5 +69,13 @@ class GalleryPreviewCell: UICollectionViewCell {
 
     func border(isVisible: Bool) {
         imageView.layer.borderWidth = isVisible ? 2.0 : 0.0
+    }
+}
+
+// MARK: - Private extensions
+
+private extension CGColor {
+    class var selectedImageBorder: CGColor {
+        return .milk
     }
 }
