@@ -1,8 +1,8 @@
 import UIKit
 import SparkleCommon
 
-class MiniToastView: UIView {
-    lazy var titleLabel: UILabel = {
+public class MiniToastView: UIView {
+    public lazy var titleLabel: UILabel = {
         let label = UILabel()
         // label.font = .body
         // label.textColor = .text
@@ -22,7 +22,7 @@ class MiniToastView: UIView {
 
     required init?(coder aDecoder: NSCoder) { fatalError("") }
 
-    func show(in view: UIView) {
+    public func show(in view: UIView) {
         view.addSubview(self)
         alpha = 0
         transform = CGAffineTransform(scaleX: 0.1, y: 0.1)

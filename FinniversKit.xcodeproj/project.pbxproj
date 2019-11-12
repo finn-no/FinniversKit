@@ -186,6 +186,8 @@
 		44D31608237B1F4800A5A93B /* SparkleCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D31607237B1F4800A5A93B /* SparkleCommon.swift */; };
 		44D31609237B202300A5A93B /* SparkleCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; };
 		44D3160A237B202300A5A93B /* SparkleCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44D3160E237B21C400A5A93B /* SparkleCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; };
+		44D3160F237B21C400A5A93B /* SparkleCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912512077AC8A00486848 /* EmptyView.swift */; };
@@ -576,6 +578,13 @@
 			remoteGlobalIDString = 44AD5E85237B1DF80035EE0C;
 			remoteInfo = SparkleCommon;
 		};
+		44D31610237B21C400A5A93B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44AD5E85237B1DF80035EE0C;
+			remoteInfo = SparkleCommon;
+		};
 		44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
@@ -607,6 +616,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				44D3160A237B202300A5A93B /* SparkleCommon.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44D31612237B21C400A5A93B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				44D3160F237B21C400A5A93B /* SparkleCommon.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1218,6 +1238,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D3160E237B21C400A5A93B /* SparkleCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4224,10 +4245,12 @@
 				453D887E1F85191600FC63C7 /* Resources */,
 				44C6CE42209CAA3300929269 /* Generate constants for assets names */,
 				43D7BF5A216F560400EB7938 /* SwiftLint */,
+				44D31612237B21C400A5A93B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				44D31611237B21C400A5A93B /* PBXTargetDependency */,
 			);
 			name = FinniversKit;
 			productName = FinniversKit;
@@ -4947,6 +4970,11 @@
 			isa = PBXTargetDependency;
 			target = 44AD5E85237B1DF80035EE0C /* SparkleCommon */;
 			targetProxy = 44D3160B237B202300A5A93B /* PBXContainerItemProxy */;
+		};
+		44D31611237B21C400A5A93B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44AD5E85237B1DF80035EE0C /* SparkleCommon */;
+			targetProxy = 44D31610237B21C400A5A93B /* PBXContainerItemProxy */;
 		};
 		44D32C2B1FB07850001E86D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
