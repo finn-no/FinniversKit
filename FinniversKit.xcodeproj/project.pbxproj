@@ -193,6 +193,9 @@
 		44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912682077AD0200486848 /* PopupViewDefaultData.swift */; };
 		44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912692077AD0200486848 /* PopupViewDemoView.swift */; };
 		44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912722077AD1200486848 /* EmptyViewDemoView.swift */; };
+		44E505A9237B14E10067B949 /* Sparkle.h in Headers */ = {isa = PBXBuildFile; fileRef = 44E505A7237B14E10067B949 /* Sparkle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		44E505AC237B14E10067B949 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sparkle.framework */; };
+		44E505AD237B14E10067B949 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44EBDA4F2347465C00F95F2B /* TestCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EBDA4E2347465C00F95F2B /* TestCheck.swift */; };
 		44F8831220551D59003E3171 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */; };
 		44FEBC0F23322D4C009AC5E4 /* DnaDemoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FEBC0A23322D4C009AC5E4 /* DnaDemoViews.swift */; };
@@ -559,6 +562,13 @@
 			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
 			remoteInfo = FinniversKit;
 		};
+		44E505AA237B14E10067B949 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44E505A4237B14E10067B949;
+			remoteInfo = Sparkle;
+		};
 		DAD475A221149386009449DF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
@@ -576,6 +586,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */,
+				44E505AD237B14E10067B949 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,6 +782,9 @@
 		44D912682077AD0200486848 /* PopupViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDefaultData.swift; sourceTree = "<group>"; };
 		44D912692077AD0200486848 /* PopupViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDemoView.swift; sourceTree = "<group>"; };
 		44D912722077AD1200486848 /* EmptyViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoView.swift; sourceTree = "<group>"; };
+		44E505A5237B14E10067B949 /* Sparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Sparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44E505A7237B14E10067B949 /* Sparkle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sparkle.h; sourceTree = "<group>"; };
+		44E505A8237B14E10067B949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44EBDA4E2347465C00F95F2B /* TestCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCheck.swift; sourceTree = "<group>"; };
 		44F8831120551D59003E3171 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		44FEBC0A23322D4C009AC5E4 /* DnaDemoViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnaDemoViews.swift; sourceTree = "<group>"; };
@@ -1133,6 +1147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */,
+				44E505AC237B14E10067B949 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1142,6 +1157,13 @@
 			files = (
 				14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */,
 				9BD13F7023570AF000CAA6BB /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44E505A2237B14E10067B949 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1356,6 +1378,7 @@
 				4447F6631FDB2B110033DBC1 /* Sources */,
 				14405C521FAFBBF000D03E04 /* Demo */,
 				14F4F1BA1FD6CEA800E9CECA /* UnitTests */,
+				44E505A6237B14E10067B949 /* Sparkle */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
 				CF87A850229C0C3600DA8243 /* Recovered References */,
@@ -1368,6 +1391,7 @@
 				CB3CF1561F73E5870041EF20 /* FinniversKit.framework */,
 				14405C741FAFBD1800D03E04 /* Demo.app */,
 				14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */,
+				44E505A5237B14E10067B949 /* Sparkle.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2068,6 +2092,15 @@
 				44D912572077AC8A00486848 /* RectangleView.swift */,
 			);
 			path = MovableBlockView;
+			sourceTree = "<group>";
+		};
+		44E505A6237B14E10067B949 /* Sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				44E505A7237B14E10067B949 /* Sparkle.h */,
+				44E505A8237B14E10067B949 /* Info.plist */,
+			);
+			path = Sparkle;
 			sourceTree = "<group>";
 		};
 		44F8831020551D59003E3171 /* Foundation */ = {
@@ -4010,6 +4043,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		44E505A0237B14E10067B949 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44E505A9237B14E10067B949 /* Sparkle.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CB3CF1531F73E5870041EF20 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -4037,6 +4078,7 @@
 			);
 			dependencies = (
 				44D32C2B1FB07850001E86D6 /* PBXTargetDependency */,
+				44E505AB237B14E10067B949 /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
@@ -4064,6 +4106,24 @@
 			productName = UnitTests;
 			productReference = 14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		44E505A4237B14E10067B949 /* Sparkle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44E505B0237B14E10067B949 /* Build configuration list for PBXNativeTarget "Sparkle" */;
+			buildPhases = (
+				44E505A0237B14E10067B949 /* Headers */,
+				44E505A1237B14E10067B949 /* Sources */,
+				44E505A2237B14E10067B949 /* Frameworks */,
+				44E505A3237B14E10067B949 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sparkle;
+			productName = Sparkle;
+			productReference = 44E505A5237B14E10067B949 /* Sparkle.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		CB3CF1551F73E5870041EF20 /* FinniversKit */ = {
 			isa = PBXNativeTarget;
@@ -4107,6 +4167,9 @@
 						ProvisioningStyle = Manual;
 						TestTargetID = 14405C691FAFBD1800D03E04;
 					};
+					44E505A4237B14E10067B949 = {
+						CreatedOnToolsVersion = 11.1;
+					};
 					CB3CF1551F73E5870041EF20 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1020;
@@ -4133,6 +4196,7 @@
 				CB3CF1551F73E5870041EF20 /* FinniversKit */,
 				14405C691FAFBD1800D03E04 /* Demo */,
 				14F4F1B81FD6CEA800E9CECA /* UnitTests */,
+				44E505A4237B14E10067B949 /* Sparkle */,
 			);
 		};
 /* End PBXProject section */
@@ -4148,6 +4212,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		14F4F1B71FD6CEA800E9CECA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44E505A3237B14E10067B949 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4393,6 +4464,13 @@
 				14193AB021380DC800EC7FC0 /* RecyclingViewTests.swift in Sources */,
 				9F213830B2F4E5DFE596431F /* KeyboardNotificationInfoTest.swift in Sources */,
 				9BEAA36D233B729500240F3D /* XCTestCastExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44E505A1237B14E10067B949 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4754,6 +4832,11 @@
 			target = CB3CF1551F73E5870041EF20 /* FinniversKit */;
 			targetProxy = 44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */;
 		};
+		44E505AB237B14E10067B949 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44E505A4237B14E10067B949 /* Sparkle */;
+			targetProxy = 44E505AA237B14E10067B949 /* PBXContainerItemProxy */;
+		};
 		DAD475A321149386009449DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 14405C691FAFBD1800D03E04 /* Demo */;
@@ -4991,6 +5074,77 @@
 			};
 			name = Release;
 		};
+		44E505AE237B14E10067B949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = D34XZHQLE3;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Sparkle/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Sparkle;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		44E505AF237B14E10067B949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = D34XZHQLE3;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Sparkle/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Sparkle;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		CB3CF15B1F73E5870041EF20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5100,6 +5254,15 @@
 			buildConfigurations = (
 				25D04D8B1F583B1800EA317D /* Debug */,
 				25D04D8C1F583B1800EA317D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44E505B0237B14E10067B949 /* Build configuration list for PBXNativeTarget "Sparkle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44E505AE237B14E10067B949 /* Debug */,
+				44E505AF237B14E10067B949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
