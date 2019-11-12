@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Sparkle
 
 class DemoViewsTableViewController: UITableViewController {
     private lazy var selectorTitleView: SelectorTitleView = {
@@ -32,7 +33,7 @@ class DemoViewsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if let indexPath = State.lastSelectedIndexPath {
+        if let indexPath = SparkleState.lastSelectedIndexPath {
             if let viewController = Sections.viewController(for: indexPath) {
                 if let bottomSheet = viewController as? BottomSheet {
                     present(bottomSheet, animated: true)
@@ -66,21 +67,21 @@ class DemoViewsTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         navigationItem.titleView = selectorTitleView
-        selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
+        selectorTitleView.title = Sections.title(for: SparkleState.lastSelectedSection).uppercased()
         updateColors(animated: false)
     }
 
     private func updateMoonButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped(sender:forEvent:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SparkleState.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped(sender:forEvent:)))
         return
     }
 
     @objc private func moonTapped(sender: AnyObject, forEvent event: UIEvent) {
         if event.allTouches?.first?.tapCount == 0 {
             // Long press
-            State.setCurrentUserInterfaceStyle(nil, in: view.window)
+            SparkleState.setCurrentUserInterfaceStyle(nil, in: view.window)
         } else {
-            State.setCurrentUserInterfaceStyle(State.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light, in: view.window)
+            SparkleState.setCurrentUserInterfaceStyle(SparkleState.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light, in: view.window)
         }
         NotificationCenter.default.post(name: .didChangeUserInterfaceStyle, object: nil)
 
@@ -109,7 +110,7 @@ class DemoViewsTableViewController: UITableViewController {
     private func evaluateIndexAndValues() {
         indexAndValues.removeAll()
 
-        for name in Sections.formattedNames(for: State.lastSelectedSection) {
+        for name in Sections.formattedNames(for: SparkleState.lastSelectedSection) {
             let firstLetter = String(name.prefix(1))
             var values = [String]()
             if let existingValues = indexAndValues[firstLetter] {
@@ -137,7 +138,7 @@ class DemoViewsTableViewController: UITableViewController {
             row += elementsInSection
         }
         row += indexPath.row
-        return IndexPath(row: row, section: State.lastSelectedSection)
+        return IndexPath(row: row, section: SparkleState.lastSelectedSection)
     }
 
     private var sections: [String] {
@@ -184,7 +185,7 @@ extension DemoViewsTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let realIndexPath = evaluateRealIndexPath(for: indexPath)
-        State.lastSelectedIndexPath = realIndexPath
+        SparkleState.lastSelectedIndexPath = realIndexPath
         if let viewController = Sections.viewController(for: realIndexPath) {
             present(viewController, animated: true)
         }
@@ -214,7 +215,7 @@ extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
         let items = Sections.items.map { BasicTableViewItem(title: $0.rawValue.uppercased()) }
         let sectionsTableView = BasicTableView(items: items)
-        sectionsTableView.selectedIndexPath = IndexPath(row: State.lastSelectedSection, section: 0)
+        sectionsTableView.selectedIndexPath = IndexPath(row: SparkleState.lastSelectedSection, section: 0)
         sectionsTableView.delegate = self
         bottomSheet = BottomSheet(view: sectionsTableView, draggableArea: .everything)
         if let controller = bottomSheet {
@@ -225,8 +226,8 @@ extension DemoViewsTableViewController: SelectorTitleViewDelegate {
 
 extension DemoViewsTableViewController: BasicTableViewDelegate {
     func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
-        State.lastSelectedSection = index
-        selectorTitleView.title = Sections.title(for: State.lastSelectedSection).uppercased()
+        SparkleState.lastSelectedSection = index
+        selectorTitleView.title = Sections.title(for: SparkleState.lastSelectedSection).uppercased()
         evaluateIndexAndValues()
         tableView.reloadData()
         bottomSheet?.state = .dismissed

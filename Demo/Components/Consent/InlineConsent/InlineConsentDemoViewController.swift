@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Sparkle
 
 class InlineConsentDemoViewController: UIViewController {
 
@@ -103,7 +104,7 @@ class InlineConsentDemoViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func handleDismissTap() {
-        State.lastSelectedIndexPath = nil
+        SparkleState.lastSelectedIndexPath = nil
         dismiss(animated: true)
     }
 

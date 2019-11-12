@@ -2,6 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 import FinniversKit
+import Sparkle
 
 /// Defines the way the demo controller will be dismissed
 ///
@@ -102,7 +103,7 @@ public class BaseDemoViewController<View: UIView>: UIViewController, Containable
     }
 
     @objc private func didDoubleTap() {
-        State.lastSelectedIndexPath = nil
+        SparkleState.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 
@@ -134,9 +135,9 @@ public class BaseDemoViewController<View: UIView>: UIViewController, Containable
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if State.shouldShowDismissInstructions {
+        if SparkleState.shouldShowDismissInstructions {
             miniToastView.show(in: view)
-            State.shouldShowDismissInstructions = false
+            SparkleState.shouldShowDismissInstructions = false
         }
     }
 }

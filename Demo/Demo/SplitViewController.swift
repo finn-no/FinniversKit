@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Sparkle
 
 class SplitViewController: UISplitViewController {
     lazy var alternativeViewController: UIViewController = {
@@ -34,7 +35,7 @@ class SplitViewController: UISplitViewController {
     }
 
     @objc func didDoubleTap() {
-        State.lastSelectedIndexPath = nil
+        SparkleState.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 }
