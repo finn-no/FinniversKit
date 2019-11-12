@@ -1,13 +1,11 @@
-//
-//  Copyright © FINN.no AS, Inc. All rights reserved.
-//
-
-import FinniversKit
+import UIKit
+import SparkleCommon
 
 class MiniToastView: UIView {
     lazy var titleLabel: UILabel = {
-        let label = Label(style: .body)
-        label.textColor = .textToast
+        let label = UILabel()
+        // label.font = .body
+        // label.textColor = .text
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
@@ -18,7 +16,7 @@ class MiniToastView: UIView {
 
         addSubview(titleLabel)
         titleLabel.fillInSuperview(insets: UIEdgeInsets(top: .mediumSpacing, leading: .mediumLargeSpacing, bottom: -.mediumSpacing, trailing: -.mediumLargeSpacing))
-        backgroundColor = .bgAlert
+        // backgroundColor = .bgAlert
         layer.cornerRadius = .mediumLargeSpacing
     }
 
