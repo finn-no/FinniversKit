@@ -69,6 +69,10 @@
 		4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A72027AC71008C0BD9 /* ColorDemoView.swift */; };
 		4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6AA2027AC7A008C0BD9 /* FontDemoView.swift */; };
 		4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6AD2027AC7F008C0BD9 /* SpacingDemoView.swift */; };
+		440E70AF237B2ACA00282468 /* FINNTypeWebStrippet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 440E70AB237B2ACA00282468 /* FINNTypeWebStrippet-Light.ttf */; };
+		440E70B0237B2ACA00282468 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 440E70AC237B2ACA00282468 /* FINNTypeWebStrippet-Medium.ttf */; };
+		440E70B1237B2ACA00282468 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 440E70AD237B2ACA00282468 /* FINNTypeWebStrippet-Regular.ttf */; };
+		440E70B2237B2ACA00282468 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 440E70AE237B2ACA00282468 /* FINNTypeWebStrippet-Bold.ttf */; };
 		4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4412FDCC20A433550037A2FC /* SplitViewController.swift */; };
 		441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIViewExtensions.swift */; };
 		441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE419209A24E500B04EF1 /* MarketsGridViewCell.swift */; };
@@ -113,10 +117,6 @@
 		4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6AD1FDB2B110033DBC1 /* ToastView.swift */; };
 		4447F6F81FDB2B110033DBC1 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6B71FDB2B110033DBC1 /* Identifiable.swift */; };
 		4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6B91FDB2B110033DBC1 /* Assets.xcassets */; };
-		4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */; };
-		4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */; };
-		4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */; };
-		4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */; };
 		4447F7021FDB2B110033DBC1 /* FinniversKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4447F6C51FDB2B110033DBC1 /* FinniversKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4447F7031FDB2B110033DBC1 /* FinniversKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */; };
 		4447F7041FDB2B1F0033DBC1 /* ButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */; };
@@ -162,8 +162,6 @@
 		44A557B522E72187001667AE /* HeartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B222E72187001667AE /* HeartTableViewCell.swift */; };
 		44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B322E72187001667AE /* CheckboxTableViewCell.swift */; };
 		44AD5E8A237B1DF90035EE0C /* SparkleCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 44AD5E88237B1DF80035EE0C /* SparkleCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		44AD5E8D237B1DF90035EE0C /* SparkleCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; };
-		44AD5E8E237B1DF90035EE0C /* SparkleCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44AEFC2322E722FC00D3C307 /* RemoteImageCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEFC1922E722FC00D3C307 /* RemoteImageCellDemoView.swift */; };
 		44AEFC2422E722FC00D3C307 /* BasicCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEFC1B22E722FC00D3C307 /* BasicCellDemoView.swift */; };
 		44AEFC2522E722FC00D3C307 /* BasicCellVariationsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEFC1C22E722FC00D3C307 /* BasicCellVariationsDemoView.swift */; };
@@ -188,6 +186,8 @@
 		44D3160A237B202300A5A93B /* SparkleCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D3160E237B21C400A5A93B /* SparkleCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; };
 		44D3160F237B21C400A5A93B /* SparkleCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44D31613237B22B200A5A93B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sparkle.framework */; };
+		44D31614237B22B200A5A93B /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912512077AC8A00486848 /* EmptyView.swift */; };
@@ -200,8 +200,6 @@
 		44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912692077AD0200486848 /* PopupViewDemoView.swift */; };
 		44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912722077AD1200486848 /* EmptyViewDemoView.swift */; };
 		44E505A9237B14E10067B949 /* Sparkle.h in Headers */ = {isa = PBXBuildFile; fileRef = 44E505A7237B14E10067B949 /* Sparkle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		44E505AC237B14E10067B949 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sparkle.framework */; };
-		44E505AD237B14E10067B949 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44E505B2237B151B0067B949 /* Sparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E505B1237B151B0067B949 /* Sparkle.swift */; };
 		44E505B4237B15660067B949 /* SparkleHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E505B3237B15660067B949 /* SparkleHelpers.swift */; };
 		44E505B6237B1B2B0067B949 /* MiniToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E505B5237B1B2B0067B949 /* MiniToastView.swift */; };
@@ -564,13 +562,6 @@
 			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
 			remoteInfo = FinniversKit;
 		};
-		44AD5E8B237B1DF90035EE0C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 44AD5E85237B1DF80035EE0C;
-			remoteInfo = SparkleCommon;
-		};
 		44D3160B237B202300A5A93B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
@@ -585,19 +576,19 @@
 			remoteGlobalIDString = 44AD5E85237B1DF80035EE0C;
 			remoteInfo = SparkleCommon;
 		};
+		44D31615237B22B200A5A93B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44E505A4237B14E10067B949;
+			remoteInfo = Sparkle;
+		};
 		44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CB3CF1551F73E5870041EF20;
 			remoteInfo = FinniversKit;
-		};
-		44E505AA237B14E10067B949 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 44E505A4237B14E10067B949;
-			remoteInfo = Sparkle;
 		};
 		DAD475A221149386009449DF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -638,8 +629,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */,
-				44E505AD237B14E10067B949 /* Sparkle.framework in Embed Frameworks */,
-				44AD5E8E237B1DF90035EE0C /* SparkleCommon.framework in Embed Frameworks */,
+				44D31614237B22B200A5A93B /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,6 +700,10 @@
 		4408A6A72027AC71008C0BD9 /* ColorDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDemoView.swift; sourceTree = "<group>"; };
 		4408A6AA2027AC7A008C0BD9 /* FontDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontDemoView.swift; sourceTree = "<group>"; };
 		4408A6AD2027AC7F008C0BD9 /* SpacingDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacingDemoView.swift; sourceTree = "<group>"; };
+		440E70AB237B2ACA00282468 /* FINNTypeWebStrippet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Light.ttf"; sourceTree = "<group>"; };
+		440E70AC237B2ACA00282468 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
+		440E70AD237B2ACA00282468 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
+		440E70AE237B2ACA00282468 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
 		4412FDCC20A433550037A2FC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		441D69981FEA947500CD919A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		441FE419209A24E500B04EF1 /* MarketsGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewCell.swift; sourceTree = "<group>"; };
@@ -761,10 +755,6 @@
 		4447F6B51FDB2B110033DBC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4447F6B71FDB2B110033DBC1 /* Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		4447F6B91FDB2B110033DBC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
-		4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Light.ttf"; sourceTree = "<group>"; };
-		4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
-		4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
 		4447F6C51FDB2B110033DBC1 /* FinniversKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinniversKit.h; sourceTree = "<group>"; };
 		4447F6C61FDB2B110033DBC1 /* FinniversKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinniversKit.swift; sourceTree = "<group>"; };
 		4451BEC5230163AA00879B7F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -1205,8 +1195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */,
-				44E505AC237B14E10067B949 /* Sparkle.framework in Frameworks */,
-				44AD5E8D237B1DF90035EE0C /* SparkleCommon.framework in Frameworks */,
+				44D31613237B22B200A5A93B /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1338,6 +1327,7 @@
 		14405C521FAFBBF000D03E04 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				440E70A9237B2ACA00282468 /* Resources */,
 				44AEFC1722E722FC00D3C307 /* Cells */,
 				CF8F021421DCC5B2004C4042 /* Components */,
 				AAF7C95D222432EC003110DB /* Demo */,
@@ -1516,6 +1506,25 @@
 				4408A6A22027AC41008C0BD9 /* Font.swift */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		440E70A9237B2ACA00282468 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				440E70AA237B2ACA00282468 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		440E70AA237B2ACA00282468 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				440E70AB237B2ACA00282468 /* FINNTypeWebStrippet-Light.ttf */,
+				440E70AC237B2ACA00282468 /* FINNTypeWebStrippet-Medium.ttf */,
+				440E70AD237B2ACA00282468 /* FINNTypeWebStrippet-Regular.ttf */,
+				440E70AE237B2ACA00282468 /* FINNTypeWebStrippet-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		441FE414209A24E500B04EF1 /* Recycling */ = {
@@ -1828,7 +1837,6 @@
 		4447F6B81FDB2B110033DBC1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4447F6BA1FDB2B110033DBC1 /* Fonts */,
 				CF3D5EEF215A6D9E006E4D08 /* Sounds */,
 				DAC0383A2119B7DC00CD49B7 /* Icons.xcassets */,
 				4447F6B91FDB2B110033DBC1 /* Assets.xcassets */,
@@ -1839,17 +1847,6 @@
 				144959DA2122C4400084549F /* FinniversImageAsset.m */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		4447F6BA1FDB2B110033DBC1 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				4447F6BB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf */,
-				4447F6BC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf */,
-				4447F6BD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf */,
-				4447F6BE1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		44587010213FA344009187BE /* Login */ = {
@@ -4167,8 +4164,7 @@
 			);
 			dependencies = (
 				44D32C2B1FB07850001E86D6 /* PBXTargetDependency */,
-				44E505AB237B14E10067B949 /* PBXTargetDependency */,
-				44AD5E8C237B1DF90035EE0C /* PBXTargetDependency */,
+				44D31616237B22B200A5A93B /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
@@ -4325,7 +4321,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */,
+				440E70AF237B2ACA00282468 /* FINNTypeWebStrippet-Light.ttf in Resources */,
+				440E70B2237B2ACA00282468 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
+				440E70B0237B2ACA00282468 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 				144351BB1FBE2BF1007B2229 /* Assets.xcassets in Resources */,
+				440E70B1237B2ACA00282468 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4357,17 +4357,13 @@
 				CF3D5EF6215A6D9E006E4D08 /* kick.wav in Resources */,
 				DAC0383B2119B7DC00CD49B7 /* Icons.xcassets in Resources */,
 				DAD0D48F210735060091DD4D /* RadiobuttonAnimation.xcassets in Resources */,
-				4447F6FD1FDB2B110033DBC1 /* FINNTypeWebStrippet-Regular.ttf in Resources */,
-				4447F6FB1FDB2B110033DBC1 /* FINNTypeWebStrippet-Light.ttf in Resources */,
 				CF3D5EF5215A6D9E006E4D08 /* pusefinn.wav in Resources */,
 				4447F6F91FDB2B110033DBC1 /* Assets.xcassets in Resources */,
 				CF4A054421FB2B4E000BB7DA /* Piano.sf2 in Resources */,
 				CF3D5EF4215A6D9E006E4D08 /* hi-hats.wav in Resources */,
 				CF3D5EF7215A6D9E006E4D08 /* snare.wav in Resources */,
 				08D8B2ED2193129700EA22CC /* CheckboxAnimation.xcassets in Resources */,
-				4447F6FA1FDB2B110033DBC1 /* FINNTypeWebStrippet-Bold.ttf in Resources */,
 				CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */,
-				4447F6FC1FDB2B110033DBC1 /* FINNTypeWebStrippet-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4961,11 +4957,6 @@
 			target = CB3CF1551F73E5870041EF20 /* FinniversKit */;
 			targetProxy = 14F4F1BF1FD6CEA800E9CECA /* PBXContainerItemProxy */;
 		};
-		44AD5E8C237B1DF90035EE0C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 44AD5E85237B1DF80035EE0C /* SparkleCommon */;
-			targetProxy = 44AD5E8B237B1DF90035EE0C /* PBXContainerItemProxy */;
-		};
 		44D3160C237B202300A5A93B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 44AD5E85237B1DF80035EE0C /* SparkleCommon */;
@@ -4976,15 +4967,15 @@
 			target = 44AD5E85237B1DF80035EE0C /* SparkleCommon */;
 			targetProxy = 44D31610237B21C400A5A93B /* PBXContainerItemProxy */;
 		};
+		44D31616237B22B200A5A93B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44E505A4237B14E10067B949 /* Sparkle */;
+			targetProxy = 44D31615237B22B200A5A93B /* PBXContainerItemProxy */;
+		};
 		44D32C2B1FB07850001E86D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CB3CF1551F73E5870041EF20 /* FinniversKit */;
 			targetProxy = 44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */;
-		};
-		44E505AB237B14E10067B949 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 44E505A4237B14E10067B949 /* Sparkle */;
-			targetProxy = 44E505AA237B14E10067B949 /* PBXContainerItemProxy */;
 		};
 		DAD475A321149386009449DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

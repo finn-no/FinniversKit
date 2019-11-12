@@ -14,8 +14,7 @@ extension ChristmasWishListView {
         // MARK: - Private properties
         private lazy var titleLabel: UILabel = {
             let label = UILabel(withAutoLayout: true)
-            let font = UIFont(name: FontType.bold.rawValue, size: 22)?
-                .scaledFont(forTextStyle: .title2)
+            let font = UIFont.title3Bold
             label.font = font
             label.textAlignment = .center
             label.textColor = .textPrimary
