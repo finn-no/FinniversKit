@@ -105,6 +105,7 @@
 		444246032137D60400D42AB8 /* FavoriteFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */; };
 		444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246052137D61100D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift */; };
 		444246082137D61200D42AB8 /* FavoriteFoldersListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444246062137D61100D42AB8 /* FavoriteFoldersListDemoView.swift */; };
+		4446060C237B37550050D865 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446060B237B37550050D865 /* Palette.swift */; };
 		4447F6C71FDB2B110033DBC1 /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6661FDB2B110033DBC1 /* Button+Style.swift */; };
 		4447F6C81FDB2B110033DBC1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6671FDB2B110033DBC1 /* Button.swift */; };
 		4447F6D11FDB2B110033DBC1 /* Label+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F6751FDB2B110033DBC1 /* Label+Style.swift */; };
@@ -737,6 +738,7 @@
 		444246002137D60400D42AB8 /* FavoriteFolderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderViewModel.swift; sourceTree = "<group>"; };
 		444246052137D61100D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListViewDemoViewHelpers.swift; sourceTree = "<group>"; };
 		444246062137D61100D42AB8 /* FavoriteFoldersListDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFoldersListDemoView.swift; sourceTree = "<group>"; };
+		4446060B237B37550050D865 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		4447F6661FDB2B110033DBC1 /* Button+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		4447F6671FDB2B110033DBC1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		4447F6691FDB2B110033DBC1 /* ButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDemoView.swift; sourceTree = "<group>"; };
@@ -2015,6 +2017,7 @@
 				44AD5E88237B1DF80035EE0C /* SparkleCommon.h */,
 				44AD5E89237B1DF90035EE0C /* Info.plist */,
 				44D31607237B1F4800A5A93B /* SparkleCommon.swift */,
+				4446060B237B37550050D865 /* Palette.swift */,
 			);
 			path = SparkleCommon;
 			sourceTree = "<group>";
@@ -4588,6 +4591,7 @@
 				44D315FF237B1EF400A5A93B /* Layout.swift in Sources */,
 				44D31608237B1F4800A5A93B /* SparkleCommon.swift in Sources */,
 				44D31605237B1F1F00A5A93B /* Spacing.swift in Sources */,
+				4446060C237B37550050D865 /* Palette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

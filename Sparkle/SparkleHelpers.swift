@@ -1,4 +1,5 @@
 import UIKit
+import SparkleCommon
 
 extension String {
     public var capitalizingFirstLetter: String {
@@ -28,7 +29,7 @@ public struct SparkleState {
     private static let lastSelectedDeviceKey = "lastSelectedDeviceKey"
     public static let currentUserInterfaceStyleKey = "currentUserInterfaceStyleKey"
 
-    public static let defaultUserInterfaceStyleSupport: Sparkle.UserInterfaceStyleSupport = {
+    public static let defaultUserInterfaceStyleSupport: SparkleCommon.UserInterfaceStyleSupport = {
         if #available(iOS 13.0, *) {
             return .dynamic
         }
@@ -110,10 +111,10 @@ public struct SparkleState {
         }
         if let userInterfaceStyle = userInterfaceStyle {
             UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
-            Sparkle.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
+            SparkleCommon.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
         } else {
             UserDefaults.standard.removeObject(forKey: currentUserInterfaceStyleKey)
-            Sparkle.userInterfaceStyleSupport = defaultUserInterfaceStyleSupport
+            SparkleCommon.userInterfaceStyleSupport = defaultUserInterfaceStyleSupport
         }
         UserDefaults.standard.synchronize()
     }
