@@ -1,6 +1,6 @@
 import UIKit
 
-class NavigationController: UINavigationController {
+public class NavigationController: UINavigationController {
     private var hairlineView: UIView?
     var hairlineIsHidden: Bool = false {
         didSet {
@@ -11,7 +11,7 @@ class NavigationController: UINavigationController {
         }
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         navigationBar.isTranslucent = false
@@ -19,7 +19,7 @@ class NavigationController: UINavigationController {
         NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange), name: .didChangeUserInterfaceStyle, object: nil)
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if #available(iOS 13.0, *) {

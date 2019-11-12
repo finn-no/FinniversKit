@@ -59,7 +59,7 @@ extension BottomSheet {
     }
 }
 
-public class BottomSheet: UIViewController {
+open class BottomSheet: UIViewController {
     public enum DraggableArea {
         case everything
         case navigationBar
@@ -96,7 +96,7 @@ public class BottomSheet: UIViewController {
 
     public let dimView: UIView
 
-    let notch = Notch(withAutoLayout: true)
+    public let notch = Notch(withAutoLayout: true)
 
     var draggableRect: CGRect? {
         switch draggableArea {
@@ -115,8 +115,8 @@ public class BottomSheet: UIViewController {
         }
     }
 
-    let notchHeight: CGFloat = 20
-    var isDefaultPresentationStyle: Bool { modalPresentationStyle == .custom }
+    public let notchHeight: CGFloat = 20
+    public var isDefaultPresentationStyle: Bool { modalPresentationStyle == .custom }
 
     // MARK: - Private properties
 
@@ -155,7 +155,7 @@ public class BottomSheet: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = rootViewController.view.backgroundColor ?? .bgPrimary
         view.clipsToBounds = true
@@ -204,7 +204,7 @@ extension BottomSheet: BottomSheetPresentationControllerDelegate {
 
 // MARK: - Notch
 
-final class Notch: UIView {
+public class Notch: UIView {
     var isHandleHidden: Bool {
         get { handle.isHidden }
         set { handle.isHidden = newValue }

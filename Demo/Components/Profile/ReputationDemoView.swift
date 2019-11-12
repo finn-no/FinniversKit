@@ -3,12 +3,13 @@
 //
 
 import FinniversKit
+import Sparkle
 
 class ReputationDemoView: UIView, Tweakable {
 
     // MARK: - Private properties
 
-    lazy var tweakingOptions: [TweakingOption] = {
+    lazy public var tweakingOptions: [TweakingOption] = {
         let options = [
             TweakingOption(title: "Nil out view models", action: {
                 self.reputationViews.forEach { $0.0.viewModel = nil }

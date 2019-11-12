@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Sparkle
 
 enum AdsSorting: String {
     case lastAdded = "Sist lagt til"
@@ -31,7 +32,7 @@ class FavoriteAdsListDemoView: UIView, Tweakable {
         return view
     }()
 
-    lazy var tweakingOptions: [TweakingOption] = {
+    lazy public var tweakingOptions: [TweakingOption] = {
         [
             TweakingOption(title: "Selection mode", description: nil) { [weak self] in
                 self?.resetViewModels()

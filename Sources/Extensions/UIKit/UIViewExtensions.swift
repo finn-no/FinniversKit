@@ -5,11 +5,6 @@
 import UIKit
 
 public extension UIView {
-    convenience init(withAutoLayout autoLayout: Bool) {
-        self.init()
-        translatesAutoresizingMaskIntoConstraints = !autoLayout
-    }
-
     func dropShadow(color: UIColor, opacity: Float = 0.5, offset: CGSize = CGSize.zero, radius: CGFloat = 10.0) {
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor

@@ -3,11 +3,12 @@
 //
 
 import FinniversKit
+import Sparkle
 
 public class EmptyViewDemoView: UIView, Tweakable {
     var emptyView: EmptyView?
 
-    lazy var tweakingOptions: [TweakingOption] = {
+    lazy public var tweakingOptions: [TweakingOption] = {
         var options = [TweakingOption]()
 
         options.append(TweakingOption(title: "Shapes Empty View") {

@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Sparkle
 
 struct LoanCalculatorDemoViewModel: LoanCalculatorViewModel {
     var title: String?
@@ -19,7 +20,7 @@ struct LoanCalculatorDemoViewModel: LoanCalculatorViewModel {
 }
 
 class LoanCalculatorDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = {
+    lazy public var tweakingOptions: [TweakingOption] = {
         let options = [
             TweakingOption(title: "Normal view model", action: {
                 self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel())

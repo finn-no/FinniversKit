@@ -125,6 +125,10 @@ public class Palette: NSObject {
         let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)!
         return Palette.shared.defaultCellSelectedBackgroundColor ??  dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.4))
     }
+
+    public class var dimmingColor: UIColor {
+        return UIColor.black.withAlphaComponent(0.4) //DARK
+    }
 }
 
 // MARK: - FINN UIColors

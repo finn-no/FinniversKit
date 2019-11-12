@@ -1,8 +1,8 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-import FinniversKit
 import UIKit
+import SparkleCommon
 
 enum TabletDisplayMode {
     case master
@@ -11,29 +11,14 @@ enum TabletDisplayMode {
 }
 
 enum Sections: String, CaseIterable {
-    case dna
-    case components
-    case cells
-    case recycling
-    case fullscreen
+    case demo
 
     static var items: [Sections] {
         return allCases
     }
 
     var numberOfItems: Int {
-        switch self {
-        case .dna:
-            return DnaDemoViews.items.count
-        case .components:
-            return ComponentDemoViews.items.count
-        case .cells:
-            return CellsDemoViews.items.count
-        case .recycling:
-            return RecyclingDemoViews.items.count
-        case .fullscreen:
-            return FullscreenDemoViews.items.count
-        }
+        return 0
     }
 
     static func title(for section: Int) -> String {
@@ -46,16 +31,8 @@ enum Sections: String, CaseIterable {
         let section = Sections.items[section]
         let names: [String]
         switch section {
-        case .dna:
-            names = DnaDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
-        case .components:
-            names = ComponentDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
-        case .cells:
-            names = CellsDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
-        case .recycling:
-            names = RecyclingDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
-        case .fullscreen:
-            names = FullscreenDemoViews.items.sorted { $0.rawValue < $1.rawValue }.map { $0.rawValue.capitalizingFirstLetter }
+        case .demo:
+            names = [""]
         }
         return names
     }
@@ -64,23 +41,9 @@ enum Sections: String, CaseIterable {
         let section = Sections.items[indexPath.section]
         var rawClassName: String
         switch section {
-        case .dna:
-            let names = DnaDemoViews.items.sorted { $0.rawValue < $1.rawValue }
-            rawClassName = names[indexPath.row].rawValue
-        case .components:
-            let names = ComponentDemoViews.items.sorted { $0.rawValue < $1.rawValue }
-            rawClassName = names[indexPath.row].rawValue
-        case .cells:
-            let names = CellsDemoViews.items.sorted { $0.rawValue < $1.rawValue }
-            rawClassName = names[indexPath.row].rawValue
-        case .recycling:
-            let names = RecyclingDemoViews.items.sorted { $0.rawValue < $1.rawValue }
-            rawClassName = names[indexPath.row].rawValue
-        case .fullscreen:
-            let names = FullscreenDemoViews.items.sorted { $0.rawValue < $1.rawValue }
-            rawClassName = names[indexPath.row].rawValue
+        case .demo:
+            rawClassName = ""
         }
-
         return rawClassName.capitalizingFirstLetter
     }
 
@@ -95,21 +58,8 @@ enum Sections: String, CaseIterable {
         }
         var viewController: UIViewController?
         switch section {
-        case .dna:
-            let selectedView = DnaDemoViews.items[safe: indexPath.row]
-            viewController = selectedView?.viewController
-        case .components:
-            let selectedView = ComponentDemoViews.items[safe: indexPath.row]
-            viewController = selectedView?.viewController
-        case .cells:
-            let selectedView = CellsDemoViews.items[safe: indexPath.row]
-            viewController = selectedView?.viewController
-        case .recycling:
-            let selectedView = RecyclingDemoViews.items[safe: indexPath.row]
-            viewController = selectedView?.viewController
-        case .fullscreen:
-            let selectedView = FullscreenDemoViews.items[safe: indexPath.row]
-            viewController = selectedView?.viewController
+        case .demo:
+            viewController = UIViewController()
         }
 
         let sectionType = Sections.for(indexPath)
@@ -161,9 +111,7 @@ enum Sections: String, CaseIterable {
 
     var tabletDisplayMode: TabletDisplayMode {
         switch self {
-        case .dna, .components, .fullscreen, .cells:
-            return .fullscreen
-        case .recycling:
+        case .demo:
             return .fullscreen
         }
     }

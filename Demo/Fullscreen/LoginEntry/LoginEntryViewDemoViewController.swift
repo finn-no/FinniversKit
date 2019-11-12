@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Sparkle
 
 class LoginEntryViewDemoViewController: BaseDemoViewController<UIView> {
     override var prefersStatusBarHidden: Bool {

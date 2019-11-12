@@ -1,5 +1,5 @@
-import FinniversKit
-import Sparkle
+import UIKit
+import SparkleCommon
 
 protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
     func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController)

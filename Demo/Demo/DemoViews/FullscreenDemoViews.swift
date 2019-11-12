@@ -2,6 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 import FinniversKit
+import Sparkle
 
 public enum FullscreenDemoViews: String, CaseIterable {
     case searchResultMapView

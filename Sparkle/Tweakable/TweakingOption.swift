@@ -1,11 +1,11 @@
 import UIKit
 
-struct TweakingOption {
+public struct TweakingOption {
     var title: String
     var description: String?
-    var action: ((() -> Void)?)
+    public var action: ((() -> Void)?)
 
-    init(title: String, description: String? = nil, action: ((() -> Void))? = nil) {
+    public init(title: String, description: String? = nil, action: ((() -> Void))? = nil) {
         self.title = title
         self.description = description
         self.action = action

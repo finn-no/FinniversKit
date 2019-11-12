@@ -132,8 +132,8 @@ public class SelectorTitleView: UIView {
     // MARK: - Private
 
     private func updateArrowDirection() {
-        let asset: FinniversImageAsset = arrowDirection == .up ? .arrowUpSmall : .arrowDownSmall
-        button.setImage(UIImage(named: asset), for: .normal)
+        // let asset: FinniversImageAsset = arrowDirection == .up ? .arrowUpSmall : .arrowDownSmall
+        // button.setImage(chevron.image(), for: .normal)
     }
 
 }

@@ -1,4 +1,5 @@
 import FinniversKit
+import Sparkle
 
 public enum DnaDemoViews: String, CaseIterable {
     case color

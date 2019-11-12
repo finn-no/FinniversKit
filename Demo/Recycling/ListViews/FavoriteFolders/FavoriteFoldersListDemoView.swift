@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Sparkle
 
 final class FavoriteFoldersListDemoView: UIView, Tweakable {
     private var allFavorites = FavoriteFoldersFactory.create() { didSet { filterFolders() } }
@@ -23,7 +24,7 @@ final class FavoriteFoldersListDemoView: UIView, Tweakable {
         return view
     }()
 
-    lazy var tweakingOptions: [TweakingOption] = {
+    lazy public var tweakingOptions: [TweakingOption] = {
         return [
             TweakingOption(title: "Toggle mode", description: nil) { [weak self] in
                 self?.isEditing = false

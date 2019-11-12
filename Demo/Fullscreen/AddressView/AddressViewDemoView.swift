@@ -4,6 +4,7 @@
 
 import FinniversKit
 import MapKit
+import Sparkle
 
 private enum MapTypes: Int, CaseIterable {
     case standard
@@ -37,7 +38,7 @@ private struct AddressViewData: AddressViewModel {
 }
 
 class AddressViewDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = {
+    lazy public var tweakingOptions: [TweakingOption] = {
         var options = [TweakingOption]()
 
         options.append(TweakingOption(title: "Address data") {

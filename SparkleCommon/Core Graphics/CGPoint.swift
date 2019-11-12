@@ -4,7 +4,7 @@
 
 import UIKit
 
-extension CGPoint {
+public extension CGPoint {
 
     static prefix func - (point: CGPoint) -> CGPoint {
         return CGPoint(x: -point.x, y: -point.y)
@@ -35,7 +35,7 @@ extension CGPoint {
         return point.length < scalar
     }
 
-    public var length: CGFloat {
+    var length: CGFloat {
         return sqrt(pow(x, 2) + pow(y, 2))
     }
 }

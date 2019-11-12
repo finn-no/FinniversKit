@@ -3,9 +3,10 @@
 //
 
 import FinniversKit
+import Sparkle
 
 public class FloatingButtonDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = {
+    lazy public var tweakingOptions: [TweakingOption] = {
         return [
             TweakingOption(title: "Hide badge") {
                 self.floatingButton.itemsCount = 0

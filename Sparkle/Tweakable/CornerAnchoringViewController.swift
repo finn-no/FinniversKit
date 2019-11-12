@@ -1,5 +1,5 @@
-import FinniversKit
-import Sparkle
+import UIKit
+import SparkleCommon
 
 protocol CornerAnchoringViewDelegate: AnyObject {
     func cornerAnchoringViewDidSelectTweakButton(_ cornerAnchoringView: CornerAnchoringView)
@@ -11,7 +11,8 @@ class CornerAnchoringView: UIView {
     private lazy var anchoredView: FloatingButton = {
         let button = FloatingButton(withAutoLayout: true)
         button.tintColor = .btnPrimary
-        button.setImage(UIImage(named: .wrench).withRenderingMode(.alwaysTemplate), for: .normal)
+        // TODO: Needs image
+        // button.setImage(UIImage(named: .wrench).withRenderingMode(.alwaysTemplate), for: .normal)
         button.addTarget(self, action: #selector(tweakButtonAction), for: .touchUpInside)
         return button
     }()

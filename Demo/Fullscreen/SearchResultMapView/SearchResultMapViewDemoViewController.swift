@@ -4,6 +4,7 @@
 
 import FinniversKit
 import MapKit
+import Sparkle
 
 class SearchResultMapViewDemoViewController: BaseDemoViewController<UIView> {
 

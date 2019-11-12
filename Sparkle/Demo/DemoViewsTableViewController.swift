@@ -2,10 +2,10 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import FinniversKit
-import Sparkle
+import UIKit
+import SparkleCommon
 
-class DemoViewsTableViewController: UITableViewController {
+public class DemoViewsTableViewController: UITableViewController {
     private lazy var selectorTitleView: SelectorTitleView = {
         let titleView = SelectorTitleView(withAutoLayout: true)
         titleView.delegate = self
@@ -16,7 +16,7 @@ class DemoViewsTableViewController: UITableViewController {
 
     private var indexAndValues = [String: [String]]()
 
-    init() {
+    public init() {
         super.init(style: .grouped)
 
         NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange), name: .didChangeUserInterfaceStyle, object: nil)
@@ -24,13 +24,13 @@ class DemoViewsTableViewController: UITableViewController {
 
     required init?(coder aDecoder: NSCoder) { fatalError("") }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         setup()
         evaluateIndexAndValues()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         if let indexPath = SparkleState.lastSelectedIndexPath {
@@ -44,7 +44,7 @@ class DemoViewsTableViewController: UITableViewController {
         }
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if #available(iOS 13.0, *) {
@@ -99,7 +99,7 @@ class DemoViewsTableViewController: UITableViewController {
 
     private func updateColors(animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let sectionIndexColor: UIColor = .primaryBlue //DARK
+            let sectionIndexColor: UIColor = .textPrimary
             self.tableView.sectionIndexColor = sectionIndexColor
             self.tableView.backgroundColor = .bgPrimary
             self.updateMoonButton()
@@ -145,7 +145,7 @@ class DemoViewsTableViewController: UITableViewController {
         return Array(indexAndValues.keys.sorted(by: <))
     }
 
-    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
+    override public func present(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
         if viewControllerToPresent.modalPresentationStyle == .pageSheet {
             viewControllerToPresent.modalPresentationStyle = .fullScreen
         }
@@ -156,11 +156,11 @@ class DemoViewsTableViewController: UITableViewController {
 // MARK: - UITableViewDelegate
 
 extension DemoViewsTableViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override public func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let index = sections[section]
         if let values = indexAndValues[index] {
             return values.count
@@ -169,7 +169,7 @@ extension DemoViewsTableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
         cell.textLabel?.text = value(for: indexPath)
         cell.textLabel?.font = .bodyRegular
@@ -182,7 +182,7 @@ extension DemoViewsTableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let realIndexPath = evaluateRealIndexPath(for: indexPath)
         SparkleState.lastSelectedIndexPath = realIndexPath
@@ -191,28 +191,28 @@ extension DemoViewsTableViewController {
         }
     }
 
-    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+    override public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sections
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
 
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.textColor = .textDisabled //DARK
             headerView.textLabel?.font = UIFont.captionStrong
         }
     }
 
-    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+    override public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return index
     }
 }
 
 extension DemoViewsTableViewController: SelectorTitleViewDelegate {
-    func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
+    public func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
         let items = Sections.items.map { BasicTableViewItem(title: $0.rawValue.uppercased()) }
         let sectionsTableView = BasicTableView(items: items)
         sectionsTableView.selectedIndexPath = IndexPath(row: SparkleState.lastSelectedSection, section: 0)
@@ -225,7 +225,7 @@ extension DemoViewsTableViewController: SelectorTitleViewDelegate {
 }
 
 extension DemoViewsTableViewController: BasicTableViewDelegate {
-    func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
+    public func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
         SparkleState.lastSelectedSection = index
         selectorTitleView.title = Sections.title(for: SparkleState.lastSelectedSection).uppercased()
         evaluateIndexAndValues()

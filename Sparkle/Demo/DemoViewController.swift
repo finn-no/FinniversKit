@@ -1,7 +1,7 @@
-import FinniversKit
-import Sparkle
+import UIKit
+import SparkleCommon
 
-class DemoViewController<View: UIView>: UIViewController {
+public class DemoViewController<View: UIView>: UIViewController {
 
     private(set) var containmentOptions: ContainmentOptions
     private var dismissType: DismissType
@@ -33,7 +33,7 @@ class DemoViewController<View: UIView>: UIViewController {
         return childViewController?.playgroundView
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .black

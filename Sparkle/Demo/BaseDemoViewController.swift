@@ -1,8 +1,7 @@
 //
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
-import FinniversKit
-import Sparkle
+import UIKit
 
 /// Defines the way the demo controller will be dismissed
 ///
@@ -37,9 +36,9 @@ public protocol Containable {
 ///  Container class for components. Wraps the UIView in a container to be displayed.
 ///  If the view conforms to the `Tweakable` protocol it will display a control to show additional options.
 ///  Usage: `BaseDemoViewController<DrumMachineDemoView>()`
-public class BaseDemoViewController<View: UIView>: UIViewController, Containable {
+open class BaseDemoViewController<View: UIView>: UIViewController, Containable {
 
-    private(set) lazy var playgroundView: View = {
+    public private(set) lazy var playgroundView: View = {
         let playgroundView = View(frame: view.frame)
         playgroundView.translatesAutoresizingMaskIntoConstraints = false
         playgroundView.backgroundColor = .bgPrimary
@@ -54,7 +53,7 @@ public class BaseDemoViewController<View: UIView>: UIViewController, Containable
         return view
     }()
 
-    public override var prefersStatusBarHidden: Bool {
+    open override var prefersStatusBarHidden: Bool {
         return true
     }
 
@@ -85,7 +84,7 @@ public class BaseDemoViewController<View: UIView>: UIViewController, Containable
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
         view.addSubview(playgroundView)
@@ -107,13 +106,15 @@ public class BaseDemoViewController<View: UIView>: UIViewController, Containable
         dismiss(animated: true, completion: nil)
     }
 
-    public override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         if !TestCheck.isTesting {
             switch dismissType {
             case .dismissButton:
-                let button = Button(style: .callToAction)
+                // TODO: Needs a dismiss button
+                let button = UIButton()
+                // .callToAction
                 button.setTitle("Dismiss", for: .normal)
                 button.addTarget(self, action: #selector(didDoubleTap), for: .touchUpInside)
                 button.translatesAutoresizingMaskIntoConstraints = false
@@ -132,7 +133,7 @@ public class BaseDemoViewController<View: UIView>: UIViewController, Containable
         }
     }
 
-    public override func viewDidAppear(_ animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         if SparkleState.shouldShowDismissInstructions {

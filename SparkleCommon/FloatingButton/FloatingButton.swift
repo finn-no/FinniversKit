@@ -26,7 +26,8 @@ public final class FloatingButton: UIButton {
     }()
 
     private lazy var badgeLabel: UILabel = {
-        let label = Label(style: .captionStrong)
+        let label = UILabel()
+        label.font = .captionStrong
         label.textColor = .textPrimary
         label.text = "12"
         label.textAlignment = .center
@@ -79,7 +80,8 @@ public final class FloatingButton: UIButton {
         titleLabel?.font = .detail
 
         adjustsImageWhenHighlighted = false
-        setImage(UIImage(named: .easterEgg), for: .normal)
+        // TODO: Needs image
+        // setImage(UIImage(named: .easterEgg), for: .normal)
 
         addSubview(badgeView)
         badgeView.addSubview(badgeLabel)

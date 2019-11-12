@@ -3,7 +3,6 @@
 //
 
 import UIKit
-import Sparkle
 
 class SplitViewController: UISplitViewController {
     lazy var alternativeViewController: UIViewController = {

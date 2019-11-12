@@ -8,11 +8,11 @@ import UIKit.UIDevice
 
 extension UIDevice {
 
-    class func isIPad() -> Bool {
+    public class func isIPad() -> Bool {
         return current.userInterfaceIdiom == .pad
     }
 
-    class func isIPhone() -> Bool {
+    public class func isIPhone() -> Bool {
         return current.userInterfaceIdiom == .phone
     }
 }

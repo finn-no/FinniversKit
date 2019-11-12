@@ -2,10 +2,10 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-import FinniversKit
+import UIKit
 
 public class TweakableDemoView: UIView, Tweakable {
-    lazy var tweakingOptions: [TweakingOption] = {
+    lazy public var tweakingOptions: [TweakingOption] = {
         var options = [TweakingOption]()
 
         options.append(TweakingOption(title: "Option 1", description: nil) { [weak self] in
@@ -19,8 +19,8 @@ public class TweakableDemoView: UIView, Tweakable {
         return options
     }()
 
-    lazy var titleLabel: Label = {
-        let label = Label(withAutoLayout: true)
+    lazy var titleLabel: UILabel = {
+        let label = UILabel(withAutoLayout: true)
         label.text = "Tap the button and choose and option ✨"
         label.textAlignment = .center
         label.numberOfLines = 0
