@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import SparkleCommon
 
 /// Class for referencing the framework bundle
 @objc public class FinniversKit: NSObject {
@@ -17,7 +18,15 @@ import Foundation
         return Bundle(for: FinniversKit.self)
     }
 
-    public static var isDynamicTypeEnabled: Bool = true
+    public static var isDynamicTypeEnabled: Bool {
+        get {
+            return SparkleCommon.isDynamicTypeEnabled
+        }
+
+        set {
+            SparkleCommon.isDynamicTypeEnabled = newValue
+        }
+    }
     public static var userInterfaceStyleSupport: UserInterfaceStyleSupport = .forceLight
 }
 

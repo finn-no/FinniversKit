@@ -65,7 +65,6 @@
 		43EA9793219965F3003A548A /* SoldViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EA9790219965C3003A548A /* SoldViewDemoView.swift */; };
 		4408A69B2027AA9F008C0BD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */; };
 		4408A6A32027AC41008C0BD9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A69E2027AC41008C0BD9 /* Color.swift */; };
-		4408A6A52027AC41008C0BD9 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A22027AC41008C0BD9 /* Font.swift */; };
 		4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6A72027AC71008C0BD9 /* ColorDemoView.swift */; };
 		4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6AA2027AC7A008C0BD9 /* FontDemoView.swift */; };
 		4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408A6AD2027AC7F008C0BD9 /* SpacingDemoView.swift */; };
@@ -73,6 +72,7 @@
 		440E70B0237B2ACA00282468 /* FINNTypeWebStrippet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 440E70AC237B2ACA00282468 /* FINNTypeWebStrippet-Medium.ttf */; };
 		440E70B1237B2ACA00282468 /* FINNTypeWebStrippet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 440E70AD237B2ACA00282468 /* FINNTypeWebStrippet-Regular.ttf */; };
 		440E70B2237B2ACA00282468 /* FINNTypeWebStrippet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 440E70AE237B2ACA00282468 /* FINNTypeWebStrippet-Bold.ttf */; };
+		440E70B4237B2F6D00282468 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E70B3237B2F6D00282468 /* Font.swift */; };
 		4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4412FDCC20A433550037A2FC /* SplitViewController.swift */; };
 		441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441D69981FEA947500CD919A /* UIViewExtensions.swift */; };
 		441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441FE419209A24E500B04EF1 /* MarketsGridViewCell.swift */; };
@@ -696,7 +696,6 @@
 		43EA9790219965C3003A548A /* SoldViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldViewDemoView.swift; sourceTree = "<group>"; };
 		4408A69A2027AA9F008C0BD9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4408A69E2027AC41008C0BD9 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		4408A6A22027AC41008C0BD9 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		4408A6A72027AC71008C0BD9 /* ColorDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDemoView.swift; sourceTree = "<group>"; };
 		4408A6AA2027AC7A008C0BD9 /* FontDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontDemoView.swift; sourceTree = "<group>"; };
 		4408A6AD2027AC7F008C0BD9 /* SpacingDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacingDemoView.swift; sourceTree = "<group>"; };
@@ -704,6 +703,7 @@
 		440E70AC237B2ACA00282468 /* FINNTypeWebStrippet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Medium.ttf"; sourceTree = "<group>"; };
 		440E70AD237B2ACA00282468 /* FINNTypeWebStrippet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Regular.ttf"; sourceTree = "<group>"; };
 		440E70AE237B2ACA00282468 /* FINNTypeWebStrippet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FINNTypeWebStrippet-Bold.ttf"; sourceTree = "<group>"; };
+		440E70B3237B2F6D00282468 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		4412FDCC20A433550037A2FC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		441D69981FEA947500CD919A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		441FE419209A24E500B04EF1 /* MarketsGridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsGridViewCell.swift; sourceTree = "<group>"; };
@@ -1487,7 +1487,6 @@
 			isa = PBXGroup;
 			children = (
 				4408A69D2027AC41008C0BD9 /* Color */,
-				4408A6A12027AC41008C0BD9 /* Font */,
 			);
 			path = DNA;
 			sourceTree = "<group>";
@@ -1498,14 +1497,6 @@
 				4408A69E2027AC41008C0BD9 /* Color.swift */,
 			);
 			path = Color;
-			sourceTree = "<group>";
-		};
-		4408A6A12027AC41008C0BD9 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				4408A6A22027AC41008C0BD9 /* Font.swift */,
-			);
-			path = Font;
 			sourceTree = "<group>";
 		};
 		440E70A9237B2ACA00282468 /* Resources */ = {
@@ -2019,6 +2010,7 @@
 			children = (
 				44D31600237B1F1E00A5A93B /* Spacing */,
 				44D315FD237B1EF400A5A93B /* Layout.swift */,
+				440E70B3237B2F6D00282468 /* Font.swift */,
 				44D315FC237B1EF400A5A93B /* LayoutHelpers.swift */,
 				44AD5E88237B1DF80035EE0C /* SparkleCommon.h */,
 				44AD5E89237B1DF90035EE0C /* Info.plist */,
@@ -4592,6 +4584,7 @@
 			files = (
 				44D315FE237B1EF400A5A93B /* LayoutHelpers.swift in Sources */,
 				44D31606237B1F1F00A5A93B /* Spacing.m in Sources */,
+				440E70B4237B2F6D00282468 /* Font.swift in Sources */,
 				44D315FF237B1EF400A5A93B /* Layout.swift in Sources */,
 				44D31608237B1F4800A5A93B /* SparkleCommon.swift in Sources */,
 				44D31605237B1F1F00A5A93B /* Spacing.swift in Sources */,
@@ -4846,7 +4839,6 @@
 				F2CBE8AC23277557005FAD14 /* ReceiptViewModel.swift in Sources */,
 				9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */,
 				CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */,
-				4408A6A52027AC41008C0BD9 /* Font.swift in Sources */,
 				CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */,
 				CF0647FC2368834B00863D07 /* TopShadowView.swift in Sources */,
 				44A557AF22E7211E001667AE /* RemoteImageTableViewCellViewModel.swift in Sources */,
