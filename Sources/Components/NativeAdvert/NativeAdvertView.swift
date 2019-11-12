@@ -13,12 +13,8 @@ public final class NativeAdvertView: UIView {
 
     // MARK: - Private properties
 
-    private let containerMargin: CGFloat = 8
     private let containerMaxWidth: CGFloat = 400
     private let logoSize: CGFloat = 35
-    private let logoPaddingLeft: CGFloat = 15
-    private let sponsoredByPaddingTop: CGFloat = 5
-    private let sponsoredByInset: CGFloat = 3
 
     // See specification on:
     // https://annonseweb.schibsted.no/nb-no/product/finn-native-ads-16031
@@ -26,14 +22,11 @@ public final class NativeAdvertView: UIView {
 
     // MARK: - UI properties
 
-    private lazy var contentView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        return view
-    }()
+    private lazy var contentView: UIView = UIView(withAutoLayout: true)
 
     private lazy var mainImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -45,19 +38,12 @@ public final class NativeAdvertView: UIView {
         return imageView
     }()
 
-    private lazy var bottomContainerView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.setContentCompressionResistancePriority(.required, for: .vertical)
-        view.setContentHuggingPriority(.required, for: .horizontal)
-        return view
-    }()
+    private lazy var bottomContainerView: UIView = UIView(withAutoLayout: true)
 
-    private lazy var sponsoredByLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
+    private lazy var sponsoredByLabel: Label = {
+        let label = Label(style: .caption, withAutoLayout: true)
         label.numberOfLines = 1
-        label.textColor = .textToast
         label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .horizontal)
         return label
     }()
 
@@ -67,11 +53,10 @@ public final class NativeAdvertView: UIView {
         return view
     }()
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.numberOfLines = 2
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .title3, withAutoLayout: true)
+        label.numberOfLines = 0
         label.lineBreakMode = .byTruncatingTail
-        label.textColor = .textPrimary
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
@@ -82,13 +67,13 @@ public final class NativeAdvertView: UIView {
         return button
     }()
 
-    private var largeTitles = false {
-        didSet {
-            if oldValue != largeTitles {
-                setupFonts()
-            }
-        }
-    }
+//    private var largeTitles = false {
+//        didSet {
+//            if oldValue != largeTitles {
+//                setupFonts()
+//            }
+//        }
+//    }
 
     // MARK: - Init
 
@@ -107,10 +92,10 @@ public final class NativeAdvertView: UIView {
         configure(viewModel: viewModel)
     }
 
-    public override func layoutSubviews() {
-        largeTitles = frame.width >= 400
-        super.layoutSubviews()
-    }
+//    public override func layoutSubviews() {
+//        largeTitles = frame.width >= 400
+//        super.layoutSubviews()
+//    }
 
     @objc private func handleSettingsButtonTap() {
         delegate?.nativeAdvertViewDidSelectSettingsButton()
@@ -120,56 +105,55 @@ public final class NativeAdvertView: UIView {
 private extension NativeAdvertView {
     func setup() {
         addSubview(contentView)
+
         contentView.addSubview(mainImageView)
         contentView.addSubview(bottomContainerView)
-        contentView.addSubview(settingsButton)
-        bottomContainerView.addSubview(logoImageView)
+
         bottomContainerView.addSubview(sponsoredByBackgroundView)
-        sponsoredByBackgroundView.addSubview(sponsoredByLabel)
         bottomContainerView.addSubview(titleLabel)
+        bottomContainerView.addSubview(logoImageView)
+
+        sponsoredByBackgroundView.addSubview(sponsoredByLabel)
 
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            contentView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
-            contentView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            contentView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumSpacing),
+            contentView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumSpacing),
             contentView.widthAnchor.constraint(lessThanOrEqualToConstant: containerMaxWidth),
+            contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            mainImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: containerMargin),
-            mainImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            mainImageView.bottomAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: -sponsoredByPaddingTop),
+            mainImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             mainImageView.heightAnchor.constraint(equalTo: mainImageView.widthAnchor, multiplier: 1.0 / imageAspectRatio),
             mainImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            mainImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
-            settingsButton.topAnchor.constraint(equalTo: mainImageView.topAnchor),
-            settingsButton.leadingAnchor.constraint(equalTo: mainImageView.leadingAnchor),
-
-            bottomContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: containerMargin),
-            bottomContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -containerMargin),
-            bottomContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -containerMargin),
-
-            sponsoredByBackgroundView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor),
-            sponsoredByBackgroundView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor),
-            sponsoredByBackgroundView.trailingAnchor.constraint(lessThanOrEqualTo: logoImageView.leadingAnchor, constant: -logoPaddingLeft),
-
-            sponsoredByLabel.topAnchor.constraint(equalTo: sponsoredByBackgroundView.topAnchor, constant: sponsoredByInset),
-            sponsoredByLabel.leadingAnchor.constraint(equalTo: sponsoredByBackgroundView.leadingAnchor, constant: sponsoredByInset),
-            sponsoredByLabel.trailingAnchor.constraint(equalTo: sponsoredByBackgroundView.trailingAnchor, constant: -sponsoredByInset),
-            sponsoredByLabel.bottomAnchor.constraint(equalTo: sponsoredByBackgroundView.bottomAnchor, constant: -sponsoredByInset),
-
-            titleLabel.topAnchor.constraint(equalTo: sponsoredByBackgroundView.bottomAnchor, constant: sponsoredByPaddingTop),
-            titleLabel.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: sponsoredByInset),
-            titleLabel.trailingAnchor.constraint(equalTo: logoImageView.leadingAnchor, constant: -logoPaddingLeft),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor),
+            bottomContainerView.topAnchor.constraint(equalTo: mainImageView.bottomAnchor),
+            bottomContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            bottomContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            bottomContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             logoImageView.widthAnchor.constraint(equalToConstant: logoSize),
             logoImageView.heightAnchor.constraint(equalToConstant: logoSize),
+            logoImageView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor),
             logoImageView.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor),
-            logoImageView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor)
+
+            sponsoredByBackgroundView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: .mediumSpacing),
+            sponsoredByBackgroundView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor),
+            sponsoredByBackgroundView.trailingAnchor.constraint(lessThanOrEqualTo: bottomContainerView.trailingAnchor),
+
+            sponsoredByLabel.topAnchor.constraint(equalTo: sponsoredByBackgroundView.topAnchor, constant: .verySmallSpacing),
+            sponsoredByLabel.leadingAnchor.constraint(equalTo: sponsoredByBackgroundView.leadingAnchor, constant: .verySmallSpacing),
+            sponsoredByLabel.trailingAnchor.constraint(equalTo: sponsoredByBackgroundView.trailingAnchor, constant: -.verySmallSpacing),
+            sponsoredByLabel.bottomAnchor.constraint(equalTo: sponsoredByBackgroundView.bottomAnchor, constant: -.verySmallSpacing),
+
+            titleLabel.topAnchor.constraint(equalTo: sponsoredByBackgroundView.bottomAnchor, constant: .mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: .verySmallSpacing),
+            titleLabel.widthAnchor.constraint(equalTo: mainImageView.widthAnchor, constant: -.mediumSpacing - logoSize - .mediumLargeSpacing),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor),
         ])
 
-        setupFonts()
+//        setupFonts()
     }
 
     func configure(viewModel: NativeAdvertViewModel) {
@@ -187,27 +171,27 @@ private extension NativeAdvertView {
         sponsoredByLabel.text = viewModel.sponsoredText
     }
 
-    func setupFonts() {
-        if largeTitles {
-            titleLabel.font = titleFont(withSize: 16)
-            sponsoredByLabel.font = sponsoredByFont(withSize: 11)
-        } else {
-            titleLabel.font = titleFont(withSize: 13)
-            sponsoredByLabel.font = sponsoredByFont(withSize: 10)
-        }
-    }
-
-    func titleFont(withSize size: CGFloat) -> UIFont {
-        let bodyFont = UIFont.body
-        let fontDescriptorSymbolicTraits: UIFontDescriptor.SymbolicTraits = [bodyFont.fontDescriptor.symbolicTraits, .traitBold]
-        if let boldFontDescriptor = bodyFont.fontDescriptor.withSymbolicTraits(fontDescriptorSymbolicTraits) {
-            let boldedFont = UIFont(descriptor: boldFontDescriptor, size: size)
-            return boldedFont
-        }
-        return UIFont.body.withSize(size)
-    }
-
-    func sponsoredByFont(withSize size: CGFloat) -> UIFont {
-        return UIFont.body.withSize(size)
-    }
+//    func setupFonts() {
+//        if largeTitles {
+//            titleLabel.style = .bodyStrong
+//            sponsoredByLabel.font = sponsoredByFont(withSize: 11)
+//        } else {
+//            titleLabel.font = titleFont(withSize: 13)
+//            sponsoredByLabel.font = sponsoredByFont(withSize: 10)
+//        }
+//    }
+//
+//    func titleFont(withSize size: CGFloat) -> UIFont {
+//        let bodyFont = UIFont.body
+//        let fontDescriptorSymbolicTraits: UIFontDescriptor.SymbolicTraits = [bodyFont.fontDescriptor.symbolicTraits, .traitBold]
+//        if let boldFontDescriptor = bodyFont.fontDescriptor.withSymbolicTraits(fontDescriptorSymbolicTraits) {
+//            let boldedFont = UIFont(descriptor: boldFontDescriptor, size: size)
+//            return boldedFont
+//        }
+//        return UIFont.body.withSize(size)
+//    }
+//
+//    func sponsoredByFont(withSize size: CGFloat) -> UIFont {
+//        return UIFont.body.withSize(size)
+//    }
 }
