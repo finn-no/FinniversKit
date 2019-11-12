@@ -5,24 +5,24 @@
 import UIKit
 
 // MARK: - Model
-public protocol SettingsDetailsViewModel {
+public protocol SettingDetailsViewModel {
     var icon: UIImage { get }
     var title: String { get }
     var primaryButtonStyle: Button.Style { get }
     var primaryButtonTitle: String { get }
-    func text(for state: SettingsDetailsView.State) -> String
-    func textAlignment(for state: SettingsDetailsView.State) -> NSTextAlignment
-    func secondaryButtonTitle(for state: SettingsDetailsView.State) -> String?
+    func text(for state: SettingDetailsView.State) -> String
+    func textAlignment(for state: SettingDetailsView.State) -> NSTextAlignment
+    func secondaryButtonTitle(for state: SettingDetailsView.State) -> String?
 }
 
 // MARK: - Delegate
-public protocol SettingsDetailsViewDelegate: AnyObject {
-    func settingsDetailsView(_ detailsView: SettingsDetailsView, didChangeTo state: SettingsDetailsView.State, with model: SettingsDetailsViewModel)
-    func settingsDetailsView(_ detailsView: SettingsDetailsView, didTapPrimaryButtonWith model: SettingsDetailsViewModel)
+public protocol SettingDetailsViewDelegate: AnyObject {
+    func settingDetailsView(_ detailsView: SettingDetailsView, didChangeTo state: SettingDetailsView.State, with model: SettingDetailsViewModel)
+    func settingDetailsView(_ detailsView: SettingDetailsView, didTapPrimaryButtonWith model: SettingDetailsViewModel)
 }
 
 // MARK: - View
-public class SettingsDetailsView: UIView {
+public class SettingDetailsView: UIView {
 
     public enum State {
         case normal
@@ -31,12 +31,12 @@ public class SettingsDetailsView: UIView {
 
     // MARK: - Public properties
 
-    public weak var delegate: SettingsDetailsViewDelegate?
+    public weak var delegate: SettingDetailsViewDelegate?
 
     // MARK: - Private properties
 
     private var state: State = .normal
-    private var model: SettingsDetailsViewModel?
+    private var model: SettingDetailsViewModel?
 
     // MARK: - Subviews
 
@@ -105,8 +105,8 @@ public class SettingsDetailsView: UIView {
 }
 
 // MARK: - Public methods
-public extension SettingsDetailsView {
-    func configure(with model: SettingsDetailsViewModel, animated: Bool = false) {
+public extension SettingDetailsView {
+    func configure(with model: SettingDetailsViewModel, animated: Bool = false) {
         self.model = model
         iconView.image = model.icon
         titleLabel.text = model.title
@@ -134,14 +134,14 @@ public extension SettingsDetailsView {
     }
 }
 
-extension SettingsDetailsView: UIScrollViewDelegate {
+extension SettingDetailsView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         shadowView.updateShadow(using: scrollView)
     }
 }
 
 // MARK: - Private methods
-private extension SettingsDetailsView {
+private extension SettingDetailsView {
     var scrollViewBottomInset: CGFloat {
         bottomInset + 44 + .largeSpacing
     }
@@ -159,7 +159,7 @@ private extension SettingsDetailsView {
         }
 
         configure(with: model, animated: true)
-        delegate?.settingsDetailsView(self, didChangeTo: state, with: model)
+        delegate?.settingDetailsView(self, didChangeTo: state, with: model)
 
         layoutIfNeeded()
         shadowView.updateShadow(using: scrollView)
@@ -167,7 +167,7 @@ private extension SettingsDetailsView {
 
     @objc func primaryButtonTapped() {
         guard let model = model else { return }
-        delegate?.settingsDetailsView(self, didTapPrimaryButtonWith: model)
+        delegate?.settingDetailsView(self, didTapPrimaryButtonWith: model)
     }
 
     func setup() {

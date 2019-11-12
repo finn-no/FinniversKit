@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-private struct DemoViewModel: SettingsDetailsViewModel {
+private struct DemoViewModel: SettingDetailsViewModel {
     var icon: UIImage {
         return UIImage(named: "nyhetsbrev-fra-finn")!
     }
@@ -21,7 +21,7 @@ private struct DemoViewModel: SettingsDetailsViewModel {
         return "Skru på nyhetsbrev"
     }
 
-    func text(for state: SettingsDetailsView.State) -> String {
+    func text(for state: SettingDetailsView.State) -> String {
         switch state {
         case .normal:
             return "FINN sender deg nyhetsbrev med for eksempel reisetips, jobbtrender, morsomme konkurranser og smarte råd til deg som kjøper og selger. For å gjøre dette bruker vi kontakt-informasjonen knyttet til brukeren din på FINN."
@@ -30,14 +30,14 @@ private struct DemoViewModel: SettingsDetailsViewModel {
         }
     }
 
-    func textAlignment(for state: SettingsDetailsView.State) -> NSTextAlignment {
+    func textAlignment(for state: SettingDetailsView.State) -> NSTextAlignment {
         switch state {
         case .normal: return .center
         case .details: return .left
         }
     }
 
-    func secondaryButtonTitle(for state: SettingsDetailsView.State) -> String? {
+    func secondaryButtonTitle(for state: SettingDetailsView.State) -> String? {
         switch state {
         case .normal: return "Les mer"
         case .details: return "Les mindre"
@@ -45,10 +45,10 @@ private struct DemoViewModel: SettingsDetailsViewModel {
     }
 }
 
-final class SettingsDetailsDemoViewController: UIViewController {
+final class SettingDetailsDemoViewController: UIViewController {
 
-    private lazy var settingsDetailsView: SettingsDetailsView = {
-        let detailsView = SettingsDetailsView(withAutoLayout: true)
+    private lazy var settingDetailsView: SettingDetailsView = {
+        let detailsView = SettingDetailsView(withAutoLayout: true)
         detailsView.configure(with: DemoViewModel())
         detailsView.delegate = self
         return detailsView
@@ -58,27 +58,27 @@ final class SettingsDetailsDemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(settingsDetailsView)
-        settingsDetailsView.fillInSuperview()
+        view.addSubview(settingDetailsView)
+        settingDetailsView.fillInSuperview()
     }
 
     var contentSize: CGSize {
         CGSize(
-            width: settingsDetailsView.contentSize.width,
-            height: settingsDetailsView.contentSize.height + 20
+            width: settingDetailsView.contentSize.width,
+            height: settingDetailsView.contentSize.height + 20
         )
     }
 }
 
-extension SettingsDetailsDemoViewController: SettingsDetailsViewDelegate {
-    func settingsDetailsView(_ detailsView: SettingsDetailsView, didChangeTo state: SettingsDetailsView.State, with model: SettingsDetailsViewModel) {
+extension SettingDetailsDemoViewController: SettingDetailsViewDelegate {
+    func settingDetailsView(_ detailsView: SettingDetailsView, didChangeTo state: SettingDetailsView.State, with model: SettingDetailsViewModel) {
         view.layoutIfNeeded()
         let contentHeight = contentSize.height
         let height = min(contentHeight, BottomSheet.Height.defaultFilterHeight.expanded)
         bottomSheet?.height = .init(compact: height, expanded: height)
     }
 
-    func settingsDetailsView(_ detailsView: SettingsDetailsView, didTapPrimaryButtonWith model: SettingsDetailsViewModel) {
+    func settingDetailsView(_ detailsView: SettingDetailsView, didTapPrimaryButtonWith model: SettingDetailsViewModel) {
         print("Did tap action button with model:\n\t- \(model)")
     }
 }

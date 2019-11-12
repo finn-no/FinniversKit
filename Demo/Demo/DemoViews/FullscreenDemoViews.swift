@@ -32,7 +32,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case verificationActionSheet
     case splashView
     case popovers
-    case settingsDetails
+    case settingDetails
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -112,8 +112,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
         case .popovers:
             return PopoversDemoViewController()
-        case .settingsDetails:
-            let viewController = SettingsDetailsDemoViewController()
+        case .settingDetails:
+            let viewController = SettingDetailsDemoViewController()
             viewController.view.layoutIfNeeded()
             let contentHeight = viewController.contentSize.height
 

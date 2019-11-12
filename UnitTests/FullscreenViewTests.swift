@@ -129,7 +129,7 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.popovers)
     }
 
-    func testSettingsDetails() {
-        snapshot(.settingsDetails)
+    func testSettingDetails() {
+        snapshot(.settingDetails)
     }
 }

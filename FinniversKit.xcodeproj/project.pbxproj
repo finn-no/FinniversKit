@@ -499,8 +499,6 @@
 		DAD0D48F210735060091DD4D /* RadiobuttonAnimation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A3AF2102157B0021F7DC /* RadiobuttonAnimation.xcassets */; };
 		DAD0D492210737A30091DD4D /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D491210737A30091DD4D /* TextView.swift */; };
 		DAD0D494210739500091DD4D /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0D493210739500091DD4D /* DescriptionView.swift */; };
-		DAD6EB322369BCFD00968497 /* SettingsDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB312369BCFD00968497 /* SettingsDetailsView.swift */; };
-		DAD6EB352369BD2300968497 /* SettingsDetailsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB342369BD2300968497 /* SettingsDetailsDemoViewController.swift */; };
 		DAD6EB242369916100968497 /* SettingsViewConsentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB192369916100968497 /* SettingsViewConsentCell.swift */; };
 		DAD6EB252369916100968497 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB1A2369916100968497 /* SettingsViewCell.swift */; };
 		DAD6EB262369916100968497 /* SettingsViewToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB1B2369916100968497 /* SettingsViewToggleCell.swift */; };
@@ -511,6 +509,8 @@
 		DAD6EB2B2369916100968497 /* SettingsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB222369916100968497 /* SettingsSectionHeaderView.swift */; };
 		DAD6EB2C2369916100968497 /* SettingsSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */; };
 		DAD6EB2F236991EA00968497 /* SettingsViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB2E236991E900968497 /* SettingsViewDemoView.swift */; };
+		DAD6EB322369BCFD00968497 /* SettingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */; };
+		DAD6EB352369BD2300968497 /* SettingDetailsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD6EB342369BD2300968497 /* SettingDetailsDemoViewController.swift */; };
 		DAE6A55C21CA524B00837BFA /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6A55B21CA524B00837BFA /* CGPoint.swift */; };
 		F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */; };
 		F22612DC225C788A00472D22 /* StatisticsItemEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */; };
@@ -1080,8 +1080,6 @@
 		DAC1EC4D21C1297500F4FEC4 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		DAC1EC5021C1322900F4FEC4 /* NewYearsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearsView.swift; sourceTree = "<group>"; };
 		DAC65FBA21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetMechanicsDemoViewController.swift; sourceTree = "<group>"; };
-		DAD6EB312369BCFD00968497 /* SettingsDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDetailsView.swift; sourceTree = "<group>"; };
-		DAD6EB342369BD2300968497 /* SettingsDetailsDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDetailsDemoViewController.swift; sourceTree = "<group>"; };
 		DAD0D48C210731B60091DD4D /* AdReporterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterDemoView.swift; sourceTree = "<group>"; };
 		DAD0D491210737A30091DD4D /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DAD0D493210739500091DD4D /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
@@ -1095,6 +1093,8 @@
 		DAD6EB222369916100968497 /* SettingsSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionHeaderView.swift; sourceTree = "<group>"; };
 		DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionFooterView.swift; sourceTree = "<group>"; };
 		DAD6EB2E236991E900968497 /* SettingsViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewDemoView.swift; sourceTree = "<group>"; };
+		DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetailsView.swift; sourceTree = "<group>"; };
+		DAD6EB342369BD2300968497 /* SettingDetailsDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetailsDemoViewController.swift; sourceTree = "<group>"; };
 		DAE6A55B21CA524B00837BFA /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		F22612D722572D9400472D22 /* StatisticsItemEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyView.swift; sourceTree = "<group>"; };
 		F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsItemEmptyViewModel.swift; sourceTree = "<group>"; };
@@ -2032,7 +2032,7 @@
 				44587013213FA344009187BE /* Register */,
 				43BACE6721117CF90052114C /* Review */,
 				91846C4822E735B60001410F /* SearchResultMapView */,
-				DAD6EB302369BCFC00968497 /* SettingsDetailsView */,
+				DAD6EB302369BCFC00968497 /* SettingDetailsView */,
 				43EA978021941E63003A548A /* SoldView */,
 				CF70B95023421E1B00B8A285 /* SplashView */,
 				F2597C72231D19B900BE74EC /* VerificationActionSheet */,
@@ -3339,7 +3339,7 @@
 				CF8F023021DCC793004C4042 /* Register */,
 				CF8F023421DCC7D2004C4042 /* Review */,
 				91846C4B22E736750001410F /* SearchResultMapView */,
-				DAD6EB332369BD2300968497 /* SettingsDetailsView */,
+				DAD6EB332369BD2300968497 /* SettingDetailsView */,
 				CF8F023621DCC830004C4042 /* SoldView */,
 				CF70B95323421E8800B8A285 /* SplashView */,
 				F253C50B2313F948008175FD /* VerificationView */,
@@ -3751,22 +3751,6 @@
 			path = AdReporter;
 			sourceTree = "<group>";
 		};
-		DAD6EB302369BCFC00968497 /* SettingsDetailsView */ = {
-			isa = PBXGroup;
-			children = (
-				DAD6EB312369BCFD00968497 /* SettingsDetailsView.swift */,
-			);
-			path = SettingsDetailsView;
-			sourceTree = "<group>";
-		};
-		DAD6EB332369BD2300968497 /* SettingsDetailsView */ = {
-			isa = PBXGroup;
-			children = (
-				DAD6EB342369BD2300968497 /* SettingsDetailsDemoViewController.swift */,
-			);
-			path = SettingsDetailsView;
-			sourceTree = "<group>";
-		};
 		DAD6EB172369916100968497 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -3813,6 +3797,22 @@
 				DAD6EB2E236991E900968497 /* SettingsViewDemoView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		DAD6EB302369BCFC00968497 /* SettingDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				DAD6EB312369BCFD00968497 /* SettingDetailsView.swift */,
+			);
+			path = SettingDetailsView;
+			sourceTree = "<group>";
+		};
+		DAD6EB332369BD2300968497 /* SettingDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				DAD6EB342369BD2300968497 /* SettingDetailsDemoViewController.swift */,
+			);
+			path = SettingDetailsView;
 			sourceTree = "<group>";
 		};
 		DAE6A55A21CA523A00837BFA /* Core Graphics */ = {
@@ -4213,7 +4213,7 @@
 				9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */,
 				443795FC2360444200D05917 /* SelectorTitleViewDemoView.swift in Sources */,
 				CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */,
-				DAD6EB352369BD2300968497 /* SettingsDetailsDemoViewController.swift in Sources */,
+				DAD6EB352369BD2300968497 /* SettingDetailsDemoViewController.swift in Sources */,
 				44587025213FA362009187BE /* LoginViewDemoView.swift in Sources */,
 				F253C5112313FA6E008175FD /* VerificationDemoView.swift in Sources */,
 				141F08C62123110B001DB145 /* DemoHelpers.swift in Sources */,
@@ -4591,7 +4591,7 @@
 				14C6F7D4212324CA00A7230C /* FavoritesListView.swift in Sources */,
 				CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */,
 				CF848C2C21C7E0860086530E /* CogWheelButton.swift in Sources */,
-				DAD6EB322369BCFD00968497 /* SettingsDetailsView.swift in Sources */,
+				DAD6EB322369BCFD00968497 /* SettingDetailsView.swift in Sources */,
 				F26852D621F7530A000978C8 /* UserAdsListView.swift in Sources */,
 				DAB7FAAB21B690DD00BF8CC6 /* BottomSheetInteractionController.swift in Sources */,
 				CF7C460722257A8A001FB92C /* EarthHourTagView.swift in Sources */,
