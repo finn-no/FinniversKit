@@ -17,7 +17,13 @@ enum FontType: String {
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    lazy var navigationController = NavigationController(rootViewController: DemoViewsTableViewController())
+    lazy var navigationController: NavigationController = {
+        let sparkleItem = SparkleItem(title: "Color", viewController: UIViewController())
+        let section = SparkleSection(title: "DNA", items: [sparkleItem])
+        let demoViews = DemoViewsTableViewController(sections: [section])
+        let navigationController = NavigationController(rootViewController: demoViews)
+        return navigationController
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerFonts()

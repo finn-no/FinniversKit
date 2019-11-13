@@ -16,7 +16,10 @@ public class DemoViewsTableViewController: UITableViewController {
 
     private var indexAndValues = [String: [String]]()
 
-    public init() {
+    private var sections: [SparkleSection]
+
+    public init(sections: [SparkleSection]) {
+        self.sections = sections
         super.init(style: .grouped)
 
         NotificationCenter.default.addObserver(self, selector: #selector(userInterfaceStyleDidChange), name: .didChangeUserInterfaceStyle, object: nil)
@@ -34,11 +37,13 @@ public class DemoViewsTableViewController: UITableViewController {
         super.viewDidAppear(animated)
 
         if let indexPath = SparkleState.lastSelectedIndexPath {
-            if let viewController = Sections.viewController(for: indexPath) {
-                if let bottomSheet = viewController as? BottomSheet {
-                    present(bottomSheet, animated: true)
-                } else {
-                    present(viewController, animated: false)
+            if let section = sections[safe: indexPath.section] {
+                if let item = section.items[safe: indexPath.row] {
+                    if let bottomSheet = item.viewController as? BottomSheet {
+                        present(bottomSheet, animated: true)
+                    } else {
+                        present(item.viewController, animated: false)
+                    }
                 }
             }
         }
@@ -67,7 +72,9 @@ public class DemoViewsTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         navigationItem.titleView = selectorTitleView
-        selectorTitleView.title = Sections.title(for: SparkleState.lastSelectedSection).uppercased()
+
+        let section = sections[safe: SparkleState.lastSelectedSection]
+        selectorTitleView.title = section?.title.uppercased()
         updateColors(animated: false)
     }
 
@@ -110,21 +117,26 @@ public class DemoViewsTableViewController: UITableViewController {
     private func evaluateIndexAndValues() {
         indexAndValues.removeAll()
 
-        for name in Sections.formattedNames(for: SparkleState.lastSelectedSection) {
-            let firstLetter = String(name.prefix(1))
-            var values = [String]()
-            if let existingValues = indexAndValues[firstLetter] {
-                values = existingValues
+        if let section = sections[safe: SparkleState.lastSelectedSection] {
+            let names = section.items.sorted { $0.title < $1.title }.map { $0.title.capitalizingFirstLetter }
+            for name in names {
+                var values = [String]()
+                if let existingValues = indexAndValues[name.firstCapitalizedLetter] {
+                    values = existingValues
+                }
+                values.append(name)
+                indexAndValues[name.firstCapitalizedLetter] = values
             }
-            values.append(name)
-            indexAndValues[firstLetter] = values
         }
     }
 
     private func value(for indexPath: IndexPath) -> String {
-        let index = sections[indexPath.section]
-        if let values = indexAndValues[index] {
-            return values[indexPath.row]
+        if let section = sections[safe: indexPath.section] {
+            if let item = section.items[safe: indexPath.row] {
+                return item.title
+            } else {
+                return ""
+            }
         } else {
             return ""
         }
@@ -133,16 +145,13 @@ public class DemoViewsTableViewController: UITableViewController {
     private func evaluateRealIndexPath(for indexPath: IndexPath) -> IndexPath {
         var row = 0
         for sectionIndex in 0..<indexPath.section {
-            let key = sections[sectionIndex]
-            let elementsInSection = indexAndValues[key]?.count ?? 0
-            row += elementsInSection
+            if let section = sections[safe: sectionIndex] {
+                let elementsInSection = indexAndValues[section.title.firstCapitalizedLetter]?.count ?? 0
+                row += elementsInSection
+            }
         }
         row += indexPath.row
         return IndexPath(row: row, section: SparkleState.lastSelectedSection)
-    }
-
-    private var sections: [String] {
-        return Array(indexAndValues.keys.sorted(by: <))
     }
 
     override public func present(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
@@ -161,8 +170,8 @@ extension DemoViewsTableViewController {
     }
 
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let index = sections[section]
-        if let values = indexAndValues[index] {
+        let section = sections[section]
+        if let values = indexAndValues[section.title.firstCapitalizedLetter] {
             return values.count
         } else {
             return 0
@@ -186,17 +195,20 @@ extension DemoViewsTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let realIndexPath = evaluateRealIndexPath(for: indexPath)
         SparkleState.lastSelectedIndexPath = realIndexPath
-        if let viewController = Sections.viewController(for: realIndexPath) {
-            present(viewController, animated: true)
+        if let section = sections[safe: SparkleState.lastSelectedSection] {
+            if let item = section.items[safe: realIndexPath.row] {
+                present(item.viewController, animated: true)
+            }
         }
     }
 
     override public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sections
+        let sectionTitles = Array(indexAndValues.keys.sorted(by: <))
+        return sectionTitles
     }
 
     override public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
+        return sections[section].title
     }
 
     override public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -213,13 +225,15 @@ extension DemoViewsTableViewController {
 
 extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     public func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
-        let items = Sections.items.map { BasicTableViewItem(title: $0.rawValue.uppercased()) }
-        let sectionsTableView = BasicTableView(items: items)
-        sectionsTableView.selectedIndexPath = IndexPath(row: SparkleState.lastSelectedSection, section: 0)
-        sectionsTableView.delegate = self
-        bottomSheet = BottomSheet(view: sectionsTableView, draggableArea: .everything)
-        if let controller = bottomSheet {
-            present(controller, animated: true)
+        if let section = sections[safe: SparkleState.lastSelectedSection] {
+            let items = section.items.map { BasicTableViewItem(title: $0.title.uppercased()) }
+            let sectionsTableView = BasicTableView(items: items)
+            sectionsTableView.selectedIndexPath = IndexPath(row: SparkleState.lastSelectedSection, section: 0)
+            sectionsTableView.delegate = self
+            bottomSheet = BottomSheet(view: sectionsTableView, draggableArea: .everything)
+            if let controller = bottomSheet {
+                present(controller, animated: true)
+            }
         }
     }
 }
@@ -227,9 +241,17 @@ extension DemoViewsTableViewController: SelectorTitleViewDelegate {
 extension DemoViewsTableViewController: BasicTableViewDelegate {
     public func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
         SparkleState.lastSelectedSection = index
-        selectorTitleView.title = Sections.title(for: SparkleState.lastSelectedSection).uppercased()
-        evaluateIndexAndValues()
-        tableView.reloadData()
-        bottomSheet?.state = .dismissed
+        if let section = sections[safe: SparkleState.lastSelectedSection] {
+            selectorTitleView.title = section.title.uppercased()
+            evaluateIndexAndValues()
+            tableView.reloadData()
+            bottomSheet?.state = .dismissed
+        }
+    }
+}
+
+extension String {
+    var firstCapitalizedLetter: String {
+        return String(prefix(1)).uppercased()
     }
 }
