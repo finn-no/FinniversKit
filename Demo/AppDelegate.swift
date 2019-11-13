@@ -17,7 +17,7 @@ enum FontType: String {
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    lazy var navigationController: NavigationController = {
+    lazy var sections: [SparkleSection] = {
         let dnaItems = DnaDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
         let dna = SparkleSection(title: "DNA", items: dnaItems)
 
@@ -33,10 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let recyclingItems = RecyclingDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
         let recycling = SparkleSection(title: "Recycling", items: fullscreenItems)
 
-        let demoViews = SparkleViewController(sections: [dna, components, cells, fullscreen, recycling])
-
-        let navigationController = NavigationController(rootViewController: demoViews)
-        return navigationController
+        return [dna, components, cells, fullscreen, recycling]
     }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -63,7 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             window?.setWindowUserInterfaceStyle(userInterfaceStyle)
         }
-        window?.rootViewController = navigationController
+        let sparkleViewController = SparkleViewController(sections: sections)
+        window?.rootViewController = NavigationController(rootViewController: sparkleViewController)
         window?.makeKeyAndVisible()
 
         return true

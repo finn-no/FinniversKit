@@ -4,8 +4,8 @@ import SparkleCommon
 public class MiniToastView: UIView {
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
-        // label.font = .body
-        // label.textColor = .text
+        label.font = .body
+        label.textColor = .textToast
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
@@ -16,7 +16,7 @@ public class MiniToastView: UIView {
 
         addSubview(titleLabel)
         titleLabel.fillInSuperview(insets: UIEdgeInsets(top: .mediumSpacing, leading: .mediumLargeSpacing, bottom: -.mediumSpacing, trailing: -.mediumLargeSpacing))
-        // backgroundColor = .bgAlert
+        backgroundColor = .bgAlert
         layer.cornerRadius = .mediumLargeSpacing
     }
 
