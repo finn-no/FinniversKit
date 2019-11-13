@@ -18,15 +18,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     lazy var navigationController: NavigationController = {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .red
-        let color = SparkleItem(title: "Color", viewController: vc)
-        let font = SparkleItem(title: "Font", viewController: vc)
-        let dna = SparkleSection(title: "DNA", items: [color, font])
-        let c1 = SparkleItem(title: "Component 1", viewController: vc)
-        let c2 = SparkleItem(title: "Component 2", viewController: vc)
-        let components = SparkleSection(title: "Components", items: [c1, c2])
-        let demoViews = SparkleViewController(sections: [dna, components])
+        let dnaItems = DnaDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
+        let dna = SparkleSection(title: "DNA", items: dnaItems)
+
+        let componentItems = ComponentDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
+        let components = SparkleSection(title: "Components", items: componentItems)
+
+        let cellItems = CellsDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
+        let cells = SparkleSection(title: "Cells", items: cellItems)
+
+        let fullscreenItems = FullscreenDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
+        let fullscreen = SparkleSection(title: "Fullscreen", items: fullscreenItems)
+
+        let recyclingItems = RecyclingDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
+        let recycling = SparkleSection(title: "Recycling", items: fullscreenItems)
+
+        let demoViews = SparkleViewController(sections: [dna, components, cells, fullscreen, recycling])
+
         let navigationController = NavigationController(rootViewController: demoViews)
         return navigationController
     }()

@@ -10,7 +10,7 @@ public class SparkleViewController: UITableViewController {
 
     private var bottomSheet: BottomSheet?
 
-    private var firstLetterAndItems = [String: [String]]()
+    private var firstLetterAndItems = [String: [SparkleItem]]()
 
     private var sections: [SparkleSection]
 
@@ -114,35 +114,23 @@ public class SparkleViewController: UITableViewController {
         firstLetterAndItems.removeAll()
 
         if let section = sections[safe: SparkleState.lastSelectedSection] {
-            let names = section.items.sorted { $0.title < $1.title }.map { $0.title.capitalizingFirstLetter }
-            for name in names {
-                var values = [String]()
-                if let existingValues = firstLetterAndItems[name.firstCapitalizedLetter()] {
+            let items = section.items.sorted { $0.title < $1.title }
+            for item in items {
+                var values = [SparkleItem]()
+                if let existingValues = firstLetterAndItems[item.title.firstCapitalizedLetter()] {
                     values = existingValues
                 }
-                values.append(name)
-                firstLetterAndItems[name.firstCapitalizedLetter()] = values
+                values.append(item)
+                firstLetterAndItems[item.title.firstCapitalizedLetter()] = values
             }
         }
     }
 
-    private func value(for indexPath: IndexPath) -> String {
+    private func value(for indexPath: IndexPath) -> SparkleItem? {
         let sectionTitles = Array(firstLetterAndItems.keys.sorted(by: <))
         let section = sectionTitles[indexPath.section]
         let items = firstLetterAndItems[section.firstCapitalizedLetter()]
-        return items?[indexPath.row] ?? ""
-    }
-
-    private func evaluateRealIndexPath(for indexPath: IndexPath) -> IndexPath {
-        var row = 0
-        for sectionIndex in 0..<indexPath.section {
-            if let section = sections[safe: sectionIndex] {
-                let elementsInSection = firstLetterAndItems[section.title.firstCapitalizedLetter()]?.count ?? 0
-                row += elementsInSection
-            }
-        }
-        row += indexPath.row
-        return IndexPath(row: row, section: SparkleState.lastSelectedSection)
+        return items?[indexPath.row]
     }
 
     override public func present(_ viewControllerToPresent: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
@@ -171,7 +159,8 @@ extension SparkleViewController {
 
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
-        cell.textLabel?.text = value(for: indexPath)
+        let item = value(for: indexPath)
+        cell.textLabel?.text = item?.title
         cell.textLabel?.font = .bodyRegular
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
@@ -184,12 +173,9 @@ extension SparkleViewController {
 
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let realIndexPath = evaluateRealIndexPath(for: indexPath)
-        SparkleState.lastSelectedIndexPath = realIndexPath
-        if let section = sections[safe: SparkleState.lastSelectedSection] {
-            if let item = section.items[safe: realIndexPath.row] {
-                present(item.viewController, animated: true)
-            }
+        SparkleState.lastSelectedIndexPath = indexPath
+        if let item = value(for: indexPath) {
+            present(item.viewController, animated: true)
         }
     }
 
