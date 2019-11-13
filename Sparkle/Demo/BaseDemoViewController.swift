@@ -112,16 +112,20 @@ open class BaseDemoViewController<View: UIView>: UIViewController, Containable {
         if !TestCheck.isTesting {
             switch dismissType {
             case .dismissButton:
-                // TODO: Needs a dismiss button
                 let button = UIButton()
-                // .callToAction
+                button.backgroundColor = .btnPrimary
+                button.titleLabel?.font = .bodyStrong
+                button.setTitleColor(.textTertiary, for: .normal)
                 button.setTitle("Dismiss", for: .normal)
                 button.addTarget(self, action: #selector(didDoubleTap), for: .touchUpInside)
                 button.translatesAutoresizingMaskIntoConstraints = false
+                button.layer.cornerRadius = 12
                 view.addSubview(button)
                 NSLayoutConstraint.activate([
                     button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                    button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.veryLargeSpacing)
+                    button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.veryLargeSpacing),
+                    button.widthAnchor.constraint(equalToConstant: 100),
+                    button.heightAnchor.constraint(equalToConstant: 50)
                 ])
             case .doubleTap:
                 let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))

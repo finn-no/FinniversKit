@@ -128,8 +128,11 @@ public class SelectorTitleView: UIView {
     // MARK: - Private
 
     private func updateArrowDirection() {
-        // let asset: FinniversImageAsset = arrowDirection == .up ? .arrowUpSmall : .arrowDownSmall
-        // button.setImage(chevron.image(), for: .normal)
+        if #available(iOS 13.0, *) {
+            let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .semibold, scale: .small)
+            let image = UIImage(systemName: arrowDirection == .up ? "chevron.up" : "chevron.down", withConfiguration: config)
+            button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        }
     }
 
 }

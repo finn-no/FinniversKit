@@ -80,8 +80,6 @@ public final class FloatingButton: UIButton {
         titleLabel?.font = .detail
 
         adjustsImageWhenHighlighted = false
-        // TODO: Needs image
-        // setImage(UIImage(named: .easterEgg), for: .normal)
 
         addSubview(badgeView)
         badgeView.addSubview(badgeLabel)

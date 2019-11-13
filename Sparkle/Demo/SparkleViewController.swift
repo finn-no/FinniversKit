@@ -33,7 +33,11 @@ public class SparkleViewController: UITableViewController {
 
         if let indexPath = SparkleState.lastSelectedIndexPath {
             if let item = value(for: indexPath) {
-                present(item.viewController, animated: false)
+                if let bottomSheet = item.viewController as? BottomSheet {
+                    present(bottomSheet, animated: true)
+                } else {
+                    present(item.viewController, animated: false)
+                }
             }
         }
     }
@@ -94,9 +98,9 @@ public class SparkleViewController: UITableViewController {
 
     private func updateColors(animated: Bool) {
         UIView.animate(withDuration: animated ? 0.3 : 0) {
-            let sectionIndexColor: UIColor = .textPrimary
-            self.tableView.sectionIndexColor = sectionIndexColor
+            self.tableView.sectionIndexColor = .textAction
             self.tableView.backgroundColor = .bgPrimary
+            self.selectorTitleView.backgroundColor = .bgPrimary
             self.updateMoonButton()
             self.setNeedsStatusBarAppearanceUpdate()
         }

@@ -11,8 +11,13 @@ class CornerAnchoringView: UIView {
     private lazy var anchoredView: FloatingButton = {
         let button = FloatingButton(withAutoLayout: true)
         button.tintColor = .btnPrimary
-        // TODO: Needs image
-        // button.setImage(UIImage(named: .wrench).withRenderingMode(.alwaysTemplate), for: .normal)
+
+        if #available(iOS 13.0, *) {
+            let config = UIImage.SymbolConfiguration(pointSize: 24, weight: .semibold, scale: .medium)
+            let image = UIImage(systemName: "wrench", withConfiguration: config)
+            button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        }
+
         button.addTarget(self, action: #selector(tweakButtonAction), for: .touchUpInside)
         return button
     }()

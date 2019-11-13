@@ -19,6 +19,7 @@ public class FloatingButtonDemoView: UIView, Tweakable {
 
     private lazy var floatingButton: FloatingButton = {
         let button = FloatingButton()
+        button.setImage(UIImage(named: .easterEgg), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
