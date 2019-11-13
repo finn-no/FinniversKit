@@ -42,7 +42,7 @@ final class FavoriteAdCommentView: UIView {
 
     // MARK: - Setup
 
-    func configure(withText text: String) {
+    func configure(withText text: String?) {
         label.text = text
     }
 
