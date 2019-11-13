@@ -104,7 +104,7 @@
 		4446060C237B37550050D865 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446060B237B37550050D865 /* Palette.swift */; };
 		44460614237B3EC20050D865 /* DemoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446060E237B3EC10050D865 /* DemoHelpers.swift */; };
 		44460615237B3EC20050D865 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446060F237B3EC10050D865 /* SplitViewController.swift */; };
-		44460616237B3EC20050D865 /* DemoViewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460610237B3EC10050D865 /* DemoViewsTableViewController.swift */; };
+		44460616237B3EC20050D865 /* SparkleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460610237B3EC10050D865 /* SparkleViewController.swift */; };
 		44460617237B3EC20050D865 /* BaseDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460611237B3EC10050D865 /* BaseDemoViewController.swift */; };
 		44460618237B3EC20050D865 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460612237B3EC10050D865 /* DemoViewController.swift */; };
 		44460619237B3EC20050D865 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460613237B3EC10050D865 /* NavigationController.swift */; };
@@ -740,7 +740,7 @@
 		4446060B237B37550050D865 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		4446060E237B3EC10050D865 /* DemoHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoHelpers.swift; sourceTree = "<group>"; };
 		4446060F237B3EC10050D865 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
-		44460610237B3EC10050D865 /* DemoViewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewsTableViewController.swift; sourceTree = "<group>"; };
+		44460610237B3EC10050D865 /* SparkleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkleViewController.swift; sourceTree = "<group>"; };
 		44460611237B3EC10050D865 /* BaseDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDemoViewController.swift; sourceTree = "<group>"; };
 		44460612237B3EC10050D865 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		44460613237B3EC10050D865 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -1708,7 +1708,7 @@
 			children = (
 				4446060E237B3EC10050D865 /* DemoHelpers.swift */,
 				4446060F237B3EC10050D865 /* SplitViewController.swift */,
-				44460610237B3EC10050D865 /* DemoViewsTableViewController.swift */,
+				44460610237B3EC10050D865 /* SparkleViewController.swift */,
 				44460611237B3EC10050D865 /* BaseDemoViewController.swift */,
 				44460612237B3EC10050D865 /* DemoViewController.swift */,
 				44460613237B3EC10050D865 /* NavigationController.swift */,
@@ -4636,7 +4636,7 @@
 				4446062C237B3F030050D865 /* TweakingOption.swift in Sources */,
 				44460615237B3EC20050D865 /* SplitViewController.swift in Sources */,
 				4446061F237B3EEB0050D865 /* TestCheck.swift in Sources */,
-				44460616237B3EC20050D865 /* DemoViewsTableViewController.swift in Sources */,
+				44460616237B3EC20050D865 /* SparkleViewController.swift in Sources */,
 				44460614237B3EC20050D865 /* DemoHelpers.swift in Sources */,
 				44460619237B3EC20050D865 /* NavigationController.swift in Sources */,
 				4446062A237B3F030050D865 /* CornerAnchoringViewController.swift in Sources */,

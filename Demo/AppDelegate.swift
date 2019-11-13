@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let c1 = SparkleItem(title: "Component 1", viewController: vc)
         let c2 = SparkleItem(title: "Component 2", viewController: vc)
         let components = SparkleSection(title: "Components", items: [c1, c2])
-        let demoViews = DemoViewsTableViewController(sections: [dna, components])
+        let demoViews = SparkleViewController(sections: [dna, components])
         let navigationController = NavigationController(rootViewController: demoViews)
         return navigationController
     }()

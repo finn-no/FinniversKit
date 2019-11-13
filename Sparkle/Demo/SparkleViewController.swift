@@ -5,7 +5,7 @@
 import UIKit
 import SparkleCommon
 
-public class DemoViewsTableViewController: UITableViewController {
+public class SparkleViewController: UITableViewController {
     private lazy var selectorTitleView: SelectorTitleView = {
         let titleView = SelectorTitleView(withAutoLayout: true)
         titleView.delegate = self
@@ -14,7 +14,7 @@ public class DemoViewsTableViewController: UITableViewController {
 
     private var bottomSheet: BottomSheet?
 
-    private var indexAndValues = [String: [String]]()
+    private var firstLetterAndItems = [String: [String]]()
 
     private var sections: [SparkleSection]
 
@@ -115,39 +115,33 @@ public class DemoViewsTableViewController: UITableViewController {
     }
 
     private func evaluateIndexAndValues() {
-        indexAndValues.removeAll()
+        firstLetterAndItems.removeAll()
 
         if let section = sections[safe: SparkleState.lastSelectedSection] {
             let names = section.items.sorted { $0.title < $1.title }.map { $0.title.capitalizingFirstLetter }
             for name in names {
                 var values = [String]()
-                if let existingValues = indexAndValues[name.firstCapitalizedLetter] {
+                if let existingValues = firstLetterAndItems[name.firstCapitalizedLetter()] {
                     values = existingValues
                 }
                 values.append(name)
-                indexAndValues[name.firstCapitalizedLetter] = values
+                firstLetterAndItems[name.firstCapitalizedLetter()] = values
             }
         }
     }
 
     private func value(for indexPath: IndexPath) -> String {
-        let realIndexPath = evaluateRealIndexPath(for: indexPath)
-        if let section = sections[safe: realIndexPath.section] {
-            if let item = section.items[safe: realIndexPath.row] {
-                return item.title
-            } else {
-                return ""
-            }
-        } else {
-            return ""
-        }
+        let sectionTitles = Array(firstLetterAndItems.keys.sorted(by: <))
+        let section = sectionTitles[indexPath.section]
+        let items = firstLetterAndItems[section.firstCapitalizedLetter()]
+        return items?[indexPath.row] ?? ""
     }
 
     private func evaluateRealIndexPath(for indexPath: IndexPath) -> IndexPath {
         var row = 0
         for sectionIndex in 0..<indexPath.section {
             if let section = sections[safe: sectionIndex] {
-                let elementsInSection = indexAndValues[section.title.firstCapitalizedLetter]?.count ?? 0
+                let elementsInSection = firstLetterAndItems[section.title.firstCapitalizedLetter()]?.count ?? 0
                 row += elementsInSection
             }
         }
@@ -165,14 +159,14 @@ public class DemoViewsTableViewController: UITableViewController {
 
 // MARK: - UITableViewDelegate
 
-extension DemoViewsTableViewController {
+extension SparkleViewController {
     override public func numberOfSections(in tableView: UITableView) -> Int {
-        return indexAndValues.keys.count
+        return firstLetterAndItems.keys.count
     }
 
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionTitles = Array(indexAndValues.keys.sorted(by: <))
-        if let values = indexAndValues[sectionTitles[section].firstCapitalizedLetter] {
+        let sectionTitles = Array(firstLetterAndItems.keys.sorted(by: <))
+        if let values = firstLetterAndItems[sectionTitles[section].firstCapitalizedLetter()] {
             return values.count
         } else {
             return 0
@@ -204,12 +198,12 @@ extension DemoViewsTableViewController {
     }
 
     override public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        let sectionTitles = Array(indexAndValues.keys.sorted(by: <))
+        let sectionTitles = Array(firstLetterAndItems.keys.sorted(by: <))
         return sectionTitles
     }
 
     override public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionTitles = Array(indexAndValues.keys.sorted(by: <))
+        let sectionTitles = Array(firstLetterAndItems.keys.sorted(by: <))
         return sectionTitles[section]
     }
 
@@ -225,7 +219,7 @@ extension DemoViewsTableViewController {
     }
 }
 
-extension DemoViewsTableViewController: SelectorTitleViewDelegate {
+extension SparkleViewController: SelectorTitleViewDelegate {
     public func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
         let items = sections.map { BasicTableViewItem(title: $0.title.uppercased()) }
         let sectionsTableView = BasicTableView(items: items)
@@ -238,7 +232,7 @@ extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     }
 }
 
-extension DemoViewsTableViewController: BasicTableViewDelegate {
+extension SparkleViewController: BasicTableViewDelegate {
     public func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
         SparkleState.lastSelectedSection = index
         if let section = sections[safe: SparkleState.lastSelectedSection] {
@@ -251,7 +245,7 @@ extension DemoViewsTableViewController: BasicTableViewDelegate {
 }
 
 extension String {
-    var firstCapitalizedLetter: String {
+    func firstCapitalizedLetter() -> String {
         return String(prefix(1)).uppercased()
     }
 }
