@@ -14,7 +14,18 @@ public protocol AdsGridViewModel {
     var imageText: String? { get }
     var accessibilityLabel: String { get }
     var isFavorite: Bool { get }
+    var sponsoredAdData: SponsoredAdData? { get }
     var favoriteButtonAccessibilityLabel: String { get }
+}
+
+public struct SponsoredAdData {
+    public let ribbonTitle: String
+    public let logoImagePath: String?
+
+    public init(ribbonTitle: String, logoImagePath: String?) {
+        self.ribbonTitle = ribbonTitle
+        self.logoImagePath = logoImagePath
+    }
 }
 
 public extension AdsGridViewModel {

@@ -31,6 +31,7 @@ class GalleryPreviewView: UIView {
 
     private var images = [UIImage?]()
     private var newSuperviewSize: CGSize?
+    private var selectedRow: Int?
 
     private lazy var cellSize: CGSize = {
         switch UIDevice.current.userInterfaceIdiom {
@@ -96,6 +97,24 @@ class GalleryPreviewView: UIView {
         collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: animated)
     }
 
+    public func addBorderToItem(atIndex index: Int) {
+        if let previouslySelectedRow = selectedRow {
+            guard let previousCell = collectionView.cellForItem(at: IndexPath(row: previouslySelectedRow, section: 0)) as? GalleryPreviewCell else {
+                selectedRow = index
+                collectionView.reloadData()
+                return
+            }
+            previousCell.showBorder(false)
+        }
+
+        selectedRow = index
+        guard let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? GalleryPreviewCell else {
+            collectionView.reloadData()
+            return
+        }
+        cell.showBorder(true)
+    }
+
     // MARK: - Private methods
 
     private func reloadData() {
@@ -127,6 +146,7 @@ extension GalleryPreviewView: UICollectionViewDataSource {
         let cell = collectionView.dequeue(GalleryPreviewCell.self, for: indexPath)
         let image = images[safe: indexPath.row]
 
+        cell.showBorder(indexPath.row == selectedRow)
         cell.configure(withImage: image)
 
         return cell
