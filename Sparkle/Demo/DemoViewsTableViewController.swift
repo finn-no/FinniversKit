@@ -131,8 +131,9 @@ public class DemoViewsTableViewController: UITableViewController {
     }
 
     private func value(for indexPath: IndexPath) -> String {
-        if let section = sections[safe: indexPath.section] {
-            if let item = section.items[safe: indexPath.row] {
+        let realIndexPath = evaluateRealIndexPath(for: indexPath)
+        if let section = sections[safe: realIndexPath.section] {
+            if let item = section.items[safe: realIndexPath.row] {
                 return item.title
             } else {
                 return ""
@@ -166,12 +167,12 @@ public class DemoViewsTableViewController: UITableViewController {
 
 extension DemoViewsTableViewController {
     override public func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return indexAndValues.keys.count
     }
 
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = sections[section]
-        if let values = indexAndValues[section.title.firstCapitalizedLetter] {
+        let sectionTitles = Array(indexAndValues.keys.sorted(by: <))
+        if let values = indexAndValues[sectionTitles[section].firstCapitalizedLetter] {
             return values.count
         } else {
             return 0
@@ -208,7 +209,8 @@ extension DemoViewsTableViewController {
     }
 
     override public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].title
+        let sectionTitles = Array(indexAndValues.keys.sorted(by: <))
+        return sectionTitles[section]
     }
 
     override public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -225,15 +227,13 @@ extension DemoViewsTableViewController {
 
 extension DemoViewsTableViewController: SelectorTitleViewDelegate {
     public func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
-        if let section = sections[safe: SparkleState.lastSelectedSection] {
-            let items = section.items.map { BasicTableViewItem(title: $0.title.uppercased()) }
-            let sectionsTableView = BasicTableView(items: items)
-            sectionsTableView.selectedIndexPath = IndexPath(row: SparkleState.lastSelectedSection, section: 0)
-            sectionsTableView.delegate = self
-            bottomSheet = BottomSheet(view: sectionsTableView, draggableArea: .everything)
-            if let controller = bottomSheet {
-                present(controller, animated: true)
-            }
+        let items = sections.map { BasicTableViewItem(title: $0.title.uppercased()) }
+        let sectionsTableView = BasicTableView(items: items)
+        sectionsTableView.selectedIndexPath = IndexPath(row: SparkleState.lastSelectedSection, section: 0)
+        sectionsTableView.delegate = self
+        bottomSheet = BottomSheet(view: sectionsTableView, draggableArea: .everything)
+        if let controller = bottomSheet {
+            present(controller, animated: true)
         }
     }
 }
