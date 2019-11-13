@@ -11,7 +11,6 @@ public class SparkleViewController: UITableViewController {
     private var bottomSheet: BottomSheet?
 
     private var firstLetterAndItems = [String: [SparkleItem]]()
-
     private var sections: [SparkleSection]
 
     public init(sections: [SparkleSection]) {
@@ -33,14 +32,8 @@ public class SparkleViewController: UITableViewController {
         super.viewDidAppear(animated)
 
         if let indexPath = SparkleState.lastSelectedIndexPath {
-            if let section = sections[safe: indexPath.section] {
-                if let item = section.items[safe: indexPath.row] {
-                    if let bottomSheet = item.viewController as? BottomSheet {
-                        present(bottomSheet, animated: true)
-                    } else {
-                        present(item.viewController, animated: false)
-                    }
-                }
+            if let item = value(for: indexPath) {
+                present(item.viewController, animated: false)
             }
         }
     }
@@ -59,7 +52,6 @@ public class SparkleViewController: UITableViewController {
 
     @objc private func userInterfaceStyleDidChange() {
         updateColors(animated: true)
-        evaluateIndexAndValues()
         tableView.reloadData()
     }
 
@@ -160,7 +152,7 @@ extension SparkleViewController {
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(UITableViewCell.self, for: indexPath)
         let item = value(for: indexPath)
-        cell.textLabel?.text = item?.title
+        cell.textLabel?.text = item?.title.capitalizingFirstLetter
         cell.textLabel?.font = .bodyRegular
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
