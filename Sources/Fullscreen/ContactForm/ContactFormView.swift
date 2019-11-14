@@ -233,7 +233,7 @@ public final class ContactFormView: UIView {
             submitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
 
-        showPhoneNumberCheckbox.fillInSuperview(insets: UIEdgeInsets(top: .mediumLargeSpacing, leading: 0, bottom: 0, trailing: 0), isActive: true)
+        showPhoneNumberCheckbox.fillInSuperview(insets: UIEdgeInsets(top: .largeSpacing, leading: 0, bottom: 0, trailing: 0), isActive: true)
     }
 
     // MARK: - Actions
