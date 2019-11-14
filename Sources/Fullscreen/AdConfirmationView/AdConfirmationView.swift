@@ -19,7 +19,7 @@ public class AdConfirmationView: UIView {
 
     private lazy var contentView: UIView = UIView(withAutoLayout: true)
     private lazy var confirmationObjectView: AdConfirmationObjectView = AdConfirmationObjectView(withAutoLayout: true)
-    private lazy var actionButton: Button = {
+    private lazy var completeButton: Button = {
         let button = Button(style: .callToAction, size: .normal, withAutoLayout: true)
         button.addTarget(self, action: #selector(didTapActionButton(_:)), for: .touchUpInside)
         return button
@@ -30,7 +30,7 @@ public class AdConfirmationView: UIView {
     public var model: AdConfirmationViewModel? {
         didSet {
             confirmationObjectView.model = model?.objectViewModel
-            actionButton.setTitle(model?.completeActionLabel, for: .normal)
+            completeButton.setTitle(model?.completeButtonText, for: .normal)
 
             setupSummaryView()
         }
@@ -57,7 +57,7 @@ private extension AdConfirmationView {
         scrollView.addSubview(contentView)
 
         contentView.addSubview(confirmationObjectView)
-        contentView.addSubview(actionButton)
+        contentView.addSubview(completeButton)
 
         NSLayoutConstraint.activate([
             // Make height of contentView larger than scrollView to allow vertical scrolling
@@ -73,8 +73,8 @@ private extension AdConfirmationView {
             confirmationObjectView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             confirmationObjectView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            actionButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            actionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            completeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            completeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 
@@ -94,12 +94,12 @@ private extension AdConfirmationView {
                 summaryView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
                 summaryView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-                actionButton.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: .mediumLargeSpacing),
-                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: actionButton.bottomAnchor, constant: .largeSpacing),
+                completeButton.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: .mediumLargeSpacing),
+                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: completeButton.bottomAnchor, constant: .largeSpacing),
             ])
         } else {
-            actionButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing).isActive = true
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: actionButton.bottomAnchor, constant: .largeSpacing).isActive = true
+            completeButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing).isActive = true
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: completeButton.bottomAnchor, constant: .largeSpacing).isActive = true
         }
     }
 }

@@ -9,7 +9,7 @@ struct AdConfirmationViewDefaultData: AdConfirmationViewModel {
     var objectViewModel: AdConfirmationObjectViewModel = AdConfirmationObjectViewModelDefaultData()
     var summaryViewModel: AdConfirmationSummaryViewModel? = AdConfirmationSummaryViewModelDefaultData()
     var feedbackViewModel: AdConfirmationFeedbackViewModel?
-    var completeActionLabel = "Gå til mine annonser"
+    var completeButtonText = "Gå til mine annonser"
 }
 
 struct AdConfirmationObjectViewModelDefaultData: AdConfirmationObjectViewModel {
