@@ -150,7 +150,7 @@ class FavoriteAdsListDemoView: UIView, Tweakable {
         favoritesListView.setListIsEmpty(viewModels.isEmpty)
         favoritesListView.subtitle = "\(viewModels.count) favoritter"
         sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
-        favoritesListView.reloadData()
+        favoritesListView.reloadData(scrollToTop: true)
     }
 }
 
@@ -179,14 +179,14 @@ extension FavoriteAdsListDemoView: FavoriteAdsListViewDelegate {
         }
         view.sortingTitle = currentSorting.rawValue
         sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: favoritesListView.searchBarText)
-        view.reloadData()
+        view.reloadData(scrollToTop: true)
     }
 
     func favoriteAdsListViewDidFocusSearchBar(_ view: FavoriteAdsListView) {}
 
     func favoriteAdsListView(_ view: FavoriteAdsListView, didChangeSearchText searchText: String) {
         sectionDataSource.configureSection(forAds: viewModels, withSort: currentSorting, filterQuery: view.searchBarText)
-        view.reloadData()
+        view.reloadData(scrollToTop: true)
     }
 
     func favoriteAdsListView(_ view: FavoriteAdsListView, didUpdateTitleLabelVisibility isVisible: Bool) {}
