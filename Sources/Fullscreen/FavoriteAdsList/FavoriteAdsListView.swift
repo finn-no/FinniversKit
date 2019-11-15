@@ -44,7 +44,7 @@ public class FavoriteAdsListView: UIView {
     public var isReadOnly: Bool {
         didSet {
             if didSetTableHeader {
-                reloadData()
+                reloadData(scrollToTop: true)
                 setFooterVewHidden(isReadOnly || isFooterShareButtonHidden)
             }
         }
@@ -218,10 +218,12 @@ public class FavoriteAdsListView: UIView {
 
     // MARK: - Reload
 
-    public func reloadData() {
+    public func reloadData(scrollToTop: Bool) {
         showEmptySearchViewIfNeeded()
 
-        tableView.setContentOffset(.zero, animated: false)
+        if scrollToTop {
+            tableView.setContentOffset(.zero, animated: true)
+        }
         tableView.reloadData()
     }
 
