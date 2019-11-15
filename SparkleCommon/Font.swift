@@ -122,7 +122,7 @@ public class FontBook: NSObject {
     /// - If a T2 have more sublevels, you can use T3.
     /// - This always has the weight Light.
     static var title3Bold: UIFont {
-        let font = FontBook.shared.title3 ?? UIFont.systemFont(ofSize: 22, weight: .bold)
+        let font = FontBook.shared.title3Bold ?? UIFont.systemFont(ofSize: 22, weight: .bold)
         return font.scaledFont(forTextStyle: .title2)
     }
 

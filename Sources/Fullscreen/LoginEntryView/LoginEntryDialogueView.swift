@@ -20,13 +20,8 @@ class LoginEntryDialogueView: UIView {
     }()
 
     private lazy var titleLabel: UILabel = {
-        // overriding the font to get the title2 strong without affecting
-        // the design system itself for now
-        let title2StrongFont = UIFont.title2Strong
-
-        let label = Label(style: .title2)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = title2StrongFont
+        let label = Label(withAutoLayout: true)
+        label.font = .title2Strong
         label.textAlignment = .center
         label.numberOfLines = 0
 

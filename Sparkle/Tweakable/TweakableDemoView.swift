@@ -20,6 +20,7 @@ public class TweakableDemoView: UIView, Tweakable {
         label.text = "Tap the button and choose and option ✨"
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.textColor = .textPrimary
         return label
     }()
 

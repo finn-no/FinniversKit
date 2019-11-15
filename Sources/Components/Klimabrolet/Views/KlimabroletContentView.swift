@@ -25,9 +25,7 @@ class KlimabroletContentView: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        let font = UIFont.title3Bold
-            .scaledFont(forTextStyle: .title2)
-        label.font = font
+        label.font = UIFont.title3Bold
         label.textAlignment = .center
         label.textColor = .textPrimary
         label.numberOfLines = 0

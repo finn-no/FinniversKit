@@ -3,10 +3,11 @@
 //
 
 import FinniversKit
+import Sparkle
 
 public class ContactFormDemoView: UIView, Tweakable {
 
-    lazy var tweakingOptions: [TweakingOption] = {
+    public lazy var tweakingOptions: [TweakingOption] = {
         let options = [
             TweakingOption(title: "Full name and phone number not required", action: {
                 self.contactFormView.configure(with: ViewModel())
