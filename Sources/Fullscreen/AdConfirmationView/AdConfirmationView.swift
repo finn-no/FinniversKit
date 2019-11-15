@@ -83,8 +83,8 @@ private extension AdConfirmationView {
             let summaryView = AdConfirmationSummaryView(model: summaryViewModel, withAutoLayout: true)
             contentView.addSubview(summaryView)
 
-            let heightForTitleLabel = CGFloat(32)
-            let heightForOrderLinesView = (CGFloat(summaryViewModel.orderLines.count) * 32)
+            let heightForTitleLabel = CGFloat(summaryView.titleLabelHeight)
+            let heightForOrderLinesView = (CGFloat(summaryViewModel.orderLines.count) * summaryView.checkmarkViewHeight)
             let heightForPriceStackView = CGFloat(72)
             let summaryViewHeightConstant = CGFloat(heightForTitleLabel + heightForOrderLinesView + heightForPriceStackView)
 

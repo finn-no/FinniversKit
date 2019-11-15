@@ -44,6 +44,9 @@ public class AdConfirmationSummaryView: UIView {
 
     private let model: AdConfirmationSummaryViewModel
 
+    public let titleLabelHeight: CGFloat = 32
+    public let checkmarkViewHeight: CGFloat = 32
+
     init(model: AdConfirmationSummaryViewModel, withAutoLayout: Bool = false) {
         self.model = model
 
