@@ -4,7 +4,32 @@
 
 import FinniversKit
 
-public class ContactFormDemoView: UIView {
+public class ContactFormDemoView: UIView, Tweakable {
+
+    lazy var tweakingOptions: [TweakingOption] = {
+        let options = [
+            TweakingOption(title: "Full name and phone number not required", action: {
+                self.contactFormView.configure(with: ViewModel())
+                self.contactFormView.setNeedsLayout()
+            }),
+            TweakingOption(title: "Phone number required", action: {
+                var viewModel = ViewModel()
+                viewModel.phoneNumberRequired = true
+                self.contactFormView.configure(with: viewModel)
+                self.contactFormView.setNeedsLayout()
+            }),
+            TweakingOption(title: "Full name required", action: {
+                var viewModel = ViewModel()
+                viewModel.phoneNumberRequired = false
+                viewModel.fullNameRequired = true
+                viewModel.nameErrorHelpText = "Navn må bestå av fornavn og etternavn"
+                self.contactFormView.configure(with: viewModel)
+                self.contactFormView.setNeedsLayout()
+            }),
+        ]
+        return options
+    }()
+
     private lazy var contactFormView: ContactFormView = {
         let view = ContactFormView(withAutoLayout: true)
         view.delegate = self
@@ -56,4 +81,7 @@ private struct ViewModel: ContactFormViewModel {
     var phoneNumberErrorHelpText = "Oppgi et gyldig telefonnummer"
     var disclaimerText = "Ved å legge inn din e-postadresse og ditt telefonnummer samtykker du til å motta e-poster samt eventuell henvendelse på telefon om boligprosjektet. Megler/utbygger blir selvstendig behandlingsansvarlig for personinformasjonen de mottar."
     var disclaimerReadMoreButtonTitle = "Les mer"
+    var phoneNumberRequired = false
+    var fullNameRequired = false
+    var nameErrorHelpText: String?
 }

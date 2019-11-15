@@ -17,4 +17,7 @@ public protocol ContactFormViewModel {
     var phoneNumberErrorHelpText: String { get }
     var disclaimerText: String { get }
     var disclaimerReadMoreButtonTitle: String { get }
+    var phoneNumberRequired: Bool { get }
+    var fullNameRequired: Bool { get }
+    var nameErrorHelpText: String? { get }
 }
