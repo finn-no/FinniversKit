@@ -83,7 +83,7 @@ private extension AdConfirmationSummaryView {
     func setup() {
         titleLabel.text = model.title
         priceLabel.text = model.priceLabel
-        totalLabel.text = model.priceText
+        totalLabel.text = model.priceValue
 
         summaryView.addArrangedSubview(titleLabel)
         summaryView.addConstraint(titleLabel.heightAnchor.constraint(equalToConstant: 32))
