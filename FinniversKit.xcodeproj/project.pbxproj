@@ -117,7 +117,7 @@
 		4446062C237B3F030050D865 /* TweakingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460625237B3F030050D865 /* TweakingOption.swift */; };
 		4446062D237B3F030050D865 /* TweakableDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460626237B3F030050D865 /* TweakableDemoView.swift */; };
 		4446062E237B3F030050D865 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460627237B3F030050D865 /* Device.swift */; };
-		4446062F237B41200050D865 /* SparkleCommon.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44D31607237B1F4800A5A93B /* SparkleCommon.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		4446062F237B41200050D865 /* Bootstrap.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44D31607237B1F4800A5A93B /* Bootstrap.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		44460630237B41400050D865 /* Sparkle.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44E505B1237B151B0067B949 /* Sparkle.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		4446063D237B42020050D865 /* BottomSheetPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460633237B42020050D865 /* BottomSheetPresentationController.swift */; };
 		4446063E237B42020050D865 /* BottomSheetTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460634237B42020050D865 /* BottomSheetTransitioningDelegate.swift */; };
@@ -182,7 +182,7 @@
 		44A557B422E72187001667AE /* SelectableTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B122E72187001667AE /* SelectableTableViewCellViewModel.swift */; };
 		44A557B522E72187001667AE /* HeartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B222E72187001667AE /* HeartTableViewCell.swift */; };
 		44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A557B322E72187001667AE /* CheckboxTableViewCell.swift */; };
-		44AD5E8A237B1DF90035EE0C /* SparkleCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 44AD5E88237B1DF80035EE0C /* SparkleCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		44AD5E8A237B1DF90035EE0C /* Bootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = 44AD5E88237B1DF80035EE0C /* Bootstrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		44AEFC2322E722FC00D3C307 /* RemoteImageCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEFC1922E722FC00D3C307 /* RemoteImageCellDemoView.swift */; };
 		44AEFC2422E722FC00D3C307 /* BasicCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEFC1B22E722FC00D3C307 /* BasicCellDemoView.swift */; };
 		44AEFC2522E722FC00D3C307 /* BasicCellVariationsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEFC1C22E722FC00D3C307 /* BasicCellVariationsDemoView.swift */; };
@@ -199,11 +199,11 @@
 		44D31604237B1F1F00A5A93B /* Spacing.h in Headers */ = {isa = PBXBuildFile; fileRef = 44D31601237B1F1E00A5A93B /* Spacing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		44D31605237B1F1F00A5A93B /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D31602237B1F1E00A5A93B /* Spacing.swift */; };
 		44D31606237B1F1F00A5A93B /* Spacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D31603237B1F1E00A5A93B /* Spacing.m */; };
-		44D31608237B1F4800A5A93B /* SparkleCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D31607237B1F4800A5A93B /* SparkleCommon.swift */; };
-		44D31609237B202300A5A93B /* SparkleCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; };
-		44D3160A237B202300A5A93B /* SparkleCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		44D3160E237B21C400A5A93B /* SparkleCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; };
-		44D3160F237B21C400A5A93B /* SparkleCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44D31608237B1F4800A5A93B /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D31607237B1F4800A5A93B /* Bootstrap.swift */; };
+		44D31609237B202300A5A93B /* Bootstrap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* Bootstrap.framework */; };
+		44D3160A237B202300A5A93B /* Bootstrap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* Bootstrap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44D3160E237B21C400A5A93B /* Bootstrap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* Bootstrap.framework */; };
+		44D3160F237B21C400A5A93B /* Bootstrap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* Bootstrap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D31613237B22B200A5A93B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sparkle.framework */; };
 		44D31614237B22B200A5A93B /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
@@ -572,14 +572,14 @@
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 44AD5E85237B1DF80035EE0C;
-			remoteInfo = SparkleCommon;
+			remoteInfo = Bootstrap;
 		};
 		44D31610237B21C400A5A93B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 44AD5E85237B1DF80035EE0C;
-			remoteInfo = SparkleCommon;
+			remoteInfo = Bootstrap;
 		};
 		44D31615237B22B200A5A93B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -611,7 +611,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				44D3160A237B202300A5A93B /* SparkleCommon.framework in Embed Frameworks */,
+				44D3160A237B202300A5A93B /* Bootstrap.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,7 +622,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				44D3160F237B21C400A5A93B /* SparkleCommon.framework in Embed Frameworks */,
+				44D3160F237B21C400A5A93B /* Bootstrap.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -820,8 +820,8 @@
 		44A557B122E72187001667AE /* SelectableTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		44A557B222E72187001667AE /* HeartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartTableViewCell.swift; sourceTree = "<group>"; };
 		44A557B322E72187001667AE /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
-		44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SparkleCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		44AD5E88237B1DF80035EE0C /* SparkleCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SparkleCommon.h; sourceTree = "<group>"; };
+		44AD5E86237B1DF80035EE0C /* Bootstrap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bootstrap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44AD5E88237B1DF80035EE0C /* Bootstrap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bootstrap.h; sourceTree = "<group>"; };
 		44AD5E89237B1DF90035EE0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44AEFC1922E722FC00D3C307 /* RemoteImageCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageCellDemoView.swift; sourceTree = "<group>"; };
 		44AEFC1B22E722FC00D3C307 /* BasicCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCellDemoView.swift; sourceTree = "<group>"; };
@@ -838,7 +838,7 @@
 		44D31601237B1F1E00A5A93B /* Spacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spacing.h; sourceTree = "<group>"; };
 		44D31602237B1F1E00A5A93B /* Spacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		44D31603237B1F1E00A5A93B /* Spacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spacing.m; sourceTree = "<group>"; };
-		44D31607237B1F4800A5A93B /* SparkleCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleCommon.swift; sourceTree = "<group>"; };
+		44D31607237B1F4800A5A93B /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
 		44D912512077AC8A00486848 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		44D912532077AC8A00486848 /* AttachableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachableView.swift; sourceTree = "<group>"; };
 		44D912542077AC8A00486848 /* RoundedRectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectangleView.swift; sourceTree = "<group>"; };
@@ -1227,7 +1227,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44D31609237B202300A5A93B /* SparkleCommon.framework in Frameworks */,
+				44D31609237B202300A5A93B /* Bootstrap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1235,7 +1235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44D3160E237B21C400A5A93B /* SparkleCommon.framework in Frameworks */,
+				44D3160E237B21C400A5A93B /* Bootstrap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1443,7 +1443,7 @@
 				14405C521FAFBBF000D03E04 /* Demo */,
 				14F4F1BA1FD6CEA800E9CECA /* UnitTests */,
 				44E505A6237B14E10067B949 /* Sparkle */,
-				44AD5E87237B1DF80035EE0C /* SparkleCommon */,
+				44AD5E87237B1DF80035EE0C /* Bootstrap */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
 				CF87A850229C0C3600DA8243 /* Recovered References */,
@@ -1457,7 +1457,7 @@
 				14405C741FAFBD1800D03E04 /* Demo.app */,
 				14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */,
 				44E505A5237B14E10067B949 /* Sparkle.framework */,
-				44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */,
+				44AD5E86237B1DF80035EE0C /* Bootstrap.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2114,7 +2114,7 @@
 			path = SelectableTableViewCell;
 			sourceTree = "<group>";
 		};
-		44AD5E87237B1DF80035EE0C /* SparkleCommon */ = {
+		44AD5E87237B1DF80035EE0C /* Bootstrap */ = {
 			isa = PBXGroup;
 			children = (
 				4446066D237B46EB0050D865 /* FloatingButton */,
@@ -2128,12 +2128,12 @@
 				44D315FD237B1EF400A5A93B /* Layout.swift */,
 				440E70B3237B2F6D00282468 /* Font.swift */,
 				44D315FC237B1EF400A5A93B /* LayoutHelpers.swift */,
-				44AD5E88237B1DF80035EE0C /* SparkleCommon.h */,
+				44AD5E88237B1DF80035EE0C /* Bootstrap.h */,
 				44AD5E89237B1DF90035EE0C /* Info.plist */,
-				44D31607237B1F4800A5A93B /* SparkleCommon.swift */,
+				44D31607237B1F4800A5A93B /* Bootstrap.swift */,
 				4446060B237B37550050D865 /* Palette.swift */,
 			);
-			path = SparkleCommon;
+			path = Bootstrap;
 			sourceTree = "<group>";
 		};
 		44AEFC1722E722FC00D3C307 /* Cells */ = {
@@ -4145,8 +4145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D31604237B1F1F00A5A93B /* Spacing.h in Headers */,
-				44AD5E8A237B1DF90035EE0C /* SparkleCommon.h in Headers */,
-				4446062F237B41200050D865 /* SparkleCommon.swift in Headers */,
+				44AD5E8A237B1DF90035EE0C /* Bootstrap.h in Headers */,
+				4446062F237B41200050D865 /* Bootstrap.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4214,9 +4214,9 @@
 			productReference = 14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		44AD5E85237B1DF80035EE0C /* SparkleCommon */ = {
+		44AD5E85237B1DF80035EE0C /* Bootstrap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44AD5E91237B1DF90035EE0C /* Build configuration list for PBXNativeTarget "SparkleCommon" */;
+			buildConfigurationList = 44AD5E91237B1DF90035EE0C /* Build configuration list for PBXNativeTarget "Bootstrap" */;
 			buildPhases = (
 				44AD5E81237B1DF80035EE0C /* Headers */,
 				44AD5E82237B1DF80035EE0C /* Sources */,
@@ -4227,9 +4227,9 @@
 			);
 			dependencies = (
 			);
-			name = SparkleCommon;
-			productName = SparkleCommon;
-			productReference = 44AD5E86237B1DF80035EE0C /* SparkleCommon.framework */;
+			name = Bootstrap;
+			productName = Bootstrap;
+			productReference = 44AD5E86237B1DF80035EE0C /* Bootstrap.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		44E505A4237B14E10067B949 /* Sparkle */ = {
@@ -4281,7 +4281,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "FINN AS";
 				TargetAttributes = {
 					14405C691FAFBD1800D03E04 = {
@@ -4331,7 +4331,7 @@
 				14405C691FAFBD1800D03E04 /* Demo */,
 				14F4F1B81FD6CEA800E9CECA /* UnitTests */,
 				44E505A4237B14E10067B949 /* Sparkle */,
-				44AD5E85237B1DF80035EE0C /* SparkleCommon */,
+				44AD5E85237B1DF80035EE0C /* Bootstrap */,
 			);
 		};
 /* End PBXProject section */
@@ -4621,7 +4621,7 @@
 				44460643237B42020050D865 /* SpringAnimator.swift in Sources */,
 				44460641237B42020050D865 /* BottomSheetStateController.swift in Sources */,
 				44460649237B42A70050D865 /* CGPoint.swift in Sources */,
-				44D31608237B1F4800A5A93B /* SparkleCommon.swift in Sources */,
+				44D31608237B1F4800A5A93B /* Bootstrap.swift in Sources */,
 				44D31605237B1F1F00A5A93B /* Spacing.swift in Sources */,
 				4446064C237B42CF0050D865 /* SelectorTitleView.swift in Sources */,
 				44460659237B45920050D865 /* ShadowScrollView.swift in Sources */,
@@ -4983,12 +4983,12 @@
 		};
 		44D3160C237B202300A5A93B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44AD5E85237B1DF80035EE0C /* SparkleCommon */;
+			target = 44AD5E85237B1DF80035EE0C /* Bootstrap */;
 			targetProxy = 44D3160B237B202300A5A93B /* PBXContainerItemProxy */;
 		};
 		44D31611237B21C400A5A93B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44AD5E85237B1DF80035EE0C /* SparkleCommon */;
+			target = 44AD5E85237B1DF80035EE0C /* Bootstrap */;
 			targetProxy = 44D31610237B21C400A5A93B /* PBXContainerItemProxy */;
 		};
 		44D31616237B22B200A5A93B /* PBXTargetDependency */ = {
@@ -5245,7 +5245,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5256,7 +5256,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = SparkleCommon/Info.plist;
+				INFOPLIST_FILE = Bootstrap/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5267,7 +5267,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.SparkleCommon;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Bootstrap;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -5288,7 +5288,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5299,7 +5299,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = SparkleCommon/Info.plist;
+				INFOPLIST_FILE = Bootstrap/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5309,7 +5309,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.SparkleCommon;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Bootstrap;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -5329,7 +5329,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5370,7 +5370,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5515,7 +5515,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44AD5E91237B1DF90035EE0C /* Build configuration list for PBXNativeTarget "SparkleCommon" */ = {
+		44AD5E91237B1DF90035EE0C /* Build configuration list for PBXNativeTarget "Bootstrap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44AD5E8F237B1DF90035EE0C /* Debug */,

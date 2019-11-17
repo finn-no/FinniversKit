@@ -216,7 +216,7 @@ public class FontBook: NSObject {
     }
 
     func scaledFont(forTextStyle textStyle: UIFont.TextStyle) -> UIFont {
-        if SparkleCommon.isDynamicTypeEnabled {
+        if Bootstrap.isDynamicTypeEnabled {
             let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
             return fontMetrics.scaledFont(for: self)
         } else {

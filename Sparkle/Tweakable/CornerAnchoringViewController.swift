@@ -1,5 +1,5 @@
 import UIKit
-import SparkleCommon
+import Bootstrap
 
 protocol CornerAnchoringViewDelegate: AnyObject {
     func cornerAnchoringViewDidSelectTweakButton(_ cornerAnchoringView: CornerAnchoringView)

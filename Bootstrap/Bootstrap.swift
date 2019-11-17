@@ -1,6 +1,6 @@
 import Foundation
 
-@objc public class SparkleCommon: NSObject {
+@objc public class Bootstrap: NSObject {
     public enum UserInterfaceStyleSupport {
         @available(iOS 13.0, *)
         case dynamic

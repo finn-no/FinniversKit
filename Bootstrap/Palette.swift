@@ -242,7 +242,7 @@ public class Palette: NSObject {
 // MARK: - Private helper for creating dynamic color
 extension UIColor {
     private class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        switch SparkleCommon.userInterfaceStyleSupport {
+        switch Bootstrap.userInterfaceStyleSupport {
         case .forceDark:
             return darkModeColor
         case .forceLight:

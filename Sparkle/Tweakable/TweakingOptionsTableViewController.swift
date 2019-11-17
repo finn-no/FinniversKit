@@ -1,5 +1,5 @@
 import UIKit
-import SparkleCommon
+import Bootstrap
 
 protocol TweakingOptionsTableViewControllerDelegate: AnyObject {
     func tweakingOptionsTableViewControllerDidDismiss(_ tweakingOptionsTableViewController: TweakingOptionsTableViewController)

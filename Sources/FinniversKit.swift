@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import SparkleCommon
+import Bootstrap
 
 /// Class for referencing the framework bundle
 @objc public class FinniversKit: NSObject {
@@ -20,11 +20,11 @@ import SparkleCommon
 
     public static var isDynamicTypeEnabled: Bool {
         get {
-            return SparkleCommon.isDynamicTypeEnabled
+            return Bootstrap.isDynamicTypeEnabled
         }
 
         set {
-            SparkleCommon.isDynamicTypeEnabled = newValue
+            Bootstrap.isDynamicTypeEnabled = newValue
         }
     }
     public static var userInterfaceStyleSupport: UserInterfaceStyleSupport = .forceLight

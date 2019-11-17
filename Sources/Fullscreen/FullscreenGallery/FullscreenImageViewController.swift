@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import SparkleCommon
+import Bootstrap
 
 protocol FullscreenImageViewControllerDataSource: AnyObject {
     func loadImage(forImageViewController vc: FullscreenImageViewController, dataCallback: @escaping (UIImage?) -> Void)

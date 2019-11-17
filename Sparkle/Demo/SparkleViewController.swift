@@ -1,5 +1,5 @@
 import UIKit
-import SparkleCommon
+import Bootstrap
 
 public class SparkleViewController: UITableViewController {
     private lazy var selectorTitleView: SelectorTitleView = {

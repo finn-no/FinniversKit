@@ -1,5 +1,5 @@
 import UIKit
-import SparkleCommon
+import Bootstrap
 
 public class MiniToastView: UIView {
     public lazy var titleLabel: UILabel = {

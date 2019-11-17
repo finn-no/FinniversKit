@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
-               BuildableName = "UnitTests.xctest"
-               BlueprintName = "UnitTests"
+               BlueprintIdentifier = "44AD5E85237B1DF80035EE0C"
+               BuildableName = "Bootstrap.framework"
+               BlueprintName = "Bootstrap"
                ReferencedContainer = "container:FinniversKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,26 +27,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
-            BuildableName = "UnitTests.xctest"
-            BlueprintName = "UnitTests"
-            ReferencedContainer = "container:FinniversKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
-               BuildableName = "UnitTests.xctest"
-               BlueprintName = "UnitTests"
-               ReferencedContainer = "container:FinniversKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -59,15 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
-            BuildableName = "UnitTests.xctest"
-            BlueprintName = "UnitTests"
-            ReferencedContainer = "container:FinniversKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -78,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "14F4F1B81FD6CEA800E9CECA"
-            BuildableName = "UnitTests.xctest"
-            BlueprintName = "UnitTests"
+            BlueprintIdentifier = "44AD5E85237B1DF80035EE0C"
+            BuildableName = "Bootstrap.framework"
+            BlueprintName = "Bootstrap"
             ReferencedContainer = "container:FinniversKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

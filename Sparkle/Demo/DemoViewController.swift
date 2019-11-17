@@ -1,5 +1,5 @@
 import UIKit
-import SparkleCommon
+import Bootstrap
 
 public class DemoViewController<View: UIView>: UIViewController {
 

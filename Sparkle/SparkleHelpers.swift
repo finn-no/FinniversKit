@@ -1,5 +1,5 @@
 import UIKit
-import SparkleCommon
+import Bootstrap
 
 extension String {
     public var capitalizingFirstLetter: String {
@@ -29,7 +29,7 @@ public struct SparkleState {
     private static let lastSelectedDeviceKey = "lastSelectedDeviceKey"
     public static let currentUserInterfaceStyleKey = "currentUserInterfaceStyleKey"
 
-    public static let defaultUserInterfaceStyleSupport: SparkleCommon.UserInterfaceStyleSupport = {
+    public static let defaultUserInterfaceStyleSupport: Bootstrap.UserInterfaceStyleSupport = {
         if #available(iOS 13.0, *) {
             return .dynamic
         }
@@ -111,10 +111,10 @@ public struct SparkleState {
         }
         if let userInterfaceStyle = userInterfaceStyle {
             UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
-            SparkleCommon.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
+            Bootstrap.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
         } else {
             UserDefaults.standard.removeObject(forKey: currentUserInterfaceStyleKey)
-            SparkleCommon.userInterfaceStyleSupport = defaultUserInterfaceStyleSupport
+            Bootstrap.userInterfaceStyleSupport = defaultUserInterfaceStyleSupport
         }
         UserDefaults.standard.synchronize()
     }
