@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 
 public class EmptyViewDemoView: UIView, Tweakable {
     var emptyView: EmptyView?

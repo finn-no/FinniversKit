@@ -30,7 +30,7 @@ class SplitViewController: UISplitViewController {
     }
 
     @objc func didDoubleTap() {
-        SparkleState.lastSelectedIndexPath = nil
+        SandboxState.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 }

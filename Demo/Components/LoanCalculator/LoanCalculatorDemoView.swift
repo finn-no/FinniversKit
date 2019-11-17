@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 
 struct LoanCalculatorDemoViewModel: LoanCalculatorViewModel {
     var title: String?

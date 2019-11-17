@@ -104,7 +104,7 @@
 		4446060C237B37550050D865 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446060B237B37550050D865 /* Palette.swift */; };
 		44460614237B3EC20050D865 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446060E237B3EC10050D865 /* NotificationNames.swift */; };
 		44460615237B3EC20050D865 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446060F237B3EC10050D865 /* SplitViewController.swift */; };
-		44460616237B3EC20050D865 /* SparkleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460610237B3EC10050D865 /* SparkleViewController.swift */; };
+		44460616237B3EC20050D865 /* SandboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460610237B3EC10050D865 /* SandboxViewController.swift */; };
 		44460617237B3EC20050D865 /* BaseDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460611237B3EC10050D865 /* BaseDemoViewController.swift */; };
 		44460618237B3EC20050D865 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460612237B3EC10050D865 /* DemoViewController.swift */; };
 		44460619237B3EC20050D865 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460613237B3EC10050D865 /* NavigationController.swift */; };
@@ -118,7 +118,7 @@
 		4446062D237B3F030050D865 /* TweakableDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460626237B3F030050D865 /* TweakableDemoView.swift */; };
 		4446062E237B3F030050D865 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460627237B3F030050D865 /* Device.swift */; };
 		4446062F237B41200050D865 /* Bootstrap.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44D31607237B1F4800A5A93B /* Bootstrap.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		44460630237B41400050D865 /* Sparkle.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44E505B1237B151B0067B949 /* Sparkle.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		44460630237B41400050D865 /* Sandbox.swift in Headers */ = {isa = PBXBuildFile; fileRef = 44E505B1237B151B0067B949 /* Sandbox.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		4446063D237B42020050D865 /* BottomSheetPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460633237B42020050D865 /* BottomSheetPresentationController.swift */; };
 		4446063E237B42020050D865 /* BottomSheetTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460634237B42020050D865 /* BottomSheetTransitioningDelegate.swift */; };
 		4446063F237B42020050D865 /* BottomSheetAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460635237B42020050D865 /* BottomSheetAnimationController.swift */; };
@@ -204,8 +204,8 @@
 		44D3160A237B202300A5A93B /* Bootstrap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* Bootstrap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D3160E237B21C400A5A93B /* Bootstrap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* Bootstrap.framework */; };
 		44D3160F237B21C400A5A93B /* Bootstrap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44AD5E86237B1DF80035EE0C /* Bootstrap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		44D31613237B22B200A5A93B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sparkle.framework */; };
-		44D31614237B22B200A5A93B /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44D31613237B22B200A5A93B /* Sandbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sandbox.framework */; };
+		44D31614237B22B200A5A93B /* Sandbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44E505A5237B14E10067B949 /* Sandbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; };
 		44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB3CF1561F73E5870041EF20 /* FinniversKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912512077AC8A00486848 /* EmptyView.swift */; };
@@ -217,9 +217,9 @@
 		44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912682077AD0200486848 /* PopupViewDefaultData.swift */; };
 		44D9126B2077AD0200486848 /* PopupViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912692077AD0200486848 /* PopupViewDemoView.swift */; };
 		44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D912722077AD1200486848 /* EmptyViewDemoView.swift */; };
-		44E505A9237B14E10067B949 /* Sparkle.h in Headers */ = {isa = PBXBuildFile; fileRef = 44E505A7237B14E10067B949 /* Sparkle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		44E505B2237B151B0067B949 /* Sparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E505B1237B151B0067B949 /* Sparkle.swift */; };
-		44E505B4237B15660067B949 /* SparkleHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E505B3237B15660067B949 /* SparkleHelpers.swift */; };
+		44E505A9237B14E10067B949 /* Sandbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 44E505A7237B14E10067B949 /* Sandbox.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		44E505B2237B151B0067B949 /* Sandbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E505B1237B151B0067B949 /* Sandbox.swift */; };
+		44E505B4237B15660067B949 /* SandboxHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E505B3237B15660067B949 /* SandboxHelpers.swift */; };
 		44E505B6237B1B2B0067B949 /* MiniToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E505B5237B1B2B0067B949 /* MiniToastView.swift */; };
 		44F6E0BD237BCC3D0022CFDD /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6E0BC237BCC3D0022CFDD /* ArrayExtensions.swift */; };
 		44F6E0BF237BCCD00022CFDD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6E0BE237BCCD00022CFDD /* Models.swift */; };
@@ -586,7 +586,7 @@
 			containerPortal = 25D04D731F583B1800EA317D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 44E505A4237B14E10067B949;
-			remoteInfo = Sparkle;
+			remoteInfo = Sandbox;
 		};
 		44D32C2A1FB07850001E86D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -634,7 +634,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				44D32C291FB07850001E86D6 /* FinniversKit.framework in Embed Frameworks */,
-				44D31614237B22B200A5A93B /* Sparkle.framework in Embed Frameworks */,
+				44D31614237B22B200A5A93B /* Sandbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -741,7 +741,7 @@
 		4446060B237B37550050D865 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		4446060E237B3EC10050D865 /* NotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		4446060F237B3EC10050D865 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
-		44460610237B3EC10050D865 /* SparkleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkleViewController.swift; sourceTree = "<group>"; };
+		44460610237B3EC10050D865 /* SandboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxViewController.swift; sourceTree = "<group>"; };
 		44460611237B3EC10050D865 /* BaseDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDemoViewController.swift; sourceTree = "<group>"; };
 		44460612237B3EC10050D865 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		44460613237B3EC10050D865 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -848,11 +848,11 @@
 		44D912682077AD0200486848 /* PopupViewDefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDefaultData.swift; sourceTree = "<group>"; };
 		44D912692077AD0200486848 /* PopupViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewDemoView.swift; sourceTree = "<group>"; };
 		44D912722077AD1200486848 /* EmptyViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewDemoView.swift; sourceTree = "<group>"; };
-		44E505A5237B14E10067B949 /* Sparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Sparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		44E505A7237B14E10067B949 /* Sparkle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sparkle.h; sourceTree = "<group>"; };
+		44E505A5237B14E10067B949 /* Sandbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Sandbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44E505A7237B14E10067B949 /* Sandbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sandbox.h; sourceTree = "<group>"; };
 		44E505A8237B14E10067B949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44E505B1237B151B0067B949 /* Sparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sparkle.swift; sourceTree = "<group>"; };
-		44E505B3237B15660067B949 /* SparkleHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkleHelpers.swift; sourceTree = "<group>"; };
+		44E505B1237B151B0067B949 /* Sandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandbox.swift; sourceTree = "<group>"; };
+		44E505B3237B15660067B949 /* SandboxHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxHelpers.swift; sourceTree = "<group>"; };
 		44E505B5237B1B2B0067B949 /* MiniToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniToastView.swift; sourceTree = "<group>"; };
 		44F6E0BC237BCC3D0022CFDD /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		44F6E0BE237BCCD00022CFDD /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -1203,7 +1203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */,
-				44D31613237B22B200A5A93B /* Sparkle.framework in Frameworks */,
+				44D31613237B22B200A5A93B /* Sandbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1442,7 +1442,7 @@
 				4447F6631FDB2B110033DBC1 /* Sources */,
 				14405C521FAFBBF000D03E04 /* Demo */,
 				14F4F1BA1FD6CEA800E9CECA /* UnitTests */,
-				44E505A6237B14E10067B949 /* Sparkle */,
+				44E505A6237B14E10067B949 /* Sandbox */,
 				44AD5E87237B1DF80035EE0C /* Bootstrap */,
 				25D04D7C1F583B1800EA317D /* Products */,
 				457B35CF1F7BE2670031E125 /* Frameworks */,
@@ -1456,7 +1456,7 @@
 				CB3CF1561F73E5870041EF20 /* FinniversKit.framework */,
 				14405C741FAFBD1800D03E04 /* Demo.app */,
 				14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */,
-				44E505A5237B14E10067B949 /* Sparkle.framework */,
+				44E505A5237B14E10067B949 /* Sandbox.framework */,
 				44AD5E86237B1DF80035EE0C /* Bootstrap.framework */,
 			);
 			name = Products;
@@ -1710,7 +1710,7 @@
 			children = (
 				4446060E237B3EC10050D865 /* NotificationNames.swift */,
 				4446060F237B3EC10050D865 /* SplitViewController.swift */,
-				44460610237B3EC10050D865 /* SparkleViewController.swift */,
+				44460610237B3EC10050D865 /* SandboxViewController.swift */,
 				44460611237B3EC10050D865 /* BaseDemoViewController.swift */,
 				44460612237B3EC10050D865 /* DemoViewController.swift */,
 				44460613237B3EC10050D865 /* NavigationController.swift */,
@@ -2266,19 +2266,19 @@
 			path = MovableBlockView;
 			sourceTree = "<group>";
 		};
-		44E505A6237B14E10067B949 /* Sparkle */ = {
+		44E505A6237B14E10067B949 /* Sandbox */ = {
 			isa = PBXGroup;
 			children = (
 				44460620237B3F030050D865 /* Tweakable */,
 				4446061A237B3EEB0050D865 /* Extensions */,
 				4446060D237B3EC10050D865 /* Demo */,
 				44E505B5237B1B2B0067B949 /* MiniToastView.swift */,
-				44E505B3237B15660067B949 /* SparkleHelpers.swift */,
-				44E505B1237B151B0067B949 /* Sparkle.swift */,
-				44E505A7237B14E10067B949 /* Sparkle.h */,
+				44E505B3237B15660067B949 /* SandboxHelpers.swift */,
+				44E505B1237B151B0067B949 /* Sandbox.swift */,
+				44E505A7237B14E10067B949 /* Sandbox.h */,
 				44E505A8237B14E10067B949 /* Info.plist */,
 			);
-			path = Sparkle;
+			path = Sandbox;
 			sourceTree = "<group>";
 		};
 		44F8831020551D59003E3171 /* Foundation */ = {
@@ -4154,8 +4154,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44E505A9237B14E10067B949 /* Sparkle.h in Headers */,
-				44460630237B41400050D865 /* Sparkle.swift in Headers */,
+				44E505A9237B14E10067B949 /* Sandbox.h in Headers */,
+				44460630237B41400050D865 /* Sandbox.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4232,9 +4232,9 @@
 			productReference = 44AD5E86237B1DF80035EE0C /* Bootstrap.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		44E505A4237B14E10067B949 /* Sparkle */ = {
+		44E505A4237B14E10067B949 /* Sandbox */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44E505B0237B14E10067B949 /* Build configuration list for PBXNativeTarget "Sparkle" */;
+			buildConfigurationList = 44E505B0237B14E10067B949 /* Build configuration list for PBXNativeTarget "Sandbox" */;
 			buildPhases = (
 				44E505A0237B14E10067B949 /* Headers */,
 				44E505A1237B14E10067B949 /* Sources */,
@@ -4247,9 +4247,9 @@
 			dependencies = (
 				44D3160C237B202300A5A93B /* PBXTargetDependency */,
 			);
-			name = Sparkle;
-			productName = Sparkle;
-			productReference = 44E505A5237B14E10067B949 /* Sparkle.framework */;
+			name = Sandbox;
+			productName = Sandbox;
+			productReference = 44E505A5237B14E10067B949 /* Sandbox.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CB3CF1551F73E5870041EF20 /* FinniversKit */ = {
@@ -4330,7 +4330,7 @@
 				CB3CF1551F73E5870041EF20 /* FinniversKit */,
 				14405C691FAFBD1800D03E04 /* Demo */,
 				14F4F1B81FD6CEA800E9CECA /* UnitTests */,
-				44E505A4237B14E10067B949 /* Sparkle */,
+				44E505A4237B14E10067B949 /* Sandbox */,
 				44AD5E85237B1DF80035EE0C /* Bootstrap */,
 			);
 		};
@@ -4640,7 +4640,7 @@
 				4446062C237B3F030050D865 /* TweakingOption.swift in Sources */,
 				44460615237B3EC20050D865 /* SplitViewController.swift in Sources */,
 				4446061F237B3EEB0050D865 /* TestCheck.swift in Sources */,
-				44460616237B3EC20050D865 /* SparkleViewController.swift in Sources */,
+				44460616237B3EC20050D865 /* SandboxViewController.swift in Sources */,
 				44460614237B3EC20050D865 /* NotificationNames.swift in Sources */,
 				44460619237B3EC20050D865 /* NavigationController.swift in Sources */,
 				4446062A237B3F030050D865 /* CornerAnchoringViewController.swift in Sources */,
@@ -4649,8 +4649,8 @@
 				44E505B6237B1B2B0067B949 /* MiniToastView.swift in Sources */,
 				4446062B237B3F030050D865 /* Tweakable.swift in Sources */,
 				44F6E0BF237BCCD00022CFDD /* Models.swift in Sources */,
-				44E505B4237B15660067B949 /* SparkleHelpers.swift in Sources */,
-				44E505B2237B151B0067B949 /* Sparkle.swift in Sources */,
+				44E505B4237B15660067B949 /* SandboxHelpers.swift in Sources */,
+				44E505B2237B151B0067B949 /* Sandbox.swift in Sources */,
 				44460618237B3EC20050D865 /* DemoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4993,7 +4993,7 @@
 		};
 		44D31616237B22B200A5A93B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44E505A4237B14E10067B949 /* Sparkle */;
+			target = 44E505A4237B14E10067B949 /* Sandbox */;
 			targetProxy = 44D31615237B22B200A5A93B /* PBXContainerItemProxy */;
 		};
 		44D32C2B1FB07850001E86D6 /* PBXTargetDependency */ = {
@@ -5339,7 +5339,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Sparkle/Info.plist;
+				INFOPLIST_FILE = Sandbox/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5350,7 +5350,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Sparkle;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Sandbox;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -5380,7 +5380,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Sparkle/Info.plist;
+				INFOPLIST_FILE = Sandbox/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5390,7 +5390,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Sparkle;
+				PRODUCT_BUNDLE_IDENTIFIER = no.finn.Sandbox;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -5524,7 +5524,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44E505B0237B14E10067B949 /* Build configuration list for PBXNativeTarget "Sparkle" */ = {
+		44E505B0237B14E10067B949 /* Build configuration list for PBXNativeTarget "Sandbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44E505AE237B14E10067B949 /* Debug */,

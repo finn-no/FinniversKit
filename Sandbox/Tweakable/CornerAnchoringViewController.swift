@@ -75,7 +75,7 @@ class CornerAnchoringView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        if let index = SparkleState.lastCornerForTweakingButton {
+        if let index = SandboxState.lastCornerForTweakingButton {
             anchoredView.center = anchorPositions[index]
         } else {
             anchoredView.center = anchorPositions.last ?? .zero
@@ -110,7 +110,7 @@ class CornerAnchoringView: UIView {
                 dx: relativeVelocity(forVelocity: velocity.x, from: anchoredView.center.x, to: nearestCornerPosition.x),
                 dy: relativeVelocity(forVelocity: velocity.y, from: anchoredView.center.y, to: nearestCornerPosition.y)
             )
-            SparkleState.lastCornerForTweakingButton = index
+            SandboxState.lastCornerForTweakingButton = index
             let timingParameters = UISpringTimingParameters(damping: 1, response: 0.4, initialVelocity: relativeInitialVelocity)
             let animator = UIViewPropertyAnimator(duration: 0, timingParameters: timingParameters)
             animator.addAnimations {

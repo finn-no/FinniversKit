@@ -4,7 +4,7 @@
 
 import FinniversKit
 import MapKit
-import Sparkle
+import Sandbox
 
 private enum MapTypes: Int, CaseIterable {
     case standard

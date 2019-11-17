@@ -2,7 +2,7 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 import FinniversKit
-import Sparkle
+import Sandbox
 
 public enum ComponentDemoViews: String, CaseIterable {
     case button

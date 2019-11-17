@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 
 enum AdsSorting: String {
     case lastAdded = "Sist lagt til"

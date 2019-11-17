@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 
 public class FloatingButtonDemoView: UIView, Tweakable {
     lazy public var tweakingOptions: [TweakingOption] = {

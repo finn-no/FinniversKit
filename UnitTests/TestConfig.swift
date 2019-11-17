@@ -1,6 +1,6 @@
 import UIKit
 @testable import Demo
-import Sparkle
+import Sandbox
 
 class TestConfig: NSObject {
     static var appDelegate: AppDelegate? {
@@ -8,6 +8,6 @@ class TestConfig: NSObject {
     }
 
     override init() {
-        SparkleState.setCurrentUserInterfaceStyle(.light, in: TestConfig.appDelegate?.window)
+        SandboxState.setCurrentUserInterfaceStyle(.light, in: TestConfig.appDelegate?.window)
     }
 }

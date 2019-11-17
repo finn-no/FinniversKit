@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 
 final class FavoriteFoldersListDemoView: UIView, Tweakable {
     private var allFavorites = FavoriteFoldersFactory.create() { didSet { filterFolders() } }

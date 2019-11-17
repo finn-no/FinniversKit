@@ -21,7 +21,7 @@ extension String {
     }
 }
 
-public struct SparkleState {
+public struct SandboxState {
     private static let lastSelectedIndexPathRowKey = "lastSelectedIndexPathRowKey"
     private static let lastSelectedIndexPathSectionKey = "lastSelectedIndexPathSectionKey"
     private static let lastCornerForTweakingButtonKey = "lastCornerForTweakingButtonKey"

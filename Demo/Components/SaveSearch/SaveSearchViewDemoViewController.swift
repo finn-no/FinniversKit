@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 
 struct SampleSaveSearchViewModel: SaveSearchViewModel {
     let searchPlaceholderText: String = "Navn på søk"

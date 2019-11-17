@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 
 class ReputationDemoView: UIView, Tweakable {
 

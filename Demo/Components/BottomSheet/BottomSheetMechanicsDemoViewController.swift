@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 
 protocol RootViewControllerDelegate: AnyObject {
     func rootViewControllerDidPressExpandButton(_ controller: RootViewController)
@@ -195,7 +195,7 @@ class BottomSheetMechanicsDemoViewController: UIViewController {
     }
 
     @objc private func handleDoubleTap() {
-        SparkleState.lastSelectedIndexPath = nil
+        SandboxState.lastSelectedIndexPath = nil
         dismiss(animated: true)
     }
 

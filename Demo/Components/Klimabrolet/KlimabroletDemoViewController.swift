@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 
 class KlimabroletDemoViewController: BaseDemoViewController<UIView> {
     private lazy var klimabroletView: KlimabroletView = {
@@ -56,7 +56,7 @@ class KlimabroletDemoViewController: BaseDemoViewController<UIView> {
     }
 
     private func close() {
-        SparkleState.lastSelectedIndexPath = nil
+        SandboxState.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 }

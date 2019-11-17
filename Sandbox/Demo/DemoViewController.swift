@@ -48,7 +48,7 @@ public class DemoViewController<View: UIView>: UIViewController {
         viewController.didMove(toParent: self)
         childViewController = viewController
 
-        if let deviceIndex = SparkleState.lastSelectedDevice, deviceIndex < Device.all.count {
+        if let deviceIndex = SandboxState.lastSelectedDevice, deviceIndex < Device.all.count {
             let device = Device.all[deviceIndex]
             viewController.view.frame = device.frame
             viewController.view.autoresizingMask = device.autoresizingMask

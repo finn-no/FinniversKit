@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 
 final class PopoversDemoViewController: BaseDemoViewController<UIView> {
     private let demoViews: [FullscreenDemoViews] = [

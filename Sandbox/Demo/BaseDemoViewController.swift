@@ -102,7 +102,7 @@ open class BaseDemoViewController<View: UIView>: UIViewController, Containable {
     }
 
     @objc private func didDoubleTap() {
-        SparkleState.lastSelectedIndexPath = nil
+        SandboxState.lastSelectedIndexPath = nil
         dismiss(animated: true, completion: nil)
     }
 
@@ -140,9 +140,9 @@ open class BaseDemoViewController<View: UIView>: UIViewController, Containable {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if SparkleState.shouldShowDismissInstructions {
+        if SandboxState.shouldShowDismissInstructions {
             miniToastView.show(in: view)
-            SparkleState.shouldShowDismissInstructions = false
+            SandboxState.shouldShowDismissInstructions = false
         }
     }
 }

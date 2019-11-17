@@ -1,7 +1,7 @@
 import UIKit
 import Bootstrap
 
-public class SparkleViewController: UITableViewController {
+public class SandboxViewController: UITableViewController {
     private lazy var selectorTitleView: SelectorTitleView = {
         let titleView = SelectorTitleView(withAutoLayout: true)
         titleView.delegate = self
@@ -10,10 +10,10 @@ public class SparkleViewController: UITableViewController {
 
     private var bottomSheet: BottomSheet?
 
-    private var firstLetterAndItems = [String: [SparkleItem]]()
-    private var sections: [SparkleSection]
+    private var firstLetterAndItems = [String: [SandboxItem]]()
+    private var sections: [SandboxSection]
 
-    public init(sections: [SparkleSection]) {
+    public init(sections: [SandboxSection]) {
         self.sections = sections
         super.init(style: .grouped)
 
@@ -31,7 +31,7 @@ public class SparkleViewController: UITableViewController {
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if let indexPath = SparkleState.lastSelectedIndexPath {
+        if let indexPath = SandboxState.lastSelectedIndexPath {
             if let item = value(for: indexPath) {
                 if let bottomSheet = item.viewController as? BottomSheet {
                     present(bottomSheet, animated: true)
@@ -65,22 +65,22 @@ public class SparkleViewController: UITableViewController {
         tableView.separatorStyle = .none
         navigationItem.titleView = selectorTitleView
 
-        let section = sections[safe: SparkleState.lastSelectedSection]
+        let section = sections[safe: SandboxState.lastSelectedSection]
         selectorTitleView.title = section?.title.uppercased()
         updateColors(animated: false)
     }
 
     private func updateMoonButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SparkleState.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped(sender:forEvent:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: SandboxState.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped(sender:forEvent:)))
         return
     }
 
     @objc private func moonTapped(sender: AnyObject, forEvent event: UIEvent) {
         if event.allTouches?.first?.tapCount == 0 {
             // Long press
-            SparkleState.setCurrentUserInterfaceStyle(nil, in: view.window)
+            SandboxState.setCurrentUserInterfaceStyle(nil, in: view.window)
         } else {
-            SparkleState.setCurrentUserInterfaceStyle(SparkleState.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light, in: view.window)
+            SandboxState.setCurrentUserInterfaceStyle(SandboxState.currentUserInterfaceStyle(for: traitCollection) == .light ? .dark : .light, in: view.window)
         }
         NotificationCenter.default.post(name: .didChangeUserInterfaceStyle, object: nil)
 
@@ -109,10 +109,10 @@ public class SparkleViewController: UITableViewController {
     private func evaluateIndexAndValues() {
         firstLetterAndItems.removeAll()
 
-        if let section = sections[safe: SparkleState.lastSelectedSection] {
+        if let section = sections[safe: SandboxState.lastSelectedSection] {
             let items = section.items.sorted { $0.title < $1.title }
             for item in items {
-                var values = [SparkleItem]()
+                var values = [SandboxItem]()
                 if let existingValues = firstLetterAndItems[item.title.firstCapitalizedLetter()] {
                     values = existingValues
                 }
@@ -122,7 +122,7 @@ public class SparkleViewController: UITableViewController {
         }
     }
 
-    private func value(for indexPath: IndexPath) -> SparkleItem? {
+    private func value(for indexPath: IndexPath) -> SandboxItem? {
         let sectionTitles = Array(firstLetterAndItems.keys.sorted(by: <))
         let section = sectionTitles[indexPath.section]
         let items = firstLetterAndItems[section.firstCapitalizedLetter()]
@@ -139,7 +139,7 @@ public class SparkleViewController: UITableViewController {
 
 // MARK: - UITableViewDelegate
 
-extension SparkleViewController {
+extension SandboxViewController {
     override public func numberOfSections(in tableView: UITableView) -> Int {
         return firstLetterAndItems.keys.count
     }
@@ -169,7 +169,7 @@ extension SparkleViewController {
 
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        SparkleState.lastSelectedIndexPath = indexPath
+        SandboxState.lastSelectedIndexPath = indexPath
         if let item = value(for: indexPath) {
             present(item.viewController, animated: true)
         }
@@ -197,11 +197,11 @@ extension SparkleViewController {
     }
 }
 
-extension SparkleViewController: SelectorTitleViewDelegate {
+extension SandboxViewController: SelectorTitleViewDelegate {
     public func selectorTitleViewDidSelectButton(_ selectorTitleView: SelectorTitleView) {
         let items = sections.map { BasicTableViewItem(title: $0.title.uppercased()) }
         let sectionsTableView = BasicTableView(items: items)
-        sectionsTableView.selectedIndexPath = IndexPath(row: SparkleState.lastSelectedSection, section: 0)
+        sectionsTableView.selectedIndexPath = IndexPath(row: SandboxState.lastSelectedSection, section: 0)
         sectionsTableView.delegate = self
         bottomSheet = BottomSheet(view: sectionsTableView, draggableArea: .everything)
         if let controller = bottomSheet {
@@ -210,10 +210,10 @@ extension SparkleViewController: SelectorTitleViewDelegate {
     }
 }
 
-extension SparkleViewController: BasicTableViewDelegate {
+extension SandboxViewController: BasicTableViewDelegate {
     public func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int) {
-        SparkleState.lastSelectedSection = index
-        if let section = sections[safe: SparkleState.lastSelectedSection] {
+        SandboxState.lastSelectedSection = index
+        if let section = sections[safe: SandboxState.lastSelectedSection] {
             selectorTitleView.title = section.title.uppercased()
             evaluateIndexAndValues()
             tableView.reloadData()

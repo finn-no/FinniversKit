@@ -3,7 +3,7 @@
 //
 
 import FinniversKit
-import Sparkle
+import Sandbox
 // MARK: - Helpers
 
 private struct DemoViewModel: FullscreenGalleryViewModel {

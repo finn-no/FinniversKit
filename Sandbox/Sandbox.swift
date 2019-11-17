@@ -1,15 +1,15 @@
 import Foundation
 
-@objc public class Sparkle: NSObject {
+@objc public class Sandbox: NSObject {
     static var bundle: Bundle {
-        return Bundle(for: Sparkle.self)
+        return Bundle(for: Sandbox.self)
     }
 
     public static var isDynamicTypeEnabled: Bool = true
 }
 
 @objc public extension Bundle {
-    static var sparkle: Bundle {
-        return Sparkle.bundle
+    static var sandbox: Bundle {
+        return Sandbox.bundle
     }
 }

@@ -4,7 +4,7 @@
 
 import UIKit
 import FinniversKit
-import Sparkle
+import Sandbox
 
 enum FontType: String {
     case light = "FINNTypeWebStrippet-Light"
@@ -17,21 +17,21 @@ enum FontType: String {
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    lazy var sections: [SparkleSection] = {
-        let dnaItems = DnaDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
-        let dna = SparkleSection(title: "DNA", items: dnaItems)
+    lazy var sections: [SandboxSection] = {
+        let dnaItems = DnaDemoViews.items.map { SandboxItem(title: $0.rawValue, viewController: $0.viewController) }
+        let dna = SandboxSection(title: "DNA", items: dnaItems)
 
-        let componentItems = ComponentDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
-        let components = SparkleSection(title: "Components", items: componentItems)
+        let componentItems = ComponentDemoViews.items.map { SandboxItem(title: $0.rawValue, viewController: $0.viewController) }
+        let components = SandboxSection(title: "Components", items: componentItems)
 
-        let cellItems = CellsDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
-        let cells = SparkleSection(title: "Cells", items: cellItems)
+        let cellItems = CellsDemoViews.items.map { SandboxItem(title: $0.rawValue, viewController: $0.viewController) }
+        let cells = SandboxSection(title: "Cells", items: cellItems)
 
-        let fullscreenItems = FullscreenDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
-        let fullscreen = SparkleSection(title: "Fullscreen", items: fullscreenItems)
+        let fullscreenItems = FullscreenDemoViews.items.map { SandboxItem(title: $0.rawValue, viewController: $0.viewController) }
+        let fullscreen = SandboxSection(title: "Fullscreen", items: fullscreenItems)
 
-        let recyclingItems = RecyclingDemoViews.items.map { SparkleItem(title: $0.rawValue, viewController: $0.viewController) }
-        let recycling = SparkleSection(title: "Recycling", items: fullscreenItems)
+        let recyclingItems = RecyclingDemoViews.items.map { SandboxItem(title: $0.rawValue, viewController: $0.viewController) }
+        let recycling = SandboxSection(title: "Recycling", items: fullscreenItems)
 
         return [dna, components, cells, fullscreen, recycling]
     }()
@@ -39,11 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerFonts()
 
-        let userInterfaceStyle = UserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: SparkleState.currentUserInterfaceStyleKey))
+        let userInterfaceStyle = UserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: SandboxState.currentUserInterfaceStyleKey))
         if let userInterfaceStyle = userInterfaceStyle {
             FinniversKit.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
         } else {
-            switch SparkleState.defaultUserInterfaceStyleSupport {
+            switch SandboxState.defaultUserInterfaceStyleSupport {
             case .dynamic:
                 if #available(iOS 13.0, *) {
                     FinniversKit.userInterfaceStyleSupport = .dynamic
@@ -60,8 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             window?.setWindowUserInterfaceStyle(userInterfaceStyle)
         }
-        let sparkleViewController = SparkleViewController(sections: sections)
-        window?.rootViewController = NavigationController(rootViewController: sparkleViewController)
+        let sandboxViewController = SandboxViewController(sections: sections)
+        window?.rootViewController = NavigationController(rootViewController: sandboxViewController)
         window?.makeKeyAndVisible()
 
         return true

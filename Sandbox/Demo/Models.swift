@@ -1,16 +1,16 @@
 import UIKit
 
-public struct SparkleSection {
+public struct SandboxSection {
     var title: String
-    var items: [SparkleItem]
+    var items: [SandboxItem]
 
-    public init(title: String, items: [SparkleItem]) {
+    public init(title: String, items: [SandboxItem]) {
         self.title = title
         self.items = items
     }
 }
 
-public struct SparkleItem {
+public struct SandboxItem {
     var title: String
     var viewController: UIViewController
 
