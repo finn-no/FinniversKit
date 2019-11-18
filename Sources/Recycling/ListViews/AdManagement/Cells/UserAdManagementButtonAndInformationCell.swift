@@ -104,6 +104,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         contentView.addSubview(informationLabel)
         contentView.addSubview(button)
 
+        backgroundColor = .bgPrimary
         buttonWidthConstraint = button.widthAnchor.constraint(equalToConstant: 0)
         buttonWidthConstraint?.isActive = true
         labelHeightConstraint = informationLabel.heightAnchor.constraint(equalToConstant: 0)

@@ -140,6 +140,8 @@ public class UserAdManagementUserActionCell: UITableViewCell {
     // MARK: - Private functions
 
     private func setup() {
+        backgroundColor = .bgPrimary
+
         contentView.addSubview(separator)
         contentView.addSubview(iconView)
         contentView.addSubview(titleLabel)
