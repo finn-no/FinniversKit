@@ -4,7 +4,7 @@
 
 public class CheckmarkTitleView: UIView {
     private lazy var checkmarkImageView: UIImageView = {
-        let image = UIImage(named: .checkmarkBig)
+        let image = UIImage(named: .check)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,13 +33,12 @@ private extension CheckmarkTitleView {
         addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: 32),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: 32),
-            checkmarkImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: 20),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: 20),
+            checkmarkImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
 
             titleLabel.centerYAnchor.constraint(equalTo: checkmarkImageView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: checkmarkImageView.trailingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: checkmarkImageView.trailingAnchor, constant: .mediumSpacing),
         ])
     }
 }
