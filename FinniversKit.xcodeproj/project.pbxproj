@@ -477,6 +477,7 @@
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
+		DA8F32B4238295F900EF645F /* VersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8F32B3238295F900EF645F /* VersionInfoView.swift */; };
 		DA93EFA821C2BA4F00207239 /* NewYearsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1EC5021C1322900F4FEC4 /* NewYearsView.swift */; };
 		DA93EFAA21C2BB2900207239 /* NewYearsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA93EFA921C2BB2900207239 /* NewYearsDemoView.swift */; };
 		DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */; };
@@ -1060,6 +1061,7 @@
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
 		DA4E438521104EB8000DDEC3 /* AdReporterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdReporterView.swift; sourceTree = "<group>"; };
 		DA708852211338650067519A /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		DA8F32B3238295F900EF645F /* VersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoView.swift; sourceTree = "<group>"; };
 		DA93EFA921C2BB2900207239 /* NewYearsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearsDemoView.swift; sourceTree = "<group>"; };
 		DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStateController.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
@@ -3795,6 +3797,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD6EB2E236991E900968497 /* SettingsViewDemoView.swift */,
+				DA8F32B3238295F900EF645F /* VersionInfoView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -4302,6 +4305,7 @@
 				14EBA25A215A634100613E5A /* LoadingViewDemoView.swift in Sources */,
 				AA864B49223290B600BAE95A /* InlineConsentDemoViewController.swift in Sources */,
 				CF164D2B23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift in Sources */,
+				DA8F32B4238295F900EF645F /* VersionInfoView.swift in Sources */,
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
 				CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */,
 				4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */,

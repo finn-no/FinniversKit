@@ -16,7 +16,6 @@ public protocol SettingsViewDelegate: AnyObject {
     func settingsView(_ settingsView: SettingsView, didToggleSettingFor model: SettingsViewToggleCellModel, at indexPath: IndexPath)
     func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String?
     func settingsView(_ settingsView: SettingsView, titleForFooterInSection section: Int) -> String?
-    func settingsView(_ settingsView: SettingsView, viewForFooterInSection section: Int) -> UIView?
 }
 
 public class SettingsView: UIView {
@@ -57,6 +56,11 @@ public class SettingsView: UIView {
 
 // MARK: - Public methods
 public extension SettingsView {
+    var footerView: UIView? {
+        get { tableView.tableFooterView }
+        set { tableView.tableFooterView = newValue }
+    }
+
     func reloadRows(at indexPaths: [IndexPath], animated: Bool = true) {
         tableView.reloadRows(at: indexPaths, with: animated ? .automatic : .none)
     }
@@ -133,9 +137,7 @@ extension SettingsView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if let footerView = delegate?.settingsView(self, viewForFooterInSection: section) {
-            return footerView
-        } else if let footerTitle = delegate?.settingsView(self, titleForFooterInSection: section) {
+        if let footerTitle = delegate?.settingsView(self, titleForFooterInSection: section) {
             let footerView = tableView.dequeue(SettingsSectionFooterView.self)
             footerView.configure(with: footerTitle)
 
@@ -150,9 +152,7 @@ extension SettingsView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if delegate?.settingsView(self, viewForFooterInSection: section) != nil {
-            return UITableView.automaticDimension
-        } else if delegate?.settingsView(self, titleForFooterInSection: section) != nil {
+        if delegate?.settingsView(self, titleForFooterInSection: section) != nil {
             return 48
         } else {
             return 0

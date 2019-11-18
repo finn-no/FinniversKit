@@ -23,7 +23,6 @@ private struct SettingsSection {
     let title: String
     let items: [SettingsViewCellModel]
     let footerTitle: String?
-    let footerView: UIView?
 }
 
 // MARK: - SettingsViewDemoView
@@ -35,8 +34,7 @@ class SettingsViewDemoView: UIView {
                items: [
                    SettingsToggleItem(title: "Prisnedgang på favoritter - Torget", isOn: true)
                ],
-               footerTitle: "FINN varsler deg når priser på en av dine favoritter på Torget blir satt ned i pris.",
-               footerView: nil
+               footerTitle: "FINN varsler deg når priser på en av dine favoritter på Torget blir satt ned i pris."
            ),
            SettingsSection(
                title: "Personvern",
@@ -48,15 +46,20 @@ class SettingsViewDemoView: UIView {
                    SettingsItem(title: "Last ned dine data"),
                    SettingsItem(title: "Slett meg som bruker")
                ],
-               footerTitle: nil,
-               footerView: nil
+               footerTitle: nil
            )
        ]
+
+    // Init with frame to make auto layout warning go away
+    private lazy var versionInfoView = VersionInfoView(
+        frame: CGRect(x: 0, y: 0, width: frame.width, height: 1000)
+    )
 
     private lazy var settingsView: SettingsView = {
         let settingsView = SettingsView(withAutoLayout: true)
         settingsView.dataSource = self
         settingsView.delegate = self
+        settingsView.footerView = versionInfoView
         return settingsView
     }()
 
@@ -67,6 +70,14 @@ class SettingsViewDemoView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        versionInfoView.frame.size = versionInfoView.contentSize(
+            forWidth: frame.width
+        )
     }
 }
 
@@ -100,10 +111,6 @@ extension SettingsViewDemoView: SettingsViewDelegate {
 
     func settingsView(_ settingsView: SettingsView, titleForFooterInSection section: Int) -> String? {
         return sections[section].footerTitle
-    }
-
-    func settingsView(_ settingsView: SettingsView, viewForFooterInSection section: Int) -> UIView? {
-        return sections[section].footerView
     }
 }
 
