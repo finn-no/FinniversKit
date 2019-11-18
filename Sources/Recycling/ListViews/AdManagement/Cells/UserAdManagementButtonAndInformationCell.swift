@@ -55,6 +55,12 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         return button
     }()
 
+    private lazy var separatorView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = .tableViewSeparator
+        return view
+    }()
+
     // MARK: - init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -101,6 +107,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
     // MARK: - Setup
 
     private func setup() {
+        contentView.addSubview(separatorView)
         contentView.addSubview(informationLabel)
         contentView.addSubview(button)
 
@@ -110,17 +117,25 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
         labelHeightConstraint = informationLabel.heightAnchor.constraint(equalToConstant: 0)
         labelHeightConstraint?.isActive = true
 
-        NSLayoutConstraint.activate(
-            [ informationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: labelLeftInset),
-              informationLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -labelToButtonSpacing),
-              informationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-              button.heightAnchor.constraint(equalToConstant: buttonHeight),
-              button.centerYAnchor.constraint(equalTo: informationLabel.centerYAnchor),
-              button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-              contentView.heightAnchor.constraint(greaterThanOrEqualTo: informationLabel.heightAnchor, constant: 24),
-              contentView.heightAnchor.constraint(greaterThanOrEqualTo: button.heightAnchor, constant: 24),
-              contentView.bottomAnchor.constraint(greaterThanOrEqualTo: informationLabel.bottomAnchor)
-            ]
-        )
+        let hairLineSize = 1.0/UIScreen.main.scale
+
+        NSLayoutConstraint.activate([
+            separatorView.heightAnchor.constraint(equalToConstant: hairLineSize),
+            separatorView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            informationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: labelLeftInset),
+            informationLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -labelToButtonSpacing),
+            informationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+
+            button.heightAnchor.constraint(equalToConstant: buttonHeight),
+            button.centerYAnchor.constraint(equalTo: informationLabel.centerYAnchor),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: informationLabel.heightAnchor, constant: 24),
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: button.heightAnchor, constant: 24),
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: informationLabel.bottomAnchor)
+        ])
     }
 }
