@@ -26,7 +26,7 @@ class AdConfirmationDemoView: UIView {
 }
 
 extension AdConfirmationDemoView: AdConfirmationViewDelegate {
-    func adConfirmationView( _ : AdConfirmationView, didTapActionButton button: Button) {
+    func adConfirmationView( _ : AdConfirmationView, didTapActionButton button: UIButton) {
         print("Did tap action button:\(button)")
     }
 }

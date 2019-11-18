@@ -12,21 +12,21 @@ public class AdConfirmationObjectView: UIView {
     }()
 
     private lazy var titleLabel: Label = {
-        let titleLabel = Label(style: .title2, withAutoLayout: true)
+        let titleLabel = Label(style: .title3Strong, withAutoLayout: true)
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         return titleLabel
     }()
 
     private lazy var bodyLabel: Label = {
-        let bodyLabel = Label(style: .caption, withAutoLayout: true)
+        let bodyLabel = Label(style: .body, withAutoLayout: true)
         bodyLabel.numberOfLines = 0
         bodyLabel.textAlignment = .center
         return bodyLabel
     }()
 
-    private let imageSize: CGFloat = 72.0
-    private let fallbackImageSize: CGFloat = 88.0
+    private let imageSize: CGFloat = 88.0
+    private let fallbackImageSize: CGFloat = 32.0
 
     private var imageWidthConstraint: NSLayoutConstraint?
     private var imageHeightConstraint: NSLayoutConstraint?
@@ -71,7 +71,7 @@ private extension AdConfirmationObjectView {
             titleLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
 
             bodyLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             bodyLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -.largeSpacing),
         ])
     }
@@ -91,8 +91,8 @@ private extension AdConfirmationObjectView {
 
     func fallbackImageView() {
         imageView.image = UIImage(named: .checkCircleFilledMini)
-        imageWidthConstraint?.constant = fallbackImageSize
         imageHeightConstraint?.constant = fallbackImageSize
+        imageWidthConstraint?.constant = fallbackImageSize
     }
 }
 

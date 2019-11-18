@@ -17,7 +17,7 @@ public class AdConfirmationSummaryView: UIView {
     }()
 
     private lazy var priceLabel: Label = {
-        let label = Label(style: .body)
+        let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -32,7 +32,11 @@ public class AdConfirmationSummaryView: UIView {
         return label
     }()
 
-    private lazy var dashedSeperator: UIView = UIView(withAutoLayout: true)
+    private lazy var seperator: UIView = {
+        let seperator = UIView(withAutoLayout: true)
+        seperator.backgroundColor = .sardine
+        return seperator
+    }()
 
     private lazy var priceStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [priceLabel, totalLabel])
@@ -58,20 +62,6 @@ public class AdConfirmationSummaryView: UIView {
         clipsToBounds = true
 
         setup()
-    }
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-
-        let line = CAShapeLayer()
-        line.path = UIBezierPath(roundedRect: dashedSeperator.bounds, cornerRadius: 0).cgPath
-        line.frame = dashedSeperator.bounds
-        line.strokeColor = UIColor.stone.cgColor
-        line.fillColor = UIColor.clear.cgColor
-        line.lineWidth = 0.25
-        line.lineDashPattern = [5, 5]
-
-        dashedSeperator.layer.addSublayer(line)
     }
 
     required init?(coder: NSCoder) {
@@ -102,17 +92,17 @@ private extension AdConfirmationSummaryView {
             summaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
         ])
 
-        addSubview(dashedSeperator)
+        addSubview(seperator)
         NSLayoutConstraint.activate([
-            dashedSeperator.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: .mediumSpacing),
-            dashedSeperator.heightAnchor.constraint(equalToConstant: 1),
-            dashedSeperator.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            dashedSeperator.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+            seperator.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: .mediumSpacing),
+            seperator.heightAnchor.constraint(equalToConstant: 1),
+            seperator.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            seperator.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
         ])
 
         addSubview(priceStackView)
         NSLayoutConstraint.activate([
-            priceStackView.topAnchor.constraint(equalTo: dashedSeperator.bottomAnchor, constant: .mediumLargeSpacing),
+            priceStackView.topAnchor.constraint(equalTo: seperator.bottomAnchor, constant: .mediumLargeSpacing),
             priceStackView.leadingAnchor.constraint(equalTo: summaryView.leadingAnchor),
             priceStackView.trailingAnchor.constraint(equalTo: summaryView.trailingAnchor),
         ])

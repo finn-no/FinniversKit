@@ -20,8 +20,7 @@ struct AdConfirmationObjectViewModelDefaultData: AdConfirmationObjectViewModel {
 
 struct AdConfirmationSummaryViewModelDefaultData: AdConfirmationSummaryViewModel {
     var title: String? = "Ditt kjøp"
-    var orderLines: [String] = ["Torget annonse", "Bil annonse", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie",
-                                "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie"]
+    var orderLines: [String] = ["Torget annonse", "Bil annonse", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie"]
     var priceLabel: String = "Totalbeløp"
     var priceValue: String = "100000"
     var receiptInfo: String?
