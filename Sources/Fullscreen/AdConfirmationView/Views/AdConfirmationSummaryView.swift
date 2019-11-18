@@ -58,7 +58,7 @@ public class AdConfirmationSummaryView: UIView {
 
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         backgroundColor = .bgSecondary
-        layer.cornerRadius = 8
+        layer.cornerRadius = 16
         clipsToBounds = true
 
         setup()
@@ -77,6 +77,7 @@ private extension AdConfirmationSummaryView {
 
         summaryView.addArrangedSubview(titleLabel)
         summaryView.addConstraint(titleLabel.heightAnchor.constraint(equalToConstant: 32))
+        summaryView.setCustomSpacing(.mediumSpacing, after: titleLabel)
 
         for line in model.orderLines {
             let checkmarkView = CheckmarkTitleView(title: line, withAutoLayout: true)

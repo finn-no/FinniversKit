@@ -26,7 +26,7 @@ public class AdConfirmationObjectView: UIView {
     }()
 
     private let imageSize: CGFloat = 88.0
-    private let fallbackImageSize: CGFloat = 32.0
+    private let fallbackImageSize: CGFloat = 40.0
 
     private var imageWidthConstraint: NSLayoutConstraint?
     private var imageHeightConstraint: NSLayoutConstraint?
