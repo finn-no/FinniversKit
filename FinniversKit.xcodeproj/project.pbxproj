@@ -293,6 +293,7 @@
 		9BAB37D7230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift */; };
 		9BAB37DC230BEA5700E861D4 /* SaveSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */; };
 		9BAB37E0230C070400E861D4 /* SaveSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */; };
+		9BB12AC2238289F100A04F61 /* StatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB12AC1238289F100A04F61 /* StatisticsModel.swift */; };
 		9BBC8AE122DF50E5003453B6 /* KlimabroletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC8AE022DF50E5003453B6 /* KlimabroletView.swift */; };
 		9BC33DE322D71986007CCD65 /* LoginEntryViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE222D71986007CCD65 /* LoginEntryViewDemoViewController.swift */; };
 		9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */; };
@@ -872,6 +873,7 @@
 		9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchViewDemoViewController.swift; sourceTree = "<group>"; };
 		9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchView.swift; sourceTree = "<group>"; };
 		9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchViewModel.swift; sourceTree = "<group>"; };
+		9BB12AC1238289F100A04F61 /* StatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsModel.swift; sourceTree = "<group>"; };
 		9BBC8AE022DF50E5003453B6 /* KlimabroletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletView.swift; sourceTree = "<group>"; };
 		9BC33DE222D71986007CCD65 /* LoginEntryViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryViewDemoViewController.swift; sourceTree = "<group>"; };
 		9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
@@ -3843,6 +3845,7 @@
 				F22612DB225C788A00472D22 /* StatisticsItemEmptyViewModel.swift */,
 				6266C07122081EF600FB8004 /* StatisticsItemView.swift */,
 				6266C06F22081EEA00FB8004 /* StatisticsItemModel.swift */,
+				9BB12AC1238289F100A04F61 /* StatisticsModel.swift */,
 			);
 			path = StatisticsView;
 			sourceTree = "<group>";
@@ -4488,6 +4491,7 @@
 				CF164CF3230E8FB900250822 /* FavoriteAdSortOption.swift in Sources */,
 				CF7E7B53230C2A7A001D514E /* FavoriteFolderActionViewModel.swift in Sources */,
 				8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */,
+				9BB12AC2238289F100A04F61 /* StatisticsModel.swift in Sources */,
 				DAAAC8FD21C14FEE0071B028 /* FireworksView.swift in Sources */,
 				8951759A224902E4008003FB /* StepDotConnector.swift in Sources */,
 				6266C07022081EEA00FB8004 /* StatisticsItemModel.swift in Sources */,
