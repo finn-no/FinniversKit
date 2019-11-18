@@ -53,7 +53,6 @@ class NativeAdvertDemoView: UIView {
     }
 
     private func setup() {
-        
         addSubview(advertView)
         addSubview(contentAdvertView)
 
@@ -63,9 +62,10 @@ class NativeAdvertDemoView: UIView {
         addSubview(hairlineContentBottom)
 
         NSLayoutConstraint.activate([
-            advertView.leadingAnchor.constraint(equalTo: leadingAnchor),
             advertView.topAnchor.constraint(equalTo: topAnchor),
+            advertView.leadingAnchor.constraint(equalTo: leadingAnchor),
             advertView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            advertView.heightAnchor.constraint(equalToConstant: 350),
 
             hairlineContentTop.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentTop.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -74,6 +74,7 @@ class NativeAdvertDemoView: UIView {
             contentAdvertView.topAnchor.constraint(equalTo: hairlineContentTop.bottomAnchor, constant: .mediumLargeSpacing),
             contentAdvertView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentAdvertView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentAdvertView.heightAnchor.constraint(equalToConstant: 350),
 
             hairlineContentBottom.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentBottom.trailingAnchor.constraint(equalTo: trailingAnchor),
