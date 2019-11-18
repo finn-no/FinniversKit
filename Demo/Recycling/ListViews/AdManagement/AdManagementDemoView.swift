@@ -46,7 +46,7 @@ public class AdManagementDemoView: UIView {
 
     private lazy var statisticModel: StatisticsModel = {
         let header = StatisticsModel.HeaderModel(
-            title: "Se full statistikk",
+            title: "Annonsestatistikk",
             fullStatisticsTitle: "Se full statistikk"
         )
         return StatisticsModel(header: header, statisticItems: statisticsCellModels)
