@@ -60,15 +60,13 @@ private extension AdConfirmationView {
         contentView.addSubview(completeButton)
 
         NSLayoutConstraint.activate([
-            // Make height of contentView larger than scrollView to allow vertical scrolling
-            contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, constant: 1),
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
 
-            confirmationObjectView.topAnchor.constraint(equalTo: contentView.topAnchor),
             confirmationObjectView.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: 216),
             confirmationObjectView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             confirmationObjectView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -93,12 +91,15 @@ private extension AdConfirmationView {
                 summaryView.heightAnchor.constraint(equalToConstant: summaryViewHeightConstant),
                 summaryView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
                 summaryView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+                summaryView.bottomAnchor.constraint(equalTo: completeButton.topAnchor, constant: -.largeSpacing),
 
-                completeButton.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: .mediumLargeSpacing),
+                confirmationObjectView.topAnchor.constraint(equalTo: contentView.topAnchor),
                 contentView.bottomAnchor.constraint(greaterThanOrEqualTo: completeButton.bottomAnchor, constant: .largeSpacing),
             ])
         } else {
+            confirmationObjectView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
             completeButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing).isActive = true
+
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: completeButton.bottomAnchor, constant: .largeSpacing).isActive = true
         }
     }
