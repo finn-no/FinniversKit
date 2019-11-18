@@ -56,6 +56,11 @@ public class SettingsView: UIView {
 
 // MARK: - Public methods
 public extension SettingsView {
+    var contentInset: UIEdgeInsets {
+        get { tableView.contentInset }
+        set { tableView.contentInset = newValue }
+    }
+
     var footerView: UIView? {
         get { tableView.tableFooterView }
         set { tableView.tableFooterView = newValue }
