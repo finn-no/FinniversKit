@@ -92,7 +92,7 @@ private extension AdConfirmationView {
             let summaryViewHeightConstant = CGFloat(heightForTitleLabel + heightForOrderLinesView + heightForPriceStackView)
 
             NSLayoutConstraint.activate([
-                summaryView.topAnchor.constraint(equalTo: confirmationObjectView.bottomAnchor, constant: .largeSpacing),
+                summaryView.topAnchor.constraint(equalTo: confirmationObjectView.bottomAnchor, constant: 40),
                 summaryView.heightAnchor.constraint(equalToConstant: summaryViewHeightConstant),
                 summaryView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
                 summaryView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),

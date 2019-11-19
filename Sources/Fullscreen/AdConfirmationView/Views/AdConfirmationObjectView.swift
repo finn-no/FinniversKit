@@ -28,6 +28,7 @@ public class AdConfirmationObjectView: UIView {
     private let imageSize: CGFloat = 88.0
     private let fallbackImageSize: CGFloat = 40.0
 
+    private var imageTopAnchorConstraint: NSLayoutConstraint?
     private var imageWidthConstraint: NSLayoutConstraint?
     private var imageHeightConstraint: NSLayoutConstraint?
 
@@ -56,12 +57,18 @@ private extension AdConfirmationObjectView {
         addSubview(titleLabel)
         addSubview(bodyLabel)
 
+        imageTopAnchorConstraint = imageView.topAnchor.constraint(equalTo: topAnchor, constant: 56)
         imageWidthConstraint = imageView.widthAnchor.constraint(equalToConstant: imageSize)
         imageHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageSize)
-        guard let imageWidth = imageWidthConstraint, let imageHeight = imageHeightConstraint else { return }
+
+        guard
+            let imageTopAnchor = imageTopAnchorConstraint,
+            let imageWidth = imageWidthConstraint,
+            let imageHeight = imageHeightConstraint
+        else { return }
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
+            imageTopAnchor,
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageWidth,
             imageHeight,
@@ -82,7 +89,7 @@ private extension AdConfirmationObjectView {
         addSubview(checkmarkView)
 
         NSLayoutConstraint.activate([
-            checkmarkView.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: 24),
+            checkmarkView.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: .mediumLargeSpacing),
             checkmarkView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -.mediumLargeSpacing),
             checkmarkView.widthAnchor.constraint(equalToConstant: 40),
             checkmarkView.heightAnchor.constraint(equalToConstant: 40)
@@ -91,8 +98,12 @@ private extension AdConfirmationObjectView {
 
     func fallbackImageView() {
         imageView.image = UIImage(named: .checkCircleFilledMini)
-        imageHeightConstraint?.constant = fallbackImageSize
-        imageWidthConstraint?.constant = fallbackImageSize
+        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+            guard let self = self else { return }
+            self.imageTopAnchorConstraint?.constant += (self.imageSize - self.fallbackImageSize)
+            self.imageHeightConstraint?.constant = self.fallbackImageSize
+            self.imageWidthConstraint?.constant = self.fallbackImageSize
+        })
     }
 }
 

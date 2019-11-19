@@ -16,6 +16,12 @@ public class AdConfirmationSummaryView: UIView {
         return label
     }()
 
+    private lazy var seperator: UIView = {
+        let seperator = UIView(withAutoLayout: true)
+        seperator.backgroundColor = .sardine
+        return seperator
+    }()
+
     private lazy var priceLabel: Label = {
         let label = Label(style: .bodyStrong)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,20 +38,6 @@ public class AdConfirmationSummaryView: UIView {
         return label
     }()
 
-    private lazy var seperator: UIView = {
-        let seperator = UIView(withAutoLayout: true)
-        seperator.backgroundColor = .sardine
-        return seperator
-    }()
-
-    private lazy var priceStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [priceLabel, totalLabel])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
-
     private let model: AdConfirmationSummaryViewModel
 
     public let titleLabelHeight: CGFloat = 32
@@ -57,7 +49,7 @@ public class AdConfirmationSummaryView: UIView {
         super.init(frame: .zero)
 
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
-        backgroundColor = .bgSecondary
+        backgroundColor = .bgTertiary
         layer.cornerRadius = 16
         clipsToBounds = true
 
@@ -75,12 +67,17 @@ private extension AdConfirmationSummaryView {
         priceLabel.text = model.priceLabel
         totalLabel.text = model.priceValue
 
-        summaryView.addArrangedSubview(titleLabel)
-        summaryView.addConstraint(titleLabel.heightAnchor.constraint(equalToConstant: 32))
-        summaryView.setCustomSpacing(.mediumSpacing, after: titleLabel)
+        addSubview(titleLabel)
+        NSLayoutConstraint.activate([
+            titleLabel.heightAnchor.constraint(equalToConstant: 32),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
 
         for line in model.orderLines {
             let checkmarkView = CheckmarkTitleView(title: line, withAutoLayout: true)
+            summaryView.setCustomSpacing(.mediumSpacing, after: checkmarkView)
 
             summaryView.addArrangedSubview(checkmarkView)
             summaryView.addConstraint(checkmarkView.heightAnchor.constraint(equalToConstant: 32))
@@ -88,24 +85,29 @@ private extension AdConfirmationSummaryView {
 
         addSubview(summaryView)
         NSLayoutConstraint.activate([
-            summaryView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
+            summaryView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
             summaryView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumSpacing),
             summaryView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing)
         ])
 
         addSubview(seperator)
         NSLayoutConstraint.activate([
-            seperator.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: .mediumSpacing),
+            seperator.topAnchor.constraint(equalTo: summaryView.bottomAnchor),
             seperator.heightAnchor.constraint(equalToConstant: 1),
             seperator.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             seperator.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
         ])
 
-        addSubview(priceStackView)
+        addSubview(priceLabel)
+        addSubview(totalLabel)
         NSLayoutConstraint.activate([
-            priceStackView.topAnchor.constraint(equalTo: seperator.bottomAnchor, constant: .mediumLargeSpacing),
-            priceStackView.leadingAnchor.constraint(equalTo: summaryView.leadingAnchor),
-            priceStackView.trailingAnchor.constraint(equalTo: summaryView.trailingAnchor),
+            priceLabel.topAnchor.constraint(equalTo: seperator.bottomAnchor, constant: .mediumLargeSpacing),
+            priceLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            priceLabel.trailingAnchor.constraint(equalTo: centerXAnchor),
+
+            totalLabel.topAnchor.constraint(equalTo: seperator.bottomAnchor, constant: .mediumLargeSpacing),
+            totalLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor),
+            totalLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }
