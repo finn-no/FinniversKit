@@ -21,7 +21,7 @@ private struct SettingsItem: SettingsViewCellModel {
 
 private struct SettingsSection {
     let title: String
-    let items: [SettingsViewCellModel]
+    var items: [SettingsViewCellModel]
     let footerTitle: String?
 }
 
@@ -88,7 +88,17 @@ extension SettingsViewDemoView: SettingsViewDelegate {
         print("Did selector model:\n\t- \(model)")
     }
 
-    func settingsView(_ settingsView: SettingsView, didToggleSettingFor model: SettingsViewToggleCellModel, at indexPath: IndexPath) {
+    func settingsView(_ settingsView: SettingsView, didToggleSettingAt indexPath: IndexPath, isOn: Bool) {
+        let section = indexPath.section
+        let item = indexPath.item
+
+        guard var model = sections[section].items[item] as? SettingsToggleItem else {
+            return
+        }
+
+        model.isOn = isOn
+        sections[section].items[item] = model
+
         print("Did toggle settings for model:\n\t- \(model)")
     }
 

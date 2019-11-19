@@ -5,7 +5,7 @@
 import Foundation
 
 public protocol SettingsViewToggleCellModel: SettingsViewCellModel {
-    var isOn: Bool { get set }
+    var isOn: Bool { get }
 }
 
 extension SettingsViewToggleCellModel {

@@ -13,7 +13,7 @@ public protocol SettingsViewDataSource: AnyObject {
 
 public protocol SettingsViewDelegate: AnyObject {
     func settingsView(_ settingsView: SettingsView, didSelectModelAt indexPath: IndexPath)
-    func settingsView(_ settingsView: SettingsView, didToggleSettingFor model: SettingsViewToggleCellModel, at indexPath: IndexPath)
+    func settingsView(_ settingsView: SettingsView, didToggleSettingAt indexPath: IndexPath, isOn: Bool)
     func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String?
     func settingsView(_ settingsView: SettingsView, titleForFooterInSection section: Int) -> String?
 }
@@ -88,12 +88,12 @@ public extension SettingsView {
 
 // MARK: - SettingsViewToggleCellDelegate
 extension SettingsView: SettingsViewToggleCellDelegate {
-    func settingsViewToggleCell(_ cell: SettingsViewToggleCell, didToggleSettingFor model: SettingsViewToggleCellModel) {
+    func settingsViewToggleCell(_ cell: SettingsViewToggleCell, didToggle isOn: Bool) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
         }
 
-        delegate?.settingsView(self, didToggleSettingFor: model, at: indexPath)
+        delegate?.settingsView(self, didToggleSettingAt: indexPath, isOn: isOn)
     }
 }
 

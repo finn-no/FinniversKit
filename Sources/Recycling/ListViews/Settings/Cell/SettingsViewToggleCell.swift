@@ -5,7 +5,7 @@
 import UIKit
 
 protocol SettingsViewToggleCellDelegate: AnyObject {
-    func settingsViewToggleCell(_ cell: SettingsViewToggleCell, didToggleSettingFor model: SettingsViewToggleCellModel)
+    func settingsViewToggleCell(_ cell: SettingsViewToggleCell, didToggle isOn: Bool)
 }
 
 class SettingsViewToggleCell: SettingsViewCell {
@@ -15,8 +15,6 @@ class SettingsViewToggleCell: SettingsViewCell {
     weak var delegate: SettingsViewToggleCellDelegate?
 
     // MARK: - Private Properties
-
-    private var model: SettingsViewToggleCellModel?
 
     private lazy var uiswitch: UISwitch = {
         let toggle = UISwitch(withAutoLayout: true)
@@ -58,18 +56,12 @@ class SettingsViewToggleCell: SettingsViewCell {
 extension SettingsViewToggleCell {
     func configure(with model: SettingsViewToggleCellModel?, isLastItem: Bool) {
         super.configure(with: model, isLastItem: isLastItem)
-        self.model = model
         uiswitch.isOn = model?.isOn ?? false
     }
 }
 
 private extension SettingsViewToggleCell {
     @objc func handleValueChanged(toggle: UISwitch) {
-        guard var model = model else {
-            return
-        }
-
-        model.isOn = toggle.isOn
-        delegate?.settingsViewToggleCell(self, didToggleSettingFor: model)
+        delegate?.settingsViewToggleCell(self, didToggle: toggle.isOn)
     }
 }
