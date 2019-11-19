@@ -139,6 +139,7 @@ private extension NativeAdvertView {
 
         contentView.addSubview(mainImageView)
         contentView.addSubview(bottomContainerView)
+        contentView.addSubview(settingsButton)
 
         bottomContainerView.addSubview(labelContainer)
         bottomContainerView.addSubview(logoImageView)
@@ -154,6 +155,9 @@ private extension NativeAdvertView {
             contentView.centerYAnchor.constraint(equalTo: centerYAnchor),
             contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
             contentView.widthAnchor.constraint(lessThanOrEqualToConstant: NativeAdvertView.containerMaxWidth),
+
+            settingsButton.topAnchor.constraint(equalTo: mainImageView.topAnchor),
+            settingsButton.leadingAnchor.constraint(equalTo: mainImageView.leadingAnchor),
 
             mainImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: NativeAdvertView.containerMargin),
             mainImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
