@@ -33,24 +33,13 @@ public final class NativeAdvertView: UIView {
         return imageView
     }()
 
-    private lazy var bottomContainerView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.setContentHuggingPriority(.required, for: .horizontal)
-        return view
-    }()
-
-    private lazy var labelContainer: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.setContentHuggingPriority(.required, for: .horizontal)
-        return view
-    }()
+    private lazy var bottomContainerView = UIView(withAutoLayout: true)
 
     private lazy var sponsoredByLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
         label.numberOfLines = 1
         label.textColor = .textToast
         label.setContentCompressionResistancePriority(.required, for: .vertical)
-        label.setContentHuggingPriority(.required, for: .horizontal)
         return label
     }()
 
@@ -125,9 +114,9 @@ public final class NativeAdvertView: UIView {
         var height = NativeAdvertView.containerMargin * 2
         height +=  NativeAdvertView.imageHeight(forWidth: width)
         height += .mediumSpacing
-        height += NativeAdvertView.sponsoredByLabelHeight(forWidth: width, withText: viewModel.sponsoredText ?? "")
+        height += NativeAdvertView.sponsoredByLabelHeight(forWidth: width, text: viewModel.sponsoredText ?? "")
         height += .mediumSpacing
-        height += NativeAdvertView.titleLabelHeight(forWidth: width, withText: viewModel.title ?? "")
+        height += NativeAdvertView.titleLabelHeight(forWidth: width, text: viewModel.title ?? "")
 
         return CGSize(width: width, height: height)
     }
@@ -141,18 +130,15 @@ private extension NativeAdvertView {
         contentView.addSubview(bottomContainerView)
         contentView.addSubview(settingsButton)
 
-        bottomContainerView.addSubview(labelContainer)
+        bottomContainerView.addSubview(sponsoredByBackgroundView)
+        bottomContainerView.addSubview(titleLabel)
         bottomContainerView.addSubview(logoImageView)
-
-        labelContainer.addSubview(sponsoredByBackgroundView)
-        labelContainer.addSubview(titleLabel)
 
         sponsoredByBackgroundView.addSubview(sponsoredByLabel)
 
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
-            contentView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
-            contentView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
             contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
             contentView.widthAnchor.constraint(lessThanOrEqualToConstant: NativeAdvertView.containerMaxWidth),
             contentView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
@@ -161,28 +147,23 @@ private extension NativeAdvertView {
             settingsButton.leadingAnchor.constraint(equalTo: mainImageView.leadingAnchor),
 
             mainImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: NativeAdvertView.containerMargin),
-            mainImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: NativeAdvertView.containerMargin),
+            mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -NativeAdvertView.containerMargin),
             mainImageView.heightAnchor.constraint(equalTo: mainImageView.widthAnchor, multiplier: 1.0 / NativeAdvertView.imageAspectRatio),
-            mainImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -NativeAdvertView.containerMargin * 2),
 
             bottomContainerView.topAnchor.constraint(equalTo: mainImageView.bottomAnchor),
             bottomContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             bottomContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: NativeAdvertView.containerMargin),
             bottomContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -NativeAdvertView.containerMargin),
-            bottomContainerView.heightAnchor.constraint(lessThanOrEqualTo: labelContainer.heightAnchor),
-
-            labelContainer.topAnchor.constraint(equalTo: bottomContainerView.topAnchor),
-            labelContainer.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor),
-            labelContainer.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor),
-            labelContainer.widthAnchor.constraint(equalTo: bottomContainerView.widthAnchor, constant: -NativeAdvertView.sizeOfLogoAndMargin),
 
             logoImageView.widthAnchor.constraint(equalToConstant: NativeAdvertView.logoSize),
             logoImageView.heightAnchor.constraint(equalToConstant: NativeAdvertView.logoSize),
             logoImageView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -NativeAdvertView.containerMargin),
-            logoImageView.centerYAnchor.constraint(equalTo: labelContainer.centerYAnchor),
+            logoImageView.centerYAnchor.constraint(equalTo: bottomContainerView.centerYAnchor),
 
-            sponsoredByBackgroundView.topAnchor.constraint(equalTo: labelContainer.topAnchor, constant: .mediumSpacing),
-            sponsoredByBackgroundView.leadingAnchor.constraint(equalTo: labelContainer.leadingAnchor),
+            sponsoredByBackgroundView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: .mediumSpacing),
+            sponsoredByBackgroundView.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor),
+            sponsoredByBackgroundView.trailingAnchor.constraint(lessThanOrEqualTo: logoImageView.leadingAnchor, constant: -.mediumLargeSpacing),
 
             sponsoredByLabel.topAnchor.constraint(equalTo: sponsoredByBackgroundView.topAnchor, constant: NativeAdvertView.sponsoredByLabelInset),
             sponsoredByLabel.leadingAnchor.constraint(equalTo: sponsoredByBackgroundView.leadingAnchor, constant: NativeAdvertView.sponsoredByLabelInset),
@@ -190,9 +171,9 @@ private extension NativeAdvertView {
             sponsoredByLabel.bottomAnchor.constraint(equalTo: sponsoredByBackgroundView.bottomAnchor, constant: -NativeAdvertView.sponsoredByLabelInset),
 
             titleLabel.topAnchor.constraint(equalTo: sponsoredByBackgroundView.bottomAnchor, constant: .mediumSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: labelContainer.leadingAnchor, constant: NativeAdvertView.sponsoredByLabelInset),
-            titleLabel.trailingAnchor.constraint(equalTo: labelContainer.trailingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: labelContainer.bottomAnchor, constant: -NativeAdvertView.containerMargin),
+            titleLabel.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: NativeAdvertView.sponsoredByLabelInset),
+            titleLabel.trailingAnchor.constraint(equalTo: logoImageView.leadingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -NativeAdvertView.containerMargin),
         ])
 
         setupFonts(forWidth: 0)
@@ -227,8 +208,8 @@ extension NativeAdvertView {
     private static let containerMaxWidth: CGFloat = 400
     private static let logoSize: CGFloat = 35
 
-    private static var sizeOfLogoAndMargin: CGFloat {
-        containerMargin + logoSize + .mediumLargeSpacing + sponsoredByLabelInset
+    private static var sizeOfLogoWithPadding: CGFloat {
+        .mediumLargeSpacing + logoSize + containerMargin
     }
 
     private static func titleLabelFont(forWidth width: CGFloat) -> UIFont {
@@ -239,19 +220,25 @@ extension NativeAdvertView {
         width >= 400 ? .caption : .detail
     }
 
-    private static func titleLabelHeight(forWidth width: CGFloat, withText text: String) -> CGFloat {
+    private static func titleLabelHeight(forWidth width: CGFloat, text: String) -> CGFloat {
         let titleFont = titleLabelFont(forWidth: width)
-        return text.height(withConstrainedWidth: width - sizeOfLogoAndMargin, font: titleFont)
+        return labelHeight(forWidth: width, font: titleFont, text: text)
     }
 
-    private static func sponsoredByLabelHeight(forWidth width: CGFloat, withText text: String) -> CGFloat {
+    private static func sponsoredByLabelHeight(forWidth width: CGFloat, text: String) -> CGFloat {
         let sponsoredByFont = sponsoredByLabelFont(forWidth: width)
+
         var height = sponsoredByLabelInset * 2
-        height += text.height(withConstrainedWidth: width - sizeOfLogoAndMargin, font: sponsoredByFont)
+        height += labelHeight(forWidth: width, font: sponsoredByFont, text: text)
         return height
     }
 
+    private static func labelHeight(forWidth width: CGFloat, font: UIFont, text: String) -> CGFloat {
+        let unavailableSpace = sponsoredByLabelInset + sizeOfLogoWithPadding
+        return text.height(withConstrainedWidth: width - unavailableSpace, font: font)
+    }
+
     private static func imageHeight(forWidth width: CGFloat) -> CGFloat {
-        round((width - (containerMargin * 2)) / imageAspectRatio)
+        (width - (containerMargin * 2)) / imageAspectRatio
     }
 }

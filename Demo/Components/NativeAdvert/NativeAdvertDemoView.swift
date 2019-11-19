@@ -65,20 +65,19 @@ class NativeAdvertDemoView: UIView {
             advertView.topAnchor.constraint(equalTo: topAnchor),
             advertView.leadingAnchor.constraint(equalTo: leadingAnchor),
             advertView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            advertView.heightAnchor.constraint(equalToConstant: 350),
 
+            hairlineContentTop.topAnchor.constraint(equalTo: advertView.bottomAnchor, constant: .mediumLargeSpacing),
             hairlineContentTop.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentTop.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineContentTop.bottomAnchor.constraint(equalTo: advertView.bottomAnchor, constant: .mediumLargeSpacing),
 
             contentAdvertView.topAnchor.constraint(equalTo: hairlineContentTop.bottomAnchor, constant: .mediumLargeSpacing),
             contentAdvertView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentAdvertView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentAdvertView.heightAnchor.constraint(equalToConstant: 350),
 
+            hairlineContentBottom.topAnchor.constraint(equalTo: contentAdvertView.bottomAnchor, constant: .mediumLargeSpacing),
             hairlineContentBottom.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentBottom.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineContentBottom.topAnchor.constraint(equalTo: contentAdvertView.bottomAnchor, constant: .mediumLargeSpacing),
+            hairlineContentBottom.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
         ])
     }
 
