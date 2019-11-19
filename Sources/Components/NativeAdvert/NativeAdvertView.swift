@@ -155,6 +155,7 @@ private extension NativeAdvertView {
             contentView.centerYAnchor.constraint(equalTo: centerYAnchor),
             contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
             contentView.widthAnchor.constraint(lessThanOrEqualToConstant: NativeAdvertView.containerMaxWidth),
+            contentView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
 
             settingsButton.topAnchor.constraint(equalTo: mainImageView.topAnchor),
             settingsButton.leadingAnchor.constraint(equalTo: mainImageView.leadingAnchor),
