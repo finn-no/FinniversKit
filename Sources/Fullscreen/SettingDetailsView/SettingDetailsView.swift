@@ -102,6 +102,13 @@ public class SettingDetailsView: UIView {
         super.layoutSubviews()
         shadowView.updateShadow(using: scrollView)
     }
+
+    public override var intrinsicContentSize: CGSize {
+        CGSize(
+            width: scrollView.contentSize.width,
+            height: scrollView.contentSize.height + scrollViewBottomInset
+        )
+    }
 }
 
 // MARK: - Public methods
@@ -123,13 +130,6 @@ public extension SettingDetailsView {
                 self.textLabel.text = model.text(for: self.state)
                 self.textLabel.textAlignment = model.textAlignment(for: self.state)
             }
-        )
-    }
-
-    var contentSize: CGSize {
-        CGSize(
-            width: scrollView.contentSize.width,
-            height: scrollView.contentSize.height + scrollViewBottomInset
         )
     }
 }

@@ -64,8 +64,8 @@ final class SettingDetailsDemoViewController: UIViewController {
 
     var contentSize: CGSize {
         CGSize(
-            width: settingDetailsView.contentSize.width,
-            height: settingDetailsView.contentSize.height + 20
+            width: settingDetailsView.intrinsicContentSize.width,
+            height: settingDetailsView.intrinsicContentSize.height + 20
         )
     }
 }
