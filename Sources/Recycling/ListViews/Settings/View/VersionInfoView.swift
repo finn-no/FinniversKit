@@ -2,13 +2,15 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
-import FinniversKit
+import UIKit
 
 class VersionInfoView: UIView {
+
     // MARK: - Private properties
+
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
-        imageView.image = UIImage(named: "finnLogoSimple")!
+        imageView.image = UIImage(named: .finnLogoSimple)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -16,7 +18,6 @@ class VersionInfoView: UIView {
     private lazy var versionLabel: UILabel = {
         let label = Label(style: .detail)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "FinniversKit Demo"
         label.textAlignment = .center
         return label
     }()
@@ -32,20 +33,18 @@ class VersionInfoView: UIView {
         setup()
     }
 
-    func contentSize(forWidth width: CGFloat) -> CGSize {
-        let targetSize = CGSize(
-            width: width,
-            height: 0
-        )
+    func configure(withText text: String?) {
+        versionLabel.text = text
 
-        return systemLayoutSizeFitting(
-            targetSize,
+        frame.size = systemLayoutSizeFitting(
+            UIView.layoutFittingCompressedSize,
             withHorizontalFittingPriority: .required,
             verticalFittingPriority: .defaultLow
         )
     }
 
     // MARK: - Private methods
+
     private func setup() {
         addSubview(logoImageView)
         addSubview(versionLabel)

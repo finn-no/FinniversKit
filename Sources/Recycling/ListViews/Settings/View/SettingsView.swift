@@ -25,6 +25,14 @@ public class SettingsView: UIView {
     public weak var dataSource: SettingsViewDataSource?
     public weak var delegate: SettingsViewDelegate?
 
+    public var versionText: String? {
+        didSet {
+            versionInfoView.configure(withText: versionText)
+            guard versionInfoView.superview == nil else { return }
+            tableView.tableFooterView = versionInfoView
+        }
+    }
+
     // MARK: - Private Properties
 
     private lazy var tableView: UITableView = {
@@ -41,6 +49,10 @@ public class SettingsView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+
+    private lazy var versionInfoView = VersionInfoView(
+        frame: .zero
+    )
 
     // MARK: - Init
 
@@ -59,11 +71,6 @@ public extension SettingsView {
     var contentInset: UIEdgeInsets {
         get { tableView.contentInset }
         set { tableView.contentInset = newValue }
-    }
-
-    var footerView: UIView? {
-        get { tableView.tableFooterView }
-        set { tableView.tableFooterView = newValue }
     }
 
     func reloadRows(at indexPaths: [IndexPath], animated: Bool = true) {

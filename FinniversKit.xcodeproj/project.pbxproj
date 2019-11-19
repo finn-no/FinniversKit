@@ -476,8 +476,8 @@
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
 		DA4E438621104EB8000DDEC3 /* AdReporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E438521104EB8000DDEC3 /* AdReporterView.swift */; };
+		DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8F32B3238295F900EF645F /* VersionInfoView.swift */; };
 		DA708853211338650067519A /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA708852211338650067519A /* ConfirmationView.swift */; };
-		DA8F32B4238295F900EF645F /* VersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8F32B3238295F900EF645F /* VersionInfoView.swift */; };
 		DA93EFA821C2BA4F00207239 /* NewYearsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1EC5021C1322900F4FEC4 /* NewYearsView.swift */; };
 		DA93EFAA21C2BB2900207239 /* NewYearsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA93EFA921C2BB2900207239 /* NewYearsDemoView.swift */; };
 		DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */; };
@@ -3789,6 +3789,7 @@
 				DAD6EB212369916100968497 /* SettingsView.swift */,
 				DAD6EB222369916100968497 /* SettingsSectionHeaderView.swift */,
 				DAD6EB232369916100968497 /* SettingsSectionFooterView.swift */,
+				DA8F32B3238295F900EF645F /* VersionInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3797,7 +3798,6 @@
 			isa = PBXGroup;
 			children = (
 				DAD6EB2E236991E900968497 /* SettingsViewDemoView.swift */,
-				DA8F32B3238295F900EF645F /* VersionInfoView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -4305,7 +4305,6 @@
 				14EBA25A215A634100613E5A /* LoadingViewDemoView.swift in Sources */,
 				AA864B49223290B600BAE95A /* InlineConsentDemoViewController.swift in Sources */,
 				CF164D2B23101F5F00250822 /* FavoriteFolderActionSheetDemoDelegate.swift in Sources */,
-				DA8F32B4238295F900EF645F /* VersionInfoView.swift in Sources */,
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
 				CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */,
 				4458701E213FA353009187BE /* RegisterViewDemoView.swift in Sources */,
@@ -4628,6 +4627,7 @@
 				43BACE6A21117D430052114C /* ReviewView.swift in Sources */,
 				CF164D2823101F2000250822 /* FavoriteFolderActionSheet.swift in Sources */,
 				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
+				DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */,
 				8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */,
 				F2CBE8AC23277557005FAD14 /* ReceiptViewModel.swift in Sources */,
 				9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */,
