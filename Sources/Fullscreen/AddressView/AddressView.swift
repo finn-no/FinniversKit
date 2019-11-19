@@ -9,56 +9,10 @@ public protocol AddressViewDelegate: AnyObject {
     func addressViewDidSelectCopyButton(_ addressView: AddressView)
     func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView, sender: UIView)
     func addressViewDidSelectCenterMapButton(_ addressView: AddressView)
-    func addressView(_ addressView: AddressView, didSelectMapTypeAtIndex index: Int)
+    func addressViewDidSelectMapTypeButton(_ addressView: AddressView)
 }
 
 public class AddressView: UIView {
-    private lazy var mapTypeSegmentControl: UISegmentedControl = {
-        let control = UISegmentedControl(withAutoLayout: true)
-        control.addTarget(self, action: #selector(mapTypeChanged), for: .valueChanged)
-
-        if #available(iOS 13.0, *) {
-            control.selectedSegmentTintColor = .bgTertiary
-            control.backgroundColor = .btnPrimary
-            control.setTitleTextAttributes([.foregroundColor: UIColor.textTertiary], for: .normal)
-            control.setTitleTextAttributes([.foregroundColor: UIColor.textTertiary], for: .highlighted)
-            control.setTitleTextAttributes([.foregroundColor: UIColor.textAction], for: .selected)
-        } else {
-            control.tintColor = .btnPrimary
-        }
-        return control
-    }()
-
-    private lazy var segmentContainer: UIView = {
-        let segmentContainer = UIView(withAutoLayout: true)
-        segmentContainer.backgroundColor = .bgPrimary
-        segmentContainer.addSubview(mapTypeSegmentControl)
-        segmentContainer.layer.masksToBounds = false
-        segmentContainer.layer.shadowOpacity = 0.3
-        segmentContainer.layer.shadowRadius = 3
-        segmentContainer.layer.shadowOffset = .zero
-        segmentContainer.layer.shadowColor = UIColor.black.cgColor
-
-        if UIDevice.isIPad() {
-            NSLayoutConstraint.activate([
-                mapTypeSegmentControl.widthAnchor.constraint(equalToConstant: 350),
-                mapTypeSegmentControl.centerXAnchor.constraint(equalTo: segmentContainer.centerXAnchor)
-                ])
-        } else {
-            NSLayoutConstraint.activate([
-                mapTypeSegmentControl.leadingAnchor.constraint(equalTo: segmentContainer.leadingAnchor, constant: .mediumLargeSpacing),
-                mapTypeSegmentControl.trailingAnchor.constraint(equalTo: segmentContainer.trailingAnchor, constant: -.mediumLargeSpacing)
-                ])
-        }
-
-        NSLayoutConstraint.activate([
-            mapTypeSegmentControl.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: .mediumLargeSpacing),
-            mapTypeSegmentControl.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: -.mediumLargeSpacing)
-            ])
-
-        return segmentContainer
-    }()
-
     private lazy var mapView: MKMapView = {
         let view = MKMapView(withAutoLayout: true)
         view.isRotateEnabled = false
@@ -73,21 +27,17 @@ public class AddressView: UIView {
         return view
     }()
 
+    private lazy var mapTypeButton: UIButton = {
+        let button = UIButton.mapButton
+        button.setImage(UIImage(named: .viewMode).withRenderingMode(.alwaysTemplate), for: .normal)
+        button.addTarget(self, action: #selector(handleMapTypeButtonTap), for: .touchUpInside)
+        return button
+    }()
+
     private lazy var centerMapButton: UIButton = {
-        let button = UIButton(withAutoLayout: true)
-        button.backgroundColor = .bgPrimary
-        button.tintColor = .btnPrimary
-
-        button.layer.cornerRadius = 23
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 1)
-        button.layer.shadowRadius = 3
-        button.layer.shadowOpacity = 0.5
-
-        button.setImage(UIImage(named: .pin), for: .normal)
-        button.setImage(UIImage(named: .pin), for: .highlighted)
-        button.addTarget(self, action: #selector(centerMapButtonAction), for: .touchUpInside)
-
+        let button = UIButton.mapButton
+        button.setImage(UIImage(named: .pin).withRenderingMode(.alwaysTemplate), for: .normal)
+        button.addTarget(self, action: #selector(handleCenterMapButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -105,12 +55,6 @@ public class AddressView: UIView {
     public var model: AddressViewModel? {
         didSet {
             guard let model = model else { return }
-
-            mapTypeSegmentControl.removeAllSegments()
-            for (index, segment) in model.mapTypes.enumerated() {
-                mapTypeSegmentControl.insertSegment(withTitle: segment, at: index, animated: false)
-            }
-            mapTypeSegmentControl.selectedSegmentIndex = model.selectedMapType
             addressCardView.model = model
         }
     }
@@ -183,25 +127,26 @@ public class AddressView: UIView {
 
 private extension AddressView {
     func setup() {
-        addSubview(segmentContainer)
-        insertSubview(mapView, belowSubview: segmentContainer)
+        addSubview(mapView)
         addSubview(addressCardView)
+        addSubview(mapTypeButton)
         addSubview(centerMapButton)
 
         NSLayoutConstraint.activate([
-            segmentContainer.topAnchor.constraint(equalTo: topAnchor),
-            segmentContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
-            segmentContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            mapView.topAnchor.constraint(equalTo: segmentContainer.bottomAnchor),
+            mapView.topAnchor.constraint(equalTo: topAnchor),
             mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            centerMapButton.topAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: .mediumLargeSpacing),
-            centerMapButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
-            centerMapButton.widthAnchor.constraint(equalToConstant: 46),
-            centerMapButton.heightAnchor.constraint(equalTo: centerMapButton.widthAnchor)
-            ])
+            mapTypeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            mapTypeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            mapTypeButton.widthAnchor.constraint(equalToConstant: 46),
+            mapTypeButton.heightAnchor.constraint(equalTo: mapTypeButton.widthAnchor),
+
+            centerMapButton.topAnchor.constraint(equalTo: mapTypeButton.bottomAnchor, constant: .mediumSpacing),
+            centerMapButton.trailingAnchor.constraint(equalTo: mapTypeButton.trailingAnchor),
+            centerMapButton.widthAnchor.constraint(equalTo: mapTypeButton.heightAnchor),
+            centerMapButton.heightAnchor.constraint(equalTo: mapTypeButton.widthAnchor)
+        ])
 
         if UIDevice.isIPad() {
             NSLayoutConstraint.activate([
@@ -222,12 +167,12 @@ private extension AddressView {
         }
     }
 
-    @objc func mapTypeChanged() {
-        delegate?.addressView(self, didSelectMapTypeAtIndex: mapTypeSegmentControl.selectedSegmentIndex)
+    @objc func handleCenterMapButtonTap() {
+        delegate?.addressViewDidSelectCenterMapButton(self)
     }
 
-    @objc func centerMapButtonAction() {
-        delegate?.addressViewDidSelectCenterMapButton(self)
+    @objc func handleMapTypeButtonTap() {
+        delegate?.addressViewDidSelectMapTypeButton(self)
     }
 
     func removeCurrentAnnotationAndShapeOverlays() {
@@ -281,5 +226,16 @@ private class AddressAnnotation: NSObject, MKAnnotation {
     init(title: String, location: CLLocationCoordinate2D) {
         self.title = title
         self.coordinate = location
+    }
+}
+
+private extension UIButton {
+    static var mapButton: UIButton {
+        let button = FloatingButton(withAutoLayout: true)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 3)
+        button.layer.shadowRadius = 3
+        button.layer.shadowOpacity = 0.5
+        return button
     }
 }

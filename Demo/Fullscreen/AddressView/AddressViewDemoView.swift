@@ -5,24 +5,7 @@
 import FinniversKit
 import MapKit
 
-private enum MapTypes: Int, CaseIterable {
-    case standard
-    case satellite
-    case hybrid
-
-    var value: String {
-        switch self {
-        case .standard: return "Kart"
-        case .satellite: return "Flyfoto"
-        case .hybrid: return "Hybrid"
-        }
-    }
-}
-
 private struct AddressViewData: AddressViewModel {
-    var mapTypes: [String] {
-        return MapTypes.allCases.map { $0.value }
-    }
     var title: String
     var subtitle: String
     var copyButtonTitle: String
@@ -117,16 +100,8 @@ extension AddressViewDemoView: AddressViewDelegate {
         addressView.makePolygonOverlayVisible()
     }
 
-    func addressView(_ addressView: AddressView, didSelectMapTypeAtIndex index: Int) {
-        guard let mapType = MapTypes(rawValue: index) else { return }
-        switch mapType {
-        case .standard:
-            addressView.changeMapType(.standard)
-        case .satellite:
-            addressView.changeMapType(.satellite)
-        case .hybrid:
-            addressView.changeMapType(.hybrid)
-        }
+    func addressViewDidSelectMapTypeButton(_ addressView: AddressView) {
+        print("addressViewDidSelectMapTypeButton")
     }
 }
 
