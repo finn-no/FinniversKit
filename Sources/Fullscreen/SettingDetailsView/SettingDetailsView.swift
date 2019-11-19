@@ -40,10 +40,9 @@ public class SettingDetailsView: UIView {
 
     // MARK: - Subviews
 
-    private lazy var iconView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
-        return imageView
-    }()
+    private lazy var iconView = UIImageView(
+        withAutoLayout: true
+    )
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong, withAutoLayout: true)
