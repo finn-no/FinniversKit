@@ -36,8 +36,13 @@ class VersionInfoView: UIView {
     func configure(withText text: String?) {
         versionLabel.text = text
 
+        let targetSize = CGSize(
+            width: superview?.frame.width ?? 0,
+            height: 0
+        )
+
         frame.size = systemLayoutSizeFitting(
-            UIView.layoutFittingCompressedSize,
+            targetSize,
             withHorizontalFittingPriority: .required,
             verticalFittingPriority: .defaultLow
         )

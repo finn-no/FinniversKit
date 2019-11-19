@@ -28,8 +28,6 @@ public class SettingsView: UIView {
     public var versionText: String? {
         didSet {
             versionInfoView.configure(withText: versionText)
-            guard versionInfoView.superview == nil else { return }
-            tableView.tableFooterView = versionInfoView
         }
     }
 
@@ -176,6 +174,7 @@ extension SettingsView: UITableViewDelegate {
 private extension SettingsView {
     func setup() {
         addSubview(tableView)
+        tableView.tableFooterView = versionInfoView
         tableView.fillInSuperview()
     }
 }
