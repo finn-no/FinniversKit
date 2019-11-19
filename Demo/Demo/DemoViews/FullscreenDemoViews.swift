@@ -19,6 +19,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case drumMachineView
     case pianoView
     case snowGlobeView
+    case newYearsView
     case soldView
     case confirmationView
     case fullscreenGallery
@@ -71,6 +72,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<PianoDemoView>(supportedInterfaceOrientations: .landscape)
         case .snowGlobeView:
             return DemoViewController<SnowGlobeDemoView>()
+        case .newYearsView:
+            return DemoViewController<NewYearsDemoView>()
         case .soldView:
             return DemoViewController<SoldViewDemoView>()
         case .confirmationView:
