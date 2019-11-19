@@ -15,7 +15,7 @@ public class AdConfirmationObjectView: UIView {
         let titleLabel = Label(style: .title3Strong, withAutoLayout: true)
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
-        return titleLabel
+    return titleLabel
     }()
 
     private lazy var bodyLabel: Label = {

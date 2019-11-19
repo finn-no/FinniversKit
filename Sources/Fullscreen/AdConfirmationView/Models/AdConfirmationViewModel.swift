@@ -7,4 +7,5 @@ public protocol AdConfirmationViewModel {
     var summaryViewModel: AdConfirmationSummaryViewModel? { get set }
     var feedbackViewModel: AdConfirmationFeedbackViewModel? { get set }
     var completeButtonText: String { get set }
+    var receiptInfoLabel: String? { get set }
 }

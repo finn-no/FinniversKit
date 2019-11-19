@@ -10,6 +10,7 @@ struct AdConfirmationViewDefaultData: AdConfirmationViewModel {
     var summaryViewModel: AdConfirmationSummaryViewModel? = AdConfirmationSummaryViewModelDefaultData()
     var feedbackViewModel: AdConfirmationFeedbackViewModel?
     var completeButtonText = "Gå til mine annonser"
+    var receiptInfoLabel: String? = "Kvittering er sendt til din e-post"
 }
 
 struct AdConfirmationObjectViewModelDefaultData: AdConfirmationObjectViewModel {
@@ -23,5 +24,4 @@ struct AdConfirmationSummaryViewModelDefaultData: AdConfirmationSummaryViewModel
     var orderLines: [String] = ["Torget annonse", "Bil annonse", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie", "Blink", "Oppsalgsprodukt", "Bolig til leie"]
     var priceLabel: String = "Totalsum"
     var priceValue: String = "100000"
-    var receiptInfo: String?
 }

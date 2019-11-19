@@ -10,8 +10,7 @@ public class AdConfirmationSummaryView: UIView {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyStrong)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
@@ -23,16 +22,14 @@ public class AdConfirmationSummaryView: UIView {
     }()
 
     private lazy var priceLabel: Label = {
-        let label = Label(style: .bodyStrong)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var totalLabel: Label = {
-        let label = Label(style: .bodyStrong)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         label.textAlignment = .right
         label.numberOfLines = 0
         return label

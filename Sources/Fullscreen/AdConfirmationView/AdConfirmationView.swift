@@ -26,12 +26,20 @@ public class AdConfirmationView: UIView {
         return button
     }()
 
+    private lazy var receiptInfoLabel: Label = {
+        let label = Label(style: .caption, withAutoLayout: true)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+
     public weak var delegate: AdConfirmationViewDelegate?
 
     public var model: AdConfirmationViewModel? {
         didSet {
             confirmationObjectView.model = model?.objectViewModel
             completeButton.buttonTitle = model?.completeButtonText
+            receiptInfoLabel.text = model?.receiptInfoLabel
 
             setupSummaryView()
         }
@@ -85,6 +93,7 @@ private extension AdConfirmationView {
         if let summaryViewModel = model?.summaryViewModel, summaryViewModel.orderLines.count > 0 {
             let summaryView = AdConfirmationSummaryView(model: summaryViewModel, withAutoLayout: true)
             contentView.addSubview(summaryView)
+            contentView.addSubview(receiptInfoLabel)
 
             let heightForTitleLabel = CGFloat(summaryView.titleLabelHeight)
             let heightForOrderLinesView = (CGFloat(summaryViewModel.orderLines.count) * summaryView.checkmarkViewHeight)
@@ -97,11 +106,16 @@ private extension AdConfirmationView {
                 summaryView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
                 summaryView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
+                receiptInfoLabel.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: .mediumLargeSpacing),
+                receiptInfoLabel.leadingAnchor.constraint(equalTo: summaryView.leadingAnchor),
+                receiptInfoLabel.trailingAnchor.constraint(equalTo: summaryView.trailingAnchor),
+
                 confirmationObjectView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: summaryView.bottomAnchor),
+                contentView.bottomAnchor.constraint(greaterThanOrEqualTo: receiptInfoLabel.bottomAnchor, constant: .mediumSpacing),
             ])
         } else {
-            confirmationObjectView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: .largeSpacing).isActive = true
+            // Disable scrolling since we have no arbitrary sized view to show.
+            scrollView.isScrollEnabled = false
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor).isActive = true
         }
     }
