@@ -116,9 +116,9 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         }
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, loadImageForModel model: AdsGridViewModel, imageWidth: CGFloat, completion: @escaping ((AdsGridViewModel, UIImage?) -> Void)) {
-        guard let path = model.imagePath, let url = URL(string: path) else {
-            completion(model, nil)
+    public func adsGridView(_ adsGridView: AdsGridView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        guard let url = URL(string: imagePath) else {
+            completion(nil)
             return
         }
 
@@ -127,9 +127,9 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
             usleep(50_000)
             DispatchQueue.main.async {
                 if let data = data, let image = UIImage(data: data) {
-                    completion(model, image)
+                    completion(image)
                 } else {
-                    completion(model, nil)
+                    completion(nil)
                 }
             }
         }
@@ -137,7 +137,7 @@ extension FrontpageViewDemoView: AdsGridViewDataSource {
         task.resume()
     }
 
-    public func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageForModel model: AdsGridViewModel, imageWidth: CGFloat) {}
+    public func adsGridView(_ adsGridView: AdsGridView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {}
 }
 
 // MARK: - MarketsGridViewDelegate

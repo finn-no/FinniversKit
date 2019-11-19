@@ -42,7 +42,7 @@ final class FavoriteAdCommentView: UIView {
 
     // MARK: - Setup
 
-    func configure(withText text: String) {
+    func configure(withText text: String?) {
         label.text = text
     }
 
@@ -64,7 +64,7 @@ final class FavoriteAdCommentView: UIView {
         let margins = layoutMarginsGuide
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: margins.topAnchor),
+            imageView.topAnchor.constraint(equalTo: margins.topAnchor, constant: .verySmallSpacing),
             imageView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 15),
             imageView.heightAnchor.constraint(equalToConstant: 14),

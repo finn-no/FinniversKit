@@ -11,7 +11,7 @@ class TweakingOptionsTableViewController: ScrollViewController {
     private let options: [TweakingOption]
 
     private lazy var tableView: BasicTableView = {
-        let items = options.map { BasicTableViewItem(title: $0.title) }
+        let items = options.map { BasicTableViewItem(title: $0.title, subtitle: $0.description) }
         let view = BasicTableView(items: items)
         view.delegate = self
         return view

@@ -34,8 +34,8 @@ public final class PrimingView: UIView {
         return tableView
     }()
 
-    private lazy var footerView: PrimingFooterView = {
-        let view = PrimingFooterView(withAutoLayout: true)
+    private lazy var footerView: FooterButtonView = {
+        let view = FooterButtonView(withAutoLayout: true)
         view.delegate = self
         return view
     }()
@@ -83,7 +83,7 @@ public final class PrimingView: UIView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor),
 
-            footerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            footerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -windowSafeAreaInsets.bottom),
             footerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -97,8 +97,8 @@ public final class PrimingView: UIView {
 
 // MARK: - PrimingFooterViewDelegate
 
-extension PrimingView: PrimingFooterViewDelegate {
-    func primingFooterViewDidSelectButton(_ view: PrimingFooterView) {
+extension PrimingView: FooterButtonViewDelegate {
+    public func footerButtonView(_ view: FooterButtonView, didSelectButton button: UIButton) {
         delegate?.primingViewDidSelectButton(self)
     }
 }

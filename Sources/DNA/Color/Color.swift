@@ -11,11 +11,15 @@ import UIKit
     }
 
     public class var bgSecondary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .ice, darkModeColor: UIColor(hex: "#262633"))
+        return dynamicColorIfAvailable(defaultColor: .ice, darkModeColor: .darkIce)
     }
 
     public class var bgTertiary: UIColor {
         return dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
+    }
+
+    public class var bgBottomSheet: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .darkIce)
     }
 
     public class var bgAlert: UIColor {
@@ -179,6 +183,10 @@ import UIKit
 
     public class var midnightSectionSeparator: UIColor {
         return UIColor(hex: "34343E")
+    }
+
+    public class var darkIce: UIColor {
+        return UIColor(hex: "#262633")
     }
 
     // swiftlint:disable:next identifier_name

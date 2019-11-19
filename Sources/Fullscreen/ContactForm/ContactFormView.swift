@@ -71,6 +71,8 @@ public final class ContactFormView: UIView {
         return checkbox
     }()
 
+    private let showPhoneNumberCheckboxWrapperView = UIView(withAutoLayout: true)
+
     private lazy var phoneNumberTextField: TextField = {
         let textField = TextField(inputType: .phoneNumber)
         textField.textField.returnKeyType = .send
@@ -131,13 +133,34 @@ public final class ContactFormView: UIView {
         detailTextLabel.text = viewModel.detailText
         nameTextField.placeholderText = viewModel.namePlaceholder
 
+        if viewModel.fullNameRequired {
+            nameTextField.customValidator = { text in
+                return text.split(
+                    separator: " ",
+                    maxSplits: 2,
+                    omittingEmptySubsequences: true
+                ).count > 1
+            }
+            nameTextField.helpText = viewModel.nameErrorHelpText
+        } else {
+            nameTextField.customValidator = nil
+            nameTextField.helpText = nil
+        }
+
         emailTextField.placeholderText = viewModel.emailPlaceholder
         emailTextField.helpText = viewModel.emailErrorHelpText
 
-        showPhoneNumberCheckbox.configure(
-            question: viewModel.showPhoneNumberQuestion,
-            answer: viewModel.showPhoneNumberAnswer
-        )
+        if viewModel.phoneNumberRequired {
+            showPhoneNumberCheckboxWrapperView.isHidden = true
+            phoneNumberTextField.isHidden = false
+        } else {
+            showPhoneNumberCheckboxWrapperView.isHidden = false
+            phoneNumberTextField.isHidden = true
+            showPhoneNumberCheckbox.configure(
+                question: viewModel.showPhoneNumberQuestion,
+                answer: viewModel.showPhoneNumberAnswer
+            )
+        }
         phoneNumberTextField.placeholderText = viewModel.phoneNumberPlaceholder
         phoneNumberTextField.helpText = viewModel.phoneNumberErrorHelpText
 
@@ -160,11 +183,13 @@ public final class ContactFormView: UIView {
         contentView.addSubview(detailTextLabel)
         contentView.addSubview(nameTextField)
         contentView.addSubview(emailTextField)
-        contentView.addSubview(showPhoneNumberCheckbox)
 
-        let bottomStackView = UIStackView(arrangedSubviews: [phoneNumberTextField])
+        showPhoneNumberCheckboxWrapperView.addSubview(showPhoneNumberCheckbox)
+
+        let bottomStackView = UIStackView(arrangedSubviews: [showPhoneNumberCheckboxWrapperView, phoneNumberTextField])
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.axis = .vertical
+        bottomStackView.spacing = .mediumSpacing
 
         contentView.addSubview(bottomStackView)
         contentView.addSubview(disclaimerView)
@@ -194,11 +219,7 @@ public final class ContactFormView: UIView {
             emailTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            showPhoneNumberCheckbox.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: .largeSpacing),
-            showPhoneNumberCheckbox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            showPhoneNumberCheckbox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
-            bottomStackView.topAnchor.constraint(equalTo: showPhoneNumberCheckbox.bottomAnchor, constant: .mediumSpacing),
+            bottomStackView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor),
             bottomStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bottomStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
@@ -211,6 +232,8 @@ public final class ContactFormView: UIView {
             submitButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
             submitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
+
+        showPhoneNumberCheckbox.fillInSuperview(insets: UIEdgeInsets(top: .largeSpacing, leading: 0, bottom: 0, trailing: 0), isActive: true)
     }
 
     // MARK: - Actions
