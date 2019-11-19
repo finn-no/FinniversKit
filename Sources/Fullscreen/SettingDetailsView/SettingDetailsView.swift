@@ -25,8 +25,8 @@ public protocol SettingDetailsViewDelegate: AnyObject {
 public class SettingDetailsView: UIView {
 
     public enum State {
-        case normal
-        case details
+        case lessDetails
+        case moreDetails
     }
 
     // MARK: - Public properties
@@ -35,7 +35,7 @@ public class SettingDetailsView: UIView {
 
     // MARK: - Private properties
 
-    private var state: State = .normal
+    private var state: State = .lessDetails
     private var model: SettingDetailsViewModel?
 
     // MARK: - Subviews
@@ -154,8 +154,8 @@ private extension SettingDetailsView {
         guard let model = model else { return }
 
         switch state {
-        case .normal: state = .details
-        case .details: state = .normal
+        case .lessDetails: state = .moreDetails
+        case .moreDetails: state = .lessDetails
         }
 
         configure(with: model, animated: true)

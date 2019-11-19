@@ -23,24 +23,24 @@ private struct DemoViewModel: SettingDetailsViewModel {
 
     func text(for state: SettingDetailsView.State) -> String {
         switch state {
-        case .normal:
+        case .lessDetails:
             return "FINN sender deg nyhetsbrev med for eksempel reisetips, jobbtrender, morsomme konkurranser og smarte råd til deg som kjøper og selger. For å gjøre dette bruker vi kontakt-informasjonen knyttet til brukeren din på FINN."
-        case .details:
+        case .moreDetails:
             return "Formål\nVi ønsker å tilby bedre tjenester gjennom å gi deg mer relevant innhold. Dette kan f.eks være tjenester som anbefalinger på forsiden av FINN, FINN-annonser du har gått glipp av kan vises på andre nettsteder som VG, Facebook, etc., sortering av søkeresultat, mm.\n\nHvilke data trenger vi?\nFor å kunne lage slike tjenester trenger vi å lagre data om din bruk av FINN. Dette vil typisk være hvilke annonser du har vist interesse for, din søkehistorikk, stedsinformasjon og lignende.\n\nHvordan virker dette?\nVi bruker ditt bruksmønster til å finne tilsvarende bruksmønster fra andre brukere på FINN, for å kunne anbefale deg det de har vist interesse for. Du vil ikke kunne bli identifisert gjennom dataene vi lagrer, og vi deler heller ikke disse dataene med andre."
         }
     }
 
     func textAlignment(for state: SettingDetailsView.State) -> NSTextAlignment {
         switch state {
-        case .normal: return .center
-        case .details: return .left
+        case .lessDetails: return .center
+        case .moreDetails: return .left
         }
     }
 
     func secondaryButtonTitle(for state: SettingDetailsView.State) -> String? {
         switch state {
-        case .normal: return "Les mer"
-        case .details: return "Les mindre"
+        case .lessDetails: return "Les mer"
+        case .moreDetails: return "Les mindre"
         }
     }
 }
