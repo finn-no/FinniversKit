@@ -27,7 +27,6 @@ public final class NativeContentAdvertView: UIView {
         let view = UIView(withAutoLayout: true)
         view.layer.cornerRadius = cornerRadius
         view.layer.masksToBounds = true
-        view.backgroundColor = UIColor(r: 248, g: 248, b: 248)!
         return view
     }()
 
@@ -38,6 +37,12 @@ public final class NativeContentAdvertView: UIView {
         return view
     }()
 
+    private lazy var bottomContainerView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.backgroundColor = UIColor(r: 248, g: 248, b: 248)!
+        return view
+    }()
+
     private lazy var logoImageView: UIImageView = {
         let view = UIImageView(withAutoLayout: true)
         view.contentMode = .scaleAspectFit
@@ -45,9 +50,9 @@ public final class NativeContentAdvertView: UIView {
     }()
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title2)
+        let label = Label(style: .title3)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.minimumScaleFactor = 0.5
         label.adjustsFontSizeToFitWidth = true
         label.textColor = .textToast
@@ -87,18 +92,22 @@ public final class NativeContentAdvertView: UIView {
 private extension NativeContentAdvertView {
     func setup() {
         addSubview(containerView)
+
         containerView.addSubview(mainImageView)
-        containerView.addSubview(logoImageView)
-        containerView.addSubview(titleLabel)
+        containerView.addSubview(bottomContainerView)
         containerView.addSubview(settingsButton)
 
+        bottomContainerView.addSubview(logoImageView)
+        bottomContainerView.addSubview(titleLabel)
+
         NSLayoutConstraint.activate([
-            containerView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumLargeSpacing),
-            containerView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumLargeSpacing),
             containerView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+            containerView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: .mediumSpacing),
+            containerView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -.mediumSpacing),
             containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
             containerView.widthAnchor.constraint(lessThanOrEqualToConstant: containerMaxWidth),
+            containerView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
 
             mainImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
             mainImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
@@ -108,15 +117,20 @@ private extension NativeContentAdvertView {
             settingsButton.topAnchor.constraint(equalTo: mainImageView.topAnchor),
             settingsButton.trailingAnchor.constraint(equalTo: mainImageView.trailingAnchor),
 
-            logoImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -.mediumSpacing),
-            logoImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -.mediumSpacing),
+            bottomContainerView.topAnchor.constraint(equalTo: mainImageView.bottomAnchor),
+            bottomContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            bottomContainerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            bottomContainerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+
+            logoImageView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -.mediumSpacing),
+            logoImageView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -.mediumSpacing),
             logoImageView.widthAnchor.constraint(equalToConstant: logoImageSize),
             logoImageView.heightAnchor.constraint(equalToConstant: logoImageSize),
 
-            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: .mediumSpacing),
+            titleLabel.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: .mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: .mediumSpacing),
             titleLabel.trailingAnchor.constraint(equalTo: logoImageView.leadingAnchor, constant: -.mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: .mediumSpacing),
-            titleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -.mediumSpacing)
+            titleLabel.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -.mediumSpacing)
         ])
     }
 
