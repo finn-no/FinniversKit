@@ -136,4 +136,8 @@ class FullscreenViewTests: XCTestCase {
     func testPopovers() {
         snapshot(.popovers)
     }
+
+    func testAdConfirmationView() {
+        snapshot(.adConfirmationView)
+    }
 }
