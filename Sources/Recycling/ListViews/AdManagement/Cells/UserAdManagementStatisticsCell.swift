@@ -87,7 +87,7 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
         }
     }
 
-    @objc func fullStatisticsButtonTapped() {
+    @objc private func fullStatisticsButtonTapped() {
         delegate?.userAdManagementStatisticsCellDidSelectFullStatistics(self)
     }
 

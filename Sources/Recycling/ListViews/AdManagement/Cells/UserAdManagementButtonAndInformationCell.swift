@@ -127,7 +127,7 @@ public class UserAdManagementButtonAndInformationCell: UITableViewCell {
 
             informationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: labelLeftInset),
             informationLabel.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -labelToButtonSpacing),
-            informationLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            informationLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: .mediumSpacing),
 
             button.heightAnchor.constraint(equalToConstant: buttonHeight),
             button.centerYAnchor.constraint(equalTo: informationLabel.centerYAnchor),
