@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 public protocol BasicTableViewDelegate: AnyObject {
     func basicTableView(_ basicTableView: BasicTableView, didSelectItemAtIndex index: Int)
 }
