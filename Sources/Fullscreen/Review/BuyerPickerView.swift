@@ -4,18 +4,18 @@
 
 import UIKit
 
-public protocol ReviewViewDelegate: AnyObject {
-    func reviewView(_ reviewView: ReviewView, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
-    func reviewView(_ reviewView: ReviewView, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat)
-    func reviewView(_ reviewView: ReviewView, didSelect profile: ReviewViewProfileModel)
+public protocol BuyerPickerViewDelegate: AnyObject {
+    func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
+    func buyerPickerView(_ buyerPickerView: BuyerPickerView, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
+    func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel)
 }
 
-public class ReviewView: UIView {
+public class BuyerPickerView: UIView {
 
     // MARK: - Public properties
 
-    public weak var delegate: ReviewViewDelegate?
-    public var model: ReviewViewModel? {
+    public weak var delegate: BuyerPickerViewDelegate?
+    public var model: BuyerPickerViewModel? {
         didSet {
             selectButton.setTitle(model?.selectTitle ?? "", for: .normal)
             label.text = model?.confirmationTitle ?? ""
@@ -33,13 +33,13 @@ public class ReviewView: UIView {
         tableView.backgroundColor = .bgPrimary
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.register(ReviewTextHeader.self)
-        tableView.register(ReviewProfileCell.self)
+        tableView.register(BuyerPickerTextHeader.self)
+        tableView.register(BuyerPickerProfileCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = ReviewView.defaultRowHeight
-        tableView.estimatedSectionHeaderHeight = ReviewView.defaultHeaderHeight
+        tableView.estimatedRowHeight = BuyerPickerView.defaultRowHeight
+        tableView.estimatedSectionHeaderHeight = BuyerPickerView.defaultHeaderHeight
         return tableView
     }()
 
@@ -108,13 +108,13 @@ public class ReviewView: UIView {
                 return
         }
 
-        delegate?.reviewView(self, didSelect: selectedProfile)
+        delegate?.buyerPickerView(self, didSelect: selectedProfile)
     }
 }
 
 // MARK: - UITableViewDataSource
 
-extension ReviewView: UITableViewDataSource {
+extension BuyerPickerView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -128,11 +128,7 @@ extension ReviewView: UITableViewDataSource {
             return UITableViewCell()
         }
 
-        return reviewProfileCell(tableView: tableView, for: indexPath, model: model)
-    }
-
-    private func reviewProfileCell(tableView: UITableView, for indexPath: IndexPath, model: ReviewViewProfileModel) -> UITableViewCell {
-        let cell = tableView.dequeue(ReviewProfileCell.self, for: indexPath)
+        let cell = tableView.dequeue(BuyerPickerProfileCell.self, for: indexPath)
         cell.model = model
         cell.delegate = self
         cell.loadImage()
@@ -143,9 +139,9 @@ extension ReviewView: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension ReviewView: UITableViewDelegate {
+extension BuyerPickerView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeue(ReviewTextHeader.self)
+        let header = tableView.dequeue(BuyerPickerTextHeader.self)
         header.title.text = model?.title
 
         return header
@@ -153,7 +149,7 @@ extension ReviewView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         guard let row = tableView.indexPathForSelectedRow,
-            let cell = tableView.cellForRow(at: row) as? ReviewProfileCell else {
+            let cell = tableView.cellForRow(at: row) as? BuyerPickerProfileCell else {
             return indexPath
         }
 
@@ -163,7 +159,7 @@ extension ReviewView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? ReviewProfileCell,
+        guard let cell = tableView.cellForRow(at: indexPath) as? BuyerPickerProfileCell,
             let selectedUser = model?.profiles[indexPath.row] else {
             return
         }
@@ -177,12 +173,12 @@ extension ReviewView: UITableViewDelegate {
 
 // MARK: - ReviewProfileCellDelegate
 
-extension ReviewView: ReviewProfileCellDelegate {
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage? {
-        return delegate?.reviewView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
+extension BuyerPickerView: BuyerPickerCellDelegate {
+    func buyerPickerCell(_ reviewProfileCell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage? {
+        return delegate?.buyerPickerView(self, loadImageForModel: model, imageWidth: imageWidth, completion: completion)
     }
 
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat) {
-        delegate?.reviewView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
+    func buyerPickerCell(_ reviewProfileCell: BuyerPickerProfileCell, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat) {
+        delegate?.buyerPickerView(self, cancelLoadingImageForModel: model, imageWidth: imageWidth)
     }
 }

@@ -38,7 +38,7 @@ class FullscreenViewTests: XCTestCase {
     }
 
     func testReviewView() {
-        snapshot(.reviewView)
+        snapshot(.buyerPickerView)
     }
 
     func testRegisterView() {

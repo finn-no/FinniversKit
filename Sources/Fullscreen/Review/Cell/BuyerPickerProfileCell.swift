@@ -4,12 +4,12 @@
 
 import UIKit
 
-protocol ReviewProfileCellDelegate: AnyObject {
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat)
+protocol BuyerPickerCellDelegate: AnyObject {
+    func buyerPickerCell(_ cell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
+    func buyerPickerCell(_ cell: BuyerPickerProfileCell, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
 }
 
-class ReviewProfileCell: UITableViewCell {
+class BuyerPickerProfileCell: UITableViewCell {
     static let profileImageSize: CGFloat = 44
     static let radioButtonSize: CGFloat = 26
 
@@ -38,13 +38,13 @@ class ReviewProfileCell: UITableViewCell {
         return radioButton
     }()
 
-    var model: ReviewViewProfileModel? {
+    var model: BuyerPickerProfileModel? {
         didSet {
             name.text = model?.name ?? ""
         }
     }
 
-    weak var delegate: ReviewProfileCellDelegate?
+    weak var delegate: BuyerPickerCellDelegate?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -63,8 +63,8 @@ class ReviewProfileCell: UITableViewCell {
             profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
 
-            profileImage.heightAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
-            profileImage.widthAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
+            profileImage.heightAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
+            profileImage.widthAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
 
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
@@ -87,13 +87,13 @@ class ReviewProfileCell: UITableViewCell {
         name.text = ""
 
         if let model = model {
-            delegate?.reviewProfileCell(self, cancelLoadingImageForModel: model, imageWidth: ReviewProfileCell.profileImageSize)
+            delegate?.buyerPickerCell(self, cancelLoadingImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize)
         }
     }
 
     func loadImage() {
         guard let model = model else { return }
-        profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: ReviewProfileCell.profileImageSize, completion: { [weak self] image in
+        profileImage.image = delegate?.buyerPickerCell(self, loadImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize, completion: { [weak self] image in
             self?.profileImage.image = image
         })
     }
