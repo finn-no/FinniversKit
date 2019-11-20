@@ -55,7 +55,9 @@ public class FontBook: NSObject {
 }
 
 @objc public extension UIFont {
-    /// FINNTypeWebStrippet-Medium with a size of 34 scaled for UIFontTextStyle.title1
+    /// Scaled font for `.largeTitle` text style.
+    /// If no font is provided uses `.medium` weight system font of size `34`.
+    ///
     /// ## Usage:
     /// - It should only be used one T1 and it should be the first text element that catches the users attention.
     /// - It shall give the user an overview of which page he or she is located.
@@ -65,7 +67,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .largeTitle)
     }
 
-    /// FINNTypeWebStrippet-Light with a size of 28 scaled for UIFontTextStyle.title2
+    /// Scaled font for `.title1` text style.
+    /// If no font is provided uses `.light` weight system font of size `28`.
     ///
     /// ## Usage:
     /// - A page can contain multiple T2 to divide content into several sections.
@@ -76,7 +79,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .title1)
     }
 
-    /// FINNTypeWebStrippet-Light with a size of 28 scaled for UIFontTextStyle.title2
+    /// Scaled font for `.title1` text style.
+    /// If no font is provided uses `.bold` weight system font of size `28`.
     ///
     /// ## Usage:
     /// - A page can contain multiple T2 to divide content into several sections.
@@ -87,7 +91,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .title1)
     }
 
-    /// FINNTypeWebStrippet-Light with a size of 28 scaled for UIFontTextStyle.title2
+    /// Scaled font for `.title1` text style.
+    /// If no font is provided uses `.medium` weight system font of size `28`.
     ///
     /// ## Usage:
     /// - A page can contain multiple T2 to divide content into several sections.
@@ -98,7 +103,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .title1)
     }
 
-    /// FINNTypeWebStrippet-Medium with a size of 22 scaled for UIFontTextStyle.title3Strong
+    /// Scaled font for `.title2` text style.
+    /// If no font is provided uses `.medium` weight system font of size `22`.
     ///
     /// ## Usage:
     /// - If a T2 have more sublevels, you can use T3.
@@ -108,7 +114,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .title2)
     }
 
-    /// FINNTypeWebStrippet-Light with a size of 22 scaled for UIFontTextStyle.title3
+    /// Scaled font for `.title2` text style.
+    /// If no font is provided uses `.light` weight system font of size `22`.
     ///
     /// ## Usage:
     /// - If a T2 have more sublevels, you can use T3.
@@ -118,7 +125,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .title2)
     }
 
-    /// FINNTypeWebStrippet-Light with a size of 22 scaled for UIFontTextStyle.title3
+    /// Scaled font for `.title2` text style.
+    /// If no font is provided uses `.bold` weight system font of size `22`.
     ///
     /// ## Usage:
     /// - If a T2 have more sublevels, you can use T3.
@@ -128,7 +136,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .title2)
     }
 
-    /// FINNTypeWebStrippet-Medium with a size of 16 scaled for UIFontTextStyle.headline
+    /// Scaled font for `.headline` text style.
+    /// If no font is provided uses `.bold` weight system font of size `16`.
     ///
     /// ## Usage:
     /// - This have the same size as the body text, but is always bolded (Medium) to differenciate them.
@@ -137,7 +146,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .headline)
     }
 
-    /// FINNTypeWebStrippet-Medium with a size of 16 scaled for UIFontTextStyle.headline
+    /// Scaled font for `.headline` text style.
+    /// If no font is provided uses `.medium` weight system font of size `16`.
     ///
     /// ## Usage:
     /// - This have the same size as the body text, but is always bolded (Medium) to differenciate them.
@@ -146,7 +156,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .headline)
     }
 
-    /// FINNTypeWebStrippet-Regular with a size of 16 scaled for UIFontTextStyle.headline
+    /// Scaled font for `.headline` text style.
+    /// If no font is provided uses `.regular` weight system font of size `16`.
     ///
     /// ## Usage:
     /// - This have the same size as the body text, but is always semibolded (Regular) to differenciate them.
@@ -155,7 +166,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .headline)
     }
 
-    /// FINNTypeWebStrippet-Light with a size of 16 scaled for UIFontTextStyle.body
+    /// Scaled font for `.callout` text style.
+    /// If no font is provided uses `.light` weight system font of size `16`.
     ///
     /// ## Usage:
     /// - Regular text below titles is called body text and is weighted Medium.
@@ -164,7 +176,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .callout)
     }
 
-    /// FINNTypeWebStrippet-Light with a size of 14 scaled for UIFontTextStyle.footnote
+    /// Scaled font for `.footnote` text style.
+    /// If no font is provided uses `.light` weight system font of size `14`.
     ///
     /// ## Usage:
     /// - Used for short amount of text if neither the Body or Detail is appropriate.
@@ -174,7 +187,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .footnote)
     }
 
-    /// FINNTypeWebStrippet-Light with a size of 14 scaled for UIFontTextStyle.footnote
+    /// Scaled font for `.footnote` text style.
+    /// If no font is provided uses `.medium` weight system font of size `14`.
     ///
     /// ## Usage:
     /// - Used for short amount of text if neither the Body or Detail is appropriate.
@@ -185,7 +199,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .footnote)
     }
 
-    /// FINNTypeWebStrippet-Light with a size of 14 scaled for UIFontTextStyle.footnote
+    /// Scaled font for `.footnote` text style.
+    /// If no font is provided uses `.regular` weight system font of size `14`.
     ///
     /// ## Usage:
     /// - Used for short amount of text if neither the Body or Detail is appropriate.
@@ -196,7 +211,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .footnote)
     }
 
-    /// FINNTypeWebStrippet-Bold with a size of 12 scaled for UIFontTextStyle.caption1
+    /// Scaled font for `.caption1` text style.
+    /// If no font is provided uses `.bold` weight system font of size `12`.
     ///
     /// ## Usage:
     /// - Used for small, bold headlines.
@@ -205,7 +221,8 @@ public class FontBook: NSObject {
         return font.scaledFont(forTextStyle: .caption1)
     }
 
-    /// FINNTypeWebStrippet-Light with a size of 12 scaled for UIFontTextStyle.caption1
+    /// Scaled font for `.caption1` text style.
+    /// If no font is provided uses `.regular` weight system font of size `12`.
     ///
     /// ## Usage:
     /// - Less important information can be shown as detail text, not for long sentences.
