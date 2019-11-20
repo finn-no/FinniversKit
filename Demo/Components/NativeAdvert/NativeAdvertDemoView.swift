@@ -20,7 +20,7 @@ class NativeAdvertDemoView: UIView {
     )
 
     private let contentModel = DemoViewModel(
-        title: "Du har skjært avocadoen feil i alle år!",
+        title: "Du har skjært avocadoen feil i alle år! 50 tegn!",
         mainImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
         iconImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
         sponsoredText: "ANNONSØRINNHOLD"
