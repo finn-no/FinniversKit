@@ -212,14 +212,14 @@ public class Palette: NSObject {
     }
 
     // swiftlint:disable:next identifier_name
-    convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
+    public convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
 
     /// Base initializer, it creates an instance of `UIColor` using an HEX string.
     ///
     /// - Parameter hex: The base HEX string to create the color.
-    private convenience init(hex: String) {
+    public convenience init(hex: String) {
         let noHashString = hex.replacingOccurrences(of: "#", with: "")
         let scanner = Scanner(string: noHashString)
         scanner.charactersToBeSkipped = CharacterSet.symbols

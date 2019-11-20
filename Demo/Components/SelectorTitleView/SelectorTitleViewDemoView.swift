@@ -2,7 +2,12 @@ import FinniversKit
 import Bootstrap
 
 class SelectorTitleViewDemoView: UIView {
-    lazy var selectorTitleView = SelectorTitleView(heading: "Tap to change")
+    lazy var selectorTitleView: SelectorTitleView = {
+        let selectorTitleView = SelectorTitleView(heading: "Tap to change")
+        selectorTitleView.arrowUpImage = UIImage(named: .arrowUpSmall)
+        selectorTitleView.arrowDownImage = UIImage(named: .arrowDownSmall)
+        return selectorTitleView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
