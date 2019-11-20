@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let userInterfaceStyle = UserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: State.currentUserInterfaceStyleKey))
         if let userInterfaceStyle = userInterfaceStyle {
-            FinniversKit.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
+            Bootstrap.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
         } else {
-            FinniversKit.userInterfaceStyleSupport = State.defaultUserInterfaceStyleSupport
+            Bootstrap.userInterfaceStyleSupport = State.defaultUserInterfaceStyleSupport
         }
         window = UIWindow(frame: UIScreen.main.bounds)
         if #available(iOS 13.0, *) {

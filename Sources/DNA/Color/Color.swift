@@ -312,29 +312,3 @@ extension CGColor {
         return UIColor.defaultCellSelectedBackgroundColor.cgColor
     }
 }
-
-// MARK: - Private helper for creating dynamic color
-extension UIColor {
-    private class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        switch FinniversKit.userInterfaceStyleSupport {
-        case .forceDark:
-            return darkModeColor
-        case .forceLight:
-            return defaultColor
-        case .dynamic:
-            if #available(iOS 13.0, *) {
-                #if swift(>=5.1)
-                return UIColor { traitCollection -> UIColor in
-                    switch traitCollection.userInterfaceStyle {
-                    case .dark:
-                        return darkModeColor
-                    default:
-                        return defaultColor
-                    }
-                }
-                #endif
-            }
-            return defaultColor
-        }
-    }
-}
