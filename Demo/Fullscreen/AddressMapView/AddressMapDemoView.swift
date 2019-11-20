@@ -79,12 +79,12 @@ class AddressMapDemoView: UIView, Tweakable {
 // MARK: - AddressMapViewDelegate
 
 extension AddressMapDemoView: AddressMapViewDelegate {
-    func addressMapViewDidSelectCenterButton(_ view: AddressMapView) {
+    func addressMapViewDidSelectPinButton(_ view: AddressMapView) {
         print("addressViewDidSelectCenterMapButton")
         view.makePolygonOverlayVisible()
     }
 
-    func addressMapViewDidSelectViewModeButton(_ view: AddressMapView) {
+    func addressMapViewDidSelectViewModeButton(_ view: AddressMapView, sender: UIView) {
         print("addressViewDidSelectMapTypeButton")
     }
 }

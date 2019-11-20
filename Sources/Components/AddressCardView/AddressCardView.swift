@@ -3,15 +3,27 @@
 //
 
 import UIKit
-import MapKit
 
-protocol AddressCardViewDelegate: AnyObject {
+public protocol AddressCardViewDelegate: AnyObject {
     func addressCardViewDidSelectCopyButton(_ addressCardView: AddressCardView)
     func addressCardViewDidSelectGetDirectionsButton(_ addressCardView: AddressCardView, sender: UIView)
 }
 
-class AddressCardView: UIView {
-    weak var delegate: AddressCardViewDelegate?
+public final class AddressCardView: UIView {
+    public weak var delegate: AddressCardViewDelegate?
+
+    public var model: AddressCardViewModel? {
+        didSet {
+            guard let model = model else { return }
+
+            titleLabel.text = model.title
+            subtitleLabel.text = model.subtitle
+            copyButton.setTitle(model.copyButtonTitle, for: .normal)
+            getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
+        }
+    }
+
+    // MARK: - Private properties
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong)
@@ -40,6 +52,8 @@ class AddressCardView: UIView {
         return button
     }()
 
+    // MARK: - Init
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -49,33 +63,9 @@ class AddressCardView: UIView {
         fatalError()
     }
 
-    var model: AddressViewModel? {
-        didSet {
-            guard let model = model else { return }
+    // MARK: - Setup
 
-            titleLabel.text = model.title
-            subtitleLabel.text = model.subtitle
-            copyButton.setTitle(model.copyButtonTitle, for: .normal)
-            getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
-        }
-    }
-}
-
-extension AddressCardView {
     private func setup() {
-        clipsToBounds = true
-        layer.cornerRadius = 16
-
-        if UIDevice.isIPhone() {
-            layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        }
-
-        layer.masksToBounds = false
-        layer.shadowOpacity = 0.3
-        layer.shadowRadius = 3
-        layer.shadowOffset = .zero
-        layer.shadowColor = UIColor.black.cgColor
-
         backgroundColor = .bgPrimary
 
         let columnStackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
@@ -91,17 +81,27 @@ extension AddressCardView {
         NSLayoutConstraint.activate([
             columnStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing + .mediumSpacing),
             columnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            columnStackView.trailingAnchor.constraint(lessThanOrEqualTo: copyButton.leadingAnchor, constant: -.mediumLargeSpacing),
+            columnStackView.trailingAnchor.constraint(
+                lessThanOrEqualTo: copyButton.leadingAnchor,
+                constant: -.mediumLargeSpacing
+            ),
 
             copyButton.centerYAnchor.constraint(equalTo: columnStackView.centerYAnchor),
             copyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            getDirectionsButton.topAnchor.constraint(equalTo: columnStackView.bottomAnchor, constant: .mediumLargeSpacing + .mediumSpacing),
+            getDirectionsButton.topAnchor.constraint(
+                equalTo: columnStackView.bottomAnchor,
+                constant: .mediumLargeSpacing + .mediumSpacing
+            ),
             getDirectionsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             getDirectionsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            getDirectionsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing + -.mediumSpacing)
+            getDirectionsButton.bottomAnchor.constraint(
+                equalTo: bottomAnchor,
+                constant: -.mediumLargeSpacing + -.mediumSpacing)
             ])
     }
+
+    // MARK: - Actions
 
     @objc private func getDirectionsAction() {
         delegate?.addressCardViewDidSelectGetDirectionsButton(self, sender: getDirectionsButton)

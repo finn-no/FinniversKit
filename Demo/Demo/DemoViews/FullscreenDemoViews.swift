@@ -86,7 +86,10 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .receiptView:
             return DemoViewController<ReceiptViewDemoView>()
         case .addressMapView:
-            return DemoViewController<AddressMapDemoView>(constrainToBottomSafeArea: false)
+            return DemoViewController<AddressMapDemoView>(
+                dismissType: .dismissButton,
+                constrainToBottomSafeArea: false
+            )
         case .favoriteAdsList:
             return DemoViewController<FavoriteAdsListDemoView>(constrainToBottomSafeArea: false)
         case .favoriteFolderActionSheet:

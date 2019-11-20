@@ -6,8 +6,8 @@ import UIKit
 import MapKit
 
 public protocol AddressMapViewDelegate: AnyObject {
-    func addressMapViewDidSelectCenterButton(_ addressMapView: AddressMapView)
-    func addressMapViewDidSelectViewModeButton(_ addressMapView: AddressMapView)
+    func addressMapViewDidSelectPinButton(_ addressMapView: AddressMapView)
+    func addressMapViewDidSelectViewModeButton(_ addressMapView: AddressMapView, sender: UIView)
 }
 
 public class AddressMapView: UIView {
@@ -28,17 +28,17 @@ public class AddressMapView: UIView {
         return view
     }()
 
-    private lazy var mapTypeButton: UIButton = {
+    private lazy var viewModeButton: UIButton = {
         let button = UIButton.mapButton
         button.setImage(UIImage(named: .viewMode).withRenderingMode(.alwaysTemplate), for: .normal)
         button.addTarget(self, action: #selector(handleViewModeButtonTap), for: .touchUpInside)
         return button
     }()
 
-    private lazy var centerMapButton: UIButton = {
+    private lazy var pinButton: UIButton = {
         let button = UIButton.mapButton
         button.setImage(UIImage(named: .pin).withRenderingMode(.alwaysTemplate), for: .normal)
-        button.addTarget(self, action: #selector(handleCenterButtonTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlePinButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -111,15 +111,13 @@ public class AddressMapView: UIView {
     public func changeMapType(_ mapType: MKMapType) {
         mapView.mapType = mapType
     }
-}
 
-// MARK: - Private methods
+    // MARK: - Setup
 
-private extension AddressMapView {
-    func setup() {
+    private func setup() {
         addSubview(mapView)
-        addSubview(mapTypeButton)
-        addSubview(centerMapButton)
+        addSubview(viewModeButton)
+        addSubview(pinButton)
 
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: topAnchor),
@@ -127,27 +125,27 @@ private extension AddressMapView {
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            mapTypeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            mapTypeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
-            mapTypeButton.widthAnchor.constraint(equalToConstant: 46),
-            mapTypeButton.heightAnchor.constraint(equalTo: mapTypeButton.widthAnchor),
+            viewModeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            viewModeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+            viewModeButton.widthAnchor.constraint(equalToConstant: 46),
+            viewModeButton.heightAnchor.constraint(equalTo: viewModeButton.widthAnchor),
 
-            centerMapButton.topAnchor.constraint(equalTo: mapTypeButton.bottomAnchor, constant: .mediumSpacing),
-            centerMapButton.trailingAnchor.constraint(equalTo: mapTypeButton.trailingAnchor),
-            centerMapButton.widthAnchor.constraint(equalTo: mapTypeButton.heightAnchor),
-            centerMapButton.heightAnchor.constraint(equalTo: mapTypeButton.widthAnchor)
+            pinButton.topAnchor.constraint(equalTo: viewModeButton.bottomAnchor, constant: .mediumSpacing),
+            pinButton.trailingAnchor.constraint(equalTo: viewModeButton.trailingAnchor),
+            pinButton.widthAnchor.constraint(equalTo: viewModeButton.heightAnchor),
+            pinButton.heightAnchor.constraint(equalTo: viewModeButton.widthAnchor)
         ])
     }
 
-    @objc func handleCenterButtonTap() {
-        delegate?.addressMapViewDidSelectCenterButton(self)
+    @objc private func handleViewModeButtonTap() {
+        delegate?.addressMapViewDidSelectViewModeButton(self, sender: viewModeButton)
     }
 
-    @objc func handleViewModeButtonTap() {
-        delegate?.addressMapViewDidSelectViewModeButton(self)
+    @objc private func handlePinButtonTap() {
+        delegate?.addressMapViewDidSelectPinButton(self)
     }
 
-    func removeCurrentAnnotationAndShapeOverlays() {
+    private func removeCurrentAnnotationAndShapeOverlays() {
         if let oldAnnotation = annotation {
             mapView.removeAnnotation(oldAnnotation)
         }
