@@ -19,6 +19,10 @@ class ComponentViewTests: XCTestCase {
         }
     }
 
+    func testAddressCardView() {
+        snapshot(.addressCardView)
+    }
+
     func testButton() {
         snapshot(.button)
     }
