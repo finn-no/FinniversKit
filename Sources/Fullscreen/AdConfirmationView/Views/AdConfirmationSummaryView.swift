@@ -67,9 +67,9 @@ private extension AdConfirmationSummaryView {
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.heightAnchor.constraint(equalToConstant: 32),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
         ])
 
         for line in model.orderLines {
@@ -99,12 +99,12 @@ private extension AdConfirmationSummaryView {
         addSubview(totalLabel)
         NSLayoutConstraint.activate([
             priceLabel.topAnchor.constraint(equalTo: seperator.bottomAnchor, constant: .mediumLargeSpacing),
-            priceLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            priceLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumLargeSpacing),
             priceLabel.trailingAnchor.constraint(equalTo: centerXAnchor),
 
             totalLabel.topAnchor.constraint(equalTo: seperator.bottomAnchor, constant: .mediumLargeSpacing),
             totalLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor),
-            totalLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            totalLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }

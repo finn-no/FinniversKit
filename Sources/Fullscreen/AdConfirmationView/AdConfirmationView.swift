@@ -59,16 +59,16 @@ private extension AdConfirmationView {
     func setup() {
         addSubview(completeButton)
         NSLayoutConstraint.activate([
-            completeButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            completeButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            completeButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+            completeButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            completeButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            completeButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
 
         addSubview(scrollView)
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: completeButton.topAnchor)
         ])
 
@@ -116,7 +116,7 @@ private extension AdConfirmationView {
         } else {
             // Disable scrolling since we have no arbitrary sized view to show.
             scrollView.isScrollEnabled = false
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor).isActive = true
+            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         }
     }
 }

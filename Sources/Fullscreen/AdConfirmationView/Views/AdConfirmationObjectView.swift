@@ -57,7 +57,7 @@ private extension AdConfirmationObjectView {
         addSubview(titleLabel)
         addSubview(bodyLabel)
 
-        imageTopAnchorConstraint = imageView.topAnchor.constraint(equalTo: topAnchor, constant: 56)
+        imageTopAnchorConstraint = imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 56)
         imageWidthConstraint = imageView.widthAnchor.constraint(equalToConstant: imageSize)
         imageHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageSize)
 
