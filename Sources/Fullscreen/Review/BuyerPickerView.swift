@@ -15,13 +15,7 @@ public class BuyerPickerView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: BuyerPickerViewDelegate?
-    public var model: BuyerPickerViewModel? {
-        didSet {
-            selectButton.setTitle(model?.selectTitle ?? "", for: .normal)
-            label.text = model?.confirmationTitle ?? ""
-            tableView.reloadData()
-        }
-    }
+    public var model: BuyerPickerViewModel? { didSet { tableView.reloadData() } }
 
     // MARK: - Private properties
 
@@ -43,29 +37,6 @@ public class BuyerPickerView: UIView {
         return tableView
     }()
 
-    private lazy var selectButton: Button = {
-        let button = Button(style: .callToAction)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.isEnabled = false
-        button.addTarget(self, action: #selector(didSelectProfile), for: .touchUpInside)
-        return button
-    }()
-
-    private lazy var label: Label = {
-        let label = Label(style: Label.Style.caption)
-        label.textAlignment = .center
-        label.isEnabled = false
-        return label
-    }()
-
-    private lazy var wrapper: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [selectButton, label])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.spacing = .mediumSpacing
-        return stack
-    }()
-
     // MARK: - Init
 
     public override init(frame: CGRect) {
@@ -82,22 +53,7 @@ public class BuyerPickerView: UIView {
 
     private func setup() {
         addSubview(tableView)
-        addSubview(wrapper)
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leftAnchor.constraint(equalTo: leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: rightAnchor),
-            tableView.bottomAnchor.constraint(equalTo: wrapper.topAnchor),
-            wrapper.leftAnchor.constraint(equalTo: leftAnchor, constant: .mediumLargeSpacing),
-            wrapper.rightAnchor.constraint(equalTo: rightAnchor, constant: -.mediumLargeSpacing),
-            wrapper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing)
-        ])
-    }
-
-    // MARK: - Public methods
-
-    public func setSelectButtonEnabled(_ isEnabled: Bool) {
-        selectButton.isEnabled = isEnabled
+        tableView.fillInSuperview()
     }
 
     // MARK: - Private methods
@@ -132,7 +88,6 @@ extension BuyerPickerView: UITableViewDataSource {
         cell.model = model
         cell.delegate = self
         cell.loadImage()
-
         return cell
     }
 }
@@ -143,31 +98,12 @@ extension BuyerPickerView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeue(BuyerPickerTextHeader.self)
         header.title.text = model?.title
-
         return header
     }
 
-    public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        guard let row = tableView.indexPathForSelectedRow,
-            let cell = tableView.cellForRow(at: row) as? BuyerPickerProfileCell else {
-            return indexPath
-        }
-
-        cell.isSelected = false
-
-        return indexPath
-    }
-
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? BuyerPickerProfileCell,
-            let selectedUser = model?.profiles[indexPath.row] else {
-            return
-        }
-
-        selectButton.setTitle("\(model?.selectTitle ?? "") \(selectedUser.name)", for: .normal)
-        selectButton.isEnabled = true
-        label.isEnabled = true
-        cell.isSelected = true
+        guard let selectedUser = model?.profiles[indexPath.row] else { return }
+        delegate?.buyerPickerView(self, didSelect: selectedUser)
     }
 }
 

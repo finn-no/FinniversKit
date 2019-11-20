@@ -31,12 +31,10 @@ public class BuyerPickerDemoView: UIView {
 
 extension BuyerPickerDemoView: BuyerPickerViewDelegate {
     public func buyerPickerView(_ buyerPickerView: BuyerPickerView, didSelect profile: BuyerPickerProfileModel) {
-        LoadingView.show()
-        buyerPickerView.setSelectButtonEnabled(false)
+        LoadingView.show(afterDelay: 0)
         print("Did select: \(profile.name) for review")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             LoadingView.hide()
-            buyerPickerView.setSelectButtonEnabled(true)
         })
     }
 

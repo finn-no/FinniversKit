@@ -11,7 +11,6 @@ protocol BuyerPickerCellDelegate: AnyObject {
 
 class BuyerPickerProfileCell: UITableViewCell {
     static let profileImageSize: CGFloat = 44
-    static let radioButtonSize: CGFloat = 26
 
     lazy var profileImage: RoundedImageView = {
         let image = RoundedImageView()
@@ -32,12 +31,6 @@ class BuyerPickerProfileCell: UITableViewCell {
         return view
     }()
 
-    lazy var radioButton: AnimatedRadioButtonView = {
-        let radioButton = AnimatedRadioButtonView(frame: .zero)
-        radioButton.translatesAutoresizingMaskIntoConstraints = false
-        return radioButton
-    }()
-
     var model: BuyerPickerProfileModel? {
         didSet {
             name.text = model?.name ?? ""
@@ -48,8 +41,13 @@ class BuyerPickerProfileCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
 
-        let profileStack = UIStackView(arrangedSubviews: [radioButton, profileImage, name])
+    private func setup() {
+        accessoryType = .disclosureIndicator
+
+        let profileStack = UIStackView(arrangedSubviews: [profileImage, name])
         profileStack.alignment = .center
         profileStack.spacing = .mediumSpacing
         profileStack.translatesAutoresizingMaskIntoConstraints = false
@@ -70,15 +68,9 @@ class BuyerPickerProfileCell: UITableViewCell {
             hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
             hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
             hairlineView.heightAnchor.constraint(equalToConstant: 2)
-            ])
+        ])
 
         selectionStyle = .none
-    }
-
-    override var isSelected: Bool {
-        didSet {
-            radioButton.animateSelection(selected: isSelected)
-        }
     }
 
     override func prepareForReuse() {
