@@ -132,4 +132,8 @@ class FullscreenViewTests: XCTestCase {
     func testSettingDetails() {
         snapshot(.settingDetails)
     }
+
+    func testNewYearsView() {
+        snapshot(.newYearsView)
+    }
 }
