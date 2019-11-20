@@ -27,8 +27,8 @@ public final class AddressCardView: UIView {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong)
-        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         return label
     }()
 
@@ -68,29 +68,31 @@ public final class AddressCardView: UIView {
     private func setup() {
         backgroundColor = .bgPrimary
 
-        let columnStackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
-        columnStackView.translatesAutoresizingMaskIntoConstraints = false
-        columnStackView.axis = .vertical
-        columnStackView.distribution = .equalCentering
-        columnStackView.spacing = .smallSpacing
-
-        addSubview(columnStackView)
+        addSubview(titleLabel)
+        addSubview(subtitleLabel)
         addSubview(copyButton)
         addSubview(getDirectionsButton)
 
         NSLayoutConstraint.activate([
-            columnStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing + .mediumSpacing),
-            columnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            columnStackView.trailingAnchor.constraint(
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(
                 lessThanOrEqualTo: copyButton.leadingAnchor,
                 constant: -.mediumLargeSpacing
             ),
 
-            copyButton.centerYAnchor.constraint(equalTo: columnStackView.centerYAnchor),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
+            subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            subtitleLabel.trailingAnchor.constraint(
+                lessThanOrEqualTo: copyButton.leadingAnchor,
+                constant: -.mediumLargeSpacing
+            ),
+
+            copyButton.centerYAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .verySmallSpacing),
             copyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
             getDirectionsButton.topAnchor.constraint(
-                equalTo: columnStackView.bottomAnchor,
+                equalTo: subtitleLabel.bottomAnchor,
                 constant: .mediumLargeSpacing + .mediumSpacing
             ),
             getDirectionsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
@@ -98,7 +100,7 @@ public final class AddressCardView: UIView {
             getDirectionsButton.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
                 constant: -.mediumLargeSpacing + -.mediumSpacing)
-            ])
+        ])
     }
 
     // MARK: - Actions
