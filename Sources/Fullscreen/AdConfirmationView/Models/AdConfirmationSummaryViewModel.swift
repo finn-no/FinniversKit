@@ -7,4 +7,5 @@ public protocol AdConfirmationSummaryViewModel {
     var orderLines: [String] { get set }
     var priceLabel: String { get set }
     var priceValue: String { get set }
+    var receiptInfo: String? { get set }
 }

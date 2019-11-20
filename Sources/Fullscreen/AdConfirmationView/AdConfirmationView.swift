@@ -39,7 +39,7 @@ public class AdConfirmationView: UIView {
         didSet {
             confirmationObjectView.model = model?.objectViewModel
             completeButton.buttonTitle = model?.completeButtonText
-            receiptInfoLabel.text = model?.receiptInfoLabel
+            receiptInfoLabel.text = model?.summaryViewModel?.receiptInfo
 
             setupSummaryView()
         }
