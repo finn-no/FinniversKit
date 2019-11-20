@@ -4,19 +4,13 @@
 
 import UIKit
 
-class SettingsViewSectionHeaderView: UITableViewHeaderFooterView {
+class SettingsSectionHeaderView: UITableViewHeaderFooterView {
+
     private lazy var titleLabel: Label = {
-        let label = Label(style: .detailStrong)
+        let label = Label(style: .detailStrong, withAutoLayout: true)
         label.textColor = .textSecondary
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    public var title: String? {
-        didSet {
-            titleLabel.text = title?.uppercased()
-        }
-    }
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -26,15 +20,16 @@ class SettingsViewSectionHeaderView: UITableViewHeaderFooterView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-private extension SettingsViewSectionHeaderView {
-    func setup() {
+    func configure(with text: String?) {
+        titleLabel.text = text
+    }
+
+    private func setup() {
         contentView.addSubview(titleLabel)
+
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
         ])
     }

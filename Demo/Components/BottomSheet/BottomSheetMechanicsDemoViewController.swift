@@ -283,6 +283,10 @@ extension BottomSheetMechanicsDemoViewController: BottomSheetDelegate {
         bottomSheet.present(alertController, animated: true)
     }
 
+    func bottomSheet(_ bottomSheet: BottomSheet, willDismissBy action: BottomSheet.DismissAction) {
+        print("Bottom sheet will dismiss")
+    }
+
     func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction) {
         // BottomSheet dismissed.
     }
