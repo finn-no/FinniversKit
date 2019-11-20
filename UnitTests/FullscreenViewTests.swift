@@ -85,10 +85,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.loginEntryView)
     }
 
-    func testReceiptView() {
-        snapshot(.receiptView)
-    }
-
     func testAddressView() {
         snapshot(.addressView)
     }

@@ -533,9 +533,6 @@
 		F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */; };
 		F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2772F4322803B310002D21F /* ReviewButtonView.swift */; };
 		F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288CB3D233CD53400C1EE8A /* UserAdsRatingView.swift */; };
-		F2B1A19222D503DC00713FC2 /* ReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1A19122D503DC00713FC2 /* ReceiptView.swift */; };
-		F2B1A19722D5054600713FC2 /* ReceiptViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1A19622D5054600713FC2 /* ReceiptViewDemoView.swift */; };
-		F2B1A19922D5056500713FC2 /* ReceiptViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1A19822D5056500713FC2 /* ReceiptViewDefaultData.swift */; };
 		F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */; };
 		F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */; };
 		F2BE6BEC23683E280085A05A /* AdConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE6BEB23683E280085A05A /* AdConfirmationView.swift */; };
@@ -554,7 +551,6 @@
 		F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E95F22CB669A00CED7E0 /* QuestionnaireView+Style.swift */; };
 		F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E96222CB688800CED7E0 /* QuestionnaireDemoView.swift */; };
 		F2C3E96522CB69B100CED7E0 /* QuestionnaireDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C3E96422CB69B100CED7E0 /* QuestionnaireDefaultData.swift */; };
-		F2CBE8AC23277557005FAD14 /* ReceiptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1A19322D503E700713FC2 /* ReceiptViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1129,10 +1125,6 @@
 		F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewSeeAllAdsCell.swift; sourceTree = "<group>"; };
 		F2772F4322803B310002D21F /* ReviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonView.swift; sourceTree = "<group>"; };
 		F288CB3D233CD53400C1EE8A /* UserAdsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsRatingView.swift; sourceTree = "<group>"; };
-		F2B1A19122D503DC00713FC2 /* ReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
-		F2B1A19322D503E700713FC2 /* ReceiptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewModel.swift; sourceTree = "<group>"; };
-		F2B1A19622D5054600713FC2 /* ReceiptViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewDemoView.swift; sourceTree = "<group>"; };
-		F2B1A19822D5056500713FC2 /* ReceiptViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewDefaultData.swift; sourceTree = "<group>"; };
 		F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonViewDemoView.swift; sourceTree = "<group>"; };
 		F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonControl.swift; sourceTree = "<group>"; };
 		F2BE6BEB23683E280085A05A /* AdConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConfirmationView.swift; sourceTree = "<group>"; };
@@ -2054,7 +2046,6 @@
 				9BC33DE422D7219F007CCD65 /* LoginEntryView */,
 				8908E83422BD0C8700ED671C /* MessageForm */,
 				44D9124A2077AC8A00486848 /* Popup */,
-				F2B1A19022D503BE00713FC2 /* Receipt */,
 				44587013213FA344009187BE /* Register */,
 				43BACE6721117CF90052114C /* Review */,
 				91846C4822E735B60001410F /* SearchResultMapView */,
@@ -3143,7 +3134,6 @@
 			isa = PBXGroup;
 			children = (
 				F2BE6C0B236C29F80085A05A /* CheckmarkTitleView */,
-				443795FA2360443700D05917 /* SelectorTitleView */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
@@ -3364,7 +3354,6 @@
 				8908E85822C0E5F000ED671C /* MessageForm */,
 				CFEF962D235F3B8E00B6AA7B /* Popovers */,
 				CF8F023321DCC7B9004C4042 /* Popup */,
-				F2B1A19522D5051000713FC2 /* Receipt */,
 				CF8F023021DCC793004C4042 /* Register */,
 				CF8F023421DCC7D2004C4042 /* Review */,
 				91846C4B22E736750001410F /* SearchResultMapView */,
@@ -3971,24 +3960,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		F2B1A19022D503BE00713FC2 /* Receipt */ = {
-			isa = PBXGroup;
-			children = (
-				F2B1A19122D503DC00713FC2 /* ReceiptView.swift */,
-				F2B1A19322D503E700713FC2 /* ReceiptViewModel.swift */,
-			);
-			path = Receipt;
-			sourceTree = "<group>";
-		};
-		F2B1A19522D5051000713FC2 /* Receipt */ = {
-			isa = PBXGroup;
-			children = (
-				F2B1A19622D5054600713FC2 /* ReceiptViewDemoView.swift */,
-				F2B1A19822D5056500713FC2 /* ReceiptViewDefaultData.swift */,
-			);
-			path = Receipt;
-			sourceTree = "<group>";
-		};
 		F2BE212E22819ED8004640F3 /* Control */ = {
 			isa = PBXGroup;
 			children = (
@@ -4306,7 +4277,6 @@
 				44AEFC2622E722FC00D3C307 /* IconTitleCellDemoView.swift in Sources */,
 				44B94FE922E0AB820078A23C /* TweakingOption.swift in Sources */,
 				F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */,
-				F2B1A19722D5054600713FC2 /* ReceiptViewDemoView.swift in Sources */,
 				4412FDCD20A433550037A2FC /* SplitViewController.swift in Sources */,
 				441FE455209A2F3A00B04EF1 /* NotificationsListViewDemoViewHelpers.swift in Sources */,
 				4408A6A82027AC71008C0BD9 /* ColorDemoView.swift in Sources */,
@@ -4360,11 +4330,9 @@
 				CF8F024821DE3813004C4042 /* RefreshControlDemo.swift in Sources */,
 				4408A6AE2027AC7F008C0BD9 /* SpacingDemoView.swift in Sources */,
 				F2BE6C0D236C49150085A05A /* CheckmarkTitleViewDemoView.swift in Sources */,
-				DAC7DCB0215386E7004602A3 /* ConsentToggleViewDemoView.swift in Sources */,
 				CF39ADFD22034F70002FC43E /* InfoboxDemoView.swift in Sources */,
 				45EDD62C20A1DEC5008F4503 /* ConsentTransparencyInfoDemoView.swift in Sources */,
 				441FE43A209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift in Sources */,
-				F2B1A19922D5056500713FC2 /* ReceiptViewDefaultData.swift in Sources */,
 				441FE43F209A254900B04EF1 /* MarketsGridViewDemoViewHelpers.swift in Sources */,
 				CF164D2D23101F6B00250822 /* FavoriteAdActionSheetDemoDelegate.swift in Sources */,
 				14C6F7D9212324D600A7230C /* FavoritesListViewDemoView.swift in Sources */,
@@ -4722,7 +4690,6 @@
 				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
 				DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */,
 				8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */,
-				F2CBE8AC23277557005FAD14 /* ReceiptViewModel.swift in Sources */,
 				9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */,
 				CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */,
 				DAD6EB2B2369916100968497 /* SettingsSectionHeaderView.swift in Sources */,
@@ -4748,7 +4715,6 @@
 				44A557A522E720A3001667AE /* IconTitleTableViewCell.swift in Sources */,
 				9BEB2881231D489F00D28BAD /* LoanApplyView.swift in Sources */,
 				CF7C460522257A8A001FB92C /* EarthHourSignUpView.swift in Sources */,
-				F2B1A19222D503DC00713FC2 /* ReceiptView.swift in Sources */,
 				441FE42D209A24E500B04EF1 /* MarketsGridView.swift in Sources */,
 				45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */,
 				444246022137D60400D42AB8 /* FavoriteFoldersListView.swift in Sources */,
