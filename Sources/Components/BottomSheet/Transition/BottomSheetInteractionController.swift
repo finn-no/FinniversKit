@@ -4,6 +4,10 @@
 
 import UIKit
 
+protocol BottomSheetInteractionControllerDelegate: AnyObject {
+    func bottomSheetInteractionControllerWillCancelPresentationTransition(_ interactionController: BottomSheetInteractionController)
+}
+
 /**
  This object is controlling the animation of the transition using the animator object
 
@@ -17,6 +21,8 @@ class BottomSheetInteractionController: NSObject, UIViewControllerInteractiveTra
     var initialTransitionVelocity: CGPoint = .zero
     var stateController: BottomSheetStateController?
     var dimView: UIView?
+
+    weak var delegate: BottomSheetInteractionControllerDelegate?
 
     private var constraint: NSLayoutConstraint?
     private var transitionContext: UIViewControllerContextTransitioning?
@@ -92,8 +98,11 @@ extension BottomSheetInteractionController: BottomSheetGestureControllerDelegate
         animationController.initialVelocity = -controller.velocity
         animationController.targetPosition = stateController.targetPosition
         switch stateController.state {
-        case .dismissed: animationController.cancelTransition(using: transitionContext)
-        default: animationController.continueTransition()
+        case .dismissed:
+            delegate?.bottomSheetInteractionControllerWillCancelPresentationTransition(self)
+            animationController.cancelTransition(using: transitionContext)
+        default:
+            animationController.continueTransition()
         }
     }
 }
