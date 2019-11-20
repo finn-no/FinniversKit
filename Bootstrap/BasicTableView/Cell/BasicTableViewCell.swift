@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Public properties

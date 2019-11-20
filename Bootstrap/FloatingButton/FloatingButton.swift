@@ -1,5 +1,5 @@
 //
-//  Copyright © 2018 FINN.no. All rights reserved.
+//  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
 public final class FloatingButton: UIButton {

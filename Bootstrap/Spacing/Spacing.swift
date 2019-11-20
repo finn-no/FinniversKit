@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 public extension CGFloat {
     /// Separation of 2 points.
     static let verySmallSpacing = Spacing.verySmallSpacing()

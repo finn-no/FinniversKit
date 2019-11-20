@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 extension UIEdgeInsets {
     /// Helper initializer to reduce the amount of values required to create a UIEdgeInsets, so you can do
     /// for example UIEdgeInsets(leading: 20).

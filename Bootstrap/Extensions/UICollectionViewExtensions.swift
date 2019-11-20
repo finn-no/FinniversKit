@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 extension UICollectionReusableView: Identifiable {}
 
 public extension UICollectionView {

@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 public class ShadowView: UIView {
     public init() {
         super.init(frame: .zero)

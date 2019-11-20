@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 public class FontBook: NSObject {
     public static let shared = FontBook()
 

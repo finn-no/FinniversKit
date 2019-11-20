@@ -1,3 +1,7 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
 extension UITableViewCell: Identifiable {}
 
 extension UITableViewHeaderFooterView: Identifiable {}
