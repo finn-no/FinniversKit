@@ -15,6 +15,7 @@ public protocol BottomSheetDelegate: AnyObject {
     /// from happening.
     func bottomSheetDidCancelDismiss(_ bottomSheet: BottomSheet)
 
+    func bottomSheet(_ bottomSheet: BottomSheet, willDismissBy action: BottomSheet.DismissAction)
     func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction)
 }
 
@@ -191,6 +192,10 @@ extension BottomSheet: BottomSheetPresentationControllerDelegate {
 
     func bottomSheetPresentationControllerDidCancelDismiss(_ presentationController: BottomSheetPresentationController) {
         delegate?.bottomSheetDidCancelDismiss(self)
+    }
+
+    func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, willDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction) {
+        delegate?.bottomSheet(self, willDismissBy: action)
     }
 
     func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction) {
