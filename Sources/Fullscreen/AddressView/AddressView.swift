@@ -112,6 +112,14 @@ public class AddressView: UIView {
             }
             mapTypeSegmentControl.selectedSegmentIndex = model.selectedMapType
             addressCardView.model = model
+
+            if #available(iOS 13.0, *) {
+                if let zoomRange = model.mapZoomRange?.toCameraZoomRange() {
+                    mapView.setCameraZoomRange(zoomRange, animated: false)
+                } else {
+                    mapView.setCameraZoomRange(MKMapView.CameraZoomRange(), animated: false)
+                }
+            }
         }
     }
 

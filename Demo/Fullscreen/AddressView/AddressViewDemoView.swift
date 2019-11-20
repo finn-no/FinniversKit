@@ -20,6 +20,11 @@ private enum MapTypes: Int, CaseIterable {
 }
 
 private struct AddressViewData: AddressViewModel {
+    @available(iOS 13.0, *)
+    var mapZoomRange: MapZoomRange? {
+        return nil
+    }
+
     var mapTypes: [String] {
         return MapTypes.allCases.map { $0.value }
     }
