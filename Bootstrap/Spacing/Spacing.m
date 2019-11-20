@@ -1,5 +1,4 @@
 @import UIKit;
-
 #import "Spacing.h"
 
 @implementation Spacing

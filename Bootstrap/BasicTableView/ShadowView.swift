@@ -2,6 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import UIKit
+
 public class ShadowView: UIView {
     public init() {
         super.init(frame: .zero)

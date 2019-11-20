@@ -1,3 +1,9 @@
+//
+//  Copyright © FINN.no AS, Inc. All rights reserved.
+//
+
+import UIKit
+
 public extension UIView {
     /// Layouts the current view to fit it's superview.
     ///

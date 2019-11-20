@@ -2,6 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import UIKit
+
 open class ShadowScrollView: UIView, UIScrollViewDelegate {
     private(set) lazy var topShadowView = ShadowView()
 

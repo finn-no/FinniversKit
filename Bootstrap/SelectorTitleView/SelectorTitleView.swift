@@ -2,6 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import UIKit
+
 public protocol SelectorTitleViewDelegate: AnyObject {
     func selectorTitleViewDidSelectButton(_ view: SelectorTitleView)
 }

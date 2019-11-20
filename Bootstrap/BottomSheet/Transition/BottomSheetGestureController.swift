@@ -1,6 +1,8 @@
 //
-//  Copyright © FINN.no AS, Inc. All rights reserved.
+//  Copyright © 2018 FINN.no. All rights reserved.
 //
+
+import UIKit
 
 protocol BottomSheetGestureControllerDelegate: AnyObject {
     // Expects to get the current position of the bottom sheet

@@ -1,6 +1,8 @@
 //
-//  Copyright © 2018 FINN AS. All rights reserved.
+//  Copyright © 2018 FINN.no. All rights reserved.
 //
+
+import UIKit
 
 class BottomSheetStateController {
 

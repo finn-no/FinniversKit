@@ -1,6 +1,8 @@
 //
-//  Copyright © FINN.no AS, Inc. All rights reserved.
+//  Copyright © 2018 FINN.no. All rights reserved.
 //
+
+import UIKit
 
 public protocol BottomSheetDelegate: AnyObject {
     /// Called by the BottomSheet *throughout* actions intended to dismiss the BottomSheet.

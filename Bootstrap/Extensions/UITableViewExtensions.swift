@@ -2,6 +2,8 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
+import UIKit
+
 extension UITableViewCell: Identifiable {}
 
 extension UITableViewHeaderFooterView: Identifiable {}
