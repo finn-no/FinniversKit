@@ -105,11 +105,7 @@ public final class NativeAdvertView: UIView {
     //   - it ignores any potential targetHeight.
     //   - it ignores both horizontal and vertical fitting priority.
     public override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
-        func clamp(width: CGFloat) -> CGFloat {
-            max(0, min(NativeAdvertView.containerMaxWidth, width))
-        }
-
-        let width = clamp(width: targetSize.width)
+        let width = max(0, min(NativeAdvertView.containerMaxWidth, targetSize.width))
 
         var height = NativeAdvertView.containerMargin * 2
         height +=  NativeAdvertView.imageHeight(forWidth: width)
@@ -234,7 +230,7 @@ extension NativeAdvertView {
     }
 
     private static func labelHeight(forWidth width: CGFloat, font: UIFont, text: String) -> CGFloat {
-        let unavailableSpace = sponsoredByLabelInset + sizeOfLogoWithPadding
+        let unavailableSpace = sponsoredByLabelInset + sizeOfLogoWithPadding // Left inset and size of logo with padding
         return text.height(withConstrainedWidth: width - unavailableSpace, font: font)
     }
 
