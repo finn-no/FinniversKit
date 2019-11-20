@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Bootstrap
 
 private struct ViewModel: BasicTableViewCellViewModel {
     var title: String

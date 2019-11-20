@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Bootstrap
 
 struct KlimabroletData {
     static let campaignURL = URL(string: "https://klimabrolet.no")

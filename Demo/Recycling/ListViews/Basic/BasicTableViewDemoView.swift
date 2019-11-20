@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Bootstrap
 
 public class BasicTableViewDemoView: UIView {
     lazy var items: [BasicTableViewItem] = {

@@ -4,109 +4,6 @@
 
 import UIKit
 
-// MARK: - Semantic colors, dark mode compatible
-@objc extension UIColor {
-    public class var bgPrimary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: UIColor(hex: "#1B1B24"))
-    }
-
-    public class var bgSecondary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .ice, darkModeColor: .darkIce)
-    }
-
-    public class var bgTertiary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
-    }
-
-    public class var bgBottomSheet: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .darkIce)
-    }
-
-    public class var bgAlert: UIColor {
-        return .banana
-    }
-
-    public class var bgSuccess: UIColor {
-        return .mint
-    }
-
-    public class var bgCritical: UIColor {
-        return .salmon
-    }
-
-    public class var btnPrimary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#006DFB"))
-    }
-
-    public class var btnDisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
-    }
-
-    public class var btnCritical: UIColor {
-        return .cherry
-    }
-
-    public class var textPrimary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: .milk)
-    }
-
-    public class var textSecondary: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .stone, darkModeColor: UIColor(hex: "#828699"))
-    }
-
-    public class var textTertiary: UIColor {
-        return .milk
-    }
-
-    public class var textAction: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
-    }
-
-    public class var textDisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
-    }
-
-    public class var textCritical: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .cherry, darkModeColor: .watermelon)
-    }
-
-    public class var accentSecondaryBlue: UIColor {
-        return .secondaryBlue
-    }
-
-    public class var accentPea: UIColor {
-        return .pea
-    }
-
-    public class var accentToothpaste: UIColor {
-        return .toothPaste
-    }
-
-    public class var textCTADisabled: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: UIColor(hex: "#828699"))
-    }
-
-    public class var textToast: UIColor {
-        return .licorice
-    }
-
-    public class var tableViewSeparator: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
-    }
-
-    public class var decorationSubtle: UIColor {
-        return .btnDisabled
-    }
-
-    public class var iconPrimary: UIColor {
-        return .textPrimary
-    }
-
-    public class var iconSecondary: UIColor {
-        return .textTertiary
-    }
-}
-
 // MARK: - FINN UIColors
 @objc extension UIColor {
     public class var ice: UIColor {
@@ -187,6 +84,18 @@ import UIKit
 
     public class var darkIce: UIColor {
         return UIColor(hex: "#262633")
+    }
+
+    public class var accentSecondaryBlue: UIColor {
+        return .secondaryBlue
+    }
+
+    public class var accentPea: UIColor {
+        return .pea
+    }
+
+    public class var accentToothpaste: UIColor {
+        return .toothPaste
     }
 
     // swiftlint:disable:next identifier_name
@@ -398,10 +307,6 @@ extension CGColor {
     public class var flatButtonHighlightedTextColor: UIColor {
         return textAction.withAlphaComponent(0.8)
     }
-
-    public class var dimmingColor: UIColor {
-        return UIColor.black.withAlphaComponent(0.4) //DARK
-    }
 }
 
 // MARK: - Highlighted buttons CGColors
@@ -424,15 +329,6 @@ extension CGColor {
 
     public class var flatButtonHighlightedTextColor: CGColor {
         return UIColor.flatButtonHighlightedTextColor.cgColor
-    }
-}
-
-// MARK: - Cell UIColors
-
-@objc extension UIColor {
-    public class var defaultCellSelectedBackgroundColor: UIColor {
-        let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)!
-        return dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.4))
     }
 }
 

@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Bootstrap
 
 private struct DemoViewModel: SettingDetailsViewModel {
     var icon: UIImage {

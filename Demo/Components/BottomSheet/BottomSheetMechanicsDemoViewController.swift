@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Bootstrap
 
 protocol RootViewControllerDelegate: AnyObject {
     func rootViewControllerDidPressExpandButton(_ controller: RootViewController)

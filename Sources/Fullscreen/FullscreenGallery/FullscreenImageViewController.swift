@@ -2,7 +2,6 @@
 // Copyright (c) 2019 FINN AS. All rights reserved.
 //
 
-import UIKit
 import Bootstrap
 
 protocol FullscreenImageViewControllerDataSource: AnyObject {

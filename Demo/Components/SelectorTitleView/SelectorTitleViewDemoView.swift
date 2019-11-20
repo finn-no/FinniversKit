@@ -1,4 +1,5 @@
 import FinniversKit
+import Bootstrap
 
 class SelectorTitleViewDemoView: UIView {
     lazy var selectorTitleView = SelectorTitleView(heading: "Tap to change")

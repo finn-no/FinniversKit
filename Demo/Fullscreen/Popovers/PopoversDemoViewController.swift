@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Bootstrap
 
 final class PopoversDemoViewController: BaseDemoViewController<UIView> {
     private let demoViews: [FullscreenDemoViews] = [

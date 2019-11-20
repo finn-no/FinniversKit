@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Bootstrap
 
 public class FloatingButtonDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = {

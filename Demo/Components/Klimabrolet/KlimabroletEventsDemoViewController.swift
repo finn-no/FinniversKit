@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Bootstrap
 
 protocol KlimabroletEventsDemoViewControllerDelegate: AnyObject {
     func eventList(_ eventListViewController: KlimabroletEventsDemoViewController, didSelect event: KlimabroletData.Event)

@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Bootstrap
 
 public class ScrollViewController: UIViewController, UIScrollViewDelegate {
     private(set) lazy var topShadowView = ShadowView()

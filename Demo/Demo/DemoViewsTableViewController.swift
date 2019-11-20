@@ -3,6 +3,7 @@
 //
 
 import FinniversKit
+import Bootstrap
 
 class DemoViewsTableViewController: UITableViewController {
     private lazy var selectorTitleView: SelectorTitleView = {
