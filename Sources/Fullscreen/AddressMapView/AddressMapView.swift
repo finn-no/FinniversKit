@@ -5,14 +5,21 @@
 import UIKit
 import MapKit
 
-public protocol AddressViewDelegate: AnyObject {
-    func addressViewDidSelectCopyButton(_ addressView: AddressView)
-    func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView, sender: UIView)
-    func addressViewDidSelectCenterMapButton(_ addressView: AddressView)
-    func addressViewDidSelectMapTypeButton(_ addressView: AddressView)
+public protocol AddressMapViewDelegate: AnyObject {
+    func addressMapViewDidSelectCenterButton(_ addressMapView: AddressMapView)
+    func addressMapViewDidSelectViewModeButton(_ addressMapView: AddressMapView)
 }
 
-public class AddressView: UIView {
+public class AddressMapView: UIView {
+    public weak var delegate: AddressMapViewDelegate?
+
+    // MARK: - Private properties
+
+    private var tileOverlay: MKTileOverlay?
+    private var circle: MKCircle?
+    private var annotation: MKAnnotation?
+    private var polygons = [MKPolygon]()
+
     private lazy var mapView: MKMapView = {
         let view = MKMapView(withAutoLayout: true)
         view.isRotateEnabled = false
@@ -21,25 +28,21 @@ public class AddressView: UIView {
         return view
     }()
 
-    private lazy var addressCardView: AddressCardView = {
-        let view = AddressCardView(withAutoLayout: true)
-        view.delegate = self
-        return view
-    }()
-
     private lazy var mapTypeButton: UIButton = {
         let button = UIButton.mapButton
         button.setImage(UIImage(named: .viewMode).withRenderingMode(.alwaysTemplate), for: .normal)
-        button.addTarget(self, action: #selector(handleMapTypeButtonTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleViewModeButtonTap), for: .touchUpInside)
         return button
     }()
 
     private lazy var centerMapButton: UIButton = {
         let button = UIButton.mapButton
         button.setImage(UIImage(named: .pin).withRenderingMode(.alwaysTemplate), for: .normal)
-        button.addTarget(self, action: #selector(handleCenterMapButtonTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleCenterButtonTap), for: .touchUpInside)
         return button
     }()
+
+    // MARK: - Init
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,22 +53,13 @@ public class AddressView: UIView {
         fatalError()
     }
 
-    public weak var delegate: AddressViewDelegate?
-
-    public var model: AddressViewModel? {
-        didSet {
-            guard let model = model else { return }
-            addressCardView.model = model
-        }
-    }
+    // MARK: - Public API
 
     public func centerMap(location: CLLocationCoordinate2D, regionDistance: Double, animated: Bool) {
         let meters: CLLocationDistance = regionDistance
         let region = MKCoordinateRegion(center: location, latitudinalMeters: meters, longitudinalMeters: meters)
         mapView.setRegion(region, animated: animated)
     }
-
-    private var tileOverlay: MKTileOverlay?
 
     public func configureTileOverlay(_ tileOverlay: MKTileOverlay) {
         if let oldOverlay = self.tileOverlay {
@@ -75,16 +69,12 @@ public class AddressView: UIView {
         self.tileOverlay = tileOverlay
     }
 
-    private var circle: MKCircle?
-
     public func configureRadiusArea(_ radius: Double, location: CLLocationCoordinate2D) {
         removeCurrentAnnotationAndShapeOverlays()
         let newCircle = MKCircle(center: location, radius: radius)
         mapView.addOverlay(newCircle)
         circle = newCircle
     }
-
-    private var annotation: MKAnnotation?
 
     public func configureAnnotation(title: String, location: CLLocationCoordinate2D) {
         removeCurrentAnnotationAndShapeOverlays()
@@ -93,18 +83,18 @@ public class AddressView: UIView {
         annotation = newAnnotation
     }
 
-    private var polygons = [MKPolygon]()
-
     public func makePolygonOverlayVisible() {
         guard let firstPolygon = polygons.first else {
             return
         }
+
         let mapRect = polygons.dropFirst().reduce(firstPolygon.boundingMapRect, { (mapRect, polygon) -> MKMapRect in
             return polygon.boundingMapRect.union(mapRect)
         })
-
         let bottomInset = UIDevice.isIPad() ? 16 : 16 + .mediumLargeSpacing
-        mapView.setVisibleMapRect(mapRect, edgePadding: UIEdgeInsets(top: 16, left: 16, bottom: bottomInset, right: 16), animated: false)
+        let edgePadding = UIEdgeInsets(top: 16, left: 16, bottom: bottomInset, right: 16)
+
+        mapView.setVisibleMapRect(mapRect, edgePadding: edgePadding, animated: false)
     }
 
     public func configurePolygons(_ polygonPoints: [[CLLocationCoordinate2D]]) {
@@ -125,10 +115,9 @@ public class AddressView: UIView {
 
 // MARK: - Private methods
 
-private extension AddressView {
+private extension AddressMapView {
     func setup() {
         addSubview(mapView)
-        addSubview(addressCardView)
         addSubview(mapTypeButton)
         addSubview(centerMapButton)
 
@@ -136,6 +125,7 @@ private extension AddressView {
             mapView.topAnchor.constraint(equalTo: topAnchor),
             mapView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             mapTypeButton.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
             mapTypeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
@@ -147,57 +137,33 @@ private extension AddressView {
             centerMapButton.widthAnchor.constraint(equalTo: mapTypeButton.heightAnchor),
             centerMapButton.heightAnchor.constraint(equalTo: mapTypeButton.widthAnchor)
         ])
-
-        if UIDevice.isIPad() {
-            NSLayoutConstraint.activate([
-                mapView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-                addressCardView.widthAnchor.constraint(equalToConstant: 350),
-                addressCardView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-                addressCardView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing),
-                ])
-        } else {
-            NSLayoutConstraint.activate([
-                mapView.bottomAnchor.constraint(equalTo: addressCardView.topAnchor, constant: .mediumLargeSpacing),
-
-                addressCardView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                addressCardView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                addressCardView.bottomAnchor.constraint(equalTo: bottomAnchor)
-                ])
-        }
     }
 
-    @objc func handleCenterMapButtonTap() {
-        delegate?.addressViewDidSelectCenterMapButton(self)
+    @objc func handleCenterButtonTap() {
+        delegate?.addressMapViewDidSelectCenterButton(self)
     }
 
-    @objc func handleMapTypeButtonTap() {
-        delegate?.addressViewDidSelectMapTypeButton(self)
+    @objc func handleViewModeButtonTap() {
+        delegate?.addressMapViewDidSelectViewModeButton(self)
     }
 
     func removeCurrentAnnotationAndShapeOverlays() {
         if let oldAnnotation = annotation {
             mapView.removeAnnotation(oldAnnotation)
         }
+
         if let oldCircle = circle {
             mapView.removeOverlay(oldCircle)
         }
+
         polygons.forEach({ mapView.removeOverlay($0) })
         polygons.removeAll()
     }
 }
 
-extension AddressView: AddressCardViewDelegate {
-    func addressCardViewDidSelectCopyButton(_ addressCardView: AddressCardView) {
-        delegate?.addressViewDidSelectCopyButton(self)
-    }
+// MARK: - MKMapViewDelegate
 
-    func addressCardViewDidSelectGetDirectionsButton(_ addressCardView: AddressCardView, sender: UIView) {
-        delegate?.addressViewDidSelectGetDirectionsButton(self, sender: sender)
-    }
-}
-
-extension AddressView: MKMapViewDelegate {
+extension AddressMapView: MKMapViewDelegate {
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKCircle {
             let circle = MKCircleRenderer(overlay: overlay)
@@ -218,6 +184,8 @@ extension AddressView: MKMapViewDelegate {
         }
     }
 }
+
+// MARK: - Private types
 
 private class AddressAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D

@@ -5,80 +5,70 @@
 import FinniversKit
 import MapKit
 
-private struct AddressViewData: AddressViewModel {
-    var title: String
-    var subtitle: String
-    var copyButtonTitle: String
-    var selectedMapType = 0
-    var getDirectionsButtonTitle = "Åpne veibeskrivelse"
-
-    init(title: String, subtitle: String, copyButtonTitle: String) {
-        self.title = title
-        self.subtitle = subtitle
-        self.copyButtonTitle = copyButtonTitle
-    }
-}
-
-class AddressViewDemoView: UIView, Tweakable {
+class AddressMapDemoView: UIView, Tweakable {
     lazy var tweakingOptions: [TweakingOption] = {
         var options = [TweakingOption]()
 
         options.append(TweakingOption(title: "Address data") {
             let location = CLLocationCoordinate2D(latitude: 65.10915470111108, longitude: 11.984673996759456)
-            self.addressView.model = AddressViewData(title: "Møllerøya 32", subtitle: "7982 Bindalseidet", copyButtonTitle: "Kopier adresse")
-            self.addressView.configureAnnotation(title: "Møllerøya 32, 7982 Bindalseidet", location: location)
-            self.addressView.centerMap(location: location, regionDistance: 500, animated: false)
+            self.addressMapView.configureAnnotation(title: "Møllerøya 32, 7982 Bindalseidet", location: location)
+            self.addressMapView.centerMap(location: location, regionDistance: 500, animated: false)
         })
 
         options.append(TweakingOption(title: "Postalcode data") {
             let location = CLLocationCoordinate2D(latitude: 59.925504072875661, longitude: 10.452107618894244)
-            self.addressView.model = AddressViewData(title: "1340", subtitle: "Skui", copyButtonTitle: "Kopier postnummer")
-            self.addressView.configureRadiusArea(500, location: location)
-            self.addressView.centerMap(location: location, regionDistance: 1200, animated: false)
+            self.addressMapView.configureRadiusArea(500, location: location)
+            self.addressMapView.centerMap(location: location, regionDistance: 1200, animated: false)
         })
 
         let polygonDemoData = [
-            PolygonDemoData(title: "0010", subtitle: "OSLO", areas: [PolygonDemoArea.area0010]),
-            PolygonDemoData(title: "Multi polygons", subtitle: "OSLO", areas: [PolygonDemoArea.area0010, PolygonDemoArea(coordinates: [[10.74, 59.92], [10.75, 59.92], [10.74, 59.91]])])
+            PolygonDemoData(title: "0010", areas: [PolygonDemoArea.area0010]),
+            PolygonDemoData(title: "Multi polygons", areas: [
+                PolygonDemoArea.area0010,
+                PolygonDemoArea(coordinates: [[10.74, 59.92], [10.75, 59.92], [10.74, 59.91]])]
+            )
         ]
         polygonDemoData.forEach({
             let postalCode = $0.title
-            let postalAreaName = $0.subtitle
             let areas = $0.areas
             options.append(TweakingOption(title: "Postalcode shape (\(postalCode))") {
-                self.addressView.model = AddressViewData(title: postalCode, subtitle: postalAreaName, copyButtonTitle: "Kopier postnummer")
-                self.addressView.configurePolygons(areas.compactMap({ $0?.coordinates }))
+                self.addressMapView.configurePolygons(areas.compactMap({ $0?.coordinates }))
             })
         })
         return options
     }()
 
-    private lazy var addressView: AddressView = {
-        let addressView = AddressView(withAutoLayout: true)
-        addressView.delegate = self
-        return addressView
+    private lazy var addressMapView: AddressMapView = {
+        let view = AddressMapView(withAutoLayout: true)
+        view.delegate = self
+        return view
     }()
+
+    // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         setup()
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
+    // MARK: - Setup
+
     private func setup() {
-        addSubview(addressView)
-        addressView.fillInSuperview()
+        addSubview(addressMapView)
+        addressMapView.fillInSuperview()
         tweakingOptions.first?.action?()
 
         // Place a nice looking view in front of the mapView to prevent the UI tests from failing.
-        for subview in addressView.subviews {
+        for subview in addressMapView.subviews {
             guard let mapView = subview as? MKMapView else { break }
+
             let colorfulView = UIView(withAutoLayout: true)
             colorfulView.backgroundColor = .mint
             mapView.addSubview(colorfulView)
             colorfulView.fillInSuperview()
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak colorfulView] in
                 colorfulView?.removeFromSuperview()
             })
@@ -86,28 +76,23 @@ class AddressViewDemoView: UIView, Tweakable {
     }
 }
 
-extension AddressViewDemoView: AddressViewDelegate {
-    func addressViewDidSelectCopyButton(_ addressView: AddressView) {
-        print("addressViewDidSelectCopyButton")
-    }
+// MARK: - AddressMapViewDelegate
 
-    func addressViewDidSelectGetDirectionsButton(_ addressView: AddressView, sender: UIView) {
-        print("addressViewDidSelectGetDirectionsButton")
-    }
-
-    func addressViewDidSelectCenterMapButton(_ addressView: AddressView) {
+extension AddressMapDemoView: AddressMapViewDelegate {
+    func addressMapViewDidSelectCenterButton(_ view: AddressMapView) {
         print("addressViewDidSelectCenterMapButton")
-        addressView.makePolygonOverlayVisible()
+        view.makePolygonOverlayVisible()
     }
 
-    func addressViewDidSelectMapTypeButton(_ addressView: AddressView) {
+    func addressMapViewDidSelectViewModeButton(_ view: AddressMapView) {
         print("addressViewDidSelectMapTypeButton")
     }
 }
 
+// MARK: - Demo data
+
 private struct PolygonDemoData {
     let title: String
-    let subtitle: String
     let areas: [PolygonDemoArea?]
 }
 
