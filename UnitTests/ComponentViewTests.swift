@@ -103,10 +103,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.horizontalSlide)
     }
 
-    func testNewYearsView() {
-        snapshot(.newYearsView)
-    }
-
     func testBannerTransparencyView() {
         snapshot(.bannerTransparencyView)
     }

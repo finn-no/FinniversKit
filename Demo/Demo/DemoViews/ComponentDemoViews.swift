@@ -27,7 +27,6 @@ public enum ComponentDemoViews: String, CaseIterable {
     case refreshControl
     case reviewButtonView
     case horizontalSlide
-    case newYearsView
     case bottomSheetMechanics
     case feedbackView
     case happinessRating
@@ -111,8 +110,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             secondViewController.transitioningDelegate = presentedViewController.transition
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
-        case .newYearsView:
-            return DemoViewController<NewYearsDemoView>()
         case .bottomSheetMechanics:
             return BottomSheetMechanicsDemoViewController()
         case .feedbackView:

@@ -1,40 +1,61 @@
 //
-//  Copyright © 2018 FINN AS. All rights reserved.
+//  Copyright © 2019 FINN AS. All rights reserved.
 //
+
 import FinniversKit
 
-struct SettingsSection {
-    var title: String
-    var items: [SettingsViewCellModel]
-}
-
-struct SettingsItem: SettingsViewCellModel {
+// MARK: - Models
+private struct SettingsToggleItem: SettingsViewToggleCellModel {
     let title: String
-    var status: String?
-    let hasChevron: Bool = true
-
-    init(title: String, status: String? = nil) {
-        self.title = title
-        self.status = status
-    }
+    var isOn: Bool
 }
 
-class SettingsViewDemoView: UIView {
-    private let sections = [SettingsSection(title: "Varslinger", items: [SettingsItem(title: "Prisnedgang på torget")]),
+private struct SettingsConsentItem: SettingsViewConsentCellModel {
+    let title: String
+    var status: String
+}
 
-                            SettingsSection(title: "Personvern", items: [SettingsItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
-                                                                         SettingsItem(title: "Personlin tilpasset FINN", status: "På"),
-                                                                         SettingsItem(title: "Motta viktig informasjon fra FINN", status: "På"),
-                                                                         SettingsItem(title: "Smart reklame"),
-                                                                         SettingsItem(title: "Last ned dine data"),
-                                                                         SettingsItem(title: "Slett meg som bruker")])]
+private struct SettingsItem: SettingsViewCellModel {
+    let title: String
+}
+
+private struct SettingsSection {
+    let title: String
+    var items: [SettingsViewCellModel]
+    let footerTitle: String?
+}
+
+// MARK: - SettingsViewDemoView
+class SettingsViewDemoView: UIView {
+
+     private var sections = [
+        SettingsSection(
+            title: "Varslinger",
+            items: [
+                SettingsToggleItem(title: "Prisnedgang på favoritter - Torget", isOn: true)
+            ],
+            footerTitle: "FINN varsler deg når priser på en av dine favoritter på Torget blir satt ned i pris."
+        ),
+        SettingsSection(
+            title: "Personvern",
+            items: [
+                SettingsConsentItem(title: "Få nyhetsbrev fra FINN", status: "Av"),
+                SettingsConsentItem(title: "Personlig tilpasset FINN", status: "På"),
+                SettingsConsentItem(title: "Motta viktig informasjon fra FINN", status: "På"),
+                SettingsItem(title: "Smart reklame"),
+                SettingsItem(title: "Last ned dine data"),
+                SettingsItem(title: "Slett meg som bruker")
+            ],
+            footerTitle: nil
+        )
+    ]
 
     private lazy var settingsView: SettingsView = {
-        let view = SettingsView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.dataSource = self
-        view.delegate = self
-        return view
+        let settingsView = SettingsView(withAutoLayout: true)
+        settingsView.dataSource = self
+        settingsView.delegate = self
+        settingsView.versionText = "FinniversKit Demo"
+        return settingsView
     }()
 
     override init(frame: CGRect) {
@@ -42,7 +63,7 @@ class SettingsViewDemoView: UIView {
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -52,29 +73,45 @@ extension SettingsViewDemoView: SettingsViewDataSource {
         return sections.count
     }
 
-    func settingsView(_ settingsView: SettingsView, numberOfRowsInSection section: Int) -> Int {
+    func settingsView(_ settingsView: SettingsView, numberOfItemsInSection section: Int) -> Int {
         return sections[section].items.count
     }
 
     func settingsView(_ settingsView: SettingsView, modelForItemAt indexPath: IndexPath) -> SettingsViewCellModel {
-        return sections[indexPath.section].items[indexPath.row]
+        return sections[indexPath.section].items[indexPath.item]
     }
 }
 
 extension SettingsViewDemoView: SettingsViewDelegate {
+    func settingsView(_ settingsView: SettingsView, didSelectModelAt indexPath: IndexPath) {
+        let model = sections[indexPath.section].items[indexPath.item]
+        print("Did selector model:\n\t- \(model)")
+    }
+
+    func settingsView(_ settingsView: SettingsView, didToggleSettingAt indexPath: IndexPath, isOn: Bool) {
+        let section = indexPath.section
+        let item = indexPath.item
+
+        guard var model = sections[section].items[item] as? SettingsToggleItem else {
+            return
+        }
+
+        model.isOn = isOn
+        sections[section].items[item] = model
+
+        print("Did toggle settings for model:\n\t- \(model)")
+    }
+
     func settingsView(_ settingsView: SettingsView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].title
     }
 
-    func settingsView(_ settingsView: SettingsView, didSelectRowAt indexPath: IndexPath) {
-        print("did select")
-    }
-
-    func settingsView(_ settingsView: SettingsView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
+    func settingsView(_ settingsView: SettingsView, titleForFooterInSection section: Int) -> String? {
+        return sections[section].footerTitle
     }
 }
 
+// MARK: - Private Methods
 private extension SettingsViewDemoView {
     func setup() {
         addSubview(settingsView)

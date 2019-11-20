@@ -61,14 +61,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.loadingView)
     }
 
-    func testConsentToggleView() {
-        snapshot(.consentToggleView)
-    }
-
-    func testConsentActionView() {
-        snapshot(.consentActionView)
-    }
-
     func testSoldView() {
         snapshot(.soldView)
     }
@@ -135,5 +127,13 @@ class FullscreenViewTests: XCTestCase {
 
     func testPopovers() {
         snapshot(.popovers)
+    }
+
+    func testSettingDetails() {
+        snapshot(.settingDetails)
+    }
+
+    func testNewYearsView() {
+        snapshot(.newYearsView)
     }
 }
