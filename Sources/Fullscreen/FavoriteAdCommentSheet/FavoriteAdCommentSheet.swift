@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Bootstrap
 
 public protocol FavoriteAdCommentSheetDelegate: AnyObject {
     func favoriteAdCommentSheetDidSelectCancel(_ sheet: FavoriteAdCommentSheet)

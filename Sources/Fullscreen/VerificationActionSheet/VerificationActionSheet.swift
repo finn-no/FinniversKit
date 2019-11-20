@@ -2,6 +2,8 @@
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
+import Bootstrap
+
 public protocol VerificationActionSheetDelegate: AnyObject {
     func didTapVerificationActionSheetButton(_ sheet: VerificationActionSheet)
 }

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 protocol KlimabroletContentViewDelegate: AnyObject {
     func klimabroletViewDidSelectReadMore(_ view: KlimabroletContentView)
@@ -25,9 +26,7 @@ class KlimabroletContentView: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        let font = UIFont(name: FontType.bold.rawValue, size: 22)?
-            .scaledFont(forTextStyle: .title2)
-        label.font = font
+        label.font = UIFont.title3Bold
         label.textAlignment = .center
         label.textColor = .textPrimary
         label.numberOfLines = 0

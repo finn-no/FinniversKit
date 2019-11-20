@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 open class HeartTableViewCell: BasicTableViewCell {
 

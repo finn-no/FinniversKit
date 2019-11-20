@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 protocol SettingsViewToggleCellDelegate: AnyObject {
     func settingsViewToggleCell(_ cell: SettingsViewToggleCell, didToggle isOn: Bool)

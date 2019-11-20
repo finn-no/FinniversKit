@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Bootstrap
 
 open class RadioButtonTableViewCell: BasicTableViewCell {
 

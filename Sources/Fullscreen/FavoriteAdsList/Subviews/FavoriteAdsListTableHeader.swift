@@ -69,7 +69,7 @@ class FavoriteAdsListTableHeader: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = UIFont(name: FontType.bold.rawValue, size: 28)?.scaledFont(forTextStyle: .title2)
+        label.font = UIFont.title2Bold
         label.textAlignment = .center
         label.textColor = .textPrimary
         label.numberOfLines = 3

@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Bootstrap
 
 public protocol SelectableTableViewCellViewModel: BasicTableViewCellViewModel {
     var isSelected: Bool { get }

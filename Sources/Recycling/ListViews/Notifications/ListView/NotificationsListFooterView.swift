@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 protocol NotificationsListFooterViewDelegate: AnyObject {
     func notificationsListFooterView(_ notificationsListFooterView: NotificationsListFooterView, didSelectFooterViewAtSection section: Int)

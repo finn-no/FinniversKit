@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 public extension FloatingButton {
     static func favoritesXmasButton(withTarget target: Any? = nil, action: Selector? = nil) -> FloatingButton {

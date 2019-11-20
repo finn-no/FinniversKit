@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 public class FavoriteFolderSelectableViewCell: RemoteImageTableViewCell {
     private let titleLabelDefaultFont: UIFont = .bodyRegular

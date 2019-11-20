@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 class FullscreenGalleryDismissalTransition: NSObject, UIViewControllerAnimatedTransitioning {
 

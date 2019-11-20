@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 public protocol IconTitleTableViewCellViewModel: BasicTableViewCellViewModel {
     var icon: UIImage? { get }

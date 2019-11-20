@@ -3,11 +3,12 @@
 //
 
 import UIKit
+import Bootstrap
 
 final class EarthHourTagView: UIView {
     private(set) lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = UIFont(name: FontType.regular.rawValue, size: 14.0)
+        label.font = UIFont.captionRegular
         label.textColor = .black
         return label
     }()

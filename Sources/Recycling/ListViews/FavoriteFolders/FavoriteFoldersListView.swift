@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 public protocol FavoriteFoldersListViewDelegate: AnyObject {
     func favoriteFoldersListViewDidBeginRefreshing(_ view: FavoriteFoldersListView)

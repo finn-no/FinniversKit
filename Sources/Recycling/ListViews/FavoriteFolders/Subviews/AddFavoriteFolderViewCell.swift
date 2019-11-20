@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 final class AddFavoriteFolderViewCell: BasicTableViewCell {
     private lazy var button: UIButton = {

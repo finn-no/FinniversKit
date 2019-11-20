@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Bootstrap
 
 public protocol FavoriteAdActionSheetDelegate: AnyObject {
     func favoriteAdActionSheet(_ sheet: FavoriteAdActionSheet, didSelectAction action: FavoriteAdAction)

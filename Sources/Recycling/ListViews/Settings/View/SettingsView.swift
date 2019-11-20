@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 // MARK: - Protocols
 public protocol SettingsViewDataSource: AnyObject {

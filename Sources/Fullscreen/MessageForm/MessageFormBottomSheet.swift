@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Bootstrap
 
 public protocol MessageFormBottomSheetDelegate: AnyObject {
     /// Called when the "send"-button was tapped

@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 public protocol RemoteImageTableViewCellViewModel: BasicTableViewCellViewModel {
     var imagePath: String? { get }

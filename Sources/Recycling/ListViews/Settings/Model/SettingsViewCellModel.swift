@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import Bootstrap
 
 public protocol SettingsViewCellModel: BasicTableViewCellViewModel {}
 

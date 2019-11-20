@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 public class RemoteImageTableViewCell: BasicTableViewCell {
     /// A data source for the loading of the image

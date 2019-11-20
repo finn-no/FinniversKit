@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Bootstrap
 
 class SettingsViewCell: BasicTableViewCell {
 
