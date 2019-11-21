@@ -38,10 +38,16 @@ extension BuyerPickerDemoView: BuyerPickerViewDelegate {
         })
     }
 
-    public func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage? {
+    public func buyerPickerViewDefaultPlaceholderImage(_ buyerPickerView: BuyerPickerView) -> UIImage? {
+        return UIImage(named: "consentTransparencyImage")
+    }
+
+    public func buyerPickerView(_ buyerPickerView: BuyerPickerView, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
         guard let url = model.image else {
-            return UIImage(named: "consentTransparencyImage")
+            completion(nil)
+            return
         }
+
         // Demo code only.
         let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             DispatchQueue.main.async {
@@ -52,8 +58,6 @@ extension BuyerPickerDemoView: BuyerPickerViewDelegate {
         }
 
         task.resume()
-
-        return UIImage(named: "consentTransparencyImage")
     }
 
     public func buyerPickerView(_ buyerPickerView: BuyerPickerView, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat) {}

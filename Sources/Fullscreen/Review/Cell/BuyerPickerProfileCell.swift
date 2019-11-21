@@ -5,7 +5,8 @@
 import UIKit
 
 protocol BuyerPickerCellDelegate: AnyObject {
-    func buyerPickerCell(_ cell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
+    func buyerPickerCellDefaultPlaceholderImage(_ cell: BuyerPickerProfileCell) -> UIImage?
+    func buyerPickerCell(_ cell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
     func buyerPickerCell(_ cell: BuyerPickerProfileCell, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
 }
 
@@ -84,9 +85,12 @@ class BuyerPickerProfileCell: UITableViewCell {
     }
 
     func loadImage() {
+        profileImage.image = delegate?.buyerPickerCellDefaultPlaceholderImage(self)
         guard let model = model else { return }
-        profileImage.image = delegate?.buyerPickerCell(self, loadImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize, completion: { [weak self] image in
-            self?.profileImage.image = image
+        delegate?.buyerPickerCell(self, loadImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize, completion: { [weak self] image in
+            if let image = image {
+                self?.profileImage.image = image
+            }
         })
     }
 
