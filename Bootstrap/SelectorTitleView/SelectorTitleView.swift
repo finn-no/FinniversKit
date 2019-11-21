@@ -30,8 +30,8 @@ public class SelectorTitleView: UIView {
         }
     }
 
-    public var arrowUpImage: UIImage?
-    public var arrowDownImage: UIImage?
+    public var arrowUpImage: UIImage
+    public var arrowDownImage: UIImage
 
     // MARK: - Private
 
@@ -78,14 +78,11 @@ public class SelectorTitleView: UIView {
 
     // MARK: - Init
 
-    public init(heading: String) {
+    public init(heading: String? = nil, arrowUpImage: UIImage, arrowDownImage: UIImage) {
         self.heading = heading
+        self.arrowUpImage = arrowUpImage
+        self.arrowDownImage = arrowDownImage
         super.init(frame: .zero)
-        setup()
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
         setup()
     }
 
@@ -136,12 +133,11 @@ public class SelectorTitleView: UIView {
 
     private func updateArrowDirection() {
         if #available(iOS 13.0, *) {
-            let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .semibold, scale: .small)
             let image: UIImage?
             if arrowDirection == .up {
-                image = arrowUpImage ?? UIImage(systemName: "chevron.up", withConfiguration: config)
+                image = arrowUpImage
             } else {
-                image = arrowDownImage ?? UIImage(systemName: "chevron.down", withConfiguration: config)
+                image = arrowDownImage
             }
             button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
         }

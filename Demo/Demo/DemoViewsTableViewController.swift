@@ -7,7 +7,7 @@ import Bootstrap
 
 class DemoViewsTableViewController: UITableViewController {
     private lazy var selectorTitleView: SelectorTitleView = {
-        let titleView = SelectorTitleView(withAutoLayout: true)
+        let titleView = SelectorTitleView(arrowUpImage: UIImage(named: .arrowUpSmall), arrowDownImage: UIImage(named: .arrowDownSmall))
         titleView.delegate = self
         return titleView
     }()

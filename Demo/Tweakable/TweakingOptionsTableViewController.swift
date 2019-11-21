@@ -32,7 +32,7 @@ class TweakingOptionsTableViewController: ScrollViewController {
     }()
 
     private lazy var selectorTitleView: SelectorTitleView = {
-        let titleView = SelectorTitleView(heading: "Device")
+        let titleView = SelectorTitleView(heading: "Device", arrowUpImage: UIImage(named: .arrowUpSmall), arrowDownImage: UIImage(named: .arrowDownSmall))
         titleView.delegate = self
         return titleView
     }()

@@ -3,9 +3,7 @@ import Bootstrap
 
 class SelectorTitleViewDemoView: UIView {
     lazy var selectorTitleView: SelectorTitleView = {
-        let selectorTitleView = SelectorTitleView(heading: "Tap to change")
-        selectorTitleView.arrowUpImage = UIImage(named: .arrowUpSmall)
-        selectorTitleView.arrowDownImage = UIImage(named: .arrowDownSmall)
+        let selectorTitleView = SelectorTitleView(heading: "Tap to change", arrowUpImage: UIImage(named: .arrowUpSmall), arrowDownImage: UIImage(named: .arrowDownSmall))
         return selectorTitleView
     }()
 
