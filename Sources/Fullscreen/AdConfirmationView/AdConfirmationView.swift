@@ -17,8 +17,8 @@ public class AdConfirmationView: UIView {
         return view
     }()
 
-    private lazy var contentView: UIView = UIView(withAutoLayout: true)
-    private lazy var confirmationObjectView: AdConfirmationObjectView = AdConfirmationObjectView(withAutoLayout: true)
+    private lazy var contentView = UIView(withAutoLayout: true)
+    private lazy var confirmationObjectView = AdConfirmationObjectView(withAutoLayout: true)
 
     private lazy var completeButton: FooterButtonView = {
         let button = FooterButtonView(withAutoLayout: true)

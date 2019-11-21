@@ -28,9 +28,9 @@ public class AdConfirmationObjectView: UIView {
     private let imageSize: CGFloat = 88.0
     private let fallbackImageSize: CGFloat = 40.0
 
-    private var imageTopAnchorConstraint: NSLayoutConstraint?
-    private var imageWidthConstraint: NSLayoutConstraint?
-    private var imageHeightConstraint: NSLayoutConstraint?
+    private lazy var imageTopAnchorConstraint: NSLayoutConstraint? = nil
+    private lazy var imageWidthConstraint: NSLayoutConstraint? = nil
+    private lazy var imageHeightConstraint: NSLayoutConstraint? = nil
 
     public var model: AdConfirmationObjectViewModel? {
         didSet {
@@ -84,7 +84,7 @@ private extension AdConfirmationObjectView {
     }
 
     func setupCheckmarkView() {
-        let checkmarkView: RoundedImageView = RoundedImageView(withAutoLayout: true)
+        let checkmarkView = RoundedImageView(withAutoLayout: true)
         checkmarkView.image = UIImage(named: .checkCircleFilledMini)
         addSubview(checkmarkView)
 
@@ -129,8 +129,6 @@ extension AdConfirmationObjectView: RemoteImageViewDataSource {
                 }
             }
         }
-
         task.resume()
-
     }
 }
