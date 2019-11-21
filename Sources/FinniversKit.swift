@@ -16,6 +16,11 @@ import Foundation
 
     public static var userInterfaceStyleSupport: UserInterfaceStyleSupport = .forceLight
 
+    public static func setup(userInterfaceStyleSupport: UserInterfaceStyleSupport) {
+        self.userInterfaceStyleSupport = userInterfaceStyleSupport
+        Palette.current = .finnPalette
+    }
+
     static var bundle: Bundle {
         return Bundle(for: FinniversKit.self)
     }

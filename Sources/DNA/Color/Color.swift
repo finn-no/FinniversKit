@@ -466,7 +466,7 @@ extension UIColor {
 }
 
 extension Palette {
-    public static var finnPalette: Palette = Palette(
+    static var finnPalette: Palette = Palette(
         bgPrimary: .bgPrimary,
         bgSecondary: .bgSecondary,
         bgTertiary: .bgTertiary,
