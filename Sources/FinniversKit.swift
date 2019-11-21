@@ -7,6 +7,15 @@ import Foundation
 
 /// Class for referencing the framework bundle
 @objc public class FinniversKit: NSObject {
+    public enum UserInterfaceStyleSupport {
+        @available(iOS 13.0, *)
+        case dynamic
+        case forceLight
+        case forceDark
+    }
+
+    public static var userInterfaceStyleSupport: UserInterfaceStyleSupport = .forceLight
+
     static var bundle: Bundle {
         return Bundle(for: FinniversKit.self)
     }

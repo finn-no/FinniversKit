@@ -98,7 +98,7 @@ public class SelectorTitleView: UIView {
 
         backgroundColor = .bgPrimary
 
-        updateButtonColor()
+        updateButtonColor(.btnPrimary, buttonDisabledColor: .btnDisabled)
         addSubview(button)
         button.fillInSuperview()
 
@@ -121,7 +121,7 @@ public class SelectorTitleView: UIView {
 
     // MARK: - Public
 
-    public func updateButtonColor(_ buttonColor: UIColor = .btnPrimary, buttonDisabledColor: UIColor = .btnDisabled) {
+    public func updateButtonColor(_ buttonColor: UIColor, buttonDisabledColor: UIColor) {
         button.setTitleColor(buttonColor, for: .normal)
         button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .highlighted)
         button.setTitleColor(buttonColor.withAlphaComponent(0.5), for: .selected)

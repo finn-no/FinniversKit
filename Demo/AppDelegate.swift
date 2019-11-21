@@ -14,12 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerFonts()
+        Palette.current = .finnPalette
 
         let userInterfaceStyle = UserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: State.currentUserInterfaceStyleKey))
         if let userInterfaceStyle = userInterfaceStyle {
-            Bootstrap.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
+            FinniversKit.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
         } else {
-            Bootstrap.userInterfaceStyleSupport = State.defaultUserInterfaceStyleSupport
+            FinniversKit.userInterfaceStyleSupport = State.defaultUserInterfaceStyleSupport
         }
         window = UIWindow(frame: UIScreen.main.bounds)
         if #available(iOS 13.0, *) {
