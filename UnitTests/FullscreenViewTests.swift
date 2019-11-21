@@ -37,7 +37,7 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.reportAdView)
     }
 
-    func testReviewView() {
+    func testBuyerPickerView() {
         snapshot(.buyerPickerView)
     }
 
