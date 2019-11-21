@@ -19,6 +19,7 @@ public struct Ad: AdsGridViewModel {
     public var accessory: String?
     public let imageText: String?
     public var isFavorite = false
+    public var canScaleImageToFillView = true
     public var adType: AdType
     public var sponsoredAdData: SponsoredAdData?
 
@@ -75,6 +76,7 @@ public struct AdFactory {
             let subtitle = subtitles[dataIndex]
             let icon = UIImage(named: .realestate)
             let price = prices[dataIndex]
+            let canScaleImageToFillView = canScaleImagesToFillView[dataIndex]
             return Ad(
                 imagePath: imageSource.path,
                 imageSize: imageSource.size,
@@ -84,6 +86,7 @@ public struct AdFactory {
                 accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
                 imageText: price,
                 isFavorite: false,
+                canScaleImageToFillView: canScaleImageToFillView,
                 adType: .normal,
                 sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
@@ -94,8 +97,8 @@ public struct AdFactory {
         return [
             "Home Sweet Home",
             "Hjemmekjært",
-            "Mansion",
             "Villa Medusa",
+            "Jobb i Schibsted",
             "Villa Villekulla",
             "Privat slott",
             "Pent brukt bolig",
@@ -109,7 +112,7 @@ public struct AdFactory {
             "Oslo",
             "Bergen",
             "Trondheim",
-            "Ved havet",
+            "Oslo",
             "Toten",
             "Nordkapp",
             "Langtvekkistan",
@@ -122,8 +125,8 @@ public struct AdFactory {
     private static var prices: [String] {
         return ["845 000,-",
                 "164 000,-",
-                "945 000,-",
                 "355 000,-",
+                "",
                 "746 000,-",
                 "347 000,-",
                 "546 000,-",
@@ -131,12 +134,26 @@ public struct AdFactory {
                 "264 000,-"]
     }
 
+    private static var canScaleImagesToFillView: [Bool] {
+        return [true,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true]
+    }
+
     private static var imageSources: [ImageSource] {
         return [
             ImageSource(path: "https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg", size: CGSize(width: 450, height: 354)),
             ImageSource(path: "http://i3.au.reastatic.net/home-ideas/raw/a96671bab306bcb39783bc703ac67f0278ffd7de0854d04b7449b2c3ae7f7659/facades.jpg", size: CGSize(width: 800, height: 600)),
-            ImageSource(path: "http://jonvilma.com/images/house-6.jpg", size: CGSize(width: 992, height: 546)),
             ImageSource(path: "https://i.pinimg.com/736x/11/f0/79/11f079c03af31321fd5029f72a4586b1--exterior-houses-house-exteriors.jpg", size: CGSize(width: 736, height: 566)),
+            ImageSource(path: "https://static.schibsted.com/wp-content/uploads/2018/05/11085129/Schibsted_Logotype_L1_Dust-black_RGB-300x54.png", size: CGSize(width: 300, height: 54)),
             ImageSource(path: "https://i.pinimg.com/736x/bf/6d/73/bf6d73ab0234f3ba1a615b22d2dc7e74--home-exterior-design-contemporary-houses.jpg", size: CGSize(width: 550, height: 734)),
             ImageSource(path: "https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-cypress-black-roof-hp.jpg", size: CGSize(width: 1000, height: 672)),
             ImageSource(path: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg", size: CGSize(width: 1200, height: 800)),

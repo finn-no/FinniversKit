@@ -23,9 +23,13 @@ public class AdsGridViewCell: UICollectionViewCell {
     private static let cornerRadius: CGFloat = 8.0
     private static let imageDescriptionHeight: CGFloat = 35.0
     private static let iconSize: CGFloat = 23.0
+    private static let minImageAspectRatio: CGFloat = 0.75
+    private static let maxImageAspectRatio: CGFloat = 1.5
 
     private lazy var imageBackgroundView: UIView = {
         let view = UIView(withAutoLayout: true)
+        view.layer.borderWidth = 1
+        view.layer.borderColor = .imageBorder
         view.layer.cornerRadius = AdsGridViewCell.cornerRadius
         view.layer.masksToBounds = true
         return view
@@ -34,7 +38,7 @@ public class AdsGridViewCell: UICollectionViewCell {
     private lazy var imageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
@@ -173,6 +177,8 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageBackgroundView.topAnchor.constraint(equalTo: topAnchor),
             imageBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageBackgroundView.heightAnchor.constraint(greaterThanOrEqualTo: imageBackgroundView.widthAnchor, multiplier: AdsGridViewCell.minImageAspectRatio),
+            imageBackgroundView.heightAnchor.constraint(lessThanOrEqualTo: imageBackgroundView.widthAnchor, multiplier: AdsGridViewCell.maxImageAspectRatio),
 
             ribbonView.topAnchor.constraint(equalTo: imageBackgroundView.bottomAnchor, constant: AdsGridViewCell.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -224,6 +230,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         super.prepareForReuse()
         imageView.image = nil
         imageView.alpha = 0.0
+        imageView.contentMode = .scaleAspectFill
         imageBackgroundView.backgroundColor = loadingColor
         iconImageView.image = nil
         titleLabel.text = ""
@@ -235,6 +242,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         favoriteButton.setImage(nil, for: .normal)
         imageView.cancelLoading()
         logoImageView.cancelLoading()
+        logoImageView.image = nil
     }
 
     // MARK: - Dependency injection
@@ -263,6 +271,13 @@ public class AdsGridViewCell: UICollectionViewCell {
         let colors: [UIColor] = [.toothPaste, .mint, .banana, .salmon]
         let color = colors[index % 4]
         loadingColor = color
+
+        if let model = model {
+            if !model.canScaleImageToFillView {
+                imageView.contentMode = .scaleAspectFit
+                imageBackgroundView.backgroundColor = .white
+            }
+        }
     }
 
     public var isFavorite = false {
@@ -284,7 +299,7 @@ public class AdsGridViewCell: UICollectionViewCell {
     }
 
     public static func height(for model: AdsGridViewModel, width: CGFloat) -> CGFloat {
-        let imageRatio = model.imageSize.height / model.imageSize.width
+        let imageRatio = min(max(model.imageSize.height / model.imageSize.width, AdsGridViewCell.minImageAspectRatio), AdsGridViewCell.maxImageAspectRatio)
         let imageHeight = width * imageRatio
         var contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
 
