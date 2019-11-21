@@ -142,5 +142,4 @@ public class SelectorTitleView: UIView {
             button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
         }
     }
-
 }
