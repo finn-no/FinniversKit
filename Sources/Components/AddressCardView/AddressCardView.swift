@@ -12,17 +12,6 @@ public protocol AddressCardViewDelegate: AnyObject {
 public final class AddressCardView: UIView {
     public weak var delegate: AddressCardViewDelegate?
 
-    public var model: AddressCardViewModel? {
-        didSet {
-            guard let model = model else { return }
-
-            titleLabel.text = model.title
-            subtitleLabel.text = model.subtitle
-            copyButton.setTitle(model.copyButtonTitle, for: .normal)
-            getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
-        }
-    }
-
     // MARK: - Private properties
 
     private lazy var titleLabel: Label = {
@@ -64,6 +53,13 @@ public final class AddressCardView: UIView {
     }
 
     // MARK: - Setup
+
+    public func configure(with model: AddressCardViewModel) {
+        titleLabel.text = model.title
+        subtitleLabel.text = model.subtitle
+        copyButton.setTitle(model.copyButtonTitle, for: .normal)
+        getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
+    }
 
     private func setup() {
         backgroundColor = .bgPrimary

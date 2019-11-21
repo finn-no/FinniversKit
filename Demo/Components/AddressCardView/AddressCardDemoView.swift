@@ -9,7 +9,7 @@ final class AddressCardDemoView: UIView {
         let view = AddressCardView(withAutoLayout: true)
         view.dropShadow(color: .black, opacity: 0.3, radius: 3)
         view.layer.cornerRadius = 16
-        view.model = AddressCardViewModel()
+        view.configure(with: AddressCardViewModel())
         view.delegate = self
         return view
     }()
