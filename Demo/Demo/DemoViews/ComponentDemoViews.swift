@@ -52,6 +52,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case selectorTitleView
     case priming
     case footerButtonView
+    case checkmarkTitleView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -162,6 +163,8 @@ public enum ComponentDemoViews: String, CaseIterable {
             )
         case .footerButtonView:
             return DemoViewController<FooterButtonDemoView>(constrainToBottomSafeArea: false)
+        case .checkmarkTitleView:
+            return DemoViewController<CheckmarkTitleViewDemoView>()
         }
     }
 }
