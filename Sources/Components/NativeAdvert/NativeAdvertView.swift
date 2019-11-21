@@ -209,7 +209,7 @@ extension NativeAdvertView {
     }
 
     private static func titleLabelFont(forWidth width: CGFloat) -> UIFont {
-        width >= 400 ? .title3 : .bodyStrong
+        width >= 400 ? .title3 : .body
     }
 
     private static func sponsoredByLabelFont(forWidth width: CGFloat) -> UIFont {
