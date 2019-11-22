@@ -72,8 +72,9 @@ class DemoViewsTableViewController: UITableViewController {
     }
 
     private func updateMoonButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped(sender:forEvent:)))
-        return
+        if #available(iOS 13.0, *) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: State.currentUserInterfaceStyle(for: traitCollection).image, style: .done, target: self, action: #selector(moonTapped(sender:forEvent:)))
+        }
     }
 
     @objc private func moonTapped(sender: AnyObject, forEvent event: UIEvent) {
