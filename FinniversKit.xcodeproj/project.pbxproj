@@ -192,6 +192,7 @@
 		44AEFC2922E722FC00D3C307 /* CheckboxSubtitleCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AEFC2222E722FC00D3C307 /* CheckboxSubtitleCellDemoView.swift */; };
 		44AFCE49215839F7005984DB /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */; };
 		44AFCE4A215839FB005984DB /* LoadingIndicatorViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AFCE46215839F6005984DB /* LoadingIndicatorViewDemoView.swift */; };
+		44B393C12387E0BD00C6B3A1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B393C02387E0BD00C6B3A1 /* UIColorExtensions.swift */; };
 		44B94FE522E0AB420078A23C /* TweakingOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FE422E0AB420078A23C /* TweakingOptionsTableViewController.swift */; };
 		44B94FE922E0AB820078A23C /* TweakingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FE822E0AB820078A23C /* TweakingOption.swift */; };
 		44B94FEB22E0ABC50078A23C /* Tweakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B94FEA22E0ABC50078A23C /* Tweakable.swift */; };
@@ -812,6 +813,7 @@
 		44AEFC2222E722FC00D3C307 /* CheckboxSubtitleCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxSubtitleCellDemoView.swift; sourceTree = "<group>"; };
 		44AFCE46215839F6005984DB /* LoadingIndicatorViewDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorViewDemoView.swift; sourceTree = "<group>"; };
 		44AFCE47215839F6005984DB /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
+		44B393C02387E0BD00C6B3A1 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		44B94FE422E0AB420078A23C /* TweakingOptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakingOptionsTableViewController.swift; sourceTree = "<group>"; };
 		44B94FE822E0AB820078A23C /* TweakingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakingOption.swift; sourceTree = "<group>"; };
 		44B94FEA22E0ABC50078A23C /* Tweakable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweakable.swift; sourceTree = "<group>"; };
@@ -1604,6 +1606,7 @@
 				441751C723854E3D0016792A /* UICollectionViewExtensions.swift */,
 				441751C823854E3D0016792A /* UITableViewCellExtensions.swift */,
 				441751C923854E3D0016792A /* UIViewExtensions.swift */,
+				44B393C02387E0BD00C6B3A1 /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -4566,6 +4569,7 @@
 				441751E523854E3D0016792A /* UIEdgeInsetsExtensions.swift in Sources */,
 				441751CC23854E3D0016792A /* BasicTableView.swift in Sources */,
 				441751DC23854E3D0016792A /* BottomSheetGestureController.swift in Sources */,
+				44B393C12387E0BD00C6B3A1 /* UIColorExtensions.swift in Sources */,
 				441751D523854E3D0016792A /* Identifiable.swift in Sources */,
 				441751CA23854E3D0016792A /* Layout.swift in Sources */,
 				441751DE23854E3D0016792A /* BottomSheetInteractionController.swift in Sources */,
