@@ -74,7 +74,7 @@ public struct AdFactory {
             let imageSource = imageSources[dataIndex]
             let title = titles[dataIndex]
             let subtitle = subtitles[dataIndex]
-            let icon = UIImage(named: .realestate)
+            let icon = iconImages[dataIndex]
             let price = prices[dataIndex]
             let canScaleImageToFillView = canScaleImagesToFillView[dataIndex]
             return Ad(
@@ -91,6 +91,20 @@ public struct AdFactory {
                 sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
         }
+    }
+
+    private static var iconImages: [UIImage] {
+        return [
+            UIImage(named: .realestate),
+            UIImage(named: .realestate),
+            UIImage(named: .realestate),
+            UIImage(named: .jobs),
+            UIImage(named: .realestate),
+            UIImage(named: .realestate),
+            UIImage(named: .realestate),
+            UIImage(named: .realestate),
+            UIImage(named: .realestate)
+        ]
     }
 
     private static var titles: [String] {
