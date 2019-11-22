@@ -4,6 +4,105 @@
 
 import Bootstrap
 
+@objc extension UIColor {
+    public class var bgPrimary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: UIColor(hex: "#1B1B24"))
+    }
+
+    public class var bgSecondary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .ice, darkModeColor: .darkIce)
+    }
+
+    public class var bgTertiary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
+    }
+
+    public class var bgBottomSheet: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .milk, darkModeColor: .darkIce)
+    }
+
+    public class var bgAlert: UIColor {
+        return .banana
+    }
+
+    public class var bgSuccess: UIColor {
+        return .mint
+    }
+
+    public class var bgCritical: UIColor {
+        return .salmon
+    }
+
+    public class var btnPrimary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#006DFB"))
+    }
+
+    public class var btnDisabled: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+    }
+
+    public class var btnCritical: UIColor {
+        return .cherry
+    }
+
+    public class var textPrimary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: .milk)
+    }
+
+    public class var textSecondary: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .stone, darkModeColor: UIColor(hex: "#828699"))
+    }
+
+    public class var textTertiary: UIColor {
+        return .milk
+    }
+
+    public class var textAction: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .primaryBlue, darkModeColor: UIColor(hex: "#3F8BFF"))
+    }
+
+    public class var textDisabled: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+    }
+
+    public class var textCritical: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .cherry, darkModeColor: .watermelon)
+    }
+
+    public class var textCTADisabled: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .licorice, darkModeColor: UIColor(hex: "#828699"))
+    }
+
+    public class var textToast: UIColor {
+        return .licorice
+    }
+
+    public class var tableViewSeparator: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+    }
+
+    public class var decorationSubtle: UIColor {
+        return .btnDisabled
+    }
+
+    public class var iconPrimary: UIColor {
+        return .textPrimary
+    }
+
+    public class var iconSecondary: UIColor {
+        return .textTertiary
+    }
+
+    public class var defaultCellSelectedBackgroundColor: UIColor {
+        let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)!
+        return dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.4))
+    }
+
+    public class var dimmingColor: UIColor {
+        return UIColor.black.withAlphaComponent(0.4) //DARK
+    }
+}
+
 // MARK: - FINN UIColors
 @objc extension UIColor {
     public class var ice: UIColor {
@@ -311,4 +410,89 @@ extension CGColor {
     public class var defaultCellSelectedBackgroundColor: CGColor {
         return UIColor.defaultCellSelectedBackgroundColor.cgColor
     }
+}
+
+extension UIColor {
+    // swiftlint:disable:next identifier_name
+    public convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
+        self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
+    }
+
+    /// Base initializer, it creates an instance of `UIColor` using an HEX string.
+    ///
+    /// - Parameter hex: The base HEX string to create the color.
+    public convenience init(hex: String) {
+        let noHashString = hex.replacingOccurrences(of: "#", with: "")
+        let scanner = Scanner(string: noHashString)
+        scanner.charactersToBeSkipped = CharacterSet.symbols
+
+        var hexInt: UInt64 = 0
+        if scanner.scanHexInt64(&hexInt) {
+            let red = (hexInt >> 16) & 0xFF
+            let green = (hexInt >> 8) & 0xFF
+            let blue = (hexInt) & 0xFF
+
+            self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+        } else {
+            self.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        }
+    }
+}
+
+// MARK: - Helper for creating dynamic color
+extension UIColor {
+    public class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
+        switch FinniversKit.userInterfaceStyleSupport {
+        case .forceDark:
+            return darkModeColor
+        case .forceLight:
+            return defaultColor
+        case .dynamic:
+            if #available(iOS 13.0, *) {
+                #if swift(>=5.1)
+                return UIColor { traitCollection -> UIColor in
+                    switch traitCollection.userInterfaceStyle {
+                    case .dark:
+                        return darkModeColor
+                    default:
+                        return defaultColor
+                    }
+                }
+                #endif
+            }
+            return defaultColor
+        }
+    }
+}
+
+extension Palette {
+    static var finnPalette: Palette = Palette(
+        bgPrimary: .bgPrimary,
+        bgSecondary: .bgSecondary,
+        bgTertiary: .bgTertiary,
+        bgBottomSheet: .bgBottomSheet,
+        bgAlert: .bgAlert,
+        bgSuccess: .bgSuccess,
+        bgCritical: .bgCritical,
+        btnPrimary: .btnPrimary,
+        btnDisabled: .btnDisabled,
+        btnCritical: .btnCritical,
+        textPrimary: .textPrimary,
+        textSecondary: .textSecondary,
+        textTertiary: .textTertiary,
+        textAction: .textAction,
+        textDisabled: .textDisabled,
+        textCritical: .textCritical,
+        accentSecondaryBlue: .accentSecondaryBlue,
+        accentPea: .accentPea,
+        accentToothpaste: .accentToothpaste,
+        textCTADisabled: .textCTADisabled,
+        textToast: .textToast,
+        tableViewSeparator: .tableViewSeparator,
+        decorationSubtle: .decorationSubtle,
+        iconPrimary: .iconPrimary,
+        iconSecondary: .iconSecondary,
+        defaultCellSelectedBackgroundColor: .defaultCellSelectedBackgroundColor,
+        dimmingColor: .dimmingColor
+    )
 }

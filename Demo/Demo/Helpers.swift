@@ -20,7 +20,7 @@ struct State {
     private static let lastSelectedDeviceKey = "lastSelectedDeviceKey"
     static let currentUserInterfaceStyleKey = "currentUserInterfaceStyleKey"
 
-    static let defaultUserInterfaceStyleSupport: Bootstrap.UserInterfaceStyleSupport = {
+    static let defaultUserInterfaceStyleSupport: FinniversKit.UserInterfaceStyleSupport = {
         if #available(iOS 13.0, *) {
             return .dynamic
         }
@@ -102,10 +102,10 @@ struct State {
         }
         if let userInterfaceStyle = userInterfaceStyle {
             UserDefaults.standard.set(userInterfaceStyle.rawValue, forKey: currentUserInterfaceStyleKey)
-            Bootstrap.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
+            FinniversKit.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
         } else {
             UserDefaults.standard.removeObject(forKey: currentUserInterfaceStyleKey)
-            Bootstrap.userInterfaceStyleSupport = defaultUserInterfaceStyleSupport
+            FinniversKit.userInterfaceStyleSupport = defaultUserInterfaceStyleSupport
         }
         UserDefaults.standard.synchronize()
     }

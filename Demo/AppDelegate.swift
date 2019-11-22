@@ -16,11 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         registerFonts()
 
         let userInterfaceStyle = UserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: State.currentUserInterfaceStyleKey))
+        let userInterfaceStyleSupport: FinniversKit.UserInterfaceStyleSupport
         if let userInterfaceStyle = userInterfaceStyle {
-            Bootstrap.userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
+            userInterfaceStyleSupport = userInterfaceStyle == .dark ? .forceDark : .forceLight
         } else {
-            Bootstrap.userInterfaceStyleSupport = State.defaultUserInterfaceStyleSupport
+            userInterfaceStyleSupport = State.defaultUserInterfaceStyleSupport
         }
+
+        FinniversKit.setup(userInterfaceStyleSupport: userInterfaceStyleSupport)
+
         window = UIWindow(frame: UIScreen.main.bounds)
         if #available(iOS 13.0, *) {
             window?.setWindowUserInterfaceStyle(userInterfaceStyle)
