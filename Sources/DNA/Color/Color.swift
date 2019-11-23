@@ -381,6 +381,14 @@ extension CGColor {
     public class var flatButtonHighlightedTextColor: UIColor {
         return textAction.withAlphaComponent(0.8)
     }
+
+    public class var destructiveFlatButtonHighlightedTextColor: UIColor {
+        return textCritical.withAlphaComponent(0.8)
+    }
+
+    public class var dimmingColor: UIColor {
+        return UIColor.black.withAlphaComponent(0.4) //DARK
+    }
 }
 
 // MARK: - Highlighted buttons CGColors
