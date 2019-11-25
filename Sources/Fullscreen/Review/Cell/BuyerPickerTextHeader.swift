@@ -5,7 +5,7 @@
 import Foundation
 import UIKit
 
-class ReviewTextHeader: UITableViewHeaderFooterView {
+class BuyerPickerTextHeader: UITableViewHeaderFooterView {
     lazy var title: Label = {
         let label = Label(style: .title3)
         label.numberOfLines = 0
