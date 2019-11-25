@@ -9,7 +9,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case popupView
     case emptyView
     case reportAdView
-    case reviewView
+    case buyerPickerView
     case registerView
     case loginEntryView
     case loginView
@@ -51,8 +51,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<PopupViewDemoView>()
         case .reportAdView:
             return DemoViewController<AdReporterDemoView>(dismissType: .dismissButton)
-        case .reviewView:
-            return DemoViewController<ReviewViewDemoView>()
+        case .buyerPickerView:
+            return DemoViewController<BuyerPickerDemoView>()
         case .registerView:
             return DemoViewController<RegisterViewDemoView>()
         case .loginEntryView:
