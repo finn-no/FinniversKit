@@ -132,14 +132,12 @@ public class SelectorTitleView: UIView {
     // MARK: - Private
 
     private func updateArrowDirection() {
-        if #available(iOS 13.0, *) {
-            let image: UIImage?
-            if arrowDirection == .up {
-                image = arrowUpImage
-            } else {
-                image = arrowDownImage
-            }
-            button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        let image: UIImage?
+        if arrowDirection == .up {
+            image = arrowUpImage
+        } else {
+            image = arrowDownImage
         }
+        button.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
     }
 }
