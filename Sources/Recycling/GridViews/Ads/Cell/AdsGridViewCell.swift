@@ -273,7 +273,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         loadingColor = color
 
         if let model = model {
-            if !model.canScaleImageToFillView {
+            if !model.scaleImageToFillView {
                 imageView.contentMode = .scaleAspectFit
                 imageBackgroundView.backgroundColor = .white
             }
@@ -299,8 +299,9 @@ public class AdsGridViewCell: UICollectionViewCell {
     }
 
     public static func height(for model: AdsGridViewModel, width: CGFloat) -> CGFloat {
-        let imageRatio = min(max(model.imageSize.height / model.imageSize.width, AdsGridViewCell.minImageAspectRatio), AdsGridViewCell.maxImageAspectRatio)
-        let imageHeight = width * imageRatio
+        let imageRatio = model.imageSize.height / model.imageSize.width
+        let clippedImageRatio = min(max(imageRatio, AdsGridViewCell.minImageAspectRatio), AdsGridViewCell.maxImageAspectRatio)
+        let imageHeight = width * clippedImageRatio
         var contentHeight = subtitleTopMargin + subtitleHeight + titleTopMargin + titleHeight + bottomMargin
 
         if model.accessory != nil {

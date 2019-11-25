@@ -19,7 +19,7 @@ public struct Ad: AdsGridViewModel {
     public var accessory: String?
     public let imageText: String?
     public var isFavorite = false
-    public var canScaleImageToFillView = true
+    public var scaleImageToFillView = true
     public var adType: AdType
     public var sponsoredAdData: SponsoredAdData?
 
@@ -76,7 +76,7 @@ public struct AdFactory {
             let subtitle = subtitles[dataIndex]
             let icon = iconImages[dataIndex]
             let price = prices[dataIndex]
-            let canScaleImageToFillView = canScaleImagesToFillView[dataIndex]
+            let canScaleImageToFillView = scaleImagesToFillView[dataIndex]
             return Ad(
                 imagePath: imageSource.path,
                 imageSize: imageSource.size,
@@ -86,7 +86,7 @@ public struct AdFactory {
                 accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
                 imageText: price,
                 isFavorite: false,
-                canScaleImageToFillView: canScaleImageToFillView,
+                scaleImageToFillView: canScaleImageToFillView,
                 adType: .normal,
                 sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
@@ -148,7 +148,7 @@ public struct AdFactory {
                 "264 000,-"]
     }
 
-    private static var canScaleImagesToFillView: [Bool] {
+    private static var scaleImagesToFillView: [Bool] {
         return [true,
                 true,
                 true,
