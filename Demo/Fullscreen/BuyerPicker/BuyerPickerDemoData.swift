@@ -15,7 +15,7 @@ public class BuyerPickerDemoUser: BuyerPickerProfileModel {
 }
 
 public struct BuyerPickerDemoData: BuyerPickerViewModel {
-    public let title = "Velg brukeren du gjorde handelen med:"
+    public let title = "Velg den du gjorde handelen med:"
     public let profiles: [BuyerPickerProfileModel] = [
         BuyerPickerDemoUser(name: "Ola Nordmann", image: URL(string: "http://via.placeholder.com/44x44/111111/111111")),
         BuyerPickerDemoUser(name: "Per Johansen", image: URL(string: "http://via.placeholder.com/44x44/ff00ff/ff00ff")),
