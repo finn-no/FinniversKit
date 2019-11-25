@@ -24,7 +24,6 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case contactFormView
     case addressView
     case messageFormView
-    case receiptView
     case favoriteAdsList
     case favoriteFolderActionSheet
     case favoriteAdSortingSheet
@@ -34,6 +33,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case splashView
     case popovers
     case settingDetails
+    case adConfirmationView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -81,8 +81,6 @@ public enum FullscreenDemoViews: String, CaseIterable {
             let bottomSheet = MessageFormBottomSheet(viewModel: MessageFormDemoViewModel())
             bottomSheet.messageFormDelegate = MessageFormDemoPresenter.shared
             return bottomSheet
-        case .receiptView:
-            return DemoViewController<ReceiptViewDemoView>()
         case .addressView:
             return DemoViewController<AddressViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
         case .favoriteAdsList:
@@ -130,6 +128,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
 
             viewController.bottomSheet = bottomSheet
             return bottomSheet
+        case .adConfirmationView:
+            return DemoViewController<AdConfirmationDemoView>()
         }
     }
 }
