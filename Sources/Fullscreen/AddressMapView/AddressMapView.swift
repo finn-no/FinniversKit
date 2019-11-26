@@ -92,7 +92,7 @@ public class AddressMapView: UIView {
         let mapRect = polygons.dropFirst().reduce(firstPolygon.boundingMapRect, { (mapRect, polygon) -> MKMapRect in
             return polygon.boundingMapRect.union(mapRect)
         })
-        let bottomInset = traitCollection.verticalSizeClass == .regular ? 16 : 16 + .mediumLargeSpacing
+        let bottomInset = traitCollection.horizontalSizeClass == .regular ? 16 : 16 + .mediumLargeSpacing
         let edgePadding = UIEdgeInsets(top: 16, left: 16, bottom: bottomInset, right: 16)
 
         mapView.setVisibleMapRect(mapRect, edgePadding: edgePadding, animated: false)
