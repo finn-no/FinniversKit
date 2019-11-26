@@ -30,6 +30,7 @@ public final class AddressCardView: UIView {
     private lazy var copyButton: Button = {
         let button = Button(style: .default, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.addTarget(self, action: #selector(copyAction), for: .touchUpInside)
         return button
     }()
