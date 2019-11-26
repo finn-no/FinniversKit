@@ -17,6 +17,7 @@ import UIKit
 protocol BottomSheetPresentationControllerDelegate: AnyObject {
     func bottomSheetPresentationControllerShouldDismiss(_ presentationController: BottomSheetPresentationController) -> Bool
     func bottomSheetPresentationControllerDidCancelDismiss(_ presentationController: BottomSheetPresentationController)
+    func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, willDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction)
     func bottomSheetPresentationController(_ presentationController: BottomSheetPresentationController, didDismissPresentedViewController presentedViewController: UIViewController, by action: BottomSheet.DismissAction)
     func bottomSheetPresentationControllerDidBeginDrag(_ presentationController: BottomSheetPresentationController)
 }
@@ -70,6 +71,7 @@ class BottomSheetPresentationController: UIPresentationController {
         self.interactionController = interactionController
         self.dimView = dimView
         super.init(presentedViewController: presentedViewController, presenting: presenting)
+        interactionController.delegate = self
     }
 
     // MARK: - Overrides
@@ -105,6 +107,7 @@ class BottomSheetPresentationController: UIPresentationController {
         springAnimator.stopAnimation(true)
         // Make sure initial transition velocity is the same the current velocity of the bottom sheet
         interactionController.initialTransitionVelocity = -(gestureController?.velocity ?? .zero)
+        presentationControllerDelegate?.bottomSheetPresentationController(self, willDismissPresentedViewController: presentedViewController, by: dismissAction)
     }
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {
@@ -230,5 +233,11 @@ extension BottomSheetPresentationController: BottomSheetGestureControllerDelegat
         }
 
         return CGPoint(x: controller.position.x, y: ycomponent)
+    }
+}
+
+extension BottomSheetPresentationController: BottomSheetInteractionControllerDelegate {
+    func bottomSheetInteractionControllerWillCancelPresentationTransition(_ interactionController: BottomSheetInteractionController) {
+        presentationControllerDelegate?.bottomSheetPresentationController(self, willDismissPresentedViewController: presentedViewController, by: .drag)
     }
 }

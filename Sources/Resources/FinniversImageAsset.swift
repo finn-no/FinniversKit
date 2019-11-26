@@ -29,9 +29,9 @@ public enum FinniversImageAsset: String {
     case attachment
     case avatar
     case balloon0
-    case balloon1
+    case balloon00
     case balloon2
-    case balloon9
+    case balloon22
     case bankID
     case blockUser
     case boat
@@ -80,6 +80,7 @@ public enum FinniversImageAsset: String {
     case favouriteAddedImg
     case favourites
     case finnLogo
+    case finnLogoSimple
     case gallery
     case gift
     case giftRoundedRectRed
@@ -191,9 +192,9 @@ public enum FinniversImageAsset: String {
             .attachment,
             .avatar,
             .balloon0,
-            .balloon1,
+            .balloon00,
             .balloon2,
-            .balloon9,
+            .balloon22,
             .bankID,
             .blockUser,
             .boat,
@@ -242,6 +243,7 @@ public enum FinniversImageAsset: String {
             .favouriteAddedImg,
             .favourites,
             .finnLogo,
+            .finnLogoSimple,
             .gallery,
             .gift,
             .giftRoundedRectRed,
