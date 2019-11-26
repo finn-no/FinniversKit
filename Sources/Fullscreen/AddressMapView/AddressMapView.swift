@@ -184,7 +184,7 @@ extension AddressMapView: MKMapViewDelegate {
     }
 
     public func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-
+        delegate?.addressMapViewWillChangeRegion(self)
     }
 }
 
