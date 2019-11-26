@@ -76,7 +76,7 @@ public struct AdFactory {
             let subtitle = subtitles[dataIndex]
             let icon = iconImages[dataIndex]
             let price = prices[dataIndex]
-            let canScaleImageToFillView = scaleImagesToFillView[dataIndex]
+            let scaleImageToFillView = scaleImagesToFillView[dataIndex]
             return Ad(
                 imagePath: imageSource.path,
                 imageSize: imageSource.size,
@@ -86,7 +86,7 @@ public struct AdFactory {
                 accessory: index % 2 == 0 ? "Totalpris \(price)" : nil,
                 imageText: price,
                 isFavorite: false,
-                scaleImageToFillView: canScaleImageToFillView,
+                scaleImageToFillView: scaleImageToFillView,
                 adType: .normal,
                 sponsoredAdData: index % 4 == 0 ? sponsoredAdData : nil,
                 favoriteButtonAccessibilityLabel: "Sett annonsen som favoritt")
