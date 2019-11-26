@@ -14,6 +14,7 @@ public protocol AdsGridViewModel {
     var imageText: String? { get }
     var accessibilityLabel: String { get }
     var isFavorite: Bool { get }
+    var scaleImageToFillView: Bool { get }
     var sponsoredAdData: SponsoredAdData? { get }
     var favoriteButtonAccessibilityLabel: String { get }
 }

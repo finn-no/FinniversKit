@@ -94,6 +94,10 @@ import UIKit
         return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
+    public class var imageBorder: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+    }
+
     public class var decorationSubtle: UIColor {
         return .btnDisabled
     }
@@ -362,6 +366,10 @@ extension CGColor {
 
     public class var tableViewSeparator: CGColor {
         return UIColor.tableViewSeparator.cgColor
+    }
+
+    public class var imageBorder: CGColor {
+        return UIColor.imageBorder.cgColor
     }
 
     public class var decorationSubtle: CGColor {

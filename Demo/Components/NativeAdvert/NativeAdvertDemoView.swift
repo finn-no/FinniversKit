@@ -12,14 +12,19 @@ private struct DemoViewModel: NativeAdvertViewModel {
 }
 
 class NativeAdvertDemoView: UIView {
-    private let advertModel = DemoViewModel(title: "Sjelden planet til salgs",
-                                    mainImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg"),
-                                    iconImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/1920px-Five-pointed_star.svg.png"),
-                                    sponsoredText: "Sponset av Planetformidlingen AS")
-    private let contentModel = DemoViewModel(title: "Du har skjært avocadoen feil i alle år!",
-                                     mainImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
-                                     iconImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
-                                     sponsoredText: "ANNONSØRINNHOLD")
+    private let advertModel = DemoViewModel(
+        title: "Kan være inntil 50 tegn, og denne er faktisk på 50",
+        mainImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg"),
+        iconImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/1920px-Five-pointed_star.svg.png"),
+        sponsoredText: "Sponset av Den LengsteMuligeAnnonsør"
+    )
+
+    private let contentModel = DemoViewModel(
+        title: "Du har skjært avocadoen feil i alle år! 50 tegn!",
+        mainImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
+        iconImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
+        sponsoredText: "ANNONSØRINNHOLD"
+    )
 
     private lazy var advertView: NativeAdvertView = {
         let view = NativeAdvertView(viewModel: advertModel, imageDelegate: self)
@@ -57,23 +62,22 @@ class NativeAdvertDemoView: UIView {
         addSubview(hairlineContentBottom)
 
         NSLayoutConstraint.activate([
-            advertView.leadingAnchor.constraint(equalTo: leadingAnchor),
             advertView.topAnchor.constraint(equalTo: topAnchor),
+            advertView.leadingAnchor.constraint(equalTo: leadingAnchor),
             advertView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            advertView.heightAnchor.constraint(equalToConstant: 250.0),
 
+            hairlineContentTop.topAnchor.constraint(equalTo: advertView.bottomAnchor, constant: .mediumLargeSpacing),
             hairlineContentTop.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentTop.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineContentTop.bottomAnchor.constraint(equalTo: advertView.bottomAnchor),
 
-            contentAdvertView.topAnchor.constraint(equalTo: hairlineContentTop.bottomAnchor),
+            contentAdvertView.topAnchor.constraint(equalTo: hairlineContentTop.bottomAnchor, constant: .mediumLargeSpacing),
             contentAdvertView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentAdvertView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentAdvertView.heightAnchor.constraint(equalToConstant: 250),
 
+            hairlineContentBottom.topAnchor.constraint(equalTo: contentAdvertView.bottomAnchor, constant: .mediumLargeSpacing),
             hairlineContentBottom.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentBottom.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineContentBottom.topAnchor.constraint(equalTo: contentAdvertView.bottomAnchor),
+            hairlineContentBottom.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
         ])
     }
 
