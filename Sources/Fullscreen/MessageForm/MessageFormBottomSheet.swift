@@ -108,6 +108,10 @@ extension MessageFormBottomSheet: BottomSheetDelegate {
         dismissWithConfirmation()
     }
 
+    public func bottomSheet(_ bottomSheet: BottomSheet, willDismissBy action: BottomSheet.DismissAction) {
+        return
+    }
+
     public func bottomSheet(_ bottomSheet: BottomSheet, didDismissBy action: BottomSheet.DismissAction) {
         messageFormDelegate?.messageFormBottomSheetDidDismiss(self)
     }
