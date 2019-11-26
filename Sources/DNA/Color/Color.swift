@@ -94,6 +94,10 @@ import UIKit
         return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 
+    public class var imageBorder: UIColor {
+        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+    }
+
     public class var decorationSubtle: UIColor {
         return .btnDisabled
     }
@@ -364,6 +368,10 @@ extension CGColor {
         return UIColor.tableViewSeparator.cgColor
     }
 
+    public class var imageBorder: CGColor {
+        return UIColor.imageBorder.cgColor
+    }
+
     public class var decorationSubtle: CGColor {
         return UIColor.decorationSubtle.cgColor
     }
@@ -397,6 +405,10 @@ extension CGColor {
 
     public class var flatButtonHighlightedTextColor: UIColor {
         return textAction.withAlphaComponent(0.8)
+    }
+
+    public class var destructiveFlatButtonHighlightedTextColor: UIColor {
+        return textCritical.withAlphaComponent(0.8)
     }
 
     public class var dimmingColor: UIColor {

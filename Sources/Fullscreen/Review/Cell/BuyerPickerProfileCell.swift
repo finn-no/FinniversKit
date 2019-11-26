@@ -4,14 +4,14 @@
 
 import UIKit
 
-protocol ReviewProfileCellDelegate: AnyObject {
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, loadImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) -> UIImage?
-    func reviewProfileCell(_ reviewProfileCell: ReviewProfileCell, cancelLoadingImageForModel model: ReviewViewProfileModel, imageWidth: CGFloat)
+protocol BuyerPickerCellDelegate: AnyObject {
+    func buyerPickerCellDefaultPlaceholderImage(_ cell: BuyerPickerProfileCell) -> UIImage?
+    func buyerPickerCell(_ cell: BuyerPickerProfileCell, loadImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void))
+    func buyerPickerCell(_ cell: BuyerPickerProfileCell, cancelLoadingImageForModel model: BuyerPickerProfileModel, imageWidth: CGFloat)
 }
 
-class ReviewProfileCell: UITableViewCell {
+class BuyerPickerProfileCell: UITableViewCell {
     static let profileImageSize: CGFloat = 44
-    static let radioButtonSize: CGFloat = 26
 
     lazy var profileImage: RoundedImageView = {
         let image = RoundedImageView()
@@ -32,24 +32,23 @@ class ReviewProfileCell: UITableViewCell {
         return view
     }()
 
-    lazy var radioButton: AnimatedRadioButtonView = {
-        let radioButton = AnimatedRadioButtonView(frame: .zero)
-        radioButton.translatesAutoresizingMaskIntoConstraints = false
-        return radioButton
-    }()
-
-    var model: ReviewViewProfileModel? {
+    var model: BuyerPickerProfileModel? {
         didSet {
             name.text = model?.name ?? ""
         }
     }
 
-    weak var delegate: ReviewProfileCellDelegate?
+    weak var delegate: BuyerPickerCellDelegate?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
 
-        let profileStack = UIStackView(arrangedSubviews: [radioButton, profileImage, name])
+    private func setup() {
+        accessoryType = .disclosureIndicator
+
+        let profileStack = UIStackView(arrangedSubviews: [profileImage, name])
         profileStack.alignment = .center
         profileStack.spacing = .mediumSpacing
         profileStack.translatesAutoresizingMaskIntoConstraints = false
@@ -63,22 +62,16 @@ class ReviewProfileCell: UITableViewCell {
             profileStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             profileStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
 
-            profileImage.heightAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
-            profileImage.widthAnchor.constraint(equalToConstant: ReviewProfileCell.profileImageSize),
+            profileImage.heightAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
+            profileImage.widthAnchor.constraint(equalToConstant: BuyerPickerProfileCell.profileImageSize),
 
             hairlineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
             hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
             hairlineView.heightAnchor.constraint(equalToConstant: 2)
-            ])
+        ])
 
         selectionStyle = .none
-    }
-
-    override var isSelected: Bool {
-        didSet {
-            radioButton.animateSelection(selected: isSelected)
-        }
     }
 
     override func prepareForReuse() {
@@ -87,14 +80,17 @@ class ReviewProfileCell: UITableViewCell {
         name.text = ""
 
         if let model = model {
-            delegate?.reviewProfileCell(self, cancelLoadingImageForModel: model, imageWidth: ReviewProfileCell.profileImageSize)
+            delegate?.buyerPickerCell(self, cancelLoadingImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize)
         }
     }
 
     func loadImage() {
+        profileImage.image = delegate?.buyerPickerCellDefaultPlaceholderImage(self)
         guard let model = model else { return }
-        profileImage.image = delegate?.reviewProfileCell(self, loadImageForModel: model, imageWidth: ReviewProfileCell.profileImageSize, completion: { [weak self] image in
-            self?.profileImage.image = image
+        delegate?.buyerPickerCell(self, loadImageForModel: model, imageWidth: BuyerPickerProfileCell.profileImageSize, completion: { [weak self] image in
+            if let image = image {
+                self?.profileImage.image = image
+            }
         })
     }
 
