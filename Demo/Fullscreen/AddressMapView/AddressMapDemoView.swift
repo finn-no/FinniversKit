@@ -88,8 +88,8 @@ extension AddressMapDemoView: AddressMapViewDelegate {
         print("addressViewDidSelectMapTypeButton")
     }
 
-    func addressMapViewWillChangeRegion(_ addressMapView: AddressMapView) {
-        print("addressMapViewWillChangeRegion")
+    func addressMapViewDidTapOnMap(_ addressMapView: AddressMapView) {
+        print("addressMapViewDidTapOnMap")
     }
 }
 

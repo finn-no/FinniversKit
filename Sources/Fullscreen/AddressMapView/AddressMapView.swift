@@ -8,7 +8,7 @@ import MapKit
 public protocol AddressMapViewDelegate: AnyObject {
     func addressMapViewDidSelectPinButton(_ addressMapView: AddressMapView)
     func addressMapViewDidSelectViewModeButton(_ addressMapView: AddressMapView, sender: UIView)
-    func addressMapViewWillChangeRegion(_ addressMapView: AddressMapView)
+    func addressMapViewDidTapOnMap(_ addressMapView: AddressMapView)
 }
 
 public class AddressMapView: UIView {
@@ -26,6 +26,7 @@ public class AddressMapView: UIView {
         view.isRotateEnabled = false
         view.isPitchEnabled = false
         view.delegate = self
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMapTap)))
         return view
     }()
 
@@ -146,6 +147,10 @@ public class AddressMapView: UIView {
         delegate?.addressMapViewDidSelectPinButton(self)
     }
 
+    @objc private func handleMapTap() {
+        delegate?.addressMapViewDidTapOnMap(self)
+    }
+
     private func removeCurrentAnnotationAndShapeOverlays() {
         if let oldAnnotation = annotation {
             mapView.removeAnnotation(oldAnnotation)
@@ -181,10 +186,6 @@ extension AddressMapView: MKMapViewDelegate {
         } else {
             return MKOverlayRenderer(overlay: overlay)
         }
-    }
-
-    public func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        delegate?.addressMapViewWillChangeRegion(self)
     }
 }
 
