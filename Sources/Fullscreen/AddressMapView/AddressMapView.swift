@@ -8,6 +8,7 @@ import MapKit
 public protocol AddressMapViewDelegate: AnyObject {
     func addressMapViewDidSelectPinButton(_ addressMapView: AddressMapView)
     func addressMapViewDidSelectViewModeButton(_ addressMapView: AddressMapView, sender: UIView)
+    func addressMapViewWillChangeRegion(_ addressMapView: AddressMapView)
 }
 
 public class AddressMapView: UIView {
@@ -180,6 +181,10 @@ extension AddressMapView: MKMapViewDelegate {
         } else {
             return MKOverlayRenderer(overlay: overlay)
         }
+    }
+
+    public func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+
     }
 }
 
