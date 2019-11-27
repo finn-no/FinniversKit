@@ -11,7 +11,4 @@ public protocol AddressViewModel {
     var subtitle: String { get }
     var copyButtonTitle: String { get }
     var getDirectionsButtonTitle: String { get }
-
-    @available(iOS 13.0, *)
-    var mapZoomRange: MapZoomRange? { get }
 }
