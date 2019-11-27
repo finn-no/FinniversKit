@@ -106,7 +106,7 @@ public final class SearchResultMapView: UIView {
     }
 
     @available(iOS 13.0, *)
-    public func setMapZoomRange(_ range: MapZoomRange) {
+    public func configureMapZoomRange(_ range: MapZoomRange) {
         mapView.setCameraZoomRange(range.toCameraZoomRange(), animated: false)
     }
 
