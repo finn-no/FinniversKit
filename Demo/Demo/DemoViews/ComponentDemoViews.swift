@@ -4,6 +4,7 @@
 import FinniversKit
 
 public enum ComponentDemoViews: String, CaseIterable {
+    case addressCardView
     case button
     case dialogue
     case floatingButton
@@ -60,6 +61,8 @@ public enum ComponentDemoViews: String, CaseIterable {
 
     public var viewController: UIViewController {
         switch self {
+        case .addressCardView:
+            return DemoViewController<AddressCardDemoView>()
         case .button:
             return DemoViewController<ButtonDemoView>()
         case .dialogue:

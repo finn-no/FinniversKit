@@ -3,20 +3,21 @@
 //
 
 import UIKit
-import MapKit
 
-protocol AddressCardViewDelegate: AnyObject {
+public protocol AddressCardViewDelegate: AnyObject {
     func addressCardViewDidSelectCopyButton(_ addressCardView: AddressCardView)
     func addressCardViewDidSelectGetDirectionsButton(_ addressCardView: AddressCardView, sender: UIView)
 }
 
-class AddressCardView: UIView {
-    weak var delegate: AddressCardViewDelegate?
+public final class AddressCardView: UIView {
+    public weak var delegate: AddressCardViewDelegate?
+
+    // MARK: - Private properties
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .title3Strong)
-        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         return label
     }()
 
@@ -29,6 +30,7 @@ class AddressCardView: UIView {
     private lazy var copyButton: Button = {
         let button = Button(style: .default, size: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setContentCompressionResistancePriority(.required, for: .horizontal)
         button.addTarget(self, action: #selector(copyAction), for: .touchUpInside)
         return button
     }()
@@ -40,6 +42,8 @@ class AddressCardView: UIView {
         return button
     }()
 
+    // MARK: - Init
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -49,59 +53,54 @@ class AddressCardView: UIView {
         fatalError()
     }
 
-    var model: AddressViewModel? {
-        didSet {
-            guard let model = model else { return }
+    // MARK: - Setup
 
-            titleLabel.text = model.title
-            subtitleLabel.text = model.subtitle
-            copyButton.setTitle(model.copyButtonTitle, for: .normal)
-            getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
-        }
+    public func configure(with model: AddressCardViewModel) {
+        titleLabel.text = model.title
+        subtitleLabel.text = model.subtitle
+        copyButton.setTitle(model.copyButtonTitle, for: .normal)
+        getDirectionsButton.setTitle(model.getDirectionsButtonTitle, for: .normal)
     }
-}
 
-extension AddressCardView {
     private func setup() {
-        clipsToBounds = true
-        layer.cornerRadius = 16
-
-        if UIDevice.isIPhone() {
-            layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        }
-
-        layer.masksToBounds = false
-        layer.shadowOpacity = 0.3
-        layer.shadowRadius = 3
-        layer.shadowOffset = .zero
-        layer.shadowColor = UIColor.black.cgColor
-
         backgroundColor = .bgPrimary
 
-        let columnStackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
-        columnStackView.translatesAutoresizingMaskIntoConstraints = false
-        columnStackView.axis = .vertical
-        columnStackView.distribution = .equalCentering
-        columnStackView.spacing = .smallSpacing
-
-        addSubview(columnStackView)
+        addSubview(titleLabel)
+        addSubview(subtitleLabel)
         addSubview(copyButton)
         addSubview(getDirectionsButton)
 
         NSLayoutConstraint.activate([
-            columnStackView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing + .mediumSpacing),
-            columnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            columnStackView.trailingAnchor.constraint(lessThanOrEqualTo: copyButton.leadingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(
+                lessThanOrEqualTo: copyButton.leadingAnchor,
+                constant: -.mediumLargeSpacing
+            ),
 
-            copyButton.centerYAnchor.constraint(equalTo: columnStackView.centerYAnchor),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
+            subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            subtitleLabel.trailingAnchor.constraint(
+                lessThanOrEqualTo: copyButton.leadingAnchor,
+                constant: -.mediumLargeSpacing
+            ),
+
+            copyButton.centerYAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .verySmallSpacing),
             copyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            getDirectionsButton.topAnchor.constraint(equalTo: columnStackView.bottomAnchor, constant: .mediumLargeSpacing + .mediumSpacing),
+            getDirectionsButton.topAnchor.constraint(
+                equalTo: subtitleLabel.bottomAnchor,
+                constant: .mediumLargeSpacing + .mediumSpacing
+            ),
             getDirectionsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             getDirectionsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            getDirectionsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumLargeSpacing + -.mediumSpacing)
-            ])
+            getDirectionsButton.bottomAnchor.constraint(
+                equalTo: bottomAnchor,
+                constant: -.mediumLargeSpacing + -.mediumSpacing)
+        ])
     }
+
+    // MARK: - Actions
 
     @objc private func getDirectionsAction() {
         delegate?.addressCardViewDidSelectGetDirectionsButton(self, sender: getDirectionsButton)
