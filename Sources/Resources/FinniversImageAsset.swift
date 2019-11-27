@@ -176,6 +176,7 @@ public enum FinniversImageAsset: String {
     case vehicles
     case verified
     case view
+    case viewMode
     case webview
     case wrench
     case yourads
@@ -339,6 +340,7 @@ public enum FinniversImageAsset: String {
             .vehicles,
             .verified,
             .view,
+            .viewMode,
             .webview,
             .wrench,
             .yourads,

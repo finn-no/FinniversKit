@@ -22,7 +22,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case confirmationView
     case fullscreenGallery
     case contactFormView
-    case addressView
+    case addressMapView
     case messageFormView
     case favoriteAdsList
     case favoriteFolderActionSheet
@@ -81,8 +81,11 @@ public enum FullscreenDemoViews: String, CaseIterable {
             let bottomSheet = MessageFormBottomSheet(viewModel: MessageFormDemoViewModel())
             bottomSheet.messageFormDelegate = MessageFormDemoPresenter.shared
             return bottomSheet
-        case .addressView:
-            return DemoViewController<AddressViewDemoView>(containmentOptions: [.navigationController, .tabBarController])
+        case .addressMapView:
+            return DemoViewController<AddressMapDemoView>(
+                dismissType: .dismissButton,
+                constrainToBottomSafeArea: false
+            )
         case .favoriteAdsList:
             return DemoViewController<FavoriteAdsListDemoView>(constrainToBottomSafeArea: false)
         case .favoriteFolderActionSheet:

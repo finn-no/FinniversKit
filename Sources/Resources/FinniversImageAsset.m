@@ -164,6 +164,7 @@ NSString *const FinniversImageAssetuncheckCircle = @"uncheckCircle";
 NSString *const FinniversImageAssetvehicles = @"vehicles";
 NSString *const FinniversImageAssetverified = @"verified";
 NSString *const FinniversImageAssetview = @"view";
+NSString *const FinniversImageAssetviewMode = @"viewMode";
 NSString *const FinniversImageAssetwebview = @"webview";
 NSString *const FinniversImageAssetwrench = @"wrench";
 NSString *const FinniversImageAssetyourads = @"yourads";
@@ -328,6 +329,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetvehicles,
              FinniversImageAssetverified,
              FinniversImageAssetview,
+             FinniversImageAssetviewMode,
              FinniversImageAssetwebview,
              FinniversImageAssetwrench,
              FinniversImageAssetyourads,
