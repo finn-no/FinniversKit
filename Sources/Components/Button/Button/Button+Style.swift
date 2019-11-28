@@ -108,6 +108,8 @@ public extension Button {
                 return .caption
             case (.link, .small):
                 return .detail
+            case (.destructiveFlat, .normal):
+                return .detailStrong
             case (_, .normal):
                 return .bodyStrong
             case (_, .small):
