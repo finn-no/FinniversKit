@@ -17,9 +17,9 @@ NSString *const FinniversImageAssetarrowUpSmall = @"arrowUpSmall";
 NSString *const FinniversImageAssetattachment = @"attachment";
 NSString *const FinniversImageAssetavatar = @"avatar";
 NSString *const FinniversImageAssetballoon0 = @"balloon0";
-NSString *const FinniversImageAssetballoon1 = @"balloon1";
+NSString *const FinniversImageAssetballoon00 = @"balloon00";
 NSString *const FinniversImageAssetballoon2 = @"balloon2";
-NSString *const FinniversImageAssetballoon9 = @"balloon9";
+NSString *const FinniversImageAssetballoon22 = @"balloon22";
 NSString *const FinniversImageAssetbankID = @"bankID";
 NSString *const FinniversImageAssetblockUser = @"blockUser";
 NSString *const FinniversImageAssetboat = @"boat";
@@ -68,6 +68,7 @@ NSString *const FinniversImageAssetfavouriteAdded = @"favouriteAdded";
 NSString *const FinniversImageAssetfavouriteAddedImg = @"favouriteAddedImg";
 NSString *const FinniversImageAssetfavourites = @"favourites";
 NSString *const FinniversImageAssetfinnLogo = @"finnLogo";
+NSString *const FinniversImageAssetfinnLogoSimple = @"finnLogoSimple";
 NSString *const FinniversImageAssetgallery = @"gallery";
 NSString *const FinniversImageAssetgift = @"gift";
 NSString *const FinniversImageAssetgiftRoundedRectRed = @"giftRoundedRectRed";
@@ -163,6 +164,7 @@ NSString *const FinniversImageAssetuncheckCircle = @"uncheckCircle";
 NSString *const FinniversImageAssetvehicles = @"vehicles";
 NSString *const FinniversImageAssetverified = @"verified";
 NSString *const FinniversImageAssetview = @"view";
+NSString *const FinniversImageAssetviewMode = @"viewMode";
 NSString *const FinniversImageAssetwebview = @"webview";
 NSString *const FinniversImageAssetwrench = @"wrench";
 NSString *const FinniversImageAssetyourads = @"yourads";
@@ -180,9 +182,9 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetattachment,
              FinniversImageAssetavatar,
              FinniversImageAssetballoon0,
-             FinniversImageAssetballoon1,
+             FinniversImageAssetballoon00,
              FinniversImageAssetballoon2,
-             FinniversImageAssetballoon9,
+             FinniversImageAssetballoon22,
              FinniversImageAssetbankID,
              FinniversImageAssetblockUser,
              FinniversImageAssetboat,
@@ -231,6 +233,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetfavouriteAddedImg,
              FinniversImageAssetfavourites,
              FinniversImageAssetfinnLogo,
+             FinniversImageAssetfinnLogoSimple,
              FinniversImageAssetgallery,
              FinniversImageAssetgift,
              FinniversImageAssetgiftRoundedRectRed,
@@ -326,6 +329,7 @@ NSString *const FinniversImageAssetyourads = @"yourads";
              FinniversImageAssetvehicles,
              FinniversImageAssetverified,
              FinniversImageAssetview,
+             FinniversImageAssetviewMode,
              FinniversImageAssetwebview,
              FinniversImageAssetwrench,
              FinniversImageAssetyourads,

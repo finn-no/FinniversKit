@@ -4,6 +4,7 @@
 import FinniversKit
 
 public enum ComponentDemoViews: String, CaseIterable {
+    case addressCardView
     case button
     case dialogue
     case floatingButton
@@ -26,7 +27,6 @@ public enum ComponentDemoViews: String, CaseIterable {
     case refreshControl
     case reviewButtonView
     case horizontalSlide
-    case newYearsView
     case bottomSheetMechanics
     case feedbackView
     case happinessRating
@@ -53,6 +53,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case selectorTitleView
     case priming
     case footerButtonView
+    case checkmarkTitleView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -60,6 +61,8 @@ public enum ComponentDemoViews: String, CaseIterable {
 
     public var viewController: UIViewController {
         switch self {
+        case .addressCardView:
+            return DemoViewController<AddressCardDemoView>()
         case .button:
             return DemoViewController<ButtonDemoView>()
         case .dialogue:
@@ -108,8 +111,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             secondViewController.transitioningDelegate = presentedViewController.transition
             secondViewController.modalPresentationStyle = .custom
             return secondViewController
-        case .newYearsView:
-            return DemoViewController<NewYearsDemoView>()
         case .bottomSheetMechanics:
             return BottomSheetMechanicsDemoViewController()
         case .feedbackView:
@@ -165,6 +166,8 @@ public enum ComponentDemoViews: String, CaseIterable {
             )
         case .footerButtonView:
             return DemoViewController<FooterButtonDemoView>(constrainToBottomSafeArea: false)
+        case .checkmarkTitleView:
+            return DemoViewController<CheckmarkTitleViewDemoView>()
         }
     }
 }

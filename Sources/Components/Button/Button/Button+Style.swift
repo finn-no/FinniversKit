@@ -15,12 +15,13 @@ public extension Button {
         case callToAction
         case destructive
         case flat
+        case destructiveFlat
         case link
 
         var bodyColor: UIColor {
             switch self {
             case .default: return .bgPrimary
-            case .link, .flat: return .clear
+            case .link, .flat, .destructiveFlat: return .clear
             case .callToAction: return .btnPrimary
             case .destructive: return .btnCritical
             }
@@ -43,6 +44,7 @@ public extension Button {
         var textColor: UIColor {
             switch self {
             case .default, .link, .flat: return .textAction
+            case .destructiveFlat: return .textCritical
             default: return .textTertiary
             }
         }
@@ -67,13 +69,14 @@ public extension Button {
             switch self {
             case .link: return .linkButtonHighlightedTextColor
             case .flat: return .flatButtonHighlightedTextColor
+            case .destructiveFlat: return .destructiveFlatButtonHighlightedTextColor
             default: return nil
             }
         }
 
         var disabledBodyColor: UIColor? {
             switch self {
-            case .default, .link, .flat: return nil
+            case .default, .link, .flat, .destructiveFlat: return nil
             default: return .btnDisabled
             }
         }
@@ -105,6 +108,8 @@ public extension Button {
                 return .caption
             case (.link, .small):
                 return .detail
+            case (.destructiveFlat, .normal):
+                return .detailStrong
             case (_, .normal):
                 return .bodyStrong
             case (_, .small):

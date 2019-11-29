@@ -19,6 +19,10 @@ class ComponentViewTests: XCTestCase {
         }
     }
 
+    func testAddressCardView() {
+        snapshot(.addressCardView)
+    }
+
     func testButton() {
         snapshot(.button)
     }
@@ -97,10 +101,6 @@ class ComponentViewTests: XCTestCase {
 
     func testHorizontalSlide() {
         snapshot(.horizontalSlide)
-    }
-
-    func testNewYearsView() {
-        snapshot(.newYearsView)
     }
 
     func testBannerTransparencyView() {
@@ -213,5 +213,9 @@ class ComponentViewTests: XCTestCase {
 
     func testBroadcast() {
         snapshot(.broadcast)
+    }
+
+    func testCheckmarkTitleView() {
+        snapshot(.checkmarkTitleView)
     }
 }

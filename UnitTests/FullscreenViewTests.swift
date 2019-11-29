@@ -37,8 +37,8 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.reportAdView)
     }
 
-    func testReviewView() {
-        snapshot(.reviewView)
+    func testBuyerPickerView() {
+        snapshot(.buyerPickerView)
     }
 
     func testRegisterView() {
@@ -59,14 +59,6 @@ class FullscreenViewTests: XCTestCase {
 
     func testLoadingView() {
         snapshot(.loadingView)
-    }
-
-    func testConsentToggleView() {
-        snapshot(.consentToggleView)
-    }
-
-    func testConsentActionView() {
-        snapshot(.consentActionView)
     }
 
     func testSoldView() {
@@ -93,12 +85,8 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.loginEntryView)
     }
 
-    func testReceiptView() {
-        snapshot(.receiptView)
-    }
-
-    func testAddressView() {
-        snapshot(.addressView)
+    func testAddressMapView() {
+        snapshot(.addressMapView)
     }
 
     func testFavoriteAdsList() {
@@ -135,5 +123,17 @@ class FullscreenViewTests: XCTestCase {
 
     func testPopovers() {
         snapshot(.popovers)
+    }
+
+    func testSettingDetails() {
+        snapshot(.settingDetails)
+    }
+
+    func testNewYearsView() {
+        snapshot(.newYearsView)
+    }
+
+    func testAdConfirmationView() {
+        snapshot(.adConfirmationView)
     }
 }

@@ -20,6 +20,7 @@ public class ButtonDemoView: UIView {
         let callToActionButton = Button(style: .callToAction)
         let destructiveButton = Button(style: .destructive)
         let flatButton = Button(style: .flat)
+        let destructiveFlatButton = Button(style: .destructiveFlat)
         let linkButton = Button(style: .link)
 
         let button1 = Button(style: .callToAction)
@@ -38,6 +39,7 @@ public class ButtonDemoView: UIView {
         destructiveButton.setTitle("Destructive button", for: .normal)
 
         flatButton.setTitle("Flat button", for: .normal)
+        destructiveFlatButton.setTitle("Destructive Flat button", for: .normal)
         linkButton.setTitle("Link button", for: .normal)
 
         button1.setTitle("Left button", for: .normal)
@@ -62,8 +64,8 @@ public class ButtonDemoView: UIView {
         destructiveButton.translatesAutoresizingMaskIntoConstraints = false
 
         flatButton.translatesAutoresizingMaskIntoConstraints = false
+        destructiveFlatButton.translatesAutoresizingMaskIntoConstraints = false
         linkButton.translatesAutoresizingMaskIntoConstraints = false
-
         button1.translatesAutoresizingMaskIntoConstraints = false
         button2.translatesAutoresizingMaskIntoConstraints = false
 
@@ -80,6 +82,7 @@ public class ButtonDemoView: UIView {
         addSubview(destructiveButton)
 
         addSubview(flatButton)
+        addSubview(destructiveFlatButton)
         addSubview(linkButton)
 
         addSubview(button1)
@@ -108,7 +111,11 @@ public class ButtonDemoView: UIView {
             destructiveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
             flatButton.topAnchor.constraint(equalTo: destructiveButton.bottomAnchor, constant: .mediumLargeSpacing),
-            flatButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            flatButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            flatButton.trailingAnchor.constraint(lessThanOrEqualTo: button2.leadingAnchor),
+
+            destructiveFlatButton.topAnchor.constraint(equalTo: flatButton.topAnchor),
+            destructiveFlatButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
             linkButton.topAnchor.constraint(equalTo: flatButton.bottomAnchor, constant: .mediumLargeSpacing),
             linkButton.centerXAnchor.constraint(equalTo: centerXAnchor),
