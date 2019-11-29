@@ -105,6 +105,11 @@ public final class SearchResultMapView: UIView {
         mapView.removeAnnotations(mapView.annotations)
     }
 
+    @available(iOS 13.0, *)
+    public func configureMapZoomRange(_ range: MapZoomRange) {
+        mapView.setCameraZoomRange(range.toCameraZoomRange(), animated: false)
+    }
+
     /// Set the visible region so that the map focuses all annotations of the type SearchResultMapViewAnnotation
     ///
     /// - Parameter animated: optionaly present animated
