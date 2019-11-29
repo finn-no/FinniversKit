@@ -17,13 +17,18 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
     private lazy var headerStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
         stackView.axis = .horizontal
+        stackView.alignment = .center
         return stackView
     }()
 
-    private lazy var titleLabel: Label = Label(style: .bodyStrong, withAutoLayout: true)
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        return label
+    }()
 
-    private lazy var fullStatisticsButton: Button = {
-        let button = Button(style: .link, withAutoLayout: true)
+    private lazy var fullStatisticsButton: FullStatisticsButton = {
+        let button = FullStatisticsButton(style: .link, withAutoLayout: true)
         button.addTarget(self, action: #selector(fullStatisticsButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -118,6 +123,50 @@ public class UserAdManagementStatisticsCell: UITableViewCell {
             stackView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+        ])
+    }
+}
+
+extension UserAdManagementStatisticsCell {
+    class FullStatisticsButton: Button {
+        private lazy var iconImageView: UIImageView = {
+            let imageView = UIImageView(withAutoLayout: true)
+            imageView.image = UIImage(named: .webview).withRenderingMode(.alwaysTemplate)
+            imageView.tintColor = .fullstatisticIconTint
+
+            return imageView
+        }()
+
+        private let iconSize: CGFloat = 10
+
+        override init(style: Style, size: Size = .normal, withAutoLayout: Bool = false) {
+            super.init(style: style, size: size, withAutoLayout: withAutoLayout)
+            setup()
+        }
+
+        private func setup() {
+            contentHorizontalAlignment = .right
+            contentVerticalAlignment = .center
+            setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+            titleEdgeInsets = UIEdgeInsets(trailing: (.smallSpacing + iconSize))
+
+            addSubview(iconImageView)
+
+            guard let titleLabel = titleLabel else { return }
+
+            NSLayoutConstraint.activate([
+                iconImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: .smallSpacing),
+                iconImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+                iconImageView.widthAnchor.constraint(equalToConstant: iconSize),
+                iconImageView.heightAnchor.constraint(equalToConstant: iconSize),
+            ])
+        }
+    }
+}
+
+extension UIColor {
+    public class var fullstatisticIconTint: UIColor {
+        dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
     }
 }
