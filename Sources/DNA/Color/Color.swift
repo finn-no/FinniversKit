@@ -456,7 +456,7 @@ extension CGColor {
 
 // MARK: - Private helper for creating dynamic color
 extension UIColor {
-    private class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
+    class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
         switch FinniversKit.userInterfaceStyleSupport {
         case .forceDark:
             return darkModeColor
