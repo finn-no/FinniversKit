@@ -29,7 +29,6 @@ public class AdsGridViewCell: UICollectionViewCell {
     private lazy var imageContentView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.layer.borderWidth = 1
-        view.layer.borderColor = .imageBorder
         view.layer.cornerRadius = AdsGridViewCell.cornerRadius
         view.layer.masksToBounds = true
         return view
@@ -242,6 +241,11 @@ public class AdsGridViewCell: UICollectionViewCell {
         imageView.cancelLoading()
         logoImageView.cancelLoading()
         logoImageView.image = nil
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        imageContentView.layer.borderColor = .imageBorder
     }
 
     // MARK: - Dependency injection
