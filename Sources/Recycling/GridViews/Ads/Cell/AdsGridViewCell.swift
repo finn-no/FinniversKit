@@ -26,7 +26,7 @@ public class AdsGridViewCell: UICollectionViewCell {
     private static let minImageAspectRatio: CGFloat = 0.75
     private static let maxImageAspectRatio: CGFloat = 1.5
 
-    private lazy var imageBackgroundView: UIView = {
+    private lazy var imageContentView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.layer.borderWidth = 1
         view.layer.borderColor = .imageBorder
@@ -87,8 +87,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         view.alpha = 1.0
         view.layer.cornerRadius = AdsGridViewCell.cornerRadius
         view.layer.masksToBounds = true
-        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
-
+        view.layer.maskedCorners = [.layerMaxXMinYCorner]
         return view
     }()
 
@@ -107,7 +106,7 @@ public class AdsGridViewCell: UICollectionViewCell {
     }()
 
     private lazy var subtitleToImageConstraint = subtitleLabel.topAnchor.constraint(
-        equalTo: imageBackgroundView.bottomAnchor,
+        equalTo: imageContentView.bottomAnchor,
         constant: AdsGridViewCell.subtitleTopMargin
     )
 
@@ -123,7 +122,7 @@ public class AdsGridViewCell: UICollectionViewCell {
     /// The loading color is used to fill the image view while we load the image.
     public var loadingColor: UIColor? {
         didSet {
-            imageBackgroundView.backgroundColor = loadingColor
+            imageContentView.backgroundColor = loadingColor
         }
     }
 
@@ -156,15 +155,15 @@ public class AdsGridViewCell: UICollectionViewCell {
     private func setup() {
         isAccessibilityElement = true
 
-        addSubview(imageBackgroundView)
-        imageBackgroundView.addSubview(imageView)
+        addSubview(imageContentView)
+        imageContentView.addSubview(imageView)
+        imageContentView.addSubview(imageDescriptionView)
         imageView.fillInSuperview()
 
         addSubview(ribbonView)
         addSubview(logoImageView)
         addSubview(subtitleLabel)
         addSubview(titleLabel)
-        addSubview(imageDescriptionView)
         addSubview(favoriteButton)
         addSubview(accessoryLabel)
 
@@ -174,16 +173,16 @@ public class AdsGridViewCell: UICollectionViewCell {
         backgroundColor = .bgPrimary
 
         NSLayoutConstraint.activate([
-            imageBackgroundView.topAnchor.constraint(equalTo: topAnchor),
-            imageBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageBackgroundView.heightAnchor.constraint(greaterThanOrEqualTo: imageBackgroundView.widthAnchor, multiplier: AdsGridViewCell.minImageAspectRatio),
-            imageBackgroundView.heightAnchor.constraint(lessThanOrEqualTo: imageBackgroundView.widthAnchor, multiplier: AdsGridViewCell.maxImageAspectRatio),
+            imageContentView.topAnchor.constraint(equalTo: topAnchor),
+            imageContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageContentView.heightAnchor.constraint(greaterThanOrEqualTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.minImageAspectRatio),
+            imageContentView.heightAnchor.constraint(lessThanOrEqualTo: imageContentView.widthAnchor, multiplier: AdsGridViewCell.maxImageAspectRatio),
 
-            ribbonView.topAnchor.constraint(equalTo: imageBackgroundView.bottomAnchor, constant: AdsGridViewCell.ribbonTopMargin),
+            ribbonView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: AdsGridViewCell.ribbonTopMargin),
             ribbonView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-            logoImageView.topAnchor.constraint(equalTo: imageBackgroundView.bottomAnchor, constant: .mediumSpacing),
+            logoImageView.topAnchor.constraint(equalTo: imageContentView.bottomAnchor, constant: .mediumSpacing),
             logoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 50),
             logoImageView.heightAnchor.constraint(equalToConstant: 30),
@@ -215,7 +214,7 @@ public class AdsGridViewCell: UICollectionViewCell {
             imageDescriptionView.trailingAnchor.constraint(equalTo: imageTextLabel.trailingAnchor, constant: AdsGridViewCell.margin),
             imageDescriptionView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
             imageDescriptionView.heightAnchor.constraint(equalToConstant: AdsGridViewCell.imageDescriptionHeight),
-            imageDescriptionView.bottomAnchor.constraint(equalTo: imageBackgroundView.bottomAnchor),
+            imageDescriptionView.bottomAnchor.constraint(equalTo: imageContentView.bottomAnchor),
 
             favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: .smallSpacing),
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.smallSpacing),
@@ -231,7 +230,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         imageView.image = nil
         imageView.alpha = 0.0
         imageView.contentMode = .scaleAspectFill
-        imageBackgroundView.backgroundColor = loadingColor
+        imageContentView.backgroundColor = loadingColor
         iconImageView.image = nil
         titleLabel.text = ""
         subtitleLabel.text = ""
@@ -275,7 +274,7 @@ public class AdsGridViewCell: UICollectionViewCell {
         if let model = model {
             if !model.scaleImageToFillView {
                 imageView.contentMode = .scaleAspectFit
-                imageBackgroundView.backgroundColor = .white
+                imageContentView.backgroundColor = .white
             }
         }
     }
@@ -346,7 +345,7 @@ public class AdsGridViewCell: UICollectionViewCell {
 
         let performViewChanges = { [weak self] in
             self?.imageView.alpha = 1.0
-            self?.imageBackgroundView.backgroundColor = .clear
+            self?.imageContentView.backgroundColor = .clear
         }
 
         if animated {
