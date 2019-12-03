@@ -31,21 +31,13 @@ class LoanHeaderView: UIView {
         return label
     }()
 
-    private lazy var textStackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .vertical
-        stackView.spacing = .mediumSpacing
-        return stackView
+    private lazy var textContainerView: UIView = {
+        let view = UIView(withAutoLayout: true)
+        view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        return view
     }()
 
-    private lazy var valuesStackView: UIStackView = {
-        let stackView = UIStackView(withAutoLayout: true)
-        stackView.axis = .horizontal
-        stackView.alignment = .top
-        stackView.spacing = .mediumSpacing
-
-        return stackView
-    }()
+    private lazy var valuesContainerView: UIView = UIView(withAutoLayout: true)
 
     private lazy var outerStackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -55,17 +47,44 @@ class LoanHeaderView: UIView {
         return stackView
     }()
 
-    private lazy var titleLabel = Label(style: .body, withAutoLayout: true)
-    private lazy var valueLabel = Label(style: .title2, withAutoLayout: true)
-    private lazy var rentLabel = Label(style: .detailStrong, withAutoLayout: true)
-    private lazy var loanTotalLabel = Label(style: .detail, withAutoLayout: true)
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .body, withAutoLayout: true)
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.setContentHuggingPriority(.defaultHigh + 1, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultHigh + 1, for: .horizontal)
+        return label
+    }()
+
+    private lazy var valueLabel: Label = {
+        let label = Label(style: .title2, withAutoLayout: true)
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.setContentHuggingPriority(.defaultHigh + 1, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultHigh + 1, for: .horizontal)
+        return label
+    }()
+
+    private lazy var rentLabel: Label = {
+        let label = Label(style: .detailStrong, withAutoLayout: true)
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.setContentHuggingPriority(.defaultHigh + 1, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultHigh + 1, for: .horizontal)
+        return label
+    }()
+
+    private lazy var loanTotalLabel: Label = {
+        let label = Label(style: .detail, withAutoLayout: true)
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        label.setContentHuggingPriority(.defaultHigh + 1, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultHigh + 1, for: .horizontal)
+        return label
+    }()
 
     private lazy var logoImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-        imageView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        imageView.setContentHuggingPriority(.defaultHigh + 1, for: .vertical)
         return imageView
     }()
 
@@ -99,21 +118,46 @@ class LoanHeaderView: UIView {
 
     // MARK: - Private functions
     private func setup() {
-        textStackView.addArrangedSubview(titleLabel)
-        textStackView.addArrangedSubview(valueLabel)
-        textStackView.addArrangedSubview(rentLabel)
-        textStackView.addArrangedSubview(loanTotalLabel)
-
-        valuesStackView.addArrangedSubview(textStackView)
-        valuesStackView.addArrangedSubview(logoImageView)
-
-        outerStackView.addArrangedSubview(valuesStackView)
-        outerStackView.addArrangedSubview(errorText)
+        textContainerView.addSubview(titleLabel)
+        textContainerView.addSubview(valueLabel)
+        textContainerView.addSubview(rentLabel)
+        textContainerView.addSubview(loanTotalLabel)
 
         NSLayoutConstraint.activate([
-            logoImageView.widthAnchor.constraint(equalToConstant: logoSize.width),
-            logoImageView.heightAnchor.constraint(equalToConstant: logoSize.height)
+            titleLabel.topAnchor.constraint(equalTo: textContainerView.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
+
+            valueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+            valueLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
+            valueLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
+
+            rentLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: .mediumSpacing),
+            rentLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
+            rentLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
+
+            loanTotalLabel.topAnchor.constraint(equalTo: rentLabel.bottomAnchor, constant: .mediumSpacing),
+            loanTotalLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor),
+            loanTotalLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor),
+            loanTotalLabel.bottomAnchor.constraint(equalTo: textContainerView.bottomAnchor),
         ])
+
+        valuesContainerView.addSubview(textContainerView)
+        valuesContainerView.addSubview(logoImageView)
+
+        NSLayoutConstraint.activate([
+            textContainerView.topAnchor.constraint(equalTo: valuesContainerView.topAnchor),
+            textContainerView.bottomAnchor.constraint(equalTo: valuesContainerView.bottomAnchor),
+            textContainerView.leadingAnchor.constraint(equalTo: valuesContainerView.leadingAnchor),
+
+            logoImageView.topAnchor.constraint(equalTo: valuesContainerView.topAnchor),
+            logoImageView.heightAnchor.constraint(lessThanOrEqualTo: textContainerView.heightAnchor),
+            logoImageView.trailingAnchor.constraint(equalTo: valuesContainerView.trailingAnchor),
+            logoImageView.leadingAnchor.constraint(equalTo: textContainerView.trailingAnchor, constant: .mediumLargeSpacing),
+        ])
+
+        outerStackView.addArrangedSubview(valuesContainerView)
+        outerStackView.addArrangedSubview(errorText)
 
         addSubview(outerStackView)
         outerStackView.fillInSuperview()
