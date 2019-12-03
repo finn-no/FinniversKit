@@ -65,22 +65,22 @@ open class BasicTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    open func configure(with viewModel: BasicTableViewCellViewModel, indexPath: IndexPath? = nil) {
-        titleLabel.text = viewModel.title
+    open func configure(with viewModel: BasicTableViewCellViewModel?, indexPath: IndexPath? = nil) {
+        titleLabel.text = viewModel?.title
 
         let isSelected = selectedIndexPath != nil ? selectedIndexPath == indexPath : false
         titleLabel.textColor = isSelected ? .textAction : .textPrimary
 
         titleLabel.isEnabled = isEnabled
 
-        if let subtitle = viewModel.subtitle {
+        if let subtitle = viewModel?.subtitle {
             subtitleLabel.text = subtitle
             subtitleLabel.isHidden = false
         } else {
             subtitleLabel.isHidden = true
         }
 
-        if let detailText = viewModel.detailText {
+        if let detailText = viewModel?.detailText {
             detailLabel.text = detailText
             detailLabel.isHidden = false
             stackViewToDetailLabelConstraint.isActive = true
@@ -89,7 +89,7 @@ open class BasicTableViewCell: UITableViewCell {
             stackViewToDetailLabelConstraint.isActive = false
         }
 
-        if viewModel.hasChevron {
+        if viewModel?.hasChevron == true {
             accessoryType = .disclosureIndicator
             selectionStyle = .default
             if #available(iOS 13.0, *) {
