@@ -4,25 +4,11 @@
 
 import UIKit
 
-class MinFinnProfileCell: UITableViewCell {
+class MinFinnProfileCell: BasicTableViewCell {
 
     private lazy var profileImageView = UIImageView(
         withAutoLayout: true
     )
-
-    private lazy var titleLabel: Label = {
-        let label = Label(style: .body)
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private lazy var subtitleLabel: Label = {
-        let label = Label(style: .detail)
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
 
     private lazy var badgeImageView: UIImageView = {
         let image = UIImage(named: .verified)
@@ -53,9 +39,8 @@ class MinFinnProfileCell: UITableViewCell {
     }
 
     func configure(with model: MinFinnProfileCellModel?) {
+        super.configure(with: model)
         profileImageView.image = model?.image ?? UIImage(named: .avatar)
-        titleLabel.text = model?.title
-        subtitleLabel.text = model?.subtitle
         badgeImageView.isHidden = model?.showBadge == false
     }
 }
@@ -63,16 +48,20 @@ class MinFinnProfileCell: UITableViewCell {
 private extension MinFinnProfileCell {
     func setup() {
         backgroundColor = .clear
+        subtitleLabel.font = .detail
 
-        contentView.addSubview(roundedView)
+        contentView.insertSubview(roundedView, belowSubview: stackView)
         contentView.addSubview(profileImageView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(subtitleLabel)
         contentView.addSubview(badgeImageView)
 
         roundedView.fillInSuperview(
             insets: UIEdgeInsets(top: 0, left: .mediumLargeSpacing, bottom: 0, right: -.mediumLargeSpacing)
         )
+
+        stackView.alignment = .leading
+        stackViewLeadingAnchorConstraint.isActive = false
+        stackViewTopAnchorConstraint.constant = .mediumLargeSpacing
+        stackViewBottomAnchorConstraint.constant = -.mediumLargeSpacing
 
         NSLayoutConstraint.activate([
             profileImageView.leadingAnchor.constraint(equalTo: roundedView.leadingAnchor, constant: .mediumLargeSpacing),
@@ -80,18 +69,11 @@ private extension MinFinnProfileCell {
             profileImageView.widthAnchor.constraint(equalToConstant: 40),
             profileImageView.heightAnchor.constraint(equalToConstant: 40),
 
-            titleLabel.topAnchor.constraint(equalTo: roundedView.topAnchor, constant: .mediumLargeSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .mediumSpacing),
+            stackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .mediumSpacing),
 
             badgeImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: .smallSpacing),
             badgeImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
             badgeImageView.trailingAnchor.constraint(lessThanOrEqualTo: roundedView.trailingAnchor, constant: -.mediumLargeSpacing),
-
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .verySmallSpacing),
-            subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            subtitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: roundedView.trailingAnchor, constant: -.mediumLargeSpacing),
-
-            roundedView.bottomAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: .mediumLargeSpacing),
         ])
     }
 }
