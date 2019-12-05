@@ -44,6 +44,14 @@ public class AdManagementDemoView: UIView {
         ]
     ]
 
+    private lazy var statisticModel: StatisticsModel = {
+        let header = StatisticsModel.HeaderModel(
+            title: "Annonsestatistikk",
+            fullStatisticsTitle: "Se full statistikk"
+        )
+        return StatisticsModel(header: header, statisticItems: statisticsCellModels)
+    }()
+
     private var statisticsCellModels: [StatisticsItemModel] = [
         StatisticsItemModel(type: .seen, value: 968, text: "har sett annonsen"),
         StatisticsItemModel(type: .favourited, value: 16, text: "har lagret annonsen"),
@@ -88,11 +96,14 @@ extension AdManagementDemoView: UITableViewDataSource {
                 cell.itemModel = statisticsEmptyViewCellModel
                 return cell
             }
-            if indexPath.row == 0 {
+
+            switch indexPath.row {
+            case 0:
                 let cell = tableView.dequeue(UserAdManagementStatisticsCell.self, for: indexPath)
-                cell.itemModels = statisticsCellModels
+                cell.configure(with: statisticModel)
+                cell.delegate = self
                 return cell
-            } else {
+            default:
                 let cell = tableView.dequeue(UserAdManagementButtonAndInformationCell.self, for: indexPath)
                 cell.informationText = "Du kan øke synligheten av annonsen din ytterligere ved å oppgradere den."
                 cell.buttonText = "Kjøp mer synlighet"
@@ -116,4 +127,8 @@ extension AdManagementDemoView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 16
     }
+}
+
+extension AdManagementDemoView: UserAdManagementStatisticsCellDelegate {
+    public func userAdManagementStatisticsCellDidSelectFullStatistics(_ cell: UserAdManagementStatisticsCell) {}
 }
