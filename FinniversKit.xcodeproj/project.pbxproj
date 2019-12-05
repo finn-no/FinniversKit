@@ -215,6 +215,10 @@
 		45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63C20A9CA22008F4503 /* PopupView.swift */; };
 		45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */; };
 		468F59F2220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F59F1220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift */; };
+		49F1124B239121DA007D74EF /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F6F23570AF000CAA6BB /* SnapshotTesting */; };
+		49F114B22397F70E007D74EF /* SaveSearchPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */; };
+		49F114B623980235007D74EF /* SaveSearchPromptViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */; };
+		49F114BC2398FE34007D74EF /* SaveSearchPromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114BB2398FE34007D74EF /* SaveSearchPromptViewModel.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
@@ -803,6 +807,9 @@
 		45EDD63C20A9CA22008F4503 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
 		468F59F1220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsGridViewFlowLayout.swift; sourceTree = "<group>"; };
+		49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptView.swift; sourceTree = "<group>"; };
+		49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptViewDemoView.swift; sourceTree = "<group>"; };
+		49F114BB2398FE34007D74EF /* SaveSearchPromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptViewModel.swift; sourceTree = "<group>"; };
 		559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessageTests.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
@@ -1162,6 +1169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */,
+				49F1124B239121DA007D74EF /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1658,6 +1666,7 @@
 		4447F6641FDB2B110033DBC1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				49F114AC2396A5AE007D74EF /* New Group */,
 				CFDF39CB2385419E00D3B966 /* AddressCardView */,
 				DAB7FAAC21B690E900BF8CC6 /* BottomSheet */,
 				AF91BB95202C7487003E6366 /* Broadcast */,
@@ -2156,6 +2165,13 @@
 			path = ConsentTransparency;
 			sourceTree = "<group>";
 		};
+		49F114AC2396A5AE007D74EF /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		6266C06A22081B9200FB8004 /* AdManagement */ = {
 			isa = PBXGroup;
 			children = (
@@ -2404,6 +2420,7 @@
 			isa = PBXGroup;
 			children = (
 				9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift */,
+				49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */,
 			);
 			path = SaveSearch;
 			sourceTree = "<group>";
@@ -2413,6 +2430,8 @@
 			children = (
 				9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */,
 				9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */,
+				49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */,
+				49F114BB2398FE34007D74EF /* SaveSearchPromptViewModel.swift */,
 			);
 			path = SaveSearchView;
 			sourceTree = "<group>";
@@ -4122,7 +4141,7 @@
 			);
 			name = UnitTests;
 			packageProductDependencies = (
-				9BD13F6F23570AF000CAA6BB /* XCSwiftPackageProductDependency */,
+				9BD13F6F23570AF000CAA6BB /* SnapshotTesting */,
 			);
 			productName = UnitTests;
 			productReference = 14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */;
@@ -4187,7 +4206,7 @@
 			);
 			mainGroup = 25D04D721F583B1800EA317D;
 			packageReferences = (
-				9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference */,
+				9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 25D04D7C1F583B1800EA317D /* Products */;
 			projectDirPath = "";
@@ -4307,6 +4326,7 @@
 				146D3C401FBE466D00124B76 /* BaseDemoViewController.swift in Sources */,
 				14A873D4220879870029DEA8 /* ConfirmationViewDemoView.swift in Sources */,
 				44D9126A2077AD0200486848 /* PopupViewDefaultData.swift in Sources */,
+				49F114B623980235007D74EF /* SaveSearchPromptViewDemoView.swift in Sources */,
 				F26852E121F864BA000978C8 /* UserAdsListViewDemoViewHelpers.swift in Sources */,
 				44AEFC2722E722FC00D3C307 /* CheckboxCellDemoView.swift in Sources */,
 				44AEFC2822E722FC00D3C307 /* HeartSubtitleCellDemoView.swift in Sources */,
@@ -4761,6 +4781,7 @@
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
 				CF164D01230EB4EC00250822 /* FavoriteAdSortingSheet.swift in Sources */,
 				895175952248D4D1008003FB /* StepDot.swift in Sources */,
+				49F114BC2398FE34007D74EF /* SaveSearchPromptViewModel.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
 				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
 				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
@@ -4805,6 +4826,7 @@
 				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
 				9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */,
 				9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */,
+				49F114B22397F70E007D74EF /* SaveSearchPromptView.swift in Sources */,
 				9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */,
 				9A37DB2BD626D2CA592D303E /* FavoriteAdsSectionHeaderView.swift in Sources */,
 				9F213E38A1CEE430AAD26AEC /* IdentityView.swift in Sources */,
@@ -5192,7 +5214,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference */ = {
+		9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
@@ -5203,9 +5225,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9BD13F6F23570AF000CAA6BB /* XCSwiftPackageProductDependency */ = {
+		9BD13F6F23570AF000CAA6BB /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference */;
+			package = 9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
