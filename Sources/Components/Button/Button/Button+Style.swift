@@ -10,123 +10,55 @@ public extension Button {
         case small
     }
 
-    enum Style {
-        case `default`
-        case callToAction
-        case destructive
-        case flat
-        case destructiveFlat
-        case link
+    struct Style: Equatable {
+        let bodyColor: UIColor
+        let borderWidth: CGFloat
+        let borderColor: UIColor?
+        let textColor: UIColor
+        let highlightedBodyColor: UIColor?
+        let highlightedBorderColor: UIColor?
+        let highlightedTextColor: UIColor?
+        let disabledBodyColor: UIColor?
+        let disabledBorderColor: UIColor?
+        let disabledTextColor: UIColor?
+        let margins: UIEdgeInsets
+        let smallFont: UIFont
+        let normalFont: UIFont
 
-        var bodyColor: UIColor {
-            switch self {
-            case .default: return .bgPrimary
-            case .link, .flat, .destructiveFlat: return .clear
-            case .callToAction: return .btnPrimary
-            case .destructive: return .btnCritical
-            }
+        init(
+            bodyColor: UIColor,
+            borderWidth: CGFloat,
+            borderColor: UIColor?,
+            textColor: UIColor,
+            highlightedBodyColor: UIColor?,
+            highlightedBorderColor: UIColor?,
+            highlightedTextColor: UIColor?,
+            disabledBodyColor: UIColor?,
+            disabledBorderColor: UIColor?,
+            disabledTextColor: UIColor?,
+            margins: UIEdgeInsets = UIEdgeInsets(
+                vertical: .mediumSpacing,
+                horizontal: .mediumLargeSpacing
+            ),
+            smallFont: UIFont = .detailStrong,
+            normalFont: UIFont = .bodyStrong
+        ) {
+            self.bodyColor = bodyColor
+            self.borderWidth = borderWidth
+            self.borderColor = borderColor
+            self.textColor = textColor
+            self.highlightedBodyColor = highlightedBodyColor
+            self.highlightedBorderColor = highlightedBorderColor
+            self.highlightedTextColor = highlightedTextColor
+            self.disabledBodyColor = disabledBodyColor
+            self.disabledBorderColor = disabledBorderColor
+            self.disabledTextColor = disabledTextColor
+            self.margins = margins
+            self.smallFont = smallFont
+            self.normalFont = normalFont
         }
 
-        var borderWidth: CGFloat {
-            switch self {
-            case .default: return 2.0
-            default: return 0.0
-            }
-        }
-
-        var borderColor: UIColor? {
-            switch self {
-            case .default: return .accentSecondaryBlue
-            default: return nil
-            }
-        }
-
-        var textColor: UIColor {
-            switch self {
-            case .default, .link, .flat: return .textAction
-            case .destructiveFlat: return .textCritical
-            default: return .textTertiary
-            }
-        }
-
-        var highlightedBodyColor: UIColor? {
-            switch self {
-            case .callToAction: return .callToActionButtonHighlightedBodyColor
-            case .destructive: return .destructiveButtonHighlightedBodyColor
-            case .default: return .defaultButtonHighlightedBodyColor
-            default: return nil
-            }
-        }
-
-        var highlightedBorderColor: UIColor? {
-            switch self {
-            case .default: return .btnPrimary //DARK
-            default: return nil
-            }
-        }
-
-        var highlightedTextColor: UIColor? {
-            switch self {
-            case .link: return .linkButtonHighlightedTextColor
-            case .flat: return .flatButtonHighlightedTextColor
-            case .destructiveFlat: return .destructiveFlatButtonHighlightedTextColor
-            default: return nil
-            }
-        }
-
-        var disabledBodyColor: UIColor? {
-            switch self {
-            case .default, .link, .flat, .destructiveFlat: return nil
-            default: return .btnDisabled
-            }
-        }
-
-        var disabledBorderColor: UIColor? {
-            switch self {
-            case .default: return .btnDisabled
-            default: return nil
-            }
-        }
-
-        var disabledTextColor: UIColor? {
-            switch self {
-            case .callToAction, .destructive: return nil
-            default: return .textDisabled
-            }
-        }
-
-        var margins: UIEdgeInsets {
-            switch self {
-            case .link: return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
-            default: return UIEdgeInsets(top: .mediumSpacing, left: .mediumLargeSpacing, bottom: .mediumSpacing, right: .mediumLargeSpacing)
-            }
-        }
-
-        func font(forSize size: Size) -> UIFont {
-            switch (self, size) {
-            case (.link, .normal):
-                return .caption
-            case (.link, .small):
-                return .detail
-            case (.destructiveFlat, .normal):
-                return .detailStrong
-            case (_, .normal):
-                return .bodyStrong
-            case (_, .small):
-                return .detailStrong
-            }
-        }
-
-        func paddings(forSize size: Size) -> UIEdgeInsets {
-            switch size {
-            case .normal:
-                return UIEdgeInsets(top: .smallSpacing, left: 0, bottom: .smallSpacing, right: 0)
-            case .small:
-                return .zero
-            }
-        }
-
-        func backgroundColor(forState state: State) -> UIColor? {
+        func backgroundColor(forState state: UIControl.State) -> UIColor? {
             switch state {
             case .highlighted:
                 return highlightedBodyColor
@@ -137,7 +69,7 @@ public extension Button {
             }
         }
 
-        func borderColor(forState state: State) -> CGColor? {
+        func borderColor(forState state: UIControl.State) -> CGColor? {
             switch state {
             case .highlighted:
                 return highlightedBorderColor?.cgColor
@@ -147,5 +79,113 @@ public extension Button {
                 return borderColor?.cgColor
             }
         }
+        // MARK: - Size dependant methods
+
+        func paddings(forSize size: Size) -> UIEdgeInsets {
+            switch size {
+            case .normal: return UIEdgeInsets(vertical: .smallSpacing, horizontal: 0)
+            case .small: return .zero
+            }
+        }
+
+        func font(forSize size: Size) -> UIFont {
+            switch size {
+            case .normal: return normalFont
+            case .small: return smallFont
+            }
+        }
     }
+}
+
+// MARK: - Styles
+public extension Button.Style {
+    static let `default` = Button.Style(
+        bodyColor: .bgPrimary,
+        borderWidth: 2.0,
+        borderColor: .accentSecondaryBlue,
+        textColor: .textAction,
+        highlightedBodyColor: .defaultButtonHighlightedBodyColor,
+        highlightedBorderColor: .btnPrimary,
+        highlightedTextColor: nil,
+        disabledBodyColor: nil,
+        disabledBorderColor: .btnDisabled,
+        disabledTextColor: .textDisabled
+    )
+
+    static let callToAction = Button.Style(
+        bodyColor: .btnPrimary,
+        borderWidth: 0.0,
+        borderColor: nil,
+        textColor: .textTertiary,
+        highlightedBodyColor: .callToActionButtonHighlightedBodyColor,
+        highlightedBorderColor: nil,
+        highlightedTextColor: nil,
+        disabledBodyColor: .btnDisabled,
+        disabledBorderColor: nil,
+        disabledTextColor: nil
+    )
+
+    static let destructive = Button.Style(
+        bodyColor: .btnCritical,
+        borderWidth: 0.0,
+        borderColor: nil,
+        textColor: .textTertiary,
+        highlightedBodyColor: .destructiveButtonHighlightedBodyColor,
+        highlightedBorderColor: nil,
+        highlightedTextColor: nil,
+        disabledBodyColor: .btnDisabled,
+        disabledBorderColor: nil,
+        disabledTextColor: nil
+    )
+
+    static let flat = Button.Style(
+        bodyColor: .clear,
+        borderWidth: 0.0,
+        borderColor: nil,
+        textColor: .textAction,
+        highlightedBodyColor: nil,
+        highlightedBorderColor: nil,
+        highlightedTextColor: .flatButtonHighlightedTextColor,
+        disabledBodyColor: nil,
+        disabledBorderColor: nil,
+        disabledTextColor: .textDisabled,
+        margins: UIEdgeInsets(
+            vertical: .mediumSpacing,
+            horizontal: .mediumLargeSpacing
+        )
+    )
+
+    static let destructiveFlat = Button.Style(
+        bodyColor: .clear,
+        borderWidth: 0.0,
+        borderColor: nil,
+        textColor: .textCritical,
+        highlightedBodyColor: nil,
+        highlightedBorderColor: nil,
+        highlightedTextColor: .destructiveFlatButtonHighlightedTextColor,
+        disabledBodyColor: nil,
+        disabledBorderColor: nil,
+        disabledTextColor: .textDisabled,
+        smallFont: .detailStrong,
+        normalFont: .detailStrong
+    )
+
+    static let link = Button.Style(
+        bodyColor: .clear,
+        borderWidth: 0.0,
+        borderColor: nil,
+        textColor: .textAction,
+        highlightedBodyColor: nil,
+        highlightedBorderColor: nil,
+        highlightedTextColor: .linkButtonHighlightedTextColor,
+        disabledBodyColor: nil,
+        disabledBorderColor: nil,
+        disabledTextColor: .textDisabled,
+        margins: UIEdgeInsets(
+            vertical: .smallSpacing,
+            horizontal: 0
+        ),
+        smallFont: .detail,
+        normalFont: .caption
+    )
 }
