@@ -4,13 +4,13 @@
 
 import UIKit
 
-// MARK: - SaveSearchResultListPromptViewDelegate
+// MARK: - SaveSearchPromptViewDelegate
 
-public protocol SaveSearchResultListPromptViewDelegate: AnyObject {
-    func saveSearchResultListPromptView(_ saveSearchResultListPromptView: SaveSearchPromptView, didAcceptSaveSearch: Bool)
+public protocol SaveSearchPromptViewDelegate: AnyObject {
+    func saveSearchPromptView(_ saveSearchPromptView: SaveSearchPromptView, didAcceptSaveSearch: Bool)
 }
 
-// MARK: - SaveSearchResultListPromptView
+// MARK: - SaveSearchPromptView
 
 public class SaveSearchPromptView: UIView {
 
@@ -22,7 +22,7 @@ public class SaveSearchPromptView: UIView {
 
     // MARK: - Public properties
 
-    public weak var delegate: SaveSearchResultListPromptViewDelegate?
+    public weak var delegate: SaveSearchPromptViewDelegate?
 
     // MARK: - Private properties
 
@@ -75,9 +75,9 @@ public class SaveSearchPromptView: UIView {
         addSubview(dismissButton)
 
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: topAnchor, constant: .largeSpacing),
-            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            title.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
             positiveButton.topAnchor.constraint(equalTo: title.bottomAnchor, constant: .mediumLargeSpacing),
             positiveButton.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -116,10 +116,10 @@ public class SaveSearchPromptView: UIView {
     }
 
     @objc private func positiveButtonTapped() {
-        delegate?.saveSearchResultListPromptView(self, didAcceptSaveSearch: true)
+        delegate?.saveSearchPromptView(self, didAcceptSaveSearch: true)
     }
 
     @objc private func dismissButtonTapped() {
-        delegate?.saveSearchResultListPromptView(self, didAcceptSaveSearch: false)
+        delegate?.saveSearchPromptView(self, didAcceptSaveSearch: false)
     }
 }

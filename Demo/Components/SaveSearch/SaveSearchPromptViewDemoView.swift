@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-class SaveSearchPromptViewDemoView: UIView, SaveSearchResultListPromptViewDelegate {
+class SaveSearchPromptViewDemoView: UIView, SaveSearchPromptViewDelegate {
 
     let viewModels: [SaveSearchPromptView.State: SaveSearchPromptViewModel] = [
         .initial: SaveSearchPromptViewModel(title: "Ønsker du å bli varslet når det \n kommer nye treff i dette søket?", positiveButtonTitle: "Ja, takk!"),
@@ -40,7 +40,7 @@ class SaveSearchPromptViewDemoView: UIView, SaveSearchResultListPromptViewDelega
 
     }
 
-    func saveSearchResultListPromptView(_ saveSearchResultListPromptView: SaveSearchPromptView, didAcceptSaveSearch: Bool) {
+    func saveSearchPromptView(_ saveSearchPromptView: SaveSearchPromptView, didAcceptSaveSearch: Bool) {
         if didAcceptSaveSearch {
             saveSearchPromptView.setState(.accept, withViewModel: viewModels[.accept]!)
         } else {
