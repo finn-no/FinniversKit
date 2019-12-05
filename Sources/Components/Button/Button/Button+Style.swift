@@ -79,6 +79,41 @@ public extension Button {
                 return borderColor?.cgColor
             }
         }
+
+        /// Given an existing style, this helps to create a new one overriding some of the values of the original style
+        /// This method is intended for styles for concrete cases rather than default styles like `callToAction`
+        func overrideStyle(
+            bodyColor: UIColor? = nil,
+            borderWidth: CGFloat? = nil,
+            borderColor: UIColor? = nil,
+            textColor: UIColor? = nil,
+            highlightedBodyColor: UIColor? = nil,
+            highlightedBorderColor: UIColor? = nil,
+            highlightedTextColor: UIColor? = nil,
+            disabledBodyColor: UIColor? = nil,
+            disabledBorderColor: UIColor? = nil,
+            disabledTextColor: UIColor? = nil,
+            margins: UIEdgeInsets? = nil,
+            smallFont: UIFont? = nil,
+            normalFont: UIFont? = nil
+        ) -> Style {
+            Style(
+                bodyColor: bodyColor ?? self.bodyColor,
+                borderWidth: borderWidth ?? self.borderWidth,
+                borderColor: borderColor ?? self.borderColor,
+                textColor: textColor ?? self.textColor,
+                highlightedBodyColor: highlightedBodyColor ?? self.highlightedBodyColor,
+                highlightedBorderColor: highlightedBorderColor ?? self.highlightedBorderColor,
+                highlightedTextColor: highlightedTextColor ?? self.highlightedTextColor,
+                disabledBodyColor: disabledBodyColor ?? self.disabledBodyColor,
+                disabledBorderColor: disabledBorderColor ?? self.disabledBorderColor,
+                disabledTextColor: disabledTextColor ?? self.disabledTextColor,
+                margins: margins ?? self.margins,
+                smallFont: smallFont ?? self.smallFont,
+                normalFont: normalFont ?? self.normalFont
+            )
+        }
+
         // MARK: - Size dependant methods
 
         func paddings(forSize size: Size) -> UIEdgeInsets {
