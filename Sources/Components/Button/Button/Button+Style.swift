@@ -10,6 +10,13 @@ public extension Button {
         case small
     }
 
+    /// Convenience grouping of button state related properties
+    struct ButtonStateStyle {
+        let textColor: UIColor?
+        let backgroundColor: UIColor?
+        let borderColor: UIColor?
+    }
+
     struct Style: Equatable {
         let bodyColor: UIColor
         let borderWidth: CGFloat
@@ -53,6 +60,36 @@ public extension Button {
             self.disabledBodyColor = disabledBodyColor
             self.disabledBorderColor = disabledBorderColor
             self.disabledTextColor = disabledTextColor
+            self.margins = margins
+            self.smallFont = smallFont
+            self.normalFont = normalFont
+        }
+
+        init(
+            borderWidth: CGFloat,
+            normalStyle: ButtonStateStyle,
+            highlightedStyle: ButtonStateStyle,
+            disabledStyle: ButtonStateStyle,
+            margins: UIEdgeInsets = UIEdgeInsets(
+                vertical: .mediumSpacing,
+                horizontal: .mediumLargeSpacing
+            ),
+            smallFont: UIFont = .detailStrong,
+            normalFont: UIFont = .bodyStrong
+        ) {
+            self.borderWidth = borderWidth
+            self.bodyColor = normalStyle.backgroundColor ?? .bgPrimary
+            self.borderColor = normalStyle.borderColor
+            self.textColor = normalStyle.textColor ?? .textAction
+
+            self.highlightedBodyColor = highlightedStyle.backgroundColor
+            self.highlightedBorderColor = highlightedStyle.borderColor
+            self.highlightedTextColor = highlightedStyle.textColor
+
+            self.disabledBodyColor = disabledStyle.backgroundColor
+            self.disabledBorderColor = disabledStyle.borderColor
+            self.disabledTextColor = disabledStyle.textColor
+
             self.margins = margins
             self.smallFont = smallFont
             self.normalFont = normalFont
