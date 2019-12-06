@@ -51,6 +51,12 @@ public class MinFinnView: UIView {
     }
 }
 
+public extension MinFinnView {
+    func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
+        tableView.cellForRow(at: indexPath)
+    }
+}
+
 // MARK: - UITableViewDataSource
 extension MinFinnView: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
