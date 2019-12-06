@@ -1,9 +1,18 @@
 //
-//  SearchResultListEmptyViewModel.swift
-//  Demo
-//
-//  Created by Graneggen, Nina Røsdal on 06/12/2019.
-//  Copyright © 2019 FINN AS. All rights reserved.
+//  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
 import Foundation
+
+public class SearchResultListEmptyViewModel {
+
+    let title: String
+    let body: String
+    let buttonTitle: String?
+
+    public init(title: String, body: String, buttonTitle: String? = nil) {
+        self.title = title
+        self.body = body
+        self.buttonTitle = buttonTitle
+    }
+}

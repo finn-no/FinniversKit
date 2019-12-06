@@ -215,6 +215,9 @@
 		45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63C20A9CA22008F4503 /* PopupView.swift */; };
 		45EDD63F20A9CA22008F4503 /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */; };
 		468F59F2220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468F59F1220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift */; };
+		4974725B239A48BF0058D7B0 /* SearchResultListEmptyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725A239A48BF0058D7B0 /* SearchResultListEmptyDemoView.swift */; };
+		4974725D239A49480058D7B0 /* SearchResultListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725C239A49480058D7B0 /* SearchResultListEmptyView.swift */; };
+		4974725F239A49570058D7B0 /* SearchResultListEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725E239A49570058D7B0 /* SearchResultListEmptyViewModel.swift */; };
 		49F1124B239121DA007D74EF /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F6F23570AF000CAA6BB /* SnapshotTesting */; };
 		49F114B22397F70E007D74EF /* SaveSearchPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */; };
 		49F114B623980235007D74EF /* SaveSearchPromptViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */; };
@@ -808,6 +811,9 @@
 		45EDD63C20A9CA22008F4503 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		45EDD63D20A9CA22008F4503 /* PopupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
 		468F59F1220B20EA001CC0C5 /* MarketsGridViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsGridViewFlowLayout.swift; sourceTree = "<group>"; };
+		4974725A239A48BF0058D7B0 /* SearchResultListEmptyDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultListEmptyDemoView.swift; sourceTree = "<group>"; };
+		4974725C239A49480058D7B0 /* SearchResultListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultListEmptyView.swift; sourceTree = "<group>"; };
+		4974725E239A49570058D7B0 /* SearchResultListEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultListEmptyViewModel.swift; sourceTree = "<group>"; };
 		49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptView.swift; sourceTree = "<group>"; };
 		49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptViewDemoView.swift; sourceTree = "<group>"; };
 		49F114BB2398FE34007D74EF /* SaveSearchPromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptViewModel.swift; sourceTree = "<group>"; };
@@ -2423,6 +2429,7 @@
 			children = (
 				9BAB37D6230BE3E100E861D4 /* SaveSearchViewDemoViewController.swift */,
 				49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */,
+				4974725A239A48BF0058D7B0 /* SearchResultListEmptyDemoView.swift */,
 			);
 			path = SaveSearch;
 			sourceTree = "<group>";
@@ -2434,6 +2441,8 @@
 				9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */,
 				49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */,
 				49F114BB2398FE34007D74EF /* SaveSearchPromptViewModel.swift */,
+				4974725C239A49480058D7B0 /* SearchResultListEmptyView.swift */,
+				4974725E239A49570058D7B0 /* SearchResultListEmptyViewModel.swift */,
 			);
 			path = SaveSearchView;
 			sourceTree = "<group>";
@@ -4302,6 +4311,7 @@
 				DAD6EB2F236991EA00968497 /* SettingsViewDemoView.swift in Sources */,
 				44D912732077AD1200486848 /* EmptyViewDemoView.swift in Sources */,
 				44EBDA4F2347465C00F95F2B /* TestCheck.swift in Sources */,
+				4974725D239A49480058D7B0 /* SearchResultListEmptyView.swift in Sources */,
 				4423F227209CB24500B81D68 /* MiniToastView.swift in Sources */,
 				44AEFC2322E722FC00D3C307 /* RemoteImageCellDemoView.swift in Sources */,
 				55C5B27E203EB9DA007D7277 /* BroadcastDemoView.swift in Sources */,
@@ -4348,6 +4358,7 @@
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				AA864B392231589B00BAE95A /* DialogueDemoView.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
+				4974725B239A48BF0058D7B0 /* SearchResultListEmptyDemoView.swift in Sources */,
 				CFEF962F235F3BAE00B6AA7B /* PopoversDemoViewController.swift in Sources */,
 				44FEBC1323322D4C009AC5E4 /* RecyclingDemoViews.swift in Sources */,
 				081F51BA222930C500026C84 /* TextViewDemoView.swift in Sources */,
@@ -4409,6 +4420,7 @@
 				F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */,
 				449C60B8234DD8BC00C51A63 /* BasicTableViewDemoView.swift in Sources */,
 				8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */,
+				4974725F239A49570058D7B0 /* SearchResultListEmptyViewModel.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				CF164D0A230EBA2300250822 /* FavoriteSortingSheetDemoDelegate.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
