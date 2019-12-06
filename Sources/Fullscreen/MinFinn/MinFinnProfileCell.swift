@@ -5,7 +5,6 @@
 import UIKit
 
 protocol MinFinnProfileCellDelegate: AnyObject {
-    func minFinnProfileCellDidSelectProfileImage(_ cell: MinFinnProfileCell)
     func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void)
 }
 
@@ -16,6 +15,7 @@ class MinFinnProfileCell: UITableViewCell {
     private lazy var identityView: IdentityView = {
         let view = IdentityView(viewModel: nil)
         view.delegate = self
+        view.gestureRecognizers?.forEach({ view.removeGestureRecognizer($0) })
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -40,9 +40,7 @@ class MinFinnProfileCell: UITableViewCell {
 }
 
 extension MinFinnProfileCell: IdentityViewDelegate {
-    func identityViewWasTapped(_ identityView: IdentityView) {
-        delegate?.minFinnProfileCellDidSelectProfileImage(self)
-    }
+    func identityViewWasTapped(_ identityView: IdentityView) {}
 
     func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
         delegate?.minFinnProfileCell(self, loadImageWithUrl: url, completionHandler: completionHandler)
@@ -52,6 +50,7 @@ extension MinFinnProfileCell: IdentityViewDelegate {
 private extension MinFinnProfileCell {
     func setup() {
         backgroundColor = .clear
+        selectionStyle = .none
 
         contentView.addSubview(identityView)
         identityView.fillInSuperview(

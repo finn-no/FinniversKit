@@ -118,11 +118,6 @@ extension MinFinnView: UITableViewDelegate {
 }
 
 extension MinFinnView: MinFinnProfileCellDelegate {
-    func minFinnProfileCellDidSelectProfileImage(_ cell: MinFinnProfileCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        delegate?.minFinnView(self, didSelectProfileImageAt: indexPath)
-    }
-
     func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
         delegate?.minFinnVIew(self, loadImageWith: url, completion: completionHandler)
     }

@@ -44,6 +44,7 @@ class MinFinnDemoView: UIView {
     private lazy var minFinnView: MinFinnView = {
         let view = MinFinnView(withAutoLayout: true)
         view.dataSource = self
+        view.delegate = self
         return view
     }()
 
@@ -77,6 +78,8 @@ extension MinFinnDemoView: MinFinnViewDelegate {
     }
 
     func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath) {
+        let model = sections[indexPath.section].items[indexPath.item]
+        print("Did select model: \n\t- \(model)")
     }
 
     func minFinnVIew(_ view: MinFinnView, loadImageWith url: URL, completion: (UIImage?) -> Void) {
