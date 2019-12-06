@@ -5,10 +5,11 @@
 import FinniversKit
 
 private struct ProfileItem: MinFinnProfileCellModel {
-    let image: UIImage?
-    let title: String
-    let subtitle: String?
-    let showBadge: Bool
+    var profileImage: UIImage?
+    var profileImageUrl: URL?
+    var displayName: String
+    var subtitle: String
+    var isVerified: Bool
 }
 
 private struct IconItem: MinFinnIconCellModel {
@@ -29,7 +30,7 @@ class MinFinnDemoView: UIView {
 
     private lazy var sections = [
         Section(items: [
-            ProfileItem(image: nil, title: "Ola Nordmann", subtitle: "ola.nordmann@finn.no", showBadge: true)
+            ProfileItem(profileImage: nil, profileImageUrl: nil, displayName: "Ola Nordmann", subtitle: "ola.nordmann@finn.no", isVerified: true)
         ]),
         Section(items: [
             IconItem(icon: UIImage(named: "favorites"), title: "Favoritter"),
@@ -72,5 +73,16 @@ extension MinFinnDemoView: MinFinnViewDataSource {
 
     func minFinnView(_ view: MinFinnView, modelForRowAt indexPath: IndexPath) -> MinFinnCellModel {
         sections[indexPath.section].items[indexPath.item]
+    }
+}
+
+extension MinFinnDemoView: MinFinnViewDelegate {
+    func minFinnView(_ view: MinFinnView, didSelectProfileImageAt indexPath: IndexPath) {
+    }
+
+    func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath) {
+    }
+
+    func minFinnVIew(_ view: MinFinnView, loadImageWith url: URL, completion: (UIImage?) -> Void) {
     }
 }

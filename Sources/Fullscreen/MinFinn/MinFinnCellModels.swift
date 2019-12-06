@@ -11,17 +11,17 @@ extension MinFinnCellModel {
     public var detailText: String? { nil }
 }
 
-public protocol MinFinnProfileCellModel: MinFinnCellModel {
-    var image: UIImage? { get }
-    var subtitle: String? { get }
-    var showBadge: Bool { get }
-}
+public protocol MinFinnProfileCellModel: MinFinnCellModel, IdentityViewModel {}
 
 extension MinFinnProfileCellModel {
+    public var title: String { "" }
     public var hasChevron: Bool { false }
+    public var subtitle: String? { nil }
+    public var description: String? { nil }
+    public var displayMode: IdentityView.DisplayMode { .nonInteractible }
 }
 
-public protocol MinFinnIconCellModel: IconTitleTableViewCellViewModel, MinFinnCellModel {}
+public protocol MinFinnIconCellModel: MinFinnCellModel, IconTitleTableViewCellViewModel {}
 
 extension MinFinnIconCellModel {
     public var iconTintColor: UIColor? { .licorice }

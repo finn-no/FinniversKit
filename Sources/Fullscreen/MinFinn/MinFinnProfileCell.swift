@@ -4,23 +4,19 @@
 
 import UIKit
 
-class MinFinnProfileCell: BasicTableViewCell {
+protocol MinFinnProfileCellDelegate: AnyObject {
+    func minFinnProfileCellDidSelectProfileImage(_ cell: MinFinnProfileCell)
+    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void)
+}
 
-    private lazy var profileImageView = UIImageView(
-        withAutoLayout: true
-    )
+class MinFinnProfileCell: UITableViewCell {
 
-    private lazy var badgeImageView: UIImageView = {
-        let image = UIImage(named: .verified)
-        let imageView = UIImageView(image: image)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+    weak var delegate: MinFinnProfileCellDelegate?
 
-    private lazy var roundedView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.layer.cornerRadius = 8
-        view.backgroundColor = .bgSecondary
+    private lazy var identityView: IdentityView = {
+        let view = IdentityView(viewModel: nil)
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -35,45 +31,31 @@ class MinFinnProfileCell: BasicTableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        configure(with: nil)
+        identityView.viewModel = nil
     }
 
     func configure(with model: MinFinnProfileCellModel?) {
-        super.configure(with: model)
-        profileImageView.image = model?.image ?? UIImage(named: .avatar)
-        badgeImageView.isHidden = model?.showBadge == false
+        identityView.viewModel = model
+    }
+}
+
+extension MinFinnProfileCell: IdentityViewDelegate {
+    func identityViewWasTapped(_ identityView: IdentityView) {
+        delegate?.minFinnProfileCellDidSelectProfileImage(self)
+    }
+
+    func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
+        delegate?.minFinnProfileCell(self, loadImageWithUrl: url, completionHandler: completionHandler)
     }
 }
 
 private extension MinFinnProfileCell {
     func setup() {
         backgroundColor = .clear
-        subtitleLabel.font = .detail
 
-        contentView.insertSubview(roundedView, belowSubview: stackView)
-        contentView.addSubview(profileImageView)
-        contentView.addSubview(badgeImageView)
-
-        roundedView.fillInSuperview(
+        contentView.addSubview(identityView)
+        identityView.fillInSuperview(
             insets: UIEdgeInsets(top: 0, left: .mediumLargeSpacing, bottom: 0, right: -.mediumLargeSpacing)
         )
-
-        stackView.alignment = .leading
-        stackViewLeadingAnchorConstraint.isActive = false
-        stackViewTopAnchorConstraint.constant = .mediumLargeSpacing
-        stackViewBottomAnchorConstraint.constant = -.mediumLargeSpacing
-
-        NSLayoutConstraint.activate([
-            profileImageView.leadingAnchor.constraint(equalTo: roundedView.leadingAnchor, constant: .mediumLargeSpacing),
-            profileImageView.centerYAnchor.constraint(equalTo: roundedView.centerYAnchor),
-            profileImageView.widthAnchor.constraint(equalToConstant: 40),
-            profileImageView.heightAnchor.constraint(equalToConstant: 40),
-
-            stackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: .mediumSpacing),
-
-            badgeImageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: .smallSpacing),
-            badgeImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            badgeImageView.trailingAnchor.constraint(lessThanOrEqualTo: roundedView.trailingAnchor, constant: -.mediumLargeSpacing),
-        ])
     }
 }

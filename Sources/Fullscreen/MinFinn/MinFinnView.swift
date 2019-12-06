@@ -10,11 +10,18 @@ public protocol MinFinnViewDataSource: AnyObject {
     func minFinnView(_ view: MinFinnView, modelForRowAt indexPath: IndexPath) -> MinFinnCellModel
 }
 
+public protocol MinFinnViewDelegate: AnyObject {
+    func minFinnView(_ view: MinFinnView, didSelectProfileImageAt indexPath: IndexPath)
+    func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath)
+    func minFinnVIew(_ view: MinFinnView, loadImageWith url: URL, completion: (UIImage?) -> Void)
+}
+
 public class MinFinnView: UIView {
 
     // MARK: - Public properties
 
     public weak var dataSource: MinFinnViewDataSource?
+    public weak var delegate: MinFinnViewDelegate?
 
     // MARK: - Private properties
 
@@ -59,6 +66,7 @@ extension MinFinnView: UITableViewDataSource {
         switch model {
         case let profileModel as MinFinnProfileCellModel:
             let cell = tableView.dequeue(MinFinnProfileCell.self, for: indexPath)
+            cell.delegate = self
             cell.configure(with: profileModel)
             return cell
         case let iconModel as IconTitleTableViewCellViewModel:
@@ -75,6 +83,10 @@ extension MinFinnView: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension MinFinnView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.minFinnView(self, didSelectModelAt: indexPath)
+    }
+
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch dataSource?.minFinnView(self, modelForRowAt: indexPath) {
         case is MinFinnProfileCellModel:
@@ -90,6 +102,17 @@ extension MinFinnView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+}
+
+extension MinFinnView: MinFinnProfileCellDelegate {
+    func minFinnProfileCellDidSelectProfileImage(_ cell: MinFinnProfileCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        delegate?.minFinnView(self, didSelectProfileImageAt: indexPath)
+    }
+
+    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
+        delegate?.minFinnVIew(self, loadImageWith: url, completion: completionHandler)
     }
 }
 
