@@ -52,6 +52,10 @@ public class MinFinnView: UIView {
 }
 
 public extension MinFinnView {
+    var indexPathForSelectedRow: IndexPath? {
+        tableView.indexPathForSelectedRow
+    }
+
     func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
         tableView.cellForRow(at: indexPath)
     }
