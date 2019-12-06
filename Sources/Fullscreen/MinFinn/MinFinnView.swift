@@ -13,7 +13,7 @@ public protocol MinFinnViewDataSource: AnyObject {
 public protocol MinFinnViewDelegate: AnyObject {
     func minFinnView(_ view: MinFinnView, didSelectProfileImageAt indexPath: IndexPath)
     func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath)
-    func minFinnVIew(_ view: MinFinnView, loadImageWith url: URL, completion: (UIImage?) -> Void)
+    func minFinnVIew(_ view: MinFinnView, loadImageWith url: URL, completion: @escaping (UIImage?) -> Void)
 }
 
 public class MinFinnView: UIView {
