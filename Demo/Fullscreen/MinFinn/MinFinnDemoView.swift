@@ -12,12 +12,8 @@ private struct ProfileItem: MinFinnProfileCellModel {
     var isVerified: Bool
 }
 
-private struct IconItem: MinFinnIconCellModel {
+private struct Item: MinFinnIconCellModel {
     let icon: UIImage?
-    let title: String
-}
-
-private struct Item: MinFinnCellModel {
     let title: String
     let hasChevron: Bool
 }
@@ -33,15 +29,15 @@ class MinFinnDemoView: UIView {
             ProfileItem(profileImage: nil, profileImageUrl: nil, displayName: "Ola Nordmann", subtitle: "ola.nordmann@finn.no", isVerified: true)
         ]),
         Section(items: [
-            IconItem(icon: UIImage(named: "favorites"), title: "Favoritter"),
-            IconItem(icon: UIImage(named: "savedSearches"), title: "Lagrede Søk"),
-            IconItem(icon: UIImage(named: "ratings"), title: "Vurderinger")
+            Item(icon: UIImage(named: "favorites"), title: "Favoritter", hasChevron: true),
+            Item(icon: UIImage(named: "savedSearches"), title: "Lagrede Søk", hasChevron: true),
+            Item(icon: UIImage(named: "ratings"), title: "Vurderinger", hasChevron: true)
         ]),
         Section(items: [
-            Item(title: "Personvernerklæring", hasChevron: true),
-            Item(title: "Instillinger", hasChevron: true),
-            Item(title: "Kundeservice", hasChevron: false),
-            Item(title: "Logg ut", hasChevron: false),
+            Item(icon: nil, title: "Personvernerklæring", hasChevron: true),
+            Item(icon: nil, title: "Instillinger", hasChevron: true),
+            Item(icon: nil, title: "Kundeservice", hasChevron: false),
+            Item(icon: nil, title: "Logg ut", hasChevron: false),
         ])
     ]
 

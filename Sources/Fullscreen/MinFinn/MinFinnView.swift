@@ -74,9 +74,7 @@ extension MinFinnView: UITableViewDataSource {
             cell.configure(with: iconModel)
             return cell
         default:
-            let cell = tableView.dequeue(BasicTableViewCell.self, for: indexPath)
-            cell.configure(with: model)
-            return cell
+            preconditionFailure("Cell model not supported")
         }
     }
 }

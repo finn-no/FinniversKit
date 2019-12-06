@@ -4,12 +4,7 @@
 
 import UIKit
 
-public protocol MinFinnCellModel: BasicTableViewCellViewModel {}
-
-extension MinFinnCellModel {
-    public var subtitle: String? { nil }
-    public var detailText: String? { nil }
-}
+public protocol MinFinnCellModel {}
 
 public protocol MinFinnProfileCellModel: MinFinnCellModel, IdentityViewModel {}
 
@@ -24,6 +19,7 @@ extension MinFinnProfileCellModel {
 public protocol MinFinnIconCellModel: MinFinnCellModel, IconTitleTableViewCellViewModel {}
 
 extension MinFinnIconCellModel {
+    public var subtitle: String? { nil }
+    public var detailText: String? { nil }
     public var iconTintColor: UIColor? { .licorice }
-    public var hasChevron: Bool { true }
 }
