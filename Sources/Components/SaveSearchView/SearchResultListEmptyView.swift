@@ -10,7 +10,7 @@ public protocol SearchResultListEmptyViewDelegate: AnyObject {
     func searchResultListEmptyViewDidSelectAccept(_ searchResultListEmptyView: SearchResultListEmptyView)
 }
 
-public class SearchResultListEmptyView: UIView {
+@objc public class SearchResultListEmptyView: UIView {
 
     // MARK: - Public properties
 
