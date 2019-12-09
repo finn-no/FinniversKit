@@ -4,18 +4,28 @@
 
 import UIKit
 
+protocol MinFinnVerifyCellDelegate: AnyObject {
+    func minFinnVerifiyCellDidTapVerifyButton(_ cell: MinFinnVerifyCell)
+}
+
 class MinFinnVerifyCell: UITableViewCell {
+
+    // MARK: - Internal properties
+
+    weak var delegate: MinFinnVerifyCellDelegate?
+
+    // MARK: - Private properties
 
     private lazy var titleLabel = Label(
         style: .title3,
         withAutoLayout: true
     )
 
-    private lazy var verifyButton = Button(
-        style: .callToAction,
-        size: .normal,
-        withAutoLayout: true
-    )
+    private lazy var verifyButton: Button = {
+        let button = Button(style: .callToAction, withAutoLayout: true)
+        button.addTarget(self, action: #selector(verifyButtonTapped), for: .touchUpInside)
+        return button
+    }()
 
     private lazy var colorView: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -26,6 +36,8 @@ class MinFinnVerifyCell: UITableViewCell {
         return view
     }()
 
+    // MARK: - Init
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -35,10 +47,14 @@ class MinFinnVerifyCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Override
+
     override func prepareForReuse() {
         super.prepareForReuse()
         configure(with: nil)
     }
+
+    // MARK: - Methods
 
     func configure(with model: MinFinnVerifyCellModel?) {
         titleLabel.text = model?.title
@@ -46,7 +62,12 @@ class MinFinnVerifyCell: UITableViewCell {
     }
 }
 
+// MARK: - Private methods
 private extension MinFinnVerifyCell {
+    @objc func verifyButtonTapped() {
+        delegate?.minFinnVerifiyCellDidTapVerifyButton(self)
+    }
+
     func setup() {
         selectionStyle = .none
         titleLabel.textColor = .licorice

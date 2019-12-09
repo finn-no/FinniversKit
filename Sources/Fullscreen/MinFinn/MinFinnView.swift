@@ -85,6 +85,7 @@ extension MinFinnView: UITableViewDataSource {
             return cell
         case let verifyModel as MinFinnVerifyCellModel:
             let cell = tableView.dequeue(MinFinnVerifyCell.self, for: indexPath)
+            cell.delegate = self
             cell.configure(with: verifyModel)
             return cell
         case let iconModel as IconTitleTableViewCellViewModel:
@@ -127,6 +128,13 @@ extension MinFinnView: UITableViewDelegate {
 extension MinFinnView: MinFinnProfileCellDelegate {
     func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
         delegate?.minFinnView(self, loadImageWith: url, completion: completionHandler)
+    }
+}
+
+extension MinFinnView: MinFinnVerifyCellDelegate {
+    func minFinnVerifiyCellDidTapVerifyButton(_ cell: MinFinnVerifyCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        delegate?.minFinnView(self, didSelectModelAt: indexPath)
     }
 }
 
