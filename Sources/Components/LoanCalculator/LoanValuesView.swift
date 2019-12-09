@@ -71,6 +71,10 @@ class LoanValuesView: UIView {
         priceView.configure(with: model.price)
         equityView.configure(with: model.equity)
         paymentYearsView.configure(with: model.paymentYears)
+
+        priceView.accentColor = model.accentColor
+        equityView.accentColor = model.accentColor
+        paymentYearsView.accentColor = model.accentColor
     }
 
     // MARK: - Private methods
