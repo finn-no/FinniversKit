@@ -207,8 +207,8 @@ public final class StepSlider: UISlider {
 
         let imageFactory = ThumbImageFactory(
             diameter: 28,
-            centerRadius: 14,
-            highlightedCenterRadius: 16,
+            centerRadius: 12,
+            highlightedCenterRadius: 18,
             accentColor: accentColor
         )
         setThumbImage(imageFactory.image, for: .normal)
@@ -259,7 +259,7 @@ class ThumbImageFactory {
     let centerRadius: CGFloat
     let highlightedCenterRadius: CGFloat
     let bounds: CGRect
-    let shadowSize: CGFloat = 4
+    let shadowSize: CGFloat = 5
 
     init(diameter: CGFloat, centerRadius: CGFloat, highlightedCenterRadius: CGFloat, accentColor: UIColor) {
         self.diameter = diameter
@@ -287,23 +287,23 @@ class ThumbImageFactory {
     private var _highligtedImage: UIImage?
 
     private func computeImage(effectiveRadius: CGFloat) -> UIImage {
-        let sizeWithShadow = CGSize(width: diameter + shadowSize, height: diameter + shadowSize)
+        let sizeWithShadow = CGSize(width: diameter + shadowSize * 2, height: diameter + shadowSize * 2)
         let renderer = UIGraphicsImageRenderer(size: sizeWithShadow)
         return renderer.image { (context) in
             context.cgContext.saveGState()
             context.cgContext.setShadow(
                 offset: CGSize(width: 0, height: 1),
-                blur: 3,
+                blur: shadowSize,
                 color: UIColor(white: 0.0, alpha: 0.3).cgColor
             )
 
             UIColor.white.setFill()
-            context.cgContext.fillEllipse(in: bounds.applying(.init(translationX: shadowSize/2, y: shadowSize/2)))
+            context.cgContext.fillEllipse(in: bounds.applying(.init(translationX: shadowSize, y: shadowSize)))
             context.cgContext.restoreGState()
 
             self.accentColor.setFill()
             let center = bounds
-                .applying(.init(translationX: shadowSize/2, y: shadowSize/2))
+                .applying(.init(translationX: shadowSize, y: shadowSize))
                 .center
                 .applying(CGAffineTransform(translationX: -effectiveRadius / 2.0, y: -effectiveRadius / 2.0))
             let centerSize = CGSize(width: effectiveRadius, height: effectiveRadius)
