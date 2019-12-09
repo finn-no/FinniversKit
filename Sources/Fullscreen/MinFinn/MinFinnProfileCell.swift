@@ -51,6 +51,7 @@ private extension MinFinnProfileCell {
     func setup() {
         backgroundColor = .clear
         selectionStyle = .none
+        separatorInset = UIEdgeInsets(leading: UIScreen.main.bounds.width)
 
         contentView.addSubview(identityView)
         identityView.fillInSuperview(

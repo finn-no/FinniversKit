@@ -12,6 +12,11 @@ private struct ProfileItem: MinFinnProfileCellModel {
     var isVerified: Bool
 }
 
+private struct VerifyItem: MinFinnVerifyCellModel {
+    let title: String
+    let buttonTitle: String
+}
+
 private struct Item: MinFinnIconCellModel {
     let icon: UIImage?
     let title: String
@@ -26,7 +31,8 @@ class MinFinnDemoView: UIView {
 
     private lazy var sections = [
         Section(items: [
-            ProfileItem(profileImage: nil, profileImageUrl: nil, displayName: "Ola Nordmann", subtitle: "ola.nordmann@finn.no", isVerified: true)
+            ProfileItem(profileImage: nil, profileImageUrl: nil, displayName: "Ola Nordmann", subtitle: "ola.nordmann@finn.no", isVerified: true),
+            VerifyItem(title: "Bekreft at du er deg", buttonTitle: "Kom i gang")
         ]),
         Section(items: [
             Item(icon: UIImage(named: "favorites"), title: "Favoritter", hasChevron: true),
@@ -82,6 +88,6 @@ extension MinFinnDemoView: MinFinnViewDelegate {
         print("Did select model: \n\t- \(model)")
     }
 
-    func minFinnVIew(_ view: MinFinnView, loadImageWith url: URL, completion: (UIImage?) -> Void) {
+    func minFinnView(_ view: MinFinnView, loadImageWith url: URL, completion: (UIImage?) -> Void) {
     }
 }

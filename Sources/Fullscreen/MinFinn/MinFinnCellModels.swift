@@ -16,6 +16,11 @@ extension MinFinnProfileCellModel {
     public var displayMode: IdentityView.DisplayMode { .nonInteractible }
 }
 
+public protocol MinFinnVerifyCellModel: MinFinnCellModel {
+    var title: String { get }
+    var buttonTitle: String { get }
+}
+
 public protocol MinFinnIconCellModel: MinFinnCellModel, IconTitleTableViewCellViewModel {}
 
 extension MinFinnIconCellModel {

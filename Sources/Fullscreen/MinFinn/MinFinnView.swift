@@ -11,9 +11,8 @@ public protocol MinFinnViewDataSource: AnyObject {
 }
 
 public protocol MinFinnViewDelegate: AnyObject {
-    func minFinnView(_ view: MinFinnView, didSelectProfileImageAt indexPath: IndexPath)
     func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath)
-    func minFinnVIew(_ view: MinFinnView, loadImageWith url: URL, completion: @escaping (UIImage?) -> Void)
+    func minFinnView(_ view: MinFinnView, loadImageWith url: URL, completion: @escaping (UIImage?) -> Void)
 }
 
 public class MinFinnView: UIView {
@@ -33,6 +32,7 @@ public class MinFinnView: UIView {
         tableView.separatorColor = .tableViewSeparator
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
         tableView.register(MinFinnProfileCell.self)
+        tableView.register(MinFinnVerifyCell.self)
         tableView.register(IconTitleTableViewCell.self)
         tableView.register(BasicTableViewCell.self)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -83,6 +83,10 @@ extension MinFinnView: UITableViewDataSource {
             cell.delegate = self
             cell.configure(with: profileModel)
             return cell
+        case let verifyModel as MinFinnVerifyCellModel:
+            let cell = tableView.dequeue(MinFinnVerifyCell.self, for: indexPath)
+            cell.configure(with: verifyModel)
+            return cell
         case let iconModel as IconTitleTableViewCellViewModel:
             let cell = tableView.dequeue(IconTitleTableViewCell.self, for: indexPath)
             cell.configure(with: iconModel)
@@ -101,7 +105,7 @@ extension MinFinnView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch dataSource?.minFinnView(self, modelForRowAt: indexPath) {
-        case is MinFinnProfileCellModel:
+        case is MinFinnProfileCellModel, is MinFinnVerifyCellModel:
             return UITableView.automaticDimension
         default:
             return 48
@@ -113,13 +117,16 @@ extension MinFinnView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        switch section {
+        case 0: return .mediumLargeSpacing
+        default: return .largeSpacing
+        }
     }
 }
 
 extension MinFinnView: MinFinnProfileCellDelegate {
     func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
-        delegate?.minFinnVIew(self, loadImageWith: url, completion: completionHandler)
+        delegate?.minFinnView(self, loadImageWith: url, completion: completionHandler)
     }
 }
 
