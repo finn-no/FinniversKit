@@ -3,6 +3,7 @@
 //
 
 public protocol LoanApplyViewModel {
+    var accentColor: UIColor? { get }
     var conditionsText: String? { get }
     var applyText: String { get }
 }

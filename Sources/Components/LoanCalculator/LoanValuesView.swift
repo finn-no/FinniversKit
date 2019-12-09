@@ -5,6 +5,7 @@
 import Foundation
 
 public protocol LoanValuesViewModel {
+    var accentColor: UIColor? { get }
     var price: TitleValueSliderViewModel { get }
     var equity: TitleValueSliderViewModel { get }
     var paymentYears: TitleValueSliderViewModel { get }
