@@ -4,6 +4,7 @@
 
 import UIKit
 
+// MARK: - MinFinnCellModel
 public protocol MinFinnCellModel: BasicTableViewCellViewModel {}
 
 public extension MinFinnCellModel {
@@ -12,6 +13,7 @@ public extension MinFinnCellModel {
     var hasChevron: Bool { false }
 }
 
+// MARK: - MinFinnProfileCellModel
 public protocol MinFinnProfileCellModel: MinFinnCellModel, IdentityViewModel {}
 
 public extension MinFinnProfileCellModel {
@@ -20,10 +22,12 @@ public extension MinFinnProfileCellModel {
     var displayMode: IdentityView.DisplayMode { .nonInteractible }
 }
 
+// MARK: - MinFinnVerifyCellModel
 public protocol MinFinnVerifyCellModel: MinFinnCellModel {
     var buttonTitle: String { get }
 }
 
+// MARK: - MinFinnIconCellModel
 public protocol MinFinnIconCellModel: MinFinnCellModel, IconTitleTableViewCellViewModel {}
 
 public extension MinFinnIconCellModel {
