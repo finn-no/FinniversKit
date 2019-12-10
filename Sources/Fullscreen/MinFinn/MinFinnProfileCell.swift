@@ -43,7 +43,7 @@ extension MinFinnProfileCell: IdentityViewDelegate {
     func identityViewWasTapped(_ identityView: IdentityView) {}
 
     func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
-        let width = IdentityView.profileImageSize * UIScreen.main.scale
+        let width = IdentityView.profileImageSize
         delegate?.minFinnProfileCell(self, loadImageAt: url, with: width, completionHandler: completionHandler)
     }
 }
