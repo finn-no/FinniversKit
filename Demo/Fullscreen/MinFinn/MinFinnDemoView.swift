@@ -17,8 +17,12 @@ private struct VerifyItem: MinFinnVerifyCellModel {
     let buttonTitle: String
 }
 
-private struct Item: MinFinnIconCellModel {
+private struct IconItem: MinFinnIconCellModel {
     let icon: UIImage?
+    let title: String
+}
+
+private struct Item: MinFinnCellModel {
     let title: String
     let hasChevron: Bool
 }
@@ -35,15 +39,15 @@ class MinFinnDemoView: UIView {
             VerifyItem(title: "Bekreft at du er deg", buttonTitle: "Kom i gang")
         ]),
         Section(items: [
-            Item(icon: UIImage(named: "favorites"), title: "Favoritter", hasChevron: true),
-            Item(icon: UIImage(named: "savedSearches"), title: "Lagrede Søk", hasChevron: true),
-            Item(icon: UIImage(named: "ratings"), title: "Vurderinger", hasChevron: true)
+            IconItem(icon: UIImage(named: "favorites"), title: "Favoritter"),
+            IconItem(icon: UIImage(named: "savedSearches"), title: "Lagrede Søk"),
+            IconItem(icon: UIImage(named: "ratings"), title: "Vurderinger")
         ]),
         Section(items: [
-            Item(icon: nil, title: "Personvernerklæring", hasChevron: true),
-            Item(icon: nil, title: "Instillinger", hasChevron: true),
-            Item(icon: nil, title: "Kundeservice", hasChevron: false),
-            Item(icon: nil, title: "Logg ut", hasChevron: false),
+            Item(title: "Personvernerklæring", hasChevron: true),
+            Item(title: "Instillinger", hasChevron: true),
+            Item(title: "Kundeservice", hasChevron: false),
+            Item(title: "Logg ut", hasChevron: false),
         ])
     ]
 

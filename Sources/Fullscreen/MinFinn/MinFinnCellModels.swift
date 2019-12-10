@@ -4,27 +4,29 @@
 
 import UIKit
 
-public protocol MinFinnCellModel {}
+public protocol MinFinnCellModel: BasicTableViewCellViewModel {}
+
+public extension MinFinnCellModel {
+    var subtitle: String? { nil }
+    var detailText: String? { nil }
+    var hasChevron: Bool { false }
+}
 
 public protocol MinFinnProfileCellModel: MinFinnCellModel, IdentityViewModel {}
 
-extension MinFinnProfileCellModel {
-    public var title: String { "" }
-    public var hasChevron: Bool { false }
-    public var subtitle: String? { nil }
-    public var description: String? { nil }
-    public var displayMode: IdentityView.DisplayMode { .nonInteractible }
+public extension MinFinnProfileCellModel {
+    var title: String { "" }
+    var description: String? { nil }
+    var displayMode: IdentityView.DisplayMode { .nonInteractible }
 }
 
 public protocol MinFinnVerifyCellModel: MinFinnCellModel {
-    var title: String { get }
     var buttonTitle: String { get }
 }
 
 public protocol MinFinnIconCellModel: MinFinnCellModel, IconTitleTableViewCellViewModel {}
 
-extension MinFinnIconCellModel {
-    public var subtitle: String? { nil }
-    public var detailText: String? { nil }
-    public var iconTintColor: UIColor? { .licorice }
+public extension MinFinnIconCellModel {
+    var iconTintColor: UIColor? { .licorice }
+    var hasChevron: Bool { true }
 }
