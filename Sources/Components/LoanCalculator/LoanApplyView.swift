@@ -3,6 +3,7 @@
 //
 
 public protocol LoanApplyViewModel {
+    var accentColor: UIColor? { get }
     var conditionsText: String? { get }
     var applyText: String { get }
 }
@@ -57,6 +58,9 @@ class LoanApplyView: UIView {
         conditionsText.text = model.conditionsText
         conditionsText.isHidden = model.conditionsText == nil
         applyButton.setTitle(model.applyText, for: .normal)
+        if let accentColor = model.accentColor {
+            applyButton.style = Button.Style.applyButton(with: accentColor)
+        }
     }
 
     // MARK: - Private functions
@@ -69,5 +73,14 @@ class LoanApplyView: UIView {
 
     @objc private func handleApplyButtonTap() {
         delegate?.loanApplyViewDidSelectApply(self)
+    }
+}
+
+extension Button.Style {
+    static func applyButton(with accentColor: UIColor) -> Button.Style {
+        Button.Style.callToAction.overrideStyle(
+            bodyColor: accentColor,
+            highlightedBodyColor: accentColor.withAlphaComponent(0.8)
+        )
     }
 }

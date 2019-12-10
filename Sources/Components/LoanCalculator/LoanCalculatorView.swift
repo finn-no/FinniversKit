@@ -6,6 +6,10 @@ import UIKit
 
 public protocol LoanCalculatorViewModel: LoanHeaderViewModel, LoanValuesViewModel, LoanApplyViewModel {}
 
+public extension LoanCalculatorViewModel {
+    var accentColor: UIColor? { nil }
+}
+
 public protocol LoanCalculatorDataSource: AnyObject {
     func loanCalculatorView(_ view: LoanCalculatorView, formattedCurrencyValue: Float) -> String?
     func loanCalculatorView(_ view: LoanCalculatorView, formattedYearsValue: Int) -> String?
