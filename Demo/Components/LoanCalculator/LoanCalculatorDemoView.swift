@@ -155,17 +155,17 @@ extension LoanCalculatorDemoViewModel {
 
         var accentColor: UIColor? {
             switch self {
-            case .dnb: return UIColor.dynamicColor(
-                defaultColor: UIColor(red: 55 / 255.0, green: 122 / 255.0, blue: 130 / 255.0, alpha: 1.0),
-                darkModeColor: UIColor(red: 58 / 255.0, green: 168 / 255.0, blue: 180 / 255.0, alpha: 1.0)
+            case .dnb: return UIColor.dynamicColorIfAvailable(
+                defaultColor: UIColor(r: 55, g: 122, b: 130)!,
+                darkModeColor: UIColor(r: 58, g: 168, b: 180)!
             )
-            case .nordea: return UIColor.dynamicColor(
-                defaultColor: UIColor(red: 0 / 255.0, green: 0 / 255.0, blue: 160 / 255.0, alpha: 1.0),
-                darkModeColor: UIColor(red: 49 / 255.0, green: 49 / 255.0, blue: 211 / 255.0, alpha: 1.0)
+            case .nordea: return UIColor.dynamicColorIfAvailable(
+                defaultColor: UIColor(r: 0, g: 0, b: 160)!,
+                darkModeColor: UIColor(r: 49, g: 49, b: 211)!
             )
-            case .danskeBank: return UIColor.dynamicColor(
-                defaultColor: UIColor(red: 0 / 255.0, green: 55 / 255.0, blue: 85 / 255.0, alpha: 1.0),
-                darkModeColor: UIColor(red: 22 / 255.0, green: 92 / 255.0, blue: 129 / 255.0, alpha: 1.0)
+            case .danskeBank: return UIColor.dynamicColorIfAvailable(
+                defaultColor: UIColor(r: 0, g: 55, b: 85)!,
+                darkModeColor: UIColor(r: 22, g: 92, b: 129)!
             )
             }
         }
@@ -196,24 +196,6 @@ extension LoanCalculatorDemoViewModel {
             equity: .makeEquity(withInitialValue: equity),
             paymentYears: .makePaymentYears(withInitialValue: paymentYears)
         )
-    }
-}
-
-private extension UIColor {
-    static func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        if #available(iOS 13.0, *) {
-            #if swift(>=5.1)
-            return UIColor { traitCollection -> UIColor in
-                switch traitCollection.userInterfaceStyle {
-                case .dark:
-                    return darkModeColor
-                default:
-                    return defaultColor
-                }
-            }
-            #endif
-        }
-        return defaultColor
     }
 }
 
