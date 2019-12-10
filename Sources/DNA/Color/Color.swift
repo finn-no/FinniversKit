@@ -95,7 +95,7 @@ import UIKit
     }
 
     public class var imageBorder: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        return dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
     }
 
     public class var decorationSubtle: UIColor {
