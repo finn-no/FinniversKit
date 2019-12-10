@@ -7,16 +7,24 @@ import FinniversKit
 // MARK: - SearchResultListEmptyViewDelegate
 
 public protocol SearchResultListEmptyViewDelegate: AnyObject {
-    func searchResultListEmptyViewDidSelectAccept(_ searchResultListEmptyView: SearchResultListEmptyView)
+    func searchResultListEmptyViewDidSelectActionButton(_ searchResultListEmptyView: SearchResultListEmptyView, forState state: SearchResultListEmptyView.EmptyState)
 }
 
 @objc public class SearchResultListEmptyView: UIView {
 
     // MARK: - Public properties
 
+    @objc public enum EmptyState: Int {
+        case pushDisabled = 0
+        case pushEnabled
+        case searchSaved
+    }
+
     public weak var delegate: SearchResultListEmptyViewDelegate?
 
     // MARK: - Private properties
+
+    private var state: EmptyState = .pushEnabled
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -91,7 +99,8 @@ public protocol SearchResultListEmptyViewDelegate: AnyObject {
 
     // MARK: - Public methods
 
-    public func configure(withViewModel viewModel: SearchResultListEmptyViewModel) {
+    public func configure(withViewModel viewModel: SearchResultListEmptyViewModel, forState state: SearchResultListEmptyView.EmptyState) {
+        self.state = state
         titleLabel.text = viewModel.title
         bodyLabel.text = viewModel.body
         if let buttonTitle = viewModel.buttonTitle {
@@ -105,6 +114,6 @@ public protocol SearchResultListEmptyViewDelegate: AnyObject {
     // MARK: - Private methods
 
     @objc private func buttonTapped() {
-        delegate?.searchResultListEmptyViewDidSelectAccept(self)
+        delegate?.searchResultListEmptyViewDidSelectActionButton(self, forState: state)
     }
 }
