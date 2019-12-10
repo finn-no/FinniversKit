@@ -12,7 +12,7 @@ public protocol MinFinnViewDataSource: AnyObject {
 
 public protocol MinFinnViewDelegate: AnyObject {
     func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath)
-    func minFinnView(_ view: MinFinnView, loadImageWith url: URL, completion: @escaping (UIImage?) -> Void)
+    func minFinnView(_ view: MinFinnView, loadImageAt url: URL, with width: CGFloat, completion: @escaping (UIImage?) -> Void)
 }
 
 public class MinFinnView: UIView {
@@ -128,8 +128,8 @@ extension MinFinnView: UITableViewDelegate {
 }
 
 extension MinFinnView: MinFinnProfileCellDelegate {
-    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
-        delegate?.minFinnView(self, loadImageWith: url, completion: completionHandler)
+    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageAt url: URL, with width: CGFloat, completionHandler: @escaping (UIImage?) -> Void) {
+        delegate?.minFinnView(self, loadImageAt: url, with: width, completion: completionHandler)
     }
 }
 

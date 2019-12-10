@@ -5,7 +5,7 @@
 import UIKit
 
 protocol MinFinnProfileCellDelegate: AnyObject {
-    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void)
+    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageAt url: URL, with width: CGFloat, completionHandler: @escaping (UIImage?) -> Void)
 }
 
 class MinFinnProfileCell: UITableViewCell {
@@ -43,7 +43,8 @@ extension MinFinnProfileCell: IdentityViewDelegate {
     func identityViewWasTapped(_ identityView: IdentityView) {}
 
     func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
-        delegate?.minFinnProfileCell(self, loadImageWithUrl: url, completionHandler: completionHandler)
+        let width = IdentityView.profileImageSize * UIScreen.main.scale
+        delegate?.minFinnProfileCell(self, loadImageAt: url, with: width, completionHandler: completionHandler)
     }
 }
 

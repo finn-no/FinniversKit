@@ -84,14 +84,10 @@ extension MinFinnDemoView: MinFinnViewDataSource {
 }
 
 extension MinFinnDemoView: MinFinnViewDelegate {
-    func minFinnView(_ view: MinFinnView, didSelectProfileImageAt indexPath: IndexPath) {
-    }
-
     func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath) {
         let model = sections[indexPath.section].items[indexPath.item]
         print("Did select model: \n\t- \(model)")
     }
 
-    func minFinnView(_ view: MinFinnView, loadImageWith url: URL, completion: (UIImage?) -> Void) {
-    }
+    func minFinnView(_ view: MinFinnView, loadImageAt url: URL, with width: CGFloat, completion: (UIImage?) -> Void) {}
 }
