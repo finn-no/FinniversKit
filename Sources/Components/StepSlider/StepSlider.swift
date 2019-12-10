@@ -302,12 +302,12 @@ class ThumbImageFactory {
             context.cgContext.restoreGState()
 
             self.accentColor.setFill()
-            let centerCircleOrigin = bounds
+            let originCenterCircle = bounds
                 .applying(.init(translationX: shadowSize, y: shadowSize))
                 .center
                 .applying(CGAffineTransform(translationX: -effectiveRadius / 2.0, y: -effectiveRadius / 2.0))
             let centerSize = CGSize(width: effectiveRadius, height: effectiveRadius)
-            context.cgContext.fillEllipse(in: CGRect(origin: centerCircleOrigin, size: centerSize))
+            context.cgContext.fillEllipse(in: CGRect(origin: originCenterCircle, size: centerSize))
         }
     }
 }
