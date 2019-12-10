@@ -22,7 +22,7 @@ final class EarthHourHeaderView: UIView {
 
     private lazy var bottomCurveLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.fillColor = fillColor?.cgColor
+        layer.fillColor = fillColor.cgColor
         return layer
     }()
 

@@ -35,7 +35,7 @@ public final class NativeContentAdvertView: UIView {
 
     private lazy var bottomContainerView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = UIColor(r: 248, g: 248, b: 248)!
+        view.backgroundColor = UIColor(r: 248, g: 248, b: 248)
         return view
     }()
 
