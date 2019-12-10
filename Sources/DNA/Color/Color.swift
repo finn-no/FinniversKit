@@ -431,8 +431,13 @@ extension CGColor {
 
 // MARK: - Public color creation methods
 public extension UIColor {
-    // swiftlint:disable:next identifier_name
-    convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
+    /// The UIColor initializer we need it's more natural to write integer values from 0 to 255 than decimas from 0 to 1
+    /// - Parameters:
+    ///   - r: red (0-255)
+    ///   - g: green (0-255)
+    ///   - b: blue (0-255)
+    ///   - a: alpla (0-1)
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) { // swiftlint:disable:this identifier_name
         self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
 
