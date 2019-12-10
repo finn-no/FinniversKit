@@ -156,16 +156,16 @@ extension LoanCalculatorDemoViewModel {
         var accentColor: UIColor? {
             switch self {
             case .dnb: return UIColor.dynamicColorIfAvailable(
-                defaultColor: UIColor(r: 55, g: 122, b: 130)!,
-                darkModeColor: UIColor(r: 58, g: 168, b: 180)!
+                defaultColor: UIColor(r: 55, g: 122, b: 130),
+                darkModeColor: UIColor(r: 58, g: 168, b: 180)
             )
             case .nordea: return UIColor.dynamicColorIfAvailable(
-                defaultColor: UIColor(r: 0, g: 0, b: 160)!,
-                darkModeColor: UIColor(r: 49, g: 49, b: 211)!
+                defaultColor: UIColor(r: 0, g: 0, b: 160),
+                darkModeColor: UIColor(r: 49, g: 49, b: 211)
             )
             case .danskeBank: return UIColor.dynamicColorIfAvailable(
-                defaultColor: UIColor(r: 0, g: 55, b: 85)!,
-                darkModeColor: UIColor(r: 22, g: 92, b: 129)!
+                defaultColor: UIColor(r: 0, g: 55, b: 85),
+                darkModeColor: UIColor(r: 22, g: 92, b: 129)
             )
             }
         }
