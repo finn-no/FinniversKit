@@ -56,8 +56,8 @@ public extension MinFinnView {
         tableView.indexPathForSelectedRow
     }
 
-    func reloadRows(at indexPaths: [IndexPath], animted: Bool = true) {
-        tableView.reloadRows(at: indexPaths, with: .automatic)
+    func reloadRows(at indexPaths: [IndexPath], animated: Bool = true) {
+        tableView.reloadRows(at: indexPaths, with: animated ? .automatic : .none)
     }
 
     func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
