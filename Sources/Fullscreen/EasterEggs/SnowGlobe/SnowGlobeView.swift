@@ -17,7 +17,7 @@ public class SnowGlobeView: UIView {
 
     private lazy var gradientLayer: CALayer = {
         let layer = CAGradientLayer()
-        let color = UIColor(r: 0, g: 98, b: 255, a: 0.2) ?? UIColor.black.withAlphaComponent(0.2)
+        let color = UIColor(r: 0, g: 98, b: 255, a: 0.2)
         layer.colors = [UIColor.clear.cgColor, color.cgColor, color.cgColor, UIColor.clear.cgColor]
         layer.locations = [0.0, 0.1, 0.9, 1.0]
         return layer
