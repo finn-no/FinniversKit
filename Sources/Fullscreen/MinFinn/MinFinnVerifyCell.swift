@@ -16,10 +16,11 @@ class MinFinnVerifyCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private lazy var titleLabel = Label(
-        style: .title3,
-        withAutoLayout: true
-    )
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .title3, withAutoLayout: true)
+        label.textColor = .licorice
+        return label
+    }()
 
     private lazy var verifyButton: Button = {
         let button = Button(style: .callToAction, withAutoLayout: true)
@@ -70,7 +71,7 @@ private extension MinFinnVerifyCell {
 
     func setup() {
         selectionStyle = .none
-        titleLabel.textColor = .licorice
+        contentView.backgroundColor = .bgPrimary
 
         contentView.addSubview(colorView)
         contentView.addSubview(titleLabel)
