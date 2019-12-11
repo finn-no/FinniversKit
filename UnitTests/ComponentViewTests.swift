@@ -218,4 +218,8 @@ class ComponentViewTests: XCTestCase {
     func testCheckmarkTitleView() {
         snapshot(.checkmarkTitleView)
     }
+
+    func testOrderTotalSumView() {
+        snapshot(.orderTotalSumView)
+    }
 }
