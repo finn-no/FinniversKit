@@ -222,4 +222,8 @@ class ComponentViewTests: XCTestCase {
     func testOrderTotalSumView() {
         snapshot(.orderTotalSumView)
     }
+
+    func testOrderSummaryView() {
+        snapshot(.orderSummaryView)
+    }
 }

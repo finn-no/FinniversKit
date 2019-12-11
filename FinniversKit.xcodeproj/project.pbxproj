@@ -535,7 +535,12 @@
 		F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */; };
 		F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2772F4322803B310002D21F /* ReviewButtonView.swift */; };
 		F288B861239E5DE900B9502D /* OrderTotalSumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B85F239E5BA400B9502D /* OrderTotalSumView.swift */; };
+		F288B864239E60C900B9502D /* OrderSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B862239E60BC00B9502D /* OrderSummaryView.swift */; };
+		F288B86D239E632900B9502D /* OrderSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B86B239E632300B9502D /* OrderSummaryViewModel.swift */; };
+		F288B879239F76F400B9502D /* OrderSummaryDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B878239F76F400B9502D /* OrderSummaryDemoView.swift */; };
+		F288B87B239F771500B9502D /* OrderSummaryViewDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B87A239F771500B9502D /* OrderSummaryViewDefaultData.swift */; };
 		F288B87D239F772500B9502D /* OrderTotalSumDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B87C239F772500B9502D /* OrderTotalSumDemoView.swift */; };
+		F288B87E239F886400B9502D /* OrderSummaryLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B86F239E9F6600B9502D /* OrderSummaryLineView.swift */; };
 		F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288CB3D233CD53400C1EE8A /* UserAdsRatingView.swift */; };
 		F2BE212D22815989004640F3 /* ReviewButtonViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */; };
 		F2BE213222819F7D004640F3 /* ReviewButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE212F22819EFA004640F3 /* ReviewButtonControl.swift */; };
@@ -1132,6 +1137,11 @@
 		F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewSeeAllAdsCell.swift; sourceTree = "<group>"; };
 		F2772F4322803B310002D21F /* ReviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonView.swift; sourceTree = "<group>"; };
 		F288B85F239E5BA400B9502D /* OrderTotalSumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTotalSumView.swift; sourceTree = "<group>"; };
+		F288B862239E60BC00B9502D /* OrderSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryView.swift; sourceTree = "<group>"; };
+		F288B86B239E632300B9502D /* OrderSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewModel.swift; sourceTree = "<group>"; };
+		F288B86F239E9F6600B9502D /* OrderSummaryLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryLineView.swift; sourceTree = "<group>"; };
+		F288B878239F76F400B9502D /* OrderSummaryDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryDemoView.swift; sourceTree = "<group>"; };
+		F288B87A239F771500B9502D /* OrderSummaryViewDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewDefaultData.swift; sourceTree = "<group>"; };
 		F288B87C239F772500B9502D /* OrderTotalSumDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTotalSumDemoView.swift; sourceTree = "<group>"; };
 		F288CB3D233CD53400C1EE8A /* UserAdsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsRatingView.swift; sourceTree = "<group>"; };
 		F2BE212C22815989004640F3 /* ReviewButtonViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonViewDemoView.swift; sourceTree = "<group>"; };
@@ -1687,6 +1697,7 @@
 				44AFCE44215839F6005984DB /* LoadingIndicator */,
 				9BEB2875231D23F500D28BAD /* LoanCalculator */,
 				89A7A63A2253376D0053D33B /* NativeAdvert */,
+				F288B86A239E630A00B9502D /* OrderViewSummary */,
 				F288B867239E62C200B9502D /* OrderTotalSumView */,
 				9B28DE7E23266C2500D69C15 /* Panel */,
 				CF13D6CB2292D2100087DA37 /* Phases */,
@@ -3164,6 +3175,7 @@
 				CF8F021621DCC5F6004C4042 /* LoadingIndicator */,
 				9BEB2872231D232400D28BAD /* LoanCalculator */,
 				89A7A640225344470053D33B /* NativeAdvert */,
+				F288B875239F737E00B9502D /* OrderViewSummary */,
 				F288B877239F75F700B9502D /* OrderTotalSumView */,
 				9B28DE852326754C00D69C15 /* Panel */,
 				CF13D6D22292E2DD0087DA37 /* Phases */,
@@ -3989,6 +4001,25 @@
 			path = OrderTotalSumView;
 			sourceTree = "<group>";
 		};
+		F288B86A239E630A00B9502D /* OrderViewSummary */ = {
+			isa = PBXGroup;
+			children = (
+				F288B862239E60BC00B9502D /* OrderSummaryView.swift */,
+				F288B86F239E9F6600B9502D /* OrderSummaryLineView.swift */,
+				F288B86B239E632300B9502D /* OrderSummaryViewModel.swift */,
+			);
+			path = OrderViewSummary;
+			sourceTree = "<group>";
+		};
+		F288B875239F737E00B9502D /* OrderViewSummary */ = {
+			isa = PBXGroup;
+			children = (
+				F288B878239F76F400B9502D /* OrderSummaryDemoView.swift */,
+				F288B87A239F771500B9502D /* OrderSummaryViewDefaultData.swift */,
+			);
+			path = OrderViewSummary;
+			sourceTree = "<group>";
+		};
 		F288B877239F75F700B9502D /* OrderTotalSumView */ = {
 			isa = PBXGroup;
 			children = (
@@ -4392,6 +4423,7 @@
 				9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
+				F288B879239F76F400B9502D /* OrderSummaryDemoView.swift in Sources */,
 				43BACE6F21117DD20052114C /* BuyerPickerDemoView.swift in Sources */,
 				9BEB2874231D233D00D28BAD /* LoanCalculatorDemoView.swift in Sources */,
 				45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
@@ -4417,6 +4449,7 @@
 				9BC33DE322D71986007CCD65 /* LoginEntryViewDemoViewController.swift in Sources */,
 				DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */,
 				F26852DF21F755B6000978C8 /* UserAdsListViewDemoView.swift in Sources */,
+				F288B87B239F771500B9502D /* OrderSummaryViewDefaultData.swift in Sources */,
 				43EA9793219965F3003A548A /* SoldViewDemoView.swift in Sources */,
 				8961C687225748C70007A8DC /* NativeAdvertDemoView.swift in Sources */,
 				CF15D9B3215B94FC004F5F02 /* FloatingButtonDemoView.swift in Sources */,
@@ -4501,6 +4534,7 @@
 				CF376C18231D452100ED2B24 /* Array+Step.swift in Sources */,
 				F288CB3E233CD53400C1EE8A /* UserAdsRatingView.swift in Sources */,
 				45EDD62F20A312BB008F4503 /* ConsentTransparencyInfoViewModel.swift in Sources */,
+				F288B864239E60C900B9502D /* OrderSummaryView.swift in Sources */,
 				CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */,
 				CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */,
 				CF136ACD2203211100247B30 /* InfoboxView.swift in Sources */,
@@ -4658,6 +4692,7 @@
 				CF45AF89231D3A3000BE8B39 /* StepSlider.swift in Sources */,
 				899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */,
 				0817FFCE21831045001BD9C4 /* AnimatedRadiobuttonView.swift in Sources */,
+				F288B86D239E632900B9502D /* OrderSummaryViewModel.swift in Sources */,
 				9B238F02225B95F600B0E0C2 /* InfoboxView+Style.swift in Sources */,
 				43EA977F21941E5D003A548A /* SoldView.swift in Sources */,
 				44A557B422E72187001667AE /* SelectableTableViewCellViewModel.swift in Sources */,
