@@ -10,6 +10,7 @@ struct LoanCalculatorDemoViewModel: LoanCalculatorViewModel {
     var pricePerMonth: String?
     var loanAmountText: String?
     var logoUrl: URL?
+    var accentColor: UIColor?
     var conditionsText: String?
     var errorText: String?
     var applyText: String
@@ -23,6 +24,12 @@ class LoanCalculatorDemoView: UIView, Tweakable {
         let options = [
             TweakingOption(title: "Normal view model", action: {
                 self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel())
+            }),
+            TweakingOption(title: "Nordea", action: {
+                self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel(bank: LoanCalculatorDemoViewModel.DemoCases.nordea))
+            }),
+            TweakingOption(title: "Danske bank", action: {
+                self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel(bank: LoanCalculatorDemoViewModel.DemoCases.danskeBank))
             }),
             TweakingOption(title: "Nominal Rate missing error", action: {
                 self.loanCalculatorView.configure(with: LoanCalculatorDemoViewModel.makeViewModel(hasConditions: false))
@@ -133,22 +140,55 @@ extension LoanCalculatorDemoView: LoanCalculatorDelegate {
 // MARK: - Private extensions
 
 extension LoanCalculatorDemoViewModel {
+    enum DemoCases {
+        case dnb
+        case nordea
+        case danskeBank
+
+        var logoURL: URL? {
+            switch self {
+            case .dnb: return URL(string: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png")
+            case .danskeBank: return URL(string: "https://www.finn.no/pf-logos/danske_bank")
+            case .nordea: return URL(string: "https://www.finn.no/pf-logos/nordea")
+            }
+        }
+
+        var accentColor: UIColor? {
+            switch self {
+            case .dnb: return UIColor.dynamicColorIfAvailable(
+                defaultColor: UIColor(r: 55, g: 122, b: 130),
+                darkModeColor: UIColor(r: 58, g: 168, b: 180)
+            )
+            case .nordea: return UIColor.dynamicColorIfAvailable(
+                defaultColor: UIColor(r: 0, g: 0, b: 160),
+                darkModeColor: UIColor(r: 49, g: 49, b: 211)
+            )
+            case .danskeBank: return UIColor.dynamicColorIfAvailable(
+                defaultColor: UIColor(r: 0, g: 55, b: 85),
+                darkModeColor: UIColor(r: 22, g: 92, b: 129)
+            )
+            }
+        }
+    }
+
     static func makeViewModel(
         price: Int = 5600000,
         equity: Int = Int((5600000 - 10000) * 0.35),
         paymentYears: Int = 25,
+        bank: DemoCases = .dnb,
         hasConditions: Bool = true
     ) -> LoanCalculatorDemoViewModel {
         let conditionsText = hasConditions
             ? "Eff.rente 2,62 %. Etableringsgebyr. 2 500 kr. 4 433 000 kr o/25 år. Kostnad: 1 589 500 kr. Totalt: 6 022 500 kr."
-            :"Verdiene er utenfor banks prisliste. Renten vil dermed settes på individuell basis"
+            : "Verdiene er utenfor banks prisliste. Renten vil dermed settes på individuell basis"
 
         return LoanCalculatorDemoViewModel(
             title: hasConditions ? "Estimert pr. måned" : nil,
             rentText: hasConditions ? "2,65 % eff. / 2,55 % nom. rente" : nil,
             pricePerMonth: hasConditions ? "16 656 kr" : nil,
             loanAmountText: hasConditions ? "Lånesum: 3 675 000 kr": nil,
-            logoUrl: URL(string: "https://static.finncdn.no/_c/pf-logos/dnbnor_logo.png"),
+            logoUrl: bank.logoURL,
+            accentColor: bank.accentColor,
             conditionsText: hasConditions ? conditionsText : nil,
             errorText: hasConditions ? nil : conditionsText,
             applyText: "Søk boliglån",
