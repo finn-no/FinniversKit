@@ -45,9 +45,8 @@ private extension OrderSummaryLineView {
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: priceLabel.leadingAnchor),
 
-            priceLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -.mediumSpacing),
         ])
     }

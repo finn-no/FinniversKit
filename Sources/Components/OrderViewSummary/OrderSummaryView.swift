@@ -24,7 +24,7 @@ public class OrderSummaryView: UIView {
 
     public init(model: OrderSummaryViewModel, withAutoLayout: Bool = false) {
         self.model = model
-        height = CGFloat(model.orderLines.count * Int(orderLineViewHeight) + 16)
+        self.height = CGFloat(model.orderLines.count * Int(orderLineViewHeight) + 16)
 
         super.init(frame: .zero)
 
