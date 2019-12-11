@@ -31,6 +31,6 @@ public protocol MinFinnVerifyCellModel: MinFinnCellModel {
 public protocol MinFinnIconCellModel: MinFinnCellModel, IconTitleTableViewCellViewModel {}
 
 public extension MinFinnIconCellModel {
-    var iconTintColor: UIColor? { .licorice }
+    var iconTintColor: UIColor? { .iconPrimary }
     var hasChevron: Bool { true }
 }

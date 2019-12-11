@@ -83,7 +83,7 @@ private extension MinFinnVerifyCell {
             colorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             colorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: colorView.topAnchor, constant: .mediumLargeSpacing + .mediumSpacing),
+            titleLabel.topAnchor.constraint(equalTo: colorView.topAnchor, constant: .mediumLargeSpacing + .smallSpacing),
             titleLabel.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
             verifyButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
             verifyButton.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
