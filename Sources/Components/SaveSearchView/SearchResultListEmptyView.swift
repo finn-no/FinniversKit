@@ -7,24 +7,24 @@ import FinniversKit
 // MARK: - SearchResultListEmptyViewDelegate
 
 public protocol SearchResultListEmptyViewDelegate: AnyObject {
-    func searchResultListEmptyViewDidSelectActionButton(_ searchResultListEmptyView: SearchResultListEmptyView, forState state: SearchResultListEmptyView.EmptyState)
+    func searchResultListEmptyViewDidSelectActionButton(_ searchResultListEmptyView: SearchResultListEmptyView, forState state: SearchResultListEmptyView.SearchResultListEmptyViewState)
 }
 
 @objc public class SearchResultListEmptyView: UIView {
 
     // MARK: - Public properties
 
-    @objc public enum EmptyState: Int {
-        case pushDisabled = 0
-        case pushEnabled
+    @objc public enum SearchResultListEmptyViewState: Int {
+        case initial = 0
         case searchSaved
+        case searchSavedNoPush
     }
 
     public weak var delegate: SearchResultListEmptyViewDelegate?
 
     // MARK: - Private properties
 
-    private var state: EmptyState = .pushEnabled
+    private var state: SearchResultListEmptyViewState = .initial
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -53,13 +53,13 @@ public protocol SearchResultListEmptyViewDelegate: AnyObject {
         let label = UILabel(withAutoLayout: true)
         label.textAlignment = .center
         label.textColor = .textPrimary
-        label.font = .detail
+        label.font = .caption
         label.numberOfLines = 2
         return label
     }()
 
     private lazy var button: UIButton = {
-        let button = Button(style: .default, size: .small)
+        let button = Button(style: .utility, size: .small)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -88,9 +88,11 @@ public protocol SearchResultListEmptyViewDelegate: AnyObject {
         addSubview(button)
 
         NSLayoutConstraint.activate([
+            iconImageView.heightAnchor.constraint(equalToConstant: 40),
+
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: .veryLargeSpacing * 3),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             button.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumLargeSpacing),
             button.centerXAnchor.constraint(equalTo: centerXAnchor)
@@ -99,13 +101,13 @@ public protocol SearchResultListEmptyViewDelegate: AnyObject {
 
     // MARK: - Public methods
 
-    public func configure(withViewModel viewModel: SearchResultListEmptyViewModel, forState state: SearchResultListEmptyView.EmptyState) {
+    public func configure(withViewModel viewModel: SearchResultListEmptyViewModel, forState state: SearchResultListEmptyView.SearchResultListEmptyViewState) {
         self.state = state
         titleLabel.text = viewModel.title
         bodyLabel.text = viewModel.body
         if let buttonTitle = viewModel.buttonTitle {
-            button.isHidden = false
             button.setTitle(buttonTitle, for: .normal)
+            button.isHidden = false
         } else {
             button.isHidden = true
         }

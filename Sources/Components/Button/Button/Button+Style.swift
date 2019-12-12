@@ -17,10 +17,11 @@ public extension Button {
         case flat
         case destructiveFlat
         case link
+        case utility
 
         var bodyColor: UIColor {
             switch self {
-            case .default: return .bgPrimary
+            case .default, .utility: return .bgPrimary
             case .link, .flat, .destructiveFlat: return .clear
             case .callToAction: return .btnPrimary
             case .destructive: return .btnCritical
@@ -29,7 +30,7 @@ public extension Button {
 
         var borderWidth: CGFloat {
             switch self {
-            case .default: return 2.0
+            case .default, .utility: return 2.0
             default: return 0.0
             }
         }
@@ -37,6 +38,7 @@ public extension Button {
         var borderColor: UIColor? {
             switch self {
             case .default: return .accentSecondaryBlue
+            case .utility: return .btnDisabled
             default: return nil
             }
         }
@@ -45,6 +47,7 @@ public extension Button {
             switch self {
             case .default, .link, .flat: return .textAction
             case .destructiveFlat: return .textCritical
+            case .utility: return .textPrimary
             default: return .textTertiary
             }
         }
@@ -61,6 +64,7 @@ public extension Button {
         var highlightedBorderColor: UIColor? {
             switch self {
             case .default: return .btnPrimary //DARK
+            case .utility: return .utilityButtonHighlightedBorderColor
             default: return nil
             }
         }

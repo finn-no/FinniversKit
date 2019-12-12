@@ -49,6 +49,6 @@ class SearchResultListEmptyDemoView: UIView, Tweakable {
     }
 
     private func configureViewModel(_ viewModel: SearchResultListEmptyViewModel) {
-        searchResultListEmptyView.configure(withViewModel: viewModel, forState: .pushEnabled)
+        searchResultListEmptyView.configure(withViewModel: viewModel, forState: .initial)
     }
 }

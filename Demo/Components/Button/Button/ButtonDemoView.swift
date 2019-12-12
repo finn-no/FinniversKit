@@ -17,6 +17,8 @@ public class ButtonDemoView: UIView {
         let normalButton = Button(style: .default)
         let smallNormalButton = Button(style: .default, size: .small)
 
+        let utilityButton = Button(style: .utility, size: .small)
+
         let callToActionButton = Button(style: .callToAction)
         let destructiveButton = Button(style: .destructive)
         let flatButton = Button(style: .flat)
@@ -34,6 +36,8 @@ public class ButtonDemoView: UIView {
 
         normalButton.setTitle("Default button", for: .normal)
         smallNormalButton.setTitle("Small default button", for: .normal)
+
+        utilityButton.setTitle("Utility button", for: .normal)
 
         callToActionButton.setTitle("Call to action button", for: .normal)
         destructiveButton.setTitle("Destructive button", for: .normal)
@@ -60,6 +64,8 @@ public class ButtonDemoView: UIView {
         normalButton.translatesAutoresizingMaskIntoConstraints = false
         smallNormalButton.translatesAutoresizingMaskIntoConstraints = false
 
+        utilityButton.translatesAutoresizingMaskIntoConstraints = false
+
         callToActionButton.translatesAutoresizingMaskIntoConstraints = false
         destructiveButton.translatesAutoresizingMaskIntoConstraints = false
 
@@ -77,6 +83,8 @@ public class ButtonDemoView: UIView {
 
         addSubview(normalButton)
         addSubview(smallNormalButton)
+
+        addSubview(utilityButton)
 
         addSubview(callToActionButton)
         addSubview(destructiveButton)
@@ -100,7 +108,11 @@ public class ButtonDemoView: UIView {
             normalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
             smallNormalButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .mediumLargeSpacing),
-            smallNormalButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            smallNormalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
+            smallNormalButton.trailingAnchor.constraint(lessThanOrEqualTo: button2.leadingAnchor),
+
+            utilityButton.topAnchor.constraint(equalTo: normalButton.bottomAnchor, constant: .mediumLargeSpacing),
+            utilityButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing),
 
             callToActionButton.topAnchor.constraint(equalTo: smallNormalButton.bottomAnchor, constant: .mediumLargeSpacing),
             callToActionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),

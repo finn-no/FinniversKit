@@ -39,7 +39,7 @@ public class SaveSearchPromptView: UIView {
     }()
 
     private lazy var positiveButton: UIButton = {
-        let button = Button(style: .default, size: .small)
+        let button = Button(style: .utility, size: .small)
         button.addTarget(self, action: #selector(positiveButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -68,14 +68,14 @@ public class SaveSearchPromptView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .bgSecondary
+        backgroundColor = .marble
 
         addSubview(title)
         addSubview(positiveButton)
         addSubview(dismissButton)
 
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            title.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing*3),
             title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
             title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 

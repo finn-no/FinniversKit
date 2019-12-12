@@ -395,6 +395,10 @@ extension CGColor {
         return btnCritical.withAlphaComponent(0.8)
     }
 
+    public class var utilityButtonHighlightedBorderColor: UIColor {
+        return btnDisabled.withAlphaComponent(0.8)
+    }
+
     public class var defaultButtonHighlightedBodyColor: UIColor {
         return UIColor(r: 241, g: 249, b: 255)! //DARK btnTertiary?
     }
