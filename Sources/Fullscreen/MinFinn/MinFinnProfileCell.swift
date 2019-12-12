@@ -35,8 +35,8 @@ public class MinFinnProfileCell: UITableViewCell {
     }
 
     func configure(with model: MinFinnProfileCellModel?) {
-        identityView.viewModel = model
         delegate = model?.delegate
+        identityView.viewModel = model
     }
 }
 
