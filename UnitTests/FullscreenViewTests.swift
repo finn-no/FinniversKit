@@ -136,4 +136,8 @@ class FullscreenViewTests: XCTestCase {
     func testAdConfirmationView() {
         snapshot(.adConfirmationView)
     }
+
+    func testMinFinnView() {
+        snapshot(.minFinn)
+    }
 }
