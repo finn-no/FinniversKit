@@ -138,6 +138,6 @@ class FullscreenViewTests: XCTestCase {
     }
 
     func testMinFinnView() {
-        snapshot(.minFinn)
+        snapshot(.minFinnView)
     }
 }
