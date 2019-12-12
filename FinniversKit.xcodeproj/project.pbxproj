@@ -534,6 +534,9 @@
 		F26852F922019ACE000978C8 /* UserAdsListViewNewAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */; };
 		F26852FC2201DAD8000978C8 /* UserAdsListViewSeeAllAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */; };
 		F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2772F4322803B310002D21F /* ReviewButtonView.swift */; };
+		F288B855239AA1E900B9502D /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F6F23570AF000CAA6BB /* SnapshotTesting */; };
+		F288B858239AA59900B9502D /* CollapseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B857239AA59900B9502D /* CollapseView.swift */; };
+		F288B85E239AAD3C00B9502D /* CollapseDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B85D239AAD3C00B9502D /* CollapseDemoView.swift */; };
 		F288B861239E5DE900B9502D /* OrderTotalSumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B85F239E5BA400B9502D /* OrderTotalSumView.swift */; };
 		F288B864239E60C900B9502D /* OrderSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B862239E60BC00B9502D /* OrderSummaryView.swift */; };
 		F288B86D239E632900B9502D /* OrderSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B86B239E632300B9502D /* OrderSummaryViewModel.swift */; };
@@ -1136,6 +1139,8 @@
 		F26852F722019A9D000978C8 /* UserAdsListViewNewAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewNewAdCell.swift; sourceTree = "<group>"; };
 		F26852FA2201DA6F000978C8 /* UserAdsListViewSeeAllAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdsListViewSeeAllAdsCell.swift; sourceTree = "<group>"; };
 		F2772F4322803B310002D21F /* ReviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButtonView.swift; sourceTree = "<group>"; };
+		F288B857239AA59900B9502D /* CollapseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapseView.swift; sourceTree = "<group>"; };
+		F288B85D239AAD3C00B9502D /* CollapseDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapseDemoView.swift; sourceTree = "<group>"; };
 		F288B85F239E5BA400B9502D /* OrderTotalSumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTotalSumView.swift; sourceTree = "<group>"; };
 		F288B862239E60BC00B9502D /* OrderSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryView.swift; sourceTree = "<group>"; };
 		F288B86B239E632300B9502D /* OrderSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewModel.swift; sourceTree = "<group>"; };
@@ -1178,6 +1183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */,
+				F288B855239AA1E900B9502D /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1682,6 +1688,7 @@
 				9BD8ABBE2359B1CE001078CA /* ChristmasWishListView */,
 				45B2E06B207E181C00C68B92 /* Consent */,
 				F2BE212E22819ED8004640F3 /* Control */,
+				F288B856239AA4E800B9502D /* CollapseView */,
 				F2BE6C0A236C29BA0085A05A /* CheckmarkTitleView */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
 				0884C6C722B7B4360015474D /* Disclaimer */,
@@ -3161,6 +3168,7 @@
 				CFCDDA5D22731D4D005E1F4A /* Callout */,
 				9BD8ABBA2359B0A1001078CA /* ChristmasWishList */,
 				CF8F021821DCC624004C4042 /* Consent */,
+				F288B85C239AAC3600B9502D /* CollapseView */,
 				AA7A854F22258A0B00AF5F42 /* Dialogue */,
 				0884C6CA22B7B5DA0015474D /* Disclaimer */,
 				CF7C460B22257AE1001FB92C /* EarthHour */,
@@ -3993,6 +4001,22 @@
 			path = ReviewButtonView;
 			sourceTree = "<group>";
 		};
+		F288B856239AA4E800B9502D /* CollapseView */ = {
+			isa = PBXGroup;
+			children = (
+				F288B857239AA59900B9502D /* CollapseView.swift */,
+			);
+			path = CollapseView;
+			sourceTree = "<group>";
+		};
+		F288B85C239AAC3600B9502D /* CollapseView */ = {
+			isa = PBXGroup;
+			children = (
+				F288B85D239AAD3C00B9502D /* CollapseDemoView.swift */,
+			);
+			path = CollapseView;
+			sourceTree = "<group>";
+		};
 		F288B867239E62C200B9502D /* OrderTotalSumView */ = {
 			isa = PBXGroup;
 			children = (
@@ -4178,7 +4202,7 @@
 			);
 			name = UnitTests;
 			packageProductDependencies = (
-				9BD13F6F23570AF000CAA6BB /* XCSwiftPackageProductDependency */,
+				9BD13F6F23570AF000CAA6BB /* SnapshotTesting */,
 			);
 			productName = UnitTests;
 			productReference = 14F4F1B91FD6CEA800E9CECA /* UnitTests.xctest */;
@@ -4243,7 +4267,7 @@
 			);
 			mainGroup = 25D04D721F583B1800EA317D;
 			packageReferences = (
-				9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference */,
+				9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 25D04D7C1F583B1800EA317D /* Products */;
 			projectDirPath = "";
@@ -4479,6 +4503,7 @@
 				CF7C460F22257AE1001FB92C /* EarthHourDemoView.swift in Sources */,
 				DAD0D48E210731C60091DD4D /* AdReporterDemoView.swift in Sources */,
 				DA93EFAA21C2BB2900207239 /* NewYearsDemoView.swift in Sources */,
+				F288B85E239AAD3C00B9502D /* CollapseDemoView.swift in Sources */,
 				4483F97C234B3BFF00D726F1 /* ScrollViewController.swift in Sources */,
 				CF164D04230EB80900250822 /* FavoriteAdSortingDemoView.swift in Sources */,
 				9F21365157F385AC63928150 /* FullscreenGalleryDemoViewController.swift in Sources */,
@@ -4651,6 +4676,7 @@
 				F22612D822572D9400472D22 /* StatisticsItemEmptyView.swift in Sources */,
 				44A149EB21377C7B0053D5F7 /* SavedSearchesListViewCell.swift in Sources */,
 				9BCDFC7622E09E3C00A80D7F /* KlimabroletViewModel.swift in Sources */,
+				F288B87E239F886400B9502D /* OrderSummaryLineView.swift in Sources */,
 				CF5012452360909200138A36 /* PrimingHeaderView.swift in Sources */,
 				9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */,
 				CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */,
@@ -4662,6 +4688,7 @@
 				9B239E1122E093E800A4E9D0 /* KlimabroletContentView.swift in Sources */,
 				441D699C1FEA947600CD919A /* LayoutHelpers.swift in Sources */,
 				CF5CA71722F87AED007C4124 /* NeighborhoodProfileInfoViewCell.swift in Sources */,
+				F288B858239AA59900B9502D /* CollapseView.swift in Sources */,
 				DAB7FAAA21B690DD00BF8CC6 /* BottomSheetGestureController.swift in Sources */,
 				DAB7FAAE21B6924E00BF8CC6 /* SpringAnimator.swift in Sources */,
 				0884C6C922B7B4580015474D /* DisclaimerView.swift in Sources */,
@@ -5255,7 +5282,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference */ = {
+		9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
 			requirement = {
@@ -5266,9 +5293,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9BD13F6F23570AF000CAA6BB /* XCSwiftPackageProductDependency */ = {
+		9BD13F6F23570AF000CAA6BB /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference */;
+			package = 9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */

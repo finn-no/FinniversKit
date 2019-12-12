@@ -226,4 +226,8 @@ class ComponentViewTests: XCTestCase {
     func testOrderSummaryView() {
         snapshot(.orderSummaryView)
     }
+
+    func testCollapseView() {
+        snapshot(.collapseView)
+    }
 }
