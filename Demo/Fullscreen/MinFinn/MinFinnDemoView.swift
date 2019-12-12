@@ -5,16 +5,20 @@
 import FinniversKit
 
 private struct ProfileItem: MinFinnProfileCellModel {
-    var profileImage: UIImage?
-    var profileImageUrl: URL?
-    var displayName: String
-    var subtitle: String
-    var isVerified: Bool
+    let profileImage: UIImage?
+    let profileImageUrl: URL?
+    let displayName: String
+    let subtitle: String
+    let isVerified: Bool
+    weak var delegate: MinFinnProfileCellDelegate?
 }
 
 private struct VerifyItem: MinFinnVerifyCellModel {
     let title: String
-    let buttonTitle: String
+    let text: String
+    let primaryButtonTitle: String
+    let secondaryButtonTitle: String
+    weak var delegate: MinFinnVerifyCellDelegate?
 }
 
 private struct IconItem: MinFinnIconCellModel {
@@ -35,8 +39,8 @@ class MinFinnDemoView: UIView {
 
     private lazy var sections = [
         Section(items: [
-            ProfileItem(profileImage: nil, profileImageUrl: nil, displayName: "Ola Nordmann", subtitle: "ola.nordmann@finn.no", isVerified: true),
-            VerifyItem(title: "Bekreft at du er deg", buttonTitle: "Kom i gang")
+            ProfileItem(profileImage: nil, profileImageUrl: nil, displayName: "Ola Nordmann", subtitle: "ola.nordmann@finn.no", isVerified: false, delegate: self),
+            VerifyItem(title: "Vis andre at du er trygg", text: "Hvis du godkjenner profilen din med BankID oppleves du som en tryggere person å handle med.", primaryButtonTitle: "Kom i gang", secondaryButtonTitle: "Les mer om godkjenning", delegate: self)
         ]),
         Section(items: [
             IconItem(icon: UIImage(named: "favorites"), title: "Favoritter"),
@@ -88,6 +92,19 @@ extension MinFinnDemoView: MinFinnViewDelegate {
         let model = sections[indexPath.section].items[indexPath.item]
         print("Did select model: \n\t- \(model)")
     }
+}
 
-    func minFinnView(_ view: MinFinnView, loadImageAt url: URL, with width: CGFloat, completion: (UIImage?) -> Void) {}
+extension MinFinnDemoView: MinFinnProfileCellDelegate {
+    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageAt url: URL, completionHandler: @escaping (UIImage?) -> Void) {
+        print("Load image")
+    }
+}
+
+extension MinFinnDemoView: MinFinnVerifyCellDelegate {
+    func minFinnVerifiyCell(_ cell: MinFinnVerifyCell, didSelect action: MinFinnVerifyCell.Action) {
+        switch action {
+        case .primary: print("Primary button tapped")
+        case .secondary: print("Secondary button tapped")
+        }
+    }
 }

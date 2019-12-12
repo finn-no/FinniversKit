@@ -12,7 +12,6 @@ public protocol MinFinnViewDataSource: AnyObject {
 
 public protocol MinFinnViewDelegate: AnyObject {
     func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath)
-    func minFinnView(_ view: MinFinnView, loadImageAt url: URL, with width: CGFloat, completion: @escaping (UIImage?) -> Void)
 }
 
 public class MinFinnView: UIView {
@@ -80,12 +79,10 @@ extension MinFinnView: UITableViewDataSource {
         switch model {
         case let profileModel as MinFinnProfileCellModel:
             let cell = tableView.dequeue(MinFinnProfileCell.self, for: indexPath)
-            cell.delegate = self
             cell.configure(with: profileModel)
             return cell
         case let verifyModel as MinFinnVerifyCellModel:
             let cell = tableView.dequeue(MinFinnVerifyCell.self, for: indexPath)
-            cell.delegate = self
             cell.configure(with: verifyModel)
             return cell
         case let iconModel as IconTitleTableViewCellViewModel:
@@ -124,19 +121,6 @@ extension MinFinnView: UITableViewDelegate {
         case 0: return .mediumLargeSpacing
         default: return .largeSpacing
         }
-    }
-}
-
-extension MinFinnView: MinFinnProfileCellDelegate {
-    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageAt url: URL, with width: CGFloat, completionHandler: @escaping (UIImage?) -> Void) {
-        delegate?.minFinnView(self, loadImageAt: url, with: width, completion: completionHandler)
-    }
-}
-
-extension MinFinnView: MinFinnVerifyCellDelegate {
-    func minFinnVerifiyCellDidTapVerifyButton(_ cell: MinFinnVerifyCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        delegate?.minFinnView(self, didSelectModelAt: indexPath)
     }
 }
 

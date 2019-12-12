@@ -4,11 +4,16 @@
 
 import UIKit
 
-protocol MinFinnVerifyCellDelegate: AnyObject {
-    func minFinnVerifiyCellDidTapVerifyButton(_ cell: MinFinnVerifyCell)
+public protocol MinFinnVerifyCellDelegate: AnyObject {
+    func minFinnVerifiyCell(_ cell: MinFinnVerifyCell, didSelect action: MinFinnVerifyCell.Action)
 }
 
-class MinFinnVerifyCell: UITableViewCell {
+public class MinFinnVerifyCell: UITableViewCell {
+
+    public enum Action {
+        case primary
+        case secondary
+    }
 
     // MARK: - Internal properties
 
@@ -16,24 +21,41 @@ class MinFinnVerifyCell: UITableViewCell {
 
     // MARK: - Private properties
 
+    private lazy var iconView: UIImageView = {
+        let icon = UIImage(named: .verified)
+        let imageView = UIImageView(image: icon)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
     private lazy var titleLabel: Label = {
-        let label = Label(style: .title3, withAutoLayout: true)
-        label.textColor = .licorice
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
         return label
     }()
 
-    private lazy var verifyButton: Button = {
-        let button = Button(style: .callToAction, withAutoLayout: true)
-        button.addTarget(self, action: #selector(verifyButtonTapped), for: .touchUpInside)
+    private lazy var bodyLabel: Label = {
+        let label = Label(style: .caption, withAutoLayout: true)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+
+    private lazy var primaryButton: Button = {
+        let button = Button(style: .default, size: .small, withAutoLayout: true)
+        button.addTarget(self, action: #selector(primaryButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var secondaryButton: Button = {
+        let button = Button(style: .flat, size: .small, withAutoLayout: true)
+        button.addTarget(self, action: #selector(secondaryButtonTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var colorView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .mint
-        view.layer.cornerRadius = 4
-        view.layer.borderColor = UIColor.accentPea.cgColor
-        view.layer.borderWidth = 2
+        view.backgroundColor = .bgSecondary
+        view.layer.cornerRadius = 8
         return view
     }()
 
@@ -50,7 +72,7 @@ class MinFinnVerifyCell: UITableViewCell {
 
     // MARK: - Override
 
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         super.prepareForReuse()
         configure(with: nil)
     }
@@ -59,14 +81,21 @@ class MinFinnVerifyCell: UITableViewCell {
 
     func configure(with model: MinFinnVerifyCellModel?) {
         titleLabel.text = model?.title
-        verifyButton.setTitle(model?.buttonTitle, for: .normal)
+        bodyLabel.text = model?.text
+        primaryButton.setTitle(model?.primaryButtonTitle, for: .normal)
+        secondaryButton.setTitle(model?.secondaryButtonTitle, for: .normal)
+        delegate = model?.delegate
     }
 }
 
 // MARK: - Private methods
 private extension MinFinnVerifyCell {
-    @objc func verifyButtonTapped() {
-        delegate?.minFinnVerifiyCellDidTapVerifyButton(self)
+    @objc func primaryButtonTapped() {
+        delegate?.minFinnVerifiyCell(self, didSelect: .primary)
+    }
+
+    @objc func secondaryButtonTapped() {
+        delegate?.minFinnVerifiyCell(self, didSelect: .secondary)
     }
 
     func setup() {
@@ -74,8 +103,11 @@ private extension MinFinnVerifyCell {
         contentView.backgroundColor = .bgPrimary
 
         contentView.addSubview(colorView)
+        contentView.addSubview(iconView)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(verifyButton)
+        contentView.addSubview(bodyLabel)
+        contentView.addSubview(primaryButton)
+        contentView.addSubview(secondaryButton)
 
         NSLayoutConstraint.activate([
             colorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
@@ -83,11 +115,22 @@ private extension MinFinnVerifyCell {
             colorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             colorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            titleLabel.topAnchor.constraint(equalTo: colorView.topAnchor, constant: .mediumLargeSpacing + .smallSpacing),
+            iconView.topAnchor.constraint(equalTo: colorView.topAnchor, constant: .mediumLargeSpacing),
+            iconView.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
+
+            titleLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: .mediumSpacing),
             titleLabel.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
-            verifyButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
-            verifyButton.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
-            verifyButton.bottomAnchor.constraint(equalTo: colorView.bottomAnchor, constant: -.mediumLargeSpacing - .smallSpacing)
+
+            bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .smallSpacing),
+            bodyLabel.leadingAnchor.constraint(equalTo: colorView.leadingAnchor, constant: .mediumLargeSpacing),
+            bodyLabel.trailingAnchor.constraint(equalTo: colorView.trailingAnchor, constant: -.mediumLargeSpacing),
+
+            primaryButton.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: .mediumLargeSpacing),
+            primaryButton.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
+
+            secondaryButton.centerXAnchor.constraint(equalTo: colorView.centerXAnchor),
+            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: .mediumSpacing),
+            secondaryButton.bottomAnchor.constraint(equalTo: colorView.bottomAnchor, constant: -.mediumSpacing),
         ])
     }
 }

@@ -4,11 +4,11 @@
 
 import UIKit
 
-protocol MinFinnProfileCellDelegate: AnyObject {
-    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageAt url: URL, with width: CGFloat, completionHandler: @escaping (UIImage?) -> Void)
+public protocol MinFinnProfileCellDelegate: AnyObject {
+    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageAt url: URL, completionHandler: @escaping (UIImage?) -> Void)
 }
 
-class MinFinnProfileCell: UITableViewCell {
+public class MinFinnProfileCell: UITableViewCell {
 
     weak var delegate: MinFinnProfileCellDelegate?
 
@@ -29,22 +29,22 @@ class MinFinnProfileCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         super.prepareForReuse()
         identityView.viewModel = nil
     }
 
     func configure(with model: MinFinnProfileCellModel?) {
         identityView.viewModel = model
+        delegate = model?.delegate
     }
 }
 
 extension MinFinnProfileCell: IdentityViewDelegate {
-    func identityViewWasTapped(_ identityView: IdentityView) {}
+    public func identityViewWasTapped(_ identityView: IdentityView) {}
 
-    func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
-        let width = IdentityView.profileImageSize
-        delegate?.minFinnProfileCell(self, loadImageAt: url, with: width, completionHandler: completionHandler)
+    public func identityView(_ identityView: IdentityView, loadImageWithUrl url: URL, completionHandler: @escaping (UIImage?) -> Void) {
+        delegate?.minFinnProfileCell(self, loadImageAt: url, completionHandler: completionHandler)
     }
 }
 

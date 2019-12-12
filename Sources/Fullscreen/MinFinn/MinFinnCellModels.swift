@@ -14,7 +14,9 @@ public extension MinFinnCellModel {
 }
 
 // MARK: - MinFinnProfileCellModel
-public protocol MinFinnProfileCellModel: MinFinnCellModel, IdentityViewModel {}
+public protocol MinFinnProfileCellModel: MinFinnCellModel, IdentityViewModel {
+    var delegate: MinFinnProfileCellDelegate? { get }
+}
 
 public extension MinFinnProfileCellModel {
     var title: String { "" }
@@ -24,7 +26,10 @@ public extension MinFinnProfileCellModel {
 
 // MARK: - MinFinnVerifyCellModel
 public protocol MinFinnVerifyCellModel: MinFinnCellModel {
-    var buttonTitle: String { get }
+    var text: String { get }
+    var primaryButtonTitle: String { get }
+    var secondaryButtonTitle: String { get }
+    var delegate: MinFinnVerifyCellDelegate? { get }
 }
 
 // MARK: - MinFinnIconCellModel
