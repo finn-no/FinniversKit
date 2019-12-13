@@ -110,9 +110,9 @@ public final class NativeAdvertView: UIView {
         var height = NativeAdvertView.containerMargin * 2
         height +=  NativeAdvertView.imageHeight(forWidth: width)
         height += .mediumSpacing
-        height += NativeAdvertView.sponsoredByLabelHeight(forWidth: width, text: viewModel.sponsoredText ?? "")
+        height += NativeAdvertView.sponsoredByLabelHeight(forWidth: width, text: viewModel.sponsoredBy ?? "")
         height += .mediumSpacing
-        height += NativeAdvertView.titleLabelHeight(forWidth: width, text: viewModel.title ?? "")
+        height += NativeAdvertView.titleLabelHeight(forWidth: width, text: viewModel.title)
 
         return CGSize(width: width, height: height)
     }
@@ -177,17 +177,17 @@ private extension NativeAdvertView {
 
     func configure(viewModel: NativeAdvertViewModel) {
         mainImageView.image = nil
-        if let imageURL = viewModel.mainImageURL {
+        if let imageURL = viewModel.mainImageUrl {
             imageDelegate?.nativeAdvertView(setImageWithURL: imageURL, onImageView: mainImageView)
         }
 
         logoImageView.image = nil
-        if let imageURL = viewModel.iconImageURL {
+        if let imageURL = viewModel.logoImageUrl {
             imageDelegate?.nativeAdvertView(setImageWithURL: imageURL, onImageView: logoImageView)
         }
 
         titleLabel.text = viewModel.title
-        sponsoredByLabel.text = viewModel.sponsoredText
+        sponsoredByLabel.text = viewModel.sponsoredBy
     }
 
     func setupFonts(forWidth width: CGFloat) {

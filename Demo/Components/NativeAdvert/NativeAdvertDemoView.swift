@@ -5,25 +5,28 @@
 import FinniversKit
 
 private struct DemoViewModel: NativeAdvertViewModel {
-    let title: String?
-    let mainImageURL: URL?
-    let iconImageURL: URL?
-    let sponsoredText: String?
+    let title: String
+    let mainImageUrl: URL?
+    let logoImageUrl: URL?
+    let sponsoredBy: String?
+    let ribbonText: String
 }
 
 class NativeAdvertDemoView: UIView {
     private let advertModel = DemoViewModel(
-        title: "Kan være inntil 50 tegn, og denne er faktisk på 50",
-        mainImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg"),
-        iconImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/1920px-Five-pointed_star.svg.png"),
-        sponsoredText: "Sponset av Den LengsteMuligeAnnonsør"
+        title: "Du har skjært avokadoen feil i alle år! 50 tegn!",
+        mainImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
+        logoImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
+        sponsoredBy: "Avokadosentralen",
+        ribbonText: "Annonse"
     )
 
     private let contentModel = DemoViewModel(
         title: "Du har skjært avocadoen feil i alle år! 50 tegn!",
-        mainImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
-        iconImageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
-        sponsoredText: "ANNONSØRINNHOLD"
+        mainImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
+        logoImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
+        sponsoredBy: "",
+        ribbonText: "ANNONSØRINNHOLD"
     )
 
     private lazy var advertView: NativeAdvertView = {

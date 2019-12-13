@@ -101,7 +101,7 @@ public final class NativeContentAdvertView: UIView {
         let cardWidth = clampedWidth - NativeContentAdvertView.padding * 2
 
         var height = NativeContentAdvertView.imageHeight(forWidth: cardWidth)
-        height += NativeContentAdvertView.titleLabelHeight(forWidth: cardWidth, text: viewModel.title ?? "")
+        height += NativeContentAdvertView.titleLabelHeight(forWidth: cardWidth, text: viewModel.title)
         height += NativeContentAdvertView.padding * 2 // Label inset
         height += NativeContentAdvertView.padding * 2 // Container vertical inset
 
@@ -166,17 +166,17 @@ private extension NativeContentAdvertView {
 
     func configure(viewModel: NativeAdvertViewModel) {
         mainImageView.image = nil
-        if let mainImageURL = viewModel.mainImageURL {
+        if let mainImageURL = viewModel.mainImageUrl {
             imageDelegate?.nativeAdvertView(setImageWithURL: mainImageURL, onImageView: mainImageView)
         }
 
         logoImageView.image = nil
-        if let logoImageURL = viewModel.iconImageURL {
+        if let logoImageURL = viewModel.logoImageUrl {
             imageDelegate?.nativeAdvertView(setImageWithURL: logoImageURL, onImageView: logoImageView)
         }
 
         titleLabel.text = viewModel.title
-        settingsButton.text = viewModel.sponsoredText
+        settingsButton.text = viewModel.ribbonText
     }
 }
 
