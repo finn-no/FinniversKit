@@ -5,8 +5,36 @@
 import UIKit
 
 public final class CogWheelButton: UIButton {
-    private let corners: UIRectCorner
+
+    public enum Alignment {
+        case left
+        case right
+
+        var roundingCorners: UIRectCorner {
+            get {
+                switch self {
+                case .left:
+                    return .bottomRight
+                case .right:
+                    return .bottomLeft
+                }
+            }
+        }
+    }
+
+    private let alignment: Alignment
     private let defaultContentSize: CGFloat = .largeSpacing
+
+    private var cornerConstraint: NSLayoutConstraint {
+        get {
+            switch alignment {
+            case .left:
+                return contentView.leadingAnchor.constraint(equalTo: leadingAnchor)
+            case .right:
+                return contentView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            }
+        }
+    }
 
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -50,8 +78,8 @@ public final class CogWheelButton: UIButton {
 
     // MARK: - Init
 
-    @objc public required init(corners: UIRectCorner, autoLayout: Bool) {
-        self.corners = corners
+    public required init(alignment: Alignment, autoLayout: Bool) {
+        self.alignment = alignment
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !autoLayout
         setup()
@@ -66,7 +94,7 @@ public final class CogWheelButton: UIButton {
     public override func layoutSubviews() {
         super.layoutSubviews()
         let radius = CGSize(width: defaultContentSize / 2, height: defaultContentSize / 2)
-        let path = UIBezierPath(roundedRect: contentView.bounds, byRoundingCorners: corners, cornerRadii: radius)
+        let path = UIBezierPath(roundedRect: contentView.bounds, byRoundingCorners: alignment.roundingCorners, cornerRadii: radius)
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         contentView.layer.mask = mask
@@ -80,8 +108,8 @@ public final class CogWheelButton: UIButton {
         let contentHeightMultiplier: CGFloat = defaultContentSize / intrinsicContentSize.height
 
         NSLayoutConstraint.activate([
+            cornerConstraint,
             contentView.topAnchor.constraint(equalTo: topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: contentWidthMultiplier),
             contentView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: contentHeightMultiplier),
 
@@ -89,6 +117,7 @@ public final class CogWheelButton: UIButton {
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
+
 }
 
 // MARK: - Private extensions

@@ -59,7 +59,7 @@ public final class NativeAdvertView: UIView {
     }()
 
     private lazy var settingsButton: UIButton = {
-        let button = CogWheelButton(corners: [.bottomRight], autoLayout: true)
+        let button = CogWheelButton(alignment: .right, autoLayout: true)
         button.addTarget(self, action: #selector(handleSettingsButtonTap), for: .touchUpInside)
         return button
     }()
