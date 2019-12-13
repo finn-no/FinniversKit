@@ -246,7 +246,6 @@
 		899D0BF6222D4B3400794DEC /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */; };
 		899D0BF8222D58D700794DEC /* FullscreenGalleryOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D0BF7222D58D700794DEC /* FullscreenGalleryOverlayView.swift */; };
 		89A7A63D225337B50053D33B /* NativeAdvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */; };
-		89A7A63F2253387A0053D33B /* NativeAdvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A63E2253387A0053D33B /* NativeAdvertView.swift */; };
 		89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A643225352180053D33B /* NativeAdvertDelegates.swift */; };
 		89A7A648225352A30053D33B /* NativeContentAdvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A6462253524E0053D33B /* NativeContentAdvertView.swift */; };
 		89A7A64A22536E200053D33B /* NativeContentSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A64922536E200053D33B /* NativeContentSettingsButton.swift */; };
@@ -836,7 +835,6 @@
 		899D0BF5222D4B3400794DEC /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		899D0BF7222D58D700794DEC /* FullscreenGalleryOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenGalleryOverlayView.swift; sourceTree = "<group>"; };
 		89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertViewModel.swift; sourceTree = "<group>"; };
-		89A7A63E2253387A0053D33B /* NativeAdvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertView.swift; sourceTree = "<group>"; };
 		89A7A641225344600053D33B /* NativeAdvertDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDemoView.swift; sourceTree = "<group>"; };
 		89A7A643225352180053D33B /* NativeAdvertDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDelegates.swift; sourceTree = "<group>"; };
 		89A7A6462253524E0053D33B /* NativeContentAdvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeContentAdvertView.swift; sourceTree = "<group>"; };
@@ -2244,7 +2242,6 @@
 				918C8A4123A3853400B566DE /* NativeAdvertGridView.swift */,
 				89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */,
 				89A7A643225352180053D33B /* NativeAdvertDelegates.swift */,
-				89A7A63E2253387A0053D33B /* NativeAdvertView.swift */,
 				89A7A6462253524E0053D33B /* NativeContentAdvertView.swift */,
 				89A7A64922536E200053D33B /* NativeContentSettingsButton.swift */,
 			);
@@ -4630,7 +4627,6 @@
 				F26852F321FEFA9C000978C8 /* UserAdsListHeaderViewModel.swift in Sources */,
 				DAD6EB2A2369916100968497 /* SettingsView.swift in Sources */,
 				4408A6A32027AC41008C0BD9 /* Color.swift in Sources */,
-				89A7A63F2253387A0053D33B /* NativeAdvertView.swift in Sources */,
 				446EE15C2345A6AA00010818 /* SelectorTitleView.swift in Sources */,
 				F2BE6C01236863BC0085A05A /* AdConfirmationObjectView.swift in Sources */,
 				DAD6EB292369916100968497 /* SettingsViewConsentCellModel.swift in Sources */,
