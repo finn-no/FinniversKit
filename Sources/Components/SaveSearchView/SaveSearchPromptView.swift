@@ -14,21 +14,13 @@ public protocol SaveSearchPromptViewDelegate: AnyObject {
 
 public class SaveSearchPromptView: UIView {
 
-    public enum State {
-        case initial
-        case accept
-        case finished
-    }
-
     // MARK: - Public properties
 
     public weak var delegate: SaveSearchPromptViewDelegate?
 
     // MARK: - Private properties
 
-    private var state: State = .initial
-
-    private lazy var title: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.textColor = .textPrimary
@@ -70,16 +62,16 @@ public class SaveSearchPromptView: UIView {
     private func setup() {
         backgroundColor = .marble
 
-        addSubview(title)
+        addSubview(titleLabel)
         addSubview(positiveButton)
         addSubview(dismissButton)
 
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing*3),
-            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing*3),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
 
-            positiveButton.topAnchor.constraint(equalTo: title.bottomAnchor, constant: .mediumLargeSpacing),
+            positiveButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumLargeSpacing),
             positiveButton.centerXAnchor.constraint(equalTo: centerXAnchor),
 
             dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: .smallSpacing),
@@ -91,29 +83,12 @@ public class SaveSearchPromptView: UIView {
 
     // MARK: - Public methods
 
-    public func setState(_ state: State, withViewModel viewModel: SaveSearchPromptViewModel? = nil) {
-        self.state = state
-
-        if state == .finished {
-            isHidden = true
-            return
-        }
-
-        guard let viewModel = viewModel else { return }
-        configure(withViewModel: viewModel)
+    public func configure(title: String, positiveButtonTitle: String) {
+        titleLabel.text = title
+        positiveButton.setTitle(positiveButtonTitle, for: .normal)
     }
 
     // MARK: - Private methods
-
-    private func configure(withViewModel viewModel: SaveSearchPromptViewModel) {
-        title.text = viewModel.title
-        if let buttonTitle = viewModel.positiveButtonTitle {
-            positiveButton.setTitle(buttonTitle, for: .normal)
-        } else {
-            positiveButton.isHidden = true
-        }
-        setNeedsLayout()
-    }
 
     @objc private func positiveButtonTapped() {
         delegate?.saveSearchPromptView(self, didAcceptSaveSearch: true)
