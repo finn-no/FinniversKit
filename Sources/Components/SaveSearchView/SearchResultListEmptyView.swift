@@ -89,8 +89,7 @@ public protocol SearchResultListEmptyViewDelegate: AnyObject {
 
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 40),
-
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: .veryLargeSpacing * 3),
+            stackView.topAnchor.constraint(equalTo: centerYAnchor, constant: .veryLargeSpacing * -2),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
