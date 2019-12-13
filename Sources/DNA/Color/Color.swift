@@ -415,6 +415,10 @@ extension CGColor {
         return textCritical.withAlphaComponent(0.8)
     }
 
+    public class var utilityButtonHighlightedTextColor: UIColor {
+        return textPrimary.withAlphaComponent(0.8)
+    }
+
     public class var dimmingColor: UIColor {
         return UIColor.black.withAlphaComponent(0.4) //DARK
     }

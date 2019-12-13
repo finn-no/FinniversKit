@@ -60,7 +60,7 @@ public class SaveSearchPromptView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        backgroundColor = .marble
+        backgroundColor = .bgTertiary
 
         addSubview(titleLabel)
         addSubview(positiveButton)

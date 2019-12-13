@@ -95,7 +95,8 @@ public protocol SearchResultListEmptyViewDelegate: AnyObject {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             button.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .mediumLargeSpacing),
-            button.centerXAnchor.constraint(equalTo: centerXAnchor)
+            button.centerXAnchor.constraint(equalTo: centerXAnchor),
+            button.heightAnchor.constraint(equalToConstant: 31)
         ])
     }
 

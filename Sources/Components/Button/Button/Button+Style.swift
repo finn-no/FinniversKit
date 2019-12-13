@@ -57,6 +57,7 @@ public extension Button {
             case .callToAction: return .callToActionButtonHighlightedBodyColor
             case .destructive: return .destructiveButtonHighlightedBodyColor
             case .default: return .defaultButtonHighlightedBodyColor
+            case .utility: return .bgPrimary
             default: return nil
             }
         }
@@ -74,6 +75,7 @@ public extension Button {
             case .link: return .linkButtonHighlightedTextColor
             case .flat: return .flatButtonHighlightedTextColor
             case .destructiveFlat: return .destructiveFlatButtonHighlightedTextColor
+            case .utility: return .utilityButtonHighlightedTextColor
             default: return nil
             }
         }
