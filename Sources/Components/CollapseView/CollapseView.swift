@@ -49,7 +49,7 @@ public class CollapseView: UIView {
     }()
 
     private var delegateView: UIView?
-    private lazy var contentViewCollapseTransformation = CGAffineTransform(translationX: 0, y: contentHeight - 24)
+    private lazy var contentViewCollapseTransformation = CGAffineTransform(translationX: 0, y: contentHeight - .mediumLargeSpacing)
 
     // MARK: Initalizer
 
@@ -137,7 +137,7 @@ extension CollapseView {
 
     private func addDelegateView(_ duration: TimeInterval) {
         guard contentHeight > 32 else {
-            print("The provided value to the parameter contentViewHeight has to be greater than 0 in order to properly render the delegate view.")
+            assertionFailure("The provided value to the parameter contentViewHeight has to be greater than 0 in order to properly render the delegate view.")
             return
         }
 
