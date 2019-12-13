@@ -12,6 +12,7 @@ public protocol MinFinnViewDataSource: AnyObject {
 
 public protocol MinFinnViewDelegate: AnyObject {
     func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath)
+    func minFinnView(_ view: MinFinnView, didBeginRefreshingUsing refreshControl: UIRefreshControl)
 }
 
 public class MinFinnView: UIView {
@@ -22,6 +23,12 @@ public class MinFinnView: UIView {
     public weak var delegate: MinFinnViewDelegate?
 
     // MARK: - Private properties
+
+    private lazy var refreshControl: UIRefreshControl = {
+        let controller = RefreshControl(frame: .zero)
+        controller.delegate = self
+        return controller
+    }()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -35,6 +42,7 @@ public class MinFinnView: UIView {
         tableView.register(IconTitleTableViewCell.self)
         tableView.register(BasicTableViewCell.self)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableView.insertSubview(refreshControl, at: 0)
         return tableView
     }()
 
@@ -133,5 +141,11 @@ extension MinFinnView: UITableViewDelegate {
         case 0: return .mediumLargeSpacing
         default: return .largeSpacing
         }
+    }
+}
+
+extension MinFinnView: RefreshControlDelegate {
+    public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
+        delegate?.minFinnView(self, didBeginRefreshingUsing: refreshControl)
     }
 }

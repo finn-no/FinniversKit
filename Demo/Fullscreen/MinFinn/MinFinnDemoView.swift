@@ -88,6 +88,12 @@ extension MinFinnDemoView: MinFinnViewDataSource {
 }
 
 extension MinFinnDemoView: MinFinnViewDelegate {
+    func minFinnView(_ view: MinFinnView, didBeginRefreshingUsing refreshControl: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            refreshControl.endRefreshing()
+        }
+    }
+
     func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath) {
         let model = sections[indexPath.section].items[indexPath.item]
         print("Did select model: \n\t- \(model)")
