@@ -4,27 +4,27 @@
 
 import FinniversKit
 
-// MARK: - SearchResultListEmptyViewDelegate
+// MARK: - SearchListEmptyViewDelegate
 
-public protocol SearchResultListEmptyViewDelegate: AnyObject {
-    func searchResultListEmptyViewDidSelectActionButton(_ searchResultListEmptyView: SearchResultListEmptyView, forState state: SearchResultListEmptyView.SearchResultListEmptyViewState)
+public protocol SearchListEmptyViewDelegate: AnyObject {
+    func searchListEmptyViewDidSelectActionButton(_ searchListEmptyView: SearchListEmptyView, forState state: SearchListEmptyView.SearchListEmptyViewState)
 }
 
-@objc public class SearchResultListEmptyView: UIView {
+@objc public class SearchListEmptyView: UIView {
 
     // MARK: - Public properties
 
-    @objc public enum SearchResultListEmptyViewState: Int {
+    @objc public enum SearchListEmptyViewState: Int {
         case initial = 0
         case searchSaved
         case searchSavedNoPush
     }
 
-    public weak var delegate: SearchResultListEmptyViewDelegate?
+    public weak var delegate: SearchListEmptyViewDelegate?
 
     // MARK: - Private properties
 
-    private var state: SearchResultListEmptyViewState = .initial
+    private var state: SearchListEmptyViewState = .initial
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -101,7 +101,7 @@ public protocol SearchResultListEmptyViewDelegate: AnyObject {
 
     // MARK: - Public methods
 
-    public func configure(withViewModel viewModel: SearchResultListEmptyViewModel, forState state: SearchResultListEmptyView.SearchResultListEmptyViewState) {
+    public func configure(withViewModel viewModel: SearchListEmptyViewModel, forState state: SearchListEmptyView.SearchListEmptyViewState) {
         self.state = state
         titleLabel.text = viewModel.title
         bodyLabel.text = viewModel.body
@@ -116,6 +116,6 @@ public protocol SearchResultListEmptyViewDelegate: AnyObject {
     // MARK: - Private methods
 
     @objc private func buttonTapped() {
-        delegate?.searchResultListEmptyViewDidSelectActionButton(self, forState: state)
+        delegate?.searchListEmptyViewDidSelectActionButton(self, forState: state)
     }
 }

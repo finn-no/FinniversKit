@@ -4,7 +4,7 @@
 
 import Foundation
 
-public class SearchResultListEmptyViewModel {
+public class SearchListEmptyViewModel {
 
     let title: String
     let body: String

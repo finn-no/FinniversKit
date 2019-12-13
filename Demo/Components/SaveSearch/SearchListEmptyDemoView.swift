@@ -4,15 +4,15 @@
 
 import UIKit
 
-class SearchResultListEmptyDemoView: UIView, Tweakable {
+class SearchListEmptyDemoView: UIView, Tweakable {
 
     private lazy var viewModels = [
-        SearchResultListEmptyViewModel(title: "Ingen treff akkurat nå", body: "Ønsker du å bli varslet når det kommer \n nye treff i dette søket?", buttonTitle: "Ja, takk!"),
-        SearchResultListEmptyViewModel(title: "Ingen treff her enda", body: "Vi sier ifra så fort det legges ut \n noe i dette søket", buttonTitle: nil)
+        SearchListEmptyViewModel(title: "Ingen treff akkurat nå", body: "Ønsker du å bli varslet når det kommer \n nye treff i dette søket?", buttonTitle: "Ja, takk!"),
+        SearchListEmptyViewModel(title: "Ingen treff her enda", body: "Vi sier ifra så fort det legges ut \n noe i dette søket", buttonTitle: nil)
     ]
 
-    private lazy var searchResultListEmptyView: SearchResultListEmptyView = {
-        let view = SearchResultListEmptyView()
+    private lazy var searchListEmptyView: SearchListEmptyView = {
+        let view = SearchListEmptyView()
         return view
     }()
 
@@ -43,12 +43,12 @@ class SearchResultListEmptyDemoView: UIView, Tweakable {
     // MARK: - Private
 
     private func setup() {
-        addSubview(searchResultListEmptyView)
-        searchResultListEmptyView.fillInSuperview()
+        addSubview(searchListEmptyView)
+        searchListEmptyView.fillInSuperview()
         configureViewModel(viewModels[0])
     }
 
-    private func configureViewModel(_ viewModel: SearchResultListEmptyViewModel) {
-        searchResultListEmptyView.configure(withViewModel: viewModel, forState: .initial)
+    private func configureViewModel(_ viewModel: SearchListEmptyViewModel) {
+        searchListEmptyView.configure(withViewModel: viewModel, forState: .initial)
     }
 }
