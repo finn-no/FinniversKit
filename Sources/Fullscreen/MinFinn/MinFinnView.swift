@@ -42,7 +42,7 @@ public class MinFinnView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        addSubview(tableView)
     }
 
     required init?(coder: NSCoder) {
@@ -55,12 +55,20 @@ public extension MinFinnView {
         tableView.indexPathForSelectedRow
     }
 
+    func reloadData() {
+        tableView.reloadData()
+    }
+
     func reloadRows(at indexPaths: [IndexPath], animated: Bool = true) {
         tableView.reloadRows(at: indexPaths, with: animated ? .automatic : .none)
     }
 
     func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
         tableView.cellForRow(at: indexPath)
+    }
+
+    func setContentOffset(_ offset: CGPoint, animated: Bool = true) {
+        tableView.setContentOffset(offset, animated: animated)
     }
 }
 
@@ -91,7 +99,11 @@ extension MinFinnView: UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeue(BasicTableViewCell.self, for: indexPath)
-            cell.configure(with: model)
+
+            if let model = model {
+                cell.configure(with: model)
+            }
+
             return cell
         }
     }
@@ -121,12 +133,5 @@ extension MinFinnView: UITableViewDelegate {
         case 0: return .mediumLargeSpacing
         default: return .largeSpacing
         }
-    }
-}
-
-// MARK: - Private methods
-private extension MinFinnView {
-    func setup() {
-        addSubview(tableView)
     }
 }

@@ -28,10 +28,10 @@ public class MinFinnVerifyCell: UITableViewCell {
         return imageView
     }()
 
-    private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
-        return label
-    }()
+    private lazy var titleLabel = Label(
+        style: .bodyStrong,
+        withAutoLayout: true
+    )
 
     private lazy var bodyLabel: Label = {
         let label = Label(style: .caption, withAutoLayout: true)

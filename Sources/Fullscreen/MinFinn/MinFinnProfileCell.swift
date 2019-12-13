@@ -31,7 +31,7 @@ public class MinFinnProfileCell: UITableViewCell {
 
     public override func prepareForReuse() {
         super.prepareForReuse()
-        identityView.viewModel = nil
+        configure(with: nil)
     }
 
     func configure(with model: MinFinnProfileCellModel?) {
