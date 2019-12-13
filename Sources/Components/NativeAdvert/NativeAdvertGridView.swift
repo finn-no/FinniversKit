@@ -94,6 +94,7 @@ public final class NativeAdvertGridView: UIView {
         NSLayoutConstraint.activate(sharedConstraints)
 
         setConstraints()
+        setColors()
     }
 
     public func configure(with model: NativeAdvertViewModel, andImageDelegate imageDelegate: NativeAdvertImageDelegate?) {
@@ -114,6 +115,14 @@ public final class NativeAdvertGridView: UIView {
         }
     }
 
+    private func setColors() {
+        if traitCollection.horizontalSizeClass == .regular {
+            detailsContainer.backgroundColor = .bgTertiary
+        } else {
+            detailsContainer.backgroundColor = .bgPrimary
+        }
+    }
+
     // MARK: - Private methods
 
     @objc private func handleSettingsButtonTap() {
@@ -125,6 +134,7 @@ public final class NativeAdvertGridView: UIView {
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setConstraints()
+        setColors()
     }
 
 }
@@ -240,7 +250,6 @@ private class NativeDetailsContainer: UIView {
 
         setConstraints()
         setFonts()
-        setColors()
     }
 
     func configure(with model: NativeAdvertViewModel, andImageDelegate imageDelegate: NativeAdvertImageDelegate?) {
@@ -260,7 +269,6 @@ private class NativeDetailsContainer: UIView {
 
         setConstraints()
         setFonts()
-        setColors()
     }
 
     private func setConstraints() {
@@ -278,14 +286,6 @@ private class NativeDetailsContainer: UIView {
             titleLabel.font = .title2
         } else {
             titleLabel.font = .body
-        }
-    }
-
-    private func setColors() {
-        if traitCollection.horizontalSizeClass == .regular {
-            backgroundColor = .bgTertiary
-        } else {
-            backgroundColor = .bgPrimary
         }
     }
 
