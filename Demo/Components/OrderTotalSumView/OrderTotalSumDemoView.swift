@@ -1,5 +1,4 @@
 //
-//  Created by Saleh-Jan, Robin on 10/12/2019.
 //  Copyright © 2019 FINN AS. All rights reserved.
 //
 
