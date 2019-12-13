@@ -22,18 +22,17 @@ class NativeAdvertDemoView: UIView {
     )
 
     private let contentModel = DemoViewModel(
-        title: "Du har skjært avocadoen feil i alle år! 50 tegn!",
+        title: "Du har skjært avokadoen feil i alle år! 50 tegn!",
         mainImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
         logoImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
         sponsoredBy: "",
         ribbonText: "ANNONSØRINNHOLD"
     )
 
-    private lazy var advertView: NativeAdvertView = {
-        let view = NativeAdvertView(viewModel: advertModel, imageDelegate: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var nativeAdvertGridView: NativeAdvertGridView = {
+        let view = NativeAdvertGridView(withAutoLayout: true)
+        view.configure(with: advertModel, andImageDelegate: self)
         view.delegate = self
-        view.backgroundColor = .bgPrimary
         return view
     }()
 
@@ -56,7 +55,7 @@ class NativeAdvertDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(advertView)
+        addSubview(nativeAdvertGridView)
         addSubview(contentAdvertView)
 
         let hairlineContentTop = createHairlineView()
@@ -65,11 +64,11 @@ class NativeAdvertDemoView: UIView {
         addSubview(hairlineContentBottom)
 
         NSLayoutConstraint.activate([
-            advertView.topAnchor.constraint(equalTo: topAnchor),
-            advertView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            advertView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            nativeAdvertGridView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
+            nativeAdvertGridView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            nativeAdvertGridView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            hairlineContentTop.topAnchor.constraint(equalTo: advertView.bottomAnchor, constant: .mediumLargeSpacing),
+            hairlineContentTop.topAnchor.constraint(equalTo: nativeAdvertGridView.bottomAnchor, constant: .mediumLargeSpacing),
             hairlineContentTop.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentTop.trailingAnchor.constraint(equalTo: trailingAnchor),
 
@@ -80,7 +79,6 @@ class NativeAdvertDemoView: UIView {
             hairlineContentBottom.topAnchor.constraint(equalTo: contentAdvertView.bottomAnchor, constant: .mediumLargeSpacing),
             hairlineContentBottom.leadingAnchor.constraint(equalTo: leadingAnchor),
             hairlineContentBottom.trailingAnchor.constraint(equalTo: trailingAnchor),
-            hairlineContentBottom.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
         ])
     }
 
