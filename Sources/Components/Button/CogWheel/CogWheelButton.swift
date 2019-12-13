@@ -11,13 +11,11 @@ public final class CogWheelButton: UIButton {
         case right
 
         var roundingCorners: UIRectCorner {
-            get {
-                switch self {
-                case .left:
-                    return .bottomRight
-                case .right:
-                    return .bottomLeft
-                }
+            switch self {
+            case .left:
+                return .bottomRight
+            case .right:
+                return .bottomLeft
             }
         }
     }
@@ -26,13 +24,11 @@ public final class CogWheelButton: UIButton {
     private let defaultContentSize: CGFloat = .largeSpacing
 
     private var cornerConstraint: NSLayoutConstraint {
-        get {
-            switch alignment {
-            case .left:
-                return contentView.leadingAnchor.constraint(equalTo: leadingAnchor)
-            case .right:
-                return contentView.trailingAnchor.constraint(equalTo: trailingAnchor)
-            }
+        switch alignment {
+        case .left:
+            return contentView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        case .right:
+            return contentView.trailingAnchor.constraint(equalTo: trailingAnchor)
         }
     }
 
