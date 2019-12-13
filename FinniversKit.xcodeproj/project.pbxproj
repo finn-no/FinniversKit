@@ -255,6 +255,7 @@
 		91846C5A22E856D50001410F /* MapSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C5922E856D50001410F /* MapSettingsView.swift */; };
 		918C8A4023A384FE00B566DE /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F6F23570AF000CAA6BB /* SnapshotTesting */; };
 		918C8A4223A3853400B566DE /* NativeAdvertGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8A4123A3853400B566DE /* NativeAdvertGridView.swift */; };
+		918C8A4623A387BD00B566DE /* NativeAdvertDetailsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */; };
 		91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2A55322F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift */; };
 		91D2A55A22F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */; };
 		9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */; };
@@ -844,6 +845,7 @@
 		91846C4C22E736BF0001410F /* SearchResultMapViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewController.swift; sourceTree = "<group>"; };
 		91846C5922E856D50001410F /* MapSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsView.swift; sourceTree = "<group>"; };
 		918C8A4123A3853400B566DE /* NativeAdvertGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdvertGridView.swift; sourceTree = "<group>"; };
+		918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDetailsContainer.swift; sourceTree = "<group>"; };
 		91D2A55322F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewAnnotation.swift; sourceTree = "<group>"; };
 		91D2A55922F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewControllerHelpers.swift; sourceTree = "<group>"; };
 		9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdTableViewCell.swift; sourceTree = "<group>"; };
@@ -2240,10 +2242,11 @@
 			isa = PBXGroup;
 			children = (
 				918C8A4123A3853400B566DE /* NativeAdvertGridView.swift */,
-				89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */,
-				89A7A643225352180053D33B /* NativeAdvertDelegates.swift */,
 				89A7A6462253524E0053D33B /* NativeContentAdvertView.swift */,
 				89A7A64922536E200053D33B /* NativeContentSettingsButton.swift */,
+				918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */,
+				89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */,
+				89A7A643225352180053D33B /* NativeAdvertDelegates.swift */,
 			);
 			path = NativeAdvert;
 			sourceTree = "<group>";
@@ -4512,6 +4515,7 @@
 				441D699B1FEA947600CD919A /* UIViewExtensions.swift in Sources */,
 				F2C3E96022CB669A00CED7E0 /* QuestionnaireView+Style.swift in Sources */,
 				4441F9F922CF81F700DCFD2F /* AddressCardView.swift in Sources */,
+				918C8A4623A387BD00B566DE /* NativeAdvertDetailsContainer.swift in Sources */,
 				CFF9727521C3E92700C85238 /* BannerTransparencyViewModel.swift in Sources */,
 				45EDD62A20A1CCDF008F4503 /* ConsentTransparencyInfoView.swift in Sources */,
 				9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */,
