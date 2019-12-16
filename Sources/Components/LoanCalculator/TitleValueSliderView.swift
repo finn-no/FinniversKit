@@ -29,6 +29,17 @@ class TitleValueSlider: UIView {
     weak var dataSource: TitleValueSliderDataSource?
     weak var delegate: TitleValueSliderDelegate?
 
+    var accentColor: UIColor? {
+        didSet {
+            guard let accentColor = accentColor else {
+                return
+            }
+
+            slider.accentColor = accentColor
+            valueLabel.textColor = accentColor
+        }
+    }
+
     // MARK: - Private subviews
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
