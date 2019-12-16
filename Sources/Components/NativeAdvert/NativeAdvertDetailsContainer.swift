@@ -8,7 +8,8 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
     // MARK: - Private properties
 
-    private var logoSize: CGFloat = 50
+    private var logoSizeRegular: CGFloat = 50
+    private var logoSizeCompact: CGFloat = 40
 
     private lazy var container = UIView(withAutoLayout: true)
 
@@ -66,17 +67,21 @@ internal final class NativeAdvertDetailsContainer: UIView {
         titleLabel.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.mediumSpacing),
         titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
 
-        logoView.widthAnchor.constraint(equalToConstant: logoSize),
-        logoView.heightAnchor.constraint(equalToConstant: logoSize),
         logoView.bottomAnchor.constraint(equalTo: bottomAnchor),
         logoView.trailingAnchor.constraint(equalTo: trailingAnchor),
     ]
 
     private lazy var compactConstraints: [NSLayoutConstraint] = [
+        logoView.widthAnchor.constraint(equalToConstant: logoSizeCompact),
+        logoView.heightAnchor.constraint(equalToConstant: logoSizeCompact),
+
         titleLabel.topAnchor.constraint(equalTo: companyLabel.bottomAnchor, constant: .mediumSpacing),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
+        logoView.widthAnchor.constraint(equalToConstant: logoSizeRegular),
+        logoView.heightAnchor.constraint(equalToConstant: logoSizeRegular),
+
         titleLabel.topAnchor.constraint(equalTo: companyLabel.bottomAnchor, constant: .mediumLargeSpacing),
     ]
 
