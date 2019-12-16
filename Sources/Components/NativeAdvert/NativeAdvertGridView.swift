@@ -66,7 +66,7 @@ public final class NativeAdvertGridView: UIView {
         imageView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
 
         detailsContainer.topAnchor.constraint(equalTo: container.topAnchor, constant: .mediumLargeSpacing),
-        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.mediumLargeSpacing),
+        detailsContainer.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor, constant: -.mediumLargeSpacing),
         detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
         detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -.mediumLargeSpacing)
     ]

@@ -33,7 +33,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
     private lazy var titleLabel: UILabel = {
         let view = Label(style: .body, withAutoLayout: true)
-        view.numberOfLines = 2
+        view.numberOfLines = 3
         return view
     }()
 
@@ -59,23 +59,20 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
         titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         titleLabel.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.mediumSpacing),
+        titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
 
         logoView.widthAnchor.constraint(equalToConstant: logoSize),
         logoView.heightAnchor.constraint(equalToConstant: logoSize),
         logoView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-        logoView.trailingAnchor.constraint(equalTo: container.trailingAnchor)
+        logoView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
     ]
 
     private lazy var compactConstraints: [NSLayoutConstraint] = [
-        heightAnchor.constraint(greaterThanOrEqualToConstant: logoSize + .mediumLargeSpacing),
-
         titleLabel.topAnchor.constraint(equalTo: companyLabel.bottomAnchor, constant: .mediumSpacing),
-        titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
         titleLabel.topAnchor.constraint(equalTo: companyLabel.bottomAnchor, constant: .mediumLargeSpacing),
-        titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor),
     ]
 
     // MARK: - Init
