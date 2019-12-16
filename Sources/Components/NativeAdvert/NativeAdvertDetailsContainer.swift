@@ -145,7 +145,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
     private func setFonts() {
         if traitCollection.horizontalSizeClass == .regular {
-            titleLabel.font = .title2
+            titleLabel.font = .title3
         } else {
             titleLabel.font = .body
         }

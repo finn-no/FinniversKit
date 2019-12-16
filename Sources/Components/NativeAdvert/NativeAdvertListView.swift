@@ -12,6 +12,11 @@ public final class NativeAdvertListView: UIView {
 
     // MARK: - Private properties
 
+    private let imageWidthCompact: CGFloat = 130
+    private let imageWidthRegular: CGFloat = 195
+    private let detailsContainerMinimumHeightCompact: CGFloat = 112
+    private let detailsContainerMinimumHeightRegular: CGFloat = 162
+
     private let imageAspectRatio: CGFloat = (1200.0 / 627) // Specification at: https://annonseweb.schibsted.no/nb-no/product/finn-native-ads-16031
 
     private lazy var container = UIView(withAutoLayout: true)
@@ -50,19 +55,21 @@ public final class NativeAdvertListView: UIView {
 
         detailsContainer.topAnchor.constraint(equalTo: container.topAnchor),
         detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.mediumSpacing),
-        detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor)
+        detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
     ]
 
     private lazy var compactConstraints: [NSLayoutConstraint] = [
-        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
+        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .smallSpacing),
+        detailsContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: detailsContainerMinimumHeightCompact),
 
-        imageView.widthAnchor.constraint(equalToConstant: 130),
+        imageView.widthAnchor.constraint(equalToConstant: imageWidthCompact),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
         detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
+        detailsContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: detailsContainerMinimumHeightRegular),
 
-        imageView.widthAnchor.constraint(equalToConstant: 195),
+        imageView.widthAnchor.constraint(equalToConstant: imageWidthRegular),
     ]
 
     // MARK: - Init
