@@ -8,10 +8,7 @@ class SaveSearchPromptViewDemoView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var saveSearchPromptView: SaveSearchPromptView = {
-        let view = SaveSearchPromptView(withAutoLayout: true)
-        return view
-    }()
+    private lazy var saveSearchPromptView = SaveSearchPromptView(withAutoLayout: true)
 
     // MARK: - Init
 

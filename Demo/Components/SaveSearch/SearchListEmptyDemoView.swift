@@ -11,10 +11,7 @@ class SearchListEmptyDemoView: UIView, Tweakable {
         SearchListEmptyViewModel(title: "Ingen treff her enda", body: "Vi sier ifra så fort det legges ut \n noe i dette søket", buttonTitle: nil)
     ]
 
-    private lazy var searchListEmptyView: SearchListEmptyView = {
-        let view = SearchListEmptyView()
-        return view
-    }()
+    private lazy var searchListEmptyView = SearchListEmptyView()
 
     lazy var tweakingOptions: [TweakingOption] = {
         [
