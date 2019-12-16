@@ -221,7 +221,6 @@
 		49F1124B239121DA007D74EF /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F6F23570AF000CAA6BB /* SnapshotTesting */; };
 		49F114B22397F70E007D74EF /* SaveSearchPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */; };
 		49F114B623980235007D74EF /* SaveSearchPromptViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */; };
-		49F114BC2398FE34007D74EF /* SaveSearchPromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114BB2398FE34007D74EF /* SaveSearchPromptViewModel.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */; };
 		55C5B274203D8E20007D7277 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B273203D8E20007D7277 /* Broadcast.swift */; };
 		55C5B278203DB56A007D7277 /* BroadcastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5B277203DB56A007D7277 /* BroadcastMessage.swift */; };
@@ -816,7 +815,6 @@
 		4974725E239A49570058D7B0 /* SearchListEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListEmptyViewModel.swift; sourceTree = "<group>"; };
 		49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptView.swift; sourceTree = "<group>"; };
 		49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptViewDemoView.swift; sourceTree = "<group>"; };
-		49F114BB2398FE34007D74EF /* SaveSearchPromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSearchPromptViewModel.swift; sourceTree = "<group>"; };
 		559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessageTests.swift; sourceTree = "<group>"; };
 		55C5B273203D8E20007D7277 /* Broadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		55C5B277203DB56A007D7277 /* BroadcastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastMessage.swift; sourceTree = "<group>"; };
@@ -2440,7 +2438,6 @@
 				9BAB37D9230BE87500E861D4 /* SaveSearchView.swift */,
 				9BAB37DF230C070400E861D4 /* SaveSearchViewModel.swift */,
 				49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */,
-				49F114BB2398FE34007D74EF /* SaveSearchPromptViewModel.swift */,
 				4974725C239A49480058D7B0 /* SearchListEmptyView.swift */,
 				4974725E239A49570058D7B0 /* SearchListEmptyViewModel.swift */,
 			);
@@ -4797,7 +4794,6 @@
 				F22612DF225C894D00472D22 /* UserAdManagementStatisticsEmptyViewCell.swift in Sources */,
 				CF164D01230EB4EC00250822 /* FavoriteAdSortingSheet.swift in Sources */,
 				895175952248D4D1008003FB /* StepDot.swift in Sources */,
-				49F114BC2398FE34007D74EF /* SaveSearchPromptViewModel.swift in Sources */,
 				F2772F4422803B310002D21F /* ReviewButtonView.swift in Sources */,
 				45B2E070207E181C00C68B92 /* InlineConsentView.swift in Sources */,
 				CF4A053921FB2ACB000BB7DA /* PianoEffectView.swift in Sources */,
