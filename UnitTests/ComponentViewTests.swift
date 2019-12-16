@@ -167,8 +167,16 @@ class ComponentViewTests: XCTestCase {
         snapshot(.klimabroletView)
     }
 
+    func testSaveSearchPromptView() {
+        snapshot(.saveSearchPromptView)
+    }
+
     func testSaveSearchView() {
         snapshot(.saveSearchView)
+    }
+
+    func testSearchListEmptyView() {
+        snapshot(.searchListEmptyView)
     }
 
     func testStepSlider() {
