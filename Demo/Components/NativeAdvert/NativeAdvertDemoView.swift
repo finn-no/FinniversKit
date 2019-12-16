@@ -80,10 +80,11 @@ class NativeAdvertDemoView: UIView {
         scrollView.addSubview(stackView)
         stackView.fillInSuperview()
 
+        stackView.addArrangedSubview(createHairlineView(labelText: "Native Advert (List)"))
         stackView.addArrangedSubview(nativeAdvertListView)
-        stackView.addArrangedSubview(createHairlineView())
+        stackView.addArrangedSubview(createHairlineView(labelText: "Native Advert (Grid)"))
         stackView.addArrangedSubview(nativeAdvertGridView)
-        stackView.addArrangedSubview(createHairlineView())
+        stackView.addArrangedSubview(createHairlineView(labelText: "Native Advert Content"))
         stackView.addArrangedSubview(contentAdvertView)
 
         NSLayoutConstraint.activate([
@@ -91,15 +92,28 @@ class NativeAdvertDemoView: UIView {
         ])
     }
 
-    private func createHairlineView() -> UIView {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .lightGray //DARK
+    private func createHairlineView(labelText: String) -> UIView {
+        let container = UIView(withAutoLayout: false)
+        let line = UIView(withAutoLayout: true)
+        let label = Label(style: .captionStrong, withAutoLayout: true)
+
+        container.addSubview(label)
+        container.addSubview(line)
+
+        line.backgroundColor = .lightGray
+        label.text = labelText
 
         NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(equalToConstant: 0.5)
+            label.topAnchor.constraint(equalTo: container.topAnchor, constant: .mediumSpacing),
+            label.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: .mediumSpacing),
+            label.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: .mediumSpacing),
+            line.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: .mediumSpacing),
+            line.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -.mediumSpacing),
+            line.centerYAnchor.constraint(equalTo: label.centerYAnchor),
+            line.heightAnchor.constraint(equalToConstant: 0.5)
         ])
 
-        return view
+        return container
     }
 }
 
