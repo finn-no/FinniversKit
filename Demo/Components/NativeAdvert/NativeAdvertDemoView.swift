@@ -29,8 +29,21 @@ class NativeAdvertDemoView: UIView {
         ribbonText: "ANNONSØRINNHOLD"
     )
 
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView(withAutoLayout: true)
+        return view
+    }()
+
+    private lazy var stackView: UIStackView = {
+        let view = UIStackView(withAutoLayout: true)
+        view.axis = .vertical
+        view.distribution = .equalSpacing
+        view.spacing = .mediumLargeSpacing
+        return view
+    }()
+
     private lazy var nativeAdvertGridView: NativeAdvertGridView = {
-        let view = NativeAdvertGridView(withAutoLayout: true)
+        let view = NativeAdvertGridView(withAutoLayout: false)
         view.configure(with: advertModel, andImageDelegate: self)
         view.delegate = self
         return view
@@ -38,7 +51,6 @@ class NativeAdvertDemoView: UIView {
 
     private lazy var contentAdvertView: NativeContentAdvertView = {
         let view = NativeContentAdvertView(viewModel: contentModel, imageDelegate: self)
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         view.backgroundColor = .bgPrimary
         return view
@@ -55,30 +67,18 @@ class NativeAdvertDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(nativeAdvertGridView)
-        addSubview(contentAdvertView)
+        addSubview(scrollView)
+        scrollView.fillInSuperview()
 
-        let hairlineContentTop = createHairlineView()
-        let hairlineContentBottom = createHairlineView()
-        addSubview(hairlineContentTop)
-        addSubview(hairlineContentBottom)
+        scrollView.addSubview(stackView)
+        stackView.fillInSuperview()
+
+        stackView.addArrangedSubview(nativeAdvertGridView)
+        stackView.addArrangedSubview(createHairlineView())
+        stackView.addArrangedSubview(contentAdvertView)
 
         NSLayoutConstraint.activate([
-            nativeAdvertGridView.topAnchor.constraint(equalTo: topAnchor, constant: .mediumLargeSpacing),
-            nativeAdvertGridView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            nativeAdvertGridView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            hairlineContentTop.topAnchor.constraint(equalTo: nativeAdvertGridView.bottomAnchor, constant: .mediumLargeSpacing),
-            hairlineContentTop.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hairlineContentTop.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            contentAdvertView.topAnchor.constraint(equalTo: hairlineContentTop.bottomAnchor, constant: .mediumLargeSpacing),
-            contentAdvertView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentAdvertView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            hairlineContentBottom.topAnchor.constraint(equalTo: contentAdvertView.bottomAnchor, constant: .mediumLargeSpacing),
-            hairlineContentBottom.leadingAnchor.constraint(equalTo: leadingAnchor),
-            hairlineContentBottom.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
         ])
     }
 
