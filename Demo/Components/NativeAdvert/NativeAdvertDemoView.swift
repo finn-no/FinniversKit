@@ -42,6 +42,13 @@ class NativeAdvertDemoView: UIView {
         return view
     }()
 
+    private lazy var nativeAdvertListView: NativeAdvertListView = {
+        let view = NativeAdvertListView(withAutoLayout: false)
+        view.configure(with: advertModel, andImageDelegate: self)
+        view.delegate = self
+        return view
+    }()
+
     private lazy var nativeAdvertGridView: NativeAdvertGridView = {
         let view = NativeAdvertGridView(withAutoLayout: false)
         view.configure(with: advertModel, andImageDelegate: self)
@@ -73,6 +80,8 @@ class NativeAdvertDemoView: UIView {
         scrollView.addSubview(stackView)
         stackView.fillInSuperview()
 
+        stackView.addArrangedSubview(nativeAdvertListView)
+        stackView.addArrangedSubview(createHairlineView())
         stackView.addArrangedSubview(nativeAdvertGridView)
         stackView.addArrangedSubview(createHairlineView())
         stackView.addArrangedSubview(contentAdvertView)

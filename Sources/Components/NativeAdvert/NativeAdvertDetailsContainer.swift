@@ -46,6 +46,11 @@ internal final class NativeAdvertDetailsContainer: UIView {
     // MARK: - Constraints
 
     private lazy var sharedConstraints: [NSLayoutConstraint] = [
+        container.topAnchor.constraint(equalTo: topAnchor),
+        container.leadingAnchor.constraint(equalTo: leadingAnchor),
+        container.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
+        container.trailingAnchor.constraint(equalTo: trailingAnchor),
+
         adRibbonContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         adRibbonContainer.topAnchor.constraint(equalTo: container.topAnchor),
 
@@ -63,8 +68,8 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
         logoView.widthAnchor.constraint(equalToConstant: logoSize),
         logoView.heightAnchor.constraint(equalToConstant: logoSize),
-        logoView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-        logoView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+        logoView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        logoView.trailingAnchor.constraint(equalTo: trailingAnchor),
     ]
 
     private lazy var compactConstraints: [NSLayoutConstraint] = [
@@ -90,8 +95,6 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
     private func setup() {
         addSubview(container)
-
-        container.fillInSuperview()
 
         adRibbonContainer.addSubview(adRibbon)
 
