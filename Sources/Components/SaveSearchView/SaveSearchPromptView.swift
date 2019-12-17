@@ -20,20 +20,20 @@ public class SaveSearchPromptView: UIView {
 
     // MARK: - Private properties
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 2
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .captionStrong)
         label.textColor = .textPrimary
         label.textAlignment = .center
-        label.font = .captionStrong
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private lazy var positiveButton: UIButton = {
+    private lazy var positiveButton: Button = {
         let button = Button(style: .utility, size: .small)
         button.addTarget(self, action: #selector(positiveButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return button
     }()
 

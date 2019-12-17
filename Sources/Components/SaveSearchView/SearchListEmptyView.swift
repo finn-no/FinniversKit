@@ -40,28 +40,27 @@ public protocol SearchListEmptyViewDelegate: AnyObject {
         return imageView
     }()
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .bodyStrong)
         label.textAlignment = .center
         label.textColor = .textPrimary
-        label.font = .bodyStrong
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         return label
     }()
 
-    private lazy var bodyLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
+    private lazy var bodyLabel: Label = {
+        let label = Label(style: .caption)
         label.textAlignment = .center
         label.textColor = .textPrimary
-        label.font = .caption
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
 
-    private lazy var button: UIButton = {
+    private lazy var button: Button = {
         let button = Button(style: .utility, size: .small)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return button
     }()
 
