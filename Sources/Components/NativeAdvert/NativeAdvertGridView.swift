@@ -9,6 +9,8 @@ public final class NativeAdvertGridView: UIView {
     // MARK: - Public properties
 
     public weak var delegate: NativeAdvertViewDelegate?
+    public weak var imageDelegate: NativeAdvertImageDelegate?
+
 
     // MARK: - Private properties
 
@@ -98,7 +100,7 @@ public final class NativeAdvertGridView: UIView {
         setColors()
     }
 
-    public func configure(with model: NativeAdvertViewModel, andImageDelegate imageDelegate: NativeAdvertImageDelegate?) {
+    public func configure(with model: NativeAdvertViewModel) {
         if let imageUrl = model.mainImageUrl {
             imageDelegate?.nativeAdvertView(setImageWithURL: imageUrl, onImageView: imageView)
         }

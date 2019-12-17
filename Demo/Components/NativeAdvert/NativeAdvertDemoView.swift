@@ -44,21 +44,25 @@ class NativeAdvertDemoView: UIView {
 
     private lazy var nativeAdvertListView: NativeAdvertListView = {
         let view = NativeAdvertListView(withAutoLayout: false)
-        view.configure(with: advertModel, andImageDelegate: self)
         view.delegate = self
+        view.imageDelegate = self
+        view.configure(with: advertModel)
         return view
     }()
 
     private lazy var nativeAdvertGridView: NativeAdvertGridView = {
         let view = NativeAdvertGridView(withAutoLayout: false)
-        view.configure(with: advertModel, andImageDelegate: self)
         view.delegate = self
+        view.imageDelegate = self
+        view.configure(with: advertModel)
         return view
     }()
 
     private lazy var contentAdvertView: NativeContentAdvertView = {
-        let view = NativeContentAdvertView(viewModel: contentModel, imageDelegate: self)
+        let view = NativeContentAdvertView(withAutoLayout: false)
         view.delegate = self
+        view.imageDelegate = self
+        view.configure(with: contentModel)
         view.backgroundColor = .bgPrimary
         return view
     }()

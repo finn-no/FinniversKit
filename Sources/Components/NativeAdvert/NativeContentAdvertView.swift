@@ -11,10 +11,6 @@ public final class NativeContentAdvertView: UIView {
     public weak var delegate: NativeAdvertViewDelegate?
     public weak var imageDelegate: NativeAdvertImageDelegate?
 
-    // MARK: - Private properties
-
-    private let viewModel: NativeAdvertViewModel
-
     // MARK: - UI properties
 
     private lazy var containerView = UIView(withAutoLayout: true)
@@ -62,22 +58,31 @@ public final class NativeContentAdvertView: UIView {
     // MARK: - Init
 
     public override init(frame: CGRect) {
-        fatalError("init(frame:) not implemented")
+        super.init(frame: frame)
+        setup()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) not implemented")
     }
 
-    public init(viewModel: NativeAdvertViewModel, imageDelegate: NativeAdvertImageDelegate?) {
-        self.viewModel = viewModel
-        self.imageDelegate = imageDelegate
+    // MARK: - Public methods
 
-        super.init(frame: .zero)
+    public func configure(with model: NativeAdvertViewModel) {
+        mainImageView.image = nil
+        if let mainImageURL = model.mainImageUrl {
+            imageDelegate?.nativeAdvertView(setImageWithURL: mainImageURL, onImageView: mainImageView)
+        }
 
-        setup()
-        configure(viewModel: viewModel)
+        logoImageView.image = nil
+        if let logoImageURL = model.logoImageUrl {
+            imageDelegate?.nativeAdvertView(setImageWithURL: logoImageURL, onImageView: logoImageView)
+        }
+
+        titleLabel.text = model.title
+        settingsButton.text = model.ribbonText
     }
+
 
     // MARK: - Private methods
 
@@ -85,31 +90,6 @@ public final class NativeContentAdvertView: UIView {
         delegate?.nativeAdvertViewDidSelectSettingsButton()
     }
 
-    // MARK: - Overrides
-
-    // This override exists because of how we calculate view sizes in our search result list.
-    // The search result list needs to know the size of this view before it's added to the view hierarchy
-    //
-    // All we're given to answer this question is the width attribute in `targetSize`.
-    //
-    // This implementation may not work for any place other than the search result list, because:
-    //   - it assumes `targetSize` contains an accurate targetWidth for this view.
-    //   - it ignores any potential targetHeight.
-    //   - it ignores both horizontal and vertical fitting priority.
-    public override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
-        let clampedWidth = max(0, min(NativeContentAdvertView.containerMaxWidth, targetSize.width))
-        let cardWidth = clampedWidth - NativeContentAdvertView.padding * 2
-
-        var height = NativeContentAdvertView.imageHeight(forWidth: cardWidth)
-        height += NativeContentAdvertView.titleLabelHeight(forWidth: cardWidth, text: viewModel.title)
-        height += NativeContentAdvertView.padding * 2 // Label inset
-        height += NativeContentAdvertView.padding * 2 // Container vertical inset
-
-        return CGSize(
-            width: clampedWidth,
-            height: height
-        )
-    }
 }
 
 private extension NativeContentAdvertView {
@@ -162,21 +142,6 @@ private extension NativeContentAdvertView {
             titleLabel.trailingAnchor.constraint(equalTo: logoImageView.leadingAnchor, constant: -.mediumLargeSpacing),
             titleLabel.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -NativeContentAdvertView.padding)
         ])
-    }
-
-    func configure(viewModel: NativeAdvertViewModel) {
-        mainImageView.image = nil
-        if let mainImageURL = viewModel.mainImageUrl {
-            imageDelegate?.nativeAdvertView(setImageWithURL: mainImageURL, onImageView: mainImageView)
-        }
-
-        logoImageView.image = nil
-        if let logoImageURL = viewModel.logoImageUrl {
-            imageDelegate?.nativeAdvertView(setImageWithURL: logoImageURL, onImageView: logoImageView)
-        }
-
-        titleLabel.text = viewModel.title
-        settingsButton.text = viewModel.ribbonText
     }
 }
 
