@@ -21,26 +21,24 @@ public class SaveSearchPromptView: UIView {
     // MARK: - Private properties
 
     private lazy var titleLabel: Label = {
-        let label = Label(style: .captionStrong)
+        let label = Label(style: .captionStrong, withAutoLayout: true)
         label.textColor = .textPrimary
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private lazy var positiveButton: Button = {
-        let button = Button(style: .utility, size: .small)
+        let button = Button(style: .utility, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(positiveButtonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return button
     }()
 
     private lazy var dismissButton: UIButton = {
-        let button = UIButton(frame: .zero)
+        let button = UIButton(withAutoLayout: true)
         button.setImage(UIImage(named: .remove), for: .normal)
-        button.tintColor = .stone
+        button.tintColor = .textSecondary
         button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

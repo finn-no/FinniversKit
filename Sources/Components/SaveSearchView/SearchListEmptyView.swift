@@ -7,14 +7,14 @@ import FinniversKit
 // MARK: - SearchListEmptyViewDelegate
 
 public protocol SearchListEmptyViewDelegate: AnyObject {
-    func searchListEmptyViewDidSelectActionButton(_ searchListEmptyView: SearchListEmptyView, forState state: SearchListEmptyView.SearchListEmptyViewState)
+    func searchListEmptyViewDidSelectActionButton(_ searchListEmptyView: SearchListEmptyView, for state: SearchListEmptyView.ViewState)
 }
 
 @objc public class SearchListEmptyView: UIView {
 
     // MARK: - Public properties
 
-    @objc public enum SearchListEmptyViewState: Int {
+    public enum ViewState: Int {
         case initial = 0
         case searchSaved
         case searchSavedNoPush
@@ -24,7 +24,7 @@ public protocol SearchListEmptyViewDelegate: AnyObject {
 
     // MARK: - Private properties
 
-    private var state: SearchListEmptyViewState = .initial
+    private var state: ViewState = .initial
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(withAutoLayout: true)
@@ -57,9 +57,8 @@ public protocol SearchListEmptyViewDelegate: AnyObject {
     }()
 
     private lazy var button: Button = {
-        let button = Button(style: .utility, size: .small)
+        let button = Button(style: .utility, size: .small, withAutoLayout: true)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return button
     }()
@@ -100,7 +99,7 @@ public protocol SearchListEmptyViewDelegate: AnyObject {
 
     // MARK: - Public methods
 
-    public func configure(withViewModel viewModel: SearchListEmptyViewModel, forState state: SearchListEmptyView.SearchListEmptyViewState) {
+    public func configure(with viewModel: SearchListEmptyViewModel, for state: SearchListEmptyView.ViewState) {
         self.state = state
         titleLabel.text = viewModel.title
         bodyLabel.text = viewModel.body
@@ -115,6 +114,6 @@ public protocol SearchListEmptyViewDelegate: AnyObject {
     // MARK: - Private methods
 
     @objc private func buttonTapped() {
-        delegate?.searchListEmptyViewDidSelectActionButton(self, forState: state)
+        delegate?.searchListEmptyViewDidSelectActionButton(self, for: state)
     }
 }
