@@ -170,139 +170,151 @@ public extension Button {
 
 // MARK: - Styles
 public extension Button.Style {
-    static let `default` = Button.Style(
-        borderWidth: 2.0,
-        stateStyles: [
-            .normal: Button.StateStyle(
-                textColor: .textAction,
-                backgroundColor: .bgPrimary,
-                borderColor: .accentSecondaryBlue
-            ),
-            .highlighted: Button.StateStyle(
-                textColor: nil,
-                backgroundColor: .defaultButtonHighlightedBodyColor,
-                borderColor: .btnPrimary
-            ),
-            .disabled: Button.StateStyle(
-                textColor: .textDisabled,
-                backgroundColor: nil,
-                borderColor: .btnDisabled
-            )
-        ]
-    )
+    static var `default`: Button.Style {
+        Button.Style(
+            borderWidth: 2.0,
+            stateStyles: [
+                .normal: Button.StateStyle(
+                    textColor: .textAction,
+                    backgroundColor: .bgPrimary,
+                    borderColor: .accentSecondaryBlue
+                ),
+                .highlighted: Button.StateStyle(
+                    textColor: nil,
+                    backgroundColor: .defaultButtonHighlightedBodyColor,
+                    borderColor: .btnPrimary
+                ),
+                .disabled: Button.StateStyle(
+                    textColor: .textDisabled,
+                    backgroundColor: nil,
+                    borderColor: .btnDisabled
+                )
+            ]
+        )
+    }
 
-    static let callToAction = Button.Style(
-        borderWidth: 0.0,
-        stateStyles: [
-            .normal: Button.StateStyle(
-                textColor: .textTertiary,
-                backgroundColor: .btnPrimary,
-                borderColor: nil
-            ),
-            .highlighted: Button.StateStyle(
-                textColor: nil,
-                backgroundColor: .callToActionButtonHighlightedBodyColor,
-                borderColor: nil
-            ),
-            .disabled: Button.StateStyle(
-                textColor: nil,
-                backgroundColor: .btnDisabled,
-                borderColor: nil
-            )
-        ]
-    )
+    static var callToAction: Button.Style {
+        Button.Style(
+            borderWidth: 0.0,
+            stateStyles: [
+                .normal: Button.StateStyle(
+                    textColor: .textTertiary,
+                    backgroundColor: .btnPrimary,
+                    borderColor: nil
+                ),
+                .highlighted: Button.StateStyle(
+                    textColor: nil,
+                    backgroundColor: .callToActionButtonHighlightedBodyColor,
+                    borderColor: nil
+                ),
+                .disabled: Button.StateStyle(
+                    textColor: nil,
+                    backgroundColor: .btnDisabled,
+                    borderColor: nil
+                )
+            ]
+        )
+    }
 
-    static let destructive = Button.Style(
-        borderWidth: 0.0,
-        stateStyles: [
-            .normal: Button.StateStyle(
-                textColor: .textTertiary,
-                backgroundColor: .btnCritical,
-                borderColor: nil
-            ),
-            .highlighted: Button.StateStyle(
-                textColor: nil,
-                backgroundColor: .destructiveButtonHighlightedBodyColor,
-                borderColor: nil
-            ),
-            .disabled: Button.StateStyle(
-                textColor: nil,
-                backgroundColor: .btnDisabled,
-                borderColor: nil
-            )
-        ]
-    )
+    static var destructive: Button.Style {
+        Button.Style(
+            borderWidth: 0.0,
+            stateStyles: [
+                .normal: Button.StateStyle(
+                    textColor: .textTertiary,
+                    backgroundColor: .btnCritical,
+                    borderColor: nil
+                ),
+                .highlighted: Button.StateStyle(
+                    textColor: nil,
+                    backgroundColor: .destructiveButtonHighlightedBodyColor,
+                    borderColor: nil
+                ),
+                .disabled: Button.StateStyle(
+                    textColor: nil,
+                    backgroundColor: .btnDisabled,
+                    borderColor: nil
+                )
+            ]
+        )
+    }
 
-    static let flat = Button.Style(
-        borderWidth: 0.0,
-        stateStyles: [
-            .normal: Button.StateStyle(
-                textColor: .textAction,
-                backgroundColor: .clear,
-                borderColor: nil
-            ),
-            .highlighted: Button.StateStyle(
-                textColor: .flatButtonHighlightedTextColor,
-                backgroundColor: nil,
-                borderColor: nil
-            ),
-            .disabled: Button.StateStyle(
-                textColor: .textDisabled,
-                backgroundColor: nil,
-                borderColor: nil
-            )
-        ]
-    )
+    static var flat: Button.Style {
+        Button.Style(
+            borderWidth: 0.0,
+            stateStyles: [
+                .normal: Button.StateStyle(
+                    textColor: .textAction,
+                    backgroundColor: .clear,
+                    borderColor: nil
+                ),
+                .highlighted: Button.StateStyle(
+                    textColor: .flatButtonHighlightedTextColor,
+                    backgroundColor: nil,
+                    borderColor: nil
+                ),
+                .disabled: Button.StateStyle(
+                    textColor: .textDisabled,
+                    backgroundColor: nil,
+                    borderColor: nil
+                )
+            ]
+        )
+    }
 
-    static let destructiveFlat = Button.Style(
-        borderWidth: 0.0,
-        stateStyles: [
-            .normal: Button.StateStyle(
-                textColor: .textCritical,
-                backgroundColor: .clear,
-                borderColor: nil
-            ),
-            .highlighted: Button.StateStyle(
-                textColor: .destructiveFlatButtonHighlightedTextColor,
-                backgroundColor: nil,
-                borderColor: nil
-            ),
-            .disabled: Button.StateStyle(
-                textColor: .textDisabled,
-                backgroundColor: nil,
-                borderColor: nil
-            ),
-        ],
-        smallFont: .detailStrong,
-        normalFont: .detailStrong
-    )
+    static var destructiveFlat: Button.Style {
+        Button.Style(
+            borderWidth: 0.0,
+            stateStyles: [
+                .normal: Button.StateStyle(
+                    textColor: .textCritical,
+                    backgroundColor: .clear,
+                    borderColor: nil
+                ),
+                .highlighted: Button.StateStyle(
+                    textColor: .destructiveFlatButtonHighlightedTextColor,
+                    backgroundColor: nil,
+                    borderColor: nil
+                ),
+                .disabled: Button.StateStyle(
+                    textColor: .textDisabled,
+                    backgroundColor: nil,
+                    borderColor: nil
+                ),
+            ],
+            smallFont: .detailStrong,
+            normalFont: .detailStrong
+        )
+    }
 
-    static let link = Button.Style(
-        borderWidth: 0.0,
-        stateStyles: [
-            .normal: Button.StateStyle(
-                textColor: .textAction,
-                backgroundColor: .clear,
-                borderColor: nil
+    static var link: Button.Style {
+        Button.Style(
+            borderWidth: 0.0,
+            stateStyles: [
+                .normal: Button.StateStyle(
+                    textColor: .textAction,
+                    backgroundColor: .clear,
+                    borderColor: nil
+                ),
+                .highlighted: Button.StateStyle(
+                    textColor: .linkButtonHighlightedTextColor,
+                    backgroundColor: nil,
+                    borderColor: nil
+                ),
+                .disabled: Button.StateStyle(
+                    textColor: .textDisabled,
+                    backgroundColor: nil,
+                    borderColor: nil
+                ),
+            ],
+            margins: UIEdgeInsets(
+                vertical: .smallSpacing,
+                horizontal: 0
             ),
-            .highlighted: Button.StateStyle(
-                textColor: .linkButtonHighlightedTextColor,
-                backgroundColor: nil,
-                borderColor: nil
-            ),
-            .disabled: Button.StateStyle(
-                textColor: .textDisabled,
-                backgroundColor: nil,
-                borderColor: nil
-            ),
-        ],
-        margins: UIEdgeInsets(
-            vertical: .smallSpacing,
-            horizontal: 0
-        ),
-        smallFont: .detail,
-        normalFont: .caption
-    )
+            smallFont: .detail,
+            normalFont: .caption
+        )
+    }
 }
 
 extension UIControl.State: Hashable {}
