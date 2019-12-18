@@ -15,8 +15,8 @@ public final class NativeAdvertListView: UIView {
 
     private let imageWidthCompact: CGFloat = 130
     private let imageWidthRegular: CGFloat = 195
-    private let detailsContainerMinimumHeightCompact: CGFloat = 112
-    private let detailsContainerMinimumHeightRegular: CGFloat = 162
+    private let detailsContainerMinimumHeightCompact: CGFloat = 100
+    private let detailsContainerMinimumHeightRegular: CGFloat = 150
 
     private let imageAspectRatio: CGFloat = (1200.0 / 627) // Specification at: https://annonseweb.schibsted.no/nb-no/product/finn-native-ads-16031
 
