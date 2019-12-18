@@ -75,14 +75,14 @@ internal final class NativeAdvertDetailsContainer: UIView {
         logoView.widthAnchor.constraint(equalToConstant: logoSizeCompact),
         logoView.heightAnchor.constraint(equalToConstant: logoSizeCompact),
 
-        titleLabel.topAnchor.constraint(equalTo: companyLabel.bottomAnchor, constant: .mediumSpacing),
+        titleLabel.topAnchor.constraint(equalTo: adRibbonContainer.bottomAnchor, constant: .mediumSpacing),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
         logoView.widthAnchor.constraint(equalToConstant: logoSizeRegular),
         logoView.heightAnchor.constraint(equalToConstant: logoSizeRegular),
 
-        titleLabel.topAnchor.constraint(equalTo: companyLabel.bottomAnchor, constant: .mediumLargeSpacing),
+        titleLabel.topAnchor.constraint(equalTo: adRibbonContainer.bottomAnchor, constant: .mediumLargeSpacing),
     ]
 
     // MARK: - Init

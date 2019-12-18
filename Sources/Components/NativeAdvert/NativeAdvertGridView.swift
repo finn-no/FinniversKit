@@ -11,7 +11,6 @@ public final class NativeAdvertGridView: UIView {
     public weak var delegate: NativeAdvertViewDelegate?
     public weak var imageDelegate: NativeAdvertImageDelegate?
 
-
     // MARK: - Private properties
 
     private let imageAspectRatio: CGFloat = (1200.0 / 627) // Specification at: https://annonseweb.schibsted.no/nb-no/product/finn-native-ads-16031

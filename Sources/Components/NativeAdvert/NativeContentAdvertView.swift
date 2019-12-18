@@ -4,56 +4,73 @@
 
 import UIKit
 
-public final class NativeContentAdvertView: UIView {
+public final class NativeAdvertContentView: UIView {
 
     // MARK: - Public properties
 
     public weak var delegate: NativeAdvertViewDelegate?
     public weak var imageDelegate: NativeAdvertImageDelegate?
 
-    // MARK: - UI properties
+    // MARK: - Private properties
 
-    private lazy var containerView = UIView(withAutoLayout: true)
+    private let imageAspectRatio: CGFloat = (1200.0 / 627) // Specification at: https://annonseweb.schibsted.no/nb-no/product/finn-native-ads-16031
 
-    private lazy var cardView: UIView = {
+    private lazy var container: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.layer.cornerRadius = NativeContentAdvertView.cornerRadius
+        view.layer.cornerRadius = .mediumSpacing
         view.layer.masksToBounds = true
         return view
     }()
 
-    private lazy var mainImageView: UIImageView = {
-        let view = UIImageView(withAutoLayout: true)
-        view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
-        return view
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
     }()
 
-    private lazy var bottomContainerView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = UIColor(r: 248, g: 248, b: 248)
-        return view
-    }()
+    private lazy var detailsContainer = NativeAdvertDetailsContainer(withAutoLayout: true)
 
-    private lazy var logoImageView: UIImageView = {
-        let view = UIImageView(withAutoLayout: true)
-        view.contentMode = .scaleAspectFit
-        return view
-    }()
-
-    private lazy var titleLabel: Label = {
-        let label = Label(style: NativeContentAdvertView.titleLabelStyle, withAutoLayout: true)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byTruncatingTail
-        label.textColor = .textToast
-        return label
-    }()
-
-    private lazy var settingsButton: NativeContentSettingsButton = {
-        let button = NativeContentSettingsButton(cornerRadius: NativeContentAdvertView.cornerRadius)
-        button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+    private lazy var settingsButton: UIButton = {
+        let button = CogWheelButton(alignment: .right, autoLayout: true)
+        button.addTarget(self, action: #selector(handleSettingsButtonTap), for: .touchUpInside)
         return button
     }()
+
+    // MARK: - Constraints
+
+    private lazy var sharedConstraints: [NSLayoutConstraint] = [
+        container.topAnchor.constraint(equalTo: topAnchor, constant: .mediumSpacing),
+        container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+        container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.mediumSpacing),
+        container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumSpacing),
+
+        settingsButton.topAnchor.constraint(equalTo: container.topAnchor),
+        settingsButton.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+
+        imageView.topAnchor.constraint(equalTo: container.topAnchor),
+        imageView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1 / imageAspectRatio),
+    ]
+
+    private lazy var compactConstraints: [NSLayoutConstraint] = [
+        imageView.widthAnchor.constraint(equalTo: container.widthAnchor),
+
+        detailsContainer.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumSpacing),
+        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.mediumSpacing),
+        detailsContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: .mediumLargeSpacing),
+        detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -.mediumLargeSpacing)
+    ]
+
+    private lazy var regularConstraints: [NSLayoutConstraint] = [
+        imageView.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 0.5),
+        imageView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+
+        detailsContainer.topAnchor.constraint(equalTo: container.topAnchor, constant: .mediumLargeSpacing),
+        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.mediumLargeSpacing),
+        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
+        detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -.mediumLargeSpacing)
+    ]
 
     // MARK: - Init
 
@@ -66,107 +83,49 @@ public final class NativeContentAdvertView: UIView {
         fatalError("init(coder:) not implemented")
     }
 
-    // MARK: - Public methods
+    // MARK: - Setup
 
-    public func configure(with model: NativeAdvertViewModel) {
-        mainImageView.image = nil
-        if let mainImageURL = model.mainImageUrl {
-            imageDelegate?.nativeAdvertView(setImageWithURL: mainImageURL, onImageView: mainImageView)
-        }
+    private func setup() {
+        container.backgroundColor = .bgTertiary
 
-        logoImageView.image = nil
-        if let logoImageURL = model.logoImageUrl {
-            imageDelegate?.nativeAdvertView(setImageWithURL: logoImageURL, onImageView: logoImageView)
-        }
+        addSubview(container)
+        container.addSubview(imageView)
+        container.addSubview(detailsContainer)
+        container.addSubview(settingsButton)
 
-        titleLabel.text = model.title
-        settingsButton.text = model.ribbonText
+        NSLayoutConstraint.activate(sharedConstraints)
+        setConstraints()
     }
 
+    public func configure(with model: NativeAdvertViewModel) {
+        if let imageUrl = model.mainImageUrl {
+            imageDelegate?.nativeAdvertView(setImageWithURL: imageUrl, onImageView: imageView)
+        }
+
+        detailsContainer.configure(with: model, andImageDelegate: imageDelegate)
+    }
+
+    private func setConstraints() {
+        if traitCollection.horizontalSizeClass == .regular {
+            NSLayoutConstraint.deactivate(compactConstraints)
+            NSLayoutConstraint.activate(regularConstraints)
+        } else {
+            NSLayoutConstraint.deactivate(regularConstraints)
+            NSLayoutConstraint.activate(compactConstraints)
+        }
+    }
 
     // MARK: - Private methods
 
-    @objc private func settingsButtonTapped() {
+    @objc private func handleSettingsButtonTap() {
         delegate?.nativeAdvertViewDidSelectSettingsButton()
     }
 
-}
+    // MARK: - Overrides
 
-private extension NativeContentAdvertView {
-    func setup() {
-        addSubview(containerView)
-
-        containerView.addSubview(cardView)
-
-        cardView.addSubview(mainImageView)
-        cardView.addSubview(bottomContainerView)
-        cardView.addSubview(settingsButton)
-
-        bottomContainerView.addSubview(logoImageView)
-        bottomContainerView.addSubview(titleLabel)
-
-        NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            containerView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
-            containerView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            containerView.widthAnchor.constraint(lessThanOrEqualToConstant: NativeContentAdvertView.containerMaxWidth),
-            containerView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor),
-
-            cardView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: NativeContentAdvertView.padding),
-            cardView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: NativeContentAdvertView.padding),
-            cardView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -NativeContentAdvertView.padding),
-            cardView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -NativeContentAdvertView.padding),
-
-            mainImageView.topAnchor.constraint(equalTo: cardView.topAnchor),
-            mainImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
-            mainImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
-            mainImageView.heightAnchor.constraint(equalTo: mainImageView.widthAnchor, multiplier: 1.0 / NativeContentAdvertView.imageAspectRatio),
-
-            settingsButton.topAnchor.constraint(equalTo: mainImageView.topAnchor),
-            settingsButton.trailingAnchor.constraint(equalTo: mainImageView.trailingAnchor),
-
-            bottomContainerView.topAnchor.constraint(equalTo: mainImageView.bottomAnchor),
-            bottomContainerView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor),
-            bottomContainerView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
-            bottomContainerView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
-
-            logoImageView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor, constant: -NativeContentAdvertView.padding),
-            logoImageView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -NativeContentAdvertView.padding),
-            logoImageView.widthAnchor.constraint(equalToConstant: NativeContentAdvertView.logoSize),
-            logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor),
-
-            titleLabel.topAnchor.constraint(equalTo: bottomContainerView.topAnchor, constant: NativeContentAdvertView.padding),
-            titleLabel.leadingAnchor.constraint(equalTo: bottomContainerView.leadingAnchor, constant: NativeContentAdvertView.padding),
-            titleLabel.trailingAnchor.constraint(equalTo: logoImageView.leadingAnchor, constant: -.mediumLargeSpacing),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor, constant: -NativeContentAdvertView.padding)
-        ])
-    }
-}
-
-extension NativeContentAdvertView {
-    // MARK: - Static properties
-
-    private static let imageAspectRatio: CGFloat = (1200.0 / 627) // Specification at: https://annonseweb.schibsted.no/nb-no/product/finn-native-ads-16031
-    private static let cardMaxWidth: CGFloat = 320
-    private static let padding: CGFloat = .mediumSpacing
-    private static let cornerRadius: CGFloat = .mediumSpacing
-    private static let logoSize: CGFloat = 48.0
-
-    private static var containerMaxWidth: CGFloat {
-        cardMaxWidth + padding * 2
-    }
-
-    private static let titleLabelStyle: Label.Style = .title3
-
-    private static func titleLabelHeight(forWidth width: CGFloat, text: String) -> CGFloat {
-        let unavailableSpace = padding + .mediumLargeSpacing + logoSize + padding // Size of logo with margins
-        return text.height(withConstrainedWidth: width - unavailableSpace, font: titleLabelStyle.font)
-    }
-
-    private static func imageHeight(forWidth width: CGFloat) -> CGFloat {
-        width  / imageAspectRatio
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setConstraints()
     }
 
 }

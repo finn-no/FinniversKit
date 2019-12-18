@@ -26,7 +26,7 @@ class NativeAdvertDemoView: UIView {
         mainImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
         logoImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
         sponsoredBy: "",
-        ribbonText: "ANNONSØRINNHOLD"
+        ribbonText: "Annonsørinnhold"
     )
 
     private lazy var scrollView: UIScrollView = {
@@ -58,12 +58,11 @@ class NativeAdvertDemoView: UIView {
         return view
     }()
 
-    private lazy var contentAdvertView: NativeContentAdvertView = {
-        let view = NativeContentAdvertView(withAutoLayout: false)
+    private lazy var nativeAdvertContentView: NativeAdvertContentView = {
+        let view = NativeAdvertContentView(withAutoLayout: false)
         view.delegate = self
         view.imageDelegate = self
         view.configure(with: contentModel)
-        view.backgroundColor = .bgPrimary
         return view
     }()
 
@@ -89,7 +88,7 @@ class NativeAdvertDemoView: UIView {
         stackView.addArrangedSubview(createHairlineView(labelText: "Native Advert (Grid)"))
         stackView.addArrangedSubview(nativeAdvertGridView)
         stackView.addArrangedSubview(createHairlineView(labelText: "Native Advert Content"))
-        stackView.addArrangedSubview(contentAdvertView)
+        stackView.addArrangedSubview(nativeAdvertContentView)
 
         NSLayoutConstraint.activate([
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
