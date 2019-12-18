@@ -29,7 +29,7 @@ class SaveSearchPromptViewDemoView: UIView {
 
         NSLayoutConstraint.activate([
             saveSearchPromptView.widthAnchor.constraint(equalTo: widthAnchor),
-            saveSearchPromptView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.18),
+            saveSearchPromptView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.17),
             saveSearchPromptView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
     }
