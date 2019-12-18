@@ -61,7 +61,7 @@ public final class NativeAdvertListView: UIView {
     private lazy var compactConstraints: [NSLayoutConstraint] = [
         container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
 
-        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .smallSpacing),
+        detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
         detailsContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: detailsContainerMinimumHeightCompact),
 
         imageView.widthAnchor.constraint(equalToConstant: imageWidthCompact),
