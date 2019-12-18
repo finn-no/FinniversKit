@@ -95,7 +95,7 @@ import UIKit
     }
 
     public class var imageBorder: UIColor {
-        return dynamicColorIfAvailable(defaultColor: .sardine, darkModeColor: .darkSardine)
+        return dynamicColorIfAvailable(defaultColor: .marble, darkModeColor: UIColor(hex: "#13131A"))
     }
 
     public class var decorationSubtle: UIColor {
@@ -114,31 +114,31 @@ import UIKit
 // MARK: - FINN UIColors
 @objc extension UIColor {
     public class var ice: UIColor {
-        return UIColor(r: 241, g: 249, b: 255)!
+        return UIColor(r: 241, g: 249, b: 255)
     }
 
     public class var milk: UIColor {
-        return UIColor(r: 255, g: 255, b: 255)!
+        return UIColor(r: 255, g: 255, b: 255)
     }
 
     public class var licorice: UIColor {
-        return UIColor(r: 71, g: 68, b: 69)!
+        return UIColor(r: 71, g: 68, b: 69)
     }
 
     public class var primaryBlue: UIColor {
-        return UIColor(r: 0, g: 99, b: 251)!
+        return UIColor(r: 0, g: 99, b: 251)
     }
 
     public class var secondaryBlue: UIColor {
-        return UIColor(r: 6, g: 190, b: 251)!
+        return UIColor(r: 6, g: 190, b: 251)
     }
 
     public class var stone: UIColor {
-        return UIColor(r: 118, g: 118, b: 118)!
+        return UIColor(r: 118, g: 118, b: 118)
     }
 
     public class var sardine: UIColor {
-        return UIColor(r: 195, g: 204, b: 217)!
+        return UIColor(r: 195, g: 204, b: 217)
     }
 
     public class var darkSardine: UIColor {
@@ -146,35 +146,35 @@ import UIKit
     }
 
     public class var salmon: UIColor {
-        return UIColor(r: 255, g: 239, b: 239)!
+        return UIColor(r: 255, g: 239, b: 239)
     }
 
     public class var mint: UIColor {
-        return UIColor(r: 204, g: 255, b: 236)!
+        return UIColor(r: 204, g: 255, b: 236)
     }
 
     public class var toothPaste: UIColor {
-        return UIColor(r: 182, g: 240, b: 255)!
+        return UIColor(r: 182, g: 240, b: 255)
     }
 
     public class var banana: UIColor {
-        return UIColor(r: 255, g: 245, b: 200)!
+        return UIColor(r: 255, g: 245, b: 200)
     }
 
     public class var cherry: UIColor {
-        return UIColor(r: 217, g: 39, b: 10)!
+        return UIColor(r: 217, g: 39, b: 10)
     }
 
     public class var watermelon: UIColor {
-        return UIColor(r: 255, g: 88, b: 68)!
+        return UIColor(r: 255, g: 88, b: 68)
     }
 
     public class var pea: UIColor {
-        return UIColor(r: 46, g: 230, b: 159)!
+        return UIColor(r: 46, g: 230, b: 159)
     }
 
     public class var marble: UIColor {
-        return UIColor(r: 246, g: 248, b: 251)!
+        return UIColor(r: 246, g: 248, b: 251)
     }
 
     public class var midnightBackground: UIColor {
@@ -191,31 +191,6 @@ import UIKit
 
     public class var darkIce: UIColor {
         return UIColor(hex: "#262633")
-    }
-
-    // swiftlint:disable:next identifier_name
-    convenience init?(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) {
-        self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
-    }
-
-    /// Base initializer, it creates an instance of `UIColor` using an HEX string.
-    ///
-    /// - Parameter hex: The base HEX string to create the color.
-    private convenience init(hex: String) {
-        let noHashString = hex.replacingOccurrences(of: "#", with: "")
-        let scanner = Scanner(string: noHashString)
-        scanner.charactersToBeSkipped = CharacterSet.symbols
-
-        var hexInt: UInt32 = 0
-        if scanner.scanHexInt32(&hexInt) {
-            let red = (hexInt >> 16) & 0xFF
-            let green = (hexInt >> 8) & 0xFF
-            let blue = (hexInt) & 0xFF
-
-            self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-        } else {
-            self.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        }
     }
 }
 
@@ -396,7 +371,7 @@ extension CGColor {
     }
 
     public class var defaultButtonHighlightedBodyColor: UIColor {
-        return UIColor(r: 241, g: 249, b: 255)! //DARK btnTertiary?
+        return UIColor(r: 241, g: 249, b: 255) //DARK btnTertiary?
     }
 
     public class var linkButtonHighlightedTextColor: UIColor {
@@ -443,7 +418,7 @@ extension CGColor {
 
 @objc extension UIColor {
     public class var defaultCellSelectedBackgroundColor: UIColor {
-        let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)!
+        let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)
         return dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.4))
     }
 }
@@ -454,8 +429,63 @@ extension CGColor {
     }
 }
 
-// MARK: - Private helper for creating dynamic color
-extension UIColor {
+// MARK: - Public color creation methods
+public extension UIColor {
+    /// The UIColor initializer we need it's more natural to write integer values from 0 to 255 than decimas from 0 to 1
+    /// - Parameters:
+    ///   - r: red (0-255)
+    ///   - g: green (0-255)
+    ///   - b: blue (0-255)
+    ///   - a: alpla (0-1)
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 1.0) { // swiftlint:disable:this identifier_name
+        self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
+    }
+
+    /// Base initializer, it creates an instance of `UIColor` using an HEX string.
+    ///
+    /// - Parameter hex: The base HEX string to create the color.
+    convenience init(hex: String) {
+        let noHashString = hex.replacingOccurrences(of: "#", with: "")
+        let scanner = Scanner(string: noHashString)
+        scanner.charactersToBeSkipped = CharacterSet.symbols
+
+        var hexInt: UInt32 = 0
+        if scanner.scanHexInt32(&hexInt) {
+            let red = (hexInt >> 16) & 0xFF
+            let green = (hexInt >> 8) & 0xFF
+            let blue = (hexInt) & 0xFF
+
+            self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+        } else {
+            self.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        }
+    }
+
+    /// Convenience method to create dynamic colors for dark mode if the OS supports it (independant of FinniversKit
+    /// settings)
+    /// - Parameters:
+    ///   - defaultColor: light mode version of the color
+    ///   - darkModeColor: dark mode version of the color
+    class func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
+        if #available(iOS 13.0, *) {
+            #if swift(>=5.1)
+            return UIColor { traitCollection -> UIColor in
+                switch traitCollection.userInterfaceStyle {
+                case .dark:
+                    return darkModeColor
+                default:
+                    return defaultColor
+                }
+            }
+            #endif
+        }
+        return defaultColor
+    }
+
+    /// Convenience mehtod to create dynamic colors **considering FinniversKit settings** and if the OS supports it
+    /// - Parameters:
+    ///   - defaultColor: light mode version of the color
+    ///   - darkModeColor: dark mode version of the color
     class func dynamicColorIfAvailable(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
         switch FinniversKit.userInterfaceStyleSupport {
         case .forceDark:
@@ -463,19 +493,7 @@ extension UIColor {
         case .forceLight:
             return defaultColor
         case .dynamic:
-            if #available(iOS 13.0, *) {
-                #if swift(>=5.1)
-                return UIColor { traitCollection -> UIColor in
-                    switch traitCollection.userInterfaceStyle {
-                    case .dark:
-                        return darkModeColor
-                    default:
-                        return defaultColor
-                    }
-                }
-                #endif
-            }
-            return defaultColor
+            return dynamicColor(defaultColor: defaultColor, darkModeColor: darkModeColor)
         }
     }
 }

@@ -133,7 +133,8 @@ public class SelectorTitleView: UIView {
 
     private func updateArrowDirection() {
         let asset: FinniversImageAsset = arrowDirection == .up ? .arrowUpSmall : .arrowDownSmall
-        button.setImage(UIImage(named: asset), for: .normal)
+        let image = UIImage(named: asset).withRenderingMode(.alwaysTemplate)
+        button.setImage(image, for: .normal)
     }
 
 }

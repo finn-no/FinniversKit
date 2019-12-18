@@ -25,6 +25,16 @@ public final class StepSlider: UISlider {
         return thumbRect(forBounds: bounds, trackRect: currentTrackRect, value: value)
     }
 
+    public var accentColor: UIColor? = UIColor.btnPrimary {
+        didSet {
+            guard let accentColor = accentColor else {
+                return
+            }
+            activeRangeTrackView.backgroundColor = accentColor
+            updateThumbImageForAccentColor()
+        }
+    }
+
     // MARK: - Private properties
 
     private let showTrackViews: Bool
@@ -78,6 +88,19 @@ public final class StepSlider: UISlider {
     public override func layoutSubviews() {
         super.layoutSubviews()
         updateActiveTrackRange()
+    }
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard
+            #available(iOS 12.0, *),
+            previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle
+        else {
+            return
+        }
+
+        updateThumbImageForAccentColor()
     }
 
     // MARK: - Accessibility
@@ -177,6 +200,21 @@ public final class StepSlider: UISlider {
         activeRangeTrackView.isHidden = false
     }
 
+    private func updateThumbImageForAccentColor() {
+        guard let accentColor = accentColor else {
+            return
+        }
+
+        let imageFactory = ThumbImageFactory(
+            diameter: 28,
+            centerRadius: 12,
+            highlightedCenterRadius: 18,
+            accentColor: accentColor
+        )
+        setThumbImage(imageFactory.image, for: .normal)
+        setThumbImage(imageFactory.highligtedImage, for: .highlighted)
+    }
+
     // MARK: - Actions
 
     @objc private func sliderValueChanged(sender slider: UISlider, event: UIEvent) {
@@ -212,5 +250,70 @@ public final class StepSlider: UISlider {
         if slideEnded {
             delegate?.stepSlider(self, didEndSlideInteraction: step)
         }
+    }
+}
+
+class ThumbImageFactory {
+    let accentColor: UIColor
+    let diameter: CGFloat
+    let centerRadius: CGFloat
+    let highlightedCenterRadius: CGFloat
+    let bounds: CGRect
+    let shadowSize: CGFloat = 5
+
+    init(diameter: CGFloat, centerRadius: CGFloat, highlightedCenterRadius: CGFloat, accentColor: UIColor) {
+        self.diameter = diameter
+        self.centerRadius = centerRadius
+        self.highlightedCenterRadius = highlightedCenterRadius
+        self.accentColor = accentColor
+        self.bounds = CGRect(origin: .zero, size: CGSize(width: diameter, height: diameter))
+    }
+
+    var image: UIImage? {
+        if _image == nil {
+            _image = computeImage(effectiveRadius: centerRadius)
+        }
+        return _image
+    }
+
+    var highligtedImage: UIImage? {
+        if _highligtedImage == nil {
+            _highligtedImage = computeImage(effectiveRadius: highlightedCenterRadius)
+        }
+        return _highligtedImage
+    }
+
+    private var _image: UIImage?
+    private var _highligtedImage: UIImage?
+
+    private func computeImage(effectiveRadius: CGFloat) -> UIImage {
+        let sizeWithShadow = CGSize(width: diameter + shadowSize * 2, height: diameter + shadowSize * 2)
+        let renderer = UIGraphicsImageRenderer(size: sizeWithShadow)
+        return renderer.image { (context) in
+            context.cgContext.saveGState()
+            context.cgContext.setShadow(
+                offset: CGSize(width: 0, height: 1),
+                blur: shadowSize,
+                color: UIColor(white: 0.0, alpha: 0.3).cgColor
+            )
+
+            UIColor.white.setFill()
+            context.cgContext.fillEllipse(in: bounds.applying(.init(translationX: shadowSize, y: shadowSize)))
+            context.cgContext.restoreGState()
+
+            self.accentColor.setFill()
+            let originCenterCircle = bounds
+                .applying(.init(translationX: shadowSize, y: shadowSize))
+                .center
+                .applying(CGAffineTransform(translationX: -effectiveRadius / 2.0, y: -effectiveRadius / 2.0))
+            let centerSize = CGSize(width: effectiveRadius, height: effectiveRadius)
+            context.cgContext.fillEllipse(in: CGRect(origin: originCenterCircle, size: centerSize))
+        }
+    }
+}
+
+private extension CGRect {
+    var center: CGPoint {
+        CGPoint(x: origin.x + width / 2.0, y: origin.y + height / 2.0)
     }
 }
