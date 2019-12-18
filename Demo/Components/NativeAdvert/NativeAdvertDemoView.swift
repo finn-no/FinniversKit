@@ -4,35 +4,9 @@
 
 import FinniversKit
 
-private struct DemoViewModel: NativeAdvertViewModel {
-    let title: String
-    let mainImageUrl: URL?
-    let logoImageUrl: URL?
-    let sponsoredBy: String?
-    let ribbonText: String
-}
-
 class NativeAdvertDemoView: UIView {
-    private let advertModel = DemoViewModel(
-        title: "Du har skjært avokadoen feil i alle år! 50 tegn!",
-        mainImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
-        logoImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
-        sponsoredBy: "Avokadosentralen",
-        ribbonText: "Annonse"
-    )
 
-    private let contentModel = DemoViewModel(
-        title: "Du har skjært avokadoen feil i alle år! 50 tegn!",
-        mainImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg"),
-        logoImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg"),
-        sponsoredBy: "",
-        ribbonText: "Annonsørinnhold"
-    )
-
-    private lazy var scrollView: UIScrollView = {
-        let view = UIScrollView(withAutoLayout: true)
-        return view
-    }()
+    private lazy var defaultData = NativeAdvertDefaultData()
 
     private lazy var stackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
@@ -46,7 +20,7 @@ class NativeAdvertDemoView: UIView {
         let view = NativeAdvertListView(withAutoLayout: false)
         view.delegate = self
         view.imageDelegate = self
-        view.configure(with: advertModel)
+        view.configure(with: defaultData)
         return view
     }()
 
@@ -54,15 +28,7 @@ class NativeAdvertDemoView: UIView {
         let view = NativeAdvertGridView(withAutoLayout: false)
         view.delegate = self
         view.imageDelegate = self
-        view.configure(with: advertModel)
-        return view
-    }()
-
-    private lazy var nativeAdvertContentView: NativeAdvertContentView = {
-        let view = NativeAdvertContentView(withAutoLayout: false)
-        view.delegate = self
-        view.imageDelegate = self
-        view.configure(with: contentModel)
+        view.configure(with: defaultData)
         return view
     }()
 
@@ -77,21 +43,17 @@ class NativeAdvertDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(scrollView)
-        scrollView.fillInSuperview()
-
-        scrollView.addSubview(stackView)
-        stackView.fillInSuperview()
+        addSubview(stackView)
 
         stackView.addArrangedSubview(createHairlineView(labelText: "Native Advert (List)"))
         stackView.addArrangedSubview(nativeAdvertListView)
         stackView.addArrangedSubview(createHairlineView(labelText: "Native Advert (Grid)"))
         stackView.addArrangedSubview(nativeAdvertGridView)
-        stackView.addArrangedSubview(createHairlineView(labelText: "Native Advert Content"))
-        stackView.addArrangedSubview(nativeAdvertContentView)
 
         NSLayoutConstraint.activate([
-            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
 
@@ -121,6 +83,7 @@ class NativeAdvertDemoView: UIView {
 }
 
 extension NativeAdvertDemoView: NativeAdvertViewDelegate, NativeAdvertImageDelegate {
+
     func nativeAdvertViewDidSelectSettingsButton() {
         var viewController = UIApplication.shared.keyWindow?.rootViewController
         while viewController?.presentedViewController != nil {
