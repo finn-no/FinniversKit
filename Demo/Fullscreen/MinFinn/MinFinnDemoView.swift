@@ -101,7 +101,7 @@ extension MinFinnDemoView: MinFinnViewDelegate {
 }
 
 extension MinFinnDemoView: MinFinnProfileCellDelegate {
-    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageAt url: URL, completionHandler: @escaping (UIImage?) -> Void) {
+    func minFinnProfileCell(_ cell: MinFinnProfileCell, loadImageAt url: URL, with size: CGSize, completionHandler: @escaping (UIImage?) -> Void) {
         print("Load image")
     }
 }
