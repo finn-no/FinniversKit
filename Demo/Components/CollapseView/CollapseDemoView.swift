@@ -1,11 +1,12 @@
 import FinniversKit
 
 public class CollapseDemoView: UIView {
-    private lazy var orderSummaryView = OrderSummaryView(model: OrderSummaryViewDefaultData(), withAutoLayout: true)
+    let regular = OrderSummaryView(model: OrderSummaryViewRegularDefaultData(), withAutoLayout: true)
+    let car = OrderSummaryView(model: OrderSummaryViewCarDefaultData(), withAutoLayout: true)
 
     private lazy var collapseView: CollapseView = {
         let view = CollapseView(collapsedTitle: "Vis oppsummering", expandedTitle: "Skjul oppsummering",
-                                contentViewHeight: orderSummaryView.height, withAutoLayout: true)
+                                     presentViewInExpandedState: regular, heightOfView: regular.height, withAutoLayout: true)
         view.delegate = self
         return view
     }()
@@ -22,16 +23,21 @@ public class CollapseDemoView: UIView {
         NSLayoutConstraint.activate([
             collapseView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collapseView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collapseView.topAnchor.constraint(equalTo: centerYAnchor),
+            collapseView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.largeSpacing),
         ])
     }
 }
 
 extension CollapseDemoView: CollapseViewDelegate {
-    public func showViewInExpandedState(_ view: CollapseView) -> UIView? {
-        return orderSummaryView
+    public func didExpand(_ view: CollapseView) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.collapseView.presentViewInExpandedState(self.car, heightOfView: self.car.height)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.collapseView.presentViewInExpandedState(self.regular, heightOfView: self.regular.height)
+            })
+        })
     }
 
-    public func willExpand(_ view: CollapseView) {}
-    public func willCollapse(_ view: CollapseView) {}
+    public func didCollapse(_ view: CollapseView) {}
 }

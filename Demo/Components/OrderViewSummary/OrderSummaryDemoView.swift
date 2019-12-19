@@ -5,7 +5,7 @@
 import FinniversKit
 
 public class OrderSummaryDemoView: UIView {
-    private lazy var orderSummaryView = OrderSummaryView(model: OrderSummaryViewDefaultData(), withAutoLayout: true)
+    private lazy var orderSummaryView = OrderSummaryView(model: OrderSummaryViewRegularDefaultData(), withAutoLayout: true)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

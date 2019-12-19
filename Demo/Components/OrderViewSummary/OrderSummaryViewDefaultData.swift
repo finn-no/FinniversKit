@@ -4,7 +4,18 @@
 
 import FinniversKit
 
-struct OrderSummaryViewDefaultData: OrderSummaryViewModel {
+struct OrderSummaryViewRegularDefaultData: OrderSummaryViewModel {
+    struct OrderSummaryLineModel: OrderSummaryLineViewModel {
+        var title: String
+        var price: String
+    }
+
+    var orderLines: [OrderSummaryLineViewModel] = [
+        OrderSummaryLineModel(title: "Torget annonse", price: "0 kr"),
+    ]
+}
+
+struct OrderSummaryViewCarDefaultData: OrderSummaryViewModel {
     struct OrderSummaryLineModel: OrderSummaryLineViewModel {
         var title: String
         var price: String

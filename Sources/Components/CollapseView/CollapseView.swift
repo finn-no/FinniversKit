@@ -5,9 +5,8 @@
 import UIKit
 
 public protocol CollapseViewDelegate: AnyObject {
-    func willExpand(_ view: CollapseView)
-    func willCollapse(_ view: CollapseView)
-    func showViewInExpandedState(_ view: CollapseView) -> UIView?
+    func didExpand(_ view: CollapseView)
+    func didCollapse(_ view: CollapseView)
 }
 
 public class CollapseView: UIView {
@@ -22,16 +21,10 @@ public class CollapseView: UIView {
         case collapsed
     }
 
-    private var state: State
-
-    private var collapsedTitle: String
-    private var expandedTitle: String
-    private var contentHeight: CGFloat =  32.0
-
     private lazy var hairlineView: UIView = {
         let view = UIView(withAutoLayout: true)
         view.backgroundColor = .bgPrimary
-        view.dropShadow(color: .black, opacity: 0.8, offset: CGSize(width: 0, height: 0.9), radius: 1.2)
+        view.dropShadow(color: .black, opacity: 0.6, offset: CGSize(width: 0, height: 0.9), radius: 1.2)
         return view
     }()
 
@@ -48,15 +41,27 @@ public class CollapseView: UIView {
         return view
     }()
 
-    private var delegateView: UIView?
-    private lazy var contentViewCollapseTransformation = CGAffineTransform(translationX: 0, y: contentHeight - .mediumLargeSpacing)
+    private var state: State
+
+    private let defaultHeight: CGFloat = 32.0
+    private let defaultContentViewHeight: CGFloat = 32.0
+
+    private var heightAnchorConstraint: NSLayoutConstraint?
+
+    // MARK: Parameters
+
+    private var collapsedTitle: String
+    private var expandedTitle: String
+    private var injectedView: UIView?
+    private var injectedViewHeight: CGFloat = 0.0
 
     // MARK: Initalizer
 
-    public init(collapsedTitle: String, expandedTitle: String, contentViewHeight: CGFloat, withAutoLayout: Bool = false) {
+    public init(collapsedTitle: String, expandedTitle: String, presentViewInExpandedState: UIView?, heightOfView: CGFloat, withAutoLayout: Bool = false) {
         self.collapsedTitle = collapsedTitle
         self.expandedTitle = expandedTitle
-        self.contentHeight += contentViewHeight
+        self.injectedView = presentViewInExpandedState
+        self.injectedViewHeight = heightOfView
         self.state = .collapsed
 
         super.init(frame: .zero)
@@ -64,11 +69,31 @@ public class CollapseView: UIView {
         translatesAutoresizingMaskIntoConstraints = !withAutoLayout
         backgroundColor = .bgPrimary
 
+        selectorTitleView.title = collapsedTitle
+        selectorTitleView.arrowDirection = .up
+
         setup()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public func presentViewInExpandedState(_ view: UIView, heightOfView: CGFloat) {
+        guard
+            state != .collapsed,
+            injectedView != view
+        else { return }
+
+        let duration = 0.2
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
+            self.injectedView?.alpha = 0
+            self.injectedView?.removeFromSuperview()
+
+            self.injectedView = view
+            self.injectedViewHeight = heightOfView
+            self.addInjectedView(duration)
+        })
     }
 }
 
@@ -76,101 +101,80 @@ public class CollapseView: UIView {
 
 extension CollapseView {
     private func setup() {
-        transition(to: .collapsed)
-
         contentView.addSubview(hairlineView)
         contentView.addSubview(selectorTitleView)
         addSubview(contentView)
 
+        heightAnchorConstraint = heightAnchor.constraint(equalToConstant: defaultHeight)
+
         NSLayoutConstraint.activate([
-            hairlineView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
-            hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
-            hairlineView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
-            hairlineView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
+            heightAnchorConstraint!,
 
-            selectorTitleView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
-            selectorTitleView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
-            selectorTitleView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: .mediumSpacing),
-
+            contentView.heightAnchor.constraint(equalToConstant: defaultContentViewHeight),
+            contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: contentHeight),
 
-            heightAnchor.constraint(greaterThanOrEqualToConstant: contentHeight)
+            hairlineView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
+            hairlineView.bottomAnchor.constraint(equalTo: contentView.topAnchor),
+            hairlineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            hairlineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+
+            selectorTitleView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            selectorTitleView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            selectorTitleView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
-
-        contentView.transform = contentViewCollapseTransformation
     }
 
-    private func transition(to newState: State) {
+    private func animate(_ newState: State, withDuration duration: TimeInterval) {
         state = newState
 
         switch newState {
         case .expanded:
             selectorTitleView.title = expandedTitle
             selectorTitleView.arrowDirection = .down
-            delegate?.willExpand(self)
+            addInjectedView(duration)
+            delegate?.didExpand(self)
         case .collapsed:
             selectorTitleView.title = collapsedTitle
             selectorTitleView.arrowDirection = .up
-            delegate?.willCollapse(self)
-        }
-
-        animate(to: newState, withDuration: 0.2)
-    }
-
-    private func animate(to newState: State, withDuration duration: TimeInterval) {
-        switch newState {
-        case .expanded:
-            UIView.animate(withDuration: duration, animations: {
-                self.contentView.transform = .identity
-                self.addDelegateView(duration)
-            })
-        case .collapsed:
-            UIView.animate(withDuration: duration, animations: {
-                self.contentView.transform = self.contentViewCollapseTransformation
-                self.removeDelegateView(duration)
-            })
+            removeInjectedView(duration)
+            delegate?.didCollapse(self)
         }
     }
 
-    private func addDelegateView(_ duration: TimeInterval) {
-        guard contentHeight > 32 else {
-            assertionFailure("The provided value to the parameter contentViewHeight has to be greater than 0 in order to properly render the delegate view.")
-            return
-        }
-
-        guard let viewToPresent = delegate?.showViewInExpandedState(self) else { return }
-        delegateView = viewToPresent
-
-        if let view = delegateView {
+    private func addInjectedView(_ duration: TimeInterval) {
+        if let view = injectedView {
             view.alpha = 0
-
-            contentView.addSubview(view)
+            addSubview(view)
 
             NSLayoutConstraint.activate([
-                view.leadingAnchor.constraint(equalTo: selectorTitleView.leadingAnchor),
-                view.trailingAnchor.constraint(equalTo: selectorTitleView.trailingAnchor),
-
-                view.topAnchor.constraint(equalTo: selectorTitleView.bottomAnchor, constant: .mediumSpacing),
-                view.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
-
-                view.heightAnchor.constraint(lessThanOrEqualTo: contentView.heightAnchor),
+                view.topAnchor.constraint(equalTo: contentView.bottomAnchor),
+                view.heightAnchor.constraint(equalToConstant: injectedViewHeight),
+                view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             ])
 
-            UIView.animate(withDuration: duration, animations: {
+            view.updateConstraints()
+
+            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
+                self.heightAnchorConstraint?.constant = self.defaultHeight + self.injectedViewHeight
+                self.layoutIfNeeded()
+
                 view.alpha = 1
             })
         }
     }
 
-    private func removeDelegateView(_ duration: TimeInterval) {
-        guard let view = delegateView else { return }
-        UIView.animate(withDuration: duration, animations: {
-            view.alpha = 0
-        }, completion: { _ in
+    private func removeInjectedView(_ duration: TimeInterval) {
+        guard let view = injectedView else { return }
+        view.alpha = 0
+
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
             view.removeFromSuperview()
+
+            self.heightAnchorConstraint?.constant = self.defaultHeight
+            self.layoutIfNeeded()
         })
     }
 }
@@ -180,6 +184,6 @@ extension CollapseView {
 extension CollapseView: SelectorTitleViewDelegate {
     public func selectorTitleViewDidSelectButton(_ view: SelectorTitleView) {
         let newState = (state == .collapsed) ? State.expanded : State.collapsed
-        transition(to: newState)
+        animate(newState, withDuration: 0.2)
     }
 }
