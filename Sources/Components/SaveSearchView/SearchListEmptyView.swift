@@ -15,7 +15,7 @@ public protocol SearchListEmptyViewDelegate: AnyObject {
     // MARK: - Public properties
 
     public enum ViewState: Int {
-        case initial = 0
+        case initial
         case searchSaved
         case searchSavedNoPush
     }

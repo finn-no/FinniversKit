@@ -40,7 +40,6 @@ public class SaveSearchPromptView: UIView {
         button.setImage(UIImage(named: .remove), for: .normal)
         button.tintColor = .textSecondary
         button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
