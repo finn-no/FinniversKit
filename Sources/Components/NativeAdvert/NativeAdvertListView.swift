@@ -53,7 +53,7 @@ public final class NativeAdvertListView: UIView {
         imageView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1 / imageAspectRatio),
 
-        detailsContainer.topAnchor.constraint(equalTo: container.topAnchor),
+        detailsContainer.topAnchor.constraint(equalTo: container.topAnchor, constant: .smallSpacing),
         detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
     ]
 
@@ -62,7 +62,7 @@ public final class NativeAdvertListView: UIView {
         container.heightAnchor.constraint(greaterThanOrEqualToConstant: containerMinimumHeightCompact),
 
         detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
-        detailsContainer.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor, constant: -.mediumSpacing),
+        detailsContainer.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor, constant: -.smallSpacing),
 
         imageView.widthAnchor.constraint(equalToConstant: imageWidthCompact),
     ]
@@ -72,7 +72,7 @@ public final class NativeAdvertListView: UIView {
         container.heightAnchor.constraint(greaterThanOrEqualToConstant: containerMinimumHeightRegular),
 
         detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
-        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.mediumSpacing),
+        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.smallSpacing),
 
         imageView.widthAnchor.constraint(equalToConstant: imageWidthRegular),
     ]
