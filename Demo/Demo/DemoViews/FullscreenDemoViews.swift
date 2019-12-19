@@ -34,7 +34,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case popovers
     case settingDetails
     case adConfirmationView
-    case notificationsView
+    case notificationCenterView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -134,7 +134,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return bottomSheet
         case .adConfirmationView:
             return DemoViewController<AdConfirmationDemoView>()
-        case .notificationsView:
+        case .notificationCenterView:
             return DemoViewController<NotificationCenterDemoView>()
         }
     }

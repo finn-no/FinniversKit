@@ -474,6 +474,8 @@
 		CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9727821C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift */; };
 		CFFDF89722F311F600FE68EA /* NeighborhoodProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */; };
 		CFFDF89922F313A500FE68EA /* NeighborhoodProfileDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDF89822F313A500FE68EA /* NeighborhoodProfileDemoView.swift */; };
+		DA2E814F23ABB1F100A18264 /* NotificationCenterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E814E23ABB1F100A18264 /* NotificationCenterDemoView.swift */; };
+		DA2E815223ABB42300A18264 /* NotificationCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */; };
 		DA3C8443210B0F7800BBCC13 /* AdReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */; };
 		DA4AD4D22105CF3C0000F39E /* CheckboxDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */; };
 		DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */; };
@@ -485,7 +487,6 @@
 		DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */; };
 		DAA4F24F23A2611B00FA529C /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F6F23570AF000CAA6BB /* SnapshotTesting */; };
 		DAA4F25223A2615C00FA529C /* NotificationCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */; };
-		DAA4F25523A2617900FA529C /* NotificationCenterDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4F25423A2617900FA529C /* NotificationCenterDemoView.swift */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
 		DAA9A3AC210215400021F7DC /* AnimatedSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A7210215400021F7DC /* AnimatedSelectionView.swift */; };
@@ -1071,6 +1072,8 @@
 		CFF9727821C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTransparencyInfoDefaultData.swift; sourceTree = "<group>"; };
 		CFFDF89622F311F600FE68EA /* NeighborhoodProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileView.swift; sourceTree = "<group>"; };
 		CFFDF89822F313A500FE68EA /* NeighborhoodProfileDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileDemoView.swift; sourceTree = "<group>"; };
+		DA2E814E23ABB1F100A18264 /* NotificationCenterDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoView.swift; sourceTree = "<group>"; };
+		DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterCell.swift; sourceTree = "<group>"; };
 		DA3C8442210B0F7800BBCC13 /* AdReporterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReporterViewModel.swift; sourceTree = "<group>"; };
 		DA4AD4D02105CEA90000F39E /* CheckboxDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxDemoView.swift; sourceTree = "<group>"; };
 		DA4AD4D32105CFA60000F39E /* RadioButtonDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonDemoView.swift; sourceTree = "<group>"; };
@@ -1080,7 +1083,6 @@
 		DA93EFA921C2BB2900207239 /* NewYearsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearsDemoView.swift; sourceTree = "<group>"; };
 		DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStateController.swift; sourceTree = "<group>"; };
 		DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterView.swift; sourceTree = "<group>"; };
-		DAA4F25423A2617900FA529C /* NotificationCenterDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterDemoView.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
 		DAA9A3A7210215400021F7DC /* AnimatedSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSelectionView.swift; sourceTree = "<group>"; };
@@ -2055,7 +2057,7 @@
 				44587010213FA344009187BE /* Login */,
 				9BC33DE422D7219F007CCD65 /* LoginEntryView */,
 				8908E83422BD0C8700ED671C /* MessageForm */,
-				DAA4F25023A2614800FA529C /* Notifications */,
+				DAA4F25023A2614800FA529C /* NotificationCenter */,
 				44D9124A2077AC8A00486848 /* Popup */,
 				44587013213FA344009187BE /* Register */,
 				43BACE6721117CF90052114C /* Review */,
@@ -3364,7 +3366,7 @@
 				CF8F022F21DCC788004C4042 /* Login */,
 				9BC33DE122D7192F007CCD65 /* LoginEntry */,
 				8908E85822C0E5F000ED671C /* MessageForm */,
-				DAA4F25323A2616400FA529C /* Notifications */,
+				DAA4F25323A2616400FA529C /* NotificationCenter */,
 				CFEF962D235F3B8E00B6AA7B /* Popovers */,
 				CF8F023321DCC7B9004C4042 /* Popup */,
 				CF8F023021DCC793004C4042 /* Register */,
@@ -3726,20 +3728,21 @@
 			path = NeighborhoodProfile;
 			sourceTree = "<group>";
 		};
-		DAA4F25023A2614800FA529C /* Notifications */ = {
+		DAA4F25023A2614800FA529C /* NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
+				DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */,
 				DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */,
 			);
-			path = Notifications;
+			path = NotificationCenter;
 			sourceTree = "<group>";
 		};
-		DAA4F25323A2616400FA529C /* Notifications */ = {
+		DAA4F25323A2616400FA529C /* NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
-				DAA4F25423A2617900FA529C /* NotificationCenterDemoView.swift */,
+				DA2E814E23ABB1F100A18264 /* NotificationCenterDemoView.swift */,
 			);
-			path = Notifications;
+			path = NotificationCenter;
 			sourceTree = "<group>";
 		};
 		DAA9A3A2210214B80021F7DC /* SelectionBoxes */ = {
@@ -4431,7 +4434,6 @@
 				91D2A55A22F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */,
 				CF54065D23293B100017CF31 /* FavoriteAdCommentSheetDemoDelegate.swift in Sources */,
 				9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */,
-				DAA4F25523A2617900FA529C /* NotificationCenterDemoView.swift in Sources */,
 				DA4AD4D52105CFB00000F39E /* RadioButtonDemoView.swift in Sources */,
 				4443F9B1209D5ECE00E35719 /* Helpers.swift in Sources */,
 				CF87A85A229C0C6600DA8243 /* ContactFormDemoView.swift in Sources */,
@@ -4451,6 +4453,7 @@
 				4483F97C234B3BFF00D726F1 /* ScrollViewController.swift in Sources */,
 				CF164D04230EB80900250822 /* FavoriteAdSortingDemoView.swift in Sources */,
 				9F21365157F385AC63928150 /* FullscreenGalleryDemoViewController.swift in Sources */,
+				DA2E814F23ABB1F100A18264 /* NotificationCenterDemoView.swift in Sources */,
 				9A37DDB3353F56739B23D22B /* FavoriteAdCellDemoView.swift in Sources */,
 				F2597C76231D3E2300BE74EC /* VerificationActionSheetDemoDelegate.swift in Sources */,
 				CF164DDC231579D600250822 /* FavoriteAdCommentViewModel+Demo.swift in Sources */,
@@ -4497,6 +4500,7 @@
 				895175902248CF79008003FB /* StepIndicator.swift in Sources */,
 				441FE433209A24E500B04EF1 /* AdsGridViewLayout.swift in Sources */,
 				441FE42B209A24E500B04EF1 /* MarketsGridViewCell.swift in Sources */,
+				DA2E815223ABB42300A18264 /* NotificationCenterCell.swift in Sources */,
 				08F0D3F422259AD100968256 /* HappinessRatingView.swift in Sources */,
 				44D9125F2077AC8A00486848 /* EmptyView.swift in Sources */,
 				44A557B622E72187001667AE /* CheckboxTableViewCell.swift in Sources */,
