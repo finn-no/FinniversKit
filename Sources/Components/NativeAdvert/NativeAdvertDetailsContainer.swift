@@ -33,8 +33,8 @@ internal final class NativeAdvertDetailsContainer: UIView {
     }()
 
     private lazy var titleLabel: UILabel = {
-        let view = Label(style: .body, withAutoLayout: true)
-        view.numberOfLines = 3
+        let view = Label(style: .caption, withAutoLayout: true)
+        view.numberOfLines = 2
         return view
     }()
 
@@ -146,9 +146,9 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
     private func setFonts() {
         if traitCollection.horizontalSizeClass == .regular {
-            titleLabel.font = .title3
-        } else {
             titleLabel.font = .body
+        } else {
+            titleLabel.font = .caption
         }
     }
 
