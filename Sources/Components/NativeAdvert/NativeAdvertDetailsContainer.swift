@@ -38,6 +38,12 @@ internal final class NativeAdvertDetailsContainer: UIView {
         return view
     }()
 
+    private lazy var descriptionLabel: UILabel = {
+        let view = Label(style: .detail, withAutoLayout: true)
+        view.numberOfLines = 3
+        return view
+    }()
+
     private lazy var logoView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFit
@@ -66,6 +72,10 @@ internal final class NativeAdvertDetailsContainer: UIView {
         titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         titleLabel.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.mediumSpacing),
 
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
+        descriptionLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+        descriptionLabel.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.mediumSpacing),
+
         logoView.bottomAnchor.constraint(equalTo: bottomAnchor),
         logoView.trailingAnchor.constraint(equalTo: trailingAnchor),
     ]
@@ -75,7 +85,8 @@ internal final class NativeAdvertDetailsContainer: UIView {
         logoView.heightAnchor.constraint(equalToConstant: logoSizeCompact),
 
         titleLabel.topAnchor.constraint(equalTo: adRibbonContainer.bottomAnchor, constant: .mediumSpacing),
-        titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+
+        descriptionLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
@@ -83,7 +94,8 @@ internal final class NativeAdvertDetailsContainer: UIView {
         logoView.heightAnchor.constraint(equalToConstant: logoSizeRegular),
 
         titleLabel.topAnchor.constraint(equalTo: adRibbonContainer.bottomAnchor, constant: .mediumLargeSpacing),
-        titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor),
+
+        descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor),
     ]
 
     // MARK: - Init
@@ -107,6 +119,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         container.addSubview(adRibbonContainer)
         container.addSubview(companyLabel)
         container.addSubview(titleLabel)
+        container.addSubview(descriptionLabel)
         container.addSubview(logoView)
 
         NSLayoutConstraint.activate(sharedConstraints)
@@ -123,6 +136,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         adRibbon.text = model.ribbonText
         companyLabel.text = model.sponsoredBy
         titleLabel.text = model.title
+        descriptionLabel.text = model.description
     }
 
     // MARK: - Overrides
@@ -147,8 +161,10 @@ internal final class NativeAdvertDetailsContainer: UIView {
     private func setFonts() {
         if traitCollection.horizontalSizeClass == .regular {
             titleLabel.font = .body
+            descriptionLabel.font = .caption
         } else {
             titleLabel.font = .caption
+            descriptionLabel.font = .detail
         }
     }
 
