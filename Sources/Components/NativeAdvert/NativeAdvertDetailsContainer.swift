@@ -49,7 +49,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
     private lazy var sharedConstraints: [NSLayoutConstraint] = [
         container.topAnchor.constraint(equalTo: topAnchor),
         container.leadingAnchor.constraint(equalTo: leadingAnchor),
-        container.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
+        container.bottomAnchor.constraint(equalTo: bottomAnchor),
         container.trailingAnchor.constraint(equalTo: trailingAnchor),
 
         adRibbonContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
@@ -65,7 +65,6 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
         titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         titleLabel.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.mediumSpacing),
-        titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
 
         logoView.bottomAnchor.constraint(equalTo: bottomAnchor),
         logoView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -76,6 +75,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         logoView.heightAnchor.constraint(equalToConstant: logoSizeCompact),
 
         titleLabel.topAnchor.constraint(equalTo: adRibbonContainer.bottomAnchor, constant: .mediumSpacing),
+        titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
@@ -83,6 +83,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         logoView.heightAnchor.constraint(equalToConstant: logoSizeRegular),
 
         titleLabel.topAnchor.constraint(equalTo: adRibbonContainer.bottomAnchor, constant: .mediumLargeSpacing),
+        titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor),
     ]
 
     // MARK: - Init

@@ -15,8 +15,8 @@ public final class NativeAdvertListView: UIView {
 
     private let imageWidthCompact: CGFloat = 130
     private let imageWidthRegular: CGFloat = 195
-    private let detailsContainerMinimumHeightCompact: CGFloat = 100
-    private let detailsContainerMinimumHeightRegular: CGFloat = 150
+    private let containerMinimumHeightCompact: CGFloat = 100
+    private let containerMinimumHeightRegular: CGFloat = 150
 
     private let imageAspectRatio: CGFloat = (1200.0 / 627) // Specification at: https://annonseweb.schibsted.no/nb-no/product/finn-native-ads-16031
 
@@ -54,24 +54,25 @@ public final class NativeAdvertListView: UIView {
         imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1 / imageAspectRatio),
 
         detailsContainer.topAnchor.constraint(equalTo: container.topAnchor),
-        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.mediumSpacing),
         detailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
     ]
 
     private lazy var compactConstraints: [NSLayoutConstraint] = [
         container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .smallSpacing),
+        container.heightAnchor.constraint(greaterThanOrEqualToConstant: containerMinimumHeightCompact),
 
         detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumSpacing),
-        detailsContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: detailsContainerMinimumHeightCompact),
+        detailsContainer.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor, constant: -.mediumSpacing),
 
         imageView.widthAnchor.constraint(equalToConstant: imageWidthCompact),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
         container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumSpacing),
+        container.heightAnchor.constraint(greaterThanOrEqualToConstant: containerMinimumHeightRegular),
 
         detailsContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: .mediumLargeSpacing),
-        detailsContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: detailsContainerMinimumHeightRegular),
+        detailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.mediumSpacing),
 
         imageView.widthAnchor.constraint(equalToConstant: imageWidthRegular),
     ]
