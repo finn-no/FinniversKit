@@ -156,8 +156,6 @@ extension CollapseView {
                 view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             ])
 
-            view.updateConstraints()
-
             UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
                 self.heightAnchorConstraint?.constant = self.defaultHeight + self.injectedViewHeight
                 self.layoutIfNeeded()
