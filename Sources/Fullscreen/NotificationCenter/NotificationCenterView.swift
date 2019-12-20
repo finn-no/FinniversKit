@@ -12,13 +12,14 @@ public protocol NotificationCenterViewDataSource: AnyObject {
     func numberOfSections(in view: NotificationCenterView) -> Int
     func notificationCenterView(_ view: NotificationCenterView, numberOfRowsIn section: Int) -> Int
     func notificationCenterView(_ view: NotificationCenterView, modelForRowAt indexPath: IndexPath) -> NotificationCenterCellModel
+    func notificationCenterView(_ view: NotificationCenterView, loadImageAt path: String, width: CGFloat, completion: @escaping (UIImage?) -> Void)
+    func notificationCenterView(_ view: NotificationCenterView, cancelLoadingImageAt path: String, width: CGFloat)
 }
 
 public class NotificationCenterView: UIView {
 
     public weak var delegate: NotificationCenterViewDelegate?
     public weak var dataSource: NotificationCenterViewDataSource?
-    public weak var imageViewDataSource: RemoteImageViewDataSource?
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -58,7 +59,7 @@ extension NotificationCenterView: UITableViewDataSource {
         let model = dataSource?.notificationCenterView(self, modelForRowAt: indexPath)
         let cell = tableView.dequeue(NotificationCenterCell.self, for: indexPath)
         cell.configure(with: model)
-        cell.imageViewDataSource = imageViewDataSource
+        cell.imageViewDataSource = self
         return cell
     }
 }
@@ -66,6 +67,20 @@ extension NotificationCenterView: UITableViewDataSource {
 extension NotificationCenterView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.notificationCenterView(self, didSelectModelAt: indexPath)
+    }
+}
+
+extension NotificationCenterView: RemoteImageViewDataSource {
+    public func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+        nil
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        dataSource?.notificationCenterView(self, loadImageAt: imagePath, width: imageWidth, completion: completion)
+    }
+
+    public func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
+        dataSource?.notificationCenterView(self, cancelLoadingImageAt: imagePath, width: imageWidth)
     }
 }
 

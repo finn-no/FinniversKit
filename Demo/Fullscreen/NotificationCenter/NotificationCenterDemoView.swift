@@ -27,7 +27,6 @@ class NotificationCenterDemoView: UIView {
         let view = NotificationCenterView(withAutoLayout: true)
         view.delegate = self
         view.dataSource = self
-        view.imageViewDataSource = self
         return view
     }()
 
@@ -53,6 +52,14 @@ extension NotificationCenterDemoView: NotificationCenterViewDataSource {
 
     func notificationCenterView(_ view: NotificationCenterView, modelForRowAt indexPath: IndexPath) -> NotificationCenterCellModel {
         data[indexPath.row]
+    }
+
+    func notificationCenterView(_ view: NotificationCenterView, loadImageAt path: String, width: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        completion(nil)
+    }
+
+    func notificationCenterView(_ view: NotificationCenterView, cancelLoadingImageAt imagePath: String, width: CGFloat) {
+
     }
 }
 
