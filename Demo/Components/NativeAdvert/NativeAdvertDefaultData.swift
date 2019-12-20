@@ -16,7 +16,7 @@ public struct NativeAdvertDefaultData: NativeAdvertViewModel {
 
 public struct NativeAdvertContentDefaultData: NativeAdvertViewModel {
     public let title = "Du har skjært avokadoen feil i alle år! 50 tegn!"
-    public let description: String? = ""
+    public let description: String? = "Vi vet ikke helt hvorfor du har gjort det feil, men..."
     public let mainImageUrl = URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Guacomole.jpg/2560px-Guacomole.jpg")
     public let logoImageUrl = URL(string: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Avocado.jpeg")
     public let sponsoredBy: String? = ""
