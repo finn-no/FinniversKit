@@ -21,7 +21,7 @@ public final class CogWheelButton: UIButton {
     }
 
     private let alignment: Alignment
-    private let defaultContentSize: CGFloat = .largeSpacing
+    private let defaultContentSize: CGFloat = .largeSpacing - .mediumSpacing
 
     private var cornerConstraint: NSLayoutConstraint {
         switch alignment {
@@ -38,7 +38,7 @@ public final class CogWheelButton: UIButton {
         view.backgroundColor = .buttonBackgroundColor
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 5)
-        view.layer.shadowRadius = .mediumLargeSpacing
+        view.layer.shadowRadius = .mediumSpacing
         view.layer.shadowOpacity = 0.6
         return view
     }()
@@ -47,7 +47,7 @@ public final class CogWheelButton: UIButton {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.isUserInteractionEnabled = false
         imageView.image = UIImage(named: .settings).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .iconTintColor
+        imageView.tintColor = .stone
         return imageView
     }()
 
@@ -109,6 +109,8 @@ public final class CogWheelButton: UIButton {
             contentView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: contentWidthMultiplier),
             contentView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: contentHeightMultiplier),
 
+            iconImageView.heightAnchor.constraint(equalToConstant: 14),
+            iconImageView.widthAnchor.constraint(equalToConstant: 14),
             iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
@@ -119,9 +121,6 @@ public final class CogWheelButton: UIButton {
 // MARK: - Private extensions
 
 private extension UIColor {
-    static var iconTintColor: UIColor? {
-        return UIColor(r: 54, g: 52, b: 41)
-    }
 
     static var buttonBackgroundColor: UIColor? {
         return UIColor(white: 1, alpha: 0.7)
