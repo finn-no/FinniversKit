@@ -95,8 +95,8 @@ public final class NativeAdvertGridView: UIView {
 
         NSLayoutConstraint.activate(sharedConstraints)
 
-        setConstraints()
-        setColors()
+        setSizeClassConstraints()
+        setSizeClassColors()
     }
 
     public func configure(with model: NativeAdvertViewModel) {
@@ -107,7 +107,7 @@ public final class NativeAdvertGridView: UIView {
         detailsContainer.configure(with: model, andImageDelegate: imageDelegate)
     }
 
-    private func setConstraints() {
+    private func setSizeClassConstraints() {
         if traitCollection.horizontalSizeClass == .regular {
             NSLayoutConstraint.deactivate(compactConstraints)
             NSLayoutConstraint.activate(regularConstraints)
@@ -117,7 +117,7 @@ public final class NativeAdvertGridView: UIView {
         }
     }
 
-    private func setColors() {
+    private func setSizeClassColors() {
         if traitCollection.horizontalSizeClass == .regular {
             container.backgroundColor = .bgTertiary
         } else {
@@ -135,8 +135,8 @@ public final class NativeAdvertGridView: UIView {
 
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        setConstraints()
-        setColors()
+        setSizeClassConstraints()
+        setSizeClassColors()
     }
 
 }

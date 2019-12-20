@@ -124,8 +124,8 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
         NSLayoutConstraint.activate(sharedConstraints)
 
-        setConstraints()
-        setFonts()
+        setSizeClassConstraints()
+        setSizeClassFonts()
     }
 
     func configure(with model: NativeAdvertViewModel, andImageDelegate imageDelegate: NativeAdvertImageDelegate?) {
@@ -144,11 +144,11 @@ internal final class NativeAdvertDetailsContainer: UIView {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
-        setConstraints()
-        setFonts()
+        setSizeClassConstraints()
+        setSizeClassFonts()
     }
 
-    private func setConstraints() {
+    private func setSizeClassConstraints() {
         if traitCollection.horizontalSizeClass == .regular {
             NSLayoutConstraint.deactivate(compactConstraints)
             NSLayoutConstraint.activate(regularConstraints)
@@ -158,7 +158,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         }
     }
 
-    private func setFonts() {
+    private func setSizeClassFonts() {
         if traitCollection.horizontalSizeClass == .regular {
             titleLabel.font = .body
             descriptionLabel.font = .caption

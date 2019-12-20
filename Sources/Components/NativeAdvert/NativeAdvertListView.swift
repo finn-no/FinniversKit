@@ -100,7 +100,7 @@ public final class NativeAdvertListView: UIView {
 
         NSLayoutConstraint.activate(sharedConstraints)
 
-        setConstraints()
+        setSizeClassConstraints()
     }
 
     public func configure(with model: NativeAdvertViewModel) {
@@ -111,7 +111,7 @@ public final class NativeAdvertListView: UIView {
         detailsContainer.configure(with: model, andImageDelegate: imageDelegate)
     }
 
-    private func setConstraints() {
+    private func setSizeClassConstraints() {
         if traitCollection.horizontalSizeClass == .regular {
             NSLayoutConstraint.deactivate(compactConstraints)
             NSLayoutConstraint.activate(regularConstraints)
@@ -131,7 +131,7 @@ public final class NativeAdvertListView: UIView {
 
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        setConstraints()
+        setSizeClassConstraints()
     }
 
 }
