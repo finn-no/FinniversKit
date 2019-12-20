@@ -419,7 +419,7 @@ extension CGColor {
 @objc extension UIColor {
     public class var defaultCellSelectedBackgroundColor: UIColor {
         let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)
-        return dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.4))
+        return dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.1))
     }
 }
 
