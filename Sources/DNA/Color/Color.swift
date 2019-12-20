@@ -375,7 +375,7 @@ extension CGColor {
     }
 
     public class var defaultButtonHighlightedBodyColor: UIColor {
-        return UIColor(r: 241, g: 249, b: 255) //DARK btnTertiary?
+        return dynamicColorIfAvailable(defaultColor: UIColor(r: 241, g: 249, b: 255), darkModeColor: UIColor(hex: "#13131A"))
     }
 
     public class var linkButtonHighlightedTextColor: UIColor {
