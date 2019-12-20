@@ -7,8 +7,6 @@ import UIKit
 public protocol NotificationCenterCellModel {
     var imagePath: String? { get }
     var title: String { get }
-    var subtitle: String { get }
-    var price: String { get }
     var date: String { get }
     var read: Bool { get }
 }
@@ -33,21 +31,13 @@ class NotificationCenterCell: UITableViewCell {
         imageView.layer.cornerRadius = 8
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.sardine.cgColor
+        imageView.layer.masksToBounds = true
         return imageView
     }()
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        return label
-    }()
-
-    private lazy var subtitleLabel: Label = {
-        let label = Label(style: .caption, withAutoLayout: true)
-        return label
-    }()
-
-    private lazy var priceLabel: Label = {
-        let label = Label(style: .detail, withAutoLayout: true)
+        label.numberOfLines = 0
         return label
     }()
 
@@ -71,12 +61,11 @@ class NotificationCenterCell: UITableViewCell {
 
     override func prepareForReuse() {
         configure(with: nil)
+        remoteImageView.cancelLoading()
     }
 
     func configure(with model: NotificationCenterCellModel?) {
         titleLabel.text = model?.title
-        subtitleLabel.text = model?.subtitle
-        priceLabel.text = model?.price
         dateLabel.text = model?.date
         contentView.backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
 
@@ -98,8 +87,6 @@ private extension NotificationCenterCell {
     func setup() {
         contentView.addSubview(remoteImageView)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(subtitleLabel)
-        contentView.addSubview(priceLabel)
         contentView.addSubview(dateLabel)
 
         NSLayoutConstraint.activate([
@@ -110,18 +97,11 @@ private extension NotificationCenterCell {
             remoteImageView.heightAnchor.constraint(equalToConstant: adImageWidth),
 
             titleLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: dateLabel.leadingAnchor, constant: -.mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.centerYAnchor.constraint(equalTo: remoteImageView.centerYAnchor),
 
             dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            dateLabel.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
-
-            subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-
-            priceLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            priceLabel.bottomAnchor.constraint(equalTo: remoteImageView.bottomAnchor)
+            dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing)
         ])
     }
 }

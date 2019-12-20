@@ -21,7 +21,7 @@ public class NotificationCenterView: UIView {
     public weak var imageViewDataSource: RemoteImageViewDataSource?
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(NotificationCenterCell.self)

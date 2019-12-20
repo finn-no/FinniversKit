@@ -7,8 +7,6 @@ import FinniversKit
 struct NotificationModel: NotificationCenterCellModel {
     let imagePath: String?
     let title: String
-    let subtitle: String
-    let price: String
     let date: String
     var read: Bool
 }
@@ -16,13 +14,13 @@ struct NotificationModel: NotificationCenterCellModel {
 class NotificationCenterDemoView: UIView {
 
     private lazy var data = [
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: false),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: false),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: false),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true)
+        NotificationModel(imagePath: nil, title: "Sofa", date: "15 min siden", read: false),
+        NotificationModel(imagePath: nil, title: "Sofa", date: "15 min siden", read: false),
+        NotificationModel(imagePath: nil, title: "Sofa", date: "15 min siden", read: true),
+        NotificationModel(imagePath: nil, title: "Sofa", date: "15 min siden", read: false),
+        NotificationModel(imagePath: nil, title: "Sofa", date: "15 min siden", read: true),
+        NotificationModel(imagePath: nil, title: "Sofa", date: "15 min siden", read: true),
+        NotificationModel(imagePath: nil, title: "Sofa", date: "15 min siden", read: true)
     ]
 
     private lazy var notificationCenterView: NotificationCenterView = {
