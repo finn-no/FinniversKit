@@ -36,7 +36,7 @@ final class NativeContentSettingsButton: UIButton {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.isUserInteractionEnabled = false
         imageView.image = UIImage(named: .settings).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .iconSecondary
+        imageView.tintColor = .iconTertiary
         return imageView
     }()
 

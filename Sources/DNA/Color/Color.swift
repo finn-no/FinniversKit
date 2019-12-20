@@ -107,6 +107,10 @@ import UIKit
     }
 
     public class var iconSecondary: UIColor {
+        return .textSecondary
+    }
+
+    public class var iconTertiary: UIColor {
         return .textTertiary
     }
 }
@@ -357,6 +361,10 @@ extension CGColor {
 
     public class var iconSecondary: CGColor {
         return UIColor.iconSecondary.cgColor
+    }
+
+    public class var iconTertiary: CGColor {
+        return UIColor.iconTertiary.cgColor
     }
 }
 
