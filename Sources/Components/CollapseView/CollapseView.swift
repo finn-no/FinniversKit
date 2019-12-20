@@ -5,8 +5,8 @@
 import UIKit
 
 public protocol CollapseViewDelegate: AnyObject {
-    func didExpand(_ view: CollapseView)
-    func didCollapse(_ view: CollapseView)
+    func collapseViewDidExpand(_ view: CollapseView)
+    func collapseViewDidCollapse(_ view: CollapseView)
 }
 
 public class CollapseView: UIView {
@@ -57,10 +57,10 @@ public class CollapseView: UIView {
 
     // MARK: Initalizer
 
-    public init(collapsedTitle: String, expandedTitle: String, presentViewInExpandedState: UIView?, heightOfView: CGFloat, withAutoLayout: Bool = false) {
+    public init(collapsedTitle: String, expandedTitle: String, viewToPresentInExpandedState: UIView?, heightOfView: CGFloat, withAutoLayout: Bool = false) {
         self.collapsedTitle = collapsedTitle
         self.expandedTitle = expandedTitle
-        self.injectedView = presentViewInExpandedState
+        self.injectedView = viewToPresentInExpandedState
         self.injectedViewHeight = heightOfView
         self.state = .collapsed
 
@@ -79,10 +79,10 @@ public class CollapseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func presentViewInExpandedState(_ view: UIView, heightOfView: CGFloat) {
+    public func replaceViewInExpandedState(_ newView: UIView, heightOfView: CGFloat) {
         guard
             state != .collapsed,
-            injectedView != view
+            injectedView != newView
         else { return }
 
         let duration = 0.2
@@ -90,10 +90,22 @@ public class CollapseView: UIView {
             self.injectedView?.alpha = 0
             self.injectedView?.removeFromSuperview()
 
-            self.injectedView = view
+            self.injectedView = newView
             self.injectedViewHeight = heightOfView
             self.addInjectedView(duration)
         })
+    }
+
+    public func replaceViewInCollapsedState(_ newView: UIView, heightOfView: CGFloat) {
+        guard
+            state != .expanded,
+            injectedView != newView
+        else { return }
+
+        self.injectedView?.alpha = 0
+        self.injectedView?.removeFromSuperview()
+        self.injectedView = newView
+        self.injectedViewHeight = heightOfView
     }
 }
 
@@ -135,12 +147,12 @@ extension CollapseView {
             selectorTitleView.title = expandedTitle
             selectorTitleView.arrowDirection = .down
             addInjectedView(duration)
-            delegate?.didExpand(self)
+            delegate?.collapseViewDidExpand(self)
         case .collapsed:
             selectorTitleView.title = collapsedTitle
             selectorTitleView.arrowDirection = .up
             removeInjectedView(duration)
-            delegate?.didCollapse(self)
+            delegate?.collapseViewDidCollapse(self)
         }
     }
 

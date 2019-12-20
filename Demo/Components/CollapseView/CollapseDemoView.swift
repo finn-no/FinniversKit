@@ -6,7 +6,7 @@ public class CollapseDemoView: UIView {
 
     private lazy var collapseView: CollapseView = {
         let view = CollapseView(collapsedTitle: "Vis oppsummering", expandedTitle: "Skjul oppsummering",
-                                     presentViewInExpandedState: regular, heightOfView: regular.height, withAutoLayout: true)
+                                viewToPresentInExpandedState: regular, heightOfView: regular.height, withAutoLayout: true)
         view.delegate = self
         return view
     }()
@@ -29,15 +29,17 @@ public class CollapseDemoView: UIView {
 }
 
 extension CollapseDemoView: CollapseViewDelegate {
-    public func didExpand(_ view: CollapseView) {
+    public func collapseViewDidExpand(_ view: CollapseView) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            self.collapseView.presentViewInExpandedState(self.car, heightOfView: self.car.height)
+            self.collapseView.replaceViewInExpandedState(self.car, heightOfView: self.car.height)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                self.collapseView.presentViewInExpandedState(self.regular, heightOfView: self.regular.height)
+                self.collapseView.replaceViewInExpandedState(self.regular, heightOfView: self.regular.height)
             })
         })
     }
 
-    public func didCollapse(_ view: CollapseView) {}
+    public func collapseViewDidCollapse(_ view: CollapseView) {
+        self.collapseView.replaceViewInCollapsedState(self.car, heightOfView: self.car.height)
+    }
 }
