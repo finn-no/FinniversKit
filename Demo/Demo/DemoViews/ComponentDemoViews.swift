@@ -43,6 +43,8 @@ public enum ComponentDemoViews: String, CaseIterable {
     case questionnaireView
     case tweakable
     case saveSearchView
+    case saveSearchPromptView
+    case searchListEmptyView
     case identityView
     case stepSlider
     case loanCalculatorView
@@ -144,6 +146,10 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<TweakableDemoView>()
         case .saveSearchView:
             return SaveSearchViewDemoViewController(containmentOptions: [.bottomSheet, .navigationController])
+        case .saveSearchPromptView:
+            return DemoViewController<SaveSearchPromptViewDemoView>()
+        case .searchListEmptyView:
+            return DemoViewController<SearchListEmptyDemoView>()
         case .identityView:
             return DemoViewController<IdentityDemoView>()
         case .stepSlider:
