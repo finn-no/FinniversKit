@@ -79,33 +79,19 @@ public class CollapseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func replaceViewInExpandedState(_ newView: UIView, heightOfView: CGFloat) {
-        guard
-            state != .collapsed,
-            injectedView != newView
-        else { return }
-
-        let duration = 0.2
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
-            self.injectedView?.alpha = 0
-            self.injectedView?.removeFromSuperview()
-
-            self.injectedView = newView
-            self.injectedViewHeight = heightOfView
-            self.addInjectedView(duration)
-        })
-    }
-
-    public func replaceViewInCollapsedState(_ newView: UIView, heightOfView: CGFloat) {
-        guard
-            state != .expanded,
-            injectedView != newView
-        else { return }
+    public func replacePresentedView(_ newView: UIView, heightOfView: CGFloat) {
+        guard injectedView != newView else { return }
 
         self.injectedView?.alpha = 0
         self.injectedView?.removeFromSuperview()
         self.injectedView = newView
         self.injectedViewHeight = heightOfView
+
+        if state == .expanded {
+            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveLinear, animations: {
+                self.addInjectedView(0.2)
+            })
+        }
     }
 }
 
@@ -168,7 +154,7 @@ extension CollapseView {
                 view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             ])
 
-            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveLinear, animations: {
                 self.heightAnchorConstraint?.constant = self.defaultHeight + self.injectedViewHeight
                 self.layoutIfNeeded()
 
@@ -181,7 +167,7 @@ extension CollapseView {
         guard let view = injectedView else { return }
         view.alpha = 0
 
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: .curveLinear, animations: {
             view.removeFromSuperview()
 
             self.heightAnchorConstraint?.constant = self.defaultHeight

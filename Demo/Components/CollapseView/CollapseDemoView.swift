@@ -31,15 +31,15 @@ public class CollapseDemoView: UIView {
 extension CollapseDemoView: CollapseViewDelegate {
     public func collapseViewDidExpand(_ view: CollapseView) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            self.collapseView.replaceViewInExpandedState(self.car, heightOfView: self.car.height)
+            self.collapseView.replacePresentedView(self.car, heightOfView: self.car.height)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                self.collapseView.replaceViewInExpandedState(self.regular, heightOfView: self.regular.height)
+                self.collapseView.replacePresentedView(self.regular, heightOfView: self.regular.height)
             })
         })
     }
 
     public func collapseViewDidCollapse(_ view: CollapseView) {
-        self.collapseView.replaceViewInCollapsedState(self.car, heightOfView: self.car.height)
+        self.collapseView.replacePresentedView(self.car, heightOfView: self.car.height)
     }
 }
