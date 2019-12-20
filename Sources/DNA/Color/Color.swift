@@ -107,6 +107,10 @@ import UIKit
     }
 
     public class var iconSecondary: UIColor {
+        return .textSecondary
+    }
+
+    public class var iconTertiary: UIColor {
         return .textTertiary
     }
 }
@@ -358,6 +362,10 @@ extension CGColor {
     public class var iconSecondary: CGColor {
         return UIColor.iconSecondary.cgColor
     }
+
+    public class var iconTertiary: CGColor {
+        return UIColor.iconTertiary.cgColor
+    }
 }
 
 // MARK: - Button UIColors
@@ -375,7 +383,7 @@ extension CGColor {
     }
 
     public class var defaultButtonHighlightedBodyColor: UIColor {
-        return UIColor(r: 241, g: 249, b: 255) //DARK btnTertiary?
+        return dynamicColorIfAvailable(defaultColor: UIColor(r: 241, g: 249, b: 255), darkModeColor: UIColor(hex: "#13131A"))
     }
 
     public class var linkButtonHighlightedTextColor: UIColor {
@@ -427,7 +435,7 @@ extension CGColor {
 @objc extension UIColor {
     public class var defaultCellSelectedBackgroundColor: UIColor {
         let lightSelectedColor = UIColor(r: 230, g: 235, b: 242)
-        return dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.4))
+        return dynamicColorIfAvailable(defaultColor: lightSelectedColor, darkModeColor: lightSelectedColor.withAlphaComponent(0.1))
     }
 }
 
