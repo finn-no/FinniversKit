@@ -23,6 +23,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
     private lazy var adRibbon: UILabel = {
         let view = Label(style: .detail, withAutoLayout: true)
+        view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return view
     }()
 
@@ -34,6 +35,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
     private lazy var titleLabel: UILabel = {
         let view = Label(style: .caption, withAutoLayout: true)
+        view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         view.numberOfLines = 2
         return view
     }()
@@ -56,7 +58,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
         container.topAnchor.constraint(equalTo: topAnchor),
         container.leadingAnchor.constraint(equalTo: leadingAnchor),
         container.bottomAnchor.constraint(equalTo: bottomAnchor),
-        container.trailingAnchor.constraint(equalTo: trailingAnchor),
+        container.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.mediumSpacing),
 
         adRibbonContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
         adRibbonContainer.topAnchor.constraint(equalTo: container.topAnchor),
@@ -70,32 +72,32 @@ internal final class NativeAdvertDetailsContainer: UIView {
         companyLabel.leadingAnchor.constraint(equalTo: adRibbonContainer.trailingAnchor, constant: .smallSpacing),
 
         titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-        titleLabel.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.mediumSpacing),
+        titleLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
 
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .mediumSpacing),
         descriptionLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-        descriptionLabel.trailingAnchor.constraint(equalTo: logoView.leadingAnchor, constant: -.mediumSpacing),
+        descriptionLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
 
         logoView.bottomAnchor.constraint(equalTo: bottomAnchor),
         logoView.trailingAnchor.constraint(equalTo: trailingAnchor),
     ]
 
     private lazy var compactConstraints: [NSLayoutConstraint] = [
+        container.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
+
         logoView.widthAnchor.constraint(equalToConstant: logoSizeCompact),
         logoView.heightAnchor.constraint(equalToConstant: logoSizeCompact),
 
         titleLabel.topAnchor.constraint(equalTo: adRibbonContainer.bottomAnchor, constant: .mediumSpacing),
-
-        descriptionLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
     ]
 
     private lazy var regularConstraints: [NSLayoutConstraint] = [
+        descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor),
+
         logoView.widthAnchor.constraint(equalToConstant: logoSizeRegular),
         logoView.heightAnchor.constraint(equalToConstant: logoSizeRegular),
 
         titleLabel.topAnchor.constraint(equalTo: adRibbonContainer.bottomAnchor, constant: .mediumLargeSpacing),
-
-        descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: container.bottomAnchor),
     ]
 
     // MARK: - Init
@@ -113,6 +115,7 @@ internal final class NativeAdvertDetailsContainer: UIView {
 
     private func setup() {
         addSubview(container)
+        addSubview(logoView)
 
         adRibbonContainer.addSubview(adRibbon)
 
@@ -120,7 +123,6 @@ internal final class NativeAdvertDetailsContainer: UIView {
         container.addSubview(companyLabel)
         container.addSubview(titleLabel)
         container.addSubview(descriptionLabel)
-        container.addSubview(logoView)
 
         NSLayoutConstraint.activate(sharedConstraints)
 
