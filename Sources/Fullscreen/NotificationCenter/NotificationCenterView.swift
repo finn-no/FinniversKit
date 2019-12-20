@@ -4,6 +4,10 @@
 
 import UIKit
 
+public protocol NotificationCenterViewDelegate: AnyObject {
+    func notificationCenterView(_ view: NotificationCenterView, didSelectModelAt indexPath: IndexPath)
+}
+
 public protocol NotificationCenterViewDataSource: AnyObject {
     func numberOfSections(in view: NotificationCenterView) -> Int
     func notificationCenterView(_ view: NotificationCenterView, numberOfRowsIn section: Int) -> Int
@@ -12,11 +16,14 @@ public protocol NotificationCenterViewDataSource: AnyObject {
 
 public class NotificationCenterView: UIView {
 
+    public weak var delegate: NotificationCenterViewDelegate?
     public weak var dataSource: NotificationCenterViewDataSource?
+    public weak var imageViewDataSource: RemoteImageViewDataSource?
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(NotificationCenterCell.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -29,6 +36,12 @@ public class NotificationCenterView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+public extension NotificationCenterView {
+    func reloadRows(at indexPaths: [IndexPath], animated: Bool = true) {
+        tableView.reloadRows(at: indexPaths, with: animated ? .automatic : .none)
     }
 }
 
@@ -45,7 +58,14 @@ extension NotificationCenterView: UITableViewDataSource {
         let model = dataSource?.notificationCenterView(self, modelForRowAt: indexPath)
         let cell = tableView.dequeue(NotificationCenterCell.self, for: indexPath)
         cell.configure(with: model)
+        cell.imageViewDataSource = imageViewDataSource
         return cell
+    }
+}
+
+extension NotificationCenterView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.notificationCenterView(self, didSelectModelAt: indexPath)
     }
 }
 

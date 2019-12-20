@@ -11,24 +11,25 @@ struct NotificationModel: NotificationCenterCellModel {
     let price: String
     let date: String
     var read: Bool
-    weak var imageSource: NotificationCenterCellImageSource?
 }
 
 class NotificationCenterDemoView: UIView {
 
     private lazy var data = [
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: false, imageSource: self),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: false, imageSource: self),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true, imageSource: self),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: false, imageSource: self),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true, imageSource: self),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true, imageSource: self),
-        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true, imageSource: self)
+        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: false),
+        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: false),
+        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true),
+        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: false),
+        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true),
+        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true),
+        NotificationModel(imagePath: nil, title: "Sofa", subtitle: "Komfortabel sofa selges billig", price: "Kr 500", date: "15 min siden", read: true)
     ]
 
     private lazy var notificationCenterView: NotificationCenterView = {
         let view = NotificationCenterView(withAutoLayout: true)
+        view.delegate = self
         view.dataSource = self
+        view.imageViewDataSource = self
         return view
     }()
 
@@ -57,9 +58,23 @@ extension NotificationCenterDemoView: NotificationCenterViewDataSource {
     }
 }
 
-extension NotificationCenterDemoView: NotificationCenterCellImageSource {
-    func notificationCenterCell(_ cell: NotificationCenterCell, loadImageAt path: String, completion: @escaping (Result<UIImage?, Error>) -> Void) {
-        completion(.success(nil))
-        print("Load image")
+extension NotificationCenterDemoView: NotificationCenterViewDelegate {
+    func notificationCenterView(_ view: NotificationCenterView, didSelectModelAt indexPath: IndexPath) {
+        data[indexPath.row].read = true
+        notificationCenterView.reloadRows(at: [indexPath])
+    }
+}
+
+extension NotificationCenterDemoView: RemoteImageViewDataSource {
+    func remoteImageView(_ view: RemoteImageView, cachedImageWithPath imagePath: String, imageWidth: CGFloat) -> UIImage? {
+        nil
+    }
+
+    func remoteImageView(_ view: RemoteImageView, loadImageWithPath imagePath: String, imageWidth: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        completion(nil)
+    }
+
+    func remoteImageView(_ view: RemoteImageView, cancelLoadingImageWithPath imagePath: String, imageWidth: CGFloat) {
+
     }
 }

@@ -11,21 +11,25 @@ public protocol NotificationCenterCellModel {
     var price: String { get }
     var date: String { get }
     var read: Bool { get }
-    var imageSource: NotificationCenterCellImageSource? { get }
 }
 
-public protocol NotificationCenterCellImageSource: AnyObject {
-    func notificationCenterCell(_ cell: NotificationCenterCell, loadImageAt path: String, completion: @escaping (Result<UIImage?, Error>) -> Void)
-}
+class NotificationCenterCell: UITableViewCell {
 
-public class NotificationCenterCell: UITableViewCell {
+    // MARK: - Internal properties
 
-    private weak var imageSource: NotificationCenterCellImageSource?
+    weak var imageViewDataSource: RemoteImageViewDataSource? {
+        didSet {
+            remoteImageView.dataSource = imageViewDataSource
+        }
+    }
+
+    // MARK: - Private properties
 
     private let adImageWidth: CGFloat = 80
+    private let fallbackImage = UIImage(named: .noImage)
 
-    private lazy var adImageView: UIImageView = {
-        let imageView = UIImageView(withAutoLayout: true)
+    private lazy var remoteImageView: RemoteImageView = {
+        let imageView = RemoteImageView(withAutoLayout: true)
         imageView.layer.cornerRadius = 8
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.sardine.cgColor
@@ -52,6 +56,8 @@ public class NotificationCenterCell: UITableViewCell {
         return label
     }()
 
+    // MARK: - Init
+
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -61,58 +67,61 @@ public class NotificationCenterCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Methods
+
+    override func prepareForReuse() {
+        configure(with: nil)
+    }
+
     func configure(with model: NotificationCenterCellModel?) {
         titleLabel.text = model?.title
         subtitleLabel.text = model?.subtitle
         priceLabel.text = model?.price
         dateLabel.text = model?.date
-        adImageView.image = UIImage(named: .noImage)
         contentView.backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
 
         guard let imagePath = model?.imagePath else {
             return
         }
 
-        model?.imageSource?.notificationCenterCell(self, loadImageAt: imagePath, completion: { result in
-            switch result {
-            case .success(let image):
-                guard let image = image else { return }
-                self.adImageView.image = image
-            case .failure:
-                break
-            }
-        })
+        remoteImageView.loadImage(
+            for: imagePath,
+            imageWidth: adImageWidth,
+            loadingColor: nil,
+            fallbackImage: fallbackImage
+        )
     }
 }
 
+// MARK: - Private methods
 private extension NotificationCenterCell {
     func setup() {
-        contentView.addSubview(adImageView)
+        contentView.addSubview(remoteImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(subtitleLabel)
         contentView.addSubview(priceLabel)
         contentView.addSubview(dateLabel)
 
         NSLayoutConstraint.activate([
-            adImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
-            adImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            adImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
-            adImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
-            adImageView.heightAnchor.constraint(equalToConstant: adImageWidth),
+            remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
+            remoteImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
+            remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
+            remoteImageView.heightAnchor.constraint(equalToConstant: adImageWidth),
 
-            titleLabel.leadingAnchor.constraint(equalTo: adImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            titleLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: dateLabel.leadingAnchor, constant: -.mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: adImageView.topAnchor),
+            titleLabel.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
 
             dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            dateLabel.topAnchor.constraint(equalTo: adImageView.topAnchor),
+            dateLabel.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
 
             subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
 
             priceLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            priceLabel.bottomAnchor.constraint(equalTo: adImageView.bottomAnchor)
+            priceLabel.bottomAnchor.constraint(equalTo: remoteImageView.bottomAnchor)
         ])
     }
 }
