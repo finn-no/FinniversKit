@@ -26,8 +26,6 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case messageFormView
     case favoriteAdsList
     case favoriteFolderActionSheet
-    case favoriteAdSortingSheet
-    case favoriteAdActionSheet
     case favoriteAdCommentSheet
     case verificationActionSheet
     case splashView
@@ -91,14 +89,6 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .favoriteFolderActionSheet:
             let bottomSheet = FavoriteFolderActionSheet(viewModel: .default, isShared: true)
             bottomSheet.actionDelegate = FavoriteFolderActionSheetDemoDelegate.shared
-            return bottomSheet
-        case .favoriteAdSortingSheet:
-            let bottomSheet = FavoriteAdSortingSheet(viewModel: .default, selectedSortOption: .lastAdded)
-            bottomSheet.sortingDelegate = FavoriteAdSortingSheetDemoDelegate.shared
-            return bottomSheet
-        case .favoriteAdActionSheet:
-            let bottomSheet = FavoriteAdActionSheet(viewModel: .default)
-            bottomSheet.actionDelegate = FavoriteAdActionSheetDemoDelegate.shared
             return bottomSheet
         case .favoriteAdCommentSheet:
             let bottomSheet = FavoriteAdCommentSheet(
