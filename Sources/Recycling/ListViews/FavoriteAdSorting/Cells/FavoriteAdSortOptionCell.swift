@@ -67,6 +67,7 @@ final class FavoriteAdSortOptionCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
+        backgroundColor = .bgPrimary
         setDefaultSelectedBackgound()
         hideCheckmark(true)
 

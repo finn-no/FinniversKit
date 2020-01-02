@@ -39,6 +39,7 @@ final class FavoriteActionCell: UITableViewCell {
 
     private func setup() {
         isAccessibilityElement = true
+        backgroundColor = .bgPrimary
         setDefaultSelectedBackgound()
 
         contentView.addSubview(iconImageView)
