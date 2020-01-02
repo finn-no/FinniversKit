@@ -101,14 +101,6 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.favoriteFolderActionSheet)
     }
 
-    func testFavoriteAdCommentSheet() {
-        snapshot(.favoriteAdCommentSheet)
-    }
-
-    func testVerificationActionSheet() {
-        snapshot(.verificationActionSheet)
-    }
-
     func testSplashView() {
         snapshot(.splashView)
     }

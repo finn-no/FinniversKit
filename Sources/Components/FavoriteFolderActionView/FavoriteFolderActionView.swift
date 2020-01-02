@@ -22,6 +22,14 @@ public final class FavoriteFolderActionView: UIView {
         return rowHeight * CGFloat(viewModel.appearance.actions.count)
     }
 
+    public static func height(for viewModel: FavoriteFolderActionViewModel, isShared: Bool) -> CGFloat {
+        return isShared ? expandedHeight(for: viewModel) : compactHeight(for: viewModel)
+    }
+
+    public static func transitionOffset(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
+        return expandedHeight(for: viewModel) - compactHeight(for: viewModel)
+    }
+
     // MARK: - Public properties
 
     public weak var delegate: FavoriteFolderActionViewDelegate?
@@ -80,7 +88,7 @@ public final class FavoriteFolderActionView: UIView {
     }()
 
     private var rowHeight: CGFloat {
-        return FavoriteFolderActionViewController.rowHeight
+        return FavoriteFolderActionView.rowHeight
     }
 
     // MARK: - Init
@@ -116,7 +124,7 @@ public final class FavoriteFolderActionView: UIView {
 
     // MARK: - Animation
 
-    func animate(with offsetY: CGFloat) {
+    public func animate(with offsetY: CGFloat) {
         animatingConstraint.constant = min(
             animatingConstraint.constant + offsetY,
             rowHeight
