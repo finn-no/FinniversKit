@@ -14,22 +14,6 @@ public protocol FavoriteFolderActionViewDelegate: AnyObject {
 public final class FavoriteFolderActionView: UIView {
     public static let rowHeight: CGFloat = 48.0
 
-    public static func compactHeight(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
-        return rowHeight * CGFloat(viewModel.appearance.actions.subtracting([.shareLink]).count)
-    }
-
-    public static func expandedHeight(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
-        return rowHeight * CGFloat(viewModel.appearance.actions.count)
-    }
-
-    public static func height(for viewModel: FavoriteFolderActionViewModel, isShared: Bool) -> CGFloat {
-        return isShared ? expandedHeight(for: viewModel) : compactHeight(for: viewModel)
-    }
-
-    public static func transitionOffset(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
-        return expandedHeight(for: viewModel) - compactHeight(for: viewModel)
-    }
-
     // MARK: - Public properties
 
     public weak var delegate: FavoriteFolderActionViewDelegate?
@@ -38,6 +22,12 @@ public final class FavoriteFolderActionView: UIView {
         didSet {
             updateSeparators()
         }
+    }
+
+    public var height: CGFloat {
+        return isShared
+            ? rowHeight * CGFloat(viewModel.appearance.actions.count)
+            : rowHeight * CGFloat(viewModel.appearance.actions.subtracting([.shareLink]).count)
     }
 
     // MARK: - Private properties

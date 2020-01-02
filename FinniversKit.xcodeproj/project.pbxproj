@@ -3004,9 +3004,9 @@
 		CF7496BD23BE269F00D60901 /* FavoriteFolderActionView */ = {
 			isa = PBXGroup;
 			children = (
+				CF7496BE23BE26D700D60901 /* FavoriteFolderActionView.swift */,
 				CF164CE9230D8DBC00250822 /* ViewModels */,
 				CF7E7B57230D3CC1001D514E /* Views */,
-				CF7496BE23BE26D700D60901 /* FavoriteFolderActionView.swift */,
 			);
 			path = FavoriteFolderActionView;
 			sourceTree = "<group>";
