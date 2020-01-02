@@ -131,8 +131,12 @@ class ComponentViewTests: XCTestCase {
         snapshot(.stepIndicatorView)
     }
 
-    func testNativeAdverts() {
-        snapshot(.nativeAdverts)
+    func testNativeAdvert() {
+        snapshot(.nativeAdvert)
+    }
+
+    func testNativeAdvertContent() {
+        snapshot(.nativeAdvertContent)
     }
 
     func testCallout() {

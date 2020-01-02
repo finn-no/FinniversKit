@@ -5,8 +5,32 @@
 import UIKit
 
 public final class CogWheelButton: UIButton {
-    private let corners: UIRectCorner
-    private let defaultContentSize: CGFloat = .largeSpacing
+
+    public enum Alignment {
+        case left
+        case right
+
+        var roundingCorners: UIRectCorner {
+            switch self {
+            case .left:
+                return .bottomRight
+            case .right:
+                return .bottomLeft
+            }
+        }
+    }
+
+    private let alignment: Alignment
+    private let defaultContentSize: CGFloat = .largeSpacing - .mediumSpacing
+
+    private var cornerConstraint: NSLayoutConstraint {
+        switch alignment {
+        case .left:
+            return contentView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        case .right:
+            return contentView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        }
+    }
 
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
@@ -14,7 +38,7 @@ public final class CogWheelButton: UIButton {
         view.backgroundColor = .buttonBackgroundColor
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 5)
-        view.layer.shadowRadius = .mediumLargeSpacing
+        view.layer.shadowRadius = .mediumSpacing
         view.layer.shadowOpacity = 0.6
         return view
     }()
@@ -23,7 +47,7 @@ public final class CogWheelButton: UIButton {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.isUserInteractionEnabled = false
         imageView.image = UIImage(named: .settings).withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .iconTintColor
+        imageView.tintColor = .stone
         return imageView
     }()
 
@@ -50,8 +74,8 @@ public final class CogWheelButton: UIButton {
 
     // MARK: - Init
 
-    @objc public required init(corners: UIRectCorner, autoLayout: Bool) {
-        self.corners = corners
+    public required init(alignment: Alignment, autoLayout: Bool) {
+        self.alignment = alignment
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = !autoLayout
         setup()
@@ -66,7 +90,7 @@ public final class CogWheelButton: UIButton {
     public override func layoutSubviews() {
         super.layoutSubviews()
         let radius = CGSize(width: defaultContentSize / 2, height: defaultContentSize / 2)
-        let path = UIBezierPath(roundedRect: contentView.bounds, byRoundingCorners: corners, cornerRadii: radius)
+        let path = UIBezierPath(roundedRect: contentView.bounds, byRoundingCorners: alignment.roundingCorners, cornerRadii: radius)
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         contentView.layer.mask = mask
@@ -80,23 +104,23 @@ public final class CogWheelButton: UIButton {
         let contentHeightMultiplier: CGFloat = defaultContentSize / intrinsicContentSize.height
 
         NSLayoutConstraint.activate([
+            cornerConstraint,
             contentView.topAnchor.constraint(equalTo: topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: contentWidthMultiplier),
             contentView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: contentHeightMultiplier),
 
+            iconImageView.heightAnchor.constraint(equalToConstant: 14),
+            iconImageView.widthAnchor.constraint(equalToConstant: 14),
             iconImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
+
 }
 
 // MARK: - Private extensions
 
 private extension UIColor {
-    static var iconTintColor: UIColor? {
-        return UIColor(r: 54, g: 52, b: 41)
-    }
 
     static var buttonBackgroundColor: UIColor? {
         return UIColor(white: 1, alpha: 0.7)

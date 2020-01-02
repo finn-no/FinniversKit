@@ -4,28 +4,12 @@
 
 import FinniversKit
 
-class NativeAdvertDemoView: UIView {
+class NativeAdvertContentDemoView: UIView {
 
-    private lazy var defaultData = NativeAdvertDefaultData()
+    private lazy var defaultData = NativeAdvertContentDefaultData()
 
-    private lazy var stackView: UIStackView = {
-        let view = UIStackView(withAutoLayout: true)
-        view.axis = .vertical
-        view.distribution = .equalSpacing
-        view.spacing = .mediumLargeSpacing
-        return view
-    }()
-
-    private lazy var nativeAdvertListView: NativeAdvertListView = {
-        let view = NativeAdvertListView(withAutoLayout: false)
-        view.delegate = self
-        view.imageDelegate = self
-        view.configure(with: defaultData)
-        return view
-    }()
-
-    private lazy var nativeAdvertGridView: NativeAdvertGridView = {
-        let view = NativeAdvertGridView(withAutoLayout: false)
+    private lazy var nativeAdvertContentView: NativeAdvertContentView = {
+        let view = NativeAdvertContentView(withAutoLayout: true)
         view.delegate = self
         view.imageDelegate = self
         view.configure(with: defaultData)
@@ -43,21 +27,18 @@ class NativeAdvertDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(stackView)
-
-        stackView.addArrangedSubview(nativeAdvertListView)
-        stackView.addArrangedSubview(nativeAdvertGridView)
+        addSubview(nativeAdvertContentView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            nativeAdvertContentView.topAnchor.constraint(equalTo: topAnchor),
+            nativeAdvertContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            nativeAdvertContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
 
 }
 
-extension NativeAdvertDemoView: NativeAdvertViewDelegate, NativeAdvertImageDelegate {
+extension NativeAdvertContentDemoView: NativeAdvertViewDelegate, NativeAdvertImageDelegate {
 
     func nativeAdvertViewDidSelectSettingsButton() {
         var viewController = UIApplication.shared.keyWindow?.rootViewController

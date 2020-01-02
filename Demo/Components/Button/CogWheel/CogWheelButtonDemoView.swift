@@ -5,7 +5,16 @@
 import FinniversKit
 
 public class CogWheelButtonDemoView: UIView {
-    private lazy var cogWheelButton = CogWheelButton(corners: [.bottomRight], autoLayout: true)
+
+    private lazy var leftCogWheelButton = CogWheelButton(alignment: .left, autoLayout: true)
+    private lazy var rightCogWheelButton = CogWheelButton(alignment: .right, autoLayout: true)
+
+    private lazy var stackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [leftCogWheelButton, rightCogWheelButton])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        return view
+    }()
 
     // MARK: - Init
 
@@ -21,11 +30,11 @@ public class CogWheelButtonDemoView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(cogWheelButton)
+        addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            cogWheelButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            cogWheelButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }

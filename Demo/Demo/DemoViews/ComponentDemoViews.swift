@@ -35,7 +35,8 @@ public enum ComponentDemoViews: String, CaseIterable {
     case klimabroletView
     case christmasWishListView
     case stepIndicatorView
-    case nativeAdverts
+    case nativeAdvert
+    case nativeAdvertContent
     case callout
     case phaseList
     case iconCollection
@@ -130,8 +131,10 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<ChristmasWishListDemoView>()
         case .stepIndicatorView:
             return DemoViewController<StepIndicatorDemoView>(dismissType: .dismissButton)
-        case .nativeAdverts:
+        case .nativeAdvert:
             return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
+        case .nativeAdvertContent:
+            return DemoViewController<NativeAdvertContentDemoView>(dismissType: .dismissButton)
         case .callout:
             return DemoViewController<CalloutDemoView>()
         case .phaseList:
