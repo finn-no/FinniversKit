@@ -105,6 +105,7 @@ public final class FavoriteAdCommentInputView: UIView {
             notificationCenter.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: $0, object: nil)
         }
 
+        backgroundColor = .bgPrimary
         addSubview(scrollView)
 
         scrollView.addSubview(contentView)
