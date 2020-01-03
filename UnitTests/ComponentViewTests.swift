@@ -242,20 +242,4 @@ class ComponentViewTests: XCTestCase {
     func testCollapseView() {
         snapshot(.collapseView)
     }
-
-    func testFavoriteAdActionView() {
-        snapshot(.favoriteAdActionView)
-    }
-
-    func testFavoriteAdCommentInputView() {
-        snapshot(.favoriteAdCommentInputView)
-    }
-
-    func testFavoriteAdSortingView() {
-        snapshot(.favoriteAdSortingView)
-    }
-
-    func testFavoriteFolderActionView() {
-        snapshot(.favoriteFolderActionView)
-    }
 }

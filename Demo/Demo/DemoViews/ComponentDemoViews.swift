@@ -60,10 +60,6 @@ public enum ComponentDemoViews: String, CaseIterable {
     case collapseView
     case orderSummaryView
     case orderTotalSumView
-    case favoriteAdActionView
-    case favoriteAdCommentInputView
-    case favoriteAdSortingView
-    case favoriteFolderActionView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -190,14 +186,6 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<OrderSummaryDemoView>()
         case .orderTotalSumView:
             return DemoViewController<OrderTotalSumDemoView>()
-        case .favoriteAdActionView:
-            return DemoViewController<FavoriteAdActionDemoView>()
-        case .favoriteAdCommentInputView:
-            return DemoViewController<FavoriteAdCommentInputDemoView>()
-        case .favoriteAdSortingView:
-            return DemoViewController<FavoriteAdSortingDemoView>()
-        case .favoriteFolderActionView:
-            return DemoViewController<FavoriteFolderActionDemoView>()
         }
     }
 }

@@ -116,4 +116,20 @@ class FullscreenViewTests: XCTestCase {
     func testAdConfirmationView() {
         snapshot(.adConfirmationView)
     }
+
+    func testFavoriteAdActionView() {
+        snapshot(.favoriteAdActionView)
+    }
+
+    func testFavoriteAdCommentInputView() {
+        snapshot(.favoriteAdCommentInputView)
+    }
+
+    func testFavoriteAdSortingView() {
+        snapshot(.favoriteAdSortingView)
+    }
+
+    func testFavoriteFolderActionView() {
+        snapshot(.favoriteFolderActionView)
+    }
 }
