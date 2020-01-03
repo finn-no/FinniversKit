@@ -365,7 +365,6 @@
 		CF13D6D12292D50C0087DA37 /* PhaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6D02292D50C0087DA37 /* PhaseView.swift */; };
 		CF13D6D42292E3030087DA37 /* PhaseListViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13D6D32292E3030087DA37 /* PhaseListViewDemo.swift */; };
 		CF15D9B3215B94FC004F5F02 /* FloatingButtonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF15D9B2215B94FC004F5F02 /* FloatingButtonDemoView.swift */; };
-		CF164CE5230D8CE900250822 /* FavoriteFolderActionViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CE4230D8CE900250822 /* FavoriteFolderActionViewModel+Demo.swift */; };
 		CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CE7230D8D9700250822 /* FavoriteFolderAction.swift */; };
 		CF164CED230D916000250822 /* FavoriteFolderShareLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CEC230D916000250822 /* FavoriteFolderShareLinkView.swift */; };
 		CF164CF0230E7FF100250822 /* FavoriteFolderShareToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CEE230D91DE00250822 /* FavoriteFolderShareToggleView.swift */; };
@@ -376,11 +375,9 @@
 		CF164CFD230EB0F900250822 /* CheckmarkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CFC230EB0F900250822 /* CheckmarkImageView.swift */; };
 		CF164CFF230EB3D100250822 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */; };
 		CF164D04230EB80900250822 /* FavoriteAdSortingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D03230EB80900250822 /* FavoriteAdSortingDemoView.swift */; };
-		CF164D06230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D05230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift */; };
 		CF164D15230FFB7400250822 /* FavoriteAdActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D14230FFB7400250822 /* FavoriteAdActionViewModel.swift */; };
 		CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */; };
 		CF164D1A230FFEBA00250822 /* FavoriteActionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */; };
-		CF164D1C230FFEF400250822 /* FavoriteActionViewModel+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D1B230FFEF400250822 /* FavoriteActionViewModel+Demo.swift */; };
 		CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */; };
 		CF164DD62315740500250822 /* FavoriteAdCommentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD52315740500250822 /* FavoriteAdCommentSheet.swift */; };
 		CF164DD82315749500250822 /* FavoriteAdCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD72315749500250822 /* FavoriteAdCommentViewController.swift */; };
@@ -450,6 +447,7 @@
 		CF9AC8B621BEBFEF005A0D2F /* SnowGlobeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */; };
 		CF9AC8BC21BECE13005A0D2F /* SnowGlobeDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */; };
 		CF9AC8C221BEE106005A0D2F /* sleighbell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */; };
+		CFA6DC2923BF39BA0016E118 /* FavoriteFolderActionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6DC2823BF39BA0016E118 /* FavoriteFolderActionDemoView.swift */; };
 		CFB61374229ACA6900DE283D /* IconCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61373229ACA6900DE283D /* IconCollectionView.swift */; };
 		CFB61376229ACB0C00DE283D /* IconCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */; };
 		CFB61379229ACB8600DE283D /* IconCollectionViewDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB61378229ACB8600DE283D /* IconCollectionViewDemo.swift */; };
@@ -969,7 +967,6 @@
 		CF13D6D02292D50C0087DA37 /* PhaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseView.swift; sourceTree = "<group>"; };
 		CF13D6D32292E3030087DA37 /* PhaseListViewDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseListViewDemo.swift; sourceTree = "<group>"; };
 		CF15D9B2215B94FC004F5F02 /* FloatingButtonDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonDemoView.swift; sourceTree = "<group>"; };
-		CF164CE4230D8CE900250822 /* FavoriteFolderActionViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteFolderActionViewModel+Demo.swift"; sourceTree = "<group>"; };
 		CF164CE7230D8D9700250822 /* FavoriteFolderAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderAction.swift; sourceTree = "<group>"; };
 		CF164CEC230D916000250822 /* FavoriteFolderShareLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderShareLinkView.swift; sourceTree = "<group>"; };
 		CF164CEE230D91DE00250822 /* FavoriteFolderShareToggleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFolderShareToggleView.swift; sourceTree = "<group>"; };
@@ -980,11 +977,9 @@
 		CF164CFC230EB0F900250822 /* CheckmarkImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkImageView.swift; sourceTree = "<group>"; };
 		CF164CFE230EB3D100250822 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		CF164D03230EB80900250822 /* FavoriteAdSortingDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdSortingDemoView.swift; sourceTree = "<group>"; };
-		CF164D05230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteAdSortingViewModel+Demo.swift"; sourceTree = "<group>"; };
 		CF164D14230FFB7400250822 /* FavoriteAdActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionViewModel.swift; sourceTree = "<group>"; };
 		CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdAction.swift; sourceTree = "<group>"; };
 		CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionDemoView.swift; sourceTree = "<group>"; };
-		CF164D1B230FFEF400250822 /* FavoriteActionViewModel+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteActionViewModel+Demo.swift"; sourceTree = "<group>"; };
 		CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionHeaderView.swift; sourceTree = "<group>"; };
 		CF164DD52315740500250822 /* FavoriteAdCommentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentSheet.swift; sourceTree = "<group>"; };
 		CF164DD72315749500250822 /* FavoriteAdCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentViewController.swift; sourceTree = "<group>"; };
@@ -1055,6 +1050,7 @@
 		CF9AC8B521BEBFEF005A0D2F /* SnowGlobeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowGlobeView.swift; sourceTree = "<group>"; };
 		CF9AC8BA21BECDD2005A0D2F /* SnowGlobeDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowGlobeDemoView.swift; sourceTree = "<group>"; };
 		CF9AC8C121BEE106005A0D2F /* sleighbell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sleighbell.mp3; sourceTree = "<group>"; };
+		CFA6DC2823BF39BA0016E118 /* FavoriteFolderActionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFolderActionDemoView.swift; sourceTree = "<group>"; };
 		CFB61373229ACA6900DE283D /* IconCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionView.swift; sourceTree = "<group>"; };
 		CFB61375229ACB0C00DE283D /* IconCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewModel.swift; sourceTree = "<group>"; };
 		CFB61378229ACB8600DE283D /* IconCollectionViewDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewDemo.swift; sourceTree = "<group>"; };
@@ -1697,7 +1693,7 @@
 				CF7C45FD22257A8A001FB92C /* EarthHour */,
 				CF2E46F0231968320085A591 /* FavoriteAdActions */,
 				CF164CF1230E8F8800250822 /* FavoriteAdSorting */,
-				CF7496BD23BE269F00D60901 /* FavoriteFolderActionView */,
+				CF7496BD23BE269F00D60901 /* FavoriteFolderActions */,
 				9A37D8C01205DC426B502C5F /* Feedback */,
 				CFCC3D2F23686BEF002DD4CF /* FooterButtonView */,
 				08F0D3F222259AB800968256 /* HappinessRating */,
@@ -2775,24 +2771,22 @@
 			isa = PBXGroup;
 			children = (
 				CF164D03230EB80900250822 /* FavoriteAdSortingDemoView.swift */,
-				CF164D05230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift */,
 			);
 			path = FavoriteAdSorting;
 			sourceTree = "<group>";
 		};
-		CF164D0C230FF4CB00250822 /* FavoriteFolderActionView */ = {
+		CF164D0C230FF4CB00250822 /* FavoriteFolderActions */ = {
 			isa = PBXGroup;
 			children = (
-				CF164CE4230D8CE900250822 /* FavoriteFolderActionViewModel+Demo.swift */,
+				CFA6DC2823BF39BA0016E118 /* FavoriteFolderActionDemoView.swift */,
 			);
-			path = FavoriteFolderActionView;
+			path = FavoriteFolderActions;
 			sourceTree = "<group>";
 		};
 		CF164D18230FFEA800250822 /* FavoriteAdActions */ = {
 			isa = PBXGroup;
 			children = (
 				CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */,
-				CF164D1B230FFEF400250822 /* FavoriteActionViewModel+Demo.swift */,
 			);
 			path = FavoriteAdActions;
 			sourceTree = "<group>";
@@ -3001,14 +2995,14 @@
 			path = SplashView;
 			sourceTree = "<group>";
 		};
-		CF7496BD23BE269F00D60901 /* FavoriteFolderActionView */ = {
+		CF7496BD23BE269F00D60901 /* FavoriteFolderActions */ = {
 			isa = PBXGroup;
 			children = (
 				CF7496BE23BE26D700D60901 /* FavoriteFolderActionView.swift */,
 				CF164CE9230D8DBC00250822 /* ViewModels */,
 				CF7E7B57230D3CC1001D514E /* Views */,
 			);
-			path = FavoriteFolderActionView;
+			path = FavoriteFolderActions;
 			sourceTree = "<group>";
 		};
 		CF7C45FD22257A8A001FB92C /* EarthHour */ = {
@@ -3136,19 +3130,21 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CF164D0C230FF4CB00250822 /* FavoriteFolderActionView */,
 				CFDF39CC238541D400D3B966 /* AddressCardView */,
-				F2BE6C0B236C29F80085A05A /* CheckmarkTitleView */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
 				CF8F021E21DCC6A0004C4042 /* Button */,
 				CFCDDA5D22731D4D005E1F4A /* Callout */,
+				F2BE6C0B236C29F80085A05A /* CheckmarkTitleView */,
 				9BD8ABBA2359B0A1001078CA /* ChristmasWishList */,
 				F26CAC0223AC9BDC00CACF71 /* CollapseView */,
 				CF8F021821DCC624004C4042 /* Consent */,
 				AA7A854F22258A0B00AF5F42 /* Dialogue */,
 				0884C6CA22B7B5DA0015474D /* Disclaimer */,
 				CF7C460B22257AE1001FB92C /* EarthHour */,
+				CF164D18230FFEA800250822 /* FavoriteAdActions */,
+				CF164D02230EB79100250822 /* FavoriteAdSorting */,
+				CF164D0C230FF4CB00250822 /* FavoriteFolderActions */,
 				9B9F8C1322F079F600298CDB /* Feedback */,
 				CF0647FD23688B4400863D07 /* FooterButtonView */,
 				08F0D3F5222691F000968256 /* HappinessRating */,
@@ -3496,8 +3492,6 @@
 			children = (
 				449C60B6234DD8BC00C51A63 /* Basic */,
 				6266C073220820FC00FB8004 /* AdManagement */,
-				CF164D18230FFEA800250822 /* FavoriteAdActions */,
-				CF164D02230EB79100250822 /* FavoriteAdSorting */,
 				CF8F023D21DCD510004C4042 /* FavoriteFolders */,
 				CF8F023C21DCD4E6004C4042 /* Favorites */,
 				CF8F023F21DCD567004C4042 /* Notifications */,
@@ -4341,6 +4335,7 @@
 				44B94FE522E0AB420078A23C /* TweakingOptionsTableViewController.swift in Sources */,
 				44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */,
 				9B9287AB22F0593700FC7B69 /* KlimabroletData.swift in Sources */,
+				CFA6DC2923BF39BA0016E118 /* FavoriteFolderActionDemoView.swift in Sources */,
 				9B2F2B3922F2C63A005C4AA2 /* LoginEntryDemoPageViewController.swift in Sources */,
 				443795FC2360444200D05917 /* SelectorTitleViewDemoView.swift in Sources */,
 				CF848C2F21C7E3010086530E /* CogWheelButtonDemoView.swift in Sources */,
@@ -4368,7 +4363,6 @@
 				44AEFC2822E722FC00D3C307 /* HeartSubtitleCellDemoView.swift in Sources */,
 				444246072137D61200D42AB8 /* FavoriteFoldersListViewDemoViewHelpers.swift in Sources */,
 				44B94FEB22E0ABC50078A23C /* Tweakable.swift in Sources */,
-				CF164D1C230FFEF400250822 /* FavoriteActionViewModel+Demo.swift in Sources */,
 				F2BE6BFA236844160085A05A /* AdConfirmationViewDefaultData.swift in Sources */,
 				6266C0752208235000FB8004 /* AdManagementDemoView.swift in Sources */,
 				0884C6CC22B7B5EA0015474D /* DisclaimerDemoView.swift in Sources */,
@@ -4378,7 +4372,6 @@
 				444246082137D61200D42AB8 /* FavoriteFoldersListDemoView.swift in Sources */,
 				F26CAC0723AC9BDC00CACF71 /* CollapseDemoView.swift in Sources */,
 				CFFDF89922F313A500FE68EA /* NeighborhoodProfileDemoView.swift in Sources */,
-				CF164D06230EB82F00250822 /* FavoriteAdSortingViewModel+Demo.swift in Sources */,
 				4577F61E201F3D54009CBAE8 /* DemoViewsTableViewController.swift in Sources */,
 				AA864B392231589B00BAE95A /* DialogueDemoView.swift in Sources */,
 				CFF9727921C3F80D00C85238 /* BannerTransparencyInfoDefaultData.swift in Sources */,
@@ -4461,7 +4454,6 @@
 				62AAB23C2327901D007766E6 /* RadioButtonCellDemoView.swift in Sources */,
 				F26CAC0423AC9BDC00CACF71 /* OrderTotalSumDemoView.swift in Sources */,
 				CFF9727321C3BA2200C85238 /* BannerTransparencyDemoView.swift in Sources */,
-				CF164CE5230D8CE900250822 /* FavoriteFolderActionViewModel+Demo.swift in Sources */,
 				91D2A55A22F458EE00ED4BB9 /* SearchResultMapViewDemoViewControllerHelpers.swift in Sources */,
 				CF54065D23293B100017CF31 /* FavoriteAdCommentSheetDemoDelegate.swift in Sources */,
 				9B7D5A2D22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift in Sources */,

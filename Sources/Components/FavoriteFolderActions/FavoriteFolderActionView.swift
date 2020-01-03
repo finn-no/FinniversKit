@@ -121,6 +121,14 @@ public final class FavoriteFolderActionView: UIView {
         )
     }
 
+    public func expand() {
+        animatingConstraint.constant = FavoriteFolderActionView.rowHeight
+    }
+
+    public func collapse() {
+        animatingConstraint.constant = 0
+    }
+
     // MARK: - Setup
 
     private func makeButton(
