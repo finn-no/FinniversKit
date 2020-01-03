@@ -10,7 +10,10 @@ public protocol FavoriteAdCommentInputViewDelegate: AnyObject {
 }
 
 public final class FavoriteAdCommentInputView: UIView {
+    // MARK: - Public properties
+
     public weak var delegate: FavoriteAdCommentInputViewDelegate?
+    public var text: String { textView.text }
 
     // MARK: - Private properties
 
@@ -73,6 +76,13 @@ public final class FavoriteAdCommentInputView: UIView {
         notificationCenter.removeObserver(self)
     }
 
+    // MARK: - Overrrides
+
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        adView.loadImage()
+    }
+
     public override func becomeFirstResponder() -> Bool {
         return textView.becomeFirstResponder()
     }
@@ -83,11 +93,8 @@ public final class FavoriteAdCommentInputView: UIView {
         return result
     }
 
-    // MARK: - Lifecycle
-
-    public override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        adView.loadImage()
+    public override func endEditing(_ force: Bool) -> Bool {
+        textView.endEditing(force)
     }
 
     // MARK: - Setup
