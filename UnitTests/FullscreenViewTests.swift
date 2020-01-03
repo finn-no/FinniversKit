@@ -97,16 +97,12 @@ class FullscreenViewTests: XCTestCase {
         snapshot(.searchResultMapView)
     }
 
-    func testFavoriteFolderActionSheet() {
-        snapshot(.favoriteFolderActionSheet)
-    }
-
     func testSplashView() {
         snapshot(.splashView)
     }
 
-    func testPopovers() {
-        snapshot(.popovers)
+    func testVerificationActionSheet() {
+        snapshot(.verificationActionSheet)
     }
 
     func testSettingDetails() {

@@ -379,8 +379,6 @@
 		CF164D17230FFDEB00250822 /* FavoriteAdAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */; };
 		CF164D1A230FFEBA00250822 /* FavoriteActionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */; };
 		CF164D212310138900250822 /* FavoriteAdActionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */; };
-		CF164DD62315740500250822 /* FavoriteAdCommentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD52315740500250822 /* FavoriteAdCommentSheet.swift */; };
-		CF164DD82315749500250822 /* FavoriteAdCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD72315749500250822 /* FavoriteAdCommentViewController.swift */; };
 		CF164DDA2315776E00250822 /* FavoriteAdCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF164DD92315776E00250822 /* FavoriteAdCommentViewModel.swift */; };
 		CF16F73823292D34006566DE /* FavoriteAdCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF16F73723292D34006566DE /* FavoriteAdCommentView.swift */; };
 		CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E46F12319685C0085A591 /* FavoriteAdActionView.swift */; };
@@ -980,8 +978,6 @@
 		CF164D16230FFDEB00250822 /* FavoriteAdAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdAction.swift; sourceTree = "<group>"; };
 		CF164D19230FFEBA00250822 /* FavoriteActionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionDemoView.swift; sourceTree = "<group>"; };
 		CF164D1F2310031700250822 /* FavoriteAdActionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdActionHeaderView.swift; sourceTree = "<group>"; };
-		CF164DD52315740500250822 /* FavoriteAdCommentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentSheet.swift; sourceTree = "<group>"; };
-		CF164DD72315749500250822 /* FavoriteAdCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentViewController.swift; sourceTree = "<group>"; };
 		CF164DD92315776E00250822 /* FavoriteAdCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentViewModel.swift; sourceTree = "<group>"; };
 		CF16F73723292D34006566DE /* FavoriteAdCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentView.swift; sourceTree = "<group>"; };
 		CF29845D229566E8008CD832 /* ContactFormCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormCheckbox.swift; sourceTree = "<group>"; };
@@ -2816,8 +2812,6 @@
 		CF164DD4231573F100250822 /* FavoriteAdCommentInput */ = {
 			isa = PBXGroup;
 			children = (
-				CF164DD52315740500250822 /* FavoriteAdCommentSheet.swift */,
-				CF164DD72315749500250822 /* FavoriteAdCommentViewController.swift */,
 				CF164DD92315776E00250822 /* FavoriteAdCommentViewModel.swift */,
 				CFA6DC2A23BF5E1B0016E118 /* FavoriteAdCommentInputView.swift */,
 			);
@@ -4583,7 +4577,6 @@
 				14C6F7D5212324CA00A7230C /* FavoritesListViewModel.swift in Sources */,
 				14DC126F21593B0000326DC3 /* HorizontalSlideController.swift in Sources */,
 				44898D641FE5B9C200F6017B /* UICollectionViewExtensions.swift in Sources */,
-				CF164DD82315749500250822 /* FavoriteAdCommentViewController.swift in Sources */,
 				DAD6EB2C2369916100968497 /* SettingsSectionFooterView.swift in Sources */,
 				449C60B1234DD82E00C51A63 /* BasicTableView.swift in Sources */,
 				9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */,
@@ -4702,7 +4695,6 @@
 				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
-				CF164DD62315740500250822 /* FavoriteAdCommentSheet.swift in Sources */,
 				8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */,
 				44A5579E22E71FEB001667AE /* BasicTableViewCellViewModel.swift in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
