@@ -25,10 +25,8 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case addressMapView
     case messageFormView
     case favoriteAdsList
-    case favoriteAdCommentSheet
     case verificationActionSheet
     case splashView
-    case popovers
     case settingDetails
     case adConfirmationView
 
@@ -85,22 +83,12 @@ public enum FullscreenDemoViews: String, CaseIterable {
             )
         case .favoriteAdsList:
             return DemoViewController<FavoriteAdsListDemoView>(constrainToBottomSafeArea: false)
-        case .favoriteAdCommentSheet:
-            let bottomSheet = FavoriteAdCommentSheet(
-                commentViewModel: .default,
-                adViewModel: FavoriteAdsFactory.create().last!,
-                remoteImageViewDataSource: FavoriteAdCommentSheetDemoDelegate.shared
-            )
-            bottomSheet.commentDelegate = FavoriteAdCommentSheetDemoDelegate.shared
-            return bottomSheet
         case .verificationActionSheet:
             let bottomSheet = VerificationActionSheet(viewModel: VerificationViewDefaultData())
             bottomSheet.actionDelegate = VerificationActionSheetDemoDelegate.shared
             return bottomSheet
         case .splashView:
             return DemoViewController<SplashDemoView>(constrainToTopSafeArea: false, constrainToBottomSafeArea: false)
-        case .popovers:
-            return PopoversDemoViewController()
         case .settingDetails:
             let viewController = SettingDetailsDemoViewController()
             viewController.view.layoutIfNeeded()

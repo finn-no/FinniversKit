@@ -4,16 +4,20 @@
 
 import UIKit
 
-final class FavoriteAdCommentInputView: UIViewController {
-    public weak var textViewDelegate: TextViewDelegate? {
-        didSet { textView.delegate = textViewDelegate }
-    }
+public protocol FavoriteAdCommentInputViewDelegate: AnyObject {
+    func favoriteAdCommentInputView(_ view: FavoriteAdCommentInputView, didChangeText text: String)
+    func favoriteAdCommentInputView(_ view: FavoriteAdCommentInputView, didScroll scrollView: UIScrollView)
+}
+
+public final class FavoriteAdCommentInputView: UIView {
+    public weak var delegate: FavoriteAdCommentInputViewDelegate?
+
+    // MARK: - Private properties
 
     private weak var remoteImageViewDataSource: RemoteImageViewDataSource?
     private let commentViewModel: FavoriteAdCommentViewModel
     private let adViewModel: FavoriteAdViewModel
     private let notificationCenter: NotificationCenter
-    private lazy var shadowView = BottomShadowView(withAutoLayout: true)
     private lazy var contentView = UIView(withAutoLayout: true)
 
     private lazy var scrollView: UIScrollView = {
@@ -41,24 +45,27 @@ final class FavoriteAdCommentInputView: UIViewController {
         return textView
     }()
 
-    private lazy var scrollViewBottomConstraint = scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    private lazy var scrollViewBottomConstraint = scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
 
     // MARK: - Init
 
-    init(
+    public init(
         commentViewModel: FavoriteAdCommentViewModel,
         adViewModel: FavoriteAdViewModel,
         remoteImageViewDataSource: RemoteImageViewDataSource?,
+        delegate: FavoriteAdCommentInputViewDelegate? = nil,
         notificationCenter: NotificationCenter = .default
     ) {
         self.commentViewModel = commentViewModel
         self.adViewModel = adViewModel
         self.remoteImageViewDataSource = remoteImageViewDataSource
+        self.delegate = delegate
         self.notificationCenter = notificationCenter
-        super.init(nibName: nil, bundle: nil)
+        super.init(frame: .zero)
+        setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -66,58 +73,42 @@ final class FavoriteAdCommentInputView: UIViewController {
         notificationCenter.removeObserver(self)
     }
 
+    public override func becomeFirstResponder() -> Bool {
+        return textView.becomeFirstResponder()
+    }
+
+    public override func resignFirstResponder() -> Bool {
+        let result = textView.resignFirstResponder()
+        adView.resetContent()
+        return result
+    }
+
     // MARK: - Lifecycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        title = commentViewModel.title
-        setup()
-
-        [UIResponder.keyboardWillHideNotification, UIResponder.keyboardWillShowNotification].forEach {
-            notificationCenter.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: $0, object: nil)
-        }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
         adView.loadImage()
-    }
-
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        _ = textView.becomeFirstResponder()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        _ = textView.resignFirstResponder()
-        adView.resetContent()
     }
 
     // MARK: - Setup
 
     private func setup() {
-        view.addSubview(scrollView)
-        view.addSubview(shadowView)
+        [UIResponder.keyboardWillHideNotification, UIResponder.keyboardWillShowNotification].forEach {
+            notificationCenter.addObserver(self, selector: #selector(handleKeyboardNotification(_:)), name: $0, object: nil)
+        }
+
+        addSubview(scrollView)
 
         scrollView.addSubview(contentView)
         contentView.addSubview(adView)
         contentView.addSubview(textView)
         contentView.fillInSuperview()
 
-        let shadowViewHeight: CGFloat = 0
-
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollViewBottomConstraint,
-
-            shadowView.topAnchor.constraint(equalTo: view.topAnchor, constant: -shadowViewHeight),
-            shadowView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            shadowView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            shadowView.heightAnchor.constraint(equalToConstant: shadowViewHeight),
 
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -142,19 +133,19 @@ final class FavoriteAdCommentInputView: UIViewController {
         guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
 
         let keyboardVisible = keyboardInfo.action == .willShow
-        let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: view)
+        let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: self)
 
         UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo, animations: { [weak self] in
             guard let self = self else { return }
 
             self.updateScrollViewConstraint(withKeyboardVisible: keyboardVisible, keyboardOffset: keyboardIntersection)
-            self.view.layoutIfNeeded()
-            self.shadowView.updateShadow(using: self.scrollView)
+            self.layoutIfNeeded()
+            self.delegate?.favoriteAdCommentInputView(self, didScroll: self.scrollView)
         })
     }
 
     private func updateScrollViewConstraint(withKeyboardVisible keyboardVisible: Bool, keyboardOffset: CGFloat) {
-        let offset = keyboardOffset + view.windowSafeAreaInsets.bottom
+        let offset = keyboardOffset + windowSafeAreaInsets.bottom
         scrollViewBottomConstraint.constant = -offset
     }
 }
@@ -163,7 +154,15 @@ final class FavoriteAdCommentInputView: UIViewController {
 
 extension FavoriteAdCommentInputView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        shadowView.updateShadow(using: scrollView)
+        delegate?.favoriteAdCommentInputView(self, didScroll: scrollView)
+    }
+}
+
+// MARK: - TextViewDelegate
+
+extension FavoriteAdCommentInputView: TextViewDelegate {
+    public func textViewDidChange(_ textView: TextView) {
+        delegate?.favoriteAdCommentInputView(self, didChangeText: textView.text)
     }
 }
 
