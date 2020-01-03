@@ -44,6 +44,7 @@ public final class FavoriteAdCommentInputView: UIView {
         textView.placeholderText = commentViewModel.placeholder
         textView.text = adViewModel.comment
         textView.isScrollEnabled = false
+        textView.delegate = self
         textView.setContentHuggingPriority(.defaultLow, for: .vertical)
         return textView
     }()
@@ -152,8 +153,7 @@ public final class FavoriteAdCommentInputView: UIView {
     }
 
     private func updateScrollViewConstraint(withKeyboardVisible keyboardVisible: Bool, keyboardOffset: CGFloat) {
-        let offset = keyboardOffset + windowSafeAreaInsets.bottom
-        scrollViewBottomConstraint.constant = -offset
+        scrollViewBottomConstraint.constant = -keyboardOffset
     }
 }
 
