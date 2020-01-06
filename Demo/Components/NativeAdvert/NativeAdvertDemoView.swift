@@ -6,7 +6,7 @@ import FinniversKit
 
 class NativeAdvertDemoView: UIView {
 
-    private lazy var defaultData = NativeAdvertDefaultData()
+    private lazy var scrollView: UIScrollView = UIScrollView(withAutoLayout: true)
 
     private lazy var stackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
@@ -20,7 +20,7 @@ class NativeAdvertDemoView: UIView {
         let view = NativeAdvertListView(withAutoLayout: false)
         view.delegate = self
         view.imageDelegate = self
-        view.configure(with: defaultData)
+        view.configure(with: NativeAdvertDefaultData.native)
         return view
     }()
 
@@ -28,7 +28,15 @@ class NativeAdvertDemoView: UIView {
         let view = NativeAdvertGridView(withAutoLayout: false)
         view.delegate = self
         view.imageDelegate = self
-        view.configure(with: defaultData)
+        view.configure(with: NativeAdvertDefaultData.native)
+        return view
+    }()
+
+    private lazy var nativeAdvertContentView: NativeAdvertContentView = {
+        let view = NativeAdvertContentView(withAutoLayout: true)
+        view.delegate = self
+        view.imageDelegate = self
+        view.configure(with: NativeAdvertDefaultData.content)
         return view
     }()
 
@@ -43,15 +51,18 @@ class NativeAdvertDemoView: UIView {
     }
 
     private func setup() {
-        addSubview(stackView)
+        addSubview(scrollView)
+        scrollView.fillInSuperview()
+
+        scrollView.addSubview(stackView)
+        stackView.fillInSuperview()
 
         stackView.addArrangedSubview(nativeAdvertListView)
         stackView.addArrangedSubview(nativeAdvertGridView)
+        stackView.addArrangedSubview(nativeAdvertContentView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
         ])
     }
 
