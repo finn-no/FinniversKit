@@ -5,8 +5,10 @@
 import Foundation
 
 public protocol NativeAdvertViewModel {
-    var title: String? { get }
-    var mainImageURL: URL? { get }
-    var iconImageURL: URL? { get }
-    var sponsoredText: String? { get }
+    var title: String { get }
+    var description: String? { get }
+    var mainImageUrl: URL? { get }
+    var logoImageUrl: URL? { get }
+    var sponsoredBy: String? { get }
+    var ribbonText: String { get }
 }

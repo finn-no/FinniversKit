@@ -131,8 +131,12 @@ class ComponentViewTests: XCTestCase {
         snapshot(.stepIndicatorView)
     }
 
-    func testNativeAdverts() {
-        snapshot(.nativeAdverts)
+    func testNativeAdvert() {
+        snapshot(.nativeAdvert)
+    }
+
+    func testNativeAdvertContent() {
+        snapshot(.nativeAdvertContent)
     }
 
     func testCallout() {
@@ -225,5 +229,17 @@ class ComponentViewTests: XCTestCase {
 
     func testCheckmarkTitleView() {
         snapshot(.checkmarkTitleView)
+    }
+
+    func testOrderTotalSumView() {
+        snapshot(.orderTotalSumView)
+    }
+
+    func testOrderSummaryView() {
+        snapshot(.orderSummaryView)
+    }
+
+    func testCollapseView() {
+        snapshot(.collapseView)
     }
 }

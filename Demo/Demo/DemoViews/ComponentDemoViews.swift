@@ -35,7 +35,8 @@ public enum ComponentDemoViews: String, CaseIterable {
     case klimabroletView
     case christmasWishListView
     case stepIndicatorView
-    case nativeAdverts
+    case nativeAdvert
+    case nativeAdvertContent
     case callout
     case phaseList
     case iconCollection
@@ -56,6 +57,9 @@ public enum ComponentDemoViews: String, CaseIterable {
     case priming
     case footerButtonView
     case checkmarkTitleView
+    case collapseView
+    case orderSummaryView
+    case orderTotalSumView
 
     public static var items: [ComponentDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -127,8 +131,10 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<ChristmasWishListDemoView>()
         case .stepIndicatorView:
             return DemoViewController<StepIndicatorDemoView>(dismissType: .dismissButton)
-        case .nativeAdverts:
+        case .nativeAdvert:
             return DemoViewController<NativeAdvertDemoView>(dismissType: .dismissButton)
+        case .nativeAdvertContent:
+            return DemoViewController<NativeAdvertContentDemoView>(dismissType: .dismissButton)
         case .callout:
             return DemoViewController<CalloutDemoView>()
         case .phaseList:
@@ -174,6 +180,12 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<FooterButtonDemoView>(constrainToBottomSafeArea: false)
         case .checkmarkTitleView:
             return DemoViewController<CheckmarkTitleViewDemoView>()
+        case .collapseView:
+            return DemoViewController<CollapseDemoView>()
+        case .orderSummaryView:
+            return DemoViewController<OrderSummaryDemoView>()
+        case .orderTotalSumView:
+            return DemoViewController<OrderTotalSumDemoView>()
         }
     }
 }

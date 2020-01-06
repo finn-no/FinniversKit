@@ -26,7 +26,7 @@ public final class ReviewButtonControl: UIControl {
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .clear
-        imageView.tintColor = .iconSecondary
+        imageView.tintColor = .iconTertiary
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         return imageView
