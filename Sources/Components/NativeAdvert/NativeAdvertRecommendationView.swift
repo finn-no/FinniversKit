@@ -84,11 +84,11 @@ public final class NativeAdvertRecommendationView: UIView {
             logoView.heightAnchor.constraint(equalToConstant: 35),
 
             ribbon.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumSpacing),
-            ribbon.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-            ribbon.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            ribbon.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            ribbon.trailingAnchor.constraint(equalTo: container.trailingAnchor),
 
             titleLabel.topAnchor.constraint(equalTo: ribbon.bottomAnchor, constant: .mediumSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: logoView.leadingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
 

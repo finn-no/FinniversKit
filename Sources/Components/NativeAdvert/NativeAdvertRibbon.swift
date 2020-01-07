@@ -15,17 +15,26 @@ class NativeAdvertRibbon: UIView {
 
     private lazy var typeLabelContainer: UIView = {
         let view = UIView(withAutoLayout: true)
+        view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        view.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         view.layer.borderWidth = 1
         view.layer.borderColor = .tableViewSeparator
         view.layer.cornerRadius = .smallSpacing
         return view
     }()
 
-    private lazy var typeLabel = Label(style: .detail, withAutoLayout: true)
+    private lazy var typeLabel: UILabel = {
+        let view = Label(style: .detail, withAutoLayout: true)
+        view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        return view
+    }()
 
     private lazy var companyLabel: UILabel = {
         let view = Label(style: .detail, withAutoLayout: true)
+        view.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         view.numberOfLines = 1
+        view.lineBreakMode = .byTruncatingTail
         view.textColor = .textAction
         return view
     }()
