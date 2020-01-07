@@ -133,7 +133,7 @@ public final class FavoriteAdCommentInputView: UIView {
             textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing)
         ])
 
-        updateScrollViewConstraint(withKeyboardVisible: false, keyboardOffset: 0)
+        scrollViewBottomConstraint.constant = 0
     }
 
     // MARK: - Keyboard
@@ -141,13 +141,12 @@ public final class FavoriteAdCommentInputView: UIView {
     @objc private func handleKeyboardNotification(_ notification: Notification) {
         guard let keyboardInfo = KeyboardNotificationInfo(notification) else { return }
 
-        let keyboardVisible = keyboardInfo.action == .willShow
         let keyboardIntersection = keyboardInfo.keyboardFrameEndIntersectHeight(inView: self)
 
         UIView.animateAlongsideKeyboard(keyboardInfo: keyboardInfo, animations: { [weak self] in
             guard let self = self else { return }
 
-            self.updateScrollViewConstraint(withKeyboardVisible: keyboardVisible, keyboardOffset: keyboardIntersection)
+            self.scrollViewBottomConstraint.constant = -keyboardIntersection
             self.layoutIfNeeded()
             self.delegate?.favoriteAdCommentInputView(self, didScroll: self.scrollView)
         })
