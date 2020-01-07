@@ -107,10 +107,10 @@ internal final class NativeAdvertDetailsContainer: UIView {
             imageDelegate?.nativeAdvertView(setImageWithURL: imageUrl, onImageView: logoView)
         }
 
-        adRibbon.text = model.ribbonText
-        companyLabel.text = model.sponsoredBy
         titleLabel.text = model.title
         descriptionLabel.text = model.description
+
+        nativeAdvertRibbon.configure(with: model.ribbon)
     }
 
     // MARK: - Overrides

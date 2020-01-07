@@ -108,7 +108,7 @@ public final class NativeAdvertRecommendationView: UIView {
 
         titleLabel.text = model.title
 
-        ribbon.configure(with: NativeAdvertRibbonViewModel(type: model.ribbonText, company: model.sponsoredBy))
+        ribbon.configure(with: model.ribbon)
     }
 
     // MARK: - Private methods

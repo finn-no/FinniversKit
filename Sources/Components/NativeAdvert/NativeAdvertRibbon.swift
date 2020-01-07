@@ -4,9 +4,14 @@
 
 import Foundation
 
-struct NativeAdvertRibbonViewModel {
+public struct NativeAdvertRibbonViewModel {
     let type: String
     let company: String?
+
+    public init(type: String, company: String?) {
+        self.type = type
+        self.company = company
+    }
 }
 
 class NativeAdvertRibbon: UIView {
