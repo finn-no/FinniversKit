@@ -28,9 +28,10 @@ class NotificationCenterCell: UITableViewCell {
 
     private lazy var remoteImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 8
         imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = UIColor.sardine.cgColor
+        imageView.layer.borderColor = .imageBorder
         imageView.layer.masksToBounds = true
         return imageView
     }()
