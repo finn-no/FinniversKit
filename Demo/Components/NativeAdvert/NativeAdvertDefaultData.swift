@@ -14,11 +14,16 @@ public struct NativeAdvertDefaultData: NativeAdvertViewModel {
 
     public static let native = NativeAdvertDefaultData(
         title: "Denne annonsen er av typen `native`. Er 50 tegn...",
-        ribbon: NativeAdvertRibbonViewModel(type: "Annonse", company: "Avokadosentralenerbest")
+        ribbon: NativeAdvertRibbonViewModel(type: "Annonse", company: "Native Ad AS")
+    )
+
+    public static let nativeRecommendation = NativeAdvertDefaultData(
+        title: "Denne er typen `native-recommendation`. Er 50 tegn",
+        ribbon: NativeAdvertRibbonViewModel(type: "Annonse", company: "Native Recommendation AS")
     )
 
     public static let content = NativeAdvertDefaultData(
         title: "Denne annonsen er av typen `content`. Er 50 tegn..",
-        ribbon: NativeAdvertRibbonViewModel(type: "Annonsørinnhold", company: "Avokadosentralen")
+        ribbon: NativeAdvertRibbonViewModel(type: "Annonsørinnhold", company: "Native Content AS")
     )
 }

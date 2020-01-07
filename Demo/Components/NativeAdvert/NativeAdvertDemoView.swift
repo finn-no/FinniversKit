@@ -48,21 +48,13 @@ class NativeAdvertDemoView: UIView {
         return view
     }()
 
-    private lazy var nativeAdvertRecommendationViewOne: NativeAdvertRecommendationView = {
+    private lazy var nativeAdvertRecommendationViews: [NativeAdvertRecommendationView] = (0...1).map { _ in
         let view = NativeAdvertRecommendationView(withAutoLayout: false)
         view.delegate = self
         view.imageDelegate = self
-        view.configure(with: NativeAdvertDefaultData.native)
+        view.configure(with: NativeAdvertDefaultData.nativeRecommendation)
         return view
-    }()
-
-    private lazy var nativeAdvertRecommendationViewTwo: NativeAdvertRecommendationView = {
-        let view = NativeAdvertRecommendationView(withAutoLayout: false)
-        view.delegate = self
-        view.imageDelegate = self
-        view.configure(with: NativeAdvertDefaultData.native)
-        return view
-    }()
+    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -86,12 +78,12 @@ class NativeAdvertDemoView: UIView {
         stackView.addArrangedSubview(nativeAdvertGridView)
         stackView.addArrangedSubview(nativeAdvertContentView)
 
-        nativeAdvertRecommendationStack.addArrangedSubview(nativeAdvertRecommendationViewOne)
-        nativeAdvertRecommendationStack.addArrangedSubview(nativeAdvertRecommendationViewTwo)
+        nativeAdvertRecommendationViews.forEach { nativeAdvertRecommendationStack.addArrangedSubview($0) }
 
         NSLayoutConstraint.activate([
             stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
         ])
+
     }
 
 }
