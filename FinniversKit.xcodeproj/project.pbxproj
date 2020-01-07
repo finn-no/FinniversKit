@@ -254,8 +254,10 @@
 		89A7A63D225337B50053D33B /* NativeAdvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */; };
 		89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A643225352180053D33B /* NativeAdvertDelegates.swift */; };
 		89A7A648225352A30053D33B /* NativeAdvertContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A6462253524E0053D33B /* NativeAdvertContentView.swift */; };
+		91341EDB23C38288005B65CF /* NativeAdvertRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */; };
+		91341EDD23C46BE5005B65CF /* NativeAdvertRibbon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */; };
+		91341EE023C48E83005B65CF /* NativeAdvertRecommendationDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDF23C48E83005B65CF /* NativeAdvertRecommendationDemoCell.swift */; };
 		9135BF8A22F2C31300C8E1F5 /* MKMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135BF8922F2C31300C8E1F5 /* MKMapViewExtensions.swift */; };
-		9144BD3223AA209A0083F0D9 /* NativeAdvertContentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9144BD3123AA209A0083F0D9 /* NativeAdvertContentDemoView.swift */; };
 		9144BD3423AA20B50083F0D9 /* NativeAdvertDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9144BD3323AA20B50083F0D9 /* NativeAdvertDefaultData.swift */; };
 		91846C4A22E735D80001410F /* SearchResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4922E735D80001410F /* SearchResultMapView.swift */; };
 		91846C4D22E736BF0001410F /* SearchResultMapViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4C22E736BF0001410F /* SearchResultMapViewDemoViewController.swift */; };
@@ -849,8 +851,10 @@
 		89A7A641225344600053D33B /* NativeAdvertDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDemoView.swift; sourceTree = "<group>"; };
 		89A7A643225352180053D33B /* NativeAdvertDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDelegates.swift; sourceTree = "<group>"; };
 		89A7A6462253524E0053D33B /* NativeAdvertContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertContentView.swift; sourceTree = "<group>"; };
+		91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRecommendationView.swift; sourceTree = "<group>"; };
+		91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRibbon.swift; sourceTree = "<group>"; };
+		91341EDF23C48E83005B65CF /* NativeAdvertRecommendationDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRecommendationDemoCell.swift; sourceTree = "<group>"; };
 		9135BF8922F2C31300C8E1F5 /* MKMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewExtensions.swift; sourceTree = "<group>"; };
-		9144BD3123AA209A0083F0D9 /* NativeAdvertContentDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertContentDemoView.swift; sourceTree = "<group>"; };
 		9144BD3323AA20B50083F0D9 /* NativeAdvertDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDefaultData.swift; sourceTree = "<group>"; };
 		91846C4922E735D80001410F /* SearchResultMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapView.swift; sourceTree = "<group>"; };
 		91846C4C22E736BF0001410F /* SearchResultMapViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewController.swift; sourceTree = "<group>"; };
@@ -2258,6 +2262,8 @@
 				918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */,
 				89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */,
 				89A7A643225352180053D33B /* NativeAdvertDelegates.swift */,
+				91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */,
+				91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */,
 			);
 			path = NativeAdvert;
 			sourceTree = "<group>";
@@ -2267,7 +2273,6 @@
 			children = (
 				9144BD3323AA20B50083F0D9 /* NativeAdvertDefaultData.swift */,
 				89A7A641225344600053D33B /* NativeAdvertDemoView.swift */,
-				9144BD3123AA209A0083F0D9 /* NativeAdvertContentDemoView.swift */,
 			);
 			path = NativeAdvert;
 			sourceTree = "<group>";
@@ -3554,6 +3559,7 @@
 				441FE437209A254200B04EF1 /* AdsGridViewDemoView.swift */,
 				441FE438209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift */,
 				DABA6F46232FAF1D0007B24D /* BannerAdDemoCell.swift */,
+				91341EDF23C48E83005B65CF /* NativeAdvertRecommendationDemoCell.swift */,
 			);
 			path = Ads;
 			sourceTree = "<group>";
@@ -4374,7 +4380,6 @@
 				DABA6F47232FAF1D0007B24D /* BannerAdDemoCell.swift in Sources */,
 				44AEFC2522E722FC00D3C307 /* BasicCellVariationsDemoView.swift in Sources */,
 				4441F9EF22CCF72F00DCFD2F /* AddressMapDemoView.swift in Sources */,
-				9144BD3223AA209A0083F0D9 /* NativeAdvertContentDemoView.swift in Sources */,
 				9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */,
 				44FEBC1223322D4C009AC5E4 /* ComponentDemoViews.swift in Sources */,
 				CF7C460E22257AE1001FB92C /* EarthHourDefaultData.swift in Sources */,
@@ -4411,6 +4416,7 @@
 				44AEFC2922E722FC00D3C307 /* CheckboxSubtitleCellDemoView.swift in Sources */,
 				CFB61379229ACB8600DE283D /* IconCollectionViewDemo.swift in Sources */,
 				14EBA25A215A634100613E5A /* LoadingViewDemoView.swift in Sources */,
+				91341EE023C48E83005B65CF /* NativeAdvertRecommendationDemoCell.swift in Sources */,
 				AA864B49223290B600BAE95A /* InlineConsentDemoViewController.swift in Sources */,
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
 				CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */,
@@ -4629,6 +4635,7 @@
 				F26CABFA23AC9B2E00CACF71 /* OrderSummaryLineView.swift in Sources */,
 				9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */,
 				CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */,
+				91341EDD23C46BE5005B65CF /* NativeAdvertRibbon.swift in Sources */,
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				CF13D6D12292D50C0087DA37 /* PhaseView.swift in Sources */,
 				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
@@ -4728,6 +4735,7 @@
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */,
+				91341EDB23C38288005B65CF /* NativeAdvertRecommendationView.swift in Sources */,
 				CFEB220F232B96550039421C /* UIBarButtonItemExtensions.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
 				91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */,

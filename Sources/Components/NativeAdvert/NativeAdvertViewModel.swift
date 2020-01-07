@@ -9,6 +9,5 @@ public protocol NativeAdvertViewModel {
     var description: String? { get }
     var mainImageUrl: URL? { get }
     var logoImageUrl: URL? { get }
-    var sponsoredBy: String? { get }
-    var ribbonText: String { get }
+    var ribbon: NativeAdvertRibbonViewModel { get }
 }
