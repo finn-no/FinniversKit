@@ -31,6 +31,7 @@ class NativeAdvertRibbon: UIView {
     private lazy var typeLabel: UILabel = {
         let view = Label(style: .detail, withAutoLayout: true)
         view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        view.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return view
     }()
 
