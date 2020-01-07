@@ -35,9 +35,11 @@ public final class NativeAdvertRecommendationView: UIView {
         return imageView
     }()
 
+    private lazy var ribbon = NativeAdvertRibbon(withAutoLayout: true)
+
     private lazy var titleLabel: UILabel = {
         let view = Label(style: .body, withAutoLayout: true)
-        view.numberOfLines = 2
+        view.numberOfLines = 3
         return view
     }()
 
@@ -66,6 +68,7 @@ public final class NativeAdvertRecommendationView: UIView {
 
         container.addSubview(imageView)
         container.addSubview(logoView)
+        container.addSubview(ribbon)
         container.addSubview(titleLabel)
         container.addSubview(settingsButton)
 
@@ -80,7 +83,11 @@ public final class NativeAdvertRecommendationView: UIView {
             logoView.widthAnchor.constraint(equalToConstant: 35),
             logoView.heightAnchor.constraint(equalToConstant: 35),
 
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumSpacing),
+            ribbon.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: .mediumSpacing),
+            ribbon.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            ribbon.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+
+            titleLabel.topAnchor.constraint(equalTo: ribbon.bottomAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: logoView.leadingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
@@ -100,6 +107,8 @@ public final class NativeAdvertRecommendationView: UIView {
         }
 
         titleLabel.text = model.title
+
+        ribbon.configure(with: NativeAdvertRibbonViewModel(type: model.ribbonText, company: model.sponsoredBy))
     }
 
     // MARK: - Private methods
