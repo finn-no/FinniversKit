@@ -6,7 +6,7 @@ import FinniversKit
 
 class NativeAdvertDemoView: UIView {
 
-    private lazy var scrollView: UIScrollView = UIScrollView(withAutoLayout: true)
+    private lazy var scrollView = UIScrollView(withAutoLayout: true)
 
     private lazy var stackView: UIStackView = {
         let view = UIStackView(withAutoLayout: true)
