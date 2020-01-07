@@ -35,3 +35,14 @@ extension FavoriteAdSortingDemoView: FavoriteAdSortingViewDelegate {
         print("\(option) selected")
     }
 }
+
+// MARK: - Private extensions
+
+private extension FavoriteAdSortingViewModel {
+    static let `default` = FavoriteAdSortingViewModel(
+        lastAddedText: "Sist lagt til",
+        statusText: "Annonsestatus",
+        lastUpdatedText: "Sist oppdatert av selger",
+        distanceText: "Nærmest meg"
+    )
+}

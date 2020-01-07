@@ -4,32 +4,30 @@
 
 import UIKit
 
-public protocol FavoriteFolderActionViewControllerDelegate: AnyObject {
-    func favoriteFolderActionViewController(
-        _ viewController: FavoriteFolderActionViewController,
+public protocol FavoriteFolderActionViewDelegate: AnyObject {
+    func favoriteFolderActionView(
+        _ view: FavoriteFolderActionView,
         didSelectAction action: FavoriteFolderAction
     )
 }
 
-public final class FavoriteFolderActionViewController: UIViewController {
+public final class FavoriteFolderActionView: UIView {
     public static let rowHeight: CGFloat = 48.0
-
-    public static func compactHeight(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
-        return rowHeight * CGFloat(viewModel.appearance.actions.subtracting([.shareLink]).count)
-    }
-
-    public static func expandedHeight(for viewModel: FavoriteFolderActionViewModel) -> CGFloat {
-        return rowHeight * CGFloat(viewModel.appearance.actions.count)
-    }
 
     // MARK: - Public properties
 
-    public weak var delegate: FavoriteFolderActionViewControllerDelegate?
+    public weak var delegate: FavoriteFolderActionViewDelegate?
 
     public var isShared: Bool {
         didSet {
             updateSeparators()
         }
+    }
+
+    public var height: CGFloat {
+        return isShared
+            ? rowHeight * CGFloat(viewModel.appearance.actions.count)
+            : rowHeight * CGFloat(viewModel.appearance.actions.subtracting([.shareLink]).count)
     }
 
     // MARK: - Private properties
@@ -80,7 +78,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
     }()
 
     private var rowHeight: CGFloat {
-        return FavoriteFolderActionViewController.rowHeight
+        return FavoriteFolderActionView.rowHeight
     }
 
     // MARK: - Init
@@ -88,19 +86,13 @@ public final class FavoriteFolderActionViewController: UIViewController {
     public init(viewModel: FavoriteFolderActionViewModel, isShared: Bool = false) {
         self.viewModel = viewModel
         self.isShared = isShared
-        super.init(nibName: nil, bundle: nil)
+        super.init(frame: .zero)
+        setup()
+        updateSeparators()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Lifecycle
-
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
-        updateSeparators()
     }
 
     // MARK: - Public
@@ -122,11 +114,19 @@ public final class FavoriteFolderActionViewController: UIViewController {
 
     // MARK: - Animation
 
-    func animate(with offsetY: CGFloat) {
+    public func animate(with offsetY: CGFloat) {
         animatingConstraint.constant = min(
             animatingConstraint.constant + offsetY,
             rowHeight
         )
+    }
+
+    public func expand() {
+        animatingConstraint.constant = FavoriteFolderActionView.rowHeight
+    }
+
+    public func collapse() {
+        animatingConstraint.constant = 0
     }
 
     // MARK: - Setup
@@ -144,40 +144,40 @@ public final class FavoriteFolderActionViewController: UIViewController {
     }
 
     private func setup() {
-        view.addSubview(editButton)
-        view.addSubview(shareLinkView)
-        view.addSubview(shareToggleView)
+        addSubview(editButton)
+        addSubview(shareLinkView)
+        addSubview(shareToggleView)
 
         var constraints = [
-            editButton.topAnchor.constraint(equalTo: view.topAnchor),
-            editButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            editButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            editButton.topAnchor.constraint(equalTo: topAnchor),
+            editButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            editButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             editButton.heightAnchor.constraint(equalToConstant: rowHeight),
 
-            shareToggleView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            shareToggleView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shareToggleView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            shareToggleView.trailingAnchor.constraint(equalTo: trailingAnchor),
             shareToggleView.heightAnchor.constraint(equalToConstant: rowHeight),
 
-            shareLinkView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            shareLinkView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shareLinkView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            shareLinkView.trailingAnchor.constraint(equalTo: trailingAnchor),
             shareLinkView.heightAnchor.constraint(equalToConstant: rowHeight)
         ]
 
         let deleteButtonConstraints = [
-            deleteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            deleteButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            deleteButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             deleteButton.heightAnchor.constraint(equalToConstant: rowHeight)
         ]
 
         switch viewModel.appearance {
         case .regular:
-            view.addSubview(changeNameButton)
-            view.addSubview(deleteButton)
+            addSubview(changeNameButton)
+            addSubview(deleteButton)
 
             constraints.append(contentsOf: [
                 changeNameButton.topAnchor.constraint(equalTo: editButton.bottomAnchor),
-                changeNameButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                changeNameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                changeNameButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+                changeNameButton.trailingAnchor.constraint(equalTo: trailingAnchor),
                 changeNameButton.heightAnchor.constraint(equalToConstant: rowHeight),
 
                 shareToggleView.topAnchor.constraint(equalTo: changeNameButton.bottomAnchor),
@@ -188,7 +188,7 @@ public final class FavoriteFolderActionViewController: UIViewController {
                 shareToggleView.topAnchor.constraint(equalTo: editButton.bottomAnchor)
             ])
         case .xmasFolder:
-            view.addSubview(deleteButton)
+            addSubview(deleteButton)
 
             constraints.append(contentsOf: [
                 shareToggleView.topAnchor.constraint(equalTo: editButton.bottomAnchor),
@@ -209,23 +209,23 @@ public final class FavoriteFolderActionViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func handleActionButtonTap(_ button: FavoriteFolderActionButton) {
-        delegate?.favoriteFolderActionViewController(self, didSelectAction: button.action)
+        delegate?.favoriteFolderActionView(self, didSelectAction: button.action)
     }
 }
 
 // MARK: - FavoriteFolderShareToggleViewDelegate
 
-extension FavoriteFolderActionViewController: FavoriteFolderShareToggleViewDelegate {
+extension FavoriteFolderActionView: FavoriteFolderShareToggleViewDelegate {
     func favoriteFolderShareToggleView(_ view: FavoriteFolderShareToggleView, didChangeValueFor switchControl: UISwitch) {
-        delegate?.favoriteFolderActionViewController(self, didSelectAction: .toggleSharing)
+        delegate?.favoriteFolderActionView(self, didSelectAction: .toggleSharing)
     }
 }
 
 // MARK: - FavoriteFolderShareLinkViewDelegate
 
-extension FavoriteFolderActionViewController: FavoriteFolderShareLinkViewDelegate {
+extension FavoriteFolderActionView: FavoriteFolderShareLinkViewDelegate {
     func favoriteFolderShareLinkViewDidSelectButton(_ view: FavoriteFolderShareLinkView) {
-        delegate?.favoriteFolderActionViewController(self, didSelectAction: .shareLink)
+        delegate?.favoriteFolderActionView(self, didSelectAction: .shareLink)
     }
 }
 

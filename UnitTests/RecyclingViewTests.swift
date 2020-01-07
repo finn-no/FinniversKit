@@ -59,14 +59,6 @@ class RecyclingViewTests: XCTestCase {
         snapshot(.neighborhoodProfileView)
     }
 
-    func testFavoriteAdSortingView() {
-        snapshot(.favoriteAdSortingView)
-    }
-
-    func testFavoriteAdActionView() {
-        snapshot(.favoriteAdActionView)
-    }
-
     func testBasicTableView() {
         snapshot(.basicTableView)
     }
