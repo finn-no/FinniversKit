@@ -6,12 +6,17 @@ import UIKit
 
 public protocol PaymentOptionsListViewDelegate: AnyObject {
     func paymentOptionsListView(_ view: PaymentOptionsListView, didSelectRowAt indexPath: IndexPath)
-    func paymentOptionsListView(_ view: PaymentOptionsListView, didSelectButton button: UIButton)
+    func paymentOptionsListViewDidTapButton(_ view: PaymentOptionsListView)
+}
+
+public protocol PaymentOptionsListViewDataSource: AnyObject {
+    func paymentOptionsListView(_ paymentOptionsListView: PaymentOptionsListView, numberOfRowsInSection section: Int) -> Int
+    func paymentOptionsListView(_ paymentOptionsListView: PaymentOptionsListView, modelForRowAt indexPath: IndexPath) -> PaymentOptionsListViewModel
 }
 
 public class PaymentOptionsListView: UIView {
 
-    // MARK: Private properties
+    // MARK: - Private properties
 
     private lazy var footerButtonView: FooterButtonView = {
         let view = FooterButtonView(withAutoLayout: true)
@@ -33,17 +38,21 @@ public class PaymentOptionsListView: UIView {
         return tableView
     }()
 
-    private var items: [PaymentOptionsListViewModel]
-    private var selectedIndexPath: IndexPath?
+    private weak var delegate: PaymentOptionsListViewDelegate?
+    private weak var dataSource: PaymentOptionsListViewDataSource?
 
-    // MARK: Public properties
+    private var numberOfRows: Int = 0
 
-    public weak var delegate: PaymentOptionsListViewDelegate?
+    // MARK: - Public properties
 
-    // MARK: Public functions
+    private(set) var selectedIndexPath: IndexPath?
 
-    public init(items: [PaymentOptionsListViewModel], totalSumViewTitle: String, collapseViewTitle: String, collapseViewExpandedTitle: String) {
-        self.items = items
+    // MARK: - Public functions
+
+    public init(delegate: PaymentOptionsListViewDelegate, dataSource: PaymentOptionsListViewDataSource,
+                totalSumViewTitle: String, collapseViewTitle: String, collapseViewExpandedTitle: String) {
+        self.delegate = delegate
+        self.dataSource = dataSource
         self.totalSumView = OrderTotalSumView(title: totalSumViewTitle, totalSum: "", withAutoLayout: true)
         self.collapseView = CollapseView(collapsedTitle: collapseViewTitle, expandedTitle: collapseViewExpandedTitle,
                                          viewToPresentInExpandedState: nil, heightOfView: 0, withAutoLayout: true)
@@ -107,11 +116,13 @@ private extension PaymentOptionsListView {
 
 extension PaymentOptionsListView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        numberOfRows = dataSource?.paymentOptionsListView(self, numberOfRowsInSection: section) ?? 0
+        return numberOfRows
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let item = items[safe: indexPath.row] else { return UITableViewCell() }
+        guard let item = dataSource?.paymentOptionsListView(self, modelForRowAt: indexPath) else { return UITableViewCell() }
+
         let cell = tableView.dequeue(PaymentOptionsListViewCell.self, for: indexPath)
         cell.selectionStyle = .none
 
@@ -122,7 +133,8 @@ extension PaymentOptionsListView: UITableViewDataSource {
             cell.configure(with: item, indexPath: indexPath)
         }
 
-        if indexPath.row != (items.count - 1) {
+        let lastRow = (numberOfRows - 1)
+        if indexPath.row != lastRow {
             cell.showSeperator(true)
         }
 
@@ -159,6 +171,6 @@ extension PaymentOptionsListView: UITableViewDelegate {
 
 extension PaymentOptionsListView: FooterButtonViewDelegate {
     public func footerButtonView(_ view: FooterButtonView, didSelectButton button: UIButton) {
-        delegate?.paymentOptionsListView(self, didSelectButton: button)
+        delegate?.paymentOptionsListViewDidTapButton(self)
     }
 }

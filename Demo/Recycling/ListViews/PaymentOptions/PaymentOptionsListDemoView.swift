@@ -12,12 +12,11 @@ class PaymentOptionsListViewDemoView: UIView {
     private lazy var smsSummaryView = OrderSummaryView(orderLines: PaymentOptionsListDemoViewHelpers.smsOrderLines, withAutoLayout: true)
     private lazy var invoiceSummaryView = OrderSummaryView(orderLines: PaymentOptionsListDemoViewHelpers.invoiceOrderLines, withAutoLayout: true)
 
-    private lazy var paymentOptionsListView: PaymentOptionsListView = {
-        let view = PaymentOptionsListView(items: items, totalSumViewTitle: "Totalsum",
-                                          collapseViewTitle: "Vis oppsummering", collapseViewExpandedTitle: "Skjul oppsummering")
-        view.delegate = self
-        return view
-    }()
+    private lazy var paymentOptionsListView: PaymentOptionsListView = PaymentOptionsListView(delegate: self,
+                                                                                             dataSource: self,
+                                                                                             totalSumViewTitle: "Totalsum",
+                                                                                             collapseViewTitle: "Vis oppsummering",
+                                                                                             collapseViewExpandedTitle: "Skjul oppsummering")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,7 +57,18 @@ extension PaymentOptionsListViewDemoView: PaymentOptionsListViewDelegate {
         }
     }
 
-    public func paymentOptionsListView(_ view: PaymentOptionsListView, didSelectButton button: UIButton) {
+    public func paymentOptionsListViewDidTapButton(_ view: PaymentOptionsListView) {
         print("Did tap button")
+    }
+}
+
+extension PaymentOptionsListViewDemoView: PaymentOptionsListViewDataSource {
+    func paymentOptionsListView(_ paymentOptionsListView: PaymentOptionsListView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+
+    func paymentOptionsListView(_ paymentOptionsListView: PaymentOptionsListView, modelForRowAt indexPath: IndexPath) -> PaymentOptionsListViewModel {
+        return items[indexPath.row]
+
     }
 }
