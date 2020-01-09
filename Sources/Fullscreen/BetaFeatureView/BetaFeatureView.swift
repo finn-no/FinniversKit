@@ -72,8 +72,6 @@ public class BetaFeatureView: UIView {
         return button
     }()
 
-    private let betaPillSize = CGSize(width: 52, height: 24)
-
     // MARK: - Initializers
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -96,6 +94,8 @@ public class BetaFeatureView: UIView {
 
     // MARK: - Private methods
     private func setup() {
+        let betaPillSize = CGSize(width: 52, height: 24)
+
         iconImageView.addSubview(betaFlagView)
 
         addSubview(iconImageView)
