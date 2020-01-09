@@ -132,4 +132,8 @@ class FullscreenViewTests: XCTestCase {
     func testFavoriteFolderActionView() {
         snapshot(.favoriteFolderActionView)
     }
+
+    func testBetaFeatureView() {
+        snapshot(.betaFeatureView)
+    }
 }
