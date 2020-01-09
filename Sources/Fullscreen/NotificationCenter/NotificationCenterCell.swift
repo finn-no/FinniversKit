@@ -31,7 +31,7 @@ class NotificationCenterCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 8
         imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = .imageBorder
+        imageView.layer.borderColor = .tableViewSeparator
         imageView.layer.masksToBounds = true
         return imageView
     }()
@@ -62,6 +62,7 @@ class NotificationCenterCell: UITableViewCell {
 
     override func prepareForReuse() {
         configure(with: nil)
+        remoteImageView.image = nil
         remoteImageView.cancelLoading()
     }
 
@@ -97,12 +98,12 @@ private extension NotificationCenterCell {
             remoteImageView.widthAnchor.constraint(equalToConstant: 130),
             remoteImageView.heightAnchor.constraint(equalToConstant: 100),
 
+            timestampLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            timestampLabel.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
+
+            titleLabel.topAnchor.constraint(equalTo: timestampLabel.bottomAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            titleLabel.centerYAnchor.constraint(equalTo: remoteImageView.centerYAnchor),
-
-            timestampLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            timestampLabel.topAnchor.constraint(equalTo: remoteImageView.topAnchor)
         ])
     }
 }
