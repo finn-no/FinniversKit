@@ -120,20 +120,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .favoriteFolderActionView:
             return DemoViewController<FavoriteFolderActionDemoView>()
         case .betaFeatureView:
-            let viewController = BetaFeatureDemoViewController()
-            viewController.view.layoutIfNeeded()
-
-            let contentHeight = viewController.contentSize.height
-
-            let bottomSheet = BottomSheet(
-                rootViewController: viewController,
-                height: .init(
-                    compact: contentHeight,
-                    expanded: contentHeight
-                )
-            )
-
-            return bottomSheet
+            return DemoViewController<BetaFeatureDemoView>()
         }
     }
 }

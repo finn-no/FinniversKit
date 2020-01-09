@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-class BetaFeatureDemoViewController: UIViewController {
+final class BetaFeatureDemoView: UIView {
     private lazy var betaFeatureView: BetaFeatureView = {
         let view = BetaFeatureView(withAutoLayout: true)
         view.configure(with: viewModel)
@@ -19,19 +19,23 @@ class BetaFeatureDemoViewController: UIViewController {
         secondButtonTitle: "Velg bilde..."
     )
 
-    var contentSize: CGSize {
-        let fittingSize = view.systemLayoutSizeFitting(
-            view.bounds.size,
-            withHorizontalFittingPriority: .fittingSizeLevel,
-            verticalFittingPriority: .defaultLow
-        )
-
-        return CGSize(width: fittingSize.width, height: fittingSize.height + 50)
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
     }
 
-    override func viewDidLoad() {
-        view.addSubview(betaFeatureView)
-        view.layoutMargins = UIEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
-        betaFeatureView.fillInSuperviewLayoutMargins()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func setup() {
+        addSubview(betaFeatureView)
+        layoutMargins = UIEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+        NSLayoutConstraint.activate([
+            betaFeatureView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            betaFeatureView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            betaFeatureView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            betaFeatureView.bottomAnchor.constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor),
+        ])
     }
 }
