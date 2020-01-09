@@ -33,6 +33,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
     case favoriteAdCommentInputView
     case favoriteAdSortingView
     case favoriteFolderActionView
+    case betaFeatureView
 
     public static var items: [FullscreenDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -118,6 +119,21 @@ public enum FullscreenDemoViews: String, CaseIterable {
             return DemoViewController<FavoriteAdSortingDemoView>()
         case .favoriteFolderActionView:
             return DemoViewController<FavoriteFolderActionDemoView>()
+        case .betaFeatureView:
+            let viewController = BetaFeatureDemoViewController()
+            viewController.view.layoutIfNeeded()
+
+            let contentHeight = viewController.contentSize.height
+
+            let bottomSheet = BottomSheet(
+                rootViewController: viewController,
+                height: .init(
+                    compact: contentHeight,
+                    expanded: contentHeight
+                )
+            )
+
+            return bottomSheet
         }
     }
 }
