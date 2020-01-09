@@ -7,20 +7,20 @@ import FinniversKit
 struct NotificationModel: NotificationCenterCellModel {
     let imagePath: String?
     let title: String
-    let date: String
+    let timestamp: String
     var read: Bool
 }
 
 class NotificationCenterDemoView: UIView {
 
     private lazy var data = [
-        NotificationModel(imagePath: "", title: "Sofa", date: "15 min siden", read: false),
-        NotificationModel(imagePath: "", title: "Sofa", date: "15 min siden", read: false),
-        NotificationModel(imagePath: "", title: "Sofa", date: "15 min siden", read: true),
-        NotificationModel(imagePath: "", title: "Sofa", date: "15 min siden", read: false),
-        NotificationModel(imagePath: "", title: "Sofa", date: "15 min siden", read: true),
-        NotificationModel(imagePath: "", title: "Sofa", date: "15 min siden", read: true),
-        NotificationModel(imagePath: "", title: "Sofa", date: "15 min siden", read: true)
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true)
     ]
 
     private lazy var notificationCenterView: NotificationCenterView = {

@@ -7,7 +7,7 @@ import UIKit
 public protocol NotificationCenterCellModel {
     var imagePath: String? { get }
     var title: String { get }
-    var date: String { get }
+    var timestamp: String { get }
     var read: Bool { get }
 }
 
@@ -38,11 +38,11 @@ class NotificationCenterCell: UITableViewCell {
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         return label
     }()
 
-    private lazy var dateLabel: Label = {
+    private lazy var timestampLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
         return label
     }()
@@ -67,7 +67,7 @@ class NotificationCenterCell: UITableViewCell {
 
     func configure(with model: NotificationCenterCellModel?) {
         titleLabel.text = model?.title
-        dateLabel.text = model?.date
+        timestampLabel.text = model?.timestamp
         contentView.backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
 
         guard let imagePath = model?.imagePath else {
@@ -88,21 +88,21 @@ private extension NotificationCenterCell {
     func setup() {
         contentView.addSubview(remoteImageView)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(dateLabel)
+        contentView.addSubview(timestampLabel)
 
         NSLayoutConstraint.activate([
             remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             remoteImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
-            remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
-            remoteImageView.heightAnchor.constraint(equalToConstant: adImageWidth),
+            remoteImageView.widthAnchor.constraint(equalToConstant: 130),
+            remoteImageView.heightAnchor.constraint(equalToConstant: 100),
 
             titleLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             titleLabel.centerYAnchor.constraint(equalTo: remoteImageView.centerYAnchor),
 
-            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing)
+            timestampLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            timestampLabel.topAnchor.constraint(equalTo: remoteImageView.topAnchor)
         ])
     }
 }
