@@ -33,6 +33,7 @@ public enum FinniversImageAsset: String {
     case balloon2
     case balloon22
     case bankID
+    case betaPill
     case blockUser
     case boat
     case calendar
@@ -197,6 +198,7 @@ public enum FinniversImageAsset: String {
             .balloon2,
             .balloon22,
             .bankID,
+            .betaPill,
             .blockUser,
             .boat,
             .calendar,
