@@ -22,6 +22,7 @@ public class NotificationCenterView: UIView {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.backgroundColor = .bgPrimary
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(NotificationCenterCell.self)
