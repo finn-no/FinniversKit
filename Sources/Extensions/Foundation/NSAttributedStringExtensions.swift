@@ -5,12 +5,21 @@
 import Foundation
 
 public extension NSAttributedString {
-    static func makeBulletPointFrom(stringList: [String], font: UIFont, bullet: String = "\u{2022}", indentation: CGFloat = .mediumLargeSpacing, lineSpacing: CGFloat = .verySmallSpacing, paragraphSpacing: CGFloat = .mediumSpacing, textColor: UIColor = .textPrimary, bulletColor: UIColor = .textPrimary) -> NSAttributedString {
-        let textAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: textColor]
-        let bulletAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: bulletColor]
-
+    static func makeBulletPointFrom(
+        stringList: [String],
+        font: UIFont,
+        bullet: String = "\u{2022}",
+        indentation: CGFloat = .mediumLargeSpacing,
+        lineSpacing: CGFloat = .verySmallSpacing,
+        paragraphSpacing: CGFloat = .mediumSpacing,
+        textColor: UIColor = .textPrimary,
+        bulletColor: UIColor = .textPrimary
+    ) -> NSAttributedString {
+        let textAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: textColor]
+        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: bulletColor]
         let paragraphStyle = NSMutableParagraphStyle()
         let nonOptions = [NSTextTab.OptionKey: Any]()
+
         paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: indentation, options: nonOptions)]
         paragraphStyle.defaultTabInterval = indentation
         paragraphStyle.lineSpacing = lineSpacing
@@ -18,6 +27,7 @@ public extension NSAttributedString {
         paragraphStyle.headIndent = indentation
 
         let bulletList = NSMutableAttributedString()
+
         for string in stringList {
             let formattedString = "\(bullet)\t\(string)"
             let attributedString = NSMutableAttributedString(string: formattedString)
@@ -37,6 +47,7 @@ public extension NSAttributedString {
                 bulletList.append(attributedLineShift)
             }
         }
+
         return bulletList
     }
 }
