@@ -9,6 +9,7 @@ public protocol NotificationCenterCellModel {
     var title: String { get }
     var timestamp: String { get }
     var read: Bool { get }
+    var ribbonModels: [RibbonViewModel] { get }
 }
 
 class NotificationCenterCell: UITableViewCell {
@@ -36,16 +37,28 @@ class NotificationCenterCell: UITableViewCell {
         return imageView
     }()
 
-    private lazy var titleLabel: Label = {
-        let label = Label(style: .bodyStrong, withAutoLayout: true)
-        label.numberOfLines = 2
-        return label
+    private lazy var ribbonStackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .horizontal
+        stackView.spacing = .smallSpacing
+        return stackView
     }()
 
     private lazy var timestampLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
         return label
     }()
+
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .bodyStrong, withAutoLayout: true)
+        label.numberOfLines = 2
+        return label
+    }()
+
+    private lazy var timestampToRibbonsConstraint = timestampLabel.leadingAnchor.constraint(
+        equalTo: ribbonStackView.trailingAnchor,
+        constant: .mediumSpacing
+    )
 
     // MARK: - Init
 
@@ -61,15 +74,26 @@ class NotificationCenterCell: UITableViewCell {
     // MARK: - Methods
 
     override func prepareForReuse() {
-        configure(with: nil)
         remoteImageView.image = nil
         remoteImageView.cancelLoading()
+        ribbonStackView.subviews.forEach { $0.removeFromSuperview() }
+        timestampToRibbonsConstraint.isActive = false
+        configure(with: nil)
     }
 
     func configure(with model: NotificationCenterCellModel?) {
-        titleLabel.text = model?.title
         timestampLabel.text = model?.timestamp
+        titleLabel.text = model?.title
         contentView.backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
+
+        if let ribbonModels = model?.ribbonModels, !ribbonModels.isEmpty {
+            ribbonModels.forEach { model in
+                let ribbonView = RibbonView(style: model.style, with: model.title)
+                ribbonStackView.addArrangedSubview(ribbonView)
+            }
+
+            timestampToRibbonsConstraint.isActive = true
+        }
 
         guard let imagePath = model?.imagePath else {
             return
@@ -88,8 +112,9 @@ class NotificationCenterCell: UITableViewCell {
 private extension NotificationCenterCell {
     func setup() {
         contentView.addSubview(remoteImageView)
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(ribbonStackView)
         contentView.addSubview(timestampLabel)
+        contentView.addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
             remoteImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumLargeSpacing),
@@ -98,8 +123,11 @@ private extension NotificationCenterCell {
             remoteImageView.widthAnchor.constraint(equalToConstant: 130),
             remoteImageView.heightAnchor.constraint(equalToConstant: 100),
 
-            timestampLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            ribbonStackView.centerYAnchor.constraint(equalTo: timestampLabel.centerYAnchor),
+            ribbonStackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
+
             timestampLabel.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
+            timestampLabel.leadingAnchor.constraint(greaterThanOrEqualTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
 
             titleLabel.topAnchor.constraint(equalTo: timestampLabel.bottomAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),

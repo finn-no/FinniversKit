@@ -4,6 +4,11 @@
 
 import UIKit
 
+public protocol RibbonViewModel {
+    var title: String { get }
+    var style: RibbonView.Style { get }
+}
+
 public class RibbonView: UIView {
 
     // MARK: - Public properties

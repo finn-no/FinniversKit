@@ -4,23 +4,29 @@
 
 import FinniversKit
 
+struct PriceChangeRibbon: RibbonViewModel {
+    let title: String
+    let style: RibbonView.Style
+}
+
 struct NotificationModel: NotificationCenterCellModel {
     let imagePath: String?
     let title: String
     let timestamp: String
     var read: Bool
+    let ribbonModels: [RibbonViewModel]
 }
 
 class NotificationCenterDemoView: UIView {
 
     private lazy var data = [
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true)
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false, ribbonModels: [PriceChangeRibbon(title: "Ny pris", style: .sponsored)]),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false, ribbonModels: []),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: [PriceChangeRibbon(title: "Ny pris", style: .sponsored), PriceChangeRibbon(title: "Ny pris", style: .sponsored)]),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false, ribbonModels: []),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: []),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: []),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: [])
     ]
 
     private lazy var notificationCenterView: NotificationCenterView = {
