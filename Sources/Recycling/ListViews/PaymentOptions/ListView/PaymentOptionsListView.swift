@@ -45,7 +45,7 @@ public class PaymentOptionsListView: UIView {
 
     // MARK: - Public properties
 
-    private(set) var selectedIndexPath: IndexPath?
+    public private(set) var selectedIndexPath: IndexPath?
 
     // MARK: - Public methods
 
