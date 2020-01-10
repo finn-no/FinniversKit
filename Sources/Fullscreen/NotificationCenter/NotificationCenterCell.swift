@@ -84,7 +84,7 @@ class NotificationCenterCell: UITableViewCell {
     func configure(with model: NotificationCenterCellModel?) {
         timestampLabel.text = model?.timestamp
         titleLabel.text = model?.title
-        contentView.backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
+        backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
 
         if let ribbonModels = model?.ribbonModels, !ribbonModels.isEmpty {
             ribbonModels.forEach { model in
@@ -111,6 +111,8 @@ class NotificationCenterCell: UITableViewCell {
 // MARK: - Private methods
 private extension NotificationCenterCell {
     func setup() {
+        setDefaultSelectedBackgound()
+
         contentView.addSubview(remoteImageView)
         contentView.addSubview(ribbonStackView)
         contentView.addSubview(timestampLabel)

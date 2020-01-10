@@ -41,6 +41,10 @@ public class NotificationCenterView: UIView {
 }
 
 public extension NotificationCenterView {
+    var indexPathForSelectedRow: IndexPath? {
+        tableView.indexPathForSelectedRow
+    }
+
     func reloadRows(at indexPaths: [IndexPath], animated: Bool = true) {
         tableView.reloadRows(at: indexPaths, with: animated ? .automatic : .none)
     }
