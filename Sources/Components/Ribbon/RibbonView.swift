@@ -4,9 +4,14 @@
 
 import UIKit
 
-public protocol RibbonViewModel {
-    var title: String { get }
-    var style: RibbonView.Style { get }
+public struct RibbonViewModel {
+    let title: String
+    let style: RibbonView.Style
+
+    public init(title: String, style: RibbonView.Style) {
+        self.title = title
+        self.style = style
+    }
 }
 
 public class RibbonView: UIView {

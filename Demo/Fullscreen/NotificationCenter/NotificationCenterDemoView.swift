@@ -4,10 +4,6 @@
 
 import FinniversKit
 
-struct PriceChangeRibbon: RibbonViewModel {
-    let title: String
-    let style: RibbonView.Style
-}
 
 struct NotificationModel: NotificationCenterCellModel {
     let imagePath: String?
@@ -20,9 +16,9 @@ struct NotificationModel: NotificationCenterCellModel {
 class NotificationCenterDemoView: UIView {
 
     private lazy var data = [
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false, ribbonModels: [PriceChangeRibbon(title: "Ny pris", style: .sponsored)]),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false, ribbonModels: [RibbonViewModel(title: "Ny pris", style: .sponsored)]),
         NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false, ribbonModels: []),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: [PriceChangeRibbon(title: "Ny pris", style: .sponsored), PriceChangeRibbon(title: "Ny pris", style: .sponsored)]),
+        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: [RibbonViewModel(title: "Ny pris", style: .sponsored), RibbonViewModel(title: "Ny pris", style: .sponsored)]),
         NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false, ribbonModels: []),
         NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: []),
         NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: []),
