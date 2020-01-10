@@ -6,7 +6,7 @@ import FinniversKit
 
 struct PaymentOptionsDemoCellViewModel: PaymentOptionsListViewModel {
     public var title: String
-    public var subtitle: String
+    public var subtitle: String?
     public var detailText: String?
 }
 

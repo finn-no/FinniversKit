@@ -44,7 +44,7 @@ public class PaymentOptionsListViewCell: UITableViewCell {
     }()
 
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 2
         stackView.axis = .vertical
@@ -73,7 +73,12 @@ public class PaymentOptionsListViewCell: UITableViewCell {
 
     public func configure(with viewModel: PaymentOptionsListViewModel, indexPath: IndexPath, isPreselected: Bool = false) {
         titleLabel.text = viewModel.title
-        subtitleLabel.text = viewModel.subtitle
+
+        if let subtitleText = viewModel.subtitle {
+            guard subtitleLabel.isDescendant(of: stackView) == false else { return }
+            stackView.addArrangedSubview(subtitleLabel)
+            subtitleLabel.text = subtitleText
+        }
 
         if let detailText = viewModel.detailText {
             detailLabel.text = detailText

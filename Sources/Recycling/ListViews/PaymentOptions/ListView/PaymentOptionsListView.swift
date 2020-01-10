@@ -45,9 +45,9 @@ public class PaymentOptionsListView: UIView {
 
     // MARK: - Public properties
 
-    public private(set) var selectedIndexPath: IndexPath?
+    private(set) var selectedIndexPath: IndexPath?
 
-    // MARK: - Public functions
+    // MARK: - Public methods
 
     public init(delegate: PaymentOptionsListViewDelegate, dataSource: PaymentOptionsListViewDataSource,
                 totalSumViewTitle: String, collapseViewTitle: String, collapseViewExpandedTitle: String) {
@@ -79,7 +79,7 @@ public class PaymentOptionsListView: UIView {
     }
 }
 
-// MARK: Private extension
+// MARK: Private methods
 
 private extension PaymentOptionsListView {
     func setup() {
@@ -112,7 +112,7 @@ private extension PaymentOptionsListView {
     }
 }
 
-// MARK: UITableViewDataSource conformance
+// MARK: UITableViewDataSource
 
 extension PaymentOptionsListView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -142,7 +142,7 @@ extension PaymentOptionsListView: UITableViewDataSource {
     }
 }
 
-// MARK: UITableViewDataSource conformance
+// MARK: UITableViewDataSource
 
 extension PaymentOptionsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -167,7 +167,7 @@ extension PaymentOptionsListView: UITableViewDelegate {
     }
 }
 
-// MARK: FooterButtonViewDelegate conformance
+// MARK: FooterButtonViewDelegate
 
 extension PaymentOptionsListView: FooterButtonViewDelegate {
     public func footerButtonView(_ view: FooterButtonView, didSelectButton button: UIButton) {
