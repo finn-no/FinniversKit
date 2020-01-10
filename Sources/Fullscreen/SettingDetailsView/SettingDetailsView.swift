@@ -10,7 +10,7 @@ public protocol SettingDetailsViewModel {
     var title: String { get }
     var primaryButtonStyle: Button.Style { get }
     var primaryButtonTitle: String { get }
-    func text(for state: SettingDetailsView.State) -> String
+    func attributedText(for state: SettingDetailsView.State) -> NSAttributedString
     func textAlignment(for state: SettingDetailsView.State) -> NSTextAlignment
     func secondaryButtonTitle(for state: SettingDetailsView.State) -> String?
 }
@@ -121,12 +121,14 @@ public extension SettingDetailsView {
         secondaryButton.isHidden = model.secondaryButtonTitle(for: state) == nil
         secondaryButton.setTitle(model.secondaryButtonTitle(for: state), for: .normal)
 
+
+
         UIView.transition(
             with: textLabel,
             duration: animated ? 0.2 : 0,
             options: .transitionCrossDissolve,
             animations: {
-                self.textLabel.text = model.text(for: self.state)
+                self.textLabel.attributedText = model.attributedText(for: self.state).replacingFont(with: .bodyRegular)
                 self.textLabel.textAlignment = model.textAlignment(for: self.state)
             }
         )
@@ -207,5 +209,16 @@ private extension SettingDetailsView {
             primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             primaryButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -bottomInset),
         ])
+    }
+}
+
+// MARK: - Private extensions
+
+private extension NSAttributedString {
+    func replacingFont(with font: UIFont) -> NSAttributedString {
+        let range = NSRange(location: 0, length: length)
+        let newText = NSMutableAttributedString(attributedString: self)
+        newText.addAttribute(.font, value: UIFont.bodyRegular, range: range)
+        return newText
     }
 }
