@@ -5,37 +5,39 @@
 import Foundation
 
 public extension NSAttributedString {
-    static func makeBulletPointFrom(
-        stringList: [String],
+    static func bulletPoints(
+        from stringList: [String],
         font: UIFont,
         bullet: String = "\u{2022}",
-        indentation: CGFloat = .mediumLargeSpacing,
-        lineSpacing: CGFloat = .verySmallSpacing,
-        paragraphSpacing: CGFloat = .mediumSpacing,
+        indentation: CGFloat = 24,
+        paragraphSpacing: CGFloat = 6,
         textColor: UIColor = .textPrimary,
         bulletColor: UIColor = .textPrimary
     ) -> NSAttributedString {
-        let textAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: textColor]
-        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: bulletColor]
-        let paragraphStyle = NSMutableParagraphStyle()
+        let bulletList = NSMutableAttributedString()
         let nonOptions = [NSTextTab.OptionKey: Any]()
-
+        let paragraphStyle = NSMutableParagraphStyle()
+        let indentation = indentation / 2
         paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: indentation, options: nonOptions)]
         paragraphStyle.defaultTabInterval = indentation
-        paragraphStyle.lineSpacing = lineSpacing
+        paragraphStyle.lineSpacing = font.lineSpacing
         paragraphStyle.paragraphSpacing = paragraphSpacing
-        paragraphStyle.headIndent = indentation
+        paragraphStyle.headIndent = indentation * 3
 
-        let bulletList = NSMutableAttributedString()
+        let bulletAttributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: bulletColor]
+        let textAttributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: textColor,
+            .paragraphStyle: paragraphStyle
+        ]
 
         for string in stringList {
-            let formattedString = "\(bullet)\t\(string)"
+            let formattedString = "\t\(bullet)\t\t\(string)"
             let attributedString = NSMutableAttributedString(string: formattedString)
             let lineShift = "\n"
             let attributedLineShift = NSMutableAttributedString(string: lineShift)
 
             let attributeRange = NSRange(location: 0, length: attributedString.length)
-            attributedString.addAttributes([NSAttributedString.Key.paragraphStyle: paragraphStyle], range: attributeRange)
             attributedString.addAttributes(textAttributes, range: attributeRange)
 
             let nsString: NSString = NSString(string: formattedString)
@@ -49,5 +51,24 @@ public extension NSAttributedString {
         }
 
         return bulletList
+    }
+}
+
+// MARK: - Private extensions
+
+private extension UIFont {
+    var lineSpacing: CGFloat {
+        switch pointSize {
+        case CGFloat.leastNormalMagnitude..<12:
+            return 2
+        case 12:
+            return 3
+        case 14:
+            return 4
+        case 16:
+            return 5
+        default:
+            return .mediumSpacing
+        }
     }
 }
