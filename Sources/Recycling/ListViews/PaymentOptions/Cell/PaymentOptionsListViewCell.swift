@@ -75,9 +75,10 @@ public class PaymentOptionsListViewCell: UITableViewCell {
         titleLabel.text = viewModel.title
 
         if let subtitleText = viewModel.subtitle {
+            subtitleLabel.text = subtitleText
+
             guard subtitleLabel.isDescendant(of: stackView) == false else { return }
             stackView.addArrangedSubview(subtitleLabel)
-            subtitleLabel.text = subtitleText
         }
 
         if let detailText = viewModel.detailText {
