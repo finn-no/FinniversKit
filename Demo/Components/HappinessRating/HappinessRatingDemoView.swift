@@ -32,7 +32,6 @@ class HappinessRatingDemoView: UIView {
 
         NSLayoutConstraint.activate([
             happinessRatingView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            happinessRatingView.heightAnchor.constraint(equalToConstant: 60),
             happinessRatingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .largeSpacing),
             happinessRatingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.largeSpacing)
         ])
