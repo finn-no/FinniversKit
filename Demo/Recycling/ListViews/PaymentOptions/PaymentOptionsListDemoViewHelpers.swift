@@ -19,7 +19,7 @@ struct PaymentOptionsListDemoViewHelpers {
     static var items: [PaymentOptionsDemoCellViewModel] = [
         PaymentOptionsDemoCellViewModel(title: "Vipps", subtitle: "Vipps-appen på din mobil"),
         PaymentOptionsDemoCellViewModel(title: "Betalingskort", subtitle: "VISA eller Mastercard"),
-        PaymentOptionsDemoCellViewModel(title: "SMS-betaling", subtitle: "På din mobilregning - inkl. operatørkostnader", detailText: "+XX kr"),
+        PaymentOptionsDemoCellViewModel(title: "SMS-betaling", subtitle: "På din mobilregning - inkl. operatørkostnader og andre kostnader", detailText: "+XX kr"),
         PaymentOptionsDemoCellViewModel(title: "Faktura", subtitle: "Faktura tilsendt"),
     ]
 

@@ -114,15 +114,14 @@ public class PaymentOptionsListViewCell: UITableViewCell {
         contentView.addSubview(seperator)
 
         NSLayoutConstraint.activate([
-            selectionBox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            selectionBox.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
-            selectionBox.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13),
+            selectionBox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
+            selectionBox.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            selectionBox.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
             selectionBox.widthAnchor.constraint(lessThanOrEqualToConstant: 24),
 
             stackView.leadingAnchor.constraint(equalTo: selectionBox.trailingAnchor, constant: .mediumLargeSpacing),
-            stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.mediumSpacing),
             stackView.topAnchor.constraint(equalTo: selectionBox.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: selectionBox.bottomAnchor),
 
             detailLabel.topAnchor.constraint(equalTo: stackView.topAnchor),
             detailLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
