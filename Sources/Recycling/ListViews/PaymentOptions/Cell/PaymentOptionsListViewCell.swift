@@ -4,13 +4,7 @@
 
 import UIKit
 
-public protocol PaymentOptionsListViewCellDelegate: AnyObject {}
-
 public class PaymentOptionsListViewCell: UITableViewCell {
-    // MARK: - Public properties
-
-    public weak var delegate: PaymentOptionsListViewCellDelegate?
-
     // MARK: - Private properties
 
     private lazy var selectionBox: SelectionboxItem = {
