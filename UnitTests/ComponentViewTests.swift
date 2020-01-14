@@ -135,10 +135,6 @@ class ComponentViewTests: XCTestCase {
         snapshot(.nativeAdvert)
     }
 
-    func testNativeAdvertContent() {
-        snapshot(.nativeAdvertContent)
-    }
-
     func testCallout() {
         snapshot(.callout)
     }

@@ -9,6 +9,7 @@ public class AdDataSource: NSObject {
     let models: [Ad] = {
         var ads = AdFactory.create(numberOfModels: 9)
         ads.insert(AdFactory.googleDemoAd, at: 4)
+        ads.insert(AdFactory.nativeDemoAd, at: 8)
         return ads
     }()
 }
@@ -58,7 +59,8 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
     public func adsGridView(_ adsGridView: AdsGridView, cellClassesIn collectionView: UICollectionView) -> [UICollectionViewCell.Type] {
         return [
             AdsGridViewCell.self,
-            BannerAdDemoCell.self
+            BannerAdDemoCell.self,
+            NativeAdvertRecommendationDemoCell.self,
         ]
     }
 
@@ -66,6 +68,8 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
         let model = dataSource.models[indexPath.item]
 
         switch model.adType {
+        case .native:
+            return NativeAdvertRecommendationDemoCell.height(for: width)
         case .google:
             return 300
         default:
@@ -80,6 +84,8 @@ extension AdsGridViewDemoView: AdsGridViewDataSource {
         let model = dataSource.models[indexPath.item]
 
         switch model.adType {
+        case .native:
+            return collectionView.dequeue(NativeAdvertRecommendationDemoCell.self, for: indexPath)
         case .google:
             return collectionView.dequeue(BannerAdDemoCell.self, for: indexPath)
 

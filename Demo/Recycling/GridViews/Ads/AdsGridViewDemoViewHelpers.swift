@@ -7,6 +7,7 @@ import FinniversKit
 /// A model confirming to the AdsGridViewModel protocol for showcasing AdsGridViewCell in playground.
 public struct Ad: AdsGridViewModel {
     public enum AdType {
+        case native
         case google
         case normal
     }
@@ -59,6 +60,20 @@ public struct AdFactory {
         imageText: nil,
         isFavorite: false,
         adType: .google,
+        sponsoredAdData: nil,
+        favoriteButtonAccessibilityLabel: ""
+    )
+
+    public static let nativeDemoAd = Ad(
+        imagePath: nil,
+        imageSize: .zero,
+        iconImage: nil,
+        title: "Native Ad",
+        subtitle: nil,
+        accessory: nil,
+        imageText: nil,
+        isFavorite: false,
+        adType: .native,
         sponsoredAdData: nil,
         favoriteButtonAccessibilityLabel: ""
     )

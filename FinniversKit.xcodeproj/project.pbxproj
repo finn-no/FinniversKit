@@ -254,8 +254,10 @@
 		89A7A63D225337B50053D33B /* NativeAdvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */; };
 		89A7A645225352380053D33B /* NativeAdvertDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A643225352180053D33B /* NativeAdvertDelegates.swift */; };
 		89A7A648225352A30053D33B /* NativeAdvertContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7A6462253524E0053D33B /* NativeAdvertContentView.swift */; };
+		91341EDB23C38288005B65CF /* NativeAdvertRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */; };
+		91341EDD23C46BE5005B65CF /* NativeAdvertRibbon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */; };
+		91341EE023C48E83005B65CF /* NativeAdvertRecommendationDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91341EDF23C48E83005B65CF /* NativeAdvertRecommendationDemoCell.swift */; };
 		9135BF8A22F2C31300C8E1F5 /* MKMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135BF8922F2C31300C8E1F5 /* MKMapViewExtensions.swift */; };
-		9144BD3223AA209A0083F0D9 /* NativeAdvertContentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9144BD3123AA209A0083F0D9 /* NativeAdvertContentDemoView.swift */; };
 		9144BD3423AA20B50083F0D9 /* NativeAdvertDefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9144BD3323AA20B50083F0D9 /* NativeAdvertDefaultData.swift */; };
 		91846C4A22E735D80001410F /* SearchResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4922E735D80001410F /* SearchResultMapView.swift */; };
 		91846C4D22E736BF0001410F /* SearchResultMapViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4C22E736BF0001410F /* SearchResultMapViewDemoViewController.swift */; };
@@ -311,6 +313,8 @@
 		9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */; };
 		9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */; };
 		9BCDFC7622E09E3C00A80D7F /* KlimabroletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7522E09E3C00A80D7F /* KlimabroletViewModel.swift */; };
+		9BCE6A3E23C7272200F37F6D /* BetaFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */; };
+		9BCE6A4123C7274800F37F6D /* BetaFeatureDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCE6A4023C7274800F37F6D /* BetaFeatureDemoView.swift */; };
 		9BD8ABBC2359B0BF001078CA /* ChristmasWishListDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD8ABBB2359B0BF001078CA /* ChristmasWishListDemoView.swift */; };
 		9BD8ABC02359B1EE001078CA /* ChristmasWishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD8ABBF2359B1EE001078CA /* ChristmasWishListView.swift */; };
 		9BEAA36D233B729500240F3D /* XCTestCastExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAA36C233B729500240F3D /* XCTestCastExtensions.swift */; };
@@ -854,8 +858,10 @@
 		89A7A641225344600053D33B /* NativeAdvertDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDemoView.swift; sourceTree = "<group>"; };
 		89A7A643225352180053D33B /* NativeAdvertDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDelegates.swift; sourceTree = "<group>"; };
 		89A7A6462253524E0053D33B /* NativeAdvertContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertContentView.swift; sourceTree = "<group>"; };
+		91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRecommendationView.swift; sourceTree = "<group>"; };
+		91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRibbon.swift; sourceTree = "<group>"; };
+		91341EDF23C48E83005B65CF /* NativeAdvertRecommendationDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertRecommendationDemoCell.swift; sourceTree = "<group>"; };
 		9135BF8922F2C31300C8E1F5 /* MKMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewExtensions.swift; sourceTree = "<group>"; };
-		9144BD3123AA209A0083F0D9 /* NativeAdvertContentDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertContentDemoView.swift; sourceTree = "<group>"; };
 		9144BD3323AA20B50083F0D9 /* NativeAdvertDefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdvertDefaultData.swift; sourceTree = "<group>"; };
 		91846C4922E735D80001410F /* SearchResultMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapView.swift; sourceTree = "<group>"; };
 		91846C4C22E736BF0001410F /* SearchResultMapViewDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMapViewDemoViewController.swift; sourceTree = "<group>"; };
@@ -897,6 +903,7 @@
 		9B7D5A2A22E1A5AF001E4005 /* KlimabroletDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletDemoViewController.swift; sourceTree = "<group>"; };
 		9B7D5A2C22E1B3B4001E4005 /* KlimabroletEventsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletEventsDemoViewController.swift; sourceTree = "<group>"; };
 		9B842899232FA60900D9406A /* TestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
+		9B8CB0A723A3D39F00A79A9E /* BetaFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetaFeatureView.swift; sourceTree = "<group>"; };
 		9B9287AA22F0593700FC7B69 /* KlimabroletData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletData.swift; sourceTree = "<group>"; };
 		9B93F20F230FC3CD009B2D4B /* NSDirectionalEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
 		9B9F8C1422F079F600298CDB /* FeedbackDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackDemoView.swift; sourceTree = "<group>"; };
@@ -912,6 +919,8 @@
 		9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoData.swift; sourceTree = "<group>"; };
 		9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletActionsView.swift; sourceTree = "<group>"; };
 		9BCDFC7522E09E3C00A80D7F /* KlimabroletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletViewModel.swift; sourceTree = "<group>"; };
+		9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaFeatureView.swift; sourceTree = "<group>"; };
+		9BCE6A4023C7274800F37F6D /* BetaFeatureDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaFeatureDemoView.swift; sourceTree = "<group>"; };
 		9BD8ABBB2359B0BF001078CA /* ChristmasWishListDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasWishListDemoView.swift; sourceTree = "<group>"; };
 		9BD8ABBF2359B1EE001078CA /* ChristmasWishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasWishListView.swift; sourceTree = "<group>"; };
 		9BEAA36C233B729500240F3D /* XCTestCastExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCastExtensions.swift; sourceTree = "<group>"; };
@@ -2061,6 +2070,7 @@
 				F2BE6BEA23683DA90085A05A /* AdConfirmationView */,
 				4441F9F022CCF75D00DCFD2F /* AddressMapView */,
 				DAD0D48621072EDD0091DD4D /* AdReporter */,
+				9B8CB0A623A3D37A00A79A9E /* BetaFeatureView */,
 				CF87A851229C0C5700DA8243 /* ContactForm */,
 				CF15D9B0215B9453004F5F02 /* EasterEggs */,
 				44D912502077AC8A00486848 /* EmptyView */,
@@ -2269,6 +2279,8 @@
 				918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */,
 				89A7A63C225337B50053D33B /* NativeAdvertViewModel.swift */,
 				89A7A643225352180053D33B /* NativeAdvertDelegates.swift */,
+				91341EDA23C38288005B65CF /* NativeAdvertRecommendationView.swift */,
+				91341EDC23C46BE5005B65CF /* NativeAdvertRibbon.swift */,
 			);
 			path = NativeAdvert;
 			sourceTree = "<group>";
@@ -2278,7 +2290,6 @@
 			children = (
 				9144BD3323AA20B50083F0D9 /* NativeAdvertDefaultData.swift */,
 				89A7A641225344600053D33B /* NativeAdvertDemoView.swift */,
-				9144BD3123AA209A0083F0D9 /* NativeAdvertContentDemoView.swift */,
 			);
 			path = NativeAdvert;
 			sourceTree = "<group>";
@@ -2423,6 +2434,14 @@
 			path = Panel;
 			sourceTree = "<group>";
 		};
+		9B8CB0A623A3D37A00A79A9E /* BetaFeatureView */ = {
+			isa = PBXGroup;
+			children = (
+				9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */,
+			);
+			path = BetaFeatureView;
+			sourceTree = "<group>";
+		};
 		9B9F8C1322F079F600298CDB /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
@@ -2490,6 +2509,14 @@
 				9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */,
 			);
 			path = LoginEntryView;
+			sourceTree = "<group>";
+		};
+		9BCE6A3F23C7274800F37F6D /* BetaFeatureView */ = {
+			isa = PBXGroup;
+			children = (
+				9BCE6A4023C7274800F37F6D /* BetaFeatureDemoView.swift */,
+			);
+			path = BetaFeatureView;
 			sourceTree = "<group>";
 		};
 		9BD8ABBA2359B0A1001078CA /* ChristmasWishList */ = {
@@ -3073,6 +3100,7 @@
 				4483F979234B3BC500D726F1 /* ShadowScrollView.swift */,
 				4483F97D234B3C2400D726F1 /* ShadowView.swift */,
 				443795F8236043F200D05917 /* SelectorTitleView.swift */,
+				9B8CB0A723A3D39F00A79A9E /* BetaFeatureView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -3341,6 +3369,7 @@
 				F2BE6BF5236843C50085A05A /* AdConfirmationView */,
 				4441F9ED22CCF72F00DCFD2F /* AddressMapView */,
 				CF8F023121DCC7A0004C4042 /* AdReporter */,
+				9BCE6A3F23C7274800F37F6D /* BetaFeatureView */,
 				CF8F023421DCC7D2004C4042 /* BuyerPicker */,
 				14A873D2220879870029DEA8 /* ConfirmationView */,
 				CF87A858229C0C6600DA8243 /* ContactForm */,
@@ -3566,6 +3595,7 @@
 				441FE437209A254200B04EF1 /* AdsGridViewDemoView.swift */,
 				441FE438209A254200B04EF1 /* AdsGridViewDemoViewHelpers.swift */,
 				DABA6F46232FAF1D0007B24D /* BannerAdDemoCell.swift */,
+				91341EDF23C48E83005B65CF /* NativeAdvertRecommendationDemoCell.swift */,
 			);
 			path = Ads;
 			sourceTree = "<group>";
@@ -4418,6 +4448,7 @@
 				081F51BA222930C500026C84 /* TextViewDemoView.swift in Sources */,
 				44FEBC1123322D4C009AC5E4 /* CellsDemoViews.swift in Sources */,
 				CF13D6D42292E3030087DA37 /* PhaseListViewDemo.swift in Sources */,
+				9BCE6A4123C7274800F37F6D /* BetaFeatureDemoView.swift in Sources */,
 				CF70B95523421E9B00B8A285 /* SplashDemoView.swift in Sources */,
 				9B9F8C1722F07B2100298CDB /* FeedbackDemoView.swift in Sources */,
 				4451BEC6230163AA00879B7F /* NavigationController.swift in Sources */,
@@ -4429,7 +4460,6 @@
 				DABA6F47232FAF1D0007B24D /* BannerAdDemoCell.swift in Sources */,
 				44AEFC2522E722FC00D3C307 /* BasicCellVariationsDemoView.swift in Sources */,
 				4441F9EF22CCF72F00DCFD2F /* AddressMapDemoView.swift in Sources */,
-				9144BD3223AA209A0083F0D9 /* NativeAdvertContentDemoView.swift in Sources */,
 				9B7D5A2B22E1A5AF001E4005 /* KlimabroletDemoViewController.swift in Sources */,
 				44FEBC1223322D4C009AC5E4 /* ComponentDemoViews.swift in Sources */,
 				CF7C460E22257AE1001FB92C /* EarthHourDefaultData.swift in Sources */,
@@ -4466,6 +4496,7 @@
 				44AEFC2922E722FC00D3C307 /* CheckboxSubtitleCellDemoView.swift in Sources */,
 				CFB61379229ACB8600DE283D /* IconCollectionViewDemo.swift in Sources */,
 				14EBA25A215A634100613E5A /* LoadingViewDemoView.swift in Sources */,
+				91341EE023C48E83005B65CF /* NativeAdvertRecommendationDemoCell.swift in Sources */,
 				AA864B49223290B600BAE95A /* InlineConsentDemoViewController.swift in Sources */,
 				45D7C574204950BC000E788F /* SwitchViewDefaultData.swift in Sources */,
 				CF39ADFF22034F9B002FC43E /* InfoboxDefaultData.swift in Sources */,
@@ -4659,6 +4690,7 @@
 				441FE44B209A2F2C00B04EF1 /* NotificationsListViewCell.swift in Sources */,
 				CF0F6B992360784C00CA62FD /* PrimingViewModel.swift in Sources */,
 				082D80D521C15C9200831BDE /* CandyCaneView.swift in Sources */,
+				9BCE6A3E23C7272200F37F6D /* BetaFeatureView.swift in Sources */,
 				45EDD63E20A9CA22008F4503 /* PopupView.swift in Sources */,
 				44587016213FA344009187BE /* LoginViewModel.swift in Sources */,
 				DAD6EB242369916100968497 /* SettingsViewConsentCell.swift in Sources */,
@@ -4688,6 +4720,7 @@
 				F26CABFA23AC9B2E00CACF71 /* OrderSummaryLineView.swift in Sources */,
 				9BA8248623859B4400163F24 /* MapZoomRange.swift in Sources */,
 				CF136ACF220327F500247B30 /* InfoboxViewModel.swift in Sources */,
+				91341EDD23C46BE5005B65CF /* NativeAdvertRibbon.swift in Sources */,
 				CBD2F08D20615990002AA385 /* TextField+State.swift in Sources */,
 				CF13D6D12292D50C0087DA37 /* PhaseView.swift in Sources */,
 				14EBA258215A633800613E5A /* LoadingView.swift in Sources */,
@@ -4788,6 +4821,7 @@
 				CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */,
 				441FE435209A24E500B04EF1 /* AdsGridViewModel.swift in Sources */,
 				F253C51D2315601A008175FD /* VerificationActionSheet.swift in Sources */,
+				91341EDB23C38288005B65CF /* NativeAdvertRecommendationView.swift in Sources */,
 				CFEB220F232B96550039421C /* UIBarButtonItemExtensions.swift in Sources */,
 				44A149EC21377C7B0053D5F7 /* SavedSearchesListView.swift in Sources */,
 				91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */,
