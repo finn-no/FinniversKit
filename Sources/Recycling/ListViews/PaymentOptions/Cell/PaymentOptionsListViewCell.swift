@@ -14,28 +14,19 @@ public class PaymentOptionsListViewCell: UITableViewCell {
         return selectionBox
     }()
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .captionStrong
-        label.textColor = .textPrimary
+    private lazy var titleLabel: Label = {
+        let label = Label(style: .captionStrong, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
 
-    private lazy var subtitleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .caption
-        label.textColor = .textPrimary
+    private lazy var subtitleLabel: Label = {
+        let label = Label(style: .caption, withAutoLayout: true)
         label.numberOfLines = 0
         return label
     }()
 
-    private lazy var detailLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .title3
-        label.textColor = .textPrimary
-        return label
-    }()
+    private var detailLabel: Label = Label(style: .title3, withAutoLayout: true)
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel])
