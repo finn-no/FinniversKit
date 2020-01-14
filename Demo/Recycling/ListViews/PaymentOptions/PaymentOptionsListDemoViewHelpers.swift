@@ -29,8 +29,7 @@ struct PaymentOptionsListDemoViewHelpers {
     ]
 
     static var paymentCardOrderLines: [OrderSummaryLineModel] = [
-        OrderSummaryLineModel(title: "Bil til salgs - Plusspakke", price: "849 kr"),
-        OrderSummaryLineModel(title: "Blink motor", price: "299 kr"),
+        OrderSummaryLineModel(title: "Fus", price: "149 kr"),
         OrderSummaryLineModel(title: "Bump-a-Bump", price: "79 kr")
     ]
 
