@@ -8,7 +8,7 @@ protocol ViewingCellDelegate: AnyObject {
     func viewingCellDidSelectAddToCalendarButton(_ cell: ViewingCell)
 }
 
-public class ViewingCell: UITableViewCell {
+class ViewingCell: UITableViewCell {
     weak var delegate: ViewingCellDelegate?
 
     // MARK: - Private properties

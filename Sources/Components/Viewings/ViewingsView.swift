@@ -137,7 +137,7 @@ extension ViewingsView: UITableViewDataSource {
 // MARK: - ViewingCellDelegate
 
 extension ViewingsView: ViewingCellDelegate {
-    public func viewingCellDidSelectAddToCalendarButton(_ cell: ViewingCell) {
+    func viewingCellDidSelectAddToCalendarButton(_ cell: ViewingCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         delegate?.viewingsViewDidSelectAddToCalendarButton(self, forIndex: indexPath.row)
     }
