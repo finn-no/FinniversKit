@@ -274,8 +274,10 @@
 		9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */; };
 		9A37D770DA2B07DC0F543B33 /* FavoriteAdsDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */; };
 		9A37D84E5603C39844DA83C5 /* VisibilityDrivenTitleDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6A0C42E36E51F034413 /* VisibilityDrivenTitleDemoView.swift */; };
+		9A37D8D25E07F1F1F3875044 /* SelfDeclarationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD5C29C02298C78257C1 /* SelfDeclarationViewModel.swift */; };
 		9A37D91577C7406D942AF82E /* FavoriteAdsSortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */; };
 		9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D9749A60B9BFD125F483 /* FeedbackView.swift */; };
+		9A37DA10C8A9D0ABD161B810 /* SelfDeclarationItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DC5E8BBDBC5DBF3E100B /* SelfDeclarationItemViewModel.swift */; };
 		9A37DB2BD626D2CA592D303E /* FavoriteAdsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D4FCB2C97A70AB625A9C /* FavoriteAdsSectionHeaderView.swift */; };
 		9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */; };
 		9A37DCEF8B61CDA7813AFB16 /* VisibilityDrivenTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DAD39379A11C6213043C /* VisibilityDrivenTitleView.swift */; };
@@ -884,7 +886,9 @@
 		9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdViewModel.swift; sourceTree = "<group>"; };
 		9A37DAD39379A11C6213043C /* VisibilityDrivenTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisibilityDrivenTitleView.swift; sourceTree = "<group>"; };
 		9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsDemoDataSource.swift; sourceTree = "<group>"; };
+		9A37DC5E8BBDBC5DBF3E100B /* SelfDeclarationItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationItemViewModel.swift; sourceTree = "<group>"; };
 		9A37DD4DA48E4BA2D5C25B1D /* FavoriteAdsListEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListEmptyView.swift; sourceTree = "<group>"; };
+		9A37DD5C29C02298C78257C1 /* SelfDeclarationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationViewModel.swift; sourceTree = "<group>"; };
 		9A37DD79F67FC522D64A127E /* FavoriteAdsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListView.swift; sourceTree = "<group>"; };
 		9A37DECC59A6DBC8F54A7614 /* FavoriteAdCellDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdCellDemoView.swift; sourceTree = "<group>"; };
 		9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtensions.swift; sourceTree = "<group>"; };
@@ -1731,6 +1735,7 @@
 				9BAB37D8230BE85F00E861D4 /* SaveSearchView */,
 				DAA9A3A2210214B80021F7DC /* SelectionBoxes */,
 				446EE15A2345A6AA00010818 /* SelectorTitleView */,
+				9A37D55FF47FB2736E329236 /* SelfDeclaration */,
 				F22612D6225631FD00472D22 /* StatisticsView */,
 				8951758E2248CF53008003FB /* StepIndicator */,
 				CF45AF03231D24A500BE8B39 /* StepSlider */,
@@ -2331,6 +2336,14 @@
 			path = FavoriteAdsList;
 			sourceTree = "<group>";
 		};
+		9A37D55FF47FB2736E329236 /* SelfDeclaration */ = {
+			isa = PBXGroup;
+			children = (
+				9A37DF6791FBBD999EE476C3 /* Models */,
+			);
+			path = SelfDeclaration;
+			sourceTree = "<group>";
+		};
 		9A37D777D2BE560FFC071E4D /* VisibilityDrivenTitleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2387,6 +2400,15 @@
 				CFF54E2D234E192A008E18BE /* FavoriteAdsSubtitleView.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		9A37DF6791FBBD999EE476C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A37DD5C29C02298C78257C1 /* SelfDeclarationViewModel.swift */,
+				9A37DC5E8BBDBC5DBF3E100B /* SelfDeclarationItemViewModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		9A37DFB4ED453062D0BED7A9 /* FavoriteAdTableViewCell */ = {
@@ -4944,6 +4966,8 @@
 				9A37DCEF8B61CDA7813AFB16 /* VisibilityDrivenTitleView.swift in Sources */,
 				449C60B5234DD85C00C51A63 /* ShadowView.swift in Sources */,
 				9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */,
+				9A37D8D25E07F1F1F3875044 /* SelfDeclarationViewModel.swift in Sources */,
+				9A37DA10C8A9D0ABD161B810 /* SelfDeclarationItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
