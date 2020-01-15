@@ -280,6 +280,7 @@
 		9A37D9EDC4E78EC664D528FE /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D9749A60B9BFD125F483 /* FeedbackView.swift */; };
 		9A37DA10C8A9D0ABD161B810 /* SelfDeclarationItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DC5E8BBDBC5DBF3E100B /* SelfDeclarationItemViewModel.swift */; };
 		9A37DB2BD626D2CA592D303E /* FavoriteAdsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D4FCB2C97A70AB625A9C /* FavoriteAdsSectionHeaderView.swift */; };
+		9A37DBFD486B7C3CFDA8CBF4 /* SelfDeclarationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D786CF271A4813AAEB66 /* SelfDeclarationView.swift */; };
 		9A37DC6E6F0401357C564B93 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */; };
 		9A37DCEF8B61CDA7813AFB16 /* VisibilityDrivenTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DAD39379A11C6213043C /* VisibilityDrivenTitleView.swift */; };
 		9A37DD173CA22505F6C8694B /* FavoriteAdsListDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D34E21B0FF57F07BE7E0 /* FavoriteAdsListDemoViewController.swift */; };
@@ -882,6 +883,7 @@
 		9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		9A37D6A0C42E36E51F034413 /* VisibilityDrivenTitleDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisibilityDrivenTitleDemoView.swift; sourceTree = "<group>"; };
 		9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsSortingView.swift; sourceTree = "<group>"; };
+		9A37D786CF271A4813AAEB66 /* SelfDeclarationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationView.swift; sourceTree = "<group>"; };
 		9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListTableHeader.swift; sourceTree = "<group>"; };
 		9A37D9749A60B9BFD125F483 /* FeedbackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		9A37DA1C8FBA8E3FF6355FB5 /* FavoriteAdViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdViewModel.swift; sourceTree = "<group>"; };
@@ -2351,6 +2353,7 @@
 			children = (
 				9A37DF6791FBBD999EE476C3 /* Models */,
 				9A37D0FBA493D29104CFE3A8 /* Views */,
+				9A37D786CF271A4813AAEB66 /* SelfDeclarationView.swift */,
 			);
 			path = SelfDeclaration;
 			sourceTree = "<group>";
@@ -4593,6 +4596,7 @@
 				9F213B112A5063350DBDAD13 /* ReputationDemoView.swift in Sources */,
 				9A37DD173CA22505F6C8694B /* FavoriteAdsListDemoViewController.swift in Sources */,
 				9A37D84E5603C39844DA83C5 /* VisibilityDrivenTitleDemoView.swift in Sources */,
+				9A37D44F4C1D337B39F07E68 /* SelfDeclarationDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4977,6 +4981,7 @@
 				9A37DCEF8B61CDA7813AFB16 /* VisibilityDrivenTitleView.swift in Sources */,
 				449C60B5234DD85C00C51A63 /* ShadowView.swift in Sources */,
 				9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */,
+				9A37DBFD486B7C3CFDA8CBF4 /* SelfDeclarationView.swift in Sources */,
 				9A37D8D25E07F1F1F3875044 /* SelfDeclarationViewModel.swift in Sources */,
 				9A37DA10C8A9D0ABD161B810 /* SelfDeclarationItemViewModel.swift in Sources */,
 				9A37D1D9D2872EC52AF374A2 /* SelfDeclarationItemView.swift in Sources */,
