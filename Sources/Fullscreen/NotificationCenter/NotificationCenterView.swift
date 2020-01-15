@@ -6,6 +6,7 @@ import UIKit
 
 public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didSelectModelAt indexPath: IndexPath)
+    func notificationCenterView(_ view: NotificationCenterView, titleForSection section: Int) -> String
 }
 
 public protocol NotificationCenterViewDataSource: AnyObject {
@@ -23,9 +24,12 @@ public class NotificationCenterView: UIView {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .bgPrimary
+        tableView.estimatedRowHeight = 112
+        tableView.estimatedSectionHeaderHeight = 32
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(NotificationCenterCell.self)
+        tableView.register(FavoriteAdsSectionHeaderView.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -68,6 +72,11 @@ extension NotificationCenterView: UITableViewDataSource {
         let cell = tableView.dequeue(NotificationCenterCell.self, for: indexPath)
         cell.imageViewDataSource = imageViewDataSource
         cell.configure(with: model)
+
+        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            cell.separatorInset = .leadingInset(.greatestFiniteMagnitude)
+        }
+
         return cell
     }
 }
@@ -75,6 +84,21 @@ extension NotificationCenterView: UITableViewDataSource {
 extension NotificationCenterView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.notificationCenterView(self, didSelectModelAt: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let title = delegate?.notificationCenterView(self, titleForSection: section) else { return nil }
+        let header = tableView.dequeue(FavoriteAdsSectionHeaderView.self)
+        header.configure(title: title)
+        return header
+    }
+
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        .largeSpacing
+    }
+
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        1
     }
 }
 

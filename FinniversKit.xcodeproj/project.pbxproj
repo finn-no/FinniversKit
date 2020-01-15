@@ -260,7 +260,6 @@
 		91846C4A22E735D80001410F /* SearchResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4922E735D80001410F /* SearchResultMapView.swift */; };
 		91846C4D22E736BF0001410F /* SearchResultMapViewDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C4C22E736BF0001410F /* SearchResultMapViewDemoViewController.swift */; };
 		91846C5A22E856D50001410F /* MapSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91846C5922E856D50001410F /* MapSettingsView.swift */; };
-		918C8A4023A384FE00B566DE /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F6F23570AF000CAA6BB /* SnapshotTesting */; };
 		918C8A4223A3853400B566DE /* NativeAdvertGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8A4123A3853400B566DE /* NativeAdvertGridView.swift */; };
 		918C8A4623A387BD00B566DE /* NativeAdvertDetailsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8A4523A387BD00B566DE /* NativeAdvertDetailsContainer.swift */; };
 		918C8AC423A7A82900B566DE /* NativeAdvertListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C8AC323A7A82900B566DE /* NativeAdvertListView.swift */; };
@@ -495,6 +494,7 @@
 		DA93EFA821C2BA4F00207239 /* NewYearsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1EC5021C1322900F4FEC4 /* NewYearsView.swift */; };
 		DA93EFAA21C2BB2900207239 /* NewYearsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA93EFA921C2BB2900207239 /* NewYearsDemoView.swift */; };
 		DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */; };
+		DA9AC56123CF024B0097CD55 /* SavedSearchLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9AC56023CF024B0097CD55 /* SavedSearchLinkView.swift */; };
 		DAA4F25223A2615C00FA529C /* NotificationCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
@@ -1108,6 +1108,7 @@
 		DA8F32B3238295F900EF645F /* VersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoView.swift; sourceTree = "<group>"; };
 		DA93EFA921C2BB2900207239 /* NewYearsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearsDemoView.swift; sourceTree = "<group>"; };
 		DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStateController.swift; sourceTree = "<group>"; };
+		DA9AC56023CF024B0097CD55 /* SavedSearchLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSearchLinkView.swift; sourceTree = "<group>"; };
 		DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterView.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
@@ -3780,6 +3781,7 @@
 		DAA4F25023A2614800FA529C /* NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
+				DA9AC56023CF024B0097CD55 /* SavedSearchLinkView.swift */,
 				DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */,
 				DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */,
 			);
@@ -4783,6 +4785,7 @@
 				625A220B221EB26500733101 /* AdManagementActionCellModel.swift in Sources */,
 				CFCED8D922CE2BE90049A3A0 /* FavoriteFoldersSearchBar.swift in Sources */,
 				14C6F7D3212324CA00A7230C /* FavoritesListViewCell.swift in Sources */,
+				DA9AC56123CF024B0097CD55 /* SavedSearchLinkView.swift in Sources */,
 				CF164CF5230E93AE00250822 /* FavoriteAdSortingView.swift in Sources */,
 				F2BE6BF4236840EE0085A05A /* AdConfirmationFeedbackViewModel.swift in Sources */,
 				CFCED8E322CF428B0049A3A0 /* FavoriteFoldersListViewModel.swift in Sources */,

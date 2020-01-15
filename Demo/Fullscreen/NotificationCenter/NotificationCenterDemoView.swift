@@ -4,25 +4,37 @@
 
 import FinniversKit
 
-
-struct NotificationModel: NotificationCenterCellModel {
-    let imagePath: String?
-    let title: String
-    let timestamp: String
+private struct NotificationModel: NotificationCenterCellModel {
+    let imagePath: String? = ""
+    let title: String = "Sofa"
+    let price: String = "300 kr"
+    let timestamp: String = "15 min siden"
     var read: Bool
-    let ribbonModels: [RibbonViewModel]
+    let statusTitle: String?
+    let statusStyle: RibbonView.Style?
+    let savedSearchText: String = "Treff i lagret søk"
+    let savedSearchTitle: String = ""
+}
+
+private struct Section {
+    let title: String
+    var items: [NotificationModel]
 }
 
 class NotificationCenterDemoView: UIView {
 
-    private lazy var data = [
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false, ribbonModels: [RibbonViewModel(title: "Ny pris", style: .sponsored)]),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false, ribbonModels: []),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: [RibbonViewModel(title: "Ny pris", style: .sponsored), RibbonViewModel(title: "Ny pris", style: .sponsored)]),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: false, ribbonModels: []),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: []),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: []),
-        NotificationModel(imagePath: "", title: "Sofa", timestamp: "15 min siden", read: true, ribbonModels: [])
+    private var data = [
+        Section(title: "I dag", items: [
+            NotificationModel(read: false, statusTitle: "Solgt", statusStyle: .warning),
+            NotificationModel(read: false, statusTitle: nil, statusStyle: nil),
+        ]),
+        Section(title: "Tidligere", items: [
+            NotificationModel(read: true, statusTitle: "Solgt", statusStyle: .warning),
+            NotificationModel(read: false, statusTitle: "Inaktiv", statusStyle: .disabled),
+            NotificationModel(read: true, statusTitle: nil, statusStyle: nil),
+            NotificationModel(read: true, statusTitle: nil, statusStyle: nil),
+            NotificationModel(read: true, statusTitle: nil, statusStyle: nil)
+        ])
     ]
 
     private lazy var notificationCenterView: NotificationCenterView = {
@@ -46,22 +58,26 @@ class NotificationCenterDemoView: UIView {
 
 extension NotificationCenterDemoView: NotificationCenterViewDataSource {
     func numberOfSections(in view: NotificationCenterView) -> Int {
-        1
-    }
-
-    func notificationCenterView(_ view: NotificationCenterView, numberOfRowsIn section: Int) -> Int {
         data.count
     }
 
+    func notificationCenterView(_ view: NotificationCenterView, numberOfRowsIn section: Int) -> Int {
+        data[section].items.count
+    }
+
     func notificationCenterView(_ view: NotificationCenterView, modelForRowAt indexPath: IndexPath) -> NotificationCenterCellModel {
-        data[indexPath.row]
+        data[indexPath.section].items[indexPath.row]
     }
 }
 
 extension NotificationCenterDemoView: NotificationCenterViewDelegate {
     func notificationCenterView(_ view: NotificationCenterView, didSelectModelAt indexPath: IndexPath) {
-        data[indexPath.row].read = true
+        data[indexPath.section].items[indexPath.row].read = true
         notificationCenterView.reloadRows(at: [indexPath])
+    }
+
+    func notificationCenterView(_ view: NotificationCenterView, titleForSection section: Int) -> String {
+        data[section].title
     }
 }
 
