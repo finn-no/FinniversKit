@@ -100,22 +100,22 @@ public class PaymentOptionsListViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             selectionBox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumSpacing),
-            selectionBox.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
+            selectionBox.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             selectionBox.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
             selectionBox.widthAnchor.constraint(lessThanOrEqualToConstant: 24),
 
             stackView.leadingAnchor.constraint(equalTo: selectionBox.trailingAnchor, constant: .mediumLargeSpacing),
             stackView.trailingAnchor.constraint(lessThanOrEqualTo: detailLabel.leadingAnchor, constant: -.mediumSpacing),
-            stackView.topAnchor.constraint(equalTo: selectionBox.topAnchor),
+            stackView.centerYAnchor.constraint(equalTo: selectionBox.centerYAnchor),
 
+            detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             detailLabel.topAnchor.constraint(equalTo: stackView.topAnchor),
             detailLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
-            detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
 
-            seperator.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale),
             seperator.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             seperator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             seperator.topAnchor.constraint(equalTo: contentView.bottomAnchor),
+            seperator.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale),
         ])
     }
 }
