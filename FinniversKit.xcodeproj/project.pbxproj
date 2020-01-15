@@ -30,6 +30,7 @@
 		08F0D3F422259AD100968256 /* HappinessRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0D3F322259AD100968256 /* HappinessRatingView.swift */; };
 		08F0D3F72226920C00968256 /* HappinessRatingDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0D3F62226920C00968256 /* HappinessRatingDemoView.swift */; };
 		08F0D3F92226966E00968256 /* HappinessRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0D3F82226966E00968256 /* HappinessRating.swift */; };
+		08FF1A5323CF3F070061E8C3 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F6F23570AF000CAA6BB /* SnapshotTesting */; };
 		14193AAD21380DC800EC7FC0 /* ComponentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AA921380DC800EC7FC0 /* ComponentViewTests.swift */; };
 		14193AAE21380DC800EC7FC0 /* FullscreenViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAA21380DC800EC7FC0 /* FullscreenViewTests.swift */; };
 		14193AAF21380DC800EC7FC0 /* DnaViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14193AAB21380DC800EC7FC0 /* DnaViewTests.swift */; };
@@ -218,7 +219,6 @@
 		4974725B239A48BF0058D7B0 /* SearchListEmptyDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725A239A48BF0058D7B0 /* SearchListEmptyDemoView.swift */; };
 		4974725D239A49480058D7B0 /* SearchListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725C239A49480058D7B0 /* SearchListEmptyView.swift */; };
 		4974725F239A49570058D7B0 /* SearchListEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974725E239A49570058D7B0 /* SearchListEmptyViewModel.swift */; };
-		49F1124B239121DA007D74EF /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9BD13F6F23570AF000CAA6BB /* SnapshotTesting */; };
 		49F114B22397F70E007D74EF /* SaveSearchPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B12397F70E007D74EF /* SaveSearchPromptView.swift */; };
 		49F114B623980235007D74EF /* SaveSearchPromptViewDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F114B523980234007D74EF /* SaveSearchPromptViewDemoView.swift */; };
 		559FD9BD2051684F00A101B0 /* BroadcastMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559FD9BB205122C500A101B0 /* BroadcastMessageTests.swift */; };
@@ -271,6 +271,7 @@
 		9A37D0977C75034FE9603C2C /* FavoriteAdsListTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */; };
 		9A37D1D9D2872EC52AF374A2 /* SelfDeclarationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF66929876DCA81666F3 /* SelfDeclarationItemView.swift */; };
 		9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DF20BB7306D8D1A25593 /* UITableViewCellExtensions.swift */; };
+		9A37D44F4C1D337B39F07E68 /* SelfDeclarationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D6F3E7CC1A337D037C02 /* SelfDeclarationDemoView.swift */; };
 		9A37D6BC5F45EACE68F4EF37 /* FavoriteAdsListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DD4DA48E4BA2D5C25B1D /* FavoriteAdsListEmptyView.swift */; };
 		9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37D30A5DD3B5A286743DA3 /* FavoriteAdTableViewCell.swift */; };
 		9A37D770DA2B07DC0F543B33 /* FavoriteAdsDemoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37DB13635127F4DE6BCEC6 /* FavoriteAdsDemoDataSource.swift */; };
@@ -882,6 +883,7 @@
 		9A37D5137A47B4E2117052C3 /* FavoriteAdsListDemoViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListDemoViewHelper.swift; sourceTree = "<group>"; };
 		9A37D61B28BC0BA6CA6110A5 /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		9A37D6A0C42E36E51F034413 /* VisibilityDrivenTitleDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisibilityDrivenTitleDemoView.swift; sourceTree = "<group>"; };
+		9A37D6F3E7CC1A337D037C02 /* SelfDeclarationDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationDemoView.swift; sourceTree = "<group>"; };
 		9A37D728DC9D805D74CB8D4F /* FavoriteAdsSortingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsSortingView.swift; sourceTree = "<group>"; };
 		9A37D786CF271A4813AAEB66 /* SelfDeclarationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDeclarationView.swift; sourceTree = "<group>"; };
 		9A37D87CCADB89179F11253B /* FavoriteAdsListTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdsListTableHeader.swift; sourceTree = "<group>"; };
@@ -1204,7 +1206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14F4F1BE1FD6CEA800E9CECA /* FinniversKit.framework in Frameworks */,
-				49F1124B239121DA007D74EF /* SnapshotTesting in Frameworks */,
+				08FF1A5323CF3F070061E8C3 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2366,6 +2368,14 @@
 			path = VisibilityDrivenTitleView;
 			sourceTree = "<group>";
 		};
+		9A37D8092408DC9579C3B587 /* SelfDeclaration */ = {
+			isa = PBXGroup;
+			children = (
+				9A37D6F3E7CC1A337D037C02 /* SelfDeclarationDemoView.swift */,
+			);
+			path = SelfDeclaration;
+			sourceTree = "<group>";
+		};
 		9A37D8B81C3158FE1373F3E4 /* RemoteImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3234,6 +3244,7 @@
 				9BAB37D5230BE3C600E861D4 /* SaveSearch */,
 				CF8F021721DCC60E004C4042 /* SelectionBoxes */,
 				443795FA2360443700D05917 /* SelectorTitleView */,
+				9A37D8092408DC9579C3B587 /* SelfDeclaration */,
 				895175912248CFC2008003FB /* StepIndicator */,
 				CF376C14231D3D8500ED2B24 /* StepSlider */,
 				CF8F021C21DCC685004C4042 /* Switch */,
