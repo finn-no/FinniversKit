@@ -4,7 +4,12 @@
 
 import Foundation
 
+protocol ViewingCellDelegate: AnyObject {
+    func viewingCellDidSelectAddToCalendarButton(_ cell: ViewingCell)
+}
+
 public class ViewingCell: UITableViewCell {
+    weak var delegate: ViewingCellDelegate?
 
     // MARK: - Private properties
 
@@ -54,8 +59,6 @@ public class ViewingCell: UITableViewCell {
         button.addTarget(self, action: #selector(addToCalendarButtonTapped), for: .touchUpInside)
         return button
     }()
-
-    var addToCalendarButtonAction: () -> Void = {}
 
     static let dateViewWidth: CGFloat = 56.0
     static let cellHeight: CGFloat = 64.0
@@ -113,7 +116,7 @@ public class ViewingCell: UITableViewCell {
 
     // MARK: - Private methods
 
-    @IBAction func addToCalendarButtonTapped() {
-        addToCalendarButtonAction()
+    @objc func addToCalendarButtonTapped() {
+        delegate?.viewingCellDidSelectAddToCalendarButton(self)
     }
 }

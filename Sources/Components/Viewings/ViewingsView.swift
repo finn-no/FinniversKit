@@ -5,7 +5,7 @@
 import Foundation
 
 public protocol ViewingsViewDelegate: AnyObject {
-    func viewingsViewDidSelectAddToCalendarButton(_ view: ViewingsView, itemAtIndex index: Int)
+    func viewingsViewDidSelectAddToCalendarButton(_ view: ViewingsView, forIndex index: Int)
 }
 
 public class ViewingsView: UIView {
@@ -22,7 +22,7 @@ public class ViewingsView: UIView {
     private lazy var titleLabel: Label = Label(style: .title3, withAutoLayout: true)
 
     private lazy var noteLabel: Label = {
-        let label = Label(style: .body, withAutoLayout: true)
+        let label = Label(withAutoLayout: true)
         label.isHidden = true
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -73,7 +73,7 @@ public class ViewingsView: UIView {
 
             noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: noteTopMargin),
             noteLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentMargin),
-            noteLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: contentMargin),
+            noteLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -contentMargin),
 
             tableView.topAnchor.constraint(equalTo: noteLabel.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -88,7 +88,7 @@ public class ViewingsView: UIView {
         self.viewModel = viewModel
         titleLabel.text = viewModel.title
         if let note = viewModel.note {
-            noteLabel.text = note
+            noteLabel.attributedText = attributedNoteString(with: note)
             noteLabel.isHidden = false
         }
         tableView.reloadData()
@@ -102,8 +102,15 @@ public class ViewingsView: UIView {
 
     // MARK: - Private methods
 
-    private func addToCalendarButtonTapped(index: Int) {
-        delegate?.viewingsViewDidSelectAddToCalendarButton(self, itemAtIndex: index)
+    private func attributedNoteString(with text: String) -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = .verySmallSpacing
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: paragraphStyle,
+            .font: UIFont.body
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
     }
 }
 
@@ -122,9 +129,16 @@ extension ViewingsView: UITableViewDataSource {
         cell.selectionStyle = .none
         cell.contentView.isUserInteractionEnabled = false
 
-        cell.addToCalendarButtonAction = { [unowned self] in
-            self.addToCalendarButtonTapped(index: indexPath.row)
-        }
+        cell.delegate = self
         return cell
+    }
+}
+
+// MARK: - ViewingCellDelegate
+
+extension ViewingsView: ViewingCellDelegate {
+    public func viewingCellDidSelectAddToCalendarButton(_ cell: ViewingCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        delegate?.viewingsViewDidSelectAddToCalendarButton(self, forIndex: indexPath.row)
     }
 }
