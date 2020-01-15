@@ -29,7 +29,7 @@ public class NotificationCenterView: UIView {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(NotificationCenterCell.self)
-        tableView.register(FavoriteAdsSectionHeaderView.self)
+        tableView.register(NotificationCenterSectionHeaderView.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -88,8 +88,8 @@ extension NotificationCenterView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let title = delegate?.notificationCenterView(self, titleForSection: section) else { return nil }
-        let header = tableView.dequeue(FavoriteAdsSectionHeaderView.self)
-        header.configure(title: title)
+        let header = tableView.dequeue(NotificationCenterSectionHeaderView.self)
+        header.configure(with: title)
         return header
     }
 

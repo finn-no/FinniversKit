@@ -135,7 +135,7 @@ private extension NotificationCenterCell {
             savedSearchLinkView.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
             savedSearchLinkView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
 
-            titleLabel.topAnchor.constraint(equalTo: savedSearchLinkView.bottomAnchor, constant: .smallSpacing),
+            titleLabel.topAnchor.constraint(equalTo: savedSearchLinkView.bottomAnchor, constant: .mediumSpacing),
             titleLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
             titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: timestampLabel.topAnchor),

@@ -495,6 +495,7 @@
 		DA93EFAA21C2BB2900207239 /* NewYearsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA93EFA921C2BB2900207239 /* NewYearsDemoView.swift */; };
 		DA9A223F21BA8D8C001452F0 /* BottomSheetStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */; };
 		DA9AC56123CF024B0097CD55 /* SavedSearchLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9AC56023CF024B0097CD55 /* SavedSearchLinkView.swift */; };
+		DA9AC5DF23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9AC5DE23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift */; };
 		DAA4F25223A2615C00FA529C /* NotificationCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */; };
 		DAA9A3A8210215400021F7DC /* Selectionbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A32102153F0021F7DC /* Selectionbox.swift */; };
 		DAA9A3A9210215400021F7DC /* SelectionboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */; };
@@ -1109,6 +1110,7 @@
 		DA93EFA921C2BB2900207239 /* NewYearsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearsDemoView.swift; sourceTree = "<group>"; };
 		DA9A223E21BA8D8C001452F0 /* BottomSheetStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStateController.swift; sourceTree = "<group>"; };
 		DA9AC56023CF024B0097CD55 /* SavedSearchLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSearchLinkView.swift; sourceTree = "<group>"; };
+		DA9AC5DE23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSectionHeaderView.swift; sourceTree = "<group>"; };
 		DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterView.swift; sourceTree = "<group>"; };
 		DAA9A3A32102153F0021F7DC /* Selectionbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectionbox.swift; sourceTree = "<group>"; };
 		DAA9A3A4210215400021F7DC /* SelectionboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionboxItem.swift; sourceTree = "<group>"; };
@@ -3783,6 +3785,7 @@
 			children = (
 				DA9AC56023CF024B0097CD55 /* SavedSearchLinkView.swift */,
 				DA2E815023ABB2DF00A18264 /* NotificationCenterCell.swift */,
+				DA9AC5DE23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift */,
 				DAA4F25123A2615C00FA529C /* NotificationCenterView.swift */,
 			);
 			path = NotificationCenter;
@@ -4700,6 +4703,7 @@
 				444246032137D60400D42AB8 /* FavoriteFolderViewModel.swift in Sources */,
 				CF164CF3230E8FB900250822 /* FavoriteAdSortOption.swift in Sources */,
 				CF7E7B53230C2A7A001D514E /* FavoriteFolderActionViewModel.swift in Sources */,
+				DA9AC5DF23CF45280097CD55 /* NotificationCenterSectionHeaderView.swift in Sources */,
 				8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */,
 				9BB12AC2238289F100A04F61 /* StatisticsModel.swift in Sources */,
 				DAAAC8FD21C14FEE0071B028 /* FireworksView.swift in Sources */,
