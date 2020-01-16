@@ -4,18 +4,23 @@
 
 import UIKit
 
-public protocol NotificationCenterCellModel: SavedSearchLinkViewModel {
+public protocol NotificationCenterCellModel {
+    var savedSearchLinkModel: SavedSearchLinkViewModel? { get }
     var imagePath: String? { get }
     var title: String { get }
-    var timestamp: String { get }
+    var ribbonViewModel: RibbonViewModel? { get }
     var read: Bool { get }
-    var statusTitle: String? { get }
-    var statusStyle: RibbonView.Style? { get }
+}
+
+protocol NotificationCenterCellDelegate: AnyObject {
+    func notificationCenterCellDidSelectSavedSearch(_ cell: NotificationCenterCell)
 }
 
 class NotificationCenterCell: UITableViewCell {
 
     // MARK: - Internal properties
+
+    weak var delegate: NotificationCenterCellDelegate?
 
     weak var imageViewDataSource: RemoteImageViewDataSource? {
         didSet {
@@ -28,23 +33,19 @@ class NotificationCenterCell: UITableViewCell {
     private let adImageWidth: CGFloat = 80
     private let fallbackImage = UIImage(named: .noImage)
 
+    private lazy var savedSearchLinkView: SavedSearchLinkView = {
+        let view = SavedSearchLinkView(withAutoLayout: true)
+        view.addTarget(self, action: #selector(handleSavedSearchSelected), for: .touchUpInside)
+        return view
+    }()
+
     private lazy var remoteImageView: RemoteImageView = {
         let imageView = RemoteImageView(withAutoLayout: true)
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 8
-        imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = .tableViewSeparator
         imageView.layer.masksToBounds = true
         return imageView
     }()
-
-    private lazy var statusRibbon = RibbonView(
-        withAutoLayout: true
-    )
-
-    private lazy var savedSearchLinkView = SavedSearchLinkView(
-        withAutoLayout: true
-    )
 
     private lazy var titleLabel: Label = {
         let label = Label(style: .body, withAutoLayout: true)
@@ -52,15 +53,18 @@ class NotificationCenterCell: UITableViewCell {
         return label
     }()
 
-    private lazy var timestampLabel = Label(
-        style: .detail,
+    private lazy var statusRibbon = RibbonView(
         withAutoLayout: true
     )
 
-    private lazy var imageToStatusRibbonConstraint = remoteImageView.topAnchor.constraint(
-        equalTo: statusRibbon.bottomAnchor,
-        constant: .smallSpacing
-    )
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(withAutoLayout: true)
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .equalCentering
+        stackView.spacing = .mediumSpacing
+        return stackView
+    }()
 
     // MARK: - Init
 
@@ -82,23 +86,23 @@ class NotificationCenterCell: UITableViewCell {
     }
 
     func configure(with model: NotificationCenterCellModel?) {
-        savedSearchLinkView.configure(with: model)
-        titleLabel.text = model?.title
-        timestampLabel.text = model?.timestamp
-        backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
-        separatorInset = .leadingInset(.largeSpacing + adImageWidth)
+        savedSearchLinkView.configure(with: model?.savedSearchLinkModel)
 
-        if let statusTitle = model?.statusTitle, let statusStyle = model?.statusStyle {
-            statusRibbon.title = statusTitle
-            statusRibbon.style = statusStyle
+        titleLabel.text = model?.title
+        titleLabel.font = model?.read == true ? .body : .bodyStrong
+        backgroundColor = model?.read == true ? .bgPrimary : .bgSecondary
+        separatorInset = .leadingInset(adImageWidth + .largeSpacing)
+
+        if let ribbonViewModel = model?.ribbonViewModel {
+            statusRibbon.title = ribbonViewModel.title
+            statusRibbon.style = ribbonViewModel.style
             statusRibbon.isHidden = false
-            imageToStatusRibbonConstraint.isActive = true
         } else {
             statusRibbon.isHidden = true
-            imageToStatusRibbonConstraint.isActive = false
         }
 
         guard let imagePath = model?.imagePath else {
+            remoteImageView.image = fallbackImage
             return
         }
 
@@ -113,35 +117,34 @@ class NotificationCenterCell: UITableViewCell {
 
 // MARK: - Private methods
 private extension NotificationCenterCell {
+    @objc func handleSavedSearchSelected() {
+        delegate?.notificationCenterCellDidSelectSavedSearch(self)
+    }
+
     func setup() {
         setDefaultSelectedBackgound()
 
-        contentView.addSubview(remoteImageView)
-        contentView.addSubview(statusRibbon)
         contentView.addSubview(savedSearchLinkView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(timestampLabel)
+        contentView.addSubview(remoteImageView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(statusRibbon)
+        contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            remoteImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: .mediumLargeSpacing),
+            savedSearchLinkView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            savedSearchLinkView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            savedSearchLinkView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            savedSearchLinkView.heightAnchor.constraint(equalToConstant: 44),
+
+            remoteImageView.topAnchor.constraint(equalTo: savedSearchLinkView.bottomAnchor),
             remoteImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
             remoteImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumLargeSpacing),
             remoteImageView.widthAnchor.constraint(equalToConstant: adImageWidth),
             remoteImageView.heightAnchor.constraint(equalToConstant: adImageWidth),
 
-            statusRibbon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            statusRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumSpacing),
-
-            savedSearchLinkView.topAnchor.constraint(equalTo: remoteImageView.topAnchor),
-            savedSearchLinkView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-
-            titleLabel.topAnchor.constraint(equalTo: savedSearchLinkView.bottomAnchor, constant: .mediumSpacing),
-            titleLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: timestampLabel.topAnchor),
-
-            timestampLabel.bottomAnchor.constraint(equalTo: remoteImageView.bottomAnchor),
-            timestampLabel.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            stackView.leadingAnchor.constraint(equalTo: remoteImageView.trailingAnchor, constant: .mediumLargeSpacing),
+            stackView.centerYAnchor.constraint(equalTo: remoteImageView.centerYAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
         ])
     }
 }

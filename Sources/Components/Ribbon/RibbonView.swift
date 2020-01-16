@@ -4,6 +4,16 @@
 
 import UIKit
 
+public struct RibbonViewModel {
+    public let title: String
+    public let style: RibbonView.Style
+
+    public init(title: String, style: RibbonView.Style) {
+        self.title = title
+        self.style = style
+    }
+}
+
 public class RibbonView: UIView {
 
     // MARK: - Public properties

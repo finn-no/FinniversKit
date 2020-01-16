@@ -8,15 +8,9 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel(withAutoLayout: true)
-        label.font = .detailStrong
-        label.textColor = .textSecondary
+        label.font = .title3Strong
+        label.textColor = .textPrimary
         return label
-    }()
-
-    private lazy var separatorView: UIView = {
-        let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .tableViewSeparator
-        return view
     }()
 
     override init(reuseIdentifier: String?) {
@@ -24,18 +18,11 @@ class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
 
         contentView.backgroundColor = .bgPrimary
         contentView.addSubview(titleLabel)
-        contentView.addSubview(separatorView)
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .mediumLargeSpacing),
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .mediumSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing),
-
-            separatorView.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale),
-            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -.mediumLargeSpacing),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.mediumSpacing)
         ])
     }
 

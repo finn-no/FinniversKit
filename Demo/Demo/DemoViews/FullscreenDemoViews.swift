@@ -135,7 +135,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .adConfirmationView:
             return DemoViewController<AdConfirmationDemoView>()
         case .notificationCenterView:
-            return DemoViewController<NotificationCenterDemoView>()
+            return DemoViewController<NotificationCenterDemoView>(dismissType: .dismissButton)
         }
     }
 }

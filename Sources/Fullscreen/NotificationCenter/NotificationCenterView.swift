@@ -6,6 +6,7 @@ import UIKit
 
 public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didSelectModelAt indexPath: IndexPath)
+    func notificationCenterView(_ view: NotificationCenterView, didSelectSavedSearchAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, titleForSection section: Int) -> String
 }
 
@@ -24,7 +25,7 @@ public class NotificationCenterView: UIView {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .bgPrimary
-        tableView.estimatedRowHeight = 112
+        tableView.estimatedRowHeight = 44 + 80 + 16
         tableView.estimatedSectionHeaderHeight = 32
         tableView.dataSource = self
         tableView.delegate = self
@@ -71,6 +72,7 @@ extension NotificationCenterView: UITableViewDataSource {
         let model = dataSource?.notificationCenterView(self, modelForRowAt: indexPath)
         let cell = tableView.dequeue(NotificationCenterCell.self, for: indexPath)
         cell.imageViewDataSource = imageViewDataSource
+        cell.delegate = self
         cell.configure(with: model)
 
         if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
@@ -94,11 +96,18 @@ extension NotificationCenterView: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        .largeSpacing
+        48
     }
 
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         1
+    }
+}
+
+extension NotificationCenterView: NotificationCenterCellDelegate {
+    func notificationCenterCellDidSelectSavedSearch(_ cell: NotificationCenterCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        delegate?.notificationCenterView(self, didSelectSavedSearchAt: indexPath)
     }
 }
 
