@@ -18,7 +18,7 @@ public struct SavedSearchLinkViewModel {
 
 class SavedSearchLinkView: UIControl {
 
-    private lazy var iconView: UIImageView = {
+    private lazy var magnifyingIconView: UIImageView = {
         let image = UIImage(named: .magnifyingGlass)
         let imageView = UIImageView(image: image)
         imageView.tintColor = .textPrimary
@@ -30,6 +30,15 @@ class SavedSearchLinkView: UIControl {
         style: .detail,
         withAutoLayout: true
     )
+
+    private lazy var arrowIconView: UIImageView = {
+        let image = UIImage(named: .arrowRight).withRenderingMode(.alwaysTemplate)
+        let imageView = UIImageView(image: image)
+        imageView.tintColor = .textAction
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
 
     private lazy var timestampLabel = Label(
         style: .detail,
@@ -107,18 +116,24 @@ class SavedSearchLinkView: UIControl {
     }
 
     private func setup() {
-        addSubview(iconView)
+        addSubview(magnifyingIconView)
         addSubview(textLabel)
+        addSubview(arrowIconView)
         addSubview(timestampLabel)
 
         NSLayoutConstraint.activate([
-            iconView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
-            iconView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconView.widthAnchor.constraint(equalToConstant: 14),
-            iconView.heightAnchor.constraint(equalToConstant: 14),
+            magnifyingIconView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mediumLargeSpacing),
+            magnifyingIconView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            magnifyingIconView.widthAnchor.constraint(equalToConstant: 14),
+            magnifyingIconView.heightAnchor.constraint(equalToConstant: 14),
 
-            textLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: .smallSpacing),
+            textLabel.leadingAnchor.constraint(equalTo: magnifyingIconView.trailingAnchor, constant: .smallSpacing),
             textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+            arrowIconView.leadingAnchor.constraint(equalTo: textLabel.trailingAnchor, constant: .verySmallSpacing),
+            arrowIconView.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor),
+            arrowIconView.widthAnchor.constraint(equalToConstant: 8),
+            arrowIconView.heightAnchor.constraint(equalToConstant: 10),
 
             timestampLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mediumLargeSpacing),
             timestampLabel.centerYAnchor.constraint(equalTo: centerYAnchor)

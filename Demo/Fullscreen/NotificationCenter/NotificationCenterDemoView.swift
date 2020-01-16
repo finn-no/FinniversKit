@@ -23,7 +23,7 @@ class NotificationCenterDemoView: UIView {
     private var data = [
         Section(title: "I dag", items: [
             NotificationModel(
-                savedSearchLinkModel: SavedSearchLinkViewModel(text: "Nytt treff i", title: "Husstander >", timestamp: "15 min siden"),
+                savedSearchLinkModel: SavedSearchLinkViewModel(text: "Nytt treff i", title: "Husstander", timestamp: "15 min siden"),
                 imagePath: "https://jwproperty.com/files/wp-content/uploads/2015/01/Smart_House-Valley_Hua_Hin0131.jpg",
                 read: false,
                 ribbonViewModel: RibbonViewModel(title: "Solgt", style: .warning)),
