@@ -6,13 +6,13 @@ import FinniversKit
 
 class ViewingsDemoView: UIView {
 
-    private lazy var viewingsView = ViewingsView(frame: .zero)
+    private lazy var viewingsView = ViewingsView(withAutoLayout: true)
 
     private let viewModel = ViewingsViewModel(
         title: "Visninger",
         addToCalendarButtonTitle: "Legg til i kalender",
-        viewings: [ViewingCellViewModel(weekday: "Søndag", month: "JAN", date: "19", timeInterval: "Kl. 12.00 - 13.00"),
-                   ViewingCellViewModel(weekday: "Mandag", month: "JAN", date: "20", timeInterval: "Kl. 18.30 - 19.30")
+        viewings: [ViewingCellViewModel(weekday: "Søndag", month: "JAN", day: "19", timeInterval: "Kl. 12.00 - 13.00"),
+                   ViewingCellViewModel(weekday: "Mandag", month: "JAN", day: "20", timeInterval: "Kl. 18.30 - 19.30")
         ],
         note: "Velkommen til visning!"
     )
@@ -25,7 +25,6 @@ class ViewingsDemoView: UIView {
     public required init?(coder aDecoder: NSCoder) { fatalError() }
 
     private func setup() {
-        viewingsView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(viewingsView)
         viewingsView.configure(with: viewModel)
 

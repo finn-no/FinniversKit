@@ -16,7 +16,6 @@ public class ViewingsView: UIView {
     private var viewModel: ViewingsViewModel?
 
     private let titleHeight: CGFloat = 27
-    private var contentMargin: CGFloat = .mediumSpacing
     private let noteTopMargin: CGFloat = .mediumSpacing
 
     private lazy var titleLabel: Label = Label(style: .title3, withAutoLayout: true)
@@ -30,15 +29,14 @@ public class ViewingsView: UIView {
     }()
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
+        let tableView = UITableView(withAutoLayout: true)
         tableView.register(ViewingCell.self)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.rowHeight = ViewingCell.cellHeight
         tableView.estimatedRowHeight = ViewingCell.cellHeight
         tableView.isScrollEnabled = false
         tableView.separatorColor = .tableViewSeparator
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: ViewingCell.dateViewWidth + ViewingCell.contentSpacing, bottom: 0, right: 0)
+        tableView.separatorInset = UIEdgeInsets(leading: ViewingCell.dateViewWidth + ViewingCell.contentSpacing)
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
         tableView.tableFooterView?.backgroundColor = .bgPrimary
         return tableView
@@ -58,22 +56,18 @@ public class ViewingsView: UIView {
     // MARK: - Setup
 
     private func setup() {
-        if UIDevice.isIPad() {
-            contentMargin = 0
-        }
-
         addSubview(titleLabel)
         addSubview(noteLabel)
         addSubview(tableView)
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentMargin),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             noteLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: noteTopMargin),
-            noteLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentMargin),
-            noteLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -contentMargin),
+            noteLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            noteLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             tableView.topAnchor.constraint(equalTo: noteLabel.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -95,7 +89,7 @@ public class ViewingsView: UIView {
     }
 
     public func heightNeeded(forWidth width: CGFloat) -> CGFloat {
-        let noteHeight = noteLabel.sizeThatFits(CGSize(width: width - 2 * contentMargin, height: CGFloat.greatestFiniteMagnitude)).height
+        let noteHeight = noteLabel.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)).height
         let cellsHeight: CGFloat = ViewingCell.cellHeight * CGFloat(viewModel?.viewings.count ?? 0)
         return titleHeight + noteTopMargin + noteHeight + cellsHeight
     }
@@ -127,7 +121,6 @@ extension ViewingsView: UITableViewDataSource {
         cell.configure(with: viewModel.viewings[indexPath.row], addToCalendarButtonTitle: viewModel.addToCalendarButtonTitle)
 
         cell.selectionStyle = .none
-        cell.contentView.isUserInteractionEnabled = false
 
         cell.delegate = self
         return cell

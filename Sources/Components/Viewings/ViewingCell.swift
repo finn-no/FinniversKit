@@ -34,7 +34,7 @@ class ViewingCell: UITableViewCell {
         return label
     }()
 
-    private lazy var dayTimeStackView: UIStackView = {
+    private lazy var weekdayTimeStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
         stackView.alignment = .leading
@@ -42,9 +42,9 @@ class ViewingCell: UITableViewCell {
         return stackView
     }()
 
-    private lazy var dateLabel = Label(style: .title3, withAutoLayout: true)
+    private lazy var dayLabel = Label(style: .title3, withAutoLayout: true)
 
-    private lazy var dayLabel = Label(style: .body, withAutoLayout: true)
+    private lazy var weekdayLabel = Label(style: .body, withAutoLayout: true)
 
     private lazy var timeLabel: Label = {
         let label = Label(style: .detail, withAutoLayout: true)
@@ -60,9 +60,9 @@ class ViewingCell: UITableViewCell {
         return button
     }()
 
-    static let dateViewWidth: CGFloat = 56.0
+    static let dateViewWidth: CGFloat = 48.0
     static let cellHeight: CGFloat = 64.0
-    static let contentSpacing: CGFloat = .smallSpacing
+    static let contentSpacing: CGFloat = .mediumSpacing
 
     // MARK: - Init
 
@@ -79,21 +79,20 @@ class ViewingCell: UITableViewCell {
     // MARK: - Setup
 
     private func setup() {
-        addSubview(viewingStackView)
+        contentView.addSubview(viewingStackView)
+        viewingStackView.fillInSuperview()
 
         backgroundColor = .bgPrimary
 
-        viewingStackView.fillInSuperview(insets: UIEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -.mediumSpacing), isActive: true)
-
         viewingStackView.addArrangedSubview(dateStackView)
-        viewingStackView.addArrangedSubview(dayTimeStackView)
+        viewingStackView.addArrangedSubview(weekdayTimeStackView)
         viewingStackView.addArrangedSubview(addToCalendarButton)
 
         dateStackView.addArrangedSubview(monthLabel)
-        dateStackView.addArrangedSubview(dateLabel)
+        dateStackView.addArrangedSubview(dayLabel)
 
-        dayTimeStackView.addArrangedSubview(dayLabel)
-        dayTimeStackView.addArrangedSubview(timeLabel)
+        weekdayTimeStackView.addArrangedSubview(weekdayLabel)
+        weekdayTimeStackView.addArrangedSubview(timeLabel)
 
         NSLayoutConstraint.activate([
             dateStackView.widthAnchor.constraint(equalToConstant: ViewingCell.dateViewWidth),
@@ -108,9 +107,9 @@ class ViewingCell: UITableViewCell {
         } else {
             timeLabel.isHidden = true
         }
-        dayLabel.text = viewModel.weekday
+        weekdayLabel.text = viewModel.weekday
         monthLabel.text = viewModel.month
-        dateLabel.text = viewModel.date
+        dayLabel.text = viewModel.day
         addToCalendarButton.setTitle(addToCalendarButtonTitle, for: .normal)
     }
 
