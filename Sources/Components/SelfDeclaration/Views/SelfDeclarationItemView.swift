@@ -2,7 +2,6 @@
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
-
 public class SelfDeclarationItemView: UIView {
 
     // MARK: - Private properties
