@@ -15,6 +15,7 @@ public enum RecyclingDemoViews: String, CaseIterable {
     case userAds
     case adManagementView
     case neighborhoodProfileView
+    case paymentOptionsListView
 
     public static var items: [RecyclingDemoViews] {
         return allCases.sorted { $0.rawValue < $1.rawValue }
@@ -51,6 +52,8 @@ public enum RecyclingDemoViews: String, CaseIterable {
             return DemoViewController<AdManagementDemoView>()
         case .neighborhoodProfileView:
             return DemoViewController<NeighborhoodProfileDemoView>()
+        case .paymentOptionsListView:
+            return DemoViewController<PaymentOptionsListViewDemoView>()
         }
     }
 }
