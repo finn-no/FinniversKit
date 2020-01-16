@@ -6,12 +6,10 @@ import UIKit
 
 class NotificationCenterSectionHeaderView: UITableViewHeaderFooterView {
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel(withAutoLayout: true)
-        label.font = .title3Strong
-        label.textColor = .textPrimary
-        return label
-    }()
+    private lazy var titleLabel = Label(
+        style: .title3Strong,
+        withAutoLayout: true
+    )
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)

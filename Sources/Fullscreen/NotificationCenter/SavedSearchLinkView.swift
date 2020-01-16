@@ -18,8 +18,10 @@ public struct SavedSearchLinkViewModel {
 
 class SavedSearchLinkView: UIControl {
 
+    // MARK: - Private properties
+
     private lazy var magnifyingIconView: UIImageView = {
-        let image = UIImage(named: .magnifyingGlass)
+        let image = UIImage(named: .magnifyingGlass).withRenderingMode(.alwaysTemplate)
         let imageView = UIImageView(image: image)
         imageView.tintColor = .textPrimary
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,12 +60,14 @@ class SavedSearchLinkView: UIControl {
     private var highlightedTitleAttributes: [NSAttributedString.Key: Any] = [
         .underlineStyle: NSUnderlineStyle.single.rawValue,
         .font: UIFont.captionStrong,
-        .foregroundColor: UIColor.textAction
+        .foregroundColor: UIColor.linkButtonHighlightedTextColor
     ]
 
     private var textRange: NSRange?
     private var titleRange: NSRange?
     private var attributedString: NSMutableAttributedString?
+
+    // MARK: - Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,18 +80,17 @@ class SavedSearchLinkView: UIControl {
 
     // MARK: - Overrides
 
-    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        if super.beginTracking(touch, with: event) {
-            setTitleAttributes(highlightedTitleAttributes)
-            return true
+    override var isHighlighted: Bool {
+        didSet {
+            guard !isHighlighted, oldValue else { return }
+            setTitleAttributes(titleAttributes)
         }
-
-        return false
     }
 
-    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
-        setTitleAttributes(titleAttributes)
-        super.endTracking(touch, with: event)
+    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        guard super.beginTracking(touch, with: event) else { return false }
+        setTitleAttributes(highlightedTitleAttributes)
+        return true
     }
 
     // MARK: - Internal methods
@@ -95,7 +98,10 @@ class SavedSearchLinkView: UIControl {
     func configure(with model: SavedSearchLinkViewModel?) {
         timestampLabel.text = model?.timestamp
 
-        guard let text = model?.text, let title = model?.title else { return }
+        guard let text = model?.text, let title = model?.title else {
+            textLabel.attributedText = nil
+            return
+        }
 
         textRange = NSRange(location: 0, length: text.count + 1)
         titleRange = NSRange(location: text.count + 1, length: title.count)
