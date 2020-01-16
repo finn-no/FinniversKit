@@ -147,11 +147,13 @@ extension PaymentOptionsListView: UITableViewDataSource {
 extension PaymentOptionsListView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.paymentOptionsListView(self, didSelectRowAt: indexPath)
+        guard selectedIndexPath != indexPath else { return }
 
         guard selectedIndexPath != nil else {
             selectedIndexPath = indexPath
-            guard let cell = tableView.cellForRow(at: indexPath) as? PaymentOptionsListViewCell else { return }
-            cell.showSelectionCircle(true)
+            if let cell = tableView.cellForRow(at: indexPath) as? PaymentOptionsListViewCell {
+                cell.showSelectionCircle(true)
+            }
             return
         }
 
