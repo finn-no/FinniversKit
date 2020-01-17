@@ -58,6 +58,8 @@ public class CollapsibleContentView: UIView {
         return constraint
     }()
 
+    /// When expanding/collapsing the content, ensure the `fullHeightConstraint` is `active` or `inactive` before
+    /// getting this image
     private var indicatorImage: UIImage? {
         let assetName: FinniversImageAsset = isExpanded ? .arrowUp : .arrowDown
         return UIImage(named: assetName)
@@ -152,14 +154,6 @@ public class CollapsibleContentView: UIView {
             return
         }
 
-        let newImage = indicatorImage
-        UIView.transition(
-            with: collapseIndicatorImageView,
-            duration: 0.1,
-            options: [.transitionCrossDissolve],
-            animations: { self.collapseIndicatorImageView.image = newImage }
-        )
-
         fullHeightConstraint.isActive.toggle()
         UIView.animate(
             withDuration: 0.3,
@@ -167,15 +161,23 @@ public class CollapsibleContentView: UIView {
             options: .curveEaseInOut,
             animations: { self.superview?.layoutIfNeeded() }
         )
+
+        let newImage = indicatorImage
+        UIView.transition(
+            with: collapseIndicatorImageView,
+            duration: 0.1,
+            options: [.transitionCrossDissolve],
+            animations: { self.collapseIndicatorImageView.image = newImage }
+        )
     }
 
     private func expandContent() {
         fullHeightConstraint.isActive = true
-        collapseIndicatorImageView.image = UIImage(named: .arrowUp)
+        collapseIndicatorImageView.image = indicatorImage
     }
 
     private func collapseContent() {
         fullHeightConstraint.isActive = false
-        collapseIndicatorImageView.image = UIImage(named: .arrowDown)
+        collapseIndicatorImageView.image = indicatorImage
     }
 }
