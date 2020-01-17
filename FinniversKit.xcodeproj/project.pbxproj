@@ -316,6 +316,8 @@
 		9BC33DE922D72293007CCD65 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */; };
 		9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */; };
 		9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */; };
+		9BCD171523CCBB680045BD61 /* CollpsibleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD171423CCBB680045BD61 /* CollpsibleContentView.swift */; };
+		9BCD171823CCBBD30045BD61 /* CollapsibleContentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD171723CCBBD30045BD61 /* CollapsibleContentDemoView.swift */; };
 		9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */; };
 		9BCDFC7622E09E3C00A80D7F /* KlimabroletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7522E09E3C00A80D7F /* KlimabroletViewModel.swift */; };
 		9BCE6A3E23C7272200F37F6D /* BetaFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */; };
@@ -927,6 +929,8 @@
 		9BC33DE722D721E6007CCD65 /* LoginEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDialogueView.swift; sourceTree = "<group>"; };
 		9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoData.swift; sourceTree = "<group>"; };
+		9BCD171423CCBB680045BD61 /* CollpsibleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollpsibleContentView.swift; sourceTree = "<group>"; };
+		9BCD171723CCBBD30045BD61 /* CollapsibleContentDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleContentDemoView.swift; sourceTree = "<group>"; };
 		9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletActionsView.swift; sourceTree = "<group>"; };
 		9BCDFC7522E09E3C00A80D7F /* KlimabroletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletViewModel.swift; sourceTree = "<group>"; };
 		9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaFeatureView.swift; sourceTree = "<group>"; };
@@ -1710,6 +1714,7 @@
 				F2BE6C0A236C29BA0085A05A /* CheckmarkTitleView */,
 				9BD8ABBE2359B1CE001078CA /* ChristmasWishListView */,
 				F26CABF123AC9B2E00CACF71 /* CollapseView */,
+				9BCD171323CCBB590045BD61 /* CollpsibleContentView */,
 				45B2E06B207E181C00C68B92 /* Consent */,
 				F2BE212E22819ED8004640F3 /* Control */,
 				AA7A854C22255A5700AF5F42 /* Dialogue */,
@@ -2557,6 +2562,22 @@
 			path = LoginEntryView;
 			sourceTree = "<group>";
 		};
+		9BCD171323CCBB590045BD61 /* CollpsibleContentView */ = {
+			isa = PBXGroup;
+			children = (
+				9BCD171423CCBB680045BD61 /* CollpsibleContentView.swift */,
+			);
+			path = CollpsibleContentView;
+			sourceTree = "<group>";
+		};
+		9BCD171623CCBBC30045BD61 /* CollapsibleContentView */ = {
+			isa = PBXGroup;
+			children = (
+				9BCD171723CCBBD30045BD61 /* CollapsibleContentDemoView.swift */,
+			);
+			path = CollapsibleContentView;
+			sourceTree = "<group>";
+		};
 		9BCE6A3F23C7274800F37F6D /* BetaFeatureView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3207,6 +3228,7 @@
 		CF8F021421DCC5B2004C4042 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9BCD171623CCBBC30045BD61 /* CollapsibleContentView */,
 				CFDF39CC238541D400D3B966 /* AddressCardView */,
 				083349EA21EF24AE000E68D3 /* BottomSheet */,
 				CF8F021D21DCC691004C4042 /* Broadcast */,
@@ -4533,6 +4555,7 @@
 				9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
+				9BCD171823CCBBD30045BD61 /* CollapsibleContentDemoView.swift in Sources */,
 				43BACE6F21117DD20052114C /* BuyerPickerDemoView.swift in Sources */,
 				F26CAC0523AC9BDC00CACF71 /* OrderSummaryDemoView.swift in Sources */,
 				9BEB2874231D233D00D28BAD /* LoanCalculatorDemoView.swift in Sources */,
@@ -4980,6 +5003,7 @@
 				CF05BA02233B78BC003A7F1C /* FavoriteSearchEmptyView.swift in Sources */,
 				9A37D36854B78610AFEADD5C /* UITableViewCellExtensions.swift in Sources */,
 				9A37D6FADD7DBD952AA395F7 /* FavoriteAdTableViewCell.swift in Sources */,
+				9BCD171523CCBB680045BD61 /* CollpsibleContentView.swift in Sources */,
 				9A37D015952CBD1FEF4F0E20 /* FavoriteAdViewModel.swift in Sources */,
 				9A37DFD7CA27F4F25F613DE2 /* FavoriteAdsListView.swift in Sources */,
 				9BEB2878231D26C100D28BAD /* LoanCalculatorView.swift in Sources */,
