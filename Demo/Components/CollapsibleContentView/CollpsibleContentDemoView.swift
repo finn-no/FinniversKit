@@ -7,15 +7,15 @@ import FinniversKit
 class CollpsibleContentDemoView: UIView {
     private lazy var collapsibleContentView: CollapsibleContentView = {
         let view = CollapsibleContentView(withAutoLayout: true)
-        view.backgroundColor = .lightGray
-        view.layoutMargins = UIEdgeInsets(vertical: .mediumSpacing, horizontal: .mediumLargeSpacing)
+        view.backgroundColor = .bgTertiary
+        view.layoutMargins = UIEdgeInsets(all: .mediumLargeSpacing)
         view.configure(with: "Spesifikasjoner", contentView: contentView)
         return view
     }()
 
     private lazy var contentView: UIView = {
         let view = UIView(withAutoLayout: true)
-        view.backgroundColor = .red
+        view.backgroundColor = .bgSecondary
         return view
     }()
 
@@ -47,7 +47,9 @@ class CollpsibleContentDemoView: UIView {
         addSubview(collapsibleContentView)
 
         NSLayoutConstraint.activate([
-            collapsibleContentView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            // one of the areas of the floating button in demo view was eating the touches where the collapisble
+            // view was overlaping one of the window corners, then i added some constant to avoid that.
+            collapsibleContentView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 100),
             collapsibleContentView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             collapsibleContentView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
         ])

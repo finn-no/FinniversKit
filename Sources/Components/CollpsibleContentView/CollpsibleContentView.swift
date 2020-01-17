@@ -4,8 +4,28 @@
 
 import UIKit
 
+public protocol CollapsibleContentViewDelegate: AnyObject {
+    func collapsibleContentViewDidTapToggleContent(_ view: CollapsibleContentView)
+}
+
 public class CollapsibleContentView: UIView {
     // MARK: - Public properties
+
+    /// By default the component will expand the content automatically when tapping on the header
+    /// In cases that you want to control that manually by setting `isExpanded`, then you can make
+    /// this value to be `false` (defaults `true`)
+    public var expandsAutomatically: Bool = true
+
+    public var isExpanded: Bool {
+        get {
+            fullHeightConstraint.isActive
+        }
+        set {
+            newValue ? expandContent() : collapseContent()
+        }
+    }
+
+    public weak var delegate: CollapsibleContentViewDelegate?
 
     // MARK: - Private properties
 
@@ -21,18 +41,14 @@ public class CollapsibleContentView: UIView {
         return stackView
     }()
 
-    private lazy var titleLabel: Label = {
-        let label = Label(style: .title3Strong, withAutoLayout: true)
-        return label
-    }()
+    private lazy var titleLabel: Label = Label(style: .title3Strong, withAutoLayout: true)
 
-    private lazy var collapseIndicatorView: UIImageView = {
+    private lazy var collapseIndicatorImageView: UIImageView = {
         let imageView = UIImageView(withAutoLayout: true)
         imageView.image = indicatorImage
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .iconSecondary
         imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleContent)))
         return imageView
     }()
 
@@ -42,16 +58,25 @@ public class CollapsibleContentView: UIView {
         return constraint
     }()
 
-    var isCollapsed: Bool {
-        !fullHeightConstraint.isActive
-    }
-
     private var indicatorImage: UIImage? {
-        let assetName: FinniversImageAsset = isCollapsed ? .arrowDown : .arrowUp
+        let assetName: FinniversImageAsset = isExpanded ? .arrowUp : .arrowDown
         return UIImage(named: assetName)
     }
 
+    private lazy var compactHeightConstraint: NSLayoutConstraint = {
+        let constraint = heightAnchor.constraint(
+            equalTo: headerView.heightAnchor,
+            multiplier: 1.0,
+            constant: layoutMargins.top + layoutMargins.bottom
+        )
+        constraint.priority = .defaultLow
+        return constraint
+    }()
+
+    private var contentTopConstraint: NSLayoutConstraint?
+
     // MARK: - Initializers
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -62,9 +87,23 @@ public class CollapsibleContentView: UIView {
         setup()
     }
 
-    public func configure(with title: String, contentView: UIView) {
+    // MARK: - UIView overrides
+
+    public override var layoutMargins: UIEdgeInsets {
+        didSet {
+            compactHeightConstraint.constant = layoutMargins.top + layoutMargins.bottom
+            contentTopConstraint?.constant = layoutMargins.bottom
+        }
+    }
+
+    // MARK: - Public methods
+
+    public func configure(with title: String, contentView: UIView, showExpanded: Bool = false) {
         titleLabel.text = title
         addContentView(contentView)
+        if showExpanded {
+            expandContent()
+        }
     }
 
     // MARK: - Private methods
@@ -73,17 +112,10 @@ public class CollapsibleContentView: UIView {
         clipsToBounds = true
 
         headerView.addArrangedSubview(titleLabel)
-        headerView.addArrangedSubview(collapseIndicatorView)
+        headerView.addArrangedSubview(collapseIndicatorImageView)
 
-        addSubview(innerContainerView)
         innerContainerView.addSubview(headerView)
-
-        let compactHeightConstraint = heightAnchor.constraint(
-            equalTo: headerView.heightAnchor,
-            multiplier: 1.0,
-            constant: layoutMargins.top + layoutMargins.bottom
-        )
-        compactHeightConstraint.priority = .defaultLow
+        addSubview(innerContainerView)
 
         NSLayoutConstraint.activate([
             innerContainerView.topAnchor.constraint(equalTo: topAnchor),
@@ -103,28 +135,47 @@ public class CollapsibleContentView: UIView {
     private func addContentView(_ contentView: UIView) {
         innerContainerView.addSubview(contentView)
 
+        let contentTopConstraint = contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .mediumLargeSpacing)
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 10),
-            contentView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: .mediumSpacing),
+            contentTopConstraint,
             contentView.leadingAnchor.constraint(equalTo: innerContainerView.layoutMarginsGuide.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: innerContainerView.layoutMarginsGuide.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: innerContainerView.layoutMarginsGuide.bottomAnchor),
         ])
+        self.contentTopConstraint = contentTopConstraint
     }
 
     @objc private func toggleContent() {
-        fullHeightConstraint.isActive.toggle()
+        guard expandsAutomatically else {
+            delegate?.collapsibleContentViewDidTapToggleContent(self)
+            return
+        }
 
         let newImage = indicatorImage
         UIView.transition(
-            with: collapseIndicatorView,
+            with: collapseIndicatorImageView,
             duration: 0.1,
             options: [.transitionCrossDissolve],
-            animations: { self.collapseIndicatorView.image = newImage }
+            animations: { self.collapseIndicatorImageView.image = newImage }
         )
 
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
-            self.superview?.layoutIfNeeded()
-        })
+        fullHeightConstraint.isActive.toggle()
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: { self.superview?.layoutIfNeeded() }
+        )
+    }
+
+    private func expandContent() {
+        fullHeightConstraint.isActive = true
+        collapseIndicatorImageView.image = UIImage(named: .arrowUp)
+    }
+
+    private func collapseContent() {
+        fullHeightConstraint.isActive = false
+        collapseIndicatorImageView.image = UIImage(named: .arrowDown)
     }
 }
