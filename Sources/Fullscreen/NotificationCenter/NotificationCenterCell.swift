@@ -5,7 +5,7 @@
 import UIKit
 
 public protocol NotificationCenterCellModel {
-    var savedSearchLinkModel: SavedSearchLinkViewModel? { get }
+    var pushNotificationDetails: PushNotificationDetails? { get }
     var imagePath: String? { get }
     var title: String { get }
     var ribbonViewModel: RibbonViewModel? { get }
@@ -33,8 +33,8 @@ class NotificationCenterCell: UITableViewCell {
     private let adImageWidth: CGFloat = 80
     private let fallbackImage = UIImage(named: .noImage)
 
-    private lazy var savedSearchLinkView: SavedSearchLinkView = {
-        let view = SavedSearchLinkView(withAutoLayout: true)
+    private lazy var savedSearchLinkView: PushNotificationDetailsView = {
+        let view = PushNotificationDetailsView(withAutoLayout: true)
         view.addTarget(self, action: #selector(handleSavedSearchSelected), for: .touchUpInside)
         return view
     }()
@@ -86,7 +86,7 @@ class NotificationCenterCell: UITableViewCell {
     }
 
     func configure(with model: NotificationCenterCellModel?, timestamp: String?) {
-        savedSearchLinkView.configure(with: model?.savedSearchLinkModel, timestamp: timestamp)
+        savedSearchLinkView.configure(with: model?.pushNotificationDetails, timestamp: timestamp)
 
         titleLabel.text = model?.title
         titleLabel.font = model?.read == true ? .body : .bodyStrong
