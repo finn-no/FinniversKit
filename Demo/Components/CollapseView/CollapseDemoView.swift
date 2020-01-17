@@ -1,8 +1,8 @@
 import FinniversKit
 
 public class CollapseDemoView: UIView {
-    let regular = OrderSummaryView(model: OrderSummaryViewRegularDefaultData(), withAutoLayout: true)
-    let car = OrderSummaryView(model: OrderSummaryViewCarDefaultData(), withAutoLayout: true)
+    let regular = OrderSummaryView(orderLines: OrderSummaryViewRegularDefaultData.orderLines, withAutoLayout: true)
+    let car = OrderSummaryView(orderLines: OrderSummaryViewCarDefaultData.orderLines, withAutoLayout: true)
 
     private lazy var collapseView: CollapseView = {
         let view = CollapseView(collapsedTitle: "Vis oppsummering", expandedTitle: "Skjul oppsummering",

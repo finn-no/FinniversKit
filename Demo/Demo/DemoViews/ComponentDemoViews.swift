@@ -59,6 +59,7 @@ public enum ComponentDemoViews: String, CaseIterable {
     case collapseView
     case orderSummaryView
     case orderTotalSumView
+    case selfDeclarationView
     case collpsibleContentView
 
     public static var items: [ComponentDemoViews] {
@@ -184,6 +185,8 @@ public enum ComponentDemoViews: String, CaseIterable {
             return DemoViewController<OrderSummaryDemoView>()
         case .orderTotalSumView:
             return DemoViewController<OrderTotalSumDemoView>()
+        case .selfDeclarationView:
+            return DemoViewController<SelfDeclarationDemoView>()
         case .collpsibleContentView:
             return DemoViewController<CollpsibleContentDemoView>(dismissType: .dismissButton)
         }
