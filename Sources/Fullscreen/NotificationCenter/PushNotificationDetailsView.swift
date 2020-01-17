@@ -136,6 +136,7 @@ class PushNotificationDetailsView: UIControl {
             attributedString?.setAttributes(valueAttributes, range: valueRange)
 
         case .none:
+            highlightedRange = nil
             attributedString = nil
         }
 
