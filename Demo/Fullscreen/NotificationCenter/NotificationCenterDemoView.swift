@@ -111,6 +111,13 @@ extension NotificationCenterDemoView: NotificationCenterViewDelegate {
     func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String? {
         "15 minutter siden"
     }
+
+    func notificationCenterView(_ view: NotificationCenterView, didPullToRefreshWith refreshControl: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            view.reloadData()
+            refreshControl.endRefreshing()
+        }
+    }
 }
 
 extension NotificationCenterDemoView: RemoteImageViewDataSource {

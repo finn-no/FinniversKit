@@ -9,6 +9,7 @@ public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didSelectSavedSearchAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, titleForSection section: Int) -> String
     func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String?
+    func notificationCenterView(_ view: NotificationCenterView, didPullToRefreshWith refreshControl: UIRefreshControl)
 }
 
 public protocol NotificationCenterViewDataSource: AnyObject {
@@ -23,6 +24,16 @@ public class NotificationCenterView: UIView {
     public weak var dataSource: NotificationCenterViewDataSource?
     public weak var imageViewDataSource: RemoteImageViewDataSource?
 
+    // MARK: - Private properties
+
+    private var refreshOnPanEnded = false
+
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(control:)), for: .valueChanged)
+        return refreshControl
+    }()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .bgPrimary
@@ -32,6 +43,8 @@ public class NotificationCenterView: UIView {
         tableView.delegate = self
         tableView.register(NotificationCenterCell.self)
         tableView.register(NotificationCenterSectionHeaderView.self)
+        tableView.refreshControl = refreshControl
+        tableView.panGestureRecognizer.addTarget(self, action: #selector(handleTableViewPan(gesture:)))
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -117,6 +130,16 @@ extension NotificationCenterView: NotificationCenterCellDelegate {
 }
 
 private extension NotificationCenterView {
+    @objc func handleTableViewPan(gesture: UIPanGestureRecognizer) {
+        guard gesture.state == .ended, refreshOnPanEnded else { return }
+        refreshOnPanEnded = false
+        delegate?.notificationCenterView(self, didPullToRefreshWith: refreshControl)
+    }
+
+    @objc func handleRefresh(control: UIRefreshControl) {
+        refreshOnPanEnded = true
+    }
+
     func setup() {
         addSubview(tableView)
         tableView.fillInSuperview()
