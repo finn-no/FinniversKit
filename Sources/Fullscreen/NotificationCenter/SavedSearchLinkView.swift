@@ -7,12 +7,10 @@ import UIKit
 public struct SavedSearchLinkViewModel {
     public let text: String
     public let title: String
-    public let timestamp: String
 
-    public init(text: String, title: String, timestamp: String) {
+    public init(text: String, title: String) {
         self.text = text
         self.title = title
-        self.timestamp = timestamp
     }
 }
 
@@ -95,8 +93,8 @@ class SavedSearchLinkView: UIControl {
 
     // MARK: - Internal methods
 
-    func configure(with model: SavedSearchLinkViewModel?) {
-        timestampLabel.text = model?.timestamp
+    func configure(with model: SavedSearchLinkViewModel?, timestamp: String?) {
+        timestampLabel.text = timestamp
 
         guard let text = model?.text, let title = model?.title else {
             textLabel.attributedText = nil

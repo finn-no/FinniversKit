@@ -8,6 +8,7 @@ public protocol NotificationCenterViewDelegate: AnyObject {
     func notificationCenterView(_ view: NotificationCenterView, didSelectModelAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, didSelectSavedSearchAt indexPath: IndexPath)
     func notificationCenterView(_ view: NotificationCenterView, titleForSection section: Int) -> String
+    func notificationCenterView(_ view: NotificationCenterView, timestampForModelAt indexPath: IndexPath) -> String?
 }
 
 public protocol NotificationCenterViewDataSource: AnyObject {
@@ -73,7 +74,11 @@ extension NotificationCenterView: UITableViewDataSource {
         let cell = tableView.dequeue(NotificationCenterCell.self, for: indexPath)
         cell.imageViewDataSource = imageViewDataSource
         cell.delegate = self
-        cell.configure(with: model)
+
+        cell.configure(
+            with: model,
+            timestamp: delegate?.notificationCenterView(self, timestampForModelAt: indexPath)
+        )
 
         if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
             cell.separatorInset = .leadingInset(.greatestFiniteMagnitude)

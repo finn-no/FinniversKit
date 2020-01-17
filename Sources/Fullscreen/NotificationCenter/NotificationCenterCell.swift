@@ -82,11 +82,11 @@ class NotificationCenterCell: UITableViewCell {
     override func prepareForReuse() {
         remoteImageView.image = nil
         remoteImageView.cancelLoading()
-        configure(with: nil)
+        configure(with: nil, timestamp: nil)
     }
 
-    func configure(with model: NotificationCenterCellModel?) {
-        savedSearchLinkView.configure(with: model?.savedSearchLinkModel)
+    func configure(with model: NotificationCenterCellModel?, timestamp: String?) {
+        savedSearchLinkView.configure(with: model?.savedSearchLinkModel, timestamp: timestamp)
 
         titleLabel.text = model?.title
         titleLabel.font = model?.read == true ? .body : .bodyStrong
