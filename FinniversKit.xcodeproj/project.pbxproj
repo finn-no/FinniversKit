@@ -317,7 +317,7 @@
 		9BC33DEB22D76405007CCD65 /* LoginEntryDialogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */; };
 		9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */; };
 		9BCD171523CCBB680045BD61 /* CollpsibleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD171423CCBB680045BD61 /* CollpsibleContentView.swift */; };
-		9BCD171823CCBBD30045BD61 /* CollpsibleContentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD171723CCBBD30045BD61 /* CollpsibleContentDemoView.swift */; };
+		9BCD171823CCBBD30045BD61 /* CollapsibleContentDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD171723CCBBD30045BD61 /* CollapsibleContentDemoView.swift */; };
 		9BCDFC7422E09DF700A80D7F /* KlimabroletActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */; };
 		9BCDFC7622E09E3C00A80D7F /* KlimabroletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCDFC7522E09E3C00A80D7F /* KlimabroletViewModel.swift */; };
 		9BCE6A3E23C7272200F37F6D /* BetaFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */; };
@@ -930,7 +930,7 @@
 		9BC33DEA22D76405007CCD65 /* LoginEntryDialogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDialogueView.swift; sourceTree = "<group>"; };
 		9BC33DEC22D76D4F007CCD65 /* LoginEntryDemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntryDemoData.swift; sourceTree = "<group>"; };
 		9BCD171423CCBB680045BD61 /* CollpsibleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollpsibleContentView.swift; sourceTree = "<group>"; };
-		9BCD171723CCBBD30045BD61 /* CollpsibleContentDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollpsibleContentDemoView.swift; sourceTree = "<group>"; };
+		9BCD171723CCBBD30045BD61 /* CollapsibleContentDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleContentDemoView.swift; sourceTree = "<group>"; };
 		9BCDFC7322E09DF700A80D7F /* KlimabroletActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletActionsView.swift; sourceTree = "<group>"; };
 		9BCDFC7522E09E3C00A80D7F /* KlimabroletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlimabroletViewModel.swift; sourceTree = "<group>"; };
 		9BCE6A3D23C7272200F37F6D /* BetaFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaFeatureView.swift; sourceTree = "<group>"; };
@@ -2573,7 +2573,7 @@
 		9BCD171623CCBBC30045BD61 /* CollapsibleContentView */ = {
 			isa = PBXGroup;
 			children = (
-				9BCD171723CCBBD30045BD61 /* CollpsibleContentDemoView.swift */,
+				9BCD171723CCBBD30045BD61 /* CollapsibleContentDemoView.swift */,
 			);
 			path = CollapsibleContentView;
 			sourceTree = "<group>";
@@ -4555,7 +4555,7 @@
 				9BC33DED22D76D4F007CCD65 /* LoginEntryDemoData.swift in Sources */,
 				4408A6AB2027AC7B008C0BD9 /* FontDemoView.swift in Sources */,
 				4447F70F1FDB2B650033DBC1 /* RibbonDemoView.swift in Sources */,
-				9BCD171823CCBBD30045BD61 /* CollpsibleContentDemoView.swift in Sources */,
+				9BCD171823CCBBD30045BD61 /* CollapsibleContentDemoView.swift in Sources */,
 				43BACE6F21117DD20052114C /* BuyerPickerDemoView.swift in Sources */,
 				F26CAC0523AC9BDC00CACF71 /* OrderSummaryDemoView.swift in Sources */,
 				9BEB2874231D233D00D28BAD /* LoanCalculatorDemoView.swift in Sources */,

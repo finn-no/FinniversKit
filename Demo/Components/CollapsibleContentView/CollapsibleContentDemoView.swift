@@ -4,7 +4,7 @@
 
 import FinniversKit
 
-class CollpsibleContentDemoView: UIView {
+class CollapsibleContentDemoView: UIView {
     private lazy var collapsibleContentView: CollapsibleContentView = {
         let view = CollapsibleContentView(withAutoLayout: true)
         view.backgroundColor = .bgTertiary

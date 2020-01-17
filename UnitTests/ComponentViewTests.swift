@@ -243,7 +243,7 @@ class ComponentViewTests: XCTestCase {
         snapshot(.selfDeclarationView)
     }
 
-    func testCollpsibleContentView() {
-        snapshot(.collpsibleContentView)
+    func testCollapsibleContentView() {
+        snapshot(.collapsibleContentView)
     }
 }
