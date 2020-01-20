@@ -12,7 +12,7 @@ public protocol MinFinnViewDataSource: AnyObject {
 
 public protocol MinFinnViewDelegate: AnyObject {
     func minFinnView(_ view: MinFinnView, didSelectModelAt indexPath: IndexPath)
-    func minFinnView(_ view: MinFinnView, didBeginRefreshingUsing refreshControl: UIRefreshControl)
+    func minFinnView(_ view: MinFinnView, didPullToRefreshingUsing refreshControl: UIRefreshControl)
 }
 
 public class MinFinnView: UIView {
@@ -23,6 +23,8 @@ public class MinFinnView: UIView {
     public weak var delegate: MinFinnViewDelegate?
 
     // MARK: - Private properties
+
+    private var refreshOnGestureEnded = false
 
     private lazy var refreshControl: UIRefreshControl = {
         let controller = RefreshControl(frame: .zero)
@@ -41,8 +43,9 @@ public class MinFinnView: UIView {
         tableView.register(MinFinnVerifyCell.self)
         tableView.register(IconTitleTableViewCell.self)
         tableView.register(BasicTableViewCell.self)
+        tableView.refreshControl = refreshControl
+        tableView.panGestureRecognizer.addTarget(self, action: #selector(handlePan(gesture:)))
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tableView.insertSubview(refreshControl, at: 0)
         return tableView
     }()
 
@@ -56,8 +59,22 @@ public class MinFinnView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Private methods
+
+    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .ended, .cancelled, .failed:
+            guard refreshOnGestureEnded else { return }
+            refreshOnGestureEnded = false
+            delegate?.minFinnView(self, didPullToRefreshingUsing: refreshControl)
+        default:
+            return
+        }
+    }
 }
 
+// MARK: - Publit methods
 public extension MinFinnView {
     var indexPathForSelectedRow: IndexPath? {
         tableView.indexPathForSelectedRow
@@ -146,6 +163,6 @@ extension MinFinnView: UITableViewDelegate {
 
 extension MinFinnView: RefreshControlDelegate {
     public func refreshControlDidBeginRefreshing(_ refreshControl: RefreshControl) {
-        delegate?.minFinnView(self, didBeginRefreshingUsing: refreshControl)
+        refreshOnGestureEnded = true
     }
 }

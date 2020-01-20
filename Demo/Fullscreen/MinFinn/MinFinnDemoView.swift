@@ -88,8 +88,8 @@ extension MinFinnDemoView: MinFinnViewDataSource {
 }
 
 extension MinFinnDemoView: MinFinnViewDelegate {
-    func minFinnView(_ view: MinFinnView, didBeginRefreshingUsing refreshControl: UIRefreshControl) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+    func minFinnView(_ view: MinFinnView, didPullToRefreshingUsing refreshControl: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             refreshControl.endRefreshing()
         }
     }
