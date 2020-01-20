@@ -80,6 +80,10 @@ public extension MinFinnView {
         tableView.indexPathForSelectedRow
     }
 
+    func endRefreshing() {
+        refreshControl.endRefreshing()
+    }
+
     func reloadData() {
         tableView.reloadData()
     }
