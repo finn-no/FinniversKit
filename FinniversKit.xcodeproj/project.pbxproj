@@ -241,13 +241,8 @@
 		62AAB23A23278087007766E6 /* RadioButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */; };
 		62AAB23C2327901D007766E6 /* RadioButtonCellDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AAB23B2327901D007766E6 /* RadioButtonCellDemoView.swift */; };
 		8908E83622BD0CA100ED671C /* MessageInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E83522BD0CA100ED671C /* MessageInputTextView.swift */; };
-		8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84722C0C2F900ED671C /* MessageFormViewController.swift */; };
 		8908E84D22C0D11400ED671C /* MessageFormToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */; };
-		8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */; };
 		8908E85722C0E49900ED671C /* MessageFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */; };
-		8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85922C0E5FF00ED671C /* MessageFormDemoViewModel.swift */; };
-		8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */; };
-		8908E86022C2373800ED671C /* MessageFormDemoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908E85F22C2373800ED671C /* MessageFormDemoPresenter.swift */; };
 		895175902248CF79008003FB /* StepIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8951758F2248CF79008003FB /* StepIndicator.swift */; };
 		895175932248CFD4008003FB /* StepIndicatorDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895175922248CFD4008003FB /* StepIndicatorDemoView.swift */; };
 		895175952248D4D1008003FB /* StepDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895175942248D4D1008003FB /* StepDot.swift */; };
@@ -431,6 +426,9 @@
 		CF5012432360905000138A36 /* PrimingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5012422360905000138A36 /* PrimingTableViewCell.swift */; };
 		CF5012452360909200138A36 /* PrimingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5012442360909200138A36 /* PrimingHeaderView.swift */; };
 		CF54065D23293B100017CF31 /* FavoriteAdCommentInputDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF54065C23293B100017CF31 /* FavoriteAdCommentInputDemoView.swift */; };
+		CF576A6523D5BC0F00A914B6 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CF576A6423D5BC0F00A914B6 /* BottomSheet */; };
+		CF576A6723D5BDDC00A914B6 /* MessageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF576A6623D5BDDC00A914B6 /* MessageFormView.swift */; };
+		CF576A6923D5FC3000A914B6 /* MessageFormDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF576A6823D5FC3000A914B6 /* MessageFormDemoView.swift */; };
 		CF5CA71022F82D43007C4124 /* NeighborhoodProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA70F22F82D43007C4124 /* NeighborhoodProfileViewCell.swift */; };
 		CF5CA71222F85A94007C4124 /* NeighborhoodProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71122F85A94007C4124 /* NeighborhoodProfileHeaderView.swift */; };
 		CF5CA71422F87729007C4124 /* NeighborhoodProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CA71322F87729007C4124 /* NeighborhoodProfileViewModel.swift */; };
@@ -857,13 +855,8 @@
 		62AAB23923278087007766E6 /* RadioButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonTableViewCell.swift; sourceTree = "<group>"; };
 		62AAB23B2327901D007766E6 /* RadioButtonCellDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonCellDemoView.swift; sourceTree = "<group>"; };
 		8908E83522BD0CA100ED671C /* MessageInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputTextView.swift; sourceTree = "<group>"; };
-		8908E84722C0C2F900ED671C /* MessageFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewController.swift; sourceTree = "<group>"; };
 		8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormToolbar.swift; sourceTree = "<group>"; };
-		8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormBottomSheet.swift; sourceTree = "<group>"; };
 		8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormViewModel.swift; sourceTree = "<group>"; };
-		8908E85922C0E5FF00ED671C /* MessageFormDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormDemoViewModel.swift; sourceTree = "<group>"; };
-		8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormTemplateState.swift; sourceTree = "<group>"; };
-		8908E85F22C2373800ED671C /* MessageFormDemoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormDemoPresenter.swift; sourceTree = "<group>"; };
 		8951758F2248CF79008003FB /* StepIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StepIndicator.swift; path = Sources/Components/Broadcast/StepIndicator.swift; sourceTree = SOURCE_ROOT; };
 		895175922248CFD4008003FB /* StepIndicatorDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepIndicatorDemoView.swift; sourceTree = "<group>"; };
 		895175942248D4D1008003FB /* StepDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDot.swift; sourceTree = "<group>"; };
@@ -1053,6 +1046,8 @@
 		CF5012422360905000138A36 /* PrimingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimingTableViewCell.swift; sourceTree = "<group>"; };
 		CF5012442360909200138A36 /* PrimingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimingHeaderView.swift; sourceTree = "<group>"; };
 		CF54065C23293B100017CF31 /* FavoriteAdCommentInputDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteAdCommentInputDemoView.swift; sourceTree = "<group>"; };
+		CF576A6623D5BDDC00A914B6 /* MessageFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormView.swift; sourceTree = "<group>"; };
+		CF576A6823D5FC3000A914B6 /* MessageFormDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFormDemoView.swift; sourceTree = "<group>"; };
 		CF5CA70F22F82D43007C4124 /* NeighborhoodProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileViewCell.swift; sourceTree = "<group>"; };
 		CF5CA71122F85A94007C4124 /* NeighborhoodProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileHeaderView.swift; sourceTree = "<group>"; };
 		CF5CA71322F87729007C4124 /* NeighborhoodProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodProfileViewModel.swift; sourceTree = "<group>"; };
@@ -1212,6 +1207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D32C281FB07850001E86D6 /* FinniversKit.framework in Frameworks */,
+				CF576A6523D5BC0F00A914B6 /* BottomSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2280,11 +2276,9 @@
 			isa = PBXGroup;
 			children = (
 				8908E83522BD0CA100ED671C /* MessageInputTextView.swift */,
-				8908E84722C0C2F900ED671C /* MessageFormViewController.swift */,
 				8908E84B22C0D10B00ED671C /* MessageFormToolbar.swift */,
-				8908E84F22C0D76500ED671C /* MessageFormBottomSheet.swift */,
 				8908E85422C0E43C00ED671C /* MessageFormViewModel.swift */,
-				8908E85B22C211D000ED671C /* MessageFormTemplateState.swift */,
+				CF576A6623D5BDDC00A914B6 /* MessageFormView.swift */,
 			);
 			path = MessageForm;
 			sourceTree = "<group>";
@@ -2292,8 +2286,7 @@
 		8908E85822C0E5F000ED671C /* MessageForm */ = {
 			isa = PBXGroup;
 			children = (
-				8908E85922C0E5FF00ED671C /* MessageFormDemoViewModel.swift */,
-				8908E85F22C2373800ED671C /* MessageFormDemoPresenter.swift */,
+				CF576A6823D5FC3000A914B6 /* MessageFormDemoView.swift */,
 			);
 			path = MessageForm;
 			sourceTree = "<group>";
@@ -4318,6 +4311,9 @@
 				44D32C2B1FB07850001E86D6 /* PBXTargetDependency */,
 			);
 			name = Demo;
+			packageProductDependencies = (
+				CF576A6423D5BC0F00A914B6 /* BottomSheet */,
+			);
 			productName = Demo;
 			productReference = 14405C741FAFBD1800D03E04 /* Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -4404,6 +4400,7 @@
 			mainGroup = 25D04D721F583B1800EA317D;
 			packageReferences = (
 				9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				CF576A6323D5BC0F00A914B6 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = 25D04D7C1F583B1800EA317D /* Products */;
 			projectDirPath = "";
@@ -4501,6 +4498,7 @@
 				44AEFC2322E722FC00D3C307 /* RemoteImageCellDemoView.swift in Sources */,
 				55C5B27E203EB9DA007D7277 /* BroadcastDemoView.swift in Sources */,
 				44B94FE522E0AB420078A23C /* TweakingOptionsTableViewController.swift in Sources */,
+				CF576A6923D5FC3000A914B6 /* MessageFormDemoView.swift in Sources */,
 				44587023213FA362009187BE /* LoginViewDefaultData.swift in Sources */,
 				9B9287AB22F0593700FC7B69 /* KlimabroletData.swift in Sources */,
 				CFA6DC2923BF39BA0016E118 /* FavoriteFolderActionDemoView.swift in Sources */,
@@ -4592,7 +4590,6 @@
 				F26CAC0523AC9BDC00CACF71 /* OrderSummaryDemoView.swift in Sources */,
 				9BEB2874231D233D00D28BAD /* LoanCalculatorDemoView.swift in Sources */,
 				45EDD63320A3253F008F4503 /* ConsentTransparencyInfoDefaultData.swift in Sources */,
-				8908E86022C2373800ED671C /* MessageFormDemoPresenter.swift in Sources */,
 				4447F7101FDB2B810033DBC1 /* TextFieldDemoView.swift in Sources */,
 				CF164D1A230FFEBA00250822 /* FavoriteActionDemoView.swift in Sources */,
 				44AEFC2922E722FC00D3C307 /* CheckboxSubtitleCellDemoView.swift in Sources */,
@@ -4607,7 +4604,6 @@
 				DAC65FBB21E35F7300644CDE /* BottomSheetMechanicsDemoViewController.swift in Sources */,
 				F2C3E96322CB688800CED7E0 /* QuestionnaireDemoView.swift in Sources */,
 				449C60B8234DD8BC00C51A63 /* BasicTableViewDemoView.swift in Sources */,
-				8908E85A22C0E5FF00ED671C /* MessageFormDemoViewModel.swift in Sources */,
 				4974725F239A49570058D7B0 /* SearchListEmptyViewModel.swift in Sources */,
 				441FE439209A254200B04EF1 /* AdsGridViewDemoView.swift in Sources */,
 				4447F7061FDB2B2C0033DBC1 /* LabelDemoView.swift in Sources */,
@@ -4891,10 +4887,8 @@
 				CF2E46F22319685C0085A591 /* FavoriteAdActionView.swift in Sources */,
 				62432106231FE97F0027E142 /* UserAdsListEmphasizedActionCell.swift in Sources */,
 				F2C3E95C22CB639200CED7E0 /* QuestionnaireView.swift in Sources */,
-				8908E85322C0D79600ED671C /* MessageFormBottomSheet.swift in Sources */,
 				4447F6F01FDB2B110033DBC1 /* ToastView.swift in Sources */,
 				1430D441216E4DA10038AC84 /* Spacing.m in Sources */,
-				8908E84922C0C3C600ED671C /* MessageFormViewController.swift in Sources */,
 				44A5579E22E71FEB001667AE /* BasicTableViewCellViewModel.swift in Sources */,
 				DAB7FAA821B690DD00BF8CC6 /* BottomSheetTransitioningDelegate.swift in Sources */,
 				620AEE34221175970087C150 /* UserAdManagementButtonAndInformationCell.swift in Sources */,
@@ -4933,6 +4927,7 @@
 				91D2A55422F3279300ED4BB9 /* SearchResultMapViewAnnotation.swift in Sources */,
 				14DC127021593B0000326DC3 /* HorizontalSlideTransition.swift in Sources */,
 				F2BE6BFF236849990085A05A /* AdConfirmationSummaryView.swift in Sources */,
+				CF576A6723D5BDDC00A914B6 /* MessageFormView.swift in Sources */,
 				CFA6DC2B23BF5E1B0016E118 /* FavoriteAdCommentInputView.swift in Sources */,
 				4447F6E91FDB2B110033DBC1 /* Ribbon+Style.swift in Sources */,
 				CFCED8DD22CE3EAA0049A3A0 /* AddFavoriteFolderButton.swift in Sources */,
@@ -4946,7 +4941,6 @@
 				43BACE6A21117D430052114C /* BuyerPickerView.swift in Sources */,
 				CF8F024521DE1013004C4042 /* RefreshControl.swift in Sources */,
 				DA6DC2BB238404B80094C42C /* VersionInfoView.swift in Sources */,
-				8908E85E22C21A2300ED671C /* MessageFormTemplateState.swift in Sources */,
 				F26CABF923AC9B2E00CACF71 /* CollapseView.swift in Sources */,
 				9B28DE842326732F00D69C15 /* PanelViewModel.swift in Sources */,
 				CF164CE8230D8D9700250822 /* FavoriteFolderAction.swift in Sources */,
@@ -5444,6 +5438,14 @@
 				minimumVersion = 1.6.0;
 			};
 		};
+		CF576A6323D5BC0F00A914B6 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/finn-no/BottomSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -5451,6 +5453,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9BD13F6E23570AF000CAA6BB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
+		};
+		CF576A6423D5BC0F00A914B6 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF576A6323D5BC0F00A914B6 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

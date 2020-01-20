@@ -78,9 +78,7 @@ public enum FullscreenDemoViews: String, CaseIterable {
         case .contactFormView:
             return DemoViewController<ContactFormDemoView>()
         case .messageFormView:
-            let bottomSheet = MessageFormBottomSheet(viewModel: MessageFormDemoViewModel())
-            bottomSheet.messageFormDelegate = MessageFormDemoPresenter.shared
-            return bottomSheet
+            return DemoViewController<MessageFormDemoView>()
         case .addressMapView:
             return DemoViewController<AddressMapDemoView>(
                 dismissType: .dismissButton,
